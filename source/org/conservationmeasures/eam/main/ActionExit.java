@@ -19,7 +19,7 @@ public class ActionExit extends MainWindow.Action
 		getMainWindow().exitNormally();
 	}
 
-	public static String getLabel()
+	private static String getLabel()
 	{
 		return EAM.text("Action|Exit");
 	}
