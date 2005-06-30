@@ -16,7 +16,7 @@ public class MainWindow extends JFrame
 {
 	public MainWindow() throws HeadlessException
 	{
-		setTitle(EAM.text("Title|CMP eAdaptiveManagement"));
+		setTitle(EAM.text("Title|CMP e-Adaptive Management"));
 		setSize(new Dimension(700, 500));
 		getContentPane().add(new JTextArea(EAM.text("This is great sample\nmulti-line text")));
 		setJMenuBar(new MainMenuBar(this));
