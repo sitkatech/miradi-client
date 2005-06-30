@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.Translation;
 
 public class TestTranslations extends EAMTestCase
 {
@@ -19,18 +20,21 @@ public class TestTranslations extends EAMTestCase
 
 	public void testExtractPartToDisplay()
 	{
-		assertEquals("whole thing", EAM.extractPartToDisplay("whole thing"));
-		assertEquals("part", EAM.extractPartToDisplay("only|return|last|part"));
+		assertEquals("whole thing", Translation.extractPartToDisplay("whole thing"));
+		assertEquals("part", Translation.extractPartToDisplay("only|return|last|part"));
 	}
 	
 	public void testDefaultLocale()
 	{
-		Locale defaultTranslationLocale = EAM.getTranslationLocale();
+		Locale defaultTranslationLocale = Translation.getTranslationLocale();
 		assertEquals("en", defaultTranslationLocale.getLanguage());
 		assertEquals("US", defaultTranslationLocale.getCountry());
 		
 		String sampleText = "should return unchanged";
 		assertEquals(sampleText, EAM.text(sampleText));
+		
+		String sampleWithBar = "should strip all but|this";
+		assertEquals("this", EAM.text(sampleWithBar));
 	}
 	
 	public void testBadLocale()
@@ -50,7 +54,7 @@ public class TestTranslations extends EAMTestCase
 	{
 		Locale testingLocale = new Locale("test", "LOCALE");
 		EAM.setTranslationLocale(testingLocale);
-		assertEquals(testingLocale, EAM.getTranslationLocale());
+		assertEquals(testingLocale, Translation.getTranslationLocale());
 		
 		EAM.setLogToString();
 		String sampleText = "should indicate non-translated";
