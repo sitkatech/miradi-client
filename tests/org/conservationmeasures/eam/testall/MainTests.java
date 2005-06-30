@@ -30,6 +30,11 @@ public class MainTests extends TestCase
 //		suite.addTest(TestCommon.suite());
 //		suite.addTest(TestClient.suite());
 		
+		suite.addTest(new TestSuite(TestLogging.class));
+		suite.addTest(new TestSuite(TestMainMenu.class));
+		suite.addTest(new TestSuite(TestTranslations.class));
+		
+		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
 
 	    return suite;

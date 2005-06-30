@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -15,26 +17,40 @@ public class EAM
 {
 	public static void main(String[] args)
 	{
-		setTranslationLocale(Locale.getDefault());
-		
 		JFrame mainWindow = new MainWindow();
 		mainWindow.setVisible(true);
+	}
+	
+	public static Locale getTranslationLocale()
+	{
+		return currentTranslationLocale;
 	}
 
 	public static void setTranslationLocale(Locale locale)
 	{
-		currentResourceBundle = ResourceBundle.getBundle("eam", locale);
-		if(!locale.equals(currentResourceBundle.getLocale()))
+		currentTranslationLocale = locale;
+		currentResourceBundle = getResourceBundle(locale);
+		Locale actualLocaleUsed = currentResourceBundle.getLocale();
+		if(!locale.equals(actualLocaleUsed))
 		{
-			logWarning("Requested " + locale + " but fell back to: " + currentResourceBundle.getLocale());
+			logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
 		}
+	}
+
+	private static ResourceBundle getResourceBundle(Locale locale)
+	{
+		return ResourceBundle.getBundle("EAM", locale);
 	}
 
 	public static String text(String key)
 	{
+		if(currentTranslationLocale.equals(Locale.US))
+			return key;
+		
+		ResourceBundle resources = getResourceBundle(currentTranslationLocale);
 		try
 		{
-			String result = currentResourceBundle.getString(key);
+			String result = resources.getString(key);
 			if(result.equals(key))
 				result = extractPartToDisplay(result);
 			
@@ -48,7 +64,7 @@ public class EAM
 		}
 	}
 
-	private static String extractPartToDisplay(String result)
+	public static String extractPartToDisplay(String result)
 	{
 		int lastBar = result.lastIndexOf('|');
 		if(lastBar >= 0)
@@ -57,10 +73,37 @@ public class EAM
 		return result;
 	}
 	
-	public static void logWarning(String text)
+	private static void setLogDestination(PrintStream dest)
 	{
-		System.out.println("WARNING: " + text);
+		logDestination = dest;
 	}
 	
+	public static void setLogToString()
+	{
+		logContents = new ByteArrayOutputStream();
+		setLogDestination(new PrintStream(logContents));
+	}
+	
+	public static void setLogToConsole()
+	{
+		setLogDestination(System.out);
+	}
+	
+	public static String getLoggedString()
+	{
+		return logContents.toString();
+	}
+	
+	public static void logWarning(String text)
+	{
+		logDestination.println("WARNING: " + text);
+	}
+	
+	public static String NEWLINE = System.getProperty("line.separator");
+
+	private static Locale currentTranslationLocale = new Locale("en", "US");
 	private static ResourceBundle currentResourceBundle;
+
+	private static PrintStream logDestination = System.out;
+	private static ByteArrayOutputStream logContents;
 }
