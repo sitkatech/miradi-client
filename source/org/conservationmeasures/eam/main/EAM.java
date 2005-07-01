@@ -8,13 +8,21 @@ package org.conservationmeasures.eam.main;
 import java.util.Locale;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class EAM
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
+		setBestLookAndFeel();
+
 		JFrame mainWindow = new MainWindow();
 		mainWindow.setVisible(true);
+	}
+	
+	static void setBestLookAndFeel() throws Exception
+	{
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
 	
 	///////////////////////////////////////////////////////////////////
