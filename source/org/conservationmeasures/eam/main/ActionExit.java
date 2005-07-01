@@ -14,13 +14,13 @@ public class ActionExit extends MainWindow.Action
 		super(mainWindow, getLabel());
 	}
 
-	public void actionPerformed(ActionEvent event)
-	{
-		getMainWindow().exitNormally();
-	}
-
 	private static String getLabel()
 	{
 		return EAM.text("Action|Exit");
+	}
+
+	public void actionPerformed(ActionEvent event)
+	{
+		getMainWindow().exitNormally();
 	}
 }

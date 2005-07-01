@@ -5,12 +5,15 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import org.martus.swing.UiNotifyDlg;
 
 public class MainWindow extends JFrame
 {
@@ -20,8 +23,15 @@ public class MainWindow extends JFrame
 		setSize(new Dimension(700, 500));
 		getContentPane().add(new JTextArea(EAM.text("This is great sample\nmulti-line text")));
 		setJMenuBar(new MainMenuBar(this));
+		getContentPane().add(new MainToolBar(), BorderLayout.BEFORE_FIRST_LINE);
+		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 	}
-
+	
+	public void okDialog(String title, String[] body)
+	{
+		new UiNotifyDlg(this, title, body, new String[] {EAM.text("Button|OK")});
+	}
+	
 	public void exitNormally()
 	{
 		System.exit(0);
@@ -40,6 +50,6 @@ public class MainWindow extends JFrame
 			return mainWindow;
 		}
 		
-		MainWindow mainWindow;
+		private MainWindow mainWindow;
 	}
 }

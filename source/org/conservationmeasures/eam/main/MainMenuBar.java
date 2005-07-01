@@ -16,13 +16,20 @@ public class MainMenuBar extends JMenuBar
 	public MainMenuBar(MainWindow mainWindow) throws HeadlessException
 	{
 		add(createFileMenu(mainWindow));
+		add(createHelpMenu(mainWindow));
 	}
 
 	private JMenu createFileMenu(MainWindow mainWindow)
 	{
-		JMenu fileMenu = new JMenu(EAM.text("MenuBar|File"));
-		fileMenu.add(new JMenuItem(new ActionExit(mainWindow)));
-		return fileMenu;
+		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
+		menu.add(new JMenuItem(new ActionExit(mainWindow)));
+		return menu;
 	}
 
+	private JMenu createHelpMenu(MainWindow mainWindow)
+	{
+		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
+		menu.add(new JMenuItem(new ActionAbout(mainWindow)));
+		return menu;
+	}
 }
