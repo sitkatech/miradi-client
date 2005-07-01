@@ -11,7 +11,6 @@ import java.awt.HeadlessException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
 
 import org.martus.swing.UiNotifyDlg;
 
@@ -21,10 +20,11 @@ public class MainWindow extends JFrame
 	{
 		setTitle(EAM.text("Title|CMP e-Adaptive Management"));
 		setSize(new Dimension(700, 500));
-		getContentPane().add(new JTextArea(EAM.text("This is great sample\nmulti-line text")));
 		setJMenuBar(new MainMenuBar(this));
 		getContentPane().add(new MainToolBar(), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
+
+		getContentPane().add(new DiagramComponent());
 	}
 	
 	public void okDialog(String title, String[] body)
