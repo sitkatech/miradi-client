@@ -24,7 +24,7 @@ public class MainWindow extends JFrame
 		getContentPane().add(new MainToolBar(), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
-		getContentPane().add(new DiagramComponent());
+		getContentPane().add(new DiagramComponent(this));
 	}
 	
 	public void okDialog(String title, String[] body)

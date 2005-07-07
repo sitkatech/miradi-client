@@ -3,9 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
+
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionExit extends MainWindow.Action
 {

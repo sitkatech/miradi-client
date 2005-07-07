@@ -3,9 +3,13 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
+
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.VersionConstants;
 
 public class ActionAbout extends MainWindow.Action
 {

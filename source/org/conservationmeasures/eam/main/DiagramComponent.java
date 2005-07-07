@@ -12,9 +12,15 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
 import org.martus.swing.UiMenu;
@@ -22,9 +28,10 @@ import org.martus.swing.UiPopupMenu;
 
 public class DiagramComponent extends JGraph
 {
-	public DiagramComponent()
+	public DiagramComponent(MainWindow mainWindowToUse)
 	{
 		super(new DefaultGraphModel());
+		mainWindow = mainWindowToUse;
 		installKeyBindings();
 		addMouseListener(new MouseHandler(this));
 	}
@@ -48,11 +55,12 @@ public class DiagramComponent extends JGraph
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu());
 		menu.addSeparator();
-		menu.add(EAM.text("Action|Cut"));
-		menu.add(EAM.text("Action|Copy"));
-		menu.add(EAM.text("Action|Delete"));
-		menu.add(EAM.text("Action|Paste"));
-		menu.add(EAM.text("Action|Select All"));
+		menu.add(new JMenuItem(new ActionCut(mainWindow)));
+		menu.add(new JMenuItem(new ActionCopy(mainWindow)));
+		menu.add(new JMenuItem(new ActionPaste(mainWindow)));
+		menu.addSeparator();
+		menu.add(new JMenuItem(new ActionDelete(mainWindow)));
+		menu.add(new JMenuItem(new ActionSelectAll(mainWindow)));
 		return menu;
 	}
 	
@@ -81,6 +89,7 @@ public class DiagramComponent extends JGraph
 
 	static final int KEY_MODIFIER_NONE = 0;
 
+	public MainWindow mainWindow;
 }
 
 class MouseHandler extends MouseAdapter
