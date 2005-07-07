@@ -27,6 +27,6 @@ public class TestMainMenu extends EAMTestCase
 		JMenu fileMenu = menuBar.getMenu(0);
 		JMenuItem exitItem = fileMenu.getItem(0);
 		Action exitAction = exitItem.getAction();
-		assertEquals("Exit", exitAction.getValue(Action.NAME));
+		assertEquals("New Project", exitAction.getValue(Action.NAME));
 	}
 }
