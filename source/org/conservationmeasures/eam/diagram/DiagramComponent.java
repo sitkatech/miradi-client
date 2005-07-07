@@ -21,23 +21,21 @@ import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MouseContextMenuAdapter;
 import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultGraphModel;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
 	public DiagramComponent(MainWindow mainWindowToUse)
 	{
-		super(new DefaultGraphModel());
+		super(new EAMGraphModel());
 		mainWindow = mainWindowToUse;
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());		
 		installKeyBindings();
 		addMouseListener(new MouseContextMenuAdapter(this));
 		
-		Point2D snappedPoint = snap(new Point(500, 250));
+		Point rawPoint = new Point(500, 250);
 		String text = EAM.text("[Edit this target]");
-		Cell defaultThreat = createThreatCell(snappedPoint, text);
-		insertCell(defaultThreat);
+		createThreatCell(rawPoint, text);
 	}
 
 	public MainWindow getMainWindow()
@@ -56,9 +54,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 
-	private Cell createThreatCell(Point2D snappedPoint, String text)
+	private void createThreatCell(Point rawPoint, String text)
 	{
-		return new Cell(new CellTypeThreat(), snappedPoint, scale, text, getFont());
+		Point2D snappedPoint = snap(rawPoint);
+		Cell cell = new Cell(new CellTypeThreat(), snappedPoint, scale, text, getFont());
+		insertCell(cell);
 	}
 	
 	private void insertCell(Cell cellToInsert)
