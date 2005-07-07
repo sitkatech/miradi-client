@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
@@ -14,7 +13,6 @@ import java.awt.geom.Point2D;
 import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
-import org.conservationmeasures.eam.diagram.cells.CellType;
 import org.conservationmeasures.eam.diagram.cells.CellTypeThreat;
 import org.conservationmeasures.eam.diagram.cells.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
@@ -60,15 +58,13 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	private Cell createThreatCell(Point2D snappedPoint, String text)
 	{
-		CellType type = new CellTypeThreat();
-		Font baseFont = getFont();
-		return new Cell(type, snappedPoint, scale, text, baseFont);
+		return new Cell(new CellTypeThreat(), snappedPoint, scale, text, getFont());
 	}
 	
-	public void insertCell(Cell cellToInsert)
+	private void insertCell(Cell cellToInsert)
 	{
-		Object[] arg = new Object[]{cellToInsert.getCell()};
-		getModel().insert(arg, cellToInsert.getNestedAttributeMap(), null, null, null);
+		Object[] cells = new Object[] {cellToInsert.getCell()};
+		getModel().insert(cells, cellToInsert.getNestedAttributeMap(), null, null, null);
 	}
 
 	MainWindow mainWindow;
