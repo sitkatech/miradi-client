@@ -25,7 +25,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
 	public DiagramComponent(MainWindow mainWindowToUse)
 	{
-		super(new EAMGraphModel());
+		super(new DiagramModel());
 		mainWindow = mainWindowToUse;
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());		
@@ -45,6 +45,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return mainWindow;
 	}
 	
+	public DiagramModel getDiagramModel()
+	{
+		return (DiagramModel)getModel();
+	}
+	
 	void installKeyBindings()
 	{
 		Action helpAction = new ActionContextualHelp(mainWindow);
@@ -60,15 +65,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Point2D snappedPoint = snap(rawPoint);
 		Node node = new Node(new NodeTypeThreat(), snappedPoint, scale, text, getFont());
-		insertNode(node);
+		getDiagramModel().insertNode(node);
 	}
 	
-	private void insertNode(Node nodeToInsert)
-	{
-		Object[] nodes = new Object[] {nodeToInsert};
-		getModel().insert(nodes, nodeToInsert.getNestedAttributeMap(), null, null, null);
-	}
-
 	MainWindow mainWindow;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 }
