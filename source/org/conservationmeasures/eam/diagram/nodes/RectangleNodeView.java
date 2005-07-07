@@ -3,15 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphCellEditor;
 
 
-public class RectangleCellView extends MultilineCellView
+public class RectangleNodeView extends MultilineNodeView
 {
-	public RectangleCellView(Object cell)
+	public RectangleNodeView(Object cell)
 	{
 		super(cell);
 	}

@@ -10,32 +10,32 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.cells.CellType;
-import org.conservationmeasures.eam.diagram.cells.CellTypeThreat;
+import org.conservationmeasures.eam.diagram.nodes.NodeType;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
-public class TestCell extends EAMTestCase
+public class TestNode extends EAMTestCase
 {
-	public TestCell(String name)
+	public TestNode(String name)
 	{
 		super(name);
 	}
 	
 	public void setUp()
 	{
-		threatType = new CellTypeThreat();
+		threatType = new NodeTypeThreat();
 		Point location = new Point(123, 456);
 		Font baseFont = new Font("serif", 10, 5);
-		cell = new Cell(threatType, location, 2.0, sampleText, baseFont);
-		attributeMap = cell.getMap();
+		node = new Node(threatType, location, 2.0, sampleText, baseFont);
+		attributeMap = node.getMap();
 		super.setUp();
 	}
 	
 	public void testText() throws Exception
 	{
-		assertTrue("Isn't a threat?", cell.getCell().isThreat());
-		assertEquals(Cell.HTML_BEFORE_TEXT + sanitizedText + Cell.HTML_AFTER_TEXT, GraphConstants.getValue(attributeMap));
+		assertTrue("Isn't a threat?", node.isThreat());
+		assertEquals(Node.HTML_BEFORE_TEXT + sanitizedText + Node.HTML_AFTER_TEXT, GraphConstants.getValue(attributeMap));
 	}
 	
 	public void testColors()
@@ -54,15 +54,15 @@ public class TestCell extends EAMTestCase
 	
 	public void testFont()
 	{
-		Font cellFont = GraphConstants.getFont(attributeMap);
-		assertTrue("not bold?", cellFont.isBold());
+		Font nodeFont = GraphConstants.getFont(attributeMap);
+		assertTrue("not bold?", nodeFont.isBold());
 	}
 
 	static final double TOLERANCE = 0.01;
 	static final String sampleText = "<rest&relaxation>";
 	static final String sanitizedText = "&lt;rest&amp;relaxation&gt;";
 	
-	CellType threatType;
-	Cell cell;
+	NodeType threatType;
+	Node node;
 	Map attributeMap;
 }

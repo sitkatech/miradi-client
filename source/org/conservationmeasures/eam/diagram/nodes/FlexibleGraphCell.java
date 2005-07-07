@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
@@ -11,9 +11,9 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
 
 
-public class FlexibleCell extends DefaultGraphCell
+public class FlexibleGraphCell extends DefaultGraphCell
 {
-	public FlexibleCell(CellType cellType)
+	public FlexibleGraphCell(NodeType cellType)
 	{
 		type = cellType;
 		add(new DefaultPort());
@@ -49,6 +49,6 @@ public class FlexibleCell extends DefaultGraphCell
 		return threatColor;
 	}
 
-	CellType type;
+	NodeType type;
 	Color threatColor;
 }

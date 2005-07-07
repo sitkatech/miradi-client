@@ -13,8 +13,8 @@ import java.awt.geom.Point2D;
 import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
-import org.conservationmeasures.eam.diagram.cells.CellTypeThreat;
-import org.conservationmeasures.eam.diagram.cells.CellViewFactory;
+import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -35,7 +35,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		Point rawPoint = new Point(500, 250);
 		String text = EAM.text("[Edit this target]");
-		createThreatCell(rawPoint, text);
+		createThreatNode(rawPoint, text);
 	}
 
 	public MainWindow getMainWindow()
@@ -54,17 +54,17 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 
-	private void createThreatCell(Point rawPoint, String text)
+	private void createThreatNode(Point rawPoint, String text)
 	{
 		Point2D snappedPoint = snap(rawPoint);
-		Cell cell = new Cell(new CellTypeThreat(), snappedPoint, scale, text, getFont());
-		insertCell(cell);
+		Node node = new Node(new NodeTypeThreat(), snappedPoint, scale, text, getFont());
+		insertNode(node);
 	}
 	
-	private void insertCell(Cell cellToInsert)
+	private void insertNode(Node nodeToInsert)
 	{
-		Object[] cells = new Object[] {cellToInsert.getCell()};
-		getModel().insert(cells, cellToInsert.getNestedAttributeMap(), null, null, null);
+		Object[] nodes = new Object[] {nodeToInsert};
+		getModel().insert(nodes, nodeToInsert.getNestedAttributeMap(), null, null, null);
 	}
 
 	MainWindow mainWindow;

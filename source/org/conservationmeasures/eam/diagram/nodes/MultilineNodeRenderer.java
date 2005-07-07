@@ -34,7 +34,7 @@
  */
 
 
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -59,9 +59,9 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 
 
-public abstract class MultilineCellRenderer extends JComponent implements CellViewRenderer
+public abstract class MultilineNodeRenderer extends JComponent implements CellViewRenderer
 {
-	public MultilineCellRenderer()
+	public MultilineNodeRenderer()
 	{
 		label = new JLabel();
 	}

@@ -3,14 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 
-public class RectangleRenderer extends MultilineCellRenderer
+public class RectangleRenderer extends MultilineNodeRenderer
 {
 	Dimension getInsetDimension()
 	{

@@ -3,14 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import org.jgraph.graph.VertexView;
 
 
-public class MultilineCellView extends VertexView
+public class MultilineNodeView extends VertexView
 {
-    public MultilineCellView(Object cell) 
+    public MultilineNodeView(Object cell) 
     {
         super(cell);
     }

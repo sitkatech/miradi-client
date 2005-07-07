@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.VertexView;
@@ -44,6 +44,6 @@ public class CellViewFactory extends DefaultCellViewFactory
 
 		//return super.createVertexView(v);
 		//return new MultilineCellView(v);
-		return new RectangleCellView(v);
+		return new RectangleNodeView(v);
 	}
 }

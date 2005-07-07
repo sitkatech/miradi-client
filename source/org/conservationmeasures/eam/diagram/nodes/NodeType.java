@@ -3,12 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.cells;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
 
-public abstract class CellType
+public abstract class NodeType
 {
 	public abstract Color getColor();
 

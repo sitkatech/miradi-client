@@ -15,20 +15,20 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.cells.CellType;
-import org.conservationmeasures.eam.diagram.cells.FlexibleCell;
+import org.conservationmeasures.eam.diagram.nodes.FlexibleGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.NodeType;
 import org.jgraph.graph.GraphConstants;
 import org.martus.util.xml.XmlUtilities;
 
-public class Cell
+public class Node extends FlexibleGraphCell
 {
-	public Cell(CellType cellType, Point2D snappedLocation, double scale, String text, Font baseFont)
+	public Node(NodeType nodeType, Point2D snappedLocation, double scale, String text, Font baseFont)
 	{
-		cell = new FlexibleCell(cellType);
+		super(nodeType);
 		map = new HashMap();
 		
 		setBounds(snappedLocation, scale);
-		setColors(cellType);
+		setColors(nodeType);
 		setFont(baseFont);
 		setLabel(text);
 	}
@@ -45,7 +45,7 @@ public class Cell
 		GraphConstants.setFont(map, font);
 	}
 
-	private void setColors(CellType cellType)
+	private void setColors(NodeType cellType)
 	{
 		Color color = cellType.getColor();
 		GraphConstants.setBorderColor(map, Color.black);
@@ -66,7 +66,7 @@ public class Cell
 	Hashtable getNestedAttributeMap()
 	{
 		Hashtable nest = new Hashtable();
-		nest.put(getCell(), getMap());
+		nest.put(this, getMap());
 		return nest;
 	}
 	
@@ -75,14 +75,8 @@ public class Cell
 		return map;
 	}
 	
-	public FlexibleCell getCell()
-	{
-		return cell;
-	}
-	
 	public static final String HTML_AFTER_TEXT = "</font></div></html>";
 	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
 
-	FlexibleCell cell;
 	HashMap map;
 }
