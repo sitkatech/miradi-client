@@ -25,7 +25,7 @@ public class MainWindow extends JFrame
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(new MainMenuBar(this));
-		getContentPane().add(new MainToolBar(), BorderLayout.BEFORE_FIRST_LINE);
+		getContentPane().add(new MainToolBar(this), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
 		getContentPane().add(new DiagramComponent(this));

@@ -35,6 +35,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.add(new JMenuItem(new ActionNewProject(mainWindow)));
 		menu.add(new JMenuItem(new ActionOpenProject(mainWindow)));
+		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionExit(mainWindow)));
 		return menu;
 	}

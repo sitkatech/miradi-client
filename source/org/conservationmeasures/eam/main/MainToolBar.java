@@ -11,14 +11,16 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.actions.ActionOpenProject;
+
 public class MainToolBar extends JToolBar
 {
-	public MainToolBar()
+	public MainToolBar(MainWindow mainWindow)
 	{
 		setFloatable(false);
-		add(new ActionStub("icons/new.gif"));
-		add(new ActionStub("icons/save.gif"));
-		add(new ActionStub("icons/saveas.gif"));
+		add(new ActionNewProject(mainWindow));
+		add(new ActionOpenProject(mainWindow));
 		add(new ActionStub("icons/print.gif"));
 		add(new Separator());
 		add(new ActionStub("icons/cut.gif"));

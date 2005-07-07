@@ -6,12 +6,18 @@
 package org.conservationmeasures.eam.main;
 
 import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
 
 public abstract class MainWindowAction extends AbstractAction
 {
 	public MainWindowAction(MainWindow mainWindowToUse, String label)
 	{
-		super(label);
+		this(mainWindowToUse, label, "icons/blankicon.png");
+	}
+	
+	public MainWindowAction(MainWindow mainWindowToUse, String label, String icon)
+	{
+		super(label, new ImageIcon(icon));
 		mainWindow = mainWindowToUse;
 	}
 	

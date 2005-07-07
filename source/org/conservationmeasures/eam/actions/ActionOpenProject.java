@@ -18,7 +18,7 @@ public class ActionOpenProject extends MainWindowAction
 {
 	public ActionOpenProject(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/open.gif");
 	}
 
 	private static String getLabel()

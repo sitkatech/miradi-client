@@ -18,7 +18,7 @@ public class ActionNewProject extends MainWindowAction
 {
 	public ActionNewProject(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/new.gif");
 	}
 
 	private static String getLabel()
