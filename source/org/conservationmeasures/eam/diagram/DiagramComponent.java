@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MouseContextMenuAdapter;
 import org.jgraph.JGraph;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
@@ -31,7 +30,10 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());		
 		installKeyBindings();
-		addMouseListener(new MouseContextMenuAdapter(this));
+		MouseHandler mouseHandler = new MouseHandler(this);
+		addMouseListener(mouseHandler);
+		addMouseMotionListener(mouseHandler);
+		addGraphSelectionListener(mouseHandler);
 		
 		Point rawPoint = new Point(500, 250);
 		String text = EAM.text("[Edit this target]");
