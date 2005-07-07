@@ -13,6 +13,8 @@ import java.awt.geom.Point2D;
 import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandDiagramSelectCells;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
@@ -50,10 +52,28 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramModel)getModel();
 	}
 	
-	void installKeyBindings()
+	public void selectionHasChanged()
 	{
-		Action helpAction = new ActionContextualHelp(mainWindow);
-		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
+		mainWindow.recordCommand(new CommandDiagramSelectCells(getSelectedNodeIds()));
+	}
+	
+	public void mouseWasReleased(int deltaX, int deltaY)
+	{
+		mainWindow.recordCommand(new CommandDiagramMove(deltaX, deltaY));
+	}
+	
+	public int[] getSelectedNodeIds()
+	{
+		Object[] selectedNodes = getSelectionCells();
+		if(selectedNodes == null)
+			selectedNodes = new Object[0];
+
+		int[] selectedIds = new int[selectedNodes.length];
+		for(int i=0; i < selectedNodes.length; ++i)
+		{
+			selectedIds[i] = getDiagramModel().getNodeId((Node)selectedNodes[i]);
+		}
+		return selectedIds;
 	}
 	
 	public void showContextMenu(MouseEvent e)
@@ -61,6 +81,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 
+	private void installKeyBindings()
+	{
+		Action helpAction = new ActionContextualHelp(mainWindow);
+		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
+	}
+	
 	private void createThreatNode(Point rawPoint, String text)
 	{
 		Point2D snappedPoint = snap(rawPoint);
