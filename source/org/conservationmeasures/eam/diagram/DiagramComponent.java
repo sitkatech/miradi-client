@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.AbstractAction;
@@ -21,21 +20,23 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.MouseContextMenuAdapter;
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 
-public class DiagramComponent extends JGraph
+public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
 	public DiagramComponent(MainWindow mainWindowToUse)
 	{
 		super(new DefaultGraphModel());
 		mainWindow = mainWindowToUse;
 		installKeyBindings();
-		addMouseListener(new MouseHandler(this));
+		addMouseListener(new MouseContextMenuAdapter(this));
 	}
 	
 	void installKeyBindings()
@@ -74,9 +75,16 @@ public class DiagramComponent extends JGraph
 		insertMenu.add(EAM.text("Action|Insert|Action"));
 		return insertMenu;
 	}
+
+	public void showContextMenu(MouseEvent e)
+	{
+		JPopupMenu menu = getPopupMenu();
+		menu.show(this, e.getX(), e.getY());
+	}
+
 	
 	
-	class ActionHelp extends AbstractAction
+	public static class ActionHelp extends AbstractAction
 	{
 		public ActionHelp()
 		{
@@ -94,41 +102,3 @@ public class DiagramComponent extends JGraph
 	public MainWindow mainWindow;
 }
 
-class MouseHandler extends MouseAdapter
-{
-	MouseHandler(DiagramComponent owner)
-	{
-		diagramComponent = owner;
-	}
-	
-	public void mousePressed(MouseEvent e)
-	{
-		if(e.isPopupTrigger())
-			handleRightClick(e);
-	}
-
-// The following two methods are present in Martus, 
-// but I can't see why they would be needed. kbs.
-//	public void mouseReleased(MouseEvent e)
-//	{
-//		if(e.isPopupTrigger())
-//			handleRightClick(e);
-//	}
-//
-//	public void mouseClicked(MouseEvent e)
-//	{
-//		if(e.isPopupTrigger())
-//			handleRightClick(e);
-//	}
-
-	private void handleRightClick(MouseEvent e)
-	{
-		if(!e.isPopupTrigger())
-			return;
-		JPopupMenu menu = diagramComponent.getPopupMenu();
-		menu.show(diagramComponent, e.getX(), e.getY());
-	}
-
-	DiagramComponent diagramComponent;
-
-}
