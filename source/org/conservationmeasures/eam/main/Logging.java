@@ -36,6 +36,11 @@ public class Logging
 		logDestination.println("WARNING: " + text);
 	}
 	
+	public static void logDebug(String text)
+	{
+		logDestination.println("DEBUG: " + text);
+	}
+	
 	private static PrintStream logDestination = System.out;
 	private static ByteArrayOutputStream logContents;
 }

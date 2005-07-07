@@ -47,6 +47,11 @@ public class EAM
 		Logging.logWarning(text);
 	}
 	
+	public static void logDebug(String text)
+	{
+		Logging.logDebug(text);
+	}
+	
 
 	///////////////////////////////////////////////////////////////////
 	// Translations
