@@ -30,6 +30,7 @@ public class ActionNewProject extends MainWindowAction
 	public void actionPerformed(ActionEvent arg0)
 	{
 		JFileChooser dlg = new JFileChooser();
+		dlg.setDialogTitle(getLabel());
 		if(dlg.showSaveDialog(getMainWindow()) != JFileChooser.APPROVE_OPTION)
 			return;
 		
