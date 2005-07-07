@@ -35,7 +35,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addMouseListener(new MouseContextMenuAdapter(this));
 		
 		Point2D snappedPoint = snap(new Point(500, 250));
-		String text = EAM.text("[Edit this threat]");
+		String text = EAM.text("[Edit this target]");
 		Cell defaultThreat = createThreatCell(snappedPoint, text);
 		insertCell(defaultThreat);
 	}
