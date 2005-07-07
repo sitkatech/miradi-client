@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.testall;
 
+import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.diagram.TestNode;
 import org.martus.util.xml.TestSimpleXmlParser;
 
@@ -37,6 +38,9 @@ public class MainTests extends TestCase
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestNode.class));
+		
+		// commands package
+		suite.addTest(new TestSuite(TestCommands.class));
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
