@@ -37,12 +37,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, GraphSe
 	public void mouseReleased(MouseEvent event)
 	{
 		EAM.logDebug("MouseHandler.mouseReleased");
-		if(selectedNodes == null)
-		{
-			EAM.logDebug("No nodes");
-			return;
-		}
-
 		Point dragEndedAt = event.getPoint();
 		int deltaX = dragEndedAt.x - dragStartedAt.x; 
 		int deltaY = dragEndedAt.y - dragStartedAt.y;
@@ -51,7 +45,6 @@ public class MouseHandler implements MouseListener, MouseMotionListener, GraphSe
 
 	public void mouseClicked(MouseEvent event)
 	{
-		EAM.logDebug("MouseHandler.mouseClicked");
 	}
 
 	public void mouseEntered(MouseEvent event)
@@ -72,11 +65,26 @@ public class MouseHandler implements MouseListener, MouseMotionListener, GraphSe
 
 	public void valueChanged(GraphSelectionEvent event)
 	{
-		EAM.logDebug("MouseHandler.valueChanged (selection changed)");
-		selectedNodes = diagram.getSelectionCells();
+		selectionChanged(event);
+	}
+	
+	public void selectionChanged(GraphSelectionEvent event)
+	{
+		EAM.logDebug("MouseHandler.selectionChanged");
+		Object[] selectedNodes = diagram.getSelectionCells();
+		if(selectedNodes == null)
+			selectedNodes = new Object[0];
+
+		String selection = "";
+		int[] selectedIds = new int[selectedNodes.length];
+		for(int i=0; i < selectedNodes.length; ++i)
+		{
+			selectedIds[i] = diagram.getDiagramModel().getNodeId((Node)selectedNodes[i]);
+			selection += selectedIds[i] + ",";
+		}
+		EAM.logDebug("Selected: " + selection);
 	}
 	
 	DiagramComponent diagram;
-	Object[] selectedNodes;
 	Point dragStartedAt;
 }

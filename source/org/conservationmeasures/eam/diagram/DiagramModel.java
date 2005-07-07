@@ -19,4 +19,18 @@ public class DiagramModel extends DefaultGraphModel
 		insert(nodes, nodeToInsert.getNestedAttributeMap(), null, null, null);
 	}
 
+	public int getNodeId(Node node)
+	{
+		Object[] allNodes = getAll(this);
+		for(int i = 0; i < allNodes.length; ++i)
+			if(allNodes[i].equals(node))
+				return i;
+		
+		return -1;
+	}
+	
+	public Node getNodeById(int id)
+	{
+		return (Node)getAll(this)[id];
+	}
 }
