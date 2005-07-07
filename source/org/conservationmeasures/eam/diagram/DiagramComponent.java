@@ -5,11 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -18,6 +16,7 @@ import javax.swing.KeyStroke;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
@@ -41,7 +40,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	void installKeyBindings()
 	{
-		Action helpAction = new ActionHelp();
+		Action helpAction = new ActionContextualHelp(mainWindow);
 		bindKey(KeyEvent.VK_F1, KEY_MODIFIER_NONE, helpAction);
 	}
 	
@@ -84,19 +83,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	
 	
-	public static class ActionHelp extends AbstractAction
-	{
-		public ActionHelp()
-		{
-			super("Help");
-		}
-		
-		public void actionPerformed(ActionEvent arg0)
-		{
-			EAM.logWarning("Help action invoked!");
-		}
-	}
-
 	static final int KEY_MODIFIER_NONE = 0;
 
 	public MainWindow mainWindow;
