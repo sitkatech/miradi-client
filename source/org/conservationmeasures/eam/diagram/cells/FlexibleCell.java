@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.jgraph.graph.DefaultGraphCell;
+import org.jgraph.graph.DefaultPort;
 
 
 public class FlexibleCell extends DefaultGraphCell
@@ -15,6 +16,7 @@ public class FlexibleCell extends DefaultGraphCell
 	public FlexibleCell(CellType cellType)
 	{
 		type = cellType;
+		add(new DefaultPort());
 	}
 	
 	public boolean isEllipse()
