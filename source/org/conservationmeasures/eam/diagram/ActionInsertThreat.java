@@ -9,16 +9,16 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class ActionInsertTarget extends DiagramAction
+public class ActionInsertThreat extends DiagramAction
 {
-	public ActionInsertTarget(DiagramComponent diagramComponentToUse)
+	public ActionInsertThreat(DiagramComponent diagramComponentToUse)
 	{
 		super(diagramComponentToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Target");
+		return EAM.text("Action|Insert|Threat");
 	}
 
 	public void actionPerformed(ActionEvent arg0)

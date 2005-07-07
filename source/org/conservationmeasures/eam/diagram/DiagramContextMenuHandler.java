@@ -46,9 +46,8 @@ public class DiagramContextMenuHandler
 	public UiMenu getInsertMenu()
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
-		insertMenu.add(new ActionInsertTarget(diagramComponent));
-		insertMenu.add(EAM.text("Action|Insert|Threat"));
-		insertMenu.add(EAM.text("Action|Insert|Action"));
+		insertMenu.add(new ActionInsertThreat(diagramComponent));
+		insertMenu.add(EAM.text("Action|Insert|Activity"));
 		return insertMenu;
 	}
 
