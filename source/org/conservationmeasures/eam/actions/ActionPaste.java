@@ -9,9 +9,9 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindow.Action;
+import org.conservationmeasures.eam.main.MainWindowAction;
 
-public class ActionPaste extends Action
+public class ActionPaste extends MainWindowAction
 {
 	public ActionPaste(MainWindow mainWindowToUse)
 	{

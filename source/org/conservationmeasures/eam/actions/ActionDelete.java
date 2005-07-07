@@ -9,9 +9,9 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindow.Action;
+import org.conservationmeasures.eam.main.MainWindowAction;
 
-public class ActionDelete extends Action
+public class ActionDelete extends MainWindowAction
 {
 	public ActionDelete(MainWindow mainWindowToUse)
 	{

@@ -3,24 +3,22 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.actions;
+package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindowAction;
 
-public class ActionCopy extends MainWindowAction
+public class ActionInsertTarget extends DiagramAction
 {
-	public ActionCopy(MainWindow mainWindowToUse)
+	public ActionInsertTarget(DiagramComponent diagramComponentToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(diagramComponentToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Copy");
+		return EAM.text("Action|Insert|Target");
 	}
 
 	public void actionPerformed(ActionEvent arg0)

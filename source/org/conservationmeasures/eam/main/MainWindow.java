@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 
-import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -36,21 +35,5 @@ public class MainWindow extends JFrame
 	public void exitNormally()
 	{
 		System.exit(0);
-	}
-
-	public static abstract class Action extends AbstractAction
-	{
-		public Action(MainWindow mainWindowToUse, String label)
-		{
-			super(label);
-			mainWindow = mainWindowToUse;
-		}
-		
-		public MainWindow getMainWindow()
-		{
-			return mainWindow;
-		}
-		
-		private MainWindow mainWindow;
 	}
 }
