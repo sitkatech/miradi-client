@@ -11,6 +11,11 @@ import java.awt.Color;
 
 public class CellTypeThreat extends CellType
 {
+	public boolean isThreat()
+	{
+		return true;
+	}
+
 	public Color getColor()
 	{
 		return new Color(0, 255, 0);

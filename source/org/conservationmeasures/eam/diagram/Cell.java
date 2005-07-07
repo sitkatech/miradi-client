@@ -17,8 +17,8 @@ import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.cells.CellType;
 import org.conservationmeasures.eam.diagram.cells.FlexibleCell;
-import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
+import org.martus.util.xml.XmlUtilities;
 
 public class Cell
 {
@@ -35,7 +35,7 @@ public class Cell
 
 	private void setLabel(String text)
 	{
-		String formattedLabel = "<html><div align='center'><font size='4'>" + text + "</font></div></html>";
+		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
 		GraphConstants.setValue(map, formattedLabel);
 	}
 
@@ -75,11 +75,14 @@ public class Cell
 		return map;
 	}
 	
-	public DefaultGraphCell getCell()
+	public FlexibleCell getCell()
 	{
 		return cell;
 	}
 	
-	DefaultGraphCell cell;
+	public static final String HTML_AFTER_TEXT = "</font></div></html>";
+	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
+
+	FlexibleCell cell;
 	HashMap map;
 }

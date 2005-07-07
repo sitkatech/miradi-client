@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.testall;
 
+import org.conservationmeasures.eam.diagram.TestCell;
 import org.martus.util.xml.TestSimpleXmlParser;
 
 import junit.framework.Test;
@@ -33,6 +34,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLogging.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
 		suite.addTest(new TestSuite(TestTranslations.class));
+		
+		// diagram package
+		suite.addTest(new TestSuite(TestCell.class));
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
