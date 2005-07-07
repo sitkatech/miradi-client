@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
 import org.martus.swing.UiMenu;

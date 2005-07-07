@@ -12,6 +12,7 @@ import java.awt.HeadlessException;
 import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.martus.swing.UiNotifyDlg;
 
 public class MainWindow extends JFrame
