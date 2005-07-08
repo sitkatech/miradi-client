@@ -42,6 +42,16 @@ public class EAM
 		return Logging.getLoggedString();
 	}
 	
+	public static void logException(Exception e)
+	{
+		Logging.logException(e);
+	}
+	
+	public static void logError(String text)
+	{
+		Logging.logError(text);
+	}
+	
 	public static void logWarning(String text)
 	{
 		Logging.logWarning(text);

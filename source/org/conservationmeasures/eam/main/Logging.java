@@ -31,9 +31,21 @@ public class Logging
 		return logContents.toString();
 	}
 	
+	public static void logException(Exception e)
+	{
+		logDestination.println("ERROR: ");
+		// TODO: actually print the stack trace to logDestination
+		e.printStackTrace();
+	}
+	
 	public static void logWarning(String text)
 	{
 		logDestination.println("WARNING: " + text);
+	}
+	
+	public static void logError(String text)
+	{
+		logDestination.println("ERROR: " + text);
 	}
 	
 	public static void logDebug(String text)

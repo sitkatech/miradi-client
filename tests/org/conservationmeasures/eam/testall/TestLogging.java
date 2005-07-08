@@ -19,11 +19,16 @@ public class TestLogging extends EAMTestCase
 		String someText= "log this!";
 
 		EAM.setLogToString();
+		EAM.logError(someText);
+		assertEquals("ERROR: " + someText + EAM.NEWLINE, EAM.getLoggedString());
+
+		EAM.setLogToString();
 		EAM.logWarning(someText);
 		assertEquals("WARNING: " + someText + EAM.NEWLINE, EAM.getLoggedString());
 
 		EAM.setLogToString();
 		EAM.logDebug(someText);
 		assertEquals("DEBUG: " + someText + EAM.NEWLINE, EAM.getLoggedString());
+
 	}
 }
