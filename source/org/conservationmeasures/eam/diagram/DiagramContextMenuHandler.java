@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JMenuItem;
@@ -27,12 +28,12 @@ public class DiagramContextMenuHandler
 		diagramComponent = diagramComponentToUse;
 	}
 	
-	public UiPopupMenu getPopupMenu()
+	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
 	{
 		MainWindow mainWindow = diagramComponent.getMainWindow();
 		
 		UiPopupMenu menu = new UiPopupMenu();
-		menu.add(getInsertMenu());
+		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionCut(mainWindow)));
 		menu.add(new JMenuItem(new ActionCopy(mainWindow)));
@@ -43,17 +44,17 @@ public class DiagramContextMenuHandler
 		return menu;
 	}
 	
-	public UiMenu getInsertMenu()
+	public UiMenu getInsertMenu(Point menuInvokedAt)
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
-		insertMenu.add(new ActionInsertThreat(diagramComponent));
+		insertMenu.add(new ActionInsertThreat(diagramComponent, menuInvokedAt));
 		insertMenu.add(EAM.text("Action|Insert|Activity"));
 		return insertMenu;
 	}
 
 	public void showContextMenu(MouseEvent e)
 	{
-		JPopupMenu menu = getPopupMenu();
+		JPopupMenu menu = getPopupMenu(e.getPoint());
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 

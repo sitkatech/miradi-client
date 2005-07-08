@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.geom.Point2D;
+import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.jgraph.graph.DefaultGraphModel;
@@ -16,7 +16,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 	}
 
-	public void createThreatNode(Point2D snappedPoint, String text)
+	public void createThreatNode(Point snappedPoint, String text)
 	{
 		Node node = new Node(new NodeTypeThreat(), snappedPoint, text);
 		insertNode(node);

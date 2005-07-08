@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
@@ -16,16 +15,15 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramSelectCells;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
-	public DiagramComponent(MainWindow mainWindowToUse)
+	public DiagramComponent(MainWindow mainWindowToUse, DiagramModel model)
 	{
-		super(new DiagramModel());
+		super(model);
 		mainWindow = mainWindowToUse;
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());		
@@ -34,10 +32,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addMouseListener(mouseHandler);
 		addMouseMotionListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
-		
-		Point rawPoint = new Point(500, 250);
-		String text = EAM.text("[Edit this target]");
-		getDiagramModel().createThreatNode(snap(rawPoint), text);
 	}
 
 	public MainWindow getMainWindow()

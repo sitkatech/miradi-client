@@ -8,11 +8,18 @@ package org.conservationmeasures.eam.main;
 import java.io.File;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 
 public class Project
 {
 	public Project()
 	{
+		diagramModel = new DiagramModel();
+	}
+	
+	public DiagramModel getDiagramModel()
+	{
+		return diagramModel;
 	}
 	
 	public void load(File projectFile)
@@ -32,4 +39,5 @@ public class Project
 	}
 	
 	File file;
+	DiagramModel diagramModel;
 }

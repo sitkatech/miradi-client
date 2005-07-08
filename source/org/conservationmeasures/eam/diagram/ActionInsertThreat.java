@@ -5,15 +5,17 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.main.EAM;
 
 public class ActionInsertThreat extends DiagramAction
 {
-	public ActionInsertThreat(DiagramComponent diagramComponentToUse)
+	public ActionInsertThreat(DiagramComponent diagramComponentToUse, Point location)
 	{
 		super(diagramComponentToUse, getLabel());
+		createThreatAt = location;
 	}
 
 	private static String getLabel()
@@ -21,10 +23,11 @@ public class ActionInsertThreat extends DiagramAction
 		return EAM.text("Action|Insert|Threat");
 	}
 
-	public void actionPerformed(ActionEvent arg0)
+	public void actionPerformed(ActionEvent event)
 	{
-		// TODO Auto-generated method stub
-
+		DiagramModel model = getDiagramComponent().getDiagramModel();
+		model.createThreatNode(createThreatAt, EAM.text("Label|New Threat"));
 	}
 
+	Point createThreatAt;
 }

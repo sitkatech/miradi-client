@@ -28,7 +28,7 @@ public class MainWindow extends JFrame
 		getContentPane().add(new MainToolBar(this), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
-		getContentPane().add(new DiagramComponent(this));
+		getContentPane().add(new DiagramComponent(this, project.getDiagramModel()));
 	}
 	
 	public void loadProject(File projectFile)

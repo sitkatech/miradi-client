@@ -23,20 +23,19 @@ public class MouseHandler implements MouseListener, MouseMotionListener, GraphSe
 	
 	public void mousePressed(MouseEvent event)
 	{
+		mousePressedAt = event.getPoint();
 		if(event.isPopupTrigger())
 		{
 			diagram.showContextMenu(event);
 			return;
 		}
-
-		dragStartedAt = event.getPoint();
 	}
 
 	public void mouseReleased(MouseEvent event)
 	{
-		Point dragEndedAt = event.getPoint();
-		int deltaX = dragEndedAt.x - dragStartedAt.x; 
-		int deltaY = dragEndedAt.y - dragStartedAt.y;
+		Point mouseReleasedAt = event.getPoint();
+		int deltaX = mouseReleasedAt.x - mousePressedAt.x; 
+		int deltaY = mouseReleasedAt.y - mousePressedAt.y;
 		diagram.mouseWasReleased(deltaX, deltaY);
 	}
 
@@ -71,5 +70,5 @@ public class MouseHandler implements MouseListener, MouseMotionListener, GraphSe
 	}
 
 	DiagramComponent diagram;
-	Point dragStartedAt;
+	Point mousePressedAt;
 }
