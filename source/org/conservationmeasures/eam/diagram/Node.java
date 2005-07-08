@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
@@ -22,14 +21,14 @@ import org.martus.util.xml.XmlUtilities;
 
 public class Node extends FlexibleGraphCell
 {
-	public Node(NodeType nodeType, Point2D snappedLocation, double scale, String text, Font baseFont)
+	public Node(NodeType nodeType, Point2D snappedLocation, String text)
 	{
 		super(nodeType);
 		map = new HashMap();
 		
-		setBounds(snappedLocation, scale);
+		setBounds(snappedLocation);
 		setColors(nodeType);
-		setFont(baseFont);
+		setFont();
 		setLabel(text);
 	}
 
@@ -39,10 +38,10 @@ public class Node extends FlexibleGraphCell
 		GraphConstants.setValue(map, formattedLabel);
 	}
 
-	private void setFont(Font originalFont)
+	private void setFont()
 	{
-		Font font = originalFont.deriveFont(Font.BOLD);
-		GraphConstants.setFont(map, font);
+//		Font font = originalFont.deriveFont(Font.BOLD);
+//		GraphConstants.setFont(map, font);
 	}
 
 	private void setColors(NodeType cellType)
@@ -54,10 +53,10 @@ public class Node extends FlexibleGraphCell
 		GraphConstants.setOpaque(map, true);
 	}
 
-	private void setBounds(Point2D snappedLocation, double scale)
+	private void setBounds(Point2D snappedLocation)
 	{
-		double width = 120 * scale;
-		double height = 60 * scale;
+		double width = 120;
+		double height = 60;
 		Dimension size = new Dimension((int)width, (int)height);
 		Point location = new Point((int)snappedLocation.getX(), (int)snappedLocation.getY());
 		GraphConstants.setBounds(map, new Rectangle(location, size));

@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Point2D;
 
 import javax.swing.Action;
 
@@ -16,7 +15,6 @@ import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramSelectCells;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -39,7 +37,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		Point rawPoint = new Point(500, 250);
 		String text = EAM.text("[Edit this target]");
-		createThreatNode(rawPoint, text);
+		getDiagramModel().createThreatNode(snap(rawPoint), text);
 	}
 
 	public MainWindow getMainWindow()
@@ -85,13 +83,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Action helpAction = new ActionContextualHelp(mainWindow);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-	}
-	
-	private void createThreatNode(Point rawPoint, String text)
-	{
-		Point2D snappedPoint = snap(rawPoint);
-		Node node = new Node(new NodeTypeThreat(), snappedPoint, scale, text, getFont());
-		getDiagramModel().insertNode(node);
 	}
 	
 	MainWindow mainWindow;

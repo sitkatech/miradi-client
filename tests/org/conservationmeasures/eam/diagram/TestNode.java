@@ -26,8 +26,7 @@ public class TestNode extends EAMTestCase
 	{
 		threatType = new NodeTypeThreat();
 		Point location = new Point(123, 456);
-		Font baseFont = new Font("serif", 10, 5);
-		node = new Node(threatType, location, 2.0, sampleText, baseFont);
+		node = new Node(threatType, location, sampleText);
 		attributeMap = node.getMap();
 		super.setUp();
 	}
@@ -48,8 +47,8 @@ public class TestNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(attributeMap);
 		assertEquals("wrong x?", 123.0, bounds.getX(), TOLERANCE);
 		assertEquals("wrong y?", 456.0, bounds.getY(), TOLERANCE);
-		assertEquals("wrong width", 240.0, bounds.getWidth(), TOLERANCE);
-		assertEquals("wrong height", 120.0, bounds.getHeight(), TOLERANCE);
+		assertEquals("wrong width", 120.0, bounds.getWidth(), TOLERANCE);
+		assertEquals("wrong height", 60.0, bounds.getHeight(), TOLERANCE);
 	}
 	
 	public void testFont()
