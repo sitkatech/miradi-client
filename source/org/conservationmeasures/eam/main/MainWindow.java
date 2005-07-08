@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.main;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -28,12 +31,32 @@ public class MainWindow extends JFrame
 		getContentPane().add(new MainToolBar(this), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
-		getContentPane().add(new DiagramComponent(this, project.getDiagramModel()));
+		diagramComponent = new DiagramComponent(this, project.getDiagramModel());
+		getContentPane().add(diagramComponent);
+
+		addWindowListener(new WindowEventHandler());
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+	
+	public DiagramComponent getDiagramComponent()
+	{
+		return diagramComponent;
 	}
 	
 	public void loadProject(File projectFile)
 	{
-		project.load(projectFile);
+		try
+		{
+			project.load(this, projectFile);
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+		}
 		updateTitle();
 	}
 	
@@ -64,5 +87,14 @@ public class MainWindow extends JFrame
 		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getName());
 	}
 	
+	class WindowEventHandler extends WindowAdapter
+	{
+		public void windowClosing(WindowEvent event)
+		{
+			exitNormally();
+		}
+	}
+
 	Project project;
+	DiagramComponent diagramComponent;
 }

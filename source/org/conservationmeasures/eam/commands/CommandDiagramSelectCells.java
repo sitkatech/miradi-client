@@ -10,6 +10,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+
 public class CommandDiagramSelectCells extends Command
 {
 	public CommandDiagramSelectCells(int[] selectedCellIds)
@@ -27,7 +30,7 @@ public class CommandDiagramSelectCells extends Command
 	
 	public String toString()
 	{
-		String result = "DIAGRAM-SELECT:";
+		String result = getCommandName() + ":";
 		for(int i=0; i < ids.length; ++i)
 			result += ids[i] + ",";
 		return result;
@@ -36,6 +39,24 @@ public class CommandDiagramSelectCells extends Command
 	public static String getCommandName()
 	{
 		return "DiagramSelectCells";
+	}
+	
+	public void execute(MainWindow target)
+	{
+		EAM.logWarning("CommandDiagramMove.execute not implemented");
+		// FIXME: Doesn't work because after inserting a node,
+		// it doesn't show up in the model for some reason
+		
+//		DiagramComponent diagram = target.getDiagramComponent();
+//		DiagramModel model = diagram.getDiagramModel();
+//
+//		Object[] cells = new Object[ids.length];
+//		for(int i=0; i < cells.length; ++i)
+//		{
+//			EAM.logDebug("Selecting " + ids[i]);
+//			cells[i] = model.getNodeById(ids[i]);
+//		}
+//		diagram.addSelectionCells(cells);
 	}
 	
 	public void writeTo(OutputStream out) throws IOException
@@ -53,4 +74,5 @@ public class CommandDiagramSelectCells extends Command
 	}
 	
 	int[] ids;
+
 }

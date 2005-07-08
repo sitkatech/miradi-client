@@ -6,6 +6,9 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -22,9 +25,30 @@ public class Project
 		return diagramModel;
 	}
 	
-	public void load(File projectFile)
+	public void load(MainWindow mainWindow, File projectFile) throws IOException
 	{
 		file = projectFile;
+		if(!file.exists())
+		{
+			FileOutputStream out = new FileOutputStream(file);
+			out.close();
+		}
+		
+		FileInputStream in = new FileInputStream(file);
+		try
+		{
+			while(true)
+			{
+				if(in.read() < 0)
+					break;
+				Command command = Command.readFrom(in);
+				command.execute(mainWindow);
+			}
+		}
+		finally
+		{
+			in.close();
+		}
 	}
 	
 	public String getName()
@@ -34,8 +58,41 @@ public class Project
 		return file.getName();
 	}
 
+	public void executeCommand(MainWindow mainWindow, Command command)
+	{
+		command.execute(mainWindow);
+		recordCommand(command);
+	}
+	
 	public void recordCommand(Command command)
 	{
+		try
+		{
+			appendCommandToProjectFile(command);
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public void replayCommand(Command command)
+	{
+	}
+	
+	private void appendCommandToProjectFile(Command command) throws IOException
+	{
+		FileOutputStream out = new FileOutputStream(file, true);
+		try
+		{
+			out.write(0);
+			command.writeTo(out);
+		}
+		finally
+		{
+			out.close();
+		}
+		
 	}
 	
 	File file;

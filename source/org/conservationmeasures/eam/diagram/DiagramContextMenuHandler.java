@@ -30,7 +30,7 @@ public class DiagramContextMenuHandler
 	
 	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
 	{
-		MainWindow mainWindow = diagramComponent.getMainWindow();
+		MainWindow mainWindow = getMainWindow();
 		
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
@@ -43,11 +43,11 @@ public class DiagramContextMenuHandler
 		menu.add(new JMenuItem(new ActionSelectAll(mainWindow)));
 		return menu;
 	}
-	
+
 	public UiMenu getInsertMenu(Point menuInvokedAt)
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
-		insertMenu.add(new ActionInsertThreat(diagramComponent, menuInvokedAt));
+		insertMenu.add(new ActionInsertThreat(getMainWindow(), menuInvokedAt));
 		insertMenu.add(EAM.text("Action|Insert|Activity"));
 		return insertMenu;
 	}
@@ -58,5 +58,10 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 
+	private MainWindow getMainWindow()
+	{
+		return diagramComponent.getMainWindow();
+	}
+	
 	DiagramComponent diagramComponent;
 }

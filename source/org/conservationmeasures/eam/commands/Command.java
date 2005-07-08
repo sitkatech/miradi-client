@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.conservationmeasures.eam.main.MainWindow;
+
 public abstract class Command
 {
 	public static Command readFrom(InputStream in) throws IOException
@@ -20,9 +22,12 @@ public abstract class Command
 			return new CommandDiagramMove(dataIn);
 		if(commandName.equals(CommandDiagramSelectCells.getCommandName()))
 			return new CommandDiagramSelectCells(dataIn);
+		if(commandName.equals(CommandInsertThreat.getCommandName()))
+			return new CommandInsertThreat(dataIn);
 		
 		return null;
 	}
 	
+	abstract public void execute(MainWindow target);
 	abstract public void writeTo(OutputStream out) throws IOException;
 }

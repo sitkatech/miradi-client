@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.DefaultGraphModel;
 
 public class DiagramModel extends DefaultGraphModel
@@ -40,6 +41,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Node getNodeById(int id)
 	{
+		EAM.logDebug("DiagramModel.getNodeById " + id + ", while getAll.length is " + getAll(this).length);
 		return (Node)getAll(this)[id];
 	}
 }

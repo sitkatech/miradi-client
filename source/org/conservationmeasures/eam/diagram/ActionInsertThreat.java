@@ -8,13 +8,16 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.MainWindowAction;
 
-public class ActionInsertThreat extends DiagramAction
+public class ActionInsertThreat extends MainWindowAction
 {
-	public ActionInsertThreat(DiagramComponent diagramComponentToUse, Point location)
+	public ActionInsertThreat(MainWindow mainWindowToUse, Point location)
 	{
-		super(diagramComponentToUse, getLabel());
+		super(mainWindowToUse, getLabel());
 		createThreatAt = location;
 	}
 
@@ -25,8 +28,9 @@ public class ActionInsertThreat extends DiagramAction
 
 	public void actionPerformed(ActionEvent event)
 	{
-		DiagramModel model = getDiagramComponent().getDiagramModel();
-		model.createThreatNode(createThreatAt, EAM.text("Label|New Threat"));
+		String initialText = EAM.text("Label|New Threat");
+		CommandInsertThreat command = new CommandInsertThreat(createThreatAt, initialText);
+		getMainWindow().getProject().executeCommand(getMainWindow(), command);
 	}
 
 	Point createThreatAt;

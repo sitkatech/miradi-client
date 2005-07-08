@@ -10,6 +10,9 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+
 public class CommandDiagramMove extends Command
 {
 	public CommandDiagramMove(int deltaX, int deltaY)
@@ -31,7 +34,12 @@ public class CommandDiagramMove extends Command
 	
 	public String toString()
 	{
-		return "DIAGRAM-MOVE:" + deltaX + "," + deltaY;
+		return getCommandName() + ":" + deltaX + "," + deltaY;
+	}
+	
+	public void execute(MainWindow target)
+	{
+		EAM.logWarning("CommandDiagramMove.execute not implemented");
 	}
 	
 	public void writeTo(OutputStream out) throws IOException
