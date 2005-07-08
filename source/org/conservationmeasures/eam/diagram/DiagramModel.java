@@ -16,6 +16,12 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramModel()
 	{
 	}
+	
+	public void removeAll()
+	{
+		while(getRootCount() > 0)
+			remove(new Object[] {getRootAt(0)});
+	}
 
 	public void createThreatNode(Point snappedPoint, String text)
 	{
@@ -27,6 +33,11 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		Object[] nodes = new Object[] {nodeToInsert};
 		insert(nodes, nodeToInsert.getNestedAttributeMap(), null, null, null);
+	}
+	
+	public void updateNode(Node nodeToUpdate)
+	{
+		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
 	}
 
 	public int getNodeId(Node node)

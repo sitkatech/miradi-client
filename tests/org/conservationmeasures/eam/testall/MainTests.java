@@ -5,13 +5,14 @@
  */
 package org.conservationmeasures.eam.testall;
 
-import org.conservationmeasures.eam.commands.TestCommands;
-import org.conservationmeasures.eam.diagram.TestNode;
-import org.martus.util.xml.TestSimpleXmlParser;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import org.conservationmeasures.eam.commands.TestCommands;
+import org.conservationmeasures.eam.diagram.TestInsertNode;
+import org.conservationmeasures.eam.diagram.TestNode;
+import org.martus.util.xml.TestSimpleXmlParser;
 
 public class MainTests extends TestCase
 {
@@ -37,6 +38,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTranslations.class));
 		
 		// diagram package
+		suite.addTest(new TestSuite(TestInsertNode.class));
 		suite.addTest(new TestSuite(TestNode.class));
 		
 		// commands package

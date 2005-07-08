@@ -30,7 +30,7 @@ public class ActionInsertThreat extends MainWindowAction
 	{
 		String initialText = EAM.text("Label|New Threat");
 		CommandInsertThreat command = new CommandInsertThreat(createThreatAt, initialText);
-		getMainWindow().getProject().executeCommand(getMainWindow(), command);
+		getMainWindow().getProject().executeCommand(command);
 	}
 
 	Point createThreatAt;

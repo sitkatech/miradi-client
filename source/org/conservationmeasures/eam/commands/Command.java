@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.Project;
 
 public abstract class Command
 {
@@ -20,14 +20,12 @@ public abstract class Command
 		String commandName = dataIn.readUTF();
 		if(commandName.equals(CommandDiagramMove.getCommandName()))
 			return new CommandDiagramMove(dataIn);
-		if(commandName.equals(CommandDiagramSelectCells.getCommandName()))
-			return new CommandDiagramSelectCells(dataIn);
 		if(commandName.equals(CommandInsertThreat.getCommandName()))
 			return new CommandInsertThreat(dataIn);
 		
 		return null;
 	}
 	
-	abstract public void execute(MainWindow target);
+	abstract public void execute(Project target);
 	abstract public void writeTo(OutputStream out) throws IOException;
 }

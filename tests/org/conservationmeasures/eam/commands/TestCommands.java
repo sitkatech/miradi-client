@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.commands;
 import java.awt.Point;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -20,7 +21,8 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandDiagramMove() throws Exception
 	{
-		CommandDiagramMove cmd = new CommandDiagramMove(25, -68);
+		int[] ids = {1, 4, 16, 64};
+		CommandDiagramMove cmd = new CommandDiagramMove(25, -68, ids);
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(dest);
 		byte[] result = dest.toByteArray();
@@ -28,21 +30,7 @@ public class TestCommands extends EAMTestCase
 		CommandDiagramMove loaded = (CommandDiagramMove)Command.readFrom(source);
 		assertEquals("didn't restore deltaX?", cmd.getDeltaX(), loaded.getDeltaX());
 		assertEquals("didn't restore deltaY?", cmd.getDeltaY(), loaded.getDeltaY());
-	}
-	
-	public void testCommandDiagramSelectCells() throws Exception
-	{
-		int[] sampleIds = {1, 9, 55};
-		CommandDiagramSelectCells cmd = new CommandDiagramSelectCells(sampleIds);
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandDiagramSelectCells loaded = (CommandDiagramSelectCells)Command.readFrom(source);
-		int[] loadedIds = loaded.getIds();
-		assertEquals(sampleIds.length, loadedIds.length);
-		for(int i=0; i < sampleIds.length; ++i)
-			assertEquals("id " + i + " not the same?", sampleIds[i], loadedIds[i]);
+		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
 	}
 	
 	public void testCommandInsertThreat() throws Exception

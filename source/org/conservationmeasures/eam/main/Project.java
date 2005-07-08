@@ -27,6 +27,8 @@ public class Project
 	
 	public void load(MainWindow mainWindow, File projectFile) throws IOException
 	{
+		getDiagramModel().removeAll();
+		
 		file = projectFile;
 		if(!file.exists())
 		{
@@ -42,7 +44,7 @@ public class Project
 				if(in.read() < 0)
 					break;
 				Command command = Command.readFrom(in);
-				command.execute(mainWindow);
+				command.execute(this);
 			}
 		}
 		finally
@@ -58,9 +60,9 @@ public class Project
 		return file.getName();
 	}
 
-	public void executeCommand(MainWindow mainWindow, Command command)
+	public void executeCommand(Command command)
 	{
-		command.execute(mainWindow);
+		command.execute(this);
 		recordCommand(command);
 	}
 	
@@ -74,10 +76,6 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-	}
-	
-	public void replayCommand(Command command)
-	{
 	}
 	
 	private void appendCommandToProjectFile(Command command) throws IOException

@@ -12,7 +12,6 @@ import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandDiagramSelectCells;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -30,7 +29,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		installKeyBindings();
 		MouseHandler mouseHandler = new MouseHandler(this);
 		addMouseListener(mouseHandler);
-		addMouseMotionListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
 	}
 
@@ -44,14 +42,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return (DiagramModel)getModel();
 	}
 	
-	public void selectionHasChanged()
+	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
 	{
-		mainWindow.recordCommand(new CommandDiagramSelectCells(getSelectedNodeIds()));
-	}
-	
-	public void mouseWasReleased(int deltaX, int deltaY)
-	{
-		mainWindow.recordCommand(new CommandDiagramMove(deltaX, deltaY));
+		mainWindow.recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
 	}
 	
 	public int[] getSelectedNodeIds()

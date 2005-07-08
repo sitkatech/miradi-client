@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.Project;
 
 public class CommandInsertThreat extends Command
 {
@@ -40,9 +40,9 @@ public class CommandInsertThreat extends Command
 		return getCommandName() + ":" + location;
 	}
 	
-	public void execute(MainWindow target)
+	public void execute(Project target)
 	{
-		DiagramModel model = target.getProject().getDiagramModel();
+		DiagramModel model = target.getDiagramModel();
 		model.createThreatNode(getLocation(), getText());
 	}
 	
