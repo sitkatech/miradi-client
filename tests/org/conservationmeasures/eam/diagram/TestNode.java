@@ -26,14 +26,14 @@ public class TestNode extends EAMTestCase
 	public void setUp()
 	{
 		threatType = new NodeTypeThreat();
-		Point location = new Point(123, 456);
-		node = new Node(threatType, location, sampleText);
+		node = new Node(threatType);
 		attributeMap = node.getMap();
 		super.setUp();
 	}
 	
 	public void testText() throws Exception
 	{
+		node.setText(sampleText);
 		assertTrue("Isn't a threat?", node.isThreat());
 		assertEquals(Node.HTML_BEFORE_TEXT + sanitizedText + Node.HTML_AFTER_TEXT, GraphConstants.getValue(attributeMap));
 	}
@@ -45,6 +45,7 @@ public class TestNode extends EAMTestCase
 	
 	public void testBounds()
 	{
+		node.setLocation(new Point(123, 456));
 		Rectangle2D bounds = GraphConstants.getBounds(attributeMap);
 		assertEquals("wrong x?", 123.0, bounds.getX(), TOLERANCE);
 		assertEquals("wrong y?", 456.0, bounds.getY(), TOLERANCE);

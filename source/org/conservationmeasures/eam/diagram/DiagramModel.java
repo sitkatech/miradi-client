@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.Point;
-
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
@@ -26,14 +24,14 @@ public class DiagramModel extends DefaultGraphModel
 
 	public Object createGoalNode()
 	{
-		Node node = new Node(new NodeTypeGoal(), new Point(0,0), "");
+		Node node = new Node(new NodeTypeGoal());
 		insertNode(node);
 		return node;
 	}
 	
 	public Object createThreatNode()
 	{
-		Node node = new Node(new NodeTypeThreat(), new Point(0,0), "");
+		Node node = new Node(new NodeTypeThreat());
 		insertNode(node);
 		return node;
 	}

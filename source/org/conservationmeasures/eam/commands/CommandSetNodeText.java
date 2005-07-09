@@ -9,12 +9,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
-import org.jgraph.graph.GraphConstants;
 
 public class CommandSetNodeText extends Command
 {
@@ -39,8 +37,7 @@ public class CommandSetNodeText extends Command
 	{
 		DiagramModel model = target.getDiagramModel();
 		Node node = model.getNodeById(getId());
-		Map map = node.getMap();
-		GraphConstants.setValue(map, getText());
+		node.setText(getText());
 		model.updateNode(node);
 		return null;
 	}

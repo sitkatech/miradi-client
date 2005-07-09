@@ -5,18 +5,15 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
+import java.awt.Point;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
-import org.jgraph.graph.GraphConstants;
 
 public class CommandDiagramMove extends Command
 {
@@ -55,12 +52,9 @@ public class CommandDiagramMove extends Command
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Node nodeToMove = model.getNodeById(ids[i]);
-			Map map = nodeToMove.getMap();
-			Rectangle2D oldBounds = GraphConstants.getBounds(map);
-			int newX = (int)oldBounds.getX() + getDeltaX();
-			int newY = (int)oldBounds.getY() + getDeltaY();
-			Rectangle newBounds = new Rectangle(newX, newY, (int)oldBounds.getWidth(), (int)oldBounds.getHeight());
-			GraphConstants.setBounds(map, newBounds);
+			Point oldLocation = nodeToMove.getLocation();
+			Point newLocation = new Point(oldLocation.x + getDeltaX(), oldLocation.y + getDeltaY());
+			nodeToMove.setLocation(newLocation);
 			model.updateNode(nodeToMove);
 		}
 		
