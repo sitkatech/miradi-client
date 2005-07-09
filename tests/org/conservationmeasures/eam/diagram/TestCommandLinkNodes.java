@@ -5,9 +5,10 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandInsertGoal;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -29,10 +30,9 @@ public class TestCommandLinkNodes extends EAMTestCase
 		int threatId = model.getNodeId(threat);
 		int goalId = model.getNodeId(goal);
 		CommandLinkNodes command = new CommandLinkNodes(threatId, goalId);
-		command.execute(project);
+		Linkage linkage = (Linkage)command.execute(project);
 
-		assertEquals("didn't add to threat?", 1, threat.getLinkageCount());
-		assertEquals("didn't add to goal?", 1, goal.getLinkageCount());
-		fail("Need to figure out how to extract a linkage from a model");
+		assertEquals("not from threat?", threat, linkage.getFromNode());
+		assertEquals("not to goal?", goal, linkage.getToNode());
 	}
 }

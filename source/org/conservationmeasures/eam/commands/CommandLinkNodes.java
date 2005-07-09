@@ -38,8 +38,7 @@ public class CommandLinkNodes extends Command
 		DiagramModel model = target.getDiagramModel();
 		Node fromNode = (Node)model.getNodeById(fromId);
 		Node toNode = (Node)model.getNodeById(toId);
-		model.createLinkage(fromNode, toNode);
-		return null;
+		return model.createLinkage(fromNode, toNode);
 	}
 
 	public void writeTo(OutputStream out) throws IOException
