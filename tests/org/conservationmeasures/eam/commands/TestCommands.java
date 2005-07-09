@@ -33,6 +33,20 @@ public class TestCommands extends EAMTestCase
 		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
 	}
 	
+	public void testCommandInsertGoal() throws Exception
+	{
+		Point at = new Point(1234, 5678);
+		String text = "Pretend goal";
+		Command cmd = new CommandInsertGoal(at, text);
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(dest);
+		byte[] result = dest.toByteArray();
+		ByteArrayInputStream source = new ByteArrayInputStream(result);
+		CommandInsertGoal loaded = (CommandInsertGoal)Command.readFrom(source);
+		assertEquals("wrong location?", at, loaded.getLocation());
+		assertEquals("wrong text?", text, loaded.getText());
+	}
+
 	public void testCommandInsertThreat() throws Exception
 	{
 		Point at = new Point(1234, 5678);
