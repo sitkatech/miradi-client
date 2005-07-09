@@ -8,22 +8,15 @@ package org.conservationmeasures.eam.actions;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertGoal;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindowAction;
-import org.conservationmeasures.eam.main.Project;
 
-public class ActionInsertGoal extends MainWindowAction
+public class ActionInsertGoal extends InsertNodeAction
 {
 	public ActionInsertGoal(MainWindow mainWindowToUse, Point location)
 	{
-		super(mainWindowToUse, getLabel());
-		createGoalAt = location;
+		super(mainWindowToUse, getLabel(), location);
 	}
 
 	private static String getLabel()
@@ -31,20 +24,14 @@ public class ActionInsertGoal extends MainWindowAction
 		return EAM.text("Action|Insert|Goal");
 	}
 
-	public void actionPerformed(ActionEvent event)
+	public String getInitialText()
 	{
-		Command insertCommand = new CommandInsertGoal();
-		Project project = getMainWindow().getProject();
-		Node insertedNode = (Node)project.executeCommand(insertCommand);
-		int id = project.getDiagramModel().getNodeId(insertedNode);
-		
-		Command moveCommand = new CommandDiagramMove(createGoalAt.x, createGoalAt.y, new int[] {id});
-		project.executeCommand(moveCommand);
-
-		String initialText = EAM.text("Label|New Goal");
-		Command setTextCommand = new CommandSetNodeText(id, initialText);
-		project.executeCommand(setTextCommand);
+		return EAM.text("Label|New Goal");
 	}
 
-	Point createGoalAt;
+	public void actionPerformed(ActionEvent event)
+	{
+		doInsert(new CommandInsertGoal());
+	}
+
 }
