@@ -16,7 +16,6 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import org.jgraph.graph.GraphConstants;
-import org.martus.util.xml.XmlUtilities;
 
 public class Node extends FlexibleGraphCell
 {
@@ -33,8 +32,7 @@ public class Node extends FlexibleGraphCell
 
 	public void setText(String text)
 	{
-		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
-		GraphConstants.setValue(map, formattedLabel);
+		GraphConstants.setValue(map, text);
 	}
 	
 	public String getText()
@@ -84,8 +82,5 @@ public class Node extends FlexibleGraphCell
 		return map;
 	}
 	
-	public static final String HTML_AFTER_TEXT = "</font></div></html>";
-	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
-
 	HashMap map;
 }

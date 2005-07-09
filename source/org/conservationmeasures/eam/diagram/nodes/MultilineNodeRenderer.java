@@ -57,6 +57,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
+import org.martus.util.xml.XmlUtilities;
 
 
 public abstract class MultilineNodeRenderer extends JComponent implements CellViewRenderer
@@ -115,7 +116,8 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			boolean sel, boolean focus, boolean previewMode)
 	{
 		String text = view.getCell().toString();
-		label.setText(text);
+		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
+		label.setText(formattedLabel);
 		
 		graph = graphToUse;
 		selected = sel;
@@ -146,6 +148,9 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		gradientColor = GraphConstants.getGradientColor(attributes);
 	
 	}
+
+	public static final String HTML_AFTER_TEXT = "</font></div></html>";
+	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
 
 	JGraph graph;
 	JLabel label;

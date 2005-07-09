@@ -35,7 +35,6 @@ public class TestSetNodeText extends EAMTestCase
 
 		Node found = model.getNodeById(id);
 		String foundText = (String)GraphConstants.getValue(found.getMap());
-		assertContains("wrong text?", sampleText, foundText);
-		assertStartsWith("didn't embed in html?", "<html>", foundText);
+		assertEquals("wrong text?", sampleText, foundText);
 	}
 }

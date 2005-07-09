@@ -35,7 +35,7 @@ public class TestNode extends EAMTestCase
 	{
 		node.setText(sampleText);
 		assertTrue("Isn't a threat?", node.isThreat());
-		assertEquals(Node.HTML_BEFORE_TEXT + sanitizedText + Node.HTML_AFTER_TEXT, GraphConstants.getValue(attributeMap));
+		assertEquals(sampleText, GraphConstants.getValue(attributeMap));
 	}
 	
 	public void testColors()
@@ -61,7 +61,6 @@ public class TestNode extends EAMTestCase
 
 	static final double TOLERANCE = 0.01;
 	static final String sampleText = "<rest&relaxation>";
-	static final String sanitizedText = "&lt;rest&amp;relaxation&gt;";
 	
 	NodeType threatType;
 	Node node;
