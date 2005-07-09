@@ -55,6 +55,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
+		//EAM.logDebug("Moving " + selectedIds.length + ": " + selectedIds[0]);
 		diagram.nodesWereMoved(deltaX, deltaY, selectedIds);
 	}
 

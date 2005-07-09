@@ -22,6 +22,11 @@ public abstract class NodeType
 		return false;
 	}
 	
+	public boolean isIntervention()
+	{
+		return false;
+	}
+	
 //	public boolean isEllipse()
 //	{
 //		return false;

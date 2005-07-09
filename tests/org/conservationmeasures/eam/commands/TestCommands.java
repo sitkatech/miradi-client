@@ -67,4 +67,15 @@ public class TestCommands extends EAMTestCase
 		CommandInsertThreat loaded = (CommandInsertThreat)Command.readFrom(source);
 		assertNotNull(loaded);
 	}
+
+	public void testCommandInsertIntervention() throws Exception
+	{
+		CommandInsertIntervention cmd = new CommandInsertIntervention();
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(dest);
+		byte[] result = dest.toByteArray();
+		ByteArrayInputStream source = new ByteArrayInputStream(result);
+		CommandInsertIntervention loaded = (CommandInsertIntervention)Command.readFrom(source);
+		assertNotNull(loaded);
+	}
 }

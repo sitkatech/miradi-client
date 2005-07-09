@@ -10,16 +10,9 @@ import org.jgraph.graph.VertexView;
 
 public class CellViewFactory extends DefaultCellViewFactory
 {
-	protected VertexView createVertexView(Object v)
+	protected VertexView createVertexView(Object view)
 	{
-		Node node = (Node)v;
-		/* 
-		 * NOTE: The following classes are pulled from jgraphaddons:
-		 * JGraphEllipseView;
-		 * JGraphRoundRectView;
-		 * JGraphDiamondView;
-		 * JGraphMultilineView;
-		 */
+		Node node = (Node)view;
 		if(node.isGoal())
 		{
 			return new EllipseNodeView(node);
@@ -27,6 +20,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		if(node.isThreat())
 		{
 			return new RectangleNodeView(node);
+		}
+		if(node.isIntervention())
+		{
+			return new HexagonNodeView(node);
 		}
 		
 		throw new RuntimeException("Unknown node type");

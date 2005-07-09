@@ -26,6 +26,8 @@ public abstract class Command
 			return new CommandInsertGoal(dataIn);
 		if(commandName.equals(CommandInsertThreat.getCommandName()))
 			return new CommandInsertThreat(dataIn);
+		if(commandName.equals(CommandInsertIntervention.getCommandName()))
+			return new CommandInsertIntervention(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}

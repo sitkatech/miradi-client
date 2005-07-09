@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -32,6 +33,13 @@ public class DiagramModel extends DefaultGraphModel
 	public Object createThreatNode()
 	{
 		Node node = new Node(new NodeTypeThreat());
+		insertNode(node);
+		return node;
+	}
+	
+	public Object createInterventionNode()
+	{
+		Node node = new Node(new NodeTypeIntervention());
 		insertNode(node);
 		return node;
 	}

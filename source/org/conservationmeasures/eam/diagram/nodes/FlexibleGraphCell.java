@@ -27,6 +27,11 @@ public class FlexibleGraphCell extends DefaultGraphCell
 		return(type.isThreat());
 	}
 	
+	public boolean isIntervention()
+	{
+		return(type.isIntervention());
+	}
+	
 //	public boolean isEllipse()
 //	{
 //		return (type.isEllipse());
