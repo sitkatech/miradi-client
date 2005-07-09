@@ -13,6 +13,7 @@ import javax.swing.Action;
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;

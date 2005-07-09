@@ -10,6 +10,9 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import org.conservationmeasures.eam.utils.Logging;
+import org.conservationmeasures.eam.utils.Translation;
+
 public class EAM
 {
 	public static void main(String[] args) throws Exception

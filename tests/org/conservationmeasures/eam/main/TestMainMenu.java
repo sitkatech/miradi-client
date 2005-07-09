@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.testall;
+package org.conservationmeasures.eam.main;
 
 import javax.swing.Action;
 import javax.swing.JMenu;
@@ -11,6 +11,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.testall.EAMTestCase;
 
 
 public class TestMainMenu extends EAMTestCase

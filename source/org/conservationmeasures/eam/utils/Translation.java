@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.utils;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
@@ -24,7 +24,7 @@ public class Translation
 		Locale actualLocaleUsed = currentResourceBundle.getLocale();
 		if(!locale.equals(actualLocaleUsed))
 		{
-			EAM.logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
+			Logging.logWarning("Requested " + locale + " but fell back to: " + actualLocaleUsed);
 		}
 	}
 
@@ -45,7 +45,7 @@ public class Translation
 		}
 		catch(MissingResourceException e)
 		{
-			EAM.logWarning("Unknown translation key: " + key);
+			Logging.logWarning("Unknown translation key: " + key);
 			return "<" + extractPartToDisplay(key) + ">";
 		}
 	}

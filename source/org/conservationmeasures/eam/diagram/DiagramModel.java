@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.DefaultGraphModel;

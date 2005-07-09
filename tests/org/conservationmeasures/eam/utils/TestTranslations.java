@@ -3,13 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.testall;
+package org.conservationmeasures.eam.utils;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Translation;
+import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.Translation;
 
 public class TestTranslations extends EAMTestCase
 {

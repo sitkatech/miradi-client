@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeType;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;

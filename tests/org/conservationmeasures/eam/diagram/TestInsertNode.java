@@ -10,6 +10,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;

@@ -7,7 +7,7 @@
 
 import java.util.ListResourceBundle;
 
-import org.conservationmeasures.eam.testall.TestTranslations;
+import org.conservationmeasures.eam.utils.TestTranslations;
 
 public class EAM_test_LOCALE extends ListResourceBundle
 {

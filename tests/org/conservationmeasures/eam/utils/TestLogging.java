@@ -3,9 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.testall;
+package org.conservationmeasures.eam.utils;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLogging extends EAMTestCase
 {

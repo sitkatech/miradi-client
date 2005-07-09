@@ -12,6 +12,9 @@ import junit.framework.TestSuite;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.diagram.TestInsertNode;
 import org.conservationmeasures.eam.diagram.TestNode;
+import org.conservationmeasures.eam.main.TestMainMenu;
+import org.conservationmeasures.eam.utils.TestLogging;
+import org.conservationmeasures.eam.utils.TestTranslations;
 import org.martus.util.xml.TestSimpleXmlParser;
 
 public class MainTests extends TestCase

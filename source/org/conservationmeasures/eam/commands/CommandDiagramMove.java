@@ -14,7 +14,7 @@ import java.io.OutputStream;
 import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.Node;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.jgraph.graph.GraphConstants;
 

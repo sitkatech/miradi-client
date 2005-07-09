@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram;
+package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.nodes.FlexibleGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.NodeType;
 import org.jgraph.graph.GraphConstants;
 import org.martus.util.xml.XmlUtilities;
 
@@ -62,7 +60,7 @@ public class Node extends FlexibleGraphCell
 		GraphConstants.setBounds(map, new Rectangle(location, size));
 	}
 	
-	Hashtable getNestedAttributeMap()
+	public Hashtable getNestedAttributeMap()
 	{
 		Hashtable nest = new Hashtable();
 		nest.put(this, getMap());
