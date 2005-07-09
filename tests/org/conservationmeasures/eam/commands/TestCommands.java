@@ -78,4 +78,19 @@ public class TestCommands extends EAMTestCase
 		CommandInsertIntervention loaded = (CommandInsertIntervention)Command.readFrom(source);
 		assertNotNull(loaded);
 	}
+
+	public void testCommandInsertConnection() throws Exception
+	{
+		int from = 882;
+		int to = 212;
+		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(dest);
+		byte[] result = dest.toByteArray();
+		ByteArrayInputStream source = new ByteArrayInputStream(result);
+		CommandLinkNodes loaded = (CommandLinkNodes)Command.readFrom(source);
+		assertEquals("didn't restore from?", from, loaded.getFromId());
+		assertEquals("didn't restore to?", to, loaded.getToId());
+	}
+	
 }

@@ -14,11 +14,12 @@ import javax.swing.JPopupMenu;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertGoal;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
-import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
+import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -56,6 +57,8 @@ public class DiagramContextMenuHandler
 		insertMenu.add(new ActionInsertGoal(getMainWindow(), menuInvokedAt));
 		insertMenu.add(new ActionInsertThreat(getMainWindow(), menuInvokedAt));
 		insertMenu.add(new ActionInsertIntervention(getMainWindow(), menuInvokedAt));
+		insertMenu.addSeparator();
+		insertMenu.add(new ActionInsertConnection(getMainWindow()));
 		return insertMenu;
 	}
 

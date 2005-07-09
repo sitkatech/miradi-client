@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertGoal;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -33,7 +34,7 @@ public class TestSetNodeText extends EAMTestCase
 		Command setTextCommand = new CommandSetNodeText(id, sampleText);
 		setTextCommand.execute(project);
 
-		Node found = model.getNodeById(id);
+		EAMGraphCell found = model.getNodeById(id);
 		String foundText = (String)GraphConstants.getValue(found.getMap());
 		assertEquals("wrong text?", sampleText, foundText);
 	}

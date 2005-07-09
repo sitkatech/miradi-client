@@ -41,6 +41,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.jgraph.graph.CellViewRenderer;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
 
@@ -73,6 +74,12 @@ public class EllipseNodeView extends MultilineNodeView
 		return getAttributes().createPoint(result);
 	}
 
+	public Point2D getPerimeterPoint(EdgeView arg0, Point2D arg1, Point2D arg2)
+	{
+		// TODO: Need better implementation?
+		return getPerimeterPoint(arg1, arg2);
+	}
+	
 	protected static EllipseRenderer ellipseRenderer = new EllipseRenderer();
 	
 }

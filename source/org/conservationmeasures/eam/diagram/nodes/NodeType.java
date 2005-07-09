@@ -26,20 +26,5 @@ public abstract class NodeType
 	{
 		return false;
 	}
-	
-//	public boolean isEllipse()
-//	{
-//		return false;
-//	}
-//	
-//	public boolean isHexagon()
-//	{
-//		return false;
-//	}
-//	
-//	public boolean isTriangle()
-//	{
-//		return false;
-//	}
 
 }

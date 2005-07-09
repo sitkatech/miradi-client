@@ -11,34 +11,34 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 
-public class CommandSetNodeText extends Command
+public class CommandLinkNodes extends Command
 {
-	public CommandSetNodeText(int idToUpdate, String newText)
+	public CommandLinkNodes(int fromId, int toId)
 	{
-		id = idToUpdate;
-		text = newText;
-	}
-
-	public CommandSetNodeText(DataInputStream dataIn) throws IOException
-	{
-		id = dataIn.readInt();
-		text = dataIn.readUTF();
+		this.fromId = fromId;
+		this.toId = toId;
 	}
 	
+	public CommandLinkNodes(DataInputStream dataIn) throws IOException
+	{
+		fromId = dataIn.readInt();
+		toId = dataIn.readInt();
+	}
+
 	public static String getCommandName()
 	{
-		return "SetNodeText";
+		return "LinkNodes";
 	}
 	
 	public Object execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		EAMGraphCell node = model.getNodeById(getId());
-		node.setText(getText());
-		model.updateNode(node);
+		Node fromNode = (Node)model.getNodeById(fromId);
+		Node toNode = (Node)model.getNodeById(toId);
+		model.createLinkage(fromNode, toNode);
 		return null;
 	}
 
@@ -46,20 +46,20 @@ public class CommandSetNodeText extends Command
 	{
 		DataOutputStream dataOut = new DataOutputStream(out);
 		dataOut.writeUTF(getCommandName());
-		dataOut.writeInt(getId());
-		dataOut.writeUTF(getText());
-	}
-
-	int getId()
-	{
-		return id;
+		dataOut.writeInt(getFromId());
+		dataOut.writeInt(getToId());
 	}
 	
-	String getText()
+	public int getFromId()
 	{
-		return text;
+		return fromId;
 	}
-
-	int id;
-	String text;
+	
+	public int getToId()
+	{
+		return toId;
+	}
+	
+	int fromId;
+	int toId;
 }

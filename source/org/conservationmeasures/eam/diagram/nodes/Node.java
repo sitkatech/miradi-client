@@ -9,37 +9,50 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
 
+import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
-public class Node extends FlexibleGraphCell
+public class Node extends EAMGraphCell
 {
 	public Node(NodeType nodeType)
 	{
-		super(nodeType);
-		map = new HashMap();
+		type = nodeType;
+		port = new DefaultPort();
+		add(port);
 		
 		setColors(nodeType);
 		setFont();
 		setLocation(new Point(0, 0));
+		setSize(new Dimension(120, 60));
 		setText("");
 	}
 
-	public void setText(String text)
+	public boolean isGoal()
 	{
-		GraphConstants.setValue(map, text);
+		return(type.isGoal());
 	}
 	
-	public String getText()
+	public boolean isThreat()
 	{
-		return (String)GraphConstants.getValue(map);
+		return(type.isThreat());
 	}
-
+	
+	public boolean isIntervention()
+	{
+		return(type.isIntervention());
+	}
+	
+	public int getLinkageCount()
+	{
+		return port.getChildCount();
+	}
+	
+	public DefaultPort getPort()
+	{
+		return port;
+	}
+	
 	private void setFont()
 	{
 //		Font font = originalFont.deriveFont(Font.BOLD);
@@ -49,38 +62,19 @@ public class Node extends FlexibleGraphCell
 	private void setColors(NodeType cellType)
 	{
 		Color color = cellType.getColor();
-		GraphConstants.setBorderColor(map, Color.black);
-		GraphConstants.setBackground(map, color);
-		GraphConstants.setForeground(map, Color.black);
-		GraphConstants.setOpaque(map, true);
+		GraphConstants.setBorderColor(getMap(), Color.black);
+		GraphConstants.setBackground(getMap(), color);
+		GraphConstants.setForeground(getMap(), Color.black);
+		GraphConstants.setOpaque(getMap(), true);
+	}
+	
+	private void setSize(Dimension size)
+	{
+		Point location = getLocation();
+		Rectangle bounds = new Rectangle(location, size);
+		GraphConstants.setBounds(getMap(), bounds);
 	}
 
-	public void setLocation(Point2D snappedLocation)
-	{
-		double width = 120;
-		double height = 60;
-		Dimension size = new Dimension((int)width, (int)height);
-		Point location = new Point((int)snappedLocation.getX(), (int)snappedLocation.getY());
-		GraphConstants.setBounds(map, new Rectangle(location, size));
-	}
-	
-	public Point getLocation()
-	{
-		Rectangle2D bounds = GraphConstants.getBounds(map);
-		return new Point((int)bounds.getX(), (int)bounds.getY());
-	}
-	
-	public Hashtable getNestedAttributeMap()
-	{
-		Hashtable nest = new Hashtable();
-		nest.put(this, getMap());
-		return nest;
-	}
-	
-	public Map getMap()
-	{
-		return map;
-	}
-	
-	HashMap map;
+	NodeType type;
+	DefaultPort port;
 }
