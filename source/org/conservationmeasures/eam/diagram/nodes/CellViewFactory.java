@@ -12,6 +12,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 {
 	protected VertexView createVertexView(Object v)
 	{
+		Node node = (Node)v;
 		/* 
 		 * NOTE: The following classes are pulled from jgraphaddons:
 		 * JGraphEllipseView;
@@ -19,31 +20,15 @@ public class CellViewFactory extends DefaultCellViewFactory
 		 * JGraphDiamondView;
 		 * JGraphMultilineView;
 		 */
-//			if(v instanceof FlexibleCell)
-//			{
-//				FlexibleCell cell = (FlexibleCell)v;
-//				if(cell.isEllipse())
-//				{
-//					//return new JGraphEllipseView(v);
-//					return new EllipseCellView(v);
-//				}
-//				else if(cell.isHexagon())
-//				{
-//					//return new JGraphRoundRectView(v);
-//					return new HexagonCellView(v);
-//				}
-//				else if(cell.isTriangle())
-//				{
-//					return new TriangleCellView(v);
-//				}
-//				else if(cell.isThreat())
-//				{
-//					return new ThreatCellView(v);
-//				}
-//			}
-
-		//return super.createVertexView(v);
-		//return new MultilineCellView(v);
-		return new RectangleNodeView(v);
+		if(node.isGoal())
+		{
+			return new EllipseNodeView(node);
+		}
+		if(node.isThreat())
+		{
+			return new RectangleNodeView(node);
+		}
+		
+		throw new RuntimeException("Unknown node type");
 	}
 }

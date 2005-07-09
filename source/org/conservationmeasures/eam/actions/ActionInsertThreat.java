@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram;
+package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;

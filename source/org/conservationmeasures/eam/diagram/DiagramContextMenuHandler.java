@@ -14,6 +14,8 @@ import javax.swing.JPopupMenu;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.main.EAM;
@@ -47,8 +49,9 @@ public class DiagramContextMenuHandler
 	public UiMenu getInsertMenu(Point menuInvokedAt)
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
+		insertMenu.add(new ActionInsertGoal(getMainWindow(), menuInvokedAt));
 		insertMenu.add(new ActionInsertThreat(getMainWindow(), menuInvokedAt));
-		insertMenu.add(EAM.text("Action|Insert|Activity"));
+		insertMenu.add(EAM.text("Action|Insert|Intervention"));
 		return insertMenu;
 	}
 

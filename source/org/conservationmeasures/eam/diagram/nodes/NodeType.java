@@ -12,12 +12,7 @@ public abstract class NodeType
 {
 	public abstract Color getColor();
 
-	public boolean isEllipse()
-	{
-		return false;
-	}
-	
-	public boolean isHexagon()
+	public boolean isGoal()
 	{
 		return false;
 	}
@@ -27,9 +22,19 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isTriangle()
-	{
-		return false;
-	}
+//	public boolean isEllipse()
+//	{
+//		return false;
+//	}
+//	
+//	public boolean isHexagon()
+//	{
+//		return false;
+//	}
+//	
+//	public boolean isTriangle()
+//	{
+//		return false;
+//	}
 
 }

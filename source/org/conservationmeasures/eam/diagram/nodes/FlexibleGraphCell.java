@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
 
@@ -19,14 +17,9 @@ public class FlexibleGraphCell extends DefaultGraphCell
 		add(new DefaultPort());
 	}
 	
-	public boolean isEllipse()
+	public boolean isGoal()
 	{
-		return (type.isEllipse());
-	}
-
-	public boolean isHexagon()
-	{
-		return (type.isHexagon());
+		return(type.isGoal());
 	}
 	
 	public boolean isThreat()
@@ -34,21 +27,20 @@ public class FlexibleGraphCell extends DefaultGraphCell
 		return(type.isThreat());
 	}
 	
-	public boolean isTriangle()
-	{
-		return type.isTriangle();
-	}
+//	public boolean isEllipse()
+//	{
+//		return (type.isEllipse());
+//	}
+//
+//	public boolean isHexagon()
+//	{
+//		return (type.isHexagon());
+//	}
+//	
+//	public boolean isTriangle()
+//	{
+//		return type.isTriangle();
+//	}
 	
-	public void setThreatColor(Color color)
-	{
-		threatColor = color;
-	}
-	
-	public Color getThreatColor()
-	{
-		return threatColor;
-	}
-
 	NodeType type;
-	Color threatColor;
 }

@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandInsertGoal;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
@@ -20,6 +21,25 @@ public class TestInsertNode extends EAMTestCase
 	public TestInsertNode(String name)
 	{
 		super(name);
+	}
+
+	public void testInsertGoal()
+	{
+		Point location = new Point(23, 45);
+		String text = "a goal";
+		Project project = new Project();
+		Command insertCommand = new CommandInsertGoal(location, text);
+		insertCommand.execute(project);
+		DiagramModel model = project.getDiagramModel();
+		Node insertedNode = (Node)model.getRootAt(0);
+		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getMap());
+		assertEquals("wrong x?", location.x, (int)bounds.getX());
+		assertEquals("wrong y?", location.y, (int)bounds.getY());
+		assertContains("wrong text?", text, (String)GraphConstants.getValue(insertedNode.getMap()));
+		int id = model.getNodeId(insertedNode);
+		Node foundNode = model.getNodeById(id);
+		assertEquals("can't find node?", insertedNode, foundNode);
+		assertTrue("not a goal?", foundNode.isGoal());
 	}
 
 	public void testInsertThreat()
@@ -36,6 +56,9 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong y?", location.y, (int)bounds.getY());
 		assertContains("wrong text?", text, (String)GraphConstants.getValue(insertedNode.getMap()));
 		int id = model.getNodeId(insertedNode);
-		assertEquals("can't find node?", insertedNode, model.getNodeById(id));
+		Node foundNode = model.getNodeById(id);
+		assertEquals("can't find node?", insertedNode, foundNode);
+		assertTrue("not a threat?", foundNode.isThreat());
 	}
+
 }

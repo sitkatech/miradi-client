@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.DefaultGraphModel;
 
 public class DiagramModel extends DefaultGraphModel
@@ -24,6 +24,12 @@ public class DiagramModel extends DefaultGraphModel
 			remove(new Object[] {getRootAt(0)});
 	}
 
+	public void createGoalNode(Point snappedPoint, String text)
+	{
+		Node node = new Node(new NodeTypeGoal(), snappedPoint, text);
+		insertNode(node);
+	}
+	
 	public void createThreatNode(Point snappedPoint, String text)
 	{
 		Node node = new Node(new NodeTypeThreat(), snappedPoint, text);
@@ -53,7 +59,6 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Node getNodeById(int id)
 	{
-		EAM.logDebug("DiagramModel.getNodeById " + id + ", while getAll.length is " + getAll(this).length);
 		return (Node)getAll(this)[id];
 	}
 }
