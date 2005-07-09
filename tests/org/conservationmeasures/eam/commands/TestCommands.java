@@ -32,27 +32,39 @@ public class TestCommands extends EAMTestCase
 		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
 	}
 	
+	public void testCommandSetNodeText() throws Exception
+	{
+		int id = 98;
+		String text = "peace";
+		CommandSetNodeText cmd = new CommandSetNodeText(id, text);
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(dest);
+		byte[] result = dest.toByteArray();
+		ByteArrayInputStream source = new ByteArrayInputStream(result);
+		CommandSetNodeText loaded = (CommandSetNodeText)Command.readFrom(source);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("didn't restore text?", text, loaded.getText());
+	}
+	
 	public void testCommandInsertGoal() throws Exception
 	{
-		String text = "Pretend goal";
-		Command cmd = new CommandInsertGoal(text);
+		Command cmd = new CommandInsertGoal();
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(dest);
 		byte[] result = dest.toByteArray();
 		ByteArrayInputStream source = new ByteArrayInputStream(result);
 		CommandInsertGoal loaded = (CommandInsertGoal)Command.readFrom(source);
-		assertEquals("wrong text?", text, loaded.getText());
+		assertNotNull(loaded);
 	}
 
 	public void testCommandInsertThreat() throws Exception
 	{
-		String text = "Pretend threat";
-		CommandInsertThreat cmd = new CommandInsertThreat(text);
+		CommandInsertThreat cmd = new CommandInsertThreat();
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(dest);
 		byte[] result = dest.toByteArray();
 		ByteArrayInputStream source = new ByteArrayInputStream(result);
 		CommandInsertThreat loaded = (CommandInsertThreat)Command.readFrom(source);
-		assertEquals("wrong text?", text, loaded.getText());
+		assertNotNull(loaded);
 	}
 }

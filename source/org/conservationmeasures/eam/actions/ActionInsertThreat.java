@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -32,13 +33,17 @@ public class ActionInsertThreat extends MainWindowAction
 
 	public void actionPerformed(ActionEvent event)
 	{
-		String initialText = EAM.text("Label|New Threat");
-		CommandInsertThreat insertCommand = new CommandInsertThreat(initialText);
+		CommandInsertThreat insertCommand = new CommandInsertThreat();
 		Project project = getMainWindow().getProject();
 		Node insertedNode = (Node)project.executeCommand(insertCommand);
-		int[] ids = {project.getDiagramModel().getNodeId(insertedNode)};
-		Command moveCommand = new CommandDiagramMove(createThreatAt.x, createThreatAt.y, ids);
+		int id = project.getDiagramModel().getNodeId(insertedNode);
+
+		Command moveCommand = new CommandDiagramMove(createThreatAt.x, createThreatAt.y, new int[] {id});
 		project.executeCommand(moveCommand);
+
+		String initialText = EAM.text("Label|New Threat");
+		Command setTextCommand = new CommandSetNodeText(id, initialText);
+		project.executeCommand(setTextCommand);
 	}
 
 	Point createThreatAt;

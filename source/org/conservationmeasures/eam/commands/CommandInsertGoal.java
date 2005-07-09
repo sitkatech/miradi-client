@@ -15,14 +15,12 @@ import org.conservationmeasures.eam.main.Project;
 
 public class CommandInsertGoal extends Command
 {
-	public CommandInsertGoal(String text)
+	public CommandInsertGoal()
 	{
-		this.text = text;
 	}
 	
 	public CommandInsertGoal(DataInputStream dataIn) throws IOException
 	{
-		text = dataIn.readUTF();
 	}
 
 	public static String getCommandName()
@@ -38,20 +36,12 @@ public class CommandInsertGoal extends Command
 	public Object execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		return model.createGoalNode(getText());
+		return model.createGoalNode();
 	}
 	
 	public void writeTo(OutputStream out) throws IOException
 	{
 		DataOutputStream dataOut = new DataOutputStream(out);
 		dataOut.writeUTF(getCommandName());
-		dataOut.writeUTF(text);
 	}
-	
-	public String getText()
-	{
-		return text;
-	}
-	
-	String text;
 }

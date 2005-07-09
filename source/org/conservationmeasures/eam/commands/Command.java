@@ -20,6 +20,8 @@ public abstract class Command
 		String commandName = dataIn.readUTF();
 		if(commandName.equals(CommandDiagramMove.getCommandName()))
 			return new CommandDiagramMove(dataIn);
+		if(commandName.equals(CommandSetNodeText.getCommandName()))
+			return new CommandSetNodeText(dataIn);
 		if(commandName.equals(CommandInsertGoal.getCommandName()))
 			return new CommandInsertGoal(dataIn);
 		if(commandName.equals(CommandInsertThreat.getCommandName()))

@@ -15,14 +15,12 @@ import org.conservationmeasures.eam.main.Project;
 
 public class CommandInsertThreat extends Command
 {
-	public CommandInsertThreat(String text)
+	public CommandInsertThreat()
 	{
-		this.text = text;
 	}
 	
 	public CommandInsertThreat(DataInputStream dataIn) throws IOException
 	{
-		text = dataIn.readUTF();
 	}
 
 	public static String getCommandName()
@@ -38,20 +36,13 @@ public class CommandInsertThreat extends Command
 	public Object execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		return model.createThreatNode(getText());
+		return model.createThreatNode();
 	}
 	
 	public void writeTo(OutputStream out) throws IOException
 	{
 		DataOutputStream dataOut = new DataOutputStream(out);
 		dataOut.writeUTF(getCommandName());
-		dataOut.writeUTF(text);
 	}
 	
-	public String getText()
-	{
-		return text;
-	}
-	
-	String text;
 }

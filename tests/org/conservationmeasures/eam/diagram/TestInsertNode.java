@@ -24,16 +24,15 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertGoal()
 	{
-		String text = "a goal";
 		Project project = new Project();
-		Command insertCommand = new CommandInsertGoal(text);
+		Command insertCommand = new CommandInsertGoal();
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getMap());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", text, (String)GraphConstants.getValue(insertedNode.getMap()));
+		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getMap()));
 		int id = model.getNodeId(insertedNode);
 		Node foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
@@ -42,16 +41,15 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertThreat()
 	{
-		String text = "a threat";
 		Project project = new Project();
-		Command insertCommand = new CommandInsertThreat(text);
+		Command insertCommand = new CommandInsertThreat();
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getMap());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", text, (String)GraphConstants.getValue(insertedNode.getMap()));
+		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getMap()));
 		int id = model.getNodeId(insertedNode);
 		Node foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
