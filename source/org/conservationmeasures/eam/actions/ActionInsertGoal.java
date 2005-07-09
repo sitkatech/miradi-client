@@ -9,10 +9,13 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertGoal;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MainWindowAction;
+import org.conservationmeasures.eam.main.Project;
 
 public class ActionInsertGoal extends MainWindowAction
 {
@@ -30,8 +33,12 @@ public class ActionInsertGoal extends MainWindowAction
 	public void actionPerformed(ActionEvent event)
 	{
 		String initialText = EAM.text("Label|New Goal");
-		Command command = new CommandInsertGoal(createGoalAt, initialText);
-		getMainWindow().getProject().executeCommand(command);
+		Command insertCommand = new CommandInsertGoal(initialText);
+		Project project = getMainWindow().getProject();
+		Node insertedNode = (Node)project.executeCommand(insertCommand);
+		int[] ids = {project.getDiagramModel().getNodeId(insertedNode)};
+		Command moveCommand = new CommandDiagramMove(createGoalAt.x, createGoalAt.y, ids);
+		project.executeCommand(moveCommand);
 	}
 
 	Point createGoalAt;

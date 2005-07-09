@@ -24,16 +24,18 @@ public class DiagramModel extends DefaultGraphModel
 			remove(new Object[] {getRootAt(0)});
 	}
 
-	public void createGoalNode(Point snappedPoint, String text)
+	public Object createGoalNode(String text)
 	{
-		Node node = new Node(new NodeTypeGoal(), snappedPoint, text);
+		Node node = new Node(new NodeTypeGoal(), new Point(0,0), text);
 		insertNode(node);
+		return node;
 	}
 	
-	public void createThreatNode(Point snappedPoint, String text)
+	public Object createThreatNode(String text)
 	{
-		Node node = new Node(new NodeTypeThreat(), snappedPoint, text);
+		Node node = new Node(new NodeTypeThreat(), new Point(0,0), text);
 		insertNode(node);
+		return node;
 	}
 	
 	public void insertNode(Node nodeToInsert)

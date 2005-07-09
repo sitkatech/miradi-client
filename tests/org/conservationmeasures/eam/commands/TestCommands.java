@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.awt.Point;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
@@ -35,29 +34,25 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandInsertGoal() throws Exception
 	{
-		Point at = new Point(1234, 5678);
 		String text = "Pretend goal";
-		Command cmd = new CommandInsertGoal(at, text);
+		Command cmd = new CommandInsertGoal(text);
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(dest);
 		byte[] result = dest.toByteArray();
 		ByteArrayInputStream source = new ByteArrayInputStream(result);
 		CommandInsertGoal loaded = (CommandInsertGoal)Command.readFrom(source);
-		assertEquals("wrong location?", at, loaded.getLocation());
 		assertEquals("wrong text?", text, loaded.getText());
 	}
 
 	public void testCommandInsertThreat() throws Exception
 	{
-		Point at = new Point(1234, 5678);
 		String text = "Pretend threat";
-		CommandInsertThreat cmd = new CommandInsertThreat(at, text);
+		CommandInsertThreat cmd = new CommandInsertThreat(text);
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(dest);
 		byte[] result = dest.toByteArray();
 		ByteArrayInputStream source = new ByteArrayInputStream(result);
 		CommandInsertThreat loaded = (CommandInsertThreat)Command.readFrom(source);
-		assertEquals("wrong location?", at, loaded.getLocation());
 		assertEquals("wrong text?", text, loaded.getText());
 	}
 }

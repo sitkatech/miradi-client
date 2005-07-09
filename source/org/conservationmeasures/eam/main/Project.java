@@ -60,10 +60,11 @@ public class Project
 		return file.getName();
 	}
 
-	public void executeCommand(Command command)
+	public Object executeCommand(Command command)
 	{
-		command.execute(this);
+		Object result = command.execute(this);
 		recordCommand(command);
+		return result;
 	}
 	
 	public void recordCommand(Command command)

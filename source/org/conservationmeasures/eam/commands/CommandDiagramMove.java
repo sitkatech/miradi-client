@@ -48,7 +48,7 @@ public class CommandDiagramMove extends Command
 		return getCommandName() + ":" + deltaX + "," + deltaY;
 	}
 	
-	public void execute(Project target)
+	public Object execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
 
@@ -63,6 +63,8 @@ public class CommandDiagramMove extends Command
 			GraphConstants.setBounds(map, newBounds);
 			model.updateNode(nodeToMove);
 		}
+		
+		return null;
 	}
 	
 	public void writeTo(OutputStream out) throws IOException

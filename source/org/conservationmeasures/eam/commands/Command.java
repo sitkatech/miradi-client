@@ -28,6 +28,6 @@ public abstract class Command
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
 	
-	abstract public void execute(Project target);
+	abstract public Object execute(Project target);
 	abstract public void writeTo(OutputStream out) throws IOException;
 }
