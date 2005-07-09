@@ -31,10 +31,9 @@ public class TestNode extends EAMTestCase
 		super.setUp();
 	}
 	
-	public void testLinkage()
+	public void testPort()
 	{
 		assertEquals("port not first child?", node.getPort(), node.getFirstChild());
-		assertEquals("non-zero initial linkage?", 0, node.getLinkageCount());
 	}
 	
 	public void testText() throws Exception

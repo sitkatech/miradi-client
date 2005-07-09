@@ -43,11 +43,6 @@ public class Node extends EAMGraphCell
 		return(type.isIntervention());
 	}
 	
-	public int getLinkageCount()
-	{
-		return port.getChildCount();
-	}
-	
 	public DefaultPort getPort()
 	{
 		return port;
