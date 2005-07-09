@@ -13,7 +13,7 @@ import javax.swing.Action;
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -57,7 +57,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		int[] selectedIds = new int[selectedNodes.length];
 		for(int i=0; i < selectedNodes.length; ++i)
 		{
-			selectedIds[i] = getDiagramModel().getNodeId((Node)selectedNodes[i]);
+			selectedIds[i] = getDiagramModel().getNodeId((EAMGraphCell)selectedNodes[i]);
 		}
 		return selectedIds;
 	}
