@@ -46,7 +46,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		
 		int[] selectedIds = new int[selectedCells.length];
 		for(int i = 0; i < selectedCells.length; ++i)
-			selectedIds[i] = diagram.getDiagramModel().getNodeId((EAMGraphCell)selectedCells[i]);
+			selectedIds[i] = diagram.getDiagramModel().getCellId((EAMGraphCell)selectedCells[i]);
 		
 		Point dragEndedAt = event.getPoint();
 		int deltaX = dragEndedAt.x - dragStartedAt.x; 

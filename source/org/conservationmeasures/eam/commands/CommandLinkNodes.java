@@ -36,8 +36,8 @@ public class CommandLinkNodes extends Command
 	public Object execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		Node fromNode = (Node)model.getNodeById(fromId);
-		Node toNode = (Node)model.getNodeById(toId);
+		Node fromNode = model.getNodeById(fromId);
+		Node toNode = model.getNodeById(toId);
 		return model.createLinkage(fromNode, toNode);
 	}
 

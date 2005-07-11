@@ -38,7 +38,7 @@ public class CommandSetNodeText extends Command
 		DiagramModel model = target.getDiagramModel();
 		EAMGraphCell node = model.getNodeById(getId());
 		node.setText(getText());
-		model.updateNode(node);
+		model.updateCell(node);
 		return null;
 	}
 

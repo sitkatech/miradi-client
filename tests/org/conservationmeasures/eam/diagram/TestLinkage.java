@@ -48,7 +48,7 @@ public class TestLinkage extends EAMTestCase
 		int threatId = model.getNodeId(threat);
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
 		Linkage linkage = (Linkage)link.execute(project);
-		assertTrue("linkage not in model?", model.getNodeId(linkage) >= 0);
+		assertTrue("linkage not in model?", model.getLinkageId(linkage) >= 0);
 		
 		
 	}

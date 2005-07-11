@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -21,12 +22,14 @@ public class DiagramModel extends DefaultGraphModel
 {
 	public DiagramModel()
 	{
+		cellInventory = new CellInventory();
 	}
 	
 	public void removeAll()
 	{
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
+		cellInventory.removeAll();
 	}
 
 	public Node createGoalNode()
@@ -63,6 +66,7 @@ public class DiagramModel extends DefaultGraphModel
 		Map nestedMap = linkageToInsert.getNestedAttributeMap();
 		ConnectionSet cs = linkageToInsert.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
+		cellInventory.add(linkageToInsert);
 	}
 	
 	private void insertNode(Node nodeToInsert)
@@ -70,25 +74,73 @@ public class DiagramModel extends DefaultGraphModel
 		Object[] nodes = new Object[] {nodeToInsert};
 		Hashtable nestedAttributeMap = nodeToInsert.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
+		cellInventory.add(nodeToInsert);
 	}
 	
-	public void updateNode(EAMGraphCell nodeToUpdate)
+	public void updateCell(EAMGraphCell nodeToUpdate)
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
 	}
-
-	public int getNodeId(EAMGraphCell node)
+	
+	public int getCellId(EAMGraphCell cell)
 	{
-		Object[] allNodes = getAll(this);
-		for(int i = 0; i < allNodes.length; ++i)
-			if(allNodes[i].equals(node))
-				return i;
-		
-		return -1;
+		return cellInventory.find(cell);
+	}
+
+	public int getNodeId(Node node)
+	{
+		return getCellId(node);
 	}
 	
-	public EAMGraphCell getNodeById(int id)
+	public int getLinkageId(Linkage linkage)
 	{
-		return (EAMGraphCell)getAll(this)[id];
+		return getCellId(linkage);
 	}
+	
+	public EAMGraphCell getCellById(int id)
+	{
+		return cellInventory.get(id);
+	}
+
+	public Node getNodeById(int id)
+	{
+		return (Node)getCellById(id);
+	}
+
+	public Linkage getLinkageById(int id)
+	{
+		return (Linkage)getCellById(id);
+	}
+
+	CellInventory cellInventory;
+}
+
+class CellInventory
+{
+	public CellInventory()
+	{
+		vector = new Vector();
+	}
+	
+	public void add(EAMGraphCell cell)
+	{
+		vector.add(cell);
+	}
+	
+	public EAMGraphCell get(int index)
+	{
+		return (EAMGraphCell)vector.get(index);
+	}
+	
+	public int find(EAMGraphCell cell)
+	{
+		return vector.indexOf(cell);
+	}
+	
+	public void removeAll()
+	{
+		vector.removeAllElements();
+	}
+	
+	Vector vector;
 }

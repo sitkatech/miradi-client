@@ -51,11 +51,11 @@ public class CommandDiagramMove extends Command
 
 		for(int i = 0; i < ids.length; ++i)
 		{
-			EAMGraphCell nodeToMove = model.getNodeById(ids[i]);
-			Point oldLocation = nodeToMove.getLocation();
+			EAMGraphCell cellToMove = model.getCellById(ids[i]);
+			Point oldLocation = cellToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + getDeltaX(), oldLocation.y + getDeltaY());
-			nodeToMove.setLocation(newLocation);
-			model.updateNode(nodeToMove);
+			cellToMove.setLocation(newLocation);
+			model.updateCell(cellToMove);
 		}
 		
 		return null;
