@@ -18,6 +18,7 @@ public class EAM
 	public static void main(String[] args) throws Exception
 	{
 		setBestLookAndFeel();
+		setLogLevel(LOG_DEBUG);
 
 		JFrame mainWindow = new MainWindow();
 		mainWindow.setVisible(true);
