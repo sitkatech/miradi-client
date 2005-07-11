@@ -28,6 +28,11 @@ public class CommandSetNodeText extends Command
 		text = dataIn.readUTF();
 	}
 	
+	public String toString()
+	{
+		return getCommandName() + ": " + id + ", " + text;
+	}
+	
 	public static String getCommandName()
 	{
 		return "SetNodeText";

@@ -35,14 +35,18 @@ public class CommandDiagramMove extends Command
 			ids[i] = dataIn.readInt();
 	}
 	
+	public String toString()
+	{
+		String stringOfIds = "(";
+		for(int i=0; i < ids.length; ++i)
+			stringOfIds += ids[i] + ",";
+		stringOfIds += ")";
+		return getCommandName() + ":" + stringOfIds + "," + deltaX + "," + deltaY;
+	}
+	
 	public static String getCommandName()
 	{
 		return "DiagramMove";
-	}
-	
-	public String toString()
-	{
-		return getCommandName() + ":" + deltaX + "," + deltaY;
 	}
 	
 	public Object execute(Project target)

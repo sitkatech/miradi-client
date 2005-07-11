@@ -23,14 +23,14 @@ public class CommandInsertThreat extends Command
 	{
 	}
 
-	public static String getCommandName()
-	{
-		return "DiagramInsertThreat";
-	}
-	
 	public String toString()
 	{
 		return getCommandName();
+	}
+	
+	public static String getCommandName()
+	{
+		return "DiagramInsertThreat";
 	}
 	
 	public Object execute(Project target)

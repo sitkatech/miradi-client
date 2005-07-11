@@ -23,6 +23,11 @@ public class CommandInsertIntervention extends Command
 	{
 	}
 
+	public String toString()
+	{
+		return getCommandName();
+	}
+	
 	public static String getCommandName()
 	{
 		return "DiagramInsertIntervention";

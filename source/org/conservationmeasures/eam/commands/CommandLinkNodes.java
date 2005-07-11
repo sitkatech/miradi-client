@@ -28,6 +28,11 @@ public class CommandLinkNodes extends Command
 		toId = dataIn.readInt();
 	}
 
+	public String toString()
+	{
+		return getCommandName() + ": " + toId + ", " + toId;
+	}
+	
 	public static String getCommandName()
 	{
 		return "LinkNodes";
