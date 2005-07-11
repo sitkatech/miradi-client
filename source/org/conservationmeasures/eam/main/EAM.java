@@ -45,6 +45,11 @@ public class EAM
 		return Logging.getLoggedString();
 	}
 	
+	public static void setLogLevel(int level)
+	{
+		Logging.setLogLevel(level);
+	}
+	
 	public static void logException(Exception e)
 	{
 		Logging.logException(e);
@@ -64,6 +69,16 @@ public class EAM
 	{
 		Logging.logDebug(text);
 	}
+	
+	public static void logVerbose(String text)
+	{
+		Logging.logVerbose(text);
+	}
+	
+	public static final int LOG_QUIET = Logging.LOG_QUIET;
+	public static final int LOG_NORMAL = Logging.LOG_NORMAL;
+	public static final int LOG_DEBUG = Logging.LOG_DEBUG;
+	public static final int LOG_VERBOSE = Logging.LOG_VERBOSE;
 	
 
 	///////////////////////////////////////////////////////////////////

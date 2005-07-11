@@ -31,6 +31,11 @@ public class Logging
 		return logContents.toString();
 	}
 	
+	public static void setLogLevel(int logLevel)
+	{
+		level = logLevel;
+	}
+	
 	public static void logException(Exception e)
 	{
 		logDestination.println("ERROR: ");
@@ -38,21 +43,35 @@ public class Logging
 		e.printStackTrace();
 	}
 	
-	public static void logWarning(String text)
-	{
-		logDestination.println("WARNING: " + text);
-	}
-	
 	public static void logError(String text)
 	{
 		logDestination.println("ERROR: " + text);
 	}
 	
-	public static void logDebug(String text)
+	public static void logWarning(String text)
 	{
-		logDestination.println("DEBUG: " + text);
+		if(level >= LOG_NORMAL)
+			logDestination.println("WARNING: " + text);
 	}
 	
+	public static void logDebug(String text)
+	{
+		if(level >= LOG_DEBUG)
+			logDestination.println("DEBUG: " + text);
+	}
+	
+	public static void logVerbose(String text)
+	{
+		if(level >= LOG_VERBOSE)
+			logDestination.println("VERBOSE: " + text);
+	}
+	
+	private static int level;
 	private static PrintStream logDestination = System.out;
 	private static ByteArrayOutputStream logContents;
+
+	public static final int LOG_QUIET = -1;
+	public static final int LOG_NORMAL = 0;
+	public static final int LOG_DEBUG = 1;
+	public static final int LOG_VERBOSE = 2;
 }
