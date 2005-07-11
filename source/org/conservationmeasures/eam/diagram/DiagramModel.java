@@ -82,6 +82,12 @@ public class DiagramModel extends DefaultGraphModel
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
 	}
 	
+	public boolean isNode(Object cell)
+	{
+		// TODO: Is there something cleaner we can do here?
+		return (cell instanceof Node);
+	}
+	
 	public int getCellId(EAMGraphCell cell)
 	{
 		return cellInventory.find(cell);

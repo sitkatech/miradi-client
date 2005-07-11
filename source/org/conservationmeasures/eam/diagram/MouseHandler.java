@@ -8,8 +8,10 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
@@ -44,10 +46,20 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		int[] selectedIds = new int[selectedCells.length];
+		DiagramModel model = diagram.getDiagramModel();
+		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
-			selectedIds[i] = diagram.getDiagramModel().getCellId((EAMGraphCell)selectedCells[i]);
+		{
+			if(model.isNode(selectedCells[i]))
+				selectedNodes.add(selectedCells[i]);
+		}
 		
+		int[] selectedNodeIds = new int[selectedNodes.size()];
+		for(int i = 0; i < selectedNodes.size(); ++i)
+		{
+			selectedNodeIds[i] = model.getNodeId((Node)selectedNodes.get(i));
+		}
+
 		Point dragEndedAt = event.getPoint();
 		int deltaX = dragEndedAt.x - dragStartedAt.x; 
 		int deltaY = dragEndedAt.y - dragStartedAt.y;
@@ -55,8 +67,8 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		//EAM.logDebug("Moving " + selectedIds.length + ": " + selectedIds[0]);
-		diagram.nodesWereMoved(deltaX, deltaY, selectedIds);
+		EAM.logDebug("mouseReleased Moving " + selectedNodeIds.length + ": " + selectedNodeIds[0]);
+		diagram.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
 	}
 
 	public void mouseEntered(MouseEvent arg0)
@@ -81,7 +93,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 	
 	public void selectionChanged(GraphSelectionEvent event)
 	{
-		selectedCells = event.getCells();
+		selectedCells = diagram.getSelectionCells();
 	}
 
 	DiagramComponent diagram;

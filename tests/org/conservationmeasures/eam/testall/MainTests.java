@@ -11,6 +11,7 @@ import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.diagram.TestCommandLinkNodes;
+import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestInsertNode;
 import org.conservationmeasures.eam.diagram.TestLinkage;
 import org.conservationmeasures.eam.diagram.TestNode;
@@ -45,6 +46,7 @@ public class MainTests extends TestCase
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestCommandLinkNodes.class));
+		suite.addTest(new TestSuite(TestDiagramModel.class));
 		suite.addTest(new TestSuite(TestInsertNode.class));
 		suite.addTest(new TestSuite(TestLinkage.class));
 		suite.addTest(new TestSuite(TestNode.class));
