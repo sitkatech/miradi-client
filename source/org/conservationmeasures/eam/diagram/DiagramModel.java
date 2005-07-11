@@ -57,7 +57,7 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 	
-	public void insertLinkage(Linkage linkageToInsert)
+	private void insertLinkage(Linkage linkageToInsert)
 	{
 		Object[] linkages = new Object[]{linkageToInsert};
 		Map nestedMap = linkageToInsert.getNestedAttributeMap();
@@ -65,7 +65,7 @@ public class DiagramModel extends DefaultGraphModel
 		insert(linkages, nestedMap, cs, null, null);
 	}
 	
-	public void insertNode(Node nodeToInsert)
+	private void insertNode(Node nodeToInsert)
 	{
 		Object[] nodes = new Object[] {nodeToInsert};
 		Hashtable nestedAttributeMap = nodeToInsert.getNestedAttributeMap();
