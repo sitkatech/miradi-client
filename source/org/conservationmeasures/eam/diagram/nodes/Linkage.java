@@ -18,7 +18,8 @@ public class Linkage extends EAMGraphCell implements Edge
 	{
 		setSource(from.getPort());
 		setTarget(to.getPort());
-		fillConnectorAttributeMap("x");
+		String label = "";
+		fillConnectorAttributeMap(label);
 	}
 	
 	public ConnectionSet getConnectionSet()
