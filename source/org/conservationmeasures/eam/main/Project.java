@@ -39,13 +39,16 @@ public class Project
 		FileInputStream in = new FileInputStream(file);
 		try
 		{
+			EAM.logDebug("---Loading---");
 			while(true)
 			{
 				if(in.read() < 0)
 					break;
 				Command command = Command.readFrom(in);
+				EAM.logDebug(command.toString());
 				command.execute(this);
 			}
+			EAM.logDebug("---Finished---");
 		}
 		finally
 		{
@@ -86,6 +89,7 @@ public class Project
 		{
 			out.write(0);
 			command.writeTo(out);
+			EAM.logDebug("wrote: " + command.toString());
 		}
 		finally
 		{
