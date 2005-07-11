@@ -30,6 +30,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		MouseHandler mouseHandler = new MouseHandler(this);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
+		setDisconnectable(false);
+		setDisconnectOnMove(false);
+		setBendable(false);
 	}
 
 	public MainWindow getMainWindow()
