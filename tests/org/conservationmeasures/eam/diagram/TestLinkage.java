@@ -5,10 +5,15 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandInsertIntervention;
+import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLinkage extends EAMTestCase
@@ -28,5 +33,23 @@ public class TestLinkage extends EAMTestCase
 
 		assertEquals("source not the port of from?", threat.getPort(), linkage.getSource());
 		assertEquals("target not the port of to?", goal.getPort(), linkage.getTarget());
+	}
+	
+	public void testLinkNodes()
+	{
+		Project project = new Project();
+		DiagramModel model = project.getDiagramModel();
+		
+		Command insertIntervention = new CommandInsertIntervention();
+		Command insertThreat = new CommandInsertThreat();
+		Node intervention = (Node)insertIntervention.execute(project);
+		Node threat = (Node)insertThreat.execute(project);
+		int interventionId = model.getNodeId(intervention);
+		int threatId = model.getNodeId(threat);
+		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
+		Linkage linkage = (Linkage)link.execute(project);
+		assertTrue("linkage not in model?", model.getNodeId(linkage) >= 0);
+		
+		
 	}
 }
