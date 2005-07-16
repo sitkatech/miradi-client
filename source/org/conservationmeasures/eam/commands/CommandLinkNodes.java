@@ -30,7 +30,7 @@ public class CommandLinkNodes extends Command
 
 	public String toString()
 	{
-		return getCommandName() + ": " + toId + ", " + toId;
+		return getCommandName() + ": " + fromId + ", " + toId;
 	}
 	
 	public static String getCommandName()
