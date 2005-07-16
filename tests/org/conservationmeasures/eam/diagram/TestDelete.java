@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -45,6 +46,7 @@ public class TestDelete extends EAMTestCase
 		delete.execute(project);
 		assertFalse("linkage not deleted?", model.hasLinkage(intervention, threat));
 		
+		EAM.setLogToString();
 		try
 		{
 			delete.execute(project);
@@ -53,9 +55,21 @@ public class TestDelete extends EAMTestCase
 		catch(CommandFailedException ignoreExpected)
 		{
 		}
+		EAM.setLogToConsole();
 		
 		CommandDeleteNode deleteNode = new CommandDeleteNode(threatId);
 		deleteNode.execute(project);
 		assertEquals("node not deleted?", -1, model.getNodeId(threat));
+
+		EAM.setLogToString();
+		try
+		{
+			deleteNode.execute(project);
+			fail("should have thrown for deleting non-existant linkage");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
 	}
 }
