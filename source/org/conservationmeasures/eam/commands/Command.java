@@ -30,6 +30,8 @@ public abstract class Command
 			return new CommandInsertIntervention(dataIn);
 		if(commandName.equals(CommandLinkNodes.getCommandName()))
 			return new CommandLinkNodes(dataIn);
+		if(commandName.equals(CommandDeleteLinkage.getCommandName()))
+			return new CommandDeleteLinkage(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}

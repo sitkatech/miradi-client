@@ -93,4 +93,15 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore to?", to, loaded.getToId());
 	}
 	
+	public void testDeleteLinkage() throws Exception
+	{
+		int id = 212;
+		CommandDeleteLinkage cmd = new CommandDeleteLinkage(id);
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(dest);
+		byte[] result = dest.toByteArray();
+		ByteArrayInputStream source = new ByteArrayInputStream(result);
+		CommandDeleteLinkage loaded = (CommandDeleteLinkage)Command.readFrom(source);
+		assertEquals("didn't restore from?", id, loaded.getId());
+	}
 }

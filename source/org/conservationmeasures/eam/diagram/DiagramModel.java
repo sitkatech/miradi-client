@@ -60,6 +60,13 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 	
+	public void deleteLinkage(Linkage linkageToDelete)
+	{
+		Object[] linkages = new Object[]{linkageToDelete};
+		remove(linkages);
+		cellInventory.remove(linkageToDelete);
+	}
+	
 	private void insertLinkage(Linkage linkageToInsert)
 	{
 		Object[] linkages = new Object[]{linkageToInsert};
@@ -167,6 +174,11 @@ class CellInventory
 	public int find(EAMGraphCell cell)
 	{
 		return vector.indexOf(cell);
+	}
+	
+	public void remove(EAMGraphCell cell)
+	{
+		vector.remove(cell);
 	}
 	
 	public void removeAll()

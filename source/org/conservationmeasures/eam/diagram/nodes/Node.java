@@ -27,6 +27,11 @@ public class Node extends EAMGraphCell
 		setSize(new Dimension(120, 60));
 		setText("");
 	}
+	
+	public boolean isNode()
+	{
+		return true;
+	}
 
 	public boolean isGoal()
 	{

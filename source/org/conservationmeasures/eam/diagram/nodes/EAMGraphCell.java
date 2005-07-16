@@ -29,6 +29,11 @@ public class EAMGraphCell extends DefaultGraphCell
 		return map;
 	}
 	
+	public boolean isNode()
+	{
+		return false;
+	}
+	
 	public boolean isLinkage()
 	{
 		return false;
