@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -117,10 +117,9 @@ public class DiagramModel extends DefaultGraphModel
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
 	}
 	
-	public boolean isNode(Object cell)
+	public boolean isNode(EAMGraphCell cell)
 	{
-		// TODO: Is there something cleaner we can do here?
-		return (cell instanceof Node);
+		return cell.isNode();
 	}
 	
 	public int getCellId(EAMGraphCell cell)
@@ -160,38 +159,51 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		vector = new Vector();
+		idToCellMap = new HashMap();
+		cellToIdMap = new HashMap();
 	}
 	
 	public void add(EAMGraphCell cell)
 	{
-		vector.add(cell);
+		Integer id = new Integer(nextId++);
+		idToCellMap.put(id, cell);
+		cellToIdMap.put(cell, id);
 	}
 	
 	public int size()
 	{
-		return vector.size();
+		return idToCellMap.size();
 	}
 	
 	public EAMGraphCell get(int index)
 	{
-		return (EAMGraphCell)vector.get(index);
+		EAMGraphCell foundCell = (EAMGraphCell)idToCellMap.get(new Integer(index));
+		if(foundCell == null)
+			throw new RuntimeException("Cell not found id: " + index);
+		return foundCell;
 	}
 	
 	public int find(EAMGraphCell cell)
 	{
-		return vector.indexOf(cell);
+		Integer found = ((Integer)cellToIdMap.get(cell));
+		if(found == null)
+			return -1;
+		return found.intValue();
 	}
 	
 	public void remove(EAMGraphCell cell)
 	{
-		vector.remove(cell);
+		idToCellMap.remove(new Integer(find(cell)));
+		cellToIdMap.remove(cell);
 	}
 	
 	public void removeAll()
 	{
-		vector.removeAllElements();
+		idToCellMap.clear();
+		cellToIdMap.clear();
 	}
-	
-	Vector vector;
+
+	int nextId;
+	Map idToCellMap;
+	Map cellToIdMap;
 }

@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.event.GraphSelectionEvent;
@@ -50,7 +51,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
-			if(model.isNode(selectedCells[i]))
+			if(model.isNode((EAMGraphCell)selectedCells[i]))
 				selectedNodes.add(selectedCells[i]);
 		}
 		
