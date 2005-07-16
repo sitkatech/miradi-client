@@ -40,7 +40,7 @@ public class Logging
 	{
 		logDestination.println("ERROR: ");
 		// TODO: actually print the stack trace to logDestination
-		e.printStackTrace();
+		e.printStackTrace(logDestination);
 	}
 	
 	public static void logError(String text)
