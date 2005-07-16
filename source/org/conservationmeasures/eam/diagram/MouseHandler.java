@@ -12,7 +12,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
@@ -68,7 +67,6 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		EAM.logDebug("mouseReleased Moving " + selectedNodeIds.length + ": " + selectedNodeIds[0]);
 		diagram.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
 	}
 
