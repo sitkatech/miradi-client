@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.conservationmeasures.eam.main.Project;
 
@@ -25,7 +25,7 @@ public class CommandDeleteNode extends Command
 		return null;
 	}
 
-	public void writeTo(OutputStream out) throws IOException
+	public void writeTo(DataOutputStream dataOut) throws IOException
 	{
 		// TODO Auto-generated method stub
 

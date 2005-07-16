@@ -9,7 +9,6 @@ import java.awt.Point;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
@@ -65,9 +64,8 @@ public class CommandDiagramMove extends Command
 		return null;
 	}
 	
-	public void writeTo(OutputStream out) throws IOException
+	public void writeTo(DataOutputStream dataOut) throws IOException
 	{
-		DataOutputStream dataOut = new DataOutputStream(out);
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getDeltaX());
 		dataOut.writeInt(getDeltaY());

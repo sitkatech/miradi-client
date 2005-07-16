@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -39,21 +41,40 @@ public class Project
 		FileInputStream in = new FileInputStream(file);
 		try
 		{
-			EAM.logDebug("---Loading---");
-			while(true)
-			{
-				if(in.read() < 0)
-					break;
-				Command command = Command.readFrom(in);
-				EAM.logDebug(command.toString());
-				command.execute(this);
-			}
-			EAM.logDebug("---Finished---");
+			load(in);
 		}
 		finally
 		{
 			in.close();
 		}
+		
+	}
+
+	private void load(FileInputStream in) throws IOException
+	{
+		DataInputStream dataIn = new DataInputStream(in);
+		try
+		{
+			load(dataIn);
+		}
+		finally
+		{
+			dataIn.close();
+		}
+	}
+
+	private void load(DataInputStream dataIn) throws IOException
+	{
+		EAM.logDebug("---Loading---");
+		while(true)
+		{
+			if(dataIn.read() < 0)
+				break;
+			Command command = Command.readFrom(dataIn);
+			EAM.logDebug(command.toString());
+			command.execute(this);
+		}
+		EAM.logDebug("---Finished---");
 	}
 	
 	public String getName()
@@ -87,9 +108,7 @@ public class Project
 		FileOutputStream out = new FileOutputStream(file, true);
 		try
 		{
-			out.write(0);
-			command.writeTo(out);
-			EAM.logDebug("wrote: " + command.toString());
+			appendCommandToStorage(out, command);
 		}
 		finally
 		{
@@ -97,6 +116,27 @@ public class Project
 		}
 		
 	}
+
+	private void appendCommandToStorage(FileOutputStream out, Command command) throws IOException
+	{
+		DataOutputStream dataOut = new DataOutputStream(out);
+		try
+		{
+			appendCommandToStorage(dataOut, command);
+		}
+		finally
+		{
+			dataOut.close();
+		}
+	}
+
+	private void appendCommandToStorage(DataOutputStream dataOut, Command command) throws IOException
+	{
+		dataOut.write(0);
+		command.writeTo(dataOut);
+		EAM.logDebug("wrote: " + command.toString());
+	}
+	
 	
 	File file;
 	DiagramModel diagramModel;

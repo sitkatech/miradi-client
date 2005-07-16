@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.commands;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -22,11 +25,7 @@ public class TestCommands extends EAMTestCase
 	{
 		int[] ids = {1, 4, 16, 64};
 		CommandDiagramMove cmd = new CommandDiagramMove(25, -68, ids);
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandDiagramMove loaded = (CommandDiagramMove)Command.readFrom(source);
+		CommandDiagramMove loaded = (CommandDiagramMove)saveAndReload(cmd);
 		assertEquals("didn't restore deltaX?", cmd.getDeltaX(), loaded.getDeltaX());
 		assertEquals("didn't restore deltaY?", cmd.getDeltaY(), loaded.getDeltaY());
 		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
@@ -37,11 +36,7 @@ public class TestCommands extends EAMTestCase
 		int id = 98;
 		String text = "peace";
 		CommandSetNodeText cmd = new CommandSetNodeText(id, text);
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandSetNodeText loaded = (CommandSetNodeText)Command.readFrom(source);
+		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals("didn't restore text?", text, loaded.getText());
 	}
@@ -49,33 +44,21 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertGoal() throws Exception
 	{
 		Command cmd = new CommandInsertGoal();
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandInsertGoal loaded = (CommandInsertGoal)Command.readFrom(source);
+		CommandInsertGoal loaded = (CommandInsertGoal)saveAndReload(cmd);
 		assertNotNull(loaded);
 	}
 
 	public void testCommandInsertThreat() throws Exception
 	{
 		CommandInsertThreat cmd = new CommandInsertThreat();
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandInsertThreat loaded = (CommandInsertThreat)Command.readFrom(source);
+		CommandInsertThreat loaded = (CommandInsertThreat)saveAndReload(cmd);
 		assertNotNull(loaded);
 	}
 
 	public void testCommandInsertIntervention() throws Exception
 	{
 		CommandInsertIntervention cmd = new CommandInsertIntervention();
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandInsertIntervention loaded = (CommandInsertIntervention)Command.readFrom(source);
+		CommandInsertIntervention loaded = (CommandInsertIntervention)saveAndReload(cmd);
 		assertNotNull(loaded);
 	}
 
@@ -84,11 +67,7 @@ public class TestCommands extends EAMTestCase
 		int from = 882;
 		int to = 212;
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandLinkNodes loaded = (CommandLinkNodes)Command.readFrom(source);
+		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
 		assertEquals("didn't restore from?", from, loaded.getFromId());
 		assertEquals("didn't restore to?", to, loaded.getToId());
 	}
@@ -97,11 +76,16 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = 212;
 		CommandDeleteLinkage cmd = new CommandDeleteLinkage(id);
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(dest);
-		byte[] result = dest.toByteArray();
-		ByteArrayInputStream source = new ByteArrayInputStream(result);
-		CommandDeleteLinkage loaded = (CommandDeleteLinkage)Command.readFrom(source);
+		CommandDeleteLinkage loaded = (CommandDeleteLinkage)saveAndReload(cmd);
 		assertEquals("didn't restore from?", id, loaded.getId());
+	}
+
+	private Command saveAndReload(Command cmd) throws IOException
+	{
+		ByteArrayOutputStream dest = new ByteArrayOutputStream();
+		cmd.writeTo(new DataOutputStream(dest));
+		byte[] result = dest.toByteArray();
+		DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(result));
+		return Command.readFrom(dataIn);
 	}
 }
