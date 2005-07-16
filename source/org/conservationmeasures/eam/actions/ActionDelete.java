@@ -15,7 +15,7 @@ public class ActionDelete extends MainWindowAction
 {
 	public ActionDelete(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()

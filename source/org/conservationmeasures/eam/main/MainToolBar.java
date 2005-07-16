@@ -11,8 +11,12 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionOpenProject;
+import org.conservationmeasures.eam.actions.ActionPaste;
 
 public class MainToolBar extends JToolBar
 {
@@ -23,10 +27,10 @@ public class MainToolBar extends JToolBar
 		add(new ActionOpenProject(mainWindow));
 		add(new ActionStub("icons/print.gif"));
 		add(new Separator());
-		add(new ActionStub("icons/cut.gif"));
-		add(new ActionStub("icons/copy.gif"));
-		add(new ActionStub("icons/paste.gif"));
-		add(new ActionStub("icons/delete.gif"));
+		add(new ActionCut(mainWindow));
+		add(new ActionCopy(mainWindow));
+		add(new ActionPaste(mainWindow));
+		add(new ActionDelete(mainWindow));
 	}
 
 }

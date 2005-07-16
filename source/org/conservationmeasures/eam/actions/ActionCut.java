@@ -15,7 +15,7 @@ public class ActionCut extends MainWindowAction
 {
 	public ActionCut(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/cut.gif");
 	}
 
 	private static String getLabel()

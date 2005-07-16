@@ -15,7 +15,7 @@ public class ActionCopy extends MainWindowAction
 {
 	public ActionCopy(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/copy.gif");
 	}
 
 	private static String getLabel()

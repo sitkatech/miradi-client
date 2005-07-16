@@ -15,7 +15,7 @@ public class ActionPaste extends MainWindowAction
 {
 	public ActionPaste(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/paste.gif");
 	}
 
 	private static String getLabel()
