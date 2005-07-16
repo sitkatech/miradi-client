@@ -22,6 +22,11 @@ public class Linkage extends EAMGraphCell implements Edge
 		fillConnectorAttributeMap(label);
 	}
 	
+	public boolean isLinkage()
+	{
+		return true;
+	}
+	
 	public ConnectionSet getConnectionSet()
 	{
 		return new ConnectionSet(this, fromPort, toPort);		

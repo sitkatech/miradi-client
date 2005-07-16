@@ -29,6 +29,11 @@ public class EAMGraphCell extends DefaultGraphCell
 		return map;
 	}
 	
+	public boolean isLinkage()
+	{
+		return false;
+	}
+	
 	public Point getLocation()
 	{
 		Rectangle2D bounds = GraphConstants.getBounds(getMap());

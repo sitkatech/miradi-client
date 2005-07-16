@@ -69,6 +69,27 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.add(linkageToInsert);
 	}
 	
+	public boolean hasLinkage(Node fromNode, Node toNode)
+	{
+		for(int i=0; i < cellInventory.size(); ++i)
+		{
+			EAMGraphCell cell = cellInventory.get(i);
+			if(!cell.isLinkage())
+				continue;
+			
+			Linkage linkage = (Linkage)cell;
+			Node thisFromNode = linkage.getFromNode();
+			Node thisToNode = linkage.getToNode();
+			if(thisFromNode.equals(fromNode) && thisToNode.equals(toNode))
+				return true;
+			
+			if(thisFromNode.equals(toNode) && thisToNode.equals(fromNode))
+				return true;
+		}
+		
+		return false;
+	}
+	
 	private void insertNode(Node nodeToInsert)
 	{
 		Object[] nodes = new Object[] {nodeToInsert};
@@ -131,6 +152,11 @@ class CellInventory
 	public void add(EAMGraphCell cell)
 	{
 		vector.add(cell);
+	}
+	
+	public int size()
+	{
+		return vector.size();
 	}
 	
 	public EAMGraphCell get(int index)

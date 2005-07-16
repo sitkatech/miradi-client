@@ -28,4 +28,15 @@ public class TestDiagramModel extends EAMTestCase
 		assertFalse("linkage is a node?", model.isNode(link));
 		assertFalse("object is a node?", model.isNode(new Object()));
 	}
+	
+	public void testHasLinkage()
+	{
+		DiagramModel model = new DiagramModel();
+		Node threat = model.createThreatNode();
+		Node goal = model.createGoalNode();
+		assertFalse("already linked?", model.hasLinkage(threat, goal));
+		model.createLinkage(threat, goal);
+		assertTrue("not linked?", model.hasLinkage(threat, goal));
+		assertTrue("reverse link not detected?", model.hasLinkage(goal, threat));
+	}
 }

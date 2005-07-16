@@ -36,6 +36,21 @@ public class ActionInsertConnection extends MainWindowAction
 		DiagramModel model = getMainWindow().getProject().getDiagramModel();
 		int fromIndex = model.getNodeId(dialog.getFrom());
 		int toIndex = model.getNodeId(dialog.getTo());
+		
+		if(fromIndex == toIndex)
+		{
+			String[] body = {EAM.text("Can't link a node to itself"), };
+			getMainWindow().okDialog(EAM.text("Can't Create Link"), body);
+			return;
+		}
+		
+		if(model.hasLinkage(dialog.getFrom(), dialog.getTo()))
+		{
+			String[] body = {EAM.text("Those nodes are already linked"), };
+			getMainWindow().okDialog(EAM.text("Can't Create Link"), body);
+			return;
+		}
+		
 		CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
 		getMainWindow().getProject().executeCommand(command);
 	}
