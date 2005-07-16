@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -27,7 +28,7 @@ public class ActionNodeProperties extends MainWindowAction
 		return EAM.text("Action|Properties...");
 	}
 
-	public void actionPerformed(ActionEvent arg0)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		DiagramComponent diagram = getMainWindow().getDiagramComponent();
 		if(diagram.getSelectionCount() != 1)

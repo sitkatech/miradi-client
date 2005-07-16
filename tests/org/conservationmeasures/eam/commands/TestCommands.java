@@ -74,9 +74,17 @@ public class TestCommands extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		int id = 212;
+		int id = 25;
 		CommandDeleteLinkage cmd = new CommandDeleteLinkage(id);
 		CommandDeleteLinkage loaded = (CommandDeleteLinkage)saveAndReload(cmd);
+		assertEquals("didn't restore from?", id, loaded.getId());
+	}
+
+	public void testDeleteNode() throws Exception
+	{
+		int id = 366;
+		CommandDeleteNode cmd = new CommandDeleteNode(id);
+		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
 		assertEquals("didn't restore from?", id, loaded.getId());
 	}
 

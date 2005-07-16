@@ -53,6 +53,13 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 	
+	public void deleteNode(Node nodeToDelete)
+	{
+		Object[] nodes = new Object[]{nodeToDelete};
+		remove(nodes);
+		cellInventory.remove(nodeToDelete);
+	}
+	
 	public Linkage createLinkage(Node fromNode, Node toNode)
 	{
 		Linkage linkage = new Linkage(fromNode, toNode);

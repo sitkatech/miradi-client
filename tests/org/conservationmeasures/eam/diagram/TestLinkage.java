@@ -35,7 +35,7 @@ public class TestLinkage extends EAMTestCase
 		assertEquals("target not the port of to?", goal.getPort(), linkage.getTarget());
 	}
 	
-	public void testLinkNodes()
+	public void testLinkNodes() throws Exception
 	{
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();

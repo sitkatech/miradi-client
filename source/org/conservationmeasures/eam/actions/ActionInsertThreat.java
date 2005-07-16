@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.actions;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -29,7 +30,7 @@ public class ActionInsertThreat extends InsertNodeAction
 		return EAM.text("Label|New Threat");
 	}
 
-	public void actionPerformed(ActionEvent event)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		doInsert(new CommandInsertThreat());
 	}

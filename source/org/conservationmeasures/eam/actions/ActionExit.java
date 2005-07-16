@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MainWindowAction;
@@ -23,7 +24,7 @@ public class ActionExit extends MainWindowAction
 		return EAM.text("Action|Exit");
 	}
 
-	public void actionPerformed(ActionEvent event)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		getMainWindow().exitNormally();
 	}

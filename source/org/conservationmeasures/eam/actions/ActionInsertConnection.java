@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
@@ -26,7 +27,7 @@ public class ActionInsertConnection extends MainWindowAction
 		return EAM.text("Action|Insert|Connection...");
 	}
 
-	public void actionPerformed(ActionEvent event)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(getMainWindow());
 		dialog.show();
@@ -51,8 +52,14 @@ public class ActionInsertConnection extends MainWindowAction
 			return;
 		}
 		
-		CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
-		getMainWindow().getProject().executeCommand(command);
+		try
+		{
+			CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
+			getMainWindow().getProject().executeCommand(command);
+		}
+		catch (CommandFailedException e)
+		{
+		}
 	}
 
 }

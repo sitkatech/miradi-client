@@ -10,6 +10,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MainWindowAction;
@@ -27,7 +28,7 @@ public class ActionOpenProject extends MainWindowAction
 	}
 
 
-	public void actionPerformed(ActionEvent arg0)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(getLabel());

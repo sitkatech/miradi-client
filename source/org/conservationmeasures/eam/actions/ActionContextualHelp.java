@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MainWindowAction;
@@ -23,7 +24,7 @@ public class ActionContextualHelp extends MainWindowAction
 		return EAM.text("Action|ContextSensitive|Help");
 	}
 
-	public void actionPerformed(ActionEvent arg0)
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		EAM.logWarning("Context-sensitive help action invoked!");
 	}

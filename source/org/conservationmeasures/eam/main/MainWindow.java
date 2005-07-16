@@ -16,6 +16,7 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.martus.swing.UiNotifyDlg;
 
@@ -53,7 +54,11 @@ public class MainWindow extends JFrame
 		{
 			project.load(this, projectFile);
 		}
-		catch (IOException e)
+		catch(IOException e)
+		{
+			EAM.logException(e);
+		}
+		catch(CommandFailedException e)
 		{
 			EAM.logException(e);
 		}
@@ -63,6 +68,11 @@ public class MainWindow extends JFrame
 	public void recordCommand(Command command)
 	{
 		project.recordCommand(command);
+	}
+	
+	public void errorDialog(String errorMessage)
+	{
+		okDialog("Error", new String[] {errorMessage});
 	}
 	
 	public void okDialog(String title, String[] body)

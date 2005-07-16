@@ -5,30 +5,54 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 
 public class CommandDeleteNode extends Command
 {
-
-	public CommandDeleteNode()
+	public CommandDeleteNode(int idToDelete)
 	{
-		super();
-		// TODO Auto-generated constructor stub
+		id = idToDelete;
 	}
 
+	public CommandDeleteNode(DataInputStream dataIn) throws IOException
+	{
+		id = dataIn.readInt();
+	}
+
+	public String toString()
+	{
+		return getCommandName() + ":" + getId();
+	}
+	
+	public static String getCommandName()
+	{
+		return "DeleteNode";
+	}
+	
 	public Object execute(Project target)
 	{
-		// TODO Auto-generated method stub
+		DiagramModel model = target.getDiagramModel();
+		Node nodeToDelete = model.getNodeById(id);
+		model.deleteNode(nodeToDelete);
 		return null;
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException
 	{
-		// TODO Auto-generated method stub
-
+		dataOut.writeUTF(getCommandName());
+		dataOut.writeInt(getId());
 	}
 
+	public int getId()
+	{
+		return id;
+	}
+
+	int id;
 }

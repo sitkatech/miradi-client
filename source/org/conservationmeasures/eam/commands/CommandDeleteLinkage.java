@@ -35,11 +35,18 @@ public class CommandDeleteLinkage extends Command
 		return "DeleteLinkage";
 	}
 	
-	public Object execute(Project target)
+	public Object execute(Project target) throws CommandFailedException
 	{
 		DiagramModel model = target.getDiagramModel();
-		Linkage linkageToDelete = model.getLinkageById(id);
-		model.deleteLinkage(linkageToDelete);
+		try
+		{
+			Linkage linkageToDelete = model.getLinkageById(id);
+			model.deleteLinkage(linkageToDelete);
+		}
+		catch (RuntimeException e)
+		{
+			throw new CommandFailedException();
+		}
 		return null;
 	}
 

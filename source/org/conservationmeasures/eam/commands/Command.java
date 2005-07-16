@@ -30,10 +30,12 @@ public abstract class Command
 			return new CommandLinkNodes(dataIn);
 		if(commandName.equals(CommandDeleteLinkage.getCommandName()))
 			return new CommandDeleteLinkage(dataIn);
+		if(commandName.equals(CommandDeleteNode.getCommandName()))
+			return new CommandDeleteNode(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
 	
-	abstract public Object execute(Project target);
+	abstract public Object execute(Project target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream out) throws IOException;
 }

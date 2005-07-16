@@ -5,8 +5,12 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.event.ActionEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+
+import org.conservationmeasures.eam.commands.CommandFailedException;
 
 public abstract class MainWindowAction extends AbstractAction
 {
@@ -25,6 +29,22 @@ public abstract class MainWindowAction extends AbstractAction
 	{
 		return mainWindow;
 	}
+	
+	public void actionPerformed(ActionEvent event)
+	{
+		try
+		{
+			doAction(event);
+		}
+		catch (CommandFailedException e)
+		{
+			EAM.logException(e);
+			getMainWindow().errorDialog(EAM.text("An internal error prevented this operation"));
+		}
+		
+	}
+	
+	public abstract void doAction(ActionEvent event) throws CommandFailedException;
 	
 	MainWindow mainWindow;
 }

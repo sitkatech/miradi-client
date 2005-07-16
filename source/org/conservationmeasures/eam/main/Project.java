@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 
 public class Project
@@ -27,7 +28,7 @@ public class Project
 		return diagramModel;
 	}
 	
-	public void load(MainWindow mainWindow, File projectFile) throws IOException
+	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException
 	{
 		getDiagramModel().removeAll();
 		
@@ -50,7 +51,7 @@ public class Project
 		
 	}
 
-	private void load(FileInputStream in) throws IOException
+	private void load(FileInputStream in) throws IOException, CommandFailedException
 	{
 		DataInputStream dataIn = new DataInputStream(in);
 		try
@@ -63,7 +64,7 @@ public class Project
 		}
 	}
 
-	private void load(DataInputStream dataIn) throws IOException
+	private void load(DataInputStream dataIn) throws IOException, CommandFailedException
 	{
 		EAM.logDebug("---Loading---");
 		while(true)
@@ -84,7 +85,7 @@ public class Project
 		return file.getName();
 	}
 
-	public Object executeCommand(Command command)
+	public Object executeCommand(Command command) throws CommandFailedException
 	{
 		Object result = command.execute(this);
 		recordCommand(command);

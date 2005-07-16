@@ -21,7 +21,7 @@ public class TestSetNodeText extends EAMTestCase
 		super(name);
 	}
 
-	public void testSetNodeText()
+	public void testSetNodeText() throws Exception
 	{
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();

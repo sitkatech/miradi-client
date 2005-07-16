@@ -23,7 +23,7 @@ public class TestInsertNode extends EAMTestCase
 		super(name);
 	}
 
-	public void testInsertGoal()
+	public void testInsertGoal() throws Exception
 	{
 		Project project = new Project();
 		Command insertCommand = new CommandInsertGoal();
@@ -40,7 +40,7 @@ public class TestInsertNode extends EAMTestCase
 		assertTrue("not a goal?", foundNode.isGoal());
 	}
 
-	public void testInsertThreat()
+	public void testInsertThreat() throws Exception
 	{
 		Project project = new Project();
 		Command insertCommand = new CommandInsertThreat();
@@ -57,7 +57,7 @@ public class TestInsertNode extends EAMTestCase
 		assertTrue("not a threat?", foundNode.isThreat());
 	}
 
-	public void testInsertIntervention()
+	public void testInsertIntervention() throws Exception
 	{
 		Project project = new Project();
 		Command insertCommand = new CommandInsertIntervention();
