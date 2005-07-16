@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 
 public class CommandDeleteLinkage extends Command
@@ -45,6 +46,7 @@ public class CommandDeleteLinkage extends Command
 		}
 		catch (RuntimeException e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException();
 		}
 		return null;
