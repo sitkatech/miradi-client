@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.Set;
+
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -37,5 +39,19 @@ public class TestDiagramModel extends EAMTestCase
 		model.createLinkage(threat, goal);
 		assertTrue("not linked?", model.hasLinkage(threat, goal));
 		assertTrue("reverse link not detected?", model.hasLinkage(goal, threat));
+	}
+	
+	public void testGetLinkages()
+	{
+		DiagramModel model = new DiagramModel();
+		Node threat1 = model.createThreatNode();
+		Node threat2 = model.createThreatNode();
+		Node goal = model.createGoalNode();
+		Linkage linkage1 = model.createLinkage(threat1, goal);
+		Linkage linkage2 = model.createLinkage(threat2, goal);
+		Set found = model.getLinkages(goal);
+		assertEquals("Didn't see both links?", 2, found.size());
+		assertTrue("missed first?", found.contains(linkage1));
+		assertTrue("missed second?", found.contains(linkage2));
 	}
 }

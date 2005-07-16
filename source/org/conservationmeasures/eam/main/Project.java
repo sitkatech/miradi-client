@@ -30,7 +30,7 @@ public class Project
 	
 	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException
 	{
-		getDiagramModel().removeAll();
+		getDiagramModel().clear();
 		
 		file = projectFile;
 		if(!file.exists())

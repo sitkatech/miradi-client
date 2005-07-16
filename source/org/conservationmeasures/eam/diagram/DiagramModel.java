@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -25,11 +26,11 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory = new CellInventory();
 	}
 	
-	public void removeAll()
+	public void clear()
 	{
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
-		cellInventory.removeAll();
+		cellInventory.clear();
 	}
 
 	public Node createGoalNode()
@@ -102,6 +103,11 @@ public class DiagramModel extends DefaultGraphModel
 		}
 		
 		return false;
+	}
+	
+	public Set getLinkages(Node node)
+	{
+		return getEdges(this, new Object[] {node});
 	}
 	
 	private void insertNode(Node nodeToInsert)
@@ -197,8 +203,9 @@ class CellInventory
 		cellToIdMap.remove(cell);
 	}
 	
-	public void removeAll()
+	public void clear()
 	{
+		nextId = 0;
 		idToCellMap.clear();
 		cellToIdMap.clear();
 	}
