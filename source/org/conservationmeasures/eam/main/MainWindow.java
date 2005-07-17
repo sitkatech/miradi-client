@@ -55,10 +55,10 @@ public class MainWindow extends JFrame
 		
 		try
 		{
-			project.load(this, projectFile);
 			diagramComponent = new DiagramComponent(this, project.getDiagramModel());
 			diagramScroller = new UiScrollPane(diagramComponent);
 			getContentPane().add(diagramScroller);
+			project.load(this, projectFile);
 			validate();
 			updateTitle();
 		}

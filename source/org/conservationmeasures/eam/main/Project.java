@@ -5,10 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -21,6 +18,7 @@ public class Project
 	public Project()
 	{
 		diagramModel = new DiagramModel();
+		storage = new FileStorage();
 	}
 	
 	public DiagramModel getDiagramModel()
@@ -30,59 +28,25 @@ public class Project
 	
 	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException
 	{
-		getDiagramModel().clear();
-		
-		file = projectFile;
-		if(!file.exists())
+		if(!projectFile.exists())
 		{
-			FileOutputStream out = new FileOutputStream(file);
+			FileOutputStream out = new FileOutputStream(projectFile);
 			out.close();
 		}
 		
-		FileInputStream in = new FileInputStream(file);
-		try
+		getDiagramModel().clear();
+		storage.load(projectFile);
+		for(int i=0; i < storage.getCommandCount(); ++i)
 		{
-			load(in);
-		}
-		finally
-		{
-			in.close();
-		}
-		
-	}
-
-	private void load(FileInputStream in) throws IOException, CommandFailedException
-	{
-		DataInputStream dataIn = new DataInputStream(in);
-		try
-		{
-			load(dataIn);
-		}
-		finally
-		{
-			dataIn.close();
+			storage.getCommand(i).execute(this);
 		}
 	}
 
-	private void load(DataInputStream dataIn) throws IOException, CommandFailedException
-	{
-		EAM.logDebug("---Loading---");
-		while(true)
-		{
-			if(dataIn.read() < 0)
-				break;
-			Command command = Command.readFrom(dataIn);
-			EAM.logDebug(command.toString());
-			command.execute(this);
-		}
-		EAM.logDebug("---Finished---");
-	}
-	
 	public String getName()
 	{
-		if(file == null)
-			return EAM.text("[No Project]");
-		return file.getName();
+		if(storage.hasFile())
+			return storage.getName();
+		return EAM.text("[No Project]");
 	}
 
 	public Object executeCommand(Command command) throws CommandFailedException
@@ -96,7 +60,7 @@ public class Project
 	{
 		try
 		{
-			appendCommandToProjectFile(command);
+			storage.appendCommand(command);
 		}
 		catch (IOException e)
 		{
@@ -104,41 +68,6 @@ public class Project
 		}
 	}
 	
-	private void appendCommandToProjectFile(Command command) throws IOException
-	{
-		FileOutputStream out = new FileOutputStream(file, true);
-		try
-		{
-			appendCommandToStorage(out, command);
-		}
-		finally
-		{
-			out.close();
-		}
-		
-	}
-
-	private void appendCommandToStorage(FileOutputStream out, Command command) throws IOException
-	{
-		DataOutputStream dataOut = new DataOutputStream(out);
-		try
-		{
-			appendCommandToStorage(dataOut, command);
-		}
-		finally
-		{
-			dataOut.close();
-		}
-	}
-
-	private void appendCommandToStorage(DataOutputStream dataOut, Command command) throws IOException
-	{
-		dataOut.write(0);
-		command.writeTo(dataOut);
-		EAM.logDebug("wrote: " + command.toString());
-	}
-	
-	
-	File file;
+	FileStorage storage;
 	DiagramModel diagramModel;
 }
