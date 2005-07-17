@@ -36,6 +36,11 @@ public abstract class Command
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
 	
+	public boolean equals(Object other)
+	{
+		return toString().equals(other.toString());
+	}
+
 	abstract public Object execute(Project target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream out) throws IOException;
 }
