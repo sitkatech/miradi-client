@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.martus.swing.UiNotifyDlg;
+import org.martus.swing.UiScrollPane;
 
 public class MainWindow extends JFrame
 {
@@ -31,9 +32,6 @@ public class MainWindow extends JFrame
 		setJMenuBar(new MainMenuBar(this));
 		getContentPane().add(new MainToolBar(this), BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
-
-		diagramComponent = new DiagramComponent(this, project.getDiagramModel());
-		getContentPane().add(diagramComponent);
 
 		addWindowListener(new WindowEventHandler());
 	}
@@ -50,9 +48,19 @@ public class MainWindow extends JFrame
 	
 	public void loadProject(File projectFile)
 	{
+		if(diagramScroller != null)
+		{
+			getContentPane().remove(diagramScroller);
+		}
+		
 		try
 		{
 			project.load(this, projectFile);
+			diagramComponent = new DiagramComponent(this, project.getDiagramModel());
+			diagramScroller = new UiScrollPane(diagramComponent);
+			getContentPane().add(diagramScroller);
+			validate();
+			updateTitle();
 		}
 		catch(IOException e)
 		{
@@ -62,7 +70,6 @@ public class MainWindow extends JFrame
 		{
 			EAM.logException(e);
 		}
-		updateTitle();
 	}
 	
 	public void recordCommand(Command command)
@@ -106,5 +113,6 @@ public class MainWindow extends JFrame
 	}
 
 	Project project;
+	UiScrollPane diagramScroller;
 	DiagramComponent diagramComponent;
 }
