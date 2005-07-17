@@ -32,7 +32,9 @@ public class ActionNewProject extends MainWindowAction
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(getLabel());
-		if(dlg.showSaveDialog(getMainWindow()) != JFileChooser.APPROVE_OPTION)
+		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
+		dlg.setApproveButtonToolTipText("Create new project");
+		if(dlg.showDialog(getMainWindow(), EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
 			return;
 		
 		File chosen = dlg.getSelectedFile();
