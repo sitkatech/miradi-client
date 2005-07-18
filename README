@@ -1,0 +1,42 @@
+CMP e-Adaptive Management
+Copyright 2005, The Conservation Measures Partnership and 
+		Beneficent Technology, Inc. (Benetech, at www.benetech.org)
+
+*** This pre-release version is intended for evaluation and feedback only ***
+*** Please do not re-distribute this software without authorization ***
+
+This software program is being developed by the Conservation Measures 
+Partnership (CMP) to assist conservation practitioners to go through the 
+adaptive management process outlined in the CMP's Open Standards for the 
+Practice of Conservation.
+
+If you have questions or suggestions, please contact Nick Salafsky at 
+Nick@FOSonline.org or at 1-301-263-2784.
+   
+The jgraph.jar file is copyright JGraph Ltd, and is 
+  distributed under the LGPL as described in LICENSE.jgraph
+  It is not been modified from the original version, 
+  which is available from http://jgraph.com
+  
+
+---------------------
+
+PREREQUISITES
+
+1. Java 1.4.2 or later
+
+
+
+INSTALLING
+
+Unzip the contents into some working directory, such as 
+c:\Program Files\eam. 
+
+
+
+RUNNING UNDER MS-WINDOWS
+
+From a DOS prompt in the cmpdemo working directory, do:
+
+  java -cp .;jgraph.jar; org.conservationmeasures.eam.main.EAM
+  
