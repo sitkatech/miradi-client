@@ -43,6 +43,12 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 
 	public void mouseReleased(MouseEvent event)
 	{
+		if(event.isPopupTrigger())
+		{
+			diagram.showContextMenu(event);
+			return;
+		}
+
 		if(dragStartedAt == null)
 			return;
 		
