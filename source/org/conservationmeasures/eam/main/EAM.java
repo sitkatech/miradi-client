@@ -15,13 +15,21 @@ import org.conservationmeasures.eam.utils.Translation;
 
 public class EAM
 {
-	public static void main(String[] args) throws Exception
+	public static void main(String[] args)
 	{
-		setBestLookAndFeel();
 		setLogLevel(LOG_DEBUG);
-
-		JFrame mainWindow = new MainWindow();
-		mainWindow.setVisible(true);
+		try
+		{
+			setBestLookAndFeel();
+			VersionConstants.setVersionString();
+	
+			JFrame mainWindow = new MainWindow();
+			mainWindow.setVisible(true);
+		}
+		catch(Exception e)
+		{
+			logException(e);
+		}
 	}
 	
 	static void setBestLookAndFeel() throws Exception

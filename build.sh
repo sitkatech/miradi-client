@@ -1,3 +1,5 @@
+date "+%Y-%m-%d %X" > bin/version.txt
+
 rm ../eam.zip
 zip ../eam README LICENSE.jgraph
 zip -j ../eam third-party/jgraph/jgraph.jar
@@ -7,6 +9,7 @@ cd ..
 
 cd cmp-eam/bin
 zip -r ../../eam . -i "*.class"
+zip -r ../../eam . -i "version.txt"
 cd ../..
 
 cd martus-swing/bin
@@ -16,3 +19,5 @@ cd ../..
 cd martus-utils/bin
 zip -r ../../eam . -i "*.class"
 cd ../..
+
+echo REMEMBER TO TAG THIS RELEASE!
