@@ -25,6 +25,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 	
 	public void mousePressed(MouseEvent event)
 	{
+		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
 			diagram.showContextMenu(event);
@@ -46,6 +47,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(event.isPopupTrigger())
 		{
 			diagram.showContextMenu(event);
+			dragStartedAt = null;
 			return;
 		}
 
