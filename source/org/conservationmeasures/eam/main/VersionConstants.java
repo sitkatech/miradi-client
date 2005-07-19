@@ -7,5 +7,5 @@ package org.conservationmeasures.eam.main;
 
 public class VersionConstants
 {
-	public static String VERSION_STRING = "2005-06-30";
+	public static String VERSION_STRING = "2005-07-19";
 }
