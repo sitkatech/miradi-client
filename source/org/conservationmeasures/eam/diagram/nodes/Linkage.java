@@ -43,11 +43,11 @@ public class Linkage extends EAMGraphCell implements Edge
 	
 	private void fillConnectorAttributeMap(String label)
 	{
-	    GraphConstants.setLineEnd(getMap(), GraphConstants.ARROW_SIMPLE);
-	    GraphConstants.setValue(getMap(), label);
-	    GraphConstants.setOpaque(getMap(), true);
-	    GraphConstants.setBackground(getMap(), Color.CYAN);
-	    GraphConstants.setForeground(getMap(), Color.BLACK);
+	    GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_SIMPLE);
+	    GraphConstants.setValue(getAttributes(), label);
+	    GraphConstants.setOpaque(getAttributes(), true);
+	    GraphConstants.setBackground(getAttributes(), Color.CYAN);
+	    GraphConstants.setForeground(getAttributes(), Color.BLACK);
 //		Font font = getFont().deriveFont(Font.BOLD);
 //		GraphConstants.setFont(thisMap, font);
 	}

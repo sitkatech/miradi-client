@@ -27,7 +27,7 @@ public class TestNode extends EAMTestCase
 	{
 		threatType = new NodeTypeThreat();
 		node = new Node(threatType);
-		attributeMap = node.getMap();
+		attributeMap = node.getAttributes();
 		super.setUp();
 	}
 	

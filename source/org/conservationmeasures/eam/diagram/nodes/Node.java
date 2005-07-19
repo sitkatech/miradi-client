@@ -62,17 +62,17 @@ public class Node extends EAMGraphCell
 	private void setColors(NodeType cellType)
 	{
 		Color color = cellType.getColor();
-		GraphConstants.setBorderColor(getMap(), Color.black);
-		GraphConstants.setBackground(getMap(), color);
-		GraphConstants.setForeground(getMap(), Color.black);
-		GraphConstants.setOpaque(getMap(), true);
+		GraphConstants.setBorderColor(getAttributes(), Color.black);
+		GraphConstants.setBackground(getAttributes(), color);
+		GraphConstants.setForeground(getAttributes(), Color.black);
+		GraphConstants.setOpaque(getAttributes(), true);
 	}
 	
 	private void setSize(Dimension size)
 	{
 		Point location = getLocation();
 		Rectangle bounds = new Rectangle(location, size);
-		GraphConstants.setBounds(getMap(), bounds);
+		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 
 	NodeType type;

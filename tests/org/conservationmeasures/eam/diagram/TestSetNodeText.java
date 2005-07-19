@@ -35,7 +35,7 @@ public class TestSetNodeText extends EAMTestCase
 		setTextCommand.execute(project);
 
 		EAMGraphCell found = model.getNodeById(id);
-		String foundText = (String)GraphConstants.getValue(found.getMap());
+		String foundText = (String)GraphConstants.getValue(found.getAttributes());
 		assertEquals("wrong text?", sampleText, foundText);
 	}
 }

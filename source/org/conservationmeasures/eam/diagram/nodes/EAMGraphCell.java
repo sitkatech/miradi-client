@@ -10,9 +10,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Map;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
@@ -21,14 +19,8 @@ public class EAMGraphCell extends DefaultGraphCell
 {
 	public EAMGraphCell()
 	{
-		map = new HashMap();
 	}
 
-	public Map getMap()
-	{
-		return map;
-	}
-	
 	public boolean isNode()
 	{
 		return false;
@@ -41,7 +33,7 @@ public class EAMGraphCell extends DefaultGraphCell
 	
 	public Point getLocation()
 	{
-		Rectangle2D bounds = GraphConstants.getBounds(getMap());
+		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
 		if(bounds == null)
 			return new Point(0, 0);
 		
@@ -50,7 +42,7 @@ public class EAMGraphCell extends DefaultGraphCell
 
 	public void setLocation(Point2D snappedLocation)
 	{
-		Rectangle2D bounds = GraphConstants.getBounds(getMap());
+		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
 		if(bounds == null)
 			bounds = new Rectangle(0, 0, 0, 0);
 		
@@ -58,25 +50,24 @@ public class EAMGraphCell extends DefaultGraphCell
 		double height = bounds.getHeight();
 		Dimension size = new Dimension((int)width, (int)height);
 		Point location = new Point((int)snappedLocation.getX(), (int)snappedLocation.getY());
-		GraphConstants.setBounds(getMap(), new Rectangle(location, size));
+		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
 	}
 	
 	public Hashtable getNestedAttributeMap()
 	{
 		Hashtable nest = new Hashtable();
-		nest.put(this, getMap());
+		nest.put(this, getAttributes());
 		return nest;
 	}
 
 	public void setText(String text)
 	{
-		GraphConstants.setValue(getMap(), text);
+		GraphConstants.setValue(getAttributes(), text);
 	}
 
 	public String getText()
 	{
-		return (String)GraphConstants.getValue(getMap());
+		return (String)GraphConstants.getValue(getAttributes());
 	}
 
-	Map map;
 }
