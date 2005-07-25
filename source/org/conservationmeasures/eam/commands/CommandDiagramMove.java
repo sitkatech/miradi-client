@@ -51,6 +51,16 @@ public class CommandDiagramMove extends Command
 	
 	public void execute(Project target) throws CommandFailedException
 	{
+		doMove(target, getDeltaX(), getDeltaY());
+	}
+
+	public void undo(Project target) throws CommandFailedException
+	{
+		doMove(target, -getDeltaX(), -getDeltaY());
+	}
+	
+	private void doMove(Project target, int xDelta, int yDelta) throws CommandFailedException
+	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
@@ -59,7 +69,7 @@ public class CommandDiagramMove extends Command
 			{
 				EAMGraphCell cellToMove = model.getCellById(ids[i]);
 				Point oldLocation = cellToMove.getLocation();
-				Point newLocation = new Point(oldLocation.x + getDeltaX(), oldLocation.y + getDeltaY());
+				Point newLocation = new Point(oldLocation.x + xDelta, oldLocation.y + yDelta);
 				cellToMove.setLocation(newLocation);
 				model.updateCell(cellToMove);
 			}

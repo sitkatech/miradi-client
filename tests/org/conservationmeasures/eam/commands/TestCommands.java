@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.awt.Point;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -40,12 +42,29 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandDiagramMove() throws Exception
 	{
-		int[] ids = {1, 4, 16, 64};
-		CommandDiagramMove cmd = new CommandDiagramMove(25, -68, ids);
+		Point moveTo = new Point(25, -68);
+		int[] ids = {insertGoal(), insertThreat(), insertThreat(), insertIntervention()};
+		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
+		cmd.execute(project);
+		
+		for(int i=0; i < ids.length; ++i)
+		{
+			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			assertEquals("didn't set location?", moveTo, node.getLocation());
+		}
+
 		CommandDiagramMove loaded = (CommandDiagramMove)saveAndReload(cmd);
 		assertEquals("didn't restore deltaX?", cmd.getDeltaX(), loaded.getDeltaX());
 		assertEquals("didn't restore deltaY?", cmd.getDeltaY(), loaded.getDeltaY());
 		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
+		
+		Point zeroZero = new Point(0, 0);
+		cmd.undo(project);
+		for(int i=0; i < ids.length; ++i)
+		{
+			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
+		}
 	}
 	
 	public void testCommandSetNodeText() throws Exception
@@ -66,13 +85,44 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals("didn't restore new text?", newText, loaded.getNewText());
 		assertEquals("didn't restore previous text?", originalText, loaded.getPreviousText());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalText, project.getDiagramModel().getNodeById(id).getText());
+		
+		try
+		{
+			EAM.setLogToString();
+			cmd.undo(project);
+			fail("Should have thrown because text wasn't what we expected");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
 	}
 
 	private int insertGoal() throws Exception
 	{
-		CommandInsertNode insertGoal = new CommandInsertNode(Node.TYPE_GOAL);
-		insertGoal.execute(project);
-		int id = insertGoal.getId();
+		int type = Node.TYPE_GOAL;
+		return insertNode(type);
+	}
+	
+	private int insertThreat() throws Exception
+	{
+		int type = Node.TYPE_THREAT;
+		return insertNode(type);
+	}
+
+	private int insertIntervention() throws Exception
+	{
+		int type = Node.TYPE_INTERVENTION;
+		return insertNode(type);
+	}
+
+	private int insertNode(int type) throws CommandFailedException
+	{
+		CommandInsertNode insert = new CommandInsertNode(type);
+		insert.execute(project);
+		int id = insert.getId();
 		return id;
 	}
 	
@@ -81,9 +131,9 @@ public class TestCommands extends EAMTestCase
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_GOAL);
 		assertEquals("type not right?", Node.TYPE_GOAL, cmd.getNodeType());
 		assertEquals("already have an id?", -1, cmd.getId());
-		
 		cmd.execute(project);
 		int insertedId = cmd.getId();
+		
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a goal?", inserted.isGoal());
 
@@ -127,7 +177,7 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		int from = insertGoal();
+		int from = insertThreat();
 		int to = insertGoal();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		cmd.execute(project);
@@ -145,8 +195,8 @@ public class TestCommands extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		int from = insertGoal();
-		int to = insertGoal();
+		int from = insertIntervention();
+		int to = insertThreat();
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
 		link.execute(project);
 		int linkageId = link.getLinkageId();

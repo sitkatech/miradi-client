@@ -40,7 +40,7 @@ public abstract class Command
 	abstract public void execute(Project target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream out) throws IOException;
 	
-	public void undo(Project target)
+	public void undo(Project target) throws CommandFailedException
 	{
 		throw new RuntimeException("Not implemented yet");
 	}
