@@ -15,13 +15,26 @@ import org.jgraph.graph.GraphConstants;
 
 public class Node extends EAMGraphCell
 {
-	public Node(NodeType nodeType)
+	public Node(int nodeType)
 	{
-		type = nodeType;
+		switch(nodeType)
+		{
+			case TYPE_GOAL:
+				type = new NodeTypeGoal();
+				break;
+			case TYPE_THREAT:
+				type = new NodeTypeThreat();
+				break;
+			case TYPE_INTERVENTION:
+				type = new NodeTypeIntervention();
+				break;
+			default:
+				throw new RuntimeException("Unknown node type: " + nodeType);
+		}
 		port = new DefaultPort();
 		add(port);
 		
-		setColors(nodeType);
+		setColors(type);
 		setFont();
 		setLocation(new Point(0, 0));
 		setSize(new Dimension(120, 60));
@@ -76,6 +89,10 @@ public class Node extends EAMGraphCell
 	}
 	
 	public static final int INVALID_ID = -1;
+	
+	public static final int TYPE_GOAL = 1;
+	public static final int TYPE_THREAT = 2;
+	public static final int TYPE_INTERVENTION = 3;
 
 	NodeType type;
 	DefaultPort port;

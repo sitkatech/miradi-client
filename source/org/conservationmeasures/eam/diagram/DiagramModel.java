@@ -13,9 +13,6 @@ import java.util.Set;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -35,21 +32,21 @@ public class DiagramModel extends DefaultGraphModel
 
 	public Node createGoalNode()
 	{
-		Node node = new Node(new NodeTypeGoal());
+		Node node = new Node(Node.TYPE_GOAL);
 		insertNode(node);
 		return node;
 	}
 	
 	public Node createThreatNode()
 	{
-		Node node = new Node(new NodeTypeThreat());
+		Node node = new Node(Node.TYPE_THREAT);
 		insertNode(node);
 		return node;
 	}
 	
 	public Node createInterventionNode()
 	{
-		Node node = new Node(new NodeTypeIntervention());
+		Node node = new Node(Node.TYPE_INTERVENTION);
 		insertNode(node);
 		return node;
 	}

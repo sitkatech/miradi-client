@@ -37,7 +37,7 @@ public class CommandInsertThreat extends AbstractCommandInsertNode
 	public void execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		Node node = model.createThreatNode();
+		Node node = model.createNode(Node.TYPE_THREAT);
 		setId(model.getNodeId(node));
 	}
 	

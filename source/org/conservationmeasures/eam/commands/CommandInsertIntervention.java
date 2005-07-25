@@ -37,7 +37,7 @@ public class CommandInsertIntervention extends AbstractCommandInsertNode
 	public void execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		Node node = model.createInterventionNode();
+		Node node = model.createNode(Node.TYPE_INTERVENTION);
 		setId(model.getNodeId(node));
 	}
 	

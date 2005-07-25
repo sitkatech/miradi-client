@@ -11,7 +11,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.diagram.nodes.NodeType;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -25,8 +24,7 @@ public class TestNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		threatType = new NodeTypeThreat();
-		node = new Node(threatType);
+		node = new Node(Node.TYPE_THREAT);
 		attributeMap = node.getAttributes();
 		super.setUp();
 	}
@@ -45,6 +43,7 @@ public class TestNode extends EAMTestCase
 	
 	public void testColors()
 	{
+		NodeTypeThreat threatType = new NodeTypeThreat();
 		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), threatType.getColor());
 	}
 	
@@ -67,7 +66,6 @@ public class TestNode extends EAMTestCase
 	static final double TOLERANCE = 0.01;
 	static final String sampleText = "<rest&relaxation>";
 	
-	NodeType threatType;
 	Node node;
 	Map attributeMap;
 }

@@ -22,8 +22,8 @@ public class TestDiagramModel extends EAMTestCase
 	public void testIsNode()
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat = model.createThreatNode();
-		Node goal = model.createGoalNode();
+		Node threat = model.createNode(Node.TYPE_THREAT);
+		Node goal = model.createNode(Node.TYPE_GOAL);
 		Linkage link = model.createLinkage(threat, goal);
 		assertTrue("threat isn't a node?", model.isNode(threat));
 		assertTrue("goal isn't a node?", model.isNode(goal));
@@ -33,8 +33,8 @@ public class TestDiagramModel extends EAMTestCase
 	public void testHasLinkage()
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat = model.createThreatNode();
-		Node goal = model.createGoalNode();
+		Node threat = model.createNode(Node.TYPE_THREAT);
+		Node goal = model.createNode(Node.TYPE_GOAL);
 		assertFalse("already linked?", model.hasLinkage(threat, goal));
 		model.createLinkage(threat, goal);
 		assertTrue("not linked?", model.hasLinkage(threat, goal));
@@ -44,9 +44,9 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetLinkages()
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat1 = model.createThreatNode();
-		Node threat2 = model.createThreatNode();
-		Node goal = model.createGoalNode();
+		Node threat1 = model.createNode(Node.TYPE_THREAT);
+		Node threat2 = model.createNode(Node.TYPE_THREAT);
+		Node goal = model.createNode(Node.TYPE_GOAL);
 		Linkage linkage1 = model.createLinkage(threat1, goal);
 		Linkage linkage2 = model.createLinkage(threat2, goal);
 		Set found = model.getLinkages(goal);

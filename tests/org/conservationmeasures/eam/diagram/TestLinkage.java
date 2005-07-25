@@ -10,8 +10,6 @@ import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -24,8 +22,8 @@ public class TestLinkage extends EAMTestCase
 
 	public void testBasics()
 	{
-		Node threat = new Node(new NodeTypeThreat());
-		Node goal = new Node(new NodeTypeGoal());
+		Node threat = new Node(Node.TYPE_THREAT);
+		Node goal = new Node(Node.TYPE_GOAL);
 		Linkage linkage = new Linkage(threat, goal);
 		assertEquals("didn't remember from?", threat, linkage.getFromNode());
 		assertEquals("didn't remember to?", goal, linkage.getToNode());

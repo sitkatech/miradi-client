@@ -37,7 +37,7 @@ public class CommandInsertGoal extends AbstractCommandInsertNode
 	public void execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
-		Node node = model.createGoalNode();
+		Node node = model.createNode(Node.TYPE_GOAL);
 		setId(model.getNodeId(node));
 	}
 	
