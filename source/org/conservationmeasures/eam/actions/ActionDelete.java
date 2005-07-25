@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,7 +14,9 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -82,7 +85,14 @@ public class ActionDelete extends MainWindowAction
 	{
 		Project project = getMainWindow().getProject();
 		int id = project.getDiagramModel().getNodeId(nodeToDelete);
+
+		Point location = nodeToDelete.getLocation();
+		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[id]);
+		CommandSetNodeText clearText = new CommandSetNodeText(id, "");
 		CommandDeleteNode command = new CommandDeleteNode(id);
+		
+		project.executeCommand(moveToZeroZero);
+		project.executeCommand(clearText);
 		project.executeCommand(command);
 	}
 
