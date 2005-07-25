@@ -29,7 +29,7 @@ public class CommandInsertNode extends Command
 		insertedId = dataIn.readInt();
 	}
 	
-	public int getType()
+	public int getNodeType()
 	{
 		return type;
 	}
@@ -41,7 +41,7 @@ public class CommandInsertNode extends Command
 
 	public String toString()
 	{
-		return getCommandName() + ":" + getType() + ","+ getId();
+		return getCommandName() + ":" + getNodeType() + ","+ getId();
 	}
 	
 	public static String getCommandName()

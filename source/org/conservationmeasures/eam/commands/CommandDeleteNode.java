@@ -19,11 +19,18 @@ public class CommandDeleteNode extends Command
 	public CommandDeleteNode(int idToDelete)
 	{
 		id = idToDelete;
+		nodeType = Node.TYPE_INVALID;
 	}
 
 	public CommandDeleteNode(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
+		nodeType = dataIn.readInt();
+	}
+	
+	public int getNodeType()
+	{
+		return nodeType;
 	}
 
 	public String toString()
@@ -42,6 +49,7 @@ public class CommandDeleteNode extends Command
 		try
 		{
 			Node nodeToDelete = model.getNodeById(id);
+			nodeType = nodeToDelete.getNodeType();
 			model.deleteNode(nodeToDelete);
 		}
 		catch (Exception e)
@@ -55,6 +63,7 @@ public class CommandDeleteNode extends Command
 	{
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
+		dataOut.writeInt(getNodeType());
 	}
 
 	public int getId()
@@ -63,4 +72,5 @@ public class CommandDeleteNode extends Command
 	}
 
 	int id;
+	int nodeType;
 }

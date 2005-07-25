@@ -79,6 +79,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertGoal() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_GOAL);
+		assertEquals("type not right?", Node.TYPE_GOAL, cmd.getNodeType());
 		assertEquals("already have an id?", -1, cmd.getId());
 		
 		cmd.execute(project);
@@ -88,6 +89,7 @@ public class TestCommands extends EAMTestCase
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);
+		assertEquals("didn't load type?", cmd.getNodeType(), loaded.getNodeType());
 		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
 	}
 
@@ -162,10 +164,16 @@ public class TestCommands extends EAMTestCase
 
 	public void testDeleteNode() throws Exception
 	{
-		int id = 366;
+		int id = insertGoal();
 		CommandDeleteNode cmd = new CommandDeleteNode(id);
+		assertEquals("type not defaulting properly?", Node.TYPE_INVALID, cmd.getNodeType());
+		cmd.execute(project);
+		
+		assertEquals("type not set by execute?", Node.TYPE_GOAL, cmd.getNodeType());
+		
 		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
-		assertEquals("didn't restore from?", id, loaded.getId());
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 	}
 
 	private Command saveAndReload(Command cmd) throws IOException
