@@ -6,9 +6,10 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandInsertGoal;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -25,7 +26,7 @@ public class TestSetNodeText extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertGoal insertCommand = new CommandInsertGoal();
+		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_GOAL);
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 

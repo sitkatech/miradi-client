@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.commands.AbstractCommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandFailedException;
@@ -26,7 +26,7 @@ public abstract class InsertNodeAction extends MainWindowAction
 
 	abstract public String getInitialText();
 
-	protected void doInsert(AbstractCommandInsertNode insertCommand) throws CommandFailedException
+	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
 	{
 		Project project = getMainWindow().getProject();
 		project.executeCommand(insertCommand);

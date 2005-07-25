@@ -5,8 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandInsertGoal;
-import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -25,11 +24,11 @@ public class TestCommandLinkNodes extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertThreat insertThreat = new CommandInsertThreat();
+		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertThreat.execute(project);
 		int threatId = insertThreat.getId();
 		Node threat = model.getNodeById(threatId);
-		CommandInsertGoal insertGoal = new CommandInsertGoal();
+		CommandInsertNode insertGoal = new CommandInsertNode(Node.TYPE_GOAL);
 		insertGoal.execute(project);
 		int goalId = insertGoal.getId();
 		Node goal = model.getNodeById(goalId);

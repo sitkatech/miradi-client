@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandInsertGoal;
-import org.conservationmeasures.eam.commands.CommandInsertIntervention;
-import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -22,11 +22,26 @@ public class TestInsertNode extends EAMTestCase
 	{
 		super(name);
 	}
+	
+	public void testBadInsert()
+	{
+		Project project = new Project();
+		Command insertCommand = new CommandInsertNode(-1);
+		try
+		{
+			EAM.setLogToString();
+			insertCommand.execute(project);
+			fail("should have thrown");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
+	}
 
 	public void testInsertGoal() throws Exception
 	{
 		Project project = new Project();
-		Command insertCommand = new CommandInsertGoal();
+		Command insertCommand = new CommandInsertNode(Node.TYPE_GOAL);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
@@ -43,7 +58,7 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertThreat() throws Exception
 	{
 		Project project = new Project();
-		Command insertCommand = new CommandInsertThreat();
+		Command insertCommand = new CommandInsertNode(Node.TYPE_THREAT);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
@@ -60,7 +75,7 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertIntervention() throws Exception
 	{
 		Project project = new Project();
-		Command insertCommand = new CommandInsertIntervention();
+		Command insertCommand = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);

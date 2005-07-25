@@ -20,12 +20,8 @@ public abstract class Command
 			return new CommandDiagramMove(dataIn);
 		if(commandName.equals(CommandSetNodeText.getCommandName()))
 			return new CommandSetNodeText(dataIn);
-		if(commandName.equals(CommandInsertGoal.getCommandName()))
-			return new CommandInsertGoal(dataIn);
-		if(commandName.equals(CommandInsertThreat.getCommandName()))
-			return new CommandInsertThreat(dataIn);
-		if(commandName.equals(CommandInsertIntervention.getCommandName()))
-			return new CommandInsertIntervention(dataIn);
+		if(commandName.equals(CommandInsertNode.getCommandName()))
+			return new CommandInsertNode(dataIn);
 		if(commandName.equals(CommandLinkNodes.getCommandName()))
 			return new CommandLinkNodes(dataIn);
 		if(commandName.equals(CommandDeleteLinkage.getCommandName()))

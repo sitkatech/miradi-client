@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandInsertGoal;
-import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestFileStorage extends EAMTestCase
@@ -30,7 +30,7 @@ public class TestFileStorage extends EAMTestCase
 		
 		try
 		{
-			storage.appendCommand(new CommandInsertGoal());
+			storage.appendCommand(new CommandInsertNode(Node.TYPE_GOAL));
 			fail("Should have thrown since no file was loaded");
 		}
 		catch(IOException ignoreExpected)
@@ -41,8 +41,8 @@ public class TestFileStorage extends EAMTestCase
 		assertTrue("no file after loading?", storage.hasFile());
 		assertEquals("wrong file name?", temp.getName(), storage.getName());
 		
-		Command createGoal = new CommandInsertGoal();
-		Command createThreat = new CommandInsertThreat();
+		Command createGoal = new CommandInsertNode(Node.TYPE_GOAL);
+		Command createThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		storage.appendCommand(createGoal);
 		storage.appendCommand(createThreat);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());

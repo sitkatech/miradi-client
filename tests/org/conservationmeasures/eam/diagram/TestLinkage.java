@@ -5,8 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandInsertIntervention;
-import org.conservationmeasures.eam.commands.CommandInsertThreat;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -37,8 +36,8 @@ public class TestLinkage extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 		
-		CommandInsertIntervention insertIntervention = new CommandInsertIntervention();
-		CommandInsertThreat insertThreat = new CommandInsertThreat();
+		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
+		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertIntervention.execute(project);
 		Node intervention = model.getNodeById(insertIntervention.getId());
 		insertThreat.execute(project);
