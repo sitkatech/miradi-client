@@ -88,7 +88,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.get(i);
+			EAMGraphCell cell = cellInventory.getByIndex(i);
 			if(!cell.isLinkage())
 				continue;
 			
@@ -143,17 +143,20 @@ public class DiagramModel extends DefaultGraphModel
 		return getCellId(linkage);
 	}
 	
-	public EAMGraphCell getCellById(int id)
+	public EAMGraphCell getCellById(int id) throws Exception
 	{
-		return cellInventory.get(id);
+		EAMGraphCell cell = cellInventory.getById(id);
+		if(cell == null)
+			throw new Exception("Cell doesn't exist, id: " + id);
+		return cell;
 	}
 
-	public Node getNodeById(int id)
+	public Node getNodeById(int id) throws Exception
 	{
 		return (Node)getCellById(id);
 	}
 
-	public Linkage getLinkageById(int id)
+	public Linkage getLinkageById(int id) throws Exception
 	{
 		return (Linkage)getCellById(id);
 	}
@@ -181,12 +184,18 @@ class CellInventory
 		return idToCellMap.size();
 	}
 	
-	public EAMGraphCell get(int index)
+	public EAMGraphCell getByIndex(int index)
 	{
-		EAMGraphCell foundCell = (EAMGraphCell)idToCellMap.get(new Integer(index));
+		Integer[] keys = (Integer[])idToCellMap.keySet().toArray(new Integer[0]);
+		EAMGraphCell foundCell = (EAMGraphCell)idToCellMap.get(keys[index]);
 		if(foundCell == null)
 			throw new RuntimeException("Cell not found id: " + index);
 		return foundCell;
+	}
+	
+	public EAMGraphCell getById(int id)
+	{
+		return (EAMGraphCell)idToCellMap.get(new Integer(id));
 	}
 	
 	public int find(EAMGraphCell cell)

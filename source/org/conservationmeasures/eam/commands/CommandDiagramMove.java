@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 
 public class CommandDiagramMove extends Command
@@ -48,20 +49,28 @@ public class CommandDiagramMove extends Command
 		return "DiagramMove";
 	}
 	
-	public Object execute(Project target)
+	public Object execute(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
-
-		for(int i = 0; i < ids.length; ++i)
+		try
 		{
-			EAMGraphCell cellToMove = model.getCellById(ids[i]);
-			Point oldLocation = cellToMove.getLocation();
-			Point newLocation = new Point(oldLocation.x + getDeltaX(), oldLocation.y + getDeltaY());
-			cellToMove.setLocation(newLocation);
-			model.updateCell(cellToMove);
+			DiagramModel model = target.getDiagramModel();
+
+			for(int i = 0; i < ids.length; ++i)
+			{
+				EAMGraphCell cellToMove = model.getCellById(ids[i]);
+				Point oldLocation = cellToMove.getLocation();
+				Point newLocation = new Point(oldLocation.x + getDeltaX(), oldLocation.y + getDeltaY());
+				cellToMove.setLocation(newLocation);
+				model.updateCell(cellToMove);
+			}
+			
+			return null;
 		}
-		
-		return null;
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException();
+		}
 	}
 	
 	public void writeTo(DataOutputStream dataOut) throws IOException

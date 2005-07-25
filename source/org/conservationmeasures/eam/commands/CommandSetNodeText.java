@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 
 public class CommandSetNodeText extends Command
@@ -44,14 +45,22 @@ public class CommandSetNodeText extends Command
 		return "SetNodeText";
 	}
 	
-	public Object execute(Project target)
+	public Object execute(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
-		EAMGraphCell node = model.getNodeById(getId());
-		previousText = node.getText();
-		node.setText(getNewText());
-		model.updateCell(node);
-		return null;
+		try
+		{
+			DiagramModel model = target.getDiagramModel();
+			EAMGraphCell node = model.getNodeById(getId());
+			previousText = node.getText();
+			node.setText(getNewText());
+			model.updateCell(node);
+			return null;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException();
+		}
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException

@@ -44,7 +44,7 @@ public class CommandDeleteNode extends Command
 			Node nodeToDelete = model.getNodeById(id);
 			model.deleteNode(nodeToDelete);
 		}
-		catch (RuntimeException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException();

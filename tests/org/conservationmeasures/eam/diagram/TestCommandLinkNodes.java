@@ -20,7 +20,7 @@ public class TestCommandLinkNodes extends EAMTestCase
 		super(name);
 	}
 
-	public void testInsertConnection()
+	public void testInsertConnection() throws Exception
 	{
 		Project project = new Project();
 		Node threat = (Node)new CommandInsertThreat().execute(project);

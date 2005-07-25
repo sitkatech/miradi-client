@@ -12,6 +12,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 
 public class CommandLinkNodes extends Command
@@ -45,14 +46,22 @@ public class CommandLinkNodes extends Command
 		return "LinkNodes";
 	}
 	
-	public Object execute(Project target)
+	public Object execute(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
-		Node fromNode = model.getNodeById(fromId);
-		Node toNode = model.getNodeById(toId);
-		Linkage linkage = model.createLinkage(fromNode, toNode);
-		linkageId = model.getLinkageId(linkage);
-		return linkage;
+		try
+		{
+			DiagramModel model = target.getDiagramModel();
+			Node fromNode = model.getNodeById(fromId);
+			Node toNode = model.getNodeById(toId);
+			Linkage linkage = model.createLinkage(fromNode, toNode);
+			linkageId = model.getLinkageId(linkage);
+			return linkage;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException();
+		}
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException

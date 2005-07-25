@@ -61,7 +61,7 @@ public class CommandDeleteLinkage extends Command
 			wasTo = model.getNodeId(linkageToDelete.getToNode());
 			model.deleteLinkage(linkageToDelete);
 		}
-		catch (RuntimeException e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException();
