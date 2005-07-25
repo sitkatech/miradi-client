@@ -41,7 +41,7 @@ public abstract class Command
 		return toString().equals(other.toString());
 	}
 
-	abstract public Object execute(Project target) throws CommandFailedException;
+	abstract public void execute(Project target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream out) throws IOException;
 	
 	public void undo(Project target)

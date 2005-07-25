@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertGoal;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -26,9 +25,9 @@ public class TestSetNodeText extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 
-		Command insertCommand = new CommandInsertGoal();
-		Node node = (Node)insertCommand.execute(project);
-		int id = model.getNodeId(node);
+		CommandInsertGoal insertCommand = new CommandInsertGoal();
+		insertCommand.execute(project);
+		int id = insertCommand.getId();
 
 		String sampleText = "A blue bird";
 		Command setTextCommand = new CommandSetNodeText(id, sampleText);

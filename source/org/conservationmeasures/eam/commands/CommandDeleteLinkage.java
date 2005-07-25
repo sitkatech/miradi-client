@@ -51,7 +51,7 @@ public class CommandDeleteLinkage extends Command
 		return "DeleteLinkage";
 	}
 	
-	public Object execute(Project target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		DiagramModel model = target.getDiagramModel();
 		try
@@ -66,7 +66,6 @@ public class CommandDeleteLinkage extends Command
 			EAM.logException(e);
 			throw new CommandFailedException();
 		}
-		return null;
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException

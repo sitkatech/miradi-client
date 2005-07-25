@@ -46,7 +46,7 @@ public class CommandLinkNodes extends Command
 		return "LinkNodes";
 	}
 	
-	public Object execute(Project target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		try
 		{
@@ -55,7 +55,6 @@ public class CommandLinkNodes extends Command
 			Node toNode = model.getNodeById(toId);
 			Linkage linkage = model.createLinkage(fromNode, toNode);
 			linkageId = model.getLinkageId(linkage);
-			return linkage;
 		}
 		catch (Exception e)
 		{

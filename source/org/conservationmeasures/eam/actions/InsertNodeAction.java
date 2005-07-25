@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.commands.AbstractCommandInsertNode;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.MainWindowAction;
 import org.conservationmeasures.eam.main.Project;
@@ -26,11 +26,11 @@ public abstract class InsertNodeAction extends MainWindowAction
 
 	abstract public String getInitialText();
 
-	protected void doInsert(Command insertCommand) throws CommandFailedException
+	protected void doInsert(AbstractCommandInsertNode insertCommand) throws CommandFailedException
 	{
 		Project project = getMainWindow().getProject();
-		Node insertedNode = (Node)project.executeCommand(insertCommand);
-		int id = project.getDiagramModel().getNodeId(insertedNode);
+		project.executeCommand(insertCommand);
+		int id = insertCommand.getId();
 	
 		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
 		project.executeCommand(moveCommand);

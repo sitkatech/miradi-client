@@ -13,39 +13,32 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 
-public class CommandInsertGoal extends Command
+public class CommandInsertGoal extends AbstractCommandInsertNode
 {
 	public CommandInsertGoal()
 	{
-		insertedId = Node.INVALID_ID;
 	}
 	
 	public CommandInsertGoal(DataInputStream dataIn) throws IOException
 	{
-		insertedId = dataIn.readInt();
+		setId(dataIn.readInt());
 	}
 
-	public static String getCommandName()
-	{
-		return "DiagramInsertGoal";
-	}
-	
-	public int getId()
-	{
-		return insertedId;
-	}
-	
 	public String toString()
 	{
 		return getCommandName() + ":" + getId();
 	}
 	
-	public Object execute(Project target)
+	public static String getCommandName()
+	{
+		return "DiagramInsertGoal";
+	}
+	
+	public void execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
 		Node node = model.createGoalNode();
-		insertedId = model.getNodeId(node);
-		return node;
+		setId(model.getNodeId(node));
 	}
 	
 	public void writeTo(DataOutputStream dataOut) throws IOException
@@ -53,6 +46,4 @@ public class CommandInsertGoal extends Command
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
 	}
-	
-	int insertedId;
 }

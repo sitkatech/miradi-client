@@ -5,14 +5,12 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertIntervention;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
@@ -30,15 +28,17 @@ public class TestDelete extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 		
-		Command insertIntervention = new CommandInsertIntervention();
-		Command insertThreat = new CommandInsertThreat();
-		Node intervention = (Node)insertIntervention.execute(project);
-		Node threat = (Node)insertThreat.execute(project);
+		CommandInsertIntervention insertIntervention = new CommandInsertIntervention();
+		CommandInsertThreat insertThreat = new CommandInsertThreat();
+		insertIntervention.execute(project);
+		Node intervention = model.getNodeById(insertIntervention.getId());
+		insertThreat.execute(project);
+		Node threat = model.getNodeById(insertThreat.getId());
 		int interventionId = model.getNodeId(intervention);
 		int threatId = model.getNodeId(threat);
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
-		Linkage linkage = (Linkage)link.execute(project);
-		int linkageId = model.getLinkageId(linkage);
+		link.execute(project);
+		int linkageId = link.getLinkageId();
 		
 		assertTrue("linkage not found?", model.hasLinkage(intervention, threat));
 		

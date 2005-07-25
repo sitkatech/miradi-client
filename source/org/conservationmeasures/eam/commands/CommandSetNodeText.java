@@ -45,7 +45,7 @@ public class CommandSetNodeText extends Command
 		return "SetNodeText";
 	}
 	
-	public Object execute(Project target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		try
 		{
@@ -54,7 +54,6 @@ public class CommandSetNodeText extends Command
 			previousText = node.getText();
 			node.setText(getNewText());
 			model.updateCell(node);
-			return null;
 		}
 		catch (Exception e)
 		{

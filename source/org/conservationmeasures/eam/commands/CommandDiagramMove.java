@@ -49,7 +49,7 @@ public class CommandDiagramMove extends Command
 		return "DiagramMove";
 	}
 	
-	public Object execute(Project target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		try
 		{
@@ -63,8 +63,6 @@ public class CommandDiagramMove extends Command
 				cellToMove.setLocation(newLocation);
 				model.updateCell(cellToMove);
 			}
-			
-			return null;
 		}
 		catch (Exception e)
 		{

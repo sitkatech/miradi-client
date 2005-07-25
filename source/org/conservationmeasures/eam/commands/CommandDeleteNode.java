@@ -36,7 +36,7 @@ public class CommandDeleteNode extends Command
 		return "DeleteNode";
 	}
 	
-	public Object execute(Project target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		DiagramModel model = target.getDiagramModel();
 		try
@@ -49,7 +49,6 @@ public class CommandDeleteNode extends Command
 			EAM.logException(e);
 			throw new CommandFailedException();
 		}
-		return null;
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException

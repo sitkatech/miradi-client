@@ -49,11 +49,10 @@ public class Project
 		return EAM.text("[No Project]");
 	}
 
-	public Object executeCommand(Command command) throws CommandFailedException
+	public void executeCommand(Command command) throws CommandFailedException
 	{
-		Object result = command.execute(this);
+		command.execute(this);
 		recordCommand(command);
-		return result;
 	}
 	
 	public void recordCommand(Command command)

@@ -23,14 +23,20 @@ public class TestCommandLinkNodes extends EAMTestCase
 	public void testInsertConnection() throws Exception
 	{
 		Project project = new Project();
-		Node threat = (Node)new CommandInsertThreat().execute(project);
-		Node goal = (Node)new CommandInsertGoal().execute(project);
-		
 		DiagramModel model = project.getDiagramModel();
-		int threatId = model.getNodeId(threat);
-		int goalId = model.getNodeId(goal);
+
+		CommandInsertThreat insertThreat = new CommandInsertThreat();
+		insertThreat.execute(project);
+		int threatId = insertThreat.getId();
+		Node threat = model.getNodeById(threatId);
+		CommandInsertGoal insertGoal = new CommandInsertGoal();
+		insertGoal.execute(project);
+		int goalId = insertGoal.getId();
+		Node goal = model.getNodeById(goalId);
+		
 		CommandLinkNodes command = new CommandLinkNodes(threatId, goalId);
-		Linkage linkage = (Linkage)command.execute(project);
+		command.execute(project);
+		Linkage linkage = model.getLinkageById(command.getLinkageId());
 
 		assertEquals("not from threat?", threat, linkage.getFromNode());
 		assertEquals("not to goal?", goal, linkage.getToNode());

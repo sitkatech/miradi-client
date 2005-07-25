@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertIntervention;
 import org.conservationmeasures.eam.commands.CommandInsertThreat;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
@@ -40,15 +39,17 @@ public class TestLinkage extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 		
-		Command insertIntervention = new CommandInsertIntervention();
-		Command insertThreat = new CommandInsertThreat();
-		Node intervention = (Node)insertIntervention.execute(project);
-		Node threat = (Node)insertThreat.execute(project);
+		CommandInsertIntervention insertIntervention = new CommandInsertIntervention();
+		CommandInsertThreat insertThreat = new CommandInsertThreat();
+		insertIntervention.execute(project);
+		Node intervention = model.getNodeById(insertIntervention.getId());
+		insertThreat.execute(project);
+		Node threat = model.getNodeById(insertThreat.getId());
 		int interventionId = model.getNodeId(intervention);
 		int threatId = model.getNodeId(threat);
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
-		Linkage linkage = (Linkage)link.execute(project);
-		assertTrue("linkage not in model?", model.getLinkageId(linkage) >= 0);
+		link.execute(project);
+		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
 		
 		
 	}

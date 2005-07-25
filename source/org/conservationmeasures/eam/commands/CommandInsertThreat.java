@@ -13,23 +13,17 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 
-public class CommandInsertThreat extends Command
+public class CommandInsertThreat extends AbstractCommandInsertNode
 {
 	public CommandInsertThreat()
 	{
-		insertedId = Node.INVALID_ID;
 	}
 	
 	public CommandInsertThreat(DataInputStream dataIn) throws IOException
 	{
-		insertedId = dataIn.readInt();
+		setId(dataIn.readInt());
 	}
 
-	public int getId()
-	{
-		return insertedId;
-	}
-	
 	public String toString()
 	{
 		return getCommandName() + ":" + getId();
@@ -40,12 +34,11 @@ public class CommandInsertThreat extends Command
 		return "DiagramInsertThreat";
 	}
 	
-	public Object execute(Project target)
+	public void execute(Project target)
 	{
 		DiagramModel model = target.getDiagramModel();
 		Node node = model.createThreatNode();
-		insertedId = model.getNodeId(node);
-		return node;
+		setId(model.getNodeId(node));
 	}
 	
 	public void writeTo(DataOutputStream dataOut) throws IOException
@@ -53,6 +46,4 @@ public class CommandInsertThreat extends Command
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
 	}
-	
-	int insertedId;
 }
