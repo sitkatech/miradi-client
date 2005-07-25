@@ -30,23 +30,9 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.clear();
 	}
 
-	public Node createGoalNode()
+	public Node createNode(int nodeType)
 	{
-		Node node = new Node(Node.TYPE_GOAL);
-		insertNode(node);
-		return node;
-	}
-	
-	public Node createThreatNode()
-	{
-		Node node = new Node(Node.TYPE_THREAT);
-		insertNode(node);
-		return node;
-	}
-	
-	public Node createInterventionNode()
-	{
-		Node node = new Node(Node.TYPE_INTERVENTION);
+		Node node = new Node(nodeType);
 		insertNode(node);
 		return node;
 	}
