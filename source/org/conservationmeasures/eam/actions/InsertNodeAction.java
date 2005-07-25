@@ -32,11 +32,11 @@ public abstract class InsertNodeAction extends MainWindowAction
 		project.executeCommand(insertCommand);
 		int id = insertCommand.getId();
 	
-		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
-		project.executeCommand(moveCommand);
-	
 		Command setTextCommand = new CommandSetNodeText(id, getInitialText());
 		project.executeCommand(setTextCommand);
+
+		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
+		project.executeCommand(moveCommand);
 	}
 
 	Point createAt;
