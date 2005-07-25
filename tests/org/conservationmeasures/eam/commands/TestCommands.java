@@ -100,32 +100,6 @@ public class TestCommands extends EAMTestCase
 		}
 	}
 
-	private int insertGoal() throws Exception
-	{
-		int type = Node.TYPE_GOAL;
-		return insertNode(type);
-	}
-	
-	private int insertThreat() throws Exception
-	{
-		int type = Node.TYPE_THREAT;
-		return insertNode(type);
-	}
-
-	private int insertIntervention() throws Exception
-	{
-		int type = Node.TYPE_INTERVENTION;
-		return insertNode(type);
-	}
-
-	private int insertNode(int type) throws CommandFailedException
-	{
-		CommandInsertNode insert = new CommandInsertNode(type);
-		insert.execute(project);
-		int id = insert.getId();
-		return id;
-	}
-	
 	public void testCommandInsertGoal() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_GOAL);
@@ -226,6 +200,32 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 	}
 
+	private int insertGoal() throws Exception
+	{
+		int type = Node.TYPE_GOAL;
+		return insertNode(type);
+	}
+	
+	private int insertThreat() throws Exception
+	{
+		int type = Node.TYPE_THREAT;
+		return insertNode(type);
+	}
+
+	private int insertIntervention() throws Exception
+	{
+		int type = Node.TYPE_INTERVENTION;
+		return insertNode(type);
+	}
+
+	private int insertNode(int type) throws CommandFailedException
+	{
+		CommandInsertNode insert = new CommandInsertNode(type);
+		insert.execute(project);
+		int id = insert.getId();
+		return id;
+	}
+	
 	private Command saveAndReload(Command cmd) throws IOException
 	{
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
