@@ -15,7 +15,7 @@ public class TestLogging extends EAMTestCase
 		super(name);
 	}
 	
-	public void tearDown()
+	public void tearDown() throws Exception
 	{
 		EAM.setLogLevel(EAM.LOG_NORMAL);
 		EAM.setLogToConsole();

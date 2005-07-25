@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 
@@ -19,16 +20,30 @@ public class CommandDeleteLinkage extends Command
 	public CommandDeleteLinkage(int idToDelete)
 	{
 		id = idToDelete;
+		wasFrom = Node.INVALID_ID;
+		wasTo = Node.INVALID_ID;
 	}
 	
 	public CommandDeleteLinkage(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
+		wasFrom = dataIn.readInt();
+		wasTo = dataIn.readInt();
+	}
+	
+	public int getWasFromId()
+	{
+		return wasFrom;
+	}
+	
+	public int getWasToId()
+	{
+		return wasTo;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ":" + getId();
+		return getCommandName() + ":" + getId() + "," + getWasFromId() + "," + getWasToId();
 	}
 	
 	public static String getCommandName()
@@ -42,6 +57,8 @@ public class CommandDeleteLinkage extends Command
 		try
 		{
 			Linkage linkageToDelete = model.getLinkageById(id);
+			wasFrom = model.getNodeId(linkageToDelete.getFromNode());
+			wasTo = model.getNodeId(linkageToDelete.getToNode());
 			model.deleteLinkage(linkageToDelete);
 		}
 		catch (RuntimeException e)
@@ -56,6 +73,8 @@ public class CommandDeleteLinkage extends Command
 	{
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
+		dataOut.writeInt(getWasFromId());
+		dataOut.writeInt(getWasToId());
 	}
 
 	public int getId()
@@ -64,4 +83,6 @@ public class CommandDeleteLinkage extends Command
 	}
 
 	int id;
+	int wasFrom;
+	int wasTo;
 }

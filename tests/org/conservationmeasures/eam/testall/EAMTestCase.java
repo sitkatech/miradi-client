@@ -15,14 +15,14 @@ public class EAMTestCase extends TestCaseEnhanced
 		super(name);
 	}
 	
-	public void setUp()
+	public void setUp() throws Exception
 	{
 		verifySetUpAndTearDownCalledEqually(setUpLastCalledBy);
 		++setUpTearDownCount;
 		setUpLastCalledBy = getCurrentTestName();
 	}
 
-	public void tearDown()
+	public void tearDown() throws Exception
 	{
 		--setUpTearDownCount;
 		EAM.setLogToConsole();

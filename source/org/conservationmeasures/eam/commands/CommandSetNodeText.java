@@ -15,21 +15,28 @@ import org.conservationmeasures.eam.main.Project;
 
 public class CommandSetNodeText extends Command
 {
-	public CommandSetNodeText(int idToUpdate, String newText)
+	public CommandSetNodeText(int idToUpdate, String newTextToUse)
 	{
 		id = idToUpdate;
-		text = newText;
+		newText = newTextToUse;
+		previousText = "";
 	}
 
 	public CommandSetNodeText(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		text = dataIn.readUTF();
+		newText = dataIn.readUTF();
+		previousText = dataIn.readUTF();
+	}
+	
+	public String getPreviousText()
+	{
+		return previousText;
 	}
 	
 	public String toString()
 	{
-		return getCommandName() + ": " + id + ", " + text;
+		return getCommandName() + ": " + id + ", " + newText + "," + previousText;
 	}
 	
 	public static String getCommandName()
@@ -41,7 +48,8 @@ public class CommandSetNodeText extends Command
 	{
 		DiagramModel model = target.getDiagramModel();
 		EAMGraphCell node = model.getNodeById(getId());
-		node.setText(getText());
+		previousText = node.getText();
+		node.setText(getNewText());
 		model.updateCell(node);
 		return null;
 	}
@@ -50,7 +58,8 @@ public class CommandSetNodeText extends Command
 	{
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
-		dataOut.writeUTF(getText());
+		dataOut.writeUTF(getNewText());
+		dataOut.writeUTF(getPreviousText());
 	}
 
 	int getId()
@@ -58,11 +67,12 @@ public class CommandSetNodeText extends Command
 		return id;
 	}
 	
-	String getText()
+	String getNewText()
 	{
-		return text;
+		return newText;
 	}
 
 	int id;
-	String text;
+	String newText;
+	String previousText;
 }

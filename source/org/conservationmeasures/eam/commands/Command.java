@@ -43,4 +43,9 @@ public abstract class Command
 
 	abstract public Object execute(Project target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream out) throws IOException;
+	
+	public void undo(Project target)
+	{
+		throw new RuntimeException("Not implemented yet");
+	}
 }

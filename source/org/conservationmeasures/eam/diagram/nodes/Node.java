@@ -74,6 +74,8 @@ public class Node extends EAMGraphCell
 		Rectangle bounds = new Rectangle(location, size);
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
+	
+	public static final int INVALID_ID = -1;
 
 	NodeType type;
 	DefaultPort port;

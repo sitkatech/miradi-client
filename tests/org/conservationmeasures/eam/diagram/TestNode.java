@@ -23,7 +23,7 @@ public class TestNode extends EAMTestCase
 		super(name);
 	}
 	
-	public void setUp()
+	public void setUp() throws Exception
 	{
 		threatType = new NodeTypeThreat();
 		node = new Node(threatType);

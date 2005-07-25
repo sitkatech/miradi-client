@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.Project;
 
@@ -19,17 +20,24 @@ public class CommandLinkNodes extends Command
 	{
 		this.fromId = fromId;
 		this.toId = toId;
+		linkageId = Node.INVALID_ID;
 	}
 	
 	public CommandLinkNodes(DataInputStream dataIn) throws IOException
 	{
 		fromId = dataIn.readInt();
 		toId = dataIn.readInt();
+		linkageId = dataIn.readInt();
+	}
+	
+	public int getLinkageId()
+	{
+		return linkageId;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ": " + fromId + ", " + toId;
+		return getCommandName() + ": " + linkageId + "," + fromId + ", " + toId;
 	}
 	
 	public static String getCommandName()
@@ -42,7 +50,9 @@ public class CommandLinkNodes extends Command
 		DiagramModel model = target.getDiagramModel();
 		Node fromNode = model.getNodeById(fromId);
 		Node toNode = model.getNodeById(toId);
-		return model.createLinkage(fromNode, toNode);
+		Linkage linkage = model.createLinkage(fromNode, toNode);
+		linkageId = model.getLinkageId(linkage);
+		return linkage;
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException
@@ -50,6 +60,7 @@ public class CommandLinkNodes extends Command
 		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getFromId());
 		dataOut.writeInt(getToId());
+		dataOut.writeInt(getLinkageId());
 	}
 	
 	public int getFromId()
@@ -64,4 +75,5 @@ public class CommandLinkNodes extends Command
 	
 	int fromId;
 	int toId;
+	int linkageId;
 }
