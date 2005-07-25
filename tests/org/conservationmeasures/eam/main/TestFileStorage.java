@@ -22,7 +22,6 @@ public class TestFileStorage extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		EAM.setLogLevel(EAM.LOG_VERBOSE);
 		File temp = createTempFile();
 
 		FileStorage storage = new FileStorage();
