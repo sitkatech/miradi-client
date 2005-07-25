@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiMenu;
@@ -39,6 +40,8 @@ public class DiagramContextMenuHandler
 		
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
+		menu.addSeparator();
+		menu.add(new JMenuItem(new ActionUndo(mainWindow)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionCut(mainWindow)));
 		menu.add(new JMenuItem(new ActionCopy(mainWindow)));

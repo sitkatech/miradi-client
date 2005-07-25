@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.TestInsertNode;
 import org.conservationmeasures.eam.diagram.TestLinkage;
 import org.conservationmeasures.eam.diagram.TestNode;
 import org.conservationmeasures.eam.diagram.TestSetNodeText;
+import org.conservationmeasures.eam.diagram.TestUndo;
 import org.conservationmeasures.eam.main.TestFileStorage;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.utils.TestLogging;
@@ -58,6 +59,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLinkage.class));
 		suite.addTest(new TestSuite(TestNode.class));
 		suite.addTest(new TestSuite(TestSetNodeText.class));
+		suite.addTest(new TestSuite(TestUndo.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

@@ -8,25 +8,28 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.commands.CommandUndo;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionSelectAll extends MainWindowAction
+public class ActionUndo extends MainWindowAction
 {
-	public ActionSelectAll(MainWindow mainWindowToUse)
+	public ActionUndo(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|SelectAll");
+		return EAM.text("Action|Undo");
 	}
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		// TODO Auto-generated method stub
-
+		CommandUndo command = new CommandUndo();
+		BaseProject project = getMainWindow().getProject();
+		project.executeCommand(command);
 	}
 
 }

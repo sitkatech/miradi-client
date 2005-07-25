@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindowAction;
 import org.conservationmeasures.eam.main.Project;
 
 public abstract class InsertNodeAction extends MainWindowAction

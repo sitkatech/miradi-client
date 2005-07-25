@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
@@ -11,6 +11,8 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
 public abstract class MainWindowAction extends AbstractAction
 {

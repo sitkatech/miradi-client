@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.MainWindowAction;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 
 public class ActionNodeProperties extends MainWindowAction
