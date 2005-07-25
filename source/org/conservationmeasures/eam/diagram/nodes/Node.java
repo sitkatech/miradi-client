@@ -45,6 +45,17 @@ public class Node extends EAMGraphCell
 	{
 		return true;
 	}
+	
+	public int getNodeType()
+	{
+		if(isGoal())
+			return TYPE_GOAL;
+		if(isThreat())
+			return TYPE_THREAT;
+		if(isIntervention())
+			return TYPE_INTERVENTION;
+		return TYPE_INVALID;
+	}
 
 	public boolean isGoal()
 	{
@@ -90,6 +101,7 @@ public class Node extends EAMGraphCell
 	
 	public static final int INVALID_ID = -1;
 	
+	public static final int TYPE_INVALID = -1;
 	public static final int TYPE_GOAL = 1;
 	public static final int TYPE_THREAT = 2;
 	public static final int TYPE_INTERVENTION = 3;
