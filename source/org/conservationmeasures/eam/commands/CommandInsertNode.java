@@ -9,7 +9,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
@@ -53,9 +52,7 @@ public class CommandInsertNode extends Command
 	{
 		try
 		{
-			DiagramModel model = target.getDiagramModel();
-			Node node = model.createNode(type);
-			insertedId = model.getNodeId(node);
+			insertedId = target.insertNode(getNodeType());
 		}
 		catch (Exception e)
 		{
@@ -63,7 +60,7 @@ public class CommandInsertNode extends Command
 			throw new CommandFailedException();
 		}
 	}
-	
+
 	public void undo(Project target) throws CommandFailedException
 	{
 		try

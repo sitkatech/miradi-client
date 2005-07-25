@@ -32,8 +32,16 @@ public class DiagramModel extends DefaultGraphModel
 
 	public Node createNode(int nodeType)
 	{
+		return createNodeAtId(nodeType, Node.INVALID_ID);
+	}
+	
+	public Node createNodeAtId(int nodeType, int id)
+	{
 		Node node = new Node(nodeType);
-		insertNode(node);
+		Object[] nodes = new Object[] {node};
+		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
+		insert(nodes, nestedAttributeMap, null, null, null);
+		cellInventory.add(node, id);
 		return node;
 	}
 	
@@ -47,7 +55,11 @@ public class DiagramModel extends DefaultGraphModel
 	public Linkage createLinkage(Node fromNode, Node toNode)
 	{
 		Linkage linkage = new Linkage(fromNode, toNode);
-		insertLinkage(linkage);
+		Object[] linkages = new Object[]{linkage};
+		Map nestedMap = linkage.getNestedAttributeMap();
+		ConnectionSet cs = linkage.getConnectionSet();
+		insert(linkages, nestedMap, cs, null, null);
+		cellInventory.add(linkage, Node.INVALID_ID);
 		return linkage;
 	}
 	
@@ -56,15 +68,6 @@ public class DiagramModel extends DefaultGraphModel
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
 		cellInventory.remove(linkageToDelete);
-	}
-	
-	private void insertLinkage(Linkage linkageToInsert)
-	{
-		Object[] linkages = new Object[]{linkageToInsert};
-		Map nestedMap = linkageToInsert.getNestedAttributeMap();
-		ConnectionSet cs = linkageToInsert.getConnectionSet();
-		insert(linkages, nestedMap, cs, null, null);
-		cellInventory.add(linkageToInsert);
 	}
 	
 	public boolean hasLinkage(Node fromNode, Node toNode)
@@ -91,14 +94,6 @@ public class DiagramModel extends DefaultGraphModel
 	public Set getLinkages(Node node)
 	{
 		return getEdges(this, new Object[] {node});
-	}
-	
-	private void insertNode(Node nodeToInsert)
-	{
-		Object[] nodes = new Object[] {nodeToInsert};
-		Hashtable nestedAttributeMap = nodeToInsert.getNestedAttributeMap();
-		insert(nodes, nestedAttributeMap, null, null, null);
-		cellInventory.add(nodeToInsert);
 	}
 	
 	public void updateCell(EAMGraphCell nodeToUpdate)
@@ -155,13 +150,19 @@ class CellInventory
 		cellToIdMap = new HashMap();
 	}
 	
-	public void add(EAMGraphCell cell)
+	void add(EAMGraphCell cell, int id)
 	{
-		Integer id = new Integer(nextId++);
-		idToCellMap.put(id, cell);
-		cellToIdMap.put(cell, id);
+		if(id == Node.INVALID_ID)
+			id = nextId++;
+		
+		if(getById(id) != null)
+			throw new RuntimeException("Can't add over existing id");
+		
+		Integer idInteger = new Integer(id);
+		idToCellMap.put(idInteger, cell);
+		cellToIdMap.put(cell, idInteger);
 	}
-	
+
 	public int size()
 	{
 		return idToCellMap.size();

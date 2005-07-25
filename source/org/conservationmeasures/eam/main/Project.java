@@ -77,6 +77,22 @@ public class Project
 		return nodeType; 
 	}
 
+	public int insertNode(int typeToInsert)
+	{
+		DiagramModel model = getDiagramModel();
+		Node node = model.createNode(typeToInsert);
+		int idThatWasInserted = model.getNodeId(node);
+		return idThatWasInserted;
+	}
+
+	public int insertNodeAtId(int typeToInsert, int id)
+	{
+		DiagramModel model = getDiagramModel();
+		Node node = model.createNodeAtId(typeToInsert, id);
+		int idThatWasInserted = model.getNodeId(node);
+		return idThatWasInserted;
+	}
+
 	FileStorage storage;
 	DiagramModel diagramModel;
 }

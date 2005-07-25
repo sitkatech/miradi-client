@@ -89,15 +89,7 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		assertEquals("didn't undo?", originalText, project.getDiagramModel().getNodeById(id).getText());
 		
-		try
-		{
-			EAM.setLogToString();
-			cmd.undo(project);
-			fail("Should have thrown because text wasn't what we expected");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
+		verifyUndoTwiceThrows(cmd);
 	}
 
 	public void testCommandInsertGoal() throws Exception
@@ -167,11 +159,16 @@ public class TestCommands extends EAMTestCase
 		{
 		}
 
+		verifyUndoTwiceThrows(cmd);
+	}
+
+	private void verifyUndoTwiceThrows(Command cmd)
+	{
 		try
 		{
 			EAM.setLogToString();
 			cmd.undo(project);
-			fail("Should have thrown because can't undo an insert twice");
+			fail("Should have thrown because can't undotwice");
 		}
 		catch(CommandFailedException ignoreExpected)
 		{
@@ -229,6 +226,11 @@ public class TestCommands extends EAMTestCase
 		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo delete?", Node.TYPE_GOAL, project.getDiagramModel().getNodeById(id).getNodeType());
+
+		verifyUndoTwiceThrows(cmd);
 	}
 
 	private int insertGoal() throws Exception
