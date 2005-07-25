@@ -186,19 +186,32 @@ public class TestCommands extends EAMTestCase
 		int linkageId = cmd.getLinkageId();
 
 		Linkage inserted = model.getLinkageById(linkageId);
-		assertEquals("wrong source?", from, model.getNodeId(inserted.getFromNode()));
-		assertEquals("wrong dest?", to, model.getNodeId(inserted.getToNode()));
+		Node fromNode = inserted.getFromNode();
+		assertEquals("wrong source?", from, model.getNodeId(fromNode));
+		Node toNode = inserted.getToNode();
+		assertEquals("wrong dest?", to, model.getNodeId(toNode));
 
 		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
 		assertEquals("didn't restore from?", from, loaded.getFromId());
 		assertEquals("didn't restore to?", to, loaded.getToId());
 		assertEquals("didn't restore linkage?", linkageId, loaded.getLinkageId());
+		
+		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
+		cmd.undo(project);
+		assertFalse("didn't remove linkage?", project.getDiagramModel().hasLinkage(fromNode, toNode));
+		
+		verifyUndoTwiceThrows(cmd);
 	}
 	
 	public void testDeleteLinkage() throws Exception
 	{
+		DiagramModel model = project.getDiagramModel();
+
 		int from = insertIntervention();
 		int to = insertThreat();
+		Node fromNode = model.getNodeById(from);
+		Node toNode = model.getNodeById(to);
+
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
 		link.execute(project);
 		int linkageId = link.getLinkageId();
@@ -212,6 +225,10 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore id?", linkageId, loaded.getId());
 		assertEquals("didn't restore wasFrom?", from, loaded.getWasFromId());
 		assertEquals("didn't restore wasTo?", to, loaded.getWasToId());
+		
+		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
+		cmd.undo(project);
+		assertTrue("didn't restore linkage?", model.hasLinkage(fromNode, toNode));
 	}
 
 	public void testDeleteNode() throws Exception

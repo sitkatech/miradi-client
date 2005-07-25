@@ -50,17 +50,29 @@ public class CommandLinkNodes extends Command
 	{
 		try
 		{
-			DiagramModel model = target.getDiagramModel();
-			Node fromNode = model.getNodeById(fromId);
-			Node toNode = model.getNodeById(toId);
-			Linkage linkage = model.createLinkage(fromNode, toNode);
-			linkageId = model.getLinkageId(linkage);
+			linkageId = target.insertLinkage(fromId, toId);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException();
 		}
+	}
+
+	public void undo(Project target) throws CommandFailedException
+	{
+		DiagramModel model = target.getDiagramModel();
+		try
+		{
+			Linkage linkageToDelete = model.getLinkageById(getLinkageId());
+			model.deleteLinkage(linkageToDelete);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException();
+		}
+		
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException

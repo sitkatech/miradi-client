@@ -12,6 +12,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 
 public class Project
@@ -91,6 +92,22 @@ public class Project
 		Node node = model.createNodeAtId(typeToInsert, id);
 		int idThatWasInserted = model.getNodeId(node);
 		return idThatWasInserted;
+	}
+
+	public int insertLinkage(int linkFromId, int linkToId) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		Linkage linkage = model.createLinkage(Node.INVALID_ID, linkFromId, linkToId);
+		int insertedLinkageId = model.getLinkageId(linkage);
+		return insertedLinkageId;
+	}
+
+	public int insertLinkageAtId(int linkageId, int linkFromId, int linkToId) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		Linkage linkage = model.createLinkage(linkageId, linkFromId, linkToId);
+		int insertedLinkageId = model.getLinkageId(linkage);
+		return insertedLinkageId;
 	}
 
 	FileStorage storage;

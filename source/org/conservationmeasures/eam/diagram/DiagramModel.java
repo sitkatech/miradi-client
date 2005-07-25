@@ -52,14 +52,17 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.remove(nodeToDelete);
 	}
 	
-	public Linkage createLinkage(Node fromNode, Node toNode)
+	public Linkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
 	{
+		Node fromNode = getNodeById(linkFromId);
+		Node toNode = getNodeById(linkToId);
+
 		Linkage linkage = new Linkage(fromNode, toNode);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = linkage.getNestedAttributeMap();
 		ConnectionSet cs = linkage.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
-		cellInventory.add(linkage, Node.INVALID_ID);
+		cellInventory.add(linkage, linkageId);
 		return linkage;
 	}
 	
