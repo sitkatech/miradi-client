@@ -116,6 +116,46 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't load type?", cmd.getNodeType(), loaded.getNodeType());
 		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
 		
+		verifyUndoInsertNode(cmd);
+	}
+
+	public void testCommandInsertThreat() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_THREAT);
+		assertEquals("already have an id?", -1, cmd.getId());
+		
+		cmd.execute(project);
+		int insertedId = cmd.getId();
+		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		assertTrue("didn't insert a threat?", inserted.isThreat());
+
+		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
+		assertNotNull(loaded);
+		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
+		
+		verifyUndoInsertNode(cmd);
+	}
+
+	public void testCommandInsertIntervention() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_INTERVENTION);
+		assertEquals("already have an id?", -1, cmd.getId());
+		
+		cmd.execute(project);
+		int insertedId = cmd.getId();
+		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		assertTrue("didn't insert an intervention?", inserted.isIntervention());
+
+		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
+		assertNotNull(loaded);
+		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
+		
+		verifyUndoInsertNode(cmd);
+	}
+
+	private void verifyUndoInsertNode(CommandInsertNode cmd) throws CommandFailedException
+	{
+		int insertedId = cmd.getId();
 		cmd.undo(project);
 		try
 		{
@@ -136,36 +176,6 @@ public class TestCommands extends EAMTestCase
 		catch(CommandFailedException ignoreExpected)
 		{
 		}
-	}
-
-	public void testCommandInsertThreat() throws Exception
-	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_THREAT);
-		assertEquals("already have an id?", -1, cmd.getId());
-		
-		cmd.execute(project);
-		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a threat?", inserted.isThreat());
-
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-	}
-
-	public void testCommandInsertIntervention() throws Exception
-	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_INTERVENTION);
-		assertEquals("already have an id?", -1, cmd.getId());
-		
-		cmd.execute(project);
-		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert an intervention?", inserted.isIntervention());
-
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
 	}
 
 	public void testCommandInsertLinkage() throws Exception
