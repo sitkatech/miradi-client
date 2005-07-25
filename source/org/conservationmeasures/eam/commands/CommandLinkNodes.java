@@ -12,8 +12,8 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Project;
 
 public class CommandLinkNodes extends Command
 {
@@ -46,7 +46,7 @@ public class CommandLinkNodes extends Command
 		return "LinkNodes";
 	}
 	
-	public void execute(Project target) throws CommandFailedException
+	public void execute(BaseProject target) throws CommandFailedException
 	{
 		try
 		{
@@ -59,7 +59,7 @@ public class CommandLinkNodes extends Command
 		}
 	}
 
-	public void undo(Project target) throws CommandFailedException
+	public void undo(BaseProject target) throws CommandFailedException
 	{
 		DiagramModel model = target.getDiagramModel();
 		try

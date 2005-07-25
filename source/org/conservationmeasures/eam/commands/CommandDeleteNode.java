@@ -10,8 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Project;
 
 public class CommandDeleteNode extends Command
 {
@@ -42,7 +42,7 @@ public class CommandDeleteNode extends Command
 		return "DeleteNode";
 	}
 	
-	public void execute(Project target) throws CommandFailedException
+	public void execute(BaseProject target) throws CommandFailedException
 	{
 		try
 		{
@@ -55,7 +55,7 @@ public class CommandDeleteNode extends Command
 		}
 	}
 	
-	public void undo(Project target) throws CommandFailedException
+	public void undo(BaseProject target) throws CommandFailedException
 	{
 		try
 		{

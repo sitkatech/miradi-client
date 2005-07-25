@@ -9,23 +9,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandFailedException;
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 
-public class Project
+public class Project extends BaseProject
 {
 	public Project()
 	{
-		diagramModel = new DiagramModel();
 		storage = new FileStorage();
-	}
-	
-	public DiagramModel getDiagramModel()
-	{
-		return diagramModel;
 	}
 	
 	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException
@@ -37,7 +27,7 @@ public class Project
 		}
 		
 		getDiagramModel().clear();
-		storage.load(projectFile);
+		getStorage().load(projectFile);
 		for(int i=0; i < storage.getCommandCount(); ++i)
 		{
 			storage.getCommand(i).execute(this);
@@ -46,70 +36,13 @@ public class Project
 
 	public String getName()
 	{
-		if(storage.hasFile())
-			return storage.getName();
+		if(getStorage().hasFile())
+			return getStorage().getName();
 		return EAM.text("[No Project]");
 	}
 
-	public void executeCommand(Command command) throws CommandFailedException
+	private FileStorage getStorage()
 	{
-		command.execute(this);
-		recordCommand(command);
+		return (FileStorage)storage;
 	}
-	
-	public void recordCommand(Command command)
-	{
-		try
-		{
-			storage.appendCommand(command);
-		}
-		catch (IOException e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
-	public int deleteNode(int idToDelete) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		Node nodeToDelete = model.getNodeById(idToDelete);
-		int nodeType = nodeToDelete.getNodeType();
-		model.deleteNode(nodeToDelete);
-		return nodeType; 
-	}
-
-	public int insertNode(int typeToInsert)
-	{
-		DiagramModel model = getDiagramModel();
-		Node node = model.createNode(typeToInsert);
-		int idThatWasInserted = model.getNodeId(node);
-		return idThatWasInserted;
-	}
-
-	public int insertNodeAtId(int typeToInsert, int id)
-	{
-		DiagramModel model = getDiagramModel();
-		Node node = model.createNodeAtId(typeToInsert, id);
-		int idThatWasInserted = model.getNodeId(node);
-		return idThatWasInserted;
-	}
-
-	public int insertLinkage(int linkFromId, int linkToId) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		Linkage linkage = model.createLinkage(Node.INVALID_ID, linkFromId, linkToId);
-		int insertedLinkageId = model.getLinkageId(linkage);
-		return insertedLinkageId;
-	}
-
-	public int insertLinkageAtId(int linkageId, int linkFromId, int linkToId) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		Linkage linkage = model.createLinkage(linkageId, linkFromId, linkToId);
-		int insertedLinkageId = model.getLinkageId(linkage);
-		return insertedLinkageId;
-	}
-
-	FileStorage storage;
-	DiagramModel diagramModel;
 }

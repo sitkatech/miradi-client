@@ -11,8 +11,8 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Project;
 
 public class CommandSetNodeText extends Command
 {
@@ -45,17 +45,17 @@ public class CommandSetNodeText extends Command
 		return "SetNodeText";
 	}
 	
-	public void execute(Project target) throws CommandFailedException
+	public void execute(BaseProject target) throws CommandFailedException
 	{
 		previousText = doSetText(target, getNewText(), getPreviousText()); 
 	}
 	
-	public void undo(Project target) throws CommandFailedException
+	public void undo(BaseProject target) throws CommandFailedException
 	{
 		doSetText(target, getPreviousText(), getNewText());
 	}
 
-	private String doSetText(Project target, String desiredText, String expectedText) throws CommandFailedException
+	private String doSetText(BaseProject target, String desiredText, String expectedText) throws CommandFailedException
 	{
 		try
 		{

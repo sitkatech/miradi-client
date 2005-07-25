@@ -16,8 +16,8 @@ import java.util.Arrays;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestCommands extends EAMTestCase
@@ -29,9 +29,9 @@ public class TestCommands extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		project = new Project();
+		project = new BaseProject();
 		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_GOAL);
-		consumeCellIdZero.execute(project);
+		project.executeCommand(consumeCellIdZero);
 		super.setUp();
 	}
 	
@@ -45,7 +45,7 @@ public class TestCommands extends EAMTestCase
 		Point moveTo = new Point(25, -68);
 		int[] ids = {insertGoal(), insertThreat(), insertThreat(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		
 		for(int i=0; i < ids.length; ++i)
 		{
@@ -73,12 +73,12 @@ public class TestCommands extends EAMTestCase
 		
 		String originalText = "original text";
 		CommandSetNodeText starter = new CommandSetNodeText(id, originalText);
-		starter.execute(project);
+		project.executeCommand(starter);
 		assertEquals("wasn't blank to start?", "", starter.getPreviousText());
 		
 		String newText = "much better text!";
 		CommandSetNodeText cmd = new CommandSetNodeText(id, newText);
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		assertEquals("didn't memorize old text?", originalText, cmd.getPreviousText());
 
 		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
@@ -97,7 +97,7 @@ public class TestCommands extends EAMTestCase
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_GOAL);
 		assertEquals("type not right?", Node.TYPE_GOAL, cmd.getNodeType());
 		assertEquals("already have an id?", -1, cmd.getId());
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
@@ -116,7 +116,7 @@ public class TestCommands extends EAMTestCase
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_THREAT);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a threat?", inserted.isThreat());
@@ -133,7 +133,7 @@ public class TestCommands extends EAMTestCase
 		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an intervention?", inserted.isIntervention());
@@ -182,7 +182,7 @@ public class TestCommands extends EAMTestCase
 		int from = insertThreat();
 		int to = insertGoal();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		int linkageId = cmd.getLinkageId();
 
 		Linkage inserted = model.getLinkageById(linkageId);
@@ -213,11 +213,11 @@ public class TestCommands extends EAMTestCase
 		Node toNode = model.getNodeById(to);
 
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
-		link.execute(project);
+		project.executeCommand(link);
 		int linkageId = link.getLinkageId();
 	
 		CommandDeleteLinkage cmd = new CommandDeleteLinkage(linkageId);
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		assertEquals("didn't set from?", from, cmd.getWasFromId());
 		assertEquals("didn't set to?", to, cmd.getWasToId());
 
@@ -236,7 +236,7 @@ public class TestCommands extends EAMTestCase
 		int id = insertGoal();
 		CommandDeleteNode cmd = new CommandDeleteNode(id);
 		assertEquals("type not defaulting properly?", Node.TYPE_INVALID, cmd.getNodeType());
-		cmd.execute(project);
+		project.executeCommand(cmd);
 		
 		assertEquals("type not set by execute?", Node.TYPE_GOAL, cmd.getNodeType());
 		
@@ -248,6 +248,38 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't undo delete?", Node.TYPE_GOAL, project.getDiagramModel().getNodeById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
+	}
+	
+	public void testUndo() throws Exception
+	{
+		BaseProject emptyProject = new BaseProject();
+		CommandUndo cmd = new CommandUndo();
+		try
+		{
+			EAM.setLogToString();
+			emptyProject.executeCommand(cmd);
+			fail("Should have thrown for nothing to undo");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
+		
+		int insertedId = insertGoal();
+		project.executeCommand(cmd);
+		try
+		{
+			EAM.setLogToString();
+			emptyProject.getDiagramModel().getNodeById(insertedId);
+			fail("Undo didn't work?");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
+		
+		CommandUndo loaded = (CommandUndo)saveAndReload(cmd);
+		assertNotNull("didn't reload?", loaded);
 	}
 
 	private int insertGoal() throws Exception
@@ -271,7 +303,7 @@ public class TestCommands extends EAMTestCase
 	private int insertNode(int type) throws CommandFailedException
 	{
 		CommandInsertNode insert = new CommandInsertNode(type);
-		insert.execute(project);
+		project.executeCommand(insert);
 		int id = insert.getId();
 		return id;
 	}
@@ -285,5 +317,5 @@ public class TestCommands extends EAMTestCase
 		return Command.readFrom(dataIn);
 	}
 	
-	Project project;
+	BaseProject project;
 }

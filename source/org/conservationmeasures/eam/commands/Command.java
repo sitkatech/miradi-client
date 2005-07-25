@@ -9,7 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.BaseProject;
 
 public abstract class Command
 {
@@ -28,6 +28,8 @@ public abstract class Command
 			return new CommandDeleteLinkage(dataIn);
 		if(commandName.equals(CommandDeleteNode.getCommandName()))
 			return new CommandDeleteNode(dataIn);
+		if(commandName.equals(CommandUndo.getCommandName()))
+			return new CommandUndo(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
@@ -37,10 +39,10 @@ public abstract class Command
 		return toString().equals(other.toString());
 	}
 
-	abstract public void execute(Project target) throws CommandFailedException;
-	abstract public void writeTo(DataOutputStream out) throws IOException;
+	abstract public void execute(BaseProject target) throws CommandFailedException;
+	abstract public void writeTo(DataOutputStream dataOut) throws IOException;
 	
-	public void undo(Project target) throws CommandFailedException
+	public void undo(BaseProject target) throws CommandFailedException
 	{
 		throw new RuntimeException("Not implemented yet");
 	}
