@@ -9,7 +9,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
@@ -45,12 +44,9 @@ public class CommandDeleteNode extends Command
 	
 	public void execute(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
 		try
 		{
-			Node nodeToDelete = model.getNodeById(id);
-			nodeType = nodeToDelete.getNodeType();
-			model.deleteNode(nodeToDelete);
+			nodeType = target.deleteNode(getId());
 		}
 		catch (Exception e)
 		{

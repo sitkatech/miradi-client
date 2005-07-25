@@ -12,6 +12,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 
 public class Project
 {
@@ -67,6 +68,15 @@ public class Project
 		}
 	}
 	
+	public int deleteNode(int idToDelete) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		Node nodeToDelete = model.getNodeById(idToDelete);
+		int nodeType = nodeToDelete.getNodeType();
+		model.deleteNode(nodeToDelete);
+		return nodeType; 
+	}
+
 	FileStorage storage;
 	DiagramModel diagramModel;
 }

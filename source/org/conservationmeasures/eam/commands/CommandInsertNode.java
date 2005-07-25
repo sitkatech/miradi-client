@@ -63,6 +63,19 @@ public class CommandInsertNode extends Command
 			throw new CommandFailedException();
 		}
 	}
+	
+	public void undo(Project target) throws CommandFailedException
+	{
+		try
+		{
+			target.deleteNode(getId());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException();
+		}
+	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException
 	{

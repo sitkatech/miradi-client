@@ -115,6 +115,27 @@ public class TestCommands extends EAMTestCase
 		assertNotNull(loaded);
 		assertEquals("didn't load type?", cmd.getNodeType(), loaded.getNodeType());
 		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
+		
+		cmd.undo(project);
+		try
+		{
+			EAM.setLogToString();
+			project.getDiagramModel().getNodeById(insertedId);
+			fail("Should have thrown because node didn't exist");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+
+		try
+		{
+			EAM.setLogToString();
+			cmd.undo(project);
+			fail("Should have thrown because can't undo an insert twice");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
 	}
 
 	public void testCommandInsertThreat() throws Exception
