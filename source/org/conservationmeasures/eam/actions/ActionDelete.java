@@ -87,7 +87,7 @@ public class ActionDelete extends MainWindowAction
 		int id = project.getDiagramModel().getNodeId(nodeToDelete);
 
 		Point location = nodeToDelete.getLocation();
-		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[id]);
+		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[] {id});
 		CommandSetNodeText clearText = new CommandSetNodeText(id, "");
 		CommandDeleteNode command = new CommandDeleteNode(id);
 		
