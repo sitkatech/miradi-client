@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
+import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
@@ -59,6 +60,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Action helpAction = new ActionContextualHelp(mainWindow);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
+		Action undoAction = new ActionUndo(mainWindow);
+		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
 	}
 	
 	MainWindow mainWindow;
