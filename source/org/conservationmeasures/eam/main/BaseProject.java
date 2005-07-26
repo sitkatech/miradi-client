@@ -38,9 +38,6 @@ public class BaseProject
 		try
 		{
 			storage.appendCommand(command);
-			if(!command.isUndo())
-				undoCount = 0;
-			EAM.logDebug("undoCount:" + undoCount + " getCommandCount:" + storage.getCommandCount());
 		}
 		catch (IOException e)
 		{
@@ -92,20 +89,37 @@ public class BaseProject
 	public void undo() throws CommandFailedException
 	{
 		int indexToUndo = getIndexToUndo();
-		EAM.logDebug("Undoing #" + indexToUndo + " of " + storage.getCommandCount());
+		if(indexToUndo < 0)
+			return;
 		Command commandToUndo = storage.getCommand(indexToUndo);
 		commandToUndo.undo(this);
-		++undoCount;
 	}
 	
-	private int getIndexToUndo()
+	public int getIndexToUndo()
 	{
-		int lastCommand = storage.getCommandCount() - 1; 
-		int numberOfUndosPlusUndones = (undoCount * 2);
-		return lastCommand - numberOfUndosPlusUndones;
+		int undoCount = 0;
+		int candidateToUndo = storage.getCommandCount() - 1;
+		while(candidateToUndo >= 0)
+		{
+			Command candidate = storage.getCommand(candidateToUndo);
+			if(candidate.isUndo())
+			{
+				++undoCount;
+			}
+			else if(undoCount == 0)
+			{
+				break;
+			}
+			else
+			{
+				--undoCount;
+			}
+			--candidateToUndo;
+		}
+		
+		return candidateToUndo;
 	}
 
 	Storage storage;
 	DiagramModel diagramModel;
-	int undoCount;
 }

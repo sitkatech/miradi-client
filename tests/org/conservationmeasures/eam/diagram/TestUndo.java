@@ -5,6 +5,11 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandUndo;
@@ -81,6 +86,51 @@ public class TestUndo extends EAMTestCase
 		project.executeCommand(insert);
 		project.executeCommand(undo);
 		verifyNotPresent(insert.getId());
+
+		project.executeCommand(undo);
+		verifyNotPresent(linkId);
+	
+	}
+	
+	public void testGetIndexToUndo() throws Exception
+	{
+		CommandDoNothing nop = new CommandDoNothing();
+		CommandUndo undo = new CommandUndo();
+		BaseProject p = new BaseProject();
+		
+		assertEquals("already an undoable?", -1, p.getIndexToUndo());
+		p.executeCommand(nop);
+		assertEquals(0, p.getIndexToUndo());
+		p.executeCommand(nop);
+		assertEquals(1, p.getIndexToUndo());
+		p.executeCommand(undo);
+		assertEquals(0, p.getIndexToUndo());
+		p.executeCommand(nop);
+		assertEquals(3, p.getIndexToUndo());
+		p.executeCommand(undo);
+		assertEquals(0, p.getIndexToUndo());
+		p.executeCommand(undo);
+		assertEquals(-1, p.getIndexToUndo());
+	}
+	
+	class CommandDoNothing extends Command
+	{
+		
+		public void execute(BaseProject target) throws CommandFailedException
+		{
+			++done;
+		}
+
+		public void undo(BaseProject target) throws CommandFailedException
+		{
+			--done;
+		}
+
+		public void writeTo(DataOutputStream dataOut) throws IOException
+		{
+		}
+		
+		public int done;
 	}
 
 	private void verifyNotPresent(int cellId)
