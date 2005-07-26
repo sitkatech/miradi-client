@@ -23,6 +23,11 @@ public class CommandUndo extends Command
 		
 	}
 
+	public boolean isUndo()
+	{
+		return true;
+	}
+
 	public String toString()
 	{
 		return getCommandName();

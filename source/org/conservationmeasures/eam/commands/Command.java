@@ -38,6 +38,11 @@ public abstract class Command
 	{
 		return toString().equals(other.toString());
 	}
+	
+	public boolean isUndo()
+	{
+		return false;
+	}
 
 	abstract public void execute(BaseProject target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream dataOut) throws IOException;
