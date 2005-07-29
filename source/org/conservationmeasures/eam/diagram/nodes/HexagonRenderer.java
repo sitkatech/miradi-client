@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,11 +21,14 @@ public class HexagonRenderer extends MultilineNodeRenderer
 	
 	void fillShape(Graphics g)
 	{
+		Graphics2D g2 = (Graphics2D)g;
+		setPaint(g2, getBackground());
 		g.fillPolygon(buildHexagon());
 	}
 
 	void drawBorder(Graphics2D g2)
 	{
+		setPaint(g2, Color.BLACK);
 		g2.drawPolygon(buildHexagon());
 	}
 

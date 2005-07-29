@@ -35,6 +35,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -58,11 +59,14 @@ public class EllipseRenderer extends MultilineNodeRenderer
 
 	void fillShape(Graphics g)
 	{
-		g.fillOval(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
+		Graphics2D g2 = (Graphics2D)g;
+		setPaint(g2, getBackground());
+		g2.fillOval(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
 	}
 
 	void drawBorder(Graphics2D g2)
 	{
+		setPaint(g2,  Color.BLACK);
 		g2.drawOval(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
 	}
 

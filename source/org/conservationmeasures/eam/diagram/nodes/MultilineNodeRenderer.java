@@ -71,28 +71,34 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	abstract void fillShape(Graphics g);
 	abstract void drawBorder(Graphics2D g2);
 	
-	public void paint(Graphics g)
+	//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
+	public void setPaint(Graphics2D g2, Color color) 
 	{
-		Graphics2D g2 = (Graphics2D) g;
+		g2.setPaint(new GradientPaint(0, 0, color,
+				getWidth(), getHeight(), color, false));
+	}
+
+	public void paint(Graphics g1)
+	{
+		Graphics2D g2 = (Graphics2D) g1;
 		if (super.isOpaque())
 		{
-			g.setColor(super.getBackground());
+			g2.setColor(super.getBackground());
 			if (gradientColor != null && !preview)
 			{
 				setOpaque(false);
 				g2.setPaint(new GradientPaint(0, 0, getBackground(),
 						getWidth(), getHeight(), gradientColor, true));
 			}
-			fillShape(g);
+			fillShape(g2);
 		}
-
 		int xInset = getInsetDimension().width;
 		int yInset = getInsetDimension().height;
 		label.setBorder(new EmptyBorder(yInset, xInset, yInset, xInset));
 		label.setSize(getSize());
 		label.setHorizontalAlignment(JLabel.CENTER);
 		label.setVerticalAlignment(JLabel.TOP);
-		label.paint(g);
+		label.paint(g2);
 		
 		if (bordercolor != null)
 		{
