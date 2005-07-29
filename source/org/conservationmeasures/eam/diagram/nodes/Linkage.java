@@ -46,8 +46,9 @@ public class Linkage extends EAMGraphCell implements Edge
 	    GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_SIMPLE);
 	    GraphConstants.setValue(getAttributes(), label);
 	    GraphConstants.setOpaque(getAttributes(), true);
-	    GraphConstants.setBackground(getAttributes(), Color.CYAN);
+	    GraphConstants.setBackground(getAttributes(), Color.BLACK);
 	    GraphConstants.setForeground(getAttributes(), Color.BLACK);
+	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
 //		Font font = getFont().deriveFont(Font.BOLD);
 //		GraphConstants.setFont(thisMap, font);
 	}
