@@ -29,7 +29,7 @@ public class ActionInsertConnection extends MainWindowAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(getMainWindow());
-		dialog.show();
+		dialog.setVisible(true);
 		if(!dialog.getResult())
 			return;
 		

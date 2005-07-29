@@ -36,7 +36,7 @@ public class ActionNodeProperties extends MainWindowAction
 		Node selectedNode = (Node)diagram.getSelectionCell();
 		String title = EAM.text("Title|Node Properties");
 		NodePropertiesDialog dlg = new NodePropertiesDialog(getMainWindow(), title, selectedNode);
-		dlg.show();
+		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
 
