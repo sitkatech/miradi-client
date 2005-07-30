@@ -39,12 +39,12 @@ public class Storage
 		commands.clear();
 	}
 	
-	protected void load(InputStream in) throws IOException
+	protected static Vector load(InputStream in) throws IOException
 	{
 		DataInputStream dataIn = new DataInputStream(in);
 		try
 		{
-			load(dataIn);
+			return load(dataIn);
 		}
 		finally
 		{
@@ -52,18 +52,20 @@ public class Storage
 		}
 	}
 
-	protected void load(DataInputStream dataIn) throws IOException
+	protected static Vector load(DataInputStream dataIn) throws IOException
 	{
+		Vector loaded = new Vector();
 		EAM.logDebug("---Loading---");
 		while(true)
 		{
 			if(dataIn.read() < 0)
 				break;
 			Command command = Command.readFrom(dataIn);
-			addCommand(command);
+			loaded.add(command);
 			EAM.logDebug(command.toString());
 		}
 		EAM.logDebug("---Finished---");
+		return loaded;
 	}
 
 	protected void appendCommand(OutputStream out, Command command) throws IOException
@@ -84,6 +86,11 @@ public class Storage
 		dataOut.write(0);
 		command.writeTo(dataOut);
 		EAM.logDebug("wrote: " + command.toString());
+		addCommand(command);
+	}
+	
+	public void addCommandWithoutSaving(Command command) throws IOException
+	{
 		addCommand(command);
 	}
 	

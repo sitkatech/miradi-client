@@ -7,37 +7,36 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.CommandUndo;
+import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionUndo extends MainWindowAction
+public class ActionRedo extends MainWindowAction
 {
-	public ActionUndo(MainWindow mainWindowToUse)
+	public ActionRedo(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Undo");
+		return EAM.text("Action|Redo");
 	}
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		CommandUndo command = new CommandUndo();
+		CommandRedo command = new CommandRedo();
 		BaseProject project = getMainWindow().getProject();
 		try
 		{
 			project.executeCommand(command);
 		}
-		catch(NothingToUndoException e)
+		catch (NothingToRedoException e)
 		{
-			// ignore it
+			// ignore this
 		}
 	}
-
 }

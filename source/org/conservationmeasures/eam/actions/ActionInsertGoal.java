@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 

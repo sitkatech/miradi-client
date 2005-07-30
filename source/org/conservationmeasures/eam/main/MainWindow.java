@@ -16,8 +16,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.swing.UiScrollPane;
 

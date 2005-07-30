@@ -16,6 +16,9 @@ import java.util.Arrays;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.exceptions.NothingToRedoException;
+import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -252,16 +255,13 @@ public class TestCommands extends EAMTestCase
 	
 	public void testUndo() throws Exception
 	{
-		BaseProject emptyProject = new BaseProject();
 		CommandUndo cmd = new CommandUndo();
-		emptyProject.executeCommand(cmd);
-		
 		int insertedId = insertGoal();
 		project.executeCommand(cmd);
 		try
 		{
 			EAM.setLogToString();
-			emptyProject.getDiagramModel().getNodeById(insertedId);
+			project.getDiagramModel().getNodeById(insertedId);
 			fail("Undo didn't work?");
 		}
 		catch(Exception ignoreExpected)
@@ -271,6 +271,53 @@ public class TestCommands extends EAMTestCase
 		
 		CommandUndo loaded = (CommandUndo)saveAndReload(cmd);
 		assertNotNull("didn't reload?", loaded);
+	}
+	
+	public void testUndoWhenNothingToUndo() throws Exception
+	{
+		BaseProject emptyProject = new BaseProject();
+		CommandUndo undo = new CommandUndo();
+		try
+		{
+			EAM.setLogToString();
+			emptyProject.executeCommand(undo);
+			fail("Should have thrown");
+		}
+		catch(NothingToUndoException ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
+	}
+
+	public void testRedo() throws Exception
+	{
+		int insertedId = insertGoal();
+		CommandUndo undo = new CommandUndo();
+		project.executeCommand(undo);
+		CommandRedo redo = new CommandRedo();
+		project.executeCommand(redo);
+		
+		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		assertTrue("wrong node?", inserted.isGoal());
+		
+		CommandRedo loaded = (CommandRedo)saveAndReload(redo);
+		assertNotNull("didn't reload?", loaded);
+	}
+	
+	public void testRedoWhenNothingToRedo() throws Exception
+	{
+		BaseProject emptyProject = new BaseProject();
+		CommandRedo redo = new CommandRedo();
+		try
+		{
+			EAM.setLogToString();
+			emptyProject.executeCommand(redo);
+			fail("Should have thrown");
+		}
+		catch(NothingToRedoException ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
 	}
 
 	private int insertGoal() throws Exception

@@ -8,8 +8,10 @@ package org.conservationmeasures.eam.main;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 
 public class Project extends BaseProject
 {
@@ -27,10 +29,14 @@ public class Project extends BaseProject
 		}
 		
 		getDiagramModel().clear();
-		getStorage().load(projectFile);
-		for(int i=0; i < storage.getCommandCount(); ++i)
+		getStorage().setFile(projectFile);
+		Vector commands = FileStorage.load(projectFile);
+		for(int i=0; i < commands.size(); ++i)
 		{
-			storage.getCommand(i).execute(this);
+			Command command = (Command)commands.get(i);
+			EAM.logDebug("Executing " + command);
+			command.execute(this);
+			getStorage().addCommandWithoutSaving(command);
 		}
 	}
 

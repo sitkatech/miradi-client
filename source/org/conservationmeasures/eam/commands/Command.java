@@ -9,6 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 
 public abstract class Command
@@ -30,6 +31,8 @@ public abstract class Command
 			return new CommandDeleteNode(dataIn);
 		if(commandName.equals(CommandUndo.getCommandName()))
 			return new CommandUndo(dataIn);
+		if(commandName.equals(CommandRedo.getCommandName()))
+			return new CommandRedo(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
@@ -40,6 +43,11 @@ public abstract class Command
 	}
 	
 	public boolean isUndo()
+	{
+		return false;
+	}
+
+	public boolean isRedo()
 	{
 		return false;
 	}

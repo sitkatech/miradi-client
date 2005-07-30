@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -52,12 +53,12 @@ public class CommandInsertNode extends Command
 	{
 		try
 		{
-			insertedId = target.insertNode(getNodeType());
+			insertedId = target.insertNodeAtId(getNodeType(), getId());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			throw new CommandFailedException();
+			throw new CommandFailedException(e);
 		}
 	}
 
@@ -70,7 +71,7 @@ public class CommandInsertNode extends Command
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			throw new CommandFailedException();
+			throw new CommandFailedException(e);
 		}
 	}
 

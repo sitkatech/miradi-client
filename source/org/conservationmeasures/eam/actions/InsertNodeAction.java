@@ -10,8 +10,8 @@ import java.awt.Point;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Project;
 

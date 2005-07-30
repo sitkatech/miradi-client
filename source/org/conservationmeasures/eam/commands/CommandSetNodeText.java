@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -71,7 +72,7 @@ public class CommandSetNodeText extends Command
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			throw new CommandFailedException();
+			throw new CommandFailedException(e);
 		}
 	}
 

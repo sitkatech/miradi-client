@@ -9,18 +9,19 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestUndo extends EAMTestCase
+public class TestUndoAndRedo extends EAMTestCase
 {
-	public TestUndo(String name)
+	public TestUndoAndRedo(String name)
 	{
 		super(name);
 	}
@@ -65,8 +66,16 @@ public class TestUndo extends EAMTestCase
 		project.executeCommand(undo);
 		verifyNotPresent(fromId);
 
-		// undo when nothing to undo has no effect
-		project.executeCommand(undo);
+		try
+		{
+			EAM.setLogToString();
+			project.executeCommand(undo);
+			fail("Should have thrown");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
 	}
 	
 	public void testUndoActUndo() throws Exception
@@ -84,25 +93,38 @@ public class TestUndo extends EAMTestCase
 	
 	}
 	
-	public void testGetIndexToUndo() throws Exception
+	public void testGetIndexToUndoAndRedo() throws Exception
 	{
 		CommandDoNothing nop = new CommandDoNothing();
 		CommandUndo undo = new CommandUndo();
+		CommandRedo redo = new CommandRedo();
 		BaseProject p = new BaseProject();
 		
 		assertEquals("already an undoable?", -1, p.getIndexToUndo());
+		assertEquals("already a redoable?", -1, p.getIndexToRedo());
 		p.executeCommand(nop);
-		assertEquals(0, p.getIndexToUndo());
+		assertEquals("can't undo first?", 0, p.getIndexToUndo());
+		assertEquals("redo before first undo?", -1, p.getIndexToRedo());
 		p.executeCommand(nop);
-		assertEquals(1, p.getIndexToUndo());
+		assertEquals("can't undo second?", 1, p.getIndexToUndo());
+		assertEquals("redo when still no undo?", -1, p.getIndexToRedo());
 		p.executeCommand(undo);
-		assertEquals(0, p.getIndexToUndo());
+		assertEquals("can't undo twice?", 0, p.getIndexToUndo());
+		assertEquals("can't redo first undo?", 1, p.getIndexToRedo());
 		p.executeCommand(nop);
-		assertEquals(3, p.getIndexToUndo());
+		assertEquals("can't undo latest?", 3, p.getIndexToUndo());
+		assertEquals("redo when undo not last?", -1, p.getIndexToRedo());
 		p.executeCommand(undo);
-		assertEquals(0, p.getIndexToUndo());
+		assertEquals("can't undo earlier command?", 0, p.getIndexToUndo());
+		assertEquals("can't redo very latest?", 3, p.getIndexToRedo());
 		p.executeCommand(undo);
-		assertEquals(-1, p.getIndexToUndo());
+		assertEquals("can undo beyond first?", -1, p.getIndexToUndo());
+		assertEquals("can't redo after two undos?", 0, p.getIndexToRedo());
+		
+		p.executeCommand(redo);
+		assertEquals("can't undo after redo?", 0, p.getIndexToUndo());
+		assertEquals("can't redo after redo?", 3, p.getIndexToRedo());
+		
 	}
 	
 	class CommandDoNothing extends Command

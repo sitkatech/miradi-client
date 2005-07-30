@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.main.EAM;
@@ -42,6 +43,7 @@ public class DiagramContextMenuHandler
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionUndo(mainWindow)));
+		menu.add(new JMenuItem(new ActionRedo(mainWindow)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionCut(mainWindow)));
 		menu.add(new JMenuItem(new ActionCopy(mainWindow)));

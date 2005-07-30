@@ -10,7 +10,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import org.conservationmeasures.eam.commands.CommandFailedException;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 

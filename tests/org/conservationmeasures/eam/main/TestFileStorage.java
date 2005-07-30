@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
@@ -37,9 +38,12 @@ public class TestFileStorage extends EAMTestCase
 		{
 		}
 
-		storage.load(temp);
-		assertTrue("no file after loading?", storage.hasFile());
+		storage.setFile(temp);
+		assertTrue("no file?", storage.hasFile());
 		assertEquals("wrong file name?", temp.getName(), storage.getName());
+		
+		Vector nothingYet = FileStorage.load(temp);
+		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
 		Command createGoal = new CommandInsertNode(Node.TYPE_GOAL);
 		Command createThreat = new CommandInsertNode(Node.TYPE_THREAT);
@@ -49,16 +53,15 @@ public class TestFileStorage extends EAMTestCase
 		assertEquals("goal not gettable?", createGoal, storage.getCommand(0));
 		assertEquals("threat not gettable?", createThreat, storage.getCommand(1));
 		
-		FileStorage loader = new FileStorage();
-		loader.load(temp);
-		assertEquals("didn't load correct count?", 2, loader.getCommandCount());
-		assertEquals("goal not loaded?", createGoal, loader.getCommand(0));
-		assertEquals("threat not loaded?", createThreat, loader.getCommand(1));
+		Vector loaded = FileStorage.load(temp);
+		assertEquals("didn't load correct count?", 2, loaded.size());
+		assertEquals("goal not loaded?", createGoal, loaded.get(0));
+		assertEquals("threat not loaded?", createThreat, loaded.get(1));
 		
 		temp.delete();
 		try
 		{
-			new FileStorage().load(temp);
+			FileStorage.load(temp);
 			fail("Should have thrown opening non-existant file");
 		}
 		catch(IOException ignoreExpected)

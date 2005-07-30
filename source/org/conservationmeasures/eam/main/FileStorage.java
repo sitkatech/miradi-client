@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 
@@ -28,14 +29,18 @@ public class FileStorage extends Storage
 		return file.getName();
 	}
 	
-	public void load(File fileToUse) throws IOException
+	public void setFile(File fileToUse)
 	{
 		clear();
 		file = fileToUse;
-		FileInputStream in = new FileInputStream(file);
+	}
+	
+	public static Vector load(File fileToUse) throws IOException
+	{
+		FileInputStream in = new FileInputStream(fileToUse);
 		try
 		{
-			load(in);
+			return load(in);
 		}
 		finally
 		{

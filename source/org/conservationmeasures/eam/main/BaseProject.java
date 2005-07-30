@@ -6,12 +6,15 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.IOException;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.exceptions.NothingToRedoException;
+import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 
 
 public class BaseProject
@@ -54,28 +57,12 @@ public class BaseProject
 		return nodeType; 
 	}
 
-	public int insertNode(int typeToInsert)
-	{
-		DiagramModel model = getDiagramModel();
-		Node node = model.createNode(typeToInsert);
-		int idThatWasInserted = model.getNodeId(node);
-		return idThatWasInserted;
-	}
-
 	public int insertNodeAtId(int typeToInsert, int id)
 	{
 		DiagramModel model = getDiagramModel();
 		Node node = model.createNodeAtId(typeToInsert, id);
 		int idThatWasInserted = model.getNodeId(node);
 		return idThatWasInserted;
-	}
-
-	public int insertLinkage(int linkFromId, int linkToId) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		Linkage linkage = model.createLinkage(Node.INVALID_ID, linkFromId, linkToId);
-		int insertedLinkageId = model.getLinkageId(linkage);
-		return insertedLinkageId;
 	}
 
 	public int insertLinkageAtId(int linkageId, int linkFromId, int linkToId) throws Exception
@@ -90,36 +77,92 @@ public class BaseProject
 	{
 		int indexToUndo = getIndexToUndo();
 		if(indexToUndo < 0)
-			return;
+			throw new NothingToUndoException();
 		Command commandToUndo = storage.getCommand(indexToUndo);
 		commandToUndo.undo(this);
 	}
 	
+	public void redo() throws CommandFailedException
+	{
+		int indexToRedo = getIndexToRedo();
+		if(indexToRedo < 0)
+			throw new NothingToRedoException();
+		
+		Command commandToRedo = storage.getCommand(indexToRedo);
+		commandToRedo.execute(this);
+	}
+	
 	public int getIndexToUndo()
 	{
-		int undoCount = 0;
-		int candidateToUndo = storage.getCommandCount() - 1;
-		while(candidateToUndo >= 0)
-		{
-			Command candidate = storage.getCommand(candidateToUndo);
-			if(candidate.isUndo())
-			{
-				++undoCount;
-			}
-			else if(undoCount == 0)
-			{
-				break;
-			}
-			else
-			{
-				--undoCount;
-			}
-			--candidateToUndo;
-		}
-		
-		return candidateToUndo;
+		UndoRedoState state = new UndoRedoState(storage);
+		return state.getIndexToUndo();
 	}
+
+	public int getIndexToRedo()
+	{
+		UndoRedoState state = new UndoRedoState(storage);
+		return state.getIndexToRedo();
+	}
+	
+	
 
 	Storage storage;
 	DiagramModel diagramModel;
 }
+
+class UndoRedoState
+{
+	public UndoRedoState(Storage storageToUse)
+	{
+		storage = storageToUse;
+		nonUndoneCommandIndexes = new Vector();
+		redoableCommandIndexes = new Vector();
+	}
+	
+	public int getIndexToUndo()
+	{
+		loadSnapshotOfStorage();
+		if(nonUndoneCommandIndexes.size() < 1)
+			return -1;
+		
+		return ((Integer)nonUndoneCommandIndexes.get(0)).intValue();
+	}
+	
+	public int getIndexToRedo()
+	{
+		loadSnapshotOfStorage();
+		if(redoableCommandIndexes.size() < 1)
+			return -1;
+		return ((Integer)redoableCommandIndexes.get(0)).intValue();
+	}
+	
+	private void loadSnapshotOfStorage()
+	{
+		for(int i=0; i < storage.getCommandCount(); ++i)
+		{
+			Command cmd = storage.getCommand(i);
+			if(cmd.isUndo())
+			{
+				Object commandBeingUndone = nonUndoneCommandIndexes.get(0);
+				redoableCommandIndexes.insertElementAt(commandBeingUndone, 0);
+				nonUndoneCommandIndexes.remove(0);
+			}
+			else if(cmd.isRedo())
+			{
+				Object commandBeingRedone = redoableCommandIndexes.get(0);
+				nonUndoneCommandIndexes.insertElementAt(commandBeingRedone, 0);
+				redoableCommandIndexes.remove(0);
+			}
+			else
+			{
+				nonUndoneCommandIndexes.insertElementAt(new Integer(i), 0);
+				redoableCommandIndexes.clear();
+			}
+		}
+	}
+
+	Storage storage;
+	Vector nonUndoneCommandIndexes;
+	Vector redoableCommandIndexes;
+}
+

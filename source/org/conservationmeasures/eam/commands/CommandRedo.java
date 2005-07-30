@@ -12,18 +12,18 @@ import java.io.IOException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 
-public class CommandUndo extends Command
+public class CommandRedo extends Command
 {
-	public CommandUndo()
+	public CommandRedo()
 	{
 	}
-	
-	public CommandUndo(DataInputStream dataIn)
+
+	public CommandRedo(DataInputStream dataIn)
 	{
 		
 	}
 
-	public boolean isUndo()
+	public boolean isRedo()
 	{
 		return true;
 	}
@@ -35,16 +35,17 @@ public class CommandUndo extends Command
 	
 	public static String getCommandName()
 	{
-		return "Undo";
+		return "Redo";
 	}
 	
 	public void execute(BaseProject target) throws CommandFailedException
 	{
-		target.undo();
+		target.redo();
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeUTF(getCommandName());
 	}
+
 }

@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandFailedException;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
