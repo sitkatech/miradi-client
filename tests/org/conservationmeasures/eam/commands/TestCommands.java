@@ -254,16 +254,7 @@ public class TestCommands extends EAMTestCase
 	{
 		BaseProject emptyProject = new BaseProject();
 		CommandUndo cmd = new CommandUndo();
-		try
-		{
-			EAM.setLogToString();
-			emptyProject.executeCommand(cmd);
-			fail("Should have thrown for nothing to undo");
-		}
-		catch(CommandFailedException ignoreExpected)
-		{
-		}
-		EAM.setLogToConsole();
+		emptyProject.executeCommand(cmd);
 		
 		int insertedId = insertGoal();
 		project.executeCommand(cmd);

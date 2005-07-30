@@ -65,16 +65,8 @@ public class TestUndo extends EAMTestCase
 		project.executeCommand(undo);
 		verifyNotPresent(fromId);
 
-		EAM.setLogToString();
-		try
-		{
-			project.executeCommand(undo);
-			fail("can't undo beyond first command");
-		}
-		catch(Exception ignoreExpected)
-		{
-		}
-		EAM.setLogToConsole();
+		// undo when nothing to undo has no effect
+		project.executeCommand(undo);
 	}
 	
 	public void testUndoActUndo() throws Exception
