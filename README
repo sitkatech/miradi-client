@@ -40,6 +40,12 @@ If you are using MS Windows, and you
 do install to C:\Program Files\eam, then you can copy the 
 included shortcut (e-Adaptive Management.lnk) to your desktop, 
 to create an easy way to launch the application.
+If Java is not in your path, you may need to edit the shortcut 
+to point to Java specifically. The details will vary depending on 
+which Java you have installed, and where, but it would look 
+something like this (you will need the quote marks):
+
+  "C:\Program Files\Java\jre1.5.0_02\bin"
 
 
 
@@ -48,4 +54,13 @@ MANUALLY RUNNING UNDER MS-WINDOWS
 From a DOS prompt in the cmpdemo working directory, do:
 
   java -cp .;jgraph.jar; org.conservationmeasures.eam.main.EAM
+  
+If Java is not in your path, and you don't want to add it to your 
+path for some reason, you may need to point to Java specifically. 
+The details will vary depending on which Java you have installed, 
+and where, but it would look something like this, entered all on 
+one line (you will need the quote marks):
+
+  "C:\Program Files\Java\jre1.5.0_02\bin" -cp .;jgraph.jar; org.conservationmeasures.eam.main.EAM
+
   
