@@ -10,8 +10,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
@@ -88,6 +90,19 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 
 	public void mouseClicked(MouseEvent event)
 	{
+		if(event.getClickCount() == 2)
+		{
+			try 
+			{
+				ActionNodeProperties properties = new ActionNodeProperties(diagram.getMainWindow());
+				properties.editProperties();
+			} 
+			catch (CommandFailedException e) 
+			{
+				e.printStackTrace();
+			}
+			event.consume();
+		}
 	}
 
 	// valueChanged is part of the GraphSelectionListener interface.

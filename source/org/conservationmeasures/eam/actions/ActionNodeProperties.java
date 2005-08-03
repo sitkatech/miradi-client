@@ -29,11 +29,15 @@ public class ActionNodeProperties extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
+		editProperties();
+	}
+
+	public void editProperties() throws CommandFailedException 
+	{
 		DiagramComponent diagram = getMainWindow().getDiagramComponent();
-		if(diagram.getSelectionCount() != 1)
+		Node selectedNode = diagram.getSelectedNode();
+		if(selectedNode == null)
 			return;
-		
-		Node selectedNode = (Node)diagram.getSelectionCell();
 		String title = EAM.text("Title|Node Properties");
 		NodePropertiesDialog dlg = new NodePropertiesDialog(getMainWindow(), title, selectedNode);
 		dlg.setVisible(true);

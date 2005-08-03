@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -34,6 +35,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 		setDisconnectable(false);
 		setDisconnectOnMove(false);
+		setEditClickCount(0);//We don't have an editor
 		setBendable(false);
 	}
 
@@ -56,6 +58,25 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		diagramContextMenuHandler.showContextMenu(e);
 	}
+	
+	public Node getSelectedNode()
+	{
+		if (getSelectionCount() != 1)
+			return null;
+		Object selectedCell = getSelectionCell();
+		if(!isNode(selectedCell))
+			return null;
+		return (Node)selectedCell;
+	}
+	
+	private boolean isNode(Object cell)
+	{
+		if(cell instanceof Node)
+			return true;
+		return false;
+	}
+	
+
 
 	private void installKeyBindings()
 	{
