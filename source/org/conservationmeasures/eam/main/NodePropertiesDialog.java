@@ -33,7 +33,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 		Container contents = getContentPane();
 		contents.add(bigBox);
-		Utilities.centerDlg(this);
+		pack();
+		setLocation(nodeToEdit.getLocation());
 		setResizable(true);
 		setModal(true);
 	}
