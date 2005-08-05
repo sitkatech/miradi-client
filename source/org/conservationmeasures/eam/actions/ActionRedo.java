@@ -18,7 +18,7 @@ public class ActionRedo extends MainWindowAction
 {
 	public ActionRedo(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/redo.gif");
 	}
 
 	private static String getLabel()
@@ -38,5 +38,10 @@ public class ActionRedo extends MainWindowAction
 		{
 			// ignore this
 		}
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Redo last undone action");
 	}
 }

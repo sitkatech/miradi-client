@@ -29,4 +29,9 @@ public class ActionCopy extends MainWindowAction
 
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Copy the selection to the clipboard");
+	}
+
 }

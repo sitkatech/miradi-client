@@ -95,5 +95,10 @@ public class ActionDelete extends MainWindowAction
 		project.executeCommand(command);
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Delete the selection");
+	}
+
 }
 

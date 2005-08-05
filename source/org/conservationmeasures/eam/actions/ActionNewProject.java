@@ -50,4 +50,9 @@ public class ActionNewProject extends MainWindowAction
 		getMainWindow().loadProject(chosen);
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create a new project");
+	}
+
 }

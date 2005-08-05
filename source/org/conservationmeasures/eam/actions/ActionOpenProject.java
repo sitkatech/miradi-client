@@ -37,4 +37,10 @@ public class ActionOpenProject extends MainWindowAction
 		File chosen = dlg.getSelectedFile();
 		getMainWindow().loadProject(chosen);
 	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Open an existing project");
+	}
+
 }

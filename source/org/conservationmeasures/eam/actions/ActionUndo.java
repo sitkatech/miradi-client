@@ -18,7 +18,7 @@ public class ActionUndo extends MainWindowAction
 {
 	public ActionUndo(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/undo.gif");
 	}
 
 	private static String getLabel()
@@ -38,6 +38,11 @@ public class ActionUndo extends MainWindowAction
 		{
 			// ignore it
 		}
+	}
+	
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Undo last action");
 	}
 
 }

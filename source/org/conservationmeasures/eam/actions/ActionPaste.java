@@ -29,4 +29,9 @@ public class ActionPaste extends MainWindowAction
 
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Paste the clipboard");
+	}
+
 }

@@ -30,4 +30,9 @@ public class ActionCut extends MainWindowAction
 
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Cut the selection to the clipboard");
+	}
+
 }

@@ -46,7 +46,16 @@ public abstract class MainWindowAction extends AbstractAction
 		
 	}
 	
+	public ImageIcon getIcon()
+	{
+		return (ImageIcon)getValue("icon");
+	}
+	
 	public abstract void doAction(ActionEvent event) throws CommandFailedException;
+	public String getToolTipText()
+	{
+		return "";
+	}
 	
 	MainWindow mainWindow;
 }
