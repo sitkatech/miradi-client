@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 
 public class Project extends BaseProject
@@ -38,6 +39,8 @@ public class Project extends BaseProject
 			command.execute(this);
 			getStorage().addCommandWithoutSaving(command);
 		}
+		
+		fireCommandExecuted(new CommandDoNothing());
 	}
 
 	public String getName()

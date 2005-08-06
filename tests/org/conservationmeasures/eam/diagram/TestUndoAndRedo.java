@@ -5,10 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
 
-import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandRedo;
@@ -127,26 +125,11 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
-	class CommandDoNothing extends Command
+	public void testUndoAndRedoAreStored()
 	{
 		
-		public void execute(BaseProject target) throws CommandFailedException
-		{
-			++done;
-		}
-
-		public void undo(BaseProject target) throws CommandFailedException
-		{
-			--done;
-		}
-
-		public void writeTo(DataOutputStream dataOut) throws IOException
-		{
-		}
-		
-		public int done;
 	}
-
+	
 	private void verifyNotPresent(int cellId)
 	{
 		DiagramModel model = project.getDiagramModel();

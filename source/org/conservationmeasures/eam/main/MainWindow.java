@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -21,16 +20,18 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.swing.UiScrollPane;
 
-public class MainWindow extends JFrame
+public class MainWindow extends JFrame implements CommandExecutedListener
 {
-	public MainWindow() throws HeadlessException
+	public MainWindow() throws Exception
 	{
 		project = new Project();
+		project.addCommandExecutedListener(this);
 
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(new MainMenuBar(this));
-		getContentPane().add(new MainToolBar(this), BorderLayout.BEFORE_FIRST_LINE);
+		mainToolBar = new MainToolBar(this);
+		getContentPane().add(mainToolBar, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
@@ -99,6 +100,10 @@ public class MainWindow extends JFrame
 		System.exit(0);
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
+	
 	private void updateTitle()
 	{
 		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getName());
@@ -115,4 +120,5 @@ public class MainWindow extends JFrame
 	Project project;
 	UiScrollPane diagramScroller;
 	DiagramComponent diagramComponent;
+	private MainToolBar mainToolBar;
 }

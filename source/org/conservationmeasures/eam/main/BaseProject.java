@@ -23,11 +23,17 @@ public class BaseProject
 	{
 		diagramModel = new DiagramModel();
 		storage = new Storage();
+		commandExecutedListeners = new Vector();
 	}
 
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
+	}
+	
+	public void addCommandExecutedListener(CommandExecutedListener listener)
+	{
+		commandExecutedListeners.add(listener);
 	}
 
 	public void executeCommand(Command command) throws CommandFailedException
@@ -36,8 +42,19 @@ public class BaseProject
 		recordCommand(command);
 	}
 	
+	void fireCommandExecuted(Command command)
+	{
+		CommandExecutedEvent event = new CommandExecutedEvent(command);
+		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandExecuted(event);
+		}
+	}
+	
 	public void recordCommand(Command command)
 	{
+		fireCommandExecuted(command);
 		try
 		{
 			storage.appendCommand(command);
@@ -108,6 +125,7 @@ public class BaseProject
 
 	Storage storage;
 	DiagramModel diagramModel;
+	Vector commandExecutedListeners;
 }
 
 class UndoRedoState

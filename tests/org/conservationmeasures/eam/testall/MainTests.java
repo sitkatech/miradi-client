@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.diagram.TestLinkage;
 import org.conservationmeasures.eam.diagram.TestNode;
 import org.conservationmeasures.eam.diagram.TestSetNodeText;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
+import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestFileStorage;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.utils.TestLogging;
@@ -44,6 +45,7 @@ public class MainTests extends TestCase
 //		suite.addTest(TestClient.suite());
 		
 		// main package
+		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
 		suite.addTest(new TestSuite(TestFileStorage.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
 		

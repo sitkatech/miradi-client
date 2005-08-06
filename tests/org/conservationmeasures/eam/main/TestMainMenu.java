@@ -21,7 +21,7 @@ public class TestMainMenu extends EAMTestCase
 		super(name);
 	}
 	
-	public void testFileMenu()
+	public void testFileMenu() throws Exception
 	{
 		MainWindow mainWindow = new MainWindow();
 		JMenuBar menuBar = mainWindow.getJMenuBar();
