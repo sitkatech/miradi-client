@@ -55,4 +55,9 @@ public class ActionNewProject extends MainWindowAction
 		return EAM.text("TT|Create a new project");
 	}
 
+	public boolean shouldBeEnabled()
+	{
+		return true;
+	}
+	
 }

@@ -52,6 +52,6 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		assertEquals("undo didn't fire?", 3, listener.timesExecuted);
 
 		project.executeCommand(new CommandRedo());
-		assertEquals("redo didn't fire?", 4, listener.timesExecuted);
+		assertEquals("redo didn't fire two events?", 5, listener.timesExecuted);
 	}
 }

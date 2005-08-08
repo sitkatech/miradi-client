@@ -42,6 +42,12 @@ public class BaseProject
 		recordCommand(command);
 	}
 	
+	public void replayCommand(Command command) throws CommandFailedException
+	{
+		command.execute(this);
+		fireCommandExecuted(command);
+	}
+	
 	void fireCommandExecuted(Command command)
 	{
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
@@ -54,7 +60,6 @@ public class BaseProject
 	
 	public void recordCommand(Command command)
 	{
-		fireCommandExecuted(command);
 		try
 		{
 			storage.appendCommand(command);
@@ -63,6 +68,7 @@ public class BaseProject
 		{
 			EAM.logException(e);
 		}
+		fireCommandExecuted(command);
 	}
 
 	public int deleteNode(int idToDelete) throws Exception
@@ -97,6 +103,7 @@ public class BaseProject
 			throw new NothingToUndoException();
 		Command commandToUndo = storage.getCommand(indexToUndo);
 		commandToUndo.undo(this);
+		// TODO: should we fire a command-undone here?
 	}
 	
 	public void redo() throws CommandFailedException
@@ -106,7 +113,7 @@ public class BaseProject
 			throw new NothingToRedoException();
 		
 		Command commandToRedo = storage.getCommand(indexToRedo);
-		commandToRedo.execute(this);
+		replayCommand(commandToRedo);
 	}
 	
 	public int getIndexToUndo()

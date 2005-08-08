@@ -44,4 +44,10 @@ public class ActionRedo extends MainWindowAction
 	{
 		return EAM.text("TT|Redo last undone action");
 	}
+
+	public boolean shouldBeEnabled()
+	{
+		BaseProject project = getMainWindow().getProject();
+		return (project.getIndexToRedo() >= 0);
+	}
 }

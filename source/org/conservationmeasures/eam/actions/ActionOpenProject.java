@@ -43,4 +43,9 @@ public class ActionOpenProject extends MainWindowAction
 		return EAM.text("TT|Open an existing project");
 	}
 
+	public boolean shouldBeEnabled()
+	{
+		return true;
+	}
+	
 }

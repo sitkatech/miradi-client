@@ -36,7 +36,7 @@ public class Project extends BaseProject
 		{
 			Command command = (Command)commands.get(i);
 			EAM.logDebug("Executing " + command);
-			command.execute(this);
+			replayCommand(command);
 			getStorage().addCommandWithoutSaving(command);
 		}
 		

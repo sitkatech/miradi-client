@@ -45,4 +45,10 @@ public class ActionUndo extends MainWindowAction
 		return EAM.text("TT|Undo last action");
 	}
 
+	public boolean shouldBeEnabled()
+	{
+		BaseProject project = getMainWindow().getProject();
+		return (project.getIndexToUndo() >= 0);
+	}
+	
 }

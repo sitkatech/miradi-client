@@ -57,5 +57,15 @@ public abstract class MainWindowAction extends AbstractAction
 		return "";
 	}
 	
+	public boolean shouldBeEnabled()
+	{
+		return false;
+	}
+	
+	public void updateEnabledState()
+	{
+		setEnabled(shouldBeEnabled());
+	}
+	
 	MainWindow mainWindow;
 }

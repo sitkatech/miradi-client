@@ -35,6 +35,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
+		mainToolBar.updateButtonStates();
+
 	}
 	
 	public Project getProject()
@@ -102,6 +104,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		mainToolBar.updateButtonStates();
 	}
 	
 	private void updateTitle()

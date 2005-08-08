@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -26,6 +27,8 @@ public class MainToolBar extends JToolBar
 {
 	public MainToolBar(MainWindow mainWindow)
 	{
+		buttons = new Vector();
+		
 		setFloatable(false);
 		addButtonForAction(new ActionNewProject(mainWindow));
 		addButtonForAction(new ActionOpenProject(mainWindow));
@@ -42,12 +45,21 @@ public class MainToolBar extends JToolBar
 	
 	void addButtonForAction(MainWindowAction action)
 	{
-		JButton button = new JButton(action);
-		button.setText("");
-		button.setToolTipText(action.getToolTipText());
+		ToolBarButton button = new ToolBarButton(action);
 		add(button);
+		buttons.add(button);
+	}
+	
+	public void updateButtonStates()
+	{
+		for(int i=0; i < buttons.size(); ++i)
+		{
+			ToolBarButton button = (ToolBarButton)buttons.get(i);
+			button.updateEnabledState();
+		}
 	}
 
+	Vector buttons;
 }
 
 class ActionStub extends AbstractAction
@@ -63,3 +75,20 @@ class ActionStub extends AbstractAction
 	}
 }
 
+class ToolBarButton extends JButton
+{
+	public ToolBarButton(MainWindowAction actionToUse)
+	{
+		super(actionToUse);
+		action = actionToUse;
+		setText("");
+		setToolTipText(action.getToolTipText());
+	}
+	
+	public void updateEnabledState()
+	{
+		action.updateEnabledState();
+	}
+	
+	MainWindowAction action;
+}
