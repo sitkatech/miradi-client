@@ -37,7 +37,7 @@ public class ActionInsertGoal extends InsertNodeAction
 
 	public boolean shouldBeEnabled()
 	{
-		return true;
+		return getMainWindow().isProjectOpen();
 	}
 	
 }

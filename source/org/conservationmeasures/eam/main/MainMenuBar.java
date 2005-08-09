@@ -19,6 +19,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		add(createFileMenu(actions));
 		add(createEditMenu(actions));
+		add(createInsertMenu(actions));
 		add(createHelpMenu(actions));
 	}
 
@@ -44,6 +45,17 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.delete));
 		menu.add(new JMenuItem(actions.selectAll));
+		return menu;
+	}
+	
+	private JMenu createInsertMenu(Actions actions)
+	{
+		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
+		menu.add(new JMenuItem(actions.insertGoal));
+		menu.add(new JMenuItem(actions.insertThreat));
+		menu.add(new JMenuItem(actions.insertIntervention));
+		menu.addSeparator();
+		menu.add(new JMenuItem(actions.insertConnection));
 		return menu;
 	}
 

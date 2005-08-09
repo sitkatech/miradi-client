@@ -56,6 +56,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		return actions;
 	}
 	
+	public boolean isProjectOpen()
+	{
+		return project.isOpen();
+	}
+	
 	public void loadProject(File projectFile)
 	{
 		if(diagramScroller != null)

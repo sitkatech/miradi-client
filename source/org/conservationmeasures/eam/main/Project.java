@@ -43,9 +43,14 @@ public class Project extends BaseProject
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
+	public boolean isOpen()
+	{
+		return getStorage().hasFile();
+	}
+
 	public String getName()
 	{
-		if(getStorage().hasFile())
+		if(isOpen())
 			return getStorage().getName();
 		return EAM.text("[No Project]");
 	}

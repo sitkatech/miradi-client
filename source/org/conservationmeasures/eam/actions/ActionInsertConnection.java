@@ -61,4 +61,9 @@ public class ActionInsertConnection extends MainWindowAction
 		}
 	}
 
+	public boolean shouldBeEnabled()
+	{
+		return getMainWindow().isProjectOpen();
+	}
+	
 }

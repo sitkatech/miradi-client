@@ -25,6 +25,11 @@ public class BaseProject
 		storage = new Storage();
 		commandExecutedListeners = new Vector();
 	}
+	
+	public boolean isOpen()
+	{
+		return true;
+	}
 
 	public DiagramModel getDiagramModel()
 	{

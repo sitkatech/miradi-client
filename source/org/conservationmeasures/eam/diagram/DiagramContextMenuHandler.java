@@ -66,6 +66,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(actions.insertThreat);
 		insertMenu.addSeparator();
 		insertMenu.add(new ActionInsertConnection(getMainWindow()));
+
 		return insertMenu;
 	}
 
