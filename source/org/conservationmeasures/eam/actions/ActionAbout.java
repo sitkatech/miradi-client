@@ -39,6 +39,11 @@ public class ActionAbout extends MainWindowAction
 		
 	}
 
+	public boolean shouldBeEnabled()
+	{
+		return true;
+	}
+	
 	static final String productName = "e-Adaptive Management -- NOT FOR RELEASE";
 	static final String copyright = "Copyright 2005, The Conservation Measures Partnership and " + 
 		"Beneficent Technology, Inc. (Benetech, at www.benetech.org)\n";

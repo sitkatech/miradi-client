@@ -15,14 +15,12 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
-import org.conservationmeasures.eam.actions.ActionInsertGoal;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiMenu;
@@ -58,10 +56,14 @@ public class DiagramContextMenuHandler
 
 	public UiMenu getInsertMenu(Point menuInvokedAt)
 	{
+		Actions actions = getMainWindow().getActions();
+		actions.insertGoal.setInvocationPoint(menuInvokedAt);
+		actions.insertIntervention.setInvocationPoint(menuInvokedAt);
+		actions.insertThreat.setInvocationPoint(menuInvokedAt);
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
-		insertMenu.add(new ActionInsertGoal(getMainWindow(), menuInvokedAt));
-		insertMenu.add(new ActionInsertThreat(getMainWindow(), menuInvokedAt));
-		insertMenu.add(new ActionInsertIntervention(getMainWindow(), menuInvokedAt));
+		insertMenu.add(actions.insertGoal);
+		insertMenu.add(actions.insertIntervention);
+		insertMenu.add(actions.insertThreat);
 		insertMenu.addSeparator();
 		insertMenu.add(new ActionInsertConnection(getMainWindow()));
 		return insertMenu;

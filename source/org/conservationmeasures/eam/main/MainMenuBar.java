@@ -11,56 +11,46 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.conservationmeasures.eam.actions.ActionAbout;
-import org.conservationmeasures.eam.actions.ActionCopy;
-import org.conservationmeasures.eam.actions.ActionCut;
-import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionExit;
-import org.conservationmeasures.eam.actions.ActionNewProject;
-import org.conservationmeasures.eam.actions.ActionOpenProject;
-import org.conservationmeasures.eam.actions.ActionPaste;
-import org.conservationmeasures.eam.actions.ActionRedo;
-import org.conservationmeasures.eam.actions.ActionSelectAll;
-import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.Actions;
 
 public class MainMenuBar extends JMenuBar
 {
-	public MainMenuBar(MainWindow mainWindow) throws HeadlessException
+	public MainMenuBar(Actions actions) throws HeadlessException
 	{
-		add(createFileMenu(mainWindow));
-		add(createEditMenu(mainWindow));
-		add(createHelpMenu(mainWindow));
+		add(createFileMenu(actions));
+		add(createEditMenu(actions));
+		add(createHelpMenu(actions));
 	}
 
-	private JMenu createFileMenu(MainWindow mainWindow)
+	private JMenu createFileMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
-		menu.add(new JMenuItem(new ActionNewProject(mainWindow)));
-		menu.add(new JMenuItem(new ActionOpenProject(mainWindow)));
+		menu.add(new JMenuItem(actions.newProject));
+		menu.add(new JMenuItem(actions.openProject));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionExit(mainWindow)));
+		menu.add(new JMenuItem(actions.exit));
 		return menu;
 	}
 
-	private JMenu createEditMenu(MainWindow mainWindow)
+	private JMenu createEditMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));
-		menu.add(new JMenuItem(new ActionUndo(mainWindow)));
-		menu.add(new JMenuItem(new ActionRedo(mainWindow)));
+		menu.add(new JMenuItem(actions.undo));
+		menu.add(new JMenuItem(actions.redo));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionCut(mainWindow)));
-		menu.add(new JMenuItem(new ActionCopy(mainWindow)));
-		menu.add(new JMenuItem(new ActionPaste(mainWindow)));
+		menu.add(new JMenuItem(actions.cut));
+		menu.add(new JMenuItem(actions.copy));
+		menu.add(new JMenuItem(actions.paste));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionDelete(mainWindow)));
-		menu.add(new JMenuItem(new ActionSelectAll(mainWindow)));
+		menu.add(new JMenuItem(actions.delete));
+		menu.add(new JMenuItem(actions.selectAll));
 		return menu;
 	}
 
-	private JMenu createHelpMenu(MainWindow mainWindow)
+	private JMenu createHelpMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
-		menu.add(new JMenuItem(new ActionAbout(mainWindow)));
+		menu.add(new JMenuItem(actions.about));
 		return menu;
 	}
 }

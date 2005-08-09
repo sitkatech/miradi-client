@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -27,16 +28,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		project = new Project();
 		project.addCommandExecutedListener(this);
 
+		actions = new Actions(this);
+		mainMenuBar = new MainMenuBar(actions);
+		mainToolBar = new MainToolBar(actions);
+
 		updateTitle();
 		setSize(new Dimension(700, 500));
-		setJMenuBar(new MainMenuBar(this));
-		mainToolBar = new MainToolBar(this);
+		setJMenuBar(mainMenuBar);
 		getContentPane().add(mainToolBar, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
-		mainToolBar.updateButtonStates();
-
 	}
 	
 	public Project getProject()
@@ -47,6 +49,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	public DiagramComponent getDiagramComponent()
 	{
 		return diagramComponent;
+	}
+	
+	public Actions getActions()
+	{
+		return actions;
 	}
 	
 	public void loadProject(File projectFile)
@@ -73,6 +80,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		{
 			EAM.logException(e);
 		}
+		
+		actions.updateActionStates();
+
 	}
 	
 	public void recordCommand(Command command)
@@ -104,7 +114,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		mainToolBar.updateButtonStates();
+		actions.updateActionStates();
 	}
 	
 	private void updateTitle()
@@ -120,8 +130,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		}
 	}
 
+	Actions actions;
 	Project project;
 	UiScrollPane diagramScroller;
 	DiagramComponent diagramComponent;
 	private MainToolBar mainToolBar;
+	private MainMenuBar mainMenuBar;
 }

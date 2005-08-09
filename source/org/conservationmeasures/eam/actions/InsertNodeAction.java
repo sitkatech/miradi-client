@@ -17,9 +17,13 @@ import org.conservationmeasures.eam.main.Project;
 
 public abstract class InsertNodeAction extends MainWindowAction
 {
-	public InsertNodeAction(MainWindow mainWindowToUse, String label, Point location)
+	public InsertNodeAction(MainWindow mainWindowToUse, String label)
 	{
 		super(mainWindowToUse, label);
+	}
+	
+	public void setInvocationPoint(Point location)
+	{
 		createAt = location;
 	}
 

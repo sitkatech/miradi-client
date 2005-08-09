@@ -27,4 +27,10 @@ public class ActionExit extends MainWindowAction
 	{
 		getMainWindow().exitNormally();
 	}
+
+	public boolean shouldBeEnabled()
+	{
+		return true;
+	}
+	
 }

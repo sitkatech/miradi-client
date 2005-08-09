@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
@@ -16,9 +15,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertIntervention extends InsertNodeAction
 {
-	public ActionInsertIntervention(MainWindow mainWindowToUse, Point location)
+	public ActionInsertIntervention(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), location);
+		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
@@ -35,4 +34,10 @@ public class ActionInsertIntervention extends InsertNodeAction
 	{
 		doInsert(new CommandInsertNode(Node.TYPE_INTERVENTION));
 	}
+
+	public boolean shouldBeEnabled()
+	{
+		return true;
+	}
+	
 }
