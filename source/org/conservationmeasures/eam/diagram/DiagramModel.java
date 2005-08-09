@@ -159,7 +159,7 @@ class CellInventory
 			id = nextId++;
 		
 		if(getById(id) != null)
-			throw new RuntimeException("Can't add over existing id");
+			throw new RuntimeException("Can't add over existing id " + id);
 		
 		Integer idInteger = new Integer(id);
 		idToCellMap.put(idInteger, cell);
