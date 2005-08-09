@@ -54,4 +54,13 @@ public class TestDiagramModel extends EAMTestCase
 		assertTrue("missed first?", found.contains(linkage1));
 		assertTrue("missed second?", found.contains(linkage2));
 	}
+	
+	public void testUpdatesNextId() throws Exception
+	{
+		DiagramModel model = new DiagramModel();
+		model.createNodeAtId(Node.TYPE_THREAT, 125);
+		Node goal = model.createNodeAtId(Node.TYPE_GOAL, -1);
+		assertEquals("didn't use next available id?", 126, model.getNodeId(goal));
+	}
+	
 }
