@@ -72,7 +72,7 @@ public class EllipseRenderer extends MultilineNodeRenderer
 		g2.setPaint(oldPaint);
 	}
 
-	void drawBorder(Graphics2D g2, Rectangle rect, Color color)
+	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		setPaint(g2, rect, color);
 		g2.drawOval(rect.x, rect.y, rect.width, rect.height);

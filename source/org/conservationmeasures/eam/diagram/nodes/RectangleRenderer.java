@@ -38,7 +38,7 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		g2.setPaint(oldPaint);
 	}
 
-	void drawBorder(Graphics2D g2, Rectangle rect, Color color)
+	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		g2.drawRect(rect.x, rect.y, rect.width, rect.height);
 	}

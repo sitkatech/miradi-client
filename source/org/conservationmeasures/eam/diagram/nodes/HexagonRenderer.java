@@ -40,7 +40,7 @@ public class HexagonRenderer extends MultilineNodeRenderer
 		g2.setPaint(oldPaint);
 	}
 
-	void drawBorder(Graphics2D g2, Rectangle rect, Color color)
+	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
 		setPaint(g2, rect, color);
 		g2.drawPolygon(buildHexagon(rect));

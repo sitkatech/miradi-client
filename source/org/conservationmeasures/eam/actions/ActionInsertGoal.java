@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.actions;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
@@ -67,6 +68,8 @@ class InsertGoalIcon implements Icon
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight());
 		Color color = new NodeTypeGoal().getColor();
 		EllipseRenderer.fill(g, rect, color);
+		EllipseRenderer ellipse = new EllipseRenderer();
+		ellipse.drawBorder((Graphics2D)g, rect, Color.BLACK);
 	}
 	
 }
