@@ -5,7 +5,11 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+
+import javax.swing.Icon;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -17,7 +21,7 @@ public class ActionInsertThreat extends InsertNodeAction
 {
 	public ActionInsertThreat(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new InsertThreatIcon());
 	}
 
 	private static String getLabel()
@@ -38,6 +42,24 @@ public class ActionInsertThreat extends InsertNodeAction
 	public boolean shouldBeEnabled()
 	{
 		return getMainWindow().isProjectOpen();
+	}
+	
+}
+
+class InsertThreatIcon implements Icon
+{
+	public int getIconHeight()
+	{
+		return 16;
+	}
+
+	public int getIconWidth()
+	{
+		return 16;
+	}
+
+	public void paintIcon(Component arg0, Graphics arg1, int arg2, int arg3)
+	{
 	}
 	
 }

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -23,10 +24,15 @@ public abstract class MainWindowAction extends AbstractAction
 	
 	public MainWindowAction(MainWindow mainWindowToUse, String label, String icon)
 	{
-		super(label, new ImageIcon(icon));
-		mainWindow = mainWindowToUse;
+		this(mainWindowToUse, label, new ImageIcon(icon));
 	}
 	
+	public MainWindowAction(MainWindow mainWindowToUse, String label, Icon icon)
+	{
+		super(label, icon);
+		mainWindow = mainWindowToUse;
+	}
+
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;

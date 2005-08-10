@@ -7,9 +7,11 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -17,9 +19,9 @@ import org.conservationmeasures.eam.main.Project;
 
 public abstract class InsertNodeAction extends MainWindowAction
 {
-	public InsertNodeAction(MainWindow mainWindowToUse, String label)
+	public InsertNodeAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{
-		super(mainWindowToUse, label);
+		super(mainWindowToUse, label, icon);
 	}
 	
 	public void setInvocationPoint(Point location)
