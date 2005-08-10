@@ -79,7 +79,7 @@ public class BaseProject
 	public int deleteNode(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Node nodeToDelete = model.getNodeInProject(idToDelete);
+		Node nodeToDelete = model.getNodebyId(idToDelete);
 		int nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 		return nodeType; 

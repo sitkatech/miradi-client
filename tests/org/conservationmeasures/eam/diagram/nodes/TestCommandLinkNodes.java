@@ -28,15 +28,15 @@ public class TestCommandLinkNodes extends EAMTestCase
 		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertThreat.execute(project);
 		int threatId = insertThreat.getId();
-		Node threat = model.getNodeInProject(threatId);
+		Node threat = model.getNodebyId(threatId);
 		CommandInsertNode insertGoal = new CommandInsertNode(Node.TYPE_GOAL);
 		insertGoal.execute(project);
 		int goalId = insertGoal.getId();
-		Node goal = model.getNodeInProject(goalId);
+		Node goal = model.getNodebyId(goalId);
 		
 		CommandLinkNodes command = new CommandLinkNodes(threatId, goalId);
 		command.execute(project);
-		Linkage linkage = model.getLinkageInProject(command.getLinkageId());
+		Linkage linkage = model.getLinkagebyId(command.getLinkageId());
 
 		assertEquals("not from threat?", threat, linkage.getFromNode());
 		assertEquals("not to goal?", goal, linkage.getToNode());

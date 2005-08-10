@@ -55,8 +55,8 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Linkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
 	{
-		Node fromNode = getNodeInProject(linkFromId);
-		Node toNode = getNodeInProject(linkToId);
+		Node fromNode = getNodebyId(linkFromId);
+		Node toNode = getNodebyId(linkToId);
 
 		Linkage linkage = new Linkage(fromNode, toNode);
 		Object[] linkages = new Object[]{linkage};
@@ -78,7 +78,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getById(i);
+			EAMGraphCell cell = cellInventory.getByIndex(i);
 			if(!cell.isLinkage())
 				continue;
 			
@@ -110,21 +110,21 @@ public class DiagramModel extends DefaultGraphModel
 		return cell.isNode();
 	}
 	
-	public Node getNodeInProject(int id) throws Exception
+	public Node getNodebyId(int id) throws Exception
 	{
-		return (Node)getCellInProject(id);
+		return (Node)getCellbyId(id);
 	}
 
-	public Linkage getLinkageInProject(int id) throws Exception
+	public Linkage getLinkagebyId(int id) throws Exception
 	{
-		return (Linkage)getCellInProject(id);
+		return (Linkage)getCellbyId(id);
 	}
 	
 	public boolean isCellInProject(EAMGraphCell cell)
 	{
 		try
 		{
-			getCellInProject(cell.getId());
+			getCellbyId(cell.getId());
 			return true;
 		}
 		catch(Exception e)
@@ -133,7 +133,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 
-	public EAMGraphCell getCellInProject(int id) throws Exception
+	public EAMGraphCell getCellbyId(int id) throws Exception
 	{
 		EAMGraphCell cell = cellInventory.getById(id);
 		if(cell == null)
@@ -168,6 +168,11 @@ class CellInventory
 	public int size()
 	{
 		return cells.size();
+	}
+	
+	public EAMGraphCell getByIndex(int index)
+	{
+		return (EAMGraphCell)cells.get(index);
 	}
 	
 	public EAMGraphCell getById(int id)

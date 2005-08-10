@@ -34,11 +34,13 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramModel model = new DiagramModel();
 		Node threat = model.createNode(Node.TYPE_THREAT);
+		model.deleteNode(threat);
+		Node newThreat = model.createNode(Node.TYPE_THREAT);
 		Node goal = model.createNode(Node.TYPE_GOAL);
-		assertFalse("already linked?", model.hasLinkage(threat, goal));
-		model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
-		assertTrue("not linked?", model.hasLinkage(threat, goal));
-		assertTrue("reverse link not detected?", model.hasLinkage(goal, threat));
+		assertFalse("already linked?", model.hasLinkage(newThreat, goal));
+		model.createLinkage(Node.INVALID_ID, newThreat.getId(), goal.getId());
+		assertTrue("not linked?", model.hasLinkage(newThreat, goal));
+		assertTrue("reverse link not detected?", model.hasLinkage(goal, newThreat));
 	}
 	
 	public void testGetLinkages() throws Exception
@@ -62,5 +64,6 @@ public class TestDiagramModel extends EAMTestCase
 		Node goal = model.createNodeAtId(Node.TYPE_GOAL, -1);
 		assertEquals("didn't use next available id?", 126, goal.getId());
 	}
+	
 	
 }

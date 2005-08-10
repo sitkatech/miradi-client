@@ -31,9 +31,9 @@ public class TestDelete extends EAMTestCase
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertIntervention.execute(project);
-		Node intervention = model.getNodeInProject(insertIntervention.getId());
+		Node intervention = model.getNodebyId(insertIntervention.getId());
 		insertThreat.execute(project);
-		Node threat = model.getNodeInProject(insertThreat.getId());
+		Node threat = model.getNodebyId(insertThreat.getId());
 		int interventionId = intervention.getId();
 		int threatId = threat.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);

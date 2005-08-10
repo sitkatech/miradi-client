@@ -51,7 +51,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeInProject(id);
+		Node foundNode = model.getNodebyId(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a goal?", foundNode.isGoal());
 	}
@@ -68,7 +68,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeInProject(id);
+		Node foundNode = model.getNodebyId(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a threat?", foundNode.isThreat());
 	}
@@ -85,7 +85,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeInProject(id);
+		Node foundNode = model.getNodebyId(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());
 	}

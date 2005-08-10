@@ -44,10 +44,10 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testSingleUndo() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertTrue("no linkage?", model.hasLinkage(model.getNodeInProject(fromId), model.getNodeInProject(toId)));
+		assertTrue("no linkage?", model.hasLinkage(model.getNodebyId(fromId), model.getNodebyId(toId)));
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
-		assertFalse("didn't undo?", model.hasLinkage(model.getNodeInProject(fromId), model.getNodeInProject(toId)));
+		assertFalse("didn't undo?", model.hasLinkage(model.getNodebyId(fromId), model.getNodebyId(toId)));
 	}
 	
 	public void testMultipleUndo() throws Exception
@@ -56,7 +56,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
-		assertFalse("didn't undo?", model.hasLinkage(model.getNodeInProject(fromId), model.getNodeInProject(toId)));
+		assertFalse("didn't undo?", model.hasLinkage(model.getNodebyId(fromId), model.getNodebyId(toId)));
 		verifyNotPresent(linkId);
 		
 		project.executeCommand(undo);
@@ -138,7 +138,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getCellInProject(cellId);
+			model.getCellbyId(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)
