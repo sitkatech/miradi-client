@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestFileStorage;
 import org.conservationmeasures.eam.main.TestMainMenu;
+import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.martus.util.xml.TestSimpleXmlParser;
@@ -48,6 +49,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
 		suite.addTest(new TestSuite(TestFileStorage.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
+		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestLogging.class));
