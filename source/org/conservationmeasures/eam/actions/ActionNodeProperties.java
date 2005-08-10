@@ -44,7 +44,7 @@ public class ActionNodeProperties extends MainWindowAction
 		if(!dlg.getResult())
 			return;
 
-		int id = diagram.getDiagramModel().getNodeId(selectedNode);
+		int id = selectedNode.getId();
 		CommandSetNodeText command = new CommandSetNodeText(id, dlg.getText());
 		getMainWindow().getProject().executeCommand(command);
 	}

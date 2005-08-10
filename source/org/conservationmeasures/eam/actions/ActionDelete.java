@@ -76,7 +76,7 @@ public class ActionDelete extends MainWindowAction
 	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException
 	{
 		Project project = getMainWindow().getProject();
-		int id = project.getDiagramModel().getLinkageId(linkageToDelete);
+		int id = linkageToDelete.getId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
 		project.executeCommand(command);
 	}
@@ -84,7 +84,7 @@ public class ActionDelete extends MainWindowAction
 	private void deleteNode(Node nodeToDelete) throws CommandFailedException
 	{
 		Project project = getMainWindow().getProject();
-		int id = project.getDiagramModel().getNodeId(nodeToDelete);
+		int id = nodeToDelete.getId();
 
 		Point location = nodeToDelete.getLocation();
 		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[] {id});

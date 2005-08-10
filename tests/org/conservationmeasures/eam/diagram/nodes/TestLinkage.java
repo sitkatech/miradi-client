@@ -32,6 +32,17 @@ public class TestLinkage extends EAMTestCase
 		assertEquals("target not the port of to?", goal.getPort(), linkage.getTarget());
 	}
 	
+	public void testIds()
+	{
+		Node threat = new Node(Node.TYPE_THREAT);
+		Node goal = new Node(Node.TYPE_GOAL);
+		Linkage linkage = new Linkage(threat, goal);
+		assertEquals(Node.INVALID_ID,linkage.getId());
+		int id = 243;
+		linkage.setId(id);
+		assertEquals(id, linkage.getId());
+	}
+	
 	public void testLinkNodes() throws Exception
 	{
 		Project project = new Project();
@@ -40,14 +51,14 @@ public class TestLinkage extends EAMTestCase
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertIntervention.execute(project);
-		Node intervention = model.getNodeById(insertIntervention.getId());
+		Node intervention = model.getNodeInProject(insertIntervention.getId());
 		insertThreat.execute(project);
-		Node threat = model.getNodeById(insertThreat.getId());
-		int interventionId = model.getNodeId(intervention);
-		int threatId = model.getNodeId(threat);
+		Node threat = model.getNodeInProject(insertThreat.getId());
+		int interventionId = intervention.getId();
+		int threatId = threat.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
 		link.execute(project);
-		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
+		assertNotNull("linkage not in model?", model.getLinkageInProject(link.getLinkageId()));
 		
 		
 	}

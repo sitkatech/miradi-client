@@ -19,6 +19,7 @@ public class EAMGraphCell extends DefaultGraphCell
 {
 	public EAMGraphCell()
 	{
+		id = Node.INVALID_ID;
 	}
 
 	public boolean isNode()
@@ -29,6 +30,16 @@ public class EAMGraphCell extends DefaultGraphCell
 	public boolean isLinkage()
 	{
 		return false;
+	}
+	
+	public void setId(int idToUse)
+	{
+		id = idToUse;
+	}
+	
+	public int getId()
+	{
+		return id;
 	}
 	
 	public Point getLocation()
@@ -69,5 +80,5 @@ public class EAMGraphCell extends DefaultGraphCell
 	{
 		return (String)GraphConstants.getValue(getAttributes());
 	}
-
+	private int id;
 }

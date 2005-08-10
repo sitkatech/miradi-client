@@ -79,7 +79,7 @@ public class BaseProject
 	public int deleteNode(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Node nodeToDelete = model.getNodeById(idToDelete);
+		Node nodeToDelete = model.getNodeInProject(idToDelete);
 		int nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 		return nodeType; 
@@ -89,7 +89,7 @@ public class BaseProject
 	{
 		DiagramModel model = getDiagramModel();
 		Node node = model.createNodeAtId(typeToInsert, id);
-		int idThatWasInserted = model.getNodeId(node);
+		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
 
@@ -97,7 +97,7 @@ public class BaseProject
 	{
 		DiagramModel model = getDiagramModel();
 		Linkage linkage = model.createLinkage(linkageId, linkFromId, linkToId);
-		int insertedLinkageId = model.getLinkageId(linkage);
+		int insertedLinkageId = linkage.getId();
 		return insertedLinkageId;
 	}
 

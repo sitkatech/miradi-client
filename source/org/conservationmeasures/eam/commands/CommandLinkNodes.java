@@ -65,7 +65,7 @@ public class CommandLinkNodes extends Command
 		DiagramModel model = target.getDiagramModel();
 		try
 		{
-			Linkage linkageToDelete = model.getLinkageById(getLinkageId());
+			Linkage linkageToDelete = model.getLinkageInProject(getLinkageId());
 			model.deleteLinkage(linkageToDelete);
 		}
 		catch (Exception e)

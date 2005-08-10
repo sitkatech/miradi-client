@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.actions;
 
+//import java.awt.Toolkit;
+//import java.awt.datatransfer.Clipboard;
+//import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -25,8 +28,9 @@ public class ActionCopy extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		// TODO Auto-generated method stub
-
+	//	Toolkit toolkit = Toolkit.getDefaultToolkit();
+	//	Clipboard clipboard = toolkit.getSystemClipboard();
+	//	clipboard.setContents(tb, mainWindow);
 	}
 
 	public String getToolTipText()

@@ -34,8 +34,8 @@ public class ActionInsertConnection extends MainWindowAction
 			return;
 		
 		DiagramModel model = getMainWindow().getProject().getDiagramModel();
-		int fromIndex = model.getNodeId(dialog.getFrom());
-		int toIndex = model.getNodeId(dialog.getTo());
+		int fromIndex = dialog.getFrom().getId();
+		int toIndex = dialog.getTo().getId();
 		
 		if(fromIndex == toIndex)
 		{

@@ -31,11 +31,11 @@ public class TestDelete extends EAMTestCase
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
 		insertIntervention.execute(project);
-		Node intervention = model.getNodeById(insertIntervention.getId());
+		Node intervention = model.getNodeInProject(insertIntervention.getId());
 		insertThreat.execute(project);
-		Node threat = model.getNodeById(insertThreat.getId());
-		int interventionId = model.getNodeId(intervention);
-		int threatId = model.getNodeId(threat);
+		Node threat = model.getNodeInProject(insertThreat.getId());
+		int interventionId = intervention.getId();
+		int threatId = threat.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
 		link.execute(project);
 		int linkageId = link.getLinkageId();
@@ -59,7 +59,7 @@ public class TestDelete extends EAMTestCase
 		
 		CommandDeleteNode deleteNode = new CommandDeleteNode(threatId);
 		deleteNode.execute(project);
-		assertEquals("node not deleted?", -1, model.getNodeId(threat));
+		assertFalse("node not deleted?", model.isCellInProject(threat));
 
 		EAM.setLogToString();
 		try

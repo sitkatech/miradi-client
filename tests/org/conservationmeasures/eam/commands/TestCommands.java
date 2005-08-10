@@ -52,7 +52,7 @@ public class TestCommands extends EAMTestCase
 		
 		for(int i=0; i < ids.length; ++i)
 		{
-			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			Node node = project.getDiagramModel().getNodeInProject(ids[i]);
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
@@ -65,7 +65,7 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		for(int i=0; i < ids.length; ++i)
 		{
-			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			Node node = project.getDiagramModel().getNodeInProject(ids[i]);
 			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
 		}
 	}
@@ -90,7 +90,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous text?", originalText, loaded.getPreviousText());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalText, project.getDiagramModel().getNodeById(id).getText());
+		assertEquals("didn't undo?", originalText, project.getDiagramModel().getNodeInProject(id).getText());
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -103,7 +103,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		Node inserted = project.getDiagramModel().getNodeInProject(insertedId);
 		assertTrue("didn't insert a goal?", inserted.isGoal());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -121,7 +121,7 @@ public class TestCommands extends EAMTestCase
 		
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		Node inserted = project.getDiagramModel().getNodeInProject(insertedId);
 		assertTrue("didn't insert a threat?", inserted.isThreat());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -138,7 +138,7 @@ public class TestCommands extends EAMTestCase
 		
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		Node inserted = project.getDiagramModel().getNodeInProject(insertedId);
 		assertTrue("didn't insert an intervention?", inserted.isIntervention());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -155,7 +155,7 @@ public class TestCommands extends EAMTestCase
 		try
 		{
 			EAM.setLogToString();
-			project.getDiagramModel().getNodeById(insertedId);
+			project.getDiagramModel().getNodeInProject(insertedId);
 			fail("Should have thrown because node didn't exist");
 		}
 		catch(Exception ignoreExpected)
@@ -188,11 +188,11 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		int linkageId = cmd.getLinkageId();
 
-		Linkage inserted = model.getLinkageById(linkageId);
+		Linkage inserted = model.getLinkageInProject(linkageId);
 		Node fromNode = inserted.getFromNode();
-		assertEquals("wrong source?", from, model.getNodeId(fromNode));
+		assertEquals("wrong source?", from, fromNode.getId());
 		Node toNode = inserted.getToNode();
-		assertEquals("wrong dest?", to, model.getNodeId(toNode));
+		assertEquals("wrong dest?", to, toNode.getId());
 
 		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
 		assertEquals("didn't restore from?", from, loaded.getFromId());
@@ -212,8 +212,8 @@ public class TestCommands extends EAMTestCase
 
 		int from = insertIntervention();
 		int to = insertThreat();
-		Node fromNode = model.getNodeById(from);
-		Node toNode = model.getNodeById(to);
+		Node fromNode = model.getNodeInProject(from);
+		Node toNode = model.getNodeInProject(to);
 
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
 		project.executeCommand(link);
@@ -248,7 +248,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", Node.TYPE_GOAL, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", Node.TYPE_GOAL, project.getDiagramModel().getNodeInProject(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -261,7 +261,7 @@ public class TestCommands extends EAMTestCase
 		try
 		{
 			EAM.setLogToString();
-			project.getDiagramModel().getNodeById(insertedId);
+			project.getDiagramModel().getNodeInProject(insertedId);
 			fail("Undo didn't work?");
 		}
 		catch(Exception ignoreExpected)
@@ -297,7 +297,7 @@ public class TestCommands extends EAMTestCase
 		CommandRedo redo = new CommandRedo();
 		project.executeCommand(redo);
 		
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		Node inserted = project.getDiagramModel().getNodeInProject(insertedId);
 		assertTrue("wrong node?", inserted.isGoal());
 		
 		CommandRedo loaded = (CommandRedo)saveAndReload(redo);

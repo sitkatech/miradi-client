@@ -41,6 +41,15 @@ public class TestNode extends EAMTestCase
 		assertEquals(sampleText, GraphConstants.getValue(attributeMap));
 	}
 	
+	public void testIds()
+	{
+		Node node = new Node(Node.TYPE_THREAT);
+		assertEquals(Node.INVALID_ID,node.getId());
+		int id = 23;
+		node.setId(id);
+		assertEquals(id, node.getId());
+	}
+	
 	public void testColors()
 	{
 		NodeTypeThreat threatType = new NodeTypeThreat();

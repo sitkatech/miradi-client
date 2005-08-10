@@ -5,10 +5,11 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -54,8 +55,8 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Linkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
 	{
-		Node fromNode = getNodeById(linkFromId);
-		Node toNode = getNodeById(linkToId);
+		Node fromNode = getNodeInProject(linkFromId);
+		Node toNode = getNodeInProject(linkToId);
 
 		Linkage linkage = new Linkage(fromNode, toNode);
 		Object[] linkages = new Object[]{linkage};
@@ -77,7 +78,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getByIndex(i);
+			EAMGraphCell cell = cellInventory.getById(i);
 			if(!cell.isLinkage())
 				continue;
 			
@@ -109,37 +110,35 @@ public class DiagramModel extends DefaultGraphModel
 		return cell.isNode();
 	}
 	
-	public int getCellId(EAMGraphCell cell)
+	public Node getNodeInProject(int id) throws Exception
 	{
-		return cellInventory.find(cell);
+		return (Node)getCellInProject(id);
 	}
 
-	public int getNodeId(Node node)
+	public Linkage getLinkageInProject(int id) throws Exception
 	{
-		return getCellId(node);
+		return (Linkage)getCellInProject(id);
 	}
 	
-	public int getLinkageId(Linkage linkage)
+	public boolean isCellInProject(EAMGraphCell cell)
 	{
-		return getCellId(linkage);
+		try
+		{
+			getCellInProject(cell.getId());
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
 	}
-	
-	public EAMGraphCell getCellById(int id) throws Exception
+
+	public EAMGraphCell getCellInProject(int id) throws Exception
 	{
 		EAMGraphCell cell = cellInventory.getById(id);
 		if(cell == null)
 			throw new Exception("Cell doesn't exist, id: " + id);
 		return cell;
-	}
-
-	public Node getNodeById(int id) throws Exception
-	{
-		return (Node)getCellById(id);
-	}
-
-	public Linkage getLinkageById(int id) throws Exception
-	{
-		return (Linkage)getCellById(id);
 	}
 
 	CellInventory cellInventory;
@@ -149,8 +148,7 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		idToCellMap = new HashMap();
-		cellToIdMap = new HashMap();
+		cells = new Vector();
 	}
 	
 	void add(EAMGraphCell cell, int id)
@@ -163,52 +161,37 @@ class CellInventory
 		if(getById(id) != null)
 			throw new RuntimeException("Can't add over existing id " + id);
 		
-		Integer idInteger = new Integer(id);
-		idToCellMap.put(idInteger, cell);
-		cellToIdMap.put(cell, idInteger);
+		cell.setId(id);
+		cells.add(cell);
 	}
 
 	public int size()
 	{
-		return idToCellMap.size();
-	}
-	
-	public EAMGraphCell getByIndex(int index)
-	{
-		Integer[] keys = (Integer[])idToCellMap.keySet().toArray(new Integer[0]);
-		EAMGraphCell foundCell = (EAMGraphCell)idToCellMap.get(keys[index]);
-		if(foundCell == null)
-			throw new RuntimeException("Cell not found id: " + index);
-		return foundCell;
+		return cells.size();
 	}
 	
 	public EAMGraphCell getById(int id)
 	{
-		return (EAMGraphCell)idToCellMap.get(new Integer(id));
-	}
-	
-	public int find(EAMGraphCell cell)
-	{
-		Integer found = ((Integer)cellToIdMap.get(cell));
-		if(found == null)
-			return -1;
-		return found.intValue();
+		for (Iterator iter = cells.iterator(); iter.hasNext();) 
+		{
+			EAMGraphCell cell = (EAMGraphCell) iter.next();
+			if(cell.getId() == id)
+				return cell;
+		}
+		return null;
 	}
 	
 	public void remove(EAMGraphCell cell)
 	{
-		idToCellMap.remove(new Integer(find(cell)));
-		cellToIdMap.remove(cell);
+		cells.remove(cell);
 	}
 	
 	public void clear()
 	{
 		nextId = 0;
-		idToCellMap.clear();
-		cellToIdMap.clear();
+		cells.clear();
 	}
 
-	int nextId;
-	Map idToCellMap;
-	Map cellToIdMap;
+	private int nextId;
+	Vector cells;
 }
