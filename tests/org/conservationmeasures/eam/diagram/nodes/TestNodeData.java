@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Point;
+
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeData extends EAMTestCase 
@@ -18,7 +20,14 @@ public class TestNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		Node nodeA = new Node(Node.TYPE_THREAT);
-		new NodeData(nodeA);
+		String nodeAText = "Node A";
+		Point location = new Point(5,22);
+		nodeA.setText(nodeAText);
+		nodeA.setLocation(location);
+		NodeData nodeAData = new NodeData(nodeA);
+		
+		assertEquals("Text incorrect", nodeAText, nodeAData.getText());
+		assertEquals("location incorrect", location, nodeAData.getLocation());
 		
 		Node nodeB = new Node(Node.TYPE_THREAT);
 		Linkage linkage = new Linkage(nodeA, nodeB);
