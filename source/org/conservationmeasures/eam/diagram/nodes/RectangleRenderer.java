@@ -5,9 +5,12 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -21,14 +24,23 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		return new Dimension(0, 0);
 	}
 	
-	void fillShape(Graphics g)
+	void fillShape(Graphics g, Rectangle rect, Color color)
 	{
-		g.fillRect(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
+		fill(g, rect, color);
+	}
+	
+	public static void fill(Graphics g, Rectangle rect, Color color)
+	{
+		Graphics2D g2 = (Graphics2D)g;
+		Paint oldPaint = g2.getPaint();
+		setPaint(g2, rect, color);
+		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		g2.setPaint(oldPaint);
 	}
 
-	void drawBorder(Graphics2D g2)
+	void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
-		g2.drawRect(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
+		g2.drawRect(rect.x, rect.y, rect.width, rect.height);
 	}
 
 	/*

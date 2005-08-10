@@ -39,6 +39,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
@@ -57,17 +58,24 @@ public class EllipseRenderer extends MultilineNodeRenderer
 		return new Dimension(xInset, yInset);
 	}
 
-	void fillShape(Graphics g)
+	void fillShape(Graphics g, Rectangle rect, Color color)
 	{
-		Graphics2D g2 = (Graphics2D)g;
-		setPaint(g2, getBackground());
-		g2.fillOval(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
+		fill(g, rect, color);
 	}
 
-	void drawBorder(Graphics2D g2)
+	public static void fill(Graphics g, Rectangle rect, Color color)
 	{
-		setPaint(g2,  Color.BLACK);
-		g2.drawOval(borderWidth - 1, borderWidth - 1, getSize().width - borderWidth, getSize().height - borderWidth);
+		Graphics2D g2 = (Graphics2D)g;
+		Paint oldPaint = g2.getPaint();
+		setPaint(g2, rect, color);
+		g2.fillOval(rect.x, rect.y, rect.width, rect.height);
+		g2.setPaint(oldPaint);
+	}
+
+	void drawBorder(Graphics2D g2, Rectangle rect, Color color)
+	{
+		setPaint(g2, rect, color);
+		g2.drawOval(rect.x, rect.y, rect.width, rect.height);
 	}
 
 	public static Point getPerimeterPoint(Point2D outsidePoint, Rectangle2D enclosingRect)

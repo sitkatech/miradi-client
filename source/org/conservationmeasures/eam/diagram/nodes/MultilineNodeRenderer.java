@@ -44,6 +44,7 @@ import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.util.Map;
 
@@ -68,18 +69,21 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	}
 
 	abstract Dimension getInsetDimension();
-	abstract void fillShape(Graphics g);
-	abstract void drawBorder(Graphics2D g2);
+	abstract void fillShape(Graphics g, Rectangle rect, Color color);
+	abstract void drawBorder(Graphics2D g2, Rectangle rect, Color color);
 	
 	//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
-	public void setPaint(Graphics2D g2, Color color) 
+	public static void setPaint(Graphics2D g2, Rectangle rect, Color color) 
 	{
-		g2.setPaint(new GradientPaint(0, 0, color,
-				getWidth(), getHeight(), color, false));
+		g2.setPaint(new GradientPaint(rect.x, rect.y, color,
+				rect.width, rect.height, color, false));
 	}
 
 	public void paint(Graphics g1)
 	{
+		Rectangle rect = new Rectangle(borderWidth - 1, borderWidth - 1, 
+				getSize().width - borderWidth, getSize().height - borderWidth);
+
 		Graphics2D g2 = (Graphics2D) g1;
 		if (super.isOpaque())
 		{
@@ -90,7 +94,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 				g2.setPaint(new GradientPaint(0, 0, getBackground(),
 						getWidth(), getHeight(), gradientColor, true));
 			}
-			fillShape(g2);
+			fillShape(g2, rect, getBackground());
 		}
 		int xInset = getInsetDimension().width;
 		int yInset = getInsetDimension().height;
@@ -106,7 +110,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			Stroke stroke = new BasicStroke(borderWidth);
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2);
+			drawBorder(g2, rect, Color.BLACK);
 		}
 		if (selected)
 		{
@@ -114,7 +118,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			Stroke stroke = GraphConstants.SELECTION_STROKE;
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2);
+			drawBorder(g2, rect, Color.BLACK);
 		}
 	}
 	
