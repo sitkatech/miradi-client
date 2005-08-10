@@ -7,12 +7,12 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -25,37 +25,28 @@ import org.martus.swing.UiScrollPane;
 
 public class MainWindow extends JFrame implements CommandExecutedListener
 {
-	public MainWindow() throws Exception
+	public void start()
 	{
 		project = new Project();
 		project.addCommandExecutedListener(this);
 
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
-		
-		toolBarBox = new JPanel();
-		FlowLayout flow = new FlowLayout();
-		flow.setAlignment(FlowLayout.LEADING);
-		toolBarBox.setLayout(flow);
+		toolBarBox = new ToolBarContainer();
+		MainStatusBar mainStatusBar = new MainStatusBar();
 
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(mainMenuBar);
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
-		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
+		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
-	}
-	
-	public void start()
-	{
-		currentView = new UiScrollPane(new NoProjectView(this));
-		currentView.doLayout();
-		getContentPane().add(currentView);
-		
+
+		setCurrentView(new NoProjectView(this));
 		setVisible(true);
 	}
-	
+
 	public Project getProject()
 	{
 		return project;
@@ -78,20 +69,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	
 	public void loadProject(File projectFile)
 	{
-		if(currentView != null)
-		{
-			getContentPane().remove(currentView);
-		}
+		clearCurrentView();
 		
 		try
 		{
-			mainToolBar = new MainToolBar(actions);
+			mainToolBar = new DiagramToolBar(actions);
 			toolBarBox.removeAll();
 			toolBarBox.add(mainToolBar);
 
 			diagramComponent = new DiagramComponent(this, project.getDiagramModel());
-			currentView = new UiScrollPane(diagramComponent);
-			getContentPane().add(currentView);
+			setCurrentView(diagramComponent);
 			
 			project.load(this, projectFile);
 			validate();
@@ -108,6 +95,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		
 		actions.updateActionStates();
 
+	}
+
+	private void clearCurrentView()
+	{
+		if(currentView != null)
+		{
+			getContentPane().remove(currentView);
+		}
 	}
 	
 	public void recordCommand(Command command)
@@ -142,6 +137,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 		actions.updateActionStates();
 	}
 	
+	private void setCurrentView(JComponent view)
+	{
+		currentView = new UiScrollPane(view);
+		getContentPane().add(currentView);
+	}
+	
 	private void updateTitle()
 	{
 		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getName());
@@ -160,6 +161,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	UiScrollPane currentView;
 	DiagramComponent diagramComponent;
 	private JPanel toolBarBox;
-	private MainToolBar mainToolBar;
+	private DiagramToolBar mainToolBar;
 	private MainMenuBar mainMenuBar;
 }

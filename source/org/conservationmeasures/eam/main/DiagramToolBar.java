@@ -15,15 +15,11 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 
-public class MainToolBar extends JToolBar
+public class DiagramToolBar extends JToolBar
 {
-	public MainToolBar(Actions actions)
+	public DiagramToolBar(Actions actions)
 	{
 		setFloatable(false);
-		addButtonForAction(actions.newProject);
-		addButtonForAction(actions.openProject);
-		//addButtonForAction(new ActionStub("icons/print.gif"));
-		addSeparator();
 		addButtonForAction(actions.undo);
 		addButtonForAction(actions.redo);
 		addSeparator();
