@@ -7,12 +7,14 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -30,15 +32,28 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
-		mainToolBar = new MainToolBar(actions);
+		
+		toolBarBox = new JPanel();
+		FlowLayout flow = new FlowLayout();
+		flow.setAlignment(FlowLayout.LEADING);
+		toolBarBox.setLayout(flow);
 
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(mainMenuBar);
-		getContentPane().add(mainToolBar, BorderLayout.BEFORE_FIRST_LINE);
+		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(new MainStatusBar(), BorderLayout.AFTER_LAST_LINE);
 
 		addWindowListener(new WindowEventHandler());
+	}
+	
+	public void start()
+	{
+		currentView = new UiScrollPane(new NoProjectView(this));
+		currentView.doLayout();
+		getContentPane().add(currentView);
+		
+		setVisible(true);
 	}
 	
 	public Project getProject()
@@ -63,16 +78,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	
 	public void loadProject(File projectFile)
 	{
-		if(diagramScroller != null)
+		if(currentView != null)
 		{
-			getContentPane().remove(diagramScroller);
+			getContentPane().remove(currentView);
 		}
 		
 		try
 		{
+			mainToolBar = new MainToolBar(actions);
+			toolBarBox.removeAll();
+			toolBarBox.add(mainToolBar);
+
 			diagramComponent = new DiagramComponent(this, project.getDiagramModel());
-			diagramScroller = new UiScrollPane(diagramComponent);
-			getContentPane().add(diagramScroller);
+			currentView = new UiScrollPane(diagramComponent);
+			getContentPane().add(currentView);
+			
 			project.load(this, projectFile);
 			validate();
 			updateTitle();
@@ -137,8 +157,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 
 	Actions actions;
 	Project project;
-	UiScrollPane diagramScroller;
+	UiScrollPane currentView;
 	DiagramComponent diagramComponent;
+	private JPanel toolBarBox;
 	private MainToolBar mainToolBar;
 	private MainMenuBar mainMenuBar;
 }

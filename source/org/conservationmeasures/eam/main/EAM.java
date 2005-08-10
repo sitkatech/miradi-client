@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.main;
 
 import java.util.Locale;
 
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import org.conservationmeasures.eam.utils.Logging;
@@ -23,8 +22,8 @@ public class EAM
 			setBestLookAndFeel();
 			VersionConstants.setVersionString();
 	
-			JFrame mainWindow = new MainWindow();
-			mainWindow.setVisible(true);
+			MainWindow mainWindow = new MainWindow();
+			mainWindow.start();
 		}
 		catch(Exception e)
 		{
