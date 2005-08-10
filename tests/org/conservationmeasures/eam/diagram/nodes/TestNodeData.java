@@ -22,12 +22,15 @@ public class TestNodeData extends EAMTestCase
 		Node nodeA = new Node(Node.TYPE_THREAT);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);
+		int id = 2;
 		nodeA.setText(nodeAText);
 		nodeA.setLocation(location);
+		nodeA.setId(id);
 		NodeData nodeAData = new NodeData(nodeA);
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getText());
 		assertEquals("location incorrect", location, nodeAData.getLocation());
+		assertEquals("id incorrect", id, nodeAData.getId());
 		
 		Node nodeB = new Node(Node.TYPE_THREAT);
 		Linkage linkage = new Linkage(nodeA, nodeB);

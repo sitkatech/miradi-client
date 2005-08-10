@@ -14,6 +14,7 @@ public class NodeData
 	{
 		if(!cell.isNode())
 			throw new Exception("EAMGraphCell not a Node");
+		id = cell.getId();
 		text = cell.getText();
 		location = cell.getLocation();
 	}
@@ -28,6 +29,12 @@ public class NodeData
 		return location;
 	}
 	
+	public int getId()
+	{
+		return id;
+	}
+	
 	private String text;
 	private Point location;
+	private int id;
 }

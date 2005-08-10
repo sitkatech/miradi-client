@@ -14,8 +14,10 @@ public class TestLinkageData extends EAMTestCase
 		Node nodeA = new Node(Node.TYPE_THREAT);
 		Node nodeB = new Node(Node.TYPE_THREAT);
 		Linkage linkage = new Linkage(nodeA, nodeB);
-		new LinkageData(linkage);
-
+		int id = 1;
+		linkage.setId(id);
+		LinkageData linkageData = new LinkageData(linkage);
+		assertEquals("Id not the same?", id, linkageData.getId());
 		try
 		{
 			new LinkageData(nodeA);

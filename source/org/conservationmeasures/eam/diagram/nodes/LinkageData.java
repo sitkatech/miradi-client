@@ -12,6 +12,13 @@ public class LinkageData
 	{
 		if(!cell.isLinkage())
 			throw new Exception("EAMGraphCell not a Linkage");
+		id = cell.getId();
 	}
-
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+	private int id;
 }
