@@ -61,7 +61,7 @@ public class CommandSetNodeText extends Command
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
-			EAMGraphCell node = model.getNodebyId(getId());
+			EAMGraphCell node = model.getNodeById(getId());
 			String currentText = node.getText();
 			if(expectedText != null && !currentText.equals(expectedText))
 				throw new Exception("CommandSetNodeText expected " + expectedText + " but was " + currentText);
