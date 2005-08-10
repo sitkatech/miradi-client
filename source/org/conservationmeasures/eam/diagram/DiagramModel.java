@@ -154,9 +154,14 @@ class CellInventory
 	void add(EAMGraphCell cell, int id)
 	{
 		if(id == Node.INVALID_ID)
+		{
 			id = nextId++;
+		}
 		else
-			nextId = id + 1;
+		{
+			if(nextId < id+1)
+				nextId = id + 1;
+		}
 		
 		if(getById(id) != null)
 			throw new RuntimeException("Can't add over existing id " + id);

@@ -65,5 +65,19 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("didn't use next available id?", 126, goal.getId());
 	}
 	
+	public void testCreateNode() throws Exception
+	{
+		DiagramModel model = new DiagramModel();
+		model.createNode(Node.TYPE_GOAL);		
+		Node nodeToDelete = model.createNode(Node.TYPE_GOAL);		
+		model.createNode(Node.TYPE_GOAL);		
+		model.createNode(Node.TYPE_GOAL);		
+		model.deleteNode(nodeToDelete);
+		model.createNodeAtId(Node.TYPE_GOAL, nodeToDelete.getId()); //simulates an undo
+		Node nodeAfterUndo = model.createNode(Node.TYPE_GOAL);
+		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
+		
+	}
+
 	
 }
