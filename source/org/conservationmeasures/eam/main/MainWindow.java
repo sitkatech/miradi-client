@@ -25,9 +25,13 @@ import org.martus.swing.UiScrollPane;
 
 public class MainWindow extends JFrame implements CommandExecutedListener
 {
-	public void start()
+	public MainWindow()
 	{
 		project = new Project();
+	}
+	
+	public void start()
+	{
 		project.addCommandExecutedListener(this);
 
 		actions = new Actions(this);

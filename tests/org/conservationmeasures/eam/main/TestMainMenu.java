@@ -10,7 +10,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 
@@ -23,8 +23,8 @@ public class TestMainMenu extends EAMTestCase
 	
 	public void testFileMenu() throws Exception
 	{
-		MainWindow mainWindow = new MainWindow();
-		JMenuBar menuBar = mainWindow.getJMenuBar();
+		Actions actions = new Actions(new MainWindow());
+		JMenuBar menuBar = new MainMenuBar(actions);
 		JMenu fileMenu = menuBar.getMenu(0);
 		JMenuItem exitItem = fileMenu.getItem(0);
 		Action exitAction = exitItem.getAction();

@@ -11,6 +11,21 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertThreat;
+import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.actions.ActionOpenProject;
+import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 
 public class MainMenuBar extends JMenuBar
@@ -26,43 +41,43 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createFileMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
-		menu.add(new JMenuItem(actions.newProject));
-		menu.add(new JMenuItem(actions.openProject));
+		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
+		menu.add(new JMenuItem(actions.get(ActionOpenProject.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.exit));
+		menu.add(new JMenuItem(actions.get(ActionExit.class)));
 		return menu;
 	}
 
 	private JMenu createEditMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));
-		menu.add(new JMenuItem(actions.undo));
-		menu.add(new JMenuItem(actions.redo));
+		menu.add(new JMenuItem(actions.get(ActionUndo.class)));
+		menu.add(new JMenuItem(actions.get(ActionRedo.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.cut));
-		menu.add(new JMenuItem(actions.copy));
-		menu.add(new JMenuItem(actions.paste));
+		menu.add(new JMenuItem(actions.get(ActionCut.class)));
+		menu.add(new JMenuItem(actions.get(ActionCopy.class)));
+		menu.add(new JMenuItem(actions.get(ActionPaste.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.delete));
-		menu.add(new JMenuItem(actions.selectAll));
+		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
+		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
 		return menu;
 	}
 	
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
-		menu.add(new JMenuItem(actions.insertGoal));
-		menu.add(new JMenuItem(actions.insertThreat));
-		menu.add(new JMenuItem(actions.insertIntervention));
+		menu.add(new JMenuItem(actions.get(ActionInsertGoal.class)));
+		menu.add(new JMenuItem(actions.get(ActionInsertThreat.class)));
+		menu.add(new JMenuItem(actions.get(ActionInsertIntervention.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.insertConnection));
+		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
 		return menu;
 	}
 
 	private JMenu createHelpMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
-		menu.add(new JMenuItem(actions.about));
+		menu.add(new JMenuItem(actions.get(ActionAbout.class)));
 		return menu;
 	}
 }

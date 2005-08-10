@@ -5,7 +5,10 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.util.Vector;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,69 +16,49 @@ public class Actions
 {
 	public Actions(MainWindow mainWindow)
 	{
-		about = new ActionAbout(mainWindow);
-		contextualHelp = new ActionContextualHelp(mainWindow);
-		copy = new ActionCopy(mainWindow);
-		cut = new ActionCut(mainWindow);
-		delete = new ActionDelete(mainWindow);
-		exit = new ActionExit(mainWindow);
-		insertConnection = new ActionInsertConnection(mainWindow);
-		insertGoal = new ActionInsertGoal(mainWindow);
-		insertIntervention = new ActionInsertIntervention(mainWindow);
-		insertThreat = new ActionInsertThreat(mainWindow);
-		newProject = new ActionNewProject(mainWindow);
-		nodeProperties = new ActionNodeProperties(mainWindow);
-		openProject = new ActionOpenProject(mainWindow);
-		paste = new ActionPaste(mainWindow);
-		redo = new ActionRedo(mainWindow);
-		selectAll = new ActionSelectAll(mainWindow);
-		undo = new ActionUndo(mainWindow);
+		actions = new HashMap();
+		
+		registerAction(new ActionAbout(mainWindow));
+		registerAction(new ActionContextualHelp(mainWindow));
+		registerAction(new ActionCopy(mainWindow));
+		registerAction(new ActionCut(mainWindow));
+		registerAction(new ActionDelete(mainWindow));
+		registerAction(new ActionExit(mainWindow));
+		registerAction(new ActionInsertConnection(mainWindow));
+		registerAction(new ActionInsertGoal(mainWindow));
+		registerAction(new ActionInsertIntervention(mainWindow));
+		registerAction(new ActionInsertThreat(mainWindow));
+		registerAction(new ActionNewProject(mainWindow));
+		registerAction(new ActionNodeProperties(mainWindow));
+		registerAction(new ActionOpenProject(mainWindow));
+		registerAction(new ActionPaste(mainWindow));
+		registerAction(new ActionRedo(mainWindow));
+		registerAction(new ActionSelectAll(mainWindow));
+		registerAction(new ActionUndo(mainWindow));
 		
 		updateActionStates();
+	}
+	
+	public MainWindowAction get(Class c)
+	{
+		return (MainWindowAction)actions.get(c);
 	}
 
 	public void updateActionStates()
 	{
-		updateActionState(about);
-		updateActionState(contextualHelp);
-		updateActionState(copy);
-		updateActionState(cut);
-		updateActionState(delete);
-		updateActionState(exit);
-		updateActionState(insertConnection);
-		updateActionState(insertGoal);
-		updateActionState(insertIntervention);
-		updateActionState(insertThreat);
-		updateActionState(newProject);
-		updateActionState(nodeProperties);
-		updateActionState(openProject);
-		updateActionState(paste);
-		updateActionState(redo);
-		updateActionState(selectAll);
-		updateActionState(undo);
+		Collection actualActions = actions.values();
+		Iterator iter = actualActions.iterator();
+		while(iter.hasNext())
+		{
+			MainWindowAction action = (MainWindowAction)iter.next();
+			action.setEnabled(action.shouldBeEnabled());
+		}
 	}
 	
-	public void updateActionState(MainWindowAction action)
+	void registerAction(MainWindowAction action)
 	{
-		action.setEnabled(action.shouldBeEnabled());
+		actions.put(action.getClass(), action);
 	}
 
-	Vector buttons;
-	public MainWindowAction about;
-	public MainWindowAction contextualHelp;
-	public MainWindowAction copy;
-	public MainWindowAction cut;
-	public MainWindowAction delete;
-	public MainWindowAction exit;
-	public MainWindowAction insertConnection;
-	public InsertNodeAction insertGoal;
-	public InsertNodeAction insertIntervention;
-	public InsertNodeAction insertThreat;
-	public MainWindowAction newProject;
-	public MainWindowAction nodeProperties;
-	public MainWindowAction openProject;
-	public MainWindowAction paste;
-	public MainWindowAction redo;
-	public MainWindowAction selectAll;
-	public MainWindowAction undo;
+	Map actions;
 }

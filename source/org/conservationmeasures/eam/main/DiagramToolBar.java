@@ -12,6 +12,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 
@@ -20,13 +26,13 @@ public class DiagramToolBar extends JToolBar
 	public DiagramToolBar(Actions actions)
 	{
 		setFloatable(false);
-		addButtonForAction(actions.undo);
-		addButtonForAction(actions.redo);
+		addButtonForAction(actions.get(ActionUndo.class));
+		addButtonForAction(actions.get(ActionRedo.class));
 		addSeparator();
-		addButtonForAction(actions.cut);
-		addButtonForAction(actions.copy);
-		addButtonForAction(actions.paste);
-		addButtonForAction(actions.delete);
+		addButtonForAction(actions.get(ActionCut.class));
+		addButtonForAction(actions.get(ActionCopy.class));
+		addButtonForAction(actions.get(ActionPaste.class));
+		addButtonForAction(actions.get(ActionDelete.class));
 	}
 	
 	void addButtonForAction(MainWindowAction action)
