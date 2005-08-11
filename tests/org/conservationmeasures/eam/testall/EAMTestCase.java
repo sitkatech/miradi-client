@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.testall;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.Translation;
 import org.martus.util.TestCaseEnhanced;
 
 public class EAMTestCase extends TestCaseEnhanced
@@ -27,6 +28,7 @@ public class EAMTestCase extends TestCaseEnhanced
 		--setUpTearDownCount;
 		EAM.setLogToConsole();
 		verifySetUpAndTearDownCalledEqually(getCurrentTestName());
+		Translation.restoreDefaultLocale();
 	}
 	
 	private String getCurrentTestName()
