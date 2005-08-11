@@ -13,8 +13,11 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -144,8 +147,17 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void pasteCellsIntoProject(TransferableEamList list) 
 	{
-//		NodeData[] nodes = list.getNodeDataCells();
-//		LinkageData[] links = list.getLinkageDataCells();
+		NodeData[] nodes = list.getNodeDataCells();
+		LinkageData[] links = list.getLinkageDataCells();
+		for (int i = 0; i < nodes.length; i++) 
+		{
+			Logging.logDebug("Paste Node: " + nodes[i].getId() +":" + nodes[i].getText());
+		}
+
+		for (int i = 0; i < links.length; i++) 
+		{
+			Logging.logDebug("Paste Link Original: " + links[i].getId());
+		}
 	}
 
 	CellInventory cellInventory;
