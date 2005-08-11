@@ -13,6 +13,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
@@ -78,13 +79,18 @@ public class BaseProject
 			nodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
 			executeCommand(newNodeText);
-
+			//TODO: fix its inital location
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
 		}
 
 		for (int i = 0; i < links.length; i++) 
 		{
-			Logging.logDebug("Paste Link Original: " + links[i].getId());
+			LinkageData linkageData = links[i];
+			int newFromId = ((Integer)nodeIds.get(new Integer(linkageData.getFromNodeId()))).intValue();
+			int newToId = ((Integer)nodeIds.get(new Integer(linkageData.getToNodeId()))).intValue();
+			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
+			executeCommand(link);
+			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}
 	}
 
