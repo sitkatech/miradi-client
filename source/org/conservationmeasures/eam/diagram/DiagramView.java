@@ -87,7 +87,7 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
 	}
 	
-	public Vector getAllRelatedSelectedCells() 
+	public Vector getAllSelectedCellsWithLinkages() 
 	{
 		Object[] selectedCells = getSelectionCells();
 		Vector selectedRelatedCells = new Vector();
