@@ -22,7 +22,8 @@ public class TestBaseProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		DiagramModel model = new DiagramModel();
+		BaseProject project = new BaseProject();
+		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_GOAL);
 		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
@@ -32,18 +33,18 @@ public class TestBaseProject extends EAMTestCase
 		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
-		Vector selectedItems = BaseProject.getAllSelectedCellsWithLinkages(selectedCells, model);
+		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(linkage1, selectedItems);
 		
 		selectedCells[0] = node2;
-		selectedItems = BaseProject.getAllSelectedCellsWithLinkages(selectedCells, model);
+		selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
 		assertEquals(2, selectedItems.size());
 		assertContains(node2, selectedItems);
 		assertContains(linkage1, selectedItems);
 		
 		selectedCells[0] = node1;
-		selectedItems = BaseProject.getAllSelectedCellsWithLinkages(selectedCells, model);
+		selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
 		assertEquals(3, selectedItems.size());
 		assertContains(node1, selectedItems);
 		assertContains(linkage1, selectedItems);

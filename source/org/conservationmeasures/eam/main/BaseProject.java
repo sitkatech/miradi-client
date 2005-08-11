@@ -145,7 +145,7 @@ public class BaseProject
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		Object[] selectedCells = selectionModel.getSelectionCells();
-		Vector cellVector = BaseProject.getAllSelectedCellsWithLinkages(selectedCells, getDiagramModel());
+		Vector cellVector = getAllSelectedCellsWithLinkages(selectedCells);
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 
@@ -158,8 +158,9 @@ public class BaseProject
 		return cells;
 	}
 
-	static public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells, DiagramModel model) 
+	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
 	{
+		DiagramModel model = getDiagramModel();
 		Vector selectedCellsWithLinkages = new Vector();
 		for(int i=0; i < selectedCells.length; ++i)
 		{
