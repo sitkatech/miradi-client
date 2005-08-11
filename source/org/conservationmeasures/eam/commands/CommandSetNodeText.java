@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodeText extends Command
 {
@@ -66,6 +67,7 @@ public class CommandSetNodeText extends Command
 			if(expectedText != null && !currentText.equals(expectedText))
 				throw new Exception("CommandSetNodeText expected " + expectedText + " but was " + currentText);
 			node.setText(desiredText);
+			Logging.logDebug("Updating text:"+desiredText);
 			model.updateCell(node);
 			return currentText;
 		}

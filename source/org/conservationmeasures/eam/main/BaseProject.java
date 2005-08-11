@@ -6,18 +6,24 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.GraphSelectionModel;
 
 
@@ -57,6 +63,31 @@ public class BaseProject
 		fireCommandExecuted(command);
 	}
 	
+	public void pasteCellsIntoProject(TransferableEamList list) throws CommandFailedException 
+	{
+		NodeData[] nodes = list.getNodeDataCells();
+		LinkageData[] links = list.getLinkageDataCells();
+		HashMap nodeIds = new HashMap();
+		for (int i = 0; i < nodes.length; i++) 
+		{
+			NodeData nodeData = nodes[i];
+			int originalNodeId = nodeData.getId();
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
+			newNode.execute(this);
+			int newNodeId = newNode.getId();
+			nodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
+			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
+			newNodeText.execute(this);
+
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
+		}
+
+		for (int i = 0; i < links.length; i++) 
+		{
+			Logging.logDebug("Paste Link Original: " + links[i].getId());
+		}
+	}
+
 	void fireCommandExecuted(Command command)
 	{
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
