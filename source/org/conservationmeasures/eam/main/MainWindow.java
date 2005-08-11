@@ -81,6 +81,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private JComponent createDiagramView()
 	{
 		diagramComponent = new DiagramView(this, project.getDiagramModel());
+		project.setSelectionModel(diagramComponent.getSelectionModel());
 		return new UiScrollPane(diagramComponent);
 	}
 	

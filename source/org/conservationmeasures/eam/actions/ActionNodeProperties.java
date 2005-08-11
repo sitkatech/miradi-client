@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.DiagramView;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -34,8 +34,13 @@ public class ActionNodeProperties extends MainWindowAction
 
 	public void editProperties() throws CommandFailedException 
 	{
-		DiagramView diagram = getMainWindow().getDiagramComponent();
-		Node selectedNode = diagram.getSelectedNode();
+		EAMGraphCell[] selected = getSelectedAndRelatedCells();
+		if(selected.length != 1)
+			return;
+		if(!selected[0].isNode())
+			return;
+		
+		Node selectedNode = (Node)selected[0];
 		if(selectedNode == null)
 			return;
 		String title = EAM.text("Title|Node Properties");

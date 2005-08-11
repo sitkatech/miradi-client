@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
@@ -79,5 +81,11 @@ public abstract class MainWindowAction extends AbstractAction
 		setEnabled(shouldBeEnabled());
 	}
 	
+	protected EAMGraphCell[] getSelectedAndRelatedCells()
+	{
+		Vector cellVector = mainWindow.getDiagramComponent().getSelectedCellsWithLinkages();
+		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+	}
+
 	MainWindow mainWindow;
 }

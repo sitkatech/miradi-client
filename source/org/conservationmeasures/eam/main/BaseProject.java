@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.jgraph.graph.GraphSelectionModel;
 
 
 public class BaseProject
@@ -133,10 +134,16 @@ public class BaseProject
 		return state.getIndexToRedo();
 	}
 	
+	public void setSelectionModel(GraphSelectionModel selectionModelToUse)
+	{
+		selectionModel = selectionModelToUse;
+	}
+	
 	
 
 	Storage storage;
 	DiagramModel diagramModel;
+	GraphSelectionModel selectionModel;
 	Vector commandExecutedListeners;
 }
 

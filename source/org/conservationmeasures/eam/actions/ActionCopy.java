@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.actions;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -29,8 +29,8 @@ public class ActionCopy extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		Vector selectedCells = mainWindow.getDiagramComponent().getSelectedCellsWithLinkages();
-		if(selectedCells.size() == 0)
+		EAMGraphCell[] selectedCells = getSelectedAndRelatedCells();
+		if(selectedCells.length == 0)
 			return;
 		TransferableEamList eamList = new TransferableEamList(selectedCells);
 		

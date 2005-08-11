@@ -36,7 +36,7 @@ public class ActionPaste extends MainWindowAction
 			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 				return;
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-			mainWindow.getDiagramComponent().getDiagramModel().pasteCellsIntoProject(list);
+			getProject().getDiagramModel().pasteCellsIntoProject(list);
 
 		} 
 		catch (Exception e) 

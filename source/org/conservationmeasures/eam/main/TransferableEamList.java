@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeData;
 
 public class TransferableEamList implements Transferable 
 {
-	public TransferableEamList (Vector cells)
+	public TransferableEamList (Object[] cells)
 	{
 		super();
 		linkages = new Vector();
@@ -26,11 +26,11 @@ public class TransferableEamList implements Transferable
 		storeData(cells);
 	}
 	
-	private void storeData(Vector cells)
+	private void storeData(Object[] cells)
 	{
-		for (int i = 0; i < cells.size(); i++) 
+		for (int i = 0; i < cells.length; i++) 
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells.get(i);
+			EAMGraphCell cell = (EAMGraphCell)cells[i];
 			try {
 				if(cell.isLinkage())
 				{

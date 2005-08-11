@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
-import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -26,7 +26,7 @@ public class TestTransferableEamList extends EAMTestCase
 	
 	public void testGetTransferDataFlavors() throws Exception
 	{
-		Vector emptyCells = new Vector();
+		EAMGraphCell emptyCells[] = {};
 		TransferableEamList eamList = new TransferableEamList(emptyCells);
 		DataFlavor flavors[] = eamList.getTransferDataFlavors();
 		assertEquals("Should only support 1 flavor", 1, flavors.length);
@@ -35,7 +35,7 @@ public class TestTransferableEamList extends EAMTestCase
 	
 	public void testIsDataFlavorSupported() throws Exception
 	{
-		Vector emptyCells = new Vector();
+		EAMGraphCell emptyCells[] = {};
 		TransferableEamList eamList = new TransferableEamList(emptyCells);
 		assertTrue("EamListDataFlavor not supported?", eamList.isDataFlavorSupported(TransferableEamList.eamListDataFlavor));
 	}
@@ -65,10 +65,7 @@ public class TestTransferableEamList extends EAMTestCase
 		Linkage linkage1 = new Linkage(node2, node1);
 		linkage1.setId(linkage1Id);
 		
-		Vector dataCells = new Vector();
-		dataCells.add(node1);
-		dataCells.add(node2);
-		dataCells.add(linkage1);
+		EAMGraphCell dataCells[] = {node1, node2, linkage1};
 		TransferableEamList eamList = new TransferableEamList(dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);

@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -36,18 +34,18 @@ public class ActionDelete extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		Vector selectedRelatedCells = getMainWindow().getDiagramComponent().getSelectedCellsWithLinkages();
+		EAMGraphCell[] selectedRelatedCells = getSelectedAndRelatedCells();
 		
-		for(int i=0; i < selectedRelatedCells.size(); ++i)
+		for(int i=0; i < selectedRelatedCells.length; ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)selectedRelatedCells.get(i);
+			EAMGraphCell cell = selectedRelatedCells[i];
 			if(cell.isLinkage())
 				deleteLinkage((Linkage)cell);	
 		}
 
-		for(int i=0; i < selectedRelatedCells.size(); ++i)
+		for(int i=0; i < selectedRelatedCells.length; ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)selectedRelatedCells.get(i);
+			EAMGraphCell cell = selectedRelatedCells[i];
 			if(cell.isNode())
 				deleteNode((Node)cell);
 		}
@@ -84,8 +82,13 @@ public class ActionDelete extends MainWindowAction
 
 	public boolean shouldBeEnabled()
 	{
-		DiagramView diagram = getMainWindow().getDiagramComponent();
-		return (diagram != null && diagram.getSelectionCount() > 0);
+		if(!getProject().isOpen())
+			return false;
+
+		// TODO: Note that changing the selection DOESN'T currently 
+		// call this method
+		EAMGraphCell[] selected = getSelectedAndRelatedCells();
+		return (selected.length > 0);
 	}
 
 }
