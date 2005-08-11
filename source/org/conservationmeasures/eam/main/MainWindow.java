@@ -6,17 +6,16 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 
+import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -55,13 +54,22 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 
 	private void activateNoProjectView()
 	{
+		// TODO: There *MUST* be a simpler way to center this view!
 		NoProjectView noProjectView = new NoProjectView(this);
-		JPanel containerForCentering = new JPanel();
-		containerForCentering.setBorder(new LineBorder(Color.RED));
-		containerForCentering.add(noProjectView, BorderLayout.CENTER);
 		noProjectView.setAlignmentX(0.5f);
 		noProjectView.setAlignmentY(0.5f);
-		setCurrentView(containerForCentering);
+		
+		Box centerHorizontally = Box.createVerticalBox();
+		//centerHorizontally.setBorder(new LineBorder(Color.RED));
+		centerHorizontally.add(noProjectView);
+		
+		Box centerVertically = Box.createHorizontalBox();
+		//centerVertically.setBorder(new LineBorder(Color.YELLOW));
+		centerVertically.add(Box.createHorizontalGlue());
+		centerVertically.add(centerHorizontally);
+		centerVertically.add(Box.createHorizontalGlue());
+		
+		setCurrentView(centerVertically);
 	}
 
 	public Project getProject()
