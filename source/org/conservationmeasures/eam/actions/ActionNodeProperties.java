@@ -46,6 +46,6 @@ public class ActionNodeProperties extends MainWindowAction
 
 		int id = selectedNode.getId();
 		CommandSetNodeText command = new CommandSetNodeText(id, dlg.getText());
-		getMainWindow().getProject().executeCommand(command);
+		getProject().executeCommand(command);
 	}
 }

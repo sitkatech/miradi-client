@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.Project;
 
 public class ActionDelete extends MainWindowAction
 {
@@ -56,7 +56,7 @@ public class ActionDelete extends MainWindowAction
 	
 	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException
 	{
-		Project project = getMainWindow().getProject();
+		BaseProject project = getProject();
 		int id = linkageToDelete.getId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
 		project.executeCommand(command);
@@ -64,7 +64,7 @@ public class ActionDelete extends MainWindowAction
 
 	private void deleteNode(Node nodeToDelete) throws CommandFailedException
 	{
-		Project project = getMainWindow().getProject();
+		BaseProject project = getProject();
 		int id = nodeToDelete.getId();
 
 		Point location = nodeToDelete.getLocation();

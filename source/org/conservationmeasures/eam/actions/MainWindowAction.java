@@ -12,6 +12,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -36,6 +37,11 @@ public abstract class MainWindowAction extends AbstractAction
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
+	}
+	
+	public BaseProject getProject()
+	{
+		return getMainWindow().getProject();
 	}
 	
 	public void actionPerformed(ActionEvent event)

@@ -51,7 +51,7 @@ public class ActionInsertIntervention extends InsertNodeAction
 
 	public boolean shouldBeEnabled()
 	{
-		return getMainWindow().isProjectOpen();
+		return getProject().isOpen();
 	}
 	
 }

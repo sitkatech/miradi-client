@@ -29,10 +29,9 @@ public class ActionRedo extends MainWindowAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		CommandRedo command = new CommandRedo();
-		BaseProject project = getMainWindow().getProject();
 		try
 		{
-			project.executeCommand(command);
+			getProject().executeCommand(command);
 		}
 		catch (NothingToRedoException e)
 		{
@@ -47,7 +46,7 @@ public class ActionRedo extends MainWindowAction
 
 	public boolean shouldBeEnabled()
 	{
-		BaseProject project = getMainWindow().getProject();
+		BaseProject project = getProject();
 		return (project.getIndexToRedo() >= 0);
 	}
 }

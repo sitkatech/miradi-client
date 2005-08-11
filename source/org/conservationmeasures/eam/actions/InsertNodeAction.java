@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.Project;
 
 public abstract class InsertNodeAction extends MainWindowAction
 {
@@ -34,7 +34,7 @@ public abstract class InsertNodeAction extends MainWindowAction
 
 	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
 	{
-		Project project = getMainWindow().getProject();
+		BaseProject project = getProject();
 		project.executeCommand(insertCommand);
 		int id = insertCommand.getId();
 	

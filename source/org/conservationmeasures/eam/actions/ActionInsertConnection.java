@@ -38,7 +38,7 @@ public class ActionInsertConnection extends MainWindowAction
 		if(!dialog.getResult())
 			return;
 		
-		DiagramModel model = getMainWindow().getProject().getDiagramModel();
+		DiagramModel model = getProject().getDiagramModel();
 		int fromIndex = dialog.getFrom().getId();
 		int toIndex = dialog.getTo().getId();
 		
@@ -59,7 +59,7 @@ public class ActionInsertConnection extends MainWindowAction
 		try
 		{
 			CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
-			getMainWindow().getProject().executeCommand(command);
+			getProject().executeCommand(command);
 		}
 		catch (CommandFailedException e)
 		{
@@ -73,7 +73,7 @@ public class ActionInsertConnection extends MainWindowAction
 
 	public boolean shouldBeEnabled()
 	{
-		return getMainWindow().isProjectOpen();
+		return getProject().isOpen();
 	}
 	
 }

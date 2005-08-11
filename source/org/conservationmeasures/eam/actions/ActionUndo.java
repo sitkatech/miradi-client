@@ -29,10 +29,9 @@ public class ActionUndo extends MainWindowAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		CommandUndo command = new CommandUndo();
-		BaseProject project = getMainWindow().getProject();
 		try
 		{
-			project.executeCommand(command);
+			getProject().executeCommand(command);
 		}
 		catch(NothingToUndoException e)
 		{
@@ -47,7 +46,7 @@ public class ActionUndo extends MainWindowAction
 
 	public boolean shouldBeEnabled()
 	{
-		BaseProject project = getMainWindow().getProject();
+		BaseProject project = getProject();
 		return (project.getIndexToUndo() >= 0);
 	}
 	
