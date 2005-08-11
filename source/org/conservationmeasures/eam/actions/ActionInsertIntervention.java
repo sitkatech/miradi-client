@@ -67,8 +67,8 @@ class InsertInterventionIcon implements Icon
 	{
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight());
 		Color color = new NodeTypeIntervention().getColor();
-		HexagonRenderer.fill(g, rect, color);
 		HexagonRenderer hexagon = new HexagonRenderer();
+		hexagon.fillShape(g, rect, color);
 		hexagon.drawBorder((Graphics2D)g, rect, Color.BLACK);
 	}
 	

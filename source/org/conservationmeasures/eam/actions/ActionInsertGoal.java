@@ -67,8 +67,8 @@ class InsertGoalIcon implements Icon
 	{
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight());
 		Color color = new NodeTypeGoal().getColor();
-		EllipseRenderer.fill(g, rect, color);
 		EllipseRenderer ellipse = new EllipseRenderer();
+		ellipse.fillShape(g, rect, color);
 		ellipse.drawBorder((Graphics2D)g, rect, Color.BLACK);
 	}
 	

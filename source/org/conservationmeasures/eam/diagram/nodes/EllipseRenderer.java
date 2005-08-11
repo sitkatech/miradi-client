@@ -58,12 +58,7 @@ public class EllipseRenderer extends MultilineNodeRenderer
 		return new Dimension(xInset, yInset);
 	}
 
-	void fillShape(Graphics g, Rectangle rect, Color color)
-	{
-		fill(g, rect, color);
-	}
-
-	public static void fill(Graphics g, Rectangle rect, Color color)
+	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();

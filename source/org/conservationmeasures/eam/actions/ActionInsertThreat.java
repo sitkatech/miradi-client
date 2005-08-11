@@ -67,8 +67,8 @@ class InsertThreatIcon implements Icon
 	{
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight());
 		Color color = new NodeTypeThreat().getColor();
-		RectangleRenderer.fill(g, rect, color);
 		RectangleRenderer renderer = new RectangleRenderer();
+		renderer.fillShape(g, rect, color);
 		renderer.drawBorder((Graphics2D)g, rect, Color.BLACK);
 		
 	}
