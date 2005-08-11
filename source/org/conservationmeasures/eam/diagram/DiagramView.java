@@ -90,10 +90,10 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	public Vector getAllSelectedCellsWithLinkages() 
 	{
 		Object[] selectedCells = getSelectionCells();
-		return getAllSelectedCellsWithLinkages(selectedCells);
+		return getAllSelectedCellsWithLinkages(selectedCells, mainWindow.getProject().getDiagramModel());
 	}
 
-	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
+	static public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells, DiagramModel model) 
 	{
 		Vector selectedCellsWithLinkages = new Vector();
 		for(int i=0; i < selectedCells.length; ++i)
@@ -106,7 +106,6 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 			}
 			else if(cell.isNode())
 			{
-				DiagramModel model = mainWindow.getProject().getDiagramModel();
 				Set linkages = model.getLinkages((Node)cell);
 				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 				{
