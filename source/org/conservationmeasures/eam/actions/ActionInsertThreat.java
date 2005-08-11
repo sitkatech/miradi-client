@@ -19,14 +19,14 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertThreat extends InsertNodeAction
 {
-	public ActionInsertThreat(MainWindow mainWindowToUse)
+	public ActionInsertThreat(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), new InsertThreatIcon());
+		super(projectToUse, getLabel(), new InsertThreatIcon());
 	}
 
 	private static String getLabel()

@@ -94,7 +94,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		{
 			try 
 			{
-				ActionNodeProperties properties = new ActionNodeProperties(diagram.getMainWindow());
+				ActionNodeProperties properties = new ActionNodeProperties(diagram.getMainWindow().getProject());
 				properties.editProperties();
 			} 
 			catch (CommandFailedException e) 

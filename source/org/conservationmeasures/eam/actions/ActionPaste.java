@@ -11,15 +11,15 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class ActionPaste extends ProjectAction
 {
-	public ActionPaste(MainWindow mainWindowToUse)
+	public ActionPaste(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/paste.gif");
+		super(projectToUse, getLabel(), "icons/paste.gif");
 	}
 
 	private static String getLabel()

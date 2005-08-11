@@ -15,15 +15,15 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertConnection extends ProjectAction
 {
-	public ActionInsertConnection(MainWindow mainWindowToUse)
+	public ActionInsertConnection(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), new InsertConnectionIcon());
+		super(projectToUse, getLabel(), new InsertConnectionIcon());
 	}
 
 	private static String getLabel()
@@ -33,7 +33,7 @@ public class ActionInsertConnection extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(getMainWindow());
+		ConnectionPropertiesDialog dialog = new ConnectionPropertiesDialog(EAM.mainWindow);
 		dialog.setVisible(true);
 		if(!dialog.getResult())
 			return;

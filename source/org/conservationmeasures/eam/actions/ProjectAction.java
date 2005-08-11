@@ -14,34 +14,28 @@ import javax.swing.ImageIcon;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public abstract class ProjectAction extends AbstractAction
 {
-	public ProjectAction(MainWindow mainWindowToUse, String label)
+	public ProjectAction(BaseProject projectToUse, String label)
 	{
-		this(mainWindowToUse, label, "icons/blankicon.png");
+		this(projectToUse, label, "icons/blankicon.png");
 	}
 	
-	public ProjectAction(MainWindow mainWindowToUse, String label, String icon)
+	public ProjectAction(BaseProject projectToUse, String label, String icon)
 	{
-		this(mainWindowToUse, label, new ImageIcon(icon));
+		this(projectToUse, label, new ImageIcon(icon));
 	}
 	
-	public ProjectAction(MainWindow mainWindowToUse, String label, Icon icon)
+	public ProjectAction(BaseProject projectToUse, String label, Icon icon)
 	{
 		super(label, icon);
-		mainWindow = mainWindowToUse;
+		project = projectToUse;
 	}
 
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
 	public BaseProject getProject()
 	{
-		return getMainWindow().getProject();
+		return project;
 	}
 	
 	public void actionPerformed(ActionEvent event)
@@ -79,5 +73,5 @@ public abstract class ProjectAction extends AbstractAction
 		setEnabled(shouldBeEnabled());
 	}
 	
-	MainWindow mainWindow;
+	BaseProject project;
 }

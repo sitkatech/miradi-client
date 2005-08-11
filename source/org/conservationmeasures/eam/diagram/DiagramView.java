@@ -79,17 +79,17 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	}
 	private void installKeyBindings()
 	{
-		Action helpAction = new ActionContextualHelp(mainWindow);
+		Action helpAction = new ActionContextualHelp(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-		Action undoAction = new ActionUndo(mainWindow);
+		Action undoAction = new ActionUndo(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
-		Action redoAction = new ActionRedo(mainWindow);
+		Action redoAction = new ActionRedo(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
-		Action cutAction = new ActionCut(mainWindow);
+		Action cutAction = new ActionCut(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
-		Action copyAction = new ActionCopy(mainWindow);
+		Action copyAction = new ActionCopy(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
-		Action pasteAction = new ActionPaste(mainWindow);
+		Action pasteAction = new ActionPaste(mainWindow.getProject());
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
 	}
 	

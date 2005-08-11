@@ -19,14 +19,14 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertIntervention extends InsertNodeAction
 {
-	public ActionInsertIntervention(MainWindow mainWindowToUse)
+	public ActionInsertIntervention(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), new InsertInterventionIcon());
+		super(projectToUse, getLabel(), new InsertInterventionIcon());
 	}
 
 	private static String getLabel()

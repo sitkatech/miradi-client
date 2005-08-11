@@ -18,7 +18,8 @@ public class ActionNewProject extends ProjectAction
 {
 	public ActionNewProject(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/new.gif");
+		super(mainWindowToUse.getProject(), getLabel(), "icons/new.gif");
+		mainWindow = mainWindowToUse;
 	}
 
 	private static String getLabel()
@@ -33,7 +34,7 @@ public class ActionNewProject extends ProjectAction
 		dlg.setDialogTitle(getLabel());
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText("Create new project");
-		if(dlg.showDialog(getMainWindow(), EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
+		if(dlg.showDialog(mainWindow, EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
 			return;
 		
 		File chosen = dlg.getSelectedFile();
@@ -47,7 +48,7 @@ public class ActionNewProject extends ProjectAction
 			chosen.delete();
 		}
 				
-		getMainWindow().loadProject(chosen);
+		mainWindow.loadProject(chosen);
 	}
 
 	public String getToolTipText()
@@ -60,4 +61,5 @@ public class ActionNewProject extends ProjectAction
 		return true;
 	}
 	
+	MainWindow mainWindow;
 }

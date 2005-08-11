@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionSelectAll extends ProjectAction
 {
-	public ActionSelectAll(MainWindow mainWindowToUse)
+	public ActionSelectAll(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(projectToUse, getLabel());
 	}
 
 	private static String getLabel()

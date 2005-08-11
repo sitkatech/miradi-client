@@ -15,13 +15,12 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public abstract class InsertNodeAction extends ProjectAction
 {
-	public InsertNodeAction(MainWindow mainWindowToUse, String label, Icon icon)
+	public InsertNodeAction(BaseProject projectToUse, String label, Icon icon)
 	{
-		super(mainWindowToUse, label, icon);
+		super(projectToUse, label, icon);
 		createAt = new Point(0,0);
 	}
 	
@@ -34,15 +33,14 @@ public abstract class InsertNodeAction extends ProjectAction
 
 	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
 	{
-		BaseProject project = getProject();
-		project.executeCommand(insertCommand);
+		getProject().executeCommand(insertCommand);
 		int id = insertCommand.getId();
 	
 		Command setTextCommand = new CommandSetNodeText(id, getInitialText());
-		project.executeCommand(setTextCommand);
+		getProject().executeCommand(setTextCommand);
 
 		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
-		project.executeCommand(moveCommand);
+		getProject().executeCommand(moveCommand);
 	}
 
 	Point createAt;

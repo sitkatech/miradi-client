@@ -13,9 +13,10 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionExit extends ProjectAction
 {
-	public ActionExit(MainWindow mainWindow)
+	public ActionExit(MainWindow mainWindowToUse)
 	{
-		super(mainWindow, getLabel());
+		super(mainWindowToUse.getProject(), getLabel());
+		mainWindow = mainWindowToUse;
 	}
 
 	private static String getLabel()
@@ -25,7 +26,7 @@ public class ActionExit extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		getMainWindow().exitNormally();
+		mainWindow.exitNormally();
 	}
 
 	public boolean shouldBeEnabled()
@@ -33,4 +34,5 @@ public class ActionExit extends ProjectAction
 		return true;
 	}
 	
+	MainWindow mainWindow;
 }

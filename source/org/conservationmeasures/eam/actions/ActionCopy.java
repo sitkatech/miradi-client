@@ -11,15 +11,15 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class ActionCopy extends ProjectAction
 {
-	public ActionCopy(MainWindow mainWindowToUse)
+	public ActionCopy(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/copy.gif");
+		super(projectToUse, getLabel(), "icons/copy.gif");
 	}
 
 	private static String getLabel()
@@ -40,7 +40,7 @@ public class ActionCopy extends ProjectAction
 		TransferableEamList eamList = new TransferableEamList(selectedCells);
 		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(eamList, mainWindow);
+		clipboard.setContents(eamList, EAM.mainWindow);
 	}
 
 	public String getToolTipText()

@@ -18,13 +18,12 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionDelete extends ProjectAction
 {
-	public ActionDelete(MainWindow mainWindowToUse)
+	public ActionDelete(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/delete.gif");
+		super(projectToUse, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()
@@ -59,15 +58,13 @@ public class ActionDelete extends ProjectAction
 	
 	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException
 	{
-		BaseProject project = getProject();
 		int id = linkageToDelete.getId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
-		project.executeCommand(command);
+		getProject().executeCommand(command);
 	}
 
 	private void deleteNode(Node nodeToDelete) throws CommandFailedException
 	{
-		BaseProject project = getProject();
 		int id = nodeToDelete.getId();
 
 		Point location = nodeToDelete.getLocation();
@@ -75,9 +72,9 @@ public class ActionDelete extends ProjectAction
 		CommandSetNodeText clearText = new CommandSetNodeText(id, "");
 		CommandDeleteNode command = new CommandDeleteNode(id);
 		
-		project.executeCommand(moveToZeroZero);
-		project.executeCommand(clearText);
-		project.executeCommand(command);
+		getProject().executeCommand(moveToZeroZero);
+		getProject().executeCommand(clearText);
+		getProject().executeCommand(command);
 	}
 
 	public String getToolTipText()

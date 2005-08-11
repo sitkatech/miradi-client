@@ -19,14 +19,14 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertGoal extends InsertNodeAction
 {
-	public ActionInsertGoal(MainWindow mainWindowToUse)
+	public ActionInsertGoal(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), new InsertGoalIcon());
+		super(projectToUse, getLabel(), new InsertGoalIcon());
 	}
 
 	private static String getLabel()

@@ -12,13 +12,12 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionRedo extends ProjectAction
 {
-	public ActionRedo(MainWindow mainWindowToUse)
+	public ActionRedo(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/redo.gif");
+		super(projectToUse, getLabel(), "icons/redo.gif");
 	}
 
 	private static String getLabel()
@@ -46,7 +45,6 @@ public class ActionRedo extends ProjectAction
 
 	public boolean shouldBeEnabled()
 	{
-		BaseProject project = getProject();
-		return (project.getIndexToRedo() >= 0);
+		return (getProject().getIndexToRedo() >= 0);
 	}
 }

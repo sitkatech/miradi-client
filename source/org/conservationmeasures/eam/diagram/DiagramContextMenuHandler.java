@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.InsertNodeAction;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiMenu;
@@ -40,21 +41,22 @@ public class DiagramContextMenuHandler
 	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
 	{
 		MainWindow mainWindow = getMainWindow();
+		BaseProject project = mainWindow.getProject();
 		
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionUndo(mainWindow)));
-		menu.add(new JMenuItem(new ActionRedo(mainWindow)));
+		menu.add(new JMenuItem(new ActionUndo(project)));
+		menu.add(new JMenuItem(new ActionRedo(project)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionCut(mainWindow)));
-		menu.add(new JMenuItem(new ActionCopy(mainWindow)));
-		menu.add(new JMenuItem(new ActionPaste(mainWindow)));
+		menu.add(new JMenuItem(new ActionCut(project)));
+		menu.add(new JMenuItem(new ActionCopy(project)));
+		menu.add(new JMenuItem(new ActionPaste(project)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionDelete(mainWindow)));
-		menu.add(new JMenuItem(new ActionSelectAll(mainWindow)));
+		menu.add(new JMenuItem(new ActionDelete(project)));
+		menu.add(new JMenuItem(new ActionSelectAll(project)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionNodeProperties(mainWindow)));
+		menu.add(new JMenuItem(new ActionNodeProperties(project)));
 		return menu;
 	}
 
@@ -66,7 +68,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(getConfiguredAction(ActionInsertThreat.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
 		insertMenu.addSeparator();
-		insertMenu.add(new ActionInsertConnection(getMainWindow()));
+		insertMenu.add(new ActionInsertConnection(getMainWindow().getProject()));
 
 		return insertMenu;
 	}

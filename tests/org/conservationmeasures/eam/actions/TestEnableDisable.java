@@ -24,7 +24,7 @@ public class TestEnableDisable extends EAMTestCase
 
 	public void testInsertConnection()
 	{
-		ActionInsertConnection action = new ActionInsertConnection(mainWindow);
+		ActionInsertConnection action = new ActionInsertConnection(mainWindow.getProject());
 		assertFalse("Enabled when no project open?", action.shouldBeEnabled());
 		EAM.logError("TestEnableDisable.testInsertConnection needs more tests");
 	}

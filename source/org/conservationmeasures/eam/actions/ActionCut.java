@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionCut extends ProjectAction
 {
-	public ActionCut(MainWindow mainWindowToUse)
+	public ActionCut(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/cut.gif");
+		super(projectToUse, getLabel(), "icons/cut.gif");
 	}
 
 	private static String getLabel()
@@ -26,9 +26,9 @@ public class ActionCut extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		ActionCopy copy = new ActionCopy(mainWindow);
+		ActionCopy copy = new ActionCopy(getProject());
 		copy.performCopy();
-		ActionDelete delete = new ActionDelete(mainWindow);
+		ActionDelete delete = new ActionDelete(getProject());
 		delete.performDelete();
 	}
 
@@ -36,5 +36,4 @@ public class ActionCut extends ProjectAction
 	{
 		return EAM.text("TT|Cut the selection to the clipboard");
 	}
-
 }

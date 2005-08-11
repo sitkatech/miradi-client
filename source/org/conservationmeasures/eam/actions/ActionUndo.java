@@ -12,13 +12,12 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionUndo extends ProjectAction
 {
-	public ActionUndo(MainWindow mainWindowToUse)
+	public ActionUndo(BaseProject projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/undo.gif");
+		super(projectToUse, getLabel(), "icons/undo.gif");
 	}
 
 	private static String getLabel()
@@ -46,8 +45,7 @@ public class ActionUndo extends ProjectAction
 
 	public boolean shouldBeEnabled()
 	{
-		BaseProject project = getProject();
-		return (project.getIndexToUndo() >= 0);
+		return (getProject().getIndexToUndo() >= 0);
 	}
 	
 }

@@ -18,7 +18,8 @@ public class ActionOpenProject extends ProjectAction
 {
 	public ActionOpenProject(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/open.gif");
+		super(mainWindowToUse.getProject(), getLabel(), "icons/open.gif");
+		mainWindow = mainWindowToUse;
 	}
 
 	private static String getLabel()
@@ -31,11 +32,11 @@ public class ActionOpenProject extends ProjectAction
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(getLabel());
-		if(dlg.showOpenDialog(getMainWindow()) != JFileChooser.APPROVE_OPTION)
+		if(dlg.showOpenDialog(mainWindow) != JFileChooser.APPROVE_OPTION)
 			return;
 		
 		File chosen = dlg.getSelectedFile();
-		getMainWindow().loadProject(chosen);
+		mainWindow.loadProject(chosen);
 	}
 
 	public String getToolTipText()
@@ -48,4 +49,5 @@ public class ActionOpenProject extends ProjectAction
 		return true;
 	}
 	
+	MainWindow mainWindow;
 }
