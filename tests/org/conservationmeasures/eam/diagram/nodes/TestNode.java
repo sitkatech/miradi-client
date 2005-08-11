@@ -46,7 +46,7 @@ public class TestNode extends EAMTestCase
 		Node testNode = new Node(Node.TYPE_THREAT);
 		assertEquals(Node.INVALID_ID,node.getId());
 		int id = 23;
-		node.setId(id);
+		testNode.setId(id);
 		assertEquals(id, testNode.getId());
 	}
 	
