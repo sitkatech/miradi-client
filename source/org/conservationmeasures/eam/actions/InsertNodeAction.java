@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public abstract class InsertNodeAction extends MainWindowAction
+public abstract class InsertNodeAction extends ProjectAction
 {
 	public InsertNodeAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{

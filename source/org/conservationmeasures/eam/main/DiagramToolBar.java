@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.MainWindowAction;
+import org.conservationmeasures.eam.actions.ProjectAction;
 
 public class DiagramToolBar extends JToolBar
 {
@@ -44,7 +44,7 @@ public class DiagramToolBar extends JToolBar
 		addButtonForAction(actions.get(ActionDelete.class));
 	}
 	
-	void addButtonForAction(MainWindowAction action)
+	void addButtonForAction(ProjectAction action)
 	{
 		ToolBarButton button = new ToolBarButton(action);
 		add(button);
@@ -67,7 +67,7 @@ class ActionStub extends AbstractAction
 
 class ToolBarButton extends JButton
 {
-	public ToolBarButton(MainWindowAction action)
+	public ToolBarButton(ProjectAction action)
 	{
 		super(action);
 		setText("");

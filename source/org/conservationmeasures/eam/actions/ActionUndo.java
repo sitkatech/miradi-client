@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionUndo extends MainWindowAction
+public class ActionUndo extends ProjectAction
 {
 	public ActionUndo(MainWindow mainWindowToUse)
 	{

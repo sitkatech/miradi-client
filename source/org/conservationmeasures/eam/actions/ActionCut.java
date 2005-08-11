@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCut extends MainWindowAction
+public class ActionCut extends ProjectAction
 {
 	public ActionCut(MainWindow mainWindowToUse)
 	{

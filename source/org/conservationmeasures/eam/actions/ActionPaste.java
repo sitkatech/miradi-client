@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
-public class ActionPaste extends MainWindowAction
+public class ActionPaste extends ProjectAction
 {
 	public ActionPaste(MainWindow mainWindowToUse)
 	{

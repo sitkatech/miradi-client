@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDelete extends MainWindowAction
+public class ActionDelete extends ProjectAction
 {
 	public ActionDelete(MainWindow mainWindowToUse)
 	{

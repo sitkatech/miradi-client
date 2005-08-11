@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionRedo extends MainWindowAction
+public class ActionRedo extends ProjectAction
 {
 	public ActionRedo(MainWindow mainWindowToUse)
 	{

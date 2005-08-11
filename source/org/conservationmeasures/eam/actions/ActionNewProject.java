@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionNewProject extends MainWindowAction
+public class ActionNewProject extends ProjectAction
 {
 	public ActionNewProject(MainWindow mainWindowToUse)
 	{

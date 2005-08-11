@@ -39,9 +39,9 @@ public class Actions
 		updateActionStates();
 	}
 	
-	public MainWindowAction get(Class c)
+	public ProjectAction get(Class c)
 	{
-		return (MainWindowAction)actions.get(c);
+		return (ProjectAction)actions.get(c);
 	}
 
 	public void updateActionStates()
@@ -50,12 +50,12 @@ public class Actions
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
 		{
-			MainWindowAction action = (MainWindowAction)iter.next();
+			ProjectAction action = (ProjectAction)iter.next();
 			action.setEnabled(action.shouldBeEnabled());
 		}
 	}
 	
-	void registerAction(MainWindowAction action)
+	void registerAction(ProjectAction action)
 	{
 		actions.put(action.getClass(), action);
 	}

@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertConnection extends MainWindowAction
+public class ActionInsertConnection extends ProjectAction
 {
 	public ActionInsertConnection(MainWindow mainWindowToUse)
 	{

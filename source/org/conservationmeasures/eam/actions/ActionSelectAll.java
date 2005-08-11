@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionSelectAll extends MainWindowAction
+public class ActionSelectAll extends ProjectAction
 {
 	public ActionSelectAll(MainWindow mainWindowToUse)
 	{

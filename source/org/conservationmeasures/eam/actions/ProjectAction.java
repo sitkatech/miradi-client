@@ -18,19 +18,19 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public abstract class MainWindowAction extends AbstractAction
+public abstract class ProjectAction extends AbstractAction
 {
-	public MainWindowAction(MainWindow mainWindowToUse, String label)
+	public ProjectAction(MainWindow mainWindowToUse, String label)
 	{
 		this(mainWindowToUse, label, "icons/blankicon.png");
 	}
 	
-	public MainWindowAction(MainWindow mainWindowToUse, String label, String icon)
+	public ProjectAction(MainWindow mainWindowToUse, String label, String icon)
 	{
 		this(mainWindowToUse, label, new ImageIcon(icon));
 	}
 	
-	public MainWindowAction(MainWindow mainWindowToUse, String label, Icon icon)
+	public ProjectAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{
 		super(label, icon);
 		mainWindow = mainWindowToUse;

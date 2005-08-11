@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionExit extends MainWindowAction
+public class ActionExit extends ProjectAction
 {
 	public ActionExit(MainWindow mainWindow)
 	{

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionContextualHelp extends MainWindowAction
+public class ActionContextualHelp extends ProjectAction
 {
 	public ActionContextualHelp(MainWindow mainWindowToUse)
 	{
