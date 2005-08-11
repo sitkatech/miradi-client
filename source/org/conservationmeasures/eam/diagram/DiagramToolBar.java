@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -26,6 +27,13 @@ public class DiagramToolBar extends JToolBar
 	public DiagramToolBar(Actions actions)
 	{
 		setFloatable(false);
+
+		String[] views = new String[] {"Interview", "Diagram", "GIS Mapping", "Budgets", "Calendar",};
+		JComboBox viewCombo = new JComboBox(views);
+		viewCombo.setSelectedIndex(1);
+
+		add(viewCombo);
+		addSeparator();
 		addButtonForAction(actions.get(ActionInsertGoal.class));
 		addButtonForAction(actions.get(ActionInsertThreat.class));
 		addButtonForAction(actions.get(ActionInsertIntervention.class));
