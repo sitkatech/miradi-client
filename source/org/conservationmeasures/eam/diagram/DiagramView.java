@@ -27,10 +27,12 @@ import org.jgraph.JGraph;
 
 public class DiagramView extends JGraph implements ComponentWithContextMenu
 {
-	public DiagramView(MainWindow mainWindowToUse, DiagramModel model)
+	public DiagramView(MainWindow mainWindowToUse)
 	{
-		super(model);
+		super(mainWindowToUse.getProject().getDiagramModel());
 		mainWindow = mainWindowToUse;
+		mainWindowToUse.getProject().setSelectionModel(getSelectionModel());
+
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());
 		installKeyBindings();
@@ -60,7 +62,7 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	
 	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
 	{
-		mainWindow.recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
+		mainWindow.getProject().recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
 	}
 	
 	public void showContextMenu(MouseEvent e)

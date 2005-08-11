@@ -22,7 +22,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.UiScrollPane;
@@ -53,7 +52,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
-		viewHolder.add(createCenteredView(new NoProjectView(this)), NoProjectView.cardName());
+		viewHolder.add(createNoProjectView(), NoProjectView.cardName());
 		viewHolder.add(createDiagramView(), DiagramView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		setVisible(true);
@@ -78,10 +77,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return centerVertically;
 	}
 	
+	private JComponent createNoProjectView()
+	{
+		return createCenteredView(new NoProjectView(this));
+	}
+
 	private JComponent createDiagramView()
 	{
-		diagramComponent = new DiagramView(this, project.getDiagramModel());
-		project.setSelectionModel(diagramComponent.getSelectionModel());
+		diagramComponent = new DiagramView(this);
 		return new UiScrollPane(diagramComponent);
 	}
 	
@@ -104,11 +107,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public Actions getActions()
 	{
 		return actions;
-	}
-	
-	public boolean isProjectOpen()
-	{
-		return project.isOpen();
 	}
 	
 	public void loadProject(File projectFile)
@@ -138,11 +136,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	}
 
-	public void recordCommand(Command command)
-	{
-		project.recordCommand(command);
-	}
-	
 	public void exitNormally()
 	{
 		System.exit(0);
