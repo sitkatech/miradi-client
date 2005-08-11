@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -31,9 +32,10 @@ public class ActionPaste extends MainWindowAction
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		try 
 		{
-			if(!clipboard.isDataFlavorAvailable(TransferableEamList.eamListDataFlavor))
+			Transferable contents = clipboard.getContents(null);
+			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 				return;
-			TransferableEamList list = (TransferableEamList)clipboard.getContents(null).getTransferData(TransferableEamList.eamListDataFlavor);
+			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
 			mainWindow.getDiagramComponent().getDiagramModel().pasteCellsIntoProject(list);
 
 		} 
