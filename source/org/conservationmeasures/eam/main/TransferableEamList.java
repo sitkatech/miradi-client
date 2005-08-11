@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeData;
 
 public class TransferableEamList implements Transferable 
 {
-	public TransferableEamList (EAMGraphCell[] cells)
+	public TransferableEamList (Object[] cells)
 	{
 		super();
 		linkages = new Vector();
@@ -26,18 +26,19 @@ public class TransferableEamList implements Transferable
 		storeData(cells);
 	}
 	
-	private void storeData(EAMGraphCell[] cells)
+	private void storeData(Object[] cells)
 	{
 		for (int i = 0; i < cells.length; i++) 
 		{
+			EAMGraphCell cell = (EAMGraphCell)cells[i];
 			try {
-				if(cells[i].isLinkage())
+				if(cell.isLinkage())
 				{
-					linkages.add(new LinkageData(cells[i]));
+					linkages.add(new LinkageData(cell));
 				}
-				if(cells[i].isNode())
+				if(cell.isNode())
 				{
-					nodes.add(new NodeData(cells[i]));
+					nodes.add(new NodeData(cell));
 				}
 			} 
 			catch (Exception e) 
@@ -79,7 +80,7 @@ public class TransferableEamList implements Transferable
 		return (NodeData[])nodes.toArray(new NodeData[0]);
 	}
 
-	static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
+	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
 	Vector linkages;
 	Vector nodes;
 }

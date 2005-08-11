@@ -14,6 +14,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.TransferableEamList;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -139,6 +140,12 @@ public class DiagramModel extends DefaultGraphModel
 		if(cell == null)
 			throw new Exception("Cell doesn't exist, id: " + id);
 		return cell;
+	}
+	
+	public void pasteCellsIntoProject(TransferableEamList list) 
+	{
+//		NodeData[] nodes = list.getNodeDataCells();
+//		LinkageData[] links = list.getLinkageDataCells();
 	}
 
 	CellInventory cellInventory;

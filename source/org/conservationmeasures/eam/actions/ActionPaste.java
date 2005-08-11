@@ -5,11 +5,14 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class ActionPaste extends MainWindowAction
 {
@@ -25,8 +28,20 @@ public class ActionPaste extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		// TODO Auto-generated method stub
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		try 
+		{
+			if(!clipboard.isDataFlavorAvailable(TransferableEamList.eamListDataFlavor))
+				return;
+			TransferableEamList list = (TransferableEamList)clipboard.getContents(null).getTransferData(TransferableEamList.eamListDataFlavor);
+			mainWindow.getDiagramComponent().getDiagramModel().pasteCellsIntoProject(list);
 
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			throw new CommandFailedException(e);
+		} 
 	}
 
 	public String getToolTipText()

@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -24,7 +27,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.UiNotifyDlg;
 import org.martus.swing.UiScrollPane;
 
-public class MainWindow extends JFrame implements CommandExecutedListener
+public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
 {
 	public MainWindow()
 	{
@@ -160,6 +163,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		actions.updateActionStates();
+	}
+	
+	public void lostOwnership(Clipboard clipboard, Transferable contents) 
+	{
 	}
 	
 	private void setCurrentView(JComponent view)

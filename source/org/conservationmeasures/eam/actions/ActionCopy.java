@@ -5,14 +5,13 @@
  */
 package org.conservationmeasures.eam.actions;
 
-//import java.awt.Toolkit;
-//import java.awt.datatransfer.Clipboard;
-//import java.awt.datatransfer.Transferable;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class ActionCopy extends MainWindowAction
 {
@@ -28,9 +27,13 @@ public class ActionCopy extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-	//	Toolkit toolkit = Toolkit.getDefaultToolkit();
-	//	Clipboard clipboard = toolkit.getSystemClipboard();
-	//	clipboard.setContents(tb, mainWindow);
+		Object[] selectedCells = mainWindow.getDiagramComponent().getSelectionCells();
+		if(selectedCells.length == 0)
+			return;
+		TransferableEamList eamList = new TransferableEamList(selectedCells);
+		
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(eamList, mainWindow);
 	}
 
 	public String getToolTipText()
