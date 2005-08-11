@@ -19,7 +19,8 @@ public class TestNodeData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		Node nodeA = new Node(Node.TYPE_THREAT);
+		int nodeAType = Node.TYPE_THREAT;
+		Node nodeA = new Node(nodeAType);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);
 		int id = 2;
@@ -31,8 +32,9 @@ public class TestNodeData extends EAMTestCase
 		assertEquals("Text incorrect", nodeAText, nodeAData.getText());
 		assertEquals("location incorrect", location, nodeAData.getLocation());
 		assertEquals("id incorrect", id, nodeAData.getId());
+		assertEquals("type incorrect", nodeAType, nodeAData.getNodeType());
 		
-		Node nodeB = new Node(Node.TYPE_THREAT);
+		Node nodeB = new Node(Node.TYPE_INTERVENTION);
 		Linkage linkage = new Linkage(nodeA, nodeB);
 		try
 		{

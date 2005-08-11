@@ -17,6 +17,7 @@ public class NodeData
 		id = cell.getId();
 		text = cell.getText();
 		location = cell.getLocation();
+		type = ((Node)cell).getNodeType();
 	}
 	
 	public String getText()
@@ -34,7 +35,13 @@ public class NodeData
 		return id;
 	}
 	
+	public int getNodeType()
+	{
+		return type;
+	}
+	
 	private String text;
 	private Point location;
 	private int id;
+	private int type;
 }

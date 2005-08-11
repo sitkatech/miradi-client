@@ -13,6 +13,8 @@ public class LinkageData
 		if(!cell.isLinkage())
 			throw new Exception("EAMGraphCell not a Linkage");
 		id = cell.getId();
+		fromNodeId = ((Linkage)cell).getFromNode().getId();
+		toNodeId = ((Linkage)cell).getToNode().getId();
 	}
 	
 	public int getId()
@@ -20,5 +22,17 @@ public class LinkageData
 		return id;
 	}
 	
+	public int getFromNodeId()
+	{
+		return fromNodeId;
+	}
+	
+	public int getToNodeId()
+	{
+		return toNodeId;
+	}
+	
 	private int id;
+	private int fromNodeId;
+	private int toNodeId;
 }

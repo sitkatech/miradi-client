@@ -11,13 +11,22 @@ public class TestLinkageData extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
+		int nodeAId = 1;
 		Node nodeA = new Node(Node.TYPE_THREAT);
-		Node nodeB = new Node(Node.TYPE_THREAT);
-		Linkage linkage = new Linkage(nodeA, nodeB);
+		nodeA.setId(nodeAId);
+		
+		int nodeBId = 2;
+		Node nodeB = new Node(Node.TYPE_GOAL);
+		nodeB.setId(nodeBId);
+		
+		Linkage linkage = new Linkage(nodeB, nodeA);
 		int id = 1;
 		linkage.setId(id);
 		LinkageData linkageData = new LinkageData(linkage);
 		assertEquals("Id not the same?", id, linkageData.getId());
+		assertEquals("From Node Ids don't match", nodeBId, linkageData.getFromNodeId());
+		assertEquals("To Node Ids don't match", nodeAId, linkageData.getToNodeId());
+		
 		try
 		{
 			new LinkageData(nodeA);
@@ -27,5 +36,5 @@ public class TestLinkageData extends EAMTestCase
 		{
 		}
 	}
-
+	
 }

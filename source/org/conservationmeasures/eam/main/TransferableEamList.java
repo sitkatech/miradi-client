@@ -10,9 +10,43 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
+import org.conservationmeasures.eam.diagram.nodes.NodeData;
 
 public class TransferableEamList implements Transferable 
 {
+	public TransferableEamList (EAMGraphCell[] cells)
+	{
+		super();
+		linkages = new Vector();
+		nodes = new Vector();
+		storeData(cells);
+	}
+	
+	private void storeData(EAMGraphCell[] cells)
+	{
+		for (int i = 0; i < cells.length; i++) 
+		{
+			try {
+				if(cells[i].isLinkage())
+				{
+					linkages.add(new LinkageData(cells[i]));
+				}
+				if(cells[i].isNode())
+				{
+					nodes.add(new NodeData(cells[i]));
+				}
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public DataFlavor[] getTransferDataFlavors() 
 	{
 		DataFlavor[] flavorArray = {eamListDataFlavor};
@@ -35,5 +69,17 @@ public class TransferableEamList implements Transferable
 		throw new UnsupportedFlavorException(flavor);
 	}
 	
+	public LinkageData[] getLinkageDataCells()
+	{
+		return (LinkageData[])linkages.toArray(new LinkageData[linkages.size()]);
+	}
+	
+	public NodeData[] getNodeDataCells()
+	{
+		return (NodeData[])nodes.toArray(new NodeData[nodes.size()]);
+	}
+
 	static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
+	Vector linkages;
+	Vector nodes;
 }
