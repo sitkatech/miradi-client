@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -103,7 +103,7 @@ public class ActionDelete extends MainWindowAction
 
 	public boolean shouldBeEnabled()
 	{
-		DiagramComponent diagram = getMainWindow().getDiagramComponent();
+		DiagramView diagram = getMainWindow().getDiagramComponent();
 		return (diagram != null && diagram.getSelectionCount() > 0);
 	}
 

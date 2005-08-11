@@ -66,6 +66,11 @@ public class ActionInsertConnection extends MainWindowAction
 		}
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Add a relationship between two nodes");
+	}
+
 	public boolean shouldBeEnabled()
 	{
 		return getMainWindow().isProjectOpen();

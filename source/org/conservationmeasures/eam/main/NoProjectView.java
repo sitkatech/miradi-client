@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionOpenProject;
+import org.conservationmeasures.eam.utils.DialogLayout;
 
 public class NoProjectView extends JPanel
 {

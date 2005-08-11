@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.utils;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -22,7 +22,7 @@ import javax.swing.SpringLayout;
  * invoke the layout's adjustSizes method.
  *  
  */
-class DialogLayout extends SpringLayout
+public class DialogLayout extends SpringLayout
 {
 	public void adjustSizes(Container container)
 	{

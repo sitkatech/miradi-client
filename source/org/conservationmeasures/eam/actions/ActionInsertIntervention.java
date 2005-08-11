@@ -15,9 +15,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.diagram.nodes.HexagonRenderer;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -42,6 +42,11 @@ public class ActionInsertIntervention extends InsertNodeAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		doInsert(new CommandInsertNode(Node.TYPE_INTERVENTION));
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Insert an Intervention node");
 	}
 
 	public boolean shouldBeEnabled()

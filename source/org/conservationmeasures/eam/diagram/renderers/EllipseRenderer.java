@@ -33,7 +33,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Dimension;

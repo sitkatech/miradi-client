@@ -17,7 +17,7 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
-import org.conservationmeasures.eam.diagram.nodes.RectangleRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -42,6 +42,11 @@ public class ActionInsertThreat extends InsertNodeAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		doInsert(new CommandInsertNode(Node.TYPE_THREAT));
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Insert a Threat node");
 	}
 
 	public boolean shouldBeEnabled()

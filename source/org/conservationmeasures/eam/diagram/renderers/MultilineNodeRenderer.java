@@ -34,7 +34,7 @@
  */
 
 
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

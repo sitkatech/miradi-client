@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 
-public class DiagramComponent extends JGraph implements ComponentWithContextMenu
+public class DiagramView extends JGraph implements ComponentWithContextMenu
 {
-	public DiagramComponent(MainWindow mainWindowToUse, DiagramModel model)
+	public DiagramView(MainWindow mainWindowToUse, DiagramModel model)
 	{
 		super(model);
 		mainWindow = mainWindowToUse;

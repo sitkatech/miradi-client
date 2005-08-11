@@ -20,7 +20,7 @@ import org.jgraph.event.GraphSelectionListener;
 
 public class MouseHandler implements MouseListener, GraphSelectionListener
 {
-	public MouseHandler(DiagramComponent owner)
+	public MouseHandler(DiagramView owner)
 	{
 		diagram = owner;
 	}
@@ -118,7 +118,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		selectedCells = diagram.getSelectionCells();
 	}
 
-	DiagramComponent diagram;
+	DiagramView diagram;
 	Point dragStartedAt;
 	Object[] selectedCells;
 }

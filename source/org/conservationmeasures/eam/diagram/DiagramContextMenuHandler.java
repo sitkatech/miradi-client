@@ -32,7 +32,7 @@ import org.martus.swing.UiPopupMenu;
 
 public class DiagramContextMenuHandler
 {
-	public DiagramContextMenuHandler(DiagramComponent diagramComponentToUse)
+	public DiagramContextMenuHandler(DiagramView diagramComponentToUse)
 	{
 		diagramComponent = diagramComponentToUse;
 	}
@@ -90,5 +90,5 @@ public class DiagramContextMenuHandler
 		return diagramComponent.getMainWindow();
 	}
 	
-	DiagramComponent diagramComponent;
+	DiagramView diagramComponent;
 }

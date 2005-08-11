@@ -15,9 +15,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.diagram.nodes.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeGoal;
+import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -42,6 +42,11 @@ public class ActionInsertGoal extends InsertNodeAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		doInsert(new CommandInsertNode(Node.TYPE_GOAL));
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Insert a Goal node");
 	}
 
 	public boolean shouldBeEnabled()
