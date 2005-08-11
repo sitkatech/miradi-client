@@ -13,6 +13,7 @@ import javax.swing.Action;
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
@@ -81,18 +82,20 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	}
 	private void installKeyBindings()
 	{
-		Action helpAction = new ActionContextualHelp(mainWindow.getProject());
+		Action helpAction = mainWindow.getActions().get(ActionContextualHelp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-		Action undoAction = new ActionUndo(mainWindow.getProject());
+		Action undoAction = mainWindow.getActions().get(ActionUndo.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
-		Action redoAction = new ActionRedo(mainWindow.getProject());
+		Action redoAction = mainWindow.getActions().get(ActionRedo.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
-		Action cutAction = new ActionCut(mainWindow.getProject());
+		Action cutAction = mainWindow.getActions().get(ActionCut.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
-		Action copyAction = new ActionCopy(mainWindow.getProject());
+		Action copyAction = mainWindow.getActions().get(ActionCopy.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
-		Action pasteAction = new ActionPaste(mainWindow.getProject());
+		Action pasteAction = mainWindow.getActions().get(ActionPaste.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
+		Action deleteAction = mainWindow.getActions().get(ActionDelete.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 	}
 	
 	public static String cardName()

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.diagram;
 
 import javax.swing.JButton;
 import javax.swing.JToolBar;

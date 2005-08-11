@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.UiScrollPane;
