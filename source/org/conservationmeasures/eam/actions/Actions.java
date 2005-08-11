@@ -20,7 +20,7 @@ public class Actions
 		actions = new HashMap();
 		
 		BaseProject project = mainWindow.getProject();
-		registerAction(new ActionAbout(project));
+		registerAction(new ActionAbout());
 		registerAction(new ActionContextualHelp(project));
 		registerAction(new ActionCopy(project));
 		registerAction(new ActionCut(project));
@@ -41,9 +41,9 @@ public class Actions
 		updateActionStates();
 	}
 	
-	public ProjectAction get(Class c)
+	public EAMAction get(Class c)
 	{
-		return (ProjectAction)actions.get(c);
+		return (EAMAction)actions.get(c);
 	}
 
 	public void updateActionStates()
@@ -52,12 +52,12 @@ public class Actions
 		Iterator iter = actualActions.iterator();
 		while(iter.hasNext())
 		{
-			ProjectAction action = (ProjectAction)iter.next();
+			EAMAction action = (EAMAction)iter.next();
 			action.setEnabled(action.shouldBeEnabled());
 		}
 	}
 	
-	void registerAction(ProjectAction action)
+	void registerAction(EAMAction action)
 	{
 		actions.put(action.getClass(), action);
 	}

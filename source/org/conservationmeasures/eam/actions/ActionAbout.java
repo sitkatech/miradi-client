@@ -8,15 +8,14 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
 
-public class ActionAbout extends ProjectAction
+public class ActionAbout extends EAMAction
 {
-	public ActionAbout(BaseProject projectToUse)
+	public ActionAbout()
 	{
-		super(projectToUse, getLabel());
+		super(getLabel());
 	}
 
 	private static String getLabel()

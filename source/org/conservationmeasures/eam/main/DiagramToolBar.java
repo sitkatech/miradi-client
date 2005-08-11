@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.main;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JToolBar;
 
@@ -23,7 +19,7 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.ProjectAction;
+import org.conservationmeasures.eam.actions.EAMAction;
 
 public class DiagramToolBar extends JToolBar
 {
@@ -44,7 +40,7 @@ public class DiagramToolBar extends JToolBar
 		addButtonForAction(actions.get(ActionDelete.class));
 	}
 	
-	void addButtonForAction(ProjectAction action)
+	void addButtonForAction(EAMAction action)
 	{
 		ToolBarButton button = new ToolBarButton(action);
 		add(button);
@@ -52,22 +48,9 @@ public class DiagramToolBar extends JToolBar
 	
 }
 
-class ActionStub extends AbstractAction
-{
-	public ActionStub(String imagePath)
-	{
-		super(imagePath, new ImageIcon(imagePath));
-	}
-
-	public void actionPerformed(ActionEvent ae)
-	{
-		EAM.logWarning("ActionStub: " + getClass());
-	}
-}
-
 class ToolBarButton extends JButton
 {
-	public ToolBarButton(ProjectAction action)
+	public ToolBarButton(EAMAction action)
 	{
 		super(action);
 		setText("");
