@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -50,11 +51,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		addWindowListener(new WindowEventHandler());
 
-		activateNoProjectView();
+		viewHolder = new JPanel();
+		viewHolder.setLayout(new CardLayout());
+		viewHolder.add(createNoProjectView(), "No project");
+		viewHolder.add(createDiagramView(), "Diagram");
+		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		setVisible(true);
 	}
 
-	private void activateNoProjectView()
+	private JComponent createNoProjectView()
 	{
 		// TODO: There *MUST* be a simpler way to center this view!
 		NoProjectView noProjectView = new NoProjectView(this);
@@ -71,7 +76,19 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		centerVertically.add(centerHorizontally);
 		centerVertically.add(Box.createHorizontalGlue());
 		
-		setCurrentView(centerVertically);
+		return centerVertically;
+	}
+	
+	private JComponent createDiagramView()
+	{
+		diagramComponent = new DiagramView(this, project.getDiagramModel());
+		return new UiScrollPane(diagramComponent);
+	}
+	
+	private void setCurrentView(String name)
+	{
+		CardLayout layout = (CardLayout)viewHolder.getLayout();
+		layout.show(viewHolder, name);
 	}
 
 	public Project getProject()
@@ -96,16 +113,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void loadProject(File projectFile)
 	{
-		clearCurrentView();
-		
 		try
 		{
 			mainToolBar = new DiagramToolBar(actions);
 			toolBarBox.removeAll();
 			toolBarBox.add(mainToolBar);
 
-			diagramComponent = new DiagramView(this, project.getDiagramModel());
-			setCurrentView(new UiScrollPane(diagramComponent));
+			setCurrentView("Diagram");
 			
 			project.load(this, projectFile);
 			validate();
@@ -124,14 +138,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	}
 
-	private void clearCurrentView()
-	{
-		if(currentView != null)
-		{
-			getContentPane().remove(currentView);
-		}
-	}
-	
 	public void recordCommand(Command command)
 	{
 		project.recordCommand(command);
@@ -151,12 +157,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 	}
 	
-	private void setCurrentView(JComponent view)
-	{
-		currentView = view;
-		getContentPane().add(currentView);
-	}
-	
 	private void updateTitle()
 	{
 		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getName());
@@ -170,10 +170,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 
-	Actions actions;
-	Project project;
-	JComponent currentView;
-	DiagramView diagramComponent;
+	private Actions actions;
+	private Project project;
+	private DiagramView diagramComponent;
+	private JPanel viewHolder;
 	private JPanel toolBarBox;
 	private DiagramToolBar mainToolBar;
 	private MainMenuBar mainMenuBar;
