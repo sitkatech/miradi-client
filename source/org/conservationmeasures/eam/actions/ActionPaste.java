@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
@@ -19,7 +20,13 @@ public class ActionPaste extends ProjectAction
 {
 	public ActionPaste(BaseProject projectToUse)
 	{
+		this(projectToUse, new Point(0,0));
+	}
+	
+	public ActionPaste(BaseProject projectToUse, Point startPointToUse)
+	{
 		super(projectToUse, getLabel(), "icons/paste.gif");
+		startPoint = startPointToUse;	
 	}
 
 	private static String getLabel()
@@ -36,7 +43,8 @@ public class ActionPaste extends ProjectAction
 			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 				return;
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-			getProject().pasteCellsIntoProject(list);
+			
+			getProject().pasteCellsIntoProject(list, startPoint);
 
 		} 
 		catch (Exception e) 
@@ -51,4 +59,5 @@ public class ActionPaste extends ProjectAction
 		return EAM.text("TT|Paste the clipboard");
 	}
 
+	private Point startPoint;
 }

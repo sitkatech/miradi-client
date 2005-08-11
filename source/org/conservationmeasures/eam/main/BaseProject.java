@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,6 +13,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
@@ -64,7 +66,7 @@ public class BaseProject
 		fireCommandExecuted(command);
 	}
 	
-	public void pasteCellsIntoProject(TransferableEamList list) throws CommandFailedException 
+	public void pasteCellsIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException 
 	{
 		NodeData[] nodes = list.getNodeDataCells();
 		LinkageData[] links = list.getLinkageDataCells();
@@ -79,6 +81,8 @@ public class BaseProject
 			nodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
 			executeCommand(newNodeText);
+			CommandDiagramMove move = new CommandDiagramMove(startPoint.x, startPoint.y, new int[]{newNodeId});
+			executeCommand(move);
 			//TODO: fix its inital location
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
 		}
@@ -86,8 +90,19 @@ public class BaseProject
 		for (int i = 0; i < links.length; i++) 
 		{
 			LinkageData linkageData = links[i];
-			int newFromId = ((Integer)nodeIds.get(new Integer(linkageData.getFromNodeId()))).intValue();
-			int newToId = ((Integer)nodeIds.get(new Integer(linkageData.getToNodeId()))).intValue();
+			
+			int originalFromNodeId = linkageData.getFromNodeId();
+			int newFromId = originalFromNodeId;
+			Object object = nodeIds.get(new Integer(originalFromNodeId));
+			if(object != null)
+				newFromId = ((Integer)object).intValue();
+				
+			int originalToNodeId = linkageData.getToNodeId();
+			int newToId = originalToNodeId;
+			object = nodeIds.get(new Integer(originalToNodeId));
+			if(object != null)
+				newToId = ((Integer)object).intValue();
+			
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());

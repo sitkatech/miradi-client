@@ -51,7 +51,7 @@ public class DiagramContextMenuHandler
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionCut(project)));
 		menu.add(new JMenuItem(new ActionCopy(project)));
-		menu.add(new JMenuItem(new ActionPaste(project)));
+		menu.add(new JMenuItem(new ActionPaste(project, menuInvokedAt)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(new ActionDelete(project)));
 		menu.add(new JMenuItem(new ActionSelectAll(project)));
