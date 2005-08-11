@@ -106,7 +106,7 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 				{
 					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(selectedCellsWithLinkages.contains(link))
+					if(!selectedCellsWithLinkages.contains(link))
 						selectedCellsWithLinkages.add(link);
 				}
 				selectedCellsWithLinkages.add(cell);
