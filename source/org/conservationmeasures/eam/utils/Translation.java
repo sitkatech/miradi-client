@@ -16,6 +16,11 @@ public class Translation
 	{
 		return currentTranslationLocale;
 	}
+	
+	public static void restoreDefaultLocale()
+	{
+		currentTranslationLocale = new Locale("en", "US");
+	}
 
 	public static void setTranslationLocale(Locale locale)
 	{
