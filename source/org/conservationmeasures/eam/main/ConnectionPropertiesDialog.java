@@ -88,7 +88,7 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 			{
 				String title = EAM.text("Must Choose a Node");
 				String body = EAM.text("You must choose a node in each of the two lists");
-				mainWindow.okDialog(title, new String[] {body});
+				EAM.okDialog(title, new String[] {body});
 				toFront();
 				return;
 			}

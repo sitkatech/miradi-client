@@ -9,6 +9,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import org.conservationmeasures.eam.actions.TestEnableDisable;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
@@ -77,6 +78,9 @@ public class MainTests extends TestCase
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
+		
+		// actions package
+		suite.addTest(new TestSuite(TestEnableDisable.class));
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));

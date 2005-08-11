@@ -35,7 +35,7 @@ public class ActionAbout extends MainWindowAction
 			EAM.text(description),
 			EAM.text(contact),
 		};
-		getMainWindow().okDialog(title, body);
+		EAM.okDialog(title, body);
 		
 	}
 

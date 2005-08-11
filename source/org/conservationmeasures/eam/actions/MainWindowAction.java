@@ -47,7 +47,7 @@ public abstract class MainWindowAction extends AbstractAction
 		catch (CommandFailedException e)
 		{
 			EAM.logException(e);
-			getMainWindow().errorDialog(EAM.text("An internal error prevented this operation"));
+			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
 		}
 		
 	}

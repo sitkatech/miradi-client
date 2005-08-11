@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.martus.swing.UiNotifyDlg;
 import org.martus.swing.UiScrollPane;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
@@ -136,23 +135,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void recordCommand(Command command)
 	{
 		project.recordCommand(command);
-	}
-	
-	public void errorDialog(String errorMessage)
-	{
-		okDialog("Error", new String[] {errorMessage});
-	}
-	
-	public void okDialog(String title, String[] body)
-	{
-		new UiNotifyDlg(this, title, body, new String[] {EAM.text("Button|OK")});
-	}
-	
-	public boolean confirmDialog(String title, String[] body)
-	{
-		String[] buttons = { EAM.text("Button|Overwrite"), EAM.text("Button|Cancel") };
-		UiNotifyDlg dlg = new UiNotifyDlg(this, title, body, buttons);
-		return (dlg.getResult().equals(buttons[0]));
 	}
 	
 	public void exitNormally()

@@ -11,6 +11,7 @@ import javax.swing.UIManager;
 
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.utils.Translation;
+import org.martus.swing.UiNotifyDlg;
 
 public class EAM
 {
@@ -22,7 +23,7 @@ public class EAM
 			setBestLookAndFeel();
 			VersionConstants.setVersionString();
 	
-			MainWindow mainWindow = new MainWindow();
+			mainWindow = new MainWindow();
 			mainWindow.start();
 		}
 		catch(Exception e)
@@ -103,6 +104,27 @@ public class EAM
 
 	
 	///////////////////////////////////////////////////////////////////
+	// Dialogs
+
+	public static void errorDialog(String errorMessage)
+	{
+		okDialog("Error", new String[] {errorMessage});
+	}
+
+	public static void okDialog(String title, String[] body)
+	{
+		new UiNotifyDlg(mainWindow, title, body, new String[] {text("Button|OK")});
+	}
+
+	public static boolean confirmDialog(String title, String[] body)
+	{
+		String[] buttons = { text("Button|Overwrite"), text("Button|Cancel") };
+		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
+		return (dlg.getResult().equals(buttons[0]));
+	}
+
+	///////////////////////////////////////////////////////////////////
 
 	public static String NEWLINE = System.getProperty("line.separator");
+	public static MainWindow mainWindow;
 }

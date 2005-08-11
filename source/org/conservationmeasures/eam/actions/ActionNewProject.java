@@ -41,7 +41,7 @@ public class ActionNewProject extends MainWindowAction
 		{
 			String title = EAM.text("Title|Overwrite existing project?");
 			String[] body = {EAM.text("This will replace the existing project with a new, empty project")};
-			if(!getMainWindow().confirmDialog(title, body))
+			if(!EAM.confirmDialog(title, body))
 				return;
 			
 			chosen.delete();
