@@ -71,12 +71,12 @@ public class TransferableEamList implements Transferable
 	
 	public LinkageData[] getLinkageDataCells()
 	{
-		return (LinkageData[])linkages.toArray(new LinkageData[linkages.size()]);
+		return (LinkageData[])linkages.toArray(new LinkageData[0]);
 	}
 	
 	public NodeData[] getNodeDataCells()
 	{
-		return (NodeData[])nodes.toArray(new NodeData[nodes.size()]);
+		return (NodeData[])nodes.toArray(new NodeData[0]);
 	}
 
 	static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
