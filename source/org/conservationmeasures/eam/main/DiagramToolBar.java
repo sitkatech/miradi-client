@@ -15,6 +15,10 @@ import javax.swing.JToolBar;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
@@ -26,6 +30,11 @@ public class DiagramToolBar extends JToolBar
 	public DiagramToolBar(Actions actions)
 	{
 		setFloatable(false);
+		addButtonForAction(actions.get(ActionInsertGoal.class));
+		addButtonForAction(actions.get(ActionInsertThreat.class));
+		addButtonForAction(actions.get(ActionInsertIntervention.class));
+		addButtonForAction(actions.get(ActionInsertConnection.class));
+		addSeparator();
 		addButtonForAction(actions.get(ActionUndo.class));
 		addButtonForAction(actions.get(ActionRedo.class));
 		addSeparator();

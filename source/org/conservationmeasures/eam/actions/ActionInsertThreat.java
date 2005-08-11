@@ -55,7 +55,7 @@ class InsertThreatIcon implements Icon
 {
 	public int getIconHeight()
 	{
-		return 12;
+		return 16;
 	}
 
 	public int getIconWidth()
@@ -65,7 +65,7 @@ class InsertThreatIcon implements Icon
 
 	public void paintIcon(Component sample, Graphics g, int x, int y)
 	{
-		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight());
+		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight() * 3 / 4);
 		Color color = new NodeTypeThreat().getColor();
 		RectangleRenderer renderer = new RectangleRenderer();
 		renderer.fillShape(g, rect, color);

@@ -22,6 +22,7 @@ public abstract class InsertNodeAction extends MainWindowAction
 	public InsertNodeAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{
 		super(mainWindowToUse, label, icon);
+		createAt = new Point(0,0);
 	}
 	
 	public void setInvocationPoint(Point location)
