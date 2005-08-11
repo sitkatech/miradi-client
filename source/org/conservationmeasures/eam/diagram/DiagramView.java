@@ -14,6 +14,9 @@ import java.util.Vector;
 import javax.swing.Action;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
@@ -85,9 +88,15 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
 		Action redoAction = new ActionRedo(mainWindow);
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
+		Action cutAction = new ActionCut(mainWindow);
+		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
+		Action copyAction = new ActionCopy(mainWindow);
+		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
+		Action pasteAction = new ActionPaste(mainWindow);
+		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
 	}
 	
-	public Vector getAllSelectedCellsWithLinkages() 
+	public Vector getSelectedCellsWithLinkages() 
 	{
 		Object[] selectedCells = getSelectionCells();
 		return getAllSelectedCellsWithLinkages(selectedCells, mainWindow.getProject().getDiagramModel());

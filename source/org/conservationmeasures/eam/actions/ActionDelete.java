@@ -36,7 +36,7 @@ public class ActionDelete extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		Vector selectedRelatedCells = getMainWindow().getDiagramComponent().getAllSelectedCellsWithLinkages();
+		Vector selectedRelatedCells = getMainWindow().getDiagramComponent().getSelectedCellsWithLinkages();
 		
 		for(int i=0; i < selectedRelatedCells.size(); ++i)
 		{
