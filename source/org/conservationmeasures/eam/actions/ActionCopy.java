@@ -29,6 +29,11 @@ public class ActionCopy extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
+		preformCopy();
+	}
+
+	public void preformCopy() 
+	{
 		EAMGraphCell[] selectedCells = getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;

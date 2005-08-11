@@ -26,8 +26,10 @@ public class ActionCut extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		// TODO Auto-generated method stub
-
+		ActionCopy copy = new ActionCopy(mainWindow);
+		copy.preformCopy();
+		ActionDelete delete = new ActionDelete(mainWindow);
+		delete.preformDelete();
 	}
 
 	public String getToolTipText()

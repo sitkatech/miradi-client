@@ -34,6 +34,11 @@ public class ActionDelete extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
+		preformDelete();
+	}
+
+	public void preformDelete() throws CommandFailedException 
+	{
 		EAMGraphCell[] selectedRelatedCells = getSelectedAndRelatedCells();
 		
 		for(int i=0; i < selectedRelatedCells.length; ++i)
