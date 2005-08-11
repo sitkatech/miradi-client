@@ -14,12 +14,11 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionOpenProject extends ProjectAction
+public class ActionOpenProject extends MainWindowAction
 {
 	public ActionOpenProject(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), getLabel(), "icons/open.gif");
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse, getLabel(), "icons/open.gif");
 	}
 
 	private static String getLabel()
@@ -48,6 +47,4 @@ public class ActionOpenProject extends ProjectAction
 	{
 		return true;
 	}
-	
-	MainWindow mainWindow;
 }

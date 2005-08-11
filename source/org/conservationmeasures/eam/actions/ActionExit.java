@@ -11,12 +11,11 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionExit extends ProjectAction
+public class ActionExit extends MainWindowAction
 {
 	public ActionExit(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), getLabel());
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse, getLabel(), "icons/blankicon.png");
 	}
 
 	private static String getLabel()
@@ -33,6 +32,4 @@ public class ActionExit extends ProjectAction
 	{
 		return true;
 	}
-	
-	MainWindow mainWindow;
 }
