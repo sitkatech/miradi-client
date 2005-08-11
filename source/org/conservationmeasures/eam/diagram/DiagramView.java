@@ -90,6 +90,11 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	public Vector getAllSelectedCellsWithLinkages() 
 	{
 		Object[] selectedCells = getSelectionCells();
+		return getAllSelectedCellsWithLinkages(selectedCells);
+	}
+
+	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
+	{
 		Vector selectedCellsWithLinkages = new Vector();
 		for(int i=0; i < selectedCells.length; ++i)
 		{
