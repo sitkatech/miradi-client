@@ -73,11 +73,11 @@ public class BaseProject
 			NodeData nodeData = nodes[i];
 			int originalNodeId = nodeData.getId();
 			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
-			newNode.execute(this);
+			executeCommand(newNode);
 			int newNodeId = newNode.getId();
 			nodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
-			newNodeText.execute(this);
+			executeCommand(newNodeText);
 
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
 		}
