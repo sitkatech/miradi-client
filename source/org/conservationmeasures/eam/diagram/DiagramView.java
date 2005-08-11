@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Vector;
 
 import javax.swing.Action;
 
@@ -84,6 +87,35 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
 	}
 	
+	public Vector getAllRelatedSelectedCells() 
+	{
+		Object[] selectedCells = getSelectionCells();
+		Vector selectedRelatedCells = new Vector();
+		for(int i=0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isLinkage())
+			{
+				if(!selectedRelatedCells.contains(cell))
+					selectedRelatedCells.add(cell);
+			}
+			else if(cell.isNode())
+			{
+				DiagramModel model = mainWindow.getProject().getDiagramModel();
+				Set linkages = model.getLinkages((Node)cell);
+				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+				{
+					EAMGraphCell link = (EAMGraphCell) iter.next();
+					if(selectedRelatedCells.contains(link))
+						selectedRelatedCells.add(link);
+				}
+				selectedRelatedCells.addAll(linkages);
+				selectedRelatedCells.add(cell);
+			}
+		}
+		return selectedRelatedCells;
+	}
+
 	MainWindow mainWindow;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 }

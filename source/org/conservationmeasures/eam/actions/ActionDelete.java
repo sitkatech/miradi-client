@@ -7,9 +7,6 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
@@ -17,7 +14,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramView;
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -40,38 +36,23 @@ public class ActionDelete extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		DiagramModel model = getMainWindow().getProject().getDiagramModel();
-		Object[] selectedCells = getMainWindow().getDiagramComponent().getSelectionCells();
-
-		Set linkages = new HashSet();
-		Vector nodes = new Vector();
-		for(int i=0; i < selectedCells.length; ++i)
+		Vector selectedRelatedCells = getMainWindow().getDiagramComponent().getAllRelatedSelectedCells();
+		
+		for(int i=0; i < selectedRelatedCells.size(); ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			EAMGraphCell cell = (EAMGraphCell)selectedRelatedCells.get(i);
 			if(cell.isLinkage())
-			{
-				if(!linkages.contains(cell))
-					linkages.add(cell);
-			}
-			else if(cell.isNode())
-			{
-				linkages.addAll(model.getLinkages((Node)cell));
-				nodes.add(cell);
-			}
+				deleteLinkage((Linkage)cell);	
 		}
-		
-		Iterator iter = linkages.iterator();
-		while(iter.hasNext())
+
+		for(int i=0; i < selectedRelatedCells.size(); ++i)
 		{
-			Linkage linkage = (Linkage)iter.next(); 
-			deleteLinkage(linkage);			
-		}
-		
-		for(int i=0; i < nodes.size(); ++i)
-		{
-			deleteNode((Node)nodes.get(i));			
+			EAMGraphCell cell = (EAMGraphCell)selectedRelatedCells.get(i);
+			if(cell.isNode())
+				deleteNode((Node)cell);
 		}
 	}
+
 	
 	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException
 	{
