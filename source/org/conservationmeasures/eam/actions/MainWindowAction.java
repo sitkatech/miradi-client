@@ -87,5 +87,14 @@ public abstract class MainWindowAction extends AbstractAction
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 
+	protected EAMGraphCell[] getOnlySelectedCells()
+	{
+		Object[] rawCells = mainWindow.getDiagramComponent().getSelectionCells();
+		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
+		for(int i=0; i < cells.length; ++i)
+			cells[i] = (EAMGraphCell)rawCells[i];
+		return cells;
+	}
+
 	MainWindow mainWindow;
 }

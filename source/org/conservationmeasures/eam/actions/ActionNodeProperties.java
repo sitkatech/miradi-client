@@ -34,7 +34,7 @@ public class ActionNodeProperties extends MainWindowAction
 
 	public void editProperties() throws CommandFailedException 
 	{
-		EAMGraphCell[] selected = getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getOnlySelectedCells();
 		if(selected.length != 1)
 			return;
 		if(!selected[0].isNode())
