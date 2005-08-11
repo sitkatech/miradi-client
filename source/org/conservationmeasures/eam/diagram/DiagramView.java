@@ -118,6 +118,11 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		}
 		return selectedCellsWithLinkages;
 	}
+	
+	public static String cardName()
+	{
+		return "Diagram";
+	}
 
 	MainWindow mainWindow;
 	DiagramContextMenuHandler diagramContextMenuHandler;

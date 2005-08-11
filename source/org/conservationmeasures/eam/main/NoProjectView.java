@@ -40,5 +40,10 @@ public class NoProjectView extends JPanel
 		add(exitText);
 		layout.adjustSizes(this);
 	}
+	
+	public static String cardName()
+	{
+		return "No project";
+	}
 }
 

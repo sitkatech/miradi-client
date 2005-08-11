@@ -53,22 +53,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
-		viewHolder.add(createNoProjectView(), "No project");
-		viewHolder.add(createDiagramView(), "Diagram");
+		viewHolder.add(createCenteredView(new NoProjectView(this)), NoProjectView.cardName());
+		viewHolder.add(createDiagramView(), DiagramView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		setVisible(true);
 	}
 
-	private JComponent createNoProjectView()
+	private JComponent createCenteredView(JComponent viewToCenter)
 	{
 		// TODO: There *MUST* be a simpler way to center this view!
-		NoProjectView noProjectView = new NoProjectView(this);
-		noProjectView.setAlignmentX(0.5f);
-		noProjectView.setAlignmentY(0.5f);
+		viewToCenter.setAlignmentX(0.5f);
+		viewToCenter.setAlignmentY(0.5f);
 		
 		Box centerHorizontally = Box.createVerticalBox();
 		//centerHorizontally.setBorder(new LineBorder(Color.RED));
-		centerHorizontally.add(noProjectView);
+		centerHorizontally.add(viewToCenter);
 		
 		Box centerVertically = Box.createHorizontalBox();
 		//centerVertically.setBorder(new LineBorder(Color.YELLOW));
