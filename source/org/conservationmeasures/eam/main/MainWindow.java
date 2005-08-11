@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -47,8 +49,19 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 
 		addWindowListener(new WindowEventHandler());
 
-		setCurrentView(new NoProjectView(this));
+		activateNoProjectView();
 		setVisible(true);
+	}
+
+	private void activateNoProjectView()
+	{
+		NoProjectView noProjectView = new NoProjectView(this);
+		JPanel containerForCentering = new JPanel();
+		containerForCentering.setBorder(new LineBorder(Color.RED));
+		containerForCentering.add(noProjectView, BorderLayout.CENTER);
+		noProjectView.setAlignmentX(0.5f);
+		noProjectView.setAlignmentY(0.5f);
+		setCurrentView(containerForCentering);
 	}
 
 	public Project getProject()
@@ -82,7 +95,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 			toolBarBox.add(mainToolBar);
 
 			diagramComponent = new DiagramComponent(this, project.getDiagramModel());
-			setCurrentView(diagramComponent);
+			setCurrentView(new UiScrollPane(diagramComponent));
 			
 			project.load(this, projectFile);
 			validate();
@@ -143,7 +156,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 	
 	private void setCurrentView(JComponent view)
 	{
-		currentView = new UiScrollPane(view);
+		currentView = view;
 		getContentPane().add(currentView);
 	}
 	
@@ -162,7 +175,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener
 
 	Actions actions;
 	Project project;
-	UiScrollPane currentView;
+	JComponent currentView;
 	DiagramComponent diagramComponent;
 	private JPanel toolBarBox;
 	private DiagramToolBar mainToolBar;

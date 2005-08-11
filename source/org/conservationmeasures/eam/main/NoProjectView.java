@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.main;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionNewProject;
@@ -17,6 +18,8 @@ public class NoProjectView extends JPanel
 {
 	public NoProjectView(MainWindow mainWindow)
 	{
+		setBorder(new LineBorder(getForeground()));
+
 		JButton openButton = new JButton(mainWindow.getActions().get(ActionOpenProject.class));
 		JLabel openText = new JLabel(EAM.text("Open an existing project"));
 		
