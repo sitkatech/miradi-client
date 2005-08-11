@@ -7,9 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Vector;
 
 import javax.swing.Action;
 
@@ -94,38 +91,6 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
 		Action pasteAction = new ActionPaste(mainWindow);
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
-	}
-	
-	public Vector getSelectedCellsWithLinkages() 
-	{
-		Object[] selectedCells = getSelectionCells();
-		return getAllSelectedCellsWithLinkages(selectedCells, mainWindow.getProject().getDiagramModel());
-	}
-
-	static public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells, DiagramModel model) 
-	{
-		Vector selectedCellsWithLinkages = new Vector();
-		for(int i=0; i < selectedCells.length; ++i)
-		{
-			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
-			if(cell.isLinkage())
-			{
-				if(!selectedCellsWithLinkages.contains(cell))
-					selectedCellsWithLinkages.add(cell);
-			}
-			else if(cell.isNode())
-			{
-				Set linkages = model.getLinkages((Node)cell);
-				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
-				{
-					EAMGraphCell link = (EAMGraphCell) iter.next();
-					if(!selectedCellsWithLinkages.contains(link))
-						selectedCellsWithLinkages.add(link);
-				}
-				selectedCellsWithLinkages.add(cell);
-			}
-		}
-		return selectedCellsWithLinkages;
 	}
 	
 	public static String cardName()

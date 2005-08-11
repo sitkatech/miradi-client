@@ -34,12 +34,12 @@ public class ActionDelete extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		preformDelete();
+		performDelete();
 	}
 
-	public void preformDelete() throws CommandFailedException 
+	public void performDelete() throws CommandFailedException 
 	{
-		EAMGraphCell[] selectedRelatedCells = getSelectedAndRelatedCells();
+		EAMGraphCell[] selectedRelatedCells = getProject().getSelectedAndRelatedCells();
 		
 		for(int i=0; i < selectedRelatedCells.length; ++i)
 		{
@@ -92,7 +92,7 @@ public class ActionDelete extends ProjectAction
 
 		// TODO: Note that changing the selection DOESN'T currently 
 		// call this method
-		EAMGraphCell[] selected = getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 

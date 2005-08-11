@@ -29,12 +29,12 @@ public class ActionCopy extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		preformCopy();
+		performCopy();
 	}
 
-	public void preformCopy() 
+	public void performCopy() 
 	{
-		EAMGraphCell[] selectedCells = getSelectedAndRelatedCells();
+		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;
 		TransferableEamList eamList = new TransferableEamList(selectedCells);

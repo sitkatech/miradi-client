@@ -6,10 +6,13 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -139,7 +142,47 @@ public class BaseProject
 		selectionModel = selectionModelToUse;
 	}
 	
-	
+	public EAMGraphCell[] getSelectedAndRelatedCells()
+	{
+		Object[] selectedCells = selectionModel.getSelectionCells();
+		Vector cellVector = BaseProject.getAllSelectedCellsWithLinkages(selectedCells, getDiagramModel());
+		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
+	}
+
+	public EAMGraphCell[] getOnlySelectedCells()
+	{
+		Object[] rawCells = selectionModel.getSelectionCells();
+		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
+		for(int i=0; i < cells.length; ++i)
+			cells[i] = (EAMGraphCell)rawCells[i];
+		return cells;
+	}
+
+	static public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells, DiagramModel model) 
+	{
+		Vector selectedCellsWithLinkages = new Vector();
+		for(int i=0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
+			if(cell.isLinkage())
+			{
+				if(!selectedCellsWithLinkages.contains(cell))
+					selectedCellsWithLinkages.add(cell);
+			}
+			else if(cell.isNode())
+			{
+				Set linkages = model.getLinkages((Node)cell);
+				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+				{
+					EAMGraphCell link = (EAMGraphCell) iter.next();
+					if(!selectedCellsWithLinkages.contains(link))
+						selectedCellsWithLinkages.add(link);
+				}
+				selectedCellsWithLinkages.add(cell);
+			}
+		}
+		return selectedCellsWithLinkages;
+	}
 
 	Storage storage;
 	DiagramModel diagramModel;

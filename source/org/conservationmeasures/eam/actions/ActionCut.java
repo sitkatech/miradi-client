@@ -27,9 +27,9 @@ public class ActionCut extends ProjectAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		ActionCopy copy = new ActionCopy(mainWindow);
-		copy.preformCopy();
+		copy.performCopy();
 		ActionDelete delete = new ActionDelete(mainWindow);
-		delete.preformDelete();
+		delete.performDelete();
 	}
 
 	public String getToolTipText()
