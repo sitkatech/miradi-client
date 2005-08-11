@@ -43,11 +43,11 @@ public class TestNode extends EAMTestCase
 	
 	public void testIds()
 	{
-		Node node = new Node(Node.TYPE_THREAT);
+		Node testNode = new Node(Node.TYPE_THREAT);
 		assertEquals(Node.INVALID_ID,node.getId());
 		int id = 23;
 		node.setId(id);
-		assertEquals(id, node.getId());
+		assertEquals(id, testNode.getId());
 	}
 	
 	public void testColors()

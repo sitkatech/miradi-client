@@ -99,7 +99,7 @@ public class Storage
 		addCommand(command);
 	}
 
-	private void addCommand(Command command) throws IOException
+	private void addCommand(Command command)
 	{
 		commands.add(command);
 	}
