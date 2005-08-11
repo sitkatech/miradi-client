@@ -73,7 +73,10 @@ public class ActionInsertConnection extends ProjectAction
 
 	public boolean shouldBeEnabled()
 	{
-		return getProject().isOpen();
+		if(!getProject().isOpen())
+			return false;
+		
+		return (getProject().getDiagramModel().getCellCount() >= 2);
 	}
 	
 }

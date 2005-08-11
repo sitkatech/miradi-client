@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestEnableDisable extends EAMTestCase
@@ -16,18 +16,34 @@ public class TestEnableDisable extends EAMTestCase
 		super(name);
 	}
 	
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		mainWindow = new MainWindow();
-	}
-
 	public void testInsertConnection()
 	{
-		ActionInsertConnection action = new ActionInsertConnection(mainWindow.getProject());
-		assertFalse("Enabled when no project open?", action.shouldBeEnabled());
-		EAM.logError("TestEnableDisable.testInsertConnection needs more tests");
+		OpenableProject project = new OpenableProject();
+		ActionInsertConnection action = new ActionInsertConnection(project);
+
+		assertFalse("enabled when no project open?", action.shouldBeEnabled());
+		project.setIsOpen(true);
+		assertFalse("Enabled when no nodes in the system?", action.shouldBeEnabled());
+		project.insertNodeAtId(Node.TYPE_GOAL, Node.INVALID_ID);
+		assertFalse("Enabled when only 1 node?", action.shouldBeEnabled());
+		project.insertNodeAtId(Node.TYPE_THREAT, Node.INVALID_ID);
+		assertTrue("not enabled when 2 nodes?", action.shouldBeEnabled());
+		
 	}
 
-	MainWindow mainWindow;
+}
+
+class OpenableProject extends BaseProject
+{
+	public boolean isOpen()
+	{
+		return isOpenFlag;
+	}
+	
+	public void setIsOpen(boolean newValue)
+	{
+		isOpenFlag = newValue;
+	}
+	
+	boolean isOpenFlag;
 }
