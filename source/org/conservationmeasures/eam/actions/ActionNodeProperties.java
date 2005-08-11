@@ -19,7 +19,7 @@ public class ActionNodeProperties extends MainWindowAction
 {
 	public ActionNodeProperties(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "icons/edit.gif");
 	}
 
 	private static String getLabel()
