@@ -40,25 +40,41 @@ abstract public class UmbrellaView extends JPanel
 		return getMainWindow().getActions();
 	}
 	
-	public About getAboutDoer()
+	////////////////////////////////////////////////////////////
+	// these doers are available in this class
+	
+	public Doer getAboutDoer()
 	{
 		return new About();
 	}
 	
-	public NewProject getNewProjectDoer()
+	public Doer getNewProjectDoer()
 	{
 		return new NewProject(getMainWindow());
 	}
 	
-	public OpenProject getOpenProjectDoer()
+	public Doer getOpenProjectDoer()
 	{
 		return new OpenProject(getMainWindow());
 	}
 	
-	public Exit getExitDoer()
+	public Doer getExitDoer()
 	{
 		return new Exit(getMainWindow());
 	}
+	
+	public Doer getUndoDoer()
+	{
+		return new Undo(getProject());
+	}
+	
+	public Doer getRedoDoer()
+	{
+		return new Redo(getProject());
+	}
+	
+	////////////////////////////////////////////////////////////
+	// these doers are not available in this class
 	
 	public Doer getInsertGoalDoer(Point invocationPoint)
 	{
@@ -96,6 +112,11 @@ abstract public class UmbrellaView extends JPanel
 	}
 	
 	public Doer getPasteDoer(Point invocationPoint)
+	{
+		return nullDoer;
+	}
+	
+	public Doer getNodePropertiesDoer()
 	{
 		return nullDoer;
 	}

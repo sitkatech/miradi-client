@@ -76,5 +76,10 @@ public class DiagramView extends UmbrellaView
 		return new Paste(getProject(), invocationPoint);
 	}
 	
+	public Doer getNodePropertiesDoer()
+	{
+		return new NodeProperties(getProject());
+	}
+	
 	DiagramComponent diagram;
 }

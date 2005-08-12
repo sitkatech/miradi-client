@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
+import org.conservationmeasures.eam.views.Doer;
 
-public class About
+public class About extends Doer
 {
 	public About()
 	{

@@ -7,11 +7,10 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ActionUndo extends MainWindowAction
 {
@@ -30,22 +29,14 @@ public class ActionUndo extends MainWindowAction
 		return EAM.text("TT|Undo last action");
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		CommandUndo command = new CommandUndo();
-		try
-		{
-			getProject().executeCommand(command);
-		}
-		catch(NothingToUndoException e)
-		{
-			// ignore it
-		}
+		view.getUndoDoer().doIt();
 	}
-	
-	public boolean shouldBeEnabled()
+
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		return (getProject().getIndexToUndo() >= 0);
+		return view.getUndoDoer().isAvailable();
 	}
 	
 }

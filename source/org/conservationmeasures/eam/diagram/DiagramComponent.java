@@ -43,7 +43,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
-		MouseHandler mouseHandler = new MouseHandler(this, actions);
+		MouseHandler mouseHandler = new MouseHandler(this, project, actions);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
 	}

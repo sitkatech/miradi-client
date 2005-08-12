@@ -10,20 +10,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.views.diagram.NodeProperties;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
 
 public class MouseHandler implements MouseListener, GraphSelectionListener
 {
-	public MouseHandler(DiagramComponent owner, Actions actionsToUse)
+	public MouseHandler(DiagramComponent owner, BaseProject projectToUse, Actions actionsToUse)
 	{
 		diagram = owner;
+		project = projectToUse;
 		actions = actionsToUse;
 	}
 	
@@ -96,8 +98,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		{
 			try 
 			{
-				ActionNodeProperties properties = (ActionNodeProperties)actions.get(ActionNodeProperties.class);
-				properties.editProperties();
+				new NodeProperties(project).doIt();
 			} 
 			catch (CommandFailedException e) 
 			{
@@ -120,6 +121,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		selectedCells = diagram.getSelectionCells();
 	}
 
+	BaseProject project;
 	DiagramComponent diagram;
 	Actions actions;
 	Point dragStartedAt;
