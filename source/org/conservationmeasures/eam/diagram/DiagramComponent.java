@@ -17,33 +17,35 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.jgraph.JGraph;
 
-public class DiagramView extends JGraph implements ComponentWithContextMenu
+public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
-	public DiagramView(MainWindow mainWindowToUse)
+	public DiagramComponent(BaseProject projectToUse, Actions actions)
 	{
-		super(mainWindowToUse.getProject().getDiagramModel());
-		mainWindow = mainWindowToUse;
-		mainWindowToUse.getProject().setSelectionModel(getSelectionModel());
+		super(projectToUse.getDiagramModel());
+		project = projectToUse;
 
-		diagramContextMenuHandler = new DiagramContextMenuHandler(this);
 		getGraphLayoutCache().setFactory(new CellViewFactory());
-		installKeyBindings();
-		MouseHandler mouseHandler = new MouseHandler(this);
-		addMouseListener(mouseHandler);
-		addGraphSelectionListener(mouseHandler);
+
+		disableInPlaceEditing();
 		setDisconnectable(false);
 		setDisconnectOnMove(false);
-		disableInPlaceEditing();
 		setBendable(false);
+
+		installKeyBindings(actions);
+		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
+		MouseHandler mouseHandler = new MouseHandler(this, actions);
+		addMouseListener(mouseHandler);
+		addGraphSelectionListener(mouseHandler);
 	}
 
 	private void disableInPlaceEditing() 
@@ -51,11 +53,6 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 		setEditClickCount(0);
 	}
 
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
 	public DiagramModel getDiagramModel()
 	{
 		return (DiagramModel)getModel();
@@ -63,7 +60,7 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 	
 	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
 	{
-		mainWindow.getProject().recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
+		project.recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
 	}
 	
 	public void showContextMenu(MouseEvent e)
@@ -80,30 +77,26 @@ public class DiagramView extends JGraph implements ComponentWithContextMenu
 			return null;
 		return (Node)selectedCell;
 	}
-	private void installKeyBindings()
+	
+	private void installKeyBindings(Actions actions)
 	{
-		Action helpAction = mainWindow.getActions().get(ActionContextualHelp.class);
+		Action helpAction = actions.get(ActionContextualHelp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
-		Action undoAction = mainWindow.getActions().get(ActionUndo.class);
+		Action undoAction = actions.get(ActionUndo.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL, undoAction);
-		Action redoAction = mainWindow.getActions().get(ActionRedo.class);
+		Action redoAction = actions.get(ActionRedo.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL, redoAction);
-		Action cutAction = mainWindow.getActions().get(ActionCut.class);
+		Action cutAction = actions.get(ActionCut.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL, cutAction);
-		Action copyAction = mainWindow.getActions().get(ActionCopy.class);
+		Action copyAction = actions.get(ActionCopy.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL, copyAction);
-		Action pasteAction = mainWindow.getActions().get(ActionPaste.class);
+		Action pasteAction = actions.get(ActionPaste.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
-		Action deleteAction = mainWindow.getActions().get(ActionDelete.class);
+		Action deleteAction = actions.get(ActionDelete.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 	}
-	
-	public static String cardName()
-	{
-		return "Diagram";
-	}
 
-	MainWindow mainWindow;
+	BaseProject project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 }
 

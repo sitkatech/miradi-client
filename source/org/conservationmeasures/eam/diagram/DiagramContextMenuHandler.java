@@ -24,39 +24,35 @@ import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.InsertNodeAction;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 
 public class DiagramContextMenuHandler
 {
-	public DiagramContextMenuHandler(DiagramView diagramComponentToUse)
+	public DiagramContextMenuHandler(DiagramComponent diagramComponentToUse, Actions actionsToUse)
 	{
 		diagramComponent = diagramComponentToUse;
+		actions = actionsToUse;
 	}
 	
 	public UiPopupMenu getPopupMenu(Point menuInvokedAt)
 	{
-		MainWindow mainWindow = getMainWindow();
-		BaseProject project = mainWindow.getProject();
-		
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionUndo(project)));
-		menu.add(new JMenuItem(new ActionRedo(project)));
+		menu.add(new JMenuItem(actions.get(ActionUndo.class)));
+		menu.add(new JMenuItem(actions.get(ActionRedo.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionCut(project)));
-		menu.add(new JMenuItem(new ActionCopy(project)));
-		menu.add(new JMenuItem(new ActionPaste(project, menuInvokedAt)));
+		menu.add(new JMenuItem(actions.get(ActionCut.class)));
+		menu.add(new JMenuItem(actions.get(ActionCopy.class)));
+		menu.add(new JMenuItem(getConfiguredAction(ActionPaste.class, menuInvokedAt)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionDelete(project)));
-		menu.add(new JMenuItem(new ActionSelectAll(project)));
+		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
+		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(new ActionNodeProperties(project)));
+		menu.add(new JMenuItem(actions.get(ActionNodeProperties.class)));
 		return menu;
 	}
 
@@ -68,17 +64,16 @@ public class DiagramContextMenuHandler
 		insertMenu.add(getConfiguredAction(ActionInsertThreat.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
 		insertMenu.addSeparator();
-		insertMenu.add(new ActionInsertConnection(getMainWindow().getProject()));
+		insertMenu.add(actions.get(ActionInsertConnection.class));
 
 		return insertMenu;
 	}
 
-	private InsertNodeAction getConfiguredAction(Class c, Point menuInvokedAt)
+	private LocationAction getConfiguredAction(Class c, Point menuInvokedAt)
 	{
-		Actions actions = getMainWindow().getActions();
-		InsertNodeAction insertGoal = (InsertNodeAction)actions.get(c);
-		insertGoal.setInvocationPoint(menuInvokedAt);
-		return insertGoal;
+		LocationAction action = (LocationAction)actions.get(c);
+		action.setInvocationPoint(menuInvokedAt);
+		return action;
 	}
 
 	public void showContextMenu(MouseEvent e)
@@ -87,10 +82,6 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 
-	private MainWindow getMainWindow()
-	{
-		return diagramComponent.getMainWindow();
-	}
-	
-	DiagramView diagramComponent;
+	DiagramComponent diagramComponent;
+	Actions actions;
 }

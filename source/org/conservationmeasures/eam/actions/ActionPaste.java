@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
-public class ActionPaste extends ProjectAction
+public class ActionPaste extends LocationAction
 {
 	public ActionPaste(BaseProject projectToUse)
 	{
@@ -26,7 +26,7 @@ public class ActionPaste extends ProjectAction
 	public ActionPaste(BaseProject projectToUse, Point startPointToUse)
 	{
 		super(projectToUse, getLabel(), "icons/paste.gif");
-		startPoint = startPointToUse;	
+		setInvocationPoint(startPointToUse);	
 	}
 
 	private static String getLabel()
@@ -44,7 +44,7 @@ public class ActionPaste extends ProjectAction
 				return;
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
 			
-			getProject().pasteCellsIntoProject(list, startPoint);
+			getProject().pasteCellsIntoProject(list, createAt);
 
 		} 
 		catch (Exception e) 
@@ -58,6 +58,4 @@ public class ActionPaste extends ProjectAction
 	{
 		return EAM.text("TT|Paste the clipboard");
 	}
-
-	private Point startPoint;
 }

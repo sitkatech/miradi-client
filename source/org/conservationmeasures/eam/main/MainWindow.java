@@ -22,10 +22,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
-import org.conservationmeasures.eam.diagram.DiagramView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.martus.swing.UiScrollPane;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
 {
@@ -46,6 +45,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(mainMenuBar);
+		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
 		getContentPane().add(mainStatusBar, BorderLayout.AFTER_LAST_LINE);
 
@@ -85,8 +85,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private JComponent createDiagramView()
 	{
-		diagramComponent = new DiagramView(this);
-		return new UiScrollPane(diagramComponent);
+		diagramView = new DiagramView(this);
+		return diagramView;
 	}
 	
 	private void setCurrentView(String name)
@@ -100,9 +100,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return project;
 	}
 	
-	public DiagramView getDiagramComponent()
+	public DiagramComponent getDiagramComponent()
 	{
-		return diagramComponent;
+		return diagramView.getDiagramComponent();
 	}
 	
 	public Actions getActions()
@@ -166,7 +166,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private Actions actions;
 	private Project project;
-	private DiagramView diagramComponent;
+	private DiagramView diagramView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
 	private DiagramToolBar mainToolBar;
