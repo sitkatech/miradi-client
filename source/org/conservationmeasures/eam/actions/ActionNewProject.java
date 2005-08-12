@@ -6,13 +6,11 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
-
-import javax.swing.JFileChooser;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public class ActionNewProject extends MainWindowAction
 {
@@ -26,30 +24,11 @@ public class ActionNewProject extends MainWindowAction
 		return EAM.text("Action|New Project");
 	}
 
-
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		JFileChooser dlg = new JFileChooser();
-		dlg.setDialogTitle(getLabel());
-		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		dlg.setApproveButtonToolTipText("Create new project");
-		if(dlg.showDialog(mainWindow, EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
-			return;
-		
-		File chosen = dlg.getSelectedFile();
-		if(chosen.exists())
-		{
-			String title = EAM.text("Title|Overwrite existing project?");
-			String[] body = {EAM.text("This will replace the existing project with a new, empty project")};
-			if(!EAM.confirmDialog(title, body))
-				return;
-			
-			chosen.delete();
-		}
-				
-		mainWindow.loadProject(chosen);
+		view.doNewProject(mainWindow);
 	}
-
+	
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Create a new project");
