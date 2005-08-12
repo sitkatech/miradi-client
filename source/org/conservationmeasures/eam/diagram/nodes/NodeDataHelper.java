@@ -76,19 +76,11 @@ public class NodeDataHelper
 			else
 				rect.add(nodeLocation);
 		}
-		Point delta = new Point();
-		if(insertionPoint.x < rect.x)
-			delta.x = -(rect.x - insertionPoint.x);
-		else
-			delta.x = insertionPoint.x - rect.x;
 		
-		if(insertionPoint.y < rect.y)
-			delta.y = -(rect.y - insertionPoint.y);
-		else
-			delta.y = insertionPoint.y - rect.y;
-		return delta;
+		int deltaX = insertionPoint.x - rect.x;
+		int deltaY = insertionPoint.y - rect.y;
+		return new Point(deltaX, deltaY);	
 	}
-	
 	HashMap mapNodeLocations = new HashMap();
 	HashMap mapNodeIds = new HashMap();
 }
