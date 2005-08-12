@@ -19,6 +19,7 @@ public class Actions
 		actions = new HashMap();
 		
 		registerAction(new ActionAbout(mainWindow));
+		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
 		registerAction(new ActionCopy(mainWindow));
 		registerAction(new ActionCut(mainWindow));
@@ -39,7 +40,11 @@ public class Actions
 	
 	public EAMAction get(Class c)
 	{
-		return (EAMAction)actions.get(c);
+		Object action = actions.get(c);
+		if(action == null)
+			throw new RuntimeException("Unknown action: " + c);
+		
+		return (EAMAction)action;
 	}
 
 	public void updateActionStates()

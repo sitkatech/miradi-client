@@ -47,6 +47,11 @@ public class Project extends BaseProject
 	{
 		return getStorage().hasFile();
 	}
+	
+	public void close()
+	{
+		getStorage().setFile(null);
+	}
 
 	public String getName()
 	{

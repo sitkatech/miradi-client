@@ -69,6 +69,11 @@ abstract public class UmbrellaView extends JPanel
 		return new OpenProject(getMainWindow());
 	}
 	
+	public Doer getCloseDoer()
+	{
+		return new Close(getMainWindow());
+	}
+	
 	public Doer getExitDoer()
 	{
 		return new Exit(getMainWindow());

@@ -12,6 +12,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -43,6 +44,8 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
 		menu.add(new JMenuItem(actions.get(ActionOpenProject.class)));
+		menu.addSeparator();
+		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionExit.class)));
 		return menu;

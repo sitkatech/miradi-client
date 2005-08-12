@@ -141,6 +141,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		actions.updateActionStates();
 
 	}
+	
+	public void closeProject()
+	{
+		project.close();
+		setCurrentView(noProjectView);
+	}
 
 	public void exitNormally()
 	{
