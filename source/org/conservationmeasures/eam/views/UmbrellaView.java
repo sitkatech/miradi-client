@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.About;
+import org.conservationmeasures.eam.views.umbrella.Exit;
 import org.conservationmeasures.eam.views.umbrella.NewProject;
+import org.conservationmeasures.eam.views.umbrella.OpenProject;
 
 abstract public class UmbrellaView extends JPanel
 {
@@ -26,4 +28,13 @@ abstract public class UmbrellaView extends JPanel
 		NewProject.doNewProject(mainWindow);
 	}
 	
+	public void doOpenProject(MainWindow mainWindow) throws CommandFailedException
+	{
+		OpenProject.doOpenProject(mainWindow);
+	}
+	
+	public void doExit(MainWindow mainWindow) throws CommandFailedException
+	{
+		Exit.doExit(mainWindow);
+	}
 }

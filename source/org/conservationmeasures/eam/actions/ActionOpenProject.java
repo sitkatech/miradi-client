@@ -6,13 +6,11 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
-
-import javax.swing.JFileChooser;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public class ActionOpenProject extends MainWindowAction
 {
@@ -27,17 +25,11 @@ public class ActionOpenProject extends MainWindowAction
 	}
 
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		JFileChooser dlg = new JFileChooser();
-		dlg.setDialogTitle(getLabel());
-		if(dlg.showOpenDialog(mainWindow) != JFileChooser.APPROVE_OPTION)
-			return;
-		
-		File chosen = dlg.getSelectedFile();
-		mainWindow.loadProject(chosen);
+		view.doOpenProject(mainWindow);
 	}
-
+	
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Open an existing project");

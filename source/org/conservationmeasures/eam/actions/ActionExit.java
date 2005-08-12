@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public class ActionExit extends MainWindowAction
 {
@@ -23,9 +24,9 @@ public class ActionExit extends MainWindowAction
 		return EAM.text("Action|Exit");
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		mainWindow.exitNormally();
+		view.doExit(mainWindow);
 	}
 
 	public boolean shouldBeEnabled()
