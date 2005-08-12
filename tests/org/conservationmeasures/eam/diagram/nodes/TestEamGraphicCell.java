@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class testEamGraphicCell extends EAMTestCase
+public class TestEamGraphicCell extends EAMTestCase
 {
-	public testEamGraphicCell(String name) 
+	public TestEamGraphicCell(String name) 
 	{
 		super(name);
 	}

@@ -146,6 +146,18 @@ public class DiagramModel extends DefaultGraphModel
 		return cell;
 	}
 	
+	public Vector getAllNodes()
+	{
+		Vector nodes = new Vector();
+		for(int i=0; i < cellInventory.size(); ++i)
+		{
+			EAMGraphCell cell = cellInventory.getByIndex(i);
+			if(cell.isNode())
+				nodes.add(cell);
+		}	
+		return nodes;
+	}
+	
 
 	CellInventory cellInventory;
 }

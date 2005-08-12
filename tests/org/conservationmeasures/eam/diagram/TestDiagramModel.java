@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.util.Set;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -76,7 +77,21 @@ public class TestDiagramModel extends EAMTestCase
 		model.createNodeAtId(Node.TYPE_GOAL, nodeToDelete.getId()); //simulates an undo
 		Node nodeAfterUndo = model.createNode(Node.TYPE_GOAL);
 		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
+	}
+	
+	public void testGetAllNodes() throws Exception
+	{
+		DiagramModel model = new DiagramModel();
+		Node node1 = model.createNode(Node.TYPE_GOAL);		
+		Node node2 = model.createNode(Node.TYPE_GOAL);		
+		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
+		Node node3 = model.createNode(Node.TYPE_GOAL);		
 		
+		Vector nodes = model.getAllNodes();
+		assertEquals(3, nodes.size());
+		assertContains(node1, nodes);
+		assertContains(node2, nodes);
+		assertContains(node3, nodes);
 	}
 
 	

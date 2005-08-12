@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Point;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -23,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeData;
+import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -70,15 +70,17 @@ public class BaseProject
 	{
 		NodeData[] nodes = list.getNodeDataCells();
 		LinkageData[] links = list.getLinkageDataCells();
-		HashMap nodeIds = new HashMap();
+		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
-			int originalNodeId = nodeData.getId();
 			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
 			executeCommand(newNode);
+
+			int originalNodeId = nodeData.getId();
 			int newNodeId = newNode.getId();
-			nodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
+			dataHelper.updateIds(originalNodeId, newNodeId);
+			
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
 			executeCommand(newNodeText);
 			CommandDiagramMove move = new CommandDiagramMove(startPoint.x, startPoint.y, new int[]{newNodeId});
@@ -91,18 +93,8 @@ public class BaseProject
 		{
 			LinkageData linkageData = links[i];
 			
-			int originalFromNodeId = linkageData.getFromNodeId();
-			int newFromId = originalFromNodeId;
-			Object object = nodeIds.get(new Integer(originalFromNodeId));
-			if(object != null)
-				newFromId = ((Integer)object).intValue();
-				
-			int originalToNodeId = linkageData.getToNodeId();
-			int newToId = originalToNodeId;
-			object = nodeIds.get(new Integer(originalToNodeId));
-			if(object != null)
-				newToId = ((Integer)object).intValue();
-			
+			int newFromId = dataHelper.getUpdatedId(linkageData.getFromNodeId());
+			int newToId = dataHelper.getUpdatedId(linkageData.getToNodeId());
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
