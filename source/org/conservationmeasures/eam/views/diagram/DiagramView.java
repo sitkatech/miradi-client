@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -21,6 +22,8 @@ public class DiagramView extends UmbrellaView
 		super(mainWindowToUse);
 		diagram = new DiagramComponent(getProject(), getActions());
 		getProject().setSelectionModel(diagram.getSelectionModel());
+		
+		setToolBar(new DiagramToolBar(getActions()));
 
 		setLayout(new BorderLayout());
 		add(new UiScrollPane(diagram), BorderLayout.CENTER);

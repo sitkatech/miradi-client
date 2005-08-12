@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.awt.Point;
 
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.BaseProject;
@@ -38,6 +39,16 @@ abstract public class UmbrellaView extends JPanel
 	public Actions getActions()
 	{
 		return getMainWindow().getActions();
+	}
+	
+	public JToolBar getToolBar()
+	{
+		return toolBar;
+	}
+	
+	protected void setToolBar(JToolBar newToolBar)
+	{
+		toolBar = newToolBar;
 	}
 	
 	////////////////////////////////////////////////////////////
@@ -123,4 +134,5 @@ abstract public class UmbrellaView extends JPanel
 	
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
+	private JToolBar toolBar;
 }

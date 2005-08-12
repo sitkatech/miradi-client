@@ -23,6 +23,8 @@ public class NoProjectView extends UmbrellaView
 	{
 		super(mainWindow);
 		setBorder(new LineBorder(getForeground()));
+		
+		setToolBar(new NoProjectToolBar(getActions()));
 
 		JButton openButton = new JButton(getActions().get(ActionOpenProject.class));
 		JLabel openText = new JLabel(EAM.text("Open an existing project"));
@@ -48,5 +50,6 @@ public class NoProjectView extends UmbrellaView
 	{
 		return "No project";
 	}
+
 }
 

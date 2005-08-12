@@ -23,10 +23,10 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
@@ -56,11 +56,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		noProjectView = new NoProjectView(this);
 		diagramView = new DiagramView(this);
+		interviewView = new InterviewView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
+		viewHolder.add(interviewView, interviewView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -98,6 +100,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
+		toolBarBox.removeAll();
+		toolBarBox.add(getCurrentView().getToolBar());
 	}
 
 	public Project getProject()
@@ -119,10 +123,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			mainToolBar = new DiagramToolBar(actions);
-			toolBarBox.removeAll();
-			toolBarBox.add(mainToolBar);
-
 			setCurrentView(diagramView);
 			
 			project.load(this, projectFile);
@@ -173,9 +173,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private Project project;
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
+	private InterviewView interviewView;
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
-	private DiagramToolBar mainToolBar;
 	private MainMenuBar mainMenuBar;
 }
