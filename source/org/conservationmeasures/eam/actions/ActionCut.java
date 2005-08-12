@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
@@ -35,5 +36,16 @@ public class ActionCut extends ProjectAction
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Cut the selection to the clipboard");
+	}
+	
+	public boolean shouldBeEnabled()
+	{
+		if(!getProject().isOpen())
+			return false;
+
+		// TODO: Note that changing the selection DOESN'T currently 
+		// call this method
+		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
+		return (selected.length > 0);
 	}
 }

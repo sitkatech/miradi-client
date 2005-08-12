@@ -58,4 +58,12 @@ public class ActionPaste extends LocationAction
 	{
 		return EAM.text("TT|Paste the clipboard");
 	}
+	
+	public boolean shouldBeEnabled()
+	{
+		if(!getProject().isOpen())
+			return false;
+		return true;//TODO: Tie this to the clipboard contents
+	}
+	
 }

@@ -47,5 +47,15 @@ public class ActionCopy extends ProjectAction
 	{
 		return EAM.text("TT|Copy the selection to the clipboard");
 	}
+	public boolean shouldBeEnabled()
+	{
+		if(!getProject().isOpen())
+			return false;
+
+		// TODO: Note that changing the selection DOESN'T currently 
+		// call this method
+		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
+		return (selected.length > 0);
+	}
 
 }
