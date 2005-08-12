@@ -20,11 +20,6 @@ public class InsertGoal extends InsertNode
 		super(project, invocationPoint);
 	}
 
-	public boolean isAvailable()
-	{
-		return getProject().isOpen();
-	}
-
 	public void doIt() throws CommandFailedException
 	{
 		doInsert(new CommandInsertNode(Node.TYPE_GOAL));
