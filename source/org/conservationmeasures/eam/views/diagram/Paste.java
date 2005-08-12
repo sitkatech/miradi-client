@@ -25,7 +25,11 @@ public class Paste extends LocationDoer
 	{
 		if(!getProject().isOpen())
 			return false;
-		return true;//TODO: Tie this to the clipboard contents
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		Transferable contents = clipboard.getContents(null);
+		if(contents == null)
+			return false;
+		return contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor);
 	}
 
 	public void doIt() throws CommandFailedException
