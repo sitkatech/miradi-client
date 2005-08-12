@@ -13,15 +13,14 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
-import org.conservationmeasures.eam.views.diagram.InsertGoal;
-import org.conservationmeasures.eam.views.diagram.InsertIntervention;
-import org.conservationmeasures.eam.views.diagram.InsertThreat;
+import org.conservationmeasures.eam.views.NullDoer;
 
 abstract public class UmbrellaView extends JPanel
 {
 	public UmbrellaView(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
+		nullDoer = new NullDoer();
 	}
 	
 	abstract public String cardName();
@@ -63,18 +62,24 @@ abstract public class UmbrellaView extends JPanel
 	
 	public Doer getInsertGoalDoer(Point invocationPoint)
 	{
-		return new InsertGoal(getProject(), invocationPoint);
+		return nullDoer;
 	}
 	
 	public Doer getInsertThreatDoer(Point invocationPoint)
 	{
-		return new InsertThreat(getProject(), invocationPoint);
+		return nullDoer;
 	}
 	
 	public Doer getInsertInterventionDoer(Point invocationPoint)
 	{
-		return new InsertIntervention(getProject(), invocationPoint);
+		return nullDoer;
+	}
+	
+	public Doer getInsertConnectionDoer()
+	{
+		return nullDoer;
 	}
 	
 	private MainWindow mainWindow;
+	private NullDoer nullDoer;
 }

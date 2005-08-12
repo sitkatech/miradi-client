@@ -25,8 +25,8 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.DiagramView;
 import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
