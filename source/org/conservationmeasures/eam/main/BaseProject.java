@@ -102,6 +102,11 @@ public class BaseProject
 			
 			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
 			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
+			if(newFromId == Node.INVALID_ID || newToId == Node.INVALID_ID)
+			{
+				Logging.logDebug("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
+				continue;
+			}
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
