@@ -61,12 +61,12 @@ public class DiagramView extends UmbrellaView
 	
 	public Doer getCopyDoer()
 	{
-		return new Copy(getMainWindow());
+		return new Copy(getProject());
 	}
 	
 	public Doer getCutDoer()
 	{
-		return new Cut(getMainWindow());
+		return new Cut(getProject());
 	}
 	
 	public Doer getDeleteDoer()

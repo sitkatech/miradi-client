@@ -10,37 +10,36 @@ import java.awt.datatransfer.Clipboard;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class Copy extends MainWindowDoer
+public class Copy extends ProjectDoer
 {
-	public Copy(MainWindow mainWIndow)
+	public Copy(BaseProject project)
 	{
-		super(mainWIndow);
+		super(project);
 	}
 
 	public boolean isAvailable()
 	{
-		if(!getMainWindow().getProject().isOpen())
+		if(!getProject().isOpen())
 			return false;
 
-		EAMGraphCell[] selected = getMainWindow().getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 
 	public void doIt() throws CommandFailedException
 	{
-		EAMGraphCell[] selectedCells = getMainWindow().getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;
 		TransferableEamList eamList = new TransferableEamList(selectedCells);
 		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(eamList, EAM.mainWindow);
-		getMainWindow().getActions().updateActionStates();
 	}
 
 }

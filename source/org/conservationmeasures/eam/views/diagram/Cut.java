@@ -7,29 +7,29 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class Cut extends MainWindowDoer
+public class Cut extends ProjectDoer
 {
-	public Cut(MainWindow mainWindow)
+	public Cut(BaseProject project)
 	{
-		super(mainWindow);
+		super(project);
 	}
 
 	public boolean isAvailable()
 	{
-		if(!getMainWindow().getProject().isOpen())
+		if(!getProject().isOpen())
 			return false;
 
-		EAMGraphCell[] selected = getMainWindow().getProject().getSelectedAndRelatedCells();
+		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
 		return (selected.length > 0);
 	}
 
 	public void doIt() throws CommandFailedException
 	{
-		new Copy(getMainWindow()).doIt();
-		new Delete(getMainWindow().getProject()).doIt();
+		new Copy(getProject()).doIt();
+		new Delete(getProject()).doIt();
 	}
 
 }
