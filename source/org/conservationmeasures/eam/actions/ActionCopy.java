@@ -32,6 +32,7 @@ public class ActionCopy extends MainWindowAction
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
 		view.getCopyDoer().doIt();
+		getMainWindow().getActions().updateActionStates();
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)

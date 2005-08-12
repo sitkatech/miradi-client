@@ -32,6 +32,7 @@ public class ActionCut extends MainWindowAction
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
 		view.getCutDoer().doIt();
+		getMainWindow().getActions().updateActionStates();
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)
