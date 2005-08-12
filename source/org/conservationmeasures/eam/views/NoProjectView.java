@@ -20,15 +20,16 @@ public class NoProjectView extends UmbrellaView
 {
 	public NoProjectView(MainWindow mainWindow)
 	{
+		super(mainWindow);
 		setBorder(new LineBorder(getForeground()));
 
-		JButton openButton = new JButton(mainWindow.getActions().get(ActionOpenProject.class));
+		JButton openButton = new JButton(getActions().get(ActionOpenProject.class));
 		JLabel openText = new JLabel(EAM.text("Open an existing project"));
 		
-		JButton newButton = new JButton(mainWindow.getActions().get(ActionNewProject.class));
+		JButton newButton = new JButton(getActions().get(ActionNewProject.class));
 		JLabel newText = new JLabel(EAM.text("Create a new project"));
 		
-		JButton exitButton = new JButton(mainWindow.getActions().get(ActionExit.class));
+		JButton exitButton = new JButton(getActions().get(ActionExit.class));
 		JLabel exitText = new JLabel(EAM.text("Exit e-AdaptiveManagement"));
 		
 		DialogLayout layout = new DialogLayout();

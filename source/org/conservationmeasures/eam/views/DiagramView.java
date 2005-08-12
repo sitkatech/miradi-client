@@ -7,20 +7,17 @@ package org.conservationmeasures.eam.views;
 
 import java.awt.BorderLayout;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.Project;
 import org.martus.swing.UiScrollPane;
 
 public class DiagramView extends UmbrellaView
 {
 	public DiagramView(MainWindow mainWindowToUse)
 	{
-		Project project = mainWindowToUse.getProject();
-		Actions actions = mainWindowToUse.getActions();
-		diagram = new DiagramComponent(project, actions);
-		project.setSelectionModel(diagram.getSelectionModel());
+		super(mainWindowToUse);
+		diagram = new DiagramComponent(getProject(), getActions());
+		getProject().setSelectionModel(diagram.getSelectionModel());
 
 		setLayout(new BorderLayout());
 		add(new UiScrollPane(diagram), BorderLayout.CENTER);

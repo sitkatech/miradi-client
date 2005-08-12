@@ -26,7 +26,7 @@ public class ActionExit extends MainWindowAction
 
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		view.doExit(mainWindow);
+		view.doExit();
 	}
 
 	public boolean shouldBeEnabled()

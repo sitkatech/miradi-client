@@ -27,7 +27,7 @@ public class ActionOpenProject extends MainWindowAction
 
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		view.doOpenProject(mainWindow);
+		view.doOpenProject();
 	}
 	
 	public String getToolTipText()
