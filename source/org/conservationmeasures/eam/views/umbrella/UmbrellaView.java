@@ -5,11 +5,15 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.awt.Point;
+
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.Doer;
+import org.conservationmeasures.eam.views.diagram.InsertGoal;
 
 abstract public class UmbrellaView extends JPanel
 {
@@ -53,6 +57,11 @@ abstract public class UmbrellaView extends JPanel
 	public Exit getExitDoer()
 	{
 		return new Exit(getMainWindow());
+	}
+	
+	public Doer getInsertGoalDoer(Point invocationPoint)
+	{
+		return new InsertGoal(getProject(), invocationPoint);
 	}
 	
 	private MainWindow mainWindow;

@@ -11,14 +11,14 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.InsertThreatIcon;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
 public class ActionInsertThreat extends InsertNodeAction
 {
-	public ActionInsertThreat(BaseProject projectToUse)
+	public ActionInsertThreat(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), new InsertThreatIcon());
+		super(mainWindow, getLabel(), new InsertThreatIcon());
 	}
 
 	private static String getLabel()

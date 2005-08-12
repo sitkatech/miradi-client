@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.actions;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionContextualHelp extends ProjectAction
+public class ActionContextualHelp extends MainWindowAction
 {
-	public ActionContextualHelp(BaseProject projectToUse)
+	public ActionContextualHelp(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel());
+		super(mainWindow, getLabel());
 	}
 
 	private static String getLabel()

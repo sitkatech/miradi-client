@@ -12,20 +12,20 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class ActionPaste extends LocationAction
 {
-	public ActionPaste(BaseProject projectToUse)
+	public ActionPaste(MainWindow mainWindow)
 	{
-		this(projectToUse, new Point(0,0));
+		this(mainWindow, new Point(0,0));
 	}
 	
-	public ActionPaste(BaseProject projectToUse, Point startPointToUse)
+	public ActionPaste(MainWindow mainWindow, Point startPointToUse)
 	{
-		super(projectToUse, getLabel(), "icons/paste.gif");
+		super(mainWindow, getLabel(), "icons/paste.gif");
 		setInvocationPoint(startPointToUse);	
 	}
 

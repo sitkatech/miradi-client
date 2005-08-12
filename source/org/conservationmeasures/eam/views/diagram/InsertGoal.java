@@ -3,25 +3,37 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.actions;
+package org.conservationmeasures.eam.views.diagram;
 
-import javax.swing.Icon;
+import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.views.ProjectDoer;
 
-public abstract class InsertNodeAction extends LocationAction
+public class InsertGoal extends ProjectDoer
 {
-	public InsertNodeAction(MainWindow mainWindow, String label, Icon icon)
+	public InsertGoal(BaseProject project, Point invocationPoint)
 	{
-		super(mainWindow, label, icon);
+		super(project);
+		createAt = invocationPoint;
 	}
-	
-	abstract public String getInitialText();
+
+	public boolean isAvailable()
+	{
+		return getProject().isOpen();
+	}
+
+	public void doIt() throws CommandFailedException
+	{
+		doInsert(new CommandInsertNode(Node.TYPE_GOAL));
+	}
 
 	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
 	{
@@ -34,4 +46,11 @@ public abstract class InsertNodeAction extends LocationAction
 		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
 		getProject().executeCommand(moveCommand);
 	}
+	
+	public String getInitialText()
+	{
+		return EAM.text("Label|New Goal");
+	}
+
+	Point createAt;
 }

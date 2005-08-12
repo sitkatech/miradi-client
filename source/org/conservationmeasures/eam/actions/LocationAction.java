@@ -9,20 +9,20 @@ import java.awt.Point;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.MainWindow;
 
 
-public abstract class LocationAction extends ProjectAction
+public abstract class LocationAction extends MainWindowAction
 {
-	public LocationAction(BaseProject projectToUse, String label, String icon)
+	public LocationAction(MainWindow mainWindow, String label, String icon)
 	{
-		super(projectToUse, label, icon);
+		super(mainWindow, label, icon);
 		createAt = new Point(0,0);
 	}
 	
-	public LocationAction(BaseProject projectToUse, String label, Icon icon)
+	public LocationAction(MainWindow mainWindow, String label, Icon icon)
 	{
-		super(projectToUse, label, icon);
+		super(mainWindow, label, icon);
 		createAt = new Point(0,0);
 	}
 	

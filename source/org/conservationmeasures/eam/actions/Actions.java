@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class Actions
@@ -19,24 +18,23 @@ public class Actions
 	{
 		actions = new HashMap();
 		
-		BaseProject project = mainWindow.getProject();
 		registerAction(new ActionAbout(mainWindow));
-		registerAction(new ActionContextualHelp(project));
-		registerAction(new ActionCopy(project));
-		registerAction(new ActionCut(project));
-		registerAction(new ActionDelete(project));
+		registerAction(new ActionContextualHelp(mainWindow));
+		registerAction(new ActionCopy(mainWindow));
+		registerAction(new ActionCut(mainWindow));
+		registerAction(new ActionDelete(mainWindow));
 		registerAction(new ActionExit(mainWindow));
-		registerAction(new ActionInsertConnection(project));
-		registerAction(new ActionInsertGoal(project));
-		registerAction(new ActionInsertIntervention(project));
-		registerAction(new ActionInsertThreat(project));
+		registerAction(new ActionInsertConnection(mainWindow));
+		registerAction(new ActionInsertGoal(mainWindow));
+		registerAction(new ActionInsertIntervention(mainWindow));
+		registerAction(new ActionInsertThreat(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
-		registerAction(new ActionNodeProperties(project));
+		registerAction(new ActionNodeProperties(mainWindow));
 		registerAction(new ActionOpenProject(mainWindow));
-		registerAction(new ActionPaste(project));
-		registerAction(new ActionRedo(project));
-		registerAction(new ActionSelectAll(project));
-		registerAction(new ActionUndo(project));
+		registerAction(new ActionPaste(mainWindow));
+		registerAction(new ActionRedo(mainWindow));
+		registerAction(new ActionSelectAll(mainWindow));
+		registerAction(new ActionUndo(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

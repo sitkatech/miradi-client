@@ -7,19 +7,17 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-
-import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.InsertGoalIcon;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActionInsertGoal extends InsertNodeAction
+public class ActionInsertGoal extends LocationAction
 {
-	public ActionInsertGoal(BaseProject projectToUse)
+	public ActionInsertGoal(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), new InsertGoalIcon());
+		super(mainWindow, getLabel(), new InsertGoalIcon());
 	}
 
 	private static String getLabel()
@@ -32,19 +30,14 @@ public class ActionInsertGoal extends InsertNodeAction
 		return EAM.text("TT|Insert a Goal node");
 	}
 
-	public String getInitialText()
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		return EAM.text("Label|New Goal");
+		view.getInsertGoalDoer(createAt).doIt();
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		doInsert(new CommandInsertNode(Node.TYPE_GOAL));
-	}
-
-	public boolean shouldBeEnabled()
-	{
-		return getProject().isOpen();
+		return view.getInsertGoalDoer(createAt).isAvailable();
 	}
 }
 

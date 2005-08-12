@@ -7,22 +7,42 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public abstract class MainWindowAction extends ProjectAction
+public abstract class MainWindowAction extends EAMAction
 {
 	public MainWindowAction(MainWindow mainWindowToUse, String label)
 	{
-		super(mainWindowToUse.getProject(), label);
+		super(label, "icons/blankicon.png");
 		mainWindow = mainWindowToUse;
 	}
+	
 	public MainWindowAction(MainWindow mainWindowToUse, String label, String icon)
 	{
-		super(mainWindowToUse.getProject(), label, icon);
+		super(label, icon);
 		mainWindow = mainWindowToUse;
+	}
+	
+	public MainWindowAction(MainWindow mainWindowToUse, String label, Icon icon)
+	{
+		super(label, icon);
+		mainWindow = mainWindowToUse;
+	}
+	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	public BaseProject getProject()
+	{
+		return mainWindow.getProject();
 	}
 
 	public boolean shouldBeEnabled()

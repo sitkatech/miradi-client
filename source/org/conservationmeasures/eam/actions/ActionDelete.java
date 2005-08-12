@@ -16,14 +16,14 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDelete extends ProjectAction
+public class ActionDelete extends MainWindowAction
 {
-	public ActionDelete(BaseProject projectToUse)
+	public ActionDelete(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), "icons/delete.gif");
+		super(mainWindow, getLabel(), "icons/delete.gif");
 	}
 
 	private static String getLabel()

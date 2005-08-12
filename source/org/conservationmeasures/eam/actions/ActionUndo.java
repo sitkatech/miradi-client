@@ -10,14 +10,14 @@ import java.awt.event.ActionEvent;
 import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionUndo extends ProjectAction
+public class ActionUndo extends MainWindowAction
 {
-	public ActionUndo(BaseProject projectToUse)
+	public ActionUndo(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), "icons/undo.gif");
+		super(mainWindow, getLabel(), "icons/undo.gif");
 	}
 
 	private static String getLabel()

@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class MainWindowDoer
+abstract public class MainWindowDoer extends Doer
 {
 	public MainWindowDoer(MainWindow mainWindowToUse)
 	{

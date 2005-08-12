@@ -9,14 +9,14 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionCut extends ProjectAction
+public class ActionCut extends MainWindowAction
 {
-	public ActionCut(BaseProject projectToUse)
+	public ActionCut(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), "icons/cut.gif");
+		super(mainWindow, getLabel(), "icons/cut.gif");
 	}
 
 	private static String getLabel()
@@ -32,9 +32,9 @@ public class ActionCut extends ProjectAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		ActionCopy copy = new ActionCopy(getProject());
+		ActionCopy copy = new ActionCopy(getMainWindow());
 		copy.performCopy();
-		ActionDelete delete = new ActionDelete(getProject());
+		ActionDelete delete = new ActionDelete(getMainWindow());
 		delete.performDelete();
 	}
 

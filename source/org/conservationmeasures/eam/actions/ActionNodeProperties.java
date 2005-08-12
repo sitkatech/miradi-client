@@ -11,15 +11,15 @@ import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 
-public class ActionNodeProperties extends ProjectAction
+public class ActionNodeProperties extends MainWindowAction
 {
-	public ActionNodeProperties(BaseProject projectToUse)
+	public ActionNodeProperties(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), "icons/edit.gif");
+		super(mainWindow, getLabel(), "icons/edit.gif");
 	}
 
 	private static String getLabel()

@@ -7,20 +7,19 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.InsertConnectionIcon;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertConnection extends ProjectAction
+public class ActionInsertConnection extends MainWindowAction
 {
-	public ActionInsertConnection(BaseProject projectToUse)
+	public ActionInsertConnection(MainWindow mainWindow)
 	{
-		super(projectToUse, getLabel(), new InsertConnectionIcon());
+		super(mainWindow, getLabel(), new InsertConnectionIcon());
 	}
 
 	private static String getLabel()
