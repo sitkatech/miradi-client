@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -17,41 +18,104 @@ public class TestNodeDataHelper extends EAMTestCase
 	{
 		super(name);
 	}
-
-	public void testBasics()
+	
+	
+	public void setUp() throws Exception 
 	{
-		int originalNode1 = 1;
-		int originalNode2 = 2;
-		int originalNode3 = 3;
-		int newNode1 = 5;
-		int newNode2 = 6;
-		int newNode3 = 7;
-		int unknownNode = 10;
-		
 		Node node1 = new Node(Node.TYPE_GOAL);
-		node1.setId(originalNode1);
-		Node node2 = new Node(Node.TYPE_GOAL);
-		node2.setId(originalNode2);
-		Node node3 = new Node(Node.TYPE_GOAL);
-		node3.setId(originalNode3);
+		node1.setId(originalNodeId1);
+		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
-		Vector nodes = new Vector();
+		Node node2 = new Node(Node.TYPE_GOAL);
+		node2.setId(originalNodeId2);
+		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
+
+		Node node3 = new Node(Node.TYPE_GOAL);
+		node3.setId(originalNodeId3);
+		
+		nodes = new Vector();
 		nodes.add(node1);
 		nodes.add(node2);
 		nodes.add(node3);
 		
+		super.setUp();
+	}
+
+
+	public void testBasics()
+	{
 		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
-		assertEquals(originalNode1, dataHelper.getNewId(originalNode1));
-		assertEquals(originalNode2, dataHelper.getNewId(originalNode2));
-		assertEquals(originalNode3, dataHelper.getNewId(originalNode3));
-		assertEquals(Node.INVALID_ID, dataHelper.getNewId(unknownNode));
+		assertEquals(originalNodeId1, dataHelper.getNewId(originalNodeId1));
+		assertEquals(originalNodeId2, dataHelper.getNewId(originalNodeId2));
+		assertEquals(originalNodeId3, dataHelper.getNewId(originalNodeId3));
+		assertEquals(Node.INVALID_ID, dataHelper.getNewId(unknownNodeId));
+	}
+	
+	public void testSetNewId()
+	{
+		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
+		dataHelper.setNewId(originalNodeId1, newNodeId1);
+		dataHelper.setNewId(originalNodeId2, newNodeId2);
+		dataHelper.setNewId(originalNodeId3, newNodeId3);
+		assertEquals(newNodeId1, dataHelper.getNewId(originalNodeId1));
+		assertEquals(newNodeId2, dataHelper.getNewId(originalNodeId2));
+		assertEquals(newNodeId3, dataHelper.getNewId(originalNodeId3));
+	}
+	
+	public void testSetGetLocation()
+	{
+		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
+		dataHelper.setOriginalLocation(originalNodeId1, nodeLocation1);
+
+		int insertX = 0;
+		int insertY = 0;
+		Point newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertX, insertY);
+		assertEquals(insertX, newNode1Location.x);
+		assertEquals(insertY, newNode1Location.y);
 		
-		dataHelper.setNewId(originalNode1, newNode1);
-		dataHelper.setNewId(originalNode2, newNode2);
-		dataHelper.setNewId(originalNode3, newNode3);
-		assertEquals(newNode1, dataHelper.getNewId(originalNode1));
-		assertEquals(newNode2, dataHelper.getNewId(originalNode2));
-		assertEquals(newNode3, dataHelper.getNewId(originalNode3));
+		dataHelper.setOriginalLocation(originalNodeId2, nodeLocation2);
+		newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertX, insertY);
+		Point newNode2Location = dataHelper.getNewLocation(originalNodeId2, insertX, insertY);
+		assertEquals(insertX+(nodeLocation1x-nodeLocation2x), newNode1Location.x);
+		assertEquals(insertY+(nodeLocation1y-nodeLocation2y), newNode1Location.y);
+		assertEquals(insertX, newNode2Location.x);
+		assertEquals(insertY, newNode2Location.y);
+
+		insertX = 50;
+		insertY = 50;
+		NodeDataHelper dataHelper2 = new NodeDataHelper(nodes);
+		dataHelper2.setOriginalLocation(originalNodeId1, nodeLocation1);
+		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertX, insertY);
+		assertEquals(insertX, newNode1Location.x);
+		assertEquals(insertY, newNode1Location.y);
+		
+		dataHelper2.setOriginalLocation(originalNodeId2, nodeLocation2);
+		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertX, insertY);
+		int deltaX = 45;
+		int deltaY = 40;
+		assertEquals(nodeLocation1x+deltaX, newNode1Location.x);
+		assertEquals(nodeLocation1y+deltaY, newNode1Location.y);
+
+		newNode2Location = dataHelper2.getNewLocation(originalNodeId2, insertX, insertY);
+		assertEquals(nodeLocation2x+deltaX, newNode2Location.x);
+		assertEquals(nodeLocation2y+deltaY, newNode2Location.y);
 		
 	}
+	
+
+	final int originalNodeId1 = 1;
+	final int originalNodeId2 = 2;
+	final int originalNodeId3 = 3;
+	final int newNodeId1 = 5;
+	final int newNodeId2 = 6;
+	final int newNodeId3 = 7;
+	final int unknownNodeId = 10;
+	final int nodeLocation1x = 20;
+	final int nodeLocation1y = 50;
+	final int nodeLocation2x = 5;
+	final int nodeLocation2y = 10;
+
+	Vector nodes;
+	Point nodeLocation1;
+	Point nodeLocation2;
 }

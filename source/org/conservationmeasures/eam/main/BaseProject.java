@@ -80,18 +80,19 @@ public class BaseProject
 			int originalNodeId = nodeData.getId();
 			int newNodeId = newNode.getId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
+			dataHelper.setOriginalLocation(originalNodeId, nodeData.getLocation());
 			
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
 			executeCommand(newNodeText);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
 		}
-
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(), startPoint.x, startPoint.y);
 			int newNodeId = dataHelper.getNewId(nodeData.getId());
-			CommandDiagramMove move = new CommandDiagramMove(startPoint.x, startPoint.y, new int[]{newNodeId});
+			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
 		}
 		
