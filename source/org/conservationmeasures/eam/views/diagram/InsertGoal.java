@@ -7,9 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -20,9 +18,9 @@ public class InsertGoal extends InsertNode
 		super(project, invocationPoint);
 	}
 
-	public void doIt() throws CommandFailedException
+	public int getTypeToInsert()
 	{
-		doInsert(new CommandInsertNode(Node.TYPE_GOAL));
+		return Node.TYPE_GOAL;
 	}
 
 	public String getInitialText()

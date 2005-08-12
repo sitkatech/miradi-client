@@ -23,12 +23,18 @@ abstract public class InsertNode extends ProjectDoer
 		createAt = invocationPoint;
 	}
 	
+	abstract public int getTypeToInsert();
+	abstract public String getInitialText();
+
 	public boolean isAvailable()
 	{
 		return getProject().isOpen();
 	}
 
-	abstract public String getInitialText();
+	public void doIt() throws CommandFailedException
+	{
+		doInsert(new CommandInsertNode(getTypeToInsert()));
+	}
 
 	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
 	{
