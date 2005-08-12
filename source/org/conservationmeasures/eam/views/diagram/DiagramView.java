@@ -56,6 +56,21 @@ public class DiagramView extends UmbrellaView
 		return new InsertConnection(getProject());
 	}
 	
+	public Doer getCopyDoer()
+	{
+		return new Copy(getProject());
+	}
+	
+	public Doer getCutDoer()
+	{
+		return new Cut(getProject());
+	}
+	
+	public Doer getDeleteDoer()
+	{
+		return new Delete(getProject());
+	}
+	
 	public Doer getPasteDoer(Point invocationPoint)
 	{
 		return new Paste(getProject(), invocationPoint);

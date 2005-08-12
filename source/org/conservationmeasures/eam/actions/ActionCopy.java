@@ -5,15 +5,12 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ActionCopy extends MainWindowAction
 {
@@ -32,31 +29,13 @@ public class ActionCopy extends MainWindowAction
 		return EAM.text("TT|Copy the selection to the clipboard");
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		performCopy();
+		view.getCopyDoer().doIt();
 	}
 
-	public void performCopy() 
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
-		if(selectedCells.length == 0)
-			return;
-		TransferableEamList eamList = new TransferableEamList(selectedCells);
-		
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		clipboard.setContents(eamList, EAM.mainWindow);
+		return view.getCopyDoer().isAvailable();
 	}
-
-	public boolean shouldBeEnabled()
-	{
-		if(!getProject().isOpen())
-			return false;
-
-		// TODO: Note that changing the selection DOESN'T currently 
-		// call this method
-		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
-		return (selected.length > 0);
-	}
-
 }

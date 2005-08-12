@@ -7,10 +7,10 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ActionCut extends MainWindowAction
 {
@@ -29,23 +29,13 @@ public class ActionCut extends MainWindowAction
 		return EAM.text("TT|Cut the selection to the clipboard");
 	}
 	
-
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		ActionCopy copy = new ActionCopy(getMainWindow());
-		copy.performCopy();
-		ActionDelete delete = new ActionDelete(getMainWindow());
-		delete.performDelete();
+		view.getCutDoer().doIt();
 	}
 
-	public boolean shouldBeEnabled()
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		if(!getProject().isOpen())
-			return false;
-
-		// TODO: Note that changing the selection DOESN'T currently 
-		// call this method
-		EAMGraphCell[] selected = getProject().getSelectedAndRelatedCells();
-		return (selected.length > 0);
+		return view.getCutDoer().isAvailable();
 	}
 }
