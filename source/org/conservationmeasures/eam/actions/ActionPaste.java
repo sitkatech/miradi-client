@@ -6,15 +6,12 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ActionPaste extends LocationAction
 {
@@ -39,31 +36,13 @@ public class ActionPaste extends LocationAction
 		return EAM.text("TT|Paste the clipboard");
 	}
 	
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		try 
-		{
-			Transferable contents = clipboard.getContents(null);
-			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
-				return;
-			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-			
-			getProject().pasteCellsIntoProject(list, createAt);
-
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-			throw new CommandFailedException(e);
-		} 
+		view.getPasteDoer(createAt).doIt();
 	}
 
-	public boolean shouldBeEnabled()
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		if(!getProject().isOpen())
-			return false;
-		return true;//TODO: Tie this to the clipboard contents
+		return view.getPasteDoer(createAt).isAvailable();
 	}
-	
 }

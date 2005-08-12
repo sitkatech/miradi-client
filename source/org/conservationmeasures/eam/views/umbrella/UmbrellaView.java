@@ -80,6 +80,11 @@ abstract public class UmbrellaView extends JPanel
 		return nullDoer;
 	}
 	
+	public Doer getPasteDoer(Point invocationPoint)
+	{
+		return nullDoer;
+	}
+	
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 }

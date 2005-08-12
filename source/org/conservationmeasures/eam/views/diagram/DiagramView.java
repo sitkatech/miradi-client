@@ -56,5 +56,10 @@ public class DiagramView extends UmbrellaView
 		return new InsertConnection(getProject());
 	}
 	
+	public Doer getPasteDoer(Point invocationPoint)
+	{
+		return new Paste(getProject(), invocationPoint);
+	}
+	
 	DiagramComponent diagram;
 }

@@ -13,14 +13,12 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
-import org.conservationmeasures.eam.views.ProjectDoer;
 
-abstract public class InsertNode extends ProjectDoer
+abstract public class InsertNode extends LocationDoer
 {
 	public InsertNode(BaseProject project, Point invocationPoint)
 	{
-		super(project);
-		createAt = invocationPoint;
+		super(project, invocationPoint);
 	}
 	
 	abstract public int getTypeToInsert();
@@ -43,10 +41,9 @@ abstract public class InsertNode extends ProjectDoer
 	
 		Command setTextCommand = new CommandSetNodeText(id, getInitialText());
 		getProject().executeCommand(setTextCommand);
-	
+
+		Point createAt = getLocation();
 		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
 		getProject().executeCommand(moveCommand);
 	}
-
-	Point createAt;
 }
