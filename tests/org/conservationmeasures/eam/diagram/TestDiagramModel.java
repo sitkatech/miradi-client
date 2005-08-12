@@ -17,7 +17,6 @@ public class TestDiagramModel extends EAMTestCase
 	public TestDiagramModel(String name)
 	{
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void testIsNode() throws Exception
