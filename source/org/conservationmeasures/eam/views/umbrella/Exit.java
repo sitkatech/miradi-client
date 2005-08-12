@@ -6,11 +6,22 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class Exit
+public class Exit extends MainWindowDoer
 {
-	public static void doExit(MainWindow mainWindow)
+	public Exit(MainWindow mainWindow)
 	{
-		mainWindow.exitNormally();
+		super(mainWindow);
+	}
+	
+	public void doIt()
+	{
+		getMainWindow().exitNormally();
+	}
+	
+	public boolean isAvailable()
+	{
+		return true;
 	}
 }

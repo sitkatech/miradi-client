@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
 public class DiagramView extends UmbrellaView

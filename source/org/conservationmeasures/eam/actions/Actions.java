@@ -37,8 +37,6 @@ public class Actions
 		registerAction(new ActionRedo(project));
 		registerAction(new ActionSelectAll(project));
 		registerAction(new ActionUndo(project));
-		
-		updateActionStates();
 	}
 	
 	public EAMAction get(Class c)

@@ -3,18 +3,13 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views;
+package org.conservationmeasures.eam.views.umbrella;
 
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.umbrella.About;
-import org.conservationmeasures.eam.views.umbrella.Exit;
-import org.conservationmeasures.eam.views.umbrella.NewProject;
-import org.conservationmeasures.eam.views.umbrella.OpenProject;
 
 abstract public class UmbrellaView extends JPanel
 {
@@ -40,24 +35,24 @@ abstract public class UmbrellaView extends JPanel
 		return getMainWindow().getActions();
 	}
 	
-	public void doAbout() throws CommandFailedException
+	public About getAboutDoer()
 	{
-		About.doAbout();
+		return new About();
 	}
 	
-	public void doNewProject() throws CommandFailedException
+	public NewProject getNewProjectDoer()
 	{
-		NewProject.doNewProject(getMainWindow());
+		return new NewProject(getMainWindow());
 	}
 	
-	public void doOpenProject() throws CommandFailedException
+	public OpenProject getOpenProjectDoer()
 	{
-		OpenProject.doOpenProject(getMainWindow());
+		return new OpenProject(getMainWindow());
 	}
 	
-	public void doExit() throws CommandFailedException
+	public Exit getExitDoer()
 	{
-		Exit.doExit(getMainWindow());
+		return new Exit(getMainWindow());
 	}
 	
 	private MainWindow mainWindow;

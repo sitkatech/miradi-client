@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.DialogLayout;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class NoProjectView extends UmbrellaView
 {

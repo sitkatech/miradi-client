@@ -11,7 +11,16 @@ import org.conservationmeasures.eam.main.VersionConstants;
 
 public class About
 {
-	public static void doAbout() throws CommandFailedException
+	public About()
+	{
+	}
+	
+	public boolean isAvailable()
+	{
+		return true;
+	}
+	
+	public void doIt() throws CommandFailedException
 	{
 		String title = EAM.text("Title|About e-Adaptive Management");
 		String[] body = 

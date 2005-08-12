@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ActionAbout extends MainWindowAction
 {
@@ -26,12 +26,12 @@ public class ActionAbout extends MainWindowAction
 
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		view.doAbout();
+		view.getAboutDoer().doIt();
 	}
 
-	public boolean shouldBeEnabled()
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		return true;
+		return view.getAboutDoer().isAvailable();
 	}
 	
 }

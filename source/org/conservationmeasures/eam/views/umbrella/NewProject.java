@@ -12,16 +12,22 @@ import javax.swing.JFileChooser;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class NewProject
+public class NewProject extends MainWindowDoer
 {
-	public static void doNewProject(MainWindow mainWindow) throws CommandFailedException
+	public NewProject(MainWindow mainWindow)
+	{
+		super(mainWindow);
+	}
+	
+	public void doIt() throws CommandFailedException
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(EAM.text("Title|Create New Project"));
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText("Create new project");
-		if(dlg.showDialog(mainWindow, EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
+		if(dlg.showDialog(getMainWindow(), EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
 			return;
 		
 		File chosen = dlg.getSelectedFile();
@@ -35,8 +41,12 @@ public class NewProject
 			chosen.delete();
 		}
 				
-		mainWindow.loadProject(chosen);
+		getMainWindow().loadProject(chosen);
 	}
 
+	public boolean isAvailable()
+	{
+		return true;
+	}
 
 }
