@@ -7,14 +7,13 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.InsertThreatIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActionInsertThreat extends InsertNodeAction
+public class ActionInsertThreat extends LocationAction
 {
 	public ActionInsertThreat(MainWindow mainWindow)
 	{
@@ -26,24 +25,19 @@ public class ActionInsertThreat extends InsertNodeAction
 		return EAM.text("Action|Insert|Threat");
 	}
 
-	public String getInitialText()
-	{
-		return EAM.text("Label|New Threat");
-	}
-
 	public String getToolTipText()
 	{
 		return EAM.text("TT|Insert a Threat node");
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		doInsert(new CommandInsertNode(Node.TYPE_THREAT));
+		view.getInsertThreatDoer(createAt).doIt();
 	}
 
-	public boolean shouldBeEnabled()
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		return getProject().isOpen();
-	}	
+		return view.getInsertThreatDoer(createAt).isAvailable();
+	}
 }
 

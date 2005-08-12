@@ -7,14 +7,13 @@ package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.InsertInterventionIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActionInsertIntervention extends InsertNodeAction
+public class ActionInsertIntervention extends LocationAction
 {
 	public ActionInsertIntervention(MainWindow mainWindow)
 	{
@@ -31,19 +30,14 @@ public class ActionInsertIntervention extends InsertNodeAction
 		return EAM.text("TT|Insert an Intervention node");
 	}
 
-	public String getInitialText()
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		return EAM.text("Label|New Intervention");
+		view.getInsertInterventionDoer(createAt).doIt();
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		doInsert(new CommandInsertNode(Node.TYPE_INTERVENTION));
-	}
-
-	public boolean shouldBeEnabled()
-	{
-		return getProject().isOpen();
+		return view.getInsertInterventionDoer(createAt).isAvailable();
 	}
 }
 
