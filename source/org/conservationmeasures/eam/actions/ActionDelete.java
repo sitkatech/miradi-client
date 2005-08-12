@@ -31,6 +31,11 @@ public class ActionDelete extends ProjectAction
 		return EAM.text("Action|Delete");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Delete the selection");
+	}
+
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		performDelete();
@@ -75,11 +80,6 @@ public class ActionDelete extends ProjectAction
 		getProject().executeCommand(moveToZeroZero);
 		getProject().executeCommand(clearText);
 		getProject().executeCommand(command);
-	}
-
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Delete the selection");
 	}
 
 	public boolean shouldBeEnabled()

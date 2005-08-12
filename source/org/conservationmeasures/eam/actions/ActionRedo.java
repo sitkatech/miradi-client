@@ -25,6 +25,11 @@ public class ActionRedo extends ProjectAction
 		return EAM.text("Action|Redo");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Redo last undone action");
+	}
+
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		CommandRedo command = new CommandRedo();
@@ -36,11 +41,6 @@ public class ActionRedo extends ProjectAction
 		{
 			// ignore this
 		}
-	}
-
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Redo last undone action");
 	}
 
 	public boolean shouldBeEnabled()

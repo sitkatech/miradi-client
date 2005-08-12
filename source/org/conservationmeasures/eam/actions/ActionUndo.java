@@ -25,6 +25,11 @@ public class ActionUndo extends ProjectAction
 		return EAM.text("Action|Undo");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Undo last action");
+	}
+
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		CommandUndo command = new CommandUndo();
@@ -38,11 +43,6 @@ public class ActionUndo extends ProjectAction
 		}
 	}
 	
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Undo last action");
-	}
-
 	public boolean shouldBeEnabled()
 	{
 		return (getProject().getIndexToUndo() >= 0);

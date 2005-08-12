@@ -34,6 +34,11 @@ public class ActionPaste extends LocationAction
 		return EAM.text("Action|Paste");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Paste the clipboard");
+	}
+	
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -54,11 +59,6 @@ public class ActionPaste extends LocationAction
 		} 
 	}
 
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Paste the clipboard");
-	}
-	
 	public boolean shouldBeEnabled()
 	{
 		if(!getProject().isOpen())

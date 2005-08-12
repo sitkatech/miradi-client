@@ -27,6 +27,11 @@ public class ActionCopy extends ProjectAction
 		return EAM.text("Action|Copy");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Copy the selection to the clipboard");
+	}
+
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		performCopy();
@@ -43,10 +48,6 @@ public class ActionCopy extends ProjectAction
 		clipboard.setContents(eamList, EAM.mainWindow);
 	}
 
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Copy the selection to the clipboard");
-	}
 	public boolean shouldBeEnabled()
 	{
 		if(!getProject().isOpen())

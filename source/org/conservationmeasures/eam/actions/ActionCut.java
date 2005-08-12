@@ -24,6 +24,11 @@ public class ActionCut extends ProjectAction
 		return EAM.text("Action|Cut");
 	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Cut the selection to the clipboard");
+	}
+	
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
@@ -33,11 +38,6 @@ public class ActionCut extends ProjectAction
 		delete.performDelete();
 	}
 
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Cut the selection to the clipboard");
-	}
-	
 	public boolean shouldBeEnabled()
 	{
 		if(!getProject().isOpen())

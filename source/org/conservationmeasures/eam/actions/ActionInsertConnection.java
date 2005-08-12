@@ -5,16 +5,13 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
-import javax.swing.Icon;
 
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.icons.InsertConnectionIcon;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
@@ -29,6 +26,11 @@ public class ActionInsertConnection extends ProjectAction
 	private static String getLabel()
 	{
 		return EAM.text("Action|Insert|Connection...");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Add a relationship between two nodes");
 	}
 
 	public void doAction(ActionEvent event) throws CommandFailedException
@@ -66,11 +68,6 @@ public class ActionInsertConnection extends ProjectAction
 		}
 	}
 
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Add a relationship between two nodes");
-	}
-
 	public boolean shouldBeEnabled()
 	{
 		if(!getProject().isOpen())
@@ -78,28 +75,5 @@ public class ActionInsertConnection extends ProjectAction
 		
 		return (getProject().getDiagramModel().getCellCount() >= 2);
 	}
-	
 }
 
-class InsertConnectionIcon implements Icon
-{
-	public int getIconHeight()
-	{
-		return 16;
-	}
-
-	public int getIconWidth()
-	{
-		return 16;
-	}
-
-	public void paintIcon(Component sample, Graphics g, int x, int y)
-	{
-		Color oldColor = g.getColor();
-		g.setColor(Color.BLACK);
-		g.drawLine(x+2, y+8, x+14, y+8);
-		g.drawLine(x+14, y+8, x+12, y+6);
-		g.drawLine(x+14, y+8, x+12, y+10);
-		g.setColor(oldColor);
-	}
-}
