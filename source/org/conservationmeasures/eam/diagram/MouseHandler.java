@@ -119,6 +119,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 	public void selectionChanged(GraphSelectionEvent event)
 	{
 		selectedCells = diagram.getSelectionCells();
+		actions.updateActionStates();
 	}
 
 	BaseProject project;
