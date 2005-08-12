@@ -20,7 +20,7 @@ public class Actions
 		actions = new HashMap();
 		
 		BaseProject project = mainWindow.getProject();
-		registerAction(new ActionAbout());
+		registerAction(new ActionAbout(mainWindow));
 		registerAction(new ActionContextualHelp(project));
 		registerAction(new ActionCopy(project));
 		registerAction(new ActionCut(project));

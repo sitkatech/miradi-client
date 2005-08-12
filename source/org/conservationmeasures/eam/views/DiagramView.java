@@ -3,17 +3,17 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.views;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.Project;
 import org.martus.swing.UiScrollPane;
 
-public class DiagramView extends JPanel
+public class DiagramView extends UmbrellaView
 {
 	public DiagramView(MainWindow mainWindowToUse)
 	{
@@ -31,7 +31,7 @@ public class DiagramView extends JPanel
 		return diagram;
 	}
 
-	public static String cardName()
+	public String cardName()
 	{
 		return "Diagram";
 	}

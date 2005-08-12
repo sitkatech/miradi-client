@@ -16,11 +16,6 @@ import org.conservationmeasures.eam.main.EAM;
 
 public abstract class EAMAction extends AbstractAction
 {
-	public EAMAction(String label)
-	{
-		this(label, "icons/blankicon.png");
-	}
-	
 	public EAMAction(String label, String icon)
 	{
 		this(label, new ImageIcon(icon));

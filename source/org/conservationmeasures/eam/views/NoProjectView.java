@@ -3,19 +3,20 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.views;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionOpenProject;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.DialogLayout;
 
-public class NoProjectView extends JPanel
+public class NoProjectView extends UmbrellaView
 {
 	public NoProjectView(MainWindow mainWindow)
 	{
@@ -41,7 +42,7 @@ public class NoProjectView extends JPanel
 		layout.adjustSizes(this);
 	}
 	
-	public static String cardName()
+	public String cardName()
 	{
 		return "No project";
 	}

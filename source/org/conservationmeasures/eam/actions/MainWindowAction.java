@@ -9,6 +9,11 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 public abstract class MainWindowAction extends ProjectAction
 {
+	public MainWindowAction(MainWindow mainWindowToUse, String label)
+	{
+		super(mainWindowToUse.getProject(), label);
+		mainWindow = mainWindowToUse;
+	}
 	public MainWindowAction(MainWindow mainWindowToUse, String label, String icon)
 	{
 		super(mainWindowToUse.getProject(), label, icon);

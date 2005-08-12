@@ -25,6 +25,9 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.views.DiagramView;
+import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
 {
@@ -51,10 +54,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 		addWindowListener(new WindowEventHandler());
 
+		noProjectView = new NoProjectView(this);
+		diagramView = new DiagramView(this);
+
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
-		viewHolder.add(createNoProjectView(), NoProjectView.cardName());
-		viewHolder.add(createDiagramView(), DiagramView.cardName());
+		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
+		viewHolder.add(diagramView, diagramView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		setVisible(true);
 	}
@@ -78,21 +84,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return centerVertically;
 	}
 	
-	private JComponent createNoProjectView()
-	{
-		return createCenteredView(new NoProjectView(this));
-	}
-
-	private JComponent createDiagramView()
-	{
-		diagramView = new DiagramView(this);
-		return diagramView;
-	}
-	
-	private void setCurrentView(String name)
+	private void setCurrentView(UmbrellaView view)
 	{
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
-		layout.show(viewHolder, name);
+		layout.show(viewHolder, view.cardName());
 	}
 
 	public Project getProject()
@@ -118,7 +113,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			toolBarBox.removeAll();
 			toolBarBox.add(mainToolBar);
 
-			setCurrentView("Diagram");
+			setCurrentView(diagramView);
 			
 			project.load(this, projectFile);
 			validate();
@@ -166,6 +161,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	private Actions actions;
 	private Project project;
+	private NoProjectView noProjectView;
 	private DiagramView diagramView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;

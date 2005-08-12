@@ -9,13 +9,14 @@ import java.awt.event.ActionEvent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.VersionConstants;
 
-public class ActionAbout extends EAMAction
+public class ActionAbout extends MainWindowAction
 {
-	public ActionAbout()
+	public ActionAbout(MainWindow mainWindow)
 	{
-		super(getLabel());
+		super(mainWindow, getLabel());
 	}
 
 	private static String getLabel()
