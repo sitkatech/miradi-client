@@ -37,13 +37,13 @@ public class NodeDataHelper
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 	
-	public Point getNewLocation(int originalNodeId, int insertionPointX, int insertionPointY)
+	public Point getNewLocation(int originalNodeId, Point insertionPoint)
 	{
-		computeDeltas(insertionPointX, insertionPointY);
+		Point delta = computeDeltas(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
 		int originalX = originalNodeLocation.x;
 		int originalY = originalNodeLocation.y;
-		return new Point(originalX + deltaX, originalY + deltaY);
+		return new Point(originalX + delta.x, originalY + delta.y);
 	}
 
 	private void setInitialMappingOfIdsToOriginalIds(Vector existingNodesInProject) 
@@ -65,7 +65,7 @@ public class NodeDataHelper
 		return new Integer(value);
 	}
 	
-	private void computeDeltas(int insertionPointX, int insertionPointY)
+	private Point computeDeltas(Point insertionPoint)
 	{
 		Rectangle rect = null;
 		for (Iterator iter = mapNodeLocations.values().iterator(); iter.hasNext();) 
@@ -76,21 +76,19 @@ public class NodeDataHelper
 			else
 				rect.add(nodeLocation);
 		}
-		
-		if(insertionPointX < rect.x)
-			deltaX = -(rect.x - insertionPointX);
+		Point delta = new Point();
+		if(insertionPoint.x < rect.x)
+			delta.x = -(rect.x - insertionPoint.x);
 		else
-			deltaX = insertionPointX - rect.x;
+			delta.x = insertionPoint.x - rect.x;
 		
-		if(insertionPointY < rect.y)
-			deltaY = -(rect.y - insertionPointY);
+		if(insertionPoint.y < rect.y)
+			delta.y = -(rect.y - insertionPoint.y);
 		else
-			deltaY = insertionPointY - rect.y;
-		
+			delta.y = insertionPoint.y - rect.y;
+		return delta;
 	}
 	
 	HashMap mapNodeLocations = new HashMap();
 	HashMap mapNodeIds = new HashMap();
-	int deltaX = 0;
-	int deltaY = 0;
 }

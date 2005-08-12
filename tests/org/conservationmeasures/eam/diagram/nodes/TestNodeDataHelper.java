@@ -66,16 +66,17 @@ public class TestNodeDataHelper extends EAMTestCase
 	{
 		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
 		dataHelper.setOriginalLocation(originalNodeId1, nodeLocation1);
-
 		int insertX = 0;
 		int insertY = 0;
-		Point newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertX, insertY);
+		Point insertionPoint = new Point(insertX, insertY);
+		
+		Point newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertionPoint);
 		assertEquals(insertX, newNode1Location.x);
 		assertEquals(insertY, newNode1Location.y);
 		
 		dataHelper.setOriginalLocation(originalNodeId2, nodeLocation2);
-		newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertX, insertY);
-		Point newNode2Location = dataHelper.getNewLocation(originalNodeId2, insertX, insertY);
+		newNode1Location = dataHelper.getNewLocation(originalNodeId1, insertionPoint);
+		Point newNode2Location = dataHelper.getNewLocation(originalNodeId2, insertionPoint);
 		assertEquals(insertX+(nodeLocation1x-nodeLocation2x), newNode1Location.x);
 		assertEquals(insertY+(nodeLocation1y-nodeLocation2y), newNode1Location.y);
 		assertEquals(insertX, newNode2Location.x);
@@ -83,20 +84,21 @@ public class TestNodeDataHelper extends EAMTestCase
 
 		insertX = 50;
 		insertY = 50;
+		insertionPoint.setLocation(insertX, insertY); 
 		NodeDataHelper dataHelper2 = new NodeDataHelper(nodes);
 		dataHelper2.setOriginalLocation(originalNodeId1, nodeLocation1);
-		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertX, insertY);
+		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertionPoint);
 		assertEquals(insertX, newNode1Location.x);
 		assertEquals(insertY, newNode1Location.y);
 		
 		dataHelper2.setOriginalLocation(originalNodeId2, nodeLocation2);
-		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertX, insertY);
+		newNode1Location = dataHelper2.getNewLocation(originalNodeId1, insertionPoint);
 		int deltaX = 45;
 		int deltaY = 40;
 		assertEquals(nodeLocation1x+deltaX, newNode1Location.x);
 		assertEquals(nodeLocation1y+deltaY, newNode1Location.y);
 
-		newNode2Location = dataHelper2.getNewLocation(originalNodeId2, insertX, insertY);
+		newNode2Location = dataHelper2.getNewLocation(originalNodeId2, insertionPoint);
 		assertEquals(nodeLocation2x+deltaX, newNode2Location.x);
 		assertEquals(nodeLocation2y+deltaY, newNode2Location.y);
 		

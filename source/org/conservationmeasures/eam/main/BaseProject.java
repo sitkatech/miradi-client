@@ -90,7 +90,7 @@ public class BaseProject
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(), startPoint.x, startPoint.y);
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(), startPoint);
 			int newNodeId = dataHelper.getNewId(nodeData.getId());
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
