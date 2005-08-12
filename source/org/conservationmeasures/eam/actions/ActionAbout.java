@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.VersionConstants;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public class ActionAbout extends MainWindowAction
 {
@@ -24,7 +25,7 @@ public class ActionAbout extends MainWindowAction
 		return EAM.text("Action|About...");
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
 		String title = EAM.text("Title|About e-Adaptive Management");
 		String[] body = 

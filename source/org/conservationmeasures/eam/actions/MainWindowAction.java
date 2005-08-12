@@ -5,7 +5,12 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.event.ActionEvent;
+
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.UmbrellaView;
 
 public abstract class MainWindowAction extends ProjectAction
 {
@@ -20,5 +25,16 @@ public abstract class MainWindowAction extends ProjectAction
 		mainWindow = mainWindowToUse;
 	}
 
+	public void doAction(ActionEvent event) throws CommandFailedException
+	{
+		UmbrellaView view = mainWindow.getCurrentView();
+		doAction(view, event);
+	}
+	
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
+	{
+		EAM.logError("doAction(view, event) not implemented by: " + getClass().getName());
+	}
+	
 	MainWindow mainWindow;
 }

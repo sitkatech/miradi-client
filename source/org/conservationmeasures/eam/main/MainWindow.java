@@ -84,10 +84,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return centerVertically;
 	}
 	
+	public UmbrellaView getCurrentView()
+	{
+		return currentView;
+	}
+	
 	private void setCurrentView(UmbrellaView view)
 	{
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
 		layout.show(viewHolder, view.cardName());
+		currentView = view;
 	}
 
 	public Project getProject()
@@ -163,6 +169,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private Project project;
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
+	private UmbrellaView currentView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
 	private DiagramToolBar mainToolBar;
