@@ -41,17 +41,17 @@ public class TestNodeDataHelper extends EAMTestCase
 		nodes.add(node3);
 		
 		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
-		assertEquals(originalNode1, dataHelper.getUpdatedId(originalNode1));
-		assertEquals(originalNode2, dataHelper.getUpdatedId(originalNode2));
-		assertEquals(originalNode3, dataHelper.getUpdatedId(originalNode3));
-		assertEquals(Node.INVALID_ID, dataHelper.getUpdatedId(unknownNode));
+		assertEquals(originalNode1, dataHelper.getNewId(originalNode1));
+		assertEquals(originalNode2, dataHelper.getNewId(originalNode2));
+		assertEquals(originalNode3, dataHelper.getNewId(originalNode3));
+		assertEquals(Node.INVALID_ID, dataHelper.getNewId(unknownNode));
 		
-		dataHelper.updateIds(originalNode1, newNode1);
-		dataHelper.updateIds(originalNode2, newNode2);
-		dataHelper.updateIds(originalNode3, newNode3);
-		assertEquals(newNode1, dataHelper.getUpdatedId(originalNode1));
-		assertEquals(newNode2, dataHelper.getUpdatedId(originalNode2));
-		assertEquals(newNode3, dataHelper.getUpdatedId(originalNode3));
+		dataHelper.setNewId(originalNode1, newNode1);
+		dataHelper.setNewId(originalNode2, newNode2);
+		dataHelper.setNewId(originalNode3, newNode3);
+		assertEquals(newNode1, dataHelper.getNewId(originalNode1));
+		assertEquals(newNode2, dataHelper.getNewId(originalNode2));
+		assertEquals(newNode3, dataHelper.getNewId(originalNode3));
 		
 	}
 }

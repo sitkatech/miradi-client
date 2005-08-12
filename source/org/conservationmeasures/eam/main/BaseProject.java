@@ -79,22 +79,28 @@ public class BaseProject
 
 			int originalNodeId = nodeData.getId();
 			int newNodeId = newNode.getId();
-			dataHelper.updateIds(originalNodeId, newNodeId);
+			dataHelper.setNewId(originalNodeId, newNodeId);
 			
 			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
 			executeCommand(newNodeText);
-			CommandDiagramMove move = new CommandDiagramMove(startPoint.x, startPoint.y, new int[]{newNodeId});
-			executeCommand(move);
-			//TODO: fix its inital location
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
 		}
 
+		
+		for (int i = 0; i < nodes.length; i++) 
+		{
+			NodeData nodeData = nodes[i];
+			int newNodeId = dataHelper.getNewId(nodeData.getId());
+			CommandDiagramMove move = new CommandDiagramMove(startPoint.x, startPoint.y, new int[]{newNodeId});
+			executeCommand(move);
+		}
+		
 		for (int i = 0; i < links.length; i++) 
 		{
 			LinkageData linkageData = links[i];
 			
-			int newFromId = dataHelper.getUpdatedId(linkageData.getFromNodeId());
-			int newToId = dataHelper.getUpdatedId(linkageData.getToNodeId());
+			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
+			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());

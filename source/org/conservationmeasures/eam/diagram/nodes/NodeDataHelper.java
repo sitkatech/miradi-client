@@ -14,19 +14,24 @@ public class NodeDataHelper
 {
 	public NodeDataHelper(Vector existingNodesInProject)
 	{
+		setInitialMappingOfIdsToOriginalIds(existingNodesInProject);
+	}
+
+	private void setInitialMappingOfIdsToOriginalIds(Vector existingNodesInProject) 
+	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
 			Node node = (Node) iter.next();
-			updateIds(node.getId(), node.getId());
+			setNewId(node.getId(), node.getId());
 		}
 	}
 	
-	public void updateIds(int originalNodeId, int newNodeId)
+	public void setNewId(int originalNodeId, int newNodeId)
 	{
 		mapNodeIds.put(new Integer(originalNodeId), new Integer(newNodeId));
 	}
 	
-	public int getUpdatedId(int originalNodeId)
+	public int getNewId(int originalNodeId)
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(new Integer(originalNodeId));
 		if(newNodeId == null)
