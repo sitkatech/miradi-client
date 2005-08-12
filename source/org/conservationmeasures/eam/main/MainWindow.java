@@ -62,6 +62,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
+		
+		setCurrentView(noProjectView);
 		setVisible(true);
 	}
 
