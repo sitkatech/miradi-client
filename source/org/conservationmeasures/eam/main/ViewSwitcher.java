@@ -35,6 +35,7 @@ public class ViewSwitcher extends JComboBox
 	private ViewSwitcher(Object[] choices)
 	{
 		super(choices);
+		setToolTipText(EAM.text("TT|Switch to a different view"));
 	}
 	
 	static class ActionHandler implements ActionListener
