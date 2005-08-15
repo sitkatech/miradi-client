@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
@@ -19,8 +18,9 @@ import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class DiagramToolBar extends JToolBar
 {
@@ -32,37 +32,22 @@ public class DiagramToolBar extends JToolBar
 		JComboBox viewCombo = new JComboBox(views);
 		viewCombo.setSelectedIndex(1);
 
-		add(viewCombo);
+		//add(viewCombo);
+		add(new ToolBarButton(actions, ActionViewInterview.class));
 		addSeparator();
-		addButtonForAction(actions.get(ActionInsertGoal.class));
-		addButtonForAction(actions.get(ActionInsertThreat.class));
-		addButtonForAction(actions.get(ActionInsertIntervention.class));
-		addButtonForAction(actions.get(ActionInsertConnection.class));
+		add(new ToolBarButton(actions, ActionInsertGoal.class));
+		add(new ToolBarButton(actions, ActionInsertThreat.class));
+		add(new ToolBarButton(actions, ActionInsertIntervention.class));
+		add(new ToolBarButton(actions, ActionInsertConnection.class));
 		addSeparator();
-		addButtonForAction(actions.get(ActionUndo.class));
-		addButtonForAction(actions.get(ActionRedo.class));
+		add(new ToolBarButton(actions, ActionUndo.class));
+		add(new ToolBarButton(actions, ActionRedo.class));
 		addSeparator();
-		addButtonForAction(actions.get(ActionCut.class));
-		addButtonForAction(actions.get(ActionCopy.class));
-		addButtonForAction(actions.get(ActionPaste.class));
-		addButtonForAction(actions.get(ActionDelete.class));
-	}
-	
-	void addButtonForAction(EAMAction action)
-	{
-		ToolBarButton button = new ToolBarButton(action);
-		add(button);
+		add(new ToolBarButton(actions, ActionCut.class));
+		add(new ToolBarButton(actions, ActionCopy.class));
+		add(new ToolBarButton(actions, ActionPaste.class));
+		add(new ToolBarButton(actions, ActionDelete.class));
 	}
 	
 }
 
-class ToolBarButton extends JButton
-{
-	public ToolBarButton(EAMAction action)
-	{
-		super(action);
-		setText("");
-		setToolTipText(action.getToolTipText());
-	}
-	
-}

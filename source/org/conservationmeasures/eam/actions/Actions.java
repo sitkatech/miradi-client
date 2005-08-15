@@ -36,6 +36,8 @@ public class Actions
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));
 		registerAction(new ActionUndo(mainWindow));
+		registerAction(new ActionViewDiagram(mainWindow));
+		registerAction(new ActionViewInterview(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

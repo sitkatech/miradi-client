@@ -16,7 +16,7 @@ public class InterviewView extends UmbrellaView
 	public InterviewView(MainWindow mainWindow)
 	{
 		super(mainWindow);
-		setToolBar(new InterviewToolBar());
+		setToolBar(new InterviewToolBar(mainWindow.getActions()));
 	}
 
 	public String cardName()

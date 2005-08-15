@@ -8,9 +8,13 @@ package org.conservationmeasures.eam.views.interview;
 import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.utils.ToolBarButton;
+
 public class InterviewToolBar extends JToolBar
 {
-	public InterviewToolBar()
+	public InterviewToolBar(Actions actions)
 	{
 		setFloatable(false);
 
@@ -18,7 +22,7 @@ public class InterviewToolBar extends JToolBar
 		JComboBox viewCombo = new JComboBox(views);
 		viewCombo.setSelectedIndex(1);
 
+		add(new ToolBarButton(actions, ActionViewDiagram.class));
 		add(viewCombo);
 	}
-
 }

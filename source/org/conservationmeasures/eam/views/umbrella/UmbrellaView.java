@@ -89,6 +89,16 @@ abstract public class UmbrellaView extends JPanel
 		return new Redo(getProject());
 	}
 	
+	public Doer getViewDiagram()
+	{
+		return new ViewDiagram(getProject());
+	}
+	
+	public Doer getViewInterview()
+	{
+		return new ViewInterview(getProject());
+	}
+	
 	////////////////////////////////////////////////////////////
 	// these doers are not available in this class
 	

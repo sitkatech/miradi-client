@@ -160,6 +160,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	{
 		if(viewName.equals(diagramView.cardName()))
 			setCurrentView(diagramView);
+		else if(viewName.equals(interviewView.cardName()))
+			setCurrentView(interviewView);
 		else if(viewName.equals(noProjectView.cardName()))
 			setCurrentView(noProjectView);
 		else
