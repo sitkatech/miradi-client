@@ -103,6 +103,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		currentView = view;
 		toolBarBox.removeAll();
 		toolBarBox.add(getCurrentView().getToolBar());
+		toolBarBox.repaint();
 	}
 
 	public Project getProject()

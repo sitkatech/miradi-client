@@ -28,6 +28,11 @@ public class ActionViewInterview extends MainWindowAction
 	{
 		return EAM.text("TT|Switch to the Interview View");
 	}
+	
+	public String toString()
+	{
+		return getLabel();
+	}
 
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{

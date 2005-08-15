@@ -5,12 +5,11 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.actions.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.utils.ToolBarButton;
+import org.conservationmeasures.eam.main.ViewSwitcher;
 
 public class InterviewToolBar extends JToolBar
 {
@@ -18,11 +17,7 @@ public class InterviewToolBar extends JToolBar
 	{
 		setFloatable(false);
 
-		String[] views = new String[] {"Interview", "Diagram", "GIS Mapping", "Budgets", "Calendar",};
-		JComboBox viewCombo = new JComboBox(views);
-		viewCombo.setSelectedIndex(1);
-
-		add(new ToolBarButton(actions, ActionViewDiagram.class));
-		add(viewCombo);
+		add(ViewSwitcher.create(actions, ActionViewInterview.class));
 	}
+
 }

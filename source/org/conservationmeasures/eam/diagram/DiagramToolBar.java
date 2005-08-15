@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import javax.swing.JComboBox;
 import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -18,8 +17,9 @@ import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionViewInterview;
+import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class DiagramToolBar extends JToolBar
@@ -28,12 +28,7 @@ public class DiagramToolBar extends JToolBar
 	{
 		setFloatable(false);
 
-		String[] views = new String[] {"Interview", "Diagram", "GIS Mapping", "Budgets", "Calendar",};
-		JComboBox viewCombo = new JComboBox(views);
-		viewCombo.setSelectedIndex(1);
-
-		//add(viewCombo);
-		add(new ToolBarButton(actions, ActionViewInterview.class));
+		add(ViewSwitcher.create(actions, ActionViewDiagram.class));
 		addSeparator();
 		add(new ToolBarButton(actions, ActionInsertGoal.class));
 		add(new ToolBarButton(actions, ActionInsertThreat.class));
