@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
+import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
 public class ConnectionPropertiesDialog extends JDialog implements ActionListener
@@ -27,9 +28,9 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 	{
 		super(parent, EAM.text("Title|Connection Properties"));
 		mainWindow = parent;
-		Box bigBox = Box.createVerticalBox();
+		UiVBox bigBox = new UiVBox();
 		bigBox.add(createFromToBox());
-		bigBox.add(Box.createVerticalGlue());
+		bigBox.addSpace();
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();

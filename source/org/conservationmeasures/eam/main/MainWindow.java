@@ -74,21 +74,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 
 	private JComponent createCenteredView(JComponent viewToCenter)
 	{
-		// TODO: There *MUST* be a simpler way to center this view!
 		viewToCenter.setAlignmentX(0.5f);
 		viewToCenter.setAlignmentY(0.5f);
 		
-		Box centerHorizontally = Box.createVerticalBox();
-		//centerHorizontally.setBorder(new LineBorder(Color.RED));
-		centerHorizontally.add(viewToCenter);
+		Box centered = Box.createHorizontalBox();
+		centered.add(Box.createHorizontalGlue());
+		centered.add(viewToCenter);
+		centered.add(Box.createHorizontalGlue());
 		
-		Box centerVertically = Box.createHorizontalBox();
-		//centerVertically.setBorder(new LineBorder(Color.YELLOW));
-		centerVertically.add(Box.createHorizontalGlue());
-		centerVertically.add(centerHorizontally);
-		centerVertically.add(Box.createHorizontalGlue());
-		
-		return centerVertically;
+		return centered;
 	}
 	
 	public UmbrellaView getCurrentView()

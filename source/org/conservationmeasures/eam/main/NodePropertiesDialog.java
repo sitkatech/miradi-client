@@ -18,6 +18,7 @@ import javax.swing.JDialog;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiTextField;
+import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
@@ -26,9 +27,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			throws HeadlessException
 	{
 		super(parent, title);
-		Box bigBox = Box.createVerticalBox();
+		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(nodeToEdit.getText()));
-		bigBox.add(Box.createVerticalGlue());
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
