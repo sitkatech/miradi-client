@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.utils.Logging;
+import org.conservationmeasures.eam.views.NoProjectView;
 import org.jgraph.graph.GraphSelectionModel;
 
 
@@ -36,7 +37,7 @@ public class BaseProject
 	{
 		diagramModel = new DiagramModel();
 		storage = new Storage();
-		currentView = "";
+		currentView = NoProjectView.getViewName();
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
 	}
@@ -71,6 +72,11 @@ public class BaseProject
 	{
 		command.execute(this);
 		fireCommandExecuted(command);
+	}
+	
+	public String getCurrentView()
+	{
+		return currentView;
 	}
 	
 	public void switchToView(String viewName) throws CommandFailedException

@@ -9,7 +9,7 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramView;
+import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -42,7 +42,7 @@ public class TestBaseProject extends EAMTestCase
 		BaseProject project = new BaseProject();
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
-		Command toDiagram = new CommandDiagramView();
+		Command toDiagram = new CommandSwitchView(DiagramView.getViewName());
 		project.executeCommand(toDiagram);
 		assertEquals("didn't notify listener of diagram view?", 1, listener.diagramViewCount);
 		project.executeCommand(toDiagram);

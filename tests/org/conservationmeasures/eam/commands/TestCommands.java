@@ -22,6 +22,8 @@ import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class TestCommands extends EAMTestCase
 {
@@ -320,12 +322,20 @@ public class TestCommands extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	public void testCommandDiagramView() throws Exception
+	public void testCommandSwitchView() throws Exception
 	{
-		Command toDiagram = new CommandDiagramView();
+		CommandSwitchView toDiagram = new CommandSwitchView(DiagramView.getViewName());
 		project.executeCommand(toDiagram);
-		Command loaded = saveAndReload(toDiagram);
+		assertEquals("didn't switch?", toDiagram.getDestinationView(), project.getCurrentView());
+		assertEquals("didn't set from?", NoProjectView.getViewName(), toDiagram.getPreviousView());
+		
+		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toDiagram);
 		assertNotNull("didn't reload?", loaded);
+		assertEquals("wrong to?", toDiagram.getDestinationView(), loaded.getDestinationView());
+		assertEquals("wrong from?", toDiagram.getPreviousView(), loaded.getPreviousView());
+		
+		project.undo();
+		assertEquals("didn't switch back?", NoProjectView.getViewName(), project.getCurrentView());
 	}
 
 	private int insertGoal() throws Exception

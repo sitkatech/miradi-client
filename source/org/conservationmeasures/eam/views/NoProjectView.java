@@ -53,7 +53,7 @@ public class NoProjectView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "NoProject";
+		return "";
 	}
 
 }

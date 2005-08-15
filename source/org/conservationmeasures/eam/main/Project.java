@@ -11,9 +11,10 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramView;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class Project extends BaseProject
 {
@@ -43,7 +44,8 @@ public class Project extends BaseProject
 		
 		if(currentView.length() == 0)
 		{
-			executeCommand(new CommandDiagramView());
+			currentView = DiagramView.getViewName();
+			fireSwitchToView(currentView);
 		}
 		
 		fireCommandExecuted(new CommandDoNothing());
@@ -57,6 +59,8 @@ public class Project extends BaseProject
 	public void close()
 	{
 		getStorage().setFile(null);
+		currentView = NoProjectView.getViewName();
+		fireSwitchToView(currentView);
 	}
 
 	public String getName()

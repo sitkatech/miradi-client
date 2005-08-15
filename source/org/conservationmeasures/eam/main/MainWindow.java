@@ -144,7 +144,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	public void closeProject()
 	{
 		project.close();
-		setCurrentView(noProjectView);
 	}
 
 	public void exitNormally()
@@ -161,6 +160,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	{
 		if(viewName.equals(diagramView.cardName()))
 			setCurrentView(diagramView);
+		else if(viewName.equals(noProjectView.cardName()))
+			setCurrentView(noProjectView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
