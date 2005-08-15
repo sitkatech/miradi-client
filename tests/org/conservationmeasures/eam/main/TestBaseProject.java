@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
@@ -45,8 +46,14 @@ public class TestBaseProject extends EAMTestCase
 		Command toDiagram = new CommandSwitchView(DiagramView.getViewName());
 		project.executeCommand(toDiagram);
 		assertEquals("didn't notify listener of diagram view?", 1, listener.diagramViewCount);
-		project.executeCommand(toDiagram);
-		assertEquals("notified even though already in that view?", 1, listener.diagramViewCount);
+		try
+		{
+			project.executeCommand(toDiagram);
+			fail("Can't switch to current view");
+		}
+		catch(AlreadyInThatViewException ignoreExpected)
+		{
+		}
 	}
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception

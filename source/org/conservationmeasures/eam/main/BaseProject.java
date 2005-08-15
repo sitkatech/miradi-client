@@ -81,9 +81,6 @@ public class BaseProject
 	
 	public void switchToView(String viewName) throws CommandFailedException
 	{
-		if(currentView.equals(viewName))
-			return;
-		
 		currentView = viewName;
 		fireSwitchToView(viewName);
 	}

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -25,7 +26,14 @@ public class ViewDiagram extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		getProject().executeCommand(new CommandSwitchView(DiagramView.getViewName()));
+		try
+		{
+			getProject().executeCommand(new CommandSwitchView(DiagramView.getViewName()));
+		}
+		catch(AlreadyInThatViewException ignore)
+		{
+			// not really a problem
+		}
 	}
 
 }

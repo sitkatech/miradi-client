@@ -9,6 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 
@@ -43,6 +44,9 @@ public class CommandSwitchView extends Command
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		fromView = target.getCurrentView();
+		if(fromView.equals(toView))
+			throw new AlreadyInThatViewException("Already in view " + toView);
+		
 		target.switchToView(toView);
 	}
 
