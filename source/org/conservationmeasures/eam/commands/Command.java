@@ -33,6 +33,8 @@ public abstract class Command
 			return new CommandUndo(dataIn);
 		if(commandName.equals(CommandRedo.getCommandName()))
 			return new CommandRedo(dataIn);
+		if(commandName.equals(CommandDiagramView.getCommandName()))
+			return new CommandDiagramView(dataIn);
 		
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}

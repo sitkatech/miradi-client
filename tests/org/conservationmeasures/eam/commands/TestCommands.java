@@ -319,6 +319,14 @@ public class TestCommands extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 	}
+	
+	public void testCommandDiagramView() throws Exception
+	{
+		Command toDiagram = new CommandDiagramView();
+		project.executeCommand(toDiagram);
+		Command loaded = saveAndReload(toDiagram);
+		assertNotNull("didn't reload?", loaded);
+	}
 
 	private int insertGoal() throws Exception
 	{

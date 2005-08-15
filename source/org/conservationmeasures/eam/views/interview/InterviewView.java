@@ -21,6 +21,11 @@ public class InterviewView extends UmbrellaView
 
 	public String cardName()
 	{
+		return getViewName();
+	}
+	
+	static public String getViewName()
+	{
 		return "interview";
 	}
 

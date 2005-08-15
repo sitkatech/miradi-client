@@ -48,7 +48,12 @@ public class NoProjectView extends UmbrellaView
 	
 	public String cardName()
 	{
-		return "No project";
+		return getViewName();
+	}
+	
+	static public String getViewName()
+	{
+		return "NoProject";
 	}
 
 }

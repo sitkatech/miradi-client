@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramView;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 
@@ -38,6 +39,11 @@ public class Project extends BaseProject
 			EAM.logDebug("Executing " + command);
 			replayCommand(command);
 			getStorage().addCommandWithoutSaving(command);
+		}
+		
+		if(currentView.length() == 0)
+		{
+			executeCommand(new CommandDiagramView());
 		}
 		
 		fireCommandExecuted(new CommandDoNothing());

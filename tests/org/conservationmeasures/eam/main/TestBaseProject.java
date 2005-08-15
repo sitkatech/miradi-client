@@ -8,17 +8,45 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class TestBaseProject extends EAMTestCase
 {
 	public TestBaseProject(String name)
 	{
 		super(name);
+	}
+	
+	public void testViewChanges() throws Exception
+	{
+		class SampleViewChangeListener implements ViewChangeListener
+		{
+			public void switchToView(String viewName)
+			{
+				if(viewName.equals(DiagramView.getViewName()))
+					++diagramViewCount;
+				else
+					throw new RuntimeException("Unknown view: " + viewName);
+			}
+
+			int diagramViewCount;
+		}
+		
+		BaseProject project = new BaseProject();
+		SampleViewChangeListener listener = new SampleViewChangeListener();
+		project.addViewChangeListener(listener);
+		Command toDiagram = new CommandDiagramView();
+		project.executeCommand(toDiagram);
+		assertEquals("didn't notify listener of diagram view?", 1, listener.diagramViewCount);
+		project.executeCommand(toDiagram);
+		assertEquals("notified even though already in that view?", 1, listener.diagramViewCount);
 	}
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception

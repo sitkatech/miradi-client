@@ -36,7 +36,9 @@ public class BaseProject
 	{
 		diagramModel = new DiagramModel();
 		storage = new Storage();
+		currentView = "";
 		commandExecutedListeners = new Vector();
+		viewChangeListeners = new Vector();
 	}
 	
 	public boolean isOpen()
@@ -54,6 +56,11 @@ public class BaseProject
 		commandExecutedListeners.add(listener);
 	}
 
+	public void addViewChangeListener(ViewChangeListener listener)
+	{
+		viewChangeListeners.add(listener);
+	}
+	
 	public void executeCommand(Command command) throws CommandFailedException
 	{
 		command.execute(this);
@@ -64,6 +71,15 @@ public class BaseProject
 	{
 		command.execute(this);
 		fireCommandExecuted(command);
+	}
+	
+	public void switchToView(String viewName) throws CommandFailedException
+	{
+		if(currentView.equals(viewName))
+			return;
+		
+		currentView = viewName;
+		fireSwitchToView(viewName);
 	}
 	
 	public void pasteCellsIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException 
@@ -120,6 +136,15 @@ public class BaseProject
 		{
 			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
 			listener.commandExecuted(event);
+		}
+	}
+	
+	void fireSwitchToView(String viewName)
+	{
+		for(int i=0; i < viewChangeListeners.size(); ++i)
+		{
+			ViewChangeListener listener = (ViewChangeListener)viewChangeListeners.get(i);
+			listener.switchToView(viewName);
 		}
 	}
 	
@@ -245,6 +270,8 @@ public class BaseProject
 	DiagramModel diagramModel;
 	GraphSelectionModel selectionModel;
 	Vector commandExecutedListeners;
+	Vector viewChangeListeners;
+	String currentView;
 }
 
 class UndoRedoState

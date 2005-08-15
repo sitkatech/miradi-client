@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
+public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
 {
 	public MainWindow()
 	{
@@ -39,6 +39,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void start()
 	{
 		project.addCommandExecutedListener(this);
+		project.addViewChangeListener(this);
 
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
@@ -123,8 +124,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		try
 		{
-			setCurrentView(diagramView);
-			
 			project.load(this, projectFile);
 			validate();
 			updateTitle();
@@ -158,6 +157,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		actions.updateActionStates();
 	}
 	
+	public void switchToView(String viewName)
+	{
+		if(viewName.equals(diagramView.cardName()))
+			setCurrentView(diagramView);
+		else
+			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
+	}
+
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
 	}
