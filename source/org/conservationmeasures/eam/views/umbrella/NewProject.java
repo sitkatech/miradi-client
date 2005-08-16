@@ -25,23 +25,29 @@ public class NewProject extends MainWindowDoer
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(EAM.text("Title|Create New Project"));
+		dlg.setFileFilter(new EamProjectFileFilter());
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
 		dlg.setApproveButtonToolTipText("Create new project");
 		if(dlg.showDialog(getMainWindow(), EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
 			return;
 		
 		File chosen = dlg.getSelectedFile();
-		if(chosen.exists())
+		File newProjectFile = null;
+		if(chosen.getName().endsWith(EAM.PROJECT_EXTENSION))
+			newProjectFile = chosen;
+		else
+			newProjectFile = new File(chosen.getAbsolutePath() + EAM.PROJECT_EXTENSION);
+		if(newProjectFile.exists())
 		{
 			String title = EAM.text("Title|Overwrite existing project?");
 			String[] body = {EAM.text("This will replace the existing project with a new, empty project")};
 			if(!EAM.confirmDialog(title, body))
 				return;
 			
-			chosen.delete();
+			newProjectFile.delete();
 		}
 				
-		getMainWindow().loadProject(chosen);
+		getMainWindow().loadProject(newProjectFile);
 	}
 
 	public boolean isAvailable()

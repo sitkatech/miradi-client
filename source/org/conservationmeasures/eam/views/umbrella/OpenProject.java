@@ -25,6 +25,7 @@ public class OpenProject extends MainWindowDoer
 	{
 		JFileChooser dlg = new JFileChooser();
 		dlg.setDialogTitle(EAM.text("Title|Open Existing Project"));
+		dlg.setFileFilter(new EamProjectFileFilter());
 		if(dlg.showOpenDialog(getMainWindow()) != JFileChooser.APPROVE_OPTION)
 			return;
 		

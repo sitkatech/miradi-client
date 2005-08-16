@@ -127,4 +127,5 @@ public class EAM
 
 	public static String NEWLINE = System.getProperty("line.separator");
 	public static MainWindow mainWindow;
+	public static String PROJECT_EXTENSION = ".eam";
 }
