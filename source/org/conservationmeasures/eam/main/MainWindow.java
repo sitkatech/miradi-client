@@ -74,14 +74,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 
 	private JComponent createCenteredView(JComponent viewToCenter)
 	{
-		viewToCenter.setAlignmentX(0.5f);
-		viewToCenter.setAlignmentY(0.5f);
-		
 		Box centered = Box.createHorizontalBox();
 		centered.add(Box.createHorizontalGlue());
 		centered.add(viewToCenter);
 		centered.add(Box.createHorizontalGlue());
-		
 		return centered;
 	}
 	
