@@ -25,14 +25,22 @@ public class Undo extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		CommandUndo command = new CommandUndo();
 		try
 		{
-			getProject().executeCommand(command);
+			int stillMoreTransactionsToDo = 0;
+			do
+			{
+				if(getProject().IsNextUndoCommandEndTransaction())
+					++stillMoreTransactionsToDo;
+				if(getProject().IsNextUndoCommandBeginTransaction())
+					--stillMoreTransactionsToDo;
+				getProject().executeCommand(new CommandUndo());
+				// TODO: should we fire a command-undone here?
+			}while(stillMoreTransactionsToDo != 0);
 		}
-		catch(NothingToUndoException e)
+		catch (NothingToUndoException e)
 		{
-			// ignore it
+			// ignore this
 		}
 	}
 

@@ -37,4 +37,9 @@ public class CommandBeginTransaction extends Command
 		return getCommandName();
 	}
 
+	public boolean isBeginTransaction()
+	{
+		return true;
+	}
+	
 }

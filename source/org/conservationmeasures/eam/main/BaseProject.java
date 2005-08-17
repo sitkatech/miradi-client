@@ -12,7 +12,9 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
@@ -90,6 +92,7 @@ public class BaseProject
 		NodeData[] nodes = list.getNodeDataCells();
 		LinkageData[] links = list.getLinkageDataCells();
 		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
+		executeCommand(new CommandBeginTransaction());
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
@@ -130,6 +133,8 @@ public class BaseProject
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}
+		executeCommand(new CommandEndTransaction());
+
 	}
 
 	void fireCommandExecuted(Command command)
@@ -204,9 +209,39 @@ public class BaseProject
 		int indexToRedo = getIndexToRedo();
 		if(indexToRedo < 0)
 			throw new NothingToRedoException();
-		
-		Command commandToRedo = storage.getCommand(indexToRedo);
-		replayCommand(commandToRedo);
+		replayCommand(storage.getCommand(indexToRedo));
+	}
+
+	public boolean IsNextUndoCommandEndTransaction()
+	{
+		int indexToUndo = getIndexToUndo();
+		if(indexToUndo < 0)
+			return false;
+		return storage.getCommand(indexToUndo).isEndTransaction();
+	}
+	
+	public boolean IsNextUndoCommandBeginTransaction()
+	{
+		int indexToUndo = getIndexToUndo();
+		if(indexToUndo < 0)
+			return false;
+		return storage.getCommand(indexToUndo).isBeginTransaction();
+	}
+
+	public boolean IsNextRedoCommandEndTransaction()
+	{
+		int indexToRedo = getIndexToRedo();
+		if(indexToRedo < 0)
+			return false;
+		return storage.getCommand(indexToRedo).isEndTransaction();
+	}
+	
+	public boolean IsNextRedoCommandBeginTransaction()
+	{
+		int indexToRedo = getIndexToRedo();
+		if(indexToRedo < 0)
+			return false;
+		return storage.getCommand(indexToRedo).isBeginTransaction();
 	}
 	
 	public int getIndexToUndo()

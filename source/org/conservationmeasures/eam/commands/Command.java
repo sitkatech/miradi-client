@@ -56,6 +56,16 @@ public abstract class Command
 	{
 		return false;
 	}
+	
+	public boolean isBeginTransaction()
+	{
+		return false;
+	}
+	
+	public boolean isEndTransaction()
+	{
+		return false;
+	}
 
 	abstract public void execute(BaseProject target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream dataOut) throws IOException;

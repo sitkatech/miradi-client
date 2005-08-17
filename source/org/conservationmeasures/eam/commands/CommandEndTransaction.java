@@ -37,4 +37,8 @@ public class CommandEndTransaction extends Command
 		return getCommandName();
 	}
 	
+	public boolean isEndTransaction()
+	{
+		return true;
+	}
 }

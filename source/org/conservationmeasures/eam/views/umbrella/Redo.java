@@ -25,15 +25,22 @@ public class Redo extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		CommandRedo command = new CommandRedo();
 		try
 		{
-			getProject().executeCommand(command);
+			int stillMoreTransactionsToDo = 0;
+			do
+			{
+				if(getProject().IsNextRedoCommandEndTransaction())
+					--stillMoreTransactionsToDo;
+				if(getProject().IsNextRedoCommandBeginTransaction())
+					++stillMoreTransactionsToDo;
+				getProject().executeCommand(new CommandRedo());
+				// TODO: should we fire a command-undone here?
+			}while(stillMoreTransactionsToDo != 0);
 		}
 		catch (NothingToRedoException e)
 		{
 			// ignore this
 		}
 	}
-
 }

@@ -7,9 +7,11 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -37,7 +39,7 @@ public class Delete extends ProjectDoer
 	public void doIt() throws CommandFailedException
 	{
 		EAMGraphCell[] selectedRelatedCells = getProject().getSelectedAndRelatedCells();
-		
+		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i=0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
@@ -51,6 +53,7 @@ public class Delete extends ProjectDoer
 			if(cell.isNode())
 				deleteNode((Node)cell);
 		}
+		getProject().executeCommand(new CommandEndTransaction());
 	}
 
 	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException

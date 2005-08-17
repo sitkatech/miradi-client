@@ -258,6 +258,8 @@ public class TestCommands extends EAMTestCase
 	public void testUndo() throws Exception
 	{
 		CommandUndo cmd = new CommandUndo();
+		assertTrue(cmd.isUndo());
+		assertFalse(cmd.isRedo());
 		int insertedId = insertGoal();
 		project.executeCommand(cmd);
 		try
@@ -278,7 +280,15 @@ public class TestCommands extends EAMTestCase
 	public void testBeginTransaction() throws Exception
 	{
 		CommandBeginTransaction cmd = new CommandBeginTransaction();
+		assertTrue(cmd.isBeginTransaction());
+		assertFalse(cmd.isEndTransaction());
 		project.executeCommand(cmd);
+		assertTrue(project.IsNextUndoCommandBeginTransaction());
+		assertFalse(project.IsNextUndoCommandEndTransaction());
+		project.executeCommand(new CommandUndo());
+		assertTrue(project.IsNextRedoCommandBeginTransaction());
+		assertFalse(project.IsNextRedoCommandEndTransaction());
+
 		EAM.setLogToConsole();
 		CommandBeginTransaction loaded = (CommandBeginTransaction)saveAndReload(cmd);
 		assertNotNull("didn't reload?", loaded);
@@ -287,7 +297,15 @@ public class TestCommands extends EAMTestCase
 	public void testEndTransaction() throws Exception
 	{
 		CommandEndTransaction cmd = new CommandEndTransaction();
+		assertTrue(cmd.isEndTransaction());
+		assertFalse(cmd.isBeginTransaction());
 		project.executeCommand(cmd);
+		assertFalse(project.IsNextUndoCommandBeginTransaction());
+		assertTrue(project.IsNextUndoCommandEndTransaction());
+		project.executeCommand(new CommandUndo());
+		assertFalse(project.IsNextRedoCommandBeginTransaction());
+		assertTrue(project.IsNextRedoCommandEndTransaction());
+
 		EAM.setLogToConsole();
 		CommandEndTransaction loaded = (CommandEndTransaction)saveAndReload(cmd);
 		assertNotNull("didn't reload?", loaded);
