@@ -275,6 +275,24 @@ public class TestCommands extends EAMTestCase
 		assertNotNull("didn't reload?", loaded);
 	}
 	
+	public void testBeginTransaction() throws Exception
+	{
+		CommandBeginTransaction cmd = new CommandBeginTransaction();
+		project.executeCommand(cmd);
+		EAM.setLogToConsole();
+		CommandBeginTransaction loaded = (CommandBeginTransaction)saveAndReload(cmd);
+		assertNotNull("didn't reload?", loaded);
+	}
+
+	public void testEndTransaction() throws Exception
+	{
+		CommandEndTransaction cmd = new CommandEndTransaction();
+		project.executeCommand(cmd);
+		EAM.setLogToConsole();
+		CommandEndTransaction loaded = (CommandEndTransaction)saveAndReload(cmd);
+		assertNotNull("didn't reload?", loaded);
+	}
+
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
 		BaseProject emptyProject = new BaseProject();

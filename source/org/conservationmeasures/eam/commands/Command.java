@@ -35,7 +35,10 @@ public abstract class Command
 			return new CommandRedo(dataIn);
 		if(commandName.equals(CommandSwitchView.getCommandName()))
 			return new CommandSwitchView(dataIn);
-		
+		if(commandName.equals(CommandBeginTransaction.getCommandName()))
+			return new CommandBeginTransaction();
+		if(commandName.equals(CommandEndTransaction.getCommandName()))
+			return new CommandEndTransaction();
 		throw new RuntimeException("Attempted to load unknown command type: " + commandName);
 	}
 	
