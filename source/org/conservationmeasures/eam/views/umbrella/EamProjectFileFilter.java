@@ -18,7 +18,6 @@ public class EamProjectFileFilter extends FileFilter
 	public EamProjectFileFilter() 
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean accept(File pathname)
