@@ -8,12 +8,12 @@ package org.conservationmeasures.eam.views.interview;
 import java.awt.CardLayout;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.martus.swing.UiVBox;
 
-class Wizard extends JPanel
+class Wizard extends UiVBox
 {
 	Wizard()
 	{
@@ -23,7 +23,6 @@ class Wizard extends JPanel
 		currentStep = 0;
 		navigationButtons = new WizardNavigationButtons(this);
 		
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(stepHolder);
 		add(navigationButtons);
 	}

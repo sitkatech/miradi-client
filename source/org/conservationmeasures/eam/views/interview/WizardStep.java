@@ -5,17 +5,20 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-class WizardStep extends JPanel
+import org.martus.swing.UiVBox;
+
+class WizardStep extends UiVBox
 {
-	public WizardStep(String stepNameToUse, String contentsToUse)
+	public WizardStep(String stepNameToUse)
 	{
 		stepName = stepNameToUse;
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		add(new JLabel(contentsToUse));
+	}
+	
+	public void addText(String text)
+	{
+		add(new JLabel(text));
 	}
 	
 	String getStepName()
