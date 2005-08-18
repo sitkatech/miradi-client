@@ -32,7 +32,7 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 cell now.", 1, project.getDiagramModel().getCellCount());
 		
-		Node goal1 = project.getDiagramModel().getNodeById(insertedId);
+		project.getDiagramModel().getNodeById(insertedId);
 		Undo undo = new Undo(project);
 		undo.doIt();
 		assertEquals("Should have 0 cells now.", 0, project.getDiagramModel().getCellCount());
