@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.vies.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.diagram.TestInsertConnection;
+import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
 import org.martus.util.xml.TestSimpleXmlParser;
 
 public class MainTests extends TestCase
@@ -85,6 +86,9 @@ public class MainTests extends TestCase
 		// view.diagram package
 		suite.addTest(new TestSuite(TestUndoRedo.class));
 		suite.addTest(new TestSuite(TestInsertConnection.class));
+		
+		// view.interview package
+		suite.addTest(new TestSuite(TestWizardStepLoader.class));
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));

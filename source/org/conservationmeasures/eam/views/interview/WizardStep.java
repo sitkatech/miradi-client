@@ -5,20 +5,28 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
+import java.io.IOException;
+
 import javax.swing.JLabel;
 
 import org.martus.swing.UiVBox;
+import org.martus.util.UnicodeReader;
 
 class WizardStep extends UiVBox
 {
-	public WizardStep(String stepNameToUse)
+	public void loadTemplate(UnicodeReader reader) throws IOException
 	{
-		stepName = stepNameToUse;
+		WizardStepLoader.load(this, reader);
 	}
 	
 	public void addText(String text)
 	{
 		add(new JLabel(text));
+	}
+	
+	public void setStepName(String stepNameToUse)
+	{
+		stepName = stepNameToUse;
 	}
 	
 	String getStepName()
