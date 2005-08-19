@@ -21,9 +21,10 @@ public class InterviewView extends UmbrellaView
 	{
 		super(mainWindow);
 		setToolBar(new InterviewToolBar(mainWindow.getActions()));
-		wizard = new Wizard();
+		wizard = new Wizard(mainWindow.getProject());
 		wizard.addStep(createWelcomeStep());
 		wizard.addStep(createPrinciple1ATask2Step1());
+		wizard.showCurrentProjectStep();
 
 		setLayout(new BorderLayout());
 		add(wizard, BorderLayout.CENTER);

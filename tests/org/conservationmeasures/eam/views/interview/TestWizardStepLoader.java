@@ -7,6 +7,10 @@ package org.conservationmeasures.eam.views.interview;
 
 import java.util.Vector;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.UnicodeStringReader;
 
@@ -34,8 +38,10 @@ public class TestWizardStepLoader extends EAMTestCase
 		MockWizardStep step = createStepFromData(data);
 		assertEquals(stepName, step.getStepName());
 		assertEquals(2, step.getElementCount());
-		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, step.getElement(0));
-		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, step.getElement(1));
+		JLabel label0 = (JLabel)step.getElement(0);
+		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, label0.getText());
+		JLabel label1 = (JLabel)step.getElement(1);
+		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, label1.getText());
 	}
 	
 	public void testInputField() throws Exception
@@ -45,7 +51,8 @@ public class TestWizardStepLoader extends EAMTestCase
 		String template = "name\n" + prompt + inputField;
 		MockWizardStep step = createStepFromData(template);
 		assertEquals(2, step.getElementCount());
-		assertEquals("no input field?", "<<input>>", step.getElement(1));
+		JTextArea inputComponent = (JTextArea)step.getElement(1);
+		assertNotNull(inputComponent);
 	}
 	
 	private MockWizardStep createStepFromData(String data) throws Exception
@@ -63,14 +70,9 @@ public class TestWizardStepLoader extends EAMTestCase
 			elements = new Vector();
 		}
 		
-		public void addText(String text)
+		public void addComponent(JComponent componentToAdd)
 		{
-			elements.add(text);
-		}
-		
-		public void addInputField()
-		{
-			elements.add("<<input>>");
+			elements.add(componentToAdd);
 		}
 
 		public int getElementCount()
@@ -78,9 +80,9 @@ public class TestWizardStepLoader extends EAMTestCase
 			return elements.size();
 		}
 		
-		public String getElement(int index)
+		public JComponent getElement(int index)
 		{
-			return (String)elements.get(index);
+			return (JComponent)elements.get(index);
 		}
 		
 		Vector elements;

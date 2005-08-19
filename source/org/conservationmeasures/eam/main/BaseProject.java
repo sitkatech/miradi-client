@@ -40,6 +40,7 @@ public class BaseProject
 		diagramModel = new DiagramModel();
 		storage = new Storage();
 		currentView = NoProjectView.getViewName();
+		currentInterviewStepName = "welcome";
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
 	}
@@ -85,6 +86,16 @@ public class BaseProject
 	{
 		currentView = viewName;
 		fireSwitchToView(viewName);
+	}
+	
+	public String getCurrentInterviewStepName()
+	{
+		return currentInterviewStepName;
+	}
+	
+	public void setCurrentInterviewStepName(String newStepName)
+	{
+		currentInterviewStepName = newStepName;
 	}
 	
 	public void pasteCellsIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException 
@@ -310,6 +321,7 @@ public class BaseProject
 	Vector commandExecutedListeners;
 	Vector viewChangeListeners;
 	String currentView;
+	String currentInterviewStepName;
 }
 
 class UndoRedoState

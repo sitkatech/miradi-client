@@ -44,6 +44,23 @@ public class TestCommands extends EAMTestCase
 	{
 		super.tearDown();
 	}
+	
+	public void testCommandWizardNext() throws Exception
+	{
+		String stepName = project.getCurrentInterviewStepName();
+		assertEquals("project not starting at welcome?", "welcome", stepName);
+		CommandWizardNext cmd = new CommandWizardNext(stepName);
+		assertEquals("wrong step name?", stepName, cmd.getStepName());
+		
+		project.executeCommand(cmd);
+		assertEquals("didn't move to correct next step?", "P1aT2S1", project.getCurrentInterviewStepName());
+		
+		CommandWizardNext loaded = (CommandWizardNext)saveAndReload(cmd);
+		assertEquals("didn't load step name?", cmd.getStepName(), loaded.getStepName());
+		
+		cmd.undo(project);
+		assertEquals("didn't move back to earlier step?", stepName, project.getCurrentInterviewStepName());
+	}
 
 	public void testCommandDiagramMove() throws Exception
 	{
