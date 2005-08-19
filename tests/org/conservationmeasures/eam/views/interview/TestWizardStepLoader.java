@@ -34,8 +34,18 @@ public class TestWizardStepLoader extends EAMTestCase
 		MockWizardStep step = createStepFromData(data);
 		assertEquals(stepName, step.getStepName());
 		assertEquals(2, step.getElementCount());
-		assertEquals("wrong element0?", element0, step.getElement(0));
-		assertEquals("wrong element1?", element1 + "\n", step.getElement(1));
+		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, step.getElement(0));
+		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, step.getElement(1));
+	}
+	
+	public void testInputField() throws Exception
+	{
+		String prompt = ":html:\nPlease enter some data\n";
+		String inputField = ":input:\n";
+		String template = "name\n" + prompt + inputField;
+		MockWizardStep step = createStepFromData(template);
+		assertEquals(2, step.getElementCount());
+		assertEquals("no input field?", "<<input>>", step.getElement(1));
 	}
 	
 	private MockWizardStep createStepFromData(String data) throws Exception
@@ -57,6 +67,11 @@ public class TestWizardStepLoader extends EAMTestCase
 		{
 			elements.add(text);
 		}
+		
+		public void addInputField()
+		{
+			elements.add("<<input>>");
+		}
 
 		public int getElementCount()
 		{
@@ -71,4 +86,6 @@ public class TestWizardStepLoader extends EAMTestCase
 		Vector elements;
 	}
 	
+	final static String htmlStart = "<html>";
+	final static String htmlEnd = "</html>";
 }

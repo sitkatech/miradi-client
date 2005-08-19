@@ -59,25 +59,18 @@ public class InterviewView extends UmbrellaView
 	static public final String templateWelcome = 
 		"welcome\n" +
 		":html:\n" +
-		"<html>" +
 		"<h1>Interview</h1>" +
-		"<p>This view will walk the user through a series of questions.</p>" +
-		"</html>";
+		"<p>This view will walk the user through a series of questions.</p>";
 
 	static public final String templateP1aT2S1 = 	
 		"P1aT2S1\n" +
 		":html:\n" +
-			"<html>" +
-			"<p><font size='6'>Step 1.  Conceptualize</font></p>" +
-			"</html>\n" +
+			"<p><font size='6'>Step 1.  Conceptualize</font></p>\n" + 
 		":html:\n" +
-			"<html>" +
 			"<font size='5'>&nbsp;&nbsp;" +
 			"Principle 1A.  Be clear and specific about the issue or problem</font></p>" +
-			"<hr></hr>" +
-			"</html>\n" +
+			"<hr></hr>\n" +
 		":html:\n" +
-			"<html>" +
 			"<p><strong>Task 2. Define the scope of the area or theme</strong></p>" +
 			"<br></br>" +
 			"<p>Most conservation projects will focus on a defined geographic <u><em>project area</em></u> " + 
@@ -85,12 +78,10 @@ public class InterviewView extends UmbrellaView
 			"In a few cases, a conservation project may not focus on biodiversity in a specific area, " + 
 			"but instead will have a <u><em>theme</em></u> that focuses on a population of wide-ranging animals, " + 
 			"such as migratory birds.</p>" +
-			"<br></br>" +
-			"</html>\n" + 
+			"<br></br>\n" +
 		":html:\n" +
-			"<html>" +
-			"<p>Describe in a few sentences the project area or theme for your project:</p>" +
-			"</html>\n";
+			"<p>Describe in a few sentences the project area or theme for your project:</p>\n" + 
+		":input:\n";
 
 	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
 }
