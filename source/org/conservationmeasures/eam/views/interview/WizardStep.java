@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.interview;
 
 import java.io.IOException;
 
-import javax.swing.JLabel;
+import javax.swing.JComponent;
 
 import org.martus.swing.UiVBox;
 import org.martus.util.UnicodeReader;
@@ -19,9 +19,9 @@ class WizardStep extends UiVBox
 		WizardStepLoader.load(this, reader);
 	}
 	
-	public void addText(String text)
+	public void addComponent(JComponent componentToAdd)
 	{
-		add(new JLabel(text));
+		add(componentToAdd);
 	}
 	
 	public void setStepName(String stepNameToUse)

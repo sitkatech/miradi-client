@@ -5,8 +5,13 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
+import java.awt.Dimension;
 import java.io.IOException;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+
+import org.martus.swing.UiTextArea;
 import org.martus.util.UnicodeReader;
 
 public class WizardStepLoader
@@ -44,13 +49,14 @@ public class WizardStepLoader
 		if(!elementData.hasData())
 			return;
 
-		step.addText(elementData.toString());
+		step.addComponent(elementData.createComponent());
 	}
 	
 	static abstract class ElementData
 	{
 		abstract public boolean hasData();
 		abstract public void appendLine(String text);
+		abstract public JComponent createComponent();
 		abstract public String toString();
 	}
 	
@@ -77,7 +83,13 @@ public class WizardStepLoader
 			return data.toString();
 		}
 		
+		public JComponent createComponent()
+		{
+			return new JLabel(toString());
+		}
+
 		private StringBuffer data;
+
 	}
 	
 	static class NullElementData extends ElementData
@@ -95,6 +107,11 @@ public class WizardStepLoader
 		public String toString()
 		{
 			return null;
+		}
+
+		public JComponent createComponent()
+		{
+			throw new RuntimeException();
 		}
 	}
 	
@@ -121,6 +138,27 @@ public class WizardStepLoader
 		public void appendLine(String text)
 		{
 			throw new RuntimeException();
+		}
+
+		public JComponent createComponent()
+		{
+			NotHugeTextArea field = new NotHugeTextArea();
+			field.setLineWrap(true);
+			field.setWrapStyleWord(true);
+			return field;
+		}
+	}
+	
+	static class NotHugeTextArea extends UiTextArea
+	{
+		public NotHugeTextArea()
+		{
+			super(1, 80);
+		}
+		
+		public Dimension getMaximumSize()
+		{
+			return getPreferredSize();
 		}
 	}
 }
