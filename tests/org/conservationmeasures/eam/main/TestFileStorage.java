@@ -50,8 +50,8 @@ public class TestFileStorage extends EAMTestCase
 		storage.appendCommand(createGoal);
 		storage.appendCommand(createThreat);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
-		assertEquals("goal not gettable?", createGoal, storage.getCommand(0));
-		assertEquals("threat not gettable?", createThreat, storage.getCommand(1));
+		assertEquals("goal not gettable?", createGoal, storage.getCommandAt(0));
+		assertEquals("threat not gettable?", createThreat, storage.getCommandAt(1));
 		
 		Vector loaded = FileStorage.load(temp);
 		assertEquals("didn't load correct count?", 2, loaded.size());

@@ -207,52 +207,30 @@ public class BaseProject
 
 	public void undo() throws CommandFailedException
 	{
-		int indexToUndo = getIndexToUndo();
-		if(indexToUndo < 0)
-			throw new NothingToUndoException();
-		Command commandToUndo = storage.getCommand(indexToUndo);
-		commandToUndo.undo(this);
+		getCommandToUndo().undo(this);
 		// TODO: should we fire a command-undone here?
 	}
 	
 	public void redo() throws CommandFailedException
 	{
+		replayCommand(getCommandToRedo());
+	}
+
+	public Command getCommandToUndo() throws NothingToUndoException
+
+	{
+		int indexToUndo = getIndexToUndo();
+		if(indexToUndo < 0)
+			throw new NothingToUndoException();
+		return storage.getCommandAt(indexToUndo);
+	}
+	
+	public Command getCommandToRedo() throws NothingToRedoException
+	{
 		int indexToRedo = getIndexToRedo();
 		if(indexToRedo < 0)
 			throw new NothingToRedoException();
-		replayCommand(storage.getCommand(indexToRedo));
-	}
-
-	public boolean IsNextUndoCommandEndTransaction()
-	{
-		int indexToUndo = getIndexToUndo();
-		if(indexToUndo < 0)
-			return false;
-		return storage.getCommand(indexToUndo).isEndTransaction();
-	}
-	
-	public boolean IsNextUndoCommandBeginTransaction()
-	{
-		int indexToUndo = getIndexToUndo();
-		if(indexToUndo < 0)
-			return false;
-		return storage.getCommand(indexToUndo).isBeginTransaction();
-	}
-
-	public boolean IsNextRedoCommandEndTransaction()
-	{
-		int indexToRedo = getIndexToRedo();
-		if(indexToRedo < 0)
-			return false;
-		return storage.getCommand(indexToRedo).isEndTransaction();
-	}
-	
-	public boolean IsNextRedoCommandBeginTransaction()
-	{
-		int indexToRedo = getIndexToRedo();
-		if(indexToRedo < 0)
-			return false;
-		return storage.getCommand(indexToRedo).isBeginTransaction();
+		return storage.getCommandAt(indexToRedo);
 	}
 	
 	public int getIndexToUndo()
@@ -354,7 +332,7 @@ class UndoRedoState
 	{
 		for(int i=0; i < storage.getCommandCount(); ++i)
 		{
-			Command cmd = storage.getCommand(i);
+			Command cmd = storage.getCommandAt(i);
 			if(cmd.isUndo())
 			{
 				Object commandBeingUndone = nonUndoneCommandIndexes.get(0);

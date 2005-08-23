@@ -26,7 +26,7 @@ public class Storage
 		return commands.size();
 	}
 
-	public Command getCommand(int i)
+	public Command getCommandAt(int i)
 	{
 		if(i < 0 || i >= getCommandCount())
 			throw new RuntimeException("Command " + i + " not found");

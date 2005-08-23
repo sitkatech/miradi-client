@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
@@ -30,9 +31,10 @@ public class Redo extends ProjectDoer
 			boolean stillMoreTransactionsToDo = false;
 			do
 			{
-				if(getProject().IsNextRedoCommandEndTransaction())
+				Command commandToRedo = getProject().getCommandToRedo();
+				if(commandToRedo.isEndTransaction())
 					stillMoreTransactionsToDo = false;
-				if(getProject().IsNextRedoCommandBeginTransaction())
+				if(commandToRedo.isBeginTransaction())
 					stillMoreTransactionsToDo = true;
 				getProject().executeCommand(new CommandRedo());
 				// TODO: should we fire a command-undone here?

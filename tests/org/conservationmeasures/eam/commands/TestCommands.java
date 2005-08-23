@@ -300,11 +300,11 @@ public class TestCommands extends EAMTestCase
 		assertTrue(cmd.isBeginTransaction());
 		assertFalse(cmd.isEndTransaction());
 		project.executeCommand(cmd);
-		assertTrue(project.IsNextUndoCommandBeginTransaction());
-		assertFalse(project.IsNextUndoCommandEndTransaction());
+		assertTrue(project.getCommandToUndo().isBeginTransaction());
+		assertFalse(project.getCommandToUndo().isEndTransaction());
 		project.executeCommand(new CommandUndo());
-		assertTrue(project.IsNextRedoCommandBeginTransaction());
-		assertFalse(project.IsNextRedoCommandEndTransaction());
+		assertTrue(project.getCommandToRedo().isBeginTransaction());
+		assertFalse(project.getCommandToRedo().isEndTransaction());
 
 		EAM.setLogToConsole();
 		CommandBeginTransaction loaded = (CommandBeginTransaction)saveAndReload(cmd);
@@ -317,11 +317,11 @@ public class TestCommands extends EAMTestCase
 		assertTrue(cmd.isEndTransaction());
 		assertFalse(cmd.isBeginTransaction());
 		project.executeCommand(cmd);
-		assertFalse(project.IsNextUndoCommandBeginTransaction());
-		assertTrue(project.IsNextUndoCommandEndTransaction());
+		assertFalse(project.getCommandToUndo().isBeginTransaction());
+		assertTrue(project.getCommandToUndo().isEndTransaction());
 		project.executeCommand(new CommandUndo());
-		assertFalse(project.IsNextRedoCommandBeginTransaction());
-		assertTrue(project.IsNextRedoCommandEndTransaction());
+		assertFalse(project.getCommandToRedo().isBeginTransaction());
+		assertTrue(project.getCommandToRedo().isEndTransaction());
 
 		EAM.setLogToConsole();
 		CommandEndTransaction loaded = (CommandEndTransaction)saveAndReload(cmd);
