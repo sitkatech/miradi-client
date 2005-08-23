@@ -5,8 +5,10 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.Action;
 
@@ -46,6 +48,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		MouseHandler mouseHandler = new MouseHandler(this, project, actions);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
+	}
+	
+	public BufferedImage getImage()
+	{
+		int insets = 5;
+		return this.getImage(Color.WHITE, insets);
 	}
 
 	private void disableInPlaceEditing() 

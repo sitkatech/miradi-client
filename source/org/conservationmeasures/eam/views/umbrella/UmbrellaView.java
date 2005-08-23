@@ -117,6 +117,11 @@ abstract public class UmbrellaView extends JPanel
 		return nullDoer;
 	}
 	
+	public Doer getSaveJPEGImageDoer()
+	{
+		return nullDoer;
+	}
+	
 	public Doer getInsertConnectionDoer()
 	{
 		return nullDoer;

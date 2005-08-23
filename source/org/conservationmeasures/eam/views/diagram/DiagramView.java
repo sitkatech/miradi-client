@@ -43,6 +43,11 @@ public class DiagramView extends UmbrellaView
 	{
 		return "Diagram";
 	}
+	
+	public Doer getSaveJPEGImageDoer()
+	{
+		return new SaveJPEGImage(getMainWindow(), diagram.getImage());
+	}
 
 	public Doer getInsertGoalDoer(Point invocationPoint)
 	{

@@ -32,6 +32,7 @@ public class Actions
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionNodeProperties(mainWindow));
 		registerAction(new ActionOpenProject(mainWindow));
+		registerAction(new ActionSaveJPGImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));

@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionSaveJPGImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -44,6 +45,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
 		menu.add(new JMenuItem(actions.get(ActionOpenProject.class)));
+		menu.add(new JMenuItem(actions.get(ActionSaveJPGImage.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
