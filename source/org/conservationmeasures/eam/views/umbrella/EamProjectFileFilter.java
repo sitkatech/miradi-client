@@ -24,7 +24,7 @@ public class EamProjectFileFilter extends FileFilter
 	{
 		if(pathname.isDirectory())
 			return true;
-		return(pathname.getName().endsWith(EAM.PROJECT_EXTENSION));
+		return(pathname.getName().toLowerCase().endsWith(EAM.PROJECT_EXTENSION));
 	}
 
 	public String getDescription()
