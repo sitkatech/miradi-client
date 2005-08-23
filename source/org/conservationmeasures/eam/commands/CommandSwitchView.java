@@ -49,6 +49,17 @@ public class CommandSwitchView extends Command
 		
 		target.switchToView(toView);
 	}
+	
+	public String toString()
+	{
+		StringBuffer string = new StringBuffer();
+		string.append(getCommandName());
+		string.append(" from ");
+		string.append(getPreviousView());
+		string.append( " to ");
+		string.append(getDestinationView());
+		return string.toString();
+	}
 
 	public void undo(BaseProject target) throws CommandFailedException
 	{
