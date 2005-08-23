@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -28,13 +27,10 @@ public class Undo extends ProjectDoer
 	{
 		try
 		{
-			boolean stillMoreTransactionsToDo = false;
+			boolean stillMoreTransactionsToDo = getProject().getCommandToUndo().isEndTransaction();
 			do
 			{
-				Command commandToUndo = getProject().getCommandToUndo();
-				if(commandToUndo.isEndTransaction())
-					stillMoreTransactionsToDo = true;
-				if(commandToUndo.isBeginTransaction())
+				if(getProject().getCommandToUndo().isBeginTransaction())
 					stillMoreTransactionsToDo = false;
 				getProject().executeCommand(new CommandUndo());
 				// TODO: should we fire a command-undone here?
