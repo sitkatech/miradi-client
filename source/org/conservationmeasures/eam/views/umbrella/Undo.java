@@ -27,16 +27,16 @@ public class Undo extends ProjectDoer
 	{
 		try
 		{
-			int stillMoreTransactionsToDo = 0;
+			boolean stillMoreTransactionsToDo = false;
 			do
 			{
 				if(getProject().IsNextUndoCommandEndTransaction())
-					++stillMoreTransactionsToDo;
+					stillMoreTransactionsToDo = true;
 				if(getProject().IsNextUndoCommandBeginTransaction())
-					--stillMoreTransactionsToDo;
+					stillMoreTransactionsToDo = false;
 				getProject().executeCommand(new CommandUndo());
 				// TODO: should we fire a command-undone here?
-			}while(stillMoreTransactionsToDo != 0);
+			}while(stillMoreTransactionsToDo);
 		}
 		catch (NothingToUndoException e)
 		{

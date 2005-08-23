@@ -27,16 +27,16 @@ public class Redo extends ProjectDoer
 	{
 		try
 		{
-			int stillMoreTransactionsToDo = 0;
+			boolean stillMoreTransactionsToDo = false;
 			do
 			{
 				if(getProject().IsNextRedoCommandEndTransaction())
-					--stillMoreTransactionsToDo;
+					stillMoreTransactionsToDo = false;
 				if(getProject().IsNextRedoCommandBeginTransaction())
-					++stillMoreTransactionsToDo;
+					stillMoreTransactionsToDo = true;
 				getProject().executeCommand(new CommandRedo());
 				// TODO: should we fire a command-undone here?
-			}while(stillMoreTransactionsToDo != 0);
+			}while(stillMoreTransactionsToDo);
 		}
 		catch (NothingToRedoException e)
 		{
