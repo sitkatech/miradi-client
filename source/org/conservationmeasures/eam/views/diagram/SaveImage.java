@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JFileChooser;
 
@@ -61,18 +62,23 @@ public class SaveImage extends MainWindowDoer
 		try 
 		{
 			FileOutputStream out = new FileOutputStream(chosen);
-			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
-			JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
-			float quality = 1;
-			jpegParams.setQuality(quality, false);
-			encoder.setJPEGEncodeParam(jpegParams);
-			encoder.encode(image); 
+			saveImage(out); 
 			out.close();
 		} 
 		catch (Exception e) 
 		{
 			e.printStackTrace();
 		} 
+	}
+
+	private void saveImage(FileOutputStream out) throws IOException 
+	{
+		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
+		JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
+		float quality = 1;
+		jpegParams.setQuality(quality, false);
+		encoder.setJPEGEncodeParam(jpegParams);
+		encoder.encode(image);
 	}
 	
 	private BufferedImage image;
