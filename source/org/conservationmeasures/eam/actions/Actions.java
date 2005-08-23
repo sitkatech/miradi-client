@@ -32,13 +32,14 @@ public class Actions
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionNodeProperties(mainWindow));
 		registerAction(new ActionOpenProject(mainWindow));
-		registerAction(new ActionSaveJPGImage(mainWindow));
+		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));
 		registerAction(new ActionUndo(mainWindow));
 		registerAction(new ActionViewDiagram(mainWindow));
 		registerAction(new ActionViewInterview(mainWindow));
+		registerAction(new ActionViewTable(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

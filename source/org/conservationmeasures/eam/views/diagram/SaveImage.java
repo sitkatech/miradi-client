@@ -21,10 +21,10 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-public class SaveJPEGImage extends MainWindowDoer
+public class SaveImage extends MainWindowDoer
 {
 
-	public SaveJPEGImage(MainWindow mainWindowToUse, BufferedImage imageToSave) 
+	public SaveImage(MainWindow mainWindowToUse, BufferedImage imageToSave) 
 	{
 		super(mainWindowToUse);
 		image = imageToSave;

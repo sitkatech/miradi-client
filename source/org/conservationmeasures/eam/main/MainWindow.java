@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.table.TableView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
@@ -58,12 +59,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		noProjectView = new NoProjectView(this);
 		diagramView = new DiagramView(this);
 		interviewView = new InterviewView(this);
+		tableView = new TableView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(interviewView, interviewView.cardName());
+		viewHolder.add(tableView, tableView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -153,6 +156,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(diagramView);
 		else if(viewName.equals(interviewView.cardName()))
 			setCurrentView(interviewView);
+		else if(viewName.equals(tableView.cardName()))
+			setCurrentView(tableView);
 		else if(viewName.equals(noProjectView.cardName()))
 			setCurrentView(noProjectView);
 		else
@@ -181,6 +186,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
 	private InterviewView interviewView;
+	private TableView tableView;
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;

@@ -99,6 +99,11 @@ abstract public class UmbrellaView extends JPanel
 		return new ViewInterview(getProject());
 	}
 	
+	public Doer getViewTable()
+	{
+		return new ViewTable(getProject());
+	}
+
 	////////////////////////////////////////////////////////////
 	// these doers are not available in this class
 	
@@ -117,7 +122,7 @@ abstract public class UmbrellaView extends JPanel
 		return nullDoer;
 	}
 	
-	public Doer getSaveJPEGImageDoer()
+	public Doer getSaveImageDoer()
 	{
 		return nullDoer;
 	}

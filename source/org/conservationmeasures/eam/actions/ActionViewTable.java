@@ -13,25 +13,35 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActionSaveJPGImage extends MainWindowAction 
+public class ActionViewTable extends MainWindowAction 
 {
-	public ActionSaveJPGImage(MainWindow mainWindowToUse)
+	public ActionViewTable(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Save JPEG Image");
+		return EAM.text("Action|Table View");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Switch to the Table View");
+	}
+	
+	public String toString()
+	{
+		return getLabel();
 	}
 
 	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
 	{
-		view.getSaveJPEGImageDoer().doIt();
+		view.getViewTable().doIt();
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)
 	{
-		return view.getSaveJPEGImageDoer().isAvailable();
+		return view.getViewTable().isAvailable();
 	}
 }
