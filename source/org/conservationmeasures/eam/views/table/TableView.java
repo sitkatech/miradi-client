@@ -14,11 +14,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.UiLabel;
+import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
 public class TableView extends UmbrellaView 
@@ -32,8 +31,8 @@ public class TableView extends UmbrellaView
 		model = new TableViewModel(mainWindowToUse);
 		table = new UiTable(model);
 		table.setShowGrid(true);
-		add(table, BorderLayout.CENTER);
-		add(new UiLabel("Table"), BorderLayout.NORTH);
+		UiScrollPane pane = new UiScrollPane(table);
+		add(pane, BorderLayout.CENTER);
 		setBorder(new LineBorder(Color.BLACK));
 	}
 
@@ -44,7 +43,7 @@ public class TableView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "table";
+		return "Table";
 	}
 	
 	class TableViewModel extends DefaultTableModel
@@ -52,11 +51,8 @@ public class TableView extends UmbrellaView
 		public TableViewModel(MainWindow mainWindow)
 		{
 			super();
-			DiagramModel diagramModel = mainWindow.getProject().getDiagramModel();
-			Vector nodes = diagramModel.getAllNodes();
-			setRowCount(nodes.size());
+			setRowCount(0);
 			setColumnCount(3);
-			setEnabled(true);
 			Vector columnNames = new Vector();
 			columnNames.add(EAM.text("Table|Name"));
 			columnNames.add(EAM.text("Table|X"));

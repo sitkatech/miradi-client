@@ -38,7 +38,7 @@ public class InterviewView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "interview";
+		return "Interview";
 	}
 	
 	public WizardStep createWelcomeStep() throws IOException
