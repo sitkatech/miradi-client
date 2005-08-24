@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.swing.event.EventListenerList;
+
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
@@ -43,8 +45,37 @@ public class DiagramModel extends DefaultGraphModel
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
 		cellInventory.add(node, id);
+		try 
+		{
+			DiagramModelEvent nodeAdded = new DiagramModelEvent(node, getIndexByCell(node));
+			fireNodeAdded(nodeAdded);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 		return node;
 	}
+	
+	public void addDiagramModelListener(DiagramModelListener listener)
+	{
+		listenerList.add(DiagramModelListener.class, listener);
+	}
+	
+    public void removeMyEventListener(DiagramModelListener listener) 
+    {
+        listenerList.remove(DiagramModelListener.class, listener);
+    }	
+    
+    void fireNodeAdded(DiagramModelEvent event) 
+    {
+        Object[] diagramModelListeners = listenerList.getListenerList();
+        for (int i=0; i<diagramModelListeners.length; i+=2) 
+        {
+            if (diagramModelListeners[i]==DiagramModelListener.class) 
+                ((DiagramModelListener)diagramModelListeners[i+1]).nodeAdded(event);
+        }
+    }
 	
 	public void deleteNode(Node nodeToDelete)
 	{
@@ -146,6 +177,22 @@ public class DiagramModel extends DefaultGraphModel
 		return cell;
 	}
 	
+	public EAMGraphCell getCellByIndex(int index) throws Exception
+	{
+		EAMGraphCell cell = cellInventory.getByIndex(index);
+		if(cell == null)
+			throw new Exception("Cell doesn't exist, index: " + index);
+		return cell;
+	}
+	
+	public int getIndexByCell(EAMGraphCell cell)throws Exception
+	{
+		int index = cellInventory.getIndex(cell);
+		if(index == -1)
+			throw new Exception("Cell doesn't exist id:"+cell.getId());
+		return index;
+	}
+	
 	public Vector getAllNodes()
 	{
 		Vector nodes = new Vector();
@@ -187,6 +234,17 @@ class CellInventory
 		cell.setId(id);
 		cells.add(cell);
 	}
+	
+	public int getIndex(EAMGraphCell cellToFind)
+	{
+		for (int index = 0; index < cells.size(); ++index) 
+		{
+			EAMGraphCell cell = (EAMGraphCell) cells.get(index);
+			if(cell.getId() == cellToFind.getId())
+				return index;
+		}
+		return -1;
+	}
 
 	public int size()
 	{
@@ -222,4 +280,5 @@ class CellInventory
 
 	private int nextId;
 	Vector cells;
+	protected EventListenerList listenerList = new EventListenerList();
 }
