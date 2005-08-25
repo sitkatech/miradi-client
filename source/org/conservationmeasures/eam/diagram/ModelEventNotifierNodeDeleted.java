@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 
 public class ModelEventNotifierNodeDeleted implements ModelEventNotifier 
 {
-	public void fileAction(DiagramModelListener listener, DiagramModelEvent event) 
+	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
 		listener.nodeDeleted(event);
 	}

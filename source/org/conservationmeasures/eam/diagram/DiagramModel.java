@@ -45,9 +45,13 @@ public class DiagramModel extends DefaultGraphModel
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
 		cellInventory.add(node, id);
-		DiagramModelEvent nodeAdded = new DiagramModelEvent(this, node, getIndexByCell(node));
-		fireNodeAction(nodeAdded, new ModelEventNotifierNodeAdded());
+		fireNodeAction(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
 		return node;
+	}
+
+	private DiagramModelEvent createDiagramModelEvent(EAMGraphCell node) throws Exception 
+	{
+		return new DiagramModelEvent(this, node, getIndexByCell(node));
 	}
 	
 	public void addDiagramModelListener(DiagramModelListener listener)
@@ -64,14 +68,13 @@ public class DiagramModel extends DefaultGraphModel
     {
         for (int i=0; i<diagramModelListenerList.size(); ++i) 
         {
-        	eventNotifier.fileAction((DiagramModelListener)diagramModelListenerList.get(i), event);
+        	eventNotifier.doNotify((DiagramModelListener)diagramModelListenerList.get(i), event);
         }                
     }
 	
     public void deleteNode(Node nodeToDelete) throws Exception
 	{
-		DiagramModelEvent nodeDeleted = new DiagramModelEvent(this, nodeToDelete, getIndexByCell(nodeToDelete));
-		fireNodeAction(nodeDeleted, new ModelEventNotifierNodeDeleted());
+		fireNodeAction(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
@@ -138,8 +141,7 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
-		DiagramModelEvent nodeUpdated = new DiagramModelEvent(this, nodeToUpdate, getIndexByCell(nodeToUpdate));
-		fireNodeAction(nodeUpdated, new ModelEventNotifierNodeChanged());
+		fireNodeAction(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
 	public Node getNodeById(int id) throws Exception

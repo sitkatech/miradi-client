@@ -8,5 +8,5 @@ package org.conservationmeasures.eam.diagram;
 
 public interface ModelEventNotifier 
 {
-	public void fileAction(DiagramModelListener listener, DiagramModelEvent event);
+	public void doNotify(DiagramModelListener listener, DiagramModelEvent event);
 }
