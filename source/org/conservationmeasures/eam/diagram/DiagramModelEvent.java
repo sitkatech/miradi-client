@@ -13,15 +13,16 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 public class DiagramModelEvent extends EventObject 
 {
 
-	public DiagramModelEvent(EAMGraphCell nodeToUse, int indexToUse) 
+	public DiagramModelEvent(Object source, EAMGraphCell nodeToUse, int indexToUse) 
 	{
-		super(nodeToUse);
+		super(source);
+		node = nodeToUse;
 		index = indexToUse;
 	}
 	
 	public EAMGraphCell getNode()
 	{
-		return (EAMGraphCell)getSource();
+		return node;
 	}
 	
 	public int getIndex()
@@ -29,6 +30,6 @@ public class DiagramModelEvent extends EventObject
 		return index;
 	}
 	
+	private EAMGraphCell node;
 	private int index;
-
 }

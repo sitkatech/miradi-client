@@ -92,6 +92,47 @@ public class TestDiagramModel extends EAMTestCase
 		assertContains(node2, nodes);
 		assertContains(node3, nodes);
 	}
+	
+	public void testActionsFiring()
+	{
+		DiagramModel model = new DiagramModel();
+		TestTableModel testModel = new TestTableModel();
+		testModel.addListener(model);
+		Node nodeCreated = model.createNode(Node.TYPE_GOAL);
+		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
+		model.updateCell(nodeCreated);
+		assertEquals("test model wasn't notified of modify action?", 1, testModel.nodeChanged);
+		model.deleteNode(nodeCreated);
+		assertEquals("test model wasn't notified of delete action?", 1, testModel.nodeDeleted);
+	}
+	
+	class TestTableModel implements DiagramModelListener
+	{
+		
+		public void addListener(DiagramModel model)
+		{
+			model.addDiagramModelListener(this);
+		}
+
+		public void nodeAdded(DiagramModelEvent event) 
+		{
+			nodeAdded++;
+		}
+
+		public void nodeDeleted(DiagramModelEvent event) 
+		{
+			nodeDeleted++;
+		}
+
+		public void nodeChanged(DiagramModelEvent event) 
+		{
+			nodeChanged++;
+		}
+		
+		int nodeAdded = 0;
+		int nodeDeleted = 0;
+		int nodeChanged = 0;
+	}
 
 	
 }

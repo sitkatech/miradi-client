@@ -47,8 +47,8 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.add(node, id);
 		try 
 		{
-			DiagramModelEvent nodeAdded = new DiagramModelEvent(node, getIndexByCell(node));
-			fireNodeAdded(nodeAdded);
+			DiagramModelEvent nodeAdded = new DiagramModelEvent(this, node, getIndexByCell(node));
+			fireNodeAction(nodeAdded, DiagramModelListener.ACTION_ADDED);
 		} 
 		catch (Exception e) 
 		{
@@ -67,18 +67,53 @@ public class DiagramModel extends DefaultGraphModel
         listenerList.remove(DiagramModelListener.class, listener);
     }	
     
-    void fireNodeAdded(DiagramModelEvent event) 
+    void fireNodeAction(DiagramModelEvent event, int actionType) 
+    {
+        Object[] diagramModelListeners = listenerList.getListenerList();
+        for (int i=0; i<diagramModelListeners.length; i+=2) 
+        {
+            if (diagramModelListeners[i]==DiagramModelListener.class)
+            {
+            	switch (actionType)
+            	{
+            	case DiagramModelListener.ACTION_ADDED:
+            		((DiagramModelListener)diagramModelListeners[i+1]).nodeAdded(event);
+            		break;
+            	case DiagramModelListener.ACTION_CHANGED:
+            		((DiagramModelListener)diagramModelListeners[i+1]).nodeChanged(event);
+            		break;
+            	case DiagramModelListener.ACTION_DELETED:
+            		((DiagramModelListener)diagramModelListeners[i+1]).nodeDeleted(event);
+            		break;
+            	}
+                
+                                
+            }
+        }
+    }
+	
+    void fireNodeChanged(DiagramModelEvent event) 
     {
         Object[] diagramModelListeners = listenerList.getListenerList();
         for (int i=0; i<diagramModelListeners.length; i+=2) 
         {
             if (diagramModelListeners[i]==DiagramModelListener.class) 
-                ((DiagramModelListener)diagramModelListeners[i+1]).nodeAdded(event);
+                ((DiagramModelListener)diagramModelListeners[i+1]).nodeChanged(event);
         }
     }
-	
-	public void deleteNode(Node nodeToDelete)
+
+    public void deleteNode(Node nodeToDelete)
 	{
+		try 
+		{
+			DiagramModelEvent nodeDeleted = new DiagramModelEvent(this, nodeToDelete, getIndexByCell(nodeToDelete));
+			fireNodeAction(nodeDeleted, DiagramModelListener.ACTION_DELETED);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
 		cellInventory.remove(nodeToDelete);
@@ -139,6 +174,15 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateCell(EAMGraphCell nodeToUpdate)
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
+		try 
+		{
+			DiagramModelEvent nodeUpdated = new DiagramModelEvent(this, nodeToUpdate, getIndexByCell(nodeToUpdate));
+			fireNodeAction(nodeUpdated, DiagramModelListener.ACTION_CHANGED);
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean isNode(EAMGraphCell cell)
