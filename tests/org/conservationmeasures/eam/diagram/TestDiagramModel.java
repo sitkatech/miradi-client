@@ -172,18 +172,44 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel model = new DiagramModel();
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		Node nodeCreated = model.createNode(Node.TYPE_GOAL);
+		Node node1 = model.createNode(Node.TYPE_GOAL);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
-		assertEquals("test model fired a modify action?", 0, testModel.nodeChanged);
-		assertEquals("test model fired a delete action?", 0, testModel.nodeDeleted);
-		model.updateCell(nodeCreated);
-		assertEquals("test model  add action called again?", 1, testModel.nodeAdded);
-		assertEquals("test model wasn't notified of modify action?", 1, testModel.nodeChanged);
+		assertEquals(0, testModel.nodeChanged);
+		assertEquals(0, testModel.nodeDeleted);
+		assertEquals(0, testModel.linkAdded);
+		assertEquals(0, testModel.linkDeleted);
+		
+		model.updateCell(node1);
+		assertEquals(1, testModel.nodeAdded);
+		assertEquals(1, testModel.nodeChanged);
 		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
-		model.deleteNode(nodeCreated);
-		assertEquals("test model wasn't notified of delete action?", 1, testModel.nodeDeleted);
-		assertEquals("test model add action called for delete?", 1, testModel.nodeAdded);
+		assertEquals(0, testModel.linkAdded);
+		assertEquals(0, testModel.linkDeleted);
+		
+		model.deleteNode(node1);
+		assertEquals(1, testModel.nodeDeleted);
+		assertEquals(1, testModel.nodeAdded);
 		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);
+		assertEquals(0, testModel.linkAdded);
+		assertEquals(0, testModel.linkDeleted);
+
+		Node node2 = model.createNode(Node.TYPE_GOAL);
+		Node node3 = model.createNode(Node.TYPE_GOAL);
+		Linkage link1 = model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
+		assertEquals(3, testModel.nodeAdded);
+		assertEquals(1, testModel.nodeDeleted);
+		assertEquals(1, testModel.nodeChanged);
+		assertEquals("test model linkageAdded action not called for addition of a link?", 1, testModel.linkAdded);
+		assertEquals(0, testModel.linkDeleted);
+		model.deleteLinkage(link1);
+		assertEquals(3, testModel.nodeAdded);
+		assertEquals(1, testModel.nodeDeleted);
+		assertEquals(1, testModel.nodeChanged);
+		assertEquals(1, testModel.linkAdded);
+		assertEquals("test model linkagaDeleted action not called?",1, testModel.linkDeleted);
+		
+		
+		
 	}
 	
 	class TestTableModel implements DiagramModelListener
@@ -209,9 +235,21 @@ public class TestDiagramModel extends EAMTestCase
 			nodeChanged++;
 		}
 		
+		public void linkageAdded(DiagramModelEvent event) 
+		{
+			linkAdded++;
+		}
+
+		public void linkageDeleted(DiagramModelEvent event) 
+		{
+			linkDeleted++;
+		}
+
 		int nodeAdded = 0;
 		int nodeDeleted = 0;
 		int nodeChanged = 0;
+		int linkAdded = 0;
+		int linkDeleted = 0;
 	}
 
 	

@@ -45,7 +45,7 @@ public class DiagramModel extends DefaultGraphModel
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
 		cellInventory.add(node, id);
-		fireNodeAction(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
+		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
 		return node;
 	}
 
@@ -64,7 +64,7 @@ public class DiagramModel extends DefaultGraphModel
     	diagramModelListenerList.remove(listener);
     }	
     
-    void fireNodeAction(DiagramModelEvent event, ModelEventNotifier eventNotifier) 
+    void notifyListeners(DiagramModelEvent event, ModelEventNotifier eventNotifier) 
     {
         for (int i=0; i<diagramModelListenerList.size(); ++i) 
         {
@@ -74,7 +74,7 @@ public class DiagramModel extends DefaultGraphModel
 	
     public void deleteNode(Node nodeToDelete) throws Exception
 	{
-		fireNodeAction(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
+		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
@@ -92,11 +92,14 @@ public class DiagramModel extends DefaultGraphModel
 		ConnectionSet cs = linkage.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
 		cellInventory.add(linkage, linkageId);
+		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierLinkageAdded());
+		
 		return linkage;
 	}
 	
-	public void deleteLinkage(Linkage linkageToDelete)
+	public void deleteLinkage(Linkage linkageToDelete) throws Exception
 	{
+		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
 		cellInventory.remove(linkageToDelete);
@@ -146,7 +149,7 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
-		fireNodeAction(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
+		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
 	public Node getNodeById(int id) throws Exception

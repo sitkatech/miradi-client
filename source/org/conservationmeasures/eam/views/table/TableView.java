@@ -135,6 +135,14 @@ public class TableView extends UmbrellaView
 			fireTableRowsUpdated(index,index);
 			EAM.logDebug("DiagramModelListener: NodeChanged");
 		}
+
+		public void linkageAdded(DiagramModelEvent event) 
+		{
+		}
+
+		public void linkageDeleted(DiagramModelEvent event) 
+		{
+		}
 		
 		final static int TABLE_COLUMN_NAME = 0;
 		final static int TABLE_COLUMN_X = 1;
@@ -208,10 +216,22 @@ public class TableView extends UmbrellaView
 
 		public void nodeChanged(DiagramModelEvent event) 
 		{
-			fireTableDataChanged();
-			EAM.logDebug("DiagramModelLinkListener: NodeChanged");
 		}
 		
+		public void linkageAdded(DiagramModelEvent event) 
+		{
+			int index = event.getIndex();
+			fireTableRowsInserted(index,index);
+			EAM.logDebug("DiagramModelLinkListener: linkAdded");
+		}
+
+		public void linkageDeleted(DiagramModelEvent event) 
+		{
+			int index = event.getIndex();
+			fireTableRowsDeleted(index,index);
+			EAM.logDebug("DiagramModelLinkListener: linkDeleted");
+		}
+
 		final static int TABLE_COLUMN_FROM = 0;
 		final static int TABLE_COLUMN_TO = 1;
 		
