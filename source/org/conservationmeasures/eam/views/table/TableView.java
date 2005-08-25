@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
+import org.martus.swing.UiVBox;
 
 public class TableView extends UmbrellaView
 {
@@ -30,12 +31,20 @@ public class TableView extends UmbrellaView
 		super(mainWindowToUse);
 		setToolBar(new TableToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
-		model = new TableViewModel(mainWindowToUse.getProject().getDiagramModel());
-		model.addListener();
-		table = new UiTable(model);
-		table.setShowGrid(true);
-		UiScrollPane pane = new UiScrollPane(table);
-		add(pane, BorderLayout.CENTER);
+		DiagramModel diagramModel = mainWindowToUse.getProject().getDiagramModel();
+		TableViewNamesLocationsModel nameLocationModel = new TableViewNamesLocationsModel(diagramModel);
+		nameLocationModel.addListener();
+		UiTable tableNamesLocations = new UiTable(nameLocationModel);
+		
+		TableViewConnectionsModel connectionModel = new TableViewConnectionsModel(diagramModel);
+		connectionModel.addListener();
+		UiTable tableLinks = new UiTable(connectionModel);
+
+		UiVBox vBox = new UiVBox();
+		vBox.add(new UiScrollPane(tableNamesLocations));
+		vBox.addSpace();
+		vBox.add(new UiScrollPane(tableLinks));
+		add(vBox, BorderLayout.CENTER);
 		setBorder(new LineBorder(Color.BLACK));
 	}
 
@@ -49,9 +58,9 @@ public class TableView extends UmbrellaView
 		return "Table";
 	}
 	
-	class TableViewModel extends AbstractTableModel implements DiagramModelListener
+	class TableViewNamesLocationsModel extends AbstractTableModel implements DiagramModelListener
 	{
-		public TableViewModel(DiagramModel diagramModelToUse)
+		public TableViewNamesLocationsModel(DiagramModel diagramModelToUse)
 		{
 			super();
 			diagramModel = diagramModelToUse;
@@ -134,6 +143,85 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	private UiTable table;
-	private TableViewModel model;
+	class TableViewConnectionsModel extends AbstractTableModel implements DiagramModelListener
+	{
+		public TableViewConnectionsModel(DiagramModel diagramModelToUse)
+		{
+			super();
+			diagramModel = diagramModelToUse;
+			columnNames = new Vector();
+			columnNames.add(EAM.text("Table|From Node"));
+			columnNames.add(EAM.text("Table|To Node"));
+		}
+		
+		protected void addListener()
+		{
+			diagramModel.addDiagramModelListener(this);
+		}
+
+		public int getColumnCount() 
+		{
+			return columnNames.size();
+		}
+
+		public int getRowCount() 
+		{
+			return diagramModel.getLinkageCount();
+		}
+
+		public Object getValueAt(int rowIndex, int columnIndex) 
+		{
+			try 
+			{
+				EAMGraphCell node = diagramModel.getNodeByIndex(rowIndex);
+				
+				switch (columnIndex)
+				{
+				case TABLE_COLUMN_FROM:
+					return node.getText();
+				case TABLE_COLUMN_TO:
+					return node.getText();
+				default:
+					return null;
+				}
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+				return null;
+			}
+		}
+
+		public String getColumnName(int column) 
+		{
+			return (String)columnNames.get(column);
+		}
+		
+		public void nodeAdded(DiagramModelEvent event) 
+		{
+			int index = event.getIndex();
+			fireTableRowsInserted(index,index);
+			EAM.logDebug("DiagramModelLinkListener: NodeAdded");
+		}
+
+		public void nodeDeleted(DiagramModelEvent event) 
+		{
+			int index = event.getIndex();
+			fireTableRowsDeleted(index,index);
+			EAM.logDebug("DiagramModelLinkListener: NodeDeleted");
+		}
+
+		public void nodeChanged(DiagramModelEvent event) 
+		{
+			int index = event.getIndex();
+			fireTableRowsUpdated(index,index);
+			EAM.logDebug("DiagramModelLinkListener: NodeChanged");
+		}
+		
+		final static int TABLE_COLUMN_FROM = 0;
+		final static int TABLE_COLUMN_TO = 1;
+		
+		private Vector columnNames;
+		private DiagramModel diagramModel;
+	}
 }
