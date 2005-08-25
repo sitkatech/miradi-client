@@ -5,13 +5,13 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-
-import javax.swing.event.EventListenerList;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
@@ -52,37 +52,31 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addDiagramModelListener(DiagramModelListener listener)
 	{
-		listenerList.add(DiagramModelListener.class, listener);
+		diagramModelListenerList.add(listener);
 	}
 	
     public void removeMyEventListener(DiagramModelListener listener) 
     {
-        listenerList.remove(DiagramModelListener.class, listener);
+    	diagramModelListenerList.remove(listener);
     }	
     
     void fireNodeAction(DiagramModelEvent event, int actionType) 
     {
-        Object[] diagramModelListeners = listenerList.getListenerList();
-        for (int i=0; i<diagramModelListeners.length; i+=2) 
+        for (int i=0; i<diagramModelListenerList.size(); ++i) 
         {
-            if (diagramModelListeners[i]==DiagramModelListener.class)
-            {
-            	switch (actionType)
-            	{
-            	case DiagramModelListener.ACTION_ADDED:
-            		((DiagramModelListener)diagramModelListeners[i+1]).nodeAdded(event);
-            		break;
-            	case DiagramModelListener.ACTION_CHANGED:
-            		((DiagramModelListener)diagramModelListeners[i+1]).nodeChanged(event);
-            		break;
-            	case DiagramModelListener.ACTION_DELETED:
-            		((DiagramModelListener)diagramModelListeners[i+1]).nodeDeleted(event);
-            		break;
-            	}
-                
-                                
-            }
-        }
+        	switch (actionType)
+        	{
+        	case DiagramModelListener.ACTION_ADDED:
+        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeAdded(event);
+        		break;
+        	case DiagramModelListener.ACTION_CHANGED:
+        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeChanged(event);
+        		break;
+        	case DiagramModelListener.ACTION_DELETED:
+        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeDeleted(event);
+        		break;
+        	}
+        }                
     }
 	
     public void deleteNode(Node nodeToDelete) throws Exception
@@ -220,7 +214,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 
 	CellInventory cellInventory;
-	protected EventListenerList listenerList = new EventListenerList();
+	protected List diagramModelListenerList = new ArrayList();
 	
 }
 
