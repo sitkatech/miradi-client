@@ -133,6 +133,11 @@ public class DiagramModel extends DefaultGraphModel
 		return getAllNodes().size();
 	}
 	
+	public int getLinkageCount()
+	{
+		return getAllLinkages().size();
+	}
+
 	public Set getLinkages(Node node)
 	{
 		return getEdges(this, new Object[] {node});
@@ -201,6 +206,18 @@ public class DiagramModel extends DefaultGraphModel
 				nodes.add(cell);
 		}	
 		return nodes;
+	}
+	
+	public Vector getAllLinkages()
+	{
+		Vector linkages = new Vector();
+		for(int i=0; i < cellInventory.size(); ++i)
+		{
+			EAMGraphCell cell = cellInventory.getByIndex(i);
+			if(cell.isLinkage())
+				linkages.add(cell);
+		}	
+		return linkages;
 	}
 	
 

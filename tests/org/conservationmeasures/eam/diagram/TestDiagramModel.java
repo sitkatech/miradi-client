@@ -30,6 +30,17 @@ public class TestDiagramModel extends EAMTestCase
 		assertFalse("linkage is a node?", link.isNode());
 	}
 	
+	public void testCounts()throws Exception
+	{
+		DiagramModel model = new DiagramModel();
+		Node threat = model.createNode(Node.TYPE_THREAT);
+		Node goal = model.createNode(Node.TYPE_GOAL);
+		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
+		assertEquals(2, model.getNodeCount());
+		assertEquals(3, model.getCellCount());
+		assertEquals(1, model.getLinkageCount());
+	}
+	
 	public void testHasLinkage() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
@@ -56,6 +67,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertTrue("missed first?", found.contains(linkage1));
 		assertTrue("missed second?", found.contains(linkage2));
 	}
+	
 	
 	public void testUpdatesNextId() throws Exception
 	{
@@ -91,6 +103,22 @@ public class TestDiagramModel extends EAMTestCase
 		assertContains(node1, nodes);
 		assertContains(node2, nodes);
 		assertContains(node3, nodes);
+	}
+	
+	public void testGetAllLinkages() throws Exception
+	{
+		DiagramModel model = new DiagramModel();
+		Node node1 = model.createNode(Node.TYPE_GOAL);		
+		Node node2 = model.createNode(Node.TYPE_GOAL);		
+		Linkage link1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
+		Node node3 = model.createNode(Node.TYPE_GOAL);		
+		Linkage link2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
+		
+		Vector linkages = model.getAllLinkages();
+		assertEquals(2, linkages.size());
+		assertContains(link1, linkages);
+		assertContains(link2, linkages);
+		
 	}
 	
 	public void testActionsFiring() throws Exception
