@@ -13,9 +13,4 @@ public interface DiagramModelListener extends EventListener
 	public void nodeAdded(DiagramModelEvent event);
 	public void nodeChanged(DiagramModelEvent event);
 	public void nodeDeleted(DiagramModelEvent event);
-	
-	final static int ACTION_ADDED = 0;
-	final static int ACTION_CHANGED = 1;
-	final static int ACTION_DELETED = 2;
-	
 }

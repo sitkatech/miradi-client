@@ -46,7 +46,7 @@ public class DiagramModel extends DefaultGraphModel
 		insert(nodes, nestedAttributeMap, null, null, null);
 		cellInventory.add(node, id);
 		DiagramModelEvent nodeAdded = new DiagramModelEvent(this, node, getIndexByCell(node));
-		fireNodeAction(nodeAdded, DiagramModelListener.ACTION_ADDED);
+		fireNodeAction(nodeAdded, new ModelEventNotifierNodeAdded());
 		return node;
 	}
 	
@@ -60,29 +60,18 @@ public class DiagramModel extends DefaultGraphModel
     	diagramModelListenerList.remove(listener);
     }	
     
-    void fireNodeAction(DiagramModelEvent event, int actionType) 
+    void fireNodeAction(DiagramModelEvent event, ModelEventNotifier eventNotifier) 
     {
         for (int i=0; i<diagramModelListenerList.size(); ++i) 
         {
-        	switch (actionType)
-        	{
-        	case DiagramModelListener.ACTION_ADDED:
-        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeAdded(event);
-        		break;
-        	case DiagramModelListener.ACTION_CHANGED:
-        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeChanged(event);
-        		break;
-        	case DiagramModelListener.ACTION_DELETED:
-        		((DiagramModelListener)diagramModelListenerList.get(i)).nodeDeleted(event);
-        		break;
-        	}
+        	eventNotifier.fileAction((DiagramModelListener)diagramModelListenerList.get(i), event);
         }                
     }
 	
     public void deleteNode(Node nodeToDelete) throws Exception
 	{
 		DiagramModelEvent nodeDeleted = new DiagramModelEvent(this, nodeToDelete, getIndexByCell(nodeToDelete));
-		fireNodeAction(nodeDeleted, DiagramModelListener.ACTION_DELETED);
+		fireNodeAction(nodeDeleted, new ModelEventNotifierNodeDeleted());
 
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
@@ -145,7 +134,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
 		DiagramModelEvent nodeUpdated = new DiagramModelEvent(this, nodeToUpdate, getIndexByCell(nodeToUpdate));
-		fireNodeAction(nodeUpdated, DiagramModelListener.ACTION_CHANGED);
+		fireNodeAction(nodeUpdated, new ModelEventNotifierNodeChanged());
 	}
 	
 	public boolean isNode(EAMGraphCell cell)

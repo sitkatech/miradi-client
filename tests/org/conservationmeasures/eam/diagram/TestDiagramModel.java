@@ -103,7 +103,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("test model fired a modify action?", 0, testModel.nodeChanged);
 		assertEquals("test model fired a delete action?", 0, testModel.nodeDeleted);
 		model.updateCell(nodeCreated);
-		assertEquals("test model  add action called?", 1, testModel.nodeAdded);
+		assertEquals("test model  add action called again?", 1, testModel.nodeAdded);
 		assertEquals("test model wasn't notified of modify action?", 1, testModel.nodeChanged);
 		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
 		model.deleteNode(nodeCreated);
