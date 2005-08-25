@@ -92,16 +92,6 @@ public class DiagramModel extends DefaultGraphModel
         }
     }
 	
-    void fireNodeChanged(DiagramModelEvent event) 
-    {
-        Object[] diagramModelListeners = listenerList.getListenerList();
-        for (int i=0; i<diagramModelListeners.length; i+=2) 
-        {
-            if (diagramModelListeners[i]==DiagramModelListener.class) 
-                ((DiagramModelListener)diagramModelListeners[i+1]).nodeChanged(event);
-        }
-    }
-
     public void deleteNode(Node nodeToDelete)
 	{
 		try 
