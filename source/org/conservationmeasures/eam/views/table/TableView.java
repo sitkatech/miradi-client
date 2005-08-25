@@ -80,7 +80,7 @@ public class TableView extends UmbrellaView
 		{
 			try 
 			{
-				EAMGraphCell node = diagramModel.getCellByIndex(rowIndex);
+				EAMGraphCell node = diagramModel.getNodeByIndex(rowIndex);
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_NAME:

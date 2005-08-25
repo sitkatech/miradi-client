@@ -25,9 +25,9 @@ public class TestDiagramModel extends EAMTestCase
 		Node threat = model.createNode(Node.TYPE_THREAT);
 		Node goal = model.createNode(Node.TYPE_GOAL);
 		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
-		assertTrue("threat isn't a node?", model.isNode(threat));
-		assertTrue("goal isn't a node?", model.isNode(goal));
-		assertFalse("linkage is a node?", model.isNode(link));
+		assertTrue("threat isn't a node?", threat.isNode());
+		assertTrue("goal isn't a node?", goal.isNode());
+		assertFalse("linkage is a node?", link.isNode());
 	}
 	
 	public void testHasLinkage() throws Exception

@@ -142,11 +142,6 @@ public class DiagramModel extends DefaultGraphModel
 		fireNodeAction(nodeUpdated, new ModelEventNotifierNodeChanged());
 	}
 	
-	public boolean isNode(EAMGraphCell cell)
-	{
-		return cell.isNode();
-	}
-	
 	public Node getNodeById(int id) throws Exception
 	{
 		return (Node)getCellById(id);
@@ -178,14 +173,14 @@ public class DiagramModel extends DefaultGraphModel
 		return cell;
 	}
 	
-	public EAMGraphCell getCellByIndex(int index) throws Exception
+	public EAMGraphCell getNodeByIndex(int index) throws Exception
 	{
-		EAMGraphCell cell = cellInventory.getByIndex(index);
+		EAMGraphCell cell = cellInventory.getNodeByIndex(index);
 		if(cell == null)
 			throw new Exception("Cell doesn't exist, index: " + index);
 		return cell;
 	}
-	
+
 	public int getIndexByCell(EAMGraphCell cell)throws Exception
 	{
 		int index = cellInventory.getIndex(cell);
@@ -257,6 +252,20 @@ class CellInventory
 	public EAMGraphCell getByIndex(int index)
 	{
 		return (EAMGraphCell)cells.get(index);
+	}
+	
+	public EAMGraphCell getNodeByIndex(int index)
+	{
+		int currentIndex = -1;
+		for(int i = 0; i < cells.size(); ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)cells.get(i);
+			if(cell.isNode())
+				++currentIndex;
+			if(currentIndex == index)
+				return cell;
+		}
+		return null;
 	}
 	
 	public EAMGraphCell getById(int id)

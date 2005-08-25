@@ -64,7 +64,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
-			if(model.isNode((EAMGraphCell)selectedCells[i]))
+			if(((EAMGraphCell)selectedCells[i]).isNode())
 				selectedNodes.add(selectedCells[i]);
 		}
 		
