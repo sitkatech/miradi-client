@@ -114,10 +114,16 @@ public class TableView extends UmbrellaView
 
 		public void nodeDeleted(DiagramModelEvent event) 
 		{
+			int index = event.getIndex();
+			fireTableRowsDeleted(index,index);
+			EAM.logDebug("DiagramModelListener: NodeDeleted");
 		}
 
 		public void nodeChanged(DiagramModelEvent event) 
 		{
+			int index = event.getIndex();
+			fireTableRowsUpdated(index,index);
+			EAM.logDebug("DiagramModelListener: NodeDeletedChanged");
 		}
 		
 		final static int TABLE_COLUMN_NAME = 0;
