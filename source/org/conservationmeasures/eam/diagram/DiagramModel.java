@@ -251,6 +251,8 @@ public class DiagramModel extends DefaultGraphModel
 	
 
 	CellInventory cellInventory;
+	protected EventListenerList listenerList = new EventListenerList();
+	
 }
 
 class CellInventory
@@ -324,5 +326,4 @@ class CellInventory
 
 	private int nextId;
 	Vector cells;
-	protected EventListenerList listenerList = new EventListenerList();
 }

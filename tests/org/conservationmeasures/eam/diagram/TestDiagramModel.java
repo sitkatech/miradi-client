@@ -100,10 +100,16 @@ public class TestDiagramModel extends EAMTestCase
 		testModel.addListener(model);
 		Node nodeCreated = model.createNode(Node.TYPE_GOAL);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
+		assertEquals("test model fired a modify action?", 0, testModel.nodeChanged);
+		assertEquals("test model fired a delete action?", 0, testModel.nodeDeleted);
 		model.updateCell(nodeCreated);
+		assertEquals("test model  add action called?", 1, testModel.nodeAdded);
 		assertEquals("test model wasn't notified of modify action?", 1, testModel.nodeChanged);
+		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
 		model.deleteNode(nodeCreated);
 		assertEquals("test model wasn't notified of delete action?", 1, testModel.nodeDeleted);
+		assertEquals("test model add action called for delete?", 1, testModel.nodeAdded);
+		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);
 	}
 	
 	class TestTableModel implements DiagramModelListener
