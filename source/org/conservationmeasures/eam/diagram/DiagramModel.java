@@ -106,7 +106,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getByIndex(i);
+			EAMGraphCell cell = cellInventory.getCellByIndex(i);
 			if(!cell.isLinkage())
 				continue;
 			
@@ -180,12 +180,21 @@ public class DiagramModel extends DefaultGraphModel
 		return cell;
 	}
 	
-	public EAMGraphCell getNodeByIndex(int index) throws Exception
+	public Node getNodeByIndex(int index) throws Exception
 	{
-		EAMGraphCell cell = cellInventory.getNodeByIndex(index);
+		Node cell = cellInventory.getNodeByIndex(index);
 		if(cell == null)
 			throw new Exception("Cell doesn't exist, index: " + index);
 		return cell;
+	}
+	
+	public Linkage getLinkageByIndex(int index) throws Exception
+	{
+		Linkage linkage = cellInventory.getLinkageByIndex(index);
+		if(linkage == null)
+			throw new Exception("Linkage doesn't exist, index: " + index);
+		return linkage;
+		
 	}
 
 	public int getIndexByCell(EAMGraphCell cell)throws Exception
@@ -201,7 +210,7 @@ public class DiagramModel extends DefaultGraphModel
 		Vector nodes = new Vector();
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getByIndex(i);
+			EAMGraphCell cell = cellInventory.getCellByIndex(i);
 			if(cell.isNode())
 				nodes.add(cell);
 		}	
@@ -213,7 +222,7 @@ public class DiagramModel extends DefaultGraphModel
 		Vector linkages = new Vector();
 		for(int i=0; i < cellInventory.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getByIndex(i);
+			EAMGraphCell cell = cellInventory.getCellByIndex(i);
 			if(cell.isLinkage())
 				linkages.add(cell);
 		}	
@@ -268,12 +277,12 @@ class CellInventory
 		return cells.size();
 	}
 	
-	public EAMGraphCell getByIndex(int index)
+	public EAMGraphCell getCellByIndex(int index)
 	{
 		return (EAMGraphCell)cells.get(index);
 	}
 	
-	public EAMGraphCell getNodeByIndex(int index)
+	public Node getNodeByIndex(int index)
 	{
 		int currentIndex = -1;
 		for(int i = 0; i < cells.size(); ++i)
@@ -282,7 +291,21 @@ class CellInventory
 			if(cell.isNode())
 				++currentIndex;
 			if(currentIndex == index)
-				return cell;
+				return (Node)cell;
+		}
+		return null;
+	}
+	
+	public Linkage getLinkageByIndex(int index)
+	{
+		int currentIndex = -1;
+		for(int i = 0; i < cells.size(); ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)cells.get(i);
+			if(cell.isLinkage())
+				++currentIndex;
+			if(currentIndex == index)
+				return (Linkage)cell;
 		}
 		return null;
 	}

@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -32,18 +33,18 @@ public class TableView extends UmbrellaView
 		setToolBar(new TableToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
 		DiagramModel diagramModel = mainWindowToUse.getProject().getDiagramModel();
-		TableViewNamesLocationsModel nameLocationModel = new TableViewNamesLocationsModel(diagramModel);
-		nameLocationModel.addListener();
-		UiTable tableNamesLocations = new UiTable(nameLocationModel);
+		TableNodesModel nodesModel = new TableNodesModel(diagramModel);
+		nodesModel.addListener();
+		UiTable nodesTable = new UiTable(nodesModel);
 		
-		TableViewConnectionsModel connectionModel = new TableViewConnectionsModel(diagramModel);
-		connectionModel.addListener();
-		UiTable tableLinks = new UiTable(connectionModel);
+		TableViewLinkagesModel linkagesModel = new TableViewLinkagesModel(diagramModel);
+		linkagesModel.addListener();
+		UiTable linkagesTable = new UiTable(linkagesModel);
 
 		UiVBox vBox = new UiVBox();
-		vBox.add(new UiScrollPane(tableNamesLocations));
+		vBox.add(new UiScrollPane(nodesTable));
 		vBox.addSpace();
-		vBox.add(new UiScrollPane(tableLinks));
+		vBox.add(new UiScrollPane(linkagesTable));
 		add(vBox, BorderLayout.CENTER);
 		setBorder(new LineBorder(Color.BLACK));
 	}
@@ -58,9 +59,9 @@ public class TableView extends UmbrellaView
 		return "Table";
 	}
 	
-	class TableViewNamesLocationsModel extends AbstractTableModel implements DiagramModelListener
+	class TableNodesModel extends AbstractTableModel implements DiagramModelListener
 	{
-		public TableViewNamesLocationsModel(DiagramModel diagramModelToUse)
+		public TableNodesModel(DiagramModel diagramModelToUse)
 		{
 			super();
 			diagramModel = diagramModelToUse;
@@ -143,9 +144,9 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	class TableViewConnectionsModel extends AbstractTableModel implements DiagramModelListener
+	class TableViewLinkagesModel extends AbstractTableModel implements DiagramModelListener
 	{
-		public TableViewConnectionsModel(DiagramModel diagramModelToUse)
+		public TableViewLinkagesModel(DiagramModel diagramModelToUse)
 		{
 			super();
 			diagramModel = diagramModelToUse;
@@ -173,14 +174,14 @@ public class TableView extends UmbrellaView
 		{
 			try 
 			{
-				EAMGraphCell node = diagramModel.getNodeByIndex(rowIndex);
+				Linkage linkage = diagramModel.getLinkageByIndex(rowIndex);
 				
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_FROM:
-					return node.getText();
+					return linkage.getFromNode().getText();
 				case TABLE_COLUMN_TO:
-					return node.getText();
+					return linkage.getToNode().getText();
 				default:
 					return null;
 				}
@@ -199,22 +200,15 @@ public class TableView extends UmbrellaView
 		
 		public void nodeAdded(DiagramModelEvent event) 
 		{
-			int index = event.getIndex();
-			fireTableRowsInserted(index,index);
-			EAM.logDebug("DiagramModelLinkListener: NodeAdded");
 		}
 
 		public void nodeDeleted(DiagramModelEvent event) 
 		{
-			int index = event.getIndex();
-			fireTableRowsDeleted(index,index);
-			EAM.logDebug("DiagramModelLinkListener: NodeDeleted");
 		}
 
 		public void nodeChanged(DiagramModelEvent event) 
 		{
-			int index = event.getIndex();
-			fireTableRowsUpdated(index,index);
+			fireTableDataChanged();
 			EAM.logDebug("DiagramModelLinkListener: NodeChanged");
 		}
 		
