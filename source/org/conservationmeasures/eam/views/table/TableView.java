@@ -73,7 +73,7 @@ public class TableView extends UmbrellaView
 
 		public int getRowCount() 
 		{
-			return diagramModel.getCellCount();
+			return diagramModel.getNodeCount();
 		}
 
 		public Object getValueAt(int rowIndex, int columnIndex) 
@@ -123,7 +123,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsUpdated(index,index);
-			EAM.logDebug("DiagramModelListener: NodeDeletedChanged");
+			EAM.logDebug("DiagramModelListener: NodeChanged");
 		}
 		
 		final static int TABLE_COLUMN_NAME = 0;

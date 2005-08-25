@@ -125,6 +125,11 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.size();
 	}
 	
+	public int getNodeCount()
+	{
+		return getAllNodes().size();
+	}
+	
 	public Set getLinkages(Node node)
 	{
 		return getEdges(this, new Object[] {node});
