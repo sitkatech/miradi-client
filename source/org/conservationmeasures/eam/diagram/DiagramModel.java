@@ -33,27 +33,20 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.clear();
 	}
 
-	public Node createNode(int nodeType)
+	public Node createNode(int nodeType) throws Exception
 	{
 		return createNodeAtId(nodeType, Node.INVALID_ID);
 	}
 	
-	public Node createNodeAtId(int nodeType, int id)
+	public Node createNodeAtId(int nodeType, int id) throws Exception
 	{
 		Node node = new Node(nodeType);
 		Object[] nodes = new Object[] {node};
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
 		cellInventory.add(node, id);
-		try 
-		{
-			DiagramModelEvent nodeAdded = new DiagramModelEvent(this, node, getIndexByCell(node));
-			fireNodeAction(nodeAdded, DiagramModelListener.ACTION_ADDED);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+		DiagramModelEvent nodeAdded = new DiagramModelEvent(this, node, getIndexByCell(node));
+		fireNodeAction(nodeAdded, DiagramModelListener.ACTION_ADDED);
 		return node;
 	}
 	
@@ -92,18 +85,11 @@ public class DiagramModel extends DefaultGraphModel
         }
     }
 	
-    public void deleteNode(Node nodeToDelete)
+    public void deleteNode(Node nodeToDelete) throws Exception
 	{
-		try 
-		{
-			DiagramModelEvent nodeDeleted = new DiagramModelEvent(this, nodeToDelete, getIndexByCell(nodeToDelete));
-			fireNodeAction(nodeDeleted, DiagramModelListener.ACTION_DELETED);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
-		
+		DiagramModelEvent nodeDeleted = new DiagramModelEvent(this, nodeToDelete, getIndexByCell(nodeToDelete));
+		fireNodeAction(nodeDeleted, DiagramModelListener.ACTION_DELETED);
+
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
 		cellInventory.remove(nodeToDelete);
@@ -161,18 +147,11 @@ public class DiagramModel extends DefaultGraphModel
 		return getEdges(this, new Object[] {node});
 	}
 	
-	public void updateCell(EAMGraphCell nodeToUpdate)
+	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
 	{
 		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
-		try 
-		{
-			DiagramModelEvent nodeUpdated = new DiagramModelEvent(this, nodeToUpdate, getIndexByCell(nodeToUpdate));
-			fireNodeAction(nodeUpdated, DiagramModelListener.ACTION_CHANGED);
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
-		}
+		DiagramModelEvent nodeUpdated = new DiagramModelEvent(this, nodeToUpdate, getIndexByCell(nodeToUpdate));
+		fireNodeAction(nodeUpdated, DiagramModelListener.ACTION_CHANGED);
 	}
 	
 	public boolean isNode(EAMGraphCell cell)

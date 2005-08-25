@@ -16,7 +16,7 @@ public class TestInsertConnection extends EAMTestCase
 		super(name);
 	}
 	
-	public void testIsAvailable()
+	public void testIsAvailable() throws Exception
 	{
 		OpenableProject project = new OpenableProject();
 		InsertConnection doer = new InsertConnection(project);

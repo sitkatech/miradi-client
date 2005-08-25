@@ -189,7 +189,7 @@ public class BaseProject
 		return nodeType; 
 	}
 
-	public int insertNodeAtId(int typeToInsert, int id)
+	public int insertNodeAtId(int typeToInsert, int id) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		Node node = model.createNodeAtId(typeToInsert, id);

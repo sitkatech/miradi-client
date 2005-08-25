@@ -93,7 +93,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertContains(node3, nodes);
 	}
 	
-	public void testActionsFiring()
+	public void testActionsFiring() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
 		TestTableModel testModel = new TestTableModel();
