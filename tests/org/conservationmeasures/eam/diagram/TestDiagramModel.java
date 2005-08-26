@@ -35,7 +35,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel model = new DiagramModel();
 		Node threat = model.createNode(Node.TYPE_THREAT);
 		Node goal = model.createNode(Node.TYPE_GOAL);
-		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
+		model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(3, model.getCellCount());
 		assertEquals(1, model.getLinkageCount());
@@ -127,9 +127,9 @@ public class TestDiagramModel extends EAMTestCase
 		model.deleteNode(node1);
 		Node node2 = model.createNode(Node.TYPE_GOAL);		
 		Node node3 = model.createNode(Node.TYPE_GOAL);		
-		Linkage link1 = model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
+		model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
 		Node node4 = model.createNode(Node.TYPE_GOAL);		
-		Linkage link2 = model.createLinkage(Node.INVALID_ID, node3.getId(), node4.getId());
+		model.createLinkage(Node.INVALID_ID, node3.getId(), node4.getId());
 
 		assertEquals(node2, model.getNodeByIndex(0));
 		assertEquals(node3, model.getNodeByIndex(1));

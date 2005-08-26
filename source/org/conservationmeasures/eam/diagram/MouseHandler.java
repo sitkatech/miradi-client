@@ -60,7 +60,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		DiagramModel model = diagram.getDiagramModel();
+		diagram.getDiagramModel();
 		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
