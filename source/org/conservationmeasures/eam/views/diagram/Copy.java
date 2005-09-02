@@ -17,11 +17,16 @@ import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Copy extends ProjectDoer
 {
+	public Copy()
+	{
+		super();
+	}
+	
 	public Copy(BaseProject project)
 	{
-		super(project);
+		setProject(project);
 	}
-
+	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

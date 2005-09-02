@@ -11,16 +11,10 @@ import javax.swing.JFileChooser;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 public class OpenProject extends MainWindowDoer
 {
-	public OpenProject(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
-	
 	public void doIt() throws CommandFailedException
 	{
 		JFileChooser dlg = new JFileChooser();

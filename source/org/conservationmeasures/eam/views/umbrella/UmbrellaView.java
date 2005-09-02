@@ -5,11 +5,22 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
-import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionClose;
+import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.actions.ActionOpenProject;
+import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.ActionViewInterview;
+import org.conservationmeasures.eam.actions.ActionViewTable;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -22,6 +33,8 @@ abstract public class UmbrellaView extends JPanel
 	{
 		mainWindow = mainWindowToUse;
 		nullDoer = new NullDoer();
+		actionToDoerMap = new HashMap();
+		addUmbrellaDoersToMap();
 	}
 	
 	abstract public String cardName();
@@ -51,119 +64,46 @@ abstract public class UmbrellaView extends JPanel
 		toolBar = newToolBar;
 	}
 	
+	public BufferedImage getImage()
+	{
+		throw new RuntimeException("This view doesn't support getImage");
+	}
+	
 	////////////////////////////////////////////////////////////
 	// these doers are available in this class
 	
-	public Doer getAboutDoer()
+	private void addUmbrellaDoersToMap()
 	{
-		return new About();
+		addDoerToMap(ActionAbout.class, new About());
+		addDoerToMap(ActionNewProject.class, new NewProject());
+		addDoerToMap(ActionOpenProject.class, new OpenProject());
+		addDoerToMap(ActionClose.class, new Close());
+		addDoerToMap(ActionExit.class, new Exit());
+		addDoerToMap(ActionUndo.class, new Undo());
+		addDoerToMap(ActionRedo.class, new Redo());
+		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
+		addDoerToMap(ActionViewInterview.class, new ViewInterview());
+		addDoerToMap(ActionViewTable.class, new ViewTable());
 	}
 	
-	public Doer getNewProjectDoer()
+	public void addDoerToMap(Class actionClass, Doer doer)
 	{
-		return new NewProject(getMainWindow());
+		actionToDoerMap.put(actionClass, doer);
 	}
 	
-	public Doer getOpenProjectDoer()
+	public Doer getDoer(Class actionClass)
 	{
-		return new OpenProject(getMainWindow());
-	}
-	
-	public Doer getCloseDoer()
-	{
-		return new Close(getMainWindow());
-	}
-	
-	public Doer getExitDoer()
-	{
-		return new Exit(getMainWindow());
-	}
-	
-	public Doer getUndoDoer()
-	{
-		return new Undo(getProject());
-	}
-	
-	public Doer getRedoDoer()
-	{
-		return new Redo(getProject());
-	}
-	
-	public Doer getViewDiagram()
-	{
-		return new ViewDiagram(getProject());
-	}
-	
-	public Doer getViewInterview()
-	{
-		return new ViewInterview(getProject());
-	}
-	
-	public Doer getViewTable()
-	{
-		return new ViewTable(getProject());
-	}
-
-	////////////////////////////////////////////////////////////
-	// these doers are not available in this class
-	
-	public Doer getInsertGoalDoer(Point invocationPoint)
-	{
-		return nullDoer;
-	}
-	
-	public Doer getInsertThreatDoer(Point invocationPoint)
-	{
-		return nullDoer;
-	}
-	
-	public Doer getInsertInterventionDoer(Point invocationPoint)
-	{
-		return nullDoer;
-	}
-	
-	public Doer getSaveImageDoer()
-	{
-		return nullDoer;
-	}
-	
-	public Doer getInsertConnectionDoer()
-	{
-		return nullDoer;
-	}
-	
-	public Doer getCopyDoer()
-	{
-		return nullDoer;
-	}
-	
-	public Doer getCutDoer()
-	{
-		return nullDoer;
-	}
-	
-	public Doer getDeleteDoer()
-	{
-		return nullDoer;
-	}
-
-	public Doer getPrintDoer()
-	{
-		return nullDoer;
-	}
-
-	
-	public Doer getPasteDoer(Point invocationPoint)
-	{
-		return nullDoer;
-	}
-	
-	public Doer getNodePropertiesDoer()
-	{
-		return nullDoer;
+		Doer doer = (Doer)actionToDoerMap.get(actionClass);
+		if(doer == null)
+			doer = nullDoer;
+		
+		doer.setView(this);
+		doer.setProject(getProject());
+		return doer;
 	}
 	
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 	private JToolBar toolBar;
+	private HashMap actionToDoerMap;
 }

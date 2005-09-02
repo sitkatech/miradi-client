@@ -19,7 +19,8 @@ public class TestInsertConnection extends EAMTestCase
 	public void testIsAvailable() throws Exception
 	{
 		OpenableProject project = new OpenableProject();
-		InsertConnection doer = new InsertConnection(project);
+		InsertConnection doer = new InsertConnection();
+		doer.setProject(project);
 
 		assertFalse("enabled when no project open?", doer.isAvailable());
 		project.setIsOpen(true);

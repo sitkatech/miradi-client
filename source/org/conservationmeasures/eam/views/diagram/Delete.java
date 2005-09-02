@@ -22,11 +22,16 @@ import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Delete extends ProjectDoer
 {
+	public Delete()
+	{
+		super();
+	}
+	
 	public Delete(BaseProject project)
 	{
-		super(project);
+		setProject(project);
 	}
-
+	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

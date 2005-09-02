@@ -9,18 +9,12 @@ import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class NodeProperties extends ProjectDoer
 {
-	public NodeProperties(BaseProject project)
-	{
-		super(project);
-	}
-
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

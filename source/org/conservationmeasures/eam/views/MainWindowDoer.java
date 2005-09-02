@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 abstract public class MainWindowDoer extends Doer
 {
-	public MainWindowDoer(MainWindow mainWindowToUse)
+	public void setMainWindow(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
 	}

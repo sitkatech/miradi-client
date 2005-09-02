@@ -7,16 +7,10 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Cut extends ProjectDoer
 {
-	public Cut(BaseProject project)
-	{
-		super(project);
-	}
-
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

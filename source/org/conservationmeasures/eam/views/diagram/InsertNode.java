@@ -14,15 +14,9 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 
 abstract public class InsertNode extends LocationDoer
 {
-	public InsertNode(BaseProject project, Point invocationPoint)
-	{
-		super(project, invocationPoint);
-	}
-	
 	abstract public int getTypeToInsert();
 	abstract public String getInitialText();
 

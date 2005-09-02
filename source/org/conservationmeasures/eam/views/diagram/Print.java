@@ -15,7 +15,6 @@ import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.martus.swing.PrintPage;
@@ -23,12 +22,6 @@ import org.martus.swing.PrintPageFormat;
 
 public class Print extends MainWindowDoer
 {
-
-	public Print(MainWindow mainWindowToUse)
-	{
-		super(mainWindowToUse);
-	}
-
 	public boolean isAvailable() 
 	{
 		Project project = getMainWindow().getProject();

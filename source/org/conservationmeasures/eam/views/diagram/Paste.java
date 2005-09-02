@@ -5,22 +5,15 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class Paste extends LocationDoer
 {
-	public Paste(BaseProject project, Point invocationPoint)
-	{
-		super(project, invocationPoint);
-	}
-
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.Doer;
 
 public abstract class MainWindowAction extends EAMAction
 {
@@ -45,24 +45,37 @@ public abstract class MainWindowAction extends EAMAction
 		return mainWindow.getProject();
 	}
 
-	public boolean shouldBeEnabled()
+	public void actionPerformed(ActionEvent event)
 	{
-		return shouldBeEnabled(mainWindow.getCurrentView());
-	}
-
-	public boolean shouldBeEnabled(UmbrellaView view)
-	{
-		return false;
+		try
+		{
+			doAction(event);
+		}
+		catch (CommandFailedException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
+		}
+		
 	}
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		doAction(mainWindow.getCurrentView(), event);
+		getDoer().doIt();
+		getMainWindow().getActions().updateActionStates();
 	}
 	
-	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
+	public boolean shouldBeEnabled()
 	{
-		EAM.logError("doAction(view, event) not implemented by: " + getClass().getName());
+		return getDoer().isAvailable();
+	}
+	
+	Doer getDoer()
+	{
+		Doer doer = mainWindow.getCurrentView().getDoer(getClass());
+		doer.setMainWindow(mainWindow);
+		doer.setProject(mainWindow.getProject());
+		return doer;
 	}
 	
 	MainWindow mainWindow;

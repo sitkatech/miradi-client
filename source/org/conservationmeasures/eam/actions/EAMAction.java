@@ -5,14 +5,9 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.event.ActionEvent;
-
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 
 public abstract class EAMAction extends AbstractAction
 {
@@ -45,21 +40,5 @@ public abstract class EAMAction extends AbstractAction
 	{
 		setEnabled(shouldBeEnabled());
 	}
-
-	public void actionPerformed(ActionEvent event)
-	{
-		try
-		{
-			doAction(event);
-		}
-		catch (CommandFailedException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
-		}
-		
-	}
-
-	public abstract void doAction(ActionEvent event) throws CommandFailedException;
 
 }

@@ -15,25 +15,17 @@ import javax.swing.JFileChooser;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
-public class SaveImage extends MainWindowDoer
+public class SaveImage extends ViewDoer
 {
-
-	public SaveImage(MainWindow mainWindowToUse, BufferedImage imageToSave) 
-	{
-		super(mainWindowToUse);
-		image = imageToSave;
-	}
-
 	public boolean isAvailable() 
 	{
-		return image != null;
+		return getView().getImage() != null;
 	}
 
 	public void doIt() throws CommandFailedException 
@@ -73,6 +65,7 @@ public class SaveImage extends MainWindowDoer
 
 	private void saveImage(FileOutputStream out) throws IOException 
 	{
+		BufferedImage image = getView().getImage();
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out); 
 		JPEGEncodeParam jpegParams = encoder.getDefaultJPEGEncodeParam(image);
 		float quality = 1;
@@ -80,6 +73,4 @@ public class SaveImage extends MainWindowDoer
 		encoder.setJPEGEncodeParam(jpegParams);
 		encoder.encode(image);
 	}
-	
-	private BufferedImage image;
 }

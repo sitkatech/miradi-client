@@ -9,11 +9,11 @@ import org.conservationmeasures.eam.main.BaseProject;
 
 abstract public class ProjectDoer extends Doer
 {
-	public ProjectDoer(BaseProject projectToUse)
+	public void setProject(BaseProject projectToUse)
 	{
 		project = projectToUse;
 	}
-	
+
 	public BaseProject getProject()
 	{
 		return project;

@@ -5,19 +5,11 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Point;
-
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 
 public class InsertGoal extends InsertNode
 {
-	public InsertGoal(BaseProject project, Point invocationPoint)
-	{
-		super(project, invocationPoint);
-	}
-
 	public int getTypeToInsert()
 	{
 		return Node.TYPE_GOAL;

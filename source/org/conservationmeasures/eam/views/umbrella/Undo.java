@@ -8,16 +8,10 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Undo extends ProjectDoer
 {
-	public Undo(BaseProject project)
-	{
-		super(project);
-	}
-
 	public boolean isAvailable()
 	{
 		return (getProject().getIndexToUndo() >= 0);

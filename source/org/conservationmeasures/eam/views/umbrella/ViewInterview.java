@@ -8,17 +8,11 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.views.ProjectDoer;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class ViewInterview extends ProjectDoer
 {
-	public ViewInterview(BaseProject projectToUse)
-	{
-		super(projectToUse);
-	}
-
 	public boolean isAvailable()
 	{
 		return true;

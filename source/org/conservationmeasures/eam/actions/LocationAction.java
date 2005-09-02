@@ -6,10 +6,14 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.Doer;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 
 public abstract class LocationAction extends MainWindowAction
@@ -31,6 +35,28 @@ public abstract class LocationAction extends MainWindowAction
 		createAt = location;
 	}
 
+	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
+	{
+		Doer doer = view.getDoer(getClass());
+		doer.setLocation(createAt);
+		doer.doIt();
+		getMainWindow().getActions().updateActionStates();
+	}
+
+	public boolean shouldBeEnabled(UmbrellaView view)
+	{
+		Doer doer = view.getDoer(getClass());
+		doer.setLocation(createAt);
+		return doer.isAvailable();
+	}
+
+	Doer getDoer()
+	{
+		Doer doer = super.getDoer();
+		doer.setLocation(createAt);
+		return doer;
+	}
 
 	Point createAt;
+
 }

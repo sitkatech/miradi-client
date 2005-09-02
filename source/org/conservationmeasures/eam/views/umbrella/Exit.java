@@ -5,16 +5,10 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 public class Exit extends MainWindowDoer
 {
-	public Exit(MainWindow mainWindow)
-	{
-		super(mainWindow);
-	}
-	
 	public void doIt()
 	{
 		getMainWindow().exitNormally();

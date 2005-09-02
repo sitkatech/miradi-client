@@ -6,12 +6,21 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
-import java.awt.Point;
+import java.awt.image.BufferedImage;
 
+import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCut;
+import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertThreat;
+import org.conservationmeasures.eam.actions.ActionNodeProperties;
+import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
@@ -22,6 +31,8 @@ public class DiagramView extends UmbrellaView
 		super(mainWindowToUse);
 		diagram = new DiagramComponent(getProject(), getActions());
 		getProject().setSelectionModel(diagram.getSelectionModel());
+		
+		addDiagramViewDoersToMap();
 		
 		setToolBar(new DiagramToolBar(getActions()));
 
@@ -44,59 +55,23 @@ public class DiagramView extends UmbrellaView
 		return "Diagram";
 	}
 	
-	public Doer getSaveImageDoer()
+	public BufferedImage getImage()
 	{
-		return new SaveImage(getMainWindow(), diagram.getImage());
+		return diagram.getImage();
 	}
 
-	public Doer getInsertGoalDoer(Point invocationPoint)
+	private void addDiagramViewDoersToMap()
 	{
-		return new InsertGoal(getProject(), invocationPoint);
-	}
-	
-	public Doer getInsertThreatDoer(Point invocationPoint)
-	{
-		return new InsertThreat(getProject(), invocationPoint);
-	}
-	
-	public Doer getInsertInterventionDoer(Point invocationPoint)
-	{
-		return new InsertIntervention(getProject(), invocationPoint);
-	}
-	
-	public Doer getInsertConnectionDoer()
-	{
-		return new InsertConnection(getProject());
-	}
-	
-	public Doer getCopyDoer()
-	{
-		return new Copy(getProject());
-	}
-	
-	public Doer getCutDoer()
-	{
-		return new Cut(getProject());
-	}
-	
-	public Doer getPrintDoer()
-	{
-		return new Print(getMainWindow());
-	}
-
-	public Doer getDeleteDoer()
-	{
-		return new Delete(getProject());
-	}
-	
-	public Doer getPasteDoer(Point invocationPoint)
-	{
-		return new Paste(getProject(), invocationPoint);
-	}
-	
-	public Doer getNodePropertiesDoer()
-	{
-		return new NodeProperties(getProject());
+		addDoerToMap(ActionInsertGoal.class, new InsertGoal());
+		addDoerToMap(ActionInsertThreat.class, new InsertThreat());
+		addDoerToMap(ActionInsertIntervention.class, new InsertIntervention());
+		addDoerToMap(ActionInsertConnection.class, new InsertConnection());
+		addDoerToMap(ActionCopy.class, new Copy());
+		addDoerToMap(ActionCut.class, new Cut());
+		addDoerToMap(ActionDelete.class, new Delete());
+		addDoerToMap(ActionPaste.class, new Paste());
+		addDoerToMap(ActionNodeProperties.class, new NodeProperties());
+		addDoerToMap(ActionPrint.class, new Print());
 	}
 	
 	DiagramComponent diagram;

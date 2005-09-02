@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.views.ProjectDoer;
 import org.conservationmeasures.eam.views.diagram.NodeProperties;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -98,7 +99,9 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		{
 			try 
 			{
-				new NodeProperties(project).doIt();
+				ProjectDoer doer = new NodeProperties();
+				doer.setProject(project);
+				doer.doIt();
 			} 
 			catch (CommandFailedException e) 
 			{

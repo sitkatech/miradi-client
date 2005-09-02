@@ -7,14 +7,12 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 abstract public class LocationDoer extends ProjectDoer
 {
-	public LocationDoer(BaseProject project, Point locationToUse)
+	public void setLocation(Point locationToUse)
 	{
-		super(project);
 		location = locationToUse;
 	}
 	

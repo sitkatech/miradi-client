@@ -33,11 +33,13 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have 1 cell now.", 1, project.getDiagramModel().getCellCount());
 		
 		project.getDiagramModel().getNodeById(insertedId);
-		Undo undo = new Undo(project);
+		Undo undo = new Undo();
+		undo.setProject(project);
 		undo.doIt();
 		assertEquals("Should have 0 cells now.", 0, project.getDiagramModel().getCellCount());
 
-		Redo redo = new Redo(project);
+		Redo redo = new Redo();
+		redo.setProject(project);
 		redo.doIt();
 
 		Vector inserted = project.getDiagramModel().getAllNodes();
