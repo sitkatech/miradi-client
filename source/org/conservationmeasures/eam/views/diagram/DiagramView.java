@@ -79,6 +79,11 @@ public class DiagramView extends UmbrellaView
 		return new Cut(getProject());
 	}
 	
+	public Doer getPrintDoer()
+	{
+		return new Print(getProject());
+	}
+
 	public Doer getDeleteDoer()
 	{
 		return new Delete(getProject());

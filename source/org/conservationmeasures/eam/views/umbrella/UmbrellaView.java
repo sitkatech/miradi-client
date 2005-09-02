@@ -146,6 +146,12 @@ abstract public class UmbrellaView extends JPanel
 	{
 		return nullDoer;
 	}
+
+	public Doer getPrintDoer()
+	{
+		return nullDoer;
+	}
+
 	
 	public Doer getPasteDoer(Point invocationPoint)
 	{

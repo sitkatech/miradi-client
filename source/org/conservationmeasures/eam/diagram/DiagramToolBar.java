@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionInsertGoal;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionPaste;
+import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
@@ -42,6 +43,8 @@ public class DiagramToolBar extends JToolBar
 		add(new ToolBarButton(actions, ActionCopy.class));
 		add(new ToolBarButton(actions, ActionPaste.class));
 		add(new ToolBarButton(actions, ActionDelete.class));
+		addSeparator();
+		add(new ToolBarButton(actions, ActionPrint.class));
 	}
 	
 }
