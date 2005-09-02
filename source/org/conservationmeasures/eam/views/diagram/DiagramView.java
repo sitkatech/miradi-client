@@ -81,7 +81,7 @@ public class DiagramView extends UmbrellaView
 	
 	public Doer getPrintDoer()
 	{
-		return new Print(getProject());
+		return new Print(getMainWindow());
 	}
 
 	public Doer getDeleteDoer()
