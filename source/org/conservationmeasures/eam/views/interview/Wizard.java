@@ -10,7 +10,9 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandWizardNext;
+import org.conservationmeasures.eam.commands.CommandWizardPrevious;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -45,6 +47,17 @@ class Wizard extends UiVBox implements CommandExecutedListener
 	public void doNext()
 	{
 		CommandWizardNext command = new CommandWizardNext(currentStepName);
+		executeNavigationButton(command);
+	}
+
+	public void doPrevious()
+	{
+		CommandWizardPrevious command = new CommandWizardPrevious(currentStepName);
+		executeNavigationButton(command);
+	}
+	
+	private void executeNavigationButton(Command command)
+	{
 		try
 		{
 			project.executeCommand(command);
@@ -65,11 +78,6 @@ class Wizard extends UiVBox implements CommandExecutedListener
 		layout.show(stepHolder, currentStepName);
 	}
 
-	public void doPrevious()
-	{
-		EAM.logWarning("doPrevious");
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if(currentStepName.equals(project.getCurrentInterviewStepName()))

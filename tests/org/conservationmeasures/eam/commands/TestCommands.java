@@ -61,7 +61,25 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		assertEquals("didn't move back to earlier step?", stepName, project.getCurrentInterviewStepName());
 	}
-
+	
+	public void testCommandWizardPrevious() throws Exception
+	{
+		String welcomeStepName = project.getCurrentInterviewStepName();
+		project.executeCommand(new CommandWizardNext(welcomeStepName));
+		
+		String secondStepName = project.getCurrentInterviewStepName();
+		CommandWizardPrevious cmd = new CommandWizardPrevious(secondStepName);
+		
+		project.executeCommand(cmd);
+		assertEquals("didn't move back to welcome?", welcomeStepName, project.getCurrentInterviewStepName());
+		
+		CommandWizardPrevious loaded = (CommandWizardPrevious)saveAndReload(cmd);
+		assertEquals("didn't load step name?", cmd.getStepName(), loaded.getStepName());
+		
+		cmd.undo(project);
+		assertEquals("didn't move back to original step?", secondStepName, project.getCurrentInterviewStepName());
+	}
+	
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
