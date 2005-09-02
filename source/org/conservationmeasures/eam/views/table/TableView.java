@@ -22,8 +22,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
+import org.martus.swing.UiTabbedPane;
 import org.martus.swing.UiTable;
-import org.martus.swing.UiVBox;
 
 public class TableView extends UmbrellaView
 {
@@ -41,11 +41,10 @@ public class TableView extends UmbrellaView
 		linkagesModel.addListener();
 		UiTable linkagesTable = new UiTable(linkagesModel);
 
-		UiVBox vBox = new UiVBox();
-		vBox.add(new UiScrollPane(nodesTable));
-		vBox.addSpace();
-		vBox.add(new UiScrollPane(linkagesTable));
-		add(vBox, BorderLayout.CENTER);
+		UiTabbedPane tabbedPane = new UiTabbedPane();
+		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
+		tabbedPane.add(EAM.text("Tab|Linkages"),new UiScrollPane(linkagesTable));
+		add(tabbedPane, BorderLayout.CENTER);
 		setBorder(new LineBorder(Color.BLACK));
 	}
 
