@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
@@ -67,6 +68,11 @@ abstract public class UmbrellaView extends JPanel
 	public BufferedImage getImage()
 	{
 		throw new RuntimeException("This view doesn't support getImage");
+	}
+	
+	public JComponent getPrintableComponent()
+	{
+		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
 	
 	////////////////////////////////////////////////////////////

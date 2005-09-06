@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JComponent;
+
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -59,6 +61,11 @@ public class DiagramView extends UmbrellaView
 	public BufferedImage getImage()
 	{
 		return diagram.getImage();
+	}
+	
+	public JComponent getPrintableComponent()
+	{
+		return diagram.getPrintableComponent();
 	}
 
 	private void addDiagramViewDoersToMap()

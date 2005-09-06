@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Action;
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -56,6 +58,28 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return this.getImage(Color.WHITE, insets);
 	}
 
+	public JComponent getPrintableComponent()
+	{
+		BufferedImage image = getImage();
+		JImage view = new JImage(image);
+		view.setSize(getPreferredSize());
+		view.setPreferredSize(getPreferredSize());
+		return view;
+	}
+
+	private class JImage extends JComponent
+	{
+		public JImage(BufferedImage imageToUse)
+		{
+			image = imageToUse;
+		}
+		public void paint(Graphics g) 
+		{
+			g.drawImage(image, 0, 0, null);
+		}
+		BufferedImage image;
+	}
+	
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);

@@ -6,14 +6,11 @@
 
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.awt.print.PrinterJob;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.swing.JComponent;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.views.MainWindowDoer;
@@ -44,31 +41,8 @@ public class Print extends MainWindowDoer
 				break;
 			//TODO: Allow user to either go back and change the setting or continue to print
 		}
-		JComponent view = createDiagramView();
-	//	PrintPage.showPreview(view);
+		JComponent view = getMainWindow().getCurrentView().getPrintableComponent();
+//		PrintPage.showPreview(view);
 		PrintPage.printJComponent(view, job, format, attributes);
 	}
-	
-	private JComponent createDiagramView()
-	{
-		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-		BufferedImage image = diagramComponent.getImage();
-		JImage view = new JImage(image);
-		view.setSize(diagramComponent.getPreferredSize());
-		return view;
-	}
-	
-	class JImage extends JComponent
-	{
-		public JImage(BufferedImage imageToUse)
-		{
-			image = imageToUse;
-		}
-		public void paint(Graphics g) 
-		{
-			g.drawImage(image, 0, 0, null);
-		}
-		BufferedImage image;
-	}
-
 }

@@ -10,9 +10,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Vector;
 
+import javax.swing.JComponent;
 import javax.swing.border.LineBorder;
 import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
@@ -20,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.diagram.Print;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTabbedPane;
@@ -31,17 +34,19 @@ public class TableView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new TableToolBar(mainWindowToUse.getActions()));
+		addDiagramViewDoersToMap();
+
 		setLayout(new BorderLayout());
 		DiagramModel diagramModel = mainWindowToUse.getProject().getDiagramModel();
 		TableNodesModel nodesModel = new TableNodesModel(diagramModel);
 		nodesModel.addListener();
-		UiTable nodesTable = new UiTable(nodesModel);
+		nodesTable = new UiTable(nodesModel);
 		
 		TableViewLinkagesModel linkagesModel = new TableViewLinkagesModel(diagramModel);
 		linkagesModel.addListener();
-		UiTable linkagesTable = new UiTable(linkagesModel);
+		linkagesTable = new UiTable(linkagesModel);
 
-		UiTabbedPane tabbedPane = new UiTabbedPane();
+		tabbedPane = new UiTabbedPane();
 		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
 		tabbedPane.add(EAM.text("Tab|Linkages"),new UiScrollPane(linkagesTable));
 		add(tabbedPane, BorderLayout.CENTER);
@@ -58,6 +63,19 @@ public class TableView extends UmbrellaView
 		return "Table";
 	}
 	
+	public JComponent getPrintableComponent()
+	{
+		if (tabbedPane.getSelectedIndex() == 0)
+			return nodesTable;
+		return linkagesTable;
+	}
+
+	private void addDiagramViewDoersToMap()
+	{
+		addDoerToMap(ActionPrint.class, new Print());
+	}
+	
+
 	class TableNodesModel extends AbstractTableModel implements DiagramModelListener
 	{
 		public TableNodesModel(DiagramModel diagramModelToUse)
@@ -237,4 +255,9 @@ public class TableView extends UmbrellaView
 		private Vector columnNames;
 		private DiagramModel diagramModel;
 	}
+	
+	UiTabbedPane tabbedPane;
+	UiTable nodesTable;
+	UiTable linkagesTable;
+	
 }
