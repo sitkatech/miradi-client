@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 import javax.swing.JComponent;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.AbstractTableModel;
 
@@ -65,9 +66,12 @@ public class TableView extends UmbrellaView
 	
 	public JComponent getPrintableComponent()
 	{
+		JTable printTable = new JTable();
 		if (tabbedPane.getSelectedIndex() == 0)
-			return nodesTable;
-		return linkagesTable;
+			printTable.setModel(nodesTable.getModel());
+		else
+			printTable.setModel(linkagesTable.getModel());
+		return printTable;
 	}
 
 	private void addDiagramViewDoersToMap()
