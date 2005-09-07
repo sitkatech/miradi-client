@@ -14,6 +14,7 @@ import java.util.Vector;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.table.AbstractTableModel;
 
@@ -69,18 +70,14 @@ public class TableView extends UmbrellaView
 	public JComponent getPrintableComponent()
 	{
 		JTable printTable = new JTable();
-		Dimension tableSize;
 		if (tabbedPane.getSelectedIndex() == 0)
-		{
-			printTable.setModel(nodesTable.getModel());
-			tableSize = getTableSize(nodesTable);
-		}
+			printTable = nodesTable;
 		else
-		{
-			printTable.setModel(linkagesTable.getModel());
-			tableSize = getTableSize(linkagesTable);
-		}
+			printTable = linkagesTable;
 		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		printPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		printPane.setViewportBorder(new EmptyBorder(0, 0, 0, 0));
+		Dimension tableSize = getTableSize(printTable);
 		printPane.setPreferredSize(tableSize);
 		return printPane;
 	}
