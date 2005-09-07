@@ -12,21 +12,12 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.martus.swing.PrintPage;
 import org.martus.swing.PrintPageFormat;
 
-public class Print extends MainWindowDoer
+abstract public class PrintDoer extends MainWindowDoer
 {
-	public boolean isAvailable() 
-	{
-		Project project = getMainWindow().getProject();
-		if(!project.isOpen())
-			return false;
-		return project.getDiagramModel().getCellCount() > 0;
-	}
-
 	public void doIt() throws CommandFailedException 
 	{
 		PrintPageFormat format = new PrintPageFormat();
@@ -42,7 +33,7 @@ public class Print extends MainWindowDoer
 			//TODO: Allow user to either go back and change the setting or continue to print
 		}
 		JComponent view = getMainWindow().getCurrentView().getPrintableComponent();
-//		PrintPage.showPreview(view);
+		PrintPage.showPreview(view);
 		PrintPage.printJComponent(view, job, format, attributes);
 	}
 }

@@ -14,8 +14,9 @@ import java.util.Vector;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.actions.ActionPrint;
@@ -26,7 +27,6 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.umbrella.Print;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTabbedPane;
@@ -53,6 +53,7 @@ public class TableView extends UmbrellaView
 		tabbedPane = new UiTabbedPane();
 		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
 		tabbedPane.add(EAM.text("Tab|Linkages"),new UiScrollPane(linkagesTable));
+		tabbedPane.addChangeListener(new TabbedChangeListener());
 		add(tabbedPane, BorderLayout.CENTER);
 		setBorder(new LineBorder(Color.BLACK));
 	}
@@ -70,18 +71,22 @@ public class TableView extends UmbrellaView
 	public JComponent getPrintableComponent()
 	{
 		JTable printTable = new JTable();
-		if (tabbedPane.getSelectedIndex() == 0)
-			printTable = nodesTable;
-		else
-			printTable = linkagesTable;
+		Dimension tableSize;
+		JTable currentTable = getCurrentTable();
+		printTable.setModel(currentTable.getModel());
+		tableSize = getTableSize(currentTable);
 		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		printPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		printPane.setViewportBorder(new EmptyBorder(0, 0, 0, 0));
-		Dimension tableSize = getTableSize(printTable);
 		printPane.setPreferredSize(tableSize);
 		return printPane;
 	}
 
+	private JTable getCurrentTable()
+	{
+		if (tabbedPane.getSelectedIndex() == 0)
+			return nodesTable;
+		return linkagesTable;
+	}
+	
 	private Dimension getTableSize(JTable table) 
 	{
 		Dimension tableSize;
@@ -96,6 +101,18 @@ public class TableView extends UmbrellaView
 		addDoerToMap(ActionPrint.class, new Print());
 	}
 	
+	public boolean anythingToPrint()
+	{
+		return getCurrentTable().getRowCount() > 0;
+	}
+	
+	class TabbedChangeListener implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent e) 
+		{
+			getActions().updateActionStates();
+		}
+	}
 
 	class TableNodesModel extends AbstractTableModel implements DiagramModelListener
 	{
