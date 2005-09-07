@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -146,6 +147,7 @@ public class TableView extends UmbrellaView
 			diagramModel = diagramModelToUse;
 			columnNames = new Vector();
 			columnNames.add(EAM.text("Table|Name"));
+			columnNames.add(EAM.text("Table|Type"));
 			columnNames.add(EAM.text("Table|X"));
 			columnNames.add(EAM.text("Table|Y"));
 		}
@@ -169,15 +171,17 @@ public class TableView extends UmbrellaView
 		{
 			try 
 			{
-				EAMGraphCell node = diagramModel.getNodeByIndex(rowIndex);
+				EAMGraphCell cell = diagramModel.getNodeByIndex(rowIndex);
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_NAME:
-					return node.getText();
+					return cell.getText();
+				case TABLE_COLUMN_TYPE:
+					return getNodeType(cell);
 				case TABLE_COLUMN_X:
-					return new Integer(node.getLocation().x);
+					return new Integer(cell.getLocation().x);
 				case TABLE_COLUMN_Y:
-					return new Integer(node.getLocation().y);
+					return new Integer(cell.getLocation().y);
 				default:
 					return null;
 				}
@@ -187,6 +191,20 @@ public class TableView extends UmbrellaView
 				e.printStackTrace();
 				return null;
 			}
+		}
+		
+		public String getNodeType(EAMGraphCell cell)
+		{
+			if(cell.isLinkage())
+				return EAM.text("Linkage");
+			Node node = (Node)cell;
+			if(node.isGoal())
+				return EAM.text("Goal");
+			if(node.isThreat())
+				return EAM.text("Threat");
+			if(node.isIntervention())
+				return EAM.text("Intervention");
+			return EAM.text("Unknown Type");
 		}
 
 		public String getColumnName(int column) 
@@ -224,8 +242,9 @@ public class TableView extends UmbrellaView
 		}
 		
 		final static int TABLE_COLUMN_NAME = 0;
-		final static int TABLE_COLUMN_X = 1;
-		final static int TABLE_COLUMN_Y = 2;
+		final static int TABLE_COLUMN_TYPE = 1;
+		final static int TABLE_COLUMN_X = 2;
+		final static int TABLE_COLUMN_Y = 3;
 		
 		private Vector columnNames;
 		private DiagramModel diagramModel;
