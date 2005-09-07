@@ -8,9 +8,11 @@ package org.conservationmeasures.eam.views.table;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Vector;
 
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.AbstractTableModel;
@@ -67,11 +69,20 @@ public class TableView extends UmbrellaView
 	public JComponent getPrintableComponent()
 	{
 		JTable printTable = new JTable();
+		Dimension tableSize;
 		if (tabbedPane.getSelectedIndex() == 0)
+		{
 			printTable.setModel(nodesTable.getModel());
+			tableSize = new Dimension(nodesTable.getWidth(), nodesTable.getHeight() + nodesTable.getTableHeader().getHeight() + 4*nodesTable.getRowMargin());
+		}
 		else
+		{
 			printTable.setModel(linkagesTable.getModel());
-		return printTable;
+			tableSize = new Dimension(linkagesTable.getWidth(), linkagesTable.getHeight() + linkagesTable.getTableHeader().getHeight());
+		}
+		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		printPane.setPreferredSize(tableSize);
+		return printPane;
 	}
 
 	private void addDiagramViewDoersToMap()
