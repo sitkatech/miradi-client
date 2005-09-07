@@ -4,7 +4,7 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.views.diagram;
+package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.print.PrinterJob;
 
