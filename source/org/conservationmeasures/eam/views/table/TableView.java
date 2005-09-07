@@ -10,6 +10,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -19,7 +24,9 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -48,10 +55,14 @@ public class TableView extends UmbrellaView
 		TableNodesModel nodesModel = new TableNodesModel(diagramModel);
 		nodesModel.addListener();
 		nodesTable = new UiTable(nodesModel);
+		JTableHeader header = nodesTable.getTableHeader();
+		header.addMouseListener(new ColumnHeaderListener(nodesTable));
 		
 		TableViewLinkagesModel linkagesModel = new TableViewLinkagesModel(diagramModel);
 		linkagesModel.addListener();
 		linkagesTable = new UiTable(linkagesModel);
+		header = linkagesTable.getTableHeader();
+		header.addMouseListener(new ColumnHeaderListener(linkagesTable));
 
 		tabbedPane = new UiTabbedPane();
 		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
@@ -74,7 +85,6 @@ public class TableView extends UmbrellaView
 	public JComponent getPrintableComponent()
 	{
 		JTable sourceTable = getCurrentTable();
-
 		JTable printTable = new JTable(sourceTable.getModel());
 		JScrollPane printPane = new JScrollPane(printTable);
 		printPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -131,6 +141,65 @@ public class TableView extends UmbrellaView
 		return getCurrentTable().getRowCount() > 0;
 	}
 	
+	class ColumnHeaderListener extends MouseAdapter
+	{
+		ColumnHeaderListener (UiTable tableToUse)
+		{
+			table = tableToUse;
+		}
+		
+		public void mouseClicked(MouseEvent e) 
+		{
+		     int columnToSort = getCurrentTable().getColumnModel().getColumnIndexAtX(e.getX());
+		     Vector newIndexes = getNewSortedOrderOfRows(columnToSort);
+
+		     TableViewModel model = (TableViewModel)getCurrentTable().getModel();
+		     model.setSortedRowIndexes(newIndexes);
+		     getCurrentTable().tableChanged(new TableModelEvent(model));
+		     
+		}
+
+		private Vector getNewSortedOrderOfRows(int columnToSort) 
+		{
+		    sortingOrder = -sortingOrder;
+			return sortTable((TableViewModel)getCurrentTable().getModel(), columnToSort);
+		}
+		
+		private synchronized Vector sortTable(TableViewModel model, int columnToSort)
+		{
+			class Sorter implements Comparator
+			{
+				public Sorter(TableViewModel modelToUse, int column, int sortDirection)
+				{
+					tableModel = modelToUse;
+					columnToSortOn = column;
+					sorterDirection = sortDirection;
+				}
+				public int compare(Object o1, Object o2)
+				{
+					Object obj1 = tableModel.getValueAtDirect(((Integer)(o1)).intValue(), columnToSortOn);
+					Object obj2 = tableModel.getValueAtDirect(((Integer)(o2)).intValue(), columnToSortOn);
+					if(obj1 instanceof Integer)
+						return ((Integer)obj1).compareTo((Integer)obj2) * sorterDirection;
+					return ((String)obj1).compareTo((String)obj2) * sorterDirection;
+				}
+				TableViewModel tableModel; 
+				int columnToSortOn;
+				int sorterDirection;
+			}
+
+			Vector sortedRowIndexes = new Vector();
+			for(int i = 0; i < model.getRowCount(); ++i)
+				sortedRowIndexes.add(new Integer(i));
+
+			Collections.sort(sortedRowIndexes, new Sorter(model, columnToSort, sortingOrder));
+			return sortedRowIndexes;
+		}
+
+		UiTable table;
+		int sortingOrder = 1; 
+	}
+	
 	class TabbedChangeListener implements ChangeListener
 	{
 		public void stateChanged(ChangeEvent e) 
@@ -138,8 +207,37 @@ public class TableView extends UmbrellaView
 			getActions().updateActionStates();
 		}
 	}
+	
+	abstract class TableViewModel extends AbstractTableModel implements DiagramModelListener
+	{
+		abstract Object getValueAtDirect(int rowIndex, int columnIndex);
 
-	class TableNodesModel extends AbstractTableModel implements DiagramModelListener
+		public Object getValueAt(int rowIndex, int columnIndex) 
+		{
+			int sortedRowIndex = getSortedRowIndex(rowIndex);
+			return getValueAtDirect(sortedRowIndex, columnIndex);
+		}
+
+		public int getSortedRowIndex(int rowIndex)
+		{
+			if(sortedRowIndexes.isEmpty())
+				return rowIndex;
+			return ((Integer)sortedRowIndexes.get(new Integer(rowIndex))).intValue();
+		}
+		
+		public void setSortedRowIndexes(Vector newIndexes)
+		{
+			sortedRowIndexes.clear();
+			for(int i = 0; i < getRowCount(); ++i)
+			{
+				sortedRowIndexes.put(new Integer(i), newIndexes.get(i));
+			}
+		}
+		
+		HashMap sortedRowIndexes = new HashMap();
+	}
+
+	class TableNodesModel extends TableViewModel
 	{
 		public TableNodesModel(DiagramModel diagramModelToUse)
 		{
@@ -167,21 +265,21 @@ public class TableView extends UmbrellaView
 			return diagramModel.getNodeCount();
 		}
 
-		public Object getValueAt(int rowIndex, int columnIndex) 
+		public Object getValueAtDirect(int rowIndex, int columnIndex) 
 		{
 			try 
 			{
-				EAMGraphCell cell = diagramModel.getNodeByIndex(rowIndex);
+				Node node = diagramModel.getNodeByIndex(rowIndex);
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_NAME:
-					return cell.getText();
+					return node.getText();
 				case TABLE_COLUMN_TYPE:
-					return getNodeType(cell);
+					return getNodeType(node);
 				case TABLE_COLUMN_X:
-					return new Integer(cell.getLocation().x);
+					return new Integer(node.getLocation().x);
 				case TABLE_COLUMN_Y:
-					return new Integer(cell.getLocation().y);
+					return new Integer(node.getLocation().y);
 				default:
 					return null;
 				}
@@ -192,7 +290,7 @@ public class TableView extends UmbrellaView
 				return null;
 			}
 		}
-		
+
 		public String getNodeType(EAMGraphCell cell)
 		{
 			if(cell.isLinkage())
@@ -250,7 +348,7 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	class TableViewLinkagesModel extends AbstractTableModel implements DiagramModelListener
+	class TableViewLinkagesModel extends TableViewModel
 	{
 		public TableViewLinkagesModel(DiagramModel diagramModelToUse)
 		{
@@ -276,7 +374,7 @@ public class TableView extends UmbrellaView
 			return diagramModel.getLinkageCount();
 		}
 
-		public Object getValueAt(int rowIndex, int columnIndex) 
+		public Object getValueAtDirect(int rowIndex, int columnIndex) 
 		{
 			try 
 			{
@@ -340,5 +438,4 @@ public class TableView extends UmbrellaView
 	UiTabbedPane tabbedPane;
 	UiTable nodesTable;
 	UiTable linkagesTable;
-	
 }
