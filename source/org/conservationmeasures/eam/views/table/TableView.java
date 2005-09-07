@@ -9,11 +9,13 @@ package org.conservationmeasures.eam.views.table;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -70,14 +72,38 @@ public class TableView extends UmbrellaView
 	
 	public JComponent getPrintableComponent()
 	{
+		JTable sourceTable = getCurrentTable();
+
 		JTable printTable = new JTable();
-		Dimension tableSize;
-		JTable currentTable = getCurrentTable();
-		printTable.setModel(currentTable.getModel());
-		tableSize = getTableSize(currentTable);
+		printTable.setModel(sourceTable.getModel());
 		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+		AdjustableDimension tableSize = getTableSize(sourceTable);
+		tableSize.addInsets(getBorderInsets(printPane, printPane.getBorder()));
+		tableSize.addInsets(getBorderInsets(printPane.getViewport(), printPane.getViewportBorder()));
 		printPane.setPreferredSize(tableSize);
 		return printPane;
+	}
+	
+	private Insets getBorderInsets(JComponent borderedComponent, Border border)
+	{
+		if(border == null)
+			return new Insets(0, 0, 0, 0);
+		return border.getBorderInsets(borderedComponent);
+	}
+	
+	static class AdjustableDimension extends Dimension
+	{
+		public AdjustableDimension(int initialWidth, int initialHeight)
+		{
+			super(initialWidth, initialHeight);
+		}
+		
+		public void addInsets(Insets insets)
+		{
+			width += (insets.left + insets.right);
+			height += (insets.top + insets.bottom);
+		}
 	}
 
 	private JTable getCurrentTable()
@@ -87,13 +113,10 @@ public class TableView extends UmbrellaView
 		return linkagesTable;
 	}
 	
-	private Dimension getTableSize(JTable table) 
+	private AdjustableDimension getTableSize(JTable table) 
 	{
-		Dimension tableSize;
-		int extraPadding = 0; 
-		int tableHeight = table.getHeight() + table.getTableHeader().getHeight() + extraPadding;
-		tableSize = new Dimension(table.getWidth(), tableHeight);
-		return tableSize;
+		int tableHeight = table.getHeight() + table.getTableHeader().getHeight();
+		return new AdjustableDimension(table.getWidth(), tableHeight);
 	}
 
 	private void addDiagramViewDoersToMap()
