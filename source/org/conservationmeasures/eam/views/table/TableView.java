@@ -74,9 +74,10 @@ public class TableView extends UmbrellaView
 	{
 		JTable sourceTable = getCurrentTable();
 
-		JTable printTable = new JTable();
-		printTable.setModel(sourceTable.getModel());
-		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JTable printTable = new JTable(sourceTable.getModel());
+		JScrollPane printPane = new JScrollPane(printTable);
+		printPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		printPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 		AdjustableDimension tableSize = getTableSize(sourceTable);
 		tableSize.addInsets(getBorderInsets(printPane, printPane.getBorder()));
