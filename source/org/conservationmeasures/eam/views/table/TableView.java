@@ -177,11 +177,9 @@ public class TableView extends UmbrellaView
 				}
 				public int compare(Object o1, Object o2)
 				{
-					Object obj1 = tableModel.getValueAtDirect(((Integer)(o1)).intValue(), columnToSortOn);
-					Object obj2 = tableModel.getValueAtDirect(((Integer)(o2)).intValue(), columnToSortOn);
-					if(obj1 instanceof Integer)
-						return ((Integer)obj1).compareTo((Integer)obj2) * sorterDirection;
-					return ((String)obj1).compareTo((String)obj2) * sorterDirection;
+					Comparable obj1 = (Comparable)tableModel.getValueAtDirect(((Integer)(o1)).intValue(), columnToSortOn);
+					Comparable obj2 = (Comparable)tableModel.getValueAtDirect(((Integer)(o2)).intValue(), columnToSortOn);
+					return obj1.compareTo(obj2) * sorterDirection;
 				}
 				TableViewModel tableModel; 
 				int columnToSortOn;
