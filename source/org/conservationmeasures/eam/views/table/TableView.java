@@ -73,16 +73,25 @@ public class TableView extends UmbrellaView
 		if (tabbedPane.getSelectedIndex() == 0)
 		{
 			printTable.setModel(nodesTable.getModel());
-			tableSize = new Dimension(nodesTable.getWidth(), nodesTable.getHeight() + nodesTable.getTableHeader().getHeight() + 4*nodesTable.getRowMargin());
+			tableSize = getTableSize(nodesTable);
 		}
 		else
 		{
 			printTable.setModel(linkagesTable.getModel());
-			tableSize = new Dimension(linkagesTable.getWidth(), linkagesTable.getHeight() + linkagesTable.getTableHeader().getHeight());
+			tableSize = getTableSize(linkagesTable);
 		}
 		JScrollPane printPane = new JScrollPane(printTable, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		printPane.setPreferredSize(tableSize);
 		return printPane;
+	}
+
+	private Dimension getTableSize(JTable table) 
+	{
+		Dimension tableSize;
+		int extraPadding = 0; 
+		int tableHeight = table.getHeight() + table.getTableHeader().getHeight() + extraPadding;
+		tableSize = new Dimension(table.getWidth(), tableHeight);
+		return tableSize;
 	}
 
 	private void addDiagramViewDoersToMap()
