@@ -10,11 +10,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -24,9 +19,6 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -38,9 +30,10 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.TableSortableModel;
 import org.martus.swing.UiScrollPane;
+import org.martus.swing.UiSortableTable;
 import org.martus.swing.UiTabbedPane;
-import org.martus.swing.UiTable;
 
 public class TableView extends UmbrellaView
 {
@@ -54,15 +47,11 @@ public class TableView extends UmbrellaView
 		DiagramModel diagramModel = mainWindowToUse.getProject().getDiagramModel();
 		TableNodesModel nodesModel = new TableNodesModel(diagramModel);
 		nodesModel.addListener();
-		nodesTable = new UiTable(nodesModel);
-		JTableHeader header = nodesTable.getTableHeader();
-		header.addMouseListener(new SortColumnListener(nodesTable));
+		nodesTable = new UiSortableTable(nodesModel);
 		
 		TableViewLinkagesModel linkagesModel = new TableViewLinkagesModel(diagramModel);
 		linkagesModel.addListener();
-		linkagesTable = new UiTable(linkagesModel);
-		header = linkagesTable.getTableHeader();
-		header.addMouseListener(new SortColumnListener(linkagesTable));
+		linkagesTable = new UiSortableTable(linkagesModel);
 
 		tabbedPane = new UiTabbedPane();
 		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
@@ -141,63 +130,6 @@ public class TableView extends UmbrellaView
 		return getCurrentTable().getRowCount() > 0;
 	}
 	
-	class SortColumnListener extends MouseAdapter
-	{
-		SortColumnListener (UiTable tableToUse)
-		{
-			table = tableToUse;
-		}
-		
-		public void mouseClicked(MouseEvent e) 
-		{
-		     int columnToSort = getCurrentTable().getColumnModel().getColumnIndexAtX(e.getX());
-		     Vector newIndexes = getNewSortedOrderOfRows(columnToSort);
-
-		     TableSortableModel model = (TableSortableModel)getCurrentTable().getModel();
-		     model.setSortedRowIndexes(newIndexes);
-		     getCurrentTable().tableChanged(new TableModelEvent(model));
-		     
-		}
-
-		private Vector getNewSortedOrderOfRows(int columnToSort) 
-		{
-		    sortingOrder = -sortingOrder;
-			return sortTable((TableSortableModel)getCurrentTable().getModel(), columnToSort);
-		}
-		
-		private synchronized Vector sortTable(TableSortableModel model, int columnToSort)
-		{
-			class Sorter implements Comparator
-			{
-				public Sorter(TableSortableModel modelToUse, int column, int sortDirection)
-				{
-					tableModel = modelToUse;
-					columnToSortOn = column;
-					sorterDirection = sortDirection;
-				}
-				public int compare(Object o1, Object o2)
-				{
-					Comparable obj1 = (Comparable)tableModel.getValueAtDirect(((Integer)(o1)).intValue(), columnToSortOn);
-					Comparable obj2 = (Comparable)tableModel.getValueAtDirect(((Integer)(o2)).intValue(), columnToSortOn);
-					return obj1.compareTo(obj2) * sorterDirection;
-				}
-				TableSortableModel tableModel; 
-				int columnToSortOn;
-				int sorterDirection;
-			}
-
-			Vector sortedRowIndexes = new Vector();
-			for(int i = 0; i < model.getRowCount(); ++i)
-				sortedRowIndexes.add(new Integer(i));
-
-			Collections.sort(sortedRowIndexes, new Sorter(model, columnToSort, sortingOrder));
-			return sortedRowIndexes;
-		}
-
-		UiTable table;
-		int sortingOrder = 1; 
-	}
-	
 	class TabbedChangeListener implements ChangeListener
 	{
 		public void stateChanged(ChangeEvent e) 
@@ -206,34 +138,6 @@ public class TableView extends UmbrellaView
 		}
 	}
 	
-	abstract class TableSortableModel extends AbstractTableModel
-	{
-		abstract Object getValueAtDirect(int rowIndex, int columnIndex);
-
-		public Object getValueAt(int rowIndex, int columnIndex) 
-		{
-			int sortedRowIndex = getSortedRowIndex(rowIndex);
-			return getValueAtDirect(sortedRowIndex, columnIndex);
-		}
-
-		public int getSortedRowIndex(int rowIndex)
-		{
-			if(sortedRowIndexes.isEmpty())
-				return rowIndex;
-			return ((Integer)sortedRowIndexes.get(new Integer(rowIndex))).intValue();
-		}
-		
-		public void setSortedRowIndexes(Vector newIndexes)
-		{
-			sortedRowIndexes.clear();
-			for(int i = 0; i < getRowCount(); ++i)
-			{
-				sortedRowIndexes.put(new Integer(i), newIndexes.get(i));
-			}
-		}
-		
-		HashMap sortedRowIndexes = new HashMap();
-	}
 
 	class TableNodesModel extends TableSortableModel implements DiagramModelListener
 	{
@@ -434,6 +338,6 @@ public class TableView extends UmbrellaView
 	}
 	
 	UiTabbedPane tabbedPane;
-	UiTable nodesTable;
-	UiTable linkagesTable;
+	UiSortableTable nodesTable;
+	UiSortableTable linkagesTable;
 }
