@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiSortableTable;
 import org.martus.swing.UiTabbedPane;
-import org.martus.util.TableSortableModel;
+import org.martus.util.SortableTableModel;
 
 public class TableView extends UmbrellaView
 {
@@ -139,7 +139,7 @@ public class TableView extends UmbrellaView
 	}
 	
 
-	class TableNodesModel extends TableSortableModel implements DiagramModelListener
+	class TableNodesModel extends SortableTableModel implements DiagramModelListener
 	{
 		public TableNodesModel(DiagramModel diagramModelToUse)
 		{
@@ -253,7 +253,7 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	class TableViewLinkagesModel extends TableSortableModel implements DiagramModelListener
+	class TableViewLinkagesModel extends SortableTableModel implements DiagramModelListener
 	{
 		public TableViewLinkagesModel(DiagramModel diagramModelToUse)
 		{
