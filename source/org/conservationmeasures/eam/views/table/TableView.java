@@ -56,13 +56,13 @@ public class TableView extends UmbrellaView
 		nodesModel.addListener();
 		nodesTable = new UiTable(nodesModel);
 		JTableHeader header = nodesTable.getTableHeader();
-		header.addMouseListener(new ColumnHeaderListener(nodesTable));
+		header.addMouseListener(new SortColumnListener(nodesTable));
 		
 		TableViewLinkagesModel linkagesModel = new TableViewLinkagesModel(diagramModel);
 		linkagesModel.addListener();
 		linkagesTable = new UiTable(linkagesModel);
 		header = linkagesTable.getTableHeader();
-		header.addMouseListener(new ColumnHeaderListener(linkagesTable));
+		header.addMouseListener(new SortColumnListener(linkagesTable));
 
 		tabbedPane = new UiTabbedPane();
 		tabbedPane.add(EAM.text("Tab|Nodes"),new UiScrollPane(nodesTable));
@@ -141,9 +141,9 @@ public class TableView extends UmbrellaView
 		return getCurrentTable().getRowCount() > 0;
 	}
 	
-	class ColumnHeaderListener extends MouseAdapter
+	class SortColumnListener extends MouseAdapter
 	{
-		ColumnHeaderListener (UiTable tableToUse)
+		SortColumnListener (UiTable tableToUse)
 		{
 			table = tableToUse;
 		}
