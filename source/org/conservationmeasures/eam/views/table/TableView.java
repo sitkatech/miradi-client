@@ -30,10 +30,10 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.TableSortableModel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiSortableTable;
 import org.martus.swing.UiTabbedPane;
+import org.martus.util.TableSortableModel;
 
 public class TableView extends UmbrellaView
 {
