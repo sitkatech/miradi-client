@@ -216,6 +216,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsInserted(index,index);
+			clearSortedOrder();
 			EAM.logDebug("DiagramModelListener: NodeAdded");
 		}
 
@@ -223,6 +224,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsDeleted(index,index);
+			clearSortedOrder();
 			EAM.logDebug("DiagramModelListener: NodeDeleted");
 		}
 
@@ -230,6 +232,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsUpdated(index,index);
+			clearSortedOrder();
 			EAM.logDebug("DiagramModelListener: NodeChanged");
 		}
 
@@ -320,6 +323,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsInserted(index,index);
+			clearSortedOrder();
 			EAM.logDebug("DiagramModelLinkListener: linkAdded");
 		}
 
@@ -327,6 +331,7 @@ public class TableView extends UmbrellaView
 		{
 			int index = event.getIndex();
 			fireTableRowsDeleted(index,index);
+			clearSortedOrder();
 			EAM.logDebug("DiagramModelLinkListener: linkDeleted");
 		}
 
