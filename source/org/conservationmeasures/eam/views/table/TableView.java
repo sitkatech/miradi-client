@@ -206,7 +206,7 @@ public class TableView extends UmbrellaView
 		}
 	}
 	
-	abstract class TableViewModel extends AbstractTableModel implements DiagramModelListener
+	abstract class TableViewModel extends AbstractTableModel
 	{
 		abstract Object getValueAtDirect(int rowIndex, int columnIndex);
 
@@ -235,7 +235,7 @@ public class TableView extends UmbrellaView
 		HashMap sortedRowIndexes = new HashMap();
 	}
 
-	class TableNodesModel extends TableViewModel
+	class TableNodesModel extends TableViewModel implements DiagramModelListener
 	{
 		public TableNodesModel(DiagramModel diagramModelToUse)
 		{
@@ -346,7 +346,7 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	class TableViewLinkagesModel extends TableViewModel
+	class TableViewLinkagesModel extends TableViewModel implements DiagramModelListener
 	{
 		public TableViewLinkagesModel(DiagramModel diagramModelToUse)
 		{
