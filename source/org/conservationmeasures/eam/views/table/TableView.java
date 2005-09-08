@@ -153,7 +153,7 @@ public class TableView extends UmbrellaView
 		     int columnToSort = getCurrentTable().getColumnModel().getColumnIndexAtX(e.getX());
 		     Vector newIndexes = getNewSortedOrderOfRows(columnToSort);
 
-		     TableViewModel model = (TableViewModel)getCurrentTable().getModel();
+		     TableSortableModel model = (TableSortableModel)getCurrentTable().getModel();
 		     model.setSortedRowIndexes(newIndexes);
 		     getCurrentTable().tableChanged(new TableModelEvent(model));
 		     
@@ -162,14 +162,14 @@ public class TableView extends UmbrellaView
 		private Vector getNewSortedOrderOfRows(int columnToSort) 
 		{
 		    sortingOrder = -sortingOrder;
-			return sortTable((TableViewModel)getCurrentTable().getModel(), columnToSort);
+			return sortTable((TableSortableModel)getCurrentTable().getModel(), columnToSort);
 		}
 		
-		private synchronized Vector sortTable(TableViewModel model, int columnToSort)
+		private synchronized Vector sortTable(TableSortableModel model, int columnToSort)
 		{
 			class Sorter implements Comparator
 			{
-				public Sorter(TableViewModel modelToUse, int column, int sortDirection)
+				public Sorter(TableSortableModel modelToUse, int column, int sortDirection)
 				{
 					tableModel = modelToUse;
 					columnToSortOn = column;
@@ -181,7 +181,7 @@ public class TableView extends UmbrellaView
 					Comparable obj2 = (Comparable)tableModel.getValueAtDirect(((Integer)(o2)).intValue(), columnToSortOn);
 					return obj1.compareTo(obj2) * sorterDirection;
 				}
-				TableViewModel tableModel; 
+				TableSortableModel tableModel; 
 				int columnToSortOn;
 				int sorterDirection;
 			}
@@ -206,7 +206,7 @@ public class TableView extends UmbrellaView
 		}
 	}
 	
-	abstract class TableViewModel extends AbstractTableModel
+	abstract class TableSortableModel extends AbstractTableModel
 	{
 		abstract Object getValueAtDirect(int rowIndex, int columnIndex);
 
@@ -235,7 +235,7 @@ public class TableView extends UmbrellaView
 		HashMap sortedRowIndexes = new HashMap();
 	}
 
-	class TableNodesModel extends TableViewModel implements DiagramModelListener
+	class TableNodesModel extends TableSortableModel implements DiagramModelListener
 	{
 		public TableNodesModel(DiagramModel diagramModelToUse)
 		{
@@ -346,7 +346,7 @@ public class TableView extends UmbrellaView
 		private DiagramModel diagramModel;
 	}
 	
-	class TableViewLinkagesModel extends TableViewModel implements DiagramModelListener
+	class TableViewLinkagesModel extends TableSortableModel implements DiagramModelListener
 	{
 		public TableViewLinkagesModel(DiagramModel diagramModelToUse)
 		{
