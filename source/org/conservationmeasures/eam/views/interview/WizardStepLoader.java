@@ -5,13 +5,13 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import java.awt.Dimension;
 import java.io.IOException;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 
-import org.martus.swing.UiTextArea;
+import org.conservationmeasures.eam.views.interview.elements.ElementData;
+import org.conservationmeasures.eam.views.interview.elements.HtmlElementData;
+import org.conservationmeasures.eam.views.interview.elements.InputElementData;
+import org.conservationmeasures.eam.views.interview.elements.NullElementData;
 import org.martus.util.UnicodeReader;
 
 public class WizardStepLoader
@@ -49,116 +49,6 @@ public class WizardStepLoader
 		if(!elementData.hasData())
 			return;
 
-		step.addComponent(elementData.createComponent());
-	}
-	
-	static abstract class ElementData
-	{
-		abstract public boolean hasData();
-		abstract public void appendLine(String text);
-		abstract public JComponent createComponent();
-		abstract public String toString();
-	}
-	
-	static class TextElementData extends ElementData
-	{
-		public TextElementData()
-		{
-			data = new StringBuffer("");
-		}
-		
-		public boolean hasData()
-		{
-			return data.length() > 0;
-		}
-		
-		public void appendLine(String text)
-		{
-			data.append(text);
-			data.append("\n");
-		}
-		
-		public String toString()
-		{
-			return data.toString();
-		}
-		
-		public JComponent createComponent()
-		{
-			return new JLabel(toString());
-		}
-
-		private StringBuffer data;
-
-	}
-	
-	static class NullElementData extends ElementData
-	{
-		public boolean hasData()
-		{
-			return false;
-		}
-
-		public void appendLine(String text)
-		{
-			throw new RuntimeException();
-		}
-
-		public String toString()
-		{
-			return null;
-		}
-
-		public JComponent createComponent()
-		{
-			throw new RuntimeException();
-		}
-	}
-	
-	static class HtmlElementData extends TextElementData
-	{
-		public String toString()
-		{
-			return "<html>" + super.toString() + "</html>";
-		}
-	}
-	
-	static class InputElementData extends ElementData
-	{
-		public boolean hasData()
-		{
-			return true;
-		}
-		
-		public String toString()
-		{
-			return "<<input>>";
-		}
-
-		public void appendLine(String text)
-		{
-			throw new RuntimeException();
-		}
-
-		public JComponent createComponent()
-		{
-			NotHugeTextArea field = new NotHugeTextArea();
-			field.setLineWrap(true);
-			field.setWrapStyleWord(true);
-			return field;
-		}
-	}
-	
-	static class NotHugeTextArea extends UiTextArea
-	{
-		public NotHugeTextArea()
-		{
-			super(1, 80);
-		}
-		
-		public Dimension getMaximumSize()
-		{
-			return getPreferredSize();
-		}
+		step.addComponent(elementData);
 	}
 }

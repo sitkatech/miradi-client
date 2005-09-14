@@ -7,11 +7,10 @@ package org.conservationmeasures.eam.views.interview;
 
 import java.util.Vector;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.interview.elements.ElementData;
+import org.conservationmeasures.eam.views.interview.elements.HtmlElementData;
+import org.conservationmeasures.eam.views.interview.elements.InputElementData;
 import org.martus.util.UnicodeStringReader;
 
 public class TestWizardStepLoader extends EAMTestCase
@@ -38,10 +37,10 @@ public class TestWizardStepLoader extends EAMTestCase
 		MockWizardStep step = createStepFromData(data);
 		assertEquals(stepName, step.getStepName());
 		assertEquals(2, step.getElementCount());
-		JLabel label0 = (JLabel)step.getElement(0);
-		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, label0.getText());
-		JLabel label1 = (JLabel)step.getElement(1);
-		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, label1.getText());
+		HtmlElementData label0 = (HtmlElementData)step.getElement(0);
+		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, label0.toString());
+		HtmlElementData label1 = (HtmlElementData)step.getElement(1);
+		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, label1.toString());
 	}
 	
 	public void testInputField() throws Exception
@@ -51,7 +50,7 @@ public class TestWizardStepLoader extends EAMTestCase
 		String template = "name\n" + prompt + inputField;
 		MockWizardStep step = createStepFromData(template);
 		assertEquals(2, step.getElementCount());
-		JTextArea inputComponent = (JTextArea)step.getElement(1);
+		InputElementData inputComponent = (InputElementData)step.getElement(1);
 		assertNotNull(inputComponent);
 	}
 	
@@ -70,9 +69,9 @@ public class TestWizardStepLoader extends EAMTestCase
 			elements = new Vector();
 		}
 		
-		public void addComponent(JComponent componentToAdd)
+		public void addComponent(ElementData elementToAdd)
 		{
-			elements.add(componentToAdd);
+			elements.add(elementToAdd);
 		}
 
 		public int getElementCount()
@@ -80,9 +79,9 @@ public class TestWizardStepLoader extends EAMTestCase
 			return elements.size();
 		}
 		
-		public JComponent getElement(int index)
+		public ElementData getElement(int index)
 		{
-			return (JComponent)elements.get(index);
+			return (ElementData)elements.get(index);
 		}
 		
 		Vector elements;
