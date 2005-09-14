@@ -24,7 +24,7 @@ public class TestInsertNode extends EAMTestCase
 		super(name);
 	}
 	
-	public void testBadInsert()
+	public void testBadInsert() throws Exception
 	{
 		Project project = new Project();
 		Command insertCommand = new CommandInsertNode(-1);

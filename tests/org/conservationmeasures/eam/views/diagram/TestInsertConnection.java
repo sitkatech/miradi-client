@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import java.io.IOException;
+
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -36,6 +38,11 @@ public class TestInsertConnection extends EAMTestCase
 
 class OpenableProject extends BaseProject
 {
+	public OpenableProject() throws IOException
+	{
+		super();
+	}
+
 	public boolean isOpen()
 	{
 		return isOpenFlag;

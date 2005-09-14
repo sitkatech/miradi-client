@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class Project extends BaseProject
 {
-	public Project()
+	public Project() throws IOException
 	{
 		storage = new FileStorage();
 	}

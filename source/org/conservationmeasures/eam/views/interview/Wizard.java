@@ -5,8 +5,7 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import java.awt.CardLayout;
-import java.util.HashMap;
+import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
@@ -18,41 +17,32 @@ import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.views.interview.elements.ElementData;
 import org.martus.swing.UiVBox;
 
-class Wizard extends UiVBox implements CommandExecutedListener
+class Wizard extends JPanel implements CommandExecutedListener
 {
 	Wizard(BaseProject projectToUse)
 	{
 		project = projectToUse;
 		
-		stepHolder = new JPanel();
-		stepHolder.setLayout(new CardLayout());
-		steps = new HashMap();
+		setLayout(new BorderLayout());
 		navigationButtons = new WizardNavigationButtons(this);
 		
-		add(stepHolder);
-		add(navigationButtons);
+		add(navigationButtons, BorderLayout.AFTER_LAST_LINE);
 		
-		currentStepName = project.getCurrentInterviewStepName();
 		project.addCommandExecutedListener(this);
-	}
-	
-	public void addStep(WizardStep step)
-	{
-		steps.put(step.getStepName(), step);
-		stepHolder.add(step, step.getStepName());
 	}
 	
 	public void doNext()
 	{
-		CommandWizardNext command = new CommandWizardNext(currentStepName);
+		CommandWizardNext command = new CommandWizardNext(project.getCurrentInterviewStepName());
 		executeNavigationButton(command);
 	}
 
 	public void doPrevious()
 	{
-		CommandWizardPrevious command = new CommandWizardPrevious(currentStepName);
+		CommandWizardPrevious command = new CommandWizardPrevious(project.getCurrentInterviewStepName());
 		executeNavigationButton(command);
 	}
 	
@@ -72,23 +62,27 @@ class Wizard extends UiVBox implements CommandExecutedListener
 	
 	public void showCurrentProjectStep()
 	{
-		currentStepName = project.getCurrentInterviewStepName();
-
-		CardLayout layout = (CardLayout)stepHolder.getLayout();
-		layout.show(stepHolder, currentStepName);
+		if(stepHolder != null)
+			remove(stepHolder);
+		
+		stepHolder = new UiVBox();
+		InterviewModel model = project.getInterviewModel();
+		InterviewStepModel stepModel = model.getCurrentStep();
+		for(int i=0; i < stepModel.getElementCount(); ++i)
+		{
+			ElementData element = stepModel.getElement(i);
+			stepHolder.add(element.createComponent());
+		}
+		add(stepHolder, BorderLayout.CENTER);
+		validate();
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(currentStepName.equals(project.getCurrentInterviewStepName()))
-			return;
-		
 		showCurrentProjectStep();
 	}
 
 	BaseProject project;
-	HashMap steps;
-	JPanel stepHolder;
 	WizardNavigationButtons navigationButtons;
-	String currentStepName;
+	UiVBox stepHolder;
 }

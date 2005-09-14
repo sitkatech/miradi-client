@@ -30,17 +30,19 @@ import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.jgraph.graph.GraphSelectionModel;
 
 
 public class BaseProject
 {
-	public BaseProject()
+	public BaseProject() throws IOException
 	{
 		diagramModel = new DiagramModel();
+		interviewModel = new InterviewModel();
+		interviewModel.loadSteps();
 		storage = new Storage();
 		currentView = NoProjectView.getViewName();
-		currentInterviewStepName = "welcome";
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
 	}
@@ -53,6 +55,11 @@ public class BaseProject
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
+	}
+	
+	public InterviewModel getInterviewModel()
+	{
+		return interviewModel;
 	}
 	
 	public void addCommandExecutedListener(CommandExecutedListener listener)
@@ -90,12 +97,12 @@ public class BaseProject
 	
 	public String getCurrentInterviewStepName()
 	{
-		return currentInterviewStepName;
+		return getInterviewModel().getCurrentStepName();
 	}
 	
 	public void setCurrentInterviewStepName(String newStepName)
 	{
-		currentInterviewStepName = newStepName;
+		getInterviewModel().setCurrentStepName(newStepName);
 	}
 	
 	public void pasteCellsIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException 
@@ -294,12 +301,12 @@ public class BaseProject
 	}
 
 	Storage storage;
+	InterviewModel interviewModel;
 	DiagramModel diagramModel;
 	GraphSelectionModel selectionModel;
 	Vector commandExecutedListeners;
 	Vector viewChangeListeners;
 	String currentView;
-	String currentInterviewStepName;
 }
 
 class UndoRedoState

@@ -5,10 +5,7 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import java.util.Vector;
-
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.interview.elements.ElementData;
 import org.conservationmeasures.eam.views.interview.elements.HtmlElementData;
 import org.conservationmeasures.eam.views.interview.elements.InputElementData;
 import org.martus.util.UnicodeStringReader;
@@ -23,7 +20,7 @@ public class TestWizardStepLoader extends EAMTestCase
 	public void testEmptyTemplate() throws Exception
 	{
 		String data = "";
-		MockWizardStep step = createStepFromData(data);
+		InterviewStepModel step = createStepFromData(data);
 		assertNull("had a default step name?", step.getStepName());
 		assertEquals(0, step.getElementCount());
 	}
@@ -34,7 +31,7 @@ public class TestWizardStepLoader extends EAMTestCase
 		String element0 = "This is\nsome boring html\ntext\n";
 		String element1 = "\n\n\nMore boring text";
 		String data = stepName + "\n" + ":html:\n" + element0 + ":html:\n" + element1;
-		MockWizardStep step = createStepFromData(data);
+		InterviewStepModel step = createStepFromData(data);
 		assertEquals(stepName, step.getStepName());
 		assertEquals(2, step.getElementCount());
 		HtmlElementData label0 = (HtmlElementData)step.getElement(0);
@@ -48,45 +45,17 @@ public class TestWizardStepLoader extends EAMTestCase
 		String prompt = ":html:\nPlease enter some data\n";
 		String inputField = ":input:\n";
 		String template = "name\n" + prompt + inputField;
-		MockWizardStep step = createStepFromData(template);
+		InterviewStepModel step = createStepFromData(template);
 		assertEquals(2, step.getElementCount());
 		InputElementData inputComponent = (InputElementData)step.getElement(1);
 		assertNotNull(inputComponent);
 	}
 	
-	private MockWizardStep createStepFromData(String data) throws Exception
+	private InterviewStepModel createStepFromData(String data) throws Exception
 	{
-		MockWizardStep step = new MockWizardStep();
-		UnicodeStringReader reader = new UnicodeStringReader(data);
-		WizardStepLoader.load(step, reader);
-		return step;
+		return StepLoader.load(new UnicodeStringReader(data));
 	}
 
-	static class MockWizardStep extends WizardStep
-	{
-		public MockWizardStep()
-		{
-			elements = new Vector();
-		}
-		
-		public void addComponent(ElementData elementToAdd)
-		{
-			elements.add(elementToAdd);
-		}
-
-		public int getElementCount()
-		{
-			return elements.size();
-		}
-		
-		public ElementData getElement(int index)
-		{
-			return (ElementData)elements.get(index);
-		}
-		
-		Vector elements;
-	}
-	
 	final static String htmlStart = "<html>";
 	final static String htmlEnd = "</html>";
 }

@@ -1,0 +1,42 @@
+/*
+ * Copyright 2005, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.views.interview;
+
+import java.util.Vector;
+
+import org.conservationmeasures.eam.views.interview.elements.ElementData;
+
+public class InterviewStepModel
+{
+	public InterviewStepModel(String stepNameToUse)
+	{
+		stepName = stepNameToUse;
+		elements = new Vector();
+	}
+	
+	public void addElement(ElementData elementToAdd)
+	{
+		elements.add(elementToAdd);
+	}
+	
+	public int getElementCount()
+	{
+		return elements.size();
+	}
+	
+	public ElementData getElement(int n)
+	{
+		return (ElementData)elements.get(n);
+	}
+	
+	String getStepName()
+	{
+		return stepName;
+	}
+	
+	private String stepName;
+	private Vector elements;
+}

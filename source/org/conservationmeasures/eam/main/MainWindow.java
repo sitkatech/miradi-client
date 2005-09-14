@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
 {
-	public MainWindow()
+	public MainWindow() throws IOException
 	{
 		project = new Project();
 	}

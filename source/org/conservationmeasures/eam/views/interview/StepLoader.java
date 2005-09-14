@@ -14,12 +14,13 @@ import org.conservationmeasures.eam.views.interview.elements.InputElementData;
 import org.conservationmeasures.eam.views.interview.elements.NullElementData;
 import org.martus.util.UnicodeReader;
 
-public class WizardStepLoader
+public class StepLoader
 {
-	static public void load(WizardStep step, UnicodeReader reader) throws IOException 
+	static public InterviewStepModel load(UnicodeReader reader) throws IOException 
 	{
 		String name = reader.readLine();
-		step.setStepName(name);
+
+		InterviewStepModel step = new InterviewStepModel(name);
 		
 		ElementData elementData = new NullElementData();
 		while(true)
@@ -42,13 +43,15 @@ public class WizardStepLoader
 			}
 		}
 		append(step, elementData);
+		
+		return step;
 	}
 	
-	static public void append(WizardStep step, ElementData elementData)
+	static public void append(InterviewStepModel step, ElementData elementData)
 	{
 		if(!elementData.hasData())
 			return;
 
-		step.addComponent(elementData);
+		step.addElement(elementData);
 	}
 }

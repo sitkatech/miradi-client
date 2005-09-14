@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.nodes.TestCommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.TestDelete;
+import org.conservationmeasures.eam.diagram.nodes.TestEamGraphicCell;
 import org.conservationmeasures.eam.diagram.nodes.TestInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.TestLinkage;
 import org.conservationmeasures.eam.diagram.nodes.TestLinkageData;
@@ -21,7 +22,6 @@ import org.conservationmeasures.eam.diagram.nodes.TestNode;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeData;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
-import org.conservationmeasures.eam.diagram.nodes.TestEamGraphicCell;
 import org.conservationmeasures.eam.main.TestBaseProject;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestFileStorage;
@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.vies.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.diagram.TestInsertConnection;
+import org.conservationmeasures.eam.views.interview.TestInterviewModel;
 import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
 import org.martus.util.xml.TestSimpleXmlParser;
 
@@ -88,6 +89,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestInsertConnection.class));
 		
 		// view.interview package
+		suite.addTest(new TestSuite(TestInterviewModel.class));
 		suite.addTest(new TestSuite(TestWizardStepLoader.class));
 		
 		// martus-utils
