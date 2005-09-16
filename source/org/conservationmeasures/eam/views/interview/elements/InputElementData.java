@@ -5,13 +5,23 @@
  */
 package org.conservationmeasures.eam.views.interview.elements;
 
-import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.NotHugeTextArea;
 
 
 public class InputElementData extends ElementData
 {
+	public InputElementData()
+	{
+		
+	}
+	
+	public boolean isEmpty()
+	{
+		return false;
+	}
+	
 	public boolean hasData()
 	{
 		return true;
@@ -24,14 +34,45 @@ public class InputElementData extends ElementData
 
 	public void appendLine(String text)
 	{
-		throw new RuntimeException();
+		fieldName = text;
+	}
+	
+	public String getFieldName()
+	{
+		return fieldName;
+	}
+	
+	public String getFieldData()
+	{
+		return fieldData;
+	}
+	
+	public void setFieldData(String newData)
+	{
+		EAM.logDebug("InputElementData.setFieldData: " + newData);
+		fieldData = newData;
 	}
 
-	public JComponent createComponent()
+	public void copyDataFromComponent()
+	{
+		fieldData = ((NotHugeTextArea)getComponent()).getText();
+		EAM.logDebug("copyDataFromComponent: " + fieldData);
+	}
+
+	public void copyDataToComponent()
+	{
+		EAM.logDebug("copyDataToComponent: " + fieldData);
+		((NotHugeTextArea)getComponent()).setText(fieldData);
+	}
+
+	public void createComponent()
 	{
 		NotHugeTextArea field = new NotHugeTextArea();
 		field.setLineWrap(true);
 		field.setWrapStyleWord(true);
-		return field;
+		component = field;
 	}
+	
+	String fieldName;
+	String fieldData;
 }

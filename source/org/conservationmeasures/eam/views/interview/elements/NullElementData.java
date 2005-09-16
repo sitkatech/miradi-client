@@ -5,13 +5,12 @@
  */
 package org.conservationmeasures.eam.views.interview.elements;
 
-import javax.swing.JComponent;
 
 public class NullElementData extends ElementData
 {
-	public boolean hasData()
+	public boolean isEmpty()
 	{
-		return false;
+		return true;
 	}
 
 	public void appendLine(String text)
@@ -24,7 +23,7 @@ public class NullElementData extends ElementData
 		return null;
 	}
 
-	public JComponent createComponent()
+	public void createComponent()
 	{
 		throw new RuntimeException();
 	}

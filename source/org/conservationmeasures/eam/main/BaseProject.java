@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Point;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
@@ -46,6 +48,7 @@ public class BaseProject
 		currentView = NoProjectView.getViewName();
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
+		dataMap = new HashMap();
 	}
 	
 	public boolean isOpen()
@@ -61,6 +64,20 @@ public class BaseProject
 	public InterviewModel getInterviewModel()
 	{
 		return interviewModel;
+	}
+	
+	public String getDataValue(String fieldName)
+	{
+		String value = (String)dataMap.get(fieldName);
+		if(value == null)
+			value = "";
+		return value;
+	}
+	
+	public void setDataValue(String fieldName, String fieldData)
+	{
+		EAM.logDebug("BaseProject.setDataValue to: " + fieldData);
+		dataMap.put(fieldName, fieldData);
 	}
 	
 	public void addCommandExecutedListener(CommandExecutedListener listener)
@@ -313,6 +330,7 @@ public class BaseProject
 	Vector commandExecutedListeners;
 	Vector viewChangeListeners;
 	String currentView;
+	Map dataMap;
 }
 
 class UndoRedoState

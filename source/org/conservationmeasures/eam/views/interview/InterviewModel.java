@@ -115,7 +115,8 @@ public class InterviewModel
 			"<br></br>\n" +
 		":html:\n" +
 			"<p>Describe in a few sentences the project area or theme for your project:</p>\n" + 
-		":input:\n";
+		":input:\n" +
+			"ProjectScope\n";
 
 	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
 	

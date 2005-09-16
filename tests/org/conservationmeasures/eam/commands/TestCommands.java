@@ -44,6 +44,28 @@ public class TestCommands extends EAMTestCase
 		super.tearDown();
 	}
 	
+	public void testCommandSetData() throws Exception
+	{
+		String fieldName = "fieldname";
+		String fieldData = "new data";
+		String oldData = "old data";
+		project.setDataValue(fieldName, oldData);
+		CommandSetData cmd = new CommandSetData(fieldName, fieldData);
+		assertEquals("wrong field name?", fieldName, cmd.getFieldName());
+		assertEquals("wrong field data?", fieldData, cmd.getFieldData());
+		
+		project.executeCommand(cmd);
+		assertEquals("didn't set data?", fieldData, project.getDataValue(fieldName));
+
+		CommandSetData loaded = (CommandSetData)saveAndReload(cmd);
+		assertEquals("didn't load field name?", cmd.getFieldName(), loaded.getFieldName());
+		assertEquals("didn't load field data?", cmd.getFieldData(), loaded.getFieldData());
+		assertEquals("didn't load old field data?", cmd.getOldFieldData(), loaded.getOldFieldData());
+
+		cmd.undo(project);
+		assertEquals("didn't restore data?", oldData, project.getDataValue(fieldName));
+	}
+	
 	public void testCommandInterviewSetStep() throws Exception
 	{
 		String stepName = project.getCurrentInterviewStepName();

@@ -54,7 +54,7 @@ public class StepLoader
 	
 	static public void append(InterviewStepModel step, ElementData elementData)
 	{
-		if(!elementData.hasData())
+		if(elementData.isEmpty())
 			return;
 
 		step.addElement(elementData);

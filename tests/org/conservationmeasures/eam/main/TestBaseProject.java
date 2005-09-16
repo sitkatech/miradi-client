@@ -25,6 +25,17 @@ public class TestBaseProject extends EAMTestCase
 		super(name);
 	}
 	
+	public void testData() throws Exception
+	{
+		BaseProject project = new BaseProject();
+		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
+		
+		String fieldName = "sample field name";
+		String fieldData = "sample field data";
+		project.setDataValue(fieldName, fieldData);
+		assertEquals("Didn't set data?", fieldData, project.getDataValue(fieldName));
+	}
+	
 	public void testViewChanges() throws Exception
 	{
 		class SampleViewChangeListener implements ViewChangeListener

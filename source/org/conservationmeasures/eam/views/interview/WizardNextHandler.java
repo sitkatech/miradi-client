@@ -14,7 +14,7 @@ class WizardNextHandler extends WizardButtonHandler
 		super(projectToUse);
 	}
 	
-	public String getDestinationStep(InterviewStepModel currentStep)
+	public String getDestinationStepName(InterviewStepModel currentStep)
 	{
 		return currentStep.getNextStepName();
 	}

@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.views.interview.elements.ElementData;
@@ -55,6 +57,38 @@ public class InterviewStepModel
 	public void setPreviousStepName(String newPreviousStepName)
 	{
 		previousStepName = newPreviousStepName;
+	}
+	
+	public void copyDataFromComponents()
+	{
+		for(int i=0; i < elements.size(); ++i)
+		{
+			ElementData element = (ElementData)elements.get(i);
+			element.copyDataFromComponent();
+		}
+	}
+	
+	public void copyDataToComponents()
+	{
+		for(int i=0; i < elements.size(); ++i)
+		{
+			ElementData element = (ElementData)elements.get(i);
+			element.copyDataToComponent();
+		}
+	}
+	
+	public Map getData()
+	{
+		HashMap stepData = new HashMap();
+		for(int i=0; i < elements.size(); ++i)
+		{
+			ElementData element = (ElementData)elements.get(i);
+			if(element.hasData())
+			{
+				stepData.put(element.getFieldName(), element.getFieldData());
+			}
+		}
+		return stepData;
 	}
 	
 	private String stepName;

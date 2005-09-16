@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.interview.elements;
 
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 
 class TextElementData extends ElementData
@@ -15,9 +14,9 @@ class TextElementData extends ElementData
 		data = new StringBuffer("");
 	}
 	
-	public boolean hasData()
+	public boolean isEmpty()
 	{
-		return data.length() > 0;
+		return data.length() == 0;
 	}
 	
 	public void appendLine(String text)
@@ -31,9 +30,9 @@ class TextElementData extends ElementData
 		return data.toString();
 	}
 	
-	public JComponent createComponent()
+	public void createComponent()
 	{
-		return new JLabel(toString());
+		component = new JLabel(toString());
 	}
 
 	private StringBuffer data;

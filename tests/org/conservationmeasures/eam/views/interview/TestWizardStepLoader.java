@@ -48,12 +48,13 @@ public class TestWizardStepLoader extends EAMTestCase
 	public void testInputField() throws Exception
 	{
 		String prompt = ":html:\nPlease enter some data\n";
-		String inputField = ":input:\n";
+		String inputField = ":input:\nDataName\n";
 		String template = "name\nnext\nprevious\n" + prompt + inputField;
 		InterviewStepModel step = createStepFromData(template);
 		assertEquals(2, step.getElementCount());
 		InputElementData inputComponent = (InputElementData)step.getElement(1);
 		assertNotNull(inputComponent);
+		assertEquals("didn't set field name?", "DataName", inputComponent.getFieldName());
 	}
 	
 	private InterviewStepModel createStepFromData(String data) throws Exception

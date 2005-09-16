@@ -14,6 +14,7 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -64,16 +65,30 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		if(stepHolder != null)
 			remove(stepHolder);
 		
+		BaseProject project = getProject();
 		stepHolder = new UiVBox();
-		InterviewModel model = getProject().getInterviewModel();
+		InterviewModel model = project.getInterviewModel();
 		InterviewStepModel stepModel = model.getCurrentStep();
 		for(int i=0; i < stepModel.getElementCount(); ++i)
 		{
 			ElementData element = stepModel.getElement(i);
-			stepHolder.add(element.createComponent());
+			updateElementDataFromProject(element);
+			element.createComponent();
+			stepHolder.add(element.getComponent());
 		}
+		stepModel.copyDataToComponents();
 		add(stepHolder, BorderLayout.CENTER);
 		validate();
+	}
+
+	private void updateElementDataFromProject(ElementData element)
+	{
+		if(!element.hasData())
+			return;
+		
+		String value = getProject().getDataValue(element.getFieldName());
+		EAM.logDebug("Setting value to " + value);
+		element.setFieldData(value);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
