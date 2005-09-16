@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
+import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
 
 
@@ -93,6 +94,11 @@ public class BaseProject
 	{
 		currentView = viewName;
 		fireSwitchToView(viewName);
+	}
+	
+	public InterviewStepModel getCurrentInterviewStep()
+	{
+		return getInterviewModel().getCurrentStep();
 	}
 	
 	public String getCurrentInterviewStepName()

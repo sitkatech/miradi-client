@@ -32,11 +32,22 @@ public class InterviewStepModel
 		return (ElementData)elements.get(n);
 	}
 	
-	String getStepName()
+	public String getStepName()
 	{
 		return stepName;
 	}
 	
+	public String getNextStepName()
+	{
+		return nextStepName;
+	}
+	
+	public void setNextStepName(String newNextStepName)
+	{
+		nextStepName = newNextStepName;
+	}
+	
 	private String stepName;
+	private String nextStepName;
 	private Vector elements;
 }

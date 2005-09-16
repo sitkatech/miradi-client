@@ -35,5 +35,10 @@ public class TestInterviewModel extends EAMTestCase
 		InterviewModel model = new InterviewModel();
 		model.loadSteps();
 		assertTrue("Didn't load steps?", model.getStepCount() > 1);
+		InterviewStepModel welcomeStep = model.getCurrentStep();
+		assertEquals("wrong first step?", "welcome", welcomeStep.getStepName());
+		InterviewStepModel secondStep = model.getStep(welcomeStep.getNextStepName());
+		assertEquals("wrong next step?", "P1aT2S1", secondStep.getStepName());
+		
 	}
 }

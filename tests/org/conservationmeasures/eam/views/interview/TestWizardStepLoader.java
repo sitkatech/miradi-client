@@ -28,9 +28,10 @@ public class TestWizardStepLoader extends EAMTestCase
 	public void testHtmlElements() throws Exception
 	{
 		String stepName = "step name";
+		String nextStepName = "next step";
 		String element0 = "This is\nsome boring html\ntext\n";
 		String element1 = "\n\n\nMore boring text";
-		String data = stepName + "\n" + ":html:\n" + element0 + ":html:\n" + element1;
+		String data = stepName + "\n" + nextStepName + "\n" + ":html:\n" + element0 + ":html:\n" + element1;
 		InterviewStepModel step = createStepFromData(data);
 		assertEquals(stepName, step.getStepName());
 		assertEquals(2, step.getElementCount());
@@ -44,7 +45,7 @@ public class TestWizardStepLoader extends EAMTestCase
 	{
 		String prompt = ":html:\nPlease enter some data\n";
 		String inputField = ":input:\n";
-		String template = "name\n" + prompt + inputField;
+		String template = "name\nnext\n" + prompt + inputField;
 		InterviewStepModel step = createStepFromData(template);
 		assertEquals(2, step.getElementCount());
 		InputElementData inputComponent = (InputElementData)step.getElement(1);

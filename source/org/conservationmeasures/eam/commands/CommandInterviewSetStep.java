@@ -12,44 +12,52 @@ import java.io.IOException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 
-public class CommandWizardNext extends Command
+public class CommandInterviewSetStep extends Command
 {
-	public CommandWizardNext(String stepNameToUse)
+	public CommandInterviewSetStep(String destinationStepName)
 	{
-		stepName = stepNameToUse;
+		toStep = destinationStepName;
 	}
-	
-	public CommandWizardNext(DataInputStream dataIn) throws IOException
+
+	public CommandInterviewSetStep(DataInputStream dataIn) throws IOException
 	{
-		stepName = dataIn.readUTF();
+		toStep = dataIn.readUTF();
+		fromStep = dataIn.readUTF();
 	}
 	
 	public static String getCommandName()
 	{
-		return "WizardNext";
+		return "InterviewSetStep";
 	}
 
 	public void execute(BaseProject target) throws CommandFailedException
 	{
-		target.setCurrentInterviewStepName("P1aT2S1");
+		fromStep = target.getCurrentInterviewStepName();
+		target.setCurrentInterviewStepName(getToStep());
 	}
 
 	public void undo(BaseProject target) throws CommandFailedException
 	{
-		target.setCurrentInterviewStepName("welcome");
+		target.setCurrentInterviewStepName(fromStep);
 	}
 
 	public void writeTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeUTF(getCommandName());
-		dataOut.writeUTF(getStepName());
+		dataOut.writeUTF(getToStep());
+		dataOut.writeUTF(getFromStep());
 	}
-
-	public String getStepName()
+	
+	public String getToStep()
 	{
-		return stepName;
+		return toStep;
+	}
+	
+	public String getFromStep()
+	{
+		return fromStep;
 	}
 
-	String stepName;
-
+	private String toStep;
+	private String fromStep;
 }

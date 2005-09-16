@@ -13,6 +13,7 @@ import java.io.OutputStream;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 
 public class Storage
 {
@@ -39,7 +40,7 @@ public class Storage
 		commands.clear();
 	}
 	
-	protected static Vector load(InputStream in) throws IOException
+	protected static Vector load(InputStream in) throws IOException, UnknownCommandException
 	{
 		DataInputStream dataIn = new DataInputStream(in);
 		try
@@ -52,7 +53,7 @@ public class Storage
 		}
 	}
 
-	protected static Vector load(DataInputStream dataIn) throws IOException
+	protected static Vector load(DataInputStream dataIn) throws IOException, UnknownCommandException
 	{
 		Vector loaded = new Vector();
 		EAM.logDebug("---Loading---");

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.interview;
 import java.io.IOException;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.UnicodeStringReader;
 
 public class InterviewModel
@@ -26,8 +27,8 @@ public class InterviewModel
 	public void addStep(InterviewStepModel stepModel)
 	{
 		steps.add(stepModel);
-		if(currentStepName == null)
-			setCurrentStepName(stepModel.getStepName());
+		if(currentStep == null)
+			currentStep = stepModel;
 	}
 	
 	public int getStepCount()
@@ -40,14 +41,33 @@ public class InterviewModel
 		return (InterviewStepModel)steps.get(n);
 	}
 	
+	public InterviewStepModel getStep(String stepName)
+	{
+		for(int i=0; i < steps.size(); ++i)
+		{
+			InterviewStepModel step = (InterviewStepModel)steps.get(i);
+			if(step.getStepName().equals(stepName))
+				return step;
+		}
+		
+		return null;
+	}
+	
 	public String getCurrentStepName()
 	{
-		return currentStepName;
+		return currentStep.getStepName();
 	}
 	
 	public void setCurrentStepName(String newStepName)
 	{
-		currentStepName = newStepName;
+		InterviewStepModel destination = getStep(newStepName);
+		if(destination == null)
+		{
+			EAM.logError("Attempted to set step to: " + newStepName);
+			return;
+		}
+		
+		currentStep = destination;
 	}
 	
 	public InterviewStepModel getCurrentStep()
@@ -62,18 +82,20 @@ public class InterviewModel
 		return null;
 	}
 	
-	private String currentStepName;
+	private InterviewStepModel currentStep;
 	private Vector steps;
 
 	// TODO: Extract out to text file(s)
 	static public final String templateWelcome = 
 		"welcome\n" +
+		"P1aT2S1\n" +
 		":html:\n" +
 		"<h1>Interview</h1>" +
 		"<p>This view will walk the user through a series of questions.</p>";
 
 	static public final String templateP1aT2S1 = 	
 		"P1aT2S1\n" +
+		"\n" +
 		":html:\n" +
 			"<p><font size='6'>Step 1.  Conceptualize</font></p>\n" + 
 		":html:\n" +

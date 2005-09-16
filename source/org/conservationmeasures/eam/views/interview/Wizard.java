@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandWizardNext;
+import org.conservationmeasures.eam.commands.CommandInterviewSetStep;
 import org.conservationmeasures.eam.commands.CommandWizardPrevious;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
@@ -36,7 +36,8 @@ class Wizard extends JPanel implements CommandExecutedListener
 	
 	public void doNext()
 	{
-		CommandWizardNext command = new CommandWizardNext(project.getCurrentInterviewStepName());
+		String nextStep = project.getCurrentInterviewStep().getNextStepName();
+		CommandInterviewSetStep command = new CommandInterviewSetStep(nextStep);
 		executeNavigationButton(command);
 	}
 
@@ -57,6 +58,7 @@ class Wizard extends JPanel implements CommandExecutedListener
 			EAM.errorDialog("Internal error: " + e);
 		}
 
+		// FIXME: I think this is not needed
 		showCurrentProjectStep();
 	}
 	

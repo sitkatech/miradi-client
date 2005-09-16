@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 
 public class FileStorage extends Storage
 {
@@ -35,7 +36,7 @@ public class FileStorage extends Storage
 		file = fileToUse;
 	}
 	
-	public static Vector load(File fileToUse) throws IOException
+	public static Vector load(File fileToUse) throws IOException, UnknownCommandException
 	{
 		FileInputStream in = new FileInputStream(fileToUse);
 		try

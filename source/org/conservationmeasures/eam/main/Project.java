@@ -13,6 +13,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
@@ -23,7 +24,7 @@ public class Project extends BaseProject
 		storage = new FileStorage();
 	}
 	
-	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException
+	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		if(!projectFile.exists())
 		{

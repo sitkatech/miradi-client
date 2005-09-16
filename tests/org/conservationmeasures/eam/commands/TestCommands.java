@@ -10,7 +10,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Arrays;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -45,29 +44,31 @@ public class TestCommands extends EAMTestCase
 		super.tearDown();
 	}
 	
-	public void testCommandWizardNext() throws Exception
+	public void testCommandInterviewSetStep() throws Exception
 	{
 		String stepName = project.getCurrentInterviewStepName();
 		assertEquals("project not starting at welcome?", "welcome", stepName);
-		CommandWizardNext cmd = new CommandWizardNext(stepName);
-		assertEquals("wrong step name?", stepName, cmd.getStepName());
+
+		String destinationStepName = "P1aT2S1";
+		CommandInterviewSetStep cmd = new CommandInterviewSetStep(destinationStepName);
+		assertEquals("wrong destination?", destinationStepName, cmd.getToStep());
 		
 		project.executeCommand(cmd);
-		assertEquals("didn't move to correct next step?", "P1aT2S1", project.getCurrentInterviewStepName());
-		
-		CommandWizardNext loaded = (CommandWizardNext)saveAndReload(cmd);
-		assertEquals("didn't load step name?", cmd.getStepName(), loaded.getStepName());
+		assertEquals("didn't set step?", destinationStepName, project.getCurrentInterviewStepName());
+
+		CommandInterviewSetStep loaded = (CommandInterviewSetStep)saveAndReload(cmd);
+		assertEquals("didn't load step name?", cmd.getToStep(), loaded.getToStep());
 		
 		cmd.undo(project);
-		assertEquals("didn't move back to earlier step?", stepName, project.getCurrentInterviewStepName());
+		assertEquals("didn't move back to previous step?", stepName, project.getCurrentInterviewStepName());
 	}
 	
 	public void testCommandWizardPrevious() throws Exception
 	{
 		String welcomeStepName = project.getCurrentInterviewStepName();
-		project.executeCommand(new CommandWizardNext(welcomeStepName));
+		String secondStepName = project.getCurrentInterviewStep().getNextStepName();
+		project.executeCommand(new CommandInterviewSetStep(secondStepName));
 		
-		String secondStepName = project.getCurrentInterviewStepName();
 		CommandWizardPrevious cmd = new CommandWizardPrevious(secondStepName);
 		
 		project.executeCommand(cmd);
@@ -435,7 +436,7 @@ public class TestCommands extends EAMTestCase
 		return id;
 	}
 	
-	private Command saveAndReload(Command cmd) throws IOException
+	private Command saveAndReload(Command cmd) throws Exception
 	{
 		ByteArrayOutputStream dest = new ByteArrayOutputStream();
 		cmd.writeTo(new DataOutputStream(dest));

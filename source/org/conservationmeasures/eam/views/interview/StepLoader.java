@@ -18,9 +18,11 @@ public class StepLoader
 {
 	static public InterviewStepModel load(UnicodeReader reader) throws IOException 
 	{
-		String name = reader.readLine();
-
-		InterviewStepModel step = new InterviewStepModel(name);
+		String stepName = reader.readLine();
+		InterviewStepModel step = new InterviewStepModel(stepName);
+		
+		String nextStepName = reader.readLine();
+		step.setNextStepName(nextStepName);
 		
 		ElementData elementData = new NullElementData();
 		while(true)

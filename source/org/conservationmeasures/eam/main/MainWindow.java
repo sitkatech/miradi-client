@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
@@ -129,6 +130,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		catch(CommandFailedException e)
 		{
 			EAM.logException(e);
+		}
+		catch(UnknownCommandException e)
+		{
+			EAM.errorDialog(EAM.text("Unknown Command\nYou are probably trying to load an old project " +
+					"that contains obsolete commands that are no longer supported"));
 		}
 		
 		actions.updateActionStates();
