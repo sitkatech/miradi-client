@@ -40,8 +40,6 @@ public abstract class Command
 			return new CommandBeginTransaction();
 		if(commandName.equals(CommandEndTransaction.getCommandName()))
 			return new CommandEndTransaction();
-		if(commandName.equals(CommandWizardPrevious.getCommandName()))
-			return new CommandWizardPrevious(dataIn);
 		if(commandName.equals(CommandInterviewSetStep.getCommandName()))
 			return new CommandInterviewSetStep(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);

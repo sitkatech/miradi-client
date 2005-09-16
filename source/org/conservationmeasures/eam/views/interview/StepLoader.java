@@ -24,6 +24,9 @@ public class StepLoader
 		String nextStepName = reader.readLine();
 		step.setNextStepName(nextStepName);
 		
+		String previousStepName = reader.readLine();
+		step.setPreviousStepName(previousStepName);
+		
 		ElementData elementData = new NullElementData();
 		while(true)
 		{

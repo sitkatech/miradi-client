@@ -47,7 +47,18 @@ public class InterviewStepModel
 		nextStepName = newNextStepName;
 	}
 	
+	public String getPreviousStepName()
+	{
+		return previousStepName;
+	}
+	
+	public void setPreviousStepName(String newPreviousStepName)
+	{
+		previousStepName = newPreviousStepName;
+	}
+	
 	private String stepName;
 	private String nextStepName;
+	private String previousStepName;
 	private Vector elements;
 }

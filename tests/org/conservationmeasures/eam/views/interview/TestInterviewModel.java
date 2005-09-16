@@ -37,8 +37,12 @@ public class TestInterviewModel extends EAMTestCase
 		assertTrue("Didn't load steps?", model.getStepCount() > 1);
 		InterviewStepModel welcomeStep = model.getCurrentStep();
 		assertEquals("wrong first step?", "welcome", welcomeStep.getStepName());
+		assertEquals("previous of first not blank?", "", welcomeStep.getPreviousStepName());
+		
 		InterviewStepModel secondStep = model.getStep(welcomeStep.getNextStepName());
 		assertEquals("wrong next step?", "P1aT2S1", secondStep.getStepName());
+		assertEquals("next of last not blank?", "", secondStep.getNextStepName());
+		assertEquals("wrong previous of next?", welcomeStep.getStepName(), secondStep.getPreviousStepName());
 		
 	}
 }

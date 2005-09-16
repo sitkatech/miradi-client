@@ -89,6 +89,7 @@ public class InterviewModel
 	static public final String templateWelcome = 
 		"welcome\n" +
 		"P1aT2S1\n" +
+		"\n" + 
 		":html:\n" +
 		"<h1>Interview</h1>" +
 		"<p>This view will walk the user through a series of questions.</p>";
@@ -96,6 +97,7 @@ public class InterviewModel
 	static public final String templateP1aT2S1 = 	
 		"P1aT2S1\n" +
 		"\n" +
+		"welcome\n" +
 		":html:\n" +
 			"<p><font size='6'>Step 1.  Conceptualize</font></p>\n" + 
 		":html:\n" +
