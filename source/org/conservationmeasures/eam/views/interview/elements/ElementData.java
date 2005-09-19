@@ -24,14 +24,6 @@ public abstract class ElementData
 		return component;
 	}
 	
-	public void copyDataFromComponent()
-	{
-	}
-	
-	public void copyDataToComponent()
-	{
-	}
-	
 	public String getFieldName()
 	{
 		throw new RuntimeException("No field name in " + this);

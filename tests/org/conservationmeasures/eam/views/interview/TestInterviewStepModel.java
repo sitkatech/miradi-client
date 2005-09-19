@@ -25,6 +25,7 @@ public class TestInterviewStepModel extends EAMTestCase
 		InputElementData inputField = new InputElementData();
 		String sampleFieldName = "fieldname";
 		inputField.appendLine(sampleFieldName);
+		inputField.createComponent();
 		inputField.setFieldData(sampleData);
 
 		InterviewStepModel step = new InterviewStepModel("step name");

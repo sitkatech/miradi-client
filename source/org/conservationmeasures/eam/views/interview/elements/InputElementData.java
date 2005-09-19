@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.interview.elements;
 
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.NotHugeTextArea;
 
 
@@ -44,27 +43,21 @@ public class InputElementData extends ElementData
 	
 	public String getFieldData()
 	{
-		return fieldData;
+		NotHugeTextArea field = getTextComponent();
+		return (field).getText();
 	}
-	
+
 	public void setFieldData(String newData)
 	{
-		EAM.logDebug("InputElementData.setFieldData: " + newData);
-		fieldData = newData;
+		NotHugeTextArea field = getTextComponent();
+		(field).setText(newData);
 	}
 
-	public void copyDataFromComponent()
+	private NotHugeTextArea getTextComponent()
 	{
-		fieldData = ((NotHugeTextArea)getComponent()).getText();
-		EAM.logDebug("copyDataFromComponent: " + fieldData);
+		return (NotHugeTextArea)getComponent();
 	}
-
-	public void copyDataToComponent()
-	{
-		EAM.logDebug("copyDataToComponent: " + fieldData);
-		((NotHugeTextArea)getComponent()).setText(fieldData);
-	}
-
+	
 	public void createComponent()
 	{
 		NotHugeTextArea field = new NotHugeTextArea();
@@ -74,5 +67,4 @@ public class InputElementData extends ElementData
 	}
 	
 	String fieldName;
-	String fieldData;
 }

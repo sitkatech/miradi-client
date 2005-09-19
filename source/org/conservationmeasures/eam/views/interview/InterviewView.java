@@ -72,22 +72,20 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		for(int i=0; i < stepModel.getElementCount(); ++i)
 		{
 			ElementData element = stepModel.getElement(i);
-			updateElementDataFromProject(element);
 			element.createComponent();
+			setElementDataFromProject(element);
 			stepHolder.add(element.getComponent());
 		}
-		stepModel.copyDataToComponents();
 		add(stepHolder, BorderLayout.CENTER);
 		validate();
 	}
 
-	private void updateElementDataFromProject(ElementData element)
+	private void setElementDataFromProject(ElementData element)
 	{
 		if(!element.hasData())
 			return;
 		
 		String value = getProject().getDataValue(element.getFieldName());
-		EAM.logDebug("Setting value to " + value);
 		element.setFieldData(value);
 	}
 

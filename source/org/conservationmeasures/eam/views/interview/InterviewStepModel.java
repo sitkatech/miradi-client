@@ -59,24 +59,6 @@ public class InterviewStepModel
 		previousStepName = newPreviousStepName;
 	}
 	
-	public void copyDataFromComponents()
-	{
-		for(int i=0; i < elements.size(); ++i)
-		{
-			ElementData element = (ElementData)elements.get(i);
-			element.copyDataFromComponent();
-		}
-	}
-	
-	public void copyDataToComponents()
-	{
-		for(int i=0; i < elements.size(); ++i)
-		{
-			ElementData element = (ElementData)elements.get(i);
-			element.copyDataToComponent();
-		}
-	}
-	
 	public Map getData()
 	{
 		HashMap stepData = new HashMap();

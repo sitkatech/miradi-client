@@ -34,9 +34,12 @@ abstract class WizardButtonHandler implements ActionListener
 	{
 		try
 		{
+			Vector dataCommands = getDataToSave();
+			CommandInterviewSetStep navigateCommand = getStepNavigateCommand();
+			
 			project.executeCommand(new CommandBeginTransaction());
-			saveData();
-			goToAppropriateStep();
+			executeSaveDataCommands(dataCommands);
+			project.executeCommand(navigateCommand);
 			project.executeCommand(new CommandEndTransaction());
 		}
 		catch (CommandFailedException e)
@@ -45,16 +48,27 @@ abstract class WizardButtonHandler implements ActionListener
 			EAM.errorDialog(EAM.text("Internal error saving data: ") + e.getMessage());
 		}
 	}
-	
-	private void saveData() throws CommandFailedException
+
+	private CommandInterviewSetStep getStepNavigateCommand()
 	{
-		EAM.logDebug("WizardButtonHandler.saveData()");
 		InterviewStepModel currentStep = project.getCurrentInterviewStep();
-		currentStep.copyDataFromComponents();
-		Map stepData = currentStep.getData();
-		Vector dataCommands = createDataCommands(stepData);
+		String destinationStepName = getDestinationStepName(currentStep);
+		CommandInterviewSetStep navigateCommand = new CommandInterviewSetStep(destinationStepName);
+		return navigateCommand;
+	}
+
+	private void executeSaveDataCommands(Vector dataCommands) throws CommandFailedException
+	{
 		for(int i=0; i < dataCommands.size(); ++i)
 			project.executeCommand((Command)dataCommands.get(i));
+	}
+
+	private Vector getDataToSave()
+	{
+		InterviewStepModel currentStep = project.getCurrentInterviewStep();
+		Map stepData = currentStep.getData();
+		Vector dataCommands = createDataCommands(stepData);
+		return dataCommands;
 	}
 	
 	public static Vector createDataCommands(Map data)
@@ -74,20 +88,5 @@ abstract class WizardButtonHandler implements ActionListener
 		return commands;
 	}
 
-	private void goToAppropriateStep()
-	{
-		InterviewStepModel currentStep = project.getCurrentInterviewStep();
-		String destinationStepName = getDestinationStepName(currentStep);
-		CommandInterviewSetStep command = new CommandInterviewSetStep(destinationStepName);
-		try
-		{
-			project.executeCommand(command);
-		}
-		catch (CommandFailedException e)
-		{
-			EAM.errorDialog("Internal error: " + e);
-		}
-	}
-	
 	BaseProject project;
 }
