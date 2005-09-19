@@ -76,7 +76,7 @@ public class BaseProject
 	
 	public void setDataValue(String fieldName, String fieldData)
 	{
-		EAM.logDebug("BaseProject.setDataValue to: " + fieldData);
+		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
 		dataMap.put(fieldName, fieldData);
 	}
 	
