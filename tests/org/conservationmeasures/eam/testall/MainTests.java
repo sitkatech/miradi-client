@@ -52,8 +52,8 @@ public class MainTests extends TestCase
 	{
 		TestSuite suite= new TestSuite("All eAM Tests");
 
-//		suite.addTest(TestCommon.suite());
-//		suite.addTest(TestClient.suite());
+		// special cases
+		suite.addTest(new TestSuite(TestDataStorage.class));
 		
 		// main package
 		suite.addTest(new TestSuite(TestBaseProject.class));
