@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Vector;
@@ -28,8 +29,7 @@ public class Project extends BaseProject
 	{
 		if(!projectFile.exists())
 		{
-			FileOutputStream out = new FileOutputStream(projectFile);
-			out.close();
+			createProjectFiles(projectFile);
 		}
 		
 		getDiagramModel().clear();
@@ -50,6 +50,12 @@ public class Project extends BaseProject
 		}
 		
 		fireCommandExecuted(new CommandDoNothing());
+	}
+
+	private void createProjectFiles(File projectFile) throws FileNotFoundException, IOException
+	{
+		FileOutputStream out = new FileOutputStream(projectFile);
+		out.close();
 	}
 
 	public boolean isOpen()

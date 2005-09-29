@@ -10,6 +10,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommands;
+import org.conservationmeasures.eam.database.TestDatabase;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.nodes.TestCommandLinkNodes;
@@ -52,8 +53,8 @@ public class MainTests extends TestCase
 	{
 		TestSuite suite= new TestSuite("All eAM Tests");
 
-		// special cases
-		suite.addTest(new TestSuite(TestDataStorage.class));
+		// database package
+		suite.addTest(new TestSuite(TestDatabase.class));
 		
 		// main package
 		suite.addTest(new TestSuite(TestBaseProject.class));
