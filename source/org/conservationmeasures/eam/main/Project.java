@@ -55,7 +55,14 @@ public class Project extends BaseProject
 	
 	public void close()
 	{
-		getStorage().setFile(null);
+		try
+		{
+			getStorage().close();
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+		}
 		currentView = NoProjectView.getViewName();
 		fireSwitchToView(currentView);
 	}

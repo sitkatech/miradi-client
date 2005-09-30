@@ -6,43 +6,71 @@
 package org.conservationmeasures.eam.database;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import org.conservationmeasures.eam.main.EAM;
 
 import com.jenkov.mrpersister.PersistenceManager;
 import com.jenkov.mrpersister.itf.IGenericDao;
 
 public class Database
 {
-	public Database() throws Exception
+	public Database() throws IOException
 	{
-		forceLoadJdbcDrivers();
+		try
+		{
+			forceLoadJdbcDrivers();
+		}
+		catch (ClassNotFoundException e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
 		persistenceManager = new PersistenceManager();
 	}
 	
-	public void openMemoryDatabase(String name) throws Exception
+	public void openMemoryDatabase(String name) throws IOException
 	{
 		open("mem", name);
 	}
 	
-	public void openDiskDatabase(File base) throws Exception
+	public void openDiskDatabase(File base) throws IOException
 	{
 		open("file", base.getAbsolutePath());
 	}
 	
-	public void close() throws Exception
+	public void close() throws IOException
 	{
 		dao = null;
-		connection.close();
+		try
+		{
+			rawExecute("SHUTDOWN");
+			connection.close();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
 		connection = null;
 	}
 	
-	public boolean rawExecute(String sql) throws Exception
+	public boolean rawExecute(String sql) throws IOException
 	{
-		Statement statement = connection.createStatement();
-		return statement.execute(sql);
+		try
+		{
+			Statement statement = connection.createStatement();
+			return statement.execute(sql);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
 	}
 	
 	public ResultSet rawSelect(String sqlSelect) throws Exception
@@ -67,11 +95,19 @@ public class Database
 		return dao.read(mapId, sqlSelect);
 	}
 
-	private void open(String databaseType, String fileNamePrefix) throws Exception
+	private void open(String databaseType, String fileNamePrefix) throws IOException
 	{
-		String database = "jdbc:hsqldb:" + databaseType + ":" + fileNamePrefix;
-		connection = DriverManager.getConnection(database);
-		dao = getPersistenceManager().getGenericDaoFactory().createDao(connection);
+		try
+		{
+			String database = "jdbc:hsqldb:" + databaseType + ":" + fileNamePrefix;
+			connection = DriverManager.getConnection(database);
+			dao = getPersistenceManager().getGenericDaoFactory().createDao(connection);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
 	}
 	
 	private PersistenceManager getPersistenceManager()
