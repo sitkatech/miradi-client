@@ -73,16 +73,31 @@ public class Database
 		}
 	}
 	
-	public ResultSet rawSelect(String sqlSelect) throws Exception
+	public ResultSet rawSelect(String sqlSelect) throws IOException
 	{
-		Statement selectAll = connection.createStatement();
-		selectAll.execute(sqlSelect);
-		return selectAll.getResultSet();
+		try
+		{
+			Statement selectAll = connection.createStatement();
+			selectAll.execute(sqlSelect);
+			return selectAll.getResultSet();
+		}
+		catch (Exception e)
+		{
+			throw new IOException(e.getMessage());
+		}
 	}
 	
-	public void insert(Object object) throws Exception
+	public void insert(Object object) throws IOException
 	{
-		dao.insert(object);
+		try
+		{
+			dao.insert(object);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
 	}
 	
 	public Object read(Object mapId, int key) throws Exception

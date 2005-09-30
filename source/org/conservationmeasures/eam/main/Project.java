@@ -26,7 +26,10 @@ public class Project extends BaseProject
 	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getDiagramModel().clear();
-		getStorage().setFile(projectFile);
+		String path = projectFile.getAbsolutePath();
+		int at = path.indexOf(".eam");
+		path = path.substring(0, at);
+		getStorage().setDirectory(new File(path));
 		if(!getStorage().exists())
 			getStorage().createEmpty();
 		

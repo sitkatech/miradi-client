@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.martus.util.DirectoryUtils;
 
 public class TestFileStorage extends EAMTestCase
 {
@@ -23,7 +24,7 @@ public class TestFileStorage extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		File temp = createTempFile();
+		File tempDirectory = createTempDirectory();
 
 		FileStorage storage = new FileStorage();
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
@@ -38,9 +39,10 @@ public class TestFileStorage extends EAMTestCase
 		{
 		}
 
-		storage.setFile(temp);
+		storage.setDirectory(tempDirectory);
+		storage.createEmpty();
 		assertTrue("no file?", storage.hasFile());
-		assertEquals("wrong file name?", temp.getName(), storage.getName());
+		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
 		
 		Vector nothingYet = storage.load();
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
@@ -57,8 +59,9 @@ public class TestFileStorage extends EAMTestCase
 		assertEquals("didn't load correct count?", 2, loaded.size());
 		assertEquals("target not loaded?", createTarget, loaded.get(0));
 		assertEquals("factor not loaded?", createFactor, loaded.get(1));
+		storage.close();
 		
-		temp.delete();
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		try
 		{
 			storage.load();

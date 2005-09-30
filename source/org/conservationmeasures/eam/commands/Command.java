@@ -18,6 +18,11 @@ public abstract class Command
 	public static Command readFrom(DataInputStream dataIn) throws IOException, UnknownCommandException
 	{
 		String commandName = dataIn.readUTF();
+		return createFrom(commandName, dataIn);
+	}
+
+	public static Command createFrom(String commandName, DataInputStream dataIn) throws IOException, UnknownCommandException
+	{
 		if(commandName.equals(CommandDiagramMove.COMMAND_NAME))
 			return new CommandDiagramMove(dataIn);
 		if(commandName.equals(CommandSetNodeText.COMMAND_NAME))

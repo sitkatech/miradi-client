@@ -5,10 +5,12 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -25,71 +27,84 @@ public class FileStorage extends Storage
 	
 	public void close() throws IOException
 	{
+		EAM.logDebug("Closing database");
 		db.close();
 	}
 	
 	public boolean hasFile()
 	{
-		return (file != null);
+		return (directory != null);
 	}
 	
 	public String getName()
 	{
-		return file.getName();
+		return directory.getName();
 	}
 	
-	public void setFile(File fileToUse)
+	public void setDirectory(File directoryToUse)
 	{
 		clear();
-		file = fileToUse;
+		directory = directoryToUse;
 	}
 	
 	public Vector load() throws IOException, UnknownCommandException
 	{
 		db.openDiskDatabase(getDatabaseFileBase());
-		FileInputStream in = new FileInputStream(file);
+		Vector loaded = new Vector();
+		EAM.logDebug("---Loading---");
+		ResultSet allCommands = db.rawSelect("SELECT * FROM DoneCommands ORDER BY id");
 		try
 		{
-			return load(in);
+			while(allCommands.next())
+			{
+				String name = allCommands.getString("name");
+				byte[] data = allCommands.getBytes("data");
+				DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(data));
+				
+				Command command = Command.createFrom(name, dataIn);
+				loaded.add(command);
+				EAM.logDebug(command.toString());
+			}
 		}
-		finally
+		catch (Exception e)
 		{
-			in.close();
+			EAM.logException(e);
+			return null;
 		}
+		EAM.logDebug("---Finished---");
+		return loaded;
 	}
 
 	public boolean exists()
 	{
-		return (file.exists());
+		return (directory.exists());
 	}
 	
 	public void createEmpty() throws IOException
 	{
-		FileOutputStream out = new FileOutputStream(file);
+		File placeHolder = getPlaceHolder(); 
+		FileOutputStream out = new FileOutputStream(placeHolder);
 		out.close();
-		DirectoryUtils.deleteEntireDirectoryTree(getDatabaseDirectory());
+		DirectoryUtils.deleteEntireDirectoryTree(directory);
 		db.openDiskDatabase(getDatabaseFileBase());
 		createCommandsTable();
 		db.close();
 	}
-
+	
 	private File getDatabaseFileBase()
 	{
-		File directory = getDatabaseDirectory();
-		File dbBase = new File(directory, file.getName());
-		return dbBase;
+		return new File(directory, directory.getName());
 	}
 
-	private File getDatabaseDirectory()
+	private File getPlaceHolder()
 	{
-		File directory = new File(file.getAbsolutePath() + ".db");
-		directory.mkdirs();
-		return directory;
+		File parent = directory.getParentFile();
+		return new File(parent, getName() + ".eam");
 	}
-	
+
 	private void createCommandsTable() throws IOException
 	{
-		db.rawExecute("CREATE TABLE commands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
+		db.rawExecute("CREATE TABLE DoneCommands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
 	}
 
 	public void appendCommand(Command command) throws IOException
@@ -97,17 +112,11 @@ public class FileStorage extends Storage
 		if(!hasFile())
 			throw new IOException("FileStorage: Can't append if no file open");
 		
-		FileOutputStream out = new FileOutputStream(file, true);
-		try
-		{
-			appendCommand(out, command);
-		}
-		finally
-		{
-			out.close();
-		}
+		DoneCommand commandToSave = DoneCommand.buildFromCommand(command);
+		db.insert(commandToSave);
+		addCommandWithoutSaving(command);
 	}
 	
-	File file;
+	File directory;
 	Database db;
 }
