@@ -5,9 +5,11 @@
  */
 package org.conservationmeasures.eam.database;
 
+import java.io.File;
 import java.sql.ResultSet;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.martus.util.DirectoryUtils;
 
 
 public class TestDatabase extends EAMTestCase
@@ -23,9 +25,9 @@ public class TestDatabase extends EAMTestCase
 		
 		db = new Database();
 		db.openMemoryDatabase("testdb");
-		db.rawExecute("CREATE TABLE " + sampleTable + " (id INTEGER IDENTITY PRIMARY KEY, type INTEGER, text VARCHAR);");
+		createSampleTable(db);
 	}
-	
+
 	public void tearDown() throws Exception
 	{
 		db.rawExecute("DROP TABLE " + sampleTable);
@@ -73,6 +75,36 @@ public class TestDatabase extends EAMTestCase
 		db.insert(containsIckyStuff);
 		SampleObject gotBack = (SampleObject)db.read(SampleObject.class, containsIckyStuff.getId());
 		assertEquals("Didn't write and read ok?", containsIckyStuff.getText(), gotBack.getText());
+	}
+	
+	public void testDiskDatabase() throws Exception
+	{
+		File tempDirectory = createTempDirectory();
+		File baseName = new File(tempDirectory, "testdb");
+		Database disk = new Database();
+		disk.openDiskDatabase(baseName);
+		try
+		{
+			createSampleTable(disk);
+			SampleObject object = new SampleObject();
+			object.setText("Hello");
+			disk.insert(object);
+			disk.close();
+			
+			disk.openDiskDatabase(baseName);
+			SampleObject got = (SampleObject)disk.read(SampleObject.class, object.getId());
+			assertEquals("didn't read back?", object.getText(), got.getText());
+			disk.close();
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
+	}
+	
+	private void createSampleTable(Database database) throws Exception
+	{
+		database.rawExecute("CREATE TABLE " + sampleTable + " (id INTEGER IDENTITY PRIMARY KEY, type INTEGER, text VARCHAR);");
 	}
 	
 	final static String sampleTable = "SampleObject";

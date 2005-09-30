@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,6 +25,11 @@ public class Database
 	public void openMemoryDatabase(String name) throws Exception
 	{
 		open("mem", name);
+	}
+	
+	public void openDiskDatabase(File base) throws Exception
+	{
+		open("file", base.getAbsolutePath());
 	}
 	
 	public void close() throws Exception
