@@ -22,15 +22,15 @@ public class TestNodeDataHelper extends EAMTestCase
 	
 	public void setUp() throws Exception 
 	{
-		Node node1 = new Node(Node.TYPE_GOAL);
+		Node node1 = new Node(Node.TYPE_TARGET);
 		node1.setId(originalNodeId1);
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
-		Node node2 = new Node(Node.TYPE_GOAL);
+		Node node2 = new Node(Node.TYPE_TARGET);
 		node2.setId(originalNodeId2);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
-		Node node3 = new Node(Node.TYPE_GOAL);
+		Node node3 = new Node(Node.TYPE_TARGET);
 		node3.setId(originalNodeId3);
 		
 		nodes = new Vector();

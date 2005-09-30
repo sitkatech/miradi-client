@@ -8,16 +8,16 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 
-public class InsertGoal extends InsertNode
+public class InsertTarget extends InsertNode
 {
 	public int getTypeToInsert()
 	{
-		return Node.TYPE_GOAL;
+		return Node.TYPE_TARGET;
 	}
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Goal");
+		return EAM.text("Label|New Target");
 	}
 
 }

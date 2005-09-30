@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
-import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNewProject;
@@ -74,7 +74,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
-		menu.add(new JMenuItem(actions.get(ActionInsertGoal.class)));
+		menu.add(new JMenuItem(actions.get(ActionInsertTarget.class)));
 		menu.add(new JMenuItem(actions.get(ActionInsertThreat.class)));
 		menu.add(new JMenuItem(actions.get(ActionInsertIntervention.class)));
 		menu.addSeparator();

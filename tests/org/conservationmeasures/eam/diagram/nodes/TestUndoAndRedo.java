@@ -82,7 +82,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
 		
-		CommandInsertNode insert = new CommandInsertNode(Node.TYPE_GOAL);
+		CommandInsertNode insert = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(insert);
 		project.executeCommand(undo);
 		verifyNotPresent(insert.getId());

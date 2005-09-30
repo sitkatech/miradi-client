@@ -72,7 +72,7 @@ public class TestBaseProject extends EAMTestCase
 		BaseProject project = new BaseProject();
 		DiagramModel model = project.getDiagramModel();
 
-		Node node1 = model.createNode(Node.TYPE_GOAL);
+		Node node1 = model.createNode(Node.TYPE_TARGET);
 		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
 		Node node3 =  model.createNode(Node.TYPE_THREAT);
 		
@@ -103,7 +103,7 @@ public class TestBaseProject extends EAMTestCase
 		BaseProject project = new BaseProject();
 		DiagramModel model = project.getDiagramModel();
 
-		Node node1 = model.createNode(Node.TYPE_GOAL);
+		Node node1 = model.createNode(Node.TYPE_TARGET);
 		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
 		Node node3 =  model.createNode(Node.TYPE_THREAT);
 		

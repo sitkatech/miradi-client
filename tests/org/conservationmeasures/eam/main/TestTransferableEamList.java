@@ -43,9 +43,9 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testGetTransferData() throws Exception
 	{
 		int node1Id = 1;
-		String node1Text = "Goal 1";
+		String node1Text = "Target 1";
 		Point node1Location = new Point(1,2);
-		int node1Type = Node.TYPE_GOAL;
+		int node1Type = Node.TYPE_TARGET;
 		Node node1 = new Node(node1Type);
 		node1.setId(node1Id);
 		node1.setText(node1Text);

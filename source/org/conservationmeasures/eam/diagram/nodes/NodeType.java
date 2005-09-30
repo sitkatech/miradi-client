@@ -12,7 +12,7 @@ public abstract class NodeType
 {
 	public abstract Color getColor();
 
-	public boolean isGoal()
+	public boolean isTarget()
 	{
 		return false;
 	}

@@ -19,8 +19,8 @@ public class Node extends EAMGraphCell
 	{
 		switch(nodeType)
 		{
-			case TYPE_GOAL:
-				type = new NodeTypeGoal();
+			case TYPE_TARGET:
+				type = new NodeTypeTarget();
 				break;
 			case TYPE_THREAT:
 				type = new NodeTypeThreat();
@@ -48,8 +48,8 @@ public class Node extends EAMGraphCell
 	
 	public int getNodeType()
 	{
-		if(isGoal())
-			return TYPE_GOAL;
+		if(isTarget())
+			return TYPE_TARGET;
 		if(isThreat())
 			return TYPE_THREAT;
 		if(isIntervention())
@@ -57,9 +57,9 @@ public class Node extends EAMGraphCell
 		return TYPE_INVALID;
 	}
 
-	public boolean isGoal()
+	public boolean isTarget()
 	{
-		return(type.isGoal());
+		return(type.isTarget());
 	}
 	
 	public boolean isThreat()
@@ -102,7 +102,7 @@ public class Node extends EAMGraphCell
 	public static final int INVALID_ID = -1;
 	
 	public static final int TYPE_INVALID = -1;
-	public static final int TYPE_GOAL = 1;
+	public static final int TYPE_TARGET = 1;
 	public static final int TYPE_THREAT = 2;
 	public static final int TYPE_INTERVENTION = 3;
 

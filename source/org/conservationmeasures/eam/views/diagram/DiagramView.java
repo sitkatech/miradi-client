@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
-import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
@@ -70,7 +70,7 @@ public class DiagramView extends UmbrellaView
 
 	private void addDiagramViewDoersToMap()
 	{
-		addDoerToMap(ActionInsertGoal.class, new InsertGoal());
+		addDoerToMap(ActionInsertTarget.class, new InsertTarget());
 		addDoerToMap(ActionInsertThreat.class, new InsertThreat());
 		addDoerToMap(ActionInsertIntervention.class, new InsertIntervention());
 		addDoerToMap(ActionInsertConnection.class, new InsertConnection());

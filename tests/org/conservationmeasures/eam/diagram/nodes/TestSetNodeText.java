@@ -27,7 +27,7 @@ public class TestSetNodeText extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_GOAL);
+		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 

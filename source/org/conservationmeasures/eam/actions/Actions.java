@@ -27,7 +27,7 @@ public class Actions
 		registerAction(new ActionExit(mainWindow));
 		registerAction(new ActionPrint(mainWindow));
 		registerAction(new ActionInsertConnection(mainWindow));
-		registerAction(new ActionInsertGoal(mainWindow));
+		registerAction(new ActionInsertTarget(mainWindow));
 		registerAction(new ActionInsertIntervention(mainWindow));
 		registerAction(new ActionInsertThreat(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));

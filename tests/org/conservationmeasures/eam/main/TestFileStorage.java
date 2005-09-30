@@ -31,7 +31,7 @@ public class TestFileStorage extends EAMTestCase
 		
 		try
 		{
-			storage.appendCommand(new CommandInsertNode(Node.TYPE_GOAL));
+			storage.appendCommand(new CommandInsertNode(Node.TYPE_TARGET));
 			fail("Should have thrown since no file was loaded");
 		}
 		catch(IOException ignoreExpected)
@@ -45,17 +45,17 @@ public class TestFileStorage extends EAMTestCase
 		Vector nothingYet = FileStorage.load(temp);
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
-		Command createGoal = new CommandInsertNode(Node.TYPE_GOAL);
+		Command createTarget = new CommandInsertNode(Node.TYPE_TARGET);
 		Command createThreat = new CommandInsertNode(Node.TYPE_THREAT);
-		storage.appendCommand(createGoal);
+		storage.appendCommand(createTarget);
 		storage.appendCommand(createThreat);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
-		assertEquals("goal not gettable?", createGoal, storage.getCommandAt(0));
+		assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
 		assertEquals("threat not gettable?", createThreat, storage.getCommandAt(1));
 		
 		Vector loaded = FileStorage.load(temp);
 		assertEquals("didn't load correct count?", 2, loaded.size());
-		assertEquals("goal not loaded?", createGoal, loaded.get(0));
+		assertEquals("target not loaded?", createTarget, loaded.get(0));
 		assertEquals("threat not loaded?", createThreat, loaded.get(1));
 		
 		temp.delete();

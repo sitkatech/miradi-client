@@ -39,10 +39,10 @@ public class TestInsertNode extends EAMTestCase
 		}
 	}
 
-	public void testInsertGoal() throws Exception
+	public void testInsertTarget() throws Exception
 	{
 		Project project = new Project();
-		Command insertCommand = new CommandInsertNode(Node.TYPE_GOAL);
+		Command insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
@@ -53,7 +53,7 @@ public class TestInsertNode extends EAMTestCase
 		int id = insertedNode.getId();
 		Node foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not a goal?", foundNode.isGoal());
+		assertTrue("not a target?", foundNode.isTarget());
 	}
 
 	public void testInsertThreat() throws Exception

@@ -25,10 +25,10 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		BaseProject project = new BaseProject();
 
-		String Goal1Text = "Goal 1 Text";
+		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
-		int insertedId = insertGoal(project);
-		project.executeCommand(new CommandSetNodeText(insertedId, Goal1Text));
+		int insertedId = insertTarget(project);
+		project.executeCommand(new CommandSetNodeText(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 cell now.", 1, project.getDiagramModel().getCellCount());
 		
@@ -48,15 +48,15 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
 		EAMGraphCell cell = (EAMGraphCell)inserted.get(0);
 		assertTrue(project.getDiagramModel().isCellInProject(cell));
-		assertEquals("Incorrect label?", Goal1Text, cell.getText());
+		assertEquals("Incorrect label?", target1Text, cell.getText());
 		
 		undo.doIt();
 		assertEquals("Should have 0 cells again.", 0, project.getDiagramModel().getCellCount());
 	}
 
-	private int insertGoal(BaseProject project) throws CommandFailedException 
+	private int insertTarget(BaseProject project) throws CommandFailedException 
 	{
-		CommandInsertNode insert = new CommandInsertNode( Node.TYPE_GOAL);
+		CommandInsertNode insert = new CommandInsertNode( Node.TYPE_TARGET);
 		project.executeCommand(insert);
 		int insertedId = insert.getId();
 		return insertedId;

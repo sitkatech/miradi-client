@@ -23,10 +23,10 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramModel model = new DiagramModel();
 		Node threat = model.createNode(Node.TYPE_THREAT);
-		Node goal = model.createNode(Node.TYPE_GOAL);
-		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
+		Node target = model.createNode(Node.TYPE_TARGET);
+		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), target.getId());
 		assertTrue("threat isn't a node?", threat.isNode());
-		assertTrue("goal isn't a node?", goal.isNode());
+		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
 	}
 	
@@ -34,8 +34,8 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramModel model = new DiagramModel();
 		Node threat = model.createNode(Node.TYPE_THREAT);
-		Node goal = model.createNode(Node.TYPE_GOAL);
-		model.createLinkage(Node.INVALID_ID, threat.getId(), goal.getId());
+		Node target = model.createNode(Node.TYPE_TARGET);
+		model.createLinkage(Node.INVALID_ID, threat.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(3, model.getCellCount());
 		assertEquals(1, model.getLinkageCount());
@@ -47,11 +47,11 @@ public class TestDiagramModel extends EAMTestCase
 		Node threat = model.createNode(Node.TYPE_THREAT);
 		model.deleteNode(threat);
 		Node newThreat = model.createNode(Node.TYPE_THREAT);
-		Node goal = model.createNode(Node.TYPE_GOAL);
-		assertFalse("already linked?", model.hasLinkage(newThreat, goal));
-		model.createLinkage(Node.INVALID_ID, newThreat.getId(), goal.getId());
-		assertTrue("not linked?", model.hasLinkage(newThreat, goal));
-		assertTrue("reverse link not detected?", model.hasLinkage(goal, newThreat));
+		Node target = model.createNode(Node.TYPE_TARGET);
+		assertFalse("already linked?", model.hasLinkage(newThreat, target));
+		model.createLinkage(Node.INVALID_ID, newThreat.getId(), target.getId());
+		assertTrue("not linked?", model.hasLinkage(newThreat, target));
+		assertTrue("reverse link not detected?", model.hasLinkage(target, newThreat));
 	}
 	
 	public void testGetLinkages() throws Exception
@@ -59,10 +59,10 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel model = new DiagramModel();
 		Node threat1 = model.createNode(Node.TYPE_THREAT);
 		Node threat2 = model.createNode(Node.TYPE_THREAT);
-		Node goal = model.createNode(Node.TYPE_GOAL);
-		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, threat1.getId(), goal.getId());
-		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, threat2.getId(), goal.getId());
-		Set found = model.getLinkages(goal);
+		Node target = model.createNode(Node.TYPE_TARGET);
+		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, threat1.getId(), target.getId());
+		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, threat2.getId(), target.getId());
+		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
 		assertTrue("missed second?", found.contains(linkage2));
@@ -73,30 +73,30 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramModel model = new DiagramModel();
 		model.createNodeAtId(Node.TYPE_THREAT, 125);
-		Node goal = model.createNodeAtId(Node.TYPE_GOAL, -1);
-		assertEquals("didn't use next available id?", 126, goal.getId());
+		Node target = model.createNodeAtId(Node.TYPE_TARGET, -1);
+		assertEquals("didn't use next available id?", 126, target.getId());
 	}
 	
 	public void testCreateNode() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		model.createNode(Node.TYPE_GOAL);		
-		Node nodeToDelete = model.createNode(Node.TYPE_GOAL);		
-		model.createNode(Node.TYPE_GOAL);		
-		model.createNode(Node.TYPE_GOAL);		
+		model.createNode(Node.TYPE_TARGET);		
+		Node nodeToDelete = model.createNode(Node.TYPE_TARGET);		
+		model.createNode(Node.TYPE_TARGET);		
+		model.createNode(Node.TYPE_TARGET);		
 		model.deleteNode(nodeToDelete);
-		model.createNodeAtId(Node.TYPE_GOAL, nodeToDelete.getId()); //simulates an undo
-		Node nodeAfterUndo = model.createNode(Node.TYPE_GOAL);
+		model.createNodeAtId(Node.TYPE_TARGET, nodeToDelete.getId()); //simulates an undo
+		Node nodeAfterUndo = model.createNode(Node.TYPE_TARGET);
 		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
 	}
 	
 	public void testGetAllNodes() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_GOAL);		
-		Node node2 = model.createNode(Node.TYPE_GOAL);		
+		Node node1 = model.createNode(Node.TYPE_TARGET);		
+		Node node2 = model.createNode(Node.TYPE_TARGET);		
 		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		Node node3 = model.createNode(Node.TYPE_GOAL);		
+		Node node3 = model.createNode(Node.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
 		assertEquals(3, nodes.size());
@@ -108,10 +108,10 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetAllLinkages() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_GOAL);		
-		Node node2 = model.createNode(Node.TYPE_GOAL);		
+		Node node1 = model.createNode(Node.TYPE_TARGET);		
+		Node node2 = model.createNode(Node.TYPE_TARGET);		
 		Linkage link1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		Node node3 = model.createNode(Node.TYPE_GOAL);		
+		Node node3 = model.createNode(Node.TYPE_TARGET);		
 		Linkage link2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
 		
 		Vector linkages = model.getAllLinkages();
@@ -123,12 +123,12 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetNodeByIndex() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_GOAL);	
+		Node node1 = model.createNode(Node.TYPE_TARGET);	
 		model.deleteNode(node1);
-		Node node2 = model.createNode(Node.TYPE_GOAL);		
-		Node node3 = model.createNode(Node.TYPE_GOAL);		
+		Node node2 = model.createNode(Node.TYPE_TARGET);		
+		Node node3 = model.createNode(Node.TYPE_TARGET);		
 		model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
-		Node node4 = model.createNode(Node.TYPE_GOAL);		
+		Node node4 = model.createNode(Node.TYPE_TARGET);		
 		model.createLinkage(Node.INVALID_ID, node3.getId(), node4.getId());
 
 		assertEquals(node2, model.getNodeByIndex(0));
@@ -147,10 +147,10 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetLinkageByIndex() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_GOAL);		
-		Node node2 = model.createNode(Node.TYPE_GOAL);		
+		Node node1 = model.createNode(Node.TYPE_TARGET);		
+		Node node2 = model.createNode(Node.TYPE_TARGET);		
 		Linkage link1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		Node node3 = model.createNode(Node.TYPE_GOAL);		
+		Node node3 = model.createNode(Node.TYPE_TARGET);		
 		Linkage link2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
 		model.deleteLinkage(link1);
 		Linkage link3 = model.createLinkage(Node.INVALID_ID, node3.getId(), node1.getId());
@@ -172,7 +172,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel model = new DiagramModel();
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		Node node1 = model.createNode(Node.TYPE_GOAL);
+		Node node1 = model.createNode(Node.TYPE_TARGET);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals(0, testModel.nodeChanged);
 		assertEquals(0, testModel.nodeDeleted);
@@ -193,8 +193,8 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals(0, testModel.linkAdded);
 		assertEquals(0, testModel.linkDeleted);
 
-		Node node2 = model.createNode(Node.TYPE_GOAL);
-		Node node3 = model.createNode(Node.TYPE_GOAL);
+		Node node2 = model.createNode(Node.TYPE_TARGET);
+		Node node3 = model.createNode(Node.TYPE_TARGET);
 		Linkage link1 = model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
 		assertEquals(3, testModel.nodeAdded);
 		assertEquals(1, testModel.nodeDeleted);

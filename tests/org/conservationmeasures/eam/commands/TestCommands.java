@@ -34,7 +34,7 @@ public class TestCommands extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new BaseProject();
-		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_GOAL);
+		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
 	}
@@ -88,7 +88,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		int[] ids = {insertGoal(), insertThreat(), insertThreat(), insertIntervention()};
+		int[] ids = {insertTarget(), insertThreat(), insertThreat(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -114,7 +114,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetNodeText() throws Exception
 	{
-		int id = insertGoal();
+		int id = insertTarget();
 		
 		String originalText = "original text";
 		CommandSetNodeText starter = new CommandSetNodeText(id, originalText);
@@ -137,16 +137,16 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 
-	public void testCommandInsertGoal() throws Exception
+	public void testCommandInsertTarget() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_GOAL);
-		assertEquals("type not right?", Node.TYPE_GOAL, cmd.getNodeType());
+		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_TARGET);
+		assertEquals("type not right?", Node.TYPE_TARGET, cmd.getNodeType());
 		assertEquals("already have an id?", -1, cmd.getId());
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a goal?", inserted.isGoal());
+		assertTrue("didn't insert a target?", inserted.isTarget());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);
@@ -225,7 +225,7 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		int from = insertThreat();
-		int to = insertGoal();
+		int to = insertTarget();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		project.executeCommand(cmd);
 		int linkageId = cmd.getLinkageId();
@@ -278,19 +278,19 @@ public class TestCommands extends EAMTestCase
 
 	public void testDeleteNode() throws Exception
 	{
-		int id = insertGoal();
+		int id = insertTarget();
 		CommandDeleteNode cmd = new CommandDeleteNode(id);
 		assertEquals("type not defaulting properly?", Node.TYPE_INVALID, cmd.getNodeType());
 		project.executeCommand(cmd);
 		
-		assertEquals("type not set by execute?", Node.TYPE_GOAL, cmd.getNodeType());
+		assertEquals("type not set by execute?", Node.TYPE_TARGET, cmd.getNodeType());
 		
 		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", Node.TYPE_GOAL, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", Node.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -300,7 +300,7 @@ public class TestCommands extends EAMTestCase
 		CommandUndo cmd = new CommandUndo();
 		assertTrue(cmd.isUndo());
 		assertFalse(cmd.isRedo());
-		int insertedId = insertGoal();
+		int insertedId = insertTarget();
 		project.executeCommand(cmd);
 		try
 		{
@@ -369,14 +369,14 @@ public class TestCommands extends EAMTestCase
 
 	public void testRedo() throws Exception
 	{
-		int insertedId = insertGoal();
+		int insertedId = insertTarget();
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
 		CommandRedo redo = new CommandRedo();
 		project.executeCommand(redo);
 		
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("wrong node?", inserted.isGoal());
+		assertTrue("wrong node?", inserted.isTarget());
 		
 		CommandRedo loaded = (CommandRedo)saveAndReload(redo);
 		assertNotNull("didn't reload?", loaded);
@@ -414,9 +414,9 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't switch back?", NoProjectView.getViewName(), project.getCurrentView());
 	}
 
-	private int insertGoal() throws Exception
+	private int insertTarget() throws Exception
 	{
-		int type = Node.TYPE_GOAL;
+		int type = Node.TYPE_TARGET;
 		return insertNode(type);
 	}
 	

@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
-public class NodeTypeGoal extends NodeType
+public class NodeTypeTarget extends NodeType
 {
-	public boolean isGoal()
+	public boolean isTarget()
 	{
 		return true;
 	}

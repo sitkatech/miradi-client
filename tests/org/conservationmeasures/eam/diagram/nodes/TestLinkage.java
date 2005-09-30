@@ -23,20 +23,20 @@ public class TestLinkage extends EAMTestCase
 	public void testBasics()
 	{
 		Node threat = new Node(Node.TYPE_THREAT);
-		Node goal = new Node(Node.TYPE_GOAL);
-		Linkage linkage = new Linkage(threat, goal);
+		Node target = new Node(Node.TYPE_TARGET);
+		Linkage linkage = new Linkage(threat, target);
 		assertEquals("didn't remember from?", threat, linkage.getFromNode());
-		assertEquals("didn't remember to?", goal, linkage.getToNode());
+		assertEquals("didn't remember to?", target, linkage.getToNode());
 
 		assertEquals("source not the port of from?", threat.getPort(), linkage.getSource());
-		assertEquals("target not the port of to?", goal.getPort(), linkage.getTarget());
+		assertEquals("target not the port of to?", target.getPort(), linkage.getTarget());
 	}
 	
 	public void testIds()
 	{
 		Node threat = new Node(Node.TYPE_THREAT);
-		Node goal = new Node(Node.TYPE_GOAL);
-		Linkage linkage = new Linkage(threat, goal);
+		Node target = new Node(Node.TYPE_TARGET);
+		Linkage linkage = new Linkage(threat, target);
 		assertEquals(Node.INVALID_ID,linkage.getId());
 		int id = 243;
 		linkage.setId(id);

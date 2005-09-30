@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
-import org.conservationmeasures.eam.actions.ActionInsertGoal;
+import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertThreat;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
@@ -60,7 +60,7 @@ public class DiagramContextMenuHandler
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
 
-		insertMenu.add(getConfiguredAction(ActionInsertGoal.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertThreat.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
 		insertMenu.addSeparator();

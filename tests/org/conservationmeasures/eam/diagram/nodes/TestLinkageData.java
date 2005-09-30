@@ -16,7 +16,7 @@ public class TestLinkageData extends EAMTestCase
 		nodeA.setId(nodeAId);
 		
 		int nodeBId = 2;
-		Node nodeB = new Node(Node.TYPE_GOAL);
+		Node nodeB = new Node(Node.TYPE_TARGET);
 		nodeB.setId(nodeBId);
 		
 		Linkage linkage = new Linkage(nodeB, nodeA);

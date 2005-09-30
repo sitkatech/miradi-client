@@ -198,8 +198,8 @@ public class TableView extends UmbrellaView
 			if(cell.isLinkage())
 				return EAM.text("Linkage");
 			Node node = (Node)cell;
-			if(node.isGoal())
-				return EAM.text("Goal");
+			if(node.isTarget())
+				return EAM.text("Target");
 			if(node.isThreat())
 				return EAM.text("Threat");
 			if(node.isIntervention())

@@ -5,25 +5,25 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertGoalIcon;
+import org.conservationmeasures.eam.icons.InsertTargetIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertGoal extends LocationAction
+public class ActionInsertTarget extends LocationAction
 {
-	public ActionInsertGoal(MainWindow mainWindow)
+	public ActionInsertTarget(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertGoalIcon());
+		super(mainWindow, getLabel(), new InsertTargetIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Goal");
+		return EAM.text("Action|Insert|Target");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Goal node");
+		return EAM.text("TT|Insert a Target node");
 	}
 
 }
