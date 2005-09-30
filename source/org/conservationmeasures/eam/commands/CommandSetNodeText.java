@@ -78,9 +78,8 @@ public class CommandSetNodeText extends Command
 		}
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
 		dataOut.writeUTF(getNewText());
 		dataOut.writeUTF(getPreviousText());

@@ -76,9 +76,8 @@ public class CommandLinkNodes extends Command
 		
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getFromId());
 		dataOut.writeInt(getToId());
 		dataOut.writeInt(getLinkageId());

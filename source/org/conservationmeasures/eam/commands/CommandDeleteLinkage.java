@@ -82,9 +82,8 @@ public class CommandDeleteLinkage extends Command
 		}
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getId());
 		dataOut.writeInt(getWasFromId());
 		dataOut.writeInt(getWasToId());

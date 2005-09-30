@@ -66,9 +66,8 @@ public class CommandSwitchView extends Command
 		target.switchToView(fromView);
 	}
 	
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeUTF(getDestinationView());
 		dataOut.writeUTF(getPreviousView());
 	}

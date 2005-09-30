@@ -75,9 +75,8 @@ public class CommandInsertNode extends Command
 		}
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(type);
 		dataOut.writeInt(insertedId);
 	}

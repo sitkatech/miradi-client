@@ -45,9 +45,8 @@ public class CommandSetData extends Command
 		target.setDataValue(getFieldName(), getOldFieldData());
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeUTF(getFieldName());
 		dataOut.writeUTF(getFieldData());
 		dataOut.writeUTF(getOldFieldData());

@@ -82,9 +82,8 @@ public class CommandDiagramMove extends Command
 		}
 	}
 	
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeInt(getDeltaX());
 		dataOut.writeInt(getDeltaY());
 		dataOut.writeInt(ids.length);

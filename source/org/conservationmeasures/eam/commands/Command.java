@@ -71,10 +71,19 @@ public abstract class Command
 	{
 		return false;
 	}
+	
+	public void writeTo(DataOutputStream dataOut) throws IOException
+	{
+		dataOut.writeUTF(getCommandName());
+		writeDataTo(dataOut);
+	}
 
 	abstract public String getCommandName();
 	abstract public void execute(BaseProject target) throws CommandFailedException;
-	abstract public void writeTo(DataOutputStream dataOut) throws IOException;
+	
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
+	{
+	}
 	
 	public void undo(BaseProject target) throws CommandFailedException
 	{

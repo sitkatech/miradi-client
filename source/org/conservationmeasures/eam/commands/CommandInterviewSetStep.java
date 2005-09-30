@@ -41,9 +41,8 @@ public class CommandInterviewSetStep extends Command
 		target.setCurrentInterviewStepName(fromStep);
 	}
 
-	public void writeTo(DataOutputStream dataOut) throws IOException
+	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeUTF(getCommandName());
 		dataOut.writeUTF(getToStep());
 		dataOut.writeUTF(getFromStep());
 	}
