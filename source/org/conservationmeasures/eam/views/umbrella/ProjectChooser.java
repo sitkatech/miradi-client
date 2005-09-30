@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.Component;
-import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;
+import org.martus.swing.UiParagraphPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
-import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
 public class ProjectChooser extends JDialog implements ActionListener, ListSelectionListener
@@ -38,20 +38,17 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		setModal(true);
 		setResizable(true);
 		
-		existingProjectList = createExistingProjectList();
 		projectNameField = createTextArea();
-		
-		UiVBox bigBox = new UiVBox();
-		bigBox.add(new UiLabel(getHomeDirectory().getAbsolutePath()));
-		bigBox.add(new UiLabel(EAM.text("Label|Existing Projects:")));
-		bigBox.add(new UiScrollPane(existingProjectList));
-		bigBox.addSpace();
-		bigBox.add(createProjectNameBar());
-		bigBox.addSpace();
-		bigBox.add(createButtonBar());
+		existingProjectList = createExistingProjectList();
 
-		Container contents = getContentPane();
-		contents.add(bigBox);
+		UiParagraphPanel panel = new UiParagraphPanel();
+		panel.addOnNewLine(new UiLabel(getHomeDirectory().getAbsolutePath()));
+		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
+		uiScrollPane.setPreferredSize(new Dimension(projectNameField.getPreferredSize().width, 200));
+		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
+		panel.addComponents(new UiLabel(EAM.text("Project Name: ")), projectNameField);
+		panel.addOnNewLine(createButtonBar());
+		getContentPane().add(panel);
 
 		getRootPane().setDefaultButton(okButton);
 	}
@@ -139,13 +136,6 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		return textField;
 	}
 	
-	private Box createProjectNameBar()
-	{
-		Box nameBar = Box.createHorizontalBox();
-		nameBar.add(new UiLabel(EAM.text("Project Name: ")));
-		nameBar.add(projectNameField);
-		return nameBar;
-	}
 
 	private Box createButtonBar()
 	{
