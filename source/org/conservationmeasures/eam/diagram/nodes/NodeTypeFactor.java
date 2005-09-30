@@ -18,6 +18,6 @@ public class NodeTypeFactor extends NodeType
 
 	public Color getColor()
 	{
-		return Color.GREEN;
+		return Color.ORANGE;
 	}
 }
