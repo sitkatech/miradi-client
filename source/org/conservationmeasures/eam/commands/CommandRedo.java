@@ -33,11 +33,11 @@ public class CommandRedo extends Command
 		return getCommandName();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "Redo";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		target.redo();
@@ -47,5 +47,8 @@ public class CommandRedo extends Command
 	{
 		dataOut.writeUTF(getCommandName());
 	}
+
+
+	public static final String COMMAND_NAME = "Redo";
 
 }

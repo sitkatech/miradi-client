@@ -42,11 +42,11 @@ public class CommandLinkNodes extends Command
 		return getCommandName() + ": " + linkageId + "," + fromId + ", " + toId;
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "LinkNodes";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		try
@@ -94,6 +94,9 @@ public class CommandLinkNodes extends Command
 		return toId;
 	}
 	
+
+	public static final String COMMAND_NAME = "LinkNodes";
+
 	int fromId;
 	int toId;
 	int linkageId;

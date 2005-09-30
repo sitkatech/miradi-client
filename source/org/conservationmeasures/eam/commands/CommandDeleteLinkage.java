@@ -47,11 +47,11 @@ public class CommandDeleteLinkage extends Command
 		return getCommandName() + ":" + getId() + "," + getWasFromId() + "," + getWasToId();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "DeleteLinkage";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		DiagramModel model = target.getDiagramModel();
@@ -94,6 +94,9 @@ public class CommandDeleteLinkage extends Command
 	{
 		return id;
 	}
+
+
+	public static final String COMMAND_NAME = "DeleteLinkage";
 
 	int id;
 	int wasFrom;

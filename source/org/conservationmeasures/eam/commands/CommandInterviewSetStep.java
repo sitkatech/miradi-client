@@ -25,9 +25,9 @@ public class CommandInterviewSetStep extends Command
 		fromStep = dataIn.readUTF();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "InterviewSetStep";
+		return COMMAND_NAME;
 	}
 
 	public void execute(BaseProject target) throws CommandFailedException
@@ -57,6 +57,9 @@ public class CommandInterviewSetStep extends Command
 	{
 		return fromStep;
 	}
+
+
+	public static final String COMMAND_NAME = "InterviewSetStep";
 
 	private String toStep;
 	private String fromStep;

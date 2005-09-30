@@ -19,12 +19,11 @@ public class CommandDoNothing extends Command
 		return getCommandName() + ":" + done;
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "DoNothing";
+		return COMMAND_NAME;
 	}
-	
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		++done;
@@ -39,5 +38,8 @@ public class CommandDoNothing extends Command
 	{
 	}
 	
+
+	public static final String COMMAND_NAME = "DoNothing";
+
 	public int done;
 }

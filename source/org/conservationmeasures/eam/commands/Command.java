@@ -18,31 +18,31 @@ public abstract class Command
 	public static Command readFrom(DataInputStream dataIn) throws IOException, UnknownCommandException
 	{
 		String commandName = dataIn.readUTF();
-		if(commandName.equals(CommandDiagramMove.getCommandName()))
+		if(commandName.equals(CommandDiagramMove.COMMAND_NAME))
 			return new CommandDiagramMove(dataIn);
-		if(commandName.equals(CommandSetNodeText.getCommandName()))
+		if(commandName.equals(CommandSetNodeText.COMMAND_NAME))
 			return new CommandSetNodeText(dataIn);
-		if(commandName.equals(CommandInsertNode.getCommandName()))
+		if(commandName.equals(CommandInsertNode.COMMAND_NAME))
 			return new CommandInsertNode(dataIn);
-		if(commandName.equals(CommandLinkNodes.getCommandName()))
+		if(commandName.equals(CommandLinkNodes.COMMAND_NAME))
 			return new CommandLinkNodes(dataIn);
-		if(commandName.equals(CommandDeleteLinkage.getCommandName()))
+		if(commandName.equals(CommandDeleteLinkage.COMMAND_NAME))
 			return new CommandDeleteLinkage(dataIn);
-		if(commandName.equals(CommandDeleteNode.getCommandName()))
+		if(commandName.equals(CommandDeleteNode.COMMAND_NAME))
 			return new CommandDeleteNode(dataIn);
-		if(commandName.equals(CommandUndo.getCommandName()))
+		if(commandName.equals(CommandUndo.COMMAND_NAME))
 			return new CommandUndo(dataIn);
-		if(commandName.equals(CommandRedo.getCommandName()))
+		if(commandName.equals(CommandRedo.COMMAND_NAME))
 			return new CommandRedo(dataIn);
-		if(commandName.equals(CommandSwitchView.getCommandName()))
+		if(commandName.equals(CommandSwitchView.COMMAND_NAME))
 			return new CommandSwitchView(dataIn);
-		if(commandName.equals(CommandBeginTransaction.getCommandName()))
+		if(commandName.equals(CommandBeginTransaction.COMMAND_NAME))
 			return new CommandBeginTransaction();
-		if(commandName.equals(CommandEndTransaction.getCommandName()))
+		if(commandName.equals(CommandEndTransaction.COMMAND_NAME))
 			return new CommandEndTransaction();
-		if(commandName.equals(CommandInterviewSetStep.getCommandName()))
+		if(commandName.equals(CommandInterviewSetStep.COMMAND_NAME))
 			return new CommandInterviewSetStep(dataIn);
-		if(commandName.equals(CommandSetData.getCommandName()))
+		if(commandName.equals(CommandSetData.COMMAND_NAME))
 			return new CommandSetData(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
 	}
@@ -72,6 +72,7 @@ public abstract class Command
 		return false;
 	}
 
+	abstract public String getCommandName();
 	abstract public void execute(BaseProject target) throws CommandFailedException;
 	abstract public void writeTo(DataOutputStream dataOut) throws IOException;
 	

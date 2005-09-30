@@ -27,11 +27,11 @@ public class CommandEndTransaction extends Command
 	{
 	}
 
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "EndTransaction";
+		return COMMAND_NAME;
 	}
-	
+
 	public String toString()
 	{
 		return getCommandName();
@@ -41,4 +41,7 @@ public class CommandEndTransaction extends Command
 	{
 		return true;
 	}
+
+	public static final String COMMAND_NAME = "EndTransaction";
+
 }

@@ -45,11 +45,11 @@ public class CommandDiagramMove extends Command
 		return getCommandName() + ":" + stringOfIds + "," + deltaX + "," + deltaY;
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "DiagramMove";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		doMove(target, getDeltaX(), getDeltaY());
@@ -106,6 +106,9 @@ public class CommandDiagramMove extends Command
 	{
 		return ids;
 	}
+
+
+	public static final String COMMAND_NAME = "DiagramMove";
 
 	int deltaX;
 	int deltaY;

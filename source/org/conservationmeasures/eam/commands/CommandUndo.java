@@ -33,11 +33,11 @@ public class CommandUndo extends Command
 		return getCommandName();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "Undo";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		target.undo();
@@ -47,4 +47,7 @@ public class CommandUndo extends Command
 	{
 		dataOut.writeUTF(getCommandName());
 	}
+
+	public static final String COMMAND_NAME = "Undo";
+
 }

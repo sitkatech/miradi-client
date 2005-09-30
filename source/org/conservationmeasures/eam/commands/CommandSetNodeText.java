@@ -42,11 +42,11 @@ public class CommandSetNodeText extends Command
 		return getCommandName() + ": " + id + ", " + newText + "," + previousText;
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "SetNodeText";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		previousText = doSetText(target, getNewText(), getPreviousText()); 
@@ -95,6 +95,9 @@ public class CommandSetNodeText extends Command
 	{
 		return newText;
 	}
+
+
+	public static final String COMMAND_NAME = "SetNodeText";
 
 	int id;
 	String newText;

@@ -36,11 +36,11 @@ public class CommandSwitchView extends Command
 		return fromView;
 	}
 
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "SwitchView";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		fromView = target.getCurrentView();
@@ -72,6 +72,9 @@ public class CommandSwitchView extends Command
 		dataOut.writeUTF(getDestinationView());
 		dataOut.writeUTF(getPreviousView());
 	}
+
+
+	public static final String COMMAND_NAME = "SwitchView";
 
 	String toView;
 	String fromView;

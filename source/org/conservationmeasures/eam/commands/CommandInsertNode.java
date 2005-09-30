@@ -44,9 +44,9 @@ public class CommandInsertNode extends Command
 		return getCommandName() + ":" + getNodeType() + ","+ getId();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "CommandInsertNode";
+		return COMMAND_NAME;
 	}
 
 	public void execute(BaseProject target) throws CommandFailedException
@@ -82,6 +82,9 @@ public class CommandInsertNode extends Command
 		dataOut.writeInt(insertedId);
 	}
 	
+
+	public static final String COMMAND_NAME = "CommandInsertNode";
+
 	private int type;
 	private int insertedId;
 }

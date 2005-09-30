@@ -8,7 +8,6 @@ import org.conservationmeasures.eam.main.BaseProject;
 
 public class CommandBeginTransaction extends Command 
 {
-
 	public CommandBeginTransaction() 
 	{
 		super();
@@ -27,9 +26,9 @@ public class CommandBeginTransaction extends Command
 	{
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "BeginTransaction";
+		return COMMAND_NAME;
 	}
 
 	public String toString()
@@ -42,4 +41,7 @@ public class CommandBeginTransaction extends Command
 		return true;
 	}
 	
+
+	public static final String COMMAND_NAME = "BeginTransaction";
+
 }

@@ -38,11 +38,11 @@ public class CommandDeleteNode extends Command
 		return getCommandName() + ":" + getId();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "DeleteNode";
+		return COMMAND_NAME;
 	}
-	
+
 	public void execute(BaseProject target) throws CommandFailedException
 	{
 		try
@@ -80,6 +80,9 @@ public class CommandDeleteNode extends Command
 	{
 		return id;
 	}
+
+
+	public static final String COMMAND_NAME = "DeleteNode";
 
 	int id;
 	int nodeType;

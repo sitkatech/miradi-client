@@ -28,9 +28,9 @@ public class CommandSetData extends Command
 		oldFieldData = dataIn.readUTF();
 	}
 	
-	public static String getCommandName()
+	public String getCommandName()
 	{
-		return "SetData";
+		return COMMAND_NAME;
 	}
 
 	public void execute(BaseProject target) throws CommandFailedException
@@ -67,6 +67,9 @@ public class CommandSetData extends Command
 	{
 		return oldFieldData;
 	}
+
+
+	public static final String COMMAND_NAME = "SetData";
 
 	String fieldName;
 	String fieldData;
