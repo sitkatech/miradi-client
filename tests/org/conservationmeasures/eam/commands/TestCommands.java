@@ -88,7 +88,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		int[] ids = {insertTarget(), insertThreat(), insertThreat(), insertIntervention()};
+		int[] ids = {insertTarget(), insertFactor(), insertFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -156,15 +156,15 @@ public class TestCommands extends EAMTestCase
 		verifyUndoInsertNode(cmd);
 	}
 
-	public void testCommandInsertThreat() throws Exception
+	public void testCommandInsertFactor() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_THREAT);
+		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_FACTOR);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		Node inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a threat?", inserted.isThreat());
+		assertTrue("didn't insert a factor?", inserted.isFactor());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);
@@ -224,7 +224,7 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		int from = insertThreat();
+		int from = insertFactor();
 		int to = insertTarget();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		project.executeCommand(cmd);
@@ -253,7 +253,7 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		int from = insertIntervention();
-		int to = insertThreat();
+		int to = insertFactor();
 		Node fromNode = model.getNodeById(from);
 		Node toNode = model.getNodeById(to);
 
@@ -420,9 +420,9 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 	
-	private int insertThreat() throws Exception
+	private int insertFactor() throws Exception
 	{
-		int type = Node.TYPE_THREAT;
+		int type = Node.TYPE_FACTOR;
 		return insertNode(type);
 	}
 

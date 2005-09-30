@@ -13,10 +13,10 @@ import java.awt.Rectangle;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class InsertThreatIcon implements Icon
+public class InsertFactorIcon implements Icon
 {
 	public int getIconHeight()
 	{
@@ -31,7 +31,7 @@ public class InsertThreatIcon implements Icon
 	public void paintIcon(Component sample, Graphics g, int x, int y)
 	{
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight() * 3 / 4);
-		Color color = new NodeTypeThreat().getColor();
+		Color color = new NodeTypeFactor().getColor();
 		RectangleRenderer renderer = new RectangleRenderer();
 		renderer.fillShape(g, rect, color);
 		renderer.drawBorder((Graphics2D)g, rect, Color.BLACK);

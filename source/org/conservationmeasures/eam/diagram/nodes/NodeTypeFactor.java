@@ -9,9 +9,9 @@ import java.awt.Color;
 
 
 
-public class NodeTypeThreat extends NodeType
+public class NodeTypeFactor extends NodeType
 {
-	public boolean isThreat()
+	public boolean isFactor()
 	{
 		return true;
 	}

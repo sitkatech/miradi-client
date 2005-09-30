@@ -74,7 +74,7 @@ public class TestBaseProject extends EAMTestCase
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
 		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
-		Node node3 =  model.createNode(Node.TYPE_THREAT);
+		Node node3 =  model.createNode(Node.TYPE_FACTOR);
 		
 		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
 		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
@@ -105,7 +105,7 @@ public class TestBaseProject extends EAMTestCase
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
 		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
-		Node node3 =  model.createNode(Node.TYPE_THREAT);
+		Node node3 =  model.createNode(Node.TYPE_FACTOR);
 		
 		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
 		model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());

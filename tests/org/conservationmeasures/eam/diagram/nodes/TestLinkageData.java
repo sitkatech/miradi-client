@@ -12,7 +12,7 @@ public class TestLinkageData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		int nodeAId = 1;
-		Node nodeA = new Node(Node.TYPE_THREAT);
+		Node nodeA = new Node(Node.TYPE_FACTOR);
 		nodeA.setId(nodeAId);
 		
 		int nodeBId = 2;

@@ -52,9 +52,9 @@ public class TestTransferableEamList extends EAMTestCase
 		node1.setLocation(node1Location);
 		
 		int node2Id = 2;
-		String node2Text = "Threat 1";
+		String node2Text = "Factor 1";
 		Point node2Location = new Point(2,3);
-		int node2Type = Node.TYPE_THREAT;
+		int node2Type = Node.TYPE_FACTOR;
 		
 		Node node2 = new Node(node2Type);
 		node2.setId(node2Id);

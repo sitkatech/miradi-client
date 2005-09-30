@@ -22,10 +22,10 @@ public class TestDiagramModel extends EAMTestCase
 	public void testIsNode() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat = model.createNode(Node.TYPE_THREAT);
+		Node factor = model.createNode(Node.TYPE_FACTOR);
 		Node target = model.createNode(Node.TYPE_TARGET);
-		Linkage link = model.createLinkage(Node.INVALID_ID, threat.getId(), target.getId());
-		assertTrue("threat isn't a node?", threat.isNode());
+		Linkage link = model.createLinkage(Node.INVALID_ID, factor.getId(), target.getId());
+		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
 	}
@@ -33,9 +33,9 @@ public class TestDiagramModel extends EAMTestCase
 	public void testCounts()throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat = model.createNode(Node.TYPE_THREAT);
+		Node factor = model.createNode(Node.TYPE_FACTOR);
 		Node target = model.createNode(Node.TYPE_TARGET);
-		model.createLinkage(Node.INVALID_ID, threat.getId(), target.getId());
+		model.createLinkage(Node.INVALID_ID, factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(3, model.getCellCount());
 		assertEquals(1, model.getLinkageCount());
@@ -44,24 +44,24 @@ public class TestDiagramModel extends EAMTestCase
 	public void testHasLinkage() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat = model.createNode(Node.TYPE_THREAT);
-		model.deleteNode(threat);
-		Node newThreat = model.createNode(Node.TYPE_THREAT);
+		Node factor = model.createNode(Node.TYPE_FACTOR);
+		model.deleteNode(factor);
+		Node newFactor = model.createNode(Node.TYPE_FACTOR);
 		Node target = model.createNode(Node.TYPE_TARGET);
-		assertFalse("already linked?", model.hasLinkage(newThreat, target));
-		model.createLinkage(Node.INVALID_ID, newThreat.getId(), target.getId());
-		assertTrue("not linked?", model.hasLinkage(newThreat, target));
-		assertTrue("reverse link not detected?", model.hasLinkage(target, newThreat));
+		assertFalse("already linked?", model.hasLinkage(newFactor, target));
+		model.createLinkage(Node.INVALID_ID, newFactor.getId(), target.getId());
+		assertTrue("not linked?", model.hasLinkage(newFactor, target));
+		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
 	
 	public void testGetLinkages() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		Node threat1 = model.createNode(Node.TYPE_THREAT);
-		Node threat2 = model.createNode(Node.TYPE_THREAT);
+		Node factor1 = model.createNode(Node.TYPE_FACTOR);
+		Node factor2 = model.createNode(Node.TYPE_FACTOR);
 		Node target = model.createNode(Node.TYPE_TARGET);
-		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, threat1.getId(), target.getId());
-		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, threat2.getId(), target.getId());
+		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, factor1.getId(), target.getId());
+		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, factor2.getId(), target.getId());
 		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
@@ -72,7 +72,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void testUpdatesNextId() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		model.createNodeAtId(Node.TYPE_THREAT, 125);
+		model.createNodeAtId(Node.TYPE_FACTOR, 125);
 		Node target = model.createNodeAtId(Node.TYPE_TARGET, -1);
 		assertEquals("didn't use next available id?", 126, target.getId());
 	}

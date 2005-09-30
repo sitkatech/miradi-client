@@ -56,10 +56,10 @@ public class TestInsertNode extends EAMTestCase
 		assertTrue("not a target?", foundNode.isTarget());
 	}
 
-	public void testInsertThreat() throws Exception
+	public void testInsertFactor() throws Exception
 	{
 		Project project = new Project();
-		Command insertCommand = new CommandInsertNode(Node.TYPE_THREAT);
+		Command insertCommand = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		Node insertedNode = (Node)model.getRootAt(0);
@@ -70,7 +70,7 @@ public class TestInsertNode extends EAMTestCase
 		int id = insertedNode.getId();
 		Node foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not a threat?", foundNode.isThreat());
+		assertTrue("not a factor?", foundNode.isFactor());
 	}
 
 	public void testInsertIntervention() throws Exception

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertThreat;
+import org.conservationmeasures.eam.actions.ActionInsertFactor;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
@@ -32,7 +32,7 @@ public class DiagramToolBar extends JToolBar
 		add(ViewSwitcher.create(actions, ActionViewDiagram.class));
 		addSeparator();
 		add(new ToolBarButton(actions, ActionInsertTarget.class));
-		add(new ToolBarButton(actions, ActionInsertThreat.class));
+		add(new ToolBarButton(actions, ActionInsertFactor.class));
 		add(new ToolBarButton(actions, ActionInsertIntervention.class));
 		add(new ToolBarButton(actions, ActionInsertConnection.class));
 		addSeparator();

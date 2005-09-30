@@ -8,16 +8,16 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.EAM;
 
-public class InsertThreat extends InsertNode
+public class InsertFactor extends InsertNode
 {
 	public int getTypeToInsert()
 	{
-		return Node.TYPE_THREAT;
+		return Node.TYPE_FACTOR;
 	}
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Threat");
+		return EAM.text("Label|New Factor");
 	}
 
 }

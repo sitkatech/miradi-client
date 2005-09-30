@@ -30,11 +30,11 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new BaseProject();
 		
-		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
-		project.executeCommand(insertThreat);
+		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
+		project.executeCommand(insertFactor);
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		project.executeCommand(insertIntervention);
-		fromId = insertThreat.getId();
+		fromId = insertFactor.getId();
 		toId = insertIntervention.getId();
 		CommandLinkNodes link = new CommandLinkNodes(fromId, toId);
 		project.executeCommand(link);

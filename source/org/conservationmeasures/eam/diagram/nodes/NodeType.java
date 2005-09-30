@@ -17,7 +17,7 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isThreat()
+	public boolean isFactor()
 	{
 		return false;
 	}

@@ -25,20 +25,20 @@ public class TestCommandLinkNodes extends EAMTestCase
 		Project project = new Project();
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
-		insertThreat.execute(project);
-		int threatId = insertThreat.getId();
-		Node threat = model.getNodeById(threatId);
+		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
+		insertFactor.execute(project);
+		int factorId = insertFactor.getId();
+		Node factor = model.getNodeById(factorId);
 		CommandInsertNode insertTarget = new CommandInsertNode(Node.TYPE_TARGET);
 		insertTarget.execute(project);
 		int targetId = insertTarget.getId();
 		Node target = model.getNodeById(targetId);
 		
-		CommandLinkNodes command = new CommandLinkNodes(threatId, targetId);
+		CommandLinkNodes command = new CommandLinkNodes(factorId, targetId);
 		command.execute(project);
 		Linkage linkage = model.getLinkageById(command.getLinkageId());
 
-		assertEquals("not from threat?", threat, linkage.getFromNode());
+		assertEquals("not from factor?", factor, linkage.getFromNode());
 		assertEquals("not to target?", target, linkage.getToNode());
 	}
 }

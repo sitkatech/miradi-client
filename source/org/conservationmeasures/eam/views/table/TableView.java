@@ -200,8 +200,8 @@ public class TableView extends UmbrellaView
 			Node node = (Node)cell;
 			if(node.isTarget())
 				return EAM.text("Target");
-			if(node.isThreat())
-				return EAM.text("Threat");
+			if(node.isFactor())
+				return EAM.text("Factor");
 			if(node.isIntervention())
 				return EAM.text("Intervention");
 			return EAM.text("Unknown Type");

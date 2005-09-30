@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeThreat;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -24,7 +24,7 @@ public class TestNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		node = new Node(Node.TYPE_THREAT);
+		node = new Node(Node.TYPE_FACTOR);
 		attributeMap = node.getAttributes();
 		super.setUp();
 	}
@@ -37,13 +37,13 @@ public class TestNode extends EAMTestCase
 	public void testText() throws Exception
 	{
 		node.setText(sampleText);
-		assertTrue("Isn't a threat?", node.isThreat());
+		assertTrue("Isn't a factor?", node.isFactor());
 		assertEquals(sampleText, GraphConstants.getValue(attributeMap));
 	}
 	
 	public void testIds()
 	{
-		Node testNode = new Node(Node.TYPE_THREAT);
+		Node testNode = new Node(Node.TYPE_FACTOR);
 		assertEquals(Node.INVALID_ID,node.getId());
 		int id = 23;
 		testNode.setId(id);
@@ -52,8 +52,8 @@ public class TestNode extends EAMTestCase
 	
 	public void testColors()
 	{
-		NodeTypeThreat threatType = new NodeTypeThreat();
-		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), threatType.getColor());
+		NodeTypeFactor factorType = new NodeTypeFactor();
+		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), factorType.getColor());
 	}
 	
 	public void testBounds()

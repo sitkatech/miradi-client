@@ -29,22 +29,22 @@ public class TestDelete extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
-		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
+		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertIntervention.execute(project);
 		Node intervention = model.getNodeById(insertIntervention.getId());
-		insertThreat.execute(project);
-		Node threat = model.getNodeById(insertThreat.getId());
+		insertFactor.execute(project);
+		Node factor = model.getNodeById(insertFactor.getId());
 		int interventionId = intervention.getId();
-		int threatId = threat.getId();
-		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
+		int factorId = factor.getId();
+		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		int linkageId = link.getLinkageId();
 		
-		assertTrue("linkage not found?", model.hasLinkage(intervention, threat));
+		assertTrue("linkage not found?", model.hasLinkage(intervention, factor));
 		
 		CommandDeleteLinkage delete = new CommandDeleteLinkage(linkageId);
 		delete.execute(project);
-		assertFalse("linkage not deleted?", model.hasLinkage(intervention, threat));
+		assertFalse("linkage not deleted?", model.hasLinkage(intervention, factor));
 		
 		EAM.setLogToString();
 		try
@@ -57,9 +57,9 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDeleteNode deleteNode = new CommandDeleteNode(threatId);
+		CommandDeleteNode deleteNode = new CommandDeleteNode(factorId);
 		deleteNode.execute(project);
-		assertFalse("node not deleted?", model.isCellInProject(threat));
+		assertFalse("node not deleted?", model.isCellInProject(factor));
 
 		EAM.setLogToString();
 		try

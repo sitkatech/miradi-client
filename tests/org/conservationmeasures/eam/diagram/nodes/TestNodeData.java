@@ -19,7 +19,7 @@ public class TestNodeData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		int nodeAType = Node.TYPE_THREAT;
+		int nodeAType = Node.TYPE_FACTOR;
 		Node nodeA = new Node(nodeAType);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);

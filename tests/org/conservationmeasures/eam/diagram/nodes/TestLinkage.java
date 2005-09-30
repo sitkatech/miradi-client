@@ -22,21 +22,21 @@ public class TestLinkage extends EAMTestCase
 
 	public void testBasics()
 	{
-		Node threat = new Node(Node.TYPE_THREAT);
+		Node factor = new Node(Node.TYPE_FACTOR);
 		Node target = new Node(Node.TYPE_TARGET);
-		Linkage linkage = new Linkage(threat, target);
-		assertEquals("didn't remember from?", threat, linkage.getFromNode());
+		Linkage linkage = new Linkage(factor, target);
+		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
 
-		assertEquals("source not the port of from?", threat.getPort(), linkage.getSource());
+		assertEquals("source not the port of from?", factor.getPort(), linkage.getSource());
 		assertEquals("target not the port of to?", target.getPort(), linkage.getTarget());
 	}
 	
 	public void testIds()
 	{
-		Node threat = new Node(Node.TYPE_THREAT);
+		Node factor = new Node(Node.TYPE_FACTOR);
 		Node target = new Node(Node.TYPE_TARGET);
-		Linkage linkage = new Linkage(threat, target);
+		Linkage linkage = new Linkage(factor, target);
 		assertEquals(Node.INVALID_ID,linkage.getId());
 		int id = 243;
 		linkage.setId(id);
@@ -49,17 +49,15 @@ public class TestLinkage extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
-		CommandInsertNode insertThreat = new CommandInsertNode(Node.TYPE_THREAT);
+		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertIntervention.execute(project);
 		Node intervention = model.getNodeById(insertIntervention.getId());
-		insertThreat.execute(project);
-		Node threat = model.getNodeById(insertThreat.getId());
+		insertFactor.execute(project);
+		Node factor = model.getNodeById(insertFactor.getId());
 		int interventionId = intervention.getId();
-		int threatId = threat.getId();
-		CommandLinkNodes link = new CommandLinkNodes(interventionId, threatId);
+		int factorId = factor.getId();
+		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
-		
-		
 	}
 }

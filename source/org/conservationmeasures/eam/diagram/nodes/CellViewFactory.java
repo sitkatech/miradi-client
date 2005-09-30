@@ -17,7 +17,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new EllipseNodeView(node);
 		}
-		if(node.isThreat())
+		if(node.isFactor())
 		{
 			return new RectangleNodeView(node);
 		}

@@ -46,17 +46,17 @@ public class TestFileStorage extends EAMTestCase
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
 		Command createTarget = new CommandInsertNode(Node.TYPE_TARGET);
-		Command createThreat = new CommandInsertNode(Node.TYPE_THREAT);
+		Command createFactor = new CommandInsertNode(Node.TYPE_FACTOR);
 		storage.appendCommand(createTarget);
-		storage.appendCommand(createThreat);
+		storage.appendCommand(createFactor);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
 		assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
-		assertEquals("threat not gettable?", createThreat, storage.getCommandAt(1));
+		assertEquals("factor not gettable?", createFactor, storage.getCommandAt(1));
 		
 		Vector loaded = FileStorage.load(temp);
 		assertEquals("didn't load correct count?", 2, loaded.size());
 		assertEquals("target not loaded?", createTarget, loaded.get(0));
-		assertEquals("threat not loaded?", createThreat, loaded.get(1));
+		assertEquals("factor not loaded?", createFactor, loaded.get(1));
 		
 		temp.delete();
 		try
