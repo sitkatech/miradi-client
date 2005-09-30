@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.main;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -27,14 +25,12 @@ public class Project extends BaseProject
 	
 	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException, UnknownCommandException
 	{
-		if(!projectFile.exists())
-		{
-			createProjectFiles(projectFile);
-		}
-		
 		getDiagramModel().clear();
 		getStorage().setFile(projectFile);
-		Vector commands = FileStorage.load(projectFile);
+		if(!getStorage().exists())
+			getStorage().createEmpty();
+		
+		Vector commands = getStorage().load();
 		for(int i=0; i < commands.size(); ++i)
 		{
 			Command command = (Command)commands.get(i);
@@ -50,12 +46,6 @@ public class Project extends BaseProject
 		}
 		
 		fireCommandExecuted(new CommandDoNothing());
-	}
-
-	private void createProjectFiles(File projectFile) throws FileNotFoundException, IOException
-	{
-		FileOutputStream out = new FileOutputStream(projectFile);
-		out.close();
 	}
 
 	public boolean isOpen()

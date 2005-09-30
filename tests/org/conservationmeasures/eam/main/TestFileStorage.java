@@ -42,7 +42,7 @@ public class TestFileStorage extends EAMTestCase
 		assertTrue("no file?", storage.hasFile());
 		assertEquals("wrong file name?", temp.getName(), storage.getName());
 		
-		Vector nothingYet = FileStorage.load(temp);
+		Vector nothingYet = storage.load();
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
 		Command createTarget = new CommandInsertNode(Node.TYPE_TARGET);
@@ -53,7 +53,7 @@ public class TestFileStorage extends EAMTestCase
 		assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
 		assertEquals("factor not gettable?", createFactor, storage.getCommandAt(1));
 		
-		Vector loaded = FileStorage.load(temp);
+		Vector loaded = storage.load();
 		assertEquals("didn't load correct count?", 2, loaded.size());
 		assertEquals("target not loaded?", createTarget, loaded.get(0));
 		assertEquals("factor not loaded?", createFactor, loaded.get(1));
@@ -61,7 +61,7 @@ public class TestFileStorage extends EAMTestCase
 		temp.delete();
 		try
 		{
-			FileStorage.load(temp);
+			storage.load();
 			fail("Should have thrown opening non-existant file");
 		}
 		catch(IOException ignoreExpected)

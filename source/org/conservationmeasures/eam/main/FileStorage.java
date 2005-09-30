@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.main;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Vector;
@@ -36,9 +37,9 @@ public class FileStorage extends Storage
 		file = fileToUse;
 	}
 	
-	public static Vector load(File fileToUse) throws IOException, UnknownCommandException
+	public Vector load() throws IOException, UnknownCommandException
 	{
-		FileInputStream in = new FileInputStream(fileToUse);
+		FileInputStream in = new FileInputStream(file);
 		try
 		{
 			return load(in);
@@ -47,6 +48,17 @@ public class FileStorage extends Storage
 		{
 			in.close();
 		}
+	}
+
+	public boolean exists()
+	{
+		return (file.exists());
+	}
+	
+	public void createEmpty() throws FileNotFoundException, IOException
+	{
+		FileOutputStream out = new FileOutputStream(file);
+		out.close();
 	}
 
 	public void appendCommand(Command command) throws IOException
