@@ -23,10 +23,12 @@ public class TestDatabase extends EAMTestCase
 		
 		db = new Database();
 		db.openMemoryDatabase("testdb");
+		db.rawExecute("CREATE TABLE " + sampleTable + " (id INTEGER IDENTITY PRIMARY KEY, type INTEGER, text VARCHAR);");
 	}
 	
 	public void tearDown() throws Exception
 	{
+		db.rawExecute("DROP TABLE " + sampleTable);
 		db.close();
 		super.tearDown();
 	}
@@ -48,11 +50,7 @@ public class TestDatabase extends EAMTestCase
 	
 	public void testMrPersister() throws Exception
 	{
-		String table = "SampleObject";
-		db.rawExecute("CREATE TABLE " + table + " (id INTEGER PRIMARY KEY, type INTEGER, text VARCHAR);");
-		
 		SampleObject a = new SampleObject();
-		a.setId(1234);
 		a.setType(99);
 		a.setText("This is a good test");
 		db.insert(a);
@@ -62,12 +60,22 @@ public class TestDatabase extends EAMTestCase
 		assertEquals(a.getType(), c.getType());
 		assertEquals(a.getText(), c.getText());
 		
-		SampleObject b = (SampleObject)db.select(SampleObject.class, "SELECT * FROM " + table + " WHERE id = 1234");
+		SampleObject b = (SampleObject)db.select(SampleObject.class, "SELECT * FROM " + sampleTable + " WHERE id = " + a.getId());
 		assertEquals(a.getId(), b.getId());
 		assertEquals(a.getType(), b.getType());
 		assertEquals(a.getText(), b.getText());
 	}
 	
+	public void testEscaping() throws Exception
+	{
+		SampleObject containsIckyStuff = new SampleObject();
+		containsIckyStuff.setText("this 'could `(cause \" problems ");
+		db.insert(containsIckyStuff);
+		SampleObject gotBack = (SampleObject)db.read(SampleObject.class, containsIckyStuff.getId());
+		assertEquals("Didn't write and read ok?", containsIckyStuff.getText(), gotBack.getText());
+	}
+	
+	final static String sampleTable = "SampleObject";
 	Database db;
 }
 

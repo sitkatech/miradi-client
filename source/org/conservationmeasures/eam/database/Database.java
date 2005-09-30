@@ -18,6 +18,7 @@ public class Database
 	public Database() throws Exception
 	{
 		forceLoadJdbcDrivers();
+		persistenceManager = new PersistenceManager();
 	}
 	
 	public void openMemoryDatabase(String name) throws Exception
@@ -69,8 +70,6 @@ public class Database
 	
 	private PersistenceManager getPersistenceManager()
 	{
-		if(persistenceManager == null)
-			persistenceManager = new PersistenceManager();
 		return persistenceManager;
 	}
 	
@@ -80,7 +79,7 @@ public class Database
 		Class.forName("org.hsqldb.jdbcDriver");
 	}
 	
-	private static PersistenceManager persistenceManager = new PersistenceManager();
+	private PersistenceManager persistenceManager = new PersistenceManager();
 	private Connection connection;
 	private IGenericDao dao;
 }

@@ -7,11 +7,6 @@ package org.conservationmeasures.eam.database;
 
 public class SampleObject
 {
-	public void setId(int id)
-	{
-		this.id = id;
-	}
-	
 	public int getId()
 	{
 		return id;
