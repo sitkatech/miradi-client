@@ -101,7 +101,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		label.setBorder(new EmptyBorder(yInset, xInset, yInset, xInset));
 		label.setSize(getSize());
 		label.setHorizontalAlignment(JLabel.CENTER);
-		label.setVerticalAlignment(getVirticalAlignmentOfText());
+		label.setVerticalAlignment(getVerticalAlignmentOfText());
 		label.paint(g2);
 		
 		if (bordercolor != null)
@@ -159,7 +159,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	
 	}
 
-	int getVirticalAlignmentOfText()
+	int getVerticalAlignmentOfText()
 	{
 		return JLabel.TOP;
 	}

@@ -55,7 +55,7 @@ public class TriangleRenderer extends MultilineNodeRenderer {
 		return triangle;
 	}
 
-	int getVirticalAlignmentOfText()
+	int getVerticalAlignmentOfText()
 	{
 		return JLabel.CENTER;
 	}
