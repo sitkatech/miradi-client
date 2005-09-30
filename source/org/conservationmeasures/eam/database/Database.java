@@ -45,6 +45,9 @@ public class Database
 	
 	public void close() throws IOException
 	{
+		if(connection == null)
+			return;
+		
 		dao = null;
 		try
 		{
