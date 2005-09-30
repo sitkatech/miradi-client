@@ -23,13 +23,10 @@ public class Project extends BaseProject
 		storage = new FileStorage();
 	}
 	
-	public void load(MainWindow mainWindow, File projectFile) throws IOException, CommandFailedException, UnknownCommandException
+	public void load(MainWindow mainWindow, File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getDiagramModel().clear();
-		String path = projectFile.getAbsolutePath();
-		int at = path.indexOf(".eam");
-		path = path.substring(0, at);
-		getStorage().setDirectory(new File(path));
+		getStorage().setDirectory(projectDirectory);
 		if(!getStorage().exists())
 			getStorage().createEmpty();
 		

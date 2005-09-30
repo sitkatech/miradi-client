@@ -115,11 +115,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		return actions;
 	}
 	
-	public void loadProject(File projectFile)
+	public void loadProject(File projectDirectory)
 	{
 		try
 		{
-			project.load(this, projectFile);
+			project.load(this, projectDirectory);
 			validate();
 			updateTitle();
 		}

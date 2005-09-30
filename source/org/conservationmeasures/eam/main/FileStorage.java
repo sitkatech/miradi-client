@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.main;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.Vector;
@@ -82,9 +81,6 @@ public class FileStorage extends Storage
 	
 	public void createEmpty() throws IOException
 	{
-		File placeHolder = getPlaceHolder(); 
-		FileOutputStream out = new FileOutputStream(placeHolder);
-		out.close();
 		DirectoryUtils.deleteEntireDirectoryTree(directory);
 		db.openDiskDatabase(getDatabaseFileBase());
 		createCommandsTable();
@@ -94,12 +90,6 @@ public class FileStorage extends Storage
 	private File getDatabaseFileBase()
 	{
 		return new File(directory, directory.getName());
-	}
-
-	private File getPlaceHolder()
-	{
-		File parent = directory.getParentFile();
-		return new File(parent, getName() + ".eam");
 	}
 
 	private void createCommandsTable() throws IOException

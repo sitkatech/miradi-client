@@ -7,9 +7,8 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
-import javax.swing.JFileChooser;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
@@ -17,28 +16,32 @@ public class NewProject extends MainWindowDoer
 {
 	public void doIt() throws CommandFailedException
 	{
-		JFileChooser dlg = new JFileChooser();
-		dlg.setDialogTitle(EAM.text("Title|Create New Project"));
-		dlg.setFileFilter(new EamProjectFileFilter());
-		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		dlg.setApproveButtonToolTipText(EAM.text("TT|Create new project"));
-		if(dlg.showDialog(getMainWindow(), EAM.text("Create")) != JFileChooser.APPROVE_OPTION)
-			return;
-		
-		File newProjectFile = dlg.getSelectedFile();
-		if(!newProjectFile.getName().toLowerCase().endsWith(EAM.PROJECT_EXTENSION))
-			newProjectFile = new File(newProjectFile.getAbsolutePath() + EAM.PROJECT_EXTENSION);
-
-		if(newProjectFile.exists())
+		while(true)
 		{
-			String title = EAM.text("Title|Overwrite existing project?");
-			String[] body = {EAM.text("This will replace the existing project with a new, empty project")};
-			if(!EAM.confirmDialog(title, body))
+			ProjectChooser dlg = new ProjectChooser(getMainWindow());
+			if(!dlg.showCreateDialog())
 				return;
-			newProjectFile.delete();
+	
+			File chosen = dlg.getSelectedFile();
+			if(chosen.exists())
+			{
+				String body = EAM.text("Cannot overwrite an existing file or directory");
+				EAM.errorDialog(body);
+				continue;
+			}
+
+			String name = chosen.getName();
+			if(!BaseProject.isValidProjectName(name))
+			{
+				String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
+				EAM.errorDialog(body);
+				continue;
+			}
+
+			getMainWindow().loadProject(chosen);
+				return;
 		}
 				
-		getMainWindow().loadProject(newProjectFile);
 	}
 
 	public boolean isAvailable()
