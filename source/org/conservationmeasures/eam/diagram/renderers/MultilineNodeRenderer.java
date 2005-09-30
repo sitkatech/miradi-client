@@ -69,8 +69,8 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	}
 
 	abstract Dimension getInsetDimension();
-	abstract void fillShape(Graphics g, Rectangle rect, Color color);
-	abstract void drawBorder(Graphics2D g2, Rectangle rect, Color color);
+	abstract public void fillShape(Graphics g, Rectangle rect, Color color);
+	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);
 	
 	//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
 	public static void setPaint(Graphics2D g2, Rectangle rect, Color color) 
