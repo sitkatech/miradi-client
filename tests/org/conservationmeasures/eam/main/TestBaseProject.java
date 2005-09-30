@@ -25,6 +25,14 @@ public class TestBaseProject extends EAMTestCase
 		super(name);
 	}
 	
+	public void testIsValidName() throws Exception
+	{
+		assertTrue("AlphaNumericDotDashSpace", BaseProject.isValidProjectName("AZaz09.- "));
+		assertFalse("Other Punct", BaseProject.isValidProjectName("$"));
+		final char ACCENT_A_LOWER = 0xE1;
+		assertTrue("Foreign", BaseProject.isValidProjectName(new String(new char[] {ACCENT_A_LOWER})));
+	}
+	
 	public void testData() throws Exception
 	{
 		BaseProject project = new BaseProject();

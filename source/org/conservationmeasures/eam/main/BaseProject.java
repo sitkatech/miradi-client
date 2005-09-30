@@ -55,6 +55,24 @@ public class BaseProject
 	{
 		return true;
 	}
+	
+	static public boolean isValidProjectName(String candidate)
+	{
+		char[] asArray = candidate.toCharArray();
+		for(int i = 0; i < candidate.length(); ++i)
+		{
+			char c = asArray[i];
+			if(c >= 128)
+				continue;
+			if(Character.isLetterOrDigit(c))
+				continue;
+			if(c == ' ' || c == '.' || c == '-')
+				continue;
+			
+			return false;
+		}
+		return true;
+	}
 
 	public DiagramModel getDiagramModel()
 	{
