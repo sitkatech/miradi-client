@@ -42,7 +42,8 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		projectNameField = createTextArea();
 		
 		UiVBox bigBox = new UiVBox();
-		bigBox.add(new UiLabel("Existing Projects:"));
+		bigBox.add(new UiLabel(getHomeDirectory().getAbsolutePath()));
+		bigBox.add(new UiLabel(EAM.text("Label|Existing Projects:")));
 		bigBox.add(new UiScrollPane(existingProjectList));
 		bigBox.addSpace();
 		bigBox.add(createProjectNameBar());
@@ -92,7 +93,8 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 
 	private File getHomeDirectory()
 	{
-		File home = new File(System.getProperty("user.home"));
+		File home = new File(System.getProperty("user.home"), "eAM");
+		home.mkdirs();
 		return home;
 	}
 	
