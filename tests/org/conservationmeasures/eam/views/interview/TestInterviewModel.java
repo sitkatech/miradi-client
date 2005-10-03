@@ -40,9 +40,13 @@ public class TestInterviewModel extends EAMTestCase
 		assertEquals("previous of first not blank?", "", welcomeStep.getPreviousStepName());
 		
 		InterviewStepModel secondStep = model.getStep(welcomeStep.getNextStepName());
-		assertEquals("wrong next step?", "P1aT2S1", secondStep.getStepName());
-		assertEquals("next of last not blank?", "", secondStep.getNextStepName());
+		assertEquals("wrong 2nd step name?", "P1aT2S1", secondStep.getStepName());
+		assertEquals("next 2nd not P1aT2S2?", "P1aT2S2", secondStep.getNextStepName());
 		assertEquals("wrong previous of next?", welcomeStep.getStepName(), secondStep.getPreviousStepName());
 		
+		InterviewStepModel thirdStep = model.getStep(secondStep.getNextStepName());
+		assertEquals("wrong 3rd step name?", "P1aT2S2", thirdStep.getStepName());
+		assertEquals("next of last not blank?", "", thirdStep.getNextStepName());
+		assertEquals("wrong 3rd step previous?", secondStep.getStepName(), thirdStep.getPreviousStepName());
 	}
 }

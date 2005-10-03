@@ -11,6 +11,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.views.interview.elements.ElementData;
 import org.conservationmeasures.eam.views.interview.elements.HtmlElementData;
 import org.conservationmeasures.eam.views.interview.elements.InputElementData;
+import org.conservationmeasures.eam.views.interview.elements.ListElementData;
 import org.conservationmeasures.eam.views.interview.elements.NullElementData;
 import org.martus.util.UnicodeReader;
 
@@ -37,10 +38,14 @@ public class StepLoader
 			{
 				append(step, elementData);
 				elementData = null;
-				if(line.equals(":html:"))
+				if(line.equals(htmlElementTag))
 					elementData = new HtmlElementData();
-				else if(line.equals(":input:"))
+				else if(line.equals(inputElementTag))
 					elementData = new InputElementData();
+				else if(line.startsWith(listElementTag))
+					elementData = new ListElementData(line.substring(listElementTag.length()));
+				else 
+					System.out.println("Unknown element->"+line);
 			}
 			else
 			{
@@ -59,4 +64,7 @@ public class StepLoader
 
 		step.addElement(elementData);
 	}
+	static final String htmlElementTag = ":html:";
+	static final String inputElementTag = ":input:";
+	static final String listElementTag = ":list:";
 }

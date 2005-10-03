@@ -22,6 +22,7 @@ public class InterviewModel
 	{
 		addStep(StepLoader.load(new UnicodeStringReader(templateWelcome)));
 		addStep(StepLoader.load(new UnicodeStringReader(templateP1aT2S1)));
+		addStep(StepLoader.load(new UnicodeStringReader(templateP1aT2S2)));
 	}
 	
 	public void addStep(InterviewStepModel stepModel)
@@ -96,7 +97,7 @@ public class InterviewModel
 
 	static public final String templateP1aT2S1 = 	
 		"P1aT2S1\n" +
-		"\n" +
+		"P1aT2S2\n" +
 		"welcome\n" +
 		":html:\n" +
 			"<p><font size='6'>Step 1.  Conceptualize</font></p>\n" + 
@@ -117,6 +118,26 @@ public class InterviewModel
 			"<p>Describe in a few sentences the project area or theme for your project:</p>\n" + 
 		":input:\n" +
 			"ProjectScope\n";
+	
+	private static final String templateP1aT2S2=
+		"P1aT2S2\n" +
+		"\n" +
+		"P1aT2S1\n" +
+		":html:\n" +
+			"<p><font size='6'>Step 2.1.  Plan Your Actions</font></p>\n" +
+		":html:\n" +
+			"<font size='5'>&nbsp;&nbsp;Principle 2.1 A.  Develop clear goal and objectives</font></p>" +
+			"<hr></hr>" +
+			"<p><strong>Task 3. Develop Objectives</strong></p>" +
+			"<br></br>" + 
+			"An <u><em>objective</em></u> is a specific statement detailing the desired accomplishments, " + 
+			"milestones or outcomes of a project.  To develop a good objective, " + 
+			"select one of your high ranked threats:\n" +
+		":list:ThreatChoosen\n" +
+		"Cutting Trees\n" +
+		"International Trawling\n" +
+		"Local Fishing\n"+
+		":html:\n";
 
 	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
 	

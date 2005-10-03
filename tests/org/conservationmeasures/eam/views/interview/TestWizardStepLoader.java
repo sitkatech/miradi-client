@@ -5,9 +5,12 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.interview.elements.HtmlElementData;
 import org.conservationmeasures.eam.views.interview.elements.InputElementData;
+import org.conservationmeasures.eam.views.interview.elements.ListElementData;
 import org.martus.util.UnicodeStringReader;
 
 public class TestWizardStepLoader extends EAMTestCase
@@ -57,6 +60,31 @@ public class TestWizardStepLoader extends EAMTestCase
 		assertEquals("didn't set field name?", "DataName", inputComponent.getFieldName());
 	}
 	
+	public void testListField() throws Exception
+	{
+		String prompt = ":html:\nPlease choose from the list\n";
+		String listName = "List Name"; 
+		String choice1 = "Choice 1"; 
+		String choice2 = "Choice 2"; 
+		String choice3 = "Choice 3"; 
+		
+		String listField = ":list:"+listName+"\n"+choice1+"\n"+choice2+"\n"+choice3+"\n";
+		String template = "name\nnext\nprevious\n" + prompt + listField;
+		InterviewStepModel step = createStepFromData(template);
+		assertEquals(2, step.getElementCount());
+		ListElementData listComponent = (ListElementData)step.getElement(1);
+		assertNotNull(listComponent);
+		listComponent.createComponent();
+		assertEquals("didn't set field name?", listName, listComponent.getFieldName());
+		Vector retrievedList = listComponent.getList();
+		assertContains(choice1, retrievedList);
+		assertContains(choice2, retrievedList);
+		assertContains(choice3, retrievedList);
+		listComponent.setFieldData(choice2);
+		assertEquals(choice2, listComponent.getFieldData());
+		assertEquals("<<list>>", listComponent.toString());
+	}
+
 	private InterviewStepModel createStepFromData(String data) throws Exception
 	{
 		return StepLoader.load(new UnicodeStringReader(data));
