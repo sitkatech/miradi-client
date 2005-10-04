@@ -59,6 +59,16 @@ public class InterviewStepModel
 		previousStepName = newPreviousStepName;
 	}
 	
+	public boolean isPreviousAvailable()
+	{
+		return previousStepName.length() > 0;
+	}
+	
+	public boolean isNextAvailable()
+	{
+		return nextStepName.length() > 0;
+	}
+
 	public Map getData()
 	{
 		HashMap stepData = new HashMap();

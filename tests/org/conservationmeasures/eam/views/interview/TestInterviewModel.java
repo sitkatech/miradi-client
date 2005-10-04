@@ -36,22 +36,24 @@ public class TestInterviewModel extends EAMTestCase
 		model.loadSteps();
 		assertTrue("Didn't load steps?", model.getStepCount() > 1);
 		InterviewStepModel welcomeStep = model.getCurrentStep();
-		assertEquals("wrong first step number?", 0, model.getCurrentStepNumber());
 		assertEquals("wrong first step?", "welcome", welcomeStep.getStepName());
 		assertEquals("previous of first not blank?", "", welcomeStep.getPreviousStepName());
+		assertFalse("first should not have a previous step", welcomeStep.isPreviousAvailable());
+		assertTrue("first should have a next step", welcomeStep.isNextAvailable());
+		
 		
 		InterviewStepModel secondStep = model.getStep(welcomeStep.getNextStepName());
 		assertEquals("wrong 2nd step name?", "P1aT2S1", secondStep.getStepName());
 		assertEquals("next 2nd not P1aT2S2?", "P1aT2S2", secondStep.getNextStepName());
 		assertEquals("wrong previous of next?", welcomeStep.getStepName(), secondStep.getPreviousStepName());
-		model.setCurrentStepName(secondStep.getStepName());
-		assertEquals("wrong 2nd step number?", 1, model.getCurrentStepNumber());
+		assertTrue("2nd should have a previous step", secondStep.isPreviousAvailable());
+		assertTrue("2nd should have a next step", secondStep.isNextAvailable());
 		
 		InterviewStepModel thirdStep = model.getStep(secondStep.getNextStepName());
 		assertEquals("wrong 3rd step name?", "P1aT2S2", thirdStep.getStepName());
 		assertEquals("next of last not blank?", "", thirdStep.getNextStepName());
 		assertEquals("wrong 3rd step previous?", secondStep.getStepName(), thirdStep.getPreviousStepName());
-		model.setCurrentStepName(thirdStep.getStepName());
-		assertEquals("wrong 3rd step number?", 2, model.getCurrentStepNumber());
+		assertTrue("last should have a previous step", thirdStep.isPreviousAvailable());
+		assertFalse("last should not have a next step", thirdStep.isNextAvailable());
 	}
 }

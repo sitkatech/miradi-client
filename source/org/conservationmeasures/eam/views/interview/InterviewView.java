@@ -64,11 +64,10 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	public void updateButtonStates()
 	{
 		InterviewModel model = getProject().getInterviewModel();
-		int stepCount = model.getStepCount();
-		int currentStep = model.getCurrentStepNumber();
+		InterviewStepModel currentStep = model.getCurrentStep();
 		
-		boolean previousButtonEnabled = (currentStep > 0);
-		boolean nextButtonEnabled = (currentStep < stepCount -1);
+		boolean previousButtonEnabled = currentStep.isPreviousAvailable();
+		boolean nextButtonEnabled = currentStep.isNextAvailable();
 	
 		previousButton.setEnabled(previousButtonEnabled);
 		nextButton.setEnabled(nextButtonEnabled);

@@ -70,23 +70,15 @@ public class InterviewModel
 		currentStep = destination;
 	}
 	
-	public int getCurrentStepNumber()
+	public InterviewStepModel getCurrentStep()
 	{
 		for(int i=0; i < getStepCount(); ++i)
 		{
 			InterviewStepModel step = getStep(i);
 			if(step.getStepName().equals(getCurrentStepName()))
-				return i;
+				return step;
 		}
-		return INVALID_STEP;
-	}
-	
-	public InterviewStepModel getCurrentStep()
-	{
-		int step = getCurrentStepNumber();
-		if(step == INVALID_STEP)
-			return null;
-		return getStep(step);
+		return null;
 	}
 	
 	private InterviewStepModel currentStep;
@@ -146,5 +138,4 @@ public class InterviewModel
 		":html:\n";
 
 	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
-	private final int INVALID_STEP = -1;
 }
