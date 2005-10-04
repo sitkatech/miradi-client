@@ -38,17 +38,6 @@ class CellInventory
 		cells.add(cell);
 	}
 	
-	public int getIndex(EAMGraphCell cellToFind)
-	{
-		for (int index = 0; index < cells.size(); ++index) 
-		{
-			EAMGraphCell cell = (EAMGraphCell) cells.get(index);
-			if(cell.getId() == cellToFind.getId())
-				return index;
-		}
-		return -1;
-	}
-
 	public int size()
 	{
 		return cells.size();

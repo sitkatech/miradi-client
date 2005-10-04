@@ -199,14 +199,6 @@ public class DiagramModel extends DefaultGraphModel
 		
 	}
 
-	public int getIndexByCell(EAMGraphCell cell)throws Exception
-	{
-		int index = cellInventory.getIndex(cell);
-		if(index == -1)
-			throw new Exception("Cell doesn't exist id:"+cell.getId());
-		return index;
-	}
-	
 	public Vector getAllNodes()
 	{
 		Vector nodes = new Vector();
