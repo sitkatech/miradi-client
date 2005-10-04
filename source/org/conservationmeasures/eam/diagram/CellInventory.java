@@ -16,72 +16,84 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		cells = new Vector();
+		nodes = new Vector();
+		linkages = new Vector();
 	}
 	
 	public void clear()
 	{
 		nextId = 0;
-		cells.clear();
+		nodes.clear();
+		linkages.clear();
 	}
 
 	public void addNode(Node nodeWithoutId, int forceId)
 	{
-		addCell(nodeWithoutId, forceId);
+		forceId = getRealId(forceId);
+		
+		if(getById(forceId) != null)
+			throw new RuntimeException("Can't add over existing id " + forceId);
+		
+		nodeWithoutId.setId(forceId);
+		nodes.add(nodeWithoutId);
 	}
 	
 	public Vector getAllNodes()
 	{
-		Vector nodes = new Vector();
-		for(int i=0; i < size(); ++i)
-		{
-			EAMGraphCell cell = getCellByIndex(i);
-			if(cell.isNode())
-				nodes.add(cell);
-		}	
 		return nodes;
 	}
 	
 	public Node getNodeById(int id)
 	{
-		return (Node)getById(id);
+		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
+		{
+			Node node = (Node)iter.next();
+			if(node.getId() == id)
+				return node;
+		}
+		return null;
 	}
 	
 	public void removeNode(Node node)
 	{
-		cells.remove(node);
+		nodes.remove(node);
 	}
 	
 	public void addLinkage(Linkage linkageWithoutId, int forceId)
 	{
-		addCell(linkageWithoutId, forceId);
+		forceId = getRealId(forceId);
+		
+		if(getById(forceId) != null)
+			throw new RuntimeException("Can't add over existing id " + forceId);
+		
+		linkageWithoutId.setId(forceId);
+		linkages.add(linkageWithoutId);
 	}
 	
 	public Vector getAllLinkages()
 	{
-		Vector linkages = new Vector();
-		for(int i=0; i < size(); ++i)
-		{
-			EAMGraphCell cell = getCellByIndex(i);
-			if(cell.isLinkage())
-				linkages.add(cell);
-		}	
 		return linkages;
 	}
 	
 	public Linkage getLinkageById(int id)
 	{
-		return (Linkage)getById(id);
+		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+		{
+			Linkage linkage = (Linkage) iter.next();
+			if(linkage.getId() == id)
+				return linkage;
+		}
+		return null;
 	}
 	
 	public void removeLinkage(Linkage linkage)
 	{
-		cells.remove(linkage);
+		linkages.remove(linkage);
 	}
 	
 	private EAMGraphCell getById(int id)
 	{
-		for (Iterator iter = cells.iterator(); iter.hasNext();) 
+		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
 			EAMGraphCell cell = (EAMGraphCell) iter.next();
 			if(cell.getId() == id)
@@ -90,7 +102,7 @@ class CellInventory
 		return null;
 	}
 	
-	private void addCell(EAMGraphCell cell, int id)
+	private int getRealId(int id)
 	{
 		if(id == Node.INVALID_ID)
 		{
@@ -101,24 +113,10 @@ class CellInventory
 			if(nextId < id+1)
 				nextId = id + 1;
 		}
-		
-		if(getById(id) != null)
-			throw new RuntimeException("Can't add over existing id " + id);
-		
-		cell.setId(id);
-		cells.add(cell);
-	}
-	
-	private int size()
-	{
-		return cells.size();
-	}
-	
-	private EAMGraphCell getCellByIndex(int index)
-	{
-		return (EAMGraphCell)cells.get(index);
+		return id;
 	}
 	
 	private int nextId;
-	Vector cells;
+	Vector nodes;
+	Vector linkages;
 }
