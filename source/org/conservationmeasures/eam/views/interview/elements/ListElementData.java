@@ -47,7 +47,10 @@ public class ListElementData extends ElementData
 	public String getFieldData()
 	{
 		UiList uiList = getListComponent();
-		return (String)uiList.getSelectedValue();
+		String data = (String)uiList.getSelectedValue();
+		if(data == null)
+			data = "";
+		return data;
 	}
 
 	public void setFieldData(String newData)
