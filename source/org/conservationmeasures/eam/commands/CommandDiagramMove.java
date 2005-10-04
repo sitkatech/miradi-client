@@ -11,7 +11,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
@@ -68,11 +68,11 @@ public class CommandDiagramMove extends Command
 
 			for(int i = 0; i < ids.length; ++i)
 			{
-				EAMGraphCell cellToMove = model.getCellById(ids[i]);
-				Point oldLocation = cellToMove.getLocation();
+				Node nodeToMove = model.getNodeById(ids[i]);
+				Point oldLocation = nodeToMove.getLocation();
 				Point newLocation = new Point(oldLocation.x + xDelta, oldLocation.y + yDelta);
-				cellToMove.setLocation(newLocation);
-				model.updateCell(cellToMove);
+				nodeToMove.setLocation(newLocation);
+				model.updateCell(nodeToMove);
 			}
 		}
 		catch (Exception e)
