@@ -105,7 +105,7 @@ public class Database
 	
 	public Object read(Object mapId, int key) throws Exception
 	{
-		return dao.readByPrimaryKey(SampleObject.class, new Integer(key));
+		return dao.readByPrimaryKey(mapId, new Integer(key));
 	}
 	
 	public Object select(Object mapId, String sqlSelect) throws Exception
