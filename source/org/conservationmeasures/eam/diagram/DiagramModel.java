@@ -50,7 +50,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	private DiagramModelEvent createDiagramModelEvent(EAMGraphCell node) throws Exception 
 	{
-		return new DiagramModelEvent(this, node, getIndexByCell(node));
+		return new DiagramModelEvent(this, node);
 	}
 	
 	public void addDiagramModelListener(DiagramModelListener listener)
