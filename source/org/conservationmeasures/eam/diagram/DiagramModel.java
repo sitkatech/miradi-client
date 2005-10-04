@@ -122,11 +122,6 @@ public class DiagramModel extends DefaultGraphModel
 		return false;
 	}
 	
-	public int getCellCount()
-	{
-		return cellInventory.size();
-	}
-	
 	public int getNodeCount()
 	{
 		return getAllNodes().size();
@@ -150,35 +145,30 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Node getNodeById(int id) throws Exception
 	{
-		return (Node)getCellById(id);
+		Node node = cellInventory.getNodeById(id);
+		if(node == null)
+			throw new Exception("Node doesn't exist, id: " + id);
+		return node;
 	}
 
 	public Linkage getLinkageById(int id) throws Exception
 	{
-		return (Linkage)getCellById(id);
+		Linkage linkage = cellInventory.getLinkageById(id);
+		if(linkage == null)
+			throw new Exception("Linkage doesn't exist, id: " + id);
+		return linkage;
 	}
 	
-	public boolean isCellInProject(EAMGraphCell cell)
+	public boolean isNodeInProject(Node node)
 	{
-		try
-		{
-			getCellById(cell.getId());
-			return true;
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
+		return (cellInventory.getNodeById(node.getId()) != null);
 	}
 
-	public EAMGraphCell getCellById(int id) throws Exception
+	public boolean isLinkageInProject(Linkage linkage)
 	{
-		EAMGraphCell cell = cellInventory.getById(id);
-		if(cell == null)
-			throw new Exception("Cell doesn't exist, id: " + id);
-		return cell;
+		return (cellInventory.getLinkageById(linkage.getId()) != null);
 	}
-	
+
 	public Vector getAllNodes()
 	{
 		return cellInventory.getAllNodes();

@@ -37,7 +37,6 @@ public class TestDiagramModel extends EAMTestCase
 		Node target = model.createNode(Node.TYPE_TARGET);
 		model.createLinkage(Node.INVALID_ID, factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
-		assertEquals(3, model.getCellCount());
 		assertEquals(1, model.getLinkageCount());
 	}
 	

@@ -19,7 +19,7 @@ public class InsertConnection extends ProjectDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		return (getProject().getDiagramModel().getCellCount() >= 2);
+		return (getProject().getDiagramModel().getNodeCount() >= 2);
 	}
 
 	public void doIt() throws CommandFailedException

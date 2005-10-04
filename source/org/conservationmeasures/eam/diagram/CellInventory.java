@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 
 class CellInventory
@@ -37,11 +38,6 @@ class CellInventory
 		cells.add(cell);
 	}
 	
-	public int size()
-	{
-		return cells.size();
-	}
-	
 	public Vector getAllNodes()
 	{
 		Vector nodes = new Vector();
@@ -66,7 +62,17 @@ class CellInventory
 		return linkages;
 	}
 	
-	public EAMGraphCell getById(int id)
+	public Node getNodeById(int id)
+	{
+		return (Node)getById(id);
+	}
+	
+	public Linkage getLinkageById(int id)
+	{
+		return (Linkage)getById(id);
+	}
+	
+	private EAMGraphCell getById(int id)
 	{
 		for (Iterator iter = cells.iterator(); iter.hasNext();) 
 		{
@@ -88,6 +94,11 @@ class CellInventory
 		cells.clear();
 	}
 
+	private int size()
+	{
+		return cells.size();
+	}
+	
 	private EAMGraphCell getCellByIndex(int index)
 	{
 		return (EAMGraphCell)cells.get(index);

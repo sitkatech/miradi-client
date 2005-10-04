@@ -57,13 +57,13 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
-		verifyNotPresent(linkId);
+		verifyLinkageNotPresent(linkId);
 		
 		project.executeCommand(undo);
-		verifyNotPresent(toId);
+		verifyNodeNotPresent(toId);
 
 		project.executeCommand(undo);
-		verifyNotPresent(fromId);
+		verifyNodeNotPresent(fromId);
 
 		try
 		{
@@ -85,10 +85,10 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandInsertNode insert = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(insert);
 		project.executeCommand(undo);
-		verifyNotPresent(insert.getId());
+		verifyNodeNotPresent(insert.getId());
 
 		project.executeCommand(undo);
-		verifyNotPresent(linkId);
+		verifyLinkageNotPresent(linkId);
 	
 	}
 	
@@ -131,14 +131,30 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
-	private void verifyNotPresent(int cellId)
+	private void verifyNodeNotPresent(int cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		try
 		{
-			model.getCellById(cellId);
+			model.getNodeById(cellId);
+			fail("Cell should be gone: " + cellId);
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
+	}
+	
+	private void verifyLinkageNotPresent(int cellId)
+	{
+		DiagramModel model = project.getDiagramModel();
+		
+		EAM.setLogToString();
+		try
+		{
+			model.getLinkageById(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)

@@ -59,7 +59,7 @@ public class TestDelete extends EAMTestCase
 		
 		CommandDeleteNode deleteNode = new CommandDeleteNode(factorId);
 		deleteNode.execute(project);
-		assertFalse("node not deleted?", model.isCellInProject(factor));
+		assertFalse("node not deleted?", model.isNodeInProject(factor));
 
 		EAM.setLogToString();
 		try
