@@ -43,7 +43,7 @@ public class DiagramModel extends DefaultGraphModel
 		Object[] nodes = new Object[] {node};
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
-		cellInventory.add(node, id);
+		cellInventory.addNode(node, id);
 		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
 		return node;
 	}
@@ -77,7 +77,7 @@ public class DiagramModel extends DefaultGraphModel
 
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
-		cellInventory.remove(nodeToDelete);
+		cellInventory.removeNode(nodeToDelete);
 	}
 	
 	public Linkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
@@ -90,7 +90,7 @@ public class DiagramModel extends DefaultGraphModel
 		Map nestedMap = linkage.getNestedAttributeMap();
 		ConnectionSet cs = linkage.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
-		cellInventory.add(linkage, linkageId);
+		cellInventory.addLinkage(linkage, linkageId);
 		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierLinkageAdded());
 		
 		return linkage;
@@ -101,7 +101,7 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
-		cellInventory.remove(linkageToDelete);
+		cellInventory.removeLinkage(linkageToDelete);
 	}
 	
 	public boolean hasLinkage(Node fromNode, Node toNode)
