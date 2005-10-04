@@ -48,16 +48,30 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	
 	public Component createNavigationButtons()
 	{
-		JButton previousButton = new JButton(EAM.text("Button|< Previous"));
+		previousButton = new JButton(EAM.text("Button|< Previous"));
 		previousButton.addActionListener(new WizardPreviousHandler(getProject()));
 		
-		JButton nextButton = new JButton(EAM.text("Button|Next >"));
+		nextButton = new JButton(EAM.text("Button|Next >"));
 		nextButton.addActionListener(new WizardNextHandler(getProject()));
 
 		Box box = Box.createHorizontalBox();
 		box.add(previousButton);
 		box.add(nextButton);
+		updateButtonStates();
 		return box;
+	}
+	
+	public void updateButtonStates()
+	{
+		InterviewModel model = getProject().getInterviewModel();
+		int stepCount = model.getStepCount();
+		int currentStep = model.getCurrentStepNumber();
+		
+		boolean previousButtonEnabled = (currentStep > 0);
+		boolean nextButtonEnabled = (currentStep < stepCount -1);
+	
+		previousButton.setEnabled(previousButtonEnabled);
+		nextButton.setEnabled(nextButtonEnabled);
 	}
 	
 	public void showCurrentProjectStep()
@@ -78,6 +92,7 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		}
 		add(stepHolder, BorderLayout.CENTER);
 		validate();
+		updateButtonStates();
 	}
 
 	private void setElementDataFromProject(ElementData element)
@@ -95,4 +110,6 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	}
 
 	private UiVBox stepHolder;
+	private JButton previousButton;
+	private JButton nextButton;
 }
