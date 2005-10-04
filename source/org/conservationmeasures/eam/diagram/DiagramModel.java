@@ -40,10 +40,11 @@ public class DiagramModel extends DefaultGraphModel
 	public Node createNodeAtId(int nodeType, int id) throws Exception
 	{
 		Node node = new Node(nodeType);
+		node.setId(id);
 		Object[] nodes = new Object[] {node};
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
 		insert(nodes, nestedAttributeMap, null, null, null);
-		cellInventory.addNode(node, id);
+		cellInventory.addNode(node);
 		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
 		return node;
 	}
@@ -86,11 +87,12 @@ public class DiagramModel extends DefaultGraphModel
 		Node toNode = getNodeById(linkToId);
 
 		Linkage linkage = new Linkage(fromNode, toNode);
+		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = linkage.getNestedAttributeMap();
 		ConnectionSet cs = linkage.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
-		cellInventory.addLinkage(linkage, linkageId);
+		cellInventory.addLinkage(linkage);
 		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierLinkageAdded());
 		
 		return linkage;

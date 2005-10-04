@@ -27,15 +27,15 @@ class CellInventory
 		linkages.clear();
 	}
 
-	public void addNode(Node nodeWithoutId, int forceId)
+	public void addNode(Node node)
 	{
-		forceId = getRealId(forceId);
+		int realId = getRealId(node.getId());
 		
-		if(getById(forceId) != null)
-			throw new RuntimeException("Can't add over existing id " + forceId);
+		if(getById(realId) != null)
+			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		nodeWithoutId.setId(forceId);
-		nodes.add(nodeWithoutId);
+		node.setId(realId);
+		nodes.add(node);
 	}
 	
 	public Vector getAllNodes()
@@ -59,15 +59,15 @@ class CellInventory
 		nodes.remove(node);
 	}
 	
-	public void addLinkage(Linkage linkageWithoutId, int forceId)
+	public void addLinkage(Linkage linkage)
 	{
-		forceId = getRealId(forceId);
+		int realId = getRealId(linkage.getId());
 		
-		if(getById(forceId) != null)
-			throw new RuntimeException("Can't add over existing id " + forceId);
+		if(getById(realId) != null)
+			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		linkageWithoutId.setId(forceId);
-		linkages.add(linkageWithoutId);
+		linkage.setId(realId);
+		linkages.add(linkage);
 	}
 	
 	public Vector getAllLinkages()
