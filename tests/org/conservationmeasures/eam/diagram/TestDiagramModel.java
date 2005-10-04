@@ -120,53 +120,6 @@ public class TestDiagramModel extends EAMTestCase
 		assertContains(link2, linkages);
 	}
 	
-	public void testGetNodeByIndex() throws Exception
-	{
-		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_TARGET);	
-		model.deleteNode(node1);
-		Node node2 = model.createNode(Node.TYPE_TARGET);		
-		Node node3 = model.createNode(Node.TYPE_TARGET);		
-		model.createLinkage(Node.INVALID_ID, node2.getId(), node3.getId());
-		Node node4 = model.createNode(Node.TYPE_TARGET);		
-		model.createLinkage(Node.INVALID_ID, node3.getId(), node4.getId());
-
-		assertEquals(node2, model.getNodeByIndex(0));
-		assertEquals(node3, model.getNodeByIndex(1));
-		assertEquals(node4, model.getNodeByIndex(2));
-		try 
-		{
-			model.getNodeByIndex(3);
-			fail("Should have thrown an exception for an invalid index");
-		} 
-		catch (Exception expected) 
-		{
-		}
-	}
-
-	public void testGetLinkageByIndex() throws Exception
-	{
-		DiagramModel model = new DiagramModel();
-		Node node1 = model.createNode(Node.TYPE_TARGET);		
-		Node node2 = model.createNode(Node.TYPE_TARGET);		
-		Linkage link1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		Node node3 = model.createNode(Node.TYPE_TARGET);		
-		Linkage link2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
-		model.deleteLinkage(link1);
-		Linkage link3 = model.createLinkage(Node.INVALID_ID, node3.getId(), node1.getId());
-
-		assertEquals(link2, model.getLinkageByIndex(0));
-		assertEquals(link3, model.getLinkageByIndex(1));
-		try 
-		{
-			model.getLinkageByIndex(2);
-			fail("Should have thrown an exception for an invalid index");
-		} 
-		catch (Exception expected) 
-		{
-		}
-	}
-	
 	public void testActionsFiring() throws Exception
 	{
 		DiagramModel model = new DiagramModel();

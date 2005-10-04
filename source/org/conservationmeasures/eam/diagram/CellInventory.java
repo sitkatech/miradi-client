@@ -9,7 +9,6 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 
 class CellInventory
@@ -43,37 +42,28 @@ class CellInventory
 		return cells.size();
 	}
 	
-	public EAMGraphCell getCellByIndex(int index)
+	public Vector getAllNodes()
 	{
-		return (EAMGraphCell)cells.get(index);
-	}
-	
-	public Node getNodeByIndex(int index)
-	{
-		int currentIndex = -1;
-		for(int i = 0; i < cells.size(); ++i)
+		Vector nodes = new Vector();
+		for(int i=0; i < size(); ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells.get(i);
+			EAMGraphCell cell = getCellByIndex(i);
 			if(cell.isNode())
-				++currentIndex;
-			if(currentIndex == index)
-				return (Node)cell;
-		}
-		return null;
+				nodes.add(cell);
+		}	
+		return nodes;
 	}
 	
-	public Linkage getLinkageByIndex(int index)
+	public Vector getAllLinkages()
 	{
-		int currentIndex = -1;
-		for(int i = 0; i < cells.size(); ++i)
+		Vector linkages = new Vector();
+		for(int i=0; i < size(); ++i)
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells.get(i);
+			EAMGraphCell cell = getCellByIndex(i);
 			if(cell.isLinkage())
-				++currentIndex;
-			if(currentIndex == index)
-				return (Linkage)cell;
-		}
-		return null;
+				linkages.add(cell);
+		}	
+		return linkages;
 	}
 	
 	public EAMGraphCell getById(int id)
@@ -98,6 +88,11 @@ class CellInventory
 		cells.clear();
 	}
 
+	private EAMGraphCell getCellByIndex(int index)
+	{
+		return (EAMGraphCell)cells.get(index);
+	}
+	
 	private int nextId;
 	Vector cells;
 }

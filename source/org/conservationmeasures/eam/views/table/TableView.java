@@ -169,9 +169,10 @@ public class TableView extends UmbrellaView
 
 		public Object getValueAtDirect(int rowIndex, int columnIndex) 
 		{
+			Vector nodes = diagramModel.getAllNodes();
 			try 
 			{
-				Node node = diagramModel.getNodeByIndex(rowIndex);
+				Node node = (Node)nodes.get(rowIndex);
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_NAME:
@@ -278,9 +279,10 @@ public class TableView extends UmbrellaView
 
 		public Object getValueAtDirect(int rowIndex, int columnIndex) 
 		{
+			Vector linkages = diagramModel.getAllLinkages();
 			try 
 			{
-				Linkage linkage = diagramModel.getLinkageByIndex(rowIndex);
+				Linkage linkage = (Linkage)linkages.get(rowIndex);
 				
 				switch (columnIndex)
 				{

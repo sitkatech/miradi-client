@@ -106,13 +106,10 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean hasLinkage(Node fromNode, Node toNode)
 	{
-		for(int i=0; i < cellInventory.size(); ++i)
+		Vector allLinkages = cellInventory.getAllLinkages();
+		for(int i=0; i < allLinkages.size(); ++i)
 		{
-			EAMGraphCell cell = cellInventory.getCellByIndex(i);
-			if(!cell.isLinkage())
-				continue;
-			
-			Linkage linkage = (Linkage)cell;
+			Linkage linkage = (Linkage)allLinkages.get(i);
 			Node thisFromNode = linkage.getFromNode();
 			Node thisToNode = linkage.getToNode();
 			if(thisFromNode.equals(fromNode) && thisToNode.equals(toNode))
@@ -182,45 +179,14 @@ public class DiagramModel extends DefaultGraphModel
 		return cell;
 	}
 	
-	public Node getNodeByIndex(int index) throws Exception
-	{
-		Node cell = cellInventory.getNodeByIndex(index);
-		if(cell == null)
-			throw new Exception("Cell doesn't exist, index: " + index);
-		return cell;
-	}
-	
-	public Linkage getLinkageByIndex(int index) throws Exception
-	{
-		Linkage linkage = cellInventory.getLinkageByIndex(index);
-		if(linkage == null)
-			throw new Exception("Linkage doesn't exist, index: " + index);
-		return linkage;
-		
-	}
-
 	public Vector getAllNodes()
 	{
-		Vector nodes = new Vector();
-		for(int i=0; i < cellInventory.size(); ++i)
-		{
-			EAMGraphCell cell = cellInventory.getCellByIndex(i);
-			if(cell.isNode())
-				nodes.add(cell);
-		}	
-		return nodes;
+		return cellInventory.getAllNodes();
 	}
 	
 	public Vector getAllLinkages()
 	{
-		Vector linkages = new Vector();
-		for(int i=0; i < cellInventory.size(); ++i)
-		{
-			EAMGraphCell cell = cellInventory.getCellByIndex(i);
-			if(cell.isLinkage())
-				linkages.add(cell);
-		}	
-		return linkages;
+		return cellInventory.getAllLinkages();
 	}
 	
 
