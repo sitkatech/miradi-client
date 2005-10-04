@@ -80,6 +80,7 @@ public class TestWizardStepLoader extends EAMTestCase
 		assertContains(choice1, retrievedList);
 		assertContains(choice2, retrievedList);
 		assertContains(choice3, retrievedList);
+		assertEquals("Should return empty string when no data is selected", "", listComponent.getFieldData());
 		listComponent.setFieldData(choice2);
 		assertEquals(choice2, listComponent.getFieldData());
 		assertEquals("<<list>>", listComponent.toString());
