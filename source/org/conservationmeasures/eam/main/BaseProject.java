@@ -56,6 +56,11 @@ public class BaseProject
 		return true;
 	}
 	
+	public void close()
+	{
+		dataMap.clear();
+	}
+	
 	static public boolean isValidProjectName(String candidate)
 	{
 		char[] asArray = candidate.toCharArray();

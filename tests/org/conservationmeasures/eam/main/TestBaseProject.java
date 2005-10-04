@@ -42,6 +42,10 @@ public class TestBaseProject extends EAMTestCase
 		String fieldData = "sample field data";
 		project.setDataValue(fieldName, fieldData);
 		assertEquals("Didn't set data?", fieldData, project.getDataValue(fieldName));
+		
+		project.close();
+		assertEquals("Didn't clear data?", "", project.getDataValue(fieldName));
+		
 	}
 	
 	public void testViewChanges() throws Exception

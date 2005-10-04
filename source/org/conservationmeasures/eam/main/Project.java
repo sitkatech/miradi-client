@@ -65,6 +65,8 @@ public class Project extends BaseProject
 		}
 		currentView = NoProjectView.getViewName();
 		fireSwitchToView(currentView);
+		
+		super.close();
 	}
 
 	public String getName()
