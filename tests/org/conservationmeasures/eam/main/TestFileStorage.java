@@ -39,8 +39,7 @@ public class TestFileStorage extends EAMTestCase
 		{
 		}
 
-		storage.setDirectory(tempDirectory);
-		storage.createEmpty();
+		storage.open(tempDirectory);
 		assertTrue("no file?", storage.doesProjectExist());
 		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
 		
@@ -71,14 +70,5 @@ public class TestFileStorage extends EAMTestCase
 		}
 
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		try
-		{
-			storage.setDirectory(tempDirectory);
-			storage.load();
-			fail("Should have thrown opening non-existant file");
-		}
-		catch(IOException ignoreExpected)
-		{
-		}
 	}
 }

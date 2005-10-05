@@ -58,10 +58,7 @@ public class Project
 	
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
-		getDatabase().setDirectory(projectDirectory);
-		if(!getDatabase().doesProjectExist())
-			getDatabase().createEmpty();
-		
+		getDatabase().open(projectDirectory);
 		Vector commands = getDatabase().load();
 		loadCommands(commands);
 	}

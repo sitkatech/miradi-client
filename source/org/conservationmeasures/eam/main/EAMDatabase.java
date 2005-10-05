@@ -61,8 +61,9 @@ public class EAMDatabase
 	public void close() throws IOException
 	{
 		EAM.logDebug("Closing database");
+		clear();
 		db.close();
-		setDirectory(null);
+		directory = null;
 	}
 
 	public boolean doesProjectExist()
@@ -80,11 +81,14 @@ public class EAMDatabase
 		return directory.getName();
 	}
 
-	public void setDirectory(File directoryToUse)
+	public void open(File directoryToUse) throws IOException
 	{
 		clear();
 		directory = directoryToUse;
+		if(!doesProjectExist())
+			createEmpty();
 	}
+	
 
 	public Vector load() throws IOException, UnknownCommandException
 	{
