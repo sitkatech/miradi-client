@@ -62,6 +62,11 @@ public class DatabaseWrapper
 		connection = null;
 	}
 	
+	public boolean isOpen()
+	{
+		return (connection != null);
+	}
+	
 	public boolean rawExecute(String sql) throws IOException
 	{
 		try

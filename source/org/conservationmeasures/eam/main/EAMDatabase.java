@@ -69,6 +69,11 @@ public class EAMDatabase
 	{
 		return isExistingProject(directory);
 	}
+	
+	public boolean isOpen()
+	{
+		return db.isOpen();
+	}
 
 	public String getName()
 	{

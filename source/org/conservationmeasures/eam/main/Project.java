@@ -45,7 +45,7 @@ public class Project
 {
 	public Project() throws IOException
 	{
-		storage = new EAMDatabase();
+		database = new EAMDatabase();
 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
@@ -56,27 +56,39 @@ public class Project
 		dataMap = new HashMap();
 	}
 	
+	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
+	{
+		getDatabase().setDirectory(projectDirectory);
+		if(!getDatabase().doesProjectExist())
+			getDatabase().createEmpty();
+		
+		Vector commands = getDatabase().load();
+		loadCommands(commands);
+	}
+	
+	public String getName()
+	{
+		if(isOpen())
+			return getDatabase().getName();
+		return EAM.text("[No Project]");
+	}
+
 	
 	public boolean isOpen()
 	{
-		return getStorage().doesProjectExist();
+		return getDatabase().isOpen();
 	}
 	
-	public void closeDatabase()
+	public void close()
 	{
 		try
 		{
-			getStorage().close();
+			getDatabase().close();
 		}
 		catch (IOException e)
 		{
 			EAM.logException(e);
 		}
-	}
-
-	public void close()
-	{
-		closeDatabase();
 		dataMap.clear();
 		currentView = NoProjectView.getViewName();
 		fireSwitchToView(currentView);
@@ -261,7 +273,7 @@ public class Project
 	{
 		try
 		{
-			storage.appendCommand(command);
+			database.appendCommand(command);
 		}
 		catch (IOException e)
 		{
@@ -319,7 +331,7 @@ public class Project
 		int indexToUndo = getIndexToUndo();
 		if(indexToUndo < 0)
 			throw new NothingToUndoException();
-		return storage.getCommandAt(indexToUndo);
+		return database.getCommandAt(indexToUndo);
 	}
 	
 	public Command getCommandToRedo() throws NothingToRedoException
@@ -327,18 +339,18 @@ public class Project
 		int indexToRedo = getIndexToRedo();
 		if(indexToRedo < 0)
 			throw new NothingToRedoException();
-		return storage.getCommandAt(indexToRedo);
+		return database.getCommandAt(indexToRedo);
 	}
 	
 	public int getIndexToUndo()
 	{
-		UndoRedoState state = new UndoRedoState(storage);
+		UndoRedoState state = new UndoRedoState(database);
 		return state.getIndexToUndo();
 	}
 
 	public int getIndexToRedo()
 	{
-		UndoRedoState state = new UndoRedoState(storage);
+		UndoRedoState state = new UndoRedoState(database);
 		return state.getIndexToRedo();
 	}
 	
@@ -398,7 +410,7 @@ public class Project
 			Command command = (Command)commands.get(i);
 			EAM.logDebug("Executing " + command);
 			replayCommand(command);
-			storage.addCommandWithoutSaving(command);
+			database.addCommandWithoutSaving(command);
 		}
 		
 		if(currentView.length() == 0)
@@ -410,32 +422,12 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	protected EAMDatabase getStorage()
+	protected EAMDatabase getDatabase()
 	{
-		return storage;
+		return database;
 	}
 
-	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
-	{
-		getStorage().setDirectory(projectDirectory);
-		if(!isOpen())
-			createEmpty();
-		
-		Vector commands = getStorage().load();
-		loadCommands(commands);
-	}
-	private void createEmpty() throws IOException
-	{
-		getStorage().createEmpty();
-	}
-	public String getName()
-	{
-		if(isOpen())
-			return getStorage().getName();
-		return EAM.text("[No Project]");
-	}
-
-	EAMDatabase storage;
+	EAMDatabase database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;
 	GraphSelectionModel selectionModel;
