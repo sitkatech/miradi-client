@@ -85,9 +85,17 @@ public class EAMDatabase
 	public void open(File directory) throws IOException
 	{
 		clear();
-		if(!doesProjectExist(directory))
-			createEmpty(directory);
-		db.openDiskDatabase(getDatabaseFileBase(directory));
+		if(doesProjectExist(directory))
+		{
+			db.openDiskDatabase(getDatabaseFileBase(directory));
+		}
+		else
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(directory);
+			db.openDiskDatabase(getDatabaseFileBase(directory));
+			createCommandsTable();
+			db.flush();
+		}
 		name = directory.getName();
 	}
 	
@@ -128,14 +136,6 @@ public class EAMDatabase
 		return loaded;
 	}
 	
-	private void createEmpty(File directory) throws IOException
-	{
-		DirectoryUtils.deleteEntireDirectoryTree(directory);
-		db.openDiskDatabase(getDatabaseFileBase(directory));
-		createCommandsTable();
-		db.close();
-	}
-
 	public static boolean isExistingProject(File projectDirectory)
 	{
 		if(projectDirectory == null)

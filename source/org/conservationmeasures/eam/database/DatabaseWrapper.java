@@ -43,6 +43,19 @@ public class DatabaseWrapper
 		open("file", base.getAbsolutePath());
 	}
 	
+	public void flush() throws IOException
+	{
+		try
+		{
+			rawExecute("CHECKPOINT");
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new IOException(e.getMessage());
+		}
+	}
+	
 	public void close() throws IOException
 	{
 		if(connection == null)
