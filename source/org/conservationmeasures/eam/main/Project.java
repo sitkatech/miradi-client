@@ -443,61 +443,6 @@ public class Project
 	Vector viewChangeListeners;
 	String currentView;
 	Map dataMap;
-}
 
-class UndoRedoState
-{
-	public UndoRedoState(Storage storageToUse)
-	{
-		storage = storageToUse;
-		nonUndoneCommandIndexes = new Vector();
-		redoableCommandIndexes = new Vector();
-	}
-	
-	public int getIndexToUndo()
-	{
-		loadSnapshotOfStorage();
-		if(nonUndoneCommandIndexes.size() < 1)
-			return -1;
-		
-		return ((Integer)nonUndoneCommandIndexes.get(0)).intValue();
-	}
-	
-	public int getIndexToRedo()
-	{
-		loadSnapshotOfStorage();
-		if(redoableCommandIndexes.size() < 1)
-			return -1;
-		return ((Integer)redoableCommandIndexes.get(0)).intValue();
-	}
-	
-	private void loadSnapshotOfStorage()
-	{
-		for(int i=0; i < storage.getCommandCount(); ++i)
-		{
-			Command cmd = storage.getCommandAt(i);
-			if(cmd.isUndo())
-			{
-				Object commandBeingUndone = nonUndoneCommandIndexes.get(0);
-				redoableCommandIndexes.insertElementAt(commandBeingUndone, 0);
-				nonUndoneCommandIndexes.remove(0);
-			}
-			else if(cmd.isRedo())
-			{
-				Object commandBeingRedone = redoableCommandIndexes.get(0);
-				nonUndoneCommandIndexes.insertElementAt(commandBeingRedone, 0);
-				redoableCommandIndexes.remove(0);
-			}
-			else
-			{
-				nonUndoneCommandIndexes.insertElementAt(new Integer(i), 0);
-				redoableCommandIndexes.clear();
-			}
-		}
-	}
-
-	Storage storage;
-	Vector nonUndoneCommandIndexes;
-	Vector redoableCommandIndexes;
 }
 
