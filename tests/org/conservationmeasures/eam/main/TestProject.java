@@ -149,7 +149,10 @@ public class TestProject extends EAMTestCase
 	public void testCloseClearsCurrentView() throws Exception
 	{
 		Project project = new ProjectForTesting();
-		project.switchToView("blah blah");
+		assertEquals("not starting on noproject view?", NoProjectView.getViewName(), project.getCurrentView());
+		String sampleViewName = "blah blah";
+		project.switchToView(sampleViewName);
+		assertEquals("didn't switch?", sampleViewName, project.getCurrentView());
 		project.close();
 		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
 	}
