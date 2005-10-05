@@ -60,7 +60,7 @@ public class CommandDeleteLinkage extends Command
 			Linkage linkageToDelete = model.getLinkageById(id);
 			wasFrom = linkageToDelete.getFromNode().getId();
 			wasTo = linkageToDelete.getToNode().getId();
-			model.deleteLinkage(linkageToDelete);
+			target.deleteLinkage(id);
 		}
 		catch (Exception e)
 		{

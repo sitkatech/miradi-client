@@ -239,23 +239,52 @@ public class BaseProject
 		Node nodeToDelete = model.getNodeById(idToDelete);
 		int nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
+		deleteNodeFromDatabase(idToDelete);
 		return nodeType; 
 	}
 
-	public int insertNodeAtId(int typeToInsert, int id) throws Exception
+	public int insertNodeAtId(int typeToInsert, int requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Node node = model.createNodeAtId(typeToInsert, id);
+		Node node = model.createNodeAtId(typeToInsert, requestedId);
 		int idThatWasInserted = node.getId();
+		insertNodeInDatabase(node);
 		return idThatWasInserted;
 	}
-
-	public int insertLinkageAtId(int linkageId, int linkFromId, int linkToId) throws Exception
+	
+	public void deleteLinkage(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Linkage linkage = model.createLinkage(linkageId, linkFromId, linkToId);
+		Linkage linkageToDelete = model.getLinkageById(idToDelete);
+		model.deleteLinkage(linkageToDelete);
+		deleteLinkageFromDatabase(idToDelete);
+	}
+
+	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		Linkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
+		insertLinkageInDatabase(linkage);
 		return insertedLinkageId;
+	}
+	
+	public void deleteNodeFromDatabase(int id)
+	{
+	}
+	
+	public void insertNodeInDatabase(Node node)
+	{
+	}
+	
+	public void deleteLinkageFromDatabase(int id)
+	{
+		
+	}
+	
+	public void insertLinkageInDatabase(Linkage linkage)
+	{
+		
 	}
 
 	public void undo() throws CommandFailedException
