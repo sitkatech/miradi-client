@@ -144,6 +144,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	public void closeProject()
 	{
 		project.close();
+		updateTitle();
 	}
 
 	public void exitNormally()
