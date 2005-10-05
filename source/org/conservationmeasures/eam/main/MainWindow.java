@@ -119,7 +119,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	{
 		try
 		{
-			project.load(this, projectDirectory);
+			project.load(projectDirectory);
 			validate();
 			updateTitle();
 		}

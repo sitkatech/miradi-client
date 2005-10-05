@@ -9,14 +9,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
-import org.conservationmeasures.eam.views.NoProjectView;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class RealProject extends Project
 {
@@ -30,32 +26,17 @@ public class RealProject extends Project
 		return getStorage().hasFile();
 	}
 	
-	public void load(MainWindow mainWindow, File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
+	public void load(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
-		getDiagramModel().clear();
 		getStorage().setDirectory(projectDirectory);
 		if(!getStorage().exists())
 			getStorage().createEmpty();
 		
 		Vector commands = getStorage().load();
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			EAM.logDebug("Executing " + command);
-			replayCommand(command);
-			getStorage().addCommandWithoutSaving(command);
-		}
-		
-		if(currentView.length() == 0)
-		{
-			currentView = DiagramView.getViewName();
-			fireSwitchToView(currentView);
-		}
-		
-		fireCommandExecuted(new CommandDoNothing());
+		loadCommands(commands);
 	}
 
-	public void close()
+	public void closeDatabase()
 	{
 		try
 		{
@@ -65,10 +46,6 @@ public class RealProject extends Project
 		{
 			EAM.logException(e);
 		}
-		currentView = NoProjectView.getViewName();
-		fireSwitchToView(currentView);
-		
-		super.close();
 	}
 
 	public String getName()

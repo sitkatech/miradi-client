@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class TestProject extends EAMTestCase
@@ -145,5 +146,11 @@ public class TestProject extends EAMTestCase
 		assertEquals(3, model.getLinkages(node3).size());
 	}
 
-
+	public void testCloseClearsCurrentView() throws Exception
+	{
+		Project project = new ProjectForTesting();
+		project.switchToView("blah blah");
+		project.close();
+		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
+	}
 }

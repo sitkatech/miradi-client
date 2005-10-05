@@ -23,6 +23,10 @@ public class ProjectForTesting extends Project
 		return true;
 	}
 	
+	public void closeDatabase()
+	{
+	}
+
 	public void deleteNodeFromDatabase(int id)
 	{
 	}
@@ -33,12 +37,10 @@ public class ProjectForTesting extends Project
 	
 	public void deleteLinkageFromDatabase(int id)
 	{
-		
 	}
 	
 	public void insertLinkageInDatabase(Linkage linkage)
 	{
-		
 	}
 
 }

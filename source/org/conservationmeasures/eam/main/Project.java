@@ -16,6 +16,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
@@ -32,6 +33,7 @@ import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
@@ -40,6 +42,7 @@ import org.jgraph.graph.GraphSelectionModel;
 abstract public class Project
 {
 	abstract public boolean isOpen();
+	abstract public void closeDatabase();
 	abstract public void deleteNodeFromDatabase(int id);
 	abstract public void insertNodeInDatabase(Node node);
 	abstract public void deleteLinkageFromDatabase(int id);
@@ -61,7 +64,10 @@ abstract public class Project
 	
 	public void close()
 	{
+		closeDatabase();
 		dataMap.clear();
+		currentView = NoProjectView.getViewName();
+		fireSwitchToView(currentView);
 	}
 	
 	static public boolean isValidProjectName(String candidate)
@@ -358,6 +364,26 @@ abstract public class Project
 			}
 		}
 		return selectedCellsWithLinkages;
+	}
+
+	protected void loadCommands(Vector commands) throws CommandFailedException, IOException
+	{
+		getDiagramModel().clear();
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			EAM.logDebug("Executing " + command);
+			replayCommand(command);
+			storage.addCommandWithoutSaving(command);
+		}
+		
+		if(currentView.length() == 0)
+		{
+			currentView = DiagramView.getViewName();
+			fireSwitchToView(currentView);
+		}
+		
+		fireCommandExecuted(new CommandDoNothing());
 	}
 
 	Storage storage;
