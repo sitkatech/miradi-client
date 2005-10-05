@@ -26,7 +26,7 @@ public class RealProject extends Project
 		return getStorage().doesProjectExist();
 	}
 	
-	public void load(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
+	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getStorage().setDirectory(projectDirectory);
 		if(!isOpen())
