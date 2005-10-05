@@ -13,9 +13,19 @@ public class NodeData
 	public NodeData(Node node) throws Exception
 	{
 		id = node.getId();
+		type = node.getNodeType();
 		text = node.getText();
 		location = node.getLocation();
-		type = node.getNodeType();
+	}
+	
+	public int getId()
+	{
+		return id;
+	}
+	
+	public int getType()
+	{
+		return type;
 	}
 	
 	public String getText()
@@ -28,14 +38,14 @@ public class NodeData
 		return location;
 	}
 	
-	public int getId()
+	public int getX()
 	{
-		return id;
+		return location.x;
 	}
 	
-	public int getType()
+	public int getY()
 	{
-		return type;
+		return location.y;
 	}
 	
 	private String text;
