@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
+import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.diagram.nodes.NodeData;
 
 public class TransferableEamList implements Transferable 
@@ -34,11 +36,11 @@ public class TransferableEamList implements Transferable
 			try {
 				if(cell.isLinkage())
 				{
-					linkages.add(new LinkageData(cell));
+					linkages.add(new LinkageData((Linkage)cell));
 				}
 				if(cell.isNode())
 				{
-					nodes.add(new NodeData(cell));
+					nodes.add(new NodeData((Node)cell));
 				}
 			} 
 			catch (Exception e) 

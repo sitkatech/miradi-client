@@ -10,14 +10,12 @@ import java.awt.Point;
 
 public class NodeData 
 {
-	public NodeData(EAMGraphCell cell) throws Exception
+	public NodeData(Node node) throws Exception
 	{
-		if(!cell.isNode())
-			throw new Exception("EAMGraphCell not a Node");
-		id = cell.getId();
-		text = cell.getText();
-		location = cell.getLocation();
-		type = ((Node)cell).getNodeType();
+		id = node.getId();
+		text = node.getText();
+		location = node.getLocation();
+		type = node.getNodeType();
 	}
 	
 	public String getText()
@@ -35,7 +33,7 @@ public class NodeData
 		return id;
 	}
 	
-	public int getNodeType()
+	public int getType()
 	{
 		return type;
 	}

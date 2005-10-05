@@ -183,7 +183,7 @@ abstract public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getType());
 			executeCommand(newNode);
 
 			int originalNodeId = nodeData.getId();

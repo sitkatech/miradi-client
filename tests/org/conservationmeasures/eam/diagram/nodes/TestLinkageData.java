@@ -26,15 +26,6 @@ public class TestLinkageData extends EAMTestCase
 		assertEquals("Id not the same?", id, linkageData.getId());
 		assertEquals("From Node Ids don't match", nodeBId, linkageData.getFromNodeId());
 		assertEquals("To Node Ids don't match", nodeAId, linkageData.getToNodeId());
-		
-		try
-		{
-			new LinkageData(nodeA);
-			fail("Should have thrown since this is not a linkage");
-		}
-		catch (Exception expectedException)
-		{
-		}
 	}
 	
 }

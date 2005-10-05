@@ -8,13 +8,11 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 public class LinkageData 
 {
-	public LinkageData(EAMGraphCell cell) throws Exception
+	public LinkageData(Linkage linkage) throws Exception
 	{
-		if(!cell.isLinkage())
-			throw new Exception("EAMGraphCell not a Linkage");
-		id = cell.getId();
-		fromNodeId = ((Linkage)cell).getFromNode().getId();
-		toNodeId = ((Linkage)cell).getToNode().getId();
+		id = linkage.getId();
+		fromNodeId = linkage.getFromNode().getId();
+		toNodeId = linkage.getToNode().getId();
 	}
 	
 	public int getId()
