@@ -10,10 +10,9 @@ import java.awt.geom.Rectangle2D;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.RealProject;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -26,7 +25,7 @@ public class TestInsertNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		RealProject project = new RealProject();
+		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
 		Command insertCommand = new CommandInsertNode(-1);
 		try
 		{
@@ -41,7 +40,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		RealProject project = new RealProject();
+		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -58,7 +57,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		RealProject project = new RealProject();
+		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -75,7 +74,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		RealProject project = new RealProject();
+		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();

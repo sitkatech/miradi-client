@@ -31,7 +31,7 @@ public class TestRealProject extends EAMTestCase
 
 	public void testIsOpen() throws Exception
 	{
-		RealProject project = new RealProject();
+		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
 		project.open(projectDirectory);
 		assertTrue("not open?", project.isOpen());

@@ -9,9 +9,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.RealProject;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -24,7 +22,7 @@ public class TestSetNodeText extends EAMTestCase
 
 	public void testSetNodeText() throws Exception
 	{
-		RealProject project = new RealProject();
+		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
 		DiagramModel model = project.getDiagramModel();
 
 		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_TARGET);

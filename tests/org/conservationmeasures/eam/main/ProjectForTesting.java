@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.main;
 
 import java.io.File;
 
-public class ProjectForTesting extends RealProject
+public class ProjectForTesting extends Project
 {
 	public ProjectForTesting(File projectDirectory) throws Exception
 	{

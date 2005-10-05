@@ -35,7 +35,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 {
 	public MainWindow() throws IOException
 	{
-		project = new RealProject();
+		project = new Project();
 	}
 	
 	public void start() throws IOException
@@ -100,7 +100,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		toolBarBox.repaint();
 	}
 
-	public RealProject getProject()
+	public Project getProject()
 	{
 		return project;
 	}
@@ -190,7 +190,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	}
 
 	private Actions actions;
-	private RealProject project;
+	private Project project;
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
 	private InterviewView interviewView;

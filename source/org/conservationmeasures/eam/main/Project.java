@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -39,18 +41,11 @@ import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
 
 
-abstract public class Project
+public class Project
 {
-	abstract public boolean isOpen();
-	abstract public void closeDatabase();
-	abstract public void deleteNodeFromDatabase(int id);
-	abstract public void insertNodeInDatabase(Node node);
-	abstract public void deleteLinkageFromDatabase(int id);
-	abstract public void insertLinkageInDatabase(Linkage linkage);
-
-	public Project(Storage storageToUse) throws IOException
+	public Project() throws IOException
 	{
-		storage = storageToUse;
+		storage = new FileStorage();
 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
@@ -62,6 +57,23 @@ abstract public class Project
 	}
 	
 	
+	public boolean isOpen()
+	{
+		return getStorage().doesProjectExist();
+	}
+	
+	public void closeDatabase()
+	{
+		try
+		{
+			getStorage().close();
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+		}
+	}
+
 	public void close()
 	{
 		closeDatabase();
@@ -264,7 +276,6 @@ abstract public class Project
 		Node nodeToDelete = model.getNodeById(idToDelete);
 		int nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
-		deleteNodeFromDatabase(idToDelete);
 		return nodeType; 
 	}
 
@@ -273,7 +284,6 @@ abstract public class Project
 		DiagramModel model = getDiagramModel();
 		Node node = model.createNodeAtId(typeToInsert, requestedId);
 		int idThatWasInserted = node.getId();
-		insertNodeInDatabase(node);
 		return idThatWasInserted;
 	}
 	
@@ -282,7 +292,6 @@ abstract public class Project
 		DiagramModel model = getDiagramModel();
 		Linkage linkageToDelete = model.getLinkageById(idToDelete);
 		model.deleteLinkage(linkageToDelete);
-		deleteLinkageFromDatabase(idToDelete);
 	}
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
@@ -290,7 +299,6 @@ abstract public class Project
 		DiagramModel model = getDiagramModel();
 		Linkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
-		insertLinkageInDatabase(linkage);
 		return insertedLinkageId;
 	}
 	
@@ -400,6 +408,31 @@ abstract public class Project
 		}
 		
 		fireCommandExecuted(new CommandDoNothing());
+	}
+
+	protected FileStorage getStorage()
+	{
+		return (FileStorage)storage;
+	}
+
+	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
+	{
+		getStorage().setDirectory(projectDirectory);
+		if(!isOpen())
+			createEmpty();
+		
+		Vector commands = getStorage().load();
+		loadCommands(commands);
+	}
+	private void createEmpty() throws IOException
+	{
+		getStorage().createEmpty();
+	}
+	public String getName()
+	{
+		if(isOpen())
+			return getStorage().getName();
+		return EAM.text("[No Project]");
 	}
 
 	Storage storage;

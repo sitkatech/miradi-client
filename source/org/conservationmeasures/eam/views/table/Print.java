@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.views.table;
 
-import org.conservationmeasures.eam.main.RealProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.views.umbrella.PrintDoer;
 
 public class Print extends PrintDoer 
 {
 	public boolean isAvailable() 
 	{
-		RealProject project = getMainWindow().getProject();
+		Project project = getMainWindow().getProject();
 		if(!project.isOpen())
 			return false;
 		TableView view = (TableView)getMainWindow().getCurrentView();
