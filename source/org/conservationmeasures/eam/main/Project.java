@@ -160,12 +160,26 @@ abstract public class Project
 		getInterviewModel().setCurrentStepName(newStepName);
 	}
 	
-	public void pasteCellsIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException 
+	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException
+	{
+		executeCommand(new CommandBeginTransaction());
+		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
+		pasteNodesIntoProject(list, startPoint, dataHelper);
+		pasteLinksIntoProject(list, dataHelper);
+		executeCommand(new CommandEndTransaction());
+	}
+	
+	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException
+	{
+		executeCommand(new CommandBeginTransaction());
+		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
+		pasteNodesIntoProject(list, startPoint, dataHelper);
+		executeCommand(new CommandEndTransaction());
+	}
+
+	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, NodeDataHelper dataHelper) throws CommandFailedException 
 	{
 		NodeData[] nodes = list.getNodeDataCells();
-		LinkageData[] links = list.getLinkageDataCells();
-		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
-		executeCommand(new CommandBeginTransaction());
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
@@ -190,7 +204,11 @@ abstract public class Project
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
 		}
-		
+	}
+	
+	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws CommandFailedException 
+	{
+		LinkageData[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
 		{
 			LinkageData linkageData = links[i];
@@ -199,15 +217,13 @@ abstract public class Project
 			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
 			if(newFromId == Node.INVALID_ID || newToId == Node.INVALID_ID)
 			{
-				Logging.logDebug("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
+				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
 				continue;
 			}
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}
-		executeCommand(new CommandEndTransaction());
-
 	}
 
 	void fireCommandExecuted(Command command)

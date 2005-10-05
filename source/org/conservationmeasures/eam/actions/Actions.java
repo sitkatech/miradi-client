@@ -35,6 +35,7 @@ public class Actions
 		registerAction(new ActionOpenProject(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
+		registerAction(new ActionPasteWithoutLinks(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));
 		registerAction(new ActionUndo(mainWindow));

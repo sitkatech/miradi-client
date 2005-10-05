@@ -34,9 +34,7 @@ public class Paste extends LocationDoer
 			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 				return;
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
-			
-			getProject().pasteCellsIntoProject(list, getLocation());
-
+			pasteCellsIntoProject(list);
 		} 
 		catch (Exception e) 
 		{
@@ -45,4 +43,8 @@ public class Paste extends LocationDoer
 		} 
 	}
 
+	public void pasteCellsIntoProject(TransferableEamList list) throws CommandFailedException 
+	{
+		getProject().pasteNodesAndLinksIntoProject(list, getLocation());
+	}
 }

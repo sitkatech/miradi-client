@@ -111,7 +111,7 @@ public class TestProject extends EAMTestCase
 		assertContains(linkage2, selectedItems);
 	}
 	
-	public void testPasteCells() throws Exception
+	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
 		Project project = new ProjectForTesting();
 		DiagramModel model = project.getDiagramModel();
@@ -131,9 +131,10 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getLinkages(node2).size());
 		assertEquals(1, model.getLinkages(node3).size());
 		
-		project.pasteCellsIntoProject(transferableList, new Point(5,5));
+		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
 		assertEquals(4, nodes.size());
+		assertEquals(4, model.getAllLinkages().size());
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			assertEquals(2, model.getLinkages((Node)nodes.get(i)).size());
@@ -141,9 +142,35 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.deleteNode(node2);
-		project.pasteCellsIntoProject(transferableList, new Point(5,5));
+		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getLinkages(node1).size());
 		assertEquals(3, model.getLinkages(node3).size());
+	}
+
+	public void testPasteNodesOnlyIntoProject() throws Exception
+	{
+		Project project = new ProjectForTesting();
+		DiagramModel model = project.getDiagramModel();
+
+		Node node1 = model.createNode(Node.TYPE_TARGET);
+		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
+		Node node3 =  model.createNode(Node.TYPE_FACTOR);
+		
+		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
+		model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
+		
+		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
+		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
+		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		assertEquals(3, model.getAllNodes().size());
+		assertEquals(2, model.getLinkages(node1).size());
+		assertEquals(1, model.getLinkages(node2).size());
+		assertEquals(1, model.getLinkages(node3).size());
+		
+		project.pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
+		Vector nodes = model.getAllNodes();
+		assertEquals(4, nodes.size());
+		assertEquals(2, model.getAllLinkages().size());
 	}
 
 	public void testCloseClearsCurrentView() throws Exception
