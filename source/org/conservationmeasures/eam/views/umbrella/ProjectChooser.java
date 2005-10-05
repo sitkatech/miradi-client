@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.FileStorage;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;
@@ -114,17 +115,13 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 	
 	static class DirectoryFilter implements FilenameFilter
 	{
-		public boolean accept(File directory, String name)
+		public boolean accept(File eamDataDirectory, String projectDirectoryName)
 		{
-			if(name.startsWith("."))
+			if(projectDirectoryName.startsWith("."))
 				return false;
 			
-			File projectDirectory = new File(directory, name);
-			if(!projectDirectory.isDirectory())
-				return false;
-			
-			File script = new File(projectDirectory, name + ".script");
-			return script.exists();
+			File projectDirectory = new File(eamDataDirectory, projectDirectoryName);
+			return FileStorage.isExistingProject(projectDirectory);
 		}
 	}
 	

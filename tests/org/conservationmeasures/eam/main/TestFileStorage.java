@@ -28,7 +28,7 @@ public class TestFileStorage extends EAMTestCase
 
 		FileStorage storage = new FileStorage();
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
-		assertFalse("already has a file?", storage.hasFile());
+		assertFalse("already has a file?", storage.doesProjectExist());
 		
 		try
 		{
@@ -41,7 +41,7 @@ public class TestFileStorage extends EAMTestCase
 
 		storage.setDirectory(tempDirectory);
 		storage.createEmpty();
-		assertTrue("no file?", storage.hasFile());
+		assertTrue("no file?", storage.doesProjectExist());
 		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
 		
 		Vector nothingYet = storage.load();

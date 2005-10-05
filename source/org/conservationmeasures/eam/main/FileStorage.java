@@ -31,9 +31,9 @@ public class FileStorage extends Storage
 		setDirectory(null);
 	}
 	
-	public boolean hasFile()
+	public boolean doesProjectExist()
 	{
-		return (directory != null);
+		return isExistingProject(directory);
 	}
 	
 	public String getName()
@@ -75,11 +75,6 @@ public class FileStorage extends Storage
 		return loaded;
 	}
 
-	public boolean exists()
-	{
-		return (directory.exists());
-	}
-	
 	public void createEmpty() throws IOException
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(directory);
@@ -100,7 +95,7 @@ public class FileStorage extends Storage
 
 	public void appendCommand(Command command) throws IOException
 	{
-		if(!hasFile())
+		if(!doesProjectExist())
 			throw new IOException("FileStorage: Can't append if no file open");
 		
 		DoneCommand commandToSave = DoneCommand.buildFromCommand(command);
@@ -108,6 +103,19 @@ public class FileStorage extends Storage
 		addCommandWithoutSaving(command);
 	}
 	
+	public static boolean isExistingProject(File projectDirectory)
+	{
+		if(projectDirectory == null)
+			return false;
+		
+		if(!projectDirectory.isDirectory())
+			return false;
+		
+		String projectName = projectDirectory.getName();
+		File script = new File(projectDirectory, projectName + ".script");
+		return script.exists();
+	}
+
 	File directory;
 	Database db;
 }

@@ -31,16 +31,16 @@ public class TestRealProject extends EAMTestCase
 
 	public void testIsOpen() throws Exception
 	{
-		FileStorage storage = new FileStorage();
-		storage.setDirectory(projectDirectory);
-		storage.createEmpty();
-		
 		RealProject project = new RealProject();
 		assertFalse("already open?", project.isOpen());
 		project.load(projectDirectory);
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());
+	}
+	
+	public void testInsertNode() throws Exception
+	{
 	}
 	
 	File projectDirectory;

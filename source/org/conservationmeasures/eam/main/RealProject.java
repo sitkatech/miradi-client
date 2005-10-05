@@ -23,17 +23,22 @@ public class RealProject extends Project
 	
 	public boolean isOpen()
 	{
-		return getStorage().hasFile();
+		return getStorage().doesProjectExist();
 	}
 	
 	public void load(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getStorage().setDirectory(projectDirectory);
-		if(!getStorage().exists())
-			getStorage().createEmpty();
+		if(!isOpen())
+			createEmpty();
 		
 		Vector commands = getStorage().load();
 		loadCommands(commands);
+	}
+
+	private void createEmpty() throws IOException
+	{
+		getStorage().createEmpty();
 	}
 
 	public void closeDatabase()
