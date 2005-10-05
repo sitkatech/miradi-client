@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.database;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 
-public class TestFileStorage extends EAMTestCase
+public class TestEAMDatabase extends EAMTestCase
 {
-	public TestFileStorage(String name)
+	public TestEAMDatabase(String name)
 	{
 		super(name);
 	}
@@ -29,7 +29,7 @@ public class TestFileStorage extends EAMTestCase
 
 		EAMDatabase storage = new EAMDatabase();
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
-		assertFalse("already has a file?", storage.doesProjectExist());
+		assertFalse("already has a file?", EAMDatabase.doesProjectExist(tempDirectory));
 		
 		try
 		{
@@ -41,7 +41,7 @@ public class TestFileStorage extends EAMTestCase
 		}
 
 		storage.open(tempDirectory);
-		assertTrue("no file?", storage.doesProjectExist());
+		assertTrue("no file?", EAMDatabase.doesProjectExist(tempDirectory));
 		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
 		
 		Vector nothingYet = storage.load();

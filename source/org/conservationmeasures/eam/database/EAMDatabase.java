@@ -51,7 +51,7 @@ public class EAMDatabase
 	
 	public void appendCommand(Command command) throws IOException
 	{
-		if(!doesProjectExist())
+		if(!isOpen())
 			throw new IOException("FileStorage: Can't append if no file open");
 		
 		DoneCommand commandToSave = DoneCommand.buildFromCommand(command);
@@ -64,12 +64,12 @@ public class EAMDatabase
 		EAM.logDebug("Closing database");
 		clear();
 		db.close();
-		directory = null;
+		name = null;
 	}
 
-	public boolean doesProjectExist()
+	public static boolean doesProjectExist(File directoryToCheck)
 	{
-		return isExistingProject(directory);
+		return isExistingProject(directoryToCheck);
 	}
 	
 	public boolean isOpen()
@@ -79,21 +79,21 @@ public class EAMDatabase
 
 	public String getName()
 	{
-		return directory.getName();
+		return name;
 	}
 
-	public void open(File directoryToUse) throws IOException
+	public void open(File directory) throws IOException
 	{
 		clear();
-		directory = directoryToUse;
-		if(!doesProjectExist())
-			createEmpty();
+		if(!doesProjectExist(directory))
+			createEmpty(directory);
+		db.openDiskDatabase(getDatabaseFileBase(directory));
+		name = directory.getName();
 	}
 	
 
 	public Vector load() throws IOException, UnknownCommandException
 	{
-		db.openDiskDatabase(getDatabaseFileBase());
 		Vector loaded = new Vector();
 		EAM.logDebug("---Loading---");
 		ResultSet allCommands = db.rawSelect("SELECT * FROM DoneCommands ORDER BY id");
@@ -101,11 +101,11 @@ public class EAMDatabase
 		{
 			while(allCommands.next())
 			{
-				String name = allCommands.getString("name");
+				String commandName = allCommands.getString("name");
 				byte[] data = allCommands.getBytes("data");
 				DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(data));
 				
-				Command command = Command.createFrom(name, dataIn);
+				Command command = Command.createFrom(commandName, dataIn);
 				loaded.add(command);
 				EAM.logDebug(command.toString());
 			}
@@ -119,10 +119,10 @@ public class EAMDatabase
 		return loaded;
 	}
 
-	public void createEmpty() throws IOException
+	public void createEmpty(File directory) throws IOException
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(directory);
-		db.openDiskDatabase(getDatabaseFileBase());
+		db.openDiskDatabase(getDatabaseFileBase(directory));
 		createCommandsTable();
 		db.close();
 	}
@@ -140,7 +140,7 @@ public class EAMDatabase
 		return script.exists();
 	}
 
-	private File getDatabaseFileBase()
+	private static File getDatabaseFileBase(File directory)
 	{
 		return new File(directory, directory.getName());
 	}
@@ -156,7 +156,7 @@ public class EAMDatabase
 	}
 
 	protected Vector commands;
-	File directory;
+	String name;
 	protected DatabaseWrapper db;
 
 }

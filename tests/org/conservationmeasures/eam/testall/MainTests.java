@@ -11,6 +11,7 @@ import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDatabase;
+import org.conservationmeasures.eam.database.TestEAMDatabase;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.nodes.TestCommandLinkNodes;
@@ -24,7 +25,6 @@ import org.conservationmeasures.eam.diagram.nodes.TestNodeData;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
-import org.conservationmeasures.eam.main.TestFileStorage;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestProject;
 import org.conservationmeasures.eam.main.TestRealProject;
@@ -56,10 +56,10 @@ public class MainTests extends TestCase
 
 		// database package
 		suite.addTest(new TestSuite(TestDatabase.class));
+		suite.addTest(new TestSuite(TestEAMDatabase.class));
 		
 		// main package
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
-		suite.addTest(new TestSuite(TestFileStorage.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
