@@ -23,7 +23,7 @@ public class TestDatabase extends EAMTestCase
 	{
 		super.setUp();
 		
-		db = new Database();
+		db = new DatabaseWrapper();
 		db.openMemoryDatabase("testdb");
 		createSampleTable(db);
 	}
@@ -81,7 +81,7 @@ public class TestDatabase extends EAMTestCase
 	{
 		File tempDirectory = createTempDirectory();
 		File baseName = new File(tempDirectory, "testdb");
-		Database disk = new Database();
+		DatabaseWrapper disk = new DatabaseWrapper();
 		disk.openDiskDatabase(baseName);
 		try
 		{
@@ -102,13 +102,13 @@ public class TestDatabase extends EAMTestCase
 		}
 	}
 	
-	private void createSampleTable(Database database) throws Exception
+	private void createSampleTable(DatabaseWrapper database) throws Exception
 	{
 		database.rawExecute("CREATE TABLE " + sampleTable + " (id INTEGER IDENTITY PRIMARY KEY, type INTEGER, text VARCHAR);");
 	}
 	
 	final static String sampleTable = "SampleObject";
-	Database db;
+	DatabaseWrapper db;
 }
 
 

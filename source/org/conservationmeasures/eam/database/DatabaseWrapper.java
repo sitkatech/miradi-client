@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.main.EAM;
 import com.jenkov.mrpersister.PersistenceManager;
 import com.jenkov.mrpersister.itf.IGenericDao;
 
-public class Database
+public class DatabaseWrapper
 {
-	public Database() throws IOException
+	public DatabaseWrapper() throws IOException
 	{
 		try
 		{

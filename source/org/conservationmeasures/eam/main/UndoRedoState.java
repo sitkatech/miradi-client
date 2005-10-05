@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 
 public class UndoRedoState
 {
-	public UndoRedoState(Storage storageToUse)
+	public UndoRedoState(EAMDatabase storageToUse)
 	{
 		storage = storageToUse;
 		nonUndoneCommandIndexes = new Vector();
@@ -60,7 +60,7 @@ public class UndoRedoState
 		}
 	}
 
-	Storage storage;
+	EAMDatabase storage;
 	Vector nonUndoneCommandIndexes;
 	Vector redoableCommandIndexes;
 }

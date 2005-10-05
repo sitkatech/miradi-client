@@ -45,7 +45,7 @@ public class Project
 {
 	public Project() throws IOException
 	{
-		storage = new Storage();
+		storage = new EAMDatabase();
 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
@@ -410,7 +410,7 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	protected Storage getStorage()
+	protected EAMDatabase getStorage()
 	{
 		return storage;
 	}
@@ -435,7 +435,7 @@ public class Project
 		return EAM.text("[No Project]");
 	}
 
-	Storage storage;
+	EAMDatabase storage;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;
 	GraphSelectionModel selectionModel;

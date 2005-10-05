@@ -13,16 +13,16 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.database.Database;
+import org.conservationmeasures.eam.database.DatabaseWrapper;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.martus.util.DirectoryUtils;
 
-public class Storage
+public class EAMDatabase
 {
-	public Storage() throws IOException
+	public EAMDatabase() throws IOException
 	{
 		commands = new Vector();
-		db = new Database();
+		db = new DatabaseWrapper();
 	}
 
 	public int getCommandCount()
@@ -147,6 +147,6 @@ public class Storage
 
 	protected Vector commands;
 	File directory;
-	protected Database db;
+	protected DatabaseWrapper db;
 
 }
