@@ -22,8 +22,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.NoProjectView;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class TestCommands extends EAMTestCase
 {
@@ -34,7 +33,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting();
+		project = new ProjectForTesting(createTempDirectory());
 		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
@@ -354,7 +353,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting();
+		Project emptyProject = new ProjectForTesting(createTempDirectory());
 		CommandUndo undo = new CommandUndo();
 		try
 		{
@@ -385,7 +384,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testRedoWhenNothingToRedo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting();
+		Project emptyProject = new ProjectForTesting(createTempDirectory());
 		CommandRedo redo = new CommandRedo();
 		try
 		{
@@ -401,18 +400,20 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSwitchView() throws Exception
 	{
-		CommandSwitchView toDiagram = new CommandSwitchView(DiagramView.getViewName());
-		project.executeCommand(toDiagram);
-		assertEquals("didn't switch?", toDiagram.getDestinationView(), project.getCurrentView());
-		assertEquals("didn't set from?", NoProjectView.getViewName(), toDiagram.getPreviousView());
+		String originalViewName = project.getCurrentView();
+
+		CommandSwitchView toInterview = new CommandSwitchView(InterviewView.getViewName());
+		project.executeCommand(toInterview);
+		assertEquals("didn't switch?", toInterview.getDestinationView(), project.getCurrentView());
+		assertEquals("didn't set from?", originalViewName, toInterview.getPreviousView());
 		
-		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toDiagram);
+		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toInterview);
 		assertNotNull("didn't reload?", loaded);
-		assertEquals("wrong to?", toDiagram.getDestinationView(), loaded.getDestinationView());
-		assertEquals("wrong from?", toDiagram.getPreviousView(), loaded.getPreviousView());
+		assertEquals("wrong to?", toInterview.getDestinationView(), loaded.getDestinationView());
+		assertEquals("wrong from?", toInterview.getPreviousView(), loaded.getPreviousView());
 		
 		project.undo();
-		assertEquals("didn't switch back?", NoProjectView.getViewName(), project.getCurrentView());
+		assertEquals("didn't switch back?", originalViewName, project.getCurrentView());
 	}
 
 	private int insertTarget() throws Exception

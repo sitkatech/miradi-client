@@ -37,7 +37,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 			public int timesExecuted;
 		}
 		
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		TestListener listener = new TestListener();
 		project.addCommandExecutedListener(listener);
 		assertEquals("not zero to start?", 0, listener.timesExecuted);

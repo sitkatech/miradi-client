@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class TestProject extends EAMTestCase
 {
@@ -36,7 +37,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testData() throws Exception
 	{
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
 		
 		String fieldName = "sample field name";
@@ -55,24 +56,24 @@ public class TestProject extends EAMTestCase
 		{
 			public void switchToView(String viewName)
 			{
-				if(viewName.equals(DiagramView.getViewName()))
-					++diagramViewCount;
+				if(viewName.equals(InterviewView.getViewName()))
+					++interviewViewCount;
 				else
 					throw new RuntimeException("Unknown view: " + viewName);
 			}
 
-			int diagramViewCount;
+			int interviewViewCount;
 		}
 		
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
-		Command toDiagram = new CommandSwitchView(DiagramView.getViewName());
-		project.executeCommand(toDiagram);
-		assertEquals("didn't notify listener of diagram view?", 1, listener.diagramViewCount);
+		Command toInterview = new CommandSwitchView(InterviewView.getViewName());
+		project.executeCommand(toInterview);
+		assertEquals("didn't notify listener of view switch?", 1, listener.interviewViewCount);
 		try
 		{
-			project.executeCommand(toDiagram);
+			project.executeCommand(toInterview);
 			fail("Can't switch to current view");
 		}
 		catch(AlreadyInThatViewException ignoreExpected)
@@ -82,7 +83,7 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -113,7 +114,7 @@ public class TestProject extends EAMTestCase
 	
 	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -149,7 +150,7 @@ public class TestProject extends EAMTestCase
 
 	public void testPasteNodesOnlyIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -175,8 +176,8 @@ public class TestProject extends EAMTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
-		Project project = new ProjectForTesting();
-		assertEquals("not starting on noproject view?", NoProjectView.getViewName(), project.getCurrentView());
+		Project project = new ProjectForTesting(createTempDirectory());
+		assertEquals("not starting on diagram view?", DiagramView.getViewName(), project.getCurrentView());
 		String sampleViewName = "blah blah";
 		project.switchToView(sampleViewName);
 		assertEquals("didn't switch?", sampleViewName, project.getCurrentView());

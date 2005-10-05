@@ -5,42 +5,12 @@
  */
 package org.conservationmeasures.eam.main;
 
-import java.io.IOException;
+import java.io.File;
 
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
-
-public class ProjectForTesting extends Project
+public class ProjectForTesting extends RealProject
 {
-
-	public ProjectForTesting() throws IOException
+	public ProjectForTesting(File projectDirectory) throws Exception
 	{
-		super(new Storage());
+		open(projectDirectory);
 	}
-
-	public boolean isOpen()
-	{
-		return true;
-	}
-	
-	public void closeDatabase()
-	{
-	}
-
-	public void deleteNodeFromDatabase(int id)
-	{
-	}
-	
-	public void insertNodeInDatabase(Node node)
-	{
-	}
-	
-	public void deleteLinkageFromDatabase(int id)
-	{
-	}
-	
-	public void insertLinkageInDatabase(Linkage linkage)
-	{
-	}
-
 }

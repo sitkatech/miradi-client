@@ -28,7 +28,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new ProjectForTesting();
+		project = new ProjectForTesting(createTempDirectory());
 		
 		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
 		project.executeCommand(insertFactor);
@@ -97,7 +97,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandDoNothing nop = new CommandDoNothing();
 		CommandUndo undo = new CommandUndo();
 		CommandRedo redo = new CommandRedo();
-		Project p = new ProjectForTesting();
+		Project p = new ProjectForTesting(createTempDirectory());
 		
 		assertEquals("already an undoable?", -1, p.getIndexToUndo());
 		assertEquals("already a redoable?", -1, p.getIndexToRedo());

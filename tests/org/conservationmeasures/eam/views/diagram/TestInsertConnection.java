@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import java.io.IOException;
+import java.io.File;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.main.ProjectForTesting;
@@ -20,7 +20,7 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testIsAvailable() throws Exception
 	{
-		OpenableProject project = new OpenableProject();
+		OpenableProject project = new OpenableProject(createTempDirectory());
 		InsertConnection doer = new InsertConnection();
 		doer.setProject(project);
 
@@ -38,9 +38,9 @@ public class TestInsertConnection extends EAMTestCase
 
 class OpenableProject extends ProjectForTesting
 {
-	public OpenableProject() throws IOException
+	public OpenableProject(File projectDirectory) throws Exception
 	{
-		super();
+		super(projectDirectory);
 	}
 
 	public boolean isOpen()

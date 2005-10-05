@@ -23,7 +23,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		Project project = new ProjectForTesting();
+		Project project = new ProjectForTesting(createTempDirectory());
 
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
