@@ -61,9 +61,19 @@ public class TestFileStorage extends EAMTestCase
 		assertEquals("factor not loaded?", createFactor, loaded.get(1));
 		storage.close();
 		
+		try
+		{
+			storage.load();
+			fail("Should have thrown loading without a directory specified");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+
 		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		try
 		{
+			storage.setDirectory(tempDirectory);
 			storage.load();
 			fail("Should have thrown opening non-existant file");
 		}

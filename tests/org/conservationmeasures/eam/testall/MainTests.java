@@ -23,10 +23,11 @@ import org.conservationmeasures.eam.diagram.nodes.TestNode;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeData;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
-import org.conservationmeasures.eam.main.TestProject;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestFileStorage;
 import org.conservationmeasures.eam.main.TestMainMenu;
+import org.conservationmeasures.eam.main.TestProject;
+import org.conservationmeasures.eam.main.TestRealProject;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
@@ -57,10 +58,11 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDatabase.class));
 		
 		// main package
-		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestCommandExecutedEvents.class));
 		suite.addTest(new TestSuite(TestFileStorage.class));
 		suite.addTest(new TestSuite(TestMainMenu.class));
+		suite.addTest(new TestSuite(TestProject.class));
+		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// utils package

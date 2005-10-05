@@ -28,6 +28,7 @@ public class FileStorage extends Storage
 	{
 		EAM.logDebug("Closing database");
 		db.close();
+		setDirectory(null);
 	}
 	
 	public boolean hasFile()
