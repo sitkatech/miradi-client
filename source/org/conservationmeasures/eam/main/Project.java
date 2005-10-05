@@ -60,6 +60,11 @@ public class Project
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getDatabase().open(projectDirectory);
+		loadCommandsFromDatabase();
+	}
+
+	void loadCommandsFromDatabase() throws IOException, UnknownCommandException, CommandFailedException
+	{
 		Vector commands = getDatabase().load();
 		loadCommands(commands);
 	}

@@ -24,7 +24,7 @@ public class TestDelete extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);

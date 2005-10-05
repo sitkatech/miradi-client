@@ -92,6 +92,15 @@ public class EAMDatabase
 	}
 	
 
+	public void openMemoryDatabase(String nameToUse) throws IOException
+	{
+		clear();
+		db.openMemoryDatabase(nameToUse);
+		dropAllTables();
+		createCommandsTable();
+		name = nameToUse;
+	}
+
 	public Vector load() throws IOException, UnknownCommandException
 	{
 		Vector loaded = new Vector();
@@ -118,8 +127,8 @@ public class EAMDatabase
 		EAM.logDebug("---Finished---");
 		return loaded;
 	}
-
-	public void createEmpty(File directory) throws IOException
+	
+	private void createEmpty(File directory) throws IOException
 	{
 		DirectoryUtils.deleteEntireDirectoryTree(directory);
 		db.openDiskDatabase(getDatabaseFileBase(directory));
@@ -148,6 +157,11 @@ public class EAMDatabase
 	private void createCommandsTable() throws IOException
 	{
 		db.rawExecute("CREATE TABLE DoneCommands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
+	}
+
+	public void dropAllTables() throws IOException
+	{
+		db.rawExecute("DROP TABLE DoneCommands IF EXISTS;");
 	}
 
 	private void addCommand(Command command)

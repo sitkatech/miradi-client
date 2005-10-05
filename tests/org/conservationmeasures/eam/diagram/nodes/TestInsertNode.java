@@ -25,7 +25,7 @@ public class TestInsertNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(-1);
 		try
 		{
@@ -40,7 +40,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -57,7 +57,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -74,7 +74,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();

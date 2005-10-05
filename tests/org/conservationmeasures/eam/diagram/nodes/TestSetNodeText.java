@@ -22,7 +22,7 @@ public class TestSetNodeText extends EAMTestCase
 
 	public void testSetNodeText() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_TARGET);

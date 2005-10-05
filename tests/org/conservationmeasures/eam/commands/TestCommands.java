@@ -33,7 +33,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		project = new ProjectForTesting(createTempDirectory());
+		project = new ProjectForTesting(getName());
 		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
@@ -353,7 +353,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting(createTempDirectory());
+		Project emptyProject = new ProjectForTesting(getName());
 		CommandUndo undo = new CommandUndo();
 		try
 		{
@@ -384,7 +384,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testRedoWhenNothingToRedo() throws Exception
 	{
-		Project emptyProject = new ProjectForTesting(createTempDirectory());
+		Project emptyProject = new ProjectForTesting(getName());
 		CommandRedo redo = new CommandRedo();
 		try
 		{

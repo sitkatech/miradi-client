@@ -37,7 +37,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testData() throws Exception
 	{
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
 		
 		String fieldName = "sample field name";
@@ -65,7 +65,7 @@ public class TestProject extends EAMTestCase
 			int interviewViewCount;
 		}
 		
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
 		Command toInterview = new CommandSwitchView(InterviewView.getViewName());
@@ -83,7 +83,7 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -114,7 +114,7 @@ public class TestProject extends EAMTestCase
 	
 	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -150,7 +150,7 @@ public class TestProject extends EAMTestCase
 
 	public void testPasteNodesOnlyIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -176,7 +176,7 @@ public class TestProject extends EAMTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
-		Project project = new ProjectForTesting(createTempDirectory());
+		Project project = new ProjectForTesting(getName());
 		assertEquals("not starting on diagram view?", DiagramView.getViewName(), project.getCurrentView());
 		String sampleViewName = "blah blah";
 		project.switchToView(sampleViewName);

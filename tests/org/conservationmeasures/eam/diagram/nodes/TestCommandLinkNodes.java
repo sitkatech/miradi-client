@@ -20,7 +20,7 @@ public class TestCommandLinkNodes extends EAMTestCase
 
 	public void testInsertConnection() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(createTempDirectory());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);

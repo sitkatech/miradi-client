@@ -5,12 +5,13 @@
  */
 package org.conservationmeasures.eam.main;
 
-import java.io.File;
+
 
 public class ProjectForTesting extends Project
 {
-	public ProjectForTesting(File projectDirectory) throws Exception
+	public ProjectForTesting(String testName) throws Exception
 	{
-		open(projectDirectory);
+		getDatabase().openMemoryDatabase(testName);
+		loadCommandsFromDatabase();
 	}
 }
