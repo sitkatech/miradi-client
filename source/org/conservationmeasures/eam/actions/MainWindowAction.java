@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
@@ -40,7 +40,7 @@ public abstract class MainWindowAction extends EAMAction
 		return mainWindow;
 	}
 	
-	public BaseProject getProject()
+	public Project getProject()
 	{
 		return mainWindow.getProject();
 	}

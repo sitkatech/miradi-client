@@ -18,12 +18,12 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInterviewSetStep;
 import org.conservationmeasures.eam.commands.CommandSetData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 
 abstract class WizardButtonHandler implements ActionListener
 {
-	WizardButtonHandler(BaseProject projectToUse)
+	WizardButtonHandler(Project projectToUse)
 	{
 		project = projectToUse;
 	}
@@ -88,5 +88,5 @@ abstract class WizardButtonHandler implements ActionListener
 		return commands;
 	}
 
-	BaseProject project;
+	Project project;
 }

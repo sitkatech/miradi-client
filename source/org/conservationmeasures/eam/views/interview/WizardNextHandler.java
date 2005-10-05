@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 class WizardNextHandler extends WizardButtonHandler
 {
-	WizardNextHandler(BaseProject projectToUse)
+	WizardNextHandler(Project projectToUse)
 	{
 		super(projectToUse);
 	}

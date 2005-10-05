@@ -5,19 +5,19 @@
  */
 package org.conservationmeasures.eam.views;
 
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 abstract public class ProjectDoer extends Doer
 {
-	public void setProject(BaseProject projectToUse)
+	public void setProject(Project projectToUse)
 	{
 		project = projectToUse;
 	}
 
-	public BaseProject getProject()
+	public Project getProject()
 	{
 		return project;
 	}
 
-	BaseProject project;
+	Project project;
 }

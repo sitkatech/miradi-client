@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewTable;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
@@ -45,7 +45,7 @@ abstract public class UmbrellaView extends JPanel
 		return mainWindow;
 	}
 	
-	public BaseProject getProject()
+	public Project getProject()
 	{
 		return getMainWindow().getProject();
 	}

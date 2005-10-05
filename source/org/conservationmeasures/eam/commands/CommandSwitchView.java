@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 public class CommandSwitchView extends Command
 {
@@ -41,7 +41,7 @@ public class CommandSwitchView extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(BaseProject target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		fromView = target.getCurrentView();
 		if(fromView.equals(toView))
@@ -61,7 +61,7 @@ public class CommandSwitchView extends Command
 		return string.toString();
 	}
 
-	public void undo(BaseProject target) throws CommandFailedException
+	public void undo(Project target) throws CommandFailedException
 	{
 		target.switchToView(fromView);
 	}

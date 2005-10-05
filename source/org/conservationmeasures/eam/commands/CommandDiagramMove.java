@@ -13,7 +13,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 
 public class CommandDiagramMove extends Command
@@ -50,17 +50,17 @@ public class CommandDiagramMove extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(BaseProject target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		doMove(target, getDeltaX(), getDeltaY());
 	}
 
-	public void undo(BaseProject target) throws CommandFailedException
+	public void undo(Project target) throws CommandFailedException
 	{
 		doMove(target, -getDeltaX(), -getDeltaY());
 	}
 	
-	private void doMove(BaseProject target, int xDelta, int yDelta) throws CommandFailedException
+	private void doMove(Project target, int xDelta, int yDelta) throws CommandFailedException
 	{
 		try
 		{

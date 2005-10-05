@@ -10,7 +10,7 @@ import java.awt.datatransfer.Clipboard;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -22,7 +22,7 @@ public class Copy extends ProjectDoer
 		super();
 	}
 	
-	public Copy(BaseProject project)
+	public Copy(Project project)
 	{
 		setProject(project);
 	}

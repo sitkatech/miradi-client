@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.RealProject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -24,7 +24,7 @@ public class TestSetNodeText extends EAMTestCase
 
 	public void testSetNodeText() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		DiagramModel model = project.getDiagramModel();
 
 		CommandInsertNode insertCommand = new CommandInsertNode(Node.TYPE_TARGET);

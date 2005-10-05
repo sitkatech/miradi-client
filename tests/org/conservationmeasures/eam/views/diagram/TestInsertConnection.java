@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestInsertConnection extends EAMTestCase
@@ -36,7 +36,7 @@ public class TestInsertConnection extends EAMTestCase
 
 }
 
-class OpenableProject extends BaseProject
+class OpenableProject extends ProjectForTesting
 {
 	public OpenableProject() throws IOException
 	{

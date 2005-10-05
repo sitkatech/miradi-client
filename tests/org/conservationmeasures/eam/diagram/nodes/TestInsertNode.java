@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.RealProject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -26,7 +26,7 @@ public class TestInsertNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		Command insertCommand = new CommandInsertNode(-1);
 		try
 		{
@@ -41,7 +41,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		Command insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -58,7 +58,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		Command insertCommand = new CommandInsertNode(Node.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -75,7 +75,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		Command insertCommand = new CommandInsertNode(Node.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();

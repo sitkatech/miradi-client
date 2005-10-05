@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -27,7 +27,7 @@ abstract public class Doer
 		// overridden by any subclass that cares about projects
 	}
 
-	public void setProject(BaseProject project)
+	public void setProject(Project project)
 	{
 		// overridden by any subclass that cares about projects
 	}

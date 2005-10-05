@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 public abstract class Command
 {
@@ -84,13 +84,13 @@ public abstract class Command
 	}
 
 	abstract public String getCommandName();
-	abstract public void execute(BaseProject target) throws CommandFailedException;
+	abstract public void execute(Project target) throws CommandFailedException;
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 	}
 	
-	public void undo(BaseProject target) throws CommandFailedException
+	public void undo(Project target) throws CommandFailedException
 	{
 		throw new RuntimeException("Not implemented yet");
 	}

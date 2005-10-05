@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.io.File;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
@@ -31,7 +31,7 @@ public class NewProject extends MainWindowDoer
 			}
 
 			String name = chosen.getName();
-			if(!BaseProject.isValidProjectName(name))
+			if(!Project.isValidProjectName(name))
 			{
 				String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
 				EAM.errorDialog(body);

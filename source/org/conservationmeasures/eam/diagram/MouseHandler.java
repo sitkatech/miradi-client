@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 import org.conservationmeasures.eam.views.diagram.NodeProperties;
 import org.jgraph.event.GraphSelectionEvent;
@@ -23,7 +23,7 @@ import org.jgraph.event.GraphSelectionListener;
 
 public class MouseHandler implements MouseListener, GraphSelectionListener
 {
-	public MouseHandler(DiagramComponent owner, BaseProject projectToUse, Actions actionsToUse)
+	public MouseHandler(DiagramComponent owner, Project projectToUse, Actions actionsToUse)
 	{
 		diagram = owner;
 		project = projectToUse;
@@ -125,7 +125,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		actions.updateActionStates();
 	}
 
-	BaseProject project;
+	Project project;
 	DiagramComponent diagram;
 	Actions actions;
 	Point dragStartedAt;

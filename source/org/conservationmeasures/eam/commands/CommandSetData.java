@@ -10,7 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
 
 public class CommandSetData extends Command
@@ -33,14 +33,14 @@ public class CommandSetData extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(BaseProject target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		EAM.logVerbose("CommandSetData.execute: " + getFieldName() + " -> " + getFieldData());
 		oldFieldData = target.getDataValue(getFieldName());
 		target.setDataValue(getFieldName(), getFieldData());
 	}
 
-	public void undo(BaseProject target) throws CommandFailedException
+	public void undo(Project target) throws CommandFailedException
 	{
 		target.setDataValue(getFieldName(), getOldFieldData());
 	}

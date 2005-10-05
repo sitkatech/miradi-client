@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.RealProject;
 import org.conservationmeasures.eam.views.umbrella.PrintDoer;
 
 public class Print extends PrintDoer 
 {
 	public boolean isAvailable() 
 	{
-		Project project = getMainWindow().getProject();
+		RealProject project = getMainWindow().getProject();
 		if(!project.isOpen())
 			return false;
 		return project.getDiagramModel().getNodeCount() > 0;

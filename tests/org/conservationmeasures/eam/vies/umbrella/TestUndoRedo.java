@@ -7,7 +7,8 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.umbrella.Redo;
 import org.conservationmeasures.eam.views.umbrella.Undo;
@@ -22,7 +23,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		BaseProject project = new BaseProject();
+		Project project = new ProjectForTesting();
 
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
@@ -53,7 +54,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getNodeCount());
 	}
 
-	private int insertTarget(BaseProject project) throws CommandFailedException 
+	private int insertTarget(Project project) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( Node.TYPE_TARGET);
 		project.executeCommand(insert);

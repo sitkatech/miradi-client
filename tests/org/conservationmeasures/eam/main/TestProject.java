@@ -18,24 +18,24 @@ import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 
-public class TestBaseProject extends EAMTestCase
+public class TestProject extends EAMTestCase
 {
-	public TestBaseProject(String name)
+	public TestProject(String name)
 	{
 		super(name);
 	}
 	
 	public void testIsValidName() throws Exception
 	{
-		assertTrue("AlphaNumericDotDashSpace", BaseProject.isValidProjectName("AZaz09.- "));
-		assertFalse("Other Punct", BaseProject.isValidProjectName("$"));
+		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectName("AZaz09.- "));
+		assertFalse("Other Punct", Project.isValidProjectName("$"));
 		final char ACCENT_A_LOWER = 0xE1;
-		assertTrue("Foreign", BaseProject.isValidProjectName(new String(new char[] {ACCENT_A_LOWER})));
+		assertTrue("Foreign", Project.isValidProjectName(new String(new char[] {ACCENT_A_LOWER})));
 	}
 	
 	public void testData() throws Exception
 	{
-		BaseProject project = new BaseProject();
+		Project project = new ProjectForTesting();
 		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
 		
 		String fieldName = "sample field name";
@@ -63,7 +63,7 @@ public class TestBaseProject extends EAMTestCase
 			int diagramViewCount;
 		}
 		
-		BaseProject project = new BaseProject();
+		Project project = new ProjectForTesting();
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
 		Command toDiagram = new CommandSwitchView(DiagramView.getViewName());
@@ -81,7 +81,7 @@ public class TestBaseProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		BaseProject project = new BaseProject();
+		Project project = new ProjectForTesting();
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);
@@ -112,7 +112,7 @@ public class TestBaseProject extends EAMTestCase
 	
 	public void testPasteCells() throws Exception
 	{
-		BaseProject project = new BaseProject();
+		Project project = new ProjectForTesting();
 		DiagramModel model = project.getDiagramModel();
 
 		Node node1 = model.createNode(Node.TYPE_TARGET);

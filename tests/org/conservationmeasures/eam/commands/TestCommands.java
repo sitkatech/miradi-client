@@ -18,8 +18,9 @@ import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -33,7 +34,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		project = new BaseProject();
+		project = new ProjectForTesting();
 		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
@@ -353,7 +354,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
-		BaseProject emptyProject = new BaseProject();
+		Project emptyProject = new ProjectForTesting();
 		CommandUndo undo = new CommandUndo();
 		try
 		{
@@ -384,7 +385,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testRedoWhenNothingToRedo() throws Exception
 	{
-		BaseProject emptyProject = new BaseProject();
+		Project emptyProject = new ProjectForTesting();
 		CommandRedo redo = new CommandRedo();
 		try
 		{
@@ -449,5 +450,5 @@ public class TestCommands extends EAMTestCase
 		return Command.readFrom(dataIn);
 	}
 	
-	BaseProject project;
+	Project project;
 }

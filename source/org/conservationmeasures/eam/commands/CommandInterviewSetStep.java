@@ -10,7 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 public class CommandInterviewSetStep extends Command
 {
@@ -30,13 +30,13 @@ public class CommandInterviewSetStep extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(BaseProject target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		fromStep = target.getCurrentInterviewStepName();
 		target.setCurrentInterviewStepName(getToStep());
 	}
 
-	public void undo(BaseProject target) throws CommandFailedException
+	public void undo(Project target) throws CommandFailedException
 	{
 		target.setCurrentInterviewStepName(fromStep);
 	}

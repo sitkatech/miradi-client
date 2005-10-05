@@ -26,14 +26,14 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.jgraph.JGraph;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
-	public DiagramComponent(BaseProject projectToUse, Actions actions)
+	public DiagramComponent(Project projectToUse, Actions actions)
 	{
 		super(projectToUse.getDiagramModel());
 		project = projectToUse;
@@ -128,7 +128,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 	}
 
-	BaseProject project;
+	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 }
 

@@ -12,10 +12,10 @@ import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestUndoAndRedo extends EAMTestCase
@@ -28,7 +28,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		project = new BaseProject();
+		project = new ProjectForTesting();
 		
 		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
 		project.executeCommand(insertFactor);
@@ -97,7 +97,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandDoNothing nop = new CommandDoNothing();
 		CommandUndo undo = new CommandUndo();
 		CommandRedo redo = new CommandRedo();
-		BaseProject p = new BaseProject();
+		Project p = new ProjectForTesting();
 		
 		assertEquals("already an undoable?", -1, p.getIndexToUndo());
 		assertEquals("already a redoable?", -1, p.getIndexToRedo());
@@ -163,7 +163,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	BaseProject project;
+	Project project;
 	int fromId;
 	int toId;
 	int linkId;

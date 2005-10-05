@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.commands;
 import java.io.DataInputStream;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.BaseProject;
+import org.conservationmeasures.eam.main.Project;
 
 public class CommandRedo extends Command
 {
@@ -36,7 +36,7 @@ public class CommandRedo extends Command
 		return COMMAND_NAME;
 	}
 
-	public void execute(BaseProject target) throws CommandFailedException
+	public void execute(Project target) throws CommandFailedException
 	{
 		target.redo();
 	}

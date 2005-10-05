@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.Linkage;
 import org.conservationmeasures.eam.diagram.nodes.Node;
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.main.RealProject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLinkage extends EAMTestCase
@@ -45,7 +45,7 @@ public class TestLinkage extends EAMTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		Project project = new Project();
+		RealProject project = new RealProject();
 		DiagramModel model = project.getDiagramModel();
 		
 		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
