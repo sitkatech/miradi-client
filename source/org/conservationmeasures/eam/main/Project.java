@@ -45,7 +45,7 @@ public class Project
 {
 	public Project() throws IOException
 	{
-		storage = new FileStorage();
+		storage = new Storage();
 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
@@ -410,9 +410,9 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	protected FileStorage getStorage()
+	protected Storage getStorage()
 	{
-		return (FileStorage)storage;
+		return storage;
 	}
 
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException

@@ -26,7 +26,7 @@ public class TestFileStorage extends EAMTestCase
 	{
 		File tempDirectory = createTempDirectory();
 
-		FileStorage storage = new FileStorage();
+		Storage storage = new Storage();
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
 		assertFalse("already has a file?", storage.doesProjectExist());
 		

@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.FileStorage;
+import org.conservationmeasures.eam.main.Storage;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;
@@ -121,7 +121,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 				return false;
 			
 			File projectDirectory = new File(eamDataDirectory, projectDirectoryName);
-			return FileStorage.isExistingProject(projectDirectory);
+			return Storage.isExistingProject(projectDirectory);
 		}
 	}
 	

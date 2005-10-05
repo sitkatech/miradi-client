@@ -5,16 +5,24 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.database.Database;
+import org.conservationmeasures.eam.exceptions.UnknownCommandException;
+import org.martus.util.DirectoryUtils;
 
 public class Storage
 {
-	public Storage()
+	public Storage() throws IOException
 	{
 		commands = new Vector();
+		db = new Database();
 	}
 
 	public int getCommandCount()
@@ -42,7 +50,94 @@ public class Storage
 	
 	public void appendCommand(Command command) throws IOException
 	{
-		addCommand(command);
+		if(!doesProjectExist())
+			throw new IOException("FileStorage: Can't append if no file open");
+		
+		DoneCommand commandToSave = DoneCommand.buildFromCommand(command);
+		db.insert(commandToSave);
+		addCommandWithoutSaving(command);
+	}
+
+	public void close() throws IOException
+	{
+		EAM.logDebug("Closing database");
+		db.close();
+		setDirectory(null);
+	}
+
+	public boolean doesProjectExist()
+	{
+		return isExistingProject(directory);
+	}
+
+	public String getName()
+	{
+		return directory.getName();
+	}
+
+	public void setDirectory(File directoryToUse)
+	{
+		clear();
+		directory = directoryToUse;
+	}
+
+	public Vector load() throws IOException, UnknownCommandException
+	{
+		db.openDiskDatabase(getDatabaseFileBase());
+		Vector loaded = new Vector();
+		EAM.logDebug("---Loading---");
+		ResultSet allCommands = db.rawSelect("SELECT * FROM DoneCommands ORDER BY id");
+		try
+		{
+			while(allCommands.next())
+			{
+				String name = allCommands.getString("name");
+				byte[] data = allCommands.getBytes("data");
+				DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(data));
+				
+				Command command = Command.createFrom(name, dataIn);
+				loaded.add(command);
+				EAM.logDebug(command.toString());
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return null;
+		}
+		EAM.logDebug("---Finished---");
+		return loaded;
+	}
+
+	public void createEmpty() throws IOException
+	{
+		DirectoryUtils.deleteEntireDirectoryTree(directory);
+		db.openDiskDatabase(getDatabaseFileBase());
+		createCommandsTable();
+		db.close();
+	}
+
+	public static boolean isExistingProject(File projectDirectory)
+	{
+		if(projectDirectory == null)
+			return false;
+		
+		if(!projectDirectory.isDirectory())
+			return false;
+		
+		String projectName = projectDirectory.getName();
+		File script = new File(projectDirectory, projectName + ".script");
+		return script.exists();
+	}
+
+	private File getDatabaseFileBase()
+	{
+		return new File(directory, directory.getName());
+	}
+
+	private void createCommandsTable() throws IOException
+	{
+		db.rawExecute("CREATE TABLE DoneCommands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
 	}
 
 	private void addCommand(Command command)
@@ -51,5 +146,7 @@ public class Storage
 	}
 
 	protected Vector commands;
+	File directory;
+	protected Database db;
 
 }
