@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.main;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.database.EAMDatabase;
 
 public class UndoRedoState
 {

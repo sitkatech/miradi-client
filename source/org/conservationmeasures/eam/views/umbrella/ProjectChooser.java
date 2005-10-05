@@ -21,8 +21,8 @@ import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.database.EAMDatabase;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.EAMDatabase;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;

@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.database.EAMDatabase;
 import org.conservationmeasures.eam.diagram.nodes.Node;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;

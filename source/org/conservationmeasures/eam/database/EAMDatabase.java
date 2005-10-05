@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.database;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -13,8 +13,9 @@ import java.sql.ResultSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.database.DatabaseWrapper;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
+import org.conservationmeasures.eam.main.DoneCommand;
+import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.DirectoryUtils;
 
 public class EAMDatabase
