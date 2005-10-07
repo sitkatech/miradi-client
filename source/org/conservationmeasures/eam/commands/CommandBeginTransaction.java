@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.project.Project;
 
 public class CommandBeginTransaction extends Command 
 {

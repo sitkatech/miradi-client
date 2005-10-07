@@ -10,8 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetData extends Command
 {

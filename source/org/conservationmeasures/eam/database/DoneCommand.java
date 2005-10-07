@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.database;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.io.File;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 public class NewProject extends MainWindowDoer

@@ -14,11 +14,11 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.elements.ElementData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiVBox;

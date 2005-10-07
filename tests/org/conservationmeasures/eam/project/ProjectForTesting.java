@@ -3,7 +3,9 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.project;
+
+import org.conservationmeasures.eam.project.Project;
 
 
 

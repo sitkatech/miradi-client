@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.views.table;
 
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.PrintDoer;
 
 public class Print extends PrintDoer 

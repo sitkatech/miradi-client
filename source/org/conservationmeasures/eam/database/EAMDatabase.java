@@ -14,7 +14,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
-import org.conservationmeasures.eam.main.DoneCommand;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.DirectoryUtils;
 

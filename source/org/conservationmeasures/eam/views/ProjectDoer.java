@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views;
 
-import org.conservationmeasures.eam.main.Project;
+import org.conservationmeasures.eam.project.Project;
 
 abstract public class ProjectDoer extends Doer
 {

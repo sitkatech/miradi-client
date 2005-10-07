@@ -18,8 +18,8 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInterviewSetStep;
 import org.conservationmeasures.eam.commands.CommandSetData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.Project;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 
 abstract class WizardButtonHandler implements ActionListener
 {
