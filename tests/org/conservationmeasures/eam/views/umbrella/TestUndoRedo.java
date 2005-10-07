@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.vies.umbrella;
+package org.conservationmeasures.eam.views.umbrella;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;

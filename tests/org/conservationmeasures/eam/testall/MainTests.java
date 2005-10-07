@@ -31,11 +31,11 @@ import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
-import org.conservationmeasures.eam.vies.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.diagram.TestInsertConnection;
 import org.conservationmeasures.eam.views.interview.TestInterviewModel;
 import org.conservationmeasures.eam.views.interview.TestInterviewStepModel;
 import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
+import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.martus.util.xml.TestSimpleXmlParser;
 
 public class MainTests extends TestCase
@@ -91,13 +91,16 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommands.class));
 		
 		// view.diagram package
-		suite.addTest(new TestSuite(TestUndoRedo.class));
 		suite.addTest(new TestSuite(TestInsertConnection.class));
 		
 		// view.interview package
 		suite.addTest(new TestSuite(TestInterviewModel.class));
 		suite.addTest(new TestSuite(TestWizardStepLoader.class));
 		suite.addTest(new TestSuite(TestInterviewStepModel.class));
+		
+		// view.umbrella package
+		suite.addTest(new TestSuite(TestUndoRedo.class));
+
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
