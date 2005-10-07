@@ -11,7 +11,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -68,7 +68,7 @@ public class CommandDiagramMove extends Command
 
 			for(int i = 0; i < ids.length; ++i)
 			{
-				Node nodeToMove = model.getNodeById(ids[i]);
+				DiagramNode nodeToMove = model.getNodeById(ids[i]);
 				Point oldLocation = nodeToMove.getLocation();
 				Point newLocation = new Point(oldLocation.x + xDelta, oldLocation.y + yDelta);
 				nodeToMove.setLocation(newLocation);

@@ -9,18 +9,18 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeData extends EAMTestCase 
+public class TestDiagramNodeData extends EAMTestCase 
 {
 
-	public TestNodeData(String name) 
+	public TestDiagramNodeData(String name) 
 	{
 		super(name);
 	}
 	
 	public void testBasics() throws Exception
 	{
-		int nodeAType = Node.TYPE_FACTOR;
-		Node nodeA = new Node(nodeAType);
+		int nodeAType = DiagramNode.TYPE_FACTOR;
+		DiagramNode nodeA = new DiagramNode(nodeAType);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);
 		int id = 2;

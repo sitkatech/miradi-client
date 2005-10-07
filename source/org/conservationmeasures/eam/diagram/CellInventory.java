@@ -9,8 +9,8 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 
 class CellInventory
 {
@@ -27,7 +27,7 @@ class CellInventory
 		linkages.clear();
 	}
 
-	public void addNode(Node node)
+	public void addNode(DiagramNode node)
 	{
 		int realId = getRealId(node.getId());
 		
@@ -43,23 +43,23 @@ class CellInventory
 		return nodes;
 	}
 	
-	public Node getNodeById(int id)
+	public DiagramNode getNodeById(int id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
-			Node node = (Node)iter.next();
+			DiagramNode node = (DiagramNode)iter.next();
 			if(node.getId() == id)
 				return node;
 		}
 		return null;
 	}
 	
-	public void removeNode(Node node)
+	public void removeNode(DiagramNode node)
 	{
 		nodes.remove(node);
 	}
 	
-	public void addLinkage(Linkage linkage)
+	public void addLinkage(DiagramLinkage linkage)
 	{
 		int realId = getRealId(linkage.getId());
 		
@@ -75,18 +75,18 @@ class CellInventory
 		return linkages;
 	}
 	
-	public Linkage getLinkageById(int id)
+	public DiagramLinkage getLinkageById(int id)
 	{
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
-			Linkage linkage = (Linkage) iter.next();
+			DiagramLinkage linkage = (DiagramLinkage) iter.next();
 			if(linkage.getId() == id)
 				return linkage;
 		}
 		return null;
 	}
 	
-	public void removeLinkage(Linkage linkage)
+	public void removeLinkage(DiagramLinkage linkage)
 	{
 		linkages.remove(linkage);
 	}
@@ -104,7 +104,7 @@ class CellInventory
 	
 	private int getRealId(int id)
 	{
-		if(id == Node.INVALID_ID)
+		if(id == DiagramNode.INVALID_ID)
 		{
 			id = nextId++;
 		}

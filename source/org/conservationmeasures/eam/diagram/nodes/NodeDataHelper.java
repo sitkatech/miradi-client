@@ -28,7 +28,7 @@ public class NodeDataHelper
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return Node.INVALID_ID;
+			return DiagramNode.INVALID_ID;
 		return newNodeId.intValue();
 	}
 	
@@ -50,7 +50,7 @@ public class NodeDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			int id = ((Node) iter.next()).getId();
+			int id = ((DiagramNode) iter.next()).getId();
 			setNewId(id, id);
 		}
 	}

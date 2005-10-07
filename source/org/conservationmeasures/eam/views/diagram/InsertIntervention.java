@@ -5,14 +5,14 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 
 public class InsertIntervention extends InsertNode
 {
 	public int getTypeToInsert()
 	{
-		return Node.TYPE_INTERVENTION;
+		return DiagramNode.TYPE_INTERVENTION;
 	}
 
 	public String getInitialText()

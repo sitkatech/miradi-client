@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 public class LinkageData 
 {
-	public LinkageData(Linkage linkage) throws Exception
+	public LinkageData(DiagramLinkage linkage) throws Exception
 	{
 		id = linkage.getId();
 		fromNodeId = linkage.getFromNode().getId();

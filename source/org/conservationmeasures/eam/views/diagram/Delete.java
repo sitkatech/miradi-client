@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -49,26 +49,26 @@ public class Delete extends ProjectDoer
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
 			if(cell.isLinkage())
-				deleteLinkage((Linkage)cell);	
+				deleteLinkage((DiagramLinkage)cell);	
 		}
 		
 		for(int i=0; i < selectedRelatedCells.length; ++i)
 		{
 			EAMGraphCell cell = selectedRelatedCells[i];
 			if(cell.isNode())
-				deleteNode((Node)cell);
+				deleteNode((DiagramNode)cell);
 		}
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
-	private void deleteLinkage(Linkage linkageToDelete) throws CommandFailedException
+	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
 		int id = linkageToDelete.getId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
 		getProject().executeCommand(command);
 	}
 
-	private void deleteNode(Node nodeToDelete) throws CommandFailedException
+	private void deleteNode(DiagramNode nodeToDelete) throws CommandFailedException
 	{
 		int id = nodeToDelete.getId();
 

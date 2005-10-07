@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
@@ -34,7 +34,7 @@ public class NodeProperties extends ProjectDoer
 			return;
 		
 		EAMGraphCell[] selected = getProject().getOnlySelectedCells();
-		Node selectedNode = (Node)selected[0];
+		DiagramNode selectedNode = (DiagramNode)selected[0];
 		if(selectedNode == null)
 			return;
 		String title = EAM.text("Title|Node Properties");

@@ -13,9 +13,9 @@ import java.awt.Rectangle;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
-public class Node extends EAMGraphCell
+public class DiagramNode extends EAMGraphCell
 {
-	public Node(int nodeType)
+	public DiagramNode(int nodeType)
 	{
 		switch(nodeType)
 		{

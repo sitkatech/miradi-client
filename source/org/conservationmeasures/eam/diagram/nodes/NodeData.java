@@ -10,7 +10,7 @@ import java.awt.Point;
 
 public class NodeData 
 {
-	public NodeData(Node node) throws Exception
+	public NodeData(DiagramNode node) throws Exception
 	{
 		id = node.getId();
 		type = node.getNodeType();

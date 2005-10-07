@@ -41,16 +41,16 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertTarget() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		Command insertCommand = new CommandInsertNode(Node.TYPE_TARGET);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		Node insertedNode = (Node)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeById(id);
+		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
 	}
@@ -58,16 +58,16 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertFactor() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		Command insertCommand = new CommandInsertNode(Node.TYPE_FACTOR);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		Node insertedNode = (Node)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeById(id);
+		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a factor?", foundNode.isFactor());
 	}
@@ -75,16 +75,16 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertIntervention() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		Command insertCommand = new CommandInsertNode(Node.TYPE_INTERVENTION);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		Node insertedNode = (Node)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
 		int id = insertedNode.getId();
-		Node foundNode = model.getNodeById(id);
+		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());
 	}

@@ -11,18 +11,18 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestLinkage extends EAMTestCase
+public class TestDiagramLinkage extends EAMTestCase
 {
-	public TestLinkage(String name)
+	public TestDiagramLinkage(String name)
 	{
 		super(name);
 	}
 
 	public void testBasics()
 	{
-		Node factor = new Node(Node.TYPE_FACTOR);
-		Node target = new Node(Node.TYPE_TARGET);
-		Linkage linkage = new Linkage(factor, target);
+		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramLinkage linkage = new DiagramLinkage(factor, target);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
 
@@ -32,10 +32,10 @@ public class TestLinkage extends EAMTestCase
 	
 	public void testIds()
 	{
-		Node factor = new Node(Node.TYPE_FACTOR);
-		Node target = new Node(Node.TYPE_TARGET);
-		Linkage linkage = new Linkage(factor, target);
-		assertEquals(Node.INVALID_ID,linkage.getId());
+		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramLinkage linkage = new DiagramLinkage(factor, target);
+		assertEquals(DiagramNode.INVALID_ID,linkage.getId());
 		int id = 243;
 		linkage.setId(id);
 		assertEquals(id, linkage.getId());
@@ -46,12 +46,12 @@ public class TestLinkage extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		CommandInsertNode insertIntervention = new CommandInsertNode(Node.TYPE_INTERVENTION);
-		CommandInsertNode insertFactor = new CommandInsertNode(Node.TYPE_FACTOR);
+		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
+		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		insertIntervention.execute(project);
-		Node intervention = model.getNodeById(insertIntervention.getId());
+		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
-		Node factor = model.getNodeById(insertFactor.getId());
+		DiagramNode factor = model.getNodeById(insertFactor.getId());
 		int interventionId = intervention.getId();
 		int factorId = factor.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);

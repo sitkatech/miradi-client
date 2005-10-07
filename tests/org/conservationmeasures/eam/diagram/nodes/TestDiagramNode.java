@@ -10,21 +10,21 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.NodeTypeFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
-public class TestNode extends EAMTestCase
+public class TestDiagramNode extends EAMTestCase
 {
-	public TestNode(String name)
+	public TestDiagramNode(String name)
 	{
 		super(name);
 	}
 	
 	public void setUp() throws Exception
 	{
-		node = new Node(Node.TYPE_FACTOR);
+		node = new DiagramNode(DiagramNode.TYPE_FACTOR);
 		attributeMap = node.getAttributes();
 		super.setUp();
 	}
@@ -43,8 +43,8 @@ public class TestNode extends EAMTestCase
 	
 	public void testIds()
 	{
-		Node testNode = new Node(Node.TYPE_FACTOR);
-		assertEquals(Node.INVALID_ID,node.getId());
+		DiagramNode testNode = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		assertEquals(DiagramNode.INVALID_ID,node.getId());
 		int id = 23;
 		testNode.setId(id);
 		assertEquals(id, testNode.getId());
@@ -75,6 +75,6 @@ public class TestNode extends EAMTestCase
 	static final double TOLERANCE = 0.01;
 	static final String sampleText = "<rest&relaxation>";
 	
-	Node node;
+	DiagramNode node;
 	Map attributeMap;
 }

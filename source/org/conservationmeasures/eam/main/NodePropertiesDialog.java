@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiTextField;
 import org.martus.swing.UiVBox;
@@ -23,7 +23,7 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, Node nodeToEdit)
+	public NodePropertiesDialog(Frame parent, String title, DiagramNode nodeToEdit)
 			throws HeadlessException
 	{
 		super(parent, title);

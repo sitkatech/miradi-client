@@ -12,9 +12,9 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
-public class Linkage extends EAMGraphCell implements Edge
+public class DiagramLinkage extends EAMGraphCell implements Edge
 {
-	public Linkage(Node from, Node to)
+	public DiagramLinkage(DiagramNode from, DiagramNode to)
 	{
 		setSource(from.getPort());
 		setTarget(to.getPort());
@@ -32,13 +32,13 @@ public class Linkage extends EAMGraphCell implements Edge
 		return new ConnectionSet(this, fromPort, toPort);		
 	}
 
-	public Node getFromNode()
+	public DiagramNode getFromNode()
 	{
-		return (Node)fromPort.getParent();
+		return (DiagramNode)fromPort.getParent();
 	}
-	public Node getToNode()
+	public DiagramNode getToNode()
 	{
-		return (Node)toPort.getParent();
+		return (DiagramNode)toPort.getParent();
 	}
 	
 	private void fillConnectorAttributeMap(String label)

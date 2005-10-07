@@ -2,9 +2,9 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestLinkageData extends EAMTestCase
+public class TestDiagramLinkageData extends EAMTestCase
 {
-	public TestLinkageData(String name) 
+	public TestDiagramLinkageData(String name) 
 	{
 		super(name);
 	}
@@ -12,14 +12,14 @@ public class TestLinkageData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		int nodeAId = 1;
-		Node nodeA = new Node(Node.TYPE_FACTOR);
+		DiagramNode nodeA = new DiagramNode(DiagramNode.TYPE_FACTOR);
 		nodeA.setId(nodeAId);
 		
 		int nodeBId = 2;
-		Node nodeB = new Node(Node.TYPE_TARGET);
+		DiagramNode nodeB = new DiagramNode(DiagramNode.TYPE_TARGET);
 		nodeB.setId(nodeBId);
 		
-		Linkage linkage = new Linkage(nodeB, nodeA);
+		DiagramLinkage linkage = new DiagramLinkage(nodeB, nodeA);
 		int id = 1;
 		linkage.setId(id);
 		LinkageData linkageData = new LinkageData(linkage);

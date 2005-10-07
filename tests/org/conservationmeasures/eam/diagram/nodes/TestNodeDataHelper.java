@@ -22,15 +22,15 @@ public class TestNodeDataHelper extends EAMTestCase
 	
 	public void setUp() throws Exception 
 	{
-		Node node1 = new Node(Node.TYPE_TARGET);
+		DiagramNode node1 = new DiagramNode(DiagramNode.TYPE_TARGET);
 		node1.setId(originalNodeId1);
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
-		Node node2 = new Node(Node.TYPE_TARGET);
+		DiagramNode node2 = new DiagramNode(DiagramNode.TYPE_TARGET);
 		node2.setId(originalNodeId2);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
-		Node node3 = new Node(Node.TYPE_TARGET);
+		DiagramNode node3 = new DiagramNode(DiagramNode.TYPE_TARGET);
 		node3.setId(originalNodeId3);
 		
 		nodes = new Vector();
@@ -48,7 +48,7 @@ public class TestNodeDataHelper extends EAMTestCase
 		assertEquals(originalNodeId1, dataHelper.getNewId(originalNodeId1));
 		assertEquals(originalNodeId2, dataHelper.getNewId(originalNodeId2));
 		assertEquals(originalNodeId3, dataHelper.getNewId(originalNodeId3));
-		assertEquals(Node.INVALID_ID, dataHelper.getNewId(unknownNodeId));
+		assertEquals(DiagramNode.INVALID_ID, dataHelper.getNewId(unknownNodeId));
 	}
 	
 	public void testSetNewId()

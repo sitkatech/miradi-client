@@ -9,7 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -19,7 +19,7 @@ public class CommandDeleteNode extends Command
 	public CommandDeleteNode(int idToDelete)
 	{
 		id = idToDelete;
-		nodeType = Node.TYPE_INVALID;
+		nodeType = DiagramNode.TYPE_INVALID;
 	}
 
 	public CommandDeleteNode(DataInputStream dataIn) throws IOException

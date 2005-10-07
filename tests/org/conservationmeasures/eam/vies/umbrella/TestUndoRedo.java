@@ -5,7 +5,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -46,7 +46,7 @@ public class TestUndoRedo extends EAMTestCase
 		
 		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getNodeCount());
 		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
-		Node node = (Node)inserted.get(0);
+		DiagramNode node = (DiagramNode)inserted.get(0);
 		assertTrue(project.getDiagramModel().isNodeInProject(node));
 		assertEquals("Incorrect label?", target1Text, node.getText());
 		
@@ -56,7 +56,7 @@ public class TestUndoRedo extends EAMTestCase
 
 	private int insertTarget(Project project) throws CommandFailedException 
 	{
-		CommandInsertNode insert = new CommandInsertNode( Node.TYPE_TARGET);
+		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_TARGET);
 		project.executeCommand(insert);
 		int insertedId = insert.getId();
 		return insertedId;

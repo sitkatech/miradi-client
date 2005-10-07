@@ -19,7 +19,7 @@ public class EAMGraphCell extends DefaultGraphCell
 {
 	public EAMGraphCell()
 	{
-		id = Node.INVALID_ID;
+		id = DiagramNode.INVALID_ID;
 	}
 
 	public boolean isNode()

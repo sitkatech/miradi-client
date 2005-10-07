@@ -10,8 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -22,7 +22,7 @@ public class CommandLinkNodes extends Command
 	{
 		this.fromId = fromId;
 		this.toId = toId;
-		linkageId = Node.INVALID_ID;
+		linkageId = DiagramNode.INVALID_ID;
 	}
 	
 	public CommandLinkNodes(DataInputStream dataIn) throws IOException
@@ -65,7 +65,7 @@ public class CommandLinkNodes extends Command
 		DiagramModel model = target.getDiagramModel();
 		try
 		{
-			Linkage linkageToDelete = model.getLinkageById(getLinkageId());
+			DiagramLinkage linkageToDelete = model.getLinkageById(getLinkageId());
 			model.deleteLinkage(linkageToDelete);
 		}
 		catch (Exception e)

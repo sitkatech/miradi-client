@@ -10,9 +10,9 @@ import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -45,8 +45,8 @@ public class TestTransferableEamList extends EAMTestCase
 		int node1Id = 1;
 		String node1Text = "Target 1";
 		Point node1Location = new Point(1,2);
-		int node1Type = Node.TYPE_TARGET;
-		Node node1 = new Node(node1Type);
+		int node1Type = DiagramNode.TYPE_TARGET;
+		DiagramNode node1 = new DiagramNode(node1Type);
 		node1.setId(node1Id);
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
@@ -54,15 +54,15 @@ public class TestTransferableEamList extends EAMTestCase
 		int node2Id = 2;
 		String node2Text = "Factor 1";
 		Point node2Location = new Point(2,3);
-		int node2Type = Node.TYPE_FACTOR;
+		int node2Type = DiagramNode.TYPE_FACTOR;
 		
-		Node node2 = new Node(node2Type);
+		DiagramNode node2 = new DiagramNode(node2Type);
 		node2.setId(node2Id);
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);
 		
 		int linkage1Id = 3;
-		Linkage linkage1 = new Linkage(node2, node1);
+		DiagramLinkage linkage1 = new DiagramLinkage(node2, node1);
 		linkage1.setId(linkage1Id);
 		
 		EAMGraphCell dataCells[] = {node1, node2, linkage1};

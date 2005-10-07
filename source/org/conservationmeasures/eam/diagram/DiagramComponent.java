@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
@@ -100,14 +100,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
-	public Node getSelectedNode()
+	public DiagramNode getSelectedNode()
 	{
 		if (getSelectionCount() != 1)
 			return null;
 		EAMGraphCell selectedCell = (EAMGraphCell)getSelectionCell();
 		if(!selectedCell.isNode())
 			return null;
-		return (Node)selectedCell;
+		return (DiagramNode)selectedCell;
 	}
 	
 	private void installKeyBindings(Actions actions)

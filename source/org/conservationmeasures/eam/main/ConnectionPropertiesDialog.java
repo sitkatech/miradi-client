@@ -15,7 +15,7 @@ import javax.swing.Box;
 import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -59,7 +59,7 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 		Object[] all = DiagramModel.getAll(model);
 		for(int i=0; i < all.length; ++i)
 		{
-			if(all[i] instanceof Node)
+			if(all[i] instanceof DiagramNode)
 			{
 				comboBox.addItem(all[i]);
 			}
@@ -103,14 +103,14 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 		return result;
 	}
 	
-	public Node getFrom()
+	public DiagramNode getFrom()
 	{
-		return (Node)from.getSelectedItem();
+		return (DiagramNode)from.getSelectedItem();
 	}
 	
-	public Node getTo()
+	public DiagramNode getTo()
 	{
-		return (Node)to.getSelectedItem();
+		return (DiagramNode)to.getSelectedItem();
 	}
 	
 	MainWindow mainWindow;

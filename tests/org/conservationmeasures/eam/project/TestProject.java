@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -88,12 +88,12 @@ public class TestProject extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		Node node1 = model.createNode(Node.TYPE_TARGET);
-		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
-		Node node3 =  model.createNode(Node.TYPE_FACTOR);
+		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
 		
-		Linkage linkage1 = model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		Linkage linkage2 = model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
+		DiagramLinkage linkage1 = model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
+		DiagramLinkage linkage2 = model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -119,12 +119,12 @@ public class TestProject extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		Node node1 = model.createNode(Node.TYPE_TARGET);
-		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
-		Node node3 =  model.createNode(Node.TYPE_FACTOR);
+		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
 		
-		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
+		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
+		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -140,7 +140,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(4, model.getAllLinkages().size());
 		for(int i = 0; i < nodes.size(); ++i)
 		{
-			assertEquals(2, model.getLinkages((Node)nodes.get(i)).size());
+			assertEquals(2, model.getLinkages((DiagramNode)nodes.get(i)).size());
 		}
 		
 		//Test when a pasted item has linkages to a previously deleted node
@@ -155,12 +155,12 @@ public class TestProject extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		Node node1 = model.createNode(Node.TYPE_TARGET);
-		Node node2 =  model.createNode(Node.TYPE_INTERVENTION);
-		Node node3 =  model.createNode(Node.TYPE_FACTOR);
+		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
 		
-		model.createLinkage(Node.INVALID_ID, node1.getId(), node2.getId());
-		model.createLinkage(Node.INVALID_ID, node1.getId(), node3.getId());
+		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
+		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);

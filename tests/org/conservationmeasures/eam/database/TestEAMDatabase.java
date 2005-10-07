@@ -12,7 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.database.EAMDatabase;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 
@@ -33,7 +33,7 @@ public class TestEAMDatabase extends EAMTestCase
 		
 		try
 		{
-			storage.appendCommand(new CommandInsertNode(Node.TYPE_TARGET));
+			storage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
 			fail("Should have thrown since no file was loaded");
 		}
 		catch(IOException ignoreExpected)
@@ -47,8 +47,8 @@ public class TestEAMDatabase extends EAMTestCase
 		Vector nothingYet = storage.load();
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
-		Command createTarget = new CommandInsertNode(Node.TYPE_TARGET);
-		Command createFactor = new CommandInsertNode(Node.TYPE_FACTOR);
+		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		storage.appendCommand(createTarget);
 		storage.appendCommand(createFactor);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());

@@ -25,8 +25,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
 import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -172,7 +172,7 @@ public class TableView extends UmbrellaView
 			Vector nodes = diagramModel.getAllNodes();
 			try 
 			{
-				Node node = (Node)nodes.get(rowIndex);
+				DiagramNode node = (DiagramNode)nodes.get(rowIndex);
 				switch (columnIndex)
 				{
 				case TABLE_COLUMN_NAME:
@@ -198,7 +198,7 @@ public class TableView extends UmbrellaView
 		{
 			if(cell.isLinkage())
 				return EAM.text("Linkage");
-			Node node = (Node)cell;
+			DiagramNode node = (DiagramNode)cell;
 			if(node.isTarget())
 				return EAM.text("Target");
 			if(node.isFactor())
@@ -282,7 +282,7 @@ public class TableView extends UmbrellaView
 			Vector linkages = diagramModel.getAllLinkages();
 			try 
 			{
-				Linkage linkage = (Linkage)linkages.get(rowIndex);
+				DiagramLinkage linkage = (DiagramLinkage)linkages.get(rowIndex);
 				
 				switch (columnIndex)
 				{

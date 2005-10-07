@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.EAMDatabase;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -247,7 +247,7 @@ public class Project
 			
 			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
 			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
-			if(newFromId == Node.INVALID_ID || newToId == Node.INVALID_ID)
+			if(newFromId == DiagramNode.INVALID_ID || newToId == DiagramNode.INVALID_ID)
 			{
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
 				continue;
@@ -293,7 +293,7 @@ public class Project
 	public int deleteNode(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Node nodeToDelete = model.getNodeById(idToDelete);
+		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
 		int nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 		return nodeType; 
@@ -302,7 +302,7 @@ public class Project
 	public int insertNodeAtId(int typeToInsert, int requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Node node = model.createNodeAtId(typeToInsert, requestedId);
+		DiagramNode node = model.createNodeAtId(typeToInsert, requestedId);
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
@@ -310,14 +310,14 @@ public class Project
 	public void deleteLinkage(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Linkage linkageToDelete = model.getLinkageById(idToDelete);
+		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 		model.deleteLinkage(linkageToDelete);
 	}
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		Linkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
+		DiagramLinkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
 		return insertedLinkageId;
 	}
@@ -397,7 +397,7 @@ public class Project
 			}
 			else if(cell.isNode())
 			{
-				Set linkages = model.getLinkages((Node)cell);
+				Set linkages = model.getLinkages((DiagramNode)cell);
 				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 				{
 					EAMGraphCell link = (EAMGraphCell) iter.next();

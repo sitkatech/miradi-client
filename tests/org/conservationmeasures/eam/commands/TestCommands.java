@@ -13,8 +13,8 @@ import java.io.DataOutputStream;
 import java.util.Arrays;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -34,7 +34,7 @@ public class TestCommands extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		Command consumeCellIdZero = new CommandInsertNode(Node.TYPE_TARGET);
+		Command consumeCellIdZero = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
 	}
@@ -94,7 +94,7 @@ public class TestCommands extends EAMTestCase
 		
 		for(int i=0; i < ids.length; ++i)
 		{
-			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramNode node = project.getDiagramModel().getNodeById(ids[i]);
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
@@ -107,7 +107,7 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		for(int i=0; i < ids.length; ++i)
 		{
-			Node node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramNode node = project.getDiagramModel().getNodeById(ids[i]);
 			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
 		}
 	}
@@ -139,13 +139,13 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertTarget() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_TARGET);
-		assertEquals("type not right?", Node.TYPE_TARGET, cmd.getNodeType());
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		assertEquals("type not right?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
 		assertEquals("already have an id?", -1, cmd.getId());
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a target?", inserted.isTarget());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -158,12 +158,12 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_FACTOR);
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a factor?", inserted.isFactor());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -175,12 +175,12 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(Node.TYPE_INTERVENTION);
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an intervention?", inserted.isIntervention());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
@@ -230,10 +230,10 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		int linkageId = cmd.getLinkageId();
 
-		Linkage inserted = model.getLinkageById(linkageId);
-		Node fromNode = inserted.getFromNode();
+		DiagramLinkage inserted = model.getLinkageById(linkageId);
+		DiagramNode fromNode = inserted.getFromNode();
 		assertEquals("wrong source?", from, fromNode.getId());
-		Node toNode = inserted.getToNode();
+		DiagramNode toNode = inserted.getToNode();
 		assertEquals("wrong dest?", to, toNode.getId());
 
 		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
@@ -254,8 +254,8 @@ public class TestCommands extends EAMTestCase
 
 		int from = insertIntervention();
 		int to = insertFactor();
-		Node fromNode = model.getNodeById(from);
-		Node toNode = model.getNodeById(to);
+		DiagramNode fromNode = model.getNodeById(from);
+		DiagramNode toNode = model.getNodeById(to);
 
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
 		project.executeCommand(link);
@@ -280,17 +280,17 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = insertTarget();
 		CommandDeleteNode cmd = new CommandDeleteNode(id);
-		assertEquals("type not defaulting properly?", Node.TYPE_INVALID, cmd.getNodeType());
+		assertEquals("type not defaulting properly?", DiagramNode.TYPE_INVALID, cmd.getNodeType());
 		project.executeCommand(cmd);
 		
-		assertEquals("type not set by execute?", Node.TYPE_TARGET, cmd.getNodeType());
+		assertEquals("type not set by execute?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
 		
 		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", Node.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -375,7 +375,7 @@ public class TestCommands extends EAMTestCase
 		CommandRedo redo = new CommandRedo();
 		project.executeCommand(redo);
 		
-		Node inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 		CommandRedo loaded = (CommandRedo)saveAndReload(redo);
@@ -418,19 +418,19 @@ public class TestCommands extends EAMTestCase
 
 	private int insertTarget() throws Exception
 	{
-		int type = Node.TYPE_TARGET;
+		int type = DiagramNode.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
 	private int insertFactor() throws Exception
 	{
-		int type = Node.TYPE_FACTOR;
+		int type = DiagramNode.TYPE_FACTOR;
 		return insertNode(type);
 	}
 
 	private int insertIntervention() throws Exception
 	{
-		int type = Node.TYPE_INTERVENTION;
+		int type = DiagramNode.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 

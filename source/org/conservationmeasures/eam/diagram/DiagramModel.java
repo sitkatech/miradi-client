@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.Linkage;
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -32,14 +32,14 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.clear();
 	}
 
-	public Node createNode(int nodeType) throws Exception
+	public DiagramNode createNode(int nodeType) throws Exception
 	{
-		return createNodeAtId(nodeType, Node.INVALID_ID);
+		return createNodeAtId(nodeType, DiagramNode.INVALID_ID);
 	}
 	
-	public Node createNodeAtId(int nodeType, int id) throws Exception
+	public DiagramNode createNodeAtId(int nodeType, int id) throws Exception
 	{
-		Node node = new Node(nodeType);
+		DiagramNode node = new DiagramNode(nodeType);
 		node.setId(id);
 		Object[] nodes = new Object[] {node};
 		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
@@ -72,7 +72,7 @@ public class DiagramModel extends DefaultGraphModel
         }                
     }
 	
-    public void deleteNode(Node nodeToDelete) throws Exception
+    public void deleteNode(DiagramNode nodeToDelete) throws Exception
 	{
 		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 
@@ -81,12 +81,12 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.removeNode(nodeToDelete);
 	}
 	
-	public Linkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
+	public DiagramLinkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
 	{
-		Node fromNode = getNodeById(linkFromId);
-		Node toNode = getNodeById(linkToId);
+		DiagramNode fromNode = getNodeById(linkFromId);
+		DiagramNode toNode = getNodeById(linkToId);
 
-		Linkage linkage = new Linkage(fromNode, toNode);
+		DiagramLinkage linkage = new DiagramLinkage(fromNode, toNode);
 		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = linkage.getNestedAttributeMap();
@@ -98,7 +98,7 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 	
-	public void deleteLinkage(Linkage linkageToDelete) throws Exception
+	public void deleteLinkage(DiagramLinkage linkageToDelete) throws Exception
 	{
 		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 		Object[] linkages = new Object[]{linkageToDelete};
@@ -106,14 +106,14 @@ public class DiagramModel extends DefaultGraphModel
 		cellInventory.removeLinkage(linkageToDelete);
 	}
 	
-	public boolean hasLinkage(Node fromNode, Node toNode)
+	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode)
 	{
 		Vector allLinkages = cellInventory.getAllLinkages();
 		for(int i=0; i < allLinkages.size(); ++i)
 		{
-			Linkage linkage = (Linkage)allLinkages.get(i);
-			Node thisFromNode = linkage.getFromNode();
-			Node thisToNode = linkage.getToNode();
+			DiagramLinkage linkage = (DiagramLinkage)allLinkages.get(i);
+			DiagramNode thisFromNode = linkage.getFromNode();
+			DiagramNode thisToNode = linkage.getToNode();
 			if(thisFromNode.equals(fromNode) && thisToNode.equals(toNode))
 				return true;
 			
@@ -134,7 +134,7 @@ public class DiagramModel extends DefaultGraphModel
 		return getAllLinkages().size();
 	}
 
-	public Set getLinkages(Node node)
+	public Set getLinkages(DiagramNode node)
 	{
 		return getEdges(this, new Object[] {node});
 	}
@@ -145,28 +145,28 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
-	public Node getNodeById(int id) throws Exception
+	public DiagramNode getNodeById(int id) throws Exception
 	{
-		Node node = cellInventory.getNodeById(id);
+		DiagramNode node = cellInventory.getNodeById(id);
 		if(node == null)
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
 	}
 
-	public Linkage getLinkageById(int id) throws Exception
+	public DiagramLinkage getLinkageById(int id) throws Exception
 	{
-		Linkage linkage = cellInventory.getLinkageById(id);
+		DiagramLinkage linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
 			throw new Exception("Linkage doesn't exist, id: " + id);
 		return linkage;
 	}
 	
-	public boolean isNodeInProject(Node node)
+	public boolean isNodeInProject(DiagramNode node)
 	{
 		return (cellInventory.getNodeById(node.getId()) != null);
 	}
 
-	public boolean isLinkageInProject(Linkage linkage)
+	public boolean isLinkageInProject(DiagramLinkage linkage)
 	{
 		return (cellInventory.getLinkageById(linkage.getId()) != null);
 	}

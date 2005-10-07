@@ -9,7 +9,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.nodes.Node;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -20,7 +20,7 @@ public class CommandInsertNode extends Command
 	public CommandInsertNode(int nodeType)
 	{
 		type = nodeType;
-		insertedId = Node.INVALID_ID;
+		insertedId = DiagramNode.INVALID_ID;
 	}
 	
 	public CommandInsertNode(DataInputStream dataIn) throws IOException

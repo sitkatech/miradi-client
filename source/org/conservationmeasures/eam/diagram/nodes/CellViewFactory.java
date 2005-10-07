@@ -12,7 +12,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 {
 	protected VertexView createVertexView(Object view)
 	{
-		Node node = (Node)view;
+		DiagramNode node = (DiagramNode)view;
 		if(node.isTarget())
 		{
 			return new EllipseNodeView(node);
