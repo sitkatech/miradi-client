@@ -54,6 +54,8 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -81,6 +83,9 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 
 	public void paint(Graphics g1)
 	{
+		if(!isVisible)
+			return;
+		
 		Rectangle rect = new Rectangle(borderWidth - 1, borderWidth - 1, 
 				getSize().width - borderWidth, getSize().height - borderWidth);
 
@@ -133,6 +138,8 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		selected = sel;
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
+		
+		isVisible = ((DiagramComponent)graphToUse).isNodeVisible((DiagramNode)view.getCell());
 		return this;
 	}
 	
@@ -175,4 +182,5 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	Color gradientColor;
 	boolean selected;
 	boolean preview;
+	boolean isVisible;
 }

@@ -100,6 +100,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
+	public boolean isNodeVisible(DiagramNode node)
+	{
+		return true;
+	}
+	
 	public DiagramNode getSelectedNode()
 	{
 		if (getSelectionCount() != 1)

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.jgraph.graph.DefaultCellViewFactory;
+import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
 
 public class CellViewFactory extends DefaultCellViewFactory
@@ -35,5 +36,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		}
 		
 		throw new RuntimeException("Unknown node type");
+	}
+
+	protected EdgeView createEdgeView(Object edge)
+	{
+		return new LinkageView(edge);
 	}
 }

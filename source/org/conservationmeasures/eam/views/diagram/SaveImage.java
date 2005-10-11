@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
@@ -25,7 +26,10 @@ public class SaveImage extends ViewDoer
 {
 	public boolean isAvailable() 
 	{
-		return getView().getImage() != null;
+		Project project = getMainWindow().getProject();
+		if(!project.isOpen())
+			return false;
+		return project.getDiagramModel().getNodeCount() > 0;
 	}
 
 	public void doIt() throws CommandFailedException 
