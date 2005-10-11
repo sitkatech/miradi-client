@@ -26,5 +26,15 @@ public abstract class NodeType
 	{
 		return false;
 	}
+	
+	public boolean isDirectThreat()
+	{
+		return false;
+	}
+	
+	public boolean isStress()
+	{
+		return false;
+	}
 
 }
