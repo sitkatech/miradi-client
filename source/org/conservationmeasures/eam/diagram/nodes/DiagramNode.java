@@ -25,6 +25,12 @@ public class DiagramNode extends EAMGraphCell
 			case TYPE_INDIRECT_FACTOR:
 				type = new NodeTypeIndirectFactor();
 				break;
+			case TYPE_DIRECT_THREAT:
+				type = new NodeTypeDirectThreat();
+				break;
+			case TYPE_STRESS:
+				type = new NodeTypeStress();
+				break;
 			case TYPE_INTERVENTION:
 				type = new NodeTypeIntervention();
 				break;
@@ -54,6 +60,10 @@ public class DiagramNode extends EAMGraphCell
 			return TYPE_INDIRECT_FACTOR;
 		if(isIntervention())
 			return TYPE_INTERVENTION;
+		if(isDirectThreat())
+			return TYPE_DIRECT_THREAT;
+		if(isStress())
+			return TYPE_STRESS;
 		return TYPE_INVALID;
 	}
 
@@ -70,6 +80,16 @@ public class DiagramNode extends EAMGraphCell
 	public boolean isIntervention()
 	{
 		return(type.isIntervention());
+	}
+	
+	public boolean isDirectThreat()
+	{
+		return(type.isDirectThreat());
+	}
+	
+	public boolean isStress()
+	{
+		return(type.isStress());
 	}
 	
 	public DefaultPort getPort()
@@ -105,6 +125,8 @@ public class DiagramNode extends EAMGraphCell
 	public static final int TYPE_TARGET = 1;
 	public static final int TYPE_INDIRECT_FACTOR = 2;
 	public static final int TYPE_INTERVENTION = 3;
+	public static final int TYPE_DIRECT_THREAT = 4;
+	public static final int TYPE_STRESS = 5;
 
 	NodeType type;
 	DefaultPort port;
