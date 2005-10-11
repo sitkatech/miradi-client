@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -37,7 +37,7 @@ public class TestDiagramNode extends EAMTestCase
 	public void testText() throws Exception
 	{
 		node.setText(sampleText);
-		assertTrue("Isn't a factor?", node.isFactor());
+		assertTrue("Isn't a indirect factor?", node.isIndirectFactor());
 		assertEquals(sampleText, GraphConstants.getValue(attributeMap));
 	}
 	
@@ -52,7 +52,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testColors()
 	{
-		NodeTypeFactor factorType = new NodeTypeFactor();
+		NodeTypeIndirectFactor factorType = new NodeTypeIndirectFactor();
 		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), factorType.getColor());
 	}
 	

@@ -164,7 +164,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		int insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a factor?", inserted.isFactor());
+		assertTrue("didn't insert an indirect factor?", inserted.isIndirectFactor());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);

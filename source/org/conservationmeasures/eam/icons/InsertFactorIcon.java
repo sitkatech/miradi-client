@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
@@ -20,6 +20,6 @@ public class InsertFactorIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return new NodeTypeFactor().getColor();
+		return new NodeTypeIndirectFactor().getColor();
 	}
 }

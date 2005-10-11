@@ -17,7 +17,7 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isFactor()
+	public boolean isIndirectFactor()
 	{
 		return false;
 	}

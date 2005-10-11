@@ -69,7 +69,7 @@ public class TestInsertNode extends EAMTestCase
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not a factor?", foundNode.isFactor());
+		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
 	}
 
 	public void testInsertIntervention() throws Exception

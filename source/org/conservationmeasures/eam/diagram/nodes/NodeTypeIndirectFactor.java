@@ -9,9 +9,9 @@ import java.awt.Color;
 
 
 
-public class NodeTypeFactor extends NodeType
+public class NodeTypeIndirectFactor extends NodeType
 {
-	public boolean isFactor()
+	public boolean isIndirectFactor()
 	{
 		return true;
 	}

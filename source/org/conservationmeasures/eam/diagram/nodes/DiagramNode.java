@@ -23,7 +23,7 @@ public class DiagramNode extends EAMGraphCell
 				type = new NodeTypeTarget();
 				break;
 			case TYPE_INDIRECT_FACTOR:
-				type = new NodeTypeFactor();
+				type = new NodeTypeIndirectFactor();
 				break;
 			case TYPE_INTERVENTION:
 				type = new NodeTypeIntervention();
@@ -50,7 +50,7 @@ public class DiagramNode extends EAMGraphCell
 	{
 		if(isTarget())
 			return TYPE_TARGET;
-		if(isFactor())
+		if(isIndirectFactor())
 			return TYPE_INDIRECT_FACTOR;
 		if(isIntervention())
 			return TYPE_INTERVENTION;
@@ -62,9 +62,9 @@ public class DiagramNode extends EAMGraphCell
 		return(type.isTarget());
 	}
 	
-	public boolean isFactor()
+	public boolean isIndirectFactor()
 	{
-		return(type.isFactor());
+		return(type.isIndirectFactor());
 	}
 	
 	public boolean isIntervention()

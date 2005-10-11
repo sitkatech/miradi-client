@@ -201,8 +201,8 @@ public class TableView extends UmbrellaView
 			DiagramNode node = (DiagramNode)cell;
 			if(node.isTarget())
 				return EAM.text("Target");
-			if(node.isFactor())
-				return EAM.text("Factor");
+			if(node.isIndirectFactor())
+				return EAM.text("Indirect Factor");
 			if(node.isIntervention())
 				return EAM.text("Intervention");
 			return EAM.text("Unknown Type");
