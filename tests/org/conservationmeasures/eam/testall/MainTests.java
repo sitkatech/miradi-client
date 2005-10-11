@@ -22,7 +22,10 @@ import org.conservationmeasures.eam.diagram.nodes.TestDiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramLinkageData;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNodeData;
+import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeTarget;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeText;
+import org.conservationmeasures.eam.diagram.nodes.TestTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
@@ -84,6 +87,10 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramLinkageData.class));
 		suite.addTest(new TestSuite(TestDiagramNode.class));
 		suite.addTest(new TestSuite(TestDiagramNodeData.class));
+		suite.addTest(new TestSuite(TestNodeTypeIndirectFactor.class));
+		suite.addTest(new TestSuite(TestNodeTypeTarget.class));
+		suite.addTest(new TestSuite(TestTypeIntervention.class));
+		
 		suite.addTest(new TestSuite(TestSetNodeText.class));
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
 		
