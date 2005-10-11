@@ -24,7 +24,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		node = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		node = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		attributeMap = node.getAttributes();
 		super.setUp();
 	}
@@ -43,7 +43,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testIds()
 	{
-		DiagramNode testNode = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode testNode = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertEquals(DiagramNode.INVALID_ID,node.getId());
 		int id = 23;
 		testNode.setId(id);

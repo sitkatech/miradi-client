@@ -22,7 +22,7 @@ public class DiagramNode extends EAMGraphCell
 			case TYPE_TARGET:
 				type = new NodeTypeTarget();
 				break;
-			case TYPE_FACTOR:
+			case TYPE_INDIRECT_FACTOR:
 				type = new NodeTypeFactor();
 				break;
 			case TYPE_INTERVENTION:
@@ -51,7 +51,7 @@ public class DiagramNode extends EAMGraphCell
 		if(isTarget())
 			return TYPE_TARGET;
 		if(isFactor())
-			return TYPE_FACTOR;
+			return TYPE_INDIRECT_FACTOR;
 		if(isIntervention())
 			return TYPE_INTERVENTION;
 		return TYPE_INVALID;
@@ -103,7 +103,7 @@ public class DiagramNode extends EAMGraphCell
 	
 	public static final int TYPE_INVALID = -1;
 	public static final int TYPE_TARGET = 1;
-	public static final int TYPE_FACTOR = 2;
+	public static final int TYPE_INDIRECT_FACTOR = 2;
 	public static final int TYPE_INTERVENTION = 3;
 
 	NodeType type;

@@ -12,7 +12,7 @@ public class InsertFactor extends InsertNode
 {
 	public int getTypeToInsert()
 	{
-		return DiagramNode.TYPE_FACTOR;
+		return DiagramNode.TYPE_INDIRECT_FACTOR;
 	}
 
 	public String getInitialText()

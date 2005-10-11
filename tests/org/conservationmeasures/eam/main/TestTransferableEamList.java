@@ -54,7 +54,7 @@ public class TestTransferableEamList extends EAMTestCase
 		int node2Id = 2;
 		String node2Text = "Factor 1";
 		Point node2Location = new Point(2,3);
-		int node2Type = DiagramNode.TYPE_FACTOR;
+		int node2Type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		
 		DiagramNode node2 = new DiagramNode(node2Type);
 		node2.setId(node2Id);

@@ -23,7 +23,7 @@ public class TestCommandLinkNodes extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertFactor.execute(project);
 		int factorId = insertFactor.getId();
 		DiagramNode factor = model.getNodeById(factorId);

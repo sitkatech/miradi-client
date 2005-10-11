@@ -158,7 +158,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertEquals("already have an id?", -1, cmd.getId());
 		
 		project.executeCommand(cmd);
@@ -424,7 +424,7 @@ public class TestCommands extends EAMTestCase
 	
 	private int insertFactor() throws Exception
 	{
-		int type = DiagramNode.TYPE_FACTOR;
+		int type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		return insertNode(type);
 	}
 

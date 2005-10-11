@@ -12,7 +12,7 @@ public class TestDiagramLinkageData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		int nodeAId = 1;
-		DiagramNode nodeA = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode nodeA = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		nodeA.setId(nodeAId);
 		
 		int nodeBId = 2;

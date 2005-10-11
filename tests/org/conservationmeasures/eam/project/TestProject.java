@@ -90,7 +90,7 @@ public class TestProject extends EAMTestCase
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
 		DiagramLinkage linkage1 = model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
 		DiagramLinkage linkage2 = model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());
@@ -121,7 +121,7 @@ public class TestProject extends EAMTestCase
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
 		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
 		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());
@@ -157,7 +157,7 @@ public class TestProject extends EAMTestCase
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
 		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
 		model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node3.getId());

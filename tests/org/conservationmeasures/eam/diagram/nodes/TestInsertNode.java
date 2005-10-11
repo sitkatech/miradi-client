@@ -58,7 +58,7 @@ public class TestInsertNode extends EAMTestCase
 	public void testInsertFactor() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);

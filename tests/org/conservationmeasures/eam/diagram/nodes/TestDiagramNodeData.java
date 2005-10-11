@@ -19,7 +19,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		int nodeAType = DiagramNode.TYPE_FACTOR;
+		int nodeAType = DiagramNode.TYPE_INDIRECT_FACTOR;
 		DiagramNode nodeA = new DiagramNode(nodeAType);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);

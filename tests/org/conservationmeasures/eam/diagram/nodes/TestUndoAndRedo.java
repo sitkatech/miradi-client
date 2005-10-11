@@ -30,7 +30,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 		
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		project.executeCommand(insertFactor);
 		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
 		project.executeCommand(insertIntervention);

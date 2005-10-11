@@ -22,7 +22,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void testIsNode() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		DiagramNode factor = model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage link = model.createLinkage(DiagramNode.INVALID_ID, factor.getId(), target.getId());
 		assertTrue("factor isn't a node?", factor.isNode());
@@ -33,7 +33,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void testCounts()throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		DiagramNode factor = model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = model.createNode(DiagramNode.TYPE_TARGET);
 		model.createLinkage(DiagramNode.INVALID_ID, factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
@@ -43,9 +43,9 @@ public class TestDiagramModel extends EAMTestCase
 	public void testHasLinkage() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		DiagramNode factor = model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		model.deleteNode(factor);
-		DiagramNode newFactor = model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode newFactor = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = model.createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
 		model.createLinkage(DiagramNode.INVALID_ID, newFactor.getId(), target.getId());
@@ -56,8 +56,8 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetLinkages() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		DiagramNode factor1 = model.createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode factor2 = model.createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor1 = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode factor2 = model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage1 = model.createLinkage(DiagramNode.INVALID_ID, factor1.getId(), target.getId());
 		DiagramLinkage linkage2 = model.createLinkage(DiagramNode.INVALID_ID, factor2.getId(), target.getId());
@@ -71,7 +71,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void testUpdatesNextId() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		model.createNodeAtId(DiagramNode.TYPE_FACTOR, 125);
+		model.createNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, 125);
 		DiagramNode target = model.createNodeAtId(DiagramNode.TYPE_TARGET, -1);
 		assertEquals("didn't use next available id?", 126, target.getId());
 	}

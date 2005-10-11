@@ -20,7 +20,7 @@ public class TestDiagramLinkage extends EAMTestCase
 
 	public void testBasics()
 	{
-		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage = new DiagramLinkage(factor, target);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
@@ -32,7 +32,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testIds()
 	{
-		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage = new DiagramLinkage(factor, target);
 		assertEquals(DiagramNode.INVALID_ID,linkage.getId());
@@ -47,7 +47,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertIntervention.execute(project);
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);

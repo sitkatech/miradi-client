@@ -48,7 +48,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
 		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
-		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		storage.appendCommand(createTarget);
 		storage.appendCommand(createFactor);
 		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
