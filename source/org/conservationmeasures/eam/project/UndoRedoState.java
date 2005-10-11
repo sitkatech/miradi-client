@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.database.EAMDatabase;
+import org.conservationmeasures.eam.database.ProjectServer;
 
 public class UndoRedoState
 {
-	public UndoRedoState(EAMDatabase storageToUse)
+	public UndoRedoState(ProjectServer storageToUse)
 	{
 		storage = storageToUse;
 		nonUndoneCommandIndexes = new Vector();
@@ -61,7 +61,7 @@ public class UndoRedoState
 		}
 	}
 
-	EAMDatabase storage;
+	ProjectServer storage;
 	Vector nonUndoneCommandIndexes;
 	Vector redoableCommandIndexes;
 }

@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.util.DirectoryUtils;
 
-public class EAMDatabase
+public class ProjectServer
 {
-	public EAMDatabase() throws IOException
+	public ProjectServer() throws IOException
 	{
 		commands = new Vector();
 		db = new DatabaseWrapper();

@@ -11,7 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.database.EAMDatabase;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -27,9 +27,9 @@ public class TestEAMDatabase extends EAMTestCase
 	{
 		File tempDirectory = createTempDirectory();
 
-		EAMDatabase storage = new EAMDatabase();
+		ProjectServer storage = new ProjectServer();
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
-		assertFalse("already has a file?", EAMDatabase.doesProjectExist(tempDirectory));
+		assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
 		
 		try
 		{
@@ -41,7 +41,7 @@ public class TestEAMDatabase extends EAMTestCase
 		}
 
 		storage.open(tempDirectory);
-		assertTrue("no file?", EAMDatabase.doesProjectExist(tempDirectory));
+		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
 		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
 		
 		Vector nothingYet = storage.load();

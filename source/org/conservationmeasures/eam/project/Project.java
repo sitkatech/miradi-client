@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
-import org.conservationmeasures.eam.database.EAMDatabase;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -51,7 +51,7 @@ public class Project
 {
 	public Project() throws IOException
 	{
-		database = new EAMDatabase();
+		database = new ProjectServer();
 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
@@ -430,12 +430,12 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	protected EAMDatabase getDatabase()
+	protected ProjectServer getDatabase()
 	{
 		return database;
 	}
 
-	EAMDatabase database;
+	ProjectServer database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;
 	GraphSelectionModel selectionModel;
