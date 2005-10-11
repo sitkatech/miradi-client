@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 
-public class TestEAMDatabase extends EAMTestCase
+public class TestProjectServer extends EAMTestCase
 {
-	public TestEAMDatabase(String name)
+	public TestProjectServer(String name)
 	{
 		super(name);
 	}
