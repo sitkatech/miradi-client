@@ -203,6 +203,10 @@ public class TableView extends UmbrellaView
 				return EAM.text("Target");
 			if(node.isIndirectFactor())
 				return EAM.text("Indirect Factor");
+			if(node.isDirectThreat())
+				return EAM.text("Direct Threat");
+			if(node.isStress())
+				return EAM.text("Stress");
 			if(node.isIntervention())
 				return EAM.text("Intervention");
 			return EAM.text("Unknown Type");

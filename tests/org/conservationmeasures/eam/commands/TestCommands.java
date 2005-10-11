@@ -156,7 +156,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoInsertNode(cmd);
 	}
 
-	public void testCommandInsertFactor() throws Exception
+	public void testCommandInsertIndirectFactor() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertEquals("already have an id?", -1, cmd.getId());
@@ -165,6 +165,40 @@ public class TestCommands extends EAMTestCase
 		int insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an indirect factor?", inserted.isIndirectFactor());
+
+		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
+		assertNotNull(loaded);
+		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
+		
+		verifyUndoInsertNode(cmd);
+	}
+
+	public void testCommandInsertDirectThreat() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
+		assertEquals("already have an id?", -1, cmd.getId());
+		
+		project.executeCommand(cmd);
+		int insertedId = cmd.getId();
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
+		assertTrue("didn't insert a direct threat?", inserted.isDirectThreat());
+
+		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
+		assertNotNull(loaded);
+		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
+		
+		verifyUndoInsertNode(cmd);
+	}
+
+	public void testCommandInsertStress() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_STRESS);
+		assertEquals("already have an id?", -1, cmd.getId());
+		
+		project.executeCommand(cmd);
+		int insertedId = cmd.getId();
+		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
+		assertTrue("didn't insert a Stress?", inserted.isStress());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);
