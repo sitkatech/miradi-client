@@ -5,25 +5,25 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertFactorIcon;
+import org.conservationmeasures.eam.icons.InsertStressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertFactor extends LocationAction
+public class ActionInsertStress extends LocationAction
 {
-	public ActionInsertFactor(MainWindow mainWindow)
+	public ActionInsertStress(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertFactorIcon());
+		super(mainWindow, getLabel(), new InsertStressIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Factor");
+		return EAM.text("Action|Insert|Stress");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Factor node");
+		return EAM.text("TT|Insert a Stress node");
 	}
 
 }

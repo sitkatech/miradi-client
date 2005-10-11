@@ -3,23 +3,26 @@
  * 
  * This file is confidential and proprietary
  */
+
 package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class InsertFactorIcon extends EamIcon
+public class InsertDirectThreatIcon extends EamIcon 
 {
-	MultilineNodeRenderer getRenderer()
+
+	MultilineNodeRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
-	
-	Color getIconColor()
+
+	Color getIconColor() 
 	{
-		return new NodeTypeIndirectFactor().getColor();
+		return new NodeTypeDirectThreat().getColor();
 	}
+
 }

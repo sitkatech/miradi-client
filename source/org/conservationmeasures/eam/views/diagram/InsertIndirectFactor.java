@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 
-public class InsertFactor extends InsertNode
+public class InsertIndirectFactor extends InsertNode
 {
 	public int getTypeToInsert()
 	{
@@ -17,7 +17,7 @@ public class InsertFactor extends InsertNode
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Factor");
+		return EAM.text("Label|New Indirect Factor");
 	}
 
 }

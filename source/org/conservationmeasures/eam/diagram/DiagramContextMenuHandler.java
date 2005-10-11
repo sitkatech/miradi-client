@@ -15,9 +15,11 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertFactor;
+import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
@@ -63,7 +65,9 @@ public class DiagramContextMenuHandler
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
 
 		insertMenu.add(getConfiguredAction(ActionInsertTarget.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertFactor.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertDirectThreat.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertIndirectFactor.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertStress.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertConnection.class));
