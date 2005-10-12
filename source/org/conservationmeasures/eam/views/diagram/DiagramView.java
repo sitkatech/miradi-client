@@ -15,15 +15,16 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionNodeProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionViewLayer;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -87,6 +88,7 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionNodeProperties.class, new NodeProperties());
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
+		addDoerToMap(ActionViewLayer.class, new ViewLayer());
 	}
 	
 	DiagramComponent diagram;

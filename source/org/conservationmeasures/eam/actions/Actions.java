@@ -44,6 +44,7 @@ public class Actions
 		registerAction(new ActionViewDiagram(mainWindow));
 		registerAction(new ActionViewInterview(mainWindow));
 		registerAction(new ActionViewTable(mainWindow));
+		registerAction(new ActionViewLayer(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
