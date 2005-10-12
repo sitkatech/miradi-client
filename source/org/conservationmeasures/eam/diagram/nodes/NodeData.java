@@ -7,49 +7,44 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Point;
+import java.util.HashMap;
 
 public class NodeData 
 {
 	public NodeData(DiagramNode node) throws Exception
 	{
-		id = node.getId();
-		type = node.getNodeType();
-		text = node.getText();
-		location = node.getLocation();
+		data = new HashMap();
+		data.put(ID, new Integer(node.getId()));
+		data.put(TYPE, new Integer(node.getNodeType()));
+		data.put(TEXT, node.getText());
+		data.put(LOCATION, node.getLocation());
 	}
 	
 	public int getId()
 	{
-		return id;
+		return ((Integer)data.get(ID)).intValue();
 	}
 	
 	public int getType()
 	{
-		return type;
+		return ((Integer)data.get(TYPE)).intValue();
 	}
 	
 	public String getText()
 	{
-		return text;
+		return (String)data.get(TEXT);
 	}
 	
 	public Point getLocation()
 	{
-		return location;
+		return (Point)data.get(LOCATION);
 	}
 	
-	public int getX()
-	{
-		return location.x;
-	}
+	public static String ID = "id";
+	public static String LOCATION = "location";
+	public static String TEXT = "text";
+	public static String TYPE = "type";
+
+	private HashMap data;
 	
-	public int getY()
-	{
-		return location.y;
-	}
-	
-	private String text;
-	private Point location;
-	private int id;
-	private int type;
 }
