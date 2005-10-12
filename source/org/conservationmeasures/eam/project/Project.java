@@ -28,8 +28,8 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
-import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
+import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -218,28 +218,28 @@ public class Project
 
 	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, NodeDataHelper dataHelper) throws CommandFailedException 
 	{
-		NodeData[] nodes = list.getNodeDataCells();
+		NodeDataMap[] nodes = list.getNodeDataCells();
 		for (int i = 0; i < nodes.length; i++) 
 		{
-			NodeData nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(NodeData.TYPE));
+			NodeDataMap nodeData = nodes[i];
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(DiagramNode.TYPE));
 			executeCommand(newNode);
 
-			int originalNodeId = nodeData.getInt(NodeData.ID);
+			int originalNodeId = nodeData.getInt(EAMGraphCell.ID);
 			int newNodeId = newNode.getId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(NodeData.LOCATION));
+			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(EAMGraphCell.LOCATION));
 			
-			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(NodeData.TEXT));
+			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(EAMGraphCell.TEXT));
 			executeCommand(newNodeText);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(NodeData.TEXT));
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(EAMGraphCell.TEXT));
 		}
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
-			NodeData nodeData = nodes[i];
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(NodeData.ID), startPoint);
-			int newNodeId = dataHelper.getNewId(nodeData.getInt(NodeData.ID));
+			NodeDataMap nodeData = nodes[i];
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(EAMGraphCell.ID), startPoint);
+			int newNodeId = dataHelper.getNewId(nodeData.getInt(EAMGraphCell.ID));
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
 		}

@@ -12,11 +12,11 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.NodeData;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
+import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 
 public class TransferableEamList implements Transferable 
 {
@@ -40,7 +40,7 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isNode())
 				{
-					nodes.add(new NodeData((DiagramNode)cell));
+					nodes.add(((DiagramNode)cell).getNodeDataMap());
 				}
 			} 
 			catch (Exception e) 
@@ -77,9 +77,9 @@ public class TransferableEamList implements Transferable
 		return (LinkageData[])linkages.toArray(new LinkageData[0]);
 	}
 	
-	public NodeData[] getNodeDataCells()
+	public NodeDataMap[] getNodeDataCells()
 	{
-		return (NodeData[])nodes.toArray(new NodeData[0]);
+		return (NodeDataMap[])nodes.toArray(new NodeDataMap[0]);
 	}
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");

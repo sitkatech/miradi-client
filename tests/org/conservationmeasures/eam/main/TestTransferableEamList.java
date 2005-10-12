@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.NodeData;
+import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -70,18 +70,18 @@ public class TestTransferableEamList extends EAMTestCase
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);
 		
-		NodeData[] nodesData = eamTransferData.getNodeDataCells();
+		NodeDataMap[] nodesData = eamTransferData.getNodeDataCells();
 		LinkageData[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
-		assertEquals(node1Id, nodesData[0].getInt(NodeData.ID));
-		assertEquals(node1Text, nodesData[0].getString(NodeData.TEXT));
-		assertEquals(node1Location, nodesData[0].getPoint(NodeData.LOCATION));
-		assertEquals(node1Type, nodesData[0].getInt(NodeData.TYPE));
-		assertEquals(node2Id, nodesData[1].getInt(NodeData.ID));
-		assertEquals(node2Text, nodesData[1].getString(NodeData.TEXT));
-		assertEquals(node2Location, nodesData[1].getPoint(NodeData.LOCATION));
-		assertEquals(node2Type, nodesData[1].getInt(NodeData.TYPE));
+		assertEquals(node1Id, nodesData[0].getInt(EAMGraphCell.ID));
+		assertEquals(node1Text, nodesData[0].getString(EAMGraphCell.TEXT));
+		assertEquals(node1Location, nodesData[0].getPoint(EAMGraphCell.LOCATION));
+		assertEquals(node1Type, nodesData[0].getInt(DiagramNode.TYPE));
+		assertEquals(node2Id, nodesData[1].getInt(EAMGraphCell.ID));
+		assertEquals(node2Text, nodesData[1].getString(EAMGraphCell.TEXT));
+		assertEquals(node2Location, nodesData[1].getPoint(EAMGraphCell.LOCATION));
+		assertEquals(node2Type, nodesData[1].getInt(DiagramNode.TYPE));
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());

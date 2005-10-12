@@ -80,5 +80,20 @@ public class EAMGraphCell extends DefaultGraphCell
 	{
 		return (String)GraphConstants.getValue(getAttributes());
 	}
+
+	public NodeDataMap getNodeDataMap()
+	{
+		
+		NodeDataMap dataBin = new NodeDataMap();
+		dataBin.put(ID, new Integer(getId()));
+		dataBin.put(TEXT, getText());
+		dataBin.put(LOCATION, getLocation());
+		return dataBin;
+	}
+
+	public static final String ID = "id";
+	public static final String LOCATION = "location";
+	public static final String TEXT = "text";
+	
 	private int id;
 }

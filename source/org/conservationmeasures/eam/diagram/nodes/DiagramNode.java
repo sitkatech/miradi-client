@@ -119,6 +119,13 @@ public class DiagramNode extends EAMGraphCell
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 	
+	public NodeDataMap getNodeDataMap()
+	{
+		NodeDataMap dataBin = super.getNodeDataMap();
+		dataBin.put(TYPE, new Integer(getNodeType()));
+		return dataBin;
+	}
+	
 	public static final int INVALID_ID = -1;
 	
 	public static final int TYPE_INVALID = -1;
@@ -127,6 +134,8 @@ public class DiagramNode extends EAMGraphCell
 	public static final int TYPE_INTERVENTION = 3;
 	public static final int TYPE_DIRECT_THREAT = 4;
 	public static final int TYPE_STRESS = 5;
+
+	public static final String TYPE = "type";
 
 	NodeType type;
 	DefaultPort port;

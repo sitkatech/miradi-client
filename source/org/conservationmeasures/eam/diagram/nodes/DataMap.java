@@ -9,15 +9,16 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 import java.util.HashMap;
 
-public class NodeData 
+public class DataMap 
 {
-	public NodeData(DiagramNode node) throws Exception
+	public DataMap()
 	{
 		data = new HashMap();
-		data.put(ID, new Integer(node.getId()));
-		data.put(TYPE, new Integer(node.getNodeType()));
-		data.put(TEXT, node.getText());
-		data.put(LOCATION, node.getLocation());
+	}
+	
+	public void put(String tag, Object dataToStore)
+	{
+		data.put(tag, dataToStore);
 	}
 	
 	public int getInt(String tag)
@@ -35,10 +36,6 @@ public class NodeData
 		return (Point)data.get(tag);
 	}
 	
-	final public static String ID = "id";
-	final public static String LOCATION = "location";
-	final public static String TEXT = "text";
-	final public static String TYPE = "type";
 
 	private HashMap data;
 }
