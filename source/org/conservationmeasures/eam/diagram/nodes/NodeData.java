@@ -20,31 +20,25 @@ public class NodeData
 		data.put(LOCATION, node.getLocation());
 	}
 	
-	public int getId()
+	public int getInt(String tag)
 	{
-		return ((Integer)data.get(ID)).intValue();
+		return ((Integer)data.get(tag)).intValue();
 	}
 	
-	public int getType()
+	public String getString(String tag)
 	{
-		return ((Integer)data.get(TYPE)).intValue();
+		return (String)data.get(tag);
 	}
 	
-	public String getText()
+	public Point getPoint(String tag)
 	{
-		return (String)data.get(TEXT);
+		return (Point)data.get(tag);
 	}
 	
-	public Point getLocation()
-	{
-		return (Point)data.get(LOCATION);
-	}
-	
-	public static String ID = "id";
-	public static String LOCATION = "location";
-	public static String TEXT = "text";
-	public static String TYPE = "type";
+	final public static String ID = "id";
+	final public static String LOCATION = "location";
+	final public static String TEXT = "text";
+	final public static String TYPE = "type";
 
 	private HashMap data;
-	
 }

@@ -215,24 +215,24 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getType());
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(NodeData.TYPE));
 			executeCommand(newNode);
 
-			int originalNodeId = nodeData.getId();
+			int originalNodeId = nodeData.getInt(NodeData.ID);
 			int newNodeId = newNode.getId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalNodeId, nodeData.getLocation());
+			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(NodeData.LOCATION));
 			
-			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getText());
+			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(NodeData.TEXT));
 			executeCommand(newNodeText);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getText());
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(NodeData.TEXT));
 		}
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeData nodeData = nodes[i];
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(), startPoint);
-			int newNodeId = dataHelper.getNewId(nodeData.getId());
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(NodeData.ID), startPoint);
+			int newNodeId = dataHelper.getNewId(nodeData.getInt(NodeData.ID));
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
 		}
