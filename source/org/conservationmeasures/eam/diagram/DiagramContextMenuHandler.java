@@ -64,11 +64,11 @@ public class DiagramContextMenuHandler
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
 
-		insertMenu.add(getConfiguredAction(ActionInsertTarget.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertDirectThreat.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertIndirectFactor.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertStress.class, menuInvokedAt));
 		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertIndirectFactor.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertDirectThreat.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertStress.class, menuInvokedAt));
+		insertMenu.add(getConfiguredAction(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertConnection.class));
 
