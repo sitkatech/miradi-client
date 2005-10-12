@@ -81,7 +81,7 @@ public class EAMGraphCell extends DefaultGraphCell
 		return (String)GraphConstants.getValue(getAttributes());
 	}
 
-	public NodeDataMap getNodeDataMap()
+	public NodeDataMap createNodeDataMap()
 	{
 		
 		NodeDataMap dataBin = new NodeDataMap();

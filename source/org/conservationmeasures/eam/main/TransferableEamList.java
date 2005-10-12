@@ -40,7 +40,7 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isNode())
 				{
-					nodes.add(((DiagramNode)cell).getNodeDataMap());
+					nodes.add(((DiagramNode)cell).createNodeDataMap());
 				}
 			} 
 			catch (Exception e) 

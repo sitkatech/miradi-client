@@ -119,9 +119,9 @@ public class DiagramNode extends EAMGraphCell
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 	
-	public NodeDataMap getNodeDataMap()
+	public NodeDataMap createNodeDataMap()
 	{
-		NodeDataMap dataBin = super.getNodeDataMap();
+		NodeDataMap dataBin = super.createNodeDataMap();
 		dataBin.put(TYPE, new Integer(getNodeType()));
 		return dataBin;
 	}

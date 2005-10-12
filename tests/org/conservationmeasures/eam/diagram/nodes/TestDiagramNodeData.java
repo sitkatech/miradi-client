@@ -27,7 +27,7 @@ public class TestDiagramNodeData extends EAMTestCase
 		nodeA.setText(nodeAText);
 		nodeA.setLocation(location);
 		nodeA.setId(id);
-		DataMap nodeAData = nodeA.getNodeDataMap();
+		DataMap nodeAData = nodeA.createNodeDataMap();
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(EAMGraphCell.TEXT));
 		assertEquals("location incorrect", location, nodeAData.getPoint(EAMGraphCell.LOCATION));
