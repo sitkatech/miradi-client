@@ -33,11 +33,11 @@ public class DiagramToolBar extends JToolBar
 
 		add(ViewSwitcher.create(actions, ActionViewDiagram.class));
 		addSeparator();
-		add(new ToolBarButton(actions, ActionInsertTarget.class));
-		add(new ToolBarButton(actions, ActionInsertDirectThreat.class));
-		add(new ToolBarButton(actions, ActionInsertIndirectFactor.class));
-		add(new ToolBarButton(actions, ActionInsertStress.class));
 		add(new ToolBarButton(actions, ActionInsertIntervention.class));
+		add(new ToolBarButton(actions, ActionInsertIndirectFactor.class));
+		add(new ToolBarButton(actions, ActionInsertDirectThreat.class));
+		add(new ToolBarButton(actions, ActionInsertStress.class));
+		add(new ToolBarButton(actions, ActionInsertTarget.class));
 		add(new ToolBarButton(actions, ActionInsertConnection.class));
 		addSeparator();
 		add(new ToolBarButton(actions, ActionUndo.class));

@@ -81,9 +81,9 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
 		menu.add(new JMenuItem(actions.get(ActionInsertTarget.class)));
+		menu.add(new JMenuItem(actions.get(ActionInsertStress.class)));
 		menu.add(new JMenuItem(actions.get(ActionInsertDirectThreat.class)));
 		menu.add(new JMenuItem(actions.get(ActionInsertIndirectFactor.class)));
-		menu.add(new JMenuItem(actions.get(ActionInsertStress.class)));
 		menu.add(new JMenuItem(actions.get(ActionInsertIntervention.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
