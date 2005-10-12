@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -39,12 +40,12 @@ public class DiagramNode extends EAMGraphCell
 		}
 		port = new DefaultPort();
 		add(port);
-		
 		setColors(type);
 		setFont();
 		setLocation(new Point(0, 0));
 		setSize(new Dimension(120, 60));
 		setText("");
+		setNodeRanking(RANKING_NONE);
 	}
 	
 	public boolean isNode()
@@ -66,6 +67,36 @@ public class DiagramNode extends EAMGraphCell
 			return TYPE_STRESS;
 		return TYPE_INVALID;
 	}
+	
+	public int getNodeRanking()
+	{
+		return ranking;
+	}
+	
+	public void setNodeRanking(int rankingToUse)
+	{
+		ranking = rankingToUse;
+	}
+	
+	public static String getNodeRankingString(int rankingLevel)
+	{
+		switch(rankingLevel)
+		{
+			case RANKING_VERY_HIGH:
+				return EAM.text("Label|Very High");
+			case RANKING_HIGH:
+				return EAM.text("Label|High");
+			case RANKING_MEDIUM:
+				return EAM.text("Label|Medium");
+			case RANKING_LOW:
+				return EAM.text("Label|Low");
+			case RANKING_NONE:
+				return EAM.text("Label|None");
+			default:
+				return "";
+		}
+	}
+	
 
 	public boolean isTarget()
 	{
@@ -121,9 +152,10 @@ public class DiagramNode extends EAMGraphCell
 	
 	public NodeDataMap createNodeDataMap()
 	{
-		NodeDataMap dataBin = super.createNodeDataMap();
-		dataBin.put(TYPE, new Integer(getNodeType()));
-		return dataBin;
+		NodeDataMap dataMap = super.createNodeDataMap();
+		dataMap.put(TYPE, new Integer(getNodeType()));
+		dataMap.put(RANKING, new Integer(getNodeRanking()));
+		return dataMap;
 	}
 	
 	public static final int INVALID_ID = -1;
@@ -136,7 +168,15 @@ public class DiagramNode extends EAMGraphCell
 	public static final int TYPE_STRESS = 5;
 
 	public static final String TYPE = "type";
+	public static final String RANKING = "ranking";
 
+	public static final int RANKING_VERY_HIGH =0;
+	public static final int RANKING_HIGH =1;
+	public static final int RANKING_MEDIUM =2;
+	public static final int RANKING_LOW =3;
+	public static final int RANKING_NONE =4;
+	
 	NodeType type;
 	DefaultPort port;
+	int ranking;
 }

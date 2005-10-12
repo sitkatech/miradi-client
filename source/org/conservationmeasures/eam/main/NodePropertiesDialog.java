@@ -16,6 +16,8 @@ import javax.swing.Box;
 import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -25,19 +27,19 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, DiagramNode nodeToEdit)
+	public NodePropertiesDialog(Frame parent, String title, NodeDataMap nodeDataMap)
 			throws HeadlessException
 	{
 		super(parent, title);
 		UiVBox bigBox = new UiVBox();
-		bigBox.add(createTextField(nodeToEdit.getText()));
-		bigBox.add(createThreatLevelDropdown(INVALID_RANKING));
+		bigBox.add(createTextField(nodeDataMap.getString(EAMGraphCell.TEXT)));
+		bigBox.add(createThreatLevelDropdown(nodeDataMap.getInt(DiagramNode.RANKING)));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
 		contents.add(bigBox);
 		pack();
-		setLocation(nodeToEdit.getLocation());
+		setLocation(nodeDataMap.getPoint(EAMGraphCell.LOCATION));
 		setResizable(true);
 		setModal(true);
 	}
@@ -53,16 +55,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Box createThreatLevelDropdown(int currentRanking)
 	{
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
-		UiComboBox dropdownThreatLevel = new UiComboBox();
-		dropdownThreatLevel.addItem(EAM.text("Label|Very High"));
-		dropdownThreatLevel.addItem(EAM.text("Label|High"));
-		dropdownThreatLevel.addItem(EAM.text("Label|Medium"));
-		dropdownThreatLevel.addItem(EAM.text("Label|Low"));
-		dropdownThreatLevel.addItem(EAM.text("Label|None"));
+		dropdownThreatLevel = new UiComboBox();
+		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_VERY_HIGH));
+		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_HIGH));
+		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_MEDIUM));
+		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_LOW));
+		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_NONE));
 
 		int selectedRanking = currentRanking;
-		if(currentRanking == INVALID_RANKING)
-			selectedRanking = RANKING_NONE;
 		dropdownThreatLevel.setSelectedIndex(selectedRanking);
 		
 		Box threatLevelBar = Box.createHorizontalBox();
@@ -101,12 +101,15 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		return textField.getText();
 	}
-
-	private int INVALID_RANKING = -1;
-	private int RANKING_NONE =4;
 	
+	public int getRanking()
+	{
+		return dropdownThreatLevel.getSelectedIndex();
+	}
+
 	boolean result;
 	UiTextField textField;
+	UiComboBox dropdownThreatLevel;
 	UiButton okButton;
 	UiButton cancelButton;
 }
