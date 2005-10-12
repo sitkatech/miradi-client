@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionViewLayer extends MainWindowAction
+public class ActionConfigureLayers extends MainWindowAction
 {
-	public ActionViewLayer(MainWindow mainWindowToUse)
+	public ActionConfigureLayers(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

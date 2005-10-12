@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionViewLayer;
+import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.Actions;
 
 public class MainMenuBar extends JMenuBar
@@ -93,7 +93,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createViewMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
-		menu.add(new JMenuItem(actions.get(ActionViewLayer.class)));
+		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
 		return menu;
 	}
 

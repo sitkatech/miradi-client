@@ -24,10 +24,10 @@ import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
@@ -60,6 +61,7 @@ public class Project
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
 		dataMap = new HashMap();
+		layerManager = new LayerManager();
 	}
 	
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
@@ -142,6 +144,11 @@ public class Project
 	{
 		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
 		dataMap.put(fieldName, fieldData);
+	}
+	
+	public LayerManager getLayerManager()
+	{
+		return layerManager;
 	}
 	
 	public void addCommandExecutedListener(CommandExecutedListener listener)
@@ -443,6 +450,6 @@ public class Project
 	Vector viewChangeListeners;
 	String currentView;
 	Map dataMap;
-
+	LayerManager layerManager;
 }
 

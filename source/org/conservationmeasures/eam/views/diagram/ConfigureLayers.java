@@ -1,0 +1,38 @@
+/*
+ * Copyright 2005, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.views.diagram;
+
+import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.views.ViewDoer;
+
+public class ConfigureLayers extends ViewDoer
+{
+	public boolean isAvailable()
+	{
+		return true;
+	}
+
+	public void doIt() throws CommandFailedException
+	{
+		if(!isAvailable())
+			return;
+		
+		LayerManager manager = getMainWindow().getProject().getLayerManager();
+		LayerDialog dlg = new LayerDialog(EAM.mainWindow, manager);
+		dlg.setVisible(true);
+		if(!dlg.getResult())
+			return;
+
+		dlg.updateLayerManager(manager);
+		DiagramComponent diagram = getMainWindow().getDiagramComponent();
+		diagram.clearSelection();
+		diagram.setEnabled(manager.areAllLayersVisible());
+		diagram.repaint();
+	}
+
+}

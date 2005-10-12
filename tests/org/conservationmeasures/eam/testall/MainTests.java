@@ -16,12 +16,12 @@ import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.nodes.TestCommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.TestDelete;
-import org.conservationmeasures.eam.diagram.nodes.TestEamGraphicCell;
-import org.conservationmeasures.eam.diagram.nodes.TestInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramLinkageData;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNodeData;
+import org.conservationmeasures.eam.diagram.nodes.TestEamGraphicCell;
+import org.conservationmeasures.eam.diagram.nodes.TestInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeStress;
@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.diagram.TestInsertConnection;
+import org.conservationmeasures.eam.views.diagram.TestLayerManager;
 import org.conservationmeasures.eam.views.interview.TestInterviewModel;
 import org.conservationmeasures.eam.views.interview.TestInterviewStepModel;
 import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
@@ -102,6 +103,7 @@ public class MainTests extends TestCase
 		
 		// view.diagram package
 		suite.addTest(new TestSuite(TestInsertConnection.class));
+		suite.addTest(new TestSuite(TestLayerManager.class));
 		
 		// view.interview package
 		suite.addTest(new TestSuite(TestInterviewModel.class));
