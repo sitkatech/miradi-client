@@ -17,6 +17,8 @@ import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.swing.UiButton;
+import org.martus.swing.UiComboBox;
+import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
@@ -29,6 +31,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		super(parent, title);
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(nodeToEdit.getText()));
+		bigBox.add(createThreatLevelDropdown(INVALID_RANKING));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -45,6 +48,27 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		textField.requestFocus(true);
 		textField.selectAll();
 		return textField;
+	}
+	
+	private Box createThreatLevelDropdown(int currentRanking)
+	{
+		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
+		UiComboBox dropdownThreatLevel = new UiComboBox();
+		dropdownThreatLevel.addItem(EAM.text("Label|Very High"));
+		dropdownThreatLevel.addItem(EAM.text("Label|High"));
+		dropdownThreatLevel.addItem(EAM.text("Label|Medium"));
+		dropdownThreatLevel.addItem(EAM.text("Label|Low"));
+		dropdownThreatLevel.addItem(EAM.text("Label|None"));
+
+		int selectedRanking = currentRanking;
+		if(currentRanking == INVALID_RANKING)
+			selectedRanking = RANKING_NONE;
+		dropdownThreatLevel.setSelectedIndex(selectedRanking);
+		
+		Box threatLevelBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatLevel};
+		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
+		return threatLevelBar;
 	}
 
 	private Box createButtonBar()
@@ -78,6 +102,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField.getText();
 	}
 
+	private int INVALID_RANKING = -1;
+	private int RANKING_NONE =4;
+	
 	boolean result;
 	UiTextField textField;
 	UiButton okButton;
