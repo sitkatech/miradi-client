@@ -18,12 +18,11 @@ import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodePriority extends Command 
 {
-
 	public CommandSetNodePriority(int idToUpdate, int priorityToUse)
 	{
 		id = idToUpdate;
 		priority = priorityToUse;
-		previousPriority = -1;
+		previousPriority = INVALID;
 	}
 
 	public CommandSetNodePriority(DataInputStream dataIn) throws IOException
@@ -72,7 +71,7 @@ public class CommandSetNodePriority extends Command
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
 			int currentPriority = node.getNodePriority();
-			if(expectedPriority != -1 && currentPriority != expectedPriority)
+			if(expectedPriority != INVALID && currentPriority != expectedPriority)
 				throw new Exception("CommandSetNodePriority expected " + expectedPriority + " but was " + currentPriority);
 			node.setNodePriority(desiredPriority);
 			Logging.logDebug("Updating Priority:"+DiagramNode.getNodePriorityString(desiredPriority));
@@ -97,7 +96,7 @@ public class CommandSetNodePriority extends Command
 		return id;
 	}
 	
-
+	private static final int INVALID = -1;
 	public static final String COMMAND_NAME = "SetNodePriority";
 
 	int id;
