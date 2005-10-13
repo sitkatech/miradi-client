@@ -28,8 +28,9 @@ public class TestSetNodePriority extends EAMTestCase
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 
-		int newPriority = ThreatPriority.createPriorityMedium().getValue();
-		Command setPriorityCommand = new CommandSetNodePriority(id, newPriority);
+		ThreatPriority createPriorityMedium = ThreatPriority.createPriorityMedium();
+		int newPriority = createPriorityMedium.getValue();
+		Command setPriorityCommand = new CommandSetNodePriority(id, createPriorityMedium);
 		setPriorityCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);

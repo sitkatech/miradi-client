@@ -153,8 +153,9 @@ public class TestCommands extends EAMTestCase
 		int originalPriority = ThreatPriority.createPriorityNone().getValue();
 		assertEquals("New node should have priority level as None", originalPriority, node.getThreatPriority().getValue());
 
-		int newPriority = ThreatPriority.createPriorityLow().getValue();
-		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriority);
+		ThreatPriority createPriorityLow = ThreatPriority.createPriorityLow();
+		int newPriority = createPriorityLow.getValue();
+		CommandSetNodePriority cmd = new CommandSetNodePriority(id, createPriorityLow);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old priority?", originalPriority, cmd.getPreviousPriority().getValue());
 		assertEquals( newPriority, node.getThreatPriority().getValue());

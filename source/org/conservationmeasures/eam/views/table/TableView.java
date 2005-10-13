@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -148,6 +149,7 @@ public class TableView extends UmbrellaView
 			columnNames = new Vector();
 			columnNames.add(EAM.text("Table|Name"));
 			columnNames.add(EAM.text("Table|Type"));
+			columnNames.add(EAM.text("Table|Priority"));
 			columnNames.add(EAM.text("Table|X"));
 			columnNames.add(EAM.text("Table|Y"));
 		}
@@ -179,6 +181,8 @@ public class TableView extends UmbrellaView
 					return node.getText();
 				case TABLE_COLUMN_TYPE:
 					return getNodeType(node);
+				case TABLE_COLUMN_PRIORITY:
+					return getNodePriority(node);
 				case TABLE_COLUMN_X:
 					return new Integer(node.getLocation().x);
 				case TABLE_COLUMN_Y:
@@ -210,6 +214,14 @@ public class TableView extends UmbrellaView
 			if(node.isIntervention())
 				return EAM.text("Intervention");
 			return EAM.text("Unknown Type");
+		}
+		
+		public String getNodePriority(DiagramNode node)
+		{
+			ThreatPriority threatPriority = node.getThreatPriority();
+			if(threatPriority == null)
+				return "";
+			return threatPriority.getStringValue();
 		}
 
 		public String getColumnName(int column) 
@@ -248,8 +260,9 @@ public class TableView extends UmbrellaView
 		
 		final static int TABLE_COLUMN_NAME = 0;
 		final static int TABLE_COLUMN_TYPE = 1;
-		final static int TABLE_COLUMN_X = 2;
-		final static int TABLE_COLUMN_Y = 3;
+		final static int TABLE_COLUMN_PRIORITY = 2;
+		final static int TABLE_COLUMN_X = 3;
+		final static int TABLE_COLUMN_Y = 4;
 		
 		private Vector columnNames;
 		private DiagramModel diagramModel;

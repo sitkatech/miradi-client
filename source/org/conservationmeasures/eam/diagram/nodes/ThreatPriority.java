@@ -11,15 +11,14 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class ThreatPriority 
 {
-
 	private ThreatPriority(int priorityToUse)
 	{
 		priority = priorityToUse;
 	}
 
-	public static ThreatPriority createPriorityUnknown()
+	public static ThreatPriority createFromInt(int value)
 	{
-		return new ThreatPriority(PRIORITY_UNKNOWN);
+		return new ThreatPriority(value);
 	}
 
 	public static ThreatPriority createPriorityNone()
@@ -50,11 +49,6 @@ public class ThreatPriority
 	public int getValue()
 	{
 		return priority;
-	}
-	
-	public void setValue(int value)
-	{
-		priority = value;
 	}
 	
 	public String getStringValue()
@@ -126,8 +120,7 @@ public class ThreatPriority
 		}
 	}
 
-	public static final int PRIORITY_NOT_USED =-2;
-	private static final int PRIORITY_UNKNOWN =-1;
+	public static final int PRIORITY_NOT_USED =-1;
 	private static final int PRIORITY_VERY_HIGH =0;
 	private static final int PRIORITY_HIGH =1;
 	private static final int PRIORITY_MEDIUM =2;

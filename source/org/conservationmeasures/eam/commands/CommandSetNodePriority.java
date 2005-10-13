@@ -19,21 +19,18 @@ import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodePriority extends Command 
 {
-	public CommandSetNodePriority(int idToUpdate, int priorityToUse)
+	public CommandSetNodePriority(int idToUpdate, ThreatPriority priorityToUse)
 	{
 		id = idToUpdate;
-		priority = ThreatPriority.createPriorityUnknown();
-		priority.setValue(priorityToUse);
+		priority = priorityToUse;
 		previousPriority = null;
 	}
 
 	public CommandSetNodePriority(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		priority = ThreatPriority.createPriorityUnknown(); 
-		priority.setValue(dataIn.readInt());
-		previousPriority = ThreatPriority.createPriorityUnknown();
-		previousPriority.setValue(dataIn.readInt());
+		priority = ThreatPriority.createFromInt(dataIn.readInt());
+		previousPriority = ThreatPriority.createFromInt(dataIn.readInt());
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException

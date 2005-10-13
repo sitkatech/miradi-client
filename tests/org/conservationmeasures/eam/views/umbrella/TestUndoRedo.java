@@ -60,7 +60,7 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		Project project = new ProjectForTesting(getName());
 
-		int target1Priority = ThreatPriority.createPriorityVeryHigh().getValue();
+		ThreatPriority target1Priority = ThreatPriority.createPriorityVeryHigh();
 		int insertedId = insertDirectThreat(project);
 
 		project.executeCommand(new CommandBeginTransaction());
@@ -68,7 +68,7 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandEndTransaction());
 
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority());
 
 		Undo undo = new Undo();
 		undo.setProject(project);
@@ -79,7 +79,7 @@ public class TestUndoRedo extends EAMTestCase
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority());
 
 		undo.doIt();
 		assertEquals("Should have no priority again", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
