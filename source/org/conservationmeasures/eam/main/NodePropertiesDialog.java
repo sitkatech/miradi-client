@@ -18,6 +18,7 @@ import javax.swing.JDialog;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -54,15 +55,15 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	private Component createThreatLevelDropdown(int currentPriority)
 	{
-		if(currentPriority == DiagramNode.PRIORITY_NOT_USED)
+		if(currentPriority == ThreatPriority.PRIORITY_NOT_USED)
 			return new UiLabel("");
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		dropdownThreatPriority = new UiComboBox();
-		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_VERY_HIGH));
-		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_HIGH));
-		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_MEDIUM));
-		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_LOW));
-		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_NONE));
+		String[] items = ThreatPriority.getPriorityStringList();
+		for (int i = 0; i < items.length; i++) 
+		{
+			dropdownThreatPriority.addItem(items[i]);
+		}
 
 		int selectedPriority = currentPriority;
 		dropdownThreatPriority.setSelectedIndex(selectedPriority);

@@ -7,6 +7,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -59,7 +60,7 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		Project project = new ProjectForTesting(getName());
 
-		int target1Priority = DiagramNode.PRIORITY_VERY_HIGH;
+		int target1Priority = ThreatPriority.createPriorityVeryHigh().getValue();
 		int insertedId = insertDirectThreat(project);
 
 		project.executeCommand(new CommandBeginTransaction());
@@ -67,21 +68,21 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandEndTransaction());
 
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
 		assertEquals("Should have still 1 nodes now.", 1, project.getDiagramModel().getNodeCount());
-		assertEquals(DiagramNode.PRIORITY_NONE, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+		assertEquals(ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
 
 		undo.doIt();
-		assertEquals("Should have no priority again", DiagramNode.PRIORITY_NONE, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+		assertEquals("Should have no priority again", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
 	}
 	
 	

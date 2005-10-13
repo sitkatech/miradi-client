@@ -47,7 +47,7 @@ public class NodeProperties extends ProjectDoer
 			return;
 
 		int id = selectedNode.getId();
-		if(selectedNode.getNodePriority() == DiagramNode.PRIORITY_NOT_USED)
+		if(selectedNode.getThreatPriority() == null)
 		{
 			getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
 		}

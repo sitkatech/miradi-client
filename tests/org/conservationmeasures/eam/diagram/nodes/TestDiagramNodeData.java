@@ -33,7 +33,15 @@ public class TestDiagramNodeData extends EAMTestCase
 		assertEquals("location incorrect", location, nodeAData.getPoint(EAMGraphCell.LOCATION));
 		assertEquals("id incorrect", id, nodeAData.getInt(EAMGraphCell.ID));
 		assertEquals("type incorrect", nodeAType, nodeAData.getInt(DiagramNode.TYPE));
-		assertEquals("Priority default not None?", DiagramNode.PRIORITY_NONE, nodeAData.getInt(DiagramNode.PRIORITY));
+		assertEquals("Priority default not None?", ThreatPriority.createPriorityNone().getValue(), nodeAData.getInt(DiagramNode.PRIORITY));
+	}
+	
+	public void testNoneThreatNode()  throws Exception
+	{
+		int nodeBType = DiagramNode.TYPE_TARGET;
+		DiagramNode nodeB = new DiagramNode(nodeBType);
+		DataMap nodeBData = nodeB.createNodeDataMap();
+		assertEquals("Priority of a non threat not PRIORITY_NOT_USED?", ThreatPriority.PRIORITY_NOT_USED, nodeBData.getInt(DiagramNode.PRIORITY));
 	}
 
 }

@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -18,7 +17,6 @@ public class DiagramNode extends EAMGraphCell
 {
 	public DiagramNode(int nodeType)
 	{
-		int nodePriority = PRIORITY_NOT_USED;
 		switch(nodeType)
 		{
 			case TYPE_TARGET:
@@ -26,15 +24,15 @@ public class DiagramNode extends EAMGraphCell
 				break;
 			case TYPE_INDIRECT_FACTOR:
 				type = new NodeTypeIndirectFactor();
-				nodePriority = PRIORITY_NONE;
+				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_DIRECT_THREAT:
 				type = new NodeTypeDirectThreat();
-				nodePriority = PRIORITY_NONE;
+				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_STRESS:
 				type = new NodeTypeStress();
-				nodePriority = PRIORITY_NONE;
+				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_INTERVENTION:
 				type = new NodeTypeIntervention();
@@ -49,7 +47,6 @@ public class DiagramNode extends EAMGraphCell
 		setLocation(new Point(0, 0));
 		setSize(new Dimension(120, 60));
 		setText("");
-		setNodePriority(nodePriority);
 	}
 	
 	public boolean isNode()
@@ -72,33 +69,14 @@ public class DiagramNode extends EAMGraphCell
 		return TYPE_INVALID;
 	}
 	
-	public int getNodePriority()
+	public ThreatPriority getThreatPriority()
 	{
-		return priority;
+		return threatPriority;
 	}
 	
-	public void setNodePriority(int priorityToUse)
+	public void setNodePriority(ThreatPriority priorityToUse)
 	{
-		priority = priorityToUse;
-	}
-	
-	public static String getNodePriorityString(int priorityLevel)
-	{
-		switch(priorityLevel)
-		{
-			case PRIORITY_VERY_HIGH:
-				return EAM.text("Label|Very High");
-			case PRIORITY_HIGH:
-				return EAM.text("Label|High");
-			case PRIORITY_MEDIUM:
-				return EAM.text("Label|Medium");
-			case PRIORITY_LOW:
-				return EAM.text("Label|Low");
-			case PRIORITY_NONE:
-				return EAM.text("Label|None");
-			default:
-				return "";
-		}
+		threatPriority = priorityToUse;
 	}
 	
 
@@ -158,7 +136,12 @@ public class DiagramNode extends EAMGraphCell
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();
 		dataMap.put(TYPE, new Integer(getNodeType()));
-		dataMap.put(PRIORITY, new Integer(getNodePriority()));
+		
+		ThreatPriority priority = getThreatPriority();
+		int priorityValue = ThreatPriority.PRIORITY_NOT_USED;
+		if(priority != null)
+			priorityValue = priority.getValue();
+		dataMap.put(PRIORITY, new Integer(priorityValue));
 		return dataMap;
 	}
 	
@@ -174,14 +157,7 @@ public class DiagramNode extends EAMGraphCell
 	public static final String TYPE = "type";
 	public static final String PRIORITY = "priority";
 
-	public static final int PRIORITY_NOT_USED =-1;
-	public static final int PRIORITY_VERY_HIGH =0;
-	public static final int PRIORITY_HIGH =1;
-	public static final int PRIORITY_MEDIUM =2;
-	public static final int PRIORITY_LOW =3;
-	public static final int PRIORITY_NONE =4;
-	
 	NodeType type;
 	DefaultPort port;
-	int priority;
+	ThreatPriority threatPriority;
 }
