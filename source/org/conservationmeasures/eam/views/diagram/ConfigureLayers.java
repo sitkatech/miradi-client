@@ -31,7 +31,6 @@ public class ConfigureLayers extends ViewDoer
 		dlg.updateLayerManager(manager);
 		DiagramComponent diagram = getMainWindow().getDiagramComponent();
 		diagram.clearSelection();
-		diagram.setEnabled(manager.areAllLayersVisible());
 		diagram.repaint();
 	}
 

@@ -22,11 +22,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
 		DiagramLinkage linkage = (DiagramLinkage)cellView.getCell();
-		DiagramNode from = linkage.getFromNode();
-		DiagramNode to = linkage.getToNode();
-		DiagramComponent diagram = (DiagramComponent)graphToUse;
-		boolean bothNodesVisible = diagram.isNodeVisible(from) && diagram.isNodeVisible(to);
-		renderer.isVisible = bothNodesVisible;
+		renderer.isVisible = ((DiagramComponent)graphToUse).isLinkageVisible(linkage);
 		return renderer;
 	}
 

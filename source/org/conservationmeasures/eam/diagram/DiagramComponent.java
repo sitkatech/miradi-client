@@ -24,8 +24,9 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
@@ -38,6 +39,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		super(projectToUse.getDiagramModel());
 		project = projectToUse;
 
+		setSelectionModel(new SelectionModelWithLayers(this));
 		getGraphLayoutCache().setFactory(new CellViewFactory());
 
 		disableInPlaceEditing();
@@ -105,6 +107,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().isVisible(node);
 	}
 	
+	public boolean isLinkageVisible(DiagramLinkage linkage)
+	{
+		DiagramNode from = linkage.getFromNode();
+		DiagramNode to = linkage.getToNode();
+		boolean bothNodesVisible = isNodeVisible(from) && isNodeVisible(to);
+		return bothNodesVisible;
+	}
+
 	public DiagramNode getSelectedNode()
 	{
 		if (getSelectionCount() != 1)
