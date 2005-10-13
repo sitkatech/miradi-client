@@ -30,6 +30,17 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
 		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		
+		if(priority != null)
+		{
+			Rectangle smallRect = new Rectangle();
+			smallRect.x = rect.x + rect.width - PRIORITY_WIDTH;
+			smallRect.y = rect.y;
+			smallRect.width = PRIORITY_WIDTH;
+			smallRect.height = PRIORITY_HEIGHT;
+			setPaint(g2, smallRect, priority.getColor());
+			g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		}
 		g2.setPaint(oldPaint);
 	}
 
@@ -84,4 +95,7 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		}
 		return new Point2D.Double(xout, yout);
 	}
+	
+	private static final int PRIORITY_WIDTH = 12;
+	private static final int PRIORITY_HEIGHT = 12;
 }

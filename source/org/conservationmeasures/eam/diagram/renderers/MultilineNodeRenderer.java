@@ -56,6 +56,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -139,7 +140,12 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
 		
-		isVisible = ((DiagramComponent)graphToUse).isNodeVisible((DiagramNode)view.getCell());
+		DiagramNode node = (DiagramNode)view.getCell();
+		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
+		if(node.isDirectThreat() || node.isStress())
+			priority = node.getThreatPriority();
+		else
+			priority = null;
 		return this;
 	}
 	
@@ -182,5 +188,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	Color gradientColor;
 	boolean selected;
 	boolean preview;
+	
 	boolean isVisible;
+	ThreatPriority priority;
 }
