@@ -33,7 +33,7 @@ public class TestDiagramNodeData extends EAMTestCase
 		assertEquals("location incorrect", location, nodeAData.getPoint(EAMGraphCell.LOCATION));
 		assertEquals("id incorrect", id, nodeAData.getInt(EAMGraphCell.ID));
 		assertEquals("type incorrect", nodeAType, nodeAData.getInt(DiagramNode.TYPE));
-		assertEquals("Ranking default not None?", DiagramNode.RANKING_NONE, nodeAData.getInt(DiagramNode.RANKING));
+		assertEquals("Priority default not None?", DiagramNode.PRIORITY_NONE, nodeAData.getInt(DiagramNode.PRIORITY));
 	}
 
 }

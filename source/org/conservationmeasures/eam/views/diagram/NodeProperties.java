@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -44,8 +47,17 @@ public class NodeProperties extends ProjectDoer
 			return;
 
 		int id = selectedNode.getId();
-		CommandSetNodeText command = new CommandSetNodeText(id, dlg.getText());
-		getProject().executeCommand(command);
+		if(selectedNode.getNodePriority() == DiagramNode.PRIORITY_NOT_USED)
+		{
+			getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
+		}
+		else
+		{
+			getProject().executeCommand(new CommandBeginTransaction());
+			getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
+			getProject().executeCommand(new CommandSetNodePriority(id, dlg.getPriority()));
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 
 }

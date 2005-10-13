@@ -49,6 +49,8 @@ public abstract class Command
 			return new CommandInterviewSetStep(dataIn);
 		if(commandName.equals(CommandSetData.COMMAND_NAME))
 			return new CommandSetData(dataIn);
+		if(commandName.equals(CommandSetNodePriority.COMMAND_NAME))
+			return new CommandSetNodePriority(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
 	}
 	

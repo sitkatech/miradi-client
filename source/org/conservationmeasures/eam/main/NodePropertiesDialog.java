@@ -33,7 +33,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		super(parent, title);
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(nodeDataMap.getString(EAMGraphCell.TEXT)));
-		bigBox.add(createThreatLevelDropdown(nodeDataMap.getInt(DiagramNode.RANKING)));
+		bigBox.add(createThreatLevelDropdown(nodeDataMap.getInt(DiagramNode.PRIORITY)));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -52,21 +52,23 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField;
 	}
 	
-	private Box createThreatLevelDropdown(int currentRanking)
+	private Component createThreatLevelDropdown(int currentPriority)
 	{
+		if(currentPriority == DiagramNode.PRIORITY_NOT_USED)
+			return new UiLabel("");
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
-		dropdownThreatLevel = new UiComboBox();
-		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_VERY_HIGH));
-		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_HIGH));
-		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_MEDIUM));
-		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_LOW));
-		dropdownThreatLevel.addItem(DiagramNode.getNodeRankingString(DiagramNode.RANKING_NONE));
+		dropdownThreatPriority = new UiComboBox();
+		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_VERY_HIGH));
+		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_HIGH));
+		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_MEDIUM));
+		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_LOW));
+		dropdownThreatPriority.addItem(DiagramNode.getNodePriorityString(DiagramNode.PRIORITY_NONE));
 
-		int selectedRanking = currentRanking;
-		dropdownThreatLevel.setSelectedIndex(selectedRanking);
+		int selectedPriority = currentPriority;
+		dropdownThreatPriority.setSelectedIndex(selectedPriority);
 		
 		Box threatLevelBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatLevel};
+		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatPriority};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
 	}
@@ -102,14 +104,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField.getText();
 	}
 	
-	public int getRanking()
+	public int getPriority()
 	{
-		return dropdownThreatLevel.getSelectedIndex();
+		return dropdownThreatPriority.getSelectedIndex();
 	}
 
 	boolean result;
 	UiTextField textField;
-	UiComboBox dropdownThreatLevel;
+	UiComboBox dropdownThreatPriority;
 	UiButton okButton;
 	UiButton cancelButton;
 }

@@ -18,6 +18,7 @@ public class DiagramNode extends EAMGraphCell
 {
 	public DiagramNode(int nodeType)
 	{
+		int nodePriority = PRIORITY_NOT_USED;
 		switch(nodeType)
 		{
 			case TYPE_TARGET:
@@ -25,12 +26,15 @@ public class DiagramNode extends EAMGraphCell
 				break;
 			case TYPE_INDIRECT_FACTOR:
 				type = new NodeTypeIndirectFactor();
+				nodePriority = PRIORITY_NONE;
 				break;
 			case TYPE_DIRECT_THREAT:
 				type = new NodeTypeDirectThreat();
+				nodePriority = PRIORITY_NONE;
 				break;
 			case TYPE_STRESS:
 				type = new NodeTypeStress();
+				nodePriority = PRIORITY_NONE;
 				break;
 			case TYPE_INTERVENTION:
 				type = new NodeTypeIntervention();
@@ -45,7 +49,7 @@ public class DiagramNode extends EAMGraphCell
 		setLocation(new Point(0, 0));
 		setSize(new Dimension(120, 60));
 		setText("");
-		setNodeRanking(RANKING_NONE);
+		setNodePriority(nodePriority);
 	}
 	
 	public boolean isNode()
@@ -68,29 +72,29 @@ public class DiagramNode extends EAMGraphCell
 		return TYPE_INVALID;
 	}
 	
-	public int getNodeRanking()
+	public int getNodePriority()
 	{
-		return ranking;
+		return priority;
 	}
 	
-	public void setNodeRanking(int rankingToUse)
+	public void setNodePriority(int priorityToUse)
 	{
-		ranking = rankingToUse;
+		priority = priorityToUse;
 	}
 	
-	public static String getNodeRankingString(int rankingLevel)
+	public static String getNodePriorityString(int priorityLevel)
 	{
-		switch(rankingLevel)
+		switch(priorityLevel)
 		{
-			case RANKING_VERY_HIGH:
+			case PRIORITY_VERY_HIGH:
 				return EAM.text("Label|Very High");
-			case RANKING_HIGH:
+			case PRIORITY_HIGH:
 				return EAM.text("Label|High");
-			case RANKING_MEDIUM:
+			case PRIORITY_MEDIUM:
 				return EAM.text("Label|Medium");
-			case RANKING_LOW:
+			case PRIORITY_LOW:
 				return EAM.text("Label|Low");
-			case RANKING_NONE:
+			case PRIORITY_NONE:
 				return EAM.text("Label|None");
 			default:
 				return "";
@@ -154,7 +158,7 @@ public class DiagramNode extends EAMGraphCell
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();
 		dataMap.put(TYPE, new Integer(getNodeType()));
-		dataMap.put(RANKING, new Integer(getNodeRanking()));
+		dataMap.put(PRIORITY, new Integer(getNodePriority()));
 		return dataMap;
 	}
 	
@@ -168,15 +172,16 @@ public class DiagramNode extends EAMGraphCell
 	public static final int TYPE_STRESS = 5;
 
 	public static final String TYPE = "type";
-	public static final String RANKING = "ranking";
+	public static final String PRIORITY = "priority";
 
-	public static final int RANKING_VERY_HIGH =0;
-	public static final int RANKING_HIGH =1;
-	public static final int RANKING_MEDIUM =2;
-	public static final int RANKING_LOW =3;
-	public static final int RANKING_NONE =4;
+	public static final int PRIORITY_NOT_USED =-1;
+	public static final int PRIORITY_VERY_HIGH =0;
+	public static final int PRIORITY_HIGH =1;
+	public static final int PRIORITY_MEDIUM =2;
+	public static final int PRIORITY_LOW =3;
+	public static final int PRIORITY_NONE =4;
 	
 	NodeType type;
 	DefaultPort port;
-	int ranking;
+	int priority;
 }

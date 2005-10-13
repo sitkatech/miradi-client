@@ -4,6 +4,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -27,7 +28,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
-		int insertedId = insertTarget(project);
+		int insertedId = insertDirectThreat(project);
 		project.executeCommand(new CommandSetNodeText(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
@@ -54,9 +55,39 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getNodeCount());
 	}
 
-	private int insertTarget(Project project) throws CommandFailedException 
+	public void testUndoRedoPriority() throws Exception
 	{
-		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_TARGET);
+		Project project = new ProjectForTesting(getName());
+
+		int target1Priority = DiagramNode.PRIORITY_VERY_HIGH;
+		int insertedId = insertDirectThreat(project);
+
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetNodePriority(insertedId, target1Priority));
+		project.executeCommand(new CommandEndTransaction());
+
+		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+
+		Undo undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals("Should have still 1 nodes now.", 1, project.getDiagramModel().getNodeCount());
+		assertEquals(DiagramNode.PRIORITY_NONE, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+
+		Redo redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+
+		undo.doIt();
+		assertEquals("Should have no priority again", DiagramNode.PRIORITY_NONE, project.getDiagramModel().getNodeById(insertedId).getNodePriority());
+	}
+	
+	
+	private int insertDirectThreat(Project project) throws CommandFailedException 
+	{
+		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_DIRECT_THREAT);
 		project.executeCommand(insert);
 		int insertedId = insert.getId();
 		return insertedId;
