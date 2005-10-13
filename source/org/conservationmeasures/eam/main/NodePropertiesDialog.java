@@ -56,21 +56,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField;
 	}
 	
-	private Component createThreatLevelDropdown(int currentPriority)
+	private Component createThreatLevelDropdown(int currentPriorityValue)
 	{
-		if(currentPriority == ThreatPriority.PRIORITY_NOT_USED)
+		if(currentPriorityValue == ThreatPriority.PRIORITY_NOT_USED)
 			return new UiLabel("");
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		dropdownThreatPriority = new UiComboBox();
 		dropdownThreatPriority.setRenderer(new ThreatRenderer());
-		String[] items = ThreatPriority.getPriorityStringList();
-		for (int i = 0; i < items.length; i++) 
-		{
-			dropdownThreatPriority.addItem(items[i]);
-		}
+		
+		dropdownThreatPriority.addItem(ThreatPriority.createPriorityVeryHigh());
+		dropdownThreatPriority.addItem(ThreatPriority.createPriorityHigh());
+		dropdownThreatPriority.addItem(ThreatPriority.createPriorityMedium());
+		dropdownThreatPriority.addItem(ThreatPriority.createPriorityLow());
+		dropdownThreatPriority.addItem(ThreatPriority.createPriorityNone());
 
-		int selectedPriority = currentPriority;
-		dropdownThreatPriority.setSelectedIndex(selectedPriority);
+		dropdownThreatPriority.setSelectedItem(ThreatPriority.createFromInt(currentPriorityValue));
 		
 		Box threatLevelBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatPriority};
@@ -83,7 +83,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			setIcon(new ThreatPriorityIcon((String)value));
+			setIcon(new ThreatPriorityIcon((ThreatPriority)value));
 			return cell;
 		}
 	}
@@ -119,9 +119,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField.getText();
 	}
 	
-	public int getPriority()
+	public ThreatPriority getPriority()
 	{
-		return dropdownThreatPriority.getSelectedIndex();
+		return (ThreatPriority)dropdownThreatPriority.getSelectedItem();
 	}
 
 	boolean result;

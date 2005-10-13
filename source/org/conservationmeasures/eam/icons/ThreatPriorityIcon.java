@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
 public class ThreatPriorityIcon extends EamIcon 
 {
-	public ThreatPriorityIcon(String priorityLevel)
+	public ThreatPriorityIcon(ThreatPriority priorityToUse)
 	{
-		priorityStringLevel = priorityLevel;
+		priority = priorityToUse;
 	}
 	
 	MultilineNodeRenderer getRenderer() 
@@ -26,9 +26,9 @@ public class ThreatPriorityIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return ThreatPriority.getColor(priorityStringLevel);
+		return priority.getColor();
 	}
 	
-	private String priorityStringLevel;
+	private ThreatPriority priority;
 }
 
