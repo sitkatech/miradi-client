@@ -41,7 +41,7 @@ public class NodeProperties extends ProjectDoer
 		if(selectedNode == null)
 			return;
 		String title = EAM.text("Title|Node Properties");
-		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, selectedNode.createNodeDataMap());
+		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, selectedNode);
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;

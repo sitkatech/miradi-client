@@ -18,8 +18,6 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.martus.swing.UiButton;
@@ -31,19 +29,20 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, NodeDataMap nodeDataMap)
+	public NodePropertiesDialog(Frame parent, String title, DiagramNode node)
 			throws HeadlessException
 	{
 		super(parent, title);
+		
 		UiVBox bigBox = new UiVBox();
-		bigBox.add(createTextField(nodeDataMap.getString(EAMGraphCell.TEXT)));
-		bigBox.add(createThreatLevelDropdown(nodeDataMap.getInt(DiagramNode.PRIORITY)));
+		bigBox.add(createTextField(node.getText()));
+		bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
 		contents.add(bigBox);
 		pack();
-		setLocation(nodeDataMap.getPoint(EAMGraphCell.LOCATION));
+		setLocation(node.getLocation());
 		setResizable(true);
 		setModal(true);
 	}
@@ -56,10 +55,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField;
 	}
 	
-	private Component createThreatLevelDropdown(int currentPriorityValue)
+	private Component createThreatLevelDropdown(ThreatPriority currentPriority)
 	{
-		if(currentPriorityValue == ThreatPriority.PRIORITY_NOT_USED)
+		if(currentPriority == null)
 			return new UiLabel("");
+		
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		dropdownThreatPriority = new UiComboBox();
 		dropdownThreatPriority.setRenderer(new ThreatRenderer());
@@ -70,7 +70,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		dropdownThreatPriority.addItem(ThreatPriority.createPriorityLow());
 		dropdownThreatPriority.addItem(ThreatPriority.createPriorityNone());
 
-		dropdownThreatPriority.setSelectedItem(ThreatPriority.createFromInt(currentPriorityValue));
+		dropdownThreatPriority.setSelectedItem(currentPriority);
 		
 		Box threatLevelBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatPriority};
