@@ -96,7 +96,7 @@ public class CommandSetNodePriority extends Command
 		return id;
 	}
 	
-	private static final int INVALID = -1;
+	private static final int INVALID = -2;
 	public static final String COMMAND_NAME = "SetNodePriority";
 
 	int id;
