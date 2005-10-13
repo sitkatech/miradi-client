@@ -89,9 +89,29 @@ public class ThreatPriority
 		return new String[]{PRIORITY_VERY_HIGH_STRING, PRIORITY_HIGH_STRING, PRIORITY_MEDIUM_STRING, PRIORITY_LOW_STRING, PRIORITY_NONE_STRING};
 	}
 	
+	
 	public Color getColor()
 	{
-		switch(priority)
+		return getColor(priority);
+	}
+	
+	public static Color getColor(String priorityLevelString)
+	{
+		if(priorityLevelString.equals(PRIORITY_VERY_HIGH_STRING))
+			return getColor(PRIORITY_VERY_HIGH);
+		else if(priorityLevelString.equals(PRIORITY_HIGH_STRING))
+			return getColor(PRIORITY_HIGH);
+		else if(priorityLevelString.equals(PRIORITY_MEDIUM_STRING))
+			return getColor(PRIORITY_MEDIUM);
+		else if(priorityLevelString.equals(PRIORITY_LOW_STRING))
+			return getColor(PRIORITY_LOW);
+		else
+			return getColor(PRIORITY_NONE);
+	}
+	
+	private static Color getColor(int priorityLevel)
+	{
+		switch(priorityLevel)
 		{
 		case PRIORITY_VERY_HIGH:
 			return Color.RED;

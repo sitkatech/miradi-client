@@ -13,12 +13,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JDialog;
+import javax.swing.JList;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -59,6 +62,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			return new UiLabel("");
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		dropdownThreatPriority = new UiComboBox();
+		dropdownThreatPriority.setRenderer(new ThreatRenderer());
 		String[] items = ThreatPriority.getPriorityStringList();
 		for (int i = 0; i < items.length; i++) 
 		{
@@ -72,6 +76,16 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatPriority};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
+	}
+	
+	class ThreatRenderer extends DefaultListCellRenderer
+	{
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+		{
+			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			setIcon(new ThreatPriorityIcon((String)value));
+			return cell;
+		}
 	}
 
 	private Box createButtonBar()
