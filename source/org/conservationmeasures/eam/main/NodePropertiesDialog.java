@@ -87,14 +87,12 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		UiLabel textIndicator = new UiLabel(EAM.text("Label|Indicator"));
 		dropdownIndicator = new UiComboBox();
-		dropdownIndicator.addItem(EAM.text("None"));
-		dropdownIndicator.addItem("1");
-		dropdownIndicator.addItem("2");
-		dropdownIndicator.addItem("3");
-		if(indicator.hasIndicator())
-			dropdownIndicator.setSelectedIndex(indicator.getValue());
-		else
-			dropdownIndicator.setSelectedIndex(0);
+		dropdownIndicator.addItem(new Indicator());
+		dropdownIndicator.addItem(new Indicator(1));
+		dropdownIndicator.addItem(new Indicator(2));
+		dropdownIndicator.addItem(new Indicator(3));
+
+		dropdownIndicator.setSelectedItem(indicator);
 		
 		Box indicatorBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textIndicator, new UiLabel(" "), dropdownIndicator,Box.createHorizontalGlue()};
@@ -150,11 +148,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	public Indicator getIndicator()
 	{
-		int index = dropdownIndicator.getSelectedIndex();
-		Indicator indicator = new Indicator();
-		if(index > 0)
-			indicator.setValue(index);
-		return indicator;
+		return (Indicator)dropdownIndicator.getSelectedItem();
 	}
 
 	boolean result;

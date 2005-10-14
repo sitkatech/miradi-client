@@ -73,7 +73,7 @@ public class TestDiagramNode extends EAMTestCase
 		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
 		Indicator indicator = nodeDirectThreat.getIndicator();
 		assertFalse(indicator.hasIndicator());
-		assertEquals("", indicator.toString());
+		assertEquals(Indicator.INDICATOR_NONE_STRING, indicator.toString());
 		int value = 2;
 		indicator.setValue(value);
 		assertTrue(indicator.hasIndicator());

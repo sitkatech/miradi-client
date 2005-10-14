@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.main.EAM;
+
 public class Indicator 
 {
 	public Indicator()
@@ -15,13 +17,24 @@ public class Indicator
 		indicator = INDICATOR_NONE;
 	}
 	
+	public Indicator(int value)
+	{
+		indicator = value;
+	}
+	
 	public String toString()
 	{
 		if(hasIndicator())
 			return String.valueOf(indicator).toString();
-		return "";
+		return INDICATOR_NONE_STRING;
 	}
 		
+	public boolean equals(Object obj) 
+	{
+		if(!(obj instanceof Indicator))
+			return false;
+		return ((Indicator)obj).indicator == indicator;
+	}
 	
 	public boolean hasIndicator()
 	{
@@ -44,6 +57,7 @@ public class Indicator
 	}
 	
 	public static final int INDICATOR_NONE = -1;
+	public static final String INDICATOR_NONE_STRING = EAM.text("None");
 	private static final Color LIGHT_PURPLE = Color.getHSBColor((float)0.70,(float)0.40,(float)0.95);
 	int indicator;
 }
