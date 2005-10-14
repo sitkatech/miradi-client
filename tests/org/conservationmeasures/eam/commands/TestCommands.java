@@ -15,6 +15,7 @@ import java.util.Arrays;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
@@ -154,23 +155,46 @@ public class TestCommands extends EAMTestCase
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
-		int originalPriority = ThreatPriority.createPriorityNone().getValue();
-		assertEquals("New node should have priority level as None", originalPriority, node.getThreatPriority().getValue());
+		ThreatPriority originalPriority = node.getThreatPriority();
+		assertEquals("New node should have priority level as None", originalPriority, node.getThreatPriority());
 
-		ThreatPriority createPriorityLow = ThreatPriority.createPriorityLow();
-		int newPriority = createPriorityLow.getValue();
-		CommandSetNodePriority cmd = new CommandSetNodePriority(id, createPriorityLow);
+		ThreatPriority newPriorityLow = ThreatPriority.createPriorityLow();
+		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriorityLow);
 		project.executeCommand(cmd);
-		assertEquals("didn't memorize old priority?", originalPriority, cmd.getPreviousPriority().getValue());
-		assertEquals( newPriority, node.getThreatPriority().getValue());
+		assertEquals("didn't memorize old priority?", originalPriority, cmd.getPreviousPriority());
+		assertEquals( newPriorityLow, node.getThreatPriority());
 
 		CommandSetNodePriority loaded = (CommandSetNodePriority)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new priority?", newPriority, loaded.getCurrentPriority().getValue());
-		assertEquals("didn't restore previous text?", originalPriority, loaded.getPreviousPriority().getValue());
+		assertEquals("didn't restore new priority?", newPriorityLow, loaded.getCurrentPriority());
+		assertEquals("didn't restore previous priority?", originalPriority, loaded.getPreviousPriority());
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(id).getThreatPriority().getValue());
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+
+	public void testCommandSetIndicator() throws Exception
+	{
+		int id = insertTarget();
+		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		assertFalse("New target should not have an indicator", node.getIndicator().hasIndicator());
+		Indicator originalIndicator = node.getIndicator();
+		
+		Indicator indicator1 = new Indicator(1);
+		CommandSetIndicator cmd = new CommandSetIndicator(id, indicator1);
+		project.executeCommand(cmd);
+		assertEquals("didn't memorize old indicator?", originalIndicator, cmd.getPreviousIndicator());
+		assertEquals( indicator1, node.getIndicator());
+
+		CommandSetIndicator loaded = (CommandSetIndicator)saveAndReload(cmd);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("didn't restore new indicator?", indicator1, loaded.getCurrentIndicator());
+		assertEquals("didn't restore previous indicator?", originalIndicator, loaded.getPreviousIndicator());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalIndicator, project.getDiagramModel().getNodeById(id).getIndicator());
 		
 		verifyUndoTwiceThrows(cmd);
 	}

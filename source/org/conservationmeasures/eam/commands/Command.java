@@ -51,6 +51,8 @@ public abstract class Command
 			return new CommandSetData(dataIn);
 		if(commandName.equals(CommandSetNodePriority.COMMAND_NAME))
 			return new CommandSetNodePriority(dataIn);
+		if(commandName.equals(CommandSetIndicator.COMMAND_NAME))
+			return new CommandSetIndicator(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
 	}
 	
@@ -87,13 +89,10 @@ public abstract class Command
 
 	abstract public String getCommandName();
 	abstract public void execute(Project target) throws CommandFailedException;
-	
+	abstract public void undo(Project target) throws CommandFailedException;
+
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 	}
 	
-	public void undo(Project target) throws CommandFailedException
-	{
-		throw new RuntimeException("Not implemented yet");
-	}
 }

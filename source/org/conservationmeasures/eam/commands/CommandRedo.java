@@ -41,7 +41,10 @@ public class CommandRedo extends Command
 		target.redo();
 	}
 
-
+	public void undo(Project target) throws CommandFailedException
+	{
+	}
+	
 	public static final String COMMAND_NAME = "Redo";
 
 }

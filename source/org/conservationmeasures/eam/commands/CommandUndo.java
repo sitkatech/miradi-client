@@ -41,6 +41,10 @@ public class CommandUndo extends Command
 		target.undo();
 	}
 
+	public void undo(Project target) throws CommandFailedException
+	{
+	}
+
 	public static final String COMMAND_NAME = "Undo";
 
 }

@@ -4,9 +4,11 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -85,6 +87,32 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have no priority again", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(insertedId).getThreatPriority().getValue());
 	}
 	
+	public void testUndoRedoIndication() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+
+		Indicator target1Indicator = new Indicator(2);
+		int insertedId = insertDirectThreat(project);
+
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetIndicator(insertedId, target1Indicator));
+		project.executeCommand(new CommandEndTransaction());
+
+		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicator());
+
+		Undo undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(new Indicator(), project.getDiagramModel().getNodeById(insertedId).getIndicator());
+
+		Redo redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicator());
+
+		undo.doIt();
+		assertEquals("Should have no indicator again", new Indicator(), project.getDiagramModel().getNodeById(insertedId).getIndicator());
+	}
 	
 	private int insertDirectThreat(Project project) throws CommandFailedException 
 	{
