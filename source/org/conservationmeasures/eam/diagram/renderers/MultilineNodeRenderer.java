@@ -142,7 +142,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		
 		DiagramNode node = (DiagramNode)view.getCell();
 		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
-		if(node.isDirectThreat() || node.isStress())
+		if(node.canHavePriority())
 			priority = node.getThreatPriority();
 		else
 			priority = null;

@@ -36,7 +36,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
-		bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
+		if(node.canHavePriority())
+			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -57,9 +58,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	private Component createThreatLevelDropdown(ThreatPriority currentPriority)
 	{
-		if(currentPriority == null)
-			return new UiLabel("");
-		
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		dropdownThreatPriority = new UiComboBox();
 		dropdownThreatPriority.setRenderer(new ThreatRenderer());

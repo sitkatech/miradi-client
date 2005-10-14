@@ -27,11 +27,9 @@ public class DiagramNode extends EAMGraphCell
 				break;
 			case TYPE_DIRECT_THREAT:
 				type = new NodeTypeDirectThreat();
-				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_STRESS:
 				type = new NodeTypeStress();
-				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_INTERVENTION:
 				type = new NodeTypeIntervention();
@@ -39,6 +37,10 @@ public class DiagramNode extends EAMGraphCell
 			default:
 				throw new RuntimeException("Unknown node type: " + nodeType);
 		}
+		
+		if(canHavePriority(type))
+			setNodePriority(ThreatPriority.createPriorityNone());
+		
 		port = new DefaultPort();
 		add(port);
 		setColors(type);
@@ -78,6 +80,19 @@ public class DiagramNode extends EAMGraphCell
 		threatPriority = priorityToUse;
 	}
 	
+	public boolean canHavePriority()
+	{
+		return canHavePriority(type);
+	}
+	
+	private boolean canHavePriority(NodeType nodeType)
+	{
+		if(nodeType.isDirectThreat())
+			return true;
+		if(nodeType.isStress())
+			return true;
+		return false;
+	}
 
 	public boolean isTarget()
 	{

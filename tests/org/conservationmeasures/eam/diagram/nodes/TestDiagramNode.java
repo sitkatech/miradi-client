@@ -50,6 +50,24 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals(id, testNode.getId());
 	}
 	
+	public void testPriorities()
+	{
+		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		assertTrue(nodeDirectThreat.canHavePriority());
+
+		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		assertTrue(nodeStress.canHavePriority());
+
+		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		assertFalse(nodeIndirectFactor.canHavePriority());
+
+		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		assertFalse(nodeIntervention.canHavePriority());
+
+		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		assertFalse(nodeTarget.canHavePriority());
+	}
+	
 	public void testColors()
 	{
 		NodeTypeIndirectFactor factorType = new NodeTypeIndirectFactor();
