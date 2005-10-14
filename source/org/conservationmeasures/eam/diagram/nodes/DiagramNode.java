@@ -24,7 +24,6 @@ public class DiagramNode extends EAMGraphCell
 				break;
 			case TYPE_INDIRECT_FACTOR:
 				type = new NodeTypeIndirectFactor();
-				setNodePriority(ThreatPriority.createPriorityNone());
 				break;
 			case TYPE_DIRECT_THREAT:
 				type = new NodeTypeDirectThreat();

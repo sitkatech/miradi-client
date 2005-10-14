@@ -31,7 +31,7 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		setPaint(g2, rect, color);
 		g.fillRect(rect.x, rect.y, rect.width, rect.height);
 		
-		if(priority != null)
+		if(priority != null && !priority.isPriorityNone())
 		{
 			Rectangle smallRect = new Rectangle();
 			smallRect.x = rect.x + rect.width - PRIORITY_WIDTH;

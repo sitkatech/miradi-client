@@ -105,6 +105,11 @@ public class ThreatPriority
 			return Color.WHITE;
 		}
 	}
+	
+	public boolean isPriorityNone()
+	{
+		return priority == PRIORITY_NONE;
+	}
 
 	public static final int PRIORITY_NOT_USED =-1;
 	private static final int PRIORITY_VERY_HIGH =0;

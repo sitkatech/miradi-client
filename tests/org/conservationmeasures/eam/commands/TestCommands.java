@@ -89,7 +89,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		int[] ids = {insertTarget(), insertFactor(), insertFactor(), insertIntervention()};
+		int[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -148,7 +148,11 @@ public class TestCommands extends EAMTestCase
 		node = project.getDiagramModel().getNodeById(interventionId);
 		assertNull("New intervention should have a null priority level", node.getThreatPriority());
 		
-		int id = insertFactor();
+		int indirectId = insertIndirectFactor();
+		node = project.getDiagramModel().getNodeById(indirectId);
+		assertNull("New indirect factor should have a null priority level", node.getThreatPriority());
+
+		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
 		int originalPriority = ThreatPriority.createPriorityNone().getValue();
 		assertEquals("New node should have priority level as None", originalPriority, node.getThreatPriority().getValue());
@@ -292,7 +296,7 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		int from = insertFactor();
+		int from = insertIndirectFactor();
 		int to = insertTarget();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		project.executeCommand(cmd);
@@ -321,7 +325,7 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		int from = insertIntervention();
-		int to = insertFactor();
+		int to = insertIndirectFactor();
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
@@ -490,9 +494,15 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 	
-	private int insertFactor() throws Exception
+	private int insertIndirectFactor() throws Exception
 	{
 		int type = DiagramNode.TYPE_INDIRECT_FACTOR;
+		return insertNode(type);
+	}
+
+	private int insertDirectThreat() throws Exception
+	{
+		int type = DiagramNode.TYPE_DIRECT_THREAT;
 		return insertNode(type);
 	}
 
