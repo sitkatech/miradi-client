@@ -56,6 +56,7 @@ import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -102,6 +103,9 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			}
 			fillShape(g2, rect, getBackground());
 		}
+		
+		drawIndicator(rect, g2);
+		
 		int xInset = getInsetDimension().width;
 		int yInset = getInsetDimension().height;
 		label.setBorder(new EmptyBorder(yInset, xInset, yInset, xInset));
@@ -127,6 +131,27 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			drawBorder(g2, rect, Color.BLACK);
 		}
 	}
+
+	private void drawIndicator(Rectangle rect, Graphics2D g2) 
+	{
+		if(indicator != null && indicator.hasIndicator())
+		{
+			TriangleRenderer indicatorRenderer = new TriangleRenderer();
+			Rectangle smallTriangle = new Rectangle();
+			smallTriangle.x = rect.x;
+			smallTriangle.y = rect.y;
+			smallTriangle.width = INDICATOR_WIDTH;
+			smallTriangle.height = INDICATOR_HEIGHT;
+			setPaint(g2, smallTriangle, indicator.getColor());
+			indicatorRenderer.fillShape(g2, smallTriangle, indicator.getColor());
+			
+			JLabel indicatorLabel = new JLabel(indicator.toString());
+			indicatorLabel.setSize(smallTriangle.getSize());
+			indicatorLabel.setHorizontalAlignment(JLabel.CENTER);
+			indicatorLabel.setVerticalAlignment(JLabel.CENTER);
+			indicatorLabel.paint(g2);
+		}
+	}
 	
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
@@ -146,6 +171,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			priority = node.getThreatPriority();
 		else
 			priority = null;
+		indicator = node.getIndicator();
 		return this;
 	}
 	
@@ -181,6 +207,9 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	public static final String HTML_AFTER_TEXT = "</font></div></html>";
 	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
 
+	private static final int INDICATOR_WIDTH = 30;
+	private static final int INDICATOR_HEIGHT = 30;
+	
 	JGraph graph;
 	JLabel label;
 	int borderWidth;
@@ -191,4 +220,5 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	
 	boolean isVisible;
 	ThreatPriority priority;
+	Indicator indicator;
 }
