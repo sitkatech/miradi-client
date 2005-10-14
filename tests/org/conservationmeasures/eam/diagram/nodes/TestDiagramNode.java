@@ -68,6 +68,18 @@ public class TestDiagramNode extends EAMTestCase
 		assertFalse(nodeTarget.canHavePriority());
 	}
 	
+	public void testIndicator()
+	{
+		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		Indicator indicator = nodeDirectThreat.getIndicator();
+		assertFalse(indicator.hasIndicator());
+		assertEquals("", indicator.toString());
+		int value = 2;
+		indicator.setValue(value);
+		assertTrue(indicator.hasIndicator());
+		assertEquals(String.valueOf(value).toString(), indicator.toString());
+	}
+	
 	public void testColors()
 	{
 		NodeTypeIndirectFactor factorType = new NodeTypeIndirectFactor();
