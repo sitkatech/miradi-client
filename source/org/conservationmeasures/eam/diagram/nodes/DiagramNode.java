@@ -40,7 +40,7 @@ public class DiagramNode extends EAMGraphCell
 		
 		if(canHavePriority(type))
 			setNodePriority(ThreatPriority.createPriorityNone());
-		
+		indicator = new Indicator();
 		port = new DefaultPort();
 		add(port);
 		setColors(type);
@@ -92,6 +92,16 @@ public class DiagramNode extends EAMGraphCell
 		if(nodeType.isStress())
 			return true;
 		return false;
+	}
+
+	public Indicator getIndicator()
+	{
+		return indicator;
+	}
+	
+	public void setIndicator(Indicator indicatorToUse)
+	{
+		indicator = indicatorToUse;
 	}
 
 	public boolean isTarget()
@@ -174,4 +184,5 @@ public class DiagramNode extends EAMGraphCell
 	NodeType type;
 	DefaultPort port;
 	ThreatPriority threatPriority;
+	Indicator indicator;
 }

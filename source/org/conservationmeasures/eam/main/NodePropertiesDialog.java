@@ -18,6 +18,7 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.martus.swing.UiButton;
@@ -36,6 +37,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
+		bigBox.add(createIndicator(node.getIndicator()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
@@ -48,12 +50,17 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		setModal(true);
 	}
 	
-	private UiTextField createTextField(String initialText)
+	private Component createTextField(String initialText)
 	{
+		UiLabel textLabel = new UiLabel(EAM.text("Label|Label"));
 		textField = new UiTextField(initialText);
 		textField.requestFocus(true);
 		textField.selectAll();
-		return textField;
+
+		Box labelBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textLabel, new UiLabel(" "), textField, Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(labelBar, components);
+		return labelBar;
 	}
 	
 	private Component createThreatLevelDropdown(ThreatPriority currentPriority)
@@ -71,9 +78,28 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		dropdownThreatPriority.setSelectedItem(currentPriority);
 		
 		Box threatLevelBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), textThreatLevel, dropdownThreatPriority};
+		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropdownThreatPriority, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
+	}
+	
+	public Component createIndicator(Indicator indicator)
+	{
+		UiLabel textIndicator = new UiLabel(EAM.text("Label|Indicator"));
+		dropdownIndicator = new UiComboBox();
+		dropdownIndicator.addItem(EAM.text("None"));
+		dropdownIndicator.addItem("1");
+		dropdownIndicator.addItem("2");
+		dropdownIndicator.addItem("3");
+		if(indicator.hasIndicator())
+			dropdownIndicator.setSelectedIndex(indicator.getValue());
+		else
+			dropdownIndicator.setSelectedIndex(0);
+		
+		Box indicatorBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textIndicator, new UiLabel(" "), dropdownIndicator,Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(indicatorBar, components);
+		return indicatorBar;
 	}
 	
 	class ThreatRenderer extends DefaultListCellRenderer
@@ -121,10 +147,20 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		return (ThreatPriority)dropdownThreatPriority.getSelectedItem();
 	}
+	
+	public Indicator getIndicator()
+	{
+		int index = dropdownIndicator.getSelectedIndex();
+		Indicator indicator = new Indicator();
+		if(index > 0)
+			indicator.setValue(index);
+		return indicator;
+	}
 
 	boolean result;
 	UiTextField textField;
 	UiComboBox dropdownThreatPriority;
+	UiComboBox dropdownIndicator;
 	UiButton okButton;
 	UiButton cancelButton;
 }
