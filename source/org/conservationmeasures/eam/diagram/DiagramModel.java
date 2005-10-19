@@ -15,6 +15,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphModel;
 
@@ -122,6 +123,22 @@ public class DiagramModel extends DefaultGraphModel
 		}
 		
 		return false;
+	}
+	
+	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
+	{
+		for(int i=0; i < ids.length; ++i)
+		{
+			try
+			{
+				DiagramNode node = getNodeById(ids[0]);
+				notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeMoved());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
 	}
 	
 	public int getNodeCount()

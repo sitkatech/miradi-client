@@ -264,6 +264,10 @@ public class TableView extends UmbrellaView
 		{
 		}
 		
+		public void nodeMoved(DiagramModelEvent event)
+		{
+		}
+		
 		final static int TABLE_COLUMN_NAME = 0;
 		final static int TABLE_COLUMN_TYPE = 1;
 		final static int TABLE_COLUMN_INDICATOR = 2;
@@ -339,6 +343,10 @@ public class TableView extends UmbrellaView
 		}
 
 		public void nodeChanged(DiagramModelEvent event) 
+		{
+		}
+		
+		public void nodeMoved(DiagramModelEvent event)
 		{
 		}
 		

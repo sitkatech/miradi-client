@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -90,11 +89,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public DiagramModel getDiagramModel()
 	{
 		return (DiagramModel)getModel();
-	}
-	
-	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
-	{
-		project.recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
 	}
 	
 	public void showContextMenu(MouseEvent e)

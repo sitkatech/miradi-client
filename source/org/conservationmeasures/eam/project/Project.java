@@ -329,6 +329,12 @@ public class Project
 		return insertedLinkageId;
 	}
 	
+	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
+	{
+		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);
+		recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
+	}
+	
 	public void undo() throws CommandFailedException
 	{
 		getCommandToUndo().undo(this);

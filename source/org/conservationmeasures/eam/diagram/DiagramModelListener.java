@@ -13,6 +13,7 @@ public interface DiagramModelListener extends EventListener
 	public void nodeAdded(DiagramModelEvent event);
 	public void nodeChanged(DiagramModelEvent event);
 	public void nodeDeleted(DiagramModelEvent event);
+	public void nodeMoved(DiagramModelEvent event);
 	public void linkageAdded(DiagramModelEvent event);
 	public void linkageDeleted(DiagramModelEvent event);
 }

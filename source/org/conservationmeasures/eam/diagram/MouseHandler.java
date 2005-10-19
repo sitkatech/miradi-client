@@ -61,7 +61,6 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		diagram.getDiagramModel();
 		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
@@ -82,7 +81,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		if(deltaX == 0 && deltaY == 0)
 			return;
 		
-		diagram.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
+		project.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
 	}
 
 	public void mouseEntered(MouseEvent arg0)

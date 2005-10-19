@@ -126,41 +126,53 @@ public class TestDiagramModel extends EAMTestCase
 		testModel.addListener(model);
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
-		assertEquals(0, testModel.nodeChanged);
-		assertEquals(0, testModel.nodeDeleted);
-		assertEquals(0, testModel.linkAdded);
-		assertEquals(0, testModel.linkDeleted);
+		assertEquals("node changed already called?", 0, testModel.nodeChanged);
+		assertEquals("node deleted already called?", 0, testModel.nodeDeleted);
+		assertEquals("node add did a node move notify?", 0, testModel.nodeMoved);
+		assertEquals("added already called?", 0, testModel.linkAdded);
+		assertEquals("linkage deleted already called?", 0, testModel.linkDeleted);
 		
 		model.updateCell(node1);
-		assertEquals(1, testModel.nodeAdded);
-		assertEquals(1, testModel.nodeChanged);
+		assertEquals("update did a node add notify?", 1, testModel.nodeAdded);
+		assertEquals("update didn't do a node changed notify?", 1, testModel.nodeChanged);
 		assertEquals("test model fired a delete action for a modify?", 0, testModel.nodeDeleted);
-		assertEquals(0, testModel.linkAdded);
-		assertEquals(0, testModel.linkDeleted);
+		assertEquals("update did a node move notify?", 0, testModel.nodeMoved);
+		assertEquals("update did a link add notify?", 0, testModel.linkAdded);
+		assertEquals("update did a linkdeleted notify?", 0, testModel.linkDeleted);
 		
 		model.deleteNode(node1);
-		assertEquals(1, testModel.nodeDeleted);
-		assertEquals(1, testModel.nodeAdded);
+		assertEquals("delete node didn't notify?", 1, testModel.nodeDeleted);
+		assertEquals("delete node triggered a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);
-		assertEquals(0, testModel.linkAdded);
-		assertEquals(0, testModel.linkDeleted);
+		assertEquals("node delete did a node move notify?", 0, testModel.nodeMoved);
+		assertEquals("delete node did a link add notify?", 0, testModel.linkAdded);
+		assertEquals("delete node did a link delete notify?", 0, testModel.linkDeleted);
 
 		DiagramNode node2 = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = model.createNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage link1 = model.createLinkage(DiagramNode.INVALID_ID, node2.getId(), node3.getId());
-		assertEquals(3, testModel.nodeAdded);
-		assertEquals(1, testModel.nodeDeleted);
-		assertEquals(1, testModel.nodeChanged);
+		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
+		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
+		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
+		assertEquals("link add did a node move notify?", 0, testModel.nodeMoved);
 		assertEquals("test model linkageAdded action not called for addition of a link?", 1, testModel.linkAdded);
-		assertEquals(0, testModel.linkDeleted);
+		assertEquals("add link did a delete link notify?", 0, testModel.linkDeleted);
+
 		model.deleteLinkage(link1);
-		assertEquals(3, testModel.nodeAdded);
-		assertEquals(1, testModel.nodeDeleted);
-		assertEquals(1, testModel.nodeChanged);
-		assertEquals(1, testModel.linkAdded);
-		assertEquals("test model linkagaDeleted action not called?",1, testModel.linkDeleted);
+		assertEquals("link delete did a node add notify?", 3, testModel.nodeAdded);
+		assertEquals("link delete did a node delete notify?", 1, testModel.nodeDeleted);
+		assertEquals("link delete did a node change notify?", 1, testModel.nodeChanged);
+		assertEquals("link delete did a node move notify?", 0, testModel.nodeMoved);
+		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
+		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
 		
-		
+		model.nodesWereMoved(1, 1, new int[] {node2.getId(), node3.getId()});
+		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
+		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
+		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);
+		assertEquals("node move didn't do all node move notify's?", 2, testModel.nodeMoved);
+		assertEquals("move nodes did a link add notify?", 1, testModel.linkAdded);
+		assertEquals("move nodes did a link delete notify?", 1, testModel.linkDeleted);
 		
 	}
 	
@@ -187,6 +199,11 @@ public class TestDiagramModel extends EAMTestCase
 			nodeChanged++;
 		}
 		
+		public void nodeMoved(DiagramModelEvent event) 
+		{
+			nodeMoved++;
+		}
+
 		public void linkageAdded(DiagramModelEvent event) 
 		{
 			linkAdded++;
@@ -202,6 +219,7 @@ public class TestDiagramModel extends EAMTestCase
 		int nodeChanged = 0;
 		int linkAdded = 0;
 		int linkDeleted = 0;
+		int nodeMoved = 0;
 	}
 
 	
