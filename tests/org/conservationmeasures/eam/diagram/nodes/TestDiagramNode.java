@@ -68,6 +68,24 @@ public class TestDiagramNode extends EAMTestCase
 		assertFalse(nodeTarget.canHavePriority());
 	}
 	
+	public void testObjectives()
+	{
+		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		assertTrue(nodeDirectThreat.canHaveObjective());
+
+		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		assertTrue(nodeStress.canHaveObjective());
+
+		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		assertTrue(nodeIndirectFactor.canHaveObjective());
+
+		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		assertTrue(nodeIntervention.canHaveObjective());
+
+		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		assertFalse(nodeTarget.canHaveObjective());
+	}
+
 	public void testIndicator()
 	{
 		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);

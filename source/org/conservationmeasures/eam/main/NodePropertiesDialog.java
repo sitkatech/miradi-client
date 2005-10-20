@@ -11,6 +11,7 @@ import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
@@ -19,6 +20,7 @@ import javax.swing.JList;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
+import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.martus.swing.UiButton;
@@ -38,6 +40,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
 		bigBox.add(createIndicator(node.getIndicator()));
+		if(node.canHaveObjective())
+			bigBox.add(createObjectiveDropdown(node.getObjectives(),node.getObjective()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
@@ -81,6 +85,22 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropdownThreatPriority, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
+	}
+	
+	public Component createObjectiveDropdown(Vector objectives, Objective currentObjective)
+	{
+		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
+		dropdownObjective = new UiComboBox();
+		for(int i = 0; i < objectives.size(); ++i)
+		{
+			dropdownObjective.addItem(objectives.get(i));
+		}
+		dropdownObjective.setSelectedItem(currentObjective);
+		
+		Box ObjectiveBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
+		return ObjectiveBar;
 	}
 	
 	public Component createIndicator(Indicator indicator)
@@ -155,6 +175,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	UiTextField textField;
 	UiComboBox dropdownThreatPriority;
 	UiComboBox dropdownIndicator;
+	UiComboBox dropdownObjective;
 	UiButton okButton;
 	UiButton cancelButton;
 }

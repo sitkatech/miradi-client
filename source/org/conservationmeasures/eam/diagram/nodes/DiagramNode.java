@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Vector;
 
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -40,6 +41,7 @@ public class DiagramNode extends EAMGraphCell
 		
 		if(canHavePriority(type))
 			setNodePriority(ThreatPriority.createPriorityNone());
+		objective = new Objective();
 		indicator = new Indicator();
 		port = new DefaultPort();
 		add(port);
@@ -102,6 +104,71 @@ public class DiagramNode extends EAMGraphCell
 	public void setIndicator(Indicator indicatorToUse)
 	{
 		indicator = indicatorToUse;
+	}
+	
+
+	public boolean canHaveObjective()
+	{
+		return canHaveObjective(type);
+	}
+
+	private boolean canHaveObjective(NodeType nodeType)
+	{
+		if(nodeType.isDirectThreat())
+			return true;
+		if(nodeType.isIndirectFactor())
+			return true;
+		if(nodeType.isIntervention())
+			return true;
+		if(nodeType.isStress())
+			return true;
+		return false;
+	}
+	
+	public Vector getObjectives()
+	{
+		//TODO: These will be replaced by real user entered data from a wizard
+		Vector objectives = new Vector();
+		if(type.isDirectThreat())
+		{
+			objectives.add(new Objective());
+			objectives.add(new Objective("1a"));
+			objectives.add(new Objective("1b"));
+			objectives.add(new Objective("2"));
+		}
+		else if (type.isIndirectFactor())
+		{
+			objectives.add(new Objective());
+			objectives.add(new Objective("A"));
+			objectives.add(new Objective("B"));
+			objectives.add(new Objective("C"));
+			objectives.add(new Objective("D"));
+		}
+		else if (type.isStress())
+		{
+			objectives.add(new Objective());
+			objectives.add(new Objective("1"));
+			objectives.add(new Objective("2"));
+			objectives.add(new Objective("3"));
+		}
+		else if (type.isIntervention())
+		{
+			objectives.add(new Objective());
+			objectives.add(new Objective("a"));
+			objectives.add(new Objective("b"));
+			objectives.add(new Objective("c"));
+		}
+		return objectives;
+	}
+
+	public Objective getObjective()
+	{
+		return objective;
+	}
+
+	public void setObjective(Objective objectiveToUse)
+	{
+		objective = objectiveToUse;
 	}
 
 	public boolean isTarget()
@@ -185,4 +252,5 @@ public class DiagramNode extends EAMGraphCell
 	DefaultPort port;
 	ThreatPriority threatPriority;
 	Indicator indicator;
+	Objective objective;
 }
