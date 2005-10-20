@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Hashtable;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
@@ -64,13 +63,6 @@ public class EAMGraphCell extends DefaultGraphCell
 		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
 	}
 	
-	public Hashtable getNestedAttributeMap()
-	{
-		Hashtable nest = new Hashtable();
-		nest.put(this, getAttributes());
-		return nest;
-	}
-
 	public void setText(String text)
 	{
 		GraphConstants.setValue(getAttributes(), text);

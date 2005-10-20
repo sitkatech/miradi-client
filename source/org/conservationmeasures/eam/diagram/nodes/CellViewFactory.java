@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
@@ -13,6 +14,11 @@ public class CellViewFactory extends DefaultCellViewFactory
 {
 	protected VertexView createVertexView(Object view)
 	{
+		if(view instanceof ProjectScopeBox)
+		{
+			return new RectangleNodeView(view);
+		}
+		
 		DiagramNode node = (DiagramNode)view;
 		if(node.isTarget())
 		{

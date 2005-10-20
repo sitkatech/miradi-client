@@ -12,11 +12,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.ConnectionSet;
+import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 
 public class DiagramModel extends DefaultGraphModel
@@ -31,6 +32,13 @@ public class DiagramModel extends DefaultGraphModel
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 		cellInventory.clear();
+		projectScopeBox = new ProjectScopeBox(this);
+		insertCell(projectScopeBox);
+	}
+	
+	public ProjectScopeBox getProjectScopeBox()
+	{
+		return projectScopeBox;
 	}
 
 	public DiagramNode createNode(int nodeType) throws Exception
@@ -42,14 +50,27 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		DiagramNode node = new DiagramNode(nodeType);
 		node.setId(id);
-		Object[] nodes = new Object[] {node};
-		Hashtable nestedAttributeMap = node.getNestedAttributeMap();
-		insert(nodes, nestedAttributeMap, null, null, null);
+		insertCell(node);
 		cellInventory.addNode(node);
 		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
 		return node;
 	}
 
+	private void insertCell(DefaultGraphCell cell)
+	{
+		Object[] cells = new Object[] {cell};
+		Hashtable nestedAttributeMap = getNestedAttributeMap(cell);
+		insert(cells, nestedAttributeMap, null, null, null);
+	}
+
+	public Hashtable getNestedAttributeMap(DefaultGraphCell cell)
+	{
+		Hashtable nest = new Hashtable();
+		nest.put(cell, cell.getAttributes());
+		return nest;
+	}
+
+	
 	private DiagramModelEvent createDiagramModelEvent(EAMGraphCell node) throws Exception 
 	{
 		return new DiagramModelEvent(this, node);
@@ -90,7 +111,7 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramLinkage linkage = new DiagramLinkage(fromNode, toNode);
 		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
-		Map nestedMap = linkage.getNestedAttributeMap();
+		Map nestedMap = getNestedAttributeMap(linkage);
 		ConnectionSet cs = linkage.getConnectionSet();
 		insert(linkages, nestedMap, cs, null, null);
 		cellInventory.addLinkage(linkage);
@@ -158,7 +179,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
 	{
-		edit(nodeToUpdate.getNestedAttributeMap(), null, null, null);
+		edit(getNestedAttributeMap(nodeToUpdate), null, null, null);
 		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
@@ -198,8 +219,8 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
-
 	CellInventory cellInventory;
+	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();
 }
 

@@ -44,7 +44,7 @@ public class TestInsertNode extends EAMTestCase
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -62,7 +62,7 @@ public class TestInsertNode extends EAMTestCase
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -80,7 +80,7 @@ public class TestInsertNode extends EAMTestCase
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -98,7 +98,7 @@ public class TestInsertNode extends EAMTestCase
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_STRESS);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
@@ -116,7 +116,7 @@ public class TestInsertNode extends EAMTestCase
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getRootAt(0);
+		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());

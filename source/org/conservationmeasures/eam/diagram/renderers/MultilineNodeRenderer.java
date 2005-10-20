@@ -55,6 +55,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
@@ -165,13 +166,16 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
 		
-		DiagramNode node = (DiagramNode)view.getCell();
-		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
-		if(node.canHavePriority())
-			priority = node.getThreatPriority();
-		else
-			priority = null;
-		indicator = node.getIndicator();
+		if(! (view.getCell() instanceof ProjectScopeBox))
+		{
+			DiagramNode node = (DiagramNode)view.getCell();
+			isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
+			if(node.canHavePriority())
+				priority = node.getThreatPriority();
+			else
+				priority = null;
+			indicator = node.getIndicator();
+		}
 		return this;
 	}
 	

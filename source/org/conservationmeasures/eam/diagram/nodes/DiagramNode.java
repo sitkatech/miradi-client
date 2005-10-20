@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
@@ -167,6 +168,11 @@ public class DiagramNode extends EAMGraphCell
 		Point location = getLocation();
 		Rectangle bounds = new Rectangle(location, size);
 		GraphConstants.setBounds(getAttributes(), bounds);
+	}
+	
+	public Rectangle2D getBounds()
+	{
+		return GraphConstants.getBounds(getAttributes());
 	}
 	
 	public NodeDataMap createNodeDataMap()
