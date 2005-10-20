@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 

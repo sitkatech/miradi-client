@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 

@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 

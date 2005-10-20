@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.nodes.types;
 
 import java.awt.Color;
 

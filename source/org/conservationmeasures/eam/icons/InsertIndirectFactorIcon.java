@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 

@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeStress extends EAMTestCase 

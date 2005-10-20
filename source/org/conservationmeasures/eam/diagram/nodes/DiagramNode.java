@@ -10,6 +10,12 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTypeIntervention extends EAMTestCase 

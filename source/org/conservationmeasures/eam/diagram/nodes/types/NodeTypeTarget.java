@@ -3,20 +3,20 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.nodes.types;
 
 import java.awt.Color;
 
-public class NodeTypeIntervention extends NodeType
+public class NodeTypeTarget extends NodeType
 {
-	public boolean isIntervention()
+	public boolean isTarget()
 	{
 		return true;
 	}
-	
+
 	public Color getColor()
 	{
-		return Color.YELLOW;
+		return Color.GREEN;
 	}
 
 }
