@@ -75,7 +75,7 @@ public class CommandSetNodePriority extends Command
 			if(expectedPriority != null && !currentPriority.equals(expectedPriority))
 				throw new Exception("CommandSetNodePriority expected " + expectedPriority + " but was " + currentPriority);
 			node.setNodePriority(desiredPriority);
-			Logging.logDebug("Updating Priority:"+desiredPriority.getStringValue());
+			Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
 			model.updateCell(node);
 			return currentPriority;
 		}

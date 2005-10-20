@@ -111,7 +111,7 @@ public class ProjectServer
 	public Vector load() throws IOException, UnknownCommandException
 	{
 		Vector loaded = new Vector();
-		EAM.logDebug("---Loading---");
+		EAM.logVerbose("---Loading---");
 		ResultSet allCommands = db.rawSelect("SELECT * FROM DoneCommands ORDER BY id");
 		try
 		{
@@ -123,7 +123,7 @@ public class ProjectServer
 				
 				Command command = Command.createFrom(commandName, dataIn);
 				loaded.add(command);
-				EAM.logDebug(command.toString());
+				EAM.logVerbose(command.toString());
 			}
 		}
 		catch (Exception e)
@@ -131,7 +131,7 @@ public class ProjectServer
 			EAM.logException(e);
 			return null;
 		}
-		EAM.logDebug("---Finished---");
+		EAM.logVerbose("---Finished---");
 		return loaded;
 	}
 	

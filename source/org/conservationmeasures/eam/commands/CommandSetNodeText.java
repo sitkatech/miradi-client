@@ -67,7 +67,7 @@ public class CommandSetNodeText extends Command
 			if(expectedText != null && !currentText.equals(expectedText))
 				throw new Exception("CommandSetNodeText expected " + expectedText + " but was " + currentText);
 			node.setText(desiredText);
-			Logging.logDebug("Updating text:"+desiredText);
+			Logging.logVerbose("Updating text:"+desiredText);
 			model.updateCell(node);
 			return currentText;
 		}

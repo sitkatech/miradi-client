@@ -67,7 +67,7 @@ public class CommandSetIndicator extends Command
 			if(expectedIndicator != null && !currentIndicator.equals(expectedIndicator))
 				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + currentIndicator);
 			node.setIndicator(desiredIndicator);
-			Logging.logDebug("Updating Indicator:" + desiredIndicator);
+			Logging.logVerbose("Updating Indicator:" + desiredIndicator);
 			model.updateCell(node);
 			return currentIndicator;
 		}

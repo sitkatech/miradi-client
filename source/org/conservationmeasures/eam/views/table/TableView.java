@@ -239,21 +239,21 @@ public class TableView extends UmbrellaView
 		{
 			fireTableDataChanged();
 			clearSortedOrder();
-			EAM.logDebug("DiagramModelListener: NodeAdded");
+			EAM.logVerbose("DiagramModelListener: NodeAdded");
 		}
 
 		public void nodeDeleted(DiagramModelEvent event) 
 		{
 			fireTableDataChanged();
 			clearSortedOrder();
-			EAM.logDebug("DiagramModelListener: NodeDeleted");
+			EAM.logVerbose("DiagramModelListener: NodeDeleted");
 		}
 
 		public void nodeChanged(DiagramModelEvent event) 
 		{
 			fireTableDataChanged();
 			clearSortedOrder();
-			EAM.logDebug("DiagramModelListener: NodeChanged");
+			EAM.logVerbose("DiagramModelListener: NodeChanged");
 		}
 
 		public void linkageAdded(DiagramModelEvent event) 
@@ -354,14 +354,14 @@ public class TableView extends UmbrellaView
 		{
 			fireTableDataChanged();
 			clearSortedOrder();
-			EAM.logDebug("DiagramModelLinkListener: linkAdded");
+			EAM.logVerbose("DiagramModelLinkListener: linkAdded");
 		}
 
 		public void linkageDeleted(DiagramModelEvent event) 
 		{
 			fireTableDataChanged();
 			clearSortedOrder();
-			EAM.logDebug("DiagramModelLinkListener: linkDeleted");
+			EAM.logVerbose("DiagramModelLinkListener: linkDeleted");
 		}
 
 		final static int TABLE_COLUMN_FROM = 0;

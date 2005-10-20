@@ -430,7 +430,7 @@ public class Project
 		for(int i=0; i < commands.size(); ++i)
 		{
 			Command command = (Command)commands.get(i);
-			EAM.logDebug("Executing " + command);
+			EAM.logVerbose("Executing " + command);
 			replayCommand(command);
 			database.addCommandWithoutSaving(command);
 		}
