@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.main.EAM;
 
 public class Objective 
@@ -50,13 +48,7 @@ public class Objective
 		objective = value;
 	}
 	
-	public Color getColor()
-	{
-		return LIGHT_BLUE;
-	}
-	
 	public static final String OBJECTIVE_NONE_STRING = EAM.text("None");
-	private static final Color LIGHT_BLUE = Color.getHSBColor((float)0.73,(float)0.80,1);
 	String objective;
 
 }

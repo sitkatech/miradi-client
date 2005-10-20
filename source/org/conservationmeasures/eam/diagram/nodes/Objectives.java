@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class Objectives
 		return objectives.size();
 	}
 	
-	public boolean hasObjective()
+	public boolean hasObjectives()
 	{
 		for(int i = 0 ; i < size(); ++i)
 		{
@@ -95,6 +96,11 @@ public class Objectives
 	public Objective get(int i)
 	{
 		return (Objective)objectives.get(i);
+	}
+	
+	public Color getColor()
+	{
+		return LIGHT_BLUE;
 	}
 	
 	public static Objectives getAllObjectives(DiagramNode node)
@@ -129,5 +135,7 @@ public class Objectives
 		}
 		return objectives;
 	}
-	Vector objectives;
+	private static final Color LIGHT_BLUE = Color.getHSBColor((float)0.63,(float)0.33,1);
+
+	private Vector objectives;
 }

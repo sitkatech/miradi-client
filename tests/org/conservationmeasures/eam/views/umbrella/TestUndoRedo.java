@@ -132,25 +132,25 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandSetNodeObjectives(insertedId, target1Objectives));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
 		assertEquals("Should still have just one (None) Ojectives", 1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 	}
 

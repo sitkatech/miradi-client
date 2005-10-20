@@ -206,7 +206,7 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertFalse("New target should not have an objective", node.getObjectives().hasObjective());
+		assertFalse("New target should not have an objective", node.getObjectives().hasObjectives());
 		Objectives originalObjectives = node.getObjectives();
 
 		String objectiveValue1 = "obj1";

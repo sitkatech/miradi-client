@@ -58,6 +58,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
+import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -106,6 +107,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		}
 		
 		drawIndicator(rect, g2);
+		drawObjectives(rect, g2);
 		
 		int xInset = getInsetDimension().width;
 		int yInset = getInsetDimension().height;
@@ -154,6 +156,31 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		}
 	}
 	
+	private void drawObjectives(Rectangle rect, Graphics2D g2) 
+	{
+		if(objectives != null && objectives.hasObjectives())
+		{
+			RectangleRenderer objectivesRenderer = new RectangleRenderer();
+			Rectangle objectivesRectangle = new Rectangle();
+			objectivesRectangle.x = rect.x ;
+			int objectivesHeight = objectives.size() * OBJECTIVES_HEIGHT;
+			objectivesRectangle.y = rect.y + (rect.height - objectivesHeight);
+			objectivesRectangle.width = rect.width;
+			objectivesRectangle.height = objectivesHeight;
+			setPaint(g2, objectivesRectangle, objectives.getColor());
+			objectivesRenderer.fillShape(g2, objectivesRectangle, objectives.getColor());
+			
+			//TODO allow multiple Objectives
+			//TODO fix position of text.
+			JLabel objectiveLabel = new JLabel(objectives.get(0).toString());
+			objectiveLabel.setSize(objectivesRectangle.getSize());
+			objectiveLabel.setLocation(objectivesRectangle.x, objectivesRectangle.y);
+			objectiveLabel.setHorizontalAlignment(JLabel.CENTER);
+			objectiveLabel.setVerticalAlignment(JLabel.CENTER);
+			objectiveLabel.paint(g2);
+		}
+	}
+
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
 	{
@@ -175,6 +202,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			else
 				priority = null;
 			indicator = node.getIndicator();
+			objectives = node.getObjectives();
 		}
 		return this;
 	}
@@ -213,6 +241,7 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 
 	private static final int INDICATOR_WIDTH = 30;
 	private static final int INDICATOR_HEIGHT = 30;
+	private static final int OBJECTIVES_HEIGHT = 30;
 	
 	JGraph graph;
 	JLabel label;
@@ -225,4 +254,5 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 	boolean isVisible;
 	ThreatPriority priority;
 	Indicator indicator;
+	Objectives objectives;
 }
