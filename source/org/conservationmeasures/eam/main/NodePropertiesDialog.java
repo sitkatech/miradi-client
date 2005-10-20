@@ -40,8 +40,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
 		bigBox.add(createIndicator(node.getIndicator()));
-		if(node.canHaveObjective())
-			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjective()));
+		if(node.canHaveObjectives())
+			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjectives()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
@@ -87,15 +87,15 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return threatLevelBar;
 	}
 	
-	public Component createObjectiveDropdown(Objectives objectives, Objective currentObjective)
+	public Component createObjectiveDropdown(Objectives objectives, Objectives currentObjectives)
 	{
 		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
 		dropdownObjective = new UiComboBox();
-		for(int i = 0; i < objectives.getSize(); ++i)
+		for(int i = 0; i < objectives.size(); ++i)
 		{
 			dropdownObjective.addItem(objectives.get(i));
 		}
-		dropdownObjective.setSelectedItem(currentObjective);
+		dropdownObjective.setSelectedItem(currentObjectives.get(0));
 		
 		Box ObjectiveBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
@@ -171,9 +171,12 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return (Indicator)dropdownIndicator.getSelectedItem();
 	}
 
-	public Objective getObjective()
+	public Objectives getObjectives()
 	{
-		return (Objective)dropdownObjective.getSelectedItem();
+		Objective oneObjective = (Objective)dropdownObjective.getSelectedItem();
+		Objectives objectives = new Objectives();
+		objectives.setObjectives(oneObjective);
+		return objectives;
 	}
 
 	boolean result;

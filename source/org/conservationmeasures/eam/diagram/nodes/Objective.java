@@ -24,7 +24,7 @@ public class Objective
 	
 	public boolean hasObjective()
 	{
-		return objective.compareTo(OBJECTIVE_NONE_STRING) != 0;
+		return !objective.equals(OBJECTIVE_NONE_STRING);
 	}
 
 
@@ -37,7 +37,7 @@ public class Objective
 	{
 		if(!(obj instanceof Objective))
 			return false;
-		return ((Objective)obj).objective.compareTo(objective) == 0;
+		return ((Objective)obj).objective.equals(objective);
 	}
 	
 	public String getLabel()

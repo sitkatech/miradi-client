@@ -47,7 +47,7 @@ public class DiagramNode extends EAMGraphCell
 		
 		if(canHavePriority())
 			setNodePriority(ThreatPriority.createPriorityNone());
-		objective = new Objective();
+		objectives = Objectives.createObjectivesNone();
 		indicator = new Indicator();
 		port = new DefaultPort();
 		add(port);
@@ -103,19 +103,19 @@ public class DiagramNode extends EAMGraphCell
 		indicator = indicatorToUse;
 	}
 
-	public boolean canHaveObjective()
+	public boolean canHaveObjectives()
 	{
 		return type.canHaveObjective();
 	}
 
-	public Objective getObjective()
+	public Objectives getObjectives()
 	{
-		return objective;
+		return objectives;
 	}
 
-	public void setObjective(Objective objectiveToUse)
+	public void setObjectives(Objectives objectivesToUse)
 	{
-		objective = objectiveToUse;
+		objectives = objectivesToUse;
 	}
 
 	public boolean isTarget()
@@ -204,5 +204,5 @@ public class DiagramNode extends EAMGraphCell
 	DefaultPort port;
 	ThreatPriority threatPriority;
 	Indicator indicator;
-	Objective objective;
+	Objectives objectives;
 }

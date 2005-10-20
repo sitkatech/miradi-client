@@ -5,12 +5,13 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
-import org.conservationmeasures.eam.commands.CommandSetNodeObjective;
+import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
+import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -121,26 +122,36 @@ public class TestUndoRedo extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 
 		Objective target1Objective = new Objective("test");
+		
+		Objectives target1Objectives = new Objectives();
+		target1Objectives.setObjectives(target1Objective);
+		
 		int insertedId = insertDirectThreat(project);
 
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetNodeObjective(insertedId, target1Objective));
+		project.executeCommand(new CommandSetNodeObjectives(insertedId, target1Objectives));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjective());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
+		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(new Objective(), project.getDiagramModel().getNodeById(insertedId).getObjective());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertEquals("Should still have just one (None) Ojectives", 1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjective());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
+		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		undo.doIt();
-		assertEquals("Should have no objective again", new Objective(), project.getDiagramModel().getNodeById(insertedId).getObjective());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjective());
+		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 	}
 
 	private int insertDirectThreat(Project project) throws CommandFailedException 
