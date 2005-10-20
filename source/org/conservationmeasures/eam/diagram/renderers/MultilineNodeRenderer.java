@@ -171,13 +171,17 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 			objectivesRenderer.fillShape(g2, objectivesRectangle, objectives.getColor());
 			
 			//TODO allow multiple Objectives
-			//TODO fix position of text.
 			JLabel objectiveLabel = new JLabel(objectives.get(0).toString());
 			objectiveLabel.setSize(objectivesRectangle.getSize());
-			objectiveLabel.setLocation(objectivesRectangle.x, objectivesRectangle.y);
 			objectiveLabel.setHorizontalAlignment(JLabel.CENTER);
 			objectiveLabel.setVerticalAlignment(JLabel.CENTER);
+			
+			// The graphics2D object controls the location where the label 
+			// will paint (the label's location will be ignored at this point)
+			// Tell g2 where the new origin is, paint, and revert to the original origin
+			g2.translate(objectivesRectangle.x, objectivesRectangle.y);
 			objectiveLabel.paint(g2);
+			g2.translate(-objectivesRectangle.x, -objectivesRectangle.y);
 		}
 	}
 
