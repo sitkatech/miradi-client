@@ -5,10 +5,12 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeObjective;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
+import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -114,6 +116,33 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have no indicator again", new Indicator(), project.getDiagramModel().getNodeById(insertedId).getIndicator());
 	}
 	
+	public void testUndoRedoObjective() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+
+		Objective target1Objective = new Objective("test");
+		int insertedId = insertDirectThreat(project);
+
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetNodeObjective(insertedId, target1Objective));
+		project.executeCommand(new CommandEndTransaction());
+
+		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjective());
+
+		Undo undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(new Objective(), project.getDiagramModel().getNodeById(insertedId).getObjective());
+
+		Redo redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjective());
+
+		undo.doIt();
+		assertEquals("Should have no objective again", new Objective(), project.getDiagramModel().getNodeById(insertedId).getObjective());
+	}
+
 	private int insertDirectThreat(Project project) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_DIRECT_THREAT);

@@ -21,6 +21,12 @@ public class Objective
 	{
 		objective = objectiveToUse;
 	}
+	
+	public boolean hasObjective()
+	{
+		return objective.compareTo(OBJECTIVE_NONE_STRING) != 0;
+	}
+
 
 	public String toString()
 	{
@@ -31,15 +37,15 @@ public class Objective
 	{
 		if(!(obj instanceof Objective))
 			return false;
-		return ((Objective)obj).objective == objective;
+		return ((Objective)obj).objective.compareTo(objective) == 0;
 	}
 	
-	public String getValue()
+	public String getLabel()
 	{
 		return objective;
 	}
 	
-	public void setValue(String value)
+	public void setLabel(String value)
 	{
 		objective = value;
 	}

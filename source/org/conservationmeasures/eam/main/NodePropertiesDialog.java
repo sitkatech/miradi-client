@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -41,7 +42,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		bigBox.add(createTextField(node.getText()));
 		bigBox.add(createIndicator(node.getIndicator()));
 		if(node.canHaveObjective())
-			bigBox.add(createObjectiveDropdown(node.getObjectives(),node.getObjective()));
+			bigBox.add(createObjectiveDropdown(Project.getAllObjectives(node),node.getObjective()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
@@ -169,6 +170,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	public Indicator getIndicator()
 	{
 		return (Indicator)dropdownIndicator.getSelectedItem();
+	}
+
+	public Objective getObjective()
+	{
+		return (Objective)dropdownObjective.getSelectedItem();
 	}
 
 	boolean result;

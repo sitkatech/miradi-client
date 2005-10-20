@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
+import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
@@ -195,6 +196,31 @@ public class TestCommands extends EAMTestCase
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", originalIndicator, project.getDiagramModel().getNodeById(id).getIndicator());
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+
+	public void testCommandSetObjective() throws Exception
+	{
+		int id = insertTarget();
+		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		assertFalse("New target should not have an objective", node.getObjective().hasObjective());
+		Objective originalObjective = node.getObjective();
+		String objectiveValue = "obj1";
+		Objective objective1 = new Objective(objectiveValue);
+		CommandSetNodeObjective cmd = new CommandSetNodeObjective(id, objective1);
+		project.executeCommand(cmd);
+		assertEquals("didn't memorize old indicator?", originalObjective, cmd.getPreviousObjective());
+		assertEquals( objective1, node.getObjective());
+		assertEquals( objectiveValue, node.getObjective().getLabel());
+
+		CommandSetNodeObjective loaded = (CommandSetNodeObjective)saveAndReload(cmd);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("didn't restore new objective?", objective1, loaded.getCurrentObjective());
+		assertEquals("didn't restore previous objective?", originalObjective, loaded.getPreviousObjective());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalObjective, project.getDiagramModel().getNodeById(id).getObjective());
 		
 		verifyUndoTwiceThrows(cmd);
 	}

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeObjective;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -53,6 +54,8 @@ public class NodeProperties extends ProjectDoer
 		getProject().executeCommand(new CommandSetIndicator(id, dlg.getIndicator()));
 		if(selectedNode.canHavePriority())
 			getProject().executeCommand(new CommandSetNodePriority(id, dlg.getPriority()));
+		if(selectedNode.canHaveObjective())
+			getProject().executeCommand(new CommandSetNodeObjective(id, dlg.getObjective()));
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 

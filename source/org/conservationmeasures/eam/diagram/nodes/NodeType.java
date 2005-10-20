@@ -32,6 +32,30 @@ public abstract class NodeType
 		return false;
 	}
 	
+	
+	public boolean canHavePriority()
+	{
+		if(isDirectThreat())
+			return true;
+		if(isStress())
+			return true;
+		return false;
+	}
+
+	public boolean canHaveObjective()
+	{
+		if(isDirectThreat())
+			return true;
+		if(isIndirectFactor())
+			return true;
+		if(isIntervention())
+			return true;
+		if(isStress())
+			return true;
+		return false;
+	}
+
+	
 	public boolean isStress()
 	{
 		return false;
