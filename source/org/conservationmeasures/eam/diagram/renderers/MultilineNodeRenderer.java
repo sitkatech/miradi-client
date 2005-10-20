@@ -197,7 +197,14 @@ public abstract class MultilineNodeRenderer extends JComponent implements CellVi
 		preview = previewMode;
 		installAttributes(view.getAllAttributes());
 		
-		if(! (view.getCell() instanceof ProjectScopeBox))
+		if(view.getCell() instanceof ProjectScopeBox)
+		{
+			isVisible = true;
+			priority = null;
+			indicator = null;
+			objectives = null;
+		}
+		else
 		{
 			DiagramNode node = (DiagramNode)view.getCell();
 			isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);

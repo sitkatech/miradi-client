@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
@@ -24,7 +26,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		autoSurroundTargets();
 		
 		setText("Project Scope");
-		Color color = Color.LIGHT_GRAY;
+		Color color = new Color(191, 255, 191);
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setBackground(getAttributes(), color);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -40,8 +42,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	private void autoSurroundTargets()
 	{
-		Rectangle2D newBounds = computeCurrentTargetBounds();
-		EAM.logDebug("ProjectScopeBox.autoSurroundTargets: " + newBounds.toString());
+		Rectangle2D targetBounds = computeCurrentTargetBounds();
+		Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY() - TOP_MARGIN);
+		Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + TOP_MARGIN + BOTTOM_MARGIN);
+		Rectangle newBounds = new Rectangle(location, size);
+		EAM.logVerbose("ProjectScopeBox.autoSurroundTargets: " + newBounds.toString());
 		GraphConstants.setBounds(getAttributes(), newBounds);
 		Hashtable nest = new Hashtable();
 		nest.put(this, getAttributes());
@@ -103,5 +108,9 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 	}
 
+	final static int SIDE_MARGIN = 5;
+	final static int TOP_MARGIN = 20;
+	final static int BOTTOM_MARGIN = 5;
+	
 	DiagramModel model;
 }
