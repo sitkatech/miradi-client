@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
-import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -444,41 +443,6 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	public static Vector getAllObjectives(DiagramNode node)
-	{
-		//TODO: These will be replaced by real user entered data from a wizard
-		Vector objectives = new Vector();
-		if(node.isDirectThreat())
-		{
-			objectives.add(new Objective());
-			objectives.add(new Objective("1a"));
-			objectives.add(new Objective("1b"));
-			objectives.add(new Objective("2"));
-		}
-		else if (node.isIndirectFactor())
-		{
-			objectives.add(new Objective());
-			objectives.add(new Objective("A"));
-			objectives.add(new Objective("B"));
-			objectives.add(new Objective("C"));
-			objectives.add(new Objective("D"));
-		}
-		else if (node.isStress())
-		{
-			objectives.add(new Objective());
-			objectives.add(new Objective("1"));
-			objectives.add(new Objective("2"));
-			objectives.add(new Objective("3"));
-		}
-		else if (node.isIntervention())
-		{
-			objectives.add(new Objective());
-			objectives.add(new Objective("a"));
-			objectives.add(new Objective("b"));
-			objectives.add(new Objective("c"));
-		}
-		return objectives;
-	}
 	
 	protected ProjectServer getDatabase()
 	{

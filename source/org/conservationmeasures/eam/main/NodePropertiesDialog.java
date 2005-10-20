@@ -11,7 +11,6 @@ import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
@@ -21,9 +20,9 @@ import javax.swing.JList;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
+import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
-import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -42,7 +41,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		bigBox.add(createTextField(node.getText()));
 		bigBox.add(createIndicator(node.getIndicator()));
 		if(node.canHaveObjective())
-			bigBox.add(createObjectiveDropdown(Project.getAllObjectives(node),node.getObjective()));
+			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjective()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		bigBox.add(createButtonBar());
@@ -88,11 +87,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return threatLevelBar;
 	}
 	
-	public Component createObjectiveDropdown(Vector objectives, Objective currentObjective)
+	public Component createObjectiveDropdown(Objectives objectives, Objective currentObjective)
 	{
 		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
 		dropdownObjective = new UiComboBox();
-		for(int i = 0; i < objectives.size(); ++i)
+		for(int i = 0; i < objectives.getSize(); ++i)
 		{
 			dropdownObjective.addItem(objectives.get(i));
 		}

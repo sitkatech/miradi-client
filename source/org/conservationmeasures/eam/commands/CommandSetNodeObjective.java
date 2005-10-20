@@ -67,7 +67,7 @@ public class CommandSetNodeObjective extends Command
 			if(expectedObjective != null && !currentObjective.equals(expectedObjective))
 				throw new Exception("CommandSetObjective expected " + expectedObjective + " but was " + currentObjective);
 			node.setObjective(desiredObjective);
-			Logging.logDebug("Updating Objective:" + desiredObjective);
+			Logging.logVerbose("Updating Objective:" + desiredObjective);
 			model.updateCell(node);
 			return currentObjective;
 		}
