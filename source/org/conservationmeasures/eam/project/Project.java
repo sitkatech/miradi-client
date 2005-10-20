@@ -329,6 +329,11 @@ public class Project
 		return insertedLinkageId;
 	}
 	
+	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception 
+	{
+		getDiagramModel().moveNodes(deltaX, deltaY, ids);
+	}
+	
 	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
 	{
 		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);

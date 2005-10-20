@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -96,11 +97,11 @@ public class DiagramModel extends DefaultGraphModel
 	
     public void deleteNode(DiagramNode nodeToDelete) throws Exception
 	{
-		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
-
 		Object[] nodes = new Object[]{nodeToDelete};
 		remove(nodes);
 		cellInventory.removeNode(nodeToDelete);
+
+		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 	}
 	
 	public DiagramLinkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
@@ -122,10 +123,10 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void deleteLinkage(DiagramLinkage linkageToDelete) throws Exception
 	{
-		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
 		cellInventory.removeLinkage(linkageToDelete);
+		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 	}
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode)
@@ -144,6 +145,21 @@ public class DiagramModel extends DefaultGraphModel
 		}
 		
 		return false;
+	}
+
+	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
+	{
+		for(int i = 0; i < ids.length; ++i)
+		{
+			int id = ids[i];
+			DiagramNode nodeToMove = getNodeById(id);
+			Point oldLocation = nodeToMove.getLocation();
+			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
+			nodeToMove.setLocation(newLocation);
+			updateCell(nodeToMove);
+		}
+		
+		nodesWereMoved(deltaX, deltaY, ids);
 	}
 	
 	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)

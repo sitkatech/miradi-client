@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
@@ -19,33 +18,34 @@ public class TestProjectScopeBox extends EAMTestCase
 		super(name);
 	}
 
-	public void testComputeTargetBounds() throws Exception
+	public void testGetBounds() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
 		model.clear();
 		ProjectScopeBox scope = model.getProjectScopeBox();
-		Rectangle2D noTargets = scope.computeCurrentTargetBounds();
+		Rectangle2D noTargets = scope.getBounds();
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
 		model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
-		Rectangle2D oneNonTarget = scope.computeCurrentTargetBounds();
+		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
 		DiagramNode target1 = model.createNode(DiagramNode.TYPE_TARGET);
-		target1.setLocation(new Point(100, 100));
-		model.updateCell(target1);
-		Rectangle2D oneTarget = scope.computeCurrentTargetBounds();
+		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
-		assertNotEquals("still at x zero?", 0, (int)oneTarget.getX());
-		assertNotEquals("still at y zero?", 0, (int)oneTarget.getY());
+
+		model.moveNodes(100, 100, new int[] {target1.getId()});
+		Rectangle2D movedTarget = scope.getBounds();
+		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
+		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
+		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		
 		DiagramNode target2 = model.createNode(DiagramNode.TYPE_TARGET);
-		target2.setLocation(new Point(200, 200));
+		model.moveNodes(200, 200, new int[] {target2.getId()});
 		model.updateCell(target2);
-		Rectangle2D twoTargets = scope.computeCurrentTargetBounds();
+		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));
-		
 	}
 }

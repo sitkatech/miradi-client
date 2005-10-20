@@ -21,6 +21,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public ProjectScopeBox(DiagramModel modelToUse)
 	{
 		model = modelToUse;
+		autoSurroundTargets();
 		
 		setText("Project Scope");
 		Color color = Color.LIGHT_GRAY;
@@ -30,6 +31,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		GraphConstants.setOpaque(getAttributes(), true);
 
 		model.addDiagramModelListener(this);
+	}
+	
+	public Rectangle2D getBounds()
+	{
+		return GraphConstants.getBounds(getAttributes());
 	}
 	
 	private void autoSurroundTargets()
