@@ -135,7 +135,7 @@ public class Objectives
 		}
 		return objectives;
 	}
-	private static final Color LIGHT_BLUE = Color.getHSBColor((float)0.63,(float)0.33,1);
+	private static final Color LIGHT_BLUE = new Color(204,238,255);
 
 	private Vector objectives;
 }

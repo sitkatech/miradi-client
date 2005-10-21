@@ -58,6 +58,6 @@ public class Indicator
 	
 	public static final int INDICATOR_NONE = -1;
 	public static final String INDICATOR_NONE_STRING = EAM.text("None");
-	private static final Color LIGHT_PURPLE = Color.getHSBColor((float)0.70,(float)0.40,(float)0.95);
+	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	int indicator;
 }
