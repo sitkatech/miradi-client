@@ -11,7 +11,6 @@ import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
@@ -19,6 +18,8 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Goal;
+import org.conservationmeasures.eam.diagram.nodes.Goals;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
@@ -46,8 +47,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		if(node.canHaveGoal())
-			bigBox.add(createTargetGoal());
-			//bigBox.add(createTargetGoal(Goals.getAllGoals(), node.getGoal()));
+			bigBox.add(createTargetGoal(Goals.getAllGoals(), node.getGoals()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -101,6 +101,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		}
 		if(currentObjectives.size() > 0)
 			dropdownObjective.setSelectedItem(currentObjectives.get(0));
+		else
+			dropdownObjective.setSelectedIndex(0);
 		
 		Box ObjectiveBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
@@ -108,23 +110,25 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return ObjectiveBar;
 	}
 	
-	public Component createTargetGoal()
+	public Component createTargetGoal(Goals goals, Goals currentGoals)
 	{
-		UiLabel textObjective = new UiLabel(EAM.text("Label|Goal"));
+		UiLabel textGoal = new UiLabel(EAM.text("Label|Goal"));
 		dropdownGoal = new UiComboBox();
-Vector goals = new Vector();
-goals.add("Goal 1");
-goals.add("Goal 2");
+		dropdownGoal.addItem(new Goal(Goal.ANNOTATION_NONE_STRING));
 		for(int i = 0; i < goals.size(); ++i)
 		{
 			dropdownGoal.addItem(goals.get(i));
 		}
-		//dropdownGoal.setSelectedItem(currentObjectives.get(0));
 		
-		Box ObjectiveBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownGoal, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
-		return ObjectiveBar;
+		if(currentGoals.size() > 0)
+			dropdownGoal.setSelectedItem(currentGoals.get(0));
+		else
+			dropdownGoal.setSelectedIndex(0);
+		
+		Box GoalBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textGoal, new UiLabel(" "), dropdownGoal, Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(GoalBar, components);
+		return GoalBar;
 	}
 	
 	public Component createIndicator(Indicator indicator)
@@ -203,13 +207,13 @@ goals.add("Goal 2");
 		return objectives;
 	}
 
-//	public Goals getGoals()
-//	{
-//		Goal oneGoal = (Goal)dropdownObjective.getSelectedItem();
-//		Goals goals = new Objectives();
-		//goals.setGoals(oneGoal);
-//		return goals;
-//	}
+	public Goals getGoals()
+	{
+		Goal oneGoal = (Goal)dropdownGoal.getSelectedItem();
+		Goals goals = new Goals();
+		goals.setGoals(oneGoal);
+		return goals;
+	}
 	
 	boolean result;
 	UiTextField textField;

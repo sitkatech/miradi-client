@@ -45,10 +45,15 @@ public class DiagramNode extends EAMGraphCell
 				throw new RuntimeException("Unknown node type: " + nodeType);
 		}
 		
+		indicator = new Indicator();
+
 		if(canHavePriority())
 			setNodePriority(ThreatPriority.createPriorityNone());
-		objectives = new Objectives();
-		indicator = new Indicator();
+		if(canHaveObjectives())
+			objectives = new Objectives();
+		if(canHaveGoal())
+			goals = new Goals();
+		
 		port = new DefaultPort();
 		add(port);
 		setColors(type);
@@ -111,6 +116,16 @@ public class DiagramNode extends EAMGraphCell
 	public boolean canHaveGoal()
 	{
 		return type.canHaveGoal();
+	}
+
+	public Goals getGoals()
+	{
+		return goals;
+	}
+
+	public void setGoals(Goals goalsToUse)
+	{
+		goals = goalsToUse;
 	}
 
 	public Objectives getObjectives()
@@ -210,4 +225,5 @@ public class DiagramNode extends EAMGraphCell
 	ThreatPriority threatPriority;
 	Indicator indicator;
 	Objectives objectives;
+	Goals goals;
 }

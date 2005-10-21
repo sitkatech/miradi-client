@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -56,6 +57,8 @@ public class NodeProperties extends ProjectDoer
 			getProject().executeCommand(new CommandSetNodePriority(id, dlg.getPriority()));
 		if(selectedNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, dlg.getObjectives()));
+		if(selectedNode.canHaveGoal())
+			getProject().executeCommand(new CommandSetTargetGoal(id, dlg.getGoals()));
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
