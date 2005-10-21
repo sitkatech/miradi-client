@@ -103,7 +103,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			smallTriangle.height = INDICATOR_HEIGHT;
 			setPaint(g2, smallTriangle, indicator.getColor());
 			indicatorRenderer.fillShape(g2, smallTriangle, indicator.getColor());
-			
+
 			JLabel indicatorLabel = new JLabel(indicator.toString());
 			indicatorLabel.setSize(smallTriangle.getSize());
 			indicatorLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -116,12 +116,15 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		if(objectives != null && objectives.hasObjectives())
 		{
+			int BOARDER_WIDTH = 1;
+			int xInset = getInsetDimension().width;
+
 			RectangleRenderer objectivesRenderer = new RectangleRenderer();
 			Rectangle objectivesRectangle = new Rectangle();
-			objectivesRectangle.x = rect.x ;
+			objectivesRectangle.x = rect.x + xInset + BOARDER_WIDTH;
 			int objectivesHeight = objectives.size() * OBJECTIVES_HEIGHT;
 			objectivesRectangle.y = rect.y + (rect.height - objectivesHeight);
-			objectivesRectangle.width = rect.width;
+			objectivesRectangle.width = rect.width - (2 * xInset) - BOARDER_WIDTH;
 			objectivesRectangle.height = objectivesHeight;
 			setPaint(g2, objectivesRectangle, objectives.getColor());
 			objectivesRenderer.fillShape(g2, objectivesRectangle, objectives.getColor());
