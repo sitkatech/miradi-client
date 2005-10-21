@@ -64,8 +64,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	public void paint(Graphics g1)
 	{
-		Rectangle rect = new Rectangle(borderWidth - 1, borderWidth - 1, 
-				getSize().width - borderWidth, getSize().height - borderWidth);
+		Rectangle rect = getNonBorderBounds();
 
 		Graphics2D g2 = (Graphics2D) g1;
 		if (super.isOpaque())
@@ -104,6 +103,12 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
+	}
+
+	Rectangle getNonBorderBounds()
+	{
+		return new Rectangle(borderWidth - 1, borderWidth - 1, 
+				getSize().width - borderWidth, getSize().height - borderWidth);
 	}
 
 	protected void installAttributes(Map attributes)
