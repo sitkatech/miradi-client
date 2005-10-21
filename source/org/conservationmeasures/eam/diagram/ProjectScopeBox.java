@@ -26,7 +26,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		autoSurroundTargets();
 		
 		setText("Project Scope");
-		Color color = new Color(191, 255, 191);
+		Color color = LIGHT_GREEN;
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setBackground(getAttributes(), color);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -113,6 +113,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 	}
 
+	final static Color LIGHT_GREEN = new Color(191, 255, 191);
 	final static int SIDE_MARGIN = 5;
 	final static int TOP_MARGIN = 20;
 	final static int BOTTOM_MARGIN = 5;
