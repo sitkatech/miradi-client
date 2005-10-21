@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
@@ -14,11 +13,15 @@ public class CellViewFactory extends DefaultCellViewFactory
 {
 	protected VertexView createVertexView(Object view)
 	{
-		if(view instanceof ProjectScopeBox)
-		{
-			return new RectangleCellView(view);
-		}
+		EAMGraphCell cell = (EAMGraphCell)view;
+		if(cell.isNode())
+			return createNodeView(view);
 		
+		return new RectangleCellView(view);
+	}
+
+	private VertexView createNodeView(Object view)
+	{
 		DiagramNode node = (DiagramNode)view;
 		if(node.isTarget())
 		{
@@ -40,7 +43,6 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new HexagonNodeView(node);
 		}
-		
 		throw new RuntimeException("Unknown node type");
 	}
 
