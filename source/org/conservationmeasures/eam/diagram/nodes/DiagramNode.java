@@ -108,6 +108,11 @@ public class DiagramNode extends EAMGraphCell
 		return type.canHaveObjective();
 	}
 
+	public boolean canHaveGoal()
+	{
+		return type.canHaveGoal();
+	}
+
 	public Objectives getObjectives()
 	{
 		return objectives;

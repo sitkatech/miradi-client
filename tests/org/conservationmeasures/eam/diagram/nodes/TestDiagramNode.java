@@ -98,6 +98,26 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals(String.valueOf(value).toString(), indicator.toString());
 	}
 	
+	public void testGoals()
+	{
+		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		assertTrue(nodeTarget.canHaveGoal());
+
+		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		assertFalse(nodeDirectThreat.canHaveGoal());
+
+		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		assertFalse(nodeStress.canHaveGoal());
+
+		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		assertFalse(nodeIndirectFactor.canHaveGoal());
+
+		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		assertFalse(nodeIntervention.canHaveGoal());
+
+	}
+	
+	
 	public void testColors()
 	{
 		NodeTypeIndirectFactor factorType = new NodeTypeIndirectFactor();

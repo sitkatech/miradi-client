@@ -55,6 +55,12 @@ public abstract class NodeType
 		return false;
 	}
 
+	public boolean canHaveGoal()
+	{
+		if(isTarget())
+			return true;
+		return false;
+	}
 	
 	public boolean isStress()
 	{
