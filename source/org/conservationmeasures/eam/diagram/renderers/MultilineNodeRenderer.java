@@ -47,6 +47,7 @@ import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.Goals;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
@@ -74,6 +75,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			priority = null;
 		indicator = node.getIndicator();
 		objectives = node.getObjectives();
+		goals = node.getGoals();
 		return this;
 	}
 	
@@ -89,6 +91,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 		drawIndicator(rect, g2);
 		drawObjectives(rect, g2);
+		drawGoals(rect, g2);
 	}
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
@@ -143,6 +146,36 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		}
 	}
 
+	private void drawGoals(Rectangle rect, Graphics2D g2) 
+	{
+		if(goals != null && goals.hasGoals())
+		{
+			int xInset = getInsetDimension().width;
+
+			RectangleRenderer goalsRenderer = new RectangleRenderer();
+			Rectangle goalsRectangle = new Rectangle();
+			goalsRectangle.x = rect.x + xInset + borderWidth;
+			int objectivesHeight = goals.size() * OBJECTIVES_HEIGHT;
+			goalsRectangle.y = rect.y + (rect.height - objectivesHeight);
+			goalsRectangle.width = rect.width - (2 * xInset) - borderWidth;
+			goalsRectangle.height = objectivesHeight;
+			setPaint(g2, goalsRectangle, goals.getColor());
+			goalsRenderer.fillShape(g2, goalsRectangle, goals.getColor());
+			
+			//TODO allow multiple Objectives
+			JLabel goalsLabel = new JLabel(goals.get(0).toString());
+			goalsLabel.setSize(goalsRectangle.getSize());
+			goalsLabel.setHorizontalAlignment(JLabel.CENTER);
+			goalsLabel.setVerticalAlignment(JLabel.CENTER);
+			
+			// The graphics2D object controls the location where the label 
+			// will paint (the label's location will be ignored at this point)
+			// Tell g2 where the new origin is, paint, and revert to the original origin
+			g2.translate(goalsRectangle.x, goalsRectangle.y);
+			goalsLabel.paint(g2);
+			g2.translate(-goalsRectangle.x, -goalsRectangle.y);
+		}
+	}
 	
 	
 	private static final int INDICATOR_WIDTH = 30;
@@ -153,4 +186,5 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	ThreatPriority priority;
 	Indicator indicator;
 	Objectives objectives;
+	Goals goals;
 }
