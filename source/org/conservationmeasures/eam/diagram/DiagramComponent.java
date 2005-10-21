@@ -113,10 +113,23 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		if (getSelectionCount() != 1)
 			return null;
-		EAMGraphCell selectedCell = (EAMGraphCell)getSelectionCell();
-		if(!selectedCell.isNode())
-			return null;
-		return (DiagramNode)selectedCell;
+		return getSelectedNode(0);
+	}
+	
+	public DiagramNode getSelectedNode(int index)
+	{
+		Object[] selectedCells = getSelectionCells();
+		for(int i = 0; i < selectedCells.length; ++i)
+		{
+			EAMGraphCell thisCell = (EAMGraphCell)selectedCells[i];
+			if(thisCell.isNode())
+			{
+				if(index == 0)
+					return (DiagramNode)thisCell;
+				--index;
+			}
+		}
+		return null;
 	}
 	
 	private void installKeyBindings(Actions actions)

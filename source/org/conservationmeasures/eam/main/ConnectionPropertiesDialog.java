@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.swing.UiButton;
@@ -43,9 +44,16 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 	
 	private Box createFromToBox()
 	{
-		Box box = Box.createHorizontalBox();
 		from = createChoices();
 		to = createChoices();
+		DiagramComponent diagram = mainWindow.getDiagramComponent();
+		DiagramNode firstSelected = diagram.getSelectedNode(0);
+		if(firstSelected != null)
+			from.setSelectedItem(firstSelected);
+		DiagramNode secondSelected = diagram.getSelectedNode(1);
+		if(secondSelected != null)
+			to.setSelectedItem(secondSelected);
+		Box box = Box.createHorizontalBox();
 		Component[] components = {from, new UiLabel(EAM.text("Label|affects")), to};
 		Utilities.addComponentsRespectingOrientation(box, components);
 		return box;
