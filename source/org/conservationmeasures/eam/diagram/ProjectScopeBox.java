@@ -43,9 +43,14 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	private void autoSurroundTargets()
 	{
 		Rectangle2D targetBounds = computeCurrentTargetBounds();
-		Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY() - TOP_MARGIN);
-		Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + TOP_MARGIN + BOTTOM_MARGIN);
-		Rectangle newBounds = new Rectangle(location, size);
+		Rectangle newBounds = new Rectangle(0,0,0,0);
+		if(!targetBounds.equals(newBounds))
+		{
+			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY() - TOP_MARGIN);
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + TOP_MARGIN + BOTTOM_MARGIN);
+			newBounds = new Rectangle(location, size);
+		}
+		
 		EAM.logVerbose("ProjectScopeBox.autoSurroundTargets: " + newBounds.toString());
 		GraphConstants.setBounds(getAttributes(), newBounds);
 		Hashtable nest = new Hashtable();
