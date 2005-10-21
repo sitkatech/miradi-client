@@ -16,7 +16,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 	{
 		if(view instanceof ProjectScopeBox)
 		{
-			return new RectangleNodeView(view);
+			return new RectangleCellView(view);
 		}
 		
 		DiagramNode node = (DiagramNode)view;
