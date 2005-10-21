@@ -140,7 +140,7 @@ public class TestUndoRedo extends EAMTestCase
 		undo.setProject(project);
 		undo.doIt();
 		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
-		assertEquals("Should still have just one (None) Ojectives", 1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
+		assertEquals("Should now have (No) Ojectives", 0, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
@@ -151,7 +151,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		undo.doIt();
 		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
-		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
+		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 	}
 
 	private int insertDirectThreat(Project project) throws CommandFailedException 

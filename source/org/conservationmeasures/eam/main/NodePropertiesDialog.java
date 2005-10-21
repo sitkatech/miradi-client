@@ -11,6 +11,7 @@ import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
@@ -44,6 +45,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjectives()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
+		if(node.canHaveGoal())
+			bigBox.add(createTargetGoal());
+			//bigBox.add(createTargetGoal(Goals.getAllGoals(), node.getGoal()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -95,10 +99,30 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		{
 			dropdownObjective.addItem(objectives.get(i));
 		}
-		dropdownObjective.setSelectedItem(currentObjectives.get(0));
+		if(currentObjectives.size() > 0)
+			dropdownObjective.setSelectedItem(currentObjectives.get(0));
 		
 		Box ObjectiveBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
+		return ObjectiveBar;
+	}
+	
+	public Component createTargetGoal()
+	{
+		UiLabel textObjective = new UiLabel(EAM.text("Label|Goal"));
+		dropdownGoal = new UiComboBox();
+Vector goals = new Vector();
+goals.add("Goal 1");
+goals.add("Goal 2");
+		for(int i = 0; i < goals.size(); ++i)
+		{
+			dropdownGoal.addItem(goals.get(i));
+		}
+		//dropdownGoal.setSelectedItem(currentObjectives.get(0));
+		
+		Box ObjectiveBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownGoal, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
 		return ObjectiveBar;
 	}
@@ -179,11 +203,20 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return objectives;
 	}
 
+//	public Goals getGoals()
+//	{
+//		Goal oneGoal = (Goal)dropdownObjective.getSelectedItem();
+//		Goals goals = new Objectives();
+		//goals.setGoals(oneGoal);
+//		return goals;
+//	}
+	
 	boolean result;
 	UiTextField textField;
 	UiComboBox dropdownThreatPriority;
 	UiComboBox dropdownIndicator;
 	UiComboBox dropdownObjective;
+	UiComboBox dropdownGoal;
 	UiButton okButton;
 	UiButton cancelButton;
 }

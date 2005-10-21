@@ -6,49 +6,33 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.main.EAM;
 
-public class Objective 
+public class Objective extends NodeAnnotation
 {
 	public Objective()
 	{
-		objective = OBJECTIVE_NONE_STRING;
+		super();
 	}
 	
-	public Objective(String objectiveToUse)
+	public Objective(String objective)
 	{
-		objective = objectiveToUse;
+		super(objective);
 	}
-	
+
 	public boolean hasObjective()
 	{
-		return !objective.equals(OBJECTIVE_NONE_STRING);
-	}
-
-
-	public String toString()
-	{
-		return String.valueOf(objective).toString();
-	}
-		
-	public boolean equals(Object obj) 
-	{
-		if(!(obj instanceof Objective))
-			return false;
-		return ((Objective)obj).objective.equals(objective);
+		return hasAnnotation();
 	}
 	
 	public String getLabel()
 	{
-		return objective;
+		return getAnnotation();
 	}
-	
-	public void setLabel(String value)
-	{
-		objective = value;
-	}
-	
-	public static final String OBJECTIVE_NONE_STRING = EAM.text("None");
-	String objective;
 
+	public boolean equals(Object obj) 
+	{
+		if(!(obj instanceof Objective))
+			return false;
+		return ((Objective)obj).getAnnotation().equals(getAnnotation());
+	}
 }

@@ -47,7 +47,7 @@ public class DiagramNode extends EAMGraphCell
 		
 		if(canHavePriority())
 			setNodePriority(ThreatPriority.createPriorityNone());
-		objectives = Objectives.createObjectivesNone();
+		objectives = new Objectives();
 		indicator = new Indicator();
 		port = new DefaultPort();
 		add(port);
