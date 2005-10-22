@@ -24,6 +24,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 		
 		DiagramLinkage linkage = (DiagramLinkage)cellView.getCell();
 		renderer.isVisible = ((DiagramComponent)graphToUse).isLinkageVisible(linkage);
+		if(sel)
+		{
+			renderer.lineWidth = 4;
+		}
+
 		return renderer;
 	}
 
