@@ -70,10 +70,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 		DiagramNode node = (DiagramNode)view.getCell();
 		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
-		if(node.canHavePriority())
-			priority = node.getThreatPriority();
-		else
-			priority = null;
+		priority = node.getThreatPriority();
 		indicator = node.getIndicator();
 		objectives = node.getObjectives();
 		goals = node.getGoals();
@@ -90,62 +87,70 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
+		drawAnnotation(rect, g2, objectives);
+		drawAnnotation(rect, g2, goals);
 		drawIndicator(rect, g2);
-		drawAnnotation(objectives, rect, g2);
-		drawAnnotation(goals, rect, g2);
 	}
 	
-	private void drawAnnotation(NodeAnnotations annotations, Rectangle rect, Graphics2D g2) 
+	private void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
 	{
 		if(annotations != null && annotations.hasAnnotation())
 		{
-			int xInset = getInsetDimension().width;
-
-			RectangleRenderer annotationRenderer = new RectangleRenderer();
-			Rectangle annotationsRectangle = new Rectangle();
-			annotationsRectangle.x = rect.x + xInset + borderWidth;
-			int annotationsHeight = annotations.size() * ANNOTATIONS_HEIGHT;
-			annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-			annotationsRectangle.width = rect.width - (2 * xInset) - borderWidth;
-			annotationsRectangle.height = annotationsHeight;
+			Rectangle annotationsRectangle = getAnnotationsRect(rect, annotations.size());
 			setPaint(g2, annotationsRectangle, annotations.getColor());
+			RectangleRenderer annotationRenderer = new RectangleRenderer();
 			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
 			
 			//TODO allow multiple Objectives
-			JLabel annotationsLabel = new JLabel(annotations.getAnnotation(0).toString());
-			annotationsLabel.setSize(annotationsRectangle.getSize());
-			annotationsLabel.setHorizontalAlignment(JLabel.CENTER);
-			annotationsLabel.setVerticalAlignment(JLabel.CENTER);
-			
-			// The graphics2D object controls the location where the label 
-			// will paint (the label's location will be ignored at this point)
-			// Tell g2 where the new origin is, paint, and revert to the original origin
-			g2.translate(annotationsRectangle.x, annotationsRectangle.y);
-			annotationsLabel.paint(g2);
-			g2.translate(-annotationsRectangle.x, -annotationsRectangle.y);
+			String labelMessage = annotations.getAnnotation(0).toString();
+			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 		}
-	
 	}
-	
+
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
 		if(indicator != null && indicator.hasIndicator())
 		{
 			TriangleRenderer indicatorRenderer = new TriangleRenderer();
+			Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
+			
 			Rectangle smallTriangle = new Rectangle();
-			smallTriangle.x = rect.x;
-			smallTriangle.y = rect.y;
+			smallTriangle.x = annotationsRectangle.x;
+			smallTriangle.y = annotationsRectangle.y;
 			smallTriangle.width = INDICATOR_WIDTH;
 			smallTriangle.height = INDICATOR_HEIGHT;
 			setPaint(g2, smallTriangle, indicator.getColor());
 			indicatorRenderer.fillShape(g2, smallTriangle, indicator.getColor());
 
-			JLabel indicatorLabel = new JLabel(indicator.toString());
-			indicatorLabel.setSize(smallTriangle.getSize());
-			indicatorLabel.setHorizontalAlignment(JLabel.CENTER);
-			indicatorLabel.setVerticalAlignment(JLabel.CENTER);
-			indicatorLabel.paint(g2);
+			drawLabel(g2, annotationsRectangle, indicator.toString(), smallTriangle.getSize());
 		}
+	}
+
+	private Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
+	{
+		Rectangle annotationsRectangle = new Rectangle();
+		int xInset = getInsetDimension().width;
+		annotationsRectangle.x = rect.x + xInset + borderWidth;
+		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
+		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
+		annotationsRectangle.width = rect.width - (2 * xInset) - borderWidth;
+		annotationsRectangle.height = annotationsHeight;
+		return annotationsRectangle;
+	}
+	
+	private void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
+	{
+		JLabel message = new JLabel(labelMessage);
+		message.setSize(size);
+		message.setHorizontalAlignment(JLabel.CENTER);
+		message.setVerticalAlignment(JLabel.CENTER);
+
+		// The graphics2D object controls the location where the label 
+		// will paint (the label's location will be ignored at this point)
+		// Tell g2 where the new origin is, paint, and revert to the original origin
+		g2.translate(labelRectangle.x, labelRectangle.y);
+		message.paint(g2);
+		g2.translate(-labelRectangle.x, -labelRectangle.y);
 	}
 	
 	private static final int INDICATOR_WIDTH = 30;
