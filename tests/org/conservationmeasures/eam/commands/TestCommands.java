@@ -214,7 +214,7 @@ public class TestCommands extends EAMTestCase
 		id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
 		Objectives originalObjectives = node.getObjectives();
-		assertFalse("New target should not have an objective", node.getObjectives().hasObjectives());
+		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
 
 		String objectiveValue1 = "obj1";
 		Objective objective1 = new Objective(objectiveValue1);
@@ -232,7 +232,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't memorize old objective?", originalObjectives, cmd.getPreviousObjectives());
 		assertEquals( 2, node.getObjectives().size());
 		assertEquals( objectives, node.getObjectives());
-		assertEquals( objectiveValue1, node.getObjectives().get(0).getLabel());
+		assertEquals( objectiveValue1, node.getObjectives().get(0).getAnnotation());
 
 		CommandSetNodeObjectives loaded = (CommandSetNodeObjectives)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -252,7 +252,7 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertFalse("New target should not have a goal", node.getGoals().hasGoals());
+		assertFalse("New target should not have a goal", node.getGoals().hasAnnotation());
 		Goals originalGoals = node.getGoals();
 
 		String goalValue1 = "goal 1";
@@ -271,7 +271,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't memorize old goal?", originalGoals, cmd.getPreviousGoals());
 		assertEquals( 2, node.getGoals().size());
 		assertEquals( goals, node.getGoals());
-		assertEquals( goalValue1, node.getGoals().get(0).getLabel());
+		assertEquals( goalValue1, node.getGoals().get(0).getAnnotation());
 
 		CommandSetTargetGoal loaded = (CommandSetTargetGoal)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());

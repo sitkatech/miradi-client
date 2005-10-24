@@ -135,25 +135,25 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandSetNodeObjectives(insertedId, target1Objectives));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals("Should now have (No) Ojectives", 0, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
 
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasObjectives());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 	}
 
@@ -172,25 +172,25 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandSetTargetGoal(insertedId, target1Goals));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasGoals());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
 		assertEquals(target1Goal, project.getDiagramModel().getNodeById(insertedId).getGoals().get(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasGoals());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals("Should now have (No) Goals", 0, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasGoals());
+		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
 		assertEquals(target1Goal, project.getDiagramModel().getNodeById(insertedId).getGoals().get(0));
 
 		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasGoals());
+		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
 	}
 

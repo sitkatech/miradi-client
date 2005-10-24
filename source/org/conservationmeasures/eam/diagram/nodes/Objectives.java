@@ -43,11 +43,6 @@ public class Objectives extends NodeAnnotations
 		return LIGHT_BLUE;
 	}
 	
-	public boolean hasObjectives()
-	{
-		return hasAnnotation();
-	}
-	
 	public void setObjectives(Objective objective)
 	{
 		setAnnotations(objective);

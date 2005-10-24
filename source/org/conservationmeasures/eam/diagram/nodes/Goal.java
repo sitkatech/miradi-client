@@ -18,16 +18,6 @@ public class Goal extends NodeAnnotation
 		super(annotationToUse);
 	}
 	
-	public boolean hasGoal()
-	{
-		return hasAnnotation();
-	}
-	
-	public String getLabel()
-	{
-		return getAnnotation();
-	}
-
 	public boolean equals(Object obj) 
 	{
 		if(!(obj instanceof Goal))

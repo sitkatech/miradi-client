@@ -43,11 +43,6 @@ public class Goals extends NodeAnnotations
 		return LIGHT_BLUE;
 	}
 	
-	public boolean hasGoals()
-	{
-		return hasAnnotation();
-	}
-	
 	public void setGoals(Goal goal)
 	{
 		setAnnotations(goal);

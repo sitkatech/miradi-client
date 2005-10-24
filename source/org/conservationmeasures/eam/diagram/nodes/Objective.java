@@ -19,16 +19,6 @@ public class Objective extends NodeAnnotation
 		super(objective);
 	}
 
-	public boolean hasObjective()
-	{
-		return hasAnnotation();
-	}
-	
-	public String getLabel()
-	{
-		return getAnnotation();
-	}
-
 	public boolean equals(Object obj) 
 	{
 		if(!(obj instanceof Objective))

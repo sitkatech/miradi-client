@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Goals;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
+import org.conservationmeasures.eam.diagram.nodes.NodeAnnotations;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
@@ -90,10 +91,42 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		Graphics2D g2 = (Graphics2D) g1;
 
 		drawIndicator(rect, g2);
-		drawObjectives(rect, g2);
-		drawGoals(rect, g2);
+		drawAnnotation(objectives, rect, g2);
+		drawAnnotation(goals, rect, g2);
 	}
+	
+	private void drawAnnotation(NodeAnnotations annotations, Rectangle rect, Graphics2D g2) 
+	{
+		if(annotations != null && annotations.hasAnnotation())
+		{
+			int xInset = getInsetDimension().width;
 
+			RectangleRenderer annotationRenderer = new RectangleRenderer();
+			Rectangle annotationsRectangle = new Rectangle();
+			annotationsRectangle.x = rect.x + xInset + borderWidth;
+			int annotationsHeight = annotations.size() * ANNOTATIONS_HEIGHT;
+			annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
+			annotationsRectangle.width = rect.width - (2 * xInset) - borderWidth;
+			annotationsRectangle.height = annotationsHeight;
+			setPaint(g2, annotationsRectangle, annotations.getColor());
+			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
+			
+			//TODO allow multiple Objectives
+			JLabel annotationsLabel = new JLabel(annotations.getAnnotation(0).toString());
+			annotationsLabel.setSize(annotationsRectangle.getSize());
+			annotationsLabel.setHorizontalAlignment(JLabel.CENTER);
+			annotationsLabel.setVerticalAlignment(JLabel.CENTER);
+			
+			// The graphics2D object controls the location where the label 
+			// will paint (the label's location will be ignored at this point)
+			// Tell g2 where the new origin is, paint, and revert to the original origin
+			g2.translate(annotationsRectangle.x, annotationsRectangle.y);
+			annotationsLabel.paint(g2);
+			g2.translate(-annotationsRectangle.x, -annotationsRectangle.y);
+		}
+	
+	}
+	
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
 		if(indicator != null && indicator.hasIndicator())
@@ -115,72 +148,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		}
 	}
 	
-	private void drawObjectives(Rectangle rect, Graphics2D g2) 
-	{
-		if(objectives != null && objectives.hasObjectives())
-		{
-			int xInset = getInsetDimension().width;
-
-			RectangleRenderer objectivesRenderer = new RectangleRenderer();
-			Rectangle objectivesRectangle = new Rectangle();
-			objectivesRectangle.x = rect.x + xInset + borderWidth;
-			int objectivesHeight = objectives.size() * OBJECTIVES_HEIGHT;
-			objectivesRectangle.y = rect.y + (rect.height - objectivesHeight);
-			objectivesRectangle.width = rect.width - (2 * xInset) - borderWidth;
-			objectivesRectangle.height = objectivesHeight;
-			setPaint(g2, objectivesRectangle, objectives.getColor());
-			objectivesRenderer.fillShape(g2, objectivesRectangle, objectives.getColor());
-			
-			//TODO allow multiple Objectives
-			JLabel objectiveLabel = new JLabel(objectives.get(0).toString());
-			objectiveLabel.setSize(objectivesRectangle.getSize());
-			objectiveLabel.setHorizontalAlignment(JLabel.CENTER);
-			objectiveLabel.setVerticalAlignment(JLabel.CENTER);
-			
-			// The graphics2D object controls the location where the label 
-			// will paint (the label's location will be ignored at this point)
-			// Tell g2 where the new origin is, paint, and revert to the original origin
-			g2.translate(objectivesRectangle.x, objectivesRectangle.y);
-			objectiveLabel.paint(g2);
-			g2.translate(-objectivesRectangle.x, -objectivesRectangle.y);
-		}
-	}
-
-	private void drawGoals(Rectangle rect, Graphics2D g2) 
-	{
-		if(goals != null && goals.hasGoals())
-		{
-			int xInset = getInsetDimension().width;
-
-			RectangleRenderer goalsRenderer = new RectangleRenderer();
-			Rectangle goalsRectangle = new Rectangle();
-			goalsRectangle.x = rect.x + xInset + borderWidth;
-			int objectivesHeight = goals.size() * OBJECTIVES_HEIGHT;
-			goalsRectangle.y = rect.y + (rect.height - objectivesHeight);
-			goalsRectangle.width = rect.width - (2 * xInset) - borderWidth;
-			goalsRectangle.height = objectivesHeight;
-			setPaint(g2, goalsRectangle, goals.getColor());
-			goalsRenderer.fillShape(g2, goalsRectangle, goals.getColor());
-			
-			//TODO allow multiple Objectives
-			JLabel goalsLabel = new JLabel(goals.get(0).toString());
-			goalsLabel.setSize(goalsRectangle.getSize());
-			goalsLabel.setHorizontalAlignment(JLabel.CENTER);
-			goalsLabel.setVerticalAlignment(JLabel.CENTER);
-			
-			// The graphics2D object controls the location where the label 
-			// will paint (the label's location will be ignored at this point)
-			// Tell g2 where the new origin is, paint, and revert to the original origin
-			g2.translate(goalsRectangle.x, goalsRectangle.y);
-			goalsLabel.paint(g2);
-			g2.translate(-goalsRectangle.x, -goalsRectangle.y);
-		}
-	}
-	
-	
 	private static final int INDICATOR_WIDTH = 30;
 	private static final int INDICATOR_HEIGHT = 30;
-	private static final int OBJECTIVES_HEIGHT = 30;
+	private static final int ANNOTATIONS_HEIGHT = 30;
 	
 	boolean isVisible;
 	ThreatPriority priority;
