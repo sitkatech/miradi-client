@@ -15,7 +15,6 @@ import java.util.Vector;
 abstract public class NodeAnnotations 
 {
 	abstract public Color getColor();
-	abstract public void writeDataTo(DataOutputStream dataOut) throws IOException;
 	abstract public void readDataFrom(DataInputStream dataIn) throws IOException;
 	abstract public boolean equals(Object obj); 
 
@@ -29,14 +28,22 @@ abstract public class NodeAnnotations
 		this();
 		readDataFrom(dataIn);
 	}
-	
 
-	public void add(Object annotation)
+	public void writeDataTo(DataOutputStream dataOut) throws IOException 
+	{
+		dataOut.writeInt(size());
+		for(int i = 0; i < size(); ++i)
+		{
+			dataOut.writeUTF((getAnnotation(i)).getAnnotation());
+		}
+	}
+
+	public void add(NodeAnnotation annotation)
 	{
 		annotations.add(annotation);
 	}
 	
-	public void setAnnotations(Object annotation)
+	public void setAnnotations(NodeAnnotation annotation)
 	{
 		Vector singleObject = new Vector();
 		singleObject.add(annotation);
@@ -57,17 +64,18 @@ abstract public class NodeAnnotations
 	{
 		for(int i = 0 ; i < size(); ++i)
 		{
-			if(((NodeAnnotation)getAnnotation(i)).hasAnnotation())
+			if((getAnnotation(i)).hasAnnotation())
 				return true;
 		}
 		return false;
 	}
 	
 	
-	public Object getAnnotation(int i)
+	public NodeAnnotation getAnnotation(int i)
 	{
-		return annotations.get(i);
+		return (NodeAnnotation)annotations.get(i);
 	}
 	
+
 	Vector annotations;
 }

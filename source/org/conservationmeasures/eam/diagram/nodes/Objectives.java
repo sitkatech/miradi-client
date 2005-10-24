@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -34,15 +33,6 @@ public class Objectives extends NodeAnnotations
 		}
 	}
 	
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(size());
-		for(int i = 0; i < size(); ++i)
-		{
-			dataOut.writeUTF(get(i).getLabel());
-		}
-	}
-	
 	public Objective get(int i)
 	{
 		return (Objective)(getAnnotation(i));
@@ -58,7 +48,7 @@ public class Objectives extends NodeAnnotations
 		return hasAnnotation();
 	}
 	
-	public void setObjectives(Object objective)
+	public void setObjectives(Objective objective)
 	{
 		setAnnotations(objective);
 	}
