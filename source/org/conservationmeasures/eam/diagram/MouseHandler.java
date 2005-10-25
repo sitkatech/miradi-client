@@ -88,7 +88,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		
 		if(deltaX == 0 && deltaY == 0)
 			return;
-		project.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
+		project.nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
 	}
 
 	public void mouseEntered(MouseEvent arg0)

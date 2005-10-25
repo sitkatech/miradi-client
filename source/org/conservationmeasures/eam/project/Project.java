@@ -336,25 +336,32 @@ public class Project
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}
 	
-	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
+	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids)
 	{
 		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);
 		recordCommand(new CommandBeginTransaction());
 		DiagramModel model = getDiagramModel();
+		boolean nodesWereResized = false;
 		for(int i = 0 ; i < ids.length; ++i)
 		{
 			try 
 			{
 				DiagramNode nodeById = model.getNodeById(ids[i]);
 				Dimension newSize = nodeById.getSize();
-				recordCommand(new CommandSetNodeSize(ids[i], newSize, nodeById.getPreviousSize()));
+				Dimension previousSize = nodeById.getPreviousSize();
+				if(!newSize.equals(previousSize))
+				{
+					nodesWereResized = true;
+					recordCommand(new CommandSetNodeSize(ids[i], newSize, previousSize));
+				}
 			} 
 			catch (Exception e) 
 			{
 				e.printStackTrace();
 			}
 		}
-		recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
+		if(!nodesWereResized)
+			recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
 		recordCommand(new CommandEndTransaction());
 	}
 	
