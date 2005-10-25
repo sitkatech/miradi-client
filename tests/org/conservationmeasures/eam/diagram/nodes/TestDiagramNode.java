@@ -5,12 +5,12 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -134,13 +134,32 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals("wrong height", 60.0, bounds.getHeight(), TOLERANCE);
 	}
 	
+	public void testSize()
+	{
+		node.setLocation(new Point(3, 4));
+		node.setSize(new Dimension(300, 200));
+		Rectangle2D bounds = GraphConstants.getBounds(attributeMap);
+		assertEquals("wrong x?", 3.0, bounds.getX(), TOLERANCE);
+		assertEquals("wrong y?", 4.0, bounds.getY(), TOLERANCE);
+		assertEquals("wrong width", 300.0, bounds.getWidth(), TOLERANCE);
+		assertEquals("wrong height", 200.0, bounds.getHeight(), TOLERANCE);
+		node.setSize(new Dimension(100, 50));
+		bounds = GraphConstants.getBounds(attributeMap);
+		assertEquals("x changed?", 3.0, bounds.getX(), TOLERANCE);
+		assertEquals("y changed?", 4.0, bounds.getY(), TOLERANCE);
+		assertEquals("wrong new width", 100.0, bounds.getWidth(), TOLERANCE);
+		assertEquals("wrong new height", 50.0, bounds.getHeight(), TOLERANCE);
+		assertEquals("node size width incorrect?", 100.0, node.getSize().getWidth(), TOLERANCE);
+		assertEquals("node size height incorrect?", 50.0, node.getSize().getHeight(), TOLERANCE);
+	}
+
 	public void testFont()
 	{
 		Font nodeFont = GraphConstants.getFont(attributeMap);
 		assertTrue("not bold?", nodeFont.isBold());
 	}
 
-	static final double TOLERANCE = 0.01;
+	static final double TOLERANCE = 0.00;
 	static final String sampleText = "<rest&relaxation>";
 	
 	DiagramNode node;

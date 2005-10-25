@@ -11,8 +11,8 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -45,6 +45,14 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		{
 			dragStartedAt = null;
 			return;
+		}
+		for(int i = 0; i < selectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)selectedCells[i]).isNode())
+			{
+				DiagramNode node = (DiagramNode)selectedCells[i];
+				node.setPreviousSize(node.getSize());
+			}
 		}
 		
 	}
@@ -80,7 +88,6 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		
 		if(deltaX == 0 && deltaY == 0)
 			return;
-		
 		project.nodesWereMoved(deltaX, deltaY, selectedNodeIds);
 	}
 

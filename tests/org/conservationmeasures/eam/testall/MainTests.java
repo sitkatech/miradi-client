@@ -29,7 +29,9 @@ import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeTarget;
 import org.conservationmeasures.eam.diagram.nodes.TestSetIndication;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodePriority;
+import org.conservationmeasures.eam.diagram.nodes.TestSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeText;
+import org.conservationmeasures.eam.diagram.nodes.TestSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.TestTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
@@ -101,6 +103,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSetNodeText.class));
 		suite.addTest(new TestSuite(TestSetNodePriority.class));
 		suite.addTest(new TestSuite(TestSetIndication.class));
+		suite.addTest(new TestSuite(TestSetTargetGoal.class));
+		suite.addTest(new TestSuite(TestSetNodeSize.class));
+		
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
 		
 		// commands package

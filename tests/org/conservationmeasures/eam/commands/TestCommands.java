@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -286,6 +287,33 @@ public class TestCommands extends EAMTestCase
 		
 		verifyUndoTwiceThrows(cmd);
 	}
+	
+	public void testCommandNodeResized() throws Exception
+	{
+		int id = insertTarget();
+		Dimension defaultSize = new Dimension(120, 60);
+		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		Dimension originalSize = node.getSize();
+		assertEquals(defaultSize, originalSize);
+		
+		Dimension newSize = new Dimension(88, 22);
+		
+		CommandSetNodeSize cmd = new CommandSetNodeSize(id, newSize, originalSize);
+		project.executeCommand(cmd);
+		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousSize());
+		assertEquals("didn't change to new size?", newSize, node.getSize());
+
+		CommandSetNodeSize loaded = (CommandSetNodeSize)saveAndReload(cmd);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals( newSize, loaded.getCurrentSize());
+		assertEquals("didn't restore previous size?", originalSize, loaded.getPreviousSize());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getNodeById(id).getSize());
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+	
 
 	public void testCommandInsertTarget() throws Exception
 	{

@@ -1,4 +1,5 @@
 package org.conservationmeasures.eam.views.umbrella;
+import java.awt.Dimension;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -7,6 +8,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
+import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -193,6 +195,49 @@ public class TestUndoRedo extends EAMTestCase
 		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
 	}
+	
+	public void testUndoRedoNodeSize() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		int insertedId = insertDirectThreat(project);
+		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
+		Dimension originalSize = node.getSize();
+		assertEquals(originalSize, node.getSize());
+
+		Dimension newSize1 = new Dimension(5,10);
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetNodeSize(insertedId, newSize1, originalSize));
+		project.executeCommand(new CommandEndTransaction());
+
+		assertEquals(newSize1, node.getSize());
+
+		Dimension newSize2 = new Dimension(20,30);
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetNodeSize(insertedId, newSize2, newSize1));
+		project.executeCommand(new CommandEndTransaction());
+		assertEquals(newSize2, node.getSize());
+
+		Undo undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(newSize1, node.getSize());
+
+		undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(originalSize, node.getSize());
+
+		Redo redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(newSize1, node.getSize());
+
+		redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(newSize2, node.getSize());
+	}
+	
 
 	private int insertDirectThreat(Project project) throws CommandFailedException 
 	{

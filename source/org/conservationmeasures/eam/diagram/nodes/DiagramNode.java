@@ -59,7 +59,9 @@ public class DiagramNode extends EAMGraphCell
 		setColors(type);
 		setFont();
 		setLocation(new Point(0, 0));
-		setSize(new Dimension(120, 60));
+		Dimension defaultNodeSize = new Dimension(120, 60);
+		setSize(defaultNodeSize);
+		setPreviousSize(defaultNodeSize);
 		setText("");
 	}
 	
@@ -183,13 +185,27 @@ public class DiagramNode extends EAMGraphCell
 		GraphConstants.setOpaque(getAttributes(), true);
 	}
 	
-	private void setSize(Dimension size)
+	public Dimension getSize()
+	{
+		return getBounds().getBounds().getSize();
+	}
+	
+	public void setSize(Dimension size)
 	{
 		Point location = getLocation();
 		Rectangle bounds = new Rectangle(location, size);
 		GraphConstants.setBounds(getAttributes(), bounds);
 	}
 	
+	public Dimension getPreviousSize()
+	{
+		return previousSize;
+	}
+	
+	public void setPreviousSize(Dimension size)
+	{
+		previousSize = size;
+	}
 	public Rectangle2D getBounds()
 	{
 		return GraphConstants.getBounds(getAttributes());
@@ -226,4 +242,5 @@ public class DiagramNode extends EAMGraphCell
 	Indicator indicator;
 	Objectives objectives;
 	Goals goals;
+	Dimension previousSize;
 }

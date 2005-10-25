@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
@@ -155,6 +156,7 @@ public class DiagramModel extends DefaultGraphModel
 			DiagramNode nodeToMove = getNodeById(id);
 			Point oldLocation = nodeToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
+Logging.logDebug("moved Node from:"+ oldLocation +" to:"+ newLocation);
 			nodeToMove.setLocation(newLocation);
 			updateCell(nodeToMove);
 		}

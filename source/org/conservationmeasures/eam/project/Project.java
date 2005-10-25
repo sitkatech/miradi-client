@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -337,7 +339,23 @@ public class Project
 	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
 	{
 		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);
+		recordCommand(new CommandBeginTransaction());
+		DiagramModel model = getDiagramModel();
+		for(int i = 0 ; i < ids.length; ++i)
+		{
+			try 
+			{
+				DiagramNode nodeById = model.getNodeById(ids[i]);
+				Dimension newSize = nodeById.getSize();
+				recordCommand(new CommandSetNodeSize(ids[i], newSize, nodeById.getPreviousSize()));
+			} 
+			catch (Exception e) 
+			{
+				e.printStackTrace();
+			}
+		}
 		recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
+		recordCommand(new CommandEndTransaction());
 	}
 	
 	public void undo() throws CommandFailedException
