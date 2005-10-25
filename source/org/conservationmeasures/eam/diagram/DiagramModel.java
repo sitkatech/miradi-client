@@ -156,7 +156,7 @@ public class DiagramModel extends DefaultGraphModel
 			DiagramNode nodeToMove = getNodeById(id);
 			Point oldLocation = nodeToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
-Logging.logDebug("moved Node from:"+ oldLocation +" to:"+ newLocation);
+			Logging.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
 			nodeToMove.setLocation(newLocation);
 			updateCell(nodeToMove);
 		}

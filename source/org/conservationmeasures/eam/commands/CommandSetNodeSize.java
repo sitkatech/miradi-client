@@ -71,7 +71,7 @@ public class CommandSetNodeSize extends Command
 			if(expectedSize != null && !currentNodeSize.equals(expectedSize))
 				throw new Exception("CommandSetNodeSize expected " + expectedSize + " but was " + currentNodeSize);
 			node.setSize(desiredSize);
-Logging.logDebug("Updating Cell Size from:"+ expectedSize +" to:"+ desiredSize);
+			Logging.logVerbose("Updating Cell Size from:"+ expectedSize +" to:"+ desiredSize);
 			model.updateCell(node);
 			return currentNodeSize;
 		}
