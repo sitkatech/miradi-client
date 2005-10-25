@@ -31,17 +31,22 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		setPaint(g2, rect, color);
 		g.fillRect(rect.x, rect.y, rect.width, rect.height);
 		
+		drawPriority(g, rect, g2);
+		g2.setPaint(oldPaint);
+	}
+
+	private void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
+	{
 		if(priority != null && !priority.isPriorityNone())
 		{
 			Rectangle smallRect = new Rectangle();
-			smallRect.x = rect.x + rect.width - PRIORITY_WIDTH;
+			smallRect.x = rect.x;
 			smallRect.y = rect.y;
 			smallRect.width = PRIORITY_WIDTH;
-			smallRect.height = PRIORITY_HEIGHT;
+			smallRect.height = rect.height;
 			setPaint(g2, smallRect, priority.getColor());
 			g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		}
-		g2.setPaint(oldPaint);
 	}
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
@@ -97,5 +102,4 @@ public class RectangleRenderer extends MultilineNodeRenderer
 	}
 	
 	private static final int PRIORITY_WIDTH = 12;
-	private static final int PRIORITY_HEIGHT = 12;
 }
