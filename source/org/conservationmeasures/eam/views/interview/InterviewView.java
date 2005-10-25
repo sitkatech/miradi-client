@@ -14,6 +14,8 @@ import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -106,6 +108,11 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		showCurrentProjectStep();
+	}
+	
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+		
 	}
 
 	private UiVBox stepHolder;

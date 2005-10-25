@@ -165,7 +165,15 @@ public class Project
 	
 	public void executeCommand(Command command) throws CommandFailedException
 	{
-		command.execute(this);
+		try 
+		{
+			command.execute(this);
+		} 
+		catch (CommandFailedException e) 
+		{
+			fireCommandFailed(command, e);
+			throw(e);
+		}
 		recordCommand(command);
 	}
 	
@@ -276,6 +284,17 @@ public class Project
 			listener.commandExecuted(event);
 		}
 	}
+	
+	void fireCommandFailed(Command command, CommandFailedException e)
+	{
+		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandFailed(command, e);
+		}
+	}
+	
+	
 	
 	void fireSwitchToView(String viewName)
 	{

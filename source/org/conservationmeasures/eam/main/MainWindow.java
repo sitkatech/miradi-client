@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
@@ -47,8 +48,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
 		toolBarBox = new ToolBarContainer();
-		MainStatusBar mainStatusBar = new MainStatusBar();
-
+		mainStatusBar = new MainStatusBar();
 		updateTitle();
 		setSize(new Dimension(700, 500));
 		setJMenuBar(mainMenuBar);
@@ -123,6 +123,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			project.open(projectDirectory);
 			validate();
 			updateTitle();
+			mainStatusBar.setStatusReady();
 		}
 		catch(IOException e)
 		{
@@ -146,6 +147,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	{
 		project.close();
 		updateTitle();
+		mainStatusBar.setStatus("");
 	}
 
 	public void exitNormally()
@@ -157,6 +159,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		actions.updateActionStates();
+		mainStatusBar.setStatusReady();
+	}
+	
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+		mainStatusBar.setStatusError(e);
 	}
 	
 	public void switchToView(String viewName)
@@ -200,4 +208,5 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
 	private MainMenuBar mainMenuBar;
+	private MainStatusBar mainStatusBar;
 }
