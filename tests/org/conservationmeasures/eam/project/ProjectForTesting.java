@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -15,5 +18,19 @@ public class ProjectForTesting extends Project
 	{
 		getDatabase().openMemoryDatabase(testName);
 		loadCommandsFromDatabase();
+		commandStack = new Vector();
 	}
+
+	void fireCommandExecuted(Command command) 
+	{
+		super.fireCommandExecuted(command);
+		if(commandStack != null)
+			commandStack.add(command);
+	}
+
+	Command getLastCommand()
+	{
+		return (Command)commandStack.remove(commandStack.size()-1);
+	}
+	Vector commandStack;
 }

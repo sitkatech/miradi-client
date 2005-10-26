@@ -358,30 +358,45 @@ public class Project
 	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids)
 	{
 		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);
-		recordCommand(new CommandBeginTransaction());
+		boolean aCommandHasBeenRecorded = false;
 		DiagramModel model = getDiagramModel();
-		boolean nodesWereResized = false;
+		Vector nodeIdsActuallyMoved = new Vector();
 		for(int i = 0 ; i < ids.length; ++i)
 		{
 			try 
 			{
 				DiagramNode nodeById = model.getNodeById(ids[i]);
+				if(!nodeById.getPreviousLocation().equals(nodeById.getLocation()))
+					nodeIdsActuallyMoved.add(new Integer(ids[i]));
+				
 				Dimension newSize = nodeById.getSize();
 				Dimension previousSize = nodeById.getPreviousSize();
 				if(!newSize.equals(previousSize))
-				{
-					nodesWereResized = true;
-					recordCommand(new CommandSetNodeSize(ids[i], newSize, previousSize));
-				}
+					aCommandHasBeenRecorded = RecordCommandAndBeginTransactionIfRequired(new CommandSetNodeSize(ids[i], newSize, previousSize), aCommandHasBeenRecorded);					
 			} 
 			catch (Exception e) 
 			{
 				e.printStackTrace();
 			}
 		}
-		if(!nodesWereResized)
-			recordCommand(new CommandDiagramMove(deltaX, deltaY, ids));
-		recordCommand(new CommandEndTransaction());
+		int[] idsActuallyMoved = new int[nodeIdsActuallyMoved.size()];
+		for(int i = 0; i < nodeIdsActuallyMoved.size(); ++i)
+		{
+			idsActuallyMoved[i] = ((Integer)nodeIdsActuallyMoved.get(i)).intValue();
+		}
+		if(idsActuallyMoved.length > 0)
+			aCommandHasBeenRecorded = RecordCommandAndBeginTransactionIfRequired(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved), aCommandHasBeenRecorded);
+
+		if(aCommandHasBeenRecorded)
+			recordCommand(new CommandEndTransaction());
+	}
+	
+	public boolean RecordCommandAndBeginTransactionIfRequired(Command command, boolean beginTransactionAleadyRecorded)
+	{
+		if(!beginTransactionAleadyRecorded)
+			recordCommand(new CommandBeginTransaction());
+		recordCommand(command);	
+		return true;
 	}
 	
 	public void undo() throws CommandFailedException

@@ -51,6 +51,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 			if(((EAMGraphCell)selectedCells[i]).isNode())
 			{
 				DiagramNode node = (DiagramNode)selectedCells[i];
+				node.setPreviousLocation(node.getLocation());
 				node.setPreviousSize(node.getSize());
 			}
 		}

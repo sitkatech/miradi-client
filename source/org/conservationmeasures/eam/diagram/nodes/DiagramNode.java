@@ -206,6 +206,17 @@ public class DiagramNode extends EAMGraphCell
 	{
 		previousSize = size;
 	}
+	
+	public Point getPreviousLocation()
+	{
+		return previousLocation;
+	}
+
+	public void setPreviousLocation(Point location)
+	{
+		previousLocation = location;
+	}
+	
 	public Rectangle2D getBounds()
 	{
 		return GraphConstants.getBounds(getAttributes());
@@ -243,4 +254,5 @@ public class DiagramNode extends EAMGraphCell
 	Objectives objectives;
 	Goals goals;
 	Dimension previousSize;
+	Point previousLocation;
 }
