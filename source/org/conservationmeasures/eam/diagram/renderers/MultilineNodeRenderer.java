@@ -139,16 +139,20 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			RectangleRenderer annotationRenderer = new RectangleRenderer();
 			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
 
-			Color color = Color.BLACK;
-			Stroke stroke = new BasicStroke(borderWidth);
-			g2.setColor(color);
-			g2.setStroke(stroke);
-			annotationRenderer.drawBorder(g2, annotationsRectangle, color);
+			drawBoarder(g2, annotationsRectangle, annotationRenderer);
 			
 			//TODO allow multiple Objectives
 			String labelMessage = annotations.getAnnotation(0).toString();
 			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 		}
+	}
+	private void drawBoarder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
+	{
+		Color color = Color.BLACK;
+		Stroke stroke = new BasicStroke(borderWidth);
+		g2.setColor(color);
+		g2.setStroke(stroke);
+		annotationRenderer.drawBorder(g2, annotationsRectangle, color);
 	}
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
@@ -159,25 +163,25 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
 			
 			Rectangle smallTriangle = new Rectangle();
-			smallTriangle.x = annotationsRectangle.x;
+			smallTriangle.x = annotationsRectangle.x-INDICATOR_WIDTH;
 			smallTriangle.y = annotationsRectangle.y;
 			smallTriangle.width = INDICATOR_WIDTH;
 			smallTriangle.height = INDICATOR_HEIGHT;
 			setPaint(g2, smallTriangle, indicator.getColor());
 			indicatorRenderer.fillShape(g2, smallTriangle, indicator.getColor());
+			drawBoarder(g2, smallTriangle, indicatorRenderer);
 
-			drawLabel(g2, annotationsRectangle, indicator.toString(), smallTriangle.getSize());
+			drawLabel(g2, smallTriangle, indicator.toString(), smallTriangle.getSize());
 		}
 	}
 
 	private Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
 	{
 		Rectangle annotationsRectangle = new Rectangle();
-		int xInset = getInsetDimension().width;
-		annotationsRectangle.x = rect.x + xInset;
+		annotationsRectangle.x = rect.x + INDICATOR_WIDTH;
 		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - (2 * xInset);
+		annotationsRectangle.width = rect.width - (2 * INDICATOR_WIDTH);
 		annotationsRectangle.height = annotationsHeight;
 		return annotationsRectangle;
 	}
