@@ -101,5 +101,5 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		return new Point2D.Double(xout, yout);
 	}
 	
-	private static final int PRIORITY_WIDTH = 12;
+	private static final int PRIORITY_WIDTH = 6;
 }
