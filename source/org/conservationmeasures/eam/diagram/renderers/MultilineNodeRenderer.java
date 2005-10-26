@@ -36,12 +36,14 @@
 
 package org.conservationmeasures.eam.diagram.renderers;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 
 import javax.swing.JLabel;
 
@@ -82,17 +84,14 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		if(!isVisible)
 			return;
 		int annotationCount = getNumberOfAnnotations();
-		if(annotationCount > 0)
-			paintWithAnnotations(g1, annotationCount);
-		else
-			super.paint(g1);
+		paintWithAnnotations(g1, annotationCount);
 	}
 
 	private void paintWithAnnotations(Graphics g1, int annotationCount) 
 	{
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
-		setSize(originalWidth, originalHeight - (annotationCount * INDICATOR_HEIGHT) - borderWidth);
+		setSize(originalWidth, originalHeight - (annotationCount * INDICATOR_HEIGHT));
 		super.paint(g1);
 		setSize(originalWidth, originalHeight);
 
@@ -126,7 +125,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		}
 		
 		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
-			++numberOfAnnotations;
+			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;
 	}
@@ -139,6 +138,12 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			setPaint(g2, annotationsRectangle, annotations.getColor());
 			RectangleRenderer annotationRenderer = new RectangleRenderer();
 			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
+
+			Color color = Color.BLACK;
+			Stroke stroke = new BasicStroke(borderWidth);
+			g2.setColor(color);
+			g2.setStroke(stroke);
+			annotationRenderer.drawBorder(g2, annotationsRectangle, color);
 			
 			//TODO allow multiple Objectives
 			String labelMessage = annotations.getAnnotation(0).toString();
