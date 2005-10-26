@@ -81,15 +81,54 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		if(!isVisible)
 			return;
-		
+		int annotationCount = getNumberOfAnnotations();
+		if(annotationCount > 0)
+			paintWithAnnotations(g1, annotationCount);
+		else
+			super.paint(g1);
+	}
+
+	private void paintWithAnnotations(Graphics g1, int annotationCount) 
+	{
+		int originalHeight = getSize().height;
+		int originalWidth = getSize().width; 
+		setSize(originalWidth, originalHeight - (annotationCount * INDICATOR_HEIGHT) - borderWidth);
 		super.paint(g1);
-		
+		setSize(originalWidth, originalHeight);
+
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
 		drawAnnotation(rect, g2, objectives);
 		drawAnnotation(rect, g2, goals);
 		drawIndicator(rect, g2);
+	}
+	
+	private int getNumberOfAnnotations()
+	{
+		int numberOfAnnotations = 0;
+		if(objectives != null)
+		{
+			for(int i = 0; i < objectives.size(); ++i)
+			{
+				if(objectives.get(i).hasAnnotation())
+					++numberOfAnnotations;
+			}
+		}
+		
+		if(goals != null)
+		{
+			for(int i = 0; i < goals.size(); ++i)
+			{
+				if(goals.get(i).hasAnnotation())
+					++numberOfAnnotations;
+			}
+		}
+		
+		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
+			++numberOfAnnotations;
+
+		return numberOfAnnotations;
 	}
 	
 	private void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
@@ -130,10 +169,10 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		Rectangle annotationsRectangle = new Rectangle();
 		int xInset = getInsetDimension().width;
-		annotationsRectangle.x = rect.x + xInset + borderWidth;
+		annotationsRectangle.x = rect.x + xInset;
 		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - (2 * xInset) - borderWidth;
+		annotationsRectangle.width = rect.width - (2 * xInset);
 		annotationsRectangle.height = annotationsHeight;
 		return annotationsRectangle;
 	}
