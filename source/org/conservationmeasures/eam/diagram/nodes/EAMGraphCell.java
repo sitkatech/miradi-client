@@ -26,6 +26,11 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
+	public boolean isProjectScope()
+	{
+		return false;
+	}
+	
 	public boolean isLinkage()
 	{
 		return false;

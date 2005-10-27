@@ -35,6 +35,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		model.addDiagramModelListener(this);
 	}
 	
+	public boolean isProjectScope()
+	{
+		return true;
+	}
+	
 	public Rectangle2D getBounds()
 	{
 		return GraphConstants.getBounds(getAttributes());

@@ -27,7 +27,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.ProjectScopeBox;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -45,8 +45,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public Component getRendererComponent(JGraph graphToUse, CellView view,
 			boolean sel, boolean focus, boolean previewMode)
 	{
-		Object cell = view.getCell();
-		if(cell instanceof ProjectScopeBox)
+		EAMGraphCell cell = (EAMGraphCell)view.getCell();
+		if(cell.isProjectScope())
 			isVisible = ((DiagramComponent)graphToUse).isProjectScopeVisible();
 
 		String text = cell.toString();
