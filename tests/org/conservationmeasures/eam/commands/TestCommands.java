@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Goal;
@@ -50,6 +51,28 @@ public class TestCommands extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		super.tearDown();
+	}
+	
+	public void testCommandSetProjectVision() throws Exception
+	{
+		String vision = "Save the world";
+		String oldVision = "less interesting vision";
+		ProjectScopeBox scope = project.getDiagramModel().getProjectScopeBox();
+		scope.setVision(oldVision);
+		
+		CommandSetProjectVision cmd = new CommandSetProjectVision(vision);
+		assertEquals("wrong vision?", vision, cmd.getVisionText());
+		
+		project.executeCommand(cmd);
+		assertEquals("Didn't set?", vision, scope.getVision());
+		assertEquals("wrong previous vision?", oldVision, cmd.getPreviousVisionText());
+		
+		CommandSetProjectVision loaded = (CommandSetProjectVision)saveAndReload(cmd);
+		assertEquals("Didn't load vision?", cmd.getVisionText(), loaded.getVisionText());
+		assertEquals("Didn't load previous vision?", cmd.getPreviousVisionText(), loaded.getPreviousVisionText());
+		
+		cmd.undo(project);
+		assertEquals("Didn't undo?", oldVision, scope.getVision());
 	}
 	
 	public void testCommandSetData() throws Exception

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.commands.CommandSetProjectVision;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -51,13 +52,13 @@ public class Properties extends ProjectDoer
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
 	{
 		ProjectScopePropertiesDialog dlg = new ProjectScopePropertiesDialog(EAM.mainWindow, getProject(), scope);
-		dlg.setText("Sample vision");
+		dlg.setText(scope.getVision());
 		
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
 
-		//getProject().executeCommand(new CommandSetProjectVision(dlg.getText()));
+		getProject().executeCommand(new CommandSetProjectVision(dlg.getText()));
 	}
 	
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException

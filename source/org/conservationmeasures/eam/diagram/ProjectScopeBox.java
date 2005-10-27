@@ -24,6 +24,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		model = modelToUse;
 		autoSurroundTargets();
+		vision = "";
 		
 		setText(EAM.text("Project Scope"));
 		Color color = LIGHT_GREEN;
