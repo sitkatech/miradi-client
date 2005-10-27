@@ -180,7 +180,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		annotationsRectangle.x = rect.x + INDICATOR_WIDTH;
 		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - (2 * INDICATOR_WIDTH);
+		annotationsRectangle.width = rect.width - (INDICATOR_WIDTH);
 		annotationsRectangle.height = annotationsHeight;
 		return annotationsRectangle;
 	}
