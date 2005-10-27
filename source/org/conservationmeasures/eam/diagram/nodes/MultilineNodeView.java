@@ -32,7 +32,7 @@ public class MultilineNodeView extends VertexView
 	public Rectangle2D getRectangleWithoutAnnotations()
 	{
 		Rectangle2D rectangleCopy = (Rectangle2D)getBounds().clone();
-		Dimension sizeWithoutAnnotations = MultilineNodeRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), node.getNumberOfAnnotations());
+		Dimension sizeWithoutAnnotations = MultilineNodeRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), node.getAnnotationRows());
 		rectangleCopy.setRect(getBounds().getX(), getBounds().getY(), sizeWithoutAnnotations.getWidth(), sizeWithoutAnnotations.getHeight());
 		return rectangleCopy;
 	}

@@ -140,30 +140,28 @@ public class DiagramNode extends EAMGraphCell
 		objectives = objectivesToUse;
 	}
 	
-	public int getNumberOfAnnotations()
+	public int getAnnotationRows()
 	{
 		int numberOfAnnotations = 0;
-		if(objectives != null)
-		{
-			for(int i = 0; i < objectives.size(); ++i)
-			{
-				if(objectives.get(i).hasAnnotation())
-					++numberOfAnnotations;
-			}
-		}
-
-		if(goals != null)
-		{
-			for(int i = 0; i < goals.size(); ++i)
-			{
-				if(goals.get(i).hasAnnotation())
-					++numberOfAnnotations;
-			}
-		}
+		numberOfAnnotations = getAnnotationCount(objectives) + getAnnotationCount(goals);
 
 		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
+		return numberOfAnnotations;
+	}
+
+	private int getAnnotationCount(NodeAnnotations annotation)
+	{
+		int numberOfAnnotations = 0;
+		if(annotation != null)
+		{
+			for(int i = 0; i < annotation.size(); ++i)
+			{
+				if(annotation.getAnnotation(i).hasAnnotation())
+					++numberOfAnnotations;
+			}
+		}
 		return numberOfAnnotations;
 	}
 	

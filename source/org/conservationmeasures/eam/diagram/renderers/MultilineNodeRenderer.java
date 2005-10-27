@@ -81,7 +81,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
-		setSize(getSizeWithoutAnnotations(getSize(), node.getNumberOfAnnotations()));
+		setSize(getSizeWithoutAnnotations(getSize(), node.getAnnotationRows()));
 		super.paint(g1);
 		setSize(originalWidth, originalHeight);
 
