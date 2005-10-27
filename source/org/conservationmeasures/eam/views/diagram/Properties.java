@@ -12,11 +12,13 @@ import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
+import org.conservationmeasures.eam.main.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Properties extends ProjectDoer
@@ -29,9 +31,9 @@ public class Properties extends ProjectDoer
 		EAMGraphCell[] selected = getProject().getOnlySelectedCells();
 		if(selected.length != 1)
 			return false;
-		if(!selected[0].isNode())
-			return false;
-		return true;
+		if(selected[0].isNode() || selected[0].isProjectScope())
+			return true;
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -39,10 +41,27 @@ public class Properties extends ProjectDoer
 		if(!isAvailable())
 			return;
 		
-		EAMGraphCell[] selected = getProject().getOnlySelectedCells();
-		DiagramNode selectedNode = (DiagramNode)selected[0];
-		if(selectedNode == null)
+		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
+		if(selected.isNode())
+			doNodeProperties((DiagramNode)selected);
+		else if(selected.isProjectScope())
+			doProjectScopeProperties((ProjectScopeBox)selected);
+	}
+	
+	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
+	{
+		ProjectScopePropertiesDialog dlg = new ProjectScopePropertiesDialog(EAM.mainWindow, getProject(), scope);
+		dlg.setText("Sample vision");
+		
+		dlg.setVisible(true);
+		if(!dlg.getResult())
 			return;
+
+		//getProject().executeCommand(new CommandSetProjectVision(dlg.getText()));
+	}
+	
+	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
+	{
 		String title = EAM.text("Title|Node Properties");
 		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, selectedNode);
 		dlg.setVisible(true);
