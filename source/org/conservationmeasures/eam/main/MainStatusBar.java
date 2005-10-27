@@ -18,14 +18,23 @@ public class MainStatusBar extends JPanel
 		setLayout( new BoxLayout( this, BoxLayout.X_AXIS) );
 		statusSummary = new JLabel();
 		add(statusSummary);
-		
 	}
 	
 	public void setStatusReady()
 	{
-		setStatus(EAM.text("Status|Ready"));
+		setStatus(STATUS_READY);
 	}
 	
+	public void setStatusAllLayersVisible()
+	{
+		setStatusReady();
+	}
+
+	public void setStatusHiddenLayers()
+	{
+		setStatus(STATUS_READY + EAM.text("Status|: Some Layers Hidden"));
+	}
+
 	public void setStatusError(CommandFailedException e)
 	{
 		setStatus(e.getMessage());
@@ -36,5 +45,6 @@ public class MainStatusBar extends JPanel
 		statusSummary.setText(text);
 	}
 
+	private final String STATUS_READY = EAM.text("Status|Ready");
 	private JLabel statusSummary;
 }

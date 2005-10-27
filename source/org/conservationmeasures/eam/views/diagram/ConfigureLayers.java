@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ConfigureLayers extends ViewDoer
@@ -22,14 +23,16 @@ public class ConfigureLayers extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		LayerManager manager = getMainWindow().getProject().getLayerManager();
+		MainWindow window = getMainWindow();
+		LayerManager manager = window.getProject().getLayerManager();
 		LayerDialog dlg = new LayerDialog(EAM.mainWindow, manager);
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
 
 		dlg.updateLayerManager(manager);
-		DiagramComponent diagram = getMainWindow().getDiagramComponent();
+		window.updateStatusBar();
+		DiagramComponent diagram = window.getDiagramComponent();
 		diagram.clearSelection();
 		diagram.repaint();
 	}

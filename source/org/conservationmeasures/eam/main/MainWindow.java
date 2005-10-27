@@ -123,7 +123,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			project.open(projectDirectory);
 			validate();
 			updateTitle();
-			mainStatusBar.setStatusReady();
+			updateStatusBar();
 		}
 		catch(IOException e)
 		{
@@ -149,6 +149,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		updateTitle();
 		mainStatusBar.setStatus("");
 	}
+	
+	public void updateStatusBar()
+	{
+		if(getProject().getLayerManager().areAllLayersVisible())
+			mainStatusBar.setStatusAllLayersVisible();
+		else
+			mainStatusBar.setStatusHiddenLayers();
+	}
 
 	public void exitNormally()
 	{
@@ -159,7 +167,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		actions.updateActionStates();
-		mainStatusBar.setStatusReady();
+		updateStatusBar();
 	}
 	
 	public void commandFailed(Command command, CommandFailedException e)
