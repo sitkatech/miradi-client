@@ -161,6 +161,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
+		node1.setPreviousSize(node1.getSize());
 
 		int[] noNodesMoved = new int[1];
 		noNodesMoved[0] = node1.getId();

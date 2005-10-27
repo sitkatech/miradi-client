@@ -222,6 +222,16 @@ public class DiagramNode extends EAMGraphCell
 		return GraphConstants.getBounds(getAttributes());
 	}
 	
+	public boolean hasMoved()
+	{
+		return !getLocation().equals(getPreviousLocation());
+	}
+	
+	public boolean sizeHasChanged()
+	{
+		return !getSize().equals(getPreviousSize());
+	}
+	
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();

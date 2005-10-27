@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.project;
 
-import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -357,46 +356,50 @@ public class Project
 	
 	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids)
 	{
-		getDiagramModel().nodesWereMoved(deltaX, deltaY, ids);
-		boolean aCommandHasBeenRecorded = false;
 		DiagramModel model = getDiagramModel();
-		Vector nodeIdsActuallyMoved = new Vector();
+		model.nodesWereMoved(deltaX, deltaY, ids);
+
+		Vector commands = new Vector();
+		Vector movedNodes = new Vector();
 		for(int i = 0 ; i < ids.length; ++i)
 		{
 			try 
 			{
-				DiagramNode nodeById = model.getNodeById(ids[i]);
-				if(!nodeById.getPreviousLocation().equals(nodeById.getLocation()))
-					nodeIdsActuallyMoved.add(new Integer(ids[i]));
+				DiagramNode node = model.getNodeById(ids[i]);
+				if(node.hasMoved())
+					movedNodes.add(node);
 				
-				Dimension newSize = nodeById.getSize();
-				Dimension previousSize = nodeById.getPreviousSize();
-				if(!newSize.equals(previousSize))
-					aCommandHasBeenRecorded = RecordCommandAndBeginTransactionIfRequired(new CommandSetNodeSize(ids[i], newSize, previousSize), aCommandHasBeenRecorded);					
+				if(node.sizeHasChanged())
+					commands.add(buildResizeCommand(node));
 			} 
 			catch (Exception e) 
 			{
-				e.printStackTrace();
+				EAM.logException(e);
 			}
 		}
-		int[] idsActuallyMoved = new int[nodeIdsActuallyMoved.size()];
-		for(int i = 0; i < nodeIdsActuallyMoved.size(); ++i)
+		
+		if(movedNodes.size() > 0)
 		{
-			idsActuallyMoved[i] = ((Integer)nodeIdsActuallyMoved.get(i)).intValue();
+			int[] idsActuallyMoved = new int[movedNodes.size()];
+			for(int i = 0; i < movedNodes.size(); ++i)
+				idsActuallyMoved[i] = ((DiagramNode)movedNodes.get(i)).getId();
+			
+			commands.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));			
 		}
-		if(idsActuallyMoved.length > 0)
-			aCommandHasBeenRecorded = RecordCommandAndBeginTransactionIfRequired(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved), aCommandHasBeenRecorded);
-
-		if(aCommandHasBeenRecorded)
+		
+		if(commands.size() > 0)
+		{
+			recordCommand(new CommandBeginTransaction());
+			for(int i=0; i < commands.size(); ++i)
+				recordCommand((Command)commands.get(i));
 			recordCommand(new CommandEndTransaction());
+		}
+		
 	}
 	
-	public boolean RecordCommandAndBeginTransactionIfRequired(Command command, boolean beginTransactionAleadyRecorded)
+	Command buildResizeCommand(DiagramNode node)
 	{
-		if(!beginTransactionAleadyRecorded)
-			recordCommand(new CommandBeginTransaction());
-		recordCommand(command);	
-		return true;
+		return new CommandSetNodeSize(node.getId(), node.getSize(), node.getPreviousSize());
 	}
 	
 	public void undo() throws CommandFailedException
