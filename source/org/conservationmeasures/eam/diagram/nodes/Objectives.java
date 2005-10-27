@@ -74,28 +74,19 @@ public class Objectives extends NodeAnnotations
 		objectives.add(new Objective(Objective.ANNOTATION_NONE_STRING));
 		if(node.isDirectThreat())
 		{
-			objectives.add(new Objective("1a"));
-			objectives.add(new Objective("1b"));
-			objectives.add(new Objective("2"));
+			objectives.add(new Objective("Obj 1"));
+			objectives.add(new Objective("Obj 2"));
+			objectives.add(new Objective("Obj 3"));
+			objectives.add(new Objective("Obj 4"));
+			objectives.add(new Objective("Obj 5"));
 		}
-		else if (node.isIndirectFactor())
+		else
 		{
-			objectives.add(new Objective("A"));
-			objectives.add(new Objective("B"));
-			objectives.add(new Objective("C"));
-			objectives.add(new Objective("D"));
-		}
-		else if (node.isStress())
-		{
-			objectives.add(new Objective("1"));
-			objectives.add(new Objective("2"));
-			objectives.add(new Objective("3"));
-		}
-		else if (node.isIntervention())
-		{
-			objectives.add(new Objective("a"));
-			objectives.add(new Objective("b"));
-			objectives.add(new Objective("c"));
+			objectives.add(new Objective("Obj A"));
+			objectives.add(new Objective("Obj B"));
+			objectives.add(new Objective("Obj C"));
+			objectives.add(new Objective("Obj D"));
+			objectives.add(new Objective("Obj E"));
 		}
 		return objectives;
 	}
