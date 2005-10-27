@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.JGraph;
+import org.jgraph.graph.CellView;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
@@ -53,6 +54,13 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 	}
 	
+	public CellView getNextSelectableViewAt(CellView selectedCell, double x, double y)
+	{
+		// Always use the top-most cell at this location, 
+		// never the one behind it
+		return super.getNextSelectableViewAt(null, x, y);
+	}
+
 	public BufferedImage getImage()
 	{
 		int insets = 5;
