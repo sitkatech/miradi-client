@@ -41,6 +41,11 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return true;
 	}
 	
+	public boolean hasVision()
+	{
+		return vision.length()>0;
+	}
+	
 	public String getVision()
 	{
 		return vision;
@@ -49,6 +54,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public void setVision(String visionStatement)
 	{
 		vision = visionStatement;
+		autoSurroundTargets();
 	}
 	
 	public Rectangle2D getBounds()
@@ -96,8 +102,15 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 			}
 		}
 		
-		if(bounds == null)
+		if(bounds != null)
+		{
+			if (hasVision())
+				bounds.setRect(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight() + VISION_HEIGHT);
+		}
+		else
+		{
 			bounds = new Rectangle();
+		}
 
 		return bounds;
 	}
@@ -133,6 +146,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	final static int SIDE_MARGIN = 5;
 	final static int TOP_MARGIN = 20;
 	final static int BOTTOM_MARGIN = 5;
+	final static int VISION_HEIGHT = 40;
 	
 	DiagramModel model;
 	

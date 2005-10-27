@@ -27,7 +27,11 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.NodeAnnotation;
+import org.conservationmeasures.eam.diagram.nodes.NodeAnnotations;
+import org.conservationmeasures.eam.diagram.nodes.ProjectVisionAnnotation;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -47,7 +51,10 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		if(cell.isProjectScope())
+		{
 			isVisible = ((DiagramComponent)graphToUse).isProjectScopeVisible();
+			vision = ((ProjectScopeBox)(view.getCell())).getVision();
+		}
 
 		String text = cell.toString();
 		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
@@ -110,6 +117,72 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
+
+		drawProjectScopeVision(g2, rect);
+	}
+	
+	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)
+	{
+		if(vision == null || vision.length() == 0)
+			return;
+		ProjectVisionAnnotation annotations = new ProjectVisionAnnotation();
+		NodeAnnotation annotation = new NodeAnnotation(vision);
+		annotations.add(annotation);
+		Rectangle scopeRect = rect;
+		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
+		drawAnnotation(scopeRect, g2, annotations);
+	}
+	
+	protected void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
+	{
+		JLabel message = new JLabel(labelMessage);
+		message.setSize(size);
+		message.setHorizontalAlignment(JLabel.CENTER);
+		message.setVerticalAlignment(JLabel.CENTER);
+
+		// The graphics2D object controls the location where the label 
+		// will paint (the label's location will be ignored at this point)
+		// Tell g2 where the new origin is, paint, and revert to the original origin
+		g2.translate(labelRectangle.x, labelRectangle.y);
+		message.paint(g2);
+		g2.translate(-labelRectangle.x, -labelRectangle.y);
+	}
+
+	void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
+	{
+		if(annotations != null && annotations.hasAnnotation())
+		{
+			Rectangle annotationsRectangle = getAnnotationsRect(rect, annotations.size());
+			setPaint(g2, annotationsRectangle, annotations.getColor());
+			RectangleRenderer annotationRenderer = new RectangleRenderer();
+			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
+
+			drawBoarder(g2, annotationsRectangle, annotationRenderer);
+			
+			//TODO allow multiple Objectives
+			String labelMessage = annotations.getAnnotation(0).toString();
+			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
+		}
+	}
+
+	void drawBoarder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
+	{
+		Color color = Color.BLACK;
+		Stroke stroke = new BasicStroke(borderWidth);
+		g2.setColor(color);
+		g2.setStroke(stroke);
+		annotationRenderer.drawBorder(g2, annotationsRectangle, color);
+	}
+
+	Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
+	{
+		Rectangle annotationsRectangle = new Rectangle();
+		annotationsRectangle.x = rect.x + INDICATOR_WIDTH;
+		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
+		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
+		annotationsRectangle.width = rect.width - (2 * INDICATOR_WIDTH);
+		annotationsRectangle.height = annotationsHeight;
+		return annotationsRectangle;
 	}
 
 	Rectangle getNonBorderBounds()
@@ -220,6 +293,10 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final String HTML_AFTER_TEXT = "</font></div></html>";
 	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
 
+	static final int INDICATOR_WIDTH = 30;
+	static final int INDICATOR_HEIGHT = 30;
+	static final int ANNOTATIONS_HEIGHT = 30;
+
 	JGraph graph;
 	JLabel label;
 	int borderWidth;
@@ -228,5 +305,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	boolean selected;
 	boolean preview;
 	boolean isVisible;
+	
+	String vision;
 	
 }

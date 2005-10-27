@@ -36,21 +36,16 @@
 
 package org.conservationmeasures.eam.diagram.renderers;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Stroke;
-
-import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
-import org.conservationmeasures.eam.diagram.nodes.NodeAnnotations;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -99,30 +94,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	}
 
 	
-	private void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
-	{
-		if(annotations != null && annotations.hasAnnotation())
-		{
-			Rectangle annotationsRectangle = getAnnotationsRect(rect, annotations.size());
-			setPaint(g2, annotationsRectangle, annotations.getColor());
-			RectangleRenderer annotationRenderer = new RectangleRenderer();
-			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
-
-			drawBoarder(g2, annotationsRectangle, annotationRenderer);
-			
-			//TODO allow multiple Objectives
-			String labelMessage = annotations.getAnnotation(0).toString();
-			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
-		}
-	}
-	private void drawBoarder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
-	{
-		Color color = Color.BLACK;
-		Stroke stroke = new BasicStroke(borderWidth);
-		g2.setColor(color);
-		g2.setStroke(stroke);
-		annotationRenderer.drawBorder(g2, annotationsRectangle, color);
-	}
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
@@ -145,35 +116,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		}
 	}
 
-	private Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
-	{
-		Rectangle annotationsRectangle = new Rectangle();
-		annotationsRectangle.x = rect.x + INDICATOR_WIDTH;
-		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
-		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - (2 * INDICATOR_WIDTH);
-		annotationsRectangle.height = annotationsHeight;
-		return annotationsRectangle;
-	}
 	
-	private void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
-	{
-		JLabel message = new JLabel(labelMessage);
-		message.setSize(size);
-		message.setHorizontalAlignment(JLabel.CENTER);
-		message.setVerticalAlignment(JLabel.CENTER);
-
-		// The graphics2D object controls the location where the label 
-		// will paint (the label's location will be ignored at this point)
-		// Tell g2 where the new origin is, paint, and revert to the original origin
-		g2.translate(labelRectangle.x, labelRectangle.y);
-		message.paint(g2);
-		g2.translate(-labelRectangle.x, -labelRectangle.y);
-	}
-	
-	private static final int INDICATOR_WIDTH = 30;
-	private static final int INDICATOR_HEIGHT = 30;
-	private static final int ANNOTATIONS_HEIGHT = 30;
 	
 	ThreatPriority priority;
 	DiagramNode node;
