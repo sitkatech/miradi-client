@@ -17,7 +17,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		if(cell.isNode())
 			return createNodeView(view);
 		
-		return new RectangleCellView(view);
+		return new ProjectScopeView(view);
 	}
 
 	private VertexView createNodeView(Object view)

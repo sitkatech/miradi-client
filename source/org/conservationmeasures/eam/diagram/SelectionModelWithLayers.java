@@ -24,12 +24,12 @@ public class SelectionModelWithLayers extends DefaultGraphSelectionModel
 	{
 		EAMGraphCell cell = (EAMGraphCell)cellObject;
 		DiagramComponent diagram = (DiagramComponent)graph;
-		boolean isVisible = false;
+		boolean isSelectable = true;
 		if(cell.isLinkage())
-			isVisible = diagram.isLinkageVisible((DiagramLinkage)cell);
+			isSelectable = diagram.isLinkageVisible((DiagramLinkage)cell);
 		else if(cell.isNode())
-			isVisible = diagram.isNodeVisible((DiagramNode)cell);
-		return isVisible;
+			isSelectable = diagram.isNodeVisible((DiagramNode)cell);
+		return isSelectable;
 	}
 
 	public void addSelectionCell(Object cell)
