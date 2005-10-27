@@ -25,7 +25,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		model = modelToUse;
 		autoSurroundTargets();
 		
-		setText("Project Scope");
+		setText(EAM.text("Project Scope"));
 		Color color = LIGHT_GREEN;
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setBackground(getAttributes(), color);
@@ -38,6 +38,16 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public boolean isProjectScope()
 	{
 		return true;
+	}
+	
+	public String getVision()
+	{
+		return vision;
+	}
+	
+	public void setVision(String visionStatement)
+	{
+		vision = visionStatement;
 	}
 	
 	public Rectangle2D getBounds()
@@ -124,4 +134,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	final static int BOTTOM_MARGIN = 5;
 	
 	DiagramModel model;
+	
+	private String vision;
 }
