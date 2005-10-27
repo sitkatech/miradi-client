@@ -177,12 +177,23 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
 	{
 		Rectangle annotationsRectangle = new Rectangle();
-		annotationsRectangle.x = rect.x + INDICATOR_WIDTH;
+		int annotationLeftInset = getAnnotationLeftOffset();
+		annotationsRectangle.x = rect.x + annotationLeftInset;
 		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - (INDICATOR_WIDTH);
+		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset();
 		annotationsRectangle.height = annotationsHeight;
 		return annotationsRectangle;
+	}
+
+	int getAnnotationLeftOffset()
+	{
+		return INDICATOR_WIDTH;
+	}
+	
+	int getAnnotationRightInset()
+	{
+		return INDICATOR_WIDTH;
 	}
 
 	Rectangle getNonBorderBounds()

@@ -116,7 +116,24 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		}
 	}
 
+	int getAnnotationLeftOffset()
+	{
+		if(node.getIndicator() == null || !node.getIndicator().hasIndicator())
+			return 0;
+		
+		int indicatorOffset = getInsetDimension().width - INDICATOR_WIDTH / 2;
+		if(indicatorOffset < 0)
+			indicatorOffset = 0;
+		int annotationOffset = indicatorOffset + INDICATOR_WIDTH;
+		return annotationOffset;
+	}
 	
+	int getAnnotationRightInset()
+	{
+		return 0;
+	}
+
+
 	
 	ThreatPriority priority;
 	DiagramNode node;
