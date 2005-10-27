@@ -205,7 +205,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	private static final int INDICATOR_HEIGHT = 30;
 	private static final int ANNOTATIONS_HEIGHT = 30;
 	
-	boolean isVisible;
 	ThreatPriority priority;
 	Indicator indicator;
 	Objectives objectives;
