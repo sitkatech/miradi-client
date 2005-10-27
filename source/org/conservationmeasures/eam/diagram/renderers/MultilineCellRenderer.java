@@ -128,7 +128,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		ProjectVisionAnnotation annotations = new ProjectVisionAnnotation();
 		NodeAnnotation annotation = new NodeAnnotation(vision);
 		annotations.add(annotation);
-		Rectangle scopeRect = rect;
+		Rectangle scopeRect = (Rectangle)rect.clone();
 		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
 		drawAnnotation(scopeRect, g2, annotations);
 	}
