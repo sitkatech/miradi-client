@@ -64,13 +64,19 @@ public class RectangleRenderer extends MultilineNodeRenderer
 	 * Copyright (c) 2001-2004 Gaudenz Alder
 	 *   
  	 */
+
 	/**
 	 * Returns the intersection of the bounding rectangle and the straight line
 	 * between the source and the specified point p. The specified point is
 	 * expected not to intersect the bounds.
 	 */
-	public Point2D getPerimeterPoint(VertexView view, Point2D source, Point2D p) {
-		Rectangle2D bounds = view.getBounds();
+	public Point2D getPerimeterPoint(VertexView view, Point2D source, Point2D p) 
+	{
+		return getPerimeterPoint(p, view.getBounds());
+	}
+
+	public Point2D getPerimeterPoint(Point2D p, Rectangle2D bounds)
+	{
 		double x = bounds.getX();
 		double y = bounds.getY();
 		double width = bounds.getWidth();

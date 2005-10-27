@@ -5,8 +5,11 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Dimension;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
+import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
@@ -14,9 +17,10 @@ import org.jgraph.graph.VertexView;
 
 public class MultilineNodeView extends VertexView
 {
-    public MultilineNodeView(Object cell) 
+    public MultilineNodeView(DiagramNode nodeToUse) 
     {
-        super(cell);
+        super(nodeToUse);
+        node = nodeToUse;
     }
 
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D arg1, Point2D arg2)
@@ -24,5 +28,14 @@ public class MultilineNodeView extends VertexView
 		EAM.logWarning("MultilineNodeView.getPerimeterPoint not implemented!");
 		return super.getPerimeterPoint(arg0, arg1, arg2);
 	}
-    
+	
+	public Rectangle2D getRectangleWithoutAnnotations()
+	{
+		Rectangle2D rectangleCopy = (Rectangle2D)getBounds().clone();
+		Dimension sizeWithoutAnnotations = MultilineNodeRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), node.getNumberOfAnnotations());
+		rectangleCopy.setRect(getBounds().getX(), getBounds().getY(), sizeWithoutAnnotations.getWidth(), sizeWithoutAnnotations.getHeight());
+		return rectangleCopy;
+	}
+
+	protected DiagramNode node;
 }

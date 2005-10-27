@@ -49,10 +49,8 @@ import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.Goals;
 import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.NodeAnnotations;
-import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -70,12 +68,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 
-		DiagramNode node = (DiagramNode)view.getCell();
+		node = (DiagramNode)view.getCell();
 		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
 		priority = node.getThreatPriority();
-		indicator = node.getIndicator();
-		objectives = node.getObjectives();
-		goals = node.getGoals();
 		return this;
 	}
 	
@@ -83,52 +78,26 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		if(!isVisible)
 			return;
-		int annotationCount = getNumberOfAnnotations();
-		paintWithAnnotations(g1, annotationCount);
-	}
 
-	private void paintWithAnnotations(Graphics g1, int annotationCount) 
-	{
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
-		setSize(originalWidth, originalHeight - (annotationCount * INDICATOR_HEIGHT));
+		setSize(getSizeWithoutAnnotations(getSize(), node.getNumberOfAnnotations()));
 		super.paint(g1);
 		setSize(originalWidth, originalHeight);
 
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
-		drawAnnotation(rect, g2, objectives);
-		drawAnnotation(rect, g2, goals);
+		drawAnnotation(rect, g2, node.getObjectives());
+		drawAnnotation(rect, g2, node.getGoals());
 		drawIndicator(rect, g2);
 	}
 	
-	private int getNumberOfAnnotations()
+	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
 	{
-		int numberOfAnnotations = 0;
-		if(objectives != null)
-		{
-			for(int i = 0; i < objectives.size(); ++i)
-			{
-				if(objectives.get(i).hasAnnotation())
-					++numberOfAnnotations;
-			}
-		}
-		
-		if(goals != null)
-		{
-			for(int i = 0; i < goals.size(); ++i)
-			{
-				if(goals.get(i).hasAnnotation())
-					++numberOfAnnotations;
-			}
-		}
-		
-		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
-			numberOfAnnotations = 1;
-
-		return numberOfAnnotations;
+		return new Dimension(size.width, size.height - (annotationCount * INDICATOR_HEIGHT));
 	}
+
 	
 	private void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
 	{
@@ -157,6 +126,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
+		Indicator indicator = node.getIndicator();
 		if(indicator != null && indicator.hasIndicator())
 		{
 			TriangleRenderer indicatorRenderer = new TriangleRenderer();
@@ -206,7 +176,5 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	private static final int ANNOTATIONS_HEIGHT = 30;
 	
 	ThreatPriority priority;
-	Indicator indicator;
-	Objectives objectives;
-	Goals goals;
+	DiagramNode node;
 }

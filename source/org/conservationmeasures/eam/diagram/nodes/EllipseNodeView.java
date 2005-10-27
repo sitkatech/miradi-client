@@ -38,7 +38,6 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.jgraph.graph.CellViewRenderer;
@@ -48,9 +47,9 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class EllipseNodeView extends MultilineNodeView
 {
-	public EllipseNodeView(Object cell)
+	public EllipseNodeView(DiagramNode nodeToUse)
 	{
-		super(cell);
+		super(nodeToUse);
 	}
 
     public CellViewRenderer getRenderer() 
@@ -70,8 +69,7 @@ public class EllipseNodeView extends MultilineNodeView
 	 */
 	public Point2D getPerimeterPoint(Point2D source, Point2D p) 
 	{
-		Rectangle2D r = getBounds();
-		Point2D result = EllipseRenderer.getPerimeterPoint(p, r);
+		Point2D result = EllipseRenderer.getPerimeterPoint(p, getRectangleWithoutAnnotations());
 		return getAttributes().createPoint(result);
 	}
 
@@ -82,5 +80,4 @@ public class EllipseNodeView extends MultilineNodeView
 	}
 	
 	protected static EllipseRenderer ellipseRenderer = new EllipseRenderer();
-	
 }

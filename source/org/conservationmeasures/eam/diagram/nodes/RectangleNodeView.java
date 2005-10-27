@@ -16,9 +16,9 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class RectangleNodeView extends MultilineNodeView
 {
-	public RectangleNodeView(Object cell)
+	public RectangleNodeView(DiagramNode node)
 	{
-		super(cell);
+		super(node);
 	}
 
     public CellViewRenderer getRenderer() 
@@ -39,12 +39,12 @@ public class RectangleNodeView extends MultilineNodeView
 	 */
 	public Point2D getPerimeterPoint(Point2D source, Point2D p) 
 	{
-		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(this, source, p);
+		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getRectangleWithoutAnnotations());
 	}
 
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
-		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(this, source, p);
+		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getRectangleWithoutAnnotations());
 	}
 	
 	protected static RectangleRenderer rectangleRenderer = new RectangleRenderer();

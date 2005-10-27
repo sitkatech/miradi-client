@@ -139,6 +139,34 @@ public class DiagramNode extends EAMGraphCell
 	{
 		objectives = objectivesToUse;
 	}
+	
+	public int getNumberOfAnnotations()
+	{
+		int numberOfAnnotations = 0;
+		if(objectives != null)
+		{
+			for(int i = 0; i < objectives.size(); ++i)
+			{
+				if(objectives.get(i).hasAnnotation())
+					++numberOfAnnotations;
+			}
+		}
+
+		if(goals != null)
+		{
+			for(int i = 0; i < goals.size(); ++i)
+			{
+				if(goals.get(i).hasAnnotation())
+					++numberOfAnnotations;
+			}
+		}
+
+		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
+			numberOfAnnotations = 1;
+
+		return numberOfAnnotations;
+	}
+	
 
 	public boolean isTarget()
 	{
