@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class NodeProperties extends ProjectDoer
+public class Properties extends ProjectDoer
 {
 	public boolean isAvailable()
 	{

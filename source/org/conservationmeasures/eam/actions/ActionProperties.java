@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionNodeProperties extends MainWindowAction
+public class ActionProperties extends MainWindowAction
 {
-	public ActionNodeProperties(MainWindow mainWindow)
+	public ActionProperties(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), "icons/edit.gif");
 	}

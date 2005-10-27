@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionNodeProperties;
+import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
@@ -85,7 +85,7 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionDelete.class, new Delete());
 		addDoerToMap(ActionPaste.class, new Paste());
 		addDoerToMap(ActionPasteWithoutLinks.class, new PasteWithoutLinks());
-		addDoerToMap(ActionNodeProperties.class, new NodeProperties());
+		addDoerToMap(ActionProperties.class, new Properties());
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());

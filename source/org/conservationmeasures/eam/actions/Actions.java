@@ -33,7 +33,7 @@ public class Actions
 		registerAction(new ActionInsertIndirectFactor(mainWindow));
 		registerAction(new ActionInsertStress(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
-		registerAction(new ActionNodeProperties(mainWindow));
+		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionOpenProject(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
