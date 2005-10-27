@@ -229,7 +229,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		Graphics2D g2 = (Graphics2D)g;
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
-		g.fillRect(rect.x, rect.y, rect.width, rect.height);
+		g.fillRoundRect(rect.x, rect.y, rect.width, rect.height, CORNER_SIZE, CORNER_SIZE);
 		g2.setPaint(oldPaint);
 	}
 
@@ -242,7 +242,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 		Color oldColor = g2.getColor();
 		g2.setColor(color);
-		g2.drawRect(rect.x, rect.y, rect.width, rect.height);
+		g2.drawRoundRect(rect.x, rect.y, rect.width, rect.height, CORNER_SIZE, CORNER_SIZE);
 		g2.setColor(oldColor);
 	}
 
@@ -296,6 +296,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	static final int INDICATOR_WIDTH = 20;
 	static final int INDICATOR_HEIGHT = 20;
 	static final int ANNOTATIONS_HEIGHT = 20;
+	private static final int CORNER_SIZE = 20;
 
 	JGraph graph;
 	JLabel label;
