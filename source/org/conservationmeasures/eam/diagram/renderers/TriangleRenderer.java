@@ -57,6 +57,6 @@ public class TriangleRenderer extends MultilineNodeRenderer {
 
 	int getVerticalAlignmentOfText()
 	{
-		return JLabel.CENTER;
+		return JLabel.BOTTOM;
 	}
 }
