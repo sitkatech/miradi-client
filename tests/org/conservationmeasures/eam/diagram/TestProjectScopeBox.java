@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
@@ -32,6 +33,8 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
 		DiagramNode target1 = model.createNode(DiagramNode.TYPE_TARGET);
+		model.getProjectScopeBox().setVision("Sample Vision");
+		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
 
@@ -40,6 +43,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
+		assertEquals("affected target?", targetSize, target1.getSize());
 		
 		DiagramNode target2 = model.createNode(DiagramNode.TYPE_TARGET);
 		model.moveNodes(200, 200, new int[] {target2.getId()});

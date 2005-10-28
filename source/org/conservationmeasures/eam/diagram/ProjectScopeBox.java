@@ -90,29 +90,24 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 			if(node.isTarget())
 			{
 				if(bounds == null)
-				{
-					bounds = node.getBounds();
-				}
-				else
-				{
-					Rectangle result = new Rectangle();
-					Rectangle.union(bounds, node.getBounds(), result);
-					bounds = result;
-				}
+					bounds = (Rectangle2D)node.getBounds().clone();
+
+				Rectangle tempRect = new Rectangle();
+				Rectangle.union(bounds, node.getBounds(), tempRect);
+				bounds = tempRect;
 			}
 		}
 		
-		if(bounds != null)
-		{
-			if (hasVision())
-				bounds.setRect(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight() + VISION_HEIGHT);
-		}
-		else
-		{
-			bounds = new Rectangle();
-		}
+		if(bounds == null)
+			return new Rectangle();
 
-		return bounds;
+		double height = bounds.getHeight();
+		if (hasVision())
+			height += VISION_HEIGHT;
+		
+		Rectangle result = new Rectangle();
+		result.setRect(bounds.getX(), bounds.getY(), bounds.getWidth(), height);
+		return result;
 	}
 
 	public void nodeAdded(DiagramModelEvent event)
