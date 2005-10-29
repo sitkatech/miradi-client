@@ -90,7 +90,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	
 	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
 	{
-		return new Dimension(size.width, size.height - (annotationCount * INDICATOR_HEIGHT));
+		return new Dimension(size.width, size.height - (annotationCount * (INDICATOR_HEIGHT / 2)));
 	}
 
 	
@@ -119,7 +119,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	int getAnnotationLeftOffset()
 	{
 		if(node.getIndicator() == null || !node.getIndicator().hasIndicator())
-			return 0;
+			return INDICATOR_WIDTH / 2;
 		
 		int indicatorOffset = getInsetDimension().width - INDICATOR_WIDTH / 2;
 		if(indicatorOffset < 0)
@@ -130,7 +130,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	
 	int getAnnotationRightInset()
 	{
-		return 0;
+		return INDICATOR_WIDTH / 2;
 	}
 
 
