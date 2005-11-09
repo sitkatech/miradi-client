@@ -12,7 +12,7 @@ public class ActionZoomIn extends MainWindowAction
 {
 	public ActionZoomIn(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), "icons/blankicon.png");
+		super(mainWindow, getLabel(), "icons/zoomin.gif");
 	}
 
 	private static String getLabel()

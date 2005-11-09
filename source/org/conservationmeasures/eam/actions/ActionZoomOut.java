@@ -12,7 +12,7 @@ public class ActionZoomOut extends MainWindowAction
 {
 	public ActionZoomOut(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), "icons/blankicon.png");
+		super(mainWindow, getLabel(), "icons/zoomout.gif");
 	}
 
 	private static String getLabel()

@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.ActionZoomIn;
+import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.ToolBarButton;
@@ -49,6 +51,9 @@ public class DiagramToolBar extends JToolBar
 		add(new ToolBarButton(actions, ActionDelete.class));
 		addSeparator();
 		add(new ToolBarButton(actions, ActionPrint.class));
+		addSeparator();
+		add(new ToolBarButton(actions, ActionZoomIn.class));
+		add(new ToolBarButton(actions, ActionZoomOut.class));
 	}
 	
 }
