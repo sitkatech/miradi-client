@@ -45,6 +45,8 @@ public class Actions
 		registerAction(new ActionViewInterview(mainWindow));
 		registerAction(new ActionViewTable(mainWindow));
 		registerAction(new ActionConfigureLayers(mainWindow));
+		registerAction(new ActionZoomIn(mainWindow));
+		registerAction(new ActionZoomOut(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -13,16 +13,17 @@ import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
+import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.actions.ActionPaste;
@@ -32,7 +33,8 @@ import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionConfigureLayers;
+import org.conservationmeasures.eam.actions.ActionZoomIn;
+import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 
 public class MainMenuBar extends JMenuBar
@@ -93,6 +95,9 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createViewMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
+		menu.add(new JMenuItem(actions.get(ActionZoomIn.class)));
+		menu.add(new JMenuItem(actions.get(ActionZoomOut.class)));
+		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
 		return menu;
 	}

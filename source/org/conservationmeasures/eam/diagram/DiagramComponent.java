@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
+import org.conservationmeasures.eam.actions.ActionZoomIn;
+import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -145,6 +147,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return null;
 	}
 	
+	public void zoom(double proportion)
+	{
+		setScale(getScale() * proportion);
+	}
+	
 	private void installKeyBindings(Actions actions)
 	{
 		Action helpAction = actions.get(ActionContextualHelp.class);
@@ -161,6 +168,10 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL, pasteAction);
 		Action deleteAction = actions.get(ActionDelete.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
+		Action zoomInAction = actions.get(ActionZoomIn.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_EQUALS, KeyBinder.KEY_MODIFIER_CTRL, zoomInAction);
+		Action zoomOutAction = actions.get(ActionZoomOut.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_MINUS, KeyBinder.KEY_MODIFIER_CTRL, zoomOutAction);
 	}
 
 	Project project;

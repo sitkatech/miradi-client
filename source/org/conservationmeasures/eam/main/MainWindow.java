@@ -124,6 +124,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			validate();
 			updateTitle();
 			updateStatusBar();
+			getDiagramComponent().requestFocus();
 		}
 		catch(IOException e)
 		{

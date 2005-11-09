@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -19,12 +20,13 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
+import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
-import org.conservationmeasures.eam.actions.ActionConfigureLayers;
+import org.conservationmeasures.eam.actions.ActionZoomIn;
+import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -89,6 +91,8 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
+		addDoerToMap(ActionZoomIn.class, new ZoomIn());
+		addDoerToMap(ActionZoomOut.class, new ZoomOut());
 	}
 	
 	DiagramComponent diagram;
