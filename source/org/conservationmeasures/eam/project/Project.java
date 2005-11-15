@@ -74,6 +74,7 @@ public class Project
 	void loadCommandsFromDatabase() throws IOException, UnknownCommandException, CommandFailedException
 	{
 		Vector commands = getDatabase().load();
+		applySnapToOldUnsnappedCommands(commands);
 		loadCommands(commands);
 	}
 	
@@ -382,7 +383,18 @@ public class Project
 		{
 			int[] idsActuallyMoved = new int[movedNodes.size()];
 			for(int i = 0; i < movedNodes.size(); ++i)
-				idsActuallyMoved[i] = ((DiagramNode)movedNodes.get(i)).getId();
+			{
+				DiagramNode node = (DiagramNode)movedNodes.get(i);
+				idsActuallyMoved[i] = node.getId();
+				
+				// adjust for snap
+				if(i == 0)
+				{
+					deltaX = node.getLocation().x - node.getPreviousLocation().x;
+					deltaY = node.getLocation().y - node.getPreviousLocation().y;
+				}
+					
+			}
 			
 			commands.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));			
 		}
@@ -489,7 +501,51 @@ public class Project
 		}
 		return selectedCellsWithLinkages;
 	}
+	
+	public int getGridSize()
+	{
+		return DEFAULT_GRID_SIZE;
+	}
+	
+	public Point getSnapped(Point point)
+	{
+		int gridSize = getGridSize();
+		return new Point(roundTo(point.x, gridSize), roundTo(point.y, gridSize));
+	}
+	
+	int roundTo(int valueToRound, int incrementToRoundTo)
+	{
+		int sign = 1;
+		if(valueToRound < 0)
+			sign = -1;
+		valueToRound = Math.abs(valueToRound);
+		
+		int half = incrementToRoundTo / 2;
+		valueToRound += half;
+		valueToRound -= (valueToRound % incrementToRoundTo);
+		return valueToRound * sign;
+	}
 
+	public void applySnapToOldUnsnappedCommands(Vector commands)
+	{
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			if(command instanceof CommandDiagramMove)
+			{
+				CommandDiagramMove unsnapped = (CommandDiagramMove)command;
+				Point unsnappedPoint = new Point(unsnapped.getDeltaX(), unsnapped.getDeltaY());
+				Point snappedPoint = getSnapped(unsnappedPoint);
+				if(!snappedPoint.equals(unsnappedPoint))
+				{
+					EAM.logDebug("Adjusting " + unsnappedPoint.toString() + " to " + snappedPoint.toString());
+					CommandDiagramMove snapped = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, unsnapped.getIds());
+					commands.set(i, snapped);
+				}
+			}
+		}
+	}
+	
 	protected void loadCommands(Vector commands) throws CommandFailedException, IOException
 	{
 		getDiagramModel().clear();
@@ -499,8 +555,9 @@ public class Project
 			EAM.logVerbose("Executing " + command);
 			replayCommand(command);
 			database.addCommandWithoutSaving(command);
+			
 		}
-		
+
 		if(currentView.length() == 0)
 		{
 			currentView = DiagramView.getViewName();
@@ -515,6 +572,8 @@ public class Project
 	{
 		return database;
 	}
+	
+	public static final int DEFAULT_GRID_SIZE = 10;
 
 	ProjectServer database;
 	InterviewModel interviewModel;

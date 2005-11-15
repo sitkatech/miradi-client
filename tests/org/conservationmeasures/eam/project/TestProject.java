@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -30,6 +31,46 @@ public class TestProject extends EAMTestCase
 	public TestProject(String name)
 	{
 		super(name);
+	}
+	
+	public void testApplySnapToOldUnsnappedCommands() throws Exception
+	{
+		Vector commands = new Vector();
+		commands.add(new CommandDiagramMove(7, 23, new int[] {0}));
+		commands.add(new CommandDiagramMove(10, 20, new int[] {0}));
+		commands.add(new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT));
+
+		Project project = new Project();
+		project.applySnapToOldUnsnappedCommands(commands);
+		assertEquals("didn't snap first command?", commands.get(1), commands.get(0));
+	}
+	
+	public void testGetSnapped() throws Exception
+	{
+		Project project = new Project();
+		
+		Point zeroZero = new Point(0, 0);
+		assertEquals("moved zero zero?", zeroZero, project.getSnapped(zeroZero));
+		
+		Point defaultPlus = new Point(Project.DEFAULT_GRID_SIZE, Project.DEFAULT_GRID_SIZE);
+		assertEquals("moved default plus?", defaultPlus, project.getSnapped(defaultPlus));
+		
+		Point defaultMinus = new Point(-Project.DEFAULT_GRID_SIZE, -Project.DEFAULT_GRID_SIZE);
+		assertEquals("moved default minus?", defaultMinus, project.getSnapped(defaultMinus));
+
+		Point oneThirdPlus = new Point(Project.DEFAULT_GRID_SIZE/3, Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap one third?", zeroZero, project.getSnapped(oneThirdPlus));
+		
+		Point oneThirdMinus = new Point(-Project.DEFAULT_GRID_SIZE/3, -Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus one third?", zeroZero, project.getSnapped(oneThirdMinus));
+		
+		Point twoThirdsPlus = new Point(2*Project.DEFAULT_GRID_SIZE/3, 2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(twoThirdsPlus));
+		
+		Point twoThirdsMinus = new Point(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(twoThirdsMinus));
+		
+		
 	}
 	
 	public void testIsValidName() throws Exception

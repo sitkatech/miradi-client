@@ -48,6 +48,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setDisconnectable(false);
 		setDisconnectOnMove(false);
 		setBendable(false);
+		setGridSize(Project.DEFAULT_GRID_SIZE);
+		setGridEnabled(true);
+		setGridVisible(true);
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
