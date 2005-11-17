@@ -317,9 +317,8 @@ public class JSONArray {
     public Object opt(int index) {
         if (index < 0 || index >= length()) {
             return null;
-        } else {
-            return myArrayList.get(index);
         }
+        return myArrayList.get(index);
     }
 
 
