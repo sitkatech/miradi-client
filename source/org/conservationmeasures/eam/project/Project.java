@@ -8,9 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
@@ -47,6 +45,7 @@ import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
+import org.json.JSONObject;
 
 
 public class Project
@@ -61,7 +60,7 @@ public class Project
 		currentView = NoProjectView.getViewName();
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
-		dataMap = new HashMap();
+		dataMap = new JSONObject();
 		layerManager = new LayerManager();
 	}
 	
@@ -101,7 +100,7 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		dataMap.clear();
+		dataMap = new JSONObject();
 		currentView = NoProjectView.getViewName();
 		fireSwitchToView(currentView);
 	}
@@ -136,10 +135,7 @@ public class Project
 	
 	public String getDataValue(String fieldName)
 	{
-		String value = (String)dataMap.get(fieldName);
-		if(value == null)
-			value = "";
-		return value;
+		return dataMap.optString(fieldName, "");
 	}
 	
 	public void setDataValue(String fieldName, String fieldData)
@@ -582,7 +578,7 @@ public class Project
 	Vector commandExecutedListeners;
 	Vector viewChangeListeners;
 	String currentView;
-	Map dataMap;
+	JSONObject dataMap;
 	LayerManager layerManager;
 }
 
