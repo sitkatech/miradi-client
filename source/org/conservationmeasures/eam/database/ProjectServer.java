@@ -239,7 +239,7 @@ public class ProjectServer
 		return manifest.getJSONArray(MANIFESTIDS);
 	}
 	
-	public void writeLinkageManifest(JSONArray idArray) throws IOException
+	private void writeLinkageManifest(JSONArray idArray) throws IOException
 	{
 		JSONObject manifest = new JSONObject();
 		manifest.put(MANIFESTIDS, idArray);
