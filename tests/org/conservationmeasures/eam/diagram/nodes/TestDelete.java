@@ -70,5 +70,7 @@ public class TestDelete extends EAMTestCase
 		{
 		}
 		EAM.setLogToConsole();
+		
+		project.close();
 	}
 }

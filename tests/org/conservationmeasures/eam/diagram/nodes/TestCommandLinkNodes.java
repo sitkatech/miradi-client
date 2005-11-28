@@ -38,5 +38,7 @@ public class TestCommandLinkNodes extends EAMTestCase
 
 		assertEquals("not from factor?", factor, linkage.getFromNode());
 		assertEquals("not to target?", target, linkage.getToNode());
+		
+		project.close();
 	}
 }

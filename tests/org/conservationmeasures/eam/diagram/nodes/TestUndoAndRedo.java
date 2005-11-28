@@ -130,6 +130,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		assertEquals("can't undo after redo?", 0, p.getIndexToUndo());
 		assertEquals("can't redo after redo?", 3, p.getIndexToRedo());
 		
+		p.close();
+		
 	}
 	
 	public void testUndoAndRedoAreStored()
@@ -169,7 +171,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	Project project;
+	ProjectForTesting project;
 	int fromId;
 	int toId;
 	int linkId;

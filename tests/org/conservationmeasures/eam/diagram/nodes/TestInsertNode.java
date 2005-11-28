@@ -23,9 +23,18 @@ public class TestInsertNode extends EAMTestCase
 		super(name);
 	}
 	
+	public void setUp() throws Exception
+	{
+		project = new ProjectForTesting(getName());
+	}
+	
+	public void tearDown() throws Exception
+	{
+		project.close();
+	}
+	
 	public void testBadInsert() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(-1);
 		try
 		{
@@ -40,7 +49,6 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -58,7 +66,6 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIndirectFactor() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -76,7 +83,6 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertDirectThreat() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -94,7 +100,6 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertStress() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_STRESS);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -112,7 +117,6 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
@@ -127,4 +131,6 @@ public class TestInsertNode extends EAMTestCase
 		assertTrue("not an intervention?", foundNode.isIntervention());
 		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getNodeType());
 	}
+	
+	ProjectForTesting project;
 }

@@ -37,6 +37,8 @@ public class TestSetNodeSize extends TestCaseEnhanced
 
 		Dimension foundSize = found.getSize();
 		assertEquals("wrong size?", newSize, foundSize);
+		
+		project.close();
 	}
 
 }

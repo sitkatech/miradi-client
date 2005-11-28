@@ -51,6 +51,7 @@ public class TestCommands extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		super.tearDown();
+		project.close();
 	}
 	
 	public void testCommandSetProjectVision() throws Exception
@@ -600,6 +601,7 @@ public class TestCommands extends EAMTestCase
 		{
 		}
 		EAM.setLogToConsole();
+		emptyProject.close();
 	}
 
 	public void testRedo() throws Exception
@@ -631,6 +633,7 @@ public class TestCommands extends EAMTestCase
 		{
 		}
 		EAM.setLogToConsole();
+		emptyProject.close();
 	}
 	
 	public void testCommandSwitchView() throws Exception

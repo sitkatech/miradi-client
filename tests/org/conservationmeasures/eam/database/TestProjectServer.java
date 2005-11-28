@@ -31,12 +31,11 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void tearDown() throws Exception
 	{
+		storage.close();
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		storage.openMemoryDatabase(getName());
-		
 		LinkageData original = new LinkageData(1, 2, 3);
 		storage.writeLinkage(original);
 		LinkageData got = storage.readLinkage(original.getId());
@@ -55,8 +54,6 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		storage.openMemoryDatabase(getName());
-		
 		LinkageData original = new LinkageData(1, 2, 3);
 		storage.writeLinkage(original);
 		storage.deleteLinkage(original.getId());
@@ -72,56 +69,54 @@ public class TestProjectServer extends EAMTestCase
 
 	public void testLoadCommands() throws Exception
 	{
+		ProjectServer anotherStorage = new ProjectServer();
+		
 		File tempDirectory = createTempDirectory();
+		assertEquals("not empty to start?", 0, anotherStorage.getCommandCount());
+		assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
+		
 		try
 		{
-			assertEquals("not empty to start?", 0, storage.getCommandCount());
-			assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
-			
-			try
-			{
-				storage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
-				fail("Should have thrown since no file was loaded");
-			}
-			catch(IOException ignoreExpected)
-			{
-			}
-	
-			storage.open(tempDirectory);
-			assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
-			assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
-			
-			Vector nothingYet = storage.load();
-			assertEquals("brand new file not empty?", 0, nothingYet.size());
-			
-			Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
-			Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-			storage.appendCommand(createTarget);
-			storage.appendCommand(createFactor);
-			assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
-			assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
-			assertEquals("factor not gettable?", createFactor, storage.getCommandAt(1));
-			
-			Vector loaded = storage.load();
-			assertEquals("didn't load correct count?", 2, loaded.size());
-			assertEquals("target not loaded?", createTarget, loaded.get(0));
-			assertEquals("factor not loaded?", createFactor, loaded.get(1));
-			storage.close();
-			
-			try
-			{
-				storage.load();
-				fail("Should have thrown loading without a directory specified");
-			}
-			catch(Exception ignoreExpected)
-			{
-			}
+			anotherStorage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
+			fail("Should have thrown since no file was loaded");
 		}
-		finally
+		catch(IOException ignoreExpected)
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
-	}
-	private ProjectServerForTesting storage;
 
+		anotherStorage.open(tempDirectory);
+		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
+		assertEquals("wrong file name?", tempDirectory.getName(), anotherStorage.getName());
+		
+		Vector nothingYet = anotherStorage.load();
+		assertEquals("brand new file not empty?", 0, nothingYet.size());
+		
+		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		anotherStorage.appendCommand(createTarget);
+		anotherStorage.appendCommand(createFactor);
+		assertEquals("count doesn't show appended commands?", 2, anotherStorage.getCommandCount());
+		assertEquals("target not gettable?", createTarget, anotherStorage.getCommandAt(0));
+		assertEquals("factor not gettable?", createFactor, anotherStorage.getCommandAt(1));
+		
+		Vector loaded = anotherStorage.load();
+		assertEquals("didn't load correct count?", 2, loaded.size());
+		assertEquals("target not loaded?", createTarget, loaded.get(0));
+		assertEquals("factor not loaded?", createFactor, loaded.get(1));
+		anotherStorage.close();
+		
+		try
+		{
+			anotherStorage.load();
+			fail("Should have thrown loading without a directory specified");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		anotherStorage.close();
+		
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+	}
+
+	private ProjectServerForTesting storage;
 }

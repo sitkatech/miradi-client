@@ -97,6 +97,9 @@ public class Project
 	
 	public void close()
 	{
+		if(!isOpen())
+			return;
+		
 		try
 		{
 			getDatabase().close();

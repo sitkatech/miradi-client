@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -33,6 +33,18 @@ public class TestProject extends EAMTestCase
 		super(name);
 	}
 	
+	public void setUp() throws Exception
+	{
+		project = new ProjectForTesting(getName());
+		super.setUp();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+	
 	public void testApplySnapToOldUnsnappedCommands() throws Exception
 	{
 		Vector commands = new Vector();
@@ -40,15 +52,12 @@ public class TestProject extends EAMTestCase
 		commands.add(new CommandDiagramMove(10, 20, new int[] {0}));
 		commands.add(new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT));
 
-		Project project = new Project();
 		project.applySnapToOldUnsnappedCommands(commands);
 		assertEquals("didn't snap first command?", commands.get(1), commands.get(0));
 	}
 	
 	public void testGetSnapped() throws Exception
 	{
-		Project project = new Project();
-		
 		Point zeroZero = new Point(0, 0);
 		assertEquals("moved zero zero?", zeroZero, project.getSnapped(zeroZero));
 		
@@ -83,7 +92,6 @@ public class TestProject extends EAMTestCase
 	
 	public void testData() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
 		
 		String fieldName = "sample field name";
@@ -104,14 +112,13 @@ public class TestProject extends EAMTestCase
 			{
 				if(viewName.equals(InterviewView.getViewName()))
 					++interviewViewCount;
-				else
+				else if(!viewName.equals(""))
 					throw new RuntimeException("Unknown view: " + viewName);
 			}
 
 			int interviewViewCount;
 		}
 		
-		Project project = new ProjectForTesting(getName());
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
 		Command toInterview = new CommandSwitchView(InterviewView.getViewName());
@@ -129,7 +136,6 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
@@ -160,7 +166,6 @@ public class TestProject extends EAMTestCase
 	
 	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
@@ -196,7 +201,6 @@ public class TestProject extends EAMTestCase
 
 	public void testDiagramMoveOnly() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
@@ -244,7 +248,6 @@ public class TestProject extends EAMTestCase
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
 		DiagramNode node1 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
@@ -276,7 +279,6 @@ public class TestProject extends EAMTestCase
 
 	public void testResizeAndMoveNodes() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		int x = 5;
 		int y = 10;
@@ -340,7 +342,6 @@ public class TestProject extends EAMTestCase
 
 	public void testPasteNodesOnlyIntoProject() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
@@ -366,7 +367,6 @@ public class TestProject extends EAMTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		assertEquals("not starting on diagram view?", DiagramView.getViewName(), project.getCurrentView());
 		String sampleViewName = "blah blah";
 		project.switchToView(sampleViewName);
@@ -374,4 +374,6 @@ public class TestProject extends EAMTestCase
 		project.close();
 		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
 	}
+
+	ProjectForTesting project;
 }

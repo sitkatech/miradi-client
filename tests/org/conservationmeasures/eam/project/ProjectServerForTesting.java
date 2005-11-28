@@ -29,7 +29,8 @@ public class ProjectServerForTesting extends ProjectServer
 		File projectDir = new File(eamDir, nameToUse);
 
 		openNonDatabaseStore(projectDir);
-		db.openMemoryDatabase(nameToUse);
+		String databaseName = eamDir.getName() + "-" + nameToUse;
+		db.openMemoryDatabase(databaseName);
 		dropAllTables();
 		createCommandsTable();
 	}

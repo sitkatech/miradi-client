@@ -33,10 +33,20 @@ public class TestUndoRedo extends EAMTestCase
 		super(name);
 	}
 	
+	public void setUp() throws Exception
+	{
+		project = new ProjectForTesting(getName());
+		super.setUp();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+	
 	public void testBasics() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
 		int insertedId = insertDirectThreat(project);
@@ -68,8 +78,6 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoPriority() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-
 		ThreatPriority target1Priority = ThreatPriority.createPriorityVeryHigh();
 		int insertedId = insertDirectThreat(project);
 
@@ -97,8 +105,6 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoIndication() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-
 		Indicator target1Indicator = new Indicator(2);
 		int insertedId = insertDirectThreat(project);
 
@@ -124,8 +130,6 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoObjective() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-
 		Objective target1Objective = new Objective("test");
 		
 		Objectives target1Objectives = new Objectives();
@@ -161,8 +165,6 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoGoals() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-
 		Goal target1Goal = new Goal("test");
 		
 		Goals target1Goals = new Goals();
@@ -198,7 +200,6 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoNodeSize() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
 		int insertedId = insertDirectThreat(project);
 		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
 		Dimension originalSize = node.getSize();
@@ -239,19 +240,21 @@ public class TestUndoRedo extends EAMTestCase
 	}
 	
 
-	private int insertDirectThreat(Project project) throws CommandFailedException 
+	private int insertDirectThreat(Project p) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_DIRECT_THREAT);
-		project.executeCommand(insert);
+		p.executeCommand(insert);
 		int insertedId = insert.getId();
 		return insertedId;
 	}
 
-	private int insertTarget(Project project) throws CommandFailedException 
+	private int insertTarget(Project p) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_TARGET);
-		project.executeCommand(insert);
+		p.executeCommand(insert);
 		int insertedId = insert.getId();
 		return insertedId;
 	}
+
+	ProjectForTesting project;
 }

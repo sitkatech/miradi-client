@@ -35,6 +35,8 @@ public class TestSetIndication extends EAMTestCase
 		DiagramNode found = model.getNodeById(id);
 		Indicator foundindicator = found.getIndicator();
 		assertEquals("wrong priority?", indicator3, foundindicator);
+		
+		project.close();
 	}
 
 }

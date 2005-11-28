@@ -38,6 +38,8 @@ public class TestSetTargetGoal extends TestCaseEnhanced
 		DiagramNode found = model.getNodeById(id);
 		Goals foundgoal = found.getGoals();
 		assertEquals("wrong goal?", goal, foundgoal.get(0));
+		
+		project.close();
 	}
 
 }

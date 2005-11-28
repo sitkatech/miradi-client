@@ -36,6 +36,8 @@ public class TestSetNodePriority extends EAMTestCase
 		DiagramNode found = model.getNodeById(id);
 		ThreatPriority foundPriority = found.getThreatPriority();
 		assertEquals("wrong priority?", newPriority, foundPriority.getValue());
+		
+		project.close();
 	}
 
 }

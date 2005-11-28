@@ -57,5 +57,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
+		
+		project.close();
 	}
 }
