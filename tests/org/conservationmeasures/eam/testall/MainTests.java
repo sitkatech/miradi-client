@@ -5,8 +5,12 @@
  */
 package org.conservationmeasures.eam.testall;
 
+import java.io.File;
+import java.io.IOException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
+import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommands;
@@ -60,10 +64,10 @@ public class MainTests extends TestCase
 	{
 		junit.textui.TestRunner.run (suite());
 	}
-
+	
 	public static Test suite ( )
 	{
-		TestSuite suite= new TestSuite("All eAM Tests");
+		TestSuite suite= new MainTestSuite("All eAM Tests");
 
 		// database package
 		suite.addTest(new TestSuite(TestDatabase.class));
@@ -130,4 +134,53 @@ public class MainTests extends TestCase
 
 	    return suite;
 	}
+}
+
+class MainTestSuite extends TestSuite
+{
+	public MainTestSuite(String name)
+	{
+		super(name);
+	}
+
+	public void run(TestResult result)
+	{
+		reportAnyTempFiles("Existing temp file: ");
+		super.run(result);
+		reportAnyTempFiles("Orphaned temp file: ");
+	}
+	
+	public void reportAnyTempFiles(String message)
+	{
+		File systemTempDirectory = getSystemTempDirectory();
+		
+		String[] allTempFileNames = systemTempDirectory.list();
+		for(int i = 0; i < allTempFileNames.length; ++i)
+		{
+			String fileName = allTempFileNames[i];
+			if(fileName.startsWith("$$$"))
+				System.out.println("WARNING: " + message + fileName);
+		}
+	}
+
+	private File getSystemTempDirectory()
+	{
+		File merelyToFindTempDirectory = createTempFileToLocateTempDirectory();
+		File systemTempDirectory = merelyToFindTempDirectory.getParentFile();
+		merelyToFindTempDirectory.delete();
+		return systemTempDirectory;
+	}
+
+	private File createTempFileToLocateTempDirectory()
+	{
+		try
+		{
+			return File.createTempFile("$$$MainTests", null);
+		}
+		catch (IOException e)
+		{
+			throw new RuntimeException("Unable to create temp file!");
+		}
+	}
+	
 }
