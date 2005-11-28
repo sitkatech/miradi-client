@@ -19,16 +19,23 @@ public class TestInsertConnection extends EAMTestCase
 	public void testIsAvailable() throws Exception
 	{
 		OpenableProject project = new OpenableProject(getName());
-		InsertConnection doer = new InsertConnection();
-		doer.setProject(project);
+		try
+		{
+			InsertConnection doer = new InsertConnection();
+			doer.setProject(project);
 
-		assertFalse("enabled when no project open?", doer.isAvailable());
-		project.setIsOpen(true);
-		assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-		project.insertNodeAtId(DiagramNode.TYPE_TARGET, DiagramNode.INVALID_ID);
-		assertFalse("Enabled when only 1 node?", doer.isAvailable());
-		project.insertNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, DiagramNode.INVALID_ID);
-		assertTrue("not enabled when 2 nodes?", doer.isAvailable());
+			assertFalse("enabled when no project open?", doer.isAvailable());
+			project.setIsOpen(true);
+			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
+			project.insertNodeAtId(DiagramNode.TYPE_TARGET, DiagramNode.INVALID_ID);
+			assertFalse("Enabled when only 1 node?", doer.isAvailable());
+			project.insertNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, DiagramNode.INVALID_ID);
+			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
+		}
+		finally
+		{
+			project.close();
+		}
 		
 	}
 
