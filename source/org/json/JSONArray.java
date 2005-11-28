@@ -704,4 +704,29 @@ public class JSONArray {
         sb.append(']');
         return sb.toString();
     }
+    
+    //////////////////////////////////////////////////////////////////
+    // Begin code added by Benetech,
+    
+    public void appendInt(int value)
+    {
+    	put(length(), value);
+    }
+
+
+	public boolean containsInt(int value)
+	{
+		return (findInt(value) >= 0);
+	}
+	
+	public int findInt(int value)
+	{
+		Integer asObject = new Integer(value);
+		return myArrayList.indexOf(asObject);
+	}
+	
+	public void removeAt(int index)
+	{
+		myArrayList.remove(index);
+	}
 }

@@ -11,9 +11,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.json.JSONArray;
 import org.martus.util.DirectoryUtils;
 
 public class TestProjectServer extends EAMTestCase
@@ -22,12 +23,59 @@ public class TestProjectServer extends EAMTestCase
 	{
 		super(name);
 	}
-
-	public void testBasics() throws Exception
+	
+	public void setUp() throws Exception
 	{
-		File tempDirectory = createTempDirectory();
+		tempDirectory = createTempDirectory();
+		storage = new ProjectServer();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+	}
+	
+	public void testWriteAndReadLinkage() throws Exception
+	{
+		tempDirectory.delete();
+		storage.open(new File(tempDirectory, "data"));
+		
+		LinkageData original = new LinkageData(1, 2, 3);
+		storage.writeLinkage(original);
+		LinkageData got = storage.readLinkage(original.getId());
+		assertEquals("wrong id?", original.getId(), got.getId());
+		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
+		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
+		
+		JSONArray linkageIds = storage.readLinkageManifest();
+		assertEquals("not one linkage?", 1, linkageIds.length());
+		assertEquals("wrong linkage id in manifest?", original.getId(), linkageIds.getInt(0));
+		
+		storage.writeLinkage(original);
+		assertEquals("dupe in manifest?", 1, storage.readLinkageManifest().length());
+		
+	}
+	
+	public void testDeleteLinkage() throws Exception
+	{
+		tempDirectory.delete();
+		storage.open(new File(tempDirectory, "data"));
+		
+		LinkageData original = new LinkageData(1, 2, 3);
+		storage.writeLinkage(original);
+		storage.deleteLinkage(original.getId());
+		assertEquals("didn't delete?", 0, storage.readLinkageManifest().length());
+		try
+		{
+			storage.readLinkage(original.getId());
+		}
+		catch(IOException ignoreExpected)
+		{
+		}
+	}
 
-		ProjectServer storage = new ProjectServer();
+	public void testLoadCommands() throws Exception
+	{
 		assertEquals("not empty to start?", 0, storage.getCommandCount());
 		assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
 		
@@ -70,6 +118,8 @@ public class TestProjectServer extends EAMTestCase
 		{
 		}
 
-		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 	}
+	private File tempDirectory;
+	private ProjectServer storage;
+
 }
