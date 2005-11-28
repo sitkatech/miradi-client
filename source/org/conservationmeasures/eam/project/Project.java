@@ -333,6 +333,7 @@ public class Project
 	
 	public void deleteLinkage(int idToDelete) throws Exception
 	{
+		database.deleteLinkage(idToDelete);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 		model.deleteLinkage(linkageToDelete);
@@ -343,6 +344,7 @@ public class Project
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
+		database.writeLinkage(new LinkageData(linkage));
 		return insertedLinkageId;
 	}
 	
