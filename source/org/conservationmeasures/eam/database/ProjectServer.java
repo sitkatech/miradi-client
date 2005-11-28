@@ -105,12 +105,11 @@ public class ProjectServer
 		else
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(directory);
-			File linkagesDirectory = getLinkagesDirectory();
-			linkagesDirectory.mkdirs();
 			db.openDiskDatabase(getDatabaseFileBase(directory));
 			createCommandsTable();
 			db.flush();
 		}
+		getLinkagesDirectory().mkdirs();
 		name = topDirectory.getName();
 	}
 	
