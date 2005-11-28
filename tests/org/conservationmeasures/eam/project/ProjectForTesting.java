@@ -16,7 +16,8 @@ public class ProjectForTesting extends Project
 {
 	public ProjectForTesting(String testName) throws Exception
 	{
-		getDatabase().openMemoryDatabase(testName);
+		super(new ProjectServerForTesting());
+		((ProjectServerForTesting)getDatabase()).openMemoryDatabase(testName);
 		loadCommandsFromDatabase();
 		commandStack = new Vector();
 	}

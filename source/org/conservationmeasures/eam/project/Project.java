@@ -52,8 +52,13 @@ public class Project
 {
 	public Project() throws IOException
 	{
-		database = new ProjectServer();
-
+		this(new ProjectServer());
+	}
+	
+	public Project(ProjectServer databaseToUse) throws IOException
+	{
+		database = databaseToUse;
+		
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();

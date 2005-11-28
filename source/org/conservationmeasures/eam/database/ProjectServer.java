@@ -17,11 +17,8 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
-import org.martus.util.UnicodeReader;
-import org.martus.util.UnicodeWriter;
 
 public class ProjectServer
 {
@@ -95,9 +92,8 @@ public class ProjectServer
 
 	public void open(File directory) throws IOException
 	{
-		clear();
+		openNonDatabaseStore(directory);
 
-		topDirectory = directory;
 		if(doesProjectExist(directory))
 		{
 			db.openDiskDatabase(getDatabaseFileBase(directory));
@@ -109,20 +105,16 @@ public class ProjectServer
 			createCommandsTable();
 			db.flush();
 		}
+	}
+
+	protected void openNonDatabaseStore(File directory)
+	{
+		clear();
+		topDirectory = directory;
 		getLinkagesDirectory().mkdirs();
 		name = topDirectory.getName();
 	}
 	
-
-	public void openMemoryDatabase(String nameToUse) throws IOException
-	{
-		clear();
-		db.openMemoryDatabase(nameToUse);
-		dropAllTables();
-		createCommandsTable();
-		topDirectory = null;
-		name = nameToUse;
-	}
 
 	public Vector load() throws IOException, UnknownCommandException
 	{
@@ -167,13 +159,13 @@ public class ProjectServer
 	public void writeLinkage(LinkageData linkage) throws IOException, ParseException
 	{
 		int id = linkage.getId();
-		writeJson(getLinkageFile(id), linkage.toJson());
+		JSONFile.write(getLinkageFile(id), linkage.toJson());
 		addToLinkageManifest(id);
 	}
 
 	public LinkageData readLinkage(int id) throws IOException, ParseException
 	{
-		return new LinkageData(readJson(getLinkageFile(id)));
+		return new LinkageData(JSONFile.read(getLinkageFile(id)));
 	}
 	
 	public void deleteLinkage(int id) throws IOException, ParseException
@@ -182,68 +174,32 @@ public class ProjectServer
 		getLinkageFile(id).delete();
 	}
 	
-	private void writeJson(File file, JSONObject object) throws IOException
-	{
-		UnicodeWriter writer = new UnicodeWriter(file);
-		try
-		{
-			writer.write(object.toString());
-		}
-		finally
-		{
-			writer.close();
-		}
-	}
-	
-	private JSONObject readJson(File file) throws IOException, ParseException
-	{
-		UnicodeReader reader = new UnicodeReader(file);
-		try
-		{
-			String json = reader.readAll();
-			return new JSONObject(json);
-		}
-		finally
-		{
-			reader.close();
-		}
-	}
-	
 	private void removeFromLinkageManifest(int idToRemove) throws IOException, ParseException
 	{
-		JSONArray idArray = readLinkageManifest();
-		int index = idArray.findInt(idToRemove);
-		if(index < 0)
-			return;
-	
-		idArray.removeAt(index);
-		writeLinkageManifest(idArray);
+		LinkageManifest manifest = readLinkageManifest();
+		manifest.remove(idToRemove);
+		writeLinkageManifest(manifest);
 	}
 	
 	private void addToLinkageManifest(int idToAdd) throws IOException, ParseException
 	{
-		JSONArray idArray = readLinkageManifest();
-		if(idArray.containsInt(idToAdd))
-			return;
-		
-		idArray.appendInt(idToAdd);
-		writeLinkageManifest(idArray);
+		LinkageManifest manifest = readLinkageManifest();
+		manifest.put(idToAdd);
+		writeLinkageManifest(manifest);
 	}
 	
-	public JSONArray readLinkageManifest() throws IOException, ParseException
+	public LinkageManifest readLinkageManifest() throws IOException, ParseException
 	{
 		File manifestFile = getLinkageManifestFile();
 		if(!manifestFile.exists())
-			return new JSONArray();
-		JSONObject manifest = readJson(manifestFile);
-		return manifest.getJSONArray(MANIFESTIDS);
+			return new LinkageManifest();
+		JSONObject rawManifest = JSONFile.read(manifestFile);
+		return new LinkageManifest(rawManifest);
 	}
 	
-	private void writeLinkageManifest(JSONArray idArray) throws IOException
+	private void writeLinkageManifest(LinkageManifest manifest) throws IOException
 	{
-		JSONObject manifest = new JSONObject();
-		manifest.put(MANIFESTIDS, idArray);
-		writeJson(getLinkageManifestFile(), manifest);
+		manifest.write(getLinkageManifestFile());
 	}
 
 	private static File getDatabaseFileBase(File directory)
@@ -271,7 +227,7 @@ public class ProjectServer
 		return new File(getLinkagesDirectory(), Integer.toString(id));
 	}
 	
-	private void createCommandsTable() throws IOException
+	protected void createCommandsTable() throws IOException
 	{
 		db.rawExecute("CREATE TABLE DoneCommands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
 	}
@@ -286,7 +242,8 @@ public class ProjectServer
 		commands.add(command);
 	}
 	
-	static public String MANIFESTIDS = "ManfestIds";
+	static public String OBJECT_TYPE = "Type";
+	static public String LINKAGE_MANIFEST = "LinkageManifest";
 
 	protected Vector commands;
 	File topDirectory;

@@ -13,8 +13,8 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
+import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.json.JSONArray;
 import org.martus.util.DirectoryUtils;
 
 public class TestProjectServer extends EAMTestCase
@@ -26,19 +26,16 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		tempDirectory = createTempDirectory();
-		storage = new ProjectServer();
+		storage = new ProjectServerForTesting();
 	}
 	
 	public void tearDown() throws Exception
 	{
-		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		tempDirectory.delete();
-		storage.open(new File(tempDirectory, "data"));
+		storage.openMemoryDatabase(getName());
 		
 		LinkageData original = new LinkageData(1, 2, 3);
 		storage.writeLinkage(original);
@@ -47,24 +44,23 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
 		
-		JSONArray linkageIds = storage.readLinkageManifest();
-		assertEquals("not one linkage?", 1, linkageIds.length());
-		assertEquals("wrong linkage id in manifest?", original.getId(), linkageIds.getInt(0));
+		LinkageManifest linkageIds = storage.readLinkageManifest();
+		assertEquals("not one linkage?", 1, linkageIds.size());
+		assertTrue("wrong linkage id in manifest?", linkageIds.has(original.getId()));
 		
 		storage.writeLinkage(original);
-		assertEquals("dupe in manifest?", 1, storage.readLinkageManifest().length());
+		assertEquals("dupe in manifest?", 1, storage.readLinkageManifest().size());
 		
 	}
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		tempDirectory.delete();
-		storage.open(new File(tempDirectory, "data"));
+		storage.openMemoryDatabase(getName());
 		
 		LinkageData original = new LinkageData(1, 2, 3);
 		storage.writeLinkage(original);
 		storage.deleteLinkage(original.getId());
-		assertEquals("didn't delete?", 0, storage.readLinkageManifest().length());
+		assertEquals("didn't delete?", 0, storage.readLinkageManifest().size());
 		try
 		{
 			storage.readLinkage(original.getId());
@@ -76,50 +72,56 @@ public class TestProjectServer extends EAMTestCase
 
 	public void testLoadCommands() throws Exception
 	{
-		assertEquals("not empty to start?", 0, storage.getCommandCount());
-		assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
-		
+		File tempDirectory = createTempDirectory();
 		try
 		{
-			storage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
-			fail("Should have thrown since no file was loaded");
+			assertEquals("not empty to start?", 0, storage.getCommandCount());
+			assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
+			
+			try
+			{
+				storage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
+				fail("Should have thrown since no file was loaded");
+			}
+			catch(IOException ignoreExpected)
+			{
+			}
+	
+			storage.open(tempDirectory);
+			assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
+			assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
+			
+			Vector nothingYet = storage.load();
+			assertEquals("brand new file not empty?", 0, nothingYet.size());
+			
+			Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+			Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+			storage.appendCommand(createTarget);
+			storage.appendCommand(createFactor);
+			assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
+			assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
+			assertEquals("factor not gettable?", createFactor, storage.getCommandAt(1));
+			
+			Vector loaded = storage.load();
+			assertEquals("didn't load correct count?", 2, loaded.size());
+			assertEquals("target not loaded?", createTarget, loaded.get(0));
+			assertEquals("factor not loaded?", createFactor, loaded.get(1));
+			storage.close();
+			
+			try
+			{
+				storage.load();
+				fail("Should have thrown loading without a directory specified");
+			}
+			catch(Exception ignoreExpected)
+			{
+			}
 		}
-		catch(IOException ignoreExpected)
+		finally
 		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
-
-		storage.open(tempDirectory);
-		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
-		assertEquals("wrong file name?", tempDirectory.getName(), storage.getName());
-		
-		Vector nothingYet = storage.load();
-		assertEquals("brand new file not empty?", 0, nothingYet.size());
-		
-		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
-		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		storage.appendCommand(createTarget);
-		storage.appendCommand(createFactor);
-		assertEquals("count doesn't show appended commands?", 2, storage.getCommandCount());
-		assertEquals("target not gettable?", createTarget, storage.getCommandAt(0));
-		assertEquals("factor not gettable?", createFactor, storage.getCommandAt(1));
-		
-		Vector loaded = storage.load();
-		assertEquals("didn't load correct count?", 2, loaded.size());
-		assertEquals("target not loaded?", createTarget, loaded.get(0));
-		assertEquals("factor not loaded?", createFactor, loaded.get(1));
-		storage.close();
-		
-		try
-		{
-			storage.load();
-			fail("Should have thrown loading without a directory specified");
-		}
-		catch(Exception ignoreExpected)
-		{
-		}
-
 	}
-	private File tempDirectory;
-	private ProjectServer storage;
+	private ProjectServerForTesting storage;
 
 }
