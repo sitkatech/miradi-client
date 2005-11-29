@@ -26,9 +26,6 @@ public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
-		if(canHaveGoal())
-			goals = new Goals();
-		
 		port = new DefaultPort();
 		add(port);
 		setColors(getType());
@@ -102,12 +99,12 @@ public class DiagramNode extends EAMGraphCell
 
 	public Goals getGoals()
 	{
-		return goals;
+		return underlyingObject.getGoals();
 	}
 
 	public void setGoals(Goals goalsToUse)
 	{
-		goals = goalsToUse;
+		underlyingObject.setGoals(goalsToUse);
 	}
 
 	public Objectives getObjectives()
@@ -123,7 +120,7 @@ public class DiagramNode extends EAMGraphCell
 	public int getAnnotationRows()
 	{
 		int numberOfAnnotations = 0;
-		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(goals);
+		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
 
 		if(getIndicator() != null && getIndicator().hasIndicator() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
@@ -264,7 +261,6 @@ public class DiagramNode extends EAMGraphCell
 	public static final String TAG_PRIORITY = "Priority";
 
 	DefaultPort port;
-	Goals goals;
 	Dimension previousSize;
 	Point previousLocation;
 	
@@ -303,6 +299,10 @@ class ConceptualModelObject
 
 		if(canHaveObjectives())
 			objectives = new Objectives();
+
+		if(canHaveGoal())
+			goals = new Goals();
+		
 	}
 	
 	public NodeType getType()
@@ -350,8 +350,24 @@ class ConceptualModelObject
 		objectives = objectivesToUse;
 	}
 	
+	public boolean canHaveGoal()
+	{
+		return getType().canHaveGoal();
+	}
+
+	public Goals getGoals()
+	{
+		return goals;
+	}
+
+	public void setGoals(Goals goalsToUse)
+	{
+		goals = goalsToUse;
+	}
+
 	private NodeType type;
 	private Indicator indicator;
 	private ThreatPriority threatPriority;
 	private Objectives objectives;
+	private Goals goals;
 }
