@@ -27,6 +27,7 @@ public class TestProjectServer extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		storage = new ProjectServerForTesting();
+		storage.openMemoryDatabase(getName());
 	}
 	
 	public void tearDown() throws Exception

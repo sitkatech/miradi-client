@@ -87,6 +87,8 @@ public class ProjectServer
 	
 	public File getTopDirectory()
 	{
+		if(topDirectory == null)
+			throw new RuntimeException("ERROR: ProjectServer must be opened before use");
 		return topDirectory;
 	}
 
