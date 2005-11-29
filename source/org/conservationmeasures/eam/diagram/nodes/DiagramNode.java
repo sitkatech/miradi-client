@@ -261,13 +261,13 @@ public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();
-		dataMap.put(TYPE, new Integer(getNodeType()));
+		dataMap.putInt(TYPE, getNodeType());
 		
 		ThreatPriority priority = getThreatPriority();
 		int priorityValue = ThreatPriority.PRIORITY_NOT_USED;
 		if(priority != null)
 			priorityValue = priority.getValue();
-		dataMap.put(PRIORITY, new Integer(priorityValue));
+		dataMap.putInt(PRIORITY, priorityValue);
 		return dataMap;
 	}
 	

@@ -16,9 +16,19 @@ public class DataMap
 		data = new HashMap();
 	}
 	
-	public void put(String tag, Object dataToStore)
+	public void putInt(String tag, int value)
 	{
-		data.put(tag, dataToStore);
+		data.put(tag, new Integer(value));
+	}
+	
+	public void putString(String tag, String value)
+	{
+		data.put(tag, value);
+	}
+	
+	public void putPoint(String tag, Point value)
+	{
+		data.put(tag, value);
 	}
 	
 	public int getInt(String tag)

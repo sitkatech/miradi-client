@@ -82,9 +82,9 @@ public class EAMGraphCell extends DefaultGraphCell
 	{
 		
 		NodeDataMap dataBin = new NodeDataMap();
-		dataBin.put(ID, new Integer(getId()));
-		dataBin.put(TEXT, getText());
-		dataBin.put(LOCATION, getLocation());
+		dataBin.putInt(ID, getId());
+		dataBin.putString(TEXT, getText());
+		dataBin.putPoint(LOCATION, getLocation());
 		return dataBin;
 	}
 
