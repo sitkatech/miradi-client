@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLayerManager extends EAMTestCase
@@ -40,7 +41,7 @@ public class TestLayerManager extends EAMTestCase
 		assertTrue("All layers not visible again?", manager.areAllLayersVisible());
 	}
 
-	private void verifyVisibility(String text, boolean expected, int type, LayerManager manager)
+	private void verifyVisibility(String text, boolean expected, NodeType type, LayerManager manager)
 	{
 		assertEquals("type: " + text + " (" + type + ") ",expected, manager.isTypeVisible(type));
 		DiagramNode node = new DiagramNode(type);

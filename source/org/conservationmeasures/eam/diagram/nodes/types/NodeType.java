@@ -67,4 +67,14 @@ public abstract class NodeType
 		return false;
 	}
 
+	public boolean equals(Object other)
+	{
+		return getClass().getName().equals(other.getClass().getName());
+	}
+
+	public int hashCode()
+	{
+		return getClass().getName().hashCode();
+	}
+
 }

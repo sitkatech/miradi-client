@@ -35,7 +35,7 @@ public class TestInsertNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(-1);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INVALID);
 		try
 		{
 			EAM.setLogToString();
@@ -61,7 +61,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(DiagramNode.TYPE_TARGET, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_TARGET, foundNode.getType());
 	}
 
 	public void testInsertIndirectFactor() throws Exception
@@ -78,7 +78,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
-		assertEquals(DiagramNode.TYPE_INDIRECT_FACTOR, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_INDIRECT_FACTOR, foundNode.getType());
 	}
 
 	public void testInsertDirectThreat() throws Exception
@@ -95,7 +95,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an direct Threat?", foundNode.isDirectThreat());
-		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getType());
 	}
 
 	public void testInsertStress() throws Exception
@@ -112,7 +112,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an Stress?", foundNode.isStress());
-		assertEquals(DiagramNode.TYPE_STRESS, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_STRESS, foundNode.getType());
 	}
 
 	public void testInsertIntervention() throws Exception
@@ -129,7 +129,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());
-		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getType());
 	}
 	
 	ProjectForTesting project;

@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -236,7 +237,7 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(DiagramNode.TAG_NODE_TYPE));
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
 			executeCommand(newNode);
 
 			int originalNodeId = nodeData.getInt(EAMGraphCell.ID);
@@ -322,16 +323,16 @@ public class Project
 		fireCommandExecuted(command);
 	}
 
-	public int deleteNode(int idToDelete) throws Exception
+	public NodeType deleteNode(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
-		int nodeType = nodeToDelete.getNodeType();
+		NodeType nodeType = nodeToDelete.getType();
 		model.deleteNode(nodeToDelete);
 		return nodeType; 
 	}
 
-	public int insertNodeAtId(int typeToInsert, int requestedId) throws Exception
+	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNodeAtId(typeToInsert, requestedId);

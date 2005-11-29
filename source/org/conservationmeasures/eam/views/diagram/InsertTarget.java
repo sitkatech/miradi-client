@@ -6,11 +6,12 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.main.EAM;
 
 public class InsertTarget extends InsertNode
 {
-	public int getTypeToInsert()
+	public NodeType getTypeToInsert()
 	{
 		return DiagramNode.TYPE_TARGET;
 	}

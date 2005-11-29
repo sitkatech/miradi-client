@@ -22,7 +22,7 @@ import org.jgraph.graph.GraphConstants;
 
 public class DiagramNode extends EAMGraphCell
 {
-	public DiagramNode(int nodeType)
+	public DiagramNode(NodeType nodeType)
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
@@ -47,21 +47,6 @@ public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getType();
 	}
 
-	public int getNodeType()
-	{
-		if(isTarget())
-			return TYPE_TARGET;
-		if(isIndirectFactor())
-			return TYPE_INDIRECT_FACTOR;
-		if(isIntervention())
-			return TYPE_INTERVENTION;
-		if(isDirectThreat())
-			return TYPE_DIRECT_THREAT;
-		if(isStress())
-			return TYPE_STRESS;
-		return TYPE_INVALID;
-	}
-	
 	public ThreatPriority getThreatPriority()
 	{
 		return underlyingObject.getThreatPriority();
@@ -238,7 +223,7 @@ public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();
-		dataMap.putInt(TAG_NODE_TYPE, getNodeType());
+		dataMap.putNodeType(getType());
 		
 		ThreatPriority priority = getThreatPriority();
 		int priorityValue = ThreatPriority.PRIORITY_NOT_USED;
@@ -250,12 +235,19 @@ public class DiagramNode extends EAMGraphCell
 	
 	public static final int INVALID_ID = -1;
 	
-	public static final int TYPE_INVALID = -1;
-	public static final int TYPE_TARGET = 1;
-	public static final int TYPE_INDIRECT_FACTOR = 2;
-	public static final int TYPE_INTERVENTION = 3;
-	public static final int TYPE_DIRECT_THREAT = 4;
-	public static final int TYPE_STRESS = 5;
+	public static final NodeType TYPE_INVALID = null;
+	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
+	public static final NodeType TYPE_INDIRECT_FACTOR = new NodeTypeIndirectFactor();
+	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
+	public static final NodeType TYPE_DIRECT_THREAT = new NodeTypeDirectThreat();
+	public static final NodeType TYPE_STRESS = new NodeTypeStress();
+
+	public static final int INT_TYPE_INVALID = -1;
+	public static final int INT_TYPE_TARGET = 1;
+	public static final int INT_TYPE_INDIRECT_FACTOR = 2;
+	public static final int INT_TYPE_INTERVENTION = 3;
+	public static final int INT_TYPE_DIRECT_THREAT = 4;
+	public static final int INT_TYPE_STRESS = 5;
 
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
@@ -269,28 +261,9 @@ public class DiagramNode extends EAMGraphCell
 
 class ConceptualModelObject
 {
-	public ConceptualModelObject(int nodeType)
+	public ConceptualModelObject(NodeType nodeType)
 	{
-		switch(nodeType)
-		{
-			case DiagramNode.TYPE_TARGET:
-				type = new NodeTypeTarget();
-				break;
-			case DiagramNode.TYPE_INDIRECT_FACTOR:
-				type = new NodeTypeIndirectFactor();
-				break;
-			case DiagramNode.TYPE_DIRECT_THREAT:
-				type = new NodeTypeDirectThreat();
-				break;
-			case DiagramNode.TYPE_STRESS:
-				type = new NodeTypeStress();
-				break;
-			case DiagramNode.TYPE_INTERVENTION:
-				type = new NodeTypeIntervention();
-				break;
-			default:
-				throw new RuntimeException("Unknown node type: " + nodeType);
-		}
+		type = nodeType;
 		
 		indicator = new Indicator();
 

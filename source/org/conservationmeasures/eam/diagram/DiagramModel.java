@@ -16,6 +16,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
@@ -43,12 +44,12 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 
-	public DiagramNode createNode(int nodeType) throws Exception
+	public DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		return createNodeAtId(nodeType, DiagramNode.INVALID_ID);
 	}
 	
-	public DiagramNode createNodeAtId(int nodeType, int id) throws Exception
+	public DiagramNode createNodeAtId(NodeType nodeType, int id) throws Exception
 	{
 		DiagramNode node = new DiagramNode(nodeType);
 		node.setId(id);

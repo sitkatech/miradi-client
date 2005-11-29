@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -526,7 +527,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -656,29 +657,29 @@ public class TestCommands extends EAMTestCase
 
 	private int insertTarget() throws Exception
 	{
-		int type = DiagramNode.TYPE_TARGET;
+		NodeType type = DiagramNode.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
 	private int insertIndirectFactor() throws Exception
 	{
-		int type = DiagramNode.TYPE_INDIRECT_FACTOR;
+		NodeType type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		return insertNode(type);
 	}
 
 	private int insertDirectThreat() throws Exception
 	{
-		int type = DiagramNode.TYPE_DIRECT_THREAT;
+		NodeType type = DiagramNode.TYPE_DIRECT_THREAT;
 		return insertNode(type);
 	}
 
 	private int insertIntervention() throws Exception
 	{
-		int type = DiagramNode.TYPE_INTERVENTION;
+		NodeType type = DiagramNode.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 
-	private int insertNode(int type) throws CommandFailedException
+	private int insertNode(NodeType type) throws CommandFailedException
 	{
 		CommandInsertNode insert = new CommandInsertNode(type);
 		project.executeCommand(insert);

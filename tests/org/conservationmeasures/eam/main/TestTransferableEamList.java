@@ -9,11 +9,12 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -45,7 +46,7 @@ public class TestTransferableEamList extends EAMTestCase
 		int node1Id = 1;
 		String node1Text = "Target 1";
 		Point node1Location = new Point(1,2);
-		int node1Type = DiagramNode.TYPE_TARGET;
+		NodeType node1Type = DiagramNode.TYPE_TARGET;
 		DiagramNode node1 = new DiagramNode(node1Type);
 		node1.setId(node1Id);
 		node1.setText(node1Text);
@@ -54,7 +55,7 @@ public class TestTransferableEamList extends EAMTestCase
 		int node2Id = 2;
 		String node2Text = "Factor 1";
 		Point node2Location = new Point(2,3);
-		int node2Type = DiagramNode.TYPE_INDIRECT_FACTOR;
+		NodeType node2Type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		
 		DiagramNode node2 = new DiagramNode(node2Type);
 		node2.setId(node2Id);
@@ -77,11 +78,11 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(node1Id, nodesData[0].getInt(EAMGraphCell.ID));
 		assertEquals(node1Text, nodesData[0].getString(EAMGraphCell.TEXT));
 		assertEquals(node1Location, nodesData[0].getPoint(EAMGraphCell.LOCATION));
-		assertEquals(node1Type, nodesData[0].getInt(DiagramNode.TAG_NODE_TYPE));
+		assertEquals(node1Type, nodesData[0].getNodeType());
 		assertEquals(node2Id, nodesData[1].getInt(EAMGraphCell.ID));
 		assertEquals(node2Text, nodesData[1].getString(EAMGraphCell.TEXT));
 		assertEquals(node2Location, nodesData[1].getPoint(EAMGraphCell.LOCATION));
-		assertEquals(node2Type, nodesData[1].getInt(DiagramNode.TAG_NODE_TYPE));
+		assertEquals(node2Type, nodesData[1].getNodeType());
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());

@@ -9,6 +9,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
@@ -103,4 +105,15 @@ public abstract class Command
 	{
 	}
 	
+	NodeType readNodeType(DataInputStream dataIn) throws IOException
+	{
+		int rawType = dataIn.readInt();
+		return NodeDataMap.convertIntToNodeType(rawType);
+	}
+	
+	void writeNodeType(DataOutputStream dataOut, NodeType nodeType) throws IOException
+	{
+		int rawType = NodeDataMap.convertNodeTypeToInt(nodeType);
+		dataOut.writeInt(rawType);
+	}
 }

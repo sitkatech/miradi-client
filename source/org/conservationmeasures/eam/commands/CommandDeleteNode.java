@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -25,10 +26,10 @@ public class CommandDeleteNode extends Command
 	public CommandDeleteNode(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		nodeType = dataIn.readInt();
+		nodeType = readNodeType(dataIn);
 	}
 	
-	public int getNodeType()
+	public NodeType getNodeType()
 	{
 		return nodeType;
 	}
@@ -72,7 +73,7 @@ public class CommandDeleteNode extends Command
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(getId());
-		dataOut.writeInt(getNodeType());
+		writeNodeType(dataOut, getNodeType());
 	}
 
 	public int getId()
@@ -84,5 +85,5 @@ public class CommandDeleteNode extends Command
 	public static final String COMMAND_NAME = "DeleteNode";
 
 	int id;
-	int nodeType;
+	NodeType nodeType;
 }
