@@ -27,25 +27,25 @@ public class LinkageData
 	public LinkageData(int id, int fromId, int toId)
 	{
 		json = new JSONObject();
-		json.put(TYPE, LINKAGE);
-		json.put(ID, id);
-		json.put(FROMID, fromId);
-		json.put(TOID, toId);
+		json.put(TAG_JSON_TYPE, JSON_TYPE_LINKAGE);
+		json.put(TAG_ID, id);
+		json.put(TAG_FROM_ID, fromId);
+		json.put(TAG_TO_ID, toId);
 	}
 	
 	public int getId()
 	{
-		return json.getInt(ID);
+		return json.getInt(TAG_ID);
 	}
 	
 	public int getFromNodeId()
 	{
-		return json.getInt(FROMID);
+		return json.getInt(TAG_FROM_ID);
 	}
 	
 	public int getToNodeId()
 	{
-		return json.getInt(TOID);
+		return json.getInt(TAG_TO_ID);
 	}
 	
 	public JSONObject toJson()
@@ -53,12 +53,12 @@ public class LinkageData
 		return json;
 	}
 	
-	private static String TYPE = "Type";
-	private static String ID = "Id";
-	private static String FROMID = "FromId";
-	private static String TOID = "ToId";
+	private static String TAG_JSON_TYPE = "Type";
+	private static String TAG_ID = "Id";
+	private static String TAG_FROM_ID = "FromId";
+	private static String TAG_TO_ID = "ToId";
 	
-	private static String LINKAGE = "Linkage";
+	private static String JSON_TYPE_LINKAGE = "Linkage";
 	
 	private JSONObject json;
 }

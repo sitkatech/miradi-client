@@ -261,13 +261,13 @@ public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = super.createNodeDataMap();
-		dataMap.putInt(TYPE, getNodeType());
+		dataMap.putInt(TAG_NODE_TYPE, getNodeType());
 		
 		ThreatPriority priority = getThreatPriority();
 		int priorityValue = ThreatPriority.PRIORITY_NOT_USED;
 		if(priority != null)
 			priorityValue = priority.getValue();
-		dataMap.putInt(PRIORITY, priorityValue);
+		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
 	}
 	
@@ -280,8 +280,8 @@ public class DiagramNode extends EAMGraphCell
 	public static final int TYPE_DIRECT_THREAT = 4;
 	public static final int TYPE_STRESS = 5;
 
-	public static final String TYPE = "type";
-	public static final String PRIORITY = "priority";
+	public static final String TAG_NODE_TYPE = "NodeType";
+	public static final String TAG_PRIORITY = "Priority";
 
 	NodeType type;
 	DefaultPort port;

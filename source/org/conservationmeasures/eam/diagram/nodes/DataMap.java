@@ -30,8 +30,8 @@ public class DataMap
 	public void putPoint(String tag, Point value)
 	{
 		JSONObject point = new JSONObject();
-		point.put(POINT_X, value.x);
-		point.put(POINT_Y, value.y);
+		point.put(TAG_POINT_X, value.x);
+		point.put(TAG_POINT_Y, value.y);
 		data.put(tag, point);
 	}
 	
@@ -48,11 +48,11 @@ public class DataMap
 	public Point getPoint(String tag)
 	{
 		JSONObject point = data.getJSONObject(tag);
-		return new Point(point.getInt(POINT_X), point.getInt(POINT_Y));
+		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
 	}
 
-	private static String POINT_X = "X";
-	private static String POINT_Y = "Y";
+	private static String TAG_POINT_X = "X";
+	private static String TAG_POINT_Y = "Y";
 
 	private JSONObject data;
 }

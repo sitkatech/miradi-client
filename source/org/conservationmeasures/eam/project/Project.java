@@ -236,7 +236,7 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(DiagramNode.TYPE));
+			CommandInsertNode newNode = new CommandInsertNode(nodeData.getInt(DiagramNode.TAG_NODE_TYPE));
 			executeCommand(newNode);
 
 			int originalNodeId = nodeData.getInt(EAMGraphCell.ID);
