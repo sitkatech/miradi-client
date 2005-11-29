@@ -108,8 +108,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			smallTriangle.y = annotationsRectangle.y;
 			smallTriangle.width = INDICATOR_WIDTH;
 			smallTriangle.height = INDICATOR_HEIGHT;
-			setPaint(g2, smallTriangle, indicator.getColor());
-			indicatorRenderer.fillShape(g2, smallTriangle, indicator.getColor());
+			setPaint(g2, smallTriangle, INDICATOR_COLOR);
+			indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
 			drawBoarder(g2, smallTriangle, indicatorRenderer);
 			smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
 			drawLabel(g2, smallTriangle, indicator.toString(), smallTriangle.getSize());
@@ -133,6 +133,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		return INDICATOR_WIDTH / 2;
 	}
 
+	private static final Color LIGHT_PURPLE = new Color(204,153,255);
+	private static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	
 	ThreatPriority priority;

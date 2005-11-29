@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.main.EAM;
 
 public class Indicator 
@@ -51,13 +49,7 @@ public class Indicator
 		indicator = value;
 	}
 	
-	public Color getColor()
-	{
-		return LIGHT_PURPLE;
-	}
-	
 	public static final int INDICATOR_NONE = -1;
 	public static final String INDICATOR_NONE_STRING = EAM.text("None");
-	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	int indicator;
 }

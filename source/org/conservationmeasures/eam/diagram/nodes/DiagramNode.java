@@ -26,8 +26,6 @@ public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
-		indicator = new Indicator();
-
 		if(canHavePriority())
 			setNodePriority(ThreatPriority.createPriorityNone());
 		if(canHaveObjectives())
@@ -88,12 +86,12 @@ public class DiagramNode extends EAMGraphCell
 	
 	public Indicator getIndicator()
 	{
-		return indicator;
+		return underlyingObject.getIndicator();
 	}
 	
 	public void setIndicator(Indicator indicatorToUse)
 	{
-		indicator = indicatorToUse;
+		underlyingObject.setIndicator(indicatorToUse);
 	}
 
 	public boolean canHaveObjectives()
@@ -131,7 +129,7 @@ public class DiagramNode extends EAMGraphCell
 		int numberOfAnnotations = 0;
 		numberOfAnnotations = getAnnotationCount(objectives) + getAnnotationCount(goals);
 
-		if(indicator != null && indicator.hasIndicator() && numberOfAnnotations == 0)
+		if(getIndicator() != null && getIndicator().hasIndicator() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;
@@ -271,7 +269,6 @@ public class DiagramNode extends EAMGraphCell
 
 	DefaultPort port;
 	ThreatPriority threatPriority;
-	Indicator indicator;
 	Objectives objectives;
 	Goals goals;
 	Dimension previousSize;
@@ -305,6 +302,8 @@ class ConceptualModelObject
 				throw new RuntimeException("Unknown node type: " + nodeType);
 		}
 		
+		indicator = new Indicator();
+
 	}
 	
 	public NodeType getType()
@@ -312,5 +311,16 @@ class ConceptualModelObject
 		return type;
 	}
 
+	public Indicator getIndicator()
+	{
+		return indicator;
+	}
+	
+	public void setIndicator(Indicator indicatorToUse)
+	{
+		indicator = indicatorToUse;
+	}
+
 	private NodeType type;
+	private Indicator indicator;
 }
