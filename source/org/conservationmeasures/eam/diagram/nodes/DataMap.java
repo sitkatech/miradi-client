@@ -7,13 +7,14 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Point;
-import java.util.HashMap;
+
+import org.json.JSONObject;
 
 public class DataMap 
 {
 	public DataMap()
 	{
-		data = new HashMap();
+		data = new JSONObject();
 	}
 	
 	public void putInt(String tag, int value)
@@ -28,7 +29,10 @@ public class DataMap
 	
 	public void putPoint(String tag, Point value)
 	{
-		data.put(tag, value);
+		JSONObject point = new JSONObject();
+		point.put(POINT_X, value.x);
+		point.put(POINT_Y, value.y);
+		data.put(tag, point);
 	}
 	
 	public int getInt(String tag)
@@ -43,9 +47,12 @@ public class DataMap
 	
 	public Point getPoint(String tag)
 	{
-		return (Point)data.get(tag);
+		JSONObject point = data.getJSONObject(tag);
+		return new Point(point.getInt(POINT_X), point.getInt(POINT_Y));
 	}
-	
 
-	private HashMap data;
+	private static String POINT_X = "X";
+	private static String POINT_Y = "Y";
+
+	private JSONObject data;
 }
