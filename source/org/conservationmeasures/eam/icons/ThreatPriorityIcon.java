@@ -26,7 +26,7 @@ public class ThreatPriorityIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return priority.getColor();
+		return RectangleRenderer.getPriorityColor(priority);
 	}
 	
 	private ThreatPriority priority;

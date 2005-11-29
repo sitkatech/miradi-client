@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.graph.VertexView;
 
 
@@ -44,7 +45,7 @@ public class RectangleRenderer extends MultilineNodeRenderer
 			smallRect.y = rect.y;
 			smallRect.width = PRIORITY_WIDTH;
 			smallRect.height = rect.height;
-			setPaint(g2, smallRect, priority.getColor());
+			setPaint(g2, smallRect, getPriorityColor(priority));
 			g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		}
 	}
@@ -105,6 +106,25 @@ public class RectangleRenderer extends MultilineNodeRenderer
 			xout = xCenter + height * Math.tan(beta) / 2;
 		}
 		return new Point2D.Double(xout, yout);
+	}
+	
+	public static Color getPriorityColor(ThreatPriority priority)
+	{
+		int priorityLevel = priority.getValue();
+		
+		switch(priorityLevel)
+		{
+			case ThreatPriority.PRIORITY_VERY_HIGH:
+				return Color.RED;
+			case ThreatPriority.PRIORITY_HIGH:
+				return Color.ORANGE;
+			case ThreatPriority.PRIORITY_MEDIUM:
+				return Color.YELLOW;
+			case ThreatPriority.PRIORITY_LOW:
+				return Color.GREEN;
+			default:
+				return Color.WHITE;
+		}
 	}
 	
 	private static final int PRIORITY_WIDTH = 6;

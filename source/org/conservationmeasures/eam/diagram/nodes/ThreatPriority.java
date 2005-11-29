@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.main.EAM;
 
 public class ThreatPriority 
@@ -84,39 +82,17 @@ public class ThreatPriority
 	}
 
 	
-	public Color getColor()
-	{
-		return getColor(priority);
-	}
-	
-	private static Color getColor(int priorityLevel)
-	{
-		switch(priorityLevel)
-		{
-		case PRIORITY_VERY_HIGH:
-			return Color.RED;
-		case PRIORITY_HIGH:
-			return Color.ORANGE;
-		case PRIORITY_MEDIUM:
-			return Color.YELLOW;
-		case PRIORITY_LOW:
-			return Color.GREEN;
-		default:
-			return Color.WHITE;
-		}
-	}
-	
 	public boolean isPriorityNone()
 	{
 		return priority == PRIORITY_NONE;
 	}
 
 	public static final int PRIORITY_NOT_USED =-1;
-	private static final int PRIORITY_VERY_HIGH =0;
-	private static final int PRIORITY_HIGH =1;
-	private static final int PRIORITY_MEDIUM =2;
-	private static final int PRIORITY_LOW =3;
-	private static final int PRIORITY_NONE =4;
+	public static final int PRIORITY_VERY_HIGH =0;
+	public static final int PRIORITY_HIGH =1;
+	public static final int PRIORITY_MEDIUM =2;
+	public static final int PRIORITY_LOW =3;
+	public static final int PRIORITY_NONE =4;
 	
 	private static final String PRIORITY_VERY_HIGH_STRING = EAM.text("Label|Very High");
 	private static final String PRIORITY_HIGH_STRING = EAM.text("Label|High");

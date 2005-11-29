@@ -71,12 +71,12 @@ public class DiagramNode extends EAMGraphCell
 	
 	public ThreatPriority getThreatPriority()
 	{
-		return threatPriority;
+		return underlyingObject.getThreatPriority();
 	}
 	
 	public void setNodePriority(ThreatPriority priorityToUse)
 	{
-		threatPriority = priorityToUse;
+		underlyingObject.setNodePriority(priorityToUse);
 	}
 	
 	public boolean canHavePriority()
@@ -268,7 +268,6 @@ public class DiagramNode extends EAMGraphCell
 	public static final String TAG_PRIORITY = "Priority";
 
 	DefaultPort port;
-	ThreatPriority threatPriority;
 	Objectives objectives;
 	Goals goals;
 	Dimension previousSize;
@@ -321,6 +320,17 @@ class ConceptualModelObject
 		indicator = indicatorToUse;
 	}
 
+	public ThreatPriority getThreatPriority()
+	{
+		return threatPriority;
+	}
+	
+	public void setNodePriority(ThreatPriority priorityToUse)
+	{
+		threatPriority = priorityToUse;
+	}
+	
 	private NodeType type;
 	private Indicator indicator;
+	private ThreatPriority threatPriority;
 }
