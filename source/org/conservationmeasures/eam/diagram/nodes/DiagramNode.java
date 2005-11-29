@@ -26,8 +26,6 @@ public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
-		if(canHavePriority())
-			setNodePriority(ThreatPriority.createPriorityNone());
 		if(canHaveObjectives())
 			objectives = new Objectives();
 		if(canHaveGoal())
@@ -81,7 +79,7 @@ public class DiagramNode extends EAMGraphCell
 	
 	public boolean canHavePriority()
 	{
-		return getType().canHavePriority();
+		return underlyingObject.canHavePriority();
 	}
 	
 	public Indicator getIndicator()
@@ -303,6 +301,9 @@ class ConceptualModelObject
 		
 		indicator = new Indicator();
 
+		if(canHavePriority())
+			setNodePriority(ThreatPriority.createPriorityNone());
+
 	}
 	
 	public NodeType getType()
@@ -320,6 +321,11 @@ class ConceptualModelObject
 		indicator = indicatorToUse;
 	}
 
+	public boolean canHavePriority()
+	{
+		return getType().canHavePriority();
+	}
+	
 	public ThreatPriority getThreatPriority()
 	{
 		return threatPriority;
