@@ -24,26 +24,7 @@ public class DiagramNode extends EAMGraphCell
 {
 	public DiagramNode(int nodeType)
 	{
-		switch(nodeType)
-		{
-			case TYPE_TARGET:
-				type = new NodeTypeTarget();
-				break;
-			case TYPE_INDIRECT_FACTOR:
-				type = new NodeTypeIndirectFactor();
-				break;
-			case TYPE_DIRECT_THREAT:
-				type = new NodeTypeDirectThreat();
-				break;
-			case TYPE_STRESS:
-				type = new NodeTypeStress();
-				break;
-			case TYPE_INTERVENTION:
-				type = new NodeTypeIntervention();
-				break;
-			default:
-				throw new RuntimeException("Unknown node type: " + nodeType);
-		}
+		underlyingObject = new ConceptualModelObject(nodeType);
 		
 		indicator = new Indicator();
 
@@ -56,7 +37,7 @@ public class DiagramNode extends EAMGraphCell
 		
 		port = new DefaultPort();
 		add(port);
-		setColors(type);
+		setColors(getType());
 		setFont();
 		setLocation(new Point(0, 0));
 		Dimension defaultNodeSize = new Dimension(120, 60);
@@ -70,6 +51,11 @@ public class DiagramNode extends EAMGraphCell
 		return true;
 	}
 	
+	public NodeType getType()
+	{
+		return underlyingObject.getType();
+	}
+
 	public int getNodeType()
 	{
 		if(isTarget())
@@ -97,7 +83,7 @@ public class DiagramNode extends EAMGraphCell
 	
 	public boolean canHavePriority()
 	{
-		return type.canHavePriority();
+		return getType().canHavePriority();
 	}
 	
 	public Indicator getIndicator()
@@ -112,12 +98,12 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean canHaveObjectives()
 	{
-		return type.canHaveObjective();
+		return getType().canHaveObjective();
 	}
 
 	public boolean canHaveGoal()
 	{
-		return type.canHaveGoal();
+		return getType().canHaveGoal();
 	}
 
 	public Goals getGoals()
@@ -168,27 +154,27 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean isTarget()
 	{
-		return(type.isTarget());
+		return(getType().isTarget());
 	}
 	
 	public boolean isIndirectFactor()
 	{
-		return(type.isIndirectFactor());
+		return(getType().isIndirectFactor());
 	}
 	
 	public boolean isIntervention()
 	{
-		return(type.isIntervention());
+		return(getType().isIntervention());
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return(type.isDirectThreat());
+		return(getType().isDirectThreat());
 	}
 	
 	public boolean isStress()
 	{
-		return(type.isStress());
+		return(getType().isStress());
 	}
 	
 	public DefaultPort getPort()
@@ -283,7 +269,6 @@ public class DiagramNode extends EAMGraphCell
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
 
-	NodeType type;
 	DefaultPort port;
 	ThreatPriority threatPriority;
 	Indicator indicator;
@@ -291,4 +276,41 @@ public class DiagramNode extends EAMGraphCell
 	Goals goals;
 	Dimension previousSize;
 	Point previousLocation;
+	
+	ConceptualModelObject underlyingObject;
+}
+
+class ConceptualModelObject
+{
+	public ConceptualModelObject(int nodeType)
+	{
+		switch(nodeType)
+		{
+			case DiagramNode.TYPE_TARGET:
+				type = new NodeTypeTarget();
+				break;
+			case DiagramNode.TYPE_INDIRECT_FACTOR:
+				type = new NodeTypeIndirectFactor();
+				break;
+			case DiagramNode.TYPE_DIRECT_THREAT:
+				type = new NodeTypeDirectThreat();
+				break;
+			case DiagramNode.TYPE_STRESS:
+				type = new NodeTypeStress();
+				break;
+			case DiagramNode.TYPE_INTERVENTION:
+				type = new NodeTypeIntervention();
+				break;
+			default:
+				throw new RuntimeException("Unknown node type: " + nodeType);
+		}
+		
+	}
+	
+	public NodeType getType()
+	{
+		return type;
+	}
+
+	private NodeType type;
 }
