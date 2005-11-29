@@ -6,7 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.util.Vector;
 
 abstract public class NodeAnnotations 
 {
-	abstract public Color getColor();
 	abstract public void readDataFrom(DataInputStream dataIn) throws IOException;
 	abstract public boolean equals(Object obj); 
 

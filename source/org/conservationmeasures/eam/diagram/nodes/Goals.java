@@ -6,7 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.Vector;
@@ -36,11 +35,6 @@ public class Goals extends NodeAnnotations
 	public Goal get(int i)
 	{
 		return (Goal)(getAnnotation(i));
-	}
-	
-	public Color getColor()
-	{
-		return LIGHT_BLUE;
 	}
 	
 	public void setGoals(Goal goal)
@@ -76,6 +70,4 @@ public class Goals extends NodeAnnotations
 		goals.add(new Goal("Goal 3"));
 		return goals;
 	}
-	private static final Color LIGHT_BLUE = new Color(204,238,255);
-
 }

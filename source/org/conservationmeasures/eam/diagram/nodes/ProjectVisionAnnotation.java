@@ -6,17 +6,11 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
 
 public class ProjectVisionAnnotation extends NodeAnnotations
 {
-	public Color getColor()
-	{
-		return LIGHT_BLUE;
-	}
-
 	public void readDataFrom(DataInputStream dataIn) throws IOException
 	{
 	}
@@ -25,6 +19,4 @@ public class ProjectVisionAnnotation extends NodeAnnotations
 	{
 		return false;
 	}
-
-	private static final Color LIGHT_BLUE = new Color(204,238,255);
 }

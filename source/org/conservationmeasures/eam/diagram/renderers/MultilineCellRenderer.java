@@ -153,9 +153,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		if(annotations != null && annotations.hasAnnotation())
 		{
 			Rectangle annotationsRectangle = getAnnotationsRect(rect, annotations.size());
-			setPaint(g2, annotationsRectangle, annotations.getColor());
+			setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 			RectangleRenderer annotationRenderer = new RectangleRenderer();
-			annotationRenderer.fillShape(g2, annotationsRectangle, annotations.getColor());
+			annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 
 			drawBoarder(g2, annotationsRectangle, annotationRenderer);
 			
@@ -308,6 +308,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	static final int INDICATOR_HEIGHT = 20;
 	static final int ANNOTATIONS_HEIGHT = 20;
 	private static final int CORNER_SIZE = 20;
+
+	private static final Color LIGHT_BLUE = new Color(204,238,255);
+	private static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
 
 	JGraph graph;
 	JLabel label;

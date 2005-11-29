@@ -26,8 +26,6 @@ public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
-		if(canHaveObjectives())
-			objectives = new Objectives();
 		if(canHaveGoal())
 			goals = new Goals();
 		
@@ -94,7 +92,7 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean canHaveObjectives()
 	{
-		return getType().canHaveObjective();
+		return underlyingObject.canHaveObjectives();
 	}
 
 	public boolean canHaveGoal()
@@ -114,18 +112,18 @@ public class DiagramNode extends EAMGraphCell
 
 	public Objectives getObjectives()
 	{
-		return objectives;
+		return underlyingObject.getObjectives();
 	}
 
 	public void setObjectives(Objectives objectivesToUse)
 	{
-		objectives = objectivesToUse;
+		underlyingObject.setObjectives(objectivesToUse);
 	}
 	
 	public int getAnnotationRows()
 	{
 		int numberOfAnnotations = 0;
-		numberOfAnnotations = getAnnotationCount(objectives) + getAnnotationCount(goals);
+		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(goals);
 
 		if(getIndicator() != null && getIndicator().hasIndicator() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
@@ -266,7 +264,6 @@ public class DiagramNode extends EAMGraphCell
 	public static final String TAG_PRIORITY = "Priority";
 
 	DefaultPort port;
-	Objectives objectives;
 	Goals goals;
 	Dimension previousSize;
 	Point previousLocation;
@@ -304,6 +301,8 @@ class ConceptualModelObject
 		if(canHavePriority())
 			setNodePriority(ThreatPriority.createPriorityNone());
 
+		if(canHaveObjectives())
+			objectives = new Objectives();
 	}
 	
 	public NodeType getType()
@@ -336,7 +335,23 @@ class ConceptualModelObject
 		threatPriority = priorityToUse;
 	}
 	
+	public boolean canHaveObjectives()
+	{
+		return getType().canHaveObjective();
+	}
+
+	public Objectives getObjectives()
+	{
+		return objectives;
+	}
+
+	public void setObjectives(Objectives objectivesToUse)
+	{
+		objectives = objectivesToUse;
+	}
+	
 	private NodeType type;
 	private Indicator indicator;
 	private ThreatPriority threatPriority;
+	private Objectives objectives;
 }
