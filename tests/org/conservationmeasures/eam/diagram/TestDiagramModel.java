@@ -166,7 +166,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.nodesWereMoved(1, 1, new int[] {node2.getId(), node3.getId()});
+		model.nodesWereMoved(new int[] {node2.getId(), node3.getId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);

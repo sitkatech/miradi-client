@@ -89,6 +89,12 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		
 		if(deltaX == 0 && deltaY == 0)
 			return;
+
+		// adjust for snap
+		DiagramNode node = (DiagramNode)selectedNodes.get(0);
+		deltaX = node.getLocation().x - node.getPreviousLocation().x;
+		deltaY = node.getLocation().y - node.getPreviousLocation().y;
+		
 		project.nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
 	}
 

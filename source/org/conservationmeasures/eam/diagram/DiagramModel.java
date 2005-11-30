@@ -162,10 +162,10 @@ public class DiagramModel extends DefaultGraphModel
 			updateCell(nodeToMove);
 		}
 		
-		nodesWereMoved(deltaX, deltaY, ids);
+		nodesWereMoved(ids);
 	}
 	
-	public void nodesWereMoved(int deltaX, int deltaY, int[] ids)
+	public void nodesWereMoved(int[] ids)
 	{
 		for(int i=0; i < ids.length; ++i)
 		{

@@ -365,7 +365,7 @@ public class Project
 	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids)
 	{
 		DiagramModel model = getDiagramModel();
-		model.nodesWereMoved(deltaX, deltaY, ids);
+		model.nodesWereMoved(ids);
 
 		Vector commands = new Vector();
 		Vector movedNodes = new Vector();
@@ -393,14 +393,6 @@ public class Project
 			{
 				DiagramNode node = (DiagramNode)movedNodes.get(i);
 				idsActuallyMoved[i] = node.getId();
-				
-				// adjust for snap
-				if(i == 0)
-				{
-					deltaX = node.getLocation().x - node.getPreviousLocation().x;
-					deltaY = node.getLocation().y - node.getPreviousLocation().y;
-				}
-					
 			}
 			
 			commands.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));			
@@ -413,7 +405,6 @@ public class Project
 				recordCommand((Command)commands.get(i));
 			recordCommand(new CommandEndTransaction());
 		}
-		
 	}
 	
 	Command buildResizeCommand(DiagramNode node)
@@ -481,7 +472,7 @@ public class Project
 			cells[i] = (EAMGraphCell)rawCells[i];
 		return cells;
 	}
-
+	
 	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
 	{
 		DiagramModel model = getDiagramModel();
