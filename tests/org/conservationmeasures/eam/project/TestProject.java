@@ -47,9 +47,11 @@ public class TestProject extends EAMTestCase
 	
 	public void testApplySnapToOldUnsnappedCommands() throws Exception
 	{
+		int snap = Project.DEFAULT_GRID_SIZE;
+		
 		Vector commands = new Vector();
-		commands.add(new CommandDiagramMove(7, 23, new int[] {0}));
-		commands.add(new CommandDiagramMove(10, 20, new int[] {0}));
+		commands.add(new CommandDiagramMove(snap - 3, 2 * snap + 3, new int[] {0}));
+		commands.add(new CommandDiagramMove(snap, 2 * snap, new int[] {0}));
 		commands.add(new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT));
 
 		project.applySnapToOldUnsnappedCommands(commands);
