@@ -464,15 +464,6 @@ public class Project
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 
-	public EAMGraphCell[] getOnlySelectedCells()
-	{
-		Object[] rawCells = selectionModel.getSelectionCells();
-		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
-		for(int i=0; i < cells.length; ++i)
-			cells[i] = (EAMGraphCell)rawCells[i];
-		return cells;
-	}
-	
 	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
 	{
 		DiagramModel model = getDiagramModel();
@@ -499,6 +490,33 @@ public class Project
 		}
 		return selectedCellsWithLinkages;
 	}
+
+	public EAMGraphCell[] getOnlySelectedCells()
+	{
+		Object[] rawCells = selectionModel.getSelectionCells();
+		EAMGraphCell[] cells = new EAMGraphCell[rawCells.length];
+		for(int i=0; i < cells.length; ++i)
+			cells[i] = (EAMGraphCell)rawCells[i];
+		return cells;
+	}
+	
+	public EAMGraphCell[] getOnlySelectedNodes()
+	{
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedNodes(rawCells);
+	}
+
+	public EAMGraphCell[] getOnlySelectedNodes(Object[] allSelectedCells)
+	{
+		Vector nodes = new Vector();
+		for(int i=0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isNode())
+				nodes.add(allSelectedCells[i]);
+		}
+		return (EAMGraphCell[])nodes.toArray(new EAMGraphCell[0]);
+	}
+
 	
 	public int getGridSize()
 	{

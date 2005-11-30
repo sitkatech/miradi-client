@@ -21,7 +21,7 @@ public class NudgeNode extends ProjectDoer
 	
 	public boolean isAvailable()
 	{
-		return getProject().getOnlySelectedCells().length > 0;
+		return getProject().getOnlySelectedNodes().length > 0;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -48,7 +48,7 @@ public class NudgeNode extends ProjectDoer
 
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
-		EAMGraphCell[] cells = getProject().getOnlySelectedCells();
+		EAMGraphCell[] cells = getProject().getOnlySelectedNodes();
 
 		int[] ids = new int[cells.length];
 		for(int i = 0; i < cells.length; ++i)

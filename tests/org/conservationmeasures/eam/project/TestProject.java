@@ -165,6 +165,29 @@ public class TestProject extends EAMTestCase
 		assertContains(linkage1, selectedItems);
 		assertContains(linkage2, selectedItems);
 	}
+
+	public void testGetAllSelectedNodes() throws Exception
+	{
+		DiagramModel model = project.getDiagramModel();
+
+		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		
+		DiagramLinkage linkage1 = model.createLinkage(DiagramNode.INVALID_ID, node1.getId(), node2.getId());
+		
+		EAMGraphCell[] selectedCells = {linkage1};
+		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
+		assertEquals(0, selectedItems.length);
+		
+		selectedCells[0] = node2;
+		selectedItems = project.getOnlySelectedNodes(selectedCells);
+		assertEquals(1, selectedItems.length);
+		assertEquals(node2, selectedItems[0]);
+		
+		EAMGraphCell[] selectedCellsTwo = {node2,linkage1,node1};
+		selectedItems = project.getOnlySelectedNodes(selectedCellsTwo);
+		assertEquals(2, selectedItems.length);
+	}
 	
 	public void TestPasteNodesAndLinksIntoProject() throws Exception
 	{
