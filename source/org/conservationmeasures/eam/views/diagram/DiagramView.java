@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
@@ -97,11 +98,10 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionZoomIn.class, new ZoomIn());
 		addDoerToMap(ActionZoomOut.class, new ZoomOut());
-//TODO: create real doers
-		addDoerToMap(ActionNudgeNodeUp.class, new ZoomIn()); 
-		addDoerToMap(ActionNudgeNodeDown.class, new ZoomOut());
-		addDoerToMap(ActionNudgeNodeLeft.class, new ZoomIn());
-		addDoerToMap(ActionNudgeNodeRight.class, new ZoomOut());
+		addDoerToMap(ActionNudgeNodeUp.class, new NudgeNode(KeyEvent.VK_UP)); 
+		addDoerToMap(ActionNudgeNodeDown.class, new NudgeNode(KeyEvent.VK_DOWN));
+		addDoerToMap(ActionNudgeNodeLeft.class, new NudgeNode(KeyEvent.VK_LEFT));
+		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
 	}
 	
 	DiagramComponent diagram;
