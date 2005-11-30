@@ -174,15 +174,15 @@ public class TestCommands extends EAMTestCase
 	{
 		int targetId = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(targetId);
-		assertNull("New target should have a null priority level", node.getThreatPriority());
+		assertEquals("New target should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
 		
 		int interventionId = insertIntervention();
 		node = project.getDiagramModel().getNodeById(interventionId);
-		assertNull("New intervention should have a null priority level", node.getThreatPriority());
+		assertEquals("New intervention should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
 		
 		int indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
-		assertNull("New indirect factor should have a null priority level", node.getThreatPriority());
+		assertEquals("New indirect factor should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
@@ -235,7 +235,7 @@ public class TestCommands extends EAMTestCase
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		Objectives testObjectives = node.getObjectives();
-		assertNull("Targets can't have Objectives", testObjectives);
+		assertEquals("Targets can't have Objectives", 0, testObjectives.size());
 		
 		id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);

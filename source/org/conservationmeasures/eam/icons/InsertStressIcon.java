@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
@@ -21,7 +21,7 @@ public class InsertStressIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return new NodeTypeStress().getColor();
+		return DiagramFactor.COLOR_STRESS;
 	}
 
 }

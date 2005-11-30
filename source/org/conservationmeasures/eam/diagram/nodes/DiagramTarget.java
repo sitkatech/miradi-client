@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
 
 public class DiagramTarget extends DiagramNode
@@ -19,5 +21,16 @@ public class DiagramTarget extends DiagramNode
 		return true;
 	}
 	
+	public boolean canHaveGoal()
+	{
+		return true;
+	}
+
+	public Color getColor()
+	{
+		return COLOR_TARGET;
+	}
+
+	public static final Color COLOR_TARGET = Color.GREEN;
 	
 }

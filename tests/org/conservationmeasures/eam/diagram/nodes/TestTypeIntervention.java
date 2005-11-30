@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -22,7 +20,6 @@ public class TestTypeIntervention extends EAMTestCase
 	{
 		NodeTypeIntervention factor = new NodeTypeIntervention();
 		assertTrue("Not an Intervention?", factor.isIntervention());
-		assertEquals(Color.YELLOW, factor.getColor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isStress());

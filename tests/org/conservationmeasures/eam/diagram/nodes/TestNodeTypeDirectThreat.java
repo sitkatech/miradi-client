@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -22,7 +20,6 @@ public class TestNodeTypeDirectThreat extends EAMTestCase
 	{
 		NodeTypeDirectThreat factor = new NodeTypeDirectThreat();
 		assertTrue("Not a Direct Threat?", factor.isDirectThreat());
-		assertEquals(Color.PINK, factor.getColor());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isStress());

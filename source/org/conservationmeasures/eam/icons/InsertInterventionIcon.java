@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 
@@ -20,6 +20,6 @@ public class InsertInterventionIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return new NodeTypeIntervention().getColor();
+		return DiagramIntervention.COLOR_INTERVENTION;
 	}
 }

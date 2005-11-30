@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramNode extends EAMGraphCell
+abstract public class DiagramNode extends EAMGraphCell
 {
 	public static DiagramNode createDiagramNode(NodeType nodeType)
 	{
@@ -38,13 +38,15 @@ public class DiagramNode extends EAMGraphCell
 		
 		port = new DefaultPort();
 		add(port);
-		setColors(getType());
+		setColors();
 		setFont();
 		setLocation(new Point(0, 0));
 		Dimension defaultNodeSize = new Dimension(120, 60);
 		setSize(defaultNodeSize);
 		setPreviousSize(defaultNodeSize);
 		setText("");
+		if(canHavePriority())
+			setNodePriority(ThreatPriority.createPriorityNone());
 	}
 	
 	public boolean isNode()
@@ -69,7 +71,7 @@ public class DiagramNode extends EAMGraphCell
 	
 	public boolean canHavePriority()
 	{
-		return underlyingObject.canHavePriority();
+		return false;
 	}
 	
 	public Indicator getIndicator()
@@ -84,12 +86,12 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean canHaveObjectives()
 	{
-		return underlyingObject.canHaveObjectives();
+		return false;
 	}
 
 	public boolean canHaveGoal()
 	{
-		return underlyingObject.canHaveGoal();
+		return false;
 	}
 
 	public Goals getGoals()
@@ -137,6 +139,7 @@ public class DiagramNode extends EAMGraphCell
 		return numberOfAnnotations;
 	}
 	
+	abstract public Color getColor();
 
 	public boolean isTarget()
 	{
@@ -174,9 +177,9 @@ public class DiagramNode extends EAMGraphCell
 //		GraphConstants.setFont(map, font);
 	}
 
-	private void setColors(NodeType cellType)
+	private void setColors()
 	{
-		Color color = cellType.getColor();
+		Color color = getColor();
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setBackground(getAttributes(), color);
 		GraphConstants.setForeground(getAttributes(), Color.black);
@@ -235,10 +238,7 @@ public class DiagramNode extends EAMGraphCell
 		NodeDataMap dataMap = super.createNodeDataMap();
 		dataMap.putNodeType(getType());
 		
-		ThreatPriority priority = getThreatPriority();
-		int priorityValue = ThreatPriority.PRIORITY_NOT_USED;
-		if(priority != null)
-			priorityValue = priority.getValue();
+		int priorityValue = getThreatPriority().getValue();
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
 	}
@@ -277,15 +277,9 @@ class ConceptualModelObject
 		
 		indicator = new Indicator();
 
-		if(canHavePriority())
-			setNodePriority(ThreatPriority.createPriorityNone());
-
-		if(canHaveObjectives())
-			objectives = new Objectives();
-
-		if(canHaveGoal())
-			goals = new Goals();
-		
+		setNodePriority(ThreatPriority.createPriorityNotUsed());
+		objectives = new Objectives();
+		goals = new Goals();
 	}
 	
 	public NodeType getType()
@@ -303,11 +297,6 @@ class ConceptualModelObject
 		indicator = indicatorToUse;
 	}
 
-	public boolean canHavePriority()
-	{
-		return getType().canHavePriority();
-	}
-	
 	public ThreatPriority getThreatPriority()
 	{
 		return threatPriority;
@@ -318,11 +307,6 @@ class ConceptualModelObject
 		threatPriority = priorityToUse;
 	}
 	
-	public boolean canHaveObjectives()
-	{
-		return getType().canHaveObjective();
-	}
-
 	public Objectives getObjectives()
 	{
 		return objectives;
@@ -333,11 +317,6 @@ class ConceptualModelObject
 		objectives = objectivesToUse;
 	}
 	
-	public boolean canHaveGoal()
-	{
-		return getType().canHaveGoal();
-	}
-
 	public Goals getGoals()
 	{
 		return goals;

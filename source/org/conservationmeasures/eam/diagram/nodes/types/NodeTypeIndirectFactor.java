@@ -5,19 +5,13 @@
  */
 package org.conservationmeasures.eam.diagram.nodes.types;
 
-import java.awt.Color;
 
 
 
-public class NodeTypeIndirectFactor extends NodeType
+public class NodeTypeIndirectFactor extends NodeTypeFactor
 {
 	public boolean isIndirectFactor()
 	{
 		return true;
-	}
-
-	public Color getColor()
-	{
-		return Color.ORANGE;
 	}
 }

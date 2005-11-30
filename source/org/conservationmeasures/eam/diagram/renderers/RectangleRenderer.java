@@ -38,16 +38,16 @@ public class RectangleRenderer extends MultilineNodeRenderer
 
 	private void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
-		if(priority != null && !priority.isPriorityNone())
-		{
-			Rectangle smallRect = new Rectangle();
-			smallRect.x = rect.x;
-			smallRect.y = rect.y;
-			smallRect.width = PRIORITY_WIDTH;
-			smallRect.height = rect.height;
-			setPaint(g2, smallRect, getPriorityColor(priority));
-			g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
-		}
+		if(priority == null || priority.isPriorityNotUsed() || priority.isPriorityNone())
+			return;
+
+		Rectangle smallRect = new Rectangle();
+		smallRect.x = rect.x;
+		smallRect.y = rect.y;
+		smallRect.width = PRIORITY_WIDTH;
+		smallRect.height = rect.height;
+		setPaint(g2, smallRect, getPriorityColor(priority));
+		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 	}
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)

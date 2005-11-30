@@ -6,15 +6,9 @@
 
 package org.conservationmeasures.eam.diagram.nodes.types;
 
-import java.awt.Color;
 
-public class NodeTypeDirectThreat extends NodeType {
-
-	public Color getColor() 
-	{
-		return Color.PINK;
-	}
-
+public class NodeTypeDirectThreat extends NodeTypeFactor
+{
 	public boolean isDirectThreat() 
 	{
 		return true;

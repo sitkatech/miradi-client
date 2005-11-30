@@ -19,6 +19,11 @@ public class ThreatPriority
 		return new ThreatPriority(value);
 	}
 
+	public static ThreatPriority createPriorityNotUsed()
+	{
+		return new ThreatPriority(PRIORITY_NOT_USED);
+	}
+
 	public static ThreatPriority createPriorityNone()
 	{
 		return new ThreatPriority(PRIORITY_NONE);
@@ -85,6 +90,11 @@ public class ThreatPriority
 	public boolean isPriorityNone()
 	{
 		return priority == PRIORITY_NONE;
+	}
+
+	public boolean isPriorityNotUsed()
+	{
+		return priority == PRIORITY_NOT_USED;
 	}
 
 	public static final int PRIORITY_NOT_USED =-1;

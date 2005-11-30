@@ -11,7 +11,6 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -120,8 +119,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testColors()
 	{
-		NodeTypeIndirectFactor factorType = new NodeTypeIndirectFactor();
-		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), factorType.getColor());
+		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), DiagramFactor.COLOR_INDIRECT_FACTOR);
 	}
 	
 	public void testBounds()

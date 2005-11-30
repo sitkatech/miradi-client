@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodes.types;
 
-import java.awt.Color;
 
 public class NodeTypeIntervention extends NodeType
 {
@@ -14,9 +13,4 @@ public class NodeTypeIntervention extends NodeType
 		return true;
 	}
 	
-	public Color getColor()
-	{
-		return Color.YELLOW;
-	}
-
 }

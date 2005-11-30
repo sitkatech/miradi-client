@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 
 public class DiagramFactor extends DiagramNode
@@ -12,6 +14,16 @@ public class DiagramFactor extends DiagramNode
 	public DiagramFactor(NodeType nodeType)
 	{
 		super(nodeType);
+	}
+
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
+	
+	public boolean canHavePriority()
+	{
+		return (isDirectThreat() || isStress());
 	}
 
 	public boolean isIndirectFactor()
@@ -28,5 +40,21 @@ public class DiagramFactor extends DiagramNode
 	{
 		return(getType().isStress());
 	}
+
+	public Color getColor()
+	{
+		if(isIndirectFactor())
+			return COLOR_INDIRECT_FACTOR;
+		if(isDirectThreat())
+			return COLOR_DIRECT_THREAT;
+		if(isStress())
+			return COLOR_STRESS;
+		
+		throw new RuntimeException("Unknown factor type: " + getType().getClass());
+	}
 	
+	public static final Color COLOR_STRESS = Color.MAGENTA;
+	public static final Color COLOR_DIRECT_THREAT = Color.PINK;
+	public static final Color COLOR_INDIRECT_FACTOR = Color.ORANGE;
+
 }

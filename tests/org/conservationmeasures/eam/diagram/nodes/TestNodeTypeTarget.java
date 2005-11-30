@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -22,7 +20,6 @@ public class TestNodeTypeTarget extends EAMTestCase
 	{
 		NodeTypeTarget factor = new NodeTypeTarget();
 		assertTrue("Not a Target?", factor.isTarget());
-		assertEquals(Color.GREEN, factor.getColor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isStress());

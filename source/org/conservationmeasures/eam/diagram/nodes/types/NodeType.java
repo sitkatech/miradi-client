@@ -5,13 +5,10 @@
  */
 package org.conservationmeasures.eam.diagram.nodes.types;
 
-import java.awt.Color;
 
 
 public abstract class NodeType
 {
-	public abstract Color getColor();
-
 	public boolean isTarget()
 	{
 		return false;
@@ -42,26 +39,6 @@ public abstract class NodeType
 		return false;
 	}
 
-	public boolean canHaveObjective()
-	{
-		if(isDirectThreat())
-			return true;
-		if(isIndirectFactor())
-			return true;
-		if(isIntervention())
-			return true;
-		if(isStress())
-			return true;
-		return false;
-	}
-
-	public boolean canHaveGoal()
-	{
-		if(isTarget())
-			return true;
-		return false;
-	}
-	
 	public boolean isStress()
 	{
 		return false;

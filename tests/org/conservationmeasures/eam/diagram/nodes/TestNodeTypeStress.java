@@ -7,8 +7,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -23,7 +21,6 @@ public class TestNodeTypeStress extends EAMTestCase
 	{
 		NodeTypeStress factor = new NodeTypeStress();
 		assertTrue("Not a Stress Factor?", factor.isStress());
-		assertEquals(Color.MAGENTA, factor.getColor());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isDirectThreat());

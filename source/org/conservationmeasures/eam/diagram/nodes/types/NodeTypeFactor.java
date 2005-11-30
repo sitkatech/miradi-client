@@ -3,14 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-
 package org.conservationmeasures.eam.diagram.nodes.types;
 
 
-public class NodeTypeStress extends NodeTypeFactor
+abstract public class NodeTypeFactor extends NodeType
 {
-	public boolean isStress() 
-	{
-		return true;
-	}
+
 }

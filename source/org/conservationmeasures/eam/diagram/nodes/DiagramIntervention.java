@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 
 public class DiagramIntervention extends DiagramNode
@@ -19,4 +21,16 @@ public class DiagramIntervention extends DiagramNode
 		return true;
 	}
 	
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
+
+	public Color getColor()
+	{
+		return COLOR_INTERVENTION;
+	}
+
+	public static final Color COLOR_INTERVENTION = Color.YELLOW;
+
 }

@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -22,7 +20,6 @@ public class TestNodeTypeIndirectFactor extends EAMTestCase
 	{
 		NodeTypeIndirectFactor factor = new NodeTypeIndirectFactor();
 		assertTrue("Not a indirect factor?", factor.isIndirectFactor());
-		assertEquals(Color.ORANGE, factor.getColor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isStress());
