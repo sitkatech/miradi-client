@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class NudgeNode extends ProjectDoer
@@ -43,6 +44,7 @@ public class NudgeNode extends ProjectDoer
 				deltaX = getProject().getGridSize();
 				break;
 		}
+		EAM.logVerbose("NudgeNodes ("+deltaX + ","+deltaY+")");
 		moveSelectedNodes(deltaX, deltaY);
 	}
 

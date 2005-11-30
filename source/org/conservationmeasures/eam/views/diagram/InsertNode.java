@@ -42,7 +42,13 @@ abstract public class InsertNode extends LocationDoer
 		getProject().executeCommand(setTextCommand);
 
 		Point createAt = getLocation();
-		Command moveCommand = new CommandDiagramMove(createAt.x, createAt.y, new int[] {id});
+		//Snap to Grid
+		int deltaX = createAt.x;
+		int deltaY = createAt.y;
+		deltaX -= deltaX % getProject().getGridSize(); 
+		deltaY -= deltaY % getProject().getGridSize();
+		
+		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new int[] {id});
 		getProject().executeCommand(moveCommand);
 
 		getProject().executeCommand(new CommandEndTransaction());
