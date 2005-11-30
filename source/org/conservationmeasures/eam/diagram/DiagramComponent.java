@@ -72,8 +72,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	public BufferedImage getImage()
 	{
-		int insets = 5;
-		return this.getImage(Color.WHITE, insets);
+		try
+		{
+			setGridVisible(false);
+			int insets = 5;
+			return this.getImage(Color.WHITE, insets);
+		}
+		finally
+		{
+			setGridVisible(true);
+		}
 	}
 
 	public JComponent getPrintableComponent()
