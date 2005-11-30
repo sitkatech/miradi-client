@@ -20,8 +20,8 @@ public class TestDiagramLinkage extends EAMTestCase
 
 	public void testBasics()
 	{
-		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode factor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode target = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage = new DiagramLinkage(factor, target);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
@@ -32,8 +32,8 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testIds()
 	{
-		DiagramNode factor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		DiagramNode target = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode factor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode target = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage = new DiagramLinkage(factor, target);
 		assertEquals(DiagramNode.INVALID_ID,linkage.getId());
 		int id = 243;

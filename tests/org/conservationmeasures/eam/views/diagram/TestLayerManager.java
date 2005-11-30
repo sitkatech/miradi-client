@@ -44,7 +44,7 @@ public class TestLayerManager extends EAMTestCase
 	private void verifyVisibility(String text, boolean expected, NodeType type, LayerManager manager)
 	{
 		assertEquals("type: " + text + " (" + type + ") ",expected, manager.isTypeVisible(type));
-		DiagramNode node = new DiagramNode(type);
+		DiagramNode node = DiagramNode.createDiagramNode(type);
 		assertEquals("node: " + text + " (" + type + ") ",expected, manager.isVisible(node));
 	}
 }

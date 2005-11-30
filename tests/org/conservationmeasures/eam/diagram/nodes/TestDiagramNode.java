@@ -24,7 +24,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		node = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		node = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		attributeMap = node.getAttributes();
 		super.setUp();
 	}
@@ -43,7 +43,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testIds()
 	{
-		DiagramNode testNode = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode testNode = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertEquals(DiagramNode.INVALID_ID,node.getId());
 		int id = 23;
 		testNode.setId(id);
@@ -52,43 +52,43 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testPriorities()
 	{
-		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
 		assertTrue(nodeDirectThreat.canHavePriority());
 
-		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
 		assertTrue(nodeStress.canHavePriority());
 
-		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertFalse(nodeIndirectFactor.canHavePriority());
 
-		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
 		assertFalse(nodeIntervention.canHavePriority());
 
-		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		assertFalse(nodeTarget.canHavePriority());
 	}
 	
 	public void testObjectives()
 	{
-		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
 		assertTrue(nodeDirectThreat.canHaveObjectives());
 
-		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
 		assertTrue(nodeStress.canHaveObjectives());
 
-		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertTrue(nodeIndirectFactor.canHaveObjectives());
 
-		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
 		assertTrue(nodeIntervention.canHaveObjectives());
 
-		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		assertFalse(nodeTarget.canHaveObjectives());
 	}
 
 	public void testIndicator()
 	{
-		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
 		Indicator indicator = nodeDirectThreat.getIndicator();
 		assertFalse(indicator.hasIndicator());
 		assertEquals(Indicator.INDICATOR_NONE_STRING, indicator.toString());
@@ -100,19 +100,19 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testGoals()
 	{
-		DiagramNode nodeTarget = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		assertTrue(nodeTarget.canHaveGoal());
 
-		DiagramNode nodeDirectThreat = new DiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
 		assertFalse(nodeDirectThreat.canHaveGoal());
 
-		DiagramNode nodeStress = new DiagramNode(DiagramNode.TYPE_STRESS);
+		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
 		assertFalse(nodeStress.canHaveGoal());
 
-		DiagramNode nodeIndirectFactor = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		assertFalse(nodeIndirectFactor.canHaveGoal());
 
-		DiagramNode nodeIntervention = new DiagramNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
 		assertFalse(nodeIntervention.canHaveGoal());
 
 	}

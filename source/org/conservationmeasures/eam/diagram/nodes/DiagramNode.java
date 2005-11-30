@@ -22,7 +22,17 @@ import org.jgraph.graph.GraphConstants;
 
 public class DiagramNode extends EAMGraphCell
 {
-	public DiagramNode(NodeType nodeType)
+	public static DiagramNode createDiagramNode(NodeType nodeType)
+	{
+		if(nodeType.isTarget())
+			return new DiagramTarget();
+		if(nodeType.isIntervention())
+			return new DiagramIntervention();
+		
+		return new DiagramFactor(nodeType);
+	}
+
+	protected DiagramNode(NodeType nodeType)
 	{
 		underlyingObject = new ConceptualModelObject(nodeType);
 		
@@ -79,7 +89,7 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean canHaveGoal()
 	{
-		return getType().canHaveGoal();
+		return underlyingObject.canHaveGoal();
 	}
 
 	public Goals getGoals()
@@ -130,27 +140,27 @@ public class DiagramNode extends EAMGraphCell
 
 	public boolean isTarget()
 	{
-		return(getType().isTarget());
+		return false;
 	}
 	
 	public boolean isIndirectFactor()
 	{
-		return(getType().isIndirectFactor());
-	}
-	
-	public boolean isIntervention()
-	{
-		return(getType().isIntervention());
+		return false;
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return(getType().isDirectThreat());
+		return false;
 	}
 	
 	public boolean isStress()
 	{
-		return(getType().isStress());
+		return false;
+	}
+	
+	public boolean isIntervention()
+	{
+		return false;
 	}
 	
 	public DefaultPort getPort()

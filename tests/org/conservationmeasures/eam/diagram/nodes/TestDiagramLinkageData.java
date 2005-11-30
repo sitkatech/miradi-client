@@ -33,11 +33,11 @@ public class TestDiagramLinkageData extends EAMTestCase
 	private LinkageData createSampleLinkageData(int id) throws Exception
 	{
 		nodeAId = 1;
-		DiagramNode nodeA = new DiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode nodeA = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		nodeA.setId(nodeAId);
 		
 		nodeBId = 2;
-		DiagramNode nodeB = new DiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeB = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
 		nodeB.setId(nodeBId);
 		
 		DiagramLinkage linkage = new DiagramLinkage(nodeB, nodeA);

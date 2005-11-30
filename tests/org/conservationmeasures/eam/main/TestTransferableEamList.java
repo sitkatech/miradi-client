@@ -47,7 +47,7 @@ public class TestTransferableEamList extends EAMTestCase
 		String node1Text = "Target 1";
 		Point node1Location = new Point(1,2);
 		NodeType node1Type = DiagramNode.TYPE_TARGET;
-		DiagramNode node1 = new DiagramNode(node1Type);
+		DiagramNode node1 = DiagramNode.createDiagramNode(node1Type);
 		node1.setId(node1Id);
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
@@ -57,7 +57,7 @@ public class TestTransferableEamList extends EAMTestCase
 		Point node2Location = new Point(2,3);
 		NodeType node2Type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		
-		DiagramNode node2 = new DiagramNode(node2Type);
+		DiagramNode node2 = DiagramNode.createDiagramNode(node2Type);
 		node2.setId(node2Id);
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);

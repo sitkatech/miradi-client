@@ -51,7 +51,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramNode createNodeAtId(NodeType nodeType, int id) throws Exception
 	{
-		DiagramNode node = new DiagramNode(nodeType);
+		DiagramNode node = DiagramNode.createDiagramNode(nodeType);
 		node.setId(id);
 		insertCell(node);
 		cellInventory.addNode(node);
