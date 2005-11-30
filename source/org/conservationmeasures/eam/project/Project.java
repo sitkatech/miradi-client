@@ -580,7 +580,7 @@ public class Project
 		return database;
 	}
 	
-	public static final int DEFAULT_GRID_SIZE = 10;
+	public static final int DEFAULT_GRID_SIZE = 15;
 
 	ProjectServer database;
 	InterviewModel interviewModel;
