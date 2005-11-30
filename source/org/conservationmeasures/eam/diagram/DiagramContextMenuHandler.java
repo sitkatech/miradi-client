@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -16,13 +17,13 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
+import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
-import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
+import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
@@ -84,7 +85,15 @@ public class DiagramContextMenuHandler
 
 	public void showContextMenu(MouseEvent e)
 	{
-		JPopupMenu menu = getPopupMenu(e.getPoint());
+		Point screenPoint = e.getPoint();
+		Point2D scaledPoint2D = diagramComponent.fromScreen(screenPoint);
+		
+		// TODO: Is there any cleaner way to convert a Point2D into a Point???
+		int scaledX = (int)scaledPoint2D.getX();
+		int scaledY = (int)scaledPoint2D.getY();
+		Point scaledPoint = new Point(scaledX, scaledY);
+		
+		JPopupMenu menu = getPopupMenu(scaledPoint);
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 
