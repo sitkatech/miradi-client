@@ -20,6 +20,10 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionNudgeNodeDown;
+import org.conservationmeasures.eam.actions.ActionNudgeNodeLeft;
+import org.conservationmeasures.eam.actions.ActionNudgeNodeRight;
+import org.conservationmeasures.eam.actions.ActionNudgeNodeUp;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
@@ -93,6 +97,11 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
 		addDoerToMap(ActionZoomIn.class, new ZoomIn());
 		addDoerToMap(ActionZoomOut.class, new ZoomOut());
+//TODO: create real doers
+		addDoerToMap(ActionNudgeNodeUp.class, new ZoomIn()); 
+		addDoerToMap(ActionNudgeNodeDown.class, new ZoomOut());
+		addDoerToMap(ActionNudgeNodeLeft.class, new ZoomIn());
+		addDoerToMap(ActionNudgeNodeRight.class, new ZoomOut());
 	}
 	
 	DiagramComponent diagram;

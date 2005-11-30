@@ -47,6 +47,10 @@ public class Actions
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionZoomIn(mainWindow));
 		registerAction(new ActionZoomOut(mainWindow));
+		registerAction(new ActionNudgeNodeUp(mainWindow));
+		registerAction(new ActionNudgeNodeDown(mainWindow));
+		registerAction(new ActionNudgeNodeLeft(mainWindow));
+		registerAction(new ActionNudgeNodeRight(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
