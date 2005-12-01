@@ -1,0 +1,62 @@
+/*
+ * Copyright 2005, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.diagram.renderers;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.Rectangle;
+
+import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+
+public class RectangleWithPriorityRenderer extends RectangleRenderer
+{
+	public void fillShape(Graphics g, Rectangle rect, Color color)
+	{
+		super.fillShape(g, rect, color);
+		
+		Graphics2D g2 = (Graphics2D)g;
+		Paint oldPaint = g2.getPaint();
+		drawPriority(g, rect, g2);
+		g2.setPaint(oldPaint);
+	}
+	
+	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
+	{
+		if(priority.isPriorityNotUsed() || priority.isPriorityNone())
+			return;
+
+		Rectangle smallRect = new Rectangle();
+		smallRect.x = rect.x;
+		smallRect.y = rect.y;
+		smallRect.width = PRIORITY_WIDTH;
+		smallRect.height = rect.height;
+		setPaint(g2, smallRect, RectangleWithPriorityRenderer.getPriorityColor(priority));
+		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+	}
+
+	public static Color getPriorityColor(ThreatPriority priority)
+	{
+		int priorityLevel = priority.getValue();
+		
+		switch(priorityLevel)
+		{
+			case ThreatPriority.PRIORITY_VERY_HIGH:
+				return Color.RED;
+			case ThreatPriority.PRIORITY_HIGH:
+				return Color.ORANGE;
+			case ThreatPriority.PRIORITY_MEDIUM:
+				return Color.YELLOW;
+			case ThreatPriority.PRIORITY_LOW:
+				return Color.GREEN;
+			default:
+				return Color.WHITE;
+		}
+	}
+
+	private static final int PRIORITY_WIDTH = 6;
+}

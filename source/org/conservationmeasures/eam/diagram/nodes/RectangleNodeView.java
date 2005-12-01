@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -47,5 +48,5 @@ public class RectangleNodeView extends MultilineNodeView
 		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getRectangleWithoutAnnotations());
 	}
 	
-	protected static RectangleRenderer rectangleRenderer = new RectangleRenderer();
+	protected static RectangleRenderer rectangleRenderer = new RectangleWithPriorityRenderer();
 }

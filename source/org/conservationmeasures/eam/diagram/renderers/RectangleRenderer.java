@@ -14,7 +14,6 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.jgraph.graph.VertexView;
 
 
@@ -31,23 +30,7 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, rect, color);
 		g.fillRect(rect.x, rect.y, rect.width, rect.height);
-		
-		drawPriority(g, rect, g2);
 		g2.setPaint(oldPaint);
-	}
-
-	private void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
-	{
-		if(priority == null || priority.isPriorityNotUsed() || priority.isPriorityNone())
-			return;
-
-		Rectangle smallRect = new Rectangle();
-		smallRect.x = rect.x;
-		smallRect.y = rect.y;
-		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = rect.height;
-		setPaint(g2, smallRect, getPriorityColor(priority));
-		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 	}
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
@@ -108,24 +91,4 @@ public class RectangleRenderer extends MultilineNodeRenderer
 		return new Point2D.Double(xout, yout);
 	}
 	
-	public static Color getPriorityColor(ThreatPriority priority)
-	{
-		int priorityLevel = priority.getValue();
-		
-		switch(priorityLevel)
-		{
-			case ThreatPriority.PRIORITY_VERY_HIGH:
-				return Color.RED;
-			case ThreatPriority.PRIORITY_HIGH:
-				return Color.ORANGE;
-			case ThreatPriority.PRIORITY_MEDIUM:
-				return Color.YELLOW;
-			case ThreatPriority.PRIORITY_LOW:
-				return Color.GREEN;
-			default:
-				return Color.WHITE;
-		}
-	}
-	
-	private static final int PRIORITY_WIDTH = 6;
 }
