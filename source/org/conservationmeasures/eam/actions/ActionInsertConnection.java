@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertConnectionIcon;
+import org.conservationmeasures.eam.icons.ConnectionIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertConnection extends MainWindowAction
 {
 	public ActionInsertConnection(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertConnectionIcon());
+		super(mainWindow, getLabel(), new ConnectionIcon());
 	}
 
 	private static String getLabel()

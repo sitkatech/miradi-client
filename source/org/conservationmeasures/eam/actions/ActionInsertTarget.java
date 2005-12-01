@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertTargetIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertTarget extends LocationAction
 {
 	public ActionInsertTarget(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertTargetIcon());
+		super(mainWindow, getLabel(), new TargetIcon());
 	}
 
 	private static String getLabel()

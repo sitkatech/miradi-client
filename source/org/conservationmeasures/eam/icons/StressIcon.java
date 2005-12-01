@@ -3,6 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
+
 package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
@@ -11,15 +12,16 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class InsertIndirectFactorIcon extends EamIcon
+public class StressIcon extends EamIcon 
 {
-	MultilineNodeRenderer getRenderer()
+	MultilineNodeRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}
-	
-	Color getIconColor()
+
+	Color getIconColor() 
 	{
-		return DiagramFactor.COLOR_INDIRECT_FACTOR;
+		return DiagramFactor.COLOR_STRESS;
 	}
+
 }

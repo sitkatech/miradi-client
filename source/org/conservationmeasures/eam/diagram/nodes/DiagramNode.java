@@ -98,6 +98,11 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		return underlyingObject.getGoals();
 	}
+	
+	public boolean isFactor()
+	{
+		return false;
+	}
 
 	public void setGoals(Goals goalsToUse)
 	{

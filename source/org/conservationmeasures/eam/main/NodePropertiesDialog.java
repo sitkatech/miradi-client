@@ -24,6 +24,10 @@ import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.IndirectFactorIcon;
+import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -41,6 +45,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
+		if(node.isFactor())
+			bigBox.add(createSwitchFactorTypeDropdown(node.getType()));
 		bigBox.add(createIndicator(node.getIndicator()));
 		if(node.canHaveObjectives())
 			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjectives()));
@@ -89,6 +95,22 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropdownThreatPriority, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
+	}
+	
+	public Component createSwitchFactorTypeDropdown(NodeType currentType)
+	{
+		UiLabel textObjective = new UiLabel(EAM.text("Label|Type"));
+		dropdownFactorType = new UiComboBox();
+		dropdownFactorType.setRenderer(new FactorTypeRenderer());
+		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
+		dropdownFactorType.addItem(DiagramNode.TYPE_INDIRECT_FACTOR);
+		dropdownFactorType.addItem(DiagramNode.TYPE_STRESS);
+		dropdownFactorType.setSelectedItem(currentType);
+		
+		Box ObjectiveBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownFactorType, Box.createHorizontalGlue()};
+		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
+		return ObjectiveBar;
 	}
 	
 	public Component createObjectiveDropdown(Objectives objectives, Objectives currentObjectives)
@@ -157,6 +179,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			return cell;
 		}
 	}
+	
+	class FactorTypeRenderer extends DefaultListCellRenderer
+	{
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+		{
+			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			if(((NodeType)value).isDirectThreat())
+				setIcon(new DirectThreatIcon());
+			if(((NodeType)value).isIndirectFactor())
+				setIcon(new IndirectFactorIcon());
+			if(((NodeType)value).isStress())
+				setIcon(new StressIcon());
+			return cell;
+		}
+	}
 
 	private Box createButtonBar()
 	{
@@ -198,6 +235,12 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		return (Indicator)dropdownIndicator.getSelectedItem();
 	}
+	
+	public NodeType getType()
+	{
+		return (NodeType)dropdownFactorType.getSelectedItem();
+	}
+
 
 	public Objectives getObjectives()
 	{
@@ -217,6 +260,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	boolean result;
 	UiTextField textField;
+	UiComboBox dropdownFactorType;
 	UiComboBox dropdownThreatPriority;
 	UiComboBox dropdownIndicator;
 	UiComboBox dropdownObjective;

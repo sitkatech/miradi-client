@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class InsertDirectThreatIcon extends EamIcon 
+public class DirectThreatIcon extends EamIcon 
 {
 
 	MultilineNodeRenderer getRenderer() 

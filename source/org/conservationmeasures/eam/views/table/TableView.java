@@ -203,19 +203,19 @@ public class TableView extends UmbrellaView
 		public String getNodeType(EAMGraphCell cell)
 		{
 			if(cell.isLinkage())
-				return EAM.text("Linkage");
+				return EAM.text("Type|Linkage");
 			DiagramNode node = (DiagramNode)cell;
 			if(node.isTarget())
-				return EAM.text("Target");
+				return EAM.text("Type|Target");
 			if(node.isIndirectFactor())
-				return EAM.text("Indirect Factor");
+				return EAM.text("Type|Indirect Factor");
 			if(node.isDirectThreat())
-				return EAM.text("Direct Threat");
+				return EAM.text("Type|Direct Threat");
 			if(node.isStress())
-				return EAM.text("Stress");
+				return EAM.text("Type|Stress");
 			if(node.isIntervention())
-				return EAM.text("Intervention");
-			return EAM.text("Unknown Type");
+				return EAM.text("Type|Intervention");
+			return EAM.text("Type|Unknown Type");
 		}
 		
 		public String getNodePriority(DiagramNode node)

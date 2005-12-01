@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertIndirectFactorIcon;
+import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertIndirectFactor extends LocationAction
 {
 	public ActionInsertIndirectFactor(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertIndirectFactorIcon());
+		super(mainWindow, getLabel(), new IndirectFactorIcon());
 	}
 
 	private static String getLabel()

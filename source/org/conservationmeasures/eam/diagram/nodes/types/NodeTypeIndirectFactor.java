@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes.types;
 
+import org.conservationmeasures.eam.main.EAM;
+
 
 
 
@@ -13,5 +15,10 @@ public class NodeTypeIndirectFactor extends NodeTypeFactor
 	public boolean isIndirectFactor()
 	{
 		return true;
+	}
+
+	public String toString()
+	{
+		return EAM.text("Type|Indirect Factor");
 	}
 }

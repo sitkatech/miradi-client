@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertDirectThreatIcon;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertDirectThreat extends LocationAction
 {
 	public ActionInsertDirectThreat(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertDirectThreatIcon());
+		super(mainWindow, getLabel(), new DirectThreatIcon());
 	}
 
 	private static String getLabel()

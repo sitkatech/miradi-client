@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InsertStressIcon;
+import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertStress extends LocationAction
 {
 	public ActionInsertStress(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InsertStressIcon());
+		super(mainWindow, getLabel(), new StressIcon());
 	}
 
 	private static String getLabel()

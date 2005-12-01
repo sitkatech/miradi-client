@@ -6,11 +6,18 @@
 
 package org.conservationmeasures.eam.diagram.nodes.types;
 
+import org.conservationmeasures.eam.main.EAM;
+
 
 public class NodeTypeStress extends NodeTypeFactor
 {
 	public boolean isStress() 
 	{
 		return true;
+	}
+	
+	public String toString()
+	{
+		return EAM.text("Type|Stress");
 	}
 }

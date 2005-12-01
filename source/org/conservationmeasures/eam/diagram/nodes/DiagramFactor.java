@@ -40,6 +40,11 @@ public class DiagramFactor extends DiagramNode
 	{
 		return(getType().isStress());
 	}
+	
+	public boolean isFactor()
+	{
+		return true;
+	}
 
 	public Color getColor()
 	{

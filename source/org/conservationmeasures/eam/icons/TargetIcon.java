@@ -7,19 +7,19 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
-import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
+import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
+import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 
-public class InsertInterventionIcon extends EamIcon
+public class TargetIcon extends EamIcon
 {
 	MultilineNodeRenderer getRenderer()
 	{
-		return new HexagonRenderer();
+		return new EllipseRenderer();
 	}
 	
 	Color getIconColor()
 	{
-		return DiagramIntervention.COLOR_INTERVENTION;
+		return DiagramTarget.COLOR_TARGET;
 	}
 }
