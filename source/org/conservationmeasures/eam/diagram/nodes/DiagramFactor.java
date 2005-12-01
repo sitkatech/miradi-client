@@ -23,7 +23,7 @@ public class DiagramFactor extends DiagramNode
 	
 	public boolean canHavePriority()
 	{
-		return (isDirectThreat() || isStress());
+		return true;
 	}
 
 	public boolean isIndirectFactor()
