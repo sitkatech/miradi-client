@@ -62,6 +62,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public void setType(NodeType typeToUse)
 	{
 		underlyingObject.setType(typeToUse);
+		setColors();
 	}
 
 	public ThreatPriority getThreatPriority()

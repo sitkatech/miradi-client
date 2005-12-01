@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -31,16 +30,16 @@ public class CommandSetFactorType extends Command
 	public CommandSetFactorType(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		type = NodeDataMap.convertIntToNodeType(dataIn.readInt()); 
-		previousType = NodeDataMap.convertIntToNodeType(dataIn.readInt());
+		type = readNodeType(dataIn);
+		previousType = readNodeType(dataIn);
 	
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(getId());
-		dataOut.writeInt(NodeDataMap.convertNodeTypeToInt(type));
-		dataOut.writeInt(NodeDataMap.convertNodeTypeToInt(previousType));
+		writeNodeType(dataOut, type);
+		writeNodeType(dataOut, previousType);
 	}
 	
 	public String getCommandName()
