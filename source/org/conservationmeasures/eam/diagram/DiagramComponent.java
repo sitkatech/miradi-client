@@ -193,12 +193,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		//javax.swing.SwingUtilities doesn't pass the keycode to the action. 
 		Action nudgeActionUp = actions.get(ActionNudgeNodeUp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
+		KeyBinder.bindKey(this, KeyEvent.VK_KP_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
 		Action nudgeActionDown = actions.get(ActionNudgeNodeDown.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
+		KeyBinder.bindKey(this, KeyEvent.VK_KP_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
 		Action nudgeActionLeft = actions.get(ActionNudgeNodeLeft.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
+		KeyBinder.bindKey(this, KeyEvent.VK_KP_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
 		Action nudgeActionRight = actions.get(ActionNudgeNodeRight.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
+		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 	}
 
 	Project project;
