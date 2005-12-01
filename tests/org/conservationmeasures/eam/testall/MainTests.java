@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodes.TestNodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodes.TestSetFactorType;
 import org.conservationmeasures.eam.diagram.nodes.TestSetIndication;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodePriority;
 import org.conservationmeasures.eam.diagram.nodes.TestSetNodeSize;
@@ -105,6 +106,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestNodeTypeDirectThreat.class));
 		suite.addTest(new TestSuite(TestNodeTypeStress.class));
 		suite.addTest(new TestSuite(TestSetNodeText.class));
+		suite.addTest(new TestSuite(TestSetFactorType.class));
 		suite.addTest(new TestSuite(TestSetNodePriority.class));
 		suite.addTest(new TestSuite(TestSetIndication.class));
 		suite.addTest(new TestSuite(TestSetTargetGoal.class));

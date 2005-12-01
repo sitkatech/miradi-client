@@ -5,6 +5,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
@@ -18,12 +19,11 @@ import org.conservationmeasures.eam.diagram.nodes.Indicator;
 import org.conservationmeasures.eam.diagram.nodes.Objective;
 import org.conservationmeasures.eam.diagram.nodes.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.umbrella.Redo;
-import org.conservationmeasures.eam.views.umbrella.Undo;
 
 public class TestUndoRedo extends EAMTestCase 
 {
@@ -203,7 +203,6 @@ public class TestUndoRedo extends EAMTestCase
 		int insertedId = insertDirectThreat(project);
 		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
 		Dimension originalSize = node.getSize();
-		assertEquals(originalSize, node.getSize());
 
 		Dimension newSize1 = new Dimension(5,10);
 		project.executeCommand(new CommandBeginTransaction());
@@ -239,7 +238,47 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(newSize2, node.getSize());
 	}
 	
+	public void testUndoRedoNodeType() throws Exception
+	{
+		int insertedId = insertDirectThreat(project);
+		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
+		NodeType originalType = node.getType();
 
+		NodeType newType = DiagramNode.TYPE_STRESS;
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetFactorType(insertedId, newType));
+		project.executeCommand(new CommandEndTransaction());
+
+		assertEquals(newType, node.getType());
+
+		NodeType newType2 = DiagramNode.TYPE_INDIRECT_FACTOR;
+		project.executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandSetFactorType(insertedId, newType2));
+		project.executeCommand(new CommandEndTransaction());
+		assertEquals(newType2, node.getType());
+
+		Undo undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(newType, node.getType());
+
+		undo = new Undo();
+		undo.setProject(project);
+		undo.doIt();
+		assertEquals(originalType, node.getType());
+
+		Redo redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(newType, node.getType());
+
+		redo = new Redo();
+		redo.setProject(project);
+		redo.doIt();
+		assertEquals(newType2, node.getType());
+	}
+
+	
 	private int insertDirectThreat(Project p) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_DIRECT_THREAT);

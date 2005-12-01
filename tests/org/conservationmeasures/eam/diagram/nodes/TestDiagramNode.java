@@ -58,7 +58,7 @@ public class TestDiagramNode extends EAMTestCase
 		assertTrue(nodeStress.canHavePriority());
 
 		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertFalse(nodeIndirectFactor.canHavePriority());
+		assertTrue(nodeIndirectFactor.canHavePriority());
 
 		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
 		assertFalse(nodeIntervention.canHavePriority());

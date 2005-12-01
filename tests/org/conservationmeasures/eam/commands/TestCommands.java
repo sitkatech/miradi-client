@@ -182,12 +182,12 @@ public class TestCommands extends EAMTestCase
 		
 		int indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
-		assertEquals("New indirect factor should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
+		assertEquals("New indirect factor should have a priority level as None", ThreatPriority.PRIORITY_NONE, node.getThreatPriority().getValue());
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
 		ThreatPriority originalPriority = node.getThreatPriority();
-		assertEquals("New node should have priority level as None", originalPriority, node.getThreatPriority());
+		assertEquals("New node should have priority level as None", ThreatPriority.PRIORITY_NONE, node.getThreatPriority().getValue());
 
 		ThreatPriority newPriorityLow = ThreatPriority.createPriorityLow();
 		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriorityLow);
@@ -202,6 +202,31 @@ public class TestCommands extends EAMTestCase
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(id).getThreatPriority().getValue());
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+
+	public void testCommandFactorSetType() throws Exception
+	{
+		int id = insertDirectThreat();
+		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		
+		NodeType originalType = DiagramNode.TYPE_DIRECT_THREAT;
+		NodeType switchedToType = DiagramNode.TYPE_INDIRECT_FACTOR;
+		
+		assertEquals("Should be a Direct Threat", originalType, node.getType());
+		CommandSetFactorType cmd = new CommandSetFactorType(id, switchedToType);
+		project.executeCommand(cmd);
+		assertEquals("didn't memorize old objective?", originalType, cmd.getPreviousType());
+		assertEquals("didn't set new type?", switchedToType, cmd.getCurrentType());
+
+		CommandSetFactorType loaded = (CommandSetFactorType)saveAndReload(cmd);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("loaded didn't have switched node type?", switchedToType, loaded.getCurrentType());
+		assertEquals("didn't restore previous type?", originalType, loaded.getPreviousType());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalType, project.getDiagramModel().getNodeById(id).getType());
 		
 		verifyUndoTwiceThrows(cmd);
 	}

@@ -30,15 +30,6 @@ public abstract class NodeType
 	}
 	
 	
-	public boolean canHavePriority()
-	{
-		if(isDirectThreat())
-			return true;
-		if(isStress())
-			return true;
-		return false;
-	}
-
 	public boolean isStress()
 	{
 		return false;

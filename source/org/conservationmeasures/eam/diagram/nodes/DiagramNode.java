@@ -59,6 +59,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getType();
 	}
 
+	public void setType(NodeType typeToUse)
+	{
+		underlyingObject.setType(typeToUse);
+	}
+
 	public ThreatPriority getThreatPriority()
 	{
 		return underlyingObject.getThreatPriority();
@@ -290,6 +295,11 @@ class ConceptualModelObject
 	public NodeType getType()
 	{
 		return type;
+	}
+	
+	public void setType(NodeType typeToUse)
+	{
+		type = typeToUse;
 	}
 
 	public Indicator getIndicator()

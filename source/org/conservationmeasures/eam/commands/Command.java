@@ -63,6 +63,8 @@ public abstract class Command
 			return new CommandSetNodeSize(dataIn);
 		if(commandName.equals(CommandSetProjectVision.COMMAND_NAME))
 			return new CommandSetProjectVision(dataIn);
+		if(commandName.equals(CommandSetFactorType.COMMAND_NAME))
+			return new CommandSetFactorType(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
 	}
 	
