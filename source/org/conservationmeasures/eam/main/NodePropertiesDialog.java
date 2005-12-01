@@ -102,8 +102,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		UiLabel textObjective = new UiLabel(EAM.text("Label|Type"));
 		dropdownFactorType = new UiComboBox();
 		dropdownFactorType.setRenderer(new FactorTypeRenderer());
-		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
 		dropdownFactorType.addItem(DiagramNode.TYPE_INDIRECT_FACTOR);
+		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
 		dropdownFactorType.addItem(DiagramNode.TYPE_STRESS);
 		dropdownFactorType.setSelectedItem(currentType);
 		
