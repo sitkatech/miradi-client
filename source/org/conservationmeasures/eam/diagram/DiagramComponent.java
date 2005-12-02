@@ -55,7 +55,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridSize(Project.DEFAULT_GRID_SIZE);
 		setGridEnabled(true);
 		setGridVisible(true);
-		setGridMode(JGraph.LINE_GRID_MODE);
+		setGridMode(JGraph.CROSS_GRID_MODE);
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
