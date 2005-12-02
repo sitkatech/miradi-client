@@ -112,7 +112,7 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 		{
 			try 
 			{
-				ProjectDoer doer = new Properties();
+				ProjectDoer doer = new Properties(diagram);
 				doer.setProject(project);
 				doer.doIt();
 			} 

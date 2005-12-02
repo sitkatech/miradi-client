@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.HeadlessException;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -38,7 +39,7 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, DiagramNode node)
+	public NodePropertiesDialog(Frame parent, String title, Point location, DiagramNode node)
 			throws HeadlessException
 	{
 		super(parent, title);
@@ -59,7 +60,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Container contents = getContentPane();
 		contents.add(bigBox);
 		pack();
-		setLocation(node.getLocation());
+		setLocation(location);
 		setResizable(true);
 		setModal(true);
 	}

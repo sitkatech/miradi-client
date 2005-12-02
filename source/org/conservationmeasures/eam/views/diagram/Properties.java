@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import java.awt.Point;
+import java.awt.geom.Point2D;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
@@ -14,6 +17,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetProjectVision;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
@@ -22,9 +26,15 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.main.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
+import org.martus.swing.Utilities;
 
 public class Properties extends ProjectDoer
 {
+	public Properties(DiagramComponent diagramToUse)
+	{
+		diagram = diagramToUse;
+	}
+	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
@@ -65,7 +75,10 @@ public class Properties extends ProjectDoer
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
 	{
 		String title = EAM.text("Title|Node Properties");
-		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, selectedNode);
+		Point scaledLocation = selectedNode.getLocation();
+		Point2D screenLocation2D = diagram.toScreen(scaledLocation);
+		Point scaledPoint = Utilities.createPointFromPoint2D(screenLocation2D);
+		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, scaledPoint, selectedNode);
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
@@ -86,4 +99,5 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
+	DiagramComponent diagram;
 }

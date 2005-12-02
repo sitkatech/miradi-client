@@ -92,7 +92,7 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionDelete.class, new Delete());
 		addDoerToMap(ActionPaste.class, new Paste());
 		addDoerToMap(ActionPasteWithoutLinks.class, new PasteWithoutLinks());
-		addDoerToMap(ActionProperties.class, new Properties());
+		addDoerToMap(ActionProperties.class, new Properties(diagram));
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());

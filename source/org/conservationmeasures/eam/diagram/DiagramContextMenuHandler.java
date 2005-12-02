@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
+import org.martus.swing.Utilities;
 
 public class DiagramContextMenuHandler
 {
@@ -88,10 +89,7 @@ public class DiagramContextMenuHandler
 		Point screenPoint = e.getPoint();
 		Point2D scaledPoint2D = diagramComponent.fromScreen(screenPoint);
 		
-		// TODO: Is there any cleaner way to convert a Point2D into a Point???
-		int scaledX = (int)scaledPoint2D.getX();
-		int scaledY = (int)scaledPoint2D.getY();
-		Point scaledPoint = new Point(scaledX, scaledY);
+		Point scaledPoint = Utilities.createPointFromPoint2D(scaledPoint2D);
 		
 		JPopupMenu menu = getPopupMenu(scaledPoint);
 		menu.show(diagramComponent, e.getX(), e.getY());
