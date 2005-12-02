@@ -5,8 +5,10 @@
  */
 package org.conservationmeasures.eam.views;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionExit;
@@ -15,6 +17,7 @@ import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.DialogLayout;
+import org.conservationmeasures.eam.views.umbrella.About;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class NoProjectView extends UmbrellaView
@@ -22,7 +25,6 @@ public class NoProjectView extends UmbrellaView
 	public NoProjectView(MainWindow mainWindow)
 	{
 		super(mainWindow);
-		setBorder(new LineBorder(getForeground()));
 		
 		setToolBar(new NoProjectToolBar(getActions()));
 
@@ -35,15 +37,30 @@ public class NoProjectView extends UmbrellaView
 		JButton exitButton = new JButton(getActions().get(ActionExit.class));
 		JLabel exitText = new JLabel(EAM.text("Exit e-AdaptiveManagement"));
 		
+		JPanel buttons = new JPanel();
+		buttons.setBorder(new LineBorder(getForeground()));
 		DialogLayout layout = new DialogLayout();
-		setLayout(layout);
-		add(openButton);
-		add(openText);
-		add(newButton);
-		add(newText);
-		add(exitButton);
-		add(exitText);
-		layout.adjustSizes(this);
+		buttons.setLayout(layout);
+		buttons.add(openButton);
+		buttons.add(openText);
+		buttons.add(newButton);
+		buttons.add(newText);
+		buttons.add(exitButton);
+		buttons.add(exitText);
+		layout.adjustSizes(buttons);
+
+		JLabel license = new JLabel("<html><table><tr><td align='center'>" +
+				"<br><br><br><br>" + 
+				About.licenseText + 
+				"</td></tr></table></html>"
+				);
+		
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		buttons.setAlignmentX(.5f);
+		license.setAlignmentX(.5f);
+		
+		add(buttons);
+		add(license);
 	}
 	
 	public String cardName()
