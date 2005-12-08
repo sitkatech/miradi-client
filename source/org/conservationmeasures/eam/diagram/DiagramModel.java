@@ -53,14 +53,6 @@ public class DiagramModel extends DefaultGraphModel
 		return createNodeAtId(cmObject, DiagramNode.INVALID_ID);
 	}
 
-	// FIXME: ONLY USED FOR TESTING--MOVE OR DELETE
-	public DiagramNode createNodeAtId(NodeType nodeType, int id) throws Exception
-	{
-		DiagramNode node = createNode(nodeType);
-		node.setId(id);
-		return node;
-	}
-	
 	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int id) throws Exception
 	{
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
