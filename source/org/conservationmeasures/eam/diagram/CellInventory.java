@@ -32,7 +32,6 @@ class CellInventory
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		node.setId(realId);
 		nodes.add(node);
 	}
 	
@@ -64,7 +63,6 @@ class CellInventory
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		linkage.setId(realId);
 		linkages.add(linkage);
 	}
 
