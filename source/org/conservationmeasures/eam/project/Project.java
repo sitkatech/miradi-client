@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelFactor;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelIntervention;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
@@ -273,7 +274,7 @@ public class Project
 			
 			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
 			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
-			if(newFromId == DiagramNode.INVALID_ID || newToId == DiagramNode.INVALID_ID)
+			if(newFromId == IdAssigner.INVALID_ID || newToId == IdAssigner.INVALID_ID)
 			{
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
 				continue;

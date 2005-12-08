@@ -52,7 +52,7 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
-		return createNodeAtId(cmObject, DiagramNode.INVALID_ID);
+		return createNodeAtId(cmObject, IdAssigner.INVALID_ID);
 	}
 
 	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int requestedId) throws Exception

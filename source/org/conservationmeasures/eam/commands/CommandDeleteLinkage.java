@@ -10,8 +10,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -21,8 +21,8 @@ public class CommandDeleteLinkage extends Command
 	public CommandDeleteLinkage(int idToDelete)
 	{
 		id = idToDelete;
-		wasFrom = DiagramNode.INVALID_ID;
-		wasTo = DiagramNode.INVALID_ID;
+		wasFrom = IdAssigner.INVALID_ID;
+		wasTo = IdAssigner.INVALID_ID;
 	}
 	
 	public CommandDeleteLinkage(DataInputStream dataIn) throws IOException

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -43,7 +44,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode factor = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		DiagramNode target = DiagramNode.wrapConceptualModelObject(cmTarget);
 		DiagramLinkage linkage = new DiagramLinkage(factor, target);
-		assertEquals(DiagramNode.INVALID_ID,linkage.getId());
+		assertEquals(IdAssigner.INVALID_ID,linkage.getId());
 		int id = 243;
 		linkage.setId(id);
 		assertEquals(id, linkage.getId());

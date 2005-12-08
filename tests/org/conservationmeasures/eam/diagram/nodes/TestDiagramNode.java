@@ -11,6 +11,7 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
@@ -51,7 +52,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testIds()
 	{
-		assertEquals(DiagramNode.INVALID_ID,target.getId());
+		assertEquals(IdAssigner.INVALID_ID,target.getId());
 		int id = 23;
 		target.setId(id);
 		assertEquals(id, target.getId());

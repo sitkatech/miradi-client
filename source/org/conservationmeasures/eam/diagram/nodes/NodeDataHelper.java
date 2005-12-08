@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.IdAssigner;
+
 public class NodeDataHelper 
 {
 	public NodeDataHelper(Vector existingNodesInProject)
@@ -28,7 +30,7 @@ public class NodeDataHelper
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return DiagramNode.INVALID_ID;
+			return IdAssigner.INVALID_ID;
 		return newNodeId.intValue();
 	}
 	

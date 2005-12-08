@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataHelper extends EAMTestCase 
@@ -51,7 +52,7 @@ public class TestNodeDataHelper extends EAMTestCase
 		assertEquals(originalNodeId1, dataHelper.getNewId(originalNodeId1));
 		assertEquals(originalNodeId2, dataHelper.getNewId(originalNodeId2));
 		assertEquals(originalNodeId3, dataHelper.getNewId(originalNodeId3));
-		assertEquals(DiagramNode.INVALID_ID, dataHelper.getNewId(unknownNodeId));
+		assertEquals(IdAssigner.INVALID_ID, dataHelper.getNewId(unknownNodeId));
 	}
 	
 	public void testSetNewId()

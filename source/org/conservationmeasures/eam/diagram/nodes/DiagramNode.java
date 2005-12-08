@@ -12,6 +12,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
@@ -39,7 +40,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = cmObjectToUse;
 		
-		id = DiagramNode.INVALID_ID;
+		id = IdAssigner.INVALID_ID;
 		port = new DefaultPort();
 		add(port);
 		setColors();
@@ -302,8 +303,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
 	}
-	
-	public static final int INVALID_ID = -1;
 	
 	public static final NodeType TYPE_INVALID = null;
 	public static final NodeType TYPE_TARGET = new NodeTypeTarget();

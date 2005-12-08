@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
@@ -18,7 +19,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		setSource(from.getPort());
 		setTarget(to.getPort());
-		id = DiagramNode.INVALID_ID;
+		id = IdAssigner.INVALID_ID;
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
