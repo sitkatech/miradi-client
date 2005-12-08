@@ -83,7 +83,7 @@ public class TestDiagramModel extends EAMTestCase
 		createTarget();		
 		createTarget();		
 		model.deleteNode(nodeToDelete);
-		model.createNodeAtId(new ConceptualModelTarget(), nodeToDelete.getId()); //simulates an undo
+		model.createNode(new ConceptualModelTarget(), nodeToDelete.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
 		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
 	}
@@ -175,13 +175,13 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramNode createTarget() throws Exception
 	{
 		ConceptualModelObject cmTarget = new ConceptualModelTarget();
-		return model.createNodeAtId(cmTarget, idAssigner.takeNextId());
+		return model.createNode(cmTarget, idAssigner.takeNextId());
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
-		return model.createNodeAtId(cmObject, idAssigner.takeNextId());
+		return model.createNode(cmObject, idAssigner.takeNextId());
 	}
 
 
