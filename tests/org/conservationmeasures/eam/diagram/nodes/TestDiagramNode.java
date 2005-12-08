@@ -23,72 +23,61 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		node = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		attributeMap = node.getAttributes();
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
+		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(DiagramNode.TYPE_INDIRECT_FACTOR);
+		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
+		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+
+		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
+		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
+		directThreat = DiagramNode.wrapConceptualModelObject(cmDirectThreat);
+		stress = DiagramNode.wrapConceptualModelObject(cmStress);
+		target = DiagramNode.wrapConceptualModelObject(cmTarget);
+		targetAttributeMap = target.getAttributes();
 		super.setUp();
 	}
 	
 	public void testPort()
 	{
-		assertEquals("port not first child?", node.getPort(), node.getFirstChild());
+		assertEquals("port not first child?", target.getPort(), target.getFirstChild());
 	}
 	
 	public void testText() throws Exception
 	{
-		node.setText(sampleText);
-		assertTrue("Isn't a indirect factor?", node.isIndirectFactor());
-		assertEquals(sampleText, GraphConstants.getValue(attributeMap));
+		target.setText(sampleText);
+		assertEquals(sampleText, GraphConstants.getValue(targetAttributeMap));
 	}
 	
 	public void testIds()
 	{
-		DiagramNode testNode = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertEquals(DiagramNode.INVALID_ID,node.getId());
+		assertEquals(DiagramNode.INVALID_ID,target.getId());
 		int id = 23;
-		testNode.setId(id);
-		assertEquals(id, testNode.getId());
+		target.setId(id);
+		assertEquals(id, target.getId());
 	}
 	
 	public void testPriorities()
 	{
-		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertTrue(nodeDirectThreat.canHavePriority());
-
-		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
-		assertTrue(nodeStress.canHavePriority());
-
-		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertTrue(nodeIndirectFactor.canHavePriority());
-
-		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
-		assertFalse(nodeIntervention.canHavePriority());
-
-		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
-		assertFalse(nodeTarget.canHavePriority());
+		assertTrue(directThreat.canHavePriority());
+		assertTrue(stress.canHavePriority());
+		assertTrue(indirectFactor.canHavePriority());
+		assertFalse(intervention.canHavePriority());
+		assertFalse(target.canHavePriority());
 	}
 	
 	public void testObjectives()
 	{
-		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertTrue(nodeDirectThreat.canHaveObjectives());
-
-		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
-		assertTrue(nodeStress.canHaveObjectives());
-
-		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertTrue(nodeIndirectFactor.canHaveObjectives());
-
-		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
-		assertTrue(nodeIntervention.canHaveObjectives());
-
-		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
-		assertFalse(nodeTarget.canHaveObjectives());
+		assertTrue(directThreat.canHaveObjectives());
+		assertTrue(stress.canHaveObjectives());
+		assertTrue(indirectFactor.canHaveObjectives());
+		assertTrue(intervention.canHaveObjectives());
+		assertFalse(target.canHaveObjectives());
 	}
 
 	public void testIndicator()
 	{
-		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
-		Indicator indicator = nodeDirectThreat.getIndicator();
+		Indicator indicator = directThreat.getIndicator();
 		assertFalse(indicator.hasIndicator());
 		assertEquals(Indicator.INDICATOR_NONE_STRING, indicator.toString());
 		int value = 2;
@@ -99,33 +88,23 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testGoals()
 	{
-		DiagramNode nodeTarget = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
-		assertTrue(nodeTarget.canHaveGoal());
-
-		DiagramNode nodeDirectThreat = DiagramNode.createDiagramNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertFalse(nodeDirectThreat.canHaveGoal());
-
-		DiagramNode nodeStress = DiagramNode.createDiagramNode(DiagramNode.TYPE_STRESS);
-		assertFalse(nodeStress.canHaveGoal());
-
-		DiagramNode nodeIndirectFactor = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertFalse(nodeIndirectFactor.canHaveGoal());
-
-		DiagramNode nodeIntervention = DiagramNode.createDiagramNode(DiagramNode.TYPE_INTERVENTION);
-		assertFalse(nodeIntervention.canHaveGoal());
-
+		assertTrue(target.canHaveGoal());
+		assertFalse(directThreat.canHaveGoal());
+		assertFalse(stress.canHaveGoal());
+		assertFalse(indirectFactor.canHaveGoal());
+		assertFalse(intervention.canHaveGoal());
 	}
 	
 	
 	public void testColors()
 	{
-		assertEquals("wrong color?", GraphConstants.getBackground(attributeMap), DiagramFactor.COLOR_INDIRECT_FACTOR);
+		assertEquals("wrong color?", GraphConstants.getBackground(targetAttributeMap), DiagramTarget.COLOR_TARGET);
 	}
 	
 	public void testBounds()
 	{
-		node.setLocation(new Point(123, 456));
-		Rectangle2D bounds = GraphConstants.getBounds(attributeMap);
+		target.setLocation(new Point(123, 456));
+		Rectangle2D bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("wrong x?", 123.0, bounds.getX(), TOLERANCE);
 		assertEquals("wrong y?", 456.0, bounds.getY(), TOLERANCE);
 		assertEquals("wrong width", 120.0, bounds.getWidth(), TOLERANCE);
@@ -134,32 +113,36 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testSize()
 	{
-		node.setLocation(new Point(3, 4));
-		node.setSize(new Dimension(300, 200));
-		Rectangle2D bounds = GraphConstants.getBounds(attributeMap);
+		target.setLocation(new Point(3, 4));
+		target.setSize(new Dimension(300, 200));
+		Rectangle2D bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("wrong x?", 3.0, bounds.getX(), TOLERANCE);
 		assertEquals("wrong y?", 4.0, bounds.getY(), TOLERANCE);
 		assertEquals("wrong width", 300.0, bounds.getWidth(), TOLERANCE);
 		assertEquals("wrong height", 200.0, bounds.getHeight(), TOLERANCE);
-		node.setSize(new Dimension(100, 50));
-		bounds = GraphConstants.getBounds(attributeMap);
+		target.setSize(new Dimension(100, 50));
+		bounds = GraphConstants.getBounds(targetAttributeMap);
 		assertEquals("x changed?", 3.0, bounds.getX(), TOLERANCE);
 		assertEquals("y changed?", 4.0, bounds.getY(), TOLERANCE);
 		assertEquals("wrong new width", 100.0, bounds.getWidth(), TOLERANCE);
 		assertEquals("wrong new height", 50.0, bounds.getHeight(), TOLERANCE);
-		assertEquals("node size width incorrect?", 100.0, node.getSize().getWidth(), TOLERANCE);
-		assertEquals("node size height incorrect?", 50.0, node.getSize().getHeight(), TOLERANCE);
+		assertEquals("node size width incorrect?", 100.0, target.getSize().getWidth(), TOLERANCE);
+		assertEquals("node size height incorrect?", 50.0, target.getSize().getHeight(), TOLERANCE);
 	}
 
 	public void testFont()
 	{
-		Font nodeFont = GraphConstants.getFont(attributeMap);
+		Font nodeFont = GraphConstants.getFont(targetAttributeMap);
 		assertTrue("not bold?", nodeFont.isBold());
 	}
 
 	static final double TOLERANCE = 0.00;
 	static final String sampleText = "<rest&relaxation>";
 	
-	DiagramNode node;
-	Map attributeMap;
+	DiagramNode intervention;
+	DiagramNode indirectFactor;
+	DiagramNode directThreat;
+	DiagramNode stress;
+	DiagramNode target;
+	Map targetAttributeMap;
 }

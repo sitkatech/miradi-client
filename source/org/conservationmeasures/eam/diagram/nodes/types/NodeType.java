@@ -9,6 +9,16 @@ package org.conservationmeasures.eam.diagram.nodes.types;
 
 public abstract class NodeType
 {
+	public boolean isIntervention()
+	{
+		return false;
+	}
+	
+	public boolean isFactor()
+	{
+		return isIndirectFactor() || isDirectThreat() || isStress();
+	}
+	
 	public boolean isTarget()
 	{
 		return false;
@@ -19,16 +29,10 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isIntervention()
-	{
-		return false;
-	}
-	
 	public boolean isDirectThreat()
 	{
 		return false;
 	}
-	
 	
 	public boolean isStress()
 	{

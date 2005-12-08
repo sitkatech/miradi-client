@@ -32,12 +32,15 @@ public class TestDiagramLinkageData extends EAMTestCase
 	
 	private LinkageData createSampleLinkageData(int id) throws Exception
 	{
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
+		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+
 		nodeAId = 1;
-		DiagramNode nodeA = DiagramNode.createDiagramNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		nodeA.setId(nodeAId);
 		
 		nodeBId = 2;
-		DiagramNode nodeB = DiagramNode.createDiagramNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeB = DiagramNode.wrapConceptualModelObject(cmTarget);
 		nodeB.setId(nodeBId);
 		
 		DiagramLinkage linkage = new DiagramLinkage(nodeB, nodeA);

@@ -21,7 +21,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		NodeType nodeAType = DiagramNode.TYPE_STRESS;
-		DiagramNode nodeA = DiagramNode.createDiagramNode(nodeAType);
+		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(new ConceptualModelFactor(nodeAType));
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);
 		int id = 2;
@@ -39,8 +39,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	
 	public void testNoneThreatNode()  throws Exception
 	{
-		NodeType nodeBType = DiagramNode.TYPE_TARGET;
-		DiagramNode nodeB = DiagramNode.createDiagramNode(nodeBType);
+		DiagramNode nodeB = DiagramNode.wrapConceptualModelObject(new ConceptualModelTarget());
 		DataMap nodeBData = nodeB.createNodeDataMap();
 		assertEquals("Priority of a non threat not PRIORITY_NOT_USED?", ThreatPriority.PRIORITY_NOT_USED, nodeBData.getInt(DiagramNode.TAG_PRIORITY));
 	}

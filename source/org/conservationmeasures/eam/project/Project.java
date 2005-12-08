@@ -23,6 +23,10 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelFactor;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelIntervention;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelTarget;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
@@ -334,8 +338,9 @@ public class Project
 
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
+		ConceptualModelObject cmObject = createConceptualModelObject(typeToInsert);
 		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.createNodeAtId(typeToInsert, requestedId);
+		DiagramNode node = model.createNodeAtId(cmObject, requestedId);
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
@@ -588,6 +593,20 @@ public class Project
 	{
 		return database;
 	}
+	
+	public static ConceptualModelObject createConceptualModelObject(NodeType nodeType)
+	{
+		if(nodeType.isIntervention())
+			return new ConceptualModelIntervention();
+		else if(nodeType.isFactor())
+			return new ConceptualModelFactor(nodeType);
+		else if(nodeType.isTarget())
+			return new ConceptualModelTarget();
+
+		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
+	}
+
+
 	
 	public static final int DEFAULT_GRID_SIZE = 15;
 

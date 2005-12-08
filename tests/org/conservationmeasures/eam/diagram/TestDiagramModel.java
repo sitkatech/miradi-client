@@ -8,6 +8,9 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelIntervention;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelTarget;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -70,23 +73,33 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testUpdatesNextId() throws Exception
 	{
+		ConceptualModelObject cmIntervention = new ConceptualModelIntervention();
+		ConceptualModelObject cmTarget = new ConceptualModelTarget();
+		
 		DiagramModel model = new DiagramModel();
-		model.createNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, 125);
-		DiagramNode target = model.createNodeAtId(DiagramNode.TYPE_TARGET, -1);
+		model.createNodeAtId(cmIntervention, 125);
+		DiagramNode target = model.createNodeAtId(cmTarget, -1);
 		assertEquals("didn't use next available id?", 126, target.getId());
 	}
 	
 	public void testCreateNode() throws Exception
 	{
 		DiagramModel model = new DiagramModel();
-		model.createNode(DiagramNode.TYPE_TARGET);		
-		DiagramNode nodeToDelete = model.createNode(DiagramNode.TYPE_TARGET);		
-		model.createNode(DiagramNode.TYPE_TARGET);		
-		model.createNode(DiagramNode.TYPE_TARGET);		
+
+		createTarget(model);		
+		DiagramNode nodeToDelete = createTarget(model);
+		createTarget(model);		
+		createTarget(model);		
 		model.deleteNode(nodeToDelete);
-		model.createNodeAtId(DiagramNode.TYPE_TARGET, nodeToDelete.getId()); //simulates an undo
+		model.createNodeAtId(new ConceptualModelTarget(), nodeToDelete.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = model.createNode(DiagramNode.TYPE_TARGET);
 		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
+	}
+
+	private DiagramNode createTarget(DiagramModel model) throws Exception
+	{
+		ConceptualModelObject cmTarget = new ConceptualModelTarget();
+		return model.createNodeAtId(cmTarget, DiagramNode.INVALID_ID);
 	}
 	
 	public void testGetAllNodes() throws Exception

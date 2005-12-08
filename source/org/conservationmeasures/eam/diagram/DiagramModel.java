@@ -13,11 +13,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -44,14 +46,24 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 
+	// FIXME: ONLY USED FOR TESTING--MOVE OR DELETE
 	public DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		return createNodeAtId(nodeType, DiagramNode.INVALID_ID);
+		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
+		return createNodeAtId(cmObject, DiagramNode.INVALID_ID);
 	}
-	
+
+	// FIXME: ONLY USED FOR TESTING--MOVE OR DELETE
 	public DiagramNode createNodeAtId(NodeType nodeType, int id) throws Exception
 	{
-		DiagramNode node = DiagramNode.createDiagramNode(nodeType);
+		DiagramNode node = createNode(nodeType);
+		node.setId(id);
+		return node;
+	}
+	
+	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int id) throws Exception
+	{
+		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 		node.setId(id);
 		insertCell(node);
 		cellInventory.addNode(node);

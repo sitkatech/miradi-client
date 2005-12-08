@@ -23,21 +23,16 @@ import org.jgraph.graph.GraphConstants;
 
 abstract public class DiagramNode extends EAMGraphCell
 {
-	public static DiagramNode createDiagramNode(NodeType nodeType)
+	public static DiagramNode wrapConceptualModelObject(ConceptualModelObject cmObject)
 	{
-		if(nodeType.isTarget())
-		{
-			ConceptualModelTarget cmTarget = new ConceptualModelTarget();
-			return new DiagramTarget(cmTarget);
-		}
-		if(nodeType.isIntervention())
-		{
-			ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
-			return new DiagramIntervention(cmIntervention);
-		}
-		
-		ConceptualModelFactor cmFactor = new ConceptualModelFactor(nodeType);
-		return new DiagramFactor(cmFactor);
+		if(cmObject.isIntervention())
+			return new DiagramIntervention((ConceptualModelIntervention)cmObject);
+		else if(cmObject.isFactor())
+			return new DiagramFactor((ConceptualModelFactor)cmObject);
+		else if(cmObject.isTarget())
+			return new DiagramTarget((ConceptualModelTarget)cmObject);
+			
+		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
 
 	protected DiagramNode(ConceptualModelObject cmObjectToUse)
