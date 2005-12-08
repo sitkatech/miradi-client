@@ -22,16 +22,18 @@ public class TestNodeDataHelper extends EAMTestCase
 	
 	public void setUp() throws Exception 
 	{
-		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
-		DiagramNode node1 = DiagramNode.wrapConceptualModelObject(cmTarget);
+		ConceptualModelTarget cmTarget1 = new ConceptualModelTarget();
+		DiagramNode node1 = DiagramNode.wrapConceptualModelObject(cmTarget1);
 		node1.setId(originalNodeId1);
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
-		DiagramNode node2 = DiagramNode.wrapConceptualModelObject(cmTarget);
+		ConceptualModelTarget cmTarget2 = new ConceptualModelTarget();
+		DiagramNode node2 = DiagramNode.wrapConceptualModelObject(cmTarget2);
 		node2.setId(originalNodeId2);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
-		DiagramNode node3 = DiagramNode.wrapConceptualModelObject(cmTarget);
+		ConceptualModelTarget cmTarget3 = new ConceptualModelTarget();
+		DiagramNode node3 = DiagramNode.wrapConceptualModelObject(cmTarget3);
 		node3.setId(originalNodeId3);
 		
 		nodes = new Vector();
