@@ -15,7 +15,9 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
+import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiCheckBox;
@@ -29,16 +31,12 @@ public class LayerDialog extends JDialog implements ActionListener
 		super(parent, EAM.text("Title|View Layers"));
 		
 		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Interventions"));
-		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Indirect Factors"));
-		threatCheckBox = new UiCheckBox(EAM.text("Label|Show Direct Threats"));
-		stressCheckBox = new UiCheckBox(EAM.text("Label|Show Stresses"));
+		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Factors"));
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
 		
-		interventionCheckBox.setSelected(initialValues.isTypeVisible(DiagramNode.TYPE_INTERVENTION));
-		factorCheckBox.setSelected(initialValues.isTypeVisible(DiagramNode.TYPE_INDIRECT_FACTOR));
-		threatCheckBox.setSelected(initialValues.isTypeVisible(DiagramNode.TYPE_DIRECT_THREAT));
-		stressCheckBox.setSelected(initialValues.isTypeVisible(DiagramNode.TYPE_STRESS));
-		targetCheckBox.setSelected(initialValues.isTypeVisible(DiagramNode.TYPE_TARGET));
+		interventionCheckBox.setSelected(initialValues.isTypeVisible(DiagramIntervention.class));
+		factorCheckBox.setSelected(initialValues.isTypeVisible(DiagramFactor.class));
+		targetCheckBox.setSelected(initialValues.isTypeVisible(DiagramTarget.class));
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createLayerOptions());
@@ -56,8 +54,6 @@ public class LayerDialog extends JDialog implements ActionListener
 		UiVBox options = new UiVBox();
 		options.add(interventionCheckBox);
 		options.add(factorCheckBox);
-		options.add(threatCheckBox);
-		options.add(stressCheckBox);
 		options.add(targetCheckBox);
 		return options;
 	}
@@ -90,11 +86,9 @@ public class LayerDialog extends JDialog implements ActionListener
 	
 	public void updateLayerManager(LayerManager managerToUpdate)
 	{
-		managerToUpdate.setVisibility(DiagramNode.TYPE_INTERVENTION, interventionCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramNode.TYPE_INDIRECT_FACTOR, factorCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramNode.TYPE_DIRECT_THREAT, threatCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramNode.TYPE_STRESS, stressCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramNode.TYPE_TARGET, targetCheckBox.isSelected());
+		managerToUpdate.setVisibility(DiagramIntervention.class, interventionCheckBox.isSelected());
+		managerToUpdate.setVisibility(DiagramFactor.class, factorCheckBox.isSelected());
+		managerToUpdate.setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
 	}
 	
 	boolean result;
@@ -103,7 +97,5 @@ public class LayerDialog extends JDialog implements ActionListener
 
 	UiCheckBox interventionCheckBox;
 	UiCheckBox factorCheckBox;
-	UiCheckBox threatCheckBox;
-	UiCheckBox stressCheckBox;
 	UiCheckBox targetCheckBox;
 }

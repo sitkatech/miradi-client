@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.CellViewFactory;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -129,7 +130,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public boolean isProjectScopeVisible()
 	{
-		return project.getLayerManager().isTypeVisible(DiagramNode.TYPE_TARGET);
+		return project.getLayerManager().isTypeVisible(DiagramTarget.class);
 	}
 
 	public boolean isLinkageVisible(DiagramLinkage linkage)

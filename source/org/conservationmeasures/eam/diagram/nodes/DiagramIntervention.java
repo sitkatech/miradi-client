@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
-
 public class DiagramIntervention extends DiagramNode
 {
 	public DiagramIntervention()
 	{
-		super(new NodeTypeIntervention());
+		super(new ConceptualModelObject(TYPE_INTERVENTION));
 	}
 
 	public boolean isIntervention()

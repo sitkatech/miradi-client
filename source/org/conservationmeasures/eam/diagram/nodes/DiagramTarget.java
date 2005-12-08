@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
-
 public class DiagramTarget extends DiagramNode
 {
 	public DiagramTarget()
 	{
-		super(new NodeTypeTarget());
+		super(new ConceptualModelObject(TYPE_TARGET));
 	}
 
 	public boolean isTarget()

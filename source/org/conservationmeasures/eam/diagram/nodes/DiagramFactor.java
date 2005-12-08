@@ -13,7 +13,7 @@ public class DiagramFactor extends DiagramNode
 {
 	public DiagramFactor(NodeType nodeType)
 	{
-		super(nodeType);
+		super(new ConceptualModelObject(nodeType));
 	}
 
 	public boolean canHaveObjectives()

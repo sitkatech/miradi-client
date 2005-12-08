@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 
 public class LayerManager
 {
@@ -20,20 +19,20 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramNode node)
 	{
-		return isTypeVisible(node.getType());
+		return isTypeVisible(node.getClass());
 	}
 
-	public boolean isTypeVisible(NodeType nodeType)
+	public boolean isTypeVisible(Class nodeClass)
 	{
-		return !hiddenNodeTypes.contains(nodeType);
+		return !hiddenNodeTypes.contains(nodeClass);
 	}
 	
-	public void setVisibility(NodeType nodeType, boolean newVisibility)
+	public void setVisibility(Class nodeClass, boolean newVisibility)
 	{
 		if(newVisibility)
-			hiddenNodeTypes.remove(nodeType);
+			hiddenNodeTypes.remove(nodeClass);
 		else
-			hiddenNodeTypes.add(nodeType);
+			hiddenNodeTypes.add(nodeClass);
 	}
 	
 	public boolean areAllLayersVisible()

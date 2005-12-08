@@ -32,9 +32,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		return new DiagramFactor(nodeType);
 	}
 
-	protected DiagramNode(NodeType nodeType)
+	protected DiagramNode(ConceptualModelObject cmObjectToUse)
 	{
-		underlyingObject = new ConceptualModelObject(nodeType);
+		underlyingObject = cmObjectToUse;
 		
 		port = new DefaultPort();
 		add(port);
