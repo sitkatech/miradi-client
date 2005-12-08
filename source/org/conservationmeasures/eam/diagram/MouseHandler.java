@@ -77,6 +77,9 @@ public class MouseHandler implements MouseListener, GraphSelectionListener
 				selectedNodes.add(selectedCells[i]);
 		}
 		
+		if(selectedNodes.size() == 0)
+			return;
+		
 		int[] selectedNodeIds = new int[selectedNodes.size()];
 		for(int i = 0; i < selectedNodes.size(); ++i)
 		{
