@@ -15,21 +15,19 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		idAssigner = new IdAssigner(); 
 		nodes = new Vector();
 		linkages = new Vector();
 	}
 	
 	public void clear()
 	{
-		idAssigner.clear();
 		nodes.clear();
 		linkages.clear();
 	}
 
 	public void addNode(DiagramNode node)
 	{
-		int realId = getRealId(node.getId());
+		int realId = node.getId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -61,7 +59,7 @@ class CellInventory
 	
 	public void addLinkage(DiagramLinkage linkage)
 	{
-		int realId = getRealId(linkage.getId());
+		int realId = linkage.getId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -101,17 +99,6 @@ class CellInventory
 		linkages.remove(linkage);
 	}
 	
-	private int getRealId(int id)
-	{
-		if(id == DiagramNode.INVALID_ID)
-			id = idAssigner.takeNextId();
-		else
-			idAssigner.idTaken(id);
-
-		return id;
-	}
-	
-	IdAssigner idAssigner;
 	Vector nodes;
 	Vector linkages;
 }

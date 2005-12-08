@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+
 public class IdAssigner
 {
 	public void clear()
@@ -21,6 +23,16 @@ public class IdAssigner
 	{
 		if(id >= nextId)
 			nextId = id + 1;
+	}
+	
+	public int obtainRealId(int id)
+	{
+		if(id == DiagramNode.INVALID_ID)
+			id = takeNextId();
+		else
+			idTaken(id);
+
+		return id;
 	}
 	
 	private int nextId;

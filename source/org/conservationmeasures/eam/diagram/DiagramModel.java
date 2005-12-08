@@ -30,6 +30,7 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramModel()
 	{
 		cellInventory = new CellInventory();
+		idAssigner = new IdAssigner(); 
 	}
 	
 	public void clear()
@@ -37,6 +38,7 @@ public class DiagramModel extends DefaultGraphModel
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 		cellInventory.clear();
+		idAssigner.clear();
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCell(projectScopeBox);
 	}
@@ -53,10 +55,11 @@ public class DiagramModel extends DefaultGraphModel
 		return createNodeAtId(cmObject, DiagramNode.INVALID_ID);
 	}
 
-	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int id) throws Exception
+	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int requestedId) throws Exception
 	{
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
-		node.setId(id);
+		int realId = idAssigner.obtainRealId(requestedId);
+		node.setId(realId);
 		insertCell(node);
 		cellInventory.addNode(node);
 		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
@@ -116,7 +119,8 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramNode toNode = getNodeById(linkToId);
 
 		DiagramLinkage linkage = new DiagramLinkage(fromNode, toNode);
-		linkage.setId(linkageId);
+		int realId = idAssigner.obtainRealId(linkageId);
+		linkage.setId(realId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);
 		ConnectionSet cs = linkage.getConnectionSet();
@@ -242,6 +246,7 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
+	IdAssigner idAssigner;
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();
