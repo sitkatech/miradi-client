@@ -12,13 +12,13 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 

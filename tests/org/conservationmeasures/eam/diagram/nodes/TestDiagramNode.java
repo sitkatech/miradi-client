@@ -11,7 +11,7 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 

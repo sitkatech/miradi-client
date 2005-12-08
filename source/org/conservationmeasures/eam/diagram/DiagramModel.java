@@ -17,9 +17,7 @@ import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -30,7 +28,6 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramModel()
 	{
 		cellInventory = new CellInventory();
-		idAssigner = new IdAssigner(); 
 	}
 	
 	public void clear()
@@ -38,7 +35,6 @@ public class DiagramModel extends DefaultGraphModel
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
 		cellInventory.clear();
-		idAssigner.clear();
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCell(projectScopeBox);
 	}
@@ -48,17 +44,9 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 
-	// FIXME: ONLY USED FOR TESTING--MOVE OR DELETE
-	public DiagramNode createNode(NodeType nodeType) throws Exception
-	{
-		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
-		return createNodeAtId(cmObject, IdAssigner.INVALID_ID);
-	}
-
-	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int requestedId) throws Exception
+	public DiagramNode createNodeAtId(ConceptualModelObject cmObject, int realId) throws Exception
 	{
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
-		int realId = idAssigner.obtainRealId(requestedId);
 		node.setId(realId);
 		insertCell(node);
 		cellInventory.addNode(node);
@@ -119,8 +107,7 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramNode toNode = getNodeById(linkToId);
 
 		DiagramLinkage linkage = new DiagramLinkage(fromNode, toNode);
-		int realId = idAssigner.obtainRealId(linkageId);
-		linkage.setId(realId);
+		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);
 		ConnectionSet cs = linkage.getConnectionSet();
@@ -246,7 +233,6 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
-	IdAssigner idAssigner;
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();

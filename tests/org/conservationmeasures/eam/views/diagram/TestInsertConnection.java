@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 

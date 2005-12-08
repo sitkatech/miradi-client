@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.IdAssigner;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelFactor;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelIntervention;
 import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
@@ -65,6 +64,7 @@ public class Project
 	{
 		database = databaseToUse;
 		
+		idAssigner = new IdAssigner(); 
 		diagramModel = new DiagramModel();
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -339,9 +339,10 @@ public class Project
 
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
+		int realId = idAssigner.obtainRealId(requestedId);
 		ConceptualModelObject cmObject = createConceptualModelObject(typeToInsert);
 		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.createNodeAtId(cmObject, requestedId);
+		DiagramNode node = model.createNodeAtId(cmObject, realId);
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
@@ -356,8 +357,9 @@ public class Project
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
 	{
+		int realId = idAssigner.obtainRealId(requestedLinkageId);
 		DiagramModel model = getDiagramModel();
-		DiagramLinkage linkage = model.createLinkage(requestedLinkageId, linkFromId, linkToId);
+		DiagramLinkage linkage = model.createLinkage(realId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
 		database.writeLinkage(new LinkageData(linkage));
 		return insertedLinkageId;
@@ -568,8 +570,14 @@ public class Project
 		}
 	}
 	
+	public IdAssigner getIdAssigner()
+	{
+		return idAssigner;
+	}
+	
 	protected void loadCommands(Vector commands) throws CommandFailedException, IOException
 	{
+		idAssigner.clear();
 		getDiagramModel().clear();
 		for(int i=0; i < commands.size(); ++i)
 		{
@@ -620,5 +628,6 @@ public class Project
 	String currentView;
 	JSONObject dataMap;
 	LayerManager layerManager;
+	IdAssigner idAssigner;
 }
 

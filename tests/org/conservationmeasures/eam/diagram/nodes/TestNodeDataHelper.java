@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataHelper extends EAMTestCase 

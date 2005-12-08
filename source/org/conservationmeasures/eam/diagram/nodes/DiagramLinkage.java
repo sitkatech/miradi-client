@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;

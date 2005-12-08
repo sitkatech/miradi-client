@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.diagram.nodes.TestUndoAndRedo;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
+import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.utils.TestLogging;
@@ -82,6 +83,7 @@ public class MainTests extends TestCase
 		// project package
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
+		suite.addTest(new TestSuite(TestIdAssigner.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestLogging.class));

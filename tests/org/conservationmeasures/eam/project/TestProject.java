@@ -15,10 +15,11 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.IdAssigner;
+import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -37,6 +38,7 @@ public class TestProject extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
+		idAssigner = project.getIdAssigner();
 		super.setUp();
 	}
 	
@@ -141,12 +143,12 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		DiagramLinkage linkage1 = model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
-		DiagramLinkage linkage2 = model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node3.getId());
+		DiagramLinkage linkage1 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage linkage2 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -171,10 +173,10 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		
-		DiagramLinkage linkage1 = model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
+		DiagramLinkage linkage1 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
@@ -194,12 +196,12 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
-		model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node3.getId());
+		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -227,9 +229,7 @@ public class TestProject extends EAMTestCase
 
 	public void testDiagramMoveOnly() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-
-		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
@@ -252,7 +252,7 @@ public class TestProject extends EAMTestCase
 		int deltaY = 88;
 		node1.setLocation(new Point(deltaX,deltaY));
 		
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
 		node2.setPreviousLocation(new Point(10,10));
 		node2.setLocation(new Point(20,30));
 		
@@ -274,15 +274,13 @@ public class TestProject extends EAMTestCase
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-		
-		DiagramNode node1 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node1 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		node1.setSize(new Dimension(5,10));
 		node1.setPreviousSize((new Dimension(55, 80)));
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
 		node2.setSize(new Dimension(15,15));
 		node2.setPreviousSize((new Dimension(52, 33)));
 		node2.setPreviousLocation(new Point(0,0));
@@ -305,7 +303,6 @@ public class TestProject extends EAMTestCase
 
 	public void testResizeAndMoveNodes() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
 		int x = 5;
 		int y = 10;
 		int deltaX = 20;
@@ -314,25 +311,25 @@ public class TestProject extends EAMTestCase
 		Dimension position2 = new Dimension(95, 88);
 		
 		
-		DiagramNode nodeResizedAndMoved =  model.createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode nodeResizedAndMoved =  createNode(DiagramNode.TYPE_INTERVENTION);
 		nodeResizedAndMoved.setSize(position1);
 		nodeResizedAndMoved.setPreviousSize(position2);
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
 		nodeResizedAndMoved.setLocation(new Point(x+deltaX, y+deltaY));
 
-		DiagramNode nodeMovedOnly =  model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeMovedOnly =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
 		nodeMovedOnly.setSize(position1);
 		nodeMovedOnly.setPreviousSize(position1);
 		nodeMovedOnly.setPreviousLocation(new Point(x,y));
 		nodeMovedOnly.setLocation(new Point(x+deltaX, y+deltaY));
 		
-		DiagramNode nodeResizedOnly =  model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeResizedOnly = createNode(DiagramNode.TYPE_DIRECT_THREAT);
 		nodeResizedOnly.setSize(position1);
 		nodeResizedOnly.setPreviousSize(position2);
 		nodeResizedOnly.setPreviousLocation(new Point(x,y));
 		nodeResizedOnly.setLocation(new Point(x,y));
 
-		DiagramNode nodeNotMovedOrResized =  model.createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeNotMovedOrResized =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
 		nodeNotMovedOrResized.setSize(position1);
 		nodeNotMovedOrResized.setPreviousSize(position1);
 		nodeNotMovedOrResized.setPreviousLocation(new Point(x,y));
@@ -370,12 +367,12 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = model.createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  model.createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  model.createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node3 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
-		model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node3.getId());
+		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -400,6 +397,13 @@ public class TestProject extends EAMTestCase
 		project.close();
 		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
 	}
+	
+	private DiagramNode createNode(NodeType nodeType) throws Exception
+	{
+		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
+		return project.getDiagramModel().createNodeAtId(cmObject, idAssigner.takeNextId());
+	}
 
 	ProjectForTesting project;
+	IdAssigner idAssigner;
 }

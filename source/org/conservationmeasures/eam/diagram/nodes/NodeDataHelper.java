@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.IdAssigner;
+import org.conservationmeasures.eam.project.IdAssigner;
 
 public class NodeDataHelper 
 {
