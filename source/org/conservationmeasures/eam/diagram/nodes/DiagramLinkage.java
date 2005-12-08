@@ -18,6 +18,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		setSource(from.getPort());
 		setTarget(to.getPort());
+		id = DiagramNode.INVALID_ID;
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
@@ -73,6 +74,17 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		toPort = (DefaultPort)target;
 	}
 
+	public void setId(int idToUse)
+	{
+		id = idToUse;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
 	private DefaultPort fromPort;
 	private DefaultPort toPort;
+	protected int id;
 }

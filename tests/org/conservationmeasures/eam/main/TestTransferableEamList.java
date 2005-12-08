@@ -75,13 +75,13 @@ public class TestTransferableEamList extends EAMTestCase
 		LinkageData[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
-		assertEquals(node1Id, nodesData[0].getInt(EAMGraphCell.ID));
-		assertEquals(node1Text, nodesData[0].getString(EAMGraphCell.TEXT));
-		assertEquals(node1Location, nodesData[0].getPoint(EAMGraphCell.LOCATION));
+		assertEquals(node1Id, nodesData[0].getInt(DiagramNode.TAG_ID));
+		assertEquals(node1Text, nodesData[0].getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+		assertEquals(node1Location, nodesData[0].getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals(node1Type, nodesData[0].getNodeType());
-		assertEquals(node2Id, nodesData[1].getInt(EAMGraphCell.ID));
-		assertEquals(node2Text, nodesData[1].getString(EAMGraphCell.TEXT));
-		assertEquals(node2Location, nodesData[1].getPoint(EAMGraphCell.LOCATION));
+		assertEquals(node2Id, nodesData[1].getInt(DiagramNode.TAG_ID));
+		assertEquals(node2Text, nodesData[1].getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+		assertEquals(node2Location, nodesData[1].getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals(node2Type, nodesData[1].getNodeType());
 
 		assertEquals(1, linkagesData.length);

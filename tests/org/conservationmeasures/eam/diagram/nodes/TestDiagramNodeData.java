@@ -30,9 +30,9 @@ public class TestDiagramNodeData extends EAMTestCase
 		nodeA.setId(id);
 		NodeDataMap nodeAData = nodeA.createNodeDataMap();
 		
-		assertEquals("Text incorrect", nodeAText, nodeAData.getString(EAMGraphCell.TEXT));
-		assertEquals("location incorrect", location, nodeAData.getPoint(EAMGraphCell.LOCATION));
-		assertEquals("id incorrect", id, nodeAData.getInt(EAMGraphCell.ID));
+		assertEquals("Text incorrect", nodeAText, nodeAData.getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
+		assertEquals("id incorrect", id, nodeAData.getInt(DiagramNode.TAG_ID));
 		assertEquals("type incorrect", nodeAType, nodeAData.getNodeType());
 		assertEquals("Priority default not None?", ThreatPriority.createPriorityNone().getValue(), nodeAData.getInt(DiagramNode.TAG_PRIORITY));
 	}

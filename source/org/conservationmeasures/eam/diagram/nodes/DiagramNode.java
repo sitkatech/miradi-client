@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
@@ -43,6 +44,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = cmObjectToUse;
 		
+		id = DiagramNode.INVALID_ID;
 		port = new DefaultPort();
 		add(port);
 		setColors();
@@ -61,6 +63,16 @@ abstract public class DiagramNode extends EAMGraphCell
 		return true;
 	}
 	
+	public void setId(int idToUse)
+	{
+		id = idToUse;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
 	public NodeType getType()
 	{
 		return underlyingObject.getType();
@@ -117,6 +129,28 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.isFactor();
 	}
 
+	public Point getLocation()
+	{
+		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
+		if(bounds == null)
+			return new Point(0, 0);
+		
+		return new Point((int)bounds.getX(), (int)bounds.getY());
+	}
+
+	public void setLocation(Point2D snappedLocation)
+	{
+		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
+		if(bounds == null)
+			bounds = new Rectangle(0, 0, 0, 0);
+		
+		double width = bounds.getWidth();
+		double height = bounds.getHeight();
+		Dimension size = new Dimension((int)width, (int)height);
+		Point location = new Point((int)snappedLocation.getX(), (int)snappedLocation.getY());
+		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
+	}
+	
 	public void setGoals(Goals goalsToUse)
 	{
 		underlyingObject.setGoals(goalsToUse);
@@ -253,8 +287,11 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public NodeDataMap createNodeDataMap()
 	{
-		NodeDataMap dataMap = super.createNodeDataMap();
+		NodeDataMap dataMap = new NodeDataMap();
+		populateDataMap(dataMap);
 		dataMap.putNodeType(getType());
+		dataMap.putInt(TAG_ID, getId());
+		dataMap.putPoint(TAG_LOCATION, getLocation());
 		
 		int priorityValue = getThreatPriority().getValue();
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
@@ -277,6 +314,8 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final int INT_TYPE_DIRECT_THREAT = 4;
 	public static final int INT_TYPE_STRESS = 5;
 
+	public static final String TAG_ID = "id";
+	public static final String TAG_LOCATION = "location";
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
 
@@ -285,5 +324,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	Point previousLocation;
 	
 	ConceptualModelObject underlyingObject;
+
+	protected int id;
 }
 

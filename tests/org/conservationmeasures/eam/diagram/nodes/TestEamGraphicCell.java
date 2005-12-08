@@ -18,9 +18,7 @@ public class TestEamGraphicCell extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		EAMGraphCell cell = new EAMGraphCell();
-		assertEquals(DiagramNode.INVALID_ID, cell.getId());
-		int id = 55;
-		cell.setId(id);
-		assertEquals(id, cell.getId());
+		assertFalse("is node?", cell.isNode());
+		assertFalse("is linkage?", cell.isLinkage());
 	}
 }

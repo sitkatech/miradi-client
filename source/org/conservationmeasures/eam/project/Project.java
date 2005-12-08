@@ -240,21 +240,21 @@ public class Project
 			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
 			executeCommand(newNode);
 
-			int originalNodeId = nodeData.getInt(EAMGraphCell.ID);
+			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
 			int newNodeId = newNode.getId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(EAMGraphCell.LOCATION));
+			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
-			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(EAMGraphCell.TEXT));
+			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(EAMGraphCell.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeText);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(EAMGraphCell.TEXT));
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(EAMGraphCell.TAG_VISIBLE_LABEL));
 		}
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(EAMGraphCell.ID), startPoint);
-			int newNodeId = dataHelper.getNewId(nodeData.getInt(EAMGraphCell.ID));
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(DiagramNode.TAG_ID), startPoint);
+			int newNodeId = dataHelper.getNewId(nodeData.getInt(DiagramNode.TAG_ID));
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
 		}
@@ -500,13 +500,13 @@ public class Project
 		return cells;
 	}
 	
-	public EAMGraphCell[] getOnlySelectedNodes()
+	public DiagramNode[] getOnlySelectedNodes()
 	{
 		Object[] rawCells = selectionModel.getSelectionCells();
 		return getOnlySelectedNodes(rawCells);
 	}
 
-	public EAMGraphCell[] getOnlySelectedNodes(Object[] allSelectedCells)
+	public DiagramNode[] getOnlySelectedNodes(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i=0; i < allSelectedCells.length; ++i)
@@ -514,7 +514,7 @@ public class Project
 			if(((EAMGraphCell)allSelectedCells[i]).isNode())
 				nodes.add(allSelectedCells[i]);
 		}
-		return (EAMGraphCell[])nodes.toArray(new EAMGraphCell[0]);
+		return (DiagramNode[])nodes.toArray(new DiagramNode[0]);
 	}
 
 	

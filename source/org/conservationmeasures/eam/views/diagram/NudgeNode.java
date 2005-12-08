@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.event.KeyEvent;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -50,7 +50,7 @@ public class NudgeNode extends ProjectDoer
 
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
-		EAMGraphCell[] cells = getProject().getOnlySelectedNodes();
+		DiagramNode[] cells = getProject().getOnlySelectedNodes();
 
 		int[] ids = new int[cells.length];
 		for(int i = 0; i < cells.length; ++i)
