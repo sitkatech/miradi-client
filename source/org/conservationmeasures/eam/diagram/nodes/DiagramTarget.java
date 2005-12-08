@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class DiagramTarget extends DiagramNode
 {
-	public DiagramTarget()
+	public DiagramTarget(ConceptualModelTarget cmTarget)
 	{
-		super(new ConceptualModelObject(TYPE_TARGET));
+		super(cmTarget);
 	}
 
 	public boolean isTarget()

@@ -25,11 +25,18 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static DiagramNode createDiagramNode(NodeType nodeType)
 	{
 		if(nodeType.isTarget())
-			return new DiagramTarget();
+		{
+			ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+			return new DiagramTarget(cmTarget);
+		}
 		if(nodeType.isIntervention())
-			return new DiagramIntervention();
+		{
+			ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
+			return new DiagramIntervention(cmIntervention);
+		}
 		
-		return new DiagramFactor(nodeType);
+		ConceptualModelFactor cmFactor = new ConceptualModelFactor(nodeType);
+		return new DiagramFactor(cmFactor);
 	}
 
 	protected DiagramNode(ConceptualModelObject cmObjectToUse)

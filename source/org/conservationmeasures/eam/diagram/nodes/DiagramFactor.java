@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
-
 public class DiagramFactor extends DiagramNode
 {
-	public DiagramFactor(NodeType nodeType)
+	public DiagramFactor(ConceptualModelFactor cmFactor)
 	{
-		super(new ConceptualModelObject(nodeType));
+		super(cmFactor);
 	}
 
 	public boolean canHaveObjectives()

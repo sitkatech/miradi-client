@@ -9,9 +9,9 @@ import java.awt.Color;
 
 public class DiagramIntervention extends DiagramNode
 {
-	public DiagramIntervention()
+	public DiagramIntervention(ConceptualModelIntervention cmIntervention)
 	{
-		super(new ConceptualModelObject(TYPE_INTERVENTION));
+		super(cmIntervention);
 	}
 
 	public boolean isIntervention()
