@@ -152,6 +152,8 @@ public class TableView extends UmbrellaView
 			columnNames.add(EAM.text("Table|Priority"));
 			columnNames.add(EAM.text("Table|X"));
 			columnNames.add(EAM.text("Table|Y"));
+			columnNames.add(EAM.text("Table|Width"));
+			columnNames.add(EAM.text("Table|Height"));
 		}
 		
 		protected void addListener()
@@ -189,6 +191,10 @@ public class TableView extends UmbrellaView
 					return new Integer(node.getLocation().x);
 				case TABLE_COLUMN_Y:
 					return new Integer(node.getLocation().y);
+				case TABLE_COLUMN_WIDTH:
+					return new Integer(node.getSize().width);
+				case TABLE_COLUMN_HEIGHT:
+					return new Integer(node.getSize().height);
 				default:
 					return null;
 				}
@@ -274,6 +280,8 @@ public class TableView extends UmbrellaView
 		final static int TABLE_COLUMN_PRIORITY = 3;
 		final static int TABLE_COLUMN_X = 4;
 		final static int TABLE_COLUMN_Y = 5;
+		final static int TABLE_COLUMN_WIDTH = 6;
+		final static int TABLE_COLUMN_HEIGHT = 7;
 		
 		private Vector columnNames;
 		private DiagramModel diagramModel;
