@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
@@ -40,7 +39,6 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		underlyingObject = cmObjectToUse;
 		
-		id = IdAssigner.INVALID_ID;
 		port = new DefaultPort();
 		add(port);
 		setColors();
@@ -59,14 +57,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		return true;
 	}
 	
-	public void setId(int idToUse)
-	{
-		id = idToUse;
-	}
-
 	public int getId()
 	{
-		return id;
+		return underlyingObject.getId();
 	}
 
 	public NodeType getType()
@@ -329,7 +322,5 @@ abstract public class DiagramNode extends EAMGraphCell
 	Point previousLocation;
 	
 	ConceptualModelObject underlyingObject;
-
-	protected int id;
 }
 

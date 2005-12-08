@@ -51,7 +51,7 @@ public class TestTransferableEamList extends EAMTestCase
 		String node1Text = "Target 1";
 		Point node1Location = new Point(1,2);
 		DiagramNode node1 = DiagramNode.wrapConceptualModelObject(cmIntervention);
-		node1.setId(node1Id);
+		cmIntervention.setId(node1Id);
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
 		
@@ -60,7 +60,7 @@ public class TestTransferableEamList extends EAMTestCase
 		Point node2Location = new Point(2,3);
 		
 		DiagramNode node2 = DiagramNode.wrapConceptualModelObject(cmTarget);
-		node2.setId(node2Id);
+		cmTarget.setId(node2Id);
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);
 		

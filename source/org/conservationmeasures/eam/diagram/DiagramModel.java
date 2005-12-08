@@ -44,10 +44,9 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 
-	public DiagramNode createNode(ConceptualModelObject cmObject, int realId) throws Exception
+	public DiagramNode createNode(ConceptualModelObject cmObject) throws Exception
 	{
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
-		node.setId(realId);
 		insertCell(node);
 		cellInventory.addNode(node);
 		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());

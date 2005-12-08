@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
+import org.conservationmeasures.eam.project.IdAssigner;
 
 public class ConceptualModelObject
 {
@@ -13,13 +14,23 @@ public class ConceptualModelObject
 	{
 		type = nodeType;
 		
+		id = IdAssigner.INVALID_ID;
 		indicator = new Indicator();
-
 		setNodePriority(ThreatPriority.createPriorityNotUsed());
 		objectives = new Objectives();
 		goals = new Goals();
 	}
 	
+	public void setId(int idToUse)
+	{
+		id = idToUse;
+	}
+
+	public int getId()
+	{
+		return id;
+	}
+
 	public NodeType getType()
 	{
 		return type;
@@ -115,6 +126,7 @@ public class ConceptualModelObject
 		return false;
 	}
 	
+	private int id;
 	private NodeType type;
 	private Indicator indicator;
 	private ThreatPriority threatPriority;

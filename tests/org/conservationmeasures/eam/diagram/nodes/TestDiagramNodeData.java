@@ -21,13 +21,14 @@ public class TestDiagramNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		NodeType nodeAType = DiagramNode.TYPE_STRESS;
-		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(new ConceptualModelFactor(nodeAType));
+		ConceptualModelFactor cmFactor = new ConceptualModelFactor(nodeAType);
+		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
 		String nodeAText = "Node A";
 		Point location = new Point(5,22);
 		int id = 2;
 		nodeA.setText(nodeAText);
 		nodeA.setLocation(location);
-		nodeA.setId(id);
+		cmFactor.setId(id);
 		NodeDataMap nodeAData = nodeA.createNodeDataMap();
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));

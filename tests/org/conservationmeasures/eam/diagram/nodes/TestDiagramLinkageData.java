@@ -37,11 +37,11 @@ public class TestDiagramLinkageData extends EAMTestCase
 
 		nodeAId = 1;
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmIntervention);
-		nodeA.setId(nodeAId);
+		cmIntervention.setId(nodeAId);
 		
 		nodeBId = 2;
 		DiagramNode nodeB = DiagramNode.wrapConceptualModelObject(cmTarget);
-		nodeB.setId(nodeBId);
+		cmTarget.setId(nodeBId);
 		
 		DiagramLinkage linkage = new DiagramLinkage(nodeB, nodeA);
 		linkage.setId(id);

@@ -341,8 +341,9 @@ public class Project
 	{
 		int realId = idAssigner.obtainRealId(requestedId);
 		ConceptualModelObject cmObject = createConceptualModelObject(typeToInsert);
+		cmObject.setId(realId);
 		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.createNode(cmObject, realId);
+		DiagramNode node = model.createNode(cmObject);
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
