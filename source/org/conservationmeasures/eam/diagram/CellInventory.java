@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 
@@ -31,7 +30,7 @@ class CellInventory
 	{
 		int realId = getRealId(node.getId());
 		
-		if(getById(realId) != null)
+		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
 		node.setId(realId);
@@ -63,11 +62,21 @@ class CellInventory
 	{
 		int realId = getRealId(linkage.getId());
 		
-		if(getById(realId) != null)
+		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
 		linkage.setId(realId);
 		linkages.add(linkage);
+	}
+
+	private boolean doesIdExist(int realId)
+	{
+		if(getNodeById(realId) != null)
+			return true;
+		if(getLinkageById(realId) != null)
+			return true;
+		
+		return false;
 	}
 	
 	public Vector getAllLinkages()
@@ -89,17 +98,6 @@ class CellInventory
 	public void removeLinkage(DiagramLinkage linkage)
 	{
 		linkages.remove(linkage);
-	}
-	
-	private EAMGraphCell getById(int id)
-	{
-		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
-		{
-			EAMGraphCell cell = (EAMGraphCell) iter.next();
-			if(cell.getId() == id)
-				return cell;
-		}
-		return null;
 	}
 	
 	private int getRealId(int id)
