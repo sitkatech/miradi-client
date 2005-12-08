@@ -14,4 +14,34 @@ public class ConceptualModelFactor extends ConceptualModelObject
 		super(nodeType);
 	}
 
+	public boolean isFactor()
+	{
+		return true;
+	}
+	
+	public boolean isIndirectFactor()
+	{
+		return(getType().isIndirectFactor());
+	}
+	
+	public boolean isDirectThreat()
+	{
+		return(getType().isDirectThreat());
+	}
+	
+	public boolean isStress()
+	{
+		return(getType().isStress());
+	}
+	
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
+	
+	public boolean canHavePriority()
+	{
+		return true;
+	}
+
 }

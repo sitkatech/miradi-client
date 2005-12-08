@@ -13,4 +13,14 @@ public class ConceptualModelTarget extends ConceptualModelObject
 		super(DiagramNode.TYPE_TARGET);
 	}
 
+	public boolean isTarget()
+	{
+		return true;
+	}
+	
+	public boolean canHaveGoal()
+	{
+		return true;
+	}
+
 }

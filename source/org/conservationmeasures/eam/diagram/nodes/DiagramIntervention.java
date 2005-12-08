@@ -14,16 +14,6 @@ public class DiagramIntervention extends DiagramNode
 		super(cmIntervention);
 	}
 
-	public boolean isIntervention()
-	{
-		return true;
-	}
-	
-	public boolean canHaveObjectives()
-	{
-		return true;
-	}
-
 	public Color getColor()
 	{
 		return COLOR_INTERVENTION;

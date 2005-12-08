@@ -13,4 +13,14 @@ public class ConceptualModelIntervention extends ConceptualModelObject
 		super(DiagramNode.TYPE_INTERVENTION);
 	}
 
+	public boolean isIntervention()
+	{
+		return true;
+	}
+	
+	public boolean canHaveObjectives()
+	{
+		return true;
+	}
+
 }

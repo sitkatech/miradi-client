@@ -14,16 +14,6 @@ public class DiagramTarget extends DiagramNode
 		super(cmTarget);
 	}
 
-	public boolean isTarget()
-	{
-		return true;
-	}
-	
-	public boolean canHaveGoal()
-	{
-		return true;
-	}
-
 	public Color getColor()
 	{
 		return COLOR_TARGET;

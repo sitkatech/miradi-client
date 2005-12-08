@@ -84,7 +84,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public boolean canHavePriority()
 	{
-		return false;
+		return underlyingObject.canHavePriority();
 	}
 	
 	public Indicator getIndicator()
@@ -99,12 +99,12 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	public boolean canHaveObjectives()
 	{
-		return false;
+		return underlyingObject.canHaveObjectives();
 	}
 
 	public boolean canHaveGoal()
 	{
-		return false;
+		return underlyingObject.canHaveGoal();
 	}
 
 	public Goals getGoals()
@@ -114,7 +114,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public boolean isFactor()
 	{
-		return false;
+		return underlyingObject.isFactor();
 	}
 
 	public void setGoals(Goals goalsToUse)
@@ -161,27 +161,27 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	public boolean isTarget()
 	{
-		return false;
+		return underlyingObject.isTarget();
 	}
 	
 	public boolean isIndirectFactor()
 	{
-		return false;
+		return underlyingObject.isIndirectFactor();
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return false;
+		return underlyingObject.isDirectThreat();
 	}
 	
 	public boolean isStress()
 	{
-		return false;
+		return underlyingObject.isStress();
 	}
 	
 	public boolean isIntervention()
 	{
-		return false;
+		return underlyingObject.isIntervention();
 	}
 	
 	public DefaultPort getPort()

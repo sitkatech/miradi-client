@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
 
-class ConceptualModelObject
+public class ConceptualModelObject
 {
 	public ConceptualModelObject(NodeType nodeType)
 	{
@@ -70,6 +70,51 @@ class ConceptualModelObject
 		goals = goalsToUse;
 	}
 
+	public boolean isIntervention()
+	{
+		return false;
+	}
+	
+	public boolean isFactor()
+	{
+		return false;
+	}
+	
+	public boolean isTarget()
+	{
+		return false;
+	}
+	
+	public boolean isIndirectFactor()
+	{
+		return false;
+	}
+	
+	public boolean isDirectThreat()
+	{
+		return false;
+	}
+	
+	public boolean isStress()
+	{
+		return false;
+	}
+	
+	public boolean canHaveObjectives()
+	{
+		return false;
+	}
+
+	public boolean canHaveGoal()
+	{
+		return false;
+	}
+
+	public boolean canHavePriority()
+	{
+		return false;
+	}
+	
 	private NodeType type;
 	private Indicator indicator;
 	private ThreatPriority threatPriority;

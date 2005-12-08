@@ -14,36 +14,6 @@ public class DiagramFactor extends DiagramNode
 		super(cmFactor);
 	}
 
-	public boolean canHaveObjectives()
-	{
-		return true;
-	}
-	
-	public boolean canHavePriority()
-	{
-		return true;
-	}
-
-	public boolean isIndirectFactor()
-	{
-		return(getType().isIndirectFactor());
-	}
-	
-	public boolean isDirectThreat()
-	{
-		return(getType().isDirectThreat());
-	}
-	
-	public boolean isStress()
-	{
-		return(getType().isStress());
-	}
-	
-	public boolean isFactor()
-	{
-		return true;
-	}
-
 	public Color getColor()
 	{
 		if(isIndirectFactor())
