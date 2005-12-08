@@ -146,6 +146,16 @@ abstract public class DiagramNode extends EAMGraphCell
 		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
 	}
 	
+	public void setText(String text)
+	{
+		GraphConstants.setValue(getAttributes(), text);
+	}
+
+	public String getText()
+	{
+		return (String)GraphConstants.getValue(getAttributes());
+	}
+
 	public void setGoals(Goals goalsToUse)
 	{
 		underlyingObject.setGoals(goalsToUse);
@@ -283,10 +293,10 @@ abstract public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = new NodeDataMap();
-		populateDataMap(dataMap);
 		dataMap.putNodeType(getType());
 		dataMap.putInt(TAG_ID, getId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
+		dataMap.putString(TAG_VISIBLE_LABEL, getText());
 		
 		int priorityValue = getThreatPriority().getValue();
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
@@ -313,6 +323,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final String TAG_LOCATION = "location";
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
+	public static final String TAG_VISIBLE_LABEL = "text";
 
 	DefaultPort port;
 	Dimension previousSize;

@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.GraphConstants;
 
 public class EAMGraphCell extends DefaultGraphCell
 {
@@ -29,20 +28,4 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
-	public void setText(String text)
-	{
-		GraphConstants.setValue(getAttributes(), text);
-	}
-
-	public String getText()
-	{
-		return (String)GraphConstants.getValue(getAttributes());
-	}
-
-	public void populateDataMap(DataMap dataBin)
-	{
-		dataBin.putString(TAG_VISIBLE_LABEL, getText());
-	}
-
-	public static final String TAG_VISIBLE_LABEL = "text";
 }

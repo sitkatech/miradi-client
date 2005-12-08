@@ -249,9 +249,9 @@ public class Project
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
-			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeText);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		}
 		
 		for (int i = 0; i < nodes.length; i++) 

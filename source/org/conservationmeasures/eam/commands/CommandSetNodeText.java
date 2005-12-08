@@ -10,7 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -62,7 +62,7 @@ public class CommandSetNodeText extends Command
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
-			EAMGraphCell node = model.getNodeById(getId());
+			DiagramNode node = model.getNodeById(getId());
 			String currentText = node.getText();
 			if(expectedText != null && !currentText.equals(expectedText))
 				throw new Exception("CommandSetNodeText expected " + expectedText + " but was " + currentText);

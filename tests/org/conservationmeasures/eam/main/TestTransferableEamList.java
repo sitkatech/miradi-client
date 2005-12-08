@@ -78,11 +78,11 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		assertEquals(2, nodesData.length);
 		assertEquals(node1Id, nodesData[0].getInt(DiagramNode.TAG_ID));
-		assertEquals(node1Text, nodesData[0].getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+		assertEquals(node1Text, nodesData[0].getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals(node1Location, nodesData[0].getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals(node1.getType(), nodesData[0].getNodeType());
 		assertEquals(node2Id, nodesData[1].getInt(DiagramNode.TAG_ID));
-		assertEquals(node2Text, nodesData[1].getString(EAMGraphCell.TAG_VISIBLE_LABEL));
+		assertEquals(node2Text, nodesData[1].getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals(node2Location, nodesData[1].getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals(node2.getType(), nodesData[1].getNodeType());
 
