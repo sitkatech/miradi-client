@@ -15,13 +15,14 @@ class CellInventory
 {
 	public CellInventory()
 	{
+		idAssigner = new IdAssigner(); 
 		nodes = new Vector();
 		linkages = new Vector();
 	}
 	
 	public void clear()
 	{
-		nextId = 0;
+		idAssigner.clear();
 		nodes.clear();
 		linkages.clear();
 	}
@@ -103,18 +104,14 @@ class CellInventory
 	private int getRealId(int id)
 	{
 		if(id == DiagramNode.INVALID_ID)
-		{
-			id = nextId++;
-		}
+			id = idAssigner.takeNextId();
 		else
-		{
-			if(nextId < id+1)
-				nextId = id + 1;
-		}
+			idAssigner.idTaken(id);
+
 		return id;
 	}
 	
-	private int nextId;
+	IdAssigner idAssigner;
 	Vector nodes;
 	Vector linkages;
 }
