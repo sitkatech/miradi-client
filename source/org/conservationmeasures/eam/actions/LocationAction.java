@@ -43,16 +43,19 @@ public abstract class LocationAction extends MainWindowAction
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
 		if(((Component)event.getSource()).getName() == CENTER_LOCATION)
-		{
-			DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-			Rectangle rect = diagramComponent.getVisibleRect();
-			int centeredWidth = rect.width / 2;
-			int centeredHeight = rect.height / 2;
-			Point centeredLocation = new Point(rect.x + centeredWidth, rect.y + centeredHeight);
-			Point2D screenCenteredLocation2D = diagramComponent.fromScreen(centeredLocation);
-			setInvocationPoint(Utilities.createPointFromPoint2D(screenCenteredLocation2D));
-		}
+			setInvokationPointToCenterOfScreen();
 		super.doAction(event);
+	}
+
+	private void setInvokationPointToCenterOfScreen()
+	{
+		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+		Rectangle rect = diagramComponent.getVisibleRect();
+		int centeredWidth = rect.width / 2;
+		int centeredHeight = rect.height / 2;
+		Point centeredLocation = new Point(rect.x + centeredWidth, rect.y + centeredHeight);
+		Point2D screenCenteredLocation2D = diagramComponent.fromScreen(centeredLocation);
+		setInvocationPoint(Utilities.createPointFromPoint2D(screenCenteredLocation2D));
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)
