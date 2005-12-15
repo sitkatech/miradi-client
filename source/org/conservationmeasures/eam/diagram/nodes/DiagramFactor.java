@@ -26,8 +26,8 @@ public class DiagramFactor extends DiagramNode
 		throw new RuntimeException("Unknown factor type: " + getType().getClass());
 	}
 	
-	public static final Color COLOR_STRESS = Color.MAGENTA;
-	public static final Color COLOR_DIRECT_THREAT = Color.PINK;
-	public static final Color COLOR_INDIRECT_FACTOR = Color.ORANGE;
+	public static final Color COLOR_STRESS = new Color(204, 153, 255);
+	public static final Color COLOR_DIRECT_THREAT = new Color(255, 153, 255);
+	public static final Color COLOR_INDIRECT_FACTOR = new Color(255, 153, 0);
 
 }

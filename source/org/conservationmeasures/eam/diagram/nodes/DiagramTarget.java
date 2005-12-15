@@ -19,6 +19,6 @@ public class DiagramTarget extends DiagramNode
 		return COLOR_TARGET;
 	}
 
-	public static final Color COLOR_TARGET = Color.GREEN;
+	public static final Color COLOR_TARGET = new Color(153, 255, 153);
 	
 }

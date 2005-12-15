@@ -19,6 +19,6 @@ public class DiagramIntervention extends DiagramNode
 		return COLOR_INTERVENTION;
 	}
 
-	public static final Color COLOR_INTERVENTION = Color.YELLOW;
+	public static final Color COLOR_INTERVENTION = new Color(255, 255, 0);
 
 }
