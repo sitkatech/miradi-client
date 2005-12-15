@@ -36,6 +36,8 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.LocationAction;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -82,14 +84,21 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
-		menu.add(new JMenuItem(actions.get(ActionInsertIntervention.class)));
-		menu.add(new JMenuItem(actions.get(ActionInsertIndirectFactor.class)));
-		menu.add(new JMenuItem(actions.get(ActionInsertDirectThreat.class)));
-		menu.add(new JMenuItem(actions.get(ActionInsertStress.class)));
-		menu.add(new JMenuItem(actions.get(ActionInsertTarget.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIntervention.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIndirectFactor.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStress.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
 		return menu;
+	}
+	
+	private JMenuItem createJMenuItemCenterLocation(EAMAction action)
+	{
+		JMenuItem centeredLocationAction = new JMenuItem(action);
+		centeredLocationAction.setName(LocationAction.CENTER_LOCATION);
+		return centeredLocationAction;
 	}
 	
 	private JMenu createViewMenu(Actions actions)

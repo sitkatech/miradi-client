@@ -5,15 +5,20 @@
  */
 package org.conservationmeasures.eam.actions;
 
+import java.awt.Component;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+import java.awt.geom.Point2D;
 
 import javax.swing.Icon;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.Utilities;
 
 
 public abstract class LocationAction extends MainWindowAction
@@ -35,12 +40,19 @@ public abstract class LocationAction extends MainWindowAction
 		createAt = location;
 	}
 
-	public void doAction(UmbrellaView view, ActionEvent event) throws CommandFailedException
+	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		Doer doer = view.getDoer(getClass());
-		doer.setLocation(createAt);
-		doer.doIt();
-		getMainWindow().getActions().updateActionStates();
+		if(((Component)event.getSource()).getName() == CENTER_LOCATION)
+		{
+			DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+			Rectangle rect = diagramComponent.getVisibleRect();
+			int centeredWidth = rect.width / 2;
+			int centeredHeight = rect.height / 2;
+			Point centeredLocation = new Point(rect.x + centeredWidth, rect.y + centeredHeight);
+			Point2D screenCenteredLocation2D = diagramComponent.fromScreen(centeredLocation);
+			setInvocationPoint(Utilities.createPointFromPoint2D(screenCenteredLocation2D));
+		}
+		super.doAction(event);
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)
@@ -58,5 +70,5 @@ public abstract class LocationAction extends MainWindowAction
 	}
 
 	Point createAt;
-
+	static public final String CENTER_LOCATION = "Center Location";
 }

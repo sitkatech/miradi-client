@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.ViewSwitcher;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 
@@ -35,11 +36,12 @@ public class DiagramToolBar extends JToolBar
 
 		add(ViewSwitcher.create(actions, ActionViewDiagram.class));
 		addSeparator();
-		add(new ToolBarButton(actions, ActionInsertIntervention.class));
-		add(new ToolBarButton(actions, ActionInsertIndirectFactor.class));
-		add(new ToolBarButton(actions, ActionInsertDirectThreat.class));
-		add(new ToolBarButton(actions, ActionInsertStress.class));
-		add(new ToolBarButton(actions, ActionInsertTarget.class));
+		add(new ToolBarButton(actions, ActionInsertIntervention.class, LocationAction.CENTER_LOCATION));
+		add(new ToolBarButton(actions, ActionInsertIndirectFactor.class, LocationAction.CENTER_LOCATION));
+		add(new ToolBarButton(actions, ActionInsertDirectThreat.class, LocationAction.CENTER_LOCATION));
+		
+		add(new ToolBarButton(actions, ActionInsertStress.class, LocationAction.CENTER_LOCATION));
+		add(new ToolBarButton(actions, ActionInsertTarget.class, LocationAction.CENTER_LOCATION));
 		add(new ToolBarButton(actions, ActionInsertConnection.class));
 		addSeparator();
 		add(new ToolBarButton(actions, ActionUndo.class));

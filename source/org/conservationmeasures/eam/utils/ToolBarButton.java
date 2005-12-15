@@ -14,14 +14,21 @@ public class ToolBarButton extends JButton
 {
 	public ToolBarButton(Actions actions, Class actionClass)
 	{
-		this(actions.get(actionClass));
+		this(actions, actionClass, "");
 	}
 
-	public ToolBarButton(EAMAction action)
+	public ToolBarButton(Actions actions, Class actionClass, String buttonName)
+	{
+		this(actions.get(actionClass), buttonName);
+	}
+
+
+	public ToolBarButton(EAMAction action, String buttonName)
 	{
 		super(action);
 		setText("");
 		setToolTipText(action.getToolTipText());
+		setName(buttonName);
 	}
 	
 }
