@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -51,7 +52,10 @@ public class DiagramView extends UmbrellaView
 		setToolBar(new DiagramToolBar(getActions()));
 
 		setLayout(new BorderLayout());
-		add(new UiScrollPane(diagram), BorderLayout.CENTER);
+		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
+		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		add(uiScrollPane, BorderLayout.CENTER);
 	}
 	
 	public DiagramComponent getDiagramComponent()
