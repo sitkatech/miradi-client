@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.diagram;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Action;
@@ -38,6 +40,7 @@ import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
+import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
@@ -94,6 +97,18 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		view.setPreferredSize(getPreferredSize());
 		return view;
 	}
+	
+	//toScreen does not take into account Scrolling or Physical Window location.
+	public Point toActualScreen(Point scaledLocation)
+	{
+		Point2D screenLocation2D = toScreen(scaledLocation);
+		Point scaledPoint = Utilities.createPointFromPoint2D(screenLocation2D);
+		Point locationOnScreen = getLocationOnScreen();
+		scaledPoint.x += locationOnScreen.x;
+		scaledPoint.y += locationOnScreen.y;
+		return scaledPoint;
+	}
+	
 
 	private class JImage extends JComponent
 	{
