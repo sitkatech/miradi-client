@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -75,10 +76,8 @@ public class Properties extends ProjectDoer
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
 	{
 		String title = EAM.text("Title|Node Properties");
-		Point scaledLocation = selectedNode.getLocation();
-		Point2D screenLocation2D = diagram.toScreen(scaledLocation);
-		Point scaledPoint = Utilities.createPointFromPoint2D(screenLocation2D);
-		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, scaledPoint, selectedNode);
+		Point dialogLocation = getNodesScreenLocation(selectedNode);
+		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, dialogLocation, selectedNode);
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
@@ -97,6 +96,17 @@ public class Properties extends ProjectDoer
 			getProject().executeCommand(new CommandSetFactorType(id, dlg.getType()));
 
 		getProject().executeCommand(new CommandEndTransaction());
+	}
+
+	private Point getNodesScreenLocation(DiagramNode selectedNode)
+	{
+		Point scaledLocation = selectedNode.getLocation();
+		Point2D screenLocation2D = diagram.toScreen(scaledLocation);
+		Point scaledPoint = Utilities.createPointFromPoint2D(screenLocation2D);
+		Rectangle visibleRect = diagram.getVisibleRect();
+		scaledPoint.x -= visibleRect.x;
+		scaledPoint.y -= visibleRect.y;
+		return scaledPoint;
 	}
 
 	DiagramComponent diagram;
