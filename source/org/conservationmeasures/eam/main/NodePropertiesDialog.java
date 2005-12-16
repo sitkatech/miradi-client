@@ -62,6 +62,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		pack();
 		setDialogLocation(location, node, zoomScale);
 		setResizable(true);
+		Utilities.fitInScreen(this);
 		setModal(true);
 	}
 
@@ -70,15 +71,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Point nonObstructingLocation = location;
 		int dialogHeight = getSize().height;
 		if(nonObstructingLocation.y - dialogHeight < 0)
-		{
-			int nodeHeight = (int)(node.getSize().height * zoomScale);
-			if(nonObstructingLocation.y + nodeHeight + dialogHeight < Utilities.getViewableScreenSize().height)
-				nonObstructingLocation.y += nodeHeight;
-		}
+			nonObstructingLocation.y += ((int)(node.getSize().height * zoomScale));
 		else
-		{
 			nonObstructingLocation.y -= dialogHeight;
-		}
 		setLocation(nonObstructingLocation);
 	}
 	
