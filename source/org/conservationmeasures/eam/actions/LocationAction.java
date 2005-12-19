@@ -42,7 +42,7 @@ public abstract class LocationAction extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		if(((Component)event.getSource()).getName() == CENTER_LOCATION)
+		if(CENTER_LOCATION.equals(((Component)event.getSource()).getName()))
 			setInvokationPointToCenterOfScreen();
 		super.doAction(event);
 	}
