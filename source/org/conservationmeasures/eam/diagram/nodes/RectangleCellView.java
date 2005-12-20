@@ -39,11 +39,6 @@ public class RectangleCellView extends VertexView
 	 * straight line between the source and the specified point p.
 	 * The specified point is expected not to intersect the bounds.
 	 */
-	public Point2D getPerimeterPoint(Point2D source, Point2D p) 
-	{
-		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(this, source, p);
-	}
-
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
 		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(this, source, p);

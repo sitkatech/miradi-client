@@ -68,17 +68,12 @@ public class HexagonNodeView extends MultilineNodeView
 	 * straight line between the source and the specified point p.
 	 * The specified point is expected not to intersect the bounds.
 	 */
-	public Point2D getPerimeterPoint(Point2D source, Point2D p) 
+	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
+		// TODO: Need better implementation?
 		/* ellipse is close enough for now */
 		Point2D result = EllipseRenderer.getPerimeterPoint(p, getRectangleWithoutAnnotations());
 		return getAttributes().createPoint(result);
-	}
-
-	public Point2D getPerimeterPoint(EdgeView arg0, Point2D arg1, Point2D arg2)
-	{
-		// TODO: Need better implementation?
-		return getPerimeterPoint(arg1, arg2);
 	}
 
 	protected static HexagonRenderer hexagonRenderer = new HexagonRenderer();
