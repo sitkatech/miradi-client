@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JDialog;
@@ -99,11 +100,14 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
-	private void setDialogLocation(JDialog dlg, Rectangle2D rect)
+	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)
 	{
-		Point nonObstructingLocation = diagram.toWindowCoordinates(rect.getBounds().getLocation());
-		nonObstructingLocation.y += ((int)(rect.getHeight() * diagram.getScale()));
-		dlg.setLocation(nonObstructingLocation);
+		Rectangle rect = rect2D.getBounds();
+		int scaledX = rect.x;
+		int scaledY = rect.y + rect.height;
+		Point scaledLowerLeftCorner = new Point(scaledX, scaledY);
+		Point actualLowerLeftcorner = diagram.toWindowCoordinates(scaledLowerLeftCorner);
+		dlg.setLocation(actualLowerLeftcorner);
 		Utilities.fitInScreen(dlg);
 	}
 
