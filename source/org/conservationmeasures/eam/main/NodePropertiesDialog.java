@@ -9,7 +9,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.HeadlessException;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,7 +38,7 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, Point location, DiagramNode node, double zoomScale)
+	public NodePropertiesDialog(Frame parent, String title, DiagramNode node)
 			throws HeadlessException
 	{
 		super(parent, title);
@@ -60,23 +59,10 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Container contents = getContentPane();
 		contents.add(bigBox);
 		pack();
-		setDialogLocation(location, node, zoomScale);
 		setResizable(true);
-		Utilities.fitInScreen(this);
 		setModal(true);
 	}
 
-	private void setDialogLocation(Point location, DiagramNode node, double zoomScale)
-	{
-		Point nonObstructingLocation = location;
-		int dialogHeight = getSize().height;
-		if(nonObstructingLocation.y - dialogHeight < 0)
-			nonObstructingLocation.y += ((int)(node.getSize().height * zoomScale));
-		else
-			nonObstructingLocation.y -= dialogHeight;
-		setLocation(nonObstructingLocation);
-	}
-	
 	private Component createTextField(String initialText)
 	{
 		UiLabel textLabel = new UiLabel(EAM.text("Label|Label"));

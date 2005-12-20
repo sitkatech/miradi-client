@@ -98,8 +98,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return view;
 	}
 	
-	//toScreen does not take into account Scrolling or Physical Window location.
-	public Point toActualScreen(Point scaledLocation)
+	//toScreen does not take into account Physical Window location.
+	public Point toWindowCoordinates(Point scaledLocation)
 	{
 		Point2D screenLocation2D = toScreen(scaledLocation);
 		Point scaledPoint = Utilities.createPointFromPoint2D(screenLocation2D);

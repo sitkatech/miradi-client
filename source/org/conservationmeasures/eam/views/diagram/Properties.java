@@ -6,6 +6,9 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -25,6 +28,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.main.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
+import org.martus.swing.Utilities;
 
 public class Properties extends ProjectDoer
 {
@@ -62,7 +66,7 @@ public class Properties extends ProjectDoer
 	{
 		ProjectScopePropertiesDialog dlg = new ProjectScopePropertiesDialog(EAM.mainWindow, getProject(), scope);
 		dlg.setText(scope.getVision());
-		
+		setDialogLocation(dlg, scope.getBounds());
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
@@ -73,8 +77,8 @@ public class Properties extends ProjectDoer
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
 	{
 		String title = EAM.text("Title|Node Properties");
-		Point dialogLocation = diagram.toActualScreen(selectedNode.getLocation());
-		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title, dialogLocation, selectedNode, diagram.getScale());
+		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, title,selectedNode);
+		setDialogLocation(dlg, selectedNode.getBounds());
 		dlg.setVisible(true);
 		if(!dlg.getResult())
 			return;
@@ -93,6 +97,14 @@ public class Properties extends ProjectDoer
 			getProject().executeCommand(new CommandSetFactorType(id, dlg.getType()));
 
 		getProject().executeCommand(new CommandEndTransaction());
+	}
+
+	private void setDialogLocation(JDialog dlg, Rectangle2D rect)
+	{
+		Point nonObstructingLocation = diagram.toWindowCoordinates(rect.getBounds().getLocation());
+		nonObstructingLocation.y += ((int)(rect.getHeight() * diagram.getScale()));
+		dlg.setLocation(nonObstructingLocation);
+		Utilities.fitInScreen(dlg);
 	}
 
 	DiagramComponent diagram;
