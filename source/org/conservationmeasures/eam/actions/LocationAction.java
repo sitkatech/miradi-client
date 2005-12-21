@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.Component;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -16,6 +15,7 @@ import javax.swing.Icon;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.Utilities;
@@ -42,7 +42,8 @@ public abstract class LocationAction extends MainWindowAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
-		if(CENTER_LOCATION.equals(((Component)event.getSource()).getName()))
+		LocationHolder invoker = (LocationHolder)event.getSource();
+		if(!invoker.hasLocation())
 			setInvokationPointToCenterOfScreen();
 		super.doAction(event);
 	}
@@ -73,5 +74,4 @@ public abstract class LocationAction extends MainWindowAction
 	}
 
 	Point createAt;
-	static public final String CENTER_LOCATION = "Center Location";
 }

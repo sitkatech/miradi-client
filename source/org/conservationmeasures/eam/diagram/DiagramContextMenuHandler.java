@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 
+import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -30,6 +31,7 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.utils.LocationHolder;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 import org.martus.swing.Utilities;
@@ -47,18 +49,18 @@ public class DiagramContextMenuHandler
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionUndo.class)));
-		menu.add(new JMenuItem(actions.get(ActionRedo.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionUndo.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionRedo.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionCut.class)));
-		menu.add(new JMenuItem(actions.get(ActionCopy.class)));
-		menu.add(new JMenuItem(getConfiguredAction(ActionPaste.class, menuInvokedAt)));
-		menu.add(new JMenuItem(getConfiguredAction(ActionPasteWithoutLinks.class, menuInvokedAt)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionCut.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionCopy.class)));
+		menu.add(createMenuItem(ActionPaste.class, menuInvokedAt));
+		menu.add(createMenuItem(ActionPasteWithoutLinks.class, menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
-		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionDelete.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionProperties.class)));
+		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionProperties.class)));
 		return menu;
 	}
 
@@ -66,22 +68,22 @@ public class DiagramContextMenuHandler
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
 
-		insertMenu.add(getConfiguredAction(ActionInsertIntervention.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertIndirectFactor.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertDirectThreat.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertStress.class, menuInvokedAt));
-		insertMenu.add(getConfiguredAction(ActionInsertTarget.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertIntervention.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertIndirectFactor.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertDirectThreat.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertStress.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertConnection.class));
 
 		return insertMenu;
 	}
 
-	private LocationAction getConfiguredAction(Class c, Point menuInvokedAt)
+	private JMenuItem createMenuItem(Class c, Point menuInvokedAt)
 	{
 		LocationAction action = (LocationAction)actions.get(c);
 		action.setInvocationPoint(menuInvokedAt);
-		return action;
+		return new ContextMenuItemAtLocation(action);
 	}
 
 	public void showContextMenu(MouseEvent e)
@@ -93,6 +95,32 @@ public class DiagramContextMenuHandler
 		
 		JPopupMenu menu = getPopupMenu(scaledPoint);
 		menu.show(diagramComponent, e.getX(), e.getY());
+	}
+	
+	static class ContextMenuItemWithoutLocation extends JMenuItem implements LocationHolder
+	{
+		public ContextMenuItemWithoutLocation(Action action)
+		{
+			super(action);
+		}
+		
+		public boolean hasLocation()
+		{
+			return false;
+		}
+	}
+
+	static class ContextMenuItemAtLocation extends JMenuItem implements LocationHolder
+	{
+		public ContextMenuItemAtLocation(Action action)
+		{
+			super(action);
+		}
+		
+		public boolean hasLocation()
+		{
+			return true;
+		}
 	}
 
 	DiagramComponent diagramComponent;

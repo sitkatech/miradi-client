@@ -10,7 +10,7 @@ import javax.swing.JButton;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 
-public class ToolBarButton extends JButton
+public class ToolBarButton extends JButton implements LocationHolder
 {
 	public ToolBarButton(Actions actions, Class actionClass)
 	{
@@ -29,6 +29,11 @@ public class ToolBarButton extends JButton
 		setText("");
 		setToolTipText(action.getToolTipText());
 		setName(buttonName);
+	}
+
+	public boolean hasLocation()
+	{
+		return false;
 	}
 	
 }
