@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 import org.martus.swing.Utilities;
@@ -49,18 +50,18 @@ public class DiagramContextMenuHandler
 		UiPopupMenu menu = new UiPopupMenu();
 		menu.add(getInsertMenu(menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionUndo.class)));
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionRedo.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionRedo.class)));
 		menu.addSeparator();
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionCut.class)));
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionCopy.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionCut.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionCopy.class)));
 		menu.add(createMenuItem(ActionPaste.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionPasteWithoutLinks.class, menuInvokedAt));
 		menu.addSeparator();
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionDelete.class)));
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.addSeparator();
-		menu.add(new ContextMenuItemWithoutLocation(actions.get(ActionProperties.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionProperties.class)));
 		return menu;
 	}
 
@@ -97,19 +98,6 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
-	static class ContextMenuItemWithoutLocation extends JMenuItem implements LocationHolder
-	{
-		public ContextMenuItemWithoutLocation(Action action)
-		{
-			super(action);
-		}
-		
-		public boolean hasLocation()
-		{
-			return false;
-		}
-	}
-
 	static class ContextMenuItemAtLocation extends JMenuItem implements LocationHolder
 	{
 		public ContextMenuItemAtLocation(Action action)

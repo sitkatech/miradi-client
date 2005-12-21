@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -95,7 +96,7 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenuItem createJMenuItemCenterLocation(EAMAction action)
 	{
-		JMenuItem centeredLocationAction = new JMenuItem(action);
+		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
 		return centeredLocationAction;
 	}
 	
