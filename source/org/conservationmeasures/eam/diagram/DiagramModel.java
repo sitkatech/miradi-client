@@ -16,6 +16,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
@@ -99,12 +100,11 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 	}
 	
-	public DiagramLinkage createLinkage(int linkageId, int linkFromId, int linkToId) throws Exception
+	public DiagramLinkage createLinkage(ConceptualModelLinkage cmLinkage) throws Exception
 	{
-		DiagramNode fromNode = getNodeById(linkFromId);
-		DiagramNode toNode = getNodeById(linkToId);
-
-		DiagramLinkage linkage = new DiagramLinkage(fromNode, toNode);
+		int linkageId = cmLinkage.getId();
+		
+		DiagramLinkage linkage = new DiagramLinkage(this, cmLinkage);
 		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);

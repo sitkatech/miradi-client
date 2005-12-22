@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -35,7 +36,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link = model.createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
+		DiagramLinkage link = createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
@@ -45,7 +46,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		model.createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
+		createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
 	}
@@ -57,7 +58,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode newFactor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
-		model.createLinkage(IdAssigner.INVALID_ID, newFactor.getId(), target.getId());
+		createLinkage(IdAssigner.INVALID_ID, newFactor.getId(), target.getId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
 		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
@@ -67,8 +68,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode factor1 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode factor2 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage linkage1 = model.createLinkage(idAssigner.takeNextId(), factor1.getId(), target.getId());
-		DiagramLinkage linkage2 = model.createLinkage(idAssigner.takeNextId(), factor2.getId(), target.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), factor1.getId(), target.getId());
+		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), factor2.getId(), target.getId());
 		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
@@ -94,7 +95,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		model.createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
+		createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
@@ -108,9 +109,9 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link1 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link2 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		DiagramLinkage link2 = createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		Vector linkages = model.getAllLinkages();
 		assertEquals(2, linkages.size());
@@ -148,7 +149,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link1 = model.createLinkage(IdAssigner.INVALID_ID, node2.getId(), node3.getId());
+		DiagramLinkage link1 = createLinkage(IdAssigner.INVALID_ID, node2.getId(), node3.getId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -186,6 +187,12 @@ public class TestDiagramModel extends EAMTestCase
 		ConceptualModelNode cmObject = Project.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
 		return model.createNode(cmObject);
+	}
+	
+	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
+	{
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
+		return model.createLinkage(cmLinkage);
 	}
 
 

@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
@@ -141,14 +142,12 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		DiagramLinkage linkage1 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		DiagramLinkage linkage2 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -171,12 +170,10 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedNodes() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
-
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		
-		DiagramLinkage linkage1 = model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
@@ -200,8 +197,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -371,8 +368,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		model.createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -404,6 +401,14 @@ public class TestProject extends EAMTestCase
 		cmObject.setId(idAssigner.takeNextId());
 		return project.getDiagramModel().createNode(cmObject);
 	}
+	
+	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
+	{
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
+		return project.getDiagramModel().createLinkage(cmLinkage);
+	}
+
+
 
 	ProjectForTesting project;
 	IdAssigner idAssigner;

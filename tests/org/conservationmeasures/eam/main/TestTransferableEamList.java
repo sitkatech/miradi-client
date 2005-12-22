@@ -9,12 +9,14 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -44,28 +46,31 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransferData() throws Exception
 	{
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
-		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+		DiagramModel model = new DiagramModel();
 
 		int node1Id = 1;
-		String node1Text = "Target 1";
+		String node1Text = "Intervention 1";
 		Point node1Location = new Point(1,2);
-		DiagramNode node1 = DiagramNode.wrapConceptualModelObject(cmIntervention);
+		
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(node1Id);
+		DiagramNode node1 = model.createNode(cmIntervention);
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
 		
 		int node2Id = 2;
-		String node2Text = "Factor 1";
+		String node2Text = "Target 1";
 		Point node2Location = new Point(2,3);
 		
-		DiagramNode node2 = DiagramNode.wrapConceptualModelObject(cmTarget);
+		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(node2Id);
+		DiagramNode node2 = model.createNode(cmTarget);
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);
 		
 		int linkage1Id = 3;
-		DiagramLinkage linkage1 = new DiagramLinkage(node2, node1);
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(linkage1Id, node1Id, node2Id);
+		DiagramLinkage linkage1 = new DiagramLinkage(model, cmLinkage);
 		linkage1.setId(linkage1Id);
 		
 		EAMGraphCell dataCells[] = {node1, node2, linkage1};
@@ -88,7 +93,7 @@ public class TestTransferableEamList extends EAMTestCase
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());
-		assertEquals(node2Id, linkagesData[0].getFromId());
-		assertEquals(node1Id, linkagesData[0].getToId());
+		assertEquals(node1Id, linkagesData[0].getFromId());
+		assertEquals(node2Id, linkagesData[0].getToId());
 	}
 }

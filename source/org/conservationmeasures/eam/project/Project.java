@@ -362,7 +362,7 @@ public class Project
 		int realId = idAssigner.obtainRealId(requestedLinkageId);
 		DiagramModel model = getDiagramModel();
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, linkFromId, linkToId);
-		DiagramLinkage linkage = model.createLinkage(realId, linkFromId, linkToId);
+		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		int insertedLinkageId = linkage.getId();
 		database.writeLinkage(cmLinkage);
 		return insertedLinkageId;

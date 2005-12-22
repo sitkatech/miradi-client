@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultPort;
@@ -16,8 +18,10 @@ import org.jgraph.graph.GraphConstants;
 
 public class DiagramLinkage extends EAMGraphCell implements Edge
 {
-	public DiagramLinkage(DiagramNode from, DiagramNode to)
+	public DiagramLinkage(DiagramModel model, ConceptualModelLinkage cmLinkage) throws Exception
 	{
+		DiagramNode from = model.getNodeById(cmLinkage.getFromNodeId());
+		DiagramNode to = model.getNodeById(cmLinkage.getToNodeId());
 		setSource(from.getPort());
 		setTarget(to.getPort());
 		id = IdAssigner.INVALID_ID;
