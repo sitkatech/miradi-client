@@ -102,10 +102,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramLinkage createLinkage(ConceptualModelLinkage cmLinkage) throws Exception
 	{
-		int linkageId = cmLinkage.getId();
-		
 		DiagramLinkage linkage = new DiagramLinkage(this, cmLinkage);
-		linkage.setId(linkageId);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);
 		ConnectionSet cs = linkage.getConnectionSet();

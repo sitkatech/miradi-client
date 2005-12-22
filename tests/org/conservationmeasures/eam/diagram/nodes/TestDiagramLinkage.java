@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -60,10 +59,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		int id = 5;
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
-		assertEquals(IdAssigner.INVALID_ID,linkage.getId());
-		int otherId = 243;
-		linkage.setId(otherId);
-		assertEquals(otherId, linkage.getId());
+		assertEquals(id, linkage.getId());
 	}
 	
 	public void testLinkNodes() throws Exception

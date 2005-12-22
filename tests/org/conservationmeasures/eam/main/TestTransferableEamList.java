@@ -71,7 +71,6 @@ public class TestTransferableEamList extends EAMTestCase
 		int linkage1Id = 3;
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(linkage1Id, node1Id, node2Id);
 		DiagramLinkage linkage1 = new DiagramLinkage(model, cmLinkage);
-		linkage1.setId(linkage1Id);
 		
 		EAMGraphCell dataCells[] = {node1, node2, linkage1};
 		TransferableEamList eamList = new TransferableEamList(dataCells);

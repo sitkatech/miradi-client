@@ -10,7 +10,6 @@ import java.awt.Color;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
@@ -20,11 +19,11 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 {
 	public DiagramLinkage(DiagramModel model, ConceptualModelLinkage cmLinkage) throws Exception
 	{
+		underlyingObject = cmLinkage;
 		DiagramNode from = model.getNodeById(cmLinkage.getFromNodeId());
 		DiagramNode to = model.getNodeById(cmLinkage.getToNodeId());
 		setSource(from.getPort());
 		setTarget(to.getPort());
-		id = IdAssigner.INVALID_ID;
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
@@ -80,14 +79,9 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		toPort = (DefaultPort)target;
 	}
 
-	public void setId(int idToUse)
-	{
-		id = idToUse;
-	}
-
 	public int getId()
 	{
-		return id;
+		return underlyingObject.getId();
 	}
 
 	public LinkageDataMap createLinkageDataMap()
@@ -99,7 +93,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return dataMap;
 	}
 	
+	private ConceptualModelLinkage underlyingObject;
 	private DefaultPort fromPort;
 	private DefaultPort toPort;
-	protected int id;
 }
