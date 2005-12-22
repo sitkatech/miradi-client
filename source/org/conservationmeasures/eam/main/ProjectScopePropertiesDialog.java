@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;

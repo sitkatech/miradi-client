@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 
 public class ThreatPriorityIcon extends EamIcon 
 {

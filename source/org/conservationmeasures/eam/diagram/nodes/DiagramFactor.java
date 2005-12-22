@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+
 public class DiagramFactor extends DiagramNode
 {
 	public DiagramFactor(ConceptualModelFactor cmFactor)

@@ -6,12 +6,13 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.utils.DataMap;
 
 
 public class NodeDataMap extends DataMap 

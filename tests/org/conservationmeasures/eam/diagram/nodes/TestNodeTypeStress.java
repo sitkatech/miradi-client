@@ -7,7 +7,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeStress extends EAMTestCase 

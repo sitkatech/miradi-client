@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.diagram.nodes.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 
 public class RectangleWithPriorityRenderer extends RectangleRenderer
 {

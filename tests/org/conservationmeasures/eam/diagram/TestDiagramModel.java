@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.ConceptualModelObject;
-import org.conservationmeasures.eam.diagram.nodes.ConceptualModelTarget;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;

@@ -26,12 +26,12 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import org.conservationmeasures.eam.annotations.NodeAnnotation;
+import org.conservationmeasures.eam.annotations.NodeAnnotations;
+import org.conservationmeasures.eam.annotations.ProjectVisionAnnotation;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.NodeAnnotation;
-import org.conservationmeasures.eam.diagram.nodes.NodeAnnotations;
-import org.conservationmeasures.eam.diagram.nodes.ProjectVisionAnnotation;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;

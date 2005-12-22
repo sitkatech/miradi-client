@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestEamGraphicCell extends EAMTestCase

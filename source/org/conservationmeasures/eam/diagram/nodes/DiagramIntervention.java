@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+
 public class DiagramIntervention extends DiagramNode
 {
 	public DiagramIntervention(ConceptualModelIntervention cmIntervention)

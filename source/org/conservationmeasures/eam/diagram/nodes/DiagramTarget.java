@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+
 public class DiagramTarget extends DiagramNode
 {
 	public DiagramTarget(ConceptualModelTarget cmTarget)

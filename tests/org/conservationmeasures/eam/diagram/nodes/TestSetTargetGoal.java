@@ -6,6 +6,8 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.annotations.Goal;
+import org.conservationmeasures.eam.annotations.Goals;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;

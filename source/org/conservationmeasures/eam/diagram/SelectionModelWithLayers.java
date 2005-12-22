@@ -9,7 +9,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphSelectionModel;
 

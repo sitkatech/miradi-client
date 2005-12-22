@@ -12,12 +12,22 @@ import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeStress;
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
+import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.NodeAnnotations;
+import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 

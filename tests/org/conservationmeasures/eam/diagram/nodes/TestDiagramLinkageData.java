@@ -1,5 +1,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 

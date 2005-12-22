@@ -7,8 +7,12 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.DataMap;
 
 public class TestDiagramNodeData extends EAMTestCase 
 {

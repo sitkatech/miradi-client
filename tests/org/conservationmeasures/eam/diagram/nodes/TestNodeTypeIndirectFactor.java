@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeIndirectFactor extends EAMTestCase 

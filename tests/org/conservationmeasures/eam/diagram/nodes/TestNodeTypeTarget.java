@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeTarget extends EAMTestCase 

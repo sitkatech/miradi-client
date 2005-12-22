@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodes.types.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeDirectThreat extends EAMTestCase 

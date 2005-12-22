@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.EventObject;
 
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 
 public class DiagramModelEvent extends EventObject 
 {

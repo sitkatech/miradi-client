@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.annotations.Indicator;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;

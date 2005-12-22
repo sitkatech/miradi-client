@@ -1,0 +1,23 @@
+/*
+ * Copyright 2005, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+
+package org.conservationmeasures.eam.annotations;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+
+
+public class ProjectVisionAnnotation extends NodeAnnotations
+{
+	public void readDataFrom(DataInputStream dataIn) throws IOException
+	{
+	}
+
+	public boolean equals(Object obj)
+	{
+		return false;
+	}
+}

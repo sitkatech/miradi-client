@@ -14,7 +14,6 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.EAMGraphCell;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.GraphConstants;
 
