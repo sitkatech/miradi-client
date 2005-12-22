@@ -4,27 +4,28 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.json.JSONObject;
 
-public class LinkageData 
+public class ConceptualModelLinkage 
 {
-	public LinkageData(DiagramLinkage linkage) throws Exception
+	public ConceptualModelLinkage(DiagramLinkage linkage) throws Exception
 	{
 		this(linkage.getId(), linkage.getFromNode().getId(), linkage.getToNode().getId());
 	}
 	
-	public LinkageData(JSONObject jsonObject) throws ParseException 
+	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
 	{
 		// TODO: Verify that it's the right kind of object!
 		// TODO: Maybe only copy fields that we know about?
 		json = jsonObject;
 	}
 	
-	public LinkageData(int id, int fromId, int toId)
+	public ConceptualModelLinkage(int id, int fromId, int toId)
 	{
 		json = new JSONObject();
 		json.put(TAG_JSON_TYPE, JSON_TYPE_LINKAGE);

@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -41,7 +40,8 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
@@ -267,10 +267,10 @@ public class Project
 	
 	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws CommandFailedException 
 	{
-		LinkageData[] links = list.getLinkageDataCells();
+		ConceptualModelLinkage[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
 		{
-			LinkageData linkageData = links[i];
+			ConceptualModelLinkage linkageData = links[i];
 			
 			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
 			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
@@ -340,7 +340,7 @@ public class Project
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
 		int realId = idAssigner.obtainRealId(requestedId);
-		ConceptualModelObject cmObject = createConceptualModelObject(typeToInsert);
+		ConceptualModelNode cmObject = createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(cmObject);
@@ -362,7 +362,7 @@ public class Project
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(realId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
-		database.writeLinkage(new LinkageData(linkage));
+		database.writeLinkage(new ConceptualModelLinkage(linkage));
 		return insertedLinkageId;
 	}
 	
@@ -604,7 +604,7 @@ public class Project
 		return database;
 	}
 	
-	public static ConceptualModelObject createConceptualModelObject(NodeType nodeType)
+	public static ConceptualModelNode createConceptualModelObject(NodeType nodeType)
 	{
 		if(nodeType.isIntervention())
 			return new ConceptualModelIntervention();

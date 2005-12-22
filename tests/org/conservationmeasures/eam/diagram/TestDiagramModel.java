@@ -11,7 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
@@ -176,14 +176,14 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private DiagramNode createTarget() throws Exception
 	{
-		ConceptualModelObject cmTarget = new ConceptualModelTarget();
+		ConceptualModelNode cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(idAssigner.takeNextId());
 		return model.createNode(cmTarget);
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
+		ConceptualModelNode cmObject = Project.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
 		return model.createNode(cmObject);
 	}

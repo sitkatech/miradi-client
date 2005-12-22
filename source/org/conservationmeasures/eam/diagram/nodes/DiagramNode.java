@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.jgraph.graph.DefaultPort;
@@ -33,7 +33,7 @@ import org.jgraph.graph.GraphConstants;
 
 abstract public class DiagramNode extends EAMGraphCell
 {
-	public static DiagramNode wrapConceptualModelObject(ConceptualModelObject cmObject)
+	public static DiagramNode wrapConceptualModelObject(ConceptualModelNode cmObject)
 	{
 		if(cmObject.isIntervention())
 			return new DiagramIntervention((ConceptualModelIntervention)cmObject);
@@ -45,7 +45,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
 
-	protected DiagramNode(ConceptualModelObject cmObjectToUse)
+	protected DiagramNode(ConceptualModelNode cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
 		
@@ -331,6 +331,6 @@ abstract public class DiagramNode extends EAMGraphCell
 	Dimension previousSize;
 	Point previousLocation;
 	
-	ConceptualModelObject underlyingObject;
+	ConceptualModelNode underlyingObject;
 }
 

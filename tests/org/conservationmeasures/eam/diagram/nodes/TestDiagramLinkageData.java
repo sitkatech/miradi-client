@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
@@ -15,7 +16,7 @@ public class TestDiagramLinkageData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		int id = 1;
-		LinkageData linkageData = createSampleLinkageData(id);
+		ConceptualModelLinkage linkageData = createSampleLinkageData(id);
 		assertEquals("Id not the same?", id, linkageData.getId());
 		assertEquals("From Node Ids don't match", nodeBId, linkageData.getFromNodeId());
 		assertEquals("To Node Ids don't match", nodeAId, linkageData.getToNodeId());
@@ -24,15 +25,15 @@ public class TestDiagramLinkageData extends EAMTestCase
 	public void testToJson() throws Exception
 	{
 		int id = 1;
-		LinkageData original = createSampleLinkageData(id);
+		ConceptualModelLinkage original = createSampleLinkageData(id);
 		JSONObject json = original.toJson();
-		LinkageData gotBack = new LinkageData(json);
+		ConceptualModelLinkage gotBack = new ConceptualModelLinkage(json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), gotBack.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), gotBack.getToNodeId());
 	}
 	
-	private LinkageData createSampleLinkageData(int id) throws Exception
+	private ConceptualModelLinkage createSampleLinkageData(int id) throws Exception
 	{
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
@@ -47,7 +48,7 @@ public class TestDiagramLinkageData extends EAMTestCase
 		
 		DiagramLinkage linkage = new DiagramLinkage(nodeB, nodeA);
 		linkage.setId(id);
-		LinkageData linkageData = new LinkageData(linkage);
+		ConceptualModelLinkage linkageData = new ConceptualModelLinkage(linkage);
 		return linkageData;
 	}
 	

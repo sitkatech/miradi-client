@@ -12,7 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -37,9 +37,9 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		LinkageData original = new LinkageData(1, 2, 3);
+		ConceptualModelLinkage original = new ConceptualModelLinkage(1, 2, 3);
 		storage.writeLinkage(original);
-		LinkageData got = storage.readLinkage(original.getId());
+		ConceptualModelLinkage got = storage.readLinkage(original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
@@ -55,7 +55,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		LinkageData original = new LinkageData(1, 2, 3);
+		ConceptualModelLinkage original = new ConceptualModelLinkage(1, 2, 3);
 		storage.writeLinkage(original);
 		storage.deleteLinkage(original.getId());
 		assertEquals("didn't delete?", 0, storage.readLinkageManifest().size());

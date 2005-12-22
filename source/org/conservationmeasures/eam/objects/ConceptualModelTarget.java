@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 
 
-public class ConceptualModelTarget extends ConceptualModelObject
+public class ConceptualModelTarget extends ConceptualModelNode
 {
 	public ConceptualModelTarget()
 	{

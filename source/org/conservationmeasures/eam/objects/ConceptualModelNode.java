@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.project.IdAssigner;
 
-public class ConceptualModelObject
+public class ConceptualModelNode
 {
-	public ConceptualModelObject(NodeType nodeType)
+	public ConceptualModelNode(NodeType nodeType)
 	{
 		type = nodeType;
 		

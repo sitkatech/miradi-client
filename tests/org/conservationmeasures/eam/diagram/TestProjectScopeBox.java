@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.objects.ConceptualModelObject;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -65,7 +65,7 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		ConceptualModelObject cmObject = Project.createConceptualModelObject(nodeType);
+		ConceptualModelNode cmObject = Project.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
 		return model.createNode(cmObject);
 	}

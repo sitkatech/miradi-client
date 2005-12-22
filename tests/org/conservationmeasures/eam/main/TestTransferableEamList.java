@@ -12,9 +12,9 @@ import java.awt.datatransfer.DataFlavor;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -74,7 +74,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertNotNull(eamTransferData);
 		
 		NodeDataMap[] nodesData = eamTransferData.getNodeDataCells();
-		LinkageData[] linkagesData = eamTransferData.getLinkageDataCells();
+		ConceptualModelLinkage[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
 		assertEquals(node1Id, nodesData[0].getInt(DiagramNode.TAG_ID));

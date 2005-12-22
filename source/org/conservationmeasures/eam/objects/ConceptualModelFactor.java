@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 
-public class ConceptualModelFactor extends ConceptualModelObject
+public class ConceptualModelFactor extends ConceptualModelNode
 {
 	public ConceptualModelFactor(NodeType nodeType)
 	{

@@ -14,9 +14,9 @@ import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.diagram.nodes.LinkageData;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 
@@ -158,16 +158,16 @@ public class ProjectServer
 		return script.exists();
 	}
 	
-	public void writeLinkage(LinkageData linkage) throws IOException, ParseException
+	public void writeLinkage(ConceptualModelLinkage linkage) throws IOException, ParseException
 	{
 		int id = linkage.getId();
 		JSONFile.write(getLinkageFile(id), linkage.toJson());
 		addToLinkageManifest(id);
 	}
 
-	public LinkageData readLinkage(int id) throws IOException, ParseException
+	public ConceptualModelLinkage readLinkage(int id) throws IOException, ParseException
 	{
-		return new LinkageData(JSONFile.read(getLinkageFile(id)));
+		return new ConceptualModelLinkage(JSONFile.read(getLinkageFile(id)));
 	}
 	
 	public void deleteLinkage(int id) throws IOException, ParseException
