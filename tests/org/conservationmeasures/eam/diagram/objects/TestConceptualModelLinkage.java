@@ -1,14 +1,16 @@
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.objects;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 
-public class TestDiagramLinkageData extends EAMTestCase
+public class TestConceptualModelLinkage extends EAMTestCase
 {
-	public TestDiagramLinkageData(String name) 
+	public TestConceptualModelLinkage(String name) 
 	{
 		super(name);
 	}

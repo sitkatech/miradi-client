@@ -3,13 +3,13 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.annotations.Indicator;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 

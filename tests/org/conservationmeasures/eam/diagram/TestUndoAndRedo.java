@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandDoNothing;
@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandUndo;
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;

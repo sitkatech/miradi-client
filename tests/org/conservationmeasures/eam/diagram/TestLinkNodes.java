@@ -3,22 +3,23 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestCommandLinkNodes extends EAMTestCase
+public class TestLinkNodes extends EAMTestCase
 {
-	public TestCommandLinkNodes(String name)
+	public TestLinkNodes(String name)
 	{
 		super(name);
 	}
 
-	public void testInsertConnection() throws Exception
+	public void testLinkNodes() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();

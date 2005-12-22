@@ -4,14 +4,14 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestEamGraphicCell extends EAMTestCase
+public class TestEamGraphCell extends EAMTestCase
 {
-	public TestEamGraphicCell(String name) 
+	public TestEamGraphCell(String name) 
 	{
 		super(name);
 	}

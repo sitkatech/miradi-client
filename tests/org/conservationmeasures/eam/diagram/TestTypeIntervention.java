@@ -4,7 +4,7 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.testall.EAMTestCase;
