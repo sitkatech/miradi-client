@@ -321,11 +321,11 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final int INT_TYPE_DIRECT_THREAT = 4;
 	public static final int INT_TYPE_STRESS = 5;
 
-	public static final String TAG_ID = "id";
-	public static final String TAG_LOCATION = "location";
+	public static final String TAG_ID = "Id";
+	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
-	public static final String TAG_VISIBLE_LABEL = "text";
+	public static final String TAG_VISIBLE_LABEL = "Text";
 
 	DefaultPort port;
 	Dimension previousSize;

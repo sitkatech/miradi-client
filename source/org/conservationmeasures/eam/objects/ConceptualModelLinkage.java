@@ -8,16 +8,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.json.JSONObject;
 
 public class ConceptualModelLinkage 
 {
-	public ConceptualModelLinkage(DiagramLinkage linkage) throws Exception
-	{
-		this(linkage.getId(), linkage.getFromNode().getId(), linkage.getToNode().getId());
-	}
-	
 	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
 	{
 		// TODO: Verify that it's the right kind of object!

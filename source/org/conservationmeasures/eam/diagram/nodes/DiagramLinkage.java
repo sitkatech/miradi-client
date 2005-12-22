@@ -86,6 +86,15 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return id;
 	}
 
+	public LinkageDataMap createLinkageDataMap()
+	{
+		LinkageDataMap dataMap = new LinkageDataMap();
+		dataMap.setId(getId());
+		dataMap.setFromId(getFromNode().getId());
+		dataMap.setToId(getToNode().getId());
+		return dataMap;
+	}
+	
 	private DefaultPort fromPort;
 	private DefaultPort toPort;
 	protected int id;

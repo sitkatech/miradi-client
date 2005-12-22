@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -267,16 +268,16 @@ public class Project
 	
 	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws CommandFailedException 
 	{
-		ConceptualModelLinkage[] links = list.getLinkageDataCells();
+		LinkageDataMap[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
 		{
-			ConceptualModelLinkage linkageData = links[i];
+			LinkageDataMap linkageData = links[i];
 			
-			int newFromId = dataHelper.getNewId(linkageData.getFromNodeId());
-			int newToId = dataHelper.getNewId(linkageData.getToNodeId());
+			int newFromId = dataHelper.getNewId(linkageData.getFromId());
+			int newToId = dataHelper.getNewId(linkageData.getToId());
 			if(newFromId == IdAssigner.INVALID_ID || newToId == IdAssigner.INVALID_ID)
 			{
-				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromNodeId() + " to OriginalId:" + linkageData.getToNodeId()+" node deleted?");	
+				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
 			}
 			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
@@ -360,9 +361,10 @@ public class Project
 	{
 		int realId = idAssigner.obtainRealId(requestedLinkageId);
 		DiagramModel model = getDiagramModel();
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, linkFromId, linkToId);
 		DiagramLinkage linkage = model.createLinkage(realId, linkFromId, linkToId);
 		int insertedLinkageId = linkage.getId();
-		database.writeLinkage(new ConceptualModelLinkage(linkage));
+		database.writeLinkage(cmLinkage);
 		return insertedLinkageId;
 	}
 	
