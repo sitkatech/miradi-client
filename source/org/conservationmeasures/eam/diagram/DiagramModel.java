@@ -121,7 +121,7 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
 	}
 	
-	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode)
+	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
 		Vector allLinkages = cellInventory.getAllLinkages();
 		for(int i=0; i < allLinkages.size(); ++i)

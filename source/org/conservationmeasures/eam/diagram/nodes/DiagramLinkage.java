@@ -11,19 +11,15 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.jgraph.graph.ConnectionSet;
-import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramLinkage extends EAMGraphCell implements Edge
 {
-	public DiagramLinkage(DiagramModel model, ConceptualModelLinkage cmLinkage) throws Exception
+	public DiagramLinkage(DiagramModel modelToUse, ConceptualModelLinkage cmLinkage) throws Exception
 	{
+		model = modelToUse;
 		underlyingObject = cmLinkage;
-		DiagramNode from = model.getNodeById(cmLinkage.getFromNodeId());
-		DiagramNode to = model.getNodeById(cmLinkage.getToNodeId());
-		setSource(from.getPort());
-		setTarget(to.getPort());
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
@@ -35,16 +31,32 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	
 	public ConnectionSet getConnectionSet()
 	{
-		return new ConnectionSet(this, fromPort, toPort);		
+		return new ConnectionSet(this, getSource(), getTarget());		
 	}
 
 	public DiagramNode getFromNode()
 	{
-		return (DiagramNode)fromPort.getParent();
+		try
+		{
+			return model.getNodeById(getFromId());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			throw new RuntimeException("From node not found");
+		}
 	}
 	public DiagramNode getToNode()
 	{
-		return (DiagramNode)toPort.getParent();
+		try
+		{
+			return model.getNodeById(getToId());
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			throw new RuntimeException("To node not found");
+		}
 	}
 	
 	private void fillConnectorAttributeMap(String label)
@@ -61,39 +73,48 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 
 	public Object getSource()
 	{
-		return fromPort;
+		return getFromNode().getPort();
 	}
 
 	public Object getTarget()
 	{
-		return toPort;
+		return getToNode().getPort();
 	}
 
 	public void setSource(Object source)
 	{
-		fromPort = (DefaultPort)source;
+		// not allowed--ignore attempts to reset the source
 	}
 
 	public void setTarget(Object target)
 	{
-		toPort = (DefaultPort)target;
+		// not allowed--ignore attempts to reset the target
 	}
 
 	public int getId()
 	{
 		return underlyingObject.getId();
 	}
-
+	
+	public int getFromId()
+	{
+		return underlyingObject.getFromNodeId();
+	}
+	
+	public int getToId()
+	{
+		return underlyingObject.getToNodeId();
+	}
+	
 	public LinkageDataMap createLinkageDataMap()
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
 		dataMap.setId(getId());
-		dataMap.setFromId(getFromNode().getId());
-		dataMap.setToId(getToNode().getId());
+		dataMap.setFromId(getFromId());
+		dataMap.setToId(getToId());
 		return dataMap;
 	}
 	
+	private DiagramModel model;
 	private ConceptualModelLinkage underlyingObject;
-	private DefaultPort fromPort;
-	private DefaultPort toPort;
 }

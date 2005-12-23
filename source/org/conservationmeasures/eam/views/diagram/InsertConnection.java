@@ -40,21 +40,23 @@ public class InsertConnection extends ProjectDoer
 			return;
 		}
 		
-		if(model.hasLinkage(dialog.getFrom(), dialog.getTo()))
-		{
-			String[] body = {EAM.text("Those nodes are already linked"), };
-			EAM.okDialog(EAM.text("Can't Create Link"), body);
-			return;
-		}
-		
 		try
 		{
-			CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
-			getProject().executeCommand(command);
+			if(model.hasLinkage(dialog.getFrom(), dialog.getTo()))
+			{
+				String[] body = {EAM.text("Those nodes are already linked"), };
+				EAM.okDialog(EAM.text("Can't Create Link"), body);
+				return;
+			}
 		}
-		catch (CommandFailedException e)
+		catch (Exception e)
 		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
 		}
+		
+		CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
+		getProject().executeCommand(command);
 	}
 
 }
