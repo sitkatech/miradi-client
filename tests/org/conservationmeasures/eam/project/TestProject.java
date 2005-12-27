@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -384,6 +383,30 @@ public class TestProject extends EAMTestCase
 		assertEquals(4, nodes.size());
 		assertEquals(2, model.getAllLinkages().size());
 	}
+	
+	public void testCutAndPaste() throws Exception
+	{
+		assertEquals("objects already in the pool?", 0, project.getObjectPool().size());
+		DiagramModel model = project.getDiagramModel();
+
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+
+		Object[] selectedCells = new DiagramNode[] {node1};
+		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		
+		project.deleteNode(node1.getId());
+		
+		assertEquals("objects not still in the pool?", 1, project.getObjectPool().size());
+
+		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		Vector nodes = model.getAllNodes();
+		assertEquals(1, nodes.size());
+		DiagramNode pastedNode = (DiagramNode)nodes.get(0);
+		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
+		assertNotEquals("didn't change id?", node1.getId(), pastedNode.getId());
+		
+		assertEquals("both objects not in the pool?", 2, project.getObjectPool().size());
+	}
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
@@ -397,9 +420,8 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		ConceptualModelNode cmObject = Project.createConceptualModelObject(nodeType);
-		cmObject.setId(idAssigner.takeNextId());
-		return project.getDiagramModel().createNode(cmObject);
+		int insertedId = project.insertNodeAtId(nodeType, IdAssigner.INVALID_ID);
+		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
 	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception

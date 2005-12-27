@@ -18,15 +18,19 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class DiagramModel extends DefaultGraphModel
 {
-	public DiagramModel()
+	public DiagramModel(ObjectPool objectPoolToUse)
 	{
+		objectPool = objectPoolToUse;
 		cellInventory = new CellInventory();
 	}
 	
@@ -36,7 +40,7 @@ public class DiagramModel extends DefaultGraphModel
 			remove(new Object[] {getRootAt(0)});
 		cellInventory.clear();
 		projectScopeBox = new ProjectScopeBox(this);
-		insertCell(projectScopeBox);
+		insertCellIntoGraph(projectScopeBox);
 	}
 	
 	public ProjectScopeBox getProjectScopeBox()
@@ -44,16 +48,22 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 
-	public DiagramNode createNode(ConceptualModelNode cmObject) throws Exception
+	public DiagramNode createNode(int id) throws Exception
 	{
+		ConceptualModelNode cmObject = objectPool.find(id);
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
-		insertCell(node);
-		cellInventory.addNode(node);
-		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
+		addNodeToModel(node);
 		return node;
 	}
 
-	private void insertCell(DefaultGraphCell cell)
+	private void addNodeToModel(DiagramNode node) throws Exception
+	{
+		insertCellIntoGraph(node);
+		cellInventory.addNode(node);
+		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
+	}
+
+	private void insertCellIntoGraph(DefaultGraphCell cell)
 	{
 		Object[] cells = new Object[] {cell};
 		Hashtable nestedAttributeMap = getNestedAttributeMap(cell);
@@ -228,6 +238,45 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
+	public JSONObject toJson()
+	{
+		JSONObject nodeMap = new JSONObject();
+		Vector nodes = getAllNodes();
+		for(int i=0; i < nodes.size(); ++i)
+		{
+			DiagramNode node = (DiagramNode)nodes.get(i);
+			nodeMap.put(Integer.toString(node.getId()), node.toJson());
+		}
+		JSONObject json = new JSONObject();
+		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);
+		json.put(TAG_NODES, nodeMap);
+		return json;
+	}
+	
+	public void fillFrom(JSONObject json) throws Exception
+	{
+		JSONObject nodeMap = json.getJSONObject(TAG_NODES);
+		JSONArray keys = nodeMap.names();
+		for(int i=0; i < keys.length(); ++i)
+		{
+			String key = keys.getString(i);
+			int id = Integer.parseInt(key);
+			JSONObject nodeJson = nodeMap.getJSONObject(key);
+
+			ConceptualModelNode cmObject = objectPool.find(id);
+			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
+			node.fillFrom(nodeJson);
+			
+			addNodeToModel(node);
+		}
+	}
+	
+	private static final String TAG_TYPE = "Type";
+	private static final String TAG_NODES = "Nodes";
+	
+	private static final String JSON_TYPE_DIAGRAM = "Diagram";
+	
+	ObjectPool objectPool;
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();

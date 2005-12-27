@@ -15,8 +15,10 @@ import org.conservationmeasures.eam.annotations.Indicator;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
+import org.json.JSONObject;
 
 public class TestDiagramNode extends EAMTestCase
 {
@@ -31,7 +33,7 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(DiagramNode.TYPE_INDIRECT_FACTOR);
 		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
 		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
-		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+		cmTarget = new ConceptualModelTarget();
 
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
@@ -131,10 +133,27 @@ public class TestDiagramNode extends EAMTestCase
 		Font nodeFont = GraphConstants.getFont(targetAttributeMap);
 		assertTrue("not bold?", nodeFont.isBold());
 	}
+	
+	public void testJson() throws Exception
+	{
+		target.setLocation(new Point(100, 200));
+		target.setSize(new Dimension(50, 75));
+		target.setText("testing");
+		target.setNodePriority(ThreatPriority.createPriorityHigh());
+		
+		DiagramNode got = new DiagramTarget(cmTarget);
+		JSONObject json = target.toJson();
+		got.fillFrom(json);
+		
+		assertEquals("location", target.getLocation(), got.getLocation());
+		assertEquals("size", target.getSize(), got.getSize());
+		assertEquals("text", target.getText(), got.getText());
+	}
 
 	static final double TOLERANCE = 0.00;
 	static final String sampleText = "<rest&relaxation>";
 	
+	ConceptualModelTarget cmTarget;
 	DiagramNode intervention;
 	DiagramNode indirectFactor;
 	DiagramNode directThreat;

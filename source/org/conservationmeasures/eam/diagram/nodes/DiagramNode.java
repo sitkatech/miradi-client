@@ -11,6 +11,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.Goals;
 import org.conservationmeasures.eam.annotations.Indicator;
@@ -28,8 +29,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.utils.DataMap;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
+import org.json.JSONObject;
 
 abstract public class DiagramNode extends EAMGraphCell
 {
@@ -297,14 +300,32 @@ abstract public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = new NodeDataMap();
-		dataMap.putNodeType(getType());
 		dataMap.putInt(TAG_ID, getId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
+		dataMap.putDimension(TAG_SIZE, getSize());
 		dataMap.putString(TAG_VISIBLE_LABEL, getText());
 		
 		int priorityValue = getThreatPriority().getValue();
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
+	}
+	
+	public JSONObject toJson()
+	{
+		DataMap dataMap = new DataMap();
+		dataMap.putInt(TAG_ID, getId());
+		dataMap.putPoint(TAG_LOCATION, getLocation());
+		dataMap.putDimension(TAG_SIZE, getSize());
+		dataMap.putString(TAG_VISIBLE_LABEL, getText());
+		return dataMap;
+	}
+	
+	public void fillFrom(JSONObject json) throws ParseException
+	{
+		NodeDataMap dataMap = new NodeDataMap(json);
+		setLocation(dataMap.getPoint(TAG_LOCATION));
+		setSize(dataMap.getDimension(TAG_SIZE));
+		setText(dataMap.getString(TAG_VISIBLE_LABEL));
 	}
 	
 	public static final NodeType TYPE_INVALID = null;
@@ -323,6 +344,7 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LOCATION = "Location";
+	public static final String TAG_SIZE = "Size";
 	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_VISIBLE_LABEL = "Text";

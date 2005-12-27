@@ -6,6 +6,8 @@
 
 package org.conservationmeasures.eam.diagram.nodes;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
@@ -13,20 +15,18 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
+import org.json.JSONObject;
 
 
 public class NodeDataMap extends DataMap 
 {
-	public NodeType getNodeType()
+	public NodeDataMap()
 	{
-		int rawType = getInt(DiagramNode.TAG_NODE_TYPE);
-		return convertIntToNodeType(rawType);
 	}
 	
-	public void putNodeType(NodeType type)
+	public NodeDataMap(JSONObject copyFrom) throws ParseException
 	{
-		int rawType = convertNodeTypeToInt(type);
-		putInt(DiagramNode.TAG_NODE_TYPE, rawType);
+		super(copyFrom);
 	}
 	
 	public static NodeType convertIntToNodeType(int rawType)

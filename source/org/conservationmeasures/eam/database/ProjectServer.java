@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -114,6 +115,7 @@ public class ProjectServer
 		clear();
 		topDirectory = directory;
 		getLinkagesDirectory().mkdirs();
+		getDiagramsDirectory().mkdirs();
 		name = topDirectory.getName();
 	}
 	
@@ -176,6 +178,16 @@ public class ProjectServer
 		getLinkageFile(id).delete();
 	}
 	
+	public void writeDiagram(DiagramModel model) throws IOException
+	{
+		JSONFile.write(getDiagramFile(), model.toJson());
+	}
+	
+	public void readDiagram(DiagramModel model) throws Exception
+	{
+		model.fillFrom(JSONFile.read(getDiagramFile()));
+	}
+	
 	private void removeFromLinkageManifest(int idToRemove) throws IOException, ParseException
 	{
 		LinkageManifest manifest = readLinkageManifest();
@@ -219,6 +231,11 @@ public class ProjectServer
 		return new File(getJsonDirectory(), "linkages");
 	}
 	
+	private File getDiagramsDirectory()
+	{
+		return new File(getJsonDirectory(), "diagrams");
+	}
+	
 	private File getLinkageManifestFile()
 	{
 		return new File(getLinkagesDirectory(), "manifest");
@@ -227,6 +244,11 @@ public class ProjectServer
 	private File getLinkageFile(int id)
 	{
 		return new File(getLinkagesDirectory(), Integer.toString(id));
+	}
+	
+	private File getDiagramFile()
+	{
+		return new File(getDiagramsDirectory(), "main");
 	}
 	
 	protected void createCommandsTable() throws IOException

@@ -66,7 +66,8 @@ public class Project
 		database = databaseToUse;
 		
 		idAssigner = new IdAssigner(); 
-		diagramModel = new DiagramModel();
+		objectPool = new ObjectPool();
+		diagramModel = new DiagramModel(objectPool);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		currentView = NoProjectView.getViewName();
@@ -96,6 +97,10 @@ public class Project
 		return EAM.text("[No Project]");
 	}
 
+	public ObjectPool getObjectPool()
+	{
+		return objectPool;
+	}
 	
 	public boolean isOpen()
 	{
@@ -243,10 +248,12 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			CommandInsertNode newNode = new CommandInsertNode(nodeData.getNodeType());
+			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
+			
+			ConceptualModelNode cmObject = objectPool.find(originalNodeId); 
+			CommandInsertNode newNode = new CommandInsertNode(cmObject.getType());
 			executeCommand(newNode);
 
-			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
 			int newNodeId = newNode.getId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
@@ -335,6 +342,13 @@ public class Project
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
 		NodeType nodeType = nodeToDelete.getType();
 		model.deleteNode(nodeToDelete);
+		
+		// TODO: For now, delete only deletes the DiagramNode, and 
+		// not the underlying CM object. That's so we can do a cut/paste
+		// without getting an error.
+		// I'm not sure what the proper long-term solution is.
+		//objectPool.remove(idToDelete);
+		
 		return nodeType; 
 	}
 
@@ -343,8 +357,10 @@ public class Project
 		int realId = idAssigner.obtainRealId(requestedId);
 		ConceptualModelNode cmObject = createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
+		objectPool.put(cmObject);
+		
 		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.createNode(cmObject);
+		DiagramNode node = model.createNode(realId);
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
@@ -622,6 +638,7 @@ public class Project
 	
 	public static final int DEFAULT_GRID_SIZE = 15;
 
+	ObjectPool objectPool;
 	ProjectServer database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;

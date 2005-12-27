@@ -11,8 +11,13 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -65,6 +70,39 @@ public class TestProjectServer extends EAMTestCase
 		}
 		catch(IOException ignoreExpected)
 		{
+		}
+	}
+	
+	public void testWriteAndReadDiagram() throws Exception
+	{
+		IdAssigner idAssigner = new IdAssigner();
+		ObjectPool objectPool = new ObjectPool();
+		
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
+		cmIntervention.setId(idAssigner.takeNextId());
+		objectPool.put(cmIntervention);
+
+		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
+		cmTarget.setId(idAssigner.takeNextId());
+		objectPool.put(cmTarget);
+		
+		DiagramModel model = new DiagramModel(objectPool);
+		model.createNode(cmIntervention.getId());
+		model.createNode(cmTarget.getId());
+		
+		storage.writeDiagram(model);
+		
+		DiagramModel got = new DiagramModel(objectPool); 
+		storage.readDiagram(got);
+		Vector gotNodes = got.getAllNodes();
+		Vector expectedNodes = model.getAllNodes();
+		assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
+		for(int i=0; i < gotNodes.size(); ++i)
+		{
+			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
+			int gotId = gotNode.getId();
+			DiagramNode expectedNode = model.getNodeById(gotId);
+			assertEquals("node data not right?", expectedNode.getText(), gotNode.getText());
 		}
 	}
 

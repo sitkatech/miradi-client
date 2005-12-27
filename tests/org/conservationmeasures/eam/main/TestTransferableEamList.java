@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -46,7 +47,8 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransferData() throws Exception
 	{
-		DiagramModel model = new DiagramModel();
+		ObjectPool objectPool = new ObjectPool();
+		DiagramModel model = new DiagramModel(objectPool);
 
 		int node1Id = 1;
 		String node1Text = "Intervention 1";
@@ -54,7 +56,8 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(node1Id);
-		DiagramNode node1 = model.createNode(cmIntervention);
+		objectPool.put(cmIntervention);
+		DiagramNode node1 = model.createNode(cmIntervention.getId());
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
 		
@@ -64,7 +67,8 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(node2Id);
-		DiagramNode node2 = model.createNode(cmTarget);
+		objectPool.put(cmTarget);
+		DiagramNode node2 = model.createNode(cmTarget.getId());
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);
 		
@@ -84,11 +88,9 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(node1Id, nodesData[0].getInt(DiagramNode.TAG_ID));
 		assertEquals(node1Text, nodesData[0].getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals(node1Location, nodesData[0].getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals(node1.getType(), nodesData[0].getNodeType());
 		assertEquals(node2Id, nodesData[1].getInt(DiagramNode.TAG_ID));
 		assertEquals(node2Text, nodesData[1].getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals(node2Location, nodesData[1].getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals(node2.getType(), nodesData[1].getNodeType());
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());

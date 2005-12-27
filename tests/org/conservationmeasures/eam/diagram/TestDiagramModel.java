@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -28,7 +29,8 @@ public class TestDiagramModel extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		model = new DiagramModel();
+		objectPool = new ObjectPool();
+		model = new DiagramModel(objectPool);
 		idAssigner = new IdAssigner();
 	}
 
@@ -86,7 +88,9 @@ public class TestDiagramModel extends EAMTestCase
 		model.deleteNode(nodeToDelete);
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget();
 		cmTargetToUndo.setId(nodeToDelete.getId());
-		model.createNode(cmTargetToUndo); //simulates an undo
+		objectPool.put(cmTargetToUndo);
+		
+		model.createNode(cmTargetToUndo.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
 		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
 	}
@@ -179,14 +183,16 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(idAssigner.takeNextId());
-		return model.createNode(cmTarget);
+		objectPool.put(cmTarget);
+		return model.createNode(cmTarget.getId());
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		ConceptualModelNode cmObject = Project.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
-		return model.createNode(cmObject);
+		objectPool.put(cmObject);
+		return model.createNode(cmObject.getId());
 	}
 	
 	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
@@ -242,6 +248,7 @@ public class TestDiagramModel extends EAMTestCase
 		int nodeMoved = 0;
 	}
 
+	ObjectPool objectPool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }

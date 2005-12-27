@@ -6,25 +6,31 @@
 
 package org.conservationmeasures.eam.utils;
 
+import java.awt.Dimension;
 import java.awt.Point;
+import java.text.ParseException;
 
 import org.json.JSONObject;
 
-public class DataMap 
+public class DataMap extends JSONObject
 {
 	public DataMap()
 	{
-		data = new JSONObject();
+	}
+	
+	public DataMap(JSONObject copyFrom) throws ParseException
+	{
+		super(copyFrom.toString());
 	}
 	
 	public void putInt(String tag, int value)
 	{
-		data.put(tag, new Integer(value));
+		put(tag, new Integer(value));
 	}
 	
 	public void putString(String tag, String value)
 	{
-		data.put(tag, value);
+		put(tag, value);
 	}
 	
 	public void putPoint(String tag, Point value)
@@ -32,27 +38,41 @@ public class DataMap
 		JSONObject point = new JSONObject();
 		point.put(TAG_POINT_X, value.x);
 		point.put(TAG_POINT_Y, value.y);
-		data.put(tag, point);
+		put(tag, point);
+	}
+	
+	public void putDimension(String tag, Dimension value)
+	{
+		JSONObject size = new JSONObject();
+		size.put(TAG_WIDTH, value.width);
+		size.put(TAG_HEIGHT, value.height);
+		put(tag, size);
 	}
 	
 	public int getInt(String tag)
 	{
-		return ((Integer)data.get(tag)).intValue();
+		return ((Integer)get(tag)).intValue();
 	}
 	
 	public String getString(String tag)
 	{
-		return (String)data.get(tag);
+		return (String)get(tag);
 	}
 	
 	public Point getPoint(String tag)
 	{
-		JSONObject point = data.getJSONObject(tag);
+		JSONObject point = getJSONObject(tag);
 		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
+	}
+	
+	public Dimension getDimension(String tag)
+	{
+		JSONObject size = getJSONObject(tag);
+		return new Dimension(size.getInt(TAG_WIDTH), size.getInt(TAG_HEIGHT));
 	}
 
 	private static String TAG_POINT_X = "X";
 	private static String TAG_POINT_Y = "Y";
-
-	private JSONObject data;
+	private static String TAG_WIDTH = "Width";
+	private static String TAG_HEIGHT = "Height";
 }

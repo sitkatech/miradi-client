@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -25,11 +26,16 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
+		objectPool = project.getObjectPool();
 		model = project.getDiagramModel();
+		
 		cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(node1Id);
+		objectPool.put(cmIntervention);
+		
 		cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(node2Id);
+		objectPool.put(cmTarget);
 	}
 	
 	public void tearDown() throws Exception
@@ -40,8 +46,8 @@ public class TestDiagramLinkage extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention);
-		DiagramNode target = model.createNode(cmTarget);
+		DiagramNode factor = model.createNode(cmIntervention.getId());
+		DiagramNode target = model.createNode(cmTarget.getId());
 		int id = 5;
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
@@ -54,8 +60,8 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention);
-		DiagramNode target = model.createNode(cmTarget);
+		DiagramNode factor = model.createNode(cmIntervention.getId());
+		DiagramNode target = model.createNode(cmTarget.getId());
 		int id = 5;
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
@@ -81,6 +87,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	static final int node2Id = 2;
 	
 	ProjectForTesting project;
+	ObjectPool objectPool;
 	DiagramModel model;
 	ConceptualModelIntervention cmIntervention;
 	ConceptualModelTarget cmTarget;
