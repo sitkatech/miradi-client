@@ -29,6 +29,7 @@ abstract public class ConceptualModelNode
 	{
 		this(nodeType);
 		id = json.getInt(TAG_ID);
+		setNodePriority(ThreatPriority.createFromInt(json.getInt(TAG_PRIORITY)));
 	}
 	
 	public abstract JSONObject toJson();
@@ -156,12 +157,14 @@ abstract public class ConceptualModelNode
 		JSONObject json = new JSONObject();
 		json.put(TAG_TYPE, typeString);
 		json.put(TAG_ID, getId());
+		json.put(TAG_PRIORITY, getThreatPriority().getValue());
 		
 		return json;
 	}
 	
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
+	private static final String TAG_PRIORITY = "Priority";
 	
 	static final String INTERVENTION_TYPE = "Intervention";
 	static final String FACTOR_TYPE = "Factor";
@@ -169,8 +172,9 @@ abstract public class ConceptualModelNode
 	
 	private int id;
 	private NodeType type;
-	private Indicator indicator;
 	private ThreatPriority threatPriority;
+
+	private Indicator indicator;
 	private Objectives objectives;
 	private Goals goals;
 }

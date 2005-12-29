@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.diagram.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
+import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestRealProject;
@@ -99,7 +100,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
 		suite.addTest(new TestSuite(TestInsertNode.class));
 		suite.addTest(new TestSuite(TestDiagramLinkage.class));
-		suite.addTest(new TestSuite(TestConceptualModelLinkage.class));
 		suite.addTest(new TestSuite(TestDiagramNode.class));
 		suite.addTest(new TestSuite(TestDiagramNodeData.class));
 		suite.addTest(new TestSuite(TestNodeTypeIndirectFactor.class));
@@ -113,8 +113,11 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestSetIndication.class));
 		suite.addTest(new TestSuite(TestSetTargetGoal.class));
 		suite.addTest(new TestSuite(TestSetNodeSize.class));
-		
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
+		
+		// objects package
+		suite.addTest(new TestSuite(TestConceptualModelLinkage.class));
+		suite.addTest(new TestSuite(TestConceptualModelNode.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
