@@ -10,8 +10,9 @@ import org.conservationmeasures.eam.annotations.Indicator;
 import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.project.IdAssigner;
+import org.json.JSONObject;
 
-public class ConceptualModelNode
+abstract public class ConceptualModelNode
 {
 	public ConceptualModelNode(NodeType nodeType)
 	{
@@ -23,6 +24,14 @@ public class ConceptualModelNode
 		objectives = new Objectives();
 		goals = new Goals();
 	}
+	
+	public ConceptualModelNode(NodeType nodeType, JSONObject json)
+	{
+		this(nodeType);
+		id = json.getInt(TAG_ID);
+	}
+	
+	public abstract JSONObject toJson();
 	
 	public void setId(int idToUse)
 	{
@@ -128,6 +137,35 @@ public class ConceptualModelNode
 	{
 		return false;
 	}
+	
+	public static ConceptualModelNode createFrom(JSONObject json)
+	{
+		String typeString = json.getString(TAG_TYPE);
+		if(typeString.equals(INTERVENTION_TYPE))
+			return new ConceptualModelIntervention(json);
+		if(typeString.equals(FACTOR_TYPE))
+			return new ConceptualModelFactor(json);
+		if(typeString.equals(TARGET_TYPE))
+			return new ConceptualModelTarget(json);
+		
+		throw new RuntimeException("Read unknown node type: " + typeString);
+	}
+	
+	JSONObject createBaseJsonObject(String typeString)
+	{
+		JSONObject json = new JSONObject();
+		json.put(TAG_TYPE, typeString);
+		json.put(TAG_ID, getId());
+		
+		return json;
+	}
+	
+	private static final String TAG_TYPE = "Type";
+	private static final String TAG_ID = "Id";
+	
+	static final String INTERVENTION_TYPE = "Intervention";
+	static final String FACTOR_TYPE = "Factor";
+	static final String TARGET_TYPE = "Target";
 	
 	private int id;
 	private NodeType type;

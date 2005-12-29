@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 
@@ -114,6 +115,7 @@ public class ProjectServer
 	{
 		clear();
 		topDirectory = directory;
+		getNodesDirectory().mkdirs();
 		getLinkagesDirectory().mkdirs();
 		getDiagramsDirectory().mkdirs();
 		name = topDirectory.getName();
@@ -159,6 +161,42 @@ public class ProjectServer
 		File script = new File(projectDirectory, projectName + ".script");
 		return script.exists();
 	}
+	
+	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
+	{
+		int id = node.getId();
+		JSONFile.write(getNodeFile(id), node.toJson());
+		addToNodeManifest(id);
+	}
+	
+	public ConceptualModelNode readNode(int id) throws IOException, ParseException
+	{
+		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
+	}
+	
+	private void addToNodeManifest(int idToAdd) throws IOException, ParseException
+	{
+		NodeManifest manifest = readNodeManifest();
+		manifest.put(idToAdd);
+		writeNodeManifest(manifest);
+	}
+	
+	public NodeManifest readNodeManifest() throws IOException, ParseException
+	{
+		File manifestFile = getNodeManifestFile();
+		if(!manifestFile.exists())
+			return new NodeManifest();
+		JSONObject rawManifest = JSONFile.read(manifestFile);
+		return new NodeManifest(rawManifest);
+	}
+
+	private void writeNodeManifest(NodeManifest manifest) throws IOException
+	{
+		manifest.write(getNodeManifestFile());
+	}
+
+	
+	
 	
 	public void writeLinkage(ConceptualModelLinkage linkage) throws IOException, ParseException
 	{
@@ -225,6 +263,11 @@ public class ProjectServer
 	{
 		return new File(getTopDirectory(), "json");
 	}
+	
+	private File getNodesDirectory()
+	{
+		return new File(getJsonDirectory(), "nodes");
+	}
 
 	private File getLinkagesDirectory()
 	{
@@ -234,6 +277,16 @@ public class ProjectServer
 	private File getDiagramsDirectory()
 	{
 		return new File(getJsonDirectory(), "diagrams");
+	}
+	
+	private File getNodeManifestFile()
+	{
+		return new File(getNodesDirectory(), "manifest");
+	}
+	
+	private File getNodeFile(int id)
+	{
+		return new File(getNodesDirectory(), Integer.toString(id));
 	}
 	
 	private File getLinkageManifestFile()

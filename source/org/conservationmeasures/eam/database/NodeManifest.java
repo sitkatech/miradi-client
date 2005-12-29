@@ -7,16 +7,16 @@ package org.conservationmeasures.eam.database;
 
 import org.json.JSONObject;
 
-class LinkageManifest extends Manifest
+public class NodeManifest extends Manifest
 {
-	public LinkageManifest()
+	public NodeManifest()
 	{
 		super();
 	}
-	
-	public LinkageManifest(JSONObject copyFrom)
+
+	public NodeManifest(JSONObject copyFrom)
 	{
 		super(copyFrom);
 	}
-	
+
 }

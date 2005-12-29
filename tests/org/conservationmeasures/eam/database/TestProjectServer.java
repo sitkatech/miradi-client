@@ -13,6 +13,8 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -38,6 +40,46 @@ public class TestProjectServer extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		storage.close();
+	}
+	
+	public void testWriteAndReadNode() throws Exception
+	{
+		IdAssigner idAssigner = new IdAssigner();
+
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention();
+		intervention.setId(idAssigner.takeNextId());
+		storage.writeNode(intervention);
+		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)storage.readNode(intervention.getId());
+		assertEquals("not an intervention?", intervention.getType(), gotIntervention.getType());
+		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
+
+		ConceptualModelFactor factor = new ConceptualModelFactor(new NodeTypeIndirectFactor());
+		factor.setId(idAssigner.takeNextId());
+		
+		storage.writeNode(factor);
+		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)storage.readNode(factor.getId());
+		assertEquals("not indirect factor?", factor.getType(), gotIndirectFactor.getType());
+		
+		factor.setType(DiagramNode.TYPE_DIRECT_THREAT);
+		storage.writeNode(factor);
+		ConceptualModelFactor gotDirectThreat = (ConceptualModelFactor)storage.readNode(factor.getId());
+		assertEquals("not direct threat?", factor.getType(), gotDirectThreat.getType());
+		
+		factor.setType(DiagramNode.TYPE_STRESS);
+		storage.writeNode(factor);
+		ConceptualModelFactor gotStress = (ConceptualModelFactor)storage.readNode(factor.getId());
+		assertEquals("not stress?", factor.getType(), gotStress.getType());
+		
+		ConceptualModelTarget target = new ConceptualModelTarget();
+		target.setId(idAssigner.takeNextId());
+		storage.writeNode(target);
+		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());
+		assertEquals("not a target?", target.getType(), gotTarget.getType());
+		
+		
+		NodeManifest nodeIds = storage.readNodeManifest();
+		assertEquals("not three nodes?", 3, nodeIds.size());
+		assertTrue("missing a node?", nodeIds.has(target.getId()));
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
