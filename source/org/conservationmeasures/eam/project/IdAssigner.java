@@ -34,6 +34,11 @@ public class IdAssigner
 		return id;
 	}
 	
+	public int getHighestAssignedId()
+	{
+		return (nextId - 1);
+	}
+	
 	private int nextId;
 	public static final int INVALID_ID = -1;
 }

@@ -21,6 +21,8 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -426,6 +428,38 @@ public class TestProject extends EAMTestCase
 		DiagramModel copyOfModel = new DiagramModel(project.getObjectPool());
 		project.getDatabase().readDiagram(copyOfModel);
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
+	}
+	
+	public void testInsertDuplicateNodes() throws Exception
+	{
+		int id = 3023;
+		int gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
+		assertEquals("Didn't get our id?", id, gotIdFirst);
+		try
+		{
+			project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
+			fail("Should have thrown for inserting a duplicate id");
+		}
+		catch(RuntimeException ignoreExpected)
+		{
+		}
+		
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
+		project.executeCommand(cmd);
+		try
+		{
+			EAM.setLogToString();
+			project.replayCommand(cmd);
+			fail("Should have thrown for replaying an insert over an existing node");
+		}
+		catch(CommandFailedException ignoreExpected)
+		{
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
+		
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
