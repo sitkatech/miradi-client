@@ -14,7 +14,7 @@ import java.awt.geom.Rectangle2D;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.Goals;
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.NodeAnnotations;
 import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -101,14 +101,14 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.canHavePriority();
 	}
 	
-	public Indicator getIndicator()
+	public IndicatorId getIndicator()
 	{
-		return underlyingObject.getIndicator();
+		return underlyingObject.getIndicatorId();
 	}
 	
-	public void setIndicator(Indicator indicatorToUse)
+	public void setIndicator(IndicatorId indicatorToUse)
 	{
-		underlyingObject.setIndicator(indicatorToUse);
+		underlyingObject.setIndicatorId(indicatorToUse);
 	}
 
 	public boolean canHaveObjectives()

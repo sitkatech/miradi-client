@@ -10,7 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetIndicator extends Command 
 {
-	public CommandSetIndicator(int idToUpdate, Indicator indicatorToUse)
+	public CommandSetIndicator(int idToUpdate, IndicatorId indicatorToUse)
 	{
 		id = idToUpdate;
 		indicator = indicatorToUse;
@@ -35,8 +35,8 @@ public class CommandSetIndicator extends Command
 	public CommandSetIndicator(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		indicator = new Indicator(dataIn.readInt());
-		previousIndicator = new Indicator(dataIn.readInt());
+		indicator = new IndicatorId(dataIn.readInt());
+		previousIndicator = new IndicatorId(dataIn.readInt());
 	
 	}
 	
@@ -57,13 +57,13 @@ public class CommandSetIndicator extends Command
 		doSetIndicator(target, getPreviousIndicator(), getCurrentIndicator());
 	}
 	
-	private Indicator doSetIndicator(Project target, Indicator desiredIndicator, Indicator expectedIndicator) throws CommandFailedException
+	private IndicatorId doSetIndicator(Project target, IndicatorId desiredIndicator, IndicatorId expectedIndicator) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			Indicator currentIndicator = node.getIndicator();
+			IndicatorId currentIndicator = node.getIndicator();
 			if(expectedIndicator != null && !currentIndicator.equals(expectedIndicator))
 				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + currentIndicator);
 			node.setIndicator(desiredIndicator);
@@ -83,12 +83,12 @@ public class CommandSetIndicator extends Command
 		return getCommandName() + ": " + id + ", " + indicator + ", " + previousIndicator;
 	}
 
-	public Indicator getCurrentIndicator()
+	public IndicatorId getCurrentIndicator()
 	{
 		return indicator;
 	}
 	
-	public Indicator getPreviousIndicator()
+	public IndicatorId getPreviousIndicator()
 	{
 		return previousIndicator;
 	}
@@ -101,6 +101,6 @@ public class CommandSetIndicator extends Command
 	public static final String COMMAND_NAME = "SetIndicator";
 
 	int id;
-	Indicator indicator;
-	Indicator previousIndicator;
+	IndicatorId indicator;
+	IndicatorId previousIndicator;
 }

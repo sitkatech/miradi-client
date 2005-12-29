@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.util.TestCaseEnhanced;
 
@@ -19,9 +20,11 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	{
 		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
 		factor.setNodePriority(ThreatPriority.createPriorityHigh());
+		factor.setIndicatorId(new IndicatorId(99));
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFrom(factor.toJson());
 		assertEquals("wrong type?", factor.getType(), got.getType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong priority?", factor.getThreatPriority(), got.getThreatPriority());
+		assertEquals("wrong indicator?", factor.getIndicatorId(), got.getIndicatorId());
 	}
 }

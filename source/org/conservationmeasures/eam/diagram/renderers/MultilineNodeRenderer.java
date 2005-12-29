@@ -43,7 +43,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.objects.ThreatPriority;
@@ -97,7 +97,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
-		Indicator indicator = node.getIndicator();
+		IndicatorId indicator = node.getIndicator();
 		if(indicator != null && indicator.hasIndicator())
 		{
 			TriangleRenderer indicatorRenderer = new TriangleRenderer();

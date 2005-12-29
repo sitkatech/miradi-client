@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.annotations.Goals;
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -19,8 +19,8 @@ abstract public class ConceptualModelNode
 		type = nodeType;
 		
 		id = IdAssigner.INVALID_ID;
-		indicator = new Indicator();
 		setNodePriority(ThreatPriority.createPriorityNotUsed());
+		indicator = new IndicatorId();
 		objectives = new Objectives();
 		goals = new Goals();
 	}
@@ -30,6 +30,7 @@ abstract public class ConceptualModelNode
 		this(nodeType);
 		id = json.getInt(TAG_ID);
 		setNodePriority(ThreatPriority.createFromInt(json.getInt(TAG_PRIORITY)));
+		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
 	}
 	
 	public abstract JSONObject toJson();
@@ -54,12 +55,12 @@ abstract public class ConceptualModelNode
 		type = typeToUse;
 	}
 
-	public Indicator getIndicator()
+	public IndicatorId getIndicatorId()
 	{
 		return indicator;
 	}
 	
-	public void setIndicator(Indicator indicatorToUse)
+	public void setIndicatorId(IndicatorId indicatorToUse)
 	{
 		indicator = indicatorToUse;
 	}
@@ -158,6 +159,7 @@ abstract public class ConceptualModelNode
 		json.put(TAG_TYPE, typeString);
 		json.put(TAG_ID, getId());
 		json.put(TAG_PRIORITY, getThreatPriority().getValue());
+		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
 		return json;
 	}
@@ -165,6 +167,7 @@ abstract public class ConceptualModelNode
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
 	private static final String TAG_PRIORITY = "Priority";
+	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	
 	static final String INTERVENTION_TYPE = "Intervention";
 	static final String FACTOR_TYPE = "Factor";
@@ -174,7 +177,7 @@ abstract public class ConceptualModelNode
 	private NodeType type;
 	private ThreatPriority threatPriority;
 
-	private Indicator indicator;
+	private IndicatorId indicator;
 	private Objectives objectives;
 	private Goals goals;
 }

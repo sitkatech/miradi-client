@@ -19,7 +19,7 @@ import javax.swing.JList;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.Goals;
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -152,14 +152,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return GoalBar;
 	}
 	
-	public Component createIndicator(Indicator indicator)
+	public Component createIndicator(IndicatorId indicator)
 	{
 		UiLabel textIndicator = new UiLabel(EAM.text("Label|Indicator"));
 		dropdownIndicator = new UiComboBox();
-		dropdownIndicator.addItem(new Indicator());
-		dropdownIndicator.addItem(new Indicator(1));
-		dropdownIndicator.addItem(new Indicator(2));
-		dropdownIndicator.addItem(new Indicator(3));
+		dropdownIndicator.addItem(new IndicatorId());
+		dropdownIndicator.addItem(new IndicatorId(1));
+		dropdownIndicator.addItem(new IndicatorId(2));
+		dropdownIndicator.addItem(new IndicatorId(3));
 
 		dropdownIndicator.setSelectedItem(indicator);
 		
@@ -230,9 +230,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return (ThreatPriority)dropdownThreatPriority.getSelectedItem();
 	}
 	
-	public Indicator getIndicator()
+	public IndicatorId getIndicator()
 	{
-		return (Indicator)dropdownIndicator.getSelectedItem();
+		return (IndicatorId)dropdownIndicator.getSelectedItem();
 	}
 	
 	public NodeType getType()

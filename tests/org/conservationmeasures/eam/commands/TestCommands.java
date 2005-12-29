@@ -16,7 +16,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.Goals;
-import org.conservationmeasures.eam.annotations.Indicator;
+import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.Objectives;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -236,9 +236,9 @@ public class TestCommands extends EAMTestCase
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertFalse("New target should not have an indicator", node.getIndicator().hasIndicator());
-		Indicator originalIndicator = node.getIndicator();
+		IndicatorId originalIndicator = node.getIndicator();
 		
-		Indicator indicator1 = new Indicator(1);
+		IndicatorId indicator1 = new IndicatorId(1);
 		CommandSetIndicator cmd = new CommandSetIndicator(id, indicator1);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old indicator?", originalIndicator, cmd.getPreviousIndicator());

@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class Indicator 
+public class IndicatorId 
 {
-	public Indicator()
+	public IndicatorId()
 	{
 		indicator = INDICATOR_NONE;
 	}
 	
-	public Indicator(int value)
+	public IndicatorId(int value)
 	{
 		indicator = value;
 	}
@@ -29,9 +29,9 @@ public class Indicator
 		
 	public boolean equals(Object obj) 
 	{
-		if(!(obj instanceof Indicator))
+		if(!(obj instanceof IndicatorId))
 			return false;
-		return ((Indicator)obj).indicator == indicator;
+		return ((IndicatorId)obj).indicator == indicator;
 	}
 	
 	public boolean hasIndicator()
