@@ -328,6 +328,7 @@ public class Project
 		try
 		{
 			database.appendCommand(command);
+			database.writeDiagram(getDiagramModel());
 		}
 		catch (IOException e)
 		{

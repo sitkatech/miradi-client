@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -416,6 +417,15 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't switch?", sampleViewName, project.getCurrentView());
 		project.close();
 		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
+	}
+	
+	public void testExecuteCommandWritesDiagram() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeTarget());
+		project.executeCommand(cmd);
+		DiagramModel copyOfModel = new DiagramModel(project.getObjectPool());
+		project.getDatabase().readDiagram(copyOfModel);
+		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
