@@ -9,16 +9,29 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.annotations.GoalIds;
+import org.conservationmeasures.eam.annotations.IndicatorId;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandRedo;
+import org.conservationmeasures.eam.commands.CommandSetFactorType;
+import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
+import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -26,6 +39,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -428,6 +442,58 @@ public class TestProject extends EAMTestCase
 		DiagramModel copyOfModel = new DiagramModel(project.getObjectPool());
 		project.getDatabase().readDiagram(copyOfModel);
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
+	}
+	
+	public void testNodesGetWritten() throws Exception
+	{
+		ProjectServerForTesting database = project.getTestDatabase();
+		assertEquals(0, database.callsToWriteNode);
+		
+		CommandInsertNode targetCommand = new CommandInsertNode(new NodeTypeTarget());
+		project.executeCommand(targetCommand);
+		assertEquals(1, database.callsToWriteNode);
+		int targetId = targetCommand.getId();
+		
+		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeIndirectFactor());
+		project.executeCommand(factorCommand);
+		assertEquals(2, database.callsToWriteNode);
+		int factorId = factorCommand.getId();
+		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
+		
+		project.executeCommand(new CommandDiagramMove(9, 9, new int[] {targetId, factorId} ));
+		assertEquals(2, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandSetFactorType(factorId, new NodeTypeDirectThreat()));
+		assertEquals(3, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandSetIndicator(factorId, new IndicatorId(7)));
+		assertEquals(4, database.callsToWriteNode);
+		
+		ObjectiveIds objectives = new ObjectiveIds();
+		objectives.addId(99);
+		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
+		assertEquals(5, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandSetNodePriority(factorId, ThreatPriority.createPriorityHigh()));
+		assertEquals(6, database.callsToWriteNode);
+		
+		Dimension oldDimension = factor.getSize();
+		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
+		assertEquals(6, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandSetNodeText(factorId, "hello"));
+		assertEquals(6, database.callsToWriteNode);
+		
+		GoalIds goals = new GoalIds();
+		goals.addId(55);
+		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
+		assertEquals(7, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandUndo());
+		assertEquals(8, database.callsToWriteNode);
+		
+		project.executeCommand(new CommandRedo());
+		assertEquals(9, database.callsToWriteNode);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception

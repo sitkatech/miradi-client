@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetFactorType extends Command
 {
@@ -63,13 +62,11 @@ public class CommandSetFactorType extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			NodeType currentType = node.getType();
-			if(expectedType != null && !currentType.equals(expectedType))
-				throw new Exception("CommandFactorSetType expected " + expectedType + " but was " + currentType);
-			node.setType(desiredType);
-			Logging.logDebug("Updating Type:" + desiredType);
-			model.updateCell(node);
-			return currentType;
+			NodeType oldType = node.getType();
+			if(expectedType != null && !oldType.equals(expectedType))
+				throw new Exception("CommandFactorSetType expected " + expectedType + " but was " + oldType);
+			target.setFactorType(getId(), desiredType);
+			return oldType;
 		}
 		catch (Exception e)
 		{

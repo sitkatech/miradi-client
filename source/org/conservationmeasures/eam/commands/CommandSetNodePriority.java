@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodePriority extends Command 
 {
@@ -74,9 +73,7 @@ public class CommandSetNodePriority extends Command
 			ThreatPriority currentPriority = node.getThreatPriority();
 			if(expectedPriority != null && !currentPriority.equals(expectedPriority))
 				throw new Exception("CommandSetNodePriority expected " + expectedPriority + " but was " + currentPriority);
-			node.setNodePriority(desiredPriority);
-			Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
-			model.updateCell(node);
+			target.setPriority(getId(), desiredPriority);
 			return currentPriority;
 		}
 		catch (Exception e)

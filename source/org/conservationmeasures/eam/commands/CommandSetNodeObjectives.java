@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodeObjectives extends Command 
 {
@@ -63,13 +62,11 @@ public class CommandSetNodeObjectives extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			ObjectiveIds currentObjectiveIds = node.getObjectives();
-			if(expectedObjectives != null && !currentObjectiveIds.equals(expectedObjectives))
-				throw new Exception("CommandSetObjective expected " + expectedObjectives + " but was " + currentObjectiveIds);
-			node.setObjectives(desiredObjectives);
-			Logging.logVerbose("Updating Objective:" + desiredObjectives);
-			model.updateCell(node);
-			return currentObjectiveIds;
+			ObjectiveIds oldObjectiveIds = node.getObjectives();
+			if(expectedObjectives != null && !oldObjectiveIds.equals(expectedObjectives))
+				throw new Exception("CommandSetObjective expected " + expectedObjectives + " but was " + oldObjectiveIds);
+			target.setObjectives(getId(), desiredObjectives);
+			return oldObjectiveIds;
 		}
 		catch (Exception e)
 		{

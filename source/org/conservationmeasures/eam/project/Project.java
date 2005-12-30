@@ -12,7 +12,10 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
+import org.conservationmeasures.eam.annotations.IndicatorId;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -43,6 +46,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -400,9 +404,11 @@ public class Project
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
 		nodePool.put(cmObject);
+		database.writeNode(cmObject);
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
+		
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
@@ -426,9 +432,75 @@ public class Project
 		return insertedLinkageId;
 	}
 	
+	public void setFactorType(int nodeId, NodeType desiredType) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+		
+		node.setType(desiredType);
+		Logging.logVerbose("SetFactorType:" + desiredType);
+		model.updateCell(node);
+
+		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		database.writeNode(cmNode);
+	}
+	
+	public void setIndicator(int nodeId, IndicatorId desiredIndicatorId) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+		
+		node.setIndicator(desiredIndicatorId);
+		Logging.logVerbose("SetIndicator:" + desiredIndicatorId);
+		model.updateCell(node);
+		
+		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		database.writeNode(cmNode);
+	}
+	
+	public void setObjectives(int nodeId, ObjectiveIds desiredObjectives) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+
+		node.setObjectives(desiredObjectives);
+		Logging.logVerbose("SetObjectives:" + desiredObjectives);
+		model.updateCell(node);
+	
+		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		database.writeNode(cmNode);
+	}
+	
+	public void setPriority(int nodeId, ThreatPriority desiredPriority) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+
+		node.setNodePriority(desiredPriority);
+		Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
+		model.updateCell(node);
+		
+		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		database.writeNode(cmNode);
+	}
+	
+	public void setGoals(int nodeId, GoalIds desiredGoals) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+
+		node.setGoals(desiredGoals);
+		Logging.logVerbose("Updating Goals:" + desiredGoals);
+		model.updateCell(node);
+		
+		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		database.writeNode(cmNode);
+	}
+
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception 
 	{
-		getDiagramModel().moveNodes(deltaX, deltaY, ids);
+		DiagramModel model = getDiagramModel();
+		model.moveNodes(deltaX, deltaY, ids);
 	}
 	
 	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids)

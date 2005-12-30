@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetTargetGoal extends Command 
 {
@@ -66,9 +65,7 @@ public class CommandSetTargetGoal extends Command
 			GoalIds currentGoalIds = node.getGoals();
 			if(expectedGoals != null && !currentGoalIds.equals(expectedGoals))
 				throw new Exception("CommandSetObjective expected " + expectedGoals + " but was " + currentGoalIds);
-			node.setGoals(desiredGoals);
-			Logging.logVerbose("Updating Goals:" + desiredGoals);
-			model.updateCell(node);
+			target.setGoals(getId(), desiredGoals);
 			return currentGoalIds;
 		}
 		catch (Exception e)

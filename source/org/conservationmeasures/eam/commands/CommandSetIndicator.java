@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetIndicator extends Command 
 {
@@ -63,13 +62,11 @@ public class CommandSetIndicator extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			IndicatorId currentIndicator = node.getIndicatorId();
-			if(expectedIndicator != null && !currentIndicator.equals(expectedIndicator))
-				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + currentIndicator);
-			node.setIndicator(desiredIndicator);
-			Logging.logVerbose("Updating Indicator:" + desiredIndicator);
-			model.updateCell(node);
-			return currentIndicator;
+			IndicatorId oldIndicator = node.getIndicatorId();
+			if(expectedIndicator != null && !oldIndicator.equals(expectedIndicator))
+				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + oldIndicator);
+			target.setIndicator(getId(), desiredIndicator);
+			return oldIndicator;
 		}
 		catch (Exception e)
 		{

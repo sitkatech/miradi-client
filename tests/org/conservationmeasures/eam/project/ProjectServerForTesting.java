@@ -7,8 +7,10 @@ package org.conservationmeasures.eam.project;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
 
@@ -35,6 +37,12 @@ public class ProjectServerForTesting extends ProjectServer
 		createCommandsTable();
 	}
 	
+	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
+	{
+		super.writeNode(node);
+		++callsToWriteNode;
+	}
+
 	public void close() throws IOException
 	{
 		super.close();
@@ -44,4 +52,5 @@ public class ProjectServerForTesting extends ProjectServer
 	}
 
 	File eamDir;
+	public int callsToWriteNode;
 }

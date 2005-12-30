@@ -17,7 +17,7 @@ public class ProjectForTesting extends Project
 	public ProjectForTesting(String testName) throws Exception
 	{
 		super(new ProjectServerForTesting());
-		((ProjectServerForTesting)getDatabase()).openMemoryDatabase(testName);
+		getTestDatabase().openMemoryDatabase(testName);
 		loadCommandsFromDatabase();
 		commandStack = new Vector();
 	}
@@ -32,6 +32,11 @@ public class ProjectForTesting extends Project
 	Command getLastCommand()
 	{
 		return (Command)commandStack.remove(commandStack.size()-1);
+	}
+	
+	ProjectServerForTesting getTestDatabase()
+	{
+		return (ProjectServerForTesting)getDatabase();
 	}
 	Vector commandStack;
 }
