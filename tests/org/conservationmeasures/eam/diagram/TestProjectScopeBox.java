@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -27,7 +27,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		objectPool = new ObjectPool();
+		objectPool = new NodePool();
 		model = new DiagramModel(objectPool);
 		idAssigner = new IdAssigner();
 	}
@@ -73,7 +73,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		return model.createNode(cmObject.getId());
 	}
 
-	ObjectPool objectPool;
+	NodePool objectPool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }

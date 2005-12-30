@@ -7,7 +7,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.annotations.Goal;
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
@@ -31,15 +31,16 @@ public class TestSetTargetGoal extends TestCaseEnhanced
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 
-		Goal goal = new Goal("goal1");
-		Goals goals = new Goals();
-		goals.add(goal);
+		int goalId = project.getAllGoals().getIds()[1]; 
+		Goal goal = project.getAllGoals().find(goalId);
+		GoalIds goals = new GoalIds();
+		goals.addId(goalId);
 		Command setGoalCommand = new CommandSetTargetGoal(id, goals);
 		setGoalCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);
-		Goals foundgoal = found.getGoals();
-		assertEquals("wrong goal?", goal, foundgoal.get(0));
+		GoalIds foundgoal = found.getGoals();
+		assertEquals("wrong goal?", goal.getId(), foundgoal.getId(0));
 		
 		project.close();
 	}

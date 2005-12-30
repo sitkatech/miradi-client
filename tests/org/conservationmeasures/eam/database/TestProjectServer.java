@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -118,7 +118,7 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadDiagram() throws Exception
 	{
 		IdAssigner idAssigner = new IdAssigner();
-		ObjectPool objectPool = new ObjectPool();
+		NodePool objectPool = new NodePool();
 		
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(idAssigner.takeNextId());

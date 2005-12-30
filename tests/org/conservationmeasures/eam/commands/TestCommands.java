@@ -12,13 +12,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.Arrays;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -235,14 +234,14 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertFalse("New target should not have an indicator", node.getIndicator().hasIndicator());
-		IndicatorId originalIndicator = node.getIndicator();
+		assertFalse("New target should not have an indicator", node.getIndicatorId().hasId());
+		IndicatorId originalIndicator = node.getIndicatorId();
 		
 		IndicatorId indicator1 = new IndicatorId(1);
 		CommandSetIndicator cmd = new CommandSetIndicator(id, indicator1);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old indicator?", originalIndicator, cmd.getPreviousIndicator());
-		assertEquals( indicator1, node.getIndicator());
+		assertEquals( indicator1, node.getIndicatorId());
 
 		CommandSetIndicator loaded = (CommandSetIndicator)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -250,7 +249,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous indicator?", originalIndicator, loaded.getPreviousIndicator());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalIndicator, project.getDiagramModel().getNodeById(id).getIndicator());
+		assertEquals("didn't undo?", originalIndicator, project.getDiagramModel().getNodeById(id).getIndicatorId());
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -259,38 +258,36 @@ public class TestCommands extends EAMTestCase
 	{
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		Objectives testObjectives = node.getObjectives();
+		ObjectiveIds testObjectives = node.getObjectives();
 		assertEquals("Targets can't have Objectives", 0, testObjectives.size());
 		
 		id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
-		Objectives originalObjectives = node.getObjectives();
+		ObjectiveIds originalObjectives = node.getObjectives();
 		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
+		assertEquals("size not zero?", 0, originalObjectives.size());
 
-		String objectiveValue1 = "obj1";
-		Objective objective1 = new Objective(objectiveValue1);
-		String objectiveValue2 = "obj2";
-		Objective objective2 = new Objective(objectiveValue2);
+		int[] allObjectiveIds = project.getAllObjectives().getIds();
+		Objective objective1 = project.getAllObjectives().find(allObjectiveIds[1]); 
+		Objective objective2 = project.getAllObjectives().find(allObjectiveIds[3]);
 
-		Vector vectorOfObjectives = new Vector();
-		vectorOfObjectives.add(objective1);
-		vectorOfObjectives.add(objective2);
-		Objectives objectives = new Objectives();
-		objectives.setObjectives(vectorOfObjectives);
+		ObjectiveIds objectiveIds = new ObjectiveIds();
+		objectiveIds.addId(objective1.getId());
+		objectiveIds.addId(objective2.getId());
 		
-		CommandSetNodeObjectives cmd = new CommandSetNodeObjectives(id, objectives);
+		CommandSetNodeObjectives cmd = new CommandSetNodeObjectives(id, objectiveIds);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old objective?", originalObjectives, cmd.getPreviousObjectives());
 		assertEquals( 2, node.getObjectives().size());
-		assertEquals( objectives, node.getObjectives());
-		assertEquals( objectiveValue1, node.getObjectives().get(0).getAnnotation());
+		assertEquals( objective1.getId(), node.getObjectives().getId(0));
+		assertEquals( objective2.getId(), node.getObjectives().getId(1));
 
 		CommandSetNodeObjectives loaded = (CommandSetNodeObjectives)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals( 2, loaded.getCurrentObjectives().size());
-		assertEquals("didn't restore new objective?", objectives, loaded.getCurrentObjectives());
-		assertEquals( objective1, loaded.getCurrentObjectives().get(0));
-		assertEquals( objective2, loaded.getCurrentObjectives().get(1));
+		assertEquals("didn't restore new objective?", 2, loaded.getCurrentObjectives().size());
+		assertEquals( objective1.getId(), loaded.getCurrentObjectives().getId(0));
+		assertEquals( objective2.getId(), loaded.getCurrentObjectives().getId(1));
 		assertEquals("didn't restore previous objective?", originalObjectives, loaded.getPreviousObjectives());
 		
 		cmd.undo(project);
@@ -304,32 +301,30 @@ public class TestCommands extends EAMTestCase
 		int id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertFalse("New target should not have a goal", node.getGoals().hasAnnotation());
-		Goals originalGoals = node.getGoals();
+		GoalIds originalGoals = node.getGoals();
+		assertEquals("size not zero?", 0, originalGoals.size());
 
-		String goalValue1 = "goal 1";
-		Goal goal1 = new Goal(goalValue1);
-		String goalValue2 = "goal 2";
-		Goal goal2 = new Goal(goalValue2);
+		int[] allGoalIds = project.getAllGoals().getIds();
+		Goal goal1 = project.getAllGoals().find(allGoalIds[1]);
+		Goal goal2 = project.getAllGoals().find(allGoalIds[2]);
 
-		Vector vectorOfGoals = new Vector();
-		vectorOfGoals.add(goal1);
-		vectorOfGoals.add(goal2);
-		Goals goals = new Goals();
-		goals.setGoals(vectorOfGoals);
+		GoalIds goalIds = new GoalIds();
+		goalIds.addId(goal1.getId());
+		goalIds.addId(goal2.getId());
 		
-		CommandSetTargetGoal cmd = new CommandSetTargetGoal(id, goals);
+		CommandSetTargetGoal cmd = new CommandSetTargetGoal(id, goalIds);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old goal?", originalGoals, cmd.getPreviousGoals());
 		assertEquals( 2, node.getGoals().size());
-		assertEquals( goals, node.getGoals());
-		assertEquals( goalValue1, node.getGoals().get(0).getAnnotation());
+		assertEquals( goal1.getId(), node.getGoals().getId(0));
+		assertEquals( goal2.getId(), node.getGoals().getId(1));
 
 		CommandSetTargetGoal loaded = (CommandSetTargetGoal)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals( 2, loaded.getCurrentGoals().size());
-		assertEquals("didn't restore new goals?", goals, loaded.getCurrentGoals());
-		assertEquals( goal1, loaded.getCurrentGoals().get(0));
-		assertEquals( goal2, loaded.getCurrentGoals().get(1));
+		assertEquals("didn't restore new goals?", 2, loaded.getCurrentGoals().size());
+		assertEquals( goal1.getId(), loaded.getCurrentGoals().getId(0));
+		assertEquals( goal2.getId(), loaded.getCurrentGoals().getId(1));
 		assertEquals("didn't restore previous objective?", originalGoals, loaded.getPreviousGoals());
 		
 		cmd.undo(project);

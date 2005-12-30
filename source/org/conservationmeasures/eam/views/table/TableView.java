@@ -233,7 +233,7 @@ public class TableView extends UmbrellaView
 		
 		public String getNodeIndicator(DiagramNode node)
 		{
-			return node.getIndicator().toString();
+			return node.getIndicatorId().toString();
 		}
 
 		public String getColumnName(int column) 

@@ -10,16 +10,11 @@ package org.conservationmeasures.eam.annotations;
 
 public class Objective extends NodeAnnotation
 {
-	public Objective()
+	public Objective(int id, String objective)
 	{
-		super();
+		super(id, objective);
 	}
 	
-	public Objective(String objective)
-	{
-		super(objective);
-	}
-
 	public boolean equals(Object obj) 
 	{
 		if(!(obj instanceof Objective))

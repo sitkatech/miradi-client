@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -47,7 +47,7 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransferData() throws Exception
 	{
-		ObjectPool objectPool = new ObjectPool();
+		NodePool objectPool = new NodePool();
 		DiagramModel model = new DiagramModel(objectPool);
 
 		int node1Id = 1;

@@ -12,6 +12,10 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.annotations.Goal;
+import org.conservationmeasures.eam.annotations.GoalPool;
+import org.conservationmeasures.eam.annotations.Objective;
+import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
@@ -66,8 +70,11 @@ public class Project
 		database = databaseToUse;
 		
 		idAssigner = new IdAssigner(); 
-		objectPool = new ObjectPool();
-		diagramModel = new DiagramModel(objectPool);
+		annotationIdAssigner = new IdAssigner();
+		nodePool = new NodePool();
+		goalPool = createSampleGoals(annotationIdAssigner);
+		objectivePool = createSampleObjectives(annotationIdAssigner);
+		diagramModel = new DiagramModel(nodePool, goalPool, objectivePool);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		currentView = NoProjectView.getViewName();
@@ -97,9 +104,9 @@ public class Project
 		return EAM.text("[No Project]");
 	}
 
-	public ObjectPool getObjectPool()
+	public NodePool getObjectPool()
 	{
-		return objectPool;
+		return nodePool;
 	}
 	
 	public boolean isOpen()
@@ -250,7 +257,7 @@ public class Project
 			NodeDataMap nodeData = nodes[i];
 			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
 			
-			ConceptualModelNode cmObject = objectPool.find(originalNodeId); 
+			ConceptualModelNode cmObject = nodePool.find(originalNodeId); 
 			CommandInsertNode newNode = new CommandInsertNode(cmObject.getType());
 			executeCommand(newNode);
 
@@ -358,7 +365,7 @@ public class Project
 		int realId = idAssigner.obtainRealId(requestedId);
 		ConceptualModelNode cmObject = createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
-		objectPool.put(cmObject);
+		nodePool.put(cmObject);
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
@@ -634,12 +641,54 @@ public class Project
 
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
-
-
 	
+	public GoalPool getAllGoals()
+	{
+		return goalPool;
+	}
+	
+	public ObjectivePool getAllObjectives()
+	{
+		return objectivePool;
+	}
+
+
+	public static GoalPool createSampleGoals(IdAssigner assigner)
+	{
+		//TODO: These will be replaced by real user entered data from a wizard
+		GoalPool goals = new GoalPool();
+	
+		goals.put(new Goal(assigner.takeNextId(), "Goal 1"));
+		goals.put(new Goal(assigner.takeNextId(), "Goal 2"));
+		goals.put(new Goal(assigner.takeNextId(), "Goal 3"));
+		return goals;
+	}
+
+
+
+	public static ObjectivePool createSampleObjectives(IdAssigner assigner)
+	{
+		//TODO: These will be replaced by real user entered data from a wizard
+		ObjectivePool objectives = new ObjectivePool();
+		
+		objectives.put(new Objective(-1, Objective.ANNOTATION_NONE_STRING));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj 1"));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj 2"));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj 3"));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj A"));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj B"));
+		objectives.put(new Objective(assigner.takeNextId(), "Obj C"));
+		return objectives;
+	}
+
+	IdAssigner annotationIdAssigner;
+	GoalPool goalPool;
+	ObjectivePool objectivePool;
+
+
 	public static final int DEFAULT_GRID_SIZE = 15;
 
-	ObjectPool objectPool;
+	NodePool nodePool;
 	ProjectServer database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;
@@ -650,5 +699,6 @@ public class Project
 	JSONObject dataMap;
 	LayerManager layerManager;
 	IdAssigner idAssigner;
+
 }
 

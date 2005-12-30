@@ -63,7 +63,7 @@ public class CommandSetIndicator extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			IndicatorId currentIndicator = node.getIndicator();
+			IndicatorId currentIndicator = node.getIndicatorId();
 			if(expectedIndicator != null && !currentIndicator.equals(expectedIndicator))
 				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + currentIndicator);
 			node.setIndicator(desiredIndicator);

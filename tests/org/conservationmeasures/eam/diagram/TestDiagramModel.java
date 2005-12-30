@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -29,7 +29,7 @@ public class TestDiagramModel extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		objectPool = new ObjectPool();
+		objectPool = new NodePool();
 		model = new DiagramModel(objectPool);
 		idAssigner = new IdAssigner();
 	}
@@ -248,7 +248,7 @@ public class TestDiagramModel extends EAMTestCase
 		int nodeMoved = 0;
 	}
 
-	ObjectPool objectPool;
+	NodePool objectPool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }

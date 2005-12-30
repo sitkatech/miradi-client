@@ -10,7 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetTargetGoal extends Command 
 {
-	public CommandSetTargetGoal(int idToUpdate, Goals goalsToUse)
+	public CommandSetTargetGoal(int idToUpdate, GoalIds goalsToUse)
 	{
 		id = idToUpdate;
 		goals = goalsToUse;
@@ -30,8 +30,8 @@ public class CommandSetTargetGoal extends Command
 	public CommandSetTargetGoal(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		goals = new Goals(dataIn);
-		previousGoals = new Goals(dataIn);
+		goals = new GoalIds(dataIn);
+		previousGoals = new GoalIds(dataIn);
 	
 	}
 	
@@ -57,19 +57,19 @@ public class CommandSetTargetGoal extends Command
 		doSetGoals(target, getPreviousGoals(), getCurrentGoals());
 	}
 	
-	private Goals doSetGoals(Project target, Goals desiredGoals, Goals expectedGoals) throws CommandFailedException
+	private GoalIds doSetGoals(Project target, GoalIds desiredGoals, GoalIds expectedGoals) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			Goals currentGoals = node.getGoals();
-			if(expectedGoals != null && !currentGoals.equals(expectedGoals))
-				throw new Exception("CommandSetObjective expected " + expectedGoals + " but was " + currentGoals);
+			GoalIds currentGoalIds = node.getGoals();
+			if(expectedGoals != null && !currentGoalIds.equals(expectedGoals))
+				throw new Exception("CommandSetObjective expected " + expectedGoals + " but was " + currentGoalIds);
 			node.setGoals(desiredGoals);
 			Logging.logVerbose("Updating Goals:" + desiredGoals);
 			model.updateCell(node);
-			return currentGoals;
+			return currentGoalIds;
 		}
 		catch (Exception e)
 		{
@@ -83,12 +83,12 @@ public class CommandSetTargetGoal extends Command
 		return getCommandName() + ": " + id + ", " + goals + ", " + previousGoals;
 	}
 
-	public Goals getCurrentGoals()
+	public GoalIds getCurrentGoals()
 	{
 		return goals;
 	}
 	
-	public Goals getPreviousGoals()
+	public GoalIds getPreviousGoals()
 	{
 		return previousGoals;
 	}
@@ -101,6 +101,6 @@ public class CommandSetTargetGoal extends Command
 	public static final String COMMAND_NAME = "SetGoals";
 
 	int id;
-	Goals goals;
-	Goals previousGoals;
+	GoalIds goals;
+	GoalIds previousGoals;
 }

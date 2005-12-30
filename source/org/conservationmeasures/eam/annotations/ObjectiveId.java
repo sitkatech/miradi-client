@@ -3,18 +3,16 @@
  * 
  * This file is confidential and proprietary
  */
-
 package org.conservationmeasures.eam.annotations;
 
-
-public class IndicatorId extends ObjectId
+public class ObjectiveId extends ObjectId
 {
-	public IndicatorId()
+	public ObjectiveId()
 	{
 		super();
 	}
 	
-	public IndicatorId(int value)
+	public ObjectiveId(int value)
 	{
 		super(value);
 	}

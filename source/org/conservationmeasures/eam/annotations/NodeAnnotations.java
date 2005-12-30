@@ -3,54 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-
 package org.conservationmeasures.eam.annotations;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.util.Vector;
 
-abstract public class NodeAnnotations 
+public class NodeAnnotations
 {
-	abstract public void readDataFrom(DataInputStream dataIn) throws IOException;
-	abstract public boolean equals(Object obj); 
-
 	public NodeAnnotations()
 	{
 		annotations = new Vector();
-	}
-	
-	public NodeAnnotations(DataInputStream dataIn) throws IOException
-	{
-		this();
-		readDataFrom(dataIn);
-	}
-
-	public void writeDataTo(DataOutputStream dataOut) throws IOException 
-	{
-		dataOut.writeInt(size());
-		for(int i = 0; i < size(); ++i)
-		{
-			dataOut.writeUTF((getAnnotation(i)).getAnnotation());
-		}
-	}
-
-	public void add(NodeAnnotation annotation)
-	{
-		annotations.add(annotation);
-	}
-	
-	public void setAnnotations(NodeAnnotation annotation)
-	{
-		Vector singleObject = new Vector();
-		singleObject.add(annotation);
-		annotations = singleObject;
-	}
-
-	public void setAnnotations(Vector annotationsToUse)
-	{
-		annotations = annotationsToUse;
 	}
 
 	public int size()
@@ -60,20 +21,28 @@ abstract public class NodeAnnotations
 	
 	public boolean hasAnnotation()
 	{
-		for(int i = 0 ; i < size(); ++i)
-		{
-			if((getAnnotation(i)).hasAnnotation())
-				return true;
-		}
-		return false;
+		return (size() != 0);
 	}
-	
 	
 	public NodeAnnotation getAnnotation(int i)
 	{
 		return (NodeAnnotation)annotations.get(i);
 	}
 	
-
+	public void addAnnotation(NodeAnnotation annotation)
+	{
+		annotations.add(annotation);
+	}
+	
+	public boolean equals(Object obj)
+	{
+		if(!(obj instanceof NodeAnnotations))
+			return false;
+		if(!getClass().equals(obj.getClass()))
+			return false;
+		NodeAnnotations other = (NodeAnnotations)obj;
+		return annotations.equals(other.annotations);
+	}
+	
 	Vector annotations;
 }

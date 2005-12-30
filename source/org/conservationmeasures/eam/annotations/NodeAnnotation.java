@@ -7,19 +7,27 @@
 package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.IdAssigner;
 
 public class NodeAnnotation 
 {
 	public NodeAnnotation()
 	{
-		annotation = "";
+		id = IdAssigner.INVALID_ID;
+		annotation = ANNOTATION_NONE_STRING;
 	}
 	
-	public NodeAnnotation(String annotationToUse)
+	public NodeAnnotation(int idToUse, String annotationToUse)
 	{
+		id = idToUse;
 		annotation = annotationToUse;
 	}
 	
+	public int getId()
+	{
+		return id;
+	}
+
 	public boolean hasAnnotation()
 	{
 		return annotation.length() > 0 && !annotation.equals(ANNOTATION_NONE_STRING);
@@ -48,5 +56,7 @@ public class NodeAnnotation
 	}
 	
 	public static final String ANNOTATION_NONE_STRING = EAM.text("None");
+
+	int id;
 	String annotation;
 }

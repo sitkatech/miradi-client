@@ -13,12 +13,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.annotations.Goal;
+import org.conservationmeasures.eam.annotations.GoalPool;
+import org.conservationmeasures.eam.annotations.Objective;
+import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -28,7 +32,14 @@ import org.json.JSONObject;
 
 public class DiagramModel extends DefaultGraphModel
 {
-	public DiagramModel(ObjectPool objectPoolToUse)
+	public DiagramModel(NodePool nodePoolToUse, GoalPool goalPoolToUse, ObjectivePool objectivePoolToUse)
+	{
+		this(nodePoolToUse);
+		goalPool = goalPoolToUse;
+		objectivePool = objectivePoolToUse;
+	}
+	
+	public DiagramModel(NodePool objectPoolToUse)
 	{
 		objectPool = objectPoolToUse;
 		cellInventory = new CellInventory();
@@ -238,6 +249,16 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
+	public Goal getGoalById(int id)
+	{
+		return goalPool.find(id);
+	}
+	
+	public Objective getObjectiveById(int id)
+	{
+		return objectivePool.find(id);
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject nodeMap = new JSONObject();
@@ -276,7 +297,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
 	
-	ObjectPool objectPool;
+	NodePool objectPool;
+	GoalPool goalPool;
+	ObjectivePool objectivePool;
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();

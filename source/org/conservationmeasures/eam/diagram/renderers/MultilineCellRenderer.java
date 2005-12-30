@@ -27,11 +27,10 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.annotations.NodeAnnotation;
-import org.conservationmeasures.eam.annotations.NodeAnnotations;
-import org.conservationmeasures.eam.annotations.ProjectVisionAnnotation;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
+import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -123,14 +122,15 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	
 	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)
 	{
-		if(vision == null || vision.length() == 0)
-			return;
-		ProjectVisionAnnotation annotations = new ProjectVisionAnnotation();
-		NodeAnnotation annotation = new NodeAnnotation(vision);
-		annotations.add(annotation);
-		Rectangle scopeRect = (Rectangle)rect.clone();
-		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
-		drawAnnotation(scopeRect, g2, annotations);
+		EAM.logError("Project Vision not implemented (see MultilineCellRenderer.drawProjectScopeVision)");
+//		if(vision == null || vision.length() == 0)
+//			return;
+//		ProjectVisionAnnotation annotations = new ProjectVisionAnnotation();
+//		NodeAnnotation annotation = new NodeAnnotation(vision);
+//		annotations.add(annotation);
+//		Rectangle scopeRect = (Rectangle)rect.clone();
+//		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
+//		drawAnnotation(scopeRect, g2, annotations);
 	}
 	
 	protected void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
@@ -148,11 +148,12 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.translate(-labelRectangle.x, -labelRectangle.y);
 	}
 
-	void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotations annotations) 
+	void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotation annotation) 
 	{
-		if(annotations != null && annotations.hasAnnotation())
+		if(annotation != null && annotation.hasAnnotation())
 		{
-			Rectangle annotationsRectangle = getAnnotationsRect(rect, annotations.size());
+			final int singleAnnotation = 1;
+			Rectangle annotationsRectangle = getAnnotationsRect(rect, singleAnnotation);
 			setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 			RectangleRenderer annotationRenderer = new RectangleRenderer();
 			annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
@@ -160,7 +161,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			drawBoarder(g2, annotationsRectangle, annotationRenderer);
 			
 			//TODO allow multiple Objectives
-			String labelMessage = annotations.getAnnotation(0).toString();
+			String labelMessage = annotation.toString();
 			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 		}
 	}

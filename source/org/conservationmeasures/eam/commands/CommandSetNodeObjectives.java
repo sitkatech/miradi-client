@@ -10,7 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodeObjectives extends Command 
 {
-	public CommandSetNodeObjectives(int idToUpdate, Objectives objectivesToUse)
+	public CommandSetNodeObjectives(int idToUpdate, ObjectiveIds objectivesToUse)
 	{
 		id = idToUpdate;
 		objectives = objectivesToUse;
@@ -30,8 +30,8 @@ public class CommandSetNodeObjectives extends Command
 	public CommandSetNodeObjectives(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		objectives = new Objectives(dataIn);
-		previousObjectives = new Objectives(dataIn);
+		objectives = new ObjectiveIds(dataIn);
+		previousObjectives = new ObjectiveIds(dataIn);
 	
 	}
 	
@@ -57,19 +57,19 @@ public class CommandSetNodeObjectives extends Command
 		doSetObjectives(target, getPreviousObjectives(), getCurrentObjectives());
 	}
 	
-	private Objectives doSetObjectives(Project target, Objectives desiredObjectives, Objectives expectedObjectives) throws CommandFailedException
+	private ObjectiveIds doSetObjectives(Project target, ObjectiveIds desiredObjectives, ObjectiveIds expectedObjectives) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			Objectives currentObjectives = node.getObjectives();
-			if(expectedObjectives != null && !currentObjectives.equals(expectedObjectives))
-				throw new Exception("CommandSetObjective expected " + expectedObjectives + " but was " + currentObjectives);
+			ObjectiveIds currentObjectiveIds = node.getObjectives();
+			if(expectedObjectives != null && !currentObjectiveIds.equals(expectedObjectives))
+				throw new Exception("CommandSetObjective expected " + expectedObjectives + " but was " + currentObjectiveIds);
 			node.setObjectives(desiredObjectives);
 			Logging.logVerbose("Updating Objective:" + desiredObjectives);
 			model.updateCell(node);
-			return currentObjectives;
+			return currentObjectiveIds;
 		}
 		catch (Exception e)
 		{
@@ -83,12 +83,12 @@ public class CommandSetNodeObjectives extends Command
 		return getCommandName() + ": " + id + ", " + objectives + ", " + previousObjectives;
 	}
 
-	public Objectives getCurrentObjectives()
+	public ObjectiveIds getCurrentObjectives()
 	{
 		return objectives;
 	}
 	
-	public Objectives getPreviousObjectives()
+	public ObjectiveIds getPreviousObjectives()
 	{
 		return previousObjectives;
 	}
@@ -101,6 +101,6 @@ public class CommandSetNodeObjectives extends Command
 	public static final String COMMAND_NAME = "SetObjectives";
 
 	int id;
-	Objectives objectives;
-	Objectives previousObjectives;
+	ObjectiveIds objectives;
+	ObjectiveIds previousObjectives;
 }

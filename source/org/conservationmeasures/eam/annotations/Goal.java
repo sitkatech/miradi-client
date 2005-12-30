@@ -9,14 +9,9 @@ package org.conservationmeasures.eam.annotations;
 
 public class Goal extends NodeAnnotation 
 {
-	public Goal() 
+	public Goal(int id, String annotationToUse) 
 	{
-		super();
-	}
-
-	public Goal(String annotationToUse) 
-	{
-		super(annotationToUse);
+		super(id, annotationToUse);
 	}
 	
 	public boolean equals(Object obj) 

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -87,7 +87,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	static final int node2Id = 2;
 	
 	ProjectForTesting project;
-	ObjectPool objectPool;
+	NodePool objectPool;
 	DiagramModel model;
 	ConceptualModelIntervention cmIntervention;
 	ConceptualModelTarget cmTarget;

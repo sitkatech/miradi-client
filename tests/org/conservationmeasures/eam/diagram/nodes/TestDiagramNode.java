@@ -75,12 +75,12 @@ public class TestDiagramNode extends EAMTestCase
 
 	public void testIndicator()
 	{
-		IndicatorId indicator = directThreat.getIndicator();
-		assertFalse(indicator.hasIndicator());
-		assertEquals(IndicatorId.INDICATOR_NONE_STRING, indicator.toString());
+		IndicatorId indicator = directThreat.getIndicatorId();
+		assertFalse(indicator.hasId());
+		assertEquals(IndicatorId.ID_NONE_STRING, indicator.toString());
 		int value = 2;
 		indicator.setValue(value);
-		assertTrue(indicator.hasIndicator());
+		assertTrue(indicator.hasId());
 		assertEquals(String.valueOf(value).toString(), indicator.toString());
 	}
 	

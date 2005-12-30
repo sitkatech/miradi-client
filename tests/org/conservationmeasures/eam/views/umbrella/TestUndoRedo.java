@@ -2,11 +2,9 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.awt.Dimension;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.annotations.Goal;
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
-import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
@@ -112,28 +110,28 @@ public class TestUndoRedo extends EAMTestCase
 		project.executeCommand(new CommandSetIndicator(insertedId, target1Indicator));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicator());
+		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicator());
+		assertEquals(new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicator());
+		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		undo.doIt();
-		assertEquals("Should have no indicator again", new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicator());
+		assertEquals("Should have no indicator again", new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 	}
 	
 	public void testUndoRedoObjective() throws Exception
 	{
-		Objective target1Objective = new Objective("test");
+		int objectiveId = project.getAllObjectives().getIds()[1];
 		
-		Objectives target1Objectives = new Objectives();
-		target1Objectives.setObjectives(target1Objective);
+		ObjectiveIds target1Objectives = new ObjectiveIds();
+		target1Objectives.addId(objectiveId);
 		
 		int insertedId = insertDirectThreat(project);
 
@@ -143,7 +141,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
-		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
+		assertEquals(objectiveId, project.getDiagramModel().getNodeById(insertedId).getObjectives().getId(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
@@ -156,7 +154,7 @@ public class TestUndoRedo extends EAMTestCase
 		redo.doIt();
 		assertTrue(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
-		assertEquals(target1Objective, project.getDiagramModel().getNodeById(insertedId).getObjectives().get(0));
+		assertEquals(objectiveId, project.getDiagramModel().getNodeById(insertedId).getObjectives().getId(0));
 
 		undo.doIt();
 		assertFalse(project.getDiagramModel().getNodeById(insertedId).getObjectives().hasAnnotation());
@@ -165,10 +163,10 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoGoals() throws Exception
 	{
-		Goal target1Goal = new Goal("test");
+		int goalId = project.getAllGoals().getIds()[1];
 		
-		Goals target1Goals = new Goals();
-		target1Goals.setGoals(target1Goal);
+		GoalIds target1Goals = new GoalIds();
+		target1Goals.addId(goalId);
 		
 		int insertedId = insertTarget(project);
 
@@ -178,7 +176,7 @@ public class TestUndoRedo extends EAMTestCase
 
 		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-		assertEquals(target1Goal, project.getDiagramModel().getNodeById(insertedId).getGoals().get(0));
+		assertEquals(goalId, project.getDiagramModel().getNodeById(insertedId).getGoals().getId(0));
 
 		Undo undo = new Undo();
 		undo.setProject(project);
@@ -191,7 +189,7 @@ public class TestUndoRedo extends EAMTestCase
 		redo.doIt();
 		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
 		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-		assertEquals(target1Goal, project.getDiagramModel().getNodeById(insertedId).getGoals().get(0));
+		assertEquals(goalId, project.getDiagramModel().getNodeById(insertedId).getGoals().getId(0));
 
 		undo.doIt();
 		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());

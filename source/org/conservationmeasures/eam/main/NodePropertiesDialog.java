@@ -18,10 +18,12 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.annotations.Goal;
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
+import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
+import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
@@ -29,6 +31,7 @@ import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -38,7 +41,7 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, String title, DiagramNode node)
+	public NodePropertiesDialog(Frame parent, Project project, String title, DiagramNode node)
 			throws HeadlessException
 	{
 		super(parent, title);
@@ -47,13 +50,13 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		bigBox.add(createTextField(node.getText()));
 		if(node.isFactor())
 			bigBox.add(createSwitchFactorTypeDropdown(node.getType()));
-		bigBox.add(createIndicator(node.getIndicator()));
+		bigBox.add(createIndicator(node.getIndicatorId()));
 		if(node.canHaveObjectives())
-			bigBox.add(createObjectiveDropdown(Objectives.getAllObjectives(node),node.getObjectives()));
+			bigBox.add(createObjectiveDropdown(project.getAllObjectives(), node.getObjectives()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		if(node.canHaveGoal())
-			bigBox.add(createTargetGoal(Goals.getAllGoals(), node.getGoals()));
+			bigBox.add(createTargetGoal(project.getAllGoals(), node.getGoals()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
@@ -112,18 +115,24 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return ObjectiveBar;
 	}
 	
-	public Component createObjectiveDropdown(Objectives objectives, Objectives currentObjectives)
+	public Component createObjectiveDropdown(ObjectivePool allAvailableObjectives, ObjectiveIds currentObjectives)
 	{
 		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
 		dropdownObjective = new UiComboBox();
-		for(int i = 0; i < objectives.size(); ++i)
+		for(int i = 0; i < allAvailableObjectives.getIds().length; ++i)
 		{
-			dropdownObjective.addItem(objectives.get(i));
+			dropdownObjective.addItem(allAvailableObjectives.find(i));
 		}
-		if(currentObjectives.size() > 0)
-			dropdownObjective.setSelectedItem(currentObjectives.get(0));
-		else
+		if(currentObjectives.size() == 0)
+		{
 			dropdownObjective.setSelectedIndex(0);
+		}
+		else
+		{
+			int id = currentObjectives.getId(0);
+			Objective objective = allAvailableObjectives.find(id);
+			dropdownObjective.setSelectedItem(objective);
+		}	
 		
 		Box ObjectiveBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
@@ -131,20 +140,25 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return ObjectiveBar;
 	}
 	
-	public Component createTargetGoal(Goals goals, Goals currentGoals)
+	public Component createTargetGoal(GoalPool allAvailableGoals, GoalIds currentGoals)
 	{
 		UiLabel textGoal = new UiLabel(EAM.text("Label|Goal"));
 		dropdownGoal = new UiComboBox();
-		dropdownGoal.addItem(new Goal(Goal.ANNOTATION_NONE_STRING));
-		for(int i = 0; i < goals.size(); ++i)
+		for(int i = 0; i < allAvailableGoals.getIds().length; ++i)
 		{
-			dropdownGoal.addItem(goals.get(i));
+			dropdownGoal.addItem(allAvailableGoals.find(i));
+		}
+		if(currentGoals.size() == 0)
+		{
+			dropdownGoal.setSelectedIndex(0);
+		}
+		else
+		{
+			int id = currentGoals.getId(0);
+			Goal goal = allAvailableGoals.find(id);
+			dropdownGoal.setSelectedItem(goal);
 		}
 		
-		if(currentGoals.size() > 0)
-			dropdownGoal.setSelectedItem(currentGoals.get(0));
-		else
-			dropdownGoal.setSelectedIndex(0);
 		
 		Box GoalBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textGoal, new UiLabel(" "), dropdownGoal, Box.createHorizontalGlue()};
@@ -241,19 +255,19 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	}
 
 
-	public Objectives getObjectives()
+	public ObjectiveIds getObjectives()
 	{
 		Objective oneObjective = (Objective)dropdownObjective.getSelectedItem();
-		Objectives objectives = new Objectives();
+		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.setObjectives(oneObjective);
 		return objectives;
 	}
 
-	public Goals getGoals()
+	public GoalIds getGoals()
 	{
 		Goal oneGoal = (Goal)dropdownGoal.getSelectedItem();
-		Goals goals = new Goals();
-		goals.setGoals(oneGoal);
+		GoalIds goals = new GoalIds();
+		goals.addId(oneGoal.getId());
 		return goals;
 	}
 	

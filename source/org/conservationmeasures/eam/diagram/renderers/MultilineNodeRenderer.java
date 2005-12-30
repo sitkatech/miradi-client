@@ -43,8 +43,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.jgraph.JGraph;
@@ -83,8 +86,19 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
-		drawAnnotation(rect, g2, node.getObjectives());
-		drawAnnotation(rect, g2, node.getGoals());
+		DiagramModel model = (DiagramModel)graph.getModel();
+		ObjectiveIds objectives = node.getObjectives();
+		if(objectives.hasAnnotation())
+		{
+			int objectiveId = objectives.getId(0);
+			drawAnnotation(rect, g2, model.getObjectiveById(objectiveId));
+		}
+		GoalIds goals = node.getGoals();
+		if(goals.hasAnnotation())
+		{
+			int goalId = goals.getId(0);
+			drawAnnotation(rect, g2, model.getGoalById(goalId));
+		}
 		drawIndicator(rect, g2);
 	}
 	
@@ -97,8 +111,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
-		IndicatorId indicator = node.getIndicator();
-		if(indicator != null && indicator.hasIndicator())
+		IndicatorId indicator = node.getIndicatorId();
+		if(indicator != null && indicator.hasId())
 		{
 			TriangleRenderer indicatorRenderer = new TriangleRenderer();
 			Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
@@ -118,7 +132,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	int getAnnotationLeftOffset()
 	{
-		if(node.getIndicator() == null || !node.getIndicator().hasIndicator())
+		if(node.getIndicatorId() == null || !node.getIndicatorId().hasId())
 			return INDICATOR_WIDTH / 2;
 		
 		int indicatorOffset = getInsetDimension().width - INDICATOR_WIDTH / 2;

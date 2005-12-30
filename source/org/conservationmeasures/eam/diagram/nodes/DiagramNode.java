@@ -13,10 +13,10 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
-import org.conservationmeasures.eam.annotations.NodeAnnotations;
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
@@ -101,7 +101,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.canHavePriority();
 	}
 	
-	public IndicatorId getIndicator()
+	public IndicatorId getIndicatorId()
 	{
 		return underlyingObject.getIndicatorId();
 	}
@@ -121,11 +121,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.canHaveGoal();
 	}
 
-	public Goals getGoals()
-	{
-		return underlyingObject.getGoals();
-	}
-	
 	public boolean isFactor()
 	{
 		return underlyingObject.isFactor();
@@ -163,17 +158,22 @@ abstract public class DiagramNode extends EAMGraphCell
 		return (String)GraphConstants.getValue(getAttributes());
 	}
 
-	public void setGoals(Goals goalsToUse)
+	public GoalIds getGoals()
+	{
+		return underlyingObject.getGoals();
+	}
+	
+	public void setGoals(GoalIds goalsToUse)
 	{
 		underlyingObject.setGoals(goalsToUse);
 	}
 
-	public Objectives getObjectives()
+	public ObjectiveIds getObjectives()
 	{
 		return underlyingObject.getObjectives();
 	}
 
-	public void setObjectives(Objectives objectivesToUse)
+	public void setObjectives(ObjectiveIds objectivesToUse)
 	{
 		underlyingObject.setObjectives(objectivesToUse);
 	}
@@ -183,20 +183,20 @@ abstract public class DiagramNode extends EAMGraphCell
 		int numberOfAnnotations = 0;
 		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
 
-		if(getIndicator() != null && getIndicator().hasIndicator() && numberOfAnnotations == 0)
+		if(getIndicatorId() != null && getIndicatorId().hasId() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;
 	}
 
-	private int getAnnotationCount(NodeAnnotations annotation)
+	private int getAnnotationCount(NodeAnnotationIds annotations)
 	{
 		int numberOfAnnotations = 0;
-		if(annotation != null)
+		if(annotations != null)
 		{
-			for(int i = 0; i < annotation.size(); ++i)
+			for(int i = 0; i < annotations.size(); ++i)
 			{
-				if(annotation.getAnnotation(i).hasAnnotation())
+				if(annotations.getId(i) >= 0)
 					++numberOfAnnotations;
 			}
 		}

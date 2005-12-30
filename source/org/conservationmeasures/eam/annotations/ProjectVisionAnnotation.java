@@ -10,7 +10,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 
-public class ProjectVisionAnnotation extends NodeAnnotations
+public class ProjectVisionAnnotation extends NodeAnnotationIds
 {
 	public void readDataFrom(DataInputStream dataIn) throws IOException
 	{

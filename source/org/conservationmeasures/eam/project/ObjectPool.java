@@ -6,8 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.util.HashMap;
-
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import java.util.Iterator;
 
 public class ObjectPool
 {
@@ -20,15 +19,30 @@ public class ObjectPool
 	{
 		return map.size();
 	}
-
-	public void put(ConceptualModelNode node)
+	
+	public int[] getIds()
 	{
-		map.put(createKey(node.getId()), node);
+		int[] ids = new int[size()];
+		int nextId = 0;
+		
+		Iterator it = map.keySet().iterator();
+		while(it.hasNext())
+		{
+			Integer idKey = (Integer)it.next();
+			ids[nextId++] = idKey.intValue();
+		}
+		
+		return ids;
+	}
+
+	public void put(int id, Object obj)
+	{
+		map.put(createKey(id), obj);
 	}
 	
-	public ConceptualModelNode find(int id)
+	public Object getRawObject(int id)
 	{
-		return (ConceptualModelNode)map.get(createKey(id));
+		return map.get(createKey(id));
 	}
 	
 	public void remove(int id)

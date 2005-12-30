@@ -5,11 +5,12 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.annotations.Goals;
+import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
-import org.conservationmeasures.eam.annotations.Objectives;
+import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.project.IdAssigner;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 abstract public class ConceptualModelNode
@@ -21,8 +22,8 @@ abstract public class ConceptualModelNode
 		id = IdAssigner.INVALID_ID;
 		setNodePriority(ThreatPriority.createPriorityNotUsed());
 		indicator = new IndicatorId();
-		objectives = new Objectives();
-		goals = new Goals();
+		objectives = new ObjectiveIds();
+		goals = new GoalIds();
 	}
 	
 	public ConceptualModelNode(NodeType nodeType, JSONObject json)
@@ -31,6 +32,14 @@ abstract public class ConceptualModelNode
 		id = json.getInt(TAG_ID);
 		setNodePriority(ThreatPriority.createFromInt(json.getInt(TAG_PRIORITY)));
 		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
+		
+		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
+		for(int i = 0; i < goalIds.length(); ++i)
+			goals.addId(goalIds.getInt(i));
+		
+		JSONArray objectiveIds = json.getJSONArray(TAG_OBJECTIVE_IDS);
+		for(int i = 0; i < objectiveIds.length(); ++i)
+			objectives.addId(objectiveIds.getInt(i));
 	}
 	
 	public abstract JSONObject toJson();
@@ -75,22 +84,22 @@ abstract public class ConceptualModelNode
 		threatPriority = priorityToUse;
 	}
 	
-	public Objectives getObjectives()
+	public ObjectiveIds getObjectives()
 	{
 		return objectives;
 	}
 
-	public void setObjectives(Objectives objectivesToUse)
+	public void setObjectives(ObjectiveIds objectivesToUse)
 	{
 		objectives = objectivesToUse;
 	}
 	
-	public Goals getGoals()
+	public GoalIds getGoals()
 	{
 		return goals;
 	}
 
-	public void setGoals(Goals goalsToUse)
+	public void setGoals(GoalIds goalsToUse)
 	{
 		goals = goalsToUse;
 	}
@@ -161,6 +170,16 @@ abstract public class ConceptualModelNode
 		json.put(TAG_PRIORITY, getThreatPriority().getValue());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
+		JSONArray goalIds = new JSONArray();
+		for(int i = 0; i < goals.size(); ++i)
+			goalIds.appendInt(goals.getId(i));
+		json.put(TAG_GOAL_IDS, goalIds);
+		
+		JSONArray objectiveIds = new JSONArray();
+		for(int i = 0; i < objectives.size(); ++i)
+			objectiveIds.appendInt(objectives.getId(i));
+		json.put(TAG_OBJECTIVE_IDS, objectiveIds);
+		
 		return json;
 	}
 	
@@ -168,6 +187,8 @@ abstract public class ConceptualModelNode
 	private static final String TAG_ID = "Id";
 	private static final String TAG_PRIORITY = "Priority";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
+	private static final String TAG_GOAL_IDS = "GoalIds";
+	private static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	
 	static final String INTERVENTION_TYPE = "Intervention";
 	static final String FACTOR_TYPE = "Factor";
@@ -178,6 +199,6 @@ abstract public class ConceptualModelNode
 	private ThreatPriority threatPriority;
 
 	private IndicatorId indicator;
-	private Objectives objectives;
-	private Goals goals;
+	private ObjectiveIds objectives;
+	private GoalIds goals;
 }
