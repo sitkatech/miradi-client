@@ -183,6 +183,18 @@ abstract public class ConceptualModelNode
 		return json;
 	}
 	
+	public static ConceptualModelNode createConceptualModelObject(NodeType nodeType)
+	{
+		if(nodeType.isIntervention())
+			return new ConceptualModelIntervention();
+		else if(nodeType.isFactor())
+			return new ConceptualModelFactor(nodeType);
+		else if(nodeType.isTarget())
+			return new ConceptualModelTarget();
+	
+		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
+	}
+
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
 	private static final String TAG_PRIORITY = "Priority";

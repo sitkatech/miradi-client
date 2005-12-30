@@ -12,9 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalPool;
-import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -43,11 +41,8 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -72,8 +67,8 @@ public class Project
 		idAssigner = new IdAssigner(); 
 		annotationIdAssigner = new IdAssigner();
 		nodePool = new NodePool();
-		goalPool = createSampleGoals(annotationIdAssigner);
-		objectivePool = createSampleObjectives(annotationIdAssigner);
+		goalPool = GoalPool.createSampleGoals(annotationIdAssigner);
+		objectivePool = ObjectivePool.createSampleObjectives(annotationIdAssigner);
 		diagramModel = new DiagramModel(nodePool, goalPool, objectivePool);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -83,6 +78,57 @@ public class Project
 		dataMap = new JSONObject();
 		layerManager = new LayerManager();
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// simple getters
+	
+	public IdAssigner getIdAssigner()
+	{
+		return idAssigner;
+	}
+	
+	protected ProjectServer getDatabase()
+	{
+		return database;
+	}
+	
+	public NodePool getObjectPool()
+	{
+		return nodePool;
+	}
+	
+	public GoalPool getAllGoals()
+	{
+		return goalPool;
+	}
+	
+	public ObjectivePool getAllObjectives()
+	{
+		return objectivePool;
+	}
+
+	public DiagramModel getDiagramModel()
+	{
+		return diagramModel;
+	}
+	
+	public InterviewModel getInterviewModel()
+	{
+		return interviewModel;
+	}
+	
+	public LayerManager getLayerManager()
+	{
+		return layerManager;
+	}
+	
+	public String getCurrentView()
+	{
+		return currentView;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// database
 	
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
@@ -104,11 +150,6 @@ public class Project
 		return EAM.text("[No Project]");
 	}
 
-	public NodePool getObjectPool()
-	{
-		return nodePool;
-	}
-	
 	public boolean isOpen()
 	{
 		return getDatabase().isOpen();
@@ -150,16 +191,9 @@ public class Project
 		return true;
 	}
 
-	public DiagramModel getDiagramModel()
-	{
-		return diagramModel;
-	}
-	
-	public InterviewModel getInterviewModel()
-	{
-		return interviewModel;
-	}
-	
+	/////////////////////////////////////////////////////////////////////////////////
+	// data values
+
 	public String getDataValue(String fieldName)
 	{
 		return dataMap.optString(fieldName, "");
@@ -170,22 +204,10 @@ public class Project
 		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
 		dataMap.put(fieldName, fieldData);
 	}
-	
-	public LayerManager getLayerManager()
-	{
-		return layerManager;
-	}
-	
-	public void addCommandExecutedListener(CommandExecutedListener listener)
-	{
-		commandExecutedListeners.add(listener);
-	}
 
-	public void addViewChangeListener(ViewChangeListener listener)
-	{
-		viewChangeListeners.add(listener);
-	}
-	
+	/////////////////////////////////////////////////////////////////////////////////
+	// command execution
+
 	public void executeCommand(Command command) throws CommandFailedException
 	{
 		try 
@@ -206,16 +228,69 @@ public class Project
 		fireCommandExecuted(command);
 	}
 	
-	public String getCurrentView()
+	public void recordCommand(Command command)
 	{
-		return currentView;
+		try
+		{
+			database.appendCommand(command);
+			database.writeDiagram(getDiagramModel());
+		}
+		catch (IOException e)
+		{
+			EAM.logException(e);
+		}
+		fireCommandExecuted(command);
 	}
+
+	public void addCommandExecutedListener(CommandExecutedListener listener)
+	{
+		commandExecutedListeners.add(listener);
+	}
+
+	void fireCommandExecuted(Command command)
+	{
+		CommandExecutedEvent event = new CommandExecutedEvent(command);
+		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandExecuted(event);
+		}
+	}
+	
+	void fireCommandFailed(Command command, CommandFailedException e)
+	{
+		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandFailed(command, e);
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// views
 	
 	public void switchToView(String viewName) throws CommandFailedException
 	{
 		currentView = viewName;
 		fireSwitchToView(viewName);
 	}
+	
+	public void addViewChangeListener(ViewChangeListener listener)
+	{
+		viewChangeListeners.add(listener);
+	}
+	
+	void fireSwitchToView(String viewName)
+	{
+		for(int i=0; i < viewChangeListeners.size(); ++i)
+		{
+			ViewChangeListener listener = (ViewChangeListener)viewChangeListeners.get(i);
+			listener.switchToView(viewName);
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// interview view
 	
 	public InterviewStepModel getCurrentInterviewStep()
 	{
@@ -231,6 +306,9 @@ public class Project
 	{
 		getInterviewModel().setCurrentStepName(newStepName);
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// diagram view
 	
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException
 	{
@@ -300,50 +378,6 @@ public class Project
 		}
 	}
 
-	void fireCommandExecuted(Command command)
-	{
-		CommandExecutedEvent event = new CommandExecutedEvent(command);
-		for(int i=0; i < commandExecutedListeners.size(); ++i)
-		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-			listener.commandExecuted(event);
-		}
-	}
-	
-	void fireCommandFailed(Command command, CommandFailedException e)
-	{
-		for(int i=0; i < commandExecutedListeners.size(); ++i)
-		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-			listener.commandFailed(command, e);
-		}
-	}
-	
-	
-	
-	void fireSwitchToView(String viewName)
-	{
-		for(int i=0; i < viewChangeListeners.size(); ++i)
-		{
-			ViewChangeListener listener = (ViewChangeListener)viewChangeListeners.get(i);
-			listener.switchToView(viewName);
-		}
-	}
-	
-	public void recordCommand(Command command)
-	{
-		try
-		{
-			database.appendCommand(command);
-			database.writeDiagram(getDiagramModel());
-		}
-		catch (IOException e)
-		{
-			EAM.logException(e);
-		}
-		fireCommandExecuted(command);
-	}
-
 	public NodeType deleteNode(int idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
@@ -363,7 +397,7 @@ public class Project
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
 		int realId = idAssigner.obtainRealId(requestedId);
-		ConceptualModelNode cmObject = createConceptualModelObject(typeToInsert);
+		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
 		nodePool.put(cmObject);
 		
@@ -442,49 +476,9 @@ public class Project
 		}
 	}
 	
-	Command buildResizeCommand(DiagramNode node)
+	private Command buildResizeCommand(DiagramNode node)
 	{
 		return new CommandSetNodeSize(node.getId(), node.getSize(), node.getPreviousSize());
-	}
-	
-	public void undo() throws CommandFailedException
-	{
-		getCommandToUndo().undo(this);
-		// TODO: should we fire a command-undone here?
-	}
-	
-	public void redo() throws CommandFailedException
-	{
-		replayCommand(getCommandToRedo());
-	}
-
-	public Command getCommandToUndo() throws NothingToUndoException
-
-	{
-		int indexToUndo = getIndexToUndo();
-		if(indexToUndo < 0)
-			throw new NothingToUndoException();
-		return database.getCommandAt(indexToUndo);
-	}
-	
-	public Command getCommandToRedo() throws NothingToRedoException
-	{
-		int indexToRedo = getIndexToRedo();
-		if(indexToRedo < 0)
-			throw new NothingToRedoException();
-		return database.getCommandAt(indexToRedo);
-	}
-	
-	public int getIndexToUndo()
-	{
-		UndoRedoState state = new UndoRedoState(database);
-		return state.getIndexToUndo();
-	}
-
-	public int getIndexToRedo()
-	{
-		UndoRedoState state = new UndoRedoState(database);
-		return state.getIndexToRedo();
 	}
 	
 	public void setSelectionModel(GraphSelectionModel selectionModelToUse)
@@ -577,6 +571,52 @@ public class Project
 		return valueToRound * sign;
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////
+	// undo/redo
+	
+	public void undo() throws CommandFailedException
+	{
+		getCommandToUndo().undo(this);
+		// TODO: should we fire a command-undone here?
+	}
+	
+	public void redo() throws CommandFailedException
+	{
+		replayCommand(getCommandToRedo());
+	}
+
+	public Command getCommandToUndo() throws NothingToUndoException
+
+	{
+		int indexToUndo = getIndexToUndo();
+		if(indexToUndo < 0)
+			throw new NothingToUndoException();
+		return database.getCommandAt(indexToUndo);
+	}
+	
+	public Command getCommandToRedo() throws NothingToRedoException
+	{
+		int indexToRedo = getIndexToRedo();
+		if(indexToRedo < 0)
+			throw new NothingToRedoException();
+		return database.getCommandAt(indexToRedo);
+	}
+	
+	public int getIndexToUndo()
+	{
+		UndoRedoState state = new UndoRedoState(database);
+		return state.getIndexToUndo();
+	}
+
+	public int getIndexToRedo()
+	{
+		UndoRedoState state = new UndoRedoState(database);
+		return state.getIndexToRedo();
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// command history
+	
 	public void applySnapToOldUnsnappedCommands(Vector commands)
 	{
 		for(int i=0; i < commands.size(); ++i)
@@ -595,11 +635,6 @@ public class Project
 				}
 			}
 		}
-	}
-	
-	public IdAssigner getIdAssigner()
-	{
-		return idAssigner;
 	}
 	
 	protected void loadCommands(Vector commands) throws CommandFailedException, IOException
@@ -624,70 +659,13 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 
-	
-	protected ProjectServer getDatabase()
-	{
-		return database;
-	}
-	
-	public static ConceptualModelNode createConceptualModelObject(NodeType nodeType)
-	{
-		if(nodeType.isIntervention())
-			return new ConceptualModelIntervention();
-		else if(nodeType.isFactor())
-			return new ConceptualModelFactor(nodeType);
-		else if(nodeType.isTarget())
-			return new ConceptualModelTarget();
-
-		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
-	}
-	
-	public GoalPool getAllGoals()
-	{
-		return goalPool;
-	}
-	
-	public ObjectivePool getAllObjectives()
-	{
-		return objectivePool;
-	}
-
-
-	public static GoalPool createSampleGoals(IdAssigner assigner)
-	{
-		//TODO: These will be replaced by real user entered data from a wizard
-		GoalPool goals = new GoalPool();
-	
-		goals.put(new Goal(assigner.takeNextId(), "Goal 1"));
-		goals.put(new Goal(assigner.takeNextId(), "Goal 2"));
-		goals.put(new Goal(assigner.takeNextId(), "Goal 3"));
-		return goals;
-	}
-
-
-
-	public static ObjectivePool createSampleObjectives(IdAssigner assigner)
-	{
-		//TODO: These will be replaced by real user entered data from a wizard
-		ObjectivePool objectives = new ObjectivePool();
-		
-		objectives.put(new Objective(-1, Objective.ANNOTATION_NONE_STRING));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 1"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 2"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 3"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj A"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj B"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj C"));
-		return objectives;
-	}
-
-	IdAssigner annotationIdAssigner;
-	GoalPool goalPool;
-	ObjectivePool objectivePool;
 
 
 	public static final int DEFAULT_GRID_SIZE = 15;
 
+	IdAssigner annotationIdAssigner;
+	GoalPool goalPool;
+	ObjectivePool objectivePool;
 	NodePool nodePool;
 	ProjectServer database;
 	InterviewModel interviewModel;
