@@ -31,8 +31,8 @@ public class TestSetTargetGoal extends TestCaseEnhanced
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 
-		int goalId = project.getAllGoals().getIds()[1]; 
-		Goal goal = project.getAllGoals().find(goalId);
+		int goalId = project.getGoalPool().getIds()[1]; 
+		Goal goal = project.getGoalPool().find(goalId);
 		GoalIds goals = new GoalIds();
 		goals.addId(goalId);
 		Command setGoalCommand = new CommandSetTargetGoal(id, goals);

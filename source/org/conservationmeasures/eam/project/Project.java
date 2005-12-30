@@ -71,6 +71,7 @@ public class Project
 		idAssigner = new IdAssigner(); 
 		annotationIdAssigner = new IdAssigner();
 		nodePool = new NodePool();
+		linkagePool = new LinkagePool();
 		goalPool = GoalPool.createSampleGoals(annotationIdAssigner);
 		objectivePool = ObjectivePool.createSampleObjectives(annotationIdAssigner);
 		diagramModel = new DiagramModel(nodePool, goalPool, objectivePool);
@@ -96,17 +97,22 @@ public class Project
 		return database;
 	}
 	
-	public NodePool getObjectPool()
+	public NodePool getNodePool()
 	{
 		return nodePool;
 	}
 	
-	public GoalPool getAllGoals()
+	public LinkagePool getLinkagePool()
+	{
+		return linkagePool;
+	}
+	
+	public GoalPool getGoalPool()
 	{
 		return goalPool;
 	}
 	
-	public ObjectivePool getAllObjectives()
+	public ObjectivePool getObjectivePool()
 	{
 		return objectivePool;
 	}
@@ -483,7 +489,7 @@ public class Project
 		Logging.logVerbose("SetFactorType:" + desiredType);
 		model.updateCell(node);
 
-		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 	
@@ -496,7 +502,7 @@ public class Project
 		Logging.logVerbose("SetIndicator:" + desiredIndicatorId);
 		model.updateCell(node);
 		
-		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 	
@@ -509,7 +515,7 @@ public class Project
 		Logging.logVerbose("SetObjectives:" + desiredObjectives);
 		model.updateCell(node);
 	
-		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 	
@@ -522,7 +528,7 @@ public class Project
 		Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
 		model.updateCell(node);
 		
-		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 	
@@ -535,7 +541,7 @@ public class Project
 		Logging.logVerbose("Updating Goals:" + desiredGoals);
 		model.updateCell(node);
 		
-		ConceptualModelNode cmNode = getObjectPool().find(nodeId);
+		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 
@@ -736,6 +742,7 @@ public class Project
 	GoalPool goalPool;
 	ObjectivePool objectivePool;
 	NodePool nodePool;
+	LinkagePool linkagePool;
 	ProjectServer database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;

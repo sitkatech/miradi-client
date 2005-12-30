@@ -52,11 +52,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			bigBox.add(createSwitchFactorTypeDropdown(node.getType()));
 		bigBox.add(createIndicator(node.getIndicatorId()));
 		if(node.canHaveObjectives())
-			bigBox.add(createObjectiveDropdown(project.getAllObjectives(), node.getObjectives()));
+			bigBox.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
 		if(node.canHavePriority())
 			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
 		if(node.canHaveGoal())
-			bigBox.add(createTargetGoal(project.getAllGoals(), node.getGoals()));
+			bigBox.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
 		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();

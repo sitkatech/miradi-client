@@ -128,7 +128,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoObjective() throws Exception
 	{
-		int objectiveId = project.getAllObjectives().getIds()[1];
+		int objectiveId = project.getObjectivePool().getIds()[1];
 		
 		ObjectiveIds target1Objectives = new ObjectiveIds();
 		target1Objectives.addId(objectiveId);
@@ -163,7 +163,7 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoGoals() throws Exception
 	{
-		int goalId = project.getAllGoals().getIds()[1];
+		int goalId = project.getGoalPool().getIds()[1];
 		
 		GoalIds target1Goals = new GoalIds();
 		target1Goals.addId(goalId);

@@ -26,7 +26,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		objectPool = project.getObjectPool();
+		objectPool = project.getNodePool();
 		model = project.getDiagramModel();
 		
 		cmIntervention = new ConceptualModelIntervention();

@@ -403,7 +403,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testCutAndPaste() throws Exception
 	{
-		assertEquals("objects already in the pool?", 0, project.getObjectPool().size());
+		assertEquals("objects already in the pool?", 0, project.getNodePool().size());
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
@@ -413,7 +413,7 @@ public class TestProject extends EAMTestCase
 		
 		project.deleteNode(node1.getId());
 		
-		assertEquals("objects not still in the pool?", 1, project.getObjectPool().size());
+		assertEquals("objects not still in the pool?", 1, project.getNodePool().size());
 
 		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
@@ -422,7 +422,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
 		assertNotEquals("didn't change id?", node1.getId(), pastedNode.getId());
 		
-		assertEquals("both objects not in the pool?", 2, project.getObjectPool().size());
+		assertEquals("both objects not in the pool?", 2, project.getNodePool().size());
 	}
 
 	public void testCloseClearsCurrentView() throws Exception
@@ -439,7 +439,7 @@ public class TestProject extends EAMTestCase
 	{
 		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeTarget());
 		project.executeCommand(cmd);
-		DiagramModel copyOfModel = new DiagramModel(project.getObjectPool());
+		DiagramModel copyOfModel = new DiagramModel(project.getNodePool());
 		project.getDatabase().readDiagram(copyOfModel);
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}

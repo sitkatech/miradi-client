@@ -267,9 +267,9 @@ public class TestCommands extends EAMTestCase
 		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
 		assertEquals("size not zero?", 0, originalObjectives.size());
 
-		int[] allObjectiveIds = project.getAllObjectives().getIds();
-		Objective objective1 = project.getAllObjectives().find(allObjectiveIds[1]); 
-		Objective objective2 = project.getAllObjectives().find(allObjectiveIds[3]);
+		int[] allObjectiveIds = project.getObjectivePool().getIds();
+		Objective objective1 = project.getObjectivePool().find(allObjectiveIds[1]); 
+		Objective objective2 = project.getObjectivePool().find(allObjectiveIds[3]);
 
 		ObjectiveIds objectiveIds = new ObjectiveIds();
 		objectiveIds.addId(objective1.getId());
@@ -304,9 +304,9 @@ public class TestCommands extends EAMTestCase
 		GoalIds originalGoals = node.getGoals();
 		assertEquals("size not zero?", 0, originalGoals.size());
 
-		int[] allGoalIds = project.getAllGoals().getIds();
-		Goal goal1 = project.getAllGoals().find(allGoalIds[1]);
-		Goal goal2 = project.getAllGoals().find(allGoalIds[2]);
+		int[] allGoalIds = project.getGoalPool().getIds();
+		Goal goal1 = project.getGoalPool().find(allGoalIds[1]);
+		Goal goal2 = project.getGoalPool().find(allGoalIds[2]);
 
 		GoalIds goalIds = new GoalIds();
 		goalIds.addId(goal1.getId());
