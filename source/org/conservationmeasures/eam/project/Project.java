@@ -144,7 +144,7 @@ public class Project
 	{
 		Vector commands = getDatabase().load();
 		applySnapToOldUnsnappedCommands(commands);
-		loadCommands(commands);
+		replayCommands(commands);
 	}
 	
 	public String getName()
@@ -195,6 +195,48 @@ public class Project
 		return true;
 	}
 
+	protected void replayCommands(Vector commands) throws CommandFailedException, IOException
+	{
+		idAssigner.clear();
+		getDiagramModel().clear();
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			EAM.logVerbose("Executing " + command);
+			replayCommand(command);
+			database.addCommandWithoutSaving(command);
+			
+		}
+
+		if(currentView.length() == 0)
+		{
+			currentView = DiagramView.getViewName();
+			fireSwitchToView(currentView);
+		}
+		
+		fireCommandExecuted(new CommandDoNothing());
+	}
+
+	public void applySnapToOldUnsnappedCommands(Vector commands)
+	{
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			if(command instanceof CommandDiagramMove)
+			{
+				CommandDiagramMove unsnapped = (CommandDiagramMove)command;
+				Point unsnappedPoint = new Point(unsnapped.getDeltaX(), unsnapped.getDeltaY());
+				Point snappedPoint = getSnapped(unsnappedPoint);
+				if(!snappedPoint.equals(unsnappedPoint))
+				{
+					EAM.logDebug("Adjusting " + unsnappedPoint.toString() + " to " + snappedPoint.toString());
+					CommandDiagramMove snapped = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, unsnapped.getIds());
+					commands.set(i, snapped);
+				}
+			}
+		}
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// data values
 
@@ -686,51 +728,6 @@ public class Project
 		return state.getIndexToRedo();
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////
-	// command history
-	
-	public void applySnapToOldUnsnappedCommands(Vector commands)
-	{
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			if(command instanceof CommandDiagramMove)
-			{
-				CommandDiagramMove unsnapped = (CommandDiagramMove)command;
-				Point unsnappedPoint = new Point(unsnapped.getDeltaX(), unsnapped.getDeltaY());
-				Point snappedPoint = getSnapped(unsnappedPoint);
-				if(!snappedPoint.equals(unsnappedPoint))
-				{
-					EAM.logDebug("Adjusting " + unsnappedPoint.toString() + " to " + snappedPoint.toString());
-					CommandDiagramMove snapped = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, unsnapped.getIds());
-					commands.set(i, snapped);
-				}
-			}
-		}
-	}
-	
-	protected void loadCommands(Vector commands) throws CommandFailedException, IOException
-	{
-		idAssigner.clear();
-		getDiagramModel().clear();
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			EAM.logVerbose("Executing " + command);
-			replayCommand(command);
-			database.addCommandWithoutSaving(command);
-			
-		}
-
-		if(currentView.length() == 0)
-		{
-			currentView = DiagramView.getViewName();
-			fireSwitchToView(currentView);
-		}
-		
-		fireCommandExecuted(new CommandDoNothing());
-	}
-
 
 
 	public static final int DEFAULT_GRID_SIZE = 15;
