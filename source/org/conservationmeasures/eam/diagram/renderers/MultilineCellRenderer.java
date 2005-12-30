@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.annotations.NodeAnnotation;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -122,15 +121,12 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	
 	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)
 	{
-		EAM.logError("Project Vision not implemented (see MultilineCellRenderer.drawProjectScopeVision)");
-//		if(vision == null || vision.length() == 0)
-//			return;
-//		ProjectVisionAnnotation annotations = new ProjectVisionAnnotation();
-//		NodeAnnotation annotation = new NodeAnnotation(vision);
-//		annotations.add(annotation);
-//		Rectangle scopeRect = (Rectangle)rect.clone();
-//		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
-//		drawAnnotation(scopeRect, g2, annotations);
+		if(vision == null || vision.length() == 0)
+			return;
+		NodeAnnotation annotation = new NodeAnnotation(-1, vision);
+		Rectangle scopeRect = (Rectangle)rect.clone();
+		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
+		drawAnnotation(scopeRect, g2, annotation);
 	}
 	
 	protected void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
