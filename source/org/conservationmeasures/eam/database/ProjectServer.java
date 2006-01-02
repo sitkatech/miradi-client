@@ -96,8 +96,6 @@ public class ProjectServer
 
 	public void open(File directory) throws IOException
 	{
-		openNonDatabaseStore(directory);
-
 		if(doesProjectExist(directory))
 		{
 			db.openDiskDatabase(getDatabaseFileBase(directory));
@@ -109,6 +107,8 @@ public class ProjectServer
 			createCommandsTable();
 			db.flush();
 		}
+		openNonDatabaseStore(directory);
+
 	}
 
 	protected void openNonDatabaseStore(File directory)
