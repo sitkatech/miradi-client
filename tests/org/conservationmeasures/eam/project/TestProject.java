@@ -412,17 +412,18 @@ public class TestProject extends EAMTestCase
 		TransferableEamList transferableList = new TransferableEamList(selectedCells);
 		
 		project.deleteNode(node1.getId());
-		
-		assertEquals("objects not still in the pool?", 1, project.getNodePool().size());
+		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
 
-		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		Point pastePoint = new Point(5,5);
+		project.pasteNodesAndLinksIntoProject(transferableList, pastePoint);
 		Vector nodes = model.getAllNodes();
 		assertEquals(1, nodes.size());
 		DiagramNode pastedNode = (DiagramNode)nodes.get(0);
 		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
 		assertNotEquals("didn't change id?", node1.getId(), pastedNode.getId());
-		
-		assertEquals("both objects not in the pool?", 2, project.getNodePool().size());
+		assertEquals("didn't snap?", project.getSnapped(pastePoint), pastedNode.getLocation());
+
+		assertEquals("not just one object in the pool?", 1, project.getNodePool().size());
 	}
 
 	public void testCloseClearsCurrentView() throws Exception

@@ -387,8 +387,8 @@ public class Project
 			NodeDataMap nodeData = nodes[i];
 			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
 			
-			ConceptualModelNode cmObject = nodePool.find(originalNodeId); 
-			CommandInsertNode newNode = new CommandInsertNode(cmObject.getType());
+			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
+			CommandInsertNode newNode = new CommandInsertNode(type);
 			executeCommand(newNode);
 
 			int newNodeId = newNode.getId();
@@ -404,6 +404,7 @@ public class Project
 		{
 			NodeDataMap nodeData = nodes[i];
 			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(DiagramNode.TAG_ID), startPoint);
+			newNodeLocation = getSnapped(newNodeLocation);
 			int newNodeId = dataHelper.getNewId(nodeData.getInt(DiagramNode.TAG_ID));
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
 			executeCommand(move);
@@ -436,12 +437,7 @@ public class Project
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
 		NodeType nodeType = nodeToDelete.getType();
 		model.deleteNode(nodeToDelete);
-		
-		// TODO: For now, delete only deletes the DiagramNode, and 
-		// not the underlying CM object. That's so we can do a cut/paste
-		// without getting an error.
-		// I'm not sure what the proper long-term solution is.
-		//objectPool.remove(idToDelete);
+		nodePool.remove(idToDelete);
 		
 		return nodeType; 
 	}

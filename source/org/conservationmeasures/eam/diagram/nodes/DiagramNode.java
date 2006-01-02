@@ -301,6 +301,15 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		NodeDataMap dataMap = new NodeDataMap();
 		dataMap.putInt(TAG_ID, getId());
+		
+		// FIXME: This is a crude hack, to preserve the node type information
+		// here so we can re-create the node if it gets pasted. 
+		// Really, for each node copied to the clipboard, we should copy 
+		// the json for both the ConceptualModelNode and for the DiagramNode.
+		// That will also fix the current bug that objectives and goals are not copied
+		dataMap.put(TAG_NODE_TYPE, NodeDataMap.convertNodeTypeToInt(getType()));
+		
+		
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
 		dataMap.putString(TAG_VISIBLE_LABEL, getText());
@@ -345,9 +354,10 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
-	public static final String TAG_NODE_TYPE = "NodeType";
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_VISIBLE_LABEL = "Text";
+
+	public static final String TAG_NODE_TYPE = "NodeType";
 
 	DefaultPort port;
 	Dimension previousSize;
