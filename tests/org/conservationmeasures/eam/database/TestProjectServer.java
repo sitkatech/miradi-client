@@ -169,7 +169,7 @@ public class TestProjectServer extends EAMTestCase
 		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
 		assertEquals("wrong file name?", tempDirectory.getName(), anotherStorage.getName());
 		
-		Vector nothingYet = anotherStorage.load();
+		Vector nothingYet = anotherStorage.loadCommands();
 		assertEquals("brand new file not empty?", 0, nothingYet.size());
 		
 		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
@@ -180,7 +180,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("target not gettable?", createTarget, anotherStorage.getCommandAt(0));
 		assertEquals("factor not gettable?", createFactor, anotherStorage.getCommandAt(1));
 		
-		Vector loaded = anotherStorage.load();
+		Vector loaded = anotherStorage.loadCommands();
 		assertEquals("didn't load correct count?", 2, loaded.size());
 		assertEquals("target not loaded?", createTarget, loaded.get(0));
 		assertEquals("factor not loaded?", createFactor, loaded.get(1));
@@ -188,7 +188,7 @@ public class TestProjectServer extends EAMTestCase
 		
 		try
 		{
-			anotherStorage.load();
+			anotherStorage.loadCommands();
 			fail("Should have thrown loading without a directory specified");
 		}
 		catch(Exception ignoreExpected)

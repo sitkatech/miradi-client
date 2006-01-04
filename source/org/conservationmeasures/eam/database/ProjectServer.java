@@ -122,7 +122,7 @@ public class ProjectServer
 	}
 	
 
-	public Vector load() throws IOException, UnknownCommandException
+	public Vector loadCommands() throws IOException, UnknownCommandException
 	{
 		Vector loaded = new Vector();
 		EAM.logVerbose("---Loading---");

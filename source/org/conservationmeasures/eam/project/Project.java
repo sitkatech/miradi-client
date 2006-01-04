@@ -143,14 +143,33 @@ public class Project
 	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
 	{
 		getDatabase().open(projectDirectory);
-		loadCommandsFromDatabase();
+		replayCommands(getDatabase());
 	}
 
-	void loadCommandsFromDatabase() throws IOException, UnknownCommandException, CommandFailedException
+	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
 	{
-		Vector commands = getDatabase().load();
+		idAssigner.clear();
+		getDiagramModel().clear();
+
+		Vector commands = db.loadCommands();
 		applySnapToOldUnsnappedCommands(commands);
-		replayCommands(commands);
+		
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			EAM.logVerbose("Executing " + command);
+			replayCommand(command);
+			database.addCommandWithoutSaving(command);
+			
+		}
+		
+		if(currentView.length() == 0)
+		{
+			currentView = DiagramView.getViewName();
+			fireSwitchToView(currentView);
+		}
+		
+		fireCommandExecuted(new CommandDoNothing());
 	}
 	
 	public String getName()
@@ -199,28 +218,6 @@ public class Project
 			return false;
 		}
 		return true;
-	}
-
-	protected void replayCommands(Vector commands) throws CommandFailedException, IOException
-	{
-		idAssigner.clear();
-		getDiagramModel().clear();
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			EAM.logVerbose("Executing " + command);
-			replayCommand(command);
-			database.addCommandWithoutSaving(command);
-			
-		}
-
-		if(currentView.length() == 0)
-		{
-			currentView = DiagramView.getViewName();
-			fireSwitchToView(currentView);
-		}
-		
-		fireCommandExecuted(new CommandDoNothing());
 	}
 
 	public void applySnapToOldUnsnappedCommands(Vector commands)
