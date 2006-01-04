@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.annotations.NodeAnnotation;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -123,7 +124,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		if(vision == null || vision.length() == 0)
 			return;
-		NodeAnnotation annotation = new NodeAnnotation(-1, vision);
+		NodeAnnotation annotation = new NodeAnnotation(IdAssigner.INVALID_ID, vision);
 		Rectangle scopeRect = (Rectangle)rect.clone();
 		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
 		drawAnnotation(scopeRect, g2, annotation);

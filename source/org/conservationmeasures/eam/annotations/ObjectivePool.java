@@ -25,7 +25,7 @@ public class ObjectivePool extends ObjectPool
 		//TODO: These will be replaced by real user entered data from a wizard
 		ObjectivePool objectives = new ObjectivePool();
 		
-		objectives.put(new Objective(-1, Objective.ANNOTATION_NONE_STRING));
+		objectives.put(new Objective(IdAssigner.INVALID_ID, Objective.ANNOTATION_NONE_STRING));
 		objectives.put(new Objective(assigner.takeNextId(), "Obj 1"));
 		objectives.put(new Objective(assigner.takeNextId(), "Obj 2"));
 		objectives.put(new Objective(assigner.takeNextId(), "Obj 3"));
