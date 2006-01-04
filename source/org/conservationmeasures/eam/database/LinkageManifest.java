@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.database;
 
 import org.json.JSONObject;
 
-class LinkageManifest extends Manifest
+public class LinkageManifest extends Manifest
 {
 	public LinkageManifest()
 	{
