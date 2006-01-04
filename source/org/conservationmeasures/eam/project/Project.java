@@ -459,10 +459,12 @@ public class Project
 	
 	public void deleteLinkage(int idToDelete) throws Exception
 	{
-		database.deleteLinkage(idToDelete);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 		model.deleteLinkage(linkageToDelete);
+
+		database.deleteLinkage(idToDelete);
+		linkagePool.remove(idToDelete);
 	}
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
@@ -470,10 +472,11 @@ public class Project
 		int realId = idAssigner.obtainRealId(requestedLinkageId);
 		DiagramModel model = getDiagramModel();
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, linkFromId, linkToId);
-		DiagramLinkage linkage = model.createLinkage(cmLinkage);
-		int insertedLinkageId = linkage.getId();
+		linkagePool.put(cmLinkage);
 		database.writeLinkage(cmLinkage);
-		return insertedLinkageId;
+		
+		DiagramLinkage linkage = model.createLinkage(cmLinkage);
+		return linkage.getId();
 	}
 	
 	public void setFactorType(int nodeId, NodeType desiredType) throws Exception

@@ -529,6 +529,21 @@ public class TestProject extends EAMTestCase
 		
 	}
 	
+	public void testLinkagePool() throws Exception
+	{
+		DiagramNode nodeA = createNode(new NodeTypeIndirectFactor());
+		DiagramNode nodeB = createNode(new NodeTypeTarget());
+		int linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getId(), nodeB.getId());
+		LinkagePool linkagePool = project.getLinkagePool();
+		assertEquals("not in pool?", 1, linkagePool.size());
+		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
+		assertEquals("wrong from?", nodeA.getId(), cmLinkage.getFromNodeId());
+		assertEquals("wrong to?", nodeB.getId(), cmLinkage.getToNodeId());
+		
+		project.deleteLinkage(linkageId);
+		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
+	}
+	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		int insertedId = project.insertNodeAtId(nodeType, IdAssigner.INVALID_ID);
