@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.project.Project;
 
 
 
@@ -19,6 +18,7 @@ public class ProjectForTesting extends Project
 		super(new ProjectServerForTesting());
 		getTestDatabase().openMemoryDatabase(testName);
 		replayCommands(getDatabase());
+		finishOpening();
 		commandStack = new Vector();
 	}
 

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.database;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.json.JSONObject;
 
@@ -23,7 +24,22 @@ public class Manifest
 		data = copyFrom;
 	}
 	
-	public void put(String key)
+	public int[] getAllKeys()
+	{
+		int[] keys = new int[size()];
+		int at = 0;
+		Iterator iter = data.keys();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			if(!key.equals(ProjectServer.OBJECT_TYPE))
+				keys[at++] = Integer.parseInt(key);
+		}
+		
+		return keys;
+	}
+	
+	private void put(String key)
 	{
 		data.put(key, true);
 	}
@@ -33,7 +49,7 @@ public class Manifest
 		put(Integer.toString(key));
 	}
 	
-	public boolean has(String key)
+	private boolean has(String key)
 	{
 		return data.has(key);
 	}
@@ -43,7 +59,7 @@ public class Manifest
 		return has(Integer.toString(key));
 	}
 	
-	public void remove(String key)
+	private void remove(String key)
 	{
 		data.remove(key);
 	}

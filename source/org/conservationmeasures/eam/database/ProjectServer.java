@@ -110,6 +110,25 @@ public class ProjectServer
 		openNonDatabaseStore(directory);
 
 	}
+	
+	public boolean isCurrentVersion() throws IOException, ParseException
+	{
+		File versionFile = getVersionFile();
+		if(!versionFile.exists())
+			return false;
+		JSONObject version = JSONFile.read(versionFile);
+		if(version.getInt(TAG_VERSION) != DATA_VERSION)
+			return false;
+		
+		return true;
+	}
+	
+	public void writeVersion() throws IOException
+	{
+		JSONObject version = new JSONObject();
+		version.put(TAG_VERSION, DATA_VERSION);
+		JSONFile.write(getVersionFile(), version);
+	}
 
 	protected void openNonDatabaseStore(File directory)
 	{
@@ -223,7 +242,10 @@ public class ProjectServer
 	
 	public void readDiagram(DiagramModel model) throws Exception
 	{
-		model.fillFrom(JSONFile.read(getDiagramFile()));
+		File diagramFile = getDiagramFile();
+		model.clear();
+		if(diagramFile.exists())
+			model.fillFrom(JSONFile.read(diagramFile));
 	}
 	
 	private void removeFromLinkageManifest(int idToRemove) throws IOException, ParseException
@@ -279,6 +301,11 @@ public class ProjectServer
 		return new File(getJsonDirectory(), "diagrams");
 	}
 	
+	private File getVersionFile()
+	{
+		return new File(getJsonDirectory(), "version");
+	}
+	
 	private File getNodeManifestFile()
 	{
 		return new File(getNodesDirectory(), "manifest");
@@ -320,7 +347,9 @@ public class ProjectServer
 	}
 	
 	static public String OBJECT_TYPE = "Type";
+	static public String TAG_VERSION = "Version";
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
+	static public int DATA_VERSION = 1;
 
 	protected Vector commands;
 	File topDirectory;

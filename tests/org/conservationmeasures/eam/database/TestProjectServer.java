@@ -120,6 +120,27 @@ public class TestProjectServer extends EAMTestCase
 		IdAssigner idAssigner = new IdAssigner();
 		NodePool objectPool = new NodePool();
 		
+		try
+		{
+			storage.readDiagram(new DiagramModel(objectPool));
+		}
+		catch(Exception e)
+		{
+			fail("didn't allow reading non-existent diagram?");
+		}
+		
+		DiagramModel model = new DiagramModel(objectPool);
+		storage.writeDiagram(model);
+
+		try
+		{
+			storage.readDiagram(new DiagramModel(objectPool));
+		}
+		catch(Exception e)
+		{
+			fail("didn't allow reading an empty diagram?");
+		}
+		
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(idAssigner.takeNextId());
 		objectPool.put(cmIntervention);
@@ -128,7 +149,6 @@ public class TestProjectServer extends EAMTestCase
 		cmTarget.setId(idAssigner.takeNextId());
 		objectPool.put(cmTarget);
 		
-		DiagramModel model = new DiagramModel(objectPool);
 		model.createNode(cmIntervention.getId());
 		model.createNode(cmTarget.getId());
 		

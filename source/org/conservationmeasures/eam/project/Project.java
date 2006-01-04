@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -26,6 +27,8 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.database.LinkageManifest;
+import org.conservationmeasures.eam.database.NodeManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -140,10 +143,46 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void open(File projectDirectory) throws IOException, CommandFailedException, UnknownCommandException
+	public void open(File projectDirectory) throws Exception
 	{
 		getDatabase().open(projectDirectory);
-		replayCommands(getDatabase());
+		if(getDatabase().isCurrentVersion())
+		{
+			loadNodePool();
+			loadLinkagePool();
+			loadDiagram();
+		}
+		else
+			replayCommands(getDatabase());
+		
+		finishOpening();
+	}
+	
+	private void loadNodePool() throws IOException, ParseException
+	{
+		NodeManifest nodes = getDatabase().readNodeManifest();
+		int[] nodeIds = nodes.getAllKeys();
+		for(int i = 0; i < nodeIds.length; ++i)
+		{
+			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
+			nodePool.put(node);
+		}
+	}
+	
+	private void loadLinkagePool() throws IOException, ParseException
+	{
+		LinkageManifest linkages = getDatabase().readLinkageManifest();
+		int[] linkageIds = linkages.getAllKeys();
+		for(int i = 0; i < linkageIds.length; ++i)
+		{
+			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
+			linkagePool.put(linkage);
+		}
+	}
+	
+	private void loadDiagram() throws Exception
+	{
+		getDatabase().readDiagram(getDiagramModel());
 	}
 
 	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
@@ -163,6 +202,11 @@ public class Project
 			
 		}
 		
+	}
+
+	protected void finishOpening() throws IOException
+	{
+		database.writeVersion();
 		if(currentView.length() == 0)
 		{
 			currentView = DiagramView.getViewName();

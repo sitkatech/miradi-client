@@ -278,6 +278,11 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		JSONObject nodeMap = json.getJSONObject(TAG_NODES);
 		JSONArray keys = nodeMap.names();
+		
+		// TODO: Really we should extend JSONObject to have a sane names() method
+		// that returns an empty array if there are no names
+		if(keys == null)
+			return;
 		for(int i=0; i < keys.length(); ++i)
 		{
 			String key = keys.getString(i);

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -15,6 +16,7 @@ import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
@@ -25,6 +27,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.commands.CommandUndo;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -44,6 +47,7 @@ import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase
 {
@@ -542,6 +546,41 @@ public class TestProject extends EAMTestCase
 		
 		project.deleteLinkage(linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
+	}
+	
+	public void testOpenProject() throws Exception
+	{
+		File tempDir = createTempDirectory();
+		Project diskProject = new Project(new ProjectServer());
+		diskProject.open(tempDir);
+		try
+		{
+			
+			CommandInsertNode cmdNode1 = new CommandInsertNode(new NodeTypeIndirectFactor());
+			diskProject.executeCommand(cmdNode1);
+			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
+			diskProject.executeCommand(cmdNode2);
+			CommandLinkNodes cmdLinkage = new CommandLinkNodes(cmdNode1.getId(), cmdNode2.getId());
+			diskProject.executeCommand(cmdLinkage);
+		}
+		finally
+		{
+			diskProject.close();
+		}
+		
+		Project loadedProject = new Project(new ProjectServer());
+		loadedProject.open(tempDir);
+		try
+		{
+			assertEquals("didn't read node pool?", 2, loadedProject.getNodePool().size());
+			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
+			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
+		}
+		finally
+		{
+			loadedProject.close();
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
+		}
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
