@@ -126,18 +126,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			updateStatusBar();
 			getDiagramComponent().requestFocus();
 		}
-		catch(IOException e)
-		{
-			EAM.logException(e);
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-		}
 		catch(UnknownCommandException e)
 		{
 			EAM.errorDialog(EAM.text("Unknown Command\nYou are probably trying to load an old project " +
 					"that contains obsolete commands that are no longer supported"));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
 		}
 		
 		actions.updateActionStates();
