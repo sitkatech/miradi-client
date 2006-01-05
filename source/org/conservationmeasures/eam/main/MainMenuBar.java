@@ -73,8 +73,8 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionCut.class)));
 		menu.add(new JMenuItem(actions.get(ActionCopy.class)));
-		menu.add(new JMenuItem(actions.get(ActionPaste.class)));
-		menu.add(new JMenuItem(actions.get(ActionPasteWithoutLinks.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionPaste.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionPasteWithoutLinks.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
 		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
