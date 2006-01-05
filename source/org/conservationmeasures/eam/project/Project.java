@@ -151,6 +151,7 @@ public class Project
 			loadNodePool();
 			loadLinkagePool();
 			loadDiagram();
+			loadCommands();
 		}
 		else
 			replayCommands(getDatabase());
@@ -183,6 +184,20 @@ public class Project
 	private void loadDiagram() throws Exception
 	{
 		getDatabase().readDiagram(getDiagramModel());
+	}
+
+	private void loadCommands() throws Exception
+	{
+		// TODO: 1) this code seems out of place
+		// 2) it is partly a duplicate of replayCommands
+		Vector commands = database.loadCommands();
+		applySnapToOldUnsnappedCommands(commands);
+		for(int i=0; i < commands.size(); ++i)
+		{
+			Command command = (Command)commands.get(i);
+			database.addCommandWithoutSaving(command);
+			
+		}
 	}
 
 	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
