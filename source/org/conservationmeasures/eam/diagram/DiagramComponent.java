@@ -37,11 +37,12 @@ import org.conservationmeasures.eam.diagram.views.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.martus.swing.Utilities;
 
-public class DiagramComponent extends JGraph implements ComponentWithContextMenu
+public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
 {
 	public DiagramComponent(Project projectToUse, Actions actions)
 	{
@@ -181,6 +182,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void zoom(double proportion)
 	{
 		setScale(getScale() * proportion);
+	}
+	
+	public boolean hasLocation()
+	{
+		return false;
 	}
 	
 	private void installKeyBindings(Actions actions)
