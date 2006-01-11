@@ -83,7 +83,7 @@ public class Project
 		currentView = NoProjectView.getViewName();
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
-		dataMap = new JSONObject();
+		projectData = new JSONObject();
 		layerManager = new LayerManager();
 	}
 	
@@ -93,6 +93,11 @@ public class Project
 	public IdAssigner getIdAssigner()
 	{
 		return idAssigner;
+	}
+	
+	public IdAssigner getAnnotationIdAssigner()
+	{
+		return annotationIdAssigner;
 	}
 	
 	protected ProjectServer getDatabase()
@@ -256,7 +261,7 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		dataMap = new JSONObject();
+		projectData = new JSONObject();
 		currentView = NoProjectView.getViewName();
 		fireSwitchToView(currentView);
 	}
@@ -304,13 +309,13 @@ public class Project
 
 	public String getDataValue(String fieldName)
 	{
-		return dataMap.optString(fieldName, "");
+		return projectData.optString(fieldName, "");
 	}
 	
 	public void setDataValue(String fieldName, String fieldData)
 	{
 		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
-		dataMap.put(fieldName, fieldData);
+		projectData.put(fieldName, fieldData);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -493,6 +498,8 @@ public class Project
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
 		NodeType nodeType = nodeToDelete.getType();
 		model.deleteNode(nodeToDelete);
+
+		database.deleteNode(idToDelete);
 		nodePool.remove(idToDelete);
 		
 		return nodeType; 
@@ -793,21 +800,25 @@ public class Project
 
 	public static final int DEFAULT_GRID_SIZE = 15;
 
+	IdAssigner idAssigner;
 	IdAssigner annotationIdAssigner;
-	GoalPool goalPool;
-	ObjectivePool objectivePool;
+	JSONObject projectData;
+	String currentView;
+
 	NodePool nodePool;
 	LinkagePool linkagePool;
+	GoalPool goalPool;
+	ObjectivePool objectivePool;
+	
 	ProjectServer database;
 	InterviewModel interviewModel;
 	DiagramModel diagramModel;
-	GraphSelectionModel selectionModel;
+
 	Vector commandExecutedListeners;
 	Vector viewChangeListeners;
-	String currentView;
-	JSONObject dataMap;
+	
 	LayerManager layerManager;
-	IdAssigner idAssigner;
+	GraphSelectionModel selectionModel;
 
 }
 

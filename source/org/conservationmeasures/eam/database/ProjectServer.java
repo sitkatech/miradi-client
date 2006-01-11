@@ -181,6 +181,8 @@ public class ProjectServer
 		return script.exists();
 	}
 	
+	
+	
 	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
 	{
 		int id = node.getId();
@@ -193,10 +195,24 @@ public class ProjectServer
 		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
 	}
 	
+	public void deleteNode(int id) throws IOException, ParseException
+	{
+		removeFromNodeManifest(id);
+		getNodeFile(id).delete();
+		
+	}
+	
 	private void addToNodeManifest(int idToAdd) throws IOException, ParseException
 	{
 		NodeManifest manifest = readNodeManifest();
 		manifest.put(idToAdd);
+		writeNodeManifest(manifest);
+	}
+	
+	private void removeFromNodeManifest(int idToRemove) throws IOException, ParseException
+	{
+		NodeManifest manifest = readNodeManifest();
+		manifest.remove(idToRemove);
 		writeNodeManifest(manifest);
 	}
 	
