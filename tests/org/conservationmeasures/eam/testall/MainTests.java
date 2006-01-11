@@ -16,12 +16,12 @@ import junit.framework.TestSuite;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDatabase;
 import org.conservationmeasures.eam.database.TestProjectServer;
-import org.conservationmeasures.eam.diagram.TestLinkNodes;
 import org.conservationmeasures.eam.diagram.TestDelete;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.TestEamGraphCell;
 import org.conservationmeasures.eam.diagram.TestInsertNode;
+import org.conservationmeasures.eam.diagram.TestLinkNodes;
 import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetFactorType;
 import org.conservationmeasures.eam.diagram.TestSetIndication;
@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestProject;
+import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
@@ -85,6 +86,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestIdAssigner.class));
+		suite.addTest(new TestSuite(TestProjectInfo.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestLogging.class));

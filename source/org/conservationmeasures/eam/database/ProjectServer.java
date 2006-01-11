@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.project.ProjectInfo;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 
@@ -251,6 +252,19 @@ public class ProjectServer
 		getLinkageFile(id).delete();
 	}
 	
+	public void writeProjectInfo(ProjectInfo info) throws IOException
+	{
+		JSONFile.write(getProjectInfoFile(), info.toJson());
+	}
+	
+	public void readProjectInfo(ProjectInfo info) throws IOException, ParseException
+	{
+		File infoFile = getProjectInfoFile();
+		info.clear();
+		if(infoFile.exists())
+			info.fillFrom(JSONFile.read(infoFile));
+	}
+	
 	public void writeDiagram(DiagramModel model) throws IOException
 	{
 		JSONFile.write(getDiagramFile(), model.toJson());
@@ -320,6 +334,11 @@ public class ProjectServer
 	private File getVersionFile()
 	{
 		return new File(getJsonDirectory(), "version");
+	}
+	
+	private File getProjectInfoFile()
+	{
+		return new File(getJsonDirectory(), "project");
 	}
 	
 	private File getNodeManifestFile()

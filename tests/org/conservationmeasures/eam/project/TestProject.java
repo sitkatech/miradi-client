@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -126,8 +128,6 @@ public class TestProject extends EAMTestCase
 		assertEquals("Didn't set data?", fieldData, project.getDataValue(fieldName));
 		
 		project.close();
-		assertEquals("Didn't clear data?", "", project.getDataValue(fieldName));
-		
 	}
 	
 	public void testViewChanges() throws Exception
@@ -562,6 +562,10 @@ public class TestProject extends EAMTestCase
 			diskProject.executeCommand(cmdNode2);
 			CommandLinkNodes cmdLinkage = new CommandLinkNodes(cmdNode1.getId(), cmdNode2.getId());
 			diskProject.executeCommand(cmdLinkage);
+			CommandInsertNode cmdNode3 = new CommandInsertNode(new NodeTypeIntervention());
+			diskProject.executeCommand(cmdNode3);
+			CommandDeleteNode cmdDelete = new CommandDeleteNode(cmdNode3.getId());
+			diskProject.executeCommand(cmdDelete);
 		}
 		finally
 		{
@@ -575,6 +579,8 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read node pool?", 2, loadedProject.getNodePool().size());
 			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
+			assertEquals("didn't preserve next node id?", diskProject.getIdAssigner().takeNextId(), loadedProject.getIdAssigner().takeNextId());
+			assertEquals("didn't preserve next annotation id?", diskProject.getAnnotationIdAssigner().takeNextId(), loadedProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally
 		{

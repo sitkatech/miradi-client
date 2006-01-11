@@ -57,7 +57,6 @@ import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.jgraph.graph.GraphSelectionModel;
-import org.json.JSONObject;
 
 
 public class Project
@@ -71,19 +70,16 @@ public class Project
 	{
 		database = databaseToUse;
 		
-		idAssigner = new IdAssigner(); 
-		annotationIdAssigner = new IdAssigner();
+		projectInfo = new ProjectInfo();
 		nodePool = new NodePool();
 		linkagePool = new LinkagePool();
-		goalPool = GoalPool.createSampleGoals(annotationIdAssigner);
-		objectivePool = ObjectivePool.createSampleObjectives(annotationIdAssigner);
+		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
+		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
 		diagramModel = new DiagramModel(nodePool, goalPool, objectivePool);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
-		currentView = NoProjectView.getViewName();
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
-		projectData = new JSONObject();
 		layerManager = new LayerManager();
 	}
 	
@@ -92,12 +88,12 @@ public class Project
 	
 	public IdAssigner getIdAssigner()
 	{
-		return idAssigner;
+		return projectInfo.getIdAssigner();
 	}
 	
 	public IdAssigner getAnnotationIdAssigner()
 	{
-		return annotationIdAssigner;
+		return projectInfo.getAnnotationIdAssigner();
 	}
 	
 	protected ProjectServer getDatabase()
@@ -142,7 +138,12 @@ public class Project
 	
 	public String getCurrentView()
 	{
-		return currentView;
+		return projectInfo.getCurrentView();
+	}
+	
+	public void setCurrentView(String newCurrentView)
+	{
+		projectInfo.setCurrentView(newCurrentView);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +154,7 @@ public class Project
 		getDatabase().open(projectDirectory);
 		if(getDatabase().isCurrentVersion())
 		{
+			loadProjectInfo();
 			loadNodePool();
 			loadLinkagePool();
 			loadDiagram();
@@ -162,6 +164,11 @@ public class Project
 			replayCommands(getDatabase());
 		
 		finishOpening();
+	}
+	
+	private void loadProjectInfo() throws IOException, ParseException
+	{
+		getDatabase().readProjectInfo(projectInfo);
 	}
 	
 	private void loadNodePool() throws IOException, ParseException
@@ -207,7 +214,7 @@ public class Project
 
 	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
 	{
-		idAssigner.clear();
+		projectInfo.getIdAssigner().clear();
 		getDiagramModel().clear();
 
 		Vector commands = db.loadCommands();
@@ -227,11 +234,10 @@ public class Project
 	protected void finishOpening() throws IOException
 	{
 		database.writeVersion();
+		String currentView = getCurrentView();
 		if(currentView.length() == 0)
-		{
-			currentView = DiagramView.getViewName();
-			fireSwitchToView(currentView);
-		}
+			setCurrentView(DiagramView.getViewName());
+		fireSwitchToView(getCurrentView());
 		
 		fireCommandExecuted(new CommandDoNothing());
 	}
@@ -261,9 +267,8 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		projectData = new JSONObject();
-		currentView = NoProjectView.getViewName();
-		fireSwitchToView(currentView);
+		setCurrentView(NoProjectView.getViewName());
+		fireSwitchToView(getCurrentView());
 	}
 	
 	static public boolean isValidProjectName(String candidate)
@@ -309,13 +314,13 @@ public class Project
 
 	public String getDataValue(String fieldName)
 	{
-		return projectData.optString(fieldName, "");
+		return projectInfo.getProjectData().optString(fieldName, "");
 	}
 	
 	public void setDataValue(String fieldName, String fieldData)
 	{
 		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
-		projectData.put(fieldName, fieldData);
+		projectInfo.getProjectData().put(fieldName, fieldData);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
@@ -346,6 +351,7 @@ public class Project
 		try
 		{
 			database.appendCommand(command);
+			database.writeProjectInfo(projectInfo);
 			database.writeDiagram(getDiagramModel());
 		}
 		catch (IOException e)
@@ -384,7 +390,7 @@ public class Project
 	
 	public void switchToView(String viewName) throws CommandFailedException
 	{
-		currentView = viewName;
+		setCurrentView(viewName);
 		fireSwitchToView(viewName);
 	}
 	
@@ -507,7 +513,7 @@ public class Project
 
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
-		int realId = idAssigner.obtainRealId(requestedId);
+		int realId = projectInfo.obtainRealNodeId(requestedId);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
 		nodePool.put(cmObject);
@@ -532,7 +538,7 @@ public class Project
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
 	{
-		int realId = idAssigner.obtainRealId(requestedLinkageId);
+		int realId = projectInfo.obtainRealLinkageId(requestedLinkageId);
 		DiagramModel model = getDiagramModel();
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, linkFromId, linkToId);
 		linkagePool.put(cmLinkage);
@@ -800,10 +806,7 @@ public class Project
 
 	public static final int DEFAULT_GRID_SIZE = 15;
 
-	IdAssigner idAssigner;
-	IdAssigner annotationIdAssigner;
-	JSONObject projectData;
-	String currentView;
+	ProjectInfo projectInfo;
 
 	NodePool nodePool;
 	LinkagePool linkagePool;

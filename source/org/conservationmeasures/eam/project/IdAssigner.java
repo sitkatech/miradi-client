@@ -8,6 +8,15 @@ package org.conservationmeasures.eam.project;
 
 public class IdAssigner
 {
+	public IdAssigner()
+	{
+	}
+	
+	public IdAssigner(int highestIdAlreadyUsed)
+	{
+		nextId = highestIdAlreadyUsed + 1;
+	}
+	
 	public void clear()
 	{
 		nextId = 0;
