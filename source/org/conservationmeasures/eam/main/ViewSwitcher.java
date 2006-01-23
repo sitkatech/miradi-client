@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewTable;
+import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 
 public class ViewSwitcher extends JComboBox
@@ -24,6 +25,7 @@ public class ViewSwitcher extends JComboBox
 			actions.get(ActionViewInterview.class), 
 			actions.get(ActionViewDiagram.class), 
 			actions.get(ActionViewTable.class), 
+			actions.get(ActionViewThreatMatrix.class),
 //			"Task View", 
 //			"Budget View", 
 //			"GIS Map View",

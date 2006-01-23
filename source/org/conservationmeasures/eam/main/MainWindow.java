@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.table.TableView;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
@@ -62,6 +63,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		diagramView = new DiagramView(this);
 		interviewView = new InterviewView(this);
 		tableView = new TableView(this);
+		threatMatrixView = new ThreatMatrixView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -69,6 +71,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(interviewView, interviewView.cardName());
 		viewHolder.add(tableView, tableView.cardName());
+		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -182,6 +185,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(tableView);
 		else if(viewName.equals(noProjectView.cardName()))
 			setCurrentView(noProjectView);
+		else if(viewName.equals(threatMatrixView.cardName()))
+			setCurrentView(threatMatrixView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -209,6 +214,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private DiagramView diagramView;
 	private InterviewView interviewView;
 	private TableView tableView;
+	private ThreatMatrixView threatMatrixView;
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
