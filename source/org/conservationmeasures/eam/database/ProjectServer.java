@@ -384,6 +384,7 @@ public class ProjectServer
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
+	static public String NODE_MANIFEST = "NodeManifest";
 	static public int DATA_VERSION = 1;
 
 	protected Vector commands;

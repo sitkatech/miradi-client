@@ -11,12 +11,13 @@ public class LinkageManifest extends Manifest
 {
 	public LinkageManifest()
 	{
-		super();
+		super(ProjectServer.LINKAGE_MANIFEST);
 	}
 	
 	public LinkageManifest(JSONObject copyFrom)
 	{
 		super(copyFrom);
+		// TODO: Fail if wrong type
 	}
 	
 }

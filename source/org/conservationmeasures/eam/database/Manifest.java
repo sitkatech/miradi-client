@@ -13,15 +13,20 @@ import org.json.JSONObject;
 
 public class Manifest
 {
-	public Manifest()
+	public Manifest(String type)
 	{
 		data = new JSONObject();
-		data.put(ProjectServer.OBJECT_TYPE, ProjectServer.LINKAGE_MANIFEST);
+		data.put(ProjectServer.OBJECT_TYPE, type);
 	}
 	
 	public Manifest(JSONObject copyFrom)
 	{
 		data = copyFrom;
+	}
+	
+	public String getObjectType()
+	{
+		return data.getString(ProjectServer.OBJECT_TYPE);
 	}
 	
 	public int[] getAllKeys()

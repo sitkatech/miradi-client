@@ -11,12 +11,13 @@ public class NodeManifest extends Manifest
 {
 	public NodeManifest()
 	{
-		super();
+		super(ProjectServer.NODE_MANIFEST);
 	}
 
 	public NodeManifest(JSONObject copyFrom)
 	{
 		super(copyFrom);
+		// TODO: Fail if wrong type
 	}
 
 }
