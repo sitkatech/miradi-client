@@ -9,8 +9,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -62,11 +60,9 @@ public class CommandLinkNodes extends Command
 
 	public void undo(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
 		try
 		{
-			DiagramLinkage linkageToDelete = model.getLinkageById(getLinkageId());
-			model.deleteLinkage(linkageToDelete);
+			target.deleteLinkage(getLinkageId());
 		}
 		catch (Exception e)
 		{

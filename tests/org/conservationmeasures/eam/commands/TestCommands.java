@@ -504,6 +504,7 @@ public class TestCommands extends EAMTestCase
 		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
 		cmd.undo(project);
 		assertFalse("didn't remove linkage?", project.getDiagramModel().hasLinkage(fromNode, toNode));
+		assertNull("didn't delete linkage from pool?", project.getLinkagePool().find(linkageId));
 		
 		verifyUndoTwiceThrows(cmd);
 	}
