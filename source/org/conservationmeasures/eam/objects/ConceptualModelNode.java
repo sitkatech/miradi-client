@@ -53,6 +53,11 @@ abstract public class ConceptualModelNode
 	{
 		return id;
 	}
+	
+	public String getName()
+	{
+		return "FIXME";
+	}
 
 	public NodeType getType()
 	{

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 
+
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -21,7 +22,10 @@ public class ThreatMatrixView extends UmbrellaView
 
 		setLayout(new BorderLayout());
 
-		add(new UiTable(), BorderLayout.CENTER);
+		model = new ThreatMatrixTableModel(getMainWindow().getProject());
+		grid = new UiTable();
+		grid.setModel(model);
+		add(grid, BorderLayout.CENTER);
 	}
 
 	public String cardName()
@@ -34,4 +38,7 @@ public class ThreatMatrixView extends UmbrellaView
 		return "ThreatMatrix";
 	}
 	
+	UiTable grid;
+	ThreatMatrixTableModel model;
 }
+

@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.project.TestIdAssigner;
+import org.conservationmeasures.eam.project.TestNodePool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestRealProject;
@@ -54,6 +55,7 @@ import org.conservationmeasures.eam.views.diagram.TestLayerManager;
 import org.conservationmeasures.eam.views.interview.TestInterviewModel;
 import org.conservationmeasures.eam.views.interview.TestInterviewStepModel;
 import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
+import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.martus.util.xml.TestSimpleXmlParser;
 
@@ -83,6 +85,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// project package
+		suite.addTest(new TestSuite(TestNodePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestIdAssigner.class));
@@ -133,6 +136,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestInterviewModel.class));
 		suite.addTest(new TestSuite(TestWizardStepLoader.class));
 		suite.addTest(new TestSuite(TestInterviewStepModel.class));
+		
+		// view.threatmatrix package
+		suite.addTest(new TestSuite(TestThreatMatrixModel.class));
 		
 		// view.umbrella package
 		suite.addTest(new TestSuite(TestUndoRedo.class));
