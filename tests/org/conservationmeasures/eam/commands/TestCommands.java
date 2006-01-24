@@ -152,11 +152,14 @@ public class TestCommands extends EAMTestCase
 		CommandSetNodeText starter = new CommandSetNodeText(id, originalText);
 		project.executeCommand(starter);
 		assertEquals("wasn't blank to start?", "", starter.getPreviousText());
+		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
+		assertEquals("didn't also set name?", originalText, node.getName());
 		
 		String newText = "much better text!";
 		CommandSetNodeText cmd = new CommandSetNodeText(id, newText);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old text?", originalText, cmd.getPreviousText());
+		assertEquals("didn't update name?", newText, node.getName());
 
 		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());

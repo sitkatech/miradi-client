@@ -20,6 +20,7 @@ abstract public class ConceptualModelNode
 		type = nodeType;
 		
 		id = IdAssigner.INVALID_ID;
+		name = "";
 		setNodePriority(ThreatPriority.createPriorityNotUsed());
 		indicator = new IndicatorId();
 		objectives = new ObjectiveIds();
@@ -30,6 +31,7 @@ abstract public class ConceptualModelNode
 	{
 		this(nodeType);
 		id = json.getInt(TAG_ID);
+		name = json.optString(TAG_NAME);
 		setNodePriority(ThreatPriority.createFromInt(json.getInt(TAG_PRIORITY)));
 		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
 		
@@ -54,9 +56,14 @@ abstract public class ConceptualModelNode
 		return id;
 	}
 	
+	public void setName(String nameToUse)
+	{
+		name = nameToUse;
+	}
+	
 	public String getName()
 	{
-		return "FIXME";
+		return name;
 	}
 
 	public NodeType getType()
@@ -172,6 +179,7 @@ abstract public class ConceptualModelNode
 		JSONObject json = new JSONObject();
 		json.put(TAG_TYPE, typeString);
 		json.put(TAG_ID, getId());
+		json.put(TAG_NAME, getName());
 		json.put(TAG_PRIORITY, getThreatPriority().getValue());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
@@ -202,6 +210,7 @@ abstract public class ConceptualModelNode
 
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
+	private static final String TAG_NAME = "Name";
 	private static final String TAG_PRIORITY = "Priority";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	private static final String TAG_GOAL_IDS = "GoalIds";
@@ -212,6 +221,7 @@ abstract public class ConceptualModelNode
 	static final String TARGET_TYPE = "Target";
 	
 	private int id;
+	private String name;
 	private NodeType type;
 	private ThreatPriority threatPriority;
 

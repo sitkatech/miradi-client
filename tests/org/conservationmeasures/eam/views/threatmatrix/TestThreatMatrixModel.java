@@ -57,14 +57,18 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 			createThreat(threatNames[i]);
 		
 		for(int i = 0; i < threatNames.length; ++i)
-			assertEquals("bad threat name " + i + "? ", threatNames[i], model.getValueAt(reservedRows + i, 0));
+		{
+			Object thisName = model.getValueAt(reservedRows + i, 0);
+			assertEquals("bad threat name " + i + "? ", threatNames[i], thisName);
+		}
 	}
 	
 	private void createThreat(String name) throws Exception
 	{
 		int id = project.insertNodeAtId(new NodeTypeDirectThreat(), IdAssigner.INVALID_ID);
+		assertNotEquals("didn't fix id?", -1, id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		node.setText(name);
+		node.setName(name);
 	}
 
 	static final int reservedRows = 2;

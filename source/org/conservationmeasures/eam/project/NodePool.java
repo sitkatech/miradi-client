@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -38,6 +39,7 @@ public class NodePool extends ObjectPool
 	{
 		Vector cmNodes = new Vector();
 		int[] ids = getIds();
+		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ConceptualModelNode cmNode = (ConceptualModelNode)getRawObject(ids[i]);
