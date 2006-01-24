@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.DiagramModelForTesting;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -118,23 +120,24 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadDiagram() throws Exception
 	{
 		IdAssigner idAssigner = new IdAssigner();
-		NodePool objectPool = new NodePool();
 		
 		try
 		{
-			storage.readDiagram(new DiagramModel(objectPool));
+			storage.readDiagram(new DiagramModelForTesting());
 		}
 		catch(Exception e)
 		{
 			fail("didn't allow reading non-existent diagram?");
 		}
 		
-		DiagramModel model = new DiagramModel(objectPool);
+		DiagramModelForTesting model = new DiagramModelForTesting();
+		NodePool nodePool = model.getNodePool();
+		LinkagePool linkagePool = model.getLinkagePool();
 		storage.writeDiagram(model);
 
 		try
 		{
-			storage.readDiagram(new DiagramModel(objectPool));
+			storage.readDiagram(new DiagramModelForTesting());
 		}
 		catch(Exception e)
 		{
@@ -143,18 +146,18 @@ public class TestProjectServer extends EAMTestCase
 		
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(idAssigner.takeNextId());
-		objectPool.put(cmIntervention);
+		nodePool.put(cmIntervention);
 
 		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(idAssigner.takeNextId());
-		objectPool.put(cmTarget);
+		nodePool.put(cmTarget);
 		
 		model.createNode(cmIntervention.getId());
 		model.createNode(cmTarget.getId());
 		
 		storage.writeDiagram(model);
 		
-		DiagramModel got = new DiagramModel(objectPool); 
+		DiagramModel got = new DiagramModel(nodePool, linkagePool); 
 		storage.readDiagram(got);
 		Vector gotNodes = got.getAllNodes();
 		Vector expectedNodes = model.getAllNodes();

@@ -26,8 +26,8 @@ public class TestProjectScopeBox extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		objectPool = new NodePool();
-		model = new DiagramModel(objectPool);
+		model = new DiagramModelForTesting();
+		nodePool = model.getNodePool();
 		idAssigner = new IdAssigner();
 	}
 
@@ -68,11 +68,11 @@ public class TestProjectScopeBox extends EAMTestCase
 	{
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
-		objectPool.put(cmObject);
+		nodePool.put(cmObject);
 		return model.createNode(cmObject.getId());
 	}
 
-	NodePool objectPool;
-	DiagramModel model;
+	NodePool nodePool;
+	DiagramModelForTesting model;
 	IdAssigner idAssigner;
 }

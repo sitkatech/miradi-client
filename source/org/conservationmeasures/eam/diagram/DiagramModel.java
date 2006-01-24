@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
@@ -32,16 +34,17 @@ import org.json.JSONObject;
 
 public class DiagramModel extends DefaultGraphModel
 {
-	public DiagramModel(NodePool nodePoolToUse, GoalPool goalPoolToUse, ObjectivePool objectivePoolToUse)
+	public DiagramModel(NodePool nodePoolToUse, LinkagePool linkagePoolToUse, GoalPool goalPoolToUse, ObjectivePool objectivePoolToUse)
 	{
-		this(nodePoolToUse);
+		this(nodePoolToUse, linkagePoolToUse);
 		goalPool = goalPoolToUse;
 		objectivePool = objectivePoolToUse;
 	}
 	
-	public DiagramModel(NodePool objectPoolToUse)
+	public DiagramModel(NodePool objectPoolToUse, LinkagePool linkagePoolToUse)
 	{
-		objectPool = objectPoolToUse;
+		nodePool = objectPoolToUse;
+		linkagePool = linkagePoolToUse;
 		cellInventory = new CellInventory();
 	}
 	
@@ -61,7 +64,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public DiagramNode createNode(int id) throws Exception
 	{
-		ConceptualModelNode cmObject = objectPool.find(id);
+		ConceptualModelNode cmObject = nodePool.find(id);
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 		addNodeToModel(node);
 		return node;
@@ -213,12 +216,22 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
+	public boolean hasNode(int id)
+	{
+		return (rawGetNodeById(id) != null);
+	}
+	
 	public DiagramNode getNodeById(int id) throws Exception
 	{
-		DiagramNode node = cellInventory.getNodeById(id);
+		DiagramNode node = rawGetNodeById(id);
 		if(node == null)
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
+	}
+
+	private DiagramNode rawGetNodeById(int id)
+	{
+		return cellInventory.getNodeById(id);
 	}
 
 	public DiagramLinkage getLinkageById(int id) throws Exception
@@ -276,6 +289,12 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void fillFrom(JSONObject json) throws Exception
 	{
+		addNodesToModel(json);
+		addLinkagesToModel();
+	}
+
+	private void addNodesToModel(JSONObject json) throws ParseException, Exception
+	{
 		JSONObject nodeMap = json.getJSONObject(TAG_NODES);
 		JSONArray keys = nodeMap.names();
 		
@@ -289,7 +308,7 @@ public class DiagramModel extends DefaultGraphModel
 			int id = Integer.parseInt(key);
 			JSONObject nodeJson = nodeMap.getJSONObject(key);
 
-			ConceptualModelNode cmObject = objectPool.find(id);
+			ConceptualModelNode cmObject = nodePool.find(id);
 			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 			node.fillFrom(nodeJson);
 			
@@ -297,12 +316,28 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
+	public void addLinkagesToModel() throws Exception
+	{
+		int[] linkageIds = linkagePool.getIds();
+		for(int i = 0; i < linkageIds.length; ++i)
+		{
+			ConceptualModelLinkage cmLinkage = linkagePool.find(linkageIds[i]);
+			if(hasNode(cmLinkage.getFromNodeId()) && hasNode(cmLinkage.getToNodeId()))
+			{
+				createLinkage(cmLinkage);
+			}
+		}
+	}
+	
+	
+	
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_NODES = "Nodes";
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
 	
-	NodePool objectPool;
+	NodePool nodePool;
+	LinkagePool linkagePool;
 	GoalPool goalPool;
 	ObjectivePool objectivePool;
 	CellInventory cellInventory;

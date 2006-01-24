@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.DiagramModelForTesting;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -47,8 +47,8 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransferData() throws Exception
 	{
-		NodePool objectPool = new NodePool();
-		DiagramModel model = new DiagramModel(objectPool);
+		DiagramModelForTesting model = new DiagramModelForTesting();
+		NodePool nodePool = model.getNodePool();
 
 		int node1Id = 1;
 		String node1Text = "Intervention 1";
@@ -56,7 +56,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
 		cmIntervention.setId(node1Id);
-		objectPool.put(cmIntervention);
+		nodePool.put(cmIntervention);
 		DiagramNode node1 = model.createNode(cmIntervention.getId());
 		node1.setText(node1Text);
 		node1.setLocation(node1Location);
@@ -67,7 +67,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(node2Id);
-		objectPool.put(cmTarget);
+		nodePool.put(cmTarget);
 		DiagramNode node2 = model.createNode(cmTarget.getId());
 		node2.setText(node2Text);
 		node2.setLocation(node2Location);

@@ -28,8 +28,8 @@ public class TestDiagramModel extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		objectPool = new NodePool();
-		model = new DiagramModel(objectPool);
+		model = new DiagramModelForTesting();
+		nodePool = model.getNodePool();
 		idAssigner = new IdAssigner();
 	}
 
@@ -87,7 +87,7 @@ public class TestDiagramModel extends EAMTestCase
 		model.deleteNode(nodeToDelete);
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget();
 		cmTargetToUndo.setId(nodeToDelete.getId());
-		objectPool.put(cmTargetToUndo);
+		nodePool.put(cmTargetToUndo);
 		
 		model.createNode(cmTargetToUndo.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
@@ -120,6 +120,20 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals(2, linkages.size());
 		assertContains(link1, linkages);
 		assertContains(link2, linkages);
+	}
+	
+	public void testFillFrom() throws Exception
+	{
+		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+
+		DiagramModel copy = new DiagramModel(model.getNodePool(), model.getLinkagePool());
+		copy.fillFrom(model.toJson());
+		
+		assertNotNull("missing node1?", copy.getNodeById(node1.getId()));
+		assertNotNull("missing node2?", copy.getNodeById(node2.getId()));
+		assertNotNull("missing linkage?", copy.getLinkageById(link1.getId()));
 	}
 	
 	public void testActionsFiring() throws Exception
@@ -182,7 +196,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(idAssigner.takeNextId());
-		objectPool.put(cmTarget);
+		nodePool.put(cmTarget);
 		return model.createNode(cmTarget.getId());
 	}
 	
@@ -190,13 +204,14 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
-		objectPool.put(cmObject);
+		nodePool.put(cmObject);
 		return model.createNode(cmObject.getId());
 	}
 	
 	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
 	{
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
+		model.getLinkagePool().put(cmLinkage);
 		return model.createLinkage(cmLinkage);
 	}
 
@@ -247,7 +262,7 @@ public class TestDiagramModel extends EAMTestCase
 		int nodeMoved = 0;
 	}
 
-	NodePool objectPool;
-	DiagramModel model;
+	NodePool nodePool;
+	DiagramModelForTesting model;
 	IdAssigner idAssigner;
 }

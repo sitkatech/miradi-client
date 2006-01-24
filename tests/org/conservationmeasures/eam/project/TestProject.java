@@ -444,7 +444,7 @@ public class TestProject extends EAMTestCase
 	{
 		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeTarget());
 		project.executeCommand(cmd);
-		DiagramModel copyOfModel = new DiagramModel(project.getNodePool());
+		DiagramModel copyOfModel = new DiagramModel(project.getNodePool(), project.getLinkagePool());
 		project.getDatabase().readDiagram(copyOfModel);
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}
