@@ -34,6 +34,8 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
 		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
 		cmTarget = new ConceptualModelTarget();
+		
+		cmDirectThreat.setNodePriority(ThreatPriority.createPriorityMedium());
 
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
@@ -57,6 +59,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testPriorities()
 	{
+		assertEquals("Lost priority?", ThreatPriority.createPriorityMedium(), directThreat.getThreatPriority());
 		assertTrue(directThreat.canHavePriority());
 		assertTrue(stress.canHavePriority());
 		assertTrue(indirectFactor.canHavePriority());

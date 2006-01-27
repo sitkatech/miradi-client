@@ -17,6 +17,12 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	{
 		super(name);
 	}
+	
+	public void testPriority()
+	{
+		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
+		assertEquals("didn't default to priority none?", ThreatPriority.createPriorityNone(), factor.getThreatPriority());
+	}
 
 	public void testJson()
 	{

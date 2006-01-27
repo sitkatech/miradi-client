@@ -61,8 +61,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		setSize(defaultNodeSize);
 		setPreviousSize(defaultNodeSize);
 		setText("");
-		if(canHavePriority())
-			setNodePriority(ThreatPriority.createPriorityNone());
 	}
 	
 	public boolean isNode()

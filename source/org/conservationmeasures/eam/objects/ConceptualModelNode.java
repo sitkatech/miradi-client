@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 abstract public class ConceptualModelNode
 {
-	public ConceptualModelNode(NodeType nodeType)
+	protected ConceptualModelNode(NodeType nodeType)
 	{
 		type = nodeType;
 		
@@ -27,7 +27,7 @@ abstract public class ConceptualModelNode
 		goals = new GoalIds();
 	}
 	
-	public ConceptualModelNode(NodeType nodeType, JSONObject json)
+	protected ConceptualModelNode(NodeType nodeType, JSONObject json)
 	{
 		this(nodeType);
 		id = json.getInt(TAG_ID);
