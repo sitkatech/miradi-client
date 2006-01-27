@@ -48,6 +48,9 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		if(columnIndex == 0)
 			return getThreatName(rowIndex);
 		
+		if(rowIndex == 0)
+			return getTargetName(columnIndex);
+		
 		return "a";
 	}
 	
@@ -58,7 +61,15 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		return getDirectThreats()[row - reservedRows].getName();
 	}
 	
+	public String getTargetName(int column)
+	{
+		if(column < reservedColumns)
+			return "";
+		return getTargets()[column - reservedColumns].getName();
+	}
+	
 	static final int reservedRows = 2;
+	static final int reservedColumns = 2;
 	
 	Project project;
 }

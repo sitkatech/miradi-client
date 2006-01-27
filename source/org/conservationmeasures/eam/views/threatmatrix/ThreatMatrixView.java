@@ -9,11 +9,13 @@ import java.awt.BorderLayout;
 
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiTable;
 
-public class ThreatMatrixView extends UmbrellaView
+public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -22,10 +24,13 @@ public class ThreatMatrixView extends UmbrellaView
 
 		setLayout(new BorderLayout());
 
-		model = new ThreatMatrixTableModel(getMainWindow().getProject());
+		Project project = getMainWindow().getProject();
+		model = new ThreatMatrixTableModel(project);
 		grid = new UiTable();
 		grid.setModel(model);
 		add(grid, BorderLayout.CENTER);
+		
+		project.addViewChangeListener(this);
 	}
 
 	public String cardName()
@@ -38,6 +43,14 @@ public class ThreatMatrixView extends UmbrellaView
 		return "ThreatMatrix";
 	}
 	
+	public void switchToView(String viewName)
+	{
+		if(viewName.equals(getViewName()))
+		{
+			model.fireTableStructureChanged();
+		}
+	}
+
 	UiTable grid;
 	ThreatMatrixTableModel model;
 }
