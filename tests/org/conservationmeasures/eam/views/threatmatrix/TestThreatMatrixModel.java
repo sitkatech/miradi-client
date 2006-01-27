@@ -78,22 +78,54 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		}
 	}
 	
-	private void createThreat(String name) throws Exception
+	public void testGetValueAt() throws Exception
 	{
-		createNode(new NodeTypeDirectThreat(), name);
+		int threat1 = createThreat("threat one");
+		int threat2 = createThreat("threat two");
+		createThreat("threat three");
+		int target1 = createTarget("target one");
+		int target2 = createTarget("target two");
+		createTarget("target three");
+		
+		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target1);
+		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target2);
+		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat2, target2);
+
+		assertEquals("", model.getValueAt(reservedRows - 1, reservedColumns - 1));
+		int row1 = reservedRows;
+		int row2 = row1 + 1;
+		int row3 = row2 + 1;
+		int col1 = reservedColumns;
+		int col2 = col1 + 1;
+		int col3 = col2 + 1;
+		assertEquals("a", model.getValueAt(row1, col1));
+		assertEquals("a", model.getValueAt(row1, col2));
+		assertEquals("", model.getValueAt(row1, col3));
+		assertEquals("", model.getValueAt(row2, col1));
+		assertEquals("a", model.getValueAt(row2, col2));
+		assertEquals("", model.getValueAt(row2, col3));
+		assertEquals("", model.getValueAt(row3, col1));
+		assertEquals("", model.getValueAt(row3, col2));
+		assertEquals("", model.getValueAt(row3, col3));
+	}
+	
+	private int createThreat(String name) throws Exception
+	{
+		return createNode(new NodeTypeDirectThreat(), name);
 	}
 
-	private void createTarget(String name) throws Exception
+	private int createTarget(String name) throws Exception
 	{
-		createNode(new NodeTypeTarget(), name);
+		return createNode(new NodeTypeTarget(), name);
 	}
 
-	private void createNode(NodeType type, String name) throws Exception
+	private int createNode(NodeType type, String name) throws Exception
 	{
 		int id = project.insertNodeAtId(type, IdAssigner.INVALID_ID);
 		assertNotEquals("didn't fix id?", -1, id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		node.setName(name);
+		return id;
 	}
 	
 	static final int reservedRows = 2;

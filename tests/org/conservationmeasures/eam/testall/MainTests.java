@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.project.TestIdAssigner;
+import org.conservationmeasures.eam.project.TestLinkagePool;
 import org.conservationmeasures.eam.project.TestNodePool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
@@ -85,6 +86,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// project package
+		suite.addTest(new TestSuite(TestLinkagePool.class));
 		suite.addTest(new TestSuite(TestNodePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestRealProject.class));

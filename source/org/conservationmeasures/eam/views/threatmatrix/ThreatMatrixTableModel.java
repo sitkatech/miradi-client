@@ -45,13 +45,26 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
+		if(rowIndex == 0)
+			return getTargetName(columnIndex);
+
 		if(columnIndex == 0)
 			return getThreatName(rowIndex);
 		
-		if(rowIndex == 0)
-			return getTargetName(columnIndex);
+		if(rowIndex < reservedRows)
+			return "";
 		
-		return "a";
+		if(columnIndex < reservedColumns)
+			return "";
+		
+		int threatIndex = rowIndex - reservedRows;
+		int targetIndex = columnIndex - reservedColumns;
+		int threatId = getDirectThreats()[threatIndex].getId();
+		int targetId = getTargets()[targetIndex].getId();
+		if(project.getLinkagePool().hasLinkage(threatId, targetId))
+			return "a";
+		
+		return "";
 	}
 	
 	public String getThreatName(int row)

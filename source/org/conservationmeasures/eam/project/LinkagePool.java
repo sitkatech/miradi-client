@@ -18,4 +18,24 @@ public class LinkagePool extends ObjectPool
 	{
 		return (ConceptualModelLinkage)getRawObject(id);
 	}
+	
+	public boolean hasLinkage(int nodeId1, int nodeId2)
+	{
+		for(int i = 0; i < getIds().length; ++i)
+		{
+			ConceptualModelLinkage thisLinkage = getLinkage(i);
+			int fromId = thisLinkage.getFromNodeId();
+			int toId = thisLinkage.getToNodeId();
+			if(fromId == nodeId1 && toId == nodeId2)
+				return true;
+			if(fromId == nodeId2 && toId == nodeId1)
+				return true;
+		}
+		return false;
+	}
+	
+	private ConceptualModelLinkage getLinkage(int index)
+	{
+		return find(getIds()[index]);
+	}
 }

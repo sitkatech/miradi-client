@@ -147,20 +147,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
-		Vector allLinkages = cellInventory.getAllLinkages();
-		for(int i=0; i < allLinkages.size(); ++i)
-		{
-			DiagramLinkage linkage = (DiagramLinkage)allLinkages.get(i);
-			DiagramNode thisFromNode = linkage.getFromNode();
-			DiagramNode thisToNode = linkage.getToNode();
-			if(thisFromNode.equals(fromNode) && thisToNode.equals(toNode))
-				return true;
-			
-			if(thisFromNode.equals(toNode) && thisToNode.equals(fromNode))
-				return true;
-		}
-		
-		return false;
+		return linkagePool.hasLinkage(fromNode.getId(), toNode.getId());
 	}
 
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
