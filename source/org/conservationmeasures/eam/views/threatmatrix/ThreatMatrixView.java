@@ -7,14 +7,18 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
-import org.martus.swing.UiTable;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 {
@@ -27,12 +31,6 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 
 		Project project = getMainWindow().getProject();
 		model = new ThreatMatrixTableModel(project);
-		grid = new UiTable();
-		grid.setModel(model);
-		add(grid, BorderLayout.CENTER);
-		
-		ratingPanel = new ThreatRatingPanel();
-		add(new UiScrollPane(ratingPanel), BorderLayout.AFTER_LAST_LINE);
 		
 		project.addViewChangeListener(this);
 	}
@@ -49,14 +47,37 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	
 	public void switchToView(String viewName)
 	{
-		if(viewName.equals(getViewName()))
+		boolean isSwitchingToThisView = viewName.equals(getViewName());
+		if(!isSwitchingToThisView)
+			return;
+		
+		grid = new JPanel();
+		int rows = model.getRowCount();
+		int columns = model.getColumnCount();
+		grid.setLayout(new BasicGridLayout(rows, columns));
+		for(int row = 0; row < rows; ++row)
 		{
-			model.fireTableStructureChanged();
+			for(int col = 0; col < columns; ++col)
+			{
+				JComponent thisComponent = null;
+				if(row >= ThreatMatrixTableModel.reservedRows && 
+						col >= ThreatMatrixTableModel.reservedColumns &&
+						model.isActiveCell(row, col))
+				{
+					thisComponent = new ThreatRatingPanel();
+				}
+				else
+				{
+					String text = (String)model.getValueAt(row, col);
+					thisComponent = new UiLabel(text);
+				}
+				grid.add(thisComponent);
+			}
 		}
+		add(new UiScrollPane(grid), BorderLayout.CENTER);
 	}
 
-	UiTable grid;
-	ThreatRatingPanel ratingPanel;
+	JPanel grid;
 	ThreatMatrixTableModel model;
 }
 

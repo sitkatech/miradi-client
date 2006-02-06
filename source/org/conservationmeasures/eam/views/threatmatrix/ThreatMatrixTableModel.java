@@ -57,14 +57,21 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		if(columnIndex < reservedColumns)
 			return "";
 		
+		if(isActiveCell(rowIndex, columnIndex))
+			return "a";
+		return "";
+	}
+
+	public boolean isActiveCell(int rowIndex, int columnIndex)
+	{
 		int threatIndex = rowIndex - reservedRows;
 		int targetIndex = columnIndex - reservedColumns;
 		int threatId = getDirectThreats()[threatIndex].getId();
 		int targetId = getTargets()[targetIndex].getId();
 		if(project.getLinkagePool().hasLinkage(threatId, targetId))
-			return "a";
+			return true;
 		
-		return "";
+		return false;
 	}
 	
 	public String getThreatName(int row)

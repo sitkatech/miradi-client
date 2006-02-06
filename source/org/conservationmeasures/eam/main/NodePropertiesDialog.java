@@ -82,21 +82,29 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Component createThreatLevelDropdown(ThreatPriority currentPriority)
 	{
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
-		dropdownThreatPriority = new UiComboBox();
-		dropdownThreatPriority.setRenderer(new ThreatRenderer());
-		
-		dropdownThreatPriority.addItem(ThreatPriority.createPriorityVeryHigh());
-		dropdownThreatPriority.addItem(ThreatPriority.createPriorityHigh());
-		dropdownThreatPriority.addItem(ThreatPriority.createPriorityMedium());
-		dropdownThreatPriority.addItem(ThreatPriority.createPriorityLow());
-		dropdownThreatPriority.addItem(ThreatPriority.createPriorityNone());
+		UiComboBox dropDown = createThreatDropDown();
 
-		dropdownThreatPriority.setSelectedItem(currentPriority);
 		
+		dropdownThreatPriority = dropDown;
+		dropdownThreatPriority.setSelectedItem(currentPriority);
+
 		Box threatLevelBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropdownThreatPriority, Box.createHorizontalGlue()};
+		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropDown, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
 		return threatLevelBar;
+	}
+
+	public static UiComboBox createThreatDropDown()
+	{
+		UiComboBox dropDown = new UiComboBox();
+		dropDown.setRenderer(new ThreatRenderer());
+		
+		dropDown.addItem(ThreatPriority.createPriorityVeryHigh());
+		dropDown.addItem(ThreatPriority.createPriorityHigh());
+		dropDown.addItem(ThreatPriority.createPriorityMedium());
+		dropDown.addItem(ThreatPriority.createPriorityLow());
+		dropDown.addItem(ThreatPriority.createPriorityNone());
+		return dropDown;
 	}
 	
 	public Component createSwitchFactorTypeDropdown(NodeType currentType)
@@ -183,7 +191,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return indicatorBar;
 	}
 	
-	class ThreatRenderer extends DefaultListCellRenderer
+	static class ThreatRenderer extends DefaultListCellRenderer
 	{
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
