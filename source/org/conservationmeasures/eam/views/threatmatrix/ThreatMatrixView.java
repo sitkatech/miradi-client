@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
 public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
@@ -29,6 +30,9 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		grid = new UiTable();
 		grid.setModel(model);
 		add(grid, BorderLayout.CENTER);
+		
+		ratingPanel = new ThreatRatingPanel();
+		add(new UiScrollPane(ratingPanel), BorderLayout.AFTER_LAST_LINE);
 		
 		project.addViewChangeListener(this);
 	}
@@ -52,6 +56,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	}
 
 	UiTable grid;
+	ThreatRatingPanel ratingPanel;
 	ThreatMatrixTableModel model;
 }
 
