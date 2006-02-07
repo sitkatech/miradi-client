@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.Color;
-
-import javax.swing.border.LineBorder;
-
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.objects.ThreatPriority;
@@ -40,6 +36,5 @@ public class ThreatRatingPanel extends UiParagraphPanel
 		ratingLabel.setText("High");
 		ratingLabel.setIcon(new ThreatPriorityIcon(ThreatPriority.createPriorityHigh()));
 		add(ratingLabel);
-		setBorder(new LineBorder(Color.BLACK));
 	}
 }

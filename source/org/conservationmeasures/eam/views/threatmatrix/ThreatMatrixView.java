@@ -6,9 +6,11 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -69,8 +71,11 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 				else
 				{
 					String text = (String)model.getValueAt(row, col);
-					thisComponent = new UiLabel(text);
+					UiLabel label = new UiLabel(text);
+					thisComponent = new JPanel();
+					thisComponent.add(label);
 				}
+				thisComponent.setBorder(new LineBorder(Color.BLACK));
 				grid.add(thisComponent);
 			}
 		}
