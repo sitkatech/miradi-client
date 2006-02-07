@@ -79,6 +79,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 				grid.add(thisComponent);
 			}
 		}
+		removeAll();
 		add(new UiScrollPane(grid), BorderLayout.CENTER);
 	}
 
