@@ -18,6 +18,8 @@ import java.io.FilenameFilter;
 import javax.swing.Box;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -130,14 +132,39 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		UiTextField textField = new UiTextField(40);
 		textField.requestFocus(true);
 		textField.selectAll();
+		textField.getDocument().addDocumentListener(new TextFieldListener());
 		return textField;
 	}
 	
+	class TextFieldListener implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent e)
+		{
+			enableOkButtonIfNotEmpty();
+		}
+
+		public void insertUpdate(DocumentEvent e)
+		{
+			enableOkButtonIfNotEmpty();
+		}
+
+		public void removeUpdate(DocumentEvent e)
+		{
+			enableOkButtonIfNotEmpty();
+		}
+
+		public void enableOkButtonIfNotEmpty()
+		{
+			boolean isNotEmpty = (projectNameField.getText().length() > 0);
+			okButton.setEnabled(isNotEmpty);
+		}
+	}
 
 	private Box createButtonBar()
 	{
 		okButton = new UiButton("");
 		okButton.addActionListener(this);
+		okButton.setEnabled(false);
 		getRootPane().setDefaultButton(okButton);
 		cancelButton = new UiButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);

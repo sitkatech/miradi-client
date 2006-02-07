@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
+import org.martus.util.UnicodeWriter;
 
 public class TestProjectServer extends EAMTestCase
 {
@@ -168,6 +169,33 @@ public class TestProjectServer extends EAMTestCase
 			int gotId = gotNode.getId();
 			DiagramNode expectedNode = model.getNodeById(gotId);
 			assertEquals("node data not right?", expectedNode.getText(), gotNode.getText());
+		}
+	}
+	
+	public void testOpenNonProjectDirectory() throws Exception
+	{
+		File tempDirectory = createTempDirectory();
+		try
+		{
+			File nonProjectFile = new File(tempDirectory, "foo");
+			UnicodeWriter writer = new UnicodeWriter(nonProjectFile);
+			writer.writeln("nothing");
+			writer.close();
+			
+			assertFalse("project exists?", ProjectServer.doesProjectExist(tempDirectory));
+			ProjectServer anotherStorage = new ProjectServer();
+			try
+			{
+				anotherStorage.open(tempDirectory);
+				fail("Should have thrown trying to open non-empty, non-project directory");
+			}
+			catch(IOException ignoreExpected)
+			{
+			}
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 	}
 

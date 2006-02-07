@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.json.JSONObject;
-import org.martus.util.DirectoryUtils;
 
 public class ProjectServer
 {
@@ -101,15 +100,23 @@ public class ProjectServer
 		{
 			db.openDiskDatabase(getDatabaseFileBase(directory));
 		}
-		else
+		else if(isEmpty(directory))
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(directory);
 			db.openDiskDatabase(getDatabaseFileBase(directory));
 			createCommandsTable();
 			db.flush();
 		}
+		else
+		{
+			throw new IOException("Can't open non-project, non-empty directory");
+		}
 		openNonDatabaseStore(directory);
 
+	}
+	
+	private boolean isEmpty(File directory)
+	{
+		return (directory.list().length == 0);
 	}
 	
 	public boolean isCurrentVersion() throws IOException, ParseException
