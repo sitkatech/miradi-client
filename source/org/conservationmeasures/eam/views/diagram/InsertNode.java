@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -40,6 +41,9 @@ abstract public class InsertNode extends LocationDoer
 	
 		Command setTextCommand = new CommandSetNodeText(id, getInitialText());
 		getProject().executeCommand(setTextCommand);
+		
+		Command setNameCommand = new CommandSetNodeName(id, getInitialText());
+		getProject().executeCommand(setNameCommand);
 
 		Point createAt = getLocation();
 		//Snap to Grid

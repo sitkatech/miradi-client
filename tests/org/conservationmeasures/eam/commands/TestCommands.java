@@ -153,13 +153,13 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(starter);
 		assertEquals("wasn't blank to start?", "", starter.getPreviousText());
 		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		assertEquals("didn't also set name?", originalText, node.getName());
+		assertEquals("also set name?", "", node.getName());
 		
 		String newText = "much better text!";
 		CommandSetNodeText cmd = new CommandSetNodeText(id, newText);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old text?", originalText, cmd.getPreviousText());
-		assertEquals("didn't update name?", newText, node.getName());
+		assertEquals("updated name?", "", node.getName());
 
 		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -167,9 +167,45 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous text?", originalText, loaded.getPreviousText());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalText, project.getDiagramModel().getNodeById(id).getText());
-		
+		assertEquals("didn't undo?", originalText, node.getText());
 		verifyUndoTwiceThrows(cmd);
+		
+		starter.undo(project);
+		assertEquals("didn't undo again?", "", node.getText());
+		verifyUndoTwiceThrows(starter);
+		
+	}
+	
+	public void testCommandSetNodeName() throws Exception
+	{
+		int id = insertTarget();
+		
+		String originalName = "original text";
+		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
+		project.executeCommand(starter);
+		assertEquals("wasn't blank to start?", "", starter.getPreviousName());
+		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
+		assertEquals("also set text?", "", node.getText());
+		
+		String newName = "much better name!";
+		CommandSetNodeName cmd = new CommandSetNodeName(id, newName);
+		project.executeCommand(cmd);
+		assertEquals("didn't memorize old name?", originalName, cmd.getPreviousName());
+		assertEquals("updated text?", "", node.getText());
+
+		CommandSetNodeName loaded = (CommandSetNodeName)saveAndReload(cmd);
+		assertEquals("didn't restore id?", id, loaded.getId());
+		assertEquals("didn't restore new name?", newName, loaded.getNewName());
+		assertEquals("didn't restore previous name?", originalName, loaded.getPreviousName());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalName, node.getName());
+		verifyUndoTwiceThrows(cmd);
+		
+		starter.undo(project);
+		assertEquals("didn't undo again?", "", node.getName());
+		verifyUndoTwiceThrows(starter);
+
 	}
 
 	public void testCommandSetNodePriority() throws Exception

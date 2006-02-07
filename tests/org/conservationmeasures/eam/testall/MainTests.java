@@ -51,8 +51,6 @@ import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
-import org.conservationmeasures.eam.views.diagram.TestInsertConnection;
-import org.conservationmeasures.eam.views.diagram.TestLayerManager;
 import org.conservationmeasures.eam.views.interview.TestInterviewModel;
 import org.conservationmeasures.eam.views.interview.TestInterviewStepModel;
 import org.conservationmeasures.eam.views.interview.TestWizardStepLoader;
@@ -100,6 +98,7 @@ public class MainTests extends TestCase
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
 		suite.addTest(new TestSuite(TestDiagramView.class));
+		suite.addTest(new TestSuite(TestProjectScopeBox.class));
 
 		// nodes package
 		suite.addTest(new TestSuite(TestLinkNodes.class));
@@ -130,9 +129,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommands.class));
 		
 		// view.diagram package
-		suite.addTest(new TestSuite(TestInsertConnection.class));
-		suite.addTest(new TestSuite(TestLayerManager.class));
-		suite.addTest(new TestSuite(TestProjectScopeBox.class));
+		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertConnection.class));
+		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertNode.class));
+		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestLayerManager.class));
 		
 		// view.interview package
 		suite.addTest(new TestSuite(TestInterviewModel.class));

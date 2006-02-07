@@ -517,7 +517,7 @@ public class Project
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(typeToInsert);
 		cmObject.setId(realId);
 		nodePool.put(cmObject);
-		database.writeNode(cmObject);
+		writeNode(realId);
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
@@ -548,6 +548,17 @@ public class Project
 		return linkage.getId();
 	}
 	
+	public void setNodeName(int nodeId, String desiredName, String expectedName) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+		node.setName(desiredName);
+		Logging.logVerbose("Updating name:"+desiredName);
+		model.updateCell(node);
+		
+		writeNode(nodeId);
+	}
+
 	public void setFactorType(int nodeId, NodeType desiredType) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
@@ -557,8 +568,7 @@ public class Project
 		Logging.logVerbose("SetFactorType:" + desiredType);
 		model.updateCell(node);
 
-		ConceptualModelNode cmNode = getNodePool().find(nodeId);
-		database.writeNode(cmNode);
+		writeNode(nodeId);
 	}
 	
 	public void setIndicator(int nodeId, IndicatorId desiredIndicatorId) throws Exception
@@ -570,8 +580,7 @@ public class Project
 		Logging.logVerbose("SetIndicator:" + desiredIndicatorId);
 		model.updateCell(node);
 		
-		ConceptualModelNode cmNode = getNodePool().find(nodeId);
-		database.writeNode(cmNode);
+		writeNode(nodeId);
 	}
 	
 	public void setObjectives(int nodeId, ObjectiveIds desiredObjectives) throws Exception
@@ -583,8 +592,7 @@ public class Project
 		Logging.logVerbose("SetObjectives:" + desiredObjectives);
 		model.updateCell(node);
 	
-		ConceptualModelNode cmNode = getNodePool().find(nodeId);
-		database.writeNode(cmNode);
+		writeNode(nodeId);
 	}
 	
 	public void setPriority(int nodeId, ThreatPriority desiredPriority) throws Exception
@@ -596,8 +604,7 @@ public class Project
 		Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
 		model.updateCell(node);
 		
-		ConceptualModelNode cmNode = getNodePool().find(nodeId);
-		database.writeNode(cmNode);
+		writeNode(nodeId);
 	}
 	
 	public void setGoals(int nodeId, GoalIds desiredGoals) throws Exception
@@ -609,6 +616,11 @@ public class Project
 		Logging.logVerbose("Updating Goals:" + desiredGoals);
 		model.updateCell(node);
 		
+		writeNode(nodeId);
+	}
+
+	protected void writeNode(int nodeId) throws IOException, ParseException
+	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
