@@ -116,7 +116,10 @@ public class ProjectServer
 	
 	private boolean isEmpty(File directory)
 	{
-		return (directory.list().length == 0);
+		String[] files = directory.list();
+		if(files == null)
+			return true;
+		return (files.length == 0);
 	}
 	
 	public boolean isCurrentVersion() throws IOException, ParseException

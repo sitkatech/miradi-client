@@ -192,6 +192,10 @@ public class TestProjectServer extends EAMTestCase
 			catch(IOException ignoreExpected)
 			{
 			}
+			
+			File nonExistantProjectDirectory = new File(tempDirectory, "DoesNotExist");
+			anotherStorage.open(nonExistantProjectDirectory);
+			anotherStorage.close();
 		}
 		finally
 		{
