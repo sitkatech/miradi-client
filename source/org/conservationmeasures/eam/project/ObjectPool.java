@@ -20,6 +20,11 @@ public class ObjectPool
 		return map.size();
 	}
 	
+	public void clear()
+	{
+		map.clear();
+	}
+	
 	public int[] getIds()
 	{
 		int[] ids = new int[size()];

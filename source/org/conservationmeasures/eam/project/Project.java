@@ -151,6 +151,8 @@ public class Project
 	
 	public void open(File projectDirectory) throws Exception
 	{
+		clear();
+
 		getDatabase().open(projectDirectory);
 		if(getDatabase().isCurrentVersion())
 		{
@@ -164,6 +166,14 @@ public class Project
 			replayCommands(getDatabase());
 		
 		finishOpening();
+	}
+	
+	private void clear()
+	{
+		nodePool.clear();
+		linkagePool.clear();
+		projectInfo.clear();
+		
 	}
 	
 	private void loadProjectInfo() throws IOException, ParseException

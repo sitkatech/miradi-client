@@ -587,6 +587,23 @@ public class TestProject extends EAMTestCase
 			loadedProject.close();
 			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
 		}
+		
+		File emptyDir = createTempDirectory();
+		diskProject.open(emptyDir);
+		try
+		{
+			assertEquals("didn't clear node pool?", 0, diskProject.getNodePool().size());
+			assertEquals("didn't clear linkage pool?", 0, diskProject.getLinkagePool().size());
+			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getNodeCount());
+			assertEquals("didn't clear next node id?", 0, diskProject.getIdAssigner().takeNextId());
+			assertEquals("didn't clear next annotation id?", 0, diskProject.getAnnotationIdAssigner().takeNextId());
+		}
+		finally
+		{
+			diskProject.close();
+			DirectoryUtils.deleteEntireDirectoryTree(emptyDir);
+		}
+		
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
