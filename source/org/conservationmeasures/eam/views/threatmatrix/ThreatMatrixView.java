@@ -66,7 +66,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 						col >= ThreatMatrixTableModel.reservedColumns &&
 						model.isActiveCell(row, col))
 				{
-					thisComponent = new ThreatRatingPanel();
+					thisComponent = new ThreatSummaryPanel();
 				}
 				else
 				{

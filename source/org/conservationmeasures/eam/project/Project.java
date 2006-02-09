@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -824,6 +825,27 @@ public class Project
 		return state.getIndexToRedo();
 	}
 	
+
+
+	public static Color getPriorityColor(ThreatPriority priority)
+	{
+		int priorityLevel = priority.getValue();
+		
+		switch(priorityLevel)
+		{
+			case ThreatPriority.PRIORITY_VERY_HIGH:
+				return Color.RED;
+			case ThreatPriority.PRIORITY_HIGH:
+				return Color.ORANGE;
+			case ThreatPriority.PRIORITY_MEDIUM:
+				return Color.YELLOW;
+			case ThreatPriority.PRIORITY_LOW:
+				return Color.GREEN;
+			default:
+				return Color.WHITE;
+		}
+	}
+
 
 
 	public static final int DEFAULT_GRID_SIZE = 15;

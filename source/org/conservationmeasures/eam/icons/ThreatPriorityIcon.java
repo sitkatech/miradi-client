@@ -10,8 +10,8 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
 import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.project.Project;
 
 public class ThreatPriorityIcon extends EamIcon 
 {
@@ -27,7 +27,7 @@ public class ThreatPriorityIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return RectangleWithPriorityRenderer.getPriorityColor(priority);
+		return Project.getPriorityColor(priority);
 	}
 	
 	private ThreatPriority priority;
