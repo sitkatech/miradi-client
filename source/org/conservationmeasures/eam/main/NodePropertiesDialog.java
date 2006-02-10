@@ -29,8 +29,8 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -127,13 +127,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
 		dropdownObjective = new UiComboBox();
-		for(int i = 0; i < allAvailableObjectives.getIds().length; ++i)
+		int[] objectiveIds = allAvailableObjectives.getIds();
+		for(int i = 0; i < objectiveIds.length; ++i)
 		{
-			dropdownObjective.addItem(allAvailableObjectives.find(i));
+			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
 		}
 		if(currentObjectives.size() == 0)
 		{
-			dropdownObjective.setSelectedIndex(0);
+			dropdownObjective.setSelectedItem(allAvailableObjectives.find(IdAssigner.INVALID_ID));
 		}
 		else
 		{
@@ -152,13 +153,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		UiLabel textGoal = new UiLabel(EAM.text("Label|Goal"));
 		dropdownGoal = new UiComboBox();
-		for(int i = 0; i < allAvailableGoals.getIds().length; ++i)
+		int[] goalIds = allAvailableGoals.getIds();
+		for(int i = 0; i < goalIds.length; ++i)
 		{
-			dropdownGoal.addItem(allAvailableGoals.find(i));
+			dropdownGoal.addItem(allAvailableGoals.find(goalIds[i]));
 		}
 		if(currentGoals.size() == 0)
 		{
-			dropdownGoal.setSelectedIndex(0);
+			dropdownGoal.setSelectedItem(allAvailableGoals.find(IdAssigner.INVALID_ID));
 		}
 		else
 		{
@@ -196,7 +198,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			setIcon(new ThreatPriorityIcon((ThreatPriority)value));
+			cell.setBackground(Project.getPriorityColor((ThreatPriority)value));
 			return cell;
 		}
 	}

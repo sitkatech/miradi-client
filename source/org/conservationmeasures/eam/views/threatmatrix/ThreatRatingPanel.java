@@ -24,25 +24,27 @@ public class ThreatRatingPanel extends JPanel
 {
 	public ThreatRatingPanel()
 	{
+		int lineWidth = 1;
+		
 		Box scopeCell = Box.createVerticalBox();
 		scopeCell.add(new UiLabel("Scope:"));
 		scopeCell.add(createRatingDropdown());
-		scopeCell.setBorder(new LineBorder(Color.BLACK, 3));
+		scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 		
 		Box severityCell = Box.createVerticalBox();
 		severityCell.add(new UiLabel("Severity:"));
 		severityCell.add(createRatingDropdown());
-		severityCell.setBorder(new LineBorder(Color.BLACK, 3));
+		severityCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 		
 		Box urgencyCell = Box.createVerticalBox();
 		urgencyCell.add(new UiLabel("Urgency:"));
 		urgencyCell.add(createRatingDropdown());
-		urgencyCell.setBorder(new LineBorder(Color.BLACK, 3));
+		urgencyCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 		
 		Box extraCell = Box.createVerticalBox();
 		extraCell.add(new UiLabel("Criterion 4:"));
 		extraCell.add(createRatingDropdown());
-		extraCell.setBorder(new LineBorder(Color.BLACK, 3));
+		extraCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 
 		
 		ThreatPriority priority = getRandomPriority();
@@ -51,7 +53,7 @@ public class ThreatRatingPanel extends JPanel
 		ratingLabel.setBackground(Project.getPriorityColor(priority));
 		JPanel ratingPanel = new JPanel();
 		ratingPanel.add(ratingLabel);
-		ratingPanel.setBorder(new LineBorder(Color.BLACK, 3));
+		ratingPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
 		ratingPanel.setBackground(Project.getPriorityColor(priority));
 
 		JPanel top = new JPanel();
