@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.ThreatPriority;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
@@ -198,7 +199,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			cell.setBackground(Project.getPriorityColor((ThreatPriority)value));
+			setIcon(new ThreatPriorityIcon((ThreatPriority)value));
 			return cell;
 		}
 	}
