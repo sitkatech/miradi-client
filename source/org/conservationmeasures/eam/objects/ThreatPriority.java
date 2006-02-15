@@ -11,7 +11,28 @@ public class ThreatPriority
 {
 	private ThreatPriority(int priorityToUse)
 	{
-		priority = priorityToUse;
+		rating = getRatingValueOption(priorityToUse);
+	}
+	
+	private RatingValueOption getRatingValueOption(int ratingValueId)
+	{
+		switch(ratingValueId)
+		{
+			case PRIORITY_VERY_HIGH:
+				return veryHigh;
+			case PRIORITY_HIGH:
+				return high;
+			case PRIORITY_MEDIUM:
+				return medium;
+			case PRIORITY_LOW:
+				return low;
+			case PRIORITY_NONE:
+				return none;
+			case PRIORITY_NOT_USED:
+				return notUsed;
+			default:
+				throw new RuntimeException("Unknown threat rating id: " + ratingValueId);
+		}
 	}
 
 	public static ThreatPriority createFromInt(int value)
@@ -51,7 +72,7 @@ public class ThreatPriority
 	
 	public int getValue()
 	{
-		return priority;
+		return rating.getId();
 	}
 	
 	public String getStringValue()
@@ -61,21 +82,7 @@ public class ThreatPriority
 	
 	public String toString()
 	{
-		switch(priority)
-		{
-			case PRIORITY_VERY_HIGH:
-				return veryHigh.getLabel();
-			case PRIORITY_HIGH:
-				return high.getLabel();
-			case PRIORITY_MEDIUM:
-				return medium.getLabel();
-			case PRIORITY_LOW:
-				return low.getLabel();
-			case PRIORITY_NONE:
-				return none.getLabel();
-			default:
-				return "";
-		}
+		return rating.getLabel();
 	}
 	
 	
@@ -83,18 +90,18 @@ public class ThreatPriority
 	{
 		if(!(obj instanceof ThreatPriority))
 			return false;
-		return ((ThreatPriority)obj).priority == priority;
+		return ((ThreatPriority)obj).rating.equals(rating);
 	}
 
 	
 	public boolean isPriorityNone()
 	{
-		return priority == PRIORITY_NONE;
+		return rating.equals(none);
 	}
 
 	public boolean isPriorityNotUsed()
 	{
-		return priority == PRIORITY_NOT_USED;
+		return rating.equals(notUsed);
 	}
 	
 
@@ -111,12 +118,13 @@ public class ThreatPriority
 	private static final String PRIORITY_LOW_STRING = EAM.text("Label|Low");
 	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
 
+	private static final RatingValueOption notUsed = new RatingValueOption(PRIORITY_NOT_USED, "");
 	private static final RatingValueOption none = new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING);
 	private static final RatingValueOption low = new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING);
 	private static final RatingValueOption medium = new RatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING);
 	private static final RatingValueOption high = new RatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING);
 	private static final RatingValueOption veryHigh = new RatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING);
 	
-	private int priority;
+	private RatingValueOption rating;
 
 }
