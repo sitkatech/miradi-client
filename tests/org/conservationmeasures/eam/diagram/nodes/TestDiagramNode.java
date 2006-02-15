@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 import org.json.JSONObject;
@@ -35,7 +35,7 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
 		cmTarget = new ConceptualModelTarget();
 		
-		cmDirectThreat.setNodePriority(ThreatPriority.createPriorityMedium());
+		cmDirectThreat.setNodePriority(ThreatRatingValue.createMedium());
 
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
@@ -59,7 +59,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testPriorities()
 	{
-		assertEquals("Lost priority?", ThreatPriority.createPriorityMedium(), directThreat.getThreatPriority());
+		assertEquals("Lost priority?", ThreatRatingValue.createMedium(), directThreat.getThreatRating());
 		assertTrue(directThreat.canHavePriority());
 		assertTrue(stress.canHavePriority());
 		assertTrue(indirectFactor.canHavePriority());
@@ -142,7 +142,7 @@ public class TestDiagramNode extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		target.setText("testing");
-		target.setNodePriority(ThreatPriority.createPriorityHigh());
+		target.setNodePriority(ThreatRatingValue.createHigh());
 		
 		DiagramNode got = new DiagramTarget(cmTarget);
 		JSONObject json = target.toJson();

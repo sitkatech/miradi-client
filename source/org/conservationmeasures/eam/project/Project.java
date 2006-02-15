@@ -50,7 +50,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -605,7 +605,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setPriority(int nodeId, ThreatPriority desiredPriority) throws Exception
+	public void setPriority(int nodeId, ThreatRatingValue desiredPriority) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -826,19 +826,19 @@ public class Project
 	
 
 
-	public static Color getPriorityColor(ThreatPriority priority)
+	public static Color getPriorityColor(ThreatRatingValue priority)
 	{
-		int priorityLevel = priority.getValue();
+		int priorityLevel = priority.getRatingOptionId();
 		
 		switch(priorityLevel)
 		{
-			case ThreatPriority.PRIORITY_VERY_HIGH:
+			case ThreatRatingValue.PRIORITY_VERY_HIGH:
 				return Color.RED;
-			case ThreatPriority.PRIORITY_HIGH:
+			case ThreatRatingValue.PRIORITY_HIGH:
 				return Color.ORANGE;
-			case ThreatPriority.PRIORITY_MEDIUM:
+			case ThreatRatingValue.PRIORITY_MEDIUM:
 				return Color.YELLOW;
-			case ThreatPriority.PRIORITY_LOW:
+			case ThreatRatingValue.PRIORITY_LOW:
 				return Color.GREEN;
 			default:
 				return Color.WHITE;

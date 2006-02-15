@@ -27,7 +27,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -212,26 +212,26 @@ public class TestCommands extends EAMTestCase
 	{
 		int targetId = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(targetId);
-		assertEquals("New target should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
+		assertTrue("New target should have a null priority level", node.getThreatRating().isNotUsed());
 		
 		int interventionId = insertIntervention();
 		node = project.getDiagramModel().getNodeById(interventionId);
-		assertEquals("New intervention should have a null priority level", ThreatPriority.PRIORITY_NOT_USED, node.getThreatPriority().getValue());
+		assertTrue("New intervention should have a null priority level", node.getThreatRating().isNotUsed());
 		
 		int indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
-		assertEquals("New indirect factor should have a priority level as None", ThreatPriority.PRIORITY_NONE, node.getThreatPriority().getValue());
+		assertEquals("New indirect factor should have a priority level as None", ThreatRatingValue.PRIORITY_NONE, node.getThreatRating().getRatingOptionId());
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
-		ThreatPriority originalPriority = node.getThreatPriority();
-		assertEquals("New node should have priority level as None", ThreatPriority.PRIORITY_NONE, node.getThreatPriority().getValue());
+		ThreatRatingValue originalPriority = node.getThreatRating();
+		assertEquals("New node should have priority level as None", ThreatRatingValue.PRIORITY_NONE, node.getThreatRating().getRatingOptionId());
 
-		ThreatPriority newPriorityLow = ThreatPriority.createPriorityLow();
+		ThreatRatingValue newPriorityLow = ThreatRatingValue.createLow();
 		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriorityLow);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old priority?", originalPriority, cmd.getPreviousPriority());
-		assertEquals( newPriorityLow, node.getThreatPriority());
+		assertEquals( newPriorityLow, node.getThreatRating());
 
 		CommandSetNodePriority loaded = (CommandSetNodePriority)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -239,7 +239,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous priority?", originalPriority, loaded.getPreviousPriority());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", ThreatPriority.createPriorityNone().getValue(), project.getDiagramModel().getNodeById(id).getThreatPriority().getValue());
+		assertEquals("didn't undo?", ThreatRatingValue.createNone().getRatingOptionId(), project.getDiagramModel().getNodeById(id).getThreatRating().getRatingOptionId());
 		
 		verifyUndoTwiceThrows(cmd);
 	}

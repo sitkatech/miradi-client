@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
@@ -55,7 +55,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		if(node.canHaveObjectives())
 			bigBox.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
 		if(node.canHavePriority())
-			bigBox.add(createThreatLevelDropdown(node.getThreatPriority()));
+			bigBox.add(createThreatLevelDropdown(node.getThreatRating()));
 		if(node.canHaveGoal())
 			bigBox.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
 		bigBox.add(createButtonBar());
@@ -80,7 +80,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return labelBar;
 	}
 	
-	private Component createThreatLevelDropdown(ThreatPriority currentPriority)
+	private Component createThreatLevelDropdown(ThreatRatingValue currentPriority)
 	{
 		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
 		UiComboBox dropDown = createThreatDropDown();
@@ -100,11 +100,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		UiComboBox dropDown = new UiComboBox();
 		dropDown.setRenderer(new ThreatRenderer());
 		
-		dropDown.addItem(ThreatPriority.createPriorityVeryHigh());
-		dropDown.addItem(ThreatPriority.createPriorityHigh());
-		dropDown.addItem(ThreatPriority.createPriorityMedium());
-		dropDown.addItem(ThreatPriority.createPriorityLow());
-		dropDown.addItem(ThreatPriority.createPriorityNone());
+		dropDown.addItem(ThreatRatingValue.createVeryHigh());
+		dropDown.addItem(ThreatRatingValue.createHigh());
+		dropDown.addItem(ThreatRatingValue.createMedium());
+		dropDown.addItem(ThreatRatingValue.createLow());
+		dropDown.addItem(ThreatRatingValue.createNone());
 		return dropDown;
 	}
 	
@@ -199,7 +199,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			setIcon(new ThreatPriorityIcon((ThreatPriority)value));
+			setIcon(new ThreatPriorityIcon((ThreatRatingValue)value));
 			return cell;
 		}
 	}
@@ -250,9 +250,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField.getText();
 	}
 	
-	public ThreatPriority getPriority()
+	public ThreatRatingValue getPriority()
 	{
-		return (ThreatPriority)dropdownThreatPriority.getSelectedItem();
+		return (ThreatRatingValue)dropdownThreatPriority.getSelectedItem();
 	}
 	
 	public IndicatorId getIndicator()

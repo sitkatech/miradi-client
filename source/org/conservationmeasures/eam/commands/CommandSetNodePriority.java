@@ -13,12 +13,12 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodePriority extends Command 
 {
-	public CommandSetNodePriority(int idToUpdate, ThreatPriority priorityToUse)
+	public CommandSetNodePriority(int idToUpdate, ThreatRatingValue priorityToUse)
 	{
 		id = idToUpdate;
 		priority = priorityToUse;
@@ -28,15 +28,15 @@ public class CommandSetNodePriority extends Command
 	public CommandSetNodePriority(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		priority = ThreatPriority.createFromInt(dataIn.readInt());
-		previousPriority = ThreatPriority.createFromInt(dataIn.readInt());
+		priority = ThreatRatingValue.createFromInt(dataIn.readInt());
+		previousPriority = ThreatRatingValue.createFromInt(dataIn.readInt());
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(getId());
-		dataOut.writeInt(getCurrentPriority().getValue());
-		dataOut.writeInt(getPreviousPriority().getValue());
+		dataOut.writeInt(getCurrentPriority().getRatingOptionId());
+		dataOut.writeInt(getPreviousPriority().getRatingOptionId());
 	}
 	
 	public String getCommandName() 
@@ -44,12 +44,12 @@ public class CommandSetNodePriority extends Command
 		return COMMAND_NAME;
 	}
 	
-	public ThreatPriority getCurrentPriority()
+	public ThreatRatingValue getCurrentPriority()
 	{
 		return priority;
 	}
 	
-	public ThreatPriority getPreviousPriority()
+	public ThreatRatingValue getPreviousPriority()
 	{
 		return previousPriority;
 	}
@@ -64,13 +64,13 @@ public class CommandSetNodePriority extends Command
 		doSetPriority(target, getPreviousPriority(), getCurrentPriority());
 	}
 	
-	private ThreatPriority doSetPriority(Project target, ThreatPriority desiredPriority, ThreatPriority expectedPriority) throws CommandFailedException
+	private ThreatRatingValue doSetPriority(Project target, ThreatRatingValue desiredPriority, ThreatRatingValue expectedPriority) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			ThreatPriority currentPriority = node.getThreatPriority();
+			ThreatRatingValue currentPriority = node.getThreatRating();
 			if(expectedPriority != null && !currentPriority.equals(expectedPriority))
 				throw new Exception("CommandSetNodePriority expected " + expectedPriority + " but was " + currentPriority);
 			target.setPriority(getId(), desiredPriority);
@@ -97,7 +97,7 @@ public class CommandSetNodePriority extends Command
 	public static final String COMMAND_NAME = "SetNodePriority";
 
 	int id;
-	ThreatPriority priority;
-	ThreatPriority previousPriority;
+	ThreatRatingValue priority;
+	ThreatRatingValue previousPriority;
 
 }

@@ -27,7 +27,7 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 	
 	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
-		if(priority.isPriorityNotUsed() || priority.isPriorityNone())
+		if(priority.isNotUsed() || priority.isNone())
 			return;
 
 		Rectangle smallRect = new Rectangle();

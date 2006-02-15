@@ -7,16 +7,16 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class ThreatPriority 
+public class ThreatRatingValue 
 {
-	private ThreatPriority(int priorityToUse)
+	private ThreatRatingValue(int ratingOptionId)
 	{
-		rating = getRatingValueOption(priorityToUse);
+		rating = getRatingValueOption(ratingOptionId);
 	}
 	
-	private RatingValueOption getRatingValueOption(int ratingValueId)
+	private RatingValueOption getRatingValueOption(int ratingOptionId)
 	{
-		switch(ratingValueId)
+		switch(ratingOptionId)
 		{
 			case PRIORITY_VERY_HIGH:
 				return veryHigh;
@@ -31,46 +31,46 @@ public class ThreatPriority
 			case PRIORITY_NOT_USED:
 				return notUsed;
 			default:
-				throw new RuntimeException("Unknown threat rating id: " + ratingValueId);
+				throw new RuntimeException("Unknown threat rating id: " + ratingOptionId);
 		}
 	}
 
-	public static ThreatPriority createFromInt(int value)
+	public static ThreatRatingValue createFromInt(int ratingOptionId)
 	{
-		return new ThreatPriority(value);
+		return new ThreatRatingValue(ratingOptionId);
 	}
 
-	public static ThreatPriority createPriorityNotUsed()
+	public static ThreatRatingValue createNotUsed()
 	{
-		return new ThreatPriority(PRIORITY_NOT_USED);
+		return new ThreatRatingValue(PRIORITY_NOT_USED);
 	}
 
-	public static ThreatPriority createPriorityNone()
+	public static ThreatRatingValue createNone()
 	{
-		return new ThreatPriority(PRIORITY_NONE);
+		return new ThreatRatingValue(PRIORITY_NONE);
 	}
 
-	public static ThreatPriority createPriorityLow()
+	public static ThreatRatingValue createLow()
 	{
-		return new ThreatPriority(PRIORITY_LOW);
+		return new ThreatRatingValue(PRIORITY_LOW);
 	}
 
-	public static ThreatPriority createPriorityMedium()
+	public static ThreatRatingValue createMedium()
 	{
-		return new ThreatPriority(PRIORITY_MEDIUM);
+		return new ThreatRatingValue(PRIORITY_MEDIUM);
 	}
 
-	public static ThreatPriority createPriorityHigh()
+	public static ThreatRatingValue createHigh()
 	{
-		return new ThreatPriority(PRIORITY_HIGH);
+		return new ThreatRatingValue(PRIORITY_HIGH);
 	}
 
-	public static ThreatPriority createPriorityVeryHigh()
+	public static ThreatRatingValue createVeryHigh()
 	{
-		return new ThreatPriority(PRIORITY_VERY_HIGH);
+		return new ThreatRatingValue(PRIORITY_VERY_HIGH);
 	}
 	
-	public int getValue()
+	public int getRatingOptionId()
 	{
 		return rating.getId();
 	}
@@ -88,18 +88,18 @@ public class ThreatPriority
 	
 	public boolean equals(Object obj) 
 	{
-		if(!(obj instanceof ThreatPriority))
+		if(!(obj instanceof ThreatRatingValue))
 			return false;
-		return ((ThreatPriority)obj).rating.equals(rating);
+		return ((ThreatRatingValue)obj).rating.equals(rating);
 	}
 
 	
-	public boolean isPriorityNone()
+	public boolean isNone()
 	{
 		return rating.equals(none);
 	}
 
-	public boolean isPriorityNotUsed()
+	public boolean isNotUsed()
 	{
 		return rating.equals(notUsed);
 	}

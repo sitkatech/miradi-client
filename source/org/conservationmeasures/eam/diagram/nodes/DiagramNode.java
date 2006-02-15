@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -94,12 +94,12 @@ abstract public class DiagramNode extends EAMGraphCell
 		setColors();
 	}
 
-	public ThreatPriority getThreatPriority()
+	public ThreatRatingValue getThreatRating()
 	{
 		return underlyingObject.getThreatPriority();
 	}
 	
-	public void setNodePriority(ThreatPriority priorityToUse)
+	public void setNodePriority(ThreatRatingValue priorityToUse)
 	{
 		underlyingObject.setNodePriority(priorityToUse);
 	}
@@ -322,7 +322,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		dataMap.putDimension(TAG_SIZE, getSize());
 		dataMap.putString(TAG_VISIBLE_LABEL, getText());
 		
-		int priorityValue = getThreatPriority().getValue();
+		int priorityValue = getThreatRating().getRatingOptionId();
 		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
 	}

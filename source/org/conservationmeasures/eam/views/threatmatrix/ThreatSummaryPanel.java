@@ -11,14 +11,14 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatSummaryPanel extends JPanel
 {
 	public ThreatSummaryPanel()
 	{
-		ThreatPriority priority = getPriority();
+		ThreatRatingValue priority = getPriority();
 		JButton highButton = new JButton(priority.toString());
 		Color priorityColor = Project.getPriorityColor(priority);
 		highButton.setBackground(priorityColor);
@@ -27,9 +27,9 @@ public class ThreatSummaryPanel extends JPanel
 		setBackground(priorityColor);
 	}
 	
-	public ThreatPriority getPriority()
+	public ThreatRatingValue getPriority()
 	{
 		int value = Math.abs(new Random().nextInt()) % 4;
-		return ThreatPriority.createFromInt(value);
+		return ThreatRatingValue.createFromInt(value);
 	}
 }

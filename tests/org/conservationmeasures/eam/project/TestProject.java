@@ -44,7 +44,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -479,7 +479,7 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
 		assertEquals(5, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandSetNodePriority(factorId, ThreatPriority.createPriorityHigh()));
+		project.executeCommand(new CommandSetNodePriority(factorId, ThreatRatingValue.createHigh()));
 		assertEquals(6, database.callsToWriteNode);
 		
 		Dimension oldDimension = factor.getSize();

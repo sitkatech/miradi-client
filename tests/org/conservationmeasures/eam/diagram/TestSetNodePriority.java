@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -29,14 +29,14 @@ public class TestSetNodePriority extends EAMTestCase
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 
-		ThreatPriority createPriorityMedium = ThreatPriority.createPriorityMedium();
-		int newPriority = createPriorityMedium.getValue();
+		ThreatRatingValue createPriorityMedium = ThreatRatingValue.createMedium();
+		int newPriority = createPriorityMedium.getRatingOptionId();
 		Command setPriorityCommand = new CommandSetNodePriority(id, createPriorityMedium);
 		setPriorityCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);
-		ThreatPriority foundPriority = found.getThreatPriority();
-		assertEquals("wrong priority?", newPriority, foundPriority.getValue());
+		ThreatRatingValue foundPriority = found.getThreatRating();
+		assertEquals("wrong priority?", newPriority, foundPriority.getRatingOptionId());
 		
 		project.close();
 	}

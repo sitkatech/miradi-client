@@ -49,7 +49,7 @@ import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -68,7 +68,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 		node = (DiagramNode)view.getCell();
 		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
-		priority = node.getThreatPriority();
+		priority = node.getThreatRating();
 		return this;
 	}
 	
@@ -151,6 +151,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	private static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	
-	ThreatPriority priority;
+	ThreatRatingValue priority;
 	DiagramNode node;
 }

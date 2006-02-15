@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
-import org.conservationmeasures.eam.objects.ThreatPriority;
+import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -47,7 +47,7 @@ public class ThreatRatingPanel extends JPanel
 		extraCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 
 		
-		ThreatPriority priority = getRandomPriority();
+		ThreatRatingValue priority = getRandomPriority();
 		UiLabel ratingLabel = new UiLabel();
 		ratingLabel.setText(priority.toString());
 		ratingLabel.setBackground(Project.getPriorityColor(priority));
@@ -79,8 +79,8 @@ public class ThreatRatingPanel extends JPanel
 		return dropDown;
 	}
 	
-	private ThreatPriority getRandomPriority()
+	private ThreatRatingValue getRandomPriority()
 	{
-		return ThreatPriority.createFromInt(new Random().nextInt(4));
+		return ThreatRatingValue.createFromInt(new Random().nextInt(4));
 	}
 }
