@@ -87,9 +87,9 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
 	
-	public IdAssigner getIdAssigner()
+	public IdAssigner getNodeIdAssigner()
 	{
-		return projectInfo.getIdAssigner();
+		return projectInfo.getNodeIdAssigner();
 	}
 	
 	public IdAssigner getAnnotationIdAssigner()
@@ -225,7 +225,6 @@ public class Project
 
 	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
 	{
-		projectInfo.getIdAssigner().clear();
 		getDiagramModel().clear();
 
 		Vector commands = db.loadCommands();

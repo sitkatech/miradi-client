@@ -28,7 +28,7 @@ public class TestProjectInfo extends TestCaseEnhanced
 		ProjectInfo loaded = new ProjectInfo();
 		loaded.fillFrom(info.toJson());
 		assertEquals("Didn't keep current view?", info.getCurrentView(), loaded.getCurrentView());
-		assertEquals("Didn't keep next id?", info.getIdAssigner().getHighestAssignedId(), loaded.getIdAssigner().getHighestAssignedId());
+		assertEquals("Didn't keep next id?", info.getNodeIdAssigner().getHighestAssignedId(), loaded.getNodeIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep next annotation id?", info.getAnnotationIdAssigner().getHighestAssignedId(), loaded.getAnnotationIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep project data?", info.getProjectData().getString(testKey), loaded.getProjectData().getString(testKey));
 	}
@@ -42,7 +42,7 @@ public class TestProjectInfo extends TestCaseEnhanced
 		
 		info.clear();
 		assertEquals("Didn't clear currentView", NoProjectView.getViewName(), info.getCurrentView());
-		assertEquals("didn't clear id?", 0, info.getIdAssigner().takeNextId());
+		assertEquals("didn't clear id?", 0, info.getNodeIdAssigner().takeNextId());
 		assertEquals("didn't clear annotation id?", 0, info.getAnnotationIdAssigner().takeNextId());
 	}
 

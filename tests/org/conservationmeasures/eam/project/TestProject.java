@@ -61,7 +61,7 @@ public class TestProject extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		idAssigner = project.getIdAssigner();
+		idAssigner = project.getNodeIdAssigner();
 		super.setUp();
 	}
 	
@@ -579,7 +579,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read node pool?", 2, loadedProject.getNodePool().size());
 			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
-			assertEquals("didn't preserve next node id?", diskProject.getIdAssigner().takeNextId(), loadedProject.getIdAssigner().takeNextId());
+			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
 			assertEquals("didn't preserve next annotation id?", diskProject.getAnnotationIdAssigner().takeNextId(), loadedProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally
@@ -595,7 +595,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't clear node pool?", 0, diskProject.getNodePool().size());
 			assertEquals("didn't clear linkage pool?", 0, diskProject.getLinkagePool().size());
 			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getNodeCount());
-			assertEquals("didn't clear next node id?", 0, diskProject.getIdAssigner().takeNextId());
+			assertEquals("didn't clear next node id?", 0, diskProject.getNodeIdAssigner().takeNextId());
 			assertEquals("didn't clear next annotation id?", 0, diskProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally

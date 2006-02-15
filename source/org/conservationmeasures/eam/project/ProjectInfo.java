@@ -20,26 +20,26 @@ public class ProjectInfo
 	
 	public void clear()
 	{
-		idAssigner = new IdAssigner(); 
+		nodeIdAssigner = new IdAssigner(); 
 		annotationIdAssigner = new IdAssigner();
 		currentView = NoProjectView.getViewName();
 		projectData = new JSONObject();
 
 	}
 	
-	public IdAssigner getIdAssigner()
+	public IdAssigner getNodeIdAssigner()
 	{
-		return idAssigner;
+		return nodeIdAssigner;
 	}
 	
 	public int obtainRealNodeId(int proposedId)
 	{
-		return idAssigner.obtainRealId(proposedId);
+		return nodeIdAssigner.obtainRealId(proposedId);
 	}
 	
 	public int obtainRealLinkageId(int proposedId)
 	{
-		return idAssigner.obtainRealId(proposedId);
+		return nodeIdAssigner.obtainRealId(proposedId);
 	}
 
 	public IdAssigner getAnnotationIdAssigner()
@@ -66,7 +66,7 @@ public class ProjectInfo
 	{
 		JSONObject json = new JSONObject();
 		json.put(TAG_CURRENT_VIEW, currentView);
-		json.put(TAG_HIGHEST_NODE_ID, idAssigner.getHighestAssignedId());
+		json.put(TAG_HIGHEST_NODE_ID, nodeIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_ANNOTATION_ID, annotationIdAssigner.getHighestAssignedId());
 		json.put(TAG_PROJECT_DATA, projectData);
 		return json;
@@ -76,7 +76,7 @@ public class ProjectInfo
 	{
 		clear();
 		currentView = copyFrom.getString(TAG_CURRENT_VIEW);
-		idAssigner = new IdAssigner(copyFrom.getInt(TAG_HIGHEST_NODE_ID));
+		nodeIdAssigner = new IdAssigner(copyFrom.getInt(TAG_HIGHEST_NODE_ID));
 		annotationIdAssigner = new IdAssigner(copyFrom.getInt(TAG_HIGHEST_ANNOTATION_ID));
 		projectData = new JSONObject(copyFrom.get(TAG_PROJECT_DATA).toString());
 	}
@@ -86,7 +86,7 @@ public class ProjectInfo
 	static String TAG_HIGHEST_ANNOTATION_ID = "HighestUsedAnnotationId";
 	static String TAG_PROJECT_DATA = "ProjectData";
 	
-	IdAssigner idAssigner;
+	IdAssigner nodeIdAssigner;
 	IdAssigner annotationIdAssigner;
 	String currentView;
 	JSONObject projectData;
