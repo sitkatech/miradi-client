@@ -5,12 +5,15 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Color;
+
 public class RatingValueOption
 {
-	public RatingValueOption(int idToUse, String labelToUse)
+	public RatingValueOption(int idToUse, String labelToUse, Color colorToUse)
 	{
 		id = idToUse;
 		label = labelToUse;
+		color = colorToUse;
 	}
 	
 	public int getId()
@@ -23,6 +26,12 @@ public class RatingValueOption
 		return label;
 	}
 	
+	public Color getColor()
+	{
+		return color;
+	}
+	
 	int id;
 	String label;
+	Color color;
 }

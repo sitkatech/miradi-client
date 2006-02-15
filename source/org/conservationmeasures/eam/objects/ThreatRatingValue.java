@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.awt.Color;
+
 import org.conservationmeasures.eam.main.EAM;
 
 public class ThreatRatingValue 
@@ -77,12 +79,17 @@ public class ThreatRatingValue
 	
 	public String getStringValue()
 	{
-		return toString();
+		return rating.getLabel();
+	}
+	
+	public Color getColor()
+	{
+		return rating.getColor();
 	}
 	
 	public String toString()
 	{
-		return rating.getLabel();
+		return getStringValue();
 	}
 	
 	
@@ -118,12 +125,12 @@ public class ThreatRatingValue
 	private static final String PRIORITY_LOW_STRING = EAM.text("Label|Low");
 	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
 
-	private static final RatingValueOption notUsed = new RatingValueOption(PRIORITY_NOT_USED, "");
-	private static final RatingValueOption none = new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING);
-	private static final RatingValueOption low = new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING);
-	private static final RatingValueOption medium = new RatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING);
-	private static final RatingValueOption high = new RatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING);
-	private static final RatingValueOption veryHigh = new RatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING);
+	private static final RatingValueOption notUsed = new RatingValueOption(PRIORITY_NOT_USED, "", Color.BLACK);
+	private static final RatingValueOption none = new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING, Color.WHITE);
+	private static final RatingValueOption low = new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING, Color.GREEN);
+	private static final RatingValueOption medium = new RatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING, Color.YELLOW);
+	private static final RatingValueOption high = new RatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING, Color.ORANGE);
+	private static final RatingValueOption veryHigh = new RatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING, Color.RED);
 	
 	private RatingValueOption rating;
 

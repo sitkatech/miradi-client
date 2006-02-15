@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
-import org.conservationmeasures.eam.project.Project;
 
 public class ThreatSummaryPanel extends JPanel
 {
@@ -20,7 +19,7 @@ public class ThreatSummaryPanel extends JPanel
 	{
 		ThreatRatingValue priority = getPriority();
 		JButton highButton = new JButton(priority.toString());
-		Color priorityColor = Project.getPriorityColor(priority);
+		Color priorityColor = priority.getColor();
 		highButton.setBackground(priorityColor);
 		highButton.addActionListener(new RatingSummaryButtonHandler(this));
 		add(highButton);

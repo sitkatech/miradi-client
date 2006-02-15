@@ -11,8 +11,6 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-import org.conservationmeasures.eam.project.Project;
-
 public class RectangleWithPriorityRenderer extends RectangleRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
@@ -35,7 +33,7 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		smallRect.y = rect.y;
 		smallRect.width = PRIORITY_WIDTH;
 		smallRect.height = rect.height;
-		setPaint(g2, smallRect, Project.getPriorityColor(priority));
+		setPaint(g2, smallRect, priority.getColor());
 		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 	}
 
