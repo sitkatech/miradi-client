@@ -64,15 +64,15 @@ public class ThreatPriority
 		switch(priority)
 		{
 			case PRIORITY_VERY_HIGH:
-				return PRIORITY_VERY_HIGH_STRING;
+				return veryHigh.getLabel();
 			case PRIORITY_HIGH:
-				return PRIORITY_HIGH_STRING;
+				return high.getLabel();
 			case PRIORITY_MEDIUM:
-				return PRIORITY_MEDIUM_STRING;
+				return medium.getLabel();
 			case PRIORITY_LOW:
-				return PRIORITY_LOW_STRING;
+				return low.getLabel();
 			case PRIORITY_NONE:
-				return PRIORITY_NONE_STRING;
+				return none.getLabel();
 			default:
 				return "";
 		}
@@ -96,6 +96,7 @@ public class ThreatPriority
 	{
 		return priority == PRIORITY_NOT_USED;
 	}
+	
 
 	public static final int PRIORITY_NOT_USED =-1;
 	public static final int PRIORITY_VERY_HIGH =0;
@@ -110,6 +111,12 @@ public class ThreatPriority
 	private static final String PRIORITY_LOW_STRING = EAM.text("Label|Low");
 	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
 
+	private static final RatingValueOption none = new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING);
+	private static final RatingValueOption low = new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING);
+	private static final RatingValueOption medium = new RatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING);
+	private static final RatingValueOption high = new RatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING);
+	private static final RatingValueOption veryHigh = new RatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING);
+	
 	private int priority;
 
 }
