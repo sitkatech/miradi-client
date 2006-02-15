@@ -38,11 +38,12 @@ import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeTarget;
-import org.conservationmeasures.eam.diagram.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
+import org.conservationmeasures.eam.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
+import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestLinkagePool;
 import org.conservationmeasures.eam.project.TestNodePool;
@@ -124,6 +125,7 @@ public class MainTests extends TestCase
 		// objects package
 		suite.addTest(new TestSuite(TestConceptualModelLinkage.class));
 		suite.addTest(new TestSuite(TestConceptualModelNode.class));
+		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

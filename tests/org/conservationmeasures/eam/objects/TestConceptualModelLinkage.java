@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.diagram.objects;
+package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.testall.EAMTestCase;
