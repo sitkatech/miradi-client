@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.awt.Color;
+
+import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestThreatRatingFramework extends EAMTestCase
@@ -20,9 +23,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 		framework = new ThreatRatingFramework();
 	}
 
-	public void testBasics() throws Exception
+	public void testRatingValueOptions() throws Exception
 	{
-		// TODO
+		RatingValueOption[] options = framework.getRatingValueOptions();
+		assertEquals("wrong number of default options?", 5, options.length);
+		assertEquals("wrong order?", ThreatRatingFramework.PRIORITY_NONE, options[options.length-1].getId());
+		assertEquals("bad color?", Color.YELLOW, options[2].getColor());
+		assertEquals("bad label?", "Low", options[3].getLabel());
 	}
 	
 	ThreatRatingFramework framework;
