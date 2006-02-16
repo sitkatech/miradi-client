@@ -24,32 +24,27 @@ public class ThreatRatingPanel extends JPanel
 {
 	public ThreatRatingPanel()
 	{
-		ThreatRatingCriterion criterion1 = new ThreatRatingCriterion(0, "Scope");
-		ThreatRatingCriterion criterion2 = new ThreatRatingCriterion(1, "Severity");
-		ThreatRatingCriterion criterion3 = new ThreatRatingCriterion(2, "Urgency");
-		ThreatRatingCriterion criterion4 = new ThreatRatingCriterion(3, "Custom");
+		ThreatRatingCriterion[] criterionItems = new ThreatRatingCriterion[] {
+			new ThreatRatingCriterion(0, "Scope"), 
+			new ThreatRatingCriterion(1, "Severity"),
+			new ThreatRatingCriterion(2, "Urgency"),
+			new ThreatRatingCriterion(3, "Custom"),
+		};
 		
 		int lineWidth = 1;
 		
-		Box scopeCell = Box.createVerticalBox();
-		scopeCell.add(new UiLabel(criterion1.getLabel()));
-		scopeCell.add(createRatingDropdown());
-		scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
+		Box criteria = Box.createVerticalBox();
+
+		for(int i = 0; i < criterionItems.length; ++i)
+		{
+			Box scopeCell = Box.createVerticalBox();
+			scopeCell.add(new UiLabel(criterionItems[i].getLabel()));
+			scopeCell.add(createRatingDropdown());
+			scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
+			
+			criteria.add(scopeCell);
+		}
 		
-		Box severityCell = Box.createVerticalBox();
-		severityCell.add(new UiLabel(criterion2.getLabel()));
-		severityCell.add(createRatingDropdown());
-		severityCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
-		
-		Box urgencyCell = Box.createVerticalBox();
-		urgencyCell.add(new UiLabel(criterion3.getLabel()));
-		urgencyCell.add(createRatingDropdown());
-		urgencyCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
-		
-		Box extraCell = Box.createVerticalBox();
-		extraCell.add(new UiLabel(criterion4.getLabel()));
-		extraCell.add(createRatingDropdown());
-		extraCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 
 		
 		ThreatRatingValue priority = getRandomPriority();
@@ -64,11 +59,6 @@ public class ThreatRatingPanel extends JPanel
 		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
 		ratingSummaryPanel.setBackground(priority.getColor());
 
-		Box criteria = Box.createVerticalBox();
-		criteria.add(scopeCell);
-		criteria.add(severityCell);
-		criteria.add(urgencyCell);
-		criteria.add(extraCell);
 
 		Box main = Box.createHorizontalBox();
 		main.add(criteria);
