@@ -11,12 +11,12 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class ThreatRatingValue 
 {
-	private ThreatRatingValue(int ratingOptionId)
+	public ThreatRatingValue(RatingValueOption value)
 	{
-		rating = getRatingValueOption(ratingOptionId);
+		rating = value;
 	}
-	
-	private RatingValueOption getRatingValueOption(int ratingOptionId)
+		
+	private static RatingValueOption getRatingValueOption(int ratingOptionId)
 	{
 		switch(ratingOptionId)
 		{
@@ -39,37 +39,37 @@ public class ThreatRatingValue
 
 	public static ThreatRatingValue createFromInt(int ratingOptionId)
 	{
-		return new ThreatRatingValue(ratingOptionId);
+		return new ThreatRatingValue(getRatingValueOption(ratingOptionId));
 	}
 
 	public static ThreatRatingValue createNotUsed()
 	{
-		return new ThreatRatingValue(PRIORITY_NOT_USED);
+		return new ThreatRatingValue(notUsed);
 	}
 
 	public static ThreatRatingValue createNone()
 	{
-		return new ThreatRatingValue(PRIORITY_NONE);
+		return new ThreatRatingValue(none);
 	}
 
 	public static ThreatRatingValue createLow()
 	{
-		return new ThreatRatingValue(PRIORITY_LOW);
+		return new ThreatRatingValue(low);
 	}
 
 	public static ThreatRatingValue createMedium()
 	{
-		return new ThreatRatingValue(PRIORITY_MEDIUM);
+		return new ThreatRatingValue(medium);
 	}
 
 	public static ThreatRatingValue createHigh()
 	{
-		return new ThreatRatingValue(PRIORITY_HIGH);
+		return new ThreatRatingValue(high);
 	}
 
 	public static ThreatRatingValue createVeryHigh()
 	{
-		return new ThreatRatingValue(PRIORITY_VERY_HIGH);
+		return new ThreatRatingValue(veryHigh);
 	}
 	
 	public RatingValueOption getRatingOption()
