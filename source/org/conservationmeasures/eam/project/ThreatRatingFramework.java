@@ -10,6 +10,8 @@ import java.awt.Color;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 public class ThreatRatingFramework
@@ -34,6 +36,19 @@ public class ThreatRatingFramework
 		};
 		
 	}
+	
+	public ThreatRatingFramework(JSONObject json)
+	{
+		JSONArray criterionArray = json.getJSONArray(TAG_CRITERIA);
+		criteria = new ThreatRatingCriterion[criterionArray.length()];
+		for(int i = 0; i < criteria.length; ++i)
+			criteria[i] = new ThreatRatingCriterion(criterionArray.getJSONObject(i));
+		
+		JSONArray optionsArray = json.getJSONArray(TAG_OPTIONS);
+		options = new ThreatRatingValueOption[optionsArray.length()];
+		for(int i = 0; i < options.length; ++i)
+			options[i] = new ThreatRatingValueOption(optionsArray.getJSONObject(i));
+	}
 
 	public ThreatRatingCriterion[] getCriteria()
 	{
@@ -44,6 +59,25 @@ public class ThreatRatingFramework
 	{
 		return options;
 	}
+	
+	public JSONObject toJson()
+	{
+		JSONObject json = new JSONObject();
+		JSONArray criterionArray = new JSONArray();
+		for(int i = 0; i < criteria.length; ++i)
+			criterionArray.put(criteria[i].toJson());
+		json.put(TAG_CRITERIA, criterionArray);
+		
+		JSONArray optionsArray = new JSONArray();
+		for(int i = 0; i < options.length; ++i)
+			optionsArray.put(options[i].toJson());
+		json.put(TAG_OPTIONS, optionsArray);
+		
+		return json;
+	}
+	
+	private final static String TAG_CRITERIA = "Criteria";
+	private final static String TAG_OPTIONS = "Options";
 	
 	private IdAssigner idAssigner;
 	private ThreatRatingCriterion[] criteria;

@@ -6,10 +6,12 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.util.Arrays;
 
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.json.JSONObject;
 
 public class TestThreatRatingFramework extends EAMTestCase
 {
@@ -45,6 +47,14 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testIdAssignment() throws Exception
 	{
 		assertNotEquals("reused ids?", framework.getCriteria()[0].getId(), framework.getValueOptions()[0].getId());
+	}
+	
+	public void testJson() throws Exception
+	{
+		JSONObject json = framework.toJson();
+		ThreatRatingFramework got = new ThreatRatingFramework(json);
+		assertTrue("criteria not reloaded?", Arrays.equals(got.getCriteria(), framework.getCriteria()));
+		assertTrue("value options not reloaded?", Arrays.equals(got.getValueOptions(), framework.getValueOptions()));
 	}
 	
 	ThreatRatingFramework framework;

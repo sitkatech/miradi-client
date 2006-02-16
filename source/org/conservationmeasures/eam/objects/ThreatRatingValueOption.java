@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
+import org.json.JSONObject;
+
 public class ThreatRatingValueOption
 {
 	public ThreatRatingValueOption(int idToUse, String labelToUse, Color colorToUse)
@@ -14,6 +16,13 @@ public class ThreatRatingValueOption
 		id = idToUse;
 		label = labelToUse;
 		color = colorToUse;
+	}
+	
+	public ThreatRatingValueOption(JSONObject json)
+	{
+		id = json.getInt(TAG_ID);
+		label = json.getString(TAG_LABEL);
+		color = new Color(json.getInt(TAG_COLOR));
 	}
 	
 	public int getId()
@@ -44,6 +53,20 @@ public class ThreatRatingValueOption
 		ThreatRatingValueOption other = (ThreatRatingValueOption)rawOther;
 		return (other.getId() == getId());
 	}
+	
+	public JSONObject toJson()
+	{
+		JSONObject json = new JSONObject();
+		json.put(TAG_ID, id);
+		json.put(TAG_LABEL, label);
+		json.put(TAG_COLOR, color.getRGB());
+		
+		return json;
+	}
+	
+	private final static String TAG_ID = "Id";
+	private final static String TAG_LABEL = "Label";
+	private final static String TAG_COLOR = "Color";
 	
 	int id;
 	String label;
