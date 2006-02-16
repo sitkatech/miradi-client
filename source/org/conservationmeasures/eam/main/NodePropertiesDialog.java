@@ -29,7 +29,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
@@ -214,7 +214,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	public ThreatRatingValue getPriority()
 	{
-		RatingValueOption option = (RatingValueOption)dropdownThreatPriority.getSelectedItem();
+		ThreatRatingValueOption option = (ThreatRatingValueOption)dropdownThreatPriority.getSelectedItem();
 		return new ThreatRatingValue(option);
 	}
 	

@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -62,7 +62,7 @@ public class ThreatRatingPanel extends JPanel
 		add(main);
 	}
 
-	private UiComboBox createRatingDropdown(RatingValueOption[] options)
+	private UiComboBox createRatingDropdown(ThreatRatingValueOption[] options)
 	{
 		UiComboBox dropDown = ThreatRatingPanel.createThreatDropDown(options);
 		int choice = new Random().nextInt(dropDown.getItemCount());
@@ -72,12 +72,12 @@ public class ThreatRatingPanel extends JPanel
 	
 	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		RatingValueOption[] options = framework.getRatingValueOptions();
+		ThreatRatingValueOption[] options = framework.getRatingValueOptions();
 		int index = Math.abs(new Random().nextInt()) % options.length;
 		return new ThreatRatingValue(options[index]);
 	}
 	
-	public static UiComboBox createThreatDropDown(RatingValueOption[] options)
+	public static UiComboBox createThreatDropDown(ThreatRatingValueOption[] options)
 	{
 		UiComboBox dropDown = new UiComboBox();
 		dropDown.setRenderer(new ThreatRenderer());

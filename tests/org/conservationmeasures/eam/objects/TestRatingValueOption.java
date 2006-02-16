@@ -19,9 +19,9 @@ public class TestRatingValueOption extends EAMTestCase
 	public void testEquals() throws Exception
 	{
 		int id = 17;
-		RatingValueOption a = new RatingValueOption(id, "abc", Color.RED);
-		RatingValueOption b = new RatingValueOption(id, "def", Color.BLUE);
-		RatingValueOption c = new RatingValueOption(id + 1, "abc", Color.RED);
+		ThreatRatingValueOption a = new ThreatRatingValueOption(id, "abc", Color.RED);
+		ThreatRatingValueOption b = new ThreatRatingValueOption(id, "def", Color.BLUE);
+		ThreatRatingValueOption c = new ThreatRatingValueOption(id + 1, "abc", Color.RED);
 		assertTrue("same id isn't equal?", a.equals(b));
 		assertTrue("same id isn't equal (reversed)?", b.equals(a));
 		assertFalse("not comparing id?", a.equals(c));

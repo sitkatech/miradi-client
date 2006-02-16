@@ -11,7 +11,7 @@ import java.util.Random;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
@@ -30,7 +30,7 @@ public class ThreatMatrixCellPanel extends JPanel
 	
 	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		RatingValueOption[] options = framework.getRatingValueOptions();
+		ThreatRatingValueOption[] options = framework.getRatingValueOptions();
 		int index = Math.abs(new Random().nextInt()) % options.length;
 		return new ThreatRatingValue(options[index]);
 	}

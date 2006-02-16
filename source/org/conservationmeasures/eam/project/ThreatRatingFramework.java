@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 
 
@@ -16,12 +16,12 @@ public class ThreatRatingFramework
 {
 	public ThreatRatingFramework()
 	{
-		options =  new RatingValueOption[] {
-			new RatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING, Color.RED),
-			new RatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING, Color.ORANGE),
-			new RatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING, Color.YELLOW),
-			new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING, Color.GREEN),
-			new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING, Color.WHITE),
+		options =  new ThreatRatingValueOption[] {
+			new ThreatRatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING, Color.RED),
+			new ThreatRatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING, Color.ORANGE),
+			new ThreatRatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING, Color.YELLOW),
+			new ThreatRatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING, Color.GREEN),
+			new ThreatRatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING, Color.WHITE),
 		};
 		
 		criteria = new ThreatRatingCriterion[] {
@@ -33,7 +33,7 @@ public class ThreatRatingFramework
 			
 	}
 
-	public RatingValueOption[] getRatingValueOptions()
+	public ThreatRatingValueOption[] getRatingValueOptions()
 	{
 		return options;
 	}
@@ -56,6 +56,6 @@ public class ThreatRatingFramework
 	private static final String PRIORITY_LOW_STRING = EAM.text("Label|Low");
 	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
 
-	private RatingValueOption[] options;
+	private ThreatRatingValueOption[] options;
 	private ThreatRatingCriterion[] criteria;
 }

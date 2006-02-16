@@ -17,14 +17,14 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 
 class ThreatRenderer extends DefaultListCellRenderer
 {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 	{
 		Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-		RatingValueOption thisOption = (RatingValueOption)value;
+		ThreatRatingValueOption thisOption = (ThreatRatingValueOption)value;
 		setIcon(new ThreatPriorityIcon(thisOption));
 		return cell;
 	}

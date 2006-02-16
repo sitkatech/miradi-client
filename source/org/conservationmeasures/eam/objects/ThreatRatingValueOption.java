@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
-public class RatingValueOption
+public class ThreatRatingValueOption
 {
-	public RatingValueOption(int idToUse, String labelToUse, Color colorToUse)
+	public ThreatRatingValueOption(int idToUse, String labelToUse, Color colorToUse)
 	{
 		id = idToUse;
 		label = labelToUse;
@@ -38,10 +38,10 @@ public class RatingValueOption
 	
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof RatingValueOption))
+		if(!(rawOther instanceof ThreatRatingValueOption))
 			return false;
 		
-		RatingValueOption other = (RatingValueOption)rawOther;
+		ThreatRatingValueOption other = (ThreatRatingValueOption)rawOther;
 		return (other.getId() == getId());
 	}
 	

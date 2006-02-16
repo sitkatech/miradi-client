@@ -9,12 +9,12 @@ import java.awt.Color;
 
 public class ThreatRatingValue 
 {
-	public ThreatRatingValue(RatingValueOption value)
+	public ThreatRatingValue(ThreatRatingValueOption value)
 	{
 		rating = value;
 	}
 		
-	public RatingValueOption getRatingOption()
+	public ThreatRatingValueOption getRatingOption()
 	{
 		return rating;
 	}
@@ -59,5 +59,5 @@ public class ThreatRatingValue
 	}
 	
 
-	private RatingValueOption rating;
+	private ThreatRatingValueOption rating;
 }
