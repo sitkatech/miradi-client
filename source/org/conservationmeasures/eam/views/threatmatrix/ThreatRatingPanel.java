@@ -5,10 +5,12 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.Random;
 
 import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -17,8 +19,6 @@ import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatRatingPanel extends JPanel
 {
@@ -53,27 +53,28 @@ public class ThreatRatingPanel extends JPanel
 
 		
 		ThreatRatingValue priority = getRandomPriority();
-		UiLabel ratingLabel = new UiLabel();
-		ratingLabel.setText(priority.toString());
-		ratingLabel.setBackground(priority.getColor());
-		JPanel ratingPanel = new JPanel();
-		ratingPanel.add(ratingLabel);
-		ratingPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
-		ratingPanel.setBackground(priority.getColor());
+		UiLabel ratingSummaryLabel = new UiLabel();
+		ratingSummaryLabel.setText(priority.toString());
+		ratingSummaryLabel.setBackground(priority.getColor());
+		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
 
-		JPanel top = new JPanel();
-		top.setLayout(new BasicGridLayout(2, 2));
-		top.add(scopeCell);
-		top.add(severityCell);
-		
-		top.add(urgencyCell);
-		top.add(extraCell);
+		JPanel ratingSummaryPanel = new JPanel();
+		ratingSummaryPanel.setLayout(new BorderLayout());
+		ratingSummaryPanel.add(ratingSummaryLabel, BorderLayout.CENTER);
+		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
+		ratingSummaryPanel.setBackground(priority.getColor());
 
-		Box vBox = Box.createVerticalBox();
-		vBox.add(top);
-		vBox.add(ratingPanel);
+		Box criteria = Box.createVerticalBox();
+		criteria.add(scopeCell);
+		criteria.add(severityCell);
+		criteria.add(urgencyCell);
+		criteria.add(extraCell);
+
+		Box main = Box.createHorizontalBox();
+		main.add(criteria);
+		main.add(ratingSummaryPanel);
 		
-		add(vBox);
+		add(main);
 	}
 
 	private UiComboBox createRatingDropdown()
