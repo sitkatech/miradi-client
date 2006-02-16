@@ -21,7 +21,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testPriority()
 	{
 		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
-		assertEquals("didn't default to priority none?", ThreatRatingValue.createNotUsed(), factor.getThreatPriority());
+		assertEquals("didn't default to priority none?", null, factor.getThreatPriority());
 	}
 
 	public void testJson()

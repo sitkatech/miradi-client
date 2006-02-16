@@ -86,7 +86,7 @@ abstract public class ConceptualModelNode
 
 	public ThreatRatingValue getThreatPriority()
 	{
-		return ThreatRatingValue.createNotUsed();
+		return null;
 	}
 	
 	public ObjectiveIds getObjectives()
@@ -173,7 +173,6 @@ abstract public class ConceptualModelNode
 		json.put(TAG_TYPE, typeString);
 		json.put(TAG_ID, getId());
 		json.put(TAG_NAME, getName());
-		json.put(TAG_PRIORITY, getThreatPriority().getRatingOptionId());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
 		JSONArray goalIds = new JSONArray();
@@ -204,7 +203,6 @@ abstract public class ConceptualModelNode
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
 	private static final String TAG_NAME = "Name";
-	private static final String TAG_PRIORITY = "Priority";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	private static final String TAG_GOAL_IDS = "GoalIds";
 	private static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";

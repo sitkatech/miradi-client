@@ -317,8 +317,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		dataMap.putDimension(TAG_SIZE, getSize());
 		dataMap.putString(TAG_VISIBLE_LABEL, getText());
 		
-		int priorityValue = getThreatRating().getRatingOptionId();
-		dataMap.putInt(TAG_PRIORITY, priorityValue);
 		return dataMap;
 	}
 	

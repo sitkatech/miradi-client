@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -76,12 +75,11 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoPriority() throws Exception
 	{
-		ThreatRatingValue target1Priority = ThreatRatingValue.createVeryHigh();
 		int insertedId = insertDirectThreat(project);
 
 		// Deprecated command--just make sure it doesn't crash
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetNodePriority(insertedId, target1Priority));
+		project.executeCommand(new CommandSetNodePriority(insertedId, null));
 		project.executeCommand(new CommandEndTransaction());
 
 		Undo undo = new Undo();

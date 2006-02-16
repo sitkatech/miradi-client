@@ -9,10 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.utils.DataMap;
 
 public class TestDiagramNodeData extends EAMTestCase 
 {
@@ -38,14 +35,6 @@ public class TestDiagramNodeData extends EAMTestCase
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals("id incorrect", id, nodeAData.getInt(DiagramNode.TAG_ID));
-		assertEquals("Priority default not None?", ThreatRatingValue.createNotUsed().getRatingOptionId(), nodeAData.getInt(DiagramNode.TAG_PRIORITY));
 	}
 	
-	public void testNoneThreatNode()  throws Exception
-	{
-		DiagramNode nodeB = DiagramNode.wrapConceptualModelObject(new ConceptualModelTarget());
-		DataMap nodeBData = nodeB.createNodeDataMap();
-		assertEquals("Priority of a non threat not PRIORITY_NOT_USED?", ThreatRatingValue.PRIORITY_NOT_USED, nodeBData.getInt(DiagramNode.TAG_PRIORITY));
-	}
-
 }

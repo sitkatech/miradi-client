@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -212,22 +211,21 @@ public class TestCommands extends EAMTestCase
 	{
 		int targetId = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(targetId);
-		assertTrue("New target should have a null priority level", node.getThreatRating().isNotUsed());
+		assertNull("New target should have a null priority level", node.getThreatRating());
 		
 		int interventionId = insertIntervention();
 		node = project.getDiagramModel().getNodeById(interventionId);
-		assertTrue("New intervention should have a null priority level", node.getThreatRating().isNotUsed());
+		assertNull("New intervention should have a null priority level", node.getThreatRating());
 		
 		int indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
-		assertTrue("New indirect factor should have a priority level as None", node.getThreatRating().isNotUsed());
+		assertNull("New indirect factor should have a priority level as None", node.getThreatRating());
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
-		assertTrue("New node should have priority level as None", node.getThreatRating().isNotUsed());
+		assertNull("New node should have priority level as None", node.getThreatRating());
 
-		ThreatRatingValue newPriorityLow = ThreatRatingValue.createLow();
-		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriorityLow);
+		CommandSetNodePriority cmd = new CommandSetNodePriority(id, null);
 
 		// Deprecated command--just make sure it doesn't crash
 		project.executeCommand(cmd);

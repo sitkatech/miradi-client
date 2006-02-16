@@ -42,36 +42,6 @@ public class ThreatRatingValue
 		return new ThreatRatingValue(getRatingValueOption(ratingOptionId));
 	}
 
-	public static ThreatRatingValue createNotUsed()
-	{
-		return new ThreatRatingValue(notUsed);
-	}
-
-	public static ThreatRatingValue createNone()
-	{
-		return new ThreatRatingValue(none);
-	}
-
-	public static ThreatRatingValue createLow()
-	{
-		return new ThreatRatingValue(low);
-	}
-
-	public static ThreatRatingValue createMedium()
-	{
-		return new ThreatRatingValue(medium);
-	}
-
-	public static ThreatRatingValue createHigh()
-	{
-		return new ThreatRatingValue(high);
-	}
-
-	public static ThreatRatingValue createVeryHigh()
-	{
-		return new ThreatRatingValue(veryHigh);
-	}
-	
 	public RatingValueOption getRatingOption()
 	{
 		return rating;

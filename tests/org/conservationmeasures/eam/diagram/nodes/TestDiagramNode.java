@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 import org.json.JSONObject;
@@ -57,7 +56,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testPriorities()
 	{
-		assertEquals("Lost priority?", ThreatRatingValue.createNotUsed(), directThreat.getThreatRating());
+		assertEquals("Lost priority?", null, directThreat.getThreatRating());
 		assertTrue(directThreat.canHaveThreatRating());
 		assertTrue(stress.canHaveThreatRating());
 		assertTrue(indirectFactor.canHaveThreatRating());
