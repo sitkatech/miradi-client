@@ -78,12 +78,12 @@ public class ThreatRatingValue
 	
 	public boolean isNone()
 	{
-		return rating.equals(none);
+		return true;
 	}
 
 	public boolean isNotUsed()
 	{
-		return rating.equals(notUsed);
+		return true;
 	}
 	
 
