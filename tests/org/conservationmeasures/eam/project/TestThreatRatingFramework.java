@@ -21,7 +21,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		framework = new ThreatRatingFramework();
+		framework = new ThreatRatingFramework(new IdAssigner());
 	}
 
 	public void testRatingValueOptions() throws Exception
@@ -40,6 +40,11 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("Severity", criteria[1].getLabel());
 		assertEquals("Urgency", criteria[2].getLabel());
 		assertEquals("Custom", criteria[3].getLabel());
+	}
+	
+	public void testIdAssignment() throws Exception
+	{
+		assertNotEquals("reused ids?", framework.getCriteria()[0].getId(), framework.getValueOptions()[0].getId());
 	}
 	
 	ThreatRatingFramework framework;

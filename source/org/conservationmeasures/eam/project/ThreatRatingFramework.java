@@ -8,54 +8,44 @@ package org.conservationmeasures.eam.project;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 
 
 public class ThreatRatingFramework
 {
-	public ThreatRatingFramework()
+	public ThreatRatingFramework(IdAssigner idAssignerToUse)
 	{
-		options =  new ThreatRatingValueOption[] {
-			new ThreatRatingValueOption(PRIORITY_VERY_HIGH, PRIORITY_VERY_HIGH_STRING, Color.RED),
-			new ThreatRatingValueOption(PRIORITY_HIGH, PRIORITY_HIGH_STRING, Color.ORANGE),
-			new ThreatRatingValueOption(PRIORITY_MEDIUM, PRIORITY_MEDIUM_STRING, Color.YELLOW),
-			new ThreatRatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING, Color.GREEN),
-			new ThreatRatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING, Color.WHITE),
-		};
+		idAssigner = idAssignerToUse;
 		
 		criteria = new ThreatRatingCriterion[] {
-			new ThreatRatingCriterion(0, "Scope"), 
-			new ThreatRatingCriterion(1, "Severity"),
-			new ThreatRatingCriterion(2, "Urgency"),
-			new ThreatRatingCriterion(3, "Custom"),
+			new ThreatRatingCriterion(idAssigner.takeNextId(), "Scope"), 
+			new ThreatRatingCriterion(idAssigner.takeNextId(), "Severity"),
+			new ThreatRatingCriterion(idAssigner.takeNextId(), "Urgency"),
+			new ThreatRatingCriterion(idAssigner.takeNextId(), "Custom"),
 		};
-			
+				
+		options =  new ThreatRatingValueOption[] {
+			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Very High"), Color.RED),
+			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|High"), Color.ORANGE),
+			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Medium"), Color.YELLOW),
+			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Low"), Color.GREEN),
+			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|None"), Color.WHITE),
+		};
+		
 	}
 
-	public ThreatRatingValueOption[] getValueOptions()
-	{
-		return options;
-	}
-	
 	public ThreatRatingCriterion[] getCriteria()
 	{
 		return criteria;
 	}
 	
-	public static final int PRIORITY_NOT_USED =-1;
-	public static final int PRIORITY_VERY_HIGH =0;
-	public static final int PRIORITY_HIGH =1;
-	public static final int PRIORITY_MEDIUM =2;
-	public static final int PRIORITY_LOW =3;
-	public static final int PRIORITY_NONE =4;
+	public ThreatRatingValueOption[] getValueOptions()
+	{
+		return options;
+	}
 	
-	private static final String PRIORITY_VERY_HIGH_STRING = EAM.text("Label|Very High");
-	private static final String PRIORITY_HIGH_STRING = EAM.text("Label|High");
-	private static final String PRIORITY_MEDIUM_STRING = EAM.text("Label|Medium");
-	private static final String PRIORITY_LOW_STRING = EAM.text("Label|Low");
-	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
-
-	private ThreatRatingValueOption[] options;
+	private IdAssigner idAssigner;
 	private ThreatRatingCriterion[] criteria;
+	private ThreatRatingValueOption[] options;
 }

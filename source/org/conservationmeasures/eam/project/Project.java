@@ -80,7 +80,7 @@ public class Project
 		commandExecutedListeners = new Vector();
 		viewChangeListeners = new Vector();
 		layerManager = new LayerManager();
-		threatRatingFramework = new ThreatRatingFramework();
+		threatRatingFramework = new ThreatRatingFramework(getAnnotationIdAssigner());
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
