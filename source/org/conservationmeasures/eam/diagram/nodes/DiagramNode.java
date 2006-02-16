@@ -99,11 +99,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getThreatPriority();
 	}
 	
-	public void setNodePriority(ThreatRatingValue priorityToUse)
-	{
-		underlyingObject.setNodePriority(priorityToUse);
-	}
-	
 	public boolean canHaveThreatRating()
 	{
 		return underlyingObject.canHavePriority();

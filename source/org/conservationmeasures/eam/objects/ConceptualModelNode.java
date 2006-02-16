@@ -21,7 +21,6 @@ abstract public class ConceptualModelNode
 		
 		id = IdAssigner.INVALID_ID;
 		name = "";
-		setNodePriority(ThreatRatingValue.createNotUsed());
 		indicator = new IndicatorId();
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
@@ -32,7 +31,6 @@ abstract public class ConceptualModelNode
 		this(nodeType);
 		id = json.getInt(TAG_ID);
 		name = json.optString(TAG_NAME);
-		setNodePriority(ThreatRatingValue.createFromInt(json.getInt(TAG_PRIORITY)));
 		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
 		
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
@@ -88,12 +86,7 @@ abstract public class ConceptualModelNode
 
 	public ThreatRatingValue getThreatPriority()
 	{
-		return threatPriority;
-	}
-	
-	public void setNodePriority(ThreatRatingValue priorityToUse)
-	{
-		threatPriority = priorityToUse;
+		return ThreatRatingValue.createNotUsed();
 	}
 	
 	public ObjectiveIds getObjectives()
@@ -223,7 +216,6 @@ abstract public class ConceptualModelNode
 	private int id;
 	private String name;
 	private NodeType type;
-	private ThreatRatingValue threatPriority;
 
 	private IndicatorId indicator;
 	private ObjectiveIds objectives;

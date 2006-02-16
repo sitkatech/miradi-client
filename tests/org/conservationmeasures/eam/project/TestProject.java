@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
-import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
@@ -44,7 +43,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -479,26 +477,23 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
 		assertEquals(5, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandSetNodePriority(factorId, ThreatRatingValue.createHigh()));
-		assertEquals(6, database.callsToWriteNode);
-		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(6, database.callsToWriteNode);
+		assertEquals(5, database.callsToWriteNode);
 		
 		project.executeCommand(new CommandSetNodeText(factorId, "hello"));
-		assertEquals(6, database.callsToWriteNode);
+		assertEquals(5, database.callsToWriteNode);
 		
 		GoalIds goals = new GoalIds();
 		goals.addId(55);
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
-		assertEquals(7, database.callsToWriteNode);
+		assertEquals(6, database.callsToWriteNode);
 		
 		project.executeCommand(new CommandUndo());
-		assertEquals(8, database.callsToWriteNode);
+		assertEquals(7, database.callsToWriteNode);
 		
 		project.executeCommand(new CommandRedo());
-		assertEquals(9, database.callsToWriteNode);
+		assertEquals(8, database.callsToWriteNode);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception

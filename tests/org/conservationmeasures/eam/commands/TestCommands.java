@@ -220,28 +220,18 @@ public class TestCommands extends EAMTestCase
 		
 		int indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
-		assertEquals("New indirect factor should have a priority level as None", ThreatRatingValue.PRIORITY_NONE, node.getThreatRating().getRatingOptionId());
+		assertTrue("New indirect factor should have a priority level as None", node.getThreatRating().isNotUsed());
 
 		int id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
-		ThreatRatingValue originalPriority = node.getThreatRating();
-		assertEquals("New node should have priority level as None", ThreatRatingValue.PRIORITY_NONE, node.getThreatRating().getRatingOptionId());
+		assertTrue("New node should have priority level as None", node.getThreatRating().isNotUsed());
 
 		ThreatRatingValue newPriorityLow = ThreatRatingValue.createLow();
 		CommandSetNodePriority cmd = new CommandSetNodePriority(id, newPriorityLow);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old priority?", originalPriority, cmd.getPreviousPriority());
-		assertEquals( newPriorityLow, node.getThreatRating());
 
-		CommandSetNodePriority loaded = (CommandSetNodePriority)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new priority?", newPriorityLow, loaded.getCurrentPriority());
-		assertEquals("didn't restore previous priority?", originalPriority, loaded.getPreviousPriority());
-		
+		// Deprecated command--just make sure it doesn't crash
+		project.executeCommand(cmd);
 		cmd.undo(project);
-		assertEquals("didn't undo?", ThreatRatingValue.createNone().getRatingOptionId(), project.getDiagramModel().getNodeById(id).getThreatRating().getRatingOptionId());
-		
-		verifyUndoTwiceThrows(cmd);
 	}
 
 	public void testCommandFactorSetType() throws Exception

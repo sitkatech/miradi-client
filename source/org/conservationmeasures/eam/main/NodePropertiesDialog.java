@@ -29,7 +29,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -57,8 +56,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		bigBox.add(createIndicator(node.getIndicatorId()));
 		if(node.canHaveObjectives())
 			bigBox.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
-		if(node.canHaveThreatRating())
-			bigBox.add(createThreatRatingDropdown(project.getThreatRatingOptions(), node.getThreatRating()));
 		if(node.canHaveGoal())
 			bigBox.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
 		bigBox.add(createButtonBar());
@@ -81,33 +78,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Component[] components = new Component[] {textLabel, new UiLabel(" "), textField, Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(labelBar, components);
 		return labelBar;
-	}
-	
-	private Component createThreatRatingDropdown(RatingValueOption[] options, ThreatRatingValue currentPriority)
-	{
-		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Rating"));
-		UiComboBox dropDown = createThreatDropDown(options);
-
-		
-		dropdownThreatPriority = dropDown;
-		dropdownThreatPriority.setSelectedItem(currentPriority.getRatingOption());
-
-		Box threatLevelBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropDown, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(threatLevelBar, components);
-		return threatLevelBar;
-	}
-
-	public static UiComboBox createThreatDropDown(RatingValueOption[] options)
-	{
-		UiComboBox dropDown = new UiComboBox();
-		dropDown.setRenderer(new ThreatRenderer());
-		
-		for(int i = 0; i < options.length; ++i)
-		{
-			dropDown.addItem(options[i]);
-		}
-		return dropDown;
 	}
 	
 	public Component createSwitchFactorTypeDropdown(NodeType currentType)
@@ -194,17 +164,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Component[] components = new Component[] {textIndicator, new UiLabel(" "), dropdownIndicator,Box.createHorizontalGlue()};
 		Utilities.addComponentsRespectingOrientation(indicatorBar, components);
 		return indicatorBar;
-	}
-	
-	static class ThreatRenderer extends DefaultListCellRenderer
-	{
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
-		{
-			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			RatingValueOption thisOption = (RatingValueOption)value;
-			setIcon(new ThreatPriorityIcon(thisOption));
-			return cell;
-		}
 	}
 	
 	class FactorTypeRenderer extends DefaultListCellRenderer

@@ -35,8 +35,6 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
 		cmTarget = new ConceptualModelTarget();
 		
-		cmDirectThreat.setNodePriority(ThreatRatingValue.createMedium());
-
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
 		directThreat = DiagramNode.wrapConceptualModelObject(cmDirectThreat);
@@ -59,7 +57,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void testPriorities()
 	{
-		assertEquals("Lost priority?", ThreatRatingValue.createMedium(), directThreat.getThreatRating());
+		assertEquals("Lost priority?", ThreatRatingValue.createNotUsed(), directThreat.getThreatRating());
 		assertTrue(directThreat.canHaveThreatRating());
 		assertTrue(stress.canHaveThreatRating());
 		assertTrue(indirectFactor.canHaveThreatRating());
@@ -142,7 +140,6 @@ public class TestDiagramNode extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		target.setText("testing");
-		target.setNodePriority(ThreatRatingValue.createHigh());
 		
 		DiagramNode got = new DiagramTarget(cmTarget);
 		JSONObject json = target.toJson();

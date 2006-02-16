@@ -617,18 +617,6 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setPriority(int nodeId, ThreatRatingValue desiredPriority) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-
-		node.setNodePriority(desiredPriority);
-		Logging.logVerbose("Updating Priority:"+desiredPriority.getStringValue());
-		model.updateCell(node);
-		
-		writeNode(nodeId);
-	}
-	
 	public void setGoals(int nodeId, GoalIds desiredGoals) throws Exception
 	{
 		DiagramModel model = getDiagramModel();

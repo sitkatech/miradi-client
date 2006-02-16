@@ -7,14 +7,17 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.util.Random;
 
 import javax.swing.Box;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.main.NodePropertiesDialog;
+import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
@@ -23,6 +26,17 @@ import org.martus.swing.UiLabel;
 
 public class ThreatRatingPanel extends JPanel
 {
+	static class ThreatRenderer extends DefaultListCellRenderer
+	{
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+		{
+			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			RatingValueOption thisOption = (RatingValueOption)value;
+			setIcon(new ThreatPriorityIcon(thisOption));
+			return cell;
+		}
+	}
+
 	public ThreatRatingPanel(RatingValueOption[] options)
 	{
 		ThreatRatingCriterion[] criterionItems = new ThreatRatingCriterion[] {
@@ -70,7 +84,7 @@ public class ThreatRatingPanel extends JPanel
 
 	private UiComboBox createRatingDropdown(RatingValueOption[] options)
 	{
-		UiComboBox dropDown = NodePropertiesDialog.createThreatDropDown(options);
+		UiComboBox dropDown = ThreatRatingPanel.createThreatDropDown(options);
 		int choice = new Random().nextInt(dropDown.getItemCount());
 		dropDown.setSelectedIndex(choice);
 		return dropDown;
@@ -79,5 +93,17 @@ public class ThreatRatingPanel extends JPanel
 	private ThreatRatingValue getRandomPriority()
 	{
 		return ThreatRatingValue.createFromInt(new Random().nextInt(4));
+	}
+
+	public static UiComboBox createThreatDropDown(RatingValueOption[] options)
+	{
+		UiComboBox dropDown = new UiComboBox();
+		dropDown.setRenderer(new ThreatRenderer());
+		
+		for(int i = 0; i < options.length; ++i)
+		{
+			dropDown.addItem(options[i]);
+		}
+		return dropDown;
 	}
 }

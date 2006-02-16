@@ -79,26 +79,20 @@ public class TestUndoRedo extends EAMTestCase
 		ThreatRatingValue target1Priority = ThreatRatingValue.createVeryHigh();
 		int insertedId = insertDirectThreat(project);
 
+		// Deprecated command--just make sure it doesn't crash
 		project.executeCommand(new CommandBeginTransaction());
 		project.executeCommand(new CommandSetNodePriority(insertedId, target1Priority));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatRating());
-
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals("Should have still 1 nodes now.", 1, project.getDiagramModel().getNodeCount());
-		assertEquals(ThreatRatingValue.createNone().getRatingOptionId(), project.getDiagramModel().getNodeById(insertedId).getThreatRating().getRatingOptionId());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(target1Priority, project.getDiagramModel().getNodeById(insertedId).getThreatRating());
 
 		undo.doIt();
-		assertEquals("Should have no priority again", ThreatRatingValue.createNone().getRatingOptionId(), project.getDiagramModel().getNodeById(insertedId).getThreatRating().getRatingOptionId());
 	}
 	
 	public void testUndoRedoIndication() throws Exception

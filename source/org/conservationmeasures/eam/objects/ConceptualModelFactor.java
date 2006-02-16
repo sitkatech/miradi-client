@@ -14,7 +14,6 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	public ConceptualModelFactor(NodeType nodeType)
 	{
 		super(nodeType);
-		setNodePriority(ThreatRatingValue.createNone());
 	}
 	
 	public ConceptualModelFactor(JSONObject json)

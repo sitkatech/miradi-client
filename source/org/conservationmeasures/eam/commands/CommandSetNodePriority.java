@@ -9,8 +9,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
@@ -66,21 +64,8 @@ public class CommandSetNodePriority extends Command
 	
 	private ThreatRatingValue doSetPriority(Project target, ThreatRatingValue desiredPriority, ThreatRatingValue expectedPriority) throws CommandFailedException
 	{
-		try
-		{
-			DiagramModel model = target.getDiagramModel();
-			DiagramNode node = model.getNodeById(getId());
-			ThreatRatingValue currentPriority = node.getThreatRating();
-			if(expectedPriority != null && !currentPriority.equals(expectedPriority))
-				throw new Exception("CommandSetNodePriority expected " + expectedPriority + " but was " + currentPriority);
-			target.setPriority(getId(), desiredPriority);
-			return currentPriority;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new CommandFailedException(e);
-		}
+		EAM.logVerbose("Warning: Ignoring obsolete SetNodePriority command");
+		return ThreatRatingValue.createNotUsed();
 	}
 	
 

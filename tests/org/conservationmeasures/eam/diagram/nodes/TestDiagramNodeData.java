@@ -38,7 +38,7 @@ public class TestDiagramNodeData extends EAMTestCase
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
 		assertEquals("id incorrect", id, nodeAData.getInt(DiagramNode.TAG_ID));
-		assertEquals("Priority default not None?", ThreatRatingValue.createNone().getRatingOptionId(), nodeAData.getInt(DiagramNode.TAG_PRIORITY));
+		assertEquals("Priority default not None?", ThreatRatingValue.createNotUsed().getRatingOptionId(), nodeAData.getInt(DiagramNode.TAG_PRIORITY));
 	}
 	
 	public void testNoneThreatNode()  throws Exception
