@@ -256,7 +256,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	public ThreatRatingValue getPriority()
 	{
 		RatingValueOption option = (RatingValueOption)dropdownThreatPriority.getSelectedItem();
-		return ThreatRatingValue.createFromInt(option.getId());
+		return new ThreatRatingValue(option);
 	}
 	
 	public IndicatorId getIndicator()
