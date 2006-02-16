@@ -72,6 +72,11 @@ public class ThreatRatingValue
 		return new ThreatRatingValue(PRIORITY_VERY_HIGH);
 	}
 	
+	public RatingValueOption getRatingOption()
+	{
+		return rating;
+	}
+	
 	public int getRatingOptionId()
 	{
 		return rating.getId();

@@ -10,13 +10,13 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.objects.RatingValueOption;
 
 public class ThreatPriorityIcon extends EamIcon 
 {
-	public ThreatPriorityIcon(ThreatRatingValue priorityToUse)
+	public ThreatPriorityIcon(RatingValueOption option)
 	{
-		priority = priorityToUse;
+		color = option.getColor();
 	}
 	
 	MultilineNodeRenderer getRenderer() 
@@ -26,9 +26,9 @@ public class ThreatPriorityIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return priority.getColor();
+		return color;
 	}
 	
-	private ThreatRatingValue priority;
+	private Color color;
 }
 

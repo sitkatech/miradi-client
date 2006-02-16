@@ -226,7 +226,7 @@ public class TableView extends UmbrellaView
 		
 		public String getNodePriority(DiagramNode node)
 		{
-			if(!node.canHavePriority())
+			if(!node.canHaveThreatRating())
 				return "";
 			return node.getThreatRating().getStringValue();
 		}

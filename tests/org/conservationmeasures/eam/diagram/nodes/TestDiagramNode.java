@@ -60,11 +60,11 @@ public class TestDiagramNode extends EAMTestCase
 	public void testPriorities()
 	{
 		assertEquals("Lost priority?", ThreatRatingValue.createMedium(), directThreat.getThreatRating());
-		assertTrue(directThreat.canHavePriority());
-		assertTrue(stress.canHavePriority());
-		assertTrue(indirectFactor.canHavePriority());
-		assertFalse(intervention.canHavePriority());
-		assertFalse(target.canHavePriority());
+		assertTrue(directThreat.canHaveThreatRating());
+		assertTrue(stress.canHaveThreatRating());
+		assertTrue(indirectFactor.canHaveThreatRating());
+		assertFalse(intervention.canHaveThreatRating());
+		assertFalse(target.canHaveThreatRating());
 	}
 	
 	public void testObjectives()

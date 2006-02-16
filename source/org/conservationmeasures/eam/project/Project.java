@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +50,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
@@ -144,6 +146,17 @@ public class Project
 	public void setCurrentView(String newCurrentView)
 	{
 		projectInfo.setCurrentView(newCurrentView);
+	}
+	
+	public RatingValueOption[] getThreatRatingOptions()
+	{
+		return new RatingValueOption[] {
+			new RatingValueOption(ThreatRatingValue.PRIORITY_VERY_HIGH, "Very High", Color.RED),
+			new RatingValueOption(ThreatRatingValue.PRIORITY_HIGH, "High", Color.ORANGE),
+			new RatingValueOption(ThreatRatingValue.PRIORITY_MEDIUM, "Medium", Color.YELLOW),
+			new RatingValueOption(ThreatRatingValue.PRIORITY_LOW, "Low", Color.GREEN),
+			new RatingValueOption(ThreatRatingValue.PRIORITY_NONE, "None", Color.WHITE),
+		};
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

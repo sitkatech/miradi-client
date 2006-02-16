@@ -90,7 +90,7 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
 		getProject().executeCommand(new CommandSetNodeName(id, dlg.getText()));
 		getProject().executeCommand(new CommandSetIndicator(id, dlg.getIndicator()));
-		if(selectedNode.canHavePriority())
+		if(selectedNode.canHaveThreatRating())
 			getProject().executeCommand(new CommandSetNodePriority(id, dlg.getPriority()));
 		if(selectedNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, dlg.getObjectives()));

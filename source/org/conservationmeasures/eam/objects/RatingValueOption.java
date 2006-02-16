@@ -31,6 +31,20 @@ public class RatingValueOption
 		return color;
 	}
 	
+	public String toString()
+	{
+		return getLabel();
+	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof RatingValueOption))
+			return false;
+		
+		RatingValueOption other = (RatingValueOption)rawOther;
+		return (other.getId() == getId());
+	}
+	
 	int id;
 	String label;
 	Color color;

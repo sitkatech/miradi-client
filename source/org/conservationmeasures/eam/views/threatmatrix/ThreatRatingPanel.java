@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.NodePropertiesDialog;
+import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.martus.swing.UiComboBox;
@@ -22,7 +23,7 @@ import org.martus.swing.UiLabel;
 
 public class ThreatRatingPanel extends JPanel
 {
-	public ThreatRatingPanel()
+	public ThreatRatingPanel(RatingValueOption[] options)
 	{
 		ThreatRatingCriterion[] criterionItems = new ThreatRatingCriterion[] {
 			new ThreatRatingCriterion(0, "Scope"), 
@@ -39,7 +40,7 @@ public class ThreatRatingPanel extends JPanel
 		{
 			Box scopeCell = Box.createVerticalBox();
 			scopeCell.add(new UiLabel(criterionItems[i].getLabel()));
-			scopeCell.add(createRatingDropdown());
+			scopeCell.add(createRatingDropdown(options));
 			scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 			
 			criteria.add(scopeCell);
@@ -67,9 +68,9 @@ public class ThreatRatingPanel extends JPanel
 		add(main);
 	}
 
-	private UiComboBox createRatingDropdown()
+	private UiComboBox createRatingDropdown(RatingValueOption[] options)
 	{
-		UiComboBox dropDown = NodePropertiesDialog.createThreatDropDown();
+		UiComboBox dropDown = NodePropertiesDialog.createThreatDropDown(options);
 		int choice = new Random().nextInt(dropDown.getItemCount());
 		dropDown.setSelectedIndex(choice);
 		return dropDown;

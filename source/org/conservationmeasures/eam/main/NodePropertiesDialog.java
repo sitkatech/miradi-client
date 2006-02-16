@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
+import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
@@ -42,10 +43,12 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, Project project, String title, DiagramNode node)
+	public NodePropertiesDialog(Frame parent, Project projectToUse, String title, DiagramNode node)
 			throws HeadlessException
 	{
 		super(parent, title);
+		
+		project = projectToUse;
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createTextField(node.getText()));
@@ -54,8 +57,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		bigBox.add(createIndicator(node.getIndicatorId()));
 		if(node.canHaveObjectives())
 			bigBox.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
-		if(node.canHavePriority())
-			bigBox.add(createThreatLevelDropdown(node.getThreatRating()));
+		if(node.canHaveThreatRating())
+			bigBox.add(createThreatRatingDropdown(project.getThreatRatingOptions(), node.getThreatRating()));
 		if(node.canHaveGoal())
 			bigBox.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
 		bigBox.add(createButtonBar());
@@ -80,14 +83,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return labelBar;
 	}
 	
-	private Component createThreatLevelDropdown(ThreatRatingValue currentPriority)
+	private Component createThreatRatingDropdown(RatingValueOption[] options, ThreatRatingValue currentPriority)
 	{
-		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Level"));
-		UiComboBox dropDown = createThreatDropDown();
+		UiLabel textThreatLevel = new UiLabel(EAM.text("Label|Threat Rating"));
+		UiComboBox dropDown = createThreatDropDown(options);
 
 		
 		dropdownThreatPriority = dropDown;
-		dropdownThreatPriority.setSelectedItem(currentPriority);
+		dropdownThreatPriority.setSelectedItem(currentPriority.getRatingOption());
 
 		Box threatLevelBar = Box.createHorizontalBox();
 		Component[] components = new Component[] {textThreatLevel, new UiLabel(" "), dropDown, Box.createHorizontalGlue()};
@@ -95,16 +98,15 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return threatLevelBar;
 	}
 
-	public static UiComboBox createThreatDropDown()
+	public static UiComboBox createThreatDropDown(RatingValueOption[] options)
 	{
 		UiComboBox dropDown = new UiComboBox();
 		dropDown.setRenderer(new ThreatRenderer());
 		
-		dropDown.addItem(ThreatRatingValue.createVeryHigh());
-		dropDown.addItem(ThreatRatingValue.createHigh());
-		dropDown.addItem(ThreatRatingValue.createMedium());
-		dropDown.addItem(ThreatRatingValue.createLow());
-		dropDown.addItem(ThreatRatingValue.createNone());
+		for(int i = 0; i < options.length; ++i)
+		{
+			dropDown.addItem(options[i]);
+		}
 		return dropDown;
 	}
 	
@@ -199,7 +201,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			setIcon(new ThreatPriorityIcon((ThreatRatingValue)value));
+			RatingValueOption thisOption = (RatingValueOption)value;
+			setIcon(new ThreatPriorityIcon(thisOption));
 			return cell;
 		}
 	}
@@ -252,7 +255,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	public ThreatRatingValue getPriority()
 	{
-		return (ThreatRatingValue)dropdownThreatPriority.getSelectedItem();
+		RatingValueOption option = (RatingValueOption)dropdownThreatPriority.getSelectedItem();
+		return ThreatRatingValue.createFromInt(option.getId());
 	}
 	
 	public IndicatorId getIndicator()
@@ -282,6 +286,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return goals;
 	}
 	
+	Project project;
 	boolean result;
 	UiTextField textField;
 	UiComboBox dropdownFactorType;
