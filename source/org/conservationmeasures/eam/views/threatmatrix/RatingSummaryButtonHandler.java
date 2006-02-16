@@ -16,7 +16,7 @@ import org.martus.swing.Utilities;
 
 public class RatingSummaryButtonHandler implements ActionListener
 {
-	public RatingSummaryButtonHandler(ThreatSummaryPanel ownerToUse, RatingValueOption[] optionsToUse)
+	public RatingSummaryButtonHandler(ThreatMatrixCellPanel ownerToUse, RatingValueOption[] optionsToUse)
 	{
 		owner = ownerToUse;
 		options = optionsToUse;
@@ -35,6 +35,6 @@ public class RatingSummaryButtonHandler implements ActionListener
 		threatRatingDialog.show();
 	}
 	
-	ThreatSummaryPanel owner;
+	ThreatMatrixCellPanel owner;
 	RatingValueOption[] options;
 }

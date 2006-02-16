@@ -7,17 +7,13 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.util.Random;
 
 import javax.swing.Box;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.icons.ThreatPriorityIcon;
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
@@ -26,17 +22,6 @@ import org.martus.swing.UiLabel;
 
 public class ThreatRatingPanel extends JPanel
 {
-	static class ThreatRenderer extends DefaultListCellRenderer
-	{
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
-		{
-			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			RatingValueOption thisOption = (RatingValueOption)value;
-			setIcon(new ThreatPriorityIcon(thisOption));
-			return cell;
-		}
-	}
-
 	public ThreatRatingPanel(RatingValueOption[] options)
 	{
 		ThreatRatingCriterion[] criterionItems = new ThreatRatingCriterion[] {

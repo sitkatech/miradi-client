@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 
-public class ThreatSummaryPanel extends JPanel
+public class ThreatMatrixCellPanel extends JPanel
 {
-	public ThreatSummaryPanel(RatingValueOption[] options)
+	public ThreatMatrixCellPanel(RatingValueOption[] options)
 	{
 		ThreatRatingValue priority = getPriority();
 		JButton highButton = new JButton(priority.toString());
