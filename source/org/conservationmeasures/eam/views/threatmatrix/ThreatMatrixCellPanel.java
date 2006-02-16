@@ -13,23 +13,25 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatMatrixCellPanel extends JPanel
 {
-	public ThreatMatrixCellPanel(RatingValueOption[] options)
+	public ThreatMatrixCellPanel(ThreatRatingFramework framework)
 	{
-		ThreatRatingValue priority = getPriority();
+		ThreatRatingValue priority = getRandomPriority(framework);
 		JButton highButton = new JButton(priority.toString());
 		Color priorityColor = priority.getColor();
 		highButton.setBackground(priorityColor);
-		highButton.addActionListener(new RatingSummaryButtonHandler(this, options));
+		highButton.addActionListener(new RatingSummaryButtonHandler(this, framework));
 		add(highButton);
 		setBackground(priorityColor);
 	}
 	
-	public ThreatRatingValue getPriority()
+	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		int value = Math.abs(new Random().nextInt()) % 4;
-		return ThreatRatingValue.createFromInt(value);
+		RatingValueOption[] options = framework.getRatingValueOptions();
+		int index = Math.abs(new Random().nextInt()) % options.length;
+		return new ThreatRatingValue(options[index]);
 	}
 }

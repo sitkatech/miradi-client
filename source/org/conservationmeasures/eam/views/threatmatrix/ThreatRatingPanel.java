@@ -17,29 +17,24 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 
 public class ThreatRatingPanel extends JPanel
 {
-	public ThreatRatingPanel(RatingValueOption[] options)
+	public ThreatRatingPanel(ThreatRatingFramework framework)
 	{
-		ThreatRatingCriterion[] criterionItems = new ThreatRatingCriterion[] {
-			new ThreatRatingCriterion(0, "Scope"), 
-			new ThreatRatingCriterion(1, "Severity"),
-			new ThreatRatingCriterion(2, "Urgency"),
-			new ThreatRatingCriterion(3, "Custom"),
-		};
-		
 		int lineWidth = 1;
 		
 		Box criteria = Box.createVerticalBox();
 
+		ThreatRatingCriterion[] criterionItems = framework.getRatingCriteria();
 		for(int i = 0; i < criterionItems.length; ++i)
 		{
 			Box scopeCell = Box.createVerticalBox();
 			scopeCell.add(new UiLabel(criterionItems[i].getLabel()));
-			scopeCell.add(createRatingDropdown(options));
+			scopeCell.add(createRatingDropdown(framework.getRatingValueOptions()));
 			scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 			
 			criteria.add(scopeCell);
@@ -47,7 +42,7 @@ public class ThreatRatingPanel extends JPanel
 		
 
 		
-		ThreatRatingValue priority = getRandomPriority();
+		ThreatRatingValue priority = getRandomPriority(framework);
 		UiLabel ratingSummaryLabel = new UiLabel();
 		ratingSummaryLabel.setText(priority.toString());
 		ratingSummaryLabel.setBackground(priority.getColor());
@@ -75,11 +70,13 @@ public class ThreatRatingPanel extends JPanel
 		return dropDown;
 	}
 	
-	private ThreatRatingValue getRandomPriority()
+	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		return ThreatRatingValue.createFromInt(new Random().nextInt(4));
+		RatingValueOption[] options = framework.getRatingValueOptions();
+		int index = Math.abs(new Random().nextInt()) % options.length;
+		return new ThreatRatingValue(options[index]);
 	}
-
+	
 	public static UiComboBox createThreatDropDown(RatingValueOption[] options)
 	{
 		UiComboBox dropDown = new UiComboBox();

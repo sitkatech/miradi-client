@@ -49,7 +49,6 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.RatingValueOption;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -147,9 +146,9 @@ public class Project
 		projectInfo.setCurrentView(newCurrentView);
 	}
 	
-	public RatingValueOption[] getThreatRatingOptions()
+	public ThreatRatingFramework getThreatRatingFramework()
 	{
-		return threatRatingFramework.getRatingValueOptions();
+		return threatRatingFramework;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

@@ -11,15 +11,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.Utilities;
 
 public class RatingSummaryButtonHandler implements ActionListener
 {
-	public RatingSummaryButtonHandler(ThreatMatrixCellPanel ownerToUse, RatingValueOption[] optionsToUse)
+	public RatingSummaryButtonHandler(ThreatMatrixCellPanel ownerToUse, ThreatRatingFramework frameworkToUse)
 	{
 		owner = ownerToUse;
-		options = optionsToUse;
+		framework = frameworkToUse;
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -27,7 +27,7 @@ public class RatingSummaryButtonHandler implements ActionListener
 		JDialog threatRatingDialog = new JDialog();
 		threatRatingDialog.setModal(true);
 		Container contentPane = threatRatingDialog.getContentPane();
-		contentPane.add(new ThreatRatingPanel(options));
+		contentPane.add(new ThreatRatingPanel(framework));
 		threatRatingDialog.pack();
 		
 		threatRatingDialog.setLocationRelativeTo(owner);
@@ -36,5 +36,5 @@ public class RatingSummaryButtonHandler implements ActionListener
 	}
 	
 	ThreatMatrixCellPanel owner;
-	RatingValueOption[] options;
+	ThreatRatingFramework framework;
 }

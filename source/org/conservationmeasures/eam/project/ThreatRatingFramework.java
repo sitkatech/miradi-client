@@ -9,6 +9,7 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.RatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 
 
 public class ThreatRatingFramework
@@ -22,11 +23,24 @@ public class ThreatRatingFramework
 			new RatingValueOption(PRIORITY_LOW, PRIORITY_LOW_STRING, Color.GREEN),
 			new RatingValueOption(PRIORITY_NONE, PRIORITY_NONE_STRING, Color.WHITE),
 		};
+		
+		criteria = new ThreatRatingCriterion[] {
+			new ThreatRatingCriterion(0, "Scope"), 
+			new ThreatRatingCriterion(1, "Severity"),
+			new ThreatRatingCriterion(2, "Urgency"),
+			new ThreatRatingCriterion(3, "Custom"),
+		};
+			
 	}
 
 	public RatingValueOption[] getRatingValueOptions()
 	{
 		return options;
+	}
+	
+	public ThreatRatingCriterion[] getRatingCriteria()
+	{
+		return criteria;
 	}
 	
 	public static final int PRIORITY_NOT_USED =-1;
@@ -43,4 +57,5 @@ public class ThreatRatingFramework
 	private static final String PRIORITY_NONE_STRING = EAM.text("Label|None");
 
 	private RatingValueOption[] options;
+	private ThreatRatingCriterion[] criteria;
 }
