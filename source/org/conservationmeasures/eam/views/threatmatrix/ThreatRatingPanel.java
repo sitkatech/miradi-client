@@ -29,12 +29,12 @@ public class ThreatRatingPanel extends JPanel
 		
 		Box criteria = Box.createVerticalBox();
 
-		ThreatRatingCriterion[] criterionItems = framework.getRatingCriteria();
+		ThreatRatingCriterion[] criterionItems = framework.getCriteria();
 		for(int i = 0; i < criterionItems.length; ++i)
 		{
 			Box scopeCell = Box.createVerticalBox();
 			scopeCell.add(new UiLabel(criterionItems[i].getLabel()));
-			scopeCell.add(createRatingDropdown(framework.getRatingValueOptions()));
+			scopeCell.add(createRatingDropdown(framework.getValueOptions()));
 			scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
 			
 			criteria.add(scopeCell);
@@ -72,7 +72,7 @@ public class ThreatRatingPanel extends JPanel
 	
 	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		ThreatRatingValueOption[] options = framework.getRatingValueOptions();
+		ThreatRatingValueOption[] options = framework.getValueOptions();
 		int index = Math.abs(new Random().nextInt()) % options.length;
 		return new ThreatRatingValue(options[index]);
 	}

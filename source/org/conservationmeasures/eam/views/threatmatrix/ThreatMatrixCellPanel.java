@@ -30,7 +30,7 @@ public class ThreatMatrixCellPanel extends JPanel
 	
 	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
 	{
-		ThreatRatingValueOption[] options = framework.getRatingValueOptions();
+		ThreatRatingValueOption[] options = framework.getValueOptions();
 		int index = Math.abs(new Random().nextInt()) % options.length;
 		return new ThreatRatingValue(options[index]);
 	}

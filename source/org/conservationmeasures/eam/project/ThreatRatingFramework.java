@@ -33,12 +33,12 @@ public class ThreatRatingFramework
 			
 	}
 
-	public ThreatRatingValueOption[] getRatingValueOptions()
+	public ThreatRatingValueOption[] getValueOptions()
 	{
 		return options;
 	}
 	
-	public ThreatRatingCriterion[] getRatingCriteria()
+	public ThreatRatingCriterion[] getCriteria()
 	{
 		return criteria;
 	}
