@@ -59,9 +59,12 @@ public class ThreatRatingFramework
 		return (ThreatRatingValueOption)options.get(findValueOption(id));
 	}
 	
-	public int createValueOption()
+	public int createValueOption(int candidateId)
 	{
-		ThreatRatingValueOption createdItem = new ThreatRatingValueOption(idAssigner.takeNextId());
+		int realId = getRealId(candidateId);
+		if(findValueOption(realId) >= 0)
+			throw new RuntimeException("Attempted to create value option with existing id");
+		ThreatRatingValueOption createdItem = new ThreatRatingValueOption(realId);
 		options.add(createdItem);
 		return createdItem.getId();		
 	}
@@ -97,11 +100,21 @@ public class ThreatRatingFramework
 		return (ThreatRatingCriterion)criteria.get(findCriterion(id));
 	}
 	
-	public int createCriterion()
+	public int createCriterion(int candidateId)
 	{
-		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(idAssigner.takeNextId(), "Unknown");
+		int realId = getRealId(candidateId);
+		if(findCriterion(realId) >= 0)
+			throw new RuntimeException("Attempted to create criterion with existing id");
+		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(realId, "Unknown");
 		criteria.add(createdItem);
 		return createdItem.getId();
+	}
+
+	private int getRealId(int candidateId)
+	{
+		if(candidateId == IdAssigner.INVALID_ID)
+			candidateId = idAssigner.takeNextId();
+		return candidateId;
 	}
 	
 	public void deleteCriterion(int id)

@@ -69,6 +69,8 @@ public abstract class Command
 			return new CommandSetNodeName(dataIn);
 		if(commandName.equals(CommandCreateObject.COMMAND_NAME))
 			return new CommandCreateObject(dataIn);
+		if(commandName.equals(CommandDeleteObject.COMMAND_NAME))
+			return new CommandDeleteObject(dataIn);
 		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
 	}
 	

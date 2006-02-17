@@ -59,6 +59,64 @@ public class TestCommands extends EAMTestCase
 		project.close();
 	}
 	
+	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int createdId = project.createObject(type);
+		
+		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("wrong id?", createdId, cmd.getObjectId());
+		
+		project.executeCommand(cmd);
+		try
+		{
+			project.getThreatRatingFramework().getValueOption(createdId);
+			fail("Should have thrown getting deleted object");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+		
+		CommandDeleteObject loaded = (CommandDeleteObject)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
+		
+		cmd.undo(project);
+		project.getThreatRatingFramework().getValueOption(createdId);
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+	
+	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_CRITERION;
+		int createdId = project.createObject(type);
+		
+		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("wrong id?", createdId, cmd.getObjectId());
+		
+		project.executeCommand(cmd);
+		try
+		{
+			project.getThreatRatingFramework().getCriterion(createdId);
+			fail("Should have thrown getting deleted object");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+		
+		CommandDeleteObject loaded = (CommandDeleteObject)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
+		
+		cmd.undo(project);
+		project.getThreatRatingFramework().getCriterion(createdId);
+		
+		verifyUndoTwiceThrows(cmd);
+	}
+	
 	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
 	{
 		ThreatRatingFramework framework = project.getThreatRatingFramework();

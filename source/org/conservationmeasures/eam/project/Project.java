@@ -157,13 +157,18 @@ public class Project
 	
 	public int createObject(int objectType)
 	{
+		return createObject(objectType, IdAssigner.INVALID_ID);
+	}
+	
+	public int createObject(int objectType, int objectId)
+	{
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
-				return getThreatRatingFramework().createCriterion();
+				return getThreatRatingFramework().createCriterion(objectId);
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				return getThreatRatingFramework().createValueOption();
+				return getThreatRatingFramework().createValueOption(objectId);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
