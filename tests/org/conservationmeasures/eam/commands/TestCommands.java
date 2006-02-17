@@ -59,6 +59,111 @@ public class TestCommands extends EAMTestCase
 		project.close();
 	}
 	
+	public void testCommandSetObjectData_ThreatRatingValueOption() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int createdId = project.createObject(type);
+		ThreatRatingValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
+		Color originalColor = option.getColor();
+		
+		Color newColor = Color.MAGENTA;
+		String field = ThreatRatingValueOption.TAG_COLOR;
+		String value = Integer.toString(newColor.getRGB());
+		CommandSetObjectData cmd = new CommandSetObjectData(type, createdId, field, value);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("wrong id?", createdId, cmd.getObjectId());
+		assertEquals("wrong field?", field, cmd.getFieldTag());
+		assertEquals("wrong value?", value, cmd.getDataValue());
+		
+		project.executeCommand(cmd);
+		assertEquals("didn't set value?", newColor, option.getColor());
+		
+		CommandSetObjectData loaded = (CommandSetObjectData)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
+		assertEquals("didn't load field?", cmd.getFieldTag(), loaded.getFieldTag());
+		assertEquals("didn't load value?", cmd.getDataValue(), loaded.getDataValue());
+
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalColor, option.getColor());
+		
+		verifyUndoTwiceThrows(cmd);
+		
+		
+		CommandSetObjectData badId = new CommandSetObjectData(type, -99, field, value);
+		try
+		{
+			project.executeCommand(badId);
+			fail("Should have thrown for bad id");
+		}
+		catch (CommandFailedException ignoreExpected)
+		{
+		}
+		
+		CommandSetObjectData badField = new CommandSetObjectData(type, createdId, "bogus", value);
+		try
+		{
+			project.executeCommand(badField);
+			fail("Should have thrown for bad field tag");
+		}
+		catch (CommandFailedException ignoreExpected)
+		{
+		}
+		
+	}
+	
+	public void testCommandSetObjectData_ThreatRatingCriterion() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_CRITERION;
+		int createdId = project.createObject(type);
+		ThreatRatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
+		String originalLabel = criterion.getLabel();
+		
+		String field = ThreatRatingCriterion.TAG_LABEL;
+		String value = "Blah";
+		CommandSetObjectData cmd = new CommandSetObjectData(type, createdId, field, value);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("wrong id?", createdId, cmd.getObjectId());
+		assertEquals("wrong field?", field, cmd.getFieldTag());
+		assertEquals("wrong value?", value, cmd.getDataValue());
+		
+		project.executeCommand(cmd);
+		assertEquals("didn't set value?", value, criterion.getLabel());
+		
+		CommandSetObjectData loaded = (CommandSetObjectData)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
+		assertEquals("didn't load field?", cmd.getFieldTag(), loaded.getFieldTag());
+		assertEquals("didn't load value?", cmd.getDataValue(), loaded.getDataValue());
+
+		cmd.undo(project);
+		assertEquals("didn't undo?", originalLabel, criterion.getLabel());
+		
+		verifyUndoTwiceThrows(cmd);
+		
+		
+		CommandSetObjectData badId = new CommandSetObjectData(type, -99, field, value);
+		try
+		{
+			project.executeCommand(badId);
+			fail("Should have thrown for bad id");
+		}
+		catch (CommandFailedException ignoreExpected)
+		{
+		}
+		
+		CommandSetObjectData badField = new CommandSetObjectData(type, createdId, "bogus", value);
+		try
+		{
+			project.executeCommand(badField);
+			fail("Should have thrown for bad field tag");
+		}
+		catch (CommandFailedException ignoreExpected)
+		{
+		}
+		
+	}
+	
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
 	{
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;

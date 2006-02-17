@@ -75,6 +75,16 @@ public class ThreatRatingFramework
 		options.remove(deleteAt);
 	}
 	
+	public void setValueOptionData(int id, String fieldTag, String dataValue)
+	{
+		getValueOption(id).setData(fieldTag, dataValue);
+	}
+	
+	public String getValueOptionData(int id, String fieldTag)
+	{
+		return getValueOption(id).getData(fieldTag);
+	}
+	
 	private int findValueOption(int id)
 	{
 		for(int i = 0; i < options.size(); ++i)
@@ -105,7 +115,7 @@ public class ThreatRatingFramework
 		int realId = getRealId(candidateId);
 		if(findCriterion(realId) >= 0)
 			throw new RuntimeException("Attempted to create criterion with existing id");
-		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(realId, "Unknown");
+		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(realId);
 		criteria.add(createdItem);
 		return createdItem.getId();
 	}
@@ -121,6 +131,16 @@ public class ThreatRatingFramework
 	{
 		int deleteAt = findCriterion(id);
 		criteria.remove(deleteAt);
+	}
+	
+	public void setCriterionData(int id, String fieldTag, Object dataValue)
+	{
+		getCriterion(id).setData(fieldTag, dataValue);
+	}
+	
+	public String getCriterionData(int id, String fieldTag)
+	{
+		return getCriterion(id).getData(fieldTag);
 	}
 	
 	private int findCriterion(int id)

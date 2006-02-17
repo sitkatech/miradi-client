@@ -14,6 +14,48 @@ public class TestThreatRatingCriterion extends EAMTestCase
 		super(name);
 	}
 
+	public void testSetGetData()
+	{
+		
+		verifySetGetData(ThreatRatingCriterion.TAG_LABEL, "Hi mom!");
+	}
+	
+	public void testGetDataBadFieldTag()
+	{
+		int id = 6;
+		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		try
+		{
+			option.getData("not a valid tag");
+			fail("Should have thrown for invalid tag");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+	}
+	
+	public void testSetDataBadFieldTag()
+	{
+		int id = 6;
+		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		try
+		{
+			option.setData("not a valid tag", "whatever");
+			fail("Should have thrown for invalid tag");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+	}
+
+	private void verifySetGetData(String tag, String value)
+	{
+		int id = 6;
+		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		option.setData(tag, value);
+		assertEquals(value, option.getData(tag));
+	}
+
 	public void testEquals() throws Exception
 	{
 		int id = 32;

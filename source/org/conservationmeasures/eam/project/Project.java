@@ -192,6 +192,38 @@ public class Project
 		}
 	}
 	
+	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue)
+	{
+		switch(objectType)
+		{
+			case ObjectType.THREAT_RATING_CRITERION:
+				getThreatRatingFramework().setCriterionData(objectId, fieldTag, dataValue);
+				break;
+				
+			case ObjectType.THREAT_RATING_VALUE_OPTION:
+				getThreatRatingFramework().setValueOptionData(objectId, fieldTag, dataValue);
+				break;
+				
+			default:
+				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
+		}
+	}
+	
+	public String getObjectData(int objectType, int objectId, String fieldTag)
+	{
+		switch(objectType)
+		{
+			case ObjectType.THREAT_RATING_CRITERION:
+				return getThreatRatingFramework().getCriterionData(objectId, fieldTag);
+				
+			case ObjectType.THREAT_RATING_VALUE_OPTION:
+				return getThreatRatingFramework().getValueOptionData(objectId, fieldTag);
+				
+			default:
+				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
+		}
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	

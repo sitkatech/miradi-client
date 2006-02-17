@@ -34,6 +34,51 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		assertEquals(numeric, a.getNumericValue());
 		assertEquals(color, a.getColor());
 	}
+	
+	public void testSetGetData()
+	{
+		
+		verifySetGetData(ThreatRatingValueOption.TAG_LABEL, "Hi mom!");
+		verifySetGetData(ThreatRatingValueOption.TAG_NUMERIC, "17");
+		String color = Integer.toString(Color.CYAN.getRGB());
+		verifySetGetData(ThreatRatingValueOption.TAG_COLOR, color);
+	}
+	
+	public void testGetDataBadFieldTag()
+	{
+		int id = 6;
+		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		try
+		{
+			option.getData("not a valid tag");
+			fail("Should have thrown for invalid tag");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+	}
+	
+	public void testSetDataBadFieldTag()
+	{
+		int id = 6;
+		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		try
+		{
+			option.setData("not a valid tag", "whatever");
+			fail("Should have thrown for invalid tag");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+	}
+
+	private void verifySetGetData(String tag, String value)
+	{
+		int id = 6;
+		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		option.setData(tag, value);
+		assertEquals(value, option.getData(tag));
+	}
 
 	public void testEquals() throws Exception
 	{
@@ -46,6 +91,25 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		assertFalse("not comparing id?", a.equals(c));
 		assertFalse("not comparing id (reversed)?", c.equals(a));
 		assertFalse("equal to some other class?", a.equals(new Object()));
+	}
+	
+	public void testJson() throws Exception
+	{
+		int id = 283;
+		String label = "eifjjfi";
+		int numeric = -234;
+		Color color = Color.GRAY;
+		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		option.setData(ThreatRatingValueOption.TAG_LABEL, label);
+		option.setData(ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numeric));
+		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		
+		ThreatRatingValueOption loaded = new ThreatRatingValueOption(option.toJson());
+		assertEquals(option.getId(), loaded.getId());
+		assertEquals(option.getLabel(), loaded.getLabel());
+		assertEquals(option.getNumericValue(), loaded.getNumericValue());
+		assertEquals(option.getColor(), loaded.getColor());
+		
 	}
 	
 }

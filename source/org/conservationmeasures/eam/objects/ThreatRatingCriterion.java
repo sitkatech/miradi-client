@@ -9,6 +9,11 @@ import org.json.JSONObject;
 
 public class ThreatRatingCriterion
 {
+	public ThreatRatingCriterion(int idToUse)
+	{
+		this(idToUse, "Unknown");
+	}
+	
 	public ThreatRatingCriterion(int idToUse, String labelToUse)
 	{
 		id = idToUse;
@@ -31,6 +36,22 @@ public class ThreatRatingCriterion
 		return label;
 	}
 	
+	public void setData(String fieldTag, Object dataValue)
+	{
+		if(TAG_LABEL.equals(fieldTag))
+			label = (String)dataValue;
+		else
+			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
+	}
+	
+	public String getData(String fieldTag)
+	{
+		if(TAG_LABEL.equals(fieldTag))
+			return label;
+		
+		throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof ThreatRatingCriterion))
@@ -50,7 +71,7 @@ public class ThreatRatingCriterion
 	}
 	
 	private static final String TAG_ID = "Id";
-	private static final String TAG_LABEL = "Label";
+	public static final String TAG_LABEL = "Label";
 	
 	int id;
 	String label;
