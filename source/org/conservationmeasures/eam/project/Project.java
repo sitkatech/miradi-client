@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -149,6 +150,41 @@ public class Project
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatRatingFramework;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////
+	// objects
+	
+	public int createObject(int objectType)
+	{
+		switch(objectType)
+		{
+			case ObjectType.THREAT_RATING_CRITERION:
+				return getThreatRatingFramework().createCriterion();
+				
+			case ObjectType.THREAT_RATING_VALUE_OPTION:
+				return getThreatRatingFramework().createValueOption();
+				
+			default:
+				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
+		}
+	}
+	
+	public void deleteObject(int objectType, int objectId)
+	{
+		switch(objectType)
+		{
+			case ObjectType.THREAT_RATING_CRITERION:
+				getThreatRatingFramework().deleteCriterion(objectId);
+				break;
+				
+			case ObjectType.THREAT_RATING_VALUE_OPTION:
+				getThreatRatingFramework().deleteValueOption(objectId);
+				break;
+				
+			default:
+				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

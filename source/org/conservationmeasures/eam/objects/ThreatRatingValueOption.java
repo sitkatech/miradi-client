@@ -11,10 +11,16 @@ import org.json.JSONObject;
 
 public class ThreatRatingValueOption
 {
-	public ThreatRatingValueOption(int idToUse, String labelToUse, Color colorToUse)
+	public ThreatRatingValueOption(int idToUse)
+	{
+		this(idToUse, "Unknown", 0, Color.BLACK);
+	}
+	
+	public ThreatRatingValueOption(int idToUse, String labelToUse, int numericToUse, Color colorToUse)
 	{
 		id = idToUse;
 		label = labelToUse;
+		numeric = numericToUse;
 		color = colorToUse;
 	}
 	
@@ -33,6 +39,11 @@ public class ThreatRatingValueOption
 	public String getLabel()
 	{
 		return label;
+	}
+	
+	public int getNumericValue()
+	{
+		return numeric;
 	}
 	
 	public Color getColor()
@@ -70,5 +81,6 @@ public class ThreatRatingValueOption
 	
 	int id;
 	String label;
+	int numeric;
 	Color color;
 }

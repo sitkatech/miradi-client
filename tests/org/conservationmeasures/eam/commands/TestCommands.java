@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.ByteArrayInputStream;
@@ -27,8 +28,13 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 
@@ -51,6 +57,64 @@ public class TestCommands extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
+	{
+		ThreatRatingFramework framework = project.getThreatRatingFramework();
+		int type = ObjectType.THREAT_RATING_CRITERION;
+		CommandCreateObject cmd = new CommandCreateObject(type);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("created id already set?", IdAssigner.INVALID_ID, cmd.getCreatedId());
+
+		int oldCount = framework.getCriteria().length;
+		project.executeCommand(cmd);
+		assertEquals("didn't add?", oldCount+1, framework.getCriteria().length);
+		ThreatRatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
+		assertEquals("wrong default label?", "Unknown", criterion.getLabel());
+		
+		ThreatRatingCriterion added = framework.getCriteria()[oldCount];
+		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
+		
+		CommandCreateObject loaded = (CommandCreateObject)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getCreatedId(), loaded.getCreatedId());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
+		
+		verifyUndoTwiceThrows(cmd);
+
+	}
+	
+	public void testCommandCreateObject_ThreatRatingValueOption() throws Exception
+	{
+		ThreatRatingFramework framework = project.getThreatRatingFramework();
+		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		CommandCreateObject cmd = new CommandCreateObject(type);
+		assertEquals("wrong type?", type, cmd.getObjectType());
+		assertEquals("created id already set?", IdAssigner.INVALID_ID, cmd.getCreatedId());
+
+		int oldCount = framework.getValueOptions().length;
+		project.executeCommand(cmd);
+		assertEquals("didn't add?", oldCount+1, framework.getValueOptions().length);
+		ThreatRatingValueOption option = framework.getValueOption(cmd.getCreatedId());
+		assertEquals("wrong default label?", "Unknown", option.getLabel());
+		assertEquals("wrong default numeric?", 0, option.getNumericValue());
+		assertEquals("wrong default color?", Color.BLACK, option.getColor());
+		
+		ThreatRatingValueOption added = framework.getValueOptions()[oldCount];
+		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
+		
+		CommandCreateObject loaded = (CommandCreateObject)saveAndReload(cmd);
+		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
+		assertEquals("didn't load id?", cmd.getCreatedId(), loaded.getCreatedId());
+		
+		cmd.undo(project);
+		assertEquals("didn't undo?", oldCount, framework.getValueOptions().length);
+		
+		verifyUndoTwiceThrows(cmd);
+
 	}
 	
 	public void testCommandSetProjectVision() throws Exception

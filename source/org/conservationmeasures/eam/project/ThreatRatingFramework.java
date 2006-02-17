@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -20,57 +21,124 @@ public class ThreatRatingFramework
 	{
 		idAssigner = idAssignerToUse;
 		
-		criteria = new ThreatRatingCriterion[] {
-			new ThreatRatingCriterion(idAssigner.takeNextId(), "Scope"), 
-			new ThreatRatingCriterion(idAssigner.takeNextId(), "Severity"),
-			new ThreatRatingCriterion(idAssigner.takeNextId(), "Urgency"),
-			new ThreatRatingCriterion(idAssigner.takeNextId(), "Custom"),
-		};
+		criteria = new Vector();
+		criteria.add(new ThreatRatingCriterion(idAssigner.takeNextId(), "Scope")); 
+		criteria.add(new ThreatRatingCriterion(idAssigner.takeNextId(), "Severity"));
+		criteria.add(new ThreatRatingCriterion(idAssigner.takeNextId(), "Urgency"));
+		criteria.add(new ThreatRatingCriterion(idAssigner.takeNextId(), "Custom"));
 				
-		options =  new ThreatRatingValueOption[] {
-			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Very High"), Color.RED),
-			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|High"), Color.ORANGE),
-			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Medium"), Color.YELLOW),
-			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Low"), Color.GREEN),
-			new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|None"), Color.WHITE),
-		};
+		options = new Vector();
+		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Very High"), 4, Color.RED));
+		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|High"), 3, Color.ORANGE));
+		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Medium"), 2, Color.YELLOW));
+		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Low"), 1, Color.GREEN));
+		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|None"), 0, Color.WHITE));
 		
 	}
 	
 	public ThreatRatingFramework(JSONObject json)
 	{
 		JSONArray criterionArray = json.getJSONArray(TAG_CRITERIA);
-		criteria = new ThreatRatingCriterion[criterionArray.length()];
-		for(int i = 0; i < criteria.length; ++i)
-			criteria[i] = new ThreatRatingCriterion(criterionArray.getJSONObject(i));
+		criteria = new Vector();
+		for(int i = 0; i < criterionArray.length(); ++i)
+			criteria.add(new ThreatRatingCriterion(criterionArray.getJSONObject(i)));
 		
 		JSONArray optionsArray = json.getJSONArray(TAG_OPTIONS);
-		options = new ThreatRatingValueOption[optionsArray.length()];
-		for(int i = 0; i < options.length; ++i)
-			options[i] = new ThreatRatingValueOption(optionsArray.getJSONObject(i));
+		options = new Vector();
+		for(int i = 0; i < optionsArray.length(); ++i)
+			options.add(new ThreatRatingValueOption(optionsArray.getJSONObject(i)));
 	}
 
-	public ThreatRatingCriterion[] getCriteria()
-	{
-		return criteria;
-	}
-	
 	public ThreatRatingValueOption[] getValueOptions()
 	{
-		return options;
+		return (ThreatRatingValueOption[])options.toArray(new ThreatRatingValueOption[0]);
+	}
+	
+	public ThreatRatingValueOption getValueOption(int id)
+	{
+		return (ThreatRatingValueOption)options.get(findValueOption(id));
+	}
+	
+	public int createValueOption()
+	{
+		ThreatRatingValueOption createdItem = new ThreatRatingValueOption(idAssigner.takeNextId());
+		options.add(createdItem);
+		return createdItem.getId();		
+	}
+	
+	public void deleteValueOption(int id)
+	{
+		int deleteAt = findValueOption(id);
+		options.remove(deleteAt);
+	}
+	
+	private int findValueOption(int id)
+	{
+		for(int i = 0; i < options.size(); ++i)
+		{
+			ThreatRatingValueOption option = (ThreatRatingValueOption)options.get(i);
+			if(option.getId() == id)
+				return i;
+		}
+		
+		return -1;
+	}
+	
+
+	
+	
+	public ThreatRatingCriterion[] getCriteria()
+	{
+		return (ThreatRatingCriterion[])criteria.toArray(new ThreatRatingCriterion[0]);
+	}
+	
+	public ThreatRatingCriterion getCriterion(int id)
+	{
+		return (ThreatRatingCriterion)criteria.get(findCriterion(id));
+	}
+	
+	public int createCriterion()
+	{
+		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(idAssigner.takeNextId(), "Unknown");
+		criteria.add(createdItem);
+		return createdItem.getId();
+	}
+	
+	public void deleteCriterion(int id)
+	{
+		int deleteAt = findCriterion(id);
+		criteria.remove(deleteAt);
+	}
+	
+	private int findCriterion(int id)
+	{
+		for(int i = 0; i < criteria.size(); ++i)
+		{
+			ThreatRatingCriterion criterion = (ThreatRatingCriterion)criteria.get(i);
+			if(criterion.getId() == id)
+				return i;
+		}
+		
+		return -1;
 	}
 	
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
 		JSONArray criterionArray = new JSONArray();
-		for(int i = 0; i < criteria.length; ++i)
-			criterionArray.put(criteria[i].toJson());
+		for(int i = 0; i < criteria.size(); ++i)
+		{
+			ThreatRatingCriterion criterion = (ThreatRatingCriterion)criteria.get(i);
+			criterionArray.put(criterion.toJson());
+		}
 		json.put(TAG_CRITERIA, criterionArray);
 		
 		JSONArray optionsArray = new JSONArray();
-		for(int i = 0; i < options.length; ++i)
-			optionsArray.put(options[i].toJson());
+		for(int i = 0; i < options.size(); ++i)
+		{
+			ThreatRatingValueOption option = (ThreatRatingValueOption)options.get(i);
+			optionsArray.put(option.toJson());
+		}
 		json.put(TAG_OPTIONS, optionsArray);
 		
 		return json;
@@ -80,6 +148,6 @@ public class ThreatRatingFramework
 	private final static String TAG_OPTIONS = "Options";
 	
 	private IdAssigner idAssigner;
-	private ThreatRatingCriterion[] criteria;
-	private ThreatRatingValueOption[] options;
+	private Vector criteria;
+	private Vector options;
 }
