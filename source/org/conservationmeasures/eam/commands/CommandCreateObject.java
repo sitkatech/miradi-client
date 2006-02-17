@@ -72,7 +72,7 @@ public class CommandCreateObject extends Command
 		dataOut.writeInt(createdId);
 	}
 
-	public static final String COMMAND_NAME = "CommandCreateObject";
+	public static final String COMMAND_NAME = "CreateObject";
 
 	int type;
 	int createdId;

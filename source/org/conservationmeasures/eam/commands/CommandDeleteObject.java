@@ -71,7 +71,7 @@ public class CommandDeleteObject extends Command
 		dataOut.writeInt(id);
 	}
 
-	public final static String COMMAND_NAME = "ComnandDeleteObject";
+	public final static String COMMAND_NAME = "DeleteObject";
 
 	int type;
 	int id;
