@@ -38,6 +38,24 @@ public class TestIdList extends EAMTestCase
 		for(int i =0; i < list.size(); ++i)
 			assertEquals("wrong member?", list.get(i), loaded.get(i));
 	}
+	
+	public void testRemove()
+	{
+		IdList list = createSampleIdList();
+		list.removeId(list.get(1));
+		assertEquals(2, list.size());
+		assertEquals(9998, list.get(1));
+		
+		try
+		{
+			list.removeId(3333333);
+			fail("Should have thrown removing non-existant id");
+		}
+		catch (RuntimeException ignoreExpected)
+		{
+		}
+		
+	}
 
 	private IdList createSampleIdList()
 	{

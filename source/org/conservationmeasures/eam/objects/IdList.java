@@ -41,6 +41,14 @@ public class IdList
 		return ((Integer)data.get(index)).intValue();
 	}
 	
+	public void removeId(int id)
+	{
+		Integer idObject = new Integer(id);
+		if(!data.contains(idObject))
+			throw new RuntimeException("Attempted to remove non-existant Id");
+		data.remove(idObject);
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
