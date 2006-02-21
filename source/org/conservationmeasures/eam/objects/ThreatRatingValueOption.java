@@ -102,7 +102,7 @@ public class ThreatRatingValueOption
 	}
 	
 	private final static String TAG_ID = "Id";
-	final static String TAG_LABEL = "Label";
+	final public static String TAG_LABEL = "Label";
 	final static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
 	

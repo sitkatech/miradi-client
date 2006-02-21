@@ -22,7 +22,9 @@ public class ThreatRatingFramework
 		
 		criteria = new IdList();
 		criterionPool = new Vector();
-		options = new Vector();
+		
+		options = new IdList();
+		optionPool = new Vector();
 		
 		createDefaultObjects();
 	}
@@ -34,11 +36,20 @@ public class ThreatRatingFramework
 		createDefaultCriterion("Urgency");
 		createDefaultCriterion("Custom");
 		
-		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Very High"), 4, Color.RED));
-		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|High"), 3, Color.ORANGE));
-		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Medium"), 2, Color.YELLOW));
-		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|Low"), 1, Color.GREEN));
-		options.add(new ThreatRatingValueOption(idAssigner.takeNextId(), EAM.text("Label|None"), 0, Color.WHITE));
+		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
+		createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
+		createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW);
+		createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
+		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
+	}
+
+	private void createDefaultValueOption(String label, int numericValue, Color color)
+	{
+		int createdId = createValueOption(IdAssigner.INVALID_ID);
+		ThreatRatingValueOption option = getValueOption(createdId);
+		option.setData(ThreatRatingValueOption.TAG_LABEL, label);
+		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(numericValue));
+		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 	}
 
 	private void createDefaultCriterion(String label)
@@ -50,12 +61,18 @@ public class ThreatRatingFramework
 
 	public ThreatRatingValueOption[] getValueOptions()
 	{
-		return (ThreatRatingValueOption[])options.toArray(new ThreatRatingValueOption[0]);
+		int count = options.size();
+		ThreatRatingValueOption[] result = new ThreatRatingValueOption[count];
+		for(int i = 0; i < options.size(); ++i)
+		{
+			result[i] = getValueOption(options.get(i));
+		}
+		return result;
 	}
 	
 	public ThreatRatingValueOption getValueOption(int id)
 	{
-		return (ThreatRatingValueOption)options.get(findValueOption(id));
+		return (ThreatRatingValueOption)optionPool.get(findValueOption(id));
 	}
 	
 	public int createValueOption(int candidateId)
@@ -64,14 +81,16 @@ public class ThreatRatingFramework
 		if(findValueOption(realId) >= 0)
 			throw new RuntimeException("Attempted to create value option with existing id");
 		ThreatRatingValueOption createdItem = new ThreatRatingValueOption(realId);
-		options.add(createdItem);
-		return createdItem.getId();		
+		optionPool.add(createdItem);
+		options.add(realId);
+		return realId;		
 	}
 	
 	public void deleteValueOption(int id)
 	{
 		int deleteAt = findValueOption(id);
-		options.remove(deleteAt);
+		optionPool.remove(deleteAt);
+		options.removeId(id);
 	}
 	
 	public void setValueOptionData(int id, String fieldTag, String dataValue)
@@ -86,9 +105,9 @@ public class ThreatRatingFramework
 	
 	private int findValueOption(int id)
 	{
-		for(int i = 0; i < options.size(); ++i)
+		for(int i = 0; i < optionPool.size(); ++i)
 		{
-			ThreatRatingValueOption option = (ThreatRatingValueOption)options.get(i);
+			ThreatRatingValueOption option = (ThreatRatingValueOption)optionPool.get(i);
 			if(option.getId() == id)
 				return i;
 		}
@@ -165,5 +184,6 @@ public class ThreatRatingFramework
 	private IdAssigner idAssigner;
 	private IdList criteria;
 	private Vector criterionPool;
-	private Vector options;
+	private IdList options;
+	private Vector optionPool;
 }
