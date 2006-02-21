@@ -119,7 +119,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		return actions;
 	}
 	
-	public void loadProject(File projectDirectory)
+	public void createOrOpenProject(File projectDirectory)
 	{
 		try
 		{

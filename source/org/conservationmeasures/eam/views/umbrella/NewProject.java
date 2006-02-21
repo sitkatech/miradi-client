@@ -38,7 +38,7 @@ public class NewProject extends MainWindowDoer
 				continue;
 			}
 
-			getMainWindow().loadProject(chosen);
+			getMainWindow().createOrOpenProject(chosen);
 				return;
 		}
 				

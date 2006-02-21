@@ -19,7 +19,7 @@ public class OpenProject extends MainWindowDoer
 			return;
 		
 		File chosen = dlg.getSelectedFile();
-		getMainWindow().loadProject(chosen);
+		getMainWindow().createOrOpenProject(chosen);
 	}
 	
 	public boolean isAvailable()
