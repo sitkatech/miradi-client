@@ -93,25 +93,25 @@ public class ProjectServer
 			throw new RuntimeException("ERROR: ProjectServer must be opened before use");
 		return topDirectory;
 	}
+	
+	public void create(File directory) throws Exception
+	{
+		if(!isEmpty(directory))
+			throw new RuntimeException("Can't create project in non-empty directory");
+		
+		db.openDiskDatabase(getDatabaseFileBase(directory));
+		createCommandsTable();
+		db.flush();
+		openNonDatabaseStore(directory);
+	}
 
 	public void open(File directory) throws IOException
 	{
-		if(doesProjectExist(directory))
-		{
-			db.openDiskDatabase(getDatabaseFileBase(directory));
-		}
-		else if(isEmpty(directory))
-		{
-			db.openDiskDatabase(getDatabaseFileBase(directory));
-			createCommandsTable();
-			db.flush();
-		}
-		else
-		{
+		if(!doesProjectExist(directory))
 			throw new IOException("Can't open non-project, non-empty directory");
-		}
-		openNonDatabaseStore(directory);
 
+		db.openDiskDatabase(getDatabaseFileBase(directory));
+		openNonDatabaseStore(directory);
 	}
 	
 	private boolean isEmpty(File directory)
@@ -145,10 +145,15 @@ public class ProjectServer
 	{
 		clear();
 		topDirectory = directory;
+		createJsonDirectories();
+		name = topDirectory.getName();
+	}
+
+	private void createJsonDirectories()
+	{
 		getNodesDirectory().mkdirs();
 		getLinkagesDirectory().mkdirs();
 		getDiagramsDirectory().mkdirs();
-		name = topDirectory.getName();
 	}
 	
 

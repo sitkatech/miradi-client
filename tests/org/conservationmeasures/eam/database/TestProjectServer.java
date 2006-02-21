@@ -172,6 +172,25 @@ public class TestProjectServer extends EAMTestCase
 		}
 	}
 	
+	public void testCreateInNonEmptyDirectory() throws Exception
+	{
+		File tempDirectory = createTempDirectory();
+		File anyFile = new File(tempDirectory, "blah");
+		anyFile.mkdirs();
+		try
+		{
+			storage.create(tempDirectory);
+			fail("Should have thrown");
+		}
+		catch (Exception ignoreExpected)
+		{
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
+	}
+	
 	public void testOpenNonProjectDirectory() throws Exception
 	{
 		File tempDirectory = createTempDirectory();
@@ -194,7 +213,14 @@ public class TestProjectServer extends EAMTestCase
 			}
 			
 			File nonExistantProjectDirectory = new File(tempDirectory, "DoesNotExist");
-			anotherStorage.open(nonExistantProjectDirectory);
+			try
+			{
+				anotherStorage.open(nonExistantProjectDirectory);
+				fail("Should throw when opening a non-existant directory");
+			}
+			catch (Exception ignoreExpected)
+			{
+			}
 			anotherStorage.close();
 		}
 		finally
@@ -220,7 +246,7 @@ public class TestProjectServer extends EAMTestCase
 		{
 		}
 
-		anotherStorage.open(tempDirectory);
+		anotherStorage.create(tempDirectory);
 		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
 		assertEquals("wrong file name?", tempDirectory.getName(), anotherStorage.getName());
 		

@@ -227,12 +227,24 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public void open(File projectDirectory) throws Exception
+	public void createOrOpen(File projectDirectory) throws Exception
 	{
 		clear();
 
-		getDatabase().open(projectDirectory);
-		if(getDatabase().isCurrentVersion())
+		if(ProjectServer.isExistingProject(projectDirectory))
+			openProject(projectDirectory);
+		else
+			createProject(projectDirectory);
+		
+		finishOpening();
+	}
+
+	private void openProject(File projectDirectory) throws Exception
+	{
+		ProjectServer db = getDatabase();
+
+		db.open(projectDirectory);
+		if(db.isCurrentVersion())
 		{
 			loadProjectInfo();
 			loadNodePool();
@@ -241,9 +253,13 @@ public class Project
 			loadCommands();
 		}
 		else
-			replayCommands(getDatabase());
-		
-		finishOpening();
+			replayCommands(db);
+	}
+	
+	private void createProject(File projectDirectory) throws Exception
+	{
+		getDatabase().create(projectDirectory);
+		// create default objects
 	}
 	
 	private void clear()
@@ -251,7 +267,7 @@ public class Project
 		nodePool.clear();
 		linkagePool.clear();
 		projectInfo.clear();
-		
+		diagramModel.clear();
 	}
 	
 	private void loadProjectInfo() throws IOException, ParseException

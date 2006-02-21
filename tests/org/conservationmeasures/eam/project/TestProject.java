@@ -547,7 +547,7 @@ public class TestProject extends EAMTestCase
 	{
 		File tempDir = createTempDirectory();
 		Project diskProject = new Project(new ProjectServer());
-		diskProject.open(tempDir);
+		diskProject.createOrOpen(tempDir);
 		try
 		{
 			
@@ -568,7 +568,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		Project loadedProject = new Project(new ProjectServer());
-		loadedProject.open(tempDir);
+		loadedProject.createOrOpen(tempDir);
 		try
 		{
 			assertEquals("didn't read node pool?", 2, loadedProject.getNodePool().size());
@@ -584,7 +584,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		File emptyDir = createTempDirectory();
-		diskProject.open(emptyDir);
+		diskProject.createOrOpen(emptyDir);
 		try
 		{
 			assertEquals("didn't clear node pool?", 0, diskProject.getNodePool().size());
