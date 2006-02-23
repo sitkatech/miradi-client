@@ -31,10 +31,10 @@ public class ThreatRatingFramework
 	
 	public void createDefaultObjects()
 	{
-		createDefaultCriterion("Scope"); 
-		createDefaultCriterion("Severity");
-		createDefaultCriterion("Urgency");
-		createDefaultCriterion("Custom");
+		createDefaultCriterion(EAM.text("Label|Scope")); 
+		createDefaultCriterion(EAM.text("Label|Severity"));
+		createDefaultCriterion(EAM.text("Label|Urgency"));
+		createDefaultCriterion(EAM.text("Label|Custom"));
 		
 		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
 		createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
