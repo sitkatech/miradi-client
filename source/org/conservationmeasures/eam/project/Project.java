@@ -247,6 +247,7 @@ public class Project
 		if(db.isCurrentVersion())
 		{
 			loadProjectInfo();
+			loadThreatRatingFramework();
 			loadNodePool();
 			loadLinkagePool();
 			loadDiagram();
@@ -274,6 +275,12 @@ public class Project
 	private void loadProjectInfo() throws IOException, ParseException
 	{
 		getDatabase().readProjectInfo(projectInfo);
+	}
+	
+	private void loadThreatRatingFramework()
+	{
+		if(threatRatingFramework.getCriteria().length == 0)
+			threatRatingFramework.createDefaultObjects();
 	}
 	
 	private void loadNodePool() throws IOException, ParseException

@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 
@@ -35,11 +36,11 @@ public class ThreatRatingFramework
 		createDefaultCriterion(EAM.text("Label|Urgency"));
 		createDefaultCriterion(EAM.text("Label|Custom"));
 		
+		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
 		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
 		createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
 		createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW);
 		createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
-		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
 	}
 
 	private void createDefaultValueOption(String label, int numericValue, Color color)
@@ -143,6 +144,25 @@ public class ThreatRatingFramework
 		criteria.add(realId);
 		return realId;
 	}
+	
+	public ThreatRatingValueOption getBundleValue(ThreatRatingBundle bundle)
+	{
+		return findValueOptionByNumericValue(0);
+	}
+	
+	public ThreatRatingValueOption findValueOptionByNumericValue(int value)
+	{
+		for(int i = 0; i < options.size(); ++i)
+		{
+			int id = options.get(i);
+			ThreatRatingValueOption option = getValueOption(id);
+			if(option.getNumericValue() == value)
+				return option;
+		}
+		
+		return null;
+	}
+	
 
 	private int getRealId(int candidateId)
 	{
@@ -178,6 +198,12 @@ public class ThreatRatingFramework
 		}
 		
 		return -1;
+	}
+	
+	
+	public ThreatRatingBundle getBundle(int threatId, int targetId)
+	{
+		return new ThreatRatingBundle(threatId, targetId);
 	}
 	
 	private IdAssigner idAssigner;

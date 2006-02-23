@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -24,13 +25,26 @@ public class TestThreatRatingFramework extends EAMTestCase
 		framework = new ThreatRatingFramework(new IdAssigner());
 		framework.createDefaultObjects();
 	}
+	
+	public void testGetBundleValue()
+	{
+		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2);
+		ThreatRatingValueOption result = framework.getBundleValue(bundle);
+		assertEquals("didn't default to none?", 0, result.getNumericValue());
+	}
 
 	public void testRatingValueOptions() throws Exception
 	{
 		ThreatRatingValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
-		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
-		assertEquals("bad color?", Color.YELLOW, options[2].getColor());
+		assertEquals("wrong order or label?", "Very High", options[1].getLabel());
+		assertEquals("bad color?", Color.YELLOW, options[3].getColor());
+	}
+	
+	public void testFindValueOptionByNumericValue()
+	{
+		ThreatRatingValueOption optionNone = framework.findValueOptionByNumericValue(0);
+		assertEquals(Color.WHITE, optionNone.getColor());
 	}
 	
 	public void testThreatRatingCriteria() throws Exception

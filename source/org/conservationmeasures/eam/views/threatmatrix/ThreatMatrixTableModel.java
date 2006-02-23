@@ -14,6 +14,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatMatrixTableModel extends AbstractTableModel
@@ -78,14 +79,44 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	{
 		if(row < reservedRows)
 			return "";
-		return getDirectThreats()[row - reservedRows].getName();
+		ConceptualModelNode cmNode = getThreatNode(row);
+		return cmNode.getName();
+	}
+	
+	public int getThreatId(int row)
+	{
+		if(row < reservedRows)
+			return IdAssigner.INVALID_ID;
+		ConceptualModelNode cmNode = getThreatNode(row);
+		return cmNode.getId();
+	}
+
+	private ConceptualModelNode getThreatNode(int row)
+	{
+		ConceptualModelNode cmNode = getDirectThreats()[row - reservedRows];
+		return cmNode;
 	}
 	
 	public String getTargetName(int column)
 	{
 		if(column < reservedColumns)
 			return "";
-		return getTargets()[column - reservedColumns].getName();
+		ConceptualModelNode cmNode = getTargetNode(column);
+		return cmNode.getName();
+	}
+
+	public int getTargetId(int column)
+	{
+		if(column < reservedColumns)
+			return IdAssigner.INVALID_ID;
+		ConceptualModelNode cmNode = getTargetNode(column);
+		return cmNode.getId();
+	}
+
+	private ConceptualModelNode getTargetNode(int column)
+	{
+		ConceptualModelNode cmNode = getTargets()[column - reservedColumns];
+		return cmNode;
 	}
 	
 	static final int reservedRows = 2;

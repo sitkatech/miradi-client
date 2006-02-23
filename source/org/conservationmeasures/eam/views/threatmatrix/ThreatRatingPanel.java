@@ -7,53 +7,68 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Random;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 
-public class ThreatRatingPanel extends JPanel
+public class ThreatRatingPanel extends JPanel implements ItemListener
 {
-	public ThreatRatingPanel(ThreatRatingFramework framework)
+	public ThreatRatingPanel(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
 	{
+		framework = frameworkToUse;
+		bundle = bundleToUse;
+		
 		int lineWidth = 1;
 		
+		ThreatRatingValueOption value = getBundleValue();
+		ratingSummaryLabel = new UiLabel();
+		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
+
+		ratingSummaryPanel = new JPanel();
+		ratingSummaryPanel.setLayout(new BorderLayout());
+		ratingSummaryPanel.add(ratingSummaryLabel, BorderLayout.CENTER);
+		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
+
 		Box criteria = Box.createVerticalBox();
 
 		ThreatRatingCriterion[] criterionItems = framework.getCriteria();
 		for(int i = 0; i < criterionItems.length; ++i)
 		{
-			Box scopeCell = Box.createVerticalBox();
-			scopeCell.add(new UiLabel(criterionItems[i].getLabel()));
-			scopeCell.add(createRatingDropdown(framework.getValueOptions()));
-			scopeCell.setBorder(new LineBorder(Color.BLACK, lineWidth));
+			ThreatRatingCriterion criterion = criterionItems[i];
+
+			Box box = Box.createVerticalBox();
+			box.add(new UiLabel(criterion.getLabel()));
+			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
+			box.add(dropdown);
+			dropdown.addItemListener(new ValueListener(bundle, criterion));
+			dropdown.addItemListener(this);
+			box.setBorder(new LineBorder(Color.BLACK, lineWidth));
 			
-			criteria.add(scopeCell);
+			int valueId = bundle.getValueId(criterion.getId());
+			if(valueId != IdAssigner.INVALID_ID)
+			{
+				ThreatRatingValueOption option = framework.getValueOption(valueId);
+				dropdown.setSelectedItem(option);
+			}
+
+			criteria.add(box);
 		}
 		
 
 		
-		ThreatRatingValue priority = getRandomPriority(framework);
-		UiLabel ratingSummaryLabel = new UiLabel();
-		ratingSummaryLabel.setText(priority.toString());
-		ratingSummaryLabel.setBackground(priority.getColor());
-		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
-
-		JPanel ratingSummaryPanel = new JPanel();
-		ratingSummaryPanel.setLayout(new BorderLayout());
-		ratingSummaryPanel.add(ratingSummaryLabel, BorderLayout.CENTER);
-		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
-		ratingSummaryPanel.setBackground(priority.getColor());
-
+		updateBundleValueComponent(value);
 
 		Box main = Box.createHorizontalBox();
 		main.add(criteria);
@@ -62,19 +77,25 @@ public class ThreatRatingPanel extends JPanel
 		add(main);
 	}
 
+	private ThreatRatingValueOption getBundleValue()
+	{
+		ThreatRatingValueOption value = framework.getBundleValue(bundle);
+		return value;
+	}
+
+	private void updateBundleValueComponent(ThreatRatingValueOption value)
+	{
+		if(value == null)
+			System.out.println(value);
+		ratingSummaryLabel.setText(value.getLabel());
+		ratingSummaryLabel.setBackground(value.getColor());
+		ratingSummaryPanel.setBackground(value.getColor());
+	}
+
 	private UiComboBox createRatingDropdown(ThreatRatingValueOption[] options)
 	{
 		UiComboBox dropDown = ThreatRatingPanel.createThreatDropDown(options);
-		int choice = new Random().nextInt(dropDown.getItemCount());
-		dropDown.setSelectedIndex(choice);
 		return dropDown;
-	}
-	
-	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
-	{
-		ThreatRatingValueOption[] options = framework.getValueOptions();
-		int index = Math.abs(new Random().nextInt()) % options.length;
-		return new ThreatRatingValue(options[index]);
 	}
 	
 	public static UiComboBox createThreatDropDown(ThreatRatingValueOption[] options)
@@ -88,4 +109,33 @@ public class ThreatRatingPanel extends JPanel
 		}
 		return dropDown;
 	}
+	
+	public void itemStateChanged(ItemEvent e)
+	{
+		updateBundleValueComponent(getBundleValue());
+	}
+	
+	static class ValueListener implements ItemListener
+	{
+		public ValueListener(ThreatRatingBundle bundleToUse, ThreatRatingCriterion criterionToUse)
+		{
+			bundle = bundleToUse;
+			criterion = criterionToUse;
+		}
+		
+		public void itemStateChanged(ItemEvent e)
+		{
+			UiComboBox source = (UiComboBox)e.getSource();
+			ThreatRatingValueOption selected = (ThreatRatingValueOption)source.getSelectedItem();
+			bundle.setValueId(criterion.getId(), selected.getId());
+		}
+		
+		ThreatRatingBundle bundle;
+		ThreatRatingCriterion criterion;
+	}
+
+	ThreatRatingFramework framework;
+	ThreatRatingBundle bundle;
+	UiLabel ratingSummaryLabel;
+	JPanel ratingSummaryPanel;
 }

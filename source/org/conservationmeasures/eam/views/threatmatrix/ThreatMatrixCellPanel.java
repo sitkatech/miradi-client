@@ -6,32 +6,43 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
-import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.martus.swing.Utilities;
 
-public class ThreatMatrixCellPanel extends JPanel
+public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(ThreatRatingFramework framework)
+	public ThreatMatrixCellPanel(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
 	{
-		ThreatRatingValue priority = getRandomPriority(framework);
-		JButton highButton = new JButton(priority.toString());
-		Color priorityColor = priority.getColor();
-		highButton.setBackground(priorityColor);
-		highButton.addActionListener(new RatingSummaryButtonHandler(this, framework));
+		framework = frameworkToUse;
+		bundle = bundleToUse;
+		
+		ThreatRatingValueOption value = framework.getBundleValue(bundle);
+		JButton highButton = new JButton(value.getLabel());
+		Color color = value.getColor();
+		highButton.setBackground(color);
 		add(highButton);
-		setBackground(priorityColor);
+		setBackground(color);
+
+		highButton.addActionListener(this);
 	}
 	
-	public ThreatRatingValue getRandomPriority(ThreatRatingFramework framework)
+	public void actionPerformed(ActionEvent e)
 	{
-		ThreatRatingValueOption[] options = framework.getValueOptions();
-		int index = Math.abs(new Random().nextInt()) % options.length;
-		return new ThreatRatingValue(options[index]);
+		JDialog threatRatingDialog = new ThreatRatingBundleDialog(framework, bundle);
+		threatRatingDialog.setLocationRelativeTo(this);
+		Utilities.fitInScreen(threatRatingDialog);
+		threatRatingDialog.show();
 	}
+	
+	ThreatRatingFramework framework;
+	ThreatRatingBundle bundle;
 }

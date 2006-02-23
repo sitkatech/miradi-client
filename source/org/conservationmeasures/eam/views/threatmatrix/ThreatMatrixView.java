@@ -14,7 +14,9 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
@@ -66,7 +68,12 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 						col >= ThreatMatrixTableModel.reservedColumns &&
 						model.isActiveCell(row, col))
 				{
-					thisComponent = new ThreatMatrixCellPanel(getProject().getThreatRatingFramework());
+					
+					ThreatRatingFramework framework = getProject().getThreatRatingFramework();
+					int threatId = model.getThreatId(row);
+					int targetId = model.getTargetId(col);
+					ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+					thisComponent = new ThreatMatrixCellPanel(framework, bundle);
 				}
 				else
 				{
