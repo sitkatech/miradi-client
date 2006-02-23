@@ -259,7 +259,8 @@ public class Project
 	private void createProject(File projectDirectory) throws Exception
 	{
 		getDatabase().create(projectDirectory);
-		// create default objects
+		getThreatRatingFramework().createDefaultObjects();
+
 	}
 	
 	private void clear()

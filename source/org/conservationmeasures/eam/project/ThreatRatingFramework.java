@@ -26,7 +26,6 @@ public class ThreatRatingFramework
 		options = new IdList();
 		optionPool = new Vector();
 		
-		createDefaultObjects();
 	}
 	
 	public void createDefaultObjects()

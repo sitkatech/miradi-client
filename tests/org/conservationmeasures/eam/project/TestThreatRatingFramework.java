@@ -22,6 +22,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		super.setUp();
 		framework = new ThreatRatingFramework(new IdAssigner());
+		framework.createDefaultObjects();
 	}
 
 	public void testRatingValueOptions() throws Exception

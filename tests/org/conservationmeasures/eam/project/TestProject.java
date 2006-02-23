@@ -601,6 +601,24 @@ public class TestProject extends EAMTestCase
 		
 	}
 	
+	public void testCreateNewProject() throws Exception
+	{
+		File tempDir = createTempDirectory();
+		Project newProject = new Project(new ProjectServer());
+		newProject.createOrOpen(tempDir);
+		
+		try
+		{
+			assertEquals("default criterion not created?", 4, newProject.getThreatRatingFramework().getCriteria().length);
+			assertEquals("default valueoptions not created?", 5, newProject.getThreatRatingFramework().getValueOptions().length);
+		}
+		finally
+		{
+			newProject.close();
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
+		}
+	}
+	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		int insertedId = project.insertNodeAtId(nodeType, IdAssigner.INVALID_ID);
