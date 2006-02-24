@@ -25,14 +25,20 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		framework = frameworkToUse;
 		bundle = bundleToUse;
 		
-		ThreatRatingValueOption value = framework.getBundleValue(bundle);
-		JButton highButton = new JButton(value.getLabel());
-		Color color = value.getColor();
-		highButton.setBackground(color);
+		highButton = new JButton();
 		add(highButton);
-		setBackground(color);
+		refreshCell();
 
 		highButton.addActionListener(this);
+	}
+
+	private void refreshCell()
+	{
+		ThreatRatingValueOption value = framework.getBundleValue(bundle);
+		highButton.setText(value.getLabel());
+		Color color = value.getColor();
+		highButton.setBackground(color);
+		setBackground(color);
 	}
 	
 	public void actionPerformed(ActionEvent e)
@@ -41,8 +47,10 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		threatRatingDialog.setLocationRelativeTo(this);
 		Utilities.fitInScreen(threatRatingDialog);
 		threatRatingDialog.show();
+		refreshCell();
 	}
 	
 	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;
+	JButton highButton;
 }
