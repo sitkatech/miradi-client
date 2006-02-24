@@ -53,6 +53,7 @@ import org.conservationmeasures.eam.project.TestNodePool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestRealProject;
+import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
@@ -96,6 +97,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestIdAssigner.class));
 		suite.addTest(new TestSuite(TestProjectInfo.class));
 		suite.addTest(new TestSuite(TestThreatRatingFramework.class));
+		suite.addTest(new TestSuite(TestTNCThreatFormula.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestLogging.class));
