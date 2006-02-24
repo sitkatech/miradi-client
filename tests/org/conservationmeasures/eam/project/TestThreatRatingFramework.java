@@ -28,9 +28,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetBundleValue()
 	{
-		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2);
+		int noneId = framework.findValueOptionByNumericValue(0).getId();
+		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2, noneId);
 		ThreatRatingValueOption result = framework.getBundleValue(bundle);
-		assertEquals("didn't default to none?", 0, result.getNumericValue());
+		assertEquals("didn't default correctly? ", 0, result.getNumericValue());
 	}
 
 	public void testRatingValueOptions() throws Exception

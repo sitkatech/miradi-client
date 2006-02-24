@@ -39,6 +39,16 @@ public class TestTNCThreatFormula extends EAMTestCase
 		verifyMagnitudeCalculation(1, 3, 1);
 		verifyMagnitudeCalculation(1, 2, 1);
 		verifyMagnitudeCalculation(1, 1, 1);
+		
+		verifyMagnitudeCalculation(0, 4, 0);
+		verifyMagnitudeCalculation(0, 3, 0);
+		verifyMagnitudeCalculation(0, 2, 0);
+		verifyMagnitudeCalculation(0, 1, 0);
+		
+		verifyMagnitudeCalculation(1, 0, 0);
+		verifyMagnitudeCalculation(2, 0, 0);
+		verifyMagnitudeCalculation(3, 0, 0);
+		verifyMagnitudeCalculation(4, 0, 0);
 	}
 	
 	public void testInvalidScopeAndSeverity()
@@ -82,7 +92,18 @@ public class TestTNCThreatFormula extends EAMTestCase
 		verifySeriousnessCalculation(1, 4, 1);
 		verifySeriousnessCalculation(1, 3, 1);
 		verifySeriousnessCalculation(1, 2, 1);
-		verifySeriousnessCalculation(1, 1, 1);		
+		verifySeriousnessCalculation(1, 1, 1);
+		
+		verifySeriousnessCalculation(0, 4, 0);
+		verifySeriousnessCalculation(0, 3, 0);
+		verifySeriousnessCalculation(0, 2, 0);
+		verifySeriousnessCalculation(0, 1, 0);
+		
+		verifySeriousnessCalculation(1, 0, 0);
+		verifySeriousnessCalculation(2, 0, 0);
+		verifySeriousnessCalculation(3, 0, 0);
+		verifySeriousnessCalculation(4, 0, 0);
+
 	}
 	
 	public void verifySeriousnessCalculation(int magnitude, int urgency, int seriousness)
@@ -134,7 +155,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		int veryHighId = framework.findValueOptionByNumericValue(4).getId();
 		int highId = framework.findValueOptionByNumericValue(3).getId();
 		
-		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2, 3);
 		
 		bundle.setValueId(scopeId, veryHighId);
 		bundle.setValueId(severityId, veryHighId);

@@ -7,14 +7,13 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.HashMap;
 
-import org.conservationmeasures.eam.project.IdAssigner;
-
 public class ThreatRatingBundle
 {
-	public ThreatRatingBundle(int threatIdToUse, int targetIdToUse)
+	public ThreatRatingBundle(int threatIdToUse, int targetIdToUse, int defaultValueIdToUse)
 	{
 		threatId = threatIdToUse;
 		targetId = targetIdToUse;
+		defaultValueId = defaultValueIdToUse;
 		
 		map = new HashMap();
 	}
@@ -33,7 +32,7 @@ public class ThreatRatingBundle
 	{
 		Object valueObject = map.get(new Integer(criterionId));
 		if(valueObject == null)
-			return IdAssigner.INVALID_ID;
+			return defaultValueId;
 		return ((Integer)valueObject).intValue();
 	}
 	
@@ -44,5 +43,6 @@ public class ThreatRatingBundle
 	
 	int threatId;
 	int targetId;
+	int defaultValueId;
 	HashMap map;
 }

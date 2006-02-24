@@ -147,7 +147,10 @@ public class ThreatRatingFramework
 	
 	public ThreatRatingValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
-		return findValueOptionByNumericValue(0);
+		TNCThreatFormula formula = new TNCThreatFormula(this);
+		int numericResult = formula.computeBundleValue(bundle);
+		return findValueOptionByNumericValue(numericResult);
+		
 	}
 
 	public ThreatRatingCriterion findCriterionByLabel(String label)
@@ -216,7 +219,8 @@ public class ThreatRatingFramework
 	
 	public ThreatRatingBundle getBundle(int threatId, int targetId)
 	{
-		return new ThreatRatingBundle(threatId, targetId);
+		int defaultValueId = ((ThreatRatingValueOption)optionPool.get(0)).getId();
+		return new ThreatRatingBundle(threatId, targetId, defaultValueId);
 	}
 	
 	private IdAssigner idAssigner;

@@ -11,6 +11,8 @@ public class TNCThreatFormula
 	
 	public int computeMagnitude(int scope, int severity)
 	{		
+		if(scope == 0 || severity == 0)
+			return 0;
 		if(scope == 1 || severity == 1)
 			return 1;
 		if(scope == 2 || severity == 2)
@@ -25,6 +27,8 @@ public class TNCThreatFormula
 	
 	public int computeSeriousness(int magnitude, int urgency)
 	{
+		if(magnitude == 0 || urgency == 0)
+			return 0;
 		if(urgency == 3 || urgency == 4)
 			return magnitude;
 		if(magnitude == 1 || magnitude == 2 )
