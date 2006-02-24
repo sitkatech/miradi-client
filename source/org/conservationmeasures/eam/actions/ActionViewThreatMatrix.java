@@ -17,12 +17,12 @@ public class ActionViewThreatMatrix extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Threat Matrix View");
+		return EAM.text("Action|Threat Rating View");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Threat Matrix View");
+		return EAM.text("TT|Switch to the Threat Rating View");
 	}
 	
 	public String toString()
