@@ -33,8 +33,8 @@ public class ThreatRatingFramework
 	{
 		createDefaultCriterion(EAM.text("Label|Scope")); 
 		createDefaultCriterion(EAM.text("Label|Severity"));
-		createDefaultCriterion(EAM.text("Label|Urgency"));
-		createDefaultCriterion(EAM.text("Label|Custom"));
+		createDefaultCriterion(EAM.text("Label|Custom1"));
+		createDefaultCriterion(EAM.text("Label|Custom2"));
 		
 		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
 		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
@@ -48,7 +48,7 @@ public class ThreatRatingFramework
 		int createdId = createValueOption(IdAssigner.INVALID_ID);
 		ThreatRatingValueOption option = getValueOption(createdId);
 		option.setData(ThreatRatingValueOption.TAG_LABEL, label);
-		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(numericValue));
+		option.setData(ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
 		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 	}
 
@@ -148,6 +148,19 @@ public class ThreatRatingFramework
 	public ThreatRatingValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
 		return findValueOptionByNumericValue(0);
+	}
+
+	public ThreatRatingCriterion findCriterionByLabel(String label)
+	{
+		for(int i = 0; i < criteria.size(); ++i)
+		{
+			int id = criteria.get(i);
+			ThreatRatingCriterion criterion = getCriterion(id);
+			if(criterion.getLabel().equals(label))
+				return criterion;
+		}
+		
+		return null;
 	}
 	
 	public ThreatRatingValueOption findValueOptionByNumericValue(int value)

@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTNCThreatFormula extends EAMTestCase
@@ -10,6 +11,16 @@ public class TestTNCThreatFormula extends EAMTestCase
 		super(name);
 	}
 
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		
+		framework = new ThreatRatingFramework(new IdAssigner());
+		framework.createDefaultObjects();
+		
+		formula = new TNCThreatFormula(framework);
+	}
+	
 	public void testComputeMagnitude()
 	{
 		verifyMagnitudeCalculation(4, 4, 4);
@@ -32,7 +43,6 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void testInvalidScopeAndSeverity()
 	{
-		TNCThreatFormula formula = new TNCThreatFormula();
 		try
 		{
 			formula.computeMagnitude(0, 1);
@@ -51,7 +61,6 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void verifyMagnitudeCalculation(int scope, int severity, int magnitude)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula();
 		String label = "wrong magnitude for " + scope + " " + severity;
 		assertEquals(label, magnitude, formula.computeMagnitude(scope, severity));
 	}
@@ -78,14 +87,12 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void verifySeriousnessCalculation(int magnitude, int urgency, int seriousness)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula();
 		String label = "wrong seriousness for " + magnitude + " " + urgency;
 		assertEquals(label, seriousness, formula.computeSeriousness(magnitude, urgency));
 	}
 
 	public void testInvalidMagnitudeAndSeriousness()
 	{
-		TNCThreatFormula formula = new TNCThreatFormula();
 		try
 		{
 			formula.computeSeriousness(0, 1);
@@ -112,12 +119,30 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void verifyComputeBundleValue(int scope, int severity, int urgency, int bundleValue)
 	{
-		TNCThreatFormula formula = new TNCThreatFormula();
 		String label = "wrong bundle value for " + scope + " " + severity + " " 
 												 + urgency + " " + bundleValue;
 		assertEquals(label, formula.computeBundleValue(scope, severity, urgency), bundleValue);
 		
 	}
-
 	
+	public void testGetBundleValues()
+	{		
+		int scopeId = framework.findCriterionByLabel("Scope").getId();
+		int severityId = framework.findCriterionByLabel("Severity").getId();
+		int urgencyId = framework.findCriterionByLabel("Custom1").getId();
+		
+		int veryHighId = framework.findValueOptionByNumericValue(4).getId();
+		int highId = framework.findValueOptionByNumericValue(3).getId();
+		
+		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2);
+		
+		bundle.setValueId(scopeId, veryHighId);
+		bundle.setValueId(severityId, veryHighId);
+		bundle.setValueId(urgencyId, highId);
+		
+		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
+	}
+	
+	ThreatRatingFramework framework;
+	TNCThreatFormula formula;
 }

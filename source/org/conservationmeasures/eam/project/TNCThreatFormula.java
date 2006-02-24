@@ -1,7 +1,13 @@
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+
 public class TNCThreatFormula
 {
+	TNCThreatFormula(ThreatRatingFramework frameworkToUse)
+	{
+		framework = frameworkToUse;
+	}
 	
 	public int computeMagnitude(int scope, int severity)
 	{		
@@ -39,4 +45,22 @@ public class TNCThreatFormula
 	{
 		return computeSeriousness(computeMagnitude(scope, severity), urgency);
 	}
+	
+	public int computeBundleValue(ThreatRatingBundle bundle)
+	{
+		
+		int scope = getCriterionValue(bundle, "Scope");
+		int severity = getCriterionValue(bundle, "Severity");
+		int urgency = getCriterionValue(bundle, "Custom1");
+		
+		return computeBundleValue(scope, severity, urgency);
+	}
+
+	private int getCriterionValue(ThreatRatingBundle bundle, String label)
+	{
+		int criterionId = framework.findCriterionByLabel(label).getId();
+		return framework.getValueOption(bundle.getValueId(criterionId)).getNumericValue();
+	}
+	
+	ThreatRatingFramework framework;
 }

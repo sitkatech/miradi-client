@@ -38,6 +38,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ThreatRatingValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
 		assertEquals("wrong order or label?", "Very High", options[1].getLabel());
+		assertEquals("wrong numeric value? ", 3, options[2].getNumericValue());
 		assertEquals("bad color?", Color.YELLOW, options[3].getColor());
 	}
 	
@@ -53,8 +54,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("wrong number of default criteria?", 4, criteria.length);
 		assertEquals("Scope", criteria[0].getLabel());
 		assertEquals("Severity", criteria[1].getLabel());
-		assertEquals("Urgency", criteria[2].getLabel());
-		assertEquals("Custom", criteria[3].getLabel());
+		assertEquals("Custom1", criteria[2].getLabel());
+		assertEquals("Custom2", criteria[3].getLabel());
 	}
 	
 	public void testIdAssignment() throws Exception
