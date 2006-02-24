@@ -29,8 +29,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
@@ -210,12 +208,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	public String getText()
 	{
 		return textField.getText();
-	}
-	
-	public ThreatRatingValue getPriority()
-	{
-		ThreatRatingValueOption option = (ThreatRatingValueOption)dropdownThreatPriority.getSelectedItem();
-		return new ThreatRatingValue(option);
 	}
 	
 	public IndicatorId getIndicator()

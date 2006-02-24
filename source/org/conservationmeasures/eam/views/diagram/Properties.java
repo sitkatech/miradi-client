@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
-import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetProjectVision;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
@@ -90,8 +89,6 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
 		getProject().executeCommand(new CommandSetNodeName(id, dlg.getText()));
 		getProject().executeCommand(new CommandSetIndicator(id, dlg.getIndicator()));
-		if(selectedNode.canHaveThreatRating())
-			getProject().executeCommand(new CommandSetNodePriority(id, dlg.getPriority()));
 		if(selectedNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, dlg.getObjectives()));
 		if(selectedNode.canHaveGoal())
