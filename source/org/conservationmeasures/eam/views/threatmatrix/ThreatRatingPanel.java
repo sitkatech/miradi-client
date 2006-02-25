@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -35,8 +36,10 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		ThreatRatingValueOption value = getBundleValue();
 		ratingSummaryLabel = new UiLabel();
 		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
-
+		ratingSummaryLabel.setHorizontalAlignment(JLabel.CENTER);
+		
 		ratingSummaryPanel = new JPanel();
+		ratingSummaryPanel.setPreferredSize(new Dimension(65, 170));
 		ratingSummaryPanel.setLayout(new BorderLayout());
 		ratingSummaryPanel.add(ratingSummaryLabel, BorderLayout.CENTER);
 		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
@@ -66,13 +69,12 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 			criteria.add(box);
 		}
 		
-
-		
 		updateBundleValueComponent(value);
 
 		Box main = Box.createHorizontalBox();
 		main.add(criteria);
 		main.add(ratingSummaryPanel);
+				
 		
 		add(main);
 	}
@@ -133,7 +135,7 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		ThreatRatingBundle bundle;
 		ThreatRatingCriterion criterion;
 	}
-
+	
 	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;
 	UiLabel ratingSummaryLabel;
