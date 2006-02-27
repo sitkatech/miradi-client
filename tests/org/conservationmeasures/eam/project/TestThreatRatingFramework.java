@@ -64,5 +64,19 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertNotEquals("reused ids?", framework.getCriteria()[0].getId(), framework.getValueOptions()[0].getId());
 	}
 	
+	public void testBundles() throws Exception
+	{
+		int threatId = 77;
+		int targetId = 292;
+		int criterionId = 22;
+		int valueId = 639;
+		
+		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+		bundle.setValueId(criterionId, valueId);
+		ThreatRatingBundle reGot = framework.getBundle(threatId, targetId);
+		assertEquals("did't get same bundle?", bundle.getValueId(criterionId), reGot.getValueId(criterionId));
+		
+	}
+	
 	ThreatRatingFramework framework;
 }

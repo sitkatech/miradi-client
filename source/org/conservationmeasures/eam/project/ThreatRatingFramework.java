@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -27,6 +28,7 @@ public class ThreatRatingFramework
 		options = new IdList();
 		optionPool = new Vector();
 		
+		bundles = new HashMap();
 	}
 	
 	public void createDefaultObjects()
@@ -219,8 +221,15 @@ public class ThreatRatingFramework
 	
 	public ThreatRatingBundle getBundle(int threatId, int targetId)
 	{
+		String key = Integer.toString(threatId) + "," + Integer.toString(targetId);
+		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(key);
+		if(existing != null)
+			return existing;
+		
 		int defaultValueId = ((ThreatRatingValueOption)optionPool.get(0)).getId();
-		return new ThreatRatingBundle(threatId, targetId, defaultValueId);
+		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
+		bundles.put(key, newBundle);
+		return newBundle;
 	}
 	
 	private IdAssigner idAssigner;
@@ -228,4 +237,6 @@ public class ThreatRatingFramework
 	private Vector criterionPool;
 	private IdList options;
 	private Vector optionPool;
+	
+	private HashMap bundles;
 }
