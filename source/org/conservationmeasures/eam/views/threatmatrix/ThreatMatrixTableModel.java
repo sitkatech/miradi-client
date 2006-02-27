@@ -11,13 +11,11 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
-public class ThreatMatrixTableModel extends AbstractTableModel
+public class ThreatMatrixTableModel
 {
 	public ThreatMatrixTableModel(Project projectToShow)
 	{
@@ -26,7 +24,7 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 	
 	public int getColumnCount()
 	{
-		return 2 + getTargets().length;
+		return reservedColumns + getTargets().length;
 	}
 
 	private ConceptualModelNode[] getDirectThreats()
@@ -44,29 +42,13 @@ public class ThreatMatrixTableModel extends AbstractTableModel
 		return project.getNodePool().getTargets();
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
-	{
-		if(rowIndex == 0)
-			return getTargetName(columnIndex);
-
-		if(columnIndex == 0)
-			return getThreatName(rowIndex);
-		
-		if(rowIndex < reservedRows)
-			return "";
-		
-		if(columnIndex < reservedColumns)
-			return "";
-		
-		if(isActiveCell(rowIndex, columnIndex))
-			return "a";
-		return "";
-	}
-
 	public boolean isActiveCell(int rowIndex, int columnIndex)
 	{
 		int threatIndex = rowIndex - reservedRows;
 		int targetIndex = columnIndex - reservedColumns;
+		if(threatIndex < 0 || targetIndex < 0)
+			return false;
+		
 		int threatId = getDirectThreats()[threatIndex].getId();
 		int targetId = getTargets()[targetIndex].getId();
 		if(project.getLinkagePool().hasLinkage(threatId, targetId))

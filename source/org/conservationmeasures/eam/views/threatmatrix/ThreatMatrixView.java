@@ -64,23 +64,23 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			for(int col = 0; col < columns; ++col)
 			{
 				JComponent thisComponent = null;
-				if(row >= ThreatMatrixTableModel.reservedRows && 
-						col >= ThreatMatrixTableModel.reservedColumns &&
-						model.isActiveCell(row, col))
+				if(row == 0)
 				{
-					
-					ThreatRatingFramework framework = getProject().getThreatRatingFramework();
-					int threatId = model.getThreatId(row);
-					int targetId = model.getTargetId(col);
-					ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-					thisComponent = new ThreatMatrixCellPanel(framework, bundle);
+					thisComponent = new JPanel();
+					thisComponent.add(new UiLabel(model.getTargetName(col)));
+				}
+				else if(col == 0)
+				{
+					thisComponent = new JPanel();
+					thisComponent.add(new UiLabel(model.getThreatName(row)));
+				}
+				else if(model.isActiveCell(row, col))
+				{
+					thisComponent = createBundleCell(row, col);
 				}
 				else
 				{
-					String text = (String)model.getValueAt(row, col);
-					UiLabel label = new UiLabel(text);
 					thisComponent = new JPanel();
-					thisComponent.add(label);
 				}
 				thisComponent.setBorder(new LineBorder(Color.BLACK));
 				grid.add(thisComponent);
@@ -88,6 +88,17 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		}
 		removeAll();
 		add(new UiScrollPane(grid), BorderLayout.CENTER);
+	}
+
+	private JComponent createBundleCell(int row, int col)
+	{
+		JComponent thisComponent;
+		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
+		int threatId = model.getThreatId(row);
+		int targetId = model.getTargetId(col);
+		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+		thisComponent = new ThreatMatrixCellPanel(framework, bundle);
+		return thisComponent;
 	}
 
 	JPanel grid;

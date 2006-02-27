@@ -60,7 +60,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		
 		for(int i = 0; i < threatNames.length; ++i)
 		{
-			Object thisName = model.getValueAt(reservedRows + i, 0);
+			Object thisName = model.getThreatName(reservedRows + i);
 			assertEquals("bad threat name " + i + "? ", threatNames[i], thisName);
 		}
 	}
@@ -73,12 +73,12 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		
 		for(int i = 0; i < targetNames.length; ++i)
 		{
-			Object thisName = model.getValueAt(0, reservedColumns + i);
+			Object thisName = model.getTargetName(reservedColumns + i);
 			assertEquals("bad target name " + i + "? ", targetNames[i], thisName);
 		}
 	}
 	
-	public void testGetValueAt() throws Exception
+	public void testIsActiveCell() throws Exception
 	{
 		int threat1 = createThreat("threat one");
 		int threat2 = createThreat("threat two");
@@ -91,22 +91,22 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target2);
 		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat2, target2);
 
-		assertEquals("", model.getValueAt(reservedRows - 1, reservedColumns - 1));
+		assertFalse(model.isActiveCell(reservedRows - 1, reservedColumns - 1));
 		int row1 = reservedRows;
 		int row2 = row1 + 1;
 		int row3 = row2 + 1;
 		int col1 = reservedColumns;
 		int col2 = col1 + 1;
 		int col3 = col2 + 1;
-		assertEquals("a", model.getValueAt(row1, col1));
-		assertEquals("a", model.getValueAt(row1, col2));
-		assertEquals("", model.getValueAt(row1, col3));
-		assertEquals("", model.getValueAt(row2, col1));
-		assertEquals("a", model.getValueAt(row2, col2));
-		assertEquals("", model.getValueAt(row2, col3));
-		assertEquals("", model.getValueAt(row3, col1));
-		assertEquals("", model.getValueAt(row3, col2));
-		assertEquals("", model.getValueAt(row3, col3));
+		assertTrue(model.isActiveCell(row1, col1));
+		assertTrue(model.isActiveCell(row1, col2));
+		assertFalse(model.isActiveCell(row1, col3));
+		assertFalse(model.isActiveCell(row2, col1));
+		assertTrue(model.isActiveCell(row2, col2));
+		assertFalse(model.isActiveCell(row2, col3));
+		assertFalse(model.isActiveCell(row3, col1));
+		assertFalse(model.isActiveCell(row3, col2));
+		assertFalse(model.isActiveCell(row3, col3));
 	}
 	
 	private int createThreat(String name) throws Exception
