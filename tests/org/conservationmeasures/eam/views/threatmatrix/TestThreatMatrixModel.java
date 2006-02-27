@@ -33,23 +33,23 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		super.tearDown();
 	}
 
-	public void testGetRowCount() throws Exception
+	public void testGetThreatCount() throws Exception
 	{
-		assertEquals(reservedRows, model.getRowCount());
+		assertEquals(0, model.getThreatCount());
 		
 		createThreat("one");
 		createThreat("two");
 		createThreat("three");
-		assertEquals(reservedRows + 3, model.getRowCount());
+		assertEquals(3, model.getThreatCount());
 	}
 	
 	public void testGetColumnCount() throws Exception
 	{
-		assertEquals(reservedColumns, model.getColumnCount());
+		assertEquals(0, model.getTargetCount());
 		createTarget("one");
 		createTarget("two");
 		createTarget("three");
-		assertEquals(reservedColumns + 3, model.getColumnCount());
+		assertEquals(3, model.getTargetCount());
 	}
 	
 	public void testGetThreatNames() throws Exception
@@ -60,7 +60,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		
 		for(int i = 0; i < threatNames.length; ++i)
 		{
-			Object thisName = model.getThreatName(reservedRows + i);
+			Object thisName = model.getThreatName(i);
 			assertEquals("bad threat name " + i + "? ", threatNames[i], thisName);
 		}
 	}
@@ -73,7 +73,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		
 		for(int i = 0; i < targetNames.length; ++i)
 		{
-			Object thisName = model.getTargetName(reservedColumns + i);
+			Object thisName = model.getTargetName(i);
 			assertEquals("bad target name " + i + "? ", targetNames[i], thisName);
 		}
 	}
@@ -91,11 +91,11 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target2);
 		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat2, target2);
 
-		assertFalse(model.isActiveCell(reservedRows - 1, reservedColumns - 1));
-		int row1 = reservedRows;
+		assertFalse(model.isActiveCell(-1, -1));
+		int row1 = 0;
 		int row2 = row1 + 1;
 		int row3 = row2 + 1;
-		int col1 = reservedColumns;
+		int col1 = 0;
 		int col2 = col1 + 1;
 		int col3 = col2 + 1;
 		assertTrue(model.isActiveCell(row1, col1));
@@ -128,9 +128,6 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		return id;
 	}
 	
-	static final int reservedRows = 2;
-	static final int reservedColumns = 2;
-
 	ProjectForTesting project;
 	ThreatMatrixTableModel model;
 }

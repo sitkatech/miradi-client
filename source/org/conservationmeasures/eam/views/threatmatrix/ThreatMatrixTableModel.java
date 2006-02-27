@@ -12,7 +12,6 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatMatrixTableModel
@@ -22,9 +21,9 @@ public class ThreatMatrixTableModel
 		project = projectToShow;
 	}
 	
-	public int getColumnCount()
+	public int getTargetCount()
 	{
-		return reservedColumns + getTargets().length;
+		return getTargets().length;
 	}
 
 	private ConceptualModelNode[] getDirectThreats()
@@ -32,9 +31,9 @@ public class ThreatMatrixTableModel
 		return project.getNodePool().getDirectThreats();
 	}
 
-	public int getRowCount()
+	public int getThreatCount()
 	{
-		return reservedRows + getDirectThreats().length;
+		return getDirectThreats().length;
 	}
 
 	private ConceptualModelNode[] getTargets()
@@ -42,10 +41,8 @@ public class ThreatMatrixTableModel
 		return project.getNodePool().getTargets();
 	}
 
-	public boolean isActiveCell(int rowIndex, int columnIndex)
+	public boolean isActiveCell(int threatIndex, int targetIndex)
 	{
-		int threatIndex = rowIndex - reservedRows;
-		int targetIndex = columnIndex - reservedColumns;
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
@@ -57,52 +54,41 @@ public class ThreatMatrixTableModel
 		return false;
 	}
 	
-	public String getThreatName(int row)
+	public String getThreatName(int threatIndex)
 	{
-		if(row < reservedRows)
-			return "";
-		ConceptualModelNode cmNode = getThreatNode(row);
+		ConceptualModelNode cmNode = getThreatNode(threatIndex);
 		return cmNode.getName();
 	}
 	
-	public int getThreatId(int row)
+	public int getThreatId(int threatIndex)
 	{
-		if(row < reservedRows)
-			return IdAssigner.INVALID_ID;
-		ConceptualModelNode cmNode = getThreatNode(row);
+		ConceptualModelNode cmNode = getThreatNode(threatIndex);
 		return cmNode.getId();
 	}
 
-	private ConceptualModelNode getThreatNode(int row)
+	private ConceptualModelNode getThreatNode(int threatIndex)
 	{
-		ConceptualModelNode cmNode = getDirectThreats()[row - reservedRows];
+		ConceptualModelNode cmNode = getDirectThreats()[threatIndex];
 		return cmNode;
 	}
 	
-	public String getTargetName(int column)
+	public String getTargetName(int targetIndex)
 	{
-		if(column < reservedColumns)
-			return "";
-		ConceptualModelNode cmNode = getTargetNode(column);
+		ConceptualModelNode cmNode = getTargetNode(targetIndex);
 		return cmNode.getName();
 	}
 
-	public int getTargetId(int column)
+	public int getTargetId(int targetIndex)
 	{
-		if(column < reservedColumns)
-			return IdAssigner.INVALID_ID;
-		ConceptualModelNode cmNode = getTargetNode(column);
+		ConceptualModelNode cmNode = getTargetNode(targetIndex);
 		return cmNode.getId();
 	}
 
-	private ConceptualModelNode getTargetNode(int column)
+	private ConceptualModelNode getTargetNode(int targetIndex)
 	{
-		ConceptualModelNode cmNode = getTargets()[column - reservedColumns];
+		ConceptualModelNode cmNode = getTargets()[targetIndex];
 		return cmNode;
 	}
-	
-	static final int reservedRows = 2;
-	static final int reservedColumns = 2;
 	
 	Project project;
 }

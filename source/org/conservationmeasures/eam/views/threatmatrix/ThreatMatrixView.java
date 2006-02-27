@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
@@ -55,39 +56,59 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		if(!isSwitchingToThisView)
 			return;
 		
+		int rows = model.getThreatCount() + 4;
+		int columns = model.getTargetCount() + 4;
+		Box[][] cells = new Box[rows][columns];
 		grid = new JPanel();
-		int rows = model.getRowCount();
-		int columns = model.getColumnCount();
 		grid.setLayout(new BasicGridLayout(rows, columns));
 		for(int row = 0; row < rows; ++row)
 		{
 			for(int col = 0; col < columns; ++col)
 			{
-				JComponent thisComponent = null;
-				if(row == 0)
-				{
-					thisComponent = new JPanel();
-					thisComponent.add(new UiLabel(model.getTargetName(col)));
-				}
-				else if(col == 0)
-				{
-					thisComponent = new JPanel();
-					thisComponent.add(new UiLabel(model.getThreatName(row)));
-				}
-				else if(model.isActiveCell(row, col))
-				{
-					thisComponent = createBundleCell(row, col);
-				}
-				else
-				{
-					thisComponent = new JPanel();
-				}
+				Box thisComponent = Box.createHorizontalBox();
 				thisComponent.setBorder(new LineBorder(Color.BLACK));
-				grid.add(thisComponent);
+				cells[row][col] = thisComponent;
+				grid.add(cells[row][col]);
 			}
 		}
+			
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			Box header = cells[2 + threatIndex][0];
+			header.add(createLabel(model.getThreatName(threatIndex)));
+			
+			Box footer = cells[2 + threatIndex][3 + model.getTargetCount()];
+			footer.add(new UiLabel("summary"));
+		}
+			
+		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+		{
+			Box header = cells[0][2 + targetIndex];
+			header.add(createLabel(model.getTargetName(targetIndex)));
+
+			Box footer = cells[3 + model.getThreatCount()][2 + targetIndex];
+			footer.add(new UiLabel("summary"));
+		}
+	
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+			{
+				Box cell = cells[2 + threatIndex][2 + targetIndex];
+				if(model.isActiveCell(threatIndex, targetIndex))
+					cell.add(createBundleCell(threatIndex, targetIndex));
+			}
+		}
+
 		removeAll();
 		add(new UiScrollPane(grid), BorderLayout.CENTER);
+	}
+
+	private JComponent createLabel(String text)
+	{
+		JPanel panel = new JPanel();
+		panel.add(new UiLabel(text));
+		return panel;
 	}
 
 	private JComponent createBundleCell(int row, int col)
