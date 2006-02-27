@@ -2,12 +2,14 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.util.HashSet;
 
+import javax.swing.JPanel;
+
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiLabel;
 
-public class ThreatRatingSummaryCell extends UiLabel
+public class ThreatRatingSummaryCell extends JPanel
 {
 	public static ThreatRatingSummaryCell createThreatSummary(ThreatMatrixTableModel model, int threatIndex)
 	{
@@ -25,6 +27,9 @@ public class ThreatRatingSummaryCell extends UiLabel
 		model = modelToUse;
 		threatIndex = threatIndexToUse;
 		targetIndex = targetIndexToUse;
+		
+		label = new UiLabel();
+		add(label);
 	}
 	
 	public void dataHasChanged()
@@ -56,13 +61,13 @@ public class ThreatRatingSummaryCell extends UiLabel
 			
 		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundleGroup.toArray(new ThreatRatingBundle[0]);
 		ThreatRatingValueOption result = framework.getSummaryOfBundles(bundleArray);
-		setText(result.getLabel());
+		label.setText(result.getLabel());
 		setBackground(result.getColor());
-		setOpaque(true);
 		
 	}
 	
 	ThreatMatrixTableModel model;
 	int threatIndex;
 	int targetIndex;
+	UiLabel label;
 }
