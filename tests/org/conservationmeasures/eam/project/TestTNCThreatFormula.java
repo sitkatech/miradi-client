@@ -163,6 +163,40 @@ public class TestTNCThreatFormula extends EAMTestCase
 		
 		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
 	}
+
+	public void testGetSummaryOfBundles()
+	{
+		int[] bundles;
+		
+		bundles = new int[] {};
+		assertEquals(0, formula.getSummaryOfBundles(bundles));
+		
+		bundles = new int[] {0, 0, 0,};
+		assertEquals(0, formula.getSummaryOfBundles(bundles));
+
+		bundles = new int[] {1, 1, 1, 1, 1, 1, 1,};
+		assertEquals(1, formula.getSummaryOfBundles(bundles));
+		
+		bundles = new int[] {1, 1, 1, 1, 1, 1, 1,
+				1, 1, 1, 1, 1, 1, 1,};
+		assertEquals(2, formula.getSummaryOfBundles(bundles));
+
+		bundles = new int[] {2, 2, 2, 2, 2, 2, 2, 2, 2, 2,};
+		assertEquals(3, formula.getSummaryOfBundles(bundles));
+		
+		bundles = new int[] {3, 3, 3, 3, 3, 3,};
+		assertEquals(4, formula.getSummaryOfBundles(bundles));		
+		
+		bundles = new int[] {2, 3, 1, 4, 2,};
+		assertEquals(3, formula.getSummaryOfBundles(bundles));
+		
+		bundles = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3,};
+		assertEquals(3, formula.getSummaryOfBundles(bundles));
+
+		bundles = new int[] {4, 4,};
+		assertEquals(4, formula.getSummaryOfBundles(bundles));
+	}
 	
 	ThreatRatingFramework framework;
 	TNCThreatFormula formula;

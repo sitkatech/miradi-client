@@ -59,6 +59,49 @@ public class TNCThreatFormula
 		
 		return computeBundleValue(scope, severity, urgency);
 	}
+	
+	public int getSummaryOfBundles(int[] bundleValues)
+	{
+		int veryHigh =0;
+		int high = 0;
+		int medium = 0;
+		int low = 0;
+		
+		for(int i =0; i < bundleValues.length; ++i)
+		{
+			if(bundleValues[i] == 4)
+				++veryHigh;
+			if(bundleValues[i] == 3)
+				++high;
+			if(bundleValues[i] == 2)
+				++medium;
+			if(bundleValues[i] == 1)
+				++low;
+		}
+		
+		int newLow = low % 7;
+		medium += ((low - newLow) / 7);
+		low = newLow;
+		
+		int newMedium = medium % 5;
+		high += ((medium - newMedium) / 5);
+		medium = newMedium;
+		
+		int newHigh = high % 3;
+		veryHigh += ((high - newHigh) / 3);
+		high = newHigh;
+		
+		if(veryHigh >= 2)
+			return 4;
+		if(veryHigh == 1 || high >= 2)
+			return 3;
+		if(high == 1 || medium >= 2)
+			return 2;
+		if(medium >= 1 || low >= 1)
+			return 1;
+
+		return 0;
+	}
 
 	private int getCriterionValue(ThreatRatingBundle bundle, String label)
 	{
