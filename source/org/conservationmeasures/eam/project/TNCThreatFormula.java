@@ -62,23 +62,12 @@ public class TNCThreatFormula
 	
 	public int getSummaryOfBundles(int[] bundleValues)
 	{
-		int veryHigh =0;
-		int high = 0;
-		int medium = 0;
-		int low = 0;
+		int low = count(bundleValues, 1);
+		int medium = count(bundleValues, 2);
+		int high = count(bundleValues, 3);
+		int veryHigh = count(bundleValues, 4);
 		
-		for(int i =0; i < bundleValues.length; ++i)
-		{
-			if(bundleValues[i] == 4)
-				++veryHigh;
-			if(bundleValues[i] == 3)
-				++high;
-			if(bundleValues[i] == 2)
-				++medium;
-			if(bundleValues[i] == 1)
-				++low;
-		}
-		
+		// 3-5-7 rule
 		int newLow = low % 7;
 		medium += ((low - newLow) / 7);
 		low = newLow;
@@ -91,6 +80,11 @@ public class TNCThreatFormula
 		veryHigh += ((high - newHigh) / 3);
 		high = newHigh;
 		
+		return applyTwoPrimeRule(low, medium, high, veryHigh);
+	}
+
+	private int applyTwoPrimeRule(int low, int medium, int high, int veryHigh)
+	{
 		if(veryHigh >= 2)
 			return 4;
 		if(veryHigh == 1 || high >= 2)
@@ -101,6 +95,16 @@ public class TNCThreatFormula
 			return 1;
 
 		return 0;
+	}
+	
+	private int count(int[] values, int lookFor)
+	{
+		int result = 0;
+		for(int i = 0; i < values.length; ++i)
+			if(values[i] == lookFor)
+				++result;
+		
+		return result;
 	}
 
 	private int getCriterionValue(ThreatRatingBundle bundle, String label)
