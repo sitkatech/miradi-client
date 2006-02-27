@@ -20,8 +20,9 @@ import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
+	public ThreatMatrixCellPanel(ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
 	{
+		view = viewToUse;
 		framework = frameworkToUse;
 		bundle = bundleToUse;
 		
@@ -39,6 +40,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		Color color = value.getColor();
 		highButton.setBackground(color);
 		setBackground(color);
+		view.cellHasChanged();
 	}
 	
 	public void actionPerformed(ActionEvent e)
@@ -50,6 +52,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		refreshCell();
 	}
 	
+	ThreatMatrixView view;
 	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;
 	JButton highButton;

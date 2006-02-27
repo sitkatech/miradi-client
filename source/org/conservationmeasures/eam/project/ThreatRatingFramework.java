@@ -154,6 +154,17 @@ public class ThreatRatingFramework
 		return findValueOptionByNumericValue(numericResult);
 		
 	}
+	
+	public ThreatRatingValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
+	{
+		int[] bundleValues = new int[bundlesToSummarize.length];
+		for(int i = 0; i < bundlesToSummarize.length; ++i)
+			bundleValues[i] = getBundleValue(bundlesToSummarize[i]).getNumericValue();
+
+		TNCThreatFormula formula = new TNCThreatFormula(this);
+		int numericResult = formula.getSummaryOfBundles(bundleValues);
+		return findValueOptionByNumericValue(numericResult);
+	}
 
 	public ThreatRatingCriterion findCriterionByLabel(String label)
 	{

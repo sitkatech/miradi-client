@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -38,6 +40,8 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		model = new ThreatMatrixTableModel(project);
 		
 		project.addViewChangeListener(this);
+		
+		summaryCells = new HashSet();
 	}
 
 	public String cardName()
@@ -78,7 +82,9 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			header.add(createLabel(model.getThreatName(threatIndex)));
 			
 			Box footer = cells[2 + threatIndex][3 + model.getTargetCount()];
-			footer.add(new UiLabel("summary"));
+			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
+			footer.add(summaryCell);
+			summaryCells.add(summaryCell);
 		}
 			
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
@@ -87,7 +93,9 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			header.add(createLabel(model.getTargetName(targetIndex)));
 
 			Box footer = cells[3 + model.getThreatCount()][2 + targetIndex];
-			footer.add(new UiLabel("summary"));
+			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
+			footer.add(summaryCell);
+			summaryCells.add(summaryCell);
 		}
 	
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
@@ -104,6 +112,16 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		add(new UiScrollPane(grid), BorderLayout.CENTER);
 	}
 
+	public void cellHasChanged()
+	{
+		Iterator iter = summaryCells.iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingSummaryCell cell = (ThreatRatingSummaryCell)iter.next();
+			cell.dataHasChanged();
+		}
+	}
+
 	private JComponent createLabel(String text)
 	{
 		JPanel panel = new JPanel();
@@ -114,15 +132,28 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	private JComponent createBundleCell(int row, int col)
 	{
 		JComponent thisComponent;
-		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
-		int threatId = model.getThreatId(row);
-		int targetId = model.getTargetId(col);
-		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-		thisComponent = new ThreatMatrixCellPanel(framework, bundle);
+		ThreatRatingFramework framework = getFramework();
+		ThreatRatingBundle bundle = getBundle(row, col);
+		thisComponent = new ThreatMatrixCellPanel(this, framework, bundle);
 		return thisComponent;
+	}
+
+	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
+	{
+		int threatId = model.getThreatId(threatIndex);
+		int targetId = model.getTargetId(targetIndex);
+		ThreatRatingBundle bundle = getFramework().getBundle(threatId, targetId);
+		return bundle;
+	}
+
+	private ThreatRatingFramework getFramework()
+	{
+		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
+		return framework;
 	}
 
 	JPanel grid;
 	ThreatMatrixTableModel model;
+	HashSet summaryCells;
 }
 

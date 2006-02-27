@@ -21,6 +21,11 @@ public class ThreatMatrixTableModel
 		project = projectToShow;
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	public int getTargetCount()
 	{
 		return getTargets().length;
