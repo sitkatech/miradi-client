@@ -15,10 +15,17 @@ public class TestTNCThreatFormula extends EAMTestCase
 	{
 		super.setUp();
 		
-		framework = new ThreatRatingFramework(new IdAssigner());
+		project = new ProjectForTesting(getName());
+		framework = new ThreatRatingFramework(project);
 		framework.createDefaultObjects();
 		
 		formula = new TNCThreatFormula(framework);
+	}
+	
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 	
 	public void testComputeMagnitude()
@@ -197,7 +204,8 @@ public class TestTNCThreatFormula extends EAMTestCase
 		bundles = new int[] {4, 4,};
 		assertEquals(4, formula.getSummaryOfBundles(bundles));
 	}
-	
+
+	ProjectForTesting project;
 	ThreatRatingFramework framework;
 	TNCThreatFormula formula;
 }

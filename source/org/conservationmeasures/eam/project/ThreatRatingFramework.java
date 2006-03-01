@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 
 public class ThreatRatingFramework
 {
-	public ThreatRatingFramework(IdAssigner idAssignerToUse)
+	public ThreatRatingFramework(Project owningProject)
 	{
-		idAssigner = idAssignerToUse;
+		project = owningProject;
 		
 		criteria = new IdList();
 		criterionPool = new Vector();
@@ -195,6 +195,7 @@ public class ThreatRatingFramework
 
 	private int getRealId(int candidateId)
 	{
+		IdAssigner idAssigner = project.getAnnotationIdAssigner();
 		if(candidateId == IdAssigner.INVALID_ID)
 			candidateId = idAssigner.takeNextId();
 		return candidateId;
@@ -243,7 +244,7 @@ public class ThreatRatingFramework
 		return newBundle;
 	}
 	
-	private IdAssigner idAssigner;
+	private Project project;
 	private IdList criteria;
 	private Vector criterionPool;
 	private IdList options;

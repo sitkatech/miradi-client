@@ -22,8 +22,15 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		framework = new ThreatRatingFramework(new IdAssigner());
+		project = new ProjectForTesting(getName());
+		framework = new ThreatRatingFramework(project);
 		framework.createDefaultObjects();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 	
 	public void testGetBundleValue()
@@ -79,4 +86,5 @@ public class TestThreatRatingFramework extends EAMTestCase
 	}
 	
 	ThreatRatingFramework framework;
+	private ProjectForTesting project;
 }

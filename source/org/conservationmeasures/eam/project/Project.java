@@ -86,7 +86,7 @@ public class Project
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		layerManager = new LayerManager();
-		threatRatingFramework = new ThreatRatingFramework(getAnnotationIdAssigner());
+		threatRatingFramework = new ThreatRatingFramework(this);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

@@ -575,7 +575,10 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
-			assertEquals("didn't preserve next annotation id?", diskProject.getAnnotationIdAssigner().takeNextId(), loadedProject.getAnnotationIdAssigner().takeNextId());
+			// TODO: The 9 below will go away when we are saving and loading default threat rating framework objects
+			// should happen 2006-03-01
+			int expectedAnnotationId = 9 + diskProject.getAnnotationIdAssigner().takeNextId();
+			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally
 		{
