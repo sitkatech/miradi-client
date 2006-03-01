@@ -75,7 +75,7 @@ public class Project
 		linkagePool = new LinkagePool();
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
 		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
-		diagramModel = new DiagramModel(nodePool, linkagePool, goalPool, objectivePool);
+		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		commandExecutedListeners = new Vector();

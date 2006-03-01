@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.main;
 import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
-import org.conservationmeasures.eam.diagram.DiagramModelForTesting;
+import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.NodePool;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -47,7 +48,8 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransferData() throws Exception
 	{
-		DiagramModelForTesting model = new DiagramModelForTesting();
+		ProjectForTesting project = new ProjectForTesting(getName());
+		DiagramModel model = project.getDiagramModel();
 		NodePool nodePool = model.getNodePool();
 
 		int node1Id = 1;
@@ -96,5 +98,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(linkage1Id, linkagesData[0].getId());
 		assertEquals(node1Id, linkagesData[0].getFromId());
 		assertEquals(node2Id, linkagesData[0].getToId());
+		
+		project.close();
 	}
 }

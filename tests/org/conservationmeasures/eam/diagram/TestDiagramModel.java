@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.NodePool;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestDiagramModel extends EAMTestCase
@@ -28,9 +28,15 @@ public class TestDiagramModel extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		model = new DiagramModelForTesting();
-		nodePool = model.getNodePool();
+		project = new ProjectForTesting(getName());
+		model = project.getDiagramModel();
 		idAssigner = new IdAssigner();
+	}
+
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
 	}
 
 	public void testIsNode() throws Exception
@@ -87,7 +93,7 @@ public class TestDiagramModel extends EAMTestCase
 		model.deleteNode(nodeToDelete);
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget();
 		cmTargetToUndo.setId(nodeToDelete.getId());
-		nodePool.put(cmTargetToUndo);
+		project.getNodePool().put(cmTargetToUndo);
 		
 		model.createNode(cmTargetToUndo.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
@@ -128,7 +134,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
 
-		DiagramModel copy = new DiagramModel(model.getNodePool(), model.getLinkagePool());
+		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.toJson());
 		
 		assertNotNull("missing node1?", copy.getNodeById(node1.getId()));
@@ -196,7 +202,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmTarget = new ConceptualModelTarget();
 		cmTarget.setId(idAssigner.takeNextId());
-		nodePool.put(cmTarget);
+		project.getNodePool().put(cmTarget);
 		return model.createNode(cmTarget.getId());
 	}
 	
@@ -204,7 +210,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(nodeType);
 		cmObject.setId(idAssigner.takeNextId());
-		nodePool.put(cmObject);
+		project.getNodePool().put(cmObject);
 		return model.createNode(cmObject.getId());
 	}
 	
@@ -262,7 +268,7 @@ public class TestDiagramModel extends EAMTestCase
 		int nodeMoved = 0;
 	}
 
-	NodePool nodePool;
-	DiagramModelForTesting model;
+	ProjectForTesting project;
+	DiagramModel model;
 	IdAssigner idAssigner;
 }

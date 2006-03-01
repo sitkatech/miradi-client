@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -34,17 +35,9 @@ import org.json.JSONObject;
 
 public class DiagramModel extends DefaultGraphModel
 {
-	public DiagramModel(NodePool nodePoolToUse, LinkagePool linkagePoolToUse, GoalPool goalPoolToUse, ObjectivePool objectivePoolToUse)
+	public DiagramModel(Project projectToUse)
 	{
-		this(nodePoolToUse, linkagePoolToUse);
-		goalPool = goalPoolToUse;
-		objectivePool = objectivePoolToUse;
-	}
-	
-	public DiagramModel(NodePool objectPoolToUse, LinkagePool linkagePoolToUse)
-	{
-		nodePool = objectPoolToUse;
-		linkagePool = linkagePoolToUse;
+		project = projectToUse;
 		cellInventory = new CellInventory();
 	}
 	
@@ -64,7 +57,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public DiagramNode createNode(int id) throws Exception
 	{
-		ConceptualModelNode cmObject = nodePool.find(id);
+		ConceptualModelNode cmObject = getNodePool().find(id);
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 		addNodeToModel(node);
 		return node;
@@ -147,7 +140,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
-		return linkagePool.hasLinkage(fromNode.getId(), toNode.getId());
+		return getLinkagePool().hasLinkage(fromNode.getId(), toNode.getId());
 	}
 
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
@@ -251,12 +244,12 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public Goal getGoalById(int id)
 	{
-		return goalPool.find(id);
+		return getGoalPool().find(id);
 	}
 	
 	public Objective getObjectiveById(int id)
 	{
-		return objectivePool.find(id);
+		return getObjectivePool().find(id);
 	}
 	
 	public JSONObject toJson()
@@ -295,7 +288,7 @@ public class DiagramModel extends DefaultGraphModel
 			int id = Integer.parseInt(key);
 			JSONObject nodeJson = nodeMap.getJSONObject(key);
 
-			ConceptualModelNode cmObject = nodePool.find(id);
+			ConceptualModelNode cmObject = getNodePool().find(id);
 			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 			node.fillFrom(nodeJson);
 			
@@ -305,10 +298,10 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinkagesToModel() throws Exception
 	{
-		int[] linkageIds = linkagePool.getIds();
+		int[] linkageIds = getLinkagePool().getIds();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
-			ConceptualModelLinkage cmLinkage = linkagePool.find(linkageIds[i]);
+			ConceptualModelLinkage cmLinkage = getLinkagePool().find(linkageIds[i]);
 			if(hasNode(cmLinkage.getFromNodeId()) && hasNode(cmLinkage.getToNodeId()))
 			{
 				createLinkage(cmLinkage);
@@ -316,6 +309,25 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
+	public NodePool getNodePool()
+	{
+		return project.getNodePool();
+	}
+	
+	LinkagePool getLinkagePool()
+	{
+		return project.getLinkagePool();
+	}
+	
+	ObjectivePool getObjectivePool()
+	{
+		return project.getObjectivePool();
+	}
+	
+	GoalPool getGoalPool()
+	{
+		return project.getGoalPool();
+	}
 	
 	
 	private static final String TAG_TYPE = "Type";
@@ -323,10 +335,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
 	
-	NodePool nodePool;
-	LinkagePool linkagePool;
-	GoalPool goalPool;
-	ObjectivePool objectivePool;
+	Project project;
 	CellInventory cellInventory;
 	ProjectScopeBox projectScopeBox;
 	protected List diagramModelListenerList = new ArrayList();

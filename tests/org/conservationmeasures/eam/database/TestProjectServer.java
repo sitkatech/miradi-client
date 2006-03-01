@@ -12,7 +12,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.DiagramModelForTesting;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -20,8 +19,8 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -121,24 +120,24 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadDiagram() throws Exception
 	{
 		IdAssigner idAssigner = new IdAssigner();
+		ProjectForTesting project = new ProjectForTesting(getName());
 		
 		try
 		{
-			storage.readDiagram(new DiagramModelForTesting());
+			storage.readDiagram(new DiagramModel(project));
 		}
 		catch(Exception e)
 		{
 			fail("didn't allow reading non-existent diagram?");
 		}
 		
-		DiagramModelForTesting model = new DiagramModelForTesting();
+		DiagramModel model = project.getDiagramModel();
 		NodePool nodePool = model.getNodePool();
-		LinkagePool linkagePool = model.getLinkagePool();
 		storage.writeDiagram(model);
 
 		try
 		{
-			storage.readDiagram(new DiagramModelForTesting());
+			storage.readDiagram(new DiagramModel(project));
 		}
 		catch(Exception e)
 		{
@@ -158,7 +157,7 @@ public class TestProjectServer extends EAMTestCase
 		
 		storage.writeDiagram(model);
 		
-		DiagramModel got = new DiagramModel(nodePool, linkagePool); 
+		DiagramModel got = new DiagramModel(project); 
 		storage.readDiagram(got);
 		Vector gotNodes = got.getAllNodes();
 		Vector expectedNodes = model.getAllNodes();
@@ -170,6 +169,8 @@ public class TestProjectServer extends EAMTestCase
 			DiagramNode expectedNode = model.getNodeById(gotId);
 			assertEquals("node data not right?", expectedNode.getText(), gotNode.getText());
 		}
+		
+		project.close();
 	}
 	
 	public void testCreateInNonEmptyDirectory() throws Exception
