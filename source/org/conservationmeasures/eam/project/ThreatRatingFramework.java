@@ -240,18 +240,28 @@ public class ThreatRatingFramework
 		return -1;
 	}
 	
-	
 	public ThreatRatingBundle getBundle(int threatId, int targetId)
 	{
-		String key = Integer.toString(threatId) + "," + Integer.toString(targetId);
-		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(key);
+		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(getBundleKey(threatId, targetId));
 		if(existing != null)
 			return existing;
 		
 		int defaultValueId = ((ThreatRatingValueOption)optionPool.get(0)).getId();
 		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
-		bundles.put(key, newBundle);
+		saveBundle(newBundle);
 		return newBundle;
+	}
+
+	public void saveBundle(ThreatRatingBundle newBundle)
+	{
+		String key = getBundleKey(newBundle.getThreatId(), newBundle.getTargetId());
+		bundles.put(key, newBundle);
+	}
+
+	private String getBundleKey(int threatId, int targetId)
+	{
+		String key = Integer.toString(threatId) + "-" + Integer.toString(targetId);
+		return key;
 	}
 	
 	public JSONObject toJson()
