@@ -69,7 +69,14 @@ public class Project
 	public Project(ProjectServer databaseToUse) throws IOException
 	{
 		database = databaseToUse;
+		commandExecutedListeners = new Vector();
+		viewChangeListeners = new Vector();
 		
+		clear();
+	}
+
+	private void clear() throws IOException
+	{
 		projectInfo = new ProjectInfo();
 		nodePool = new NodePool();
 		linkagePool = new LinkagePool();
@@ -78,8 +85,6 @@ public class Project
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
-		commandExecutedListeners = new Vector();
-		viewChangeListeners = new Vector();
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(getAnnotationIdAssigner());
 	}
@@ -262,14 +267,6 @@ public class Project
 		getDatabase().create(projectDirectory);
 		getThreatRatingFramework().createDefaultObjects();
 
-	}
-	
-	private void clear()
-	{
-		nodePool.clear();
-		linkagePool.clear();
-		projectInfo.clear();
-		diagramModel.clear();
 	}
 	
 	private void loadProjectInfo() throws IOException, ParseException

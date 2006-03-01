@@ -583,6 +583,8 @@ public class TestProject extends EAMTestCase
 			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
 		}
 		
+		int highestAnnotationIdBeforeClearing = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
+		
 		File emptyDir = createTempDirectory();
 		diskProject.createOrOpen(emptyDir);
 		try
@@ -591,7 +593,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't clear linkage pool?", 0, diskProject.getLinkagePool().size());
 			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getNodeCount());
 			assertEquals("didn't clear next node id?", 0, diskProject.getNodeIdAssigner().takeNextId());
-			assertEquals("didn't clear next annotation id?", 0, diskProject.getAnnotationIdAssigner().takeNextId());
+			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);
 		}
 		finally
 		{

@@ -46,7 +46,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 {
 	public DiagramComponent(Project projectToUse, Actions actions)
 	{
-		super(projectToUse.getDiagramModel());
 		project = projectToUse;
 
 		setSelectionModel(new SelectionModelWithLayers(this));
