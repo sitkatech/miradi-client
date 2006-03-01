@@ -46,7 +46,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		return "ThreatMatrix";
 	}
 	
-	public void switchToView(String viewName)
+	public void switchToView(String viewName) throws Exception
 	{
 		boolean isSwitchingToThisView = viewName.equals(getViewName());
 		if(!isSwitchingToThisView)
@@ -79,7 +79,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		add(new UiScrollPane(grid), BorderLayout.CENTER);
 	}
 
-	private void populateBundleCells(Box[][] cells)
+	private void populateBundleCells(Box[][] cells) throws Exception
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
@@ -120,7 +120,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		}
 	}
 
-	public void cellHasChanged()
+	public void cellHasChanged() throws Exception
 	{
 		Iterator iter = summaryCells.iterator();
 		while(iter.hasNext())
@@ -137,7 +137,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		return panel;
 	}
 
-	private JComponent createBundleCell(int row, int col)
+	private JComponent createBundleCell(int row, int col) throws Exception
 	{
 		JComponent thisComponent;
 		ThreatRatingFramework framework = getFramework();
@@ -146,7 +146,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		return thisComponent;
 	}
 
-	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
+	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex) throws Exception
 	{
 		int threatId = model.getThreatId(threatIndex);
 		int targetId = model.getTargetId(targetIndex);

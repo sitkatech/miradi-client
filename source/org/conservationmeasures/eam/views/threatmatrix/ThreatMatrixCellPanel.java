@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -20,7 +21,7 @@ import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
+	public ThreatMatrixCellPanel(ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
 		view = viewToUse;
 		framework = frameworkToUse;
@@ -33,7 +34,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		highButton.addActionListener(this);
 	}
 
-	private void refreshCell()
+	private void refreshCell() throws Exception
 	{
 		ThreatRatingValueOption value = framework.getBundleValue(bundle);
 		highButton.setText(value.getLabel());
@@ -43,13 +44,20 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		view.cellHasChanged();
 	}
 	
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
 		JDialog threatRatingDialog = new ThreatRatingBundleDialog(framework, bundle);
 		threatRatingDialog.setLocationRelativeTo(this);
 		Utilities.fitInScreen(threatRatingDialog);
 		threatRatingDialog.show();
-		refreshCell();
+		try
+		{
+			refreshCell();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	ThreatMatrixView view;

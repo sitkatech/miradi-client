@@ -364,7 +364,7 @@ public class Project
 		
 	}
 
-	protected void finishOpening() throws IOException
+	protected void finishOpening() throws Exception
 	{
 		createDefaultObjectsIfNeeded();
 
@@ -389,7 +389,7 @@ public class Project
 		return getDatabase().isOpen();
 	}
 	
-	public void close()
+	public void close() throws Exception
 	{
 		if(!isOpen())
 			return;
@@ -526,7 +526,14 @@ public class Project
 	public void switchToView(String viewName) throws CommandFailedException
 	{
 		setCurrentView(viewName);
-		fireSwitchToView(viewName);
+		try
+		{
+			fireSwitchToView(viewName);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
 	public void addViewChangeListener(ViewChangeListener listener)
@@ -534,7 +541,7 @@ public class Project
 		viewChangeListeners.add(listener);
 	}
 	
-	void fireSwitchToView(String viewName)
+	void fireSwitchToView(String viewName) throws Exception
 	{
 		for(int i=0; i < viewChangeListeners.size(); ++i)
 		{

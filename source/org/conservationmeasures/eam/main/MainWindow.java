@@ -144,7 +144,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 
 	}
 	
-	public void closeProject()
+	public void closeProject() throws Exception
 	{
 		project.close();
 		updateTitle();
@@ -161,8 +161,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 
 	public void exitNormally()
 	{
-		closeProject();
-		System.exit(0);
+		try
+		{
+			closeProject();
+			System.exit(0);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			System.exit(1);
+		}
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -205,7 +213,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	{
 		public void windowClosing(WindowEvent event)
 		{
-			exitNormally();
+			try
+			{
+				exitNormally();
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+				System.exit(1);
+			}
 		}
 	}
 

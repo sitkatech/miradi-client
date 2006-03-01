@@ -17,7 +17,14 @@ public class Close extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		getMainWindow().closeProject();
+		try
+		{
+			getMainWindow().closeProject();
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

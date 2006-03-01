@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -116,6 +117,20 @@ public class TestProjectServer extends EAMTestCase
 		catch(IOException ignoreExpected)
 		{
 		}
+	}
+	
+	public void testWriteThreatRatingBundle() throws Exception
+	{
+		int threatId = 68;
+		int targetId = 99;
+		int defaultId = 929;
+		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultId);
+		storage.writeThreatRatingBundle(bundle);
+		
+		ThreatRatingBundle got = storage.readThreatRatingBundle(threatId, targetId);
+		assertEquals("didn't read?", defaultId, got.getValueId(38838));
+		
+		assertNull("didn't return null for non-existent bundle?", storage.readThreatRatingBundle(282, 2995));
 	}
 	
 	public void testWriteAndReadDiagram() throws Exception

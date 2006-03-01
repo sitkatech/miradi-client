@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.json.JSONObject;
@@ -323,6 +324,20 @@ public class ProjectServer
 		manifest.write(getLinkageManifestFile());
 	}
 	
+	public void writeThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
+	{
+		getThreatRatingsDirectory().mkdirs();
+		JSONFile.write(getThreatBundleFile(bundle.getThreatId(), bundle.getTargetId()), bundle.toJson());
+	}
+	
+	public ThreatRatingBundle readThreatRatingBundle(int threatId, int targetId) throws Exception
+	{
+		File threatBundleFile = getThreatBundleFile(threatId, targetId);
+		if(!threatBundleFile.exists())
+			return null;
+		return new ThreatRatingBundle(JSONFile.read(threatBundleFile));
+	}
+	
 	
 	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
 	{
@@ -388,6 +403,11 @@ public class ProjectServer
 		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
 	}
 	
+	private File getThreatRatingsDirectory()
+	{
+		return new File(getJsonDirectory(), "threatratings");
+	}
+	
 	private File getVersionFile()
 	{
 		return new File(getJsonDirectory(), "version");
@@ -401,6 +421,12 @@ public class ProjectServer
 	private File getThreatRatingFrameworkFile()
 	{
 		return new File(getJsonDirectory(), "threatframework");
+	}
+	
+	private File getThreatBundleFile(int threatId, int targetId)
+	{
+		String bundleKey = ThreatRatingFramework.getBundleKey(threatId, targetId);
+		return new File(getThreatRatingsDirectory(), bundleKey);
 	}
 	
 	private File getNodeManifestFile()

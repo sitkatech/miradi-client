@@ -32,7 +32,7 @@ public class ThreatRatingSummaryCell extends JPanel
 		add(label);
 	}
 	
-	public void dataHasChanged()
+	public void dataHasChanged() throws Exception
 	{
 		ThreatRatingFramework framework = model.getProject().getThreatRatingFramework();
 		

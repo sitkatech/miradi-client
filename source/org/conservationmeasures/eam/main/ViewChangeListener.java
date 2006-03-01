@@ -7,5 +7,5 @@ package org.conservationmeasures.eam.main;
 
 public interface ViewChangeListener
 {
-	public void switchToView(String viewName);
+	public void switchToView(String viewName) throws Exception;
 }

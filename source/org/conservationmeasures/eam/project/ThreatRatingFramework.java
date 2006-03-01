@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -69,6 +70,11 @@ public class ThreatRatingFramework
 		int type = ObjectType.THREAT_RATING_CRITERION;
 		int createdId = project.createObject(type);
 		project.setObjectData(type, createdId, ThreatRatingCriterion.TAG_LABEL, label);
+	}
+	
+	public int getBundleCount()
+	{
+		return bundles.size();
 	}
 
 	public ThreatRatingValueOption[] getValueOptions()
@@ -240,7 +246,7 @@ public class ThreatRatingFramework
 		return -1;
 	}
 	
-	public ThreatRatingBundle getBundle(int threatId, int targetId)
+	public ThreatRatingBundle getBundle(int threatId, int targetId) throws Exception
 	{
 		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(getBundleKey(threatId, targetId));
 		if(existing != null)
@@ -249,16 +255,28 @@ public class ThreatRatingFramework
 		int defaultValueId = ((ThreatRatingValueOption)optionPool.get(0)).getId();
 		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
 		saveBundle(newBundle);
+		saveFramework();
 		return newBundle;
 	}
+	
+	public void saveFramework() throws IOException
+	{
+		getDatabase().writeThreatRatingFramework(this);
+	}
 
-	public void saveBundle(ThreatRatingBundle newBundle)
+	public void saveBundle(ThreatRatingBundle newBundle) throws Exception
+	{
+		getDatabase().writeThreatRatingBundle(newBundle);
+		memorize(newBundle);
+	}
+
+	private void memorize(ThreatRatingBundle newBundle)
 	{
 		String key = getBundleKey(newBundle.getThreatId(), newBundle.getTargetId());
 		bundles.put(key, newBundle);
 	}
 
-	private String getBundleKey(int threatId, int targetId)
+	public static String getBundleKey(int threatId, int targetId)
 	{
 		String key = Integer.toString(threatId) + "-" + Integer.toString(targetId);
 		return key;
@@ -269,13 +287,24 @@ public class ThreatRatingFramework
 		JSONObject json = new JSONObject();
 		json.put(TAG_CRITERION_IDS, criteria.toJson());
 		json.put(TAG_VALUE_OPTION_IDS, options.toJson());
+		JSONArray bundleKeys = new JSONArray();
+		Iterator iter = bundles.keySet().iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingBundle bundle = (ThreatRatingBundle)bundles.get(iter.next());
+			JSONObject pair = new JSONObject();
+			pair.put(TAG_BUNDLE_THREAT_ID, bundle.getThreatId());
+			pair.put(TAG_BUNDLE_TARGET_ID, bundle.getTargetId());
+			bundleKeys.put(pair);
+		}
+		json.put(TAG_BUNDLE_KEYS, bundleKeys);
 		return json;
 	}
 	
-	public void load() throws IOException, ParseException
+	public void load() throws Exception
 	{
 		clear();
-		ProjectServer db = project.getDatabase();
+		ProjectServer db = getDatabase();
 		JSONObject json = db.readRawThreatRatingFramework();
 		if(json == null)
 			return;
@@ -287,10 +316,29 @@ public class ThreatRatingFramework
 		options = new IdList(json.getJSONObject(TAG_VALUE_OPTION_IDS));
 		for(int i = 0; i < options.size(); ++i)
 			optionPool.add(db.readObject(ObjectType.THREAT_RATING_VALUE_OPTION, options.get(i)));
+		
+		JSONArray bundleKeys = json.getJSONArray(TAG_BUNDLE_KEYS);
+		for(int i = 0; i < bundleKeys.length(); ++i)
+		{
+			JSONObject pair = bundleKeys.getJSONObject(i);
+			int threatId = pair.getInt(TAG_BUNDLE_THREAT_ID);
+			int targetId = pair.getInt(TAG_BUNDLE_TARGET_ID);
+			ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
+			memorize(bundle);
+		}
+	}
+
+	private ProjectServer getDatabase()
+	{
+		ProjectServer db = project.getDatabase();
+		return db;
 	}
 	
 	public static final String TAG_CRITERION_IDS = "CriterionIds";
 	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
+	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
+	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
+	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
 	private Project project;
 	private IdList criteria;

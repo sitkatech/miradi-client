@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 
@@ -44,6 +45,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("didn't jsonize criteria?", framework.getCriteria().length, criterionIds.size());
 		IdList valueOptionIds = new IdList(json.getJSONObject(ThreatRatingFramework.TAG_VALUE_OPTION_IDS));
 		assertEquals("didn't jsonize value options?", framework.getValueOptions().length, valueOptionIds.size());
+		JSONArray bundleKeys = json.getJSONArray(ThreatRatingFramework.TAG_BUNDLE_KEYS);
+		assertEquals("didn't jsonize bundle keys?", framework.getBundleCount(), bundleKeys.length());
 	}
 	
 	public void testWriteAndRead() throws Exception
@@ -54,12 +57,21 @@ public class TestThreatRatingFramework extends EAMTestCase
 			Project realProject = new Project();
 			realProject.createOrOpen(tempDir);
 			int createdId = realProject.createObject(ObjectType.THREAT_RATING_CRITERION);
+			
+			int threatId = 283;
+			int targetId = 983;
+			ThreatRatingBundle bundle = realProject.getThreatRatingFramework().getBundle(threatId, targetId);
+			bundle.setValueId(createdId, 838);
+			realProject.getThreatRatingFramework().saveBundle(bundle);
+			realProject.getDatabase().writeThreatRatingFramework(realProject.getThreatRatingFramework());
 			realProject.close();
 
 			Project loadedProject = new Project();
 			loadedProject.createOrOpen(tempDir);
 			ThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
+			ThreatRatingBundle gotBundle = loadedProject.getThreatRatingFramework().getBundle(threatId, targetId);
+			assertEquals("didn't load bundles?", bundle.getValueId(createdId), gotBundle.getValueId(createdId));
 			loadedProject.close();
 		}
 		finally
@@ -114,6 +126,9 @@ public class TestThreatRatingFramework extends EAMTestCase
 		int valueId = 639;
 		
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+		assertNotNull("Didn't write bundle?", project.getDatabase().readThreatRatingBundle(threatId, targetId));
+		
+		
 		bundle.setValueId(criterionId, valueId);
 		ThreatRatingBundle reGot = framework.getBundle(threatId, targetId);
 		assertEquals("did't get same bundle?", bundle.getValueId(criterionId), reGot.getValueId(criterionId));
