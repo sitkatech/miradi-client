@@ -18,7 +18,6 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -33,15 +32,8 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	{
 		super(mainWindowToUse);
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
-
 		setLayout(new BorderLayout());
-
-		Project project = getProject();
-		model = new ThreatMatrixTableModel(project);
-		
-		project.addViewChangeListener(this);
-		
-		summaryCells = new HashSet();
+		getProject().addViewChangeListener(this);
 	}
 
 	public String cardName()
@@ -60,6 +52,9 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		if(!isSwitchingToThisView)
 			return;
 		
+		model = new ThreatMatrixTableModel(getProject());
+		summaryCells = new HashSet();
+
 		int rows = model.getThreatCount() + 4;
 		int columns = model.getTargetCount() + 4;
 		Box[][] cells = new Box[rows][columns];
@@ -76,17 +71,29 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			}
 		}
 			
+		populateThreatSummaries(cells);
+		populateTargetSummaries(cells);
+		populateBundleCells(cells);
+
+		removeAll();
+		add(new UiScrollPane(grid), BorderLayout.CENTER);
+	}
+
+	private void populateBundleCells(Box[][] cells)
+	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			Box header = cells[2 + threatIndex][0];
-			header.add(createLabel(model.getThreatName(threatIndex)));
-			
-			Box footer = cells[2 + threatIndex][3 + model.getTargetCount()];
-			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
-			footer.add(summaryCell);
-			summaryCells.add(summaryCell);
+			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+			{
+				Box cell = cells[2 + threatIndex][2 + targetIndex];
+				if(model.isActiveCell(threatIndex, targetIndex))
+					cell.add(createBundleCell(threatIndex, targetIndex));
+			}
 		}
-			
+	}
+
+	private void populateTargetSummaries(Box[][] cells)
+	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
 			Box header = cells[0][2 + targetIndex];
@@ -97,19 +104,20 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			footer.add(summaryCell);
 			summaryCells.add(summaryCell);
 		}
-	
+	}
+
+	private void populateThreatSummaries(Box[][] cells)
+	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-			{
-				Box cell = cells[2 + threatIndex][2 + targetIndex];
-				if(model.isActiveCell(threatIndex, targetIndex))
-					cell.add(createBundleCell(threatIndex, targetIndex));
-			}
+			Box header = cells[2 + threatIndex][0];
+			header.add(createLabel(model.getThreatName(threatIndex)));
+			
+			Box footer = cells[2 + threatIndex][3 + model.getTargetCount()];
+			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
+			footer.add(summaryCell);
+			summaryCells.add(summaryCell);
 		}
-
-		removeAll();
-		add(new UiScrollPane(grid), BorderLayout.CENTER);
 	}
 
 	public void cellHasChanged()

@@ -60,9 +60,12 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	{
 		int id = 32;
 		String label = "Text";
-		ThreatRatingCriterion a = new ThreatRatingCriterion(id, label);
-		ThreatRatingCriterion b = new ThreatRatingCriterion(id, "other label");
-		ThreatRatingCriterion c = new ThreatRatingCriterion(id + 1, label);
+		ThreatRatingCriterion a = new ThreatRatingCriterion(id);
+		a.setData(ThreatRatingCriterion.TAG_LABEL, label);
+		ThreatRatingCriterion b = new ThreatRatingCriterion(id);
+		b.setData(ThreatRatingCriterion.TAG_LABEL, "other label");
+		ThreatRatingCriterion c = new ThreatRatingCriterion(id + 1);
+		c.setData(ThreatRatingCriterion.TAG_LABEL, label);
 		assertEquals("id same not good enough?", a, b);
 		assertNotEquals("id different still equals?", a, c);
 		assertNotEquals("different type equals?", a, new Object());

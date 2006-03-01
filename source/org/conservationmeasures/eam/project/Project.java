@@ -244,6 +244,12 @@ public class Project
 		finishOpening();
 	}
 
+	private void createDefaultObjectsIfNeeded()
+	{
+		if(threatRatingFramework.getCriteria().length == 0)
+			threatRatingFramework.createDefaultObjects();
+	}
+
 	private void openProject(File projectDirectory) throws Exception
 	{
 		ProjectServer db = getDatabase();
@@ -265,8 +271,6 @@ public class Project
 	private void createProject(File projectDirectory) throws Exception
 	{
 		getDatabase().create(projectDirectory);
-		getThreatRatingFramework().createDefaultObjects();
-
 	}
 	
 	private void loadProjectInfo() throws IOException, ParseException
@@ -276,8 +280,6 @@ public class Project
 	
 	private void loadThreatRatingFramework()
 	{
-		if(threatRatingFramework.getCriteria().length == 0)
-			threatRatingFramework.createDefaultObjects();
 	}
 	
 	private void loadNodePool() throws IOException, ParseException
@@ -341,6 +343,8 @@ public class Project
 
 	protected void finishOpening() throws IOException
 	{
+		createDefaultObjectsIfNeeded();
+
 		database.writeVersion();
 		String currentView = getCurrentView();
 		if(currentView.length() == 0)

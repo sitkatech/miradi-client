@@ -11,13 +11,8 @@ public class ThreatRatingCriterion
 {
 	public ThreatRatingCriterion(int idToUse)
 	{
-		this(idToUse, "Unknown");
-	}
-	
-	public ThreatRatingCriterion(int idToUse, String labelToUse)
-	{
 		id = idToUse;
-		label = labelToUse;
+		label = "Unknown";
 	}
 	
 	public ThreatRatingCriterion(JSONObject json)
