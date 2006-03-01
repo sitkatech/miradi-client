@@ -42,7 +42,15 @@ public class ProjectServerForTesting extends ProjectServer
 		super.writeNode(node);
 		++callsToWriteNode;
 	}
+	
+	
 
+	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
+	{
+		super.writeThreatRatingFramework(framework);
+		++callsToWriteThreatRatingFramework;
+	}
+	
 	public void close() throws IOException
 	{
 		super.close();
@@ -53,4 +61,5 @@ public class ProjectServerForTesting extends ProjectServer
 
 	File eamDir;
 	public int callsToWriteNode;
+	public int callsToWriteThreatRatingFramework;
 }

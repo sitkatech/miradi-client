@@ -7,25 +7,25 @@ package org.conservationmeasures.eam.objects;
 
 import org.json.JSONObject;
 
-public class ThreatRatingCriterion
+public class ThreatRatingCriterion extends EAMObject
 {
 	public ThreatRatingCriterion(int idToUse)
 	{
-		id = idToUse;
+		super(idToUse);
 		label = "Unknown";
 	}
 	
 	public ThreatRatingCriterion(JSONObject json)
 	{
-		id = json.getInt(TAG_ID);
+		super(json);
 		label = json.getString(TAG_LABEL);
 	}
 	
-	public int getId()
+	public int getType()
 	{
-		return id;
+		return ObjectType.THREAT_RATING_CRITERION;
 	}
-	
+
 	public String getLabel()
 	{
 		return label;
@@ -58,16 +58,13 @@ public class ThreatRatingCriterion
 	
 	public JSONObject toJson()
 	{
-		JSONObject json = new JSONObject();
-		json.put(TAG_ID, getId());
+		JSONObject json = super.toJson();
 		json.put(TAG_LABEL, getLabel());
-		
+
 		return json;
 	}
 	
-	private static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
-	int id;
 	String label;
 }

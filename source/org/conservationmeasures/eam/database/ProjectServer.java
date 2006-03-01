@@ -19,7 +19,9 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.ProjectInfo;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.json.JSONObject;
 
 public class ProjectServer
@@ -151,11 +153,8 @@ public class ProjectServer
 
 	private void createJsonDirectories()
 	{
-		getNodesDirectory().mkdirs();
-		getLinkagesDirectory().mkdirs();
-		getDiagramsDirectory().mkdirs();
+		getJsonDirectory().mkdirs();
 	}
-	
 
 	public Vector loadCommands() throws IOException, UnknownCommandException
 	{
@@ -201,6 +200,7 @@ public class ProjectServer
 	
 	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
 	{
+		getNodesDirectory().mkdirs();
 		int id = node.getId();
 		JSONFile.write(getNodeFile(id), node.toJson());
 		addToNodeManifest(id);
@@ -251,6 +251,7 @@ public class ProjectServer
 	
 	public void writeLinkage(ConceptualModelLinkage linkage) throws IOException, ParseException
 	{
+		getLinkagesDirectory().mkdirs();
 		int id = linkage.getId();
 		JSONFile.write(getLinkageFile(id), linkage.toJson());
 		addToLinkageManifest(id);
@@ -282,6 +283,7 @@ public class ProjectServer
 	
 	public void writeDiagram(DiagramModel model) throws IOException
 	{
+		getDiagramsDirectory().mkdirs();
 		JSONFile.write(getDiagramFile(), model.toJson());
 	}
 	
@@ -320,6 +322,41 @@ public class ProjectServer
 	{
 		manifest.write(getLinkageManifestFile());
 	}
+	
+	
+	public void writeThreatRatingFramework(ThreatRatingFramework framework) throws IOException
+	{
+		getJsonDirectory().mkdirs();
+		JSONFile.write(getThreatRatingFrameworkFile(), framework.toJson());
+		
+	}
+	
+	public JSONObject readRawThreatRatingFramework() throws IOException, ParseException
+	{
+		if(!getThreatRatingFrameworkFile().exists())
+			return null;
+		
+		return JSONFile.read(getThreatRatingFrameworkFile());
+	}
+
+	
+	
+	public EAMObject readObject(int type, int id) throws IOException, ParseException
+	{
+		return EAMObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
+	}
+	
+	public void writeObject(EAMObject object) throws IOException
+	{
+		getObjectDirectory(object.getType()).mkdirs();
+		JSONFile.write(getObjectFile(object.getType(), object.getId()), object.toJson());	
+	}
+	
+	public void deleteObject(int type, int id)
+	{
+		getObjectFile(type, id).delete();
+	}
+	
 
 	private static File getDatabaseFileBase(File directory)
 	{
@@ -346,6 +383,11 @@ public class ProjectServer
 		return new File(getJsonDirectory(), "diagrams");
 	}
 	
+	private File getObjectDirectory(int type)
+	{
+		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
+	}
+	
 	private File getVersionFile()
 	{
 		return new File(getJsonDirectory(), "version");
@@ -354,6 +396,11 @@ public class ProjectServer
 	private File getProjectInfoFile()
 	{
 		return new File(getJsonDirectory(), "project");
+	}
+	
+	private File getThreatRatingFrameworkFile()
+	{
+		return new File(getJsonDirectory(), "threatframework");
 	}
 	
 	private File getNodeManifestFile()
@@ -379,6 +426,11 @@ public class ProjectServer
 	private File getDiagramFile()
 	{
 		return new File(getDiagramsDirectory(), "main");
+	}
+	
+	private File getObjectFile(int type, int id)
+	{
+		return new File(getObjectDirectory(type), Integer.toString(id));
 	}
 	
 	protected void createCommandsTable() throws IOException

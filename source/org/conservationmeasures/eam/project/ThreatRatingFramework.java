@@ -6,15 +6,19 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.json.JSONObject;
 
 
 public class ThreatRatingFramework
@@ -23,6 +27,11 @@ public class ThreatRatingFramework
 	{
 		project = owningProject;
 		
+		clear();
+	}
+
+	public void clear()
+	{
 		criteria = new IdList();
 		criterionPool = new Vector();
 		
@@ -32,7 +41,7 @@ public class ThreatRatingFramework
 		bundles = new HashMap();
 	}
 	
-	public void createDefaultObjects()
+	public void createDefaultObjects() throws IOException
 	{
 		createDefaultCriterion(EAM.text("Label|Scope")); 
 		createDefaultCriterion(EAM.text("Label|Severity"));
@@ -46,7 +55,7 @@ public class ThreatRatingFramework
 		createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
 	}
 
-	private void createDefaultValueOption(String label, int numericValue, Color color)
+	private void createDefaultValueOption(String label, int numericValue, Color color) throws IOException
 	{
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
 		int createdId = project.createObject(type);
@@ -55,7 +64,7 @@ public class ThreatRatingFramework
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 	}
 
-	private void createDefaultCriterion(String label)
+	private void createDefaultCriterion(String label) throws IOException
 	{
 		int type = ObjectType.THREAT_RATING_CRITERION;
 		int createdId = project.createObject(type);
@@ -244,6 +253,34 @@ public class ThreatRatingFramework
 		bundles.put(key, newBundle);
 		return newBundle;
 	}
+	
+	public JSONObject toJson()
+	{
+		JSONObject json = new JSONObject();
+		json.put(TAG_CRITERION_IDS, criteria.toJson());
+		json.put(TAG_VALUE_OPTION_IDS, options.toJson());
+		return json;
+	}
+	
+	public void load() throws IOException, ParseException
+	{
+		clear();
+		ProjectServer db = project.getDatabase();
+		JSONObject json = db.readRawThreatRatingFramework();
+		if(json == null)
+			return;
+
+		criteria = new IdList(json.getJSONObject(TAG_CRITERION_IDS));
+		for(int i = 0; i < criteria.size(); ++i)
+			criterionPool.add(db.readObject(ObjectType.THREAT_RATING_CRITERION, criteria.get(i)));
+
+		options = new IdList(json.getJSONObject(TAG_VALUE_OPTION_IDS));
+		for(int i = 0; i < options.size(); ++i)
+			optionPool.add(db.readObject(ObjectType.THREAT_RATING_VALUE_OPTION, options.get(i)));
+	}
+	
+	public static final String TAG_CRITERION_IDS = "CriterionIds";
+	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	
 	private Project project;
 	private IdList criteria;

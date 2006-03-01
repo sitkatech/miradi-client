@@ -34,7 +34,7 @@ public class ProjectForTesting extends Project
 		return (Command)commandStack.remove(commandStack.size()-1);
 	}
 	
-	ProjectServerForTesting getTestDatabase()
+	public ProjectServerForTesting getTestDatabase()
 	{
 		return (ProjectServerForTesting)getDatabase();
 	}

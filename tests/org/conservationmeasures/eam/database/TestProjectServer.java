@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 
@@ -170,6 +171,15 @@ public class TestProjectServer extends EAMTestCase
 			assertEquals("node data not right?", expectedNode.getText(), gotNode.getText());
 		}
 		
+		project.close();
+	}
+	
+	public void testReadAndWriteThreatRatingFramework() throws Exception
+	{
+		ProjectForTesting project = new ProjectForTesting(getName());
+		ProjectServerForTesting db = project.getTestDatabase();
+		JSONObject got = db.readRawThreatRatingFramework();
+		assertEquals(got.toString(), project.getThreatRatingFramework().toJson().toString());
 		project.close();
 	}
 	

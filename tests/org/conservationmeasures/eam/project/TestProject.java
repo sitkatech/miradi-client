@@ -43,6 +43,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -67,6 +70,52 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testThreatRatingCriterionObjects() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_CRITERION;
+		int createdId = project.createObject(type);
+		ProjectServer db = project.getDatabase();
+		db.readObject(type, createdId);
+		
+		String tag = ThreatRatingCriterion.TAG_LABEL;
+		project.setObjectData(type, createdId, tag, "data");
+		ThreatRatingCriterion withData = (ThreatRatingCriterion)db.readObject(type, createdId);
+		assertEquals("didn't write/read data?", "data", withData.getData(tag));
+		
+		project.deleteObject(type, createdId);
+		try
+		{
+			db.readObject(type, createdId);
+			fail("Should have thrown reading deleted object");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+	}
+	
+	public void testThreatRatingValueOptionObjects() throws Exception
+	{
+		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int createdId = project.createObject(type);
+		ProjectServer db = project.getDatabase();
+		db.readObject(type, createdId);
+		
+		String tag = ThreatRatingValueOption.TAG_LABEL;
+		project.setObjectData(type, createdId, tag, "data");
+		ThreatRatingValueOption withData = (ThreatRatingValueOption)db.readObject(type, createdId);
+		assertEquals("didn't write/read data?", "data", withData.getData(tag));
+		
+		project.deleteObject(type, createdId);
+		try
+		{
+			db.readObject(type, createdId);
+			fail("Should have thrown reading deleted object");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
 	}
 	
 	public void testApplySnapToOldUnsnappedCommands() throws Exception
@@ -447,6 +496,25 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}
 	
+	public void testThreatRatingFrameworkGetsWritten() throws Exception
+	{
+		ProjectServerForTesting database = project.getTestDatabase();
+		database.callsToWriteThreatRatingFramework = 0;
+		
+		int criterionId = project.createObject(ObjectType.THREAT_RATING_CRITERION);
+		assertEquals(1, database.callsToWriteThreatRatingFramework);
+			
+		int valueOptionId = project.createObject(ObjectType.THREAT_RATING_VALUE_OPTION);
+		assertEquals(2, database.callsToWriteThreatRatingFramework);
+			
+		project.deleteObject(ObjectType.THREAT_RATING_CRITERION, criterionId);
+		assertEquals(3, database.callsToWriteThreatRatingFramework);
+			
+		project.deleteObject(ObjectType.THREAT_RATING_VALUE_OPTION, valueOptionId);
+		assertEquals(4, database.callsToWriteThreatRatingFramework);
+			
+	}
+	
 	public void testNodesGetWritten() throws Exception
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
@@ -575,9 +643,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
-			// TODO: The 9 below will go away when we are saving and loading default threat rating framework objects
-			// should happen 2006-03-01
-			int expectedAnnotationId = 9 + diskProject.getAnnotationIdAssigner().takeNextId();
+			int expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
 			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally

@@ -6,11 +6,16 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.io.File;
 
+import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.json.JSONObject;
+import org.martus.util.DirectoryUtils;
 
 public class TestThreatRatingFramework extends EAMTestCase
 {
@@ -30,6 +35,37 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		project.close();
 		super.tearDown();
+	}
+	
+	public void testJson()
+	{
+		JSONObject json = framework.toJson();
+		IdList criterionIds = new IdList(json.getJSONObject(ThreatRatingFramework.TAG_CRITERION_IDS));
+		assertEquals("didn't jsonize criteria?", framework.getCriteria().length, criterionIds.size());
+		IdList valueOptionIds = new IdList(json.getJSONObject(ThreatRatingFramework.TAG_VALUE_OPTION_IDS));
+		assertEquals("didn't jsonize value options?", framework.getValueOptions().length, valueOptionIds.size());
+	}
+	
+	public void testWriteAndRead() throws Exception
+	{
+		File tempDir = createTempDirectory();
+		try
+		{
+			Project realProject = new Project();
+			realProject.createOrOpen(tempDir);
+			int createdId = realProject.createObject(ObjectType.THREAT_RATING_CRITERION);
+			realProject.close();
+
+			Project loadedProject = new Project();
+			loadedProject.createOrOpen(tempDir);
+			ThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
+			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
+			loadedProject.close();
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDir);
+		}
 	}
 	
 	public void testGetBundleValue()

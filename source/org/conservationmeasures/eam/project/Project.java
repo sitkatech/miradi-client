@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.NoProjectView;
@@ -160,36 +161,55 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
-	public int createObject(int objectType)
+	public int createObject(int objectType) throws IOException
 	{
 		return createObject(objectType, IdAssigner.INVALID_ID);
 	}
 	
-	public int createObject(int objectType, int objectId)
+	public int createObject(int objectType, int objectId) throws IOException
 	{
+		int createdId = IdAssigner.INVALID_ID;
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
-				return getThreatRatingFramework().createCriterion(objectId);
+			{
+				createdId = getThreatRatingFramework().createCriterion(objectId);
+				EAMObject newObject = getThreatRatingFramework().getCriterion(createdId);
+				getDatabase().writeObject(newObject);
+				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
+				break;
+			}
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				return getThreatRatingFramework().createValueOption(objectId);
+			{
+				createdId = getThreatRatingFramework().createValueOption(objectId);
+				EAMObject newObject = getThreatRatingFramework().getValueOption(createdId);
+				getDatabase().writeObject(newObject);
+				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
+				break;
+			}
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
 		}
+		
+		return createdId;
 	}
 	
-	public void deleteObject(int objectType, int objectId)
+	public void deleteObject(int objectType, int objectId) throws IOException
 	{
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
 				getThreatRatingFramework().deleteCriterion(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
 				getThreatRatingFramework().deleteValueOption(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 				
 			default:
@@ -197,16 +217,18 @@ public class Project
 		}
 	}
 	
-	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue)
+	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws IOException
 	{
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
 				getThreatRatingFramework().setCriterionData(objectId, fieldTag, dataValue);
+				getDatabase().writeObject(getThreatRatingFramework().getCriterion(objectId));
 				break;
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
 				getThreatRatingFramework().setValueOptionData(objectId, fieldTag, dataValue);
+				getDatabase().writeObject(getThreatRatingFramework().getValueOption(objectId));
 				break;
 				
 			default:
@@ -244,7 +266,7 @@ public class Project
 		finishOpening();
 	}
 
-	private void createDefaultObjectsIfNeeded()
+	private void createDefaultObjectsIfNeeded() throws IOException
 	{
 		if(threatRatingFramework.getCriteria().length == 0)
 			threatRatingFramework.createDefaultObjects();
@@ -278,8 +300,9 @@ public class Project
 		getDatabase().readProjectInfo(projectInfo);
 	}
 	
-	private void loadThreatRatingFramework()
+	private void loadThreatRatingFramework() throws Exception
 	{
+		getThreatRatingFramework().load();
 	}
 	
 	private void loadNodePool() throws IOException, ParseException

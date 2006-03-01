@@ -9,7 +9,7 @@ import java.awt.Color;
 
 import org.json.JSONObject;
 
-public class ThreatRatingValueOption
+public class ThreatRatingValueOption extends EAMObject
 {
 	public ThreatRatingValueOption(int idToUse)
 	{
@@ -18,7 +18,7 @@ public class ThreatRatingValueOption
 	
 	public ThreatRatingValueOption(int idToUse, String labelToUse, int numericToUse, Color colorToUse)
 	{
-		id = idToUse;
+		super(idToUse);
 		label = labelToUse;
 		numeric = numericToUse;
 		color = colorToUse;
@@ -26,15 +26,15 @@ public class ThreatRatingValueOption
 	
 	public ThreatRatingValueOption(JSONObject json)
 	{
-		id = json.getInt(TAG_ID);
+		super(json);
 		label = json.getString(TAG_LABEL);
 		numeric = json.getInt(TAG_NUMERIC);
 		color = new Color(json.getInt(TAG_COLOR));
 	}
 	
-	public int getId()
+	public int getType()
 	{
-		return id;
+		return ObjectType.THREAT_RATING_VALUE_OPTION;
 	}
 	
 	public String getLabel()
@@ -92,8 +92,7 @@ public class ThreatRatingValueOption
 	
 	public JSONObject toJson()
 	{
-		JSONObject json = new JSONObject();
-		json.put(TAG_ID, id);
+		JSONObject json = super.toJson();
 		json.put(TAG_LABEL, label);
 		json.put(TAG_NUMERIC, numeric);
 		json.put(TAG_COLOR, color.getRGB());
@@ -101,12 +100,10 @@ public class ThreatRatingValueOption
 		return json;
 	}
 	
-	private final static String TAG_ID = "Id";
 	final public static String TAG_LABEL = "Label";
 	final public static String TAG_NUMERIC = "Numeric";
 	final public static String TAG_COLOR = "Color";
 	
-	int id;
 	String label;
 	int numeric;
 	Color color;
