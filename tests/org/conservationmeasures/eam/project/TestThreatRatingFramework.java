@@ -23,8 +23,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		framework = new ThreatRatingFramework(project);
-		framework.createDefaultObjects();
+		framework = project.getThreatRatingFramework();
 	}
 	
 	public void tearDown() throws Exception

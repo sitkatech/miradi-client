@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -47,18 +48,18 @@ public class ThreatRatingFramework
 
 	private void createDefaultValueOption(String label, int numericValue, Color color)
 	{
-		int createdId = createValueOption(IdAssigner.INVALID_ID);
-		ThreatRatingValueOption option = getValueOption(createdId);
-		option.setData(ThreatRatingValueOption.TAG_LABEL, label);
-		option.setData(ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
-		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int createdId = project.createObject(type);
+		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_LABEL, label);
+		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
+		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 	}
 
 	private void createDefaultCriterion(String label)
 	{
-		int createdId = createCriterion(IdAssigner.INVALID_ID);
-		ThreatRatingCriterion criterion = getCriterion(createdId);
-		criterion.setData(ThreatRatingCriterion.TAG_LABEL, label);
+		int type = ObjectType.THREAT_RATING_CRITERION;
+		int createdId = project.createObject(type);
+		project.setObjectData(type, createdId, ThreatRatingCriterion.TAG_LABEL, label);
 	}
 
 	public ThreatRatingValueOption[] getValueOptions()

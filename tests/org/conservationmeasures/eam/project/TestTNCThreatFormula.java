@@ -16,8 +16,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		super.setUp();
 		
 		project = new ProjectForTesting(getName());
-		framework = new ThreatRatingFramework(project);
-		framework.createDefaultObjects();
+		framework = project.getThreatRatingFramework();
 		
 		formula = new TNCThreatFormula(framework);
 	}
