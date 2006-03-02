@@ -46,12 +46,12 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 	
 	public void actionPerformed(ActionEvent event)
 	{
-		JDialog threatRatingDialog = new ThreatRatingBundleDialog(framework, bundle);
-		threatRatingDialog.setLocationRelativeTo(this);
-		Utilities.fitInScreen(threatRatingDialog);
-		threatRatingDialog.show();
 		try
 		{
+			JDialog threatRatingDialog = new ThreatRatingBundleDialog(framework, bundle);
+			threatRatingDialog.setLocationRelativeTo(this);
+			Utilities.fitInScreen(threatRatingDialog);
+			threatRatingDialog.show();
 			refreshCell();
 		}
 		catch (Exception e)

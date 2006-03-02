@@ -33,6 +33,38 @@ public class TestThreatRatingBundle extends EAMTestCase
 		assertEquals("didn't remember value?", valueId, bundle.getValueId(criterionId));
 	}
 	
+	public void testPullDataFrom() throws Exception
+	{
+		int threatId = 5;
+		int targetId = 9;
+		int defaultValueId = 29;
+		int threatId2 = 7;
+		int targetId2 = 8;
+		int defaultValueId2 = 59;
+		
+		int criterionId = 34;
+		int valueId = 10;
+
+		ThreatRatingBundle originalBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
+		originalBundle.setValueId(criterionId, valueId);
+		
+		ThreatRatingBundle copiedBundle = new ThreatRatingBundle(threatId2, targetId2, defaultValueId2);
+		copiedBundle.pullDataFrom(originalBundle);
+		
+		verifyBundlesEqual(criterionId, originalBundle, copiedBundle);
+		
+		ThreatRatingBundle copyConstructorBundle = new ThreatRatingBundle(originalBundle);
+		verifyBundlesEqual(criterionId, originalBundle, copyConstructorBundle);
+	}
+
+	private void verifyBundlesEqual(int criterionId, ThreatRatingBundle originalBundle, ThreatRatingBundle copiedBundle)
+	{
+		assertEquals("threatId wrong?", originalBundle.getThreatId(), copiedBundle.getThreatId());
+		assertEquals("targetId wrong?", originalBundle.getTargetId(), copiedBundle.getTargetId());
+		assertEquals("defaultValueId wrong?", originalBundle.getDefaultValueId(), copiedBundle.getDefaultValueId());
+		assertEquals("valueId wrong?", originalBundle.getValueId(criterionId), copiedBundle.getValueId(criterionId));
+	}
+	
 	public void testJson() throws Exception
 	{
 		int threatId = 5;

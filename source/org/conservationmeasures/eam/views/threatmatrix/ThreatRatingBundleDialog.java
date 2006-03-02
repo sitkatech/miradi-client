@@ -10,6 +10,7 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
 import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -17,39 +18,61 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiButton;
 
-public class ThreatRatingBundleDialog extends JDialog implements ActionListener
+public class ThreatRatingBundleDialog extends JDialog
 {
-	public ThreatRatingBundleDialog(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
+	public ThreatRatingBundleDialog(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
 		framework = frameworkToUse;
-		bundle = bundleToUse;
+		originalBundle = bundleToUse;
+		workingBundle = new ThreatRatingBundle(originalBundle);
 		
 		setModal(true);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
-		contentPane.add(new ThreatRatingPanel(frameworkToUse, bundleToUse), BorderLayout.CENTER);
+		contentPane.add(new ThreatRatingPanel(frameworkToUse, workingBundle), BorderLayout.CENTER);
+		
+		Box buttonBox = Box.createHorizontalBox();
 		UiButton okButton = new UiButton("OK");
-		okButton.addActionListener(this);
-		contentPane.add(okButton, BorderLayout.AFTER_LAST_LINE);
+		okButton.addActionListener(new OkButtonListener());
+		UiButton cancelButton = new UiButton("Cancel");
+		cancelButton.addActionListener(new ButtonListener());
+		buttonBox.add(Box.createHorizontalGlue());
+		buttonBox.add(okButton);
+		buttonBox.add(cancelButton);
+		buttonBox.add(Box.createHorizontalGlue());
+		contentPane.add(buttonBox, BorderLayout.AFTER_LAST_LINE);
 		pack();
 		
 		
 	}
-
-	public void actionPerformed(ActionEvent event)
+	
+	public class ButtonListener implements ActionListener
 	{
-		try
+		public void actionPerformed(ActionEvent event)
 		{
-			framework.saveBundle(bundle);
 			dispose();
 		}
-		catch (Exception e)
+	}
+
+	public class OkButtonListener extends ButtonListener
+	{
+		public void actionPerformed(ActionEvent event)
 		{
-			EAM.logException(e);
+			try
+			{
+				originalBundle.pullDataFrom(workingBundle);
+				framework.saveBundle(originalBundle);
+				super.actionPerformed(event);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+			
 		}
-		
 	}
 	
 	ThreatRatingFramework framework;
-	ThreatRatingBundle bundle;
+	ThreatRatingBundle originalBundle;
+	ThreatRatingBundle workingBundle;
 }

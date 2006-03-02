@@ -21,10 +21,22 @@ public class ThreatRatingBundle
 		defaultValueId = defaultValueIdToUse;		
 	}
 	
+	public ThreatRatingBundle(ThreatRatingBundle otherBundle) throws Exception
+	{
+		this();
+		
+		pullDataFrom(otherBundle);
+	}
+	
 	public ThreatRatingBundle(JSONObject json)
 	{
 		this();
 		
+		pullDataFrom(json);
+	}
+
+	private void pullDataFrom(JSONObject json)
+	{
 		threatId = json.getInt(TAG_THREAT_ID);
 		targetId = json.getInt(TAG_TARGET_ID);
 		defaultValueId = json.getInt(TAG_DEFAULT_VALUE_ID);
@@ -40,6 +52,11 @@ public class ThreatRatingBundle
 		}
 	}
 	
+	public void pullDataFrom(ThreatRatingBundle otherBundle) throws Exception
+	{
+		pullDataFrom(otherBundle.toJson());
+	}
+	
 	ThreatRatingBundle()
 	{
 		map = new HashMap();
@@ -53,6 +70,11 @@ public class ThreatRatingBundle
 	public int getTargetId()
 	{
 		return targetId;
+	}
+	
+	public int getDefaultValueId()
+	{
+		return defaultValueId;
 	}
 	
 	public int getValueId(int criterionId)
