@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewBudget;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
+import org.conservationmeasures.eam.actions.ActionViewMap;
 import org.conservationmeasures.eam.actions.ActionViewTable;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
@@ -96,6 +97,7 @@ abstract public class UmbrellaView extends JPanel
 		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());
 		addDoerToMap(ActionViewBudget.class, new ViewBudget());
 		addDoerToMap(ActionViewTask.class, new ViewTask());
+		addDoerToMap(ActionViewMap.class, new ViewMap());
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)
