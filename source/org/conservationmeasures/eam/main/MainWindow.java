@@ -20,6 +20,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -28,6 +29,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.table.TableView;
@@ -64,6 +66,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		interviewView = new InterviewView(this);
 		tableView = new TableView(this);
 		threatMatrixView = new ThreatMatrixView(this);
+		budgetView = new BudgetView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -72,6 +75,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(interviewView, interviewView.cardName());
 		viewHolder.add(tableView, tableView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
+		viewHolder.add(budgetView, budgetView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -100,7 +104,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
 		toolBarBox.removeAll();
-		toolBarBox.add(getCurrentView().getToolBar());
+		JToolBar toolBar = getCurrentView().getToolBar();
+		if(toolBar == null)
+			throw new RuntimeException("View must have toolbar");
+		toolBarBox.add(toolBar);
 		toolBarBox.repaint();
 	}
 
@@ -196,6 +203,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(noProjectView);
 		else if(viewName.equals(threatMatrixView.cardName()))
 			setCurrentView(threatMatrixView);
+		else if(viewName.equals(budgetView.cardName()))
+			setCurrentView(budgetView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -232,6 +241,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private InterviewView interviewView;
 	private TableView tableView;
 	private ThreatMatrixView threatMatrixView;
+	private BudgetView budgetView;
+	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
 	private JPanel toolBarBox;
