@@ -1,0 +1,4 @@
+Task,Assigned To,Duration (days)
+Meet with funders,Shelly,2
+Mark zone boundaries,Paul,3
+Publicize new hunting policies,Paul,14
