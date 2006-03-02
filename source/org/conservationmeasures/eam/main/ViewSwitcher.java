@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JComboBox;
 
 import org.conservationmeasures.eam.actions.ActionViewBudget;
+import org.conservationmeasures.eam.actions.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewMap;
@@ -32,6 +33,7 @@ public class ViewSwitcher extends JComboBox
 			actions.get(ActionViewTask.class), 
 			actions.get(ActionViewBudget.class), 
 			actions.get(ActionViewMap.class),
+			actions.get(ActionViewCalendar.class),
 		};
 		ViewSwitcher switcher = new ViewSwitcher(views);
 		Action defaultAction = actions.get(defaultActionClass);
