@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.views.task;
 
+import java.awt.BorderLayout;
 import java.io.IOException;
 
 import javax.swing.JLabel;
@@ -7,6 +8,7 @@ import javax.swing.JLabel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiScrollPane;
 import org.martus.util.UnicodeReader;
 
 public class TaskView extends UmbrellaView
@@ -15,9 +17,10 @@ public class TaskView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new TaskToolBar(mainWindowToUse.getActions()));
+		setLayout(new BorderLayout());
 		try
 		{
-			add(new TaskTable());
+			add(new UiScrollPane(new TaskTable()), BorderLayout.CENTER);
 		}
 		catch (IOException e)
 		{

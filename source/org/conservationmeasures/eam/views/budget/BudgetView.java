@@ -1,10 +1,13 @@
 package org.conservationmeasures.eam.views.budget;
 
+import java.awt.BorderLayout;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiScrollPane;
 
 public class BudgetView extends UmbrellaView
 {
@@ -13,7 +16,8 @@ public class BudgetView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
-		add(new BudgetComponent());
+		setLayout(new BorderLayout());
+		add(new UiScrollPane(new BudgetComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 

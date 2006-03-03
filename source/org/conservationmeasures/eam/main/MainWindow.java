@@ -56,7 +56,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		toolBarBox = new ToolBarContainer();
 		mainStatusBar = new MainStatusBar();
 		updateTitle();
-		setSize(new Dimension(700, 500));
+		setSize(new Dimension(900, 700));
 		setJMenuBar(mainMenuBar);
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(toolBarBox, BorderLayout.BEFORE_FIRST_LINE);
