@@ -18,9 +18,7 @@ public class DiagramTarget extends DiagramNode
 
 	public Color getColor()
 	{
-		return COLOR_TARGET;
+		return DiagramConstants.COLOR_TARGET;
 	}
-
-	public static final Color COLOR_TARGET = new Color(153, 255, 153);
 	
 }

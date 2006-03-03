@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
+import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
@@ -22,7 +22,7 @@ public class DirectThreatIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return DiagramFactor.COLOR_DIRECT_THREAT;
+		return DiagramConstants.COLOR_DIRECT_THREAT;
 	}
 
 }

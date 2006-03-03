@@ -18,9 +18,7 @@ public class DiagramIntervention extends DiagramNode
 
 	public Color getColor()
 	{
-		return COLOR_INTERVENTION;
+		return DiagramConstants.COLOR_INTERVENTION;
 	}
-
-	public static final Color COLOR_INTERVENTION = new Color(255, 255, 0);
 
 }

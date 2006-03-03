@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
+import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 
@@ -20,6 +20,6 @@ public class TargetIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return DiagramTarget.COLOR_TARGET;
+		return DiagramConstants.COLOR_TARGET;
 	}
 }
