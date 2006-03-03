@@ -1,15 +1,15 @@
-package org.conservationmeasures.eam.views.calendar;
+package org.conservationmeasures.eam.views.schedule;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class CalendarView extends UmbrellaView
+public class ScheduleView extends UmbrellaView
 {
 
-	public CalendarView(MainWindow mainWindowToUse)
+	public ScheduleView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new CalendarToolBar(mainWindowToUse.getActions()));
+		setToolBar(new ScheduleToolBar(mainWindowToUse.getActions()));
 	}
 
 	public String cardName() 
@@ -19,7 +19,7 @@ public class CalendarView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Calendar";
+		return "Schedule";
 	}
 
 }

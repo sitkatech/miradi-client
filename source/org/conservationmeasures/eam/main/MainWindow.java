@@ -30,10 +30,10 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.budget.BudgetView;
-import org.conservationmeasures.eam.views.calendar.CalendarView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
+import org.conservationmeasures.eam.views.schedule.ScheduleView;
 import org.conservationmeasures.eam.views.table.TableView;
 import org.conservationmeasures.eam.views.task.TaskView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -72,7 +72,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		budgetView = new BudgetView(this);
 		taskView = new TaskView(this);
 		mapView = new MapView(this);
-		calendarView = new CalendarView(this);
+		scheduleView = new ScheduleView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -84,7 +84,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(budgetView, budgetView.cardName());
 		viewHolder.add(taskView, taskView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
-		viewHolder.add(calendarView, calendarView.cardName());
+		viewHolder.add(scheduleView, scheduleView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -218,8 +218,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(taskView);
 		else if(viewName.equals(mapView.cardName()))
 			setCurrentView(mapView);
-		else if(viewName.equals(calendarView.cardName()))
-			setCurrentView(calendarView);
+		else if(viewName.equals(scheduleView.cardName()))
+			setCurrentView(scheduleView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -259,7 +259,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private BudgetView budgetView;
 	private TaskView taskView;
 	private MapView mapView;
-	private CalendarView calendarView;
+	private ScheduleView scheduleView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
