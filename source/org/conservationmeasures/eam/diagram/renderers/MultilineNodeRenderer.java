@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -68,7 +69,13 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 		node = (DiagramNode)view.getCell();
 		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
-		priority = node.getThreatRating();
+		DiagramModel model = (DiagramModel)graphToUse.getModel();
+		ThreatRatingFramework framework = model.getThreatRatingFramework();
+		priority = null;
+		if(node.isDirectThreat())
+			priority = new ThreatRatingValue(framework.getThreatThreatRatingValue(node.getId()));
+		else if(node.isTarget())
+			priority = new ThreatRatingValue(framework.getTargetThreatRatingValue(node.getId()));
 		return this;
 	}
 	

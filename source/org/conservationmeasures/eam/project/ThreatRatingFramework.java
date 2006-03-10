@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -169,6 +170,36 @@ public class ThreatRatingFramework
 		int numericResult = formula.computeBundleValue(bundle);
 		return findValueOptionByNumericValue(numericResult);
 		
+	}
+	
+	public ThreatRatingValueOption getThreatThreatRatingValue(int threatId)
+	{
+		HashSet bundlesForThisThreat = new HashSet();
+		
+		Iterator iter = bundles.values().iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingBundle bundle = (ThreatRatingBundle)iter.next();
+			if(bundle.getThreatId() == threatId)
+				bundlesForThisThreat.add(bundle);
+		}
+		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
+		return getSummaryOfBundles(bundleArray);
+	}
+	
+	public ThreatRatingValueOption getTargetThreatRatingValue(int targetId)
+	{
+		HashSet bundlesForThisThreat = new HashSet();
+		
+		Iterator iter = bundles.values().iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingBundle bundle = (ThreatRatingBundle)iter.next();
+			if(bundle.getTargetId() == targetId)
+				bundlesForThisThreat.add(bundle);
+		}
+		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
+		return getSummaryOfBundles(bundleArray);
 	}
 	
 	public ThreatRatingValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)

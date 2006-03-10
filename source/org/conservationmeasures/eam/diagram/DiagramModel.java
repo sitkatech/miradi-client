@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -53,6 +54,11 @@ public class DiagramModel extends DefaultGraphModel
 	public ProjectScopeBox getProjectScopeBox()
 	{
 		return projectScopeBox;
+	}
+	
+	public ThreatRatingFramework getThreatRatingFramework()
+	{
+		return project.getThreatRatingFramework();
 	}
 
 	public DiagramNode createNode(int id) throws Exception

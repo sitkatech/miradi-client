@@ -48,16 +48,5 @@ public class ThreatRatingValue
 	}
 
 	
-	public boolean isNone()
-	{
-		return true;
-	}
-
-	public boolean isNotUsed()
-	{
-		return true;
-	}
-	
-
 	private ThreatRatingValueOption rating;
 }

@@ -135,6 +135,45 @@ public class TestThreatRatingFramework extends EAMTestCase
 		
 	}
 	
+	public void testGetThreatRatingSummary() throws Exception
+	{
+		framework.createDefaultObjects();
+		
+		int threatId1 = 1;
+		int threatId2 = 2;
+		int targetId1 = 3;
+		int targetId2 = 4;
+
+		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
+		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
+		ThreatRatingValueOption veryHigh = framework.findValueOptionByNumericValue(4);
+		
+		assertEquals("threat1 not none?", none, framework.getThreatThreatRatingValue(threatId1));
+		assertEquals("threat2 not none?", none, framework.getThreatThreatRatingValue(threatId2));
+		assertEquals("target1 not none?", none, framework.getTargetThreatRatingValue(targetId1));
+		assertEquals("target2 not none?", none, framework.getTargetThreatRatingValue(targetId2));
+
+		populateBundle(threatId1, targetId1, veryHigh);
+		populateBundle(threatId1, targetId2, veryHigh);
+		assertEquals("target1 not high?", high, framework.getTargetThreatRatingValue(targetId1));
+		populateBundle(threatId2, targetId1, veryHigh);
+		assertEquals("threat2 not high?", high, framework.getThreatThreatRatingValue(threatId2));
+		populateBundle(threatId2, targetId2, veryHigh);
+		
+		assertEquals("threat1 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId1));
+		assertEquals("threat2 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId2));
+		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId1));
+		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
+	}
+	
+	void populateBundle(int threatId, int targetId, ThreatRatingValueOption value) throws Exception
+	{
+		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+		ThreatRatingCriterion criteria[] = framework.getCriteria();
+		for(int i = 0; i < criteria.length; ++i)
+			bundle.setValueId(criteria[i].getId(), value.getId());
+	}
+	
 	ThreatRatingFramework framework;
 	private ProjectForTesting project;
 }
