@@ -39,14 +39,15 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramModel(Project projectToUse)
 	{
 		project = projectToUse;
-		cellInventory = new CellInventory();
+		clear();
 	}
 	
 	public void clear()
 	{
 		while(getRootCount() > 0)
 			remove(new Object[] {getRootAt(0)});
-		cellInventory.clear();
+
+		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBox(this);
 		insertCellIntoGraph(projectScopeBox);
 	}
