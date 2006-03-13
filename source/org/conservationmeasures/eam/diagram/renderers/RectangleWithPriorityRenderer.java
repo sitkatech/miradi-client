@@ -32,10 +32,13 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		smallRect.x = rect.x;
 		smallRect.y = rect.y;
 		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = rect.height;
+		smallRect.height = PRIORITY_HEIGHT;
 		setPaint(g2, smallRect, priority.getColor());
 		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		g2.setColor(Color.BLACK);
+		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 	}
 
-	private static final int PRIORITY_WIDTH = 6;
+	private static final int PRIORITY_WIDTH = 20;
+	private static final int PRIORITY_HEIGHT = 20;
 }
