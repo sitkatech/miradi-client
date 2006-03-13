@@ -15,6 +15,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -104,6 +105,11 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			footer.add(summaryCell);
 			summaryCells.add(summaryCell);
 		}
+		
+		Box rollUpLabel = cells[0][2 + model.getTargetCount() + 1];
+		JPanel panel = new JPanel();
+		panel.add(new UiLabel(EAM.text("Overall Threat Rating")));
+		rollUpLabel.add(panel);
 	}
 
 	private void populateThreatSummaries(Box[][] cells)
@@ -118,6 +124,12 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			footer.add(summaryCell);
 			summaryCells.add(summaryCell);
 		}
+		
+		Box rollUpLabel = cells[2 + model.getThreatCount() + 1][0];
+		JPanel panel = new JPanel();
+		panel.add(new UiLabel(EAM.text("Overall Target Rating")));
+		rollUpLabel.add(panel);
+		
 	}
 
 	public void cellHasChanged() throws Exception
