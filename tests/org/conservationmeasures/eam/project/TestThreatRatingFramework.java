@@ -106,11 +106,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testThreatRatingCriteria() throws Exception
 	{
 		ThreatRatingCriterion[] criteria = framework.getCriteria();
-		assertEquals("wrong number of default criteria?", 4, criteria.length);
+		assertEquals("wrong number of default criteria?", 3, criteria.length);
 		assertEquals("Scope", criteria[0].getLabel());
 		assertEquals("Severity", criteria[1].getLabel());
-		assertEquals("Custom1", criteria[2].getLabel());
-		assertEquals("Custom2", criteria[3].getLabel());
+		assertEquals("Irreversibility", criteria[2].getLabel());
 	}
 	
 	public void testIdAssignment() throws Exception

@@ -47,8 +47,7 @@ public class ThreatRatingFramework
 	{
 		createDefaultCriterion(EAM.text("Label|Scope")); 
 		createDefaultCriterion(EAM.text("Label|Severity"));
-		createDefaultCriterion(EAM.text("Label|Custom1"));
-		createDefaultCriterion(EAM.text("Label|Custom2"));
+		createDefaultCriterion(EAM.text("Label|Irreversibility"));
 		
 		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
 		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);

@@ -27,6 +27,12 @@ public class TestTNCThreatFormula extends EAMTestCase
 		super.tearDown();
 	}
 	
+	public void testWithOldModel()
+	{
+		String BAD_LABEL = "Non-Existant Label";
+		assertNull("found non-existant criterion?", framework.findCriterionByLabel(BAD_LABEL));
+	}
+	
 	public void testComputeMagnitude()
 	{
 		verifyMagnitudeCalculation(4, 4, 4);
@@ -156,18 +162,24 @@ public class TestTNCThreatFormula extends EAMTestCase
 	{		
 		int scopeId = framework.findCriterionByLabel("Scope").getId();
 		int severityId = framework.findCriterionByLabel("Severity").getId();
-		int urgencyId = framework.findCriterionByLabel("Custom1").getId();
+		int urgencyId = framework.findCriterionByLabel("Irreversibility").getId();
 		
 		int veryHighId = framework.findValueOptionByNumericValue(4).getId();
 		int highId = framework.findValueOptionByNumericValue(3).getId();
+		int none = framework.findValueOptionByNumericValue(0).getId();
 		
-		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2, 3);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2, none);
 		
+		assertEquals("empty bundle value not zero? ", 0, formula.computeBundleValue(bundle));
+
 		bundle.setValueId(scopeId, veryHighId);
 		bundle.setValueId(severityId, veryHighId);
 		bundle.setValueId(urgencyId, highId);
 		
 		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
+		
+		framework.deleteCriterion(urgencyId);
+		assertEquals("bundle missing value not zero?", 0, formula.computeBundleValue(bundle));
 	}
 
 	public void testGetSummaryOfBundles()
