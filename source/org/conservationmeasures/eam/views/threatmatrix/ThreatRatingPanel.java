@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -72,6 +73,7 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 			UiLabel criterionLabel = new UiLabel(criterion.getLabel());
 			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
 			criterionLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
+			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
 
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
 			dropdown.addItemListener(new ValueListener(bundle, criterion));
