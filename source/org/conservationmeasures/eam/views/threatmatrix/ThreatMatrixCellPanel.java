@@ -11,9 +11,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -21,8 +23,9 @@ import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
+	public ThreatMatrixCellPanel(MainWindow mainWindowToUse, ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
+		mainWindow = mainWindowToUse;
 		view = viewToUse;
 		framework = frameworkToUse;
 		bundle = bundleToUse;
@@ -48,7 +51,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 	{
 		try
 		{
-			JDialog threatRatingDialog = new ThreatRatingBundleDialog(framework, bundle);
+			JDialog threatRatingDialog = new ThreatRatingBundleDialog(mainWindow, framework, bundle);
 			threatRatingDialog.setLocationRelativeTo(this);
 			Utilities.fitInScreen(threatRatingDialog);
 			threatRatingDialog.show();
@@ -60,6 +63,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		}
 	}
 	
+	JFrame mainWindow;
 	ThreatMatrixView view;
 	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;

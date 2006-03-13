@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -20,8 +21,9 @@ import org.martus.swing.UiButton;
 
 public class ThreatRatingBundleDialog extends JDialog
 {
-	public ThreatRatingBundleDialog(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
+	public ThreatRatingBundleDialog(JFrame parent, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
+		super(parent);
 		framework = frameworkToUse;
 		originalBundle = bundleToUse;
 		workingBundle = new ThreatRatingBundle(originalBundle);
