@@ -18,16 +18,16 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(MainWindow mainWindowToUse, ThreatMatrixView viewToUse, ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse) throws Exception
+	public ThreatMatrixCellPanel(MainWindow mainWindowToUse, ThreatMatrixView viewToUse, Project projectToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
 		view = viewToUse;
-		framework = frameworkToUse;
+		project = projectToUse;
 		bundle = bundleToUse;
 		
 		highButton = new JButton();
@@ -39,7 +39,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 
 	private void refreshCell() throws Exception
 	{
-		ThreatRatingValueOption value = framework.getBundleValue(bundle);
+		ThreatRatingValueOption value = project.getThreatRatingFramework().getBundleValue(bundle);
 		highButton.setText(value.getLabel());
 		Color color = value.getColor();
 		highButton.setBackground(color);
@@ -51,7 +51,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 	{
 		try
 		{
-			JDialog threatRatingDialog = new ThreatRatingBundleDialog(mainWindow, framework, bundle);
+			JDialog threatRatingDialog = new ThreatRatingBundleDialog(mainWindow, project, bundle);
 			threatRatingDialog.setLocationRelativeTo(this);
 			Utilities.fitInScreen(threatRatingDialog);
 			threatRatingDialog.show();
@@ -65,7 +65,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 	
 	JFrame mainWindow;
 	ThreatMatrixView view;
-	ThreatRatingFramework framework;
+	Project project;
 	ThreatRatingBundle bundle;
 	JButton highButton;
 }

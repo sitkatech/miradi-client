@@ -7,13 +7,14 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -31,19 +32,36 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		framework = frameworkToUse;
 		bundle = bundleToUse;
 		
-		int lineWidth = 1;
-		
-		ThreatRatingValueOption value = getBundleValue();
 		ratingSummaryLabel = new UiLabel();
 		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
 		ratingSummaryLabel.setHorizontalAlignment(JLabel.CENTER);
 		
+		createSummaryPanel();
+
+		Box criteria = createCriteriaSection();
+		
+
+		Box main = Box.createHorizontalBox();
+		main.add(criteria);
+		main.add(ratingSummaryPanel);
+				
+		updateBundleValueComponent(getBundleValue());
+		
+		add(main);
+	}
+
+	private void createSummaryPanel()
+	{
+		int lineWidth = 1;
 		ratingSummaryPanel = new JPanel();
-		ratingSummaryPanel.setPreferredSize(new Dimension(65, 170));
 		ratingSummaryPanel.setLayout(new BorderLayout());
 		ratingSummaryPanel.add(ratingSummaryLabel, BorderLayout.CENTER);
 		ratingSummaryPanel.setBorder(new LineBorder(Color.BLACK, lineWidth));
+	}
 
+	private Box createCriteriaSection()
+	{
+		int lineWidth = 1;
 		Box criteria = Box.createVerticalBox();
 
 		ThreatRatingCriterion[] criterionItems = framework.getCriteria();
@@ -51,13 +69,13 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		{
 			ThreatRatingCriterion criterion = criterionItems[i];
 
-			Box box = Box.createVerticalBox();
-			box.add(new UiLabel(criterion.getLabel()));
+			UiLabel criterionLabel = new UiLabel(criterion.getLabel());
+			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
+			criterionLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
+
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
-			box.add(dropdown);
 			dropdown.addItemListener(new ValueListener(bundle, criterion));
 			dropdown.addItemListener(this);
-			box.setBorder(new LineBorder(Color.BLACK, lineWidth));
 			
 			int valueId = bundle.getValueId(criterion.getId());
 			if(valueId != IdAssigner.INVALID_ID)
@@ -66,17 +84,14 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 				dropdown.setSelectedItem(option);
 			}
 
-			criteria.add(box);
-		}
-		
-		updateBundleValueComponent(value);
+			JPanel panel = new JPanel(new BorderLayout());
+			panel.setBorder(new LineBorder(Color.BLACK, lineWidth));
+			panel.add(criterionLabel, BorderLayout.BEFORE_FIRST_LINE);
+			panel.add(dropdown, BorderLayout.CENTER);
 
-		Box main = Box.createHorizontalBox();
-		main.add(criteria);
-		main.add(ratingSummaryPanel);
-				
-		
-		add(main);
+			criteria.add(panel);
+		}
+		return criteria;
 	}
 
 	private ThreatRatingValueOption getBundleValue()

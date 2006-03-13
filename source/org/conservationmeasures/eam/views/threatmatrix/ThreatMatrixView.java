@@ -152,9 +152,8 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	private JComponent createBundleCell(int row, int col) throws Exception
 	{
 		JComponent thisComponent;
-		ThreatRatingFramework framework = getFramework();
 		ThreatRatingBundle bundle = getBundle(row, col);
-		thisComponent = new ThreatMatrixCellPanel(getMainWindow(), this, framework, bundle);
+		thisComponent = new ThreatMatrixCellPanel(getMainWindow(), this, getProject(), bundle);
 		return thisComponent;
 	}
 
