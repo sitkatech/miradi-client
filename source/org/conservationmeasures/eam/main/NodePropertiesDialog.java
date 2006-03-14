@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
@@ -14,8 +16,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -35,8 +40,9 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
-import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
+
+import com.jhlabs.awt.BasicGridLayout;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
@@ -46,63 +52,91 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		super(parent, title);
 		
 		project = projectToUse;
-		
-		UiVBox bigBox = new UiVBox();
-		bigBox.add(createTextField(node.getText()));
-		if(node.isFactor())
-			bigBox.add(createSwitchFactorTypeDropdown(node.getType()));
-		bigBox.add(createIndicator(node.getIndicatorId()));
-		if(node.canHaveObjectives())
-			bigBox.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
-		if(node.canHaveGoal())
-			bigBox.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
-		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
-		contents.add(bigBox);
+		contents.setLayout(new BorderLayout());
+		
+		contents.add(createMainGrid(node), BorderLayout.CENTER);
+		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
+
 		pack();
 		setResizable(true);
 		setModal(true);
 	}
+	
+	private Component createMainGrid(DiagramNode node)
+	{
+		JPanel grid = new JPanel();
+		grid.setLayout(new BasicGridLayout(1, 2));
+		
+		grid.add(new UiLabel(EAM.text("Label|Label")));
+		grid.add(createTextField(node.getText()));
+		
+		if(node.isFactor())
+		{
+			grid.add(new UiLabel(EAM.text("Label|Type")));
+			grid.add(createSwitchFactorTypeDropdown(node.getType()));
+		}
+		
+		grid.add(new UiLabel(EAM.text("Label|Indicator")));
+		grid.add(createIndicator(node.getIndicatorId()));
+		
+		if(node.canHaveObjectives())
+		{
+			grid.add(new UiLabel(EAM.text("Label|Objective")));
+			grid.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
+		}
+		
+		if(node.canHaveGoal())
+		{
+			grid.add(new UiLabel(EAM.text("Label|Goal")));
+			grid.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
+		}
+		
+		grid.add(new UiLabel(EAM.text("Label|Comments")));
+		grid.add(createComments());
+
+		return grid;
+	}
 
 	private Component createTextField(String initialText)
 	{
-		UiLabel textLabel = new UiLabel(EAM.text("Label|Label"));
-		textField = new UiTextField(initialText);
+		textField = new UiTextField(25);
 		textField.requestFocus(true);
 		textField.selectAll();
+		textField.setBorder(new LineBorder(Color.RED));
 
-		Box labelBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textLabel, new UiLabel(" "), textField, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(labelBar, components);
-		return labelBar;
+		textField.setText(initialText);
+
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(textField, BorderLayout.LINE_START);
+		return component;
 	}
 	
 	public Component createSwitchFactorTypeDropdown(NodeType currentType)
 	{
-		UiLabel textObjective = new UiLabel(EAM.text("Label|Type"));
 		dropdownFactorType = new UiComboBox();
 		dropdownFactorType.setRenderer(new FactorTypeRenderer());
 		dropdownFactorType.addItem(DiagramNode.TYPE_INDIRECT_FACTOR);
 		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
 		dropdownFactorType.addItem(DiagramNode.TYPE_STRESS);
+		
 		dropdownFactorType.setSelectedItem(currentType);
 		
-		Box ObjectiveBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownFactorType, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
-		return ObjectiveBar;
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(dropdownFactorType, BorderLayout.LINE_START);
+		return component;
 	}
 	
 	public Component createObjectiveDropdown(ObjectivePool allAvailableObjectives, ObjectiveIds currentObjectives)
 	{
-		UiLabel textObjective = new UiLabel(EAM.text("Label|Objective"));
 		dropdownObjective = new UiComboBox();
 		int[] objectiveIds = allAvailableObjectives.getIds();
 		for(int i = 0; i < objectiveIds.length; ++i)
 		{
 			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
 		}
+		
 		if(currentObjectives.size() == 0)
 		{
 			dropdownObjective.setSelectedItem(allAvailableObjectives.find(IdAssigner.INVALID_ID));
@@ -113,22 +147,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			Objective objective = allAvailableObjectives.find(id);
 			dropdownObjective.setSelectedItem(objective);
 		}	
-		
-		Box ObjectiveBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textObjective, new UiLabel(" "), dropdownObjective, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(ObjectiveBar, components);
-		return ObjectiveBar;
+
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(dropdownObjective, BorderLayout.LINE_START);
+		return component;
 	}
 	
 	public Component createTargetGoal(GoalPool allAvailableGoals, GoalIds currentGoals)
 	{
-		UiLabel textGoal = new UiLabel(EAM.text("Label|Goal"));
 		dropdownGoal = new UiComboBox();
 		int[] goalIds = allAvailableGoals.getIds();
 		for(int i = 0; i < goalIds.length; ++i)
 		{
 			dropdownGoal.addItem(allAvailableGoals.find(goalIds[i]));
 		}
+		
 		if(currentGoals.size() == 0)
 		{
 			dropdownGoal.setSelectedItem(allAvailableGoals.find(IdAssigner.INVALID_ID));
@@ -140,16 +173,13 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			dropdownGoal.setSelectedItem(goal);
 		}
 		
-		
-		Box GoalBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textGoal, new UiLabel(" "), dropdownGoal, Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(GoalBar, components);
-		return GoalBar;
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(dropdownGoal, BorderLayout.LINE_START);
+		return component;
 	}
 	
 	public Component createIndicator(IndicatorId indicator)
 	{
-		UiLabel textIndicator = new UiLabel(EAM.text("Label|Indicator"));
 		dropdownIndicator = new UiComboBox();
 		dropdownIndicator.addItem(new IndicatorId());
 		dropdownIndicator.addItem(new IndicatorId(1));
@@ -158,10 +188,18 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 		dropdownIndicator.setSelectedItem(indicator);
 		
-		Box indicatorBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {textIndicator, new UiLabel(" "), dropdownIndicator,Box.createHorizontalGlue()};
-		Utilities.addComponentsRespectingOrientation(indicatorBar, components);
-		return indicatorBar;
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(dropdownIndicator, BorderLayout.LINE_START);
+		return component;
+	}
+	
+	public JComponent createComments()
+	{
+		UiTextField fieldComments = new UiTextField(50);
+		
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(fieldComments, BorderLayout.LINE_START);
+		return component;
 	}
 	
 	class FactorTypeRenderer extends DefaultListCellRenderer
