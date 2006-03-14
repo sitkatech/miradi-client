@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 
-import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.json.JSONObject;
 
 public class ProjectInfo

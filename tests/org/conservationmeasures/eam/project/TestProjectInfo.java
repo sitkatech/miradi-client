@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.views.NoProjectView;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestProjectInfo extends TestCaseEnhanced

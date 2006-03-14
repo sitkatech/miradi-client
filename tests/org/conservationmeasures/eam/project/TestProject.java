@@ -47,9 +47,9 @@ import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.NoProjectView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase

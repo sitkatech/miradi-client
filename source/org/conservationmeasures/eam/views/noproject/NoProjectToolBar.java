@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views;
+package org.conservationmeasures.eam.views.noproject;
 
 import javax.swing.JToolBar;
 
