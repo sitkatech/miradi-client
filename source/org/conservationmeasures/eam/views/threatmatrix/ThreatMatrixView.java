@@ -13,6 +13,7 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -77,7 +78,10 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		populateBundleCells(cells);
 
 		removeAll();
-		add(new UiScrollPane(grid), BorderLayout.CENTER);
+		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		splitter.setTopComponent(new ThreatRatingWizardPanel());
+		splitter.setBottomComponent(new UiScrollPane(grid));
+		add(splitter);
 	}
 
 	private void populateBundleCells(Box[][] cells) throws Exception
@@ -170,9 +174,17 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
 		return framework;
 	}
-
+	
 	JPanel grid;
 	ThreatMatrixTableModel model;
 	HashSet summaryCells;
+}
+
+class ThreatRatingWizardPanel extends JPanel
+{
+	public ThreatRatingWizardPanel()
+	{
+		add(new UiLabel("Wizard"));
+	}
 }
 
