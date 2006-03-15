@@ -91,7 +91,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		return list;
 	}
 
-	private File getHomeDirectory()
+	public static File getHomeDirectory()
 	{
 		File home = new File(System.getProperty("user.home"), "eAM");
 		home.mkdirs();
@@ -115,7 +115,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		ProjectChooser dialog;
 	}
 	
-	static class DirectoryFilter implements FilenameFilter
+	public static class DirectoryFilter implements FilenameFilter
 	{
 		public boolean accept(File eamDataDirectory, String projectDirectoryName)
 		{
