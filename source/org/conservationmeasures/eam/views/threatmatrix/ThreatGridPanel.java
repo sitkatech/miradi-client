@@ -12,11 +12,13 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -26,6 +28,7 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiLabel;
+import org.martus.swing.Utilities;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -37,6 +40,7 @@ public class ThreatGridPanel extends JPanel
 		model = modelToUse;
 
 		summaryCells = new HashSet();
+		activeCells = new HashMap();
 
 		int rows = model.getThreatCount() + 4;
 		int columns = model.getTargetCount() + 4;
@@ -56,6 +60,18 @@ public class ThreatGridPanel extends JPanel
 		populateThreatSummaries(cells);
 		populateTargetSummaries(cells);
 		populateBundleCells(cells);
+	}
+	
+	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
+	{
+		JDialog threatRatingDialog = new ThreatRatingBundleDialog(getMainWindow(), getProject(), bundle);
+		threatRatingDialog.setLocationRelativeTo(this);
+		Utilities.fitInScreen(threatRatingDialog);
+		threatRatingDialog.show();
+		
+		ThreatMatrixCellPanel cellPanel = (ThreatMatrixCellPanel)activeCells.get(bundle);
+		cellPanel.refreshCell();
+		cellHasChanged();
 	}
 
 	private void populateThreatSummaries(Box[][] cells)
@@ -112,9 +128,9 @@ public class ThreatGridPanel extends JPanel
 
 	private JComponent createBundleCell(int row, int col) throws Exception
 	{
-		JComponent thisComponent;
 		ThreatRatingBundle bundle = getBundle(row, col);
-		thisComponent = new ThreatMatrixCellPanel(this, bundle);
+		ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
+		activeCells.put(bundle, thisComponent);
 		return thisComponent;
 	}
 
@@ -162,4 +178,5 @@ public class ThreatGridPanel extends JPanel
 	ThreatMatrixView view;
 	ThreatMatrixTableModel model;
 	HashSet summaryCells;
+	HashMap activeCells;
 }

@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,7 +17,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
@@ -37,25 +35,21 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		highButton.addActionListener(this);
 	}
 
-	private void refreshCell() throws Exception
+	public void refreshCell() throws Exception
 	{
 		ThreatRatingValueOption value = project.getThreatRatingFramework().getBundleValue(bundle);
 		highButton.setText(value.getLabel());
 		Color color = value.getColor();
 		highButton.setBackground(color);
 		setBackground(color);
-		parent.cellHasChanged();
 	}
 	
 	public void actionPerformed(ActionEvent event)
 	{
 		try
 		{
-			JDialog threatRatingDialog = new ThreatRatingBundleDialog(mainWindow, project, bundle);
-			threatRatingDialog.setLocationRelativeTo(this);
-			Utilities.fitInScreen(threatRatingDialog);
-			threatRatingDialog.show();
-			refreshCell();
+			parent.bundleWasClicked(bundle);
+
 		}
 		catch (Exception e)
 		{
