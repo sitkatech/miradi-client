@@ -8,4 +8,5 @@ package org.conservationmeasures.eam.utils;
 public interface HyperlinkHandler
 {
 	public void clicked(String linkDescription);
+	public void valueChanged(String widget, String newValue);
 }

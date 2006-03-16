@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.io.File;
 
 import javax.swing.Action;
-import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionNewProject;
@@ -28,7 +27,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		setToolBar(new NoProjectToolBar(getActions()));
 		
 		String htmlText = new NoProjectHtmlText().getText();
-		JEditorPane contents = new HtmlViewer(htmlText, this);
+		HtmlViewer contents = new HtmlViewer(htmlText, this);
 		
 		JScrollPane scrollPane = new JScrollPane(contents);
 		
@@ -50,6 +49,10 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			File projectDirectory = new File(ProjectChooser.getHomeDirectory(), projectName);
 			getMainWindow().createOrOpenProject(projectDirectory);
 		}
+	}
+
+	public void valueChanged(String widget, String newValue)
+	{
 	}
 
 	public String cardName()

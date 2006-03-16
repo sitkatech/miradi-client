@@ -13,6 +13,7 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.border.LineBorder;
 
@@ -21,6 +22,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.HtmlBuilder;
+import org.conservationmeasures.eam.utils.HtmlViewer;
+import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
@@ -79,9 +83,25 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 
 		removeAll();
 		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		splitter.setTopComponent(new ThreatRatingWizardPanel());
+		splitter.setTopComponent(new ThreatRatingWizardPanel(getThreatNames(), getTargetNames()));
 		splitter.setBottomComponent(new UiScrollPane(grid));
 		add(splitter);
+	}
+	
+	private String[] getThreatNames()
+	{
+		String[] names = new String[model.getThreatCount()];
+		for(int i = 0; i < names.length; ++i)
+			names[i] = model.getThreatName(i);
+		return names;
+	}
+	
+	private String[] getTargetNames()
+	{
+		String[] names = new String[model.getTargetCount()];
+		for(int i = 0; i < names.length; ++i)
+			names[i] = model.getTargetName(i);
+		return names;
 	}
 
 	private void populateBundleCells(Box[][] cells) throws Exception
@@ -180,11 +200,60 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	HashSet summaryCells;
 }
 
-class ThreatRatingWizardPanel extends JPanel
+class ThreatRatingWizardPanel extends JPanel implements HyperlinkHandler
 {
-	public ThreatRatingWizardPanel()
+	public ThreatRatingWizardPanel(String[] threatNames, String[] targetNames)
 	{
-		add(new UiLabel("Wizard"));
+		super(new BorderLayout());
+		String htmlText = new ThreatRatingWizardWelcomeText(threatNames, targetNames).getText();
+		HtmlViewer contents = new HtmlViewer(htmlText, this);
+		
+		JScrollPane scrollPane = new JScrollPane(contents);
+		add(scrollPane);
+	}
+
+	public void clicked(String linkDescription)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void valueChanged(String widget, String newValue)
+	{
+		System.out.println("valueChanged for " + widget + " to " + newValue);
 	}
 }
 
+class ThreatRatingWizardWelcomeText extends HtmlBuilder
+{
+	public ThreatRatingWizardWelcomeText(String[] threatNames, String[] targetNames)
+	{
+		text = 
+			font("Arial", 
+				heading("Select One Target and Threat to Work On") + 
+				indent("Pick on of your targets identified in Step 1.2 " +
+					"and a threat that affects it. " +
+					"You might want to start with one of your simpler targets or threats") +
+				indent(table(
+					tableRow(
+							tableCell(bold("Which of the following targets " +
+									"do you want to start with?")) +
+							tableCell(bold("Which of the following threats " +
+									"do you want to start with?"))
+							) +
+					tableRow(
+							tableCell(dropDown("Target", targetNames)) +
+							tableCell(dropDown("Threat", threatNames))
+							)
+					))
+			)
+		;
+	}
+	
+	public String getText()
+	{
+		return text;
+	}
+	
+	String text;
+}

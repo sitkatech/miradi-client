@@ -69,7 +69,7 @@ public class HtmlBuilder
 	
 	static public String tableCell(String text)
 	{
-		return "<td>" + text + "</td>";
+		return "<td align='left' valign='top'>" + text + "</td>";
 	}
 	
 	static public String tableHeader(String text)
@@ -97,5 +97,15 @@ public class HtmlBuilder
 		return "<br></br>";
 	}
 	
+	static public String dropDown(String name, String[] choices)
+	{
+		String result =  "<select name='" + name + "'>";
+		for(int i = 0; i < choices.length; ++i)
+		{
+			result += "<option>" + choices[i] + "</option>";
+		}
+		result += "</select>";
+		return result;
+	}
 	
 }
