@@ -89,6 +89,22 @@ public class ThreatMatrixTableModel
 		return cmNode.getId();
 	}
 
+	public String[] getThreatNames()
+	{
+		String[] names = new String[getThreatCount()];
+		for(int i = 0; i < names.length; ++i)
+			names[i] = getThreatName(i);
+		return names;
+	}
+	
+	public String[] getTargetNames()
+	{
+		String[] names = new String[getTargetCount()];
+		for(int i = 0; i < names.length; ++i)
+			names[i] = getTargetName(i);
+		return names;
+	}
+
 	private ConceptualModelNode getTargetNode(int targetIndex)
 	{
 		ConceptualModelNode cmNode = getTargets()[targetIndex];

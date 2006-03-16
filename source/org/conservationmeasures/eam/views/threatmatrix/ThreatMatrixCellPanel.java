@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
@@ -23,12 +22,13 @@ import org.martus.swing.Utilities;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {
-	public ThreatMatrixCellPanel(MainWindow mainWindowToUse, ThreatMatrixView viewToUse, Project projectToUse, ThreatRatingBundle bundleToUse) throws Exception
+	public ThreatMatrixCellPanel(ThreatGridPanel parentToUse, ThreatRatingBundle bundleToUse) throws Exception
 	{
-		mainWindow = mainWindowToUse;
-		view = viewToUse;
-		project = projectToUse;
+		parent = parentToUse;
 		bundle = bundleToUse;
+
+		mainWindow = parent.getMainWindow();
+		project = parent.getProject();
 		
 		highButton = new JButton();
 		add(highButton);
@@ -44,7 +44,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		Color color = value.getColor();
 		highButton.setBackground(color);
 		setBackground(color);
-		view.cellHasChanged();
+		parent.cellHasChanged();
 	}
 	
 	public void actionPerformed(ActionEvent event)
@@ -64,7 +64,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 	}
 	
 	JFrame mainWindow;
-	ThreatMatrixView view;
+	ThreatGridPanel parent;
 	Project project;
 	ThreatRatingBundle bundle;
 	JButton highButton;
