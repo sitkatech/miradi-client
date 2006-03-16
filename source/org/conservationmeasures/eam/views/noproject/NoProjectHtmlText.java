@@ -11,9 +11,11 @@
  */
 package org.conservationmeasures.eam.views.noproject;
 
+import java.awt.Dimension;
 import java.io.File;
-import java.net.URL;
 import java.util.Date;
+
+import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.ProjectChooser;
@@ -23,6 +25,9 @@ class NoProjectHtmlText extends HtmlBuilder
 {
 	public NoProjectHtmlText()
 	{
+		String startButtonLocation = "images/StartProject.png";
+		ImageIcon startButtonIcon = new ImageIcon(startButtonLocation);
+		Dimension startButtonSize = new Dimension(startButtonIcon.getIconWidth(), startButtonIcon.getIconHeight());
 		text = 
 			font("Arial", 
 				heading("Welcome to e-Adaptive Management!") + 
@@ -30,7 +35,8 @@ class NoProjectHtmlText extends HtmlBuilder
 				indent(
 						paragraph("To begin a new " + anchorTag("DefineProject", "project") + 
 								", select " + bold("Start Project") + ".") +
-								centered(anchorTag(NEW_PROJECT, image(getImageLocation("StartProject.png")))) +
+								centered(anchorTag(NEW_PROJECT, 
+										image(startButtonLocation, startButtonSize))) +
 						paragraph("New to e-Adaptive Management? See an " +
 								anchorTag("DefineEAM", "Overview of e-AM") + ".")
 					) +
@@ -52,11 +58,6 @@ class NoProjectHtmlText extends HtmlBuilder
 	public String getText()
 	{
 		return text;
-	}
-	
-	public URL getImageLocation(String imageName)
-	{
-		return getClass().getResource(imageName);
 	}
 	
 	public String existingProjectTable()

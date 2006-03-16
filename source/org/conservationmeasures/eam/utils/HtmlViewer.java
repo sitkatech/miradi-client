@@ -13,9 +13,11 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Image;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
@@ -26,6 +28,7 @@ import javax.swing.text.ViewFactory;
 import javax.swing.text.html.FormView;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.ImageView;
 
 public class HtmlViewer extends JEditorPane implements HyperlinkListener
 {
@@ -78,6 +81,10 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 			{
 				return new OurSelectView(elem, handler);
 			}
+			else if(elem.getName().equals("img"))
+			{
+				return new OurImageView(elem);
+			}
 			return super.create(elem);
 		}
 		
@@ -109,6 +116,26 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		HyperlinkHandler handler;
 		Element element;
 		JComboBox comboBox;
+	}
+	
+	class OurImageView extends ImageView
+	{
+		public OurImageView(Element elem)
+		{
+			super(elem);
+		}
+
+		public Image getImage()
+		{
+			if(image == null)
+			{
+				ImageIcon icon = new ImageIcon("images/StartProject.png");
+				image = icon.getImage();
+			}
+			return image;
+		}
+		
+		Image image;
 	}
 	
 	HyperlinkHandler linkHandler;

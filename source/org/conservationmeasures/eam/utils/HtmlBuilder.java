@@ -11,7 +11,8 @@
  */
 package org.conservationmeasures.eam.utils;
 
-import java.net.URL;
+import java.awt.Dimension;
+
 
 public class HtmlBuilder
 {
@@ -51,10 +52,9 @@ public class HtmlBuilder
 		return "<a href='" + target + "'>" + text + "</a>";
 	}
 	
-	static public String image(URL imageLocation)
+	static public String image(String imageLocation, Dimension size)
 	{
-		String url = imageLocation.toExternalForm();
-		return "<img src='" + url + "'></img>";
+		return "<img src='" + imageLocation + "' width='" + size.width + "' height='" + size.height + "'></img>";
 	}
 	
 	static public String table(String tableData)
