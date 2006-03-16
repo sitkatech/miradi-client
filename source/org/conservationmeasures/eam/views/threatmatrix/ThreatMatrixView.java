@@ -13,8 +13,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
@@ -50,9 +53,9 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 
 		model = new ThreatMatrixTableModel(getProject());
 
-		ThreatGridPanel grid = new ThreatGridPanel(this, model);
+		grid = new ThreatGridPanel(this, model);
 		ThreatRatingWizardPanel wizard = new ThreatRatingWizardPanel(model);
-		ThreatRatingBundlePanel details = new ThreatRatingBundlePanel(getProject(), new ButtonListener(), new ButtonListener());
+		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
 
 		Container bottomHalf = new JPanel(new BorderLayout());
 		bottomHalf.add(new UiScrollPane(grid), BorderLayout.CENTER);
@@ -64,14 +67,54 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		add(bigSplitter);
 	}
 	
-	class ButtonListener implements ActionListener
+	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		public void actionPerformed(ActionEvent e)
+		details.setBundle(bundle);
+		invalidate();
+		validate();
+	}
+	
+	abstract class ButtonListener implements ActionListener
+	{
+		abstract void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception;
+
+		public void actionPerformed(ActionEvent event)
 		{
+			try
+			{
+				ThreatRatingBundle workingBundle = details.getBundle();
+				ThreatRatingBundle originalBundle = model.getBundle(workingBundle.getThreatId(), workingBundle.getTargetId());
+				takeAction(originalBundle, workingBundle);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+	
+	class OkListener extends ButtonListener
+	{
+		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
+		{
+			Project project = model.getProject();
+			originalBundle.pullDataFrom(workingBundle);
+			project.getThreatRatingFramework().saveBundle(originalBundle);
+			grid.refreshCell(originalBundle);
+		}
+	}
+	
+	class CancelListener extends ButtonListener
+	{
+		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
+		{
+			details.setBundle(originalBundle);
 		}
 		
 	}
 	
 	ThreatMatrixTableModel model;
+	ThreatGridPanel grid;
+	ThreatRatingBundlePanel details;
 }
 

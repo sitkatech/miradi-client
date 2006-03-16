@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -35,9 +36,14 @@ public class ThreatRatingBundlePanel extends JPanel
 		
 	}
 	
+	public ThreatRatingBundle getBundle()
+	{
+		return workingBundle;
+	}
+	
 	public void setBundle(ThreatRatingBundle bundleToUse) throws Exception
 	{
-		workingBundle = bundleToUse;
+		workingBundle = new ThreatRatingBundle(bundleToUse);
 		ratingPanel.setBundle(workingBundle);
 		updateValues();
 	}
@@ -87,9 +93,9 @@ public class ThreatRatingBundlePanel extends JPanel
 	private Box createButtonBox(ActionListener okListener, ActionListener cancelListener)
 	{
 		Box buttonBox = Box.createHorizontalBox();
-		UiButton okButton = new UiButton("OK");
+		UiButton okButton = new UiButton(EAM.text("Apply"));
 		okButton.addActionListener(okListener);
-		UiButton cancelButton = new UiButton("Cancel");
+		UiButton cancelButton = new UiButton(EAM.text("Revert"));
 		cancelButton.addActionListener(cancelListener);
 		buttonBox.add(Box.createHorizontalGlue());
 		buttonBox.add(okButton);

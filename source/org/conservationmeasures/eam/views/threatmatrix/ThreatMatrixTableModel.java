@@ -12,6 +12,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatMatrixTableModel
@@ -19,6 +20,11 @@ public class ThreatMatrixTableModel
 	public ThreatMatrixTableModel(Project projectToShow)
 	{
 		project = projectToShow;
+	}
+	
+	public ThreatRatingBundle getBundle(int threatId, int targetId) throws Exception
+	{
+		return project.getThreatRatingFramework().getBundle(threatId, targetId);
 	}
 	
 	public Project getProject()

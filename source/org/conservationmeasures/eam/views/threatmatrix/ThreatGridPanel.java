@@ -18,7 +18,6 @@ import java.util.Iterator;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -28,7 +27,6 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiLabel;
-import org.martus.swing.Utilities;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -64,11 +62,12 @@ public class ThreatGridPanel extends JPanel
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
 	{
-		JDialog threatRatingDialog = new ThreatRatingBundleDialog(getMainWindow(), getProject(), bundle);
-		threatRatingDialog.setLocationRelativeTo(this);
-		Utilities.fitInScreen(threatRatingDialog);
-		threatRatingDialog.show();
-		
+		view.selectBundle(bundle);
+		refreshCell(bundle);
+	}
+
+	public void refreshCell(ThreatRatingBundle bundle) throws Exception
+	{
 		ThreatMatrixCellPanel cellPanel = (ThreatMatrixCellPanel)activeCells.get(bundle);
 		cellPanel.refreshCell();
 		cellHasChanged();
