@@ -6,7 +6,11 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.main.MainWindow;
@@ -48,11 +52,24 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 
 		ThreatGridPanel grid = new ThreatGridPanel(this, model);
 		ThreatRatingWizardPanel wizard = new ThreatRatingWizardPanel(model);
+		ThreatRatingBundlePanel details = new ThreatRatingBundlePanel(getProject(), new ButtonListener(), new ButtonListener());
 
-		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		splitter.setTopComponent(wizard);
-		splitter.setBottomComponent(new UiScrollPane(grid));
-		add(splitter);
+		Container bottomHalf = new JPanel(new BorderLayout());
+		bottomHalf.add(new UiScrollPane(grid), BorderLayout.CENTER);
+		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
+		
+		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setTopComponent(wizard);
+		bigSplitter.setBottomComponent(bottomHalf);
+		add(bigSplitter);
+	}
+	
+	class ButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+		}
+		
 	}
 	
 	ThreatMatrixTableModel model;

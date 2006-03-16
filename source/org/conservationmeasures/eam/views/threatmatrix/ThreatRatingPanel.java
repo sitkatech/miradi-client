@@ -10,6 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -26,12 +29,13 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 
-public class ThreatRatingPanel extends JPanel implements ItemListener
+public class ThreatRatingPanel extends JPanel
 {
-	public ThreatRatingPanel(ThreatRatingFramework frameworkToUse, ThreatRatingBundle bundleToUse)
+	public ThreatRatingPanel(ThreatRatingFramework frameworkToUse)
 	{
 		framework = frameworkToUse;
-		bundle = bundleToUse;
+		
+		dropdowns = new HashMap();
 		
 		ratingSummaryLabel = new UiLabel();
 		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
@@ -46,9 +50,14 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		main.add(criteria);
 		main.add(ratingSummaryPanel);
 				
-		updateBundleValueComponent(getBundleValue());
-		
 		add(main);
+	}
+	
+	public void setBundle(ThreatRatingBundle bundleToUse)
+	{
+		bundle = bundleToUse;
+		updateDropdownsFromBundle();
+		updateSummary();
 	}
 
 	private void createSummaryPanel()
@@ -76,15 +85,8 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
 
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
-			dropdown.addItemListener(new ValueListener(bundle, criterion));
-			dropdown.addItemListener(this);
-			
-			int valueId = bundle.getValueId(criterion.getId());
-			if(valueId != IdAssigner.INVALID_ID)
-			{
-				ThreatRatingValueOption option = framework.getValueOption(valueId);
-				dropdown.setSelectedItem(option);
-			}
+			dropdown.addItemListener(new ValueListener(this, criterion));
+			dropdowns.put(criterion, dropdown);
 
 			JPanel panel = new JPanel(new BorderLayout());
 			panel.setBorder(new LineBorder(Color.BLACK, lineWidth));
@@ -95,17 +97,33 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		}
 		return criteria;
 	}
-
-	private ThreatRatingValueOption getBundleValue()
+	
+	private void updateDropdownsFromBundle()
 	{
-		ThreatRatingValueOption value = framework.getBundleValue(bundle);
-		return value;
+		Iterator iter = dropdowns.keySet().iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingCriterion criterion = (ThreatRatingCriterion)iter.next();
+			UiComboBox dropdown = (UiComboBox)dropdowns.get(criterion);
+			
+			int valueId = bundle.getValueId(criterion.getId());
+			if(valueId != IdAssigner.INVALID_ID)
+			{
+				ThreatRatingValueOption option = framework.getValueOption(valueId);
+				dropdown.setSelectedItem(option);
+			}
+		}
 	}
 
-	private void updateBundleValueComponent(ThreatRatingValueOption value)
+	private void updateSummary()
 	{
+		if(bundle == null)
+			return;
+		
+		ThreatRatingValueOption value = framework.getBundleValue(bundle);
 		if(value == null)
-			System.out.println(value);
+			return;
+		
 		ratingSummaryLabel.setText(value.getLabel());
 		ratingSummaryLabel.setBackground(value.getColor());
 		ratingSummaryPanel.setBackground(value.getColor());
@@ -129,16 +147,19 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		return dropDown;
 	}
 	
-	public void itemStateChanged(ItemEvent e)
+	public void valueWasChanged(ThreatRatingCriterion criterion, ThreatRatingValueOption value)
 	{
-		updateBundleValueComponent(getBundleValue());
+		if(bundle == null)
+			return;
+		bundle.setValueId(criterion.getId(), value.getId());
+		updateSummary();
 	}
 	
 	static class ValueListener implements ItemListener
 	{
-		public ValueListener(ThreatRatingBundle bundleToUse, ThreatRatingCriterion criterionToUse)
+		public ValueListener(ThreatRatingPanel panelToUse, ThreatRatingCriterion criterionToUse)
 		{
-			bundle = bundleToUse;
+			panel = panelToUse;
 			criterion = criterionToUse;
 		}
 		
@@ -146,10 +167,10 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 		{
 			UiComboBox source = (UiComboBox)e.getSource();
 			ThreatRatingValueOption selected = (ThreatRatingValueOption)source.getSelectedItem();
-			bundle.setValueId(criterion.getId(), selected.getId());
+			panel.valueWasChanged(criterion, selected);
 		}
 		
-		ThreatRatingBundle bundle;
+		ThreatRatingPanel panel;
 		ThreatRatingCriterion criterion;
 	}
 	
@@ -157,4 +178,5 @@ public class ThreatRatingPanel extends JPanel implements ItemListener
 	ThreatRatingBundle bundle;
 	UiLabel ratingSummaryLabel;
 	JPanel ratingSummaryPanel;
+	Map dropdowns;
 }
