@@ -13,6 +13,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatMatrixTableModel
@@ -24,6 +25,9 @@ public class ThreatMatrixTableModel
 	
 	public ThreatRatingBundle getBundle(int threatId, int targetId) throws Exception
 	{
+		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
+			return null;
+		
 		return project.getThreatRatingFramework().getBundle(threatId, targetId);
 	}
 	
@@ -37,7 +41,7 @@ public class ThreatMatrixTableModel
 		return getTargets().length;
 	}
 
-	private ConceptualModelNode[] getDirectThreats()
+	ConceptualModelNode[] getDirectThreats()
 	{
 		return project.getNodePool().getDirectThreats();
 	}
@@ -47,7 +51,7 @@ public class ThreatMatrixTableModel
 		return getDirectThreats().length;
 	}
 
-	private ConceptualModelNode[] getTargets()
+	ConceptualModelNode[] getTargets()
 	{
 		return project.getNodePool().getTargets();
 	}
@@ -59,6 +63,11 @@ public class ThreatMatrixTableModel
 		
 		int threatId = getDirectThreats()[threatIndex].getId();
 		int targetId = getTargets()[targetIndex].getId();
+		return isActiveThreatIdTargetIdPair(threatId, targetId);
+	}
+
+	private boolean isActiveThreatIdTargetIdPair(int threatId, int targetId)
+	{
 		if(project.getLinkagePool().hasLinkage(threatId, targetId))
 			return true;
 		
@@ -115,6 +124,25 @@ public class ThreatMatrixTableModel
 	{
 		ConceptualModelNode cmNode = getTargets()[targetIndex];
 		return cmNode;
+	}
+	
+	public int findThreatByName(String threatName)
+	{
+		return findNodeByName(getDirectThreats(), threatName);
+	}
+	
+	public int findTargetByName(String targetName)
+	{
+		return findNodeByName(getTargets(), targetName);
+	}
+	
+	private int findNodeByName(ConceptualModelNode[] nodes, String name)
+	{
+		for(int i = 0; i < nodes.length; ++i)
+			if(nodes[i].getName().equals(name))
+				return nodes[i].getId();
+		
+		return IdAssigner.INVALID_ID;
 	}
 	
 	Project project;

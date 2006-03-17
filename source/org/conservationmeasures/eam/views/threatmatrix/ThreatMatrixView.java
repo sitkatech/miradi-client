@@ -54,7 +54,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		model = new ThreatMatrixTableModel(getProject());
 
 		grid = new ThreatGridPanel(this, model);
-		ThreatRatingWizardPanel wizard = new ThreatRatingWizardPanel(model);
+		ThreatRatingWizardPanel wizard = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
 
 		Container bottomHalf = new JPanel(new BorderLayout());
@@ -65,6 +65,13 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bigSplitter.setTopComponent(wizard);
 		bigSplitter.setBottomComponent(bottomHalf);
 		add(bigSplitter);
+		
+		selectBundle(wizard.getSelectedBundle());
+	}
+	
+	public ThreatMatrixTableModel getModel()
+	{
+		return model;
 	}
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception

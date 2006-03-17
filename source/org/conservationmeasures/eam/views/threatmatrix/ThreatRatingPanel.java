@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -106,23 +107,36 @@ public class ThreatRatingPanel extends JPanel
 			ThreatRatingCriterion criterion = (ThreatRatingCriterion)iter.next();
 			UiComboBox dropdown = (UiComboBox)dropdowns.get(criterion);
 			
-			int valueId = bundle.getValueId(criterion.getId());
-			if(valueId != IdAssigner.INVALID_ID)
+			if(bundle == null)
 			{
-				ThreatRatingValueOption option = framework.getValueOption(valueId);
-				dropdown.setSelectedItem(option);
+				dropdown.setSelectedIndex(0);
+			}
+			else
+			{
+				int valueId = bundle.getValueId(criterion.getId());
+				if(valueId != IdAssigner.INVALID_ID)
+				{
+					ThreatRatingValueOption option = framework.getValueOption(valueId);
+					dropdown.setSelectedItem(option);
+				}
 			}
 		}
 	}
 
 	private void updateSummary()
 	{
-		if(bundle == null)
-			return;
+		ThreatRatingValueOption value;
 		
-		ThreatRatingValueOption value = framework.getBundleValue(bundle);
+		if(bundle == null)
+			value = framework.findValueOptionByNumericValue(0);
+		else
+			value = framework.getBundleValue(bundle);
+		
 		if(value == null)
+		{
+			EAM.logError("ThreatRatingPanel.updateSummary: value was null!");
 			return;
+		}
 		
 		ratingSummaryLabel.setText(value.getLabel());
 		ratingSummaryLabel.setBackground(value.getColor());
