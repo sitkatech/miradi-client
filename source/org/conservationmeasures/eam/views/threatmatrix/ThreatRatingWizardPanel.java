@@ -19,13 +19,13 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 
 public class ThreatRatingWizardPanel extends JPanel
 {
-	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse)
+	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse) throws Exception
 	{
 		super(new BorderLayout());
 		view = viewToUse;
 		
 		bundleChooser = new ThreatRatingWizardChooseBundle(this);
-		
+		valueSetter = new ThreatRatingWizardSetValue(this);
 		setStepChooseBundle();
 	}
 
@@ -41,21 +41,27 @@ public class ThreatRatingWizardPanel extends JPanel
 	
 	public void next()
 	{
-		
+		setStepScope();
 	}
 	
 	public void setStepChooseBundle()
 	{
 		setContents(bundleChooser);
-		
+	}
+	
+	public void setStepScope()
+	{
+		setContents(valueSetter);
 	}
 	
 	public void setContents(JPanel contents)
 	{
 		removeAll();
 		add(contents);
+		validate();
 	}
 	
 	ThreatMatrixView view;
 	ThreatRatingWizardChooseBundle bundleChooser;
+	ThreatRatingWizardSetValue valueSetter;
 }
