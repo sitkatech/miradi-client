@@ -22,8 +22,11 @@ public class ThreatRatingWizardPanel extends JPanel
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse)
 	{
 		super(new BorderLayout());
-		bundleChooser = new ThreatRatingWizardChooseBundle(viewToUse);
-		add(bundleChooser);
+		view = viewToUse;
+		
+		bundleChooser = new ThreatRatingWizardChooseBundle(this);
+		
+		setStepChooseBundle();
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
@@ -31,5 +34,28 @@ public class ThreatRatingWizardPanel extends JPanel
 		return bundleChooser.getSelectedBundle();
 	}
 	
+	public ThreatMatrixView getView()
+	{
+		return view;
+	}
+	
+	public void next()
+	{
+		
+	}
+	
+	public void setStepChooseBundle()
+	{
+		setContents(bundleChooser);
+		
+	}
+	
+	public void setContents(JPanel contents)
+	{
+		removeAll();
+		add(contents);
+	}
+	
+	ThreatMatrixView view;
 	ThreatRatingWizardChooseBundle bundleChooser;
 }

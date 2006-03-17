@@ -17,11 +17,11 @@ import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
 public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkHandler
 {
-	public ThreatRatingWizardChooseBundle(ThreatMatrixView viewToUse)
+	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
 		super(new BorderLayout());
-		view = viewToUse;
-		ThreatMatrixTableModel model = view.getModel();
+		wizard = wizardToUse;
+		ThreatMatrixTableModel model = getView().getModel();
 		
 		String[] threatNames = model.getThreatNames();
 		String[] targetNames = model.getTargetNames();
@@ -58,7 +58,7 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 			else if(widget.equals("Target"))
 				selectedTargetName = newValue;
 
-			view.selectBundle(getSelectedBundle());
+			getView().selectBundle(getSelectedBundle());
 		}
 		catch (Exception e)
 		{
@@ -68,19 +68,40 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 	
 	public void buttonPressed(String buttonName)
 	{
-		EAM.logDebug("Button pressed: " + buttonName);
+		ThreatRatingBundle selectedBundle = null;
+		try
+		{
+			selectedBundle = getSelectedBundle();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		if(selectedBundle == null)
+		{
+			EAM.errorDialog(EAM.text("The selected Target is not affected by the selected Threat"));
+			return;
+		}
+		
+		wizard.next();
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		ThreatMatrixTableModel model = view.getModel();
+		ThreatMatrixTableModel model = getView().getModel();
 		int threatId = model.findThreatByName(selectedThreatName);
 		int targetId = model.findTargetByName(selectedTargetName);
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
 		return bundle;
 	}
 	
-	ThreatMatrixView view;
+	ThreatMatrixView getView()
+	{
+		return wizard.getView();
+	}
+	
+	ThreatRatingWizardPanel wizard;
 	String selectedThreatName;
 	String selectedTargetName;
 }
