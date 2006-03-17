@@ -76,6 +76,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
+		grid.selectBundle(bundle);
 		details.setBundle(bundle);
 		invalidate();
 		validate();

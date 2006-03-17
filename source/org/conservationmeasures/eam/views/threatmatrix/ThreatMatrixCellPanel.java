@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -28,11 +29,21 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		mainWindow = parent.getMainWindow();
 		project = parent.getProject();
 		
+		setHighlighted(false);
+		
 		highButton = new JButton();
 		add(highButton);
 		refreshCell();
 
 		highButton.addActionListener(this);
+	}
+
+	public void setHighlighted(boolean isHighlighted)
+	{
+		if(isHighlighted)
+			setBorder(new LineBorder(Color.BLUE, borderThickness));
+		else
+			setBorder(new LineBorder(Color.LIGHT_GRAY, borderThickness));
 	}
 
 	public void refreshCell() throws Exception
@@ -56,6 +67,8 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 			EAM.logException(e);
 		}
 	}
+	
+	final static int borderThickness = 2;
 	
 	JFrame mainWindow;
 	ThreatGridPanel parent;
