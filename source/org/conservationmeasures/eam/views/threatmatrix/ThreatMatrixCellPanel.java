@@ -68,7 +68,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 		}
 	}
 	
-	final static int borderThickness = 2;
+	final static int borderThickness = 4;
 	
 	JFrame mainWindow;
 	ThreatGridPanel parent;
