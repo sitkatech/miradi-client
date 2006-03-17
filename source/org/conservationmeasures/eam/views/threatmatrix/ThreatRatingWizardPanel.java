@@ -14,74 +14,22 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
-public class ThreatRatingWizardPanel extends JPanel implements HyperlinkHandler
+public class ThreatRatingWizardPanel extends JPanel
 {
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse)
 	{
 		super(new BorderLayout());
-		view = viewToUse;
-		ThreatMatrixTableModel model = view.getModel();
-		
-		String[] threatNames = model.getThreatNames();
-		String[] targetNames = model.getTargetNames();
-		String htmlText = new ThreatRatingWizardWelcomeText(threatNames, targetNames).getText();
-		HtmlViewer contents = new HtmlViewer(htmlText, this);
-		
-		if(threatNames.length > 0)
-			selectedThreatName = threatNames[0];
-		else
-			selectedThreatName = "";
-		
-		if(targetNames.length > 0)
-			selectedTargetName = targetNames[0];
-		else
-			selectedTargetName = "";
-		
-		JScrollPane scrollPane = new JScrollPane(contents);
-		add(scrollPane);
-	}
-
-	public void clicked(String linkDescription)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-		try
-		{
-			System.out.println("valueChanged for " + widget + " to " + newValue);
-			if(widget.equals("Threat"))
-				selectedThreatName = newValue;
-			else if(widget.equals("Target"))
-				selectedTargetName = newValue;
-
-			view.selectBundle(getSelectedBundle());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		bundleChooser = new ThreatRatingWizardChooseBundle(viewToUse);
+		add(bundleChooser);
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		ThreatMatrixTableModel model = view.getModel();
-		int threatId = model.findThreatByName(selectedThreatName);
-		int targetId = model.findTargetByName(selectedTargetName);
-		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
-		return bundle;
+		return bundleChooser.getSelectedBundle();
 	}
 	
-	ThreatMatrixView view;
-	String selectedThreatName;
-	String selectedTargetName;
+	ThreatRatingWizardChooseBundle bundleChooser;
 }

@@ -31,9 +31,9 @@ public class HtmlBuilder
 		return "<hr></hr>";
 	}
 	
-	static public String button(String text)
+	static public String button(String name, String text)
 	{
-		return "<input type='submit' value=" + text + "></input>";
+		return "<input type='submit' name='" + name + "' value='" + text + "'></input>";
 		//return "<input class='z' type='submit' name='z' value=" + text + ">";
 	}
 	
@@ -89,7 +89,7 @@ public class HtmlBuilder
 	
 	static public String indent(String text)
 	{
-		return "<table><tr><td width='25'></td><td>" + text + "</td></tr></table>";
+		return "<table><tr><td width='25'></td><td>" + text + "</td><td width='25'></td></tr></table>";
 	}
 	
 	static public String newline()

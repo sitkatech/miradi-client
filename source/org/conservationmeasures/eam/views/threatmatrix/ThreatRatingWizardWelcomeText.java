@@ -22,14 +22,25 @@ public class ThreatRatingWizardWelcomeText extends HtmlBuilder
 					tableRow(
 							tableCell(bold("Which of the following targets " +
 									"do you want to start with?")) +
+							tableCell("&nbsp;") +
 							tableCell(bold("Which of the following threats " +
 									"do you want to start with?"))
 							) +
 					tableRow(
 							tableCell(dropDown("Target", targetNames)) +
+							tableCell("&nbsp;") +
 							tableCell(dropDown("Threat", threatNames))
 							)
-					))
+					)) +
+				newline() +
+				indent(table(
+					tableRow(
+						tableCell(button("Back", "&lt; Previous")) +
+						tableCell("&nbsp;") +
+						tableCell(button("Next", "Next &gt;")) 
+						)
+					)) + 
+				newline()
 			)
 		;
 	}

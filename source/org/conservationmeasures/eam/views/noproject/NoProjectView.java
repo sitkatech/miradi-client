@@ -35,7 +35,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		add(scrollPane, BorderLayout.CENTER);
 	}
 	
-	public void clicked(String linkDescription)
+	public void linkClicked(String linkDescription)
 	{
 		if(linkDescription.equals(NoProjectHtmlText.NEW_PROJECT))
 		{
@@ -52,6 +52,10 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	}
 
 	public void valueChanged(String widget, String newValue)
+	{
+	}
+
+	public void buttonPressed(String buttonName)
 	{
 	}
 

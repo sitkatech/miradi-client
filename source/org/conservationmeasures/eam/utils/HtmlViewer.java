@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.Element;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
@@ -48,7 +49,7 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		if(e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED))
 		{
 			String clicked = e.getDescription();
-			linkHandler.clicked(clicked);
+			linkHandler.linkClicked(clicked);
 		}
 
 	}
@@ -81,11 +82,37 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 			{
 				return new OurSelectView(elem, handler);
 			}
+			if(elem.getName().equals("input"))
+			{
+				AttributeSet attributes = elem.getAttributes();
+				Object typeAttribute = attributes.getAttribute(HTML.Attribute.TYPE);
+				if(typeAttribute.equals("submit"))
+				{
+					return new OurButtonView(elem, handler);
+				}
+			}
 			else if(elem.getName().equals("img"))
 			{
 				return new OurImageView(elem);
 			}
 			return super.create(elem);
+		}
+		
+		HyperlinkHandler handler;
+	}
+	
+	class OurButtonView extends FormView
+	{
+		public OurButtonView(Element elem, HyperlinkHandler handlerToUse)
+		{
+			super(elem);
+			handler = handlerToUse;
+		}
+
+		protected void submitData(String data)
+		{
+			String buttonName = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
+			handler.buttonPressed(buttonName);
 		}
 		
 		HyperlinkHandler handler;
@@ -97,7 +124,6 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		{
 			super(elem);
 			handler = handlerToUse;
-			element = elem;
 		}
 
 		protected Component createComponent()
@@ -109,12 +135,11 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 
 		public void itemStateChanged(ItemEvent e)
 		{
-			String name = (String)element.getAttributes().getAttribute(HTML.Attribute.NAME);
+			String name = (String)getElement().getAttributes().getAttribute(HTML.Attribute.NAME);
 			handler.valueChanged(name, comboBox.getSelectedItem().toString());
 		}
 		
 		HyperlinkHandler handler;
-		Element element;
 		JComboBox comboBox;
 	}
 	
