@@ -606,9 +606,11 @@ public class TestProject extends EAMTestCase
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
 		assertEquals("wrong from?", nodeA.getId(), cmLinkage.getFromNodeId());
 		assertEquals("wrong to?", nodeB.getId(), cmLinkage.getToNodeId());
+		assertTrue("not linked?", project.isLinked(nodeA.getId(), nodeB.getId()));
 		
 		project.deleteLinkage(linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
+		assertFalse("still linked?", project.isLinked(nodeA.getId(), nodeB.getId()));
 	}
 	
 	public void testOpenProject() throws Exception

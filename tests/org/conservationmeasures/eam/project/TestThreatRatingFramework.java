@@ -8,6 +8,10 @@ package org.conservationmeasures.eam.project;
 import java.awt.Color;
 import java.io.File;
 
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -138,10 +142,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		framework.createDefaultObjects();
 		
-		int threatId1 = 1;
-		int threatId2 = 2;
-		int targetId1 = 3;
-		int targetId2 = 4;
+		int threatId1 = createThreat();
+		int threatId2 = createThreat();
+		int targetId1 = createTarget();
+		int targetId2 = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
 		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
@@ -152,17 +156,58 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target1 not none?", none, framework.getTargetThreatRatingValue(targetId1));
 		assertEquals("target2 not none?", none, framework.getTargetThreatRatingValue(targetId2));
 
-		populateBundle(threatId1, targetId1, veryHigh);
-		populateBundle(threatId1, targetId2, veryHigh);
+		createLinkageAndBundle(threatId1, targetId1, veryHigh);
+		createLinkageAndBundle(threatId1, targetId2, veryHigh);
 		assertEquals("target1 not high?", high, framework.getTargetThreatRatingValue(targetId1));
-		populateBundle(threatId2, targetId1, veryHigh);
+		createLinkageAndBundle(threatId2, targetId1, veryHigh);
 		assertEquals("threat2 not high?", high, framework.getThreatThreatRatingValue(threatId2));
-		populateBundle(threatId2, targetId2, veryHigh);
+		createLinkageAndBundle(threatId2, targetId2, veryHigh);
 		
 		assertEquals("threat1 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId1));
 		assertEquals("threat2 not very high?", veryHigh, framework.getThreatThreatRatingValue(threatId2));
 		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId1));
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
+	}
+	
+	void createLinkageAndBundle(int threatId, int targetId, ThreatRatingValueOption value) throws Exception
+	{
+		project.insertLinkageAtId(IdAssigner.INVALID_ID, threatId, targetId);
+		populateBundle(threatId, targetId, value);
+	}
+	
+	public void testGetThreatRatingSummaryUnlinked() throws Exception
+	{
+		int threatId = createThreat();
+		int targetId = createTarget();
+
+		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
+		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
+		ThreatRatingValueOption veryHigh = framework.findValueOptionByNumericValue(4);
+
+		populateBundle(threatId, targetId, veryHigh);
+		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
+		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
+		
+		project.insertLinkageAtId(IdAssigner.INVALID_ID, threatId, targetId);
+		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
+		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
+		
+		ConceptualModelNode factor = project.getNodePool().find(threatId);
+		factor.setType(new NodeTypeIndirectFactor());
+		assertEquals("threat value included indirect factor?", none, framework.getThreatThreatRatingValue(threatId));
+		assertEquals("target value included indirect factor?", none, framework.getTargetThreatRatingValue(targetId));
+	}
+
+	private int createTarget() throws Exception
+	{
+		int targetId = project.insertNodeAtId(new NodeTypeTarget(), IdAssigner.INVALID_ID);
+		return targetId;
+	}
+
+	private int createThreat() throws Exception
+	{
+		int threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), IdAssigner.INVALID_ID);
+		return threatId;
 	}
 	
 	void populateBundle(int threatId, int targetId, ThreatRatingValueOption value) throws Exception

@@ -179,7 +179,7 @@ public class ThreatRatingFramework
 		while(iter.hasNext())
 		{
 			ThreatRatingBundle bundle = (ThreatRatingBundle)iter.next();
-			if(bundle.getThreatId() == threatId)
+			if(bundle.getThreatId() == threatId && isBundleForLinkedThreatAndTarget(bundle))
 				bundlesForThisThreat.add(bundle);
 		}
 		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
@@ -194,11 +194,25 @@ public class ThreatRatingFramework
 		while(iter.hasNext())
 		{
 			ThreatRatingBundle bundle = (ThreatRatingBundle)iter.next();
-			if(bundle.getTargetId() == targetId)
+			if(bundle.getTargetId() == targetId && isBundleForLinkedThreatAndTarget(bundle))
 				bundlesForThisThreat.add(bundle);
 		}
 		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
 		return getSummaryOfBundles(bundleArray);
+	}
+	
+	boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
+	{
+		NodePool nodePool = project.getNodePool();
+		int threatId = bundle.getThreatId();
+		if(!nodePool.find(threatId).isDirectThreat())
+			return false;
+		
+		int targetId = bundle.getTargetId();
+		if(!nodePool.find(targetId).isTarget())
+			return false;
+
+		return project.isLinked(threatId, targetId);
 	}
 	
 	public ThreatRatingValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)

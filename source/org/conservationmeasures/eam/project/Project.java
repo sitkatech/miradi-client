@@ -849,6 +849,11 @@ public class Project
 		}
 		return selectedCellsWithLinkages;
 	}
+	
+	public boolean isLinked(int nodeId1, int nodeId2)
+	{
+		return getLinkagePool().hasLinkage(nodeId1, nodeId2);
+	}
 
 	public EAMGraphCell[] getOnlySelectedCells()
 	{
