@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -29,7 +30,13 @@ public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implement
 
 	public void refresh() throws Exception
 	{
-		int valueId = wizard.getSelectedBundle().getValueId(criterion.getId());
+		ThreatRatingBundle bundle = wizard.getSelectedBundle();
+		if(bundle == null)
+		{
+			EAM.logDebug("ThreatRatingWizardSetValue ignoring refresh of null bundle");
+			return;
+		}
+		int valueId = bundle.getValueId(criterion.getId());
 		value = getFramework().getValueOption(valueId);
 		String htmlText = new ThreatRatingWizardSetValueText(getValueOptionLabels(), value.getLabel()).getText();
 		htmlViewer.setText(htmlText);

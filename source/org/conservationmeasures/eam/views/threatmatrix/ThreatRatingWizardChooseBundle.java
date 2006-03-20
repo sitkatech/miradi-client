@@ -17,25 +17,20 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
 		wizard = wizardToUse;
-		ThreatMatrixTableModel model = getView().getModel();
 		
-		String[] threatNames = model.getThreatNames();
-		String[] targetNames = model.getTargetNames();
-		String htmlText = new ThreatRatingWizardWelcomeText(threatNames, targetNames).getText();
-		HtmlViewer contents = new HtmlViewer(htmlText, this);
-		
-		if(threatNames.length > 0)
-			selectedThreatName = threatNames[0];
-		else
-			selectedThreatName = "";
-		
-		if(targetNames.length > 0)
-			selectedTargetName = targetNames[0];
-		else
-			selectedTargetName = "";
-		
-		JScrollPane scrollPane = new JScrollPane(contents);
+		htmlViewer = new HtmlViewer("", this);
+		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		add(scrollPane);
+	}
+
+	private String[] getTargetNames()
+	{
+		return getView().getModel().getTargetNames();
+	}
+
+	private String[] getThreatNames()
+	{
+		return getView().getModel().getThreatNames();
 	}
 
 	public void linkClicked(String linkDescription)
@@ -97,11 +92,29 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		return wizard.getView();
 	}
 	
-	void refresh()
+	void refresh() throws Exception
 	{
+		ThreatRatingBundle bundle = wizard.getSelectedBundle();
+
+		if(bundle != null)
+		{
+			selectedThreatName = getName(bundle.getThreatId());
+			selectedTargetName = getName(bundle.getTargetId());
+		}
+		
+		String htmlText = new ThreatRatingWizardWelcomeText(getThreatNames(), selectedThreatName, 
+				getTargetNames(), selectedTargetName).getText();
+		htmlViewer.setText(htmlText);
+		validate();
+	}
+
+	private String getName(int nodeId)
+	{
+		return getView().getProject().getNodePool().find(nodeId).getName();
 	}
 
 	ThreatRatingWizardPanel wizard;
+	HtmlViewer htmlViewer;
 	String selectedThreatName;
 	String selectedTargetName;
 }

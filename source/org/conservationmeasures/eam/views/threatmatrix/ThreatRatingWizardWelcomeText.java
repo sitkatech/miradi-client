@@ -10,7 +10,8 @@ import org.conservationmeasures.eam.utils.HtmlBuilder;
 
 public class ThreatRatingWizardWelcomeText extends HtmlBuilder
 {
-	public ThreatRatingWizardWelcomeText(String[] threatNames, String[] targetNames)
+	public ThreatRatingWizardWelcomeText(String[] threatNames, String selectedThreat, 
+			String[] targetNames, String selectedTarget)
 	{
 		text = 
 			font("Arial", 
@@ -27,9 +28,9 @@ public class ThreatRatingWizardWelcomeText extends HtmlBuilder
 									"do you want to start with?"))
 							) +
 					tableRow(
-							tableCell(dropDown("Target", targetNames)) +
+							tableCell(dropDown("Target", targetNames, selectedTarget)) +
 							tableCell("&nbsp;") +
-							tableCell(dropDown("Threat", threatNames))
+							tableCell(dropDown("Threat", threatNames, selectedThreat))
 							)
 					)) +
 				newline() +

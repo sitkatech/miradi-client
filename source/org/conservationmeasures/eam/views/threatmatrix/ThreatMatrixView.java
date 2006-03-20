@@ -68,7 +68,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bigSplitter.setBottomComponent(bottomHalf);
 		add(bigSplitter);
 		
-		selectBundle(wizard.getSelectedBundle());
+		selectBundle(null);
 	}
 	
 	public ThreatMatrixTableModel getModel()
