@@ -57,6 +57,16 @@ public class HtmlBuilder
 		return "<img src='" + imageLocation + "' width='" + size.width + "' height='" + size.height + "'></img>";
 	}
 	
+	static public String list(String contents)
+	{
+		return "<ul" + contents + "</ul>";
+	}
+	
+	static public String listItem(String text)
+	{
+		return "<li>" + text + "</li>";
+	}
+	
 	static public String table(String tableData)
 	{
 		return "<table>" + tableData + "</table>";
