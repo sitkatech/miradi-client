@@ -23,6 +23,7 @@ import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.AttributeSet;
+import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.View;
 import javax.swing.text.ViewFactory;
@@ -42,6 +43,13 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		setText(htmlSource);
 		setBackground(Color.LIGHT_GRAY);
 		addHyperlinkListener(this);
+	}
+	
+	public void setText(String text)
+	{
+		Document doc = getEditorKit().createDefaultDocument();
+		setDocument(doc);
+		super.setText(text);
 	}
 
 	public void hyperlinkUpdate(HyperlinkEvent e)
