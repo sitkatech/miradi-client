@@ -28,13 +28,18 @@ public abstract class ThreatRatingWizardStep extends JPanel
 	{
 		try
 		{
-			if(!save())
-				return;
-			
 			if(buttonName.indexOf("Next") >= 0)
+			{
+				if(!save())
+					return;
+				
 				wizard.next();
+			}
+			
 			if(buttonName.indexOf("Back") >= 0)
+			{
 				wizard.previous();
+			}
 		}
 		catch (Exception e)
 		{
