@@ -17,8 +17,9 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 				tableCell(
 					heading("Rate the Severity of the Selected Threat") +
 					indent(paragraph("Using the rating criteria for the scope on the right, " +
-							"decide what the " + anchorTag("DefineSeverity", "severity") + 
-							" of the threat is on the target.") +
+							"rate the " + anchorTag("DefineSeverity", "severity") + 
+							" of the threat on the target.  " +
+							"You can click on the blue triangle to record any comments or assumptions.") +
 							paragraph(bold("What is the severity of the threat on the target?")) +
 					dropDown("value", optionLabels, currentValue) +
 					newline() +
@@ -34,22 +35,21 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Severity - ") + "Most commonly defined spatially as the proportion " +
-							"of the overall area of a project site or target occurence likely " +
-							"to be affected by a threat under current circumstances (i.e. given " +
-							"the continuation of the existing situation) over the next ten years.") +
-					indent(paragraph(bold("Very High: ") + "The threat is likely to be " +
-							"very widespread or pervasive in its severity, and affect the " +
-							"conservation target throughout the target's occurences at the site.") +
-							paragraph(bold("High: ") + "The threat is likely to be widespread " +
-									"in its severity, and affect the conservation target at many " +
-									"of its locations at the site.") +
-							paragraph(bold("Medium: ") + "The threat is likely to be localized " +
-									"in its severity, and affect the conservation target at some " +
-									"of its locations at the site.") +
-							paragraph(bold("Low: ") + "The threat is likely to be very localized " +
-									"in its severity, and affect the conservation target at a " +
-									"limited portion of the target's location at the site.")
+					paragraph(bold("Severity - ") + "The level of damage to the conservation target " +
+						"that can reasonably be expected within ten years under current circumstances " +
+						"(i.e., given the continuation of the existing situation).") +
+					indent(paragraph(bold("Very High: ") + "The threat is likely to " +
+							"destroy or eliminate the conservation target " +
+							"over some portion of the target’s occurrence at the site.") +
+							paragraph(bold("High: ") + "The threat is likely to " +
+									"seriously degrade the conservation target " +
+									"over some portion of the target’s occurrence at the site.") +
+							paragraph(bold("Medium: ") + "The threat is likely to " +
+									"moderately degrade the conservation target " +
+									"over some portion of the target’s occurrence at the site.") +
+							paragraph(bold("Low: ") + "The threat is likely to " +
+									"only slightly impair the conservation target " +
+									"over some portion of the target’s occurrence at the site.")
 					)
 				)
 			)) 
