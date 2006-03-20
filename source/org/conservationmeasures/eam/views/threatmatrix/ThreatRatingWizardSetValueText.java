@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.utils.HtmlBuilder;
 
 public class ThreatRatingWizardSetValueText extends HtmlBuilder
 {
-	public ThreatRatingWizardSetValueText(String[] optionLabels)
+	public ThreatRatingWizardSetValueText(String[] optionLabels, String currentValue)
 	{
 		
 		text = font("Arial", table(
@@ -20,7 +20,7 @@ public class ThreatRatingWizardSetValueText extends HtmlBuilder
 							"decide what the " + anchorTag("DefineScope", "scope") + 
 							"of the threat is on the target.") +
 							paragraph(bold("What is the scope of the threat on the target?")) +
-					dropDown("value", optionLabels) +
+					dropDown("value", optionLabels, currentValue) +
 					newline() +
 					indent(table(
 						tableRow(

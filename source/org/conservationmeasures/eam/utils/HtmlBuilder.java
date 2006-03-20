@@ -97,15 +97,23 @@ public class HtmlBuilder
 		return "<br></br>";
 	}
 	
-	static public String dropDown(String name, String[] choices)
+	static public String dropDown(String name, String[] choices, String selectedValue)
 	{
 		String result =  "<select name='" + name + "'>";
 		for(int i = 0; i < choices.length; ++i)
 		{
-			result += "<option>" + choices[i] + "</option>";
+			String maybeSelected = "";
+			if(choices[i].equals(selectedValue))
+				maybeSelected = " selected ";
+			result += "<option " + maybeSelected + ">" + choices[i] + "</option>";
 		}
 		result += "</select>";
 		return result;
+	}
+	
+	static public String dropDown(String name, String[] choices)
+	{
+		return dropDown(name, choices, null);
 	}
 	
 }

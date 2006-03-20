@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.text.Document;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -26,13 +27,26 @@ public class ThreatRatingWizardSetValue extends JPanel implements HyperlinkHandl
 
 		criterion = getFramework().findCriterionByLabel("Scope");
 
-		String htmlText = new ThreatRatingWizardSetValueText(getValueOptionLabels()).getText();
-		HtmlViewer contents = new HtmlViewer(htmlText, this);
-		JScrollPane scrollPane = new JScrollPane(contents);
+		htmlViewer = new HtmlViewer("", this);
+		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		add(scrollPane);
 
+		refresh();
 	}
 
+	public void refresh() throws Exception
+	{
+		// You can't just call setText because the HTML rendering
+		// won't reset everything, causing errors. Create a new document
+		// to force a full reset
+		int valueId = wizard.getSelectedBundle().getValueId(criterion.getId());
+		value = getFramework().getValueOption(valueId);
+		String htmlText = new ThreatRatingWizardSetValueText(getValueOptionLabels(), value.getLabel()).getText();
+		Document doc = htmlViewer.getEditorKit().createDefaultDocument();
+		htmlViewer.setDocument(doc);
+		htmlViewer.setText(htmlText);
+	}
+	
 	String[] getValueOptionLabels()
 	{
 		ThreatRatingValueOption[] options = getFramework().getValueOptions();
@@ -87,4 +101,5 @@ public class ThreatRatingWizardSetValue extends JPanel implements HyperlinkHandl
 	ThreatRatingWizardPanel wizard;
 	ThreatRatingCriterion criterion;
 	ThreatRatingValueOption value;
+	HtmlViewer htmlViewer;
 }

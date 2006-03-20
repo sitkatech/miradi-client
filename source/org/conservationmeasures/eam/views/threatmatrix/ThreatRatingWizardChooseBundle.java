@@ -72,6 +72,7 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 		try
 		{
 			selectedBundle = getSelectedBundle();
+			wizard.next();
 		}
 		catch (Exception e)
 		{
@@ -84,7 +85,6 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 			return;
 		}
 		
-		wizard.next();
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception

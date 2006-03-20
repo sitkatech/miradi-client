@@ -39,7 +39,7 @@ public class ThreatRatingWizardPanel extends JPanel
 		return view;
 	}
 	
-	public void next()
+	public void next() throws Exception
 	{
 		setStepScope();
 	}
@@ -49,8 +49,9 @@ public class ThreatRatingWizardPanel extends JPanel
 		setContents(bundleChooser);
 	}
 	
-	public void setStepScope()
+	public void setStepScope() throws Exception
 	{
+		valueSetter.refresh();
 		setContents(valueSetter);
 	}
 	
