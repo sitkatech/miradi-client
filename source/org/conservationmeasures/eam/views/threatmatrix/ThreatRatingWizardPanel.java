@@ -27,10 +27,11 @@ public class ThreatRatingWizardPanel extends JPanel
 		
 		ThreatRatingWizardChooseBundle chooseBundleStep = new ThreatRatingWizardChooseBundle(this);
 		
-		steps = new ThreatRatingWizardStep[3];
+		steps = new ThreatRatingWizardStep[4];
 		steps[CHOOSE_BUNDLE] = chooseBundleStep;
 		steps[SET_SCOPE] = ThreatRatingWizardScopeStep.create(this);
 		steps[SET_SEVERITY] = ThreatRatingWizardSeverityStep.create(this);
+		steps[SET_IRREVERSIBILITY] = ThreatRatingWizardIrreversibilityStep.create(this);
 
 		selectBundle(chooseBundleStep.getSelectedBundle());
 		setStep(CHOOSE_BUNDLE);
@@ -105,6 +106,7 @@ public class ThreatRatingWizardPanel extends JPanel
 	private static final int CHOOSE_BUNDLE = 0;
 	private static final int SET_SCOPE = 1;
 	private static final int SET_SEVERITY = 2;
+	private static final int SET_IRREVERSIBILITY = 3;
 	
 	ThreatMatrixView view;
 	ThreatRatingWizardStep[] steps;
