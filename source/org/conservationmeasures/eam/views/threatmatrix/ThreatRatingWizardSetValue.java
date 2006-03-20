@@ -5,11 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.text.Document;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -18,32 +14,24 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
-public class ThreatRatingWizardSetValue extends JPanel implements HyperlinkHandler
+public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implements HyperlinkHandler
 {
-	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse) throws Exception
+	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, int criterionId) throws Exception
 	{
-		super(new BorderLayout());
 		wizard = wizardToUse;
 
-		criterion = getFramework().findCriterionByLabel("Scope");
+		criterion = getFramework().getCriterion(criterionId);
 
 		htmlViewer = new HtmlViewer("", this);
 		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		add(scrollPane);
-
-		refresh();
 	}
 
 	public void refresh() throws Exception
 	{
-		// You can't just call setText because the HTML rendering
-		// won't reset everything, causing errors. Create a new document
-		// to force a full reset
 		int valueId = wizard.getSelectedBundle().getValueId(criterion.getId());
 		value = getFramework().getValueOption(valueId);
 		String htmlText = new ThreatRatingWizardSetValueText(getValueOptionLabels(), value.getLabel()).getText();
-		Document doc = htmlViewer.getEditorKit().createDefaultDocument();
-		htmlViewer.setDocument(doc);
 		htmlViewer.setText(htmlText);
 	}
 	
@@ -58,8 +46,7 @@ public class ThreatRatingWizardSetValue extends JPanel implements HyperlinkHandl
 
 	private ThreatRatingFramework getFramework()
 	{
-		ThreatRatingFramework framework = wizard.getView().getProject().getThreatRatingFramework();
-		return framework;
+		return wizard.getFramework();
 	}
 	
 	public void linkClicked(String linkDescription)

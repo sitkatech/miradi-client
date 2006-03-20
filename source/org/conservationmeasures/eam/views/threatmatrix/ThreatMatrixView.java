@@ -58,7 +58,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		grid = new ThreatGridPanel(this, model);
 		wizard = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
-
+		
 		Container bottomHalf = new JPanel(new BorderLayout());
 		bottomHalf.add(new UiScrollPane(grid), BorderLayout.CENTER);
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
@@ -78,7 +78,8 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		details.setBundle(bundle);
+		wizard.selectBundle(bundle);
+		details.selectBundle(bundle);
 		grid.selectBundle(bundle);
 		grid.updateSummaries();
 		invalidate();
@@ -91,9 +92,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bundle.setValueId(criterion.getId(), value.getId());
 		Project project = model.getProject();
 		project.getThreatRatingFramework().saveBundle(bundle);
-		grid.refreshCell(bundle);
-		details.setBundle(bundle);
-		wizard.refresh();
+		selectBundle(bundle);
 	}
 	
 	abstract class ButtonListener implements ActionListener
@@ -122,8 +121,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			Project project = model.getProject();
 			originalBundle.pullDataFrom(workingBundle);
 			project.getThreatRatingFramework().saveBundle(originalBundle);
-			grid.refreshCell(originalBundle);
-			wizard.refresh();
+			selectBundle(originalBundle);
 		}
 	}
 	
@@ -131,7 +129,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	{
 		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
 		{
-			details.setBundle(originalBundle);
+			details.selectBundle(originalBundle);
 		}
 		
 	}

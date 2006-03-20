@@ -63,8 +63,6 @@ public class ThreatGridPanel extends JPanel
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
 	{
 		view.selectBundle(bundle);
-		selectBundle(bundle);
-		refreshCell(bundle);
 	}
 	
 	public void selectBundle(ThreatRatingBundle bundle)

@@ -16,6 +16,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatRatingWizardPanel extends JPanel
 {
@@ -24,14 +25,38 @@ public class ThreatRatingWizardPanel extends JPanel
 		super(new BorderLayout());
 		view = viewToUse;
 		
-		bundleChooser = new ThreatRatingWizardChooseBundle(this);
-		valueSetter = new ThreatRatingWizardSetValue(this);
-		setStepChooseBundle();
+		ThreatRatingWizardChooseBundle chooseBundleStep = new ThreatRatingWizardChooseBundle(this);
+		
+		steps = new ThreatRatingWizardStep[3];
+		steps[CHOOSE_BUNDLE] = chooseBundleStep;
+		steps[SET_SCOPE] = createCriterionStep("Scope");
+		steps[SET_SEVERITY] = createCriterionStep("Severity");
+
+		selectBundle(chooseBundleStep.getSelectedBundle());
+		setStep(CHOOSE_BUNDLE);
+	}
+
+	private ThreatRatingWizardStep createCriterionStep(String criterionLabel) throws Exception
+	{
+		int criterionId = getFramework().findCriterionByLabel(criterionLabel).getId();
+		ThreatRatingWizardStep step = new ThreatRatingWizardSetValue(this, criterionId);
+		return step;
+	}
+	
+	public void selectBundle(ThreatRatingBundle bundle) throws Exception
+	{
+		selectedBundle = bundle;
+		refresh();
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		return bundleChooser.getSelectedBundle();
+		return selectedBundle;
+	}
+	
+	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
+	{
+		view.selectBundle(bundle);
 	}
 	
 	public ThreatMatrixView getView()
@@ -41,23 +66,20 @@ public class ThreatRatingWizardPanel extends JPanel
 	
 	public void next() throws Exception
 	{
-		setStepScope();
+		setStep(1);
 	}
 	
-	public void setStepChooseBundle()
+	public void setStep(int newStep) throws Exception
 	{
-		setContents(bundleChooser);
-	}
-	
-	public void setStepScope() throws Exception
-	{
-		valueSetter.refresh();
-		setContents(valueSetter);
+		currentStep = newStep;
+		setContents(steps[currentStep]);
+		steps[currentStep].refresh();
 	}
 	
 	public void refresh() throws Exception
 	{
-		valueSetter.refresh();
+		for(int i = 0; i < steps.length; ++i)
+			steps[i].refresh();
 		validate();
 	}
 	
@@ -68,7 +90,18 @@ public class ThreatRatingWizardPanel extends JPanel
 		validate();
 	}
 	
+	ThreatRatingFramework getFramework()
+	{
+		ThreatRatingFramework framework = getView().getProject().getThreatRatingFramework();
+		return framework;
+	}
+	
+	private static final int CHOOSE_BUNDLE = 0;
+	private static final int SET_SCOPE = 1;
+	private static final int SET_SEVERITY = 2;
+	
 	ThreatMatrixView view;
-	ThreatRatingWizardChooseBundle bundleChooser;
-	ThreatRatingWizardSetValue valueSetter;
+	ThreatRatingWizardStep[] steps;
+	int currentStep;
+	ThreatRatingBundle selectedBundle;
 }

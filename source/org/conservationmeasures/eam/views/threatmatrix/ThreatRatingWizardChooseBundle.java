@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -15,11 +12,10 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
-public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkHandler
+public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep implements HyperlinkHandler
 {
 	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
-		super(new BorderLayout());
 		wizard = wizardToUse;
 		ThreatMatrixTableModel model = getView().getModel();
 		
@@ -58,7 +54,7 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 			else if(widget.equals("Target"))
 				selectedTargetName = newValue;
 
-			getView().selectBundle(getSelectedBundle());
+			wizard.bundleWasClicked(getSelectedBundle());
 		}
 		catch (Exception e)
 		{
@@ -101,6 +97,10 @@ public class ThreatRatingWizardChooseBundle extends JPanel implements HyperlinkH
 		return wizard.getView();
 	}
 	
+	void refresh()
+	{
+	}
+
 	ThreatRatingWizardPanel wizard;
 	String selectedThreatName;
 	String selectedTargetName;

@@ -41,7 +41,7 @@ public class ThreatRatingBundlePanel extends JPanel
 		return workingBundle;
 	}
 	
-	public void setBundle(ThreatRatingBundle bundleToUse) throws Exception
+	public void selectBundle(ThreatRatingBundle bundleToUse) throws Exception
 	{
 		if(bundleToUse == null)
 			workingBundle = null;
