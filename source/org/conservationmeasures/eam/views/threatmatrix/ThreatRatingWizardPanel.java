@@ -62,7 +62,7 @@ public class ThreatRatingWizardPanel extends JPanel
 	{
 		int nextStep = currentStep + 1;
 		if(nextStep >= steps.length)
-			return;
+			nextStep = 0;
 		
 		setStep(nextStep);
 	}
