@@ -56,7 +56,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		model = new ThreatMatrixTableModel(getProject());
 
 		grid = new ThreatGridPanel(this, model);
-		ThreatRatingWizardPanel wizard = new ThreatRatingWizardPanel(this);
+		wizard = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
 
 		Container bottomHalf = new JPanel(new BorderLayout());
@@ -93,6 +93,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		project.getThreatRatingFramework().saveBundle(bundle);
 		grid.refreshCell(bundle);
 		details.setBundle(bundle);
+		wizard.refresh();
 	}
 	
 	abstract class ButtonListener implements ActionListener
@@ -122,6 +123,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 			originalBundle.pullDataFrom(workingBundle);
 			project.getThreatRatingFramework().saveBundle(originalBundle);
 			grid.refreshCell(originalBundle);
+			wizard.refresh();
 		}
 	}
 	
@@ -135,6 +137,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	}
 	
 	ThreatMatrixTableModel model;
+	ThreatRatingWizardPanel wizard;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
 }

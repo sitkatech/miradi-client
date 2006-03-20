@@ -55,6 +55,12 @@ public class ThreatRatingWizardPanel extends JPanel
 		setContents(valueSetter);
 	}
 	
+	public void refresh() throws Exception
+	{
+		valueSetter.refresh();
+		validate();
+	}
+	
 	public void setContents(JPanel contents)
 	{
 		removeAll();
