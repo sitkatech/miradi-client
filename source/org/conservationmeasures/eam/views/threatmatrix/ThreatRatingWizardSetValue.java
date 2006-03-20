@@ -22,7 +22,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 	
 	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, int criterionId) throws Exception
 	{
-		wizard = wizardToUse;
+		super(wizardToUse);
 
 		criterion = getFramework().getCriterion(criterionId);
 
@@ -83,20 +83,12 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 		throw new RuntimeException("Unknown value option: " + label);
 	}
 
-	public void buttonPressed(String buttonName)
+	public boolean save() throws Exception
 	{
-		try
-		{
-			wizard.getView().setBundleValue(criterion, value);
-			wizard.next();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		wizard.getView().setBundleValue(criterion, value);
+		return true;
 	}
 
-	ThreatRatingWizardPanel wizard;
 	ThreatRatingCriterion criterion;
 	protected ThreatRatingValueOption value;
 	HtmlViewer htmlViewer;

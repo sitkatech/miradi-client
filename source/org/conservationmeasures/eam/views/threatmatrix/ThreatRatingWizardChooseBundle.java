@@ -16,8 +16,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 {
 	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
-		wizard = wizardToUse;
-		
+		super(wizardToUse);
 		htmlViewer = new HtmlViewer("", this);
 		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		add(scrollPane);
@@ -57,25 +56,17 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		}
 	}
 	
-	public void buttonPressed(String buttonName)
+	public boolean save() throws Exception
 	{
-		ThreatRatingBundle selectedBundle = null;
-		try
-		{
-			selectedBundle = getSelectedBundle();
-			wizard.next();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
+		ThreatRatingBundle selectedBundle = getSelectedBundle();
+
 		if(selectedBundle == null)
 		{
 			EAM.errorDialog(EAM.text("The selected Target is not affected by the selected Threat"));
-			return;
+			return false;
 		}
 		
+		return true;
 	}
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
@@ -113,7 +104,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		return getView().getProject().getNodePool().find(nodeId).getName();
 	}
 
-	ThreatRatingWizardPanel wizard;
 	HtmlViewer htmlViewer;
 	String selectedThreatName;
 	String selectedTargetName;
