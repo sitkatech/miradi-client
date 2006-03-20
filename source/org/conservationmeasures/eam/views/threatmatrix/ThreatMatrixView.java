@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -76,10 +78,21 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		grid.selectBundle(bundle);
 		details.setBundle(bundle);
+		grid.selectBundle(bundle);
+		grid.updateSummaries();
 		invalidate();
 		validate();
+	}
+	
+	public void setBundleValue(ThreatRatingCriterion criterion, ThreatRatingValueOption value) throws Exception
+	{
+		ThreatRatingBundle bundle = grid.getSelectedBundle();
+		bundle.setValueId(criterion.getId(), value.getId());
+		Project project = model.getProject();
+		project.getThreatRatingFramework().saveBundle(bundle);
+		grid.refreshCell(bundle);
+		details.setBundle(bundle);
 	}
 	
 	abstract class ButtonListener implements ActionListener

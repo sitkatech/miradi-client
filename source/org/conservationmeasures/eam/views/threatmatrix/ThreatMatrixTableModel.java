@@ -68,10 +68,7 @@ public class ThreatMatrixTableModel
 
 	private boolean isActiveThreatIdTargetIdPair(int threatId, int targetId)
 	{
-		if(project.getLinkagePool().hasLinkage(threatId, targetId))
-			return true;
-		
-		return false;
+		return project.isLinked(threatId, targetId);
 	}
 	
 	public String getThreatName(int threatIndex)

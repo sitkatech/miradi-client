@@ -35,9 +35,13 @@ public class ThreatRatingSummaryCell extends JPanel
 
 		ThreatRatingFramework framework = model.getProject().getThreatRatingFramework();
 		if(threatIndex >= 0)
+		{
 			result = framework.getThreatThreatRatingValue(model.getThreatId(threatIndex));
+		}
 		else
+		{
 			result = framework.getTargetThreatRatingValue(model.getTargetId(targetIndex));
+		}
 			
 		label.setText(result.getLabel());
 		setBackground(result.getColor());

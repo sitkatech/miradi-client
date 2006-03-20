@@ -5,19 +5,12 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 
 public class ThreatRatingWizardSetValueText extends HtmlBuilder
 {
-	public ThreatRatingWizardSetValueText(ThreatRatingFramework framework, ThreatRatingBundle bundleToUse, int criterionId)
+	public ThreatRatingWizardSetValueText(String[] optionLabels)
 	{
-		ThreatRatingValueOption[] options = framework.getValueOptions();
-		String[] optionNames = new String[options.length];
-		for(int i = 0; i < optionNames.length; ++i)
-			optionNames[i] = options[i].getLabel();
 		
 		text = font("Arial", table(
 			tableRow(
@@ -27,7 +20,7 @@ public class ThreatRatingWizardSetValueText extends HtmlBuilder
 							"decide what the " + anchorTag("DefineScope", "scope") + 
 							"of the threat is on the target.") +
 							paragraph(bold("What is the scope of the threat on the target?")) +
-					dropDown("value", optionNames) +
+					dropDown("value", optionLabels) +
 					newline() +
 					indent(table(
 						tableRow(

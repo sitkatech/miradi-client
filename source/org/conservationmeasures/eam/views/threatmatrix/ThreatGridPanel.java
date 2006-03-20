@@ -79,12 +79,17 @@ public class ThreatGridPanel extends JPanel
 		highlightedBundle = bundle;
 		
 	}
+	
+	public ThreatRatingBundle getSelectedBundle()
+	{
+		return highlightedBundle;
+	}
 
 	public void refreshCell(ThreatRatingBundle bundle) throws Exception
 	{
 		ThreatMatrixCellPanel cellPanel = (ThreatMatrixCellPanel)activeCells.get(bundle);
 		cellPanel.refreshCell();
-		cellHasChanged();
+		updateSummaries();
 	}
 
 	private void populateThreatSummaries(Box[][] cells)
@@ -162,7 +167,7 @@ public class ThreatGridPanel extends JPanel
 		return panel;
 	}
 
-	public void cellHasChanged() throws Exception
+	public void updateSummaries() throws Exception
 	{
 		Iterator iter = summaryCells.iterator();
 		while(iter.hasNext())
