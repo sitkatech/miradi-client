@@ -24,12 +24,20 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 
 	private String[] getTargetNames()
 	{
-		return getView().getModel().getTargetNames();
+		String[] targetNames = getView().getModel().getTargetNames();
+		String[] choices = new String[targetNames.length+ 1];
+		System.arraycopy(targetNames, 0, choices, 1, targetNames.length);
+		choices[0] = SELECT_A_TARGET;
+		return choices;
 	}
 
 	private String[] getThreatNames()
 	{
-		return getView().getModel().getThreatNames();
+		String[] threatNames = getView().getModel().getThreatNames();
+		String[] choices = new String[threatNames.length + 1];
+		System.arraycopy(threatNames, 0, choices, 1, threatNames.length);
+		choices[0] = SELECT_A_THREAT;
+		return choices;
 	}
 
 	public void linkClicked(String linkDescription)
@@ -103,6 +111,9 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	{
 		return getView().getProject().getNodePool().find(nodeId).getName();
 	}
+	
+	static final String SELECT_A_TARGET = "--Select a Target";
+	static final String SELECT_A_THREAT = "--Select a Threat";
 
 	HtmlViewer htmlViewer;
 	String selectedThreatName;
