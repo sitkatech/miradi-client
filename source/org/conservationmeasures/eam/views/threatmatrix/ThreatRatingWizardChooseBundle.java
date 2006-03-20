@@ -62,7 +62,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 
 		if(selectedBundle == null)
 		{
-			EAM.errorDialog(EAM.text("The selected Target is not affected by the selected Threat"));
+			EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  If you would like to link this threat to this target, please do so in the diagram view."));
 			return false;
 		}
 		
@@ -93,7 +93,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 			selectedTargetName = getName(bundle.getTargetId());
 		}
 		
-		String htmlText = new ThreatRatingWizardWelcomeText(getThreatNames(), selectedThreatName, 
+		String htmlText = new ThreatRatingWizardChooseBundleText(getThreatNames(), selectedThreatName, 
 				getTargetNames(), selectedTargetName).getText();
 		htmlViewer.setText(htmlText);
 		validate();
