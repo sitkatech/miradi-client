@@ -7,19 +7,19 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 
-public class ThreatRatingWizardSetValueText extends HtmlBuilder
+public class ThreatRatingWizardSeverityText extends HtmlBuilder
 {
-	public ThreatRatingWizardSetValueText(String[] optionLabels, String currentValue)
+	public ThreatRatingWizardSeverityText(String[] optionLabels, String currentValue)
 	{
 		
 		text = font("Arial", table(
 			tableRow(
 				tableCell(
-					heading("Rate the Scope of the Selected Threat") +
+					heading("Rate the Severity of the Selected Threat") +
 					indent(paragraph("Using the rating criteria for the scope on the right, " +
-							"decide what the " + anchorTag("DefineScope", "scope") + 
-							"of the threat is on the target.") +
-							paragraph(bold("What is the scope of the threat on the target?")) +
+							"decide what the " + anchorTag("DefineSeverity", "severity") + 
+							" of the threat is on the target.") +
+							paragraph(bold("What is the severity of the threat on the target?")) +
 					dropDown("value", optionLabels, currentValue) +
 					newline() +
 					indent(table(
@@ -34,21 +34,21 @@ public class ThreatRatingWizardSetValueText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Scope - ") + "Most commonly defined spatially as the proportion " +
+					paragraph(bold("Severity - ") + "Most commonly defined spatially as the proportion " +
 							"of the overall area of a project site or target occurence likely " +
 							"to be affected by a threat under current circumstances (i.e. given " +
 							"the continuation of the existing situation) over the next ten years.") +
 					indent(paragraph(bold("Very High: ") + "The threat is likely to be " +
-							"very widespread or pervasive in its scope, and affect the " +
+							"very widespread or pervasive in its severity, and affect the " +
 							"conservation target throughout the target's occurences at the site.") +
 							paragraph(bold("High: ") + "The threat is likely to be widespread " +
-									"in its scope, and affect the conservation target at many " +
+									"in its severity, and affect the conservation target at many " +
 									"of its locations at the site.") +
 							paragraph(bold("Medium: ") + "The threat is likely to be localized " +
-									"in its scope, and affect the conservation target at some " +
+									"in its severity, and affect the conservation target at some " +
 									"of its locations at the site.") +
 							paragraph(bold("Low: ") + "The threat is likely to be very localized " +
-									"in its scope, and affect the conservation target at a " +
+									"in its severity, and affect the conservation target at a " +
 									"limited portion of the target's location at the site.")
 					)
 				)

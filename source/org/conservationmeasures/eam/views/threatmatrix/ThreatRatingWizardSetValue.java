@@ -15,8 +15,11 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
-public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implements HyperlinkHandler
+abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implements HyperlinkHandler
 {
+	
+	public abstract String getHtmlText();
+	
 	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, int criterionId) throws Exception
 	{
 		wizard = wizardToUse;
@@ -38,11 +41,11 @@ public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implement
 		}
 		int valueId = bundle.getValueId(criterion.getId());
 		value = getFramework().getValueOption(valueId);
-		String htmlText = new ThreatRatingWizardSetValueText(getValueOptionLabels(), value.getLabel()).getText();
+		String htmlText = getHtmlText();
 		htmlViewer.setText(htmlText);
 	}
-	
-	String[] getValueOptionLabels()
+
+	protected String[] getValueOptionLabels()
 	{
 		ThreatRatingValueOption[] options = getFramework().getValueOptions();
 		String[] optionLabels = new String[options.length];
@@ -85,6 +88,7 @@ public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implement
 		try
 		{
 			wizard.getView().setBundleValue(criterion, value);
+			wizard.next();
 		}
 		catch (Exception e)
 		{
@@ -94,6 +98,6 @@ public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implement
 
 	ThreatRatingWizardPanel wizard;
 	ThreatRatingCriterion criterion;
-	ThreatRatingValueOption value;
+	protected ThreatRatingValueOption value;
 	HtmlViewer htmlViewer;
 }

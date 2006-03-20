@@ -29,20 +29,13 @@ public class ThreatRatingWizardPanel extends JPanel
 		
 		steps = new ThreatRatingWizardStep[3];
 		steps[CHOOSE_BUNDLE] = chooseBundleStep;
-		steps[SET_SCOPE] = createCriterionStep("Scope");
-		steps[SET_SEVERITY] = createCriterionStep("Severity");
+		steps[SET_SCOPE] = ThreatRatingWizardScopeStep.create(this);
+		steps[SET_SEVERITY] = ThreatRatingWizardSeverityStep.create(this);
 
 		selectBundle(chooseBundleStep.getSelectedBundle());
 		setStep(CHOOSE_BUNDLE);
 	}
 
-	private ThreatRatingWizardStep createCriterionStep(String criterionLabel) throws Exception
-	{
-		int criterionId = getFramework().findCriterionByLabel(criterionLabel).getId();
-		ThreatRatingWizardStep step = new ThreatRatingWizardSetValue(this, criterionId);
-		return step;
-	}
-	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		selectedBundle = bundle;
@@ -66,7 +59,11 @@ public class ThreatRatingWizardPanel extends JPanel
 	
 	public void next() throws Exception
 	{
-		setStep(1);
+		int nextStep = currentStep + 1;
+		if(nextStep >= steps.length)
+			return;
+		
+		setStep(nextStep);
 	}
 	
 	public void setStep(int newStep) throws Exception
