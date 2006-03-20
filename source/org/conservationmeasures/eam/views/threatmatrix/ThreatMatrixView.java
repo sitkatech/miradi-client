@@ -64,6 +64,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		
 		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setResizeWeight(.5);
 		bigSplitter.setTopComponent(wizard);
 		bigSplitter.setBottomComponent(bottomHalf);
 		add(bigSplitter);
