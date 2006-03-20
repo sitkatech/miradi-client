@@ -50,6 +50,7 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		Document doc = getEditorKit().createDefaultDocument();
 		setDocument(doc);
 		super.setText(text);
+		setCaretPosition(0);
 	}
 
 	public void hyperlinkUpdate(HyperlinkEvent e)
