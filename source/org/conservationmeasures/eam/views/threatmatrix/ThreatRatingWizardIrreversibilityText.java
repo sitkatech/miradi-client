@@ -15,10 +15,11 @@ public class ThreatRatingWizardIrreversibilityText extends HtmlBuilder
 		text = font("Arial", table(
 			tableRow(
 				tableCell(
-					heading("Rate the Severity of the Selected Threat") +
-					indent(paragraph("Using the rating criteria for the scope on the right, " +
-							"decide what the " + anchorTag("DefineIrreversibility", "irreversibility") + 
-							" of the threat is on the target.") +
+					heading("Rate the Irreversibility of the Selected Threat") +
+					indent(paragraph("Using the scale shown on the right, rate the " +
+							anchorTag("DefineIrreversibility", "irreversibility") + 
+							" of the threat is on the target. " +
+							"You can click on the blue triangle to record any comments or assumptions.") +
 							paragraph(bold("What is the irreversibility of the threat on the target?")) +
 					dropDown("value", optionLabels, currentValue) +
 					newline() +
@@ -34,22 +35,17 @@ public class ThreatRatingWizardIrreversibilityText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Irreversibility - ") + "Most commonly defined spatially as the proportion " +
-							"of the overall area of a project site or target occurence likely " +
-							"to be affected by a threat under current circumstances (i.e. given " +
-							"the continuation of the existing situation) over the next ten years.") +
-					indent(paragraph(bold("Very High: ") + "The threat is likely to be " +
-							"very widespread or pervasive in its irreversibility, and affect the " +
-							"conservation target throughout the target's occurences at the site.") +
-							paragraph(bold("High: ") + "The threat is likely to be widespread " +
-									"in its irreversibility, and affect the conservation target at many " +
-									"of its locations at the site.") +
-							paragraph(bold("Medium: ") + "The threat is likely to be localized " +
-									"in its irreversibility, and affect the conservation target at some " +
-									"of its locations at the site.") +
-							paragraph(bold("Low: ") + "The threat is likely to be very localized " +
-									"in its irreversibility, and affect the conservation target at a " +
-									"limited portion of the target's location at the site.")
+					paragraph(bold("Irreversibility - ") + "The degree to which the effects of a threat " +
+							"can be restored.") +
+					indent(paragraph(bold("Very High: ") + "The effects of the threat are not reversible " +
+							"	(e.g., wetlands converted to a shopping center).") +
+							paragraph(bold("High: ") + "The effects of the threat are technically reversible, " +
+									"but not practically affordable (e.g., wetland converted to agriculture).") +
+							paragraph(bold("Medium: ") + "The effects of the threat are reversible " +
+									"with a reasonable commitment of resources " +
+									"(e.g., ditching and draining of wetland).") +
+							paragraph(bold("Low: ") + "The effects of the threat are easily reversible " +
+									"at relatively low cost (e.g., off-road vehicles trespassing in wetland).")
 					)
 				)
 			)) 
