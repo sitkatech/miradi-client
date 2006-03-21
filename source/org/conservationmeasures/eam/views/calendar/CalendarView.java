@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.views.schedule;
+package org.conservationmeasures.eam.views.calendar;
 
 import java.awt.BorderLayout;
 
@@ -9,13 +9,13 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
-public class ScheduleView extends UmbrellaView
+public class CalendarView extends UmbrellaView
 {
 
-	public ScheduleView(MainWindow mainWindowToUse)
+	public CalendarView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new ScheduleToolBar(mainWindowToUse.getActions()));
+		setToolBar(new CalendarToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
 		add(new UiScrollPane(new ScheduleComponent()), BorderLayout.CENTER);
 	}
@@ -27,7 +27,7 @@ public class ScheduleView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Schedule";
+		return "Calendar";
 	}
 
 }
@@ -36,6 +36,6 @@ class ScheduleComponent extends JLabel
 {
 	public ScheduleComponent()
 	{
-		super(new ImageIcon(ScheduleView.class.getResource("gantt.jpg")));
+		super(new ImageIcon("images/Calendar.jpg"));
 	}
 }

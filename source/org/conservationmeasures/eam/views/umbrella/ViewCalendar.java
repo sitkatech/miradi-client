@@ -4,9 +4,9 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ProjectDoer;
-import org.conservationmeasures.eam.views.schedule.ScheduleView;
+import org.conservationmeasures.eam.views.calendar.CalendarView;
 
-public class ViewSchedule extends ProjectDoer 
+public class ViewCalendar extends ProjectDoer 
 {
 	public boolean isAvailable()
 	{
@@ -17,7 +17,7 @@ public class ViewSchedule extends ProjectDoer
 	{
 		try
 		{
-			getProject().executeCommand(new CommandSwitchView(ScheduleView.getViewName()));
+			getProject().executeCommand(new CommandSwitchView(CalendarView.getViewName()));
 		}
 		catch(AlreadyInThatViewException ignore)
 		{
