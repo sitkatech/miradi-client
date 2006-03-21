@@ -49,6 +49,23 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 		return true;
 	}
 
+	public void buttonPressed(String buttonName)
+	{
+		if(buttonName.equals("Next"))
+		{
+			try
+			{
+				wizard.setStep(ThreatRatingWizardPanel.CHOOSE_BUNDLE);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+			return;
+		}
+		super.buttonPressed(buttonName);
+	}
+
 	public void linkClicked(String linkDescription)
 	{
 		if(linkDescription.equals(SHOW_RULES))

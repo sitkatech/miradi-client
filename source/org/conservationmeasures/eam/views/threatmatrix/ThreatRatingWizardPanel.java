@@ -37,7 +37,7 @@ public class ThreatRatingWizardPanel extends JPanel
 		steps[CHECK_TOTALS] = new ThreatRatingWizardCheckTotalsStep(this);
 
 		selectBundle(null);
-		setStep(CHECK_BUNDLE);
+		setStep(OVERVIEW);
 	}
 
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
@@ -107,7 +107,7 @@ public class ThreatRatingWizardPanel extends JPanel
 	}
 	
 	private static final int OVERVIEW = 0;
-	private static final int CHOOSE_BUNDLE = 1;
+	static final int CHOOSE_BUNDLE = 1;
 	private static final int SET_SCOPE = 2;
 	private static final int SET_SEVERITY = 3;
 	private static final int SET_IRREVERSIBILITY = 4;
