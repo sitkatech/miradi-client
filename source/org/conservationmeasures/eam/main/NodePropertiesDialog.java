@@ -94,7 +94,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		}
 		
 		grid.add(new UiLabel(EAM.text("Label|Comments")));
-		grid.add(createComments());
+		grid.add(createComment(node.getComment()));
 
 		return grid;
 	}
@@ -193,12 +193,13 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return component;
 	}
 	
-	public JComponent createComments()
+	public JComponent createComment(String comment)
 	{
-		UiTextField fieldComments = new UiTextField(50);
+		commentField = new UiTextField(50);
+		commentField.setText(comment);
 		
 		JPanel component = new JPanel(new BorderLayout());
-		component.add(fieldComments, BorderLayout.LINE_START);
+		component.add(commentField, BorderLayout.LINE_START);
 		return component;
 	}
 	
@@ -248,6 +249,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return textField.getText();
 	}
 	
+	public String getComment()
+	{
+		return commentField.getText();
+	}
+	
 	public IndicatorId getIndicator()
 	{
 		return (IndicatorId)dropdownIndicator.getSelectedItem();
@@ -278,6 +284,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	Project project;
 	boolean result;
 	UiTextField textField;
+	UiTextField commentField;
 	UiComboBox dropdownFactorType;
 	UiComboBox dropdownThreatPriority;
 	UiComboBox dropdownIndicator;

@@ -160,6 +160,16 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		return (String)GraphConstants.getValue(getAttributes());
 	}
+	
+	public void setComment(String newComment)
+	{
+		underlyingObject.setComment(newComment);
+	}
+	
+	public String getComment()
+	{
+		return underlyingObject.getComment();
+	}
 
 	public GoalIds getGoals()
 	{

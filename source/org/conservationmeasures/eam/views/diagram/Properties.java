@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
@@ -88,6 +89,7 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
 		getProject().executeCommand(new CommandSetNodeName(id, dlg.getText()));
+		getProject().executeCommand(new CommandSetNodeComment(id, dlg.getComment()));
 		getProject().executeCommand(new CommandSetIndicator(id, dlg.getIndicator()));
 		if(selectedNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, dlg.getObjectives()));

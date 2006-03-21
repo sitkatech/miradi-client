@@ -695,7 +695,18 @@ public class Project
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
 		node.setName(desiredName);
-		Logging.logVerbose("Updating name:"+desiredName);
+		Logging.logVerbose("Updating name: "+desiredName);
+		model.updateCell(node);
+		
+		writeNode(nodeId);
+	}
+
+	public void setNodeComment(int nodeId, String desiredComment, String expectedComment) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.getNodeById(nodeId);
+		node.setComment(desiredComment);
+		Logging.logVerbose("Updating comment: "+desiredComment);
 		model.updateCell(node);
 		
 		writeNode(nodeId);

@@ -18,6 +18,15 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		super(name);
 	}
 	
+	public void testComments()
+	{
+		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
+		assertEquals("started with a comment?", "", factor.getComment());
+		String sampleComment = "yowza";
+		factor.setComment(sampleComment);
+		assertEquals("couldn't getComment?", sampleComment, factor.getComment());
+	}
+	
 	public void testPriority()
 	{
 		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
@@ -36,6 +45,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
 		factor.setName("JustAName");
+		factor.setComment("This is a great comment");
 		factor.setIndicatorId(new IndicatorId(99));
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
@@ -43,6 +53,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		assertEquals("wrong type?", factor.getType(), got.getType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getName(), got.getName());
+		assertEquals("wrong comment?", factor.getComment(), got.getComment());
 		assertEquals("wrong priority?", factor.getThreatPriority(), got.getThreatPriority());
 		assertEquals("wrong indicator?", factor.getIndicatorId(), got.getIndicatorId());
 		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());

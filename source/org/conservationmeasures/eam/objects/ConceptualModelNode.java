@@ -21,6 +21,7 @@ abstract public class ConceptualModelNode
 		
 		id = IdAssigner.INVALID_ID;
 		name = "";
+		comment = "";
 		indicator = new IndicatorId();
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
@@ -31,6 +32,7 @@ abstract public class ConceptualModelNode
 		this(nodeType);
 		id = json.getInt(TAG_ID);
 		name = json.optString(TAG_NAME);
+		comment = json.optString(TAG_COMMENT);
 		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
 		
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
@@ -72,6 +74,16 @@ abstract public class ConceptualModelNode
 	public void setType(NodeType typeToUse)
 	{
 		type = typeToUse;
+	}
+	
+	public String getComment()
+	{
+		return comment;
+	}
+	
+	public void setComment(String newComment)
+	{
+		comment = newComment;
 	}
 
 	public IndicatorId getIndicatorId()
@@ -173,6 +185,7 @@ abstract public class ConceptualModelNode
 		json.put(TAG_TYPE, typeString);
 		json.put(TAG_ID, getId());
 		json.put(TAG_NAME, getName());
+		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
 		JSONArray goalIds = new JSONArray();
@@ -203,6 +216,7 @@ abstract public class ConceptualModelNode
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_ID = "Id";
 	private static final String TAG_NAME = "Name";
+	private static final String TAG_COMMENT = "Comment";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	private static final String TAG_GOAL_IDS = "GoalIds";
 	private static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
@@ -214,6 +228,7 @@ abstract public class ConceptualModelNode
 	private int id;
 	private String name;
 	private NodeType type;
+	private String comment;
 
 	private IndicatorId indicator;
 	private ObjectiveIds objectives;
