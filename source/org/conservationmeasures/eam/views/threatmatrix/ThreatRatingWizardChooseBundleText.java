@@ -19,18 +19,11 @@ public class ThreatRatingWizardChooseBundleText extends HtmlBuilder
 					tableCell(
 						heading("Select Target and Threat to Work On") + 
 						indent("Pick one of your targets identified in Step 1.2 and a threat that affects it.") +
-						indent(table(
-							tableRow(
-									tableCell(bold("Which target do you want to work on?")) +
-									tableCell("&nbsp;") +
-									tableCell(bold("Which threat do you want to work on?"))
-									) +
-							tableRow(
-									tableCell(dropDown("Target", targetNames, selectedTarget)) +
-									tableCell("&nbsp;") +
-									tableCell(dropDown("Threat", threatNames, selectedThreat))
-									)
-							)) +
+						indent(paragraph(bold("Which target do you want to work on?")) +
+								indent(dropDown("Target", targetNames, selectedTarget)) +
+								paragraph(bold("Which threat do you want to work on?")) +
+								indent(dropDown("Threat", threatNames, selectedThreat))
+								) +
 						newline() +
 						indent(table(
 							tableRow(
