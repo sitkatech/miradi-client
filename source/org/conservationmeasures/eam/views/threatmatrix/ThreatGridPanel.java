@@ -68,7 +68,7 @@ public class ThreatGridPanel extends JPanel
 		view.selectBundle(bundle);
 	}
 	
-	public void selectBundle(ThreatRatingBundle bundle)
+	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		ThreatMatrixCellPanel wasSelected = (ThreatMatrixCellPanel)activeCells.get(highlightedBundle);
 		if(wasSelected != null)
@@ -78,7 +78,7 @@ public class ThreatGridPanel extends JPanel
 			nowSelected.setHighlighted(true);
 		
 		highlightedBundle = bundle;
-		
+		refreshCell(bundle);
 	}
 	
 	public ThreatRatingBundle getSelectedBundle()
@@ -89,7 +89,8 @@ public class ThreatGridPanel extends JPanel
 	public void refreshCell(ThreatRatingBundle bundle) throws Exception
 	{
 		ThreatMatrixCellPanel cellPanel = (ThreatMatrixCellPanel)activeCells.get(bundle);
-		cellPanel.refreshCell();
+		if(cellPanel != null)
+			cellPanel.refreshCell();
 		updateSummaries();
 	}
 
