@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Frame;
@@ -20,7 +19,6 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -104,7 +102,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		textField = new UiTextField(25);
 		textField.requestFocus(true);
 		textField.selectAll();
-		textField.setBorder(new LineBorder(Color.RED));
 
 		textField.setText(initialText);
 
