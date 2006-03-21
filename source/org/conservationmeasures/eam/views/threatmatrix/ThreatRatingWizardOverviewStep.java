@@ -25,7 +25,6 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 	void refresh() throws Exception
 	{
 		String htmlText = OverviewText.build();
-//		String htmlText = new ThreatRatingWizardWelcomeText(new String[0], null, new String[0], null).getText();
 		htmlViewer.setText(htmlText);
 		invalidate();
 		validate();
@@ -36,8 +35,6 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 		return true;
 	}
 
-	HtmlViewer htmlViewer;
-
 	public void linkClicked(String linkDescription)
 	{
 	}
@@ -45,6 +42,9 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 	public void valueChanged(String widget, String newValue)
 	{
 	}
+
+	HtmlViewer htmlViewer;
+
 }
 
 class OverviewText extends HtmlBuilder
