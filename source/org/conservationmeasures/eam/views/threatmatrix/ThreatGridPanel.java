@@ -58,6 +58,9 @@ public class ThreatGridPanel extends JPanel
 		populateThreatSummaries(cells);
 		populateTargetSummaries(cells);
 		populateBundleCells(cells);
+		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
+		cells[rows-1][columns-1].add(grandTotal);
+		summaryCells.add(grandTotal);
 	}
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
@@ -196,4 +199,5 @@ public class ThreatGridPanel extends JPanel
 	HashSet summaryCells;
 	HashMap activeCells;
 	ThreatRatingBundle highlightedBundle;
+	ThreatRatingSummaryCell grandTotal;
 }

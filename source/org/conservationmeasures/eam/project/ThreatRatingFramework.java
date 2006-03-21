@@ -201,6 +201,17 @@ public class ThreatRatingFramework
 		return getSummaryOfBundles(bundleArray);
 	}
 	
+	public ThreatRatingValueOption getProjectThreatRatingValue(int[] threatIds)
+	{
+		int[] numericValues = new int[threatIds.length];
+		for(int i = 0; i < threatIds.length; ++i)
+		{
+			ThreatRatingValueOption threatSummary = getThreatThreatRatingValue(threatIds[i]);
+			numericValues[i] = threatSummary.getNumericValue();
+		}
+		return getSummaryOfNumericValues(numericValues);
+	}
+	
 	boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		NodePool nodePool = project.getNodePool();
@@ -221,6 +232,11 @@ public class ThreatRatingFramework
 		for(int i = 0; i < bundlesToSummarize.length; ++i)
 			bundleValues[i] = getBundleValue(bundlesToSummarize[i]).getNumericValue();
 
+		return getSummaryOfNumericValues(bundleValues);
+	}
+
+	private ThreatRatingValueOption getSummaryOfNumericValues(int[] bundleValues)
+	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
 		int numericResult = formula.getSummaryOfBundles(bundleValues);
 		return findValueOptionByNumericValue(numericResult);

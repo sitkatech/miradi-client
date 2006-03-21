@@ -2,6 +2,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiLabel;
@@ -18,6 +19,10 @@ public class ThreatRatingSummaryCell extends JPanel
 		return new ThreatRatingSummaryCell(model, -1, targetIndex);
 	}
 
+	public static ThreatRatingSummaryCell createGrandTotal(ThreatMatrixTableModel model)
+	{
+		return new ThreatRatingSummaryCell(model, -1, -1);
+	}
 	
 	private ThreatRatingSummaryCell(ThreatMatrixTableModel modelToUse, int threatIndexToUse, int targetIndexToUse)
 	{
@@ -38,9 +43,17 @@ public class ThreatRatingSummaryCell extends JPanel
 		{
 			result = framework.getThreatThreatRatingValue(model.getThreatId(threatIndex));
 		}
-		else
+		else if(targetIndex >= 0)
 		{
 			result = framework.getTargetThreatRatingValue(model.getTargetId(targetIndex));
+		}
+		else
+		{
+			int[] threatIds = new int[model.getThreatCount()];
+			ConceptualModelNode[] threats = model.getDirectThreats();
+			for(int i = 0; i < threats.length; ++i)
+				threatIds[i] = threats[i].getId();
+			result = framework.getProjectThreatRatingValue(threatIds);
 		}
 			
 		label.setText(result.getLabel());
