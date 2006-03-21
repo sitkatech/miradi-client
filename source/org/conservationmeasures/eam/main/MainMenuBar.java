@@ -47,6 +47,7 @@ public class MainMenuBar extends JMenuBar
 		add(createEditMenu(actions));
 		add(createInsertMenu(actions));
 		add(createViewMenu(actions));
+		add(createProcessMenu(actions));
 		add(createHelpMenu(actions));
 	}
 
@@ -108,6 +109,36 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
 		return menu;
+	}
+	
+	private JMenu createProcessMenu(Actions actions)
+	{
+		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
+		menu.add(createSubmenu("1. Conceptualize", 
+				new String[] {"A. Be clear about issue", "B. Understand the context", "C. Create a conceptual model"}));
+		menu.add(createSubmenu("2.1. Plan Your Actions",
+				new String[] {"A. Goal and Objectives", "B. Activities", "C. Action Plan"}));
+		menu.add(createSubmenu("2.2. Plan Your Monitoring",
+				new String[] {"A. Information Needs", "B. Monitoring and Evaluation (M&E) Plan"}));
+		menu.add(createSubmenu("3. Implement Actions and Monitoring",
+				new String[] {"Project Tracking Tools"}));
+		menu.add(createSubmenu("4. Analyze",
+				new String[] {"A. Analyze M&E Information", "B. Analyze Interventions", "C. Communicate with Project Team"}));
+		menu.add(createSubmenu("5. Use/Adapt",
+				new String[] {"A. Adapt Action and M&E Plans"}));
+		menu.add(createSubmenu("6. Communicate",
+				new String[] {"A. Dissemination Strategy"}));
+		menu.add(createSubmenu("7. Iterate",
+				new String[] {"A. Revisit Steps", "B. Create a Learning Environment"}));
+		return menu;
+	}
+	
+	private JMenu createSubmenu(String name, String[] items)
+	{
+		JMenu submenu = new JMenu(name);
+		for(int i = 0; i < items.length; ++i)
+			submenu.add(items[i]);
+		return submenu;
 	}
 
 	private JMenu createHelpMenu(Actions actions)
