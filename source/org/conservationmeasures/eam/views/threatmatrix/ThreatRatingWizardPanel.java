@@ -34,9 +34,10 @@ public class ThreatRatingWizardPanel extends JPanel
 		steps[SET_SEVERITY] = ThreatRatingWizardSeverityStep.create(this);
 		steps[SET_IRREVERSIBILITY] = ThreatRatingWizardIrreversibilityStep.create(this);
 		steps[CHECK_BUNDLE] = new ThreatRatingWizardCheckBundleStep(this);
+		steps[CHECK_TOTALS] = new ThreatRatingWizardCheckTotalsStep(this);
 
 		selectBundle(null);
-		setStep(OVERVIEW);
+		setStep(CHECK_BUNDLE);
 	}
 
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
@@ -111,8 +112,9 @@ public class ThreatRatingWizardPanel extends JPanel
 	private static final int SET_SEVERITY = 3;
 	private static final int SET_IRREVERSIBILITY = 4;
 	private static final int CHECK_BUNDLE = 5;
+	static final int CHECK_TOTALS = 6;
 	
-	private static final int STEP_COUNT = 6;
+	private static final int STEP_COUNT = 7;
 	
 	ThreatMatrixView view;
 	ThreatRatingWizardStep[] steps;

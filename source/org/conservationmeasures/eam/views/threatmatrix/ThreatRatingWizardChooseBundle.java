@@ -91,6 +91,23 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		return wizard.getView();
 	}
 	
+	public void buttonPressed(String buttonName)
+	{
+		if(buttonName.equals("Done"))
+		{
+			try
+			{
+				wizard.setStep(ThreatRatingWizardPanel.CHECK_TOTALS);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+			return;
+		}
+		super.buttonPressed(buttonName);
+	}
+
 	void refresh() throws Exception
 	{
 		ThreatRatingBundle bundle = wizard.getSelectedBundle();
