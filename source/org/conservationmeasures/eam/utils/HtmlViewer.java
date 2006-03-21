@@ -157,18 +157,20 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		public OurImageView(Element elem)
 		{
 			super(elem);
+			name = (String)elem.getAttributes().getAttribute(HTML.Attribute.SRC);
 		}
 
 		public Image getImage()
 		{
 			if(image == null)
 			{
-				ImageIcon icon = new ImageIcon("images/StartProject.png");
+				ImageIcon icon = new ImageIcon(name);
 				image = icon.getImage();
 			}
 			return image;
 		}
 		
+		String name;
 		Image image;
 	}
 	
