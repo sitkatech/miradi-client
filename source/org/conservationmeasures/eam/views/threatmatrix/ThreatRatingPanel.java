@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashMap;
@@ -80,7 +81,7 @@ public class ThreatRatingPanel extends JPanel
 		{
 			ThreatRatingCriterion criterion = criterionItems[i];
 
-			UiLabel criterionLabel = new UiLabel(criterion.getLabel());
+			CriterionLabel criterionLabel = new CriterionLabel(criterion.getLabel());
 			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
 			criterionLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
@@ -97,6 +98,23 @@ public class ThreatRatingPanel extends JPanel
 			criteria.add(panel);
 		}
 		return criteria;
+	}
+	
+	static class CriterionLabel extends UiLabel
+	{
+		public CriterionLabel(String text)
+		{
+			super(text);
+		}
+
+		public void paint(Graphics g)
+		{
+			super.paint(g);
+			
+			int triangleInset = getHeight() * 2 / 3;
+			g.setColor(Color.BLACK);
+			g.drawLine(getWidth() - triangleInset, 0, getWidth(), triangleInset);
+		}
 	}
 	
 	private void updateDropdownsFromBundle()
