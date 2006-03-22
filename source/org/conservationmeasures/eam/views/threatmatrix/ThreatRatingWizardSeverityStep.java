@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
@@ -26,5 +27,12 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 	{
 		return new ThreatRatingWizardSeverityText(getValueOptionLabels(), value.getLabel()).getText();
 	}
+	
+	public void linkClicked(String linkDescription)
+	{
+		if(linkDescription.equals("Definition:Severity"))
+			EAM.okDialog("Definition: Severity", new String[] {"Severity is..."});
+	}
+
 
 }

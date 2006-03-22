@@ -52,6 +52,11 @@ public class HtmlBuilder
 		return "<a href='" + target + "'>" + text + "</a>";
 	}
 	
+	static public String definition(String target, String text, String toolTip)
+	{
+		return "<em><a href='" + target + "' title='" + toolTip + "'>" + text + "</a></em>";
+	}
+	
 	static public String image(String imageLocation, Dimension size)
 	{
 		return "<img src='" + imageLocation + "' width='" + size.width + "' height='" + size.height + "'></img>";

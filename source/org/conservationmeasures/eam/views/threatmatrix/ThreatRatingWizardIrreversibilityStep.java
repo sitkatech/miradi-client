@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSetValue
@@ -26,5 +27,13 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 	{
 		return new ThreatRatingWizardIrreversibilityText(getValueOptionLabels(), value.getLabel()).getText();
 	}
+	
+	public void linkClicked(String linkDescription)
+	{
+		if(linkDescription.equals("Definition:Irreversibility"))
+			EAM.okDialog("Definition: Irreversibility", new String[] {"Irreversibility is..."});
+	}
+
+
 
 }

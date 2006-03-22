@@ -73,6 +73,10 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 			ShowBundleRulesDialog dlg = new ShowBundleRulesDialog();
 			dlg.show();
 		}
+		else if(linkDescription.equals("Definition:OverallThreatRating"))
+		{
+			EAM.okDialog("Definition: Overall Threat Rating", new String[] {"The overall threat rating is..."});
+		}
 	}
 
 	public void valueChanged(String widget, String newValue)
@@ -89,7 +93,8 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 							heading("Check Overall Threat Rating") + 
 							paragraph("Once you have completed your ratings for all three criteria, " +
 									"the software automatically calculates the " +
-									anchorTag("DefineOverallThreatRating", "overall threat rating") + 
+									definition("Definition:OverallThreatRating", "overall threat rating",
+											"The Overall Threat Rating is...") + 
 									" for this target and threat combination.  " +
 									"You should check whether you agree with this overall rating.  " +
 									"If it does not make sense, " +

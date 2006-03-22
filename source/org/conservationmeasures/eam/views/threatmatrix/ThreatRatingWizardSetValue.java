@@ -59,10 +59,6 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 		return wizard.getFramework();
 	}
 	
-	public void linkClicked(String linkDescription)
-	{
-	}
-
 	public void valueChanged(String widget, String newValue)
 	{
 		setValue(newValue);

@@ -33,12 +33,14 @@ class NoProjectHtmlText extends HtmlBuilder
 				heading("Welcome to e-Adaptive Management!") + 
 				horizontalLine() + heading("Get Started") +
 				indent(
-						paragraph("To begin a new " + anchorTag("DefineProject", "project") + 
+						paragraph("To begin a new " + 
+								definition("Definition:Project", "project", "A project is...") + 
 								", select " + bold("Start Project") + ".") +
 								centered(anchorTag(NEW_PROJECT, 
 										image(startButtonLocation, startButtonSize))) +
 						paragraph("New to e-Adaptive Management? See an " +
-								anchorTag("DefineEAM", "Overview of e-AM") + ".")
+								definition("Definition:EAM", "Overview of e-AM", "e-Adaptive Management is...") + 
+								".")
 					) +
 				horizontalLine() +
 				heading("Work on Existing Project") + 

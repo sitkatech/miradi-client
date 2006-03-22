@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
@@ -41,13 +42,20 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		{
 			Action action = new ActionNewProject(getMainWindow());
 			action.actionPerformed(null);
-			return;
 		}
-		if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
+		else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
 		{
 			String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
 			File projectDirectory = new File(ProjectChooser.getHomeDirectory(), projectName);
 			getMainWindow().createOrOpenProject(projectDirectory);
+		}
+		else if(linkDescription.equals("Definition:Project"))
+		{
+			EAM.okDialog("Definition: Project", new String[] {"A project is..."});
+		}
+		else if(linkDescription.equals("Definition:EAM"))
+		{
+			EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
 		}
 	}
 

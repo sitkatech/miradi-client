@@ -17,7 +17,7 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 				tableCell(
 					heading("Rate the Severity of the Selected Threat") +
 					indent(paragraph("Using the scale shown on the right, rate the " + 
-							anchorTag("DefineSeverity", "severity") + 
+							definition("Definition:Severity", "severity", "Severity is...") + 
 							" of the threat on the target.  " +
 							"You can click on the blue triangle to record any comments or assumptions.") +
 							paragraph(bold("What is the severity of the threat on the target?")) +
