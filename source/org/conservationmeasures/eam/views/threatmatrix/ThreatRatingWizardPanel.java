@@ -13,6 +13,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -109,7 +110,13 @@ public class ThreatRatingWizardPanel extends JPanel
 
 		add(contents, BorderLayout.CENTER);
 		add(hotButtons, BorderLayout.AFTER_LINE_ENDS);
+		allowSplitterToHideUsCompletely();
 		validate();
+	}
+
+	private void allowSplitterToHideUsCompletely()
+	{
+		setMinimumSize(new Dimension(0, 0));
 	}
 	
 	private JComponent createHotButtons()
