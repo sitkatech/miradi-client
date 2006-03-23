@@ -75,33 +75,33 @@ class OverviewText extends HtmlBuilder
 						newline() +
 						"") +
 				tableCell(
-						heading("Guide to the Threat Rating Summary Table") + 
-						paragraph("The " + bold("far left hand column ") +
+						smallHeading("Guide to the Threat Rating Summary Table") + 
+						smallParagraph(("The " + bold("far left hand column ") +
 								"is a listing of all threats and the " +
 								bold("top row ") +
 								"is a listing of all targets for your project. ") + 
-						paragraph("The " +
+						smallParagraph("The " +
 								"cells of the table " +
 								"show the overall threat ratings for each threat " +
 								"on each target that it affects.  " +
 								"You can click on a cell to bring up the specific criteria " +
 								"that go into the overall threat ratings.") + 
-						paragraph("Finally, the table contains three types of summary ratings:") +
+						smallParagraph("Finally, the table contains three types of summary ratings:") +
 						list(
-							listItem("The " +
+							listItem(smallParagraph("The " +
 									bold("column on the far right ") +
-									"contains a summary of the overall rating of each threat across all targets.") +
-							listItem("The " +
+									"contains a summary of the overall rating of each threat across all targets.")) +
+							listItem(smallParagraph("The " +
 									bold("row on the bottom ") +
-									"contains a summary of the overall threat rating for each target.") + 
-							listItem("Finally, the " +
+									"contains a summary of the overall threat rating for each target.")) + 
+							listItem(smallParagraph("Finally, the " +
 									bold("lowest right hand cell ") +
-									"contains a summary of the threat rating for your entire project.")
+									"contains a summary of the threat rating for your entire project."))
 							) +
-						paragraph("These summary ratings are not entered directly, " +
+						smallParagraph("These summary ratings are not entered directly, " +
 								"but are calculated as you rate the specific effects " +
 								"of threats on targets in the cells of the table.") +
-					"")
+					""))
 				))
 			);
 

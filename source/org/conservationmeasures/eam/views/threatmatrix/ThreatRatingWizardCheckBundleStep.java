@@ -110,7 +110,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 							newline() +
 							"") +
 					tableCell(
-							paragraph(bold("Overall Threat Rating -- ") +
+							smallParagraph(bold("Overall Threat Rating -- ") +
 									"The e-AM Software calculates threat ratings " +
 									"using a rule-based system for combining the scope, severity, " +
 									"and irreversibility criteria.  " +

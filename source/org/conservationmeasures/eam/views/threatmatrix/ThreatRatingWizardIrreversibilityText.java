@@ -36,16 +36,16 @@ public class ThreatRatingWizardIrreversibilityText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Irreversibility - ") + "The degree to which the effects of a threat " +
+					smallParagraph(bold("Irreversibility - ") + "The degree to which the effects of a threat " +
 							"can be restored.") +
-					indent(paragraph(bold("Very High: ") + "The effects of the threat are not reversible " +
+					indent(smallParagraph(bold("Very High: ") + "The effects of the threat are not reversible " +
 							"	(e.g., wetlands converted to a shopping center).") +
-							paragraph(bold("High: ") + "The effects of the threat are technically reversible, " +
+							smallParagraph(bold("High: ") + "The effects of the threat are technically reversible, " +
 									"but not practically affordable (e.g., wetland converted to agriculture).") +
-							paragraph(bold("Medium: ") + "The effects of the threat are reversible " +
+							smallParagraph(bold("Medium: ") + "The effects of the threat are reversible " +
 									"with a reasonable commitment of resources " +
 									"(e.g., ditching and draining of wetland).") +
-							paragraph(bold("Low: ") + "The effects of the threat are easily reversible " +
+							smallParagraph(bold("Low: ") + "The effects of the threat are easily reversible " +
 									"at relatively low cost (e.g., off-road vehicles trespassing in wetland).")
 					)
 				)

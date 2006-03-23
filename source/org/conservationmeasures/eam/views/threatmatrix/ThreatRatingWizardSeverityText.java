@@ -35,19 +35,19 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Severity - ") + "The level of damage to the conservation target " +
+					smallParagraph(bold("Severity - ") + "The level of damage to the conservation target " +
 						"that can reasonably be expected within ten years under current circumstances " +
 						"(i.e., given the continuation of the existing situation).") +
-					indent(paragraph(bold("Very High: ") + "The threat is likely to " +
+					indent(smallParagraph(bold("Very High: ") + "The threat is likely to " +
 							"destroy or eliminate the conservation target " +
 							"over some portion of the target’s occurrence at the site.") +
-							paragraph(bold("High: ") + "The threat is likely to " +
+							smallParagraph(bold("High: ") + "The threat is likely to " +
 									"seriously degrade the conservation target " +
 									"over some portion of the target’s occurrence at the site.") +
-							paragraph(bold("Medium: ") + "The threat is likely to " +
+							smallParagraph(bold("Medium: ") + "The threat is likely to " +
 									"moderately degrade the conservation target " +
 									"over some portion of the target’s occurrence at the site.") +
-							paragraph(bold("Low: ") + "The threat is likely to " +
+							smallParagraph(bold("Low: ") + "The threat is likely to " +
 									"only slightly impair the conservation target " +
 									"over some portion of the target’s occurrence at the site.")
 					)

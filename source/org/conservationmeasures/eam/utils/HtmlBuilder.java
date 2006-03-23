@@ -26,6 +26,11 @@ public class HtmlBuilder
 		return "<h2>" + text + "</h2>";
 	}
 	
+	static public String smallHeading(String text)
+	{
+		return "<h3>" + text + "</h3>";
+	}
+	
 	static public String horizontalLine()
 	{
 		return "<hr></hr>";
@@ -40,6 +45,11 @@ public class HtmlBuilder
 	static public String paragraph(String text)
 	{
 		return "<p>" + text + "</p>";
+	}
+	
+	static public String smallParagraph(String text)
+	{
+		return paragraph("<font size='-1'>" + text + "</font>");
 	}
 	
 	static public String bold(String text)

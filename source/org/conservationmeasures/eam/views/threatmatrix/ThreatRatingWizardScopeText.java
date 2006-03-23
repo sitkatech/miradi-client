@@ -35,24 +35,24 @@ public class ThreatRatingWizardScopeText extends HtmlBuilder
 					)
 				) + 
 				tableCell(
-					paragraph(bold("Scope - ") + "Most commonly defined spatially as " +
+					smallParagraph(bold("Scope - ") + "Most commonly defined spatially as " +
 							"the geographic scope of impact on the conservation target " +
 							"at the site that can reasonably be expected " +
 							"within ten years under current circumstances " +
 							"(i.e., given the continuation of the existing situation).") +
-					indent(paragraph(bold("Very High: ") + "The threat is likely to be " +
+					indent(smallParagraph(bold("Very High: ") + "The threat is likely to be " +
 								"very widespread or pervasive in its scope, " +
 								"and affect the conservation target " +
 								"throughout the target's occurrences at the site.") +
-							paragraph(bold("High: ") + "The threat is likely to be " +
+							smallParagraph(bold("High: ") + "The threat is likely to be " +
 									"widespread in its scope, " +
 									"and affect the conservation target " +
 									"at many of its locations at the site.") +
-							paragraph(bold("Medium: ") + "The threat is likely to be " +
+							smallParagraph(bold("Medium: ") + "The threat is likely to be " +
 									"localized in its scope, " +
 									"and affect the conservation target " +
 									"at some of the target's locations at the site.") +
-							paragraph(bold("Low: ") + "The threat is likely to be " +
+							smallParagraph(bold("Low: ") + "The threat is likely to be " +
 									"very localized in its scope, " +
 									"and affect the conservation target " +
 									"at a limited portion of the target's location at the site.")
