@@ -6,6 +6,10 @@
 package org.conservationmeasures.eam.views.interview.elements;
 
 
+import java.awt.Color;
+
+import javax.swing.border.LineBorder;
+
 import org.conservationmeasures.eam.utils.NotHugeTextArea;
 
 
@@ -61,6 +65,7 @@ public class InputElementData extends ElementData
 	public void createComponent()
 	{
 		NotHugeTextArea field = new NotHugeTextArea();
+		field.setBorder(new LineBorder(Color.BLACK));
 		field.setLineWrap(true);
 		field.setWrapStyleWord(true);
 		component = field;

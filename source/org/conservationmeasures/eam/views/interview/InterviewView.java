@@ -12,6 +12,8 @@ import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -82,6 +84,7 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		
 		Project project = getProject();
 		stepHolder = new UiVBox();
+		stepHolder.setBackground(Color.WHITE);
 		InterviewModel model = project.getInterviewModel();
 		InterviewStepModel stepModel = model.getCurrentStep();
 		for(int i=0; i < stepModel.getElementCount(); ++i)
@@ -89,8 +92,12 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 			ElementData element = stepModel.getElement(i);
 			element.createComponent();
 			setElementDataFromProject(element);
-			stepHolder.add(element.getComponent());
+			JComponent thisComponent = element.getComponent();
+			JPanel panel = new JPanel(new BorderLayout());
+			panel.add(thisComponent);
+			stepHolder.add(panel);
 		}
+		stepHolder.add(Box.createVerticalGlue());
 		add(stepHolder, BorderLayout.CENTER);
 		validate();
 		updateButtonStates();

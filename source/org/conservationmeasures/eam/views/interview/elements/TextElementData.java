@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.interview.elements;
 
-import javax.swing.JLabel;
+import org.conservationmeasures.eam.utils.HtmlViewer;
 
 class TextElementData extends ElementData
 {
@@ -32,7 +32,7 @@ class TextElementData extends ElementData
 	
 	public void createComponent()
 	{
-		component = new JLabel(toString());
+		component = new HtmlViewer(toString(), null);
 	}
 
 	private StringBuffer data;

@@ -90,52 +90,60 @@ public class InterviewModel
 		"P1aT2S1\n" +
 		"\n" + 
 		":html:\n" +
-		"<h1>Interview</h1>" +
-		"<p>This view will walk the user through a series of questions.</p>";
+		"<h2>Interview</h2>" +
+		"<font face='Arial'>" +
+		"<p>This view will walk the user through a series of questions.</p>" +
+		"</font>";
 
 	static public final String templateP1aT2S1 = 	
 		"P1aT2S1\n" +
 		"P1aT2S2\n" +
 		"welcome\n" +
 		":html:\n" +
-			"<p><font size='6'>Step 1.  Conceptualize</font></p>\n" + 
-		":html:\n" +
-			"<font size='5'>&nbsp;&nbsp;" +
-			"Principle 1A.  Be clear and specific about the issue or problem</font></p>" +
+			"<h2>Step 1.  Conceptualize</h2>\n" + 
+			"<h3>Principle 1A.  Be clear and specific about the issue or problem</h3>" +
 			"<hr></hr>\n" +
-		":html:\n" +
-			"<p><strong>Task 2. Define the scope of the area or theme</strong></p>" +
-			"<br></br>" +
-			"<p>Most conservation projects will focus on a defined geographic <u><em>project area</em></u> " + 
+			"<font face='Arial'>&nbsp;&nbsp;" +
+			"<h4>Task 2. Define the scope of the area or theme</strong></h4>" +
+			"<font face='Arial'>" +
+			"<p>Most conservation projects will focus on a defined geographic " +
+			"<a href='none'><em>project area</em></a> " + 
 			"that contains the biodiversity that is of interest.  " + 
 			"In a few cases, a conservation project may not focus on biodiversity in a specific area, " + 
-			"but instead will have a <u><em>theme</em></u> that focuses on a population of wide-ranging animals, " + 
+			"but instead will have a " +
+			"<a href='none'><em>theme</em></a> that focuses on a population of wide-ranging animals, " + 
 			"such as migratory birds.</p>" +
-			"<br></br>\n" +
-		":html:\n" +
+			"\n" +
 			"<p>Describe in a few sentences the project area or theme for your project:</p>\n" + 
-		":input:\n" +
-			"ProjectScope\n";
+			"<textarea rows='5' cols='80'></textarea>" +
+			"</font>";
 	
 	private static final String templateP1aT2S2=
 		"P1aT2S2\n" +
 		"\n" +
 		"P1aT2S1\n" +
 		":html:\n" +
-			"<p><font size='6'>Step 2.1.  Plan Your Actions</font></p>\n" +
-		":html:\n" +
-			"<font size='5'>&nbsp;&nbsp;Principle 2.1 A.  Develop clear goal and objectives</font></p>" +
+			"<h2>Step 2.1.  Plan Your Actions</h2>\n" +
+			"<h3>Principle 2.1 A.  Develop clear goal and objectives</h3>" +
 			"<hr></hr>" +
-			"<p><strong>Task 3. Develop Objectives</strong></p>" +
-			"<br></br>" + 
-			"An <u><em>objective</em></u> is a specific statement detailing the desired accomplishments, " + 
+			"<h4><strong>Task 3. Develop Objectives</strong></h4>" +
+			"<font face='Arial'>" +
+			"<p>An " +
+			"<a href='none'><em>objective</em></a> " +
+			"is a specific statement detailing the desired accomplishments, " + 
 			"milestones or outcomes of a project.  To develop a good objective, " + 
-			"select one of your high ranked threats:\n" +
-		":list:ThreatChoosen\n" +
-		"Cutting Trees\n" +
-		"International Trawling\n" +
-		"Local Fishing\n"+
-		":html:\n";
+			"select one of your high ranked threats:</p>\n" +
+			"<br></br>" +
+			"<select>" +
+			"<option>Diver Anchor Damage</option>" +
+			"<option>Illegal Shark Fishing by Mainland Boats</option>" +
+			"<option>Unsustainable Legal Fishing by Locals</option>" +
+			"<option>Increased Water Temperatures</option>" +
+			"<option>Sewage</option>" +
+			"<option>Introduced Predators (Rats)</option>" +
+			"<option>Potential Oil Spills</option>" +
+			"</select>" +
+			"</font>";
 
 	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
 }

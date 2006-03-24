@@ -9,6 +9,6 @@ public class HtmlElementData extends TextElementData
 {
 	public String toString()
 	{
-		return "<html>" + super.toString() + "</html>";
+		return super.toString();
 	}
 }
