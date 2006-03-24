@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -37,7 +39,13 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.commands.CommandInterviewSetStep;
+import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -114,10 +122,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createProcessMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
-		menu.add(createSubmenu("1. Conceptualize", 
-				new String[] {"A. Be clear about issue", "B. Understand the context", "C. Create a conceptual model"}));
-		menu.add(createSubmenu("2.1. Plan Your Actions",
-				new String[] {"A. Goal and Objectives", "B. Activities", "C. Action Plan"}));
+		menu.add(createConceptualizeSubment());
+		menu.add(createPlanActionsSubmenu());
 		menu.add(createSubmenu("2.2. Plan Your Monitoring",
 				new String[] {"A. Information Needs", "B. Monitoring and Evaluation (M&E) Plan"}));
 		menu.add(createSubmenu("3. Implement Actions and Monitoring",
@@ -132,7 +138,104 @@ public class MainMenuBar extends JMenuBar
 				new String[] {"A. Revisit Steps", "B. Create a Learning Environment"}));
 		return menu;
 	}
+
+	private JMenu createPlanActionsSubmenu()
+	{
+		String objectivesText = "A. Goal and Objectives";
+		String[] items = new String[] {"B. Activities", "C. Action Plan"};
+		JMenu submenu = new JMenu("2.1. Plan Your Actions");
+		JMenuItem objectivesItem = new JMenuItem(objectivesText);
+		objectivesItem.addActionListener(new ObjectivesActionHandler());
+		submenu.add(objectivesItem);
+		for(int i = 0; i < items.length; ++i)
+			submenu.add(items[i]);
+		return submenu;
+	}
 	
+	private JMenu createConceptualizeSubment()
+	{
+		String[] items = new String[] {"B. Understand the context"};
+		JMenu submenu = new JMenu("1. Conceptualize");
+		
+		JMenuItem clarifyIssueItem = new JMenuItem("A. Be clear about issue");
+		clarifyIssueItem.addActionListener(new ClarifyIssueActionHandler());
+		submenu.add(clarifyIssueItem);
+		
+		for(int i = 0; i < items.length; ++i)
+			submenu.add(items[i]);
+		
+		JMenuItem modelItem = new JMenuItem("C. Create a conceptual model");
+		modelItem.addActionListener(new ModelActionHandler());
+		submenu.add(modelItem);
+		
+		return submenu;
+	}
+	
+	abstract class JumpHandler implements ActionListener
+	{
+		void jumpToInterviewStep(String stepName)
+		{
+			String viewName = InterviewView.getViewName();
+			switchToView(viewName);
+			
+			try
+			{
+				CommandInterviewSetStep setStep = new CommandInterviewSetStep(stepName);
+				EAM.mainWindow.getProject().executeCommand(setStep);
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logWarning("Unable to set step");
+				EAM.logException(e);
+			}
+		}
+
+		void switchToView(String viewName)
+		{
+			try
+			{
+				CommandSwitchView switchView = new CommandSwitchView(viewName);
+				EAM.mainWindow.getProject().executeCommand(switchView);
+			}
+			catch (AlreadyInThatViewException ignoreIt)
+			{
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logWarning("Unable to switch views");
+				EAM.logException(e);
+			}
+		}
+		
+	}
+	
+	class ClarifyIssueActionHandler extends JumpHandler
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			jumpToInterviewStep("P1aT2S1");
+		}
+
+	}
+
+	class ObjectivesActionHandler extends JumpHandler
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			jumpToInterviewStep("P1aT2S2");
+		}
+
+	}
+	
+	class ModelActionHandler extends JumpHandler
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			switchToView(DiagramView.getViewName());
+		}
+		
+	}
+
 	private JMenu createSubmenu(String name, String[] items)
 	{
 		JMenu submenu = new JMenu(name);
