@@ -129,6 +129,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 	{
 		public ShowBundleRulesDialog()
 		{
+			super(EAM.mainWindow);
 			Container contents = getContentPane();
 			contents.setLayout(new BorderLayout());
 

@@ -13,7 +13,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -42,7 +41,7 @@ public class About extends Doer
 	
 	void showOkDialog(String title, String body)
 	{
-		JDialog dlg = new JDialog((JFrame)null, title);
+		JDialog dlg = new JDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
 		Box textBox = Box.createHorizontalBox();
