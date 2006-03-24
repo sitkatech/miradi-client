@@ -110,7 +110,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 							newline() +
 							"") +
 					tableCell(
-							smallParagraph(bold("Summary Threat Ratings -- ") +
+							smallParagraph(bold("Summary Threat Ratings - ") +
 									"The e-AM Software rolls up threat ratings " +
 									"for each target and threat using another rule-based system " +
 									"for combining ratings for each target-threat combination. " +
