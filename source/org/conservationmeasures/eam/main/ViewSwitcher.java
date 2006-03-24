@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import org.conservationmeasures.eam.actions.ActionViewBudget;
 import org.conservationmeasures.eam.actions.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewMap;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
@@ -26,10 +27,10 @@ public class ViewSwitcher extends JComboBox
 		Object[] views = new Object[] {
 			// TODO: Delete the commented-out views here, and at the same time
 			// delete the views themselves, and all references to them
-			//actions.get(ActionViewInterview.class), 
 			//actions.get(ActionViewTable.class),
 				
 				
+			actions.get(ActionViewInterview.class), 
 			actions.get(ActionViewDiagram.class), 
 			actions.get(ActionViewThreatMatrix.class),
 			actions.get(ActionViewTask.class), 
