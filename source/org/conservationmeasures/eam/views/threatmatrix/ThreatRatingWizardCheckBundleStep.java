@@ -136,15 +136,25 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 					"<p><h2>Explanation of How Overall Threat Ratings Are Calculated</h2></p>" +
 					"<p></p>" +
 					"The left-hand matrix shows the rule-based procedure for combining the rankings " +
+					"<br></br>" +
 					"for the Scope and Severity variables to get a ranking of " +
-					"<a href=''>Threat Magnitude</a>.  <br></br>" +
+					"<a href=''>Threat Magnitude</a>.  " +
+					"<br></br>" +
 					"Under these rules, if a threat is rated “low” on either variable, " +
 					"then the magnitude is “low” overall.  " +
-					"Threat magnitude is then combined with Irreversibility ratings <br></br>" +
-					"using the right-hand matrix to get the summary threat rating." +
+					"<br></br>" +
+					"Threat magnitude is then combined with Irreversibility ratings " +
+					"using the right-hand matrix " +
+					"<br></br>" +
+					"to get the summary threat rating." +
 					"</html>")), BorderLayout.BEFORE_FIRST_LINE);
-			ImageIcon image = new ImageIcon("images/BundleRules.jpg");
-			contents.add(new UiLabel("", image, SwingConstants.LEFT), BorderLayout.CENTER);
+			Box hbox = Box.createHorizontalBox();
+			ImageIcon image1 = new ImageIcon("images/BundleRules1.jpg");
+			hbox.add(new UiLabel("", image1, SwingConstants.LEFT), BorderLayout.CENTER);
+			ImageIcon image2 = new ImageIcon("images/BundleRules2.jpg");
+			hbox.add(new UiLabel("", image2, SwingConstants.LEFT), BorderLayout.CENTER);
+
+			contents.add(hbox, BorderLayout.CENTER);
 			contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 
 			pack();
