@@ -6,8 +6,9 @@
 package org.conservationmeasures.eam.views.interview.elements;
 
 import org.conservationmeasures.eam.utils.HtmlViewer;
+import org.conservationmeasures.eam.utils.HyperlinkHandler;
 
-class TextElementData extends ElementData
+class TextElementData extends ElementData implements HyperlinkHandler
 {
 	public TextElementData()
 	{
@@ -32,9 +33,20 @@ class TextElementData extends ElementData
 	
 	public void createComponent()
 	{
-		component = new HtmlViewer(toString(), null);
+		component = new HtmlViewer(toString(), this);
+	}
+
+	public void linkClicked(String linkDescription)
+	{
+	}
+
+	public void valueChanged(String widget, String newValue)
+	{
+	}
+
+	public void buttonPressed(String buttonName)
+	{
 	}
 
 	private StringBuffer data;
-
 }
