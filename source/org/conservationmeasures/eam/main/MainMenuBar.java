@@ -69,11 +69,22 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionPrint.class)));
+		menu.add(createImportMenu());
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionExit.class)));
 		return menu;
 	}
 
+	private JMenu createImportMenu()
+	{
+		JMenu menu = new JMenu("Import");
+		menu.add(new JMenuItem("Import conceptual model from MS Visio"));
+		menu.add(new JMenuItem("Import map from Arc GIS"));
+		menu.add(new JMenuItem("Import project plan from MS Project"));
+		menu.add(new JMenuItem("Import entire project from Xxx organization workbook"));
+		return menu;
+	}
+	
 	private JMenu createEditMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));

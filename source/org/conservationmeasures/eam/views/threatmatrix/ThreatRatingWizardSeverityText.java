@@ -40,16 +40,16 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 						"(i.e., given the continuation of the existing situation).") +
 					indent(smallParagraph(bold("Very High: ") + "The threat is likely to " +
 							"destroy or eliminate the conservation target " +
-							"over some portion of the target’s occurrence at the site.") +
+							"over some portion of the target's occurrence at the site.") +
 							smallParagraph(bold("High: ") + "The threat is likely to " +
 									"seriously degrade the conservation target " +
-									"over some portion of the target’s occurrence at the site.") +
+									"over some portion of the target's occurrence at the site.") +
 							smallParagraph(bold("Medium: ") + "The threat is likely to " +
 									"moderately degrade the conservation target " +
-									"over some portion of the target’s occurrence at the site.") +
+									"over some portion of the target's occurrence at the site.") +
 							smallParagraph(bold("Low: ") + "The threat is likely to " +
 									"only slightly impair the conservation target " +
-									"over some portion of the target’s occurrence at the site.")
+									"over some portion of the target's occurrence at the site.")
 					)
 				)
 			)) 
