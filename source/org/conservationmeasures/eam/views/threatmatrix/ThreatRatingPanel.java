@@ -8,7 +8,11 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.HashMap;
@@ -111,10 +115,33 @@ public class ThreatRatingPanel extends JPanel
 		{
 			super.paint(g);
 			
-			int triangleInset = getHeight() * 2 / 3;
-			g.setColor(Color.BLACK);
-			g.drawLine(getWidth() - triangleInset, 0, getWidth(), triangleInset);
+			Graphics2D g2 = (Graphics2D)g;
+			drawCommentTriangle(g2, getBounds(), Color.BLACK);
 		}
+
+		// FIXME: Code copied directly from RectangleRenderer!
+		private void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
+		{
+			int triangleInset = 15;
+			Polygon triangle = new Polygon();
+			triangle.addPoint(getWidth() - triangleInset, 0);
+			triangle.addPoint(getWidth(), 0);
+			triangle.addPoint(getWidth(), triangleInset);
+			triangle.addPoint(getWidth() - triangleInset, 0);
+			setPaint(g2, rect, Color.CYAN);
+			g2.fill(triangle);
+			setPaint(g2, rect, color);
+			g2.drawPolygon(triangle);
+		}
+
+		// FIXME: Code copied directly from RectangleRenderer!
+		//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
+		public static void setPaint(Graphics2D g2, Rectangle rect, Color color) 
+		{
+			g2.setPaint(new GradientPaint(rect.x, rect.y, color,
+					rect.width, rect.height, color, false));
+		}
+
 	}
 	
 	private void updateDropdownsFromBundle()
