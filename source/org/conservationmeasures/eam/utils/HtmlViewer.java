@@ -11,7 +11,6 @@
  */
 package org.conservationmeasures.eam.utils;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ItemEvent;
@@ -31,6 +30,7 @@ import javax.swing.text.html.FormView;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.ImageView;
+import javax.swing.text.html.StyleSheet;
 
 public class HtmlViewer extends JEditorPane implements HyperlinkListener
 {
@@ -38,17 +38,22 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 	{
 		linkHandler = hyperLinkHandler;
 		
-		setEditorKit(new OurHtmlEditorKit(linkHandler));
 		setEditable(false);
 		setText(htmlSource);
-		setBackground(Color.LIGHT_GRAY);
 		addHyperlinkListener(this);
 	}
 	
 	public void setText(String text)
 	{
-		Document doc = getEditorKit().createDefaultDocument();
+		HTMLEditorKit htmlKit = new OurHtmlEditorKit(linkHandler);
+		StyleSheet style = htmlKit.getStyleSheet();
+		style.addRule("body {background: #ffffff;}");
+		htmlKit.setStyleSheet(style);
+		setEditorKit(htmlKit);
+
+		Document doc = htmlKit.createDefaultDocument();
 		setDocument(doc);
+		
 		super.setText(text);
 		setCaretPosition(0);
 	}
@@ -68,6 +73,8 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 		public OurHtmlEditorKit(HyperlinkHandler handler)
 		{
 			factory = new OurHtmlViewFactory(handler);
+			ourStyleSheet = new StyleSheet();
+			ourStyleSheet.addStyleSheet(super.getStyleSheet());
 		}
 		
 		public ViewFactory getViewFactory()
@@ -75,7 +82,18 @@ public class HtmlViewer extends JEditorPane implements HyperlinkListener
 			return factory;
 		}
 
+		public StyleSheet getStyleSheet()
+		{
+			return ourStyleSheet;
+		}
+
+		public void setStyleSheet(StyleSheet s)
+		{
+			ourStyleSheet = s;
+		}
+
 		ViewFactory factory;
+		StyleSheet ourStyleSheet;
 	}
 	
 	class OurHtmlViewFactory extends HTMLEditorKit.HTMLFactory
