@@ -141,8 +141,8 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 					"for the Scope and Severity variables to get a ranking of " +
 					"<a href=''>Threat Magnitude</a>.  " +
 					"<br></br>" +
-					"Under these rules, if a threat is rated “low” on either variable, " +
-					"then the magnitude is “low” overall.  " +
+					"Under these rules, if a threat is rated 'low' on either variable, " +
+					"then the magnitude is 'low' overall.  " +
 					"<br></br>" +
 					"Threat magnitude is then combined with Irreversibility ratings " +
 					"using the right-hand matrix " +
