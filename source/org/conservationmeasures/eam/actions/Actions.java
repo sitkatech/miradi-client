@@ -31,7 +31,7 @@ public class Actions
 		registerAction(new ActionInsertIntervention(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertIndirectFactor(mainWindow));
-		registerAction(new ActionInsertStress(mainWindow));
+//		registerAction(new ActionInsertStress(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionOpenProject(mainWindow));

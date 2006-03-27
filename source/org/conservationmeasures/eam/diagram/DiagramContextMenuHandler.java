@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
@@ -72,7 +71,6 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertIntervention.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertIndirectFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertDirectThreat.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionInsertStress.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertConnection.class));
