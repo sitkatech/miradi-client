@@ -48,6 +48,7 @@ public class Actions
 		registerAction(new ActionViewBudget(mainWindow));
 		registerAction(new ActionViewTask(mainWindow));
 		registerAction(new ActionViewMap(mainWindow));
+		registerAction(new ActionViewImages(mainWindow));
 		registerAction(new ActionViewCalendar(mainWindow));
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionZoomIn(mainWindow));

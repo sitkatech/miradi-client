@@ -1,7 +1,11 @@
-package org.conservationmeasures.eam.views.map;
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.views.images;
 
 import java.awt.BorderLayout;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -11,14 +15,14 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
-public class MapView extends UmbrellaView
+public class ImagesView extends UmbrellaView
 {
-	public MapView(MainWindow mainWindowToUse)
+	public ImagesView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
-		setToolBar(new MapToolBar(mainWindowToUse.getActions()));
+		setToolBar(new ImagesToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
-		add(new UiScrollPane(new MapComponent()), BorderLayout.CENTER);
+		add(new UiScrollPane(new ImagesComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -28,29 +32,26 @@ public class MapView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Map";
+		return "Images";
 	}
 }
 
-	class MapComponent extends JTabbedPane
+	class ImagesComponent extends JTabbedPane
 	{
 
-		public MapComponent()
+		public ImagesComponent()
 		{
 			setTabPlacement(JTabbedPane.BOTTOM);
 		
 			String[] demoMaps = 
 			{
-				"base",
-				"scope",
-				"targets",
-				"threats",
+				"Bay",
 			};
 			
 			for(int i = 0; i < demoMaps.length; ++i)
 			{
-				URL imageURL = MapView.class.getResource(demoMaps[i] + ".jpg");
-				JLabel image = new JLabel(new ImageIcon(imageURL));
+				String mapName = demoMaps[i] + ".jpg";
+				JLabel image = new JLabel(new ImageIcon("images/" + mapName));
 				image.setName(demoMaps[i]);
 				add(image);
 			}

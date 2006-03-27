@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.images.ImagesView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
@@ -73,6 +74,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		taskView = new TaskView(this);
 		mapView = new MapView(this);
 		calendarView = new CalendarView(this);
+		imagesView = new ImagesView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -85,6 +87,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(taskView, taskView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
+		viewHolder.add(imagesView, imagesView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -220,6 +223,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(mapView);
 		else if(viewName.equals(calendarView.cardName()))
 			setCurrentView(calendarView);
+		else if(viewName.equals(imagesView.cardName()))
+			setCurrentView(imagesView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -260,6 +265,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private TaskView taskView;
 	private MapView mapView;
 	private CalendarView calendarView;
+	private ImagesView imagesView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
