@@ -43,9 +43,9 @@ public class TestWizardStepLoader extends EAMTestCase
 		assertEquals(previousStepName, step.getPreviousStepName());
 		assertEquals(2, step.getElementCount());
 		HtmlElementData label0 = (HtmlElementData)step.getElement(0);
-		assertEquals("wrong element0?", htmlStart + element0 + htmlEnd, label0.toString());
+		assertEquals("wrong element0?", element0, label0.toString());
 		HtmlElementData label1 = (HtmlElementData)step.getElement(1);
-		assertEquals("wrong element1?", htmlStart + element1 + "\n" + htmlEnd, label1.toString());
+		assertEquals("wrong element1?", element1 + "\n", label1.toString());
 	}
 	
 	public void testInputField() throws Exception
