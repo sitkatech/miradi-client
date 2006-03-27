@@ -19,6 +19,7 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -55,12 +56,22 @@ public class ThreatGridPanel extends JPanel
 			}
 		}
 			
+		populateThreatNamesColumnHeading(cells);
 		populateThreatSummaries(cells);
 		populateTargetSummaries(cells);
 		populateBundleCells(cells);
 		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
 		cells[rows-1][columns-1].add(grandTotal);
 		summaryCells.add(grandTotal);
+	}
+
+	private void populateThreatNamesColumnHeading(Box[][] cells)
+	{
+		String threatLabelText = "<html><h2>THREATS</h2></html>";
+		UiLabel threatLabel = new UiLabel(threatLabelText);
+		threatLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+		cells[0][0].add(threatLabel);
 	}
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception

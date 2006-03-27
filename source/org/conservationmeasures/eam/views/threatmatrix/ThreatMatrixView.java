@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
+import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -22,6 +23,7 @@ import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 
@@ -58,9 +60,16 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		grid = new ThreatGridPanel(this, model);
 		wizard = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
+		String targetLabelText = "<html><h2>TARGETS</h2></html>";
+		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
+		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel gridWithHeadings = new JPanel(new BorderLayout());
+		gridWithHeadings.add(targetLabel, BorderLayout.BEFORE_FIRST_LINE);
+		gridWithHeadings.add(grid, BorderLayout.CENTER);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
-		bottomHalf.add(new UiScrollPane(grid), BorderLayout.CENTER);
+		bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		
 		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
