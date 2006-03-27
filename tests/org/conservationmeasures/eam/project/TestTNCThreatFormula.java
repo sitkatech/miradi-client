@@ -91,17 +91,17 @@ public class TestTNCThreatFormula extends EAMTestCase
 	{
 		verifySeriousnessCalculation(4, 4, 4);
 		verifySeriousnessCalculation(4, 3, 4);
-		verifySeriousnessCalculation(4, 2, 3);
-		verifySeriousnessCalculation(4, 1, 2);
-		verifySeriousnessCalculation(3, 4, 3);
+		verifySeriousnessCalculation(4, 2, 4);
+		verifySeriousnessCalculation(4, 1, 3);
+		verifySeriousnessCalculation(3, 4, 4);
 		verifySeriousnessCalculation(3, 3, 3);
-		verifySeriousnessCalculation(3, 2, 2);
-		verifySeriousnessCalculation(3, 1, 1);
-		verifySeriousnessCalculation(2, 4, 2);
+		verifySeriousnessCalculation(3, 2, 3);
+		verifySeriousnessCalculation(3, 1, 2);
+		verifySeriousnessCalculation(2, 4, 3);
 		verifySeriousnessCalculation(2, 3, 2);
-		verifySeriousnessCalculation(2, 2, 1);
+		verifySeriousnessCalculation(2, 2, 2);
 		verifySeriousnessCalculation(2, 1, 1);
-		verifySeriousnessCalculation(1, 4, 1);
+		verifySeriousnessCalculation(1, 4, 2);
 		verifySeriousnessCalculation(1, 3, 1);
 		verifySeriousnessCalculation(1, 2, 1);
 		verifySeriousnessCalculation(1, 1, 1);
@@ -118,10 +118,10 @@ public class TestTNCThreatFormula extends EAMTestCase
 
 	}
 	
-	public void verifySeriousnessCalculation(int magnitude, int urgency, int seriousness)
+	public void verifySeriousnessCalculation(int magnitude, int irreversibility, int seriousness)
 	{
-		String label = "wrong seriousness for " + magnitude + " " + urgency;
-		assertEquals(label, seriousness, formula.computeSeriousness(magnitude, urgency));
+		String label = "wrong seriousness for " + magnitude + " " + irreversibility;
+		assertEquals(label, seriousness, formula.computeSeriousness(magnitude, irreversibility));
 	}
 
 	public void testInvalidMagnitudeAndSeriousness()
@@ -144,17 +144,18 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void testComputeBundleValue()
 	{
-		verifyComputeBundleValue(3, 1, 2, 1);
-		verifyComputeBundleValue(3, 3, 2, 2);
-		verifyComputeBundleValue(4, 3, 4, 3);
+		verifyComputeBundleValue(0, 0, 0, 0);
+		verifyComputeBundleValue(1, 1, 1, 1);
+		verifyComputeBundleValue(2, 2, 2, 2);
+		verifyComputeBundleValue(3, 3, 3, 3);
 		verifyComputeBundleValue(4, 4, 4, 4);
 	}
 	
-	public void verifyComputeBundleValue(int scope, int severity, int urgency, int bundleValue)
+	public void verifyComputeBundleValue(int scope, int severity, int irreversibility, int bundleValue)
 	{
 		String label = "wrong bundle value for " + scope + " " + severity + " " 
-												 + urgency + " " + bundleValue;
-		assertEquals(label, formula.computeBundleValue(scope, severity, urgency), bundleValue);
+												 + irreversibility + " " + bundleValue;
+		assertEquals(label, formula.computeBundleValue(scope, severity, irreversibility), bundleValue);
 		
 	}
 	

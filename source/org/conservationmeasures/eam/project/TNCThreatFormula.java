@@ -27,29 +27,27 @@ public class TNCThreatFormula
 		throw new RuntimeException("unknown scope or severity" + scope + " " + severity);
 	}
 	
-	public int computeSeriousness(int magnitude, int urgency)
+	public int computeSeriousness(int magnitude, int irreversibility)
 	{
-		if(magnitude == 0 || urgency == 0)
+		if(magnitude == 0 || irreversibility == 0)
 			return 0;
-		if(urgency == 3 || urgency == 4)
+		if(irreversibility == 2 || irreversibility == 3)
 			return magnitude;
-		if(magnitude == 1 || magnitude == 2 )
+		if(magnitude == 4 && irreversibility == 4)
+			return 4;
+		if(magnitude == 1 && irreversibility == 1)
 			return 1;
-		if(magnitude == 3 && urgency == 2)
-			return 2;
-		if(magnitude == 4 && urgency == 2)
-			return 3;
-		if(magnitude == 3 && urgency == 1)
-			return 1;
-		if(magnitude == 4 && urgency == 1)
-			return 2;
+		if(irreversibility == 4)
+			return (magnitude + 1);
+		if(irreversibility == 1)
+			return (magnitude - 1);
 		
-		throw new RuntimeException("unknown magnitude or urgency" + magnitude + " " + urgency);
+		throw new RuntimeException("unknown magnitude or urgency" + magnitude + " " + irreversibility);
 	}
 	
-	public int computeBundleValue(int scope, int severity, int urgency)
+	public int computeBundleValue(int scope, int severity, int irreversibility)
 	{
-		return computeSeriousness(computeMagnitude(scope, severity), urgency);
+		return computeSeriousness(computeMagnitude(scope, severity), irreversibility);
 	}
 	
 	public int computeBundleValue(ThreatRatingBundle bundle)
