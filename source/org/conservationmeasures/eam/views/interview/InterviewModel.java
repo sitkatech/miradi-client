@@ -21,8 +21,9 @@ public class InterviewModel
 	public void loadSteps() throws IOException
 	{
 		addStep(StepLoader.load(new UnicodeStringReader(templateWelcome)));
-		addStep(StepLoader.load(new UnicodeStringReader(templateP1aT2S1)));
-		addStep(StepLoader.load(new UnicodeStringReader(templateP1aT2S2)));
+		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_a)));
+		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_b)));
+		addStep(StepLoader.load(new UnicodeStringReader(template_2_1_2_1_A_3_a)));
 	}
 	
 	public void addStep(InterviewStepModel stepModel)
@@ -87,7 +88,7 @@ public class InterviewModel
 	// TODO: Extract out to text file(s)
 	static public final String templateWelcome = 
 		"welcome\n" +
-		"P1aT2S1\n" +
+		"1.0.1_0_A.2.a\n" +
 		"\n" + 
 		":html:\n" +
 		"<h2>Interview</h2>" +
@@ -95,9 +96,9 @@ public class InterviewModel
 		"<p>This view will walk the user through a series of questions.</p>" +
 		"</font>";
 
-	static public final String templateP1aT2S1 = 	
-		"P1aT2S1\n" +
-		"P1aT2S2\n" +
+	static public final String template_1_0_1_0_A_2_a = 	
+		"1.0.1_0_A.2.a\n" +
+		"1.0.1_0_A.2.b\n" +
 		"welcome\n" +
 		":html:\n" +
 			"<h2>Step 1.  Conceptualize</h2>\n" + 
@@ -118,10 +119,24 @@ public class InterviewModel
 			"<textarea rows='5' cols='80'></textarea>" +
 			"</font>";
 	
-	private static final String templateP1aT2S2=
-		"P1aT2S2\n" +
+	private static final String template_1_0_1_0_A_2_b =
+		"1.0.1_0_A.2.b\n" +
+		"2.1.2.1.A.3.a\n" +
+		"1.0.1_0_A.2.a\n" +
+		":html:\n" +
+			"<h2>Step 1.  Conceptualize</h2>\n" + 
+			"<h3>Principle 1A.  Be clear and specific about the issue or problem</h3>" +
+			"<hr></hr>\n" +
+			"<font face='Arial'>&nbsp;&nbsp;" +
+			"<h4>Task 2. Define the scope of the area or theme</strong></h4>" +
+			"<font face='Arial'>" +
+			"\n" + 
+			"Outline your <u><em>project area</em></u> on your project map.";
+		
+	private static final String template_2_1_2_1_A_3_a =
+		"2.1.2.1.A.3.a\n" +
 		"\n" +
-		"P1aT2S1\n" +
+		"1.0.1_0_A.2.b\n" +
 		":html:\n" +
 			"<h2>Step 2.1.  Plan Your Actions</h2>\n" +
 			"<h3>Principle 2.1 A.  Develop clear goal and objectives</h3>" +
