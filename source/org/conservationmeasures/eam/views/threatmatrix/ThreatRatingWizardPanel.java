@@ -11,27 +11,14 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class ThreatRatingWizardPanel extends JPanel
+public class ThreatRatingWizardPanel extends WizardPanel
 {
 	public ThreatRatingWizardPanel(ThreatMatrixView viewToUse) throws Exception
 	{
-		super(new BorderLayout());
 		view = viewToUse;
 		
 		ThreatRatingWizardChooseBundle chooseBundleStep = new ThreatRatingWizardChooseBundle(this);
@@ -102,35 +89,6 @@ public class ThreatRatingWizardPanel extends JPanel
 		validate();
 	}
 	
-	public void setContents(JPanel contents)
-	{
-		removeAll();
-
-		JComponent hotButtons = createHotButtons();
-
-		add(contents, BorderLayout.CENTER);
-		add(hotButtons, BorderLayout.AFTER_LINE_ENDS);
-		allowSplitterToHideUsCompletely();
-		validate();
-	}
-
-	private void allowSplitterToHideUsCompletely()
-	{
-		setMinimumSize(new Dimension(0, 0));
-	}
-	
-	private JComponent createHotButtons()
-	{
-		JComponent hotButtons = Box.createVerticalBox();
-		hotButtons.add(new ProcessButton());
-		hotButtons.add(new JLabel(" "));
-		hotButtons.add(new ExamplesButton());
-		hotButtons.add(new JLabel(" "));
-		hotButtons.add(new WorkshopButton());
-		hotButtons.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
-		return hotButtons;
-	}
-
 	ThreatRatingFramework getFramework()
 	{
 		ThreatRatingFramework framework = getView().getProject().getThreatRatingFramework();
@@ -151,63 +109,5 @@ public class ThreatRatingWizardPanel extends JPanel
 	ThreatRatingWizardStep[] steps;
 	int currentStep;
 	ThreatRatingBundle selectedBundle;
-}
-
-abstract class CommandButton extends JButton implements ActionListener
-{
-	public CommandButton(String text)
-	{
-		super(text);
-		addActionListener(this);
-	}
-
-}
-
-abstract class HotButton extends CommandButton
-{
-	public HotButton(String text, Color color)
-	{
-		super("");
-		setText("<html><table cellpadding='0' cellspacing='0'><tr><td align='center' valign='center'>" + 
-				text + 
-				"</td></tr></table></html>");
-		setBackground(color);
-	}
-}
-
-class ProcessButton extends HotButton
-{
-	public ProcessButton()
-	{
-		super("Get More<br></br>Information", Color.GREEN);
-	}
-
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
-}
-
-class ExamplesButton extends HotButton
-{
-	public ExamplesButton()
-	{
-		super("Examples", Color.YELLOW);
-	}
-
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
-}
-
-class WorkshopButton extends HotButton
-{
-	public WorkshopButton()
-	{
-		super("Workshop<br></br>Hints", Color.CYAN);
-	}
-
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
 }
 

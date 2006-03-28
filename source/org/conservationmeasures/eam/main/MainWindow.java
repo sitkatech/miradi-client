@@ -47,7 +47,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		project = new Project();
 	}
 	
-	public void start() throws IOException
+	public void start() throws Exception
 	{
 		project.addCommandExecutedListener(this);
 		project.addViewChangeListener(this);

@@ -38,13 +38,16 @@ import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.utils.HtmlBuilder;
+import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.UiLabel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
-public class DiagramView extends UmbrellaView
+public class DiagramView extends UmbrellaView implements ViewChangeListener
 {
-	public DiagramView(MainWindow mainWindowToUse)
+	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		diagram = new DiagramComponent(getProject(), getActions());
@@ -55,17 +58,7 @@ public class DiagramView extends UmbrellaView
 		setToolBar(new DiagramToolBar(getActions()));
 
 		setLayout(new BorderLayout());
-		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
-		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		bigSplitter.setResizeWeight(.5);
-		bigSplitter.setTopComponent(createWizard());
-		bigSplitter.setBottomComponent(uiScrollPane);
-		add(bigSplitter);
-		
-		add(bigSplitter, BorderLayout.CENTER);
+		getProject().addViewChangeListener(this);
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -118,12 +111,67 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
 	}
 	
-	public JPanel createWizard()
+	public void switchToView(String viewName) throws Exception
 	{
-		JPanel wizard = new JPanel(new BorderLayout());
-		wizard.add(new UiLabel("Diagram Wizard goes here"), BorderLayout.CENTER);
+		boolean isSwitchingToThisView = viewName.equals(getViewName());
+		if(!isSwitchingToThisView)
+			return;
+		
+		removeAll();
+		
+		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
+		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setResizeWeight(.5);
+		bigSplitter.setTopComponent(createWizard());
+		bigSplitter.setBottomComponent(uiScrollPane);
+		add(bigSplitter);
+		
+		add(bigSplitter, BorderLayout.CENTER);
+
+	}
+	
+
+	public JPanel createWizard() throws Exception
+	{
+		WizardPanel wizard = new WizardPanel();
+		DiagramWizardOverviewStep step = new DiagramWizardOverviewStep();
+		wizard.setContents(step);
+		step.refresh();
 		return wizard;
 	}
 	
 	DiagramComponent diagram;
+
+}
+
+class DoNothingHyperLinkHandler implements HyperlinkHandler
+{
+	public void linkClicked(String linkDescription)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void valueChanged(String widget, String newValue)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void buttonPressed(String buttonName)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+class DiagramWizardHtml extends HtmlBuilder
+{
+	public static String text()
+	{
+		return "";
+	}
 }
