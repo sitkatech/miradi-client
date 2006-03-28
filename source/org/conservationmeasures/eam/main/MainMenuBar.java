@@ -64,23 +64,102 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
 		menu.add(new JMenuItem(actions.get(ActionOpenProject.class)));
 		menu.add(new JMenuItem(actions.get(ActionSaveImage.class)));
-		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionPrint.class)));
+		menu.addSeparator();
+		menu.add(createExportSetupMenu());
+		menu.add(createExportMenu());
 		menu.add(createImportMenu());
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionExit.class)));
 		return menu;
 	}
 
+	private JMenu createExportSetupMenu()
+	{
+		JMenu menu = new JMenu("Configure Export");
+		menu.add("Entire Project");
+		menu.add("Specific Views");
+		menu.add("Restrict Data");
+		menu.add("Encryption Level");
+		return menu;
+	}
+	
+	private JMenu createExportMenu()
+	{
+		JMenu menu = new JMenu("Export");
+		menu.add("CMP Learning Center");
+		menu.add(createExportOrgDatabaseSubmenu());
+		menu.add(createExportDonorReportsSubmenu());
+		menu.add(createExportOtherSubmenu());
+		return menu;
+	}
+	
+	private JMenu createExportOrgDatabaseSubmenu()
+	{
+		JMenu menu = new JMenu("Organization Database");
+		menu.add("WWF Track");
+		menu.add("TNC Project Database");
+		menu.add("WCS Accounting System");
+		return menu;
+	}
+	
+	private JMenu createExportDonorReportsSubmenu()
+	{
+		JMenu menu = new JMenu("Donor Report");
+		menu.add("GEF Format");
+		menu.add("Moore Format");
+		menu.add("CGBD Common Format");
+		return menu;
+	}
+	
+	private JMenu createExportOtherSubmenu()
+	{
+		JMenu menu = new JMenu("Other Format");
+		menu.add("Diagram to MS Visio");
+		menu.add("Workplan to MS Project");
+		menu.add("Budget to MS Excel");
+		menu.add("Map to ARC");
+		menu.add("Generic XML");
+		return menu;
+	}
+	
 	private JMenu createImportMenu()
 	{
 		JMenu menu = new JMenu("Import");
-		menu.add(new JMenuItem("Import conceptual model from MS Visio"));
-		menu.add(new JMenuItem("Import map from Arc GIS"));
-		menu.add(new JMenuItem("Import project plan from MS Project"));
-		menu.add(new JMenuItem("Import entire project from Xxx organization workbook"));
+		menu.add(createImportProjectSubmenu());
+		menu.add(createImportMapSubmenu());
+		menu.add(createImportDiagramSubmenu());
+		menu.add(createImportWorkplanSubmenu());
+		return menu;
+	}
+	
+	private JMenu createImportProjectSubmenu()
+	{
+		JMenu menu = new JMenu("Conservation Project");
+		menu.add("TNC CAP Workbook");
+		return menu;
+	}
+	
+	private JMenu createImportMapSubmenu()
+	{
+		JMenu menu = new JMenu("Maps");
+		menu.add("ARC Shape Files");
+		return menu;
+	}
+	
+	private JMenu createImportDiagramSubmenu()
+	{
+		JMenu menu = new JMenu("Diagrams");
+		menu.add("MS Visio");
+		return menu;
+	}
+	
+	private JMenu createImportWorkplanSubmenu()
+	{
+		JMenu menu = new JMenu("Workplans");
+		menu.add("MS Project");
 		return menu;
 	}
 	
