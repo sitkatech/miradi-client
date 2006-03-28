@@ -5,47 +5,20 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.BorderLayout;
+import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-import javax.swing.JPanel;
-
-import org.conservationmeasures.eam.main.EAM;
-
-public abstract class ThreatRatingWizardStep extends JPanel
+public abstract class ThreatRatingWizardStep extends WizardStep
 {
 	public ThreatRatingWizardStep(ThreatRatingWizardPanel wizardToUse)
 	{
-		super(new BorderLayout());
-		wizard = wizardToUse;
-		
-
+		super(wizardToUse);
 	}
 	
 	abstract void refresh() throws Exception;
-	abstract boolean save() throws Exception;
-	
-	public void buttonPressed(String buttonName)
+
+	ThreatRatingWizardPanel getThreatRatingWizard()
 	{
-		try
-		{
-			if(buttonName.indexOf("Next") >= 0)
-			{
-				if(!save())
-					return;
-				
-				wizard.next();
-			}
-			
-			if(buttonName.indexOf("Back") >= 0)
-			{
-				wizard.previous();
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		return (ThreatRatingWizardPanel)getWizard();
 	}
 
-	ThreatRatingWizardPanel wizard;
 }

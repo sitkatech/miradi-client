@@ -30,7 +30,7 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 		validate();
 	}
 
-	boolean save() throws Exception
+	public boolean save() throws Exception
 	{
 		return true;
 	}

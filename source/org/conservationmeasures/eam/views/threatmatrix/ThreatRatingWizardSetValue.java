@@ -33,7 +33,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 
 	public void refresh() throws Exception
 	{
-		ThreatRatingBundle bundle = wizard.getSelectedBundle();
+		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
 		if(bundle == null)
 		{
 			EAM.logDebug("ThreatRatingWizardSetValue ignoring refresh of null bundle");
@@ -56,7 +56,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 
 	private ThreatRatingFramework getFramework()
 	{
-		return wizard.getFramework();
+		return getThreatRatingWizard().getFramework();
 	}
 	
 	public void valueChanged(String widget, String newValue)
@@ -81,7 +81,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 
 	public boolean save() throws Exception
 	{
-		wizard.getView().setBundleValue(criterion, value);
+		getThreatRatingWizard().getView().setBundleValue(criterion, value);
 		return true;
 	}
 

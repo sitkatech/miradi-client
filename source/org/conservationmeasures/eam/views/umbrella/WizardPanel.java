@@ -48,6 +48,14 @@ public class WizardPanel extends JPanel
 		allowSplitterToHideUsCompletely();
 		validate();
 	}
+	
+	public void next() throws Exception
+	{
+	}
+	
+	public void previous() throws Exception
+	{
+	}
 
 	private void allowSplitterToHideUsCompletely()
 	{

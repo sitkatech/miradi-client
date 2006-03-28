@@ -56,7 +56,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 			else if(widget.equals("Target"))
 				selectedTargetName = newValue;
 
-			wizard.bundleWasClicked(getSelectedBundle());
+			getThreatRatingWizard().bundleWasClicked(getSelectedBundle());
 		}
 		catch (Exception e)
 		{
@@ -88,7 +88,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	
 	ThreatMatrixView getView()
 	{
-		return wizard.getView();
+		return getThreatRatingWizard().getView();
 	}
 	
 	public void buttonPressed(String buttonName)
@@ -97,7 +97,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		{
 			try
 			{
-				wizard.setStep(ThreatRatingWizardPanel.CHECK_TOTALS);
+				getThreatRatingWizard().setStep(ThreatRatingWizardPanel.CHECK_TOTALS);
 			}
 			catch (Exception e)
 			{
@@ -110,7 +110,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 
 	void refresh() throws Exception
 	{
-		ThreatRatingBundle bundle = wizard.getSelectedBundle();
+		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
 
 		if(bundle != null)
 		{

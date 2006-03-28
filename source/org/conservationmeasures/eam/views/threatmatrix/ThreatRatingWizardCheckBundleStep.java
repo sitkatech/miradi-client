@@ -44,7 +44,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 		validate();
 	}
 
-	boolean save() throws Exception
+	public boolean save() throws Exception
 	{
 		return true;
 	}
@@ -55,7 +55,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 		{
 			try
 			{
-				wizard.setStep(ThreatRatingWizardPanel.CHOOSE_BUNDLE);
+				getThreatRatingWizard().setStep(ThreatRatingWizardPanel.CHOOSE_BUNDLE);
 			}
 			catch (Exception e)
 			{
