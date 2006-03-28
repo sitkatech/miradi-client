@@ -10,7 +10,9 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -37,6 +39,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 public class DiagramView extends UmbrellaView
@@ -55,7 +58,14 @@ public class DiagramView extends UmbrellaView
 		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		add(uiScrollPane, BorderLayout.CENTER);
+
+		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setResizeWeight(.5);
+		bigSplitter.setTopComponent(createWizard());
+		bigSplitter.setBottomComponent(uiScrollPane);
+		add(bigSplitter);
+		
+		add(bigSplitter, BorderLayout.CENTER);
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -106,6 +116,13 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionNudgeNodeDown.class, new NudgeNode(KeyEvent.VK_DOWN));
 		addDoerToMap(ActionNudgeNodeLeft.class, new NudgeNode(KeyEvent.VK_LEFT));
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
+	}
+	
+	public JPanel createWizard()
+	{
+		JPanel wizard = new JPanel(new BorderLayout());
+		wizard.add(new UiLabel("Diagram Wizard goes here"), BorderLayout.CENTER);
+		return wizard;
 	}
 	
 	DiagramComponent diagram;
