@@ -24,6 +24,7 @@ public class InterviewModel
 		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_a)));
 		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_b)));
 		addStep(StepLoader.load(new UnicodeStringReader(template_2_1_2_1_A_3_a)));
+		addStep(StepLoader.load(new UnicodeStringReader(template_2_1_2_1_A_3_b)));
 	}
 	
 	public void addStep(InterviewStepModel stepModel)
@@ -131,11 +132,11 @@ public class InterviewModel
 			"<h4>Task 2. Define the scope of the area or theme</strong></h4>" +
 			"<font face='Arial'>" +
 			"\n" + 
-			"Outline your <u><em>project area</em></u> on your project map.";
+			"Outline your <a href='none'><em>project area</em></a> on your project map.";
 		
 	private static final String template_2_1_2_1_A_3_a =
 		"2.1.2.1.A.3.a\n" +
-		"\n" +
+		"2.1.2.1.A.3.b\n" +
 		"1.0.1_0_A.2.b\n" +
 		":html:\n" +
 			"<h2>Step 2.1.  Plan Your Actions</h2>\n" +
@@ -159,6 +160,19 @@ public class InterviewModel
 			"<option>Potential Oil Spills</option>" +
 			"</select>" +
 			"</font>";
-
-	//private static final String dataPrinciple1ATask2Step1 = "Our community's traditional fishing grounds and adjacent shore areas in Our Bay.";
+	
+	private static final String template_2_1_2_1_A_3_b =
+		"2.1.2.1.A.3.b\n" +
+		"\n" +
+		"2.1.2.1.A.3.a\n" +
+		":html:\n" +
+			"<h2>Step 2.1.  Plan Your Actions</h2>\n" +
+			"<h3>Principle 2.1 A.  Develop clear goal and objectives</h3>" +
+			"<hr></hr>" +
+			"<h4><strong>Task 3. Develop Objectives</strong></h4>" +
+			"<font face='Arial'>" +
+			"<p>The threat you have selected to address is: 'Cutting Trees'</p>" +
+			"<p>Write down a few words that generally summarize how you hope to change this factor:</p>" +
+			"<textarea rows='5' cols='80'></textarea>" +
+			"</font>";
 }
