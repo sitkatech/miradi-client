@@ -63,7 +63,7 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 	{
 		DiagramModel model = mainWindow.getProject().getDiagramModel();
 		UiComboBox comboBox = new UiComboBox();
-		comboBox.addItem(EAM.text("Label|[Select a node]"));
+		comboBox.addItem(EAM.text("Label|--Select One---"));
 		Object[] all = DiagramModel.getAll(model);
 		for(int i=0; i < all.length; ++i)
 		{
@@ -95,8 +95,8 @@ public class ConnectionPropertiesDialog extends JDialog implements ActionListene
 		{
 			if(from.getSelectedIndex() == 0 || to.getSelectedIndex() == 0)
 			{
-				String title = EAM.text("Must Choose a Node");
-				String body = EAM.text("You must choose a node in each of the two lists");
+				String title = EAM.text("Must Specify What to Connect");
+				String body = EAM.text("You must select one item in each of the two lists");
 				EAM.okDialog(title, new String[] {body});
 				toFront();
 				return;

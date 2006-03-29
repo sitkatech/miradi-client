@@ -17,7 +17,7 @@ public class ActionViewImages extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Images View");
+		return EAM.text("Action|Images");
 	}
 
 	public String getToolTipText()

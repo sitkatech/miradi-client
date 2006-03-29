@@ -17,7 +17,7 @@ public class ActionViewThreatMatrix extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Threat Rating View");
+		return EAM.text("Action|Threat Ratings");
 	}
 
 	public String getToolTipText()

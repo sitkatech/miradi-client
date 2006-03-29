@@ -18,12 +18,12 @@ public class ActionViewTable extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Table View");
+		return EAM.text("Action|Data Tables");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Table View");
+		return EAM.text("TT|Switch to the Data Table View");
 	}
 	
 	public String toString()

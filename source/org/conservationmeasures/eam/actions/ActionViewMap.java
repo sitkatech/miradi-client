@@ -12,7 +12,7 @@ public class ActionViewMap extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Map View");
+		return EAM.text("Action|Maps");
 	}
 
 	public String getToolTipText()

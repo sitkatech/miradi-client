@@ -17,12 +17,12 @@ public class ActionViewDiagram extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Diagram View");
+		return EAM.text("Action|Diagram");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Diagram View");
+		return EAM.text("TT|Switch to the Conceptual Model Diagram");
 	}
 	
 	public String toString()

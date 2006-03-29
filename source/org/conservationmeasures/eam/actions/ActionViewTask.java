@@ -12,7 +12,7 @@ public class ActionViewTask extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Workplan View");
+		return EAM.text("Action|Workplan");
 	}
 
 	public String getToolTipText()

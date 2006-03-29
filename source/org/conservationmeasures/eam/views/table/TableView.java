@@ -294,8 +294,8 @@ public class TableView extends UmbrellaView
 			super();
 			diagramModel = diagramModelToUse;
 			columnNames = new Vector();
-			columnNames.add(EAM.text("Table|From Node"));
-			columnNames.add(EAM.text("Table|To Node"));
+			columnNames.add(EAM.text("Table|From"));
+			columnNames.add(EAM.text("Table|To"));
 		}
 		
 		protected void addListener()

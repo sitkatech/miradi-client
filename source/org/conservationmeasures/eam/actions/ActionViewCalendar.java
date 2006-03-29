@@ -12,12 +12,12 @@ public class ActionViewCalendar extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Calendar View");
+		return EAM.text("Action|Calendar");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Calendar View");
+		return EAM.text("TT|Switch to the Calendar");
 	}
 	
 	public String toString()
