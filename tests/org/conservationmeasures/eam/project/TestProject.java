@@ -160,6 +160,7 @@ public class TestProject extends EAMTestCase
 	public void testIsValidName() throws Exception
 	{
 		assertTrue("AlphaNumericDotDashSpace", Project.isValidProjectName("AZaz09.- "));
+		assertFalse("allowed really long name?", Project.isValidProjectName("1234567890123456789012345678901234567890"));
 		assertFalse("Other Punct", Project.isValidProjectName("$"));
 		final char ACCENT_A_LOWER = 0xE1;
 		assertTrue("Foreign", Project.isValidProjectName(new String(new char[] {ACCENT_A_LOWER})));

@@ -376,6 +376,9 @@ public class Project
 	
 	static public boolean isValidProjectName(String candidate)
 	{
+		if(candidate.length() > 32)
+			return false;
+		
 		char[] asArray = candidate.toCharArray();
 		for(int i = 0; i < candidate.length(); ++i)
 		{

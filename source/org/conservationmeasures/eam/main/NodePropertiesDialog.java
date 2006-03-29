@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -99,7 +100,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 	private Component createTextField(String initialText)
 	{
-		textField = new UiTextField(25);
+		textField = new UiTextFieldWithLengthLimit(50);
 		textField.requestFocus(true);
 		textField.selectAll();
 
