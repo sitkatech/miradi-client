@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
@@ -43,6 +44,10 @@ public class DiagramWizardOverviewStep extends JPanel implements HyperlinkHandle
 
 	public void linkClicked(String linkDescription)
 	{
+		if(linkDescription.equals("Definition:ConceptualModel"))
+		{
+			EAM.okDialog("Definition: Conceptual Model", new String[] {"A conceptual model is..."});
+		}
 	}
 
 	public void valueChanged(String widget, String newValue)
@@ -61,8 +66,15 @@ class OverviewText extends HtmlBuilder
 			table(tableRow(
 				tableCell(
 						heading("Diagram") + 
-						paragraph("The diagram below...") +
-						paragraph(bold("Click next to continue with the modeling process.")) +
+						paragraph("This view enables you to develop a " +
+								definition("Definition:ConceptualModel", "conceptual model", "A conceptual model is...") +
+								" of your project.  " +
+								"A good conceptual model graphically depicts your project’s targets, " +
+								"direct threats, indirect factors, and interventions--and more importantly, " +
+								"the relationships between them.") +
+						paragraph("As in any modeling exercise, you should not try to show all factors and " +
+								"relationships, but only the most important ones.") +
+						paragraph(bold("Click next to begin developing a model of your project.")) +
 						newline() +
 						indent(table(
 							tableRow(
@@ -74,8 +86,25 @@ class OverviewText extends HtmlBuilder
 						newline() +
 						"") +
 				tableCell(
-						smallHeading("Guide to the Conceptual Model Diagram") + 
-						smallParagraph("Each rectangle in the diagram below represents...") + 
+						smallHeading("Navigation Hints for the Diagram View") + 
+						smallParagraph("To add a new target or other factor, " +
+								"click the appropriate button on the tool bar " +
+								"(hexagon, rectangle, or ellipse), " +
+								"or use the drop down menu, or the right mouse button.  " +
+								"The new factor will appear in the center of the page. " +
+								" If a factor is selected, you can then use " +
+								"the mouse or arrow keys to move it wherever you like.") + 
+						smallParagraph("Double clicking on a factor will bring up a menu " +
+								"in which you can name the factor, change its type, " +
+								"link an indicator or objective to it, or type a comment.") + 
+						smallParagraph("To link factors, indicating a causal relationship, " +
+								"click on the first, then hold the shift key and then click on the second.  " +
+								"Then click the toolbar relationship button (the line with an arrow) " +
+								"to create the link.") + 
+						smallParagraph("The zoom-in and zoom-out buttons can be used to " +
+								"decrease or increase the size of the view.") + 
+						smallParagraph("Note that the scope box automatically forms around " +
+								"whatever targets you have active on the page. ") + 
 					"")
 				))
 			);
