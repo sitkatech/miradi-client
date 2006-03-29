@@ -23,7 +23,7 @@ public class ActionInsertIntervention extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert an Intervention node");
+		return EAM.text("TT|Insert an Intervention");
 	}
 
 }

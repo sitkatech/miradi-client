@@ -23,7 +23,7 @@ public class ActionInsertDirectThreat extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Direct Threat node");
+		return EAM.text("TT|Insert a Direct Threat");
 	}
 
 }

@@ -23,7 +23,7 @@ public class ActionInsertStress extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Stress node");
+		return EAM.text("TT|Insert a Stress");
 	}
 
 }

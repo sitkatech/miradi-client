@@ -23,7 +23,7 @@ public class ActionInsertIndirectFactor extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Indirect Factor node");
+		return EAM.text("TT|Insert a Indirect Factor");
 	}
 
 }

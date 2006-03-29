@@ -23,7 +23,7 @@ public class ActionInsertConnection extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add a relationship between two nodes");
+		return EAM.text("TT|Add a relationship between two factors");
 	}
 
 }

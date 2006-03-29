@@ -23,7 +23,7 @@ public class ActionInsertTarget extends LocationAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Target node");
+		return EAM.text("TT|Insert a Target");
 	}
 
 }
