@@ -92,6 +92,18 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			grid.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
 		}
 		
+		if(node.isDirectThreat())
+		{
+			grid.add(new UiLabel(EAM.text("Label|IUCN_CMP Classification")));
+			grid.add(createThreatClassificationDropdown());
+		}
+		
+		if(node.isIntervention())
+		{
+			grid.add(new UiLabel(EAM.text("Label|IUCN_CMP Classification")));
+			grid.add(createInterventionClassificationDropdown());
+		}
+		
 		grid.add(new UiLabel(EAM.text("Label|Comments")));
 		grid.add(createComment(node.getComment()));
 
@@ -198,6 +210,42 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(commentField, BorderLayout.LINE_START);
 		return component;
+	}
+	
+	JComponent createThreatClassificationDropdown()
+	{
+		String[] choices = {
+				"--Select a classification--",
+				"1. Infrastructure Development",
+				" 1.1 Housing & urban areas ",
+				" 1.2 Commercial & industrial development", 
+				" 1.3 Tourism & recreation ",
+				"2. Agriculture & Aquaculture",
+				" 2.1 Annual crops ",
+				" 2.2 Perennial non-timber crops", 
+				" Etc.",
+				
+		};
+		
+		return new UiComboBox(choices);
+	}
+	
+	JComponent createInterventionClassificationDropdown()
+	{
+		String[] choices = {
+				"--Select a classification--",
+				"1. Land/Water Protection", 
+				" 1.1 Publically owned site/area protection", 
+				" 1.2 Privatel;y & community owned site/area protection", 
+				" 1.3 Resource & habitat protection",
+				"2.Land/Water Management ",
+				" 2.1 Site/area management ",
+				" 2.2 Invasive/problematic species control", 
+				" Etc.",
+				
+		};
+		
+		return new UiComboBox(choices);
 	}
 	
 	class FactorTypeRenderer extends DefaultListCellRenderer
