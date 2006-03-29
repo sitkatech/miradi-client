@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 
@@ -131,6 +132,8 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 			Container contents = getContentPane();
 			contents.setLayout(new BorderLayout());
 
+			ImageIcon bundleSummaries = new ImageIcon("images/BundleSummaries.png");
+			Dimension bundleSummariesSize = new Dimension(bundleSummaries.getIconWidth(), bundleSummaries.getIconHeight());
 			HtmlViewer rules = new HtmlViewer("", null);
 			rules.setText("<html>" +
 					HtmlBuilder.font("Arial", 
@@ -168,7 +171,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 					"for the project, which is calculated by rolling up the far-right hand column " +
 					"using the 2-prime rule.</p>" +
 					HtmlBuilder.newline() +
-					HtmlBuilder.image("images/BundleSummaries.png", new Dimension(700, 400))
+					HtmlBuilder.image("images/BundleSummaries.png", bundleSummariesSize)
 					) + 
 					"</html>");
 			contents.add(new JScrollPane(rules), BorderLayout.CENTER);

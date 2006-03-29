@@ -150,9 +150,9 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 					"to get the summary threat rating." +
 					"</html>")), BorderLayout.BEFORE_FIRST_LINE);
 			Box hbox = Box.createHorizontalBox();
-			ImageIcon image1 = new ImageIcon("images/BundleRules1.jpg");
+			ImageIcon image1 = new ImageIcon("images/BundleRules1.png");
 			hbox.add(new UiLabel("", image1, SwingConstants.LEFT), BorderLayout.CENTER);
-			ImageIcon image2 = new ImageIcon("images/BundleRules2.jpg");
+			ImageIcon image2 = new ImageIcon("images/BundleRules2.png");
 			hbox.add(new UiLabel("", image2, SwingConstants.LEFT), BorderLayout.CENTER);
 
 			contents.add(hbox, BorderLayout.CENTER);
