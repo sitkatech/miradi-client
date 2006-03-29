@@ -329,7 +329,7 @@ public class TestCommands extends EAMTestCase
 		String stepName = project.getCurrentInterviewStepName();
 		assertEquals("project not starting at welcome?", "welcome", stepName);
 
-		String destinationStepName = "P1aT2S1";
+		String destinationStepName = "1.0.1_0_A.2.a";
 		CommandInterviewSetStep cmd = new CommandInterviewSetStep(destinationStepName);
 		assertEquals("wrong destination?", destinationStepName, cmd.getToStep());
 		
