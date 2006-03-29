@@ -41,7 +41,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
-import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -284,10 +283,11 @@ public class Project
 			loadNodePool();
 			loadLinkagePool();
 			loadDiagram();
-			loadCommands();
 		}
 		else
-			replayCommands(db);
+		{
+			throw new RuntimeException("Can't load old data version");
+		}
 	}
 	
 	private void createProject(File projectDirectory) throws Exception
@@ -330,38 +330,6 @@ public class Project
 	private void loadDiagram() throws Exception
 	{
 		getDatabase().readDiagram(getDiagramModel());
-	}
-
-	private void loadCommands() throws Exception
-	{
-		// TODO: 1) this code seems out of place
-		// 2) it is partly a duplicate of replayCommands
-		Vector commands = database.loadCommands();
-		applySnapToOldUnsnappedCommands(commands);
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			database.addCommandWithoutSaving(command);
-			
-		}
-	}
-
-	protected void replayCommands(ProjectServer db) throws IOException, UnknownCommandException, CommandFailedException
-	{
-		getDiagramModel().clear();
-
-		Vector commands = db.loadCommands();
-		applySnapToOldUnsnappedCommands(commands);
-		
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			EAM.logVerbose("Executing " + command);
-			replayCommand(command);
-			database.addCommandWithoutSaving(command);
-			
-		}
-		
 	}
 
 	protected void finishOpening() throws Exception

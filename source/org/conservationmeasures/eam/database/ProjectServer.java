@@ -5,17 +5,13 @@
  */
 package org.conservationmeasures.eam.database;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -157,33 +153,6 @@ public class ProjectServer
 		getJsonDirectory().mkdirs();
 	}
 
-	public Vector loadCommands() throws IOException, UnknownCommandException
-	{
-		Vector loaded = new Vector();
-		EAM.logVerbose("---Loading---");
-		ResultSet allCommands = db.rawSelect("SELECT * FROM DoneCommands ORDER BY id");
-		try
-		{
-			while(allCommands.next())
-			{
-				String commandName = allCommands.getString("name");
-				byte[] data = allCommands.getBytes("data");
-				DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(data));
-				
-				Command command = Command.createFrom(commandName, dataIn);
-				loaded.add(command);
-				EAM.logVerbose(command.toString());
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-		EAM.logVerbose("---Finished---");
-		return loaded;
-	}
-	
 	public static boolean isExistingProject(File projectDirectory)
 	{
 		if(projectDirectory == null)

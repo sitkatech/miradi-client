@@ -17,7 +17,6 @@ public class ProjectForTesting extends Project
 	{
 		super(new ProjectServerForTesting());
 		getTestDatabase().openMemoryDatabase(testName);
-		replayCommands(getDatabase());
 		finishOpening();
 		commandStack = new Vector();
 	}
