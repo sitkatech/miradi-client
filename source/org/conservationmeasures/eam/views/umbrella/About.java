@@ -91,7 +91,7 @@ public class About extends Doer
 
 	public static final String mainAboutText = 
 		"<p>" +
-		"Copyright 2005, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
+		"Copyright 2005-2006, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
 		"and Beneficent Technology, Inc. (Benetech, at www.benetech.org)" +
 		"</p>" +
 		"<p></p>" + 
@@ -105,20 +105,22 @@ public class About extends Doer
 		"If you have questions or suggestions, " +
 		"please contact Nick Salafsky at Nick@FOSonline.org or at 1-301-263-2784. " +
 		"</p>" +
-		"<p></p>" + 
-		"<p>" +
-		"<b>VERSION " + VersionConstants.VERSION_STRING + " -- NOT FOR RELEASE OR REDISTRIBUTION</b>" +
+		"<p></p>" +
+		"<p>NOT FOR RELEASE OR REDISTRIBUTION</p>" +
+		"<p></p>" +
+		"<b>VERSION " + VersionConstants.VERSION_STRING +
 		"</p>";
 
 	public static final String licenseText = 
 		"This pre-release version is intended for evaluation and feedback only. " +
-		"Please send suggestions and other feedback to e-AM@conservationmeasures.org." +
+		"Please send suggestions and other feedback to e-AM@conservationmeasures.org. " +
 		"You are not allowed to redistribute this program without the express written " +
 		"permission of The CMP or Benetech.";
 
 	static final String aboutText = 
 		"<html><table><tr><td align='center' valign='top'>" +
-		"<h1>e-Adaptive Management v 0.1</h1>" +
+		"<h1>e-Adaptive Management Pre-Release Demo</h1>" +
+		"<font face='Arial'>" +
 		mainAboutText + 
 		"<p></p>" +
 		"<p>" +
@@ -126,6 +128,7 @@ public class About extends Doer
 		"</p>" +
 		"<p></p>" + 
 		"<p></p>" + 
+		"</font>" + 
 		"</td></tr></table></html>";
 	
 }
