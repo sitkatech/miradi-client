@@ -17,12 +17,12 @@ public class ActionViewInterview extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Interview View");
+		return EAM.text("Action|Interview");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Interview View");
+		return EAM.text("TT|Switch to the Interview");
 	}
 	
 	public String toString()
