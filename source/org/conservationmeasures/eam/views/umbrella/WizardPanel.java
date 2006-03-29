@@ -25,7 +25,7 @@ public class WizardPanel extends JPanel
 		super(new BorderLayout());
 	}
 
-	protected JComponent createHotButtons()
+	public static JComponent createHotButtons()
 	{
 		JComponent hotButtons = Box.createVerticalBox();
 		hotButtons.add(new ProcessButton());

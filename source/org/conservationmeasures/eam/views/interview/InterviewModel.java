@@ -92,10 +92,37 @@ public class InterviewModel
 		"1.0.1_0_A.2.a\n" +
 		"\n" + 
 		":html:\n" +
-		"<h2>Interview</h2>" +
-		"<font face='Arial'>" +
-		"<p>This view will walk the user through a series of questions.</p>" +
-		"</font>";
+			"<h2>Interview</h2>" +
+			"<table><tr>" +
+			"<td valign='top'>" +
+			"<font face='Arial'>" +
+			"<p>This interview will walk you through each step of the CMP Open Standards.</p>" +
+			"</font>" +
+			"</td>" +
+			"<td valign='top'>" +
+			"<h3>Navigation Hints for the Interview</h3>" +
+			"<font face='Arial'>" +
+			"<p><font size='-1'>The lefthand column typically contains the instructions " +
+			"for the current step.  The righthand column (this one) usually contains " +
+			"definitions, explanations, or user hints.</font></p>" +
+			"<p><font size='-1'>Use the 'Back' and 'Next' buttons to move to the previous or " +
+			"next step.   Note that clicking next automatically saves any work " +
+			"that you have done on that page.</font></p>" +
+			"<p><font size='-1'>Use the 'Step-by-Step' Menu to jump to anther step " +
+			"in the overall process.</font></p>" +
+			"<p><font size='-1'>The following buttons can be found on most pages and provide:</font></p>" +
+			"<ul><font size='-1'>" +
+			"<li><strong>Get More Info</strong> - Links to more detailed guidance about the current step.</li>" +
+			"<li><strong>Examples</strong> - Links to relevant excerpts from other projects.</li>" +
+			"<li><strong>Workshop Hints</strong> - Ideas for how to present this material in a workshop setting, " +
+			"primarily using non-computerized methods.</li>" +
+			"</font></ul>" +
+			"<p><font size='-1'>Once you become experienced with a given step, " +
+			"you can use the splitter to hide the interview screen and " +
+			"just work directly with the relevant views of your project.</font></p>" +
+			"</font>" +
+			"</td>" +
+			"</tr></table>";
 
 	static public final String template_1_0_1_0_A_2_a = 	
 		"1.0.1_0_A.2.a\n" +
