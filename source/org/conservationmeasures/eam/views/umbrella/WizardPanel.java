@@ -18,6 +18,8 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.main.EAM;
+
 public class WizardPanel extends JPanel
 {
 	public WizardPanel()
@@ -85,6 +87,12 @@ abstract class HotButton extends CommandButton
 				"</td></tr></table></html>");
 		setBackground(color);
 	}
+	
+	public void actionPerformed(ActionEvent arg0)
+	{
+		EAM.okDialog("Function Not Available", new String[] {"This function is not yet available"});
+	}
+
 }
 
 class ProcessButton extends HotButton
@@ -94,9 +102,6 @@ class ProcessButton extends HotButton
 		super("Get More<br></br>Information", Color.GREEN);
 	}
 
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
 }
 
 class ExamplesButton extends HotButton
@@ -106,9 +111,6 @@ class ExamplesButton extends HotButton
 		super("Examples", Color.YELLOW);
 	}
 
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
 }
 
 class WorkshopButton extends HotButton
@@ -118,8 +120,5 @@ class WorkshopButton extends HotButton
 		super("Workshop<br></br>Hints", Color.CYAN);
 	}
 
-	public void actionPerformed(ActionEvent arg0)
-	{
-	}
 }
 
