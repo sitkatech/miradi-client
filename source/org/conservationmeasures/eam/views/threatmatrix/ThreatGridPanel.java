@@ -120,9 +120,15 @@ public class ThreatGridPanel extends JPanel
 		
 		Box rollUpLabel = cells[2 + model.getThreatCount() + 1][0];
 		JPanel panel = new JPanel();
-		panel.add(new UiLabel(EAM.text("Overall Target Rating")));
+		panel.add(createBoldLabel("Label|Overall Target Rating"));
 		rollUpLabel.add(panel);
 		
+	}
+
+	private UiLabel createBoldLabel(String text)
+	{
+		UiLabel label = new UiLabel("<html><h3>" + EAM.text(text) + "</h3></html>");
+		return label;
 	}
 
 	private void populateTargetSummaries(Box[][] cells)
@@ -140,7 +146,7 @@ public class ThreatGridPanel extends JPanel
 		
 		Box rollUpLabel = cells[0][2 + model.getTargetCount() + 1];
 		JPanel panel = new JPanel();
-		panel.add(new UiLabel(EAM.text("Overall Threat Rating")));
+		panel.add(createBoldLabel("Label|Overall Threat Rating"));
 		rollUpLabel.add(panel);
 	}
 

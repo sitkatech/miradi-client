@@ -6,11 +6,13 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.main.EAM;
@@ -57,11 +59,17 @@ public class ThreatRatingBundlePanel extends JPanel
 		{
 			threatName.setText("");
 			targetName.setText("");
+			threatName.setBorder(null);
+			targetName.setBorder(null);
 		}
 		else
 		{
-			threatName.setText(getNodeName(workingBundle.getThreatId()));
-			targetName.setText(getNodeName(workingBundle.getTargetId()));
+			int threatId = workingBundle.getThreatId();
+			int targetId = workingBundle.getTargetId();
+			threatName.setText(getNodeName(threatId));
+			targetName.setText(getNodeName(targetId));
+			threatName.setBorder(new LineBorder(Color.BLACK));
+			targetName.setBorder(new LineBorder(Color.BLACK));
 		}
 	}
 	
