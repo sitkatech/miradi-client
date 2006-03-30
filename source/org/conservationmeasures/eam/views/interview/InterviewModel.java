@@ -92,7 +92,7 @@ public class InterviewModel
 		"1.0.1_0_A.2.a\n" +
 		"\n" + 
 		":html:\n" +
-			"<h2>Interview</h2>" +
+			"<h2>Interview (demo screen shots only)</h2>" +
 			"<table><tr>" +
 			"<td valign='top'>" +
 			"<font face='Arial'>" +
@@ -199,7 +199,22 @@ public class InterviewModel
 			"<h4><strong>Task 3. Develop Objectives</strong></h4>" +
 			"<font face='Arial'>" +
 			"<p>The threat you have selected to address is: 'Cutting Trees'</p>" +
-			"<p>Write down a few words that generally summarize how you hope to change this factor:</p>" +
+			"<p>Write a draft " +
+			"<a href='none'><em>objective</em></a> " +
+			"about how you hope to change this factor.  " +
+			"Then modify this draft objective to make sure it meets the criteria of being " +
+			"<a href='none'><em>impact oriented</em></a>" +
+			", " +
+			"<a href='none'><em>measureable</em></a>" +
+			", " +
+			"<a href='none'><em>specific</em></a>" +
+			", " +
+			"<a href='none'><em>realistic</em></a>" +
+			", " +
+			"<a href='none'><em>time-limited</em></a>" +
+			", and " +
+			"<a href='none'><em>achievable</em></a>" +
+			".</p>" +
 			"<textarea rows='5' cols='80'></textarea>" +
 			"</font>";
 }
