@@ -69,7 +69,7 @@ class OverviewText extends HtmlBuilder
 						paragraph("This view enables you to develop a " +
 								definition("Definition:ConceptualModel", "conceptual model", "A conceptual model is...") +
 								" of your project.  " +
-								"A good conceptual model graphically depicts your project’s targets, " +
+								"A good conceptual model graphically depicts your project's targets, " +
 								"direct threats, indirect factors, and interventions--and more importantly, " +
 								"the relationships between them.") +
 						paragraph("As in any modeling exercise, you should not try to show all factors and " +
