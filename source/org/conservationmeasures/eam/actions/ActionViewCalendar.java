@@ -12,7 +12,7 @@ public class ActionViewCalendar extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Calendar");
+		return EAM.text("Action|Calendar") + DEMO_INDICATOR;
 	}
 
 	public String getToolTipText()

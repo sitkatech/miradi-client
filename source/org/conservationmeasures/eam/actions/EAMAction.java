@@ -44,4 +44,5 @@ public abstract class EAMAction extends AbstractAction
 		setEnabled(shouldBeEnabled());
 	}
 
+	static final String DEMO_INDICATOR = " - demo";
 }

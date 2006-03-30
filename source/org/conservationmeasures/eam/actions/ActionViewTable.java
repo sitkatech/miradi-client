@@ -18,7 +18,7 @@ public class ActionViewTable extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Data Tables");
+		return EAM.text("Action|Data Tables") + DEMO_INDICATOR;
 	}
 
 	public String getToolTipText()
