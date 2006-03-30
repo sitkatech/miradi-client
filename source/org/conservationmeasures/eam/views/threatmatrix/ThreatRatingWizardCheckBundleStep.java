@@ -139,7 +139,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 					"The left-hand matrix shows the rule-based procedure for combining the rankings " +
 					"<br></br>" +
 					"for the Scope and Severity variables to get a ranking of " +
-					"<a href=''>Threat Magnitude</a>.  " +
+					"<a href='none'><em>Threat Magnitude</em></a>.  " +
 					"<br></br>" +
 					"Under these rules, if a threat is rated 'low' on either variable, " +
 					"then the magnitude is 'low' overall.  " +
@@ -147,7 +147,9 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 					"Threat magnitude is then combined with Irreversibility ratings " +
 					"using the right-hand matrix " +
 					"<br></br>" +
-					"to get the summary threat rating." +
+					"to get the " +
+					"<a href='none'><em>Overall Threat Rating</em></a>" +
+					"." +
 					"</html>")), BorderLayout.BEFORE_FIRST_LINE);
 			Box hbox = Box.createHorizontalBox();
 			ImageIcon image1 = new ImageIcon("images/BundleRules1.png");
