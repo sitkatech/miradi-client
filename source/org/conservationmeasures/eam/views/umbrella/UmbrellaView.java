@@ -5,12 +5,15 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
@@ -33,6 +36,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
+import org.martus.swing.UiLabel;
 
 abstract public class UmbrellaView extends JPanel
 {
@@ -81,6 +85,14 @@ abstract public class UmbrellaView extends JPanel
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
 	
+	protected UiLabel createScreenShotLabel()
+	{
+		UiLabel label = new UiLabel("Demo Screen Shot");
+		label.setBorder(new LineBorder(Color.BLACK));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		return label;
+	}
+
 	////////////////////////////////////////////////////////////
 	// these doers are available in this class
 	

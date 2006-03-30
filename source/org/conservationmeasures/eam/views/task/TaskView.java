@@ -16,6 +16,7 @@ public class TaskView extends UmbrellaView
 		super(mainWindowToUse);
 		setToolBar(new TaskToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
+		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(new TaskComponent()), BorderLayout.CENTER);
 	}
 
@@ -36,6 +37,6 @@ class TaskComponent extends JLabel
 {
 	public TaskComponent()
 	{
-		super(new ImageIcon("images/Tasks.jpg"));
+		super(new ImageIcon("images/Tasks.png"));
 	}
 }

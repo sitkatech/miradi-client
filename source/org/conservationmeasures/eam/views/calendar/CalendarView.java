@@ -17,6 +17,7 @@ public class CalendarView extends UmbrellaView
 		super(mainWindowToUse);
 		setToolBar(new CalendarToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
+		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(new ScheduleComponent()), BorderLayout.CENTER);
 	}
 
@@ -36,6 +37,6 @@ class ScheduleComponent extends JLabel
 {
 	public ScheduleComponent()
 	{
-		super(new ImageIcon("images/Calendar.jpg"));
+		super(new ImageIcon("images/Calendar.png"));
 	}
 }
