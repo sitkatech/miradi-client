@@ -33,7 +33,7 @@ abstract public class PrintDoer extends MainWindowDoer
 			//TODO: Allow user to either go back and change the setting or continue to print
 		}
 		JComponent view = getMainWindow().getCurrentView().getPrintableComponent();
-		PrintPage.showPreview(view);
+		//PrintPage.showPreview(view);
 		PrintPage.printJComponent(view, job, format, attributes);
 	}
 }
