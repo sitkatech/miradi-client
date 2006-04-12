@@ -126,6 +126,8 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
 
 		// NOTE: For reasons I don't understand, if we construct the splitter 
 		// in the constructor, it always ignores the setDividerLocation and ends up
