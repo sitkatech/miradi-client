@@ -102,6 +102,7 @@ public class ProjectServer
 		createCommandsTable();
 		db.flush();
 		openNonDatabaseStore(directory);
+		writeVersion();
 	}
 
 	public void open(File directory) throws IOException
@@ -161,9 +162,7 @@ public class ProjectServer
 		if(!projectDirectory.isDirectory())
 			return false;
 		
-		String projectName = projectDirectory.getName();
-		File script = new File(projectDirectory, projectName + ".script");
-		return script.exists();
+		return (getVersionFile(projectDirectory).exists());
 	}
 	
 	
@@ -349,22 +348,27 @@ public class ProjectServer
 	
 	private File getJsonDirectory()
 	{
-		return new File(getTopDirectory(), "json");
+		return getJsonDirectory(getTopDirectory());
+	}
+
+	private static File getJsonDirectory(File topDirectory2)
+	{
+		return new File(topDirectory2, JSON_DIRECTORY);
 	}
 	
 	private File getNodesDirectory()
 	{
-		return new File(getJsonDirectory(), "nodes");
+		return new File(getJsonDirectory(), NODES_DIRECTORY);
 	}
 
 	private File getLinkagesDirectory()
 	{
-		return new File(getJsonDirectory(), "linkages");
+		return new File(getJsonDirectory(), LINKAGES_DIRECTORY);
 	}
 	
 	private File getDiagramsDirectory()
 	{
-		return new File(getJsonDirectory(), "diagrams");
+		return new File(getJsonDirectory(), DIAGRAMS_DIRECTORY);
 	}
 	
 	private File getObjectDirectory(int type)
@@ -374,22 +378,27 @@ public class ProjectServer
 	
 	private File getThreatRatingsDirectory()
 	{
-		return new File(getJsonDirectory(), "threatratings");
+		return new File(getJsonDirectory(), THREATRATINGS_DIRECTORY);
 	}
 	
 	private File getVersionFile()
 	{
-		return new File(getJsonDirectory(), "version");
+		return getVersionFile(getTopDirectory());
+	}
+	
+	private static File getVersionFile(File projectDirectory)
+	{
+		return new File(getJsonDirectory(projectDirectory), VERSION_FILE);
 	}
 	
 	private File getProjectInfoFile()
 	{
-		return new File(getJsonDirectory(), "project");
+		return new File(getJsonDirectory(), PROJECTINFO_FILE);
 	}
 	
 	private File getThreatRatingFrameworkFile()
 	{
-		return new File(getJsonDirectory(), "threatframework");
+		return new File(getJsonDirectory(), THREATFRAMEWORK_FILE);
 	}
 	
 	private File getThreatBundleFile(int threatId, int targetId)
@@ -400,7 +409,7 @@ public class ProjectServer
 	
 	private File getNodeManifestFile()
 	{
-		return new File(getNodesDirectory(), "manifest");
+		return new File(getNodesDirectory(), MANIFEST_FILE);
 	}
 	
 	private File getNodeFile(int id)
@@ -410,7 +419,7 @@ public class ProjectServer
 	
 	private File getLinkageManifestFile()
 	{
-		return new File(getLinkagesDirectory(), "manifest");
+		return new File(getLinkagesDirectory(), MANIFEST_FILE);
 	}
 	
 	private File getLinkageFile(int id)
@@ -420,7 +429,7 @@ public class ProjectServer
 	
 	private File getDiagramFile()
 	{
-		return new File(getDiagramsDirectory(), "main");
+		return new File(getDiagramsDirectory(), DIAGRAM_FILE);
 	}
 	
 	private File getObjectFile(int type, int id)
@@ -443,6 +452,17 @@ public class ProjectServer
 		commands.add(command);
 	}
 	
+	static String JSON_DIRECTORY = "json";
+	static String NODES_DIRECTORY = "nodes";
+	static String LINKAGES_DIRECTORY = "linkages";
+	static String DIAGRAMS_DIRECTORY = "diagrams";
+	static String THREATRATINGS_DIRECTORY = "threatratings";
+	static String VERSION_FILE = "version";
+	static String PROJECTINFO_FILE = "project";
+	static String THREATFRAMEWORK_FILE = "threatframework";
+	static String MANIFEST_FILE = "manifest";
+	static String DIAGRAM_FILE = "main";
+
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
