@@ -1,0 +1,59 @@
+Notes based on a discussion with Nick, Dave, and Kevin
+on 2006-04-04
+
+=====================================================
+
+CONCEPTUAL MODEL:
+
+Scope
+  Target
+    DirectThreat/IndirectThreat/Opportunity
+      Intervention
+
+Scope contains targets
+Relationships between others can be many-to-many
+Aside from Interventions, represents the state of the world BEFORE
+  our project has effects
+Intervention also sometimes known as Strategy
+Indicators can be attached to any node (Target, 
+  DirectThreat/IndirectThreat/Opportunity, or Intervention)
+      
+=====================================================
+
+BLUE WORLD
+
+Vision (tied to scope)
+  Goal (tied to target)
+    Objective (tied to Threat/Factor/Opportunity)
+    Outcome (possibly the same as an Objective?)
+    
+Represents the desired results of our project
+Achieving Objectives leads to achieving Goals leads to realizing Vision
+A Vision/Goal/Objective can be referred to as a "Result"
+
+
+=====================================================
+
+WORK PLAN
+
+  ACTION PLAN
+    Intervention
+      Action
+        Task
+          Subtask
+    
+  MONITORING PLAN
+    Indicator
+      Method
+        Task
+          Subtask
+    
+
+Conceptually, Interventions and Indicators are linked to Objectives, 
+  potentially in many-to-many relationships
+"Indicator" here refers to the bundle of data surrounding the actual 
+  indicator, which is technically just a measured data point
+Interventions, Objectives, and Indicators serve as the linkages between 
+  the Conceptual Model and the Work Plan.
+      
+=====================================================
