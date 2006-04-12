@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -20,6 +21,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -35,10 +37,11 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 
-public class ThreatRatingPanel extends JPanel
+public class ThreatRatingPanel extends Box
 {
 	public ThreatRatingPanel(ThreatRatingFramework frameworkToUse)
 	{
+		super(BoxLayout.X_AXIS);
 		framework = frameworkToUse;
 		
 		dropdowns = new HashMap();
@@ -51,14 +54,15 @@ public class ThreatRatingPanel extends JPanel
 
 		Box criteria = createCriteriaSection();
 		
-
-		Box main = Box.createHorizontalBox();
-		main.add(criteria);
-		main.add(ratingSummaryPanel);
-				
-		add(main);
+		add(criteria);
+		add(ratingSummaryPanel);
 	}
 	
+	public Dimension getMaximumSize()
+	{
+		return super.getPreferredSize();
+	}
+
 	public void setBundle(ThreatRatingBundle bundleToUse)
 	{
 		bundle = bundleToUse;

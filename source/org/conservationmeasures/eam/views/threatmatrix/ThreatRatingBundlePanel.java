@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -24,18 +24,18 @@ import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ThreatRatingBundlePanel extends JPanel
+public class ThreatRatingBundlePanel extends Box
 {
 	public ThreatRatingBundlePanel(Project projectToUse, ActionListener okListener, ActionListener cancelListener) throws Exception
 	{
-		super(new BorderLayout());
+		super(BoxLayout.Y_AXIS);
 	
 		project = projectToUse;
 		
-		add(createHeader(), BorderLayout.BEFORE_FIRST_LINE);
-		add(createRatingPanel(), BorderLayout.CENTER);
-		add(createButtonBox(okListener, cancelListener), BorderLayout.AFTER_LAST_LINE);
-		
+		add(createHeader());
+		add(createRatingPanel());
+		add(createButtonBox(okListener, cancelListener));
+		add(Box.createVerticalGlue());
 	}
 	
 	public ThreatRatingBundle getBundle()
