@@ -20,13 +20,15 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.json.JSONObject;
+import org.martus.util.DirectoryLock;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
 		commands = new Vector();
-		db = new DatabaseWrapper();
+		lock = new DirectoryLock();
 	}
 
 	public int getCommandCount()
@@ -57,8 +59,6 @@ public class ProjectServer
 		if(!isOpen())
 			throw new IOException("FileStorage: Can't append if no file open");
 		
-		DoneCommand commandToSave = DoneCommand.buildFromCommand(command);
-		db.insert(commandToSave);
 		addCommandWithoutSaving(command);
 	}
 
@@ -66,9 +66,9 @@ public class ProjectServer
 	{
 		EAM.logDebug("Closing database");
 		clear();
-		db.close();
 		topDirectory = null;
 		name = null;
+		lock.close();
 	}
 
 	public static boolean doesProjectExist(File directoryToCheck)
@@ -78,7 +78,7 @@ public class ProjectServer
 	
 	public boolean isOpen()
 	{
-		return db.isOpen();
+		return lock.isLocked();
 	}
 
 	public String getName()
@@ -98,19 +98,15 @@ public class ProjectServer
 		if(!isEmpty(directory))
 			throw new RuntimeException("Can't create project in non-empty directory");
 		
-		db.openDiskDatabase(getDatabaseFileBase(directory));
-		createCommandsTable();
-		db.flush();
 		openNonDatabaseStore(directory);
 		writeVersion();
 	}
 
-	public void open(File directory) throws IOException
+	public void open(File directory) throws IOException, AlreadyLockedException
 	{
 		if(!doesProjectExist(directory))
 			throw new IOException("Can't open non-project, non-empty directory");
 
-		db.openDiskDatabase(getDatabaseFileBase(directory));
 		openNonDatabaseStore(directory);
 	}
 	
@@ -141,9 +137,11 @@ public class ProjectServer
 		JSONFile.write(getVersionFile(), version);
 	}
 
-	protected void openNonDatabaseStore(File directory)
+	protected void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException
 	{
 		clear();
+		directory.mkdirs();
+		lock.lock(directory);
 		topDirectory = directory;
 		createJsonDirectories();
 		name = topDirectory.getName();
@@ -341,11 +339,6 @@ public class ProjectServer
 	}
 	
 
-	private static File getDatabaseFileBase(File directory)
-	{
-		return new File(directory, directory.getName());
-	}
-	
 	private File getJsonDirectory()
 	{
 		return getJsonDirectory(getTopDirectory());
@@ -437,16 +430,6 @@ public class ProjectServer
 		return new File(getObjectDirectory(type), Integer.toString(id));
 	}
 	
-	protected void createCommandsTable() throws IOException
-	{
-		db.rawExecute("CREATE TABLE DoneCommands (id INTEGER IDENTITY PRIMARY KEY, name VARCHAR, data LONGVARBINARY);");
-	}
-
-	public void dropAllTables() throws IOException
-	{
-		db.rawExecute("DROP TABLE DoneCommands IF EXISTS;");
-	}
-
 	private void addCommand(Command command)
 	{
 		commands.add(command);
@@ -472,6 +455,5 @@ public class ProjectServer
 	protected Vector commands;
 	File topDirectory;
 	String name;
-	protected DatabaseWrapper db;
-
+	DirectoryLock lock;
 }

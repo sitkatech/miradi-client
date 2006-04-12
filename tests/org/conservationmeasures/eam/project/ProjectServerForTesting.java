@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class ProjectServerForTesting extends ProjectServer
 {
@@ -21,7 +22,7 @@ public class ProjectServerForTesting extends ProjectServer
 		super();
 	}
 
-	public void openMemoryDatabase(String nameToUse) throws IOException
+	public void openMemoryDatabase(String nameToUse) throws IOException, AlreadyLockedException
 	{
 		final String tempFileName = "$$$" + TestCaseEnhanced.getCallingTestClass();
 		eamDir = File.createTempFile(tempFileName, null);
@@ -31,10 +32,6 @@ public class ProjectServerForTesting extends ProjectServer
 		File projectDir = new File(eamDir, nameToUse);
 
 		openNonDatabaseStore(projectDir);
-		String databaseName = eamDir.getName() + "-" + nameToUse;
-		db.openMemoryDatabase(databaseName);
-		dropAllTables();
-		createCommandsTable();
 	}
 	
 	public void writeNode(ConceptualModelNode node) throws IOException, ParseException

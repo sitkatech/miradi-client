@@ -14,7 +14,6 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
 import org.conservationmeasures.eam.commands.TestCommands;
-import org.conservationmeasures.eam.database.TestDatabase;
 import org.conservationmeasures.eam.database.TestProjectServer;
 import org.conservationmeasures.eam.diagram.TestDelete;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
@@ -81,7 +80,6 @@ public class MainTests extends TestCase
 		TestSuite suite= new MainTestSuite("All eAM Tests");
 
 		// database package
-		suite.addTest(new TestSuite(TestDatabase.class));
 		suite.addTest(new TestSuite(TestProjectServer.class));
 		
 		// main package

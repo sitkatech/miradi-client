@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.views.table.TableView;
 import org.conservationmeasures.eam.views.task.TaskView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.util.DirectoryLock;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
 {
@@ -153,6 +154,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		{
 			EAM.errorDialog(EAM.text("Unknown Command\nYou are probably trying to load an old project " +
 					"that contains obsolete commands that are no longer supported"));
+		}
+		catch(DirectoryLock.AlreadyLockedException e)
+		{
+			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
 		}
 		catch(Exception e)
 		{
