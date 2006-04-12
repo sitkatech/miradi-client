@@ -116,6 +116,10 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		boolean isSwitchingToThisView = viewName.equals(getViewName());
 		if(!isSwitchingToThisView)
 			return;
+	
+		int dividerAt = -1;
+		if(bigSplitter != null)
+			dividerAt = bigSplitter.getDividerLocation();
 		
 		removeAll();
 		
@@ -123,11 +127,16 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		// NOTE: For reasons I don't understand, if we construct the splitter 
+		// in the constructor, it always ignores the setDividerLocation and ends up
+		// at zero.
+		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		bigSplitter.setResizeWeight(.5);
 		bigSplitter.setTopComponent(createWizard());
 		bigSplitter.setBottomComponent(uiScrollPane);
-		add(bigSplitter);
+		
+		if(dividerAt > 0)
+			bigSplitter.setDividerLocation(dividerAt);
 		
 		add(bigSplitter, BorderLayout.CENTER);
 
@@ -143,6 +152,7 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		return wizard;
 	}
 	
+	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 
 }

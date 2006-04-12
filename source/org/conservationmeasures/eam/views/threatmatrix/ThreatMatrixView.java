@@ -34,7 +34,13 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		super(mainWindowToUse);
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
 		setLayout(new BorderLayout());
+		
+		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setResizeWeight(.5);
+		add(bigSplitter, BorderLayout.CENTER);
+
 		getProject().addViewChangeListener(this);
+
 	}
 
 	public String cardName()
@@ -53,8 +59,6 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		if(!isSwitchingToThisView)
 			return;
 		
-		removeAll();
-
 		model = new ThreatMatrixTableModel(getProject());
 
 		grid = new ThreatGridPanel(this, model);
@@ -72,11 +76,10 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		
-		JSplitPane bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		bigSplitter.setResizeWeight(.5);
+		int dividerAt = bigSplitter.getDividerLocation();
 		bigSplitter.setTopComponent(wizard);
 		bigSplitter.setBottomComponent(bottomHalf);
-		add(bigSplitter);
+		bigSplitter.setDividerLocation(dividerAt);
 		
 		selectBundle(null);
 	}
@@ -143,6 +146,7 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		
 	}
 	
+	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizard;
 	ThreatGridPanel grid;
