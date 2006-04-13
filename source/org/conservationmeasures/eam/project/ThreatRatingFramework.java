@@ -312,11 +312,16 @@ public class ThreatRatingFramework
 		if(existing != null)
 			return existing;
 		
-		int defaultValueId = ((ThreatRatingValueOption)optionPool.get(0)).getId();
+		int defaultValueId = getDefaultValueId();
 		ThreatRatingBundle newBundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
 		saveBundle(newBundle);
 		saveFramework();
 		return newBundle;
+	}
+
+	public int getDefaultValueId()
+	{
+		return ((ThreatRatingValueOption)optionPool.get(0)).getId();
 	}
 	
 	public void saveFramework() throws IOException
