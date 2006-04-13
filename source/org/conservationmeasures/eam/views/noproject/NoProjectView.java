@@ -21,19 +21,12 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 {
-	public NoProjectView(MainWindow mainWindow)
+	public NoProjectView(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 		
 		setToolBar(new NoProjectToolBar(getActions()));
-		
-		String htmlText = new NoProjectHtmlText().getText();
-		HtmlViewer contents = new HtmlViewer(htmlText, this);
-		
-		JScrollPane scrollPane = new JScrollPane(contents);
-		
-		setLayout(new BorderLayout());
-		add(scrollPane, BorderLayout.CENTER);
+		becomeCurrentView();
 	}
 	
 	public void linkClicked(String linkDescription)
@@ -57,6 +50,18 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		{
 			EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
 		}
+	}
+
+	public void becomeCurrentView() throws Exception
+	{
+		removeAll();
+		String htmlText = new NoProjectHtmlText().getText();
+		HtmlViewer contents = new HtmlViewer(htmlText, this);
+		
+		JScrollPane scrollPane = new JScrollPane(contents);
+		
+		setLayout(new BorderLayout());
+		add(scrollPane, BorderLayout.CENTER);
 	}
 
 	public void valueChanged(String widget, String newValue)
