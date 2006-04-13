@@ -16,7 +16,6 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -27,7 +26,7 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 
-public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
+public class ThreatMatrixView extends UmbrellaView
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -38,8 +37,6 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		bigSplitter.setResizeWeight(.5);
 		add(bigSplitter, BorderLayout.CENTER);
-
-		getProject().addViewChangeListener(this);
 
 	}
 
@@ -53,12 +50,8 @@ public class ThreatMatrixView extends UmbrellaView implements ViewChangeListener
 		return "ThreatMatrix";
 	}
 	
-	public void switchToView(String viewName) throws Exception
+	public void becomeCurrentView() throws Exception
 	{
-		boolean isSwitchingToThisView = viewName.equals(getViewName());
-		if(!isSwitchingToThisView)
-			return;
-		
 		model = new ThreatMatrixTableModel(getProject());
 
 		grid = new ThreatGridPanel(this, model);

@@ -38,14 +38,13 @@ import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
-public class DiagramView extends UmbrellaView implements ViewChangeListener
+public class DiagramView extends UmbrellaView
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
@@ -58,7 +57,6 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		setToolBar(new DiagramToolBar(getActions()));
 
 		setLayout(new BorderLayout());
-		getProject().addViewChangeListener(this);
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -111,12 +109,8 @@ public class DiagramView extends UmbrellaView implements ViewChangeListener
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
 	}
 	
-	public void switchToView(String viewName) throws Exception
+	public void becomeCurrentView() throws Exception
 	{
-		boolean isSwitchingToThisView = viewName.equals(getViewName());
-		if(!isSwitchingToThisView)
-			return;
-	
 		int dividerAt = -1;
 		if(bigSplitter != null)
 			dividerAt = bigSplitter.getDividerLocation();

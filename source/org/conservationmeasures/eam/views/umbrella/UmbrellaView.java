@@ -33,12 +33,13 @@ import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.martus.swing.UiLabel;
 
-abstract public class UmbrellaView extends JPanel
+abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 {
 	public UmbrellaView(MainWindow mainWindowToUse)
 	{
@@ -46,9 +47,21 @@ abstract public class UmbrellaView extends JPanel
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
+		getProject().addViewChangeListener(this);
 	}
 	
 	abstract public String cardName();
+	
+	public void switchToView(String viewName) throws Exception
+	{
+		if(cardName().equals(viewName))
+			becomeCurrentView();
+	}
+
+	public void becomeCurrentView() throws Exception
+	{
+		
+	}
 	
 	public MainWindow getMainWindow()
 	{
