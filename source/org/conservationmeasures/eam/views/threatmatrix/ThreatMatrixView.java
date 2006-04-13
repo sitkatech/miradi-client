@@ -14,19 +14,27 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetThreatRating;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 
-public class ThreatMatrixView extends UmbrellaView
+public class ThreatMatrixView extends UmbrellaView implements CommandExecutedListener
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -38,6 +46,7 @@ public class ThreatMatrixView extends UmbrellaView
 		bigSplitter.setResizeWeight(.5);
 		add(bigSplitter, BorderLayout.CENTER);
 
+		getProject().addCommandExecutedListener(this);
 	}
 
 	public String cardName()
@@ -94,12 +103,35 @@ public class ThreatMatrixView extends UmbrellaView
 	public void setBundleValue(ThreatRatingCriterion criterion, ThreatRatingValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = grid.getSelectedBundle();
-		bundle.setValueId(criterion.getId(), value.getId());
-		Project project = model.getProject();
-		project.getThreatRatingFramework().saveBundle(bundle);
-		selectBundle(bundle);
+		int threatId = bundle.getThreatId();
+		int targetId = bundle.getTargetId();
+		int criterionId = criterion.getId();
+		int valueId = value.getId();
+		setBundleValue(threatId, targetId, criterionId, valueId);
+	}
+
+	private void setBundleValue(int threatId, int targetId, int criterionId, int valueId) throws CommandFailedException
+	{
+		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
+		getProject().executeCommand(cmd);
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			selectBundle(grid.getSelectedBundle());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+
 	abstract class ButtonListener implements ActionListener
 	{
 		abstract void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception;
@@ -123,10 +155,20 @@ public class ThreatMatrixView extends UmbrellaView
 	{
 		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
 		{
-			Project project = model.getProject();
-			originalBundle.pullDataFrom(workingBundle);
-			project.getThreatRatingFramework().saveBundle(originalBundle);
-			selectBundle(originalBundle);
+			Project project = getProject();
+			ThreatRatingFramework framework = project.getThreatRatingFramework();
+			ThreatRatingCriterion[] criteria = framework.getCriteria();
+			project.executeCommand(new CommandBeginTransaction());
+			for(int i = 0; i < criteria.length; ++i)
+			{
+				int criterionId = criteria[i].getId();
+				int valueId = workingBundle.getValueId(criterionId);
+				if(valueId != originalBundle.getValueId(criterionId))
+				{
+					setBundleValue(workingBundle.getThreatId(), workingBundle.getTargetId(), criterionId, valueId);
+				}
+			}
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 	

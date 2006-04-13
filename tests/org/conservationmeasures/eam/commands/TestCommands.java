@@ -370,6 +370,32 @@ public class TestCommands extends EAMTestCase
 		}
 	}
 	
+	public void testCommandSetThreatRating() throws Exception
+	{
+		int threatId = 100;
+		int targetId = 101;
+		int criterionId = 102;
+		int valueId = 103;
+		ThreatRatingFramework framework = project.getThreatRatingFramework();
+		int defaultValueId = framework.getDefaultValueId();
+		
+		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
+		project.executeCommand(cmd);
+		assertEquals("Didn't memorize old value?", defaultValueId, cmd.getPreviousValueId());
+		assertEquals("Didn't set new value?", valueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
+		
+		CommandSetThreatRating loaded = (CommandSetThreatRating)saveAndReload(cmd);
+		assertEquals("didn't restore threatid?", threatId, loaded.getThreatId());
+		assertEquals("didn't restore targetId?", targetId, loaded.getTargetId());
+		assertEquals("didn't restore criterionId?", criterionId, loaded.getCriterionId());
+		assertEquals("didn't restore valueId?", valueId, loaded.getValueId());
+		assertEquals("didn't restore previousValueId?", defaultValueId, loaded.getPreviousValueId());
+		
+		cmd.undo(project);
+		assertEquals("Didn't undo?", defaultValueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
+		verifyUndoTwiceThrows(cmd);
+	}
+	
 	public void testCommandSetNodeText() throws Exception
 	{
 		int id = insertTarget();
