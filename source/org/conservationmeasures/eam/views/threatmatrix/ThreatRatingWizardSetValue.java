@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -36,7 +35,6 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
 		if(bundle == null)
 		{
-			EAM.logDebug("ThreatRatingWizardSetValue ignoring refresh of null bundle");
 			return;
 		}
 		int valueId = bundle.getValueId(criterion.getId());
