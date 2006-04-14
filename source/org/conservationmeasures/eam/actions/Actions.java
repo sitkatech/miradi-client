@@ -34,7 +34,6 @@ public class Actions
 //		registerAction(new ActionInsertStress(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
-		registerAction(new ActionOpenProject(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));
 		registerAction(new ActionPasteWithoutLinks(mainWindow));

@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionNewProject;
-import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewBudget;
@@ -112,7 +111,6 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 	{
 		addDoerToMap(ActionAbout.class, new About());
 		addDoerToMap(ActionNewProject.class, new NewProject());
-		addDoerToMap(ActionOpenProject.class, new OpenProject());
 		addDoerToMap(ActionClose.class, new Close());
 		addDoerToMap(ActionExit.class, new Exit());
 		addDoerToMap(ActionUndo.class, new Undo());

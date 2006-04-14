@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionNewProject;
-import org.conservationmeasures.eam.actions.ActionOpenProject;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
@@ -63,12 +62,11 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
-		menu.add(new JMenuItem(actions.get(ActionOpenProject.class)));
-		menu.add(new JMenuItem(actions.get(ActionSaveImage.class)));
 		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionPrint.class)));
 		menu.addSeparator();
+		menu.add(new JMenuItem(actions.get(ActionSaveImage.class)));
 		menu.add(createExportSetupMenu());
 		menu.add(createExportMenu());
 		menu.add(createImportMenu());
