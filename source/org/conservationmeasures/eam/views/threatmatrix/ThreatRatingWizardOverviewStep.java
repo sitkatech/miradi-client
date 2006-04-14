@@ -7,9 +7,14 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.commands.CommandSwitchView;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep implements HyperlinkHandler
 {
@@ -37,6 +42,19 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 
 	public void linkClicked(String linkDescription)
 	{
+		if(linkDescription.equals("View:Diagram"))
+		{
+			CommandSwitchView cmd = new CommandSwitchView(DiagramView.getViewName());
+			Project project = ((ThreatRatingWizardPanel)getWizard()).getView().getProject();
+			try
+			{
+				project.executeCommand(cmd);
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+			}
+		}
 	}
 
 	public void valueChanged(String widget, String newValue)
