@@ -11,13 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.Actions;
 
-public class EAMToolBar extends Box
+public class EAMToolBar extends JToolBar
 {
 	public EAMToolBar(Actions actions, Class currentViewActionClass)
 	{
@@ -26,7 +26,7 @@ public class EAMToolBar extends Box
 	
 	public EAMToolBar(Actions actions, Class currentViewActionClass, JComponent[] customButtons)
 	{
-		super(BoxLayout.LINE_AXIS);
+		setFloatable(false);
 		add(ViewSwitcher.create(actions, currentViewActionClass));
 		for(int i = 0; i < customButtons.length; ++i)
 			add(customButtons[i]);
