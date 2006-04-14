@@ -26,7 +26,16 @@ public class ViewSwitcher extends JComboBox
 {
 	static public ViewSwitcher create(Actions actions, Class defaultActionClass)
 	{
-		Object[] views = new Object[] {
+		Object[] views = getViewSwitchActions(actions);
+		ViewSwitcher switcher = new ViewSwitcher(views);
+		Action defaultAction = actions.get(defaultActionClass);
+		switcher.addActionListener(new ActionHandler(switcher, defaultAction));
+		return switcher;
+	}
+
+	public static Action[] getViewSwitchActions(Actions actions)
+	{
+		Action[] views = new Action[] {
 			// TODO: Delete the commented-out views here, and at the same time
 			// delete the views themselves, and all references to them
 			//actions.get(ActionViewTable.class),
@@ -41,10 +50,7 @@ public class ViewSwitcher extends JComboBox
 			actions.get(ActionViewMap.class),
 			actions.get(ActionViewImages.class),
 		};
-		ViewSwitcher switcher = new ViewSwitcher(views);
-		Action defaultAction = actions.get(defaultActionClass);
-		switcher.addActionListener(new ActionHandler(switcher, defaultAction));
-		return switcher;
+		return views;
 	}
 	
 	private ViewSwitcher(Object[] choices)

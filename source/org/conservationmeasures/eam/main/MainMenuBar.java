@@ -9,6 +9,7 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -200,6 +201,10 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createViewMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
+		Action[] viewSwitchActions = ViewSwitcher.getViewSwitchActions(actions);
+		for(int i = 0; i < viewSwitchActions.length; ++i)
+			menu.add(viewSwitchActions[i]);
+		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionZoomIn.class)));
 		menu.add(new JMenuItem(actions.get(ActionZoomOut.class)));
 		menu.addSeparator();
