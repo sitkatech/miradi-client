@@ -37,24 +37,23 @@ public class DiagramToolBar extends EAMToolBar
 	static JComponent[] createButtons(Actions actions)
 	{
 		JComponent[] buttons = new JComponent[] {
-				createSeparator(),
+				new Separator(),
 				new ToolBarButton(actions, ActionInsertIntervention.class),
 				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
-				
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertConnection.class),
-				createSeparator(),
+				new Separator(),
 				new ToolBarButton(actions, ActionUndo.class),
 				new ToolBarButton(actions, ActionRedo.class),
-				createSeparator(),
+				new Separator(),
 				new ToolBarButton(actions, ActionCut.class),
 				new ToolBarButton(actions, ActionCopy.class),
 				new ToolBarButton(actions, ActionPaste.class),
 				new ToolBarButton(actions, ActionDelete.class),
-				createSeparator(),
+				new Separator(),
 				new ToolBarButton(actions, ActionPrint.class),
-				createSeparator(),
+				new Separator(),
 				new ToolBarButton(actions, ActionZoomIn.class),
 				new ToolBarButton(actions, ActionZoomOut.class),
 				
