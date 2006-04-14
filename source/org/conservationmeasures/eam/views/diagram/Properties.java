@@ -78,7 +78,7 @@ public class Properties extends ProjectDoer
 	
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
 	{
-		String title = EAM.text("Title|Node Properties");
+		String title = EAM.text("Title|Properties");
 		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, getProject(), title, selectedNode);
 		setDialogLocation(dlg, selectedNode.getBounds());
 		dlg.setVisible(true);

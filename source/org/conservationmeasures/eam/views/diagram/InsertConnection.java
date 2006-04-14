@@ -35,7 +35,7 @@ public class InsertConnection extends ProjectDoer
 		
 		if(fromIndex == toIndex)
 		{
-			String[] body = {EAM.text("Can't link a node to itself"), };
+			String[] body = {EAM.text("Can't link an item to itself"), };
 			EAM.okDialog(EAM.text("Can't Create Link"), body);
 			return;
 		}
@@ -44,7 +44,7 @@ public class InsertConnection extends ProjectDoer
 		{
 			if(model.hasLinkage(dialog.getFrom(), dialog.getTo()))
 			{
-				String[] body = {EAM.text("Those nodes are already linked"), };
+				String[] body = {EAM.text("Those items are already linked"), };
 				EAM.okDialog(EAM.text("Can't Create Link"), body);
 				return;
 			}

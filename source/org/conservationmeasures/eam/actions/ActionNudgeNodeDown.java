@@ -17,6 +17,6 @@ public class ActionNudgeNodeDown extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Nudge Node Down");
+		return EAM.text("Action|Nudge Item Down");
 	}
 }

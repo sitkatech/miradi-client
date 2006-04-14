@@ -17,6 +17,6 @@ public class ActionNudgeNodeRight extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Nudge Node Right");
+		return EAM.text("Action|Nudge Item Right");
 	}
 }
