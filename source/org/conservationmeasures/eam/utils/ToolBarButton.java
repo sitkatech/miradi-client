@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.utils;
 
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -26,7 +28,7 @@ public class ToolBarButton extends JButton implements LocationHolder
 	public ToolBarButton(EAMAction action, String buttonName)
 	{
 		super(action);
-		setText("");
+		setText(null);
 		setToolTipText(action.getToolTipText());
 		setName(buttonName);
 	}
@@ -34,6 +36,23 @@ public class ToolBarButton extends JButton implements LocationHolder
 	public boolean hasLocation()
 	{
 		return false;
+	}
+	
+	public Dimension getPreferredSize()
+	{
+		return getMinimumSize();
+	}
+
+	public Dimension getMaximumSize()
+	{
+		return getMinimumSize();
+	}
+	
+	public Dimension getMinimumSize()
+	{
+		Dimension originalMinimumSize = super.getMinimumSize();
+		int realMinimum = originalMinimumSize.height;
+		return new Dimension(realMinimum, realMinimum);
 	}
 	
 }

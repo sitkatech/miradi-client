@@ -1,18 +1,14 @@
 package org.conservationmeasures.eam.views.calendar;
 
-import javax.swing.JToolBar;
-
 import org.conservationmeasures.eam.actions.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 
-public class CalendarToolBar extends JToolBar
+public class CalendarToolBar extends EAMToolBar
 {
 	public CalendarToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewCalendar.class));
+		super(actions, ActionViewCalendar.class);
 	}
 
 }

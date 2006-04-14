@@ -6,19 +6,9 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import org.conservationmeasures.eam.main.EAM;
 
 public class WizardPanel extends JPanel
 {
@@ -27,26 +17,11 @@ public class WizardPanel extends JPanel
 		super(new BorderLayout());
 	}
 
-	public static JComponent createHotButtons()
-	{
-		JComponent hotButtons = Box.createVerticalBox();
-		hotButtons.add(new ProcessButton());
-		hotButtons.add(new JLabel(" "));
-		hotButtons.add(new ExamplesButton());
-		hotButtons.add(new JLabel(" "));
-		hotButtons.add(new WorkshopButton());
-		hotButtons.setBorder(BorderFactory.createEmptyBorder(0, 30, 0, 0));
-		return hotButtons;
-	}
-
 	public void setContents(JPanel contents)
 	{
 		removeAll();
 
-		JComponent hotButtons = createHotButtons();
-
 		add(contents, BorderLayout.CENTER);
-		add(hotButtons, BorderLayout.AFTER_LINE_ENDS);
 		allowSplitterToHideUsCompletely();
 		validate();
 	}
@@ -64,61 +39,6 @@ public class WizardPanel extends JPanel
 		setMinimumSize(new Dimension(0, 0));
 	}
 	
-
-}
-
-abstract class CommandButton extends JButton implements ActionListener
-{
-	public CommandButton(String text)
-	{
-		super(text);
-		addActionListener(this);
-	}
-
-}
-
-abstract class HotButton extends CommandButton
-{
-	public HotButton(String text, Color color)
-	{
-		super("");
-		setText("<html><table cellpadding='0' cellspacing='0'><tr><td align='center' valign='center'>" + 
-				text + 
-				"</td></tr></table></html>");
-		setBackground(color);
-	}
-	
-	public void actionPerformed(ActionEvent arg0)
-	{
-		EAM.okDialog("Function Not Available", new String[] {"This function is not yet available"});
-	}
-
-}
-
-class ProcessButton extends HotButton
-{
-	public ProcessButton()
-	{
-		super("Get More<br></br>Information", Color.GREEN);
-	}
-
-}
-
-class ExamplesButton extends HotButton
-{
-	public ExamplesButton()
-	{
-		super("Examples", Color.YELLOW);
-	}
-
-}
-
-class WorkshopButton extends HotButton
-{
-	public WorkshopButton()
-	{
-		super("Workshop<br></br>Hints", Color.CYAN);
-	}
 
 }
 

@@ -5,7 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import javax.swing.JToolBar;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -23,36 +24,47 @@ import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 
-public class DiagramToolBar extends JToolBar
+public class DiagramToolBar extends EAMToolBar
 {
 	public DiagramToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewDiagram.class));
-		addSeparator();
-		add(new ToolBarButton(actions, ActionInsertIntervention.class));
-		add(new ToolBarButton(actions, ActionInsertIndirectFactor.class));
-		add(new ToolBarButton(actions, ActionInsertDirectThreat.class));
-		
-		add(new ToolBarButton(actions, ActionInsertTarget.class));
-		add(new ToolBarButton(actions, ActionInsertConnection.class));
-		addSeparator();
-		add(new ToolBarButton(actions, ActionUndo.class));
-		add(new ToolBarButton(actions, ActionRedo.class));
-		addSeparator();
-		add(new ToolBarButton(actions, ActionCut.class));
-		add(new ToolBarButton(actions, ActionCopy.class));
-		add(new ToolBarButton(actions, ActionPaste.class));
-		add(new ToolBarButton(actions, ActionDelete.class));
-		addSeparator();
-		add(new ToolBarButton(actions, ActionPrint.class));
-		addSeparator();
-		add(new ToolBarButton(actions, ActionZoomIn.class));
-		add(new ToolBarButton(actions, ActionZoomOut.class));
+		super(actions, ActionViewDiagram.class, createButtons(actions));
+	}
+	
+	static JComponent[] createButtons(Actions actions)
+	{
+		JComponent[] buttons = new JComponent[] {
+				createSeparator(),
+				new ToolBarButton(actions, ActionInsertIntervention.class),
+				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
+				new ToolBarButton(actions, ActionInsertDirectThreat.class),
+				
+				new ToolBarButton(actions, ActionInsertTarget.class),
+				new ToolBarButton(actions, ActionInsertConnection.class),
+				createSeparator(),
+				new ToolBarButton(actions, ActionUndo.class),
+				new ToolBarButton(actions, ActionRedo.class),
+				createSeparator(),
+				new ToolBarButton(actions, ActionCut.class),
+				new ToolBarButton(actions, ActionCopy.class),
+				new ToolBarButton(actions, ActionPaste.class),
+				new ToolBarButton(actions, ActionDelete.class),
+				createSeparator(),
+				new ToolBarButton(actions, ActionPrint.class),
+				createSeparator(),
+				new ToolBarButton(actions, ActionZoomIn.class),
+				new ToolBarButton(actions, ActionZoomOut.class),
+				
+		};
+		return buttons;
+	}
+	
+	static JComponent createSeparator()
+	{
+		return new JLabel(" ");
 	}
 	
 }

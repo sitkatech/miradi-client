@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
@@ -78,12 +77,12 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		return getMainWindow().getActions();
 	}
 	
-	public JToolBar getToolBar()
+	public JComponent getToolBar()
 	{
 		return toolBar;
 	}
 	
-	protected void setToolBar(JToolBar newToolBar)
+	protected void setToolBar(JComponent newToolBar)
 	{
 		toolBar = newToolBar;
 	}
@@ -147,6 +146,6 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 	
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
-	private JToolBar toolBar;
+	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 }

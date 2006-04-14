@@ -1,18 +1,14 @@
 package org.conservationmeasures.eam.views.task;
 
-import javax.swing.JToolBar;
-
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 
-public class TaskToolBar extends JToolBar
+public class TaskToolBar extends EAMToolBar
 {
 	public TaskToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewTask.class));
+		super(actions, ActionViewTask.class);
 	}
 
 }

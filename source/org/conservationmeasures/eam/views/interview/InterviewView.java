@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.interview.elements.ElementData;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiVBox;
 
 public class InterviewView extends UmbrellaView implements CommandExecutedListener
@@ -36,7 +35,6 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		setBorder(new LineBorder(Color.BLACK));
 		setToolBar(new InterviewToolBar(mainWindow.getActions()));
 		setLayout(new BorderLayout());
-		add(WizardPanel.createHotButtons(), BorderLayout.AFTER_LINE_ENDS);
 		add(createNavigationButtons(), BorderLayout.AFTER_LAST_LINE);
 		
 		getProject().addCommandExecutedListener(this);

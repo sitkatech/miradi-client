@@ -5,19 +5,15 @@
  */
 package org.conservationmeasures.eam.views.images;
 
-import javax.swing.JToolBar;
-
 import org.conservationmeasures.eam.actions.ActionViewImages;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 
-public class ImagesToolBar extends JToolBar
+public class ImagesToolBar extends EAMToolBar
 {
 	public ImagesToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewImages.class));
+		super(actions, ActionViewImages.class);
 	}
 
 }

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -52,6 +53,11 @@ public class ViewSwitcher extends JComboBox
 		setToolTipText(EAM.text("TT|Switch to a different view"));
 	}
 	
+	public Dimension getMaximumSize()
+	{
+		return getPreferredSize();
+	}
+
 	static class ActionHandler implements ActionListener
 	{
 		public ActionHandler(ViewSwitcher switcherToControl, Action defaultAction)

@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
@@ -13,9 +13,7 @@ public class ToolBarContainer extends JPanel
 {
 	public ToolBarContainer()
 	{
-		FlowLayout flow = new FlowLayout();
-		flow.setAlignment(FlowLayout.LEADING);
-		setLayout(flow);
+		super(new BorderLayout());
 	}
 
 }

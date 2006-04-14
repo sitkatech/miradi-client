@@ -20,7 +20,6 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -117,7 +116,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
 		toolBarBox.removeAll();
-		JToolBar toolBar = getCurrentView().getToolBar();
+		JComponent toolBar = getCurrentView().getToolBar();
 		if(toolBar == null)
 			throw new RuntimeException("View must have toolbar");
 		toolBarBox.add(toolBar);

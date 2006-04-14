@@ -28,7 +28,6 @@ import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.views.interview.ThreatMatrixToolBar;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
@@ -120,7 +119,8 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		try
 		{
-			selectBundle(grid.getSelectedBundle());
+			if(grid != null)
+				selectBundle(grid.getSelectedBundle());
 		}
 		catch (Exception e)
 		{

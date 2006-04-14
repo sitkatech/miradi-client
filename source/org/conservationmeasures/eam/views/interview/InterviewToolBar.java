@@ -5,19 +5,15 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import javax.swing.JToolBar;
-
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 
-public class InterviewToolBar extends JToolBar
+public class InterviewToolBar extends EAMToolBar
 {
 	public InterviewToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewInterview.class));
+		super(actions, ActionViewInterview.class);
 	}
 
 }

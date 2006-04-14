@@ -1,18 +1,14 @@
 package org.conservationmeasures.eam.views.map;
 
-import javax.swing.JToolBar;
-
 import org.conservationmeasures.eam.actions.ActionViewMap;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.main.ViewSwitcher;
+import org.conservationmeasures.eam.main.EAMToolBar;
 
-public class MapToolBar extends JToolBar
+public class MapToolBar extends EAMToolBar
 {
 	public MapToolBar(Actions actions)
 	{
-		setFloatable(false);
-
-		add(ViewSwitcher.create(actions, ActionViewMap.class));
+		super(actions, ActionViewMap.class);
 	}
 
 }
