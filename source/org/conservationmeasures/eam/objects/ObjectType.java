@@ -9,5 +9,6 @@ public class ObjectType
 {
 	public static final int THREAT_RATING_CRITERION = 1;
 	public static final int THREAT_RATING_VALUE_OPTION = 2;
+	public static final int TASK = 3;
 }
 

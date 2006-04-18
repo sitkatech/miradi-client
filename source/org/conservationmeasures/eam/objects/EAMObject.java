@@ -12,11 +12,13 @@ abstract public class EAMObject
 	public EAMObject(int idToUse)
 	{
 		id = idToUse;
+		label = "Unknown";
 	}
 	
 	EAMObject(JSONObject json)
 	{
 		id = json.getInt(TAG_ID);
+		label = json.getString(TAG_LABEL);
 	}
 	
 	public static EAMObject createFromJson(int type, JSONObject json)
@@ -36,6 +38,37 @@ abstract public class EAMObject
 	
 	abstract public int getType();
 
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof EAMObject))
+			return false;
+		
+		EAMObject other = (EAMObject)rawOther;
+		return other.getId() == getId();
+	}
+	
+	public String getLabel()
+	{
+		return label;
+	}
+	
+	public void setData(String fieldTag, Object dataValue)
+	{
+		if(TAG_LABEL.equals(fieldTag))
+			label = (String)dataValue;
+		else
+			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
+	}
+	
+	public String getData(String fieldTag)
+	{
+		if(TAG_LABEL.equals(fieldTag))
+			return label;
+		
+		throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
+	}
+	
+
 	public int getId()
 	{
 		return id;
@@ -45,11 +78,15 @@ abstract public class EAMObject
 	{
 		JSONObject json = new JSONObject();
 		json.put(TAG_ID, getId());
+		json.put(TAG_LABEL, getLabel());
 		
 		return json;
 	}
 	
 	protected static final String TAG_ID = "Id";
-
+	public static final String TAG_LABEL = "Label";
+	
 	private int id;
+	String label;
+
 }
