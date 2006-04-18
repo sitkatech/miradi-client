@@ -7,12 +7,19 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.Vector;
 
+import org.json.JSONObject;
+
 public class Task extends EAMObject
 {
 	public Task(int idToUse)
 	{
 		super(idToUse);
 		subtasks = new Vector();
+	}
+	
+	public Task(JSONObject json)
+	{
+		super(json);
 	}
 
 	public int getType()

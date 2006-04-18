@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
+import org.conservationmeasures.eam.annotations.TaskPool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
@@ -50,6 +51,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -82,6 +84,7 @@ public class Project
 		linkagePool = new LinkagePool();
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
 		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
+		taskPool = new TaskPool();
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -187,6 +190,14 @@ public class Project
 				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 			}
+			case ObjectType.TASK:
+			{
+				Task task = new Task(getAnnotationIdAssigner().takeNextId());
+				taskPool.put(task);
+				getDatabase().writeObject(task);
+				createdId = task.getId();
+				break;
+			}
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
@@ -211,6 +222,11 @@ public class Project
 				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 				
+			case ObjectType.TASK:
+				taskPool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
 		}
@@ -229,6 +245,12 @@ public class Project
 				getThreatRatingFramework().setValueOptionData(objectId, fieldTag, dataValue);
 				getDatabase().writeObject(getThreatRatingFramework().getValueOption(objectId));
 				break;
+			
+			case ObjectType.TASK:
+				Task task = taskPool.find(objectId);
+				task.setData(fieldTag, dataValue);
+				getDatabase().writeObject(task);
+				break;
 				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
@@ -244,6 +266,10 @@ public class Project
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
 				return getThreatRatingFramework().getValueOptionData(objectId, fieldTag);
+				
+			case ObjectType.TASK:
+				return taskPool.find(objectId).getData(fieldTag);
+				
 				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
@@ -941,6 +967,7 @@ public class Project
 	LinkagePool linkagePool;
 	GoalPool goalPool;
 	ObjectivePool objectivePool;
+	TaskPool taskPool;
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;

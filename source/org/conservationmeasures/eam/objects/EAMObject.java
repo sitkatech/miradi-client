@@ -30,6 +30,9 @@ abstract public class EAMObject
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
 				return new ThreatRatingValueOption(json);
+				
+			case ObjectType.TASK:
+				return new Task(json);
 			
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -43,9 +45,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
@@ -72,42 +74,35 @@ public class TestProject extends EAMTestCase
 		project.close();
 	}
 	
-	public void testThreatRatingCriterionObjects() throws Exception
+	public void testObjectLifecycles() throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_CRITERION;
+		verifyObjectLifecycle(ObjectType.THREAT_RATING_CRITERION);
+		verifyObjectLifecycle(ObjectType.THREAT_RATING_VALUE_OPTION);
+		verifyObjectLifecycle(ObjectType.TASK);
+	}
+
+	private void verifyObjectLifecycle(int type) throws IOException, ParseException
+	{
 		int createdId = project.createObject(type);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
 		
 		String tag = ThreatRatingCriterion.TAG_LABEL;
 		project.setObjectData(type, createdId, tag, "data");
-		ThreatRatingCriterion withData = (ThreatRatingCriterion)db.readObject(type, createdId);
+		EAMObject withData = db.readObject(type, createdId);
 		assertEquals("didn't write/read data?", "data", withData.getData(tag));
+		assertEquals("can't get data from project?", "data", project.getObjectData(type, createdId, tag));
 		
 		project.deleteObject(type, createdId);
 		try
 		{
-			db.readObject(type, createdId);
-			fail("Should have thrown reading deleted object");
+			project.getObjectData(type, createdId, tag);
+			fail("Should have thrown getting data from deleted object");
 		}
 		catch(Exception ignoreExpected)
 		{
 		}
-	}
-	
-	public void testThreatRatingValueOptionObjects() throws Exception
-	{
-		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
-		int createdId = project.createObject(type);
-		ProjectServer db = project.getDatabase();
-		db.readObject(type, createdId);
 		
-		String tag = ThreatRatingValueOption.TAG_LABEL;
-		project.setObjectData(type, createdId, tag, "data");
-		ThreatRatingValueOption withData = (ThreatRatingValueOption)db.readObject(type, createdId);
-		assertEquals("didn't write/read data?", "data", withData.getData(tag));
-		
-		project.deleteObject(type, createdId);
 		try
 		{
 			db.readObject(type, createdId);
