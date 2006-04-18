@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTask extends EAMTestCase
@@ -29,5 +30,23 @@ public class TestTask extends EAMTestCase
 		Task otherTask = new Task(id+1);
 		otherTask.setData(Task.TAG_LABEL, label);
 		assertNotEquals("different ids are equal?", task, otherTask);
+	}
+	
+	public void testNesting() throws Exception
+	{
+		IdAssigner idAssigner = new IdAssigner();
+		Task top = new Task(idAssigner.takeNextId());
+		Task child1 = new Task(idAssigner.takeNextId());
+		Task child2 = new Task(idAssigner.takeNextId());
+		Task grandchild21 = new Task(idAssigner.takeNextId());
+		
+		top.addSubtask(child1);
+		top.addSubtask(child2);
+		child2.addSubtask(grandchild21);
+		
+		assertEquals("wrong subtask count?", 2, top.getSubtaskCount());
+		assertEquals("not zero subtasks?", 0, child1.getSubtaskCount());
+		assertEquals("wrong child1?", child1.getId(), top.getSubtask(0).getId());
+		assertEquals("wrong child2?", child2.getId(), top.getSubtask(1).getId());
 	}
 }
