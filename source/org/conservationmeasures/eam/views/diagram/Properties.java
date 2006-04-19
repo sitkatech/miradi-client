@@ -11,16 +11,7 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetFactorType;
-import org.conservationmeasures.eam.commands.CommandSetIndicator;
-import org.conservationmeasures.eam.commands.CommandSetNodeComment;
-import org.conservationmeasures.eam.commands.CommandSetNodeName;
-import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetProjectVision;
-import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
@@ -82,23 +73,6 @@ public class Properties extends ProjectDoer
 		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, getProject(), title, selectedNode);
 		setDialogLocation(dlg, selectedNode.getBounds());
 		dlg.setVisible(true);
-		if(!dlg.getResult())
-			return;
-
-		int id = selectedNode.getId();
-		getProject().executeCommand(new CommandBeginTransaction());
-		getProject().executeCommand(new CommandSetNodeText(id, dlg.getText()));
-		getProject().executeCommand(new CommandSetNodeName(id, dlg.getText()));
-		getProject().executeCommand(new CommandSetNodeComment(id, dlg.getComment()));
-		getProject().executeCommand(new CommandSetIndicator(id, dlg.getIndicator()));
-		if(selectedNode.canHaveObjectives())
-			getProject().executeCommand(new CommandSetNodeObjectives(id, dlg.getObjectives()));
-		if(selectedNode.canHaveGoal())
-			getProject().executeCommand(new CommandSetTargetGoal(id, dlg.getGoals()));
-		if(selectedNode.isFactor())
-			getProject().executeCommand(new CommandSetFactorType(id, dlg.getType()));
-
-		getProject().executeCommand(new CommandEndTransaction());
 	}
 
 	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)

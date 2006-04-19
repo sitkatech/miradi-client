@@ -27,8 +27,18 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetFactorType;
+import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeComment;
+import org.conservationmeasures.eam.commands.CommandSetNodeName;
+import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
+import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
@@ -52,15 +62,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		
 		project = projectToUse;
 
-		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
-		
-		contents.add(createMainGrid(node), BorderLayout.CENTER);
-		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
-
-		pack();
 		setResizable(true);
 		setModal(true);
+
+		setCurrentNode(node);
+	}
+	
+	private void setCurrentNode(DiagramNode node)
+	{
+		selectedNode = node;
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
+		contents.removeAll();
+		contents.add(createMainGrid(selectedNode), BorderLayout.CENTER);
+		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
+		pack();
 	}
 	
 	private Component createMainGrid(DiagramNode node)
@@ -279,16 +295,45 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 	public void actionPerformed(ActionEvent event)
 	{
-		if(event.getSource() == okButton)
-			result = true;
-		dispose();
+		try
+		{
+			if(event.getSource() == okButton)
+			{
+				saveChanges();
+			}
+			dispose();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("An unexpected error has occured: " + e.getMessage());
+		}
 	}
 	
-	public boolean getResult()
+	void saveChanges() throws CommandFailedException
 	{
-		return result;
+		int id = selectedNode.getId();
+		getProject().executeCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandSetNodeText(id, getText()));
+		getProject().executeCommand(new CommandSetNodeName(id, getText()));
+		getProject().executeCommand(new CommandSetNodeComment(id, getComment()));
+		getProject().executeCommand(new CommandSetIndicator(id, getIndicator()));
+		if(selectedNode.canHaveObjectives())
+			getProject().executeCommand(new CommandSetNodeObjectives(id, getObjectives()));
+		if(selectedNode.canHaveGoal())
+			getProject().executeCommand(new CommandSetTargetGoal(id, getGoals()));
+		if(selectedNode.isFactor())
+			getProject().executeCommand(new CommandSetFactorType(id, getType()));
+
+		getProject().executeCommand(new CommandEndTransaction());
+		
 	}
 	
+	Project getProject()
+	{
+		return project;
+	}
+
 	public String getText()
 	{
 		return textField.getText();
@@ -327,7 +372,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	}
 	
 	Project project;
-	boolean result;
+	DiagramNode selectedNode;
 	UiTextField textField;
 	UiTextField commentField;
 	UiComboBox dropdownFactorType;
