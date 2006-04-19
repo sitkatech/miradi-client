@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.main.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.views.ProjectDoer;
 import org.martus.swing.Utilities;
@@ -69,10 +68,7 @@ public class Properties extends ProjectDoer
 	
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
 	{
-		String title = EAM.text("Title|Properties");
-		NodePropertiesDialog dlg = new NodePropertiesDialog(EAM.mainWindow, getProject(), title, selectedNode);
-		setDialogLocation(dlg, selectedNode.getBounds());
-		dlg.setVisible(true);
+		diagram.showNodeProperties(selectedNode);
 	}
 
 	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)

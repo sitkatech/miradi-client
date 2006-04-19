@@ -9,20 +9,19 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphSelectionModel;
 
 public class SelectionModelWithLayers extends DefaultGraphSelectionModel
 {
-	public SelectionModelWithLayers(JGraph diagramToUse)
+	public SelectionModelWithLayers(DiagramComponent diagramToUse)
 	{
 		super(diagramToUse);
+		diagram = diagramToUse;
 	}
 	
 	private boolean isSelectable(Object cellObject)
 	{
 		EAMGraphCell cell = (EAMGraphCell)cellObject;
-		DiagramComponent diagram = (DiagramComponent)graph;
 		boolean isSelectable = true;
 		if(cell.isLinkage())
 			isSelectable = diagram.isLinkageVisible((DiagramLinkage)cell);
@@ -46,12 +45,14 @@ public class SelectionModelWithLayers extends DefaultGraphSelectionModel
 				selectableCells.add(cells[i]);
 		}
 		super.addSelectionCells(selectableCells.toArray());
+		selectionWasChanged();
 	}
 
 	public void setSelectionCell(Object cell)
 	{
 		if(isSelectable(cell))
 			super.setSelectionCell(cell);
+		selectionWasChanged();
 	}
 
 	public void setSelectionCells(Object[] cells)
@@ -63,5 +64,13 @@ public class SelectionModelWithLayers extends DefaultGraphSelectionModel
 				selectableCells.add(cells[i]);
 		}
 		super.setSelectionCells(selectableCells.toArray());
+		selectionWasChanged();
 	}
+	
+	void selectionWasChanged()
+	{
+		diagram.selectionWasChanged();
+	}
+	
+	DiagramComponent diagram;
 }

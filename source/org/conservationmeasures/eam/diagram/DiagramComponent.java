@@ -35,7 +35,9 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.diagram.views.CellViewFactory;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
+import org.conservationmeasures.eam.main.NodePropertiesDialog;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
@@ -59,6 +61,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridEnabled(true);
 		setGridVisible(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
+
+		String title = EAM.text("Title|Properties");
+		nodePropertiesDlg = new NodePropertiesDialog(EAM.mainWindow, this, title);
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
@@ -125,6 +130,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);
+	}
+	
+	public Project getProject()
+	{
+		return project;
 	}
 
 	public DiagramModel getDiagramModel()
@@ -224,8 +234,24 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 	}
+	
+	public void selectionWasChanged()
+	{
+		DiagramNode selectedNode = getSelectedNode();
+		if(selectedNode == null || !selectedNode.equals(nodePropertiesDlg.getCurrentNode()))
+			nodePropertiesDlg.setVisible(false);
+	}
+	
+	public void showNodeProperties(DiagramNode node)
+	{
+		nodePropertiesDlg.setCurrentNode(this, node);
+		if(!nodePropertiesDlg.isVisible())
+			nodePropertiesDlg.setVisible(true);
+
+	}
 
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
+	NodePropertiesDialog nodePropertiesDlg;
 }
 

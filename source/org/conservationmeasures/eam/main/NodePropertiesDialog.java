@@ -19,6 +19,7 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -36,6 +37,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -48,6 +50,7 @@ import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
+import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 
@@ -55,28 +58,31 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, Project projectToUse, String title, DiagramNode node)
+	public NodePropertiesDialog(Frame parent, DiagramComponent diagramToUse, String title)
 			throws HeadlessException
 	{
 		super(parent, title);
 		
-		project = projectToUse;
+		diagram = diagramToUse;
 
 		setResizable(true);
-		setModal(true);
-
-		setCurrentNode(node);
+		setModal(false);
 	}
 	
-	private void setCurrentNode(DiagramNode node)
+	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
-		selectedNode = node;
+		currentNode = node;
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
 		contents.removeAll();
-		contents.add(createMainGrid(selectedNode), BorderLayout.CENTER);
+		contents.add(createMainGrid(currentNode), BorderLayout.CENTER);
 		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		pack();
+	}
+	
+	public DiagramNode getCurrentNode()
+	{
+		return currentNode;
 	}
 	
 	private Component createMainGrid(DiagramNode node)
@@ -85,7 +91,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		grid.setLayout(new BasicGridLayout(1, 2));
 		
 		grid.add(new UiLabel(EAM.text("Label|Label")));
-		grid.add(createTextField(node.getText()));
+		grid.add(createTextField(node.getText(), MAX_LABEL_LENGTH));
 		
 		if(node.isFactor())
 		{
@@ -99,13 +105,13 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		if(node.canHaveObjectives())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Objective")));
-			grid.add(createObjectiveDropdown(project.getObjectivePool(), node.getObjectives()));
+			grid.add(createObjectiveDropdown(getProject().getObjectivePool(), node.getObjectives()));
 		}
 		
 		if(node.canHaveGoal())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Goal")));
-			grid.add(createTargetGoal(project.getGoalPool(), node.getGoals()));
+			grid.add(createTargetGoal(getProject().getGoalPool(), node.getGoals()));
 		}
 		
 		if(node.isDirectThreat())
@@ -126,9 +132,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return grid;
 	}
 
-	private Component createTextField(String initialText)
+	private Component createTextField(String initialText, int maxLength)
 	{
-		textField = new UiTextFieldWithLengthLimit(50);
+		textField = new UiTextFieldWithLengthLimit(maxLength);
 		textField.requestFocus(true);
 		textField.selectAll();
 
@@ -220,11 +226,12 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	public JComponent createComment(String comment)
 	{
-		commentField = new UiTextField(50);
+		commentField = new UiTextArea(4, 25);
+		commentField.setWrapStyleWord(true);
+		commentField.setLineWrap(true);
 		commentField.setText(comment);
 		
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(commentField, BorderLayout.LINE_START);
+		JScrollPane component = new JScrollPane(commentField);
 		return component;
 	}
 	
@@ -281,10 +288,10 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 	private Box createButtonBar()
 	{
-		okButton = new UiButton(EAM.text("Button|OK"));
+		okButton = new UiButton(EAM.text("Button|Apply"));
 		okButton.addActionListener(this);
 		getRootPane().setDefaultButton(okButton);
-		cancelButton = new UiButton(EAM.text("Button|Cancel"));
+		cancelButton = new UiButton(EAM.text("Button|Revert"));
 		cancelButton.addActionListener(this);
 
 		Box buttonBar = Box.createHorizontalBox();
@@ -301,7 +308,10 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			{
 				saveChanges();
 			}
-			dispose();
+			else
+			{
+				revertChanges();
+			}
 		}
 		catch (Exception e)
 		{
@@ -312,26 +322,35 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	void saveChanges() throws CommandFailedException
 	{
-		int id = selectedNode.getId();
+		int id = currentNode.getId();
 		getProject().executeCommand(new CommandBeginTransaction());
 		getProject().executeCommand(new CommandSetNodeText(id, getText()));
 		getProject().executeCommand(new CommandSetNodeName(id, getText()));
 		getProject().executeCommand(new CommandSetNodeComment(id, getComment()));
 		getProject().executeCommand(new CommandSetIndicator(id, getIndicator()));
-		if(selectedNode.canHaveObjectives())
+		if(currentNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, getObjectives()));
-		if(selectedNode.canHaveGoal())
+		if(currentNode.canHaveGoal())
 			getProject().executeCommand(new CommandSetTargetGoal(id, getGoals()));
-		if(selectedNode.isFactor())
+		if(currentNode.isFactor())
 			getProject().executeCommand(new CommandSetFactorType(id, getType()));
 
 		getProject().executeCommand(new CommandEndTransaction());
-		
+	}
+	
+	void revertChanges()
+	{
+		setCurrentNode(diagram, currentNode);
 	}
 	
 	Project getProject()
 	{
-		return project;
+		return getDiagram().getProject();
+	}
+	
+	DiagramComponent getDiagram()
+	{
+		return diagram;
 	}
 
 	public String getText()
@@ -371,10 +390,12 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return goals;
 	}
 	
-	Project project;
-	DiagramNode selectedNode;
+	static final int MAX_LABEL_LENGTH = 25;
+	
+	DiagramComponent diagram;
+	DiagramNode currentNode;
 	UiTextField textField;
-	UiTextField commentField;
+	UiTextArea commentField;
 	UiComboBox dropdownFactorType;
 	UiComboBox dropdownThreatPriority;
 	UiComboBox dropdownIndicator;
