@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -46,6 +47,7 @@ import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -53,8 +55,6 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
@@ -75,7 +75,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
 		contents.removeAll();
-		contents.add(createMainGrid(currentNode), BorderLayout.CENTER);
+		contents.add(createLabelBar(currentNode), BorderLayout.BEFORE_FIRST_LINE);
+		contents.add(createTabbedPane(currentNode), BorderLayout.CENTER);
 		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		pack();
 	}
@@ -85,50 +86,94 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return currentNode;
 	}
 	
-	private Component createMainGrid(DiagramNode node)
+	private Component createLabelBar(DiagramNode node)
 	{
-		JPanel grid = new JPanel();
-		grid.setLayout(new BasicGridLayout(1, 2));
-		
+		createTextField(node.getText(), MAX_LABEL_LENGTH);
+				
+		DialogGridPanel grid = new DialogGridPanel();
 		grid.add(new UiLabel(EAM.text("Label|Label")));
-		grid.add(createTextField(node.getText(), MAX_LABEL_LENGTH));
-		
+		grid.add(textField);
+
 		if(node.isFactor())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
 			grid.add(createSwitchFactorTypeDropdown(node.getType()));
 		}
 		
-		grid.add(new UiLabel(EAM.text("Label|Indicator")));
-		grid.add(createIndicator(node.getIndicatorId()));
-		
-		if(node.canHaveObjectives())
-		{
-			grid.add(new UiLabel(EAM.text("Label|Objective")));
-			grid.add(createObjectiveDropdown(getProject().getObjectivePool(), node.getObjectives()));
-		}
-		
-		if(node.canHaveGoal())
-		{
-			grid.add(new UiLabel(EAM.text("Label|Goal")));
-			grid.add(createTargetGoal(getProject().getGoalPool(), node.getGoals()));
-		}
-		
 		if(node.isDirectThreat())
 		{
-			grid.add(new UiLabel(EAM.text("Label|IUCN_CMP Classification")));
+			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
 			grid.add(createThreatClassificationDropdown());
 		}
 		
 		if(node.isIntervention())
 		{
-			grid.add(new UiLabel(EAM.text("Label|IUCN_CMP Classification")));
+			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
 			grid.add(createInterventionClassificationDropdown());
 		}
+
+		grid.add(new UiLabel());
+		return grid;
+	}
+	
+	private Component createTabbedPane(DiagramNode node)
+	{
+		JTabbedPane pane = new JTabbedPane();
+		pane.add(createMainGrid(node), EAM.text("Tab|Comments"));
+		pane.add(createIndicatorsGrid(node), EAM.text("Tab|Indicators"));
+		if(node.canHaveObjectives())
+			pane.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
+		if(node.canHaveGoal())
+			pane.add(createGoalsGrid(node), EAM.text("Tab|Goals"));
+		if(node.isIntervention())
+			pane.add(createTasksGrid(node), EAM.text("Tab|Actions"));
+		return pane;
+	}
+	
+	private Component createMainGrid(DiagramNode node)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
 		
 		grid.add(new UiLabel(EAM.text("Label|Comments")));
 		grid.add(createComment(node.getComment()));
 
+		return grid;
+	}
+	
+	private Component createIndicatorsGrid(DiagramNode node)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
+		
+		grid.add(new UiLabel(EAM.text("Label|Indicator")));
+		grid.add(createIndicator(node.getIndicatorId()));
+		
+		return grid;
+	}
+
+	private Component createObjectivesGrid(DiagramNode node)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
+		
+		grid.add(new UiLabel(EAM.text("Label|Objective")));
+		grid.add(createObjectiveDropdown(getProject().getObjectivePool(), node.getObjectives()));
+		
+		return grid;
+	}
+
+	private Component createGoalsGrid(DiagramNode node)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
+			
+		grid.add(new UiLabel(EAM.text("Label|Goal")));
+		grid.add(createTargetGoal(getProject().getGoalPool(), node.getGoals()));
+		
+		return grid;
+	}
+
+	private Component createTasksGrid(DiagramNode node)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
+		grid.add(new UiLabel("Not implemented yet"));
 		return grid;
 	}
 
