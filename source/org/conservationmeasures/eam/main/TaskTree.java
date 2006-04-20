@@ -5,37 +5,94 @@
  */
 package org.conservationmeasures.eam.main;
 
-import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class TaskTree extends JTree
+import com.java.sun.jtreetable.AbstractTreeTableModel;
+import com.java.sun.jtreetable.JTreeTable;
+import com.java.sun.jtreetable.TreeTableModel;
+
+public class TaskTree extends JTreeTable
 {
 	public TaskTree(Project project, int interventionId)
 	{
 		super(new TaskTreeModel(project, interventionId));
-		setRootVisible(true);
+		//setRootVisible(true);
 	}
 }
 
-class TaskTreeModel extends DefaultTreeModel
+class TaskTreeModel extends AbstractTreeTableModel
 {
+
 	public TaskTreeModel(Project projectToUse, int interventionIdToUse)
 	{
-		super(new TaskTreeNode("ACTION: Survey islets"));
+		super(new TaskTreeNode("ACTION: Survey islets", ""));
 		TaskTreeNode rootNode = (TaskTreeNode)getRoot();
-		rootNode.add(new TaskTreeNode("Desk review of maps"));
-		rootNode.add(new TaskTreeNode("Hire boats"));
-		rootNode.add(new TaskTreeNode("Conduct surveys"));
+		rootNode.add(new TaskTreeNode("Desk review of maps", "Jose"));
+		rootNode.add(new TaskTreeNode("Hire boats", "Elena"));
+		rootNode.add(new TaskTreeNode("Conduct surveys", "Mary"));
 	}
+
+	public Class getColumnClass(int column)
+	{
+		if(column == 0)
+			return TreeTableModel.class;
+		return String.class;
+	}
+
+	public int getColumnCount()
+	{
+		return columnNames.length;
+	}
+
+	public String getColumnName(int column)
+	{
+		return columnNames[column];
+	}
+
+	public Object getValueAt(Object node, int column)
+	{
+		TaskTreeNode taskTreeNode = (TaskTreeNode)node;
+		if(column == 0)
+			return node.toString();
+		return taskTreeNode.getResource();
+	}
+
+	public int getChildCount(Object node)
+	{
+		TaskTreeNode taskTreeNode = (TaskTreeNode)node;
+		return taskTreeNode.getChildCount();
+	}
+
+	public Object getChild(Object node, int index)
+	{
+		TaskTreeNode taskTreeNode = (TaskTreeNode)node;
+		return taskTreeNode.getChildAt(index);
+	}
+	
+	private static final String[] columnNames = {"Description", "Resource",};
 }
 
 class TaskTreeNode extends DefaultMutableTreeNode
 {
-	public TaskTreeNode(String label)
+	public TaskTreeNode(String labelToUse, String resourceToUse)
 	{
-		super.setUserObject(label);
+		super.setUserObject(this);
+		label = labelToUse;
+		resource = resourceToUse;
 	}
+	
+	public String getResource()
+	{
+		return resource;
+	}
+	
+	public String toString()
+	{
+		return label;
+	}
+	
+	String label;
+	String resource;
 }

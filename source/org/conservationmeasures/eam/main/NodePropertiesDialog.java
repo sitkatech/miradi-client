@@ -173,7 +173,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Component createTasksGrid(DiagramNode node)
 	{
 		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(new TaskTree(getProject(), node.getId()), BorderLayout.CENTER);
+		TaskTree taskTree = new TaskTree(getProject(), node.getId());
+		panel.add(new JScrollPane(taskTree), BorderLayout.CENTER);
 		return panel;
 	}
 
