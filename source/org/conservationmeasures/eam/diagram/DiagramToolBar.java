@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram;
 
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -60,11 +59,5 @@ public class DiagramToolBar extends EAMToolBar
 		};
 		return buttons;
 	}
-	
-	static JComponent createSeparator()
-	{
-		return new JLabel(" ");
-	}
-	
 }
 
