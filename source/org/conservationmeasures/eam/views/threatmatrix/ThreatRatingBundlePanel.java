@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
-import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,26 +14,22 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatRatingBundlePanel extends Box
 {
-	public ThreatRatingBundlePanel(Project projectToUse, ActionListener okListener, ActionListener cancelListener) throws Exception
+	public ThreatRatingBundlePanel(ThreatMatrixView viewToUse) throws Exception
 	{
 		super(BoxLayout.Y_AXIS);
-	
-		project = projectToUse;
+		view = viewToUse;
+		project = view.getProject();
 		
 		add(createHeader());
 		add(createRatingPanel());
-		add(createButtonBox(okListener, cancelListener));
 		add(Box.createVerticalGlue());
 	}
 	
@@ -96,25 +91,11 @@ public class ThreatRatingBundlePanel extends Box
 
 	private ThreatRatingPanel createRatingPanel()
 	{
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		ratingPanel = new ThreatRatingPanel(framework);
+		ratingPanel = new ThreatRatingPanel(view);
 		return ratingPanel;
 	}
-	
-	private Box createButtonBox(ActionListener okListener, ActionListener cancelListener)
-	{
-		Box buttonBox = Box.createHorizontalBox();
-		UiButton okButton = new UiButton(EAM.text("Apply"));
-		okButton.addActionListener(okListener);
-		UiButton cancelButton = new UiButton(EAM.text("Revert"));
-		cancelButton.addActionListener(cancelListener);
-		buttonBox.add(Box.createHorizontalGlue());
-		buttonBox.add(okButton);
-		buttonBox.add(cancelButton);
-		buttonBox.add(Box.createHorizontalGlue());
-		return buttonBox;
-	}
-	
+		
+	ThreatMatrixView view;
 	Project project;
 	ThreatRatingBundle workingBundle;
 	ThreatRatingPanel ratingPanel;

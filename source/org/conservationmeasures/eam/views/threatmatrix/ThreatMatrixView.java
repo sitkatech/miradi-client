@@ -7,16 +7,12 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -26,7 +22,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
@@ -64,7 +59,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 		grid = new ThreatGridPanel(this, model);
 		wizard = new ThreatRatingWizardPanel(this);
-		details = new ThreatRatingBundlePanel(getProject(), new OkListener(), new CancelListener());
+		details = new ThreatRatingBundlePanel(this);
 		String targetLabelText = "<html><h2>TARGETS</h2></html>";
 		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
 		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,6 +91,11 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		return model;
 	}
 	
+	public ThreatRatingFramework getThreatRatingFramework()
+	{
+		return getProject().getThreatRatingFramework();
+	}
+	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		wizard.selectBundle(bundle);
@@ -108,6 +108,9 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	public void setBundleValue(ThreatRatingCriterion criterion, ThreatRatingValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = grid.getSelectedBundle();
+		if(bundle == null)
+			return;
+		
 		int threatId = bundle.getThreatId();
 		int targetId = bundle.getTargetId();
 		int criterionId = criterion.getId();
@@ -117,8 +120,19 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 	private void setBundleValue(int threatId, int targetId, int criterionId, int valueId) throws CommandFailedException
 	{
-		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
-		getProject().executeCommand(cmd);
+		try
+		{
+			ThreatRatingBundle bundle = getThreatRatingFramework().getBundle(threatId, targetId);
+			if(bundle.getValueId(criterionId) == valueId)
+				return;
+			CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
+			getProject().executeCommand(cmd);
+
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}		
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -153,66 +167,16 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 	}
 	
-	private void snapUiToExecutedCommand(Command undoneCommand) throws Exception
+	private void snapUiToExecutedCommand(Command executedCommand) throws Exception
 	{
-		if(undoneCommand.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
+		if(executedCommand.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
 		{
-			CommandSetThreatRating cmd = (CommandSetThreatRating)undoneCommand;
-			EAM.logDebug("Undid: " + undoneCommand.toString());
+			CommandSetThreatRating cmd = (CommandSetThreatRating)executedCommand;
 			ThreatRatingBundle bundle = model.getBundle(cmd.getThreatId(), cmd.getTargetId());
 			selectBundle(bundle);
 		}
 	}
-	
-	abstract class ButtonListener implements ActionListener
-	{
-		abstract void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception;
-
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				ThreatRatingBundle workingBundle = details.getBundle();
-				ThreatRatingBundle originalBundle = model.getBundle(workingBundle.getThreatId(), workingBundle.getTargetId());
-				takeAction(originalBundle, workingBundle);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-			}
-		}
-	}
-	
-	class OkListener extends ButtonListener
-	{
-		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
-		{
-			Project project = getProject();
-			ThreatRatingFramework framework = project.getThreatRatingFramework();
-			ThreatRatingCriterion[] criteria = framework.getCriteria();
-			project.executeCommand(new CommandBeginTransaction());
-			for(int i = 0; i < criteria.length; ++i)
-			{
-				int criterionId = criteria[i].getId();
-				int valueId = workingBundle.getValueId(criterionId);
-				if(valueId != originalBundle.getValueId(criterionId))
-				{
-					setBundleValue(workingBundle.getThreatId(), workingBundle.getTargetId(), criterionId, valueId);
-				}
-			}
-			project.executeCommand(new CommandEndTransaction());
-		}
-	}
-	
-	class CancelListener extends ButtonListener
-	{
-		void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception
-		{
-			details.selectBundle(originalBundle);
-		}
-		
-	}
-	
+			
 	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizard;

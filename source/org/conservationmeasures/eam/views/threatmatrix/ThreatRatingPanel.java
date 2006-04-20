@@ -39,10 +39,11 @@ import org.martus.swing.UiLabel;
 
 public class ThreatRatingPanel extends Box
 {
-	public ThreatRatingPanel(ThreatRatingFramework frameworkToUse)
+	public ThreatRatingPanel(ThreatMatrixView viewToUse)
 	{
 		super(BoxLayout.X_AXIS);
-		framework = frameworkToUse;
+		view = viewToUse;
+		framework = view.getThreatRatingFramework();
 		
 		dropdowns = new HashMap();
 		
@@ -216,6 +217,15 @@ public class ThreatRatingPanel extends Box
 			return;
 		bundle.setValueId(criterion.getId(), value.getId());
 		updateSummary();
+		try
+		{
+			view.setBundleValue(criterion, value);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error setting value"));
+		}
 	}
 	
 	static class ValueListener implements ItemListener
@@ -237,6 +247,7 @@ public class ThreatRatingPanel extends Box
 		ThreatRatingCriterion criterion;
 	}
 	
+	ThreatMatrixView view;
 	ThreatRatingFramework framework;
 	ThreatRatingBundle bundle;
 	UiLabel ratingSummaryLabel;
