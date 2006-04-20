@@ -31,6 +31,14 @@ public class CalendarView extends UmbrellaView
 		return "Calendar";
 	}
 
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
 }
 
 class ScheduleComponent extends JLabel

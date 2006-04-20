@@ -109,7 +109,7 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
 	}
 	
-	public void becomeCurrentView() throws Exception
+	public void becomeActive() throws Exception
 	{
 		int dividerAt = -1;
 		if(bigSplitter != null)
@@ -136,6 +136,11 @@ public class DiagramView extends UmbrellaView
 		
 		add(bigSplitter, BorderLayout.CENTER);
 
+	}
+	
+	public void becomeInactive() throws Exception
+	{
+		// TODO: This should completely tear down the view
 	}
 	
 

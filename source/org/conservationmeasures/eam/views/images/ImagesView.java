@@ -34,6 +34,15 @@ public class ImagesView extends UmbrellaView
 	{
 		return "Images";
 	}
+
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
 }
 
 	class ImagesComponent extends JTabbedPane

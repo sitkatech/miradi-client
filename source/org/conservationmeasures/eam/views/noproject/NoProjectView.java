@@ -26,7 +26,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		super(mainWindow);
 		
 		setToolBar(new NoProjectToolBar(getActions()));
-		becomeCurrentView();
+		becomeActive();
 	}
 	
 	public void linkClicked(String linkDescription)
@@ -52,7 +52,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		}
 	}
 
-	public void becomeCurrentView() throws Exception
+	public void becomeActive() throws Exception
 	{
 		removeAll();
 		String htmlText = new NoProjectHtmlText().getText();
@@ -62,6 +62,11 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		
 		setLayout(new BorderLayout());
 		add(scrollPane, BorderLayout.CENTER);
+	}
+	
+	public void becomeInactive() throws Exception
+	{
+		// nothing to do...would clear all view data
 	}
 
 	public void valueChanged(String widget, String newValue)

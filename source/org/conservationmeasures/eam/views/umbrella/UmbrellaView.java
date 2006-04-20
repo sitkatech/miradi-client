@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewImages;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewMap;
-import org.conservationmeasures.eam.actions.ActionViewTable;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
@@ -53,13 +52,13 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 	public void switchToView(String viewName) throws Exception
 	{
 		if(cardName().equals(viewName))
-			becomeCurrentView();
+			becomeActive();
+		else
+			becomeInactive();
 	}
 
-	public void becomeCurrentView() throws Exception
-	{
-		
-	}
+	abstract public void becomeActive() throws Exception;
+	abstract public void becomeInactive() throws Exception;
 	
 	public MainWindow getMainWindow()
 	{
@@ -117,7 +116,6 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		addDoerToMap(ActionRedo.class, new Redo());
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
 		addDoerToMap(ActionViewInterview.class, new ViewInterview());
-		addDoerToMap(ActionViewTable.class, new ViewTable());
 		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());
 		addDoerToMap(ActionViewBudget.class, new ViewBudget());
 		addDoerToMap(ActionViewTask.class, new ViewTask());

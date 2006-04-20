@@ -30,6 +30,14 @@ public class TaskView extends UmbrellaView
 		return "Task";
 	}
 
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
 }
 
 

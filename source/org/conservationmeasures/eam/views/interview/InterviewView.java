@@ -125,6 +125,16 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	{
 		
 	}
+	
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
+
 
 	private UiVBox stepHolder;
 	private JButton previousButton;

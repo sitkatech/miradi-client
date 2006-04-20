@@ -34,7 +34,6 @@ import org.conservationmeasures.eam.views.images.ImagesView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.conservationmeasures.eam.views.table.TableView;
 import org.conservationmeasures.eam.views.task.TaskView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -68,7 +67,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		noProjectView = new NoProjectView(this);
 		diagramView = new DiagramView(this);
 		interviewView = new InterviewView(this);
-		tableView = new TableView(this);
 		threatMatrixView = new ThreatMatrixView(this);
 		budgetView = new BudgetView(this);
 		taskView = new TaskView(this);
@@ -81,7 +79,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(interviewView, interviewView.cardName());
-		viewHolder.add(tableView, tableView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
 		viewHolder.add(budgetView, budgetView.cardName());
 		viewHolder.add(taskView, taskView.cardName());
@@ -217,8 +214,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(diagramView);
 		else if(viewName.equals(interviewView.cardName()))
 			setCurrentView(interviewView);
-		else if(viewName.equals(tableView.cardName()))
-			setCurrentView(tableView);
 		else if(viewName.equals(noProjectView.cardName()))
 			setCurrentView(noProjectView);
 		else if(viewName.equals(threatMatrixView.cardName()))
@@ -267,7 +262,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
 	private InterviewView interviewView;
-	private TableView tableView;
 	private ThreatMatrixView threatMatrixView;
 	private BudgetView budgetView;
 	private TaskView taskView;

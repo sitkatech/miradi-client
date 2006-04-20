@@ -31,6 +31,14 @@ public class BudgetView extends UmbrellaView
 		return "Budget";
 	}
 
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
 }
 
 	class BudgetComponent extends JLabel

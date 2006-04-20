@@ -30,31 +30,40 @@ public class MapView extends UmbrellaView
 	{
 		return "Map";
 	}
+
+	public void becomeActive() throws Exception
+	{
+	}
+
+	public void becomeInactive() throws Exception
+	{
+	}
+
 }
 
-	class MapComponent extends JTabbedPane
-	{
+class MapComponent extends JTabbedPane
+{
 
-		public MapComponent()
-		{
-			setTabPlacement(JTabbedPane.BOTTOM);
-		
-			String[] demoMaps = 
-			{
-				"base",
-				"scope",
-				"targets",
-				"threats",
-			};
-			
-			for(int i = 0; i < demoMaps.length; ++i)
-			{
-				URL imageURL = MapView.class.getResource(demoMaps[i] + ".jpg");
-				JLabel image = new JLabel(new ImageIcon(imageURL));
-				image.setName(demoMaps[i]);
-				add(image);
-			}
-		}
+	public MapComponent()
+	{
+		setTabPlacement(JTabbedPane.BOTTOM);
 	
+		String[] demoMaps = 
+		{
+			"base",
+			"scope",
+			"targets",
+			"threats",
+		};
+		
+		for(int i = 0; i < demoMaps.length; ++i)
+		{
+			URL imageURL = MapView.class.getResource(demoMaps[i] + ".jpg");
+			JLabel image = new JLabel(new ImageIcon(imageURL));
+			image.setName(demoMaps[i]);
+			add(image);
+		}
 	}
+
+}
 

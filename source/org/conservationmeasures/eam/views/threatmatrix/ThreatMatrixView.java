@@ -58,7 +58,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		return "ThreatMatrix";
 	}
 	
-	public void becomeCurrentView() throws Exception
+	public void becomeActive() throws Exception
 	{
 		model = new ThreatMatrixTableModel(getProject());
 
@@ -85,6 +85,12 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		selectBundle(null);
 	}
 	
+	public void becomeInactive() throws Exception
+	{
+		// TODO: Should clear ALL view data
+		grid = null;
+	}
+
 	public ThreatMatrixTableModel getModel()
 	{
 		return model;
