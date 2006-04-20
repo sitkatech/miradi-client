@@ -172,9 +172,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 
 	private Component createTasksGrid(DiagramNode node)
 	{
-		DialogGridPanel grid = new DialogGridPanel();
-		grid.add(new UiLabel("Not implemented yet"));
-		return grid;
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(new TaskTree(getProject(), node.getId()), BorderLayout.CENTER);
+		return panel;
 	}
 
 	private Component createTextField(String initialText, int maxLength)
