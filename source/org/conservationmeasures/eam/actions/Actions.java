@@ -42,7 +42,6 @@ public class Actions
 		registerAction(new ActionUndo(mainWindow));
 		registerAction(new ActionViewDiagram(mainWindow));
 		registerAction(new ActionViewInterview(mainWindow));
-		registerAction(new ActionViewTable(mainWindow));
 		registerAction(new ActionViewThreatMatrix(mainWindow));
 		registerAction(new ActionViewBudget(mainWindow));
 		registerAction(new ActionViewTask(mainWindow));
