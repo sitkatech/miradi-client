@@ -12,7 +12,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -64,7 +63,6 @@ public class ProjectServer
 
 	public void close() throws IOException
 	{
-		EAM.logDebug("Closing database");
 		clear();
 		topDirectory = null;
 		name = null;
