@@ -27,7 +27,6 @@ public class Undo extends ProjectDoer
 				if(getProject().getCommandToUndo().isBeginTransaction())
 					stillMoreTransactionsToDo = false;
 				getProject().executeCommand(new CommandUndo());
-				// TODO: should we fire a command-undone here?
 			}while(stillMoreTransactionsToDo);
 		}
 		catch (NothingToUndoException e)

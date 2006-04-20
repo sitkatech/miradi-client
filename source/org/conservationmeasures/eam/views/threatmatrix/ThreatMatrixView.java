@@ -119,8 +119,23 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		try
 		{
+			snapUiToExecutedCommand(event.getCommand());
 			if(grid != null)
+			{
 				selectBundle(grid.getSelectedBundle());
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		try
+		{
+			snapUiToExecutedCommand(event.getCommand());
 		}
 		catch (Exception e)
 		{
@@ -131,7 +146,18 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}
-
+	
+	private void snapUiToExecutedCommand(Command undoneCommand) throws Exception
+	{
+		if(undoneCommand.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
+		{
+			CommandSetThreatRating cmd = (CommandSetThreatRating)undoneCommand;
+			EAM.logDebug("Undid: " + undoneCommand.toString());
+			ThreatRatingBundle bundle = model.getBundle(cmd.getThreatId(), cmd.getTargetId());
+			selectBundle(bundle);
+		}
+	}
+	
 	abstract class ButtonListener implements ActionListener
 	{
 		abstract void takeAction(ThreatRatingBundle originalBundle, ThreatRatingBundle workingBundle) throws Exception;

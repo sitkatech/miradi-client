@@ -117,6 +117,10 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		showCurrentProjectStep();
 	}
 	
+	public void commandUndone(CommandExecutedEvent event)
+	{
+	}
+	
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		

@@ -508,6 +508,16 @@ public class Project
 		}
 	}
 	
+	void fireCommandUndone(Command command)
+	{
+		CommandExecutedEvent event = new CommandExecutedEvent(command);
+		for(int i=0; i < commandExecutedListeners.size(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandUndone(event);
+		}
+	}
+	
 	void fireCommandFailed(Command command, CommandFailedException e)
 	{
 		for(int i=0; i < commandExecutedListeners.size(); ++i)
@@ -919,8 +929,9 @@ public class Project
 	
 	public void undo() throws CommandFailedException
 	{
-		getCommandToUndo().undo(this);
-		// TODO: should we fire a command-undone here?
+		Command cmd = getCommandToUndo();
+		cmd.undo(this);
+		fireCommandUndone(cmd);
 	}
 	
 	public void redo() throws CommandFailedException

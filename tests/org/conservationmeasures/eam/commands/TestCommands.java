@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.util.Arrays;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -27,6 +28,8 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -985,7 +988,41 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		assertEquals("didn't switch back?", originalViewName, project.getCurrentView());
 	}
+	
+	static class UndoListener implements CommandExecutedListener
+	{
+		public UndoListener()
+		{
+			undoneCommands = new Vector();
+		}
+		
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+		}
 
+		public void commandUndone(CommandExecutedEvent event)
+		{
+			undoneCommands.add(event.getCommand());
+		}
+		
+		public void commandFailed(Command command, CommandFailedException e)
+		{
+		}
+		
+		Vector undoneCommands;
+	}
+	
+	public void testUndoFiresCommandUndone() throws Exception
+	{
+		UndoListener undoListener = new UndoListener();
+		project.addCommandExecutedListener(undoListener);
+		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
+		project.executeCommand(cmd);
+		project.executeCommand(new CommandUndo());
+		assertEquals("didn't undo one command?", 1, undoListener.undoneCommands.size());
+		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
+	}
+	
 	private int insertTarget() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_TARGET;

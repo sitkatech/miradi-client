@@ -202,6 +202,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		updateStatusBar();
 	}
 	
+	public void commandUndone(CommandExecutedEvent event)
+	{
+	}
+	
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		mainStatusBar.setStatusError(e);
