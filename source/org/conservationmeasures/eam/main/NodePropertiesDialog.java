@@ -436,7 +436,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return goals;
 	}
 	
-	static final int MAX_LABEL_LENGTH = 25;
+	static final int MAX_LABEL_LENGTH = 40;
 	
 	DiagramComponent diagram;
 	DiagramNode currentNode;
