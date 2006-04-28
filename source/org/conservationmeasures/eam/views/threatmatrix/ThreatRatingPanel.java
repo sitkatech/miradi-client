@@ -14,8 +14,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Rectangle;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -96,7 +96,7 @@ public class ThreatRatingPanel extends Box
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
 
 			UiComboBox dropdown = createRatingDropdown(framework.getValueOptions());
-			dropdown.addItemListener(new ValueListener(this, criterion));
+			dropdown.addActionListener(new ValueListener(this, criterion));
 			dropdowns.put(criterion, dropdown);
 
 			JPanel panel = new JPanel(new BorderLayout());
@@ -155,11 +155,11 @@ public class ThreatRatingPanel extends Box
 		while(iter.hasNext())
 		{
 			ThreatRatingCriterion criterion = (ThreatRatingCriterion)iter.next();
-			UiComboBox dropdown = (UiComboBox)dropdowns.get(criterion);
+			UiComboBoxWithSaneActionFiring dropdown = (UiComboBoxWithSaneActionFiring)dropdowns.get(criterion);
 			
 			if(bundle == null)
 			{
-				dropdown.setSelectedIndex(0);
+				dropdown.setSelectedItemWithoutFiring(dropdown.getItemAt(0));
 			}
 			else
 			{
@@ -167,7 +167,7 @@ public class ThreatRatingPanel extends Box
 				if(valueId != IdAssigner.INVALID_ID)
 				{
 					ThreatRatingValueOption option = framework.getValueOption(valueId);
-					dropdown.setSelectedItem(option);
+					dropdown.setSelectedItemWithoutFiring(option);
 				}
 			}
 		}
@@ -201,7 +201,7 @@ public class ThreatRatingPanel extends Box
 	
 	public static UiComboBox createThreatDropDown(ThreatRatingValueOption[] options)
 	{
-		UiComboBox dropDown = new UiComboBox();
+		UiComboBox dropDown = new UiComboBoxWithSaneActionFiring();
 		dropDown.setRenderer(new ThreatRenderer());
 		
 		for(int i = 0; i < options.length; ++i)
@@ -228,7 +228,7 @@ public class ThreatRatingPanel extends Box
 		}
 	}
 	
-	static class ValueListener implements ItemListener
+	static class ValueListener implements ActionListener
 	{
 		public ValueListener(ThreatRatingPanel panelToUse, ThreatRatingCriterion criterionToUse)
 		{
@@ -236,9 +236,10 @@ public class ThreatRatingPanel extends Box
 			criterion = criterionToUse;
 		}
 		
-		public void itemStateChanged(ItemEvent e)
+		public void actionPerformed(ActionEvent event)
 		{
-			UiComboBox source = (UiComboBox)e.getSource();
+			EAM.logWarning("ThreatRatingPanel.ValueListener.actionPerformed: " + event.getActionCommand());
+			UiComboBox source = (UiComboBox)event.getSource();
 			ThreatRatingValueOption selected = (ThreatRatingValueOption)source.getSelectedItem();
 			panel.valueWasChanged(criterion, selected);
 		}
