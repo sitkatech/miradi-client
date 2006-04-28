@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.views.images.ImagesView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.task.TaskView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -73,6 +74,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		mapView = new MapView(this);
 		calendarView = new CalendarView(this);
 		imagesView = new ImagesView(this);
+		strategicPlanView = new StrategicPlanView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -85,6 +87,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
 		viewHolder.add(imagesView, imagesView.cardName());
+		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -228,6 +231,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(calendarView);
 		else if(viewName.equals(imagesView.cardName()))
 			setCurrentView(imagesView);
+		else if(viewName.equals(strategicPlanView.cardName()))
+			setCurrentView(strategicPlanView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -268,6 +273,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private MapView mapView;
 	private CalendarView calendarView;
 	private ImagesView imagesView;
+	private StrategicPlanView strategicPlanView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
