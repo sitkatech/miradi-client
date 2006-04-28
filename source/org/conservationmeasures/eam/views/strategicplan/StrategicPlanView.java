@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
@@ -105,8 +106,8 @@ class AddButtonHandler implements ActionListener
 		{
 			CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
 			project.executeCommand(cmd);
-			String label = Integer.toString(cmd.getCreatedId());
-			DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(label);
+			Task newTask = project.getTaskPool().find(cmd.getCreatedId());
+			TaskTreeNode newNode = new TaskTreeNode(newTask);
 			DefaultMutableTreeNode root = (DefaultMutableTreeNode)getModel().getRoot();
 			getModel().insertNodeInto(newNode, root, root.getChildCount());
 			tree.expandPath(new TreePath(getModel().getPathToRoot(root)));

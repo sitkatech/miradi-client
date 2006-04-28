@@ -129,6 +129,11 @@ public class Project
 	{
 		return objectivePool;
 	}
+	
+	public TaskPool getTaskPool()
+	{
+		return taskPool;
+	}
 
 	public DiagramModel getDiagramModel()
 	{
