@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
 import org.conservationmeasures.eam.database.ObjectManifest;
@@ -317,22 +318,23 @@ public class Project
 
 	private void openProject(File projectDirectory) throws Exception
 	{
-		ProjectServer db = getDatabase();
+		if(ProjectServer.readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
+			throw new FutureVersionException();
 
+		if(ProjectServer.readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+			DataUpgrader.attemptUpgrade(projectDirectory);
+		
+		if(ProjectServer.readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+			throw new OldVersionException();
+
+		ProjectServer db = getDatabase();
 		db.open(projectDirectory);
-		if(db.isCurrentVersion())
-		{
-			loadProjectInfo();
-			loadThreatRatingFramework();
-			loadNodePool();
-			loadLinkagePool();
-			loadTaskPool();
-			loadDiagram();
-		}
-		else
-		{
-			throw new RuntimeException("Can't load old data version");
-		}
+		loadProjectInfo();
+		loadThreatRatingFramework();
+		loadNodePool();
+		loadLinkagePool();
+		loadTaskPool();
+		loadDiagram();
 	}
 	
 	private void createProject(File projectDirectory) throws Exception

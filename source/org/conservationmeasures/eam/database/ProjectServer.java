@@ -116,22 +116,35 @@ public class ProjectServer
 		return (files.length == 0);
 	}
 	
-	public boolean isCurrentVersion() throws IOException, ParseException
+	public static boolean isCurrentVersion(File projectDirectory) throws IOException, ParseException
 	{
-		File versionFile = getVersionFile();
-		if(!versionFile.exists())
-			return false;
-		JSONObject version = JSONFile.read(versionFile);
-		if(version.getInt(TAG_VERSION) != DATA_VERSION)
+		int dataVersion = readDataVersion(projectDirectory);
+		if(dataVersion != DATA_VERSION)
 			return false;
 		
 		return true;
 	}
+
+	public static int readDataVersion(File projectDirectory) throws IOException, ParseException
+	{
+		File versionFile = getVersionFile(projectDirectory);
+		if(!versionFile.exists())
+			throw new RuntimeException("No version file");
+		JSONObject version = JSONFile.read(versionFile);
+		int dataVersion = version.getInt(TAG_VERSION);
+		return dataVersion;
+	}
 	
 	public void writeVersion() throws IOException
 	{
+		int versionToWrite = DATA_VERSION;
+		writeVersion(versionToWrite);
+	}
+
+	void writeVersion(int versionToWrite) throws IOException
+	{
 		JSONObject version = new JSONObject();
-		version.put(TAG_VERSION, DATA_VERSION);
+		version.put(TAG_VERSION, versionToWrite);
 		JSONFile.write(getVersionFile(), version);
 	}
 
@@ -140,9 +153,14 @@ public class ProjectServer
 		clear();
 		directory.mkdirs();
 		lock.lock(directory);
-		topDirectory = directory;
+		setTopDirectory(directory);
 		createJsonDirectories();
 		name = topDirectory.getName();
+	}
+
+	void setTopDirectory(File directory)
+	{
+		topDirectory = directory;
 	}
 
 	private void createJsonDirectories()
@@ -347,7 +365,7 @@ public class ProjectServer
 		return new ObjectManifest(rawManifest);
 	}
 	
-	private void addToObjectManifest(int type, int idToAdd) throws IOException, ParseException
+	void addToObjectManifest(int type, int idToAdd) throws IOException, ParseException
 	{
 		ObjectManifest manifest = readObjectManifest(type);
 		manifest.put(idToAdd);
@@ -372,7 +390,7 @@ public class ProjectServer
 		return getJsonDirectory(getTopDirectory());
 	}
 
-	private static File getJsonDirectory(File topDirectory2)
+	static File getJsonDirectory(File topDirectory2)
 	{
 		return new File(topDirectory2, JSON_DIRECTORY);
 	}
@@ -392,7 +410,7 @@ public class ProjectServer
 		return new File(getJsonDirectory(), DIAGRAMS_DIRECTORY);
 	}
 	
-	private File getObjectDirectory(int type)
+	File getObjectDirectory(int type)
 	{
 		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
 	}
@@ -458,7 +476,7 @@ public class ProjectServer
 		return new File(getObjectDirectory(type), Integer.toString(id));
 	}
 	
-	private File getObjectManifestFile(int type)
+	File getObjectManifestFile(int type)
 	{
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
@@ -484,7 +502,7 @@ public class ProjectServer
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 1;
+	static public int DATA_VERSION = 2;
 
 	protected Vector commands;
 	File topDirectory;

@@ -110,6 +110,11 @@ public class EAM
 	{
 		okDialog("Error", new String[] {errorMessage});
 	}
+	
+	public static void notifyDialog(String text)
+	{
+		okDialog("Information", new String[] {text});
+	}
 
 	public static void okDialog(String title, String[] body)
 	{
@@ -119,6 +124,11 @@ public class EAM
 	public static boolean confirmDialog(String title, String[] body)
 	{
 		String[] buttons = { text("Button|Overwrite"), text("Button|Cancel") };
+		return confirmDialog(title, body, buttons);
+	}
+
+	public static boolean confirmDialog(String title, String[] body, String[] buttons)
+	{
 		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
 		return (dlg.getResult().equals(buttons[0]));
 	}

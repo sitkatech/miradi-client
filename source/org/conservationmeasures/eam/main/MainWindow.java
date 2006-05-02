@@ -26,6 +26,8 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
+import org.conservationmeasures.eam.project.FutureVersionException;
+import org.conservationmeasures.eam.project.OldVersionException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
@@ -157,6 +159,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		catch(DirectoryLock.AlreadyLockedException e)
 		{
 			EAM.errorDialog(EAM.text("That project is in use by another copy of this application"));
+		}
+		catch(FutureVersionException e)
+		{
+			EAM.errorDialog(EAM.text("That project cannot be opened because it was created by a newer version of this application"));
+		}
+		catch(OldVersionException e)
+		{
+			EAM.errorDialog(EAM.text("That project cannot be opened until it is migrated to the current data format"));
 		}
 		catch(Exception e)
 		{
