@@ -18,7 +18,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -44,6 +47,27 @@ public class TestProjectServer extends EAMTestCase
 	public void tearDown() throws Exception
 	{
 		storage.close();
+	}
+	
+	public void testObjectManifest() throws Exception
+	{
+		int[] idsToWrite = {19, 25, 727, };
+		for(int i = 0; i < idsToWrite.length; ++i)
+		{
+			Task task = new Task(idsToWrite[i]);
+			storage.writeObject(task);
+		}
+		ThreatRatingCriterion criterion = new ThreatRatingCriterion(99);
+		storage.writeObject(criterion);
+
+		ObjectManifest manifest = storage.readObjectManifest(ObjectType.TASK);
+		assertEquals("wrong number of objects?", idsToWrite.length, manifest.size());
+		for(int i = 0; i < idsToWrite.length; ++i)
+			assertTrue("missing id " + idsToWrite[i], manifest.has(idsToWrite[i]));
+		
+		storage.deleteObject(ObjectType.TASK, idsToWrite[0]);
+		Manifest afterDelete = storage.readObjectManifest(ObjectType.TASK);
+		assertFalse("didn't delete id?", afterDelete.has(idsToWrite[0]));
 	}
 	
 	public void testWriteAndReadNode() throws Exception

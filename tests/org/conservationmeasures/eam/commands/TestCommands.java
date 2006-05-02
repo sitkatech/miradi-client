@@ -39,7 +39,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.map.MapView;
 
 public class TestCommands extends EAMTestCase
 {
@@ -975,15 +975,15 @@ public class TestCommands extends EAMTestCase
 	{
 		String originalViewName = project.getCurrentView();
 
-		CommandSwitchView toInterview = new CommandSwitchView(InterviewView.getViewName());
-		project.executeCommand(toInterview);
-		assertEquals("didn't switch?", toInterview.getDestinationView(), project.getCurrentView());
-		assertEquals("didn't set from?", originalViewName, toInterview.getPreviousView());
+		CommandSwitchView toMap = new CommandSwitchView(MapView.getViewName());
+		project.executeCommand(toMap);
+		assertEquals("didn't switch?", toMap.getDestinationView(), project.getCurrentView());
+		assertEquals("didn't set from?", originalViewName, toMap.getPreviousView());
 		
-		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toInterview);
+		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toMap);
 		assertNotNull("didn't reload?", loaded);
-		assertEquals("wrong to?", toInterview.getDestinationView(), loaded.getDestinationView());
-		assertEquals("wrong from?", toInterview.getPreviousView(), loaded.getPreviousView());
+		assertEquals("wrong to?", toMap.getDestinationView(), loaded.getDestinationView());
+		assertEquals("wrong from?", toMap.getPreviousView(), loaded.getPreviousView());
 		
 		project.undo();
 		assertEquals("didn't switch back?", originalViewName, project.getCurrentView());

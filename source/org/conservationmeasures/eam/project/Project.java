@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
+import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -165,15 +166,27 @@ public class Project
 		return threatRatingFramework;
 	}
 	
+	public Task getRootTask() throws Exception
+	{
+		int rootTaskId = projectInfo.getRootTaskId();
+		if(rootTaskId == IdAssigner.INVALID_ID)
+		{
+			rootTaskId = createObject(ObjectType.TASK);
+			projectInfo.setRootTaskId(rootTaskId);
+			getDatabase().writeProjectInfo(projectInfo);
+		}
+		return getTaskPool().find(rootTaskId);
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
-	public int createObject(int objectType) throws IOException
+	public int createObject(int objectType) throws IOException, ParseException
 	{
 		return createObject(objectType, IdAssigner.INVALID_ID);
 	}
 	
-	public int createObject(int objectType, int objectId) throws IOException
+	public int createObject(int objectType, int objectId) throws IOException, ParseException
 	{
 		int createdId = IdAssigner.INVALID_ID;
 		switch(objectType)
@@ -211,7 +224,7 @@ public class Project
 		return createdId;
 	}
 	
-	public void deleteObject(int objectType, int objectId) throws IOException
+	public void deleteObject(int objectType, int objectId) throws IOException, ParseException
 	{
 		switch(objectType)
 		{
@@ -237,7 +250,7 @@ public class Project
 		}
 	}
 	
-	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws IOException
+	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws IOException, ParseException
 	{
 		switch(objectType)
 		{
@@ -296,7 +309,7 @@ public class Project
 		finishOpening();
 	}
 
-	private void createDefaultObjectsIfNeeded() throws IOException
+	private void createDefaultObjectsIfNeeded() throws IOException, ParseException
 	{
 		if(threatRatingFramework.getCriteria().length == 0)
 			threatRatingFramework.createDefaultObjects();
@@ -313,6 +326,7 @@ public class Project
 			loadThreatRatingFramework();
 			loadNodePool();
 			loadLinkagePool();
+			loadTaskPool();
 			loadDiagram();
 		}
 		else
@@ -355,6 +369,17 @@ public class Project
 		{
 			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
 			linkagePool.put(linkage);
+		}
+	}
+	
+	private void loadTaskPool() throws IOException, ParseException
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
+			taskPool.put(task);
 		}
 	}
 	

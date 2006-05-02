@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -43,7 +44,7 @@ public class ThreatRatingFramework
 		bundles = new HashMap();
 	}
 	
-	public void createDefaultObjects() throws IOException
+	public void createDefaultObjects() throws IOException, ParseException
 	{
 		createDefaultCriterion(EAM.text("Label|Scope")); 
 		createDefaultCriterion(EAM.text("Label|Severity"));
@@ -56,7 +57,7 @@ public class ThreatRatingFramework
 		createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
 	}
 
-	private void createDefaultValueOption(String label, int numericValue, Color color) throws IOException
+	private void createDefaultValueOption(String label, int numericValue, Color color) throws IOException, ParseException
 	{
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
 		int createdId = project.createObject(type);
@@ -65,7 +66,7 @@ public class ThreatRatingFramework
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 	}
 
-	private void createDefaultCriterion(String label) throws IOException
+	private void createDefaultCriterion(String label) throws IOException, ParseException
 	{
 		int type = ObjectType.THREAT_RATING_CRITERION;
 		int createdId = project.createObject(type);

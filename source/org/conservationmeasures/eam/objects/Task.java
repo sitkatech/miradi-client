@@ -20,6 +20,7 @@ public class Task extends EAMObject
 	public Task(JSONObject json)
 	{
 		super(json);
+		subtasks = new Vector();
 	}
 
 	public int getType()

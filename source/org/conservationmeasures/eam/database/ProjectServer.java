@@ -325,15 +325,45 @@ public class ProjectServer
 		return EAMObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
 	}
 	
-	public void writeObject(EAMObject object) throws IOException
+	public void writeObject(EAMObject object) throws IOException, ParseException
 	{
 		getObjectDirectory(object.getType()).mkdirs();
 		JSONFile.write(getObjectFile(object.getType(), object.getId()), object.toJson());	
+		addToObjectManifest(object.getType(), object.getId());
 	}
 	
-	public void deleteObject(int type, int id)
+	public void deleteObject(int type, int id) throws IOException, ParseException
 	{
+		removeFromObjectManifest(type, id);
 		getObjectFile(type, id).delete();
+	}
+	
+	public ObjectManifest readObjectManifest(int type) throws IOException, ParseException
+	{
+		File manifestFile = getObjectManifestFile(type);
+		if(!manifestFile.exists())
+			return new ObjectManifest();
+		JSONObject rawManifest = JSONFile.read(manifestFile);
+		return new ObjectManifest(rawManifest);
+	}
+	
+	private void addToObjectManifest(int type, int idToAdd) throws IOException, ParseException
+	{
+		ObjectManifest manifest = readObjectManifest(type);
+		manifest.put(idToAdd);
+		writeObjectManifest(type, manifest);
+	}
+	
+	private void removeFromObjectManifest(int type, int idToRemove) throws IOException, ParseException
+	{
+		ObjectManifest manifest = readObjectManifest(type);
+		manifest.remove(idToRemove);
+		writeObjectManifest(type, manifest);
+	}
+	
+	private void writeObjectManifest(int type, ObjectManifest manifest) throws IOException
+	{
+		manifest.write(getObjectManifestFile(type));
 	}
 	
 
@@ -428,6 +458,11 @@ public class ProjectServer
 		return new File(getObjectDirectory(type), Integer.toString(id));
 	}
 	
+	private File getObjectManifestFile(int type)
+	{
+		return new File(getObjectDirectory(type), MANIFEST_FILE);
+	}
+	
 	private void addCommand(Command command)
 	{
 		commands.add(command);
@@ -448,6 +483,7 @@ public class ProjectServer
 	static public String TAG_VERSION = "Version";
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
+	static public String OBJECT_MANIFEST = "ObjectManifest";
 	static public int DATA_VERSION = 1;
 
 	protected Vector commands;

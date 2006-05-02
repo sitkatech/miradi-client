@@ -47,10 +47,11 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.util.DirectoryUtils;
 
@@ -72,6 +73,28 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testRootTask() throws Exception
+	{
+		File tempDirectory = createTempDirectory();
+		try
+		{
+			Project tempProject = new Project();
+			tempProject.createOrOpen(tempDirectory);
+			Task rootTask = tempProject.getRootTask();
+			assertNotEquals("Bad default root task id?", IdAssigner.INVALID_ID, rootTask.getId());
+			tempProject.close();
+			
+			Project otherProject = new Project();
+			otherProject.createOrOpen(tempDirectory);
+			assertEquals("didn't save and reload root task?", rootTask.getId(), otherProject.getRootTask().getId());
+			otherProject.close();
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
 	}
 	
 	public void testObjectLifecycles() throws Exception
@@ -179,23 +202,23 @@ public class TestProject extends EAMTestCase
 		{
 			public void switchToView(String viewName)
 			{
-				if(viewName.equals(InterviewView.getViewName()))
-					++interviewViewCount;
+				if(viewName.equals(MapView.getViewName()))
+					++mapViewCount;
 				else if(!viewName.equals(""))
 					throw new RuntimeException("Unknown view: " + viewName);
 			}
 
-			int interviewViewCount;
+			int mapViewCount;
 		}
 		
 		SampleViewChangeListener listener = new SampleViewChangeListener();
 		project.addViewChangeListener(listener);
-		Command toInterview = new CommandSwitchView(InterviewView.getViewName());
-		project.executeCommand(toInterview);
-		assertEquals("didn't notify listener of view switch?", 1, listener.interviewViewCount);
+		Command toMap = new CommandSwitchView(MapView.getViewName());
+		project.executeCommand(toMap);
+		assertEquals("didn't notify listener of view switch?", 1, listener.mapViewCount);
 		try
 		{
-			project.executeCommand(toInterview);
+			project.executeCommand(toMap);
 			fail("Can't switch to current view");
 		}
 		catch(AlreadyInThatViewException ignoreExpected)
@@ -475,7 +498,7 @@ public class TestProject extends EAMTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
-		assertEquals("not starting on diagram view?", DiagramView.getViewName(), project.getCurrentView());
+		assertEquals("not starting on interview view?", InterviewView.getViewName(), project.getCurrentView());
 		String sampleViewName = "blah blah";
 		project.switchToView(sampleViewName);
 		assertEquals("didn't switch?", sampleViewName, project.getCurrentView());

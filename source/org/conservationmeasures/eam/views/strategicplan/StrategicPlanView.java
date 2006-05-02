@@ -12,7 +12,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -56,15 +55,21 @@ public class StrategicPlanView extends UmbrellaView
 	{
 	}
 
-	private JTree createActivityTree()
+	private JTree createActivityTree() throws Exception
 	{
-		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode();
+		Task rootTask = getProject().getRootTask();
+		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Activities");
+		//tree.setRootVisible(false);
+
+		for(int i = 0; i < rootTask.getSubtaskCount(); ++i)
+		{
+			Task subtask = rootTask.getSubtask(i);
+			TaskTreeNode node = new TaskTreeNode(subtask);
+			rootNode.add(node);
+		}
+		
 		model = new DefaultTreeModel(rootNode);
 		tree = new JTree(model);
-		
-		//activityTree.setRootVisible(false);
-		
-		
 		return tree;
 	}
 
@@ -107,13 +112,15 @@ class AddButtonHandler implements ActionListener
 			CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
 			project.executeCommand(cmd);
 			Task newTask = project.getTaskPool().find(cmd.getCreatedId());
+			project.getRootTask().addSubtask(newTask);
+			
 			TaskTreeNode newNode = new TaskTreeNode(newTask);
 			DefaultMutableTreeNode root = (DefaultMutableTreeNode)getModel().getRoot();
 			getModel().insertNodeInto(newNode, root, root.getChildCount());
 			tree.expandPath(new TreePath(getModel().getPathToRoot(root)));
 			
 		}
-		catch(CommandFailedException e)
+		catch(Exception e)
 		{
 			EAM.errorDialog("Could not create activity");
 		}
