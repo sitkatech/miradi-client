@@ -11,12 +11,12 @@ import org.json.JSONObject;
 
 public class ThreatRatingValueOption extends EAMObject
 {
-	public ThreatRatingValueOption(int idToUse)
+	public ThreatRatingValueOption(int idToUse) throws Exception
 	{
 		this(idToUse, "Unknown", 0, Color.BLACK);
 	}
 	
-	public ThreatRatingValueOption(int idToUse, String labelToUse, int numericToUse, Color colorToUse)
+	public ThreatRatingValueOption(int idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
 		super(idToUse);
 		setData(TAG_LABEL, labelToUse);
@@ -56,7 +56,7 @@ public class ThreatRatingValueOption extends EAMObject
 		return getLabel();
 	}
 	
-	public void setData(String fieldTag, String dataValue)
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_NUMERIC.equals(fieldTag))
 			numeric = Integer.parseInt(dataValue);

@@ -338,7 +338,7 @@ public class ProjectServer
 
 	
 	
-	public EAMObject readObject(int type, int id) throws IOException, ParseException
+	public EAMObject readObject(int type, int id) throws Exception
 	{
 		return EAMObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
 	}

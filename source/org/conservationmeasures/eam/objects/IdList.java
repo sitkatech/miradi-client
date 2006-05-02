@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -14,16 +15,33 @@ public class IdList
 {
 	public IdList()
 	{
-		data = new Vector();
+		this(new Vector());
+	}
+	
+	public IdList(IdList copyFrom)
+	{
+		this(new Vector(copyFrom.data));
 	}
 	
 	public IdList(JSONObject json)
 	{
 		this();
-		JSONArray array = json.getJSONArray(TAG_IDS);
+		JSONArray array = json.optJSONArray(TAG_IDS);
+		if(array == null)
+			array = new JSONArray();
 		for(int i = 0; i < array.length(); ++i)
 			add(array.getInt(i));
 		
+	}
+	
+	public IdList(String listAsJsonString) throws ParseException
+	{
+		this(new JSONObject(listAsJsonString));
+	}
+	
+	private IdList(Vector dataToUse)
+	{
+		data = dataToUse;
 	}
 	
 	public int size()
@@ -59,6 +77,11 @@ public class IdList
 		return json;
 	}
 	
+	public String toString()
+	{
+		return toJson().toString();
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof IdList))
@@ -71,6 +94,11 @@ public class IdList
 	public int hashCode()
 	{
 		return data.hashCode();
+	}
+	
+	public IdList createClone()
+	{
+		return new IdList(this);
 	}
 	
 	

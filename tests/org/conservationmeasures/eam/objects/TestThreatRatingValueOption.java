@@ -16,7 +16,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		super(name);
 	}
 	
-	public void testBasics()
+	public void testBasics() throws Exception
 	{
 		int id = 42;
 		ThreatRatingValueOption empty = new ThreatRatingValueOption(id);
@@ -35,7 +35,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		assertEquals(color, a.getColor());
 	}
 	
-	public void testSetGetData()
+	public void testSetGetData() throws Exception
 	{
 		
 		verifySetGetData(ThreatRatingValueOption.TAG_LABEL, "Hi mom!");
@@ -44,7 +44,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		verifySetGetData(ThreatRatingValueOption.TAG_COLOR, color);
 	}
 	
-	public void testGetDataBadFieldTag()
+	public void testGetDataBadFieldTag() throws Exception
 	{
 		int id = 6;
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
@@ -58,7 +58,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		}
 	}
 	
-	public void testSetDataBadFieldTag()
+	public void testSetDataBadFieldTag() throws Exception
 	{
 		int id = 6;
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
@@ -72,7 +72,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		}
 	}
 
-	private void verifySetGetData(String tag, String value)
+	private void verifySetGetData(String tag, String value) throws Exception
 	{
 		int id = 6;
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);

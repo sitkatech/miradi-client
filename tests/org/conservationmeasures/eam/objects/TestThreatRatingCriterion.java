@@ -14,7 +14,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 		super(name);
 	}
 
-	public void testSetGetData()
+	public void testSetGetData() throws Exception
 	{
 		
 		verifySetGetData(ThreatRatingCriterion.TAG_LABEL, "Hi mom!");
@@ -34,7 +34,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 		}
 	}
 	
-	public void testSetDataBadFieldTag()
+	public void testSetDataBadFieldTag() throws Exception
 	{
 		int id = 6;
 		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
@@ -48,7 +48,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 		}
 	}
 
-	private void verifySetGetData(String tag, String value)
+	private void verifySetGetData(String tag, String value) throws Exception
 	{
 		int id = 6;
 		ThreatRatingCriterion option = new ThreatRatingCriterion(id);

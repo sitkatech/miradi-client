@@ -182,12 +182,12 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
-	public int createObject(int objectType) throws IOException, ParseException
+	public int createObject(int objectType) throws Exception
 	{
 		return createObject(objectType, IdAssigner.INVALID_ID);
 	}
 	
-	public int createObject(int objectType, int objectId) throws IOException, ParseException
+	public int createObject(int objectType, int objectId) throws Exception
 	{
 		int createdId = IdAssigner.INVALID_ID;
 		switch(objectType)
@@ -251,7 +251,7 @@ public class Project
 		}
 	}
 	
-	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws IOException, ParseException
+	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws Exception
 	{
 		switch(objectType)
 		{
@@ -310,7 +310,7 @@ public class Project
 		finishOpening();
 	}
 
-	private void createDefaultObjectsIfNeeded() throws IOException, ParseException
+	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		if(threatRatingFramework.getCriteria().length == 0)
 			threatRatingFramework.createDefaultObjects();
@@ -374,7 +374,7 @@ public class Project
 		}
 	}
 	
-	private void loadTaskPool() throws IOException, ParseException
+	private void loadTaskPool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
 		int[] ids = manifest.getAllKeys();

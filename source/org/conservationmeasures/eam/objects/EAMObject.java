@@ -21,7 +21,7 @@ abstract public class EAMObject
 		label = json.getString(TAG_LABEL);
 	}
 	
-	public static EAMObject createFromJson(int type, JSONObject json)
+	public static EAMObject createFromJson(int type, JSONObject json) throws Exception
 	{
 		switch(type)
 		{
@@ -55,7 +55,7 @@ abstract public class EAMObject
 		return label;
 	}
 	
-	public void setData(String fieldTag, Object dataValue)
+	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(TAG_LABEL.equals(fieldTag))
 			label = (String)dataValue;

@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import java.util.Vector;
+import java.text.ParseException;
 
 import org.json.JSONObject;
 
@@ -14,13 +14,19 @@ public class Task extends EAMObject
 	public Task(int idToUse)
 	{
 		super(idToUse);
-		subtasks = new Vector();
+		subtaskIds = new IdList();
 	}
 	
-	public Task(JSONObject json)
+	public Task(JSONObject json) throws ParseException
 	{
 		super(json);
-		subtasks = new Vector();
+		String subtaskIdsAsString = json.optString(TAG_SUBTASK_IDS, "{}");
+		setSubtaskIdsFromString(subtaskIdsAsString);
+	}
+
+	private void setSubtaskIdsFromString(String subtaskIdsAsString) throws ParseException
+	{
+		subtaskIds = new IdList(subtaskIdsAsString);
 	}
 
 	public int getType()
@@ -28,20 +34,56 @@ public class Task extends EAMObject
 		return ObjectType.TASK;
 	}
 
-	public void addSubtask(Task newChild)
+	public void addSubtaskId(int subtaskId)
 	{
-		subtasks.add(newChild);
+		subtaskIds.add(subtaskId);
 	}
 	
 	public int getSubtaskCount()
 	{
-		return subtasks.size();
+		return subtaskIds.size();
 	}
 	
-	public Task getSubtask(int index)
+	public int getSubtaskId(int index)
 	{
-		return (Task)subtasks.get(index);
+		return subtaskIds.get(index);
 	}
 	
-	Vector subtasks;
+	public IdList getSubtaskIdList()
+	{
+		return subtaskIds.createClone();
+	}
+	
+	public JSONObject toJson()
+	{
+		JSONObject json = super.toJson();
+		json.put(TAG_SUBTASK_IDS, getSubtaskIdsAsString());
+		return json;
+	}
+
+	private String getSubtaskIdsAsString()
+	{
+		return subtaskIds.toString();
+	}
+	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(TAG_SUBTASK_IDS))
+			return getSubtaskIdsAsString();
+		
+		return super.getData(fieldTag);
+	}
+
+	public void setData(String fieldTag, Object dataValue) throws Exception
+	{
+		if(fieldTag.equals(TAG_SUBTASK_IDS))
+			setSubtaskIdsFromString((String)dataValue);
+		else super.setData(fieldTag, dataValue);
+	}
+
+	
+	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
+	
+	IdList subtaskIds;
+
 }

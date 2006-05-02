@@ -12,8 +12,10 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -63,7 +65,8 @@ public class StrategicPlanView extends UmbrellaView
 
 		for(int i = 0; i < rootTask.getSubtaskCount(); ++i)
 		{
-			Task subtask = rootTask.getSubtask(i);
+			int subtaskId = rootTask.getSubtaskId(i);
+			Task subtask = getProject().getTaskPool().find(subtaskId);
 			TaskTreeNode node = new TaskTreeNode(subtask);
 			rootNode.add(node);
 		}
@@ -109,10 +112,16 @@ class AddButtonHandler implements ActionListener
 	{
 		try
 		{
-			CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
-			project.executeCommand(cmd);
-			Task newTask = project.getTaskPool().find(cmd.getCreatedId());
-			project.getRootTask().addSubtask(newTask);
+			int type = ObjectType.TASK;
+			CommandCreateObject create = new CommandCreateObject(type);
+			project.executeCommand(create);
+			Task newTask = project.getTaskPool().find(create.getCreatedId());
+			
+			Task rootTask = project.getRootTask();
+			IdList subtaskIds = rootTask.getSubtaskIdList();
+			subtaskIds.add(newTask.getId());
+			CommandSetObjectData addSubtask = new CommandSetObjectData(type, rootTask.getId(), Task.TAG_SUBTASK_IDS, subtaskIds.toString());
+			project.executeCommand(addSubtask);
 			
 			TaskTreeNode newNode = new TaskTreeNode(newTask);
 			DefaultMutableTreeNode root = (DefaultMutableTreeNode)getModel().getRoot();
@@ -122,6 +131,7 @@ class AddButtonHandler implements ActionListener
 		}
 		catch(Exception e)
 		{
+			EAM.logException(e);
 			EAM.errorDialog("Could not create activity");
 		}
 		

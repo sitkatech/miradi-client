@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -104,7 +102,7 @@ public class TestProject extends EAMTestCase
 		verifyObjectLifecycle(ObjectType.TASK);
 	}
 
-	private void verifyObjectLifecycle(int type) throws IOException, ParseException
+	private void verifyObjectLifecycle(int type) throws Exception
 	{
 		int createdId = project.createObject(type);
 		ProjectServer db = project.getDatabase();
