@@ -1,5 +1,5 @@
-Notes based on a discussion with Nick, Dave, and Kevin
-on 2006-04-04
+2006-04-04: Original discussion with Nick, Dave, and Kevin
+2006-05-03: StratPlan discussion with Nick and Kevin
 
 =====================================================
 
@@ -8,15 +8,14 @@ CONCEPTUAL MODEL:
 Scope
   Target
     DirectThreat/IndirectThreat/Opportunity
-      Intervention
+      Strategy (aka Intervention or Hexagon)
 
 Scope contains targets
 Relationships between others can be many-to-many
 Aside from Interventions, represents the state of the world BEFORE
   our project has effects
-Intervention also sometimes known as Strategy
 Indicators can be attached to any node (Target, 
-  DirectThreat/IndirectThreat/Opportunity, or Intervention)
+  DirectThreat/IndirectThreat/Opportunity, or Strategy)
       
 =====================================================
 
@@ -33,12 +32,20 @@ A Vision/Goal/Objective can be referred to as a "Result"
 
 
 =====================================================
+STRATEGIC PLAN
 
+  Strategy+Objective
+    Activity
+
+Some Activities may serve more than one Strategy+Objective. We will 
+  visually indicate this "sharing".
+
+=====================================================
 WORK PLAN
 
   ACTION PLAN
-    Intervention
-      Action
+    Strategy+Objective
+      Activity
         Task
           Subtask
     
@@ -49,11 +56,14 @@ WORK PLAN
           Subtask
     
 
-Conceptually, Interventions and Indicators are linked to Objectives, 
-  potentially in many-to-many relationships
+Conceptually, Strategies are linked to Objectives
+  For now, each Strategy may have only one Objective, and 
+  each Objective can have only one Strategy.
+Conceptually, and Indicators are linked to Objectives. We haven't
+  re-discussed many-to-many relationships
 "Indicator" here refers to the bundle of data surrounding the actual 
   indicator, which is technically just a measured data point
-Interventions, Objectives, and Indicators serve as the linkages between 
+Strategies, Objectives, and Indicators serve as the linkages between 
   the Conceptual Model and the Work Plan.
       
 =====================================================
