@@ -39,6 +39,8 @@ import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeTarget;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
+import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
+import org.conservationmeasures.eam.objects.TestConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
@@ -128,6 +130,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
 		
 		// objects package
+		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
+		suite.addTest(new TestSuite(TestConceptualModelIntervention.class));
 		suite.addTest(new TestSuite(TestConceptualModelLinkage.class));
 		suite.addTest(new TestSuite(TestConceptualModelNode.class));
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));

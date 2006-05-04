@@ -33,7 +33,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		assertEquals("didn't default to priority none?", null, factor.getThreatPriority());
 	}
 
-	public void testJson()
+	public void testJson() throws Exception
 	{
 		GoalIds goals = new GoalIds();
 		goals.addId(2);

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
@@ -73,6 +74,17 @@ abstract class StratPlanObject
 	abstract public Object getChild(int index);
 	
 	abstract public String toString();
+	
+	public boolean canInsertActivityHere()
+	{
+		return getActivityInsertionPoint().isValid();
+	}
+
+	public ActivityInsertionPoint getActivityInsertionPoint()
+	{
+		return new ActivityInsertionPoint();
+	}
+
 }
 
 class StratPlanRoot extends StratPlanObject
@@ -135,6 +147,11 @@ class StratPlanStrategy extends StratPlanObject
 	public String toString()
 	{
 		return intervention.getName();
+	}
+
+	public ActivityInsertionPoint getActivityInsertionPoint()
+	{
+		return new ActivityInsertionPoint(intervention.getId(), intervention.getActivityIds().size());
 	}
 
 	ConceptualModelIntervention intervention;

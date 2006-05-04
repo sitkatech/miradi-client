@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
@@ -166,7 +168,7 @@ abstract public class ConceptualModelNode
 		return false;
 	}
 	
-	public static ConceptualModelNode createFrom(JSONObject json)
+	public static ConceptualModelNode createFrom(JSONObject json) throws ParseException
 	{
 		String typeString = json.getString(TAG_TYPE);
 		if(typeString.equals(INTERVENTION_TYPE))

@@ -54,6 +54,11 @@ public class IdList
 		data.add(new Integer(id));
 	}
 	
+	public void insertAt(int id, int at)
+	{
+		data.insertElementAt(new Integer(id), at);
+	}
+	
 	public int get(int index)
 	{
 		return ((Integer)data.get(index)).intValue();

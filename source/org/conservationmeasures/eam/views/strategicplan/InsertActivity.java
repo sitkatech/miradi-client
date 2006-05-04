@@ -21,7 +21,7 @@ public class InsertActivity extends ProjectDoer
 		StratPlanObject selected = view.getSelectedObject();
 		if(selected == null)
 			return false;
-		return true;
+		return selected.canInsertActivityHere();
 	}
 
 	public void doIt() throws CommandFailedException
