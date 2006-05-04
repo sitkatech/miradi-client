@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
@@ -23,6 +24,11 @@ public class NodePool extends ObjectPool
 	public ConceptualModelNode find(int id)
 	{
 		return (ConceptualModelNode)getRawObject(id);
+	}
+
+	public ConceptualModelNode[] getInterventions()
+	{
+		return getNodesOfType(new NodeTypeIntervention());
 	}
 	
 	public ConceptualModelNode[] getDirectThreats()
