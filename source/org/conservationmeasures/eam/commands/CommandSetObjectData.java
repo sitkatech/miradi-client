@@ -8,12 +8,29 @@ package org.conservationmeasures.eam.commands;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetObjectData extends Command
 {
+	static public CommandSetObjectData createInsertIdCommand(EAMObject object, String idListTag, int idToInsert, int position) throws ParseException
+	{
+		IdList newList = new IdList(object.getData(idListTag));
+		newList.insertAt(idToInsert, position);
+		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
+	}
+
+	static public CommandSetObjectData createRemoveIdCommand(EAMObject object, String idListTag, int idToRemove) throws ParseException
+	{
+		IdList newList = new IdList(object.getData(idListTag));
+		newList.removeId(idToRemove);
+		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
+	}
+	
 	public CommandSetObjectData(int objectType, int objectId, String fieldTag, String dataValue)
 	{
 		type = objectType;
