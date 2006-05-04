@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.main;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,11 +59,12 @@ import org.martus.swing.Utilities;
 
 public class NodePropertiesDialog extends JDialog implements ActionListener
 {
-	public NodePropertiesDialog(Frame parent, DiagramComponent diagramToUse, String title)
+	public NodePropertiesDialog(MainWindow parent, DiagramComponent diagramToUse, String title)
 			throws HeadlessException
 	{
 		super(parent, title);
 		
+		mainWindow = parent;
 		diagram = diagramToUse;
 
 		setResizable(true);
@@ -183,7 +183,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Component createTasksGrid(DiagramNode node) throws Exception
 	{
 		ConceptualModelIntervention intervention = (ConceptualModelIntervention)node.getUnderlyingObject();
-		return StrategicPlanPanel.createForStrategy(getProject(), intervention);
+		return StrategicPlanPanel.createForStrategy(mainWindow, intervention);
 	}
 
 	private Component createTextField(String initialText, int maxLength)
@@ -446,6 +446,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	static final int MAX_LABEL_LENGTH = 40;
 	
+	MainWindow mainWindow;
 	DiagramComponent diagram;
 	DiagramNode currentNode;
 	UiTextField textField;

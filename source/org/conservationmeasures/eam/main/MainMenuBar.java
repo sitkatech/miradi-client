@@ -15,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
+import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -53,6 +54,7 @@ public class MainMenuBar extends JMenuBar
 		add(createFileMenu(actions));
 		add(createEditMenu(actions));
 		add(createInsertMenu(actions));
+		add(createManageMenu(actions));
 		add(createViewMenu(actions));
 		add(createProcessMenu(actions));
 		add(createHelpMenu(actions));
@@ -187,6 +189,13 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
+		return menu;
+	}
+	
+	private JMenu createManageMenu(Actions actions)
+	{
+		JMenu menu = new JMenu(EAM.text("MenuBar|Manage"));
+		menu.add(new JMenuItem(actions.get(ActionInsertActivity.class)));
 		return menu;
 	}
 	

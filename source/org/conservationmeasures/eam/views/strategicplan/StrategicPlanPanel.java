@@ -6,21 +6,26 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -31,39 +36,43 @@ import org.martus.swing.UiButton;
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class StrategicPlanPanel extends JPanel
+public class StrategicPlanPanel extends JPanel implements TreeSelectionListener
 {
-	static public StrategicPlanPanel createForProject(Project projectToUse) throws Exception
+	static public StrategicPlanPanel createForProject(MainWindow mainWindowToUse) throws Exception
 	{
-		return new StrategicPlanPanel(projectToUse, StrategicPlanTreeTableModel.createForProject(projectToUse));
+		return new StrategicPlanPanel(mainWindowToUse, StrategicPlanTreeTableModel.createForProject(mainWindowToUse.getProject()));
 	}
 	
-	static public StrategicPlanPanel createForStrategy(Project projectToUse, ConceptualModelIntervention intervention) throws Exception
+	static public StrategicPlanPanel createForStrategy(MainWindow mainWindowToUse, ConceptualModelIntervention intervention) throws Exception
 	{
-		return new StrategicPlanPanel(projectToUse, StrategicPlanTreeTableModel.createForStrategy(intervention));
+		return new StrategicPlanPanel(mainWindowToUse, StrategicPlanTreeTableModel.createForStrategy(intervention));
 	}
 	
-	private StrategicPlanPanel(Project projectToUse, StrategicPlanTreeTableModel modelToUse) throws Exception
+	private StrategicPlanPanel(MainWindow mainWindowToUse, StrategicPlanTreeTableModel modelToUse) throws Exception
 	{
 		super(new BorderLayout());
+		mainWindow = mainWindowToUse;
 		model = modelToUse;
-		add(new JScrollPane(createActivityTree()), BorderLayout.CENTER);		
-		add(createButtonBox(), BorderLayout.AFTER_LAST_LINE);
-
+		tree = new JTreeTable(model);
+		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.getTree().addTreeSelectionListener(this);
+		add(new JScrollPane(tree), BorderLayout.CENTER);		
+		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
+		tree.getTree().addSelectionRow(0);
 	}
 	
-	private Component createActivityTree() throws Exception
+	public StratPlanObject getSelectedObject()
 	{
-		tree = new JTreeTable(model);
-//		tree.setRootVisible(false);
-//		tree.expandPath(new TreePath(model.getPathToRoot(strategyNode)));
-		return tree;
+		StratPlanObject selected = (StratPlanObject)tree.getTree().getLastSelectedPathComponent();
+		return selected;
 	}
 
-	private Box createButtonBox()
+
+	
+	private Box createButtonBox(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
-		UiButton addButton = new UiButton(EAM.text("Button|Add"));
+		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
 		UiButton editButton = new UiButton(EAM.text("Button|Edit"));
 		UiButton deleteButton = new UiButton(EAM.text("Button|Delete"));
 //		addButton.addActionListener(new AddButtonHandler(getProject(), tree));
@@ -74,6 +83,12 @@ public class StrategicPlanPanel extends JPanel
 		return buttonBox;
 	}
 	
+	public void valueChanged(TreeSelectionEvent e)
+	{
+		mainWindow.getActions().updateActionStates();
+	}
+
+	MainWindow mainWindow;
 	JTreeTable tree;
 	TreeTableModel model;
 }
