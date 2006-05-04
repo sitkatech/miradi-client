@@ -16,7 +16,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
@@ -100,29 +102,47 @@ class AddButtonHandler implements ActionListener
 	{
 		try
 		{
-			int type = ObjectType.TASK;
-			CommandCreateObject create = new CommandCreateObject(type);
-			project.executeCommand(create);
-			Task newTask = project.getTaskPool().find(create.getCreatedId());
-			
-			Task rootTask = project.getRootTask();
-			IdList subtaskIds = rootTask.getSubtaskIdList();
-			subtaskIds.add(newTask.getId());
-			CommandSetObjectData addSubtask = new CommandSetObjectData(type, rootTask.getId(), Task.TAG_SUBTASK_IDS, subtaskIds.toString());
-			project.executeCommand(addSubtask);
-			
-			TaskTreeNode newNode = new TaskTreeNode(newTask);
-			DefaultMutableTreeNode strategy = (DefaultMutableTreeNode)getModel().getChild(getModel().getRoot(), 0);
-			getModel().insertNodeInto(newNode, strategy, strategy.getChildCount());
-			tree.expandPath(new TreePath(getModel().getPathToRoot(strategy)));
-			
+			project.executeCommand(new CommandBeginTransaction());
+			try
+			{
+				attemptToAdd();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("Could not create activity");
+			}
+			finally
+			{
+				project.executeCommand(new CommandEndTransaction());
+			}
 		}
-		catch(Exception e)
+		catch (Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("Could not create activity");
+			EAM.errorDialog("Unexpected error");
 		}
 		
+	}
+	
+	void attemptToAdd() throws Exception
+	{
+		int type = ObjectType.TASK;
+		CommandCreateObject create = new CommandCreateObject(type);
+		project.executeCommand(create);
+		Task newTask = project.getTaskPool().find(create.getCreatedId());
+		
+		Task rootTask = project.getRootTask();
+		IdList subtaskIds = rootTask.getSubtaskIdList();
+		subtaskIds.add(newTask.getId());
+		CommandSetObjectData addSubtask = new CommandSetObjectData(type, rootTask.getId(), Task.TAG_SUBTASK_IDS, subtaskIds.toString());
+		project.executeCommand(addSubtask);
+		
+		TaskTreeNode newNode = new TaskTreeNode(newTask);
+		DefaultMutableTreeNode strategy = (DefaultMutableTreeNode)getModel().getChild(getModel().getRoot(), 0);
+		getModel().insertNodeInto(newNode, strategy, strategy.getChildCount());
+		tree.expandPath(new TreePath(getModel().getPathToRoot(strategy)));
+	
 	}
 	
 	Project project;
