@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
@@ -32,10 +33,20 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 public class StrategicPlanPanel extends JPanel
 {
-	public StrategicPlanPanel(Project projectToUse) throws Exception
+	static public StrategicPlanPanel createForProject(Project projectToUse) throws Exception
+	{
+		return new StrategicPlanPanel(projectToUse, StrategicPlanTreeTableModel.createForProject(projectToUse));
+	}
+	
+	static public StrategicPlanPanel createForStrategy(Project projectToUse, ConceptualModelIntervention intervention) throws Exception
+	{
+		return new StrategicPlanPanel(projectToUse, StrategicPlanTreeTableModel.createForStrategy(intervention));
+	}
+	
+	private StrategicPlanPanel(Project projectToUse, StrategicPlanTreeTableModel modelToUse) throws Exception
 	{
 		super(new BorderLayout());
-		project = projectToUse;
+		model = modelToUse;
 		add(new JScrollPane(createActivityTree()), BorderLayout.CENTER);		
 		add(createButtonBox(), BorderLayout.AFTER_LAST_LINE);
 
@@ -43,20 +54,6 @@ public class StrategicPlanPanel extends JPanel
 	
 	private Component createActivityTree() throws Exception
 	{
-		Task rootTask = getProject().getRootTask();
-		DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Activities");
-		DefaultMutableTreeNode strategyNode = new DefaultMutableTreeNode("Strategy");
-		rootNode.add(strategyNode);
-
-		for(int i = 0; i < rootTask.getSubtaskCount(); ++i)
-		{
-			int subtaskId = rootTask.getSubtaskId(i);
-			Task subtask = getProject().getTaskPool().find(subtaskId);
-			TaskTreeNode node = new TaskTreeNode(subtask);
-			strategyNode.add(node);
-		}
-		
-		model = new StrategicPlanTreeTableModel(getProject());
 		tree = new JTreeTable(model);
 //		tree.setRootVisible(false);
 //		tree.expandPath(new TreePath(model.getPathToRoot(strategyNode)));
@@ -77,12 +74,6 @@ public class StrategicPlanPanel extends JPanel
 		return buttonBox;
 	}
 	
-	Project getProject()
-	{
-		return project;
-	}
-	
-	Project project;
 	JTreeTable tree;
 	TreeTableModel model;
 }

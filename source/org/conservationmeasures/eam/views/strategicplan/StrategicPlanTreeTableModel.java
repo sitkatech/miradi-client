@@ -14,9 +14,20 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 {
-	public StrategicPlanTreeTableModel(Project project)
+	static public StrategicPlanTreeTableModel createForProject(Project project)
 	{
-		super(new StratPlanRoot(project));
+		return new StrategicPlanTreeTableModel(new StratPlanRoot(project));
+	}
+	
+	static public StrategicPlanTreeTableModel createForStrategy(ConceptualModelIntervention strategy)
+	{
+		return new StrategicPlanTreeTableModel(new StratPlanStrategy(strategy));
+	}
+	
+	
+	private StrategicPlanTreeTableModel(StratPlanObject root)
+	{
+		super(root);
 	}
 	
 	public int getColumnCount()

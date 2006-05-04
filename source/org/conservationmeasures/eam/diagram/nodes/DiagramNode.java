@@ -68,6 +68,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return true;
 	}
 	
+	public ConceptualModelNode getUnderlyingObject()
+	{
+		return underlyingObject;
+	}
+	
 	public int getId()
 	{
 		return underlyingObject.getId();

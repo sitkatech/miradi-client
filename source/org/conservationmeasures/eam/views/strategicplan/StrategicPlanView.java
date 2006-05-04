@@ -31,7 +31,7 @@ public class StrategicPlanView extends UmbrellaView
 	{
 		removeAll();
 
-		JPanel strategicPanel = new StrategicPlanPanel(getProject());
+		JPanel strategicPanel = StrategicPlanPanel.createForProject(getProject());
 		add(strategicPanel, BorderLayout.CENTER);
 	}
 

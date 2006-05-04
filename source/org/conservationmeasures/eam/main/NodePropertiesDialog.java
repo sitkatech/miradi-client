@@ -45,10 +45,12 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -71,13 +73,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
-		currentNode = node;
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
 		contents.removeAll();
-		contents.add(createLabelBar(currentNode), BorderLayout.BEFORE_FIRST_LINE);
-		contents.add(createTabbedPane(currentNode), BorderLayout.CENTER);
-		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
+		try
+		{
+			currentNode = node;
+			contents.add(createLabelBar(currentNode), BorderLayout.BEFORE_FIRST_LINE);
+			contents.add(createTabbedPane(currentNode), BorderLayout.CENTER);
+			contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Error reading activity information");
+		}
 		pack();
 	}
 	
@@ -116,7 +126,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return grid;
 	}
 	
-	private Component createTabbedPane(DiagramNode node)
+	private Component createTabbedPane(DiagramNode node) throws Exception
 	{
 		JTabbedPane pane = new JTabbedPane();
 		pane.add(createMainGrid(node), EAM.text("Tab|Comments"));
@@ -170,12 +180,10 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return grid;
 	}
 
-	private Component createTasksGrid(DiagramNode node)
+	private Component createTasksGrid(DiagramNode node) throws Exception
 	{
-		JPanel panel = new JPanel(new BorderLayout());
-		TaskTree taskTree = new TaskTree(getProject(), node.getId());
-		panel.add(new JScrollPane(taskTree), BorderLayout.CENTER);
-		return panel;
+		ConceptualModelIntervention intervention = (ConceptualModelIntervention)node.getUnderlyingObject();
+		return StrategicPlanPanel.createForStrategy(getProject(), intervention);
 	}
 
 	private Component createTextField(String initialText, int maxLength)
