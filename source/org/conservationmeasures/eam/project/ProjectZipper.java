@@ -29,7 +29,9 @@ public class ProjectZipper
 		for(int i = 0; i < files.length; ++i)
 		{
 			File thisFile = files[i];
-			String entryName = prefix + "/" + thisFile.getName();
+			if(prefix.length() > 0)
+				prefix = prefix + "/";
+			String entryName = prefix + thisFile.getName();
 			if(thisFile.isDirectory())
 			{
 				addTreeToZip(out, entryName, thisFile);
