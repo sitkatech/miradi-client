@@ -67,10 +67,9 @@ public class DataUpgrader extends ProjectServer
 
 	void upgrade() throws IOException, ParseException
 	{
-		int dataVersion = readDataVersion(getTopDirectory());
-		if(dataVersion == 1)
+		if(readDataVersion(getTopDirectory()) == 1)
 			upgradeToVersion2();
-		if(dataVersion == 2)
+		if(readDataVersion(getTopDirectory()) == 2)
 			upgradeToVersion3();
 	}
 
@@ -84,26 +83,28 @@ public class DataUpgrader extends ProjectServer
 
 	private void createManifestFromObjects(int type) throws IOException, ParseException
 	{
-		File objectDirectory = getObjectDirectory(type);
-		File manifestFile = getObjectManifestFile(type);
+		File jsonDirectory = new File(topDirectory, "json");
+		File objectDirectory = new File(jsonDirectory, "objects-" + Integer.toString(type));
+		File manifestFile = new File(objectDirectory, "manifest");
 		if(manifestFile.exists())
 			throw new RuntimeException("Didn't expect manifest file " + manifestFile.getAbsolutePath());
-		
+
+		ObjectManifest manifest = new ObjectManifest();
 		File[] files = objectDirectory.listFiles();
 		for(int i = 0; i < files.length; ++i)
 		{
-			int id = -1;
 			try
 			{
-				id = Integer.parseInt(files[i].getName());
+				int id = Integer.parseInt(files[i].getName());
+				manifest.put(id);
 			}
 			catch (Exception e)
 			{
 				EAM.logWarning("Exception during migration (non-fatal)");
 				EAM.logException(e);
 			}
-			addToObjectManifest(type, id);
 		}
+		manifest.write(manifestFile);
 	}
 
 	public void upgradeToVersion3() throws IOException, ParseException
@@ -116,12 +117,16 @@ public class DataUpgrader extends ProjectServer
 	{
 		final String TAG_NAME = "Name";
 
-		File directory = getManifestFile(getNodesDirectory());
-		NodeManifest manifest = new NodeManifest(JSONFile.read(directory));
+		File nodesDirectory = new File(topDirectory, "json/nodes");
+		File manifestFile = new File(nodesDirectory, "manifest");
+		if(!manifestFile.exists())
+			return;
+		
+		NodeManifest manifest = new NodeManifest(JSONFile.read(manifestFile));
 		int[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			File nodeFile = getNodeFile(getTopDirectory(), ids[i]);
+			File nodeFile = new File(nodesDirectory, Integer.toString(ids[i]));
 			JSONObject json = JSONFile.read(nodeFile);
 			json.put(ConceptualModelNode.TAG_LABEL, json.get(TAG_NAME));
 			// no need to clear out the old Name field

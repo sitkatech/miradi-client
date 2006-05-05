@@ -25,12 +25,30 @@ public class TestDataUpgrader extends EAMTestCase
 		super(name);
 	}
 
+	public void testRenameNodeTagFromNameToLabelNoManifest() throws Exception
+	{
+		File tempDirectory = createTempDirectory();
+		try
+		{
+			File nodesDirectory = new File(tempDirectory, "json/nodes");
+			nodesDirectory.mkdirs();
+
+			DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+			upgrader.renameNodeTagFromNameToLabel();
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
+	}
+	
 	public void testRenameNodeTagFromNameToLabel() throws Exception
 	{
 		File tempDirectory = createTempDirectory();
 		try
 		{
-			ProjectServer.getNodesDirectory(tempDirectory).mkdirs();
+			File nodesDirectory = new File(tempDirectory, "json/nodes");
+			nodesDirectory.mkdirs();
 			NodeManifest manifest = new NodeManifest();
 
 			Version2ConceptualModelTarget target = new Version2ConceptualModelTarget("Target");
@@ -42,7 +60,7 @@ public class TestDataUpgrader extends EAMTestCase
 			Version2ConceptualModelIntervention intervention = new Version2ConceptualModelIntervention("Intervention");
 			File interventionFile = writeNode(tempDirectory, manifest, intervention);
 
-			manifest.write(ProjectServer.getManifestFile(ProjectServer.getNodesDirectory(tempDirectory)));
+			manifest.write(new File(nodesDirectory, "manifest"));
 
 			DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 			upgrader.renameNodeTagFromNameToLabel();
@@ -63,7 +81,10 @@ public class TestDataUpgrader extends EAMTestCase
 	private File writeNode(File tempDirectory, NodeManifest manifest, ConceptualModelNode node) throws IOException
 	{
 		manifest.put(node.getId());
-		File targetFile = ProjectServer.getNodeFile(tempDirectory, node.getId());
+		String nodeFilename = Integer.toString(node.getId());
+		File jsonDirectory = new File(tempDirectory, "json");
+		File nodesDirectory = new File(jsonDirectory, "nodes");
+		File targetFile = new File(nodesDirectory, nodeFilename);
 		JSONFile.write(targetFile, node.toJson());
 		return targetFile;
 	}

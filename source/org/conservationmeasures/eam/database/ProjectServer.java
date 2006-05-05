@@ -390,21 +390,16 @@ public class ProjectServer
 		return getJsonDirectory(getTopDirectory());
 	}
 
-	static File getJsonDirectory(File topDirectory2)
+	private static File getJsonDirectory(File topDirectory)
 	{
-		return new File(topDirectory2, JSON_DIRECTORY);
+		return new File(topDirectory, JSON_DIRECTORY);
 	}
 	
-	File getNodesDirectory()
+	private File getNodesDirectory()
 	{
 		return new File(getJsonDirectory(), NODES_DIRECTORY);
 	}
 	
-	static public File getNodesDirectory(File topDirectory)
-	{
-		return new File(getJsonDirectory(topDirectory), NODES_DIRECTORY);
-	}
-
 	private File getLinkagesDirectory()
 	{
 		return new File(getJsonDirectory(), LINKAGES_DIRECTORY);
@@ -415,7 +410,7 @@ public class ProjectServer
 		return new File(getJsonDirectory(), DIAGRAMS_DIRECTORY);
 	}
 	
-	File getObjectDirectory(int type)
+	private File getObjectDirectory(int type)
 	{
 		return new File(getJsonDirectory(), "objects-" + Integer.toString(type));
 	}
@@ -458,12 +453,7 @@ public class ProjectServer
 	
 	private File getNodeFile(int id)
 	{
-		return getNodeFile(getTopDirectory(), id);
-	}
-	
-	public static File getNodeFile(File topDirectory, int id)
-	{
-		return new File(getNodesDirectory(topDirectory), Integer.toString(id));
+		return new File(new File(getJsonDirectory(getTopDirectory()), NODES_DIRECTORY), Integer.toString(id));
 	}
 	
 	private File getLinkageManifestFile()
@@ -486,14 +476,9 @@ public class ProjectServer
 		return new File(getObjectDirectory(type), Integer.toString(id));
 	}
 	
-	File getObjectManifestFile(int type)
+	private File getObjectManifestFile(int type)
 	{
-		return getManifestFile(getObjectDirectory(type));
-	}
-	
-	public static File getManifestFile(File directory)
-	{
-		return new File(directory, MANIFEST_FILE);
+		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
 	private void addCommand(Command command)
