@@ -526,7 +526,7 @@ public class TestCommands extends EAMTestCase
 		NodeType originalType = DiagramNode.TYPE_DIRECT_THREAT;
 		NodeType switchedToType = DiagramNode.TYPE_INDIRECT_FACTOR;
 		
-		assertEquals("Should be a Direct Threat", originalType, node.getType());
+		assertEquals("Should be a Direct Threat", originalType, node.getNodeType());
 		CommandSetFactorType cmd = new CommandSetFactorType(id, switchedToType);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old objective?", originalType, cmd.getPreviousType());
@@ -538,7 +538,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous type?", originalType, loaded.getPreviousType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalType, project.getDiagramModel().getNodeById(id).getType());
+		assertEquals("didn't undo?", originalType, project.getDiagramModel().getNodeById(id).getNodeType());
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -861,7 +861,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getType());
+		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}

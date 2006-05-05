@@ -107,7 +107,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		if(node.isFactor())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
-			grid.add(createSwitchFactorTypeDropdown(node.getType()));
+			grid.add(createSwitchFactorTypeDropdown(node.getNodeType()));
 		}
 		
 		if(node.isDirectThreat())

@@ -19,7 +19,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	public ConceptualModelFactor(JSONObject json)
 	{
 		super(DiagramNode.TYPE_INDIRECT_FACTOR, json);
-		setType(getSubtypeFromString(json.getString(TAG_SUBTYPE)));
+		setNodeType(getSubtypeFromString(json.getString(TAG_SUBTYPE)));
 	}
 
 	public boolean isFactor()
@@ -29,17 +29,17 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	
 	public boolean isIndirectFactor()
 	{
-		return(getType().isIndirectFactor());
+		return(getNodeType().isIndirectFactor());
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return(getType().isDirectThreat());
+		return(getNodeType().isDirectThreat());
 	}
 	
 	public boolean isStress()
 	{
-		return(getType().isStress());
+		return(getNodeType().isStress());
 	}
 	
 	public boolean canHaveObjectives()

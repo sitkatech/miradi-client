@@ -232,40 +232,40 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		int insertedId = insertDirectThreat(project);
 		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
-		NodeType originalType = node.getType();
+		NodeType originalType = node.getNodeType();
 
 		NodeType newType = DiagramNode.TYPE_STRESS;
 		project.executeCommand(new CommandBeginTransaction());
 		project.executeCommand(new CommandSetFactorType(insertedId, newType));
 		project.executeCommand(new CommandEndTransaction());
 
-		assertEquals(newType, node.getType());
+		assertEquals(newType, node.getNodeType());
 
 		NodeType newType2 = DiagramNode.TYPE_INDIRECT_FACTOR;
 		project.executeCommand(new CommandBeginTransaction());
 		project.executeCommand(new CommandSetFactorType(insertedId, newType2));
 		project.executeCommand(new CommandEndTransaction());
-		assertEquals(newType2, node.getType());
+		assertEquals(newType2, node.getNodeType());
 
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(newType, node.getType());
+		assertEquals(newType, node.getNodeType());
 
 		undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(originalType, node.getType());
+		assertEquals(originalType, node.getNodeType());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(newType, node.getType());
+		assertEquals(newType, node.getNodeType());
 
 		redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
-		assertEquals(newType2, node.getType());
+		assertEquals(newType2, node.getNodeType());
 	}
 
 	

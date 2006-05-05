@@ -25,7 +25,7 @@ public class DiagramFactor extends DiagramNode
 		if(isStress())
 			return DiagramConstants.COLOR_STRESS;
 		
-		throw new RuntimeException("Unknown factor type: " + getType().getClass());
+		throw new RuntimeException("Unknown factor type: " + getNodeType().getClass());
 	}
 
 }

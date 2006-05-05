@@ -61,7 +61,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(DiagramNode.TYPE_TARGET, foundNode.getType());
+		assertEquals(DiagramNode.TYPE_TARGET, foundNode.getNodeType());
 	}
 
 	public void testInsertIndirectFactor() throws Exception
@@ -78,7 +78,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
-		assertEquals(DiagramNode.TYPE_INDIRECT_FACTOR, foundNode.getType());
+		assertEquals(DiagramNode.TYPE_INDIRECT_FACTOR, foundNode.getNodeType());
 	}
 
 	public void testInsertDirectThreat() throws Exception
@@ -95,7 +95,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an direct Threat?", foundNode.isDirectThreat());
-		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getType());
+		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getNodeType());
 	}
 
 	public void testInsertStress() throws Exception
@@ -112,7 +112,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an Stress?", foundNode.isStress());
-		assertEquals(DiagramNode.TYPE_STRESS, foundNode.getType());
+		assertEquals(DiagramNode.TYPE_STRESS, foundNode.getNodeType());
 	}
 
 	public void testInsertIntervention() throws Exception
@@ -129,7 +129,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());
-		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getType());
+		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getNodeType());
 	}
 	
 	ProjectForTesting project;

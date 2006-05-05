@@ -88,14 +88,14 @@ abstract public class DiagramNode extends EAMGraphCell
 		underlyingObject.setLabel(name);
 	}
 
-	public NodeType getType()
+	public NodeType getNodeType()
 	{
-		return underlyingObject.getType();
+		return underlyingObject.getNodeType();
 	}
 
-	public void setType(NodeType typeToUse)
+	public void setNodeType(NodeType typeToUse)
 	{
-		underlyingObject.setType(typeToUse);
+		underlyingObject.setNodeType(typeToUse);
 		setColors();
 	}
 
@@ -325,7 +325,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		// Really, for each node copied to the clipboard, we should copy 
 		// the json for both the ConceptualModelNode and for the DiagramNode.
 		// That will also fix the current bug that objectives and goals are not copied
-		dataMap.put(TAG_NODE_TYPE, NodeDataMap.convertNodeTypeToInt(getType()));
+		dataMap.put(TAG_NODE_TYPE, NodeDataMap.convertNodeTypeToInt(getNodeType()));
 		
 		
 		dataMap.putPoint(TAG_LOCATION, getLocation());

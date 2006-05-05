@@ -62,7 +62,7 @@ public class CommandSetFactorType extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			NodeType oldType = node.getType();
+			NodeType oldType = node.getNodeType();
 			if(expectedType != null && !oldType.equals(expectedType))
 				throw new Exception("CommandFactorSetType expected " + expectedType + " but was " + oldType);
 			target.setFactorType(getId(), desiredType);

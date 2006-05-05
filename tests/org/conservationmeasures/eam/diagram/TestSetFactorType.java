@@ -34,7 +34,7 @@ public class TestSetFactorType extends TestCaseEnhanced
 		setTextCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);
-		assertEquals("wrong type?", newType, found.getType());
+		assertEquals("wrong type?", newType, found.getNodeType());
 		
 		project.close();
 	}

@@ -50,7 +50,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFrom(factor.toJson());
-		assertEquals("wrong type?", factor.getType(), got.getType());
+		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());

@@ -683,7 +683,7 @@ public class Project
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
-		NodeType nodeType = nodeToDelete.getType();
+		NodeType nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 
 		database.deleteNode(idToDelete);
@@ -756,7 +756,7 @@ public class Project
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
 		
-		node.setType(desiredType);
+		node.setNodeType(desiredType);
 		Logging.logVerbose("SetFactorType:" + desiredType);
 		model.updateCell(node);
 

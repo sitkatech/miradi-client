@@ -49,7 +49,7 @@ public class NodePool extends ObjectPool
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ConceptualModelNode cmNode = (ConceptualModelNode)getRawObject(ids[i]);
-			if(cmNode.getType().equals(type))
+			if(cmNode.getNodeType().equals(type))
 				cmNodes.add(cmNode);
 		}
 		return (ConceptualModelNode[])cmNodes.toArray(new ConceptualModelNode[0]);

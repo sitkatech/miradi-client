@@ -78,7 +78,7 @@ public class TestProjectServer extends EAMTestCase
 		intervention.setId(idAssigner.takeNextId());
 		storage.writeNode(intervention);
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)storage.readNode(intervention.getId());
-		assertEquals("not an intervention?", intervention.getType(), gotIntervention.getType());
+		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(new NodeTypeIndirectFactor());
@@ -86,23 +86,23 @@ public class TestProjectServer extends EAMTestCase
 		
 		storage.writeNode(factor);
 		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)storage.readNode(factor.getId());
-		assertEquals("not indirect factor?", factor.getType(), gotIndirectFactor.getType());
+		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
-		factor.setType(DiagramNode.TYPE_DIRECT_THREAT);
+		factor.setNodeType(DiagramNode.TYPE_DIRECT_THREAT);
 		storage.writeNode(factor);
 		ConceptualModelFactor gotDirectThreat = (ConceptualModelFactor)storage.readNode(factor.getId());
-		assertEquals("not direct threat?", factor.getType(), gotDirectThreat.getType());
+		assertEquals("not direct threat?", factor.getNodeType(), gotDirectThreat.getNodeType());
 		
-		factor.setType(DiagramNode.TYPE_STRESS);
+		factor.setNodeType(DiagramNode.TYPE_STRESS);
 		storage.writeNode(factor);
 		ConceptualModelFactor gotStress = (ConceptualModelFactor)storage.readNode(factor.getId());
-		assertEquals("not stress?", factor.getType(), gotStress.getType());
+		assertEquals("not stress?", factor.getNodeType(), gotStress.getNodeType());
 		
 		ConceptualModelTarget target = new ConceptualModelTarget();
 		target.setId(idAssigner.takeNextId());
 		storage.writeNode(target);
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());
-		assertEquals("not a target?", target.getType(), gotTarget.getType());
+		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		
 		
 		NodeManifest nodeIds = storage.readNodeManifest();

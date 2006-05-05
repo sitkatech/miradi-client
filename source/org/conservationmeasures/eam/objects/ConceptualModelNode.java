@@ -68,12 +68,12 @@ abstract public class ConceptualModelNode
 		return label;
 	}
 
-	public NodeType getType()
+	public NodeType getNodeType()
 	{
 		return type;
 	}
 	
-	public void setType(NodeType typeToUse)
+	public void setNodeType(NodeType typeToUse)
 	{
 		type = typeToUse;
 	}

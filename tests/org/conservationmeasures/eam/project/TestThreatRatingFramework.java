@@ -193,7 +193,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 		
 		ConceptualModelNode factor = project.getNodePool().find(threatId);
-		factor.setType(new NodeTypeIndirectFactor());
+		factor.setNodeType(new NodeTypeIndirectFactor());
 		assertEquals("threat value included indirect factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included indirect factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
