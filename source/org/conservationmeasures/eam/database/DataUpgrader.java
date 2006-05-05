@@ -71,6 +71,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion2();
 		if(readDataVersion(getTopDirectory()) == 2)
 			upgradeToVersion3();
+		if(readDataVersion(getTopDirectory()) == 3)
+			upgradeToVersion4();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -132,5 +134,28 @@ public class DataUpgrader extends ProjectServer
 			// no need to clear out the old Name field
 			JSONFile.write(nodeFile, json);
 		}
+	}
+	
+	public void upgradeToVersion4() throws IOException, ParseException
+	{
+		moveNodesDirectoryToObjects4();
+		writeVersion(4);
+	}
+	
+	public void moveNodesDirectoryToObjects4() throws IOException 
+	{
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File newNodesDirectory = new File(jsonDirectory, "objects-4");
+		if(newNodesDirectory.exists())
+			throw new IOException(newNodesDirectory + "already exists!");
+		File oldNodesDirectory = new File(jsonDirectory, "nodes");
+		if(!oldNodesDirectory.exists())
+			return;
+		
+		boolean worked = oldNodesDirectory.renameTo(newNodesDirectory);
+		if(!worked)
+			throw new IOException("Rename failed from (" + 
+					oldNodesDirectory.getAbsolutePath() + ") to (" +
+					newNodesDirectory.getAbsolutePath() + ")");
 	}
 }

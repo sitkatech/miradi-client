@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -397,7 +398,7 @@ public class ProjectServer
 	
 	private File getNodesDirectory()
 	{
-		return new File(getJsonDirectory(), NODES_DIRECTORY);
+		return getObjectDirectory(ObjectType.MODEL_NODE);
 	}
 	
 	private File getLinkagesDirectory()
@@ -453,7 +454,7 @@ public class ProjectServer
 	
 	private File getNodeFile(int id)
 	{
-		return new File(new File(getJsonDirectory(getTopDirectory()), NODES_DIRECTORY), Integer.toString(id));
+		return new File(getNodesDirectory(), Integer.toString(id));
 	}
 	
 	private File getLinkageManifestFile()
@@ -487,7 +488,6 @@ public class ProjectServer
 	}
 	
 	static String JSON_DIRECTORY = "json";
-	static String NODES_DIRECTORY = "nodes";
 	static String LINKAGES_DIRECTORY = "linkages";
 	static String DIAGRAMS_DIRECTORY = "diagrams";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
@@ -502,7 +502,7 @@ public class ProjectServer
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 3;
+	static public int DATA_VERSION = 4;
 
 	protected Vector commands;
 	File topDirectory;

@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
+import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeWriter;
 
 public class TestDataUpgrader extends EAMTestCase
 {
@@ -24,65 +26,62 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		super(name);
 	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		tempDirectory = createTempDirectory();
+	}
+	
+	public void tearDown() throws Exception
+	{
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+	
+		super.tearDown();
+	}
 
 	public void testRenameNodeTagFromNameToLabelNoManifest() throws Exception
 	{
-		File tempDirectory = createTempDirectory();
-		try
-		{
-			File nodesDirectory = new File(tempDirectory, "json/nodes");
-			nodesDirectory.mkdirs();
+		File nodesDirectory = new File(tempDirectory, "json/nodes");
+		nodesDirectory.mkdirs();
 
-			DataUpgrader upgrader = new DataUpgrader(tempDirectory);
-			upgrader.renameNodeTagFromNameToLabel();
-		}
-		finally
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		}
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.renameNodeTagFromNameToLabel();
 	}
 	
 	public void testRenameNodeTagFromNameToLabel() throws Exception
 	{
-		File tempDirectory = createTempDirectory();
-		try
-		{
-			File nodesDirectory = new File(tempDirectory, "json/nodes");
-			nodesDirectory.mkdirs();
-			NodeManifest manifest = new NodeManifest();
+		File nodesDirectory = new File(tempDirectory, "json/nodes");
+		nodesDirectory.mkdirs();
+		NodeManifest manifest = new NodeManifest();
 
-			Version2ConceptualModelTarget target = new Version2ConceptualModelTarget("Target");
-			File targetFile = writeNode(tempDirectory, manifest, target);
-			
-			Version2ConceptualModelThreat threat = new Version2ConceptualModelThreat("Threat");
-			File threatFile = writeNode(tempDirectory, manifest, threat);
+		Version2ConceptualModelTarget target = new Version2ConceptualModelTarget("Target");
+		File targetFile = writeNode(tempDirectory, manifest, target);
+		
+		Version2ConceptualModelThreat threat = new Version2ConceptualModelThreat("Threat");
+		File threatFile = writeNode(tempDirectory, manifest, threat);
 
-			Version2ConceptualModelIntervention intervention = new Version2ConceptualModelIntervention("Intervention");
-			File interventionFile = writeNode(tempDirectory, manifest, intervention);
+		Version2ConceptualModelIntervention intervention = new Version2ConceptualModelIntervention("Intervention");
+		File interventionFile = writeNode(tempDirectory, manifest, intervention);
 
-			manifest.write(new File(nodesDirectory, "manifest"));
+		manifest.write(new File(nodesDirectory, "manifest"));
 
-			DataUpgrader upgrader = new DataUpgrader(tempDirectory);
-			upgrader.renameNodeTagFromNameToLabel();
-			
-			ConceptualModelTarget gotTarget = new ConceptualModelTarget(JSONFile.read(targetFile));
-			assertEquals(target.getLabel(), gotTarget.getLabel());
-			ConceptualModelTarget gotThreat = new ConceptualModelTarget(JSONFile.read(threatFile));
-			assertEquals(threat.getLabel(), gotThreat.getLabel());
-			ConceptualModelTarget gotIntervention = new ConceptualModelTarget(JSONFile.read(interventionFile));
-			assertEquals(intervention.getLabel(), gotIntervention.getLabel());
-		}
-		finally
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		}
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.renameNodeTagFromNameToLabel();
+		
+		ConceptualModelTarget gotTarget = new ConceptualModelTarget(JSONFile.read(targetFile));
+		assertEquals(target.getLabel(), gotTarget.getLabel());
+		ConceptualModelTarget gotThreat = new ConceptualModelTarget(JSONFile.read(threatFile));
+		assertEquals(threat.getLabel(), gotThreat.getLabel());
+		ConceptualModelTarget gotIntervention = new ConceptualModelTarget(JSONFile.read(interventionFile));
+		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
 	}
 
-	private File writeNode(File tempDirectory, NodeManifest manifest, ConceptualModelNode node) throws IOException
+	private File writeNode(File topDirectory, NodeManifest manifest, ConceptualModelNode node) throws IOException
 	{
 		manifest.put(node.getId());
 		String nodeFilename = Integer.toString(node.getId());
-		File jsonDirectory = new File(tempDirectory, "json");
+		File jsonDirectory = new File(topDirectory, "json");
 		File nodesDirectory = new File(jsonDirectory, "nodes");
 		File targetFile = new File(nodesDirectory, nodeFilename);
 		JSONFile.write(targetFile, node.toJson());
@@ -142,5 +141,49 @@ public class TestDataUpgrader extends EAMTestCase
 
 	}
 	
+	
+	public void testMoveNodesDirectoryToObjects4() throws Exception
+	{
+		File jsonDirectory = new File(tempDirectory, "json");
+		jsonDirectory.mkdirs();
+		File oldNodesDirectory = new File(jsonDirectory, "nodes");
+		File newNodesDirectory = new File(jsonDirectory, "objects-4");
+
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+
+		// missing nodes directory is not a problem
+		upgrader.moveNodesDirectoryToObjects4();
+		
+		oldNodesDirectory.mkdirs();
+		String sampleFilename = "testing";
+		String fileContents = "This is a test!";
+		UnicodeWriter writer = new UnicodeWriter(new File(oldNodesDirectory, sampleFilename));
+		writer.writeln(fileContents);
+		writer.close();
+		
+		upgrader.moveNodesDirectoryToObjects4();
+		
+		File newSampleFile = new File(newNodesDirectory, sampleFilename);
+		assertFalse("didn't remove old nodes directory?", oldNodesDirectory.exists());
+		assertTrue("didn't create new nodes directory?", newNodesDirectory.exists());
+		assertTrue("didn't move files?", newSampleFile.exists());
+		UnicodeReader reader = new UnicodeReader(newSampleFile);
+		String got = reader.readLine();
+		reader.close();
+		assertEquals("didn't move contents of file?", fileContents, got);
+		
+		try
+		{
+			upgrader.moveNodesDirectoryToObjects4();
+			fail("Should have thrown for new directory already existing");
+		}
+		catch(IOException ignoreExpected)
+		{
+			assertContains("already exists", ignoreExpected.getMessage());
+		}
+		
+	}
+	
 	public static IdAssigner idAssigner = new IdAssigner();
+	File tempDirectory;
 }
