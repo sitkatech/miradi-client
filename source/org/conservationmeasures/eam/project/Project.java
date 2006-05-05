@@ -211,10 +211,17 @@ public class Project
 			}
 			case ObjectType.TASK:
 			{
-				Task task = new Task(getAnnotationIdAssigner().takeNextId());
+				if(objectId == IdAssigner.INVALID_ID)
+					objectId = getAnnotationIdAssigner().takeNextId();
+				Task task = new Task(objectId);
 				taskPool.put(task);
 				getDatabase().writeObject(task);
 				createdId = task.getId();
+				break;
+			}
+			
+			case ObjectType.MODEL_NODE:
+			{
 				break;
 			}
 				
