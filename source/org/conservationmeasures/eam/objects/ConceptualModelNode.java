@@ -11,18 +11,16 @@ import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-abstract public class ConceptualModelNode
+abstract public class ConceptualModelNode extends EAMObject
 {
-	protected ConceptualModelNode(NodeType nodeType)
+	protected ConceptualModelNode(int idToUse, NodeType nodeType)
 	{
+		super(idToUse);
 		type = nodeType;
 		
-		id = IdAssigner.INVALID_ID;
-		label = "";
 		comment = "";
 		indicator = new IndicatorId();
 		objectives = new ObjectiveIds();
@@ -31,16 +29,18 @@ abstract public class ConceptualModelNode
 	
 	protected ConceptualModelNode(NodeType nodeType, JSONObject json)
 	{
-		this(nodeType);
-		id = json.getInt(TAG_ID);
-		label = json.optString(TAG_LABEL);
+		super(json);
+		type = nodeType;
+
 		comment = json.optString(TAG_COMMENT);
 		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
 		
+		goals = new GoalIds();
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
 		for(int i = 0; i < goalIds.length(); ++i)
 			goals.addId(goalIds.getInt(i));
 		
+		objectives = new ObjectiveIds();
 		JSONArray objectiveIds = json.getJSONArray(TAG_OBJECTIVE_IDS);
 		for(int i = 0; i < objectiveIds.length(); ++i)
 			objectives.addId(objectiveIds.getInt(i));
@@ -48,26 +48,11 @@ abstract public class ConceptualModelNode
 	
 	public abstract JSONObject toJson();
 	
-	public void setId(int idToUse)
+	public int getType()
 	{
-		id = idToUse;
-	}
-
-	public int getId()
-	{
-		return id;
+		return ObjectType.MODEL_NODE;
 	}
 	
-	public void setLabel(String labelToUse)
-	{
-		label = labelToUse;
-	}
-	
-	public String getLabel()
-	{
-		return label;
-	}
-
 	public NodeType getNodeType()
 	{
 		return type;
@@ -183,10 +168,8 @@ abstract public class ConceptualModelNode
 	
 	JSONObject createBaseJsonObject(String typeString)
 	{
-		JSONObject json = new JSONObject();
+		JSONObject json = super.toJson();
 		json.put(TAG_TYPE, typeString);
-		json.put(TAG_ID, getId());
-		json.put(TAG_LABEL, getLabel());
 		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
@@ -203,21 +186,19 @@ abstract public class ConceptualModelNode
 		return json;
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(NodeType nodeType)
+	public static ConceptualModelNode createConceptualModelObject(int idToCreate, NodeType nodeType)
 	{
 		if(nodeType.isIntervention())
-			return new ConceptualModelIntervention();
+			return new ConceptualModelIntervention(idToCreate);
 		else if(nodeType.isFactor())
-			return new ConceptualModelFactor(nodeType);
+			return new ConceptualModelFactor(idToCreate, nodeType);
 		else if(nodeType.isTarget())
-			return new ConceptualModelTarget();
+			return new ConceptualModelTarget(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
 
 	private static final String TAG_TYPE = "Type";
-	private static final String TAG_ID = "Id";
-	public static final String TAG_LABEL = "Label";
 	private static final String TAG_COMMENT = "Comment";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	private static final String TAG_GOAL_IDS = "GoalIds";
@@ -227,8 +208,6 @@ abstract public class ConceptualModelNode
 	static final String FACTOR_TYPE = "Factor";
 	static final String TARGET_TYPE = "Target";
 	
-	private int id;
-	private String label;
 	private NodeType type;
 	private String comment;
 

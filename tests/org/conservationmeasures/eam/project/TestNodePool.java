@@ -35,8 +35,7 @@ public class TestNodePool extends TestCaseEnhanced
 	
 	private void addNodeToPool(NodeType type)
 	{
-		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(type);
-		node.setId(idAssigner.takeNextId());
+		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), type);
 		pool.put(node);
 	}
 

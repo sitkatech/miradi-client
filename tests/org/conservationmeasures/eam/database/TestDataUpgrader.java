@@ -72,7 +72,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelTarget(String label)
 		{
-			setId(idAssigner.takeNextId());
+			super(idAssigner.takeNextId());
 			setLabel(label);
 		}
 		
@@ -87,8 +87,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelThreat(String label)
 		{
-			super(new NodeTypeDirectThreat());
-			setId(idAssigner.takeNextId());
+			super(idAssigner.takeNextId(), new NodeTypeDirectThreat());
 			setLabel(label);
 		}
 		
@@ -102,7 +101,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelIntervention(String label)
 		{
-			setId(idAssigner.takeNextId());
+			super(idAssigner.takeNextId());
 			setLabel(label);
 		}
 		

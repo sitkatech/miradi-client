@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -408,13 +409,13 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(starter);
 		assertEquals("wasn't blank to start?", "", starter.getPreviousText());
 		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		assertEquals("also set name?", "", node.getName());
+		assertEquals("also set name?", EAMObject.DEFAULT_LABEL, node.getName());
 		
 		String newText = "much better text!";
 		CommandSetNodeText cmd = new CommandSetNodeText(id, newText);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old text?", originalText, cmd.getPreviousText());
-		assertEquals("updated name?", "", node.getName());
+		assertEquals("updated name?", EAMObject.DEFAULT_LABEL, node.getName());
 
 		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -438,7 +439,7 @@ public class TestCommands extends EAMTestCase
 		String originalName = "original text";
 		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
 		project.executeCommand(starter);
-		assertEquals("wasn't blank to start?", "", starter.getPreviousName());
+		assertEquals("wasn't Unknown to start?", EAMObject.DEFAULT_LABEL, starter.getPreviousName());
 		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
 		assertEquals("also set text?", "", node.getText());
 		
@@ -458,7 +459,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 		
 		starter.undo(project);
-		assertEquals("didn't undo again?", "", node.getName());
+		assertEquals("didn't undo again?", EAMObject.DEFAULT_LABEL, node.getName());
 		verifyUndoTwiceThrows(starter);
 
 	}

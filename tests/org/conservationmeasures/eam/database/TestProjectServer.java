@@ -74,15 +74,13 @@ public class TestProjectServer extends EAMTestCase
 	{
 		IdAssigner idAssigner = new IdAssigner();
 
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention();
-		intervention.setId(idAssigner.takeNextId());
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		storage.writeNode(intervention);
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)storage.readNode(intervention.getId());
 		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		ConceptualModelFactor factor = new ConceptualModelFactor(new NodeTypeIndirectFactor());
-		factor.setId(idAssigner.takeNextId());
+		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId(), new NodeTypeIndirectFactor());
 		
 		storage.writeNode(factor);
 		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)storage.readNode(factor.getId());
@@ -98,8 +96,7 @@ public class TestProjectServer extends EAMTestCase
 		ConceptualModelFactor gotStress = (ConceptualModelFactor)storage.readNode(factor.getId());
 		assertEquals("not stress?", factor.getNodeType(), gotStress.getNodeType());
 		
-		ConceptualModelTarget target = new ConceptualModelTarget();
-		target.setId(idAssigner.takeNextId());
+		ConceptualModelTarget target = new ConceptualModelTarget(idAssigner.takeNextId());
 		storage.writeNode(target);
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
@@ -184,12 +181,10 @@ public class TestProjectServer extends EAMTestCase
 			fail("didn't allow reading an empty diagram?");
 		}
 		
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
-		cmIntervention.setId(idAssigner.takeNextId());
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		nodePool.put(cmIntervention);
 
-		ConceptualModelTarget cmTarget = new ConceptualModelTarget();
-		cmTarget.setId(idAssigner.takeNextId());
+		ConceptualModelTarget cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		nodePool.put(cmTarget);
 		
 		model.createNode(cmIntervention.getId());

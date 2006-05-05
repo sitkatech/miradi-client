@@ -695,8 +695,7 @@ public class Project
 	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
 	{
 		int realId = projectInfo.obtainRealNodeId(requestedId);
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(typeToInsert);
-		cmObject.setId(realId);
+		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(realId, typeToInsert);
 		nodePool.put(cmObject);
 		writeNode(realId);
 		

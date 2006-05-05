@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLayerManager extends EAMTestCase
@@ -24,9 +25,10 @@ public class TestLayerManager extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		cmTarget = new ConceptualModelTarget();
-		cmFactor = new ConceptualModelFactor(DiagramNode.TYPE_INDIRECT_FACTOR);
-		cmIntervention = new ConceptualModelIntervention();
+		IdAssigner idAssigner = new IdAssigner();
+		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
+		cmFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_INDIRECT_FACTOR);
+		cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 	}
 
 	public void testDefaultAllVisible() throws Exception

@@ -13,9 +13,9 @@ import org.json.JSONObject;
 
 public class ConceptualModelIntervention extends ConceptualModelNode
 {
-	public ConceptualModelIntervention()
+	public ConceptualModelIntervention(int idToUse)
 	{
-		super(DiagramNode.TYPE_INTERVENTION);
+		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		activityIds = new IdList();
 	}
 	

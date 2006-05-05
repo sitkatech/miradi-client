@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 public class ConceptualModelTarget extends ConceptualModelNode
 {
-	public ConceptualModelTarget()
+	public ConceptualModelTarget(int idToUse)
 	{
-		super(DiagramNode.TYPE_TARGET);
+		super(idToUse, DiagramNode.TYPE_TARGET);
 	}
 	
 	public ConceptualModelTarget(JSONObject json)

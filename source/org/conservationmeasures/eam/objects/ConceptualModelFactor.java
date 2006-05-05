@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 public class ConceptualModelFactor extends ConceptualModelNode
 {
-	public ConceptualModelFactor(NodeType nodeType)
+	public ConceptualModelFactor(int idToUse, NodeType nodeType)
 	{
-		super(nodeType);
+		super(idToUse, nodeType);
 	}
 	
 	public ConceptualModelFactor(JSONObject json)

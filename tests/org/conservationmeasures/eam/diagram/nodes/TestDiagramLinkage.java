@@ -29,12 +29,10 @@ public class TestDiagramLinkage extends EAMTestCase
 		objectPool = project.getNodePool();
 		model = project.getDiagramModel();
 		
-		cmIntervention = new ConceptualModelIntervention();
-		cmIntervention.setId(node1Id);
+		cmIntervention = new ConceptualModelIntervention(node1Id);
 		objectPool.put(cmIntervention);
 		
-		cmTarget = new ConceptualModelTarget();
-		cmTarget.setId(node2Id);
+		cmTarget = new ConceptualModelTarget(node2Id);
 		objectPool.put(cmTarget);
 	}
 	

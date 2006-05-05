@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 import org.json.JSONObject;
@@ -28,11 +29,12 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention();
-		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(DiagramNode.TYPE_INDIRECT_FACTOR);
-		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
-		ConceptualModelFactor cmStress = new ConceptualModelFactor(DiagramNode.TYPE_STRESS);
-		cmTarget = new ConceptualModelTarget();
+		IdAssigner idAssigner = new IdAssigner();
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
+		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_INDIRECT_FACTOR);
+		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor cmStress = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_STRESS);
+		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);

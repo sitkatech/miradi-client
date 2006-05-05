@@ -12,7 +12,7 @@ abstract public class EAMObject
 	public EAMObject(int idToUse)
 	{
 		id = idToUse;
-		label = "Unknown";
+		label = DEFAULT_LABEL;
 	}
 	
 	EAMObject(JSONObject json)
@@ -55,10 +55,15 @@ abstract public class EAMObject
 		return label;
 	}
 	
+	public void setLabel(String newLabel)
+	{
+		label = newLabel;
+	}
+	
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(TAG_LABEL.equals(fieldTag))
-			label = (String)dataValue;
+			setLabel((String)dataValue);
 		else
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 	}
@@ -66,7 +71,7 @@ abstract public class EAMObject
 	public String getData(String fieldTag)
 	{
 		if(TAG_LABEL.equals(fieldTag))
-			return label;
+			return getLabel();
 		
 		throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
 	}
@@ -89,6 +94,7 @@ abstract public class EAMObject
 	protected static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
+	public static final String DEFAULT_LABEL = "Unknown";
 	private int id;
 	String label;
 

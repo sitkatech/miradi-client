@@ -16,7 +16,8 @@ public class TestConceptualModelIntervention extends EAMTestCase
 
 	public void testBasics()
 	{
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention();
+		int interventionId = 17;
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
 		int activityId1 = 77;
@@ -41,7 +42,8 @@ public class TestConceptualModelIntervention extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention();
+		int interventionId = 17;
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		intervention.insertActivityId(23, 0);
 		intervention.insertActivityId(37, 1);
 		

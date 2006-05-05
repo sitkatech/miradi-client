@@ -74,8 +74,7 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(nodeType);
-		cmObject.setId(idAssigner.takeNextId());
+		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), nodeType);
 		nodePool.put(cmObject);
 		return model.createNode(cmObject.getId());
 	}
