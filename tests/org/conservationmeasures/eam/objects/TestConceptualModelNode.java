@@ -44,7 +44,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		objectives.addId(9);
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(DiagramNode.TYPE_DIRECT_THREAT);
-		factor.setName("JustAName");
+		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicatorId(new IndicatorId(99));
 		factor.setGoals(goals);
@@ -52,7 +52,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFrom(factor.toJson());
 		assertEquals("wrong type?", factor.getType(), got.getType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
-		assertEquals("wrong name?", factor.getName(), got.getName());
+		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
 		assertEquals("wrong priority?", factor.getThreatPriority(), got.getThreatPriority());
 		assertEquals("wrong indicator?", factor.getIndicatorId(), got.getIndicatorId());

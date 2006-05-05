@@ -10,8 +10,10 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.json.JSONObject;
 
 public class DataUpgrader extends ProjectServer
 {
@@ -57,7 +59,7 @@ public class DataUpgrader extends ProjectServer
 		
 	}
 
-	private DataUpgrader(File projectDirectory) throws IOException
+	public DataUpgrader(File projectDirectory) throws IOException
 	{
 		super();
 		setTopDirectory(projectDirectory);
@@ -68,7 +70,8 @@ public class DataUpgrader extends ProjectServer
 		int dataVersion = readDataVersion(getTopDirectory());
 		if(dataVersion == 1)
 			upgradeToVersion2();
-
+		if(dataVersion == 2)
+			upgradeToVersion3();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -103,4 +106,26 @@ public class DataUpgrader extends ProjectServer
 		}
 	}
 
+	public void upgradeToVersion3() throws IOException, ParseException
+	{
+		renameNodeTagFromNameToLabel();
+		writeVersion(3);
+	}
+	
+	public void renameNodeTagFromNameToLabel() throws IOException, ParseException
+	{
+		final String TAG_NAME = "Name";
+
+		File directory = getManifestFile(getNodesDirectory());
+		NodeManifest manifest = new NodeManifest(JSONFile.read(directory));
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			File nodeFile = getNodeFile(getTopDirectory(), ids[i]);
+			JSONObject json = JSONFile.read(nodeFile);
+			json.put(ConceptualModelNode.TAG_LABEL, json.get(TAG_NAME));
+			// no need to clear out the old Name field
+			JSONFile.write(nodeFile, json);
+		}
+	}
 }

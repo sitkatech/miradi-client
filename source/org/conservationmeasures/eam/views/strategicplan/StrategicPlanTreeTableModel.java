@@ -131,7 +131,7 @@ class StratPlanStrategy extends StratPlanObject
 	
 	public Object getValueAt(int column)
 	{
-		return intervention.getName();
+		return intervention.getLabel();
 	}
 
 	public int getChildCount()
@@ -146,7 +146,7 @@ class StratPlanStrategy extends StratPlanObject
 	
 	public String toString()
 	{
-		return intervention.getName();
+		return intervention.getLabel();
 	}
 
 	public ActivityInsertionPoint getActivityInsertionPoint()

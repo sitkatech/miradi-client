@@ -27,6 +27,16 @@ public class InsertActivity extends ProjectDoer
 	public void doIt() throws CommandFailedException
 	{
 		StratPlanObject selected = view.getSelectedObject();
+//		ActivityInsertionPoint insertAt = selected.getActivityInsertionPoint();
+//		int interventionId = insertAt.getInterventionId();
+//		int childIndex = insertAt.getIndex();
+//		ConceptualModelNode intervention = getProject().getNodePool().find(interventionId);
+//		CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+//		getProject().executeCommand(create);
+//		CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(intervention, 
+//				ConceptualModelIntervention.TAG_ACTIVITY_IDS, create.getCreatedId(), childIndex);
+//		getProject().executeCommand(addChild);
+		
 		EAM.logWarning(selected.toString());
 	}
 

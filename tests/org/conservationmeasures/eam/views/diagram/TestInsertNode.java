@@ -58,7 +58,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		protected void writeNode(int nodeId) throws IOException, ParseException
 		{
 			super.writeNode(nodeId);
-			lastWroteName = getNodePool().find(nodeId).getName();
+			lastWroteName = getNodePool().find(nodeId).getLabel();
 		}
 		
 		public String lastWroteName;

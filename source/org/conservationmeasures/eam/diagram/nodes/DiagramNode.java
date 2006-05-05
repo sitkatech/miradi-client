@@ -80,12 +80,12 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public String getName()
 	{
-		return underlyingObject.getName();
+		return underlyingObject.getLabel();
 	}
 	
 	public void setName(String name)
 	{
-		underlyingObject.setName(name);
+		underlyingObject.setLabel(name);
 	}
 
 	public NodeType getType()

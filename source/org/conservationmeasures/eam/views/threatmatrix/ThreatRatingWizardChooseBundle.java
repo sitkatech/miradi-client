@@ -126,7 +126,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 
 	private String getName(int nodeId)
 	{
-		return getView().getProject().getNodePool().find(nodeId).getName();
+		return getView().getProject().getNodePool().find(nodeId).getLabel();
 	}
 	
 	static final String SELECT_A_TARGET = "--Select a Target";

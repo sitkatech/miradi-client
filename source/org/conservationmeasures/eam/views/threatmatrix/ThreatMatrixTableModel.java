@@ -74,7 +74,7 @@ public class ThreatMatrixTableModel
 	public String getThreatName(int threatIndex)
 	{
 		ConceptualModelNode cmNode = getThreatNode(threatIndex);
-		return cmNode.getName();
+		return cmNode.getLabel();
 	}
 	
 	public int getThreatId(int threatIndex)
@@ -92,7 +92,7 @@ public class ThreatMatrixTableModel
 	public String getTargetName(int targetIndex)
 	{
 		ConceptualModelNode cmNode = getTargetNode(targetIndex);
-		return cmNode.getName();
+		return cmNode.getLabel();
 	}
 
 	public int getTargetId(int targetIndex)
@@ -136,7 +136,7 @@ public class ThreatMatrixTableModel
 	private int findNodeByName(ConceptualModelNode[] nodes, String name)
 	{
 		for(int i = 0; i < nodes.length; ++i)
-			if(nodes[i].getName().equals(name))
+			if(nodes[i].getLabel().equals(name))
 				return nodes[i].getId();
 		
 		return IdAssigner.INVALID_ID;

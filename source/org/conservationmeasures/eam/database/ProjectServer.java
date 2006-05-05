@@ -395,9 +395,14 @@ public class ProjectServer
 		return new File(topDirectory2, JSON_DIRECTORY);
 	}
 	
-	private File getNodesDirectory()
+	File getNodesDirectory()
 	{
 		return new File(getJsonDirectory(), NODES_DIRECTORY);
+	}
+	
+	static public File getNodesDirectory(File topDirectory)
+	{
+		return new File(getJsonDirectory(topDirectory), NODES_DIRECTORY);
 	}
 
 	private File getLinkagesDirectory()
@@ -453,7 +458,12 @@ public class ProjectServer
 	
 	private File getNodeFile(int id)
 	{
-		return new File(getNodesDirectory(), Integer.toString(id));
+		return getNodeFile(getTopDirectory(), id);
+	}
+	
+	public static File getNodeFile(File topDirectory, int id)
+	{
+		return new File(getNodesDirectory(topDirectory), Integer.toString(id));
 	}
 	
 	private File getLinkageManifestFile()
@@ -478,7 +488,12 @@ public class ProjectServer
 	
 	File getObjectManifestFile(int type)
 	{
-		return new File(getObjectDirectory(type), MANIFEST_FILE);
+		return getManifestFile(getObjectDirectory(type));
+	}
+	
+	public static File getManifestFile(File directory)
+	{
+		return new File(directory, MANIFEST_FILE);
 	}
 	
 	private void addCommand(Command command)
@@ -502,7 +517,7 @@ public class ProjectServer
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 2;
+	static public int DATA_VERSION = 3;
 
 	protected Vector commands;
 	File topDirectory;
