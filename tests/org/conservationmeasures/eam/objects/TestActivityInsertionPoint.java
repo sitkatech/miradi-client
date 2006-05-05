@@ -18,6 +18,7 @@ public class TestActivityInsertionPoint extends EAMTestCase
 	{
 		ActivityInsertionPoint aip = new ActivityInsertionPoint();
 		assertFalse("was valid?", aip.isValid());
+		assertEquals(-1, aip.getIndex());
 	}
 	
 	public void testValidInsertionPoint()
