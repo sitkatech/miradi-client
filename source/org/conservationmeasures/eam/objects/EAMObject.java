@@ -34,6 +34,9 @@ abstract public class EAMObject
 			case ObjectType.TASK:
 				return new Task(json);
 			
+			case ObjectType.MODEL_NODE:
+				return ConceptualModelNode.createFrom(json);
+
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

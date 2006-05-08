@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -222,6 +223,7 @@ public class Project
 			
 			case ObjectType.MODEL_NODE:
 			{
+				createdId = insertNodeAtId(new NodeTypeTarget(), objectId);
 				break;
 			}
 				
@@ -253,6 +255,11 @@ public class Project
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
+			case ObjectType.MODEL_NODE:
+				nodePool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
 		}
@@ -278,6 +285,12 @@ public class Project
 				getDatabase().writeObject(task);
 				break;
 				
+			case ObjectType.MODEL_NODE:
+				ConceptualModelNode node = getNodePool().find(objectId);
+				node.setData(fieldTag, dataValue);
+				getDatabase().writeNode(node);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -295,6 +308,9 @@ public class Project
 				
 			case ObjectType.TASK:
 				return taskPool.find(objectId).getData(fieldTag);
+				
+			case ObjectType.MODEL_NODE:
+				return nodePool.find(objectId).getData(fieldTag);
 				
 				
 			default:

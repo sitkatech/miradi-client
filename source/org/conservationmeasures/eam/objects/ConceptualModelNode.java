@@ -155,7 +155,7 @@ abstract public class ConceptualModelNode extends EAMObject
 	
 	public static ConceptualModelNode createFrom(JSONObject json) throws ParseException
 	{
-		String typeString = json.getString(TAG_TYPE);
+		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(INTERVENTION_TYPE))
 			return new ConceptualModelIntervention(json);
 		if(typeString.equals(FACTOR_TYPE))
@@ -169,7 +169,7 @@ abstract public class ConceptualModelNode extends EAMObject
 	JSONObject createBaseJsonObject(String typeString)
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_TYPE, typeString);
+		json.put(TAG_NODE_TYPE, typeString);
 		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
 		
@@ -198,7 +198,7 @@ abstract public class ConceptualModelNode extends EAMObject
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
 
-	private static final String TAG_TYPE = "Type";
+	private static final String TAG_NODE_TYPE = "Type";
 	private static final String TAG_COMMENT = "Comment";
 	private static final String TAG_INDICATOR_ID = "IndicatorId";
 	private static final String TAG_GOAL_IDS = "GoalIds";

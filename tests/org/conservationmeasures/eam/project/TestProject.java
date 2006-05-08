@@ -100,7 +100,7 @@ public class TestProject extends EAMTestCase
 		verifyObjectLifecycle(ObjectType.THREAT_RATING_CRITERION);
 		verifyObjectLifecycle(ObjectType.THREAT_RATING_VALUE_OPTION);
 		verifyObjectLifecycle(ObjectType.TASK);
-		//verifyObjectLifecycle(ObjectType.MODEL_NODE);
+		verifyObjectLifecycle(ObjectType.MODEL_NODE);
 	}
 
 	private void verifyObjectLifecycle(int type) throws Exception
