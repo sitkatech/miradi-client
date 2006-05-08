@@ -35,7 +35,6 @@ import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -98,7 +97,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	
 	private Component createLabelBar(DiagramNode node)
 	{
-		createTextField(node.getText(), MAX_LABEL_LENGTH);
+		createTextField(node.getLabel(), MAX_LABEL_LENGTH);
 				
 		DialogGridPanel grid = new DialogGridPanel();
 		grid.add(new UiLabel(EAM.text("Label|Label")));
@@ -378,7 +377,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		int id = currentNode.getId();
 		getProject().executeCommand(new CommandBeginTransaction());
-		getProject().executeCommand(new CommandSetNodeText(id, getText()));
 		getProject().executeCommand(new CommandSetNodeName(id, getText()));
 		getProject().executeCommand(new CommandSetNodeComment(id, getComment()));
 		getProject().executeCommand(new CommandSetIndicator(id, getIndicator()));

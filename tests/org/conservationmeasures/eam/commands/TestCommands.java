@@ -400,38 +400,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 	
-	public void testCommandSetNodeText() throws Exception
-	{
-		int id = insertTarget();
-		
-		String originalText = "original text";
-		CommandSetNodeText starter = new CommandSetNodeText(id, originalText);
-		project.executeCommand(starter);
-		assertEquals("wasn't blank to start?", "", starter.getPreviousText());
-		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		assertEquals("also set name?", EAMObject.DEFAULT_LABEL, node.getName());
-		
-		String newText = "much better text!";
-		CommandSetNodeText cmd = new CommandSetNodeText(id, newText);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old text?", originalText, cmd.getPreviousText());
-		assertEquals("updated name?", EAMObject.DEFAULT_LABEL, node.getName());
-
-		CommandSetNodeText loaded = (CommandSetNodeText)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new text?", newText, loaded.getNewText());
-		assertEquals("didn't restore previous text?", originalText, loaded.getPreviousText());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalText, node.getText());
-		verifyUndoTwiceThrows(cmd);
-		
-		starter.undo(project);
-		assertEquals("didn't undo again?", "", node.getText());
-		verifyUndoTwiceThrows(starter);
-		
-	}
-	
 	public void testCommandSetNodeName() throws Exception
 	{
 		int id = insertTarget();
@@ -441,13 +409,13 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(starter);
 		assertEquals("wasn't Unknown to start?", EAMObject.DEFAULT_LABEL, starter.getPreviousName());
 		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		assertEquals("also set text?", "", node.getText());
+		assertEquals("didn't set original text?", originalName, node.getLabel());
 		
 		String newName = "much better name!";
 		CommandSetNodeName cmd = new CommandSetNodeName(id, newName);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old name?", originalName, cmd.getPreviousName());
-		assertEquals("updated text?", "", node.getText());
+		assertEquals("didn't set new name?", newName, node.getLabel());
 
 		CommandSetNodeName loaded = (CommandSetNodeName)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
@@ -455,11 +423,11 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't restore previous name?", originalName, loaded.getPreviousName());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalName, node.getName());
+		assertEquals("didn't undo?", originalName, node.getLabel());
 		verifyUndoTwiceThrows(cmd);
 		
 		starter.undo(project);
-		assertEquals("didn't undo again?", EAMObject.DEFAULT_LABEL, node.getName());
+		assertEquals("didn't undo again?", EAMObject.DEFAULT_LABEL, node.getLabel());
 		verifyUndoTwiceThrows(starter);
 
 	}

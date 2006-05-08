@@ -26,8 +26,8 @@ public class TestDiagramNodeData extends EAMTestCase
 		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id, nodeAType);
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
 		String nodeAText = "Node A";
+		nodeA.setLabel(nodeAText);
 		Point location = new Point(5,22);
-		nodeA.setText(nodeAText);
 		nodeA.setLocation(location);
 		NodeDataMap nodeAData = nodeA.createNodeDataMap();
 		

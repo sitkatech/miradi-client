@@ -52,7 +52,7 @@ public class CommandSetNodeName extends Command
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(id);
-			String currentName = node.getName();
+			String currentName = node.getLabel();
 			if(expectedName != null && !currentName.equals(expectedName))
 				throw new Exception("CommandSetNodeName expected " + expectedName + " but was " + currentName);
 			target.setNodeName(getId(), desiredName, expectedName);

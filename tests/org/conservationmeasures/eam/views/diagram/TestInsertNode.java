@@ -34,11 +34,10 @@ public class TestInsertNode extends TestCaseEnhanced
 			
 			int id = project.getNodePool().getIds()[0];
 			DiagramNode node = project.getDiagramModel().getNodeById(id);
-			assertEquals("didn't set text?", inserter.getInitialText(), node.getText());
 			assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
-			assertEquals("didn't set name?", inserter.getInitialText(), node.getName());
+			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 			
-			assertEquals("didn't write after set name?", node.getName(), project.lastWroteName);
+			assertEquals("didn't write after set name?", node.getLabel(), project.lastWroteName);
 		}
 		finally
 		{

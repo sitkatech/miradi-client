@@ -27,8 +27,6 @@ public abstract class Command
 	{
 		if(commandName.equals(CommandDiagramMove.COMMAND_NAME))
 			return new CommandDiagramMove(dataIn);
-		if(commandName.equals(CommandSetNodeText.COMMAND_NAME))
-			return new CommandSetNodeText(dataIn);
 		if(commandName.equals(CommandInsertNode.COMMAND_NAME))
 			return new CommandInsertNode(dataIn);
 		if(commandName.equals(CommandLinkNodes.COMMAND_NAME))

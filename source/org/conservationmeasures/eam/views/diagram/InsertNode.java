@@ -11,9 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 
@@ -29,22 +27,13 @@ abstract public class InsertNode extends LocationDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		doInsert(new CommandInsertNode(getTypeToInsert()));
-	}
-
-	protected void doInsert(CommandInsertNode insertCommand) throws CommandFailedException
-	{
 		getProject().executeCommand(new CommandBeginTransaction());
-		
-		getProject().executeCommand(insertCommand);
-		int id = insertCommand.getId();
-	
-		Command setTextCommand = new CommandSetNodeText(id, getInitialText());
-		getProject().executeCommand(setTextCommand);
+		NodeType nodeType = getTypeToInsert();
+		int id = getProject().createNode(nodeType);
 		
 		Command setNameCommand = new CommandSetNodeName(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
-
+		
 		Point createAt = getLocation();
 		//Snap to Grid
 		int deltaX = createAt.x;
@@ -54,7 +43,8 @@ abstract public class InsertNode extends LocationDoer
 		
 		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new int[] {id});
 		getProject().executeCommand(moveCommand);
-
+		
 		getProject().executeCommand(new CommandEndTransaction());
 	}
+	
 }

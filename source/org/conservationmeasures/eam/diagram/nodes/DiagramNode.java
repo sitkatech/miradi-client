@@ -60,7 +60,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		Dimension defaultNodeSize = new Dimension(120, 60);
 		setSize(defaultNodeSize);
 		setPreviousSize(defaultNodeSize);
-		setText("");
 	}
 	
 	public boolean isNode()
@@ -78,12 +77,12 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getId();
 	}
 	
-	public String getName()
+	public String getLabel()
 	{
 		return underlyingObject.getLabel();
 	}
 	
-	public void setName(String name)
+	public void setLabel(String name)
 	{
 		underlyingObject.setLabel(name);
 	}
@@ -156,14 +155,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		GraphConstants.setBounds(getAttributes(), new Rectangle(location, size));
 	}
 	
-	public void setText(String text)
+	public String toString()
 	{
-		GraphConstants.setValue(getAttributes(), text);
-	}
-
-	public String getText()
-	{
-		return (String)GraphConstants.getValue(getAttributes());
+		return getLabel();
 	}
 	
 	public void setComment(String newComment)
@@ -330,7 +324,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
-		dataMap.putString(TAG_VISIBLE_LABEL, getText());
+		dataMap.putString(TAG_VISIBLE_LABEL, getLabel());
 		
 		return dataMap;
 	}
@@ -341,7 +335,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		dataMap.putInt(TAG_ID, getId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
-		dataMap.putString(TAG_VISIBLE_LABEL, getText());
 		return dataMap;
 	}
 	
@@ -350,7 +343,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		NodeDataMap dataMap = new NodeDataMap(json);
 		setLocation(dataMap.getPoint(TAG_LOCATION));
 		setSize(dataMap.getDimension(TAG_SIZE));
-		setText(dataMap.getString(TAG_VISIBLE_LABEL));
 	}
 	
 	public static final NodeType TYPE_INVALID = null;
@@ -370,8 +362,11 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
-	public static final String TAG_PRIORITY = "Priority";
-	public static final String TAG_VISIBLE_LABEL = "Text";
+
+	// FIXME: cut/copy/paste need to be overhauled, because right now they
+	// only memorize a small subset of all available data (e.g. label but not 
+	// comments, objectives, etc.)
+	public static final String TAG_VISIBLE_LABEL = "Label";
 
 	public static final String TAG_NODE_TYPE = "NodeType";
 

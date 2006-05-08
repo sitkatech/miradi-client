@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetFactorType;
 import org.conservationmeasures.eam.diagram.TestSetIndication;
 import org.conservationmeasures.eam.diagram.TestSetNodeSize;
-import org.conservationmeasures.eam.diagram.TestSetNodeText;
 import org.conservationmeasures.eam.diagram.TestSetTargetGoal;
 import org.conservationmeasures.eam.diagram.TestTypeIntervention;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
@@ -125,7 +124,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTypeIntervention.class));
 		suite.addTest(new TestSuite(TestNodeTypeDirectThreat.class));
 		suite.addTest(new TestSuite(TestNodeTypeStress.class));
-		suite.addTest(new TestSuite(TestSetNodeText.class));
 		suite.addTest(new TestSuite(TestSetFactorType.class));
 		suite.addTest(new TestSuite(TestSetIndication.class));
 		suite.addTest(new TestSuite(TestSetTargetGoal.class));

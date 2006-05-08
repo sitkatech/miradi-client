@@ -71,7 +71,7 @@ public class ThreatRatingBundlePanel extends Box
 	private String getNodeName(int nodeId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		return model.getNodeById(nodeId).getName();
+		return model.getNodeById(nodeId).getLabel();
 
 	}
 	

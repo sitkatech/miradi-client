@@ -202,7 +202,7 @@ public class TestProjectServer extends EAMTestCase
 			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
 			int gotId = gotNode.getId();
 			DiagramNode expectedNode = model.getNodeById(gotId);
-			assertEquals("node data not right?", expectedNode.getText(), gotNode.getText());
+			assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 		}
 		
 		project.close();

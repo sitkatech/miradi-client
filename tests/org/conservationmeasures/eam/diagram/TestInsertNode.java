@@ -56,7 +56,7 @@ public class TestInsertNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
+		assertContains("wrong text?", "", insertedNode.getLabel());
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
@@ -73,7 +73,7 @@ public class TestInsertNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
+		assertContains("wrong text?", "", insertedNode.getLabel());
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
@@ -90,7 +90,7 @@ public class TestInsertNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
+		assertContains("wrong text?", "", insertedNode.getLabel());
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
@@ -107,7 +107,7 @@ public class TestInsertNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
+		assertContains("wrong text?", "", insertedNode.getLabel());
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
@@ -124,7 +124,7 @@ public class TestInsertNode extends EAMTestCase
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", (String)GraphConstants.getValue(insertedNode.getAttributes()));
+		assertContains("wrong text?", "", insertedNode.getLabel());
 		int id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);

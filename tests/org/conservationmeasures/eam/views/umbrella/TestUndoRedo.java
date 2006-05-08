@@ -10,10 +10,10 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
+import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -47,7 +47,7 @@ public class TestUndoRedo extends EAMTestCase
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
 		int insertedId = insertDirectThreat(project);
-		project.executeCommand(new CommandSetNodeText(insertedId, target1Text));
+		project.executeCommand(new CommandSetNodeName(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
 		
@@ -67,7 +67,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
 		DiagramNode node = (DiagramNode)inserted.get(0);
 		assertTrue(project.getDiagramModel().isNodeInProject(node));
-		assertEquals("Incorrect label?", target1Text, node.getText());
+		assertEquals("Incorrect label?", target1Text, node.getLabel());
 		
 		undo.doIt();
 		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getNodeCount());

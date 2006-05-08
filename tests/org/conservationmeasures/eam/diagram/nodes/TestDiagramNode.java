@@ -50,12 +50,6 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals("port not first child?", target.getPort(), target.getFirstChild());
 	}
 	
-	public void testText() throws Exception
-	{
-		target.setText(sampleText);
-		assertEquals(sampleText, GraphConstants.getValue(targetAttributeMap));
-	}
-	
 	public void testPriorities()
 	{
 		assertEquals("Lost priority?", null, directThreat.getThreatRating());
@@ -140,7 +134,6 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
-		target.setText("testing");
 		
 		DiagramNode got = new DiagramTarget(cmTarget);
 		JSONObject json = target.toJson();
@@ -148,11 +141,9 @@ public class TestDiagramNode extends EAMTestCase
 		
 		assertEquals("location", target.getLocation(), got.getLocation());
 		assertEquals("size", target.getSize(), got.getSize());
-		assertEquals("text", target.getText(), got.getText());
 	}
 
 	static final double TOLERANCE = 0.00;
-	static final String sampleText = "<rest&relaxation>";
 	
 	ConceptualModelTarget cmTarget;
 	DiagramNode intervention;

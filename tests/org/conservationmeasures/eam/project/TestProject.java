@@ -23,7 +23,6 @@ import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.commands.CommandUndo;
@@ -568,9 +567,6 @@ public class TestProject extends EAMTestCase
 		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(5, database.callsToWriteNode);
-		
-		project.executeCommand(new CommandSetNodeText(factorId, "hello"));
 		assertEquals(5, database.callsToWriteNode);
 		
 		GoalIds goals = new GoalIds();

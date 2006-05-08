@@ -124,7 +124,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		int id = project.insertNodeAtId(type, IdAssigner.INVALID_ID);
 		assertNotEquals("didn't fix id?", -1, id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		node.setName(name);
+		node.setLabel(name);
 		return id;
 	}
 	

@@ -12,11 +12,12 @@ import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
+import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -68,13 +69,14 @@ public class Delete extends ProjectDoer
 		getProject().executeCommand(command);
 	}
 
+	// TODO: This method should be inside Project and should have unit tests
 	private void deleteNode(DiagramNode nodeToDelete) throws CommandFailedException
 	{
 		int id = nodeToDelete.getId();
 
 		Point location = nodeToDelete.getLocation();
 		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[] {id});
-		CommandSetNodeText clearText = new CommandSetNodeText(id, "");
+		CommandSetNodeName clearText = new CommandSetNodeName(id, EAMObject.DEFAULT_LABEL);
 		CommandDeleteNode command = new CommandDeleteNode(id);
 		
 		getProject().executeCommand(moveToZeroZero);

@@ -26,8 +26,8 @@ import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetNodeText;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
@@ -659,15 +659,12 @@ public class Project
 			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			CommandInsertNode newNode = new CommandInsertNode(type);
-			executeCommand(newNode);
-
-			int newNodeId = newNode.getId();
+			int newNodeId = createNode(type);
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
-			CommandSetNodeText newNodeText = new CommandSetNodeText(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
-			executeCommand(newNodeText);
+			CommandSetNodeName newNodeLabel = new CommandSetNodeName(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			executeCommand(newNodeLabel);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		}
 		
@@ -700,6 +697,13 @@ public class Project
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}
+	}
+
+	public int createNode(NodeType nodeType) throws CommandFailedException
+	{
+		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
+		executeCommand(commandInsertNode);
+		return commandInsertNode.getId();
 	}
 
 	public NodeType deleteNode(int idToDelete) throws Exception
@@ -755,7 +759,7 @@ public class Project
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
-		node.setName(desiredName);
+		node.setLabel(desiredName);
 		Logging.logVerbose("Updating name: "+desiredName);
 		model.updateCell(node);
 		
