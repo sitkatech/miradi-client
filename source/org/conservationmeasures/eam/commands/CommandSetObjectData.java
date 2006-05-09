@@ -72,6 +72,11 @@ public class CommandSetObjectData extends Command
 	{
 		return COMMAND_NAME;
 	}
+	
+	public String toString()
+	{
+		return getCommandName() + ": " + getObjectType() + ", " + getObjectId() + ", [" + getFieldTag() + "] = [" + getDataValue() + "]";
+	}
 
 	public void execute(Project target) throws CommandFailedException
 	{
