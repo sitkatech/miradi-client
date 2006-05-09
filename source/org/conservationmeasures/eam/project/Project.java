@@ -552,6 +552,11 @@ public class Project
 	{
 		commandExecutedListeners.add(listener);
 	}
+	
+	public void removeCommandExecutedListener(CommandExecutedListener listener)
+	{
+		commandExecutedListeners.remove(listener);
+	}
 
 	void fireCommandExecuted(Command command)
 	{
