@@ -5,9 +5,10 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import javax.swing.tree.TreePath;
+
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -17,18 +18,19 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 {
 	static public StrategicPlanTreeTableModel createForProject(Project project)
 	{
-		return new StrategicPlanTreeTableModel(new StratPlanRoot(project));
+		return new StrategicPlanTreeTableModel(project, new StratPlanRoot(project));
 	}
 	
-	static public StrategicPlanTreeTableModel createForStrategy(ConceptualModelIntervention strategy)
+	static public StrategicPlanTreeTableModel createForStrategy(Project project, ConceptualModelIntervention strategy)
 	{
-		return new StrategicPlanTreeTableModel(new StratPlanStrategy(strategy));
+		return new StrategicPlanTreeTableModel(project, new StratPlanStrategy(project, strategy));
 	}
 	
 	
-	private StrategicPlanTreeTableModel(StratPlanObject root)
+	private StrategicPlanTreeTableModel(Project projectToUse, StratPlanObject root)
 	{
 		super(root);
+		project = projectToUse;
 	}
 	
 	public int getColumnCount()
@@ -63,124 +65,16 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return String.class;
 	}
 
-
-
-}
-
-abstract class StratPlanObject
-{
-	abstract public Object getValueAt(int column);
-	abstract public int getChildCount();
-	abstract public Object getChild(int index);
-	
-	abstract public String toString();
-	
-	public boolean canInsertActivityHere()
+	public void fireNodeInserted(ActivityInsertionPoint at)
 	{
-		return getActivityInsertionPoint().isValid();
-	}
-
-	public ActivityInsertionPoint getActivityInsertionPoint()
-	{
-		return new ActivityInsertionPoint();
-	}
-
-}
-
-class StratPlanRoot extends StratPlanObject
-{
-	public StratPlanRoot(Project projectToUse)
-	{
-		project = projectToUse;
-		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
-		strategies = new StratPlanStrategy[interventionObjects.length];
-		for(int i = 0; i < strategies.length; ++i)
-			strategies[i] = new StratPlanStrategy((ConceptualModelIntervention)interventionObjects[i]);
-	}
-	
-	public Object getValueAt(int column)
-	{
-		return "";
-	}
-
-	public int getChildCount()
-	{
-		return strategies.length;
-	}
-
-	public Object getChild(int index)
-	{
-		return strategies[index];
-	}
-	
-	public String toString()
-	{
-		return project.getName();
+		TreePath path = at.getPath();
+		StratPlanObject parent = at.getParent();
+		parent.rebuild();
+		int[] childIndices = new int[] {at.getIndex()};
+		Object[] children = new Object[] {parent.getChild(at.getIndex())};
+		fireTreeNodesInserted(parent, path.getPath(), childIndices, children);
 	}
 
 	Project project;
-	StratPlanStrategy[] strategies;
 }
 
-class StratPlanStrategy extends StratPlanObject
-{
-	public StratPlanStrategy(ConceptualModelIntervention interventionToUse)
-	{
-		intervention = interventionToUse;
-	}
-	
-	public Object getValueAt(int column)
-	{
-		return intervention.getLabel();
-	}
-
-	public int getChildCount()
-	{
-		return 0;
-	}
-
-	public Object getChild(int index)
-	{
-		return null;
-	}
-	
-	public String toString()
-	{
-		return intervention.getLabel();
-	}
-
-	public ActivityInsertionPoint getActivityInsertionPoint()
-	{
-		return new ActivityInsertionPoint(intervention.getId(), intervention.getActivityIds().size());
-	}
-
-	ConceptualModelIntervention intervention;
-}
-
-class StratPlanActivity extends StratPlanObject
-{
-
-	public Object getValueAt(int column)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int getChildCount()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public Object getChild(int index)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public String toString()
-	{
-		return "";
-	}
-
-}

@@ -40,6 +40,22 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		
 	}
 	
+	public void testActivityIds() throws Exception
+	{
+		int interventionId = 66;
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		IdList empty = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
+		assertEquals("not empty to start?", 0, empty.size());
+		
+		int activityId = 828;
+		IdList oneItem = new IdList();
+		oneItem.add(activityId);
+		intervention.setData(ConceptualModelIntervention.TAG_ACTIVITY_IDS, oneItem.toString());
+		
+		IdList got = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
+		assertEquals("round trip failed?", oneItem, got);
+	}
+	
 	public void testJson() throws Exception
 	{
 		int interventionId = 17;

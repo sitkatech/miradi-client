@@ -5,7 +5,10 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import javax.swing.tree.TreePath;
+
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.strategicplan.StratPlanActivity;
 
 public class TestActivityInsertionPoint extends EAMTestCase
 {
@@ -14,20 +17,16 @@ public class TestActivityInsertionPoint extends EAMTestCase
 		super(name);
 	}
 
-	public void testInvalidInsertionPoint()
-	{
-		ActivityInsertionPoint aip = new ActivityInsertionPoint();
-		assertFalse("was valid?", aip.isValid());
-		assertEquals(-1, aip.getIndex());
-	}
-	
 	public void testValidInsertionPoint()
 	{
-		int id = 23;
+		Task rootTask = new Task(23);
+		Task parentTask = new Task(58);
+		StratPlanActivity root = new StratPlanActivity(rootTask);
+		StratPlanActivity parent = new StratPlanActivity(parentTask);
+		TreePath path = new TreePath(new Object[] {root, parent});
 		int index = 9;
-		ActivityInsertionPoint aip = new ActivityInsertionPoint(id, index);
-		assertTrue("was invalid?", aip.isValid());
-		assertEquals("wrong id?", id, aip.getInterventionId());
+		ActivityInsertionPoint aip = new ActivityInsertionPoint(path, index);
+		assertEquals("wrong id?", parentTask.getId(), aip.getInterventionId());
 		assertEquals("wrong index?", index, aip.getIndex());
 	}
 }

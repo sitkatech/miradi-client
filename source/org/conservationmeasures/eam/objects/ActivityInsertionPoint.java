@@ -5,30 +5,31 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.project.IdAssigner;
+import javax.swing.tree.TreePath;
+
+import org.conservationmeasures.eam.views.strategicplan.StratPlanObject;
 
 public class ActivityInsertionPoint
 {
-	public ActivityInsertionPoint()
+	public ActivityInsertionPoint(TreePath pathToParent, int childIndexToInsertAt)
 	{
-		interventionId = IdAssigner.INVALID_ID;
-		index = -1;
-	}
-	
-	public ActivityInsertionPoint(int interventionIdToAddTo, int childIndexToInsertAt)
-	{
-		interventionId = interventionIdToAddTo;
+		path = pathToParent;
 		index = childIndexToInsertAt;
 	}
 	
-	public boolean isValid()
+	public TreePath getPath()
 	{
-		return (getInterventionId() != IdAssigner.INVALID_ID);	
+		return path;
+	}
+	
+	public StratPlanObject getParent()
+	{
+		return (StratPlanObject)path.getLastPathComponent();
 	}
 	
 	public int getInterventionId()
 	{
-		return interventionId;
+		return getParent().getId();
 	}
 	
 	public int getIndex()
@@ -36,6 +37,6 @@ public class ActivityInsertionPoint
 		return index;
 	}
 	
-	int interventionId;
+	TreePath path;
 	int index;
 }

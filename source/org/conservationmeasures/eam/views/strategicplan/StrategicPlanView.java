@@ -40,6 +40,11 @@ public class StrategicPlanView extends UmbrellaView
 	{
 	}
 	
+	public StrategicPlanPanel getPanel()
+	{
+		return panel;
+	}
+	
 	public StratPlanObject getSelectedObject()
 	{
 		if(panel == null)

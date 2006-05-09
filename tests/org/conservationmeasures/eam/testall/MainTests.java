@@ -13,6 +13,7 @@ import junit.framework.TestCase;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
+import org.conservationmeasures.eam.commands.TestCommandCreateObject;
 import org.conservationmeasures.eam.commands.TestCommandSetObjectData;
 import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
@@ -144,6 +145,7 @@ public class MainTests extends TestCase
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
+		suite.addTest(new TestSuite(TestCommandCreateObject.class));
 		suite.addTest(new TestSuite(TestCommandSetObjectData.class));
 		
 		// view.diagram package

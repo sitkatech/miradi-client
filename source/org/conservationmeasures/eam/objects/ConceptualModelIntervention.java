@@ -51,6 +51,21 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		return activityIds;
 	}
 
+	public String getData(String fieldTag)
+	{
+		if(TAG_ACTIVITY_IDS.equals(fieldTag))
+			return getActivityIds().toString();
+		return super.getData(fieldTag);
+	}
+
+	public void setData(String fieldTag, Object dataValue) throws Exception
+	{
+		if(TAG_ACTIVITY_IDS.equals(fieldTag))
+			activityIds = new IdList((String)dataValue);
+		else
+			super.setData(fieldTag, dataValue);
+	}
+
 	public JSONObject toJson()
 	{
 		JSONObject json = createBaseJsonObject(INTERVENTION_TYPE);

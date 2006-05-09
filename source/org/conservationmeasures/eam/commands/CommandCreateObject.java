@@ -46,7 +46,7 @@ public class CommandCreateObject extends Command
 	{
 		try
 		{
-			createdId = target.createObject(type);
+			createdId = target.createObject(type, createdId);
 		}
 		catch (Exception e)
 		{
