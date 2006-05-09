@@ -38,6 +38,7 @@ public class StrategicPlanView extends UmbrellaView
 
 	public void becomeInactive() throws Exception
 	{
+		panel.close();
 	}
 	
 	public StrategicPlanPanel getPanel()

@@ -17,15 +17,22 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.martus.swing.UiButton;
 
 import com.java.sun.jtreetable.JTreeTable;
 
-public class StrategicPlanPanel extends JPanel implements TreeSelectionListener
+public class StrategicPlanPanel extends JPanel implements TreeSelectionListener, CommandExecutedListener
 {
 	static public StrategicPlanPanel createForProject(MainWindow mainWindowToUse) throws Exception
 	{
@@ -48,6 +55,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener
 		add(new JScrollPane(tree), BorderLayout.CENTER);		
 		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
 		tree.getTree().addSelectionRow(0);
+		
+		mainWindow.getProject().addCommandExecutedListener(this);
+	}
+	
+	public void close()
+	{
+		mainWindow.getProject().removeCommandExecutedListener(this);
 	}
 	
 	public StratPlanObject getSelectedObject()
@@ -81,9 +95,38 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener
 		return buttonBox;
 	}
 	
+	boolean isRelevant(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return false;
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelIntervention.TAG_ACTIVITY_IDS))
+			return true;
+		if(cmd.getObjectType() == ObjectType.TASK && cmd.getFieldTag().equals(Task.TAG_SUBTASK_IDS))
+			return true;
+		return false;
+	}
+	
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		mainWindow.getActions().updateActionStates();
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		if(isRelevant(event))
+			;
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		if(isRelevant(event))
+			;
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
 	}
 
 	MainWindow mainWindow;
