@@ -296,6 +296,8 @@ public class DiagramModel extends DefaultGraphModel
 			JSONObject nodeJson = nodeMap.getJSONObject(key);
 
 			ConceptualModelNode cmObject = getNodePool().find(id);
+			if(cmObject == null)
+				EAM.logError("Attempted to wrap missing node: " + id);
 			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 			node.fillFrom(nodeJson);
 			
