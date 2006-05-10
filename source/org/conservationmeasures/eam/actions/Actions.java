@@ -57,6 +57,7 @@ public class Actions
 		registerAction(new ActionNudgeNodeLeft(mainWindow));
 		registerAction(new ActionNudgeNodeRight(mainWindow));
 		registerAction(new ActionInsertActivity(mainWindow));
+		registerAction(new ActionModifyActivity(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

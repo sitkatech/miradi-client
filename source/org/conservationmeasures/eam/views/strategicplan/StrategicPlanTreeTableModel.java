@@ -66,10 +66,15 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 			return TreeTableModel.class;
 		return String.class;
 	}
+	
+	public TreePath getPath(int objectType, int objectId)
+	{
+		return findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+	}
 
 	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)
 	{
-		TreePath found = findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+		TreePath found = getPath(objectType, objectId);
 		if(found == null)
 			return;
 		

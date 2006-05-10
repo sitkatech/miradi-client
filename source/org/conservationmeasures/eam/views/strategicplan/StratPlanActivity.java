@@ -31,7 +31,7 @@ public class StratPlanActivity extends StratPlanObject
 	
 	public String toString()
 	{
-		return Integer.toString(activity.getId());
+		return activity.getLabel();
 	}
 
 	public int getType()

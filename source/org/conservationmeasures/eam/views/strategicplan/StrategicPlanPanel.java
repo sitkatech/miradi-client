@@ -16,6 +16,7 @@ import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -50,6 +51,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
 		tree = new JTreeTable(model);
+		expandTopLevel();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().addTreeSelectionListener(this);
 		add(new JScrollPane(tree), BorderLayout.CENTER);		
@@ -81,12 +83,23 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return model;
 	}
 
+	void expandTopLevel()
+	{
+		StratPlanObject root = model.getRootStratPlanObject();
+		TreePath rootPath = new TreePath(root);
+		for(int i = 0; i < root.getChildCount(); ++i)
+		{
+			StratPlanObject topLevelObject = (StratPlanObject)root.getChild(i);
+			TreePath thisPath = rootPath.pathByAddingChild(topLevelObject);
+			tree.getTree().expandPath(thisPath);
+		}
+	}
 	
 	private Box createButtonBox(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
-		UiButton editButton = new UiButton(EAM.text("Button|Edit"));
+		UiButton editButton = new UiButton(actions.get(ActionModifyActivity.class));
 		UiButton deleteButton = new UiButton(EAM.text("Button|Delete"));
 		buttonBox.add(addButton);
 		buttonBox.add(editButton);
@@ -120,6 +133,8 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
+		TreePath pathToModifiedItem = model.getPath(cmd.getObjectType(), cmd.getObjectId());
+		tree.getTree().expandPath(pathToModifiedItem);
 	}
 
 	public void commandUndone(CommandExecutedEvent event)

@@ -3,6 +3,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -56,6 +57,7 @@ public class StrategicPlanView extends UmbrellaView
 	private void addStrategicPlanDoersToMap()
 	{
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
+		addDoerToMap(ActionModifyActivity.class, new ModifyActivity(this));
 	}
 	
 	StrategicPlanPanel panel;
