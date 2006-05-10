@@ -39,7 +39,10 @@ public class StrategicPlanView extends UmbrellaView
 
 	public void becomeInactive() throws Exception
 	{
-		panel.close();
+		if(panel != null)
+		{
+			panel.close();
+		}
 	}
 	
 	public StrategicPlanPanel getPanel()
