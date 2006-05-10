@@ -34,17 +34,20 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	
 	public int getColumnCount()
 	{
-		return 1;
+		return 4;
 	}
 
 	public String getColumnName(int column)
 	{
-		return "Item";
+		String[] columnNames = {"Item", "Assigned To", "Budget", "Dates", };
+		return columnNames[column];
 	}
 
 	public Object getValueAt(Object node, int column)
 	{
-		return ((StratPlanObject)node).getValueAt(column);
+		if(column == 0)
+			return ((StratPlanObject)node).getValueAt(column);
+		return "";
 	}
 
 	public int getChildCount(Object parent)
