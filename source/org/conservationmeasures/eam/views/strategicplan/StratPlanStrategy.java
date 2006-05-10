@@ -37,6 +37,11 @@ public class StratPlanStrategy extends StratPlanObject
 		return intervention.getLabel();
 	}
 
+	public int getType()
+	{
+		return intervention.getType();
+	}
+	
 	public int getId()
 	{
 		return intervention.getId();

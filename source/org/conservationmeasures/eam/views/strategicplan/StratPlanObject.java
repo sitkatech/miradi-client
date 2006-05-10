@@ -11,6 +11,7 @@ abstract public class StratPlanObject
 	abstract public Object getValueAt(int column);
 	abstract public int getChildCount();
 	abstract public Object getChild(int index);
+	abstract public int getType();
 	abstract public int getId();
 	
 	abstract public String toString();

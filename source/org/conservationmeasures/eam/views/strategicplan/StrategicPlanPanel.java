@@ -115,14 +115,20 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(isRelevant(event))
-			;
+		if(!isRelevant(event))
+			return;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
-		if(isRelevant(event))
-			;
+		if(!isRelevant(event))
+			return;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)

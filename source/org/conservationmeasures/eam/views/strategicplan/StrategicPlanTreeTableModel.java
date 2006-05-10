@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.project.Project;
 
@@ -65,14 +64,46 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return String.class;
 	}
 
-	public void fireNodeInserted(ActivityInsertionPoint at)
+	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)
 	{
-		TreePath path = at.getPath();
-		StratPlanObject parent = at.getParent();
+		TreePath found = findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+		if(found == null)
+			return;
+		
+		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
 		parent.rebuild();
-		int[] childIndices = new int[] {at.getIndex()};
-		Object[] children = new Object[] {parent.getChild(at.getIndex())};
-		fireTreeNodesInserted(parent, path.getPath(), childIndices, children);
+
+		int[] childIndices = new int[parent.getChildCount()];
+		Object[] children = new Object[parent.getChildCount()];
+		for(int i = 0; i < childIndices.length; ++i)
+		{
+			childIndices[i] = i;
+			children[i] = parent.getChild(i);
+		}
+		fireTreeStructureChanged(parent, found.getPath(), childIndices, children);
+	}
+	
+	TreePath findObject(TreePath pathToStartSearch, int objectType, int objectId)
+	{
+		StratPlanObject nodeToSearch = (StratPlanObject)pathToStartSearch.getLastPathComponent();
+		if(nodeToSearch.getType() == objectType && nodeToSearch.getId() == objectId)
+			return pathToStartSearch;
+		
+		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
+		{
+			StratPlanObject thisChild = (StratPlanObject)nodeToSearch.getChild(i);
+			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
+			TreePath found = findObject(childPath, objectType, objectId);
+			if(found != null)
+				return childPath;
+		}
+		
+		return null;
+	}
+	
+	StratPlanObject getRootStratPlanObject()
+	{
+		return (StratPlanObject)getRoot();
 	}
 
 	Project project;

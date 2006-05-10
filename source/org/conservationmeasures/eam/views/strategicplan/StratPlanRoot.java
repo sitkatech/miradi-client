@@ -38,6 +38,11 @@ public class StratPlanRoot extends StratPlanObject
 		return project.getName();
 	}
 
+	public int getType()
+	{
+		return -1;
+	}
+	
 	public int getId()
 	{
 		return IdAssigner.INVALID_ID;

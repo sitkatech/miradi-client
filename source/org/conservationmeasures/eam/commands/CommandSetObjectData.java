@@ -67,6 +67,11 @@ public class CommandSetObjectData extends Command
 	{
 		return newValue;
 	}
+	
+	public String getPreviousDataValue()
+	{
+		return oldValue;
+	}
 
 	public String getCommandName()
 	{

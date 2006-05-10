@@ -34,6 +34,11 @@ public class StratPlanActivity extends StratPlanObject
 		return Integer.toString(activity.getId());
 	}
 
+	public int getType()
+	{
+		return activity.getType();
+	}
+	
 	public int getId()
 	{
 		return activity.getId();

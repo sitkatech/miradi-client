@@ -61,9 +61,6 @@ public class InsertActivity extends ProjectDoer
 			getProject().executeCommand(addChild);
 			
 			getProject().executeCommand(new CommandEndTransaction());
-			
-			StrategicPlanTreeTableModel model = panel.getModel();
-			model.fireNodeInserted(insertAt);
 		}
 		catch (Exception e)
 		{
