@@ -46,7 +46,9 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
@@ -70,6 +72,17 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testGetViewData() throws Exception
+	{
+		String viewName1 = DiagramView.getViewName();
+		ViewData diagramData = project.getViewData(viewName1);
+		assertEquals("gave back wrong data?", viewName1, diagramData.getLabel());
+		ViewData repeat = project.getViewData(viewName1);
+		assertEquals("didn't return same data?", diagramData.getId(), repeat.getId());
+		
+		assertNotNull("didn't create arbitrary data?", project.getViewData("iweflijjfliej"));
 	}
 	
 	public void testRootTask() throws Exception

@@ -20,4 +20,15 @@ public class ViewPool extends ObjectPool
 		return (ViewData)getRawObject(id);
 	}
 
+	public ViewData findByLabel(String label)
+	{
+		int[] ids = getIds();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ViewData viewData = find(ids[i]);
+			if(viewData.getLabel().equals(label))
+				return viewData;
+		}
+		return null;
+	}
 }

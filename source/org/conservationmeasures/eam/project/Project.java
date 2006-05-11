@@ -171,6 +171,17 @@ public class Project
 		projectInfo.setCurrentView(newCurrentView);
 	}
 	
+	public ViewData getViewData(String viewName) throws Exception
+	{
+		ViewData found = viewPool.findByLabel(viewName);
+		if(found != null)
+			return found;
+		
+		int createdId = createObject(ObjectType.VIEW_DATA);
+		setObjectData(ObjectType.VIEW_DATA, createdId, ViewData.TAG_LABEL, viewName);
+		return viewPool.find(createdId);
+	}
+	
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatRatingFramework;
