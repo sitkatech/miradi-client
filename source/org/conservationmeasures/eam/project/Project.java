@@ -390,6 +390,7 @@ public class Project
 		loadNodePool();
 		loadLinkagePool();
 		loadTaskPool();
+		loadViewPool();
 		loadDiagram();
 	}
 	
@@ -438,6 +439,17 @@ public class Project
 		{
 			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
 			taskPool.put(task);
+		}
+	}
+	
+	private void loadViewPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.VIEW_DATA);
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
+			viewPool.put(viewData);
 		}
 	}
 	

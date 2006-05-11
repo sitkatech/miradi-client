@@ -137,6 +137,32 @@ public class TestProject extends EAMTestCase
 		
 		int desiredId = 2323;
 		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId));
+		
+
+		File tempDirectory = createTempDirectory();
+		try
+		{
+			Project projectToWrite = new Project();
+			projectToWrite.createOrOpen(tempDirectory);
+			int idToReload = projectToWrite.createObject(type);
+			projectToWrite.close();
+			
+			Project projectToRead = new Project();
+			projectToRead.createOrOpen(tempDirectory);
+			try
+			{
+				projectToRead.getObjectData(type, idToReload, EAMObject.TAG_LABEL);
+			}
+			catch (NullPointerException e)
+			{
+				fail("Didn't reload object from disk, type: " + type);
+			}
+			projectToRead.close();
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
+		}
 	}
 	
 	public void testApplySnapToOldUnsnappedCommands() throws Exception
