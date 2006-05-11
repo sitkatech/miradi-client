@@ -100,11 +100,13 @@ public class TestProject extends EAMTestCase
 		verifyObjectLifecycle(ObjectType.THREAT_RATING_VALUE_OPTION);
 		verifyObjectLifecycle(ObjectType.TASK);
 		verifyObjectLifecycle(ObjectType.MODEL_NODE);
+		verifyObjectLifecycle(ObjectType.VIEW_DATA);
 	}
 
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
 		int createdId = project.createObject(type);
+		assertNotEquals("Created with invalid id", IdAssigner.INVALID_ID, createdId);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
 		

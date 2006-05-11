@@ -37,6 +37,9 @@ abstract public class EAMObject
 			case ObjectType.MODEL_NODE:
 				return ConceptualModelNode.createFrom(json);
 
+			case ObjectType.VIEW_DATA:
+				return new ViewData(json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

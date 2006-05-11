@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.annotations.TaskPool;
+import org.conservationmeasures.eam.annotations.ViewPool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
@@ -55,6 +56,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -88,6 +90,7 @@ public class Project
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
 		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
 		taskPool = new TaskPool();
+		viewPool = new ViewPool();
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -136,6 +139,11 @@ public class Project
 	public TaskPool getTaskPool()
 	{
 		return taskPool;
+	}
+	
+	public ViewPool getViewPool()
+	{
+		return viewPool;
 	}
 
 	public DiagramModel getDiagramModel()
@@ -226,6 +234,17 @@ public class Project
 				createdId = insertNodeAtId(new NodeTypeTarget(), objectId);
 				break;
 			}
+			
+			case ObjectType.VIEW_DATA:
+			{
+				if(objectId == IdAssigner.INVALID_ID)
+					objectId = getAnnotationIdAssigner().takeNextId();
+				ViewData viewData = new ViewData(objectId);
+				viewPool.put(viewData);
+				getDatabase().writeObject(viewData);
+				createdId = viewData.getId();
+				break;
+			}
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
@@ -260,6 +279,11 @@ public class Project
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
+			case ObjectType.VIEW_DATA:
+				viewPool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
 		}
@@ -291,6 +315,12 @@ public class Project
 				getDatabase().writeNode(node);
 				break;
 				
+			case ObjectType.VIEW_DATA:
+				ViewData viewData = getViewPool().find(objectId);
+				viewData.setData(fieldTag, dataValue);
+				getDatabase().writeObject(viewData);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -311,6 +341,9 @@ public class Project
 				
 			case ObjectType.MODEL_NODE:
 				return nodePool.find(objectId).getData(fieldTag);
+				
+			case ObjectType.VIEW_DATA:
+				return viewPool.find(objectId).getData(fieldTag);
 				
 				
 			default:
@@ -1042,6 +1075,7 @@ public class Project
 	GoalPool goalPool;
 	ObjectivePool objectivePool;
 	TaskPool taskPool;
+	ViewPool viewPool;
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;

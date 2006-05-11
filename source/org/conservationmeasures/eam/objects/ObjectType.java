@@ -11,5 +11,6 @@ public class ObjectType
 	public static final int THREAT_RATING_VALUE_OPTION = 2;
 	public static final int TASK = 3;
 	public static final int MODEL_NODE = 4;
+	public static final int VIEW_DATA = 5;
 }
 
