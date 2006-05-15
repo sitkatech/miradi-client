@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
@@ -179,6 +180,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
 		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
+		menu.add(new JMenuItem(actions.get(ActionSelectChain.class)));
 		return menu;
 	}
 	

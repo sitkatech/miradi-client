@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
@@ -59,6 +60,7 @@ public class DiagramContextMenuHandler
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionProperties.class)));
 		return menu;

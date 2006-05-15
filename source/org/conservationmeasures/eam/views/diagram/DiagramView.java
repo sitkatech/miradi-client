@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -112,6 +113,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionDelete.class, new Delete());
 		addDoerToMap(ActionPaste.class, new Paste());
 		addDoerToMap(ActionPasteWithoutLinks.class, new PasteWithoutLinks());
+		addDoerToMap(ActionSelectChain.class, new SelectChain());
 		addDoerToMap(ActionProperties.class, new Properties(diagram));
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
