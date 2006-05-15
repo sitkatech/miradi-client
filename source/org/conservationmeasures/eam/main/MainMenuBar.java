@@ -28,12 +28,14 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
+import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -216,6 +218,8 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionZoomOut.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
+		menu.add(new JMenuItem(actions.get(ActionStrategyBrainstormMode.class)));
+		menu.add(new JMenuItem(actions.get(ActionNormalDiagramMode.class)));
 		return menu;
 	}
 	

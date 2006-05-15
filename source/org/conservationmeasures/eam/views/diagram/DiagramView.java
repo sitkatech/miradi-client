@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionNudgeNodeDown;
 import org.conservationmeasures.eam.actions.ActionNudgeNodeLeft;
 import org.conservationmeasures.eam.actions.ActionNudgeNodeRight;
@@ -33,18 +35,28 @@ import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
+import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramToolBar;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
-public class DiagramView extends UmbrellaView
+public class DiagramView extends UmbrellaView implements CommandExecutedListener
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
@@ -57,6 +69,9 @@ public class DiagramView extends UmbrellaView
 		setToolBar(new DiagramToolBar(getActions()));
 
 		setLayout(new BorderLayout());
+		
+		getProject().addCommandExecutedListener(this);
+
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -101,6 +116,8 @@ public class DiagramView extends UmbrellaView
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
+		addDoerToMap(ActionStrategyBrainstormMode.class, new StrategyBrainstormMode());
+		addDoerToMap(ActionNormalDiagramMode.class, new NormalDiagramMode());
 		addDoerToMap(ActionZoomIn.class, new ZoomIn());
 		addDoerToMap(ActionZoomOut.class, new ZoomOut());
 		addDoerToMap(ActionNudgeNodeUp.class, new NudgeNode(KeyEvent.VK_UP)); 
@@ -136,6 +153,8 @@ public class DiagramView extends UmbrellaView
 		
 		add(bigSplitter, BorderLayout.CENTER);
 
+		
+		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 	
 	public void becomeInactive() throws Exception
@@ -153,9 +172,87 @@ public class DiagramView extends UmbrellaView
 		return wizard;
 	}
 	
+	public void setMode(String newMode)
+	{
+		IdList hiddenIds = new IdList();
+		try
+		{
+			if(newMode.equals(DiagramView.MODE_STRATEGY_BRAINSTORM))
+			{
+				IdList visibleIds = new IdList(getProject().getCurrentViewData().getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
+				Vector allNodes = getProject().getDiagramModel().getAllNodes();
+				for(int i = 0; i < allNodes.size(); ++i)
+				{
+					DiagramNode node = (DiagramNode)allNodes.get(i);
+					if(!visibleIds.contains(node.getId()))
+						hiddenIds.add(node.getId());
+				}
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		LayerManager manager = getProject().getLayerManager();
+		manager.setHiddenIds(hiddenIds);
+		getMainWindow().updateStatusBar();
+		getDiagramComponent().clearSelection();
+		getDiagramComponent().repaint();
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		String newMode = cmd.getDataValue();
+		setModeIfRelevant(cmd, newMode);
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		String newMode = cmd.getPreviousDataValue();
+		setModeIfRelevant(cmd, newMode);
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+
+	private void setModeIfRelevant(CommandSetObjectData cmd, String newMode)
+	{
+		try
+		{
+			ViewData ourViewData = getViewData();
+			if(cmd.getObjectType() != ourViewData.getType())
+				return;
+			if(cmd.getObjectId() != ourViewData.getId())
+				return;
+			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_MODE))
+				return;
+			
+			setMode(newMode);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unknown error prevented this operation");
+		}
+	}
+
+	public static final String MODE_DEFAULT = "";
+	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
+	
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
-
 }
 
 class DoNothingHyperLinkHandler implements HyperlinkHandler

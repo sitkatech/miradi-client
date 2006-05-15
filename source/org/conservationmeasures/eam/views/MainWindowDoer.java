@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 
 abstract public class MainWindowDoer extends Doer
 {
@@ -17,6 +18,11 @@ abstract public class MainWindowDoer extends Doer
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
+	}
+	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
 	}
 
 	private MainWindow mainWindow;

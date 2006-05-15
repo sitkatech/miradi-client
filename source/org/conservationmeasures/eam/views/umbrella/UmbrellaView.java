@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
@@ -142,6 +143,12 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		return doer;
 	}
 	
+	protected ViewData getViewData() throws Exception
+	{
+		ViewData ourViewData = getProject().getViewData(cardName());
+		return ourViewData;
+	}
+
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 	private JComponent toolBar;

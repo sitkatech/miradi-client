@@ -32,7 +32,7 @@ public class MainStatusBar extends JPanel
 
 	public void setStatusHiddenLayers()
 	{
-		setStatus(STATUS_READY + EAM.text("Status|: Some Layers Hidden"));
+		setStatus(STATUS_READY + EAM.text("Status|: Some Factors Hidden"));
 	}
 
 	public void setStatusError(CommandFailedException e)

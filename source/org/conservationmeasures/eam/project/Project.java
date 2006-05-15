@@ -171,6 +171,11 @@ public class Project
 		projectInfo.setCurrentView(newCurrentView);
 	}
 	
+	public ViewData getCurrentViewData() throws Exception
+	{
+		return getViewData(getCurrentView());
+	}
+	
 	public ViewData getViewData(String viewName) throws Exception
 	{
 		ViewData found = viewPool.findByLabel(viewName);

@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.text.ParseException;
+
 import org.json.JSONObject;
 
 public class ViewData extends EAMObject
@@ -12,11 +14,15 @@ public class ViewData extends EAMObject
 	public ViewData(int idToUse)
 	{
 		super(idToUse);
+		currentMode = "";
+		brainstormNodeIds = new IdList();
 	}
 	
-	public ViewData(JSONObject json)
+	public ViewData(JSONObject json) throws ParseException
 	{
 		super(json);
+		currentMode = json.optString(TAG_CURRENT_MODE);
+		brainstormNodeIds = new IdList(json.optString(TAG_BRAINSTORM_NODE_IDS, "{}"));
 	}
 
 	public String getData(String fieldTag)
@@ -63,6 +69,14 @@ public class ViewData extends EAMObject
 	public int getType()
 	{
 		return ObjectType.VIEW_DATA;
+	}
+	
+	public JSONObject toJson()
+	{
+		JSONObject json = super.toJson();
+		json.put(TAG_CURRENT_MODE, getCurrentMode());
+		json.put(TAG_BRAINSTORM_NODE_IDS, getBrainstormNodeIds().toString());
+		return json;
 	}
 
 	public static final String TAG_CURRENT_MODE = "CurrentMode";

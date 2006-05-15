@@ -49,6 +49,11 @@ public class IdList
 		return data.size();
 	}
 	
+	public boolean isEmpty()
+	{
+		return (size() == 0);
+	}
+	
 	public void add(int id)
 	{
 		data.add(new Integer(id));
@@ -62,6 +67,11 @@ public class IdList
 	public int get(int index)
 	{
 		return ((Integer)data.get(index)).intValue();
+	}
+	
+	public boolean contains(int id)
+	{
+		return data.contains(new Integer(id));
 	}
 	
 	public void removeId(int id)

@@ -50,6 +50,8 @@ public class Actions
 		registerAction(new ActionViewImages(mainWindow));
 		registerAction(new ActionViewCalendar(mainWindow));
 		registerAction(new ActionConfigureLayers(mainWindow));
+		registerAction(new ActionStrategyBrainstormMode(mainWindow));
+		registerAction(new ActionNormalDiagramMode(mainWindow));
 		registerAction(new ActionZoomIn(mainWindow));
 		registerAction(new ActionZoomOut(mainWindow));
 		registerAction(new ActionNudgeNodeUp(mainWindow));
