@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -37,6 +38,46 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		project.close();
 		super.tearDown();
+	}
+	
+	public void testGetChainIds() throws Exception
+	{
+		int[] linkagePairs = {
+				11, 21, 21, 31, 31, 41,
+				12, 21, 22, 31, 32, 41,
+				13, 22, 23, 32, 33, 42,
+				13, 23, 23, 33, 33, 43,
+				24, 34, 34, 44,
+				25, 35, 35, 45,
+				26, 36, 36, 35, 35, 34,
+		};
+		
+		SampleDiagramBuilder.buildNodeGrid(project, 6, linkagePairs);
+		
+		int[][] expectedNodesInChain = {
+				{ 31,  11, 12, 13, 21, 22, 41 },
+				{ 32,  13, 23, 41 },
+				{ 33,  13, 23, 42, 43 },
+				{ 34,  24, 25, 26, 35, 36, 44 },
+				{ 35,  25, 26, 34, 36, 45 },
+				{ 36,  26, 35 },
+		};
+
+		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
+		{
+			int[] expectedChainNodes = expectedNodesInChain[threatIndex];
+			int threatId = expectedChainNodes[0];
+			int[] gotChainNodes = model.getChainIds(threatId);
+			assertEquals("wrong nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
+		}
+	}
+	
+	public Set setFromIntArray(int[] values)
+	{
+		HashSet set = new HashSet();
+		for(int i = 0; i < values.length; ++i)
+			set.add(new Integer(values[i]));
+		return set;
 	}
 
 	public void testIsNode() throws Exception

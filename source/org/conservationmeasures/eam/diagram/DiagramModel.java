@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -148,6 +150,57 @@ public class DiagramModel extends DefaultGraphModel
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
 		return getLinkagePool().hasLinkage(fromNode.getId(), toNode.getId());
+	}
+	
+	public int[] getChainIds(int directThreatId)
+	{
+		HashSet results = new HashSet();
+		ConceptualModelNode baseThreat = getNodePool().find(directThreatId);
+		results.add(new Integer(baseThreat.getId()));
+		HashSet unprocessedUpstreamNodes = new HashSet();
+		int[] allLinkages = getLinkagePool().getIds();
+
+		for(int i = 0; i < allLinkages.length; ++i)
+		{
+			ConceptualModelLinkage thisLinkage = getLinkagePool().find(allLinkages[i]);
+			if(thisLinkage.getFromNodeId() == baseThreat.getId())
+			{
+				int downstreamNodeId = thisLinkage.getToNodeId();
+				results.add(new Integer(downstreamNodeId));
+			}
+			if(thisLinkage.getToNodeId() == baseThreat.getId())
+			{
+				ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
+				unprocessedUpstreamNodes.add(upstreamNode);
+			}
+		}		
+		
+		while(unprocessedUpstreamNodes.size() > 0)
+		{
+			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedUpstreamNodes.toArray()[0];
+			results.add(new Integer(thisNode.getId()));
+			for(int i = 0; i < allLinkages.length; ++i)
+			{
+				ConceptualModelLinkage thisLinkage = getLinkagePool().find(allLinkages[i]);
+				if(thisLinkage.getToNodeId() == thisNode.getId())
+				{
+					ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
+					unprocessedUpstreamNodes.add(upstreamNode);
+				}
+					
+			}
+			unprocessedUpstreamNodes.remove(thisNode);
+		}
+		
+		int[] chainIds = new int[results.size()];
+		int next = 0;
+		Iterator iter = results.iterator();
+		while(iter.hasNext())
+		{
+			Integer id = (Integer)iter.next();
+			chainIds[next++] = id.intValue();
+		}
+		return chainIds;
 	}
 
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
