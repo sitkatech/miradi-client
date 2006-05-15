@@ -157,6 +157,9 @@ public class DiagramModel extends DefaultGraphModel
 		HashSet results = new HashSet();
 		ConceptualModelNode baseThreat = getNodePool().find(directThreatId);
 		results.add(new Integer(baseThreat.getId()));
+		if(!baseThreat.isDirectThreat())
+			return intArrayFromSet(results);
+
 		HashSet unprocessedUpstreamNodes = new HashSet();
 		int[] allLinkages = getLinkagePool().getIds();
 
@@ -192,6 +195,11 @@ public class DiagramModel extends DefaultGraphModel
 			unprocessedUpstreamNodes.remove(thisNode);
 		}
 		
+		return intArrayFromSet(results);
+	}
+
+	private int[] intArrayFromSet(HashSet results)
+	{
 		int[] chainIds = new int[results.size()];
 		int next = 0;
 		Iterator iter = results.iterator();

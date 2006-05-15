@@ -61,6 +61,7 @@ public class TestDiagramModel extends EAMTestCase
 				{ 34,  24, 25, 26, 35, 36, 44 },
 				{ 35,  25, 26, 34, 36, 45 },
 				{ 36,  26, 35 },
+				{ 41 },
 		};
 
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
