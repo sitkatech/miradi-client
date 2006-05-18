@@ -11,7 +11,9 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 
@@ -26,6 +28,13 @@ abstract public class InsertNode extends LocationDoer
 	}
 
 	public void doIt() throws CommandFailedException
+	{
+		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+		int id = insertNodeItself();
+		linkToPreviouslySelectedNodes(id, selectedNodes);
+	}
+	
+	private int insertNodeItself() throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();
@@ -46,6 +55,19 @@ abstract public class InsertNode extends LocationDoer
 		
 		doExtraSetup(id);
 		
+		getProject().executeCommand(new CommandEndTransaction());
+		
+		return id;
+	}
+	
+	private void linkToPreviouslySelectedNodes(int newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
+	{
+		getProject().executeCommand(new CommandBeginTransaction());
+		for(int i = 0; i < nodesToLinkTo.length; ++i)
+		{
+			CommandLinkNodes cmd = new CommandLinkNodes(newlyInsertedId, nodesToLinkTo[i].getId());
+			getProject().executeCommand(cmd);
+		}
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 	
