@@ -72,6 +72,11 @@ abstract public class ConceptualModelNode extends EAMObject
 	{
 		comment = newComment;
 	}
+	
+	public boolean isStatusDraft()
+	{
+		return false;
+	}
 
 	public IndicatorId getIndicatorId()
 	{

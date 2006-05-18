@@ -97,6 +97,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		underlyingObject.setNodeType(typeToUse);
 		setColors();
 	}
+	
+	public boolean isStatusDraft()
+	{
+		return underlyingObject.isStatusDraft();
+	}
 
 	public ThreatRatingValue getThreatRating()
 	{
@@ -255,9 +260,7 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	private void setColors()
 	{
-		Color color = getColor();
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
-		GraphConstants.setBackground(getAttributes(), color);
 		GraphConstants.setForeground(getAttributes(), Color.black);
 		GraphConstants.setOpaque(getAttributes(), true);
 	}

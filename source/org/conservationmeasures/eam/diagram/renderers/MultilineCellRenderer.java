@@ -82,14 +82,14 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		Graphics2D g2 = (Graphics2D) g1;
 		if (super.isOpaque())
 		{
-			g2.setColor(super.getBackground());
+			g2.setColor(getFillColor());
 			if (gradientColor != null && !preview)
 			{
 				setOpaque(false);
-				g2.setPaint(new GradientPaint(0, 0, getBackground(),
+				g2.setPaint(new GradientPaint(0, 0, getFillColor(),
 						getWidth(), getHeight(), gradientColor, true));
 			}
-			fillShape(g2, rect, getBackground());
+			fillShape(g2, rect, getFillColor());
 		}
 		
 		int xInset = getInsetDimension().width;
@@ -118,6 +118,11 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		}
 
 		drawProjectScopeVision(g2, rect);
+	}
+
+	Color getFillColor()
+	{
+		return super.getBackground();
 	}
 	
 	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)

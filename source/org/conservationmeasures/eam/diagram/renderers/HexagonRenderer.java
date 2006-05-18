@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.renderers;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,6 +14,7 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Polygon;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 
 public class HexagonRenderer extends MultilineNodeRenderer
 {
@@ -37,8 +39,33 @@ public class HexagonRenderer extends MultilineNodeRenderer
 
 	public void drawBorder(Graphics2D g2, Rectangle rect, Color color)
 	{
+		Stroke originalStroke = g2.getStroke();
+		
 		setPaint(g2, rect, color);
+		if(isDraft())
+		{
+			BasicStroke dashedStroke = getDashedStroke();
+			g2.setStroke(dashedStroke);
+		}
 		g2.drawPolygon(buildHexagon(rect));
+		
+		g2.setStroke(originalStroke);
+	}
+
+	boolean isDraft()
+	{
+		return node.isStatusDraft();
+	}
+
+	BasicStroke getDashedStroke()
+	{
+		BasicStroke defaultStroke = new BasicStroke();
+		float[] dashes = {2, 7};
+		BasicStroke dashedStroke = new BasicStroke(
+				defaultStroke.getLineWidth(), defaultStroke.getEndCap(), 
+				defaultStroke.getLineJoin(), defaultStroke.getMiterLimit(),
+				dashes, 0);
+		return dashedStroke;
 	}
 
 	static Polygon buildHexagon(Rectangle rect)
