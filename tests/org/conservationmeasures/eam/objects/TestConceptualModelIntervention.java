@@ -56,14 +56,36 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		assertEquals("round trip failed?", oneItem, got);
 	}
 	
+	public void testStatus() throws Exception
+	{
+		int interventionId = 91;
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		assertTrue("didn't default to real status?", intervention.isStatusReal());
+		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
+		assertEquals("Didn't default to valid status?", ConceptualModelIntervention.STATUS_REAL, intervention.getData(ConceptualModelIntervention.TAG_STATUS));
+		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
+		assertEquals("set/get didn't work?", ConceptualModelIntervention.STATUS_DRAFT, intervention.getData(ConceptualModelIntervention.TAG_STATUS));
+		assertFalse("didn't unset real status?", intervention.isStatusReal());
+		assertTrue("didn't set to draft status?", intervention.isStatusDraft());
+		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_REAL);
+		assertTrue("didn't restore to real status?", intervention.isStatusReal());
+		assertFalse("didn't unset draft status?", intervention.isStatusDraft());
+		intervention.setData(ConceptualModelIntervention.TAG_STATUS, "OIJFW*FJJF");
+		assertTrue("didn't treat unknown as real?", intervention.isStatusReal());
+		assertFalse("treated unknown as draft?", intervention.isStatusDraft());
+		
+	}
+	
 	public void testJson() throws Exception
 	{
 		int interventionId = 17;
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
 		intervention.insertActivityId(23, 0);
 		intervention.insertActivityId(37, 1);
 		
 		ConceptualModelIntervention got = new ConceptualModelIntervention(intervention.toJson());
+		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}
 }
