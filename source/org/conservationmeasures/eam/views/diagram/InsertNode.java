@@ -44,7 +44,14 @@ abstract public class InsertNode extends LocationDoer
 		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new int[] {id});
 		getProject().executeCommand(moveCommand);
 		
+		doExtraSetup(id);
+		
 		getProject().executeCommand(new CommandEndTransaction());
+	}
+	
+	void doExtraSetup(int id) throws CommandFailedException
+	{
+		
 	}
 	
 }

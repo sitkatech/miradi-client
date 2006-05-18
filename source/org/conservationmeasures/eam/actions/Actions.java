@@ -28,6 +28,7 @@ public class Actions
 		registerAction(new ActionPrint(mainWindow));
 		registerAction(new ActionInsertConnection(mainWindow));
 		registerAction(new ActionInsertTarget(mainWindow));
+		registerAction(new ActionInsertDraftIntervention(mainWindow));
 		registerAction(new ActionInsertIntervention(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertIndirectFactor(mainWindow));

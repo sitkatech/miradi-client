@@ -15,15 +15,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -187,6 +188,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftIntervention.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIntervention.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIndirectFactor.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class)));

@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
+import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
@@ -37,6 +38,7 @@ public class DiagramToolBar extends EAMToolBar
 	{
 		JComponent[] buttons = new JComponent[] {
 				new Separator(),
+				new ToolBarButton(actions, ActionInsertDraftIntervention.class),
 				new ToolBarButton(actions, ActionInsertIntervention.class),
 				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
