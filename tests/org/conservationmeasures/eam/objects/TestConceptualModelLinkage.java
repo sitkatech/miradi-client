@@ -22,11 +22,24 @@ public class TestConceptualModelLinkage extends EAMTestCase
 	public void testToJson() throws Exception
 	{
 		ConceptualModelLinkage original = new ConceptualModelLinkage(id, nodeAId, nodeBId);
+		original.setData(ConceptualModelLinkage.TAG_STRESS_LABEL, "What stress!");
 		JSONObject json = original.toJson();
 		ConceptualModelLinkage gotBack = new ConceptualModelLinkage(json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), gotBack.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), gotBack.getToNodeId());
+		assertEquals("wrong stress label?", original.getStressLabel(), gotBack.getStressLabel());
+	}
+	
+	public void testStressLabel() throws Exception
+	{
+		String sampleStressLabel = "A Stress";
+		ConceptualModelLinkage linkage = new ConceptualModelLinkage(id, nodeAId, nodeBId);
+		assertEquals("Didn't default to blank stress?", "", linkage.getStressLabel());
+		linkage.setData(ConceptualModelLinkage.TAG_STRESS_LABEL, sampleStressLabel);
+		assertEquals("Didn't set stress?", sampleStressLabel, linkage.getStressLabel());
+		assertEquals("getData didn't work?", sampleStressLabel, linkage.getData(ConceptualModelLinkage.TAG_STRESS_LABEL));
+		
 	}
 	
 	static final int id = 1;
