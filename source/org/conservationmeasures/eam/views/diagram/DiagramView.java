@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
@@ -212,6 +213,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 		String newMode = cmd.getDataValue();
 		setModeIfRelevant(cmd, newMode);
+		refreshIfNeeded(cmd);
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
@@ -223,6 +225,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 		String newMode = cmd.getPreviousDataValue();
 		setModeIfRelevant(cmd, newMode);
+		refreshIfNeeded(cmd);
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -247,6 +250,15 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unknown error prevented this operation");
+		}
+	}
+	
+	private void refreshIfNeeded(CommandSetObjectData cmd)
+	{
+		if(cmd.getObjectType() == ObjectType.MODEL_LINKAGE)
+		{
+			// may have added or removed a stress
+			diagram.repaint(diagram.getBounds());
 		}
 	}
 
