@@ -90,11 +90,6 @@ public class TestDiagramNode extends EAMTestCase
 	}
 	
 	
-	public void testColors()
-	{
-		assertEquals("wrong color?", GraphConstants.getBackground(targetAttributeMap), DiagramConstants.COLOR_TARGET);
-	}
-	
 	public void testBounds()
 	{
 		target.setLocation(new Point(123, 456));

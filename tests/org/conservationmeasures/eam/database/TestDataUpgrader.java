@@ -144,10 +144,13 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	public void testMoveNodesDirectoryToObjects4() throws Exception
 	{
+		String oldDirectoryName = "nodes";
+		String newDirectoryName = "objects-4";
+
 		File jsonDirectory = new File(tempDirectory, "json");
 		jsonDirectory.mkdirs();
-		File oldNodesDirectory = new File(jsonDirectory, "nodes");
-		File newNodesDirectory = new File(jsonDirectory, "objects-4");
+		File oldNodesDirectory = new File(jsonDirectory, oldDirectoryName);
+		File newNodesDirectory = new File(jsonDirectory, newDirectoryName);
 
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 
@@ -175,6 +178,51 @@ public class TestDataUpgrader extends EAMTestCase
 		try
 		{
 			upgrader.moveNodesDirectoryToObjects4();
+			fail("Should have thrown for new directory already existing");
+		}
+		catch(IOException ignoreExpected)
+		{
+			assertContains("already exists", ignoreExpected.getMessage());
+		}
+		
+	}
+	
+	public void testMoveLinkagesDirectoryToObjects6() throws Exception
+	{
+		String oldDirectoryName = "linkages";
+		String newDirectoryName = "objects-6";
+
+		File jsonDirectory = new File(tempDirectory, "json");
+		jsonDirectory.mkdirs();
+		File oldNodesDirectory = new File(jsonDirectory, oldDirectoryName);
+		File newNodesDirectory = new File(jsonDirectory, newDirectoryName);
+
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+
+		// missing nodes directory is not a problem
+		upgrader.moveLinkagesDirectoryToObjects6();
+		
+		oldNodesDirectory.mkdirs();
+		String sampleFilename = "testing";
+		String fileContents = "This is a test!";
+		UnicodeWriter writer = new UnicodeWriter(new File(oldNodesDirectory, sampleFilename));
+		writer.writeln(fileContents);
+		writer.close();
+		
+		upgrader.moveLinkagesDirectoryToObjects6();
+		
+		File newSampleFile = new File(newNodesDirectory, sampleFilename);
+		assertFalse("didn't remove old nodes directory?", oldNodesDirectory.exists());
+		assertTrue("didn't create new nodes directory?", newNodesDirectory.exists());
+		assertTrue("didn't move files?", newSampleFile.exists());
+		UnicodeReader reader = new UnicodeReader(newSampleFile);
+		String got = reader.readLine();
+		reader.close();
+		assertEquals("didn't move contents of file?", fileContents, got);
+		
+		try
+		{
+			upgrader.moveLinkagesDirectoryToObjects6();
 			fail("Should have thrown for new directory already existing");
 		}
 		catch(IOException ignoreExpected)

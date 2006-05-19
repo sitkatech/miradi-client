@@ -238,7 +238,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't add?", oldCount+1, framework.getCriteria().length);
 		ThreatRatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
-		assertEquals("wrong default label?", "Unknown", criterion.getLabel());
+		assertEquals("wrong default label?", EAMObject.DEFAULT_LABEL, criterion.getLabel());
 		
 		ThreatRatingCriterion added = framework.getCriteria()[oldCount];
 		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());

@@ -10,50 +10,58 @@ import java.text.ParseException;
 
 import org.json.JSONObject;
 
-public class ConceptualModelLinkage 
+public class ConceptualModelLinkage extends EAMObject
 {
 	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
 	{
-		// TODO: Verify that it's the right kind of object!
-		// TODO: Maybe only copy fields that we know about?
-		json = jsonObject;
+		super(jsonObject);
+		fromId = jsonObject.getInt(TAG_FROM_ID);
+		toId = jsonObject.getInt(TAG_TO_ID);
 	}
 	
-	public ConceptualModelLinkage(int id, int fromId, int toId)
+	public ConceptualModelLinkage(int id, int fromNodeId, int toNodeId)
 	{
-		json = new JSONObject();
-		json.put(TAG_JSON_TYPE, JSON_TYPE_LINKAGE);
-		json.put(TAG_ID, id);
-		json.put(TAG_FROM_ID, fromId);
-		json.put(TAG_TO_ID, toId);
+		super(id);
+		setFromId(fromNodeId);
+		setToId(toNodeId);
+	}
+
+	public void setFromId(int fromNodeId)
+	{
+		fromId = fromNodeId;
 	}
 	
-	public int getId()
+	public void setToId(int toNodeId)
 	{
-		return json.getInt(TAG_ID);
+		toId = toNodeId;
+	}
+
+	public int getType()
+	{
+		return ObjectType.MODEL_LINKAGE;
 	}
 	
 	public int getFromNodeId()
 	{
-		return json.getInt(TAG_FROM_ID);
+		return fromId;
 	}
 	
 	public int getToNodeId()
 	{
-		return json.getInt(TAG_TO_ID);
+		return toId;
 	}
 	
 	public JSONObject toJson()
 	{
+		JSONObject json = super.toJson();
+		json.put(TAG_FROM_ID, fromId);
+		json.put(TAG_TO_ID, toId);
 		return json;
 	}
 	
-	private static String TAG_JSON_TYPE = "Type";
-	private static String TAG_ID = "Id";
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
 	
-	private static String JSON_TYPE_LINKAGE = "Linkage";
-	
-	private JSONObject json;
+	private int fromId;
+	private int toId;
 }

@@ -18,7 +18,7 @@ abstract public class EAMObject
 	EAMObject(JSONObject json)
 	{
 		id = json.getInt(TAG_ID);
-		label = json.getString(TAG_LABEL);
+		label = json.optString(TAG_LABEL, DEFAULT_LABEL);
 	}
 	
 	public static EAMObject createFromJson(int type, JSONObject json) throws Exception
@@ -39,6 +39,9 @@ abstract public class EAMObject
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(json);
+				
+			case ObjectType.MODEL_LINKAGE:
+				return new ConceptualModelLinkage(json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
@@ -100,7 +103,7 @@ abstract public class EAMObject
 	protected static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
-	public static final String DEFAULT_LABEL = "Unknown";
+	public static final String DEFAULT_LABEL = "";
 	private int id;
 	String label;
 

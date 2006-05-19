@@ -261,6 +261,16 @@ public class Project
 				createdId = viewData.getId();
 				break;
 			}
+			
+			case ObjectType.MODEL_LINKAGE:
+			{
+				objectId = projectInfo.obtainRealLinkageId(objectId);
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, -2, -2);
+				linkagePool.put(cmLinkage);
+				database.writeObject(cmLinkage);
+				createdId = cmLinkage.getId();
+				break;
+			}
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
@@ -297,6 +307,11 @@ public class Project
 				
 			case ObjectType.VIEW_DATA:
 				viewPool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
+			case ObjectType.MODEL_LINKAGE:
+				linkagePool.remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -337,6 +352,12 @@ public class Project
 				getDatabase().writeObject(viewData);
 				break;
 				
+			case ObjectType.MODEL_LINKAGE:
+				ConceptualModelLinkage linkage = getLinkagePool().find(objectId);
+				linkage.setData(fieldTag, dataValue);
+				getDatabase().writeLinkage(linkage);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -360,6 +381,9 @@ public class Project
 				
 			case ObjectType.VIEW_DATA:
 				return viewPool.find(objectId).getData(fieldTag);
+				
+			case ObjectType.MODEL_LINKAGE:
+				return linkagePool.find(objectId).getData(fieldTag);
 				
 				
 			default:
@@ -811,12 +835,12 @@ public class Project
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
 	{
-		int realId = projectInfo.obtainRealLinkageId(requestedLinkageId);
+		int createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
+		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
+		cmLinkage.setFromId(linkFromId);
+		cmLinkage.setToId(linkToId);
+		getDatabase().writeLinkage(cmLinkage);
 		DiagramModel model = getDiagramModel();
-		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, linkFromId, linkToId);
-		linkagePool.put(cmLinkage);
-		database.writeLinkage(cmLinkage);
-		
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		return linkage.getId();
 	}
@@ -1008,6 +1032,9 @@ public class Project
 	
 	public DiagramNode[] getOnlySelectedNodes()
 	{
+		if(selectionModel == null)
+			return new DiagramNode[0];
+		
 		Object[] rawCells = selectionModel.getSelectionCells();
 		return getOnlySelectedNodes(rawCells);
 	}

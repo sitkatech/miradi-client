@@ -403,7 +403,7 @@ public class ProjectServer
 	
 	private File getLinkagesDirectory()
 	{
-		return new File(getJsonDirectory(), LINKAGES_DIRECTORY);
+		return getObjectDirectory(ObjectType.MODEL_LINKAGE);
 	}
 	
 	private File getDiagramsDirectory()
@@ -488,7 +488,6 @@ public class ProjectServer
 	}
 	
 	static String JSON_DIRECTORY = "json";
-	static String LINKAGES_DIRECTORY = "linkages";
 	static String DIAGRAMS_DIRECTORY = "diagrams";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
 	static String VERSION_FILE = "version";
@@ -502,7 +501,7 @@ public class ProjectServer
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 4;
+	static public int DATA_VERSION = 5;
 
 	protected Vector commands;
 	File topDirectory;

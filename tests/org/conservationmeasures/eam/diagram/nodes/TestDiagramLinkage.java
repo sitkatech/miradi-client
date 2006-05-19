@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -79,6 +80,11 @@ public class TestDiagramLinkage extends EAMTestCase
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
+		
+		ProjectServer server = project.getTestDatabase();
+		ConceptualModelLinkage linkage = server.readLinkage(link.getLinkageId());
+		assertEquals("Didn't load from id?", interventionId, linkage.getFromNodeId());
+		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}
 	
 	static final int node1Id = 1;

@@ -12,5 +12,6 @@ public class ObjectType
 	public static final int TASK = 3;
 	public static final int MODEL_NODE = 4;
 	public static final int VIEW_DATA = 5;
+	public static final int MODEL_LINKAGE = 6;
 }
 

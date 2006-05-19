@@ -114,6 +114,7 @@ public class TestProject extends EAMTestCase
 		verifyObjectLifecycle(ObjectType.TASK);
 		verifyObjectLifecycle(ObjectType.MODEL_NODE);
 		verifyObjectLifecycle(ObjectType.VIEW_DATA);
+		verifyObjectLifecycle(ObjectType.MODEL_LINKAGE);
 	}
 
 	private void verifyObjectLifecycle(int type) throws Exception
