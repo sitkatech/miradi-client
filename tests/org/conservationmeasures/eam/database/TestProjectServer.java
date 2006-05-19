@@ -91,11 +91,6 @@ public class TestProjectServer extends EAMTestCase
 		ConceptualModelFactor gotDirectThreat = (ConceptualModelFactor)storage.readNode(factor.getId());
 		assertEquals("not direct threat?", factor.getNodeType(), gotDirectThreat.getNodeType());
 		
-		factor.setNodeType(DiagramNode.TYPE_STRESS);
-		storage.writeNode(factor);
-		ConceptualModelFactor gotStress = (ConceptualModelFactor)storage.readNode(factor.getId());
-		assertEquals("not stress?", factor.getNodeType(), gotStress.getNodeType());
-		
 		ConceptualModelTarget target = new ConceptualModelTarget(idAssigner.takeNextId());
 		storage.writeNode(target);
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());

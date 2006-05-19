@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.diagram.nodes.TestDiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNodeData;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeIndirectFactor;
-import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.TestNodeTypeTarget;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
@@ -125,7 +124,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestNodeTypeTarget.class));
 		suite.addTest(new TestSuite(TestTypeIntervention.class));
 		suite.addTest(new TestSuite(TestNodeTypeDirectThreat.class));
-		suite.addTest(new TestSuite(TestNodeTypeStress.class));
 		suite.addTest(new TestSuite(TestSetFactorType.class));
 		suite.addTest(new TestSuite(TestSetIndication.class));
 		suite.addTest(new TestSuite(TestSetTargetGoal.class));

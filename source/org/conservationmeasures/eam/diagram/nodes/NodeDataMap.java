@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.json.JSONObject;
@@ -39,8 +38,6 @@ public class NodeDataMap extends DataMap
 				return new NodeTypeIndirectFactor();
 			case DiagramNode.INT_TYPE_DIRECT_THREAT:
 				return new NodeTypeDirectThreat();
-			case DiagramNode.INT_TYPE_STRESS:
-				return new NodeTypeStress();
 			case DiagramNode.INT_TYPE_INTERVENTION:
 				return new NodeTypeIntervention();
 			default:
@@ -59,8 +56,6 @@ public class NodeDataMap extends DataMap
 			return DiagramNode.INT_TYPE_INTERVENTION;
 		if(type.isDirectThreat())
 			return DiagramNode.INT_TYPE_DIRECT_THREAT;
-		if(type.isStress())
-			return DiagramNode.INT_TYPE_STRESS;
 		return DiagramNode.INT_TYPE_INVALID;
 	}
 }

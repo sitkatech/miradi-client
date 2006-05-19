@@ -695,23 +695,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoInsertNode(cmd);
 	}
 
-	public void testCommandInsertStress() throws Exception
-	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_STRESS);
-		assertEquals("already have an id?", -1, cmd.getId());
-		
-		project.executeCommand(cmd);
-		int insertedId = cmd.getId();
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a Stress?", inserted.isStress());
-
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-		
-		verifyUndoInsertNode(cmd);
-	}
-
 	public void testCommandInsertIntervention() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);

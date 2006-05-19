@@ -98,23 +98,6 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getNodeType());
 	}
 
-	public void testInsertStress() throws Exception
-	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_STRESS);
-		insertCommand.execute(project);
-		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
-		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
-		assertEquals("wrong x?", 0, (int)bounds.getX());
-		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", insertedNode.getLabel());
-		int id = insertedNode.getId();
-		DiagramNode foundNode = model.getNodeById(id);
-		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not an Stress?", foundNode.isStress());
-		assertEquals(DiagramNode.TYPE_STRESS, foundNode.getNodeType());
-	}
-
 	public void testInsertIntervention() throws Exception
 	{
 		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);

@@ -22,7 +22,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		int id = 2;
-		NodeType nodeAType = DiagramNode.TYPE_STRESS;
+		NodeType nodeAType = DiagramNode.TYPE_TARGET;
 		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id, nodeAType);
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
 		String nodeAText = "Node A";

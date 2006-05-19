@@ -25,7 +25,7 @@ public class TestSetFactorType extends TestCaseEnhanced
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_STRESS);
+		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 

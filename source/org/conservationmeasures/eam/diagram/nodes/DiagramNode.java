@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStress;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -353,14 +352,12 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final NodeType TYPE_INDIRECT_FACTOR = new NodeTypeIndirectFactor();
 	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
 	public static final NodeType TYPE_DIRECT_THREAT = new NodeTypeDirectThreat();
-	public static final NodeType TYPE_STRESS = new NodeTypeStress();
 
 	public static final int INT_TYPE_INVALID = -1;
 	public static final int INT_TYPE_TARGET = 1;
 	public static final int INT_TYPE_INDIRECT_FACTOR = 2;
 	public static final int INT_TYPE_INTERVENTION = 3;
 	public static final int INT_TYPE_DIRECT_THREAT = 4;
-	public static final int INT_TYPE_STRESS = 5;
 
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LOCATION = "Location";

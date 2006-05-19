@@ -11,6 +11,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.json.JSONObject;
@@ -42,24 +43,28 @@ public class DataUpgrader extends ProjectServer
 				return;
 		}
 		
+		int versionAfterUpgrading = -1;
 		try
 		{
 			ProjectZipper.createProjectZipFile(zipFile, projectDirectory);
 			
 			DataUpgrader upgrader = new DataUpgrader(projectDirectory);
 			upgrader.upgrade();
-			EAM.notifyDialog(EAM.text("Project was migrated to the current data format"));
+			versionAfterUpgrading = readDataVersion(projectDirectory);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
-			EAM.errorDialog(EAM.text("Attempt to migrate project to the current data format FAILED\n" +
-					"The pre-migration project was archived in: " + zipFile + "\n" +
-					"WARNING: Attempting to open this project again before repairing the problem " +
-					"may result in losing data. \n" +
-					"Please seek technical help from the e-AdaptiveManagement team."));
+			EAM.logException(e);
 		}
 		
+		if(versionAfterUpgrading == DATA_VERSION)
+			EAM.notifyDialog(EAM.text("Project was migrated to the current data format"));
+		else
+			EAM.errorDialog(EAM.text("Attempt to migrate project to the current data format FAILED\n" +
+				"The pre-migration project was archived in: " + zipFile + "\n" +
+				"WARNING: Attempting to open this project again before repairing the problem " +
+				"may result in losing data. \n" +
+				"Please seek technical help from the e-AdaptiveManagement team."));
 	}
 
 	public DataUpgrader(File projectDirectory) throws IOException
@@ -68,7 +73,7 @@ public class DataUpgrader extends ProjectServer
 		setTopDirectory(projectDirectory);
 	}
 
-	void upgrade() throws IOException, ParseException
+	void upgrade() throws Exception
 	{
 		if(readDataVersion(getTopDirectory()) == 1)
 			upgradeToVersion2();
@@ -78,6 +83,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion4();
 		if(readDataVersion(getTopDirectory()) == 4)
 			upgradeToVersion5();
+		if(readDataVersion(getTopDirectory()) == 5)
+			upgradeToVersion6();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -185,5 +192,44 @@ public class DataUpgrader extends ProjectServer
 			throw new IOException("Rename failed from (" + 
 					oldLinkagesDirectory.getAbsolutePath() + ") to (" +
 					newLinkagesDirectory.getAbsolutePath() + ")");
+	}
+	
+	public void upgradeToVersion6() throws Exception
+	{
+		dropStressFactors();
+		writeVersion(6);
+	}
+	
+	public void dropStressFactors() throws Exception
+	{
+		File manifestFile = getNodeManifestFile();
+		if(!manifestFile.exists())
+			return;
+		
+		IdList droppedIds = new IdList();
+		NodeManifest manifest = readNodeManifest();
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			int id = ids[i];
+			JSONObject nodeData = JSONFile.read(getNodeFile(id));
+			String type = nodeData.optString("Type", "");
+			String subtype = nodeData.optString("Subtype", "");
+			if(type.equals("Factor") && subtype.equals("Stress"))
+			{
+				EAM.logDebug("Dropping Stress Factor: " + id);
+				manifest.remove(id);
+				droppedIds.add(id);
+			}
+		}
+		writeNodeManifest(manifest);
+		
+		JSONObject diagram = JSONFile.read(getDiagramFile());
+		JSONObject nodes = diagram.getJSONObject("Nodes");
+		for(int i = 0; i < droppedIds.size(); ++i)
+		{
+			nodes.remove(Integer.toString(droppedIds.get(i)));
+		}
+		JSONFile.write(getDiagramFile(), diagram);
 	}
 }

@@ -77,8 +77,6 @@ public class ConceptualModelFactor extends ConceptualModelNode
 			return DiagramNode.TYPE_INDIRECT_FACTOR;
 		if(subtypeString.equals(SUBTYPE_DIRECT_THREAT))
 			return DiagramNode.TYPE_DIRECT_THREAT;
-		if(subtypeString.equals(SUBTYPE_STRESS))
-			return DiagramNode.TYPE_STRESS;
 		
 		throw new RuntimeException("Unrecognized factor subtype: " + subtypeString);
 	}

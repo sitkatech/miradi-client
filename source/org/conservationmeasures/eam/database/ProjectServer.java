@@ -225,7 +225,7 @@ public class ProjectServer
 		return new NodeManifest(rawManifest);
 	}
 
-	private void writeNodeManifest(NodeManifest manifest) throws IOException
+	void writeNodeManifest(NodeManifest manifest) throws IOException
 	{
 		manifest.write(getNodeManifestFile());
 	}
@@ -447,12 +447,12 @@ public class ProjectServer
 		return new File(getThreatRatingsDirectory(), bundleKey);
 	}
 	
-	private File getNodeManifestFile()
+	File getNodeManifestFile()
 	{
 		return new File(getNodesDirectory(), MANIFEST_FILE);
 	}
 	
-	private File getNodeFile(int id)
+	File getNodeFile(int id)
 	{
 		return new File(getNodesDirectory(), Integer.toString(id));
 	}
@@ -467,7 +467,7 @@ public class ProjectServer
 		return new File(getLinkagesDirectory(), Integer.toString(id));
 	}
 	
-	private File getDiagramFile()
+	File getDiagramFile()
 	{
 		return new File(getDiagramsDirectory(), DIAGRAM_FILE);
 	}
@@ -501,7 +501,7 @@ public class ProjectServer
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 5;
+	static public int DATA_VERSION = 6;
 
 	protected Vector commands;
 	File topDirectory;

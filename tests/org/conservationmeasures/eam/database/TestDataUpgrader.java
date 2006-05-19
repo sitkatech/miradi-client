@@ -232,6 +232,76 @@ public class TestDataUpgrader extends EAMTestCase
 		
 	}
 	
+	public void testDeleteOldStresses() throws Exception
+	{
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+
+		// missing nodes directory is not a problem
+		upgrader.dropStressFactors();
+
+		String[] oldNodeFileContents = {
+			"{\"Type\":\"Factor\",\"Subtype\":\"DirectThreat\",\"Id\":0}",
+			"{\"Type\":\"Factor\",\"Subtype\":\"IndirectFactor\",\"Id\":1}",
+			"{\"Type\":\"Factor\",\"Subtype\":\"Stress\",\"Id\":2}",
+			"{\"Type\":\"Factor\",\"Subtype\":\"Stress\",\"Id\":3}",
+			"{\"Type\":\"Target\",\"Id\":4}",
+			"{\"Type\":\"Intervention\",\"Id\":5}",
+		};
+
+		File nodesDirectory = new File(tempDirectory, "json/objects-4");
+		nodesDirectory.mkdirs();
+
+		for(int i = 0; i < oldNodeFileContents.length; ++i)
+			createFile(new File(nodesDirectory, Integer.toString(i)), oldNodeFileContents[i]);
+
+		File manifestFile = new File(nodesDirectory, "manifest");
+		createFile(manifestFile, buildManifestContents(new int[] {0, 1, 2, 3, 4, 5}));
+		
+		File diagramsDirectory = new File(tempDirectory, "json/diagrams");
+		diagramsDirectory.mkdirs();
+		File diagramFile = new File(diagramsDirectory, "main");
+		createFile(diagramFile, "{\"Nodes\":{\"5\":{\"Id\":5},\"2\":{\"Id\":2}},\"Type\":\"Diagram\"}");
+		
+		upgrader.dropStressFactors();
+		
+		String migratedManifestContents = readFile(manifestFile);
+		JSONObject migrated = new JSONObject(migratedManifestContents);
+		JSONObject expected = new JSONObject(buildManifestContents(new int[] {0, 1, 4, 5}));
+		assertEquals("Didn't drop stress factors?", expected.toString(), migrated.toString());
+		
+		String migratedDiagram = readFile(diagramFile);
+		JSONObject diagram = new JSONObject(migratedDiagram);
+		JSONObject nodes = diagram.getJSONObject("Nodes");
+		assertFalse("Didn't drop stress from diagram?", nodes.has("2"));
+		assertTrue("Dropped something else from diagram?", nodes.has("5"));
+	}
+
+	private String readFile(File file) throws IOException
+	{
+		UnicodeReader reader = new UnicodeReader(file);
+		String contents = reader.readAll();
+		reader.close();
+		return contents;
+	}
+	
+	String buildManifestContents(int[] ids)
+	{
+		String contents = "{\"Type\":\"NodeManifest\"";
+		for(int i = 0; i < ids.length; ++i)
+		{
+			contents += ",\"" + ids[i] + "\":true";
+		}
+		contents += "}";
+		return contents;
+	}
+	
+	void createFile(File file, String contents) throws Exception
+	{
+		UnicodeWriter writer = new UnicodeWriter(file);
+		writer.writeln(contents);
+		writer.close();
+	}
+
 	public static IdAssigner idAssigner = new IdAssigner();
 	File tempDirectory;
 }

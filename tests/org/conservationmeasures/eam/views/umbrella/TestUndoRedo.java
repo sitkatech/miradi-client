@@ -234,7 +234,7 @@ public class TestUndoRedo extends EAMTestCase
 		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
 		NodeType originalType = node.getNodeType();
 
-		NodeType newType = DiagramNode.TYPE_STRESS;
+		NodeType newType = DiagramNode.TYPE_DIRECT_THREAT;
 		project.executeCommand(new CommandBeginTransaction());
 		project.executeCommand(new CommandSetFactorType(insertedId, newType));
 		project.executeCommand(new CommandEndTransaction());

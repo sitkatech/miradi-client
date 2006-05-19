@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertStress;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionNudgeNodeDown;
@@ -106,7 +105,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionInsertTarget.class, new InsertTarget());
 		addDoerToMap(ActionInsertIndirectFactor.class, new InsertIndirectFactor());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreat());
-		addDoerToMap(ActionInsertStress.class, new InsertStress());
 		addDoerToMap(ActionInsertIntervention.class, new InsertIntervention());
 		addDoerToMap(ActionInsertDraftIntervention.class, new InsertDraftIntervention());
 		addDoerToMap(ActionInsertConnection.class, new InsertConnection());

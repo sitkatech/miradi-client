@@ -33,13 +33,11 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_INDIRECT_FACTOR);
 		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_DIRECT_THREAT);
-		ConceptualModelFactor cmStress = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_STRESS);
 		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
 		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
 		directThreat = DiagramNode.wrapConceptualModelObject(cmDirectThreat);
-		stress = DiagramNode.wrapConceptualModelObject(cmStress);
 		target = DiagramNode.wrapConceptualModelObject(cmTarget);
 		targetAttributeMap = target.getAttributes();
 		super.setUp();
@@ -54,7 +52,6 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		assertEquals("Lost priority?", null, directThreat.getThreatRating());
 		assertTrue(directThreat.canHaveThreatRating());
-		assertTrue(stress.canHaveThreatRating());
 		assertTrue(indirectFactor.canHaveThreatRating());
 		assertFalse(intervention.canHaveThreatRating());
 		assertFalse(target.canHaveThreatRating());
@@ -63,7 +60,6 @@ public class TestDiagramNode extends EAMTestCase
 	public void testObjectives()
 	{
 		assertTrue(directThreat.canHaveObjectives());
-		assertTrue(stress.canHaveObjectives());
 		assertTrue(indirectFactor.canHaveObjectives());
 		assertTrue(intervention.canHaveObjectives());
 		assertFalse(target.canHaveObjectives());
@@ -84,7 +80,6 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		assertTrue(target.canHaveGoal());
 		assertFalse(directThreat.canHaveGoal());
-		assertFalse(stress.canHaveGoal());
 		assertFalse(indirectFactor.canHaveGoal());
 		assertFalse(intervention.canHaveGoal());
 	}
@@ -144,7 +139,6 @@ public class TestDiagramNode extends EAMTestCase
 	DiagramNode intervention;
 	DiagramNode indirectFactor;
 	DiagramNode directThreat;
-	DiagramNode stress;
 	DiagramNode target;
 	Map targetAttributeMap;
 }
