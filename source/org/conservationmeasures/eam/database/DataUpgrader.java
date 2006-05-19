@@ -54,7 +54,10 @@ public class DataUpgrader extends ProjectServer
 		{
 			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Attempt to migrate project to the current data format FAILED\n" +
-					"The pre-migration project was archived in: " + zipFile));
+					"The pre-migration project was archived in: " + zipFile + "\n" +
+					"WARNING: Attempting to open this project again before repairing the problem " +
+					"may result in losing data. \n" +
+					"Please seek technical help from the e-AdaptiveManagement team."));
 		}
 		
 	}
