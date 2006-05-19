@@ -52,6 +52,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 		setSelectionModel(new SelectionModelWithLayers(this));
 		getGraphLayoutCache().setFactory(new CellViewFactory());
+		setUI(new EAMGraphUI());
 
 		disableInPlaceEditing();
 		setDisconnectable(false);
@@ -67,7 +68,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
-		MouseHandler mouseHandler = new MouseHandler(this, project, actions);
+		MouseEventHandler mouseHandler = new MouseEventHandler(this, project, actions);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
 	}

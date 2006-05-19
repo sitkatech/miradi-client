@@ -20,9 +20,9 @@ import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 
 
-public class MouseHandler implements MouseListener, GraphSelectionListener
+public class MouseEventHandler implements MouseListener, GraphSelectionListener
 {
-	public MouseHandler(DiagramComponent owner, Project projectToUse, Actions actionsToUse)
+	public MouseEventHandler(DiagramComponent owner, Project projectToUse, Actions actionsToUse)
 	{
 		diagram = owner;
 		project = projectToUse;
