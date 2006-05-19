@@ -56,7 +56,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(!linkage.getToNode().isTarget())
 			return;
 		
-		String text = "Test Stress";
+		String text = linkage.getStressLabel();
 		if(text == null || text.length() < 1)
 			return;
 		

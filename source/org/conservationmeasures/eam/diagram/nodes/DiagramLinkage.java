@@ -59,6 +59,11 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		}
 	}
 	
+	public String getStressLabel()
+	{
+		return underlyingObject.getStressLabel();
+	}
+	
 	private void fillConnectorAttributeMap(String label)
 	{
 	    GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_SIMPLE);

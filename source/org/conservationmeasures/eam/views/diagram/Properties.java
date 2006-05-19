@@ -11,14 +11,20 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JDialog;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetProjectVision;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.LinkagePropertiesDialog;
 import org.conservationmeasures.eam.main.ProjectScopePropertiesDialog;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.views.ProjectDoer;
 import org.martus.swing.Utilities;
 
@@ -39,6 +45,12 @@ public class Properties extends ProjectDoer
 			return false;
 		if(selected[0].isNode() || selected[0].isProjectScope())
 			return true;
+		if(selected[0].isLinkage())
+		{
+			DiagramLinkage linkage = (DiagramLinkage)selected[0];
+			if(linkage.getToNode().isTarget())
+				return true;
+		}
 		return false;
 	}
 
@@ -52,6 +64,8 @@ public class Properties extends ProjectDoer
 			doNodeProperties((DiagramNode)selected);
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
+		else if(selected.isLinkage())
+			doLinkageProperties((DiagramLinkage)selected);
 	}
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
@@ -64,6 +78,20 @@ public class Properties extends ProjectDoer
 			return;
 
 		getProject().executeCommand(new CommandSetProjectVision(dlg.getText()));
+	}
+	
+	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
+	{
+		LinkagePropertiesDialog dlg = new LinkagePropertiesDialog(EAM.mainWindow, getProject(), linkage);
+		dlg.setText(linkage.getStressLabel());
+		Utilities.centerDlg(dlg);
+		dlg.setVisible(true);
+		if(!dlg.getResult())
+			return;
+
+		Command cmd = new CommandSetObjectData(ObjectType.MODEL_LINKAGE, linkage.getId(), 
+				ConceptualModelLinkage.TAG_STRESS_LABEL, dlg.getText());
+		getProject().executeCommand(cmd);
 	}
 	
 	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
