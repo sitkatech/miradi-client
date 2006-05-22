@@ -121,6 +121,28 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertNotEquals("reused ids?", framework.getCriteria()[0].getId(), framework.getValueOptions()[0].getId());
 	}
 	
+	public void testBundlesForDeletedNodes() throws Exception
+	{
+		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
+		project.deleteNode(bundle1.getThreatId());
+		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
+		
+		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
+		project.deleteNode(bundle2.getTargetId());
+		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
+		
+	}
+
+	private ThreatRatingBundle createThreatTargetAndBundle() throws Exception
+	{
+		int threatId = createThreat();
+		int targetId = createTarget();
+		populateBundle(threatId, targetId, framework.getValueOptions()[0]);
+		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+		assertFalse("normal case failed?", framework.isBundleForLinkedThreatAndTarget(bundle));
+		return bundle;
+	}
+	
 	public void testBundles() throws Exception
 	{
 		int threatId = 77;

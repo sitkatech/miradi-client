@@ -14,6 +14,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -212,15 +213,17 @@ public class ThreatRatingFramework
 		return getSummaryOfNumericValues(numericValues);
 	}
 	
-	boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
+	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		NodePool nodePool = project.getNodePool();
 		int threatId = bundle.getThreatId();
-		if(!nodePool.find(threatId).isDirectThreat())
+		ConceptualModelNode threat = nodePool.find(threatId);
+		if(threat == null || !threat.isDirectThreat())
 			return false;
 		
 		int targetId = bundle.getTargetId();
-		if(!nodePool.find(targetId).isTarget())
+		ConceptualModelNode target = nodePool.find(targetId);
+		if(target == null || !target.isTarget())
 			return false;
 
 		return project.isLinked(threatId, targetId);
