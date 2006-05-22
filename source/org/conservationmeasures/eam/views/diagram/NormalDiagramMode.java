@@ -20,7 +20,7 @@ public class NormalDiagramMode extends ViewDoer
 		{
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			if(DiagramView.MODE_DEFAULT.equals(currentViewMode))
+			if(ViewData.MODE_DEFAULT.equals(currentViewMode))
 				return false;
 		}
 		catch (Exception e)
@@ -41,7 +41,7 @@ public class NormalDiagramMode extends ViewDoer
 		{
 			int viewId = getCurrentViewId();
 			getProject().executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CURRENT_MODE, DiagramView.MODE_DEFAULT));
+					ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
 		}
 		catch (Exception e)
 		{

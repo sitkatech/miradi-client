@@ -25,7 +25,7 @@ public class StrategyBrainstormMode extends ViewDoer
 		{
 			ViewData viewData = getProject().getViewData(getView().cardName());
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			if(DiagramView.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
+			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
 				return false;
 		}
 		catch (Exception e)
@@ -61,7 +61,7 @@ public class StrategyBrainstormMode extends ViewDoer
 					ViewData.TAG_BRAINSTORM_NODE_IDS, selectedNodeIds.toString()));
 			
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
-					ViewData.TAG_CURRENT_MODE, DiagramView.MODE_STRATEGY_BRAINSTORM));
+					ViewData.TAG_CURRENT_MODE, ViewData.MODE_STRATEGY_BRAINSTORM));
 			project.executeCommand(new CommandEndTransaction());
 		}
 		catch (Exception e)

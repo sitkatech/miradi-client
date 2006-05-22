@@ -6,12 +6,11 @@
 
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.TransferableEamList;
 
 public class PasteWithoutLinks extends Paste 
 {
-	public void pasteCellsIntoProject(TransferableEamList list) throws CommandFailedException 
+	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
 		getProject().pasteNodesOnlyIntoProject(list, getLocation());
 	}

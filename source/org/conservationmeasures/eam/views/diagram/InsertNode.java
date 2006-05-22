@@ -29,12 +29,19 @@ abstract public class InsertNode extends LocationDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
-		int id = insertNodeItself();
-		linkToPreviouslySelectedNodes(id, selectedNodes);
+		try
+		{
+			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+			int id = insertNodeItself();
+			linkToPreviouslySelectedNodes(id, selectedNodes);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 	
-	private int insertNodeItself() throws CommandFailedException
+	private int insertNodeItself() throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();

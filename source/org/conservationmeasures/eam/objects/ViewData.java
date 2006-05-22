@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.json.JSONObject;
 
 public class ViewData extends EAMObject
@@ -45,6 +47,24 @@ public class ViewData extends EAMObject
 		else
 			super.setData(fieldTag, dataValue);
 	}
+	
+	public Command[] buildCommandsToAddNode(int idToAdd) throws ParseException
+	{
+		if(getCurrentMode().equals(MODE_DEFAULT))
+			return new Command[0];
+		
+		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToAdd);
+		return new Command[] {cmd};
+	}
+
+	public Command[] buildCommandsToRemoveNode(int idToRemove) throws ParseException
+	{
+		if(getCurrentMode().equals(MODE_DEFAULT))
+			return new Command[0];
+		
+		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToRemove);
+		return new Command[] {cmd};
+	}
 
 	private void setCurrentMode(String currentMode)
 	{
@@ -82,6 +102,9 @@ public class ViewData extends EAMObject
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_BRAINSTORM_NODE_IDS = "BrainstormNodeIds";
 	
+	public static final String MODE_DEFAULT = "";
+	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
+
 	private String currentMode;
 	private IdList brainstormNodeIds;
 }

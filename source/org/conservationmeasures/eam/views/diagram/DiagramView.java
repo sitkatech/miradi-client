@@ -180,7 +180,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		IdList hiddenIds = new IdList();
 		try
 		{
-			if(newMode.equals(DiagramView.MODE_STRATEGY_BRAINSTORM))
+			if(newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
 			{
 				IdList visibleIds = new IdList(getProject().getCurrentViewData().getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
 				Vector allNodes = getProject().getDiagramModel().getAllNodes();
@@ -262,9 +262,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		}
 	}
 
-	public static final String MODE_DEFAULT = "";
-	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
-	
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 }

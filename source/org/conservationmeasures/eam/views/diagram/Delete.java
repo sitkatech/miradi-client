@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
@@ -46,20 +47,30 @@ public class Delete extends ProjectDoer
 	{
 		EAMGraphCell[] selectedRelatedCells = getProject().getSelectedAndRelatedCells();
 		getProject().executeCommand(new CommandBeginTransaction());
-		for(int i=0; i < selectedRelatedCells.length; ++i)
+		try
 		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if(cell.isLinkage())
-				deleteLinkage((DiagramLinkage)cell);	
+			for(int i=0; i < selectedRelatedCells.length; ++i)
+			{
+				EAMGraphCell cell = selectedRelatedCells[i];
+				if(cell.isLinkage())
+					deleteLinkage((DiagramLinkage)cell);	
+			}
+			
+			for(int i=0; i < selectedRelatedCells.length; ++i)
+			{
+				EAMGraphCell cell = selectedRelatedCells[i];
+				if(cell.isNode())
+					deleteNode((DiagramNode)cell);
+			}
 		}
-		
-		for(int i=0; i < selectedRelatedCells.length; ++i)
+		catch (Exception e)
 		{
-			EAMGraphCell cell = selectedRelatedCells[i];
-			if(cell.isNode())
-				deleteNode((DiagramNode)cell);
+			throw new CommandFailedException(e);
 		}
-		getProject().executeCommand(new CommandEndTransaction());
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
@@ -70,7 +81,7 @@ public class Delete extends ProjectDoer
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
-	private void deleteNode(DiagramNode nodeToDelete) throws CommandFailedException
+	private void deleteNode(DiagramNode nodeToDelete) throws Exception
 	{
 		int id = nodeToDelete.getId();
 
@@ -79,6 +90,9 @@ public class Delete extends ProjectDoer
 		CommandSetNodeName clearText = new CommandSetNodeName(id, EAMObject.DEFAULT_LABEL);
 		CommandDeleteNode command = new CommandDeleteNode(id);
 		
+		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
+		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
+			getProject().executeCommand(commandsToRemoveFromView[i]);
 		getProject().executeCommand(moveToZeroZero);
 		getProject().executeCommand(clearText);
 		getProject().executeCommand(command);

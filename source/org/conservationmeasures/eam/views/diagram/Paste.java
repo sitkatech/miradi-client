@@ -43,7 +43,7 @@ public class Paste extends LocationDoer
 		} 
 	}
 
-	public void pasteCellsIntoProject(TransferableEamList list) throws CommandFailedException 
+	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
 		getProject().pasteNodesAndLinksIntoProject(list, getLocation());
 	}

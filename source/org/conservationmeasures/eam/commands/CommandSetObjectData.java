@@ -17,6 +17,13 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetObjectData extends Command
 {
+	static public CommandSetObjectData createAppendIdCommand(EAMObject object, String idListTag, int idToAppend) throws ParseException
+	{
+		IdList newList = new IdList(object.getData(idListTag));
+		newList.add(idToAppend);
+		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
+	}
+
 	static public CommandSetObjectData createInsertIdCommand(EAMObject object, String idListTag, int idToInsert, int position) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));

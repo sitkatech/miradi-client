@@ -723,7 +723,7 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
-	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException
+	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
 		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
@@ -732,7 +732,7 @@ public class Project
 		executeCommand(new CommandEndTransaction());
 	}
 	
-	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws CommandFailedException
+	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
 		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
@@ -740,7 +740,7 @@ public class Project
 		executeCommand(new CommandEndTransaction());
 	}
 
-	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, NodeDataHelper dataHelper) throws CommandFailedException 
+	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, NodeDataHelper dataHelper) throws Exception 
 	{
 		NodeDataMap[] nodes = list.getNodeDataCells();
 		for (int i = 0; i < nodes.length; i++) 
@@ -789,11 +789,15 @@ public class Project
 		}
 	}
 
-	public int createNode(NodeType nodeType) throws CommandFailedException
+	public int createNode(NodeType nodeType) throws Exception
 	{
 		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
 		executeCommand(commandInsertNode);
-		return commandInsertNode.getId();
+		int id = commandInsertNode.getId();
+		Command[] commandsToAddToView = getCurrentViewData().buildCommandsToAddNode(id);
+		for(int i = 0; i < commandsToAddToView.length; ++i)
+			executeCommand(commandsToAddToView[i]);
+		return id;
 	}
 
 	public NodeType deleteNode(int idToDelete) throws Exception
