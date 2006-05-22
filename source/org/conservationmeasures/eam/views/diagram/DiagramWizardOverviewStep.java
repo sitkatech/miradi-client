@@ -40,6 +40,7 @@ public class DiagramWizardOverviewStep extends JPanel implements HyperlinkHandle
 
 	public void buttonPressed(String buttonName)
 	{
+		EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
 	}
 
 	public void linkClicked(String linkDescription)
