@@ -70,7 +70,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 		if(linkDescription.equals(SHOW_RULES))
 		{
 			ShowBundleRulesDialog dlg = new ShowBundleRulesDialog();
-			dlg.show();
+			dlg.setVisible(true);
 		}
 	}
 

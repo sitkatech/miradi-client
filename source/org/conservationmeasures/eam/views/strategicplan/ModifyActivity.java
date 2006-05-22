@@ -48,7 +48,7 @@ public class ModifyActivity extends ProjectDoer
 		StratPlanActivity selected = (StratPlanActivity)view.getSelectedObject();
 		int taskId = selected.getId();
 		ModifyActivityDialog dlg = new ModifyActivityDialog(getMainWindow(), taskId);
-		dlg.show();
+		dlg.setVisible(true);
 	}
 	
 	MainWindow getMainWindow()

@@ -71,7 +71,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep im
 		if(linkDescription.equals(SHOW_RULES))
 		{
 			ShowBundleRulesDialog dlg = new ShowBundleRulesDialog();
-			dlg.show();
+			dlg.setVisible(true);
 		}
 		else if(linkDescription.equals("Definition:OverallThreatRating"))
 		{

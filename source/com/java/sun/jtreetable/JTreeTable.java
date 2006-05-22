@@ -447,7 +447,7 @@ public class JTreeTable extends JTable {
 
 	public void reshape(int x, int y, int w, int h) {
 	    int newX = Math.max(x, offset);
-	    super.reshape(newX, y, w - (newX - x), h);
+	    super.setBounds(newX, y, w - (newX - x), h);
 	}
     }
 
