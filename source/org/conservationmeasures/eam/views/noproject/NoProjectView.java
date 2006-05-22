@@ -50,6 +50,14 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		{
 			EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
 		}
+		else if(linkDescription.equals("Definition:BrowseProject"))
+		{
+			EAM.okDialog("Definition: Browse Projects", new String[] {"Browse to existing project..."});
+		}
+		else if(linkDescription.equals("Definition:ManageProject"))
+		{
+			EAM.okDialog("Definition: Manage Projects", new String[] {"Copy, rename, or delete projects"});
+		}
 	}
 
 	public void becomeActive() throws Exception

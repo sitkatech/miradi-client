@@ -50,10 +50,11 @@ class NoProjectHtmlText extends HtmlBuilder
 						existingProjectTable()
 						) +
 				horizontalLine() +
-				paragraph(anchorTag("BrowseProjects", "Browse to find other projects")) +
-				paragraph(anchorTag("ManageProjects", "Copy, rename, or delete projects"))
-				)
-			;
+				paragraph(
+					definition("Definition:BrowseProject", "Browse to find other projects", "Browse to existing...")) +
+				paragraph(
+					definition("Definition:ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
+				);
 
 	}
 	
