@@ -51,9 +51,9 @@ class NoProjectHtmlText extends HtmlBuilder
 						) +
 				horizontalLine() +
 				paragraph(
-					definition("Definition:BrowseProject", "Browse to find other projects", "Browse to existing...")) +
+					definition("BrowseProject", "Browse to find other projects", "Browse to existing...")) +
 				paragraph(
-					definition("Definition:ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
+					definition("ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
 				);
 
 	}
