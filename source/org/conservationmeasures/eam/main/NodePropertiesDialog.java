@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
@@ -35,6 +36,7 @@ import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -44,12 +46,14 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
 import org.martus.swing.UiButton;
+import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
@@ -109,18 +113,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			grid.add(createSwitchFactorTypeDropdown(node.getNodeType()));
 		}
 		
-		if(node.isDirectThreat())
-		{
-			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
-			grid.add(createThreatClassificationDropdown());
-		}
-		
-		if(node.isIntervention())
-		{
-			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
-			grid.add(createInterventionClassificationDropdown());
-		}
-
 		grid.add(new UiLabel());
 		return grid;
 	}
@@ -128,7 +120,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Component createTabbedPane(DiagramNode node) throws Exception
 	{
 		JTabbedPane pane = new JTabbedPane();
-		pane.add(createMainGrid(node), EAM.text("Tab|Comments"));
+		pane.add(createMainGrid(node), EAM.text("Tab|Details"));
 		pane.add(createIndicatorsGrid(node), EAM.text("Tab|Indicators"));
 		if(node.canHaveObjectives())
 			pane.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
@@ -142,7 +134,24 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	private Component createMainGrid(DiagramNode node)
 	{
 		DialogGridPanel grid = new DialogGridPanel();
+		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
 		
+		if(node.isDirectThreat())
+		{
+			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
+			grid.add(createThreatClassificationDropdown());
+		}
+		
+		if(node.isIntervention())
+		{
+			grid.add(new UiLabel(EAM.text("Label|Status")));
+			statusCheckBox.setSelected(node.isStatusDraft());
+			grid.add(statusCheckBox);
+			
+			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
+			grid.add(createInterventionClassificationDropdown());
+		}
+
 		grid.add(new UiLabel(EAM.text("Label|Comments")));
 		grid.add(createComment(node.getComment()));
 
@@ -386,8 +395,18 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 			getProject().executeCommand(new CommandSetTargetGoal(id, getGoals()));
 		if(currentNode.isFactor())
 			getProject().executeCommand(new CommandSetFactorType(id, getType()));
+		if(currentNode.isIntervention())
+			getProject().executeCommand(buildStatusCommand());
 
 		getProject().executeCommand(new CommandEndTransaction());
+	}
+	
+	Command buildStatusCommand()
+	{
+		String newValue = ConceptualModelIntervention.STATUS_REAL;
+		if(statusCheckBox.isSelected())
+			newValue = ConceptualModelIntervention.STATUS_DRAFT;
+		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode.getId(), ConceptualModelIntervention.TAG_STATUS, newValue);
 	}
 	
 	void revertChanges()
@@ -454,6 +473,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	UiComboBox dropdownIndicator;
 	UiComboBox dropdownObjective;
 	UiComboBox dropdownGoal;
+	UiCheckBox statusCheckBox;
 	UiButton okButton;
 	UiButton cancelButton;
 }
