@@ -33,7 +33,8 @@ abstract public class InsertNode extends LocationDoer
 		{
 			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 			int id = insertNodeItself();
-			linkToPreviouslySelectedNodes(id, selectedNodes);
+			if(selectedNodes.length > 0)
+				linkToPreviouslySelectedNodes(id, selectedNodes);
 		}
 		catch (Exception e)
 		{
