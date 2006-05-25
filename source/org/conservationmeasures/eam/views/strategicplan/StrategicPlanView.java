@@ -2,8 +2,12 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -14,6 +18,9 @@ public class StrategicPlanView extends UmbrellaView
 		super(mainWindowToUse);
 		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
 		setLayout(new BorderLayout());
+		
+		tabs = new JTabbedPane();
+		add(tabs, BorderLayout.CENTER);
 		
 		addStrategicPlanDoersToMap();
 
@@ -31,10 +38,11 @@ public class StrategicPlanView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
-		removeAll();
+		tabs.removeAll();
 
 		panel = StrategicPlanPanel.createForProject(getMainWindow());
-		add(panel, BorderLayout.CENTER);
+		tabs.add(EAM.text("Strategic Plan"), panel);
+		tabs.add(EAM.text("Resources"), new JPanel());
 	}
 
 	public void becomeInactive() throws Exception
@@ -63,6 +71,7 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionModifyActivity.class, new ModifyActivity(this));
 	}
 	
+	JTabbedPane tabs;
 	StrategicPlanPanel panel;
 }
 
