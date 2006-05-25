@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
@@ -42,7 +41,7 @@ public class StrategicPlanView extends UmbrellaView
 
 		panel = StrategicPlanPanel.createForProject(getMainWindow());
 		tabs.add(EAM.text("Strategic Plan"), panel);
-		tabs.add(EAM.text("Resources"), new JPanel());
+		tabs.add(EAM.text("Resources"), new ResourcePanel(getProject()));
 	}
 
 	public void becomeInactive() throws Exception
