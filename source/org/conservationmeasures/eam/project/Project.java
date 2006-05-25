@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
+import org.conservationmeasures.eam.annotations.ResourcePool;
 import org.conservationmeasures.eam.annotations.TaskPool;
 import org.conservationmeasures.eam.annotations.ViewPool;
 import org.conservationmeasures.eam.commands.Command;
@@ -55,6 +56,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.Logging;
@@ -91,6 +93,7 @@ public class Project
 		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
 		taskPool = new TaskPool();
 		viewPool = new ViewPool();
+		resourcePool = new ResourcePool();
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -144,6 +147,11 @@ public class Project
 	public ViewPool getViewPool()
 	{
 		return viewPool;
+	}
+	
+	public ResourcePool getResourcePool()
+	{
+		return resourcePool;
 	}
 
 	public DiagramModel getDiagramModel()
@@ -271,6 +279,17 @@ public class Project
 				createdId = cmLinkage.getId();
 				break;
 			}
+			
+			case ObjectType.PROJECT_RESOURCE:
+			{
+				if(objectId == IdAssigner.INVALID_ID)
+					objectId = getAnnotationIdAssigner().takeNextId();
+				ProjectResource resource = new ProjectResource(objectId);
+				resourcePool.put(resource);
+				getDatabase().writeObject(resource);
+				createdId = resource.getId();
+				break;
+			}
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
@@ -312,6 +331,11 @@ public class Project
 				
 			case ObjectType.MODEL_LINKAGE:
 				linkagePool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
+			case ObjectType.PROJECT_RESOURCE:
+				resourcePool.remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -358,6 +382,12 @@ public class Project
 				getDatabase().writeLinkage(linkage);
 				break;
 				
+			case ObjectType.PROJECT_RESOURCE:
+				ProjectResource resource = getResourcePool().find(objectId);
+				resource.setData(fieldTag, dataValue);
+				getDatabase().writeObject(resource);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -385,6 +415,8 @@ public class Project
 			case ObjectType.MODEL_LINKAGE:
 				return linkagePool.find(objectId).getData(fieldTag);
 				
+			case ObjectType.PROJECT_RESOURCE:
+				return resourcePool.find(objectId).getData(fieldTag);
 				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
@@ -431,6 +463,7 @@ public class Project
 		loadLinkagePool();
 		loadTaskPool();
 		loadViewPool();
+		loadResourcePool();
 		loadDiagram();
 	}
 	
@@ -490,6 +523,17 @@ public class Project
 		{
 			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
 			viewPool.put(viewData);
+		}
+	}
+	
+	private void loadResourcePool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.PROJECT_RESOURCE);
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
+			resourcePool.put(resource);
 		}
 	}
 	
@@ -1135,6 +1179,7 @@ public class Project
 	ObjectivePool objectivePool;
 	TaskPool taskPool;
 	ViewPool viewPool;
+	ResourcePool resourcePool;
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;

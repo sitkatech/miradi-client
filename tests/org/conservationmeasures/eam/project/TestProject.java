@@ -109,12 +109,18 @@ public class TestProject extends EAMTestCase
 	
 	public void testObjectLifecycles() throws Exception
 	{
-		verifyObjectLifecycle(ObjectType.THREAT_RATING_CRITERION);
-		verifyObjectLifecycle(ObjectType.THREAT_RATING_VALUE_OPTION);
-		verifyObjectLifecycle(ObjectType.TASK);
-		verifyObjectLifecycle(ObjectType.MODEL_NODE);
-		verifyObjectLifecycle(ObjectType.VIEW_DATA);
-		verifyObjectLifecycle(ObjectType.MODEL_LINKAGE);
+		int[] types = new int[] {
+			ObjectType.THREAT_RATING_CRITERION, 
+			ObjectType.THREAT_RATING_VALUE_OPTION, 
+			ObjectType.TASK, 
+			ObjectType.MODEL_NODE, 
+			ObjectType.VIEW_DATA, 
+			ObjectType.MODEL_LINKAGE, 
+			ObjectType.PROJECT_RESOURCE,
+		};
+		
+		for(int i = 0; i < types.length; ++i)
+			verifyObjectLifecycle(types[i]);
 	}
 
 	private void verifyObjectLifecycle(int type) throws Exception
@@ -169,7 +175,7 @@ public class TestProject extends EAMTestCase
 			}
 			catch (NullPointerException e)
 			{
-				fail("Didn't reload object from disk, type: " + type);
+				fail("Didn't reload object from disk, type: " + type + " (did the pool get loaded?)");
 			}
 			projectToRead.close();
 		}

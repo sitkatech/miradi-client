@@ -43,6 +43,9 @@ abstract public class EAMObject
 			case ObjectType.MODEL_LINKAGE:
 				return new ConceptualModelLinkage(json);
 				
+			case ObjectType.PROJECT_RESOURCE:
+				return new ProjectResource(json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
