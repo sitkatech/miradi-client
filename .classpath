@@ -7,7 +7,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/martus-swing"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/martus-utils"/>
 	<classpathentry kind="lib" path="third-party/jgraph/jgraph.jar"/>
-	<classpathentry kind="lib" path="third-party/hsqldb/hsqldb.jar"/>
-	<classpathentry kind="lib" path="third-party/mrpersister/jenkov-mrpersister-bin-3.0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
