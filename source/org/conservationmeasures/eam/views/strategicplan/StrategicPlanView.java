@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JTabbedPane;
 
+import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.main.EAM;
@@ -41,7 +42,7 @@ public class StrategicPlanView extends UmbrellaView
 
 		panel = StrategicPlanPanel.createForProject(getMainWindow());
 		tabs.add(EAM.text("Strategic Plan"), panel);
-		tabs.add(EAM.text("Resources"), new ResourcePanel(getProject()));
+		tabs.add(EAM.text("Resources"), new ResourcePanel(getProject(), getActions()));
 	}
 
 	public void becomeInactive() throws Exception
@@ -68,6 +69,7 @@ public class StrategicPlanView extends UmbrellaView
 	{
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
 		addDoerToMap(ActionModifyActivity.class, new ModifyActivity(this));
+		addDoerToMap(ActionCreateResource.class, new CreateResource());
 	}
 	
 	JTabbedPane tabs;
