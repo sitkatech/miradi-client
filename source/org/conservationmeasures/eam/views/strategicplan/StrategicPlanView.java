@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
+import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
@@ -85,6 +86,7 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionModifyActivity.class, new ModifyActivity(this));
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
+		addDoerToMap(ActionDeleteResource.class, new DeleteResource(this));
 	}
 	
 	JTabbedPane tabs;

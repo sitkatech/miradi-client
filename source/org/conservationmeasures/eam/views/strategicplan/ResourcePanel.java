@@ -15,6 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
+import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.annotations.ResourcePool;
@@ -22,7 +23,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -74,7 +74,7 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionCreateResource.class));
 		UiButton editButton = new UiButton(actions.get(ActionModifyResource.class));
-		UiButton deleteButton = new UiButton(EAM.text("Button|Delete"));
+		UiButton deleteButton = new UiButton(actions.get(ActionDeleteResource.class));
 		buttonBox.add(addButton);
 		buttonBox.add(editButton);
 		buttonBox.add(deleteButton);

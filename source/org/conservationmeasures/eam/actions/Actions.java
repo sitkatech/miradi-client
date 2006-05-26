@@ -64,6 +64,7 @@ public class Actions
 		registerAction(new ActionModifyActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));
 		registerAction(new ActionModifyResource(mainWindow));
+		registerAction(new ActionDeleteResource(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

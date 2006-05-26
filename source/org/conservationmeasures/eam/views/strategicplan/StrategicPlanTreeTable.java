@@ -38,7 +38,6 @@ public class StrategicPlanTreeTable extends JTreeTable
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
 			StratPlanObject object = (StratPlanObject)value;
-			System.out.println(object.getType());
 			if(object.getType() == ObjectType.MODEL_NODE)
 				return super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 			
