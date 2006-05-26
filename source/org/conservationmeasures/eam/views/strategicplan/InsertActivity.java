@@ -35,7 +35,7 @@ public class InsertActivity extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		doInsertActivity(view.getPanel());
+		doInsertActivity(view.getStrategicPlanPanel());
 	}
 
 	private void doInsertActivity(StrategicPlanPanel panel) throws CommandFailedException

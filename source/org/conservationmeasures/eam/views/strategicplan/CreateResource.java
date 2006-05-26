@@ -8,9 +8,10 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ObjectType;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class CreateResource extends ProjectDoer
+public class CreateResource extends ViewDoer
 {
 	public boolean isAvailable()
 	{
@@ -21,6 +22,8 @@ public class CreateResource extends ProjectDoer
 	{
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.PROJECT_RESOURCE);
 		getProject().executeCommand(cmd);
+		ProjectResource resource = getProject().getResourcePool().find(cmd.getCreatedId());
+		((StrategicPlanView)getView()).getModifyResourceDoer().modify(resource);
 	}
 
 }

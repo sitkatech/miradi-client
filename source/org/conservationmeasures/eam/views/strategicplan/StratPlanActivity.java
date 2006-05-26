@@ -33,6 +33,11 @@ public class StratPlanActivity extends StratPlanObject
 	{
 		return activity.getLabel();
 	}
+	
+	public Task getActivity()
+	{
+		return activity;
+	}
 
 	public int getType()
 	{

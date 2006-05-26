@@ -63,6 +63,7 @@ public class Actions
 		registerAction(new ActionInsertActivity(mainWindow));
 		registerAction(new ActionModifyActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));
+		registerAction(new ActionModifyResource(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

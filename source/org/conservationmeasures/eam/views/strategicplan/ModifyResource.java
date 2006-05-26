@@ -1,0 +1,50 @@
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.views.strategicplan;
+
+
+
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.views.MainWindowDoer;
+
+public class ModifyResource extends MainWindowDoer
+{
+	public ModifyResource(StrategicPlanView viewToUse)
+	{
+		view = viewToUse;
+	}
+	
+	public ResourcePanel getResourcePanel()
+	{
+		return view.getResourcePanel();
+	}
+	
+	public boolean isAvailable()
+	{
+		if(getResourcePanel() == null)
+			return false;
+		
+		return getResourcePanel().getSelectedResource() != null;
+	}
+
+	public void doIt() throws CommandFailedException
+	{
+		if(!isAvailable())
+			return;
+		
+		ProjectResource resource = getResourcePanel().getSelectedResource();
+		modify(resource);
+	}
+
+	public void modify(ProjectResource resource)
+	{
+		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), resource);
+		dlg.setVisible(true);
+	}
+
+	StrategicPlanView view;
+}
