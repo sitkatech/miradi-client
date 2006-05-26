@@ -50,7 +50,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
-		tree = new JTreeTable(model);
+		tree = new StrategicPlanTreeTable(model);
 		expandTopLevel();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().addTreeSelectionListener(this);
