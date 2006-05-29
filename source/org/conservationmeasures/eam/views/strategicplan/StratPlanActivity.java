@@ -5,12 +5,15 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Task;
 
 public class StratPlanActivity extends StratPlanObject
 {
 	public StratPlanActivity(Task activityToUse)
 	{
+		if(activityToUse == null)
+			EAM.logError("Attempted to create tree node for null activity");
 		activity = activityToUse;
 	}
 	
