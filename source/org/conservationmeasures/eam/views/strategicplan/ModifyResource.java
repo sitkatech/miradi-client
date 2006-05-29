@@ -42,7 +42,7 @@ public class ModifyResource extends MainWindowDoer
 
 	public void modify(ProjectResource resource)
 	{
-		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), resource);
+		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), resource, new String[] {"Label"});
 		dlg.setVisible(true);
 	}
 

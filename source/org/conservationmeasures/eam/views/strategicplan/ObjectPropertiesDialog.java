@@ -20,6 +20,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -35,19 +37,24 @@ import org.martus.swing.Utilities;
 
 public class ObjectPropertiesDialog extends JDialog
 {
-	public ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	public ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String[] tags)
 	{
 		super(parentToUse);
 		objectType = objectToEdit.getType();
 		objectId = objectToEdit.getId();
-		
-		String existingLabel = getProject().getObjectData(objectType, objectId, Task.TAG_LABEL);
-		labelField = new UiTextField(50);
-		labelField.setText(existingLabel);
-		
+		fields = new DialogField[tags.length];
 		DialogGridPanel grid = new DialogGridPanel();
-		grid.add(new UiLabel(EAM.text("Label|Label")));
-		grid.add(labelField);
+		
+		for(int field = 0; field < fields.length; ++field)
+		{
+			String tag = tags[0];
+			String label = EAM.text("Label|" + tags[0]);
+			String value = getProject().getObjectData(objectType, objectId, tag);
+			fields[field] = new DialogField(tag, label, value);
+	
+			grid.add(new UiLabel(fields[field].getLabel()));
+			grid.add(fields[field].getComponent());
+		}
 		
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
@@ -92,23 +99,58 @@ public class ObjectPropertiesDialog extends JDialog
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, Task.TAG_LABEL, labelField.getText());
 			try
 			{
-				getProject().executeCommand(cmd);
+				getProject().executeCommand(new CommandBeginTransaction());
+				for(int field = 0; field < fields.length; ++field)
+				{
+					CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, Task.TAG_LABEL, fields[field].getComponent().getText());
+					getProject().executeCommand(cmd);
+				}
+				getProject().executeCommand(new CommandEndTransaction());
+				dispose();
 			}
 			catch (CommandFailedException e)
 			{
 				EAM.logException(e);
 				EAM.errorDialog("Unexpected error prevented this operation");
 			}
-			dispose();
 		}
 	}
 
 	int objectType;
 	int objectId;
-	UiTextField labelField;
+	DialogField[] fields;
 	UiButton okButton;
 	UiButton cancelButton;
+}
+
+class DialogField
+{
+	public DialogField(String tagToUse, String labelToUse, String value)
+	{
+		tag = tagToUse;
+		label = labelToUse;
+		component = new UiTextField(50);
+		component.setText(value);
+	}
+	
+	public String getTag()
+	{
+		return tag;
+	}
+	
+	public String getLabel()
+	{
+		return label;
+	}
+	
+	public UiTextField getComponent()
+	{
+		return component;
+	}
+	
+	String tag;
+	String label;
+	UiTextField component;
 }

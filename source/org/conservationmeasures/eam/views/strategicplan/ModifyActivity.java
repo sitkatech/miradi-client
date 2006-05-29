@@ -28,7 +28,7 @@ public class ModifyActivity extends ProjectDoer
 	public void doIt() throws CommandFailedException
 	{
 		StratPlanActivity selected = (StratPlanActivity)view.getSelectedObject();
-		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), selected.getActivity());
+		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), selected.getActivity(), new String[] {"Label"});
 		dlg.setVisible(true);
 	}
 	
