@@ -100,9 +100,16 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	{
 		return diagram.getPrintableComponent();
 	}
+	
+	public Properties getPropertiesDoer()
+	{
+		return propertiesDoer;
+	}
 
 	private void addDiagramViewDoersToMap()
 	{
+		propertiesDoer = new Properties(diagram);
+
 		addDoerToMap(ActionInsertTarget.class, new InsertTarget());
 		addDoerToMap(ActionInsertIndirectFactor.class, new InsertIndirectFactor());
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreat());
@@ -115,7 +122,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionPaste.class, new Paste());
 		addDoerToMap(ActionPasteWithoutLinks.class, new PasteWithoutLinks());
 		addDoerToMap(ActionSelectChain.class, new SelectChain());
-		addDoerToMap(ActionProperties.class, new Properties(diagram));
+		addDoerToMap(ActionProperties.class, propertiesDoer);
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
@@ -264,6 +271,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
+	Properties propertiesDoer;
 }
 
 class DoNothingHyperLinkHandler implements HyperlinkHandler

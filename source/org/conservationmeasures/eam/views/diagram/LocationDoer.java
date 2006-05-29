@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-abstract public class LocationDoer extends ProjectDoer
+abstract public class LocationDoer extends ViewDoer
 {
 	public void setLocation(Point locationToUse)
 	{

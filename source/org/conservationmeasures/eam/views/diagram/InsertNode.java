@@ -35,6 +35,9 @@ abstract public class InsertNode extends LocationDoer
 			int id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
+			
+			DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
+			getDiagramView().getPropertiesDoer().doNodeProperties(newNode);
 		}
 		catch (Exception e)
 		{
@@ -84,4 +87,8 @@ abstract public class InsertNode extends LocationDoer
 		
 	}
 	
+	public DiagramView getDiagramView()
+	{
+		return (DiagramView)getView();
+	}
 }
