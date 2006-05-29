@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestIdList;
+import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestThreatRatingCriterion;
@@ -142,6 +143,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatRatingBundle.class));
 		suite.addTest(new TestSuite(TestThreatRatingCriterion.class));
 		suite.addTest(new TestSuite(TestThreatRatingValueOption.class));
+		suite.addTest(new TestSuite(TestProjectResource.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

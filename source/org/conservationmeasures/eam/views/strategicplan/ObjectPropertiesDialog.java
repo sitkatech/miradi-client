@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiButton;
@@ -47,8 +46,8 @@ public class ObjectPropertiesDialog extends JDialog
 		
 		for(int field = 0; field < fields.length; ++field)
 		{
-			String tag = tags[0];
-			String label = EAM.text("Label|" + tags[0]);
+			String tag = tags[field];
+			String label = EAM.text("Label|" + tags[field]);
 			String value = getProject().getObjectData(objectType, objectId, tag);
 			fields[field] = new DialogField(tag, label, value);
 	
@@ -104,7 +103,7 @@ public class ObjectPropertiesDialog extends JDialog
 				getProject().executeCommand(new CommandBeginTransaction());
 				for(int field = 0; field < fields.length; ++field)
 				{
-					CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, Task.TAG_LABEL, fields[field].getComponent().getText());
+					CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, fields[field].getTag(), fields[field].getComponent().getText());
 					getProject().executeCommand(cmd);
 				}
 				getProject().executeCommand(new CommandEndTransaction());

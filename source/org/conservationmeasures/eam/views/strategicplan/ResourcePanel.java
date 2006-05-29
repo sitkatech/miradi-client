@@ -115,7 +115,7 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 
 		public int getColumnCount()
 		{
-			return 3;
+			return columnTags.length;
 		}
 
 		public int getRowCount()
@@ -127,26 +127,18 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 		{
 			int resourceId = resources.getIds()[rowIndex];
 			ProjectResource resource = resources.find(resourceId);
-			switch(columnIndex)
-			{
-				case 0: return resource.getLabel();
-				default: return "";
-			}
+			return resource.getData(columnTags[columnIndex]);
 		}
 
 		public String getColumnName(int column)
 		{
-			switch(column)
-			{
-				case 0: return "Name";
-				case 1: return "Description";
-				case 2: return "Rate";
-				default: throw new RuntimeException("Unknown column " + column);
-			}
+			return columnTags[column];
 		}
 		
 		ResourcePool resources;
 	}
+	
+	static final String[] columnTags = {"Initials", "Name", "Position", };
 
 	MainWindow mainWindow;
 	ResourceTableModel model;
