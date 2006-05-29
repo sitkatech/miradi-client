@@ -44,6 +44,9 @@ public class DeleteResource extends ViewDoer
 		int type = resource.getType();
 		int id = resource.getId();
 		getProject().executeCommand(new CommandSetObjectData(type, id, EAMObject.TAG_LABEL, EAMObject.DEFAULT_LABEL));
+		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_INITIALS, ""));
+		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_NAME, ""));
+		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_POSITION, ""));
 		getProject().executeCommand(new CommandDeleteObject(type, id));
 		getProject().executeCommand(new CommandEndTransaction());
 	}
