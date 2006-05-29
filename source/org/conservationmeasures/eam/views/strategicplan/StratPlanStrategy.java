@@ -5,7 +5,11 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Vector;
+
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class StratPlanStrategy extends StratPlanObject
@@ -15,6 +19,11 @@ public class StratPlanStrategy extends StratPlanObject
 		project = projectToUse;
 		intervention = interventionToUse;
 		rebuild();
+	}
+	
+	public ConceptualModelIntervention getIntervention()
+	{
+		return intervention;
 	}
 	
 	public Object getValueAt(int column)
@@ -55,12 +64,19 @@ public class StratPlanStrategy extends StratPlanObject
 	public void rebuild()
 	{
 		int childCount = intervention.getActivityIds().size();
-		activities = new StratPlanActivity[childCount];
+		Vector activityVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
 		{
 			int activityId = intervention.getActivityIds().get(i);
-			activities[i] = new StratPlanActivity(project.getTaskPool().find(activityId));
+			Task activity = project.getTaskPool().find(activityId);
+			if(activity == null)
+			{
+				EAM.logWarning("Ignoring null activity " + activityId + " in intervention " + intervention.getId());
+				continue;
+			}
+			activityVector.add(new StratPlanActivity(activity));
 		}
+		activities = (StratPlanActivity[])activityVector.toArray(new StratPlanActivity[0]);
 	}
 	
 	Project project;
