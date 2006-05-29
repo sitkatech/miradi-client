@@ -22,7 +22,7 @@ public class ActionDeleteResource extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete a Resource (person, team, etc)");
+		return EAM.text("TT|Delete the selected Resource (person, team, etc)");
 	}
 
 }
