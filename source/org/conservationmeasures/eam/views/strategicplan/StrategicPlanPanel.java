@@ -124,11 +124,18 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return buttonBox;
 	}
 	
-	boolean isRelevant(CommandExecutedEvent event)
+	boolean isSetDataCommand(CommandExecutedEvent event)
 	{
 		Command rawCommand = event.getCommand();
-		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		return(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME));
+	}
+	
+	boolean isInsertionCommand(CommandExecutedEvent event)
+	{
+		if(!isSetDataCommand(event))
 			return false;
+		
+		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelIntervention.TAG_ACTIVITY_IDS))
 			return true;
@@ -144,22 +151,35 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(!isRelevant(event))
-			return;
+		if(isInsertionCommand(event))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
+			TreePath pathToModifiedItem = model.getPathOfParent(cmd.getObjectType(), cmd.getObjectId());
+			tree.getTree().expandPath(pathToModifiedItem);
+		}
+		else if(isSetDataCommand(event))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+			
+		}
 		
-		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-		TreePath pathToModifiedItem = model.getPathOfParent(cmd.getObjectType(), cmd.getObjectId());
-		tree.getTree().expandPath(pathToModifiedItem);
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
-		if(!isRelevant(event))
-			return;
-		
-		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
+		if(isInsertionCommand(event))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
+		}
+		else if(isSetDataCommand(event))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+			
+		}
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)

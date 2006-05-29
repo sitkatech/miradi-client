@@ -77,9 +77,24 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return String.class;
 	}
 	
+	public TreePath getPathOfNode(int objectType, int objectId)
+	{
+		return findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+	}
+	
 	public TreePath getPathOfParent(int objectType, int objectId)
 	{
-		return findParentOfObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+		return getPathOfNode(objectType, objectId).getParentPath();
+	}
+	
+	public void dataWasChanged(int objectType, int objectId)
+	{
+		TreePath found = getPathOfParent(objectType, objectId);
+		if(found == null)
+			return;
+		
+		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
+		fireTreeNodesChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
 	}
 
 	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)
@@ -91,29 +106,42 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
 		parent.rebuild();
 
-		int[] childIndices = new int[parent.getChildCount()];
+		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
+	}
+
+	private Object[] getChildren(StratPlanObject parent)
+	{
 		Object[] children = new Object[parent.getChildCount()];
+		for(int i = 0; i < children.length; ++i)
+		{
+			children[i] = parent.getChild(i);
+		}
+		return children;
+	}
+
+	private int[] getChildIndices(StratPlanObject parent)
+	{
+		int[] childIndices = new int[parent.getChildCount()];
 		for(int i = 0; i < childIndices.length; ++i)
 		{
 			childIndices[i] = i;
-			children[i] = parent.getChild(i);
 		}
-		fireTreeStructureChanged(parent, found.getPath(), childIndices, children);
+		return childIndices;
 	}
 	
-	TreePath findParentOfObject(TreePath pathToStartSearch, int objectType, int objectId)
+	TreePath findObject(TreePath pathToStartSearch, int objectType, int objectId)
 	{
 		StratPlanObject nodeToSearch = (StratPlanObject)pathToStartSearch.getLastPathComponent();
 		if(nodeToSearch.getType() == objectType && nodeToSearch.getId() == objectId)
-			return pathToStartSearch;
+			return pathToStartSearch.pathByAddingChild(nodeToSearch);
 		
 		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
 		{
 			StratPlanObject thisChild = (StratPlanObject)nodeToSearch.getChild(i);
 			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
-			TreePath found = findParentOfObject(childPath, objectType, objectId);
+			TreePath found = findObject(childPath, objectType, objectId);
 			if(found != null)
-				return childPath;
+				return found;
 		}
 		
 		return null;
