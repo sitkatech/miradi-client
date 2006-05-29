@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -31,6 +32,15 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		super(root);
 		project = projectToUse;
 	}
+	
+	public ConceptualModelIntervention getParentIntervention(Task activity)
+	{
+		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
+		StratPlanStrategy strategy = (StratPlanStrategy)interventionPath.getLastPathComponent();
+		return strategy.getIntervention();
+	}
+	
+
 	
 	public int getColumnCount()
 	{
@@ -67,14 +77,14 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return String.class;
 	}
 	
-	public TreePath getPath(int objectType, int objectId)
+	public TreePath getPathOfParent(int objectType, int objectId)
 	{
-		return findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+		return findParentOfObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
 	}
 
 	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)
 	{
-		TreePath found = getPath(objectType, objectId);
+		TreePath found = getPathOfParent(objectType, objectId);
 		if(found == null)
 			return;
 		
@@ -91,7 +101,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		fireTreeStructureChanged(parent, found.getPath(), childIndices, children);
 	}
 	
-	TreePath findObject(TreePath pathToStartSearch, int objectType, int objectId)
+	TreePath findParentOfObject(TreePath pathToStartSearch, int objectType, int objectId)
 	{
 		StratPlanObject nodeToSearch = (StratPlanObject)pathToStartSearch.getLastPathComponent();
 		if(nodeToSearch.getType() == objectType && nodeToSearch.getId() == objectId)
@@ -101,7 +111,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		{
 			StratPlanObject thisChild = (StratPlanObject)nodeToSearch.getChild(i);
 			TreePath childPath = pathToStartSearch.pathByAddingChild(thisChild);
-			TreePath found = findObject(childPath, objectType, objectId);
+			TreePath found = findParentOfObject(childPath, objectType, objectId);
 			if(found != null)
 				return childPath;
 		}

@@ -15,6 +15,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.Actions;
@@ -23,7 +24,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -72,6 +72,17 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return selected;
 	}
 	
+	public Task getSelectedTask()
+	{
+		StratPlanObject selected = getSelectedObject();
+		if(selected == null)
+			return null;
+		if(selected.getType() != ObjectType.TASK)
+			return null;
+		
+		return ((StratPlanActivity)selected).getActivity();
+	}
+	
 	public ActivityInsertionPoint getActivityInsertionPoint()
 	{
 		TreePath path = tree.getTree().getSelectionPath();
@@ -82,7 +93,12 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 	{
 		return model;
 	}
-
+	
+	public ConceptualModelIntervention getParentIntervention(Task activity)
+	{
+		return model.getParentIntervention(activity);
+	}
+	
 	void expandTopLevel()
 	{
 		StratPlanObject root = model.getRootStratPlanObject();
@@ -100,7 +116,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
 		UiButton editButton = new UiButton(actions.get(ActionModifyActivity.class));
-		UiButton deleteButton = new UiButton(EAM.text("Button|Delete"));
+		UiButton deleteButton = new UiButton(actions.get(ActionDeleteActivity.class));
 		buttonBox.add(addButton);
 		buttonBox.add(editButton);
 		buttonBox.add(deleteButton);
@@ -133,7 +149,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-		TreePath pathToModifiedItem = model.getPath(cmd.getObjectType(), cmd.getObjectId());
+		TreePath pathToModifiedItem = model.getPathOfParent(cmd.getObjectType(), cmd.getObjectId());
 		tree.getTree().expandPath(pathToModifiedItem);
 	}
 
