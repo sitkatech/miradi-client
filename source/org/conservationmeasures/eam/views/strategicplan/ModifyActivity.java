@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class ModifyActivity extends ProjectDoer
@@ -28,7 +29,12 @@ public class ModifyActivity extends ProjectDoer
 	public void doIt() throws CommandFailedException
 	{
 		StratPlanActivity selected = (StratPlanActivity)view.getSelectedObject();
-		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), selected.getActivity(), new String[] {"Label"});
+		modify(selected.getActivity());
+	}
+
+	public void modify(Task activity)
+	{
+		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), activity, new String[] {"Label"});
 		dlg.setVisible(true);
 	}
 	

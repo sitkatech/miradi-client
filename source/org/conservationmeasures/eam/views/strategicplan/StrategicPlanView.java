@@ -74,6 +74,11 @@ public class StrategicPlanView extends UmbrellaView
 		return panel.getSelectedObject();
 	}
 	
+	public ModifyActivity getModifyActivityDoer()
+	{
+		return modifyActivityDoer;
+	}
+	
 	public ModifyResource getModifyResourceDoer()
 	{
 		return modifyResourceDoer;
@@ -81,10 +86,11 @@ public class StrategicPlanView extends UmbrellaView
 
 	private void addStrategicPlanDoersToMap()
 	{
+		modifyActivityDoer = new ModifyActivity(this);
 		modifyResourceDoer = new ModifyResource(this);
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
-		addDoerToMap(ActionModifyActivity.class, new ModifyActivity(this));
+		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
@@ -94,6 +100,7 @@ public class StrategicPlanView extends UmbrellaView
 	JTabbedPane tabs;
 	StrategicPlanPanel panel;
 	ResourcePanel resourcePanel;
+	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 }
 

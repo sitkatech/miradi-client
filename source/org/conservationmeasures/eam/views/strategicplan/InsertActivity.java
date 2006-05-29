@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class InsertActivity extends ProjectDoer
+public class InsertActivity extends ViewDoer
 {
 	public InsertActivity(StrategicPlanView viewToUse)
 	{
@@ -61,6 +61,10 @@ public class InsertActivity extends ProjectDoer
 			getProject().executeCommand(addChild);
 			
 			getProject().executeCommand(new CommandEndTransaction());
+			
+			Task activity = getProject().getTaskPool().find(createdId);
+			((StrategicPlanView)getView()).getModifyActivityDoer().modify(activity);
+
 		}
 		catch (Exception e)
 		{
