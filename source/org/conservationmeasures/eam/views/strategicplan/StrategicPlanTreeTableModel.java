@@ -49,7 +49,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 
 	public String getColumnName(int column)
 	{
-		String[] columnNames = {"Item", "Assigned To", "Budget", "Dates", };
+		String[] columnNames = {"Item", "Resources", "Budget", "Dates", };
 		return columnNames[column];
 	}
 
