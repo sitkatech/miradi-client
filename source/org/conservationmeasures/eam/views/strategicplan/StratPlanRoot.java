@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -56,9 +58,16 @@ public class StratPlanRoot extends StratPlanObject
 	public void rebuild()
 	{
 		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
-		strategies = new StratPlanStrategy[interventionObjects.length];
-		for(int i = 0; i < strategies.length; ++i)
-			strategies[i] = new StratPlanStrategy(project, (ConceptualModelIntervention)interventionObjects[i]);
+		Vector strategyVector = new Vector();
+		for(int i = 0; i < interventionObjects.length; ++i)
+		{
+			ConceptualModelIntervention intervention = (ConceptualModelIntervention)interventionObjects[i];
+			if(intervention.isStatusDraft())
+				continue;
+			
+			strategyVector.add(new StratPlanStrategy(project, intervention));
+		}
+		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
 	}
 	
 	Project project;
