@@ -46,7 +46,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 {
 	public MainWindow() throws IOException
 	{
-		project = new Project();
+		this(new Project());
+	}
+	
+	public MainWindow(Project projectToUse)
+	{
+		project = projectToUse;		
 	}
 	
 	public void start() throws Exception
@@ -272,7 +277,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		}
 	}
 
-	private Actions actions;
+	protected Actions actions;
 	private Project project;
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;

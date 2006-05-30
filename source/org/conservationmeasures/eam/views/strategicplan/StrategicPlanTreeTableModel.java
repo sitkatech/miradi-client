@@ -84,7 +84,10 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	
 	public TreePath getPathOfParent(int objectType, int objectId)
 	{
-		return getPathOfNode(objectType, objectId).getParentPath();
+		TreePath path = getPathOfNode(objectType, objectId);
+		if(path == null)
+			return null;
+		return path.getParentPath();
 	}
 	
 	public void dataWasChanged(int objectType, int objectId)
@@ -133,7 +136,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	{
 		StratPlanObject nodeToSearch = (StratPlanObject)pathToStartSearch.getLastPathComponent();
 		if(nodeToSearch.getType() == objectType && nodeToSearch.getId() == objectId)
-			return pathToStartSearch.pathByAddingChild(nodeToSearch);
+			return pathToStartSearch;
 		
 		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
 		{

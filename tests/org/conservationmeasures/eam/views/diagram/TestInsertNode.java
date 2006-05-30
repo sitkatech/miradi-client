@@ -9,7 +9,11 @@ import java.awt.Point;
 import java.io.IOException;
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -23,12 +27,14 @@ public class TestInsertNode extends TestCaseEnhanced
 	public void testDoIt() throws Exception
 	{
 		OurProject project = new OurProject(getName());
+		OurMainWindow mainWindow = new OurMainWindow(project);
 		try
 		{
 			assertEquals("already written?", null, project.lastWroteName);
 			Point at = project.getSnapped(new Point(25,167));
-			InsertNode inserter = new InsertIntervention();
-			inserter.setProject(project);
+			InsertInterventionWithFakePropertiesEditing inserter = new InsertInterventionWithFakePropertiesEditing();
+			inserter.setMainWindow(mainWindow);
+			inserter.setView(new DiagramView(mainWindow));
 			inserter.setLocation(at);
 			inserter.doIt();
 			
@@ -38,10 +44,32 @@ public class TestInsertNode extends TestCaseEnhanced
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 			
 			assertEquals("didn't write after set name?", node.getLabel(), project.lastWroteName);
+			
+			assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
 		}
 		finally
 		{
 			project.close();
+		}
+		
+	}
+	
+	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
+	{
+		void launchPropertiesEditor(int id) throws Exception, CommandFailedException
+		{
+			wasPropertiesEditorLaunched = true;
+		}
+
+		public boolean wasPropertiesEditorLaunched; 
+	}
+	
+	static class OurMainWindow extends MainWindow
+	{
+		public OurMainWindow(Project projectToUse) throws IOException
+		{
+			super(projectToUse);
+			actions = new Actions(this);
 		}
 		
 	}

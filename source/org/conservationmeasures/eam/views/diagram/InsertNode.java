@@ -36,13 +36,18 @@ abstract public class InsertNode extends LocationDoer
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
 			
-			DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
-			getDiagramView().getPropertiesDoer().doNodeProperties(newNode);
+			launchPropertiesEditor(id);
 		}
 		catch (Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+	
+	void launchPropertiesEditor(int id) throws Exception, CommandFailedException
+	{
+		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
+		getDiagramView().getPropertiesDoer().doNodeProperties(newNode);
 	}
 	
 	private int insertNodeItself() throws Exception
