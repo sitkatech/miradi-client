@@ -155,14 +155,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-			TreePath pathToModifiedItem = model.getPathOfParent(cmd.getObjectType(), cmd.getObjectId());
-			tree.getTree().expandPath(pathToModifiedItem);
+			expandTopLevel();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			
+			expandTopLevel();
 		}
 		
 	}
@@ -173,11 +172,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
+			expandTopLevel();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+			expandTopLevel();
 			
 		}
 	}
