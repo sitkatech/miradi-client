@@ -46,11 +46,7 @@ public class ObjectPropertiesDialog extends JDialog
 		
 		for(int field = 0; field < fields.length; ++field)
 		{
-			String tag = tags[field];
-			String label = EAM.text("Label|" + tags[field]);
-			String value = getProject().getObjectData(objectType, objectId, tag);
-			fields[field] = new DialogField(tag, label, value);
-	
+			fields[field] = createDialogField(tags[field]);
 			grid.add(new UiLabel(fields[field].getLabel()));
 			grid.add(fields[field].getComponent());
 		}
@@ -64,6 +60,14 @@ public class ObjectPropertiesDialog extends JDialog
 		pack();
 		
 		setModal(true);
+	}
+
+	private DialogField createDialogField(String tag)
+	{
+		String label = EAM.text("Label|" + tag);
+		String value = getProject().getObjectData(objectType, objectId, tag);
+		DialogField dialogField = new DialogField(tag, label, value);
+		return dialogField;
 	}
 
 	private Project getProject()
