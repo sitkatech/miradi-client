@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
 public class ProjectResource extends EAMObject
@@ -65,7 +66,13 @@ public class ProjectResource extends EAMObject
 	
 	public String toString()
 	{
-		return initials;
+		if(initials.length() > 0)
+			return initials;
+		if(name.length() > 0)
+			return name;
+		if(position.length() > 0)
+			return position;
+		return EAM.text("Label|(Undefined Resource)");
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
