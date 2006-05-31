@@ -21,6 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -29,6 +30,7 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.FutureVersionException;
 import org.conservationmeasures.eam.project.OldVersionException;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -54,7 +56,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		project = projectToUse;		
 	}
 	
-	public void start() throws Exception
+	public void start(String[] args) throws Exception
 	{
 		project.addCommandExecutedListener(this);
 		project.addViewChangeListener(this);
@@ -100,6 +102,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		setCurrentView(noProjectView);
 		actions.updateActionStates();
 
+		if(args.length == 0 || !args[0].equals("--nosplash"))
+		{
+			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
+			aboutDoer.doIt();
+		}
+		
 		setVisible(true);
 	}
 

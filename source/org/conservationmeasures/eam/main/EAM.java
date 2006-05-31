@@ -24,7 +24,7 @@ public class EAM
 			VersionConstants.setVersionString();
 	
 			mainWindow = new MainWindow();
-			mainWindow.start();
+			mainWindow.start(args);
 		}
 		catch(Exception e)
 		{
