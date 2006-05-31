@@ -23,6 +23,7 @@ import javax.swing.JDialog;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.DialogField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -31,7 +32,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 
 abstract public class ObjectPropertiesDialog extends JDialog
@@ -64,7 +64,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		pack();
 	}
 
-	private DialogField createDialogField(String tag)
+	DialogField createDialogField(String tag)
 	{
 		String label = EAM.text("Label|" + tag);
 		String value = getProject().getObjectData(objectType, objectId, tag);
@@ -77,7 +77,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		return ((MainWindow)getParent()).getProject();
 	}
 
-	Component createButtonBar()
+	private Component createButtonBar()
 	{
 		okButton = new UiButton(EAM.text("Button|OK"));
 		okButton.addActionListener(new OkHandler());
@@ -130,32 +130,3 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	UiButton cancelButton;
 }
 
-class DialogField
-{
-	public DialogField(String tagToUse, String labelToUse, String value)
-	{
-		tag = tagToUse;
-		label = labelToUse;
-		component = new UiTextField(50);
-		component.setText(value);
-	}
-	
-	public String getTag()
-	{
-		return tag;
-	}
-	
-	public String getLabel()
-	{
-		return label;
-	}
-	
-	public UiTextField getComponent()
-	{
-		return component;
-	}
-	
-	String tag;
-	String label;
-	UiTextField component;
-}
