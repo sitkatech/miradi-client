@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.TaskPropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ObjectType;

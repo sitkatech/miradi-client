@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 
 
+import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.MainWindowDoer;

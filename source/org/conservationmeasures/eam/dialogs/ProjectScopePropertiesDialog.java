@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.main;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -10,6 +10,7 @@ import javax.swing.Box;
 import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;

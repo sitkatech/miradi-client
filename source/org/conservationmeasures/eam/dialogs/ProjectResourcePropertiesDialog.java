@@ -3,15 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-public class TaskPropertiesDialog extends ObjectPropertiesDialog
+public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
 {
 
-	public TaskPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String[] tags)
+	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String[] tags)
 	{
 		super(parentToUse, objectToEdit);
 		initializeFields(tags);
