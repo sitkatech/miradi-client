@@ -34,7 +34,7 @@ public class ModifyActivity extends ProjectDoer
 
 	public void modify(Task activity)
 	{
-		ObjectPropertiesDialog dlg = new ObjectPropertiesDialog(getMainWindow(), activity, new String[] {"Label"});
+		ObjectPropertiesDialog dlg = new TaskPropertiesDialog(getMainWindow(), activity, new String[] {"Label"});
 		dlg.setVisible(true);
 	}
 	

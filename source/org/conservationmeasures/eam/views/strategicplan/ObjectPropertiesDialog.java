@@ -34,32 +34,34 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 
-public class ObjectPropertiesDialog extends JDialog
+abstract public class ObjectPropertiesDialog extends JDialog
 {
-	public ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String[] tags)
+	ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
 	{
 		super(parentToUse);
 		objectType = objectToEdit.getType();
 		objectId = objectToEdit.getId();
-		fields = new DialogField[tags.length];
-		DialogGridPanel grid = new DialogGridPanel();
 		
+		setModal(true);
+	}
+	
+	void initializeFields(String[] tags)
+	{
+		DialogGridPanel grid = new DialogGridPanel();
+		fields = new DialogField[tags.length];
 		for(int field = 0; field < fields.length; ++field)
 		{
 			fields[field] = createDialogField(tags[field]);
 			grid.add(new UiLabel(fields[field].getLabel()));
 			grid.add(fields[field].getComponent());
 		}
-		
+
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
-
 		contents.add(grid, BorderLayout.CENTER);
 		contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		Utilities.centerDlg(this);
 		pack();
-		
-		setModal(true);
 	}
 
 	private DialogField createDialogField(String tag)
