@@ -63,6 +63,11 @@ public class ProjectResource extends EAMObject
 		return json;
 	}
 	
+	public String toString()
+	{
+		return initials;
+	}
+	
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_NAME = "Name";
 	public static final String TAG_POSITION = "Position";

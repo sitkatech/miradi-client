@@ -5,16 +5,44 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 
 public class TaskPropertiesDialog extends ObjectPropertiesDialog
 {
 
-	public TaskPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String[] tags)
+	public TaskPropertiesDialog(MainWindow parentToUse, Task taskToEdit, String[] tags)
 	{
-		super(parentToUse, objectToEdit);
+		super(parentToUse, taskToEdit);
+		task = taskToEdit;
+		project = parentToUse.getProject();
 		initializeFields(tags);
 	}
+	
+	DialogField createDialogField(String tag)
+	{
+		if(tag.equals(Task.TAG_RESOURCE_IDS))
+			return createResourcePicker(tag);
+		
+		return super.createDialogField(tag);
+	}
+	
+	DialogField createResourcePicker(String tag)
+	{
+		String label = EAM.text("Label|" + tag);
+		int[] allResourceIds = project.getResourcePool().getIds();
+		EAMObject[] availableResources = new EAMObject[allResourceIds.length];
+		for(int i = 0; i < availableResources.length; ++i)
+			availableResources[i] = project.getResourcePool().find(allResourceIds[i]);
 
+		IdList selectedResources = task.getResourceIdList();
+		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
+	}
+
+	Project project;
+	Task task;
 }

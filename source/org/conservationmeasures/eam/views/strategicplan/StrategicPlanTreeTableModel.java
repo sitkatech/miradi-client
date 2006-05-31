@@ -53,11 +53,10 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return columnNames[column];
 	}
 
-	public Object getValueAt(Object node, int column)
+	public Object getValueAt(Object rawNode, int column)
 	{
-		if(column == 0)
-			return ((StratPlanObject)node).getValueAt(column);
-		return "";
+		StratPlanObject node = (StratPlanObject)rawNode;
+		return node.getValueAt(column);
 	}
 
 	public int getChildCount(Object parent)

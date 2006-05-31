@@ -5,13 +5,19 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.annotations.ResourcePool;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 
 public class StratPlanActivity extends StratPlanObject
 {
-	public StratPlanActivity(Task activityToUse)
+	public StratPlanActivity(Project projectToUse, Task activityToUse)
 	{
+		project = projectToUse;
+		
 		if(activityToUse == null)
 			EAM.logError("Attempted to create tree node for null activity");
 		activity = activityToUse;
@@ -19,7 +25,11 @@ public class StratPlanActivity extends StratPlanObject
 	
 	public Object getValueAt(int column)
 	{
-		return toString();
+		if(column == 0)
+			return toString();
+		if(column == 1)
+			return getResourcesAsString();
+		return "";
 	}
 
 	public int getChildCount()
@@ -62,5 +72,22 @@ public class StratPlanActivity extends StratPlanObject
 		
 	}
 	
+	String getResourcesAsString()
+	{
+		StringBuffer result = new StringBuffer();
+		ResourcePool pool = project.getResourcePool();
+		IdList resourceIds = activity.getResourceIdList();
+		for(int i = 0; i < resourceIds.size(); ++i)
+		{
+			if(i > 0)
+				result.append(", ");
+			ProjectResource resource = pool.find(resourceIds.get(i));
+			result.append(resource.toString());
+		}
+		
+		return result.toString();
+	}
+	
+	Project project;
 	Task activity;
 }

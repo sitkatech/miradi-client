@@ -28,7 +28,10 @@ public class StratPlanStrategy extends StratPlanObject
 	
 	public Object getValueAt(int column)
 	{
-		return intervention.getLabel();
+		if(column == 0)
+			return intervention.getLabel();
+		
+		return "";
 	}
 
 	public int getChildCount()
@@ -74,7 +77,7 @@ public class StratPlanStrategy extends StratPlanObject
 				EAM.logWarning("Ignoring null activity " + activityId + " in intervention " + intervention.getId());
 				continue;
 			}
-			activityVector.add(new StratPlanActivity(activity));
+			activityVector.add(new StratPlanActivity(project, activity));
 		}
 		activities = (StratPlanActivity[])activityVector.toArray(new StratPlanActivity[0]);
 	}

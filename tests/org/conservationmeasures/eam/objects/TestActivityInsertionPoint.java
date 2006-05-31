@@ -21,8 +21,8 @@ public class TestActivityInsertionPoint extends EAMTestCase
 	{
 		Task rootTask = new Task(23);
 		Task parentTask = new Task(58);
-		StratPlanActivity root = new StratPlanActivity(rootTask);
-		StratPlanActivity parent = new StratPlanActivity(parentTask);
+		StratPlanActivity root = new StratPlanActivity(null, rootTask);
+		StratPlanActivity parent = new StratPlanActivity(null, parentTask);
 		TreePath path = new TreePath(new Object[] {root, parent});
 		int index = 9;
 		ActivityInsertionPoint aip = new ActivityInsertionPoint(path, index);
