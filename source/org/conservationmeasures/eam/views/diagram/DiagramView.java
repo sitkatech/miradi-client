@@ -62,17 +62,24 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
+		mode = ViewData.MODE_DEFAULT;
 		diagram = new DiagramComponent(getProject(), getActions());
 		getProject().setSelectionModel(diagram.getSelectionModel());
 		
 		addDiagramViewDoersToMap();
 		
-		setToolBar(new DiagramToolBar(getActions()));
+		updateToolBar();
 
 		setLayout(new BorderLayout());
 		
 		getProject().addCommandExecutedListener(this);
 
+	}
+
+	private void updateToolBar()
+	{
+		setToolBar(new DiagramToolBar(getActions(), mode));
+		getMainWindow().updateToolBar();
 	}
 	
 	public DiagramComponent getDiagramComponent()
@@ -205,6 +212,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 		LayerManager manager = getProject().getLayerManager();
 		manager.setHiddenIds(hiddenIds);
+		mode = newMode;
+		updateToolBar();
 		getMainWindow().updateStatusBar();
 		getDiagramComponent().clearSelection();
 		getDiagramComponent().repaint();
@@ -271,6 +280,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 	Properties propertiesDoer;
+	String mode;
 }
 
 class DoNothingHyperLinkHandler implements HyperlinkHandler

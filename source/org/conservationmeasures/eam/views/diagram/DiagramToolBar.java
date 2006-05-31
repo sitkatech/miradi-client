@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import java.util.Arrays;
+import java.util.Vector;
+
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.ActionCopy;
@@ -25,21 +28,21 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAMToolBar;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class DiagramToolBar extends EAMToolBar
 {
-	public DiagramToolBar(Actions actions)
+	public DiagramToolBar(Actions actions, String mode)
 	{
-		super(actions, ActionViewDiagram.class, createButtons(actions));
+		super(actions, ActionViewDiagram.class, createButtons(actions, mode));
 	}
 	
-	static JComponent[] createButtons(Actions actions)
+	static JComponent[] createButtons(Actions actions, String mode)
 	{
+		ToolBarButton insertDraftInterventionButton = new ToolBarButton(actions, ActionInsertDraftIntervention.class);
+		ToolBarButton insertInterventionButton = new ToolBarButton(actions, ActionInsertIntervention.class);
 		JComponent[] buttons = new JComponent[] {
-				new Separator(),
-				new ToolBarButton(actions, ActionInsertDraftIntervention.class),
-				new ToolBarButton(actions, ActionInsertIntervention.class),
 				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
@@ -57,9 +60,16 @@ public class DiagramToolBar extends EAMToolBar
 				new Separator(),
 				new ToolBarButton(actions, ActionZoomIn.class),
 				new ToolBarButton(actions, ActionZoomOut.class),
-				
 		};
-		return buttons;
+		
+		Vector vector = new Vector();
+		vector.add(new Separator());
+		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			vector.add(insertDraftInterventionButton);
+		else
+			vector.add(insertInterventionButton);
+		vector.addAll(Arrays.asList(buttons));
+		return (JComponent[])vector.toArray(new JComponent[0]);
 	}
 }
 
