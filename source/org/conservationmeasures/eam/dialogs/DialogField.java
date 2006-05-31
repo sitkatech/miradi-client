@@ -11,16 +11,14 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.martus.swing.UiTextField;
+import java.awt.Component;
 
-public class DialogField
+abstract public class DialogField
 {
-	public DialogField(String tagToUse, String labelToUse, String value)
+	public DialogField(String tagToUse, String labelToUse)
 	{
 		tag = tagToUse;
 		label = labelToUse;
-		component = new UiTextField(50);
-		component.setText(value);
 	}
 	
 	public String getTag()
@@ -33,12 +31,9 @@ public class DialogField
 		return label;
 	}
 	
-	public UiTextField getComponent()
-	{
-		return component;
-	}
+	abstract public Component getComponent();
+	abstract public String getText();
 	
 	String tag;
 	String label;
-	UiTextField component;
 }

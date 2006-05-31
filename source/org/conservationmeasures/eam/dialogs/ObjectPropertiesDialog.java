@@ -67,7 +67,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	{
 		String label = EAM.text("Label|" + tag);
 		String value = getProject().getObjectData(objectType, objectId, tag);
-		DialogField dialogField = new DialogField(tag, label, value);
+		DialogField dialogField = new StringDialogField(tag, label, value);
 		return dialogField;
 	}
 
@@ -108,7 +108,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 				getProject().executeCommand(new CommandBeginTransaction());
 				for(int field = 0; field < fields.length; ++field)
 				{
-					CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, fields[field].getTag(), fields[field].getComponent().getText());
+					CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, fields[field].getTag(), fields[field].getText());
 					getProject().executeCommand(cmd);
 				}
 				getProject().executeCommand(new CommandEndTransaction());
