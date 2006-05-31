@@ -15,6 +15,7 @@ public class Task extends EAMObject
 	{
 		super(idToUse);
 		subtaskIds = new IdList();
+		resourceIds = new IdList();
 	}
 	
 	public Task(JSONObject json) throws ParseException
@@ -22,11 +23,18 @@ public class Task extends EAMObject
 		super(json);
 		String subtaskIdsAsString = json.optString(TAG_SUBTASK_IDS, "{}");
 		setSubtaskIdsFromString(subtaskIdsAsString);
+		String resourceIdsAsString = json.optString(TAG_RESOURCE_IDS, "{}");
+		setResourceIdsFromString(resourceIdsAsString);
 	}
 
 	private void setSubtaskIdsFromString(String subtaskIdsAsString) throws ParseException
 	{
 		subtaskIds = new IdList(subtaskIdsAsString);
+	}
+
+	private void setResourceIdsFromString(String resourceIdsAsString) throws ParseException
+	{
+		resourceIds = new IdList(resourceIdsAsString);
 	}
 
 	public int getType()
@@ -54,10 +62,21 @@ public class Task extends EAMObject
 		return subtaskIds.createClone();
 	}
 	
+	public int getResourceCount()
+	{
+		return resourceIds.size();
+	}
+	
+	public IdList getResourceIdList()
+	{
+		return resourceIds.createClone();
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
 		json.put(TAG_SUBTASK_IDS, getSubtaskIdsAsString());
+		json.put(TAG_RESOURCE_IDS, getResourceIdsAsString());
 		return json;
 	}
 
@@ -71,19 +90,30 @@ public class Task extends EAMObject
 		if(fieldTag.equals(TAG_SUBTASK_IDS))
 			return getSubtaskIdsAsString();
 		
+		if(fieldTag.equals(TAG_RESOURCE_IDS))
+			return getResourceIdsAsString();
+		
 		return super.getData(fieldTag);
+	}
+
+	private String getResourceIdsAsString()
+	{
+		return getResourceIdList().toString();
 	}
 
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SUBTASK_IDS))
 			setSubtaskIdsFromString((String)dataValue);
+		else if(fieldTag.equals(TAG_RESOURCE_IDS))
+			setResourceIdsFromString((String)dataValue);
 		else super.setData(fieldTag, dataValue);
 	}
 
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
+	public final static String TAG_RESOURCE_IDS = "ResourceIds";
 	
 	IdList subtaskIds;
-
+	IdList resourceIds;
 }

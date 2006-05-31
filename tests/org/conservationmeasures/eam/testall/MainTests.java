@@ -138,12 +138,12 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestConceptualModelNode.class));
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
 		suite.addTest(new TestSuite(TestIdList.class));
+		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestTask.class));
-		suite.addTest(new TestSuite(TestViewData.class));
 		suite.addTest(new TestSuite(TestThreatRatingBundle.class));
 		suite.addTest(new TestSuite(TestThreatRatingCriterion.class));
 		suite.addTest(new TestSuite(TestThreatRatingValueOption.class));
-		suite.addTest(new TestSuite(TestProjectResource.class));
+		suite.addTest(new TestSuite(TestViewData.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

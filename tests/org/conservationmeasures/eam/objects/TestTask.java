@@ -61,7 +61,7 @@ public class TestTask extends EAMTestCase
 		assertEquals("wrong child2?", child2.getId(), top.getSubtaskId(1));
 	}
 	
-	public void testIdList()
+	public void testSubtaskIdList()
 	{
 		Task parent = createBasicTree();
 		
@@ -73,6 +73,26 @@ public class TestTask extends EAMTestCase
 		IdList shouldBeCopy = parent.getSubtaskIdList();
 		shouldBeCopy.add(2727);
 		assertEquals("modified the actual list?", 2, parent.getSubtaskIdList().size());
+	}
+	
+	public void testResourceIdList() throws Exception
+	{
+		IdAssigner idAssigner = new IdAssigner();
+		Task task = new Task(idAssigner.takeNextId());
+		assertEquals("not empty to start?", 0, task.getResourceCount());
+		
+		IdList resources = new IdList();
+		int[] resourceIds = {7, 43, 99};
+		for(int i = 0; i < resourceIds.length; ++i)
+			resources.add(resourceIds[i]);
+		
+		task.setData(Task.TAG_RESOURCE_IDS, resources.toString());
+		assertEquals("didn't update count?", resources.size(), task.getResourceCount());
+		assertEquals("wrong list?", resources, task.getResourceIdList());
+		assertEquals("can't get?", resources.toString(), task.getData(Task.TAG_RESOURCE_IDS));
+		
+		Task got = new Task(task.toJson());
+		assertEquals("didn't jsonize?", resources, got.getResourceIdList());
 	}
 
 	public void testJson() throws Exception
