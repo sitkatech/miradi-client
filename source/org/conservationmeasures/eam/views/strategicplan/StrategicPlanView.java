@@ -43,23 +43,23 @@ public class StrategicPlanView extends UmbrellaView
 	{
 		tabs.removeAll();
 
-		panel = StrategicPlanPanel.createForProject(getMainWindow());
-		tabs.add(EAM.text("Strategic Plan"), panel);
+		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
+		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
 		resourcePanel = new ResourcePanel(getMainWindow());
 		tabs.add(EAM.text("Resources"), resourcePanel);
 	}
 
 	public void becomeInactive() throws Exception
 	{
-		if(panel != null)
+		if(strategicPlanPanel != null)
 		{
-			panel.close();
+			strategicPlanPanel.close();
 		}
 	}
 	
 	public StrategicPlanPanel getStrategicPlanPanel()
 	{
-		return panel;
+		return strategicPlanPanel;
 	}
 	
 	public ResourcePanel getResourcePanel()
@@ -69,9 +69,9 @@ public class StrategicPlanView extends UmbrellaView
 	
 	public StratPlanObject getSelectedObject()
 	{
-		if(panel == null)
+		if(strategicPlanPanel == null)
 			return null;
-		return panel.getSelectedObject();
+		return strategicPlanPanel.getSelectedObject();
 	}
 	
 	public ModifyActivity getModifyActivityDoer()
@@ -98,7 +98,7 @@ public class StrategicPlanView extends UmbrellaView
 	}
 	
 	JTabbedPane tabs;
-	StrategicPlanPanel panel;
+	StrategicPlanPanel strategicPlanPanel;
 	ResourcePanel resourcePanel;
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
