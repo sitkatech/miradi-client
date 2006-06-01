@@ -102,6 +102,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		setCurrentView(noProjectView);
 		actions.updateActionStates();
 
+		// TODO: allow --nosplash anywhere on command line
 		if(args.length == 0 || !args[0].equals("--nosplash"))
 		{
 			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
