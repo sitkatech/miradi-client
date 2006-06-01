@@ -23,6 +23,7 @@ public class StrategicPlanTreeTable extends JTreeTable
 		super(treeTableModel);
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
+		tree.setRootVisible(false);
 	}
 
 	static class Renderer extends DefaultTreeCellRenderer
