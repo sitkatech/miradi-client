@@ -24,7 +24,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
@@ -37,10 +39,13 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 	{
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
-		model = new ResourceTableModel(getProject().getResourcePool());
+		
+		String[] columnTags = {"Initials", "Name", "Position", };
+		ObjectPool pool = getProject().getResourcePool();
+		model = new ObjectManagerTableModel(pool, columnTags);
 		table = new UiTable(model);
 		add(new UiScrollPane(table), BorderLayout.CENTER);
-		add(createButtonPanel(this, mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
+		add(createButtonPanel(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getSelectionModel().addListSelectionListener(this);
 		
@@ -69,7 +74,7 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 		return resource;
 	}
 	
-	static Component createButtonPanel(ResourcePanel owner, Actions actions)
+	static Component createButtonPanel(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionCreateResource.class));
@@ -101,11 +106,12 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 		mainWindow.getActions().updateActionStates();
 	}
 
-	static class ResourceTableModel extends UiTableModel
+	static class ObjectManagerTableModel extends UiTableModel
 	{
-		public ResourceTableModel(ResourcePool resourcePool)
+		public ObjectManagerTableModel(ObjectPool resourcePool, String[] columnTagsToUse)
 		{
-			resources = resourcePool;
+			pool = resourcePool;
+			columnTags = columnTagsToUse;
 		}
 		
 		public boolean isEnabled(int row)
@@ -120,14 +126,14 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 
 		public int getRowCount()
 		{
-			return resources.size();
+			return pool.size();
 		}
 
 		public Object getValueAt(int rowIndex, int columnIndex)
 		{
-			int resourceId = resources.getIds()[rowIndex];
-			ProjectResource resource = resources.find(resourceId);
-			return resource.getData(columnTags[columnIndex]);
+			int objectId = pool.getIds()[rowIndex];
+			EAMObject object = (EAMObject)pool.getRawObject(objectId);
+			return object.getData(columnTags[columnIndex]);
 		}
 
 		public String getColumnName(int column)
@@ -135,12 +141,11 @@ public class ResourcePanel extends JPanel implements CommandExecutedListener, Li
 			return columnTags[column];
 		}
 		
-		ResourcePool resources;
+		ObjectPool pool;
+		String[] columnTags;
 	}
 	
-	static final String[] columnTags = {"Initials", "Name", "Position", };
-
 	MainWindow mainWindow;
-	ResourceTableModel model;
+	ObjectManagerTableModel model;
 	UiTable table;
 }
