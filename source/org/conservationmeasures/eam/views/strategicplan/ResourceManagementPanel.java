@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.annotations.ResourcePool;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectResource;
 
-public class ResourcePanel extends ObjectManagementPanel 
+public class ResourceManagementPanel extends ObjectManagementPanel 
 {
-	public ResourcePanel(MainWindow mainWindowToUse)
+	public ResourceManagementPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, columnTags, mainWindowToUse.getProject().getResourcePool(), buttonActionClasses);
 	}

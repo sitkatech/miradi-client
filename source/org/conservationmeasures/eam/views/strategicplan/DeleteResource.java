@@ -28,7 +28,7 @@ public class DeleteResource extends ViewDoer
 		view = viewToUse;
 	}
 	
-	public ResourcePanel getResourcePanel()
+	public ResourceManagementPanel getResourcePanel()
 	{
 		return view.getResourcePanel();
 	}

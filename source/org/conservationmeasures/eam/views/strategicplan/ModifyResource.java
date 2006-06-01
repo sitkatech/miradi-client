@@ -20,7 +20,7 @@ public class ModifyResource extends MainWindowDoer
 		view = viewToUse;
 	}
 	
-	public ResourcePanel getResourcePanel()
+	public ResourceManagementPanel getResourcePanel()
 	{
 		return view.getResourcePanel();
 	}

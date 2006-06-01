@@ -45,7 +45,7 @@ public class StrategicPlanView extends UmbrellaView
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
-		resourcePanel = new ResourcePanel(getMainWindow());
+		resourcePanel = new ResourceManagementPanel(getMainWindow());
 		tabs.add(EAM.text("Resources"), resourcePanel);
 	}
 
@@ -62,7 +62,7 @@ public class StrategicPlanView extends UmbrellaView
 		return strategicPlanPanel;
 	}
 	
-	public ResourcePanel getResourcePanel()
+	public ResourceManagementPanel getResourcePanel()
 	{
 		return resourcePanel;
 	}
@@ -99,7 +99,7 @@ public class StrategicPlanView extends UmbrellaView
 	
 	JTabbedPane tabs;
 	StrategicPlanPanel strategicPlanPanel;
-	ResourcePanel resourcePanel;
+	ResourceManagementPanel resourcePanel;
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 }
