@@ -3,7 +3,6 @@ import java.awt.Dimension;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -18,6 +17,7 @@ import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -95,7 +95,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoIndication() throws Exception
 	{
-		IndicatorId target1Indicator = new IndicatorId(2);
+		int target1Indicator = 2;
 		int insertedId = insertDirectThreat(project);
 
 		project.executeCommand(new CommandBeginTransaction());
@@ -107,7 +107,7 @@ public class TestUndoRedo extends EAMTestCase
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
+		assertEquals(IdAssigner.INVALID_ID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
@@ -115,7 +115,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		undo.doIt();
-		assertEquals("Should have no indicator again", new IndicatorId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
+		assertEquals("Should have no indicator again", IdAssigner.INVALID_ID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 	}
 	
 	public void testUndoRedoObjective() throws Exception

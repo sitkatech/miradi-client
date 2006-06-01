@@ -11,7 +11,6 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -67,13 +66,8 @@ public class TestDiagramNode extends EAMTestCase
 
 	public void testIndicator()
 	{
-		IndicatorId indicator = directThreat.getIndicatorId();
-		assertFalse(indicator.hasId());
-		assertEquals(IndicatorId.ID_NONE_STRING, indicator.toString());
-		int value = 2;
-		indicator.setValue(value);
-		assertTrue(indicator.hasId());
-		assertEquals(String.valueOf(value).toString(), indicator.toString());
+		int indicator = directThreat.getIndicatorId();
+		assertEquals(IdAssigner.INVALID_ID, indicator);
 	}
 	
 	public void testGoals()

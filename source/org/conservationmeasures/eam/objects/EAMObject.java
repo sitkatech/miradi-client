@@ -46,6 +46,9 @@ abstract public class EAMObject
 			case ObjectType.PROJECT_RESOURCE:
 				return new ProjectResource(json);
 				
+			case ObjectType.INDICATOR:
+				return new Indicator(json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

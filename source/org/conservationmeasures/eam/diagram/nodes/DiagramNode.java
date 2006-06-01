@@ -14,7 +14,6 @@ import java.awt.geom.Rectangle2D;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -28,6 +27,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -112,12 +112,12 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.canHavePriority();
 	}
 	
-	public IndicatorId getIndicatorId()
+	public int getIndicatorId()
 	{
 		return underlyingObject.getIndicatorId();
 	}
 	
-	public void setIndicator(IndicatorId indicatorToUse)
+	public void setIndicator(int indicatorToUse)
 	{
 		underlyingObject.setIndicatorId(indicatorToUse);
 	}
@@ -199,7 +199,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int numberOfAnnotations = 0;
 		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
 
-		if(getIndicatorId() != null && getIndicatorId().hasId() && numberOfAnnotations == 0)
+		if(getIndicatorId() != IdAssigner.INVALID_ID && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;

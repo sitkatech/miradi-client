@@ -10,20 +10,20 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetIndicator extends Command 
 {
-	public CommandSetIndicator(int idToUpdate, IndicatorId indicatorToUse)
+	public CommandSetIndicator(int idToUpdate, int indicatorToUse)
 	{
 		id = idToUpdate;
-		indicator = indicatorToUse;
-		previousIndicator = null;
+		indicatorId = indicatorToUse;
+		previousIndicator = IdAssigner.INVALID_ID;
 	}
 
 	public String getCommandName() 
@@ -34,16 +34,16 @@ public class CommandSetIndicator extends Command
 	public CommandSetIndicator(DataInputStream dataIn) throws IOException
 	{
 		id = dataIn.readInt();
-		indicator = new IndicatorId(dataIn.readInt());
-		previousIndicator = new IndicatorId(dataIn.readInt());
+		indicatorId = dataIn.readInt();
+		previousIndicator = dataIn.readInt();
 	
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(getId());
-		dataOut.writeInt(indicator.getValue());
-		dataOut.writeInt(previousIndicator.getValue());
+		dataOut.writeInt(indicatorId);
+		dataOut.writeInt(previousIndicator);
 	}
 
 	public void execute(Project target) throws CommandFailedException
@@ -56,14 +56,14 @@ public class CommandSetIndicator extends Command
 		doSetIndicator(target, getPreviousIndicator(), getCurrentIndicator());
 	}
 	
-	private IndicatorId doSetIndicator(Project target, IndicatorId desiredIndicator, IndicatorId expectedIndicator) throws CommandFailedException
+	private int doSetIndicator(Project target, int desiredIndicator, int expectedIndicator) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			IndicatorId oldIndicator = node.getIndicatorId();
-			if(expectedIndicator != null && !oldIndicator.equals(expectedIndicator))
+			int oldIndicator = node.getIndicatorId();
+			if(expectedIndicator != IdAssigner.INVALID_ID && oldIndicator != expectedIndicator)
 				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + oldIndicator);
 			target.setIndicator(getId(), desiredIndicator);
 			return oldIndicator;
@@ -77,15 +77,15 @@ public class CommandSetIndicator extends Command
 	
 	public String toString()
 	{
-		return getCommandName() + ": " + id + ", " + indicator + ", " + previousIndicator;
+		return getCommandName() + ": " + id + ", " + indicatorId + ", " + previousIndicator;
 	}
 
-	public IndicatorId getCurrentIndicator()
+	public int getCurrentIndicator()
 	{
-		return indicator;
+		return indicatorId;
 	}
 	
-	public IndicatorId getPreviousIndicator()
+	public int getPreviousIndicator()
 	{
 		return previousIndicator;
 	}
@@ -98,6 +98,6 @@ public class CommandSetIndicator extends Command
 	public static final String COMMAND_NAME = "SetIndicator";
 
 	int id;
-	IndicatorId indicator;
-	IndicatorId previousIndicator;
+	int indicatorId;
+	int previousIndicator;
 }

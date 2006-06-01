@@ -24,7 +24,7 @@ import javax.swing.JTabbedPane;
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
-import org.conservationmeasures.eam.annotations.IndicatorId;
+import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
@@ -165,7 +166,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		DialogGridPanel grid = new DialogGridPanel();
 		
 		grid.add(new UiLabel(EAM.text("Label|Indicator")));
-		grid.add(createIndicator(node.getIndicatorId()));
+		grid.add(createIndicatorDropdown(getProject().getIndicatorPool(), node.getIndicatorId()));
 		
 		return grid;
 	}
@@ -273,16 +274,23 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return component;
 	}
 	
-	public Component createIndicator(IndicatorId indicator)
+	public Component createIndicatorDropdown(IndicatorPool allAvailableIndicators, int indicatorId)
 	{
 		dropdownIndicator = new UiComboBox();
-		dropdownIndicator.addItem(new IndicatorId());
-		dropdownIndicator.addItem(new IndicatorId(1));
-		dropdownIndicator.addItem(new IndicatorId(2));
-		dropdownIndicator.addItem(new IndicatorId(3));
-
-		dropdownIndicator.setSelectedItem(indicator);
+		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
+		dropdownIndicator.addItem(nullIndicator);
 		
+		int[] availableIds = allAvailableIndicators.getIds();
+		for(int i = 0; i < availableIds.length; ++i)
+		{
+			dropdownIndicator.addItem(allAvailableIndicators.find(availableIds[i]));
+		}
+		
+		Indicator selected = allAvailableIndicators.find(indicatorId);
+		if(selected == null)
+			selected = nullIndicator;
+		dropdownIndicator.setSelectedItem(selected);
+
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownIndicator, BorderLayout.LINE_START);
 		return component;
@@ -390,7 +398,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		getProject().executeCommand(new CommandBeginTransaction());
 		getProject().executeCommand(new CommandSetNodeName(id, getText()));
 		getProject().executeCommand(new CommandSetNodeComment(id, getComment()));
-		getProject().executeCommand(new CommandSetIndicator(id, getIndicator()));
+		getProject().executeCommand(new CommandSetIndicator(id, getIndicator().getId()));
 		if(currentNode.canHaveObjectives())
 			getProject().executeCommand(new CommandSetNodeObjectives(id, getObjectives()));
 		if(currentNode.canHaveGoal())
@@ -436,9 +444,9 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return commentField.getText();
 	}
 	
-	public IndicatorId getIndicator()
+	public Indicator getIndicator()
 	{
-		return (IndicatorId)dropdownIndicator.getSelectedItem();
+		return (Indicator)dropdownIndicator.getSelectedItem();
 	}
 	
 	public NodeType getType()

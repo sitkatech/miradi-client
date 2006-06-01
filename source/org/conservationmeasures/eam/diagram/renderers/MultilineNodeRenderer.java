@@ -44,12 +44,13 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -76,6 +77,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			priority = new ThreatRatingValue(framework.getThreatThreatRatingValue(node.getId()));
 		else if(node.isTarget())
 			priority = new ThreatRatingValue(framework.getTargetThreatRatingValue(node.getId()));
+		indicator = ((DiagramComponent)graphToUse).getProject().getIndicatorPool().find(node.getIndicatorId());
 		return this;
 	}
 	
@@ -118,28 +120,31 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
-		IndicatorId indicator = node.getIndicatorId();
-		if(indicator != null && indicator.hasId())
-		{
-			TriangleRenderer indicatorRenderer = new TriangleRenderer();
-			Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
-			
-			Rectangle smallTriangle = new Rectangle();
-			smallTriangle.x = annotationsRectangle.x-INDICATOR_WIDTH;
-			smallTriangle.y = annotationsRectangle.y;
-			smallTriangle.width = INDICATOR_WIDTH;
-			smallTriangle.height = INDICATOR_HEIGHT;
-			setPaint(g2, smallTriangle, INDICATOR_COLOR);
-			indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
-			drawBoarder(g2, smallTriangle, indicatorRenderer);
-			smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
-			drawLabel(g2, smallTriangle, indicator.toString(), smallTriangle.getSize());
-		}
+		if(indicator == null)
+			return;
+		
+		int indicatorId = indicator.getId();
+		if(indicatorId == IdAssigner.INVALID_ID)
+			return;
+		
+		TriangleRenderer indicatorRenderer = new TriangleRenderer();
+		Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
+		
+		Rectangle smallTriangle = new Rectangle();
+		smallTriangle.x = annotationsRectangle.x-INDICATOR_WIDTH;
+		smallTriangle.y = annotationsRectangle.y;
+		smallTriangle.width = INDICATOR_WIDTH;
+		smallTriangle.height = INDICATOR_HEIGHT;
+		setPaint(g2, smallTriangle, INDICATOR_COLOR);
+		indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
+		drawBoarder(g2, smallTriangle, indicatorRenderer);
+		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
+		drawLabel(g2, smallTriangle, indicator.getIdentifier(), smallTriangle.getSize());
 	}
 
 	int getAnnotationLeftOffset()
 	{
-		if(node.getIndicatorId() == null || !node.getIndicatorId().hasId())
+		if(node.getIndicatorId() == IdAssigner.INVALID_ID)
 			return INDICATOR_WIDTH / 2;
 		
 		int indicatorOffset = getInsetDimension().width - INDICATOR_WIDTH / 2;
@@ -164,5 +169,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	
 	ThreatRatingValue priority;
+	Indicator indicator;
 	DiagramNode node;
 }

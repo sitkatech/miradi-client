@@ -15,7 +15,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
-import org.conservationmeasures.eam.annotations.IndicatorId;
+import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.annotations.ResourcePool;
@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
@@ -94,6 +95,7 @@ public class Project
 		taskPool = new TaskPool();
 		viewPool = new ViewPool();
 		resourcePool = new ResourcePool();
+		indicatorPool = new IndicatorPool();
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -152,6 +154,11 @@ public class Project
 	public ResourcePool getResourcePool()
 	{
 		return resourcePool;
+	}
+	
+	public IndicatorPool getIndicatorPool()
+	{
+		return indicatorPool;
 	}
 
 	public DiagramModel getDiagramModel()
@@ -291,6 +298,17 @@ public class Project
 				break;
 			}
 				
+			case ObjectType.INDICATOR:
+			{
+				if(objectId == IdAssigner.INVALID_ID)
+					objectId = getAnnotationIdAssigner().takeNextId();
+				Indicator indicator = new Indicator(objectId);
+				indicatorPool.put(indicator);
+				getDatabase().writeObject(indicator);
+				createdId = indicator.getId();
+				break;
+			}
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
 		}
@@ -336,6 +354,11 @@ public class Project
 				
 			case ObjectType.PROJECT_RESOURCE:
 				resourcePool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
+			case ObjectType.INDICATOR:
+				indicatorPool.remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -388,6 +411,12 @@ public class Project
 				getDatabase().writeObject(resource);
 				break;
 				
+			case ObjectType.INDICATOR:
+				Indicator indicator = getIndicatorPool().find(objectId);
+				indicator.setData(fieldTag, dataValue);
+				getDatabase().writeObject(indicator);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -417,6 +446,9 @@ public class Project
 				
 			case ObjectType.PROJECT_RESOURCE:
 				return resourcePool.find(objectId).getData(fieldTag);
+				
+			case ObjectType.INDICATOR:
+				return indicatorPool.find(objectId).getData(fieldTag);
 				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
@@ -464,6 +496,7 @@ public class Project
 		loadTaskPool();
 		loadViewPool();
 		loadResourcePool();
+		loadIndicatorPool();
 		loadDiagram();
 	}
 	
@@ -534,6 +567,17 @@ public class Project
 		{
 			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
 			resourcePool.put(resource);
+		}
+	}
+	
+	private void loadIndicatorPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.INDICATOR);
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
+			indicatorPool.put(indicator);
 		}
 	}
 	
@@ -927,7 +971,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setIndicator(int nodeId, IndicatorId desiredIndicatorId) throws Exception
+	public void setIndicator(int nodeId, int desiredIndicatorId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1180,6 +1224,7 @@ public class Project
 	TaskPool taskPool;
 	ViewPool viewPool;
 	ResourcePool resourcePool;
+	IndicatorPool indicatorPool;
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;

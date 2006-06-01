@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -22,7 +22,7 @@ abstract public class ConceptualModelNode extends EAMObject
 		type = nodeType;
 		
 		comment = "";
-		indicator = new IndicatorId();
+		indicator = IdAssigner.INVALID_ID;
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
 	}
@@ -33,7 +33,7 @@ abstract public class ConceptualModelNode extends EAMObject
 		type = nodeType;
 
 		comment = json.optString(TAG_COMMENT);
-		setIndicatorId(new IndicatorId(json.getInt(TAG_INDICATOR_ID)));
+		setIndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID));
 		
 		goals = new GoalIds();
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
@@ -78,12 +78,12 @@ abstract public class ConceptualModelNode extends EAMObject
 		return false;
 	}
 
-	public IndicatorId getIndicatorId()
+	public int getIndicatorId()
 	{
 		return indicator;
 	}
 	
-	public void setIndicatorId(IndicatorId indicatorToUse)
+	public void setIndicatorId(int indicatorToUse)
 	{
 		indicator = indicatorToUse;
 	}
@@ -176,7 +176,7 @@ abstract public class ConceptualModelNode extends EAMObject
 		JSONObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, typeString);
 		json.put(TAG_COMMENT, getComment());
-		json.put(TAG_INDICATOR_ID, getIndicatorId().getValue());
+		json.put(TAG_INDICATOR_ID, getIndicatorId());
 		
 		JSONArray goalIds = new JSONArray();
 		for(int i = 0; i < goals.size(); ++i)
@@ -216,7 +216,7 @@ abstract public class ConceptualModelNode extends EAMObject
 	private NodeType type;
 	private String comment;
 
-	private IndicatorId indicator;
+	private int indicator;
 	private ObjectiveIds objectives;
 	private GoalIds goals;
 }

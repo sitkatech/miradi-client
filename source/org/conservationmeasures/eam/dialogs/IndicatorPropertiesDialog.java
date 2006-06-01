@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
+public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 {
-	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
 	{
 		super(parentToUse, objectToEdit);
 		initializeFields(tags);
 	}
 
-	static final String[] tags = new String[] {"Initials", "Name", "Position"};
+	static final String[] tags = new String[] {"Identifier", "Label"};
 
 }

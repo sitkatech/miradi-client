@@ -11,7 +11,6 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
@@ -117,6 +116,7 @@ public class TestProject extends EAMTestCase
 			ObjectType.VIEW_DATA, 
 			ObjectType.MODEL_LINKAGE, 
 			ObjectType.PROJECT_RESOURCE,
+			ObjectType.INDICATOR,
 		};
 		
 		for(int i = 0; i < types.length; ++i)
@@ -605,7 +605,7 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandSetFactorType(factorId, new NodeTypeDirectThreat()));
 		assertEquals(3, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandSetIndicator(factorId, new IndicatorId(7)));
+		project.executeCommand(new CommandSetIndicator(factorId, 7));
 		assertEquals(4, database.callsToWriteNode);
 		
 		ObjectiveIds objectives = new ObjectiveIds();

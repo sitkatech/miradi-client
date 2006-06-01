@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.annotations.IndicatorId;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
@@ -29,12 +28,12 @@ public class TestSetIndication extends EAMTestCase
 		insertCommand.execute(project);
 		int id = insertCommand.getId();
 
-		IndicatorId indicator3 = new IndicatorId(3);
+		int indicator3 = 3;
 		Command setIndicatorCommand = new CommandSetIndicator(id, indicator3);
 		setIndicatorCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);
-		IndicatorId foundindicator = found.getIndicatorId();
+		int foundindicator = found.getIndicatorId();
 		assertEquals("wrong priority?", indicator3, foundindicator);
 		
 		project.close();

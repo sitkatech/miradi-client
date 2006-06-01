@@ -14,5 +14,6 @@ public class ObjectType
 	public static final int VIEW_DATA = 5;
 	public static final int MODEL_LINKAGE = 6;
 	public static final int PROJECT_RESOURCE = 7;
+	public static final int INDICATOR = 8;
 }
 

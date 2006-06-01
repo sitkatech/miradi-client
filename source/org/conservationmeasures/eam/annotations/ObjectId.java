@@ -30,7 +30,7 @@ public class ObjectId
 	{
 		if(!(obj instanceof ObjectId))
 			return false;
-		return ((IndicatorId)obj).id == id;
+		return ((ObjectId)obj).id == id;
 	}
 
 	public boolean hasId()
