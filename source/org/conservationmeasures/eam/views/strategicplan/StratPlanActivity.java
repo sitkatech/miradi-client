@@ -25,9 +25,9 @@ public class StratPlanActivity extends StratPlanObject
 	
 	public Object getValueAt(int column)
 	{
-		if(column == 0)
+		if(column == StrategicPlanTreeTableModel.labelColumn)
 			return toString();
-		if(column == 1)
+		if(column == StrategicPlanTreeTableModel.resourcesColumn)
 			return getResourcesAsString();
 		return "";
 	}

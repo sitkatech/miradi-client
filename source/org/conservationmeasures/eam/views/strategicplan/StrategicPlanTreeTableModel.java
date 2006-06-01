@@ -40,16 +40,13 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return strategy.getIntervention();
 	}
 	
-
-	
 	public int getColumnCount()
 	{
-		return 4;
+		return columnNames.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		String[] columnNames = {"Item", "Resources", "Budget", "Dates", };
 		return columnNames[column];
 	}
 
@@ -153,6 +150,13 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	{
 		return (StratPlanObject)getRoot();
 	}
+
+	public static final int labelColumn = 0;
+	public static final int resourcesColumn = 1;
+	public static final int budgetColumn = 2;
+	public static final int datesColumn = 3;
+	
+	static final String[] columnNames = {"Item", "Resources", "Budget", "Dates", };
 
 	Project project;
 }

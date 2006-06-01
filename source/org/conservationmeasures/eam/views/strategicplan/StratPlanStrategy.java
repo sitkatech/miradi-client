@@ -28,7 +28,7 @@ public class StratPlanStrategy extends StratPlanObject
 	
 	public Object getValueAt(int column)
 	{
-		if(column == 0)
+		if(column == StrategicPlanTreeTableModel.labelColumn)
 			return intervention.getLabel();
 		
 		return "";
