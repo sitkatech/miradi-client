@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -42,7 +42,7 @@ public class ModifyObjective extends ViewDoer
 
 	public void modify(Objective objective)
 	{
-		ObjectPropertiesDialog dlg = new IndicatorPropertiesDialog(getMainWindow(), objective);
+		ObjectPropertiesDialog dlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
 		dlg.setVisible(true);
 	}
 

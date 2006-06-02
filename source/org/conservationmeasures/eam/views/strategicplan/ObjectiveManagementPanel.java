@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectivePool;
 
@@ -32,7 +31,11 @@ public class ObjectiveManagementPanel extends ObjectManagementPanel
 		return objective;
 	}
 	
-	static final String[] columnTags = {Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL};
+	static final String[] columnTags = {
+		Objective.TAG_SHORT_LABEL, 
+		Objective.TAG_LABEL,
+		Objective.TAG_FULL_TEXT,
+		};
 	static final Class[] buttonActionClasses = {
 		ActionCreateObjective.class, 
 		ActionModifyObjective.class, 

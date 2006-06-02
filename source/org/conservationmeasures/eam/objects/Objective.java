@@ -17,12 +17,14 @@ public class Objective extends EAMObject
 	{
 		super(id);
 		shortLabel = "";
+		fullText = "";
 	}
 	
 	public Objective(JSONObject json)
 	{
 		super(json);
 		shortLabel = json.optString(TAG_SHORT_LABEL, "");
+		fullText = json.optString(TAG_FULL_TEXT, "");
 	}
 	
 	public int getType()
@@ -34,6 +36,8 @@ public class Objective extends EAMObject
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
 			return getShortLabel();
+		if(fieldTag.equals(TAG_FULL_TEXT))
+			return fullText;
 		
 		return super.getData(fieldTag);
 	}
@@ -42,6 +46,8 @@ public class Objective extends EAMObject
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
 			shortLabel = (String)dataValue;
+		else if(fieldTag.equals(TAG_FULL_TEXT))
+			fullText = (String)dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -55,6 +61,7 @@ public class Objective extends EAMObject
 	{
 		JSONObject json = super.toJson();
 		json.put(TAG_SHORT_LABEL, shortLabel);
+		json.put(TAG_FULL_TEXT, fullText);
 		
 		return json;
 	}
@@ -68,6 +75,8 @@ public class Objective extends EAMObject
 
 	
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
+	public final static String TAG_FULL_TEXT = "FullText";
 
 	String shortLabel;
+	String fullText;
 }

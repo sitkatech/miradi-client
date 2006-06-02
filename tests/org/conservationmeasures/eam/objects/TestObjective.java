@@ -16,13 +16,19 @@ public class TestObjective extends EAMTestCase
 
 	public void testData() throws Exception
 	{
-		final String sampleShortLabel = "2b";
+		verifyField(Objective.TAG_SHORT_LABEL);
+		verifyField(Objective.TAG_FULL_TEXT);
+	}
+	
+	public void verifyField(String tag) throws Exception
+	{
+		final String sampleData = "Blah blah";
 		Objective objective = new Objective(929);
-		assertEquals("didn't default Indentifier blank?", "", objective.getData(Objective.TAG_SHORT_LABEL));
-		objective.setData(Objective.TAG_SHORT_LABEL, sampleShortLabel);
-		assertEquals("did't set ShortLabel?", sampleShortLabel, objective.getData(Objective.TAG_SHORT_LABEL));
+		assertEquals("didn't default " + tag + " blank?", "", objective.getData(tag));
+		objective.setData(tag, sampleData);
+		assertEquals("did't set " + tag + "?", sampleData, objective.getData(tag));
 		Objective got = new Objective(objective.toJson());
-		assertEquals("didn't jsonize ShortLabel?", objective.getData(Objective.TAG_SHORT_LABEL), got.getData(Objective.TAG_SHORT_LABEL));
+		assertEquals("didn't jsonize " + tag + "?", objective.getData(tag), got.getData(tag));
 
 	}
 }
