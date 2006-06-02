@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
+import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
@@ -12,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
+import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -48,13 +50,13 @@ public class StrategicPlanView extends UmbrellaView
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		objectivePanel = new ObjectiveManagementPanel(getMainWindow());
-		resourcePanel = new ResourceManagementPanel(getMainWindow());
 		indicatorManagementPanel = new IndicatorManagementPanel(getMainWindow());
+		resourcePanel = new ResourceManagementPanel(getMainWindow());
 
 		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
 		tabs.add(EAM.text("Objectives"), objectivePanel);
-		tabs.add(EAM.text("Resources"), resourcePanel);
 		tabs.add(EAM.text("Indicators"), indicatorManagementPanel);
+		tabs.add(EAM.text("Resources"), resourcePanel);
 	}
 
 	public void becomeInactive() throws Exception
@@ -80,6 +82,11 @@ public class StrategicPlanView extends UmbrellaView
 		return indicatorManagementPanel;
 	}
 	
+	public ObjectiveManagementPanel getObjectivePanel()
+	{
+		return objectivePanel;
+	}
+	
 	public StratPlanObject getSelectedObject()
 	{
 		if(strategicPlanPanel == null)
@@ -101,12 +108,18 @@ public class StrategicPlanView extends UmbrellaView
 	{
 		return modifyIndicatorDoer;
 	}
+	
+	public ModifyObjective getModifyObjectiveDoer()
+	{
+		return modifyObjectiveDoer;
+	}
 
 	private void addStrategicPlanDoersToMap()
 	{
 		modifyActivityDoer = new ModifyActivity(this);
 		modifyResourceDoer = new ModifyResource(this);
 		modifyIndicatorDoer = new ModifyIndicator(this);
+		modifyObjectiveDoer = new ModifyObjective(this);
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
@@ -119,6 +132,10 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionModifyIndicator.class, getModifyIndicatorDoer());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator(this));
+
+		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
+		addDoerToMap(ActionModifyObjective.class, getModifyObjectiveDoer());
+		//addDoerToMap(ActionDeleteObjective.class, new DeleteObjective(this));
 	}
 	
 	JTabbedPane tabs;
@@ -129,5 +146,6 @@ public class StrategicPlanView extends UmbrellaView
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 	ModifyIndicator modifyIndicatorDoer;
+	ModifyObjective modifyObjectiveDoer;
 }
 
