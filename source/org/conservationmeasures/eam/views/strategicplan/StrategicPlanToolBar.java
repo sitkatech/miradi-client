@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import javax.swing.JComponent;
 
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
@@ -23,8 +22,6 @@ public class StrategicPlanToolBar extends EAMToolBar
 				new Separator(),
 				new ToolBarButton(actions, ActionUndo.class),
 				new ToolBarButton(actions, ActionRedo.class),
-				new Separator(),
-				new ToolBarButton(actions, ActionInsertActivity.class),
 		};
 		return buttons;
 	}
