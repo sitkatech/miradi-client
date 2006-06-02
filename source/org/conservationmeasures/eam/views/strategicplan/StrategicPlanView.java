@@ -47,10 +47,13 @@ public class StrategicPlanView extends UmbrellaView
 		tabs.removeAll();
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
-		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
+		objectivePanel = new ObjectiveManagementPanel(getMainWindow());
 		resourcePanel = new ResourceManagementPanel(getMainWindow());
-		tabs.add(EAM.text("Resources"), resourcePanel);
 		indicatorManagementPanel = new IndicatorManagementPanel(getMainWindow());
+
+		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
+		tabs.add(EAM.text("Objectives"), objectivePanel);
+		tabs.add(EAM.text("Resources"), resourcePanel);
 		tabs.add(EAM.text("Indicators"), indicatorManagementPanel);
 	}
 
@@ -122,6 +125,7 @@ public class StrategicPlanView extends UmbrellaView
 	StrategicPlanPanel strategicPlanPanel;
 	ResourceManagementPanel resourcePanel;
 	IndicatorManagementPanel indicatorManagementPanel;
+	ObjectiveManagementPanel objectivePanel;
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 	ModifyIndicator modifyIndicatorDoer;

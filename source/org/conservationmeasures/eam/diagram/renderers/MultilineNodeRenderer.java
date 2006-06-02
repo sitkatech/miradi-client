@@ -43,11 +43,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
+import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -100,13 +103,17 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		if(objectives.hasAnnotation())
 		{
 			int objectiveId = objectives.getId(0);
-			drawAnnotation(rect, g2, model.getObjectiveById(objectiveId));
+			Objective objective = model.getObjectiveById(objectiveId);
+			if(objective != null)
+				drawAnnotation(rect, g2, EAM.text("Label|Obj ") + objective.getShortLabel());
 		}
 		GoalIds goals = node.getGoals();
 		if(goals.hasAnnotation())
 		{
 			int goalId = goals.getId(0);
-			drawAnnotation(rect, g2, model.getGoalById(goalId));
+			Goal goal = model.getGoalById(goalId);
+			if(goal != null && goal.hasAnnotation())
+				drawAnnotation(rect, g2, goal.toString());
 		}
 		drawIndicator(rect, g2);
 	}

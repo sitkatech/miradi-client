@@ -6,19 +6,25 @@
 
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ObjectType;
 
 
-public class Objective extends NodeAnnotation
+
+public class Objective extends EAMObject
 {
-	public Objective(int id, String objective)
+	public Objective(int id)
 	{
-		super(id, objective);
+		super(id);
 	}
 	
-	public boolean equals(Object obj) 
+	public int getType()
 	{
-		if(!(obj instanceof Objective))
-			return false;
-		return ((Objective)obj).getAnnotation().equals(getAnnotation());
+		return ObjectType.OBJECTIVE;
+	}
+	
+	public String getShortLabel()
+	{
+		return "xxx";
 	}
 }

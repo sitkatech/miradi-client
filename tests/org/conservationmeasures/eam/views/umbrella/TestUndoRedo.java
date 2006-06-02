@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -120,7 +121,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	public void testUndoRedoObjective() throws Exception
 	{
-		int objectiveId = project.getObjectivePool().getIds()[1];
+		int objectiveId = project.createObject(ObjectType.OBJECTIVE);
 		
 		ObjectiveIds target1Objectives = new ObjectiveIds();
 		target1Objectives.addId(objectiveId);

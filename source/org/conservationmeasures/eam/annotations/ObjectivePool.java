@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.annotations;
 
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ObjectPool;
 
 public class ObjectivePool extends ObjectPool
@@ -20,18 +19,4 @@ public class ObjectivePool extends ObjectPool
 		return (Objective)getRawObject(id);
 	}
 
-	public static ObjectivePool createSampleObjectives(IdAssigner assigner)
-	{
-		//TODO: These will be replaced by real user entered data from a wizard
-		ObjectivePool objectives = new ObjectivePool();
-		
-		objectives.put(new Objective(IdAssigner.INVALID_ID, Objective.ANNOTATION_NONE_STRING));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 1"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 2"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj 3"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj A"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj B"));
-		objectives.put(new Objective(assigner.takeNextId(), "Obj C"));
-		return objectives;
-	}
 }

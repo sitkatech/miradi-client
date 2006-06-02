@@ -17,7 +17,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
@@ -548,27 +547,26 @@ public class TestCommands extends EAMTestCase
 		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
 		assertEquals("size not zero?", 0, originalObjectives.size());
 
-		int[] allObjectiveIds = project.getObjectivePool().getIds();
-		Objective objective1 = project.getObjectivePool().find(allObjectiveIds[1]); 
-		Objective objective2 = project.getObjectivePool().find(allObjectiveIds[3]);
+		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE); 
+		int objectiveId2 = project.createObject(ObjectType.OBJECTIVE); 
 
 		ObjectiveIds objectiveIds = new ObjectiveIds();
-		objectiveIds.addId(objective1.getId());
-		objectiveIds.addId(objective2.getId());
+		objectiveIds.addId(objectiveId1);
+		objectiveIds.addId(objectiveId2);
 		
 		CommandSetNodeObjectives cmd = new CommandSetNodeObjectives(id, objectiveIds);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old objective?", originalObjectives, cmd.getPreviousObjectives());
 		assertEquals( 2, node.getObjectives().size());
-		assertEquals( objective1.getId(), node.getObjectives().getId(0));
-		assertEquals( objective2.getId(), node.getObjectives().getId(1));
+		assertEquals( objectiveId1, node.getObjectives().getId(0));
+		assertEquals( objectiveId2, node.getObjectives().getId(1));
 
 		CommandSetNodeObjectives loaded = (CommandSetNodeObjectives)saveAndReload(cmd);
 		assertEquals("didn't restore id?", id, loaded.getId());
 		assertEquals( 2, loaded.getCurrentObjectives().size());
 		assertEquals("didn't restore new objective?", 2, loaded.getCurrentObjectives().size());
-		assertEquals( objective1.getId(), loaded.getCurrentObjectives().getId(0));
-		assertEquals( objective2.getId(), loaded.getCurrentObjectives().getId(1));
+		assertEquals( objectiveId1, loaded.getCurrentObjectives().getId(0));
+		assertEquals( objectiveId2, loaded.getCurrentObjectives().getId(1));
 		assertEquals("didn't restore previous objective?", originalObjectives, loaded.getPreviousObjectives());
 		
 		cmd.undo(project);

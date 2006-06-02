@@ -26,11 +26,9 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import org.conservationmeasures.eam.annotations.NodeAnnotation;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -129,10 +127,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	{
 		if(vision == null || vision.length() == 0)
 			return;
-		NodeAnnotation annotation = new NodeAnnotation(IdAssigner.INVALID_ID, vision);
 		Rectangle scopeRect = (Rectangle)rect.clone();
 		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
-		drawAnnotation(scopeRect, g2, annotation);
+		drawAnnotation(scopeRect, g2, vision);
 	}
 	
 	protected void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
@@ -150,22 +147,22 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.translate(-labelRectangle.x, -labelRectangle.y);
 	}
 
-	void drawAnnotation(Rectangle rect, Graphics2D g2, NodeAnnotation annotation) 
+	void drawAnnotation(Rectangle rect, Graphics2D g2, String annotationText) 
 	{
-		if(annotation != null && annotation.hasAnnotation())
-		{
-			final int singleAnnotation = 1;
-			Rectangle annotationsRectangle = getAnnotationsRect(rect, singleAnnotation);
-			setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
-			RectangleRenderer annotationRenderer = new RectangleRenderer();
-			annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
+		if(annotationText == null)
+			return;
 
-			drawBoarder(g2, annotationsRectangle, annotationRenderer);
-			
-			//TODO allow multiple Objectives
-			String labelMessage = annotation.toString();
-			drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
-		}
+		final int singleAnnotation = 1;
+		Rectangle annotationsRectangle = getAnnotationsRect(rect, singleAnnotation);
+		setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
+		RectangleRenderer annotationRenderer = new RectangleRenderer();
+		annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
+
+		drawBoarder(g2, annotationsRectangle, annotationRenderer);
+		
+		//TODO allow multiple Objectives
+		String labelMessage = annotationText;
+		drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 	}
 
 	void drawBoarder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 

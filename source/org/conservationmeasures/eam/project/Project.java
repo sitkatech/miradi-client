@@ -16,6 +16,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
+import org.conservationmeasures.eam.annotations.Objective;
 import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.annotations.ResourcePool;
@@ -91,7 +92,7 @@ public class Project
 		nodePool = new NodePool();
 		linkagePool = new LinkagePool();
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
-		objectivePool = ObjectivePool.createSampleObjectives(getAnnotationIdAssigner());
+		objectivePool = new ObjectivePool();
 		taskPool = new TaskPool();
 		viewPool = new ViewPool();
 		resourcePool = new ResourcePool();
@@ -306,6 +307,17 @@ public class Project
 				indicatorPool.put(indicator);
 				getDatabase().writeObject(indicator);
 				createdId = indicator.getId();
+				break;
+			}
+				
+			case ObjectType.OBJECTIVE:
+			{
+				if(objectId == IdAssigner.INVALID_ID)
+					objectId = getAnnotationIdAssigner().takeNextId();
+				Objective objective = new Objective(objectId);
+				objectivePool.put(objective);
+				getDatabase().writeObject(objective);
+				createdId = objective.getId();
 				break;
 			}
 				

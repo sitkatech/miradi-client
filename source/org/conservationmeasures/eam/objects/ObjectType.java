@@ -15,5 +15,6 @@ public class ObjectType
 	public static final int MODEL_LINKAGE = 6;
 	public static final int PROJECT_RESOURCE = 7;
 	public static final int INDICATOR = 8;
+	public static final int OBJECTIVE = 9;
 }
 
