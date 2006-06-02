@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
-import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ObjectivePool;
 
 public class ObjectiveManagementPanel extends ObjectManagementPanel
 {

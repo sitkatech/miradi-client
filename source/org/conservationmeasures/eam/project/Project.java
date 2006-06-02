@@ -16,9 +16,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
-import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.ObjectiveIds;
-import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.annotations.ResourcePool;
 import org.conservationmeasures.eam.annotations.TaskPool;
 import org.conservationmeasures.eam.annotations.ViewPool;
@@ -58,6 +55,9 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ObjectiveIds;
+import org.conservationmeasures.eam.objects.ObjectivePool;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -374,6 +374,11 @@ public class Project
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
+			case ObjectType.OBJECTIVE:
+				objectivePool.remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
 			default:
 				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
 		}
@@ -429,6 +434,13 @@ public class Project
 				getDatabase().writeObject(indicator);
 				break;
 				
+			case ObjectType.OBJECTIVE:
+				Objective objective = getObjectivePool().find(objectId);
+				objective.setData(fieldTag, dataValue);
+				getDatabase().writeObject(objective);
+				break;
+				
+				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
 		}
@@ -461,6 +473,9 @@ public class Project
 				
 			case ObjectType.INDICATOR:
 				return indicatorPool.find(objectId).getData(fieldTag);
+				
+			case ObjectType.OBJECTIVE:
+				return objectivePool.find(objectId).getData(fieldTag);
 				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
@@ -509,6 +524,7 @@ public class Project
 		loadViewPool();
 		loadResourcePool();
 		loadIndicatorPool();
+		loadObjectivePool();
 		loadDiagram();
 	}
 	
@@ -590,6 +606,17 @@ public class Project
 		{
 			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
 			indicatorPool.put(indicator);
+		}
+	}
+	
+	private void loadObjectivePool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.OBJECTIVE);
+		int[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
+			objectivePool.put(objective);
 		}
 	}
 	

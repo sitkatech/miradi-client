@@ -18,13 +18,13 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalPool;
-import org.conservationmeasures.eam.annotations.Objective;
-import org.conservationmeasures.eam.annotations.ObjectivePool;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ObjectivePool;
 import org.conservationmeasures.eam.project.LinkagePool;
 import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.project.Project;

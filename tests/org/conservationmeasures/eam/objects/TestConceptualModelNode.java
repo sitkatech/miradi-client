@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.martus.util.TestCaseEnhanced;
 

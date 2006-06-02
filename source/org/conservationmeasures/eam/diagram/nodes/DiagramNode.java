@@ -15,7 +15,6 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
-import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
@@ -26,6 +25,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.utils.DataMap;

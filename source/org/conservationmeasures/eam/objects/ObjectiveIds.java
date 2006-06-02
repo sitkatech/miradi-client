@@ -4,10 +4,12 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.annotations;
+package org.conservationmeasures.eam.objects;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+
+import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
 
 
 

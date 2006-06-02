@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.annotations;
+package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.project.ObjectPool;
 

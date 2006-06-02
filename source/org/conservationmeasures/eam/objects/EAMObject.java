@@ -49,6 +49,9 @@ abstract public class EAMObject
 			case ObjectType.INDICATOR:
 				return new Indicator(json);
 				
+			case ObjectType.OBJECTIVE:
+				return new Objective(json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

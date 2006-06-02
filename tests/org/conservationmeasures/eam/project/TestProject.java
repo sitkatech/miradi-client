@@ -11,7 +11,6 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
-import org.conservationmeasures.eam.annotations.ObjectiveIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
@@ -43,6 +42,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -117,6 +117,7 @@ public class TestProject extends EAMTestCase
 			ObjectType.MODEL_LINKAGE, 
 			ObjectType.PROJECT_RESOURCE,
 			ObjectType.INDICATOR,
+			ObjectType.OBJECTIVE,
 		};
 		
 		for(int i = 0; i < types.length; ++i)
