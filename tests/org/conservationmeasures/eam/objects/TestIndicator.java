@@ -16,12 +16,12 @@ public class TestIndicator extends EAMTestCase
 
 	public void testData() throws Exception
 	{
-		final String sampleIdentifier = "17";
+		final String sampleShortLabel = "17";
 		Indicator indicator = new Indicator(29);
-		assertEquals("didn't default Indentifier blank?", "", indicator.getData(Indicator.TAG_IDENTIFIER));
-		indicator.setData(Indicator.TAG_IDENTIFIER, sampleIdentifier);
-		assertEquals("did't set Identifier?", sampleIdentifier, indicator.getData(Indicator.TAG_IDENTIFIER));
+		assertEquals("didn't default Indentifier blank?", "", indicator.getData(Indicator.TAG_SHORT_LABEL));
+		indicator.setData(Indicator.TAG_SHORT_LABEL, sampleShortLabel);
+		assertEquals("did't set ShortLabel?", sampleShortLabel, indicator.getData(Indicator.TAG_SHORT_LABEL));
 		Indicator got = new Indicator(indicator.toJson());
-		assertEquals("didn't jsonize Identifier?", indicator.getData(Indicator.TAG_IDENTIFIER), got.getData(Indicator.TAG_IDENTIFIER));
+		assertEquals("didn't jsonize ShortLabel?", indicator.getData(Indicator.TAG_SHORT_LABEL), got.getData(Indicator.TAG_SHORT_LABEL));
 	}
 }

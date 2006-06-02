@@ -13,13 +13,13 @@ public class Indicator extends EAMObject
 	public Indicator(int idToUse)
 	{
 		super(idToUse);
-		identifier = "";
+		shortLabel = "";
 	}
 	
 	public Indicator(JSONObject json)
 	{
 		super(json);
-		identifier = json.optString(TAG_IDENTIFIER, "");
+		shortLabel = json.optString(TAG_SHORT_LABEL, "");
 	}
 	
 	public int getType()
@@ -29,29 +29,29 @@ public class Indicator extends EAMObject
 
 	public String getData(String fieldTag)
 	{
-		if(fieldTag.equals(TAG_IDENTIFIER))
-			return getIdentifier();
+		if(fieldTag.equals(TAG_SHORT_LABEL))
+			return getShortLabel();
 		
 		return super.getData(fieldTag);
 	}
 
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
-		if(fieldTag.equals(TAG_IDENTIFIER))
-			identifier = (String)dataValue;
+		if(fieldTag.equals(TAG_SHORT_LABEL))
+			shortLabel = (String)dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public String getIdentifier()
+	public String getShortLabel()
 	{
-		return identifier;
+		return shortLabel;
 	}
 
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_IDENTIFIER, identifier);
+		json.put(TAG_SHORT_LABEL, shortLabel);
 		
 		return json;
 	}
@@ -60,11 +60,11 @@ public class Indicator extends EAMObject
 	{
 		if(getId() == IdAssigner.INVALID_ID)
 			return "(None)";
-		return identifier + ": " + getLabel();
+		return shortLabel + ": " + getLabel();
 	}
 
-	public static final String TAG_IDENTIFIER = "Identifier";
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
 
-	String identifier;
+	String shortLabel;
 
 }
