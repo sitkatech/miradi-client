@@ -34,6 +34,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	static final String[] columnTags = {
 		Indicator.TAG_SHORT_LABEL, 
 		Indicator.TAG_LABEL,
+		Indicator.TAG_METHOD,
 		};
 	static final Class[] buttonActionClasses = {
 		ActionCreateIndicator.class, 

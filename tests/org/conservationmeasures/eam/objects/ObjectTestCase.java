@@ -23,18 +23,38 @@ public class ObjectTestCase extends EAMTestCase
 		{
 			final String sampleData = "Blah blah";
 			int id = project.createObject(objectType);
-			EAMObject objective = project.findObject(objectType, id);
-			assertEquals("didn't default " + tag + " blank?", "", objective.getData(tag));
-			objective.setData(tag, sampleData);
-			assertEquals("did't set " + tag + "?", sampleData, objective.getData(tag));
-			Objective got = new Objective(objective.toJson());
-			assertEquals("didn't jsonize " + tag + "?", objective.getData(tag), got.getData(tag));
+			EAMObject object = project.findObject(objectType, id);
+			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
+			object.setData(tag, sampleData);
+			assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
+			EAMObject got = EAMObject.createFromJson(objectType, object.toJson());
+			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		}
 		finally
 		{
 			project.close();
 		}
-	
 	}
-
+	
+	public void verifyIdListField(int objectType, String tag) throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		try
+		{
+			IdList sampleData = new IdList();
+			sampleData.add(7);
+			sampleData.add(49);
+			int id = project.createObject(objectType);
+			EAMObject object = project.findObject(objectType, id);
+			assertEquals("didn't default " + tag + " empty?", 0, new IdList(object.getData(tag)).size());
+			object.setData(tag, sampleData.toString());
+			assertEquals("did't set " + tag + "?", sampleData, new IdList(object.getData(tag)));
+			EAMObject got = EAMObject.createFromJson(objectType, object.toJson());
+			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
+		}
+		finally
+		{
+			project.close();
+		}
+	}
 }

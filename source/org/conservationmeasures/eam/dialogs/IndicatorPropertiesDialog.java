@@ -17,6 +17,10 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 		initializeFields(tags);
 	}
 
-	static final String[] tags = new String[] {Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL};
+	static final String[] tags = new String[] {
+		Indicator.TAG_SHORT_LABEL, 
+		Indicator.TAG_LABEL,
+		Indicator.TAG_METHOD,
+		};
 
 }

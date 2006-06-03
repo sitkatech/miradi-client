@@ -5,9 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestIndicator extends EAMTestCase
+public class TestIndicator extends ObjectTestCase
 {
 	public TestIndicator(String name)
 	{
@@ -16,12 +15,8 @@ public class TestIndicator extends EAMTestCase
 
 	public void testData() throws Exception
 	{
-		final String sampleShortLabel = "17";
-		Indicator indicator = new Indicator(29);
-		assertEquals("didn't default Indentifier blank?", "", indicator.getData(Indicator.TAG_SHORT_LABEL));
-		indicator.setData(Indicator.TAG_SHORT_LABEL, sampleShortLabel);
-		assertEquals("did't set ShortLabel?", sampleShortLabel, indicator.getData(Indicator.TAG_SHORT_LABEL));
-		Indicator got = new Indicator(indicator.toJson());
-		assertEquals("didn't jsonize ShortLabel?", indicator.getData(Indicator.TAG_SHORT_LABEL), got.getData(Indicator.TAG_SHORT_LABEL));
+		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL);
+		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_METHOD);
+		verifyIdListField(ObjectType.INDICATOR, Indicator.TAG_RESOURCE_IDS);
 	}
 }
