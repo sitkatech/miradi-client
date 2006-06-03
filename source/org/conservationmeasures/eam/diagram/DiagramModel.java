@@ -156,55 +156,87 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		HashSet results = new HashSet();
 		ConceptualModelNode baseThreat = getNodePool().find(directThreatId);
-		results.add(new Integer(baseThreat.getId()));
 		if(!baseThreat.isDirectThreat())
-			return intArrayFromSet(results);
+			return new int[0];
+		results.addAll(getDirectlyLinkedDownstreamNodeIds(baseThreat));
+		results.addAll(getAllUpstreamNodeIds(baseThreat));
+		
+		return intArrayFromSet(results);
+	}
 
+	public HashSet getAllUpstreamNodeIds(ConceptualModelNode startingNode)
+	{
+		return getAllLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
+	}
+
+	public HashSet getAllDownstreamNodeIds(ConceptualModelNode startingNode)
+	{
+		return getAllLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
+	}
+
+	public HashSet getDirectlyLinkedUpstreamNodeIds(ConceptualModelNode startingNode)
+	{
+		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
+	}
+
+	public HashSet getDirectlyLinkedDownstreamNodeIds(ConceptualModelNode startingNode)
+	{
+		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
+	}
+
+	private HashSet getDirectlyLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	{
+
+		HashSet results = new HashSet();
+		results.add(new Integer(startingNode.getId()));
+		
 		LinkagePool linkagePool = getLinkagePool();
-
-		HashSet downstreamNodes = new HashSet();
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getFromNodeId() == baseThreat.getId())
+			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
 				int downstreamNodeId = thisLinkage.getToNodeId();
-				downstreamNodes.add(new Integer(downstreamNodeId));
+				results.add(new Integer(downstreamNodeId));
 			}
 		}
-		results.addAll(downstreamNodes);
-		
-		HashSet upstreamNodes = new HashSet();
-		HashSet unprocessedUpstreamNodes = new HashSet();
+		return results;
+	}
+
+	private HashSet getAllLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	{
+		HashSet linkedNodes = new HashSet();
+		HashSet unprocessedNodes = new HashSet();
+		linkedNodes.add(new Integer(startingNode.getId()));
+
+		LinkagePool linkagePool = getLinkagePool();
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getToNodeId() == baseThreat.getId())
+			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
-				ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
-				unprocessedUpstreamNodes.add(upstreamNode);
+				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getFromNodeId());
+				unprocessedNodes.add(linkedNode);
 			}
 		}		
 		
-		while(unprocessedUpstreamNodes.size() > 0)
+		while(unprocessedNodes.size() > 0)
 		{
-			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedUpstreamNodes.toArray()[0];
-			upstreamNodes.add(new Integer(thisNode.getId()));
+			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedNodes.toArray()[0];
+			linkedNodes.add(new Integer(thisNode.getId()));
 			for(int i = 0; i < linkagePool.getIds().length; ++i)
 			{
 				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 				if(thisLinkage.getToNodeId() == thisNode.getId())
 				{
-					ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
-					unprocessedUpstreamNodes.add(upstreamNode);
+					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getFromNodeId());
+					unprocessedNodes.add(linkedNode);
 				}
 					
 			}
-			unprocessedUpstreamNodes.remove(thisNode);
+			unprocessedNodes.remove(thisNode);
 		}
-		results.addAll(upstreamNodes);
-		
-		return intArrayFromSet(results);
+		return linkedNodes;
 	}
 
 	private int[] intArrayFromSet(HashSet results)

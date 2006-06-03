@@ -52,7 +52,7 @@ public class TestDiagramModel extends EAMTestCase
 				26, 36, 36, 35, 35, 34,
 		};
 		
-		SampleDiagramBuilder.buildNodeGrid(project, 6, linkagePairs);
+		SampleDiagramBuilder.buildNodeGrid(project, 7, linkagePairs);
 		
 		int[][] expectedNodesInChain = {
 				{ 31,  11, 12, 13, 21, 22, 41 },
@@ -61,7 +61,7 @@ public class TestDiagramModel extends EAMTestCase
 				{ 34,  24, 25, 26, 35, 36, 44 },
 				{ 35,  25, 26, 34, 36, 45 },
 				{ 36,  26, 35 },
-				{ 41 },
+				{ 37 },
 		};
 
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)

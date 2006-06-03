@@ -74,6 +74,15 @@ public class ConceptualModelLinkage extends EAMObject
 		return super.getData(fieldTag);
 	}
 	
+	public int getNodeId(int direction)
+	{
+		if(direction == FROM)
+			return getFromNodeId();
+		if(direction == TO)
+			return getToNodeId();
+		throw new RuntimeException("Linkage: Unknown direction " + direction);
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
@@ -86,6 +95,9 @@ public class ConceptualModelLinkage extends EAMObject
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
 	public static String TAG_STRESS_LABEL = "StressLabel";
+	
+	public static final int FROM = 1;
+	public static final int TO = 2;
 	
 	private int fromId;
 	private int toId;
