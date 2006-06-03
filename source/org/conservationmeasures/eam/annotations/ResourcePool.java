@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.EAMObjectPool;
 
-public class ResourcePool extends ObjectPool
+public class ResourcePool extends EAMObjectPool
 {
 	public void put(ProjectResource resource)
 	{

@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 
-public class LinkagePool extends ObjectPool
+public class LinkagePool extends EAMObjectPool
 {
 	public void put(ConceptualModelLinkage linkage)
 	{

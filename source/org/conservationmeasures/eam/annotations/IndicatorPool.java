@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.EAMObjectPool;
 
-public class IndicatorPool extends ObjectPool
+public class IndicatorPool extends EAMObjectPool
 {
 	public void put(Indicator indicator)
 	{

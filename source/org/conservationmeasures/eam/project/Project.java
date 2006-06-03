@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -89,14 +90,17 @@ public class Project
 	private void clear() throws IOException
 	{
 		projectInfo = new ProjectInfo();
-		nodePool = new NodePool();
-		linkagePool = new LinkagePool();
+		
+		pools = new HashMap();
+		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
+		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
+		pools.put(new Integer(ObjectType.TASK), new TaskPool());
+		pools.put(new Integer(ObjectType.VIEW_DATA), new ViewPool());
+		pools.put(new Integer(ObjectType.PROJECT_RESOURCE), new ResourcePool());
+		pools.put(new Integer(ObjectType.INDICATOR), new IndicatorPool());
+		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool());
+
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
-		objectivePool = new ObjectivePool();
-		taskPool = new TaskPool();
-		viewPool = new ViewPool();
-		resourcePool = new ResourcePool();
-		indicatorPool = new IndicatorPool();
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
@@ -122,14 +126,44 @@ public class Project
 		return database;
 	}
 	
+	public EAMObjectPool getPool(int objectType)
+	{
+		return (EAMObjectPool)pools.get(new Integer(objectType));
+	}
+	
 	public NodePool getNodePool()
 	{
-		return nodePool;
+		return (NodePool)getPool(ObjectType.MODEL_NODE);
 	}
 	
 	public LinkagePool getLinkagePool()
 	{
-		return linkagePool;
+		return (LinkagePool)getPool(ObjectType.MODEL_LINKAGE);
+	}
+	
+	public TaskPool getTaskPool()
+	{
+		return (TaskPool)getPool(ObjectType.TASK);
+	}
+	
+	public ViewPool getViewPool()
+	{
+		return (ViewPool)getPool(ObjectType.VIEW_DATA);
+	}
+	
+	public ResourcePool getResourcePool()
+	{
+		return (ResourcePool)getPool(ObjectType.PROJECT_RESOURCE);
+	}
+	
+	public IndicatorPool getIndicatorPool()
+	{
+		return (IndicatorPool)getPool(ObjectType.INDICATOR);
+	}
+
+	public ObjectivePool getObjectivePool()
+	{
+		return (ObjectivePool)getPool(ObjectType.OBJECTIVE);
 	}
 	
 	public GoalPool getGoalPool()
@@ -137,31 +171,6 @@ public class Project
 		return goalPool;
 	}
 	
-	public ObjectivePool getObjectivePool()
-	{
-		return objectivePool;
-	}
-	
-	public TaskPool getTaskPool()
-	{
-		return taskPool;
-	}
-	
-	public ViewPool getViewPool()
-	{
-		return viewPool;
-	}
-	
-	public ResourcePool getResourcePool()
-	{
-		return resourcePool;
-	}
-	
-	public IndicatorPool getIndicatorPool()
-	{
-		return indicatorPool;
-	}
-
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
@@ -194,13 +203,13 @@ public class Project
 	
 	public ViewData getViewData(String viewName) throws Exception
 	{
-		ViewData found = viewPool.findByLabel(viewName);
+		ViewData found = getViewPool().findByLabel(viewName);
 		if(found != null)
 			return found;
 		
 		int createdId = createObject(ObjectType.VIEW_DATA);
 		setObjectData(ObjectType.VIEW_DATA, createdId, ViewData.TAG_LABEL, viewName);
-		return viewPool.find(createdId);
+		return getViewPool().find(createdId);
 	}
 	
 	public ThreatRatingFramework getThreatRatingFramework()
@@ -218,6 +227,12 @@ public class Project
 			getDatabase().writeProjectInfo(projectInfo);
 		}
 		return getTaskPool().find(rootTaskId);
+	}
+	
+	public EAMObject findObject(int objectType, int objectId)
+	{
+		EAMObjectPool pool = getPool(objectType);
+		return pool.findObject(objectId);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -255,7 +270,7 @@ public class Project
 				if(objectId == IdAssigner.INVALID_ID)
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Task task = new Task(objectId);
-				taskPool.put(task);
+				getTaskPool().put(task);
 				getDatabase().writeObject(task);
 				createdId = task.getId();
 				break;
@@ -272,7 +287,7 @@ public class Project
 				if(objectId == IdAssigner.INVALID_ID)
 					objectId = getAnnotationIdAssigner().takeNextId();
 				ViewData viewData = new ViewData(objectId);
-				viewPool.put(viewData);
+				getViewPool().put(viewData);
 				getDatabase().writeObject(viewData);
 				createdId = viewData.getId();
 				break;
@@ -282,7 +297,7 @@ public class Project
 			{
 				objectId = projectInfo.obtainRealLinkageId(objectId);
 				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, -2, -2);
-				linkagePool.put(cmLinkage);
+				getLinkagePool().put(cmLinkage);
 				database.writeObject(cmLinkage);
 				createdId = cmLinkage.getId();
 				break;
@@ -293,7 +308,7 @@ public class Project
 				if(objectId == IdAssigner.INVALID_ID)
 					objectId = getAnnotationIdAssigner().takeNextId();
 				ProjectResource resource = new ProjectResource(objectId);
-				resourcePool.put(resource);
+				getResourcePool().put(resource);
 				getDatabase().writeObject(resource);
 				createdId = resource.getId();
 				break;
@@ -304,7 +319,7 @@ public class Project
 				if(objectId == IdAssigner.INVALID_ID)
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Indicator indicator = new Indicator(objectId);
-				indicatorPool.put(indicator);
+				getIndicatorPool().put(indicator);
 				getDatabase().writeObject(indicator);
 				createdId = indicator.getId();
 				break;
@@ -315,7 +330,7 @@ public class Project
 				if(objectId == IdAssigner.INVALID_ID)
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Objective objective = new Objective(objectId);
-				objectivePool.put(objective);
+				getObjectivePool().put(objective);
 				getDatabase().writeObject(objective);
 				createdId = objective.getId();
 				break;
@@ -345,37 +360,37 @@ public class Project
 				break;
 				
 			case ObjectType.TASK:
-				taskPool.remove(objectId);
+				getTaskPool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.MODEL_NODE:
-				nodePool.remove(objectId);
+				getNodePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.VIEW_DATA:
-				viewPool.remove(objectId);
+				getViewPool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.MODEL_LINKAGE:
-				linkagePool.remove(objectId);
+				getLinkagePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.PROJECT_RESOURCE:
-				resourcePool.remove(objectId);
+				getResourcePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.INDICATOR:
-				indicatorPool.remove(objectId);
+				getIndicatorPool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
 			case ObjectType.OBJECTIVE:
-				objectivePool.remove(objectId);
+				getObjectivePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -399,7 +414,7 @@ public class Project
 				break;
 			
 			case ObjectType.TASK:
-				Task task = taskPool.find(objectId);
+				Task task = getTaskPool().find(objectId);
 				task.setData(fieldTag, dataValue);
 				getDatabase().writeObject(task);
 				break;
@@ -457,25 +472,25 @@ public class Project
 				return getThreatRatingFramework().getValueOptionData(objectId, fieldTag);
 				
 			case ObjectType.TASK:
-				return taskPool.find(objectId).getData(fieldTag);
+				return getTaskPool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.MODEL_NODE:
-				return nodePool.find(objectId).getData(fieldTag);
+				return getNodePool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.VIEW_DATA:
-				return viewPool.find(objectId).getData(fieldTag);
+				return getViewPool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.MODEL_LINKAGE:
-				return linkagePool.find(objectId).getData(fieldTag);
+				return getLinkagePool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.PROJECT_RESOURCE:
-				return resourcePool.find(objectId).getData(fieldTag);
+				return getResourcePool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.INDICATOR:
-				return indicatorPool.find(objectId).getData(fieldTag);
+				return getIndicatorPool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.OBJECTIVE:
-				return objectivePool.find(objectId).getData(fieldTag);
+				return getObjectivePool().find(objectId).getData(fieldTag);
 				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
@@ -550,7 +565,7 @@ public class Project
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
 			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
-			nodePool.put(node);
+			getNodePool().put(node);
 		}
 	}
 	
@@ -561,7 +576,7 @@ public class Project
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
 			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
-			linkagePool.put(linkage);
+			getLinkagePool().put(linkage);
 		}
 	}
 	
@@ -572,7 +587,7 @@ public class Project
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
-			taskPool.put(task);
+			getTaskPool().put(task);
 		}
 	}
 	
@@ -583,7 +598,7 @@ public class Project
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
-			viewPool.put(viewData);
+			getViewPool().put(viewData);
 		}
 	}
 	
@@ -594,7 +609,7 @@ public class Project
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
-			resourcePool.put(resource);
+			getResourcePool().put(resource);
 		}
 	}
 	
@@ -605,7 +620,7 @@ public class Project
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
-			indicatorPool.put(indicator);
+			getIndicatorPool().put(indicator);
 		}
 	}
 	
@@ -616,7 +631,7 @@ public class Project
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
-			objectivePool.put(objective);
+			getObjectivePool().put(objective);
 		}
 	}
 	
@@ -935,7 +950,7 @@ public class Project
 		model.deleteNode(nodeToDelete);
 
 		database.deleteNode(idToDelete);
-		nodePool.remove(idToDelete);
+		getNodePool().remove(idToDelete);
 		
 		return nodeType; 
 	}
@@ -944,7 +959,7 @@ public class Project
 	{
 		int realId = projectInfo.obtainRealNodeId(requestedId);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(realId, typeToInsert);
-		nodePool.put(cmObject);
+		getNodePool().put(cmObject);
 		writeNode(realId);
 		
 		DiagramModel model = getDiagramModel();
@@ -961,7 +976,7 @@ public class Project
 		model.deleteLinkage(linkageToDelete);
 
 		database.deleteLinkage(idToDelete);
-		linkagePool.remove(idToDelete);
+		getLinkagePool().remove(idToDelete);
 	}
 
 	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
@@ -1256,14 +1271,9 @@ public class Project
 
 	ProjectInfo projectInfo;
 
-	NodePool nodePool;
-	LinkagePool linkagePool;
+	HashMap pools;
+	
 	GoalPool goalPool;
-	ObjectivePool objectivePool;
-	TaskPool taskPool;
-	ViewPool viewPool;
-	ResourcePool resourcePool;
-	IndicatorPool indicatorPool;
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;

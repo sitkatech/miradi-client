@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.EAMObjectPool;
 
-public class ViewPool extends ObjectPool
+public class ViewPool extends EAMObjectPool
 {
 	public void put(ViewData viewData)
 	{

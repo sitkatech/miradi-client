@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
-public class NodePool extends ObjectPool
+public class NodePool extends EAMObjectPool
 {
 	public void put(ConceptualModelNode node)
 	{

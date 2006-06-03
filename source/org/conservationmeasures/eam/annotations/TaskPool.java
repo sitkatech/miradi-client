@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.annotations;
 
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.EAMObjectPool;
 
-public class TaskPool extends ObjectPool
+public class TaskPool extends EAMObjectPool
 {
 	public void put(Task task)
 	{

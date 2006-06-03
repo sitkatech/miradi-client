@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.project.ObjectPool;
+import org.conservationmeasures.eam.project.EAMObjectPool;
 
-public class ObjectivePool extends ObjectPool
+public class ObjectivePool extends EAMObjectPool
 {
 	public void put(Objective objective)
 	{
