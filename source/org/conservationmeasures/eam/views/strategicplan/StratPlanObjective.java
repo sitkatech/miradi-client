@@ -74,7 +74,6 @@ public class StratPlanObjective extends StratPlanObject
 				continue;
 			
 			ObjectiveIds objectiveIds = intervention.getObjectives();
-			EAM.logDebug("" + objectiveIds.size());
 			if(objectiveIds.contains(getId()))
 				strategyVector.add(new StratPlanStrategy(project, intervention));
 		}
