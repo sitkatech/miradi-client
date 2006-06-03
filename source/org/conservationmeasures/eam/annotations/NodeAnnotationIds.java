@@ -58,6 +58,11 @@ abstract public class NodeAnnotationIds
 		return annotationIds.size();
 	}
 	
+	public boolean contains(int id)
+	{
+		return annotationIds.contains(new Integer(id));
+	}
+	
 	public boolean hasAnnotation()
 	{
 		return (size() > 0);
