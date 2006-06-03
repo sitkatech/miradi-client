@@ -310,7 +310,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	private static final int CORNER_SIZE = 20;
 
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
-	private static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
+	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
 
 	JGraph graph;
 	JLabel label;
