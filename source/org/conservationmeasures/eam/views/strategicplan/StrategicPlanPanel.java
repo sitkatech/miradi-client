@@ -51,7 +51,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
 		tree = new StrategicPlanTreeTable(model);
-		expandTopLevel();
+		expandTopLevels();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().addTreeSelectionListener(this);
 		add(new JScrollPane(tree), BorderLayout.CENTER);		
@@ -99,7 +99,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return model.getParentIntervention(activity);
 	}
 	
-	void expandTopLevel()
+	void expandTopLevels()
 	{
 		StratPlanObject root = model.getRootStratPlanObject();
 		TreePath rootPath = new TreePath(root);
@@ -108,6 +108,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 			StratPlanObject topLevelObject = (StratPlanObject)root.getChild(i);
 			TreePath thisPath = rootPath.pathByAddingChild(topLevelObject);
 			tree.getTree().expandPath(thisPath);
+			for(int j = 0; j < topLevelObject.getChildCount(); ++j)
+			{
+				StratPlanObject secondLevelObject = (StratPlanObject)topLevelObject.getChild(i);
+				TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
+				tree.getTree().expandPath(secondLevelPath);
+				
+			}
 		}
 	}
 	
@@ -155,13 +162,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-			expandTopLevel();
+			expandTopLevels();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandTopLevel();
+			expandTopLevels();
 		}
 		
 	}
@@ -172,13 +179,13 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
-			expandTopLevel();
+			expandTopLevels();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandTopLevel();
+			expandTopLevels();
 			
 		}
 	}
