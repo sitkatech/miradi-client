@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -68,7 +69,8 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodes = expectedNodesInChain[threatIndex];
 			int threatId = expectedChainNodes[0];
-			int[] gotChainNodes = model.getChainIds(threatId);
+			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			int[] gotChainNodes = model.getDirectThreatChainIds(cmNode);
 			assertEquals("wrong nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
 		}
 	}

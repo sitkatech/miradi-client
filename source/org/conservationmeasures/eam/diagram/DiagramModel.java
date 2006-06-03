@@ -152,14 +152,13 @@ public class DiagramModel extends DefaultGraphModel
 		return getLinkagePool().hasLinkage(fromNode.getId(), toNode.getId());
 	}
 	
-	public int[] getChainIds(int directThreatId)
+	public int[] getDirectThreatChainIds(ConceptualModelNode directThreat)
 	{
 		HashSet results = new HashSet();
-		ConceptualModelNode baseThreat = getNodePool().find(directThreatId);
-		if(!baseThreat.isDirectThreat())
+		if(!directThreat.isDirectThreat())
 			return new int[0];
-		results.addAll(getDirectlyLinkedDownstreamNodeIds(baseThreat));
-		results.addAll(getAllUpstreamNodeIds(baseThreat));
+		results.addAll(getDirectlyLinkedDownstreamNodeIds(directThreat));
+		results.addAll(getAllUpstreamNodeIds(directThreat));
 		
 		return intArrayFromSet(results);
 	}

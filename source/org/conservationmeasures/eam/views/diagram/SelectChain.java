@@ -29,7 +29,7 @@ public class SelectChain extends ViewDoer
 		try
 		{
 			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
-			int[] chainIds = getProject().getDiagramModel().getChainIds(selectedNode.getId());
+			int[] chainIds = getProject().getDiagramModel().getDirectThreatChainIds(selectedNode.getUnderlyingObject());
 			for(int i = 0; i < chainIds.length; ++i)
 			{
 				DiagramNode nodeToSelect = getProject().getDiagramModel().getNodeById(chainIds[i]);
