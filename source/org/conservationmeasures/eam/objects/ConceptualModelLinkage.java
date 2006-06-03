@@ -83,6 +83,15 @@ public class ConceptualModelLinkage extends EAMObject
 		throw new RuntimeException("Linkage: Unknown direction " + direction);
 	}
 	
+	public int getOppositeNodeId(int direction)
+	{
+		if(direction == FROM)
+			return getNodeId(TO);
+		if(direction == TO)
+			return getNodeId(FROM);
+		throw new RuntimeException("Linkage: Unknown direction " + direction);
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();

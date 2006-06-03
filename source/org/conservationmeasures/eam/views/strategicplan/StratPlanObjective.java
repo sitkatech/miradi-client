@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.project.Project;
 
 public class StratPlanObjective extends StratPlanObject
@@ -73,11 +72,26 @@ public class StratPlanObjective extends StratPlanObject
 			if(intervention.isStatusDraft())
 				continue;
 			
-			ObjectiveIds objectiveIds = intervention.getObjectives();
-			if(objectiveIds.contains(getId()))
+			
+			if(doesChainContainObjective(intervention))
 				strategyVector.add(new StratPlanStrategy(project, intervention));
 		}
 		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
+	}
+	
+	boolean doesChainContainObjective(ConceptualModelNode chainMember)
+	{
+		int objectiveId = objective.getId();
+		int[] chainIds = project.getDiagramModel().getAllChainIds(chainMember);
+		for(int i = 0; i < chainIds.length; ++i)
+		{
+			ConceptualModelNode node = project.getNodePool().find(chainIds[i]);
+			if(node.getObjectives().contains(objectiveId))
+				return true;
+		}
+		
+		return false;
+		
 	}
 
 	Project project;

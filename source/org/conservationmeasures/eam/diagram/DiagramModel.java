@@ -162,6 +162,15 @@ public class DiagramModel extends DefaultGraphModel
 		
 		return intArrayFromSet(results);
 	}
+	
+	public int[] getAllChainIds(ConceptualModelNode node)
+	{
+		HashSet results = new HashSet();
+		results.addAll(getAllDownstreamNodeIds(node));
+		results.addAll(getAllUpstreamNodeIds(node));
+		
+		return intArrayFromSet(results);
+	}
 
 	public HashSet getAllUpstreamNodeIds(ConceptualModelNode startingNode)
 	{
@@ -214,7 +223,7 @@ public class DiagramModel extends DefaultGraphModel
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
-				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getFromNodeId());
+				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 				unprocessedNodes.add(linkedNode);
 			}
 		}		
@@ -226,9 +235,9 @@ public class DiagramModel extends DefaultGraphModel
 			for(int i = 0; i < linkagePool.getIds().length; ++i)
 			{
 				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-				if(thisLinkage.getToNodeId() == thisNode.getId())
+				if(thisLinkage.getNodeId(direction) == thisNode.getId())
 				{
-					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getFromNodeId());
+					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 					unprocessedNodes.add(linkedNode);
 				}
 					

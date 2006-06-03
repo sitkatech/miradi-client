@@ -44,13 +44,13 @@ public class TestDiagramModel extends EAMTestCase
 	public void testGetChainIds() throws Exception
 	{
 		int[] linkagePairs = {
-				11, 21, 21, 31, 31, 41,
-				12, 21, 22, 31, 32, 41,
-				13, 22, 23, 32, 33, 42,
-				13, 23, 23, 33, 33, 43,
-				24, 34, 34, 44,
-				25, 35, 35, 45,
-				26, 36, 36, 35, 35, 34,
+				11, 21,		21, 31, 	31, 41,
+				12, 21, 	22, 31, 	32, 41,
+				13, 22, 	23, 32, 	33, 42,
+				13, 23, 	23, 33, 	33, 43,
+				24, 34, 	34, 44,
+				25, 35, 	35, 45,
+				26, 36, 	36, 35, 	35, 34,
 		};
 		
 		SampleDiagramBuilder.buildNodeGrid(project, 7, linkagePairs);
@@ -62,16 +62,32 @@ public class TestDiagramModel extends EAMTestCase
 				{ 34,  24, 25, 26, 35, 36, 44 },
 				{ 35,  25, 26, 34, 36, 45 },
 				{ 36,  26, 35 },
-				{ 37 },
 		};
-
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
 			int[] expectedChainNodes = expectedNodesInChain[threatIndex];
 			int threatId = expectedChainNodes[0];
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
 			int[] gotChainNodes = model.getDirectThreatChainIds(cmNode);
-			assertEquals("wrong nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
+			assertEquals("wrong direct threat chain nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
+		}
+
+		int[][] expectedNodesInFullChain = {
+				{ 37 },
+				{ 11, 21, 31, 41 },
+				{ 13, 22, 23, 31, 32, 33, 41, 42, 43 },
+				{ 21, 11, 12, 31, 41 },
+				{ 23, 13, 32, 33, 41, 42, 43 },
+				{ 41, 11, 12, 13, 21, 22, 23, 31, 32 },
+		};
+
+		for(int nodeIndex = 0; nodeIndex < expectedNodesInFullChain.length; ++nodeIndex)
+		{
+			int[] expectedChainNodes = expectedNodesInFullChain[nodeIndex];
+			int threatId = expectedChainNodes[0];
+			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			int[] gotChainNodes = model.getAllChainIds(cmNode);
+			assertEquals("wrong chain nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
 		}
 	}
 	
