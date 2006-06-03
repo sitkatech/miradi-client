@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
@@ -27,12 +27,12 @@ public class StratPlanRoot extends StratPlanObject
 
 	public int getChildCount()
 	{
-		return strategies.length;
+		return objectives.length;
 	}
 
 	public Object getChild(int index)
 	{
-		return strategies[index];
+		return objectives[index];
 	}
 	
 	public String toString()
@@ -57,20 +57,17 @@ public class StratPlanRoot extends StratPlanObject
 	
 	public void rebuild()
 	{
-		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
-		Vector strategyVector = new Vector();
-		for(int i = 0; i < interventionObjects.length; ++i)
+		int[] objectiveIds = project.getObjectivePool().getIds();
+		Vector objectiveVector = new Vector();
+		for(int i = 0; i < objectiveIds.length; ++i)
 		{
-			ConceptualModelIntervention intervention = (ConceptualModelIntervention)interventionObjects[i];
-			if(intervention.isStatusDraft())
-				continue;
-			
-			strategyVector.add(new StratPlanStrategy(project, intervention));
+			Objective objective = (Objective)project.findObject(ObjectType.OBJECTIVE, objectiveIds[i]);
+			objectiveVector.add(new StratPlanObjective(project, objective));
 		}
-		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
+		objectives = (StratPlanObjective[])objectiveVector.toArray(new StratPlanObjective[0]);
 	}
 	
 	Project project;
-	StratPlanStrategy[] strategies;
+	StratPlanObjective[] objectives;
 }
 

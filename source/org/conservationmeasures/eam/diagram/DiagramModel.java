@@ -160,17 +160,25 @@ public class DiagramModel extends DefaultGraphModel
 		if(!baseThreat.isDirectThreat())
 			return intArrayFromSet(results);
 
-		HashSet unprocessedUpstreamNodes = new HashSet();
-		int[] allLinkages = getLinkagePool().getIds();
+		LinkagePool linkagePool = getLinkagePool();
 
-		for(int i = 0; i < allLinkages.length; ++i)
+		HashSet downstreamNodes = new HashSet();
+		for(int i = 0; i < linkagePool.getIds().length; ++i)
 		{
-			ConceptualModelLinkage thisLinkage = getLinkagePool().find(allLinkages[i]);
+			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 			if(thisLinkage.getFromNodeId() == baseThreat.getId())
 			{
 				int downstreamNodeId = thisLinkage.getToNodeId();
-				results.add(new Integer(downstreamNodeId));
+				downstreamNodes.add(new Integer(downstreamNodeId));
 			}
+		}
+		results.addAll(downstreamNodes);
+		
+		HashSet upstreamNodes = new HashSet();
+		HashSet unprocessedUpstreamNodes = new HashSet();
+		for(int i = 0; i < linkagePool.getIds().length; ++i)
+		{
+			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 			if(thisLinkage.getToNodeId() == baseThreat.getId())
 			{
 				ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
@@ -181,10 +189,10 @@ public class DiagramModel extends DefaultGraphModel
 		while(unprocessedUpstreamNodes.size() > 0)
 		{
 			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedUpstreamNodes.toArray()[0];
-			results.add(new Integer(thisNode.getId()));
-			for(int i = 0; i < allLinkages.length; ++i)
+			upstreamNodes.add(new Integer(thisNode.getId()));
+			for(int i = 0; i < linkagePool.getIds().length; ++i)
 			{
-				ConceptualModelLinkage thisLinkage = getLinkagePool().find(allLinkages[i]);
+				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 				if(thisLinkage.getToNodeId() == thisNode.getId())
 				{
 					ConceptualModelNode upstreamNode = getNodePool().find(thisLinkage.getFromNodeId());
@@ -194,6 +202,7 @@ public class DiagramModel extends DefaultGraphModel
 			}
 			unprocessedUpstreamNodes.remove(thisNode);
 		}
+		results.addAll(upstreamNodes);
 		
 		return intArrayFromSet(results);
 	}
