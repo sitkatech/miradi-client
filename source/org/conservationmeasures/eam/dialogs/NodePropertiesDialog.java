@@ -227,22 +227,21 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	public Component createObjectiveDropdown(ObjectivePool allAvailableObjectives, ObjectiveIds currentObjectives)
 	{
 		dropdownObjective = new UiComboBox();
+		Objective nullObjective = new Objective(IdAssigner.INVALID_ID);
+		dropdownObjective.addItem(nullObjective);
+
 		int[] objectiveIds = allAvailableObjectives.getIds();
 		for(int i = 0; i < objectiveIds.length; ++i)
 		{
 			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
 		}
-		
-		if(currentObjectives.size() == 0)
-		{
-			dropdownObjective.setSelectedItem(allAvailableObjectives.find(IdAssigner.INVALID_ID));
-		}
-		else
-		{
-			int id = currentObjectives.getId(0);
-			Objective objective = allAvailableObjectives.find(id);
-			dropdownObjective.setSelectedItem(objective);
-		}	
+
+		Objective selected = nullObjective;
+		if(currentObjectives.size() > 0)
+			selected = allAvailableObjectives.find(currentObjectives.getId(0));
+		if(selected == null)
+			selected = nullObjective;
+		dropdownObjective.setSelectedItem(selected);
 
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownObjective, BorderLayout.LINE_START);
