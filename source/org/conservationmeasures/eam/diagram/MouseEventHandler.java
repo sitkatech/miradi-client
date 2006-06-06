@@ -27,6 +27,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		diagram = owner;
 		project = projectToUse;
 		actions = actionsToUse;
+		selectedCells = new Object[0];
 	}
 	
 	public void mousePressed(MouseEvent event)
