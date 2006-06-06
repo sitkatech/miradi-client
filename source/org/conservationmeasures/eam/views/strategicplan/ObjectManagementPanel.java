@@ -35,6 +35,15 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		
 		model = new ObjectManagerTableModel(pool, columnTags);
 		table = new UiTable(model);
+		
+		// TODO: set all column widths to "reasonable" values
+		// for now, a cheap hack: make the first column small,
+		// which happens to work for all our current tables
+		table.useMaxWidth();
+		table.createDefaultColumnsFromModel();
+		table.setMaxColumnWidthToHeaderWidth(0);
+		table.resizeTable();
+
 		add(new UiScrollPane(table), BorderLayout.CENTER);
 		add(createButtonPanel(mainWindow.getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -56,12 +65,12 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		model.fireTableStructureChanged();
+		model.fireTableDataChanged();
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
-		model.fireTableStructureChanged();
+		model.fireTableDataChanged();
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
