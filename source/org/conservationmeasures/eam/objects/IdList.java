@@ -59,6 +59,12 @@ public class IdList
 		data.add(new Integer(id));
 	}
 	
+	public void addAll(IdList otherList)
+	{
+		for(int i = 0; i < otherList.size(); ++i)
+			add(otherList.get(i));
+	}
+	
 	public void insertAt(int id, int at)
 	{
 		data.insertElementAt(new Integer(id), at);
