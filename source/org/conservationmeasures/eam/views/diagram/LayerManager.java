@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ViewData;
 
 public class LayerManager
 {
@@ -17,6 +18,7 @@ public class LayerManager
 	{
 		hiddenNodeTypes = new HashSet();
 		hiddenIds = new IdList();
+		mode = ViewData.MODE_DEFAULT;
 	}
 	
 	public boolean isVisible(DiagramNode node)
@@ -25,6 +27,9 @@ public class LayerManager
 			return false;
 		
 		if(hiddenIds.contains(node.getId()))
+			return false;
+		
+		if(mode.equals(ViewData.MODE_DEFAULT) && node.getUnderlyingObject().isStatusDraft())
 			return false;
 		
 		return true;
@@ -52,7 +57,13 @@ public class LayerManager
 	{
 		hiddenIds = new IdList(idsToHide);
 	}
+	
+	public void setMode(String newMode)
+	{
+		mode = newMode;
+	}
 
 	Set hiddenNodeTypes;
 	IdList hiddenIds;
+	String mode;
 }

@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -48,6 +50,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -191,32 +194,65 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public void setMode(String newMode)
 	{
 		IdList hiddenIds = new IdList();
+		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			hiddenIds = getIdsToHide();
+
+		LayerManager manager = getProject().getLayerManager();
+		manager.setHiddenIds(hiddenIds);
+		manager.setMode(newMode);
+		mode = newMode;
+		updateToolBar();
+		getMainWindow().updateStatusBar();
+		getDiagramComponent().clearSelection();
+		getDiagramComponent().repaint();
+	}
+
+	private IdList getIdsToHide()
+	{
+		IdList idsToHide = new IdList();
 		try
 		{
-			if(newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			ViewData viewData = getProject().getCurrentViewData();
+			IdList visibleIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
+			visibleIds.addAll(getRelatedDraftInterventions(visibleIds));
+			Vector allNodes = getProject().getDiagramModel().getAllNodes();
+			for (int i = 0; i < allNodes.size(); ++i)
 			{
-				IdList visibleIds = new IdList(getProject().getCurrentViewData().getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
-				Vector allNodes = getProject().getDiagramModel().getAllNodes();
-				for(int i = 0; i < allNodes.size(); ++i)
-				{
-					DiagramNode node = (DiagramNode)allNodes.get(i);
-					if(!visibleIds.contains(node.getId()))
-						hiddenIds.add(node.getId());
-				}
+				DiagramNode node = (DiagramNode) allNodes.get(i);
+				int id = node.getId();
+				if (!visibleIds.contains(id))
+					idsToHide.add(id);
 			}
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-
-		LayerManager manager = getProject().getLayerManager();
-		manager.setHiddenIds(hiddenIds);
-		mode = newMode;
-		updateToolBar();
-		getMainWindow().updateStatusBar();
-		getDiagramComponent().clearSelection();
-		getDiagramComponent().repaint();
+		return idsToHide;
+	}
+	
+	IdList getRelatedDraftInterventions(IdList chainIds)
+	{
+		IdList draftsToAdd = new IdList();
+		
+		for(int i = 0; i < chainIds.size(); ++i)
+		{
+			int nodeId = chainIds.get(i);
+			ConceptualModelNode node = getProject().findNode(nodeId);
+			HashSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodeIds(node);
+			Iterator iter = possibleDraftInterventionIds.iterator();
+			while(iter.hasNext())
+			{
+				int possibleInterventionId = ((Integer)iter.next()).intValue();
+				if(chainIds.contains(possibleInterventionId))
+					continue;
+				ConceptualModelNode possibleIntervention = getProject().findNode(possibleInterventionId);
+				if(possibleIntervention.isIntervention() && possibleIntervention.isStatusDraft())
+					draftsToAdd.add(possibleIntervention.getId());
+			}
+		}
+		
+		return draftsToAdd;
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
