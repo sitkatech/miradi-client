@@ -204,7 +204,7 @@ public class DiagramModel extends DefaultGraphModel
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
-				int downstreamNodeId = thisLinkage.getToNodeId();
+				int downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
 				results.add(new Integer(downstreamNodeId));
 			}
 		}
