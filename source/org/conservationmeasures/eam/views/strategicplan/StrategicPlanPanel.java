@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -51,7 +52,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
 		tree = new StrategicPlanTreeTable(model);
-		expandTopLevels();
+		expandEverything();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().addTreeSelectionListener(this);
 		add(new JScrollPane(tree), BorderLayout.CENTER);		
@@ -99,22 +100,22 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return model.getParentIntervention(activity);
 	}
 	
-	void expandTopLevels()
+	void expandEverything()
 	{
 		StratPlanObject root = model.getRootStratPlanObject();
 		TreePath rootPath = new TreePath(root);
-		for(int i = 0; i < root.getChildCount(); ++i)
+		expandNode(rootPath);
+	}
+
+	private void expandNode(TreePath thisPath)
+	{
+		StratPlanObject topLevelObject = (StratPlanObject)thisPath.getLastPathComponent();
+		tree.getTree().expandPath(thisPath);
+		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
 		{
-			StratPlanObject topLevelObject = (StratPlanObject)root.getChild(i);
-			TreePath thisPath = rootPath.pathByAddingChild(topLevelObject);
-			tree.getTree().expandPath(thisPath);
-			for(int j = 0; j < topLevelObject.getChildCount(); ++j)
-			{
-				StratPlanObject secondLevelObject = (StratPlanObject)topLevelObject.getChild(i);
-				TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-				tree.getTree().expandPath(secondLevelPath);
-				
-			}
+			StratPlanObject secondLevelObject = (StratPlanObject)topLevelObject.getChild(childIndex);
+			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
+			expandNode(secondLevelPath);
 		}
 	}
 	
@@ -151,6 +152,12 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return false;
 	}
 	
+	boolean isCreateObjectCommand(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		return (rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME));
+	}
+	
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		mainWindow.getActions().updateActionStates();
@@ -162,13 +169,17 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-			expandTopLevels();
+			expandEverything();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandTopLevels();
+			expandEverything();
+		}
+		else if(isCreateObjectCommand(event))
+		{
+			model.objectiveWasModified();
 		}
 		
 	}
@@ -179,15 +190,20 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
-			expandTopLevels();
+			expandEverything();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandTopLevels();
+			expandEverything();
 			
 		}
+		else if(isCreateObjectCommand(event))
+		{
+			model.objectiveWasModified();
+		}
+		
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)

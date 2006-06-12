@@ -86,6 +86,12 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return path.getParentPath();
 	}
 	
+	public void objectiveWasModified()
+	{
+		getRootStratPlanObject().rebuild();
+		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+	}
+	
 	public void dataWasChanged(int objectType, int objectId)
 	{
 		TreePath found = getPathOfParent(objectType, objectId);
