@@ -30,7 +30,7 @@ public class NewProject extends MainWindowDoer
 				continue;
 			}
 
-			String name = chosen.getName();
+			String name = dlg.getSelectedName();
 			if(!Project.isValidProjectName(name))
 			{
 				String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");

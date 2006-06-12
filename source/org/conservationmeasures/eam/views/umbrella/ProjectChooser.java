@@ -82,6 +82,11 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		return new File(getHomeDirectory(), projectNameField.getText());
 	}
 	
+	public String getSelectedName()
+	{
+		return projectNameField.getText();
+	}
+	
 	private UiList createExistingProjectList()
 	{
 		File home = getHomeDirectory();
