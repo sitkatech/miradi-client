@@ -83,7 +83,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		return new File(getHomeDirectory(), projectNameField.getText());
 	}
 	
-	public String getSelectedName()
+	String getSelectedName()
 	{
 		return projectNameField.getText();
 	}
@@ -196,7 +196,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 	
 	public void ok()
 	{
-		if(!Project.isValidProjectName(projectNameField.getText()))
+		if(!Project.isValidProjectName(getSelectedName()))
 		{
 			String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
 			EAM.errorDialog(body);
