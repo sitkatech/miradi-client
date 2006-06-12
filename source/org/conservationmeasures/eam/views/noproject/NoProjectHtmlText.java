@@ -18,7 +18,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.conservationmeasures.eam.views.umbrella.ProjectChooser;
+import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.martus.util.MultiCalendar;
 
 class NoProjectHtmlText extends HtmlBuilder
@@ -86,8 +86,8 @@ class NoProjectHtmlText extends HtmlBuilder
 	
 	public File[] getProjectDirectories()
 	{
-		File home = ProjectChooser.getHomeDirectory();
-		return home.listFiles(new ProjectChooser.DirectoryFilter());
+		File home = CreateProjectDialog.getHomeDirectory();
+		return home.listFiles(new CreateProjectDialog.DirectoryFilter());
 
 	}
 	

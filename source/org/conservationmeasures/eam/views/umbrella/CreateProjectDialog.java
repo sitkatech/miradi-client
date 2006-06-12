@@ -34,9 +34,9 @@ import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 
-public class ProjectChooser extends JDialog implements ActionListener, ListSelectionListener
+public class CreateProjectDialog extends JDialog implements ActionListener, ListSelectionListener
 {
-	public ProjectChooser(JFrame parent) throws HeadlessException
+	public CreateProjectDialog(JFrame parent) throws HeadlessException
 	{
 		super(parent);
 		setModal(true);
@@ -55,13 +55,6 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 		getContentPane().add(panel);
 
 		getRootPane().setDefaultButton(okButton);
-	}
-	
-	public boolean showOpenDialog()
-	{
-		setTitle(EAM.text("Title|Open Existing Project")); 
-		okButton.setText(EAM.text("Button|Open"));
-		return showDialog();
 	}
 	
 	public boolean showCreateDialog()
@@ -106,7 +99,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 	
 	static class DoubleClickHandler extends MouseAdapter
 	{
-		public DoubleClickHandler(ProjectChooser dialogToControl)
+		public DoubleClickHandler(CreateProjectDialog dialogToControl)
 		{
 			dialog = dialogToControl;
 		}
@@ -118,7 +111,7 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 
 			dialog.ok();
 		}
-		ProjectChooser dialog;
+		CreateProjectDialog dialog;
 	}
 	
 	public static class DirectoryFilter implements FilenameFilter

@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
-import org.conservationmeasures.eam.views.umbrella.ProjectChooser;
+import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class NoProjectView extends UmbrellaView implements HyperlinkHandler
@@ -39,7 +39,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
 		{
 			String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
-			File projectDirectory = new File(ProjectChooser.getHomeDirectory(), projectName);
+			File projectDirectory = new File(CreateProjectDialog.getHomeDirectory(), projectName);
 			getMainWindow().createOrOpenProject(projectDirectory);
 		}
 		else if(linkDescription.equals("Definition:Project"))

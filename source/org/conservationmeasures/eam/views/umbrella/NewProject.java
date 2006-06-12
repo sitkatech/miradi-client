@@ -16,7 +16,7 @@ public class NewProject extends MainWindowDoer
 	{
 		while(true)
 		{
-			ProjectChooser dlg = new ProjectChooser(getMainWindow());
+			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow());
 			if(!dlg.showCreateDialog())
 				return;
 	
