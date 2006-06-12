@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiList;
@@ -195,8 +196,23 @@ public class ProjectChooser extends JDialog implements ActionListener, ListSelec
 	
 	public void ok()
 	{
+		if(!Project.isValidProjectName(projectNameField.getText()))
+		{
+			String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
+			EAM.errorDialog(body);
+			return;
+		}
+		
+		if(getSelectedFile().exists())
+		{
+			String body = EAM.text("Cannot overwrite an existing file or directory");
+			EAM.errorDialog(body);
+			return;
+		}
+
 		result = true;
 		dispose();
+		
 	}
 	
 	public void cancel()

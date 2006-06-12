@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.views.umbrella;
 import java.io.File;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 public class NewProject extends MainWindowDoer
@@ -23,20 +21,6 @@ public class NewProject extends MainWindowDoer
 				return;
 	
 			File chosen = dlg.getSelectedFile();
-			if(chosen.exists())
-			{
-				String body = EAM.text("Cannot overwrite an existing file or directory");
-				EAM.errorDialog(body);
-				continue;
-			}
-
-			String name = dlg.getSelectedName();
-			if(!Project.isValidProjectName(name))
-			{
-				String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
-				EAM.errorDialog(body);
-				continue;
-			}
 
 			getMainWindow().createOrOpenProject(chosen);
 				return;
