@@ -21,8 +21,6 @@ import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
-import org.conservationmeasures.eam.actions.ActionRedo;
-import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -47,9 +45,6 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertConnection.class),
-				new Separator(),
-				new ToolBarButton(actions, ActionUndo.class),
-				new ToolBarButton(actions, ActionRedo.class),
 				new Separator(),
 				new ToolBarButton(actions, ActionCut.class),
 				new ToolBarButton(actions, ActionCopy.class),

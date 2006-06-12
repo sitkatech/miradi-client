@@ -15,7 +15,10 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.utils.ToolBarButton;
 
 public class EAMToolBar extends JToolBar
 {
@@ -28,6 +31,10 @@ public class EAMToolBar extends JToolBar
 	{
 		setFloatable(false);
 		add(ViewSwitcher.create(actions, currentViewActionClass));
+		add(new Separator());
+		add(new ToolBarButton(actions, ActionUndo.class));
+		add(new ToolBarButton(actions, ActionRedo.class));
+
 		for(int i = 0; i < customButtons.length; ++i)
 			add(customButtons[i]);
 		
