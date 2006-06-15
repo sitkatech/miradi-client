@@ -45,12 +45,13 @@ public class ViewSwitcher extends JComboBox
 			actions.get(ActionViewInterview.class), 
 			actions.get(ActionViewDiagram.class), 
 			actions.get(ActionViewThreatMatrix.class),
+			actions.get(ActionViewStrategicPlan.class),
 			actions.get(ActionViewTask.class), 
 			actions.get(ActionViewCalendar.class),
 			actions.get(ActionViewBudget.class), 
 			actions.get(ActionViewMap.class),
 			actions.get(ActionViewImages.class),
-			actions.get(ActionViewStrategicPlan.class),
+
 		};
 		return views;
 	}
