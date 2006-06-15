@@ -59,6 +59,7 @@ public class ViewSwitcher extends JComboBox
 	{
 		super(choices);
 		setToolTipText(EAM.text("TT|Switch to a different view"));
+		setMaximumRowCount(choices.length);
 	}
 	
 	public Dimension getMaximumSize()
