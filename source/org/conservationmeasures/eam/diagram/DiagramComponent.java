@@ -55,7 +55,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		super(new PartialGraphLayoutCache(projectToUse));
 		project = projectToUse;
 
-		setSelectionModel(new SelectionModelWithLayers(this));
 		setUI(new EAMGraphUI());
 
 		disableInPlaceEditing();
