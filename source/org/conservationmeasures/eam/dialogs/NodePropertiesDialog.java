@@ -201,10 +201,10 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 	{
 		textField = new UiTextFieldWithLengthLimit(maxLength);
 		textField.requestFocus(true);
-		textField.selectAll();
 
 		textField.setText(initialText);
-
+		textField.selectAll();
+		
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(textField, BorderLayout.LINE_START);
 		return component;
