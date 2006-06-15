@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -38,20 +39,23 @@ import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
+import org.jgraph.graph.GraphLayoutCache;
 import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
 {
 	public DiagramComponent(Project projectToUse, Actions actions)
 	{
+		super(new PartialGraphLayoutCache(projectToUse));
 		project = projectToUse;
 
 		setSelectionModel(new SelectionModelWithLayers(this));
-		getGraphLayoutCache().setFactory(new CellViewFactory());
 		setUI(new EAMGraphUI());
 
 		disableInPlaceEditing();
@@ -249,6 +253,37 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if(!nodePropertiesDlg.isVisible())
 			nodePropertiesDlg.setVisible(true);
 
+	}
+	
+	public void updateVisibilityOfNodes(MainWindow window)
+	{
+		LayerManager manager = window.getProject().getLayerManager();
+		GraphLayoutCache layoutCache = getGraphLayoutCache();
+		DiagramModel model = getDiagramModel();
+		
+		Vector nodes = model.getAllNodes();
+		for(int i = 0; i < nodes.size(); ++i)
+		{
+			DiagramNode node = (DiagramNode)nodes.get(i);
+			boolean isVisible = manager.isVisible(node);
+			layoutCache.setVisible(node, isVisible);
+		}
+		
+		layoutCache.setVisible(getDiagramModel().getProjectScopeBox(), true);
+		
+		clearSelection();
+		repaint();
+	}
+
+
+	static class PartialGraphLayoutCache extends GraphLayoutCache
+	{
+		public PartialGraphLayoutCache(Project projectToUse)
+		{
+			super(new DiagramModel(projectToUse), new CellViewFactory(), PARTIAL);
+		}
+		
+		static final boolean PARTIAL = true;
 	}
 
 	Project project;

@@ -204,7 +204,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		updateToolBar();
 		getMainWindow().updateStatusBar();
 		getDiagramComponent().clearSelection();
-		getDiagramComponent().repaint();
+		getDiagramComponent().updateVisibilityOfNodes(getMainWindow());
 	}
 
 	private IdList getIdsToHide()

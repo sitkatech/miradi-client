@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -32,9 +32,7 @@ public class ConfigureLayers extends ViewDoer
 
 		dlg.updateLayerManager(manager);
 		window.updateStatusBar();
-		DiagramComponent diagram = window.getDiagramComponent();
-		diagram.clearSelection();
-		diagram.repaint();
+		window.getDiagramComponent().updateVisibilityOfNodes(window);
 	}
 
 }

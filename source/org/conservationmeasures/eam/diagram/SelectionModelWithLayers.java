@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.jgraph.graph.DefaultGraphSelectionModel;
 
 public class SelectionModelWithLayers extends DefaultGraphSelectionModel
@@ -21,13 +19,7 @@ public class SelectionModelWithLayers extends DefaultGraphSelectionModel
 	
 	private boolean isSelectable(Object cellObject)
 	{
-		EAMGraphCell cell = (EAMGraphCell)cellObject;
-		boolean isSelectable = true;
-		if(cell.isLinkage())
-			isSelectable = diagram.isLinkageVisible((DiagramLinkage)cell);
-		else if(cell.isNode())
-			isSelectable = diagram.isNodeVisible((DiagramNode)cell);
-		return isSelectable;
+		return true;
 	}
 
 	public void addSelectionCell(Object cell)

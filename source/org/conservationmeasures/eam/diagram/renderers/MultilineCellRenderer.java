@@ -26,7 +26,6 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.jgraph.JGraph;
@@ -49,7 +48,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		if(cell.isProjectScope())
 		{
-			isVisible = ((DiagramComponent)graphToUse).isProjectScopeVisible();
 			vision = ((ProjectScopeBox)(view.getCell())).getVision();
 		}
 
@@ -73,8 +71,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	public void paint(Graphics g1)
 	{
-		if(!isVisible)
-			return;
 		Rectangle rect = getNonBorderBounds();
 
 		Graphics2D g2 = (Graphics2D) g1;
@@ -319,7 +315,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	Color gradientColor;
 	boolean selected;
 	boolean preview;
-	boolean isVisible;
 	
 	String vision;
 	

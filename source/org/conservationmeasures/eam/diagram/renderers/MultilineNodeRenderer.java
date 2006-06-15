@@ -72,7 +72,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 
 		node = (DiagramNode)view.getCell();
-		isVisible = ((DiagramComponent)graphToUse).isNodeVisible(node);
 		DiagramModel model = (DiagramModel)graphToUse.getModel();
 		ThreatRatingFramework framework = model.getThreatRatingFramework();
 		priority = null;
@@ -86,9 +85,6 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	
 	public void paint(Graphics g1)
 	{
-		if(!isVisible)
-			return;
-
 		int originalHeight = getSize().height;
 		int originalWidth = getSize().width; 
 		setSize(getSizeWithoutAnnotations(getSize(), node.getAnnotationRows()));

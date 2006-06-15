@@ -14,7 +14,6 @@ import java.awt.Point;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.main.EAM;
@@ -32,7 +31,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
 		linkage = (DiagramLinkage)cellView.getCell();
-		renderer.isVisible = ((DiagramComponent)graphToUse).isLinkageVisible(linkage);
 		if(sel)
 		{
 			renderer.lineWidth = 4;
@@ -43,9 +41,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	public void paint(Graphics g)
 	{
-		if(!isVisible)
-			return;
-		
 		super.paint(g);
 		drawStress(g);
 		
@@ -89,6 +84,5 @@ public class ArrowLineRenderer extends EdgeRenderer
 		g2.drawString(text, textX, textY + textHeight);
 	}
 	
-	boolean isVisible;
 	DiagramLinkage linkage;
 }
