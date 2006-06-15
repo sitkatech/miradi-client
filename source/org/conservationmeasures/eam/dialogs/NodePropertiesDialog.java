@@ -21,12 +21,15 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import org.conservationmeasures.eam.actions.ActionCreateObjective;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
@@ -42,6 +45,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -63,7 +68,7 @@ import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 
-public class NodePropertiesDialog extends JDialog implements ActionListener
+public class NodePropertiesDialog extends JDialog implements ActionListener, CommandExecutedListener
 {
 	public NodePropertiesDialog(MainWindow parent, DiagramComponent diagramToUse, String title)
 			throws HeadlessException
@@ -72,11 +77,23 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		
 		mainWindow = parent;
 		diagram = diagramToUse;
+		
+		getProject().addCommandExecutedListener(this);
 
 		setResizable(true);
 		setModal(false);
 	}
 	
+	
+	
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+		super.dispose();
+	}
+
+
+
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
 		Container contents = getContentPane();
@@ -176,7 +193,14 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		DialogGridPanel grid = new DialogGridPanel();
 		
 		grid.add(new UiLabel(EAM.text("Label|Objective")));
-		grid.add(createObjectiveDropdown(getProject().getObjectivePool(), node.getObjectives()));
+		grid.add(createObjectiveDropdown());
+		
+		grid.add(new UiLabel(""));
+		EAMAction action = mainWindow.getActions().get(ActionCreateObjective.class);
+		UiButton buttonCreate = new UiButton(action);
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
+		grid.add(panel);
 		
 		return grid;
 	}
@@ -224,28 +248,42 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		return component;
 	}
 	
-	public Component createObjectiveDropdown(ObjectivePool allAvailableObjectives, ObjectiveIds currentObjectives)
+	public Component createObjectiveDropdown()
 	{
 		dropdownObjective = new UiComboBox();
-		Objective nullObjective = new Objective(IdAssigner.INVALID_ID);
-		dropdownObjective.addItem(nullObjective);
+		populateObjectives();	
+		selectCurrentObjectives();
 
-		int[] objectiveIds = allAvailableObjectives.getIds();
-		for(int i = 0; i < objectiveIds.length; ++i)
-		{
-			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
-		}
+		JPanel component = new JPanel(new BorderLayout());
+		component.add(dropdownObjective, BorderLayout.LINE_START);
+		return component;
+	}
 
-		Objective selected = nullObjective;
+	private void selectCurrentObjectives()
+	{
+		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
+		ObjectiveIds currentObjectives = currentNode.getObjectives();
+		Object nullObjective = dropdownObjective.getItemAt(0);
+		Object selected = nullObjective;
 		if(currentObjectives.size() > 0)
 			selected = allAvailableObjectives.find(currentObjectives.getId(0));
 		if(selected == null)
 			selected = nullObjective;
 		dropdownObjective.setSelectedItem(selected);
+	}
 
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(dropdownObjective, BorderLayout.LINE_START);
-		return component;
+	private void populateObjectives()
+	{
+		dropdownObjective.removeAllItems();
+		Objective nullObjective = new Objective(IdAssigner.INVALID_ID);
+		dropdownObjective.addItem(nullObjective);
+
+		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
+		int[] objectiveIds = allAvailableObjectives.getIds();
+		for(int i = 0; i < objectiveIds.length; ++i)
+		{
+			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
+		}
 	}
 	
 	public Component createTargetGoal(GoalPool allAvailableGoals, GoalIds currentGoals)
@@ -469,6 +507,62 @@ public class NodePropertiesDialog extends JDialog implements ActionListener
 		goals.addId(oneGoal.getId());
 		return goals;
 	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		refreshObjectiveListIfNecessary(event);
+		selectNewlyCreatedObjectiveIfNecessary(event);
+	}
+	
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		refreshObjectiveListIfNecessary(event);
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+
+	void refreshObjectiveListIfNecessary(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		{
+			CommandCreateObject cmd = (CommandCreateObject)rawCommand;
+			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
+			{
+				populateObjectives();
+			}
+		}
+		if(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
+			{
+				Object selected = dropdownObjective.getSelectedItem();
+				populateObjectives();
+				dropdownObjective.setSelectedItem(selected);
+			}
+		}
+
+	}
+
+	void selectNewlyCreatedObjectiveIfNecessary(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		{
+			CommandCreateObject cmd = (CommandCreateObject)rawCommand;
+			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
+			{
+				Objective newObjective = getProject().getObjectivePool().find(cmd.getCreatedId());
+				dropdownObjective.setSelectedItem(newObjective);
+			}
+		}
+	}
+
+	
+	
 	
 	static final int MAX_LABEL_LENGTH = 40;
 	
