@@ -23,16 +23,20 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramNode node)
 	{
-		if(!isTypeVisible(node.getClass()))
-			return false;
-		
 		if(hiddenIds.contains(node.getId()))
 			return false;
 		
-		if(mode.equals(ViewData.MODE_DEFAULT) && node.getUnderlyingObject().isStatusDraft())
+		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
+		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
 			return false;
 		
-		return true;
+		if(isTypeVisible(node.getClass()))
+			return true;
+		
+		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM) && isDraft)
+			return true;
+		
+		return false;
 	}
 
 	public boolean isTypeVisible(Class nodeClass)
