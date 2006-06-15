@@ -109,17 +109,11 @@ public class StrategicPlanView extends UmbrellaView
 		return modifyIndicatorDoer;
 	}
 	
-	public ModifyObjective getModifyObjectiveDoer()
-	{
-		return modifyObjectiveDoer;
-	}
-
 	private void addStrategicPlanDoersToMap()
 	{
 		modifyActivityDoer = new ModifyActivity(this);
 		modifyResourceDoer = new ModifyResource(this);
 		modifyIndicatorDoer = new ModifyIndicator(this);
-		modifyObjectiveDoer = new ModifyObjective(this);
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
@@ -134,7 +128,7 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator(this));
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
-		addDoerToMap(ActionModifyObjective.class, getModifyObjectiveDoer());
+		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		//addDoerToMap(ActionDeleteObjective.class, new DeleteObjective(this));
 	}
 	
@@ -146,6 +140,5 @@ public class StrategicPlanView extends UmbrellaView
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 	ModifyIndicator modifyIndicatorDoer;
-	ModifyObjective modifyObjectiveDoer;
 }
 

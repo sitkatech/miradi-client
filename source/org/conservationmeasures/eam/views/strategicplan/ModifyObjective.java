@@ -5,21 +5,19 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ModifyObjective extends ViewDoer
 {
-	public ModifyObjective(StrategicPlanView viewToUse)
+	public ModifyObjective()
 	{
-		view = viewToUse;
 	}
 	
 	public ObjectiveManagementPanel getObjectivePanel()
 	{
+		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getObjectivePanel();
 	}
 	
@@ -37,15 +35,7 @@ public class ModifyObjective extends ViewDoer
 			return;
 		
 		Objective objective = getObjectivePanel().getSelectedObjective();
-		modify(objective);
+		getView().modifyObjective(objective);
 	}
-
-	public void modify(Objective objective)
-	{
-		ObjectPropertiesDialog dlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
-		dlg.setVisible(true);
-	}
-
-	StrategicPlanView view;
 
 }

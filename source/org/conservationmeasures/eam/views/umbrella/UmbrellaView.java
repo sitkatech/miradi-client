@@ -30,8 +30,14 @@ import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -96,6 +102,23 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 	{
 		throw new RuntimeException("This view doesn't support getPrintableComponent");
 	}
+	
+	
+	public void createObjective() throws CommandFailedException
+	{
+		CommandCreateObject cmd = new CommandCreateObject(ObjectType.OBJECTIVE);
+		getProject().executeCommand(cmd);
+		Objective objective = getProject().getObjectivePool().find(cmd.getCreatedId());
+		modifyObjective(objective);
+	}
+
+	public void modifyObjective(Objective objective)
+	{
+		ObjectPropertiesDialog dlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
+		dlg.setVisible(true);
+	}
+
+
 	
 	protected UiLabel createScreenShotLabel()
 	{
