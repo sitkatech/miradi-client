@@ -9,6 +9,8 @@ package org.conservationmeasures.eam.annotations;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.objects.IdList;
+
 
 
 public class GoalIds extends NodeAnnotationIds 
@@ -16,6 +18,11 @@ public class GoalIds extends NodeAnnotationIds
 	public GoalIds() 
 	{
 		super();
+	}
+	
+	public GoalIds(IdList ids)
+	{
+		super(ids);
 	}
 
 	public GoalIds(DataInputStream dataIn) throws IOException 

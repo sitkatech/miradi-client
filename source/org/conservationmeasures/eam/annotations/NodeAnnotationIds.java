@@ -9,15 +9,20 @@ package org.conservationmeasures.eam.annotations;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.Vector;
 
-abstract public class NodeAnnotationIds 
+import org.conservationmeasures.eam.objects.IdList;
+
+abstract public class NodeAnnotationIds extends IdList
 {
 	abstract public void readDataFrom(DataInputStream dataIn) throws IOException;
 
 	public NodeAnnotationIds()
 	{
-		annotationIds = new Vector();
+	}
+	
+	public NodeAnnotationIds(IdList ids)
+	{
+		super(ids);
 	}
 	
 	public NodeAnnotationIds(DataInputStream dataIn) throws IOException
@@ -39,47 +44,25 @@ abstract public class NodeAnnotationIds
 
 	public int getId(int i)
 	{
-		return ((Integer)annotationIds.get(i)).intValue();
+		return get(i);
 	}
 	
 	public void addId(int annotationId)
 	{
-		annotationIds.add(new Integer(annotationId));
+		add(annotationId);
 	}
 	
 	public void setAnnotationId(int id)
 	{
-		annotationIds.clear();
+		clear();
 		addId(id);
 	}
 
-	public int size()
-	{
-		return annotationIds.size();
-	}
-	
-	public boolean contains(int id)
-	{
-		return annotationIds.contains(new Integer(id));
-	}
-	
 	public boolean hasAnnotation()
 	{
 		return (size() > 0);
 	}
 	
-	public boolean equals(Object obj) 
-	{
-		if(!getClass().equals(obj.getClass()))
-			return false;
-		
-		if(!(obj instanceof NodeAnnotationIds))
-			return false;
-		
-		NodeAnnotationIds other = (NodeAnnotationIds)obj;
-		return (annotationIds.equals(other.annotationIds));
-	}
-
 	public int readCount(DataInputStream dataIn) throws IOException
 	{
 		int oldStyleObjectiveCount = dataIn.readInt();
@@ -93,6 +76,4 @@ abstract public class NodeAnnotationIds
 		int size = dataIn.readInt();
 		return size;
 	}
-
-	Vector annotationIds;
 }

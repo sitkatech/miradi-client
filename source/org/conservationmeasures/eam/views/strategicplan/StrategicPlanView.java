@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
+import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
@@ -138,7 +139,7 @@ public class StrategicPlanView extends UmbrellaView
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
-		addDoerToMap(ActionDeleteResource.class, new DeleteResource(this));
+		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionModifyIndicator.class, getModifyIndicatorDoer());
@@ -146,7 +147,7 @@ public class StrategicPlanView extends UmbrellaView
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
-		//addDoerToMap(ActionDeleteObjective.class, new DeleteObjective(this));
+		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 	}
 	
 	JTabbedPane tabs;

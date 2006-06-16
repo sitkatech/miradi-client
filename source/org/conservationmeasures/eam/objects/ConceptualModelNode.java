@@ -157,6 +157,39 @@ abstract public class ConceptualModelNode extends EAMObject
 		return false;
 	}
 	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(TAG_NODE_TYPE))
+			throw new RuntimeException("Cannot use getData to obtain node type");
+		
+		if(fieldTag.equals(TAG_COMMENT))
+			return getComment();
+		if(fieldTag.equals(TAG_INDICATOR_ID))
+			return Integer.toString(getIndicatorId());
+		if(fieldTag.equals(TAG_GOAL_IDS))
+			return goals.toString();
+		if(fieldTag.equals(TAG_OBJECTIVE_IDS))
+			return objectives.toString();
+		return super.getData(fieldTag);
+	}
+
+	public void setData(String fieldTag, Object dataValue) throws Exception
+	{
+		if(fieldTag.equals(TAG_NODE_TYPE))
+			throw new RuntimeException("Cannot use setData to change node type");
+		
+		if(fieldTag.equals(TAG_COMMENT))
+			setComment((String)dataValue);
+		else if(fieldTag.equals(TAG_INDICATOR_ID))
+			setIndicatorId(Integer.parseInt((String)dataValue));
+		else if(fieldTag.equals(TAG_GOAL_IDS))
+			setGoals(new GoalIds(new IdList((String)dataValue)));
+		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
+			setObjectives(new ObjectiveIds(new IdList((String)dataValue)));
+		else
+			super.setData(fieldTag, dataValue);
+	}
+
 	public static ConceptualModelNode createFrom(JSONObject json) throws ParseException
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
@@ -202,11 +235,11 @@ abstract public class ConceptualModelNode extends EAMObject
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
 
-	private static final String TAG_NODE_TYPE = "Type";
-	private static final String TAG_COMMENT = "Comment";
-	private static final String TAG_INDICATOR_ID = "IndicatorId";
-	private static final String TAG_GOAL_IDS = "GoalIds";
-	private static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
+	public static final String TAG_NODE_TYPE = "Type";
+	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_INDICATOR_ID = "IndicatorId";
+	public static final String TAG_GOAL_IDS = "GoalIds";
+	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	
 	static final String INTERVENTION_TYPE = "Intervention";
 	static final String FACTOR_TYPE = "Factor";

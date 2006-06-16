@@ -99,7 +99,8 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 			return;
 		
 		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
-		fireTreeNodesChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
+		parent.rebuild();
+		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
 	}
 
 	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)

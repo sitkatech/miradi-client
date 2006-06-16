@@ -49,6 +49,11 @@ public class IdList
 		return data.size();
 	}
 	
+	public void clear()
+	{
+		data.clear();
+	}
+	
 	public boolean isEmpty()
 	{
 		return (size() == 0);

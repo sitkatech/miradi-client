@@ -525,6 +525,8 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 
 	void refreshObjectiveListIfNecessary(CommandExecutedEvent event)
 	{
+		if(dropdownObjective == null)
+			return;
 		Command rawCommand = event.getCommand();
 		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 		{

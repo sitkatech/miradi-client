@@ -20,6 +20,11 @@ public class ObjectiveIds extends NodeAnnotationIds
 		super();
 	}
 	
+	public ObjectiveIds(IdList ids)
+	{
+		super(ids);
+	}
+	
 	public ObjectiveIds(DataInputStream dataIn) throws IOException
 	{
 		super(dataIn);

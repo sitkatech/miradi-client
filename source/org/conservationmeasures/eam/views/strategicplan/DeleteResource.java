@@ -23,14 +23,9 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteResource extends ViewDoer
 {
-	public DeleteResource(StrategicPlanView viewToUse)
-	{
-		view = viewToUse;
-	}
-	
 	public ResourceManagementPanel getResourcePanel()
 	{
-		return view.getResourcePanel();
+		return ((StrategicPlanView)getView()).getResourcePanel();
 	}
 	
 	public boolean isAvailable()
@@ -111,6 +106,4 @@ public class DeleteResource extends ViewDoer
 		
 		return (Task[])foundTasks.toArray(new Task[0]);
 	}
-
-	StrategicPlanView view;
 }
