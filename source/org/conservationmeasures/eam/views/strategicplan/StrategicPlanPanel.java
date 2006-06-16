@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -28,6 +29,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.martus.swing.UiButton;
@@ -54,6 +56,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		tree = new StrategicPlanTreeTable(model);
 		expandEverything();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.getTree().setShowsRootHandles(true);
 		tree.getTree().addTreeSelectionListener(this);
 		add(new JScrollPane(tree), BorderLayout.CENTER);		
 		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
@@ -138,7 +141,7 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME));
 	}
 	
-	boolean isInsertionCommand(CommandExecutedEvent event)
+	boolean isChangeActivitiesListCommand(CommandExecutedEvent event)
 	{
 		if(!isSetDataCommand(event))
 			return false;
@@ -147,8 +150,33 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelIntervention.TAG_ACTIVITY_IDS))
 			return true;
+		return false;
+	}
+	
+	boolean isChangeSubtaskListCommand(CommandExecutedEvent event)
+	{
+		if(!isSetDataCommand(event))
+			return false;
+		
+		Command rawCommand = event.getCommand();
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
 		if(cmd.getObjectType() == ObjectType.TASK && cmd.getFieldTag().equals(Task.TAG_SUBTASK_IDS))
 			return true;
+		return false;
+	}
+	
+	boolean isChangeObjectiveListCommand(CommandExecutedEvent event)
+	{
+		if(!isSetDataCommand(event))
+			return false;
+		
+		Command rawCommand = event.getCommand();
+		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelNode.TAG_OBJECTIVE_IDS))
+		{
+			return true;
+		}
+
 		return false;
 	}
 	
@@ -158,6 +186,12 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		return (rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME));
 	}
 	
+	boolean isDeleteObjectCommand(CommandExecutedEvent event)
+	{
+		Command rawCommand = event.getCommand();
+		return (rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME));
+	}
+	
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		mainWindow.getActions().updateActionStates();
@@ -165,10 +199,15 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if(isInsertionCommand(event))
+		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
+			expandEverything();
+		}
+		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
+		{
+			model.objectiveWasModified();
 			expandEverything();
 		}
 		else if(isSetDataCommand(event))
@@ -177,19 +216,19 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
 			expandEverything();
 		}
-		else if(isCreateObjectCommand(event))
-		{
-			model.objectiveWasModified();
-		}
-		
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
-		if(isInsertionCommand(event))
+		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
+			expandEverything();
+		}
+		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
+		{
+			model.objectiveWasModified();
 			expandEverything();
 		}
 		else if(isSetDataCommand(event))
@@ -199,11 +238,6 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 			expandEverything();
 			
 		}
-		else if(isCreateObjectCommand(event))
-		{
-			model.objectiveWasModified();
-		}
-		
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
