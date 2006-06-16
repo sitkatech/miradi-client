@@ -67,7 +67,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			return result.toString();
 		}
 
-		public static final String COLUMN_FACTORS = "Factors";
+		public static final String COLUMN_FACTORS = "Factor(s)";
 		
 		static final String[] indicatorColumnTags = {
 			Indicator.TAG_SHORT_LABEL, 
