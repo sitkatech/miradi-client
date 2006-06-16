@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -677,6 +679,33 @@ public class TestProject extends EAMTestCase
 		project.deleteLinkage(linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
 		assertFalse("still linked?", project.isLinked(nodeA.getId(), nodeB.getId()));
+	}
+
+	public void testFindNodesThatUseThisObjective() throws Exception
+	{
+		DiagramNode nodeA = createNode(new NodeTypeTarget());
+		DiagramNode nodeB = createNode(new NodeTypeTarget());
+		createNode(new NodeTypeTarget());
+		
+		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
+		int objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
+
+		ObjectiveIds objectiveId = new ObjectiveIds();
+		objectiveId.add(objectiveId1);
+		
+		nodeA.setObjectives(objectiveId);
+		nodeB.setObjectives(objectiveId);
+		
+		List foundNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId1));
+				
+		assertEquals("didn't find both nodes?", 2, foundNodes.size());
+		assertContains("missing nodeA? ", nodeA, foundNodes);
+		assertContains("missing nodeB?", nodeB, foundNodes);
+
+		List noNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId2));
+		
+		assertEquals("found a node?", 0, noNodes.size());
+		
 	}
 	
 	public void testOpenProject() throws Exception
