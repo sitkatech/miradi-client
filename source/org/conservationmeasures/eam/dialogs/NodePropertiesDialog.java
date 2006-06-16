@@ -11,6 +11,8 @@ import java.awt.Container;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -21,8 +23,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
@@ -247,7 +247,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	private Component createTextField(String initialText, int maxLength)
 	{
 		textField = new UiTextFieldWithLengthLimit(maxLength);
-		textField.getDocument().addDocumentListener(new LabelChangeHandler());
+		textField.addFocusListener(new LabelFocusHandler());
 		textField.requestFocus(true);
 
 		textField.setText(initialText);
@@ -258,28 +258,20 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		return component;
 	}
 	
-	class LabelChangeHandler implements DocumentListener
+	class LabelFocusHandler implements FocusListener
 	{
-		public void changedUpdate(DocumentEvent e)
+		public void focusGained(FocusEvent event)
 		{
-			saveChanges();
 		}
 
-		public void insertUpdate(DocumentEvent e)
+		public void focusLost(FocusEvent event)
 		{
-			saveChanges();
-		}
-
-		public void removeUpdate(DocumentEvent e)
-		{
-			saveChanges();
-		}
-
-		private void saveChanges()
-		{
+			String newText = getText();
+			if(newText.equals(getCurrentNode().getLabel()))
+				return;
 			try
 			{
-				getProject().executeCommand(new CommandSetNodeName(getNodeId(), getText()));
+				getProject().executeCommand(new CommandSetNodeName(getNodeId(), newText));
 			}
 			catch (CommandFailedException e)
 			{
@@ -466,34 +458,26 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		commentField.setWrapStyleWord(true);
 		commentField.setLineWrap(true);
 		commentField.setText(comment);
-		commentField.getDocument().addDocumentListener(new CommentChangeHandler());
+		commentField.addFocusListener(new CommentFocusHandler());
 		
 		JScrollPane component = new JScrollPane(commentField);
 		return component;
 	}
 	
-	class CommentChangeHandler implements DocumentListener
+	class CommentFocusHandler implements FocusListener
 	{
-		public void changedUpdate(DocumentEvent e)
+		public void focusGained(FocusEvent event)
 		{
-			saveChanges();
 		}
 
-		public void insertUpdate(DocumentEvent e)
+		public void focusLost(FocusEvent event)
 		{
-			saveChanges();
-		}
-
-		public void removeUpdate(DocumentEvent e)
-		{
-			saveChanges();
-		}
-
-		private void saveChanges()
-		{
+			String newComment = getComment();
+			if(newComment.equals(getCurrentNode().getComment()))
+				return;
 			try
 			{
-				getProject().executeCommand(new CommandSetNodeComment(getNodeId(), getComment()));
+				getProject().executeCommand(new CommandSetNodeComment(getNodeId(), newComment));
 			}
 			catch (CommandFailedException e)
 			{
@@ -501,9 +485,9 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 				EAM.errorDialog("That action failed due to an unknown error");
 			}
 		}
+		
 	}
 	
-
 	
 	JComponent createThreatClassificationDropdown()
 	{
