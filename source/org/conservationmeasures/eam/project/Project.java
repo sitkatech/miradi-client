@@ -240,6 +240,21 @@ public class Project
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
+	public ConceptualModelNode[] findNodesThatUseThisObjective(int objectiveId)
+	{
+		Vector foundNodes = new Vector();
+		NodePool pool = getNodePool();
+		int[] allNodeIds = pool.getIds();
+		for(int i = 0; i < allNodeIds.length; ++i)
+		{
+			ConceptualModelNode node = pool.find(allNodeIds[i]);
+			if(node.getObjectives().contains(objectiveId))
+				foundNodes.add(node);
+		}
+		
+		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	

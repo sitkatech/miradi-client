@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -18,7 +17,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.project.NodePool;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteObjective extends ViewDoer
@@ -45,7 +43,7 @@ public class DeleteObjective extends ViewDoer
 		Objective objective = getObjectivePanel().getSelectedObjective();
 
 		int idToRemove = objective.getId();
-		ConceptualModelNode[] factorsThatUseThisObjective = findNodesThatUseThisObjective(idToRemove);
+		ConceptualModelNode[] factorsThatUseThisObjective = getProject().findNodesThatUseThisObjective(idToRemove);
 		if(factorsThatUseThisObjective.length > 0)
 		{
 			String[] dialogText = {
@@ -74,20 +72,7 @@ public class DeleteObjective extends ViewDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
-	ConceptualModelNode[] findNodesThatUseThisObjective(int objectiveId)
-	{
-		Vector foundNodes = new Vector();
-		NodePool pool = getProject().getNodePool();
-		int[] allNodeIds = pool.getIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getObjectives().contains(objectiveId))
-				foundNodes.add(node);
-		}
-		
-		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
-	}
+	
 	
 	private Command[] createCommandsToRemoveObjectivesFromNodes(int idToRemove, ConceptualModelNode[] nodesThatUseThisObjective) throws CommandFailedException
 	{

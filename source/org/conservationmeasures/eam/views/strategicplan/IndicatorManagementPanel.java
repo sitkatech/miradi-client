@@ -16,7 +16,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 {
 	public IndicatorManagementPanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, columnTags, mainWindowToUse.getProject().getIndicatorPool(), buttonActionClasses);
+		super(mainWindowToUse, new IndicatorTableModel(mainWindowToUse.getProject().getIndicatorPool()), buttonActionClasses);
 	}
 	
 	public Indicator getSelectedIndicator()
@@ -31,11 +31,32 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 		return indicator;
 	}
 	
-	static final String[] columnTags = {
-		Indicator.TAG_SHORT_LABEL, 
-		Indicator.TAG_LABEL,
-		Indicator.TAG_METHOD,
-		};
+	static class IndicatorTableModel extends ObjectManagerTableModel
+	{
+		IndicatorTableModel(IndicatorPool pool)
+		{
+			super(pool, indicatorColumnTags);
+		}
+
+		public Object getValueAt(int rowIndex, int columnIndex)
+		{
+			if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
+				return "Hello";
+			
+			return super.getValueAt(rowIndex, columnIndex);
+		}
+
+		public static final String COLUMN_FACTORS = "Factors";
+		
+		static final String[] indicatorColumnTags = {
+			Indicator.TAG_SHORT_LABEL, 
+			Indicator.TAG_LABEL,
+			Indicator.TAG_METHOD,
+			COLUMN_FACTORS,
+			};
+
+	}
+	
 	static final Class[] buttonActionClasses = {
 		ActionCreateIndicator.class, 
 		ActionModifyIndicator.class, 

@@ -30,10 +30,15 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 {
 	public ObjectManagementPanel(MainWindow mainWindowToUse, String[] columnTags, ObjectPool pool, Class[] buttonActionClasses)
 	{
+		this(mainWindowToUse, new ObjectManagerTableModel(pool, columnTags), buttonActionClasses);
+	}
+	
+	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectManagerTableModel modelToUse, Class[] buttonActionClasses)
+	{
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
+		model = modelToUse;
 		
-		model = new ObjectManagerTableModel(pool, columnTags);
 		table = new UiTable(model);
 		
 		// TODO: set all column widths to "reasonable" values
