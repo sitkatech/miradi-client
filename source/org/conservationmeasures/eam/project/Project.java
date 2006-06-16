@@ -255,6 +255,21 @@ public class Project
 		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
 	}
 
+	public ConceptualModelNode[] findNodesThatUseThisIndicator(int indicatorId)
+	{
+		Vector foundNodes = new Vector();
+		NodePool pool = getNodePool();
+		int[] allNodeIds = pool.getIds();
+		for(int i = 0; i < allNodeIds.length; ++i)
+		{
+			ConceptualModelNode node = pool.find(allNodeIds[i]);
+			if(node.getIndicatorId() == indicatorId)
+				foundNodes.add(node);
+		}
+		
+		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	

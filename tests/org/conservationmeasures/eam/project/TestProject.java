@@ -699,13 +699,37 @@ public class TestProject extends EAMTestCase
 		List foundNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId1));
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
-		assertContains("missing nodeA? ", nodeA, foundNodes);
-		assertContains("missing nodeB?", nodeB, foundNodes);
+		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
+		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
 		List noNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId2));
 		
 		assertEquals("found a node?", 0, noNodes.size());
 		
+	}
+	
+	public void testFindNodesThatUseThisIndicator() throws Exception
+	{
+		
+		DiagramNode nodeA = createNode(new NodeTypeTarget());
+		DiagramNode nodeB = createNode(new NodeTypeTarget());
+		createNode(new NodeTypeTarget());
+		
+		int indicatorId1 = project.createObject(ObjectType.INDICATOR);
+		int indicatorId2 = project.createObject(ObjectType.INDICATOR);
+		
+		nodeA.setIndicator(indicatorId1);
+		nodeB.setIndicator(indicatorId1);
+		
+		List foundNodes = Arrays.asList(project.findNodesThatUseThisIndicator(indicatorId1));
+				
+		assertEquals("didn't find both nodes?", 2, foundNodes.size());
+		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
+		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
+
+		List noNodes = Arrays.asList(project.findNodesThatUseThisObjective(indicatorId2));
+		
+		assertEquals("found a node?", 0, noNodes.size());
 	}
 	
 	public void testOpenProject() throws Exception
