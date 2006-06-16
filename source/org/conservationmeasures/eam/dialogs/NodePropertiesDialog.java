@@ -11,8 +11,9 @@ import java.awt.Container;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
-import javax.swing.Box;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
@@ -20,6 +21,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
@@ -28,9 +31,7 @@ import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeComment;
@@ -66,9 +67,8 @@ import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
-import org.martus.swing.Utilities;
 
-public class NodePropertiesDialog extends JDialog implements ActionListener, CommandExecutedListener
+public class NodePropertiesDialog extends JDialog implements CommandExecutedListener
 {
 	public NodePropertiesDialog(MainWindow parent, DiagramComponent diagramToUse, String title)
 			throws HeadlessException
@@ -104,7 +104,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 			currentNode = node;
 			contents.add(createLabelBar(currentNode), BorderLayout.BEFORE_FIRST_LINE);
 			contents.add(createTabbedPane(currentNode), BorderLayout.CENTER);
-			contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		}
 		catch(Exception e)
 		{
@@ -117,6 +116,11 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 	public DiagramNode getCurrentNode()
 	{
 		return currentNode;
+	}
+	
+	public int getNodeId()
+	{
+		return getCurrentNode().getId();
 	}
 	
 	private Component createLabelBar(DiagramNode node)
@@ -166,6 +170,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		{
 			grid.add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(node.isStatusDraft());
+			statusCheckBox.addItemListener(new StatusChangeHandler());
 			grid.add(statusCheckBox);
 			
 			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
@@ -176,6 +181,24 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		grid.add(createComment(node.getComment()));
 
 		return grid;
+	}
+	
+	class StatusChangeHandler implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			try
+			{
+				getProject().executeCommand(buildStatusCommand());
+				mainWindow.getDiagramComponent().updateVisibilityOfSingleNode(mainWindow, getCurrentNode());
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+		
 	}
 	
 	private Component createIndicatorsGrid(DiagramNode node)
@@ -224,6 +247,7 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 	private Component createTextField(String initialText, int maxLength)
 	{
 		textField = new UiTextFieldWithLengthLimit(maxLength);
+		textField.getDocument().addDocumentListener(new LabelChangeHandler());
 		textField.requestFocus(true);
 
 		textField.setText(initialText);
@@ -234,12 +258,44 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		return component;
 	}
 	
+	class LabelChangeHandler implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		public void insertUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		public void removeUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		private void saveChanges()
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetNodeName(getNodeId(), getText()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+	}
+	
 	public Component createSwitchFactorTypeDropdown(NodeType currentType)
 	{
 		dropdownFactorType = new UiComboBox();
 		dropdownFactorType.setRenderer(new FactorTypeRenderer());
 		dropdownFactorType.addItem(DiagramNode.TYPE_INDIRECT_FACTOR);
 		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
+		dropdownFactorType.addActionListener(new FactorTypeChangeHandler());
 		
 		dropdownFactorType.setSelectedItem(currentType);
 		
@@ -248,17 +304,52 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		return component;
 	}
 	
+	class FactorTypeChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetFactorType(getNodeId(), getType()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+		
+	}
+	
 	public Component createObjectiveDropdown()
 	{
 		dropdownObjective = new UiComboBox();
 		populateObjectives();	
 		selectCurrentObjectives();
+		dropdownObjective.addActionListener(new ObjectiveChangeHandler());
 
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownObjective, BorderLayout.LINE_START);
 		return component;
 	}
 
+	class ObjectiveChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetNodeObjectives(getNodeId(), getObjectives()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+		
+	}
+	
 	private void selectCurrentObjectives()
 	{
 		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
@@ -305,10 +396,28 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 			Goal goal = allAvailableGoals.find(id);
 			dropdownGoal.setSelectedItem(goal);
 		}
+		dropdownGoal.addActionListener(new GoalChangeHandler());
 		
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownGoal, BorderLayout.LINE_START);
 		return component;
+	}
+	
+	class GoalChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetTargetGoal(getNodeId(), getGoals()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+		
 	}
 	
 	public Component createIndicatorDropdown(IndicatorPool allAvailableIndicators, int indicatorId)
@@ -327,10 +436,28 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		if(selected == null)
 			selected = nullIndicator;
 		dropdownIndicator.setSelectedItem(selected);
+		dropdownIndicator.addActionListener(new IndicatorChangeHandler());
 
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownIndicator, BorderLayout.LINE_START);
 		return component;
+	}
+	
+	class IndicatorChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetIndicator(getNodeId(), getIndicator().getId()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+		
 	}
 	
 	public JComponent createComment(String comment)
@@ -339,10 +466,44 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		commentField.setWrapStyleWord(true);
 		commentField.setLineWrap(true);
 		commentField.setText(comment);
+		commentField.getDocument().addDocumentListener(new CommentChangeHandler());
 		
 		JScrollPane component = new JScrollPane(commentField);
 		return component;
 	}
+	
+	class CommentChangeHandler implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		public void insertUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		public void removeUpdate(DocumentEvent e)
+		{
+			saveChanges();
+		}
+
+		private void saveChanges()
+		{
+			try
+			{
+				getProject().executeCommand(new CommandSetNodeComment(getNodeId(), getComment()));
+			}
+			catch (CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+	}
+	
+
 	
 	JComponent createThreatClassificationDropdown()
 	{
@@ -395,58 +556,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		}
 	}
 
-	private Box createButtonBar()
-	{
-		okButton = new UiButton(EAM.text("Button|Apply"));
-		okButton.addActionListener(this);
-		getRootPane().setDefaultButton(okButton);
-		cancelButton = new UiButton(EAM.text("Button|Revert"));
-		cancelButton.addActionListener(this);
-
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), okButton, cancelButton};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
-	}
-
-	public void actionPerformed(ActionEvent event)
-	{
-		try
-		{
-			if(event.getSource() == okButton)
-			{
-				saveChanges();
-			}
-			else
-			{
-				revertChanges();
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("An unexpected error has occured: " + e.getMessage());
-		}
-	}
-	
-	void saveChanges() throws CommandFailedException
-	{
-		int id = currentNode.getId();
-		getProject().executeCommand(new CommandBeginTransaction());
-		getProject().executeCommand(new CommandSetNodeName(id, getText()));
-		getProject().executeCommand(new CommandSetNodeComment(id, getComment()));
-		getProject().executeCommand(new CommandSetIndicator(id, getIndicator().getId()));
-		if(currentNode.canHaveObjectives())
-			getProject().executeCommand(new CommandSetNodeObjectives(id, getObjectives()));
-		if(currentNode.canHaveGoal())
-			getProject().executeCommand(new CommandSetTargetGoal(id, getGoals()));
-		if(currentNode.isFactor())
-			getProject().executeCommand(new CommandSetFactorType(id, getType()));
-		if(currentNode.isIntervention())
-			getProject().executeCommand(buildStatusCommand());
-
-		getProject().executeCommand(new CommandEndTransaction());
-	}
 	
 	Command buildStatusCommand()
 	{
@@ -454,11 +563,6 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 		if(statusCheckBox.isSelected())
 			newValue = ConceptualModelIntervention.STATUS_DRAFT;
 		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode.getId(), ConceptualModelIntervention.TAG_STATUS, newValue);
-	}
-	
-	void revertChanges()
-	{
-		setCurrentNode(diagram, currentNode);
 	}
 	
 	Project getProject()
@@ -582,6 +686,4 @@ public class NodePropertiesDialog extends JDialog implements ActionListener, Com
 	UiComboBox dropdownObjective;
 	UiComboBox dropdownGoal;
 	UiCheckBox statusCheckBox;
-	UiButton okButton;
-	UiButton cancelButton;
 }

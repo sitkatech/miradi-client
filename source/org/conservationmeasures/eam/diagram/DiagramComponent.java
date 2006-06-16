@@ -256,22 +256,26 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void updateVisibilityOfNodes(MainWindow window)
 	{
-		LayerManager manager = window.getProject().getLayerManager();
-		GraphLayoutCache layoutCache = getGraphLayoutCache();
 		DiagramModel model = getDiagramModel();
 		
 		Vector nodes = model.getAllNodes();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			DiagramNode node = (DiagramNode)nodes.get(i);
-			boolean isVisible = manager.isVisible(node);
-			layoutCache.setVisible(node, isVisible);
+			updateVisibilityOfSingleNode(window, node);
 		}
 		
-		layoutCache.setVisible(getDiagramModel().getProjectScopeBox(), true);
+		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), true);
 		
 		clearSelection();
 		repaint();
+	}
+
+	public void updateVisibilityOfSingleNode(MainWindow window, DiagramNode node)
+	{
+		LayerManager manager = window.getProject().getLayerManager();
+		boolean isVisible = manager.isVisible(node);
+		getGraphLayoutCache().setVisible(node, isVisible);
 	}
 
 
