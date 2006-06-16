@@ -10,13 +10,15 @@ import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.project.Project;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel
 {
 	public IndicatorManagementPanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new IndicatorTableModel(mainWindowToUse.getProject().getIndicatorPool()), buttonActionClasses);
+		super(mainWindowToUse, new IndicatorTableModel(mainWindowToUse.getProject()), buttonActionClasses);
 	}
 	
 	public Indicator getSelectedIndicator()
@@ -33,17 +35,36 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	
 	static class IndicatorTableModel extends ObjectManagerTableModel
 	{
-		IndicatorTableModel(IndicatorPool pool)
+		IndicatorTableModel(Project projectToUse)
 		{
-			super(pool, indicatorColumnTags);
+			super(projectToUse.getIndicatorPool(), indicatorColumnTags);
+			project = projectToUse;
 		}
 
 		public Object getValueAt(int rowIndex, int columnIndex)
 		{
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
-				return "Hello";
+			{
+				int indicatorId = pool.getIds()[rowIndex];
+				ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisIndicator(indicatorId);
+				
+				return getNodeLabelsAsString(modelNodes);
+			}
 			
 			return super.getValueAt(rowIndex, columnIndex);
+		}
+		
+		String getNodeLabelsAsString(ConceptualModelNode[] modelNodes)
+		{
+			StringBuffer result = new StringBuffer();
+			for(int i = 0; i < modelNodes.length; ++i)
+			{
+				if(i > 0)
+					result.append(", ");
+				result.append(modelNodes[i].getLabel());
+			}
+			
+			return result.toString();
 		}
 
 		public static final String COLUMN_FACTORS = "Factors";
@@ -55,6 +76,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			COLUMN_FACTORS,
 			};
 
+		Project project;
 	}
 	
 	static final Class[] buttonActionClasses = {
