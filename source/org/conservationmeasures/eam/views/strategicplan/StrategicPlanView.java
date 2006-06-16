@@ -3,6 +3,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 import java.awt.BorderLayout;
 
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
@@ -30,9 +32,19 @@ public class StrategicPlanView extends UmbrellaView
 		
 		tabs = new JTabbedPane();
 		add(tabs, BorderLayout.CENTER);
-		
+		tabs.addChangeListener(new TabChangeListener());
+
 		addStrategicPlanDoersToMap();
 
+	}
+	
+	class TabChangeListener implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent e)
+		{
+			currentTab = tabs.getSelectedIndex();
+		}
+		
 	}
 
 	public String cardName() 
@@ -47,6 +59,8 @@ public class StrategicPlanView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
+		int mostRecentTabIndex = currentTab;
+		
 		tabs.removeAll();
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
@@ -58,6 +72,8 @@ public class StrategicPlanView extends UmbrellaView
 		tabs.add(EAM.text("Objectives"), objectivePanel);
 		tabs.add(EAM.text("Indicators"), indicatorManagementPanel);
 		tabs.add(EAM.text("Resources"), resourcePanel);
+		
+		tabs.setSelectedIndex(mostRecentTabIndex);
 	}
 
 	public void becomeInactive() throws Exception
@@ -134,6 +150,7 @@ public class StrategicPlanView extends UmbrellaView
 	}
 	
 	JTabbedPane tabs;
+	int currentTab;
 	StrategicPlanPanel strategicPlanPanel;
 	ResourceManagementPanel resourcePanel;
 	IndicatorManagementPanel indicatorManagementPanel;
