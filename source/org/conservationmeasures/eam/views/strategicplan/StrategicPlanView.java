@@ -137,7 +137,7 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
-		addDoerToMap(ActionModifyIndicator.class, new ModifyObjective());
+		addDoerToMap(ActionModifyIndicator.class, new ModifyIndicator());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());

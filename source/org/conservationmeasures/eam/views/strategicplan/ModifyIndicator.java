@@ -13,22 +13,18 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ModifyIndicator extends ViewDoer
 {
-	public ModifyIndicator(StrategicPlanView viewToUse)
+	public IndicatorManagementPanel getIndicatorPanel()
 	{
-		view = viewToUse;
-	}
-	
-	public IndicatorManagementPanel getIndicatorManagementPanel()
-	{
+		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getIndicatorManagementPanel();
 	}
 	
 	public boolean isAvailable()
 	{
-		if(getIndicatorManagementPanel() == null)
+		if(getIndicatorPanel() == null)
 			return false;
 		
-		return getIndicatorManagementPanel().getSelectedIndicator() != null;
+		return getIndicatorPanel().getSelectedIndicator() != null;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -36,7 +32,7 @@ public class ModifyIndicator extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Indicator indicator = getIndicatorManagementPanel().getSelectedIndicator();
+		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
 		modify(indicator);
 	}
 
@@ -45,6 +41,4 @@ public class ModifyIndicator extends ViewDoer
 		ObjectPropertiesDialog dlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
 		dlg.setVisible(true);
 	}
-
-	StrategicPlanView view;
 }
