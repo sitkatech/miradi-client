@@ -11,6 +11,8 @@ import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 
@@ -53,9 +55,10 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 			{
 				int indicatorId = pool.getIds()[rowIndex];
-				ConceptualModelNode[] modelNodes =  project.findDirectThreatsRelatedToThisIndicator(indicatorId);
+				ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+				DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 				
-				return getNodeLabelsAsString(modelNodes);
+				return getNodeLabelsAsString(directThreats.toNodeArray());
 			}
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 			{

@@ -40,8 +40,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
@@ -732,7 +732,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("found a node?", 0, noNodes.size());
 	}
 	
-	public void testFindDirectThreatsRelatedToThisIndicator() throws Exception
+	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
@@ -742,15 +742,16 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(IdAssigner.INVALID_ID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
-		ConceptualModelNode[] foundDirectThreats = project.findDirectThreatsRelatedToThisIndicator(indicatorId1);
+		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
-		assertEquals("didn't find anything?", 1, foundDirectThreats.length);
-		assertEquals("found wrong node?", nodeDirectThreat.getUnderlyingObject(), foundDirectThreats[0]);
+		assertEquals("didn't find anything?", 2, foundNodes.size());
+		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
+		assertContains("missing indirect factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
 		
 		
 	}
 	
-	public void testExtractDirectThreat() throws Exception
+	public void testDirectThreatSet() throws Exception
 	{
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeDirectThreatA = createNode(new NodeTypeDirectThreat());	
@@ -759,10 +760,9 @@ public class TestProject extends EAMTestCase
 		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
 		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());
 		allNodes.attemptToAdd(nodeDirectThreatA.getUnderlyingObject());
-		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());
+		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());	
 		
-		
-		ConceptualModelNodeSet foundNodes = project.extractDirectThreats(allNodes);
+		DirectThreatSet foundNodes = new DirectThreatSet(allNodes);
 		
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeDirectThreatA? ", nodeDirectThreatA.getUnderlyingObject(), foundNodes);

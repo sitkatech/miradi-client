@@ -279,35 +279,20 @@ public class Project
 		return foundNodes;
 	}
 	
-	public ConceptualModelNode[] findDirectThreatsRelatedToThisIndicator(int indicatorId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(int indicatorId)
 	{
-		ConceptualModelNode[] nodes = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
-		ConceptualModelNodeSet allDirectThreats = new ConceptualModelNodeSet();
+		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
+		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
 		
-		for(int i = 0; i < nodes.length; ++i)
+		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
 		{
-			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodes[i]);
-			ConceptualModelNodeSet directThreatsInChain = extractDirectThreats(nodesInChain);
-			
-			allDirectThreats.attemptToAddAll(directThreatsInChain);
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisIndicator[i]);
+			relatedNodes.attemptToAddAll(nodesInChain);
 		}
 		
-		return (ConceptualModelNode[])allDirectThreats.toArray(new ConceptualModelNode[0]);
+		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet extractDirectThreats(ConceptualModelNodeSet nodesInChain)
-	{
-		ConceptualModelNode[] nodesAsArray = nodesInChain.toNodeArray();
-		ConceptualModelNodeSet directThreats = new ConceptualModelNodeSet();
-		for(int i = 0; i < nodesAsArray.length; ++i)
-		{
-			if(nodesAsArray[i].isDirectThreat())
-			{
-				directThreats.attemptToAdd(nodesAsArray[i]);
-			}
-		}
-		return directThreats;
-	}
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
