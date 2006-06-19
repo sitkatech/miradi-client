@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -44,8 +45,8 @@ public class DeleteIndicator extends ViewDoer
 		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
 		
 		int idToRemove = indicator.getId();
-		ConceptualModelNode[] nodesThatUseThisIndicator = getProject().findNodesThatUseThisIndicator(idToRemove);
-		if(nodesThatUseThisIndicator.length > 0)
+		ConceptualModelNodeSet nodesThatUseThisIndicator = getProject().findNodesThatUseThisIndicator(idToRemove);
+		if(nodesThatUseThisIndicator.size() > 0)
 		{
 			String[] dialogText = {
 					"This Indicator is assigned to one or more Factors.", 
@@ -76,14 +77,15 @@ public class DeleteIndicator extends ViewDoer
 	}
 
 	
-	private Command[] createCommandsToRemoveIndicatorsFromNodes(int idToRemove, ConceptualModelNode[] nodesThatUseThisIndicator) throws CommandFailedException
+	private Command[] createCommandsToRemoveIndicatorsFromNodes(int idToRemove, ConceptualModelNodeSet nodesThatUseThisIndicator) throws CommandFailedException
 	{
-		Command[] removeFromNodes = new Command[nodesThatUseThisIndicator.length];
+		ConceptualModelNode[] nodes = nodesThatUseThisIndicator.toNodeArray();
+		Command[] removeFromNodes = new Command[nodes.length];
 		try
 		{
 			for(int i = 0; i < removeFromNodes.length; ++i)
 			{
-				ConceptualModelNode node = nodesThatUseThisIndicator[i];
+				ConceptualModelNode node = nodes[i];
 				removeFromNodes[i] = new CommandSetIndicator(node.getId(), IdAssigner.INVALID_ID);
 			}
 		}

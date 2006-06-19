@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
@@ -71,6 +72,7 @@ import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
 import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphSelectionModel;
 
 
@@ -109,6 +111,7 @@ public class Project
 		interviewModel.loadSteps();
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
+		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +221,11 @@ public class Project
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return threatRatingFramework;
+	}
+	
+	public GraphLayoutCache getGraphLayoutCache()
+	{
+		return graphLayoutCache;
 	}
 	
 	public Task getRootTask() throws Exception
@@ -1032,6 +1040,7 @@ public class Project
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
+		updateVisibilityOfSingleNode(node);
 		
 		int idThatWasInserted = node.getId();
 		return idThatWasInserted;
@@ -1289,6 +1298,28 @@ public class Project
 		return valueToRound * sign;
 	}
 
+	public void updateVisibilityOfNodes()
+	{
+		DiagramModel model = getDiagramModel();
+		
+		Vector nodes = model.getAllNodes();
+		for(int i = 0; i < nodes.size(); ++i)
+		{
+			DiagramNode node = (DiagramNode)nodes.get(i);
+			updateVisibilityOfSingleNode(node);
+		}
+		
+		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), true);
+	}
+
+	public void updateVisibilityOfSingleNode(DiagramNode node)
+	{
+		LayerManager manager = getLayerManager();
+		boolean isVisible = manager.isVisible(node);
+		getGraphLayoutCache().setVisible(node, isVisible);
+	}
+
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// undo/redo
 	
@@ -1353,6 +1384,6 @@ public class Project
 	
 	LayerManager layerManager;
 	GraphSelectionModel selectionModel;
-
+	GraphLayoutCache graphLayoutCache;
 }
 

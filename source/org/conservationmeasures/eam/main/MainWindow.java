@@ -171,7 +171,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			updateTitle();
 			updateStatusBar();
 			getDiagramComponent().setModel(project.getDiagramModel());
-			getDiagramComponent().updateVisibilityOfNodes(this);
+			getDiagramComponent().setGraphLayoutCache(project.getGraphLayoutCache());
+			getProject().updateVisibilityOfNodes();
 			getDiagramComponent().requestFocus();
 		}
 		catch(UnknownCommandException e)

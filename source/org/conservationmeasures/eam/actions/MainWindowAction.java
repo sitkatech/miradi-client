@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public abstract class MainWindowAction extends EAMAction
 {
@@ -67,12 +68,19 @@ public abstract class MainWindowAction extends EAMAction
 	
 	public boolean shouldBeEnabled()
 	{
-		return getDoer().isAvailable();
+		Doer doer = getDoer();
+		if(doer == null)
+			return false;
+		return doer.isAvailable();
 	}
 	
 	Doer getDoer()
 	{
-		Doer doer = mainWindow.getCurrentView().getDoer(getClass());
+		UmbrellaView currentView = mainWindow.getCurrentView();
+		if(currentView == null)
+			return null;
+		
+		Doer doer = currentView.getDoer(getClass());
 		doer.setMainWindow(mainWindow);
 		doer.setProject(mainWindow.getProject());
 		return doer;

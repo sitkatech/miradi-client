@@ -32,7 +32,7 @@ public class ConfigureLayers extends ViewDoer
 
 		dlg.updateLayerManager(manager);
 		window.updateStatusBar();
-		window.getDiagramComponent().updateVisibilityOfNodes(window);
+		getProject().updateVisibilityOfNodes();
 	}
 
 }

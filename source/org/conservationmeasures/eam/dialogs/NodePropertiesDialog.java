@@ -191,7 +191,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 			try
 			{
 				getProject().executeCommand(buildStatusCommand());
-				mainWindow.getDiagramComponent().updateVisibilityOfSingleNode(mainWindow, getCurrentNode());
+				getProject().updateVisibilityOfSingleNode(getCurrentNode());
 			}
 			catch (CommandFailedException e)
 			{

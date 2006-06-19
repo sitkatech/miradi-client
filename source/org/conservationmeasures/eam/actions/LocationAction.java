@@ -69,7 +69,8 @@ public abstract class LocationAction extends MainWindowAction
 	Doer getDoer()
 	{
 		Doer doer = super.getDoer();
-		doer.setLocation(createAt);
+		if(doer != null)
+			doer.setLocation(createAt);
 		return doer;
 	}
 
