@@ -31,8 +31,6 @@ public class ConceptualModelNodeSet implements Collection
 		return nodes.size();
 	}
 
-	HashSet nodes;
-
 	public Object[] toArray()
 	{
 		return nodes.toArray();
@@ -62,7 +60,7 @@ public class ConceptualModelNodeSet implements Collection
 
 	public boolean add(Object o)
 	{
-		return nodes.add(o);
+		throw new RuntimeException("Must use attemptToAdd instead of add");
 	}
 
 	public boolean contains(Object o)
@@ -77,7 +75,7 @@ public class ConceptualModelNodeSet implements Collection
 
 	public boolean addAll(Collection c)
 	{
-		return nodes.addAll(c);
+		throw new RuntimeException("Must use attemptToAdd instead of addAll");
 	}
 
 	public boolean containsAll(Collection c)
@@ -104,4 +102,7 @@ public class ConceptualModelNodeSet implements Collection
 	{
 		return nodes.toArray(a);
 	}
+	
+	HashSet nodes;
+
 }
