@@ -24,6 +24,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.annotations.Goal;
@@ -206,7 +207,14 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		DialogGridPanel grid = new DialogGridPanel();
 		
 		grid.add(new UiLabel(EAM.text("Label|Indicator")));
-		grid.add(createIndicatorDropdown(getProject().getIndicatorPool(), node.getIndicatorId()));
+		grid.add(createIndicatorDropdown(node.getIndicatorId()));
+		
+		grid.add(new UiLabel(""));
+		EAMAction action = mainWindow.getActions().get(ActionCreateIndicator.class);
+		UiButton buttonCreate = new UiButton(action);
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
+		grid.add(panel);
 		
 		return grid;
 	}
@@ -412,27 +420,44 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		
 	}
 	
-	public Component createIndicatorDropdown(IndicatorPool allAvailableIndicators, int indicatorId)
+	public Component createIndicatorDropdown(int indicatorId)
 	{
 		dropdownIndicator = new UiComboBox();
-		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
-		dropdownIndicator.addItem(nullIndicator);
-		
-		int[] availableIds = allAvailableIndicators.getIds();
-		for(int i = 0; i < availableIds.length; ++i)
-		{
-			dropdownIndicator.addItem(allAvailableIndicators.find(availableIds[i]));
-		}
-		
-		Indicator selected = allAvailableIndicators.find(indicatorId);
-		if(selected == null)
-			selected = nullIndicator;
-		dropdownIndicator.setSelectedItem(selected);
+		populateIndicators();
+		selectCurrentIndicator(indicatorId);
 		dropdownIndicator.addActionListener(new IndicatorChangeHandler());
 
 		JPanel component = new JPanel(new BorderLayout());
 		component.add(dropdownIndicator, BorderLayout.LINE_START);
 		return component;
+	}
+
+
+
+	private void selectCurrentIndicator(int indicatorId)
+	{
+		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
+		Object nullIndicator = dropdownIndicator.getItemAt(0);
+		Object selected = allAvailableIndicators.find(indicatorId);
+		if(selected == null)
+			selected = nullIndicator;
+		dropdownIndicator.setSelectedItem(selected);
+	}
+
+
+
+	private Indicator populateIndicators()
+	{
+		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
+		dropdownIndicator.addItem(nullIndicator);
+		
+		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
+		int[] availableIds = allAvailableIndicators.getIds();
+		for(int i = 0; i < availableIds.length; ++i)
+		{
+			dropdownIndicator.addItem(allAvailableIndicators.find(availableIds[i]));
+		}
+		return nullIndicator;
 	}
 	
 	class IndicatorChangeHandler implements ActionListener
@@ -600,11 +625,16 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		refreshObjectiveListIfNecessary(event);
 		selectNewlyCreatedObjectiveIfNecessary(event);
+
+		refreshIndicatorListIfNecessary(event);
+		selectNewlyCreatedIndicatorIfNecessary(event);
 	}
 	
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		refreshObjectiveListIfNecessary(event);
+
+		refreshIndicatorListIfNecessary(event);
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -654,6 +684,48 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		}
 	}
 
+	void refreshIndicatorListIfNecessary(CommandExecutedEvent event)
+	{
+		if(dropdownIndicator == null)
+			return;
+		Command rawCommand = event.getCommand();
+		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		{
+			CommandCreateObject cmd = (CommandCreateObject)rawCommand;
+			if(cmd.getObjectType() == ObjectType.INDICATOR)
+			{
+				populateIndicators();
+			}
+		}
+		if(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		{
+			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
+			if(cmd.getObjectType() == ObjectType.INDICATOR)
+			{
+				Object selected = dropdownIndicator.getSelectedItem();
+				populateIndicators();
+				dropdownIndicator.setSelectedItem(selected);
+			}
+		}
+
+	}
+
+	void selectNewlyCreatedIndicatorIfNecessary(CommandExecutedEvent event)
+	{
+		if(dropdownObjective == null)
+			return;
+		
+		Command rawCommand = event.getCommand();
+		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		{
+			CommandCreateObject cmd = (CommandCreateObject)rawCommand;
+			if(cmd.getObjectType() == ObjectType.INDICATOR)
+			{
+				Indicator newIndicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
+				dropdownIndicator.setSelectedItem(newIndicator);
+			}
+		}
+	}
 	
 	
 	
