@@ -46,7 +46,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
 			{
 				int indicatorId = pool.getIds()[rowIndex];
-				ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisIndicator(indicatorId);
+				ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 				
 				return getNodeLabelsAsString(modelNodes);
 			}

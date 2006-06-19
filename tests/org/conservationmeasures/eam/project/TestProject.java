@@ -723,13 +723,13 @@ public class TestProject extends EAMTestCase
 		nodeA.setIndicator(indicatorId1);
 		nodeB.setIndicator(indicatorId1);
 		
-		List foundNodes = Arrays.asList(project.findNodesThatUseThisIndicator(indicatorId1));
+		ConceptualModelNodeSet foundNodes = project.findNodesThatUseThisIndicator(indicatorId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		List noNodes = Arrays.asList(project.findNodesThatUseThisIndicator(indicatorId2));
+		ConceptualModelNodeSet noNodes = project.findNodesThatUseThisIndicator(indicatorId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 	}

@@ -258,24 +258,24 @@ public class Project
 		return foundNodes;
 	}
 
-	public ConceptualModelNode[] findNodesThatUseThisIndicator(int indicatorId)
+	public ConceptualModelNodeSet findNodesThatUseThisIndicator(int indicatorId)
 	{
-		Vector foundNodes = new Vector();
+		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
 		int[] allNodeIds = pool.getIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
 			if(node.getIndicatorId() == indicatorId)
-				foundNodes.add(node);
+				foundNodes.attemptToAdd(node);
 		}
 		
-		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
+		return foundNodes;
 	}
 	
 	public ConceptualModelNode[] findDirectThreatsRelatedToThisIndicator(int indicatorId)
 	{
-		ConceptualModelNode[] nodes = findNodesThatUseThisIndicator(indicatorId);
+		ConceptualModelNode[] nodes = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 		HashSet allDirectThreats = new HashSet();
 		
 		for(int i = 0; i < nodes.length; ++i)
