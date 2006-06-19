@@ -9,7 +9,9 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -268,6 +270,36 @@ public class Project
 		}
 		
 		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
+	}
+	
+	public ConceptualModelNode[] findDirectThreatsRelatedToThisIndicator(int indicatorId)
+	{
+		ConceptualModelNode[] nodes = findNodesThatUseThisIndicator(indicatorId);
+		HashSet allDirectThreats = new HashSet();
+		
+		for(int i = 0; i < nodes.length; ++i)
+		{
+			int[] nodesInChain = getDiagramModel().getAllChainIds(nodes[i]);
+			ConceptualModelNode[] directThreatsInChain = extractDirectThreats(nodesInChain);
+			
+			allDirectThreats.addAll(Arrays.asList(directThreatsInChain));
+		}
+		
+		return (ConceptualModelNode[])allDirectThreats.toArray(new ConceptualModelNode[0]);
+	}
+	
+	public ConceptualModelNode[] extractDirectThreats(int[] nodesInChain)
+	{
+		HashSet directThreats = new HashSet();
+		for(int i = 0; i < nodesInChain.length; ++i)
+		{
+			ConceptualModelNode node = findNode(nodesInChain[i]);
+			if(node.isDirectThreat())
+			{
+				directThreats.add(node);
+			}
+		}
+		return (ConceptualModelNode[])directThreats.toArray(new ConceptualModelNode[0]);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

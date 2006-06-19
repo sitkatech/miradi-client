@@ -50,6 +50,21 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 				
 				return getNodeLabelsAsString(modelNodes);
 			}
+			if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
+			{
+				int indicatorId = pool.getIds()[rowIndex];
+				ConceptualModelNode[] modelNodes =  project.findDirectThreatsRelatedToThisIndicator(indicatorId);
+				
+				return getNodeLabelsAsString(modelNodes);
+			}
+			if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
+			{
+				return "Target(s)";
+			}
+			if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
+			{
+				return "Intervention(s)";
+			}
 			
 			return super.getValueAt(rowIndex, columnIndex);
 		}
@@ -68,12 +83,18 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 		}
 
 		public static final String COLUMN_FACTORS = "Factor(s)";
+		public static final String COLUMN_DIRECT_THREATS = "Direct Threat(s)";
+		public static final String COLUMN_TARGETS = "Target(s)";
+		public static final String COLUMN_INTERVENTIONS = "Intervention(s)";
 		
 		static final String[] indicatorColumnTags = {
 			Indicator.TAG_SHORT_LABEL, 
 			Indicator.TAG_LABEL,
 			Indicator.TAG_METHOD,
 			COLUMN_FACTORS,
+			COLUMN_DIRECT_THREATS,
+			COLUMN_TARGETS,
+			COLUMN_INTERVENTIONS,
 			};
 
 		Project project;
