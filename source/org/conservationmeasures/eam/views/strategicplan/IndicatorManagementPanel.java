@@ -14,6 +14,8 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.NonDraftInterventionSet;
+import org.conservationmeasures.eam.objects.TargetSet;
 import org.conservationmeasures.eam.project.Project;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel
@@ -62,11 +64,19 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			}
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 			{
-				return "Target(s)";
+				int indicatorId = pool.getIds()[rowIndex];
+				ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+				TargetSet directThreats = new TargetSet(modelNodes);
+				
+				return getNodeLabelsAsString(directThreats.toNodeArray());
 			}
 			if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 			{
-				return "Intervention(s)";
+				int indicatorId = pool.getIds()[rowIndex];
+				ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+				NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
+				
+				return getNodeLabelsAsString(directThreats.toNodeArray());
 			}
 			
 			return super.getValueAt(rowIndex, columnIndex);
