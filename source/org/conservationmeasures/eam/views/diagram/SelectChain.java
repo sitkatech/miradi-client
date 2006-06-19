@@ -33,8 +33,11 @@ public class SelectChain extends ViewDoer
 			ConceptualModelNode[] chainNodes = getProject().getDiagramModel().getDirectThreatChainNodes(selectedNode.getUnderlyingObject()).toNodeArray();
 			for(int i = 0; i < chainNodes.length; ++i)
 			{
+				// convert CMNode to DiagramNode
+				DiagramNode nodeToSelect = getProject().getDiagramModel().getNodeById(chainNodes[i].getId());
+
 				DiagramView view = (DiagramView)getView();
-				view.getDiagramComponent().addSelectionCell(chainNodes[i]);
+				view.getDiagramComponent().addSelectionCell(nodeToSelect);
 			}
 		}
 		catch (Exception e)
