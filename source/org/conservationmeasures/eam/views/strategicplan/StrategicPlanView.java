@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -122,16 +123,10 @@ public class StrategicPlanView extends UmbrellaView
 		return modifyResourceDoer;
 	}
 
-	public ModifyIndicator getModifyIndicatorDoer()
-	{
-		return modifyIndicatorDoer;
-	}
-	
 	private void addStrategicPlanDoersToMap()
 	{
 		modifyActivityDoer = new ModifyActivity(this);
 		modifyResourceDoer = new ModifyResource(this);
-		modifyIndicatorDoer = new ModifyIndicator(this);
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
@@ -142,8 +137,8 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
-		addDoerToMap(ActionModifyIndicator.class, getModifyIndicatorDoer());
-		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator(this));
+		addDoerToMap(ActionModifyIndicator.class, new ModifyObjective());
+		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
@@ -158,6 +153,5 @@ public class StrategicPlanView extends UmbrellaView
 	ObjectiveManagementPanel objectivePanel;
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
-	ModifyIndicator modifyIndicatorDoer;
 }
 

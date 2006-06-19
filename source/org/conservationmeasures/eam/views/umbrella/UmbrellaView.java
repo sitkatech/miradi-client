@@ -31,11 +31,13 @@ import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -118,8 +120,20 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		dlg.setVisible(true);
 	}
 
+	public void createIndicator() throws CommandFailedException
+	{
+		CommandCreateObject cmd = new CommandCreateObject(ObjectType.INDICATOR);
+		getProject().executeCommand(cmd);
+		Indicator indicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
+		modifyIndicator(indicator);
+	}
 
-	
+	public void modifyIndicator(Indicator indicator)
+	{
+		ObjectPropertiesDialog dlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
+		dlg.setVisible(true);
+	}
+
 	protected UiLabel createScreenShotLabel()
 	{
 		UiLabel label = new UiLabel("Demo Screen Shot");

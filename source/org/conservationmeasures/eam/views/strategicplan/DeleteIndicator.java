@@ -10,10 +10,12 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteIndicator extends ViewDoer
 {
-	public DeleteIndicator(StrategicPlanView viewToUse)
+	public ObjectiveManagementPanel getObjectivePanel()
 	{
-		
+		StrategicPlanView view = (StrategicPlanView)getView();
+		return view.getObjectivePanel();
 	}
+	
 	
 	public boolean isAvailable()
 	{
