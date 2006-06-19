@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -242,19 +243,19 @@ public class Project
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
-	public ConceptualModelNode[] findNodesThatUseThisObjective(int objectiveId)
+	public ConceptualModelNodeSet findNodesThatUseThisObjective(int objectiveId)
 	{
-		Vector foundNodes = new Vector();
+		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
 		int[] allNodeIds = pool.getIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
 			if(node.getObjectives().contains(objectiveId))
-				foundNodes.add(node);
+				foundNodes.attemptToAdd(node);
 		}
 		
-		return (ConceptualModelNode[])foundNodes.toArray(new ConceptualModelNode[0]);
+		return foundNodes;
 	}
 
 	public ConceptualModelNode[] findNodesThatUseThisIndicator(int indicatorId)

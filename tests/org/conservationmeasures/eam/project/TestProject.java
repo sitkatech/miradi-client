@@ -43,6 +43,7 @@ import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
@@ -697,13 +698,13 @@ public class TestProject extends EAMTestCase
 		nodeA.setObjectives(objectiveId);
 		nodeB.setObjectives(objectiveId);
 		
-		List foundNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId1));
+		ConceptualModelNodeSet foundNodes = project.findNodesThatUseThisObjective(objectiveId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		List noNodes = Arrays.asList(project.findNodesThatUseThisObjective(objectiveId2));
+		ConceptualModelNodeSet noNodes = project.findNodesThatUseThisObjective(objectiveId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 		
