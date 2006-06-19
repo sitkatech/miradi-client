@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -53,6 +52,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -245,7 +245,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			int nodeId = chainIds.get(i);
 			ConceptualModelNode node = getProject().findNode(nodeId);
-			HashSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodeIds(node);
+			ConceptualModelNodeSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodeIds(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{

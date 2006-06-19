@@ -15,8 +15,15 @@ public class ConceptualModelNodeSet implements Collection
 	{
 		if(isLegal(node))
 		{
-			add(node);
+			nodes.add(node);
 		}
+	}
+	
+	public void attemptToAddAll(ConceptualModelNodeSet nodesToAdd)
+	{
+		ConceptualModelNode[] nodesAsArray = nodesToAdd.toNodeArray();
+		for(int i = 0; i < nodesAsArray.length; ++i)
+			attemptToAdd(nodesAsArray[i]);
 	}
 	
 	public boolean isLegal(ConceptualModelNode node)
@@ -103,6 +110,20 @@ public class ConceptualModelNodeSet implements Collection
 		return nodes.toArray(a);
 	}
 	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof ConceptualModelNodeSet))
+			return false;
+		
+		ConceptualModelNodeSet other = (ConceptualModelNodeSet)rawOther;
+		return nodes.equals(other.nodes);
+	}
+
+	public int hashCode()
+	{
+		return nodes.hashCode();
+	}
+
 	HashSet nodes;
 
 }

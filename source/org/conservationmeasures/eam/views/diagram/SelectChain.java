@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class SelectChain extends ViewDoer
@@ -29,13 +30,11 @@ public class SelectChain extends ViewDoer
 		try
 		{
 			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
-			int[] chainIds = getProject().getDiagramModel().getDirectThreatChainIds(selectedNode.getUnderlyingObject());
-			for(int i = 0; i < chainIds.length; ++i)
+			ConceptualModelNode[] chainNodes = getProject().getDiagramModel().getDirectThreatChainNodes(selectedNode.getUnderlyingObject()).toNodeArray();
+			for(int i = 0; i < chainNodes.length; ++i)
 			{
-				DiagramNode nodeToSelect = getProject().getDiagramModel().getNodeById(chainIds[i]);
-
 				DiagramView view = (DiagramView)getView();
-				view.getDiagramComponent().addSelectionCell(nodeToSelect);
+				view.getDiagramComponent().addSelectionCell(chainNodes[i]);
 			}
 		}
 		catch (Exception e)

@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -758,10 +756,13 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeDirectThreatA = createNode(new NodeTypeDirectThreat());	
 		DiagramNode nodeDirectThreatB = createNode(new NodeTypeDirectThreat());
 		
-		int[] allIds = new int[] {nodeIndirectFactor.getId(), nodeDirectThreatA.getId(), nodeDirectThreatB.getId()};
+		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
+		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());
+		allNodes.attemptToAdd(nodeDirectThreatA.getUnderlyingObject());
+		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());
 		
 		
-		List foundNodes = Arrays.asList(project.extractDirectThreats(allIds));
+		ConceptualModelNodeSet foundNodes = project.extractDirectThreats(allNodes);
 		
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeDirectThreatA? ", nodeDirectThreatA.getUnderlyingObject(), foundNodes);

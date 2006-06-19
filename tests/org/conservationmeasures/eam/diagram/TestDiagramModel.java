@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -14,6 +13,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -65,11 +65,11 @@ public class TestDiagramModel extends EAMTestCase
 		};
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
-			int[] expectedChainNodes = expectedNodesInChain[threatIndex];
-			int threatId = expectedChainNodes[0];
+			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
+			int threatId = expectedChainNodeIds[0];
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
-			int[] gotChainNodes = model.getDirectThreatChainIds(cmNode);
-			assertEquals("wrong direct threat chain nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
+			ConceptualModelNodeSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
+			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
 
 		int[][] expectedNodesInFullChain = {
@@ -83,20 +83,20 @@ public class TestDiagramModel extends EAMTestCase
 
 		for(int nodeIndex = 0; nodeIndex < expectedNodesInFullChain.length; ++nodeIndex)
 		{
-			int[] expectedChainNodes = expectedNodesInFullChain[nodeIndex];
-			int threatId = expectedChainNodes[0];
+			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
+			int threatId = expectedChainNodeIds[0];
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
-			int[] gotChainNodes = model.getAllChainIds(cmNode);
-			assertEquals("wrong chain nodes for " + threatId + "?", setFromIntArray(expectedChainNodes), setFromIntArray(gotChainNodes));
+			ConceptualModelNodeSet gotChainNodes = model.getAllNodesInChain(cmNode);
+			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
 	}
 	
-	public Set setFromIntArray(int[] values)
+	public ConceptualModelNodeSet findNodes(int[] values)
 	{
-		HashSet set = new HashSet();
+		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
 		for(int i = 0; i < values.length; ++i)
-			set.add(new Integer(values[i]));
-		return set;
+			result.attemptToAdd(project.findNode(values[i]));
+		return result;
 	}
 
 	public void testIsNode() throws Exception

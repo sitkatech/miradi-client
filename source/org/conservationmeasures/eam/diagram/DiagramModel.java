@@ -8,9 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Point;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -23,6 +21,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectivePool;
 import org.conservationmeasures.eam.project.LinkagePool;
@@ -152,51 +151,51 @@ public class DiagramModel extends DefaultGraphModel
 		return getLinkagePool().hasLinkage(fromNode.getId(), toNode.getId());
 	}
 	
-	public int[] getDirectThreatChainIds(ConceptualModelNode directThreat)
+	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
 	{
-		HashSet results = new HashSet();
+		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
 		if(!directThreat.isDirectThreat())
-			return new int[0];
-		results.addAll(getDirectlyLinkedDownstreamNodeIds(directThreat));
-		results.addAll(getAllUpstreamNodeIds(directThreat));
+			return results;
+		results.attemptToAddAll(getDirectlyLinkedDownstreamNodeIds(directThreat));
+		results.attemptToAddAll(getAllUpstreamNodeIds(directThreat));
 		
-		return intArrayFromSet(results);
+		return results;
 	}
 	
-	public int[] getAllChainIds(ConceptualModelNode node)
+	public ConceptualModelNodeSet getAllNodesInChain(ConceptualModelNode node)
 	{
-		HashSet results = new HashSet();
-		results.addAll(getAllDownstreamNodeIds(node));
-		results.addAll(getAllUpstreamNodeIds(node));
+		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
+		results.attemptToAddAll(getAllDownstreamNodeIds(node));
+		results.attemptToAddAll(getAllUpstreamNodeIds(node));
 		
-		return intArrayFromSet(results);
+		return results;
 	}
 
-	public HashSet getAllUpstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getAllUpstreamNodeIds(ConceptualModelNode startingNode)
 	{
 		return getAllLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
 	}
 
-	public HashSet getAllDownstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getAllDownstreamNodeIds(ConceptualModelNode startingNode)
 	{
 		return getAllLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
 	}
 
-	public HashSet getDirectlyLinkedUpstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodeIds(ConceptualModelNode startingNode)
 	{
 		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
 	}
 
-	public HashSet getDirectlyLinkedDownstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getDirectlyLinkedDownstreamNodeIds(ConceptualModelNode startingNode)
 	{
 		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
 	}
 
-	private HashSet getDirectlyLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	private ConceptualModelNodeSet getDirectlyLinkedNodeIds(int direction, ConceptualModelNode startingNode)
 	{
 
-		HashSet results = new HashSet();
-		results.add(new Integer(startingNode.getId()));
+		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
+		results.attemptToAdd(startingNode);
 		
 		LinkagePool linkagePool = getLinkagePool();
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
@@ -205,17 +204,18 @@ public class DiagramModel extends DefaultGraphModel
 			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
 				int downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
-				results.add(new Integer(downstreamNodeId));
+				ConceptualModelNode downstreamNode = getNodePool().find(downstreamNodeId);
+				results.attemptToAdd(downstreamNode);
 			}
 		}
 		return results;
 	}
 
-	private HashSet getAllLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	private ConceptualModelNodeSet getAllLinkedNodeIds(int direction, ConceptualModelNode startingNode)
 	{
-		HashSet linkedNodes = new HashSet();
-		HashSet unprocessedNodes = new HashSet();
-		linkedNodes.add(new Integer(startingNode.getId()));
+		ConceptualModelNodeSet linkedNodes = new ConceptualModelNodeSet();
+		ConceptualModelNodeSet unprocessedNodes = new ConceptualModelNodeSet();
+		linkedNodes.attemptToAdd(startingNode);
 
 		LinkagePool linkagePool = getLinkagePool();
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
@@ -224,40 +224,27 @@ public class DiagramModel extends DefaultGraphModel
 			if(thisLinkage.getNodeId(direction) == startingNode.getId())
 			{
 				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-				unprocessedNodes.add(linkedNode);
+				unprocessedNodes.attemptToAdd(linkedNode);
 			}
 		}		
 		
 		while(unprocessedNodes.size() > 0)
 		{
 			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedNodes.toArray()[0];
-			linkedNodes.add(new Integer(thisNode.getId()));
+			linkedNodes.attemptToAdd(thisNode);
 			for(int i = 0; i < linkagePool.getIds().length; ++i)
 			{
 				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
 				if(thisLinkage.getNodeId(direction) == thisNode.getId())
 				{
 					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-					unprocessedNodes.add(linkedNode);
+					unprocessedNodes.attemptToAdd(linkedNode);
 				}
 					
 			}
 			unprocessedNodes.remove(thisNode);
 		}
 		return linkedNodes;
-	}
-
-	private int[] intArrayFromSet(HashSet results)
-	{
-		int[] chainIds = new int[results.size()];
-		int next = 0;
-		Iterator iter = results.iterator();
-		while(iter.hasNext())
-		{
-			Integer id = (Integer)iter.next();
-			chainIds[next++] = id.intValue();
-		}
-		return chainIds;
 	}
 
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception

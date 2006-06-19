@@ -9,9 +9,7 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
@@ -284,31 +282,31 @@ public class Project
 	public ConceptualModelNode[] findDirectThreatsRelatedToThisIndicator(int indicatorId)
 	{
 		ConceptualModelNode[] nodes = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
-		HashSet allDirectThreats = new HashSet();
+		ConceptualModelNodeSet allDirectThreats = new ConceptualModelNodeSet();
 		
 		for(int i = 0; i < nodes.length; ++i)
 		{
-			int[] nodesInChain = getDiagramModel().getAllChainIds(nodes[i]);
-			ConceptualModelNode[] directThreatsInChain = extractDirectThreats(nodesInChain);
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodes[i]);
+			ConceptualModelNodeSet directThreatsInChain = extractDirectThreats(nodesInChain);
 			
-			allDirectThreats.addAll(Arrays.asList(directThreatsInChain));
+			allDirectThreats.attemptToAddAll(directThreatsInChain);
 		}
 		
 		return (ConceptualModelNode[])allDirectThreats.toArray(new ConceptualModelNode[0]);
 	}
 	
-	public ConceptualModelNode[] extractDirectThreats(int[] nodesInChain)
+	public ConceptualModelNodeSet extractDirectThreats(ConceptualModelNodeSet nodesInChain)
 	{
-		HashSet directThreats = new HashSet();
-		for(int i = 0; i < nodesInChain.length; ++i)
+		ConceptualModelNode[] nodesAsArray = nodesInChain.toNodeArray();
+		ConceptualModelNodeSet directThreats = new ConceptualModelNodeSet();
+		for(int i = 0; i < nodesAsArray.length; ++i)
 		{
-			ConceptualModelNode node = findNode(nodesInChain[i]);
-			if(node.isDirectThreat())
+			if(nodesAsArray[i].isDirectThreat())
 			{
-				directThreats.add(node);
+				directThreats.attemptToAdd(nodesAsArray[i]);
 			}
 		}
-		return (ConceptualModelNode[])directThreats.toArray(new ConceptualModelNode[0]);
+		return directThreats;
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////

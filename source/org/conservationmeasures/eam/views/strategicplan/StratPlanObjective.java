@@ -82,11 +82,10 @@ public class StratPlanObjective extends StratPlanObject
 	boolean doesChainContainObjective(ConceptualModelNode chainMember)
 	{
 		int objectiveId = objective.getId();
-		int[] chainIds = project.getDiagramModel().getAllChainIds(chainMember);
-		for(int i = 0; i < chainIds.length; ++i)
+		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllNodesInChain(chainMember).toNodeArray();
+		for(int i = 0; i < chainNodes.length; ++i)
 		{
-			ConceptualModelNode node = project.getNodePool().find(chainIds[i]);
-			if(node.getObjectives().contains(objectiveId))
+			if(chainNodes[i].getObjectives().contains(objectiveId))
 				return true;
 		}
 		
