@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.TargetSet;
 import org.conservationmeasures.eam.project.Project;
 
-class ObjectiveTableModel extends ObjectManagerTableModel
+class ObjectiveTableModel extends AnnotationTableModel
 {	
 	ObjectiveTableModel(Project projectToUse)
 	{
@@ -58,32 +58,15 @@ class ObjectiveTableModel extends ObjectManagerTableModel
 		return super.getValueAt(rowIndex, columnIndex);
 	}
 	
-	String getNodeLabelsAsString(ConceptualModelNode[] modelNodes)
-	{
-		StringBuffer result = new StringBuffer();
-		for(int i = 0; i < modelNodes.length; ++i)
-		{
-			if(i > 0)
-				result.append(", ");
-			result.append(modelNodes[i].getLabel());
-		}
-		
-		return result.toString();
-	}
-
-public static final String COLUMN_FACTORS = "Factor(s)";
-public static final String COLUMN_DIRECT_THREATS = "Direct Threat(s)";
-public static final String COLUMN_TARGETS = "Target(s)";
-public static final String COLUMN_INTERVENTIONS = "Intervention(s)";
-
-static final String[] objectiveColumnTags = {
-	Objective.TAG_SHORT_LABEL, 
-	Objective.TAG_LABEL,
-	Objective.TAG_FULL_TEXT,
-	COLUMN_FACTORS,
-	COLUMN_DIRECT_THREATS,
-	COLUMN_TARGETS,
-	};
-
-Project project;
+	static final String[] objectiveColumnTags = {
+		Objective.TAG_SHORT_LABEL, 
+		Objective.TAG_LABEL,
+		Objective.TAG_FULL_TEXT,
+		COLUMN_FACTORS,
+		COLUMN_DIRECT_THREATS,
+		COLUMN_TARGETS,
+		COLUMN_INTERVENTIONS,
+		};
+	
+	Project project;
 }
