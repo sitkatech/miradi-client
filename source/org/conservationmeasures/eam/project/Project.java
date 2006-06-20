@@ -293,6 +293,19 @@ public class Project
 		return relatedNodes;
 	}
 	
+	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(int objectiveId)
+	{
+		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
+		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
+		
+		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
+		{
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisObjective[i]);
+			relatedNodes.attemptToAddAll(nodesInChain);
+		}
+		
+		return relatedNodes;
+	}
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects

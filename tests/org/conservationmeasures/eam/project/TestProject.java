@@ -708,6 +708,29 @@ public class TestProject extends EAMTestCase
 		
 	}
 	
+	public void testFindAllNodesRelatedToThisObjective() throws Exception
+	{
+		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
+		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
+		
+		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
+		
+		ObjectiveIds objectiveId = new ObjectiveIds();
+		objectiveId.add(objectiveId1);
+
+		nodeIndirectFactor.setObjectives(objectiveId);
+		
+		createLinkage(IdAssigner.INVALID_ID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		
+		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisObjective(objectiveId1);
+		
+		assertEquals("didn't find anything?", 2, foundNodes.size());
+		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
+		assertContains("missing indirect factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
+		
+		
+	}
+	
 	public void testFindNodesThatUseThisIndicator() throws Exception
 	{
 		
