@@ -15,6 +15,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
@@ -80,6 +82,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		diagram = diagramToUse;
 		
 		getProject().addCommandExecutedListener(this);
+		addWindowListener(new WindowEventHandler());
 
 		setResizable(true);
 		setModal(false);
@@ -87,14 +90,6 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	
 	
 	
-	public void dispose()
-	{
-		getProject().removeCommandExecutedListener(this);
-		super.dispose();
-	}
-
-
-
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
 		Container contents = getContentPane();
@@ -337,6 +332,9 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		public void actionPerformed(ActionEvent event)
 		{
+			if(ignoreObjectiveChanges)
+				return;
+			
 			try
 			{
 				getProject().executeCommand(new CommandSetNodeObjectives(getNodeId(), getObjectives()));
@@ -365,6 +363,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 
 	private void populateObjectives()
 	{
+		ignoreObjectiveChanges = true;
 		dropdownObjective.removeAllItems();
 		Objective nullObjective = new Objective(IdAssigner.INVALID_ID);
 		dropdownObjective.addItem(nullObjective);
@@ -375,6 +374,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		{
 			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
 		}
+		ignoreObjectiveChanges = false;
 	}
 	
 	public Component createTargetGoal(GoalPool allAvailableGoals, GoalIds currentGoals)
@@ -448,6 +448,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 
 	private Indicator populateIndicators()
 	{
+		ignoreIndicatorChanges = true;
 		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
 		dropdownIndicator.addItem(nullIndicator);
 		
@@ -457,6 +458,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		{
 			dropdownIndicator.addItem(allAvailableIndicators.find(availableIds[i]));
 		}
+		ignoreIndicatorChanges = false;
 		return nullIndicator;
 	}
 	
@@ -464,6 +466,9 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		public void actionPerformed(ActionEvent event)
 		{
+			if(ignoreIndicatorChanges)
+				return;
+			
 			try
 			{
 				getProject().executeCommand(new CommandSetIndicator(getNodeId(), getIndicator().getId()));
@@ -727,7 +732,25 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		}
 	}
 	
+	class WindowEventHandler extends WindowAdapter
+	{
+		public void windowClosing(WindowEvent e)
+		{
+			stopListening();
+		}
+		
+	}
 	
+	void stopListening()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+
+	public void dispose()
+	{
+		stopListening();
+		super.dispose();
+	}
 	
 	static final int MAX_LABEL_LENGTH = 40;
 	
@@ -742,4 +765,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	UiComboBox dropdownObjective;
 	UiComboBox dropdownGoal;
 	UiCheckBox statusCheckBox;
+	
+	boolean ignoreObjectiveChanges;
+	boolean ignoreIndicatorChanges;
 }

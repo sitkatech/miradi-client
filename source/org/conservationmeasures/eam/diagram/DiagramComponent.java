@@ -60,9 +60,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridVisible(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
 
-		String title = EAM.text("Title|Properties");
-		nodePropertiesDlg = new NodePropertiesDialog(EAM.mainWindow, this, title);
-
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
 		MouseEventHandler mouseHandler = new MouseEventHandler(this, project, actions);
@@ -235,17 +232,28 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void selectionWasChanged()
 	{
+		if(nodePropertiesDlg == null)
+			return;
+		
 		DiagramNode selectedNode = getSelectedNode();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesDlg.getCurrentNode()))
-			nodePropertiesDlg.setVisible(false);
+			disposeOfNodePropertiesDialog();
 	}
-	
+
 	public void showNodeProperties(DiagramNode node)
 	{
+		if(nodePropertiesDlg != null)
+			disposeOfNodePropertiesDialog();
+		String title = EAM.text("Title|Properties");
+		nodePropertiesDlg = new NodePropertiesDialog(EAM.mainWindow, this, title);
 		nodePropertiesDlg.setCurrentNode(this, node);
-		if(!nodePropertiesDlg.isVisible())
-			nodePropertiesDlg.setVisible(true);
-
+		nodePropertiesDlg.setVisible(true);
+	}
+	
+	private void disposeOfNodePropertiesDialog()
+	{
+		nodePropertiesDlg.dispose();
+		nodePropertiesDlg = null;
 	}
 	
 	Project project;
