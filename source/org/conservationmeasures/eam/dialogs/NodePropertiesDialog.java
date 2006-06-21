@@ -449,6 +449,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	private Indicator populateIndicators()
 	{
 		ignoreIndicatorChanges = true;
+		dropdownIndicator.removeAllItems();
 		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
 		dropdownIndicator.addItem(nullIndicator);
 		
