@@ -7,48 +7,48 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Frame;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
 import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiVBox;
-import org.martus.swing.Utilities;
 
 public class LayerDialog extends JDialog implements ActionListener
 {
-	public LayerDialog(Frame parent, LayerManager initialValues) throws HeadlessException
+	public LayerDialog(MainWindow mainWindowToUse) throws HeadlessException
 	{
-		super(parent, EAM.text("Title|View Layers"));
+		super(mainWindowToUse, EAM.text("Title|View Layers"));
+		mainWindow = mainWindowToUse;
 		
 		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Interventions"));
+		interventionCheckBox.addActionListener(this);
 		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Factors"));
+		factorCheckBox.addActionListener(this);
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
+		targetCheckBox.addActionListener(this);
 		
-		interventionCheckBox.setSelected(initialValues.isTypeVisible(DiagramIntervention.class));
-		factorCheckBox.setSelected(initialValues.isTypeVisible(DiagramFactor.class));
-		targetCheckBox.setSelected(initialValues.isTypeVisible(DiagramTarget.class));
+		setControlsFromLayerManager();
 		
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createLayerOptions());
-		bigBox.add(createButtonBar());
 		
 		Container contents = getContentPane();
 		contents.add(bigBox);
 		pack();
 		setResizable(true);
-		setModal(true);
+		setModal(false);
 	}
-	
+
 	private Component createLayerOptions()
 	{
 		UiVBox options = new UiVBox();
@@ -58,25 +58,9 @@ public class LayerDialog extends JDialog implements ActionListener
 		return options;
 	}
 	
-	private Box createButtonBar()
-	{
-		okButton = new UiButton(EAM.text("Button|OK"));
-		okButton.addActionListener(this);
-		getRootPane().setDefaultButton(okButton);
-		cancelButton = new UiButton(EAM.text("Button|Cancel"));
-		cancelButton.addActionListener(this);
-
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), okButton, cancelButton};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
-	}
-
 	public void actionPerformed(ActionEvent event)
 	{
-		if(event.getSource() == okButton)
-			result = true;
-		dispose();
+		applyChanges();
 	}
 	
 	public boolean getResult()
@@ -84,13 +68,39 @@ public class LayerDialog extends JDialog implements ActionListener
 		return result;
 	}
 	
-	public void updateLayerManager(LayerManager managerToUpdate)
+	private void setControlsFromLayerManager()
 	{
-		managerToUpdate.setVisibility(DiagramIntervention.class, interventionCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramFactor.class, factorCheckBox.isSelected());
-		managerToUpdate.setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
+		interventionCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramIntervention.class));
+		factorCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramFactor.class));
+		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
 	}
 	
+	private void updateLayerManagerFromControls()
+	{
+		getLayerManager().setVisibility(DiagramIntervention.class, interventionCheckBox.isSelected());
+		getLayerManager().setVisibility(DiagramFactor.class, factorCheckBox.isSelected());
+		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
+	}
+	
+	public void applyChanges()
+	{
+		updateLayerManagerFromControls();
+		getProject().updateVisibilityOfNodes();
+		mainWindow.updateStatusBar();
+	}
+
+	private LayerManager getLayerManager()
+	{
+		LayerManager manager = getProject().getLayerManager();
+		return manager;
+	}
+
+	private Project getProject()
+	{
+		return mainWindow.getProject();
+	}
+	
+	MainWindow mainWindow;
 	boolean result;
 	UiButton okButton;
 	UiButton cancelButton;
