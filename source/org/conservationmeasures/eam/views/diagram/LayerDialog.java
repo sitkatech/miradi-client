@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiVBox;
 
@@ -102,8 +101,6 @@ public class LayerDialog extends JDialog implements ActionListener
 	
 	MainWindow mainWindow;
 	boolean result;
-	UiButton okButton;
-	UiButton cancelButton;
 
 	UiCheckBox interventionCheckBox;
 	UiCheckBox factorCheckBox;
