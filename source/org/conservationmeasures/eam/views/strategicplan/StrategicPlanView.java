@@ -125,8 +125,8 @@ public class StrategicPlanView extends UmbrellaView
 
 	private void addStrategicPlanDoersToMap()
 	{
-		modifyActivityDoer = new ModifyActivity(this);
-		modifyResourceDoer = new ModifyResource(this);
+		modifyActivityDoer = new ModifyActivity();
+		modifyResourceDoer = new ModifyResource();
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);

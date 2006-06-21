@@ -5,24 +5,21 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.TaskPropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ObjectType;
-import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class ModifyActivity extends ProjectDoer
+public class ModifyActivity extends ViewDoer
 {
-	public ModifyActivity(StrategicPlanView viewToUse)
+	public StratPlanObject getSelectedObject()
 	{
-		view = viewToUse;
+		StrategicPlanView view = (StrategicPlanView)getView();
+		return view.getSelectedObject();
 	}
 	
 	public boolean isAvailable()
 	{
-		StratPlanObject selected = view.getSelectedObject();
+		StratPlanObject selected = getSelectedObject();
 		if(selected == null)
 			return false;
 		return (selected.getType() == ObjectType.TASK);
@@ -30,22 +27,7 @@ public class ModifyActivity extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		StratPlanActivity selected = (StratPlanActivity)view.getSelectedObject();
-		modify(selected.getActivity());
+		StratPlanActivity selected = (StratPlanActivity)getSelectedObject();
+		getView().modifyTask(selected.getActivity());
 	}
-
-	public void modify(Task activity)
-	{
-		String[] tags = new String[] {Task.TAG_LABEL, Task.TAG_RESOURCE_IDS};
-		ObjectPropertiesDialog dlg = new TaskPropertiesDialog(getMainWindow(), activity, tags);
-		dlg.setVisible(true);
-	}
-	
-	MainWindow getMainWindow()
-	{
-		return view.getMainWindow();
-	}
-
-	
-	StrategicPlanView view;
 }

@@ -30,23 +30,32 @@ import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.TaskPropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.martus.swing.UiLabel;
 
-abstract public class UmbrellaView extends JPanel implements ViewChangeListener
+abstract public class UmbrellaView extends JPanel implements ViewChangeListener, CommandExecutedListener
 {
 	public UmbrellaView(MainWindow mainWindowToUse)
 	{
@@ -55,6 +64,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
 		getProject().addViewChangeListener(this);
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	abstract public String cardName();
@@ -116,8 +126,11 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 
 	public void modifyObjective(Objective objective)
 	{
-		ObjectPropertiesDialog dlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
-		dlg.setVisible(true);
+		if(objectivePropertiesDlg != null)
+			objectivePropertiesDlg.dispose();
+		
+		objectivePropertiesDlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
+		objectivePropertiesDlg.setVisible(true);
 	}
 
 	public void createIndicator() throws CommandFailedException
@@ -130,8 +143,29 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 
 	public void modifyIndicator(Indicator indicator)
 	{
-		ObjectPropertiesDialog dlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
-		dlg.setVisible(true);
+		if(indicatorPropertiesDlg != null)
+			indicatorPropertiesDlg.dispose();
+		
+		indicatorPropertiesDlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
+		indicatorPropertiesDlg.setVisible(true);
+	}
+
+	public void modifyProjectResource(ProjectResource resource)
+	{
+		if(resourcePropertiesDlg != null)
+			resourcePropertiesDlg.dispose();
+		
+		resourcePropertiesDlg = new ProjectResourcePropertiesDialog(getMainWindow(), resource);
+		resourcePropertiesDlg.setVisible(true);
+	}
+
+	public void modifyTask(Task task)
+	{
+		if(taskPropertiesDlg != null)
+			taskPropertiesDlg.dispose();
+		
+		taskPropertiesDlg = new TaskPropertiesDialog(getMainWindow(), task);
+		taskPropertiesDlg.setVisible(true);
 	}
 
 	protected UiLabel createScreenShotLabel()
@@ -186,8 +220,106 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener
 		return ourViewData;
 	}
 
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		closeObjectivePropertiesDialogIfObjectiveDeleted(event.getCommand());
+		closeIndicatorPropertiesDialogIfIndicatorDeleted(event.getCommand());
+		closeResourcePropertiesDialogIfResourceDeleted(event.getCommand());
+		closeTaskPropertiesDialogIfTaskDeleted(event.getCommand());
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+	
+	void closeObjectivePropertiesDialogIfObjectiveDeleted(Command rawCommand)
+	{
+		if(objectivePropertiesDlg == null)
+			return;
+		
+		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
+		EAMObject objectBeingEdited = objectivePropertiesDlg.getObject();
+		if(cmd.getObjectType() != objectBeingEdited.getType())
+			return;
+		if(cmd.getObjectId() != objectBeingEdited.getId())
+			return;
+		
+		objectivePropertiesDlg.dispose();
+		objectivePropertiesDlg = null;
+	}
+
+	void closeIndicatorPropertiesDialogIfIndicatorDeleted(Command rawCommand)
+	{
+		if(indicatorPropertiesDlg == null)
+			return;
+		
+		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
+		EAMObject objectBeingEdited = indicatorPropertiesDlg.getObject();
+		if(cmd.getObjectType() != objectBeingEdited.getType())
+			return;
+		if(cmd.getObjectId() != objectBeingEdited.getId())
+			return;
+		
+		indicatorPropertiesDlg.dispose();
+		indicatorPropertiesDlg = null;
+	}
+
+	void closeResourcePropertiesDialogIfResourceDeleted(Command rawCommand)
+	{
+		if(resourcePropertiesDlg == null)
+			return;
+		
+		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
+		EAMObject objectBeingEdited = resourcePropertiesDlg.getObject();
+		if(cmd.getObjectType() != objectBeingEdited.getType())
+			return;
+		if(cmd.getObjectId() != objectBeingEdited.getId())
+			return;
+		
+		resourcePropertiesDlg.dispose();
+		resourcePropertiesDlg = null;
+	}
+
+	void closeTaskPropertiesDialogIfTaskDeleted(Command rawCommand)
+	{
+		if(taskPropertiesDlg == null)
+			return;
+		
+		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
+		EAMObject objectBeingEdited = taskPropertiesDlg.getObject();
+		if(cmd.getObjectType() != objectBeingEdited.getType())
+			return;
+		if(cmd.getObjectId() != objectBeingEdited.getId())
+			return;
+		
+		taskPropertiesDlg.dispose();
+		taskPropertiesDlg = null;
+	}
+
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
+	
+	private ObjectPropertiesDialog objectivePropertiesDlg;
+	private ObjectPropertiesDialog indicatorPropertiesDlg;
+	private ObjectPropertiesDialog resourcePropertiesDlg;
+	private ObjectPropertiesDialog taskPropertiesDlg;
+
 }

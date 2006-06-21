@@ -63,7 +63,7 @@ public class InsertActivity extends ViewDoer
 			getProject().executeCommand(new CommandEndTransaction());
 			
 			Task activity = getProject().getTaskPool().find(createdId);
-			((StrategicPlanView)getView()).getModifyActivityDoer().modify(activity);
+			getView().modifyTask(activity);
 
 		}
 		catch (Exception e)

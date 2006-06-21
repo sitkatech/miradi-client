@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.project.Project;
 public class TaskPropertiesDialog extends ObjectPropertiesDialog
 {
 
-	public TaskPropertiesDialog(MainWindow parentToUse, Task taskToEdit, String[] tags)
+	public TaskPropertiesDialog(MainWindow parentToUse, Task taskToEdit)
 	{
 		super(parentToUse, taskToEdit);
 		task = taskToEdit;
@@ -42,6 +42,9 @@ public class TaskPropertiesDialog extends ObjectPropertiesDialog
 		IdList selectedResources = task.getResourceIdList();
 		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
+	
+	static final String[] tags = new String[] {Task.TAG_LABEL, Task.TAG_RESOURCE_IDS};
+
 
 	Project project;
 	Task task;

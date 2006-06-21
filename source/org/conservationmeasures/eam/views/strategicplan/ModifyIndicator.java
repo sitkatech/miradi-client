@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -33,12 +31,7 @@ public class ModifyIndicator extends ViewDoer
 			return;
 		
 		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
-		modify(indicator);
+		getView().modifyIndicator(indicator);
 	}
 
-	public void modify(Indicator indicator)
-	{
-		ObjectPropertiesDialog dlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
-		dlg.setVisible(true);
-	}
 }

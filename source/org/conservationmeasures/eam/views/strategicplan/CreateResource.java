@@ -23,7 +23,7 @@ public class CreateResource extends ViewDoer
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.PROJECT_RESOURCE);
 		getProject().executeCommand(cmd);
 		ProjectResource resource = getProject().getResourcePool().find(cmd.getCreatedId());
-		((StrategicPlanView)getView()).getModifyResourceDoer().modify(resource);
+		getView().modifyProjectResource(resource);
 	}
 
 }

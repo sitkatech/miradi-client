@@ -7,21 +7,19 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 
 
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 
-public class ModifyResource extends MainWindowDoer
+public class ModifyResource extends ViewDoer
 {
-	public ModifyResource(StrategicPlanView viewToUse)
+	public ModifyResource()
 	{
-		view = viewToUse;
 	}
 	
 	public ResourceManagementPanel getResourcePanel()
 	{
+		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getResourcePanel();
 	}
 	
@@ -39,14 +37,7 @@ public class ModifyResource extends MainWindowDoer
 			return;
 		
 		ProjectResource resource = getResourcePanel().getSelectedResource();
-		modify(resource);
+		getView().modifyProjectResource(resource);
 	}
 
-	public void modify(ProjectResource resource)
-	{
-		ObjectPropertiesDialog dlg = new ProjectResourcePropertiesDialog(getMainWindow(), resource);
-		dlg.setVisible(true);
-	}
-
-	StrategicPlanView view;
 }
