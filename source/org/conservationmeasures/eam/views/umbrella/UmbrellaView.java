@@ -124,26 +124,17 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		modifyObjective(objective);
 	}
 
-	public void modifyObjective(Objective objective)
-	{
-		showObjectPropertiesDialog(new ObjectivePropertiesDialog(getMainWindow(), objective));
-	}
-
-	private void showObjectPropertiesDialog(ObjectPropertiesDialog newDialog)
-	{
-		if(activePropertiesDlg != null)
-			activePropertiesDlg.dispose();
-		
-		activePropertiesDlg = newDialog;
-		activePropertiesDlg.setVisible(true);
-	}
-
 	public void createIndicator() throws CommandFailedException
 	{
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.INDICATOR);
 		getProject().executeCommand(cmd);
 		Indicator indicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
 		modifyIndicator(indicator);
+	}
+
+	public void modifyObjective(Objective objective)
+	{
+		showObjectPropertiesDialog(new ObjectivePropertiesDialog(getMainWindow(), objective));
 	}
 
 	public void modifyIndicator(Indicator indicator)
@@ -159,6 +150,15 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	public void modifyTask(Task task)
 	{
 		showObjectPropertiesDialog(new TaskPropertiesDialog(getMainWindow(), task));
+	}
+
+	private void showObjectPropertiesDialog(ObjectPropertiesDialog newDialog)
+	{
+		if(activePropertiesDlg != null)
+			activePropertiesDlg.dispose();
+		
+		activePropertiesDlg = newDialog;
+		activePropertiesDlg.setVisible(true);
 	}
 
 	protected UiLabel createScreenShotLabel()
