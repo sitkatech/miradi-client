@@ -126,11 +126,16 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 
 	public void modifyObjective(Objective objective)
 	{
-		if(objectivePropertiesDlg != null)
-			objectivePropertiesDlg.dispose();
+		showObjectPropertiesDialog(new ObjectivePropertiesDialog(getMainWindow(), objective));
+	}
+
+	private void showObjectPropertiesDialog(ObjectPropertiesDialog newDialog)
+	{
+		if(activePropertiesDlg != null)
+			activePropertiesDlg.dispose();
 		
-		objectivePropertiesDlg = new ObjectivePropertiesDialog(getMainWindow(), objective);
-		objectivePropertiesDlg.setVisible(true);
+		activePropertiesDlg = newDialog;
+		activePropertiesDlg.setVisible(true);
 	}
 
 	public void createIndicator() throws CommandFailedException
@@ -143,29 +148,17 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 
 	public void modifyIndicator(Indicator indicator)
 	{
-		if(indicatorPropertiesDlg != null)
-			indicatorPropertiesDlg.dispose();
-		
-		indicatorPropertiesDlg = new IndicatorPropertiesDialog(getMainWindow(), indicator);
-		indicatorPropertiesDlg.setVisible(true);
+		showObjectPropertiesDialog(new IndicatorPropertiesDialog(getMainWindow(), indicator));
 	}
 
 	public void modifyProjectResource(ProjectResource resource)
 	{
-		if(resourcePropertiesDlg != null)
-			resourcePropertiesDlg.dispose();
-		
-		resourcePropertiesDlg = new ProjectResourcePropertiesDialog(getMainWindow(), resource);
-		resourcePropertiesDlg.setVisible(true);
+		showObjectPropertiesDialog(new ProjectResourcePropertiesDialog(getMainWindow(), resource));
 	}
 
 	public void modifyTask(Task task)
 	{
-		if(taskPropertiesDlg != null)
-			taskPropertiesDlg.dispose();
-		
-		taskPropertiesDlg = new TaskPropertiesDialog(getMainWindow(), task);
-		taskPropertiesDlg.setVisible(true);
+		showObjectPropertiesDialog(new TaskPropertiesDialog(getMainWindow(), task));
 	}
 
 	protected UiLabel createScreenShotLabel()
@@ -222,10 +215,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		closeObjectivePropertiesDialogIfObjectiveDeleted(event.getCommand());
-		closeIndicatorPropertiesDialogIfIndicatorDeleted(event.getCommand());
-		closeResourcePropertiesDialogIfResourceDeleted(event.getCommand());
-		closeTaskPropertiesDialogIfTaskDeleted(event.getCommand());
+		closeActivePropertiesDialogIfWeDeletedItsObject(event.getCommand());
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
@@ -236,80 +226,23 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	{
 	}
 	
-	void closeObjectivePropertiesDialogIfObjectiveDeleted(Command rawCommand)
+	void closeActivePropertiesDialogIfWeDeletedItsObject(Command rawCommand)
 	{
-		if(objectivePropertiesDlg == null)
+		if(activePropertiesDlg == null)
 			return;
 		
 		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 			return;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = objectivePropertiesDlg.getObject();
+		EAMObject objectBeingEdited = activePropertiesDlg.getObject();
 		if(cmd.getObjectType() != objectBeingEdited.getType())
 			return;
 		if(cmd.getObjectId() != objectBeingEdited.getId())
 			return;
 		
-		objectivePropertiesDlg.dispose();
-		objectivePropertiesDlg = null;
-	}
-
-	void closeIndicatorPropertiesDialogIfIndicatorDeleted(Command rawCommand)
-	{
-		if(indicatorPropertiesDlg == null)
-			return;
-		
-		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			return;
-		
-		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = indicatorPropertiesDlg.getObject();
-		if(cmd.getObjectType() != objectBeingEdited.getType())
-			return;
-		if(cmd.getObjectId() != objectBeingEdited.getId())
-			return;
-		
-		indicatorPropertiesDlg.dispose();
-		indicatorPropertiesDlg = null;
-	}
-
-	void closeResourcePropertiesDialogIfResourceDeleted(Command rawCommand)
-	{
-		if(resourcePropertiesDlg == null)
-			return;
-		
-		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			return;
-		
-		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = resourcePropertiesDlg.getObject();
-		if(cmd.getObjectType() != objectBeingEdited.getType())
-			return;
-		if(cmd.getObjectId() != objectBeingEdited.getId())
-			return;
-		
-		resourcePropertiesDlg.dispose();
-		resourcePropertiesDlg = null;
-	}
-
-	void closeTaskPropertiesDialogIfTaskDeleted(Command rawCommand)
-	{
-		if(taskPropertiesDlg == null)
-			return;
-		
-		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-			return;
-		
-		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = taskPropertiesDlg.getObject();
-		if(cmd.getObjectType() != objectBeingEdited.getType())
-			return;
-		if(cmd.getObjectId() != objectBeingEdited.getId())
-			return;
-		
-		taskPropertiesDlg.dispose();
-		taskPropertiesDlg = null;
+		activePropertiesDlg.dispose();
+		activePropertiesDlg = null;
 	}
 
 	private MainWindow mainWindow;
@@ -317,9 +250,6 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	
-	private ObjectPropertiesDialog objectivePropertiesDlg;
-	private ObjectPropertiesDialog indicatorPropertiesDlg;
-	private ObjectPropertiesDialog resourcePropertiesDlg;
-	private ObjectPropertiesDialog taskPropertiesDlg;
+	private ObjectPropertiesDialog activePropertiesDlg;
 
 }
