@@ -45,6 +45,7 @@ public class StrategicPlanView extends UmbrellaView
 		public void stateChanged(ChangeEvent e)
 		{
 			currentTab = tabs.getSelectedIndex();
+			closeActivePropertiesDialog();
 		}
 		
 	}

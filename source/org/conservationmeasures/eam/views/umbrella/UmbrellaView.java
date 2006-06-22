@@ -241,7 +241,13 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		if(cmd.getObjectId() != objectBeingEdited.getId())
 			return;
 		
-		activePropertiesDlg.dispose();
+		closeActivePropertiesDialog();
+	}
+	
+	public void closeActivePropertiesDialog()
+	{
+		if(activePropertiesDlg != null)
+			activePropertiesDlg.dispose();
 		activePropertiesDlg = null;
 	}
 
