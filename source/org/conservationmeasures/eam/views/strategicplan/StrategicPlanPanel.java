@@ -26,10 +26,12 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.martus.swing.UiButton;
@@ -74,6 +76,29 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 	{
 		StratPlanObject selected = (StratPlanObject)tree.getTree().getLastSelectedPathComponent();
 		return selected;
+	}
+	
+	public void selectObject(EAMObject objectToSelect)
+	{
+		TreePath found = model.findObject(model.getPathToRoot(), objectToSelect.getType(), objectToSelect.getId());
+		if(found == null)
+			return;
+		tree.getTree().expandPath(found.getParentPath());
+EAM.logDebug("" + found + ": " + tree.getTree().getRowForPath(found));
+TreePath parentPath = found.getParentPath();
+EAM.logDebug("" + parentPath + ": " + tree.getTree().getRowForPath(parentPath));
+parentPath = parentPath.getParentPath();
+EAM.logDebug("" + parentPath + ": " + tree.getTree().getRowForPath(parentPath));
+		int row = tree.getTree().getRowForPath(found);
+EAM.logDebug("" + row);
+		if(row < 0)
+		{
+			EAM.logWarning("StrategicPlanPanel.selectObject failed: row -1");
+			return;
+		}
+		tree.clearSelection();
+		tree.setRowSelectionInterval(row, row);
+		System.out.println("Selected row " + row);
 	}
 	
 	public Task getSelectedTask()

@@ -20,14 +20,23 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class InsertActivity extends ViewDoer
 {
-	public InsertActivity(StrategicPlanView viewToUse)
+	public StratPlanObject getSelectedObject()
 	{
-		view = viewToUse;
+		StrategicPlanPanel panel = getPanel();
+		if(panel == null)
+			return null;
+		return panel.getSelectedObject();
+	}
+
+	private StrategicPlanPanel getPanel()
+	{
+		StrategicPlanPanel panel = ((StrategicPlanView)getView()).getStrategicPlanPanel();
+		return panel;
 	}
 	
 	public boolean isAvailable()
 	{
-		StratPlanObject selected = view.getSelectedObject();
+		StratPlanObject selected = getSelectedObject();
 		if(selected == null)
 			return false;
 		return selected.canInsertActivityHere();
@@ -35,12 +44,12 @@ public class InsertActivity extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		doInsertActivity(view.getStrategicPlanPanel());
+		doInsertActivity();
 	}
 
-	private void doInsertActivity(StrategicPlanPanel panel) throws CommandFailedException
+	private void doInsertActivity() throws CommandFailedException
 	{
-		ActivityInsertionPoint insertAt = panel.getActivityInsertionPoint();
+		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
 		int interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
 		ConceptualModelNode intervention = getProject().getNodePool().find(interventionId);
@@ -64,6 +73,7 @@ public class InsertActivity extends ViewDoer
 			
 			Task activity = getProject().getTaskPool().find(createdId);
 			getView().modifyObject(activity);
+			getView().selectObject(activity);
 
 		}
 		catch (Exception e)
@@ -72,6 +82,4 @@ public class InsertActivity extends ViewDoer
 			throw new CommandFailedException(e);
 		}
 	}
-
-	StrategicPlanView view;
 }

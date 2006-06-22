@@ -26,6 +26,7 @@ public class CreateResource extends ViewDoer
 			getProject().executeCommand(cmd);
 			ProjectResource resource = getProject().getResourcePool().find(cmd.getCreatedId());
 			getView().modifyObject(resource);
+			getView().selectObject(resource);
 		}
 		catch (Exception e)
 		{

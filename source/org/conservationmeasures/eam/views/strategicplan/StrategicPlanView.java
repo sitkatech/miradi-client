@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -107,11 +109,18 @@ public class StrategicPlanView extends UmbrellaView
 		return objectivePanel;
 	}
 	
-	public StratPlanObject getSelectedObject()
+	public void selectObject(EAMObject objectToSelect)
 	{
-		if(strategicPlanPanel == null)
-			return null;
-		return strategicPlanPanel.getSelectedObject();
+		Component tab = tabs.getSelectedComponent();
+		if(tab.equals(getStrategicPlanPanel()))
+		{
+			getStrategicPlanPanel().selectObject(objectToSelect);
+		}
+		else
+		{
+			ObjectManagementPanel panel = (ObjectManagementPanel)tab;
+			panel.selectObject(objectToSelect);
+		}
 	}
 	
 	public ModifyActivity getModifyActivityDoer()
@@ -129,7 +138,7 @@ public class StrategicPlanView extends UmbrellaView
 		modifyActivityDoer = new ModifyActivity();
 		modifyResourceDoer = new ModifyResource();
 		
-		addDoerToMap(ActionInsertActivity.class, new InsertActivity(this));
+		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
 		

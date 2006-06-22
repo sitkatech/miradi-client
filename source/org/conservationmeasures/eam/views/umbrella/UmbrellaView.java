@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.dialogs.TaskPropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -120,6 +121,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		getProject().executeCommand(cmd);
 		Objective objective = getProject().getObjectivePool().find(cmd.getCreatedId());
 		modifyObject(objective);
+		selectObject(objective);
 	}
 
 	public void createIndicator() throws Exception
@@ -128,6 +130,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		getProject().executeCommand(cmd);
 		Indicator indicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
 		modifyObject(indicator);
+		selectObject(indicator);
 	}
 
 	public void objectWasSelected(EAMObject object) throws Exception
@@ -170,6 +173,11 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		
 		activePropertiesDlg = newDialog;
 		activePropertiesDlg.setVisible(true);
+	}
+	
+	public void selectObject(EAMObject objectToSelect)
+	{
+		EAM.logWarning("UmbrellaView.selectObject don't know how to select: " + objectToSelect);
 	}
 
 	protected UiLabel createScreenShotLabel()

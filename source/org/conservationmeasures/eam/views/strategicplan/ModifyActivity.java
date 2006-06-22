@@ -13,8 +13,10 @@ public class ModifyActivity extends ViewDoer
 {
 	public StratPlanObject getSelectedObject()
 	{
-		StrategicPlanView view = (StrategicPlanView)getView();
-		return view.getSelectedObject();
+		StrategicPlanPanel panel = ((StrategicPlanView)getView()).getStrategicPlanPanel();
+		if(panel == null)
+			return null;
+		return panel.getSelectedObject();
 	}
 	
 	public boolean isAvailable()

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -75,7 +76,12 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	
 	public TreePath getPathOfNode(int objectType, int objectId)
 	{
-		return findObject(new TreePath(getRootStratPlanObject()), objectType, objectId);
+		return findObject(getPathToRoot(), objectType, objectId);
+	}
+
+	public TreePath getPathToRoot()
+	{
+		return new TreePath(getRootStratPlanObject());
 	}
 	
 	public TreePath getPathOfParent(int objectType, int objectId)
@@ -88,8 +94,9 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	
 	public void objectiveWasModified()
 	{
+EAM.logDebug("objectiveWasModified");
 		getRootStratPlanObject().rebuild();
-		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+//		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
 	
 	public void dataWasChanged(int objectType, int objectId)
@@ -98,6 +105,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		if(found == null)
 			return;
 		
+EAM.logDebug("dataWasChanged");
 		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
 		parent.rebuild();
 		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
@@ -109,6 +117,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		if(found == null)
 			return;
 		
+EAM.logDebug("idListWasChanged");
 		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
 		parent.rebuild();
 
