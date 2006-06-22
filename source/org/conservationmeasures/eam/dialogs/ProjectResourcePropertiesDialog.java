@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 
 public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
 {
-	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
 		initializeFields(tags);

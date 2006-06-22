@@ -20,7 +20,14 @@ public class CreateObjective extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		getView().createObjective();
+		try
+		{
+			getView().createObjective();
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

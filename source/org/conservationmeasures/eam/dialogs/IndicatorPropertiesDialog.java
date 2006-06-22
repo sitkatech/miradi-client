@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 
 public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 {
-	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
 		initializeFields(tags);

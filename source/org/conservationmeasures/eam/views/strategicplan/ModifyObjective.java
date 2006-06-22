@@ -30,8 +30,15 @@ public class ModifyObjective extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Objective objective = getObjectivePanel().getSelectedObjective();
-		getView().modifyObjective(objective);
+		try
+		{
+			Objective objective = getObjectivePanel().getSelectedObjective();
+			getView().modifyObject(objective);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

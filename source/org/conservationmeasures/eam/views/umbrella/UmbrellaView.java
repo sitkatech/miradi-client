@@ -47,8 +47,6 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -116,40 +114,53 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	}
 	
 	
-	public void createObjective() throws CommandFailedException
+	public void createObjective() throws Exception
 	{
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.OBJECTIVE);
 		getProject().executeCommand(cmd);
 		Objective objective = getProject().getObjectivePool().find(cmd.getCreatedId());
-		modifyObjective(objective);
+		modifyObject(objective);
 	}
 
-	public void createIndicator() throws CommandFailedException
+	public void createIndicator() throws Exception
 	{
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.INDICATOR);
 		getProject().executeCommand(cmd);
 		Indicator indicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
-		modifyIndicator(indicator);
+		modifyObject(indicator);
 	}
 
-	public void modifyObjective(Objective objective)
+	public void objectWasSelected(EAMObject object) throws Exception
 	{
-		showObjectPropertiesDialog(new ObjectivePropertiesDialog(getMainWindow(), objective));
+		if(activePropertiesDlg == null)
+			return;
+		
+		if(activePropertiesDlg.getObject().equals(object))
+			return;
+		
+		modifyObject(object);
 	}
-
-	public void modifyIndicator(Indicator indicator)
+	
+	public void modifyObject(EAMObject object) throws Exception
 	{
-		showObjectPropertiesDialog(new IndicatorPropertiesDialog(getMainWindow(), indicator));
+		showObjectPropertiesDialog(createDialog(object));
 	}
-
-	public void modifyProjectResource(ProjectResource resource)
+	
+	private ObjectPropertiesDialog createDialog(EAMObject object) throws Exception
 	{
-		showObjectPropertiesDialog(new ProjectResourcePropertiesDialog(getMainWindow(), resource));
-	}
-
-	public void modifyTask(Task task)
-	{
-		showObjectPropertiesDialog(new TaskPropertiesDialog(getMainWindow(), task));
+		switch(object.getType())
+		{
+			case ObjectType.OBJECTIVE:
+				return new ObjectivePropertiesDialog(getMainWindow(), object);
+			case ObjectType.INDICATOR:
+				return new IndicatorPropertiesDialog(getMainWindow(), object);
+			case ObjectType.PROJECT_RESOURCE:
+				return new ProjectResourcePropertiesDialog(getMainWindow(), object);
+			case ObjectType.TASK:
+				return new TaskPropertiesDialog(getMainWindow(), object);
+		}
+		
+		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());
 	}
 
 	private void showObjectPropertiesDialog(ObjectPropertiesDialog newDialog)

@@ -63,7 +63,7 @@ public class InsertActivity extends ViewDoer
 			getProject().executeCommand(new CommandEndTransaction());
 			
 			Task activity = getProject().getTaskPool().find(createdId);
-			getView().modifyTask(activity);
+			getView().modifyObject(activity);
 
 		}
 		catch (Exception e)

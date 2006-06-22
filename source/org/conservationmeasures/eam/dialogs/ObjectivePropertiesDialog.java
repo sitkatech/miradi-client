@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objects.Objective;
 
 public class ObjectivePropertiesDialog extends ObjectPropertiesDialog
 {
-	public ObjectivePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	public ObjectivePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
 		initializeFields(tags);

@@ -30,8 +30,15 @@ public class ModifyIndicator extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
-		getView().modifyIndicator(indicator);
+		try
+		{
+			Indicator indicator = getIndicatorPanel().getSelectedIndicator();
+			getView().modifyObject(indicator);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

@@ -20,10 +20,17 @@ public class CreateResource extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		CommandCreateObject cmd = new CommandCreateObject(ObjectType.PROJECT_RESOURCE);
-		getProject().executeCommand(cmd);
-		ProjectResource resource = getProject().getResourcePool().find(cmd.getCreatedId());
-		getView().modifyProjectResource(resource);
+		try
+		{
+			CommandCreateObject cmd = new CommandCreateObject(ObjectType.PROJECT_RESOURCE);
+			getProject().executeCommand(cmd);
+			ProjectResource resource = getProject().getResourcePool().find(cmd.getCreatedId());
+			getView().modifyObject(resource);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

@@ -19,24 +19,26 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.ObjectPool;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
 public class ObjectManagementPanel extends JPanel implements CommandExecutedListener, ListSelectionListener
 {
-	public ObjectManagementPanel(MainWindow mainWindowToUse, String[] columnTags, ObjectPool pool, Class[] buttonActionClasses)
+	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, ObjectPool pool, Class[] buttonActionClasses)
 	{
-		this(mainWindowToUse, new ObjectManagerTableModel(pool, columnTags), buttonActionClasses);
+		this(viewToUse, new ObjectManagerTableModel(pool, columnTags), buttonActionClasses);
 	}
 	
-	public ObjectManagementPanel(MainWindow mainWindowToUse, ObjectManagerTableModel modelToUse, Class[] buttonActionClasses)
+	public ObjectManagementPanel(UmbrellaView viewToUse, ObjectManagerTableModel modelToUse, Class[] buttonActionClasses)
 	{
 		super(new BorderLayout());
-		mainWindow = mainWindowToUse;
+		view = viewToUse;
 		model = modelToUse;
 		
 		table = new UiTable(model);
@@ -50,7 +52,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		table.resizeTable();
 
 		add(new UiScrollPane(table), BorderLayout.CENTER);
-		add(createButtonPanel(mainWindow.getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
+		add(createButtonPanel(getMainWindow().getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getSelectionModel().addListSelectionListener(this);
 		
@@ -58,9 +60,14 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return view.getMainWindow();
+	}
+	
 	public Project getProject()
 	{
-		return mainWindow.getProject();
+		return getMainWindow().getProject();
 	}
 	
 	public UiTable getTable()
@@ -82,9 +89,19 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	{
 	}
 
-	public void valueChanged(ListSelectionEvent e)
+	public void valueChanged(ListSelectionEvent event)
 	{
-		mainWindow.getActions().updateActionStates();
+		try
+		{
+			int row = table.getSelectedRow();
+			if(row >= 0)
+				view.objectWasSelected(model.getObjectFromRow(row));
+			getMainWindow().getActions().updateActionStates();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	Component createButtonPanel(Actions actions, Class[] buttonActionClasses)
@@ -97,8 +114,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	}
 	
 
-
-	MainWindow mainWindow;
+	UmbrellaView view;
 	ObjectManagerTableModel model;
 	UiTable table;
 }

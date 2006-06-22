@@ -40,9 +40,14 @@ class ObjectManagerTableModel extends UiTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		int objectId = pool.getIds()[rowIndex];
-		EAMObject object = (EAMObject)pool.getRawObject(objectId);
+		EAMObject object = getObjectFromRow(rowIndex);
 		return object.getData(columnTags[columnIndex]);
+	}
+
+	public EAMObject getObjectFromRow(int rowIndex)
+	{
+		int objectId = pool.getIds()[rowIndex];
+		return (EAMObject)pool.getRawObject(objectId);
 	}
 
 	public String getColumnName(int column)

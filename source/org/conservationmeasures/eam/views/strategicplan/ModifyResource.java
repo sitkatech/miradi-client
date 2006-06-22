@@ -36,8 +36,15 @@ public class ModifyResource extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		ProjectResource resource = getResourcePanel().getSelectedResource();
-		getView().modifyProjectResource(resource);
+		try
+		{
+			ProjectResource resource = getResourcePanel().getSelectedResource();
+			getView().modifyObject(resource);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

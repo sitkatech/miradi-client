@@ -67,9 +67,9 @@ public class StrategicPlanView extends UmbrellaView
 		tabs.removeAll();
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
-		objectivePanel = new ObjectiveManagementPanel(getMainWindow());
-		indicatorManagementPanel = new IndicatorManagementPanel(getMainWindow());
-		resourcePanel = new ResourceManagementPanel(getMainWindow());
+		objectivePanel = new ObjectiveManagementPanel(this);
+		indicatorManagementPanel = new IndicatorManagementPanel(this);
+		resourcePanel = new ResourceManagementPanel(this);
 
 		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
 		tabs.add(EAM.text("Objectives"), objectivePanel);

@@ -39,6 +39,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
 	{
 		super(parentToUse);
+		mainWindow = parentToUse;
 		object = objectToEdit;
 		
 		setModal(false);
@@ -49,7 +50,17 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		return object;
 	}
 	
-	void initializeFields(String[] tags)
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
+	}
+
+	void initializeFields(String[] tags) throws Exception
 	{
 		DialogGridPanel grid = new DialogGridPanel();
 		fields = new DialogField[tags.length];
@@ -68,7 +79,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		pack();
 	}
 
-	DialogField createDialogField(String tag)
+	DialogField createDialogField(String tag) throws Exception
 	{
 		String label = EAM.text("Label|" + tag);
 		String value = object.getData(tag);
@@ -95,11 +106,6 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	{
 		if(cmd.getObjectType() == object.getType() && cmd.getObjectId() == object.getId())
 			dispose();
-	}
-
-	private Project getProject()
-	{
-		return ((MainWindow)getParent()).getProject();
 	}
 
 	class FocusHandler implements FocusListener
@@ -143,6 +149,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		}
 	}
 
+	MainWindow mainWindow;
 	EAMObject object;
 	DialogField[] fields;
 }

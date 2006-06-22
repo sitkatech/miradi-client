@@ -20,7 +20,14 @@ public class CreateIndicator extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		getView().createIndicator();
+		try
+		{
+			getView().createIndicator();
+		}
+		catch(Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 
 }

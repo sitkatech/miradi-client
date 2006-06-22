@@ -27,7 +27,14 @@ public class ModifyActivity extends ViewDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		StratPlanActivity selected = (StratPlanActivity)getSelectedObject();
-		getView().modifyTask(selected.getActivity());
+		try
+		{
+			StratPlanActivity selected = (StratPlanActivity)getSelectedObject();
+			getView().modifyObject(selected.getActivity());
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 	}
 }

@@ -8,15 +8,15 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectivePool;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ObjectiveManagementPanel extends ObjectManagementPanel
 {
-	public ObjectiveManagementPanel(MainWindow mainWindowToUse)
+	public ObjectiveManagementPanel(UmbrellaView viewToUse)
 	{
-		super(mainWindowToUse, new ObjectiveTableModel(mainWindowToUse.getProject()), buttonActionClasses);
+		super(viewToUse, new ObjectiveTableModel(viewToUse.getProject()), buttonActionClasses);
 	}
 	
 	public Objective getSelectedObjective()

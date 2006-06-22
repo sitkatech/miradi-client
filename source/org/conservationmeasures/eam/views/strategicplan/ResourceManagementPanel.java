@@ -9,14 +9,14 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.annotations.ResourcePool;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ResourceManagementPanel extends ObjectManagementPanel 
 {
-	public ResourceManagementPanel(MainWindow mainWindowToUse)
+	public ResourceManagementPanel(UmbrellaView viewToUse)
 	{
-		super(mainWindowToUse, columnTags, mainWindowToUse.getProject().getResourcePool(), buttonActionClasses);
+		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClasses);
 	}
 	
 	public ProjectResource getSelectedResource()
