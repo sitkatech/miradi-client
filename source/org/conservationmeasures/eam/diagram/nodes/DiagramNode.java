@@ -321,7 +321,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public boolean isPointInIndicator(Point p)
 	{
-		return false;
+		return getIndicatorRectWithinNode().contains(p);
 	}
 	
 	public boolean isPointInGoal(Point p)
@@ -368,6 +368,19 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		return new Dimension(0, 0);
 	}
+	
+	public Rectangle getIndicatorRectWithinNode()
+	{
+		Rectangle annotationsRectangle = getAnnotationsRect();
+		Rectangle smallTriangle = new Rectangle();
+		smallTriangle.x = annotationsRectangle.x-MultilineCellRenderer.INDICATOR_WIDTH;
+		smallTriangle.y = annotationsRectangle.y;
+		smallTriangle.width = MultilineCellRenderer.INDICATOR_WIDTH;
+		smallTriangle.height = MultilineCellRenderer.INDICATOR_HEIGHT;
+		return smallTriangle;
+	}
+
+
 	
 	public NodeDataMap createNodeDataMap()
 	{

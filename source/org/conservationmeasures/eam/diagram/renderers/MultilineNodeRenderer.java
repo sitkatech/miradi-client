@@ -130,20 +130,20 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			return;
 		
 		TriangleRenderer indicatorRenderer = new TriangleRenderer();
-		Rectangle annotationsRectangle = getAnnotationsRect(rect, 1);
-		
-		Rectangle smallTriangle = new Rectangle();
-		smallTriangle.x = annotationsRectangle.x-INDICATOR_WIDTH;
-		smallTriangle.y = annotationsRectangle.y;
-		smallTriangle.width = INDICATOR_WIDTH;
-		smallTriangle.height = INDICATOR_HEIGHT;
+		Rectangle smallTriangle = getIndicatorRectWithinNode();
+		smallTriangle.translate(rect.x, rect.y);
 		setPaint(g2, smallTriangle, INDICATOR_COLOR);
 		indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
 		drawBoarder(g2, smallTriangle, indicatorRenderer);
 		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
 		drawLabel(g2, smallTriangle, indicator.getShortLabel(), smallTriangle.getSize());
 	}
-
+	
+	private Rectangle getIndicatorRectWithinNode()
+	{
+		return node.getIndicatorRectWithinNode();
+	}
+	
 	Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
 	{
 		Rectangle annotationsRect = node.getAnnotationsRect();

@@ -301,7 +301,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final String HTML_BEFORE_TEXT = "<html><div align='center'><font size='4'>";
 
 	public static final int INDICATOR_WIDTH = 20;
-	static final int INDICATOR_HEIGHT = 20;
+	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
 	private static final int CORNER_SIZE = 20;
 
