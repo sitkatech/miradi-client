@@ -88,7 +88,24 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		setModal(false);
 	}
 	
-	
+	public void selectTab(int tabIdentifier)
+	{
+		switch(tabIdentifier)
+		{
+			case TAB_OBJECTIVES:
+				tabs.setSelectedComponent(objectivesTab);
+				break;
+			case TAB_INDICATORS:
+				tabs.setSelectedComponent(indicatorsTab);
+				break;
+			case TAB_GOALS:
+				tabs.setSelectedComponent(goalsTab);
+				break;
+			default:
+				tabs.setSelectedComponent(detailsTab);
+				break;
+		}
+	}
 	
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
@@ -139,44 +156,44 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	
 	private Component createTabbedPane(DiagramNode node) throws Exception
 	{
-		JTabbedPane pane = new JTabbedPane();
-		pane.add(createMainGrid(node), EAM.text("Tab|Details"));
-		pane.add(createIndicatorsGrid(node), EAM.text("Tab|Indicators"));
+		tabs = new JTabbedPane();
+		tabs.add(createMainGrid(node), EAM.text("Tab|Details"));
+		tabs.add(createIndicatorsGrid(node), EAM.text("Tab|Indicators"));
 		if(node.canHaveObjectives())
-			pane.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
+			tabs.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
 		if(node.canHaveGoal())
-			pane.add(createGoalsGrid(node), EAM.text("Tab|Goals"));
+			tabs.add(createGoalsGrid(node), EAM.text("Tab|Goals"));
 		if(node.isIntervention())
-			pane.add(createTasksGrid(node), EAM.text("Tab|Actions"));
-		return pane;
+			tabs.add(createTasksGrid(node), EAM.text("Tab|Actions"));
+		return tabs;
 	}
 	
 	private Component createMainGrid(DiagramNode node)
 	{
-		DialogGridPanel grid = new DialogGridPanel();
+		detailsTab = new DialogGridPanel();
 		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
 		
 		if(node.isDirectThreat())
 		{
-			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
-			grid.add(createThreatClassificationDropdown());
+			detailsTab.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
+			detailsTab.add(createThreatClassificationDropdown());
 		}
 		
 		if(node.isIntervention())
 		{
-			grid.add(new UiLabel(EAM.text("Label|Status")));
+			detailsTab.add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(node.isStatusDraft());
 			statusCheckBox.addItemListener(new StatusChangeHandler());
-			grid.add(statusCheckBox);
+			detailsTab.add(statusCheckBox);
 			
-			grid.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
-			grid.add(createInterventionClassificationDropdown());
+			detailsTab.add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
+			detailsTab.add(createInterventionClassificationDropdown());
 		}
 
-		grid.add(new UiLabel(EAM.text("Label|Comments")));
-		grid.add(createComment(node.getComment()));
+		detailsTab.add(new UiLabel(EAM.text("Label|Comments")));
+		detailsTab.add(createComment(node.getComment()));
 
-		return grid;
+		return detailsTab;
 	}
 	
 	class StatusChangeHandler implements ItemListener
@@ -199,46 +216,46 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	
 	private Component createIndicatorsGrid(DiagramNode node)
 	{
-		DialogGridPanel grid = new DialogGridPanel();
+		indicatorsTab = new DialogGridPanel();
 		
-		grid.add(new UiLabel(EAM.text("Label|Indicator")));
-		grid.add(createIndicatorDropdown(node.getIndicatorId()));
+		indicatorsTab.add(new UiLabel(EAM.text("Label|Indicator")));
+		indicatorsTab.add(createIndicatorDropdown(node.getIndicatorId()));
 		
-		grid.add(new UiLabel(""));
+		indicatorsTab.add(new UiLabel(""));
 		EAMAction action = mainWindow.getActions().get(ActionCreateIndicator.class);
 		UiButton buttonCreate = new UiButton(action);
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
-		grid.add(panel);
+		indicatorsTab.add(panel);
 		
-		return grid;
+		return indicatorsTab;
 	}
 
 	private Component createObjectivesGrid(DiagramNode node)
 	{
-		DialogGridPanel grid = new DialogGridPanel();
+		objectivesTab = new DialogGridPanel();
 		
-		grid.add(new UiLabel(EAM.text("Label|Objective")));
-		grid.add(createObjectiveDropdown());
+		objectivesTab.add(new UiLabel(EAM.text("Label|Objective")));
+		objectivesTab.add(createObjectiveDropdown());
 		
-		grid.add(new UiLabel(""));
+		objectivesTab.add(new UiLabel(""));
 		EAMAction action = mainWindow.getActions().get(ActionCreateObjective.class);
 		UiButton buttonCreate = new UiButton(action);
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
-		grid.add(panel);
+		objectivesTab.add(panel);
 		
-		return grid;
+		return objectivesTab;
 	}
 
 	private Component createGoalsGrid(DiagramNode node)
 	{
-		DialogGridPanel grid = new DialogGridPanel();
+		goalsTab = new DialogGridPanel();
 			
-		grid.add(new UiLabel(EAM.text("Label|Goal")));
-		grid.add(createTargetGoal(getProject().getGoalPool(), node.getGoals()));
+		goalsTab.add(new UiLabel(EAM.text("Label|Goal")));
+		goalsTab.add(createTargetGoal(getProject().getGoalPool(), node.getGoals()));
 		
-		return grid;
+		return goalsTab;
 	}
 
 	private Component createTasksGrid(DiagramNode node) throws Exception
@@ -754,6 +771,17 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	}
 	
 	static final int MAX_LABEL_LENGTH = 40;
+	
+	public static final int TAB_DETAILS = 0;
+	public static final int TAB_INDICATORS = 1;
+	public static final int TAB_OBJECTIVES = 2;
+	public static final int TAB_GOALS = 3;
+	
+	JTabbedPane tabs;
+	DialogGridPanel detailsTab;
+	DialogGridPanel indicatorsTab;
+	DialogGridPanel objectivesTab;
+	DialogGridPanel goalsTab;
 	
 	MainWindow mainWindow;
 	DiagramComponent diagram;

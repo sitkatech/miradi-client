@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.dialogs.LinkagePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -56,12 +57,17 @@ public class Properties extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		doIt(null);
+	}
+	
+	public void doIt(Point at) throws CommandFailedException
+	{
 		if(!isAvailable())
 			return;
 		
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isNode())
-			doNodeProperties((DiagramNode)selected);
+			doNodeProperties((DiagramNode)selected, at);
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isLinkage())
@@ -94,9 +100,36 @@ public class Properties extends ProjectDoer
 		getProject().executeCommand(cmd);
 	}
 	
-	void doNodeProperties(DiagramNode selectedNode) throws CommandFailedException
+	void doNodeProperties(DiagramNode selectedNode, Point at) throws CommandFailedException
 	{
-		diagram.showNodeProperties(selectedNode);
+		diagram.showNodeProperties(selectedNode, getTabToStartOn(selectedNode, at));
+	}
+
+	private int getTabToStartOn(DiagramNode node, Point at)
+	{
+		if(at == null)
+			return NodePropertiesDialog.TAB_DETAILS;
+		
+		Point cellOrigin = node.getLocation();
+		at.translate(-cellOrigin.x, -cellOrigin.y);
+		EAM.logDebug(at.toString());
+		if(node.isPointInObjective(at))
+		{
+			EAM.logDebug("Objective");
+			return NodePropertiesDialog.TAB_OBJECTIVES;
+		}
+		if(node.isPointInIndicator(at))
+		{
+			EAM.logDebug("Indicator");
+			return NodePropertiesDialog.TAB_INDICATORS;
+		}
+		if(node.isPointInGoal(at))
+		{
+			EAM.logDebug("Goal");
+			return NodePropertiesDialog.TAB_GOALS;
+		}
+		
+		return NodePropertiesDialog.TAB_DETAILS;
 	}
 
 	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)

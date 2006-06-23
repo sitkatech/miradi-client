@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -309,6 +310,63 @@ abstract public class DiagramNode extends EAMGraphCell
 	public boolean sizeHasChanged()
 	{
 		return !getSize().equals(getPreviousSize());
+	}
+	
+	public boolean isPointInObjective(Point p)
+	{
+		if(getObjectives().size() == 0)
+			return false;
+		return getAnnotationsRect().contains(p);
+	}
+	
+	public boolean isPointInIndicator(Point p)
+	{
+		return false;
+	}
+	
+	public boolean isPointInGoal(Point p)
+	{
+		if(getGoals().size() == 0)
+			return false;
+		return getAnnotationsRect(getGoals().size()).contains(p);
+	}
+	
+	abstract public Rectangle getAnnotationsRect();
+	
+	public Rectangle getAnnotationsRect(int numberLines)
+	{
+		Rectangle rect = new Rectangle(getSize());
+		
+		Rectangle annotationsRectangle = new Rectangle();
+		int annotationLeftInset = getAnnotationLeftOffset();
+		annotationsRectangle.x = rect.x + annotationLeftInset;
+		int annotationsHeight = numberLines * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
+		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset();
+		annotationsRectangle.height = annotationsHeight;
+		return annotationsRectangle;
+	}
+
+	int getAnnotationLeftOffset()
+	{
+		if(getIndicatorId() == IdAssigner.INVALID_ID)
+			return MultilineCellRenderer.INDICATOR_WIDTH / 2;
+		
+		int indicatorOffset = getInsetDimension().width - MultilineCellRenderer.INDICATOR_WIDTH / 2;
+		if(indicatorOffset < 0)
+			indicatorOffset = 0;
+		int annotationOffset = indicatorOffset + MultilineCellRenderer.INDICATOR_WIDTH;
+		return annotationOffset;
+	}
+	
+	int getAnnotationRightInset()
+	{
+		return MultilineCellRenderer.INDICATOR_WIDTH / 2;
+	}
+
+	public Dimension getInsetDimension()
+	{
+		return new Dimension(0, 0);
 	}
 	
 	public NodeDataMap createNodeDataMap()

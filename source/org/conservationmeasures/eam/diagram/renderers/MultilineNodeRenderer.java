@@ -62,7 +62,6 @@ import org.jgraph.graph.CellViewRenderer;
 
 public abstract class MultilineNodeRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
-	abstract Dimension getInsetDimension();
 	abstract public void fillShape(Graphics g, Rectangle rect, Color color);
 	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);
 	
@@ -145,27 +144,23 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		drawLabel(g2, smallTriangle, indicator.getShortLabel(), smallTriangle.getSize());
 	}
 
-	int getAnnotationLeftOffset()
+	Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
 	{
-		if(node.getIndicatorId() == IdAssigner.INVALID_ID)
-			return INDICATOR_WIDTH / 2;
-		
-		int indicatorOffset = getInsetDimension().width - INDICATOR_WIDTH / 2;
-		if(indicatorOffset < 0)
-			indicatorOffset = 0;
-		int annotationOffset = indicatorOffset + INDICATOR_WIDTH;
-		return annotationOffset;
+		Rectangle annotationsRect = node.getAnnotationsRect();
+		annotationsRect.translate(rect.x, rect.y);
+		return annotationsRect;
 	}
 	
-	int getAnnotationRightInset()
-	{
-		return INDICATOR_WIDTH / 2;
-	}
-
 	Color getFillColor()
 	{
 		return node.getColor();
 	}
+	
+	Dimension getInsetDimension()
+	{
+		return node.getInsetDimension();
+	}
+	
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	private static final Color INDICATOR_COLOR = LIGHT_PURPLE;

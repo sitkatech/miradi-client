@@ -47,7 +47,7 @@ abstract public class InsertNode extends LocationDoer
 	void launchPropertiesEditor(int id) throws Exception, CommandFailedException
 	{
 		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
-		getDiagramView().getPropertiesDoer().doNodeProperties(newNode);
+		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
 	}
 	
 	private int insertNodeItself() throws Exception

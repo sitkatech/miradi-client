@@ -240,7 +240,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			disposeOfNodePropertiesDialog();
 	}
 
-	public void showNodeProperties(DiagramNode node)
+	public void showNodeProperties(DiagramNode node, int startingTabIdentifier)
 	{
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
@@ -248,6 +248,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		nodePropertiesDlg = new NodePropertiesDialog(EAM.mainWindow, this, title);
 		nodePropertiesDlg.setCurrentNode(this, node);
 		nodePropertiesDlg.setVisible(true);
+		nodePropertiesDlg.selectTab(startingTabIdentifier);
 	}
 	
 	private void disposeOfNodePropertiesDialog()

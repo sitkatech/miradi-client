@@ -36,7 +36,6 @@
 package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -48,16 +47,6 @@ import java.awt.geom.Rectangle2D;
 
 public class EllipseRenderer extends MultilineNodeRenderer
 {
-	Dimension getInsetDimension()
-	{
-		Point location = getLocation();
-		Rectangle boundingBox = new Rectangle(location, getSize());
-		Point insideUpperLeftCorner = getPerimeterPoint(location, boundingBox);
-		int xInset = (insideUpperLeftCorner.x - location.x);
-		int yInset = (insideUpperLeftCorner.y - location.y);
-		return new Dimension(xInset, yInset);
-	}
-
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
 		Graphics2D g2 = (Graphics2D)g;

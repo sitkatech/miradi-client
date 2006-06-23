@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 
@@ -22,6 +23,11 @@ public class DiagramIntervention extends DiagramNode
 			return DiagramConstants.COLOR_DRAFT_INTERVENTION;
 		
 		return DiagramConstants.COLOR_INTERVENTION;
+	}
+
+	public Rectangle getAnnotationsRect()
+	{
+		return getAnnotationsRect(getObjectives().size());
 	}
 
 }

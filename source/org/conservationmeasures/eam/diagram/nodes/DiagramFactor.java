@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
+import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 
@@ -27,5 +28,11 @@ public class DiagramFactor extends DiagramNode
 		
 		throw new RuntimeException("Unknown factor type: " + getNodeType().getClass());
 	}
+
+	public Rectangle getAnnotationsRect()
+	{
+		return getAnnotationsRect(getObjectives().size());
+	}
+
 
 }
