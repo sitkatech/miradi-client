@@ -356,8 +356,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		annotationsRectangle.x = rect.x + annotationLeftInset;
 		int annotationsHeight = numberLines * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
-		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset();
-		annotationsRectangle.height = annotationsHeight;
+		int avoidGoingPastClippingEdge = 1;
+		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset() - avoidGoingPastClippingEdge;
+		annotationsRectangle.height = annotationsHeight - avoidGoingPastClippingEdge;
 		return annotationsRectangle;
 	}
 
