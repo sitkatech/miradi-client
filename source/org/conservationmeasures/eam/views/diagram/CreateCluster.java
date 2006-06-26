@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -49,6 +50,15 @@ public class CreateCluster extends InsertNode
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
+			return;
+		
+		String[] buttons = {"Yes", "No",};
+		String[] text = {
+				"The Factor Grouping feature is experimental, and doesn't work very well yet.",
+				"It could even cause this project to become unusable.",
+				"Are you sure you want to try creating a Group?",
+		};
+		if(!EAM.confirmDialog("Experimental Feature", text, buttons))
 			return;
 		
 		try
