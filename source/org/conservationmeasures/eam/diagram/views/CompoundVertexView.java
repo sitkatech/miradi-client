@@ -1,6 +1,11 @@
 /*
-	This module was written by J. Pulley, was posted to the jgraph forum,
-	and then was distributed with jgraph as an example.
+ * This module was written by J. Pulley, was posted to the jgraph forum, 
+ * and then was distributed with jgraph as an example.
+ * 
+ * MODIFICATIONS MADE BY BENETECH:
+ * 1. In checkChildBounds, renamed "bounds" local to "parentBounds" to 
+ * avoid compiler warning for hiding a member variable named "bounds".
+ * 
 */
 
 package org.conservationmeasures.eam.diagram.views;
@@ -126,20 +131,21 @@ public class CompoundVertexView extends VertexView {
 	 * If this view's current bounds do not completely enclose all child vertex
 	 * views, sets this view's bounds to the union of the current bounds and the
 	 * childrens' bounds.
+	 * 
 	 */
 	private void checkChildBounds() {
 		if (!isLeaf()) {
-			Rectangle2D bounds = GraphConstants.getBounds(getAllAttributes());
-			if (bounds == null) {
-				bounds = new Rectangle2D.Double();
+			Rectangle2D parentBounds = GraphConstants.getBounds(getAllAttributes());
+			if (parentBounds == null) {
+				parentBounds = new Rectangle2D.Double();
 			}
 			CellView[] childViewArray = (CellView[]) childViews
 					.toArray(new CellView[0]);
 			Rectangle2D childBounds = AbstractCellView
 					.getBounds(childViewArray);
-			if (!bounds.contains(childBounds)) {
-				bounds = bounds.createUnion(childBounds);
-				GraphConstants.setBounds(getAllAttributes(), bounds);
+			if (!parentBounds.contains(childBounds)) {
+				parentBounds = parentBounds.createUnion(childBounds);
+				GraphConstants.setBounds(getAllAttributes(), parentBounds);
 			}
 		}
 	}
