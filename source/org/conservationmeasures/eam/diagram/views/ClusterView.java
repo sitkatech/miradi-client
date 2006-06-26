@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
-import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -56,5 +56,5 @@ public class ClusterView extends CompoundVertexView
 	}
 
 	DiagramCluster cluster;
-	protected static RectangleRenderer clusterRenderer = new RectangleWithPriorityRenderer();
+	protected static RectangleRenderer clusterRenderer = new RoundRectangleRenderer();
 }
