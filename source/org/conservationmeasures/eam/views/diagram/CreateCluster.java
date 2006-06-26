@@ -28,6 +28,23 @@ public class CreateCluster extends InsertNode
 	{
 		return "";
 	}
+	
+	public boolean isAvailable()
+	{
+		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+		if(selectedNodes.length == 0)
+			return false;
+		
+		for(int i = 0; i < selectedNodes.length; ++i)
+		{
+			if(selectedNodes[i].isCluster())
+				return false;
+			if(selectedNodes[i].getParent() != null)
+				return false;
+		}
+		
+		return true;
+	}
 
 	public void doIt() throws CommandFailedException
 	{
