@@ -134,7 +134,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		smallTriangle.translate(rect.x, rect.y);
 		setPaint(g2, smallTriangle, INDICATOR_COLOR);
 		indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
-		drawBoarder(g2, smallTriangle, indicatorRenderer);
+		drawAnnotationBorder(g2, smallTriangle, indicatorRenderer);
 		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
 		drawLabel(g2, smallTriangle, indicator.getShortLabel(), smallTriangle.getSize());
 	}

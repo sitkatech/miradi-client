@@ -154,14 +154,14 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		RectangleRenderer annotationRenderer = new RectangleRenderer();
 		annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 
-		drawBoarder(g2, annotationsRectangle, annotationRenderer);
+		drawAnnotationBorder(g2, annotationsRectangle, annotationRenderer);
 		
 		//TODO allow multiple Objectives
 		String labelMessage = annotationText;
 		drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 	}
 
-	void drawBoarder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
+	void drawAnnotationBorder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
 	{
 		Color color = Color.BLACK;
 		Stroke stroke = new BasicStroke(borderWidth);
