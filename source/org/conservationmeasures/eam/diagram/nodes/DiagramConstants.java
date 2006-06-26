@@ -11,5 +11,6 @@ public class DiagramConstants
 	public static final Color COLOR_INDIRECT_FACTOR = new Color(255, 190, 0);
 	public static final Color COLOR_INTERVENTION = new Color(255, 255, 0);
 	public static final Color COLOR_DRAFT_INTERVENTION = new Color(255, 255, 190);
+	public static final Color COLOR_CLUSTER = Color.LIGHT_GRAY;
 
 }

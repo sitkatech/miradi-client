@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
@@ -72,6 +73,7 @@ import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphSelectionModel;
+import org.jgraph.graph.ParentMap;
 
 
 public class Project
@@ -937,6 +939,13 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
+	public void addNodeToCluster(DiagramCluster cluster, DiagramNode node)
+	{
+		ParentMap parentMap = new ParentMap();
+		parentMap.addEntry(node, cluster);
+		getGraphLayoutCache().edit(null, null, parentMap, null);
+	}
+
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());

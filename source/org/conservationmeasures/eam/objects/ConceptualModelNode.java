@@ -142,6 +142,11 @@ abstract public class ConceptualModelNode extends EAMObject
 		return false;
 	}
 	
+	public boolean isCluster()
+	{
+		return false;
+	}
+	
 	public boolean canHaveObjectives()
 	{
 		return false;
@@ -199,6 +204,8 @@ abstract public class ConceptualModelNode extends EAMObject
 			return new ConceptualModelFactor(json);
 		if(typeString.equals(TARGET_TYPE))
 			return new ConceptualModelTarget(json);
+		if(typeString.equals(CLUSTER_TYPE))
+			return new ConceptualModelCluster(json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
@@ -231,6 +238,8 @@ abstract public class ConceptualModelNode extends EAMObject
 			return new ConceptualModelFactor(idToCreate, nodeType);
 		else if(nodeType.isTarget())
 			return new ConceptualModelTarget(idToCreate);
+		else if(nodeType.isCluster())
+			return new ConceptualModelCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
@@ -244,6 +253,7 @@ abstract public class ConceptualModelNode extends EAMObject
 	static final String INTERVENTION_TYPE = "Intervention";
 	static final String FACTOR_TYPE = "Factor";
 	static final String TARGET_TYPE = "Target";
+	static final String CLUSTER_TYPE = "Cluster";
 	
 	private NodeType type;
 	private String comment;

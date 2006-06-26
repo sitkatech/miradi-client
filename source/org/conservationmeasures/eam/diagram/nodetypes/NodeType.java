@@ -38,6 +38,11 @@ public abstract class NodeType
 	{
 		return false;
 	}
+	
+	public boolean isCluster()
+	{
+		return false;
+	}
 
 	public boolean equals(Object other)
 	{

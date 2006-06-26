@@ -1,0 +1,74 @@
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.views.diagram;
+
+import java.awt.Dimension;
+import java.awt.Point;
+
+import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
+import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.objects.ObjectType;
+
+public class CreateCluster extends InsertNode
+{
+	public NodeType getTypeToInsert()
+	{
+		return DiagramNode.TYPE_CLUSTER;
+	}
+
+	public String getInitialText()
+	{
+		return "";
+	}
+
+	public void doIt() throws CommandFailedException
+	{
+		if(!isAvailable())
+			return;
+		
+		try
+		{
+			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+			int id = insertNodeItself();
+			if(selectedNodes.length > 0)
+				capturePreviouslySelectedNodes(id, selectedNodes);
+		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
+
+	}
+
+	void doExtraSetup(int id) throws CommandFailedException
+	{
+		Dimension originalSize = DiagramNode.getDefaultSize();
+		int newWidth = originalSize.width * 120 / 100;
+		int newHeight = originalSize.height * 320 / 100;
+		Point size = getProject().getSnapped(new Point(newWidth, newHeight));
+		Dimension newSize = new Dimension(size.x, size.y);
+		CommandSetNodeSize cmd = new CommandSetNodeSize(id, newSize, originalSize);
+		getProject().executeCommand(cmd);
+	}
+	
+	void capturePreviouslySelectedNodes(int clusterId, DiagramNode[] nodes) throws CommandFailedException
+	{
+		IdList memberIds = new IdList();
+		for(int i = 0; i < nodes.length; ++i)
+		{
+			memberIds.add(nodes[i].getId());
+		}
+		CommandSetObjectData capture = new CommandSetObjectData(ObjectType.MODEL_NODE, clusterId, 
+				ConceptualModelCluster.TAG_MEMBER_IDS, memberIds.toString());
+		getProject().executeCommand(capture);
+	}
+	
+}

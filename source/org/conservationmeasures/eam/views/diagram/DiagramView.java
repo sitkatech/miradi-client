@@ -6,9 +6,11 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -22,6 +24,7 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertCluster;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -45,12 +48,15 @@ import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.IdList;
@@ -129,6 +135,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionInsertIntervention.class, new InsertIntervention());
 		addDoerToMap(ActionInsertDraftIntervention.class, new InsertDraftIntervention());
 		addDoerToMap(ActionInsertConnection.class, new InsertConnection());
+		addDoerToMap(ActionInsertCluster.class, new CreateCluster());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionCut.class, new Cut());
 		addDoerToMap(ActionDelete.class, new Delete());
@@ -271,6 +278,16 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		String newMode = cmd.getDataValue();
 		setModeIfRelevant(cmd, newMode);
 		refreshIfNeeded(cmd);
+		
+		try
+		{
+			captureClusterIfNeeded(cmd);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
+		}
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
@@ -317,6 +334,38 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			// may have added or removed a stress
 			diagram.repaint(diagram.getBounds());
 		}
+	}
+	
+	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
+	{
+		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
+			return;
+		
+		ConceptualModelNode cmNode = getProject().findNode(cmd.getObjectId());
+		if(!cmNode.isCluster())
+			return;
+		
+		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
+			return;
+		
+		IdList desiredMembers = new IdList(cmd.getDataValue());
+
+		DiagramModel model = getDiagramComponent().getDiagramModel();
+		DiagramCluster cluster = (DiagramCluster)model.getNodeById(cmd.getObjectId());
+		List existingMembers = cluster.getChildren();
+		Dimension size = cluster.getSize();
+		
+		for(int i = 0; i < desiredMembers.size(); ++i)
+		{
+			int memberId = desiredMembers.get(i);
+			DiagramNode memberNode = model.getNodeById(memberId);
+			if(existingMembers.contains(memberNode))
+				continue;
+			getProject().addNodeToCluster(cluster, memberNode);
+		}
+		
+		cluster.setSize(size);
+		model.updateCell(cluster);
 	}
 
 	JSplitPane bigSplitter;

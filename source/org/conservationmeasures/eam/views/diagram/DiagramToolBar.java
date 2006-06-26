@@ -13,6 +13,7 @@ import javax.swing.JComponent;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionInsertCluster;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -45,6 +46,7 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
 				new ToolBarButton(actions, ActionInsertConnection.class),
+				new ToolBarButton(actions, ActionInsertCluster.class),
 				new Separator(),
 				new ToolBarButton(actions, ActionCut.class),
 				new ToolBarButton(actions, ActionCopy.class),

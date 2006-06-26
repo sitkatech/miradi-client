@@ -50,7 +50,7 @@ abstract public class InsertNode extends LocationDoer
 		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
 	}
 	
-	private int insertNodeItself() throws Exception
+	int insertNodeItself() throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();

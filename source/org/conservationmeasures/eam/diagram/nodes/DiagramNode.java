@@ -18,10 +18,12 @@ import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -44,6 +46,8 @@ abstract public class DiagramNode extends EAMGraphCell
 			return new DiagramFactor((ConceptualModelFactor)cmObject);
 		else if(cmObject.isTarget())
 			return new DiagramTarget((ConceptualModelTarget)cmObject);
+		else if(cmObject.isCluster())
+			return new DiagramCluster((ConceptualModelCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
@@ -57,9 +61,14 @@ abstract public class DiagramNode extends EAMGraphCell
 		setColors();
 		setFont();
 		setLocation(new Point(0, 0));
-		Dimension defaultNodeSize = new Dimension(120, 60);
+		Dimension defaultNodeSize = getDefaultSize();
 		setSize(defaultNodeSize);
 		setPreviousSize(defaultNodeSize);
+	}
+
+	public static Dimension getDefaultSize()
+	{
+		return new Dimension(120, 60);
 	}
 	
 	public boolean isNode()
@@ -247,6 +256,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.isIntervention();
 	}
 	
+	public boolean isCluster()
+	{
+		return underlyingObject.isCluster();
+	}
+	
 	public DefaultPort getPort()
 	{
 		return port;
@@ -423,6 +437,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final NodeType TYPE_INDIRECT_FACTOR = new NodeTypeIndirectFactor();
 	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
 	public static final NodeType TYPE_DIRECT_THREAT = new NodeTypeDirectThreat();
+	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
 
 	public static final int INT_TYPE_INVALID = -1;
 	public static final int INT_TYPE_TARGET = 1;

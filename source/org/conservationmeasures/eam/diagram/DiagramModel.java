@@ -16,12 +16,15 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalPool;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectivePool;
 import org.conservationmeasures.eam.project.LinkagePool;
@@ -399,6 +402,25 @@ public class DiagramModel extends DefaultGraphModel
 			node.fillFrom(nodeJson);
 			
 			addNodeToModel(node);
+		}
+		
+		int[] nodeIds = getNodePool().getIds();
+		for(int i = 0;i < nodeIds.length; ++i)
+		{
+			DiagramNode node = getNodeById(nodeIds[i]);
+			if(node.isCluster())
+				addNodesToCluster((DiagramCluster)node);
+		}
+	}
+	
+	void addNodesToCluster(DiagramCluster cluster) throws Exception
+	{
+		ConceptualModelCluster cmCluster = (ConceptualModelCluster)cluster.getUnderlyingObject();
+		IdList members = cmCluster.getMemberIds();
+		for(int i = 0; i < members.size(); ++i)
+		{
+			DiagramNode memberNode = getNodeById(members.get(i));
+			project.addNodeToCluster(cluster, memberNode);
 		}
 	}
 	
