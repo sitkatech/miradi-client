@@ -21,6 +21,7 @@ public class InterviewModel
 	public void loadSteps() throws IOException
 	{
 		addStep(StepLoader.load(new UnicodeStringReader(templateWelcome)));
+		addStep(StepLoader.load(new UnicodeStringReader(templateTemporaryGuide)));
 		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_a)));
 		addStep(StepLoader.load(new UnicodeStringReader(template_1_0_1_0_A_2_b)));
 		addStep(StepLoader.load(new UnicodeStringReader(template_2_1_2_1_A_3_a)));
@@ -89,7 +90,7 @@ public class InterviewModel
 	// TODO: Extract out to text file(s)
 	static public final String templateWelcome = 
 		"welcome\n" +
-		"1.0.1_0_A.2.a\n" +
+		"Usage Guide\n" +
 		"\n" + 
 		":html:\n" +
 			"<h2>Interview (demo screen shots only)</h2>" +
@@ -124,10 +125,35 @@ public class InterviewModel
 			"</td>" +
 			"</tr></table>";
 
+	// TODO: Extract out to text file(s)
+	static public final String templateTemporaryGuide = 
+		"Usage Guide\n" +
+		"1.0.1_0_A.2.a\n" +
+		"welcome\n" + 
+		":html:\n" +
+			"<h2>Interview (demo screen shots only)</h2>" +
+			"<table><tr>" +
+			"<td valign='top'>" +
+			"<font face='Arial'>" +
+			"<p>The following interview screens will give you an idea of how the interview " +
+			"will, in future versions, walk you through developing your project.</p>" +
+			"</font>" +
+			"</td>" +
+			"<td valign='top'>" +
+			"<h3>Next Steps</h3>" +
+			"<font face='Arial'>" +
+			"To continue with the Interview demo, click on the 'Next' button." + 
+			"However, if you want to start working with a project, " +
+			"switch to the Diagram View and start " +
+			"building a conceptual model of your project." +
+			"</font>" +
+			"</td>" +
+			"</tr></table>";
+
 	static public final String template_1_0_1_0_A_2_a = 	
 		"1.0.1_0_A.2.a\n" +
 		"1.0.1_0_A.2.b\n" +
-		"welcome\n" +
+		"Usage Guide\n" +
 		":html:\n" +
 			"<h2>Step 1.  Conceptualize</h2>\n" + 
 			"<h3>Principle 1A.  Be clear and specific about the issue or problem</h3>" +
@@ -150,7 +176,7 @@ public class InterviewModel
 	private static final String template_1_0_1_0_A_2_b =
 		"1.0.1_0_A.2.b\n" +
 		"2.1.2.1.A.3.a\n" +
-		"1.0.1_0_A.2.a\n" +
+		"Usage Guide\n" +
 		":html:\n" +
 			"<h2>Step 1.  Conceptualize</h2>\n" + 
 			"<h3>Principle 1A.  Be clear and specific about the issue or problem</h3>" +
