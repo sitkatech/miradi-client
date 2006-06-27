@@ -75,7 +75,8 @@ class OverviewText extends HtmlBuilder
 								"the relationships between them.") +
 						paragraph("As in any modeling exercise, you should not try to show all factors and " +
 								"relationships, but only the most important ones.") +
-						paragraph(bold("Click next to begin developing a model of your project.")) +
+						paragraph("The Diagram interview is not functional yet, so you might want to " +
+								"shrink this interview panel by dragging its lower border upward.") +
 						newline() +
 						indent(table(
 							tableRow(
