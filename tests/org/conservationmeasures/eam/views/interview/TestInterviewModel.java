@@ -41,11 +41,12 @@ public class TestInterviewModel extends EAMTestCase
 		assertFalse("first should not have a previous step", welcomeStep.isPreviousAvailable());
 		assertTrue("first should have a next step", welcomeStep.isNextAvailable());
 		
+		InterviewStepModel usageStep = model.getStep(welcomeStep.getNextStepName());
 		
-		InterviewStepModel secondStep = model.getStep(welcomeStep.getNextStepName());
+		InterviewStepModel secondStep = model.getStep(usageStep.getNextStepName());
 		assertEquals("wrong 2nd step name?", "1.0.1_0_A.2.a", secondStep.getStepName());
 		assertEquals("next 2nd not P1aT2S2?", "1.0.1_0_A.2.b", secondStep.getNextStepName());
-		assertEquals("wrong previous of next?", welcomeStep.getStepName(), secondStep.getPreviousStepName());
+		assertEquals("wrong previous of next?", usageStep.getStepName(), secondStep.getPreviousStepName());
 		assertTrue("2nd should have a previous step", secondStep.isPreviousAvailable());
 		assertTrue("2nd should have a next step", secondStep.isNextAvailable());
 	}
