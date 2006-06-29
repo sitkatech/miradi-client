@@ -25,12 +25,13 @@ public class ProjectZipper
 
 	static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception
 	{
+		if(prefix.length() > 0)
+			prefix = prefix + "/";
+		
 		File[] files = parentDirectory.listFiles();
 		for(int i = 0; i < files.length; ++i)
 		{
 			File thisFile = files[i];
-			if(prefix.length() > 0)
-				prefix = prefix + "/";
 			String entryName = prefix + thisFile.getName();
 			if(thisFile.isDirectory())
 			{
