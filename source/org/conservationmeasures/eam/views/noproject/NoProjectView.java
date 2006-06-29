@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiFileChooser;
 
 public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 {
@@ -41,6 +42,10 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
 			File projectDirectory = new File(CreateProjectDialog.getHomeDirectory(), projectName);
 			getMainWindow().createOrOpenProject(projectDirectory);
+		}
+		else if(linkDescription.equals(NoProjectHtmlText.IMPORT_ZIP))
+		{
+			doImportZip();
 		}
 		else if(linkDescription.equals("Definition:Project"))
 		{
@@ -77,6 +82,18 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 	}
 
+	public void doImportZip()
+	{
+		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
+		String windowTitle = EAM.text("Import Zipped Project");
+		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
+				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory);
+		if (results.wasCancelChoosen())
+			return;
+		
+		
+	}
+	
 	public void buttonPressed(String buttonName)
 	{
 	}

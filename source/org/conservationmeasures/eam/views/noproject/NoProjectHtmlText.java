@@ -51,6 +51,8 @@ class NoProjectHtmlText extends HtmlBuilder
 						) +
 				horizontalLine() +
 				paragraph(
+					definition(IMPORT_ZIP, "Import a zipped project", "Browse to a zipped project")) +
+				paragraph(
 					definition("BrowseProject", "Browse to find other projects", "Browse to existing...")) +
 				paragraph(
 					definition("ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
@@ -93,6 +95,7 @@ class NoProjectHtmlText extends HtmlBuilder
 	
 	public static final String NEW_PROJECT = "NewProject";
 	public static final String OPEN_PREFIX = "Open:";
+	public static final String IMPORT_ZIP = "ImportZip";
 
 	String text;
 }

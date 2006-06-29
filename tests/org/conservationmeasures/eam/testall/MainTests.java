@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.project.TestLinkagePool;
 import org.conservationmeasures.eam.project.TestNodePool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
+import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
@@ -108,6 +109,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestTNCThreatFormula.class));
 		suite.addTest(new TestSuite(TestProjectZipper.class));
+		suite.addTest(new TestSuite(TestProjectUnzipper.class));
 		
 		// utils package
 		suite.addTest(new TestSuite(TestLogging.class));
