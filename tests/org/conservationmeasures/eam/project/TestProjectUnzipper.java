@@ -21,7 +21,9 @@ public class TestProjectUnzipper extends EAMTestCase
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		ZipOutputStream zipOut = new ZipOutputStream(out);
 		ZipEntry entryA = new ZipEntry("fileA");
+		ZipEntry entryB = new ZipEntry("dirB/");
 		zipOut.putNextEntry(entryA);
+		zipOut.putNextEntry(entryB);
 		zipOut.close();
 		
 		ByteArrayInputStream in = new ByteArrayInputStream(out.toByteArray());
