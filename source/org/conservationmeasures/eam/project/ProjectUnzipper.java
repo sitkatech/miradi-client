@@ -17,7 +17,7 @@ public class ProjectUnzipper
 			if(entry == null)
 				break;
 			String name = entry.getName();
-			if(hasTopLevelFile(name))
+			if(isTopLevelFile(name))
 				return false;
 			if(hasLeadingSlash(name))
 				return false;
@@ -38,12 +38,9 @@ public class ProjectUnzipper
 		return name.indexOf('/');
 	}
 
-	private static boolean hasTopLevelFile(String name)
+	private static boolean isTopLevelFile(String name)
 	{
-		if(findSlash(name) < 0)
-			return true;
-		
-		return false;
+		return findSlash(name) < 0;
 	}
 
 	private static boolean hasLeadingSlash(String name)
