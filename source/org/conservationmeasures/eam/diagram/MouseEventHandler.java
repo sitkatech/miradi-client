@@ -13,6 +13,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.Properties;
 import org.jgraph.event.GraphSelectionEvent;
@@ -21,12 +22,25 @@ import org.jgraph.event.GraphSelectionListener;
 
 public class MouseEventHandler implements MouseListener, GraphSelectionListener
 {
-	public MouseEventHandler(DiagramComponent owner, Project projectToUse, Actions actionsToUse)
+	public MouseEventHandler(MainWindow mainWindowToUse)
 	{
-		diagram = owner;
-		project = projectToUse;
-		actions = actionsToUse;
+		mainWindow = mainWindowToUse;
 		selectedCells = new Object[0];
+	}
+	
+	Project getProject()
+	{
+		return mainWindow.getProject();
+	}
+	
+	DiagramComponent getDiagram()
+	{
+		return mainWindow.getDiagramComponent();
+	}
+	
+	Actions getActions()
+	{
+		return mainWindow.getActions();
 	}
 	
 	public void mousePressed(MouseEvent event)
@@ -34,12 +48,12 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		dragStartedAt = null;
 		if(event.isPopupTrigger())
 		{
-			diagram.showContextMenu(event);
+			getDiagram().showContextMenu(event);
 			return;
 		}
 
 		dragStartedAt = event.getPoint();
-		Object cellBeingPressed = diagram.getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
+		Object cellBeingPressed = getDiagram().getFirstCellForLocation(dragStartedAt.getX(), dragStartedAt.getY());
 		if(cellBeingPressed == null)
 		{
 			dragStartedAt = null;
@@ -61,7 +75,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	{
 		if(event.isPopupTrigger())
 		{
-			diagram.showContextMenu(event);
+			getDiagram().showContextMenu(event);
 			dragStartedAt = null;
 			return;
 		}
@@ -97,7 +111,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		deltaX = node.getLocation().x - node.getPreviousLocation().x;
 		deltaY = node.getLocation().y - node.getPreviousLocation().y;
 		
-		project.nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
+		getProject().nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
 	}
 
 	public void mouseEntered(MouseEvent arg0)
@@ -115,9 +129,10 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			try 
 			{
 				Point at = event.getPoint();
-				Properties doer = new Properties(diagram);
-				doer.setProject(project);
-				doer.doIt(at);
+				Properties doer = new Properties(getDiagram());
+				doer.setMainWindow(mainWindow);
+				doer.setLocation(at);
+				doer.doIt();
 			} 
 			catch (CommandFailedException e) 
 			{
@@ -137,14 +152,12 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	
 	public void selectionChanged(GraphSelectionEvent event)
 	{
-		selectedCells = diagram.getSelectionCells();
-		actions.updateActionStates();
-		diagram.selectionWasChanged();
+		selectedCells = getDiagram().getSelectionCells();
+		getActions().updateActionStates();
+		getDiagram().selectionWasChanged();
 	}
 
-	Project project;
-	DiagramComponent diagram;
-	Actions actions;
+	MainWindow mainWindow;
 	Point dragStartedAt;
 	Object[] selectedCells;
 }

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionProperties extends MainWindowAction
+public class ActionProperties extends LocationAction
 {
 	public ActionProperties(MainWindow mainWindow)
 	{

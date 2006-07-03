@@ -25,10 +25,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ObjectType;
-import org.conservationmeasures.eam.views.ProjectDoer;
 import org.martus.swing.Utilities;
 
-public class Properties extends ProjectDoer
+public class Properties extends LocationDoer
 {
 	public Properties(DiagramComponent diagramToUse)
 	{
@@ -56,17 +55,12 @@ public class Properties extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		doIt(null);
-	}
-	
-	public void doIt(Point at) throws CommandFailedException
-	{
 		if(!isAvailable())
 			return;
-		
+
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isNode())
-			doNodeProperties((DiagramNode)selected, at);
+			doNodeProperties((DiagramNode)selected, getLocation());
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isLinkage())

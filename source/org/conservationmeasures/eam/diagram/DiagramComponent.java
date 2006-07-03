@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
@@ -44,9 +45,10 @@ import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
 {
-	public DiagramComponent(Project projectToUse, Actions actions)
+	public DiagramComponent(MainWindow mainWindow)
 	{
-		project = projectToUse;
+		project = mainWindow.getProject();
+		Actions actions = mainWindow.getActions();
 
 		setUI(new EAMGraphUI());
 
@@ -61,7 +63,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
-		MouseEventHandler mouseHandler = new MouseEventHandler(this, project, actions);
+		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
 	}

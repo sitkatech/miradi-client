@@ -63,7 +63,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
 		menu.addSeparator();
-		menu.add(new MenuItemWithoutLocation(actions.get(ActionProperties.class)));
+		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));
 		return menu;
 	}
 
