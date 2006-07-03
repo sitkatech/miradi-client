@@ -13,7 +13,6 @@ import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.commands.CommandSetProjectVision;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
@@ -80,10 +79,6 @@ public class Properties extends ProjectDoer
 		dlg.setText(scope.getVision());
 		setDialogLocation(dlg, scope.getBounds());
 		dlg.setVisible(true);
-		if(!dlg.getResult())
-			return;
-
-		getProject().executeCommand(new CommandSetProjectVision(dlg.getText()));
 	}
 	
 	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
