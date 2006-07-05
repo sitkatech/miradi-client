@@ -18,8 +18,9 @@ public class ProjectZipper
 
 	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
+		String projectName = projectDirectory.getName();
 		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(destination));
-		addTreeToZip(out, "", projectDirectory);
+		addTreeToZip(out, projectName, projectDirectory);
 		out.close();
 	}
 
@@ -40,8 +41,9 @@ public class ProjectZipper
 			else
 			{
 				ZipEntry entry = new ZipEntry(entryName);
-				out.putNextEntry(entry);
 				int size = (int)thisFile.length();
+				entry.setSize(size);
+				out.putNextEntry(entry);
 				byte[] contents = new byte[size];
 				FileInputStream in = new FileInputStream(thisFile);
 				in.read(contents);
