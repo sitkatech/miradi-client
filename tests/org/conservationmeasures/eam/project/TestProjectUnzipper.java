@@ -88,12 +88,12 @@ public class TestProjectUnzipper extends EAMTestCase
 				EAM.setLogLevel(EAM.LOG_DEBUG);
 				boolean isImportable = ProjectUnzipper.isZipFileImportable(zip);
 				assertTrue("isn't importable? " + EAM.getLoggedString(), isImportable);
-				File unzippedDirectory = ProjectUnzipper.unzipToTempDirectory(zip);
+				File unzippedDirectory = createTempDirectory(); 
 				try
 				{
-					File unzippedProjectDirectory = new File(unzippedDirectory, project.getName());
+					ProjectUnzipper.unzipToProjectDirectory(zip, unzippedDirectory);
 					Project unzippedProject = new Project();
-					unzippedProject.createOrOpen(unzippedProjectDirectory);
+					unzippedProject.createOrOpen(unzippedDirectory);
 					ConceptualModelNode target = unzippedProject.findNode(targetId);
 					assertNotNull("didn't find the target we wrote?", target);
 				}

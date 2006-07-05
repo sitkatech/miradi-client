@@ -61,14 +61,11 @@ public class ProjectUnzipper
 		}
 	}
 	
-	public static File unzipToTempDirectory(File zipFile) throws IOException
+	public static void unzipToProjectDirectory(File zipFile, File projectDirectory) throws IOException
 	{
 		ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
-		File directory = File.createTempFile("eAM", null);
-		directory.delete();
-		directory.mkdir();
-		unzip(zipIn, directory);
-		return directory;
+		projectDirectory.mkdir();
+		unzip(zipIn, projectDirectory);
 	}
 	
 	public static void unzip(ZipInputStream zipInput, File destinationDirectory) throws IOException
@@ -80,7 +77,11 @@ public class ProjectUnzipper
 				ZipEntry entry = zipInput.getNextEntry();
 				if(entry == null)
 					break;
-				extractOneFile(zipInput, destinationDirectory, entry);
+				String relativeFilePath = entry.getName();
+				int slashAt = findSlash(relativeFilePath);
+				relativeFilePath = relativeFilePath.substring(slashAt + 1);
+				File file = new File(destinationDirectory, relativeFilePath);
+				extractOneFile(zipInput, file, entry);
 				zipInput.closeEntry();
 			}
 		}
@@ -90,15 +91,13 @@ public class ProjectUnzipper
 		}
 	}
 
-	private static void extractOneFile(ZipInputStream zipInput, File destinationDirectory, ZipEntry entry) throws FileNotFoundException, IOException
+	private static void extractOneFile(ZipInputStream zipInput, File destinationFile, ZipEntry entry) throws FileNotFoundException, IOException
 	{
 		if(entry.isDirectory())
 			return;
 		
-		long entryLength = entry.getSize();
-		File file = new File(destinationDirectory, entry.getName());
-		file.getParentFile().mkdirs();
-		FileOutputStream out = new FileOutputStream(file);
+		destinationFile.getParentFile().mkdirs();
+		FileOutputStream out = new FileOutputStream(destinationFile);
 		byte[] buffer = new byte[512];
 		int got = -1;
 		while( (got = zipInput.read(buffer)) > 0)
@@ -106,11 +105,7 @@ public class ProjectUnzipper
 			// TODO: Optimize by reading entire file at once?
 			out.write(buffer, 0, got);
 		}
-		out.flush();	// shouldn't be needed but all the examples have it!
 		out.close();
-		long fileLength = file.length();
-		if(entryLength >= 0 && entryLength != fileLength)
-			throw new RuntimeException("Uncompressed wrong number of bytes for " + file + ", expected " + entryLength + " but was " + fileLength);
 	}
 
 	private static int findSlash(String name)

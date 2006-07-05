@@ -12,6 +12,7 @@ import javax.swing.Action;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
@@ -92,6 +93,20 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		if (results.wasCancelChoosen())
 			return;
 		File zipToImport = results.getChosenFile();
+		String projectName = withoutExtension(zipToImport.getName());
+		File finalProjectDirectory = new File(CreateProjectDialog.getHomeDirectory(), projectName);
+		if(ProjectServer.isExistingProject(finalProjectDirectory))
+		{
+			EAM.notifyDialog("Cannot import a project that already exists: " + projectName);
+			return;
+		}
+		if(finalProjectDirectory.exists())
+		{
+			EAM.notifyDialog("Cannot import over an existing file or directory: " + 
+					finalProjectDirectory.getAbsolutePath());
+			return;
+		}
+		
 		try
 		{
 			if(!ProjectUnzipper.isZipFileImportable(zipToImport))
@@ -100,7 +115,12 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 				return;
 			}
 			
+			ProjectUnzipper.unzipToProjectDirectory(zipToImport, finalProjectDirectory);
 			
+			// FIXME: I want to make the new project visible immediately, but the 
+			// following line of code causes the view to go blank! Huh?
+			//becomeActive();
+			EAM.notifyDialog("Import complete");
 		}
 		catch (Exception e)
 		{
@@ -108,6 +128,14 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			EAM.errorDialog("Import failed");
 		}
 		
+	}
+	
+	private String withoutExtension(String fileName)
+	{
+		int lastDotAt = fileName.lastIndexOf('.');
+		if(lastDotAt < 0)
+			return fileName;
+		return fileName.substring(0, lastDotAt);
 	}
 	
 	public void buttonPressed(String buttonName)
