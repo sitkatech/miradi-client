@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
@@ -90,7 +91,22 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory);
 		if (results.wasCancelChoosen())
 			return;
-		
+		File zipToImport = results.getChosenFile();
+		try
+		{
+			if(!ProjectUnzipper.isZipFileImportable(zipToImport))
+			{
+				EAM.notifyDialog("Not a valid project zip file");
+				return;
+			}
+			
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			EAM.errorDialog("Import failed");
+		}
 		
 	}
 	
