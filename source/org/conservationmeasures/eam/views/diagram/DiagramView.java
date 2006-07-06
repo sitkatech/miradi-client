@@ -6,11 +6,9 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -348,23 +346,35 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
 			return;
 		
-		IdList desiredMembers = new IdList(cmd.getDataValue());
+		IdList newMembers = new IdList(cmd.getDataValue());
+		IdList oldMembers = new IdList(cmd.getPreviousDataValue());
+		
+		IdList idsToAdd = new IdList(newMembers);
+		idsToAdd.subtract(oldMembers);
+		
+		IdList idsToRemove = new IdList(oldMembers);
+		idsToRemove.subtract(newMembers);
 
 		DiagramModel model = getDiagramComponent().getDiagramModel();
 		DiagramCluster cluster = (DiagramCluster)model.getNodeById(cmd.getObjectId());
-		List existingMembers = cluster.getChildren();
-		Dimension size = cluster.getSize();
 		
-		for(int i = 0; i < desiredMembers.size(); ++i)
+		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
-			int memberId = desiredMembers.get(i);
+			int memberId = idsToRemove.get(i);
 			DiagramNode memberNode = model.getNodeById(memberId);
-			if(existingMembers.contains(memberNode))
-				continue;
+			getProject().removeNodeFromCluster(cluster, memberNode);
+		}
+		
+		for(int i = 0; i < idsToAdd.size(); ++i)
+		{
+			int memberId = idsToAdd.get(i);
+			DiagramNode memberNode = model.getNodeById(memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}
 		
-		cluster.setSize(size);
+
+		
+		
 		model.updateCell(cluster);
 	}
 

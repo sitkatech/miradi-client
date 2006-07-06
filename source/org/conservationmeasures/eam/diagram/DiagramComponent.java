@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -30,6 +31,8 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
@@ -38,6 +41,7 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
@@ -119,6 +123,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);
+	}
+	
+	public void setModel(DiagramModel modelToUse)
+	{
+		super.setModel(modelToUse);
+		modelToUse.addDiagramModelListener(new DiagramModelEventHandler());
 	}
 	
 	public Project getProject()
@@ -251,6 +261,56 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		nodePropertiesDlg = null;
 	}
 	
+
+	class DiagramModelEventHandler implements DiagramModelListener
+	{
+		public void nodeAdded(DiagramModelEvent event)
+		{
+		}
+	
+		public void nodeChanged(DiagramModelEvent event)
+		{
+		}
+	
+		public void nodeDeleted(DiagramModelEvent event)
+		{
+		}
+	
+		public void nodeMoved(DiagramModelEvent event)
+		{
+			DiagramNode member = (DiagramNode)event.getNode();
+			DiagramCluster cluster = (DiagramCluster)member.getParent();
+			if(cluster == null)
+				return;
+			
+			Rectangle memberRect = new Rectangle(member.getLocation(), member.getSize());
+			Rectangle clusterRect = new Rectangle(cluster.getLocation(), cluster.getSize());
+			if(clusterRect.contains(memberRect))
+				return;
+			
+			try
+			{
+				CommandSetObjectData remove = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
+					ConceptualModelCluster.TAG_MEMBER_IDS, member.getId());
+				getProject().executeCommand(remove);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("Unknown error during move");
+			}
+			
+		}
+	
+		public void linkageAdded(DiagramModelEvent event)
+		{
+		}
+	
+		public void linkageDeleted(DiagramModelEvent event)
+		{
+		}
+	}
+
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 	NodePropertiesDialog nodePropertiesDlg;

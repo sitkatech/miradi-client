@@ -946,6 +946,13 @@ public class Project
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
+	public void removeNodeFromCluster(DiagramCluster cluster, DiagramNode node)
+	{
+		DiagramNode[] nodes = {node};
+		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
+		getGraphLayoutCache().edit(null, null, parentMap, null);
+	}
+
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
