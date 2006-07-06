@@ -99,12 +99,15 @@ public class DataUpgrader extends ProjectServer
 	{
 		File jsonDirectory = new File(topDirectory, "json");
 		File objectDirectory = new File(jsonDirectory, "objects-" + Integer.toString(type));
+		objectDirectory.mkdir();
 		File manifestFile = new File(objectDirectory, "manifest");
 		if(manifestFile.exists())
 			throw new RuntimeException("Didn't expect manifest file " + manifestFile.getAbsolutePath());
 
 		ObjectManifest manifest = new ObjectManifest();
 		File[] files = objectDirectory.listFiles();
+		if(files == null)
+			files = new File[0];
 		for(int i = 0; i < files.length; ++i)
 		{
 			try
