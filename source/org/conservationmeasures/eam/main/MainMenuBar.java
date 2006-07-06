@@ -192,11 +192,10 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIndirectFactor.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertCluster.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionInsertCluster.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertCluster.class)));
 		return menu;
 	}
 	
