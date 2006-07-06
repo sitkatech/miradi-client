@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
+import org.jgraph.graph.DefaultGraphSelectionModel;
 import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
@@ -64,6 +65,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridEnabled(true);
 		setGridVisible(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
+		setSelectionModel(new EAMGraphSelectionModel(this));
 
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
@@ -347,6 +349,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				ConceptualModelCluster.TAG_MEMBER_IDS, member.getId());
 			getProject().executeCommand(remove);
 			
+			/*
+			 * NOTE: The following line of code works around a weird bug deep in jgraph
+			 * If you click on a cluster, then click on a member, then drag the member out,
+			 * part of jgraph still thinks the cluster has a member that is selected.
+			 * So when you drag the node back in, it doesn't become a member because jgraph 
+			 * won't return the cluster, because it thinks the cluster has something selected.
+			 * The workaround is to re-select what is selected, so the cached values inside 
+			 * jgraph get reset to their proper values.
+			 */
+			setSelectionCells(getSelectionCells());
 		}
 	
 		public void linkageAdded(DiagramModelEvent event)
@@ -357,6 +369,71 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		{
 		}
 	}
+
+	/*
+	 * NOTE: The following method is a refactored version of what is in the JGraph
+	 * class in jgraph 5.8. It's here for debugging weird selection model issues.
+	 */
+//	public CellView getNextViewAt(CellView[] cells, CellView c, double x,
+//			double y, boolean leafsOnly)
+//	{
+//		if(cells == null)
+//			return null;
+//		
+//		Rectangle2D r = fromScreen(new Rectangle2D.Double(x - tolerance, y
+//				- tolerance, 2 * tolerance, 2 * tolerance));
+//		// Iterate through cells and switch to active
+//		// if current is traversed. Cache first cell.
+//		CellView first = null;
+//		boolean active = (c == null);
+//		for (int i = 0; i < cells.length; i++)
+//		{
+//			if(cells[i] == null)
+//				continue;
+//			
+//			if(leafsOnly && !cells[i].isLeaf())
+//				continue;
+//			
+//			if (!cells[i].intersects(this, r))
+//				continue;
+//			
+//			// TODO: This behaviour is specific to selection and
+//			// should be parametrized (it only returns a group with
+//			// selected children if no other portview is available)
+//			if(active)
+//			{
+//				boolean hasAnySelectedChildren = selectionModel.isChildrenSelected(cells[i].getCell());
+//				System.out.println("Checking for selected children: " + hasAnySelectedChildren);
+//				if(!hasAnySelectedChildren)
+//				{
+//					System.out.println("Returning cells[i]: " + cells[i].getCell());
+//					return cells[i];
+//				}
+//			}
+//			else if(cells[i] == c)
+//			{
+//				System.out.println("Setting active");
+//				active = true;
+//			}
+//			
+//			if (first == null)
+//			{
+//				first = cells[i];
+//				System.out.println("Setting first: " + first);
+//			}
+//		}
+//		return first;
+//	}
+	
+	class EAMGraphSelectionModel extends DefaultGraphSelectionModel
+	{
+		public EAMGraphSelectionModel(JGraph graphToUse)
+		{
+			super(graphToUse);
+		}
+
+	}
+
 
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
