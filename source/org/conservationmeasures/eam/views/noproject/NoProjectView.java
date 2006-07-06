@@ -28,6 +28,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		super(mainWindow);
 		
+		htmlViewer = new HtmlViewer("", this);
 		setToolBar(new NoProjectToolBar(getActions()));
 		becomeActive();
 	}
@@ -66,13 +67,18 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	public void becomeActive() throws Exception
 	{
 		removeAll();
-		String htmlText = new NoProjectHtmlText().getText();
-		HtmlViewer contents = new HtmlViewer(htmlText, this);
+		refreshText();
 		
-		JScrollPane scrollPane = new JScrollPane(contents);
+		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		
 		setLayout(new BorderLayout());
 		add(scrollPane, BorderLayout.CENTER);
+	}
+
+	private void refreshText()
+	{
+		String htmlText = new NoProjectHtmlText().getText();
+		htmlViewer.setText(htmlText);
 	}
 	
 	public void becomeInactive() throws Exception
@@ -117,9 +123,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			
 			ProjectUnzipper.unzipToProjectDirectory(zipToImport, finalProjectDirectory);
 			
-			// FIXME: I want to make the new project visible immediately, but the 
-			// following line of code causes the view to go blank! Huh?
-			//becomeActive();
+			refreshText();
 			EAM.notifyDialog("Import complete");
 		}
 		catch (Exception e)
@@ -152,5 +156,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		return "";
 	}
 
+	HtmlViewer htmlViewer;
 }
 
