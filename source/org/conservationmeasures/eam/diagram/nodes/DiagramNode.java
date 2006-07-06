@@ -65,6 +65,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		setSize(defaultNodeSize);
 		setPreviousSize(defaultNodeSize);
 	}
+	
+	public Rectangle getRectangle()
+	{
+		return new Rectangle(getLocation(), getSize());
+	}
 
 	public static Dimension getDefaultSize()
 	{

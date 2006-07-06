@@ -280,25 +280,72 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		{
 			DiagramNode member = (DiagramNode)event.getNode();
 			DiagramCluster cluster = (DiagramCluster)member.getParent();
-			if(cluster == null)
-				return;
-			
-			Rectangle memberRect = new Rectangle(member.getLocation(), member.getSize());
-			Rectangle clusterRect = new Rectangle(cluster.getLocation(), cluster.getSize());
-			if(clusterRect.contains(memberRect))
-				return;
-			
 			try
 			{
-				CommandSetObjectData remove = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-					ConceptualModelCluster.TAG_MEMBER_IDS, member.getId());
-				getProject().executeCommand(remove);
+				if(cluster == null)
+					addToClusterIfMovedInside(member);
+				else
+					removeFromClusterIfMovedOutside(cluster, member);
 			}
 			catch(Exception e)
 			{
 				EAM.logException(e);
 				EAM.errorDialog("Unknown error during move");
 			}
+		}
+		
+		private void addToClusterIfMovedInside(DiagramNode node) throws Exception
+		{
+			if(node.isCluster())
+				return;
+			
+			DiagramCluster cluster = getFirstClusterThatContains(node.getRectangle());
+			if(cluster == null)
+				return;
+			
+			CommandSetObjectData insert = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
+					ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
+				getProject().executeCommand(insert);
+		}
+		
+		private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect)
+		{
+			Point pt = candidateRect.getLocation();
+
+			/*
+			 * This jgraph API is about the most brain-dead thing I have ever seen.
+			 * Looping through all cells, top to bottom is really hard because you 
+			 * need to stop when you get to the first cell a second time. Sheesh. kbs.
+			 */
+			EAMGraphCell stopAt = null;
+			EAMGraphCell candidate = (EAMGraphCell)getFirstCellForLocation(pt.getX(), pt.getY());
+			while(candidate != stopAt)
+			{
+				if(candidate.isNode())
+				{
+					DiagramNode possibleCluster = (DiagramNode)candidate;
+					if(possibleCluster.isCluster() && possibleCluster.getRectangle().contains(candidateRect))
+						return (DiagramCluster)possibleCluster;
+				}
+
+				if(stopAt == null)
+					stopAt = candidate;
+				candidate = (EAMGraphCell)getNextCellForLocation(candidate, pt.getX(), pt.getY());
+			}
+			
+			return null;
+		}
+		
+		private void removeFromClusterIfMovedOutside(DiagramCluster cluster, DiagramNode member) throws Exception
+		{
+			Rectangle memberRect = member.getRectangle();
+			Rectangle clusterRect = cluster.getRectangle();
+			if(clusterRect.contains(memberRect))
+				return;
+			
+			CommandSetObjectData remove = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
+				ConceptualModelCluster.TAG_MEMBER_IDS, member.getId());
+			getProject().executeCommand(remove);
 			
 		}
 	
