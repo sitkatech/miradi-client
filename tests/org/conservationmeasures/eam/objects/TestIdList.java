@@ -88,4 +88,31 @@ public class TestIdList extends EAMTestCase
 		
 		assertNotEquals("didn't check type?", list, new Object());
 	}
+	
+	public void testSubtract()
+	{
+		IdList list12345 = new IdList();
+		list12345.add(1);
+		list12345.add(2);
+		list12345.add(3);
+		list12345.add(4);
+		list12345.add(5);
+		
+		IdList list654 = new IdList();
+		list654.add(6);
+		list654.add(5);
+		list654.add(4);
+		
+		IdList list123 = new IdList(list12345);
+		list123.subtract(list654);
+		assertEquals(3, list123.size());
+		assertEquals(1, list123.get(0));
+		assertEquals(2, list123.get(1));
+		assertEquals(3, list123.get(2));
+		
+		IdList list6 = new IdList(list654);
+		list6.subtract(list12345);
+		assertEquals(1, list6.size());
+		assertEquals(6, list6.get(0));
+	}
 }

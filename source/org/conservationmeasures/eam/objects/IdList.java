@@ -93,6 +93,16 @@ public class IdList
 		data.remove(idObject);
 	}
 	
+	public void subtract(IdList other)
+	{
+		for(int i = 0; i < other.size(); ++i)
+		{
+			int id = other.get(i);
+			if(contains(id))
+				removeId(id);
+		}
+	}
+	
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
