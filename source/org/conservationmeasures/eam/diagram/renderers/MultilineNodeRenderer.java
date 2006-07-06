@@ -36,12 +36,14 @@
 
 package org.conservationmeasures.eam.diagram.renderers;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.Stroke;
 
 import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.annotations.GoalIds;
@@ -161,6 +163,14 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		return node.getInsetDimension();
 	}
 	
+	Stroke getStroke()
+	{
+		if(node.getParent() == null)
+			return super.getStroke();
+		
+		float[] dashes = {8.0f, 2.0f};
+		return new BasicStroke(borderWidth, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
+	}
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
 	private static final Color INDICATOR_COLOR = LIGHT_PURPLE;

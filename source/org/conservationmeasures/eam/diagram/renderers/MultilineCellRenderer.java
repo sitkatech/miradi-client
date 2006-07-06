@@ -97,7 +97,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		if (bordercolor != null)
 		{
 			Color color = bordercolor;
-			Stroke stroke = new BasicStroke(borderWidth);
+			Stroke stroke = getStroke();
 			g2.setColor(color);
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
@@ -112,6 +112,12 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		}
 
 		drawProjectScopeVision(g2, rect);
+	}
+
+	Stroke getStroke()
+	{
+		Stroke stroke = new BasicStroke(borderWidth);
+		return stroke;
 	}
 
 	Color getFillColor()
