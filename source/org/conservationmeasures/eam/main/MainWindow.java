@@ -15,6 +15,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -102,8 +103,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		setCurrentView(noProjectView);
 		actions.updateActionStates();
 
-		// TODO: allow --nosplash anywhere on command line
-		if(args.length == 0 || !args[0].equals("--nosplash"))
+		if(!Arrays.asList(args).contains("--nosplash"))
 		{
 			Doer aboutDoer = diagramView.getDoer(ActionAbout.class);
 			aboutDoer.doIt();
