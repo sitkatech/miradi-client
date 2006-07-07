@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -409,6 +410,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int x = getLocation().x;
 		int y = getLocation().y;
 		return new Command[] {
+			new CommandSetNodeSize(getId(), getDefaultSize(), getSize()),
 			new CommandDiagramMove(-x, -y, new int[] {getId()}),
 			new CommandSetObjectData(getUnderlyingObject().getType(), getId(), TAG_VISIBLE_LABEL, EAMObject.DEFAULT_LABEL),
 		};
