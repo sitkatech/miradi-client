@@ -5,20 +5,15 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Point;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -85,17 +80,15 @@ public class Delete extends ProjectDoer
 	{
 		int id = nodeToDelete.getId();
 
-		Point location = nodeToDelete.getLocation();
-		CommandDiagramMove moveToZeroZero = new CommandDiagramMove(-location.x, -location.y, new int[] {id});
-		CommandSetNodeName clearText = new CommandSetNodeName(id, EAMObject.DEFAULT_LABEL);
-		CommandDeleteNode command = new CommandDeleteNode(id);
-		
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
-		getProject().executeCommand(moveToZeroZero);
-		getProject().executeCommand(clearText);
-		getProject().executeCommand(command);
+		
+		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
+		for(int i = 0; i < commandsToClear.length; ++i)
+			getProject().executeCommand(commandsToClear[i]);
+		
+		getProject().executeCommand(new CommandDeleteNode(id));
 	}
 
 }

@@ -11,6 +11,9 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 import java.util.Map;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -112,6 +115,16 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		Font nodeFont = GraphConstants.getFont(targetAttributeMap);
 		assertTrue("not bold?", nodeFont.isBold());
+	}
+	
+	public void testBuildCommandsToClear() throws Exception
+	{
+		Command[] commands = target.buildCommandsToClear();
+		assertEquals(2, commands.length);
+		int next = 0;
+		//assertEquals(CommandSetNodeSize.COMMAND_NAME, commands[next++].getCommandName());
+		assertEquals(CommandDiagramMove.COMMAND_NAME, commands[next++].getCommandName());
+		assertEquals(CommandSetObjectData.COMMAND_NAME, commands[next++].getCommandName());
 	}
 	
 	public void testJson() throws Exception
