@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.util.Arrays;
 import java.util.Locale;
 
 import javax.swing.UIManager;
@@ -18,6 +19,9 @@ public class EAM
 	public static void main(String[] args)
 	{
 		setLogLevel(LOG_DEBUG);
+		if(Arrays.asList(args).contains("--verbose"))
+			setLogLevel(LOG_VERBOSE);
+		
 		try
 		{
 			setBestLookAndFeel();
