@@ -861,6 +861,7 @@ public class Project
 
 	void fireCommandExecuted(Command command)
 	{
+		EAM.logVerbose("Command executed: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
 		for(int i=0; i < commandExecutedListeners.size(); ++i)
 		{
