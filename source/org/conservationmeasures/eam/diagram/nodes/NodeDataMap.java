@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
@@ -40,6 +41,8 @@ public class NodeDataMap extends DataMap
 				return new NodeTypeDirectThreat();
 			case DiagramNode.INT_TYPE_INTERVENTION:
 				return new NodeTypeIntervention();
+			case DiagramNode.INT_TYPE_CLUSTER:
+				return new NodeTypeCluster();
 			default:
 				throw new RuntimeException("Unknown node type: " + rawType);
 		}
@@ -56,6 +59,9 @@ public class NodeDataMap extends DataMap
 			return DiagramNode.INT_TYPE_INTERVENTION;
 		if(type.isDirectThreat())
 			return DiagramNode.INT_TYPE_DIRECT_THREAT;
-		return DiagramNode.INT_TYPE_INVALID;
+		if(type.isCluster())
+			return DiagramNode.INT_TYPE_CLUSTER;
+		
+		throw new RuntimeException("Unknown node type: " + type);
 	}
 }

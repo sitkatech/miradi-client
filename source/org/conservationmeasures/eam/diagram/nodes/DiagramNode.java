@@ -450,6 +450,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final int INT_TYPE_INDIRECT_FACTOR = 2;
 	public static final int INT_TYPE_INTERVENTION = 3;
 	public static final int INT_TYPE_DIRECT_THREAT = 4;
+	public static final int INT_TYPE_CLUSTER = 5;
 
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LOCATION = "Location";
