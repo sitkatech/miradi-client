@@ -81,7 +81,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 			newBounds = new Rectangle(location, size);
 		}
 		
-		EAM.logVerbose("ProjectScopeBox.autoSurroundTargets: " + newBounds.toString());
 		GraphConstants.setBounds(getAttributes(), newBounds);
 		Hashtable nest = new Hashtable();
 		nest.put(this, getAttributes());
