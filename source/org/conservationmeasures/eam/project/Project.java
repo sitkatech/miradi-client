@@ -872,6 +872,7 @@ public class Project
 	
 	void fireCommandUndone(Command command)
 	{
+		EAM.logVerbose("Command undone: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
 		for(int i=0; i < commandExecutedListeners.size(); ++i)
 		{
