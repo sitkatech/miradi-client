@@ -8,20 +8,21 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
 public class ConceptualModelCluster extends ConceptualModelNode
 {
-	protected ConceptualModelCluster(int idToUse)
+	public ConceptualModelCluster(int idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_CLUSTER);
-		memberIds = new IdList();
+		setMembers(new IdList());
 	}
 
 	public ConceptualModelCluster(JSONObject json) throws ParseException
 	{
 		super(DiagramNode.TYPE_CLUSTER, json);
-		memberIds = new IdList(json.optString(TAG_MEMBER_IDS, "{}"));
+		setMembers(new IdList(json.optString(TAG_MEMBER_IDS, "{}")));
 	}
 	
 	public boolean isCluster()
@@ -44,9 +45,15 @@ public class ConceptualModelCluster extends ConceptualModelNode
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_MEMBER_IDS))
-			memberIds = new IdList((String)dataValue);
+			setMembers(new IdList((String)dataValue));
 		else
 			super.setData(fieldTag, dataValue);
+	}
+	
+	public void setMembers(IdList members)
+	{
+		EAM.logVerbose("Cluster " + getId() + " setMembers: " + members);
+		memberIds = members;
 	}
 
 	public JSONObject toJson()

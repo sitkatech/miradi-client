@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -31,8 +30,6 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
@@ -41,7 +38,6 @@ import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
@@ -125,12 +121,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private void disableInPlaceEditing() 
 	{
 		setEditClickCount(0);
-	}
-	
-	public void setModel(DiagramModel modelToUse)
-	{
-		super.setModel(modelToUse);
-		modelToUse.addDiagramModelListener(new DiagramModelEventHandler());
 	}
 	
 	public Project getProject()
@@ -263,113 +253,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		nodePropertiesDlg = null;
 	}
 	
-
-	class DiagramModelEventHandler implements DiagramModelListener
-	{
-		public void nodeAdded(DiagramModelEvent event)
-		{
-		}
-	
-		public void nodeChanged(DiagramModelEvent event)
-		{
-		}
-	
-		public void nodeDeleted(DiagramModelEvent event)
-		{
-		}
-	
-		public void nodeMoved(DiagramModelEvent event)
-		{
-			DiagramNode member = (DiagramNode)event.getNode();
-			DiagramCluster cluster = (DiagramCluster)member.getParent();
-			try
-			{
-				if(cluster == null)
-					addToClusterIfMovedInside(member);
-				else
-					removeFromClusterIfMovedOutside(cluster, member);
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("Unknown error during move");
-			}
-		}
-		
-		private void addToClusterIfMovedInside(DiagramNode node) throws Exception
-		{
-			if(node.isCluster())
-				return;
-			
-			DiagramCluster cluster = getFirstClusterThatContains(node.getRectangle());
-			if(cluster == null)
-				return;
-			
-			CommandSetObjectData insert = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-					ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
-				getProject().executeCommand(insert);
-		}
-		
-		private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect)
-		{
-			Point pt = candidateRect.getLocation();
-
-			/*
-			 * This jgraph API is about the most brain-dead thing I have ever seen.
-			 * Looping through all cells, top to bottom is really hard because you 
-			 * need to stop when you get to the first cell a second time. Sheesh. kbs.
-			 */
-			EAMGraphCell stopAt = null;
-			EAMGraphCell candidate = (EAMGraphCell)getFirstCellForLocation(pt.getX(), pt.getY());
-			while(candidate != stopAt)
-			{
-				if(candidate.isNode())
-				{
-					DiagramNode possibleCluster = (DiagramNode)candidate;
-					if(possibleCluster.isCluster() && possibleCluster.getRectangle().contains(candidateRect))
-						return (DiagramCluster)possibleCluster;
-				}
-
-				if(stopAt == null)
-					stopAt = candidate;
-				candidate = (EAMGraphCell)getNextCellForLocation(candidate, pt.getX(), pt.getY());
-			}
-			
-			return null;
-		}
-		
-		private void removeFromClusterIfMovedOutside(DiagramCluster cluster, DiagramNode member) throws Exception
-		{
-			Rectangle memberRect = member.getRectangle();
-			Rectangle clusterRect = cluster.getRectangle();
-			if(clusterRect.contains(memberRect))
-				return;
-			
-			CommandSetObjectData remove = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, member.getId());
-			getProject().executeCommand(remove);
-			
-			/*
-			 * NOTE: The following line of code works around a weird bug deep in jgraph
-			 * If you click on a cluster, then click on a member, then drag the member out,
-			 * part of jgraph still thinks the cluster has a member that is selected.
-			 * So when you drag the node back in, it doesn't become a member because jgraph 
-			 * won't return the cluster, because it thinks the cluster has something selected.
-			 * The workaround is to re-select what is selected, so the cached values inside 
-			 * jgraph get reset to their proper values.
-			 */
-			setSelectionCells(getSelectionCells());
-		}
-	
-		public void linkageAdded(DiagramModelEvent event)
-		{
-		}
-	
-		public void linkageDeleted(DiagramModelEvent event)
-		{
-		}
-	}
-
 	/*
 	 * NOTE: The following method is a refactored version of what is in the JGraph
 	 * class in jgraph 5.8. It's here for debugging weird selection model issues.

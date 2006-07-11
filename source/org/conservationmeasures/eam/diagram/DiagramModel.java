@@ -252,6 +252,12 @@ public class DiagramModel extends DefaultGraphModel
 
 	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
 	{
+		moveNodesWithoutNotification(deltaX, deltaY, ids);
+		nodesWereMoved(ids);
+	}
+
+	public void moveNodesWithoutNotification(int deltaX, int deltaY, int[] ids) throws Exception
+	{
 		for(int i = 0; i < ids.length; ++i)
 		{
 			int id = ids[i];
@@ -262,8 +268,6 @@ public class DiagramModel extends DefaultGraphModel
 			nodeToMove.setLocation(newLocation);
 			updateCell(nodeToMove);
 		}
-		
-		nodesWereMoved(ids);
 	}
 	
 	public void nodesWereMoved(int[] ids)

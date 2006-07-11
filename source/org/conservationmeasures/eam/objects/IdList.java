@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.Vector;
 
 import org.json.JSONArray;
@@ -21,6 +22,13 @@ public class IdList
 	public IdList(IdList copyFrom)
 	{
 		this(new Vector(copyFrom.data));
+	}
+	
+	public IdList(int[] ids)
+	{
+		this();
+		for(int i = 0; i < ids.length; ++i)
+			add(ids[i]);
 	}
 	
 	public IdList(JSONObject json)
@@ -39,9 +47,9 @@ public class IdList
 		this(new JSONObject(listAsJsonString));
 	}
 	
-	private IdList(Vector dataToUse)
+	private IdList(List dataToUse)
 	{
-		data = dataToUse;
+		data = new Vector(dataToUse);
 	}
 	
 	public int size()
@@ -89,7 +97,7 @@ public class IdList
 	{
 		Integer idObject = new Integer(id);
 		if(!data.contains(idObject))
-			throw new RuntimeException("Attempted to remove non-existant Id");
+			throw new RuntimeException("Attempted to remove non-existant Id: " + id + " from: " + toString());
 		data.remove(idObject);
 	}
 	

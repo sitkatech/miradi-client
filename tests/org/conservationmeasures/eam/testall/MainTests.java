@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.diagram.TestSetNodeSize;
 import org.conservationmeasures.eam.diagram.TestSetTargetGoal;
 import org.conservationmeasures.eam.diagram.TestTypeIntervention;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
+import org.conservationmeasures.eam.diagram.nodes.TestDiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.TestDiagramNodeData;
@@ -126,6 +127,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDelete.class));
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
 		suite.addTest(new TestSuite(TestInsertNode.class));
+		suite.addTest(new TestSuite(TestDiagramCluster.class));
 		suite.addTest(new TestSuite(TestDiagramLinkage.class));
 		suite.addTest(new TestSuite(TestDiagramNode.class));
 		suite.addTest(new TestSuite(TestDiagramNodeData.class));

@@ -49,19 +49,22 @@ public class CommandDiagramMove extends Command
 
 	public void execute(Project target) throws CommandFailedException
 	{
-		doMove(target, getDeltaX(), getDeltaY());
+		try
+		{
+			target.moveNodes(getDeltaX(), getDeltaY(), getIds());
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
 	}
 
 	public void undo(Project target) throws CommandFailedException
 	{
-		doMove(target, -getDeltaX(), -getDeltaY());
-	}
-	
-	private void doMove(Project target, int xDelta, int yDelta) throws CommandFailedException
-	{
 		try
 		{
-			target.moveNodes(xDelta, yDelta, getIds());
+			target.moveNodesWithoutNotification(-getDeltaX(), -getDeltaY(), getIds());
 		}
 		catch (Exception e)
 		{

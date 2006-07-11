@@ -96,6 +96,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getId();
 	}
 	
+	public int getObjectType()
+	{
+		return getUnderlyingObject().getType();
+	}
+	
 	public String getLabel()
 	{
 		return underlyingObject.getLabel();

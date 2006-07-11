@@ -298,6 +298,15 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		String newMode = cmd.getPreviousDataValue();
 		setModeIfRelevant(cmd, newMode);
 		refreshIfNeeded(cmd);
+		try
+		{
+			updateClusterAfterUndoIfNeeded(cmd);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			EAM.errorDialog("WARNING: Unexpected problem occurred during grouping");
+		}
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -327,11 +336,29 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	private void refreshIfNeeded(CommandSetObjectData cmd)
 	{
-		if(cmd.getObjectType() == ObjectType.MODEL_LINKAGE)
-		{
-			// may have added or removed a stress
-			diagram.repaint(diagram.getBounds());
-		}
+		if(cmd.getObjectType() != ObjectType.MODEL_LINKAGE)
+			return;
+		
+		// may have added or removed a stress
+		diagram.repaint(diagram.getBounds());
+	}
+	
+	private void updateClusterAfterUndoIfNeeded(CommandSetObjectData cmd) throws Exception
+	{
+		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
+			return;
+		
+		ConceptualModelNode cmNode = getProject().findNode(cmd.getObjectId());
+		if(!cmNode.isCluster())
+			return;
+		
+		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
+			return;
+		
+		IdList newMembers = new IdList(cmd.getPreviousDataValue());
+		IdList oldMembers = new IdList(cmd.getDataValue());
+		
+		updateCluster(cmd.getObjectId(), newMembers, oldMembers);
 	}
 	
 	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
@@ -346,9 +373,17 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
 			return;
 		
+		int clusterId = cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
-		IdList oldMembers = new IdList(cmd.getPreviousDataValue());
+		DiagramModel model = getDiagramComponent().getDiagramModel();
+		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
+		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(ConceptualModelCluster.TAG_MEMBER_IDS));
 		
+		updateCluster(cluster.getId(), newMembers, oldMembers);
+	}
+
+	private void updateCluster(int clusterId, IdList newMembers, IdList oldMembers) throws Exception
+	{
 		IdList idsToAdd = new IdList(newMembers);
 		idsToAdd.subtract(oldMembers);
 		
@@ -356,7 +391,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		idsToRemove.subtract(newMembers);
 
 		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramCluster cluster = (DiagramCluster)model.getNodeById(cmd.getObjectId());
+		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
 		
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
@@ -371,9 +406,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			DiagramNode memberNode = model.getNodeById(memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}
-		
-
-		
 		
 		model.updateCell(cluster);
 	}

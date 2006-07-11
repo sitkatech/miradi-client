@@ -10,10 +10,13 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -83,6 +86,16 @@ public class Delete extends ProjectDoer
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
+		
+		DiagramCluster cluster = (DiagramCluster)nodeToDelete.getParent();
+		if(cluster != null)
+		{
+			CommandSetObjectData removeFromCluster = CommandSetObjectData.createRemoveIdCommand(
+					cluster.getUnderlyingObject(),
+					ConceptualModelCluster.TAG_MEMBER_IDS, 
+					id);
+			getProject().executeCommand(removeFromCluster);
+		}
 		
 		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
 		for(int i = 0; i < commandsToClear.length; ++i)
