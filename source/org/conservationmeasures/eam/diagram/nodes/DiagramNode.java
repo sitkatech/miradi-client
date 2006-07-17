@@ -405,8 +405,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		Rectangle smallTriangle = new Rectangle();
 		smallTriangle.x = annotationsRectangle.x-MultilineCellRenderer.INDICATOR_WIDTH;
 		smallTriangle.y = annotationsRectangle.y;
-		smallTriangle.width = MultilineCellRenderer.INDICATOR_WIDTH;
-		smallTriangle.height = MultilineCellRenderer.INDICATOR_HEIGHT;
+		int avoidGoingPastClippingEdge = 1;
+		smallTriangle.width = MultilineCellRenderer.INDICATOR_WIDTH - avoidGoingPastClippingEdge;
+		smallTriangle.height = MultilineCellRenderer.INDICATOR_HEIGHT - avoidGoingPastClippingEdge;
 		return smallTriangle;
 	}
 
