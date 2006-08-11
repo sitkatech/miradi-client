@@ -137,12 +137,21 @@ public class Preferences extends Doer
 			interventionDropdown = createColorsDropdown(interventionColorChoices);
 			interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION));
 			panel.add(interventionDropdown);
+			
 			panel.add(new UiLabel("Direct Threat (Pink)"));
-			panel.add(createColorsDropdown(directThreatColorChoices));
+			directThreatDropdown = createColorsDropdown(directThreatColorChoices);
+			directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
+			panel.add(directThreatDropdown);
+			
 			panel.add(new UiLabel("Indirect Factor (Orange)"));
-			panel.add(createColorsDropdown(indirectFactorColorChoices));
+			indirectFactorDropdown = createColorsDropdown(indirectFactorColorChoices);
+			indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR));
+			panel.add(indirectFactorDropdown);
+			
 			panel.add(new UiLabel("Target (Light Green)"));
-			panel.add(createColorsDropdown(targetColorChoices));
+			targetDropdown = createColorsDropdown(targetColorChoices);
+			targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
+			panel.add(targetDropdown);
 			
 			return panel;
 		}
@@ -160,10 +169,23 @@ public class Preferences extends Doer
 		{
 			Color interventionColor = (Color)interventionDropdown.getSelectedItem();
 			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERVENTION, interventionColor);
+			
+			Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR, indirectFactorColor);
+			
+			Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);
+			
+			Color targetColor = (Color)targetDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 		}
 		
 		MainWindow mainWindow;
 		UiComboBox interventionDropdown;
+		UiComboBox directThreatDropdown;
+		UiComboBox indirectFactorDropdown;
+		UiComboBox targetDropdown;
+		
 		static final String headerText = "<html><H2>e-Adaptive Management Preferences</H2></html>";
 	}
 	

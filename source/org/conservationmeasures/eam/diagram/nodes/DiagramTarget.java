@@ -11,6 +11,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 
 public class DiagramTarget extends DiagramNode
@@ -22,7 +24,7 @@ public class DiagramTarget extends DiagramNode
 
 	public Color getColor()
 	{
-		return DiagramConstants.COLOR_TARGET;
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET);
 	}
 	
 	public Dimension getInsetDimension()

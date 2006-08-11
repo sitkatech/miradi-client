@@ -8,9 +8,10 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 
 public class DirectThreatIcon extends EamIcon 
 {
@@ -22,7 +23,7 @@ public class DirectThreatIcon extends EamIcon
 
 	Color getIconColor() 
 	{
-		return DiagramConstants.COLOR_DIRECT_THREAT;
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
 	}
 
 }

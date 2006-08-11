@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 
 public class DiagramFactor extends DiagramNode
@@ -20,9 +22,9 @@ public class DiagramFactor extends DiagramNode
 	public Color getColor()
 	{
 		if(isIndirectFactor())
-			return DiagramConstants.COLOR_INDIRECT_FACTOR;
+			return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR);
 		if(isDirectThreat())
-			return DiagramConstants.COLOR_DIRECT_THREAT;
+			return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		if(isStress())
 			return DiagramConstants.COLOR_STRESS;
 		
