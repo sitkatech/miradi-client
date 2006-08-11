@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
+import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -181,6 +182,8 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionDelete.class)));
 		menu.add(new JMenuItem(actions.get(ActionSelectAll.class)));
 		menu.add(new JMenuItem(actions.get(ActionSelectChain.class)));
+		menu.addSeparator();
+		menu.add(new JMenuItem(actions.get(ActionPreferences.class)));
 		return menu;
 	}
 	
