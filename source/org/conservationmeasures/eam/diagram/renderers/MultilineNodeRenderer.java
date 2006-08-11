@@ -77,9 +77,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		ThreatRatingFramework framework = model.getThreatRatingFramework();
 		priority = null;
 		if(node.isDirectThreat())
-			priority = new ThreatRatingValue(framework.getThreatThreatRatingValue(node.getId()));
+			priority = new ThreatRatingValue(framework.getThreatThreatRatingValue(node.getWrappedId()));
 		else if(node.isTarget())
-			priority = new ThreatRatingValue(framework.getTargetThreatRatingValue(node.getId()));
+			priority = new ThreatRatingValue(framework.getTargetThreatRatingValue(node.getWrappedId()));
 		indicator = ((DiagramComponent)graphToUse).getProject().getIndicatorPool().find(node.getIndicatorId());
 		return this;
 	}

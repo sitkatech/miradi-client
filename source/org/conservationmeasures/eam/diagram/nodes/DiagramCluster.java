@@ -37,7 +37,7 @@ public class DiagramCluster extends DiagramNode
 	public Command[] buildCommandsToClear()
 	{
 		Vector commands = new Vector();
-		commands.add(new CommandSetObjectData(getObjectType(), getId(), ConceptualModelCluster.TAG_MEMBER_IDS, new IdList().toString()));
+		commands.add(new CommandSetObjectData(getWrappedType(), getWrappedId(), ConceptualModelCluster.TAG_MEMBER_IDS, new IdList().toString()));
 		commands.addAll(Arrays.asList(super.buildCommandsToClear()));
 		return (Command[])commands.toArray(new Command[0]);
 	}

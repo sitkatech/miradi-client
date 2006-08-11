@@ -93,10 +93,20 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public int getId()
 	{
+		return getWrappedId();
+	}
+	
+	public int getType()
+	{
+		return getWrappedType();
+	}
+	
+	public int getWrappedId()
+	{
 		return underlyingObject.getId();
 	}
 	
-	public int getObjectType()
+	public int getWrappedType()
 	{
 		return getUnderlyingObject().getType();
 	}
@@ -418,7 +428,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return new Command[] {
 			new CommandSetNodeSize(getId(), getDefaultSize(), getSize()),
 			new CommandDiagramMove(-x, -y, new int[] {getId()}),
-			new CommandSetObjectData(getUnderlyingObject().getType(), getId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
+			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
 	
