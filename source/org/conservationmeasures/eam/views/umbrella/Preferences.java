@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Box;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -105,43 +105,46 @@ public class Preferences extends Doer
 		return dropdown;
 	}
 	
-	static class ColorItemRenderer extends UiLabel implements ListCellRenderer
+	static class ColorItemRenderer extends Component implements ListCellRenderer
 	{
-
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
 		{
-			setIcon(new ColorIcon((Color)value));
+			color = (Color)value;
 			return this;
 		}
 		
-	}
-	
-	static class ColorIcon implements Icon
-	{
-		public ColorIcon(Color colorToUse)
+		public void paint(Graphics g)
 		{
-			color = colorToUse;
-		}
-
-		public int getIconHeight()
-		{
-			return 16;
-		}
-
-		public int getIconWidth()
-		{
-			return 16;
-		}
-
-		public void paintIcon(Component c, Graphics g, int x, int y)
-		{
+			super.paint(g);
 			g.setColor(color);
-			g.fillRect(0, 0,getIconWidth(), getIconHeight());
+			g.fillRect(0, 0, getWidth(), getHeight());
+			g.setColor(Color.BLACK);
+			g.drawRect(0, 0, getWidth(), getHeight());			
+		}
+
+		public Dimension getSize()
+		{
+			return new Dimension(48, 16);
+		}
+		
+		public Dimension getPreferredSize()
+		{
+			return getSize();
+		}
+
+		public Dimension getMinimumSize()
+		{
+			return getSize();
+		}
+		
+		public Dimension getMaximumSize()
+		{
+			return getSize();
 		}
 		
 		Color color;
 	}
-
+	
 	static class OkAction extends AbstractAction
 	{
 		public OkAction(JDialog dialogToClose)
