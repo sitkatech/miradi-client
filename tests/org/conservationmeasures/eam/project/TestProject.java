@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.DirectThreatSet;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
@@ -174,7 +175,7 @@ public class TestProject extends EAMTestCase
 			projectToRead.createOrOpen(tempDirectory);
 			try
 			{
-				projectToRead.getObjectData(type, idToReload, EAMObject.TAG_LABEL);
+				projectToRead.getObjectData(type, idToReload, EAMBaseObject.TAG_LABEL);
 			}
 			catch (NullPointerException e)
 			{

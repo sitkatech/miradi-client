@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -56,7 +56,7 @@ public class DeleteActivity extends ViewDoer
 			CommandSetObjectData removeSubtask = CommandSetObjectData.createRemoveIdCommand(rootTask, Task.TAG_SUBTASK_IDS, id);
 			getProject().executeCommand(removeSubtask);
 	
-			getProject().executeCommand(new CommandSetObjectData(type, id, EAMObject.TAG_LABEL, EAMObject.DEFAULT_LABEL));
+			getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, ""));
 			getProject().executeCommand(new CommandDeleteObject(type, id));
 		}
 		catch(Exception e)

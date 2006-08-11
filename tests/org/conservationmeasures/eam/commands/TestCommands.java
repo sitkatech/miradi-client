@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -236,7 +236,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't add?", oldCount+1, framework.getCriteria().length);
 		ThreatRatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
-		assertEquals("wrong default label?", EAMObject.DEFAULT_LABEL, criterion.getLabel());
+		assertEquals("wrong default label?", EAMBaseObject.DEFAULT_LABEL, criterion.getLabel());
 		
 		ThreatRatingCriterion added = framework.getCriteria()[oldCount];
 		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
@@ -405,7 +405,7 @@ public class TestCommands extends EAMTestCase
 		String originalName = "original text";
 		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
 		project.executeCommand(starter);
-		assertEquals("wasn't Unknown to start?", EAMObject.DEFAULT_LABEL, starter.getPreviousName());
+		assertEquals("wasn't Unknown to start?", EAMBaseObject.DEFAULT_LABEL, starter.getPreviousName());
 		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
 		assertEquals("didn't set original text?", originalName, node.getLabel());
 		
@@ -425,7 +425,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 		
 		starter.undo(project);
-		assertEquals("didn't undo again?", EAMObject.DEFAULT_LABEL, node.getLabel());
+		assertEquals("didn't undo again?", EAMBaseObject.DEFAULT_LABEL, node.getLabel());
 		verifyUndoTwiceThrows(starter);
 
 	}

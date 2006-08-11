@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -67,7 +67,7 @@ public class DeleteIndicator extends ViewDoer
 		}
 		int type = indicator.getType();
 		int id = idToRemove;
-		getProject().executeCommand(new CommandSetObjectData(type, id, EAMObject.TAG_LABEL, EAMObject.DEFAULT_LABEL));
+		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Indicator.TAG_SHORT_LABEL, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Indicator.TAG_METHOD, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Indicator.TAG_RESOURCE_IDS, new IdList().toString()));

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.json.JSONObject;
 
-public class ViewData extends EAMObject
+public class ViewData extends EAMBaseObject
 {
 	public ViewData(int idToUse)
 	{

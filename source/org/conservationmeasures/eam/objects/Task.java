@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 import org.json.JSONObject;
 
-public class Task extends EAMObject
+public class Task extends EAMBaseObject
 {
 	public Task(int idToUse)
 	{

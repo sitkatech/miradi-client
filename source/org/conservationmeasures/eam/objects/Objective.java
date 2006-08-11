@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 
 
-public class Objective extends EAMObject
+public class Objective extends EAMBaseObject
 {
 	public Objective(int id)
 	{

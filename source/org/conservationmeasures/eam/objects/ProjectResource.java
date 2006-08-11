@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
-public class ProjectResource extends EAMObject
+public class ProjectResource extends EAMBaseObject
 {
 	public ProjectResource(int idToUse)
 	{

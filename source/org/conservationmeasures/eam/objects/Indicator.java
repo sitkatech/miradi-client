@@ -10,7 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONObject;
 
-public class Indicator extends EAMObject
+public class Indicator extends EAMBaseObject
 {
 	public Indicator(int idToUse)
 	{

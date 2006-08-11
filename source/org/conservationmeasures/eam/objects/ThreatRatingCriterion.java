@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.json.JSONObject;
 
-public class ThreatRatingCriterion extends EAMObject
+public class ThreatRatingCriterion extends EAMBaseObject
 {
 	public ThreatRatingCriterion(int idToUse)
 	{

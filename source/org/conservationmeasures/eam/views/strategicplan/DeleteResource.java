@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -65,7 +65,7 @@ public class DeleteResource extends ViewDoer
 		}
 		int type = resource.getType();
 		int id = idToRemove;
-		getProject().executeCommand(new CommandSetObjectData(type, id, EAMObject.TAG_LABEL, EAMObject.DEFAULT_LABEL));
+		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_INITIALS, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_NAME, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_POSITION, ""));

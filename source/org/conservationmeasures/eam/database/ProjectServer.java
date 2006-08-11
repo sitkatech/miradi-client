@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -341,7 +342,7 @@ public class ProjectServer
 	
 	public EAMObject readObject(int type, int id) throws Exception
 	{
-		return EAMObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
+		return EAMBaseObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
 	}
 	
 	public void writeObject(EAMObject object) throws IOException, ParseException

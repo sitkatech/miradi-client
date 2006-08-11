@@ -9,7 +9,7 @@ import java.awt.Color;
 
 import org.json.JSONObject;
 
-public class ThreatRatingValueOption extends EAMObject
+public class ThreatRatingValueOption extends EAMBaseObject
 {
 	public ThreatRatingValueOption(int idToUse) throws Exception
 	{

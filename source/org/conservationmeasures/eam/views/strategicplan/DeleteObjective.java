@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -65,7 +65,7 @@ public class DeleteObjective extends ViewDoer
 		}
 		int type = objective.getType();
 		int id = idToRemove;
-		getProject().executeCommand(new CommandSetObjectData(type, id, EAMObject.TAG_LABEL, EAMObject.DEFAULT_LABEL));
+		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_SHORT_LABEL, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_FULL_TEXT, ""));
 		getProject().executeCommand(new CommandDeleteObject(type, id));

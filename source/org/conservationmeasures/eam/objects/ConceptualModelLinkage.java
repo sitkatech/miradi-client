@@ -10,7 +10,7 @@ import java.text.ParseException;
 
 import org.json.JSONObject;
 
-public class ConceptualModelLinkage extends EAMObject
+public class ConceptualModelLinkage extends EAMBaseObject
 {
 	public ConceptualModelLinkage(int id, int fromNodeId, int toNodeId)
 	{

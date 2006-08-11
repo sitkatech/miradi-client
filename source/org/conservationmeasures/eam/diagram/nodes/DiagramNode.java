@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -418,7 +418,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return new Command[] {
 			new CommandSetNodeSize(getId(), getDefaultSize(), getSize()),
 			new CommandDiagramMove(-x, -y, new int[] {getId()}),
-			new CommandSetObjectData(getUnderlyingObject().getType(), getId(), TAG_VISIBLE_LABEL, EAMObject.DEFAULT_LABEL),
+			new CommandSetObjectData(getUnderlyingObject().getType(), getId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
 	

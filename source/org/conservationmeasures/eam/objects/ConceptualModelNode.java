@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-abstract public class ConceptualModelNode extends EAMObject
+abstract public class ConceptualModelNode extends EAMBaseObject
 {
 	protected ConceptualModelNode(int idToUse, NodeType nodeType)
 	{

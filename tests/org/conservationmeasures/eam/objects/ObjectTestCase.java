@@ -27,7 +27,7 @@ public class ObjectTestCase extends EAMTestCase
 			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
 			object.setData(tag, sampleData);
 			assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-			EAMObject got = EAMObject.createFromJson(objectType, object.toJson());
+			EAMObject got = EAMBaseObject.createFromJson(objectType, object.toJson());
 			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		}
 		finally
@@ -49,7 +49,7 @@ public class ObjectTestCase extends EAMTestCase
 			assertEquals("didn't default " + tag + " empty?", 0, new IdList(object.getData(tag)).size());
 			object.setData(tag, sampleData.toString());
 			assertEquals("did't set " + tag + "?", sampleData, new IdList(object.getData(tag)));
-			EAMObject got = EAMObject.createFromJson(objectType, object.toJson());
+			EAMObject got = EAMBaseObject.createFromJson(objectType, object.toJson());
 			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		}
 		finally
