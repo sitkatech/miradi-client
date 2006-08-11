@@ -7,9 +7,10 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 
 public class InterventionIcon extends EamIcon
 {
@@ -20,6 +21,6 @@ public class InterventionIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return DiagramConstants.COLOR_INTERVENTION;
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
 	}
 }

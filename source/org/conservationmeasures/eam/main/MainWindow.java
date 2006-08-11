@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
@@ -54,6 +55,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	
 	public MainWindow(Project projectToUse)
 	{
+		preferences = new AppPreferences();
 		project = projectToUse;		
 	}
 	
@@ -270,6 +272,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
+	
+	public Color getColorPreference(String colorTag)
+	{
+		return preferences.getColor(colorTag);
+	}
+	
+	public void setColorPreference(String colorTag, Color colorToUse)
+	{
+		preferences.setColor(colorTag, colorToUse);
+		repaint();
+	}
 
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
@@ -297,6 +310,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	}
 
 	protected Actions actions;
+	private AppPreferences preferences;
 	private Project project;
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;

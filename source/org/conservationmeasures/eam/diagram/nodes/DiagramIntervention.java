@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.main.AppPreferences;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 
 public class DiagramIntervention extends DiagramNode
@@ -22,7 +24,7 @@ public class DiagramIntervention extends DiagramNode
 		if(isStatusDraft())
 			return DiagramConstants.COLOR_DRAFT_INTERVENTION;
 		
-		return DiagramConstants.COLOR_INTERVENTION;
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
 	}
 
 	public Rectangle getAnnotationsRect()
