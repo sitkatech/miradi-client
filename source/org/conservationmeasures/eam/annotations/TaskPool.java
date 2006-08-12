@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.EAMObjectPool;
 
@@ -15,7 +16,7 @@ public class TaskPool extends EAMObjectPool
 		put(task.getId(), task);
 	}
 	
-	public Task find(int id)
+	public Task find(BaseId id)
 	{
 		return (Task)getRawObject(id);
 	}

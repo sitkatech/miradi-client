@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.EAMObjectPool;
 
 public class ObjectivePool extends EAMObjectPool
@@ -14,7 +15,7 @@ public class ObjectivePool extends EAMObjectPool
 		put(objective.getId(), objective);
 	}
 	
-	public Objective find(int id)
+	public Objective find(BaseId id)
 	{
 		return (Objective)getRawObject(id);
 	}

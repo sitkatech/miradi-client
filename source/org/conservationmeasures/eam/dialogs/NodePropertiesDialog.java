@@ -49,6 +49,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -59,7 +60,6 @@ import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ObjectivePool;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
@@ -131,7 +131,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		return currentNode;
 	}
 	
-	public int getNodeId()
+	public BaseId getNodeId()
 	{
 		return getCurrentNode().getId();
 	}
@@ -382,11 +382,11 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		ignoreObjectiveChanges = true;
 		dropdownObjective.removeAllItems();
-		Objective nullObjective = new Objective(IdAssigner.INVALID_ID);
+		Objective nullObjective = new Objective(new BaseId());
 		dropdownObjective.addItem(nullObjective);
 
 		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
-		int[] objectiveIds = allAvailableObjectives.getIds();
+		BaseId[] objectiveIds = allAvailableObjectives.getIds();
 		for(int i = 0; i < objectiveIds.length; ++i)
 		{
 			dropdownObjective.addItem(allAvailableObjectives.find(objectiveIds[i]));
@@ -397,7 +397,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	public Component createTargetGoal(GoalPool allAvailableGoals, GoalIds currentGoals)
 	{
 		dropdownGoal = new UiComboBox();
-		int[] goalIds = allAvailableGoals.getIds();
+		BaseId[] goalIds = allAvailableGoals.getIds();
 		for(int i = 0; i < goalIds.length; ++i)
 		{
 			dropdownGoal.addItem(allAvailableGoals.find(goalIds[i]));
@@ -405,11 +405,11 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		
 		if(currentGoals.size() == 0)
 		{
-			dropdownGoal.setSelectedItem(allAvailableGoals.find(IdAssigner.INVALID_ID));
+			dropdownGoal.setSelectedItem(allAvailableGoals.find(new BaseId()));
 		}
 		else
 		{
-			int id = currentGoals.getId(0);
+			BaseId id = currentGoals.getId(0);
 			Goal goal = allAvailableGoals.find(id);
 			dropdownGoal.setSelectedItem(goal);
 		}
@@ -437,7 +437,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		
 	}
 	
-	public Component createIndicatorDropdown(int indicatorId)
+	public Component createIndicatorDropdown(BaseId indicatorId)
 	{
 		dropdownIndicator = new UiComboBox();
 		populateIndicators();
@@ -451,7 +451,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 
 
 
-	private void selectCurrentIndicator(int indicatorId)
+	private void selectCurrentIndicator(BaseId indicatorId)
 	{
 		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
 		Object nullIndicator = dropdownIndicator.getItemAt(0);
@@ -467,11 +467,11 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		ignoreIndicatorChanges = true;
 		dropdownIndicator.removeAllItems();
-		Indicator nullIndicator = new Indicator(IdAssigner.INVALID_ID);
+		Indicator nullIndicator = new Indicator(new BaseId());
 		dropdownIndicator.addItem(nullIndicator);
 		
 		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
-		int[] availableIds = allAvailableIndicators.getIds();
+		BaseId[] availableIds = allAvailableIndicators.getIds();
 		for(int i = 0; i < availableIds.length; ++i)
 		{
 			dropdownIndicator.addItem(allAvailableIndicators.find(availableIds[i]));

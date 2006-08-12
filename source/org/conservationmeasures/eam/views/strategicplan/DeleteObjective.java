@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
@@ -43,7 +44,7 @@ public class DeleteObjective extends ViewDoer
 		
 		Objective objective = getObjectivePanel().getSelectedObjective();
 
-		int idToRemove = objective.getId();
+		BaseId idToRemove = objective.getId();
 		ConceptualModelNodeSet factorsThatUseThisObjective = getProject().findNodesThatUseThisObjective(idToRemove);
 		if(factorsThatUseThisObjective.size() > 0)
 		{
@@ -64,7 +65,7 @@ public class DeleteObjective extends ViewDoer
 			getProject().executeCommand(removeFromNodes[i]);
 		}
 		int type = objective.getType();
-		int id = idToRemove;
+		BaseId id = idToRemove;
 		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_SHORT_LABEL, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_FULL_TEXT, ""));
@@ -75,7 +76,7 @@ public class DeleteObjective extends ViewDoer
 
 	
 	
-	private Command[] createCommandsToRemoveObjectivesFromNodes(int idToRemove, ConceptualModelNodeSet nodesThatUseThisObjective) throws CommandFailedException
+	private Command[] createCommandsToRemoveObjectivesFromNodes(BaseId idToRemove, ConceptualModelNodeSet nodesThatUseThisObjective) throws CommandFailedException
 	{
 		ConceptualModelNode[] nodes = nodesThatUseThisObjective.toNodeArray();
 		Command[] removeFromNodes = new Command[nodes.length];

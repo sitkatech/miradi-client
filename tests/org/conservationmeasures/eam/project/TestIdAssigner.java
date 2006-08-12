@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestIdAssigner extends TestCaseEnhanced
@@ -18,17 +19,17 @@ public class TestIdAssigner extends TestCaseEnhanced
 	{
 		IdAssigner idAssigner = new IdAssigner();
 
-		assertEquals("didn't start at zero?", 0, idAssigner.takeNextId());
-		assertEquals("didn't increment?", 1, idAssigner.takeNextId());
+		assertEquals("didn't start at zero?", 0, idAssigner.takeNextId().asInt());
+		assertEquals("didn't increment?", 1, idAssigner.takeNextId().asInt());
 		
-		assertEquals("didn't use next available?", 2, idAssigner.obtainRealId(-1));
-		assertEquals("didn't keep available value?", 3, idAssigner.obtainRealId(3));
-		int force = 100;
+		assertEquals("didn't use next available?", 2, idAssigner.obtainRealId(new BaseId(-1)).asInt());
+		assertEquals("didn't keep available value?", 3, idAssigner.obtainRealId(new BaseId(3)).asInt());
+		BaseId force = new BaseId(100);
 		idAssigner.obtainRealId(force);
-		assertEquals("didn't update next available?", force+1, idAssigner.takeNextId());
+		assertEquals("didn't update next available?", force.asInt()+1, idAssigner.takeNextId().asInt());
 		
 		idAssigner.clear();
-		assertEquals("didn't reset to zero?", 0, idAssigner.takeNextId());
+		assertEquals("didn't reset to zero?", 0, idAssigner.takeNextId().asInt());
 	}
 	
 }

@@ -6,10 +6,12 @@
 
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
+
 
 public class Goal extends NodeAnnotation 
 {
-	public Goal(int id, String annotationToUse) 
+	public Goal(BaseId id, String annotationToUse) 
 	{
 		super(id, annotationToUse);
 	}

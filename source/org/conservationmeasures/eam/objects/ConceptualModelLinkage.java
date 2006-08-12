@@ -8,11 +8,12 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ConceptualModelLinkage extends EAMBaseObject
 {
-	public ConceptualModelLinkage(int id, int fromNodeId, int toNodeId)
+	public ConceptualModelLinkage(BaseId id, BaseId fromNodeId, BaseId toNodeId)
 	{
 		super(id);
 		setFromId(fromNodeId);
@@ -23,17 +24,17 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
 	{
 		super(jsonObject);
-		fromId = jsonObject.getInt(TAG_FROM_ID);
-		toId = jsonObject.getInt(TAG_TO_ID);
+		fromId = new BaseId(jsonObject.getInt(TAG_FROM_ID));
+		toId = new BaseId(jsonObject.getInt(TAG_TO_ID));
 		stressLabel = jsonObject.optString(TAG_STRESS_LABEL, "");
 	}
 	
-	public void setFromId(int fromNodeId)
+	public void setFromId(BaseId fromNodeId)
 	{
 		fromId = fromNodeId;
 	}
 	
-	public void setToId(int toNodeId)
+	public void setToId(BaseId toNodeId)
 	{
 		toId = toNodeId;
 	}
@@ -43,12 +44,12 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		return ObjectType.MODEL_LINKAGE;
 	}
 	
-	public int getFromNodeId()
+	public BaseId getFromNodeId()
 	{
 		return fromId;
 	}
 	
-	public int getToNodeId()
+	public BaseId getToNodeId()
 	{
 		return toId;
 	}
@@ -74,7 +75,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 	
-	public int getNodeId(int direction)
+	public BaseId getNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getFromNodeId();
@@ -83,7 +84,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		throw new RuntimeException("Linkage: Unknown direction " + direction);
 	}
 	
-	public int getOppositeNodeId(int direction)
+	public BaseId getOppositeNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getNodeId(TO);
@@ -95,8 +96,8 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_FROM_ID, fromId);
-		json.put(TAG_TO_ID, toId);
+		json.put(TAG_FROM_ID, fromId.asInt());
+		json.put(TAG_TO_ID, toId.asInt());
 		json.put(TAG_STRESS_LABEL, stressLabel);
 		return json;
 	}
@@ -108,7 +109,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	
-	private int fromId;
-	private int toId;
+	private BaseId fromId;
+	private BaseId toId;
 	private String stressLabel;
 }

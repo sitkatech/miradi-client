@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 
 public class NodeDataHelper 
 {
@@ -21,25 +21,25 @@ public class NodeDataHelper
 		setInitialMappingOfIdsToOriginalIds(existingNodesInProject);
 	}
 
-	public void setNewId(int originalNodeId, int newNodeId)
+	public void setNewId(BaseId originalNodeId, BaseId newNodeId)
 	{
 		mapNodeIds.put(getKey(originalNodeId), getValue(newNodeId));
 	}
 	
-	public int getNewId(int originalNodeId)
+	public BaseId getNewId(BaseId originalNodeId)
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return IdAssigner.INVALID_ID;
-		return newNodeId.intValue();
+			return new BaseId();
+		return new BaseId(newNodeId.intValue());
 	}
 	
-	public void setOriginalLocation(int originalNodeId, Point originalLocation)
+	public void setOriginalLocation(BaseId originalNodeId, Point originalLocation)
 	{
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 	
-	public Point getNewLocation(int originalNodeId, Point insertionPoint)
+	public Point getNewLocation(BaseId originalNodeId, Point insertionPoint)
 	{
 		Point delta = computeDeltas(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
@@ -52,14 +52,24 @@ public class NodeDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			int id = ((DiagramNode) iter.next()).getId();
+			BaseId id = ((DiagramNode) iter.next()).getId();
 			setNewId(id, id);
 		}
+	}
+	
+	private Integer getKey(BaseId key)
+	{
+		return getKey(key.asInt());
 	}
 
 	private Integer getKey(int key) 
 	{
 		return new Integer(key);
+	}
+	
+	private Integer getValue(BaseId value)
+	{
+		return getValue(value.asInt());
 	}
 	
 	private Integer getValue(int value) 

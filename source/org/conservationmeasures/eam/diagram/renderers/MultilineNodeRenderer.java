@@ -50,12 +50,12 @@ import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -99,7 +99,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		ObjectiveIds objectives = node.getObjectives();
 		if(objectives.hasAnnotation())
 		{
-			int objectiveId = objectives.getId(0);
+			BaseId objectiveId = objectives.getId(0);
 			Objective objective = model.getObjectiveById(objectiveId);
 			if(objective != null)
 				drawAnnotation(rect, g2, EAM.text("Label|Obj ") + objective.getShortLabel());
@@ -107,7 +107,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		GoalIds goals = node.getGoals();
 		if(goals.hasAnnotation())
 		{
-			int goalId = goals.getId(0);
+			BaseId goalId = goals.getId(0);
 			Goal goal = model.getGoalById(goalId);
 			if(goal != null && goal.hasAnnotation())
 				drawAnnotation(rect, g2, goal.toString());
@@ -127,8 +127,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		if(indicator == null)
 			return;
 		
-		int indicatorId = indicator.getId();
-		if(indicatorId == IdAssigner.INVALID_ID)
+		BaseId indicatorId = indicator.getId();
+		if(indicatorId.isInvalid())
 			return;
 		
 		TriangleRenderer indicatorRenderer = new TriangleRenderer();

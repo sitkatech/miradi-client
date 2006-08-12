@@ -7,11 +7,12 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class Task extends EAMBaseObject
 {
-	public Task(int idToUse)
+	public Task(BaseId idToUse)
 	{
 		super(idToUse);
 		subtaskIds = new IdList();
@@ -42,7 +43,7 @@ public class Task extends EAMBaseObject
 		return ObjectType.TASK;
 	}
 
-	public void addSubtaskId(int subtaskId)
+	public void addSubtaskId(BaseId subtaskId)
 	{
 		subtaskIds.add(subtaskId);
 	}
@@ -52,7 +53,7 @@ public class Task extends EAMBaseObject
 		return subtaskIds.size();
 	}
 	
-	public int getSubtaskId(int index)
+	public BaseId getSubtaskId(int index)
 	{
 		return subtaskIds.get(index);
 	}

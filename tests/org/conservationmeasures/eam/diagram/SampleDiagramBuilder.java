@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 
 public class SampleDiagramBuilder
@@ -22,16 +22,16 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.insertNodeAtId(new NodeTypeIntervention(), interventionIndexBase + i);
-			project.insertNodeAtId(new NodeTypeIndirectFactor(), indirectFactorIndexBase + i);
-			project.insertNodeAtId(new NodeTypeDirectThreat(), directThreatIndexBase + i);
-			project.insertNodeAtId(new NodeTypeTarget(), targetIndexBase + i);
+			project.insertNodeAtId(new NodeTypeIntervention(), new BaseId(interventionIndexBase + i));
+			project.insertNodeAtId(new NodeTypeIndirectFactor(), new BaseId(indirectFactorIndexBase + i));
+			project.insertNodeAtId(new NodeTypeDirectThreat(), new BaseId(directThreatIndexBase + i));
+			project.insertNodeAtId(new NodeTypeTarget(), new BaseId(targetIndexBase + i));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
-			int fromId = linkagePairs[i*2];
-			int toId = linkagePairs[i*2+1];
-			project.insertLinkageAtId(IdAssigner.INVALID_ID, fromId, toId);
+			BaseId fromId = new BaseId(linkagePairs[i*2]);
+			BaseId toId = new BaseId(linkagePairs[i*2+1]);
+			project.insertLinkageAtId(new BaseId(), fromId, toId);
 		}
 	}
 }

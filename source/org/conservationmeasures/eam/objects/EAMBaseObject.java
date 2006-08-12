@@ -5,11 +5,12 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 abstract public class EAMBaseObject implements EAMObject
 {
-	public EAMBaseObject(int idToUse)
+	public EAMBaseObject(BaseId idToUse)
 	{
 		id = idToUse;
 		label = "";
@@ -17,7 +18,7 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	EAMBaseObject(JSONObject json)
 	{
-		id = json.getInt(TAG_ID);
+		id = new BaseId(json.getInt(TAG_ID));
 		label = json.optString(TAG_LABEL, "");
 	}
 	
@@ -65,7 +66,7 @@ abstract public class EAMBaseObject implements EAMObject
 			return false;
 		
 		EAMObject other = (EAMObject)rawOther;
-		return other.getId() == getId();
+		return other.getId().equals(getId());
 	}
 	
 	public String getLabel()
@@ -95,7 +96,7 @@ abstract public class EAMBaseObject implements EAMObject
 	}
 	
 
-	public int getId()
+	public BaseId getId()
 	{
 		return id;
 	}
@@ -103,7 +104,7 @@ abstract public class EAMBaseObject implements EAMObject
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
-		json.put(TAG_ID, getId());
+		json.put(TAG_ID, getId().asInt());
 		json.put(TAG_LABEL, getLabel());
 		
 		return json;
@@ -114,7 +115,7 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public static final String DEFAULT_LABEL = "";
 
-	private int id;
+	private BaseId id;
 	String label;
 
 

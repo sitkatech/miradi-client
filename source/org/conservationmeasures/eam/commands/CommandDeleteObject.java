@@ -10,11 +10,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteObject extends Command
 {
-	public CommandDeleteObject(int objectType, int objectId)
+	public CommandDeleteObject(int objectType, BaseId objectId)
 	{
 		type = objectType;
 		id = objectId;
@@ -23,7 +24,7 @@ public class CommandDeleteObject extends Command
 	public CommandDeleteObject(DataInputStream dataIn) throws IOException
 	{
 		type = dataIn.readInt();
-		id = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
 	}
 	
 	public int getObjectType()
@@ -31,7 +32,7 @@ public class CommandDeleteObject extends Command
 		return type;
 	}
 	
-	public int getObjectId()
+	public BaseId getObjectId()
 	{
 		return id;
 	}
@@ -68,11 +69,11 @@ public class CommandDeleteObject extends Command
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(type);
-		dataOut.writeInt(id);
+		dataOut.writeInt(id.asInt());
 	}
 
 	public final static String COMMAND_NAME = "DeleteObject";
 
 	int type;
-	int id;
+	BaseId id;
 }

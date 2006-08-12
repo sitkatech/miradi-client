@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.IdList;
@@ -140,10 +141,10 @@ public class DataUpgrader extends ProjectServer
 			return;
 		
 		NodeManifest manifest = new NodeManifest(JSONFile.read(manifestFile));
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			File nodeFile = new File(nodesDirectory, Integer.toString(ids[i]));
+			File nodeFile = new File(nodesDirectory, Integer.toString(ids[i].asInt()));
 			JSONObject json = JSONFile.read(nodeFile);
 			json.put(ConceptualModelNode.TAG_LABEL, json.get(TAG_NAME));
 			// no need to clear out the old Name field
@@ -211,10 +212,10 @@ public class DataUpgrader extends ProjectServer
 		
 		IdList droppedIds = new IdList();
 		NodeManifest manifest = readNodeManifest();
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			int id = ids[i];
+			BaseId id = ids[i];
 			JSONObject nodeData = JSONFile.read(getNodeFile(id));
 			String type = nodeData.optString("Type", "");
 			String subtype = nodeData.optString("Subtype", "");
@@ -231,7 +232,7 @@ public class DataUpgrader extends ProjectServer
 		JSONObject nodes = diagram.getJSONObject("Nodes");
 		for(int i = 0; i < droppedIds.size(); ++i)
 		{
-			nodes.remove(Integer.toString(droppedIds.get(i)));
+			nodes.remove(Integer.toString(droppedIds.get(i).asInt()));
 		}
 		JSONFile.write(getDiagramFile(), diagram);
 	}

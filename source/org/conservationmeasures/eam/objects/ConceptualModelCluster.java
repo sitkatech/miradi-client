@@ -8,12 +8,13 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
 public class ConceptualModelCluster extends ConceptualModelNode
 {
-	public ConceptualModelCluster(int idToUse)
+	public ConceptualModelCluster(BaseId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_CLUSTER);
 		setMembers(new IdList());

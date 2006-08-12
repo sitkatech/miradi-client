@@ -12,12 +12,13 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodeName extends Command
 {
-	public CommandSetNodeName(int idToUpdate, String newNameToUse)
+	public CommandSetNodeName(BaseId idToUpdate, String newNameToUse)
 	{
 		id = idToUpdate;
 		newName = newNameToUse;
@@ -26,7 +27,7 @@ public class CommandSetNodeName extends Command
 	
 	public CommandSetNodeName(DataInputStream dataIn) throws IOException
 	{
-		id = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
 		newName = dataIn.readUTF();
 		previousName = dataIn.readUTF();
 	}
@@ -67,12 +68,12 @@ public class CommandSetNodeName extends Command
 
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getId());
+		dataOut.writeInt(getId().asInt());
 		dataOut.writeUTF(getNewName());
 		dataOut.writeUTF(getPreviousName());
 	}
 
-	int getId()
+	BaseId getId()
 	{
 		return id;
 	}
@@ -89,7 +90,7 @@ public class CommandSetNodeName extends Command
 	
 	public static final String COMMAND_NAME = "SetNodeName";
 	
-	int id;
+	BaseId id;
 	String newName;
 	String previousName;
 }

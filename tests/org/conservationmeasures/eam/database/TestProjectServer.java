@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -51,13 +52,13 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testObjectManifest() throws Exception
 	{
-		int[] idsToWrite = {19, 25, 727, };
+		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
 			Task task = new Task(idsToWrite[i]);
 			storage.writeObject(task);
 		}
-		ThreatRatingCriterion criterion = new ThreatRatingCriterion(99);
+		ThreatRatingCriterion criterion = new ThreatRatingCriterion(new BaseId(99));
 		storage.writeObject(criterion);
 
 		ObjectManifest manifest = storage.readObjectManifest(ObjectType.TASK);
@@ -104,7 +105,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(1, 2, 3);
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new BaseId(2), new BaseId(3));
 		storage.writeLinkage(original);
 		ConceptualModelLinkage got = storage.readLinkage(original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
@@ -122,7 +123,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(1, 2, 3);
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new BaseId(2), new BaseId(3));
 		storage.writeLinkage(original);
 		storage.deleteLinkage(original.getId());
 		assertEquals("didn't delete?", 0, storage.readLinkageManifest().size());
@@ -137,16 +138,16 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteThreatRatingBundle() throws Exception
 	{
-		int threatId = 68;
-		int targetId = 99;
-		int defaultId = 929;
+		BaseId threatId = new BaseId(68);
+		BaseId targetId = new BaseId(99);
+		BaseId defaultId = new BaseId(929);
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultId);
 		storage.writeThreatRatingBundle(bundle);
 		
 		ThreatRatingBundle got = storage.readThreatRatingBundle(threatId, targetId);
-		assertEquals("didn't read?", defaultId, got.getValueId(38838));
+		assertEquals("didn't read?", defaultId, got.getValueId(new BaseId(38838)));
 		
-		assertNull("didn't return null for non-existent bundle?", storage.readThreatRatingBundle(282, 2995));
+		assertNull("didn't return null for non-existent bundle?", storage.readThreatRatingBundle(new BaseId(282), new BaseId(2995)));
 	}
 	
 	public void testWriteAndReadDiagram() throws Exception
@@ -195,7 +196,7 @@ public class TestProjectServer extends EAMTestCase
 		for(int i=0; i < gotNodes.size(); ++i)
 		{
 			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
-			int gotId = gotNode.getId();
+			BaseId gotId = gotNode.getId();
 			DiagramNode expectedNode = model.getNodeById(gotId);
 			assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 		}

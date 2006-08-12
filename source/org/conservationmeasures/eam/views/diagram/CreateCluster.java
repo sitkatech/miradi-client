@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.IdList;
@@ -64,7 +65,7 @@ public class CreateCluster extends InsertNode
 		try
 		{
 			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
-			int id = insertNodeItself();
+			BaseId id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				capturePreviouslySelectedNodes(id, selectedNodes);
 		}
@@ -75,7 +76,7 @@ public class CreateCluster extends InsertNode
 
 	}
 
-	void doExtraSetup(int id) throws CommandFailedException
+	void doExtraSetup(BaseId id) throws CommandFailedException
 	{
 		Dimension originalSize = DiagramNode.getDefaultSize();
 		int newWidth = originalSize.width * 120 / 100;
@@ -86,7 +87,7 @@ public class CreateCluster extends InsertNode
 		getProject().executeCommand(cmd);
 	}
 	
-	void capturePreviouslySelectedNodes(int clusterId, DiagramNode[] nodes) throws CommandFailedException
+	void capturePreviouslySelectedNodes(BaseId clusterId, DiagramNode[] nodes) throws CommandFailedException
 	{
 		IdList memberIds = new IdList();
 		for(int i = 0; i < nodes.length; ++i)

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -33,11 +34,11 @@ public class TestDelete extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		int interventionId = intervention.getId();
-		int factorId = factor.getId();
+		BaseId interventionId = intervention.getId();
+		BaseId factorId = factor.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
-		int linkageId = link.getLinkageId();
+		BaseId linkageId = link.getLinkageId();
 		
 		assertTrue("linkage not found?", model.hasLinkage(intervention, factor));
 		

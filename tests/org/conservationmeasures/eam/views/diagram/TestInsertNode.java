@@ -12,6 +12,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -38,7 +39,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			inserter.setLocation(at);
 			inserter.doIt();
 			
-			int id = project.getNodePool().getIds()[0];
+			BaseId id = project.getNodePool().getIds()[0];
 			DiagramNode node = project.getDiagramModel().getNodeById(id);
 			assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
@@ -56,7 +57,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
-		void launchPropertiesEditor(int id) throws Exception, CommandFailedException
+		void launchPropertiesEditor(BaseId id) throws Exception, CommandFailedException
 		{
 			wasPropertiesEditorLaunched = true;
 		}
@@ -82,7 +83,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			super(testName);
 		}
 
-		protected void writeNode(int nodeId) throws IOException, ParseException
+		protected void writeNode(BaseId nodeId) throws IOException, ParseException
 		{
 			super.writeNode(nodeId);
 			lastWroteName = getNodePool().find(nodeId).getLabel();

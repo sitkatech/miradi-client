@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -30,8 +31,8 @@ public class InsertConnection extends ProjectDoer
 			return;
 		
 		DiagramModel model = getProject().getDiagramModel();
-		int fromIndex = dialog.getFrom().getId();
-		int toIndex = dialog.getTo().getId();
+		BaseId fromIndex = dialog.getFrom().getId();
+		BaseId toIndex = dialog.getTo().getId();
 		
 		if(fromIndex == toIndex)
 		{

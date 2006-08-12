@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.DirectThreatSet;
@@ -25,14 +26,14 @@ class IndicatorTableModel extends AnnotationTableModel
 	{
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
 		{
-			int indicatorId = pool.getIds()[rowIndex];
+			BaseId indicatorId = pool.getIds()[rowIndex];
 			ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 			
 			return getNodeLabelsAsString(modelNodes);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
-			int indicatorId = pool.getIds()[rowIndex];
+			BaseId indicatorId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
@@ -40,7 +41,7 @@ class IndicatorTableModel extends AnnotationTableModel
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
-			int indicatorId = pool.getIds()[rowIndex];
+			BaseId indicatorId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
@@ -48,7 +49,7 @@ class IndicatorTableModel extends AnnotationTableModel
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
-			int indicatorId = pool.getIds()[rowIndex];
+			BaseId indicatorId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			

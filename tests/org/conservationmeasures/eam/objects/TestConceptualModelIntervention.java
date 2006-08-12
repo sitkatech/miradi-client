@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestConceptualModelIntervention extends EAMTestCase
@@ -16,17 +17,17 @@ public class TestConceptualModelIntervention extends EAMTestCase
 
 	public void testBasics()
 	{
-		int interventionId = 17;
+		BaseId interventionId = new BaseId(17);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
-		int activityId1 = 77;
+		BaseId activityId1 = new BaseId(77);
 		intervention.insertActivityId(activityId1, 0);
 		IdList afterAdd1 = intervention.getActivityIds();
 		assertEquals("didn't add?", 1, afterAdd1.size());
 		assertEquals("wrong task id?", activityId1, afterAdd1.get(0));
 		
-		int activityId2 = 92;
+		BaseId activityId2 = new BaseId(92);
 		intervention.insertActivityId(activityId2, 0);
 		IdList afterAdd2 = intervention.getActivityIds();
 		assertEquals("didn't add 2?", 2, afterAdd2.size());
@@ -42,12 +43,12 @@ public class TestConceptualModelIntervention extends EAMTestCase
 	
 	public void testActivityIds() throws Exception
 	{
-		int interventionId = 66;
+		BaseId interventionId = new BaseId(66);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		IdList empty = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
-		int activityId = 828;
+		BaseId activityId = new BaseId(828);
 		IdList oneItem = new IdList();
 		oneItem.add(activityId);
 		intervention.setData(ConceptualModelIntervention.TAG_ACTIVITY_IDS, oneItem.toString());
@@ -58,7 +59,7 @@ public class TestConceptualModelIntervention extends EAMTestCase
 	
 	public void testStatus() throws Exception
 	{
-		int interventionId = 91;
+		BaseId interventionId = new BaseId(91);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
@@ -78,11 +79,11 @@ public class TestConceptualModelIntervention extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		int interventionId = 17;
+		BaseId interventionId = new BaseId(17);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
-		intervention.insertActivityId(23, 0);
-		intervention.insertActivityId(37, 1);
+		intervention.insertActivityId(new BaseId(23), 0);
+		intervention.insertActivityId(new BaseId(37), 1);
 		
 		ConceptualModelIntervention got = new ConceptualModelIntervention(intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -19,7 +20,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 	
 	public abstract String getHtmlText();
 	
-	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, int criterionId) throws Exception
+	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, BaseId criterionId) throws Exception
 	{
 		super(wizardToUse);
 
@@ -37,7 +38,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 		{
 			return;
 		}
-		int valueId = bundle.getValueId(criterion.getId());
+		BaseId valueId = bundle.getValueId(criterion.getId());
 		value = getFramework().getValueOption(valueId);
 		String htmlText = getHtmlText();
 		htmlViewer.setText(htmlText);

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -39,7 +40,7 @@ public class NormalDiagramMode extends ViewDoer
 
 		try
 		{
-			int viewId = getCurrentViewId();
+			BaseId viewId = getCurrentViewId();
 			getProject().executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
 					ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
 		}
@@ -50,7 +51,7 @@ public class NormalDiagramMode extends ViewDoer
 		}
 	}
 
-	private int getCurrentViewId() throws Exception
+	private BaseId getCurrentViewId() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
 		return viewData.getId();

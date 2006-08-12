@@ -13,7 +13,7 @@ public class TaskTreeNode extends DefaultMutableTreeNode
 	
 	public String toString()
 	{
-		return Integer.toString(task.getId());
+		return Integer.toString(task.getId().asInt());
 	}
 	
 	Task task;

@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class NodePool extends EAMObjectPool
@@ -21,7 +22,7 @@ public class NodePool extends EAMObjectPool
 		put(node.getId(), node);
 	}
 	
-	public ConceptualModelNode find(int id)
+	public ConceptualModelNode find(BaseId id)
 	{
 		return (ConceptualModelNode)getRawObject(id);
 	}
@@ -44,7 +45,7 @@ public class NodePool extends EAMObjectPool
 	private ConceptualModelNode[] getNodesOfType(NodeType type)
 	{
 		Vector cmNodes = new Vector();
-		int[] ids = getIds();
+		BaseId[] ids = getIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{

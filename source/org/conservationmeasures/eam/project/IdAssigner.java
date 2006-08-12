@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
+
 
 public class IdAssigner
 {
@@ -22,20 +24,20 @@ public class IdAssigner
 		nextId = 0;
 	}
 	
-	public int takeNextId()
+	public BaseId takeNextId()
 	{
-		return nextId++;
+		return new BaseId(nextId++);
 	}
 	
-	public void idTaken(int id)
+	public void idTaken(BaseId id)
 	{
-		if(id >= nextId)
-			nextId = id + 1;
+		if(id.asInt() >= nextId)
+			nextId = id.asInt() + 1;
 	}
 	
-	public int obtainRealId(int id)
+	public BaseId obtainRealId(BaseId id)
 	{
-		if(id == IdAssigner.INVALID_ID)
+		if(id.isInvalid())
 			id = takeNextId();
 		else
 			idTaken(id);

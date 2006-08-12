@@ -11,6 +11,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.NodePool;
@@ -57,7 +58,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
 
-		model.moveNodes(100, 100, new int[] {target1.getId()});
+		model.moveNodes(100, 100, new BaseId[] {target1.getId()});
 		Rectangle2D movedTarget = scope.getBounds();
 		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
@@ -65,7 +66,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
 		DiagramNode target2 = createNode(DiagramNode.TYPE_TARGET);
-		model.moveNodes(200, 200, new int[] {target2.getId()});
+		model.moveNodes(200, 200, new BaseId[] {target2.getId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));

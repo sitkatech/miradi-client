@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestConceptualModelNode extends TestCaseEnhanced
@@ -18,7 +19,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	
 	public void testComments()
 	{
-		int id = 35;
+		BaseId id = new BaseId(35);
 		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_DIRECT_THREAT);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
@@ -28,14 +29,14 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	
 	public void testPriority()
 	{
-		int id = 26;
+		BaseId id = new BaseId(26);
 		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_DIRECT_THREAT);
 		assertEquals("didn't default to priority none?", null, factor.getThreatPriority());
 	}
 	
 	public void testSetGetData() throws Exception
 	{
-		int id = 72;
+		BaseId id = new BaseId(72);
 		ConceptualModelTarget target = new ConceptualModelTarget(id);
 		String[] tags = {
 			ConceptualModelNode.TAG_COMMENT,
@@ -84,18 +85,18 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testJson() throws Exception
 	{
 		GoalIds goals = new GoalIds();
-		goals.addId(2);
-		goals.addId(5);
+		goals.addId(new BaseId(2));
+		goals.addId(new BaseId(5));
 		
 		ObjectiveIds objectives = new ObjectiveIds();
-		objectives.addId(7);
-		objectives.addId(9);
+		objectives.addId(new BaseId(7));
+		objectives.addId(new BaseId(9));
 
-		int factorId = 2342;
+		BaseId factorId = new BaseId(2342);
 		ConceptualModelFactor factor = new ConceptualModelFactor(factorId, DiagramNode.TYPE_DIRECT_THREAT);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
-		factor.setIndicatorId(99);
+		factor.setIndicatorId(new BaseId(99));
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFrom(factor.toJson());

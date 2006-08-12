@@ -104,7 +104,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	
 	private void closeIfObjectDeleted(CommandDeleteObject cmd)
 	{
-		if(cmd.getObjectType() == object.getType() && cmd.getObjectId() == object.getId())
+		if(cmd.getObjectType() == object.getType() && cmd.getObjectId().equals(object.getId()))
 			dispose();
 	}
 

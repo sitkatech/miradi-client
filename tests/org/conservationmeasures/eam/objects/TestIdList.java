@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 
@@ -19,8 +20,8 @@ public class TestIdList extends EAMTestCase
 	{
 		IdList list = new IdList();
 		assertEquals("wrong initial size?", 0, list.size());
-		int id1 = 7;
-		int id2 = 19;
+		BaseId id1 = new BaseId(7);
+		BaseId id2 = new BaseId(19);
 		list.add(id1);
 		list.add(id2);
 		assertEquals("wrong size?", 2, list.size());
@@ -44,7 +45,7 @@ public class TestIdList extends EAMTestCase
 		IdList list = createSampleIdList();
 		list.removeId(list.get(1));
 		assertEquals(2, list.size());
-		assertEquals(9998, list.get(1));
+		assertEquals(new BaseId(9998), list.get(1));
 		
 		try
 		{
@@ -106,13 +107,13 @@ public class TestIdList extends EAMTestCase
 		IdList list123 = new IdList(list12345);
 		list123.subtract(list654);
 		assertEquals(3, list123.size());
-		assertEquals(1, list123.get(0));
-		assertEquals(2, list123.get(1));
-		assertEquals(3, list123.get(2));
+		assertEquals(new BaseId(1), list123.get(0));
+		assertEquals(new BaseId(2), list123.get(1));
+		assertEquals(new BaseId(3), list123.get(2));
 		
 		IdList list6 = new IdList(list654);
 		list6.subtract(list12345);
 		assertEquals(1, list6.size());
-		assertEquals(6, list6.get(0));
+		assertEquals(new BaseId(6), list6.get(0));
 	}
 }

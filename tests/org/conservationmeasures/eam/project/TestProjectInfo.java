@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.json.JSONObject;
 import org.martus.util.TestCaseEnhanced;
@@ -20,10 +21,10 @@ public class TestProjectInfo extends TestCaseEnhanced
 	{
 		ProjectInfo info = new ProjectInfo();
 		info.setCurrentView("super-view");
-		info.obtainRealNodeId(27);
-		info.obtainRealLinkageId(55);
+		info.obtainRealNodeId(new BaseId(27));
+		info.obtainRealLinkageId(new BaseId(55));
 		info.getAnnotationIdAssigner().takeNextId();
-		info.setRootTaskId(99);
+		info.setRootTaskId(new BaseId(99));
 		info.getProjectData().put(testKey, "sample data");
 		
 		ProjectInfo loaded = new ProjectInfo();
@@ -53,14 +54,14 @@ public class TestProjectInfo extends TestCaseEnhanced
 	{
 		ProjectInfo info = new ProjectInfo();
 		info.setCurrentView("super-view");
-		info.obtainRealNodeId(27);
+		info.obtainRealNodeId(new BaseId(27));
 		info.getAnnotationIdAssigner().takeNextId();
 		
 		info.clear();
 		assertEquals("Didn't clear currentView", InterviewView.getViewName(), info.getCurrentView());
-		assertEquals("didn't clear id?", 0, info.getNodeIdAssigner().takeNextId());
-		assertEquals("didn't clear annotation id?", 0, info.getAnnotationIdAssigner().takeNextId());
-		assertEquals("Didn't clear root task id?", IdAssigner.INVALID_ID, info.getRootTaskId());
+		assertEquals("didn't clear id?", new BaseId(0), info.getNodeIdAssigner().takeNextId());
+		assertEquals("didn't clear annotation id?", new BaseId(0), info.getAnnotationIdAssigner().takeNextId());
+		assertEquals("Didn't clear root task id?", new BaseId(), info.getRootTaskId());
 	}
 
 	String testKey = "TestKey";

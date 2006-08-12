@@ -1,6 +1,6 @@
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 
@@ -42,8 +42,8 @@ public class TestConceptualModelLinkage extends EAMTestCase
 		
 	}
 	
-	static final int id = 1;
-	static final int nodeAId = 2;
-	static final int nodeBId = 3;
+	static final BaseId id = new BaseId(1);
+	static final BaseId nodeAId = new BaseId(2);
+	static final BaseId nodeBId = new BaseId(3);
 
 }

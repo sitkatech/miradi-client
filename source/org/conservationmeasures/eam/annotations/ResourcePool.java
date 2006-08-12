@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.EAMObjectPool;
 
@@ -15,7 +16,7 @@ public class ResourcePool extends EAMObjectPool
 		put(resource.getId(), resource);
 	}
 	
-	public ProjectResource find(int id)
+	public ProjectResource find(BaseId id)
 	{
 		return (ProjectResource)getRawObject(id);
 	}

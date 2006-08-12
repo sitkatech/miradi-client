@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -219,7 +220,7 @@ public class Project
 		if(found != null)
 			return found;
 		
-		int createdId = createObject(ObjectType.VIEW_DATA);
+		BaseId createdId = createObject(ObjectType.VIEW_DATA);
 		setObjectData(ObjectType.VIEW_DATA, createdId, ViewData.TAG_LABEL, viewName);
 		return getViewPool().find(createdId);
 	}
@@ -236,8 +237,8 @@ public class Project
 	
 	public Task getRootTask() throws Exception
 	{
-		int rootTaskId = projectInfo.getRootTaskId();
-		if(rootTaskId == IdAssigner.INVALID_ID)
+		BaseId rootTaskId = projectInfo.getRootTaskId();
+		if(rootTaskId.isInvalid())
 		{
 			rootTaskId = createObject(ObjectType.TASK);
 			projectInfo.setRootTaskId(rootTaskId);
@@ -246,22 +247,22 @@ public class Project
 		return getTaskPool().find(rootTaskId);
 	}
 	
-	public EAMObject findObject(int objectType, int objectId)
+	public EAMObject findObject(int objectType, BaseId objectId)
 	{
 		EAMObjectPool pool = getPool(objectType);
 		return pool.findObject(objectId);
 	}
 	
-	public ConceptualModelNode findNode(int nodeId)
+	public ConceptualModelNode findNode(BaseId nodeId)
 	{
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
-	public ConceptualModelNodeSet findNodesThatUseThisObjective(int objectiveId)
+	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId)
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
-		int[] allNodeIds = pool.getIds();
+		BaseId[] allNodeIds = pool.getIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
@@ -272,22 +273,22 @@ public class Project
 		return foundNodes;
 	}
 
-	public ConceptualModelNodeSet findNodesThatUseThisIndicator(int indicatorId)
+	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId)
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
-		int[] allNodeIds = pool.getIds();
+		BaseId[] allNodeIds = pool.getIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getIndicatorId() == indicatorId)
+			if(node.getIndicatorId().equals(indicatorId))
 				foundNodes.attemptToAdd(node);
 		}
 		
 		return foundNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(int indicatorId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId)
 	{
 		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -301,7 +302,7 @@ public class Project
 		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(int objectiveId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId)
 	{
 		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -318,14 +319,14 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
-	public int createObject(int objectType) throws Exception
+	public BaseId createObject(int objectType) throws Exception
 	{
-		return createObject(objectType, IdAssigner.INVALID_ID);
+		return createObject(objectType, new BaseId());
 	}
 	
-	public int createObject(int objectType, int objectId) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
-		int createdId = IdAssigner.INVALID_ID;
+		BaseId createdId = new BaseId();
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
@@ -347,7 +348,7 @@ public class Project
 			}
 			case ObjectType.TASK:
 			{
-				if(objectId == IdAssigner.INVALID_ID)
+				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Task task = new Task(objectId);
 				getTaskPool().put(task);
@@ -364,7 +365,7 @@ public class Project
 			
 			case ObjectType.VIEW_DATA:
 			{
-				if(objectId == IdAssigner.INVALID_ID)
+				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
 				ViewData viewData = new ViewData(objectId);
 				getViewPool().put(viewData);
@@ -376,7 +377,7 @@ public class Project
 			case ObjectType.MODEL_LINKAGE:
 			{
 				objectId = projectInfo.obtainRealLinkageId(objectId);
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, -2, -2);
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, new BaseId(), new BaseId());
 				getLinkagePool().put(cmLinkage);
 				database.writeObject(cmLinkage);
 				createdId = cmLinkage.getId();
@@ -385,7 +386,7 @@ public class Project
 			
 			case ObjectType.PROJECT_RESOURCE:
 			{
-				if(objectId == IdAssigner.INVALID_ID)
+				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
 				ProjectResource resource = new ProjectResource(objectId);
 				getResourcePool().put(resource);
@@ -396,7 +397,7 @@ public class Project
 				
 			case ObjectType.INDICATOR:
 			{
-				if(objectId == IdAssigner.INVALID_ID)
+				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Indicator indicator = new Indicator(objectId);
 				getIndicatorPool().put(indicator);
@@ -407,7 +408,7 @@ public class Project
 				
 			case ObjectType.OBJECTIVE:
 			{
-				if(objectId == IdAssigner.INVALID_ID)
+				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
 				Objective objective = new Objective(objectId);
 				getObjectivePool().put(objective);
@@ -423,7 +424,7 @@ public class Project
 		return createdId;
 	}
 	
-	public void deleteObject(int objectType, int objectId) throws IOException, ParseException
+	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
 	{
 		switch(objectType)
 		{
@@ -479,7 +480,7 @@ public class Project
 		}
 	}
 	
-	public void setObjectData(int objectType, int objectId, String fieldTag, String dataValue) throws Exception
+	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		switch(objectType)
 		{
@@ -541,7 +542,7 @@ public class Project
 		}
 	}
 	
-	public String getObjectData(int objectType, int objectId, String fieldTag)
+	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		switch(objectType)
 		{
@@ -641,7 +642,7 @@ public class Project
 	private void loadNodePool() throws IOException, ParseException
 	{
 		NodeManifest nodes = getDatabase().readNodeManifest();
-		int[] nodeIds = nodes.getAllKeys();
+		BaseId[] nodeIds = nodes.getAllKeys();
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
 			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
@@ -652,7 +653,7 @@ public class Project
 	private void loadLinkagePool() throws IOException, ParseException
 	{
 		LinkageManifest linkages = getDatabase().readLinkageManifest();
-		int[] linkageIds = linkages.getAllKeys();
+		BaseId[] linkageIds = linkages.getAllKeys();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
 			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
@@ -663,7 +664,7 @@ public class Project
 	private void loadTaskPool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
@@ -674,7 +675,7 @@ public class Project
 	private void loadViewPool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.VIEW_DATA);
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
@@ -685,7 +686,7 @@ public class Project
 	private void loadResourcePool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.PROJECT_RESOURCE);
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
@@ -696,7 +697,7 @@ public class Project
 	private void loadIndicatorPool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.INDICATOR);
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
@@ -707,7 +708,7 @@ public class Project
 	private void loadObjectivePool() throws Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.OBJECTIVE);
-		int[] ids = manifest.getAllKeys();
+		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
@@ -984,10 +985,10 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			int originalNodeId = nodeData.getInt(DiagramNode.TAG_ID);
+			BaseId originalNodeId = nodeData.getId(DiagramNode.TAG_ID);
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			int newNodeId = createNode(type);
+			BaseId newNodeId = createNode(type);
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
@@ -999,10 +1000,10 @@ public class Project
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getInt(DiagramNode.TAG_ID), startPoint);
+			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(DiagramNode.TAG_ID), startPoint);
 			newNodeLocation = getSnapped(newNodeLocation);
-			int newNodeId = dataHelper.getNewId(nodeData.getInt(DiagramNode.TAG_ID));
-			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new int[]{newNodeId});
+			BaseId newNodeId = dataHelper.getNewId(nodeData.getId(DiagramNode.TAG_ID));
+			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new BaseId[]{newNodeId});
 			executeCommand(move);
 		}
 	}
@@ -1014,9 +1015,9 @@ public class Project
 		{
 			LinkageDataMap linkageData = links[i];
 			
-			int newFromId = dataHelper.getNewId(linkageData.getFromId());
-			int newToId = dataHelper.getNewId(linkageData.getToId());
-			if(newFromId == IdAssigner.INVALID_ID || newToId == IdAssigner.INVALID_ID)
+			BaseId newFromId = dataHelper.getNewId(linkageData.getFromId());
+			BaseId newToId = dataHelper.getNewId(linkageData.getToId());
+			if(newFromId.isInvalid() || newToId.isInvalid())
 			{
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
@@ -1027,18 +1028,18 @@ public class Project
 		}
 	}
 
-	public int createNode(NodeType nodeType) throws Exception
+	public BaseId createNode(NodeType nodeType) throws Exception
 	{
 		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
 		executeCommand(commandInsertNode);
-		int id = commandInsertNode.getId();
+		BaseId id = commandInsertNode.getId();
 		Command[] commandsToAddToView = getCurrentViewData().buildCommandsToAddNode(id);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
 		return id;
 	}
 
-	public NodeType deleteNode(int idToDelete) throws Exception
+	public NodeType deleteNode(BaseId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
@@ -1051,9 +1052,9 @@ public class Project
 		return nodeType; 
 	}
 
-	public int insertNodeAtId(NodeType typeToInsert, int requestedId) throws Exception
+	public BaseId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
-		int realId = projectInfo.obtainRealNodeId(requestedId);
+		BaseId realId = projectInfo.obtainRealNodeId(requestedId);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(realId, typeToInsert);
 		getNodePool().put(cmObject);
 		writeNode(realId);
@@ -1062,11 +1063,11 @@ public class Project
 		DiagramNode node = model.createNode(realId);
 		updateVisibilityOfSingleNode(node);
 		
-		int idThatWasInserted = node.getId();
+		BaseId idThatWasInserted = node.getId();
 		return idThatWasInserted;
 	}
 	
-	public void deleteLinkage(int idToDelete) throws Exception
+	public void deleteLinkage(BaseId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
@@ -1076,9 +1077,9 @@ public class Project
 		getLinkagePool().remove(idToDelete);
 	}
 
-	public int insertLinkageAtId(int requestedLinkageId, int linkFromId, int linkToId) throws Exception
+	public BaseId insertLinkageAtId(BaseId requestedLinkageId, BaseId linkFromId, BaseId linkToId) throws Exception
 	{
-		int createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
+		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
 		cmLinkage.setFromId(linkFromId);
 		cmLinkage.setToId(linkToId);
@@ -1088,7 +1089,7 @@ public class Project
 		return linkage.getId();
 	}
 	
-	public void setNodeName(int nodeId, String desiredName, String expectedName) throws Exception
+	public void setNodeName(BaseId nodeId, String desiredName, String expectedName) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1099,7 +1100,7 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setNodeComment(int nodeId, String desiredComment, String expectedComment) throws Exception
+	public void setNodeComment(BaseId nodeId, String desiredComment, String expectedComment) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1110,7 +1111,7 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setFactorType(int nodeId, NodeType desiredType) throws Exception
+	public void setFactorType(BaseId nodeId, NodeType desiredType) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1122,7 +1123,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setIndicator(int nodeId, int desiredIndicatorId) throws Exception
+	public void setIndicator(BaseId nodeId, BaseId desiredIndicatorId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1134,7 +1135,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setObjectives(int nodeId, ObjectiveIds desiredObjectives) throws Exception
+	public void setObjectives(BaseId nodeId, ObjectiveIds desiredObjectives) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1146,7 +1147,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setGoals(int nodeId, GoalIds desiredGoals) throws Exception
+	public void setGoals(BaseId nodeId, GoalIds desiredGoals) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -1158,23 +1159,23 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	protected void writeNode(int nodeId) throws IOException, ParseException
+	protected void writeNode(BaseId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);
 	}
 
-	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception 
+	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception 
 	{
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}
 	
-	public void moveNodesWithoutNotification(int deltaX, int deltaY, int[] ids) throws Exception 
+	public void moveNodesWithoutNotification(int deltaX, int deltaY, BaseId[] ids) throws Exception 
 	{
 		getDiagramModel().moveNodesWithoutNotification(deltaX, deltaY, ids);
 	}
 	
-	public void nodesWereMovedOrResized(int deltaX, int deltaY, int[] ids) throws CommandFailedException
+	public void nodesWereMovedOrResized(int deltaX, int deltaY, BaseId[] ids) throws CommandFailedException
 	{
 		DiagramModel model = getDiagramModel();
 		model.nodesWereMoved(ids);
@@ -1206,7 +1207,7 @@ public class Project
 		
 		if(movedNodes.size() > 0)
 		{
-			int[] idsActuallyMoved = new int[movedNodes.size()];
+			BaseId[] idsActuallyMoved = new BaseId[movedNodes.size()];
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode)movedNodes.get(i);
@@ -1278,7 +1279,7 @@ public class Project
 	private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		int[] allNodeIds = getNodePool().getIds();
+		BaseId[] allNodeIds = getNodePool().getIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			DiagramNode possibleCluster = model.getNodeById(allNodeIds[i]);
@@ -1336,7 +1337,7 @@ public class Project
 		return selectedCellsWithLinkages;
 	}
 	
-	public boolean isLinked(int nodeId1, int nodeId2)
+	public boolean isLinked(BaseId nodeId1, BaseId nodeId2)
 	{
 		return getLinkagePool().hasLinkage(nodeId1, nodeId2);
 	}

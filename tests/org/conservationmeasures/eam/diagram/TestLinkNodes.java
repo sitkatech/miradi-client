@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -26,11 +27,11 @@ public class TestLinkNodes extends EAMTestCase
 
 		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertFactor.execute(project);
-		int factorId = insertFactor.getId();
+		BaseId factorId = insertFactor.getId();
 		DiagramNode factor = model.getNodeById(factorId);
 		CommandInsertNode insertTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertTarget.execute(project);
-		int targetId = insertTarget.getId();
+		BaseId targetId = insertTarget.getId();
 		DiagramNode target = model.getNodeById(targetId);
 		
 		CommandLinkNodes command = new CommandLinkNodes(factorId, targetId);

@@ -10,15 +10,15 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class CommandSetThreatRating extends Command
 {
-	public CommandSetThreatRating(int threatIdToUpdate, int targetIdToUpdate, int criterionIdToUpdate, int valueIdToUse)
+	public CommandSetThreatRating(BaseId threatIdToUpdate, BaseId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
 	{
 		threatId = threatIdToUpdate;
 		targetId = targetIdToUpdate;
@@ -28,11 +28,11 @@ public class CommandSetThreatRating extends Command
 	
 	public CommandSetThreatRating(DataInputStream dataIn) throws IOException
 	{
-		threatId = dataIn.readInt();
-		targetId = dataIn.readInt();
-		criterionId = dataIn.readInt();
-		valueId = dataIn.readInt();
-		previousValueId = dataIn.readInt();
+		threatId = new BaseId(dataIn.readInt());
+		targetId = new BaseId(dataIn.readInt());
+		criterionId = new BaseId(dataIn.readInt());
+		valueId = new BaseId(dataIn.readInt());
+		previousValueId = new BaseId(dataIn.readInt());
 	}
 
 	public String toString()
@@ -47,7 +47,7 @@ public class CommandSetThreatRating extends Command
 
 	public void execute(Project target) throws CommandFailedException
 	{
-		previousValueId = setBundleValue(target, valueId, IdAssigner.INVALID_ID);
+		previousValueId = setBundleValue(target, valueId, new BaseId());
 	}
 
 	public void undo(Project target) throws CommandFailedException
@@ -55,14 +55,14 @@ public class CommandSetThreatRating extends Command
 		setBundleValue(target, previousValueId, valueId);
 	}
 	
-	private int setBundleValue(Project target, int newValueId, int expectedValueId) throws CommandFailedException
+	private BaseId setBundleValue(Project target, BaseId newValueId, BaseId expectedValueId) throws CommandFailedException
 	{
 		try
 		{
 			ThreatRatingFramework framework = target.getThreatRatingFramework();
 			ThreatRatingBundle bundle = framework.getBundle(getThreatId(), getTargetId());
-			int oldValueId = bundle.getValueId(criterionId);
-			if(expectedValueId != IdAssigner.INVALID_ID && expectedValueId != oldValueId)
+			BaseId oldValueId = bundle.getValueId(criterionId);
+			if(!expectedValueId.isInvalid() && !expectedValueId.equals(oldValueId))
 				throw new Exception(getCommandName() + " expected " + expectedValueId + " but was " + oldValueId);
 			bundle.setValueId(criterionId, newValueId);
 			framework.saveBundle(bundle);
@@ -77,34 +77,34 @@ public class CommandSetThreatRating extends Command
 
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getThreatId());
-		dataOut.writeInt(getTargetId());
-		dataOut.writeInt(getCriterionId());
-		dataOut.writeInt(getValueId());
-		dataOut.writeInt(getPreviousValueId());
+		dataOut.writeInt(getThreatId().asInt());
+		dataOut.writeInt(getTargetId().asInt());
+		dataOut.writeInt(getCriterionId().asInt());
+		dataOut.writeInt(getValueId().asInt());
+		dataOut.writeInt(getPreviousValueId().asInt());
 	}
 
-	public int getThreatId()
+	public BaseId getThreatId()
 	{
 		return threatId;
 	}
 	
-	public int getTargetId()
+	public BaseId getTargetId()
 	{
 		return targetId;
 	}
 	
-	public int getCriterionId()
+	public BaseId getCriterionId()
 	{
 		return criterionId;
 	}
 	
-	public int getValueId()
+	public BaseId getValueId()
 	{
 		return valueId;
 	}
 
-	public int getPreviousValueId()
+	public BaseId getPreviousValueId()
 	{
 		return previousValueId;
 	}
@@ -112,9 +112,9 @@ public class CommandSetThreatRating extends Command
 
 	public static final String COMMAND_NAME = "SetThreatRatingValue";
 
-	int threatId;
-	int targetId;
-	int criterionId;
-	int valueId;
-	int previousValueId;
+	BaseId threatId;
+	BaseId targetId;
+	BaseId criterionId;
+	BaseId valueId;
+	BaseId previousValueId;
 }

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Task;
@@ -74,7 +75,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return String.class;
 	}
 	
-	public TreePath getPathOfNode(int objectType, int objectId)
+	public TreePath getPathOfNode(int objectType, BaseId objectId)
 	{
 		return findObject(getPathToRoot(), objectType, objectId);
 	}
@@ -84,7 +85,7 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return new TreePath(getRootStratPlanObject());
 	}
 	
-	public TreePath getPathOfParent(int objectType, int objectId)
+	public TreePath getPathOfParent(int objectType, BaseId objectId)
 	{
 		TreePath path = getPathOfNode(objectType, objectId);
 		if(path == null)
@@ -99,7 +100,7 @@ EAM.logDebug("objectiveWasModified");
 //		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
 	
-	public void dataWasChanged(int objectType, int objectId)
+	public void dataWasChanged(int objectType, BaseId objectId)
 	{
 		TreePath found = getPathOfParent(objectType, objectId);
 		if(found == null)
@@ -111,7 +112,7 @@ EAM.logDebug("dataWasChanged");
 		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
 	}
 
-	public void idListWasChanged(int objectType, int objectId, String newIdListAsString)
+	public void idListWasChanged(int objectType, BaseId objectId, String newIdListAsString)
 	{
 		TreePath found = getPathOfParent(objectType, objectId);
 		if(found == null)
@@ -144,10 +145,10 @@ EAM.logDebug("idListWasChanged");
 		return childIndices;
 	}
 	
-	TreePath findObject(TreePath pathToStartSearch, int objectType, int objectId)
+	TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
 		StratPlanObject nodeToSearch = (StratPlanObject)pathToStartSearch.getLastPathComponent();
-		if(nodeToSearch.getType() == objectType && nodeToSearch.getId() == objectId)
+		if(nodeToSearch.getType() == objectType && nodeToSearch.getId().equals(objectId))
 			return pathToStartSearch;
 		
 		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)

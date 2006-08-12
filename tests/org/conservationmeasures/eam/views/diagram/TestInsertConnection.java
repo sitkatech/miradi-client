@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -28,9 +28,9 @@ public class TestInsertConnection extends EAMTestCase
 			assertFalse("enabled when no project open?", doer.isAvailable());
 			project.setIsOpen(true);
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			project.insertNodeAtId(DiagramNode.TYPE_TARGET, IdAssigner.INVALID_ID);
+			project.insertNodeAtId(DiagramNode.TYPE_TARGET, new BaseId());
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.insertNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, IdAssigner.INVALID_ID);
+			project.insertNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, new BaseId());
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

@@ -12,32 +12,32 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteLinkage extends Command
 {
-	public CommandDeleteLinkage(int idToDelete)
+	public CommandDeleteLinkage(BaseId idToDelete)
 	{
 		id = idToDelete;
-		wasFrom = IdAssigner.INVALID_ID;
-		wasTo = IdAssigner.INVALID_ID;
+		wasFrom = new BaseId();
+		wasTo = new BaseId();
 	}
 	
 	public CommandDeleteLinkage(DataInputStream dataIn) throws IOException
 	{
-		id = dataIn.readInt();
-		wasFrom = dataIn.readInt();
-		wasTo = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
+		wasFrom = new BaseId(dataIn.readInt());
+		wasTo = new BaseId(dataIn.readInt());
 	}
 	
-	public int getWasFromId()
+	public BaseId getWasFromId()
 	{
 		return wasFrom;
 	}
 	
-	public int getWasToId()
+	public BaseId getWasToId()
 	{
 		return wasTo;
 	}
@@ -84,12 +84,12 @@ public class CommandDeleteLinkage extends Command
 
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getId());
-		dataOut.writeInt(getWasFromId());
-		dataOut.writeInt(getWasToId());
+		dataOut.writeInt(getId().asInt());
+		dataOut.writeInt(getWasFromId().asInt());
+		dataOut.writeInt(getWasToId().asInt());
 	}
 
-	public int getId()
+	public BaseId getId()
 	{
 		return id;
 	}
@@ -97,7 +97,7 @@ public class CommandDeleteLinkage extends Command
 
 	public static final String COMMAND_NAME = "DeleteLinkage";
 
-	int id;
-	int wasFrom;
-	int wasTo;
+	BaseId id;
+	BaseId wasFrom;
+	BaseId wasTo;
 }

@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
+import org.conservationmeasures.eam.ids.BaseId;
 
 
 
@@ -35,7 +36,7 @@ public class ObjectiveIds extends NodeAnnotationIds
 		int size = readCount(dataIn);
 		for(int i = 0; i < size; ++i)
 		{
-			addId(dataIn.readInt());
+			addId(new BaseId(dataIn.readInt()));
 		}
 	}
 	

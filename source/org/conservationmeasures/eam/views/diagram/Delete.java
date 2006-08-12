@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -73,7 +74,7 @@ public class Delete extends ProjectDoer
 
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
-		int id = linkageToDelete.getId();
+		BaseId id = linkageToDelete.getId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
 		getProject().executeCommand(command);
 	}
@@ -81,7 +82,7 @@ public class Delete extends ProjectDoer
 	// TODO: This method should be inside Project and should have unit tests
 	private void deleteNode(DiagramNode nodeToDelete) throws Exception
 	{
-		int id = nodeToDelete.getId();
+		BaseId id = nodeToDelete.getId();
 
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)

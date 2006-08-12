@@ -11,34 +11,35 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetObjectData extends Command
 {
-	static public CommandSetObjectData createAppendIdCommand(EAMObject object, String idListTag, int idToAppend) throws ParseException
+	static public CommandSetObjectData createAppendIdCommand(EAMObject object, String idListTag, BaseId idToAppend) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));
 		newList.add(idToAppend);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 
-	static public CommandSetObjectData createInsertIdCommand(EAMObject object, String idListTag, int idToInsert, int position) throws ParseException
+	static public CommandSetObjectData createInsertIdCommand(EAMObject object, String idListTag, BaseId idToInsert, int position) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));
 		newList.insertAt(idToInsert, position);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 
-	static public CommandSetObjectData createRemoveIdCommand(EAMObject object, String idListTag, int idToRemove) throws ParseException
+	static public CommandSetObjectData createRemoveIdCommand(EAMObject object, String idListTag, BaseId idToRemove) throws ParseException
 	{
 		IdList newList = new IdList(object.getData(idListTag));
 		newList.removeId(idToRemove);
 		return new CommandSetObjectData(object.getType(), object.getId(), idListTag, newList.toString());
 	}
 	
-	public CommandSetObjectData(int objectType, int objectId, String fieldTag, String dataValue)
+	public CommandSetObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue)
 	{
 		type = objectType;
 		id = objectId;
@@ -49,7 +50,7 @@ public class CommandSetObjectData extends Command
 	public CommandSetObjectData(DataInputStream dataIn) throws IOException
 	{
 		type = dataIn.readInt();
-		id = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
 		tag = dataIn.readUTF();
 		newValue = dataIn.readUTF();
 		oldValue = dataIn.readUTF();
@@ -60,7 +61,7 @@ public class CommandSetObjectData extends Command
 		return type;
 	}
 	
-	public int getObjectId()
+	public BaseId getObjectId()
 	{
 		return id;
 	}
@@ -121,7 +122,7 @@ public class CommandSetObjectData extends Command
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(type);
-		dataOut.writeInt(id);
+		dataOut.writeInt(id.asInt());
 		dataOut.writeUTF(tag);
 		dataOut.writeUTF(newValue);
 		dataOut.writeUTF(oldValue);
@@ -130,7 +131,7 @@ public class CommandSetObjectData extends Command
 	public static final String COMMAND_NAME = "SetObjectData";
 
 	int type;
-	int id;
+	BaseId id;
 	String tag;
 	String newValue;
 	String oldValue;

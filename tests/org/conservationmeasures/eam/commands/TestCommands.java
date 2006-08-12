@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -33,7 +34,6 @@ import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -64,7 +64,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandSetObjectData_ThreatRatingValueOption() throws Exception
 	{
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
-		int createdId = project.createObject(type);
+		BaseId createdId = project.createObject(type);
 		ThreatRatingValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
 		Color originalColor = option.getColor();
 		
@@ -92,7 +92,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 		
 		
-		CommandSetObjectData badId = new CommandSetObjectData(type, -99, field, value);
+		CommandSetObjectData badId = new CommandSetObjectData(type, new BaseId(-99), field, value);
 		try
 		{
 			project.executeCommand(badId);
@@ -117,7 +117,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandSetObjectData_ThreatRatingCriterion() throws Exception
 	{
 		int type = ObjectType.THREAT_RATING_CRITERION;
-		int createdId = project.createObject(type);
+		BaseId createdId = project.createObject(type);
 		ThreatRatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
 		String originalLabel = criterion.getLabel();
 		
@@ -144,7 +144,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 		
 		
-		CommandSetObjectData badId = new CommandSetObjectData(type, -99, field, value);
+		CommandSetObjectData badId = new CommandSetObjectData(type, new BaseId(-99), field, value);
 		try
 		{
 			project.executeCommand(badId);
@@ -169,7 +169,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
 	{
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
-		int createdId = project.createObject(type);
+		BaseId createdId = project.createObject(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -198,7 +198,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
 	{
 		int type = ObjectType.THREAT_RATING_CRITERION;
-		int createdId = project.createObject(type);
+		BaseId createdId = project.createObject(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -230,7 +230,7 @@ public class TestCommands extends EAMTestCase
 		int type = ObjectType.THREAT_RATING_CRITERION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("created id already set?", IdAssigner.INVALID_ID, cmd.getCreatedId());
+		assertEquals("created id already set?", new BaseId(), cmd.getCreatedId());
 
 		int oldCount = framework.getCriteria().length;
 		project.executeCommand(cmd);
@@ -258,7 +258,7 @@ public class TestCommands extends EAMTestCase
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("created id already set?", IdAssigner.INVALID_ID, cmd.getCreatedId());
+		assertEquals("created id already set?", new BaseId(), cmd.getCreatedId());
 
 		int oldCount = framework.getValueOptions().length;
 		project.executeCommand(cmd);
@@ -348,7 +348,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		int[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
+		BaseId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -374,12 +374,12 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetThreatRating() throws Exception
 	{
-		int threatId = 100;
-		int targetId = 101;
-		int criterionId = 102;
-		int valueId = 103;
+		BaseId threatId = new BaseId(100);
+		BaseId targetId = new BaseId(101);
+		BaseId criterionId = new BaseId(102);
+		BaseId valueId = new BaseId(103);
 		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		int defaultValueId = framework.getDefaultValueId();
+		BaseId defaultValueId = framework.getDefaultValueId();
 		
 		CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
 		project.executeCommand(cmd);
@@ -400,7 +400,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetNodeName() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		
 		String originalName = "original text";
 		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
@@ -432,7 +432,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetNodeComment() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		
 		String originalComment = "original comment";
 		CommandSetNodeComment starter = new CommandSetNodeComment(id, originalComment);
@@ -462,19 +462,19 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetNodePriority() throws Exception
 	{
-		int targetId = insertTarget();
+		BaseId targetId = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(targetId);
 		assertNull("New target should have a null priority level", node.getThreatRating());
 		
-		int interventionId = insertIntervention();
+		BaseId interventionId = insertIntervention();
 		node = project.getDiagramModel().getNodeById(interventionId);
 		assertNull("New intervention should have a null priority level", node.getThreatRating());
 		
-		int indirectId = insertIndirectFactor();
+		BaseId indirectId = insertIndirectFactor();
 		node = project.getDiagramModel().getNodeById(indirectId);
 		assertNull("New indirect factor should have a priority level as None", node.getThreatRating());
 
-		int id = insertDirectThreat();
+		BaseId id = insertDirectThreat();
 		node = project.getDiagramModel().getNodeById(id);
 		assertNull("New node should have priority level as None", node.getThreatRating());
 
@@ -487,7 +487,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandFactorSetType() throws Exception
 	{
-		int id = insertDirectThreat();
+		BaseId id = insertDirectThreat();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		
 		NodeType originalType = DiagramNode.TYPE_DIRECT_THREAT;
@@ -512,12 +512,12 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetIndicator() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertEquals("New target should not have an indicator", IdAssigner.INVALID_ID, node.getIndicatorId());
-		int originalIndicator = node.getIndicatorId();
+		assertEquals("New target should not have an indicator", new BaseId(), node.getIndicatorId());
+		BaseId originalIndicator = node.getIndicatorId();
 		
-		int indicator1 = 1;
+		BaseId indicator1 = new BaseId(1);
 		CommandSetIndicator cmd = new CommandSetIndicator(id, indicator1);
 		project.executeCommand(cmd);
 		assertEquals("didn't memorize old indicator?", originalIndicator, cmd.getPreviousIndicator());
@@ -536,7 +536,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetNodeObjectives() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		ObjectiveIds testObjectives = node.getObjectives();
 		assertEquals("Targets can't have Objectives", 0, testObjectives.size());
@@ -547,8 +547,8 @@ public class TestCommands extends EAMTestCase
 		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
 		assertEquals("size not zero?", 0, originalObjectives.size());
 
-		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE); 
-		int objectiveId2 = project.createObject(ObjectType.OBJECTIVE); 
+		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE); 
+		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE); 
 
 		ObjectiveIds objectiveIds = new ObjectiveIds();
 		objectiveIds.addId(objectiveId1);
@@ -577,13 +577,13 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetGoals() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertFalse("New target should not have a goal", node.getGoals().hasAnnotation());
 		GoalIds originalGoals = node.getGoals();
 		assertEquals("size not zero?", 0, originalGoals.size());
 
-		int[] allGoalIds = project.getGoalPool().getIds();
+		BaseId[] allGoalIds = project.getGoalPool().getIds();
 		Goal goal1 = project.getGoalPool().find(allGoalIds[1]);
 		Goal goal2 = project.getGoalPool().find(allGoalIds[2]);
 
@@ -614,7 +614,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandNodeResized() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		Dimension defaultSize = new Dimension(120, 60);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		Dimension originalSize = node.getSize();
@@ -643,9 +643,9 @@ public class TestCommands extends EAMTestCase
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		assertEquals("type not right?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
-		assertEquals("already have an id?", -1, cmd.getId());
+		assertEquals("already have an id?", new BaseId(), cmd.getId());
 		project.executeCommand(cmd);
-		int insertedId = cmd.getId();
+		BaseId insertedId = cmd.getId();
 		
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a target?", inserted.isTarget());
@@ -661,10 +661,10 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertIndirectFactor() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertEquals("already have an id?", -1, cmd.getId());
+		assertEquals("already have an id?", new BaseId(), cmd.getId());
 		
 		project.executeCommand(cmd);
-		int insertedId = cmd.getId();
+		BaseId insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an indirect factor?", inserted.isIndirectFactor());
 
@@ -678,10 +678,10 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertDirectThreat() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertEquals("already have an id?", -1, cmd.getId());
+		assertEquals("already have an id?", new BaseId(), cmd.getId());
 		
 		project.executeCommand(cmd);
-		int insertedId = cmd.getId();
+		BaseId insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a direct threat?", inserted.isDirectThreat());
 
@@ -695,10 +695,10 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertIntervention() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
-		assertEquals("already have an id?", -1, cmd.getId());
+		assertEquals("already have an id?", new BaseId(), cmd.getId());
 		
 		project.executeCommand(cmd);
-		int insertedId = cmd.getId();
+		BaseId insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an intervention?", inserted.isIntervention());
 
@@ -711,7 +711,7 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyUndoInsertNode(CommandInsertNode cmd) throws CommandFailedException
 	{
-		int insertedId = cmd.getId();
+		BaseId insertedId = cmd.getId();
 		cmd.undo(project);
 		try
 		{
@@ -743,11 +743,11 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		int from = insertIndirectFactor();
-		int to = insertTarget();
+		BaseId from = insertIndirectFactor();
+		BaseId to = insertTarget();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		project.executeCommand(cmd);
-		int linkageId = cmd.getLinkageId();
+		BaseId linkageId = cmd.getLinkageId();
 
 		DiagramLinkage inserted = model.getLinkageById(linkageId);
 		DiagramNode fromNode = inserted.getFromNode();
@@ -772,14 +772,14 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		int from = insertIntervention();
-		int to = insertIndirectFactor();
+		BaseId from = insertIntervention();
+		BaseId to = insertIndirectFactor();
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
 		CommandLinkNodes link = new CommandLinkNodes(from, to);
 		project.executeCommand(link);
-		int linkageId = link.getLinkageId();
+		BaseId linkageId = link.getLinkageId();
 	
 		CommandDeleteLinkage cmd = new CommandDeleteLinkage(linkageId);
 		project.executeCommand(cmd);
@@ -798,7 +798,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testDeleteNode() throws Exception
 	{
-		int id = insertTarget();
+		BaseId id = insertTarget();
 		CommandDeleteNode cmd = new CommandDeleteNode(id);
 		assertEquals("type not defaulting properly?", DiagramNode.TYPE_INVALID, cmd.getNodeType());
 		project.executeCommand(cmd);
@@ -820,7 +820,7 @@ public class TestCommands extends EAMTestCase
 		CommandUndo cmd = new CommandUndo();
 		assertTrue(cmd.isUndo());
 		assertFalse(cmd.isRedo());
-		int insertedId = insertTarget();
+		BaseId insertedId = insertTarget();
 		project.executeCommand(cmd);
 		try
 		{
@@ -890,7 +890,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testRedo() throws Exception
 	{
-		int insertedId = insertTarget();
+		BaseId insertedId = insertTarget();
 		CommandUndo undo = new CommandUndo();
 		project.executeCommand(undo);
 		CommandRedo redo = new CommandRedo();
@@ -972,35 +972,35 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
 	}
 	
-	private int insertTarget() throws Exception
+	private BaseId insertTarget() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
-	private int insertIndirectFactor() throws Exception
+	private BaseId insertIndirectFactor() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		return insertNode(type);
 	}
 
-	private int insertDirectThreat() throws Exception
+	private BaseId insertDirectThreat() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_DIRECT_THREAT;
 		return insertNode(type);
 	}
 
-	private int insertIntervention() throws Exception
+	private BaseId insertIntervention() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 
-	private int insertNode(NodeType type) throws CommandFailedException
+	private BaseId insertNode(NodeType type) throws CommandFailedException
 	{
 		CommandInsertNode insert = new CommandInsertNode(type);
 		project.executeCommand(insert);
-		int id = insert.getId();
+		BaseId id = insert.getId();
 		return id;
 	}
 	

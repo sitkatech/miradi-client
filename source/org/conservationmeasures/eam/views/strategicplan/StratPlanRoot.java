@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class StratPlanRoot extends StratPlanObject
@@ -45,9 +45,9 @@ public class StratPlanRoot extends StratPlanObject
 		return -1;
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
-		return IdAssigner.INVALID_ID;
+		return new BaseId();
 	}
 	
 	public boolean canInsertActivityHere()
@@ -57,7 +57,7 @@ public class StratPlanRoot extends StratPlanObject
 	
 	public void rebuild()
 	{
-		int[] objectiveIds = project.getObjectivePool().getIds();
+		BaseId[] objectiveIds = project.getObjectivePool().getIds();
 		Vector objectiveVector = new Vector();
 		for(int i = 0; i < objectiveIds.length; ++i)
 		{

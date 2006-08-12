@@ -9,11 +9,12 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ViewData extends EAMBaseObject
 {
-	public ViewData(int idToUse)
+	public ViewData(BaseId idToUse)
 	{
 		super(idToUse);
 		currentMode = "";
@@ -48,7 +49,7 @@ public class ViewData extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public Command[] buildCommandsToAddNode(int idToAdd) throws ParseException
+	public Command[] buildCommandsToAddNode(BaseId idToAdd) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];
@@ -57,7 +58,7 @@ public class ViewData extends EAMBaseObject
 		return new Command[] {cmd};
 	}
 
-	public Command[] buildCommandsToRemoveNode(int idToRemove) throws ParseException
+	public Command[] buildCommandsToRemoveNode(BaseId idToRemove) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -17,7 +18,7 @@ public class TestTask extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		int id = 5;
+		BaseId id = new BaseId(5);
 		Task task = new Task(id);
 		assertEquals("bad id?", id, task.getId());
 		
@@ -27,7 +28,7 @@ public class TestTask extends EAMTestCase
 		
 		Task sameTask = new Task(id);
 		assertEquals("same ids not equal?", task, sameTask);
-		Task otherTask = new Task(id+1);
+		Task otherTask = new Task(new BaseId(id.asInt()+1));
 		otherTask.setData(Task.TAG_LABEL, label);
 		assertNotEquals("different ids are equal?", task, otherTask);
 	}
@@ -38,7 +39,7 @@ public class TestTask extends EAMTestCase
 		sampleIds.add(1);
 		sampleIds.add(1527);
 		String sampleIdData = sampleIds.toString(); 
-		Task task = new Task(0);
+		Task task = new Task(new BaseId(0));
 		task.setData(Task.TAG_SUBTASK_IDS, sampleIdData);
 		assertEquals("bad data?", sampleIdData, task.getData(Task.TAG_SUBTASK_IDS));
 	}
@@ -105,9 +106,9 @@ public class TestTask extends EAMTestCase
 
 	private Task createBasicTree()
 	{
-		Task parent = new Task(1);
-		Task child1 = new Task(2);
-		Task child2 = new Task(3);
+		Task parent = new Task(new BaseId(1));
+		Task child1 = new Task(new BaseId(2));
+		Task child2 = new Task(new BaseId(3));
 		parent.addSubtaskId(child1.getId());
 		parent.addSubtaskId(child2.getId());
 		return parent;

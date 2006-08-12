@@ -8,11 +8,12 @@ package org.conservationmeasures.eam.objects;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ThreatRatingBundle
 {
-	public ThreatRatingBundle(int threatIdToUse, int targetIdToUse, int defaultValueIdToUse)
+	public ThreatRatingBundle(BaseId threatIdToUse, BaseId targetIdToUse, BaseId defaultValueIdToUse)
 	{
 		this();
 		
@@ -37,17 +38,17 @@ public class ThreatRatingBundle
 
 	private void pullDataFrom(JSONObject json)
 	{
-		threatId = json.getInt(TAG_THREAT_ID);
-		targetId = json.getInt(TAG_TARGET_ID);
-		defaultValueId = json.getInt(TAG_DEFAULT_VALUE_ID);
+		threatId = new BaseId(json.getInt(TAG_THREAT_ID));
+		targetId = new BaseId(json.getInt(TAG_TARGET_ID));
+		defaultValueId = new BaseId(json.getInt(TAG_DEFAULT_VALUE_ID));
 		
 		JSONObject values = json.getJSONObject(TAG_VALUES);
 		Iterator iter = values.keys();
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
-			int criterionId = Integer.parseInt(key);
-			int valueId = values.getInt(key);
+			BaseId criterionId = new BaseId(Integer.parseInt(key));
+			BaseId valueId = new BaseId(values.getInt(key));
 			setValueId(criterionId, valueId);
 		}
 	}
@@ -62,47 +63,47 @@ public class ThreatRatingBundle
 		map = new HashMap();
 	}
 	
-	public int getThreatId()
+	public BaseId getThreatId()
 	{
 		return threatId;
 	}
 	
-	public int getTargetId()
+	public BaseId getTargetId()
 	{
 		return targetId;
 	}
 	
-	public int getDefaultValueId()
+	public BaseId getDefaultValueId()
 	{
 		return defaultValueId;
 	}
 	
-	public int getValueId(int criterionId)
+	public BaseId getValueId(BaseId criterionId)
 	{
-		Object valueObject = map.get(new Integer(criterionId));
+		Object valueObject = map.get(criterionId);
 		if(valueObject == null)
 			return defaultValueId;
-		return ((Integer)valueObject).intValue();
+		return (BaseId)valueObject;
 	}
 	
-	public void setValueId(int criterionId, int valueId)
+	public void setValueId(BaseId criterionId, BaseId valueId)
 	{
-		map.put(new Integer(criterionId), new Integer(valueId));
+		map.put(criterionId, valueId);
 	}
 	
 	public JSONObject toJson() throws Exception
 	{
 		JSONObject json = new JSONObject();
-		json.put(TAG_THREAT_ID, getThreatId());
-		json.put(TAG_TARGET_ID, getTargetId());
-		json.put(TAG_DEFAULT_VALUE_ID, defaultValueId);
+		json.put(TAG_THREAT_ID, getThreatId().asInt());
+		json.put(TAG_TARGET_ID, getTargetId().asInt());
+		json.put(TAG_DEFAULT_VALUE_ID, defaultValueId.asInt());
 		
 		JSONObject values = new JSONObject();
 		Iterator iter = map.keySet().iterator();
 		while(iter.hasNext())
 		{
-			Integer criterion = (Integer)iter.next();
-			values.put(criterion.toString(), getValueId(criterion.intValue()));
+			BaseId criterion = (BaseId)iter.next();
+			values.put(criterion.toString(), getValueId(criterion).asInt());
 		}
 		json.put(TAG_VALUES, values);
 
@@ -114,8 +115,8 @@ public class ThreatRatingBundle
 	private static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
 	private static final String TAG_VALUES = "Values";
 	
-	int threatId;
-	int targetId;
-	int defaultValueId;
+	BaseId threatId;
+	BaseId targetId;
+	BaseId defaultValueId;
 	HashMap map;
 }

@@ -12,13 +12,13 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteIndicator extends ViewDoer
@@ -44,7 +44,7 @@ public class DeleteIndicator extends ViewDoer
 		
 		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
 		
-		int idToRemove = indicator.getId();
+		BaseId idToRemove = indicator.getId();
 		ConceptualModelNodeSet nodesThatUseThisIndicator = getProject().findNodesThatUseThisIndicator(idToRemove);
 		if(nodesThatUseThisIndicator.size() > 0)
 		{
@@ -66,7 +66,7 @@ public class DeleteIndicator extends ViewDoer
 			getProject().executeCommand(removeFromNodes[i]);
 		}
 		int type = indicator.getType();
-		int id = idToRemove;
+		BaseId id = idToRemove;
 		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Indicator.TAG_SHORT_LABEL, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, Indicator.TAG_METHOD, ""));
@@ -77,7 +77,7 @@ public class DeleteIndicator extends ViewDoer
 	}
 
 	
-	private Command[] createCommandsToRemoveIndicatorsFromNodes(int idToRemove, ConceptualModelNodeSet nodesThatUseThisIndicator) throws CommandFailedException
+	private Command[] createCommandsToRemoveIndicatorsFromNodes(BaseId idToRemove, ConceptualModelNodeSet nodesThatUseThisIndicator) throws CommandFailedException
 	{
 		ConceptualModelNode[] nodes = nodesThatUseThisIndicator.toNodeArray();
 		Command[] removeFromNodes = new Command[nodes.length];
@@ -86,7 +86,7 @@ public class DeleteIndicator extends ViewDoer
 			for(int i = 0; i < removeFromNodes.length; ++i)
 			{
 				ConceptualModelNode node = nodes[i];
-				removeFromNodes[i] = new CommandSetIndicator(node.getId(), IdAssigner.INVALID_ID);
+				removeFromNodes[i] = new CommandSetIndicator(node.getId(), new BaseId());
 			}
 		}
 		catch (Exception e)

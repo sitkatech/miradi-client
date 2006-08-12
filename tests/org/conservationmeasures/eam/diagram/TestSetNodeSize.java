@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -29,7 +30,7 @@ public class TestSetNodeSize extends TestCaseEnhanced
 
 		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
-		int id = insertCommand.getId();
+		BaseId id = insertCommand.getId();
 		DiagramNode found = model.getNodeById(id);
 		Dimension newSize = new Dimension(200,300);
 		Command setNodeSize = new CommandSetNodeSize(id, newSize, found.getPreviousSize());

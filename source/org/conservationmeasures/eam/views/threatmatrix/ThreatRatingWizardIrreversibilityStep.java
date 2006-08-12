@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
@@ -13,12 +14,12 @@ public class ThreatRatingWizardIrreversibilityStep extends ThreatRatingWizardSet
 	public static ThreatRatingWizardIrreversibilityStep create(ThreatRatingWizardPanel wizardToUse) throws Exception
 	{
 		ThreatRatingFramework framework = wizardToUse.getView().getProject().getThreatRatingFramework();
-		int criterionId = framework.findCriterionByLabel("Irreversibility").getId();
+		BaseId criterionId = framework.findCriterionByLabel("Irreversibility").getId();
 		ThreatRatingWizardIrreversibilityStep step = new ThreatRatingWizardIrreversibilityStep(wizardToUse, criterionId);
 		return step;
 	}
 	
-	private ThreatRatingWizardIrreversibilityStep(ThreatRatingWizardPanel wizardToUse, int criterionIdToUse) throws Exception
+	private ThreatRatingWizardIrreversibilityStep(ThreatRatingWizardPanel wizardToUse, BaseId criterionIdToUse) throws Exception
 	{
 		super(wizardToUse, criterionIdToUse);
 	}

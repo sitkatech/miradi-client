@@ -9,6 +9,7 @@ package org.conservationmeasures.eam.annotations;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.IdList;
 
 
@@ -35,11 +36,11 @@ public class GoalIds extends NodeAnnotationIds
 		int size = readCount(dataIn);
 		for(int i = 0; i < size; ++i)
 		{
-			addId(dataIn.readInt());
+			addId(new BaseId(dataIn.readInt()));
 		}
 	}
 	
-	public void setGoalId(int id)
+	public void setGoalId(BaseId id)
 	{
 		setAnnotationId(id);
 	}

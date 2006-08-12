@@ -6,14 +6,14 @@
 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 
 
 public class Objective extends EAMBaseObject
 {
-	public Objective(int id)
+	public Objective(BaseId id)
 	{
 		super(id);
 		shortLabel = "";
@@ -68,7 +68,7 @@ public class Objective extends EAMBaseObject
 	
 	public String toString()
 	{
-		if(getId() == IdAssigner.INVALID_ID)
+		if(getId().isInvalid())
 			return "(None)";
 		return shortLabel + ": " + getLabel();
 	}

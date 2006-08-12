@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ObjectivePool;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -26,7 +27,7 @@ public class ObjectiveManagementPanel extends ObjectManagementPanel
 			return null;
 		
 		ObjectivePool pool = getProject().getObjectivePool();
-		int objectiveId = pool.getIds()[row];
+		BaseId objectiveId = pool.getIds()[row];
 		Objective objective = pool.find(objectiveId);
 		return objective;
 	}

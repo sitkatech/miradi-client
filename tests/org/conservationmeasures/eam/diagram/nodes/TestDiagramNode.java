@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -70,8 +71,8 @@ public class TestDiagramNode extends EAMTestCase
 
 	public void testIndicator()
 	{
-		int indicator = directThreat.getIndicatorId();
-		assertEquals(IdAssigner.INVALID_ID, indicator);
+		BaseId indicator = directThreat.getIndicatorId();
+		assertEquals(new BaseId(), indicator);
 	}
 	
 	public void testGoals()

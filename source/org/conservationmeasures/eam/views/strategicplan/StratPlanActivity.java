@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.annotations.ResourcePool;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -57,7 +58,7 @@ public class StratPlanActivity extends StratPlanObject
 		return activity.getType();
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
 		return activity.getId();
 	}

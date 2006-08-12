@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.EAMObjectPool;
 
@@ -15,7 +16,7 @@ public class IndicatorPool extends EAMObjectPool
 		put(indicator.getId(), indicator);
 	}
 	
-	public Indicator find(int id)
+	public Indicator find(BaseId id)
 	{
 		return (Indicator)getRawObject(id);
 	}

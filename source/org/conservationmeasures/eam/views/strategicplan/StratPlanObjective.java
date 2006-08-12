@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -47,7 +48,7 @@ public class StratPlanObjective extends StratPlanObject
 		return objective.getType();
 	}
 
-	public int getId()
+	public BaseId getId()
 	{
 		return objective.getId();
 	}
@@ -81,7 +82,7 @@ public class StratPlanObjective extends StratPlanObject
 	
 	boolean doesChainContainObjective(ConceptualModelNode chainMember)
 	{
-		int objectiveId = objective.getId();
+		BaseId objectiveId = objective.getId();
 		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllNodesInChain(chainMember).toNodeArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{

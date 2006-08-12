@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -186,31 +187,31 @@ public class ProjectServer
 	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
 	{
 		getNodesDirectory().mkdirs();
-		int id = node.getId();
+		BaseId id = node.getId();
 		JSONFile.write(getNodeFile(id), node.toJson());
 		addToNodeManifest(id);
 	}
 	
-	public ConceptualModelNode readNode(int id) throws IOException, ParseException
+	public ConceptualModelNode readNode(BaseId id) throws IOException, ParseException
 	{
 		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
 	}
 	
-	public void deleteNode(int id) throws IOException, ParseException
+	public void deleteNode(BaseId id) throws IOException, ParseException
 	{
 		removeFromNodeManifest(id);
 		getNodeFile(id).delete();
 		
 	}
 	
-	private void addToNodeManifest(int idToAdd) throws IOException, ParseException
+	private void addToNodeManifest(BaseId idToAdd) throws IOException, ParseException
 	{
 		NodeManifest manifest = readNodeManifest();
 		manifest.put(idToAdd);
 		writeNodeManifest(manifest);
 	}
 	
-	private void removeFromNodeManifest(int idToRemove) throws IOException, ParseException
+	private void removeFromNodeManifest(BaseId idToRemove) throws IOException, ParseException
 	{
 		NodeManifest manifest = readNodeManifest();
 		manifest.remove(idToRemove);
@@ -237,17 +238,17 @@ public class ProjectServer
 	public void writeLinkage(ConceptualModelLinkage linkage) throws IOException, ParseException
 	{
 		getLinkagesDirectory().mkdirs();
-		int id = linkage.getId();
+		BaseId id = linkage.getId();
 		JSONFile.write(getLinkageFile(id), linkage.toJson());
 		addToLinkageManifest(id);
 	}
 
-	public ConceptualModelLinkage readLinkage(int id) throws IOException, ParseException
+	public ConceptualModelLinkage readLinkage(BaseId id) throws IOException, ParseException
 	{
 		return new ConceptualModelLinkage(JSONFile.read(getLinkageFile(id)));
 	}
 	
-	public void deleteLinkage(int id) throws IOException, ParseException
+	public void deleteLinkage(BaseId id) throws IOException, ParseException
 	{
 		removeFromLinkageManifest(id);
 		getLinkageFile(id).delete();
@@ -280,14 +281,14 @@ public class ProjectServer
 			model.fillFrom(JSONFile.read(diagramFile));
 	}
 	
-	private void removeFromLinkageManifest(int idToRemove) throws IOException, ParseException
+	private void removeFromLinkageManifest(BaseId idToRemove) throws IOException, ParseException
 	{
 		LinkageManifest manifest = readLinkageManifest();
 		manifest.remove(idToRemove);
 		writeLinkageManifest(manifest);
 	}
 	
-	private void addToLinkageManifest(int idToAdd) throws IOException, ParseException
+	private void addToLinkageManifest(BaseId idToAdd) throws IOException, ParseException
 	{
 		LinkageManifest manifest = readLinkageManifest();
 		manifest.put(idToAdd);
@@ -314,7 +315,7 @@ public class ProjectServer
 		JSONFile.write(getThreatBundleFile(bundle.getThreatId(), bundle.getTargetId()), bundle.toJson());
 	}
 	
-	public ThreatRatingBundle readThreatRatingBundle(int threatId, int targetId) throws Exception
+	public ThreatRatingBundle readThreatRatingBundle(BaseId threatId, BaseId targetId) throws Exception
 	{
 		File threatBundleFile = getThreatBundleFile(threatId, targetId);
 		if(!threatBundleFile.exists())
@@ -340,7 +341,7 @@ public class ProjectServer
 
 	
 	
-	public EAMObject readObject(int type, int id) throws Exception
+	public EAMObject readObject(int type, BaseId id) throws Exception
 	{
 		return EAMBaseObject.createFromJson(type, JSONFile.read(getObjectFile(type, id)));
 	}
@@ -352,7 +353,7 @@ public class ProjectServer
 		addToObjectManifest(object.getType(), object.getId());
 	}
 	
-	public void deleteObject(int type, int id) throws IOException, ParseException
+	public void deleteObject(int type, BaseId id) throws IOException, ParseException
 	{
 		removeFromObjectManifest(type, id);
 		getObjectFile(type, id).delete();
@@ -367,14 +368,14 @@ public class ProjectServer
 		return new ObjectManifest(rawManifest);
 	}
 	
-	void addToObjectManifest(int type, int idToAdd) throws IOException, ParseException
+	void addToObjectManifest(int type, BaseId idToAdd) throws IOException, ParseException
 	{
 		ObjectManifest manifest = readObjectManifest(type);
 		manifest.put(idToAdd);
 		writeObjectManifest(type, manifest);
 	}
 	
-	private void removeFromObjectManifest(int type, int idToRemove) throws IOException, ParseException
+	private void removeFromObjectManifest(int type, BaseId idToRemove) throws IOException, ParseException
 	{
 		ObjectManifest manifest = readObjectManifest(type);
 		manifest.remove(idToRemove);
@@ -442,7 +443,7 @@ public class ProjectServer
 		return new File(getJsonDirectory(), THREATFRAMEWORK_FILE);
 	}
 	
-	private File getThreatBundleFile(int threatId, int targetId)
+	private File getThreatBundleFile(BaseId threatId, BaseId targetId)
 	{
 		String bundleKey = ThreatRatingFramework.getBundleKey(threatId, targetId);
 		return new File(getThreatRatingsDirectory(), bundleKey);
@@ -453,9 +454,9 @@ public class ProjectServer
 		return new File(getNodesDirectory(), MANIFEST_FILE);
 	}
 	
-	File getNodeFile(int id)
+	File getNodeFile(BaseId id)
 	{
-		return new File(getNodesDirectory(), Integer.toString(id));
+		return new File(getNodesDirectory(), Integer.toString(id.asInt()));
 	}
 	
 	private File getLinkageManifestFile()
@@ -463,9 +464,9 @@ public class ProjectServer
 		return new File(getLinkagesDirectory(), MANIFEST_FILE);
 	}
 	
-	private File getLinkageFile(int id)
+	private File getLinkageFile(BaseId id)
 	{
-		return new File(getLinkagesDirectory(), Integer.toString(id));
+		return new File(getLinkagesDirectory(), Integer.toString(id.asInt()));
 	}
 	
 	File getDiagramFile()
@@ -473,9 +474,9 @@ public class ProjectServer
 		return new File(getDiagramsDirectory(), DIAGRAM_FILE);
 	}
 	
-	private File getObjectFile(int type, int id)
+	private File getObjectFile(int type, BaseId id)
 	{
-		return new File(getObjectDirectory(type), Integer.toString(id));
+		return new File(getObjectDirectory(type), Integer.toString(id.asInt()));
 	}
 	
 	private File getObjectManifestFile(int type)

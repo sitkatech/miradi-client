@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.project.IdAssigner;
@@ -17,21 +18,23 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodePriority extends Command 
 {
-	public CommandSetNodePriority(int idToUpdate, ThreatRatingValue priorityToUse)
+	public CommandSetNodePriority(BaseId idToUpdate, ThreatRatingValue priorityToUse)
 	{
 		id = idToUpdate;
 	}
 
 	public CommandSetNodePriority(DataInputStream dataIn) throws IOException
 	{
-		id = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
 		dataIn.readInt();
 		dataIn.readInt();
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getId());
+		dataOut.writeInt(getId().asInt());
+
+		// FIXME: This looks wrong! 2006-08-12 kbs
 		dataOut.writeInt(IdAssigner.INVALID_ID);
 		dataOut.writeInt(IdAssigner.INVALID_ID);
 	}
@@ -62,12 +65,12 @@ public class CommandSetNodePriority extends Command
 		return getCommandName() + ": " + id;
 	}
 	
-	int getId()
+	BaseId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetNodePriority";
 
-	int id;
+	BaseId id;
 }

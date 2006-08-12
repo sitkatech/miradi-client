@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -57,7 +58,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		int id = insertedNode.getId();
+		BaseId id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
@@ -74,7 +75,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		int id = insertedNode.getId();
+		BaseId id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
@@ -91,7 +92,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		int id = insertedNode.getId();
+		BaseId id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an direct Threat?", foundNode.isDirectThreat());
@@ -108,7 +109,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		int id = insertedNode.getId();
+		BaseId id = insertedNode.getId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());

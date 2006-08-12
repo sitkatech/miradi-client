@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
@@ -45,7 +46,7 @@ public class DeleteActivity extends ViewDoer
 		try
 		{
 			int type = activity.getType();
-			int id = activity.getId();
+			BaseId id = activity.getId();
 			
 			ConceptualModelIntervention intervention = getStrategicPlanPanel().getParentIntervention(activity);
 			CommandSetObjectData removeChild = CommandSetObjectData.createRemoveIdCommand(intervention, 

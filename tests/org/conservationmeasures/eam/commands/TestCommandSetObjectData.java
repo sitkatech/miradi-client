@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -18,8 +19,8 @@ public class TestCommandSetObjectData extends EAMTestCase
 
 	public void testListInsert() throws Exception
 	{
-		Task task = new Task(39);
-		int id1 = 75;
+		Task task = new Task(new BaseId(39));
+		BaseId id1 = new BaseId(75);
 		CommandSetObjectData fromEmpty = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id1, 0);
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
 		assertEquals("wrong id?", task.getId(), fromEmpty.getObjectId());
@@ -29,7 +30,7 @@ public class TestCommandSetObjectData extends EAMTestCase
 		assertEquals("wrong data value?", expected.toString(), fromEmpty.getDataValue());
 		task.addSubtaskId(id1);
 		
-		int id2 = 101;
+		BaseId id2 = new BaseId(101);
 		CommandSetObjectData insertAnother = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id2, 0);
 		expected.insertAt(id2, 0);
 		assertEquals("didn't insert to front of list?", expected.toString(), insertAnother.getDataValue());
@@ -37,11 +38,11 @@ public class TestCommandSetObjectData extends EAMTestCase
 	
 	public void testListRemove() throws Exception
 	{
-		int id2 = 99;
-		Task task = new Task(47);
-		task.addSubtaskId(12);
+		BaseId id2 = new BaseId(99);
+		Task task = new Task(new BaseId(47));
+		task.addSubtaskId(new BaseId(12));
 		task.addSubtaskId(id2);
-		task.addSubtaskId(747);
+		task.addSubtaskId(new BaseId(747));
 		CommandSetObjectData removeMiddle = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_SUBTASK_IDS, id2);
 		assertEquals("wrong type?", task.getType(), removeMiddle.getObjectType());
 		assertEquals("wrong id?", task.getId(), removeMiddle.getObjectId());

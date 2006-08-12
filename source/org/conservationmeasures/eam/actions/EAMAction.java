@@ -19,7 +19,7 @@ public abstract class EAMAction extends AbstractAction
 	public EAMAction(String label, Icon icon)
 	{
 		super(label, icon);
-		if(label == "") 
+		if(label.length() == 0) 
 			throw new RuntimeException("Actions must have a valid label");
 			
 	}

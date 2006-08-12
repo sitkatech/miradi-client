@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.EAMObjectPool;
 
@@ -15,14 +16,14 @@ public class ViewPool extends EAMObjectPool
 		put(viewData.getId(), viewData);
 	}
 	
-	public ViewData find(int id)
+	public ViewData find(BaseId id)
 	{
 		return (ViewData)getRawObject(id);
 	}
 
 	public ViewData findByLabel(String label)
 	{
-		int[] ids = getIds();
+		BaseId[] ids = getIds();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			ViewData viewData = find(ids[i]);

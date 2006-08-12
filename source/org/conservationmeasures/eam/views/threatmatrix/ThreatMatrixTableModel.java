@@ -11,9 +11,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class ThreatMatrixTableModel
@@ -23,7 +23,7 @@ public class ThreatMatrixTableModel
 		project = projectToShow;
 	}
 	
-	public ThreatRatingBundle getBundle(int threatId, int targetId) throws Exception
+	public ThreatRatingBundle getBundle(BaseId threatId, BaseId targetId) throws Exception
 	{
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
 			return null;
@@ -61,12 +61,12 @@ public class ThreatMatrixTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
-		int threatId = getDirectThreats()[threatIndex].getId();
-		int targetId = getTargets()[targetIndex].getId();
+		BaseId threatId = getDirectThreats()[threatIndex].getId();
+		BaseId targetId = getTargets()[targetIndex].getId();
 		return isActiveThreatIdTargetIdPair(threatId, targetId);
 	}
 
-	private boolean isActiveThreatIdTargetIdPair(int threatId, int targetId)
+	private boolean isActiveThreatIdTargetIdPair(BaseId threatId, BaseId targetId)
 	{
 		return project.isLinked(threatId, targetId);
 	}
@@ -77,7 +77,7 @@ public class ThreatMatrixTableModel
 		return cmNode.getLabel();
 	}
 	
-	public int getThreatId(int threatIndex)
+	public BaseId getThreatId(int threatIndex)
 	{
 		ConceptualModelNode cmNode = getThreatNode(threatIndex);
 		return cmNode.getId();
@@ -95,7 +95,7 @@ public class ThreatMatrixTableModel
 		return cmNode.getLabel();
 	}
 
-	public int getTargetId(int targetIndex)
+	public BaseId getTargetId(int targetIndex)
 	{
 		ConceptualModelNode cmNode = getTargetNode(targetIndex);
 		return cmNode.getId();
@@ -123,23 +123,23 @@ public class ThreatMatrixTableModel
 		return cmNode;
 	}
 	
-	public int findThreatByName(String threatName)
+	public BaseId findThreatByName(String threatName)
 	{
 		return findNodeByName(getDirectThreats(), threatName);
 	}
 	
-	public int findTargetByName(String targetName)
+	public BaseId findTargetByName(String targetName)
 	{
 		return findNodeByName(getTargets(), targetName);
 	}
 	
-	private int findNodeByName(ConceptualModelNode[] nodes, String name)
+	private BaseId findNodeByName(ConceptualModelNode[] nodes, String name)
 	{
 		for(int i = 0; i < nodes.length; ++i)
 			if(nodes[i].getLabel().equals(name))
 				return nodes[i].getId();
 		
-		return IdAssigner.INVALID_ID;
+		return new BaseId();
 	}
 	
 	Project project;

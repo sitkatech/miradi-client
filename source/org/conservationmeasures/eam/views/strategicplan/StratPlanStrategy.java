@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Task;
@@ -54,7 +55,7 @@ public class StratPlanStrategy extends StratPlanObject
 		return intervention.getType();
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
 		return intervention.getId();
 	}
@@ -70,7 +71,7 @@ public class StratPlanStrategy extends StratPlanObject
 		Vector activityVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
 		{
-			int activityId = intervention.getActivityIds().get(i);
+			BaseId activityId = intervention.getActivityIds().get(i);
 			Task activity = project.getTaskPool().find(activityId);
 			if(activity == null)
 			{

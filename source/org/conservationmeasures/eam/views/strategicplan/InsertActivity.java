@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -50,7 +51,7 @@ public class InsertActivity extends ViewDoer
 	private void doInsertActivity() throws CommandFailedException
 	{
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
-		int interventionId = insertAt.getInterventionId();
+		BaseId interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
 		ConceptualModelNode intervention = getProject().getNodePool().find(interventionId);
 
@@ -59,7 +60,7 @@ public class InsertActivity extends ViewDoer
 			getProject().executeCommand(new CommandBeginTransaction());
 			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
 			getProject().executeCommand(create);
-			int createdId = create.getCreatedId();
+			BaseId createdId = create.getCreatedId();
 
 			Task rootTask = getProject().getRootTask();
 			CommandSetObjectData addSubtask = CommandSetObjectData.createInsertIdCommand(rootTask, Task.TAG_SUBTASK_IDS, createdId, rootTask.getSubtaskCount());

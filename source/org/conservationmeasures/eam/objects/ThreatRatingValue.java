@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.ids.BaseId;
+
 public class ThreatRatingValue 
 {
 	public ThreatRatingValue(ThreatRatingValueOption value)
@@ -19,7 +21,7 @@ public class ThreatRatingValue
 		return rating;
 	}
 	
-	public int getRatingOptionId()
+	public BaseId getRatingOptionId()
 	{
 		return rating.getId();
 	}

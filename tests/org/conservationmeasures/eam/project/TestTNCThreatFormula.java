@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -161,15 +162,15 @@ public class TestTNCThreatFormula extends EAMTestCase
 	
 	public void testGetBundleValues()
 	{		
-		int scopeId = framework.findCriterionByLabel("Scope").getId();
-		int severityId = framework.findCriterionByLabel("Severity").getId();
-		int urgencyId = framework.findCriterionByLabel("Irreversibility").getId();
+		BaseId scopeId = framework.findCriterionByLabel("Scope").getId();
+		BaseId severityId = framework.findCriterionByLabel("Severity").getId();
+		BaseId urgencyId = framework.findCriterionByLabel("Irreversibility").getId();
 		
-		int veryHighId = framework.findValueOptionByNumericValue(4).getId();
-		int highId = framework.findValueOptionByNumericValue(3).getId();
-		int none = framework.findValueOptionByNumericValue(0).getId();
+		BaseId veryHighId = framework.findValueOptionByNumericValue(4).getId();
+		BaseId highId = framework.findValueOptionByNumericValue(3).getId();
+		BaseId none = framework.findValueOptionByNumericValue(0).getId();
 		
-		ThreatRatingBundle bundle = new ThreatRatingBundle(1, 2, none);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(new BaseId(1), new BaseId(2), none);
 		
 		assertEquals("empty bundle value not zero? ", 0, formula.computeBundleValue(bundle));
 

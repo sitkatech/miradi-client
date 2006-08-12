@@ -9,8 +9,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataHelper extends EAMTestCase 
@@ -50,7 +50,7 @@ public class TestNodeDataHelper extends EAMTestCase
 		assertEquals(originalNodeId1, dataHelper.getNewId(originalNodeId1));
 		assertEquals(originalNodeId2, dataHelper.getNewId(originalNodeId2));
 		assertEquals(originalNodeId3, dataHelper.getNewId(originalNodeId3));
-		assertEquals(IdAssigner.INVALID_ID, dataHelper.getNewId(unknownNodeId));
+		assertEquals(new BaseId(), dataHelper.getNewId(unknownNodeId));
 	}
 	
 	public void testSetNewId()
@@ -107,13 +107,13 @@ public class TestNodeDataHelper extends EAMTestCase
 	}
 	
 
-	final int originalNodeId1 = 1;
-	final int originalNodeId2 = 2;
-	final int originalNodeId3 = 3;
-	final int newNodeId1 = 5;
-	final int newNodeId2 = 6;
-	final int newNodeId3 = 7;
-	final int unknownNodeId = 10;
+	final BaseId originalNodeId1 = new BaseId(1);
+	final BaseId originalNodeId2 = new BaseId(2);
+	final BaseId originalNodeId3 = new BaseId(3);
+	final BaseId newNodeId1 = new BaseId(5);
+	final BaseId newNodeId2 = new BaseId(6);
+	final BaseId newNodeId3 = new BaseId(7);
+	final BaseId unknownNodeId = new BaseId(10);
 	final int nodeLocation1x = 20;
 	final int nodeLocation1y = 50;
 	final int nodeLocation2x = 5;

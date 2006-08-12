@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.annotations.GoalPool;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -66,7 +67,7 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getThreatRatingFramework();
 	}
 
-	public DiagramNode createNode(int id) throws Exception
+	public DiagramNode createNode(BaseId id) throws Exception
 	{
 		ConceptualModelNode cmObject = getNodePool().find(id);
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
@@ -204,9 +205,9 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getNodeId(direction) == startingNode.getId())
+			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
 			{
-				int downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
+				BaseId downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
 				ConceptualModelNode downstreamNode = getNodePool().find(downstreamNodeId);
 				results.attemptToAdd(downstreamNode);
 			}
@@ -224,7 +225,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < linkagePool.getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getNodeId(direction) == startingNode.getId())
+			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
 			{
 				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 				unprocessedNodes.attemptToAdd(linkedNode);
@@ -238,7 +239,7 @@ public class DiagramModel extends DefaultGraphModel
 			for(int i = 0; i < linkagePool.getIds().length; ++i)
 			{
 				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-				if(thisLinkage.getNodeId(direction) == thisNode.getId())
+				if(thisLinkage.getNodeId(direction).equals(thisNode.getId()))
 				{
 					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 					unprocessedNodes.attemptToAdd(linkedNode);
@@ -250,17 +251,17 @@ public class DiagramModel extends DefaultGraphModel
 		return linkedNodes;
 	}
 
-	public void moveNodes(int deltaX, int deltaY, int[] ids) throws Exception
+	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception
 	{
 		moveNodesWithoutNotification(deltaX, deltaY, ids);
 		nodesWereMoved(ids);
 	}
 
-	public void moveNodesWithoutNotification(int deltaX, int deltaY, int[] ids) throws Exception
+	public void moveNodesWithoutNotification(int deltaX, int deltaY, BaseId[] ids) throws Exception
 	{
 		for(int i = 0; i < ids.length; ++i)
 		{
-			int id = ids[i];
+			BaseId id = ids[i];
 			DiagramNode nodeToMove = getNodeById(id);
 			Point oldLocation = nodeToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
@@ -270,7 +271,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public void nodesWereMoved(int[] ids)
+	public void nodesWereMoved(BaseId[] ids)
 	{
 		for(int i=0; i < ids.length; ++i)
 		{
@@ -307,12 +308,12 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
-	public boolean hasNode(int id)
+	public boolean hasNode(BaseId id)
 	{
 		return (rawGetNodeById(id) != null);
 	}
 	
-	public DiagramNode getNodeById(int id) throws Exception
+	public DiagramNode getNodeById(BaseId id) throws Exception
 	{
 		DiagramNode node = rawGetNodeById(id);
 		if(node == null)
@@ -320,12 +321,12 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
-	private DiagramNode rawGetNodeById(int id)
+	private DiagramNode rawGetNodeById(BaseId id)
 	{
 		return cellInventory.getNodeById(id);
 	}
 
-	public DiagramLinkage getLinkageById(int id) throws Exception
+	public DiagramLinkage getLinkageById(BaseId id) throws Exception
 	{
 		DiagramLinkage linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
@@ -353,12 +354,12 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getAllLinkages();
 	}
 	
-	public Goal getGoalById(int id)
+	public Goal getGoalById(BaseId id)
 	{
 		return getGoalPool().find(id);
 	}
 	
-	public Objective getObjectiveById(int id)
+	public Objective getObjectiveById(BaseId id)
 	{
 		return getObjectivePool().find(id);
 	}
@@ -370,7 +371,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < nodes.size(); ++i)
 		{
 			DiagramNode node = (DiagramNode)nodes.get(i);
-			nodeMap.put(Integer.toString(node.getId()), node.toJson());
+			nodeMap.put(Integer.toString(node.getId().asInt()), node.toJson());
 		}
 		JSONObject json = new JSONObject();
 		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);
@@ -396,7 +397,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < keys.length(); ++i)
 		{
 			String key = keys.getString(i);
-			int id = Integer.parseInt(key);
+			BaseId id = new BaseId(Integer.parseInt(key));
 			JSONObject nodeJson = nodeMap.getJSONObject(key);
 
 			ConceptualModelNode cmObject = getNodePool().find(id);
@@ -408,7 +409,7 @@ public class DiagramModel extends DefaultGraphModel
 			addNodeToModel(node);
 		}
 		
-		int[] nodeIds = getNodePool().getIds();
+		BaseId[] nodeIds = getNodePool().getIds();
 		for(int i = 0;i < nodeIds.length; ++i)
 		{
 			DiagramNode node = getNodeById(nodeIds[i]);
@@ -430,7 +431,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinkagesToModel() throws Exception
 	{
-		int[] linkageIds = getLinkagePool().getIds();
+		BaseId[] linkageIds = getLinkagePool().getIds();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
 			ConceptualModelLinkage cmLinkage = getLinkagePool().find(linkageIds[i]);

@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class DataMap extends JSONObject
@@ -21,6 +22,11 @@ public class DataMap extends JSONObject
 	public DataMap(JSONObject copyFrom) throws ParseException
 	{
 		super(copyFrom.toString());
+	}
+	
+	public void putId(String tag, BaseId id)
+	{
+		putInt(tag, id.asInt());
 	}
 	
 	public void putInt(String tag, int value)
@@ -47,6 +53,11 @@ public class DataMap extends JSONObject
 		size.put(TAG_WIDTH, value.width);
 		size.put(TAG_HEIGHT, value.height);
 		put(tag, size);
+	}
+	
+	public BaseId getId(String tag)
+	{
+		return new BaseId(getInt(tag));
 	}
 	
 	public int getInt(String tag)

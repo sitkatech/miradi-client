@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -230,7 +231,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode) allNodes.get(i);
-				int id = node.getId();
+				BaseId id = node.getId();
 				if (!visibleIds.contains(id))
 					idsToHide.add(id);
 			}
@@ -248,13 +249,13 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		for(int i = 0; i < chainIds.size(); ++i)
 		{
-			int nodeId = chainIds.get(i);
+			BaseId nodeId = chainIds.get(i);
 			ConceptualModelNode node = getProject().findNode(nodeId);
 			ConceptualModelNodeSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodeIds(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{
-				int possibleInterventionId = ((ConceptualModelNode)iter.next()).getId();
+				BaseId possibleInterventionId = ((ConceptualModelNode)iter.next()).getId();
 				if(chainIds.contains(possibleInterventionId))
 					continue;
 				ConceptualModelNode possibleIntervention = getProject().findNode(possibleInterventionId);
@@ -373,7 +374,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
 			return;
 		
-		int clusterId = cmd.getObjectId();
+		BaseId clusterId = cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
 		DiagramModel model = getDiagramComponent().getDiagramModel();
 		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
@@ -382,7 +383,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		updateCluster(cluster.getId(), newMembers, oldMembers);
 	}
 
-	private void updateCluster(int clusterId, IdList newMembers, IdList oldMembers) throws Exception
+	private void updateCluster(BaseId clusterId, IdList newMembers, IdList oldMembers) throws Exception
 	{
 		IdList idsToAdd = new IdList(newMembers);
 		idsToAdd.subtract(oldMembers);
@@ -395,14 +396,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
-			int memberId = idsToRemove.get(i);
+			BaseId memberId = idsToRemove.get(i);
 			DiagramNode memberNode = model.getNodeById(memberId);
 			getProject().removeNodeFromCluster(cluster, memberNode);
 		}
 		
 		for(int i = 0; i < idsToAdd.size(); ++i)
 		{
-			int memberId = idsToAdd.get(i);
+			BaseId memberId = idsToAdd.get(i);
 			DiagramNode memberNode = model.getNodeById(memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}

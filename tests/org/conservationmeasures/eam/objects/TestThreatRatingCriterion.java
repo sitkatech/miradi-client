@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestThreatRatingCriterion extends EAMTestCase
@@ -22,7 +23,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	
 	public void testGetDataBadFieldTag()
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
 		try
 		{
@@ -36,7 +37,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	
 	public void testSetDataBadFieldTag() throws Exception
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
 		try
 		{
@@ -50,7 +51,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 
 	private void verifySetGetData(String tag, String value) throws Exception
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
 		option.setData(tag, value);
 		assertEquals(value, option.getData(tag));
@@ -58,13 +59,13 @@ public class TestThreatRatingCriterion extends EAMTestCase
 
 	public void testEquals() throws Exception
 	{
-		int id = 32;
+		BaseId id = new BaseId(32);
 		String label = "Text";
 		ThreatRatingCriterion a = new ThreatRatingCriterion(id);
 		a.setData(ThreatRatingCriterion.TAG_LABEL, label);
 		ThreatRatingCriterion b = new ThreatRatingCriterion(id);
 		b.setData(ThreatRatingCriterion.TAG_LABEL, "other label");
-		ThreatRatingCriterion c = new ThreatRatingCriterion(id + 1);
+		ThreatRatingCriterion c = new ThreatRatingCriterion(new BaseId(id.asInt() + 1));
 		c.setData(ThreatRatingCriterion.TAG_LABEL, label);
 		assertEquals("id same not good enough?", a, b);
 		assertNotEquals("id different still equals?", a, c);

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class Manifest
@@ -29,16 +30,16 @@ public class Manifest
 		return data.getString(ProjectServer.OBJECT_TYPE);
 	}
 	
-	public int[] getAllKeys()
+	public BaseId[] getAllKeys()
 	{
-		int[] keys = new int[size()];
+		BaseId[] keys = new BaseId[size()];
 		int at = 0;
 		Iterator iter = data.keys();
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
 			if(!key.equals(ProjectServer.OBJECT_TYPE))
-				keys[at++] = Integer.parseInt(key);
+				keys[at++] = new BaseId(Integer.parseInt(key));
 		}
 		
 		return keys;
@@ -47,6 +48,11 @@ public class Manifest
 	private void put(String key)
 	{
 		data.put(key, true);
+	}
+	
+	public void put(BaseId key)
+	{
+		put(key.asInt());
 	}
 	
 	public void put(int key)
@@ -58,6 +64,11 @@ public class Manifest
 	{
 		return data.has(key);
 	}
+	
+	public boolean has(BaseId id)
+	{
+		return has(id.asInt());
+	}
 
 	public boolean has(int key)
 	{
@@ -67,6 +78,11 @@ public class Manifest
 	private void remove(String key)
 	{
 		data.remove(key);
+	}
+	
+	public void remove(BaseId key)
+	{
+		remove(key.asInt());
 	}
 	
 	public void remove(int key)

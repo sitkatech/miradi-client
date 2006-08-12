@@ -7,11 +7,12 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ConceptualModelFactor extends ConceptualModelNode
 {
-	public ConceptualModelFactor(int idToUse, NodeType nodeType)
+	public ConceptualModelFactor(BaseId idToUse, NodeType nodeType)
 	{
 		super(idToUse, nodeType);
 	}

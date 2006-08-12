@@ -8,12 +8,13 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 
 public class ConceptualModelIntervention extends ConceptualModelNode
 {
-	public ConceptualModelIntervention(int idToUse)
+	public ConceptualModelIntervention(BaseId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
@@ -48,12 +49,12 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		return STATUS_DRAFT.equals(status);
 	}
 	
-	public void insertActivityId(int activityId, int insertAt)
+	public void insertActivityId(BaseId activityId, int insertAt)
 	{
 		activityIds.insertAt(activityId, insertAt);
 	}
 	
-	public void removeActivityId(int activityId)
+	public void removeActivityId(BaseId activityId)
 	{
 		activityIds.removeId(activityId);
 	}

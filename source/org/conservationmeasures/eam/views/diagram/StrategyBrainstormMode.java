@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -48,7 +49,7 @@ public class StrategyBrainstormMode extends ViewDoer
 		try
 		{
 			Project project = getMainWindow().getProject();
-			int viewId = getCurrentViewId();
+			BaseId viewId = getCurrentViewId();
 
 			DiagramNode[] selectedNodes = project.getOnlySelectedNodes();
 			IdList selectedNodeIds = new IdList();
@@ -71,7 +72,7 @@ public class StrategyBrainstormMode extends ViewDoer
 		}
 	}
 
-	private int getCurrentViewId() throws Exception
+	private BaseId getCurrentViewId() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
 		return viewData.getId();

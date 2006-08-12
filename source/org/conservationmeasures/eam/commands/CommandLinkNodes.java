@@ -10,27 +10,27 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandLinkNodes extends Command
 {
-	public CommandLinkNodes(int fromId, int toId)
+	public CommandLinkNodes(BaseId fromId, BaseId toId)
 	{
 		this.fromId = fromId;
 		this.toId = toId;
-		linkageId = IdAssigner.INVALID_ID;
+		linkageId = new BaseId();
 	}
 	
 	public CommandLinkNodes(DataInputStream dataIn) throws IOException
 	{
-		fromId = dataIn.readInt();
-		toId = dataIn.readInt();
-		linkageId = dataIn.readInt();
+		fromId = new BaseId(dataIn.readInt());
+		toId = new BaseId(dataIn.readInt());
+		linkageId = new BaseId(dataIn.readInt());
 	}
 	
-	public int getLinkageId()
+	public BaseId getLinkageId()
 	{
 		return linkageId;
 	}
@@ -74,17 +74,17 @@ public class CommandLinkNodes extends Command
 
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getFromId());
-		dataOut.writeInt(getToId());
-		dataOut.writeInt(getLinkageId());
+		dataOut.writeInt(getFromId().asInt());
+		dataOut.writeInt(getToId().asInt());
+		dataOut.writeInt(getLinkageId().asInt());
 	}
 	
-	public int getFromId()
+	public BaseId getFromId()
 	{
 		return fromId;
 	}
 	
-	public int getToId()
+	public BaseId getToId()
 	{
 		return toId;
 	}
@@ -92,7 +92,7 @@ public class CommandLinkNodes extends Command
 
 	public static final String COMMAND_NAME = "LinkNodes";
 
-	int fromId;
-	int toId;
-	int linkageId;
+	BaseId fromId;
+	BaseId toId;
+	BaseId linkageId;
 }

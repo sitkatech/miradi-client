@@ -123,6 +123,21 @@ public class ConceptualModelNodeSet implements Collection
 	{
 		return nodes.hashCode();
 	}
+	
+	public String toString()
+	{
+		StringBuffer result = new StringBuffer();
+		result.append("[");
+		Iterator iter = iterator();
+		while(iter.hasNext())
+		{
+			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			result.append(node.toString());
+			result.append(",");
+		}
+		result.append("]");
+		return result.toString();
+	}
 
 	HashSet nodes;
 

@@ -5,11 +5,12 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ThreatRatingCriterion extends EAMBaseObject
 {
-	public ThreatRatingCriterion(int idToUse)
+	public ThreatRatingCriterion(BaseId idToUse)
 	{
 		super(idToUse);
 	}

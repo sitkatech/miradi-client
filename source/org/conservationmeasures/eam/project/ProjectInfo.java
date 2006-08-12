@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.text.ParseException;
 import java.util.NoSuchElementException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.json.JSONObject;
 
@@ -24,7 +25,7 @@ public class ProjectInfo
 		annotationIdAssigner = new IdAssigner();
 		currentView = getDefaultCurrentView();
 		projectData = new JSONObject();
-		rootTaskId = IdAssigner.INVALID_ID;
+		rootTaskId = new BaseId();
 	}
 
 	private String getDefaultCurrentView()
@@ -37,12 +38,12 @@ public class ProjectInfo
 		return nodeIdAssigner;
 	}
 	
-	public int obtainRealNodeId(int proposedId)
+	public BaseId obtainRealNodeId(BaseId proposedId)
 	{
 		return nodeIdAssigner.obtainRealId(proposedId);
 	}
 	
-	public int obtainRealLinkageId(int proposedId)
+	public BaseId obtainRealLinkageId(BaseId proposedId)
 	{
 		return nodeIdAssigner.obtainRealId(proposedId);
 	}
@@ -62,12 +63,12 @@ public class ProjectInfo
 		currentView = newCurrentView;
 	}
 	
-	public int getRootTaskId()
+	public BaseId getRootTaskId()
 	{
 		return rootTaskId;
 	}
 	
-	public void setRootTaskId(int newRootTaskId)
+	public void setRootTaskId(BaseId newRootTaskId)
 	{
 		rootTaskId = newRootTaskId;
 	}
@@ -83,7 +84,7 @@ public class ProjectInfo
 		json.put(TAG_CURRENT_VIEW, currentView);
 		json.put(TAG_HIGHEST_NODE_ID, nodeIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_ANNOTATION_ID, annotationIdAssigner.getHighestAssignedId());
-		json.put(TAG_ROOT_TASK_ID, rootTaskId);
+		json.put(TAG_ROOT_TASK_ID, rootTaskId.asInt());
 		json.put(TAG_PROJECT_DATA, projectData);
 		return json;
 	}
@@ -94,7 +95,7 @@ public class ProjectInfo
 		currentView = copyFrom.optString(TAG_CURRENT_VIEW, getDefaultCurrentView());
 		nodeIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_NODE_ID, IdAssigner.INVALID_ID));
 		annotationIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_ANNOTATION_ID, IdAssigner.INVALID_ID));
-		rootTaskId = copyFrom.optInt(TAG_ROOT_TASK_ID, IdAssigner.INVALID_ID);
+		rootTaskId = new BaseId(copyFrom.optInt(TAG_ROOT_TASK_ID, IdAssigner.INVALID_ID));
 		JSONObject rawProjectData = copyFrom.optJSONObject(TAG_PROJECT_DATA);
 		if(rawProjectData == null)
 			rawProjectData = new JSONObject();
@@ -110,7 +111,7 @@ public class ProjectInfo
 	IdAssigner nodeIdAssigner;
 	IdAssigner annotationIdAssigner;
 	String currentView;
-	int rootTaskId;
+	BaseId rootTaskId;
 	JSONObject projectData;
 
 }

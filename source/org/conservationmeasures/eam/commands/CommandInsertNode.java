@@ -11,8 +11,8 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -21,13 +21,13 @@ public class CommandInsertNode extends Command
 	public CommandInsertNode(NodeType nodeType)
 	{
 		type = nodeType;
-		insertedId = IdAssigner.INVALID_ID;
+		insertedId = new BaseId();
 	}
 	
 	public CommandInsertNode(DataInputStream dataIn) throws IOException
 	{
 		type = readNodeType(dataIn);
-		insertedId = dataIn.readInt();
+		insertedId = new BaseId(dataIn.readInt());
 	}
 	
 	public NodeType getNodeType()
@@ -35,7 +35,7 @@ public class CommandInsertNode extends Command
 		return type;
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
 		return insertedId;
 	}
@@ -79,12 +79,12 @@ public class CommandInsertNode extends Command
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		writeNodeType(dataOut, type);
-		dataOut.writeInt(insertedId);
+		dataOut.writeInt(insertedId.asInt());
 	}
 	
 
 	public static final String COMMAND_NAME = "CommandInsertNode";
 
 	private NodeType type;
-	private int insertedId;
+	private BaseId insertedId;
 }

@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -35,7 +36,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -91,7 +91,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject;
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
 		return getWrappedId();
 	}
@@ -101,7 +101,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return getWrappedType();
 	}
 	
-	public int getWrappedId()
+	public BaseId getWrappedId()
 	{
 		return underlyingObject.getId();
 	}
@@ -147,12 +147,12 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.canHavePriority();
 	}
 	
-	public int getIndicatorId()
+	public BaseId getIndicatorId()
 	{
 		return underlyingObject.getIndicatorId();
 	}
 	
-	public void setIndicator(int indicatorToUse)
+	public void setIndicator(BaseId indicatorToUse)
 	{
 		underlyingObject.setIndicatorId(indicatorToUse);
 	}
@@ -234,7 +234,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int numberOfAnnotations = 0;
 		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
 
-		if(getIndicatorId() != IdAssigner.INVALID_ID && numberOfAnnotations == 0)
+		if(!getIndicatorId().isInvalid() && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;
@@ -247,7 +247,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		{
 			for(int i = 0; i < annotations.size(); ++i)
 			{
-				if(annotations.getId(i) >= 0)
+				if(annotations.getId(i).asInt() >= 0)
 					++numberOfAnnotations;
 			}
 		}
@@ -389,7 +389,7 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	int getAnnotationLeftOffset()
 	{
-		if(getIndicatorId() == IdAssigner.INVALID_ID)
+		if(getIndicatorId().isInvalid())
 			return MultilineCellRenderer.INDICATOR_WIDTH / 2;
 		
 		int indicatorOffset = getInsetDimension().width - MultilineCellRenderer.INDICATOR_WIDTH / 2;
@@ -427,7 +427,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int y = getLocation().y;
 		return new Command[] {
 			new CommandSetNodeSize(getId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new int[] {getId()}),
+			new CommandDiagramMove(-x, -y, new BaseId[] {getId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
@@ -435,7 +435,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = new NodeDataMap();
-		dataMap.putInt(TAG_ID, getId());
+		dataMap.putId(TAG_ID, getId());
 		
 		// FIXME: This is a crude hack, to preserve the node type information
 		// here so we can re-create the node if it gets pasted. 
@@ -455,7 +455,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public JSONObject toJson()
 	{
 		DataMap dataMap = new DataMap();
-		dataMap.putInt(TAG_ID, getId());
+		dataMap.putId(TAG_ID, getId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
 		return dataMap;

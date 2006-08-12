@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestThreatRatingValueOption extends EAMTestCase
@@ -18,7 +19,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		int id = 42;
+		BaseId id = new BaseId(42);
 		ThreatRatingValueOption empty = new ThreatRatingValueOption(id);
 		assertEquals("didn't set id?", id, empty.getId());
 		assertEquals("wrong default label?", "Unknown", empty.getLabel());
@@ -46,7 +47,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	
 	public void testGetDataBadFieldTag() throws Exception
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
 		try
 		{
@@ -60,7 +61,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	
 	public void testSetDataBadFieldTag() throws Exception
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
 		try
 		{
@@ -74,7 +75,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 
 	private void verifySetGetData(String tag, String value) throws Exception
 	{
-		int id = 6;
+		BaseId id = new BaseId(6);
 		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
 		option.setData(tag, value);
 		assertEquals(value, option.getData(tag));
@@ -82,10 +83,10 @@ public class TestThreatRatingValueOption extends EAMTestCase
 
 	public void testEquals() throws Exception
 	{
-		int id = 17;
+		BaseId id = new BaseId(17);
 		ThreatRatingValueOption a = new ThreatRatingValueOption(id, "abc", 1, Color.RED);
 		ThreatRatingValueOption b = new ThreatRatingValueOption(id, "def", 2, Color.BLUE);
-		ThreatRatingValueOption c = new ThreatRatingValueOption(id + 1, "abc", 1, Color.RED);
+		ThreatRatingValueOption c = new ThreatRatingValueOption(new BaseId(id.asInt() + 1), "abc", 1, Color.RED);
 		assertTrue("same id isn't equal?", a.equals(b));
 		assertTrue("same id isn't equal (reversed)?", b.equals(a));
 		assertFalse("not comparing id?", a.equals(c));
@@ -95,7 +96,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		int id = 283;
+		BaseId id = new BaseId(283);
 		String label = "eifjjfi";
 		int numeric = -234;
 		Color color = Color.GRAY;

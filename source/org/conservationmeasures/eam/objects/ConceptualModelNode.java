@@ -9,19 +9,20 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 abstract public class ConceptualModelNode extends EAMBaseObject
 {
-	protected ConceptualModelNode(int idToUse, NodeType nodeType)
+	protected ConceptualModelNode(BaseId idToUse, NodeType nodeType)
 	{
 		super(idToUse);
 		type = nodeType;
 		
 		comment = "";
-		indicator = IdAssigner.INVALID_ID;
+		indicator = new BaseId();
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
 	}
@@ -32,17 +33,17 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		type = nodeType;
 
 		comment = json.optString(TAG_COMMENT);
-		setIndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID));
+		setIndicatorId(new BaseId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
 		
 		goals = new GoalIds();
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
 		for(int i = 0; i < goalIds.length(); ++i)
-			goals.addId(goalIds.getInt(i));
+			goals.addId(new BaseId(goalIds.getInt(i)));
 		
 		objectives = new ObjectiveIds();
 		JSONArray objectiveIds = json.getJSONArray(TAG_OBJECTIVE_IDS);
 		for(int i = 0; i < objectiveIds.length(); ++i)
-			objectives.addId(objectiveIds.getInt(i));
+			objectives.addId(new BaseId(objectiveIds.getInt(i)));
 	}
 	
 	public abstract JSONObject toJson();
@@ -77,12 +78,12 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return false;
 	}
 
-	public int getIndicatorId()
+	public BaseId getIndicatorId()
 	{
 		return indicator;
 	}
 	
-	public void setIndicatorId(int indicatorToUse)
+	public void setIndicatorId(BaseId indicatorToUse)
 	{
 		indicator = indicatorToUse;
 	}
@@ -170,7 +171,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_COMMENT))
 			return getComment();
 		if(fieldTag.equals(TAG_INDICATOR_ID))
-			return Integer.toString(getIndicatorId());
+			return Integer.toString(getIndicatorId().asInt());
 		if(fieldTag.equals(TAG_GOAL_IDS))
 			return goals.toString();
 		if(fieldTag.equals(TAG_OBJECTIVE_IDS))
@@ -186,7 +187,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_COMMENT))
 			setComment((String)dataValue);
 		else if(fieldTag.equals(TAG_INDICATOR_ID))
-			setIndicatorId(Integer.parseInt((String)dataValue));
+			setIndicatorId(new BaseId(Integer.parseInt((String)dataValue)));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
 			setGoals(new GoalIds(new IdList((String)dataValue)));
 		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
@@ -215,22 +216,22 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		JSONObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, typeString);
 		json.put(TAG_COMMENT, getComment());
-		json.put(TAG_INDICATOR_ID, getIndicatorId());
+		json.put(TAG_INDICATOR_ID, getIndicatorId().asInt());
 		
 		JSONArray goalIds = new JSONArray();
 		for(int i = 0; i < goals.size(); ++i)
-			goalIds.appendInt(goals.getId(i));
+			goalIds.appendInt(goals.getId(i).asInt());
 		json.put(TAG_GOAL_IDS, goalIds);
 		
 		JSONArray objectiveIds = new JSONArray();
 		for(int i = 0; i < objectives.size(); ++i)
-			objectiveIds.appendInt(objectives.getId(i));
+			objectiveIds.appendInt(objectives.getId(i).asInt());
 		json.put(TAG_OBJECTIVE_IDS, objectiveIds);
 		
 		return json;
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(int idToCreate, NodeType nodeType)
+	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, NodeType nodeType)
 	{
 		if(nodeType.isIntervention())
 			return new ConceptualModelIntervention(idToCreate);
@@ -258,7 +259,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	private NodeType type;
 	private String comment;
 
-	private int indicator;
+	private BaseId indicator;
 	private ObjectiveIds objectives;
 	private GoalIds goals;
 }

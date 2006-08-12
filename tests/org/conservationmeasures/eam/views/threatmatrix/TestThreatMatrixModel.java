@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -80,16 +80,16 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 	
 	public void testIsActiveCell() throws Exception
 	{
-		int threat1 = createThreat("threat one");
-		int threat2 = createThreat("threat two");
+		BaseId threat1 = createThreat("threat one");
+		BaseId threat2 = createThreat("threat two");
 		createThreat("threat three");
-		int target1 = createTarget("target one");
-		int target2 = createTarget("target two");
+		BaseId target1 = createTarget("target one");
+		BaseId target2 = createTarget("target two");
 		createTarget("target three");
 		
-		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target1);
-		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat1, target2);
-		project.insertLinkageAtId(IdAssigner.INVALID_ID, threat2, target2);
+		project.insertLinkageAtId(new BaseId(), threat1, target1);
+		project.insertLinkageAtId(new BaseId(), threat1, target2);
+		project.insertLinkageAtId(new BaseId(), threat2, target2);
 
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -109,20 +109,20 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		assertFalse(model.isActiveCell(row3, col3));
 	}
 	
-	private int createThreat(String name) throws Exception
+	private BaseId createThreat(String name) throws Exception
 	{
 		return createNode(new NodeTypeDirectThreat(), name);
 	}
 
-	private int createTarget(String name) throws Exception
+	private BaseId createTarget(String name) throws Exception
 	{
 		return createNode(new NodeTypeTarget(), name);
 	}
 
-	private int createNode(NodeType type, String name) throws Exception
+	private BaseId createNode(NodeType type, String name) throws Exception
 	{
-		int id = project.insertNodeAtId(type, IdAssigner.INVALID_ID);
-		assertNotEquals("didn't fix id?", -1, id);
+		BaseId id = project.insertNodeAtId(type, new BaseId());
+		assertNotEquals("didn't fix id?", new BaseId(), id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		node.setLabel(name);
 		return id;

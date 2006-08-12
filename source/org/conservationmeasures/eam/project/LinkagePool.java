@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 
 public class LinkagePool extends EAMObjectPool
@@ -14,21 +15,21 @@ public class LinkagePool extends EAMObjectPool
 		put(linkage.getId(), linkage);
 	}
 	
-	public ConceptualModelLinkage find(int id)
+	public ConceptualModelLinkage find(BaseId id)
 	{
 		return (ConceptualModelLinkage)getRawObject(id);
 	}
 	
-	public boolean hasLinkage(int nodeId1, int nodeId2)
+	public boolean hasLinkage(BaseId nodeId1, BaseId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = getLinkage(i);
-			int fromId = thisLinkage.getFromNodeId();
-			int toId = thisLinkage.getToNodeId();
-			if(fromId == nodeId1 && toId == nodeId2)
+			BaseId fromId = thisLinkage.getFromNodeId();
+			BaseId toId = thisLinkage.getToNodeId();
+			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
 				return true;
-			if(fromId == nodeId2 && toId == nodeId1)
+			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
 				return true;
 		}
 		return false;

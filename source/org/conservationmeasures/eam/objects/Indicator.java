@@ -7,12 +7,12 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class Indicator extends EAMBaseObject
 {
-	public Indicator(int idToUse)
+	public Indicator(BaseId idToUse)
 	{
 		super(idToUse);
 		shortLabel = "";
@@ -74,7 +74,7 @@ public class Indicator extends EAMBaseObject
 	
 	public String toString()
 	{
-		if(getId() == IdAssigner.INVALID_ID)
+		if(getId().isInvalid())
 			return "(None)";
 		return shortLabel + ": " + getLabel();
 	}

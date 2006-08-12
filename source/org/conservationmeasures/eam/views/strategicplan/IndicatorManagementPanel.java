@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.annotations.IndicatorPool;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -26,7 +27,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 			return null;
 		
 		IndicatorPool pool = getProject().getIndicatorPool();
-		int indicatorId = pool.getIds()[row];
+		BaseId indicatorId = pool.getIds()[row];
 		Indicator indicator = pool.find(indicatorId);
 		return indicator;
 	}

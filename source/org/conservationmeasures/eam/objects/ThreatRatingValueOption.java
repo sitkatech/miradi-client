@@ -7,16 +7,17 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 public class ThreatRatingValueOption extends EAMBaseObject
 {
-	public ThreatRatingValueOption(int idToUse) throws Exception
+	public ThreatRatingValueOption(BaseId idToUse) throws Exception
 	{
 		this(idToUse, "Unknown", 0, Color.BLACK);
 	}
 	
-	public ThreatRatingValueOption(int idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
+	public ThreatRatingValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
 		super(idToUse);
 		setData(TAG_LABEL, labelToUse);

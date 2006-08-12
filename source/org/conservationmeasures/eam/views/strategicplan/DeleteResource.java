@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -43,7 +44,7 @@ public class DeleteResource extends ViewDoer
 		
 		ProjectResource resource = getResourcePanel().getSelectedResource();
 		
-		int idToRemove = resource.getId();
+		BaseId idToRemove = resource.getId();
 		Task[] tasksThatUseThisResource = findTasksThatUseThisResource(idToRemove);
 		if(tasksThatUseThisResource.length > 0)
 		{
@@ -64,7 +65,7 @@ public class DeleteResource extends ViewDoer
 			getProject().executeCommand(removeFromTasks[i]);
 		}
 		int type = resource.getType();
-		int id = idToRemove;
+		BaseId id = idToRemove;
 		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
 		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_INITIALS, ""));
 		getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_NAME, ""));
@@ -73,7 +74,7 @@ public class DeleteResource extends ViewDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
-	private Command[] createCommandsToRemoveResourceFromTasks(int idToRemove, Task[] tasksThatUseThisResource) throws CommandFailedException
+	private Command[] createCommandsToRemoveResourceFromTasks(BaseId idToRemove, Task[] tasksThatUseThisResource) throws CommandFailedException
 	{
 		Command[] removeFromTasks = new Command[tasksThatUseThisResource.length];
 		try
@@ -92,11 +93,11 @@ public class DeleteResource extends ViewDoer
 		return removeFromTasks;
 	}
 	
-	Task[] findTasksThatUseThisResource(int resourceId)
+	Task[] findTasksThatUseThisResource(BaseId resourceId)
 	{
 		Vector foundTasks = new Vector();
 		TaskPool pool = getProject().getTaskPool();
-		int[] allTaskIds = pool.getIds();
+		BaseId[] allTaskIds = pool.getIds();
 		for(int i = 0; i < allTaskIds.length; ++i)
 		{
 			Task task = pool.find(allTaskIds[i]);

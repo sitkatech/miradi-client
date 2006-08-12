@@ -9,6 +9,7 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.Edge;
@@ -96,17 +97,17 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		// not allowed--ignore attempts to reset the target
 	}
 
-	public int getId()
+	public BaseId getId()
 	{
 		return underlyingObject.getId();
 	}
 	
-	public int getFromId()
+	public BaseId getFromId()
 	{
 		return underlyingObject.getFromNodeId();
 	}
 	
-	public int getToId()
+	public BaseId getToId()
 	{
 		return underlyingObject.getToNodeId();
 	}
@@ -115,8 +116,8 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
 		dataMap.setId(getId());
-		dataMap.setFromId(getFromId());
-		dataMap.setToId(getToId());
+		dataMap.setFromId(getFromId().asInt());
+		dataMap.setToId(getToId().asInt());
 		return dataMap;
 	}
 	

@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -47,7 +48,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		DiagramNode factor = model.createNode(cmIntervention.getId());
 		DiagramNode target = model.createNode(cmTarget.getId());
-		int id = 5;
+		BaseId id = new BaseId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
@@ -61,7 +62,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		DiagramNode factor = model.createNode(cmIntervention.getId());
 		DiagramNode target = model.createNode(cmTarget.getId());
-		int id = 5;
+		BaseId id = new BaseId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals(id, linkage.getId());
@@ -75,8 +76,8 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		int interventionId = intervention.getId();
-		int factorId = factor.getId();
+		BaseId interventionId = intervention.getId();
+		BaseId factorId = factor.getId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
@@ -87,8 +88,8 @@ public class TestDiagramLinkage extends EAMTestCase
 		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}
 	
-	static final int node1Id = 1;
-	static final int node2Id = 2;
+	static final BaseId node1Id = new BaseId(1);
+	static final BaseId node2Id = new BaseId(2);
 	
 	ProjectForTesting project;
 	NodePool objectPool;

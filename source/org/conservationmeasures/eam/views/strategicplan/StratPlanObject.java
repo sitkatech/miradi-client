@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.ids.BaseId;
+
 
 abstract public class StratPlanObject
 {
@@ -12,7 +14,7 @@ abstract public class StratPlanObject
 	abstract public int getChildCount();
 	abstract public Object getChild(int index);
 	abstract public int getType();
-	abstract public int getId();
+	abstract public BaseId getId();
 	
 	abstract public String toString();
 	

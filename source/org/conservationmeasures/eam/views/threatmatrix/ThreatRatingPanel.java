@@ -28,11 +28,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -163,8 +163,8 @@ public class ThreatRatingPanel extends Box
 			}
 			else
 			{
-				int valueId = bundle.getValueId(criterion.getId());
-				if(valueId != IdAssigner.INVALID_ID)
+				BaseId valueId = bundle.getValueId(criterion.getId());
+				if(!valueId.isInvalid())
 				{
 					ThreatRatingValueOption option = framework.getValueOption(valueId);
 					dropdown.setSelectedItemWithoutFiring(option);

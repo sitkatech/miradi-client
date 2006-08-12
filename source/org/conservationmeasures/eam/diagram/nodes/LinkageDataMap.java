@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.utils.DataMap;
 
 public class LinkageDataMap extends DataMap
@@ -14,14 +15,14 @@ public class LinkageDataMap extends DataMap
 		super();
 	}
 
-	public void setId(int id)
+	public void setId(BaseId id)
 	{
-		putInt(TAG_ID, id);
+		putId(TAG_ID, id);
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
-		return getInt(TAG_ID);
+		return getId(TAG_ID);
 	}
 
 	public void setFromId(int fromId)
@@ -29,9 +30,9 @@ public class LinkageDataMap extends DataMap
 		putInt(TAG_FROM_ID, fromId);
 	}
 
-	public int getFromId()
+	public BaseId getFromId()
 	{
-		return getInt(TAG_FROM_ID);
+		return getId(TAG_FROM_ID);
 	}
 
 	public void setToId(int toId)
@@ -39,9 +40,9 @@ public class LinkageDataMap extends DataMap
 		putInt(TAG_TO_ID, toId);
 	}
 
-	public int getToId()
+	public BaseId getToId()
 	{
-		return getInt(TAG_TO_ID);
+		return getId(TAG_TO_ID);
 	}
 
 	public static final String TAG_ID = "Id";

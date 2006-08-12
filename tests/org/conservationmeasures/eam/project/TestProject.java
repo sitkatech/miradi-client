@@ -36,6 +36,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
@@ -95,7 +96,7 @@ public class TestProject extends EAMTestCase
 			Project tempProject = new Project();
 			tempProject.createOrOpen(tempDirectory);
 			Task rootTask = tempProject.getRootTask();
-			assertNotEquals("Bad default root task id?", IdAssigner.INVALID_ID, rootTask.getId());
+			assertNotEquals("Bad default root task id?", new BaseId(), rootTask.getId());
 			tempProject.close();
 			
 			Project otherProject = new Project();
@@ -129,8 +130,8 @@ public class TestProject extends EAMTestCase
 
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
-		int createdId = project.createObject(type);
-		assertNotEquals("Created with invalid id", IdAssigner.INVALID_ID, createdId);
+		BaseId createdId = project.createObject(type);
+		assertNotEquals("Created with invalid id", new BaseId(), createdId);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
 		
@@ -159,7 +160,7 @@ public class TestProject extends EAMTestCase
 		{
 		}
 		
-		int desiredId = 2323;
+		BaseId desiredId = new BaseId(2323);
 		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId));
 		
 
@@ -168,7 +169,7 @@ public class TestProject extends EAMTestCase
 		{
 			Project projectToWrite = new Project();
 			projectToWrite.createOrOpen(tempDirectory);
-			int idToReload = projectToWrite.createObject(type);
+			BaseId idToReload = projectToWrite.createObject(type);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
@@ -194,8 +195,8 @@ public class TestProject extends EAMTestCase
 		int snap = Project.DEFAULT_GRID_SIZE;
 		
 		Vector commands = new Vector();
-		commands.add(new CommandDiagramMove(snap - 3, 2 * snap + 3, new int[] {0}));
-		commands.add(new CommandDiagramMove(snap, 2 * snap, new int[] {0}));
+		commands.add(new CommandDiagramMove(snap - 3, 2 * snap + 3, new BaseId[] {new BaseId(0)}));
+		commands.add(new CommandDiagramMove(snap, 2 * snap, new BaseId[] {new BaseId(0)}));
 		commands.add(new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT));
 
 		project.applySnapToOldUnsnappedCommands(commands);
@@ -370,7 +371,7 @@ public class TestProject extends EAMTestCase
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
 
-		int[] noNodesMoved = new int[1];
+		BaseId[] noNodesMoved = new BaseId[1];
 		noNodesMoved[0] = node1.getId();
 	
 		project.nodesWereMovedOrResized(0, 0, noNodesMoved);
@@ -392,7 +393,7 @@ public class TestProject extends EAMTestCase
 		node2.setPreviousLocation(new Point(10,10));
 		node2.setLocation(new Point(20,30));
 		
-		int[] ids = new int[2];
+		BaseId[] ids = new BaseId[2];
 		ids[0] = node1.getId();
 		ids[1] = node2.getId();
 		
@@ -422,7 +423,7 @@ public class TestProject extends EAMTestCase
 		node2.setPreviousLocation(new Point(0,0));
 		node2.setLocation(new Point(0,0));
 		
-		int[] ids = new int[2];
+		BaseId[] ids = new BaseId[2];
 		ids[0] = node1.getId();
 		ids[1] = node2.getId();
 		
@@ -472,7 +473,7 @@ public class TestProject extends EAMTestCase
 		nodeNotMovedOrResized.setLocation(new Point(x,y));
 
 		
-		int[] ids = new int[4];
+		BaseId[] ids = new BaseId[4];
 		ids[0] = nodeResizedAndMoved.getId();
 		ids[1] = nodeMovedOnly.getId();
 		ids[2] = nodeResizedOnly.getId();
@@ -573,10 +574,10 @@ public class TestProject extends EAMTestCase
 		ProjectServerForTesting database = project.getTestDatabase();
 		database.callsToWriteThreatRatingFramework = 0;
 		
-		int criterionId = project.createObject(ObjectType.THREAT_RATING_CRITERION);
+		BaseId criterionId = project.createObject(ObjectType.THREAT_RATING_CRITERION);
 		assertEquals(1, database.callsToWriteThreatRatingFramework);
 			
-		int valueOptionId = project.createObject(ObjectType.THREAT_RATING_VALUE_OPTION);
+		BaseId valueOptionId = project.createObject(ObjectType.THREAT_RATING_VALUE_OPTION);
 		assertEquals(2, database.callsToWriteThreatRatingFramework);
 			
 		project.deleteObject(ObjectType.THREAT_RATING_CRITERION, criterionId);
@@ -595,25 +596,25 @@ public class TestProject extends EAMTestCase
 		CommandInsertNode targetCommand = new CommandInsertNode(new NodeTypeTarget());
 		project.executeCommand(targetCommand);
 		assertEquals(1, database.callsToWriteNode);
-		int targetId = targetCommand.getId();
+		BaseId targetId = targetCommand.getId();
 		
 		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeIndirectFactor());
 		project.executeCommand(factorCommand);
 		assertEquals(2, database.callsToWriteNode);
-		int factorId = factorCommand.getId();
+		BaseId factorId = factorCommand.getId();
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
-		project.executeCommand(new CommandDiagramMove(9, 9, new int[] {targetId, factorId} ));
+		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
 		assertEquals(2, database.callsToWriteNode);
 		
 		project.executeCommand(new CommandSetFactorType(factorId, new NodeTypeDirectThreat()));
 		assertEquals(3, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandSetIndicator(factorId, 7));
+		project.executeCommand(new CommandSetIndicator(factorId, new BaseId(7)));
 		assertEquals(4, database.callsToWriteNode);
 		
 		ObjectiveIds objectives = new ObjectiveIds();
-		objectives.addId(99);
+		objectives.addId(new BaseId(99));
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
 		assertEquals(5, database.callsToWriteNode);
 		
@@ -622,7 +623,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(5, database.callsToWriteNode);
 		
 		GoalIds goals = new GoalIds();
-		goals.addId(55);
+		goals.addId(new BaseId(55));
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
 		assertEquals(6, database.callsToWriteNode);
 		
@@ -635,8 +636,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
-		int id = 3023;
-		int gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
+		BaseId id = new BaseId(3023);
+		BaseId gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
 		assertEquals("Didn't get our id?", id, gotIdFirst);
 		try
 		{
@@ -669,7 +670,7 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeA = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		int linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getId(), nodeB.getId());
+		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getId(), nodeB.getId());
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
@@ -688,8 +689,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
 		createNode(new NodeTypeTarget());
 		
-		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
-		int objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
+		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
+		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
 
 		ObjectiveIds objectiveId = new ObjectiveIds();
 		objectiveId.add(objectiveId1);
@@ -714,14 +715,14 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
 		
-		int objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
+		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
 		ObjectiveIds objectiveId = new ObjectiveIds();
 		objectiveId.add(objectiveId1);
 
 		nodeIndirectFactor.setObjectives(objectiveId);
 		
-		createLinkage(IdAssigner.INVALID_ID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(new BaseId(), nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
 		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisObjective(objectiveId1);
 		
@@ -739,8 +740,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
 		createNode(new NodeTypeTarget());
 		
-		int indicatorId1 = project.createObject(ObjectType.INDICATOR);
-		int indicatorId2 = project.createObject(ObjectType.INDICATOR);
+		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
+		BaseId indicatorId2 = project.createObject(ObjectType.INDICATOR);
 		
 		nodeA.setIndicator(indicatorId1);
 		nodeB.setIndicator(indicatorId1);
@@ -761,10 +762,10 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
 		
-		int indicatorId1 = project.createObject(ObjectType.INDICATOR);
+		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.setIndicator(indicatorId1);
 		
-		createLinkage(IdAssigner.INVALID_ID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(new BaseId(), nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
 		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
@@ -825,7 +826,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read linkage pool?", 1, loadedProject.getLinkagePool().size());
 			assertEquals("didn't populate diagram?", 2, loadedProject.getDiagramModel().getNodeCount());
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
-			int expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
+			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
 			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
 		}
 		finally
@@ -843,7 +844,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't clear node pool?", 0, diskProject.getNodePool().size());
 			assertEquals("didn't clear linkage pool?", 0, diskProject.getLinkagePool().size());
 			assertEquals("didn't clear diagram?", 0, diskProject.getDiagramModel().getNodeCount());
-			assertEquals("didn't clear next node id?", 0, diskProject.getNodeIdAssigner().takeNextId());
+			assertEquals("didn't clear next node id?", new BaseId(0), diskProject.getNodeIdAssigner().takeNextId());
 			assertTrue("didn't clear next annotation id?", diskProject.getAnnotationIdAssigner().getHighestAssignedId() < highestAnnotationIdBeforeClearing);
 		}
 		finally
@@ -874,13 +875,13 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		int insertedId = project.insertNodeAtId(nodeType, IdAssigner.INVALID_ID);
+		BaseId insertedId = project.insertNodeAtId(nodeType, new BaseId());
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
-	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
+	private DiagramLinkage createLinkage(BaseId id, BaseId fromId, BaseId toId) throws Exception
 	{
-		int insertedId = project.insertLinkageAtId(id, fromId, toId);
+		BaseId insertedId = project.insertLinkageAtId(id, fromId, toId);
 		return project.getDiagramModel().getLinkageById(insertedId);
 	}
 

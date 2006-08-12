@@ -11,6 +11,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.ObjectPool;
 import org.martus.swing.UiTableModel;
@@ -46,7 +47,7 @@ class ObjectManagerTableModel extends UiTableModel
 
 	public EAMObject getObjectFromRow(int rowIndex)
 	{
-		int objectId = pool.getIds()[rowIndex];
+		BaseId objectId = pool.getIds()[rowIndex];
 		return (EAMObject)pool.getRawObject(objectId);
 	}
 

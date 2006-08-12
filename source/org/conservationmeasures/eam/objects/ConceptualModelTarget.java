@@ -6,12 +6,13 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 
 public class ConceptualModelTarget extends ConceptualModelNode
 {
-	public ConceptualModelTarget(int idToUse)
+	public ConceptualModelTarget(BaseId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_TARGET);
 	}

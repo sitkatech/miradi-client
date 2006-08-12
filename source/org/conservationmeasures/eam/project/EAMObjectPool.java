@@ -5,11 +5,12 @@
  */
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
 
 public class EAMObjectPool extends ObjectPool
 {
-	public EAMObject findObject(int id)
+	public EAMObject findObject(BaseId id)
 	{
 		return (EAMObject)getRawObject(id);
 	}

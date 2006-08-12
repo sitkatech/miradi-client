@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestProjectResource extends EAMTestCase
@@ -25,7 +26,7 @@ public class TestProjectResource extends EAMTestCase
 	private void verifyTagBehavior(String tag) throws Exception
 	{
 		String value = "ifislliefj";
-		ProjectResource resource = new ProjectResource(22);
+		ProjectResource resource = new ProjectResource(new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", resource.getData(tag));
 		resource.setData(tag, value);
 		ProjectResource got = new ProjectResource(resource.toJson());

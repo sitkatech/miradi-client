@@ -10,7 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.project.IdAssigner;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandCreateObject extends Command
@@ -18,13 +18,13 @@ public class CommandCreateObject extends Command
 	public CommandCreateObject(int typeToCreate)
 	{
 		type = typeToCreate;
-		createdId = IdAssigner.INVALID_ID;
+		createdId = new BaseId();
 	}
 	
 	public CommandCreateObject(DataInputStream dataIn) throws IOException
 	{
 		type = dataIn.readInt();
-		createdId = dataIn.readInt();
+		createdId = new BaseId(dataIn.readInt());
 	}
 	
 	public int getObjectType()
@@ -32,7 +32,7 @@ public class CommandCreateObject extends Command
 		return type;
 	}
 	
-	public int getCreatedId()
+	public BaseId getCreatedId()
 	{
 		return createdId;
 	}
@@ -69,11 +69,11 @@ public class CommandCreateObject extends Command
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
 		dataOut.writeInt(type);
-		dataOut.writeInt(createdId);
+		dataOut.writeInt(createdId.asInt());
 	}
 
 	public static final String COMMAND_NAME = "CreateObject";
 
 	int type;
-	int createdId;
+	BaseId createdId;
 }

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
@@ -13,12 +14,12 @@ public class ThreatRatingWizardSeverityStep extends ThreatRatingWizardSetValue
 	public static ThreatRatingWizardSeverityStep create(ThreatRatingWizardPanel wizardToUse) throws Exception
 	{
 		ThreatRatingFramework framework = wizardToUse.getView().getProject().getThreatRatingFramework();
-		int criterionId = framework.findCriterionByLabel("Severity").getId();
+		BaseId criterionId = framework.findCriterionByLabel("Severity").getId();
 		ThreatRatingWizardSeverityStep step = new ThreatRatingWizardSeverityStep(wizardToUse, criterionId);
 		return step;
 	}
 	
-	private ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse, int criterionIdToUse) throws Exception
+	private ThreatRatingWizardSeverityStep(ThreatRatingWizardPanel wizardToUse, BaseId criterionIdToUse) throws Exception
 	{
 		super(wizardToUse, criterionIdToUse);
 	}

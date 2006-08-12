@@ -6,24 +6,24 @@
 
 package org.conservationmeasures.eam.annotations;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.IdAssigner;
 
 public class NodeAnnotation 
 {
 	public NodeAnnotation()
 	{
-		id = IdAssigner.INVALID_ID;
+		id = new BaseId();
 		annotation = ANNOTATION_NONE_STRING;
 	}
 	
-	public NodeAnnotation(int idToUse, String annotationToUse)
+	public NodeAnnotation(BaseId idToUse, String annotationToUse)
 	{
 		id = idToUse;
 		annotation = annotationToUse;
 	}
 	
-	public int getId()
+	public BaseId getId()
 	{
 		return id;
 	}
@@ -57,6 +57,6 @@ public class NodeAnnotation
 	
 	public static final String ANNOTATION_NONE_STRING = EAM.text("None");
 
-	int id;
+	BaseId id;
 	String annotation;
 }

@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.IdList;
 
 abstract public class NodeAnnotationIds extends IdList
@@ -38,21 +39,21 @@ abstract public class NodeAnnotationIds extends IdList
 		dataOut.writeInt(size());
 		for(int i = 0; i < size(); ++i)
 		{
-			dataOut.writeInt((getId(i)));
+			dataOut.writeInt(getId(i).asInt());
 		}
 	}
 
-	public int getId(int i)
+	public BaseId getId(int i)
 	{
 		return get(i);
 	}
 	
-	public void addId(int annotationId)
+	public void addId(BaseId annotationId)
 	{
 		add(annotationId);
 	}
 	
-	public void setAnnotationId(int id)
+	public void setAnnotationId(BaseId id)
 	{
 		clear();
 		addId(id);

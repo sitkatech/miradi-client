@@ -10,12 +10,13 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramMove extends Command
 {
-	public CommandDiagramMove(int deltaX, int deltaY, int[] idsToMove)
+	public CommandDiagramMove(int deltaX, int deltaY, BaseId[] idsToMove)
 	{
 		this.deltaX = deltaX;
 		this.deltaY = deltaY;
@@ -28,9 +29,9 @@ public class CommandDiagramMove extends Command
 		deltaY = dataIn.readInt();
 
 		int idCount = dataIn.readInt();
-		ids = new int[idCount];
+		ids = new BaseId[idCount];
 		for(int i=0; i < idCount; ++i)
-			ids[i] = dataIn.readInt();
+			ids[i] = new BaseId(dataIn.readInt());
 	}
 	
 	public String toString()
@@ -79,7 +80,7 @@ public class CommandDiagramMove extends Command
 		dataOut.writeInt(getDeltaY());
 		dataOut.writeInt(ids.length);
 		for(int i=0; i < ids.length; ++i)
-			dataOut.writeInt(ids[i]);
+			dataOut.writeInt(ids[i].asInt());
 	}
 	
 	public int getDeltaX()
@@ -92,7 +93,7 @@ public class CommandDiagramMove extends Command
 		return deltaY;
 	}
 	
-	public int[] getIds()
+	public BaseId[] getIds()
 	{
 		return ids;
 	}
@@ -102,5 +103,5 @@ public class CommandDiagramMove extends Command
 
 	int deltaX;
 	int deltaY;
-	int[] ids;
+	BaseId[] ids;
 }

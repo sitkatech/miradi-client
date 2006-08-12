@@ -80,7 +80,7 @@ public class TestDataUpgrader extends EAMTestCase
 	private File writeNode(File topDirectory, NodeManifest manifest, ConceptualModelNode node) throws IOException
 	{
 		manifest.put(node.getId());
-		String nodeFilename = Integer.toString(node.getId());
+		String nodeFilename = Integer.toString(node.getId().asInt());
 		File jsonDirectory = new File(topDirectory, "json");
 		File nodesDirectory = new File(jsonDirectory, "nodes");
 		File targetFile = new File(nodesDirectory, nodeFilename);

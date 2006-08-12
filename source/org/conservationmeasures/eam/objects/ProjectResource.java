@@ -5,12 +5,13 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
 public class ProjectResource extends EAMBaseObject
 {
-	public ProjectResource(int idToUse)
+	public ProjectResource(BaseId idToUse)
 	{
 		super(idToUse);
 		initials = "";

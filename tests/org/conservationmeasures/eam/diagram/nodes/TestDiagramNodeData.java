@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -21,7 +22,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		int id = 2;
+		BaseId id = new BaseId(2);
 		NodeType nodeAType = DiagramNode.TYPE_TARGET;
 		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id, nodeAType);
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
@@ -33,7 +34,7 @@ public class TestDiagramNodeData extends EAMTestCase
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals("id incorrect", id, nodeAData.getInt(DiagramNode.TAG_ID));
+		assertEquals("id incorrect", id, nodeAData.getId(DiagramNode.TAG_ID));
 	}
 	
 }

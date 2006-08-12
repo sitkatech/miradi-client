@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -22,7 +23,7 @@ public class ObjectTestCase extends EAMTestCase
 		try
 		{
 			final String sampleData = "Blah blah";
-			int id = project.createObject(objectType);
+			BaseId id = project.createObject(objectType);
 			EAMObject object = project.findObject(objectType, id);
 			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
 			object.setData(tag, sampleData);
@@ -44,7 +45,7 @@ public class ObjectTestCase extends EAMTestCase
 			IdList sampleData = new IdList();
 			sampleData.add(7);
 			sampleData.add(49);
-			int id = project.createObject(objectType);
+			BaseId id = project.createObject(objectType);
 			EAMObject object = project.findObject(objectType, id);
 			assertEquals("didn't default " + tag + " empty?", 0, new IdList(object.getData(tag)).size());
 			object.setData(tag, sampleData.toString());

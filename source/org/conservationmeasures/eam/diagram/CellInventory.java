@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 
 class CellInventory
 {
@@ -27,7 +28,7 @@ class CellInventory
 
 	public void addNode(DiagramNode node)
 	{
-		int realId = node.getId();
+		BaseId realId = node.getId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -40,12 +41,12 @@ class CellInventory
 		return nodes;
 	}
 	
-	public DiagramNode getNodeById(int id)
+	public DiagramNode getNodeById(BaseId id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
 			DiagramNode node = (DiagramNode)iter.next();
-			if(node.getId() == id)
+			if(node.getId().equals(id))
 				return node;
 		}
 		return null;
@@ -58,7 +59,7 @@ class CellInventory
 	
 	public void addLinkage(DiagramLinkage linkage)
 	{
-		int realId = linkage.getId();
+		BaseId realId = linkage.getId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -66,7 +67,7 @@ class CellInventory
 		linkages.add(linkage);
 	}
 
-	private boolean doesIdExist(int realId)
+	private boolean doesIdExist(BaseId realId)
 	{
 		if(getNodeById(realId) != null)
 			return true;
@@ -81,12 +82,12 @@ class CellInventory
 		return linkages;
 	}
 	
-	public DiagramLinkage getLinkageById(int id)
+	public DiagramLinkage getLinkageById(BaseId id)
 	{
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
 			DiagramLinkage linkage = (DiagramLinkage) iter.next();
-			if(linkage.getId() == id)
+			if(linkage.getId().equals(id))
 				return linkage;
 		}
 		return null;

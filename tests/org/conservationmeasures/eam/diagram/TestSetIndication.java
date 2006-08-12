@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -26,14 +27,14 @@ public class TestSetIndication extends EAMTestCase
 
 		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
-		int id = insertCommand.getId();
+		BaseId id = insertCommand.getId();
 
-		int indicator3 = 3;
+		BaseId indicator3 = new BaseId(3);
 		Command setIndicatorCommand = new CommandSetIndicator(id, indicator3);
 		setIndicatorCommand.execute(project);
 
 		DiagramNode found = model.getNodeById(id);
-		int foundindicator = found.getIndicatorId();
+		BaseId foundindicator = found.getIndicatorId();
 		assertEquals("wrong priority?", indicator3, foundindicator);
 		
 		project.close();

@@ -13,17 +13,17 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetIndicator extends Command 
 {
-	public CommandSetIndicator(int idToUpdate, int indicatorToUse)
+	public CommandSetIndicator(BaseId idToUpdate, BaseId indicatorToUse)
 	{
 		id = idToUpdate;
 		indicatorId = indicatorToUse;
-		previousIndicator = IdAssigner.INVALID_ID;
+		previousIndicator = new BaseId();
 	}
 
 	public String getCommandName() 
@@ -33,17 +33,17 @@ public class CommandSetIndicator extends Command
 
 	public CommandSetIndicator(DataInputStream dataIn) throws IOException
 	{
-		id = dataIn.readInt();
-		indicatorId = dataIn.readInt();
-		previousIndicator = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
+		indicatorId = new BaseId(dataIn.readInt());
+		previousIndicator = new BaseId(dataIn.readInt());
 	
 	}
 	
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getId());
-		dataOut.writeInt(indicatorId);
-		dataOut.writeInt(previousIndicator);
+		dataOut.writeInt(getId().asInt());
+		dataOut.writeInt(indicatorId.asInt());
+		dataOut.writeInt(previousIndicator.asInt());
 	}
 
 	public void execute(Project target) throws CommandFailedException
@@ -56,14 +56,14 @@ public class CommandSetIndicator extends Command
 		doSetIndicator(target, getPreviousIndicator(), getCurrentIndicator());
 	}
 	
-	private int doSetIndicator(Project target, int desiredIndicator, int expectedIndicator) throws CommandFailedException
+	private BaseId doSetIndicator(Project target, BaseId desiredIndicator, BaseId expectedIndicator) throws CommandFailedException
 	{
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
 			DiagramNode node = model.getNodeById(getId());
-			int oldIndicator = node.getIndicatorId();
-			if(expectedIndicator != IdAssigner.INVALID_ID && oldIndicator != expectedIndicator)
+			BaseId oldIndicator = node.getIndicatorId();
+			if(!expectedIndicator.isInvalid() && !oldIndicator.equals(expectedIndicator))
 				throw new Exception("CommandSetIndicator expected " + expectedIndicator + " but was " + oldIndicator);
 			target.setIndicator(getId(), desiredIndicator);
 			return oldIndicator;
@@ -80,24 +80,24 @@ public class CommandSetIndicator extends Command
 		return getCommandName() + ": " + id + ", " + indicatorId + ", " + previousIndicator;
 	}
 
-	public int getCurrentIndicator()
+	public BaseId getCurrentIndicator()
 	{
 		return indicatorId;
 	}
 	
-	public int getPreviousIndicator()
+	public BaseId getPreviousIndicator()
 	{
 		return previousIndicator;
 	}
 
-	int getId()
+	BaseId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetIndicator";
 
-	int id;
-	int indicatorId;
-	int previousIndicator;
+	BaseId id;
+	BaseId indicatorId;
+	BaseId previousIndicator;
 }

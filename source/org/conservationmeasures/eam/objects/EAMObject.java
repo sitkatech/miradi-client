@@ -5,12 +5,13 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
 
 public interface EAMObject
 {
-	public int getId();
+	public BaseId getId();
 	public int getType();
 	public void setData(String fieldTag, Object dataValue) throws Exception;
 	public String getData(String fieldTag);

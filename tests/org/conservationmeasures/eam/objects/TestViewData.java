@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestViewData extends EAMTestCase
@@ -18,7 +19,7 @@ public class TestViewData extends EAMTestCase
 
 	public void testMode() throws Exception
 	{
-		ViewData vd = new ViewData(33);
+		ViewData vd = new ViewData(new BaseId(33));
 		String modeTag = ViewData.TAG_CURRENT_MODE;
 		assertEquals("Didn't start with default mode?", "", vd.getData(modeTag));
 		String sampleMode = "Brainstorm";
@@ -31,7 +32,7 @@ public class TestViewData extends EAMTestCase
 	
 	public void testBrainstormNodeIds() throws Exception
 	{
-		ViewData vd = new ViewData(33);
+		ViewData vd = new ViewData(new BaseId(33));
 		String idsTag = ViewData.TAG_BRAINSTORM_NODE_IDS;
 		assertEquals("didn't start with empty id list?", 0, new IdList(vd.getData(idsTag)).size());
 		IdList sampleIds = createSampleIdList();
@@ -52,10 +53,10 @@ public class TestViewData extends EAMTestCase
 	
 	public void testBuildCommandsToInsertNode() throws Exception
 	{
-		ViewData vd = new ViewData(33);
+		ViewData vd = new ViewData(new BaseId(33));
 		IdList sampleIds = createSampleIdList();
 		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
-		int idToAdd = 983;
+		BaseId idToAdd = new BaseId(983);
 		Command[] inNormalMode = vd.buildCommandsToAddNode(idToAdd);
 		assertEquals("added when not in brainstorm mode?", 0, inNormalMode.length);
 		
@@ -72,10 +73,10 @@ public class TestViewData extends EAMTestCase
 	
 	public void testBuildCommandsToRemoveNode() throws Exception
 	{
-		ViewData vd = new ViewData(33);
+		ViewData vd = new ViewData(new BaseId(33));
 		IdList sampleIds = createSampleIdList();
 		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
-		int idToRemove = sampleIds.get(0);
+		BaseId idToRemove = sampleIds.get(0);
 		Command[] inNormalMode = vd.buildCommandsToRemoveNode(idToRemove);
 		assertEquals("removed when not in brainstorm mode?", 0, inNormalMode.length);
 		

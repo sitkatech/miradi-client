@@ -13,13 +13,14 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetNodeSize extends Command
 {
-	public CommandSetNodeSize(int idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
+	public CommandSetNodeSize(BaseId idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
 	{
 		id = idToUpdate;
 		currentSize = updatedSize;
@@ -29,14 +30,14 @@ public class CommandSetNodeSize extends Command
 
 	public CommandSetNodeSize(DataInputStream dataIn) throws IOException
 	{
-		id = dataIn.readInt();
+		id = new BaseId(dataIn.readInt());
 		currentSize = new Dimension(dataIn.readInt(), dataIn.readInt());
 		previousSize = new Dimension(dataIn.readInt(), dataIn.readInt());
 	}
 
 	public void writeDataTo(DataOutputStream dataOut) throws IOException
 	{
-		dataOut.writeInt(getId());
+		dataOut.writeInt(getId().asInt());
 		dataOut.writeInt(currentSize.width);
 		dataOut.writeInt(currentSize.height);
 		if(previousSize == null)
@@ -97,7 +98,7 @@ public class CommandSetNodeSize extends Command
 		return previousSize;
 	}
 
-	int getId()
+	BaseId getId()
 	{
 		return id;
 	}
@@ -109,7 +110,7 @@ public class CommandSetNodeSize extends Command
 	
 	public static final String COMMAND_NAME = "ReSize";
 
-	int id;
+	BaseId id;
 	Dimension currentSize;
 	Dimension previousSize;
 }

@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
@@ -66,7 +67,7 @@ public class TestDiagramModel extends EAMTestCase
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
-			int threatId = expectedChainNodeIds[0];
+			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
 			ConceptualModelNodeSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
 			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
@@ -84,7 +85,7 @@ public class TestDiagramModel extends EAMTestCase
 		for(int nodeIndex = 0; nodeIndex < expectedNodesInFullChain.length; ++nodeIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
-			int threatId = expectedChainNodeIds[0];
+			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
 			ConceptualModelNodeSet gotChainNodes = model.getAllNodesInChain(cmNode);
 			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
@@ -95,7 +96,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
 		for(int i = 0; i < values.length; ++i)
-			result.attemptToAdd(project.findNode(values[i]));
+			result.attemptToAdd(project.findNode(new BaseId(values[i])));
 		return result;
 	}
 
@@ -103,7 +104,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link = createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
+		DiagramLinkage link = createLinkage(new BaseId(), factor.getId(), target.getId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
@@ -113,7 +114,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		createLinkage(IdAssigner.INVALID_ID, factor.getId(), target.getId());
+		createLinkage(new BaseId(), factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
 	}
@@ -125,7 +126,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode newFactor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
-		createLinkage(IdAssigner.INVALID_ID, newFactor.getId(), target.getId());
+		createLinkage(new BaseId(), newFactor.getId(), target.getId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
 		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
@@ -149,21 +150,21 @@ public class TestDiagramModel extends EAMTestCase
 		createTarget();		
 		DiagramNode nodeToDelete = createTarget();
 		createTarget();		
-		createTarget();		
+		DiagramNode lastCreated = createTarget();		
 		model.deleteNode(nodeToDelete);
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getId());
 		project.getNodePool().put(cmTargetToUndo);
 		
 		model.createNode(cmTargetToUndo.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
-		assertEquals("Id should be 4", 4, nodeAfterUndo.getId());
+		assertTrue("reused an id?", nodeAfterUndo.getId().asInt() > lastCreated.getId().asInt());
 	}
 
 	public void testGetAllNodes() throws Exception
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		createLinkage(IdAssigner.INVALID_ID, node1.getId(), node2.getId());
+		createLinkage(new BaseId(), node1.getId(), node2.getId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
@@ -231,7 +232,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link1 = createLinkage(IdAssigner.INVALID_ID, node2.getId(), node3.getId());
+		DiagramLinkage link1 = createLinkage(new BaseId(), node2.getId(), node3.getId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -247,7 +248,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.nodesWereMoved(new int[] {node2.getId(), node3.getId()});
+		model.nodesWereMoved(new BaseId[] {node2.getId(), node3.getId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);
@@ -271,7 +272,7 @@ public class TestDiagramModel extends EAMTestCase
 		return model.createNode(cmObject.getId());
 	}
 	
-	private DiagramLinkage createLinkage(int id, int fromId, int toId) throws Exception
+	private DiagramLinkage createLinkage(BaseId id, BaseId fromId, BaseId toId) throws Exception
 	{
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
 		model.getLinkagePool().put(cmLinkage);
