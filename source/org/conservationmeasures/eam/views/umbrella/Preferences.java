@@ -222,8 +222,8 @@ public class Preferences extends Doer
 		PreferencesDialog dlg;
 	}
 
-	static final Color[] interventionColorChoices = {new Color(255, 255, 0), new Color(255, 255, 128)};
-	static final Color[] directThreatColorChoices = {new Color(255, 150, 150), new Color(255, 100, 150)};
-	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 150, 0)};
-	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(80, 255, 80), new Color(200, 255, 200)};
+	static final Color[] interventionColorChoices = {new Color(255, 255, 0), new Color(240, 240, 0), new Color(255, 255, 128)};
+	static final Color[] directThreatColorChoices = {new Color(255, 150, 150), new Color(255, 128, 128), new Color(220, 150, 150), new Color(255, 200, 200)};
+	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 128, 0), new Color(200, 128, 0), new Color(255, 220, 0), new Color(255, 190, 64), new Color(255, 240, 200)};
+	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(80, 255, 80), new Color(200, 255, 200), new Color(64, 220, 64)};
 }
