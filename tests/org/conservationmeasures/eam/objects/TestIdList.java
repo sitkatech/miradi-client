@@ -116,4 +116,16 @@ public class TestIdList extends EAMTestCase
 		assertEquals(1, list6.size());
 		assertEquals(new BaseId(6), list6.get(0));
 	}
+	
+	public void testFind()
+	{
+		BaseId[] ids = new BaseId[] { new BaseId(1), new BaseId(19), new BaseId(3), };
+		IdList list = new IdList();
+		for(int i = 0; i < ids.length; ++i)
+			list.add(ids[i]);
+		for(int i = 0; i < ids.length; ++i)
+			assertEquals("Couldn't find " + i + "?", i, list.find(ids[i]));
+		assertEquals("Found non-existant?", -1, list.find(new BaseId(27)));
+
+	}
 }

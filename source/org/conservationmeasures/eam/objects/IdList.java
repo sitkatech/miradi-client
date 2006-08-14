@@ -70,12 +70,12 @@ public class IdList
 	
 	public void add(BaseId id)
 	{
-		add(id.asInt());
+		data.add(id);
 	}
 	
 	public void add(int id)
 	{
-		data.add(new Integer(id));
+		add(new BaseId(id));
 	}
 	
 	public void addAll(IdList otherList)
@@ -86,35 +86,39 @@ public class IdList
 	
 	public void insertAt(BaseId id, int at)
 	{
-		insertAt(id.asInt(), at);
+		data.insertElementAt(id, at);
 	}
 	
 	public void insertAt(int id, int at)
 	{
-		data.insertElementAt(new Integer(id), at);
+		insertAt(new BaseId(id), at);
 	}
 	
 	public BaseId get(int index)
 	{
-		return new BaseId(((Integer)data.get(index)).intValue());
+		return (BaseId)data.get(index);
 	}
 	
 	public boolean contains(BaseId id)
 	{
-		return data.contains(new Integer(id.asInt()));
+		return data.contains(id);
+	}
+	
+	public int find(BaseId id)
+	{
+		return data.indexOf(id);
 	}
 	
 	public void removeId(BaseId id)
 	{
-		removeId(id.asInt());
+		if(!data.contains(id))
+			throw new RuntimeException("Attempted to remove non-existant Id: " + id + " from: " + toString());
+		data.remove(id);
 	}
 	
 	public void removeId(int id)
 	{
-		Integer idObject = new Integer(id);
-		if(!data.contains(idObject))
-			throw new RuntimeException("Attempted to remove non-existant Id: " + id + " from: " + toString());
-		data.remove(idObject);
+		removeId(new BaseId(id));
 	}
 	
 	public void subtract(IdList other)
