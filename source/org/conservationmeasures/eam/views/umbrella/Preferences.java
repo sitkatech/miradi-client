@@ -57,6 +57,7 @@ public class Preferences extends Doer
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
 		{
 			color = (Color)value;
+			selected = isSelected;
 			return this;
 		}
 		
@@ -67,6 +68,8 @@ public class Preferences extends Doer
 			g.fillRect(0, 0, getWidth(), getHeight());
 			g.setColor(Color.BLACK);
 			g.drawRect(0, 0, getWidth(), getHeight());			
+			if(selected)
+				g.drawRect(1, 1, getWidth()-2, getHeight()-2);
 		}
 
 		public Dimension getSize()
@@ -89,6 +92,7 @@ public class Preferences extends Doer
 			return getSize();
 		}
 		
+		boolean selected;
 		Color color;
 	}
 	
