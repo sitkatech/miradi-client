@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -39,6 +40,13 @@ public class EAM
 	static void setBestLookAndFeel() throws Exception
 	{
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+	}
+
+	public static File getHomeDirectory()
+	{
+		File home = new File(System.getProperty("user.home"), "eAM");
+		home.mkdirs();
+		return home;
 	}
 	
 	///////////////////////////////////////////////////////////////////

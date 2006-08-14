@@ -46,7 +46,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		existingProjectList = createExistingProjectList();
 
 		UiParagraphPanel panel = new UiParagraphPanel();
-		panel.addOnNewLine(new UiLabel(getHomeDirectory().getAbsolutePath()));
+		panel.addOnNewLine(new UiLabel(EAM.getHomeDirectory().getAbsolutePath()));
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
 		uiScrollPane.setPreferredSize(new Dimension(projectNameField.getPreferredSize().width, 200));
 		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
@@ -73,7 +73,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	
 	public File getSelectedFile()
 	{
-		return new File(getHomeDirectory(), projectNameField.getText());
+		return new File(EAM.getHomeDirectory(), projectNameField.getText());
 	}
 	
 	String getSelectedName()
@@ -83,20 +83,13 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	
 	private UiList createExistingProjectList()
 	{
-		File home = getHomeDirectory();
+		File home = EAM.getHomeDirectory();
 		UiList list = new UiList(home.list(new DirectoryFilter()));
 		list.addListSelectionListener(this);
 		list.addMouseListener(new DoubleClickHandler(this));
 		return list;
 	}
 
-	public static File getHomeDirectory()
-	{
-		File home = new File(System.getProperty("user.home"), "eAM");
-		home.mkdirs();
-		return home;
-	}
-	
 	static class DoubleClickHandler extends MouseAdapter
 	{
 		public DoubleClickHandler(CreateProjectDialog dialogToControl)

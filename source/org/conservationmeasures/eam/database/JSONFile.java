@@ -9,13 +9,14 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 
 public class JSONFile
 {
-	static public JSONObject read(File file) throws IOException, ParseException
+	static public EnhancedJsonObject read(File file) throws IOException, ParseException
 	{
 		UnicodeReader reader = new UnicodeReader(file);
 		try
@@ -28,10 +29,10 @@ public class JSONFile
 		}
 	}
 	
-	static public JSONObject read(UnicodeReader reader) throws IOException, ParseException
+	static public EnhancedJsonObject read(UnicodeReader reader) throws IOException, ParseException
 	{
 		String json = reader.readAll();
-		return new JSONObject(json);
+		return new EnhancedJsonObject(json);
 	}
 	
 	static public void write(File file, JSONObject object) throws IOException

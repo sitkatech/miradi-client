@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.AbstractAction;
 import javax.swing.Box;
@@ -178,6 +179,16 @@ public class Preferences extends Doer
 			
 			Color targetColor = (Color)targetDropdown.getSelectedItem();
 			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
+			
+			try
+			{
+				mainWindow.savePreferences();
+			}
+			catch (IOException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("Unable to save preferences");
+			}
 		}
 		
 		MainWindow mainWindow;

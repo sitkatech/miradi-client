@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.utils.HtmlViewer;
 import org.conservationmeasures.eam.utils.HyperlinkHandler;
-import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiFileChooser;
 
@@ -43,7 +42,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
 		{
 			String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
-			File projectDirectory = new File(CreateProjectDialog.getHomeDirectory(), projectName);
+			File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 			getMainWindow().createOrOpenProject(projectDirectory);
 		}
 		else if(linkDescription.equals(NoProjectHtmlText.IMPORT_ZIP))
@@ -100,7 +99,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			return;
 		File zipToImport = results.getChosenFile();
 		String projectName = withoutExtension(zipToImport.getName());
-		File finalProjectDirectory = new File(CreateProjectDialog.getHomeDirectory(), projectName);
+		File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
 		if(ProjectServer.isExistingProject(finalProjectDirectory))
 		{
 			EAM.notifyDialog("Cannot import a project that already exists: " + projectName);

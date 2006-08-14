@@ -61,6 +61,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	
 	public void start(String[] args) throws Exception
 	{
+		File appPreferencesFile = getPreferencesFile();
+		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
 		project.addViewChangeListener(this);
 
@@ -112,6 +114,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		}
 		
 		setVisible(true);
+	}
+
+	private File getPreferencesFile()
+	{
+		File appPreferencesFile = new File(EAM.getHomeDirectory(), APP_PREFERENCES_FILENAME);
+		return appPreferencesFile;
 	}
 
 	private JComponent createCenteredView(JComponent viewToCenter)
@@ -273,6 +281,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
 	
+	public void savePreferences() throws IOException
+	{
+		preferences.save(getPreferencesFile());
+	}
+	
 	public Color getColorPreference(String colorTag)
 	{
 		return preferences.getColor(colorTag);
@@ -308,6 +321,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			}
 		}
 	}
+	
+	private static final String APP_PREFERENCES_FILENAME = "settings";
 
 	protected Actions actions;
 	private AppPreferences preferences;
