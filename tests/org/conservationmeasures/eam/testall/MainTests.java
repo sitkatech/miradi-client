@@ -67,6 +67,7 @@ import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
+import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.interview.TestInterviewModel;
@@ -114,6 +115,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectUnzipper.class));
 		
 		// utils package
+		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));
 		suite.addTest(new TestSuite(TestLogging.class));
 		suite.addTest(new TestSuite(TestTranslations.class));
 		
