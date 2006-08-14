@@ -19,6 +19,8 @@ import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
+import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
+import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -153,6 +155,9 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
+		
+		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
+		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 	}
 	
 	JTabbedPane tabs;

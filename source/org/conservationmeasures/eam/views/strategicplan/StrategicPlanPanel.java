@@ -18,6 +18,8 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
+import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
+import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -153,9 +155,13 @@ EAM.logDebug("" + row);
 		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
 		UiButton editButton = new UiButton(actions.get(ActionModifyActivity.class));
 		UiButton deleteButton = new UiButton(actions.get(ActionDeleteActivity.class));
+		UiButton upButton = new UiButton(actions.get(ActionTreeNodeUp.class));
+		UiButton downButton = new UiButton(actions.get(ActionTreeNodeDown.class));
 		buttonBox.add(addButton);
 		buttonBox.add(editButton);
 		buttonBox.add(deleteButton);
+		buttonBox.add(upButton);
+		buttonBox.add(downButton);
 		
 		return buttonBox;
 	}

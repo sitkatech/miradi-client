@@ -74,6 +74,8 @@ public class Actions
 		registerAction(new ActionModifyObjective(mainWindow));
 		registerAction(new ActionDeleteObjective(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
+		registerAction(new ActionTreeNodeUp(mainWindow));
+		registerAction(new ActionTreeNodeDown(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

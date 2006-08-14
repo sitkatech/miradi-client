@@ -17,24 +17,9 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.ViewDoer;
 
-public class InsertActivity extends ViewDoer
+public class InsertActivity extends StratPlanDoer
 {
-	public StratPlanObject getSelectedObject()
-	{
-		StrategicPlanPanel panel = getPanel();
-		if(panel == null)
-			return null;
-		return panel.getSelectedObject();
-	}
-
-	private StrategicPlanPanel getPanel()
-	{
-		StrategicPlanPanel panel = ((StrategicPlanView)getView()).getStrategicPlanPanel();
-		return panel;
-	}
-	
 	public boolean isAvailable()
 	{
 		StratPlanObject selected = getSelectedObject();
