@@ -6,6 +6,8 @@
 
 package org.conservationmeasures.eam.diagram.views;
 
+import org.conservationmeasures.eam.diagram.renderers.ProjectScopeRenderer;
+import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 
 public class ProjectScopeView extends RectangleCellView 
@@ -15,6 +17,11 @@ public class ProjectScopeView extends RectangleCellView
 		super(cell);
 		GraphConstants.setSizeable(getAttributes(), false);
 		GraphConstants.setMoveable(getAttributes(), false);
+	}
+
+	public CellViewRenderer getRenderer()
+	{
+		return new ProjectScopeRenderer();
 	}
 
 }

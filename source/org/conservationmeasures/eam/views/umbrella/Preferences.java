@@ -158,6 +158,11 @@ public class Preferences extends Doer
 			targetDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_TARGET));
 			panel.add(targetDropdown);
 			
+			panel.add(new UiLabel("Project Scope (Dark Green)"));
+			scopeDropdown = createColorsDropdown(scopeColorChoices);
+			scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
+			panel.add(scopeDropdown);
+			
 			return panel;
 		}
 
@@ -184,6 +189,9 @@ public class Preferences extends Doer
 			Color targetColor = (Color)targetDropdown.getSelectedItem();
 			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 			
+			Color scopeColor = (Color)scopeDropdown.getSelectedItem();
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
+			
 			try
 			{
 				mainWindow.savePreferences();
@@ -200,6 +208,7 @@ public class Preferences extends Doer
 		UiComboBox directThreatDropdown;
 		UiComboBox indirectFactorDropdown;
 		UiComboBox targetDropdown;
+		UiComboBox scopeDropdown;
 		
 		static final String headerText = "<html><H2>e-Adaptive Management Preferences</H2></html>";
 	}
@@ -240,5 +249,6 @@ public class Preferences extends Doer
 	static final Color[] interventionColorChoices = {new Color(255, 255, 0), new Color(240, 240, 0), new Color(255, 255, 128)};
 	static final Color[] directThreatColorChoices = {new Color(255, 150, 150), new Color(255, 128, 128), new Color(220, 150, 150), new Color(255, 200, 200)};
 	static final Color[] indirectFactorColorChoices = {new Color(255, 190, 0), new Color(255, 128, 0), new Color(200, 128, 0), new Color(255, 220, 0), new Color(255, 190, 64), new Color(255, 240, 200)};
-	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(80, 255, 80), new Color(200, 255, 200), new Color(64, 220, 64)};
+	static final Color[] targetColorChoices = {new Color(153, 255, 153), new Color(200, 255, 200), new Color(80, 255, 80), new Color(64, 220, 64)};
+	static final Color[] scopeColorChoices = {new Color(0, 255, 0), new Color(128, 255, 128), new Color(0, 220, 0), new Color(0, 180, 0), new Color(0, 128, 0)};
 }

@@ -49,6 +49,8 @@ public class AppPreferences
 			return directThreatColor;
 		if(tag.equals(TAG_COLOR_TARGET))
 			return targetColor;
+		if(tag.equals(TAG_COLOR_SCOPE))
+			return scopeColor;
 			
 		throw new RuntimeException(tag);
 	}
@@ -63,6 +65,8 @@ public class AppPreferences
 			directThreatColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_TARGET))
 			targetColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_SCOPE))
+			scopeColor = colorToUse;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -74,6 +78,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_INDIRECT_FACTOR, indirectFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
+		json.put(TAG_COLOR_SCOPE, scopeColor);
 		
 		return json;
 	}
@@ -84,20 +89,24 @@ public class AppPreferences
 		indirectFactorColor = json.optColor(TAG_COLOR_INDIRECT_FACTOR, DEFAULT_INDIRECT_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
+		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
 	}
 	
 	public static final String TAG_COLOR_INTERVENTION = "ColorIntervention";
 	public static final String TAG_COLOR_INDIRECT_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
+	public static final String TAG_COLOR_SCOPE = "ColorScope";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
 	private static final Color DEFAULT_INDIRECT_FACTOR_COLOR = new Color(255, 190, 0);
 	private static final Color DEFAULT_INTERVENTION_COLOR = new Color(255, 255, 0);
+	private static final Color DEFAULT_SCOPE_COLOR = new Color(0, 255, 0);
 	
 	public Color interventionColor;
 	public Color indirectFactorColor;
 	public Color directThreatColor;
 	public Color targetColor;
+	public Color scopeColor;
 }

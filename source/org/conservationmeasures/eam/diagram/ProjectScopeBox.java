@@ -27,13 +27,12 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		
 		setText(EAM.text("Project Scope"));
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
-		GraphConstants.setBackground(getAttributes(), PROJECT_SCOPE_BOX_COLOR);
 		GraphConstants.setForeground(getAttributes(), Color.black);
 		GraphConstants.setOpaque(getAttributes(), true);
 
 		model.addDiagramModelListener(this);
 	}
-	
+
 	public void setText(String text)
 	{
 		setUserObject(text);
@@ -144,7 +143,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 	}
 
-	final static Color PROJECT_SCOPE_BOX_COLOR = new Color(0, 255, 0);
 	final static int SIDE_MARGIN = 5;
 	final static int TOP_MARGIN = 20;
 	final static int BOTTOM_MARGIN = 5;
