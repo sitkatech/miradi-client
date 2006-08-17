@@ -97,52 +97,23 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 	{
 EAM.logDebug("objectiveWasModified");
 		getRootStratPlanObject().rebuild();
-//		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
 	
 	public void dataWasChanged(int objectType, BaseId objectId)
 	{
-		TreePath found = getPathOfParent(objectType, objectId);
-		if(found == null)
-			return;
+		getRootStratPlanObject().rebuild();
+		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 		
 EAM.logDebug("dataWasChanged");
-		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
-		parent.rebuild();
-		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
 	}
 
 	public void idListWasChanged(int objectType, BaseId objectId, String newIdListAsString)
 	{
-		TreePath found = getPathOfParent(objectType, objectId);
-		if(found == null)
-			return;
-		
+		getRootStratPlanObject().rebuild();
+		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
+
 EAM.logDebug("idListWasChanged");
-		StratPlanObject parent = (StratPlanObject)found.getLastPathComponent();
-		parent.rebuild();
-
-		fireTreeStructureChanged(parent, found.getPath(), getChildIndices(parent), getChildren(parent));
-	}
-
-	private Object[] getChildren(StratPlanObject parent)
-	{
-		Object[] children = new Object[parent.getChildCount()];
-		for(int i = 0; i < children.length; ++i)
-		{
-			children[i] = parent.getChild(i);
-		}
-		return children;
-	}
-
-	private int[] getChildIndices(StratPlanObject parent)
-	{
-		int[] childIndices = new int[parent.getChildCount()];
-		for(int i = 0; i < childIndices.length; ++i)
-		{
-			childIndices[i] = i;
-		}
-		return childIndices;
 	}
 	
 	TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
