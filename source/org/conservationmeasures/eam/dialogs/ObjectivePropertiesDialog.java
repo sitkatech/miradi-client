@@ -14,6 +14,7 @@ public class ObjectivePropertiesDialog extends ObjectPropertiesDialog
 	public ObjectivePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
+		setTitle("Title|Objective Properties");
 		initializeFields(tags);
 	}
 

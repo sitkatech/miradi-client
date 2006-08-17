@@ -20,6 +20,7 @@ public class TaskPropertiesDialog extends ObjectPropertiesDialog
 	public TaskPropertiesDialog(MainWindow parentToUse, EAMObject taskToEdit) throws Exception
 	{
 		super(parentToUse, taskToEdit);
+		setTitle(EAM.text("Title|Activity Properties"));
 		initializeFields(tags);
 	}
 	

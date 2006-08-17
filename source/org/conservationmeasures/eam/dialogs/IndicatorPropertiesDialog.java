@@ -14,6 +14,7 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
+		setTitle("Title|Indicator Properties");
 		initializeFields(tags);
 	}
 

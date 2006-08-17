@@ -13,6 +13,7 @@ public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
 	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
+		setTitle("Title|Rescource Properties");
 		initializeFields(tags);
 	}
 
