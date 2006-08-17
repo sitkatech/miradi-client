@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
@@ -147,7 +149,20 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	
 	public void modifyObject(EAMObject object) throws Exception
 	{
-		showObjectPropertiesDialog(createDialog(object));
+		ObjectPropertiesDialog dlg = createDialog(object);
+		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
+		showObjectPropertiesDialog(dlg);
+	}
+	
+	class ObjectPropertiesDialogWindowEventHandler extends WindowAdapter
+	{
+
+		public void windowClosing(WindowEvent e)
+		{
+			closeActivePropertiesDialog();
+			super.windowClosing(e);
+		}
+
 	}
 	
 	private ObjectPropertiesDialog createDialog(EAMObject object) throws Exception
@@ -267,7 +282,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	
 	public void closeActivePropertiesDialog()
 	{
-		if(activePropertiesDlg != null)
+		if(activePropertiesDlg != null && activePropertiesDlg.isDisplayable())
 			activePropertiesDlg.dispose();
 		activePropertiesDlg = null;
 	}
