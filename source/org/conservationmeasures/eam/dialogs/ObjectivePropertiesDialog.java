@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Objective;
@@ -14,7 +15,7 @@ public class ObjectivePropertiesDialog extends ObjectPropertiesDialog
 	public ObjectivePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle("Title|Objective Properties");
+		setTitle(EAM.text("Title|Objective Properties"));
 		initializeFields(tags);
 	}
 

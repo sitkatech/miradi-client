@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 
@@ -13,7 +14,7 @@ public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
 	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle("Title|Rescource Properties");
+		setTitle(EAM.text("Title|Rescource Properties"));
 		initializeFields(tags);
 	}
 

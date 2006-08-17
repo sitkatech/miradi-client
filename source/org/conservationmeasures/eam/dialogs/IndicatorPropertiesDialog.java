@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -14,7 +15,7 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle("Title|Indicator Properties");
+		setTitle(EAM.text("Title|Indicator Properties"));
 		initializeFields(tags);
 	}
 
