@@ -12,8 +12,8 @@ import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 
 public class DiagramWizardOverviewStep extends JPanel implements HyperlinkHandler
 {

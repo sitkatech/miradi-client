@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 
 abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implements HyperlinkHandler
 {

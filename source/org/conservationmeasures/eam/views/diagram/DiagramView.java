@@ -62,11 +62,11 @@ import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiScrollPane;
 
 public class DiagramView extends UmbrellaView implements CommandExecutedListener

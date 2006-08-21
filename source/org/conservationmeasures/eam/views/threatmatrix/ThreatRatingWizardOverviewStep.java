@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 
 public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep implements HyperlinkHandler
 {

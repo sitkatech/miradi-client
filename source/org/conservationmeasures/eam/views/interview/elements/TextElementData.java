@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.interview.elements;
 
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 
 class TextElementData extends ElementData implements HyperlinkHandler
 {

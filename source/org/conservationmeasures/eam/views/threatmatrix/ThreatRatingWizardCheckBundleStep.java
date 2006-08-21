@@ -19,8 +19,8 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;

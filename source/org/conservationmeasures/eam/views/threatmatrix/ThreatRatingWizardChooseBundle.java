@@ -10,8 +10,8 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
-import org.conservationmeasures.eam.utils.HtmlViewer;
-import org.conservationmeasures.eam.utils.HyperlinkHandler;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 
 public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep implements HyperlinkHandler
 {
