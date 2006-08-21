@@ -194,7 +194,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	void createLinkageAndBundle(BaseId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
 	{
-		project.insertLinkageAtId(new BaseId(), threatId, targetId);
+		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
 		populateBundle(threatId, targetId, value);
 	}
 	
@@ -211,7 +211,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
 		
-		project.insertLinkageAtId(new BaseId(), threatId, targetId);
+		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 		
@@ -223,13 +223,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private BaseId createTarget() throws Exception
 	{
-		BaseId targetId = project.insertNodeAtId(new NodeTypeTarget(), new BaseId());
+		BaseId targetId = project.insertNodeAtId(new NodeTypeTarget(), BaseId.INVALID);
 		return targetId;
 	}
 
 	private BaseId createThreat() throws Exception
 	{
-		BaseId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), new BaseId());
+		BaseId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
 		return threatId;
 	}
 	

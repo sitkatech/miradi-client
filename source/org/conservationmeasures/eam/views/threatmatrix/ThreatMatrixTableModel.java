@@ -139,7 +139,7 @@ public class ThreatMatrixTableModel
 			if(nodes[i].getLabel().equals(name))
 				return nodes[i].getId();
 		
-		return new BaseId();
+		return BaseId.INVALID;
 	}
 	
 	Project project;

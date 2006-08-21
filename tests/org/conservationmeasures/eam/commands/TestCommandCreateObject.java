@@ -24,7 +24,7 @@ public class TestCommandCreateObject extends EAMTestCase
 		
 		int type = ObjectType.TASK;
 		CommandCreateObject cmd = new CommandCreateObject(type);
-		assertEquals("already has an id?", new BaseId(), cmd.getCreatedId());
+		assertEquals("already has an id?", BaseId.INVALID, cmd.getCreatedId());
 		cmd.execute(project);
 		BaseId createdId = cmd.getCreatedId();
 		int highestId = project.getAnnotationIdAssigner().getHighestAssignedId();

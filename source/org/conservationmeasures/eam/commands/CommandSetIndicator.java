@@ -23,7 +23,7 @@ public class CommandSetIndicator extends Command
 	{
 		id = idToUpdate;
 		indicatorId = indicatorToUse;
-		previousIndicator = new BaseId();
+		previousIndicator = BaseId.INVALID;
 	}
 
 	public String getCommandName() 

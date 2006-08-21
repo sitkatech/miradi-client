@@ -18,7 +18,7 @@ public class CommandCreateObject extends Command
 	public CommandCreateObject(int typeToCreate)
 	{
 		type = typeToCreate;
-		createdId = new BaseId();
+		createdId = BaseId.INVALID;
 	}
 	
 	public CommandCreateObject(DataInputStream dataIn) throws IOException

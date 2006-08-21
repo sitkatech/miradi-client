@@ -108,7 +108,7 @@ public class TestUndoRedo extends EAMTestCase
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals(new BaseId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
+		assertEquals(BaseId.INVALID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
@@ -116,7 +116,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 
 		undo.doIt();
-		assertEquals("Should have no indicator again", new BaseId(), project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
+		assertEquals("Should have no indicator again", BaseId.INVALID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 	}
 	
 	public void testUndoRedoObjective() throws Exception

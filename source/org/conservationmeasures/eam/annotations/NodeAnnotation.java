@@ -13,7 +13,7 @@ public class NodeAnnotation
 {
 	public NodeAnnotation()
 	{
-		id = new BaseId();
+		id = BaseId.INVALID;
 		annotation = ANNOTATION_NONE_STRING;
 	}
 	

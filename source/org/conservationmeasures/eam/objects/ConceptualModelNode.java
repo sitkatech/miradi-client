@@ -23,7 +23,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		type = nodeType;
 		
 		comment = "";
-		indicator = new BaseId();
+		indicator = BaseId.INVALID;
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
 	}

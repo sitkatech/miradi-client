@@ -61,7 +61,7 @@ public class TestProjectInfo extends TestCaseEnhanced
 		assertEquals("Didn't clear currentView", InterviewView.getViewName(), info.getCurrentView());
 		assertEquals("didn't clear id?", new BaseId(0), info.getNodeIdAssigner().takeNextId());
 		assertEquals("didn't clear annotation id?", new BaseId(0), info.getAnnotationIdAssigner().takeNextId());
-		assertEquals("Didn't clear root task id?", new BaseId(), info.getRootTaskId());
+		assertEquals("Didn't clear root task id?", BaseId.INVALID, info.getRootTaskId());
 	}
 
 	String testKey = "TestKey";

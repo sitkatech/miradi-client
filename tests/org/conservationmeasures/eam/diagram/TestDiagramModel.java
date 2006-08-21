@@ -104,7 +104,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link = createLinkage(new BaseId(), factor.getId(), target.getId());
+		DiagramLinkage link = createLinkage(BaseId.INVALID, factor.getId(), target.getId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
@@ -114,7 +114,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		createLinkage(new BaseId(), factor.getId(), target.getId());
+		createLinkage(BaseId.INVALID, factor.getId(), target.getId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
 	}
@@ -126,7 +126,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode newFactor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
-		createLinkage(new BaseId(), newFactor.getId(), target.getId());
+		createLinkage(BaseId.INVALID, newFactor.getId(), target.getId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
 		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
@@ -164,7 +164,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		createLinkage(new BaseId(), node1.getId(), node2.getId());
+		createLinkage(BaseId.INVALID, node1.getId(), node2.getId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
@@ -232,7 +232,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link1 = createLinkage(new BaseId(), node2.getId(), node3.getId());
+		DiagramLinkage link1 = createLinkage(BaseId.INVALID, node2.getId(), node3.getId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);

@@ -20,7 +20,7 @@ public class CommandLinkNodes extends Command
 	{
 		this.fromId = fromId;
 		this.toId = toId;
-		linkageId = new BaseId();
+		linkageId = BaseId.INVALID;
 	}
 	
 	public CommandLinkNodes(DataInputStream dataIn) throws IOException

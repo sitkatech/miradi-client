@@ -50,7 +50,7 @@ public class TestNodeDataHelper extends EAMTestCase
 		assertEquals(originalNodeId1, dataHelper.getNewId(originalNodeId1));
 		assertEquals(originalNodeId2, dataHelper.getNewId(originalNodeId2));
 		assertEquals(originalNodeId3, dataHelper.getNewId(originalNodeId3));
-		assertEquals(new BaseId(), dataHelper.getNewId(unknownNodeId));
+		assertEquals(BaseId.INVALID, dataHelper.getNewId(unknownNodeId));
 	}
 	
 	public void testSetNewId()

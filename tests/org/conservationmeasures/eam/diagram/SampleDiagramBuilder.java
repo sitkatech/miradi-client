@@ -31,7 +31,7 @@ public class SampleDiagramBuilder
 		{
 			BaseId fromId = new BaseId(linkagePairs[i*2]);
 			BaseId toId = new BaseId(linkagePairs[i*2+1]);
-			project.insertLinkageAtId(new BaseId(), fromId, toId);
+			project.insertLinkageAtId(BaseId.INVALID, fromId, toId);
 		}
 	}
 }

@@ -72,7 +72,7 @@ public class TestDiagramNode extends EAMTestCase
 	public void testIndicator()
 	{
 		BaseId indicator = directThreat.getIndicatorId();
-		assertEquals(new BaseId(), indicator);
+		assertEquals(BaseId.INVALID, indicator);
 	}
 	
 	public void testGoals()

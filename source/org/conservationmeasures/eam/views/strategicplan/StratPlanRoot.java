@@ -47,7 +47,7 @@ public class StratPlanRoot extends StratPlanObject
 	
 	public BaseId getId()
 	{
-		return new BaseId();
+		return BaseId.INVALID;
 	}
 	
 	public boolean canInsertActivityHere()

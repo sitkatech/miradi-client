@@ -30,7 +30,7 @@ public class NodeDataHelper
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return new BaseId();
+			return BaseId.INVALID;
 		return new BaseId(newNodeId.intValue());
 	}
 	

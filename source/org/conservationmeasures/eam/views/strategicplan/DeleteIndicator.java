@@ -86,7 +86,7 @@ public class DeleteIndicator extends ViewDoer
 			for(int i = 0; i < removeFromNodes.length; ++i)
 			{
 				ConceptualModelNode node = nodes[i];
-				removeFromNodes[i] = new CommandSetIndicator(node.getId(), new BaseId());
+				removeFromNodes[i] = new CommandSetIndicator(node.getId(), BaseId.INVALID);
 			}
 		}
 		catch (Exception e)

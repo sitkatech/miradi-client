@@ -9,11 +9,6 @@ import org.conservationmeasures.eam.project.IdAssigner;
 
 public class BaseId implements Comparable
 {
-	public BaseId()
-	{
-		this(IdAssigner.INVALID_ID);
-	}
-	
 	public BaseId(int idToUse)
 	{
 		id = idToUse;
@@ -26,7 +21,7 @@ public class BaseId implements Comparable
 	
 	public boolean isInvalid()
 	{
-		return (id == IdAssigner.INVALID_ID);
+		return equals(INVALID);
 	}
 	
 	public boolean equals(Object other)
@@ -56,6 +51,8 @@ public class BaseId implements Comparable
 			return 1;
 		return  0;
 	}
+	
+	public static final BaseId INVALID = new BaseId(IdAssigner.INVALID_ID);
 
 	private int id;
 

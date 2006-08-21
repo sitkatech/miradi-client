@@ -321,12 +321,12 @@ public class Project
 	
 	public BaseId createObject(int objectType) throws Exception
 	{
-		return createObject(objectType, new BaseId());
+		return createObject(objectType, BaseId.INVALID);
 	}
 	
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
-		BaseId createdId = new BaseId();
+		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
@@ -377,7 +377,7 @@ public class Project
 			case ObjectType.MODEL_LINKAGE:
 			{
 				objectId = projectInfo.obtainRealLinkageId(objectId);
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, new BaseId(), new BaseId());
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, BaseId.INVALID, BaseId.INVALID);
 				getLinkagePool().put(cmLinkage);
 				database.writeObject(cmLinkage);
 				createdId = cmLinkage.getId();

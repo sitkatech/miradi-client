@@ -381,7 +381,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		ignoreObjectiveChanges = true;
 		dropdownObjective.removeAllItems();
-		Objective nullObjective = new Objective(new BaseId());
+		Objective nullObjective = new Objective(BaseId.INVALID);
 		dropdownObjective.addItem(nullObjective);
 
 		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
@@ -404,7 +404,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		
 		if(currentGoals.size() == 0)
 		{
-			dropdownGoal.setSelectedItem(allAvailableGoals.find(new BaseId()));
+			dropdownGoal.setSelectedItem(allAvailableGoals.find(BaseId.INVALID));
 		}
 		else
 		{
@@ -466,7 +466,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		ignoreIndicatorChanges = true;
 		dropdownIndicator.removeAllItems();
-		Indicator nullIndicator = new Indicator(new BaseId());
+		Indicator nullIndicator = new Indicator(BaseId.INVALID);
 		dropdownIndicator.addItem(nullIndicator);
 		
 		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();

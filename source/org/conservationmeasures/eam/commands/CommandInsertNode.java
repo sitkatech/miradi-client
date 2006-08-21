@@ -21,7 +21,7 @@ public class CommandInsertNode extends Command
 	public CommandInsertNode(NodeType nodeType)
 	{
 		type = nodeType;
-		insertedId = new BaseId();
+		insertedId = BaseId.INVALID;
 	}
 	
 	public CommandInsertNode(DataInputStream dataIn) throws IOException

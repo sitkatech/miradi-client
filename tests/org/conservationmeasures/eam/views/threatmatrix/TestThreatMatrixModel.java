@@ -87,9 +87,9 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		BaseId target2 = createTarget("target two");
 		createTarget("target three");
 		
-		project.insertLinkageAtId(new BaseId(), threat1, target1);
-		project.insertLinkageAtId(new BaseId(), threat1, target2);
-		project.insertLinkageAtId(new BaseId(), threat2, target2);
+		project.insertLinkageAtId(BaseId.INVALID, threat1, target1);
+		project.insertLinkageAtId(BaseId.INVALID, threat1, target2);
+		project.insertLinkageAtId(BaseId.INVALID, threat2, target2);
 
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -121,8 +121,8 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 
 	private BaseId createNode(NodeType type, String name) throws Exception
 	{
-		BaseId id = project.insertNodeAtId(type, new BaseId());
-		assertNotEquals("didn't fix id?", new BaseId(), id);
+		BaseId id = project.insertNodeAtId(type, BaseId.INVALID);
+		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		node.setLabel(name);
 		return id;

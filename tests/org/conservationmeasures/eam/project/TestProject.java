@@ -96,7 +96,7 @@ public class TestProject extends EAMTestCase
 			Project tempProject = new Project();
 			tempProject.createOrOpen(tempDirectory);
 			Task rootTask = tempProject.getRootTask();
-			assertNotEquals("Bad default root task id?", new BaseId(), rootTask.getId());
+			assertNotEquals("Bad default root task id?", BaseId.INVALID, rootTask.getId());
 			tempProject.close();
 			
 			Project otherProject = new Project();
@@ -131,7 +131,7 @@ public class TestProject extends EAMTestCase
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
 		BaseId createdId = project.createObject(type);
-		assertNotEquals("Created with invalid id", new BaseId(), createdId);
+		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
 		
@@ -722,7 +722,7 @@ public class TestProject extends EAMTestCase
 
 		nodeIndirectFactor.setObjectives(objectiveId);
 		
-		createLinkage(new BaseId(), nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
 		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisObjective(objectiveId1);
 		
@@ -765,7 +765,7 @@ public class TestProject extends EAMTestCase
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.setIndicator(indicatorId1);
 		
-		createLinkage(new BaseId(), nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
 		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
@@ -875,7 +875,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = project.insertNodeAtId(nodeType, new BaseId());
+		BaseId insertedId = project.insertNodeAtId(nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	

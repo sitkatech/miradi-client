@@ -230,7 +230,7 @@ public class TestCommands extends EAMTestCase
 		int type = ObjectType.THREAT_RATING_CRITERION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("created id already set?", new BaseId(), cmd.getCreatedId());
+		assertEquals("created id already set?", BaseId.INVALID, cmd.getCreatedId());
 
 		int oldCount = framework.getCriteria().length;
 		project.executeCommand(cmd);
@@ -258,7 +258,7 @@ public class TestCommands extends EAMTestCase
 		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("created id already set?", new BaseId(), cmd.getCreatedId());
+		assertEquals("created id already set?", BaseId.INVALID, cmd.getCreatedId());
 
 		int oldCount = framework.getValueOptions().length;
 		project.executeCommand(cmd);
@@ -514,7 +514,7 @@ public class TestCommands extends EAMTestCase
 	{
 		BaseId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertEquals("New target should not have an indicator", new BaseId(), node.getIndicatorId());
+		assertEquals("New target should not have an indicator", BaseId.INVALID, node.getIndicatorId());
 		BaseId originalIndicator = node.getIndicatorId();
 		
 		BaseId indicator1 = new BaseId(1);
@@ -643,7 +643,7 @@ public class TestCommands extends EAMTestCase
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		assertEquals("type not right?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
-		assertEquals("already have an id?", new BaseId(), cmd.getId());
+		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();
 		
@@ -661,7 +661,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertIndirectFactor() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		assertEquals("already have an id?", new BaseId(), cmd.getId());
+		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();
@@ -678,7 +678,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertDirectThreat() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertEquals("already have an id?", new BaseId(), cmd.getId());
+		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();
@@ -695,7 +695,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandInsertIntervention() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
-		assertEquals("already have an id?", new BaseId(), cmd.getId());
+		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();

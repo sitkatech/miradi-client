@@ -25,7 +25,7 @@ public class ProjectInfo
 		annotationIdAssigner = new IdAssigner();
 		currentView = getDefaultCurrentView();
 		projectData = new JSONObject();
-		rootTaskId = new BaseId();
+		rootTaskId = BaseId.INVALID;
 	}
 
 	private String getDefaultCurrentView()

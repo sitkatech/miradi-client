@@ -21,8 +21,8 @@ public class CommandDeleteLinkage extends Command
 	public CommandDeleteLinkage(BaseId idToDelete)
 	{
 		id = idToDelete;
-		wasFrom = new BaseId();
-		wasTo = new BaseId();
+		wasFrom = BaseId.INVALID;
+		wasTo = BaseId.INVALID;
 	}
 	
 	public CommandDeleteLinkage(DataInputStream dataIn) throws IOException
