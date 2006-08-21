@@ -9,8 +9,9 @@ package org.conservationmeasures.eam.objects;
 import java.io.DataInputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.annotations.NodeAnnotationIds;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.NodeAnnotationIds;
 
 
 

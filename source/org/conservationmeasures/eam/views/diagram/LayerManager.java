@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class LayerManager

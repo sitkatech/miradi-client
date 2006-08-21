@@ -12,8 +12,8 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetObjectData extends Command

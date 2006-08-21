@@ -7,9 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;

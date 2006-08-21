@@ -9,6 +9,8 @@ package org.conservationmeasures.eam.annotations;
 import java.io.DataInputStream;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.ids.NodeAnnotationIds;
+
 
 public class ProjectVisionAnnotation extends NodeAnnotationIds
 {

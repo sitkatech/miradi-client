@@ -5,9 +5,10 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.annotations.GoalIds;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestConceptualModelNode extends TestCaseEnhanced

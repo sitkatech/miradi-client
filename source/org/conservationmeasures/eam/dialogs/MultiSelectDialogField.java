@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
 
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.IdList;
 import org.martus.swing.UiList;
 
 public class MultiSelectDialogField extends DialogField

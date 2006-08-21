@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.dialogs;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TaskPropertiesDialog extends ObjectPropertiesDialog

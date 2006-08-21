@@ -4,14 +4,12 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.annotations;
+package org.conservationmeasures.eam.ids;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.IdList;
 
 abstract public class NodeAnnotationIds extends IdList
 {

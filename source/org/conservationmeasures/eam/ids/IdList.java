@@ -3,13 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.ids;
 
 import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

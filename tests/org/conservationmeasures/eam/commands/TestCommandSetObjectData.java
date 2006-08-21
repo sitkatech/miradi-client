@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.IdList;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 

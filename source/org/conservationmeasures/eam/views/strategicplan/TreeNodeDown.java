@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.IdList;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TreeNodeDown extends StratPlanDoer

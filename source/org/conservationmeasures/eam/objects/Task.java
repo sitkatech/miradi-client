@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.json.JSONObject;
 
 public class Task extends EAMBaseObject
