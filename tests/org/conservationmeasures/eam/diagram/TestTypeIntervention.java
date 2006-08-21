@@ -22,7 +22,6 @@ public class TestTypeIntervention extends EAMTestCase
 		assertTrue("Not an Intervention?", factor.isIntervention());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isTarget());
-		assertFalse(factor.isStress());
 		assertFalse(factor.isIndirectFactor());
 	}
 }

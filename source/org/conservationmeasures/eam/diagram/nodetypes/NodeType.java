@@ -16,7 +16,7 @@ public abstract class NodeType
 	
 	public boolean isFactor()
 	{
-		return isIndirectFactor() || isDirectThreat() || isStress();
+		return isIndirectFactor() || isDirectThreat();
 	}
 	
 	public boolean isTarget()
@@ -30,11 +30,6 @@ public abstract class NodeType
 	}
 	
 	public boolean isDirectThreat()
-	{
-		return false;
-	}
-	
-	public boolean isStress()
 	{
 		return false;
 	}

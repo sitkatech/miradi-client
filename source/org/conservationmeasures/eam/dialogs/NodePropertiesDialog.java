@@ -48,7 +48,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
-import org.conservationmeasures.eam.icons.StressIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -582,8 +581,6 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 				setIcon(new DirectThreatIcon());
 			if(((NodeType)value).isIndirectFactor())
 				setIcon(new IndirectFactorIcon());
-			if(((NodeType)value).isStress())
-				setIcon(new StressIcon());
 			return cell;
 		}
 	}

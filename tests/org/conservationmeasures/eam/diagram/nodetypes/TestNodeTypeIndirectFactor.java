@@ -22,7 +22,6 @@ public class TestNodeTypeIndirectFactor extends EAMTestCase
 		assertTrue("Not a indirect factor?", factor.isIndirectFactor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
-		assertFalse(factor.isStress());
 		assertFalse(factor.isTarget());
 	}
 }

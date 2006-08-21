@@ -22,7 +22,6 @@ public class TestNodeTypeTarget extends EAMTestCase
 		assertTrue("Not a Target?", factor.isTarget());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
-		assertFalse(factor.isStress());
 		assertFalse(factor.isIndirectFactor());
 	}
 }

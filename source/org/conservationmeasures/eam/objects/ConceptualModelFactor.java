@@ -38,11 +38,6 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		return(getNodeType().isDirectThreat());
 	}
 	
-	public boolean isStress()
-	{
-		return(getNodeType().isStress());
-	}
-	
 	public boolean canHaveObjectives()
 	{
 		return true;
