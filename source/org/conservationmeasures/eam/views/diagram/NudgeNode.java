@@ -57,7 +57,7 @@ public class NudgeNode extends ProjectDoer
 		BaseId[] ids = new BaseId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{
-			ids[i] = cells[i].getId(); 
+			ids[i] = cells[i].getDiagramNodeId(); 
 		}
 		try
 		{

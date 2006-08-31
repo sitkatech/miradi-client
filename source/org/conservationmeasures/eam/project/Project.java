@@ -567,7 +567,7 @@ public class Project
 		DiagramNode node = model.createNode(realId);
 		updateVisibilityOfSingleNode(node);
 		
-		BaseId idThatWasInserted = node.getId();
+		BaseId idThatWasInserted = node.getDiagramNodeId();
 		return idThatWasInserted;
 	}
 	

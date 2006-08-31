@@ -83,7 +83,7 @@ abstract public class InsertNode extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
-			CommandLinkNodes cmd = new CommandLinkNodes(newlyInsertedId, nodesToLinkTo[i].getId());
+			CommandLinkNodes cmd = new CommandLinkNodes(newlyInsertedId, nodesToLinkTo[i].getDiagramNodeId());
 			getProject().executeCommand(cmd);
 		}
 		getProject().executeCommand(new CommandEndTransaction());

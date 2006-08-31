@@ -69,7 +69,7 @@ public class NodeMoveHandler
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode)movedNodes.get(i);
-				idsActuallyMoved[i] = node.getId();
+				idsActuallyMoved[i] = node.getDiagramNodeId();
 			}
 			
 			commandsToRecord.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));
@@ -116,7 +116,7 @@ public class NodeMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like addNodeToCluster()
 		getProject().addNodeToCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
+				ConceptualModelCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
 		result.add(cmd);
 		return result;
 	}
@@ -131,7 +131,7 @@ public class NodeMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like removeNodeFromCluster()
 		getProject().removeNodeFromCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
+				ConceptualModelCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
 		result.add(cmd);
 		return result;
 	}
@@ -155,7 +155,7 @@ public class NodeMoveHandler
 	
 	private Command buildResizeCommand(DiagramNode node)
 	{
-		return new CommandSetNodeSize(node.getId(), node.getSize(), node.getPreviousSize());
+		return new CommandSetNodeSize(node.getDiagramNodeId(), node.getSize(), node.getPreviousSize());
 	}
 	
 

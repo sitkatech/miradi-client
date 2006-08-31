@@ -276,8 +276,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
+		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -303,7 +303,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
@@ -327,8 +327,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
+		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -362,7 +362,7 @@ public class TestProject extends EAMTestCase
 		node1.setPreviousSize(node1.getSize());
 
 		BaseId[] noNodesMoved = new BaseId[1];
-		noNodesMoved[0] = node1.getId();
+		noNodesMoved[0] = node1.getDiagramNodeId();
 	
 		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, noNodesMoved);
 		try
@@ -384,8 +384,8 @@ public class TestProject extends EAMTestCase
 		node2.setLocation(new Point(20,30));
 		
 		BaseId[] ids = new BaseId[2];
-		ids[0] = node1.getId();
-		ids[1] = node2.getId();
+		ids[0] = node1.getDiagramNodeId();
+		ids[1] = node2.getDiagramNodeId();
 		
 		
 		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
@@ -393,8 +393,8 @@ public class TestProject extends EAMTestCase
 		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
 		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
 		assertEquals(deltaY, commandDiagramMoveRecorded.getDeltaY());
-		assertEquals(node1.getId(), commandDiagramMoveRecorded.getIds()[0]);
-		assertEquals(node2.getId(), commandDiagramMoveRecorded.getIds()[1]);
+		assertEquals(node1.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[0]);
+		assertEquals(node2.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[1]);
 		project.getLastCommand(); //begin Transaction
 		
 	}
@@ -414,8 +414,8 @@ public class TestProject extends EAMTestCase
 		node2.setLocation(new Point(0,0));
 		
 		BaseId[] ids = new BaseId[2];
-		ids[0] = node1.getId();
-		ids[1] = node2.getId();
+		ids[0] = node1.getDiagramNodeId();
+		ids[1] = node2.getDiagramNodeId();
 		
 		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, ids);
 		project.getLastCommand(); //End Transaction
@@ -464,10 +464,10 @@ public class TestProject extends EAMTestCase
 
 		
 		BaseId[] ids = new BaseId[4];
-		ids[0] = nodeResizedAndMoved.getId();
-		ids[1] = nodeMovedOnly.getId();
-		ids[2] = nodeResizedOnly.getId();
-		ids[3] = nodeNotMovedOrResized.getId();
+		ids[0] = nodeResizedAndMoved.getDiagramNodeId();
+		ids[1] = nodeMovedOnly.getDiagramNodeId();
+		ids[2] = nodeResizedOnly.getDiagramNodeId();
+		ids[3] = nodeNotMovedOrResized.getDiagramNodeId();
 
 		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		
@@ -476,8 +476,8 @@ public class TestProject extends EAMTestCase
 		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
 		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
 		assertEquals(deltaY, commandDiagramMoveRecorded.getDeltaY());
-		assertEquals(nodeResizedAndMoved.getId(), commandDiagramMoveRecorded.getIds()[0]);
-		assertEquals(nodeMovedOnly.getId(), commandDiagramMoveRecorded.getIds()[1]);
+		assertEquals(nodeResizedAndMoved.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[0]);
+		assertEquals(nodeMovedOnly.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[1]);
 
 		CommandSetNodeSize commandNodeResizedOnlyRecorded = (CommandSetNodeSize)project.getLastCommand();
 		assertEquals(nodeResizedOnly.getSize(), commandNodeResizedOnlyRecorded.getCurrentSize());
@@ -498,8 +498,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
-		createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
+		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -525,7 +525,7 @@ public class TestProject extends EAMTestCase
 		Object[] selectedCells = new DiagramNode[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(selectedCells);
 		
-		project.deleteNode(node1.getId());
+		project.deleteNode(node1.getDiagramNodeId());
 		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
 
 		Point pastePoint = new Point(5,5);
@@ -534,7 +534,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, nodes.size());
 		DiagramNode pastedNode = (DiagramNode)nodes.get(0);
 		assertEquals("didn't paste correct size?", node1.getSize(), pastedNode.getSize());
-		assertNotEquals("didn't change id?", node1.getId(), pastedNode.getId());
+		assertNotEquals("didn't change id?", node1.getDiagramNodeId(), pastedNode.getDiagramNodeId());
 		assertEquals("didn't snap?", project.getSnapped(pastePoint), pastedNode.getLocation());
 
 		assertEquals("not just one object in the pool?", 1, project.getNodePool().size());
@@ -660,17 +660,17 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeA = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getId(), nodeB.getId());
+		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId());
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
-		assertEquals("wrong from?", nodeA.getId(), cmLinkage.getFromNodeId());
-		assertEquals("wrong to?", nodeB.getId(), cmLinkage.getToNodeId());
-		assertTrue("not linked?", project.isLinked(nodeA.getId(), nodeB.getId()));
+		assertEquals("wrong from?", nodeA.getDiagramNodeId(), cmLinkage.getFromNodeId());
+		assertEquals("wrong to?", nodeB.getDiagramNodeId(), cmLinkage.getToNodeId());
+		assertTrue("not linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 		
 		project.deleteLinkage(linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
-		assertFalse("still linked?", project.isLinked(nodeA.getId(), nodeB.getId()));
+		assertFalse("still linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 	}
 
 	public void testFindNodesThatUseThisObjective() throws Exception
@@ -712,7 +712,7 @@ public class TestProject extends EAMTestCase
 
 		nodeIndirectFactor.setObjectives(objectiveId);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getDiagramNodeId(), nodeDirectThreat.getDiagramNodeId());
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
 		
@@ -755,7 +755,7 @@ public class TestProject extends EAMTestCase
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.setIndicator(indicatorId1);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getDiagramNodeId(), nodeDirectThreat.getDiagramNodeId());
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
