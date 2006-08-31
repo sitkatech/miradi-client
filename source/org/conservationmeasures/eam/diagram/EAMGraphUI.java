@@ -23,7 +23,7 @@ public class EAMGraphUI extends BasicGraphUI
 	
 	public JGraph getGraph()
 	{
-		return getGraph();
+		return graph;
 	}
 	
 	public CellView getFocus()
