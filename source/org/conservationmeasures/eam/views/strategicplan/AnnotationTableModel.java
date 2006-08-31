@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.objectpools.ObjectPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.project.ObjectPool;
 
 public class AnnotationTableModel extends ObjectManagerTableModel
 {

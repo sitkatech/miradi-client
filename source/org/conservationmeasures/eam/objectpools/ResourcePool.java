@@ -3,11 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.annotations;
+package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.project.EAMObjectPool;
 
 public class ResourcePool extends EAMObjectPool
 {

@@ -3,10 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.project.EAMObjectPool;
+import org.conservationmeasures.eam.objects.Objective;
 
 public class ObjectivePool extends EAMObjectPool
 {

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.objectpools;
 
 import java.util.HashMap;
 import java.util.Iterator;

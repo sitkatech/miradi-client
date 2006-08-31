@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.martus.util.TestCaseEnhanced;

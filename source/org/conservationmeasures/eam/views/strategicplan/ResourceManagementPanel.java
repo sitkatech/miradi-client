@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
-import org.conservationmeasures.eam.annotations.ResourcePool;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 

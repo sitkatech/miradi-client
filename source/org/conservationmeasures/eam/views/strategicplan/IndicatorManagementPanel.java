@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
-import org.conservationmeasures.eam.annotations.IndicatorPool;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 

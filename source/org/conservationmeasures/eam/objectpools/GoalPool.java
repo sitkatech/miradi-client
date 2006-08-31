@@ -3,11 +3,11 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.annotations;
+package org.conservationmeasures.eam.objectpools;
 
+import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.IdAssigner;
-import org.conservationmeasures.eam.project.ObjectPool;
 
 public class GoalPool extends ObjectPool
 {

@@ -12,8 +12,8 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectpools.ObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.project.ObjectPool;
 import org.martus.swing.UiTableModel;
 
 class ObjectManagerTableModel extends UiTableModel
