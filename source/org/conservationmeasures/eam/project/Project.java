@@ -16,9 +16,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.database.DataUpgrader;
-import org.conservationmeasures.eam.database.LinkageManifest;
-import org.conservationmeasures.eam.database.NodeManifest;
-import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -52,10 +49,7 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
-import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.Logging;
@@ -303,14 +297,8 @@ public class Project
 		ProjectServer db = getDatabase();
 		db.open(projectDirectory);
 		loadProjectInfo();
+		objectManager.loadFromDatabase();
 		loadThreatRatingFramework();
-		loadNodePool();
-		loadLinkagePool();
-		loadTaskPool();
-		loadViewPool();
-		loadResourcePool();
-		loadIndicatorPool();
-		loadObjectivePool();
 		loadDiagram();
 	}
 	
@@ -327,83 +315,6 @@ public class Project
 	private void loadThreatRatingFramework() throws Exception
 	{
 		getThreatRatingFramework().load();
-	}
-	
-	private void loadNodePool() throws IOException, ParseException
-	{
-		NodeManifest nodes = getDatabase().readNodeManifest();
-		BaseId[] nodeIds = nodes.getAllKeys();
-		for(int i = 0; i < nodeIds.length; ++i)
-		{
-			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
-			getNodePool().put(node);
-		}
-	}
-	
-	private void loadLinkagePool() throws IOException, ParseException
-	{
-		LinkageManifest linkages = getDatabase().readLinkageManifest();
-		BaseId[] linkageIds = linkages.getAllKeys();
-		for(int i = 0; i < linkageIds.length; ++i)
-		{
-			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
-			getLinkagePool().put(linkage);
-		}
-	}
-	
-	private void loadTaskPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
-			getTaskPool().put(task);
-		}
-	}
-	
-	private void loadViewPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.VIEW_DATA);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
-			getViewPool().put(viewData);
-		}
-	}
-	
-	private void loadResourcePool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.PROJECT_RESOURCE);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
-			getResourcePool().put(resource);
-		}
-	}
-	
-	private void loadIndicatorPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.INDICATOR);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
-			getIndicatorPool().put(indicator);
-		}
-	}
-	
-	private void loadObjectivePool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.OBJECTIVE);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
-			getObjectivePool().put(objective);
-		}
 	}
 	
 	private void loadDiagram() throws Exception

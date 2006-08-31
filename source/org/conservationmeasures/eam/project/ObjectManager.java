@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 
+import org.conservationmeasures.eam.database.LinkageManifest;
+import org.conservationmeasures.eam.database.NodeManifest;
+import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -358,6 +361,97 @@ public class ObjectManager
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
 		}
 	}
+	
+	public void loadFromDatabase() throws Exception
+	{
+		loadNodePool();
+		loadLinkagePool();
+		loadTaskPool();
+		loadViewPool();
+		loadResourcePool();
+		loadIndicatorPool();
+		loadObjectivePool();
+		
+	}
+	
+	private void loadNodePool() throws IOException, ParseException
+	{
+		NodeManifest nodes = getDatabase().readNodeManifest();
+		BaseId[] nodeIds = nodes.getAllKeys();
+		for(int i = 0; i < nodeIds.length; ++i)
+		{
+			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
+			getNodePool().put(node);
+		}
+	}
+	
+	private void loadLinkagePool() throws IOException, ParseException
+	{
+		LinkageManifest linkages = getDatabase().readLinkageManifest();
+		BaseId[] linkageIds = linkages.getAllKeys();
+		for(int i = 0; i < linkageIds.length; ++i)
+		{
+			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
+			getLinkagePool().put(linkage);
+		}
+	}
+	
+	private void loadTaskPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
+			getTaskPool().put(task);
+		}
+	}
+	
+	private void loadViewPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.VIEW_DATA);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
+			getViewPool().put(viewData);
+		}
+	}
+	
+	private void loadResourcePool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.PROJECT_RESOURCE);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
+			getResourcePool().put(resource);
+		}
+	}
+	
+	private void loadIndicatorPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.INDICATOR);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
+			getIndicatorPool().put(indicator);
+		}
+	}
+	
+	private void loadObjectivePool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.OBJECTIVE);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
+			getObjectivePool().put(objective);
+		}
+	}
+	
+
 	
 	Project getProject()
 	{
