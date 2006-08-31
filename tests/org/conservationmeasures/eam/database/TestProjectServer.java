@@ -196,7 +196,7 @@ public class TestProjectServer extends EAMTestCase
 		for(int i=0; i < gotNodes.size(); ++i)
 		{
 			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
-			BaseId gotId = gotNode.getId();
+			BaseId gotId = gotNode.getDiagramNodeId();
 			DiagramNode expectedNode = model.getNodeById(gotId);
 			assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 		}

@@ -34,8 +34,8 @@ public class TestDelete extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		BaseId interventionId = intervention.getId();
-		BaseId factorId = factor.getId();
+		BaseId interventionId = intervention.getDiagramNodeId();
+		BaseId factorId = factor.getDiagramNodeId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		BaseId linkageId = link.getLinkageId();

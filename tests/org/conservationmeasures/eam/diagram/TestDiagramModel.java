@@ -104,7 +104,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link = createLinkage(BaseId.INVALID, factor.getId(), target.getId());
+		DiagramLinkage link = createLinkage(BaseId.INVALID, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
@@ -114,7 +114,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		createLinkage(BaseId.INVALID, factor.getId(), target.getId());
+		createLinkage(BaseId.INVALID, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
 	}
@@ -126,7 +126,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode newFactor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
-		createLinkage(BaseId.INVALID, newFactor.getId(), target.getId());
+		createLinkage(BaseId.INVALID, newFactor.getDiagramNodeId(), target.getDiagramNodeId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
 		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
@@ -136,8 +136,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode factor1 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode factor2 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), factor1.getId(), target.getId());
-		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), factor2.getId(), target.getId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), factor1.getDiagramNodeId(), target.getDiagramNodeId());
+		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), factor2.getDiagramNodeId(), target.getDiagramNodeId());
 		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
@@ -152,19 +152,19 @@ public class TestDiagramModel extends EAMTestCase
 		createTarget();		
 		DiagramNode lastCreated = createTarget();		
 		model.deleteNode(nodeToDelete);
-		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getId());
+		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getDiagramNodeId());
 		project.getNodePool().put(cmTargetToUndo);
 		
 		model.createNode(cmTargetToUndo.getId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
-		assertTrue("reused an id?", nodeAfterUndo.getId().asInt() > lastCreated.getId().asInt());
+		assertTrue("reused an id?", nodeAfterUndo.getDiagramNodeId().asInt() > lastCreated.getDiagramNodeId().asInt());
 	}
 
 	public void testGetAllNodes() throws Exception
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		createLinkage(BaseId.INVALID, node1.getId(), node2.getId());
+		createLinkage(BaseId.INVALID, node1.getDiagramNodeId(), node2.getDiagramNodeId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
@@ -178,9 +178,9 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link2 = createLinkage(idAssigner.takeNextId(), node1.getId(), node3.getId());
+		DiagramLinkage link2 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
 		
 		Vector linkages = model.getAllLinkages();
 		assertEquals(2, linkages.size());
@@ -192,13 +192,13 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
 
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.toJson());
 		
-		assertNotNull("missing node1?", copy.getNodeById(node1.getId()));
-		assertNotNull("missing node2?", copy.getNodeById(node2.getId()));
+		assertNotNull("missing node1?", copy.getNodeById(node1.getDiagramNodeId()));
+		assertNotNull("missing node2?", copy.getNodeById(node2.getDiagramNodeId()));
 		assertNotNull("missing linkage?", copy.getLinkageById(link1.getId()));
 	}
 	
@@ -232,7 +232,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link1 = createLinkage(BaseId.INVALID, node2.getId(), node3.getId());
+		DiagramLinkage link1 = createLinkage(BaseId.INVALID, node2.getDiagramNodeId(), node3.getDiagramNodeId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -248,7 +248,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.nodesWereMoved(new BaseId[] {node2.getId(), node3.getId()});
+		model.nodesWereMoved(new BaseId[] {node2.getDiagramNodeId(), node3.getDiagramNodeId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);

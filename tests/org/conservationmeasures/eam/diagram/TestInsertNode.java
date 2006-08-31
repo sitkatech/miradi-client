@@ -58,7 +58,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		BaseId id = insertedNode.getId();
+		BaseId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
@@ -75,7 +75,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		BaseId id = insertedNode.getId();
+		BaseId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
@@ -92,7 +92,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		BaseId id = insertedNode.getId();
+		BaseId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an direct Threat?", foundNode.isDirectThreat());
@@ -109,7 +109,7 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		BaseId id = insertedNode.getId();
+		BaseId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an intervention?", foundNode.isIntervention());

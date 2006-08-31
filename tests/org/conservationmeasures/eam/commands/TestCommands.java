@@ -751,9 +751,9 @@ public class TestCommands extends EAMTestCase
 
 		DiagramLinkage inserted = model.getLinkageById(linkageId);
 		DiagramNode fromNode = inserted.getFromNode();
-		assertEquals("wrong source?", from, fromNode.getId());
+		assertEquals("wrong source?", from, fromNode.getDiagramNodeId());
 		DiagramNode toNode = inserted.getToNode();
-		assertEquals("wrong dest?", to, toNode.getId());
+		assertEquals("wrong dest?", to, toNode.getDiagramNodeId());
 
 		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
 		assertEquals("didn't restore from?", from, loaded.getFromId());

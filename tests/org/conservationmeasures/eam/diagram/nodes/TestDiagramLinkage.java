@@ -49,7 +49,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode factor = model.createNode(cmIntervention.getId());
 		DiagramNode target = model.createNode(cmTarget.getId());
 		BaseId id = new BaseId(5);
-		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
@@ -63,7 +63,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode factor = model.createNode(cmIntervention.getId());
 		DiagramNode target = model.createNode(cmTarget.getId());
 		BaseId id = new BaseId(5);
-		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getId(), target.getId());
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals(id, linkage.getId());
 	}
@@ -76,8 +76,8 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		BaseId interventionId = intervention.getId();
-		BaseId factorId = factor.getId();
+		BaseId interventionId = intervention.getDiagramNodeId();
+		BaseId factorId = factor.getDiagramNodeId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
