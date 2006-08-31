@@ -50,7 +50,7 @@ public class TestIdList extends EAMTestCase
 		
 		try
 		{
-			list.removeId(3333333);
+			list.removeId(new BaseId(3333333));
 			fail("Should have thrown removing non-existant id");
 		}
 		catch (RuntimeException ignoreExpected)

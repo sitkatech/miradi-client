@@ -24,7 +24,7 @@ public class IdList
 		this(new Vector(copyFrom.data));
 	}
 	
-	public IdList(int[] ids)
+	public IdList(BaseId[] ids)
 	{
 		this();
 		for(int i = 0; i < ids.length; ++i)
@@ -38,7 +38,7 @@ public class IdList
 		if(array == null)
 			array = new JSONArray();
 		for(int i = 0; i < array.length(); ++i)
-			add(array.getInt(i));
+			add(new BaseId(array.getInt(i)));
 		
 	}
 	
@@ -88,11 +88,6 @@ public class IdList
 		data.insertElementAt(id, at);
 	}
 	
-	public void insertAt(int id, int at)
-	{
-		insertAt(new BaseId(id), at);
-	}
-	
 	public BaseId get(int index)
 	{
 		return (BaseId)data.get(index);
@@ -113,11 +108,6 @@ public class IdList
 		if(!data.contains(id))
 			throw new RuntimeException("Attempted to remove non-existant Id: " + id + " from: " + toString());
 		data.remove(id);
-	}
-	
-	public void removeId(int id)
-	{
-		removeId(new BaseId(id));
 	}
 	
 	public void subtract(IdList other)

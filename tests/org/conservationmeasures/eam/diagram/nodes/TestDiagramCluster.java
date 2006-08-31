@@ -22,7 +22,7 @@ public class TestDiagramCluster extends EAMTestCase
 	public void testBuildCommandsToClear() throws Exception
 	{
 		ConceptualModelCluster cmCluster = new ConceptualModelCluster(new BaseId(94));
-		IdList memberIds = new IdList(new int[] {2, 27, 4, 25});
+		IdList memberIds = new IdList(new BaseId[] {new BaseId(2), new BaseId(27), new BaseId(4), new BaseId(25)});
 		cmCluster.setData(ConceptualModelCluster.TAG_MEMBER_IDS, memberIds.toString());
 
 		DiagramCluster cluster = new DiagramCluster(cmCluster);
