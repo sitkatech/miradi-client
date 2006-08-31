@@ -15,7 +15,6 @@ import java.io.DataOutputStream;
 import java.util.Arrays;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -31,6 +30,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;

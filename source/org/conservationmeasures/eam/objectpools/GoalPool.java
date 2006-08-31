@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.objectpools;
 
-import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.IdAssigner;
 
 public class GoalPool extends ObjectPool

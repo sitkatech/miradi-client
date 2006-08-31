@@ -45,7 +45,6 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 
-import org.conservationmeasures.eam.annotations.Goal;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -53,6 +52,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ThreatRatingValue;
