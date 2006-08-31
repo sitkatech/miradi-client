@@ -34,6 +34,11 @@
  * You acknowledge that this software is not designed, licensed or
  * intended for use in the design, construction, operation or
  * maintenance of any nuclear facility.
+ * 
+ * MODIFICATIONS MADE BY BENETECH:
+ * 
+ * - Eliminated compiler warning by introducing getRealEditingRow()
+ *   wrapper
  */
 package com.java.sun.jtreetable;
 
@@ -186,6 +191,11 @@ public class JTreeTable extends JTable {
 	}
 	return retValue;
     }
+    
+    public int getRealEditingRow()
+    {
+    	return realEditingRow();
+    }
 
     /**
      * A TreeCellRenderer that displays a JTree.
@@ -280,7 +290,7 @@ public class JTreeTable extends JTable {
 		foreground = table.getForeground();
 	    }
 	    highlightBorder = null;
-	    if (realEditingRow() == row && getEditingColumn() == column) {
+	    if (getRealEditingRow() == row && getEditingColumn() == column) {
 		background = UIManager.getColor("Table.focusCellBackground");
 		foreground = UIManager.getColor("Table.focusCellForeground");
 	    }

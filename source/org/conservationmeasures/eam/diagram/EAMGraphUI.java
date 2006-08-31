@@ -10,6 +10,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.plaf.basic.BasicGraphUI;
 
@@ -19,6 +20,16 @@ public class EAMGraphUI extends BasicGraphUI
 	{
 		return new DiagramMouseHandler();
     }
+	
+	public JGraph getGraph()
+	{
+		return getGraph();
+	}
+	
+	public CellView getFocus()
+	{
+		return focus;
+	}
 
 	class DiagramMouseHandler extends BasicGraphUI.MouseHandler
 	{
@@ -44,15 +55,15 @@ public class EAMGraphUI extends BasicGraphUI
 		{
 			if (event.isConsumed())
 				return false;
-			if(!graph.isEnabled())
+			if(!getGraph().isEnabled())
 				return false;
 			if(!SwingUtilities.isRightMouseButton(event))
 				return false;
 			
-			CellView thisCell = graph.getNextSelectableViewAt(focus, event.getX(), event.getY());
+			CellView thisCell = getGraph().getNextSelectableViewAt(getFocus(), event.getX(), event.getY());
 			if(thisCell == null)
 				return true;
-			if(graph.isCellSelected(thisCell.getCell()))
+			if(getGraph().isCellSelected(thisCell.getCell()))
 				return true;
 			
 			replaceSelectionWithThisCell(thisCell);
