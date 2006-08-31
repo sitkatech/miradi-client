@@ -74,7 +74,7 @@ public class Delete extends ProjectDoer
 
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
-		BaseId id = linkageToDelete.getId();
+		BaseId id = linkageToDelete.getDiagramLinkageId();
 		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
 		getProject().executeCommand(command);
 	}

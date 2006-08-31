@@ -611,7 +611,7 @@ public class Project
 		getDatabase().writeLinkage(cmLinkage);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
-		return linkage.getId();
+		return linkage.getDiagramLinkageId();
 	}
 	
 	public void setNodeName(BaseId nodeId, String desiredName, String expectedName) throws Exception

@@ -98,7 +98,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		// not allowed--ignore attempts to reset the target
 	}
 
-	public DiagramLinkageId getId()
+	public DiagramLinkageId getDiagramLinkageId()
 	{
 		return new DiagramLinkageId(underlyingObject.getId().asInt());
 	}
@@ -116,7 +116,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	public LinkageDataMap createLinkageDataMap()
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
-		dataMap.setId(getId());
+		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(getFromId().asInt());
 		dataMap.setToId(getToId().asInt());
 		return dataMap;

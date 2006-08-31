@@ -65,7 +65,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		BaseId id = new BaseId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
-		assertEquals(id, linkage.getId());
+		assertEquals(id, linkage.getDiagramLinkageId());
 	}
 	
 	public void testLinkNodes() throws Exception

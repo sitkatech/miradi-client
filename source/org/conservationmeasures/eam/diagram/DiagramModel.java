@@ -341,7 +341,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public boolean isLinkageInProject(DiagramLinkage linkage)
 	{
-		return (cellInventory.getLinkageById(linkage.getId()) != null);
+		return (cellInventory.getLinkageById(linkage.getDiagramLinkageId()) != null);
 	}
 
 	public Vector getAllNodes()

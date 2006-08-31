@@ -84,7 +84,7 @@ public class Properties extends LocationDoer
 		if(!dlg.getResult())
 			return;
 
-		Command cmd = new CommandSetObjectData(ObjectType.MODEL_LINKAGE, linkage.getId(), 
+		Command cmd = new CommandSetObjectData(ObjectType.MODEL_LINKAGE, linkage.getDiagramLinkageId(), 
 				ConceptualModelLinkage.TAG_STRESS_LABEL, dlg.getText());
 		getProject().executeCommand(cmd);
 	}

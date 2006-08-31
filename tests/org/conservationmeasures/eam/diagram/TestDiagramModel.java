@@ -199,7 +199,7 @@ public class TestDiagramModel extends EAMTestCase
 		
 		assertNotNull("missing node1?", copy.getNodeById(node1.getDiagramNodeId()));
 		assertNotNull("missing node2?", copy.getNodeById(node2.getDiagramNodeId()));
-		assertNotNull("missing linkage?", copy.getLinkageById(link1.getId()));
+		assertNotNull("missing linkage?", copy.getLinkageById(link1.getDiagramLinkageId()));
 	}
 	
 	public void testActionsFiring() throws Exception

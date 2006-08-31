@@ -59,7 +59,7 @@ class CellInventory
 	
 	public void addLinkage(DiagramLinkage linkage)
 	{
-		BaseId realId = linkage.getId();
+		BaseId realId = linkage.getDiagramLinkageId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -87,7 +87,7 @@ class CellInventory
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
 			DiagramLinkage linkage = (DiagramLinkage) iter.next();
-			if(linkage.getId().equals(id))
+			if(linkage.getDiagramLinkageId().equals(id))
 				return linkage;
 		}
 		return null;
