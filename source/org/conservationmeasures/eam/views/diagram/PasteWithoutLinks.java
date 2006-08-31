@@ -7,11 +7,12 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.project.PasteHelper;
 
 public class PasteWithoutLinks extends Paste 
 {
 	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
-		getProject().pasteNodesOnlyIntoProject(list, getLocation());
+		new PasteHelper(getProject()).pasteNodesOnlyIntoProject(list, getLocation());
 	}
 }

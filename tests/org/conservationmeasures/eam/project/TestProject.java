@@ -350,7 +350,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getLinkages(node2).size());
 		assertEquals(1, model.getLinkages(node3).size());
 		
-		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new PasteHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
 		assertEquals(4, nodes.size());
 		assertEquals(4, model.getAllLinkages().size());
@@ -361,7 +361,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.deleteNode(node2);
-		project.pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new PasteHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getLinkages(node1).size());
 		assertEquals(3, model.getLinkages(node3).size());
 	}
@@ -521,7 +521,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getLinkages(node2).size());
 		assertEquals(1, model.getLinkages(node3).size());
 		
-		project.pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
+		new PasteHelper(project).pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
 		assertEquals(4, nodes.size());
 		assertEquals(2, model.getAllLinkages().size());
@@ -541,7 +541,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
 
 		Point pastePoint = new Point(5,5);
-		project.pasteNodesAndLinksIntoProject(transferableList, pastePoint);
+		new PasteHelper(project).pasteNodesAndLinksIntoProject(transferableList, pastePoint);
 		Vector nodes = model.getAllNodes();
 		assertEquals(1, nodes.size());
 		DiagramNode pastedNode = (DiagramNode)nodes.get(0);
