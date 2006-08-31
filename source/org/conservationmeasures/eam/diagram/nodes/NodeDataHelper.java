@@ -52,7 +52,7 @@ public class NodeDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			BaseId id = ((DiagramNode) iter.next()).getId();
+			BaseId id = ((DiagramNode) iter.next()).getDiagramNodeId();
 			setNewId(id, id);
 		}
 	}

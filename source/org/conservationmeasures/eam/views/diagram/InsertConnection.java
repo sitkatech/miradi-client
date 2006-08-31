@@ -31,8 +31,8 @@ public class InsertConnection extends ProjectDoer
 			return;
 		
 		DiagramModel model = getProject().getDiagramModel();
-		BaseId fromIndex = dialog.getFrom().getId();
-		BaseId toIndex = dialog.getTo().getId();
+		BaseId fromIndex = dialog.getFrom().getDiagramNodeId();
+		BaseId toIndex = dialog.getTo().getDiagramNodeId();
 		
 		if(fromIndex == toIndex)
 		{

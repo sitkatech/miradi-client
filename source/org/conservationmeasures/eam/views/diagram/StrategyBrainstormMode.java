@@ -55,7 +55,7 @@ public class StrategyBrainstormMode extends ViewDoer
 			IdList selectedNodeIds = new IdList();
 			for(int i = 0; i < selectedNodes.length; ++i)
 			{
-				selectedNodeIds.add(selectedNodes[i].getId());
+				selectedNodeIds.add(selectedNodes[i].getDiagramNodeId());
 			}
 			project.executeCommand(new CommandBeginTransaction());
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 

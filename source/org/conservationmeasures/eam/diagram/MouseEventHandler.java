@@ -99,7 +99,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		BaseId[] selectedNodeIds = new BaseId[selectedNodes.size()];
 		for(int i = 0; i < selectedNodes.size(); ++i)
 		{
-			selectedNodeIds[i] = ((DiagramNode)selectedNodes.get(i)).getId();
+			selectedNodeIds[i] = ((DiagramNode)selectedNodes.get(i)).getDiagramNodeId();
 		}
 
 		Point dragEndedAt = event.getPoint();

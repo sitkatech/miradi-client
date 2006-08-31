@@ -229,7 +229,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode) allNodes.get(i);
-				BaseId id = node.getId();
+				BaseId id = node.getDiagramNodeId();
 				if (!visibleIds.contains(id))
 					idsToHide.add(id);
 			}
@@ -378,7 +378,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
 		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(ConceptualModelCluster.TAG_MEMBER_IDS));
 		
-		updateCluster(cluster.getId(), newMembers, oldMembers);
+		updateCluster(cluster.getDiagramNodeId(), newMembers, oldMembers);
 	}
 
 	private void updateCluster(BaseId clusterId, IdList newMembers, IdList oldMembers) throws Exception

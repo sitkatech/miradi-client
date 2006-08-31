@@ -23,7 +23,7 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramNode node)
 	{
-		if(hiddenIds.contains(node.getId()))
+		if(hiddenIds.contains(node.getDiagramNodeId()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();

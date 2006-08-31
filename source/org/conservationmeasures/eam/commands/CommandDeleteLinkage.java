@@ -58,8 +58,8 @@ public class CommandDeleteLinkage extends Command
 		try
 		{
 			DiagramLinkage linkageToDelete = model.getLinkageById(id);
-			wasFrom = linkageToDelete.getFromNode().getId();
-			wasTo = linkageToDelete.getToNode().getId();
+			wasFrom = linkageToDelete.getFromNode().getDiagramNodeId();
+			wasTo = linkageToDelete.getToNode().getDiagramNodeId();
 			target.deleteLinkage(id);
 		}
 		catch (Exception e)

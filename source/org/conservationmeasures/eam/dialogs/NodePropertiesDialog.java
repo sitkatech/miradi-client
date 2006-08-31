@@ -132,7 +132,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	
 	public BaseId getNodeId()
 	{
-		return getCurrentNode().getId();
+		return getCurrentNode().getDiagramNodeId();
 	}
 	
 	private Component createLabelBar(DiagramNode node)
@@ -591,7 +591,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		String newValue = ConceptualModelIntervention.STATUS_REAL;
 		if(statusCheckBox.isSelected())
 			newValue = ConceptualModelIntervention.STATUS_DRAFT;
-		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode.getId(), ConceptualModelIntervention.TAG_STATUS, newValue);
+		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode.getDiagramNodeId(), ConceptualModelIntervention.TAG_STATUS, newValue);
 	}
 	
 	Project getProject()

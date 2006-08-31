@@ -92,7 +92,7 @@ public class CreateCluster extends InsertNode
 		IdList memberIds = new IdList();
 		for(int i = 0; i < nodes.length; ++i)
 		{
-			memberIds.add(nodes[i].getId());
+			memberIds.add(nodes[i].getDiagramNodeId());
 		}
 		CommandSetObjectData capture = new CommandSetObjectData(ObjectType.MODEL_NODE, clusterId, 
 				ConceptualModelCluster.TAG_MEMBER_IDS, memberIds.toString());

@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.NodeAnnotationIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -91,11 +92,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject;
 	}
 	
-	public BaseId getId()
+	public DiagramNodeId getDiagramNodeId()
 	{
-		return getWrappedId();
+		return (DiagramNodeId)getWrappedId();
 	}
-	
+
 	public int getType()
 	{
 		return getWrappedType();
@@ -426,8 +427,8 @@ abstract public class DiagramNode extends EAMGraphCell
 		int x = getLocation().x;
 		int y = getLocation().y;
 		return new Command[] {
-			new CommandSetNodeSize(getId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new BaseId[] {getId()}),
+			new CommandSetNodeSize(getDiagramNodeId(), getDefaultSize(), getSize()),
+			new CommandDiagramMove(-x, -y, new BaseId[] {getDiagramNodeId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
@@ -435,7 +436,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public NodeDataMap createNodeDataMap()
 	{
 		NodeDataMap dataMap = new NodeDataMap();
-		dataMap.putId(TAG_ID, getId());
+		dataMap.putId(TAG_ID, getDiagramNodeId());
 		
 		// FIXME: This is a crude hack, to preserve the node type information
 		// here so we can re-create the node if it gets pasted. 
@@ -455,7 +456,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public JSONObject toJson()
 	{
 		DataMap dataMap = new DataMap();
-		dataMap.putId(TAG_ID, getId());
+		dataMap.putId(TAG_ID, getDiagramNodeId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
 		return dataMap;

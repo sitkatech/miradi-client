@@ -152,7 +152,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
-		return getLinkagePool().hasLinkage(fromNode.getId(), toNode.getId());
+		return getLinkagePool().hasLinkage(fromNode.getDiagramNodeId(), toNode.getDiagramNodeId());
 	}
 	
 	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
@@ -336,7 +336,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean isNodeInProject(DiagramNode node)
 	{
-		return (cellInventory.getNodeById(node.getId()) != null);
+		return (cellInventory.getNodeById(node.getDiagramNodeId()) != null);
 	}
 
 	public boolean isLinkageInProject(DiagramLinkage linkage)
@@ -371,7 +371,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < nodes.size(); ++i)
 		{
 			DiagramNode node = (DiagramNode)nodes.get(i);
-			nodeMap.put(Integer.toString(node.getId().asInt()), node.toJson());
+			nodeMap.put(Integer.toString(node.getDiagramNodeId().asInt()), node.toJson());
 		}
 		JSONObject json = new JSONObject();
 		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);

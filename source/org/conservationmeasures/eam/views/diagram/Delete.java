@@ -82,7 +82,7 @@ public class Delete extends ProjectDoer
 	// TODO: This method should be inside Project and should have unit tests
 	private void deleteNode(DiagramNode nodeToDelete) throws Exception
 	{
-		BaseId id = nodeToDelete.getId();
+		BaseId id = nodeToDelete.getDiagramNodeId();
 
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)

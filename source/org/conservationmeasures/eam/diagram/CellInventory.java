@@ -28,7 +28,7 @@ class CellInventory
 
 	public void addNode(DiagramNode node)
 	{
-		BaseId realId = node.getId();
+		BaseId realId = node.getDiagramNodeId();
 		
 		if(doesIdExist(realId))
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -46,7 +46,7 @@ class CellInventory
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
 			DiagramNode node = (DiagramNode)iter.next();
-			if(node.getId().equals(id))
+			if(node.getDiagramNodeId().equals(id))
 				return node;
 		}
 		return null;
