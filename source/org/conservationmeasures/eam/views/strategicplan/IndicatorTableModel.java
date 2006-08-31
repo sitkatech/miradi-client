@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objects.TargetSet;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 
 class IndicatorTableModel extends AnnotationTableModel
@@ -27,14 +28,14 @@ class IndicatorTableModel extends AnnotationTableModel
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisIndicator(indicatorId).toNodeArray();
+			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 			
 			return getNodeLabelsAsString(modelNodes);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
@@ -42,7 +43,7 @@ class IndicatorTableModel extends AnnotationTableModel
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
@@ -50,13 +51,18 @@ class IndicatorTableModel extends AnnotationTableModel
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisIndicator(indicatorId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
 		}
 		
 		return super.getValueAt(rowIndex, columnIndex);
+	}
+	
+	ChainManager getChainManager()
+	{
+		return new ChainManager(project);
 	}
 	
 	static final String[] indicatorColumnTags = {

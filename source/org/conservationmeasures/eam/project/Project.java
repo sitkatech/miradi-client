@@ -53,7 +53,6 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -247,64 +246,6 @@ public class Project
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
-	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId)
-	{
-		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
-		NodePool pool = getNodePool();
-		BaseId[] allNodeIds = pool.getIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getObjectives().contains(objectiveId))
-				foundNodes.attemptToAdd(node);
-		}
-		
-		return foundNodes;
-	}
-
-	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId)
-	{
-		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
-		NodePool pool = getNodePool();
-		BaseId[] allNodeIds = pool.getIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getIndicatorId().equals(indicatorId))
-				foundNodes.attemptToAdd(node);
-		}
-		
-		return foundNodes;
-	}
-	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId)
-	{
-		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
-		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
-		
-		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
-		{
-			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisIndicator[i]);
-			relatedNodes.attemptToAddAll(nodesInChain);
-		}
-		
-		return relatedNodes;
-	}
-	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId)
-	{
-		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
-		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
-		
-		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
-		{
-			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisObjective[i]);
-			relatedNodes.attemptToAddAll(nodesInChain);
-		}
-		
-		return relatedNodes;
-	}
-
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	

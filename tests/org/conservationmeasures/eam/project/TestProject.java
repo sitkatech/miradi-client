@@ -70,6 +70,7 @@ public class TestProject extends EAMTestCase
 	{
 		project = new ProjectForTesting(getName());
 		idAssigner = project.getNodeIdAssigner();
+		chainManager = new ChainManager(project);
 		super.setUp();
 	}
 	
@@ -687,13 +688,13 @@ public class TestProject extends EAMTestCase
 		nodeA.setObjectives(objectiveId);
 		nodeB.setObjectives(objectiveId);
 		
-		ConceptualModelNodeSet foundNodes = project.findNodesThatUseThisObjective(objectiveId1);
+		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisObjective(objectiveId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		ConceptualModelNodeSet noNodes = project.findNodesThatUseThisObjective(objectiveId2);
+		ConceptualModelNodeSet noNodes = chainManager.findNodesThatUseThisObjective(objectiveId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 		
@@ -713,7 +714,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
-		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisObjective(objectiveId1);
+		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
@@ -735,13 +736,13 @@ public class TestProject extends EAMTestCase
 		nodeA.setIndicator(indicatorId1);
 		nodeB.setIndicator(indicatorId1);
 		
-		ConceptualModelNodeSet foundNodes = project.findNodesThatUseThisIndicator(indicatorId1);
+		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		ConceptualModelNodeSet noNodes = project.findNodesThatUseThisIndicator(indicatorId2);
+		ConceptualModelNodeSet noNodes = chainManager.findNodesThatUseThisIndicator(indicatorId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 	}
@@ -756,7 +757,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getId(), nodeDirectThreat.getId());
 		
-		ConceptualModelNodeSet foundNodes = project.findAllNodesRelatedToThisIndicator(indicatorId1);
+		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
@@ -875,7 +876,7 @@ public class TestProject extends EAMTestCase
 	}
 
 
-
 	ProjectForTesting project;
 	IdAssigner idAssigner;
+	ChainManager chainManager;
 }

@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.TargetSet;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 
 class ObjectiveTableModel extends AnnotationTableModel
@@ -27,14 +28,14 @@ class ObjectiveTableModel extends AnnotationTableModel
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_FACTORS))
 		{
 			BaseId objectiveId = pool.getIds()[rowIndex];
-			ConceptualModelNode[] modelNodes =  project.findNodesThatUseThisObjective(objectiveId).toNodeArray();
+			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisObjective(objectiveId).toNodeArray();
 			
 			return getNodeLabelsAsString(modelNodes);
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
 			BaseId objectiveId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisObjective(objectiveId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
@@ -42,7 +43,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
 			BaseId objectiveId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisObjective(objectiveId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
@@ -50,7 +51,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
 			BaseId objectiveId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  project.findAllNodesRelatedToThisObjective(objectiveId);
+			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
 			return getNodeLabelsAsString(directThreats.toNodeArray());
@@ -59,6 +60,11 @@ class ObjectiveTableModel extends AnnotationTableModel
 		return super.getValueAt(rowIndex, columnIndex);
 	}
 	
+	ChainManager getChainManager()
+	{
+		return new ChainManager(project);
+	}
+
 	static final String[] objectiveColumnTags = {
 		Objective.TAG_SHORT_LABEL, 
 		Objective.TAG_LABEL,

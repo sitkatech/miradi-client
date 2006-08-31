@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteIndicator extends ViewDoer
@@ -45,7 +46,7 @@ public class DeleteIndicator extends ViewDoer
 		Indicator indicator = getIndicatorPanel().getSelectedIndicator();
 		
 		BaseId idToRemove = indicator.getId();
-		ConceptualModelNodeSet nodesThatUseThisIndicator = getProject().findNodesThatUseThisIndicator(idToRemove);
+		ConceptualModelNodeSet nodesThatUseThisIndicator = new ChainManager(getProject()).findNodesThatUseThisIndicator(idToRemove);
 		if(nodesThatUseThisIndicator.size() > 0)
 		{
 			String[] dialogText = {

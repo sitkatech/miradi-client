@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteObjective extends ViewDoer
@@ -45,7 +46,7 @@ public class DeleteObjective extends ViewDoer
 		Objective objective = getObjectivePanel().getSelectedObjective();
 
 		BaseId idToRemove = objective.getId();
-		ConceptualModelNodeSet factorsThatUseThisObjective = getProject().findNodesThatUseThisObjective(idToRemove);
+		ConceptualModelNodeSet factorsThatUseThisObjective = new ChainManager(getProject()).findNodesThatUseThisObjective(idToRemove);
 		if(factorsThatUseThisObjective.size() > 0)
 		{
 			String[] dialogText = {
