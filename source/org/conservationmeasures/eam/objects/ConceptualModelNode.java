@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.project.IdAssigner;
 import org.json.JSONArray;
 import org.json.JSONObject;

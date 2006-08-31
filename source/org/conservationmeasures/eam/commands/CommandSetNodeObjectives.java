@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ObjectiveIds;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodeObjectives extends Command 

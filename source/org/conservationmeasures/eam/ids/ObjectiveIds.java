@@ -4,14 +4,12 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.ids;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.NodeAnnotationIds;
+import org.conservationmeasures.eam.objects.Objective;
 
 
 
