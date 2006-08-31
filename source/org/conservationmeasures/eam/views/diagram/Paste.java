@@ -11,7 +11,7 @@ import java.awt.datatransfer.Transferable;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.project.PasteHelper;
+import org.conservationmeasures.eam.project.NodeCommandHelper;
 
 public class Paste extends LocationDoer
 {
@@ -46,6 +46,6 @@ public class Paste extends LocationDoer
 
 	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
-		new PasteHelper(getProject()).pasteNodesAndLinksIntoProject(list, getLocation());
+		new NodeCommandHelper(getProject()).pasteNodesAndLinksIntoProject(list, getLocation());
 	}
 }

@@ -16,7 +16,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
@@ -930,17 +929,6 @@ public class Project
 		DiagramNode[] nodes = {node};
 		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
 		getGraphLayoutCache().edit(null, null, parentMap, null);
-	}
-
-	public BaseId createNode(NodeType nodeType) throws Exception
-	{
-		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
-		executeCommand(commandInsertNode);
-		BaseId id = commandInsertNode.getId();
-		Command[] commandsToAddToView = getCurrentViewData().buildCommandsToAddNode(id);
-		for(int i = 0; i < commandsToAddToView.length; ++i)
-			executeCommand(commandsToAddToView[i]);
-		return id;
 	}
 
 	public NodeType deleteNode(BaseId idToDelete) throws Exception

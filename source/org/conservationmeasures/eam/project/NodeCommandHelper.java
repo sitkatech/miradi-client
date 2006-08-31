@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -24,12 +25,24 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.utils.Logging;
 
-public class PasteHelper
+public class NodeCommandHelper
 {
-	public PasteHelper(Project projectToUse)
+	public NodeCommandHelper(Project projectToUse)
 	{
 		project = projectToUse;
 	}
+
+	public BaseId createNode(NodeType nodeType) throws Exception
+	{
+		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
+		executeCommand(commandInsertNode);
+		BaseId id = commandInsertNode.getId();
+		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(id);
+		for(int i = 0; i < commandsToAddToView.length; ++i)
+			executeCommand(commandsToAddToView[i]);
+		return id;
+	}
+
 
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
@@ -57,7 +70,7 @@ public class PasteHelper
 			BaseId originalNodeId = nodeData.getId(DiagramNode.TAG_ID);
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			BaseId newNodeId = getProject().createNode(type);
+			BaseId newNodeId = createNode(type);
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
