@@ -6,30 +6,23 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
@@ -50,7 +43,6 @@ import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -61,7 +53,6 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
@@ -1107,129 +1098,6 @@ public class Project
 	public void moveNodesWithoutNotification(int deltaX, int deltaY, BaseId[] ids) throws Exception 
 	{
 		getDiagramModel().moveNodesWithoutNotification(deltaX, deltaY, ids);
-	}
-	
-	public void nodesWereMovedOrResized(int deltaX, int deltaY, BaseId[] ids) throws CommandFailedException
-	{
-		DiagramModel model = getDiagramModel();
-		model.nodesWereMoved(ids);
-
-		Vector commandsToRecord = new Vector();
-		Vector commandsToExecute = new Vector();
-		Vector movedNodes = new Vector();
-		for(int i = 0 ; i < ids.length; ++i)
-		{
-			try 
-			{
-				DiagramNode node = model.getNodeById(ids[i]);
-				if(node.getParent() != null)
-					commandsToExecute.addAll(buildDetachFromClusterCommand(node));
-				if(node.getParent() == null)
-					commandsToExecute.addAll(buildAttachToClusterCommand(node));
-				
-				if(node.hasMoved())
-					movedNodes.add(node);
-				
-				if(node.sizeHasChanged())
-					commandsToRecord.add(buildResizeCommand(node));
-			} 
-			catch (Exception e) 
-			{
-				EAM.logException(e);
-			}
-		}
-		
-		if(movedNodes.size() > 0)
-		{
-			BaseId[] idsActuallyMoved = new BaseId[movedNodes.size()];
-			for(int i = 0; i < movedNodes.size(); ++i)
-			{
-				DiagramNode node = (DiagramNode)movedNodes.get(i);
-				idsActuallyMoved[i] = node.getId();
-			}
-			
-			commandsToRecord.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));
-		}
-		
-		if(commandsToRecord.size() > 0 || commandsToExecute.size() > 0)
-		{
-			recordCommand(new CommandBeginTransaction());
-			for(int i=0; i < commandsToRecord.size(); ++i)
-				recordCommand((Command)commandsToRecord.get(i));
-			for(int i=0; i < commandsToExecute.size(); ++i)
-				executeCommand((Command)commandsToExecute.get(i));
-			recordCommand(new CommandEndTransaction());
-		}
-		
-		/*
-		 * NOTE: The following chunk of code works around a weird bug deep in jgraph
-		 * If you click on a cluster, then click on a member, then drag the member out,
-		 * part of jgraph still thinks the cluster has a member that is selected.
-		 * So when you drag the node back in, it doesn't become a member because jgraph 
-		 * won't return the cluster, because it thinks the cluster has something selected.
-		 * The workaround is to re-select what is selected, so the cached values inside 
-		 * jgraph get reset to their proper values.
-		 */
-		MainWindow mainWindow = EAM.mainWindow;
-		if(mainWindow != null)
-		{
-			DiagramComponent diagram = mainWindow.getDiagramComponent();
-			diagram.setSelectionCells(diagram.getSelectionCells());
-		}
-
-	}
-	
-	private List buildAttachToClusterCommand(DiagramNode node) throws Exception
-	{
-		Vector result = new Vector();
-		if(node.isCluster())
-			return result;
-		
-		DiagramCluster cluster = getFirstClusterThatContains(node.getRectangle());
-		if(cluster == null)
-			return result;
-		
-		addNodeToCluster(cluster, node);
-		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
-		result.add(cmd);
-		return result;
-	}
-	
-	private List buildDetachFromClusterCommand(DiagramNode node) throws ParseException
-	{
-		Vector result = new Vector();
-		DiagramCluster cluster = (DiagramCluster)node.getParent();
-		if(cluster.getRectangle().contains(node.getRectangle()))
-			return result;
-		
-		removeNodeFromCluster(cluster, node);
-		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getId());
-		result.add(cmd);
-		return result;
-	}
-	
-	private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		BaseId[] allNodeIds = getNodePool().getIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			DiagramNode possibleCluster = model.getNodeById(allNodeIds[i]);
-			if(!possibleCluster.isCluster())
-				continue;
-			
-			if(possibleCluster.getRectangle().contains(candidateRect))
-				return (DiagramCluster)possibleCluster;
-		}
-		
-		return null;
-	}
-	
-	private Command buildResizeCommand(DiagramNode node)
-	{
-		return new CommandSetNodeSize(node.getId(), node.getSize(), node.getPreviousSize());
 	}
 	
 	public void setSelectionModel(GraphSelectionModel selectionModelToUse)

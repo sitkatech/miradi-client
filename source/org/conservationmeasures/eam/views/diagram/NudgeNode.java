@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.project.NodeMoveHandler;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class NudgeNode extends ProjectDoer
@@ -61,7 +62,7 @@ public class NudgeNode extends ProjectDoer
 		try
 		{
 			getProject().moveNodes(deltaX, deltaY, ids);
-			getProject().nodesWereMovedOrResized(deltaX, deltaY, ids);
+			new NodeMoveHandler(getProject()).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		}
 		catch (Exception e)
 		{

@@ -376,7 +376,7 @@ public class TestProject extends EAMTestCase
 		BaseId[] noNodesMoved = new BaseId[1];
 		noNodesMoved[0] = node1.getId();
 	
-		project.nodesWereMovedOrResized(0, 0, noNodesMoved);
+		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, noNodesMoved);
 		try
 		{
 			project.getLastCommand();
@@ -400,7 +400,7 @@ public class TestProject extends EAMTestCase
 		ids[1] = node2.getId();
 		
 		
-		project.nodesWereMovedOrResized(deltaX, deltaY, ids);
+		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		project.getLastCommand(); //End Transaction
 		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
 		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
@@ -429,7 +429,7 @@ public class TestProject extends EAMTestCase
 		ids[0] = node1.getId();
 		ids[1] = node2.getId();
 		
-		project.nodesWereMovedOrResized(0, 0, ids);
+		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, ids);
 		project.getLastCommand(); //End Transaction
 		CommandSetNodeSize commandSetNodeSize2Recorded = (CommandSetNodeSize)project.getLastCommand();
 		assertEquals(node2.getSize(), commandSetNodeSize2Recorded.getCurrentSize());
@@ -481,7 +481,7 @@ public class TestProject extends EAMTestCase
 		ids[2] = nodeResizedOnly.getId();
 		ids[3] = nodeNotMovedOrResized.getId();
 
-		project.nodesWereMovedOrResized(deltaX, deltaY, ids);
+		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		
 		project.getLastCommand(); //End Transaction
 		
