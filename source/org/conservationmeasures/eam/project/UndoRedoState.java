@@ -5,63 +5,58 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.exceptions.NothingToRedoException;
+import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 
 public class UndoRedoState
 {
-	public UndoRedoState(ProjectServer storageToUse)
+	public UndoRedoState()
 	{
-		storage = storageToUse;
-		nonUndoneCommandIndexes = new Vector();
-		redoableCommandIndexes = new Vector();
+		undoableCommands = new Vector();
+		redoableCommands = new Vector();
 	}
 	
-	public int getIndexToUndo()
+	public boolean canUndo()
 	{
-		loadSnapshotOfStorage();
-		if(nonUndoneCommandIndexes.size() < 1)
-			return -1;
-		
-		return ((Integer)nonUndoneCommandIndexes.get(0)).intValue();
+		return (undoableCommands.size() > 0);
 	}
 	
-	public int getIndexToRedo()
+	public boolean canRedo()
 	{
-		loadSnapshotOfStorage();
-		if(redoableCommandIndexes.size() < 1)
-			return -1;
-		return ((Integer)redoableCommandIndexes.get(0)).intValue();
+		return (redoableCommands.size() > 0);
 	}
 	
-	private void loadSnapshotOfStorage()
+	public Command popCommandToUndo() throws NothingToUndoException
 	{
-		for(int i=0; i < storage.getCommandCount(); ++i)
-		{
-			Command cmd = storage.getCommandAt(i);
-			if(cmd.isUndo())
-			{
-				Object commandBeingUndone = nonUndoneCommandIndexes.get(0);
-				redoableCommandIndexes.insertElementAt(commandBeingUndone, 0);
-				nonUndoneCommandIndexes.remove(0);
-			}
-			else if(cmd.isRedo())
-			{
-				Object commandBeingRedone = redoableCommandIndexes.get(0);
-				nonUndoneCommandIndexes.insertElementAt(commandBeingRedone, 0);
-				redoableCommandIndexes.remove(0);
-			}
-			else
-			{
-				nonUndoneCommandIndexes.insertElementAt(new Integer(i), 0);
-				redoableCommandIndexes.clear();
-			}
-		}
+		if(!canUndo())
+			throw new NothingToUndoException();
+		Command cmd = (Command)undoableCommands.remove(0);
+		redoableCommands.insertElementAt(cmd, 0);
+		return cmd;
+	}
+	
+	public Command popCommandToRedo() throws NothingToRedoException
+	{
+		if(!canRedo())
+			throw new NothingToRedoException();
+		Command cmd = (Command)redoableCommands.remove(0);
+		undoableCommands.insertElementAt(cmd, 0);
+		return cmd;
 	}
 
-	ProjectServer storage;
-	Vector nonUndoneCommandIndexes;
-	Vector redoableCommandIndexes;
+	public void pushUndoableCommand(Command command) throws IOException
+	{
+		if(command.isUndo() || command.isRedo())
+			return;
+		
+		redoableCommands.clear();
+		undoableCommands.insertElementAt(command, 0);
+	}
+
+	Vector undoableCommands;
+	Vector redoableCommands;
 }

@@ -843,11 +843,6 @@ public class TestCommands extends EAMTestCase
 		assertTrue(cmd.isBeginTransaction());
 		assertFalse(cmd.isEndTransaction());
 		project.executeCommand(cmd);
-		assertTrue(project.getCommandToUndo().isBeginTransaction());
-		assertFalse(project.getCommandToUndo().isEndTransaction());
-		project.executeCommand(new CommandUndo());
-		assertTrue(project.getCommandToRedo().isBeginTransaction());
-		assertFalse(project.getCommandToRedo().isEndTransaction());
 
 		EAM.setLogToConsole();
 		CommandBeginTransaction loaded = (CommandBeginTransaction)saveAndReload(cmd);
@@ -860,11 +855,6 @@ public class TestCommands extends EAMTestCase
 		assertTrue(cmd.isEndTransaction());
 		assertFalse(cmd.isBeginTransaction());
 		project.executeCommand(cmd);
-		assertFalse(project.getCommandToUndo().isBeginTransaction());
-		assertTrue(project.getCommandToUndo().isEndTransaction());
-		project.executeCommand(new CommandUndo());
-		assertFalse(project.getCommandToRedo().isBeginTransaction());
-		assertTrue(project.getCommandToRedo().isEndTransaction());
 
 		EAM.setLogToConsole();
 		CommandEndTransaction loaded = (CommandEndTransaction)saveAndReload(cmd);

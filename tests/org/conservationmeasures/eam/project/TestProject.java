@@ -643,7 +643,7 @@ public class TestProject extends EAMTestCase
 		try
 		{
 			EAM.setLogToString();
-			project.replayCommand(cmd);
+			cmd.execute(project);
 			fail("Should have thrown for replaying an insert over an existing node");
 		}
 		catch(CommandFailedException ignoreExpected)

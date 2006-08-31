@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
@@ -268,40 +266,6 @@ public class TestProjectServer extends EAMTestCase
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
-	}
-
-	public void testLoadCommands() throws Exception
-	{
-		ProjectServer anotherStorage = new ProjectServer();
-		
-		File tempDirectory = createTempDirectory();
-		assertEquals("not empty to start?", 0, anotherStorage.getCommandCount());
-		assertFalse("already has a file?", ProjectServer.doesProjectExist(tempDirectory));
-		
-		try
-		{
-			anotherStorage.appendCommand(new CommandInsertNode(DiagramNode.TYPE_TARGET));
-			fail("Should have thrown since no file was loaded");
-		}
-		catch(IOException ignoreExpected)
-		{
-		}
-
-		anotherStorage.create(tempDirectory);
-		assertTrue("no file?", ProjectServer.doesProjectExist(tempDirectory));
-		assertEquals("wrong file name?", tempDirectory.getName(), anotherStorage.getName());
-		
-		Command createTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
-		Command createFactor = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		anotherStorage.appendCommand(createTarget);
-		anotherStorage.appendCommand(createFactor);
-		assertEquals("count doesn't show appended commands?", 2, anotherStorage.getCommandCount());
-		assertEquals("target not gettable?", createTarget, anotherStorage.getCommandAt(0));
-		assertEquals("factor not gettable?", createFactor, anotherStorage.getCommandAt(1));
-		
-		anotherStorage.close();
-		
-		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 	}
 
 	private ProjectServerForTesting storage;

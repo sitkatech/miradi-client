@@ -26,8 +26,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
-import org.conservationmeasures.eam.exceptions.NothingToRedoException;
-import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
@@ -83,6 +81,7 @@ public class Project
 	{
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
+		undoRedoState = new UndoRedoState();
 		
 		diagramModel = new DiagramModel(this);
 		interviewModel = new InterviewModel();
@@ -416,17 +415,11 @@ public class Project
 		recordCommand(command);
 	}
 	
-	public void replayCommand(Command command) throws CommandFailedException
-	{
-		command.execute(this);
-		fireCommandExecuted(command);
-	}
-	
 	public void recordCommand(Command command)
 	{
 		try
 		{
-			database.appendCommand(command);
+			undoRedoState.pushUndoableCommand(command);
 			database.writeProjectInfo(projectInfo);
 			database.writeDiagram(getDiagramModel());
 		}
@@ -477,6 +470,34 @@ public class Project
 			listener.commandFailed(command, e);
 		}
 	}
+	
+	public boolean canUndo()
+	{
+		return undoRedoState.canUndo();
+	}
+	
+	public boolean canRedo()
+	{
+		return undoRedoState.canRedo();
+	}
+	
+	public Command undo() throws CommandFailedException
+	{
+		Command cmd = undoRedoState.popCommandToUndo();
+		cmd.undo(this);
+		fireCommandUndone(cmd);
+		return cmd;
+	}
+	
+	public Command redo() throws CommandFailedException
+	{
+		Command cmd = undoRedoState.popCommandToRedo();
+		cmd.execute(this);
+		fireCommandExecuted(cmd);
+		return cmd;
+	}
+
+
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// views
@@ -799,56 +820,11 @@ public class Project
 	}
 
 
-	/////////////////////////////////////////////////////////////////////////////////
-	// undo/redo
-	
-	public void undo() throws CommandFailedException
-	{
-		Command cmd = getCommandToUndo();
-		cmd.undo(this);
-		fireCommandUndone(cmd);
-	}
-	
-	public void redo() throws CommandFailedException
-	{
-		replayCommand(getCommandToRedo());
-	}
-
-	public Command getCommandToUndo() throws NothingToUndoException
-
-	{
-		int indexToUndo = getIndexToUndo();
-		if(indexToUndo < 0)
-			throw new NothingToUndoException();
-		return database.getCommandAt(indexToUndo);
-	}
-	
-	public Command getCommandToRedo() throws NothingToRedoException
-	{
-		int indexToRedo = getIndexToRedo();
-		if(indexToRedo < 0)
-			throw new NothingToRedoException();
-		return database.getCommandAt(indexToRedo);
-	}
-	
-	public int getIndexToUndo()
-	{
-		UndoRedoState state = new UndoRedoState(database);
-		return state.getIndexToUndo();
-	}
-
-	public int getIndexToRedo()
-	{
-		UndoRedoState state = new UndoRedoState(database);
-		return state.getIndexToRedo();
-	}
-	
-
-
 	public static final int DEFAULT_GRID_SIZE = 15;
 
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
+	UndoRedoState undoRedoState;
 
 	ThreatRatingFramework threatRatingFramework;
 	

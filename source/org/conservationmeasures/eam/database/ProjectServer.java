@@ -8,9 +8,7 @@ package org.conservationmeasures.eam.database;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -29,44 +27,11 @@ public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
-		commands = new Vector();
 		lock = new DirectoryLock();
-	}
-
-	public int getCommandCount()
-	{
-		return commands.size();
-	}
-
-	public Command getCommandAt(int i)
-	{
-		if(i < 0 || i >= getCommandCount())
-			throw new RuntimeException("Command " + i + " not found");
-		
-		return (Command)commands.get(i);
-	}
-
-	protected void clear()
-	{
-		commands.clear();
-	}
-	
-	public void addCommandWithoutSaving(Command command) throws IOException
-	{
-		addCommand(command);
-	}
-	
-	public void appendCommand(Command command) throws IOException
-	{
-		if(!isOpen())
-			throw new IOException("FileStorage: Can't append if no file open");
-		
-		addCommandWithoutSaving(command);
 	}
 
 	public void close() throws IOException
 	{
-		clear();
 		topDirectory = null;
 		name = null;
 		lock.close();
@@ -153,7 +118,6 @@ public class ProjectServer
 
 	protected void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException
 	{
-		clear();
 		directory.mkdirs();
 		lock.lock(directory);
 		setTopDirectory(directory);
@@ -484,11 +448,6 @@ public class ProjectServer
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
-	private void addCommand(Command command)
-	{
-		commands.add(command);
-	}
-	
 	static String JSON_DIRECTORY = "json";
 	static String DIAGRAMS_DIRECTORY = "diagrams";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
@@ -505,7 +464,6 @@ public class ProjectServer
 	static public String OBJECT_MANIFEST = "ObjectManifest";
 	static public int DATA_VERSION = 6;
 
-	protected Vector commands;
 	File topDirectory;
 	String name;
 	DirectoryLock lock;

@@ -106,30 +106,30 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandRedo redo = new CommandRedo();
 		Project p = new ProjectForTesting(getName());
 		
-		assertEquals("already an undoable?", -1, p.getIndexToUndo());
-		assertEquals("already a redoable?", -1, p.getIndexToRedo());
+		assertFalse("already an undoable?", p.canUndo());
+		assertFalse("already a redoable?", p.canRedo());
 		p.executeCommand(nop);
-		assertEquals("can't undo first?", 0, p.getIndexToUndo());
-		assertEquals("redo before first undo?", -1, p.getIndexToRedo());
+		assertTrue("can't undo first?", p.canUndo());
+		assertFalse("redo before first undo?", p.canRedo());
 		p.executeCommand(nop);
-		assertEquals("can't undo second?", 1, p.getIndexToUndo());
-		assertEquals("redo when still no undo?", -1, p.getIndexToRedo());
+		assertTrue("can't undo second?", p.canUndo());
+		assertFalse("redo when still no undo?", p.canRedo());
 		p.executeCommand(undo);
-		assertEquals("can't undo twice?", 0, p.getIndexToUndo());
-		assertEquals("can't redo first undo?", 1, p.getIndexToRedo());
+		assertTrue("can't undo twice?", p.canUndo());
+		assertTrue("can't redo first undo?", p.canRedo());
 		p.executeCommand(nop);
-		assertEquals("can't undo latest?", 3, p.getIndexToUndo());
-		assertEquals("redo when undo not last?", -1, p.getIndexToRedo());
+		assertTrue("can't undo latest?", p.canUndo());
+		assertFalse("can redo when undo not last?", p.canRedo());
 		p.executeCommand(undo);
-		assertEquals("can't undo earlier command?", 0, p.getIndexToUndo());
-		assertEquals("can't redo very latest?", 3, p.getIndexToRedo());
+		assertTrue("can't undo earlier command?", p.canUndo());
+		assertTrue("can't redo very latest?", p.canRedo());
 		p.executeCommand(undo);
-		assertEquals("can undo beyond first?", -1, p.getIndexToUndo());
-		assertEquals("can't redo after two undos?", 0, p.getIndexToRedo());
+		assertFalse("can undo beyond first?", p.canUndo());
+		assertTrue("can't redo after two undos?", p.canRedo());
 		
 		p.executeCommand(redo);
-		assertEquals("can't undo after redo?", 0, p.getIndexToUndo());
-		assertEquals("can't redo after redo?", 3, p.getIndexToRedo());
+		assertTrue("can't undo after redo?", p.canUndo());
+		assertTrue("can't redo after redo?", p.canRedo());
 		
 		p.close();
 		
