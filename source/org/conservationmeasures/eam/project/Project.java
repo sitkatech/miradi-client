@@ -15,7 +15,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.database.DataUpgrader;
@@ -775,26 +774,6 @@ public class Project
 		return true;
 	}
 
-	public void applySnapToOldUnsnappedCommands(Vector commands)
-	{
-		for(int i=0; i < commands.size(); ++i)
-		{
-			Command command = (Command)commands.get(i);
-			if(command instanceof CommandDiagramMove)
-			{
-				CommandDiagramMove unsnapped = (CommandDiagramMove)command;
-				Point unsnappedPoint = new Point(unsnapped.getDeltaX(), unsnapped.getDeltaY());
-				Point snappedPoint = getSnapped(unsnappedPoint);
-				if(!snappedPoint.equals(unsnappedPoint))
-				{
-					EAM.logDebug("Adjusting " + unsnappedPoint.toString() + " to " + snappedPoint.toString());
-					CommandDiagramMove snapped = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, unsnapped.getIds());
-					commands.set(i, snapped);
-				}
-			}
-		}
-	}
-	
 	/////////////////////////////////////////////////////////////////////////////////
 	// data values
 

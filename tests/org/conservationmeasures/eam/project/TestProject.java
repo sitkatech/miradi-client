@@ -192,19 +192,6 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
-	public void testApplySnapToOldUnsnappedCommands() throws Exception
-	{
-		int snap = Project.DEFAULT_GRID_SIZE;
-		
-		Vector commands = new Vector();
-		commands.add(new CommandDiagramMove(snap - 3, 2 * snap + 3, new BaseId[] {new BaseId(0)}));
-		commands.add(new CommandDiagramMove(snap, 2 * snap, new BaseId[] {new BaseId(0)}));
-		commands.add(new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT));
-
-		project.applySnapToOldUnsnappedCommands(commands);
-		assertEquals("didn't snap first command?", commands.get(1), commands.get(0));
-	}
-	
 	public void testGetSnapped() throws Exception
 	{
 		Point zeroZero = new Point(0, 0);
