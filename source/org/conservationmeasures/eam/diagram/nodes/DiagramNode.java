@@ -94,7 +94,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public DiagramNodeId getDiagramNodeId()
 	{
-		return (DiagramNodeId)getWrappedId();
+		return new DiagramNodeId(getWrappedId().asInt());
 	}
 
 	public int getType()

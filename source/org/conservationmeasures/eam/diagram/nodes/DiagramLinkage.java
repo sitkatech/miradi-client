@@ -10,6 +10,7 @@ import java.awt.Color;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.Edge;
@@ -97,9 +98,9 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		// not allowed--ignore attempts to reset the target
 	}
 
-	public BaseId getId()
+	public DiagramLinkageId getId()
 	{
-		return underlyingObject.getId();
+		return new DiagramLinkageId(underlyingObject.getId().asInt());
 	}
 	
 	public BaseId getFromId()
