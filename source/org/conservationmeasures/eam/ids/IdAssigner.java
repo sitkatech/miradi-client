@@ -3,9 +3,8 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.project;
+package org.conservationmeasures.eam.ids;
 
-import org.conservationmeasures.eam.ids.BaseId;
 
 
 public class IdAssigner

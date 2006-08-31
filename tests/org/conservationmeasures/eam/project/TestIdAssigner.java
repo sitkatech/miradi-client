@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestIdAssigner extends TestCaseEnhanced

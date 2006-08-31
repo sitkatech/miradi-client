@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.ids;
 
-import org.conservationmeasures.eam.project.IdAssigner;
 
 public class BaseId implements Comparable
 {

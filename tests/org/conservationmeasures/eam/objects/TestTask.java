@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.project.IdAssigner;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTask extends EAMTestCase

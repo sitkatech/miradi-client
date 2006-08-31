@@ -50,6 +50,7 @@ import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;

@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.json.JSONObject;
 
