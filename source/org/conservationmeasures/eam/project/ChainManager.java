@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
@@ -22,7 +23,7 @@ public class ChainManager
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
-		BaseId[] allNodeIds = pool.getIds();
+		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
@@ -37,7 +38,7 @@ public class ChainManager
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
-		BaseId[] allNodeIds = pool.getIds();
+		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);

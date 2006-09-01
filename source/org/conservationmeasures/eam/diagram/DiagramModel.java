@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
@@ -409,7 +410,7 @@ public class DiagramModel extends DefaultGraphModel
 			addNodeToModel(node);
 		}
 		
-		BaseId[] nodeIds = getNodePool().getIds();
+		ModelNodeId[] nodeIds = getNodePool().getModelNodeIds();
 		for(int i = 0;i < nodeIds.length; ++i)
 		{
 			DiagramNode node = getNodeById(nodeIds[i]);

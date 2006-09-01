@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -39,7 +40,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			inserter.setLocation(at);
 			inserter.doIt();
 			
-			BaseId id = project.getNodePool().getIds()[0];
+			ModelNodeId id = project.getNodePool().getModelNodeIds()[0];
 			DiagramNode node = project.getDiagramModel().getNodeById(id);
 			assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objectpools;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -13,18 +14,24 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class NodePool extends EAMObjectPool
 {
 	public void put(ConceptualModelNode node)
 	{
-		put(node.getId(), node);
+		put(node.getModelNodeId(), node);
 	}
 	
 	public ConceptualModelNode find(BaseId id)
 	{
 		return (ConceptualModelNode)getRawObject(id);
+	}
+	
+	public ModelNodeId[] getModelNodeIds()
+	{
+		return (ModelNodeId[])new HashSet(getRawIds()).toArray(new ModelNodeId[0]);
 	}
 
 	public ConceptualModelNode[] getInterventions()
@@ -45,7 +52,7 @@ public class NodePool extends EAMObjectPool
 	private ConceptualModelNode[] getNodesOfType(NodeType type)
 	{
 		Vector cmNodes = new Vector();
-		BaseId[] ids = getIds();
+		ModelNodeId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{

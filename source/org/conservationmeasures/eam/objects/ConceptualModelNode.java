@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,6 +50,11 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	}
 	
 	public abstract JSONObject toJson();
+	
+	public ModelNodeId getModelNodeId()
+	{
+		return new ModelNodeId(getId().asInt());
+	}
 	
 	public int getType()
 	{

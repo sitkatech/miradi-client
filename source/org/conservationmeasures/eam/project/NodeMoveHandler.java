@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
@@ -139,7 +140,7 @@ public class NodeMoveHandler
 	private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
 	{
 		DiagramModel model = getProject().getDiagramModel();
-		BaseId[] allNodeIds = getProject().getNodePool().getIds();
+		ModelNodeId[] allNodeIds = getProject().getNodePool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			DiagramNode possibleCluster = model.getNodeById(allNodeIds[i]);

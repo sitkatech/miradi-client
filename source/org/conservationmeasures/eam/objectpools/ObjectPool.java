@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objectpools;
 
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Set;
 
 import org.conservationmeasures.eam.ids.BaseId;
 
@@ -24,22 +24,17 @@ public class ObjectPool
 	
 	public BaseId[] getIds()
 	{
-		BaseId[] ids = new BaseId[size()];
-		int nextId = 0;
-		
-		Iterator it = map.keySet().iterator();
-		while(it.hasNext())
-		{
-			BaseId idKey = (BaseId)it.next();
-			ids[nextId++] = idKey;
-		}
-		
-		return ids;
+		return (BaseId[])getRawIds().toArray(new BaseId[0]);
 	}
 
 	public void put(BaseId id, Object obj)
 	{
 		map.put(id, obj);
+	}
+	
+	Set getRawIds()
+	{
+		return map.keySet();
 	}
 	
 	public Object getRawObject(BaseId id)
