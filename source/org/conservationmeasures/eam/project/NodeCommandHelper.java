@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.utils.Logging;
 
@@ -32,11 +33,11 @@ public class NodeCommandHelper
 		project = projectToUse;
 	}
 
-	public BaseId createNode(NodeType nodeType) throws Exception
+	public ModelNodeId createNode(NodeType nodeType) throws Exception
 	{
 		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
 		executeCommand(commandInsertNode);
-		BaseId id = commandInsertNode.getId();
+		ModelNodeId id = commandInsertNode.getId();
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(id);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
@@ -70,7 +71,7 @@ public class NodeCommandHelper
 			BaseId originalNodeId = nodeData.getId(DiagramNode.TAG_ID);
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			BaseId newNodeId = createNode(type);
+			ModelNodeId newNodeId = createNode(type);
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			

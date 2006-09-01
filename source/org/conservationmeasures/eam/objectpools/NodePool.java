@@ -29,6 +29,11 @@ public class NodePool extends EAMObjectPool
 		return (ConceptualModelNode)getRawObject(id);
 	}
 	
+	public ConceptualModelNode find(ModelNodeId id)
+	{
+		return (ConceptualModelNode)getRawObject(id);
+	}
+	
 	public ModelNodeId[] getModelNodeIds()
 	{
 		return (ModelNodeId[])new HashSet(getRawIds()).toArray(new ModelNodeId[0]);

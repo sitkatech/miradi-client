@@ -46,6 +46,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -130,9 +131,9 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		return currentNode;
 	}
 	
-	public BaseId getNodeId()
+	public ModelNodeId getNodeId()
 	{
-		return getCurrentNode().getDiagramNodeId();
+		return getCurrentNode().getUnderlyingObject().getModelNodeId();
 	}
 	
 	private Component createLabelBar(DiagramNode node)

@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -28,7 +28,7 @@ public class TestSetFactorType extends TestCaseEnhanced
 
 		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		insertCommand.execute(project);
-		BaseId id = insertCommand.getId();
+		ModelNodeId id = insertCommand.getId();
 
 		NodeType newType = DiagramNode.TYPE_DIRECT_THREAT;
 		Command setTextCommand = new CommandSetFactorType(id, newType);

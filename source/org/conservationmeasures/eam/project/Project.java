@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -577,9 +578,9 @@ public class Project
 		return nodeType; 
 	}
 
-	public BaseId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
+	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
-		BaseId realId = projectInfo.obtainRealNodeId(requestedId);
+		ModelNodeId realId = projectInfo.obtainRealNodeId(requestedId);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(realId, typeToInsert);
 		getNodePool().put(cmObject);
 		writeNode(realId);
@@ -588,7 +589,7 @@ public class Project
 		DiagramNode node = model.createNode(realId);
 		updateVisibilityOfSingleNode(node);
 		
-		BaseId idThatWasInserted = node.getDiagramNodeId();
+		ModelNodeId idThatWasInserted = node.getUnderlyingObject().getModelNodeId();
 		return idThatWasInserted;
 	}
 	
@@ -614,7 +615,7 @@ public class Project
 		return linkage.getDiagramLinkageId();
 	}
 	
-	public void setNodeName(BaseId nodeId, String desiredName, String expectedName) throws Exception
+	public void setNodeName(ModelNodeId nodeId, String desiredName, String expectedName) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -625,7 +626,7 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setNodeComment(BaseId nodeId, String desiredComment, String expectedComment) throws Exception
+	public void setNodeComment(ModelNodeId nodeId, String desiredComment, String expectedComment) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -636,7 +637,7 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setFactorType(BaseId nodeId, NodeType desiredType) throws Exception
+	public void setFactorType(ModelNodeId nodeId, NodeType desiredType) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -648,7 +649,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setIndicator(BaseId nodeId, BaseId desiredIndicatorId) throws Exception
+	public void setIndicator(ModelNodeId nodeId, BaseId desiredIndicatorId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -660,7 +661,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setObjectives(BaseId nodeId, ObjectiveIds desiredObjectives) throws Exception
+	public void setObjectives(ModelNodeId nodeId, ObjectiveIds desiredObjectives) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -672,7 +673,7 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setGoals(BaseId nodeId, GoalIds desiredGoals) throws Exception
+	public void setGoals(ModelNodeId nodeId, GoalIds desiredGoals) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.getNodeById(nodeId);
@@ -684,7 +685,7 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	protected void writeNode(BaseId nodeId) throws IOException, ParseException
+	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);
 		database.writeNode(cmNode);

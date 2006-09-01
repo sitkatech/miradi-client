@@ -13,14 +13,14 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodeObjectives extends Command 
 {
-	public CommandSetNodeObjectives(BaseId idToUpdate, ObjectiveIds objectivesToUse)
+	public CommandSetNodeObjectives(ModelNodeId idToUpdate, ObjectiveIds objectivesToUse)
 	{
 		id = idToUpdate;
 		objectives = objectivesToUse;
@@ -29,7 +29,7 @@ public class CommandSetNodeObjectives extends Command
 
 	public CommandSetNodeObjectives(DataInputStream dataIn) throws IOException
 	{
-		id = new BaseId(dataIn.readInt());
+		id = new ModelNodeId(dataIn.readInt());
 		objectives = new ObjectiveIds(dataIn);
 		previousObjectives = new ObjectiveIds(dataIn);
 	
@@ -91,14 +91,14 @@ public class CommandSetNodeObjectives extends Command
 		return previousObjectives;
 	}
 
-	BaseId getId()
+	ModelNodeId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetObjectives";
 
-	BaseId id;
+	ModelNodeId id;
 	ObjectiveIds objectives;
 	ObjectiveIds previousObjectives;
 }

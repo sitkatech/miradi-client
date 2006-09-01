@@ -398,7 +398,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < keys.length(); ++i)
 		{
 			String key = keys.getString(i);
-			BaseId id = new BaseId(Integer.parseInt(key));
+			ModelNodeId id = new ModelNodeId(Integer.parseInt(key));
 			JSONObject nodeJson = nodeMap.getJSONObject(key);
 
 			ConceptualModelNode cmObject = getNodePool().find(id);

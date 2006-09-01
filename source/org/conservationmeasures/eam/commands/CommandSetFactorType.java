@@ -13,14 +13,14 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetFactorType extends Command
 {
 
-	public CommandSetFactorType(BaseId idToUpdate, NodeType typeToUse)
+	public CommandSetFactorType(ModelNodeId idToUpdate, NodeType typeToUse)
 	{
 		id = idToUpdate;
 		type = typeToUse;
@@ -29,7 +29,7 @@ public class CommandSetFactorType extends Command
 	
 	public CommandSetFactorType(DataInputStream dataIn) throws IOException
 	{
-		id = new BaseId(dataIn.readInt());
+		id = new ModelNodeId(dataIn.readInt());
 		type = readNodeType(dataIn);
 		previousType = readNodeType(dataIn);
 	
@@ -91,14 +91,14 @@ public class CommandSetFactorType extends Command
 		return previousType;
 	}
 
-	BaseId getId()
+	ModelNodeId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetFactorType";
 	
-	BaseId id;
+	ModelNodeId id;
 	NodeType type;
 	NodeType previousType;
 }

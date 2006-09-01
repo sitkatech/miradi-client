@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -27,7 +28,7 @@ public class TestSetIndication extends EAMTestCase
 
 		CommandInsertNode insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
-		BaseId id = insertCommand.getId();
+		ModelNodeId id = insertCommand.getId();
 
 		BaseId indicator3 = new BaseId(3);
 		Command setIndicatorCommand = new CommandSetIndicator(id, indicator3);

@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 
 abstract public class InsertNode extends LocationDoer
@@ -56,7 +57,7 @@ abstract public class InsertNode extends LocationDoer
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();
-		BaseId id = new NodeCommandHelper(getProject()).createNode(nodeType);
+		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType);
 		
 		Command setNameCommand = new CommandSetNodeName(id, getInitialText());
 		getProject().executeCommand(setNameCommand);

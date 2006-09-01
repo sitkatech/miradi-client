@@ -14,12 +14,13 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetIndicator extends Command 
 {
-	public CommandSetIndicator(BaseId idToUpdate, BaseId indicatorToUse)
+	public CommandSetIndicator(ModelNodeId idToUpdate, BaseId indicatorToUse)
 	{
 		id = idToUpdate;
 		indicatorId = indicatorToUse;
@@ -33,7 +34,7 @@ public class CommandSetIndicator extends Command
 
 	public CommandSetIndicator(DataInputStream dataIn) throws IOException
 	{
-		id = new BaseId(dataIn.readInt());
+		id = new ModelNodeId(dataIn.readInt());
 		indicatorId = new BaseId(dataIn.readInt());
 		previousIndicator = new BaseId(dataIn.readInt());
 	
@@ -90,14 +91,14 @@ public class CommandSetIndicator extends Command
 		return previousIndicator;
 	}
 
-	BaseId getId()
+	ModelNodeId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetIndicator";
 
-	BaseId id;
+	ModelNodeId id;
 	BaseId indicatorId;
 	BaseId previousIndicator;
 }

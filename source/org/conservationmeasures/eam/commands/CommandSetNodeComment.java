@@ -12,13 +12,13 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetNodeComment extends Command
 {
-	public CommandSetNodeComment(BaseId idToUpdate, String newCommentToUse)
+	public CommandSetNodeComment(ModelNodeId idToUpdate, String newCommentToUse)
 	{
 		id = idToUpdate;
 		newComment = newCommentToUse;
@@ -27,7 +27,7 @@ public class CommandSetNodeComment extends Command
 	
 	public CommandSetNodeComment(DataInputStream dataIn) throws IOException
 	{
-		id = new BaseId(dataIn.readInt());
+		id = new ModelNodeId(dataIn.readInt());
 		newComment = dataIn.readUTF();
 		previousComment = dataIn.readUTF();
 	}
@@ -73,7 +73,7 @@ public class CommandSetNodeComment extends Command
 		dataOut.writeUTF(getPreviousComment());
 	}
 
-	BaseId getId()
+	ModelNodeId getId()
 	{
 		return id;
 	}
@@ -90,7 +90,7 @@ public class CommandSetNodeComment extends Command
 	
 	public static final String COMMAND_NAME = "SetNodeComment";
 	
-	BaseId id;
+	ModelNodeId id;
 	String newComment;
 	String previousComment;
 }

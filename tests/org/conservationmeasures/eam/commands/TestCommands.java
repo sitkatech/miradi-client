@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -400,7 +401,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetNodeName() throws Exception
 	{
-		BaseId id = insertTarget();
+		ModelNodeId id = insertTarget();
 		
 		String originalName = "original text";
 		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
@@ -432,7 +433,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetNodeComment() throws Exception
 	{
-		BaseId id = insertTarget();
+		ModelNodeId id = insertTarget();
 		
 		String originalComment = "original comment";
 		CommandSetNodeComment starter = new CommandSetNodeComment(id, originalComment);
@@ -487,7 +488,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandFactorSetType() throws Exception
 	{
-		BaseId id = insertDirectThreat();
+		ModelNodeId id = insertDirectThreat();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		
 		NodeType originalType = DiagramNode.TYPE_DIRECT_THREAT;
@@ -512,7 +513,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetIndicator() throws Exception
 	{
-		BaseId id = insertTarget();
+		ModelNodeId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertEquals("New target should not have an indicator", BaseId.INVALID, node.getIndicatorId());
 		BaseId originalIndicator = node.getIndicatorId();
@@ -536,7 +537,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetNodeObjectives() throws Exception
 	{
-		BaseId id = insertTarget();
+		ModelNodeId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		ObjectiveIds testObjectives = node.getObjectives();
 		assertEquals("Targets can't have Objectives", 0, testObjectives.size());
@@ -577,7 +578,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandSetGoals() throws Exception
 	{
-		BaseId id = insertTarget();
+		ModelNodeId id = insertTarget();
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertFalse("New target should not have a goal", node.getGoals().hasAnnotation());
 		GoalIds originalGoals = node.getGoals();
@@ -962,7 +963,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
 	}
 	
-	private BaseId insertTarget() throws Exception
+	private ModelNodeId insertTarget() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_TARGET;
 		return insertNode(type);
@@ -974,7 +975,7 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 
-	private BaseId insertDirectThreat() throws Exception
+	private ModelNodeId insertDirectThreat() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_DIRECT_THREAT;
 		return insertNode(type);
@@ -986,11 +987,11 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 
-	private BaseId insertNode(NodeType type) throws CommandFailedException
+	private ModelNodeId insertNode(NodeType type) throws CommandFailedException
 	{
 		CommandInsertNode insert = new CommandInsertNode(type);
 		project.executeCommand(insert);
-		BaseId id = insert.getId();
+		ModelNodeId id = insert.getId();
 		return id;
 	}
 	

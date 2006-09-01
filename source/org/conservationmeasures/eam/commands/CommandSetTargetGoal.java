@@ -13,14 +13,14 @@ import java.io.IOException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandSetTargetGoal extends Command 
 {
-	public CommandSetTargetGoal(BaseId idToUpdate, GoalIds goalsToUse)
+	public CommandSetTargetGoal(ModelNodeId idToUpdate, GoalIds goalsToUse)
 	{
 		id = idToUpdate;
 		goals = goalsToUse;
@@ -29,7 +29,7 @@ public class CommandSetTargetGoal extends Command
 
 	public CommandSetTargetGoal(DataInputStream dataIn) throws IOException
 	{
-		id = new BaseId(dataIn.readInt());
+		id = new ModelNodeId(dataIn.readInt());
 		goals = new GoalIds(dataIn);
 		previousGoals = new GoalIds(dataIn);
 	
@@ -91,14 +91,14 @@ public class CommandSetTargetGoal extends Command
 		return previousGoals;
 	}
 
-	BaseId getId()
+	ModelNodeId getId()
 	{
 		return id;
 	}
 	
 	public static final String COMMAND_NAME = "SetGoals";
 
-	BaseId id;
+	ModelNodeId id;
 	GoalIds goals;
 	GoalIds previousGoals;
 }

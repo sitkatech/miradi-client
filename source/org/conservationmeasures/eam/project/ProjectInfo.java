@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.json.JSONObject;
 
@@ -39,9 +40,9 @@ public class ProjectInfo
 		return nodeIdAssigner;
 	}
 	
-	public BaseId obtainRealNodeId(BaseId proposedId)
+	public ModelNodeId obtainRealNodeId(BaseId proposedId)
 	{
-		return nodeIdAssigner.obtainRealId(proposedId);
+		return new ModelNodeId(nodeIdAssigner.obtainRealId(proposedId).asInt());
 	}
 	
 	public BaseId obtainRealLinkageId(BaseId proposedId)

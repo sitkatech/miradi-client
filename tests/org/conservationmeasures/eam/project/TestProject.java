@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
@@ -586,12 +587,12 @@ public class TestProject extends EAMTestCase
 		CommandInsertNode targetCommand = new CommandInsertNode(new NodeTypeTarget());
 		project.executeCommand(targetCommand);
 		assertEquals(1, database.callsToWriteNode);
-		BaseId targetId = targetCommand.getId();
+		ModelNodeId targetId = targetCommand.getId();
 		
 		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeIndirectFactor());
 		project.executeCommand(factorCommand);
 		assertEquals(2, database.callsToWriteNode);
-		BaseId factorId = factorCommand.getId();
+		ModelNodeId factorId = factorCommand.getId();
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
