@@ -375,7 +375,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetThreatRating() throws Exception
 	{
-		BaseId threatId = new BaseId(100);
+		ModelNodeId threatId = new ModelNodeId(100);
 		BaseId targetId = new BaseId(101);
 		BaseId criterionId = new BaseId(102);
 		BaseId valueId = new BaseId(103);

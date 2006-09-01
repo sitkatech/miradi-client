@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 
@@ -18,7 +19,7 @@ public class TestThreatRatingBundle extends EAMTestCase
 
 	public void testBasics()
 	{
-		BaseId threatId = new BaseId(5);
+		ModelNodeId threatId = new ModelNodeId(5);
 		BaseId targetId = new BaseId(9);
 		BaseId defaultValueId = new BaseId(29);
 		
@@ -36,10 +37,10 @@ public class TestThreatRatingBundle extends EAMTestCase
 	
 	public void testPullDataFrom() throws Exception
 	{
-		BaseId threatId = new BaseId(5);
+		ModelNodeId threatId = new ModelNodeId(5);
 		BaseId targetId = new BaseId(9);
 		BaseId defaultValueId = new BaseId(29);
-		BaseId threatId2 = new BaseId(7);
+		ModelNodeId threatId2 = new ModelNodeId(7);
 		BaseId targetId2 = new BaseId(8);
 		BaseId defaultValueId2 = new BaseId(59);
 		
@@ -68,7 +69,7 @@ public class TestThreatRatingBundle extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		BaseId threatId = new BaseId(5);
+		ModelNodeId threatId = new ModelNodeId(5);
 		BaseId targetId = new BaseId(9);
 		BaseId defaultValueId = new BaseId(29);
 		BaseId criterion1 = new BaseId(32);

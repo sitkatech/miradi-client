@@ -9,11 +9,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.json.JSONObject;
 
 public class ThreatRatingBundle
 {
-	public ThreatRatingBundle(BaseId threatIdToUse, BaseId targetIdToUse, BaseId defaultValueIdToUse)
+	public ThreatRatingBundle(ModelNodeId threatIdToUse, BaseId targetIdToUse, BaseId defaultValueIdToUse)
 	{
 		this();
 		
@@ -38,7 +39,7 @@ public class ThreatRatingBundle
 
 	private void pullDataFrom(JSONObject json)
 	{
-		threatId = new BaseId(json.getInt(TAG_THREAT_ID));
+		threatId = new ModelNodeId(json.getInt(TAG_THREAT_ID));
 		targetId = new BaseId(json.getInt(TAG_TARGET_ID));
 		defaultValueId = new BaseId(json.getInt(TAG_DEFAULT_VALUE_ID));
 		
@@ -63,7 +64,7 @@ public class ThreatRatingBundle
 		map = new HashMap();
 	}
 	
-	public BaseId getThreatId()
+	public ModelNodeId getThreatId()
 	{
 		return threatId;
 	}
@@ -115,7 +116,7 @@ public class ThreatRatingBundle
 	private static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
 	private static final String TAG_VALUES = "Values";
 	
-	BaseId threatId;
+	ModelNodeId threatId;
 	BaseId targetId;
 	BaseId defaultValueId;
 	HashMap map;

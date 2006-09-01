@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -136,7 +137,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteThreatRatingBundle() throws Exception
 	{
-		BaseId threatId = new BaseId(68);
+		ModelNodeId threatId = new ModelNodeId(68);
 		BaseId targetId = new BaseId(99);
 		BaseId defaultId = new BaseId(929);
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultId);

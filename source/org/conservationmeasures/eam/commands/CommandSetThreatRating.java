@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
@@ -18,7 +19,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class CommandSetThreatRating extends Command
 {
-	public CommandSetThreatRating(BaseId threatIdToUpdate, BaseId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
+	public CommandSetThreatRating(ModelNodeId threatIdToUpdate, BaseId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
 	{
 		threatId = threatIdToUpdate;
 		targetId = targetIdToUpdate;
@@ -28,7 +29,7 @@ public class CommandSetThreatRating extends Command
 	
 	public CommandSetThreatRating(DataInputStream dataIn) throws IOException
 	{
-		threatId = new BaseId(dataIn.readInt());
+		threatId = new ModelNodeId(dataIn.readInt());
 		targetId = new BaseId(dataIn.readInt());
 		criterionId = new BaseId(dataIn.readInt());
 		valueId = new BaseId(dataIn.readInt());
@@ -84,7 +85,7 @@ public class CommandSetThreatRating extends Command
 		dataOut.writeInt(getPreviousValueId().asInt());
 	}
 
-	public BaseId getThreatId()
+	public ModelNodeId getThreatId()
 	{
 		return threatId;
 	}
@@ -112,7 +113,7 @@ public class CommandSetThreatRating extends Command
 
 	public static final String COMMAND_NAME = "SetThreatRatingValue";
 
-	BaseId threatId;
+	ModelNodeId threatId;
 	BaseId targetId;
 	BaseId criterionId;
 	BaseId valueId;

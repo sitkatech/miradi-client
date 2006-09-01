@@ -12,6 +12,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
@@ -23,7 +24,7 @@ public class ThreatMatrixTableModel
 		project = projectToShow;
 	}
 	
-	public ThreatRatingBundle getBundle(BaseId threatId, BaseId targetId) throws Exception
+	public ThreatRatingBundle getBundle(ModelNodeId threatId, BaseId targetId) throws Exception
 	{
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
 			return null;
@@ -77,10 +78,10 @@ public class ThreatMatrixTableModel
 		return cmNode.getLabel();
 	}
 	
-	public BaseId getThreatId(int threatIndex)
+	public ModelNodeId getThreatId(int threatIndex)
 	{
 		ConceptualModelNode cmNode = getThreatNode(threatIndex);
-		return cmNode.getId();
+		return cmNode.getModelNodeId();
 	}
 
 	private ConceptualModelNode getThreatNode(int threatIndex)
@@ -123,7 +124,7 @@ public class ThreatMatrixTableModel
 		return cmNode;
 	}
 	
-	public BaseId findThreatByName(String threatName)
+	public ModelNodeId findThreatByName(String threatName)
 	{
 		return findNodeByName(getDirectThreats(), threatName);
 	}
@@ -133,13 +134,13 @@ public class ThreatMatrixTableModel
 		return findNodeByName(getTargets(), targetName);
 	}
 	
-	private BaseId findNodeByName(ConceptualModelNode[] nodes, String name)
+	private ModelNodeId findNodeByName(ConceptualModelNode[] nodes, String name)
 	{
 		for(int i = 0; i < nodes.length; ++i)
 			if(nodes[i].getLabel().equals(name))
-				return nodes[i].getId();
+				return nodes[i].getModelNodeId();
 		
-		return BaseId.INVALID;
+		return new ModelNodeId(BaseId.INVALID.asInt());
 	}
 	
 	Project project;

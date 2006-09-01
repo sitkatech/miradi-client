@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -63,7 +64,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 			realProject.createOrOpen(tempDir);
 			BaseId createdId = realProject.createObject(ObjectType.THREAT_RATING_CRITERION);
 			
-			BaseId threatId = new BaseId(283);
+			ModelNodeId threatId = new ModelNodeId(283);
 			BaseId targetId = new BaseId(983);
 			ThreatRatingBundle bundle = realProject.getThreatRatingFramework().getBundle(threatId, targetId);
 			bundle.setValueId(createdId, new BaseId(838));
@@ -88,7 +89,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testGetBundleValue()
 	{
 		BaseId noneId = framework.findValueOptionByNumericValue(0).getId();
-		ThreatRatingBundle bundle = new ThreatRatingBundle(new BaseId(1), new BaseId(2), noneId);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new BaseId(2), noneId);
 		ThreatRatingValueOption result = framework.getBundleValue(bundle);
 		assertEquals("didn't default correctly? ", 0, result.getNumericValue());
 	}
@@ -136,7 +137,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ThreatRatingBundle createThreatTargetAndBundle() throws Exception
 	{
-		BaseId threatId = createThreat();
+		ModelNodeId threatId = createThreat();
 		BaseId targetId = createTarget();
 		populateBundle(threatId, targetId, framework.getValueOptions()[0]);
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
@@ -146,7 +147,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testBundles() throws Exception
 	{
-		BaseId threatId = new BaseId(77);
+		ModelNodeId threatId = new ModelNodeId(77);
 		BaseId targetId = new BaseId(292);
 		BaseId criterionId = new BaseId(22);
 		BaseId valueId = new BaseId(639);
@@ -165,8 +166,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		framework.createDefaultObjects();
 		
-		BaseId threatId1 = createThreat();
-		BaseId threatId2 = createThreat();
+		ModelNodeId threatId1 = createThreat();
+		ModelNodeId threatId2 = createThreat();
 		BaseId targetId1 = createTarget();
 		BaseId targetId2 = createTarget();
 
@@ -192,7 +193,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
 	}
 	
-	void createLinkageAndBundle(BaseId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
+	void createLinkageAndBundle(ModelNodeId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
 	{
 		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
 		populateBundle(threatId, targetId, value);
@@ -200,8 +201,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		BaseId threatId = createThreat();
-		BaseId targetId = createTarget();
+		ModelNodeId threatId = createThreat();
+		ModelNodeId targetId = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
 		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
@@ -221,19 +222,19 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target value included indirect factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
 
-	private BaseId createTarget() throws Exception
+	private ModelNodeId createTarget() throws Exception
 	{
-		BaseId targetId = project.insertNodeAtId(new NodeTypeTarget(), BaseId.INVALID);
+		ModelNodeId targetId = project.insertNodeAtId(new NodeTypeTarget(), BaseId.INVALID);
 		return targetId;
 	}
 
-	private BaseId createThreat() throws Exception
+	private ModelNodeId createThreat() throws Exception
 	{
-		BaseId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
+		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
 		return threatId;
 	}
 	
-	void populateBundle(BaseId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
+	void populateBundle(ModelNodeId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
 		ThreatRatingCriterion criteria[] = framework.getCriteria();

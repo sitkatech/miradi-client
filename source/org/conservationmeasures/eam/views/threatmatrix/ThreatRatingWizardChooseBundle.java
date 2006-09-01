@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.martus.swing.HtmlViewer;
@@ -81,7 +82,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
 		ThreatMatrixTableModel model = getView().getModel();
-		BaseId threatId = model.findThreatByName(selectedThreatName);
+		ModelNodeId threatId = model.findThreatByName(selectedThreatName);
 		BaseId targetId = model.findTargetByName(selectedTargetName);
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
 		return bundle;
