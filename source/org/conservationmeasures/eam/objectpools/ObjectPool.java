@@ -30,8 +30,8 @@ public class ObjectPool
 		Iterator it = map.keySet().iterator();
 		while(it.hasNext())
 		{
-			Integer idKey = (Integer)it.next();
-			ids[nextId++] = new BaseId(idKey.intValue());
+			BaseId idKey = (BaseId)it.next();
+			ids[nextId++] = idKey;
 		}
 		
 		return ids;
@@ -39,24 +39,19 @@ public class ObjectPool
 
 	public void put(BaseId id, Object obj)
 	{
-		map.put(createKey(id), obj);
+		map.put(id, obj);
 	}
 	
 	public Object getRawObject(BaseId id)
 	{
-		return map.get(createKey(id));
+		return map.get(id);
 	}
 	
 	public void remove(BaseId id)
 	{
-		map.remove(createKey(id));
+		map.remove(id);
 	}
 
-	private Integer createKey(BaseId id)
-	{
-		return new Integer(id.asInt());
-	}
-	
 	
 	HashMap map;
 }
