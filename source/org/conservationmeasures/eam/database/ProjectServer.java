@@ -11,6 +11,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -161,7 +162,7 @@ public class ProjectServer
 		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
 	}
 	
-	public void deleteNode(BaseId id) throws IOException, ParseException
+	public void deleteNode(ModelNodeId id) throws IOException, ParseException
 	{
 		removeFromNodeManifest(id);
 		getNodeFile(id).delete();

@@ -569,11 +569,12 @@ public class Project
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
+		ModelNodeId nodeId = nodeToDelete.getWrappedId();
 		NodeType nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 
-		database.deleteNode(idToDelete);
-		getNodePool().remove(idToDelete);
+		database.deleteNode(nodeId);
+		getNodePool().remove(nodeId);
 		
 		return nodeType; 
 	}
