@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanObject;
 
 public class ActivityInsertionPoint
@@ -28,9 +28,9 @@ public class ActivityInsertionPoint
 		return (StratPlanObject)path.getLastPathComponent();
 	}
 	
-	public BaseId getInterventionId()
+	public ModelNodeId getInterventionId()
 	{
-		return getParent().getId();
+		return new ModelNodeId(getParent().getId().asInt());
 	}
 	
 	public int getIndex()

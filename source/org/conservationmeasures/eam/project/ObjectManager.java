@@ -287,7 +287,8 @@ public class ObjectManager
 				break;
 				
 			case ObjectType.MODEL_NODE:
-				ConceptualModelNode node = getNodePool().find(objectId);
+				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
+				ConceptualModelNode node = getNodePool().find(nodeId);
 				node.setData(fieldTag, dataValue);
 				getDatabase().writeNode(node);
 				break;
@@ -342,7 +343,8 @@ public class ObjectManager
 				return getTaskPool().find(objectId).getData(fieldTag);
 				
 			case ObjectType.MODEL_NODE:
-				return getNodePool().find(objectId).getData(fieldTag);
+				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
+				return getNodePool().find(nodeId).getData(fieldTag);
 				
 			case ObjectType.VIEW_DATA:
 				return getViewPool().find(objectId).getData(fieldTag);

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -36,7 +37,7 @@ public class InsertActivity extends StratPlanDoer
 	private void doInsertActivity() throws CommandFailedException
 	{
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
-		BaseId interventionId = insertAt.getInterventionId();
+		ModelNodeId interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
 		ConceptualModelNode intervention = getProject().getNodePool().find(interventionId);
 
