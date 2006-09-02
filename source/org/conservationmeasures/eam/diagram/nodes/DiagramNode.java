@@ -62,6 +62,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	protected DiagramNode(ConceptualModelNode cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
+		id = new DiagramNodeId(getWrappedId().asInt());
 		
 		port = new DefaultPort();
 		add(port);
@@ -95,7 +96,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public DiagramNodeId getDiagramNodeId()
 	{
-		return new DiagramNodeId(getWrappedId().asInt());
+		return id;
 	}
 
 	public int getType()
@@ -499,6 +500,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	Dimension previousSize;
 	Point previousLocation;
 	
+	DiagramNodeId id;
 	ConceptualModelNode underlyingObject;
 }
 
