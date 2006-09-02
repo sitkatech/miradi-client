@@ -133,7 +133,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	
 	public ModelNodeId getNodeId()
 	{
-		return getCurrentNode().getUnderlyingObject().getModelNodeId();
+		return getCurrentNode().getWrappedId();
 	}
 	
 	private Component createLabelBar(DiagramNode node)
