@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
@@ -126,7 +125,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		validate();
 	}
 
-	private String getName(BaseId nodeId)
+	private String getName(ModelNodeId nodeId)
 	{
 		return getView().getProject().getNodePool().find(nodeId).getLabel();
 	}

@@ -46,8 +46,8 @@ public class TestDiagramLinkage extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention.getId());
-		DiagramNode target = model.createNode(cmTarget.getId());
+		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
+		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
 		BaseId id = new BaseId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
@@ -60,8 +60,8 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention.getId());
-		DiagramNode target = model.createNode(cmTarget.getId());
+		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
+		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
 		BaseId id = new BaseId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getDiagramNodeId(), target.getDiagramNodeId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);

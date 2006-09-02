@@ -155,7 +155,7 @@ public class TestDiagramModel extends EAMTestCase
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getDiagramNodeId());
 		project.getNodePool().put(cmTargetToUndo);
 		
-		model.createNode(cmTargetToUndo.getId()); //simulates an undo
+		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramNodeId().asInt() > lastCreated.getDiagramNodeId().asInt());
 	}
@@ -262,14 +262,14 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNode cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		project.getNodePool().put(cmTarget);
-		return model.createNode(cmTarget.getId());
+		return model.createNode(cmTarget.getModelNodeId());
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), nodeType);
 		project.getNodePool().put(cmObject);
-		return model.createNode(cmObject.getId());
+		return model.createNode(cmObject.getModelNodeId());
 	}
 	
 	private DiagramLinkage createLinkage(BaseId id, BaseId fromId, BaseId toId) throws Exception

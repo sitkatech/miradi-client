@@ -182,8 +182,8 @@ public class TestProjectServer extends EAMTestCase
 		ConceptualModelTarget cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		nodePool.put(cmTarget);
 		
-		model.createNode(cmIntervention.getId());
-		model.createNode(cmTarget.getId());
+		model.createNode(cmIntervention.getModelNodeId());
+		model.createNode(cmTarget.getModelNodeId());
 		
 		storage.writeDiagram(model);
 		

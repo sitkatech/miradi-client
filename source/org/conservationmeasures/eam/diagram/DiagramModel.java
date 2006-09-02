@@ -68,7 +68,7 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getThreatRatingFramework();
 	}
 
-	public DiagramNode createNode(BaseId id) throws Exception
+	public DiagramNode createNode(ModelNodeId id) throws Exception
 	{
 		ConceptualModelNode cmObject = getNodePool().find(id);
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);

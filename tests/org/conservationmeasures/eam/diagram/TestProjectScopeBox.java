@@ -77,7 +77,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	{
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), nodeType);
 		nodePool.put(cmObject);
-		return model.createNode(cmObject.getId());
+		return model.createNode(cmObject.getModelNodeId());
 	}
 
 	ProjectForTesting project;
