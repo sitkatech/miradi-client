@@ -9,8 +9,6 @@ package org.conservationmeasures.eam.diagram;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandRedo;
-import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -53,8 +51,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		assertTrue("no linkage?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
-		CommandUndo undo = new CommandUndo();
-		project.executeCommand(undo);
+		project.undo();
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 	}
 	
@@ -62,21 +59,20 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		
-		CommandUndo undo = new CommandUndo();
-		project.executeCommand(undo);
+		project.undo();
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 		verifyLinkageNotPresent(linkId);
 		
-		project.executeCommand(undo);
+		project.undo();
 		verifyNodeNotPresent(toId);
 
-		project.executeCommand(undo);
+		project.undo();
 		verifyNodeNotPresent(fromId);
 
 		try
 		{
 			EAM.setLogToString();
-			project.executeCommand(undo);
+			project.undo();
 			fail("Should have thrown");
 		}
 		catch(CommandFailedException ignoreExpected)
@@ -87,15 +83,14 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	public void testUndoActUndo() throws Exception
 	{
-		CommandUndo undo = new CommandUndo();
-		project.executeCommand(undo);
+		project.undo();
 		
 		CommandInsertNode insert = new CommandInsertNode(DiagramNode.TYPE_TARGET);
 		project.executeCommand(insert);
-		project.executeCommand(undo);
+		project.undo();
 		verifyNodeNotPresent(insert.getId());
 
-		project.executeCommand(undo);
+		project.undo();
 		verifyLinkageNotPresent(linkId);
 	
 	}
@@ -103,8 +98,6 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testGetIndexToUndoAndRedo() throws Exception
 	{
 		CommandDoNothing nop = new CommandDoNothing();
-		CommandUndo undo = new CommandUndo();
-		CommandRedo redo = new CommandRedo();
 		Project p = new ProjectForTesting(getName());
 		
 		assertFalse("already an undoable?", p.canUndo());
@@ -115,20 +108,20 @@ public class TestUndoAndRedo extends EAMTestCase
 		p.executeCommand(nop);
 		assertTrue("can't undo second?", p.canUndo());
 		assertFalse("redo when still no undo?", p.canRedo());
-		p.executeCommand(undo);
+		p.undo();
 		assertTrue("can't undo twice?", p.canUndo());
 		assertTrue("can't redo first undo?", p.canRedo());
 		p.executeCommand(nop);
 		assertTrue("can't undo latest?", p.canUndo());
 		assertFalse("can redo when undo not last?", p.canRedo());
-		p.executeCommand(undo);
+		p.undo();
 		assertTrue("can't undo earlier command?", p.canUndo());
 		assertTrue("can't redo very latest?", p.canRedo());
-		p.executeCommand(undo);
+		p.undo();
 		assertFalse("can undo beyond first?", p.canUndo());
 		assertTrue("can't redo after two undos?", p.canRedo());
 		
-		p.executeCommand(redo);
+		p.redo();
 		assertTrue("can't undo after redo?", p.canUndo());
 		assertTrue("can't redo after redo?", p.canRedo());
 		

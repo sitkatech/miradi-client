@@ -35,10 +35,6 @@ public abstract class Command
 			return new CommandDeleteLinkage(dataIn);
 		if(commandName.equals(CommandDeleteNode.COMMAND_NAME))
 			return new CommandDeleteNode(dataIn);
-		if(commandName.equals(CommandUndo.COMMAND_NAME))
-			return new CommandUndo(dataIn);
-		if(commandName.equals(CommandRedo.COMMAND_NAME))
-			return new CommandRedo(dataIn);
 		if(commandName.equals(CommandSwitchView.COMMAND_NAME))
 			return new CommandSwitchView(dataIn);
 		if(commandName.equals(CommandBeginTransaction.COMMAND_NAME))

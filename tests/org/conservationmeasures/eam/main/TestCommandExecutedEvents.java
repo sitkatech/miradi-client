@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.main;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.commands.CommandRedo;
-import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -66,22 +64,22 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("execute didn't fire again?", 2, listener.timesExecuted);
 
-		project.executeCommand(new CommandUndo());
-		assertEquals("undo didn't execute?", 3, listener.timesExecuted);
+		project.undo();
+		assertEquals("undo fired an execute?", 2, listener.timesExecuted);
 		assertEquals("undo didn't fire?", 1, listener.timesUndone);
 
-		project.executeCommand(new CommandRedo());
-		assertEquals("redo didn't fire two events?", 5, listener.timesExecuted);
+		project.redo();
+		assertEquals("redo's command didn't fire?", 3, listener.timesExecuted);
 		assertEquals("undo fired for redo?", 1, listener.timesUndone);
 		
 		try 
 		{
-			project.executeCommand(new CommandRedo());
+			project.redo();
 		} 
 		catch (CommandFailedException ignoreExpected) 
 		{
 		}
-		assertEquals("redo again didn't fire failure?", 1, listener.failureCount);
+		assertEquals("redo again fired a failure?", 0, listener.failureCount);
 		
 		project.close();
 	}

@@ -15,14 +15,12 @@ import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandRedo;
 import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.commands.CommandUndo;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -618,10 +616,10 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
 		assertEquals(6, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandUndo());
+		project.undo();
 		assertEquals(7, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandRedo());
+		project.redo();
 		assertEquals(8, database.callsToWriteNode);
 	}
 	

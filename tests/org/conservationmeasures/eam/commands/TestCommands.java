@@ -816,28 +816,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 	
-	public void testUndo() throws Exception
-	{
-		CommandUndo cmd = new CommandUndo();
-		assertTrue(cmd.isUndo());
-		assertFalse(cmd.isRedo());
-		BaseId insertedId = insertTarget();
-		project.executeCommand(cmd);
-		try
-		{
-			EAM.setLogToString();
-			project.getDiagramModel().getNodeById(insertedId);
-			fail("Undo didn't work?");
-		}
-		catch(Exception ignoreExpected)
-		{
-		}
-		EAM.setLogToConsole();
-		
-		CommandUndo loaded = (CommandUndo)saveAndReload(cmd);
-		assertNotNull("didn't reload?", loaded);
-	}
-	
 	public void testBeginTransaction() throws Exception
 	{
 		CommandBeginTransaction cmd = new CommandBeginTransaction();
@@ -865,11 +843,10 @@ public class TestCommands extends EAMTestCase
 	public void testUndoWhenNothingToUndo() throws Exception
 	{
 		Project emptyProject = new ProjectForTesting(getName());
-		CommandUndo undo = new CommandUndo();
 		try
 		{
 			EAM.setLogToString();
-			emptyProject.executeCommand(undo);
+			emptyProject.undo();
 			fail("Should have thrown");
 		}
 		catch(NothingToUndoException ignoreExpected)
@@ -882,26 +859,21 @@ public class TestCommands extends EAMTestCase
 	public void testRedo() throws Exception
 	{
 		BaseId insertedId = insertTarget();
-		CommandUndo undo = new CommandUndo();
-		project.executeCommand(undo);
-		CommandRedo redo = new CommandRedo();
-		project.executeCommand(redo);
+		project.undo();
+		project.redo();
 		
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
-		CommandRedo loaded = (CommandRedo)saveAndReload(redo);
-		assertNotNull("didn't reload?", loaded);
 	}
 	
 	public void testRedoWhenNothingToRedo() throws Exception
 	{
 		Project emptyProject = new ProjectForTesting(getName());
-		CommandRedo redo = new CommandRedo();
 		try
 		{
 			EAM.setLogToString();
-			emptyProject.executeCommand(redo);
+			emptyProject.redo();
 			fail("Should have thrown");
 		}
 		catch(NothingToRedoException ignoreExpected)
@@ -958,7 +930,7 @@ public class TestCommands extends EAMTestCase
 		project.addCommandExecutedListener(undoListener);
 		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
 		project.executeCommand(cmd);
-		project.executeCommand(new CommandUndo());
+		project.undo();
 		assertEquals("didn't undo one command?", 1, undoListener.undoneCommands.size());
 		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
 	}
