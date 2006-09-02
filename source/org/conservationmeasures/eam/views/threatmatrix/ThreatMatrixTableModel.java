@@ -24,7 +24,7 @@ public class ThreatMatrixTableModel
 		project = projectToShow;
 	}
 	
-	public ThreatRatingBundle getBundle(ModelNodeId threatId, BaseId targetId) throws Exception
+	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
 	{
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
 			return null;
@@ -96,10 +96,10 @@ public class ThreatMatrixTableModel
 		return cmNode.getLabel();
 	}
 
-	public BaseId getTargetId(int targetIndex)
+	public ModelNodeId getTargetId(int targetIndex)
 	{
 		ConceptualModelNode cmNode = getTargetNode(targetIndex);
-		return cmNode.getId();
+		return cmNode.getModelNodeId();
 	}
 
 	public String[] getThreatNames()
@@ -129,7 +129,7 @@ public class ThreatMatrixTableModel
 		return findNodeByName(getDirectThreats(), threatName);
 	}
 	
-	public BaseId findTargetByName(String targetName)
+	public ModelNodeId findTargetByName(String targetName)
 	{
 		return findNodeByName(getTargets(), targetName);
 	}

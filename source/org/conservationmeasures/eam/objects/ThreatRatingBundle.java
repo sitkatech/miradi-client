@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class ThreatRatingBundle
 {
-	public ThreatRatingBundle(ModelNodeId threatIdToUse, BaseId targetIdToUse, BaseId defaultValueIdToUse)
+	public ThreatRatingBundle(ModelNodeId threatIdToUse, ModelNodeId targetIdToUse, BaseId defaultValueIdToUse)
 	{
 		this();
 		
@@ -40,7 +40,7 @@ public class ThreatRatingBundle
 	private void pullDataFrom(JSONObject json)
 	{
 		threatId = new ModelNodeId(json.getInt(TAG_THREAT_ID));
-		targetId = new BaseId(json.getInt(TAG_TARGET_ID));
+		targetId = new ModelNodeId(json.getInt(TAG_TARGET_ID));
 		defaultValueId = new BaseId(json.getInt(TAG_DEFAULT_VALUE_ID));
 		
 		JSONObject values = json.getJSONObject(TAG_VALUES);
@@ -69,7 +69,7 @@ public class ThreatRatingBundle
 		return threatId;
 	}
 	
-	public BaseId getTargetId()
+	public ModelNodeId getTargetId()
 	{
 		return targetId;
 	}
@@ -117,7 +117,7 @@ public class ThreatRatingBundle
 	private static final String TAG_VALUES = "Values";
 	
 	ModelNodeId threatId;
-	BaseId targetId;
+	ModelNodeId targetId;
 	BaseId defaultValueId;
 	HashMap map;
 }

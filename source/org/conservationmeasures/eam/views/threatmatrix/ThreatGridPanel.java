@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -170,7 +169,7 @@ public class ThreatGridPanel extends JPanel
 	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex) throws Exception
 	{
 		ModelNodeId threatId = model.getThreatId(threatIndex);
-		BaseId targetId = model.getTargetId(targetIndex);
+		ModelNodeId targetId = model.getTargetId(targetIndex);
 		ThreatRatingBundle bundle = getFramework().getBundle(threatId, targetId);
 		return bundle;
 	}

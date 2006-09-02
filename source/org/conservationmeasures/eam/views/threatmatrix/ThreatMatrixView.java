@@ -114,13 +114,13 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 			return;
 		
 		ModelNodeId threatId = bundle.getThreatId();
-		BaseId targetId = bundle.getTargetId();
+		ModelNodeId targetId = bundle.getTargetId();
 		BaseId criterionId = criterion.getId();
 		BaseId valueId = value.getId();
 		setBundleValue(threatId, targetId, criterionId, valueId);
 	}
 
-	private void setBundleValue(ModelNodeId threatId, BaseId targetId, BaseId criterionId, BaseId valueId) throws CommandFailedException
+	private void setBundleValue(ModelNodeId threatId, ModelNodeId targetId, BaseId criterionId, BaseId valueId) throws CommandFailedException
 	{
 		try
 		{

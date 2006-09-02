@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class CommandSetThreatRating extends Command
 {
-	public CommandSetThreatRating(ModelNodeId threatIdToUpdate, BaseId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
+	public CommandSetThreatRating(ModelNodeId threatIdToUpdate, ModelNodeId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
 	{
 		threatId = threatIdToUpdate;
 		targetId = targetIdToUpdate;
@@ -30,7 +30,7 @@ public class CommandSetThreatRating extends Command
 	public CommandSetThreatRating(DataInputStream dataIn) throws IOException
 	{
 		threatId = new ModelNodeId(dataIn.readInt());
-		targetId = new BaseId(dataIn.readInt());
+		targetId = new ModelNodeId(dataIn.readInt());
 		criterionId = new BaseId(dataIn.readInt());
 		valueId = new BaseId(dataIn.readInt());
 		previousValueId = new BaseId(dataIn.readInt());
@@ -90,7 +90,7 @@ public class CommandSetThreatRating extends Command
 		return threatId;
 	}
 	
-	public BaseId getTargetId()
+	public ModelNodeId getTargetId()
 	{
 		return targetId;
 	}
@@ -114,7 +114,7 @@ public class CommandSetThreatRating extends Command
 	public static final String COMMAND_NAME = "SetThreatRatingValue";
 
 	ModelNodeId threatId;
-	BaseId targetId;
+	ModelNodeId targetId;
 	BaseId criterionId;
 	BaseId valueId;
 	BaseId previousValueId;

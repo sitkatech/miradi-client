@@ -138,7 +138,7 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteThreatRatingBundle() throws Exception
 	{
 		ModelNodeId threatId = new ModelNodeId(68);
-		BaseId targetId = new BaseId(99);
+		ModelNodeId targetId = new ModelNodeId(99);
 		BaseId defaultId = new BaseId(929);
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultId);
 		storage.writeThreatRatingBundle(bundle);

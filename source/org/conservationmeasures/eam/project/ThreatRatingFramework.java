@@ -225,7 +225,7 @@ public class ThreatRatingFramework
 		if(threat == null || !threat.isDirectThreat())
 			return false;
 		
-		BaseId targetId = bundle.getTargetId();
+		ModelNodeId targetId = bundle.getTargetId();
 		ConceptualModelNode target = nodePool.find(targetId);
 		if(target == null || !target.isTarget())
 			return false;
@@ -313,7 +313,7 @@ public class ThreatRatingFramework
 		return -1;
 	}
 	
-	public ThreatRatingBundle getBundle(ModelNodeId threatId, BaseId targetId) throws Exception
+	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
 	{
 		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(getBundleKey(threatId, targetId));
 		if(existing != null)

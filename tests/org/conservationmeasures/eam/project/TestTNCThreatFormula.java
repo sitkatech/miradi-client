@@ -171,7 +171,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		BaseId highId = framework.findValueOptionByNumericValue(3).getId();
 		BaseId none = framework.findValueOptionByNumericValue(0).getId();
 		
-		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new BaseId(2), none);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new ModelNodeId(2), none);
 		
 		assertEquals("empty bundle value not zero? ", 0, formula.computeBundleValue(bundle));
 

@@ -20,7 +20,7 @@ public class TestThreatRatingBundle extends EAMTestCase
 	public void testBasics()
 	{
 		ModelNodeId threatId = new ModelNodeId(5);
-		BaseId targetId = new BaseId(9);
+		ModelNodeId targetId = new ModelNodeId(9);
 		BaseId defaultValueId = new BaseId(29);
 		
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
@@ -38,10 +38,10 @@ public class TestThreatRatingBundle extends EAMTestCase
 	public void testPullDataFrom() throws Exception
 	{
 		ModelNodeId threatId = new ModelNodeId(5);
-		BaseId targetId = new BaseId(9);
+		ModelNodeId targetId = new ModelNodeId(9);
 		BaseId defaultValueId = new BaseId(29);
 		ModelNodeId threatId2 = new ModelNodeId(7);
-		BaseId targetId2 = new BaseId(8);
+		ModelNodeId targetId2 = new ModelNodeId(8);
 		BaseId defaultValueId2 = new BaseId(59);
 		
 		BaseId criterionId = new BaseId(34);
@@ -70,7 +70,7 @@ public class TestThreatRatingBundle extends EAMTestCase
 	public void testJson() throws Exception
 	{
 		ModelNodeId threatId = new ModelNodeId(5);
-		BaseId targetId = new BaseId(9);
+		ModelNodeId targetId = new ModelNodeId(9);
 		BaseId defaultValueId = new BaseId(29);
 		BaseId criterion1 = new BaseId(32);
 		BaseId rating1 = new BaseId(1);

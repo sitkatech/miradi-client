@@ -83,7 +83,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	{
 		ThreatMatrixTableModel model = getView().getModel();
 		ModelNodeId threatId = model.findThreatByName(selectedThreatName);
-		BaseId targetId = model.findTargetByName(selectedTargetName);
+		ModelNodeId targetId = model.findTargetByName(selectedTargetName);
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
 		return bundle;
 	}

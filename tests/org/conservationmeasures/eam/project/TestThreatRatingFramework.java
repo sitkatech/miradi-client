@@ -65,7 +65,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 			BaseId createdId = realProject.createObject(ObjectType.THREAT_RATING_CRITERION);
 			
 			ModelNodeId threatId = new ModelNodeId(283);
-			BaseId targetId = new BaseId(983);
+			ModelNodeId targetId = new ModelNodeId(983);
 			ThreatRatingBundle bundle = realProject.getThreatRatingFramework().getBundle(threatId, targetId);
 			bundle.setValueId(createdId, new BaseId(838));
 			realProject.getThreatRatingFramework().saveBundle(bundle);
@@ -89,7 +89,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testGetBundleValue()
 	{
 		BaseId noneId = framework.findValueOptionByNumericValue(0).getId();
-		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new BaseId(2), noneId);
+		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new ModelNodeId(2), noneId);
 		ThreatRatingValueOption result = framework.getBundleValue(bundle);
 		assertEquals("didn't default correctly? ", 0, result.getNumericValue());
 	}
@@ -138,7 +138,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private ThreatRatingBundle createThreatTargetAndBundle() throws Exception
 	{
 		ModelNodeId threatId = createThreat();
-		BaseId targetId = createTarget();
+		ModelNodeId targetId = createTarget();
 		populateBundle(threatId, targetId, framework.getValueOptions()[0]);
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
 		assertFalse("normal case failed?", framework.isBundleForLinkedThreatAndTarget(bundle));
@@ -148,7 +148,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testBundles() throws Exception
 	{
 		ModelNodeId threatId = new ModelNodeId(77);
-		BaseId targetId = new BaseId(292);
+		ModelNodeId targetId = new ModelNodeId(292);
 		BaseId criterionId = new BaseId(22);
 		BaseId valueId = new BaseId(639);
 		
@@ -168,8 +168,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		
 		ModelNodeId threatId1 = createThreat();
 		ModelNodeId threatId2 = createThreat();
-		BaseId targetId1 = createTarget();
-		BaseId targetId2 = createTarget();
+		ModelNodeId targetId1 = createTarget();
+		ModelNodeId targetId2 = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
 		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
@@ -193,7 +193,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
 	}
 	
-	void createLinkageAndBundle(ModelNodeId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
+	void createLinkageAndBundle(ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
 	{
 		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
 		populateBundle(threatId, targetId, value);
@@ -234,7 +234,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		return threatId;
 	}
 	
-	void populateBundle(ModelNodeId threatId, BaseId targetId, ThreatRatingValueOption value) throws Exception
+	void populateBundle(ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
 		ThreatRatingCriterion criteria[] = framework.getCriteria();
