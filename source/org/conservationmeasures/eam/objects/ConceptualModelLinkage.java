@@ -9,11 +9,12 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.json.JSONObject;
 
 public class ConceptualModelLinkage extends EAMBaseObject
 {
-	public ConceptualModelLinkage(BaseId id, BaseId fromNodeId, BaseId toNodeId)
+	public ConceptualModelLinkage(BaseId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
 	{
 		super(id);
 		setFromId(fromNodeId);
@@ -24,17 +25,17 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
 	{
 		super(jsonObject);
-		fromId = new BaseId(jsonObject.getInt(TAG_FROM_ID));
-		toId = new BaseId(jsonObject.getInt(TAG_TO_ID));
+		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));
+		toId = new ModelNodeId(jsonObject.getInt(TAG_TO_ID));
 		stressLabel = jsonObject.optString(TAG_STRESS_LABEL, "");
 	}
 	
-	public void setFromId(BaseId fromNodeId)
+	public void setFromId(ModelNodeId fromNodeId)
 	{
 		fromId = fromNodeId;
 	}
 	
-	public void setToId(BaseId toNodeId)
+	public void setToId(ModelNodeId toNodeId)
 	{
 		toId = toNodeId;
 	}
@@ -44,12 +45,12 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		return ObjectType.MODEL_LINKAGE;
 	}
 	
-	public BaseId getFromNodeId()
+	public ModelNodeId getFromNodeId()
 	{
 		return fromId;
 	}
 	
-	public BaseId getToNodeId()
+	public ModelNodeId getToNodeId()
 	{
 		return toId;
 	}
@@ -75,7 +76,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 	
-	public BaseId getNodeId(int direction)
+	public ModelNodeId getNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getFromNodeId();
@@ -84,7 +85,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		throw new RuntimeException("Linkage: Unknown direction " + direction);
 	}
 	
-	public BaseId getOppositeNodeId(int direction)
+	public ModelNodeId getOppositeNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getNodeId(TO);
@@ -109,7 +110,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	
-	private BaseId fromId;
-	private BaseId toId;
+	private ModelNodeId fromId;
+	private ModelNodeId toId;
 	private String stressLabel;
 }

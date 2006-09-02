@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -34,8 +35,8 @@ public class TestDelete extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		insertFactor.execute(project);
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		BaseId interventionId = intervention.getDiagramNodeId();
-		BaseId factorId = factor.getDiagramNodeId();
+		ModelNodeId interventionId = intervention.getWrappedId();
+		ModelNodeId factorId = factor.getWrappedId();
 		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
 		link.execute(project);
 		BaseId linkageId = link.getLinkageId();

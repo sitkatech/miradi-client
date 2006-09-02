@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.Project;
 
 public class SampleDiagramBuilder
@@ -29,8 +30,8 @@ public class SampleDiagramBuilder
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
-			BaseId fromId = new BaseId(linkagePairs[i*2]);
-			BaseId toId = new BaseId(linkagePairs[i*2+1]);
+			ModelNodeId fromId = new ModelNodeId(linkagePairs[i*2]);
+			ModelNodeId toId = new ModelNodeId(linkagePairs[i*2+1]);
 			project.insertLinkageAtId(BaseId.INVALID, fromId, toId);
 		}
 	}

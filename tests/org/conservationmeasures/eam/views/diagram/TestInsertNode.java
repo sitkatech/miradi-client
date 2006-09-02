@@ -12,7 +12,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -58,7 +58,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
-		void launchPropertiesEditor(BaseId id) throws Exception, CommandFailedException
+		void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
 		{
 			wasPropertiesEditorLaunched = true;
 		}

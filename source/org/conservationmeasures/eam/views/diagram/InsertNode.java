@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 
@@ -35,11 +36,11 @@ abstract public class InsertNode extends LocationDoer
 		try
 		{
 			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
-			BaseId id = insertNodeItself();
+			ModelNodeId id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
 			
-			launchPropertiesEditor(id);
+			launchPropertiesEditor(new DiagramNodeId(id.asInt()));
 		}
 		catch (Exception e)
 		{
@@ -47,13 +48,13 @@ abstract public class InsertNode extends LocationDoer
 		}
 	}
 	
-	void launchPropertiesEditor(BaseId id) throws Exception, CommandFailedException
+	void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
 	{
 		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
 		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
 	}
 	
-	BaseId insertNodeItself() throws Exception
+	ModelNodeId insertNodeItself() throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();
@@ -79,12 +80,12 @@ abstract public class InsertNode extends LocationDoer
 		return id;
 	}
 	
-	private void linkToPreviouslySelectedNodes(BaseId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
+	private void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
-			CommandLinkNodes cmd = new CommandLinkNodes(newlyInsertedId, nodesToLinkTo[i].getDiagramNodeId());
+			CommandLinkNodes cmd = new CommandLinkNodes(newlyInsertedId, nodesToLinkTo[i].getWrappedId());
 			getProject().executeCommand(cmd);
 		}
 		getProject().executeCommand(new CommandEndTransaction());

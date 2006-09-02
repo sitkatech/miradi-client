@@ -603,7 +603,7 @@ public class Project
 		getLinkagePool().remove(idToDelete);
 	}
 
-	public BaseId insertLinkageAtId(BaseId requestedLinkageId, BaseId linkFromId, BaseId linkToId) throws Exception
+	public BaseId insertLinkageAtId(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception
 	{
 		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);

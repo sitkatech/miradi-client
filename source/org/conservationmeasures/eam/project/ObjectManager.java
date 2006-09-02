@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
@@ -161,7 +162,8 @@ public class ObjectManager
 			case ObjectType.MODEL_LINKAGE:
 			{
 				objectId = getProject().obtainRealLinkageId(objectId);
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, BaseId.INVALID, BaseId.INVALID);
+				ModelNodeId invalid = new ModelNodeId(BaseId.INVALID.asInt());
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, invalid, invalid);
 				getLinkagePool().put(cmLinkage);
 				getDatabase().writeObject(cmLinkage);
 				createdId = cmLinkage.getId();

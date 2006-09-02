@@ -104,7 +104,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new BaseId(2), new BaseId(3));
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeLinkage(original);
 		ConceptualModelLinkage got = storage.readLinkage(original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
@@ -122,7 +122,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new BaseId(2), new BaseId(3));
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeLinkage(original);
 		storage.deleteLinkage(original.getId());
 		assertEquals("didn't delete?", 0, storage.readLinkageManifest().size());

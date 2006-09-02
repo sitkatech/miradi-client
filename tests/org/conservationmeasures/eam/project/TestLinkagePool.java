@@ -32,7 +32,7 @@ public class TestLinkagePool extends TestCaseEnhanced
 		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
 		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
 		
-		ConceptualModelLinkage linkage = new ConceptualModelLinkage(idAssigner.takeNextId(), node1.getId(), node2.getId());
+		ConceptualModelLinkage linkage = new ConceptualModelLinkage(idAssigner.takeNextId(), node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);
 		
 		assertTrue("Didn't find linkage 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));

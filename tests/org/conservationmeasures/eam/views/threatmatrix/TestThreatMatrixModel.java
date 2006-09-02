@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -80,11 +81,11 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 	
 	public void testIsActiveCell() throws Exception
 	{
-		BaseId threat1 = createThreat("threat one");
-		BaseId threat2 = createThreat("threat two");
+		ModelNodeId threat1 = createThreat("threat one");
+		ModelNodeId threat2 = createThreat("threat two");
 		createThreat("threat three");
-		BaseId target1 = createTarget("target one");
-		BaseId target2 = createTarget("target two");
+		ModelNodeId target1 = createTarget("target one");
+		ModelNodeId target2 = createTarget("target two");
 		createTarget("target three");
 		
 		project.insertLinkageAtId(BaseId.INVALID, threat1, target1);
@@ -109,19 +110,19 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		assertFalse(model.isActiveCell(row3, col3));
 	}
 	
-	private BaseId createThreat(String name) throws Exception
+	private ModelNodeId createThreat(String name) throws Exception
 	{
 		return createNode(new NodeTypeDirectThreat(), name);
 	}
 
-	private BaseId createTarget(String name) throws Exception
+	private ModelNodeId createTarget(String name) throws Exception
 	{
 		return createNode(new NodeTypeTarget(), name);
 	}
 
-	private BaseId createNode(NodeType type, String name) throws Exception
+	private ModelNodeId createNode(NodeType type, String name) throws Exception
 	{
-		BaseId id = project.insertNodeAtId(type, BaseId.INVALID);
+		ModelNodeId id = project.insertNodeAtId(type, BaseId.INVALID);
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		node.setLabel(name);

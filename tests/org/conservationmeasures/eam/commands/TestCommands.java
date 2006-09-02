@@ -744,8 +744,8 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		BaseId from = insertIndirectFactor();
-		BaseId to = insertTarget();
+		ModelNodeId from = insertIndirectFactor();
+		ModelNodeId to = insertTarget();
 		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
 		project.executeCommand(cmd);
 		BaseId linkageId = cmd.getLinkageId();
@@ -773,8 +773,8 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		BaseId from = insertIntervention();
-		BaseId to = insertIndirectFactor();
+		ModelNodeId from = insertIntervention();
+		ModelNodeId to = insertIndirectFactor();
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
@@ -969,7 +969,7 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 	
-	private BaseId insertIndirectFactor() throws Exception
+	private ModelNodeId insertIndirectFactor() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_INDIRECT_FACTOR;
 		return insertNode(type);
@@ -981,7 +981,7 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 
-	private BaseId insertIntervention() throws Exception
+	private ModelNodeId insertIntervention() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_INTERVENTION;
 		return insertNode(type);

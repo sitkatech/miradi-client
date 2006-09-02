@@ -11,12 +11,13 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandLinkNodes extends Command
 {
-	public CommandLinkNodes(BaseId fromId, BaseId toId)
+	public CommandLinkNodes(ModelNodeId fromId, ModelNodeId toId)
 	{
 		this.fromId = fromId;
 		this.toId = toId;
@@ -25,8 +26,8 @@ public class CommandLinkNodes extends Command
 	
 	public CommandLinkNodes(DataInputStream dataIn) throws IOException
 	{
-		fromId = new BaseId(dataIn.readInt());
-		toId = new BaseId(dataIn.readInt());
+		fromId = new ModelNodeId(dataIn.readInt());
+		toId = new ModelNodeId(dataIn.readInt());
 		linkageId = new BaseId(dataIn.readInt());
 	}
 	
@@ -79,12 +80,12 @@ public class CommandLinkNodes extends Command
 		dataOut.writeInt(getLinkageId().asInt());
 	}
 	
-	public BaseId getFromId()
+	public ModelNodeId getFromId()
 	{
 		return fromId;
 	}
 	
-	public BaseId getToId()
+	public ModelNodeId getToId()
 	{
 		return toId;
 	}
@@ -92,7 +93,7 @@ public class CommandLinkNodes extends Command
 
 	public static final String COMMAND_NAME = "LinkNodes";
 
-	BaseId fromId;
-	BaseId toId;
+	ModelNodeId fromId;
+	ModelNodeId toId;
 	BaseId linkageId;
 }

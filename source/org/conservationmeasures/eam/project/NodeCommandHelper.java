@@ -105,7 +105,7 @@ public class NodeCommandHelper
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
 			}
-			CommandLinkNodes link = new CommandLinkNodes(newFromId, newToId);
+			CommandLinkNodes link = new CommandLinkNodes(new ModelNodeId(newFromId.asInt()), new ModelNodeId(newToId.asInt()));
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}

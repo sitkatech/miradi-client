@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
@@ -21,23 +22,23 @@ public class CommandDeleteLinkage extends Command
 	public CommandDeleteLinkage(BaseId idToDelete)
 	{
 		id = idToDelete;
-		wasFrom = BaseId.INVALID;
-		wasTo = BaseId.INVALID;
+		wasFrom = new ModelNodeId(BaseId.INVALID.asInt());
+		wasTo = new ModelNodeId(BaseId.INVALID.asInt());
 	}
 	
 	public CommandDeleteLinkage(DataInputStream dataIn) throws IOException
 	{
 		id = new BaseId(dataIn.readInt());
-		wasFrom = new BaseId(dataIn.readInt());
-		wasTo = new BaseId(dataIn.readInt());
+		wasFrom = new ModelNodeId(dataIn.readInt());
+		wasTo = new ModelNodeId(dataIn.readInt());
 	}
 	
-	public BaseId getWasFromId()
+	public ModelNodeId getWasFromId()
 	{
 		return wasFrom;
 	}
 	
-	public BaseId getWasToId()
+	public ModelNodeId getWasToId()
 	{
 		return wasTo;
 	}
@@ -58,8 +59,8 @@ public class CommandDeleteLinkage extends Command
 		try
 		{
 			DiagramLinkage linkageToDelete = model.getLinkageById(id);
-			wasFrom = linkageToDelete.getFromNode().getDiagramNodeId();
-			wasTo = linkageToDelete.getToNode().getDiagramNodeId();
+			wasFrom = linkageToDelete.getFromNode().getWrappedId();
+			wasTo = linkageToDelete.getToNode().getWrappedId();
 			target.deleteLinkage(id);
 		}
 		catch (Exception e)
@@ -98,6 +99,6 @@ public class CommandDeleteLinkage extends Command
 	public static final String COMMAND_NAME = "DeleteLinkage";
 
 	BaseId id;
-	BaseId wasFrom;
-	BaseId wasTo;
+	ModelNodeId wasFrom;
+	ModelNodeId wasTo;
 }

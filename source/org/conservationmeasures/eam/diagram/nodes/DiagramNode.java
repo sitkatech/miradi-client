@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.NodeAnnotationIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
@@ -102,9 +103,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		return getWrappedType();
 	}
 	
-	public BaseId getWrappedId()
+	public ModelNodeId getWrappedId()
 	{
-		return underlyingObject.getId();
+		return underlyingObject.getModelNodeId();
 	}
 	
 	public int getWrappedType()

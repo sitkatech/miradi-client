@@ -277,8 +277,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
-		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -304,7 +304,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
+		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
@@ -328,8 +328,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
-		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -499,8 +499,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
 		
-		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node2.getDiagramNodeId());
-		createLinkage(idAssigner.takeNextId(), node1.getDiagramNodeId(), node3.getDiagramNodeId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
@@ -661,7 +661,7 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeA = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId());
+		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getWrappedId(), nodeB.getWrappedId());
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
@@ -713,7 +713,7 @@ public class TestProject extends EAMTestCase
 
 		nodeIndirectFactor.setObjectives(objectiveId);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getDiagramNodeId(), nodeDirectThreat.getDiagramNodeId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
 		
@@ -756,7 +756,7 @@ public class TestProject extends EAMTestCase
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.setIndicator(indicatorId1);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getDiagramNodeId(), nodeDirectThreat.getDiagramNodeId());
+		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
@@ -870,7 +870,7 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
-	private DiagramLinkage createLinkage(BaseId id, BaseId fromId, BaseId toId) throws Exception
+	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
 		BaseId insertedId = project.insertLinkageAtId(id, fromId, toId);
 		return project.getDiagramModel().getLinkageById(insertedId);
