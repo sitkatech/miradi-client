@@ -11,9 +11,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -147,41 +145,6 @@ public class ProjectServer
 		return (getVersionFile(projectDirectory).exists());
 	}
 	
-	
-	
-	public ConceptualModelNode readNode(BaseId id) throws IOException, ParseException
-	{
-		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
-	}
-	
-	public void deleteNode(ModelNodeId id) throws IOException, ParseException
-	{
-		removeFromNodeManifest(id);
-		getNodeFile(id).delete();
-		
-	}
-	
-	private void removeFromNodeManifest(BaseId idToRemove) throws IOException, ParseException
-	{
-		NodeManifest manifest = readNodeManifest();
-		manifest.remove(idToRemove);
-		writeNodeManifest(manifest);
-	}
-	
-	public NodeManifest readNodeManifest() throws IOException, ParseException
-	{
-		File manifestFile = getNodeManifestFile();
-		if(!manifestFile.exists())
-			return new NodeManifest();
-		JSONObject rawManifest = JSONFile.read(manifestFile);
-		return new NodeManifest(rawManifest);
-	}
-
-	void writeNodeManifest(NodeManifest manifest) throws IOException
-	{
-		manifest.write(getNodeManifestFile());
-	}
-
 	
 	
 	
@@ -332,7 +295,7 @@ public class ProjectServer
 		writeObjectManifest(type, manifest);
 	}
 	
-	private void writeObjectManifest(int type, ObjectManifest manifest) throws IOException
+	protected void writeObjectManifest(int type, ObjectManifest manifest) throws IOException
 	{
 		manifest.write(getObjectManifestFile(type));
 	}
@@ -446,7 +409,6 @@ public class ProjectServer
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String LINKAGE_MANIFEST = "LinkageManifest";
-	static public String NODE_MANIFEST = "NodeManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
 	static public int DATA_VERSION = 6;
 

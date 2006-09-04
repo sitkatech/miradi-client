@@ -10,7 +10,6 @@ import java.text.ParseException;
 import java.util.HashMap;
 
 import org.conservationmeasures.eam.database.LinkageManifest;
-import org.conservationmeasures.eam.database.NodeManifest;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -384,13 +383,13 @@ public class ObjectManager
 		
 	}
 	
-	private void loadNodePool() throws IOException, ParseException
+	private void loadNodePool() throws Exception
 	{
-		NodeManifest nodes = getDatabase().readNodeManifest();
+		ObjectManifest nodes = getDatabase().readObjectManifest(ObjectType.MODEL_NODE);
 		BaseId[] nodeIds = nodes.getAllKeys();
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
-			ConceptualModelNode node = getDatabase().readNode(nodeIds[i]);
+			ConceptualModelNode node = (ConceptualModelNode)getDatabase().readObject(ObjectType.MODEL_NODE, nodeIds[i]);
 			getNodePool().put(node);
 		}
 	}

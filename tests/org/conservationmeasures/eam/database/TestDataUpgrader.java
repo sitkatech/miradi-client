@@ -53,7 +53,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		File nodesDirectory = new File(tempDirectory, "json/nodes");
 		nodesDirectory.mkdirs();
-		NodeManifest manifest = new NodeManifest();
+		ObjectManifest manifest = new ObjectManifest();
 
 		Version2ConceptualModelTarget target = new Version2ConceptualModelTarget("Target");
 		File targetFile = writeNode(tempDirectory, manifest, target);
@@ -77,7 +77,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
 	}
 
-	private File writeNode(File topDirectory, NodeManifest manifest, ConceptualModelNode node) throws IOException
+	private File writeNode(File topDirectory, ObjectManifest manifest, ConceptualModelNode node) throws IOException
 	{
 		manifest.put(node.getId());
 		String nodeFilename = Integer.toString(node.getId().asInt());

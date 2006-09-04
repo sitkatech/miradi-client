@@ -580,7 +580,7 @@ public class Project
 		NodeType nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 
-		database.deleteNode(nodeId);
+		database.deleteObject(ObjectType.MODEL_NODE, nodeId);
 		getNodePool().remove(nodeId);
 		
 		return nodeType; 

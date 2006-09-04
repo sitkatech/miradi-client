@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
@@ -76,25 +77,30 @@ public class TestProjectServer extends EAMTestCase
 
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		storage.writeObject(intervention);
-		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)storage.readNode(intervention.getId());
+		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)readNode(intervention.getId());
 		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId(), new NodeTypeIndirectFactor());
 		
 		storage.writeObject(factor);
-		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)storage.readNode(factor.getId());
+		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
 		ConceptualModelTarget target = new ConceptualModelTarget(idAssigner.takeNextId());
 		storage.writeObject(target);
-		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());
+		ConceptualModelTarget gotTarget = (ConceptualModelTarget)readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		
 		
-		NodeManifest nodeIds = storage.readNodeManifest();
+		ObjectManifest nodeIds = storage.readObjectManifest(ObjectType.MODEL_NODE);
 		assertEquals("not three nodes?", 3, nodeIds.size());
 		assertTrue("missing a node?", nodeIds.has(target.getId()));
+	}
+	
+	private ConceptualModelNode readNode(BaseId id) throws Exception
+	{
+		return (ConceptualModelNode)storage.readObject(ObjectType.MODEL_NODE, id);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception

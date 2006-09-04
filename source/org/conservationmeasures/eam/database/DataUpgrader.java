@@ -140,7 +140,7 @@ public class DataUpgrader extends ProjectServer
 		if(!manifestFile.exists())
 			return;
 		
-		NodeManifest manifest = new NodeManifest(JSONFile.read(manifestFile));
+		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFile));
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
@@ -211,7 +211,7 @@ public class DataUpgrader extends ProjectServer
 			return;
 		
 		IdList droppedIds = new IdList();
-		NodeManifest manifest = readNodeManifest();
+		ObjectManifest manifest = readObjectManifest(ObjectType.MODEL_NODE);
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
@@ -226,7 +226,7 @@ public class DataUpgrader extends ProjectServer
 				droppedIds.add(id);
 			}
 		}
-		writeNodeManifest(manifest);
+		writeObjectManifest(ObjectType.MODEL_NODE, manifest);
 		
 		JSONObject diagram = JSONFile.read(getDiagramFile());
 		JSONObject nodes = diagram.getJSONObject("Nodes");
