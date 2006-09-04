@@ -639,17 +639,6 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setNodeComment(ModelNodeId nodeId, String desiredComment, String expectedComment) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-		node.setComment(desiredComment);
-		Logging.logVerbose("Updating comment: "+desiredComment);
-		model.updateCell(node);
-		
-		writeNode(nodeId);
-	}
-
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);

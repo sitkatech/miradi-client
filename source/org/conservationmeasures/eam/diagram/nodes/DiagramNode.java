@@ -196,11 +196,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return getLabel();
 	}
 	
-	public void setComment(String newComment)
-	{
-		underlyingObject.setComment(newComment);
-	}
-	
 	public String getComment()
 	{
 		return underlyingObject.getComment();

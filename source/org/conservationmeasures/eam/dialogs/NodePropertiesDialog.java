@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -507,7 +506,10 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 				return;
 			try
 			{
-				getProject().executeCommand(new CommandSetNodeComment(getNodeId(), newComment));
+				int type = ObjectType.MODEL_NODE;
+				String tag = ConceptualModelNode.TAG_COMMENT;
+				CommandSetObjectData cmd = new CommandSetObjectData(type, getNodeId(), tag, newComment);
+				getProject().executeCommand(cmd);
 			}
 			catch (CommandFailedException e)
 			{

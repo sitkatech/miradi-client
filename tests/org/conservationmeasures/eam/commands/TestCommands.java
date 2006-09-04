@@ -428,36 +428,6 @@ public class TestCommands extends EAMTestCase
 
 	}
 
-	public void testCommandSetNodeComment() throws Exception
-	{
-		ModelNodeId id = insertTarget();
-		
-		String originalComment = "original comment";
-		CommandSetNodeComment starter = new CommandSetNodeComment(id, originalComment);
-		project.executeCommand(starter);
-		assertEquals("wasn't blank to start?", "", starter.getPreviousComment());
-		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		
-		String newComment = "much better comment!";
-		CommandSetNodeComment cmd = new CommandSetNodeComment(id, newComment);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old name?", originalComment, cmd.getPreviousComment());
-
-		CommandSetNodeComment loaded = (CommandSetNodeComment)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new comment?", newComment, loaded.getNewComment());
-		assertEquals("didn't restore previous comment?", originalComment, loaded.getPreviousComment());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalComment, node.getComment());
-		verifyUndoTwiceThrows(cmd);
-		
-		starter.undo(project);
-		assertEquals("didn't undo again?", "", node.getComment());
-		verifyUndoTwiceThrows(starter);
-
-	}
-
 	public void testCommandSetNodePriority() throws Exception
 	{
 		BaseId targetId = insertTarget();
