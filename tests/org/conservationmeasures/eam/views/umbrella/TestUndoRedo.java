@@ -5,7 +5,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -67,26 +66,6 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getNodeCount());
 	}
 
-	public void testUndoRedoPriority() throws Exception
-	{
-		BaseId insertedId = insertFactor(project);
-
-		// Deprecated command--just make sure it doesn't crash
-		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetNodePriority(insertedId, null));
-		project.executeCommand(new CommandEndTransaction());
-
-		Undo undo = new Undo();
-		undo.setProject(project);
-		undo.doIt();
-
-		Redo redo = new Redo();
-		redo.setProject(project);
-		redo.doIt();
-
-		undo.doIt();
-	}
-	
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		BaseId insertedId = insertFactor(project);

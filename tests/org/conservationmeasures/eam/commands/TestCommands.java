@@ -396,31 +396,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 	
-	public void testCommandSetNodePriority() throws Exception
-	{
-		BaseId targetId = insertTarget();
-		DiagramNode node = project.getDiagramModel().getNodeById(targetId);
-		assertNull("New target should have a null priority level", node.getThreatRating());
-		
-		BaseId interventionId = insertIntervention();
-		node = project.getDiagramModel().getNodeById(interventionId);
-		assertNull("New intervention should have a null priority level", node.getThreatRating());
-		
-		BaseId indirectId = insertIndirectFactor();
-		node = project.getDiagramModel().getNodeById(indirectId);
-		assertNull("New indirect factor should have a priority level as None", node.getThreatRating());
-
-		BaseId id = insertDirectThreat();
-		node = project.getDiagramModel().getNodeById(id);
-		assertNull("New node should have priority level as None", node.getThreatRating());
-
-		CommandSetNodePriority cmd = new CommandSetNodePriority(id, null);
-
-		// Deprecated command--just make sure it doesn't crash
-		project.executeCommand(cmd);
-		cmd.undo(project);
-	}
-
 	public void testCommandNodeResized() throws Exception
 	{
 		BaseId id = insertTarget();
@@ -733,12 +708,6 @@ public class TestCommands extends EAMTestCase
 	}
 	
 	private ModelNodeId insertIndirectFactor() throws Exception
-	{
-		NodeType type = DiagramNode.TYPE_FACTOR;
-		return insertNode(type);
-	}
-
-	private ModelNodeId insertDirectThreat() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_FACTOR;
 		return insertNode(type);
