@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -58,6 +57,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
@@ -292,7 +292,8 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 				return;
 			try
 			{
-				getProject().executeCommand(new CommandSetNodeName(getNodeId(), newText));
+				CommandSetObjectData cmd = NodeCommandHelper.createSetLabelCommand(getNodeId(), newText);
+				getProject().executeCommand(cmd);
 			}
 			catch (CommandFailedException e)
 			{

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandSetNodeName;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
@@ -24,6 +24,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.utils.Logging;
 
 public class NodeCommandHelper
@@ -75,7 +77,7 @@ public class NodeCommandHelper
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
-			CommandSetNodeName newNodeLabel = new CommandSetNodeName(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			CommandSetObjectData newNodeLabel = createSetLabelCommand(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		}
@@ -109,6 +111,14 @@ public class NodeCommandHelper
 			executeCommand(link);
 			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
 		}
+	}
+	
+	public static CommandSetObjectData createSetLabelCommand(ModelNodeId id, String newLabel)
+	{
+		int type = ObjectType.MODEL_NODE;
+		String tag = ConceptualModelNode.TAG_LABEL;
+		CommandSetObjectData cmd = new CommandSetObjectData(type, id, tag, newLabel);
+		return cmd;
 	}
 
 	private Project getProject()

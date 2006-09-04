@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandSetNodeName;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -62,7 +62,7 @@ abstract public class InsertNode extends LocationDoer
 		NodeType nodeType = getTypeToInsert();
 		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType);
 		
-		Command setNameCommand = new CommandSetNodeName(id, getInitialText());
+		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
 		
 		Point createAt = getLocation();

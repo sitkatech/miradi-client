@@ -49,7 +49,6 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.interview.InterviewModel;
@@ -628,17 +627,6 @@ public class Project
 		return linkage.getDiagramLinkageId();
 	}
 	
-	public void setNodeName(ModelNodeId nodeId, String desiredName, String expectedName) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-		node.setLabel(desiredName);
-		Logging.logVerbose("Updating name: "+desiredName);
-		model.updateCell(node);
-		
-		writeNode(nodeId);
-	}
-
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);

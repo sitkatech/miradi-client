@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.io.IOException;
-import java.text.ParseException;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -28,11 +27,10 @@ public class TestInsertNode extends TestCaseEnhanced
 
 	public void testDoIt() throws Exception
 	{
-		OurProject project = new OurProject(getName());
+		ProjectForTesting project = new ProjectForTesting(getName());
 		OurMainWindow mainWindow = new OurMainWindow(project);
 		try
 		{
-			assertEquals("already written?", null, project.lastWroteName);
 			Point at = project.getSnapped(new Point(25,167));
 			InsertInterventionWithFakePropertiesEditing inserter = new InsertInterventionWithFakePropertiesEditing();
 			inserter.setMainWindow(mainWindow);
@@ -44,8 +42,6 @@ public class TestInsertNode extends TestCaseEnhanced
 			DiagramNode node = project.getDiagramModel().getNodeById(id);
 			assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
-			
-			assertEquals("didn't write after set name?", node.getLabel(), project.lastWroteName);
 			
 			assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
 		}
@@ -77,19 +73,4 @@ public class TestInsertNode extends TestCaseEnhanced
 	}
 
 
-	static class OurProject extends ProjectForTesting
-	{
-		public OurProject(String testName) throws Exception
-		{
-			super(testName);
-		}
-
-		protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
-		{
-			super.writeNode(nodeId);
-			lastWroteName = getNodePool().find(nodeId).getLabel();
-		}
-		
-		public String lastWroteName;
-	}
 }

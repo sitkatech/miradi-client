@@ -396,38 +396,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 	
-	public void testCommandSetNodeName() throws Exception
-	{
-		ModelNodeId id = insertTarget();
-		
-		String originalName = "original text";
-		CommandSetNodeName starter = new CommandSetNodeName(id, originalName);
-		project.executeCommand(starter);
-		assertEquals("wasn't Unknown to start?", EAMBaseObject.DEFAULT_LABEL, starter.getPreviousName());
-		DiagramNode node = project.getDiagramModel().getNodeById(starter.getId());
-		assertEquals("didn't set original text?", originalName, node.getLabel());
-		
-		String newName = "much better name!";
-		CommandSetNodeName cmd = new CommandSetNodeName(id, newName);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old name?", originalName, cmd.getPreviousName());
-		assertEquals("didn't set new name?", newName, node.getLabel());
-
-		CommandSetNodeName loaded = (CommandSetNodeName)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new name?", newName, loaded.getNewName());
-		assertEquals("didn't restore previous name?", originalName, loaded.getPreviousName());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalName, node.getLabel());
-		verifyUndoTwiceThrows(cmd);
-		
-		starter.undo(project);
-		assertEquals("didn't undo again?", EAMBaseObject.DEFAULT_LABEL, node.getLabel());
-		verifyUndoTwiceThrows(starter);
-
-	}
-
 	public void testCommandSetNodePriority() throws Exception
 	{
 		BaseId targetId = insertTarget();
