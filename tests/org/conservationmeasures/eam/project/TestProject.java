@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.DirectThreatSet;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -595,16 +596,10 @@ public class TestProject extends EAMTestCase
 		ModelNodeId factorId = factorCommand.getId();
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
-		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
-		
-		Dimension oldDimension = factor.getSize();
-		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
-		
-		ObjectiveIds objectives = new ObjectiveIds();
-		objectives.addId(new BaseId(99));
-		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
+		int type = factor.getUnderlyingObject().getType();
+		String tag = ConceptualModelNode.TAG_LABEL;
+		CommandSetObjectData setData = new CommandSetObjectData(type, factor.getWrappedId(), tag, "woo");
+		project.executeCommand(setData);
 		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		project.undo();
@@ -612,6 +607,14 @@ public class TestProject extends EAMTestCase
 		
 		project.redo();
 		assertEquals(5 + existingCalls, database.callsToWriteObject);
+
+		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		
+		Dimension oldDimension = factor.getSize();
+		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception
@@ -675,8 +678,8 @@ public class TestProject extends EAMTestCase
 		ObjectiveIds objectiveId = new ObjectiveIds();
 		objectiveId.add(objectiveId1);
 		
-		nodeA.setObjectives(objectiveId);
-		nodeB.setObjectives(objectiveId);
+		nodeA.getUnderlyingObject().setObjectives(objectiveId);
+		nodeB.getUnderlyingObject().setObjectives(objectiveId);
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisObjective(objectiveId1);
 				
@@ -700,7 +703,7 @@ public class TestProject extends EAMTestCase
 		ObjectiveIds objectiveId = new ObjectiveIds();
 		objectiveId.add(objectiveId1);
 
-		nodeIndirectFactor.setObjectives(objectiveId);
+		nodeIndirectFactor.getUnderlyingObject().setObjectives(objectiveId);
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		

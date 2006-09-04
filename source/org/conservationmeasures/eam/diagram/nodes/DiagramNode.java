@@ -216,11 +216,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getObjectives();
 	}
 
-	public void setObjectives(ObjectiveIds objectivesToUse)
-	{
-		underlyingObject.setObjectives(objectivesToUse);
-	}
-	
 	public int getAnnotationRows()
 	{
 		int numberOfAnnotations = 0;

@@ -30,7 +30,6 @@ import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -651,18 +650,6 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setObjectives(ModelNodeId nodeId, ObjectiveIds desiredObjectives) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-
-		node.setObjectives(desiredObjectives);
-		Logging.logVerbose("SetObjectives:" + desiredObjectives);
-		model.updateCell(node);
-	
-		writeNode(nodeId);
-	}
-	
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);

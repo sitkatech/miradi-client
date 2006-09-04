@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -482,47 +481,6 @@ public class TestCommands extends EAMTestCase
 		// Deprecated command--just make sure it doesn't crash
 		project.executeCommand(cmd);
 		cmd.undo(project);
-	}
-
-	public void testCommandSetNodeObjectives() throws Exception
-	{
-		ModelNodeId id = insertTarget();
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		ObjectiveIds testObjectives = node.getObjectives();
-		assertEquals("Targets can't have Objectives", 0, testObjectives.size());
-		
-		id = insertDirectThreat();
-		node = project.getDiagramModel().getNodeById(id);
-		ObjectiveIds originalObjectives = node.getObjectives();
-		assertFalse("New target should not have an objective", node.getObjectives().hasAnnotation());
-		assertEquals("size not zero?", 0, originalObjectives.size());
-
-		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE); 
-		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE); 
-
-		ObjectiveIds objectiveIds = new ObjectiveIds();
-		objectiveIds.addId(objectiveId1);
-		objectiveIds.addId(objectiveId2);
-		
-		CommandSetNodeObjectives cmd = new CommandSetNodeObjectives(id, objectiveIds);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old objective?", originalObjectives, cmd.getPreviousObjectives());
-		assertEquals( 2, node.getObjectives().size());
-		assertEquals( objectiveId1, node.getObjectives().getId(0));
-		assertEquals( objectiveId2, node.getObjectives().getId(1));
-
-		CommandSetNodeObjectives loaded = (CommandSetNodeObjectives)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals( 2, loaded.getCurrentObjectives().size());
-		assertEquals("didn't restore new objective?", 2, loaded.getCurrentObjectives().size());
-		assertEquals( objectiveId1, loaded.getCurrentObjectives().getId(0));
-		assertEquals( objectiveId2, loaded.getCurrentObjectives().getId(1));
-		assertEquals("didn't restore previous objective?", originalObjectives, loaded.getPreviousObjectives());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalObjectives, project.getDiagramModel().getNodeById(id).getObjectives());
-		
-		verifyUndoTwiceThrows(cmd);
 	}
 
 	public void testCommandNodeResized() throws Exception
