@@ -154,11 +154,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getIndicatorId();
 	}
 	
-	public void setIndicator(BaseId indicatorToUse)
-	{
-		underlyingObject.setIndicatorId(indicatorToUse);
-	}
-
 	public boolean canHaveObjectives()
 	{
 		return underlyingObject.canHaveObjectives();

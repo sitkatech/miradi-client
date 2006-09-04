@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
@@ -57,6 +56,7 @@ import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -461,7 +461,11 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 			
 			try
 			{
-				getProject().executeCommand(new CommandSetIndicator(getNodeId(), getIndicator().getId()));
+				int type = ObjectType.MODEL_NODE;
+				String tag = ConceptualModelNode.TAG_INDICATOR_ID;
+				String indicator = getIndicator().getId().toString();
+				CommandSetObjectData cmd = new CommandSetObjectData(type, getNodeId(), tag, indicator);
+				getProject().executeCommand(cmd);
 			}
 			catch (CommandFailedException e)
 			{

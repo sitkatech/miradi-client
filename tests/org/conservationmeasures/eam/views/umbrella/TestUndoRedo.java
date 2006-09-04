@@ -5,7 +5,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
@@ -91,31 +90,6 @@ public class TestUndoRedo extends EAMTestCase
 		redo.doIt();
 
 		undo.doIt();
-	}
-	
-	public void testUndoRedoIndication() throws Exception
-	{
-		BaseId target1Indicator = new BaseId(2);
-		ModelNodeId insertedId = insertFactor(project);
-
-		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetIndicator(insertedId, target1Indicator));
-		project.executeCommand(new CommandEndTransaction());
-
-		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
-
-		Undo undo = new Undo();
-		undo.setProject(project);
-		undo.doIt();
-		assertEquals(BaseId.INVALID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
-
-		Redo redo = new Redo();
-		redo.setProject(project);
-		redo.doIt();
-		assertEquals(target1Indicator, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
-
-		undo.doIt();
-		assertEquals("Should have no indicator again", BaseId.INVALID, project.getDiagramModel().getNodeById(insertedId).getIndicatorId());
 	}
 	
 	public void testUndoRedoObjective() throws Exception

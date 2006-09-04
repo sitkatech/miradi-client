@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -87,7 +86,10 @@ public class DeleteIndicator extends ViewDoer
 			for(int i = 0; i < removeFromNodes.length; ++i)
 			{
 				ConceptualModelNode node = nodes[i];
-				removeFromNodes[i] = new CommandSetIndicator(node.getModelNodeId(), BaseId.INVALID);
+				int type = node.getType();
+				String tag = ConceptualModelNode.TAG_INDICATOR_ID;
+				String indicator = BaseId.INVALID.toString();
+				removeFromNodes[i] = new CommandSetObjectData(type, node.getId(), tag, indicator);
 			}
 		}
 		catch (Exception e)

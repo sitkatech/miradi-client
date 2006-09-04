@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
@@ -601,28 +600,25 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
-		project.executeCommand(new CommandSetIndicator(factorId, new BaseId(7)));
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
-		
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(99));
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
-		assertEquals(4 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(4 + existingCalls, database.callsToWriteObject);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		GoalIds goals = new GoalIds();
 		goals.addId(new BaseId(55));
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		
 		project.undo();
-		assertEquals(6 + existingCalls, database.callsToWriteObject);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 		
 		project.redo();
-		assertEquals(7 + existingCalls, database.callsToWriteObject);
+		assertEquals(6 + existingCalls, database.callsToWriteObject);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception
@@ -734,8 +730,8 @@ public class TestProject extends EAMTestCase
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		BaseId indicatorId2 = project.createObject(ObjectType.INDICATOR);
 		
-		nodeA.setIndicator(indicatorId1);
-		nodeB.setIndicator(indicatorId1);
+		nodeA.getUnderlyingObject().setIndicatorId(indicatorId1);
+		nodeB.getUnderlyingObject().setIndicatorId(indicatorId1);
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
 				
@@ -754,7 +750,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
 		
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
-		nodeIndirectFactor.setIndicator(indicatorId1);
+		nodeIndirectFactor.getUnderlyingObject().setIndicatorId(indicatorId1);
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		

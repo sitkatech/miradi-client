@@ -47,8 +47,6 @@ public abstract class Command
 			return new CommandSetData(dataIn);
 		if(commandName.equals(CommandSetNodePriority.COMMAND_NAME))
 			return new CommandSetNodePriority(dataIn);
-		if(commandName.equals(CommandSetIndicator.COMMAND_NAME))
-			return new CommandSetIndicator(dataIn);
 		if(commandName.equals(CommandSetNodeObjectives.COMMAND_NAME))
 			return new CommandSetNodeObjectives(dataIn);
 		if(commandName.equals(CommandSetTargetGoal.COMMAND_NAME))

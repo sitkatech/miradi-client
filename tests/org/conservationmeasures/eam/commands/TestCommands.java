@@ -486,30 +486,6 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 	}
 
-	public void testCommandSetIndicator() throws Exception
-	{
-		ModelNodeId id = insertTarget();
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertEquals("New target should not have an indicator", BaseId.INVALID, node.getIndicatorId());
-		BaseId originalIndicator = node.getIndicatorId();
-		
-		BaseId indicator1 = new BaseId(1);
-		CommandSetIndicator cmd = new CommandSetIndicator(id, indicator1);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old indicator?", originalIndicator, cmd.getPreviousIndicator());
-		assertEquals( indicator1, node.getIndicatorId());
-
-		CommandSetIndicator loaded = (CommandSetIndicator)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore new indicator?", indicator1, loaded.getCurrentIndicator());
-		assertEquals("didn't restore previous indicator?", originalIndicator, loaded.getPreviousIndicator());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalIndicator, project.getDiagramModel().getNodeById(id).getIndicatorId());
-		
-		verifyUndoTwiceThrows(cmd);
-	}
-
 	public void testCommandSetNodeObjectives() throws Exception
 	{
 		ModelNodeId id = insertTarget();

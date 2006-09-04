@@ -262,6 +262,15 @@ public class Project
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
+		if(objectType == ObjectType.MODEL_NODE)
+		{
+			DiagramModel model = getDiagramModel();
+			if(model.hasNode(objectId))
+			{
+				DiagramNode diagramNode = getDiagramModel().getNodeById(objectId);
+				getDiagramModel().updateCell(diagramNode);
+			}
+		}
 	}
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
@@ -652,18 +661,6 @@ public class Project
 		Logging.logVerbose("SetFactorType:" + desiredType);
 		model.updateCell(node);
 
-		writeNode(nodeId);
-	}
-	
-	public void setIndicator(ModelNodeId nodeId, BaseId desiredIndicatorId) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-		
-		node.setIndicator(desiredIndicatorId);
-		Logging.logVerbose("SetIndicator:" + desiredIndicatorId);
-		model.updateCell(node);
-		
 		writeNode(nodeId);
 	}
 	
