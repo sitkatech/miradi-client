@@ -486,31 +486,6 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 	}
 
-	public void testCommandFactorSetType() throws Exception
-	{
-		ModelNodeId id = insertDirectThreat();
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		
-		NodeType originalType = DiagramNode.TYPE_DIRECT_THREAT;
-		NodeType switchedToType = DiagramNode.TYPE_INDIRECT_FACTOR;
-		
-		assertEquals("Should be a Direct Threat", originalType, node.getNodeType());
-		CommandSetFactorType cmd = new CommandSetFactorType(id, switchedToType);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old objective?", originalType, cmd.getPreviousType());
-		assertEquals("didn't set new type?", switchedToType, cmd.getCurrentType());
-
-		CommandSetFactorType loaded = (CommandSetFactorType)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("loaded didn't have switched node type?", switchedToType, loaded.getCurrentType());
-		assertEquals("didn't restore previous type?", originalType, loaded.getPreviousType());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalType, project.getDiagramModel().getNodeById(id).getNodeType());
-		
-		verifyUndoTwiceThrows(cmd);
-	}
-
 	public void testCommandSetIndicator() throws Exception
 	{
 		ModelNodeId id = insertTarget();
@@ -659,32 +634,15 @@ public class TestCommands extends EAMTestCase
 		verifyUndoInsertNode(cmd);
 	}
 
-	public void testCommandInsertIndirectFactor() throws Exception
+	public void testCommandInsertFactor() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert an indirect factor?", inserted.isIndirectFactor());
-
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-		
-		verifyUndoInsertNode(cmd);
-	}
-
-	public void testCommandInsertDirectThreat() throws Exception
-	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
-		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
-		
-		project.executeCommand(cmd);
-		BaseId insertedId = cmd.getId();
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a direct threat?", inserted.isDirectThreat());
+		assertTrue("didn't insert a factor?", inserted.isIndirectFactor());
 
 		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
 		assertNotNull(loaded);
@@ -943,13 +901,13 @@ public class TestCommands extends EAMTestCase
 	
 	private ModelNodeId insertIndirectFactor() throws Exception
 	{
-		NodeType type = DiagramNode.TYPE_INDIRECT_FACTOR;
+		NodeType type = DiagramNode.TYPE_FACTOR;
 		return insertNode(type);
 	}
 
 	private ModelNodeId insertDirectThreat() throws Exception
 	{
-		NodeType type = DiagramNode.TYPE_DIRECT_THREAT;
+		NodeType type = DiagramNode.TYPE_FACTOR;
 		return insertNode(type);
 	}
 

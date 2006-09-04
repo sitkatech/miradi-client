@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeComment;
 import org.conservationmeasures.eam.commands.CommandSetNodeName;
@@ -41,6 +40,8 @@ import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
@@ -147,7 +148,10 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 		if(node.isFactor())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
-			grid.add(createSwitchFactorTypeDropdown(node.getNodeType()));
+			String subTypeString = new NodeTypeIndirectFactor().toString();
+			if(node.isDirectThreat())
+				subTypeString = new NodeTypeDirectThreat().toString();
+			grid.add(new UiLabel(subTypeString));
 		}
 		
 		grid.add(new UiLabel());
@@ -299,38 +303,6 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 				EAM.errorDialog("That action failed due to an unknown error");
 			}
 		}
-	}
-	
-	public Component createSwitchFactorTypeDropdown(NodeType currentType)
-	{
-		dropdownFactorType = new UiComboBox();
-		dropdownFactorType.setRenderer(new FactorTypeRenderer());
-		dropdownFactorType.addItem(DiagramNode.TYPE_INDIRECT_FACTOR);
-		dropdownFactorType.addItem(DiagramNode.TYPE_DIRECT_THREAT);
-		dropdownFactorType.addActionListener(new FactorTypeChangeHandler());
-		
-		dropdownFactorType.setSelectedItem(currentType);
-		
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(dropdownFactorType, BorderLayout.LINE_START);
-		return component;
-	}
-	
-	class FactorTypeChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				getProject().executeCommand(new CommandSetFactorType(getNodeId(), getType()));
-			}
-			catch (CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-		
 	}
 	
 	public Component createObjectiveDropdown()

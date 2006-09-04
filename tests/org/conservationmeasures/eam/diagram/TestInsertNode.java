@@ -65,9 +65,9 @@ public class TestInsertNode extends EAMTestCase
 		assertEquals(DiagramNode.TYPE_TARGET, foundNode.getNodeType());
 	}
 
-	public void testInsertIndirectFactor() throws Exception
+	public void testInsertFactor() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
@@ -79,24 +79,7 @@ public class TestInsertNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
-		assertEquals(DiagramNode.TYPE_INDIRECT_FACTOR, foundNode.getNodeType());
-	}
-
-	public void testInsertDirectThreat() throws Exception
-	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
-		insertCommand.execute(project);
-		DiagramModel model = project.getDiagramModel();
-		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
-		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
-		assertEquals("wrong x?", 0, (int)bounds.getX());
-		assertEquals("wrong y?", 0, (int)bounds.getY());
-		assertContains("wrong text?", "", insertedNode.getLabel());
-		BaseId id = insertedNode.getDiagramNodeId();
-		DiagramNode foundNode = model.getNodeById(id);
-		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not an direct Threat?", foundNode.isDirectThreat());
-		assertEquals(DiagramNode.TYPE_DIRECT_THREAT, foundNode.getNodeType());
+		assertEquals(DiagramNode.TYPE_FACTOR, foundNode.getNodeType());
 	}
 
 	public void testInsertIntervention() throws Exception

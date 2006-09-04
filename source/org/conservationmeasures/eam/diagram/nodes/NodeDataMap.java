@@ -10,8 +10,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
@@ -36,9 +35,9 @@ public class NodeDataMap extends DataMap
 			case DiagramNode.INT_TYPE_TARGET:
 				return new NodeTypeTarget();
 			case DiagramNode.INT_TYPE_INDIRECT_FACTOR:
-				return new NodeTypeIndirectFactor();
+				return new NodeTypeFactor();
 			case DiagramNode.INT_TYPE_DIRECT_THREAT:
-				return new NodeTypeDirectThreat();
+				return new NodeTypeFactor();
 			case DiagramNode.INT_TYPE_INTERVENTION:
 				return new NodeTypeIntervention();
 			case DiagramNode.INT_TYPE_CLUSTER:
@@ -58,10 +57,13 @@ public class NodeDataMap extends DataMap
 		if(type.isIntervention())
 			return DiagramNode.INT_TYPE_INTERVENTION;
 		if(type.isDirectThreat())
-			return DiagramNode.INT_TYPE_DIRECT_THREAT;
+			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
 		if(type.isCluster())
 			return DiagramNode.INT_TYPE_CLUSTER;
 		
+		if(type.isFactor())
+			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
+
 		throw new RuntimeException("Unknown node type: " + type);
 	}
 }

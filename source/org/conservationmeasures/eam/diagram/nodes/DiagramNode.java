@@ -20,8 +20,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
@@ -473,9 +472,8 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public static final NodeType TYPE_INVALID = null;
 	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
-	public static final NodeType TYPE_INDIRECT_FACTOR = new NodeTypeIndirectFactor();
+	public static final NodeType TYPE_FACTOR = new NodeTypeFactor();
 	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
-	public static final NodeType TYPE_DIRECT_THREAT = new NodeTypeDirectThreat();
 	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
 
 	public static final int INT_TYPE_INVALID = -1;

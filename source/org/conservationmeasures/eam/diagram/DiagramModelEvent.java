@@ -8,20 +8,27 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.EventObject;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+
 
 public class DiagramModelEvent extends EventObject 
 {
-
-	public DiagramModelEvent(Object source, EAMGraphCell nodeToUse) 
+	public DiagramModelEvent(Object source, EAMGraphCell cellToUse) 
 	{
 		super(source);
-		node = nodeToUse;
+		cell = cellToUse;
 	}
 	
-	public EAMGraphCell getNode()
+	public DiagramNode getNode()
 	{
-		return node;
+		return (DiagramNode)cell;
 	}
 	
-	private EAMGraphCell node;
+	public DiagramLinkage getLinkage()
+	{
+		return (DiagramLinkage)cell;
+	}
+	
+	private EAMGraphCell cell;
 }

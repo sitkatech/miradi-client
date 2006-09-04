@@ -35,8 +35,9 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		IdAssigner idAssigner = new IdAssigner();
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
-		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_INDIRECT_FACTOR);
-		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_FACTOR);
+		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_FACTOR);
+		cmDirectThreat.increaseTargetCount();
 		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		
 		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);

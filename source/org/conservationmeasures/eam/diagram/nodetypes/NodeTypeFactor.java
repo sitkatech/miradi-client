@@ -5,8 +5,18 @@
  */
 package org.conservationmeasures.eam.diagram.nodetypes;
 
+import org.conservationmeasures.eam.main.EAM;
 
-abstract public class NodeTypeFactor extends NodeType
+
+public class NodeTypeFactor extends NodeType
 {
-
+	public boolean isFactor()
+	{
+		return true;
+	}
+	
+	public String toString()
+	{
+		return EAM.text("Type|Factor");
+	}
 }

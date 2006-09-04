@@ -39,6 +39,8 @@ abstract public class InsertNode extends LocationDoer
 			ModelNodeId id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
+			else
+				notLinkingToAnyNodes();
 			
 			launchPropertiesEditor(new DiagramNodeId(id.asInt()));
 		}
@@ -80,7 +82,7 @@ abstract public class InsertNode extends LocationDoer
 		return id;
 	}
 	
-	private void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
@@ -89,6 +91,11 @@ abstract public class InsertNode extends LocationDoer
 			getProject().executeCommand(cmd);
 		}
 		getProject().executeCommand(new CommandEndTransaction());
+	}
+	
+	void notLinkingToAnyNodes() throws CommandFailedException
+	{
+		
 	}
 	
 	void doExtraSetup(BaseId id) throws CommandFailedException

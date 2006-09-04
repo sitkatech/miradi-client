@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -112,7 +113,9 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 	
 	private ModelNodeId createThreat(String name) throws Exception
 	{
-		return createNode(new NodeTypeDirectThreat(), name);
+		ModelNodeId createdId = createNode(new NodeTypeDirectThreat(), name);
+		((ConceptualModelFactor)project.findNode(createdId)).increaseTargetCount();
+		return createdId;
 	}
 
 	private ModelNodeId createTarget(String name) throws Exception

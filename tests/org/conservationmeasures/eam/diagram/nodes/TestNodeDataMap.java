@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
@@ -22,7 +23,7 @@ public class TestNodeDataMap extends EAMTestCase
 	public void testConvertNodeTypeToInt()
 	{
 		assertEquals(DiagramNode.INT_TYPE_TARGET, NodeDataMap.convertNodeTypeToInt(new NodeTypeTarget()));
-		assertEquals(DiagramNode.INT_TYPE_DIRECT_THREAT, NodeDataMap.convertNodeTypeToInt(new NodeTypeDirectThreat()));
+		assertEquals(DiagramNode.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeDirectThreat()));
 		assertEquals(DiagramNode.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeIndirectFactor()));
 		assertEquals(DiagramNode.INT_TYPE_INTERVENTION, NodeDataMap.convertNodeTypeToInt(new NodeTypeIntervention()));
 		assertEquals(DiagramNode.INT_TYPE_CLUSTER, NodeDataMap.convertNodeTypeToInt(new NodeTypeCluster()));
@@ -31,8 +32,8 @@ public class TestNodeDataMap extends EAMTestCase
 	public void testConvertIntToNodeType()
 	{
 		assertEquals(new NodeTypeTarget(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_TARGET));
-		assertEquals(new NodeTypeDirectThreat(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_DIRECT_THREAT));
-		assertEquals(new NodeTypeIndirectFactor(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_INDIRECT_FACTOR));
+		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_DIRECT_THREAT));
+		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_INDIRECT_FACTOR));
 		assertEquals(new NodeTypeIntervention(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_INTERVENTION));
 		assertEquals(new NodeTypeCluster(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_CLUSTER));
 	}

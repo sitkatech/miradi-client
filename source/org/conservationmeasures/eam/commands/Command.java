@@ -57,8 +57,6 @@ public abstract class Command
 			return new CommandSetNodeSize(dataIn);
 		if(commandName.equals(CommandSetProjectVision.COMMAND_NAME))
 			return new CommandSetProjectVision(dataIn);
-		if(commandName.equals(CommandSetFactorType.COMMAND_NAME))
-			return new CommandSetFactorType(dataIn);
 		if(commandName.equals(CommandSetNodeName.COMMAND_NAME))
 			return new CommandSetNodeName(dataIn);
 		if(commandName.equals(CommandCreateObject.COMMAND_NAME))

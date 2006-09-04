@@ -22,7 +22,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testComments()
 	{
 		BaseId id = new BaseId(35);
-		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_FACTOR);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
 		factor.setComment(sampleComment);
@@ -32,7 +32,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testPriority()
 	{
 		BaseId id = new BaseId(26);
-		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor factor = new ConceptualModelFactor(id, DiagramNode.TYPE_FACTOR);
 		assertEquals("didn't default to priority none?", null, factor.getThreatPriority());
 	}
 	
@@ -95,7 +95,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		objectives.addId(new BaseId(9));
 
 		BaseId factorId = new BaseId(2342);
-		ConceptualModelFactor factor = new ConceptualModelFactor(factorId, DiagramNode.TYPE_DIRECT_THREAT);
+		ConceptualModelFactor factor = new ConceptualModelFactor(factorId, DiagramNode.TYPE_FACTOR);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicatorId(new BaseId(99));

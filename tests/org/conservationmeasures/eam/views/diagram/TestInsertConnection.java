@@ -30,7 +30,7 @@ public class TestInsertConnection extends EAMTestCase
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
 			project.insertNodeAtId(DiagramNode.TYPE_TARGET, BaseId.INVALID);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.insertNodeAtId(DiagramNode.TYPE_INDIRECT_FACTOR, BaseId.INVALID);
+			project.insertNodeAtId(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

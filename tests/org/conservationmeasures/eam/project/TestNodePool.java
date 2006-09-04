@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.martus.util.TestCaseEnhanced;
 
@@ -28,7 +29,11 @@ public class TestNodePool extends TestCaseEnhanced
 		pool = new NodePool();
 
 		for(int i = 0; i < 2; ++i)
-			addNodeToPool(new NodeTypeDirectThreat());
+		{
+			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
+			node.increaseTargetCount();
+			pool.put(node);
+		}
 		for(int i = 0; i < 3; ++i)
 			addNodeToPool(new NodeTypeIndirectFactor());
 		for(int i = 0; i < 4; ++i)

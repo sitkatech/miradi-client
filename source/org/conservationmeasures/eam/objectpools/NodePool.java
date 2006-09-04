@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -45,7 +44,16 @@ public class NodePool extends EAMObjectPool
 	
 	public ConceptualModelNode[] getDirectThreats()
 	{
-		return getNodesOfType(new NodeTypeDirectThreat());
+		Vector cmNodes = new Vector();
+		ModelNodeId[] ids = getModelNodeIds();
+		Arrays.sort(ids);
+		for(int i = 0; i < ids.length; ++i)
+		{
+			ConceptualModelNode cmNode = (ConceptualModelNode)getRawObject(ids[i]);
+			if(cmNode.isDirectThreat())
+				cmNodes.add(cmNode);
+		}
+		return (ConceptualModelNode[])cmNodes.toArray(new ConceptualModelNode[0]);
 	}
 
 	public ConceptualModelNode[] getTargets()

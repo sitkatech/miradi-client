@@ -9,12 +9,11 @@ import java.awt.Color;
 import java.io.File;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
@@ -201,7 +200,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		ModelNodeId threatId = createThreat();
+		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
 		ModelNodeId targetId = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
@@ -215,9 +214,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
-		
-		ConceptualModelNode factor = project.getNodePool().find(threatId);
-		factor.setNodeType(new NodeTypeIndirectFactor());
+
+		((ConceptualModelFactor)project.findNode(threatId)).decreaseTargetCount();
 		assertEquals("threat value included indirect factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included indirect factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
@@ -231,6 +229,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private ModelNodeId createThreat() throws Exception
 	{
 		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
+		((ConceptualModelFactor)project.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}
 	

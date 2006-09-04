@@ -63,7 +63,7 @@ public class TestDiagramModel extends EAMTestCase
 				{ 33,  13, 23, 42, 43 },
 				{ 34,  24, 25, 26, 35, 36, 44 },
 				{ 35,  25, 26, 34, 36, 45 },
-				{ 36,  26, 35 },
+				// 36 is actually an INDIRECT FACTOR!
 		};
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
@@ -103,7 +103,7 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testIsNode() throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage link = createLinkage(BaseId.INVALID, factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
@@ -113,7 +113,7 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testCounts()throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		createLinkage(BaseId.INVALID, factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getNodeCount());
@@ -122,9 +122,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
 		model.deleteNode(factor);
-		DiagramNode newFactor = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode newFactor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
 		createLinkage(BaseId.INVALID, newFactor.getWrappedId(), target.getWrappedId());
@@ -134,8 +134,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetLinkages() throws Exception
 	{
-		DiagramNode factor1 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
-		DiagramNode factor2 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode factor1 = createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor2 = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), factor2.getWrappedId(), target.getWrappedId());

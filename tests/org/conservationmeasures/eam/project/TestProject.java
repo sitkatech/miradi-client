@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
-import org.conservationmeasures.eam.commands.CommandSetFactorType;
 import org.conservationmeasures.eam.commands.CommandSetIndicator;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
@@ -42,6 +41,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.DirectThreatSet;
@@ -273,7 +273,7 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node3 =  createNode(DiagramNode.TYPE_FACTOR);
 		
 		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -324,7 +324,7 @@ public class TestProject extends EAMTestCase
 
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node3 =  createNode(DiagramNode.TYPE_FACTOR);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -378,7 +378,7 @@ public class TestProject extends EAMTestCase
 		int deltaY = 88;
 		node1.setLocation(new Point(deltaX,deltaY));
 		
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_FACTOR);
 		node2.setPreviousLocation(new Point(10,10));
 		node2.setLocation(new Point(20,30));
 		
@@ -406,7 +406,7 @@ public class TestProject extends EAMTestCase
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode node2 =  createNode(DiagramNode.TYPE_FACTOR);
 		node2.setSize(new Dimension(15,15));
 		node2.setPreviousSize((new Dimension(52, 33)));
 		node2.setPreviousLocation(new Point(0,0));
@@ -443,19 +443,19 @@ public class TestProject extends EAMTestCase
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
 		nodeResizedAndMoved.setLocation(new Point(x+deltaX, y+deltaY));
 
-		DiagramNode nodeMovedOnly =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeMovedOnly =  createNode(DiagramNode.TYPE_FACTOR);
 		nodeMovedOnly.setSize(position1);
 		nodeMovedOnly.setPreviousSize(position1);
 		nodeMovedOnly.setPreviousLocation(new Point(x,y));
 		nodeMovedOnly.setLocation(new Point(x+deltaX, y+deltaY));
 		
-		DiagramNode nodeResizedOnly = createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeResizedOnly = createNode(DiagramNode.TYPE_FACTOR);
 		nodeResizedOnly.setSize(position1);
 		nodeResizedOnly.setPreviousSize(position2);
 		nodeResizedOnly.setPreviousLocation(new Point(x,y));
 		nodeResizedOnly.setLocation(new Point(x,y));
 
-		DiagramNode nodeNotMovedOrResized =  createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		DiagramNode nodeNotMovedOrResized =  createNode(DiagramNode.TYPE_FACTOR);
 		nodeNotMovedOrResized.setSize(position1);
 		nodeNotMovedOrResized.setPreviousSize(position1);
 		nodeNotMovedOrResized.setPreviousLocation(new Point(x,y));
@@ -495,7 +495,7 @@ public class TestProject extends EAMTestCase
 
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 = createNode(DiagramNode.TYPE_INDIRECT_FACTOR);
+		DiagramNode node3 = createNode(DiagramNode.TYPE_FACTOR);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -596,48 +596,45 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
 		assertEquals(2, database.callsToWriteNode);
 		
-		project.executeCommand(new CommandSetFactorType(factorId, new NodeTypeDirectThreat()));
-		assertEquals(3, database.callsToWriteNode);
-		
 		project.executeCommand(new CommandSetIndicator(factorId, new BaseId(7)));
-		assertEquals(4, database.callsToWriteNode);
+		assertEquals(3, database.callsToWriteNode);
 		
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(99));
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
-		assertEquals(5, database.callsToWriteNode);
+		assertEquals(4, database.callsToWriteNode);
 		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(5, database.callsToWriteNode);
+		assertEquals(4, database.callsToWriteNode);
 		
 		GoalIds goals = new GoalIds();
 		goals.addId(new BaseId(55));
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
-		assertEquals(6, database.callsToWriteNode);
+		assertEquals(5, database.callsToWriteNode);
 		
 		project.undo();
-		assertEquals(7, database.callsToWriteNode);
+		assertEquals(6, database.callsToWriteNode);
 		
 		project.redo();
-		assertEquals(8, database.callsToWriteNode);
+		assertEquals(7, database.callsToWriteNode);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
 		BaseId id = new BaseId(3023);
-		BaseId gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
+		BaseId gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_FACTOR, id);
 		assertEquals("Didn't get our id?", id, gotIdFirst);
 		try
 		{
-			project.insertNodeAtId(DiagramNode.TYPE_DIRECT_THREAT, id);
+			project.insertNodeAtId(DiagramNode.TYPE_FACTOR, id);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
 		{
 		}
 		
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_DIRECT_THREAT);
+		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		project.executeCommand(cmd);
 		try
 		{
@@ -769,7 +766,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
 		DiagramNode nodeDirectThreatA = createNode(new NodeTypeDirectThreat());	
+		((ConceptualModelFactor)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
 		DiagramNode nodeDirectThreatB = createNode(new NodeTypeDirectThreat());
+		((ConceptualModelFactor)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
 		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());

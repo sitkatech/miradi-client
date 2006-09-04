@@ -48,7 +48,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
-		createNode(DiagramNode.TYPE_DIRECT_THREAT);
+		createNode(DiagramNode.TYPE_FACTOR);
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 

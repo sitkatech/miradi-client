@@ -85,11 +85,13 @@ public class Project
 		undoRedoState = new UndoRedoState();
 		
 		diagramModel = new DiagramModel(this);
+		diagramModel.addDiagramModelListener(new LinkageMonitor());
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
+		
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -63,6 +64,8 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	
 	public NodeType getNodeType()
 	{
+		if(isDirectThreat() || isIndirectFactor())
+			return new NodeTypeFactor();
 		return type;
 	}
 	
