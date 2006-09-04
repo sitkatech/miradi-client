@@ -9,11 +9,9 @@ import org.conservationmeasures.eam.commands.CommandSetNodeName;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodePriority;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ObjectType;
@@ -127,41 +125,6 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getObjectives().size());
 	}
 
-	public void testUndoRedoGoals() throws Exception
-	{
-		BaseId goalId = project.getGoalPool().getIds()[1];
-		
-		GoalIds target1Goals = new GoalIds();
-		target1Goals.addId(goalId);
-		
-		ModelNodeId insertedId = insertTarget(project);
-
-		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetTargetGoal(insertedId, target1Goals));
-		project.executeCommand(new CommandEndTransaction());
-
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
-		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-		assertEquals(goalId, project.getDiagramModel().getNodeById(insertedId).getGoals().getId(0));
-
-		Undo undo = new Undo();
-		undo.setProject(project);
-		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
-		assertEquals("Should now have (No) Goals", 0, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-
-		Redo redo = new Redo();
-		redo.setProject(project);
-		redo.doIt();
-		assertTrue(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
-		assertEquals(1, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-		assertEquals(goalId, project.getDiagramModel().getNodeById(insertedId).getGoals().getId(0));
-
-		undo.doIt();
-		assertFalse(project.getDiagramModel().getNodeById(insertedId).getGoals().hasAnnotation());
-		assertEquals(0, project.getDiagramModel().getNodeById(insertedId).getGoals().size());
-	}
-	
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		BaseId insertedId = insertFactor(project);
@@ -205,14 +168,6 @@ public class TestUndoRedo extends EAMTestCase
 	private ModelNodeId insertFactor(Project p) throws CommandFailedException 
 	{
 		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_FACTOR);
-		p.executeCommand(insert);
-		ModelNodeId insertedId = insert.getId();
-		return insertedId;
-	}
-
-	private ModelNodeId insertTarget(Project p) throws CommandFailedException 
-	{
-		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_TARGET);
 		p.executeCommand(insert);
 		ModelNodeId insertedId = insert.getId();
 		return insertedId;

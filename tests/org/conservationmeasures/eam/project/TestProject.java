@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.commands.CommandSetNodeObjectives;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetTargetGoal;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -32,7 +31,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -600,25 +598,20 @@ public class TestProject extends EAMTestCase
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
+		Dimension oldDimension = factor.getSize();
+		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
+		
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(99));
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
 		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
-		Dimension oldDimension = factor.getSize();
-		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
-		
-		GoalIds goals = new GoalIds();
-		goals.addId(new BaseId(55));
-		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
+		project.undo();
 		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		
-		project.undo();
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
-		
 		project.redo();
-		assertEquals(6 + existingCalls, database.callsToWriteObject);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception

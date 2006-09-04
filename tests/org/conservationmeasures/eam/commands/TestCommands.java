@@ -24,14 +24,12 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -527,43 +525,6 @@ public class TestCommands extends EAMTestCase
 		verifyUndoTwiceThrows(cmd);
 	}
 
-	public void testCommandSetGoals() throws Exception
-	{
-		ModelNodeId id = insertTarget();
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
-		assertFalse("New target should not have a goal", node.getGoals().hasAnnotation());
-		GoalIds originalGoals = node.getGoals();
-		assertEquals("size not zero?", 0, originalGoals.size());
-
-		BaseId[] allGoalIds = project.getGoalPool().getIds();
-		Goal goal1 = project.getGoalPool().find(allGoalIds[1]);
-		Goal goal2 = project.getGoalPool().find(allGoalIds[2]);
-
-		GoalIds goalIds = new GoalIds();
-		goalIds.addId(goal1.getId());
-		goalIds.addId(goal2.getId());
-		
-		CommandSetTargetGoal cmd = new CommandSetTargetGoal(id, goalIds);
-		project.executeCommand(cmd);
-		assertEquals("didn't memorize old goal?", originalGoals, cmd.getPreviousGoals());
-		assertEquals( 2, node.getGoals().size());
-		assertEquals( goal1.getId(), node.getGoals().getId(0));
-		assertEquals( goal2.getId(), node.getGoals().getId(1));
-
-		CommandSetTargetGoal loaded = (CommandSetTargetGoal)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals( 2, loaded.getCurrentGoals().size());
-		assertEquals("didn't restore new goals?", 2, loaded.getCurrentGoals().size());
-		assertEquals( goal1.getId(), loaded.getCurrentGoals().getId(0));
-		assertEquals( goal2.getId(), loaded.getCurrentGoals().getId(1));
-		assertEquals("didn't restore previous objective?", originalGoals, loaded.getPreviousGoals());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalGoals, project.getDiagramModel().getNodeById(id).getGoals());
-		
-		verifyUndoTwiceThrows(cmd);
-	}
-	
 	public void testCommandNodeResized() throws Exception
 	{
 		BaseId id = insertTarget();

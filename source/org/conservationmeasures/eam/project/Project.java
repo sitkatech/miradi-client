@@ -28,7 +28,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -652,18 +651,6 @@ public class Project
 		writeNode(nodeId);
 	}
 
-	public void setFactorType(ModelNodeId nodeId, NodeType desiredType) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-		
-		node.setNodeType(desiredType);
-		Logging.logVerbose("SetFactorType:" + desiredType);
-		model.updateCell(node);
-
-		writeNode(nodeId);
-	}
-	
 	public void setObjectives(ModelNodeId nodeId, ObjectiveIds desiredObjectives) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
@@ -676,18 +663,6 @@ public class Project
 		writeNode(nodeId);
 	}
 	
-	public void setGoals(ModelNodeId nodeId, GoalIds desiredGoals) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.getNodeById(nodeId);
-
-		node.setGoals(desiredGoals);
-		Logging.logVerbose("Updating Goals:" + desiredGoals);
-		model.updateCell(node);
-		
-		writeNode(nodeId);
-	}
-
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);

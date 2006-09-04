@@ -211,11 +211,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getGoals();
 	}
 	
-	public void setGoals(GoalIds goalsToUse)
-	{
-		underlyingObject.setGoals(goalsToUse);
-	}
-
 	public ObjectiveIds getObjectives()
 	{
 		return underlyingObject.getObjectives();
