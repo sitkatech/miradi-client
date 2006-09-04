@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -84,7 +85,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
 		
 		ProjectServer server = project.getTestDatabase();
-		ConceptualModelLinkage linkage = server.readLinkage(link.getLinkageId());
+		ConceptualModelLinkage linkage = (ConceptualModelLinkage)server.readObject(ObjectType.MODEL_LINKAGE, link.getLinkageId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromNodeId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}

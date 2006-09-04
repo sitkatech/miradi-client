@@ -106,30 +106,30 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadLinkage() throws Exception
 	{
 		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
-		storage.writeLinkage(original);
-		ConceptualModelLinkage got = storage.readLinkage(original.getId());
+		storage.writeObject(original);
+		ConceptualModelLinkage got = (ConceptualModelLinkage)storage.readObject(original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
 		
-		LinkageManifest linkageIds = storage.readLinkageManifest();
+		ObjectManifest linkageIds = storage.readObjectManifest(original.getType());
 		assertEquals("not one linkage?", 1, linkageIds.size());
 		assertTrue("wrong linkage id in manifest?", linkageIds.has(original.getId()));
 		
-		storage.writeLinkage(original);
-		assertEquals("dupe in manifest?", 1, storage.readLinkageManifest().size());
+		storage.writeObject(original);
+		assertEquals("dupe in manifest?", 1, storage.readObjectManifest(original.getType()).size());
 		
 	}
 	
 	public void testDeleteLinkage() throws Exception
 	{
 		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
-		storage.writeLinkage(original);
-		storage.deleteLinkage(original.getId());
-		assertEquals("didn't delete?", 0, storage.readLinkageManifest().size());
+		storage.writeObject(original);
+		storage.deleteObject(original.getType(), original.getId());
+		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
 		try
 		{
-			storage.readLinkage(original.getId());
+			storage.readObject(original.getType(), original.getId());
 		}
 		catch(IOException ignoreExpected)
 		{

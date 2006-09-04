@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 
-import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -307,7 +306,7 @@ public class ObjectManager
 			case ObjectType.MODEL_LINKAGE:
 				ConceptualModelLinkage linkage = getLinkagePool().find(objectId);
 				linkage.setData(fieldTag, dataValue);
-				getDatabase().writeLinkage(linkage);
+				getDatabase().writeObject(linkage);
 				break;
 				
 			case ObjectType.PROJECT_RESOURCE:
@@ -394,13 +393,13 @@ public class ObjectManager
 		}
 	}
 	
-	private void loadLinkagePool() throws IOException, ParseException
+	private void loadLinkagePool() throws Exception
 	{
-		LinkageManifest linkages = getDatabase().readLinkageManifest();
+		ObjectManifest linkages = getDatabase().readObjectManifest(ObjectType.MODEL_LINKAGE);
 		BaseId[] linkageIds = linkages.getAllKeys();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
-			ConceptualModelLinkage linkage = getDatabase().readLinkage(linkageIds[i]);
+			ConceptualModelLinkage linkage = (ConceptualModelLinkage)getDatabase().readObject(ObjectType.MODEL_LINKAGE, linkageIds[i]);
 			getLinkagePool().put(linkage);
 		}
 	}

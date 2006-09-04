@@ -206,7 +206,7 @@ public class DataUpgrader extends ProjectServer
 	
 	public void dropStressFactors() throws Exception
 	{
-		File manifestFile = getNodeManifestFile();
+		File manifestFile = getObjectManifestFile(ObjectType.MODEL_NODE);
 		if(!manifestFile.exists())
 			return;
 		
@@ -216,7 +216,7 @@ public class DataUpgrader extends ProjectServer
 		for(int i = 0; i < ids.length; ++i)
 		{
 			BaseId id = ids[i];
-			JSONObject nodeData = JSONFile.read(getNodeFile(id));
+			JSONObject nodeData = JSONFile.read(getObjectFile(ObjectType.MODEL_NODE, id));
 			String type = nodeData.optString("Type", "");
 			String subtype = nodeData.optString("Subtype", "");
 			if(type.equals("Factor") && subtype.equals("Stress"))

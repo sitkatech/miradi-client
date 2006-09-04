@@ -11,10 +11,8 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.ObjectType;
 import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ProjectInfo;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -148,25 +146,6 @@ public class ProjectServer
 	
 	
 	
-	public void writeLinkage(ConceptualModelLinkage linkage) throws IOException, ParseException
-	{
-		getLinkagesDirectory().mkdirs();
-		BaseId id = linkage.getId();
-		JSONFile.write(getLinkageFile(id), linkage.toJson());
-		addToLinkageManifest(id);
-	}
-
-	public ConceptualModelLinkage readLinkage(BaseId id) throws IOException, ParseException
-	{
-		return new ConceptualModelLinkage(JSONFile.read(getLinkageFile(id)));
-	}
-	
-	public void deleteLinkage(BaseId id) throws IOException, ParseException
-	{
-		removeFromLinkageManifest(id);
-		getLinkageFile(id).delete();
-	}
-	
 	public void writeProjectInfo(ProjectInfo info) throws IOException
 	{
 		JSONFile.write(getProjectInfoFile(), info.toJson());
@@ -194,33 +173,6 @@ public class ProjectServer
 			model.fillFrom(JSONFile.read(diagramFile));
 	}
 	
-	private void removeFromLinkageManifest(BaseId idToRemove) throws IOException, ParseException
-	{
-		LinkageManifest manifest = readLinkageManifest();
-		manifest.remove(idToRemove);
-		writeLinkageManifest(manifest);
-	}
-	
-	private void addToLinkageManifest(BaseId idToAdd) throws IOException, ParseException
-	{
-		LinkageManifest manifest = readLinkageManifest();
-		manifest.put(idToAdd);
-		writeLinkageManifest(manifest);
-	}
-	
-	public LinkageManifest readLinkageManifest() throws IOException, ParseException
-	{
-		File manifestFile = getLinkageManifestFile();
-		if(!manifestFile.exists())
-			return new LinkageManifest();
-		JSONObject rawManifest = JSONFile.read(manifestFile);
-		return new LinkageManifest(rawManifest);
-	}
-	
-	private void writeLinkageManifest(LinkageManifest manifest) throws IOException
-	{
-		manifest.write(getLinkageManifestFile());
-	}
 	
 	public void writeThreatRatingBundle(ThreatRatingBundle bundle) throws Exception
 	{
@@ -311,16 +263,6 @@ public class ProjectServer
 		return new File(topDirectory, JSON_DIRECTORY);
 	}
 	
-	private File getNodesDirectory()
-	{
-		return getObjectDirectory(ObjectType.MODEL_NODE);
-	}
-	
-	private File getLinkagesDirectory()
-	{
-		return getObjectDirectory(ObjectType.MODEL_LINKAGE);
-	}
-	
 	private File getDiagramsDirectory()
 	{
 		return new File(getJsonDirectory(), DIAGRAMS_DIRECTORY);
@@ -362,37 +304,17 @@ public class ProjectServer
 		return new File(getThreatRatingsDirectory(), bundleKey);
 	}
 	
-	File getNodeManifestFile()
-	{
-		return new File(getNodesDirectory(), MANIFEST_FILE);
-	}
-	
-	File getNodeFile(BaseId id)
-	{
-		return new File(getNodesDirectory(), Integer.toString(id.asInt()));
-	}
-	
-	private File getLinkageManifestFile()
-	{
-		return new File(getLinkagesDirectory(), MANIFEST_FILE);
-	}
-	
-	private File getLinkageFile(BaseId id)
-	{
-		return new File(getLinkagesDirectory(), Integer.toString(id.asInt()));
-	}
-	
 	File getDiagramFile()
 	{
 		return new File(getDiagramsDirectory(), DIAGRAM_FILE);
 	}
 	
-	private File getObjectFile(int type, BaseId id)
+	protected File getObjectFile(int type, BaseId id)
 	{
 		return new File(getObjectDirectory(type), Integer.toString(id.asInt()));
 	}
 	
-	private File getObjectManifestFile(int type)
+	protected File getObjectManifestFile(int type)
 	{
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
@@ -408,7 +330,6 @@ public class ProjectServer
 
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
-	static public String LINKAGE_MANIFEST = "LinkageManifest";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
 	static public int DATA_VERSION = 6;
 

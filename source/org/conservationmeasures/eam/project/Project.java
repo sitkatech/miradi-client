@@ -605,7 +605,7 @@ public class Project
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 		model.deleteLinkage(linkageToDelete);
 
-		database.deleteLinkage(idToDelete);
+		database.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);
 		getLinkagePool().remove(idToDelete);
 	}
 
@@ -615,7 +615,7 @@ public class Project
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
 		cmLinkage.setFromId(linkFromId);
 		cmLinkage.setToId(linkToId);
-		getDatabase().writeLinkage(cmLinkage);
+		getDatabase().writeObject(cmLinkage);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		return linkage.getDiagramLinkageId();
