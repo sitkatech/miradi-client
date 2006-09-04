@@ -104,11 +104,6 @@ public class ObjectManager
 		return goalPool;
 	}
 	
-	public BaseId createObject(int objectType) throws Exception
-	{
-		return createObject(objectType, BaseId.INVALID);
-	}
-	
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
