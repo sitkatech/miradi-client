@@ -127,12 +127,17 @@ public class TestProject extends EAMTestCase
 		};
 		
 		for(int i = 0; i < types.length; ++i)
-			verifyObjectLifecycle(types[i]);
+		{
+			Object extraInfo = null;
+			if(types[i] == ObjectType.MODEL_NODE)
+				extraInfo = new NodeTypeTarget();
+			verifyObjectLifecycle(types[i], extraInfo);
+		}
 	}
 
-	private void verifyObjectLifecycle(int type) throws Exception
+	private void verifyObjectLifecycle(int type, Object extraInfo) throws Exception
 	{
-		BaseId createdId = project.createObject(type);
+		BaseId createdId = project.createObject(type, BaseId.INVALID, extraInfo);
 		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
@@ -163,7 +168,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		BaseId desiredId = new BaseId(2323);
-		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId));
+		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId, extraInfo));
 		
 
 		File tempDirectory = createTempDirectory();
@@ -171,7 +176,7 @@ public class TestProject extends EAMTestCase
 		{
 			Project projectToWrite = new Project();
 			projectToWrite.createOrOpen(tempDirectory);
-			BaseId idToReload = projectToWrite.createObject(type);
+			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, extraInfo);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
@@ -580,44 +585,44 @@ public class TestProject extends EAMTestCase
 	public void testNodesGetWritten() throws Exception
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
-		assertEquals(0, database.callsToWriteNode);
+		int existingCalls = database.callsToWriteObject;
 		
 		CommandInsertNode targetCommand = new CommandInsertNode(new NodeTypeTarget());
 		project.executeCommand(targetCommand);
-		assertEquals(1, database.callsToWriteNode);
+		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		ModelNodeId targetId = targetCommand.getId();
 		
 		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeIndirectFactor());
 		project.executeCommand(factorCommand);
-		assertEquals(2, database.callsToWriteNode);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		ModelNodeId factorId = factorCommand.getId();
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
-		assertEquals(2, database.callsToWriteNode);
+		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		
 		project.executeCommand(new CommandSetIndicator(factorId, new BaseId(7)));
-		assertEquals(3, database.callsToWriteNode);
+		assertEquals(3 + existingCalls, database.callsToWriteObject);
 		
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(99));
 		project.executeCommand(new CommandSetNodeObjectives(factorId, objectives));
-		assertEquals(4, database.callsToWriteNode);
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(4, database.callsToWriteNode);
+		assertEquals(4 + existingCalls, database.callsToWriteObject);
 		
 		GoalIds goals = new GoalIds();
 		goals.addId(new BaseId(55));
 		project.executeCommand(new CommandSetTargetGoal(targetId, goals));
-		assertEquals(5, database.callsToWriteNode);
+		assertEquals(5 + existingCalls, database.callsToWriteObject);
 		
 		project.undo();
-		assertEquals(6, database.callsToWriteNode);
+		assertEquals(6 + existingCalls, database.callsToWriteObject);
 		
 		project.redo();
-		assertEquals(7, database.callsToWriteNode);
+		assertEquals(7 + existingCalls, database.callsToWriteObject);
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception

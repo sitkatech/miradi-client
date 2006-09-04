@@ -75,19 +75,19 @@ public class TestProjectServer extends EAMTestCase
 		IdAssigner idAssigner = new IdAssigner();
 
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(idAssigner.takeNextId());
-		storage.writeNode(intervention);
+		storage.writeObject(intervention);
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)storage.readNode(intervention.getId());
 		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId(), new NodeTypeIndirectFactor());
 		
-		storage.writeNode(factor);
+		storage.writeObject(factor);
 		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)storage.readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
 		ConceptualModelTarget target = new ConceptualModelTarget(idAssigner.takeNextId());
-		storage.writeNode(target);
+		storage.writeObject(target);
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)storage.readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		

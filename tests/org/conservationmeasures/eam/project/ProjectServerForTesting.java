@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.TestCaseEnhanced;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
@@ -34,10 +34,10 @@ public class ProjectServerForTesting extends ProjectServer
 		openNonDatabaseStore(projectDir);
 	}
 	
-	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
+	public void writeObject(EAMObject object) throws IOException, ParseException
 	{
-		super.writeNode(node);
-		++callsToWriteNode;
+		super.writeObject(object);
+		++callsToWriteObject;
 	}
 	
 	
@@ -57,6 +57,6 @@ public class ProjectServerForTesting extends ProjectServer
 	}
 
 	File eamDir;
-	public int callsToWriteNode;
+	public int callsToWriteObject;
 	public int callsToWriteThreatRatingFramework;
 }

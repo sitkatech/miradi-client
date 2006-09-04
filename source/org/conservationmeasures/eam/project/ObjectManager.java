@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.database.LinkageManifest;
 import org.conservationmeasures.eam.database.NodeManifest;
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -52,6 +52,11 @@ public class ObjectManager
 		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool());
 
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
+	}
+	
+	private IdAssigner getNodeIdAssigner()
+	{
+		return getProject().getNodeIdAssigner();
 	}
 
 	private IdAssigner getAnnotationIdAssigner()
@@ -104,7 +109,7 @@ public class ObjectManager
 		return goalPool;
 	}
 	
-	public BaseId createObject(int objectType, BaseId objectId) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId, Object extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
@@ -139,7 +144,13 @@ public class ObjectManager
 			
 			case ObjectType.MODEL_NODE:
 			{
-				createdId = getProject().insertNodeAtId(new NodeTypeTarget(), objectId);
+				if(objectId.isInvalid())
+					objectId = getNodeIdAssigner().takeNextId();
+				NodeType nodeType = (NodeType)extraInfo;
+				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, nodeType);
+				getNodePool().put(node);
+				getDatabase().writeObject(node);
+				createdId = node.getId();
 				break;
 			}
 			
@@ -285,7 +296,7 @@ public class ObjectManager
 				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
 				ConceptualModelNode node = getNodePool().find(nodeId);
 				node.setData(fieldTag, dataValue);
-				getDatabase().writeNode(node);
+				getDatabase().writeObject(node);
 				break;
 				
 			case ObjectType.VIEW_DATA:

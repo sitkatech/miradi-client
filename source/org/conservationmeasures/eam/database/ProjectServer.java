@@ -149,14 +149,6 @@ public class ProjectServer
 	
 	
 	
-	public void writeNode(ConceptualModelNode node) throws IOException, ParseException
-	{
-		getNodesDirectory().mkdirs();
-		BaseId id = node.getId();
-		JSONFile.write(getNodeFile(id), node.toJson());
-		addToNodeManifest(id);
-	}
-	
 	public ConceptualModelNode readNode(BaseId id) throws IOException, ParseException
 	{
 		return ConceptualModelNode.createFrom(JSONFile.read(getNodeFile(id)));
@@ -167,13 +159,6 @@ public class ProjectServer
 		removeFromNodeManifest(id);
 		getNodeFile(id).delete();
 		
-	}
-	
-	private void addToNodeManifest(BaseId idToAdd) throws IOException, ParseException
-	{
-		NodeManifest manifest = readNodeManifest();
-		manifest.put(idToAdd);
-		writeNodeManifest(manifest);
 	}
 	
 	private void removeFromNodeManifest(BaseId idToRemove) throws IOException, ParseException

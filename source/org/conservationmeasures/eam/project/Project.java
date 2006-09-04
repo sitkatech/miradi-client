@@ -246,7 +246,12 @@ public class Project
 	
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
-		return objectManager.createObject(objectType, objectId);
+		return createObject(objectType, objectId, null);
+	}
+	
+	public BaseId createObject(int objectType, BaseId objectId, Object extraInfo) throws Exception
+	{
+		return objectManager.createObject(objectType, objectId, extraInfo);
 	}
 	
 	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
@@ -584,9 +589,7 @@ public class Project
 	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
 		ModelNodeId realId = projectInfo.obtainRealNodeId(requestedId);
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(realId, typeToInsert);
-		getNodePool().put(cmObject);
-		writeNode(realId);
+		createObject(ObjectType.MODEL_NODE, realId, typeToInsert);
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
@@ -691,7 +694,7 @@ public class Project
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);
-		database.writeNode(cmNode);
+		database.writeObject(cmNode);
 	}
 
 	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception 
