@@ -403,7 +403,10 @@ public class DiagramModel extends DefaultGraphModel
 
 			ConceptualModelNode cmObject = getNodePool().find(id);
 			if(cmObject == null)
+			{
 				EAM.logError("Attempted to wrap missing node: " + id);
+				continue;
+			}
 			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
 			node.fillFrom(nodeJson);
 			
