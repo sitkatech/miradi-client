@@ -51,11 +51,6 @@ public class ObjectManager
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
 	}
 	
-	private IdAssigner getNodeIdAssigner()
-	{
-		return getProject().getNodeIdAssigner();
-	}
-
 	private IdAssigner getAnnotationIdAssigner()
 	{
 		return getProject().getAnnotationIdAssigner();
@@ -141,8 +136,7 @@ public class ObjectManager
 			
 			case ObjectType.MODEL_NODE:
 			{
-				if(objectId.isInvalid())
-					objectId = getNodeIdAssigner().takeNextId();
+				objectId = getProject().obtainRealNodeId(objectId);
 				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, extraInfo);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
