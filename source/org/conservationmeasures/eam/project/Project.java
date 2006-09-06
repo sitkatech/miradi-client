@@ -587,16 +587,24 @@ public class Project
 
 	public NodeType deleteNode(BaseId idToDelete) throws Exception
 	{
+		NodeType nodeType = removeNodeFromDiagram(idToDelete);
+		deleteModelNode(new ModelNodeId(idToDelete.asInt()));
+		return nodeType; 
+	}
+
+	public void deleteModelNode(ModelNodeId idToDelete) throws IOException, ParseException
+	{
+		database.deleteObject(ObjectType.MODEL_NODE, idToDelete);
+		getNodePool().remove(idToDelete);
+	}
+
+	public NodeType removeNodeFromDiagram(BaseId idToDelete) throws Exception
+	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
-		ModelNodeId nodeId = nodeToDelete.getWrappedId();
 		NodeType nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
-
-		database.deleteObject(ObjectType.MODEL_NODE, nodeId);
-		getNodePool().remove(nodeId);
-		
-		return nodeType; 
+		return nodeType;
 	}
 
 	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
