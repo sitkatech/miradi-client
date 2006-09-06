@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

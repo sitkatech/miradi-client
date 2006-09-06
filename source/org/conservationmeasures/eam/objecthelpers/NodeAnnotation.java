@@ -4,7 +4,7 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;

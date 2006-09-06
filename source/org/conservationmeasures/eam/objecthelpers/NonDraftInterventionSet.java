@@ -3,7 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
+
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 
 public class NonDraftInterventionSet extends ConceptualModelNodeSet
 {

@@ -15,8 +15,8 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;

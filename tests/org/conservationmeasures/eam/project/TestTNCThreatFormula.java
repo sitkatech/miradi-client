@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTNCThreatFormula extends EAMTestCase

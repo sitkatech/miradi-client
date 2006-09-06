@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+
 
 public class TestIndicator extends ObjectTestCase
 {

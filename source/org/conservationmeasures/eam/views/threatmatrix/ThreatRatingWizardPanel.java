@@ -11,7 +11,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 

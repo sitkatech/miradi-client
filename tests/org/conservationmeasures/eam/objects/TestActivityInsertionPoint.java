@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.strategicplan.StratPlanActivity;
 

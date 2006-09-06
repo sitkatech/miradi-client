@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 {

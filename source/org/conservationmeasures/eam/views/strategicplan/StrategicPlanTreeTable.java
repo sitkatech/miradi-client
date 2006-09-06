@@ -13,7 +13,7 @@ import javax.swing.tree.TreeCellRenderer;
 
 import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
-import org.conservationmeasures.eam.objects.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;

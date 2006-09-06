@@ -23,8 +23,8 @@ import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ProjectScopePropertiesDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ObjectType;
 import org.martus.swing.Utilities;
 
 public class Properties extends LocationDoer

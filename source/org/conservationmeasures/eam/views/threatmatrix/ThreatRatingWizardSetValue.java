@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;

@@ -3,9 +3,10 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
 
 import java.util.Vector;
+
 
 public class NodeAnnotations
 {

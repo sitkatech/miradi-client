@@ -10,6 +10,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
 public class ConceptualModelLinkage extends EAMBaseObject

@@ -9,7 +9,7 @@ import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingBundle;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
