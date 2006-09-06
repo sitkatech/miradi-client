@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -246,15 +247,16 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return json;
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, String nodeType)
+	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, CreateModelNodeParameter parameter)
 	{
-		if(nodeType.equals(NodeTypeIntervention.INTERVENTION_TYPE))
+		NodeType nodeType = parameter.getNodeType();
+		if(nodeType.isIntervention())
 			return new ConceptualModelIntervention(idToCreate);
-		else if(nodeType.equals(NodeTypeFactor.FACTOR_TYPE))
+		else if(nodeType.isFactor())
 			return new ConceptualModelFactor(idToCreate);
-		else if(nodeType.equals(NodeTypeTarget.TARGET_TYPE))
+		else if(nodeType.isTarget())
 			return new ConceptualModelTarget(idToCreate);
-		else if(nodeType.equals(NodeTypeCluster.CLUSTER_TYPE))
+		else if(nodeType.isCluster())
 			return new ConceptualModelCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);

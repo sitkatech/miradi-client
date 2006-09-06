@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandCreateObject extends Command
@@ -16,10 +17,10 @@ public class CommandCreateObject extends Command
 		this(typeToCreate, null);
 	}
 	
-	public CommandCreateObject(int typeToCreate, String extraInfoToUse)
+	public CommandCreateObject(int typeToCreate, CreateObjectParameter parameterToUse)
 	{
 		type = typeToCreate;
-		extraInfo = extraInfoToUse;
+		parameter = parameterToUse;
 		createdId = BaseId.INVALID;
 	}
 	
@@ -28,9 +29,9 @@ public class CommandCreateObject extends Command
 		return type;
 	}
 	
-	public String getExtraInfo()
+	public CreateObjectParameter getParameter()
 	{
-		return extraInfo;
+		return parameter;
 	}
 	
 	public BaseId getCreatedId()
@@ -47,7 +48,7 @@ public class CommandCreateObject extends Command
 	{
 		try
 		{
-			createdId = target.createObject(type, createdId, extraInfo);
+			createdId = target.createObject(type, createdId, parameter);
 		}
 		catch (Exception e)
 		{
@@ -70,6 +71,6 @@ public class CommandCreateObject extends Command
 	public static final String COMMAND_NAME = "CreateObject";
 
 	int type;
-	String extraInfo;
+	CreateObjectParameter parameter;
 	BaseId createdId;
 }

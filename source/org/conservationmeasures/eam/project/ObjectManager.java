@@ -14,6 +14,8 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -101,7 +103,7 @@ public class ObjectManager
 		return goalPool;
 	}
 	
-	public BaseId createObject(int objectType, BaseId objectId, String extraInfo) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
@@ -136,8 +138,9 @@ public class ObjectManager
 			
 			case ObjectType.MODEL_NODE:
 			{
+				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
 				objectId = getProject().obtainRealNodeId(objectId);
-				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, extraInfo);
+				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, parameter);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();

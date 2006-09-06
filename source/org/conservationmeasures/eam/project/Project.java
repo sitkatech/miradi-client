@@ -36,6 +36,9 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -253,7 +256,7 @@ public class Project
 		return createObject(objectType, objectId, null);
 	}
 	
-	public BaseId createObject(int objectType, BaseId objectId, String extraInfo) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return objectManager.createObject(objectType, objectId, extraInfo);
 	}
@@ -601,7 +604,8 @@ public class Project
 
 	public ModelNodeId createModelNode(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
-		BaseId insertedId = createObject(ObjectType.MODEL_NODE, requestedId, typeToInsert.toString());
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(typeToInsert);
+		BaseId insertedId = createObject(ObjectType.MODEL_NODE, requestedId, parameter);
 		return new ModelNodeId(insertedId.asInt());
 	}
 
@@ -641,7 +645,8 @@ public class Project
 
 	public ConceptualModelLinkage createModelLinkage(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception, IOException, ParseException
 	{
-		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(linkFromId, linkToId);
+		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId, parameter);
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
 		cmLinkage.setFromId(linkFromId);
 		cmLinkage.setToId(linkToId);

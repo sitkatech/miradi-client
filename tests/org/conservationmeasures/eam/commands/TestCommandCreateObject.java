@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
@@ -27,10 +28,10 @@ public class TestCommandCreateObject extends EAMTestCase
 		try
 		{
 			int type = ObjectType.MODEL_NODE;
-			String extraInfo = NodeTypeFactor.FACTOR_TYPE;
-			CommandCreateObject cmd = new CommandCreateObject(type, extraInfo);
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeFactor());
+			CommandCreateObject cmd = new CommandCreateObject(type, parameter);
 			assertEquals("already has an id?", BaseId.INVALID, cmd.getCreatedId());
-			assertEquals("didn't memorize extraInfo?", extraInfo, cmd.getExtraInfo());
+			assertEquals("didn't memorize extraInfo?", parameter, cmd.getParameter());
 			cmd.execute(project);
 			BaseId createdId = cmd.getCreatedId();
 			int highestId = project.getNodeIdAssigner().getHighestAssignedId();

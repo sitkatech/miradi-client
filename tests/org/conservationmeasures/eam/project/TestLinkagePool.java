@@ -5,8 +5,9 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -28,9 +29,10 @@ public class TestLinkagePool extends TestCaseEnhanced
 	public void testHasLinkage() throws Exception
 	{
 		LinkagePool pool = new LinkagePool();
-		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
-		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
-		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeFactor());
+		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
+		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
+		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
 		
 		ConceptualModelLinkage linkage = new ConceptualModelLinkage(idAssigner.takeNextId(), node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);

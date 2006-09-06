@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -268,7 +269,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), nodeType.toString());
+		BaseId id = idAssigner.takeNextId();
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(id, parameter);
 		project.getNodePool().put(cmObject);
 		return model.createNode(cmObject.getModelNodeId());
 	}

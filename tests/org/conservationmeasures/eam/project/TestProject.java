@@ -36,6 +36,8 @@ import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
@@ -125,16 +127,16 @@ public class TestProject extends EAMTestCase
 		
 		for(int i = 0; i < types.length; ++i)
 		{
-			String extraInfo = null;
+			CreateObjectParameter parameter = null;
 			if(types[i] == ObjectType.MODEL_NODE)
-				extraInfo = NodeTypeTarget.TARGET_TYPE;
-			verifyObjectLifecycle(types[i], extraInfo);
+				parameter = new CreateModelNodeParameter(new NodeTypeTarget());
+			verifyObjectLifecycle(types[i], parameter);
 		}
 	}
 
-	private void verifyObjectLifecycle(int type, String extraInfo) throws Exception
+	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
 	{
-		BaseId createdId = project.createObject(type, BaseId.INVALID, extraInfo);
+		BaseId createdId = project.createObject(type, BaseId.INVALID, parameter);
 		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
 		ProjectServer db = project.getDatabase();
 		db.readObject(type, createdId);
@@ -165,7 +167,7 @@ public class TestProject extends EAMTestCase
 		}
 		
 		BaseId desiredId = new BaseId(2323);
-		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId, extraInfo));
+		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId, parameter));
 		
 
 		File tempDirectory = createTempDirectory();
@@ -173,7 +175,7 @@ public class TestProject extends EAMTestCase
 		{
 			Project projectToWrite = new Project();
 			projectToWrite.createOrOpen(tempDirectory);
-			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, extraInfo);
+			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, parameter);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
