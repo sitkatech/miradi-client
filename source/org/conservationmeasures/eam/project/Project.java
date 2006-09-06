@@ -594,8 +594,7 @@ public class Project
 
 	public void deleteModelNode(ModelNodeId idToDelete) throws IOException, ParseException
 	{
-		database.deleteObject(ObjectType.MODEL_NODE, idToDelete);
-		getNodePool().remove(idToDelete);
+		deleteObject(ObjectType.MODEL_NODE, idToDelete);
 	}
 
 	public NodeType removeNodeFromDiagram(BaseId idToDelete) throws Exception
