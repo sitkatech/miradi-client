@@ -125,11 +125,11 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testBundlesForDeletedNodes() throws Exception
 	{
 		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
-		project.deleteModelNode(bundle1.getThreatId());
+		project.deleteObject(ObjectType.MODEL_NODE, bundle1.getThreatId());
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
 		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
-		project.deleteModelNode(bundle2.getTargetId());
+		project.deleteObject(ObjectType.MODEL_NODE, bundle2.getTargetId());
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}

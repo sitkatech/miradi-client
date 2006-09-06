@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteNode extends Command
@@ -73,7 +74,7 @@ public class CommandDeleteNode extends Command
 	public static NodeType deleteNode(Project target, BaseId idToDelete) throws Exception, IOException, ParseException
 	{
 		NodeType type = target.removeNodeFromDiagram(idToDelete);
-		target.deleteModelNode(new ModelNodeId(idToDelete.asInt()));
+		target.deleteObject(ObjectType.MODEL_NODE, new ModelNodeId(idToDelete.asInt()));
 		return type;
 	}
 	
