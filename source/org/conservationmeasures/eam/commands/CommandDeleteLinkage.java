@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteLinkage extends Command
@@ -84,7 +85,7 @@ public class CommandDeleteLinkage extends Command
 	public static void deleteLinkage(Project target, BaseId idToDelete) throws Exception, IOException, ParseException
 	{
 		target.removeLinkageFromDiagram(idToDelete);
-		target.deleteModelLinkage(idToDelete);
+		target.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);
 	}
 	
 

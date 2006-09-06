@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -194,7 +195,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	void createLinkageAndBundle(ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
 	{
-		project.createModelLinkage(BaseId.INVALID, threatId, targetId);
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
+		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		populateBundle(threatId, targetId, value);
 	}
 	
@@ -210,8 +212,9 @@ public class TestThreatRatingFramework extends EAMTestCase
 		populateBundle(threatId, targetId, veryHigh);
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
+		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		
-		project.createModelLinkage(BaseId.INVALID, threatId, targetId);
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 

@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ViewChangeListener;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -48,7 +47,6 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -93,6 +91,7 @@ public class Project
 		threatRatingFramework = new ThreatRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
 		
+		addCommandExecutedListener(new DiagramSaver());
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -443,8 +442,6 @@ public class Project
 		try
 		{
 			undoRedoState.pushUndoableCommand(command);
-			database.writeProjectInfo(projectInfo);
-			database.writeDiagram(getDiagramModel());
 		}
 		catch (IOException e)
 		{
@@ -604,25 +601,6 @@ public class Project
 		return node.getDiagramNodeId();
 	}
 	
-	public void deleteModelLinkage(BaseId idToDelete) throws IOException, ParseException
-	{
-		ConceptualModelLinkage linkage = (ConceptualModelLinkage)findObject(ObjectType.MODEL_LINKAGE, idToDelete);
-		ModelNodeId fromId = linkage.getFromNodeId();
-		ModelNodeId toId = linkage.getToNodeId();
-
-		database.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);
-		getLinkagePool().remove(idToDelete);
-		linkageWasDeleted(fromId, toId);
-	}
-	
-	private void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
-	{
-		ConceptualModelNode from = findNode(linkFromId);
-		ConceptualModelNode to = findNode(linkToId);
-		if(from.isFactor() && to.isTarget())
-			((ConceptualModelFactor)from).decreaseTargetCount();
-	}
-
 	public void removeLinkageFromDiagram(BaseId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
@@ -630,28 +608,9 @@ public class Project
 		model.deleteLinkage(linkageToDelete);
 	}
 
-	public ConceptualModelLinkage createModelLinkage(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception, IOException, ParseException
+	public DiagramLinkageId addLinkageToDiagram(BaseId modelLinkageId) throws Exception
 	{
-		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(linkFromId, linkToId);
-		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId, parameter);
-		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
-		cmLinkage.setFromId(linkFromId);
-		cmLinkage.setToId(linkToId);
-		getDatabase().writeObject(cmLinkage);
-		linkageWasCreated(linkFromId, linkToId);
-		return cmLinkage;
-	}
-	
-	private void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
-	{
-		ConceptualModelNode from = findNode(linkFromId); 
-		ConceptualModelNode to = findNode(linkToId);
-		if(from.isFactor() && to.isTarget())
-			((ConceptualModelFactor)from).increaseTargetCount();
-	}
-
-	public DiagramLinkageId addLinkageToDiagram(ConceptualModelLinkage cmLinkage) throws Exception
-	{
+		ConceptualModelLinkage cmLinkage = getLinkagePool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		return linkage.getDiagramLinkageId();
@@ -790,6 +749,38 @@ public class Project
 		LayerManager manager = getLayerManager();
 		boolean isVisible = manager.isVisible(node);
 		getGraphLayoutCache().setVisible(node, isVisible);
+	}
+	
+	
+	class DiagramSaver implements CommandExecutedListener
+	{
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			save();
+		}
+
+		public void commandUndone(CommandExecutedEvent event)
+		{
+			save();
+		}
+
+		public void commandFailed(Command command, CommandFailedException e)
+		{
+		}
+		
+		void save()
+		{
+			try
+			{
+				getDatabase().writeProjectInfo(projectInfo);
+				getDatabase().writeDiagram(getDiagramModel());
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("Error|Error writing to project"));
+			}
+		}
 	}
 
 

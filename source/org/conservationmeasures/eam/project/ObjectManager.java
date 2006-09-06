@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -26,6 +27,7 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -51,6 +53,8 @@ public class ObjectManager
 		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool());
 
 		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
+		
+		linkageListener = new LinkageMonitor();
 	}
 	
 	private IdAssigner getAnnotationIdAssigner()
@@ -160,12 +164,13 @@ public class ObjectManager
 			
 			case ObjectType.MODEL_LINKAGE:
 			{
+				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
 				objectId = getProject().obtainRealLinkageId(objectId);
-				ModelNodeId invalid = new ModelNodeId(BaseId.INVALID.asInt());
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, invalid, invalid);
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, parameter.getFromId(), parameter.getToId());
 				getLinkagePool().put(cmLinkage);
 				getDatabase().writeObject(cmLinkage);
 				createdId = cmLinkage.getId();
+				linkageListener.linkageWasCreated(parameter.getFromId(), parameter.getToId());
 				break;
 			}
 			
@@ -241,8 +246,12 @@ public class ObjectManager
 				break;
 				
 			case ObjectType.MODEL_LINKAGE:
+				ConceptualModelLinkage linkage = getLinkagePool().find(objectId);
+				ModelNodeId fromId = linkage.getFromNodeId();
+				ModelNodeId toId = linkage.getToNodeId();
 				getLinkagePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
+				linkageListener.linkageWasDeleted(fromId, toId);
 				break;
 				
 			case ObjectType.PROJECT_RESOURCE:
@@ -454,8 +463,6 @@ public class ObjectManager
 		}
 	}
 	
-
-	
 	Project getProject()
 	{
 		return project;
@@ -471,9 +478,30 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 	
+	class LinkageMonitor implements LinkageListener
+	{
+		public void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
+		{
+			ConceptualModelNode from = getNodePool().find(linkFromId); 
+			ConceptualModelNode to = getNodePool().find(linkToId);
+			if(from.isFactor() && to.isTarget())
+				((ConceptualModelFactor)from).increaseTargetCount();
+		}
+
+		public void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
+		{
+			ConceptualModelNode from = getNodePool().find(linkFromId);
+			ConceptualModelNode to = getNodePool().find(linkToId);
+			if(from.isFactor() && to.isTarget())
+				((ConceptualModelFactor)from).decreaseTargetCount();
+		}		
+	}
+	
+	
+	
 	Project project;
 	
 	HashMap pools;
 	GoalPool goalPool;
-
+	LinkageListener linkageListener;
 }

@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -33,7 +34,8 @@ public class SampleDiagramBuilder
 		{
 			ModelNodeId fromId = new ModelNodeId(linkagePairs[i*2]);
 			ModelNodeId toId = new ModelNodeId(linkagePairs[i*2+1]);
-			project.createModelLinkage(BaseId.INVALID, fromId, toId);
+			CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
+			project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		}
 	}
 }

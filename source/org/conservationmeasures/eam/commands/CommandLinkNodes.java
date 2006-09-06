@@ -12,7 +12,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandLinkNodes extends Command
@@ -78,9 +79,10 @@ public class CommandLinkNodes extends Command
 	
 	public static BaseId createLinkage(Project target, BaseId linkageId, ModelNodeId fromId, ModelNodeId toId) throws Exception, IOException, ParseException
 	{
-		ConceptualModelLinkage cmLinkage = target.createModelLinkage(linkageId, fromId, toId);
-		target.addLinkageToDiagram(cmLinkage);
-		return cmLinkage.getId();
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
+		BaseId createdId = target.createObject(ObjectType.MODEL_LINKAGE, linkageId, parameter);
+		target.addLinkageToDiagram(createdId);
+		return createdId;
 	}
 
 

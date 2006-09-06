@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.project;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -36,6 +38,7 @@ import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.main.ViewChangeListener;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
@@ -78,6 +81,23 @@ public class TestProject extends EAMTestCase
 		project.close();
 	}
 	
+	public void testUndoRedoSaveInfoAndDiagram() throws Exception
+	{
+		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeFactor());
+		project.executeCommand(cmd);
+		DiagramModel model = new DiagramModel(project);
+		project.getDatabase().readDiagram(model);
+		assertEquals("not one node?", 1, model.getAllNodes().size());
+		
+		project.undo();
+		project.getDatabase().readDiagram(model);
+		assertEquals("node not removed?", 0, model.getAllNodes().size());
+
+		project.redo();
+		project.getDatabase().readDiagram(model);
+		assertEquals("node not re-added?", 1, model.getAllNodes().size());
+	}
+	
 	public void testGetViewData() throws Exception
 	{
 		String viewName1 = DiagramView.getViewName();
@@ -117,9 +137,7 @@ public class TestProject extends EAMTestCase
 			ObjectType.THREAT_RATING_CRITERION, 
 			ObjectType.THREAT_RATING_VALUE_OPTION, 
 			ObjectType.TASK, 
-			ObjectType.MODEL_NODE, 
 			ObjectType.VIEW_DATA, 
-			ObjectType.MODEL_LINKAGE, 
 			ObjectType.PROJECT_RESOURCE,
 			ObjectType.INDICATOR,
 			ObjectType.OBJECTIVE,
@@ -127,14 +145,26 @@ public class TestProject extends EAMTestCase
 		
 		for(int i = 0; i < types.length; ++i)
 		{
-			CreateObjectParameter parameter = null;
-			if(types[i] == ObjectType.MODEL_NODE)
-				parameter = new CreateModelNodeParameter(new NodeTypeTarget());
-			verifyObjectLifecycle(types[i], parameter);
+			verifyObjectLifecycle(types[i], null);
 		}
+		
+		CreateModelNodeParameter factor = new CreateModelNodeParameter(new NodeTypeFactor());
+		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
+		
+		CreateModelNodeParameter target = new CreateModelNodeParameter(new NodeTypeTarget());
+		ModelNodeId factorId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
+		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
+		CreateModelLinkageParameter link = new CreateModelLinkageParameter(factorId, targetId);
+		verifyBasicObjectLifecycle(ObjectType.MODEL_LINKAGE, link);
 	}
 
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
+	{
+		verifyBasicObjectLifecycle(type, parameter);
+		verifyObjectWriteAndRead(type, parameter);
+	}
+
+	private void verifyBasicObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception, IOException, ParseException
 	{
 		BaseId createdId = project.createObject(type, BaseId.INVALID, parameter);
 		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
@@ -168,8 +198,10 @@ public class TestProject extends EAMTestCase
 		
 		BaseId desiredId = new BaseId(2323);
 		assertEquals("didn't use requested id?", desiredId, project.createObject(type, desiredId, parameter));
-		
+	}
 
+	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
+	{
 		File tempDirectory = createTempDirectory();
 		try
 		{
@@ -202,9 +234,11 @@ public class TestProject extends EAMTestCase
 		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeTarget()));
 		ConceptualModelFactor factor = (ConceptualModelFactor)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
-		ConceptualModelLinkage linkage = project.createModelLinkage(BaseId.INVALID, threatId, targetId);
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
+		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
+		BaseId linkageId = createdId;
 		assertTrue("didn't become direct threat?", factor.isDirectThreat());
-		project.deleteModelLinkage(linkage.getId());
+		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);
 		assertFalse("still a direct threat?", factor.isDirectThreat());
 	}
 	
@@ -668,7 +702,9 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
 		ModelNodeId idA = nodeA.getWrappedId();
 		ModelNodeId idB = nodeB.getWrappedId();
-		BaseId linkageId = project.createModelLinkage(idAssigner.takeNextId(), idA, idB).getId();
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(idA, idB);
+		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
+		BaseId linkageId = createdId;
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
@@ -676,7 +712,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("wrong to?", nodeB.getDiagramNodeId(), cmLinkage.getToNodeId());
 		assertTrue("not linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 		
-		project.deleteModelLinkage(linkageId);
+		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
 		assertFalse("still linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 	}

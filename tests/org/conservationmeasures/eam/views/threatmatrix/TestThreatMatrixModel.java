@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -90,11 +91,13 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		ModelNodeId target1 = createTarget("target one");
 		ModelNodeId target2 = createTarget("target two");
 		createTarget("target three");
+		CreateModelLinkageParameter link1to1 = new CreateModelLinkageParameter(threat1, target1);
+		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to1);
+		CreateModelLinkageParameter link1to2 = new CreateModelLinkageParameter(threat1, target2);
+		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to2);
+		CreateModelLinkageParameter link2to2 = new CreateModelLinkageParameter(threat2, target2);
+		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link2to2);
 		
-		project.createModelLinkage(BaseId.INVALID, threat1, target1);
-		project.createModelLinkage(BaseId.INVALID, threat1, target2);
-		project.createModelLinkage(BaseId.INVALID, threat2, target2);
-
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
 		int row2 = row1 + 1;
