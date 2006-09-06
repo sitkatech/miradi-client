@@ -54,8 +54,6 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
-import org.conservationmeasures.eam.views.interview.InterviewModel;
-import org.conservationmeasures.eam.views.interview.InterviewStepModel;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphSelectionModel;
@@ -85,8 +83,6 @@ public class Project
 		undoRedoState = new UndoRedoState();
 		
 		diagramModel = new DiagramModel(this);
-		interviewModel = new InterviewModel();
-		interviewModel.loadSteps();
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
@@ -160,11 +156,6 @@ public class Project
 	public DiagramModel getDiagramModel()
 	{
 		return diagramModel;
-	}
-	
-	public InterviewModel getInterviewModel()
-	{
-		return interviewModel;
 	}
 	
 	public LayerManager getLayerManager()
@@ -407,20 +398,6 @@ public class Project
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////
-	// data values
-
-	public String getDataValue(String fieldName)
-	{
-		return projectInfo.getProjectData().optString(fieldName, "");
-	}
-	
-	public void setDataValue(String fieldName, String fieldData)
-	{
-		EAM.logVerbose("BaseProject.setDataValue to: " + fieldData);
-		projectInfo.getProjectData().put(fieldName, fieldData);
-	}
-
-	/////////////////////////////////////////////////////////////////////////////////
 	// command execution
 
 	public void executeCommand(Command command) throws CommandFailedException
@@ -547,24 +524,6 @@ public class Project
 			ViewChangeListener listener = (ViewChangeListener)viewChangeListeners.get(i);
 			listener.switchToView(viewName);
 		}
-	}
-	
-	/////////////////////////////////////////////////////////////////////////////////
-	// interview view
-	
-	public InterviewStepModel getCurrentInterviewStep()
-	{
-		return getInterviewModel().getCurrentStep();
-	}
-	
-	public String getCurrentInterviewStepName()
-	{
-		return getInterviewModel().getCurrentStepName();
-	}
-	
-	public void setCurrentInterviewStepName(String newStepName)
-	{
-		getInterviewModel().setCurrentStepName(newStepName);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -793,7 +752,6 @@ public class Project
 	ThreatRatingFramework threatRatingFramework;
 	
 	ProjectServer database;
-	InterviewModel interviewModel;
 	DiagramModel diagramModel;
 
 	Vector commandExecutedListeners;

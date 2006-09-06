@@ -265,39 +265,6 @@ public class TestCommands extends EAMTestCase
 		assertEquals("Didn't undo?", oldVision, scope.getVision());
 	}
 	
-	public void testCommandSetData() throws Exception
-	{
-		String fieldName = "fieldname";
-		String fieldData = "new data";
-		String oldData = "old data";
-		project.setDataValue(fieldName, oldData);
-		CommandSetData cmd = new CommandSetData(fieldName, fieldData);
-		assertEquals("wrong field name?", fieldName, cmd.getFieldName());
-		assertEquals("wrong field data?", fieldData, cmd.getFieldData());
-		
-		project.executeCommand(cmd);
-		assertEquals("didn't set data?", fieldData, project.getDataValue(fieldName));
-
-		cmd.undo(project);
-		assertEquals("didn't restore data?", oldData, project.getDataValue(fieldName));
-	}
-	
-	public void testCommandInterviewSetStep() throws Exception
-	{
-		String stepName = project.getCurrentInterviewStepName();
-		assertEquals("project not starting at welcome?", "welcome", stepName);
-
-		String destinationStepName = "1.0.1_0_A.2.a";
-		CommandInterviewSetStep cmd = new CommandInterviewSetStep(destinationStepName);
-		assertEquals("wrong destination?", destinationStepName, cmd.getToStep());
-		
-		project.executeCommand(cmd);
-		assertEquals("didn't set step?", destinationStepName, project.getCurrentInterviewStepName());
-
-		cmd.undo(project);
-		assertEquals("didn't move back to previous step?", stepName, project.getCurrentInterviewStepName());
-	}
-	
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);

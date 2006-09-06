@@ -277,18 +277,6 @@ public class TestProject extends EAMTestCase
 		assertTrue("Foreign", Project.isValidProjectName(new String(new char[] {ACCENT_A_LOWER})));
 	}
 	
-	public void testData() throws Exception
-	{
-		assertEquals("bad fieldname has data?", "", project.getDataValue("lisjefijef"));
-		
-		String fieldName = "sample field name";
-		String fieldData = "sample field data";
-		project.setDataValue(fieldName, fieldData);
-		assertEquals("Didn't set data?", fieldData, project.getDataValue(fieldName));
-		
-		project.close();
-	}
-	
 	public void testViewChanges() throws Exception
 	{
 		class SampleViewChangeListener implements ViewChangeListener

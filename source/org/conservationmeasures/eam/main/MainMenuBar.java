@@ -44,7 +44,6 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.commands.CommandInterviewSetStep;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -283,16 +282,9 @@ public class MainMenuBar extends JMenuBar
 			String viewName = InterviewView.getViewName();
 			switchToView(viewName);
 			
-			try
-			{
-				CommandInterviewSetStep setStep = new CommandInterviewSetStep(stepName);
-				EAM.mainWindow.getProject().executeCommand(setStep);
-			}
-			catch (CommandFailedException e)
-			{
-				EAM.logWarning("Unable to set step");
-				EAM.logException(e);
-			}
+			// TODO: Re-implement with new interview wizard mechanism
+//				CommandInterviewSetStep setStep = new CommandInterviewSetStep(stepName);
+//				EAM.mainWindow.getProject().executeCommand(setStep);
 		}
 
 		void switchToView(String viewName)
