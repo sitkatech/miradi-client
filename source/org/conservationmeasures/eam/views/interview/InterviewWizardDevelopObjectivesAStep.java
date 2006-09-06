@@ -59,7 +59,7 @@ class DevelopObjectivesAText extends HtmlBuilder
 		};
 		
 		return font("Arial", 
-			table(tableRow(
+				wizardFrame(tableRow(
 				tableCell(
 						heading("Step 2.1.  Plan Your Actions") + 
 						paragraph(bold("Principle 2.1 A.  Develop clear goal and objectives")) +

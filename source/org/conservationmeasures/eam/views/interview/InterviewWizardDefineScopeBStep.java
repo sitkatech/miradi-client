@@ -49,7 +49,7 @@ class DefineScopeBText extends HtmlBuilder
 	public static String build()
 	{
 		return font("Arial", 
-			table(tableRow(
+				wizardFrame(tableRow(
 				tableCell(
 						heading("Step 1.  Conceptualize") + 
 						paragraph(bold("Principle 1A.  Be clear and specific about the issue or problem")) +

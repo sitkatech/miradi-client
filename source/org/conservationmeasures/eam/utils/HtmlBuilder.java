@@ -82,14 +82,29 @@ public class HtmlBuilder
 		return "<li>" + text + "</li>";
 	}
 	
+	static public String wizardFrame(String tableData)
+	{
+		return table(tableRow(tableCell("", 70) + tableCell("", 30)) + tableData, 100);
+	}
+	
 	static public String table(String tableData)
 	{
 		return "<table>" + tableData + "</table>";
 	}
 	
+	static public String table(String tableData, int percentWidth)
+	{
+		return "<table width='" + percentWidth + "%'>" + tableData + "</table>";
+	}
+	
 	static public String tableRow(String cells)
 	{
 		return "<tr>" + cells + "</tr>";
+	}
+
+	static public String tableCell(String text, int percentWidth)
+	{
+		return "<td align='left' valign='top' width='" + percentWidth + "%'>" + text + "</td>";
 	}
 	
 	static public String tableCell(String text)

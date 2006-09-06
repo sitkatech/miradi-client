@@ -48,7 +48,7 @@ class WelcomeText extends HtmlBuilder
 	public static String build()
 	{
 		return font("Arial", 
-			table(tableRow(
+			wizardFrame(tableRow(
 				tableCell(
 						heading("Interview (demo screen shots only)") + 
 						paragraph("This interview will walk you through each step of the CMP Open Standards.") +

@@ -48,7 +48,7 @@ class TemporaryGuide extends HtmlBuilder
 	public static String build()
 	{
 		return font("Arial", 
-			table(tableRow(
+			wizardFrame(tableRow(
 				tableCell(
 						heading("Interview (demo screen shots only)") + 
 						paragraph("The following interview screens will give you an idea of how the interview " +
