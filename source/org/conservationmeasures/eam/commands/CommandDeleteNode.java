@@ -56,7 +56,7 @@ public class CommandDeleteNode extends Command
 	{
 		try
 		{
-			target.insertNodeAtId(getNodeType(), getId());
+			CommandInsertNode.createNode(target, getNodeType(), getId());
 		}
 		catch (Exception e)
 		{

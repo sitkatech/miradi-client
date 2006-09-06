@@ -45,7 +45,7 @@ public class CommandInsertNode extends Command
 	{
 		try
 		{
-			insertedId = target.insertNodeAtId(getNodeType(), getId());
+			insertedId = createNode(target, getNodeType(), getId());
 		}
 		catch (Exception e)
 		{
@@ -66,6 +66,14 @@ public class CommandInsertNode extends Command
 			throw new CommandFailedException(e);
 		}
 	}
+
+	public static ModelNodeId createNode(Project target, NodeType nodeType, BaseId id) throws Exception
+	{
+		ModelNodeId nodeId = target.createModelNode(nodeType, id);
+		target.addNodeToDiagram(nodeId);
+		return nodeId;
+	}
+
 
 	public static final String COMMAND_NAME = "CommandInsertNode";
 

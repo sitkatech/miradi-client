@@ -631,11 +631,11 @@ public class TestProject extends EAMTestCase
 	public void testInsertDuplicateNodes() throws Exception
 	{
 		BaseId id = new BaseId(3023);
-		BaseId gotIdFirst = project.insertNodeAtId(DiagramNode.TYPE_FACTOR, id);
+		BaseId gotIdFirst = CommandInsertNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
 		assertEquals("Didn't get our id?", id, gotIdFirst);
 		try
 		{
-			project.insertNodeAtId(DiagramNode.TYPE_FACTOR, id);
+			CommandInsertNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
@@ -873,7 +873,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = project.insertNodeAtId(nodeType, BaseId.INVALID);
+		BaseId insertedId = CommandInsertNode.createNode(project, nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	

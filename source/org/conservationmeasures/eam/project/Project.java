@@ -599,13 +599,6 @@ public class Project
 		return nodeType;
 	}
 
-	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
-	{
-		ModelNodeId nodeId = createModelNode(typeToInsert, requestedId);
-		addNodeToDiagram(nodeId);
-		return nodeId;
-	}
-
 	public ModelNodeId createModelNode(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
 		BaseId insertedId = createObject(ObjectType.MODEL_NODE, requestedId, typeToInsert.toString());
