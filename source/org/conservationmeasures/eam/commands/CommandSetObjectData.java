@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -45,15 +42,6 @@ public class CommandSetObjectData extends Command
 		id = objectId;
 		tag = fieldTag;
 		newValue = dataValue;
-	}
-	
-	public CommandSetObjectData(DataInputStream dataIn) throws IOException
-	{
-		type = dataIn.readInt();
-		id = new BaseId(dataIn.readInt());
-		tag = dataIn.readUTF();
-		newValue = dataIn.readUTF();
-		oldValue = dataIn.readUTF();
 	}
 	
 	public int getObjectType()
@@ -119,15 +107,6 @@ public class CommandSetObjectData extends Command
 		}
 	}
 	
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(type);
-		dataOut.writeInt(id.asInt());
-		dataOut.writeUTF(tag);
-		dataOut.writeUTF(newValue);
-		dataOut.writeUTF(oldValue);
-	}
-
 	public static final String COMMAND_NAME = "SetObjectData";
 
 	int type;

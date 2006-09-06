@@ -8,11 +8,6 @@ package org.conservationmeasures.eam.commands;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -78,12 +73,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't set value?", newColor, option.getColor());
 		
-		CommandSetObjectData loaded = (CommandSetObjectData)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
-		assertEquals("didn't load field?", cmd.getFieldTag(), loaded.getFieldTag());
-		assertEquals("didn't load value?", cmd.getDataValue(), loaded.getDataValue());
-
 		cmd.undo(project);
 		assertEquals("didn't undo?", originalColor, option.getColor());
 		
@@ -130,12 +119,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't set value?", value, criterion.getLabel());
 		
-		CommandSetObjectData loaded = (CommandSetObjectData)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
-		assertEquals("didn't load field?", cmd.getFieldTag(), loaded.getFieldTag());
-		assertEquals("didn't load value?", cmd.getDataValue(), loaded.getDataValue());
-
 		cmd.undo(project);
 		assertEquals("didn't undo?", originalLabel, criterion.getLabel());
 		
@@ -183,10 +166,6 @@ public class TestCommands extends EAMTestCase
 		{
 		}
 		
-		CommandDeleteObject loaded = (CommandDeleteObject)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
-		
 		cmd.undo(project);
 		project.getThreatRatingFramework().getValueOption(createdId);
 		
@@ -212,10 +191,6 @@ public class TestCommands extends EAMTestCase
 		{
 		}
 		
-		CommandDeleteObject loaded = (CommandDeleteObject)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getObjectId(), loaded.getObjectId());
-		
 		cmd.undo(project);
 		project.getThreatRatingFramework().getCriterion(createdId);
 		
@@ -238,10 +213,6 @@ public class TestCommands extends EAMTestCase
 		
 		ThreatRatingCriterion added = framework.getCriteria()[oldCount];
 		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
-		
-		CommandCreateObject loaded = (CommandCreateObject)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getCreatedId(), loaded.getCreatedId());
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
@@ -269,10 +240,6 @@ public class TestCommands extends EAMTestCase
 		ThreatRatingValueOption added = framework.getValueOptions()[oldCount];
 		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
 		
-		CommandCreateObject loaded = (CommandCreateObject)saveAndReload(cmd);
-		assertEquals("didn't load type?", cmd.getObjectType(), loaded.getObjectType());
-		assertEquals("didn't load id?", cmd.getCreatedId(), loaded.getCreatedId());
-		
 		cmd.undo(project);
 		assertEquals("didn't undo?", oldCount, framework.getValueOptions().length);
 		
@@ -294,10 +261,6 @@ public class TestCommands extends EAMTestCase
 		assertEquals("Didn't set?", vision, scope.getVision());
 		assertEquals("wrong previous vision?", oldVision, cmd.getPreviousVisionText());
 		
-		CommandSetProjectVision loaded = (CommandSetProjectVision)saveAndReload(cmd);
-		assertEquals("Didn't load vision?", cmd.getVisionText(), loaded.getVisionText());
-		assertEquals("Didn't load previous vision?", cmd.getPreviousVisionText(), loaded.getPreviousVisionText());
-		
 		cmd.undo(project);
 		assertEquals("Didn't undo?", oldVision, scope.getVision());
 	}
@@ -315,11 +278,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't set data?", fieldData, project.getDataValue(fieldName));
 
-		CommandSetData loaded = (CommandSetData)saveAndReload(cmd);
-		assertEquals("didn't load field name?", cmd.getFieldName(), loaded.getFieldName());
-		assertEquals("didn't load field data?", cmd.getFieldData(), loaded.getFieldData());
-		assertEquals("didn't load old field data?", cmd.getOldFieldData(), loaded.getOldFieldData());
-
 		cmd.undo(project);
 		assertEquals("didn't restore data?", oldData, project.getDataValue(fieldName));
 	}
@@ -336,9 +294,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't set step?", destinationStepName, project.getCurrentInterviewStepName());
 
-		CommandInterviewSetStep loaded = (CommandInterviewSetStep)saveAndReload(cmd);
-		assertEquals("didn't load step name?", cmd.getToStep(), loaded.getToStep());
-		
 		cmd.undo(project);
 		assertEquals("didn't move back to previous step?", stepName, project.getCurrentInterviewStepName());
 	}
@@ -356,11 +311,6 @@ public class TestCommands extends EAMTestCase
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
-		CommandDiagramMove loaded = (CommandDiagramMove)saveAndReload(cmd);
-		assertEquals("didn't restore deltaX?", cmd.getDeltaX(), loaded.getDeltaX());
-		assertEquals("didn't restore deltaY?", cmd.getDeltaY(), loaded.getDeltaY());
-		assertTrue("didn't restore ids?", Arrays.equals(ids, loaded.getIds()));
-		
 		Point zeroZero = new Point(0, 0);
 		cmd.undo(project);
 		for(int i=0; i < ids.length; ++i)
@@ -384,13 +334,6 @@ public class TestCommands extends EAMTestCase
 		assertEquals("Didn't memorize old value?", defaultValueId, cmd.getPreviousValueId());
 		assertEquals("Didn't set new value?", valueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
 		
-		CommandSetThreatRating loaded = (CommandSetThreatRating)saveAndReload(cmd);
-		assertEquals("didn't restore threatid?", threatId, loaded.getThreatId());
-		assertEquals("didn't restore targetId?", targetId, loaded.getTargetId());
-		assertEquals("didn't restore criterionId?", criterionId, loaded.getCriterionId());
-		assertEquals("didn't restore valueId?", valueId, loaded.getValueId());
-		assertEquals("didn't restore previousValueId?", defaultValueId, loaded.getPreviousValueId());
-		
 		cmd.undo(project);
 		assertEquals("Didn't undo?", defaultValueId, framework.getBundle(threatId, targetId).getValueId(criterionId));
 		verifyUndoTwiceThrows(cmd);
@@ -411,11 +354,6 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't memorize old size?", originalSize, cmd.getPreviousSize());
 		assertEquals("didn't change to new size?", newSize, node.getSize());
 
-		CommandSetNodeSize loaded = (CommandSetNodeSize)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals( newSize, loaded.getCurrentSize());
-		assertEquals("didn't restore previous size?", originalSize, loaded.getPreviousSize());
-		
 		cmd.undo(project);
 		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getNodeById(id).getSize());
 		
@@ -434,11 +372,6 @@ public class TestCommands extends EAMTestCase
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a target?", inserted.isTarget());
 
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load type?", cmd.getNodeType(), loaded.getNodeType());
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-		
 		verifyUndoInsertNode(cmd);
 	}
 
@@ -452,10 +385,6 @@ public class TestCommands extends EAMTestCase
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert a factor?", inserted.isIndirectFactor());
 
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-		
 		verifyUndoInsertNode(cmd);
 	}
 
@@ -469,10 +398,6 @@ public class TestCommands extends EAMTestCase
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("didn't insert an intervention?", inserted.isIntervention());
 
-		CommandInsertNode loaded = (CommandInsertNode)saveAndReload(cmd);
-		assertNotNull(loaded);
-		assertEquals("didn't load id?", cmd.getId(), loaded.getId());
-		
 		verifyUndoInsertNode(cmd);
 	}
 
@@ -522,11 +447,6 @@ public class TestCommands extends EAMTestCase
 		DiagramNode toNode = inserted.getToNode();
 		assertEquals("wrong dest?", to, toNode.getDiagramNodeId());
 
-		CommandLinkNodes loaded = (CommandLinkNodes)saveAndReload(cmd);
-		assertEquals("didn't restore from?", from, loaded.getFromId());
-		assertEquals("didn't restore to?", to, loaded.getToId());
-		assertEquals("didn't restore linkage?", linkageId, loaded.getLinkageId());
-		
 		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
 		cmd.undo(project);
 		assertFalse("didn't remove linkage?", project.getDiagramModel().hasLinkage(fromNode, toNode));
@@ -553,11 +473,6 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't set from?", from, cmd.getWasFromId());
 		assertEquals("didn't set to?", to, cmd.getWasToId());
 
-		CommandDeleteLinkage loaded = (CommandDeleteLinkage)saveAndReload(cmd);
-		assertEquals("didn't restore id?", linkageId, loaded.getId());
-		assertEquals("didn't restore wasFrom?", from, loaded.getWasFromId());
-		assertEquals("didn't restore wasTo?", to, loaded.getWasToId());
-		
 		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
 		cmd.undo(project);
 		assertTrue("didn't restore linkage?", model.hasLinkage(fromNode, toNode));
@@ -571,10 +486,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		
 		assertEquals("type not set by execute?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
-		
-		CommandDeleteNode loaded = (CommandDeleteNode)saveAndReload(cmd);
-		assertEquals("didn't restore id?", id, loaded.getId());
-		assertEquals("didn't restore type?", cmd.getNodeType(), loaded.getNodeType());
 		
 		cmd.undo(project);
 		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
@@ -590,8 +501,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 
 		EAM.setLogToConsole();
-		CommandBeginTransaction loaded = (CommandBeginTransaction)saveAndReload(cmd);
-		assertNotNull("didn't reload?", loaded);
 	}
 
 	public void testEndTransaction() throws Exception
@@ -602,8 +511,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 
 		EAM.setLogToConsole();
-		CommandEndTransaction loaded = (CommandEndTransaction)saveAndReload(cmd);
-		assertNotNull("didn't reload?", loaded);
 	}
 
 	public void testUndoWhenNothingToUndo() throws Exception
@@ -657,11 +564,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(toMap);
 		assertEquals("didn't switch?", toMap.getDestinationView(), project.getCurrentView());
 		assertEquals("didn't set from?", originalViewName, toMap.getPreviousView());
-		
-		CommandSwitchView loaded = (CommandSwitchView)saveAndReload(toMap);
-		assertNotNull("didn't reload?", loaded);
-		assertEquals("wrong to?", toMap.getDestinationView(), loaded.getDestinationView());
-		assertEquals("wrong from?", toMap.getPreviousView(), loaded.getPreviousView());
 		
 		project.undo();
 		assertEquals("didn't switch back?", originalViewName, project.getCurrentView());
@@ -725,15 +627,6 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(insert);
 		ModelNodeId id = insert.getId();
 		return id;
-	}
-	
-	private Command saveAndReload(Command cmd) throws Exception
-	{
-		ByteArrayOutputStream dest = new ByteArrayOutputStream();
-		cmd.writeTo(new DataOutputStream(dest));
-		byte[] result = dest.toByteArray();
-		DataInputStream dataIn = new DataInputStream(new ByteArrayInputStream(result));
-		return Command.readFrom(dataIn);
 	}
 	
 	Project project;

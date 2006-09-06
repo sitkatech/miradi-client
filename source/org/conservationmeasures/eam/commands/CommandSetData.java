@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -21,13 +17,6 @@ public class CommandSetData extends Command
 		fieldData = fieldDataToUse;
 	}
 
-	public CommandSetData(DataInputStream dataIn) throws IOException
-	{
-		fieldName = dataIn.readUTF();
-		fieldData = dataIn.readUTF();
-		oldFieldData = dataIn.readUTF();
-	}
-	
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
@@ -45,13 +34,6 @@ public class CommandSetData extends Command
 		target.setDataValue(getFieldName(), getOldFieldData());
 	}
 
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeUTF(getFieldName());
-		dataOut.writeUTF(getFieldData());
-		dataOut.writeUTF(getOldFieldData());
-	}
-	
 	public String getFieldName()
 	{
 		return fieldName;

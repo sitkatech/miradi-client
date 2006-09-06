@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 
@@ -19,12 +15,6 @@ public class CommandInterviewSetStep extends Command
 		toStep = destinationStepName;
 	}
 
-	public CommandInterviewSetStep(DataInputStream dataIn) throws IOException
-	{
-		toStep = dataIn.readUTF();
-		fromStep = dataIn.readUTF();
-	}
-	
 	public String getCommandName()
 	{
 		return COMMAND_NAME;
@@ -41,12 +31,6 @@ public class CommandInterviewSetStep extends Command
 		target.setCurrentInterviewStepName(fromStep);
 	}
 
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeUTF(getToStep());
-		dataOut.writeUTF(getFromStep());
-	}
-	
 	public String getToStep()
 	{
 		return toStep;

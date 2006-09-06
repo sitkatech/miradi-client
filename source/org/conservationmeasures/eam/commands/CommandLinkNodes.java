@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -22,13 +18,6 @@ public class CommandLinkNodes extends Command
 		this.fromId = fromId;
 		this.toId = toId;
 		linkageId = BaseId.INVALID;
-	}
-	
-	public CommandLinkNodes(DataInputStream dataIn) throws IOException
-	{
-		fromId = new ModelNodeId(dataIn.readInt());
-		toId = new ModelNodeId(dataIn.readInt());
-		linkageId = new BaseId(dataIn.readInt());
 	}
 	
 	public BaseId getLinkageId()
@@ -73,13 +62,6 @@ public class CommandLinkNodes extends Command
 		
 	}
 
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(getFromId().asInt());
-		dataOut.writeInt(getToId().asInt());
-		dataOut.writeInt(getLinkageId().asInt());
-	}
-	
 	public ModelNodeId getFromId()
 	{
 		return fromId;

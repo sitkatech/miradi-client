@@ -6,9 +6,6 @@
 package org.conservationmeasures.eam.commands;
 
 import java.awt.Dimension;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -25,31 +22,6 @@ public class CommandSetNodeSize extends Command
 		id = idToUpdate;
 		currentSize = updatedSize;
 		previousSize = previousSizeToUse;
-	}
-
-
-	public CommandSetNodeSize(DataInputStream dataIn) throws IOException
-	{
-		id = new BaseId(dataIn.readInt());
-		currentSize = new Dimension(dataIn.readInt(), dataIn.readInt());
-		previousSize = new Dimension(dataIn.readInt(), dataIn.readInt());
-	}
-
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(getId().asInt());
-		dataOut.writeInt(currentSize.width);
-		dataOut.writeInt(currentSize.height);
-		if(previousSize == null)
-		{
-			dataOut.writeInt(currentSize.width);
-			dataOut.writeInt(currentSize.height);
-		}
-		else
-		{
-			dataOut.writeInt(previousSize.width);
-			dataOut.writeInt(previousSize.height);
-		}
 	}
 
 	public void execute(Project target) throws CommandFailedException

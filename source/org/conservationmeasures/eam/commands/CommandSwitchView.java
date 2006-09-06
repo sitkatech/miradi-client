@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -20,12 +16,6 @@ public class CommandSwitchView extends Command
 		toView = destinationView;
 	}
 
-	public CommandSwitchView(DataInputStream dataIn) throws IOException
-	{
-		toView = dataIn.readUTF();
-		fromView = dataIn.readUTF();
-	}
-	
 	public String getDestinationView()
 	{
 		return toView;
@@ -66,12 +56,6 @@ public class CommandSwitchView extends Command
 		target.switchToView(fromView);
 	}
 	
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeUTF(getDestinationView());
-		dataOut.writeUTF(getPreviousView());
-	}
-
 
 	public static final String COMMAND_NAME = "SwitchView";
 

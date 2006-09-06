@@ -1,9 +1,5 @@
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
@@ -14,12 +10,6 @@ public class CommandSetProjectVision extends Command
 	{
 		vision = visionToUse;
 		previousVision = "";
-	}
-	
-	public CommandSetProjectVision(DataInputStream dataIn) throws IOException
-	{
-		vision = dataIn.readUTF();
-		previousVision = dataIn.readUTF();
 	}
 	
 	public String getCommandName()
@@ -40,12 +30,6 @@ public class CommandSetProjectVision extends Command
 		scope.setVision(getPreviousVisionText());
 	}
 
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeUTF(getVisionText());
-		dataOut.writeUTF(getPreviousVisionText());
-	}
-	
 	public String getVisionText()
 	{
 		return vision;

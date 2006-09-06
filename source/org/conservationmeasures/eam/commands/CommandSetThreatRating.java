@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -27,15 +23,6 @@ public class CommandSetThreatRating extends Command
 		valueId = valueIdToUse;
 	}
 	
-	public CommandSetThreatRating(DataInputStream dataIn) throws IOException
-	{
-		threatId = new ModelNodeId(dataIn.readInt());
-		targetId = new ModelNodeId(dataIn.readInt());
-		criterionId = new BaseId(dataIn.readInt());
-		valueId = new BaseId(dataIn.readInt());
-		previousValueId = new BaseId(dataIn.readInt());
-	}
-
 	public String toString()
 	{
 		return getCommandName() + ": " + threatId + ", " + targetId + "," + criterionId + "," + valueId;
@@ -74,15 +61,6 @@ public class CommandSetThreatRating extends Command
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-	}
-
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(getThreatId().asInt());
-		dataOut.writeInt(getTargetId().asInt());
-		dataOut.writeInt(getCriterionId().asInt());
-		dataOut.writeInt(getValueId().asInt());
-		dataOut.writeInt(getPreviousValueId().asInt());
 	}
 
 	public ModelNodeId getThreatId()

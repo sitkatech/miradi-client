@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
@@ -17,19 +13,24 @@ public class CommandCreateObject extends Command
 {
 	public CommandCreateObject(int typeToCreate)
 	{
-		type = typeToCreate;
-		createdId = BaseId.INVALID;
+		this(typeToCreate, null);
 	}
 	
-	public CommandCreateObject(DataInputStream dataIn) throws IOException
+	public CommandCreateObject(int typeToCreate, String extraInfoToUse)
 	{
-		type = dataIn.readInt();
-		createdId = new BaseId(dataIn.readInt());
+		type = typeToCreate;
+		extraInfo = extraInfoToUse;
+		createdId = BaseId.INVALID;
 	}
 	
 	public int getObjectType()
 	{
 		return type;
+	}
+	
+	public String getExtraInfo()
+	{
+		return extraInfo;
 	}
 	
 	public BaseId getCreatedId()
@@ -66,14 +67,9 @@ public class CommandCreateObject extends Command
 		}
 	}
 	
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(type);
-		dataOut.writeInt(createdId.asInt());
-	}
-
 	public static final String COMMAND_NAME = "CreateObject";
 
 	int type;
+	String extraInfo;
 	BaseId createdId;
 }

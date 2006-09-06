@@ -5,61 +5,11 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
-import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 
 public abstract class Command
 {
-	public static Command readFrom(DataInputStream dataIn) throws IOException, UnknownCommandException
-	{
-		String commandName = dataIn.readUTF();
-		return createFrom(commandName, dataIn);
-	}
-
-	public static Command createFrom(String commandName, DataInputStream dataIn) throws IOException, UnknownCommandException
-	{
-		if(commandName.equals(CommandDiagramMove.COMMAND_NAME))
-			return new CommandDiagramMove(dataIn);
-		if(commandName.equals(CommandInsertNode.COMMAND_NAME))
-			return new CommandInsertNode(dataIn);
-		if(commandName.equals(CommandLinkNodes.COMMAND_NAME))
-			return new CommandLinkNodes(dataIn);
-		if(commandName.equals(CommandDeleteLinkage.COMMAND_NAME))
-			return new CommandDeleteLinkage(dataIn);
-		if(commandName.equals(CommandDeleteNode.COMMAND_NAME))
-			return new CommandDeleteNode(dataIn);
-		if(commandName.equals(CommandSwitchView.COMMAND_NAME))
-			return new CommandSwitchView(dataIn);
-		if(commandName.equals(CommandBeginTransaction.COMMAND_NAME))
-			return new CommandBeginTransaction();
-		if(commandName.equals(CommandEndTransaction.COMMAND_NAME))
-			return new CommandEndTransaction();
-		if(commandName.equals(CommandInterviewSetStep.COMMAND_NAME))
-			return new CommandInterviewSetStep(dataIn);
-		if(commandName.equals(CommandSetData.COMMAND_NAME))
-			return new CommandSetData(dataIn);
-		if(commandName.equals(CommandSetNodeSize.COMMAND_NAME))
-			return new CommandSetNodeSize(dataIn);
-		if(commandName.equals(CommandSetProjectVision.COMMAND_NAME))
-			return new CommandSetProjectVision(dataIn);
-		if(commandName.equals(CommandCreateObject.COMMAND_NAME))
-			return new CommandCreateObject(dataIn);
-		if(commandName.equals(CommandDeleteObject.COMMAND_NAME))
-			return new CommandDeleteObject(dataIn);
-		if(commandName.equals(CommandSetObjectData.COMMAND_NAME))
-			return new CommandSetObjectData(dataIn);
-		if(commandName.equals(CommandSetThreatRating.COMMAND_NAME))
-			return new CommandSetThreatRating(dataIn);
-		throw new UnknownCommandException("Attempted to load unknown command type: " + commandName);
-	}
-	
 	public boolean equals(Object other)
 	{
 		return toString().equals(other.toString());
@@ -85,29 +35,7 @@ public abstract class Command
 		return false;
 	}
 	
-	public void writeTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeUTF(getCommandName());
-		writeDataTo(dataOut);
-	}
-
 	abstract public String getCommandName();
 	abstract public void execute(Project target) throws CommandFailedException;
 	abstract public void undo(Project target) throws CommandFailedException;
-
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-	}
-	
-	NodeType readNodeType(DataInputStream dataIn) throws IOException
-	{
-		int rawType = dataIn.readInt();
-		return NodeDataMap.convertIntToNodeType(rawType);
-	}
-	
-	void writeNodeType(DataOutputStream dataOut, NodeType nodeType) throws IOException
-	{
-		int rawType = NodeDataMap.convertNodeTypeToInt(nodeType);
-		dataOut.writeInt(rawType);
-	}
 }

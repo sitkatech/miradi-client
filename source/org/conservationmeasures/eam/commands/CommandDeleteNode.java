@@ -5,10 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -24,12 +20,6 @@ public class CommandDeleteNode extends Command
 		nodeType = DiagramNode.TYPE_INVALID;
 	}
 
-	public CommandDeleteNode(DataInputStream dataIn) throws IOException
-	{
-		id = new BaseId(dataIn.readInt());
-		nodeType = readNodeType(dataIn);
-	}
-	
 	public NodeType getNodeType()
 	{
 		return nodeType;
@@ -69,12 +59,6 @@ public class CommandDeleteNode extends Command
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-	}
-
-	public void writeDataTo(DataOutputStream dataOut) throws IOException
-	{
-		dataOut.writeInt(getId().asInt());
-		writeNodeType(dataOut, getNodeType());
 	}
 
 	public BaseId getId()
