@@ -664,7 +664,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeA = createNode(new NodeTypeFactor());
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getWrappedId(), nodeB.getWrappedId());
+		ModelNodeId idA = nodeA.getWrappedId();
+		ModelNodeId idB = nodeB.getWrappedId();
+		BaseId linkageId = project.createModelLinkage(idAssigner.takeNextId(), idA, idB).getId();
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
@@ -672,7 +674,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("wrong to?", nodeB.getDiagramNodeId(), cmLinkage.getToNodeId());
 		assertTrue("not linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 		
-		project.deleteLinkage(linkageId);
+		project.deleteModelLinkage(linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
 		assertFalse("still linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
 	}

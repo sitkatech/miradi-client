@@ -125,11 +125,11 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testBundlesForDeletedNodes() throws Exception
 	{
 		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
-		project.deleteNode(bundle1.getThreatId());
+		project.deleteModelNode(bundle1.getThreatId());
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
 		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
-		project.deleteNode(bundle2.getTargetId());
+		project.deleteModelNode(bundle2.getTargetId());
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}
@@ -194,13 +194,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	void createLinkageAndBundle(ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
 	{
-		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
+		project.createModelLinkage(BaseId.INVALID, threatId, targetId);
 		populateBundle(threatId, targetId, value);
 	}
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeFactor(), BaseId.INVALID);
+		ModelNodeId threatId = project.createModelNode(new NodeTypeFactor(), BaseId.INVALID);
 		ModelNodeId targetId = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
@@ -222,13 +222,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ModelNodeId createTarget() throws Exception
 	{
-		ModelNodeId targetId = project.insertNodeAtId(new NodeTypeTarget(), BaseId.INVALID);
+		ModelNodeId targetId = project.createModelNode(new NodeTypeTarget(), BaseId.INVALID);
 		return targetId;
 	}
 
 	private ModelNodeId createThreat() throws Exception
 	{
-		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeFactor(), BaseId.INVALID);
+		ModelNodeId threatId = project.createModelNode(new NodeTypeFactor(), BaseId.INVALID);
 		((ConceptualModelFactor)project.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

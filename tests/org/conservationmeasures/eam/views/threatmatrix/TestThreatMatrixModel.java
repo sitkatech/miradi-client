@@ -5,13 +5,13 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -89,9 +89,9 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		ModelNodeId target2 = createTarget("target two");
 		createTarget("target three");
 		
-		project.insertLinkageAtId(BaseId.INVALID, threat1, target1);
-		project.insertLinkageAtId(BaseId.INVALID, threat1, target2);
-		project.insertLinkageAtId(BaseId.INVALID, threat2, target2);
+		project.createModelLinkage(BaseId.INVALID, threat1, target1);
+		project.createModelLinkage(BaseId.INVALID, threat1, target2);
+		project.createModelLinkage(BaseId.INVALID, threat2, target2);
 
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -125,9 +125,9 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 
 	private ModelNodeId createNode(NodeType type, String name) throws Exception
 	{
-		ModelNodeId id = project.insertNodeAtId(type, BaseId.INVALID);
+		ModelNodeId id = project.createModelNode(type, BaseId.INVALID);
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		ConceptualModelNode node = project.findNode(id);
 		node.setLabel(name);
 		return id;
 	}

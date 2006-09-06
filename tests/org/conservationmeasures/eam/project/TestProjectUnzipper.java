@@ -84,7 +84,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
-			project.insertNodeAtId(new NodeTypeTarget(), targetId);
+			project.createModelNode(new NodeTypeTarget(), targetId);
 			
 			File zip = createTempFile();
 			try
