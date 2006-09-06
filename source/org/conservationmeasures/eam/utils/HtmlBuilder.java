@@ -141,4 +141,9 @@ public class HtmlBuilder
 		return dropDown(name, choices, null);
 	}
 	
+	static public String editor(int rows, int columns)
+	{
+		return "<textarea rows='" + rows + "' cols='" + columns + "'></textarea>";
+	}
+	
 }
