@@ -15,16 +15,6 @@ public abstract class Command
 		return toString().equals(other.toString());
 	}
 	
-	public boolean isUndo()
-	{
-		return false;
-	}
-
-	public boolean isRedo()
-	{
-		return false;
-	}
-	
 	public boolean isBeginTransaction()
 	{
 		return false;

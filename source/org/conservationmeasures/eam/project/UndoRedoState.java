@@ -50,9 +50,6 @@ public class UndoRedoState
 
 	public void pushUndoableCommand(Command command) throws IOException
 	{
-		if(command.isUndo() || command.isRedo())
-			return;
-		
 		redoableCommands.clear();
 		undoableCommands.insertElementAt(command, 0);
 	}
