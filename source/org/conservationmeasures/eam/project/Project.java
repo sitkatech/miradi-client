@@ -28,6 +28,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -43,6 +45,7 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -82,7 +85,6 @@ public class Project
 		undoRedoState = new UndoRedoState();
 		
 		diagramModel = new DiagramModel(this);
-		diagramModel.addDiagramModelListener(new LinkageMonitor());
 		interviewModel = new InterviewModel();
 		interviewModel.loadSteps();
 		layerManager = new LayerManager();
@@ -234,6 +236,11 @@ public class Project
 	public BaseId obtainRealLinkageId(BaseId proposedId)
 	{
 		return projectInfo.obtainRealLinkageId(proposedId);
+	}
+	
+	public BaseId obtainRealNodeId(BaseId proposedId)
+	{
+		return projectInfo.obtainRealNodeId(proposedId);
 	}
 	
 	public BaseId createObject(int objectType) throws Exception
@@ -594,39 +601,90 @@ public class Project
 
 	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
-		ModelNodeId realId = projectInfo.obtainRealNodeId(requestedId);
-		createObject(ObjectType.MODEL_NODE, realId, typeToInsert.toString());
-		
+		ModelNodeId nodeId = createModelNode(typeToInsert, requestedId);
+		addNodeToDiagram(nodeId);
+		return nodeId;
+	}
+
+	public ModelNodeId createModelNode(NodeType typeToInsert, BaseId requestedId) throws Exception
+	{
+		BaseId insertedId = createObject(ObjectType.MODEL_NODE, requestedId, typeToInsert.toString());
+		return new ModelNodeId(insertedId.asInt());
+	}
+
+	public DiagramNodeId addNodeToDiagram(ModelNodeId realId) throws Exception
+	{
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);
 		updateVisibilityOfSingleNode(node);
-		
-		ModelNodeId idThatWasInserted = node.getWrappedId();
-		return idThatWasInserted;
+		return node.getDiagramNodeId();
 	}
 	
 	public void deleteLinkage(BaseId idToDelete) throws Exception
 	{
-		DiagramModel model = getDiagramModel();
-		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
-		model.deleteLinkage(linkageToDelete);
+		removeLinkageFromDiagram(idToDelete);
+		deleteModelLinkage(idToDelete);
+	}
+
+	public void deleteModelLinkage(BaseId idToDelete) throws IOException, ParseException
+	{
+		ConceptualModelLinkage linkage = (ConceptualModelLinkage)findObject(ObjectType.MODEL_LINKAGE, idToDelete);
+		ModelNodeId fromId = linkage.getFromNodeId();
+		ModelNodeId toId = linkage.getToNodeId();
 
 		database.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);
 		getLinkagePool().remove(idToDelete);
+		linkageWasDeleted(fromId, toId);
+	}
+	
+	private void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
+	{
+		ConceptualModelNode from = findNode(linkFromId);
+		ConceptualModelNode to = findNode(linkToId);
+		if(from.isFactor() && to.isTarget())
+			((ConceptualModelFactor)from).decreaseTargetCount();
+	}
+
+	public void removeLinkageFromDiagram(BaseId idToDelete) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
+		model.deleteLinkage(linkageToDelete);
 	}
 
 	public BaseId insertLinkageAtId(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception
+	{
+		ConceptualModelLinkage cmLinkage = createModelLinkage(requestedLinkageId, linkFromId, linkToId);
+		addLinkageToDiagram(cmLinkage);
+		return cmLinkage.getId();
+	}
+
+	public ConceptualModelLinkage createModelLinkage(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception, IOException, ParseException
 	{
 		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(createdId);
 		cmLinkage.setFromId(linkFromId);
 		cmLinkage.setToId(linkToId);
 		getDatabase().writeObject(cmLinkage);
+		linkageWasCreated(linkFromId, linkToId);
+		return cmLinkage;
+	}
+	
+	private void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
+	{
+		ConceptualModelNode from = findNode(linkFromId); 
+		ConceptualModelNode to = findNode(linkToId);
+		if(from.isFactor() && to.isTarget())
+			((ConceptualModelFactor)from).increaseTargetCount();
+	}
+
+	private DiagramLinkageId addLinkageToDiagram(ConceptualModelLinkage cmLinkage) throws Exception
+	{
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		return linkage.getDiagramLinkageId();
 	}
-	
+
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
 		ConceptualModelNode cmNode = getNodePool().find(nodeId);

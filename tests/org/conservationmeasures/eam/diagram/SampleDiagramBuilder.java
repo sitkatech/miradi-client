@@ -22,16 +22,16 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.insertNodeAtId(new NodeTypeIntervention(), new BaseId(interventionIndexBase + i));
-			project.insertNodeAtId(new NodeTypeFactor(), new BaseId(indirectFactorIndexBase + i));
-			project.insertNodeAtId(new NodeTypeFactor(), new BaseId(directThreatIndexBase + i));
-			project.insertNodeAtId(new NodeTypeTarget(), new BaseId(targetIndexBase + i));
+			project.createModelNode(new NodeTypeIntervention(), new BaseId(interventionIndexBase + i));
+			project.createModelNode(new NodeTypeFactor(), new BaseId(indirectFactorIndexBase + i));
+			project.createModelNode(new NodeTypeFactor(), new BaseId(directThreatIndexBase + i));
+			project.createModelNode(new NodeTypeTarget(), new BaseId(targetIndexBase + i));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
 			ModelNodeId fromId = new ModelNodeId(linkagePairs[i*2]);
 			ModelNodeId toId = new ModelNodeId(linkagePairs[i*2+1]);
-			project.insertLinkageAtId(BaseId.INVALID, fromId, toId);
+			project.createModelLinkage(BaseId.INVALID, fromId, toId);
 		}
 	}
 }

@@ -194,6 +194,18 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
+	public void testCreateAndDeleteModelLinkage() throws Exception
+	{
+		ModelNodeId threatId = project.createModelNode(new NodeTypeFactor(), BaseId.INVALID);
+		ModelNodeId targetId = project.createModelNode(new NodeTypeTarget(), BaseId.INVALID);
+		ConceptualModelFactor factor = (ConceptualModelFactor)project.findNode(threatId);
+		assertFalse("already direct threat?", factor.isDirectThreat());
+		ConceptualModelLinkage linkage = project.createModelLinkage(BaseId.INVALID, threatId, targetId);
+		assertTrue("didn't become direct threat?", factor.isDirectThreat());
+		project.deleteModelLinkage(linkage.getId());
+		assertFalse("still a direct threat?", factor.isDirectThreat());
+	}
+	
 	public void testGetSnapped() throws Exception
 	{
 		Point zeroZero = new Point(0, 0);

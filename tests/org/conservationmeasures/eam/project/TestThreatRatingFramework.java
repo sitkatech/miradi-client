@@ -211,7 +211,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
 		
-		project.insertLinkageAtId(BaseId.INVALID, threatId, targetId);
+		project.createModelLinkage(BaseId.INVALID, threatId, targetId);
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
