@@ -52,7 +52,7 @@ public class CommandLinkNodes extends Command
 	{
 		try
 		{
-			target.deleteLinkage(getLinkageId());
+			CommandDeleteLinkage.deleteLinkage(target, getLinkageId());
 		}
 		catch (Exception e)
 		{

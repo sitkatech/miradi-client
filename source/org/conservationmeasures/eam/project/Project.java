@@ -627,12 +627,6 @@ public class Project
 		return node.getDiagramNodeId();
 	}
 	
-	public void deleteLinkage(BaseId idToDelete) throws Exception
-	{
-		removeLinkageFromDiagram(idToDelete);
-		deleteModelLinkage(idToDelete);
-	}
-
 	public void deleteModelLinkage(BaseId idToDelete) throws IOException, ParseException
 	{
 		ConceptualModelLinkage linkage = (ConceptualModelLinkage)findObject(ObjectType.MODEL_LINKAGE, idToDelete);

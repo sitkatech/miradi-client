@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -44,13 +47,14 @@ public class CommandDeleteLinkage extends Command
 
 	public void execute(Project target) throws CommandFailedException
 	{
-		DiagramModel model = target.getDiagramModel();
 		try
 		{
-			DiagramLinkage linkageToDelete = model.getLinkageById(id);
+			DiagramModel model = target.getDiagramModel();
+			BaseId idToDelete = id;
+			DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 			wasFrom = linkageToDelete.getFromNode().getWrappedId();
 			wasTo = linkageToDelete.getToNode().getWrappedId();
-			target.deleteLinkage(id);
+			deleteLinkage(target, idToDelete);
 		}
 		catch (Exception e)
 		{
@@ -58,7 +62,7 @@ public class CommandDeleteLinkage extends Command
 			throw new CommandFailedException(e);
 		}
 	}
-	
+
 	public void undo(Project target) throws CommandFailedException
 	{
 		try
@@ -77,6 +81,12 @@ public class CommandDeleteLinkage extends Command
 		return id;
 	}
 
+	public static void deleteLinkage(Project target, BaseId idToDelete) throws Exception, IOException, ParseException
+	{
+		target.removeLinkageFromDiagram(idToDelete);
+		target.deleteModelLinkage(idToDelete);
+	}
+	
 
 	public static final String COMMAND_NAME = "DeleteLinkage";
 
