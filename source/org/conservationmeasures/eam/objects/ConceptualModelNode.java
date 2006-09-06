@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -210,13 +213,13 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public static ConceptualModelNode createFrom(JSONObject json) throws ParseException
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
-		if(typeString.equals(INTERVENTION_TYPE))
+		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
 			return new ConceptualModelIntervention(json);
-		if(typeString.equals(FACTOR_TYPE))
+		if(typeString.equals(NodeTypeFactor.FACTOR_TYPE))
 			return new ConceptualModelFactor(json);
-		if(typeString.equals(TARGET_TYPE))
+		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
 			return new ConceptualModelTarget(json);
-		if(typeString.equals(CLUSTER_TYPE))
+		if(typeString.equals(NodeTypeCluster.CLUSTER_TYPE))
 			return new ConceptualModelCluster(json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
@@ -242,15 +245,15 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return json;
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, NodeType nodeType)
+	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, String nodeType)
 	{
-		if(nodeType.isIntervention())
+		if(nodeType.equals(NodeTypeIntervention.INTERVENTION_TYPE))
 			return new ConceptualModelIntervention(idToCreate);
-		else if(nodeType.isFactor())
-			return new ConceptualModelFactor(idToCreate, nodeType);
-		else if(nodeType.isTarget())
+		else if(nodeType.equals(NodeTypeFactor.FACTOR_TYPE))
+			return new ConceptualModelFactor(idToCreate);
+		else if(nodeType.equals(NodeTypeTarget.TARGET_TYPE))
 			return new ConceptualModelTarget(idToCreate);
-		else if(nodeType.isCluster())
+		else if(nodeType.equals(NodeTypeCluster.CLUSTER_TYPE))
 			return new ConceptualModelCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
@@ -261,11 +264,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public static final String TAG_INDICATOR_ID = "IndicatorId";
 	public static final String TAG_GOAL_IDS = "GoalIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
-	
-	static final String INTERVENTION_TYPE = "Intervention";
-	static final String FACTOR_TYPE = "Factor";
-	static final String TARGET_TYPE = "Target";
-	static final String CLUSTER_TYPE = "Cluster";
 	
 	private NodeType type;
 	private String comment;

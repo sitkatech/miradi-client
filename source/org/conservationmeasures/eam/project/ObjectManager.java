@@ -11,7 +11,6 @@ import java.util.HashMap;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -107,7 +106,7 @@ public class ObjectManager
 		return goalPool;
 	}
 	
-	public BaseId createObject(int objectType, BaseId objectId, Object extraInfo) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId, String extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
@@ -144,8 +143,7 @@ public class ObjectManager
 			{
 				if(objectId.isInvalid())
 					objectId = getNodeIdAssigner().takeNextId();
-				NodeType nodeType = (NodeType)extraInfo;
-				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, nodeType);
+				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, extraInfo);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();

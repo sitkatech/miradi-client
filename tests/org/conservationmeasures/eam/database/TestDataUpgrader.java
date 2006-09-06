@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.database;
 import java.io.File;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -107,7 +106,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelThreat(String label)
 		{
-			super(idAssigner.takeNextId(), new NodeTypeDirectThreat());
+			super(idAssigner.takeNextId());
 			setLabel(label);
 		}
 		

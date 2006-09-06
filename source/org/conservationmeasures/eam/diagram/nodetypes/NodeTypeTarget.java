@@ -12,5 +12,12 @@ public class NodeTypeTarget extends NodeType
 	{
 		return true;
 	}
+	
+	public String toString()
+	{
+		return TARGET_TYPE;
+	}
+
+	public static final String TARGET_TYPE = "Target";
 
 }

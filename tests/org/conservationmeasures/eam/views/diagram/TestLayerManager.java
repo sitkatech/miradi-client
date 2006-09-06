@@ -29,7 +29,7 @@ public class TestLayerManager extends EAMTestCase
 		IdAssigner idAssigner = new IdAssigner();
 		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
 		cmTarget.setLabel("Target");
-		cmFactor = new ConceptualModelFactor(idAssigner.takeNextId(), DiagramNode.TYPE_FACTOR);
+		cmFactor = new ConceptualModelFactor(idAssigner.takeNextId());
 		cmFactor.setLabel("Factor");
 		cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		cmIntervention.setLabel("Intervention");

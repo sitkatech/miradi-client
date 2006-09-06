@@ -24,8 +24,7 @@ import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
@@ -126,14 +125,14 @@ public class TestProject extends EAMTestCase
 		
 		for(int i = 0; i < types.length; ++i)
 		{
-			Object extraInfo = null;
+			String extraInfo = null;
 			if(types[i] == ObjectType.MODEL_NODE)
-				extraInfo = new NodeTypeTarget();
+				extraInfo = NodeTypeTarget.TARGET_TYPE;
 			verifyObjectLifecycle(types[i], extraInfo);
 		}
 	}
 
-	private void verifyObjectLifecycle(int type, Object extraInfo) throws Exception
+	private void verifyObjectLifecycle(int type, String extraInfo) throws Exception
 	{
 		BaseId createdId = project.createObject(type, BaseId.INVALID, extraInfo);
 		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
@@ -590,7 +589,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		ModelNodeId targetId = targetCommand.getId();
 		
-		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeIndirectFactor());
+		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeFactor());
 		project.executeCommand(factorCommand);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		ModelNodeId factorId = factorCommand.getId();
@@ -651,7 +650,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testLinkagePool() throws Exception
 	{
-		DiagramNode nodeA = createNode(new NodeTypeIndirectFactor());
+		DiagramNode nodeA = createNode(new NodeTypeFactor());
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
 		BaseId linkageId = project.insertLinkageAtId(idAssigner.takeNextId(), nodeA.getWrappedId(), nodeB.getWrappedId());
 		LinkagePool linkagePool = project.getLinkagePool();
@@ -695,8 +694,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
-		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
+		DiagramNode nodeIndirectFactor = createNode(new NodeTypeFactor());
+		DiagramNode nodeDirectThreat = createNode(new NodeTypeFactor());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
@@ -742,8 +741,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
-		DiagramNode nodeDirectThreat = createNode(new NodeTypeDirectThreat());
+		DiagramNode nodeIndirectFactor = createNode(new NodeTypeFactor());
+		DiagramNode nodeDirectThreat = createNode(new NodeTypeFactor());
 		
 		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.getUnderlyingObject().setIndicatorId(indicatorId1);
@@ -761,10 +760,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testDirectThreatSet() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeIndirectFactor());
-		DiagramNode nodeDirectThreatA = createNode(new NodeTypeDirectThreat());	
+		DiagramNode nodeIndirectFactor = createNode(new NodeTypeFactor());
+		DiagramNode nodeDirectThreatA = createNode(new NodeTypeFactor());	
 		((ConceptualModelFactor)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
-		DiagramNode nodeDirectThreatB = createNode(new NodeTypeDirectThreat());
+		DiagramNode nodeDirectThreatB = createNode(new NodeTypeFactor());
 		((ConceptualModelFactor)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
@@ -787,7 +786,7 @@ public class TestProject extends EAMTestCase
 		try
 		{
 			
-			CommandInsertNode cmdNode1 = new CommandInsertNode(new NodeTypeIndirectFactor());
+			CommandInsertNode cmdNode1 = new CommandInsertNode(new NodeTypeFactor());
 			diskProject.executeCommand(cmdNode1);
 			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
 			diskProject.executeCommand(cmdNode2);

@@ -28,9 +28,9 @@ public class TestLinkagePool extends TestCaseEnhanced
 	public void testHasLinkage() throws Exception
 	{
 		LinkagePool pool = new LinkagePool();
-		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
-		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
-		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
+		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
+		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
+		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
 		
 		ConceptualModelLinkage linkage = new ConceptualModelLinkage(idAssigner.takeNextId(), node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);

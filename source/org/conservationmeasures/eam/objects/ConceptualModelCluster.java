@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -60,7 +61,7 @@ public class ConceptualModelCluster extends ConceptualModelNode
 
 	public JSONObject toJson()
 	{
-		JSONObject json = createBaseJsonObject(CLUSTER_TYPE);
+		JSONObject json = createBaseJsonObject(NodeTypeCluster.CLUSTER_TYPE);
 		json.put(TAG_MEMBER_IDS, getMemberIds().toString());
 		return json;
 	}

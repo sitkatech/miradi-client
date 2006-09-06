@@ -11,7 +11,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -81,7 +80,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId(), new NodeTypeIndirectFactor());
+		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId());
 		
 		storage.writeObject(factor);
 		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)readNode(factor.getId());

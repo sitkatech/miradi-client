@@ -49,4 +49,5 @@ public abstract class NodeType
 		return getClass().getName().hashCode();
 	}
 
+	public abstract String toString();
 }

@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.main.EAM;
 
 public class NodeTypeCluster extends NodeType
 {
@@ -16,6 +15,9 @@ public class NodeTypeCluster extends NodeType
 
 	public String toString()
 	{
-		return EAM.text("Type|Cluster");
+		return CLUSTER_TYPE;
 	}
+
+	public static final String CLUSTER_TYPE = "Cluster";
+
 }

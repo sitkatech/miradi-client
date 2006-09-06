@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objectpools.NodePool;
@@ -30,19 +30,19 @@ public class TestNodePool extends TestCaseEnhanced
 
 		for(int i = 0; i < 2; ++i)
 		{
-			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), new NodeTypeDirectThreat());
+			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), NodeTypeDirectThreat.FACTOR_TYPE);
 			node.increaseTargetCount();
 			pool.put(node);
 		}
 		for(int i = 0; i < 3; ++i)
-			addNodeToPool(new NodeTypeIndirectFactor());
+			addNodeToPool(new NodeTypeFactor());
 		for(int i = 0; i < 4; ++i)
 			addNodeToPool(new NodeTypeTarget());
 	}
 	
 	private void addNodeToPool(NodeType type)
 	{
-		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), type);
+		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), type.toString());
 		pool.put(node);
 	}
 

@@ -246,7 +246,7 @@ public class Project
 		return createObject(objectType, objectId, null);
 	}
 	
-	public BaseId createObject(int objectType, BaseId objectId, Object extraInfo) throws Exception
+	public BaseId createObject(int objectType, BaseId objectId, String extraInfo) throws Exception
 	{
 		return objectManager.createObject(objectType, objectId, extraInfo);
 	}
@@ -595,7 +595,7 @@ public class Project
 	public ModelNodeId insertNodeAtId(NodeType typeToInsert, BaseId requestedId) throws Exception
 	{
 		ModelNodeId realId = projectInfo.obtainRealNodeId(requestedId);
-		createObject(ObjectType.MODEL_NODE, realId, typeToInsert);
+		createObject(ObjectType.MODEL_NODE, realId, typeToInsert.toString());
 		
 		DiagramModel model = getDiagramModel();
 		DiagramNode node = model.createNode(realId);

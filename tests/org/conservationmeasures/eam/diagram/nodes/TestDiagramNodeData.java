@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -23,8 +22,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		BaseId id = new BaseId(2);
-		NodeType nodeAType = DiagramNode.TYPE_TARGET;
-		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id, nodeAType);
+		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id);
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
 		String nodeAText = "Node A";
 		nodeA.setLabel(nodeAText);

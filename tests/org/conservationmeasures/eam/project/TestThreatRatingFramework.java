@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Color;
 import java.io.File;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -200,7 +200,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
+		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeFactor(), BaseId.INVALID);
 		ModelNodeId targetId = createTarget();
 
 		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
@@ -228,7 +228,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ModelNodeId createThreat() throws Exception
 	{
-		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeDirectThreat(), BaseId.INVALID);
+		ModelNodeId threatId = project.insertNodeAtId(new NodeTypeFactor(), BaseId.INVALID);
 		((ConceptualModelFactor)project.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

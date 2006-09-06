@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.json.JSONObject;
@@ -86,7 +87,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 
 	public JSONObject toJson()
 	{
-		JSONObject json = createBaseJsonObject(INTERVENTION_TYPE);
+		JSONObject json = createBaseJsonObject(NodeTypeIntervention.INTERVENTION_TYPE);
 		json.put(TAG_STATUS, status);
 		json.put(TAG_ACTIVITY_IDS, activityIds.toString());
 		return json;

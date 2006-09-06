@@ -13,4 +13,11 @@ public class NodeTypeIntervention extends NodeType
 		return true;
 	}
 	
+	public String toString()
+	{
+		return INTERVENTION_TYPE; 
+	}
+
+	public static final String INTERVENTION_TYPE = "Intervention";
+
 }

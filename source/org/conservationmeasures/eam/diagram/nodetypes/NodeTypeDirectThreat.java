@@ -6,7 +6,6 @@
 
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.main.EAM;
 
 
 public class NodeTypeDirectThreat extends NodeTypeFactor
@@ -14,10 +13,5 @@ public class NodeTypeDirectThreat extends NodeTypeFactor
 	public boolean isDirectThreat() 
 	{
 		return true;
-	}
-
-	public String toString()
-	{
-		return EAM.text("Type|Direct Threat");
 	}
 }

@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.main.EAM;
 
 
 public class NodeTypeFactor extends NodeType
@@ -17,6 +16,9 @@ public class NodeTypeFactor extends NodeType
 	
 	public String toString()
 	{
-		return EAM.text("Type|Factor");
+		return FACTOR_TYPE;
 	}
+
+	public static final String FACTOR_TYPE = "Factor";
+
 }
