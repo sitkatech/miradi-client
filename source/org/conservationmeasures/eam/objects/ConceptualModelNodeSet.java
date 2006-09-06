@@ -132,7 +132,7 @@ public class ConceptualModelNodeSet implements Collection
 		while(iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			result.append(node.toString());
+			result.append(node.getId());
 			result.append(",");
 		}
 		result.append("]");
