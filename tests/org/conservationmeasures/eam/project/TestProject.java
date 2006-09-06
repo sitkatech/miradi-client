@@ -198,8 +198,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		ModelNodeId threatId = project.createModelNode(new NodeTypeFactor(), BaseId.INVALID);
-		ModelNodeId targetId = project.createModelNode(new NodeTypeTarget(), BaseId.INVALID);
+		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeFactor()));
+		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeTarget()));
 		ConceptualModelFactor factor = (ConceptualModelFactor)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		ConceptualModelLinkage linkage = project.createModelLinkage(BaseId.INVALID, threatId, targetId);

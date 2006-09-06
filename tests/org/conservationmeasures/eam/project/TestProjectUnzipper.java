@@ -15,6 +15,8 @@ import java.util.zip.ZipOutputStream;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
@@ -84,7 +86,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
-			project.createModelNode(new NodeTypeTarget(), targetId);
+			project.createObject(ObjectType.MODEL_NODE, targetId, new CreateModelNodeParameter(new NodeTypeTarget()));
 			
 			File zip = createTempFile();
 			try

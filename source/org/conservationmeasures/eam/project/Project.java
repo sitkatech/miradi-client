@@ -37,7 +37,6 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -600,13 +599,6 @@ public class Project
 		NodeType nodeType = nodeToDelete.getNodeType();
 		model.deleteNode(nodeToDelete);
 		return nodeType;
-	}
-
-	public ModelNodeId createModelNode(NodeType typeToInsert, BaseId requestedId) throws Exception
-	{
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(typeToInsert);
-		BaseId insertedId = createObject(ObjectType.MODEL_NODE, requestedId, parameter);
-		return new ModelNodeId(insertedId.asInt());
 	}
 
 	public DiagramNodeId addNodeToDiagram(ModelNodeId realId) throws Exception

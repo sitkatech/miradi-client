@@ -10,6 +10,8 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class SampleDiagramBuilder
@@ -22,10 +24,10 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.createModelNode(new NodeTypeIntervention(), new BaseId(interventionIndexBase + i));
-			project.createModelNode(new NodeTypeFactor(), new BaseId(indirectFactorIndexBase + i));
-			project.createModelNode(new NodeTypeFactor(), new BaseId(directThreatIndexBase + i));
-			project.createModelNode(new NodeTypeTarget(), new BaseId(targetIndexBase + i));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(interventionIndexBase + i), new CreateModelNodeParameter(new NodeTypeIntervention()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateModelNodeParameter(new NodeTypeFactor()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateModelNodeParameter(new NodeTypeFactor()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(targetIndexBase + i), new CreateModelNodeParameter(new NodeTypeTarget()));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{

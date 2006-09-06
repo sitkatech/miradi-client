@@ -10,6 +10,8 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -125,7 +127,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 
 	private ModelNodeId createNode(NodeType type, String name) throws Exception
 	{
-		ModelNodeId id = project.createModelNode(type, BaseId.INVALID);
+		ModelNodeId id = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		ConceptualModelNode node = project.findNode(id);
 		node.setLabel(name);
