@@ -585,13 +585,6 @@ public class Project
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
-	public NodeType deleteNode(BaseId idToDelete) throws Exception
-	{
-		NodeType nodeType = removeNodeFromDiagram(idToDelete);
-		deleteModelNode(new ModelNodeId(idToDelete.asInt()));
-		return nodeType; 
-	}
-
 	public void deleteModelNode(ModelNodeId idToDelete) throws IOException, ParseException
 	{
 		deleteObject(ObjectType.MODEL_NODE, idToDelete);

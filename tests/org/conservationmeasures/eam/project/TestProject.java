@@ -538,7 +538,7 @@ public class TestProject extends EAMTestCase
 		Object[] selectedCells = new DiagramNode[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(selectedCells);
 		
-		project.deleteNode(node1.getDiagramNodeId());
+		CommandDeleteNode.deleteNode(project, node1.getDiagramNodeId());
 		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
 
 		Point pastePoint = new Point(5,5);
