@@ -879,7 +879,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
-		BaseId insertedId = project.insertLinkageAtId(id, fromId, toId);
+		BaseId insertedId = CommandLinkNodes.createLinkage(project, id, fromId, toId);
 		return project.getDiagramModel().getLinkageById(insertedId);
 	}
 

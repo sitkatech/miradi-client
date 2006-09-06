@@ -646,13 +646,6 @@ public class Project
 		model.deleteLinkage(linkageToDelete);
 	}
 
-	public BaseId insertLinkageAtId(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception
-	{
-		ConceptualModelLinkage cmLinkage = createModelLinkage(requestedLinkageId, linkFromId, linkToId);
-		addLinkageToDiagram(cmLinkage);
-		return cmLinkage.getId();
-	}
-
 	public ConceptualModelLinkage createModelLinkage(BaseId requestedLinkageId, ModelNodeId linkFromId, ModelNodeId linkToId) throws Exception, IOException, ParseException
 	{
 		BaseId createdId = createObject(ObjectType.MODEL_LINKAGE, requestedLinkageId);
@@ -672,7 +665,7 @@ public class Project
 			((ConceptualModelFactor)from).increaseTargetCount();
 	}
 
-	private DiagramLinkageId addLinkageToDiagram(ConceptualModelLinkage cmLinkage) throws Exception
+	public DiagramLinkageId addLinkageToDiagram(ConceptualModelLinkage cmLinkage) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);

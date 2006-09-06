@@ -5,10 +5,14 @@
  */
 package org.conservationmeasures.eam.commands;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandLinkNodes extends Command
@@ -39,7 +43,7 @@ public class CommandLinkNodes extends Command
 	{
 		try
 		{
-			linkageId = target.insertLinkageAtId(getLinkageId(), fromId, toId);
+			linkageId = createLinkage(target, getLinkageId(), getFromId(), getToId());
 		}
 		catch (Exception e)
 		{
@@ -72,6 +76,13 @@ public class CommandLinkNodes extends Command
 		return toId;
 	}
 	
+	public static BaseId createLinkage(Project target, BaseId linkageId, ModelNodeId fromId, ModelNodeId toId) throws Exception, IOException, ParseException
+	{
+		ConceptualModelLinkage cmLinkage = target.createModelLinkage(linkageId, fromId, toId);
+		target.addLinkageToDiagram(cmLinkage);
+		return cmLinkage.getId();
+	}
+
 
 	public static final String COMMAND_NAME = "LinkNodes";
 

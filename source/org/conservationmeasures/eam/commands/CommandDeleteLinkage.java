@@ -67,7 +67,7 @@ public class CommandDeleteLinkage extends Command
 	{
 		try
 		{
-			target.insertLinkageAtId(getId(), getWasFromId(), getWasToId());
+			CommandLinkNodes.createLinkage(target, getId(), getWasFromId(), getWasToId());
 		}
 		catch (Exception e)
 		{
