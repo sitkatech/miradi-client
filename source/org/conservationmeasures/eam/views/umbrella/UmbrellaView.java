@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -225,6 +226,8 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionViewCalendar.class, new ViewCalendar());
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionPreferences.class, new Preferences());
+		
+		addDoerToMap(ActionJumpInterviewDefineScope.class, new JumpInterviewDefineScope());
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)

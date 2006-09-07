@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class Actions
@@ -76,6 +77,7 @@ public class Actions
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
+		registerAction(new ActionJumpInterviewDefineScope(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

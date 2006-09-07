@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
 public class MainMenuBar extends JMenuBar
@@ -216,7 +217,7 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createMenu1()
+	private JMenu createMenu1(Actions actions)
 	{
 		JMenu menu1 = new JMenu("1. Conceptualize Your Project");
 		
@@ -226,7 +227,7 @@ public class MainMenuBar extends JMenuBar
 		menu1a.add("Develop a charter for the project");
 	
 		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
-		menu1b.add("Define the scope of your project");
+		menu1b.add(actions.get(ActionJumpInterviewDefineScope.class));
 		menu1b.add("Establish a clear and common vision");
 		menu1b.add("Identify and prioritize targets");
 		menu1b.add("Describe status of targets");
@@ -341,7 +342,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createProcessMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
-		menu.add(createMenu1());
+		menu.add(createMenu1(actions));
 		menu.add(createMenu2());
 		menu.add(createMenu3());
 		menu.add(createMenu4());
