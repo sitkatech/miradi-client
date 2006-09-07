@@ -613,9 +613,10 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 
 	public ObjectiveIds getObjectives()
 	{
-		Objective oneObjective = (Objective)dropdownObjective.getSelectedItem();
 		ObjectiveIds objectives = new ObjectiveIds();
-		objectives.setObjectives(oneObjective);
+		Objective oneObjective = (Objective)dropdownObjective.getSelectedItem();
+		if(!oneObjective.getId().isInvalid())
+			objectives.setObjectives(oneObjective);
 		return objectives;
 	}
 

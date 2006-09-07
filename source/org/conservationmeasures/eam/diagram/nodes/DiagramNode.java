@@ -356,6 +356,9 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public Rectangle getAnnotationsRect(int numberLines)
 	{
+		if(numberLines == 0 && !getIndicatorId().isInvalid())
+			numberLines = 1;
+		
 		Rectangle rect = new Rectangle(getSize());
 		
 		Rectangle annotationsRectangle = new Rectangle();
