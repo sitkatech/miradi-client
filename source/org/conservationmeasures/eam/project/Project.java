@@ -586,11 +586,6 @@ public class Project
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}
 	
-	public void moveNodesWithoutNotification(int deltaX, int deltaY, BaseId[] ids) throws Exception 
-	{
-		getDiagramModel().moveNodesWithoutNotification(deltaX, deltaY, ids);
-	}
-	
 	public void setSelectionModel(GraphSelectionModel selectionModelToUse)
 	{
 		selectionModel = selectionModelToUse;

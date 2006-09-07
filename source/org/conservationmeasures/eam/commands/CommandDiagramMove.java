@@ -50,7 +50,7 @@ public class CommandDiagramMove extends Command
 	{
 		try
 		{
-			target.moveNodesWithoutNotification(-getDeltaX(), -getDeltaY(), getIds());
+			target.moveNodes(-getDeltaX(), -getDeltaY(), getIds());
 		}
 		catch (Exception e)
 		{
