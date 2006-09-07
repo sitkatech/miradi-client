@@ -24,7 +24,7 @@ abstract public class Doer
 	
 	public void setMainWindow(MainWindow mainWindow)
 	{
-		// overridden by any subclass that cares about projects
+		// overridden by any subclass that cares about the main window
 	}
 
 	public void setProject(Project project)
@@ -34,6 +34,6 @@ abstract public class Doer
 	
 	public void setLocation(Point location)
 	{
-		// overridden by any subclass that cares about projects
+		// overridden by any subclass that knows about diagram locations
 	}
 }
