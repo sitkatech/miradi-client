@@ -6,8 +6,6 @@
 package org.conservationmeasures.eam.main;
 
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.Action;
 import javax.swing.JMenu;
@@ -44,12 +42,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.commands.CommandSwitchView;
-import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -223,122 +216,140 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
+	private JMenu createMenu1()
+	{
+		JMenu menu1 = new JMenu("1. Conceptualize Your Project");
+		
+		JMenu menu1a = new JMenu("1A. Define initial project team");
+		menu1a.add("Select initial project team");
+		menu1a.add("Designate a project leader");
+		menu1a.add("Develop a charter for the project");
+	
+		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
+		menu1b.add("Define the scope of your project");
+		menu1b.add("Establish a clear and common vision");
+		menu1b.add("Identify and prioritize targets");
+		menu1b.add("Describe status of targets");
+		
+		JMenu menu1c = new JMenu("1C. Understand project context");
+		menu1c.add("Identify direct threats");
+		menu1c.add("Rank direct threats");
+		menu1c.add("Identify indirect threats & opportunities"); 
+		menu1c.add("Assess stakeholders");
+		menu1c.add("Analyze project capacity");
+		
+		JMenu menu1d = new JMenu("1D. Model project situation");
+		menu1d.add("Articulate your core assumptions");
+		menu1d.add("Create a model");
+		menu1d.add("Ground truth and revise model");
+		
+		menu1.add(menu1a);
+		menu1.add(menu1b);
+		menu1.add(menu1c);
+		menu1.add(menu1d);
+		return menu1;
+	}
+	
+	private JMenu createMenu2()
+	{
+		JMenu menu2 = new JMenu("2. Plan Your Actions");
+		
+		JMenu menu2a = new JMenu("2A. Develop clear goal and objectives");
+		menu2a.add("Develop goals for each target");
+		menu2a.add("Identify “key factors” & draft strategies");
+		menu2a.add("Develop objectives");
+		
+		JMenu menu2b = new JMenu("2B. Strategically select activities");
+		menu2b.add("Rank draft strategies");
+		menu2b.add("Develop results chains for key strategies");
+		menu2b.add("Develop activities and action plan");
+		menu2b.add("Analyze resources, feasibility, and risk");
+		
+		menu2.add(menu2a);
+		menu2.add(menu2b);
+		return menu2;
+	}
+	
+	private JMenu createMenu3()
+	{
+		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
+		
+		JMenu menu3a = new JMenu("3A. Focus your monitoring");
+		menu3a.add("Determine what you need to know");
+		menu3a.add("Clearly define audiences ");
+		
+		JMenu menu3b = new JMenu("3B. Develop a formal monitoring plan");
+		menu3b.add("Define indicators");
+		menu3b.add("Select appropriate methods");
+		menu3b.add("Plan for data storage");
+		
+		menu3.add(menu3a);
+		menu3.add(menu3b);
+		return menu3;
+	}
+	
+	private JMenu createMenu4()
+	{
+		JMenu menu4 = new JMenu("4. Implement Actions and Monitoring");
+		
+		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plans");
+		menu4a.add("Develop short-term work plans ");
+		menu4a.add("Develop Gantt chart and/or calendar of project activities");
+		menu4a.add("Clearly define monitoring tasks");
+		menu4a.add("Develop project budgets");
+		menu4a.add("Agree upon team roles");
+		
+		menu4.add(menu4a);
+		menu4.add("4B. Implement work plans");
+		menu4.add("4C. Refine work plans on ongoing basis");
+		return menu4;
+	}
+	
+	private JMenu createMenu5()
+	{
+		JMenu menu5 = new JMenu("5. Analyze");
+		
+		menu5.add("5A. Analyze your data");
+		menu5.add("5B. Analyze interventions");
+		menu5.add("5C. Communicate results within project team");
+		return menu5;
+	}
+	
+	private JMenu createMenu6()
+	{
+		JMenu menu6 = new JMenu("6. Use/Adapt");
+		menu6.add("6A. Adapt your action and monitoring plans");
+		return menu6;
+	}
+	
+	private JMenu createMenu7()
+	{
+		JMenu menu7 = new JMenu("7. Capture and Share Learning");
+		
+		menu7.add("7A. Document what you learn");
+		menu7.add("7B. Share what you learn");
+		menu7.add("7C. Create a learning environment");
+		
+		return menu7;
+	}
+
+	private JMenuItem createMenu8()
+	{
+		return new JMenuItem("Close the Loop");
+	}
+	
 	private JMenu createProcessMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
-		menu.add(createConceptualizeSubment());
-		menu.add(createPlanActionsSubmenu());
-		menu.add(createSubmenu("2.2. Plan Your Monitoring",
-				new String[] {"A. Information Needs", "B. Monitoring and Evaluation (M&E) Plan"}));
-		menu.add(createSubmenu("3. Implement Actions and Monitoring",
-				new String[] {"Project Tracking Tools"}));
-		menu.add(createSubmenu("4. Analyze",
-				new String[] {"A. Analyze M&E Information", "B. Analyze Interventions", "C. Communicate with Project Team"}));
-		menu.add(createSubmenu("5. Use/Adapt",
-				new String[] {"A. Adapt Action and M&E Plans"}));
-		menu.add(createSubmenu("6. Communicate",
-				new String[] {"A. Dissemination Strategy"}));
-		menu.add(createSubmenu("7. Iterate",
-				new String[] {"A. Revisit Steps", "B. Create a Learning Environment"}));
+		menu.add(createMenu1());
+		menu.add(createMenu2());
+		menu.add(createMenu3());
+		menu.add(createMenu4());
+		menu.add(createMenu5());
+		menu.add(createMenu6());
+		menu.add(createMenu7());
+		menu.add(createMenu8());
 		return menu;
-	}
-
-	private JMenu createPlanActionsSubmenu()
-	{
-		String objectivesText = "A. Goal and Objectives";
-		String[] items = new String[] {"B. Activities", "C. Action Plan"};
-		JMenu submenu = new JMenu("2.1. Plan Your Actions");
-		JMenuItem objectivesItem = new JMenuItem(objectivesText);
-		objectivesItem.addActionListener(new ObjectivesActionHandler());
-		submenu.add(objectivesItem);
-		for(int i = 0; i < items.length; ++i)
-			submenu.add(items[i]);
-		return submenu;
-	}
-	
-	private JMenu createConceptualizeSubment()
-	{
-		String[] items = new String[] {"B. Understand the context"};
-		JMenu submenu = new JMenu("1. Conceptualize");
-		
-		JMenuItem clarifyIssueItem = new JMenuItem("A. Be clear about issue");
-		clarifyIssueItem.addActionListener(new ClarifyIssueActionHandler());
-		submenu.add(clarifyIssueItem);
-		
-		for(int i = 0; i < items.length; ++i)
-			submenu.add(items[i]);
-		
-		JMenuItem modelItem = new JMenuItem("C. Create a conceptual model");
-		modelItem.addActionListener(new ModelActionHandler());
-		submenu.add(modelItem);
-		
-		return submenu;
-	}
-	
-	abstract class JumpHandler implements ActionListener
-	{
-		void jumpToInterviewStep(String stepName)
-		{
-			String viewName = InterviewView.getViewName();
-			switchToView(viewName);
-			
-			// TODO: Re-implement with new interview wizard mechanism
-//				CommandInterviewSetStep setStep = new CommandInterviewSetStep(stepName);
-//				EAM.mainWindow.getProject().executeCommand(setStep);
-		}
-
-		void switchToView(String viewName)
-		{
-			try
-			{
-				CommandSwitchView switchView = new CommandSwitchView(viewName);
-				EAM.mainWindow.getProject().executeCommand(switchView);
-			}
-			catch (AlreadyInThatViewException ignoreIt)
-			{
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logWarning("Unable to switch views");
-				EAM.logException(e);
-			}
-		}
-		
-	}
-	
-	class ClarifyIssueActionHandler extends JumpHandler
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			jumpToInterviewStep("P1aT2S1");
-		}
-
-	}
-
-	class ObjectivesActionHandler extends JumpHandler
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			jumpToInterviewStep("P1aT2S2");
-		}
-
-	}
-	
-	class ModelActionHandler extends JumpHandler
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			switchToView(DiagramView.getViewName());
-		}
-		
-	}
-
-	private JMenu createSubmenu(String name, String[] items)
-	{
-		JMenu submenu = new JMenu(name);
-		for(int i = 0; i < items.length; ++i)
-			submenu.add(items[i]);
-		return submenu;
 	}
 
 	private JMenu createHelpMenu(Actions actions)
