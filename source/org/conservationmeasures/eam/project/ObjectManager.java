@@ -167,10 +167,9 @@ public class ObjectManager
 				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
 				objectId = getProject().obtainRealLinkageId(objectId);
 				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, parameter.getFromId(), parameter.getToId());
-				getLinkagePool().put(cmLinkage);
 				getDatabase().writeObject(cmLinkage);
+				addLinkageToPool(cmLinkage);
 				createdId = cmLinkage.getId();
-				linkageListener.linkageWasCreated(parameter.getFromId(), parameter.getToId());
 				break;
 			}
 			
@@ -213,7 +212,7 @@ public class ObjectManager
 		
 		return createdId;
 	}
-	
+
 	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
 	{
 		switch(objectType)
@@ -404,7 +403,7 @@ public class ObjectManager
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
 			ConceptualModelLinkage linkage = (ConceptualModelLinkage)getDatabase().readObject(ObjectType.MODEL_LINKAGE, linkageIds[i]);
-			getLinkagePool().put(linkage);
+			addLinkageToPool(linkage);
 		}
 	}
 	
@@ -476,6 +475,12 @@ public class ObjectManager
 	ProjectServer getDatabase()
 	{
 		return getProject().getDatabase();
+	}
+	
+	private void addLinkageToPool(ConceptualModelLinkage cmLinkage)
+	{
+		getLinkagePool().put(cmLinkage);
+		linkageListener.linkageWasCreated(cmLinkage.getFromNodeId(), cmLinkage.getToNodeId());
 	}
 	
 	class LinkageMonitor implements LinkageListener

@@ -820,6 +820,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testOpenProject() throws Exception
 	{
+		ModelNodeId factorId;
 		File tempDir = createTempDirectory();
 		Project diskProject = new Project(new ProjectServer());
 		diskProject.createOrOpen(tempDir);
@@ -828,6 +829,7 @@ public class TestProject extends EAMTestCase
 			
 			CommandInsertNode cmdNode1 = new CommandInsertNode(new NodeTypeFactor());
 			diskProject.executeCommand(cmdNode1);
+			factorId = cmdNode1.getId();
 			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
 			diskProject.executeCommand(cmdNode2);
 			CommandLinkNodes cmdLinkage = new CommandLinkNodes(cmdNode1.getId(), cmdNode2.getId());
@@ -852,6 +854,8 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
 			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
 			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
+			ConceptualModelFactor factor = (ConceptualModelFactor)loadedProject.findNode(factorId);
+			assertTrue("didn't update factor target count?", factor.isDirectThreat());
 		}
 		finally
 		{
