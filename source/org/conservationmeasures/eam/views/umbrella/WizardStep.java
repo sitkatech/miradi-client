@@ -57,7 +57,10 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 		return null;
 	}
 	
-	abstract public boolean save() throws Exception;
+	public boolean save() throws Exception
+	{
+		return true;
+	}
 	
 	public void buttonPressed(String buttonName)
 	{
