@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.diagram;
+package org.conservationmeasures.eam.views.diagram.wizard;
 
 import java.awt.BorderLayout;
 
