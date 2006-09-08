@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
-import java.io.File;
+import java.net.URL;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -39,7 +39,9 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 		if(resourceFileName == null)
 			return "Missing text";
 		
-		UnicodeReader reader = new UnicodeReader(new File(resourceFileName));
+		Class thisClass = getClass();
+		URL htmlFile = thisClass.getResource(resourceFileName);
+		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
 		try
 		{
 			return reader.readAll();

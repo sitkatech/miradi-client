@@ -39,5 +39,5 @@ public class DiagramWizardOverviewStep extends WizardStep
 		}
 	}
 
-	String HTML_FILENAME = "html/OverviewStep.html";
+	String HTML_FILENAME = "OverviewStep.html";
 }
