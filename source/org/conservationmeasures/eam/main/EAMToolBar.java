@@ -31,7 +31,7 @@ public class EAMToolBar extends JToolBar
 	{
 		setFloatable(false);
 		add(ViewSwitcher.create(actions, currentViewActionClass));
-		add(new Separator());
+		addSeparator();
 		add(new ToolBarButton(actions, ActionUndo.class));
 		add(new ToolBarButton(actions, ActionRedo.class));
 
