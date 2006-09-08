@@ -61,11 +61,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardOverviewStep;
+import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.UiScrollPane;
 
 public class DiagramView extends UmbrellaView implements CommandExecutedListener
@@ -195,10 +194,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	public JPanel createWizard() throws Exception
 	{
-		WizardPanel wizard = new WizardPanel();
-		DiagramWizardOverviewStep step = new DiagramWizardOverviewStep();
-		wizard.setContents(step);
-		step.refresh();
+		DiagramWizardPanel wizard = new DiagramWizardPanel();
 		return wizard;
 	}
 	
