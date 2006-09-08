@@ -15,7 +15,7 @@ public class ThreatRatingWizardChooseBundleText extends HtmlBuilder
 	{
 		text = 
 			font("Arial", 
-				table(tableRow(
+				wizardFrame(tableRow(
 					tableCell(
 						heading("Select Target and Threat to Work On") + 
 						indent("Pick one of your targets identified in Step 1.2 and a threat that affects it.") +

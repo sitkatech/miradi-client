@@ -47,7 +47,7 @@ class OverviewText extends HtmlBuilder
 	public static String build()
 	{
 		return font("Arial", 
-			table(tableRow(
+			wizardFrame(tableRow(
 				tableCell(
 						heading("Diagram") + 
 						paragraph("This view enables you to develop a " +

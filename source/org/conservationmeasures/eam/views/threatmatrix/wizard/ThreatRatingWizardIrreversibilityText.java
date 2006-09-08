@@ -12,7 +12,7 @@ public class ThreatRatingWizardIrreversibilityText extends HtmlBuilder
 	public ThreatRatingWizardIrreversibilityText(String[] optionLabels, String currentValue)
 	{
 		
-		text = font("Arial", table(
+		text = font("Arial", wizardFrame(
 			tableRow(
 				tableCell(
 					heading("Rate the Irreversibility of the Selected Threat") +

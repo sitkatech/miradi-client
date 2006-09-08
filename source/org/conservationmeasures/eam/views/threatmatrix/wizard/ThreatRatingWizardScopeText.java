@@ -12,7 +12,7 @@ public class ThreatRatingWizardScopeText extends HtmlBuilder
 	public ThreatRatingWizardScopeText(String[] optionLabels, String currentValue)
 	{
 		
-		text = font("Arial", table(
+		text = font("Arial", wizardFrame(
 			tableRow(
 				tableCell(
 					heading("Rate the Scope of the Selected Threat") +

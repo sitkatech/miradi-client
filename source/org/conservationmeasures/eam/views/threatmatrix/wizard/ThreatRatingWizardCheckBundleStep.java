@@ -75,7 +75,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 		public static String build()
 		{
 			return font("Arial", 
-				table(tableRow(
+				wizardFrame(tableRow(
 					tableCell(
 							heading("Check Overall Threat Rating") + 
 							paragraph("Once you have completed your ratings for all three criteria, " +

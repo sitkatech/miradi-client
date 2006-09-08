@@ -12,7 +12,7 @@ public class ThreatRatingWizardSeverityText extends HtmlBuilder
 	public ThreatRatingWizardSeverityText(String[] optionLabels, String currentValue)
 	{
 		
-		text = font("Arial", table(
+		text = font("Arial", wizardFrame(
 			tableRow(
 				tableCell(
 					heading("Rate the Severity of the Selected Threat") +

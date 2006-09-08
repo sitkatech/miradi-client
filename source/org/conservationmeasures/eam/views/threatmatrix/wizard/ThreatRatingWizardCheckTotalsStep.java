@@ -71,7 +71,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		public static String build()
 		{
 			return font("Arial", 
-				table(tableRow(
+				wizardFrame(tableRow(
 					tableCell(
 							heading("Threat Rating Summary") + 
 							paragraph("The table below contains a summary of your threat ratings. ") +
