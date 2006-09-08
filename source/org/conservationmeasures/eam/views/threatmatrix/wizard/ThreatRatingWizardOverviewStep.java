@@ -5,34 +5,23 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 
-public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep implements HyperlinkHandler
+public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep
 {
 	public ThreatRatingWizardOverviewStep(ThreatRatingWizardPanel wizardToUse) 
 	{
 		super(wizardToUse);
-		
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
 	}
-
-	void refresh() throws Exception
+	
+	public String getText()
 	{
-		String htmlText = OverviewText.build();
-		htmlViewer.setText(htmlText);
-		invalidate();
-		validate();
+		return OverviewText.build();
 	}
 
 	public boolean save() throws Exception
@@ -56,12 +45,6 @@ public class ThreatRatingWizardOverviewStep extends ThreatRatingWizardStep imple
 			}
 		}
 	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-
-	HtmlViewer htmlViewer;
 
 }
 

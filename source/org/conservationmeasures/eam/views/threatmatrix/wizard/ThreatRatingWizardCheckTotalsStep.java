@@ -20,27 +20,19 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
-public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep implements HyperlinkHandler
+public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 {
 	public ThreatRatingWizardCheckTotalsStep(ThreatRatingWizardPanel wizardToUse)
 	{
 		super(wizardToUse);
-
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
 	}
-
-	void refresh() throws Exception
+	
+	public String getText()
 	{
-		String htmlText = CheckBundleText.build();
-		htmlViewer.setText(htmlText);
-		invalidate();
-		validate();
+		return CheckTotalsText.build();
 	}
 
 	public boolean save() throws Exception
@@ -74,11 +66,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 		}
 	}
 
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-	
-	static class CheckBundleText extends HtmlBuilder
+	static class CheckTotalsText extends HtmlBuilder
 	{
 		public static String build()
 		{
@@ -205,8 +193,5 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep im
 
 	
 	static final String SHOW_RULES = "ShowRules";
-
-	HtmlViewer htmlViewer;
-
 }
 

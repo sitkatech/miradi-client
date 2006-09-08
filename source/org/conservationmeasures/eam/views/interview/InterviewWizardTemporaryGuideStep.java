@@ -5,41 +5,20 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 
-public class InterviewWizardTemporaryGuideStep extends InterviewWizardStep implements HyperlinkHandler
+public class InterviewWizardTemporaryGuideStep extends InterviewWizardStep
 {
 	public InterviewWizardTemporaryGuideStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
-
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
 	}
-
-	void refresh() throws Exception
+	
+	public String getText()
 	{
-		String htmlText = TemporaryGuide.build();
-		htmlViewer.setText(htmlText);
-		invalidate();
-		validate();
+		return TemporaryGuide.build();
 	}
-
-	public void linkClicked(String linkDescription)
-	{
-	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-
-	HtmlViewer htmlViewer;
 
 }
 

@@ -5,35 +5,24 @@
  */
 package org.conservationmeasures.eam.views.diagram.wizard;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class DiagramWizardOverviewStep extends JPanel implements HyperlinkHandler
+public class DiagramWizardOverviewStep extends WizardStep
 {
-	public DiagramWizardOverviewStep() 
+	public DiagramWizardOverviewStep(WizardPanel panelToUse) 
 	{
-		super(new BorderLayout());
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
+		super(panelToUse);
 	}
 
-	public void refresh() throws Exception
+	public String getText() throws Exception
 	{
-		String htmlText = OverviewText.build();
-		htmlViewer.setText(htmlText);
-		invalidate();
-		validate();
+		return OverviewText.build();
 	}
 
-	boolean save() throws Exception
+	public boolean save() throws Exception
 	{
 		return true;
 	}
@@ -50,12 +39,6 @@ public class DiagramWizardOverviewStep extends JPanel implements HyperlinkHandle
 			EAM.okDialog("Definition: Conceptual Model", new String[] {"A conceptual model is..."});
 		}
 	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-
-	HtmlViewer htmlViewer;
 
 }
 

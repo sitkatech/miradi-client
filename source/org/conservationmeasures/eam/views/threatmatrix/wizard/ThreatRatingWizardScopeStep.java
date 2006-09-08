@@ -24,7 +24,7 @@ public class ThreatRatingWizardScopeStep extends ThreatRatingWizardSetValue
 		super(wizardToUse, criterionIdToUse);
 	}
 
-	public String getHtmlText()
+	public String getText()
 	{
 		return new ThreatRatingWizardScopeText(getValueOptionLabels(), value.getLabel()).getText();
 	}

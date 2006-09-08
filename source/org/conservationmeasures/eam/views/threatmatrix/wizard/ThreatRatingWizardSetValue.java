@@ -5,30 +5,18 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 
-abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep implements HyperlinkHandler
+abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 {
-	
-	public abstract String getHtmlText();
-	
 	public ThreatRatingWizardSetValue(ThreatRatingWizardPanel wizardToUse, BaseId criterionId) throws Exception
 	{
 		super(wizardToUse);
-
 		criterion = getFramework().getCriterion(criterionId);
-
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
 	}
 
 	public void refresh() throws Exception
@@ -40,8 +28,8 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 		}
 		BaseId valueId = bundle.getValueId(criterion.getId());
 		value = getFramework().getValueOption(valueId);
-		String htmlText = getHtmlText();
-		htmlViewer.setText(htmlText);
+		
+		super.refresh();
 	}
 
 	protected String[] getValueOptionLabels()
@@ -86,5 +74,4 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep 
 
 	ThreatRatingCriterion criterion;
 	protected ThreatRatingValueOption value;
-	HtmlViewer htmlViewer;
 }

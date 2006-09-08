@@ -5,24 +5,24 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
-import javax.swing.JScrollPane;
-
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
 
-public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep implements HyperlinkHandler
+public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 {
 	public ThreatRatingWizardChooseBundle(ThreatRatingWizardPanel wizardToUse)
 	{
 		super(wizardToUse);
-		htmlViewer = new HtmlViewer("", this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
+	}
+	
+	public String getText()
+	{
+		String htmlText = new ThreatRatingWizardChooseBundleText(getThreatNames(), selectedThreatName, 
+				getTargetNames(), selectedTargetName).getText();
+		return htmlText;
 	}
 
 	private String[] getTargetNames()
@@ -41,12 +41,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		System.arraycopy(threatNames, 0, choices, 1, threatNames.length);
 		choices[0] = SELECT_A_THREAT;
 		return choices;
-	}
-
-	public void linkClicked(String linkDescription)
-	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void valueChanged(String widget, String newValue)
@@ -111,7 +105,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 		super.buttonPressed(buttonName);
 	}
 
-	void refresh() throws Exception
+	public void refresh() throws Exception
 	{
 		ThreatRatingBundle bundle = getThreatRatingWizard().getSelectedBundle();
 
@@ -121,10 +115,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 			selectedTargetName = getName(bundle.getTargetId());
 		}
 		
-		String htmlText = new ThreatRatingWizardChooseBundleText(getThreatNames(), selectedThreatName, 
-				getTargetNames(), selectedTargetName).getText();
-		htmlViewer.setText(htmlText);
-		validate();
+		super.refresh();
 	}
 
 	private String getName(ModelNodeId nodeId)
@@ -135,7 +126,6 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep imple
 	static final String SELECT_A_TARGET = "--Select a Target";
 	static final String SELECT_A_THREAT = "--Select a Threat";
 
-	HtmlViewer htmlViewer;
 	String selectedThreatName;
 	String selectedTargetName;
 }

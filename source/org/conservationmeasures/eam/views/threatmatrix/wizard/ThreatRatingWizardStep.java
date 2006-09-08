@@ -14,8 +14,6 @@ public abstract class ThreatRatingWizardStep extends WizardStep
 		super(wizardToUse);
 	}
 	
-	abstract void refresh() throws Exception;
-
 	ThreatRatingWizardPanel getThreatRatingWizard()
 	{
 		return (ThreatRatingWizardPanel)getWizard();

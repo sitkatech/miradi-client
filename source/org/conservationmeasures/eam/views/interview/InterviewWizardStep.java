@@ -20,5 +20,4 @@ public abstract class InterviewWizardStep extends WizardStep
 		return true;
 	}
 
-	abstract void refresh() throws Exception;
 }
