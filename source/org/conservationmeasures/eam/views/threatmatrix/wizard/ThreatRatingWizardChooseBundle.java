@@ -3,13 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.threatmatrix;
+package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
+import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
