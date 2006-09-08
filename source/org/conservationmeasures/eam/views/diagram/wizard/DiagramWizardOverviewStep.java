@@ -21,16 +21,6 @@ public class DiagramWizardOverviewStep extends WizardStep
 		return HTML_FILENAME;
 	}
 	
-	public boolean save() throws Exception
-	{
-		return true;
-	}
-
-	public void buttonPressed(String buttonName)
-	{
-		EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
-	}
-
 	public void linkClicked(String linkDescription)
 	{
 		if(linkDescription.equals("Definition:ConceptualModel"))

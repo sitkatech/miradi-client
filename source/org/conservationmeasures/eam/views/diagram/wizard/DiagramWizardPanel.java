@@ -15,10 +15,29 @@ public class DiagramWizardPanel extends WizardPanel
 		steps = new WizardStep[STEP_COUNT];
 
 		steps[OVERVIEW] = new DiagramWizardOverviewStep(this);
+		steps[PROJECT_SCOPE] = new DiagramWizardProjectScopeStep(this);
 		
 		setStep(OVERVIEW);
 	}
 
+	public void next() throws Exception
+	{
+		int nextStep = currentStep + 1;
+		if(nextStep >= steps.length)
+			nextStep = 0;
+		
+		setStep(nextStep);
+	}
+	
+	public void previous() throws Exception
+	{
+		int nextStep = currentStep - 1;
+		if(nextStep < 0)
+			return;
+		
+		setStep(nextStep);
+	}
+	
 	public void setStep(int newStep) throws Exception
 	{
 		currentStep = newStep;
@@ -35,8 +54,9 @@ public class DiagramWizardPanel extends WizardPanel
 	
 
 	final static int OVERVIEW = 0;
+	final static int PROJECT_SCOPE = 1;
 	
-	final static int STEP_COUNT = 1;
+	final static int STEP_COUNT = 2;
 	
 	WizardStep[] steps;
 	int currentStep;
