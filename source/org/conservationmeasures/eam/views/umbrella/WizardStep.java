@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
+import java.io.File;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,6 +14,7 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
+import org.martus.util.UnicodeReader;
 
 public abstract class WizardStep extends JPanel implements HyperlinkHandler
 {
@@ -31,7 +33,28 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 		return wizard;
 	}
 
-	abstract public String getText() throws Exception;
+	public String getText() throws Exception
+	{
+		String resourceFileName = getResourceFileName();
+		if(resourceFileName == null)
+			return "Missing text";
+		
+		UnicodeReader reader = new UnicodeReader(new File(resourceFileName));
+		try
+		{
+			return reader.readAll();
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
+
+	public String getResourceFileName()
+	{
+		return null;
+	}
+	
 	abstract public boolean save() throws Exception;
 	
 	public void buttonPressed(String buttonName)
