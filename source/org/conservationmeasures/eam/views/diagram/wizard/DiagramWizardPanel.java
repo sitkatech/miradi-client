@@ -21,6 +21,7 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[REVIEW_AND_MODIFY_TARGETS] = new DiagramWizardOverviewStep(this);
 		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardOverviewStep(this);
 		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardOverviewStep(this);
+		steps[IDENTIFY_INDIRECT_THREATS] = new DiagramWizardOverviewStep(this);
 		
 		setStep(OVERVIEW);
 	}
@@ -65,8 +66,9 @@ public class DiagramWizardPanel extends WizardPanel
 	final static int REVIEW_AND_MODIFY_TARGETS = 4;
 	final static int IDENTIFY_DIRECT_THREATS = 5;
 	final static int LINK_DIRECT_THREATS_TO_TARGETS = 6;
+	final static int IDENTIFY_INDIRECT_THREATS = 7;
 	
-	final static int STEP_COUNT = 7;
+	final static int STEP_COUNT = 8;
 	
 	WizardStep[] steps;
 	int currentStep;
