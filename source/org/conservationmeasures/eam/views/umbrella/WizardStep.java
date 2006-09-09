@@ -23,7 +23,7 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 		super(new BorderLayout());
 		wizard = wizardToUse;
 
-		htmlViewer = new HtmlViewer("", this);
+		htmlViewer = new WizardHtmlViewer(this);
 		JScrollPane scrollPane = new JScrollPane(htmlViewer);
 		add(scrollPane);
 	}

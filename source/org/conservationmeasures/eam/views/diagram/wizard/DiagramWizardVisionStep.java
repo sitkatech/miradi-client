@@ -8,15 +8,16 @@ package org.conservationmeasures.eam.views.diagram.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class DiagramWizardProjectScopeStep extends WizardStep
+public class DiagramWizardVisionStep extends WizardStep
 {
-	public DiagramWizardProjectScopeStep(WizardPanel panelToUse) 
+	public DiagramWizardVisionStep(WizardPanel wizardToUse)
 	{
-		super(panelToUse);
+		super(wizardToUse);
 	}
 
 	public String getResourceFileName()
 	{
-		return "ProjectScopeStep.html";
+		return "VisionStep.html";
 	}
+	
 }
