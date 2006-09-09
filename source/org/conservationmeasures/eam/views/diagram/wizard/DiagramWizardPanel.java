@@ -17,13 +17,13 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[OVERVIEW] = new DiagramWizardOverviewStep(this);
 		steps[PROJECT_SCOPE] = new DiagramWizardProjectScopeStep(this);
 		steps[VISION] = new DiagramWizardVisionStep(this);
-		steps[CONSERVATION_TARGET] = new DiagramWizardOverviewStep(this);
-		steps[REVIEW_AND_MODIFY_TARGETS] = new DiagramWizardOverviewStep(this);
-		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardOverviewStep(this);
-		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardOverviewStep(this);
-		steps[IDENTIFY_INDIRECT_THREATS] = new DiagramWizardOverviewStep(this);
-		steps[CONSTRUCT_CHAINS_HOWTO] = new DiagramWizardOverviewStep(this);
-		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardOverviewStep(this);
+		steps[CONSERVATION_TARGET] = new DiagramWizardConservationTargetStep(this);
+		steps[REVIEW_AND_MODIFY_TARGETS] = new DiagramWizardReviewAndModifyTargetsStep(this);
+		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardIdentifyDirectThreatStep(this);
+		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardLinkDirectThreatsToTargetsStep(this);
+		steps[IDENTIFY_INDIRECT_THREATS] = new DiagramWizardIdentifyIndirectThreatStep(this);
+		steps[CONSTRUCT_CHAINS_HOWTO] = new DiagramWizardConstructChains(this);
+		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardReviewAndModifyTargetsStep(this);
 		
 		setStep(OVERVIEW);
 	}
