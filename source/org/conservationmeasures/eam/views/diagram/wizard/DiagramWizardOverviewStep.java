@@ -25,7 +25,10 @@ public class DiagramWizardOverviewStep extends WizardStep
 	{
 		if(linkDescription.equals("Definition:ConceptualModel"))
 		{
-			EAM.okDialog("Definition: Conceptual Model", new String[] {"A conceptual model is..."});
+			EAM.okDialog("Definition: Conceptual Model", new String[] {"" +
+					"Conceptual model - A diagram of a set of relationships " +
+					"between certain factors that are believed to impact or " +
+					"lead to a conservation target"});
 		}
 	}
 
