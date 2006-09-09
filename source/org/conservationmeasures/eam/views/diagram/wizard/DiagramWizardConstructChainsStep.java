@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.diagram.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class DiagramWizardConstructChains extends WizardStep
+public class DiagramWizardConstructChainsStep extends WizardStep
 {
 
-	public DiagramWizardConstructChains(WizardPanel panelToUse)
+	public DiagramWizardConstructChainsStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
 	}

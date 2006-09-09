@@ -22,8 +22,8 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardIdentifyDirectThreatStep(this);
 		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardLinkDirectThreatsToTargetsStep(this);
 		steps[IDENTIFY_INDIRECT_THREATS] = new DiagramWizardIdentifyIndirectThreatStep(this);
-		steps[CONSTRUCT_CHAINS_HOWTO] = new DiagramWizardConstructChains(this);
-//		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardReviewAndModifyTargetsStep(this);
+		steps[CONSTRUCT_CHAINS_HOWTO] = new DiagramWizardConstructChainsStep(this);
+//		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardReviewModelAndAdjustStep(this);
 		
 		setStep(OVERVIEW);
 	}
