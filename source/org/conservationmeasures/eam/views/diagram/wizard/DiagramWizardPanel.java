@@ -19,6 +19,7 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[VISION] = new DiagramWizardVisionStep(this);
 		steps[CONSERVATION_TARGET] = new DiagramWizardOverviewStep(this);
 		steps[REVIEW_AND_MODIFY_TARGETS] = new DiagramWizardOverviewStep(this);
+		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardOverviewStep(this);
 		
 		setStep(OVERVIEW);
 	}
@@ -61,8 +62,9 @@ public class DiagramWizardPanel extends WizardPanel
 	final static int VISION = 2;
 	final static int CONSERVATION_TARGET = 3;
 	final static int REVIEW_AND_MODIFY_TARGETS = 4;
+	final static int IDENTIFY_DIRECT_THREATS = 5;
 	
-	final static int STEP_COUNT = 5;
+	final static int STEP_COUNT = 6;
 	
 	WizardStep[] steps;
 	int currentStep;
