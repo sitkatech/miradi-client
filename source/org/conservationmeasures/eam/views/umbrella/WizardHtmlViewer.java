@@ -33,7 +33,9 @@ public class WizardHtmlViewer extends HtmlViewer
 	final static String[] rules = {
 		"body {font-family: sans-serif, arial; }",
 		"code {font-family: sans-serif; }",
-		"  #viewname { font-size: large;  }",
+		"  #viewname { font-size: 150%;  }",
+		"  #processsection { font-size: 120%; }",
+		"  #taskheading { font-size: 110%; font-weight: bold; font-style: italics; }",
 		"  #nextsteps { font-weight: 700; }",
 		"  #navigation { background-color: #eeeeee; " +
 			"border-width: 1; border-color: black; font-size: small; }",
