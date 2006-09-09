@@ -23,7 +23,7 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardLinkDirectThreatsToTargetsStep(this);
 		steps[IDENTIFY_INDIRECT_THREATS] = new DiagramWizardIdentifyIndirectThreatStep(this);
 		steps[CONSTRUCT_CHAINS_HOWTO] = new DiagramWizardConstructChainsStep(this);
-//		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardReviewModelAndAdjustStep(this);
+		steps[REVIEW_MODEL_AND_ADJUST] = new DiagramWizardReviewModelAndAdjustStep(this);
 		
 		setStep(OVERVIEW);
 	}
@@ -72,7 +72,7 @@ public class DiagramWizardPanel extends WizardPanel
 	final static int CONSTRUCT_CHAINS_HOWTO = 8;
 	final static int REVIEW_MODEL_AND_ADJUST = 9;
 	
-	final static int STEP_COUNT = 9;
+	final static int STEP_COUNT = 10;
 	
 	WizardStep[] steps;
 	int currentStep;
