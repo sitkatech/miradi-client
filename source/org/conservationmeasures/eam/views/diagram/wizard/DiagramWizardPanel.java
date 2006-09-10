@@ -17,7 +17,7 @@ public class DiagramWizardPanel extends WizardPanel
 		steps[OVERVIEW] = new DiagramWizardOverviewStep(this);
 		steps[PROJECT_SCOPE] = new DiagramWizardProjectScopeStep(this);
 		steps[VISION] = new DiagramWizardVisionStep(this);
-		steps[CONSERVATION_TARGET] = new DiagramWizardConservationTargetStep(this);
+		steps[CONSERVATION_TARGET] = new DiagramWizardDefineTargetsStep(this);
 		steps[REVIEW_AND_MODIFY_TARGETS] = new DiagramWizardReviewAndModifyTargetsStep(this);
 		steps[IDENTIFY_DIRECT_THREATS] = new DiagramWizardIdentifyDirectThreatStep(this);
 		steps[LINK_DIRECT_THREATS_TO_TARGETS] = new DiagramWizardLinkDirectThreatsToTargetsStep(this);

@@ -9,10 +9,10 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class DiagramWizardConservationTargetStep extends WizardStep
+public class DiagramWizardDefineTargetsStep extends WizardStep
 {
 
-	public DiagramWizardConservationTargetStep(WizardPanel panelToUse)
+	public DiagramWizardDefineTargetsStep(WizardPanel panelToUse)
 	{
 		super(panelToUse);
 	}
