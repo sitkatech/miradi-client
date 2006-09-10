@@ -21,26 +21,34 @@ public class DiagramWizardDefineTargetsStep extends WizardStep
 	{
 		if(linkDescription.equals("Definition:ConservationTargets"))
 		{
-			EAM.okDialog("Definition: Conservation Targets", new String[] 
-			        {"Targets - A limited suite of species, communities, and ecological systems " +
+			EAM.okDialog("Definition: Conservation Targets", new String[] {
+					"Targets - A limited suite of species, communities, and ecological systems " +
 					"that are chosen to represent and encompass the full array of " +
 					"biodiversity found in a project area.  They are the basis for " +
 					"setting goals, carrying out conservation actions, and measuring " +
 					"conservation effectiveness.  In theory – and hopefully in practice " +
 					"– conservation of the focal targets will ensure the conservation of " +
-					"all native biodiversity within functional landscapes. " +
-					" \n\n" +
+					"all native biodiversity within functional landscapes. "});
+		}
+		if(linkDescription.equals("Definition:Ecosystems"))
+		{
+			EAM.okDialog("Definition: Ecosystems", new String[] {
 					"Ecosystems –The ecological systems that characterize the " +
-					"terrestrial, aquatic, and marine biodiversity of the project " +
-					"site. " +
-					" \n\n" +
+					"terrestrial, aquatic, and marine biodiversity of the project site. "});
+		}
+		if(linkDescription.equals("Definition:FocalSpecies"))
+		{
+			EAM.okDialog("Definition: Focal Species", new String[] {
 					"Focal Species – These include species endemic to the ecoregion, " +
 					"area-sensitive (umbrella) species, commercially exploited species, " +
 					"flagship species, keystone species, or imperiled species. Species " +
 					"selected as focal targets are typically those that are not represented " +
 					"by the key ecosystems because they require multiple habitats or have " +
-					"special conservation requirements. " +
-					" \n\n" +
+					"special conservation requirements. "});
+		}
+		if(linkDescription.equals("Definition:EcologicalProcesses"))
+		{
+			EAM.okDialog("Definition: Ecological Processes", new String[] {
 					"Ecological Processes – Ecological processes that create and maintain " +
 					"biodiversity. These could include pollination, seed dispersal, " +
 					"dispersal of large mammals between protected areas, movements of " +
