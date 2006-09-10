@@ -84,7 +84,7 @@ public class HtmlBuilder
 	
 	static public String wizardFrame(String tableData)
 	{
-		return table(tableRow(tableCell("", 70) + tableCell("", 30)) + tableData, 100);
+		return table(tableRow(tableCell("", 45) + tableCell("", 55)) + tableData, 100);
 	}
 	
 	static public String table(String tableData)
