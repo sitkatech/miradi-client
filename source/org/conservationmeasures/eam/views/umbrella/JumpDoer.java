@@ -6,17 +6,25 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class JumpInterviewDefineScope extends ProjectDoer
+public class JumpDoer extends MainWindowDoer
 {
-	public JumpInterviewDefineScope()
+	public JumpDoer()
 	{
+	}
+	
+	public void setDestination(String newDestination)
+	{
+		destination = newDestination;
 	}
 
 	public boolean isAvailable()
 	{
-		return getProject().isOpen();
+		if(!getProject().isOpen())
+			return false;
+		
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -35,4 +43,5 @@ public class JumpInterviewDefineScope extends ProjectDoer
 //		}
 	}
 
+	String destination;
 }

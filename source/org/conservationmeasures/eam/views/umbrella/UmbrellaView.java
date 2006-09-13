@@ -227,7 +227,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionPreferences.class, new Preferences());
 		
-		addDoerToMap(ActionJumpInterviewDefineScope.class, new JumpInterviewDefineScope());
+		addDoerToMap(ActionJumpInterviewDefineScope.class, new JumpDoer());
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)

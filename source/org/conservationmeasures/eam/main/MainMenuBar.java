@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
 public class MainMenuBar extends JMenuBar
@@ -226,7 +227,7 @@ public class MainMenuBar extends JMenuBar
 		menu1a.add("Develop a charter for the project");
 	
 		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
-		menu1b.add("Define the scope of your project");
+		menu1b.add(actions.get(ActionJumpInterviewDefineScope.class));
 		menu1b.add("Establish a clear and common vision");
 		menu1b.add("Identify and prioritize targets");
 		menu1b.add("Describe status of targets");
