@@ -42,9 +42,12 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
@@ -230,10 +233,10 @@ public class MainMenuBar extends JMenuBar
 		menu1a.add(actions.get(ActionJumpDevelopCharter.class));
 	
 		JMenu menu1b = new JMenu("1B. Define clear and common purpose");
-		menu1b.add(actions.get(ActionJumpInterviewDefineScope.class));
-		menu1b.add("Establish a clear and common vision");
-		menu1b.add("Identify and prioritize targets");
-		menu1b.add("Describe status of targets");
+		menu1b.add(actions.get(ActionJumpDefineScope.class));
+		menu1b.add(actions.get(ActionJumpEstablishVision.class));
+		menu1b.add(actions.get(ActionJumpIdentifyTargets.class));
+		menu1b.add(actions.get(ActionJumpDescribeTargets.class));
 		
 		JMenu menu1c = new JMenu("1C. Understand project context");
 		menu1c.add("Identify direct threats");

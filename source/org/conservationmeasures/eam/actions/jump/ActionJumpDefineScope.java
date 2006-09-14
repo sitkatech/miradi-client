@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.JumpAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpInterviewDefineScope extends JumpAction
+public class ActionJumpDefineScope extends JumpAction
 {
-	public ActionJumpInterviewDefineScope(MainWindow mainWindowToUse)
+	public ActionJumpDefineScope(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

@@ -10,9 +10,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -80,10 +83,13 @@ public class Actions
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
-		registerAction(new ActionJumpInterviewDefineScope(mainWindow));
 		registerAction(new ActionJumpDesignateLeader(mainWindow));
 		registerAction(new ActionJumpDevelopCharter(mainWindow));
 		registerAction(new ActionJumpSelectTeam(mainWindow));
+		registerAction(new ActionJumpDefineScope(mainWindow));
+		registerAction(new ActionJumpEstablishVision(mainWindow));
+		registerAction(new ActionJumpIdentifyTargets(mainWindow));
+		registerAction(new ActionJumpDescribeTargets(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
