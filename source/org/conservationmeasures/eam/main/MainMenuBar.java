@@ -42,12 +42,17 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
@@ -239,11 +244,11 @@ public class MainMenuBar extends JMenuBar
 		menu1b.add(actions.get(ActionJumpDescribeTargets.class));
 		
 		JMenu menu1c = new JMenu("1C. Understand project context");
-		menu1c.add("Identify direct threats");
-		menu1c.add("Rank direct threats");
-		menu1c.add("Identify indirect threats & opportunities"); 
-		menu1c.add("Assess stakeholders");
-		menu1c.add("Analyze project capacity");
+		menu1c.add(actions.get(ActionJumpIdentifyDirectThreats.class));
+		menu1c.add(actions.get(ActionJumpRankDirectThreats.class));
+		menu1c.add(actions.get(ActionJumpIdentifyIndirectThreats.class)); 
+		menu1c.add(actions.get(ActionJumpAssessStakeholders.class));
+		menu1c.add(actions.get(ActionJumpAnalyzeProjectCapacity.class));
 		
 		JMenu menu1d = new JMenu("1D. Model project situation");
 		menu1d.add("Articulate your core assumptions");
