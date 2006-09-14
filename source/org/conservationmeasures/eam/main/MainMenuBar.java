@@ -43,12 +43,15 @@ import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
@@ -251,9 +254,9 @@ public class MainMenuBar extends JMenuBar
 		menu1c.add(actions.get(ActionJumpAnalyzeProjectCapacity.class));
 		
 		JMenu menu1d = new JMenu("1D. Model project situation");
-		menu1d.add("Articulate your core assumptions");
-		menu1d.add("Create a model");
-		menu1d.add("Ground truth and revise model");
+		menu1d.add(actions.get(ActionJumpArticulateCoreAssumptions.class));
+		menu1d.add(actions.get(ActionJumpCreateModel.class));
+		menu1d.add(actions.get(ActionJumpGroundTruthRevise.class));
 		
 		menu1.add(menu1a);
 		menu1.add(menu1b);

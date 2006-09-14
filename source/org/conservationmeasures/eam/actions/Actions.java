@@ -11,12 +11,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
@@ -100,6 +103,9 @@ public class Actions
 		registerAction(new ActionJumpIdentifyIndirectThreats(mainWindow));
 		registerAction(new ActionJumpAssessStakeholders(mainWindow));
 		registerAction(new ActionJumpAnalyzeProjectCapacity(mainWindow));
+		registerAction(new ActionJumpArticulateCoreAssumptions(mainWindow));
+		registerAction(new ActionJumpCreateModel(mainWindow));
+		registerAction(new ActionJumpGroundTruthRevise(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

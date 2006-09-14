@@ -34,12 +34,15 @@ import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
@@ -253,6 +256,10 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionJumpIdentifyIndirectThreats.class, jumpDoer);
 		addDoerToMap(ActionJumpAssessStakeholders.class, jumpDoer);
 		addDoerToMap(ActionJumpAnalyzeProjectCapacity.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpArticulateCoreAssumptions.class, jumpDoer);
+		addDoerToMap(ActionJumpCreateModel.class, jumpDoer);
+		addDoerToMap(ActionJumpGroundTruthRevise.class, jumpDoer);
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)
