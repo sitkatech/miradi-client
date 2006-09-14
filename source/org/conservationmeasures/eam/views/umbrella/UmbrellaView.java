@@ -33,7 +33,9 @@ import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
@@ -54,6 +56,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
+import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.commands.Command;
@@ -272,6 +276,11 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionJumpDevelopTargetGoals.class, jumpDoer);
 		addDoerToMap(ActionJumpIdentifyStrategies.class, jumpDoer);
 		addDoerToMap(ActionJumpDevelopObjectives.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpRankDraftStrategies.class, jumpDoer);
+		addDoerToMap(ActionJumpResultsChains.class, jumpDoer);
+		addDoerToMap(ActionJumpActivitiesAndActionPlan.class, jumpDoer);
+		addDoerToMap(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, jumpDoer);
 		
 		addDoerToMap(ActionJumpDetermineNeeds.class, jumpDoer);
 		addDoerToMap(ActionJumpDefineAudiences.class, jumpDoer);

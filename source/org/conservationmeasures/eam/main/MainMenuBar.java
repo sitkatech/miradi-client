@@ -42,7 +42,9 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
@@ -63,6 +65,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
+import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
@@ -283,10 +287,10 @@ public class MainMenuBar extends JMenuBar
 		menu2a.add(actions.get(ActionJumpDevelopObjectives.class));
 		
 		JMenu menu2b = new JMenu("2B. Strategically select activities");
-		menu2b.add("Rank draft strategies");
-		menu2b.add("Develop results chains for key strategies");
-		menu2b.add("Develop activities and action plan");
-		menu2b.add("Analyze resources, feasibility, and risk");
+		menu2b.add(actions.get(ActionJumpRankDraftStrategies.class));
+		menu2b.add(actions.get(ActionJumpResultsChains.class));
+		menu2b.add(actions.get(ActionJumpActivitiesAndActionPlan.class));
+		menu2b.add(actions.get(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class));
 		
 		menu2.add(menu2a);
 		menu2.add(menu2b);
