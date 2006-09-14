@@ -53,10 +53,13 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
@@ -270,14 +273,14 @@ public class MainMenuBar extends JMenuBar
 		return menu1;
 	}
 	
-	private JMenu createMenu2()
+	private JMenu createMenu2(Actions actions)
 	{
 		JMenu menu2 = new JMenu("2. Plan Your Actions");
 		
 		JMenu menu2a = new JMenu("2A. Develop clear goal and objectives");
-		menu2a.add("Develop goals for each target");
-		menu2a.add("Identify “key factors” & draft strategies");
-		menu2a.add("Develop objectives");
+		menu2a.add(actions.get(ActionJumpDevelopTargetGoals.class));
+		menu2a.add(actions.get(ActionJumpIdentifyStrategies.class));
+		menu2a.add(actions.get(ActionJumpDevelopObjectives.class));
 		
 		JMenu menu2b = new JMenu("2B. Strategically select activities");
 		menu2b.add("Rank draft strategies");
@@ -362,7 +365,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
 		menu.add(createMenu1(actions));
-		menu.add(createMenu2());
+		menu.add(createMenu2(actions));
 		menu.add(createMenu3(actions));
 		menu.add(createMenu4());
 		menu.add(createMenu5());
