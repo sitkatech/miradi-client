@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumpt
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
@@ -25,7 +26,9 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -110,6 +113,9 @@ public class Actions
 		registerAction(new ActionJumpGroundTruthRevise(mainWindow));
 		registerAction(new ActionJumpDetermineNeeds(mainWindow));
 		registerAction(new ActionJumpDefineAudiences(mainWindow));
+		registerAction(new ActionJumpDefineIndicators(mainWindow));
+		registerAction(new ActionJumpSelectAppropriateMethods(mainWindow));
+		registerAction(new ActionJumpPlanDataStorage(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

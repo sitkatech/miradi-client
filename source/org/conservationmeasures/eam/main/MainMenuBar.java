@@ -47,6 +47,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumpt
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
@@ -57,7 +58,9 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
@@ -296,9 +299,9 @@ public class MainMenuBar extends JMenuBar
 		menu3a.add(actions.get(ActionJumpDefineAudiences.class));
 		
 		JMenu menu3b = new JMenu("3B. Develop a formal monitoring plan");
-		menu3b.add("Define indicators");
-		menu3b.add("Select appropriate methods");
-		menu3b.add("Plan for data storage");
+		menu3b.add(actions.get(ActionJumpDefineIndicators.class));
+		menu3b.add(actions.get(ActionJumpSelectAppropriateMethods.class));
+		menu3b.add(actions.get(ActionJumpPlanDataStorage.class));
 		
 		menu3.add(menu3a);
 		menu3.add(menu3b);
