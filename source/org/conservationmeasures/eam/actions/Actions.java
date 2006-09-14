@@ -14,8 +14,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacit
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
@@ -106,6 +108,8 @@ public class Actions
 		registerAction(new ActionJumpArticulateCoreAssumptions(mainWindow));
 		registerAction(new ActionJumpCreateModel(mainWindow));
 		registerAction(new ActionJumpGroundTruthRevise(mainWindow));
+		registerAction(new ActionJumpDetermineNeeds(mainWindow));
+		registerAction(new ActionJumpDefineAudiences(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

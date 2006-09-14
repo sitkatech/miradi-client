@@ -46,8 +46,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacit
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
@@ -285,13 +287,13 @@ public class MainMenuBar extends JMenuBar
 		return menu2;
 	}
 	
-	private JMenu createMenu3()
+	private JMenu createMenu3(Actions actions)
 	{
 		JMenu menu3 = new JMenu("3. Plan Your Monitoring");
 		
 		JMenu menu3a = new JMenu("3A. Focus your monitoring");
-		menu3a.add("Determine what you need to know");
-		menu3a.add("Clearly define audiences ");
+		menu3a.add(actions.get(ActionJumpDetermineNeeds.class));
+		menu3a.add(actions.get(ActionJumpDefineAudiences.class));
 		
 		JMenu menu3b = new JMenu("3B. Develop a formal monitoring plan");
 		menu3b.add("Define indicators");
@@ -358,7 +360,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
 		menu.add(createMenu1(actions));
 		menu.add(createMenu2());
-		menu.add(createMenu3());
+		menu.add(createMenu3(actions));
 		menu.add(createMenu4());
 		menu.add(createMenu5());
 		menu.add(createMenu6());
