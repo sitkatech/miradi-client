@@ -33,7 +33,10 @@ import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpInterviewDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -227,7 +230,13 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionPreferences.class, new Preferences());
 		
-		addDoerToMap(ActionJumpInterviewDefineScope.class, new JumpDoer());
+		JumpDoer jumpDoer = new JumpDoer();
+		addDoerToMap(ActionJumpSelectTeam.class, jumpDoer);
+		addDoerToMap(ActionJumpDesignateLeader.class, jumpDoer);
+		addDoerToMap(ActionJumpDevelopCharter.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpInterviewDefineScope.class, jumpDoer);
+		
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)
@@ -296,5 +305,5 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 	private HashMap actionToDoerMap;
 	
 	private ObjectPropertiesDialog activePropertiesDlg;
-
+ 
 }

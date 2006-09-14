@@ -14,9 +14,10 @@ public class JumpAction extends MainWindowAction
 
 	Doer getDoer()
 	{
-		JumpDoer doer = (JumpDoer)super.getDoer();
-		if(doer == null)
+		Doer rawDoer = super.getDoer();
+		if(rawDoer == null)
 			return null;
+		JumpDoer doer = (JumpDoer)rawDoer;
 		doer.setDestination(destination);
 		return doer;
 	}	
