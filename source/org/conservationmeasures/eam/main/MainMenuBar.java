@@ -50,9 +50,12 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
@@ -69,6 +72,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
 
 public class MainMenuBar extends JMenuBar
@@ -315,16 +320,16 @@ public class MainMenuBar extends JMenuBar
 		return menu3;
 	}
 	
-	private JMenu createMenu4()
+	private JMenu createMenu4(Actions actions)
 	{
 		JMenu menu4 = new JMenu("4. Implement Actions and Monitoring");
 		
 		JMenu menu4a = new JMenu("4A. Develop detailed short-term work plans");
-		menu4a.add("Develop short-term work plans ");
-		menu4a.add("Develop Gantt chart and/or calendar of project activities");
-		menu4a.add("Clearly define monitoring tasks");
-		menu4a.add("Develop project budgets");
-		menu4a.add("Agree upon team roles");
+		menu4a.add(actions.get(ActionJumpShorttermPlans.class));
+		menu4a.add(actions.get(ActionJumpDevelopActivities.class));
+		menu4a.add(actions.get(ActionJumpDefineTasks.class));
+		menu4a.add(actions.get(ActionJumpDevelopBudgets.class));
+		menu4a.add(actions.get(ActionJumpTeamRoles.class));
 		
 		menu4.add(menu4a);
 		menu4.add("4B. Implement work plans");
@@ -371,7 +376,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createMenu1(actions));
 		menu.add(createMenu2(actions));
 		menu.add(createMenu3(actions));
-		menu.add(createMenu4());
+		menu.add(createMenu4(actions));
 		menu.add(createMenu5());
 		menu.add(createMenu6());
 		menu.add(createMenu7());

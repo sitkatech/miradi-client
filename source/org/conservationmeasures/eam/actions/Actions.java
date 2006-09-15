@@ -18,9 +18,12 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
@@ -37,6 +40,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class Actions
@@ -130,6 +135,11 @@ public class Actions
 		registerAction(new ActionJumpDefineIndicators(mainWindow));
 		registerAction(new ActionJumpSelectAppropriateMethods(mainWindow));
 		registerAction(new ActionJumpPlanDataStorage(mainWindow));
+		registerAction(new ActionJumpShorttermPlans(mainWindow));
+		registerAction(new ActionJumpDevelopActivities(mainWindow));
+		registerAction(new ActionJumpDefineTasks(mainWindow));
+		registerAction(new ActionJumpDevelopBudgets(mainWindow));
+		registerAction(new ActionJumpTeamRoles(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
