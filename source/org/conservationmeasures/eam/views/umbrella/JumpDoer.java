@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class JumpDoer extends MainWindowDoer
 {
@@ -14,9 +16,9 @@ public class JumpDoer extends MainWindowDoer
 	{
 	}
 	
-	public void setDestination(String newDestination)
+	public void setDestination(Class actionClass)
 	{
-		destination = newDestination;
+		destination = createJumpLocation(actionClass);
 	}
 
 	public boolean isAvailable()
@@ -42,6 +44,12 @@ public class JumpDoer extends MainWindowDoer
 //			getProject().executeCommand(new CommandEndTransaction());
 //		}
 	}
+	
+	public JumpLocation createJumpLocation(Class jumpActionClass)
+	{
+		String view = InterviewView.getViewName();
+		return new JumpLocation(view, jumpActionClass);
+	}
 
-	String destination;
+	JumpLocation destination;
 }

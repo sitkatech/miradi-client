@@ -9,7 +9,6 @@ public class JumpAction extends MainWindowAction
 	public JumpAction(MainWindow windowToUse, String label)
 	{
 		super(windowToUse, label);
-		destination = label;
 	}
 
 	Doer getDoer()
@@ -18,9 +17,7 @@ public class JumpAction extends MainWindowAction
 		if(rawDoer == null)
 			return null;
 		JumpDoer doer = (JumpDoer)rawDoer;
-		doer.setDestination(destination);
+		doer.setDestination(getClass());
 		return doer;
 	}	
-	
-	String destination;
 }
