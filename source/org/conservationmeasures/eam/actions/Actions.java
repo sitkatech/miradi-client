@@ -11,10 +11,16 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeInterventions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
@@ -28,18 +34,22 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -140,6 +150,16 @@ public class Actions
 		registerAction(new ActionJumpDefineTasks(mainWindow));
 		registerAction(new ActionJumpDevelopBudgets(mainWindow));
 		registerAction(new ActionJumpTeamRoles(mainWindow));
+		registerAction(new ActionJumpImplementPlans(mainWindow));
+		registerAction(new ActionJumpRefinePlans(mainWindow));
+		registerAction(new ActionJumpAnalyzeData(mainWindow));
+		registerAction(new ActionJumpAnalyzeInterventions(mainWindow));
+		registerAction(new ActionJumpCommunicateResults(mainWindow));
+		registerAction(new ActionJumpAdaptAndMonitorPlans(mainWindow));
+		registerAction(new ActionJumpDocument(mainWindow));
+		registerAction(new ActionJumpShare(mainWindow));
+		registerAction(new ActionJumpCreate(mainWindow));
+		registerAction(new ActionJumpCloseTheLoop(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -34,13 +34,20 @@ import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeData;
+import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeInterventions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeProjectCapacity;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAnalyzeResourcesFeasibilityAndRisk;
 import org.conservationmeasures.eam.actions.jump.ActionJumpArticulateCoreAssumptions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAssessStakeholders;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCloseTheLoop;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCommunicateResults;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreate;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineAudiences;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineIndicators;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineTasks;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDescribeTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDesignateLeader;
@@ -48,21 +55,24 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpPlanDataStorage;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDraftStrategies;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRefinePlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpResultsChains;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMethods;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.commands.Command;
@@ -299,6 +309,20 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionJumpDefineTasks.class, jumpDoer);
 		addDoerToMap(ActionJumpDevelopBudgets.class, jumpDoer);
 		addDoerToMap(ActionJumpTeamRoles.class, jumpDoer);
+		addDoerToMap(ActionJumpRefinePlans.class, jumpDoer);
+		addDoerToMap(ActionJumpImplementPlans.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpAnalyzeData.class, jumpDoer);
+		addDoerToMap(ActionJumpAnalyzeInterventions.class, jumpDoer);
+		addDoerToMap(ActionJumpCommunicateResults.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpAdaptAndMonitorPlans.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpDocument.class, jumpDoer);
+		addDoerToMap(ActionJumpShare.class, jumpDoer);
+		addDoerToMap(ActionJumpCreate.class, jumpDoer);
+		
+		addDoerToMap(ActionJumpCloseTheLoop.class, jumpDoer);
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)
