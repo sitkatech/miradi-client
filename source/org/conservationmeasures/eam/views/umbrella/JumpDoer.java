@@ -5,6 +5,10 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
@@ -16,9 +20,9 @@ public class JumpDoer extends MainWindowDoer
 	{
 	}
 	
-	public void setDestination(Class actionClass)
+	public void setDestination(Class actionClassToUse)
 	{
-		destination = createJumpLocation(actionClass);
+		actionClass = actionClassToUse;
 	}
 
 	public boolean isAvailable()
@@ -26,7 +30,11 @@ public class JumpDoer extends MainWindowDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		return false;
+		JumpLocation jumpTo = createJumpLocation(actionClass);
+		if(jumpTo == null)
+			return false;
+		
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -34,22 +42,42 @@ public class JumpDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 		
-//		getProject().executeCommand(new CommandBeginTransaction());
-//		try
-//		{
-//			getProject().executeCommand(new CommandSwitchView(InterviewView.getViewName()));
-//		}
-//		finally
-//		{
-//			getProject().executeCommand(new CommandEndTransaction());
-//		}
-	}
-	
-	public JumpLocation createJumpLocation(Class jumpActionClass)
-	{
-		String view = InterviewView.getViewName();
-		return new JumpLocation(view, jumpActionClass);
+
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			JumpLocation jumpTo = createJumpLocation(actionClass);
+			String view = jumpTo.getView();
+			if(!getProject().getCurrentView().equals(view))
+				getProject().executeCommand(new CommandSwitchView(jumpTo.getView()));
+			
+			// FIXME: This really should be a Command so it is undoable,
+			// but that would require us to be able to obtain the current 
+			// step marker no matter where we are, which isn't possible yet
+			getMainWindow().jump(jumpTo.getStepMarker());
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 
-	JumpLocation destination;
+	public JumpLocation createJumpLocation(Class jumpActionClass)
+	{
+		String jumpToView = getViewForAction(jumpActionClass);
+		if(jumpToView == null)
+			return null;
+		
+		return new JumpLocation(jumpToView, jumpActionClass);
+	}
+	
+	String getViewForAction(Class jumpActionClass)
+	{
+		if(jumpActionClass.equals(ActionJumpDefineScope.class))
+			return InterviewView.getViewName();
+		
+		return null;
+	}
+
+	Class actionClass;
 }

@@ -120,6 +120,11 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		else
 			becomeInactive();
 	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		return;
+	}
 
 	abstract public void becomeActive() throws Exception;
 	abstract public void becomeInactive() throws Exception;

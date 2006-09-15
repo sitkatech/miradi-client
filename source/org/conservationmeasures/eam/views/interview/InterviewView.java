@@ -45,5 +45,10 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 	{
 	}
 
+	public void jump(Class stepMarker) throws Exception
+	{
+		panel.jump(stepMarker);
+	}
+
 	InterviewPanel panel;
 }

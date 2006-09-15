@@ -281,6 +281,19 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
 	
+	public void jump(Class stepMarker) throws CommandFailedException
+	{
+		try
+		{
+			getCurrentView().jump(stepMarker);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException(e);
+		}
+	}
+
 	public void savePreferences() throws IOException
 	{
 		preferences.save(getPreferencesFile());
