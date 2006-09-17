@@ -44,8 +44,10 @@ public class ThreatGridPanel extends JPanel
 		populateThreatNamesColumnHeading();
 		populateThreatHeaders();
 		populateThreatSummaries();
+		populateTargetSummaryHeading();
 		populateTargetHeaders();
 		populateTargetSummaries();
+		populateThreatSummaryHeading();
 		populateBundleCells();
 		populateGrandTotal();
 	}
@@ -124,6 +126,10 @@ public class ThreatGridPanel extends JPanel
 			summaryCells.add(summaryCell);
 		}
 		
+	}
+
+	private void populateTargetSummaryHeading()
+	{
 		JPanel rollUpLabel = cells[getThreatSummaryRow()][0];
 		rollUpLabel.add(createBoldLabel("Label|Summary Target Rating"));
 	}
@@ -153,6 +159,10 @@ public class ThreatGridPanel extends JPanel
 			summaryCells.add(summaryCell);
 		}
 		
+	}
+
+	private void populateThreatSummaryHeading()
+	{
 		JPanel rollUpLabel = cells[0][getTargetSummaryColumn()];
 		rollUpLabel.add(createBoldLabel("Label|Summary Threat Rating"));
 	}
