@@ -39,15 +39,16 @@ public class ThreatGridPanel extends JPanel
 		int rows = model.getThreatCount() + headerRowCount + 2;
 		int columns = model.getTargetCount() + headerColumnCount + 2;
 		setLayout(new BasicGridLayout(rows, columns));
-
 		createGridCells(rows, columns);	
+
 		populateThreatNamesColumnHeading();
-		populateThreatHeaders();
-		populateThreatSummaries();
 		populateTargetSummaryHeading();
-		populateTargetHeaders();
-		populateTargetSummaries();
 		populateThreatSummaryHeading();
+
+		populateThreatHeaders();
+		populateTargetHeaders();
+		populateThreatSummaries();
+		populateTargetSummaries();
 		populateBundleCells();
 		populateGrandTotal();
 	}
