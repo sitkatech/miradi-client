@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Container;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
@@ -63,12 +64,10 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		grid = new ThreatGridPanel(this, model);
 		wizard = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(this);
-		String targetLabelText = "<html><h2>TARGETS</h2></html>";
-		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
-		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		JComponent heading = createHeading();
 		
 		JPanel gridWithHeadings = new JPanel(new BorderLayout());
-		gridWithHeadings.add(targetLabel, BorderLayout.BEFORE_FIRST_LINE);
+		gridWithHeadings.add(heading, BorderLayout.BEFORE_FIRST_LINE);
 		gridWithHeadings.add(grid, BorderLayout.CENTER);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
@@ -81,6 +80,14 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		bigSplitter.setDividerLocation(dividerAt);
 		
 		selectBundle(null);
+	}
+
+	private JComponent createHeading()
+	{
+		String targetLabelText = "<html><h2>TARGETS</h2></html>";
+		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
+		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		return targetLabel;
 	}
 	
 	public void becomeInactive() throws Exception
