@@ -7,10 +7,12 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -52,7 +54,11 @@ public class ThreatGridPanel extends JPanel
 		populateThreatSummaryHeading();
 		populateGrandTotal();
 
-		populateDynamicCells();
+		sortedIndexes = new int[model.getThreatCount()];
+		for(int i = 0; i < sortedIndexes.length; ++i)
+			sortedIndexes[i] = i;
+		
+		sortByThreatName();
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -215,7 +221,8 @@ public class ThreatGridPanel extends JPanel
 	
 	private int getRowFromThreatIndex(int threatIndex)
 	{
-		return headerRowCount + threatIndex;
+		int sortedRow = sortedIndexes[threatIndex];
+		return headerRowCount + sortedRow;
 	}
 
 	private int getColumnFromTargetIndex(int targetIndex)
@@ -302,6 +309,20 @@ public class ThreatGridPanel extends JPanel
 			cell.dataHasChanged();
 		}
 	}
+	
+	private void sortByThreatName() throws Exception
+	{
+		String[] sortedNames = model.getThreatNames();
+
+		Vector unsortedNames = new Vector(Arrays.asList(sortedNames));
+		Arrays.sort(sortedNames);
+		for(int i = 0; i < sortedNames.length; ++i)
+		{
+			sortedIndexes[unsortedNames.indexOf(sortedNames[i])] =  i;
+			System.out.println(sortedNames[i]);
+		}
+		populateDynamicCells();
+	}
 
 	private ThreatRatingFramework getFramework()
 	{
@@ -339,5 +360,6 @@ public class ThreatGridPanel extends JPanel
 	ThreatRatingBundle highlightedBundle;
 	ThreatRatingSummaryCell grandTotal;
 
+	int[] sortedIndexes;
 	JPanel[][] cells;
 }
