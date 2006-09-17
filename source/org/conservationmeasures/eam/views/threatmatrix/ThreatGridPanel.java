@@ -34,7 +34,7 @@ public class ThreatGridPanel extends JPanel
 		model = modelToUse;
 
 		summaryCells = new HashSet();
-		activeCells = new HashMap();
+		bundleCells = new HashMap();
 
 		int rows = model.getThreatCount() + headerRowCount + 2;
 		int columns = model.getTargetCount() + headerColumnCount + 2;
@@ -218,14 +218,14 @@ public class ThreatGridPanel extends JPanel
 			{
 				ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
 				ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
-				activeCells.put(bundle, thisComponent);
+				bundleCells.put(bundle, thisComponent);
 			}
 		}
 	}
 	
 	private ThreatMatrixCellPanel getCellForBundle(ThreatRatingBundle bundle)
 	{
-		return (ThreatMatrixCellPanel)activeCells.get(bundle);
+		return (ThreatMatrixCellPanel)bundleCells.get(bundle);
 	}
 
 	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex) throws Exception
@@ -284,7 +284,7 @@ public class ThreatGridPanel extends JPanel
 	ThreatMatrixView view;
 	ThreatMatrixTableModel model;
 	HashSet summaryCells;
-	HashMap activeCells;
+	HashMap bundleCells;
 	ThreatRatingBundle highlightedBundle;
 	ThreatRatingSummaryCell grandTotal;
 
