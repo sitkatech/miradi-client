@@ -38,8 +38,28 @@ public class ThreatGridPanel extends JPanel
 
 		int rows = model.getThreatCount() + headerRowCount + 2;
 		int columns = model.getTargetCount() + headerColumnCount + 2;
-		Box[][] cells = new Box[rows][columns];
 		setLayout(new BasicGridLayout(rows, columns));
+
+		Box[][] cells = createGridCells(rows, columns);	
+		populateThreatNamesColumnHeading(cells);
+		populateThreatHeaders(cells);
+		populateThreatSummaries(cells);
+		populateTargetHeaders(cells);
+		populateTargetSummaries(cells);
+		populateBundleCells(cells);
+		populateGrandTotal(rows, columns, cells);
+	}
+
+	private void populateGrandTotal(int rows, int columns, Box[][] cells)
+	{
+		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
+		cells[rows-1][columns-1].add(grandTotal);
+		summaryCells.add(grandTotal);
+	}
+
+	private Box[][] createGridCells(int rows, int columns)
+	{
+		Box[][] cells = new Box[rows][columns];
 		for(int row = 0; row < rows; ++row)
 		{
 			for(int col = 0; col < columns; ++col)
@@ -50,14 +70,7 @@ public class ThreatGridPanel extends JPanel
 				add(cells[row][col]);
 			}
 		}
-			
-		populateThreatNamesColumnHeading(cells);
-		populateThreatSummaries(cells);
-		populateTargetSummaries(cells);
-		populateBundleCells(cells);
-		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
-		cells[rows-1][columns-1].add(grandTotal);
-		summaryCells.add(grandTotal);
+		return cells;
 	}
 
 	private void populateThreatNamesColumnHeading(Box[][] cells)
@@ -104,12 +117,6 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			Box header = cells[headerRowCount + threatIndex][0];
-			header.add(createLabel(model.getThreatName(threatIndex)));
-		}
-			
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
 			Box footer = cells[headerRowCount + threatIndex][1 + headerColumnCount + model.getTargetCount()];
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
 			footer.add(summaryCell);
@@ -123,6 +130,15 @@ public class ThreatGridPanel extends JPanel
 		
 	}
 
+	private void populateThreatHeaders(Box[][] cells)
+	{
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			Box header = cells[headerRowCount + threatIndex][0];
+			header.add(createLabel(model.getThreatName(threatIndex)));
+		}
+	}
+
 	private UiLabel createBoldLabel(String text)
 	{
 		UiLabel label = new UiLabel("<html><h3>" + EAM.text(text) + "</h3></html>");
@@ -133,9 +149,6 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			Box header = cells[0][headerColumnCount + targetIndex];
-			header.add(createLabel(model.getTargetName(targetIndex)));
-
 			Box footer = cells[1 + headerRowCount + model.getThreatCount()][headerColumnCount + targetIndex];
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
 			footer.add(summaryCell);
@@ -146,6 +159,15 @@ public class ThreatGridPanel extends JPanel
 		JPanel panel = new JPanel();
 		panel.add(createBoldLabel("Label|Summary Threat Rating"));
 		rollUpLabel.add(panel);
+	}
+
+	private void populateTargetHeaders(Box[][] cells)
+	{
+		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+		{
+			Box header = cells[0][headerColumnCount + targetIndex];
+			header.add(createLabel(model.getTargetName(targetIndex)));
+		}
 	}
 
 	private void populateBundleCells(Box[][] cells) throws Exception
