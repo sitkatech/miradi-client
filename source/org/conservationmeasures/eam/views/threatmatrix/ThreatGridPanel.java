@@ -58,7 +58,8 @@ public class ThreatGridPanel extends JPanel
 		int rows = cells.length;
 		int columns = cells[0].length;
 		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
-		cells[rows-1][columns-1].add(grandTotal);
+		setCellContents(rows-1, columns-1, grandTotal);
+
 		summaryCells.add(grandTotal);
 	}
 
@@ -83,7 +84,7 @@ public class ThreatGridPanel extends JPanel
 		UiLabel threatLabel = new UiLabel(threatLabelText);
 		threatLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-		cells[0][0].add(threatLabel);
+		setCellContents(0, 0, threatLabel);
 	}
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
@@ -121,9 +122,11 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			JPanel footer = cells[headerRowCount + threatIndex][getTargetSummaryColumn()];
+			int row = headerRowCount + threatIndex;
+			int column = getTargetSummaryColumn();
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
-			footer.add(summaryCell);
+			setCellContents(row, column, summaryCell);
+
 			summaryCells.add(summaryCell);
 		}
 		
@@ -131,17 +134,25 @@ public class ThreatGridPanel extends JPanel
 
 	private void populateTargetSummaryHeading()
 	{
-		JPanel rollUpLabel = cells[getThreatSummaryRow()][0];
-		rollUpLabel.add(createBoldLabel("Label|Summary Target Rating"));
+		UiLabel contents = createBoldLabel("Label|Summary Target Rating");
+		setCellContents(getThreatSummaryRow(), 0, contents);
 	}
 
 	private void populateThreatHeaders()
 	{
+		int column = 0;
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			JPanel header = cells[headerRowCount + threatIndex][0];
-			header.add(createLabel(model.getThreatName(threatIndex)));
+			int row = headerRowCount + threatIndex;
+			JComponent contents = createLabel(model.getThreatName(threatIndex));
+			setCellContents(row, column, contents);
 		}
+	}
+
+	private void setCellContents(int row, int column, JComponent contents)
+	{
+		cells[row][column].removeAll();
+		cells[row][column].add(contents);
 	}
 
 	private UiLabel createBoldLabel(String text)
@@ -154,9 +165,10 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			JPanel footer = cells[getThreatSummaryRow()][headerColumnCount + targetIndex];
+			int column = headerColumnCount + targetIndex;
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
-			footer.add(summaryCell);
+			setCellContents(getThreatSummaryRow(), column, summaryCell);
+			
 			summaryCells.add(summaryCell);
 		}
 		
@@ -164,16 +176,18 @@ public class ThreatGridPanel extends JPanel
 
 	private void populateThreatSummaryHeading()
 	{
-		JPanel rollUpLabel = cells[0][getTargetSummaryColumn()];
-		rollUpLabel.add(createBoldLabel("Label|Summary Threat Rating"));
+		UiLabel contents = createBoldLabel("Label|Summary Threat Rating");
+		setCellContents(0, getTargetSummaryColumn(), contents);
 	}
 
 	private void populateTargetHeaders()
 	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			JPanel header = cells[0][headerColumnCount + targetIndex];
-			header.add(createLabel(model.getTargetName(targetIndex)));
+			int row = 0;
+			int column = headerColumnCount + targetIndex;
+			JComponent contents = createLabel(model.getTargetName(targetIndex));
+			setCellContents(row, column, contents);
 		}
 	}
 
@@ -181,11 +195,15 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
+			int row = headerRowCount + threatIndex;
 			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 			{
-				JPanel cell = cells[headerRowCount + threatIndex][headerColumnCount + targetIndex];
+				int column = headerColumnCount + targetIndex;
 				if(model.isActiveCell(threatIndex, targetIndex))
-					cell.add(createBundleCell(threatIndex, targetIndex));
+				{
+					JComponent contents = createBundleCell(threatIndex, targetIndex);
+					setCellContents(row, column, contents);
+				}
 			}
 		}
 	}
