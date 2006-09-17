@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -33,7 +34,8 @@ public class ThreatGridPanel extends JPanel
 		view = viewToUse;
 		model = modelToUse;
 
-		summaryCells = new HashSet();
+		threatSummaryCells = new HashSet();
+		targetSummaryCells = new HashSet();
 		bundleCells = new HashMap();
 
 		int rows = model.getThreatCount() + headerRowCount + 2;
@@ -60,8 +62,6 @@ public class ThreatGridPanel extends JPanel
 		int columns = cells[0].length;
 		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
 		setCellContents(rows-1, columns-1, grandTotal);
-
-		summaryCells.add(grandTotal);
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -128,7 +128,7 @@ public class ThreatGridPanel extends JPanel
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
 			setCellContents(row, column, summaryCell);
 
-			summaryCells.add(summaryCell);
+			threatSummaryCells.add(summaryCell);
 		}
 		
 	}
@@ -170,7 +170,7 @@ public class ThreatGridPanel extends JPanel
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
 			setCellContents(getThreatSummaryRow(), column, summaryCell);
 			
-			summaryCells.add(summaryCell);
+			targetSummaryCells.add(summaryCell);
 		}
 		
 	}
@@ -245,7 +245,14 @@ public class ThreatGridPanel extends JPanel
 
 	public void updateSummaries() throws Exception
 	{
-		Iterator iter = summaryCells.iterator();
+		updateSummaries(threatSummaryCells);
+		updateSummaries(targetSummaryCells);
+		grandTotal.dataHasChanged();
+	}
+	
+	private void updateSummaries(Collection summaries) throws Exception
+	{
+		Iterator iter = summaries.iterator();
 		while(iter.hasNext())
 		{
 			ThreatRatingSummaryCell cell = (ThreatRatingSummaryCell)iter.next();
@@ -283,7 +290,8 @@ public class ThreatGridPanel extends JPanel
 
 	ThreatMatrixView view;
 	ThreatMatrixTableModel model;
-	HashSet summaryCells;
+	HashSet threatSummaryCells;
+	HashSet targetSummaryCells;
 	HashMap bundleCells;
 	ThreatRatingBundle highlightedBundle;
 	ThreatRatingSummaryCell grandTotal;
