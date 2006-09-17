@@ -52,11 +52,7 @@ public class ThreatGridPanel extends JPanel
 		populateThreatSummaryHeading();
 		populateGrandTotal();
 
-		populateThreatHeaders();
-		populateTargetHeaders();
-		populateBundleCells();
-		populateThreatSummaries();
-		populateTargetSummaries();
+		populateDynamicCells();
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -136,6 +132,17 @@ public class ThreatGridPanel extends JPanel
 		int rows = cells.length;
 		int columns = cells[0].length;
 		setCellContents(rows-1, columns-1, grandTotal);
+	}
+	
+	
+
+	private void populateDynamicCells() throws Exception
+	{
+		populateThreatHeaders();
+		populateTargetHeaders();
+		populateBundleCells();
+		populateThreatSummaries();
+		populateTargetSummaries();
 	}
 
 	private void populateThreatHeaders()
