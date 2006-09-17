@@ -125,10 +125,7 @@ public class ThreatGridPanel extends JPanel
 		}
 		
 		JPanel rollUpLabel = cells[1 + headerRowCount + model.getThreatCount()][0];
-		JPanel panel = new JPanel();
-		panel.add(createBoldLabel("Label|Summary Target Rating"));
-		rollUpLabel.add(panel);
-		
+		rollUpLabel.add(createBoldLabel("Label|Summary Target Rating"));
 	}
 
 	private void populateThreatHeaders()
@@ -157,9 +154,7 @@ public class ThreatGridPanel extends JPanel
 		}
 		
 		JPanel rollUpLabel = cells[0][1 + headerColumnCount + model.getTargetCount()];
-		JPanel panel = new JPanel();
-		panel.add(createBoldLabel("Label|Summary Threat Rating"));
-		rollUpLabel.add(panel);
+		rollUpLabel.add(createBoldLabel("Label|Summary Threat Rating"));
 	}
 
 	private void populateTargetHeaders()
