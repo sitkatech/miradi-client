@@ -150,7 +150,7 @@ public class ThreatGridPanel extends JPanel
 		int column = 0;
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			int row = headerRowCount + threatIndex;
+			int row = getRowFromThreatIndex(threatIndex);
 			JComponent contents = createLabel(model.getThreatName(threatIndex));
 			setCellContents(row, column, contents);
 		}
@@ -161,7 +161,7 @@ public class ThreatGridPanel extends JPanel
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
 			int row = 0;
-			int column = headerColumnCount + targetIndex;
+			int column = getColumnFromTargetIndex(targetIndex);
 			JComponent contents = createLabel(model.getTargetName(targetIndex));
 			setCellContents(row, column, contents);
 		}
@@ -171,10 +171,10 @@ public class ThreatGridPanel extends JPanel
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			int row = headerRowCount + threatIndex;
+			int row = getRowFromThreatIndex(threatIndex);
 			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 			{
-				int column = headerColumnCount + targetIndex;
+				int column = getColumnFromTargetIndex(targetIndex);
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
 					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
@@ -193,7 +193,7 @@ public class ThreatGridPanel extends JPanel
 		{
 			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
 			int threatIndex = summaryCell.threatIndex;
-			int row = headerRowCount + threatIndex;
+			int row = getRowFromThreatIndex(threatIndex);
 			setCellContents(row, column, summaryCell);
 		}
 	}
@@ -206,14 +206,23 @@ public class ThreatGridPanel extends JPanel
 		{
 			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
 			int targetIndex = summaryCell.targetIndex;
-			int column = headerColumnCount + targetIndex;
+			int column = getColumnFromTargetIndex(targetIndex);
 			setCellContents(row, column, summaryCell);
 		}
 	}
 
 
 	
-	
+	private int getRowFromThreatIndex(int threatIndex)
+	{
+		return headerRowCount + threatIndex;
+	}
+
+	private int getColumnFromTargetIndex(int targetIndex)
+	{
+		return headerColumnCount + targetIndex;
+	}
+
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
 	{
 		view.selectBundle(bundle);
