@@ -40,6 +40,7 @@ public class ThreatGridPanel extends JPanel
 		int columns = model.getTargetCount() + headerColumnCount + 2;
 		setLayout(new BasicGridLayout(rows, columns));
 		createGridCells(rows, columns);	
+		createBundleCells();
 
 		populateThreatNamesColumnHeading();
 		populateTargetSummaryHeading();
@@ -201,9 +202,23 @@ public class ThreatGridPanel extends JPanel
 				int column = headerColumnCount + targetIndex;
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
-					JComponent contents = createBundleCell(threatIndex, targetIndex);
+					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
+					JComponent contents = getCellForBundle(bundle);
 					setCellContents(row, column, contents);
 				}
+			}
+		}
+	}
+
+	private void createBundleCells() throws Exception
+	{
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+			{
+				ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
+				ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
+				activeCells.put(bundle, thisComponent);
 			}
 		}
 	}
@@ -211,14 +226,6 @@ public class ThreatGridPanel extends JPanel
 	private ThreatMatrixCellPanel getCellForBundle(ThreatRatingBundle bundle)
 	{
 		return (ThreatMatrixCellPanel)activeCells.get(bundle);
-	}
-
-	private JComponent createBundleCell(int row, int col) throws Exception
-	{
-		ThreatRatingBundle bundle = getBundle(row, col);
-		ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
-		activeCells.put(bundle, thisComponent);
-		return thisComponent;
 	}
 
 	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex) throws Exception
