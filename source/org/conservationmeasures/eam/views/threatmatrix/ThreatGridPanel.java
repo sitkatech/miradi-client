@@ -43,6 +43,8 @@ public class ThreatGridPanel extends JPanel
 		setLayout(new BasicGridLayout(rows, columns));
 		createGridCells(rows, columns);	
 		createBundleCells();
+		createThreatSummaries();
+		createTargetSummaries();
 
 		populateThreatNamesColumnHeading();
 		populateTargetSummaryHeading();
@@ -118,19 +120,27 @@ public class ThreatGridPanel extends JPanel
 			cellPanel.refreshCell();
 		updateSummaries();
 	}
-
-	private void populateThreatSummaries()
+	
+	private void createThreatSummaries()
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			int row = headerRowCount + threatIndex;
-			int column = getTargetSummaryColumn();
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
-			setCellContents(row, column, summaryCell);
-
 			threatSummaryCells.add(summaryCell);
 		}
-		
+	}
+
+	private void populateThreatSummaries()
+	{
+		int column = getTargetSummaryColumn();
+		Iterator iter = threatSummaryCells.iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
+			int threatIndex = summaryCell.threatIndex;
+			int row = headerRowCount + threatIndex;
+			setCellContents(row, column, summaryCell);
+		}
 	}
 
 	private void populateTargetSummaryHeading()
@@ -162,17 +172,26 @@ public class ThreatGridPanel extends JPanel
 		return label;
 	}
 
-	private void populateTargetSummaries()
+	private void createTargetSummaries()
 	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			int column = headerColumnCount + targetIndex;
 			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
-			setCellContents(getThreatSummaryRow(), column, summaryCell);
-			
 			targetSummaryCells.add(summaryCell);
 		}
-		
+	}
+
+	private void populateTargetSummaries()
+	{
+		int row = getThreatSummaryRow();
+		Iterator iter = targetSummaryCells.iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
+			int targetIndex = summaryCell.targetIndex;
+			int column = headerColumnCount + targetIndex;
+			setCellContents(row, column, summaryCell);
+		}
 	}
 
 	private void populateThreatSummaryHeading()
