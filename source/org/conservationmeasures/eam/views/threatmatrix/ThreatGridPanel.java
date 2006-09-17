@@ -45,25 +45,18 @@ public class ThreatGridPanel extends JPanel
 		createBundleCells();
 		createThreatSummaries();
 		createTargetSummaries();
+		createGrandTotal();
 
 		populateThreatNamesColumnHeading();
 		populateTargetSummaryHeading();
 		populateThreatSummaryHeading();
+		populateGrandTotal();
 
 		populateThreatHeaders();
 		populateTargetHeaders();
+		populateBundleCells();
 		populateThreatSummaries();
 		populateTargetSummaries();
-		populateBundleCells();
-		populateGrandTotal();
-	}
-
-	private void populateGrandTotal()
-	{
-		int rows = cells.length;
-		int columns = cells[0].length;
-		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
-		setCellContents(rows-1, columns-1, grandTotal);
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -81,6 +74,42 @@ public class ThreatGridPanel extends JPanel
 		}
 	}
 
+	private void createBundleCells() throws Exception
+	{
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+			{
+				ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
+				ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
+				bundleCells.put(bundle, thisComponent);
+			}
+		}
+	}
+	
+	private void createThreatSummaries()
+	{
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
+			threatSummaryCells.add(summaryCell);
+		}
+	}
+
+	private void createTargetSummaries()
+	{
+		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+		{
+			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
+			targetSummaryCells.add(summaryCell);
+		}
+	}
+
+	private void createGrandTotal()
+	{
+		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
+	}
+
 	private void populateThreatNamesColumnHeading()
 	{
 		String threatLabelText = "<html><h2>THREATS</h2></html>";
@@ -89,6 +118,94 @@ public class ThreatGridPanel extends JPanel
 
 		setCellContents(0, 0, threatLabel);
 	}
+	
+	private void populateThreatSummaryHeading()
+	{
+		UiLabel contents = createBoldLabel("Label|Summary Threat Rating");
+		setCellContents(0, getTargetSummaryColumn(), contents);
+	}
+
+	private void populateTargetSummaryHeading()
+	{
+		UiLabel contents = createBoldLabel("Label|Summary Target Rating");
+		setCellContents(getThreatSummaryRow(), 0, contents);
+	}
+
+	private void populateGrandTotal()
+	{
+		int rows = cells.length;
+		int columns = cells[0].length;
+		setCellContents(rows-1, columns-1, grandTotal);
+	}
+
+	private void populateThreatHeaders()
+	{
+		int column = 0;
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			int row = headerRowCount + threatIndex;
+			JComponent contents = createLabel(model.getThreatName(threatIndex));
+			setCellContents(row, column, contents);
+		}
+	}
+
+	private void populateTargetHeaders()
+	{
+		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+		{
+			int row = 0;
+			int column = headerColumnCount + targetIndex;
+			JComponent contents = createLabel(model.getTargetName(targetIndex));
+			setCellContents(row, column, contents);
+		}
+	}
+
+	private void populateBundleCells() throws Exception
+	{
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+		{
+			int row = headerRowCount + threatIndex;
+			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
+			{
+				int column = headerColumnCount + targetIndex;
+				if(model.isActiveCell(threatIndex, targetIndex))
+				{
+					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
+					JComponent contents = getCellForBundle(bundle);
+					setCellContents(row, column, contents);
+				}
+			}
+		}
+	}
+
+	private void populateThreatSummaries()
+	{
+		int column = getTargetSummaryColumn();
+		Iterator iter = threatSummaryCells.iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
+			int threatIndex = summaryCell.threatIndex;
+			int row = headerRowCount + threatIndex;
+			setCellContents(row, column, summaryCell);
+		}
+	}
+
+	private void populateTargetSummaries()
+	{
+		int row = getThreatSummaryRow();
+		Iterator iter = targetSummaryCells.iterator();
+		while(iter.hasNext())
+		{
+			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
+			int targetIndex = summaryCell.targetIndex;
+			int column = headerColumnCount + targetIndex;
+			setCellContents(row, column, summaryCell);
+		}
+	}
+
+
+	
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
 	{
@@ -121,45 +238,6 @@ public class ThreatGridPanel extends JPanel
 		updateSummaries();
 	}
 	
-	private void createThreatSummaries()
-	{
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createThreatSummary(model, threatIndex);
-			threatSummaryCells.add(summaryCell);
-		}
-	}
-
-	private void populateThreatSummaries()
-	{
-		int column = getTargetSummaryColumn();
-		Iterator iter = threatSummaryCells.iterator();
-		while(iter.hasNext())
-		{
-			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
-			int threatIndex = summaryCell.threatIndex;
-			int row = headerRowCount + threatIndex;
-			setCellContents(row, column, summaryCell);
-		}
-	}
-
-	private void populateTargetSummaryHeading()
-	{
-		UiLabel contents = createBoldLabel("Label|Summary Target Rating");
-		setCellContents(getThreatSummaryRow(), 0, contents);
-	}
-
-	private void populateThreatHeaders()
-	{
-		int column = 0;
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			int row = headerRowCount + threatIndex;
-			JComponent contents = createLabel(model.getThreatName(threatIndex));
-			setCellContents(row, column, contents);
-		}
-	}
-
 	private void setCellContents(int row, int column, JComponent contents)
 	{
 		cells[row][column].removeAll();
@@ -172,76 +250,6 @@ public class ThreatGridPanel extends JPanel
 		return label;
 	}
 
-	private void createTargetSummaries()
-	{
-		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-		{
-			ThreatRatingSummaryCell summaryCell = ThreatRatingSummaryCell.createTargetSummary(model, targetIndex);
-			targetSummaryCells.add(summaryCell);
-		}
-	}
-
-	private void populateTargetSummaries()
-	{
-		int row = getThreatSummaryRow();
-		Iterator iter = targetSummaryCells.iterator();
-		while(iter.hasNext())
-		{
-			ThreatRatingSummaryCell summaryCell = (ThreatRatingSummaryCell)iter.next();
-			int targetIndex = summaryCell.targetIndex;
-			int column = headerColumnCount + targetIndex;
-			setCellContents(row, column, summaryCell);
-		}
-	}
-
-	private void populateThreatSummaryHeading()
-	{
-		UiLabel contents = createBoldLabel("Label|Summary Threat Rating");
-		setCellContents(0, getTargetSummaryColumn(), contents);
-	}
-
-	private void populateTargetHeaders()
-	{
-		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-		{
-			int row = 0;
-			int column = headerColumnCount + targetIndex;
-			JComponent contents = createLabel(model.getTargetName(targetIndex));
-			setCellContents(row, column, contents);
-		}
-	}
-
-	private void populateBundleCells() throws Exception
-	{
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			int row = headerRowCount + threatIndex;
-			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-			{
-				int column = headerColumnCount + targetIndex;
-				if(model.isActiveCell(threatIndex, targetIndex))
-				{
-					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
-					JComponent contents = getCellForBundle(bundle);
-					setCellContents(row, column, contents);
-				}
-			}
-		}
-	}
-
-	private void createBundleCells() throws Exception
-	{
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-			{
-				ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
-				ThreatMatrixCellPanel thisComponent = new ThreatMatrixCellPanel(this, bundle);
-				bundleCells.put(bundle, thisComponent);
-			}
-		}
-	}
-	
 	private ThreatMatrixCellPanel getCellForBundle(ThreatRatingBundle bundle)
 	{
 		return (ThreatMatrixCellPanel)bundleCells.get(bundle);
