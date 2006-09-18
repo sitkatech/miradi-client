@@ -499,7 +499,6 @@ public class ThreatGridPanel extends JPanel
 				return value0.compareTo(value1);
 			}
 
-			ModelNodeId targetId;
 			ThreatRatingFramework framework;
 		}
 		
