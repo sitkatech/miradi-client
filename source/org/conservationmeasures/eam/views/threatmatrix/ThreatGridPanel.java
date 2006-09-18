@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -24,6 +26,7 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -57,11 +60,10 @@ public class ThreatGridPanel extends JPanel
 		populateThreatSummaryHeading();
 		populateGrandTotal();
 
-		sortedIndexes = new int[model.getThreatCount()];
-		for(int i = 0; i < sortedIndexes.length; ++i)
-			sortedIndexes[i] = i;
-		
-		populateDynamicCells();
+		populateTargetHeaders();
+		populateTargetSummaries();
+
+		sortArbitrarily();
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -115,23 +117,6 @@ public class ThreatGridPanel extends JPanel
 		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
 	}
 	
-	class SortByNameListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent arg0)
-		{
-			try
-			{
-				sortByThreatName();
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				EAM.errorDialog(EAM.text("An error prevented that operation from succeeding"));
-			}
-		}
-		
-	}
-
 	private void populateThreatNamesColumnHeading()
 	{
 		String threatLabelText = "<html><h2>THREATS</h2></html>";
@@ -171,10 +156,8 @@ public class ThreatGridPanel extends JPanel
 	private void populateDynamicCells() throws Exception
 	{
 		populateThreatHeaders();
-		populateTargetHeaders();
 		populateBundleCells();
 		populateThreatSummaries();
-		populateTargetSummaries();
 		validate();
 		repaint();
 	}
@@ -189,6 +172,46 @@ public class ThreatGridPanel extends JPanel
 			setCellContents(row, column, contents);
 		}
 	}
+	
+	class SortByNameListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			try
+			{
+				sortByThreatName();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("An error prevented that operation from succeeding"));
+			}
+		}
+		
+	}
+
+	class SortByTargetValueListener implements ActionListener
+	{
+		public SortByTargetValueListener(int targetIndexToUse)
+		{
+			targetIndex = targetIndexToUse;
+		}
+		
+		public void actionPerformed(ActionEvent arg0)
+		{
+			try
+			{
+				sortByTargetValue(targetIndex);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("An error prevented that operation from succeeding"));
+			}
+		}
+		
+		int targetIndex;
+	}
 
 	private void populateTargetHeaders()
 	{
@@ -196,7 +219,14 @@ public class ThreatGridPanel extends JPanel
 		{
 			int row = 0;
 			int column = getColumnFromTargetIndex(targetIndex);
-			JComponent contents = createLabel(model.getTargetName(targetIndex));
+			JComponent label = createLabel(model.getTargetName(targetIndex));
+			
+			UiButton sort = new UiButton(EAM.text("Button|Sort"));
+			sort.addActionListener(new SortByTargetValueListener(targetIndex));
+			
+			JPanel contents = new JPanel(new BorderLayout());
+			contents.add(label, BorderLayout.CENTER);
+			contents.add(sort, BorderLayout.AFTER_LAST_LINE);
 			setCellContents(row, column, contents);
 		}
 	}
@@ -338,6 +368,15 @@ public class ThreatGridPanel extends JPanel
 		}
 	}
 	
+	private void sortArbitrarily() throws Exception
+	{
+		sortedIndexes = new int[model.getThreatCount()];
+		for(int i = 0; i < sortedIndexes.length; ++i)
+			sortedIndexes[i] = i;
+		
+		populateDynamicCells();
+	}
+
 	private void sortByThreatName() throws Exception
 	{
 		String[] sortedNames = model.getThreatNames();
@@ -349,6 +388,71 @@ public class ThreatGridPanel extends JPanel
 			sortedIndexes[unsortedNames.indexOf(sortedNames[i])] =  i;
 			System.out.println(sortedNames[i]);
 		}
+		populateDynamicCells();
+	}
+
+	private void sortByTargetValue(int targetIndex) throws Exception
+	{
+		class BundleSorter implements Comparator
+		{
+			public BundleSorter(ModelNodeId targetIdToSortOn, ThreatRatingFramework frameworkTouse)
+			{
+				targetId = targetIdToSortOn;
+				framework = frameworkTouse;
+			}
+			
+			public int compare(Object raw0, Object raw1)
+			{
+				ModelNodeId threatId0 = (ModelNodeId)raw0;
+				ModelNodeId threatId1 = (ModelNodeId)raw1;
+				
+				ThreatRatingBundle bundle0 = getBundle(threatId0);
+				ThreatRatingBundle bundle1 = getBundle(threatId1);
+					
+				return getBundleValue(bundle0).compareTo(getBundleValue(bundle1));
+			}
+
+			private ThreatRatingBundle getBundle(ModelNodeId threatId)
+			{
+				try
+				{
+					return framework.getBundle(threatId, targetId);
+				}
+				catch (Exception e)
+				{
+					return null;
+				}
+			}
+			
+			Integer getBundleValue(ThreatRatingBundle bundle)
+			{
+				if(bundle == null)
+					return new Integer(-1);
+				
+				ThreatRatingValueOption value = framework.getBundleValue(bundle);
+				return new Integer(value.getNumericValue());
+			}
+
+			ModelNodeId targetId;
+			ThreatRatingFramework framework;
+		}
+		
+		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
+		
+		Vector sortedThreatIndexes = new Vector();
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+			sortedThreatIndexes.add(model.getThreatId(threatIndex));
+
+		ModelNodeId targetId = model.getTargetId(targetIndex);
+		Collections.sort(sortedThreatIndexes, new BundleSorter(targetId, framework));
+		for(int i = 0; i < sortedThreatIndexes.size(); ++i)
+		{
+			ModelNodeId thisSortedIndex = (ModelNodeId)sortedThreatIndexes.get(i);
+			int threatIndex = model.findThreatIndexById(thisSortedIndex);
+			sortedIndexes[threatIndex] =  i;
+		}
+		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
+			System.out.println(model.getThreatName(sortedIndexes[threatIndex]));
 		populateDynamicCells();
 	}
 
