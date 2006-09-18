@@ -124,6 +124,20 @@ public class ThreatMatrixTableModel
 		return cmNode;
 	}
 	
+	public int findThreatIndexById(ModelNodeId threatId)
+	{
+		return findNodeIndexById(getDirectThreats(), threatId);
+	}
+	
+	private int findNodeIndexById(ConceptualModelNode[] nodes, ModelNodeId id)
+	{
+		for(int i = 0; i < nodes.length; ++i)
+			if(nodes[i].getId().equals(id))
+				return i;
+		
+		return -1;
+	}
+	
 	public ModelNodeId findThreatByName(String threatName)
 	{
 		return findNodeByName(getDirectThreats(), threatName);
