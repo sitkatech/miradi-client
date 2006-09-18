@@ -111,6 +111,27 @@ public class ThreatRatingBundle
 		return json;
 	}
 	
+	public boolean equals(Object rawOther)
+	{
+		if(! (rawOther instanceof ThreatRatingBundle))
+			return false;
+		
+		ThreatRatingBundle other = (ThreatRatingBundle)rawOther;
+		if(!threatId.equals(other.threatId))
+			return false;
+		
+		if(!targetId.equals(other.targetId))
+			return false;
+		
+		return true;
+	}
+
+	public int hashCode()
+	{
+		return threatId.hashCode();
+	}
+	
+	
 	private static final String TAG_THREAT_ID = "ThreatId";
 	private static final String TAG_TARGET_ID = "TargetId";
 	private static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
