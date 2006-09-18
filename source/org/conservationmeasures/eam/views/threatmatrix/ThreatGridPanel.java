@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,6 +27,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -58,7 +61,7 @@ public class ThreatGridPanel extends JPanel
 		for(int i = 0; i < sortedIndexes.length; ++i)
 			sortedIndexes[i] = i;
 		
-		sortByThreatName();
+		populateDynamicCells();
 	}
 
 	private void createGridCells(int rows, int columns)
@@ -111,14 +114,37 @@ public class ThreatGridPanel extends JPanel
 	{
 		grandTotal = ThreatRatingSummaryCell.createGrandTotal(model);
 	}
+	
+	class SortByNameListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			try
+			{
+				sortByThreatName();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("An error prevented that operation from succeeding"));
+			}
+		}
+		
+	}
 
 	private void populateThreatNamesColumnHeading()
 	{
 		String threatLabelText = "<html><h2>THREATS</h2></html>";
 		UiLabel threatLabel = new UiLabel(threatLabelText);
 		threatLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		UiButton sort = new UiButton(EAM.text("Button|Sort"));
+		sort.addActionListener(new SortByNameListener());
 
-		setCellContents(0, 0, threatLabel);
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(threatLabel, BorderLayout.CENTER);
+		panel.add(sort, BorderLayout.AFTER_LAST_LINE);
+		setCellContents(0, 0, panel);
 	}
 	
 	private void populateThreatSummaryHeading()
@@ -149,6 +175,8 @@ public class ThreatGridPanel extends JPanel
 		populateBundleCells();
 		populateThreatSummaries();
 		populateTargetSummaries();
+		validate();
+		repaint();
 	}
 
 	private void populateThreatHeaders()
