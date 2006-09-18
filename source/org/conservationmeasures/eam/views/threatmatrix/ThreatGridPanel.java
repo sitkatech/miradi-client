@@ -134,7 +134,15 @@ public class ThreatGridPanel extends JPanel
 	
 	private void populateThreatSummaryHeading()
 	{
-		UiLabel contents = createBoldLabel("Label|Summary Threat Rating");
+		UiLabel label = createBoldLabel("Label|Summary Threat Rating");
+		
+		UiButton sort = new UiButton(EAM.text("Button|Sort"));
+		sort.addActionListener(new SortBySummaryListener());
+		
+		JPanel contents = new JPanel(new BorderLayout());
+		contents.add(label, BorderLayout.CENTER);
+		contents.add(sort, BorderLayout.AFTER_LAST_LINE);
+
 		setCellContents(0, getTargetSummaryColumn(), contents);
 	}
 
@@ -211,6 +219,22 @@ public class ThreatGridPanel extends JPanel
 		}
 		
 		int targetIndex;
+	}
+
+	class SortBySummaryListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			try
+			{
+				sortByThreatSummaryValue();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("An error prevented that operation from succeeding"));
+			}
+		}
 	}
 
 	private void populateTargetHeaders()
@@ -386,7 +410,6 @@ public class ThreatGridPanel extends JPanel
 		for(int i = 0; i < sortedNames.length; ++i)
 		{
 			sortedIndexes[unsortedNames.indexOf(sortedNames[i])] =  i;
-			System.out.println(sortedNames[i]);
 		}
 		populateDynamicCells();
 	}
@@ -451,8 +474,48 @@ public class ThreatGridPanel extends JPanel
 			int threatIndex = model.findThreatIndexById(thisSortedIndex);
 			sortedIndexes[threatIndex] =  i;
 		}
+		populateDynamicCells();
+	}
+
+	private void sortByThreatSummaryValue() throws Exception
+	{
+		class ThreatSummarySorter implements Comparator
+		{
+			public ThreatSummarySorter(ThreatRatingFramework frameworkTouse)
+			{
+				framework = frameworkTouse;
+			}
+			
+			public int compare(Object raw0, Object raw1)
+			{
+				ModelNodeId threatId0 = (ModelNodeId)raw0;
+				ModelNodeId threatId1 = (ModelNodeId)raw1;
+				
+				ThreatRatingValueOption result0 = framework.getThreatThreatRatingValue(threatId0);
+				Integer value0 = new Integer(result0.getNumericValue());
+				ThreatRatingValueOption result1 = framework.getThreatThreatRatingValue(threatId1);
+				Integer value1 = new Integer(result1.getNumericValue());
+				
+				return value0.compareTo(value1);
+			}
+
+			ModelNodeId targetId;
+			ThreatRatingFramework framework;
+		}
+		
+		ThreatRatingFramework framework = getProject().getThreatRatingFramework();
+		
+		Vector sortedThreatIndexes = new Vector();
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-			System.out.println(model.getThreatName(sortedIndexes[threatIndex]));
+			sortedThreatIndexes.add(model.getThreatId(threatIndex));
+
+		Collections.sort(sortedThreatIndexes, new ThreatSummarySorter(framework));
+		for(int i = 0; i < sortedThreatIndexes.size(); ++i)
+		{
+			ModelNodeId thisSortedIndex = (ModelNodeId)sortedThreatIndexes.get(i);
+			int threatIndex = model.findThreatIndexById(thisSortedIndex);
+			sortedIndexes[threatIndex] =  i;
+		}
 		populateDynamicCells();
 	}
 
