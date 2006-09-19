@@ -24,10 +24,10 @@ public class EAMToolBar extends JToolBar
 {
 	public EAMToolBar(Actions actions, Class currentViewActionClass)
 	{
-		this(actions, currentViewActionClass, new JComponent[0]);
+		this(actions, currentViewActionClass, new JComponent[0][0]);
 	}
 	
-	public EAMToolBar(Actions actions, Class currentViewActionClass, JComponent[] customButtons)
+	public EAMToolBar(Actions actions, Class currentViewActionClass, JComponent[][] customButtons)
 	{
 		setFloatable(false);
 		add(ViewSwitcher.create(actions, currentViewActionClass));
@@ -35,8 +35,12 @@ public class EAMToolBar extends JToolBar
 		add(new ToolBarButton(actions, ActionUndo.class));
 		add(new ToolBarButton(actions, ActionRedo.class));
 
-		for(int i = 0; i < customButtons.length; ++i)
-			add(customButtons[i]);
+		for(int segment = 0; segment < customButtons.length; ++segment)
+		{
+			addSeparator();
+			for(int button = 0; button < customButtons[segment].length; ++button)
+				add(customButtons[segment][button]);
+		}
 		
 		add(Box.createHorizontalGlue());
 

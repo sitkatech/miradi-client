@@ -13,10 +13,9 @@ public class StrategicPlanToolBar extends EAMToolBar
 		super(actions, ActionViewStrategicPlan.class, getExtraButtons(actions));
 	}
 	
-	static JComponent[] getExtraButtons(Actions actions)
+	static JComponent[][] getExtraButtons(Actions actions)
 	{
-		return new JComponent[] {
-		};
+		return new JComponent[0][0];
 	}
 	
 }
