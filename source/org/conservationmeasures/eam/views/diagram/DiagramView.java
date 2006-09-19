@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionInsertCluster;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -132,7 +131,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionInsertIntervention.class, new InsertIntervention());
 		addDoerToMap(ActionInsertDraftIntervention.class, new InsertDraftIntervention());
 		addDoerToMap(ActionInsertConnection.class, new InsertConnection());
-		addDoerToMap(ActionInsertCluster.class, new CreateCluster());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionCut.class, new Cut());
 		addDoerToMap(ActionDelete.class, new Delete());
