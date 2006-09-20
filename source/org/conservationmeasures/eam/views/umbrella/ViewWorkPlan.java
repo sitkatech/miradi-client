@@ -4,9 +4,9 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ProjectDoer;
-import org.conservationmeasures.eam.views.task.TaskView;
+import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
-public class ViewTask extends ProjectDoer 
+public class ViewWorkPlan extends ProjectDoer 
 {
 	public boolean isAvailable()
 	{
@@ -20,7 +20,7 @@ public class ViewTask extends ProjectDoer
 		
 		try
 		{
-			getProject().executeCommand(new CommandSwitchView(TaskView.getViewName()));
+			getProject().executeCommand(new CommandSwitchView(WorkPlanView.getViewName()));
 		}
 		catch(AlreadyInThatViewException ignore)
 		{

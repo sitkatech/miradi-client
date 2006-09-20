@@ -42,9 +42,9 @@ import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
-import org.conservationmeasures.eam.views.task.TaskView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.martus.util.DirectoryLock;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
@@ -85,7 +85,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		interviewView = new InterviewView(this);
 		threatMatrixView = new ThreatMatrixView(this);
 		budgetView = new BudgetView(this);
-		taskView = new TaskView(this);
+		workPlanView = new WorkPlanView(this);
 		mapView = new MapView(this);
 		calendarView = new CalendarView(this);
 		imagesView = new ImagesView(this);
@@ -99,7 +99,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(interviewView, interviewView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
 		viewHolder.add(budgetView, budgetView.cardName());
-		viewHolder.add(taskView, taskView.cardName());
+		viewHolder.add(workPlanView, workPlanView.cardName());
 		viewHolder.add(mapView, mapView.cardName());
 		viewHolder.add(calendarView, calendarView.cardName());
 		viewHolder.add(imagesView, imagesView.cardName());
@@ -270,8 +270,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(threatMatrixView);
 		else if(viewName.equals(budgetView.cardName()))
 			setCurrentView(budgetView);
-		else if(viewName.equals(taskView.cardName()))
-			setCurrentView(taskView);
+		else if(viewName.equals(workPlanView.cardName()))
+			setCurrentView(workPlanView);
 		else if(viewName.equals(mapView.cardName()))
 			setCurrentView(mapView);
 		else if(viewName.equals(calendarView.cardName()))
@@ -351,7 +351,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private InterviewView interviewView;
 	private ThreatMatrixView threatMatrixView;
 	private BudgetView budgetView;
-	private TaskView taskView;
+	private WorkPlanView workPlanView;
 	private MapView mapView;
 	private CalendarView calendarView;
 	private ImagesView imagesView;

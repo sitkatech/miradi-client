@@ -3,9 +3,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionViewTask extends MainWindowAction
+public class ActionViewWorkPlan extends MainWindowAction
 {
-	public ActionViewTask(MainWindow mainWindowToUse)
+	public ActionViewWorkPlan(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

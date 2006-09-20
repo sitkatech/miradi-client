@@ -87,7 +87,7 @@ public class Actions
 		registerAction(new ActionViewInterview(mainWindow));
 		registerAction(new ActionViewThreatMatrix(mainWindow));
 		registerAction(new ActionViewBudget(mainWindow));
-		registerAction(new ActionViewTask(mainWindow));
+		registerAction(new ActionViewWorkPlan(mainWindow));
 		registerAction(new ActionViewMap(mainWindow));
 		registerAction(new ActionViewStrategicPlan(mainWindow));
 		registerAction(new ActionViewImages(mainWindow));
