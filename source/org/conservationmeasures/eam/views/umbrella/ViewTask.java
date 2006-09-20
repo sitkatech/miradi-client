@@ -10,11 +10,14 @@ public class ViewTask extends ProjectDoer
 {
 	public boolean isAvailable()
 	{
-		return true;
+		return getProject().isOpen();
 	}
 
 	public void doIt() throws CommandFailedException
 	{
+		if(!isAvailable())
+			return;
+		
 		try
 		{
 			getProject().executeCommand(new CommandSwitchView(TaskView.getViewName()));
