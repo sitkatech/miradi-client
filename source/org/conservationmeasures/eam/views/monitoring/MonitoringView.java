@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import java.awt.BorderLayout;
+
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -28,10 +30,16 @@ public class MonitoringView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
+		panel = new MonitoringPanel(getProject());
+		removeAll();
+		add(panel, BorderLayout.CENTER);
 	}
 
 	public void becomeInactive() throws Exception
 	{
+		panel = null;
+		removeAll();
 	}
 
+	MonitoringPanel panel;
 }
