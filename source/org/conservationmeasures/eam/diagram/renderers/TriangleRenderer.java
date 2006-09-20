@@ -38,7 +38,7 @@ public class TriangleRenderer extends MultilineNodeRenderer {
 		g2.drawPolygon(buildTriangle(rect));
 	}
 
-	static Polygon buildTriangle(Rectangle rect)
+	public static Polygon buildTriangle(Rectangle rect)
 	{
 		int left = rect.x;
 		int top = rect.y;
