@@ -173,7 +173,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	}
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
-	private static final Color INDICATOR_COLOR = LIGHT_PURPLE;
+	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	
 	ThreatRatingValue priority;
