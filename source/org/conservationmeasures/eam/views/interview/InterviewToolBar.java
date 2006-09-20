@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.views.ActionViewInterview;
 import org.conservationmeasures.eam.main.EAMToolBar;
 
 public class InterviewToolBar extends EAMToolBar

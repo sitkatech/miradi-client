@@ -3,26 +3,27 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.actions;
+package org.conservationmeasures.eam.actions.views;
 
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionViewInterview extends MainWindowAction
+public class ActionViewDiagram extends MainWindowAction
 {
-	public ActionViewInterview(MainWindow mainWindowToUse)
+	public ActionViewDiagram(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Interview") + DEMO_INDICATOR;
+		return EAM.text("Action|Diagram");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Interview");
+		return EAM.text("TT|Switch to the Conceptual Model Diagram");
 	}
 	
 	public String toString()

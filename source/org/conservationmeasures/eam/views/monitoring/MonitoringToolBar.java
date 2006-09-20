@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import javax.swing.JComponent;
 
-import org.conservationmeasures.eam.actions.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.main.EAMToolBar;
 
 public class MonitoringToolBar extends EAMToolBar

@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.main.EAMToolBar;
 
 public class ThreatMatrixToolBar extends EAMToolBar

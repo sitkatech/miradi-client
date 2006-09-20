@@ -12,17 +12,17 @@ import java.awt.event.ActionListener;
 import javax.swing.Action;
 import javax.swing.JComboBox;
 
-import org.conservationmeasures.eam.actions.ActionViewBudget;
-import org.conservationmeasures.eam.actions.ActionViewCalendar;
-import org.conservationmeasures.eam.actions.ActionViewDiagram;
-import org.conservationmeasures.eam.actions.ActionViewImages;
-import org.conservationmeasures.eam.actions.ActionViewInterview;
-import org.conservationmeasures.eam.actions.ActionViewMap;
-import org.conservationmeasures.eam.actions.ActionViewMonitoring;
-import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
-import org.conservationmeasures.eam.actions.ActionViewWorkPlan;
-import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.views.ActionViewBudget;
+import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
+import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.views.ActionViewImages;
+import org.conservationmeasures.eam.actions.views.ActionViewInterview;
+import org.conservationmeasures.eam.actions.views.ActionViewMap;
+import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
+import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
+import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 
 public class ViewSwitcher extends JComboBox
 {

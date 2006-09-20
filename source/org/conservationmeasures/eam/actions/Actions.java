@@ -52,6 +52,16 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
+import org.conservationmeasures.eam.actions.views.ActionViewBudget;
+import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
+import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
+import org.conservationmeasures.eam.actions.views.ActionViewImages;
+import org.conservationmeasures.eam.actions.views.ActionViewInterview;
+import org.conservationmeasures.eam.actions.views.ActionViewMap;
+import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
+import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
+import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.MainWindow;
 
 public class Actions

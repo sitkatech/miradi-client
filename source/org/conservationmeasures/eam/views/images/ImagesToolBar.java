@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.images;
 
-import org.conservationmeasures.eam.actions.ActionViewImages;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.main.EAMToolBar;
 
 public class ImagesToolBar extends EAMToolBar

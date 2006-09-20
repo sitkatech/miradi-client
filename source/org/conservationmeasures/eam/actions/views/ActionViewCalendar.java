@@ -1,5 +1,6 @@
-package org.conservationmeasures.eam.actions;
+package org.conservationmeasures.eam.actions.views;
 
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
