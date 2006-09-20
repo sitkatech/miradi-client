@@ -18,7 +18,7 @@ public class ActionViewMonitoring extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Monitoring");
+		return EAM.text("Action|Monitoring") + DEMO_INDICATOR;
 	}
 
 	public String getToolTipText()
