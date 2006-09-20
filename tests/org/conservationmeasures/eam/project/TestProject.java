@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
@@ -762,8 +763,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeB = createNode(new NodeTypeTarget());
 		createNode(new NodeTypeTarget());
 		
-		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
-		BaseId indicatorId2 = project.createObject(ObjectType.INDICATOR);
+		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
+		IndicatorId indicatorId2 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		
 		nodeA.getUnderlyingObject().setIndicatorId(indicatorId1);
 		nodeB.getUnderlyingObject().setIndicatorId(indicatorId1);
@@ -784,7 +785,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeFactor());
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeFactor());
 		
-		BaseId indicatorId1 = project.createObject(ObjectType.INDICATOR);
+		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		nodeIndirectFactor.getUnderlyingObject().setIndicatorId(indicatorId1);
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.martus.util.TestCaseEnhanced;
 
@@ -97,7 +98,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		ConceptualModelFactor factor = new ConceptualModelFactor(factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
-		factor.setIndicatorId(new BaseId(99));
+		factor.setIndicatorId(new IndicatorId(99));
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFrom(factor.toJson());

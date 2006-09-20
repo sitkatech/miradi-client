@@ -10,23 +10,50 @@ import java.awt.Component;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 import com.java.sun.jtreetable.JTreeTable;
-import com.java.sun.jtreetable.TreeTableModel;
 
 public class MonitoringTreeTable extends JTreeTable
 {
-	public MonitoringTreeTable(TreeTableModel treeTableModel)
+	public MonitoringTreeTable(MonitoringModel monitoringModelToUse)
 	{
-		super(treeTableModel);
+		super(monitoringModelToUse);
+		monitoringModel = monitoringModelToUse;
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
 		getTree().setCellRenderer(new Renderer());
+		expandEverything();
+	}
+
+	void expandEverything()
+	{
+		MonitoringNode root = (MonitoringNode)getTreeTableModel().getRoot();
+		TreePath rootPath = new TreePath(root);
+		expandNode(rootPath);
+	}
+	
+	public MonitoringModel getTreeTableModel()
+	{
+		return monitoringModel;
+	}
+
+	private void expandNode(TreePath thisPath)
+	{
+		MonitoringNode topLevelObject = (MonitoringNode)thisPath.getLastPathComponent();
+		getTree().expandPath(thisPath);
+		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+		{
+			MonitoringNode secondLevelObject = topLevelObject.getChild(childIndex);
+			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
+			expandNode(secondLevelPath);
+		}
 	}
 
 	static class Renderer extends DefaultTreeCellRenderer
@@ -39,10 +66,10 @@ public class MonitoringTreeTable extends JTreeTable
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
 			objectiveRenderer.setLeafIcon(new ObjectiveIcon());
 
-//			indicatorRenderer = new DefaultTreeCellRenderer();
-//			indicatorRenderer.setClosedIcon(new IndicatorIcon());
-//			indicatorRenderer.setOpenIcon(new IndicatorIcon());
-//			indicatorRenderer.setLeafIcon(new IndicatorIcon());
+			indicatorRenderer = new DefaultTreeCellRenderer();
+			indicatorRenderer.setClosedIcon(new IndicatorIcon());
+			indicatorRenderer.setOpenIcon(new IndicatorIcon());
+			indicatorRenderer.setLeafIcon(new IndicatorIcon());
 			
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
@@ -64,4 +91,6 @@ public class MonitoringTreeTable extends JTreeTable
 		DefaultTreeCellRenderer indicatorRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 	}
+	
+	MonitoringModel monitoringModel;
 }

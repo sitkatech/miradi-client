@@ -23,7 +23,7 @@ public class MonitoringRootNode extends MonitoringNode
 		{
 			BaseId id = objectiveIds[i];
 			Objective objective = (Objective)project.findObject(ObjectType.OBJECTIVE, id);
-			MonitoringObjective node = new MonitoringObjective(objective);
+			MonitoringObjective node = new MonitoringObjective(project, objective);
 			children.add(node);
 		}
 	}

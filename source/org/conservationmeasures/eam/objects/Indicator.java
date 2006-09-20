@@ -7,14 +7,14 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
 public class Indicator extends EAMBaseObject
 {
-	public Indicator(BaseId idToUse)
+	public Indicator(IndicatorId idToUse)
 	{
 		super(idToUse);
 		shortLabel = "";

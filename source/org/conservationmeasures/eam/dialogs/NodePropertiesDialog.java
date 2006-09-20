@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -445,7 +446,7 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		ignoreIndicatorChanges = true;
 		dropdownIndicator.removeAllItems();
-		Indicator nullIndicator = new Indicator(BaseId.INVALID);
+		Indicator nullIndicator = new Indicator(new IndicatorId(BaseId.INVALID.asInt()));
 		dropdownIndicator.addItem(nullIndicator);
 		
 		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();

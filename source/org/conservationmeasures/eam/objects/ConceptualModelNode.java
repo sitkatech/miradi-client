@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -31,7 +32,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		type = nodeType;
 		
 		comment = "";
-		indicator = BaseId.INVALID;
+		indicator = new IndicatorId(BaseId.INVALID.asInt());
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
 	}
@@ -42,7 +43,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		type = nodeType;
 
 		comment = json.optString(TAG_COMMENT);
-		setIndicatorId(new BaseId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
+		setIndicatorId(new IndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
 		
 		goals = new GoalIds();
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
@@ -94,12 +95,12 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return false;
 	}
 
-	public BaseId getIndicatorId()
+	public IndicatorId getIndicatorId()
 	{
 		return indicator;
 	}
 	
-	public void setIndicatorId(BaseId indicatorToUse)
+	public void setIndicatorId(IndicatorId indicatorToUse)
 	{
 		indicator = indicatorToUse;
 	}
@@ -203,7 +204,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_COMMENT))
 			setComment((String)dataValue);
 		else if(fieldTag.equals(TAG_INDICATOR_ID))
-			setIndicatorId(new BaseId(Integer.parseInt((String)dataValue)));
+			setIndicatorId(new IndicatorId(Integer.parseInt((String)dataValue)));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
 			setGoals(new GoalIds(new IdList((String)dataValue)));
 		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
@@ -271,7 +272,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	private NodeType type;
 	private String comment;
 
-	private BaseId indicator;
+	private IndicatorId indicator;
 	private ObjectiveIds objectives;
 	private GoalIds goals;
 }

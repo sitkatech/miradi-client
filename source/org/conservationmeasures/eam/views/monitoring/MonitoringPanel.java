@@ -18,8 +18,10 @@ public class MonitoringPanel extends JPanel
 	{
 		super(new BorderLayout());
 		model = new MonitoringModel(projectToUse);
-		add(new UiScrollPane(new MonitoringTreeTable(model)), BorderLayout.CENTER);
+		tree = new MonitoringTreeTable(model);
+		add(new UiScrollPane(tree), BorderLayout.CENTER);
 	}
 
+	MonitoringTreeTable tree;
 	MonitoringModel model;
 }

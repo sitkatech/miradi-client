@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -188,7 +189,7 @@ public class ObjectManager
 			{
 				if(objectId.isInvalid())
 					objectId = getAnnotationIdAssigner().takeNextId();
-				Indicator indicator = new Indicator(objectId);
+				Indicator indicator = new Indicator(new IndicatorId(objectId.asInt()));
 				getIndicatorPool().put(indicator);
 				getDatabase().writeObject(indicator);
 				createdId = indicator.getId();
