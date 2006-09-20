@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -104,6 +105,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 {
 	public UmbrellaView(MainWindow mainWindowToUse)
 	{
+		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();

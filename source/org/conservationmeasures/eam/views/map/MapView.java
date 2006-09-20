@@ -17,7 +17,6 @@ public class MapView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new MapToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		add(new UiScrollPane(new MapComponent()), BorderLayout.CENTER);
 	}
 

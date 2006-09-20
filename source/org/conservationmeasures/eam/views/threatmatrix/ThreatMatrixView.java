@@ -38,7 +38,6 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		super(mainWindowToUse);
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
-		setLayout(new BorderLayout());
 		
 		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		bigSplitter.setResizeWeight(.5);

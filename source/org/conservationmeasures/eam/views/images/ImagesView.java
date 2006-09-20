@@ -21,7 +21,6 @@ public class ImagesView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new ImagesToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		add(new UiScrollPane(new ImagesComponent()), BorderLayout.CENTER);
 	}
 

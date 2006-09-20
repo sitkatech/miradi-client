@@ -16,7 +16,6 @@ public class CalendarView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new CalendarToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(new ScheduleComponent()), BorderLayout.CENTER);
 	}

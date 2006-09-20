@@ -34,7 +34,6 @@ public class StrategicPlanView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		
 		tabs = new JTabbedPane();
 		add(tabs, BorderLayout.CENTER);

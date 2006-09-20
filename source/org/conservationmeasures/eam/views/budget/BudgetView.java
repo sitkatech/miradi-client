@@ -16,7 +16,6 @@ public class BudgetView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(new BudgetComponent()), BorderLayout.CENTER);
 	}

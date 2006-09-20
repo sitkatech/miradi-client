@@ -15,7 +15,6 @@ public class TaskView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new TaskToolBar(mainWindowToUse.getActions()));
-		setLayout(new BorderLayout());
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
 		add(new UiScrollPane(new TaskComponent()), BorderLayout.CENTER);
 	}

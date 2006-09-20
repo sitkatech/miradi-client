@@ -79,8 +79,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		updateToolBar();
 
-		setLayout(new BorderLayout());
-		
 		getProject().addCommandExecutedListener(this);
 
 	}

@@ -21,7 +21,6 @@ public class InterviewView extends UmbrellaView implements CommandExecutedListen
 		super(mainWindow);
 		setBorder(new LineBorder(Color.BLACK));
 		setToolBar(new InterviewToolBar(mainWindow.getActions()));
-		setLayout(new BorderLayout());
 		
 		panel = new InterviewPanel();
 		add(panel, BorderLayout.CENTER);
