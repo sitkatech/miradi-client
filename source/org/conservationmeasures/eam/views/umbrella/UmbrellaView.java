@@ -29,6 +29,7 @@ import org.conservationmeasures.eam.actions.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.ActionViewImages;
 import org.conservationmeasures.eam.actions.ActionViewInterview;
 import org.conservationmeasures.eam.actions.ActionViewMap;
+import org.conservationmeasures.eam.actions.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.ActionViewTask;
 import org.conservationmeasures.eam.actions.ActionViewThreatMatrix;
@@ -262,6 +263,8 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionExit.class, new Exit());
 		addDoerToMap(ActionUndo.class, new Undo());
 		addDoerToMap(ActionRedo.class, new Redo());
+		addDoerToMap(ActionPreferences.class, new Preferences());
+		
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
 		addDoerToMap(ActionViewInterview.class, new ViewInterview());
 		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());
@@ -271,7 +274,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionViewImages.class, new ViewImages());
 		addDoerToMap(ActionViewCalendar.class, new ViewCalendar());
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
-		addDoerToMap(ActionPreferences.class, new Preferences());
+		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
 		
 		JumpDoer jumpDoer = new JumpDoer();
 		addDoerToMap(ActionJumpSelectTeam.class, jumpDoer);

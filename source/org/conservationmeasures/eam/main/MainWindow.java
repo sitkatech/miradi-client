@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.images.ImagesView;
 import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
+import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.task.TaskView;
@@ -89,6 +90,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		calendarView = new CalendarView(this);
 		imagesView = new ImagesView(this);
 		strategicPlanView = new StrategicPlanView(this);
+		monitoringView = new MonitoringView(this);
 
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
@@ -102,6 +104,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(calendarView, calendarView.cardName());
 		viewHolder.add(imagesView, imagesView.cardName());
 		viewHolder.add(strategicPlanView, strategicPlanView.cardName());
+		viewHolder.add(monitoringView, monitoringView.cardName());
 		getContentPane().add(viewHolder, BorderLayout.CENTER);
 		
 		setCurrentView(noProjectView);
@@ -277,6 +280,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 			setCurrentView(imagesView);
 		else if(viewName.equals(strategicPlanView.cardName()))
 			setCurrentView(strategicPlanView);
+		else if(viewName.equals(monitoringView.cardName()))
+			setCurrentView(monitoringView);
 		else
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
 	}
@@ -340,6 +345,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	protected Actions actions;
 	private AppPreferences preferences;
 	private Project project;
+	
 	private NoProjectView noProjectView;
 	private DiagramView diagramView;
 	private InterviewView interviewView;
@@ -350,6 +356,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private CalendarView calendarView;
 	private ImagesView imagesView;
 	private StrategicPlanView strategicPlanView;
+	private MonitoringView monitoringView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;

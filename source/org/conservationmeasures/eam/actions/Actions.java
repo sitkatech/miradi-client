@@ -92,6 +92,7 @@ public class Actions
 		registerAction(new ActionViewStrategicPlan(mainWindow));
 		registerAction(new ActionViewImages(mainWindow));
 		registerAction(new ActionViewCalendar(mainWindow));
+		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionStrategyBrainstormMode(mainWindow));
 		registerAction(new ActionNormalDiagramMode(mainWindow));
