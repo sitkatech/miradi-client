@@ -413,4 +413,3 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	DiagramWizardPanel wizardPanel;
 	String mode;
 }
-

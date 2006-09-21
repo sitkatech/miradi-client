@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
@@ -90,6 +91,9 @@ public class JumpDoer extends MainWindowDoer
 			return ThreatMatrixView.getViewName();
 		
 		if(jumpActionClass.equals(ActionJumpIdentifyIndirectThreats.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpCreateModel.class))
 			return DiagramView.getViewName();
 		
 		return null;
