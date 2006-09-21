@@ -33,22 +33,24 @@ public class MonitoringObjective extends MonitoringNode
 		while(objectiveNodesIterator.hasNext())
 		{
 			ConceptualModelNode nodeWithObjective = (ConceptualModelNode)objectiveNodesIterator.next();
-			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllNodesInChain(nodeWithObjective);
+			indicatorIds.add(nodeWithObjective.getIndicatorId());
+			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
 			Iterator chainNodesIterator = nodesInChain.iterator();
 			while(chainNodesIterator.hasNext())
 			{
 				ConceptualModelNode nodeInChain = (ConceptualModelNode)chainNodesIterator.next();
-				IndicatorId indicatorId = nodeInChain.getIndicatorId();
-				if(!indicatorId.isInvalid())
-					indicatorIds.add(indicatorId);
+				indicatorIds.add(nodeInChain.getIndicatorId());
 			}
 		}
+		indicatorIds.remove(new IndicatorId(BaseId.INVALID.asInt()));
 		
 		Iterator iter = indicatorIds.iterator();
 		while(iter.hasNext())
 		{
 			IndicatorId id = (IndicatorId)iter.next();
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
+			if(indicator == null)
+				throw new RuntimeException("Missing Indicator " + id);
 			children.add(new MonitoringIndicator(project, indicator));
 		}
 	}
@@ -60,7 +62,7 @@ public class MonitoringObjective extends MonitoringNode
 	
 	public String toString()
 	{
-		return objective.getLabel();
+		return objective.getLabel() + " (" + objective.getShortLabel() + ")";
 	}
 	
 	public int getChildCount()
