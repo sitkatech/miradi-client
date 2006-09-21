@@ -161,8 +161,8 @@ public class DiagramModel extends DefaultGraphModel
 		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
 		if(!directThreat.isDirectThreat())
 			return results;
-		results.attemptToAddAll(getDirectlyLinkedDownstreamNodeIds(directThreat));
-		results.attemptToAddAll(getAllUpstreamNodeIds(directThreat));
+		results.attemptToAddAll(getDirectlyLinkedDownstreamNodes(directThreat));
+		results.attemptToAddAll(getAllUpstreamNodes(directThreat));
 		
 		return results;
 	}
@@ -170,33 +170,33 @@ public class DiagramModel extends DefaultGraphModel
 	public ConceptualModelNodeSet getAllNodesInChain(ConceptualModelNode node)
 	{
 		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		results.attemptToAddAll(getAllDownstreamNodeIds(node));
-		results.attemptToAddAll(getAllUpstreamNodeIds(node));
+		results.attemptToAddAll(getAllDownstreamNodes(node));
+		results.attemptToAddAll(getAllUpstreamNodes(node));
 		
 		return results;
 	}
 
-	public ConceptualModelNodeSet getAllUpstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getAllUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getAllLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
+		return getAllLinkedNodes(ConceptualModelLinkage.TO, startingNode);
 	}
 
-	public ConceptualModelNodeSet getAllDownstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getAllDownstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getAllLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
+		return getAllLinkedNodes(ConceptualModelLinkage.FROM, startingNode);
 	}
 
-	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.TO, startingNode);
+		return getDirectlyLinkedNodes(ConceptualModelLinkage.TO, startingNode);
 	}
 
-	public ConceptualModelNodeSet getDirectlyLinkedDownstreamNodeIds(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getDirectlyLinkedNodeIds(ConceptualModelLinkage.FROM, startingNode);
+		return getDirectlyLinkedNodes(ConceptualModelLinkage.FROM, startingNode);
 	}
 
-	private ConceptualModelNodeSet getDirectlyLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	private ConceptualModelNodeSet getDirectlyLinkedNodes(int direction, ConceptualModelNode startingNode)
 	{
 
 		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
@@ -216,7 +216,7 @@ public class DiagramModel extends DefaultGraphModel
 		return results;
 	}
 
-	private ConceptualModelNodeSet getAllLinkedNodeIds(int direction, ConceptualModelNode startingNode)
+	private ConceptualModelNodeSet getAllLinkedNodes(int direction, ConceptualModelNode startingNode)
 	{
 		ConceptualModelNodeSet linkedNodes = new ConceptualModelNodeSet();
 		ConceptualModelNodeSet unprocessedNodes = new ConceptualModelNodeSet();

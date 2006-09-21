@@ -242,7 +242,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			BaseId nodeId = chainIds.get(i);
 			ConceptualModelNode node = getProject().findNode(nodeId);
-			ConceptualModelNodeSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodeIds(node);
+			ConceptualModelNodeSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{
