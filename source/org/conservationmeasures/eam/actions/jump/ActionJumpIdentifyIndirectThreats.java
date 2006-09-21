@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.actions.jump;
 
-import org.conservationmeasures.eam.actions.JumpAction;
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyIndirectThreats extends JumpAction
+public class ActionJumpIdentifyIndirectThreats extends MainWindowAction
 {
 	public ActionJumpIdentifyIndirectThreats(MainWindow mainWindowToUse)
 	{

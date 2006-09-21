@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.actions.jump;
 
-import org.conservationmeasures.eam.actions.JumpAction;
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpDescribeTargets extends JumpAction
+public class ActionJumpDescribeTargets extends MainWindowAction
 {
 	public ActionJumpDescribeTargets(MainWindow mainWindowToUse)
 	{

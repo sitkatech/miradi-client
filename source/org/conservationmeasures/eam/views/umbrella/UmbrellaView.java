@@ -278,61 +278,65 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
 		
-		JumpDoer jumpDoer = new JumpDoer();
-		addDoerToMap(ActionJumpSelectTeam.class, jumpDoer);
-		addDoerToMap(ActionJumpDesignateLeader.class, jumpDoer);
-		addDoerToMap(ActionJumpDevelopCharter.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpSelectTeam.class);
+		addJumpDoerToMap(ActionJumpDesignateLeader.class);
+		addJumpDoerToMap(ActionJumpDevelopCharter.class);
 		
-		addDoerToMap(ActionJumpDefineScope.class, jumpDoer);
-		addDoerToMap(ActionJumpEstablishVision.class, jumpDoer);
-		addDoerToMap(ActionJumpIdentifyTargets.class, jumpDoer);
-		addDoerToMap(ActionJumpDescribeTargets.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpDefineScope.class);
+		addJumpDoerToMap(ActionJumpEstablishVision.class);
+		addJumpDoerToMap(ActionJumpIdentifyTargets.class);
+		addJumpDoerToMap(ActionJumpDescribeTargets.class);
 		
-		addDoerToMap(ActionJumpIdentifyDirectThreats.class, jumpDoer);
-		addDoerToMap(ActionJumpRankDirectThreats.class, jumpDoer);
-		addDoerToMap(ActionJumpIdentifyIndirectThreats.class, jumpDoer);
-		addDoerToMap(ActionJumpAssessStakeholders.class, jumpDoer);
-		addDoerToMap(ActionJumpAnalyzeProjectCapacity.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpIdentifyDirectThreats.class);
+		addJumpDoerToMap(ActionJumpRankDirectThreats.class);
+		addJumpDoerToMap(ActionJumpIdentifyIndirectThreats.class);
+		addJumpDoerToMap(ActionJumpAssessStakeholders.class);
+		addJumpDoerToMap(ActionJumpAnalyzeProjectCapacity.class);
 		
-		addDoerToMap(ActionJumpArticulateCoreAssumptions.class, jumpDoer);
-		addDoerToMap(ActionJumpCreateModel.class, jumpDoer);
-		addDoerToMap(ActionJumpGroundTruthRevise.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpArticulateCoreAssumptions.class);
+		addJumpDoerToMap(ActionJumpCreateModel.class);
+		addJumpDoerToMap(ActionJumpGroundTruthRevise.class);
 		
-		addDoerToMap(ActionJumpDevelopTargetGoals.class, jumpDoer);
-		addDoerToMap(ActionJumpIdentifyStrategies.class, jumpDoer);
-		addDoerToMap(ActionJumpDevelopObjectives.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpDevelopTargetGoals.class);
+		addJumpDoerToMap(ActionJumpIdentifyStrategies.class);
+		addJumpDoerToMap(ActionJumpDevelopObjectives.class);
 		
-		addDoerToMap(ActionJumpRankDraftStrategies.class, jumpDoer);
-		addDoerToMap(ActionJumpResultsChains.class, jumpDoer);
-		addDoerToMap(ActionJumpActivitiesAndActionPlan.class, jumpDoer);
-		addDoerToMap(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpRankDraftStrategies.class);
+		addJumpDoerToMap(ActionJumpResultsChains.class);
+		addJumpDoerToMap(ActionJumpActivitiesAndActionPlan.class);
+		addJumpDoerToMap(ActionJumpAnalyzeResourcesFeasibilityAndRisk.class);
 		
-		addDoerToMap(ActionJumpDetermineNeeds.class, jumpDoer);
-		addDoerToMap(ActionJumpDefineAudiences.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpDetermineNeeds.class);
+		addJumpDoerToMap(ActionJumpDefineAudiences.class);
 		
-		addDoerToMap(ActionJumpDefineIndicators.class, jumpDoer);
-		addDoerToMap(ActionJumpSelectAppropriateMethods.class, jumpDoer);
-		addDoerToMap(ActionJumpPlanDataStorage.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpDefineIndicators.class);
+		addJumpDoerToMap(ActionJumpSelectAppropriateMethods.class);
+		addJumpDoerToMap(ActionJumpPlanDataStorage.class);
 		
-		addDoerToMap(ActionJumpShorttermPlans.class, jumpDoer);
-		addDoerToMap(ActionJumpDevelopActivities.class, jumpDoer);
-		addDoerToMap(ActionJumpDefineTasks.class, jumpDoer);
-		addDoerToMap(ActionJumpDevelopBudgets.class, jumpDoer);
-		addDoerToMap(ActionJumpTeamRoles.class, jumpDoer);
-		addDoerToMap(ActionJumpRefinePlans.class, jumpDoer);
-		addDoerToMap(ActionJumpImplementPlans.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpShorttermPlans.class);
+		addJumpDoerToMap(ActionJumpDevelopActivities.class);
+		addJumpDoerToMap(ActionJumpDefineTasks.class);
+		addJumpDoerToMap(ActionJumpDevelopBudgets.class);
+		addJumpDoerToMap(ActionJumpTeamRoles.class);
+		addJumpDoerToMap(ActionJumpRefinePlans.class);
+		addJumpDoerToMap(ActionJumpImplementPlans.class);
 		
-		addDoerToMap(ActionJumpAnalyzeData.class, jumpDoer);
-		addDoerToMap(ActionJumpAnalyzeInterventions.class, jumpDoer);
-		addDoerToMap(ActionJumpCommunicateResults.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpAnalyzeData.class);
+		addJumpDoerToMap(ActionJumpAnalyzeInterventions.class);
+		addJumpDoerToMap(ActionJumpCommunicateResults.class);
 		
-		addDoerToMap(ActionJumpAdaptAndMonitorPlans.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpAdaptAndMonitorPlans.class);
 		
-		addDoerToMap(ActionJumpDocument.class, jumpDoer);
-		addDoerToMap(ActionJumpShare.class, jumpDoer);
-		addDoerToMap(ActionJumpCreate.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpDocument.class);
+		addJumpDoerToMap(ActionJumpShare.class);
+		addJumpDoerToMap(ActionJumpCreate.class);
 		
-		addDoerToMap(ActionJumpCloseTheLoop.class, jumpDoer);
+		addJumpDoerToMap(ActionJumpCloseTheLoop.class);
+	}
+	
+	private void addJumpDoerToMap(Class actionClass)
+	{
+		addDoerToMap(actionClass, new JumpDoer(actionClass));
 	}
 	
 	public void addDoerToMap(Class actionClass, Doer doer)

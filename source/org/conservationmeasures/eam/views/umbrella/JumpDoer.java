@@ -16,15 +16,11 @@ import org.conservationmeasures.eam.views.interview.InterviewView;
 
 public class JumpDoer extends MainWindowDoer
 {
-	public JumpDoer()
-	{
-	}
-	
-	public void setDestination(Class actionClassToUse)
+	public JumpDoer(Class actionClassToUse)
 	{
 		actionClass = actionClassToUse;
 	}
-
+	
 	public boolean isAvailable()
 	{
 		if(!getProject().isOpen())
