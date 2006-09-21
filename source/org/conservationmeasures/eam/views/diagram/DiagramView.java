@@ -190,8 +190,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	public JPanel createWizard() throws Exception
 	{
-		DiagramWizardPanel wizard = new DiagramWizardPanel();
-		return wizard;
+		wizardPanel = new DiagramWizardPanel();
+		return wizardPanel;
 	}
 	
 	public void setMode(String newMode)
@@ -402,9 +402,15 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		model.updateCell(cluster);
 	}
 
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 	Properties propertiesDoer;
+	DiagramWizardPanel wizardPanel;
 	String mode;
 }
 

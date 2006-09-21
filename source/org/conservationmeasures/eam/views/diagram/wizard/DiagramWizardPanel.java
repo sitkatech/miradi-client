@@ -5,6 +5,10 @@
  */
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
@@ -51,6 +55,20 @@ public class DiagramWizardPanel extends WizardPanel
 		currentStep = newStep;
 		steps[currentStep].refresh();
 		setContents(steps[currentStep]);
+	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		if(stepMarker.equals(ActionJumpDefineScope.class))
+			setStep(PROJECT_SCOPE);
+		else if(stepMarker.equals(ActionJumpEstablishVision.class))
+			setStep(VISION);
+		else if(stepMarker.equals(ActionJumpIdentifyTargets.class))
+			setStep(CONSERVATION_TARGET);
+		else if(stepMarker.equals(ActionJumpIdentifyDirectThreats.class))
+			setStep(IDENTIFY_DIRECT_THREATS);
+		else
+			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 	
 	public void refresh() throws Exception

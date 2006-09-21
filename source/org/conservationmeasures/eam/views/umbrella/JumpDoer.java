@@ -6,13 +6,16 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
-import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 
 public class JumpDoer extends MainWindowDoer
 {
@@ -38,7 +41,6 @@ public class JumpDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 		
-
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
@@ -70,7 +72,16 @@ public class JumpDoer extends MainWindowDoer
 	String getViewForAction(Class jumpActionClass)
 	{
 		if(jumpActionClass.equals(ActionJumpDefineScope.class))
-			return InterviewView.getViewName();
+			return DiagramView.getViewName();
+
+		if(jumpActionClass.equals(ActionJumpEstablishVision.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpIdentifyTargets.class))
+			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpIdentifyDirectThreats.class))
+			return DiagramView.getViewName();
 		
 		return null;
 	}

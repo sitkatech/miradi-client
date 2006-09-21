@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.interview;
 
-import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class InterviewPanel extends WizardPanel
@@ -50,8 +49,7 @@ public class InterviewPanel extends WizardPanel
 	
 	public void jump(Class stepMarker) throws Exception
 	{
-		if(stepMarker.equals(ActionJumpDefineScope.class))
-			setStep(DEFINE_SCOPE_A);
+		throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
 	private static final int WELCOME = 0;
