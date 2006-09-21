@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -87,6 +88,9 @@ public class JumpDoer extends MainWindowDoer
 		
 		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
 			return ThreatMatrixView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpIdentifyIndirectThreats.class))
+			return DiagramView.getViewName();
 		
 		return null;
 	}
