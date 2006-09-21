@@ -6,11 +6,14 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.project.ChainManager;
+import org.conservationmeasures.eam.project.Project;
 
 public class MonitoringIndicator extends MonitoringNode
 {
-	public MonitoringIndicator(Indicator indicatorToUse)
+	public MonitoringIndicator(Project projectToUse, Indicator indicatorToUse)
 	{
+		project = projectToUse;
 		indicator = indicatorToUse;
 	}
 
@@ -36,8 +39,17 @@ public class MonitoringIndicator extends MonitoringNode
 
 	public Object getValueAt(int column)
 	{
+		if(column == COLUMN_TARGETS)
+			return getChainManager().getRelatedTargetsAsString(indicator.getId());
+
 		return null;
 	}
 
+	ChainManager getChainManager()
+	{
+		return new ChainManager(project);
+	}
+	
+	Project project;
 	Indicator indicator;
 }

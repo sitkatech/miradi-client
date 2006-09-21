@@ -55,7 +55,7 @@ public class MonitoringModel extends AbstractTreeTableModel
 	}
 
 	String[] columnNames = {
-		"Item", "Target", "Threat", "Methods", "Priority", "Status", "When", "Where", "Who", "Cost", "Funding",	
+		"Item", "Target(s)", "Threat", "Methods", "Priority", "Status", "When", "Where", "Who", "Cost", "Funding",	
 	};
 	Project project;
 }

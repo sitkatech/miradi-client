@@ -30,7 +30,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 			BaseId objectiveId = pool.getIds()[rowIndex];
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisObjective(objectiveId).toNodeArray();
 			
-			return getNodeLabelsAsString(modelNodes);
+			return ConceptualModelNode.getNodeLabelsAsString(modelNodes);
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
@@ -38,7 +38,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
-			return getNodeLabelsAsString(directThreats.toNodeArray());
+			return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
@@ -46,7 +46,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
-			return getNodeLabelsAsString(directThreats.toNodeArray());
+			return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
@@ -54,7 +54,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
-			return getNodeLabelsAsString(directThreats.toNodeArray());
+			return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
 		}
 		
 		return super.getValueAt(rowIndex, columnIndex);

@@ -263,6 +263,19 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
 
+	public static String getNodeLabelsAsString(ConceptualModelNode[] modelNodes)
+	{
+		StringBuffer result = new StringBuffer();
+		for(int i = 0; i < modelNodes.length; ++i)
+		{
+			if(i > 0)
+				result.append(", ");
+			result.append(modelNodes[i].getLabel());
+		}
+		
+		return result.toString();
+	}
+
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_INDICATOR_ID = "IndicatorId";

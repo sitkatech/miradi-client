@@ -14,4 +14,5 @@ public abstract class MonitoringNode
 	abstract public Object getValueAt(int column);
 	
 	public static final int COLUMN_ITEM_LABEL = 0;
+	public static final int COLUMN_TARGETS = 1;
 }

@@ -49,7 +49,7 @@ public class MonitoringObjective extends MonitoringNode
 		{
 			IndicatorId id = (IndicatorId)iter.next();
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
-			children.add(new MonitoringIndicator(indicator));
+			children.add(new MonitoringIndicator(project, indicator));
 		}
 	}
 
