@@ -11,6 +11,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
@@ -81,6 +82,14 @@ public class ThreatRatingWizardPanel extends WizardPanel
 		currentStep = newStep;
 		steps[currentStep].refresh();
 		setContents(steps[currentStep]);
+	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		if(stepMarker.equals(ActionJumpRankDirectThreats.class))
+			setStep(OVERVIEW);
+		else
+			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 	
 	public void refresh() throws Exception

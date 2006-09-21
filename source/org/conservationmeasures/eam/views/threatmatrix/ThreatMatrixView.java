@@ -61,7 +61,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		model = new ThreatMatrixTableModel(getProject());
 
 		grid = new ThreatGridPanel(this, model);
-		wizard = new ThreatRatingWizardPanel(this);
+		wizardPanel = new ThreatRatingWizardPanel(this);
 		details = new ThreatRatingBundlePanel(this);
 		JComponent heading = createHeading();
 		
@@ -74,7 +74,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
 		
 		int dividerAt = bigSplitter.getDividerLocation();
-		bigSplitter.setTopComponent(wizard);
+		bigSplitter.setTopComponent(wizardPanel);
 		bigSplitter.setBottomComponent(bottomHalf);
 		bigSplitter.setDividerLocation(dividerAt);
 		
@@ -107,7 +107,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
-		wizard.selectBundle(bundle);
+		wizardPanel.selectBundle(bundle);
 		details.selectBundle(bundle);
 		grid.selectBundle(bundle);
 		invalidate();
@@ -185,10 +185,15 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 			selectBundle(bundle);
 		}
 	}
-			
+
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+
 	JSplitPane bigSplitter;
 	ThreatMatrixTableModel model;
-	ThreatRatingWizardPanel wizard;
+	ThreatRatingWizardPanel wizardPanel;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
 }
