@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -99,6 +100,14 @@ public class ChainManager
 		TargetSet targets = new TargetSet(modelNodes);
 		
 		return ConceptualModelNode.getNodeLabelsAsString(targets.toNodeArray());
+	}
+
+	public String getRelatedDirectThreatsAsString(BaseId indicatorId)
+	{
+		ConceptualModelNodeSet modelNodes =  findAllNodesRelatedToThisIndicator(indicatorId);
+		DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
+		
+		return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
 	}
 
 	Project project;

@@ -15,4 +15,6 @@ public abstract class MonitoringNode
 	
 	public static final int COLUMN_ITEM_LABEL = 0;
 	public static final int COLUMN_TARGETS = 1;
+	public static final int COLUMN_THREATS = 2;
+	public static final int COLUMN_METHODS = 3;
 }

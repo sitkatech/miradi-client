@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
@@ -34,10 +33,7 @@ class IndicatorTableModel extends AnnotationTableModel
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
-			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
-			
-			return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
+			return getChainManager().getRelatedDirectThreatsAsString(indicatorId);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
