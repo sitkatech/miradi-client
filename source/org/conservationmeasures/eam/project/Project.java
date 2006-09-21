@@ -312,6 +312,8 @@ public class Project
 		objectManager.loadFromDatabase();
 		loadThreatRatingFramework();
 		loadDiagram();
+		
+		ProjectRepairer.repairAnyProblems(this);
 	}
 	
 	private void createProject(File projectDirectory) throws Exception

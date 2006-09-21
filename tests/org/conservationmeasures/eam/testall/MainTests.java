@@ -59,6 +59,7 @@ import org.conservationmeasures.eam.project.TestLinkagePool;
 import org.conservationmeasures.eam.project.TestNodePool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
+import org.conservationmeasures.eam.project.TestProjectRepairer;
 import org.conservationmeasures.eam.project.TestProjectUnzipper;
 import org.conservationmeasures.eam.project.TestProjectZipper;
 import org.conservationmeasures.eam.project.TestRealProject;
@@ -100,6 +101,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLinkagePool.class));
 		suite.addTest(new TestSuite(TestNodePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
+		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestIdAssigner.class));
 		suite.addTest(new TestSuite(TestProjectInfo.class));
