@@ -87,14 +87,14 @@ public class JumpDoer extends MainWindowDoer
 		if(jumpActionClass.equals(ActionJumpIdentifyDirectThreats.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
-			return ThreatMatrixView.getViewName();
-		
 		if(jumpActionClass.equals(ActionJumpIdentifyIndirectThreats.class))
 			return DiagramView.getViewName();
 		
 		if(jumpActionClass.equals(ActionJumpCreateModel.class))
 			return DiagramView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
+			return ThreatMatrixView.getViewName();
 		
 		return null;
 	}
