@@ -217,7 +217,21 @@ public class TestTNCThreatFormula extends EAMTestCase
 		bundles = new int[] {4, 4,};
 		assertEquals(4, formula.getSummaryOfBundles(bundles));
 	}
-
+	
+	public void testGetHighestRankedTarget()
+	{
+		int targetRatings[];
+		
+		targetRatings = new int[] {0, 0, 0, 0};
+		assertEquals(0, formula.getHighestRankedTarget(targetRatings));
+		
+		targetRatings = new int[] {0, 1, 1, 1};
+		assertEquals(1, formula.getHighestRankedTarget(targetRatings));
+		
+		targetRatings = new int[] {0, 4, 2, 3, 3};
+		assertEquals(4, formula.getHighestRankedTarget(targetRatings));
+	}
+	
 	ProjectForTesting project;
 	ThreatRatingFramework framework;
 	TNCThreatFormula formula;

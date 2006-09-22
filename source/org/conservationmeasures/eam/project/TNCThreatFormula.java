@@ -83,6 +83,19 @@ public class TNCThreatFormula
 		return applyTwoPrimeRule(low, medium, high, veryHigh);
 	}
 
+	public int getHighestRankedTarget(int[] targetRatings)
+	{
+		int highestRank = 0;
+		
+		for(int i = 0; i < targetRatings.length; ++i)
+		{
+			if(targetRatings[i] > highestRank)
+				highestRank = targetRatings[i];
+		}
+		
+		return highestRank;
+	}
+
 	private int applyTwoPrimeRule(int low, int medium, int high, int veryHigh)
 	{
 		if(veryHigh >= 2)
