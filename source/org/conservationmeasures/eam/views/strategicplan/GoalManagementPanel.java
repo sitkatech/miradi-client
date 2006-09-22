@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
+import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionModifyGoal;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
@@ -29,6 +30,7 @@ public class GoalManagementPanel extends ObjectManagementPanel
 	static final Class[] buttonActionClasses = {
 		ActionCreateGoal.class,
 		ActionModifyGoal.class,
+		ActionDeleteGoal.class,
 		};
 
 

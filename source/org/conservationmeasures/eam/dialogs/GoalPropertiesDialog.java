@@ -21,8 +21,8 @@ public class GoalPropertiesDialog extends ObjectPropertiesDialog
 	}
 	
 	static final String[] tags = new String[] {
-		Goal.TAG_LABEL, 
 		Goal.TAG_SHORT_LABEL, 
+		Goal.TAG_LABEL, 
 		Goal.TAG_FULL_TEXT
 	};
 

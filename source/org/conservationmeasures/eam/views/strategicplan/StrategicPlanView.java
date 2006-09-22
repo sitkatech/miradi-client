@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
+import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
@@ -166,6 +167,7 @@ public class StrategicPlanView extends UmbrellaView
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
 		addDoerToMap(ActionModifyGoal.class, new ModifyGoal());
+		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
 
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());

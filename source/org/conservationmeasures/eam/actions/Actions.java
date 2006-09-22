@@ -126,9 +126,11 @@ public class Actions
 		registerAction(new ActionDeleteObjective(mainWindow));
 		registerAction(new ActionCreateGoal(mainWindow));
 		registerAction(new ActionModifyGoal(mainWindow));
+		registerAction(new ActionDeleteGoal(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));
+		
 		registerAction(new ActionJumpDesignateLeader(mainWindow));
 		registerAction(new ActionJumpDevelopCharter(mainWindow));
 		registerAction(new ActionJumpSelectTeam(mainWindow));
