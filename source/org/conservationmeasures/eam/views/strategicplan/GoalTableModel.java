@@ -1,6 +1,6 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 
 public class GoalTableModel extends AnnotationTableModel
@@ -18,8 +18,9 @@ public class GoalTableModel extends AnnotationTableModel
 	}
 
 	static final String[] goalColumnTags = {
-		Indicator.TAG_SHORT_LABEL, 
-		Indicator.TAG_LABEL,
+		Goal.TAG_SHORT_LABEL, 
+		Goal.TAG_LABEL,
+		Goal.TAG_FULL_TEXT,
 		};
 
 	Project project;

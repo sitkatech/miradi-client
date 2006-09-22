@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogs.GoalPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
@@ -227,6 +228,8 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 				return new ProjectResourcePropertiesDialog(getMainWindow(), object);
 			case ObjectType.TASK:
 				return new TaskPropertiesDialog(getMainWindow(), object);
+			case ObjectType.GOAL:
+				return new GoalPropertiesDialog(getMainWindow(), object);
 		}
 		
 		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());

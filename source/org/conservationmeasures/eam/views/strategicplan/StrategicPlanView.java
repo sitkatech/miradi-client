@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
@@ -16,6 +17,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
+import org.conservationmeasures.eam.actions.ActionModifyGoal;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
@@ -112,6 +114,11 @@ public class StrategicPlanView extends UmbrellaView
 		return objectivePanel;
 	}
 	
+	public GoalManagementPanel getGoalPanel()
+	{
+		return goalPanel;
+	}
+	
 	public void selectObject(EAMObject objectToSelect)
 	{
 		Component tab = tabs.getSelectedComponent();
@@ -157,6 +164,9 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		
+		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
+		addDoerToMap(ActionModifyGoal.class, new ModifyGoal());
+
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 	}
