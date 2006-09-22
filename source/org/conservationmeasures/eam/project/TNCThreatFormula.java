@@ -110,6 +110,36 @@ public class TNCThreatFormula
 		return 0;
 	}
 	
+	public int getMajority(int values[])
+	{
+		int veryHigh = 0;
+		int high = 0;
+		int medium = 0;
+		int low = 0;
+		
+		for(int i = 0; i < values.length; ++i)
+		{
+			if(values[i] == 4)
+				veryHigh += 1;
+			if(values[i] == 3)
+				high += 1;
+			if(values[i] == 2)
+				medium += 1;
+			if(values[i] == 1)
+				low += 1;
+		}
+
+		if(veryHigh > high && veryHigh > medium)
+			return 4;
+		else if(high > medium)
+			return 3;
+		else if(medium > low)
+			return 2;
+		else
+			return 0;
+
+	}
+	
 	private int count(int[] values, int lookFor)
 	{
 		int result = 0;

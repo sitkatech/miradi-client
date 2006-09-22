@@ -232,6 +232,40 @@ public class TestTNCThreatFormula extends EAMTestCase
 		assertEquals(4, formula.getHighestValue(targetRatings));
 	}
 
+	public void testGetMajority()
+	{
+		int targetARatings[]; 
+		int targetBRatings[];
+		int targetCRatings[];
+		int targetDRatings[];
+		
+		int allTargets[];
+		
+		targetARatings = new int[] {3, 2, 1};
+		targetBRatings = new int[] {3, 2, 1};
+		targetCRatings = new int[] {1};
+		allTargets = new int[] {
+				formula.getHighestValue(targetARatings),
+				formula.getHighestValue(targetBRatings),
+				formula.getHighestValue(targetCRatings),
+				};
+
+		assertEquals(3, formula.getMajority(allTargets));
+
+		targetARatings = new int[] {3, 0, 0};
+		targetBRatings = new int[] {3, 2, 1};
+		targetCRatings = new int[] {0, 3, 2};
+		targetDRatings = new int[] {0, 1, 1};
+		allTargets = new int[] {
+				formula.getHighestValue(targetARatings),
+				formula.getHighestValue(targetBRatings),
+				formula.getHighestValue(targetCRatings),
+				formula.getHighestValue(targetDRatings),
+				};
+
+		assertEquals(3, formula.getMajority(allTargets));
+	}
+	
 	ProjectForTesting project;
 	ThreatRatingFramework framework;
 	TNCThreatFormula formula;
