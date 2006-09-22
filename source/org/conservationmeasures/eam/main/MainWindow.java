@@ -117,6 +117,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		}
 		
 		setVisible(true);
+		if(preferences.getIsMaximized())
+			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 
 	private File getPreferencesFile()
@@ -234,6 +236,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		try
 		{
 			closeProject();
+			savePreferences();
 			System.exit(0);
 		}
 		catch (Exception e)
@@ -301,6 +304,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 
 	public void savePreferences() throws IOException
 	{
+		boolean isMaximized = false;
+		if((getExtendedState() & MAXIMIZED_BOTH) != 0)
+			isMaximized = true;
+		preferences.setIsMaximized(isMaximized);
 		preferences.save(getPreferencesFile());
 	}
 	

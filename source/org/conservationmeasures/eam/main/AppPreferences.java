@@ -39,6 +39,16 @@ public class AppPreferences
 		JSONFile.write(preferencesFile, toJson());
 	}
 	
+	public void setIsMaximized(boolean state)
+	{
+		isMaximized = state;
+	}
+	
+	public boolean getIsMaximized()
+	{
+		return isMaximized;
+	}
+	
 	public Color getColor(String tag)
 	{
 		if(tag.equals(TAG_COLOR_INTERVENTION))
@@ -79,6 +89,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_SCOPE, scopeColor);
+		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		
 		return json;
 	}
@@ -90,6 +101,8 @@ public class AppPreferences
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
+		
+		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 	}
 	
 	public static final String TAG_COLOR_INTERVENTION = "ColorIntervention";
@@ -97,6 +110,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
+	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
@@ -109,4 +123,6 @@ public class AppPreferences
 	public Color directThreatColor;
 	public Color targetColor;
 	public Color scopeColor;
+	
+	boolean isMaximized;
 }
