@@ -247,6 +247,22 @@ public class TestTNCThreatFormula extends EAMTestCase
 		
 		allTargets = new int[] {2, 2, 4, 4, 4, 4};
 		assertEquals(4, formula.getMajority(allTargets));
+		
+		allTargets = new int[] {1, 1, 2, 2};
+		assertEquals(0, formula.getMajority(allTargets));
+		
+		allTargets = new int[] {1};
+		assertEquals(1, formula.getMajority(allTargets));
+
+		try
+		{
+			allTargets = new int[] {33};
+			assertEquals(1, formula.getMajority(allTargets));
+		}
+		catch (RuntimeException IgnoreExpected)
+		{
+		}
+
 	}
 	
 	ProjectForTesting project;

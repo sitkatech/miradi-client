@@ -127,17 +127,21 @@ public class TNCThreatFormula
 				medium += 1;
 			if(values[i] == 1)
 				low += 1;
+			if(values[i] > 4)
+				throw new RuntimeException("Illegal value: " + values[i]);
 		}
 
 		int total = (low + medium + high + veryHigh);
-		int moreThanHalf = total/2;
+		int half = total/2;
 		
-		if(veryHigh > moreThanHalf)
+		if(veryHigh > half)
 			return 4;
-		else if(high > moreThanHalf)
+		else if(high > half)
 			return 3;
-		else if(medium > moreThanHalf)
+		else if(medium > half)
 			return 2;
+		else if(low > half)
+			return 1;
 		else
 			return 0;
 	}
