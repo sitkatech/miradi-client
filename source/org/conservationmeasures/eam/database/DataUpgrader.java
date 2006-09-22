@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class DataUpgrader extends ProjectServer
@@ -86,6 +87,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion5();
 		if(readDataVersion(getTopDirectory()) == 5)
 			upgradeToVersion6();
+		if(readDataVersion(getTopDirectory()) == 6)
+			upgradeToVersion7();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -206,17 +209,17 @@ public class DataUpgrader extends ProjectServer
 	
 	public void dropStressFactors() throws Exception
 	{
-		File manifestFile = getObjectManifestFile(ObjectType.MODEL_NODE);
+		File manifestFile = getObjectManifestFile(NODE_TYPE);
 		if(!manifestFile.exists())
 			return;
 		
 		IdList droppedIds = new IdList();
-		ObjectManifest manifest = readObjectManifest(ObjectType.MODEL_NODE);
+		ObjectManifest manifest = readObjectManifest(NODE_TYPE);
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
 			BaseId id = ids[i];
-			JSONObject nodeData = JSONFile.read(getObjectFile(ObjectType.MODEL_NODE, id));
+			JSONObject nodeData = JSONFile.read(getObjectFile(NODE_TYPE, id));
 			String type = nodeData.optString("Type", "");
 			String subtype = nodeData.optString("Subtype", "");
 			if(type.equals("Factor") && subtype.equals("Stress"))
@@ -226,7 +229,7 @@ public class DataUpgrader extends ProjectServer
 				droppedIds.add(id);
 			}
 		}
-		writeObjectManifest(ObjectType.MODEL_NODE, manifest);
+		writeObjectManifest(NODE_TYPE, manifest);
 		
 		JSONObject diagram = JSONFile.read(getDiagramFile());
 		JSONObject nodes = diagram.getJSONObject("Nodes");
@@ -236,4 +239,41 @@ public class DataUpgrader extends ProjectServer
 		}
 		JSONFile.write(getDiagramFile(), diagram);
 	}
+
+	public void upgradeToVersion7() throws Exception
+	{
+		dropOldSampleGoals();
+		writeVersion(7);
+	}
+	
+	public void dropOldSampleGoals() throws Exception
+	{
+		File manifestFile = getObjectManifestFile(NODE_TYPE);
+		if(!manifestFile.exists())
+			return;
+		
+		JSONArray noGoals = new JSONArray();
+		noGoals.put(-1);
+
+		ObjectManifest manifest = readObjectManifest(NODE_TYPE);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			BaseId id = ids[i];
+			File objectFile = getObjectFile(NODE_TYPE, id);
+			JSONObject nodeData = JSONFile.read(objectFile);
+			String type = nodeData.optString("Type", "");
+			if(type.equals("Target"))
+			{
+				JSONArray oldGoals = nodeData.optJSONArray("GoalIds");
+				if(oldGoals != null && oldGoals.equals(noGoals))
+					continue;
+				nodeData.put("GoalIds", noGoals);
+				JSONFile.write(objectFile, nodeData);
+			}
+		}
+	}
+
+	private static final int NODE_TYPE = ObjectType.MODEL_NODE;
+
 }

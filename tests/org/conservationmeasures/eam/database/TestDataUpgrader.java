@@ -8,7 +8,9 @@ package org.conservationmeasures.eam.database;
 import java.io.File;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -273,6 +275,47 @@ public class TestDataUpgrader extends EAMTestCase
 		JSONObject nodes = diagram.getJSONObject("Nodes");
 		assertFalse("Didn't drop stress from diagram?", nodes.has("2"));
 		assertTrue("Dropped something else from diagram?", nodes.has("5"));
+	}
+
+	public void testDeleteSampleGoalReferences() throws Exception
+	{
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+
+
+		String[] oldNodeFileContents = {
+			"{\"Type\":\"Factor\",\"Id\":0}",
+			"{\"Type\":\"Target\",\"Id\":1}",
+			"{\"Type\":\"Target\",\"GoalIds\":[],\"Id\":2}",
+			"{\"Type\":\"Target\",\"GoalIds\":[-1],\"Id\":3}",
+			"{\"Type\":\"Target\",\"GoalIds\":[33],\"Id\":4}",
+			"{\"Type\":\"Intervention\",\"Id\":5}",
+		};
+		
+		int[] allIds = {0, 1, 2, 3, 4, 5, };
+		int[] targetIds = {1, 2, 3, 4, };
+
+		File nodesDirectory = new File(tempDirectory, "json/objects-4");
+		// missing nodes directory is not a problem
+		nodesDirectory.mkdirs();
+
+		for(int i = 0; i < oldNodeFileContents.length; ++i)
+			createFile(new File(nodesDirectory, Integer.toString(i)), oldNodeFileContents[i]);
+
+		File manifestFile = new File(nodesDirectory, "manifest");
+		createFile(manifestFile, buildManifestContents(allIds));
+		
+		upgrader.dropOldSampleGoals();
+		
+		IdList noGoals = new IdList();
+		noGoals.add(-1);
+		final int NODE_TYPE = 4;
+		for(int i = 0; i < targetIds.length; ++i)
+		{
+			BaseId targetId = new BaseId(targetIds[i]);
+			ConceptualModelTarget target = (ConceptualModelTarget)upgrader.readObject(NODE_TYPE, targetId);
+			assertEquals("Didn't remove old sample goals?", noGoals, target.getGoals());
+		}
+		
 	}
 
 	private String readFile(File file) throws IOException

@@ -51,7 +51,9 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			goals.addId(new BaseId(goalIds.getInt(i)));
 		
 		objectives = new ObjectiveIds();
-		JSONArray objectiveIds = json.getJSONArray(TAG_OBJECTIVE_IDS);
+		JSONArray objectiveIds = json.optJSONArray(TAG_OBJECTIVE_IDS);
+		if(objectiveIds == null)
+			objectiveIds = new JSONArray();
 		for(int i = 0; i < objectiveIds.length(); ++i)
 			objectives.addId(new BaseId(objectiveIds.getInt(i)));
 	}

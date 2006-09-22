@@ -73,11 +73,13 @@ public class StrategicPlanView extends UmbrellaView
 		objectivePanel = new ObjectiveManagementPanel(this);
 		indicatorManagementPanel = new IndicatorManagementPanel(this);
 		resourcePanel = new ResourceManagementPanel(this);
+		goalPanel = new GoalManagementPanel(this);
 
 		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
 		tabs.add(EAM.text("Objectives"), objectivePanel);
 		tabs.add(EAM.text("Indicators"), indicatorManagementPanel);
 		tabs.add(EAM.text("Resources"), resourcePanel);
+		tabs.add(EAM.text("Goals"), goalPanel);
 		
 		tabs.setSelectedIndex(mostRecentTabIndex);
 	}
@@ -161,10 +163,13 @@ public class StrategicPlanView extends UmbrellaView
 	
 	JTabbedPane tabs;
 	int currentTab;
+	
 	StrategicPlanPanel strategicPlanPanel;
 	ResourceManagementPanel resourcePanel;
 	IndicatorManagementPanel indicatorManagementPanel;
 	ObjectiveManagementPanel objectivePanel;
+	GoalManagementPanel goalPanel;
+	
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 }

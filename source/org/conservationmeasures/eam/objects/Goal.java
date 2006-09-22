@@ -7,20 +7,24 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.NodeAnnotation;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.json.JSONObject;
 
 
-public class Goal extends NodeAnnotation 
+public class Goal extends EAMBaseObject 
 {
-	public Goal(BaseId id, String annotationToUse) 
+	public Goal(BaseId idToUse)
 	{
-		super(id, annotationToUse);
+		super(idToUse);
 	}
 	
-	public boolean equals(Object obj) 
+	public Goal(JSONObject json)
 	{
-		if(!(obj instanceof Goal))
-			return false;
-		return ((Goal)obj).getAnnotation().equals(getAnnotation());
+		super(json);
+	}
+
+	public int getType()
+	{
+		return ObjectType.GOAL;
 	}
 }

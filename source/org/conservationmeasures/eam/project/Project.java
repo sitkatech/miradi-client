@@ -103,9 +103,14 @@ public class Project
 		return projectInfo.getAnnotationIdAssigner();
 	}
 	
-	protected ProjectServer getDatabase()
+	public ProjectServer getDatabase()
 	{
 		return database;
+	}
+	
+	public ObjectManager getObjectManager()
+	{
+		return objectManager;
 	}
 	
 	public EAMObjectPool getPool(int objectType)

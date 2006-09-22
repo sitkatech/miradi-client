@@ -691,7 +691,8 @@ public class NodePropertiesDialog extends JDialog implements CommandExecutedList
 	{
 		Goal oneGoal = (Goal)dropdownGoal.getSelectedItem();
 		GoalIds goals = new GoalIds();
-		goals.addId(oneGoal.getId());
+		if(oneGoal != null)
+			goals.addId(oneGoal.getId());
 		return goals;
 	}
 	

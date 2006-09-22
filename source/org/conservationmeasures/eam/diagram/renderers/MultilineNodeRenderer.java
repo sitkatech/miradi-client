@@ -109,7 +109,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		{
 			BaseId goalId = goals.getId(0);
 			Goal goal = model.getGoalById(goalId);
-			if(goal != null && goal.hasAnnotation())
+			if(goal != null)
 				drawAnnotation(rect, g2, goal.toString());
 		}
 		drawIndicator(rect, g2);

@@ -54,6 +54,9 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.OBJECTIVE:
 				return new Objective(json);
 				
+			case ObjectType.GOAL:
+				return new Goal(json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

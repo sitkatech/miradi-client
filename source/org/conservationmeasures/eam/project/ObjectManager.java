@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -45,6 +46,8 @@ public class ObjectManager
 		project = projectToUse;
 		
 		pools = new HashMap();
+		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new EAMObjectPool());
+		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new EAMObjectPool());
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
 		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
 		pools.put(new Integer(ObjectType.TASK), new TaskPool());
@@ -52,9 +55,8 @@ public class ObjectManager
 		pools.put(new Integer(ObjectType.PROJECT_RESOURCE), new ResourcePool());
 		pools.put(new Integer(ObjectType.INDICATOR), new IndicatorPool());
 		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool());
+		pools.put(new Integer(ObjectType.GOAL), new GoalPool());
 
-		goalPool = GoalPool.createSampleGoals(getAnnotationIdAssigner());
-		
 		linkageListener = new LinkageMonitor();
 	}
 	
@@ -105,7 +107,7 @@ public class ObjectManager
 	
 	public GoalPool getGoalPool()
 	{
-		return goalPool;
+		return (GoalPool)getPool(ObjectType.GOAL);
 	}
 	
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
@@ -207,6 +209,17 @@ public class ObjectManager
 				break;
 			}
 				
+			case ObjectType.GOAL:
+			{
+				if(objectId.isInvalid())
+					objectId = getAnnotationIdAssigner().takeNextId();
+				Goal goal = new Goal(objectId);
+				getGoalPool().put(goal);
+				getDatabase().writeObject(goal);
+				createdId = goal.getId();
+				break;
+			}
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
 		}
@@ -266,6 +279,11 @@ public class ObjectManager
 				
 			case ObjectType.OBJECTIVE:
 				getObjectivePool().remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
+			case ObjectType.GOAL:
+				getGoalPool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -331,6 +349,12 @@ public class ObjectManager
 				getDatabase().writeObject(objective);
 				break;
 				
+			case ObjectType.GOAL:
+				Goal goal = getGoalPool().find(objectId);
+				goal.setData(fieldTag, dataValue);
+				getDatabase().writeObject(goal);
+				break;
+				
 				
 			default:
 				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
@@ -369,6 +393,9 @@ public class ObjectManager
 			case ObjectType.OBJECTIVE:
 				return getObjectivePool().find(objectId).getData(fieldTag);
 				
+			case ObjectType.GOAL:
+				return getGoalPool().find(objectId).getData(fieldTag);
+				
 			default:
 				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
 		}
@@ -383,7 +410,7 @@ public class ObjectManager
 		loadResourcePool();
 		loadIndicatorPool();
 		loadObjectivePool();
-		
+		loadGoalPool();
 	}
 	
 	private void loadNodePool() throws Exception
@@ -463,6 +490,17 @@ public class ObjectManager
 		}
 	}
 	
+	private void loadGoalPool() throws Exception
+	{
+		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.GOAL);
+		BaseId[] ids = manifest.getAllKeys();
+		for(int i = 0; i < ids.length; ++i)
+		{
+			Goal goal = (Goal)getDatabase().readObject(ObjectType.GOAL, ids[i]);
+			getGoalPool().put(goal);
+		}
+	}
+	
 	Project getProject()
 	{
 		return project;
@@ -508,6 +546,5 @@ public class ObjectManager
 	Project project;
 	
 	HashMap pools;
-	GoalPool goalPool;
 	LinkageListener linkageListener;
 }

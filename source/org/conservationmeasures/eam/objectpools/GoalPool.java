@@ -6,10 +6,9 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objects.Goal;
 
-public class GoalPool extends ObjectPool
+public class GoalPool extends EAMObjectPool
 {
 	public void put(Goal goal)
 	{
@@ -21,15 +20,4 @@ public class GoalPool extends ObjectPool
 		return (Goal)getRawObject(id);
 	}
 
-	public static GoalPool createSampleGoals(IdAssigner assigner)
-	{
-		//TODO: These will be replaced by real user entered data from a wizard
-		GoalPool goals = new GoalPool();
-	
-		goals.put(new Goal(BaseId.INVALID, Goal.ANNOTATION_NONE_STRING));
-		goals.put(new Goal(assigner.takeNextId(), "Goal 1"));
-		goals.put(new Goal(assigner.takeNextId(), "Goal 2"));
-		goals.put(new Goal(assigner.takeNextId(), "Goal 3"));
-		return goals;
-	}
 }
