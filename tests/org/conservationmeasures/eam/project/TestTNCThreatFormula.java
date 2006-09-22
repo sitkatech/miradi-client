@@ -233,37 +233,20 @@ public class TestTNCThreatFormula extends EAMTestCase
 	}
 
 	public void testGetMajority()
-	{
-		int targetARatings[]; 
-		int targetBRatings[];
-		int targetCRatings[];
-		int targetDRatings[];
-		
+	{		
 		int allTargets[];
 		
-		targetARatings = new int[] {3, 2, 1};
-		targetBRatings = new int[] {3, 2, 1};
-		targetCRatings = new int[] {1};
-		allTargets = new int[] {
-				formula.getHighestValue(targetARatings),
-				formula.getHighestValue(targetBRatings),
-				formula.getHighestValue(targetCRatings),
-				};
-
+		allTargets = new int[] {3, 3, 1};
 		assertEquals(3, formula.getMajority(allTargets));
 
-		targetARatings = new int[] {3, 0, 0};
-		targetBRatings = new int[] {3, 2, 1};
-		targetCRatings = new int[] {0, 3, 2};
-		targetDRatings = new int[] {0, 1, 1};
-		allTargets = new int[] {
-				formula.getHighestValue(targetARatings),
-				formula.getHighestValue(targetBRatings),
-				formula.getHighestValue(targetCRatings),
-				formula.getHighestValue(targetDRatings),
-				};
-
+		allTargets = new int[] {3, 3, 3, 1};
 		assertEquals(3, formula.getMajority(allTargets));
+		
+		allTargets = new int[] {2, 2, 2, 3, 3, 4, 4};
+		assertEquals(0, formula.getMajority(allTargets));
+		
+		allTargets = new int[] {2, 2, 4, 4, 4, 4};
+		assertEquals(4, formula.getMajority(allTargets));
 	}
 	
 	ProjectForTesting project;

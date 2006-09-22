@@ -129,15 +129,17 @@ public class TNCThreatFormula
 				low += 1;
 		}
 
-		if(veryHigh > high && veryHigh > medium)
+		int total = (low + medium + high + veryHigh);
+		int moreThanHalf = total/2;
+		
+		if(veryHigh > moreThanHalf)
 			return 4;
-		else if(high > medium)
+		else if(high > moreThanHalf)
 			return 3;
-		else if(medium > low)
+		else if(medium > moreThanHalf)
 			return 2;
 		else
 			return 0;
-
 	}
 	
 	private int count(int[] values, int lookFor)
