@@ -112,28 +112,24 @@ public class TNCThreatFormula
 	
 	public int getMajority(int values[])
 	{
-		int rankTotals[] = new int[5];
+		int numberOfLegalValues = 5;
+		int rankTotals[] = new int[numberOfLegalValues];
 		
 		for(int i = 0; i < values.length; ++i)
 		{
-			rankTotals[values[i]] ++;
-			if(values[i] > rankTotals.length)
-				throw new RuntimeException("Illegal value: " + values[i]);
+			++ rankTotals[values[i]];
 		}
 
 		int total = (rankTotals[4] + rankTotals[3] + rankTotals[2] + rankTotals[1]);
 		int half = total/2;
 		
-		if(rankTotals[4] > half)
-			return 4;
-		else if(rankTotals[3] > half)
-			return 3;
-		else if(rankTotals[2] > half)
-			return 2;
-		else if(rankTotals[1] > half)
-			return 1;
-		else
-			return 0;
+		for(int i = 0; i < numberOfLegalValues; ++i)
+		{
+			if(rankTotals[i] > half)
+				return i;
+		}
+
+		return 0;
 	}
 	
 	private int count(int[] values, int lookFor)
