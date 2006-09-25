@@ -117,10 +117,10 @@ public class TNCThreatFormula
 		
 		for(int i = 0; i < values.length; ++i)
 		{
-			++ rankTotals[values[i]];
+			++rankTotals[values[i]];
 		}
 
-		int total = (rankTotals[4] + rankTotals[3] + rankTotals[2] + rankTotals[1]);
+		int total = values.length;
 		int half = total/2;
 		
 		for(int i = 0; i < numberOfLegalValues; ++i)
