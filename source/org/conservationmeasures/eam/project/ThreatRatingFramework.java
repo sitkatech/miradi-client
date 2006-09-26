@@ -47,6 +47,11 @@ public class ThreatRatingFramework
 		bundles = new HashMap();
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	public void createDefaultObjects() throws Exception
 	{
 		createDefaultCriterion(EAM.text("Label|Scope")); 
@@ -175,7 +180,28 @@ public class ThreatRatingFramework
 		
 	}
 	
+	public ThreatRatingValueOption getHighestValueForThreat(BaseId threatId)
+	{
+		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
+		if(bundleArray.length == 0)
+			return findValueOptionByNumericValue(0);
+		ThreatRatingValueOption highestValue = getBundleValue(bundleArray[0]);
+		for(int i = 0; i < bundleArray.length; ++i)
+		{
+			ThreatRatingValueOption thisValue = getBundleValue(bundleArray[i]);
+			if(thisValue.getNumericValue() > highestValue.getNumericValue())
+				highestValue = thisValue;
+		}
+		return highestValue;
+	}
+	
 	public ThreatRatingValueOption getThreatThreatRatingValue(BaseId threatId)
+	{
+		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
+		return getSummaryOfBundles(bundleArray);
+	}
+
+	private ThreatRatingBundle[] getBundlesForThisThreat(BaseId threatId)
 	{
 		HashSet bundlesForThisThreat = new HashSet();
 		
@@ -187,7 +213,7 @@ public class ThreatRatingFramework
 				bundlesForThisThreat.add(bundle);
 		}
 		ThreatRatingBundle[] bundleArray = (ThreatRatingBundle[])bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
-		return getSummaryOfBundles(bundleArray);
+		return bundleArray;
 	}
 	
 	public ThreatRatingValueOption getTargetThreatRatingValue(BaseId targetId)
