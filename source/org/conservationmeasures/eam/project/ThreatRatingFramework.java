@@ -195,7 +195,7 @@ public class ThreatRatingFramework
 		return highestValue;
 	}
 	
-	public ThreatRatingValueOption getMajorityRating()
+	public ThreatRatingValueOption getProjectMajorityRating()
 	{
 		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
 		int[] highestValues = new int[threats.length];
@@ -203,6 +203,15 @@ public class ThreatRatingFramework
 			highestValues[i] = getHighestValueForThreat(threats[i].getId()).getNumericValue();
 		
 		return getMajorityOfNumericValues(highestValues);
+	}
+	
+	public ThreatRatingValueOption getOverallProjectRating()
+	{
+		ThreatRatingValueOption rollup = getProjectRollupRating();
+		ThreatRatingValueOption majority = getProjectMajorityRating();
+		if(majority.getNumericValue() > rollup.getNumericValue())
+			return majority;
+		return rollup;
 	}
 	
 	public ThreatRatingValueOption getThreatThreatRatingValue(BaseId threatId)
@@ -241,17 +250,18 @@ public class ThreatRatingFramework
 		return getSummaryOfBundles(bundleArray);
 	}
 	
-	public ThreatRatingValueOption getProjectThreatRatingValue(BaseId[] threatIds)
+	public ThreatRatingValueOption getProjectRollupRating()
 	{
-		int[] numericValues = new int[threatIds.length];
-		for(int i = 0; i < threatIds.length; ++i)
+		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
+		int[] numericValues = new int[threats.length];
+		for(int i = 0; i < threats.length; ++i)
 		{
-			ThreatRatingValueOption threatSummary = getThreatThreatRatingValue(threatIds[i]);
+			ThreatRatingValueOption threatSummary = getThreatThreatRatingValue(threats[i].getId());
 			numericValues[i] = threatSummary.getNumericValue();
 		}
 		return getSummaryOfNumericValues(numericValues);
 	}
-	
+
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		NodePool nodePool = project.getNodePool();

@@ -247,15 +247,25 @@ public class TestThreatRatingFramework extends EAMTestCase
 		verifyPureMajority("Plurality", 0, bundlesPlurality);
 		
 		int[][] bundlesMajority = { {2, 2, 1},	};
-		verifyPureMajority("2223344", 2, bundlesMajority);
+		verifyPureMajority("Majority", 2, bundlesMajority);
 
 		int[][] bundlesTwoRows = {
 			{1, 4, 1, },
 			{4, 1, 4, },
 		};
 		verifyPureMajority("TwoRows", 4, bundlesTwoRows);
+	}
+	
+	public void testGetProjectRating() throws Exception
+	{
+		int[][] bundlesEmpty = { {-1} };
+		verifyOverallProjectRating("Empty", 0, bundlesEmpty);
 		
+		int[][] bundlesPlurality = { {4, 4, 1, 1},	};
+		verifyOverallProjectRating("Plurality", 3, bundlesPlurality);
 		
+		int[][] bundlesMajority = { {3, 3, 1},	};
+		verifyOverallProjectRating("Majority", 3, bundlesMajority);
 		
 	}
 	
@@ -264,7 +274,20 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
-			assertEquals(message, expected, trf.getMajorityRating().getNumericValue());
+			assertEquals(message, expected, trf.getProjectMajorityRating().getNumericValue());
+		}
+		finally
+		{
+			trf.getProject().close();
+		}
+	}
+
+	private void verifyOverallProjectRating(String message, int expected, int[][] bundleValues) throws Exception
+	{
+		ThreatRatingFramework trf = createFramework(bundleValues);
+		try
+		{
+			assertEquals(message, expected, trf.getOverallProjectRating().getNumericValue());
 		}
 		finally
 		{
