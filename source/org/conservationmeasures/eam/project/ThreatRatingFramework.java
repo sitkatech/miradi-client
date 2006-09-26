@@ -195,6 +195,16 @@ public class ThreatRatingFramework
 		return highestValue;
 	}
 	
+	public ThreatRatingValueOption getMajorityRating()
+	{
+		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
+		int[] highestValues = new int[threats.length];
+		for(int i = 0; i < threats.length; ++i)
+			highestValues[i] = getHighestValueForThreat(threats[i].getId()).getNumericValue();
+		
+		return getMajorityOfNumericValues(highestValues);
+	}
+	
 	public ThreatRatingValueOption getThreatThreatRatingValue(BaseId threatId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
@@ -271,6 +281,13 @@ public class ThreatRatingFramework
 	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
 		int numericResult = formula.getSummaryOfBundles(bundleValues);
+		return findValueOptionByNumericValue(numericResult);
+	}
+	
+	private ThreatRatingValueOption getMajorityOfNumericValues(int[] bundleValues)
+	{
+		TNCThreatFormula formula = new TNCThreatFormula(this);
+		int numericResult = formula.getMajority(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
 
