@@ -13,10 +13,16 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class NodePool extends EAMObjectPool
 {
+	public NodePool()
+	{
+		super(ObjectType.MODEL_NODE);
+	}
+	
 	public void put(ConceptualModelNode node)
 	{
 		put(node.getModelNodeId(), node);

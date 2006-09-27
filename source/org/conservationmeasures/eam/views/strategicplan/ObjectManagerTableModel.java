@@ -12,13 +12,14 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectpools.ObjectPool;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTableModel;
 
 class ObjectManagerTableModel extends UiTableModel
 {
-	public ObjectManagerTableModel(ObjectPool resourcePool, String[] columnTagsToUse)
+	public ObjectManagerTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
 	{
 		pool = resourcePool;
 		columnTags = columnTagsToUse;
@@ -53,9 +54,9 @@ class ObjectManagerTableModel extends UiTableModel
 
 	public String getColumnName(int column)
 	{
-		return columnTags[column];
+		return EAM.fieldLabel(pool.getObjectType(), columnTags[column]);
 	}
 	
-	ObjectPool pool;
+	EAMObjectPool pool;
 	String[] columnTags;
 }

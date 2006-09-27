@@ -5,8 +5,11 @@
  */
 package org.conservationmeasures.eam.utils;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 
@@ -54,6 +57,29 @@ public class Translation
 			return "<" + extractPartToDisplay(key) + ">";
 		}
 	}
+	
+	public static void loadFieldLabels() throws IOException
+	{
+		InputStream in = Translation.class.getResourceAsStream("FieldLabels.properties");
+		try
+		{
+			properties.load(in);
+		}
+		finally
+		{
+			in.close();
+		}
+		
+	}
+	
+	public static String fieldLabel(int objectType, String fieldTag)
+	{
+		String fullTag = Integer.toString(objectType) + "." + fieldTag;
+		String label = properties.getProperty(fullTag);
+		if(label == null)
+			label = fieldTag;
+		return label;
+	}
 
 	public static String extractPartToDisplay(String result)
 	{
@@ -64,6 +90,7 @@ public class Translation
 		return result;
 	}
 
+	private static Properties properties = new Properties();
 	private static Locale currentTranslationLocale = new Locale("en", "US");
 	private static ResourceBundle currentResourceBundle;
 }

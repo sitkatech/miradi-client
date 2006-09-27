@@ -1,10 +1,10 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.objectpools.ObjectPool;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 
 public class AnnotationTableModel extends ObjectManagerTableModel
 {
-	public AnnotationTableModel(ObjectPool resourcePool, String[] columnTagsToUse)
+	public AnnotationTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
 	{
 		super(resourcePool, columnTagsToUse);
 	}

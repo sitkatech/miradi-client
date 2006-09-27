@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objectpools.ObjectPool;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -31,7 +31,7 @@ import org.martus.swing.UiTable;
 
 public class ObjectManagementPanel extends JPanel implements CommandExecutedListener, ListSelectionListener
 {
-	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, ObjectPool pool, Class[] buttonActionClasses)
+	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, EAMObjectPool pool, Class[] buttonActionClasses)
 	{
 		this(viewToUse, new ObjectManagerTableModel(pool, columnTags), buttonActionClasses);
 	}

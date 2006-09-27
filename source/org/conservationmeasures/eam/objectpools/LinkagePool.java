@@ -6,10 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 
 public class LinkagePool extends EAMObjectPool
 {
+	public LinkagePool()
+	{
+		super(ObjectType.MODEL_LINKAGE);
+	}
+	
 	public void put(ConceptualModelLinkage linkage)
 	{
 		put(linkage.getId(), linkage);

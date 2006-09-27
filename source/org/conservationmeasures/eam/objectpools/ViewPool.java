@@ -6,10 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class ViewPool extends EAMObjectPool
 {
+	public ViewPool()
+	{
+		super(ObjectType.VIEW_DATA);
+	}
+	
 	public void put(ViewData viewData)
 	{
 		put(viewData.getId(), viewData);

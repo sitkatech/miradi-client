@@ -27,6 +27,8 @@ import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
+import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
+import org.conservationmeasures.eam.objectpools.ThreatRatingValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -46,8 +48,8 @@ public class ObjectManager
 		project = projectToUse;
 		
 		pools = new HashMap();
-		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new EAMObjectPool());
-		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new EAMObjectPool());
+		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new ThreatRatingCriterionPool());
+		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new ThreatRatingValueOptionPool());
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
 		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
 		pools.put(new Integer(ObjectType.TASK), new TaskPool());

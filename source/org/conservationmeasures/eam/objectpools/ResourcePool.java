@@ -6,10 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 
 public class ResourcePool extends EAMObjectPool
 {
+	public ResourcePool()
+	{
+		super(ObjectType.PROJECT_RESOURCE);
+	}
+	
 	public void put(ProjectResource resource)
 	{
 		put(resource.getId(), resource);

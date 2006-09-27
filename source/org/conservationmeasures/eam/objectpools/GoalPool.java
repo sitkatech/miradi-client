@@ -6,10 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Goal;
 
 public class GoalPool extends EAMObjectPool
 {
+	public GoalPool()
+	{
+		super(ObjectType.GOAL);
+	}
+	
 	public void put(Goal goal)
 	{
 		put(goal.getId(), goal);

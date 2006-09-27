@@ -10,8 +10,20 @@ import org.conservationmeasures.eam.objects.EAMObject;
 
 public class EAMObjectPool extends ObjectPool
 {
+	public EAMObjectPool(int objectTypeToStore)
+	{
+		objectType = objectTypeToStore;
+	}
+	
 	public EAMObject findObject(BaseId id)
 	{
 		return (EAMObject)getRawObject(id);
 	}
+	
+	public int getObjectType()
+	{
+		return objectType;
+	}
+	
+	int objectType;
 }

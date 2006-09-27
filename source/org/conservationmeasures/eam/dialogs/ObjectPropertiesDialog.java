@@ -81,7 +81,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 
 	DialogField createDialogField(String tag) throws Exception
 	{
-		String label = EAM.text("Label|" + tag);
+		String label = EAM.fieldLabel(object.getType(), tag);
 		String value = object.getData(tag);
 		DialogField dialogField = new StringDialogField(tag, label, value);
 		return dialogField;

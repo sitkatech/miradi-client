@@ -27,6 +27,7 @@ public class EAM
 		{
 			setBestLookAndFeel();
 			VersionConstants.setVersionString();
+			Translation.loadFieldLabels();
 	
 			mainWindow = new MainWindow();
 			mainWindow.start(args);
@@ -114,6 +115,10 @@ public class EAM
 		return Translation.text(key);
 	}
 
+	public static String fieldLabel(int objectType, String fieldTag)
+	{
+		return Translation.fieldLabel(objectType, fieldTag);
+	}
 	
 	///////////////////////////////////////////////////////////////////
 	// Dialogs

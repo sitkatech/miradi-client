@@ -9,8 +9,9 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.utils.Translation;
 
 public class TestTranslations extends EAMTestCase
 {
@@ -62,6 +63,15 @@ public class TestTranslations extends EAMTestCase
 		assertEquals("<" + sampleText + ">", EAM.text(sampleText));
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
+	}
+	
+	public void testFieldLabel() throws Exception
+	{
+		Translation.loadFieldLabels();
+		String badTag = "whoops";
+		assertEquals("Didn't leave unknown tag alone?", badTag, EAM.fieldLabel(1, badTag));
+		
+		assertEquals("Didn't convert Indicator Label?", "Indicator", EAM.fieldLabel(ObjectType.INDICATOR, Indicator.TAG_LABEL));
 	}
 	
 	public static String ENGLISH_STRING = "To be translated";
