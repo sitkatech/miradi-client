@@ -75,6 +75,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewInterview;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
+import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
@@ -270,6 +271,7 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		addDoerToMap(ActionRedo.class, new Redo());
 		addDoerToMap(ActionPreferences.class, new Preferences());
 		
+		addDoerToMap(ActionViewSummary.class, new ViewSummary());
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
 		addDoerToMap(ActionViewInterview.class, new ViewInterview());
 		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());

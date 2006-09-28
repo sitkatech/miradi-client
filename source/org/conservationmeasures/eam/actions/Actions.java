@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewInterview;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
+import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -93,6 +94,8 @@ public class Actions
 		registerAction(new ActionSelectAll(mainWindow));
 		registerAction(new ActionSelectChain(mainWindow));
 		registerAction(new ActionUndo(mainWindow));
+		
+		registerAction(new ActionViewSummary(mainWindow));
 		registerAction(new ActionViewDiagram(mainWindow));
 		registerAction(new ActionViewInterview(mainWindow));
 		registerAction(new ActionViewThreatMatrix(mainWindow));
@@ -103,6 +106,7 @@ public class Actions
 		registerAction(new ActionViewImages(mainWindow));
 		registerAction(new ActionViewCalendar(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
+		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionStrategyBrainstormMode(mainWindow));
 		registerAction(new ActionNormalDiagramMode(mainWindow));

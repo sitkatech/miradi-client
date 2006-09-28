@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
@@ -81,6 +82,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		addWindowListener(new WindowEventHandler());
 
 		noProjectView = new NoProjectView(this);
+		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		interviewView = new InterviewView(this);
 		threatMatrixView = new ThreatMatrixView(this);
@@ -95,6 +97,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder = new JPanel();
 		viewHolder.setLayout(new CardLayout());
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
+		viewHolder.add(summaryView, summaryView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(interviewView, interviewView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
@@ -263,7 +266,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	
 	public void switchToView(String viewName)
 	{
-		if(viewName.equals(diagramView.cardName()))
+		if(viewName.equals(summaryView.cardName()))
+			setCurrentView(summaryView);
+		else if(viewName.equals(diagramView.cardName()))
 			setCurrentView(diagramView);
 		else if(viewName.equals(interviewView.cardName()))
 			setCurrentView(interviewView);
@@ -354,6 +359,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private Project project;
 	
 	private NoProjectView noProjectView;
+	private SummaryView summaryView;
 	private DiagramView diagramView;
 	private InterviewView interviewView;
 	private ThreatMatrixView threatMatrixView;

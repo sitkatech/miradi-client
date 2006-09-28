@@ -161,4 +161,9 @@ public class HtmlBuilder
 		return "<textarea rows='" + rows + "' cols='" + columns + "'></textarea>";
 	}
 	
+	static public String grayBox(String text)
+	{
+		return "<div class='navigation'>" + text + "</div>";
+	}
+	
 }
