@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.strategicplan.IndicatorTableModel;
 
 public class MonitoringIndicatorNode extends MonitoringNode
 {

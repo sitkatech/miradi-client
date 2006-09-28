@@ -8,18 +8,15 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
-import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteGoal;
-import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyGoal;
-import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
@@ -27,7 +24,6 @@ import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
@@ -74,15 +70,13 @@ public class StrategicPlanView extends UmbrellaView
 
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		objectivePanel = new ObjectiveManagementPanel(this);
-		indicatorManagementPanel = new IndicatorManagementPanel(this);
 		resourcePanel = new ResourceManagementPanel(this);
 		goalPanel = new GoalManagementPanel(this);
 
 		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
 		tabs.add(EAM.text("Objectives"), objectivePanel);
-		tabs.add(EAM.text("Indicators"), indicatorManagementPanel);
-		tabs.add(EAM.text("Resources"), resourcePanel);
 		tabs.add(EAM.text("Goals"), goalPanel);
+		tabs.add(EAM.text("Resources"), resourcePanel);
 		
 		tabs.setSelectedIndex(mostRecentTabIndex);
 	}
@@ -103,11 +97,6 @@ public class StrategicPlanView extends UmbrellaView
 	public ResourceManagementPanel getResourcePanel()
 	{
 		return resourcePanel;
-	}
-	
-	public IndicatorManagementPanel getIndicatorManagementPanel()
-	{
-		return indicatorManagementPanel;
 	}
 	
 	public ObjectiveManagementPanel getObjectivePanel()
@@ -157,10 +146,6 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
-		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
-		addDoerToMap(ActionModifyIndicator.class, new ModifyIndicator());
-		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
-
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
@@ -178,7 +163,6 @@ public class StrategicPlanView extends UmbrellaView
 	
 	StrategicPlanPanel strategicPlanPanel;
 	ResourceManagementPanel resourcePanel;
-	IndicatorManagementPanel indicatorManagementPanel;
 	ObjectiveManagementPanel objectivePanel;
 	GoalManagementPanel goalPanel;
 	

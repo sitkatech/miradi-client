@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -25,7 +25,7 @@ public class DeleteIndicator extends ViewDoer
 {
 	public IndicatorManagementPanel getIndicatorPanel()
 	{
-		StrategicPlanView view = (StrategicPlanView)getView();
+		MonitoringView view = (MonitoringView)getView();
 		return view.getIndicatorManagementPanel();
 	}
 	

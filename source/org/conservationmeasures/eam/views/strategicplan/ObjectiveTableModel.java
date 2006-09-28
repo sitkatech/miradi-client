@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
 
 class ObjectiveTableModel extends AnnotationTableModel
 {	
@@ -25,16 +26,15 @@ class ObjectiveTableModel extends AnnotationTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
+		BaseId objectiveId = getPool().getIds()[rowIndex];
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_FACTORS))
 		{
-			BaseId objectiveId = pool.getIds()[rowIndex];
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisObjective(objectiveId).toNodeArray();
 			
 			return ConceptualModelNode.getNodeLabelsAsHtml(modelNodes);
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
-			BaseId objectiveId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
@@ -42,7 +42,6 @@ class ObjectiveTableModel extends AnnotationTableModel
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
-			BaseId objectiveId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
@@ -50,7 +49,6 @@ class ObjectiveTableModel extends AnnotationTableModel
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
-			BaseId objectiveId = pool.getIds()[rowIndex];
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			

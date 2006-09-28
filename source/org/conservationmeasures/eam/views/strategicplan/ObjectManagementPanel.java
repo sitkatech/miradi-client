@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
+import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
 
 public class IndicatorTableModel extends AnnotationTableModel
 {
@@ -27,7 +28,7 @@ public class IndicatorTableModel extends AnnotationTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseId indicatorId = pool.getIds()[rowIndex];
+		BaseId indicatorId = getPool().getIds()[rowIndex];
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
 		{
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisIndicator(indicatorId).toNodeArray();

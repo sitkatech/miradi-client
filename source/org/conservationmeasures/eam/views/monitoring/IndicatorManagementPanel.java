@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.views.strategicplan.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel
@@ -22,7 +23,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	
 	public Indicator getSelectedIndicator()
 	{
-		int row = table.getSelectedRow();
+		int row = getTable().getSelectedRow();
 		if(row < 0)
 			return null;
 		

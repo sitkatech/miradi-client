@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTableModel;
 import org.martus.util.xml.XmlUtilities;
 
-class ObjectManagerTableModel extends UiTableModel
+public class ObjectManagerTableModel extends UiTableModel
 {
 	public ObjectManagerTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
 	{
@@ -53,6 +53,11 @@ class ObjectManagerTableModel extends UiTableModel
 		return EAM.fieldLabel(pool.getObjectType(), columnTags[column]);
 	}
 	
-	EAMObjectPool pool;
-	String[] columnTags;
+	public EAMObjectPool getPool()
+	{
+		return pool;
+	}
+	
+	private EAMObjectPool pool;
+	private String[] columnTags;
 }
