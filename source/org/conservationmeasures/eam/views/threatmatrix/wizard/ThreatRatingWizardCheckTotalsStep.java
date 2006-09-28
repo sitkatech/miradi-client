@@ -117,6 +117,9 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		public ShowBundleRulesDialog()
 		{
 			super(EAM.mainWindow);
+			setResizable(true);
+			setModal(true);
+
 			Container contents = getContentPane();
 			contents.setLayout(new BorderLayout());
 
@@ -126,9 +129,18 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			rules.setText("<html>" +
 					HtmlBuilder.font("Arial", 
 					"<h2>Explanation of How Threat Rating Summaries Are Calculated</h2>" +
-					"<p>The e-AM software uses the following rules for rolling up ratings " +
-					"across targets and threats. " +
-					"Multiple threats to individual targets and multiple target threat scores " +
+					"<p>The e-AM software uses a combination of rules for rolling up ratings " +
+					"across targets and threats, and for the project as a whole. </p>" +
+					
+					"<p>As shown in the grid below, " +
+					"the bottom row contains the overall ratings for each target, and " +
+					"the far right-hand column contains the ratings for each threat. " +
+					"Finally, the cell in the lower right-hand corner contains the overall rating " +
+					"for the project. Normally the overall project rating is based on rolling up " +
+					"the threat ratings in the right-most column, using the 3-5-7 and 2-Prime rules.</p>" +
+
+					"<h3>3-5-7 Rule</h3>" +
+					"<p>Multiple threats to individual targets and multiple target threat scores " +
 					"are first summed together using the 3-5-7 rule:</p>" +
 					"<ul>" +
 					"<li>3 High rated threats are equivalent to 1 Very High-rated threat;</li>" +
@@ -136,28 +148,37 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 					"<li>7 Low rated threats are equivalent to 1 Medium-rated threat</li>" +
 					"</ul>" +
 					
-					"<p>Once multiple threats scores are summed together, " +
-					"the overall threat status for a single target, for a threat, <" +
-					"and the overall threat status for the whole project is calculated " +
-					"using the 2-prime rule.  " +
-					"This rule requires the equivalent of two Very High ratings " +
-					"(e.g., one Very High and at least three High ratings) " +
-					"for the overall rating to be Very High " +
-					"and the equivalent of two High ratings " +
-					"for the overall rating to be High.</p>" +
-
-					"<p>For example, in the second row for the Housing threat, " +
-					"there are 3 High ratings (which equals 1 Very High) " +
-					"and 1 Very High rating.  Thus, the overall Threat Rank is Very High.  " +
-					"Likewise, in the Upper Watershed Column, there are 6 High ratings, " +
-					"which equal 2 Very High ratings.  " +
-					"Thus, the overall rank for this target is Very High.</p>" +
+					"<p>In the example below, the second row shows the Housing threat. " +
+					"There are 3 High ratings (which equals 1 Very High) " +
+					"and 1 Very High rating, so it is treated as if it had two Very High ratings.  " +
+					"In the Lone Chapparal Column, there are 5 Medium ratings (which equals one High), " +
+					"plus one High, for a total equivalent of 2 High ratings.  </p>" +
 					
-					"<p>In this example, the bottom row contains the overall threat rating for each target.  " +
-					"The far right-hand column contains the ratings for each threat across targets. " +
-					"And finally, the cell in the lower right-hand corner contains the overall rating " +
-					"for the project, which is calculated by rolling up the far-right hand column " +
-					"using the 2-prime rule.</p>" +
+					"<h3>2-Prime Rule</h3>" +
+					"<p>After the 3-5-7 rule has been applied, the 2-prime rule is used to determine" +
+					"the rolled up rating for a target, a threat, or for the whole project.  " +
+					"This rule requires the equivalent of two ratings at a certain level for the " +
+					"end result to be that level. For example, there would have to be the equivalent of at least " +
+					"two Very High ratings to produce a Very High result, or " +
+					"two ratings of Medium or above to produce a Medium result.</p>" +
+					
+					"<p>In the example below, the Housing threat row has the equivalent of " +
+					"two Very High ratings (due to the 3-5-7 rule), so the result is Very High. " +
+					"The Recreational Vehicles row has one Medium rating and one Low. Since it " +
+					"does not have two or more Mediums, the result is Low.</p>" +
+					
+					"<h3>Majority Override</h3>" +
+					"<p>The Majority Override rule ensures that the overall project rating is not " +
+					"reduced too much by the other rules. Normally, the overall project rating is " +
+					"a rollup of the threat ratings, using the rules above. " +
+					"However, if a majority of the targets have a rating higher than that computed rollup, " +
+					"then that majority rating is used instead.</p>" +
+					
+					"<p>For example, if the result of using the 3-5-7 and 2-prime rules gave a " +
+					"project ratign of Medium, but 4 out of the 6 targets had at least one rating of at High (or Very High), " +
+					"then the Majority Override rule would take effect and the overall project rating " +
+					"would be High.</p>" +
+
 					HtmlBuilder.newline() +
 					HtmlBuilder.image("images/BundleSummaries.png", bundleSummariesSize)
 					) + 
@@ -165,11 +186,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			contents.add(new JScrollPane(rules), BorderLayout.CENTER);
 			contents.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 
-			pack();
-			setResizable(true);
-			setModal(true);
 			setSize(900, 700);
-
 		}
 
 		private Box createButtonBar()
