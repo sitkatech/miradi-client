@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
 
-
 public class Objective extends EAMBaseObject
 {
 	public Objective(BaseId id)
@@ -33,6 +32,11 @@ public class Objective extends EAMBaseObject
 		return ObjectType.OBJECTIVE;
 	}
 	
+	public String getShortLabel()
+	{
+		return shortLabel;
+	}
+
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
@@ -53,11 +57,6 @@ public class Objective extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public String getShortLabel()
-	{
-		return shortLabel;
-	}
-
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();

@@ -27,13 +27,6 @@ public class Goal extends EAMBaseObject
 		fullText = json.optString(TAG_FULL_TEXT, "");
 	}
 	
-	public String toString()
-	{
-		if(getId().isInvalid())
-			return "(None)";
-		return shortLabel + ": " + getLabel();
-	}
-
 	public int getType()
 	{
 		return ObjectType.GOAL;
@@ -73,9 +66,16 @@ public class Goal extends EAMBaseObject
 		return json;
 	}
 	
+	public String toString()
+	{
+		if(getId().isInvalid())
+			return "(None)";
+		return shortLabel + ": " + getLabel();
+	}
+
+
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
-
 	
 	String shortLabel;
 	String fullText;
