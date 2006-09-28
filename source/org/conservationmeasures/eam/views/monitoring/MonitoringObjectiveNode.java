@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 
-public class MonitoringObjective extends MonitoringNode
+public class MonitoringObjectiveNode extends MonitoringNode
 {
-	public MonitoringObjective(Project projectToUse, Objective objectiveToUse)
+	public MonitoringObjectiveNode(Project projectToUse, Objective objectiveToUse)
 	{
 		project = projectToUse;
 		objective = objectiveToUse;
@@ -51,7 +51,7 @@ public class MonitoringObjective extends MonitoringNode
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
 			if(indicator == null)
 				throw new RuntimeException("Missing Indicator " + id);
-			children.add(new MonitoringIndicator(project, indicator));
+			children.add(new MonitoringIndicatorNode(project, indicator));
 		}
 	}
 

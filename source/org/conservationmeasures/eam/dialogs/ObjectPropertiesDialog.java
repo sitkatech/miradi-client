@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.text.ParseException;
 import java.util.Vector;
 
 import javax.swing.JDialog;
@@ -19,10 +20,13 @@ import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
@@ -77,6 +81,10 @@ abstract public class ObjectPropertiesDialog extends JDialog
 	{
 		String label = EAM.fieldLabel(object.getType(), tag);
 		String value = object.getData(tag);
+
+		if(tag.equals(Task.TAG_RESOURCE_IDS))
+			return createResourcePicker(tag, label);
+
 		DialogField dialogField = new StringDialogField(tag, label, value);
 		return dialogField;
 	}
@@ -141,6 +149,19 @@ abstract public class ObjectPropertiesDialog extends JDialog
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error prevented this operation");
 		}
+	}
+
+	protected DialogField createResourcePicker(String tag, String label) throws ParseException
+	{
+		BaseId[] allResourceIds = getProject().getResourcePool().getIds();
+		EAMObject[] availableResources = new EAMObject[allResourceIds.length];
+		for(int i = 0; i < availableResources.length; ++i)
+			availableResources[i] = getProject().getResourcePool().find(allResourceIds[i]);
+	
+		int type = getObject().getType();
+		BaseId id = getObject().getId();
+		IdList selectedResources = new IdList(getProject().getObjectData(type, id, Task.TAG_RESOURCE_IDS));
+		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
 
 	MainWindow mainWindow;

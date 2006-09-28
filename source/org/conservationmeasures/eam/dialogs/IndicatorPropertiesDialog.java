@@ -23,6 +23,7 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 		Indicator.TAG_SHORT_LABEL, 
 		Indicator.TAG_LABEL,
 		Indicator.TAG_METHOD,
+		Indicator.TAG_RESOURCE_IDS,
 		};
 
 }

@@ -29,7 +29,7 @@ public class StratPlanActivity extends StratPlanObject
 		if(column == StrategicPlanTreeTableModel.labelColumn)
 			return toString();
 		if(column == StrategicPlanTreeTableModel.resourcesColumn)
-			return getResourcesAsString();
+			return getResourcesAsHtml();
 		return "";
 	}
 
@@ -73,20 +73,19 @@ public class StratPlanActivity extends StratPlanObject
 		
 	}
 	
-	String getResourcesAsString()
+	String getResourcesAsHtml()
 	{
-		StringBuffer result = new StringBuffer();
+		return ProjectResource.getResourcesAsHtml(getResources());
+	}
+
+	private ProjectResource[] getResources()
+	{
 		ResourcePool pool = project.getResourcePool();
 		IdList resourceIds = activity.getResourceIdList();
+		ProjectResource[] resources = new ProjectResource[resourceIds.size()];
 		for(int i = 0; i < resourceIds.size(); ++i)
-		{
-			if(i > 0)
-				result.append(", ");
-			ProjectResource resource = pool.find(resourceIds.get(i));
-			result.append(resource.toString());
-		}
-		
-		return result.toString();
+			resources[i] = pool.find(resourceIds.get(i));
+		return resources;
 	}
 	
 	Project project;

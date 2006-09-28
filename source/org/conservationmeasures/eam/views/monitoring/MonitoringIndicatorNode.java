@@ -6,12 +6,14 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.strategicplan.IndicatorTableModel;
 
-public class MonitoringIndicator extends MonitoringNode
+public class MonitoringIndicatorNode extends MonitoringNode
 {
-	public MonitoringIndicator(Project projectToUse, Indicator indicatorToUse)
+	public MonitoringIndicatorNode(Project projectToUse, Indicator indicatorToUse)
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
@@ -45,6 +47,11 @@ public class MonitoringIndicator extends MonitoringNode
 			return getChainManager().getRelatedDirectThreatsAsHtml(indicator.getId());
 		if(column == COLUMN_METHODS)
 			return indicator.getData(Indicator.TAG_METHOD);
+		if(MonitoringModel.columnTags[column].equals(Indicator.TAG_RESOURCE_IDS))
+		{
+			ProjectResource[] resources = IndicatorTableModel.getResourcesForIndicator(project, indicator);
+			return ProjectResource.getResourcesAsHtml(resources);
+		}
 		return null;
 	}
 

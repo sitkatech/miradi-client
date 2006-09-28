@@ -42,7 +42,7 @@ public class Indicator extends EAMBaseObject
 		if(fieldTag.equals(TAG_METHOD))
 			return method;
 		if(fieldTag.equals(TAG_RESOURCE_IDS))
-			return resourceIds.toString();
+			return getResourceIdList().toString();
 		
 		return super.getData(fieldTag);
 	}
@@ -62,6 +62,11 @@ public class Indicator extends EAMBaseObject
 	public String getShortLabel()
 	{
 		return shortLabel;
+	}
+	
+	public IdList getResourceIdList()
+	{
+		return resourceIds;
 	}
 
 	public JSONObject toJson()

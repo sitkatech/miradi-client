@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -21,12 +22,12 @@ public class MonitoringModel extends AbstractTreeTableModel
 
 	public int getColumnCount()
 	{
-		return columnNames.length;
+		return columnTags.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		return EAM.text("Column|" + columnNames[column]);
+		return EAM.fieldLabel(ObjectType.INDICATOR, columnTags[column]);
 	}
 
 	public Class getColumnClass(int column)
@@ -54,8 +55,18 @@ public class MonitoringModel extends AbstractTreeTableModel
 		return node.getChild(index);
 	}
 
-	String[] columnNames = {
-		"Item", "Target(s)", "Threat", "Methods", "Priority", "Status", "When", "Where", "Who", "Cost", "Funding",	
+	public static String[] columnTags = {
+		"Item", 
+		"Target(s)", 
+		"Threat(s)", 
+		"Method", 
+		"Priority", 
+		"Status", 
+		"When", 
+		"Where", 
+		"ResourceIds", 
+		"Cost", 
+		"Funding",	
 	};
 	Project project;
 }
