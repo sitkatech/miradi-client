@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTableModel;
+import org.martus.util.xml.XmlUtilities;
 
 class ObjectManagerTableModel extends UiTableModel
 {
@@ -37,7 +38,8 @@ class ObjectManagerTableModel extends UiTableModel
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
 		EAMObject object = getObjectFromRow(rowIndex);
-		return object.getData(columnTags[columnIndex]);
+		String data = object.getData(columnTags[columnIndex]);
+		return "<html>" + XmlUtilities.getXmlEncoded(data) + "</html>";
 	}
 
 	public EAMObject getObjectFromRow(int rowIndex)

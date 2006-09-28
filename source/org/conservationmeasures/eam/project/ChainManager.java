@@ -94,20 +94,20 @@ public class ChainManager
 		return project;
 	}
 	
-	public String getRelatedTargetsAsString(BaseId indicatorId)
+	public String getRelatedTargetsAsHtml(BaseId indicatorId)
 	{
 		ConceptualModelNodeSet modelNodes = findAllNodesRelatedToThisIndicator(indicatorId);
 		TargetSet targets = new TargetSet(modelNodes);
 		
-		return ConceptualModelNode.getNodeLabelsAsString(targets.toNodeArray());
+		return ConceptualModelNode.getNodeLabelsAsHtml(targets.toNodeArray());
 	}
 
-	public String getRelatedDirectThreatsAsString(BaseId indicatorId)
+	public String getRelatedDirectThreatsAsHtml(BaseId indicatorId)
 	{
 		ConceptualModelNodeSet modelNodes =  findAllNodesRelatedToThisIndicator(indicatorId);
 		DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 		
-		return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
+		return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
 	}
 
 	Project project;

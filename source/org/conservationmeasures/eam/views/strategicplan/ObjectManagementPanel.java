@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
@@ -42,7 +43,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		view = viewToUse;
 		model = modelToUse;
 		
-		table = new UiTable(model);
+		table = new UiTableWithAlternatingRows(model);
 		
 		// TODO: set all column widths to "reasonable" values
 		// for now, a cheap hack: make the first column small,

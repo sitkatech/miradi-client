@@ -28,17 +28,17 @@ class IndicatorTableModel extends AnnotationTableModel
 			BaseId indicatorId = pool.getIds()[rowIndex];
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 			
-			return ConceptualModelNode.getNodeLabelsAsString(modelNodes);
+			return ConceptualModelNode.getNodeLabelsAsHtml(modelNodes);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			return getChainManager().getRelatedDirectThreatsAsString(indicatorId);
+			return getChainManager().getRelatedDirectThreatsAsHtml(indicatorId);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
 			BaseId indicatorId = pool.getIds()[rowIndex];
-			return getChainManager().getRelatedTargetsAsString(indicatorId);
+			return getChainManager().getRelatedTargetsAsHtml(indicatorId);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
@@ -46,7 +46,7 @@ class IndicatorTableModel extends AnnotationTableModel
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
-			return ConceptualModelNode.getNodeLabelsAsString(directThreats.toNodeArray());
+			return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
 		}
 		
 		return super.getValueAt(rowIndex, columnIndex);
