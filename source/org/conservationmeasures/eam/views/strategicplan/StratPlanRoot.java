@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objectpools.DesirePool;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
 
 public class StratPlanRoot extends StratPlanObject
@@ -27,12 +27,12 @@ public class StratPlanRoot extends StratPlanObject
 
 	public int getChildCount()
 	{
-		return objectives.length;
+		return desireNodes.length;
 	}
 
 	public Object getChild(int index)
 	{
-		return objectives[index];
+		return desireNodes[index];
 	}
 	
 	public String toString()
@@ -57,17 +57,25 @@ public class StratPlanRoot extends StratPlanObject
 	
 	public void rebuild()
 	{
-		BaseId[] objectiveIds = project.getObjectivePool().getIds();
-		Vector objectiveVector = new Vector();
-		for(int i = 0; i < objectiveIds.length; ++i)
+		Vector desireVector = new Vector();
+		desireVector.addAll(getAllDesires(project.getGoalPool()));
+		desireVector.addAll(getAllDesires(project.getObjectivePool()));
+		desireNodes = (StratPlanDesire[])desireVector.toArray(new StratPlanDesire[0]);
+	}
+
+	private Vector getAllDesires(DesirePool pool)
+	{
+		BaseId[] desireIds = pool.getIds();
+		Vector desires = new Vector();
+		for(int i = 0; i < desireIds.length; ++i)
 		{
-			Objective objective = (Objective)project.findObject(ObjectType.OBJECTIVE, objectiveIds[i]);
-			objectiveVector.add(new StratPlanObjective(project, objective));
+			Desire desire = pool.findDesire(desireIds[i]);
+			desires.add(new StratPlanDesire(project, desire));
 		}
-		objectives = (StratPlanObjective[])objectiveVector.toArray(new StratPlanObjective[0]);
+		return desires;
 	}
 	
 	Project project;
-	StratPlanObjective[] objectives;
+	StratPlanDesire[] desireNodes;
 }
 

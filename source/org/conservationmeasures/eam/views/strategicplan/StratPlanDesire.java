@@ -11,17 +11,17 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
 
-public class StratPlanObjective extends StratPlanObject
+public class StratPlanDesire extends StratPlanObject
 {
-	public StratPlanObjective(Project projectToUse, Objective objectiveToUse)
+	public StratPlanDesire(Project projectToUse, Desire desireToUse)
 	{
 		project = projectToUse;
-		if(objectiveToUse == null)
+		if(desireToUse == null)
 			EAM.logError("Attempted to create tree node for null objective");
-		objective = objectiveToUse;
+		desire = desireToUse;
 		strategies = new StratPlanStrategy[0];
 		rebuild();
 	}
@@ -45,17 +45,17 @@ public class StratPlanObjective extends StratPlanObject
 	
 	public int getType()
 	{
-		return objective.getType();
+		return desire.getType();
 	}
 
 	public BaseId getId()
 	{
-		return objective.getId();
+		return desire.getId();
 	}
 
 	public String toString()
 	{
-		return objective.getLabel();
+		return desire.getLabel();
 	}
 
 	public boolean canInsertActivityHere()
@@ -65,6 +65,8 @@ public class StratPlanObjective extends StratPlanObject
 
 	public void rebuild()
 	{
+		BaseId desireId = desire.getId();
+
 		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
@@ -74,27 +76,27 @@ public class StratPlanObjective extends StratPlanObject
 				continue;
 			
 			
-			if(doesChainContainObjective(intervention))
+			if(doesChainContainDesire(intervention, desireId))
 				strategyVector.add(new StratPlanStrategy(project, intervention));
 		}
 		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
 	}
 	
-	boolean doesChainContainObjective(ConceptualModelNode chainMember)
+	private boolean doesChainContainDesire(ConceptualModelNode chainMember, BaseId desireId)
 	{
-		BaseId objectiveId = objective.getId();
 		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllNodesInChain(chainMember).toNodeArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
-			if(chainNodes[i].getObjectives().contains(objectiveId))
+			if(chainNodes[i].getObjectives().contains(desireId))
+				return true;
+			if(chainNodes[i].getGoals().contains(desireId))
 				return true;
 		}
 		
 		return false;
-		
 	}
 
 	Project project;
-	Objective objective;
+	Desire desire;
 	StratPlanStrategy[] strategies;
 }

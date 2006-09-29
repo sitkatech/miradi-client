@@ -9,21 +9,16 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Goal;
 
-public class GoalPool extends EAMObjectPool
+public class GoalPool extends DesirePool
 {
 	public GoalPool()
 	{
 		super(ObjectType.GOAL);
 	}
 	
-	public void put(Goal goal)
-	{
-		put(goal.getId(), goal);
-	}
-	
 	public Goal find(BaseId id)
 	{
-		return (Goal)getRawObject(id);
+		return (Goal)findDesire(id);
 	}
 
 }

@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.icons;
 
-
-public class ObjectiveIcon extends DesireIcon
+public class GoalIcon extends DesireIcon
 {
 }

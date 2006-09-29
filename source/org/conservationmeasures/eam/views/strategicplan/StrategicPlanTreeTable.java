@@ -11,6 +11,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -43,6 +44,11 @@ public class StrategicPlanTreeTable extends JTreeTable
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
 			objectiveRenderer.setLeafIcon(new ObjectiveIcon());
 
+			goalRenderer = new DefaultTreeCellRenderer();
+			goalRenderer.setClosedIcon(new GoalIcon());
+			goalRenderer.setOpenIcon(new GoalIcon());
+			goalRenderer.setLeafIcon(new GoalIcon());
+
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
 
@@ -53,13 +59,16 @@ public class StrategicPlanTreeTable extends JTreeTable
 			StratPlanObject object = (StratPlanObject)value;
 			if(object.getType() == ObjectType.MODEL_NODE)
 				renderer = interventionRenderer;
-			if(object.getType() == ObjectType.OBJECTIVE)
+			else if(object.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;
+			else if(object.getType() == ObjectType.GOAL)
+				renderer = goalRenderer;
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
 		
 		DefaultTreeCellRenderer objectiveRenderer;
+		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer interventionRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 	}
