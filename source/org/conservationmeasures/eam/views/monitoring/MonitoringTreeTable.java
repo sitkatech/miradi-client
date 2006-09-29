@@ -13,6 +13,7 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -72,6 +73,11 @@ public class MonitoringTreeTable extends JTreeTable
 			indicatorRenderer.setOpenIcon(new IndicatorIcon());
 			indicatorRenderer.setLeafIcon(new IndicatorIcon());
 			
+			goalRenderer = new DefaultTreeCellRenderer();
+			goalRenderer.setClosedIcon(new GoalIcon());
+			goalRenderer.setOpenIcon(new GoalIcon());
+			goalRenderer.setLeafIcon(new GoalIcon());
+
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
 
@@ -84,11 +90,14 @@ public class MonitoringTreeTable extends JTreeTable
 				renderer = indicatorRenderer;
 			if(node.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;
+			else if(node.getType() == ObjectType.GOAL)
+				renderer = goalRenderer;
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
 		
 		DefaultTreeCellRenderer objectiveRenderer;
+		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer indicatorRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 	}
