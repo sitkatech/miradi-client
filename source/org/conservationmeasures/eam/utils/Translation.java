@@ -60,7 +60,10 @@ public class Translation
 	
 	public static void loadFieldLabels() throws IOException
 	{
-		InputStream in = Translation.class.getResourceAsStream("FieldLabels.properties");
+		String fileName = "FieldLabels.properties";
+		InputStream in = Translation.class.getResourceAsStream(fileName);
+		if(in == null)
+			throw new IOException("Missing file: " + fileName + " in " + Translation.class.getName());
 		try
 		{
 			properties.load(in);
