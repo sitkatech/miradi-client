@@ -18,6 +18,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
+import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -123,25 +124,30 @@ public class ThreatGridPanel extends JPanel
 		UiLabel threatLabel = new UiLabel(threatLabelText);
 		threatLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		UiButton sort = new UiButton(EAM.text("Button|Sort"));
-		sort.addActionListener(new SortByNameListener());
-
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(threatLabel, BorderLayout.CENTER);
-		panel.add(sort, BorderLayout.AFTER_LAST_LINE);
+		panel.add(createSortButton(new SortByNameListener()), BorderLayout.AFTER_LAST_LINE);
 		setCellContents(0, 0, panel);
+	}
+
+	private Box createSortButton(ActionListener sortBy)
+	{
+		UiButton sortButton = new UiButton(EAM.text("Button|Sort"));
+		sortButton.addActionListener(sortBy);
+		Box sort = Box.createHorizontalBox();
+		sort.add(Box.createHorizontalGlue());
+		sort.add(sortButton);
+		sort.add(Box.createHorizontalGlue());
+		return sort;
 	}
 	
 	private void populateThreatSummaryHeading()
 	{
 		UiLabel label = createBoldLabel("Label|Summary Threat Rating");
 		
-		UiButton sort = new UiButton(EAM.text("Button|Sort"));
-		sort.addActionListener(new SortBySummaryListener());
-		
 		JPanel contents = new JPanel(new BorderLayout());
 		contents.add(label, BorderLayout.CENTER);
-		contents.add(sort, BorderLayout.AFTER_LAST_LINE);
+		contents.add(createSortButton(new SortBySummaryListener()), BorderLayout.AFTER_LAST_LINE);
 
 		setCellContents(0, getTargetSummaryColumn(), contents);
 	}
@@ -245,12 +251,9 @@ public class ThreatGridPanel extends JPanel
 			int column = getColumnFromTargetIndex(targetIndex);
 			JComponent label = createLabel(model.getTargetName(targetIndex));
 			
-			UiButton sort = new UiButton(EAM.text("Button|Sort"));
-			sort.addActionListener(new SortByTargetValueListener(targetIndex));
-			
 			JPanel contents = new JPanel(new BorderLayout());
 			contents.add(label, BorderLayout.CENTER);
-			contents.add(sort, BorderLayout.AFTER_LAST_LINE);
+			contents.add(createSortButton(new SortByTargetValueListener(targetIndex)), BorderLayout.AFTER_LAST_LINE);
 			setCellContents(row, column, contents);
 		}
 	}
