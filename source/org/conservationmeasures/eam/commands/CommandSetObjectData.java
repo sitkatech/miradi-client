@@ -68,6 +68,11 @@ public class CommandSetObjectData extends Command
 	{
 		return oldValue;
 	}
+	
+	public void setPreviousDataValue(String forcedOldValue)
+	{
+		oldValue = forcedOldValue;
+	}
 
 	public String getCommandName()
 	{

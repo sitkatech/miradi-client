@@ -35,6 +35,9 @@ public class ViewData extends EAMBaseObject
 		if(TAG_CURRENT_MODE.equals(fieldTag))
 			return getCurrentMode();
 		
+		if(TAG_CURRENT_TAB.equals(fieldTag))
+			return Integer.toString(getCurrentTab());
+		
 		if(TAG_BRAINSTORM_NODE_IDS.equals(fieldTag))
 			return getBrainstormNodeIds().toString();
 		
@@ -45,6 +48,8 @@ public class ViewData extends EAMBaseObject
 	{
 		if(TAG_CURRENT_MODE.equals(fieldTag))
 			setCurrentMode((String)dataValue);
+		else if(TAG_CURRENT_TAB.equals(fieldTag))
+			setCurrentTab(new Integer((String)dataValue).intValue());
 		else if(TAG_BRAINSTORM_NODE_IDS.equals(fieldTag))
 			setBrainstormNodeIds(new IdList((String)dataValue));
 		else
@@ -67,6 +72,16 @@ public class ViewData extends EAMBaseObject
 		
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToRemove);
 		return new Command[] {cmd};
+	}
+	
+	public void setCurrentTab(int newTab)
+	{
+		currentTab = newTab;
+	}
+	
+	private int getCurrentTab()
+	{
+		return currentTab;
 	}
 
 	private void setCurrentMode(String currentMode)
@@ -104,10 +119,12 @@ public class ViewData extends EAMBaseObject
 
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_BRAINSTORM_NODE_IDS = "BrainstormNodeIds";
+	public static final String TAG_CURRENT_TAB = "CurrentTab";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
 
+	private int currentTab;
 	private String currentMode;
 	private IdList brainstormNodeIds;
 }

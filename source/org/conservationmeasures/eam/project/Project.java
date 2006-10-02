@@ -409,6 +409,52 @@ public class Project
 
 	public void executeCommand(Command command) throws CommandFailedException
 	{
+		try
+		{
+			isExecuting = true;
+			executeWithoutRecording(command);
+			recordCommand(command);
+		}
+		finally
+		{
+			isExecuting = false;
+		}
+	}
+
+	public Command undo() throws CommandFailedException
+	{
+		Command cmd = undoRedoState.popCommandToUndo();
+		try
+		{
+			isExecuting = true;
+			undoWithoutRecording(cmd);
+			fireCommandUndone(cmd);
+			return cmd;
+		}
+		finally
+		{
+			isExecuting = false;
+		}
+	}
+	
+	public Command redo() throws CommandFailedException
+	{
+		Command cmd = undoRedoState.popCommandToRedo();
+		try
+		{
+			isExecuting = true;
+			executeWithoutRecording(cmd);
+			fireCommandExecuted(cmd);
+			return cmd;
+		}
+		finally
+		{
+			isExecuting = false;
+		}
+	}
+
+	private void executeWithoutRecording(Command command) throws CommandFailedException
+	{
 		try 
 		{
 			command.execute(this);
@@ -418,7 +464,19 @@ public class Project
 			fireCommandFailed(command, e);
 			throw(e);
 		}
-		recordCommand(command);
+	}
+	
+	private void undoWithoutRecording(Command command) throws CommandFailedException
+	{
+		try 
+		{
+			command.undo(this);
+		} 
+		catch (CommandFailedException e) 
+		{
+			fireCommandFailed(command, e);
+			throw(e);
+		}
 	}
 	
 	public void recordCommand(Command command)
@@ -426,12 +484,17 @@ public class Project
 		try
 		{
 			undoRedoState.pushUndoableCommand(command);
+			fireCommandExecuted(command);
 		}
 		catch (IOException e)
 		{
 			EAM.logException(e);
 		}
-		fireCommandExecuted(command);
+	}
+	
+	public boolean isExecutingACommand()
+	{
+		return isExecuting;
 	}
 
 	public void addCommandExecutedListener(CommandExecutedListener listener)
@@ -485,22 +548,6 @@ public class Project
 		return undoRedoState.canRedo();
 	}
 	
-	public Command undo() throws CommandFailedException
-	{
-		Command cmd = undoRedoState.popCommandToUndo();
-		cmd.undo(this);
-		fireCommandUndone(cmd);
-		return cmd;
-	}
-	
-	public Command redo() throws CommandFailedException
-	{
-		Command cmd = undoRedoState.popCommandToRedo();
-		cmd.execute(this);
-		fireCommandExecuted(cmd);
-		return cmd;
-	}
-
 
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -750,6 +797,7 @@ public class Project
 	ProjectInfo projectInfo;
 	ObjectManager objectManager;
 	UndoRedoState undoRedoState;
+	boolean isExecuting;
 
 	ThreatRatingFramework threatRatingFramework;
 	
