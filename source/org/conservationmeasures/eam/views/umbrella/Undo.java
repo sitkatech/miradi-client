@@ -19,6 +19,9 @@ public class Undo extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		if(!isAvailable())
+			return;
+		
 		try
 		{
 			Command undone = getProject().undo();
