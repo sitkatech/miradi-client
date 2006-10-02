@@ -195,7 +195,7 @@ public class Actions
 		while(iter.hasNext())
 		{
 			EAMAction action = (EAMAction)iter.next();
-			action.setEnabled(action.shouldBeEnabled());
+			action.updateEnabledState();
 		}
 	}
 	
