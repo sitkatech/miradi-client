@@ -434,12 +434,17 @@ public class ThreatGridPanel extends JPanel
 				
 				ThreatRatingBundle bundle0 = getBundle(threatId0);
 				ThreatRatingBundle bundle1 = getBundle(threatId1);
-					
-				return getBundleValue(bundle0).compareTo(getBundleValue(bundle1));
+				
+				int ascending = getBundleValue(bundle0).compareTo(getBundleValue(bundle1));
+				int descending = -ascending;
+				return descending;
 			}
 
 			private ThreatRatingBundle getBundle(ModelNodeId threatId)
 			{
+				if(!getProject().isLinked(threatId, targetId))
+					return null;
+				
 				try
 				{
 					return framework.getBundle(threatId, targetId);
@@ -499,7 +504,9 @@ public class ThreatGridPanel extends JPanel
 				ThreatRatingValueOption result1 = framework.getThreatThreatRatingValue(threatId1);
 				Integer value1 = new Integer(result1.getNumericValue());
 				
-				return value0.compareTo(value1);
+				int ascending = value0.compareTo(value1);
+				int descending = -ascending;
+				return descending;
 			}
 
 			ThreatRatingFramework framework;
