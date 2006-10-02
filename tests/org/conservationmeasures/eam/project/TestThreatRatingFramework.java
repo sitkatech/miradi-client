@@ -244,7 +244,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		verifyPureMajority("Empty", 0, bundlesEmpty);
 		
 		int[][] bundlesPlurality = { {2, 3, 4, 2, 3, 4, 2},	};
-		verifyPureMajority("Plurality", 0, bundlesPlurality);
+		verifyPureMajority("Plurality", 3, bundlesPlurality);
 		
 		int[][] bundlesMajority = { {2, 2, 1},	};
 		verifyPureMajority("Majority", 2, bundlesMajority);

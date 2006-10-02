@@ -127,10 +127,12 @@ public class TNCThreatFormula
 
 		int total = values.length;
 		int half = total/2;
-		
-		for(int i = 0; i < numberOfLegalValues; ++i)
+
+		int cumulative = 0;
+		for(int i = numberOfLegalValues -1; i >= 0; --i)
 		{
-			if(rankTotals[i] > half)
+			cumulative += rankTotals[i];
+			if(cumulative > half)
 				return i;
 		}
 

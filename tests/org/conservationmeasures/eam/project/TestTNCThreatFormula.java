@@ -248,13 +248,13 @@ public class TestTNCThreatFormula extends EAMTestCase
 		assertEquals(3, formula.getMajority(allTargets));
 		
 		allTargets = new int[] {2, 2, 2, 3, 3, 4, 4};
-		assertEquals(0, formula.getMajority(allTargets));
+		assertEquals(3, formula.getMajority(allTargets));
 		
 		allTargets = new int[] {2, 2, 4, 4, 4, 4};
 		assertEquals(4, formula.getMajority(allTargets));
 		
 		allTargets = new int[] {1, 1, 2, 2};
-		assertEquals(0, formula.getMajority(allTargets));
+		assertEquals(1, formula.getMajority(allTargets));
 		
 		allTargets = new int[] {1};
 		assertEquals(1, formula.getMajority(allTargets));
