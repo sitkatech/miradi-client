@@ -1,11 +1,6 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
-
-import javax.swing.JTabbedPane;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
@@ -24,34 +19,20 @@ import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class StrategicPlanView extends UmbrellaView
+public class StrategicPlanView extends TabbedView
 {
 	public StrategicPlanView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		setToolBar(new StrategicPlanToolBar(mainWindowToUse.getActions()));
 		
-		tabs = new JTabbedPane();
-		add(tabs, BorderLayout.CENTER);
-		tabs.addChangeListener(new TabChangeListener());
-
 		addStrategicPlanDoersToMap();
 
 	}
 	
-	class TabChangeListener implements ChangeListener
-	{
-		public void stateChanged(ChangeEvent e)
-		{
-			currentTab = tabs.getSelectedIndex();
-			closeActivePropertiesDialog();
-		}
-		
-	}
-
 	public String cardName() 
 	{
 		return getViewName();
@@ -62,33 +43,29 @@ public class StrategicPlanView extends UmbrellaView
 		return "Strategic Plan";
 	}
 
-	public void becomeActive() throws Exception
+	public void createTabs() throws Exception
 	{
-		int mostRecentTabIndex = currentTab;
-		
-		tabs.removeAll();
-
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		objectivePanel = new ObjectiveManagementPanel(this);
 		resourcePanel = new ResourceManagementPanel(this);
 		goalPanel = new GoalManagementPanel(this);
 
-		tabs.add(EAM.text("Strategic Plan"), strategicPlanPanel);
-		tabs.add(EAM.text("Objectives"), objectivePanel);
-		tabs.add(EAM.text("Goals"), goalPanel);
-		tabs.add(EAM.text("Resources"), resourcePanel);
-		
-		tabs.setSelectedIndex(mostRecentTabIndex);
-	}
-
-	public void becomeInactive() throws Exception
-	{
-		if(strategicPlanPanel != null)
-		{
-			strategicPlanPanel.close();
-		}
+		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
+		addTab(EAM.text("Objectives"), objectivePanel);
+		addTab(EAM.text("Goals"), goalPanel);
+		addTab(EAM.text("Resources"), resourcePanel);
 	}
 	
+	public void deleteTabs()
+	{
+		if(strategicPlanPanel != null)
+			strategicPlanPanel.close();
+		strategicPlanPanel = null;
+		objectivePanel = null;
+		resourcePanel = null;
+		goalPanel = null;
+	}
+
 	public StrategicPlanPanel getStrategicPlanPanel()
 	{
 		return strategicPlanPanel;
@@ -111,7 +88,7 @@ public class StrategicPlanView extends UmbrellaView
 	
 	public void selectObject(EAMObject objectToSelect)
 	{
-		Component tab = tabs.getSelectedComponent();
+		Component tab = getCurrentTabContents();
 		if(tab.equals(getStrategicPlanPanel()))
 		{
 			getStrategicPlanPanel().selectObject(objectToSelect);
@@ -157,9 +134,6 @@ public class StrategicPlanView extends UmbrellaView
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 	}
-	
-	JTabbedPane tabs;
-	int currentTab;
 	
 	StrategicPlanPanel strategicPlanPanel;
 	ResourceManagementPanel resourcePanel;

@@ -41,7 +41,7 @@ abstract public class TabbedView extends UmbrellaView
 		try
 		{
 			createTabs();
-			
+			EAM.logVerbose("Selecting tab " + previousCurrentTab);
 			tabs.setSelectedIndex(previousCurrentTab);
 		}
 		finally
@@ -52,7 +52,8 @@ abstract public class TabbedView extends UmbrellaView
 
 	public void becomeInactive() throws Exception
 	{
-		previousCurrentTab = currentTab;
+		if(currentTab >= 0)
+			previousCurrentTab = currentTab;
 
 		ignoreTabChanges = true;
 		try
@@ -74,6 +75,11 @@ abstract public class TabbedView extends UmbrellaView
 	public void setTab(int newTab)
 	{
 		tabs.setSelectedIndex(newTab);
+	}
+	
+	public Component getCurrentTabContents()
+	{
+		return tabs.getSelectedComponent();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -130,6 +136,8 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		public void stateChanged(ChangeEvent event)
 		{
+			closeActivePropertiesDialog();
+
 			int newTab = tabs.getSelectedIndex();
 			if(!ignoreTabChanges)
 				recordTabChangeCommand(newTab);
