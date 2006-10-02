@@ -35,6 +35,7 @@ public class EAM
 		catch(Exception e)
 		{
 			logException(e);
+			errorDialog(e.getMessage());
 		}
 	}
 	
