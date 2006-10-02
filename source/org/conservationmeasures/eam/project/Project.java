@@ -540,11 +540,17 @@ public class Project
 	
 	public boolean canUndo()
 	{
+		if(!isOpen())
+			return false;
+		
 		return undoRedoState.canUndo();
 	}
 	
 	public boolean canRedo()
 	{
+		if(!isOpen())
+			return false;
+		
 		return undoRedoState.canRedo();
 	}
 	
