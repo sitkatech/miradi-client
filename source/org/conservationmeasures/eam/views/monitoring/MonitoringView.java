@@ -45,7 +45,7 @@ public class MonitoringView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Monitoring ";
+		return "Monitoring Plan";
 	}
 
 	public void becomeActive() throws Exception

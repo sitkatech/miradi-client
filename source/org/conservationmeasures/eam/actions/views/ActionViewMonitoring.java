@@ -18,12 +18,12 @@ public class ActionViewMonitoring extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Monitoring") + DEMO_INDICATOR;
+		return EAM.text("Action|Monitoring Plan");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Monitoring View");
+		return EAM.text("TT|Switch to the Monitoring Plan View");
 	}
 	
 	public String toString()
