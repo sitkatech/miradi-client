@@ -78,15 +78,11 @@ public class ProjectInfo
 		currentView = copyFrom.optString(TAG_CURRENT_VIEW, getDefaultCurrentView());
 		nodeIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_NODE_ID, IdAssigner.INVALID_ID));
 		annotationIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_ANNOTATION_ID, IdAssigner.INVALID_ID));
-		JSONObject rawProjectData = copyFrom.optJSONObject(TAG_PROJECT_DATA);
-		if(rawProjectData == null)
-			rawProjectData = new JSONObject();
 	}
 	
 	static String TAG_CURRENT_VIEW = "CurrentView";
 	static String TAG_HIGHEST_NODE_ID = "HighestUsedNodeId";
 	static String TAG_HIGHEST_ANNOTATION_ID = "HighestUsedAnnotationId";
-	static String TAG_PROJECT_DATA = "ProjectData";
 	
 	IdAssigner nodeIdAssigner;
 	IdAssigner annotationIdAssigner;
