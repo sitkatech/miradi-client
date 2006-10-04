@@ -6,13 +6,14 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objects.Desire;
 
-public class DesirePool extends EAMObjectPool
+abstract public class DesirePool extends EAMNormalObjectPool
 {
-	public DesirePool(int objectTypeToStore)
+	public DesirePool(IdAssigner idAssignerToUse, int objectTypeToStore)
 	{
-		super(objectTypeToStore);
+		super(idAssignerToUse, objectTypeToStore);
 	}
 
 	public void put(Desire desire)

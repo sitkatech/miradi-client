@@ -6,14 +6,17 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 
-public class IndicatorPool extends EAMObjectPool
+public class IndicatorPool extends EAMNormalObjectPool
 {
-	public IndicatorPool()
+	public IndicatorPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.INDICATOR);
+		super(idAssignerToUse, ObjectType.INDICATOR);
 	}
 	
 	public void put(Indicator indicator)
@@ -24,6 +27,11 @@ public class IndicatorPool extends EAMObjectPool
 	public Indicator find(BaseId id)
 	{
 		return (Indicator)getRawObject(id);
+	}
+
+	EAMObject createRawObject(BaseId actualId)
+	{
+		return new Indicator(new IndicatorId(actualId.asInt()));
 	}
 
 

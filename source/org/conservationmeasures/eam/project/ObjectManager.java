@@ -13,12 +13,12 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
@@ -47,17 +47,18 @@ public class ObjectManager
 	{
 		project = projectToUse;
 		
+		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
 		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new ThreatRatingCriterionPool());
 		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new ThreatRatingValueOptionPool());
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
 		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
-		pools.put(new Integer(ObjectType.TASK), new TaskPool());
-		pools.put(new Integer(ObjectType.VIEW_DATA), new ViewPool());
-		pools.put(new Integer(ObjectType.PROJECT_RESOURCE), new ResourcePool());
-		pools.put(new Integer(ObjectType.INDICATOR), new IndicatorPool());
-		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool());
-		pools.put(new Integer(ObjectType.GOAL), new GoalPool());
+		pools.put(new Integer(ObjectType.TASK), new TaskPool(ida));
+		pools.put(new Integer(ObjectType.VIEW_DATA), new ViewPool(ida));
+		pools.put(new Integer(ObjectType.PROJECT_RESOURCE), new ResourcePool(ida));
+		pools.put(new Integer(ObjectType.INDICATOR), new IndicatorPool(ida));
+		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool(ida));
+		pools.put(new Integer(ObjectType.GOAL), new GoalPool(ida));
 
 		linkageListener = new LinkageMonitor();
 	}
@@ -134,17 +135,6 @@ public class ObjectManager
 				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 			}
-			case ObjectType.TASK:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				Task task = new Task(objectId);
-				getTaskPool().put(task);
-				getDatabase().writeObject(task);
-				createdId = task.getId();
-				break;
-			}
-			
 			case ObjectType.MODEL_NODE:
 			{
 				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
@@ -155,18 +145,6 @@ public class ObjectManager
 				createdId = node.getId();
 				break;
 			}
-			
-			case ObjectType.VIEW_DATA:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				ViewData viewData = new ViewData(objectId);
-				getViewPool().put(viewData);
-				getDatabase().writeObject(viewData);
-				createdId = viewData.getId();
-				break;
-			}
-			
 			case ObjectType.MODEL_LINKAGE:
 			{
 				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
@@ -177,53 +155,15 @@ public class ObjectManager
 				createdId = cmLinkage.getId();
 				break;
 			}
-			
-			case ObjectType.PROJECT_RESOURCE:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				ProjectResource resource = new ProjectResource(objectId);
-				getResourcePool().put(resource);
-				getDatabase().writeObject(resource);
-				createdId = resource.getId();
-				break;
-			}
-				
-			case ObjectType.INDICATOR:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				Indicator indicator = new Indicator(new IndicatorId(objectId.asInt()));
-				getIndicatorPool().put(indicator);
-				getDatabase().writeObject(indicator);
-				createdId = indicator.getId();
-				break;
-			}
-				
-			case ObjectType.OBJECTIVE:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				Objective objective = new Objective(objectId);
-				getObjectivePool().put(objective);
-				getDatabase().writeObject(objective);
-				createdId = objective.getId();
-				break;
-			}
-				
-			case ObjectType.GOAL:
-			{
-				if(objectId.isInvalid())
-					objectId = getAnnotationIdAssigner().takeNextId();
-				Goal goal = new Goal(objectId);
-				getGoalPool().put(goal);
-				getDatabase().writeObject(goal);
-				createdId = goal.getId();
-				break;
-			}
-				
 			default:
-				throw new RuntimeException("Attempted to create unknown object type: " + objectType);
+			{
+				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
+				EAMObject created = pool.createObject(objectId);
+				getDatabase().writeObject(created);
+				createdId = created.getId();
+				break;
+			}
+			
 		}
 		
 		return createdId;
@@ -245,18 +185,8 @@ public class ObjectManager
 				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
 				break;
 				
-			case ObjectType.TASK:
-				getTaskPool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
 			case ObjectType.MODEL_NODE:
 				getNodePool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-			case ObjectType.VIEW_DATA:
-				getViewPool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
 				
@@ -269,28 +199,11 @@ public class ObjectManager
 				linkageListener.linkageWasDeleted(fromId, toId);
 				break;
 				
-			case ObjectType.PROJECT_RESOURCE:
-				getResourcePool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-			case ObjectType.INDICATOR:
-				getIndicatorPool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-			case ObjectType.OBJECTIVE:
-				getObjectivePool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-			case ObjectType.GOAL:
-				getGoalPool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
 			default:
-				throw new RuntimeException("Attempted to delete unknown object type: " + objectType);
+				getPool(objectType).remove(objectId);
+				getDatabase().deleteObject(objectType, objectId);
+				break;
+				
 		}
 	}
 	
@@ -308,23 +221,11 @@ public class ObjectManager
 				getDatabase().writeObject(getThreatRatingFramework().getValueOption(objectId));
 				break;
 			
-			case ObjectType.TASK:
-				Task task = getTaskPool().find(objectId);
-				task.setData(fieldTag, dataValue);
-				getDatabase().writeObject(task);
-				break;
-				
 			case ObjectType.MODEL_NODE:
 				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
 				ConceptualModelNode node = getNodePool().find(nodeId);
 				node.setData(fieldTag, dataValue);
 				getDatabase().writeObject(node);
-				break;
-				
-			case ObjectType.VIEW_DATA:
-				ViewData viewData = getViewPool().find(objectId);
-				viewData.setData(fieldTag, dataValue);
-				getDatabase().writeObject(viewData);
 				break;
 				
 			case ObjectType.MODEL_LINKAGE:
@@ -333,33 +234,11 @@ public class ObjectManager
 				getDatabase().writeObject(linkage);
 				break;
 				
-			case ObjectType.PROJECT_RESOURCE:
-				ProjectResource resource = getResourcePool().find(objectId);
-				resource.setData(fieldTag, dataValue);
-				getDatabase().writeObject(resource);
-				break;
-				
-			case ObjectType.INDICATOR:
-				Indicator indicator = getIndicatorPool().find(objectId);
-				indicator.setData(fieldTag, dataValue);
-				getDatabase().writeObject(indicator);
-				break;
-				
-			case ObjectType.OBJECTIVE:
-				Objective objective = getObjectivePool().find(objectId);
-				objective.setData(fieldTag, dataValue);
-				getDatabase().writeObject(objective);
-				break;
-				
-			case ObjectType.GOAL:
-				Goal goal = getGoalPool().find(objectId);
-				goal.setData(fieldTag, dataValue);
-				getDatabase().writeObject(goal);
-				break;
-				
-				
 			default:
-				throw new RuntimeException("Attempted to set data for unknown object type: " + objectType);
+				EAMObject object = getPool(objectType).findObject(objectId);
+				object.setData(fieldTag, dataValue);
+				getDatabase().writeObject(object);
+				break;
 		}
 	}
 	
@@ -373,33 +252,16 @@ public class ObjectManager
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
 				return getThreatRatingFramework().getValueOptionData(objectId, fieldTag);
 				
-			case ObjectType.TASK:
-				return getTaskPool().find(objectId).getData(fieldTag);
-				
 			case ObjectType.MODEL_NODE:
 				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
 				return getNodePool().find(nodeId).getData(fieldTag);
 				
-			case ObjectType.VIEW_DATA:
-				return getViewPool().find(objectId).getData(fieldTag);
-				
 			case ObjectType.MODEL_LINKAGE:
 				return getLinkagePool().find(objectId).getData(fieldTag);
 				
-			case ObjectType.PROJECT_RESOURCE:
-				return getResourcePool().find(objectId).getData(fieldTag);
-				
-			case ObjectType.INDICATOR:
-				return getIndicatorPool().find(objectId).getData(fieldTag);
-				
-			case ObjectType.OBJECTIVE:
-				return getObjectivePool().find(objectId).getData(fieldTag);
-				
-			case ObjectType.GOAL:
-				return getGoalPool().find(objectId).getData(fieldTag);
-				
 			default:
-				throw new RuntimeException("Attempted to get data for unknown object type: " + objectType);
+				return getPool(objectType).findObject(objectId).getData(fieldTag);
+				
 		}
 	}
 	

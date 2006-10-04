@@ -6,14 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TaskPool extends EAMObjectPool
+public class TaskPool extends EAMNormalObjectPool
 {
-	public TaskPool()
+	public TaskPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.TASK);
+		super(idAssignerToUse, ObjectType.TASK);
 	}
 	
 	public void put(Task task)
@@ -24,6 +26,11 @@ public class TaskPool extends EAMObjectPool
 	public Task find(BaseId id)
 	{
 		return (Task)getRawObject(id);
+	}
+
+	EAMObject createRawObject(BaseId actualId)
+	{
+		return new Task(actualId);
 	}
 
 

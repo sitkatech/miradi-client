@@ -6,14 +6,16 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ViewData;
 
-public class ViewPool extends EAMObjectPool
+public class ViewPool extends EAMNormalObjectPool
 {
-	public ViewPool()
+	public ViewPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.VIEW_DATA);
+		super(idAssignerToUse, ObjectType.VIEW_DATA);
 	}
 	
 	public void put(ViewData viewData)
@@ -36,5 +38,10 @@ public class ViewPool extends EAMObjectPool
 				return viewData;
 		}
 		return null;
+	}
+
+	EAMObject createRawObject(BaseId actualId)
+	{
+		return new ViewData(actualId);
 	}
 }
