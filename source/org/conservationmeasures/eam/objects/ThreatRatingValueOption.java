@@ -13,9 +13,10 @@ import org.json.JSONObject;
 
 public class ThreatRatingValueOption extends EAMBaseObject
 {
-	public ThreatRatingValueOption(BaseId idToUse) throws Exception
+	public ThreatRatingValueOption(BaseId idToUse)
 	{
-		this(idToUse, "Unknown", 0, Color.BLACK);
+		super(idToUse);
+		color = Color.BLACK;
 	}
 	
 	public ThreatRatingValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
@@ -58,12 +59,12 @@ public class ThreatRatingValueOption extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public void setData(String fieldTag, String dataValue) throws Exception
+	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(TAG_NUMERIC.equals(fieldTag))
-			numeric = Integer.parseInt(dataValue);
+			numeric = Integer.parseInt((String)dataValue);
 		else if(TAG_COLOR.equals(fieldTag))
-			color = new Color(Integer.parseInt(dataValue));
+			color = new Color(Integer.parseInt((String)dataValue));
 		else
 			super.setData(fieldTag, dataValue);
 	}

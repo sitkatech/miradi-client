@@ -233,7 +233,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("didn't add?", oldCount+1, framework.getValueOptions().length);
 		ThreatRatingValueOption option = framework.getValueOption(cmd.getCreatedId());
-		assertEquals("wrong default label?", "Unknown", option.getLabel());
+		assertEquals("wrong default label?", "", option.getLabel());
 		assertEquals("wrong default numeric?", 0, option.getNumericValue());
 		assertEquals("wrong default color?", Color.BLACK, option.getColor());
 		

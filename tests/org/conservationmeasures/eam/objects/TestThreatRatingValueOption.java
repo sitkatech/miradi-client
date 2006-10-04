@@ -22,7 +22,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		BaseId id = new BaseId(42);
 		ThreatRatingValueOption empty = new ThreatRatingValueOption(id);
 		assertEquals("didn't set id?", id, empty.getId());
-		assertEquals("wrong default label?", "Unknown", empty.getLabel());
+		assertEquals("wrong default label?", "", empty.getLabel());
 		assertEquals("wrong default numeric?", 0, empty.getNumericValue());
 		assertEquals("wrong default color?", Color.BLACK, empty.getColor());
 		
