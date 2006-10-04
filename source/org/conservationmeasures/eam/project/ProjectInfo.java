@@ -26,7 +26,6 @@ public class ProjectInfo
 		nodeIdAssigner = new IdAssigner(); 
 		annotationIdAssigner = new IdAssigner();
 		currentView = getDefaultCurrentView();
-		projectData = new JSONObject();
 		rootTaskId = BaseId.INVALID;
 	}
 
@@ -75,11 +74,6 @@ public class ProjectInfo
 		rootTaskId = newRootTaskId;
 	}
 	
-	public JSONObject getProjectData()
-	{
-		return projectData;
-	}
-	
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
@@ -87,7 +81,6 @@ public class ProjectInfo
 		json.put(TAG_HIGHEST_NODE_ID, nodeIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_ANNOTATION_ID, annotationIdAssigner.getHighestAssignedId());
 		json.put(TAG_ROOT_TASK_ID, rootTaskId.asInt());
-		json.put(TAG_PROJECT_DATA, projectData);
 		return json;
 	}
 	
@@ -101,7 +94,6 @@ public class ProjectInfo
 		JSONObject rawProjectData = copyFrom.optJSONObject(TAG_PROJECT_DATA);
 		if(rawProjectData == null)
 			rawProjectData = new JSONObject();
-		projectData = new JSONObject(rawProjectData.toString());
 	}
 	
 	static String TAG_CURRENT_VIEW = "CurrentView";
@@ -114,6 +106,5 @@ public class ProjectInfo
 	IdAssigner annotationIdAssigner;
 	String currentView;
 	BaseId rootTaskId;
-	JSONObject projectData;
 
 }

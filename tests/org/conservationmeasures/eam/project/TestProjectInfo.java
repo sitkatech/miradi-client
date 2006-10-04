@@ -25,12 +25,10 @@ public class TestProjectInfo extends TestCaseEnhanced
 		info.obtainRealLinkageId(new BaseId(55));
 		info.getAnnotationIdAssigner().takeNextId();
 		info.setRootTaskId(new BaseId(99));
-		info.getProjectData().put(testKey, "sample data");
 		
 		ProjectInfo loaded = new ProjectInfo();
 		loaded.fillFrom(info.toJson());
 		verifyLoadedData(loaded, info);
-		assertEquals("Didn't keep project data?", info.getProjectData().getString(testKey), loaded.getProjectData().getString(testKey));
 	}
 
 	private void verifyLoadedData(ProjectInfo loaded, ProjectInfo info)
