@@ -46,7 +46,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -102,28 +101,6 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't return same data?", diagramData.getId(), repeat.getId());
 		
 		assertNotNull("didn't create arbitrary data?", project.getViewData("iweflijjfliej"));
-	}
-	
-	public void testRootTask() throws Exception
-	{
-		File tempDirectory = createTempDirectory();
-		try
-		{
-			Project tempProject = new Project();
-			tempProject.createOrOpen(tempDirectory);
-			Task rootTask = tempProject.getRootTask();
-			assertNotEquals("Bad default root task id?", BaseId.INVALID, rootTask.getId());
-			tempProject.close();
-			
-			Project otherProject = new Project();
-			otherProject.createOrOpen(tempDirectory);
-			assertEquals("didn't save and reload root task?", rootTask.getId(), otherProject.getRootTask().getId());
-			otherProject.close();
-		}
-		finally
-		{
-			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		}
 	}
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception

@@ -70,6 +70,7 @@ import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
+import org.conservationmeasures.eam.views.strategicplan.TestDeleteActivity;
 import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.martus.util.xml.TestSimpleXmlParser;
@@ -169,6 +170,10 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestLayerManager.class));
 		
 		// view.interview package
+		
+		// view.strategicplan package
+		suite.addTest(new TestSuite(TestDeleteActivity.class));
+		
 		
 		// view.threatmatrix package
 		suite.addTest(new TestSuite(TestThreatMatrixModel.class));

@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -18,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 
 public class InsertActivity extends StratPlanDoer
 {
@@ -43,30 +46,35 @@ public class InsertActivity extends StratPlanDoer
 
 		try
 		{
-			getProject().executeCommand(new CommandBeginTransaction());
-			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
-			getProject().executeCommand(create);
-			BaseId createdId = create.getCreatedId();
-
-			Task rootTask = getProject().getRootTask();
-			CommandSetObjectData addSubtask = CommandSetObjectData.createInsertIdCommand(rootTask, Task.TAG_SUBTASK_IDS, createdId, rootTask.getSubtaskCount());
-			getProject().executeCommand(addSubtask);
-
-			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(intervention, 
-					ConceptualModelIntervention.TAG_ACTIVITY_IDS, createdId, childIndex);
-			getProject().executeCommand(addChild);
-			
-			getProject().executeCommand(new CommandEndTransaction());
-			
-			Task activity = getProject().getTaskPool().find(createdId);
+			Task activity = insertActivity(getProject(), intervention, childIndex);
 			getView().modifyObject(activity);
 			getView().selectObject(activity);
-
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+	}
+
+	public static Task insertActivity(Project project, ConceptualModelNode intervention, int childIndex) throws CommandFailedException, ParseException, Exception
+	{
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+			project.executeCommand(create);
+			BaseId createdId = create.getCreatedId();
+	
+			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(intervention, 
+					ConceptualModelIntervention.TAG_ACTIVITY_IDS, createdId, childIndex);
+			project.executeCommand(addChild);
+			return project.getTaskPool().find(createdId);
+		}
+		finally
+		{
+			project.executeCommand(new CommandEndTransaction());
+		}
+		
 	}
 }

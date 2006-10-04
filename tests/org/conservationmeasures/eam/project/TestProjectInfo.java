@@ -24,7 +24,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 		info.obtainRealNodeId(new BaseId(27));
 		info.obtainRealLinkageId(new BaseId(55));
 		info.getAnnotationIdAssigner().takeNextId();
-		info.setRootTaskId(new BaseId(99));
 		
 		ProjectInfo loaded = new ProjectInfo();
 		loaded.fillFrom(info.toJson());
@@ -36,7 +35,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 		assertEquals("Didn't keep current view?", info.getCurrentView(), loaded.getCurrentView());
 		assertEquals("Didn't keep next id?", info.getNodeIdAssigner().getHighestAssignedId(), loaded.getNodeIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep next annotation id?", info.getAnnotationIdAssigner().getHighestAssignedId(), loaded.getAnnotationIdAssigner().getHighestAssignedId());
-		assertEquals("Didn't keep root task id?", info.getRootTaskId(), loaded.getRootTaskId());
 	}
 	
 	public void testEmptyJson() throws Exception
@@ -59,7 +57,6 @@ public class TestProjectInfo extends TestCaseEnhanced
 		assertEquals("Didn't clear currentView", InterviewView.getViewName(), info.getCurrentView());
 		assertEquals("didn't clear id?", new BaseId(0), info.getNodeIdAssigner().takeNextId());
 		assertEquals("didn't clear annotation id?", new BaseId(0), info.getAnnotationIdAssigner().takeNextId());
-		assertEquals("Didn't clear root task id?", BaseId.INVALID, info.getRootTaskId());
 	}
 
 	String testKey = "TestKey";

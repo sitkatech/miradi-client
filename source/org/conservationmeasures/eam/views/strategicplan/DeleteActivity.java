@@ -5,15 +5,19 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteActivity extends ViewDoer
@@ -42,34 +46,38 @@ public class DeleteActivity extends ViewDoer
 			return;
 		
 		Task activity = getStrategicPlanPanel().getSelectedTask();
-		getProject().executeCommand(new CommandBeginTransaction());
+		ConceptualModelIntervention intervention = getStrategicPlanPanel().getParentIntervention(activity);
 		try
 		{
-			int type = activity.getType();
-			BaseId id = activity.getId();
-			
-			ConceptualModelIntervention intervention = getStrategicPlanPanel().getParentIntervention(activity);
-			CommandSetObjectData removeChild = CommandSetObjectData.createRemoveIdCommand(intervention, 
-					ConceptualModelIntervention.TAG_ACTIVITY_IDS, id);
-			getProject().executeCommand(removeChild);
-
-			Task rootTask = getProject().getRootTask();
-			CommandSetObjectData removeSubtask = CommandSetObjectData.createRemoveIdCommand(rootTask, Task.TAG_SUBTASK_IDS, id);
-			getProject().executeCommand(removeSubtask);
-	
-			getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, ""));
-			getProject().executeCommand(new CommandDeleteObject(type, id));
+			deleteActivity(getProject(), intervention, activity);
 		}
 		catch(Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	public static void deleteActivity(Project project, ConceptualModelIntervention intervention, Task activity) throws ParseException, CommandFailedException
+	{
+		int type = activity.getType();
+		BaseId id = activity.getId();
+		
+		project.executeCommand(new CommandBeginTransaction());
+		try
+		{
+			CommandSetObjectData removeChild = CommandSetObjectData.createRemoveIdCommand(intervention, 
+					ConceptualModelIntervention.TAG_ACTIVITY_IDS, id);
+			project.executeCommand(removeChild);
+	
+			project.executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, ""));
+			project.executeCommand(new CommandSetObjectData(type, id, Task.TAG_RESOURCE_IDS, new IdList().toString()));
+			project.executeCommand(new CommandDeleteObject(type, id));
+		}
 		finally
 		{
-			getProject().executeCommand(new CommandEndTransaction());
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
-	
 
 	StrategicPlanView view;
 }

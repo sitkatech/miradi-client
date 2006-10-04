@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
 public class Undo extends ProjectDoer
@@ -22,13 +23,18 @@ public class Undo extends ProjectDoer
 		if(!isAvailable())
 			return;
 		
+		undo(getProject());
+	}
+
+	public static void undo(Project project) throws CommandFailedException
+	{
 		try
 		{
-			Command undone = getProject().undo();
+			Command undone = project.undo();
 			if(undone.isEndTransaction())
 			{
 				while(!undone.isBeginTransaction())
-					undone = getProject().undo();
+					undone = project.undo();
 			}
 		}
 		catch (NothingToUndoException e)

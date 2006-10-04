@@ -51,7 +51,6 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -202,18 +201,6 @@ public class Project
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
-	}
-	
-	public Task getRootTask() throws Exception
-	{
-		BaseId rootTaskId = projectInfo.getRootTaskId();
-		if(rootTaskId.isInvalid())
-		{
-			rootTaskId = createObject(ObjectType.TASK);
-			projectInfo.setRootTaskId(rootTaskId);
-			getDatabase().writeProjectInfo(projectInfo);
-		}
-		return getTaskPool().find(rootTaskId);
 	}
 	
 	public EAMObject findObject(int objectType, BaseId objectId)
