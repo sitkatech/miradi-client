@@ -41,7 +41,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultGraphSelectionModel;
 import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
@@ -68,6 +67,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
+	}
+	
+	public EAMGraphSelectionModel getEAMGraphSelectionModel()
+	{
+		return (EAMGraphSelectionModel)getSelectionModel();
 	}
 	
 	public BufferedImage getImage()
@@ -308,16 +312,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 //		return first;
 //	}
 	
-	class EAMGraphSelectionModel extends DefaultGraphSelectionModel
-	{
-		public EAMGraphSelectionModel(JGraph graphToUse)
-		{
-			super(graphToUse);
-		}
-
-	}
-
-
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 	NodePropertiesDialog nodePropertiesDlg;

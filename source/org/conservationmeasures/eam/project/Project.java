@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
@@ -56,7 +57,6 @@ import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
-import org.jgraph.graph.GraphSelectionModel;
 import org.jgraph.graph.ParentMap;
 
 
@@ -646,7 +646,7 @@ public class Project
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}
 	
-	public void setSelectionModel(GraphSelectionModel selectionModelToUse)
+	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
 	{
 		selectionModel = selectionModelToUse;
 	}
@@ -814,7 +814,7 @@ public class Project
 	Vector viewChangeListeners;
 	
 	LayerManager layerManager;
-	GraphSelectionModel selectionModel;
+	EAMGraphSelectionModel selectionModel;
 	GraphLayoutCache graphLayoutCache;
 }
 

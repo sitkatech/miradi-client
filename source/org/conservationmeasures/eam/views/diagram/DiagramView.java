@@ -73,7 +73,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		super(mainWindowToUse);
 		mode = ViewData.MODE_DEFAULT;
 		diagram = new DiagramComponent(getMainWindow());
-		getProject().setSelectionModel(diagram.getSelectionModel());
+		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		
 		addDiagramViewDoersToMap();
 		
