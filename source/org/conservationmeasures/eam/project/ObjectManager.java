@@ -34,12 +34,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ViewData;
 
 public class ObjectManager
 {
@@ -49,8 +43,8 @@ public class ObjectManager
 		
 		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
-		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new ThreatRatingCriterionPool());
-		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new ThreatRatingValueOptionPool());
+		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new ThreatRatingCriterionPool(ida));
+		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new ThreatRatingValueOptionPool(ida));
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
 		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
 		pools.put(new Integer(ObjectType.TASK), new TaskPool(ida));
@@ -118,23 +112,6 @@ public class ObjectManager
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
 		{
-			case ObjectType.THREAT_RATING_CRITERION:
-			{
-				createdId = getThreatRatingFramework().createCriterion(objectId);
-				EAMObject newObject = getThreatRatingFramework().getCriterion(createdId);
-				getDatabase().writeObject(newObject);
-				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
-				break;
-			}
-				
-			case ObjectType.THREAT_RATING_VALUE_OPTION:
-			{
-				createdId = getThreatRatingFramework().createValueOption(objectId);
-				EAMObject newObject = getThreatRatingFramework().getValueOption(createdId);
-				getDatabase().writeObject(newObject);
-				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
-				break;
-			}
 			case ObjectType.MODEL_NODE:
 			{
 				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
@@ -173,18 +150,6 @@ public class ObjectManager
 	{
 		switch(objectType)
 		{
-			case ObjectType.THREAT_RATING_CRITERION:
-				getThreatRatingFramework().deleteCriterion(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
-				break;
-				
-			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				getThreatRatingFramework().deleteValueOption(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				getDatabase().writeThreatRatingFramework(getThreatRatingFramework());
-				break;
-				
 			case ObjectType.MODEL_NODE:
 				getNodePool().remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
@@ -200,6 +165,8 @@ public class ObjectManager
 				break;
 				
 			default:
+				if(getPool(objectType).findObject(objectId) == null)
+					throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
 				getPool(objectType).remove(objectId);
 				getDatabase().deleteObject(objectType, objectId);
 				break;
@@ -211,16 +178,6 @@ public class ObjectManager
 	{
 		switch(objectType)
 		{
-			case ObjectType.THREAT_RATING_CRITERION:
-				getThreatRatingFramework().setCriterionData(objectId, fieldTag, dataValue);
-				getDatabase().writeObject(getThreatRatingFramework().getCriterion(objectId));
-				break;
-				
-			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				getThreatRatingFramework().setValueOptionData(objectId, fieldTag, dataValue);
-				getDatabase().writeObject(getThreatRatingFramework().getValueOption(objectId));
-				break;
-			
 			case ObjectType.MODEL_NODE:
 				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
 				ConceptualModelNode node = getNodePool().find(nodeId);
@@ -246,12 +203,6 @@ public class ObjectManager
 	{
 		switch(objectType)
 		{
-			case ObjectType.THREAT_RATING_CRITERION:
-				return getThreatRatingFramework().getCriterionData(objectId, fieldTag);
-				
-			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				return getThreatRatingFramework().getValueOptionData(objectId, fieldTag);
-				
 			case ObjectType.MODEL_NODE:
 				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
 				return getNodePool().find(nodeId).getData(fieldTag);
@@ -269,12 +220,15 @@ public class ObjectManager
 	{
 		loadNodePool();
 		loadLinkagePool();
-		loadTaskPool();
-		loadViewPool();
-		loadResourcePool();
-		loadIndicatorPool();
-		loadObjectivePool();
-		loadGoalPool();
+
+		loadPool(ObjectType.TASK);
+		loadPool(ObjectType.VIEW_DATA);
+		loadPool(ObjectType.PROJECT_RESOURCE);
+		loadPool(ObjectType.INDICATOR);
+		loadPool(ObjectType.OBJECTIVE);
+		loadPool(ObjectType.GOAL);
+		loadPool(ObjectType.THREAT_RATING_CRITERION);
+		loadPool(ObjectType.THREAT_RATING_VALUE_OPTION);
 	}
 	
 	private void loadNodePool() throws Exception
@@ -299,69 +253,14 @@ public class ObjectManager
 		}
 	}
 	
-	private void loadTaskPool() throws Exception
+	private void loadPool(int type) throws IOException, ParseException, Exception
 	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.TASK);
+		ObjectManifest manifest = getDatabase().readObjectManifest(type);
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			Task task = (Task)getDatabase().readObject(ObjectType.TASK, ids[i]);
-			getTaskPool().put(task);
-		}
-	}
-	
-	private void loadViewPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.VIEW_DATA);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			ViewData viewData = (ViewData)getDatabase().readObject(ObjectType.VIEW_DATA, ids[i]);
-			getViewPool().put(viewData);
-		}
-	}
-	
-	private void loadResourcePool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.PROJECT_RESOURCE);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			ProjectResource resource = (ProjectResource)getDatabase().readObject(ObjectType.PROJECT_RESOURCE, ids[i]);
-			getResourcePool().put(resource);
-		}
-	}
-	
-	private void loadIndicatorPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.INDICATOR);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Indicator indicator = (Indicator)getDatabase().readObject(ObjectType.INDICATOR, ids[i]);
-			getIndicatorPool().put(indicator);
-		}
-	}
-	
-	private void loadObjectivePool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.OBJECTIVE);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Objective objective = (Objective)getDatabase().readObject(ObjectType.OBJECTIVE, ids[i]);
-			getObjectivePool().put(objective);
-		}
-	}
-	
-	private void loadGoalPool() throws Exception
-	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(ObjectType.GOAL);
-		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			Goal goal = (Goal)getDatabase().readObject(ObjectType.GOAL, ids[i]);
-			getGoalPool().put(goal);
+			EAMObject object = getDatabase().readObject(type, ids[i]);
+			getPool(type).put(ids[i], object);
 		}
 	}
 	

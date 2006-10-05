@@ -155,7 +155,6 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode lastCreated = createTarget();		
 		model.deleteNode(nodeToDelete);
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getDiagramNodeId());
-		project.getNodePool().put(cmTargetToUndo);
 		
 		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);

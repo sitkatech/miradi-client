@@ -152,24 +152,22 @@ public class ThreatRatingPanel extends Box
 	
 	private void updateDropdownsFromBundle()
 	{
+		BaseId defaultValueId = framework.getDefaultValueId();
 		Iterator iter = dropdowns.keySet().iterator();
 		while(iter.hasNext())
 		{
 			ThreatRatingCriterion criterion = (ThreatRatingCriterion)iter.next();
 			UiComboBoxWithSaneActionFiring dropdown = (UiComboBoxWithSaneActionFiring)dropdowns.get(criterion);
-			
-			if(bundle == null)
+
+			BaseId valueId = defaultValueId;
+			if(bundle != null)
 			{
-				dropdown.setSelectedItemWithoutFiring(dropdown.getItemAt(0));
+				valueId = bundle.getValueId(criterion.getId());
 			}
-			else
+			if(!valueId.isInvalid())
 			{
-				BaseId valueId = bundle.getValueId(criterion.getId());
-				if(!valueId.isInvalid())
-				{
-					ThreatRatingValueOption option = framework.getValueOption(valueId);
-					dropdown.setSelectedItemWithoutFiring(option);
-				}
+				ThreatRatingValueOption option = framework.getValueOption(valueId);
+				dropdown.setSelectedItemWithoutFiring(option);
 			}
 		}
 	}

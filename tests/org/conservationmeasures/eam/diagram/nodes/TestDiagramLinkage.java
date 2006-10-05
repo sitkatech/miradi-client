@@ -9,13 +9,14 @@ import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -30,14 +31,15 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		objectPool = project.getNodePool();
 		model = project.getDiagramModel();
+
+		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new NodeTypeIntervention());
+		BaseId interventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
+		cmIntervention = project.findNode(interventionId);
 		
-		cmIntervention = new ConceptualModelIntervention(node1Id);
-		objectPool.put(cmIntervention);
-		
-		cmTarget = new ConceptualModelTarget(node2Id);
-		objectPool.put(cmTarget);
+		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
+		BaseId targetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		cmTarget = project.findNode(targetId);
 	}
 	
 	public void tearDown() throws Exception
@@ -73,10 +75,12 @@ public class TestDiagramLinkage extends EAMTestCase
 	public void testLinkNodes() throws Exception
 	{
 		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		insertIntervention.execute(project);
-		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
+
+		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
 		insertFactor.execute(project);
+
+		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
 		ModelNodeId interventionId = intervention.getWrappedId();
 		ModelNodeId factorId = factor.getWrappedId();
@@ -90,12 +94,8 @@ public class TestDiagramLinkage extends EAMTestCase
 		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}
 	
-	static final BaseId node1Id = new BaseId(1);
-	static final BaseId node2Id = new BaseId(2);
-	
 	ProjectForTesting project;
-	NodePool objectPool;
 	DiagramModel model;
-	ConceptualModelIntervention cmIntervention;
-	ConceptualModelTarget cmTarget;
+	ConceptualModelNode cmIntervention;
+	ConceptualModelNode cmTarget;
 }

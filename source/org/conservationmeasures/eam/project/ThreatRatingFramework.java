@@ -7,19 +7,20 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
+import org.conservationmeasures.eam.objectpools.ThreatRatingValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
@@ -38,12 +39,6 @@ public class ThreatRatingFramework
 
 	public void clear()
 	{
-		criteria = new IdList();
-		criterionPool = new Vector();
-		
-		options = new IdList();
-		optionPool = new Vector();
-		
 		bundles = new HashMap();
 	}
 	
@@ -85,93 +80,65 @@ public class ThreatRatingFramework
 	{
 		return bundles.size();
 	}
+	
+	ThreatRatingValueOptionPool getOptionPool()
+	{
+		return (ThreatRatingValueOptionPool)getProject().getPool(ObjectType.THREAT_RATING_VALUE_OPTION);
+	}
 
 	public ThreatRatingValueOption[] getValueOptions()
 	{
-		int count = options.size();
-		ThreatRatingValueOption[] result = new ThreatRatingValueOption[count];
-		for(int i = 0; i < options.size(); ++i)
+		BaseId[] ids = getOptionPool().getIds();
+		ThreatRatingValueOption[] result = new ThreatRatingValueOption[ids.length];
+		for(int i = 0; i < ids.length; ++i)
 		{
-			result[i] = getValueOption(options.get(i));
+			result[i] = getValueOption(ids[i]);
 		}
+		Arrays.sort(result, new OptionSorter());
 		return result;
+	}
+	
+	class OptionSorter implements Comparator
+	{
+		public int compare(Object raw1, Object raw2)
+		{
+			ThreatRatingValueOption option1 = (ThreatRatingValueOption)raw1;
+			ThreatRatingValueOption option2 = (ThreatRatingValueOption)raw2;
+			Integer value1 = new Integer(option1.getNumericValue());
+			Integer value2 = new Integer(option2.getNumericValue());
+			return -(value1.compareTo(value2));
+		}
+	
 	}
 	
 	public ThreatRatingValueOption getValueOption(BaseId id)
 	{
-		return (ThreatRatingValueOption)optionPool.get(findValueOption(id));
-	}
-	
-	public BaseId createValueOption(BaseId candidateId) throws Exception
-	{
-		BaseId realId = getRealId(candidateId);
-		if(findValueOption(realId) >= 0)
-			throw new RuntimeException("Attempted to create value option with existing id");
-		ThreatRatingValueOption createdItem = new ThreatRatingValueOption(realId);
-		optionPool.add(createdItem);
-		options.add(realId);
-		return realId;		
-	}
-	
-	public void deleteValueOption(BaseId id)
-	{
-		int deleteAt = findValueOption(id);
-		optionPool.remove(deleteAt);
-		options.removeId(id);
-	}
-	
-	public void setValueOptionData(BaseId id, String fieldTag, String dataValue) throws Exception
-	{
-		getValueOption(id).setData(fieldTag, dataValue);
-	}
-	
-	public String getValueOptionData(BaseId id, String fieldTag)
-	{
-		return getValueOption(id).getData(fieldTag);
-	}
-	
-	private int findValueOption(BaseId id)
-	{
-		for(int i = 0; i < optionPool.size(); ++i)
-		{
-			ThreatRatingValueOption option = (ThreatRatingValueOption)optionPool.get(i);
-			if(option.getId().equals(id))
-				return i;
-		}
-		
-		return -1;
+		return (ThreatRatingValueOption)getOptionPool().findObject(id);
 	}
 	
 
-	
+	ThreatRatingCriterionPool getCriterionPool()
+	{
+		return (ThreatRatingCriterionPool)getProject().getPool(ObjectType.THREAT_RATING_CRITERION);
+	}
 	
 	public ThreatRatingCriterion[] getCriteria()
 	{
-		int count = criteria.size();
-		ThreatRatingCriterion[] result = new ThreatRatingCriterion[count];
-		for(int i = 0; i < criteria.size(); ++i)
+		BaseId[] ids = getCriterionPool().getIds();
+		ThreatRatingCriterion[] result = new ThreatRatingCriterion[ids.length];
+		for(int i = 0; i < ids.length; ++i)
 		{
-			result[i] = getCriterion(criteria.get(i));
+			result[i] = getCriterion(ids[i]);
 		}
 		return result;
 	}
 	
 	public ThreatRatingCriterion getCriterion(BaseId id)
 	{
-		return (ThreatRatingCriterion)criterionPool.get(findCriterion(id));
+		return (ThreatRatingCriterion)getCriterionPool().findObject(id);
 	}
 	
-	public BaseId createCriterion(BaseId candidateId)
-	{
-		BaseId realId = getRealId(candidateId);
-		if(findCriterion(realId) >= 0)
-			throw new RuntimeException("Attempted to create criterion with existing id");
-		ThreatRatingCriterion createdItem = new ThreatRatingCriterion(realId);
-		criterionPool.add(createdItem);
-		criteria.add(realId);
-		return realId;
-	}
-	
+
 	public ThreatRatingValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
@@ -303,10 +270,10 @@ public class ThreatRatingFramework
 
 	public ThreatRatingCriterion findCriterionByLabel(String label)
 	{
-		for(int i = 0; i < criteria.size(); ++i)
+		BaseId[] ids = getCriterionPool().getIds();
+		for(int i = 0; i < ids.length; ++i)
 		{
-			BaseId id = criteria.get(i);
-			ThreatRatingCriterion criterion = getCriterion(id);
+			ThreatRatingCriterion criterion = getCriterion(ids[i]);
 			if(criterion.getLabel().equals(label))
 				return criterion;
 		}
@@ -316,10 +283,10 @@ public class ThreatRatingFramework
 	
 	public ThreatRatingValueOption findValueOptionByNumericValue(int value)
 	{
-		for(int i = 0; i < options.size(); ++i)
+		BaseId[] ids = getOptionPool().getIds();
+		for(int i = 0; i < ids.length; ++i)
 		{
-			BaseId id = options.get(i);
-			ThreatRatingValueOption option = getValueOption(id);
+			ThreatRatingValueOption option = getValueOption(ids[i]);
 			if(option.getNumericValue() == value)
 				return option;
 		}
@@ -328,42 +295,6 @@ public class ThreatRatingFramework
 	}
 	
 
-	private BaseId getRealId(BaseId candidateId)
-	{
-		IdAssigner idAssigner = project.getAnnotationIdAssigner();
-		if(candidateId.isInvalid())
-			candidateId = idAssigner.takeNextId();
-		return candidateId;
-	}
-	
-	public void deleteCriterion(BaseId id)
-	{
-		int deleteAt = findCriterion(id);
-		criterionPool.remove(deleteAt);
-		criteria.removeId(id);
-	}
-	
-	public void setCriterionData(BaseId id, String fieldTag, Object dataValue) throws Exception
-	{
-		getCriterion(id).setData(fieldTag, dataValue);
-	}
-	
-	public String getCriterionData(BaseId id, String fieldTag)
-	{
-		return getCriterion(id).getData(fieldTag);
-	}
-	
-	private int findCriterion(BaseId id)
-	{
-		for(int i = 0; i < criterionPool.size(); ++i)
-		{
-			ThreatRatingCriterion criterion = (ThreatRatingCriterion)criterionPool.get(i);
-			if(criterion.getId().equals(id))
-				return i;
-		}
-		
-		return -1;
-	}
 	
 	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
 	{
@@ -380,7 +311,7 @@ public class ThreatRatingFramework
 
 	public BaseId getDefaultValueId()
 	{
-		return ((ThreatRatingValueOption)optionPool.get(0)).getId();
+		return findValueOptionByNumericValue(0).getId();
 	}
 	
 	public void saveFramework() throws IOException
@@ -409,8 +340,6 @@ public class ThreatRatingFramework
 	public JSONObject toJson()
 	{
 		JSONObject json = new JSONObject();
-		json.put(TAG_CRITERION_IDS, criteria.toJson());
-		json.put(TAG_VALUE_OPTION_IDS, options.toJson());
 		JSONArray bundleKeys = new JSONArray();
 		Iterator iter = bundles.keySet().iterator();
 		while(iter.hasNext())
@@ -433,14 +362,6 @@ public class ThreatRatingFramework
 		if(json == null)
 			return;
 
-		criteria = new IdList(json.getJSONObject(TAG_CRITERION_IDS));
-		for(int i = 0; i < criteria.size(); ++i)
-			criterionPool.add(db.readObject(ObjectType.THREAT_RATING_CRITERION, criteria.get(i)));
-
-		options = new IdList(json.getJSONObject(TAG_VALUE_OPTION_IDS));
-		for(int i = 0; i < options.size(); ++i)
-			optionPool.add(db.readObject(ObjectType.THREAT_RATING_VALUE_OPTION, options.get(i)));
-		
 		JSONArray bundleKeys = json.getJSONArray(TAG_BUNDLE_KEYS);
 		for(int i = 0; i < bundleKeys.length(); ++i)
 		{
@@ -458,17 +379,11 @@ public class ThreatRatingFramework
 		return db;
 	}
 	
-	public static final String TAG_CRITERION_IDS = "CriterionIds";
-	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
 	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
 	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
 	private Project project;
-	private IdList criteria;
-	private Vector criterionPool;
-	private IdList options;
-	private Vector optionPool;
 	
 	private HashMap bundles;
 }

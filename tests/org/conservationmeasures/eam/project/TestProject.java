@@ -471,25 +471,6 @@ public class TestProject extends EAMTestCase
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}
 	
-	public void testThreatRatingFrameworkGetsWritten() throws Exception
-	{
-		ProjectServerForTesting database = project.getTestDatabase();
-		database.callsToWriteThreatRatingFramework = 0;
-		
-		BaseId criterionId = project.createObject(ObjectType.THREAT_RATING_CRITERION);
-		assertEquals(1, database.callsToWriteThreatRatingFramework);
-			
-		BaseId valueOptionId = project.createObject(ObjectType.THREAT_RATING_VALUE_OPTION);
-		assertEquals(2, database.callsToWriteThreatRatingFramework);
-			
-		project.deleteObject(ObjectType.THREAT_RATING_CRITERION, criterionId);
-		assertEquals(3, database.callsToWriteThreatRatingFramework);
-			
-		project.deleteObject(ObjectType.THREAT_RATING_VALUE_OPTION, valueOptionId);
-		assertEquals(4, database.callsToWriteThreatRatingFramework);
-			
-	}
-	
 	public void testNodesGetWritten() throws Exception
 	{
 		ProjectServerForTesting database = project.getTestDatabase();

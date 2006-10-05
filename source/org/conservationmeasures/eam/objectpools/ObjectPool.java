@@ -29,6 +29,9 @@ public class ObjectPool
 
 	public void put(BaseId id, Object obj)
 	{
+		if(map.containsKey(id))
+			throw new RuntimeException("Id Already Exists");
+		
 		map.put(id, obj);
 	}
 	

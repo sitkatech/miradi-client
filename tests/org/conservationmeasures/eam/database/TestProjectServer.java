@@ -207,6 +207,7 @@ public class TestProjectServer extends EAMTestCase
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		ProjectServerForTesting db = project.getTestDatabase();
+		db.writeThreatRatingFramework(project.getThreatRatingFramework());
 		JSONObject got = db.readRawThreatRatingFramework();
 		assertEquals(got.toString(), project.getThreatRatingFramework().toJson().toString());
 		project.close();

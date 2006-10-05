@@ -157,17 +157,10 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong id?", createdId, cmd.getObjectId());
 		
 		project.executeCommand(cmd);
-		try
-		{
-			project.getThreatRatingFramework().getValueOption(createdId);
-			fail("Should have thrown getting deleted object");
-		}
-		catch (RuntimeException ignoreExpected)
-		{
-		}
+		assertNull("Got deleted object?", project.getThreatRatingFramework().getValueOption(createdId));
 		
 		cmd.undo(project);
-		project.getThreatRatingFramework().getValueOption(createdId);
+		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getValueOption(createdId));
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -182,17 +175,10 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong id?", createdId, cmd.getObjectId());
 		
 		project.executeCommand(cmd);
-		try
-		{
-			project.getThreatRatingFramework().getCriterion(createdId);
-			fail("Should have thrown getting deleted object");
-		}
-		catch (RuntimeException ignoreExpected)
-		{
-		}
+		assertNull("Got deleted object?", project.getThreatRatingFramework().getCriterion(createdId));
 		
 		cmd.undo(project);
-		project.getThreatRatingFramework().getCriterion(createdId);
+		assertNotNull("Didn't undelete?", project.getThreatRatingFramework().getCriterion(createdId));
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -211,8 +197,7 @@ public class TestCommands extends EAMTestCase
 		ThreatRatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
 		assertEquals("wrong default label?", EAMBaseObject.DEFAULT_LABEL, criterion.getLabel());
 		
-		ThreatRatingCriterion added = framework.getCriteria()[oldCount];
-		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
+		assertNotNull("didn't create?", framework.getCriterion(cmd.getCreatedId()));
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
@@ -237,8 +222,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("wrong default numeric?", 0, option.getNumericValue());
 		assertEquals("wrong default color?", Color.BLACK, option.getColor());
 		
-		ThreatRatingValueOption added = framework.getValueOptions()[oldCount];
-		assertEquals("didn't update created id?", added.getId(), cmd.getCreatedId());
+		assertNotNull("didn't create?", framework.getValueOption(cmd.getCreatedId()));
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", oldCount, framework.getValueOptions().length);

@@ -17,5 +17,6 @@ public class ObjectType
 	public static final int INDICATOR = 8;
 	public static final int OBJECTIVE = 9;
 	public static final int GOAL = 10;
+	public static final int PROJECT_METADATA = 11;
 }
 

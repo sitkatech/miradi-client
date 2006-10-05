@@ -5,13 +5,22 @@
  */
 package org.conservationmeasures.eam.objectpools;
 
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
 
-public class ThreatRatingValueOptionPool extends EAMObjectPool
+public class ThreatRatingValueOptionPool extends EAMNormalObjectPool
 {
-	public ThreatRatingValueOptionPool()
+	public ThreatRatingValueOptionPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.THREAT_RATING_VALUE_OPTION);
+		super(idAssignerToUse, ObjectType.THREAT_RATING_VALUE_OPTION);
+	}
+
+	EAMObject createRawObject(BaseId actualId)
+	{
+		return new ThreatRatingValueOption(actualId);
 	}
 
 }

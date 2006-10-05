@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTNCThreatFormula extends EAMTestCase
@@ -165,7 +166,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		
 	}
 	
-	public void testGetBundleValues()
+	public void testGetBundleValues() throws Exception
 	{		
 		BaseId scopeId = framework.findCriterionByLabel("Scope").getId();
 		BaseId severityId = framework.findCriterionByLabel("Severity").getId();
@@ -185,7 +186,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		
 		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
 		
-		framework.deleteCriterion(urgencyId);
+		project.deleteObject(ObjectType.THREAT_RATING_CRITERION, urgencyId);
 		assertEquals("bundle missing value not zero?", 0, formula.computeBundleValue(bundle));
 	}
 

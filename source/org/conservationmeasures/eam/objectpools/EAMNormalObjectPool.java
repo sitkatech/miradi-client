@@ -19,9 +19,7 @@ abstract public class EAMNormalObjectPool extends EAMObjectPool
 	
 	public EAMObject createObject(BaseId proposedId)
 	{
-		BaseId actualId = proposedId;
-		if(actualId.isInvalid())
-			actualId = idAssigner.takeNextId();
+		BaseId actualId = idAssigner.obtainRealId(proposedId);
 		EAMObject created = createRawObject(actualId);
 		put(actualId, created);
 		return created;

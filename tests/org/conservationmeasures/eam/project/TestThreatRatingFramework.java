@@ -7,11 +7,12 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -47,10 +48,6 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testJson()
 	{
 		JSONObject json = framework.toJson();
-		IdList criterionIds = new IdList(json.getJSONObject(ThreatRatingFramework.TAG_CRITERION_IDS));
-		assertEquals("didn't jsonize criteria?", framework.getCriteria().length, criterionIds.size());
-		IdList valueOptionIds = new IdList(json.getJSONObject(ThreatRatingFramework.TAG_VALUE_OPTION_IDS));
-		assertEquals("didn't jsonize value options?", framework.getValueOptions().length, valueOptionIds.size());
 		JSONArray bundleKeys = json.getJSONArray(ThreatRatingFramework.TAG_BUNDLE_KEYS);
 		assertEquals("didn't jsonize bundle keys?", framework.getBundleCount(), bundleKeys.length());
 	}
@@ -98,9 +95,9 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		ThreatRatingValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
-		assertEquals("wrong order or label?", "Very High", options[1].getLabel());
-		assertEquals("wrong numeric value? ", 3, options[2].getNumericValue());
-		assertEquals("bad color?", Color.YELLOW, options[3].getColor());
+		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
+		assertEquals("wrong numeric value? ", 3, options[1].getNumericValue());
+		assertEquals("bad color?", Color.YELLOW, options[2].getColor());
 	}
 	
 	public void testFindValueOptionByNumericValue()
@@ -108,14 +105,24 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ThreatRatingValueOption optionNone = framework.findValueOptionByNumericValue(0);
 		assertEquals(Color.WHITE, optionNone.getColor());
 	}
+
+	public void testDefaultValue() throws Exception
+	{
+		BaseId id = framework.getDefaultValueId();
+		ThreatRatingValueOption option = framework.getValueOption(id);
+		assertEquals("Didn't default to zero?", 0, option.getNumericValue());
+	}
 	
 	public void testThreatRatingCriteria() throws Exception
 	{
 		ThreatRatingCriterion[] criteria = framework.getCriteria();
 		assertEquals("wrong number of default criteria?", 3, criteria.length);
-		assertEquals("Scope", criteria[0].getLabel());
-		assertEquals("Severity", criteria[1].getLabel());
-		assertEquals("Irreversibility", criteria[2].getLabel());
+		List expectedLabels = Arrays.asList(new String[] {"Scope", "Severity", "Irreversibility", });
+		for(int i = 0; i < criteria.length; ++i)
+		{
+			String actual = criteria[i].getLabel();
+			assertContains("Missing a criterion?", actual, expectedLabels);
+		}
 	}
 	
 	public void testIdAssignment() throws Exception
