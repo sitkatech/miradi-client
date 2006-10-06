@@ -30,7 +30,7 @@ public class ObjectPool
 	public void put(BaseId id, Object obj)
 	{
 		if(map.containsKey(id))
-			throw new RuntimeException("Id Already Exists");
+			throw new RuntimeException("Id Already Exists: " + id.asInt() + " in " + getClass().getName());
 		
 		map.put(id, obj);
 	}
