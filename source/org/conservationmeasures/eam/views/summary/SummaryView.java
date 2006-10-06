@@ -19,6 +19,8 @@ public class SummaryView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new SummaryToolBar(mainWindowToUse.getActions()));
+		
+		lastKnownSplitLocation = -1;
 
 		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		add(bigSplitter, BorderLayout.CENTER);
@@ -41,21 +43,23 @@ public class SummaryView extends UmbrellaView
 		
 		JScrollPane bottomHalf = new JScrollPane(summaryPanel);
 		
-		int dividerAt = bigSplitter.getDividerLocation();
 		bigSplitter.setTopComponent(wizardPanel);
 		bigSplitter.setBottomComponent(bottomHalf);
-		if(dividerAt > 0)
-			bigSplitter.setDividerLocation(dividerAt);
+		bigSplitter.validate();
+		if(lastKnownSplitLocation > 0)
+			bigSplitter.setDividerLocation(lastKnownSplitLocation);
 		else
 			bigSplitter.setDividerLocation(.5);
 	}
 
 	public void becomeInactive() throws Exception
 	{
+		lastKnownSplitLocation = bigSplitter.getDividerLocation();
 		wizardPanel = null;
 		summaryPanel = null;
 	}
 
+	int lastKnownSplitLocation;
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
 	SummaryPanel summaryPanel;
