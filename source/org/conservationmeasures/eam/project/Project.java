@@ -217,11 +217,21 @@ public class Project
 	
 	public ProjectMetadata getMetadata()
 	{
-		return (ProjectMetadata)findObject(ObjectType.PROJECT_METADATA, projectInfo.getMetadataId());
+		return (ProjectMetadata)findObject(ObjectType.PROJECT_METADATA, getMetadataId());
+	}
+
+	private BaseId getMetadataId()
+	{
+		return projectInfo.getMetadataId();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
+	
+	public void setMetadata(String tag, String value) throws Exception
+	{
+		setObjectData(ObjectType.PROJECT_METADATA, getMetadataId(), tag, value);
+	}
 	
 	public BaseId obtainRealLinkageId(BaseId proposedId)
 	{
@@ -289,7 +299,7 @@ public class Project
 
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
-		if(projectInfo.getMetadataId().isInvalid())
+		if(getMetadataId().isInvalid())
 			createProjectMetadata();
 		
 		if(threatRatingFramework.getCriteria().length == 0)

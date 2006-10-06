@@ -5,62 +5,56 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
-import java.awt.BorderLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.HtmlBuilder;
-import org.martus.swing.HtmlViewer;
-import org.martus.swing.HyperlinkHandler;
+import org.martus.swing.UiLabel;
+import org.martus.swing.UiTextField;
 
-public class SummaryPanel extends JPanel implements HyperlinkHandler
+import com.jhlabs.awt.BasicGridLayout;
+
+public class SummaryPanel extends JPanel
 {
 	public SummaryPanel(Project projectToUse)
 	{
-		super(new BorderLayout());
+		super(new BasicGridLayout(0, 2));
 		project = projectToUse;
 
-		htmlViewer = new HtmlViewer(SummaryText.build(project), this);
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		add(scrollPane);
-	}
-
-	public void linkClicked(String linkDescription)
-	{
+		add(new UiLabel(EAM.text("Label|Filename:")));
+		add(new UiLabel(project.getFilename()));
+		add(new UiLabel(EAM.text("Label|Project Name:")));
+		projectName = new UiTextField(50);
+		projectName.setText(project.getMetadata().getProjectName());
+		projectName.addFocusListener(new FocusHandler());
+		add(projectName);
 	}
 	
-	public void valueChanged(String widget, String newValue)
+	class FocusHandler implements FocusListener
 	{
-	}
+		public void focusGained(FocusEvent arg0)
+		{
+		}
 
-	public void buttonPressed(String buttonName)
-	{
+		public void focusLost(FocusEvent arg0)
+		{
+			try
+			{
+				project.setMetadata(ProjectMetadata.TAG_PROJECT_NAME, projectName.getText());
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+				EAM.errorDialog(EAM.text("Text|Error prevented saving"));
+			}
+		}
+
 	}
 
 	Project project;
-	HtmlViewer htmlViewer;
-}
-
-class SummaryText extends HtmlBuilder
-{
-	public static String build(Project project)
-	{
-		return font("Arial", 
-						heading("Project Summary") +
-						table(
-							tableRow(
-									tableCell("Filename:") +
-									tableCell(project.getFilename())
-							) +
-							tableRow(
-									tableCell("Project Name:") +
-									tableCell(project.getMetadata().getProjectName())
-							)
-						) +
-						newline() +
-						"")
-		;
-	}
+	UiTextField projectName;
 }
