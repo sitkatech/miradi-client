@@ -42,15 +42,15 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		setModal(true);
 		setResizable(true);
 		
-		projectNameField = createTextArea();
+		projectFilenameField = createTextArea();
 		existingProjectList = createExistingProjectList();
 
 		UiParagraphPanel panel = new UiParagraphPanel();
 		panel.addOnNewLine(new UiLabel(EAM.getHomeDirectory().getAbsolutePath()));
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
-		uiScrollPane.setPreferredSize(new Dimension(projectNameField.getPreferredSize().width, 200));
+		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
 		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
-		panel.addComponents(new UiLabel(EAM.text("Project Name: ")), projectNameField);
+		panel.addComponents(new UiLabel(EAM.text("New Project Filename: ")), projectFilenameField);
 		panel.addOnNewLine(createButtonBar());
 		getContentPane().add(panel);
 
@@ -73,12 +73,12 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	
 	public File getSelectedFile()
 	{
-		return new File(EAM.getHomeDirectory(), projectNameField.getText());
+		return new File(EAM.getHomeDirectory(), projectFilenameField.getText());
 	}
 	
-	String getSelectedName()
+	String getSelectedFilename()
 	{
-		return projectNameField.getText();
+		return projectFilenameField.getText();
 	}
 	
 	private UiList createExistingProjectList()
@@ -147,7 +147,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 
 		public void enableOkButtonIfNotEmpty()
 		{
-			boolean isNotEmpty = (projectNameField.getText().length() > 0);
+			boolean isNotEmpty = (projectFilenameField.getText().length() > 0);
 			okButton.setEnabled(isNotEmpty);
 		}
 	}
@@ -182,9 +182,9 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	
 	public void ok()
 	{
-		if(!Project.isValidProjectName(getSelectedName()))
+		if(!Project.isValidProjectFilename(getSelectedFilename()))
 		{
-			String body = EAM.text("Project names cannot contain punctuation other than dots, dashes, and spaces");
+			String body = EAM.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than 32 characters. ");
 			EAM.errorDialog(body);
 			return;
 		}
@@ -209,12 +209,12 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	
 	public void valueChanged(ListSelectionEvent arg0)
 	{
-		projectNameField.setText((String)existingProjectList.getSelectedValue());
+		projectFilenameField.setText((String)existingProjectList.getSelectedValue());
 	}
 
 	boolean result;
 	UiList existingProjectList;
-	UiTextField projectNameField;
+	UiTextField projectFilenameField;
 	UiButton okButton;
 	UiButton cancelButton;
 }

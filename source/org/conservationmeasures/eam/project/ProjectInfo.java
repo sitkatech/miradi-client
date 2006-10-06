@@ -26,6 +26,17 @@ public class ProjectInfo
 		nodeIdAssigner = new IdAssigner(); 
 		annotationIdAssigner = new IdAssigner();
 		currentView = getDefaultCurrentView();
+		metadataId = BaseId.INVALID;
+	}
+	
+	public void setMetadataId(BaseId newMetadataId)
+	{
+		metadataId = newMetadataId;
+	}
+	
+	public BaseId getMetadataId()
+	{
+		return metadataId;
 	}
 
 	private String getDefaultCurrentView()
@@ -69,6 +80,7 @@ public class ProjectInfo
 		json.put(TAG_CURRENT_VIEW, currentView);
 		json.put(TAG_HIGHEST_NODE_ID, nodeIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_ANNOTATION_ID, annotationIdAssigner.getHighestAssignedId());
+		json.put(TAG_PROJECT_METADATA_ID, metadataId.asInt());
 		return json;
 	}
 	
@@ -78,14 +90,16 @@ public class ProjectInfo
 		currentView = copyFrom.optString(TAG_CURRENT_VIEW, getDefaultCurrentView());
 		nodeIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_NODE_ID, IdAssigner.INVALID_ID));
 		annotationIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_ANNOTATION_ID, IdAssigner.INVALID_ID));
+		metadataId = new BaseId(copyFrom.optInt(TAG_PROJECT_METADATA_ID, -1));
 	}
 	
 	static String TAG_CURRENT_VIEW = "CurrentView";
 	static String TAG_HIGHEST_NODE_ID = "HighestUsedNodeId";
 	static String TAG_HIGHEST_ANNOTATION_ID = "HighestUsedAnnotationId";
+	static String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
 	
 	IdAssigner nodeIdAssigner;
 	IdAssigner annotationIdAssigner;
 	String currentView;
-
+	BaseId metadataId;
 }

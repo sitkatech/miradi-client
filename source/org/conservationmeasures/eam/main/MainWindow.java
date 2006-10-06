@@ -333,7 +333,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	
 	private void updateTitle()
 	{
-		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getName());
+		setTitle(EAM.text("Title|CMP e-Adaptive Management") + " - " + project.getFilename());
 	}
 	
 	class WindowEventHandler extends WindowAdapter

@@ -69,7 +69,7 @@ class NoProjectHtmlText extends HtmlBuilder
 	public String existingProjectTable()
 	{
 		File[] projectDirectories = getProjectDirectories();
-		String rows = tableRow(tableHeader("ProjectName") + tableHeader("Last Modified") + tableHeader("File Location") + "</tr>");
+		String rows = tableRow(tableHeader("Project Filename") + tableHeader("Last Modified") + tableHeader("File Location") + "</tr>");
 		for(int i = 0; i < projectDirectories.length; ++i)
 		{
 			File projectFile = projectDirectories[i];

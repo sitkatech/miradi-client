@@ -51,6 +51,7 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -214,6 +215,11 @@ public class Project
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
+	public ProjectMetadata getMetadata()
+	{
+		return (ProjectMetadata)findObject(ObjectType.PROJECT_METADATA, projectInfo.getMetadataId());
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// objects
 	
@@ -283,8 +289,18 @@ public class Project
 
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
+		if(projectInfo.getMetadataId().isInvalid())
+			createProjectMetadata();
+		
 		if(threatRatingFramework.getCriteria().length == 0)
 			threatRatingFramework.createDefaultObjects();
+	}
+	
+	private void createProjectMetadata() throws Exception
+	{
+		BaseId createdId = createObject(ObjectType.PROJECT_METADATA);
+		projectInfo.setMetadataId(createdId);
+		getDatabase().writeProjectInfo(projectInfo);
 	}
 
 	private void openProject(File projectDirectory) throws Exception
@@ -341,7 +357,7 @@ public class Project
 		fireCommandExecuted(new CommandDoNothing());
 	}
 	
-	public String getName()
+	public String getFilename()
 	{
 		if(isOpen())
 			return getDatabase().getName();
@@ -370,7 +386,7 @@ public class Project
 		fireSwitchToView(getCurrentView());
 	}
 	
-	static public boolean isValidProjectName(String candidate)
+	static public boolean isValidProjectFilename(String candidate)
 	{
 		if(candidate.length() > 32)
 			return false;

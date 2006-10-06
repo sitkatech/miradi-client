@@ -51,8 +51,12 @@ class SummaryText extends HtmlBuilder
 						heading("Project Summary") +
 						table(
 							tableRow(
-								tableCell("Project Name:") +
-								tableCell(project.getName())
+									tableCell("Filename:") +
+									tableCell(project.getFilename())
+							) +
+							tableRow(
+									tableCell("Project Name:") +
+									tableCell(project.getMetadata().getProjectName())
 							)
 						) +
 						newline() +

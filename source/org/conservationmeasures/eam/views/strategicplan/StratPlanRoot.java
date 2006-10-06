@@ -37,7 +37,7 @@ public class StratPlanRoot extends StratPlanObject
 	
 	public String toString()
 	{
-		return project.getName();
+		return project.getFilename();
 	}
 
 	public int getType()
