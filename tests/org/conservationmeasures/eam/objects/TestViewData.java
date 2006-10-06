@@ -36,7 +36,7 @@ public class TestViewData extends EAMTestCase
 		vd.setData(modeTag, sampleMode);
 		assertEquals("Set/get didn't work?", sampleMode, vd.getData(modeTag));
 		
-		ViewData got = new ViewData(vd.toJson());
+		ViewData got = (ViewData)EAMBaseObject.createFromJson(vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve mode?", vd.getData(modeTag), got.getData(modeTag));
 	}
 	
@@ -49,7 +49,7 @@ public class TestViewData extends EAMTestCase
 		vd.setData(idsTag, sampleIds.toString());
 		assertEquals("Set/get didn't work?", sampleIds, new IdList(vd.getData(idsTag)));
 
-		ViewData got = new ViewData(vd.toJson());
+		ViewData got = (ViewData)EAMBaseObject.createFromJson(vd.getType(), vd.toJson());
 		assertEquals("json didn't preserve ids?", vd.getData(idsTag), got.getData(idsTag));
 	}
 

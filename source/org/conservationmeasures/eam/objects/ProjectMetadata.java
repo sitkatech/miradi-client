@@ -16,9 +16,9 @@ public class ProjectMetadata extends EAMBaseObject
 		super(idToUse);
 	}
 
-	public ProjectMetadata(JSONObject json)
+	public ProjectMetadata(int idAsInt, JSONObject json)
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 	}
 
 	public int getType()

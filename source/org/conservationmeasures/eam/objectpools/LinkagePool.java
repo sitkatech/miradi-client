@@ -8,12 +8,14 @@ package org.conservationmeasures.eam.objectpools;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.project.LinkageListener;
 
 public class LinkagePool extends EAMObjectPool
 {
-	public LinkagePool()
+	public LinkagePool(LinkageListener listenerToNotify)
 	{
 		super(ObjectType.MODEL_LINKAGE);
+		listener = listenerToNotify;
 	}
 	
 	public void put(ConceptualModelLinkage linkage)
@@ -21,6 +23,20 @@ public class LinkagePool extends EAMObjectPool
 		put(linkage.getId(), linkage);
 	}
 	
+	public void put(BaseId id, Object object)
+	{
+		super.put(id, object);
+		ConceptualModelLinkage linkage = (ConceptualModelLinkage)object;
+		listener.linkageWasCreated(linkage.getFromNodeId(), linkage.getToNodeId());
+	}
+
+	public void remove(BaseId id)
+	{
+		ConceptualModelLinkage linkage = find(id);
+		super.remove(id);
+		listener.linkageWasDeleted(linkage.getFromNodeId(), linkage.getToNodeId());
+	}
+
 	public ConceptualModelLinkage find(BaseId id)
 	{
 		return (ConceptualModelLinkage)getRawObject(id);
@@ -45,4 +61,6 @@ public class LinkagePool extends EAMObjectPool
 	{
 		return find(getIds()[index]);
 	}
+	
+	LinkageListener listener;
 }

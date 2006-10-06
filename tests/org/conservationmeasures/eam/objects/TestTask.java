@@ -93,7 +93,7 @@ public class TestTask extends EAMTestCase
 		assertEquals("wrong list?", resources, task.getResourceIdList());
 		assertEquals("can't get?", resources.toString(), task.getData(Task.TAG_RESOURCE_IDS));
 		
-		Task got = new Task(task.toJson());
+		Task got = (Task)EAMBaseObject.createFromJson(task.getType(), task.toJson());
 		assertEquals("didn't jsonize?", resources, got.getResourceIdList());
 	}
 
@@ -101,7 +101,7 @@ public class TestTask extends EAMTestCase
 	{
 		Task parent = createBasicTree();
 		
-		Task got = new Task(parent.toJson());
+		Task got = (Task)EAMBaseObject.createFromJson(parent.getType(), parent.toJson());
 		assertEquals("wrong count?", parent.getSubtaskCount(), got.getSubtaskCount());
 	}
 

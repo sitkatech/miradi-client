@@ -29,7 +29,7 @@ public class TestProjectResource extends EAMTestCase
 		ProjectResource resource = new ProjectResource(new BaseId(22));
 		assertEquals(tag + " didn't default properly?", "", resource.getData(tag));
 		resource.setData(tag, value);
-		ProjectResource got = new ProjectResource(resource.toJson());
+		ProjectResource got = (ProjectResource)ProjectResource.createFromJson(resource.getType(), resource.toJson());
 		assertEquals(tag + " didn't survive json?", resource.getData(tag), got.getData(tag));
 	}
 }

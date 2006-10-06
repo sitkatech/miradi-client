@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.json.JSONObject;
 
 
@@ -23,9 +24,9 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		activityIds = new IdList();
 	}
 	
-	public ConceptualModelIntervention(JSONObject json) throws ParseException
+	public ConceptualModelIntervention(ModelNodeId idToUse, JSONObject json) throws ParseException
 	{
-		super(DiagramNode.TYPE_INTERVENTION, json);
+		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 		String activityIdsAsString = json.optString(TAG_ACTIVITY_IDS, "{}");
 		activityIds = new IdList(activityIdsAsString);

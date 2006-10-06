@@ -38,9 +38,9 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		goals = new GoalIds();
 	}
 	
-	protected ConceptualModelNode(NodeType nodeType, JSONObject json)
+	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, JSONObject json)
 	{
-		super(json);
+		super(idToUse, json);
 		type = nodeType;
 
 		comment = json.optString(TAG_COMMENT);
@@ -216,17 +216,17 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	public static ConceptualModelNode createFrom(JSONObject json) throws ParseException
+	public static ConceptualModelNode createFrom(int idAsInt, JSONObject json) throws ParseException
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
-			return new ConceptualModelIntervention(json);
+			return new ConceptualModelIntervention(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeFactor.FACTOR_TYPE))
-			return new ConceptualModelFactor(json);
+			return new ConceptualModelFactor(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
-			return new ConceptualModelTarget(json);
+			return new ConceptualModelTarget(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCluster.CLUSTER_TYPE))
-			return new ConceptualModelCluster(json);
+			return new ConceptualModelCluster(new ModelNodeId(idAsInt), json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}

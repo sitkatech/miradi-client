@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
+import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
@@ -43,18 +44,23 @@ public class ObjectManager
 		
 		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
-		pools.put(new Integer(ObjectType.THREAT_RATING_CRITERION), new ThreatRatingCriterionPool(ida));
-		pools.put(new Integer(ObjectType.THREAT_RATING_VALUE_OPTION), new ThreatRatingValueOptionPool(ida));
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
-		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool());
-		pools.put(new Integer(ObjectType.TASK), new TaskPool(ida));
-		pools.put(new Integer(ObjectType.VIEW_DATA), new ViewPool(ida));
-		pools.put(new Integer(ObjectType.PROJECT_RESOURCE), new ResourcePool(ida));
-		pools.put(new Integer(ObjectType.INDICATOR), new IndicatorPool(ida));
-		pools.put(new Integer(ObjectType.OBJECTIVE), new ObjectivePool(ida));
-		pools.put(new Integer(ObjectType.GOAL), new GoalPool(ida));
+		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool(new LinkageMonitor()));
+		addNormalPool(new ThreatRatingCriterionPool(ida));
+		addNormalPool(new ThreatRatingValueOptionPool(ida));
+		addNormalPool(new TaskPool(ida));
+		addNormalPool(new ViewPool(ida));
+		addNormalPool(new ResourcePool(ida));
+		addNormalPool(new IndicatorPool(ida));
+		addNormalPool(new ObjectivePool(ida));
+		addNormalPool(new GoalPool(ida));
+		addNormalPool(new ProjectMetadataPool(ida));
 
-		linkageListener = new LinkageMonitor();
+	}
+	
+	private void addNormalPool(EAMNormalObjectPool pool)
+	{
+		pools.put(new Integer(pool.getObjectType()), pool);
 	}
 	
 	private IdAssigner getAnnotationIdAssigner()
@@ -128,7 +134,8 @@ public class ObjectManager
 				objectId = getProject().obtainRealLinkageId(objectId);
 				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
-				addLinkageToPool(cmLinkage);
+				EAMObjectPool pool = getPool(objectType);
+				pool.put(objectId, cmLinkage);
 				createdId = cmLinkage.getId();
 				break;
 			}
@@ -148,78 +155,29 @@ public class ObjectManager
 
 	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
 	{
-		switch(objectType)
-		{
-			case ObjectType.MODEL_NODE:
-				getNodePool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-			case ObjectType.MODEL_LINKAGE:
-				ConceptualModelLinkage linkage = getLinkagePool().find(objectId);
-				ModelNodeId fromId = linkage.getFromNodeId();
-				ModelNodeId toId = linkage.getToNodeId();
-				getLinkagePool().remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				linkageListener.linkageWasDeleted(fromId, toId);
-				break;
-				
-			default:
-				if(getPool(objectType).findObject(objectId) == null)
-					throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
-				getPool(objectType).remove(objectId);
-				getDatabase().deleteObject(objectType, objectId);
-				break;
-				
-		}
+		EAMObjectPool pool = getPool(objectType);
+		if(pool.findObject(objectId) == null)
+			throw new RuntimeException("Attempted to delete missing object: " + objectType + ":" + objectId);
+		pool.remove(objectId);
+		getDatabase().deleteObject(objectType, objectId);
 	}
 	
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
-		switch(objectType)
-		{
-			case ObjectType.MODEL_NODE:
-				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
-				ConceptualModelNode node = getNodePool().find(nodeId);
-				node.setData(fieldTag, dataValue);
-				getDatabase().writeObject(node);
-				break;
-				
-			case ObjectType.MODEL_LINKAGE:
-				ConceptualModelLinkage linkage = getLinkagePool().find(objectId);
-				linkage.setData(fieldTag, dataValue);
-				getDatabase().writeObject(linkage);
-				break;
-				
-			default:
-				EAMObject object = getPool(objectType).findObject(objectId);
-				object.setData(fieldTag, dataValue);
-				getDatabase().writeObject(object);
-				break;
-		}
+		EAMObject object = getPool(objectType).findObject(objectId);
+		object.setData(fieldTag, dataValue);
+		getDatabase().writeObject(object);
 	}
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
-		switch(objectType)
-		{
-			case ObjectType.MODEL_NODE:
-				ModelNodeId nodeId = new ModelNodeId(objectId.asInt());
-				return getNodePool().find(nodeId).getData(fieldTag);
-				
-			case ObjectType.MODEL_LINKAGE:
-				return getLinkagePool().find(objectId).getData(fieldTag);
-				
-			default:
-				return getPool(objectType).findObject(objectId).getData(fieldTag);
-				
-		}
+		return getPool(objectType).findObject(objectId).getData(fieldTag);
 	}
 	
 	public void loadFromDatabase() throws Exception
 	{
-		loadNodePool();
-		loadLinkagePool();
+		loadPool(ObjectType.MODEL_NODE);
+		loadPool(ObjectType.MODEL_LINKAGE);
 
 		loadPool(ObjectType.TASK);
 		loadPool(ObjectType.VIEW_DATA);
@@ -229,28 +187,7 @@ public class ObjectManager
 		loadPool(ObjectType.GOAL);
 		loadPool(ObjectType.THREAT_RATING_CRITERION);
 		loadPool(ObjectType.THREAT_RATING_VALUE_OPTION);
-	}
-	
-	private void loadNodePool() throws Exception
-	{
-		ObjectManifest nodes = getDatabase().readObjectManifest(ObjectType.MODEL_NODE);
-		BaseId[] nodeIds = nodes.getAllKeys();
-		for(int i = 0; i < nodeIds.length; ++i)
-		{
-			ConceptualModelNode node = (ConceptualModelNode)getDatabase().readObject(ObjectType.MODEL_NODE, nodeIds[i]);
-			getNodePool().put(node);
-		}
-	}
-	
-	private void loadLinkagePool() throws Exception
-	{
-		ObjectManifest linkages = getDatabase().readObjectManifest(ObjectType.MODEL_LINKAGE);
-		BaseId[] linkageIds = linkages.getAllKeys();
-		for(int i = 0; i < linkageIds.length; ++i)
-		{
-			ConceptualModelLinkage linkage = (ConceptualModelLinkage)getDatabase().readObject(ObjectType.MODEL_LINKAGE, linkageIds[i]);
-			addLinkageToPool(linkage);
-		}
+		loadPool(ObjectType.PROJECT_METADATA);
 	}
 	
 	private void loadPool(int type) throws IOException, ParseException, Exception
@@ -260,7 +197,7 @@ public class ObjectManager
 		for(int i = 0; i < ids.length; ++i)
 		{
 			EAMObject object = getDatabase().readObject(type, ids[i]);
-			getPool(type).put(ids[i], object);
+			getPool(type).put(object.getId(), object);
 		}
 	}
 	
@@ -277,12 +214,6 @@ public class ObjectManager
 	ProjectServer getDatabase()
 	{
 		return getProject().getDatabase();
-	}
-	
-	private void addLinkageToPool(ConceptualModelLinkage cmLinkage)
-	{
-		getLinkagePool().put(cmLinkage);
-		linkageListener.linkageWasCreated(cmLinkage.getFromNodeId(), cmLinkage.getToNodeId());
 	}
 	
 	class LinkageMonitor implements LinkageListener
@@ -304,10 +235,7 @@ public class ObjectManager
 		}		
 	}
 	
-	
-	
 	Project project;
 	
 	HashMap pools;
-	LinkageListener linkageListener;
 }

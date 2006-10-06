@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.json.JSONObject;
 
@@ -22,9 +23,9 @@ public class ConceptualModelCluster extends ConceptualModelNode
 		setMembers(new IdList());
 	}
 
-	public ConceptualModelCluster(JSONObject json) throws ParseException
+	public ConceptualModelCluster(ModelNodeId idToUse, JSONObject json) throws ParseException
 	{
-		super(DiagramNode.TYPE_CLUSTER, json);
+		super(idToUse, DiagramNode.TYPE_CLUSTER, json);
 		setMembers(new IdList(json.optString(TAG_MEMBER_IDS, "{}")));
 	}
 	

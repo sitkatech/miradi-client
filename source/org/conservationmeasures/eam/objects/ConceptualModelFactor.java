@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.json.JSONObject;
 
 public class ConceptualModelFactor extends ConceptualModelNode
@@ -17,9 +18,9 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		super(idToUse, new NodeTypeFactor());
 	}
 	
-	public ConceptualModelFactor(JSONObject json)
+	public ConceptualModelFactor(ModelNodeId idToUse, JSONObject json)
 	{
-		super(DiagramNode.TYPE_FACTOR, json);
+		super(idToUse, DiagramNode.TYPE_FACTOR, json);
 	}
 
 	public boolean isFactor()

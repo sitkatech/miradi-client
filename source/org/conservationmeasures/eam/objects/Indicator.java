@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import java.text.ParseException;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -22,9 +23,9 @@ public class Indicator extends EAMBaseObject
 		resourceIds = new IdList();
 	}
 	
-	public Indicator(JSONObject json) throws ParseException
+	public Indicator(int idAsInt, JSONObject json) throws ParseException
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 		shortLabel = json.optString(TAG_SHORT_LABEL, "");
 		method = json.optString(TAG_METHOD, "");
 		resourceIds = new IdList(json.optString(TAG_RESOURCE_IDS, "{}"));

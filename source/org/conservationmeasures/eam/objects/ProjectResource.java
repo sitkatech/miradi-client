@@ -21,9 +21,9 @@ public class ProjectResource extends EAMBaseObject
 		position = "";
 	}
 	
-	public ProjectResource(JSONObject json)
+	public ProjectResource(int idAsInt, JSONObject json)
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 		initials = json.optString(TAG_INITIALS, "");
 		name = json.optString(TAG_NAME, "");
 		position = json.optString(TAG_POSITION);

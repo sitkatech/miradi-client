@@ -17,9 +17,9 @@ abstract public class Desire extends EAMBaseObject
 		fullText = "";
 	}
 
-	public Desire(JSONObject json)
+	public Desire(BaseId idToUse, JSONObject json)
 	{
-		super(json);
+		super(idToUse, json);
 		shortLabel = json.optString(TAG_SHORT_LABEL, "");
 		fullText = json.optString(TAG_FULL_TEXT, "");
 	}

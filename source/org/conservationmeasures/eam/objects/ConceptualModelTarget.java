@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.json.JSONObject;
 
 
@@ -18,9 +19,9 @@ public class ConceptualModelTarget extends ConceptualModelNode
 		super(idToUse, DiagramNode.TYPE_TARGET);
 	}
 	
-	public ConceptualModelTarget(JSONObject json)
+	public ConceptualModelTarget(ModelNodeId idToUse, JSONObject json)
 	{
-		super(DiagramNode.TYPE_TARGET, json);
+		super(idToUse, DiagramNode.TYPE_TARGET, json);
 	}
 
 	public boolean isTarget()

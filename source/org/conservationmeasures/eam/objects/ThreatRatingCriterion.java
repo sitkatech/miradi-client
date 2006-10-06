@@ -16,9 +16,9 @@ public class ThreatRatingCriterion extends EAMBaseObject
 		super(idToUse);
 	}
 	
-	public ThreatRatingCriterion(JSONObject json)
+	public ThreatRatingCriterion(int idAsInt, JSONObject json)
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()

@@ -17,45 +17,49 @@ abstract public class EAMBaseObject implements EAMObject
 		label = "";
 	}
 	
-	EAMBaseObject(JSONObject json)
+	EAMBaseObject(BaseId idToUse, JSONObject json)
 	{
-		id = new BaseId(json.getInt(TAG_ID));
+		id = idToUse;
 		label = json.optString(TAG_LABEL, "");
 	}
 	
 	public static EAMObject createFromJson(int type, JSONObject json) throws Exception
 	{
+		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
 			case ObjectType.THREAT_RATING_CRITERION:
-				return new ThreatRatingCriterion(json);
+				return new ThreatRatingCriterion(idAsInt, json);
 				
 			case ObjectType.THREAT_RATING_VALUE_OPTION:
-				return new ThreatRatingValueOption(json);
+				return new ThreatRatingValueOption(idAsInt, json);
 				
 			case ObjectType.TASK:
-				return new Task(json);
+				return new Task(idAsInt, json);
 			
 			case ObjectType.MODEL_NODE:
-				return ConceptualModelNode.createFrom(json);
+				return ConceptualModelNode.createFrom(idAsInt, json);
 
 			case ObjectType.VIEW_DATA:
-				return new ViewData(json);
+				return new ViewData(idAsInt, json);
 				
 			case ObjectType.MODEL_LINKAGE:
-				return new ConceptualModelLinkage(json);
+				return new ConceptualModelLinkage(idAsInt, json);
 				
 			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResource(json);
+				return new ProjectResource(idAsInt, json);
 				
 			case ObjectType.INDICATOR:
-				return new Indicator(json);
+				return new Indicator(idAsInt, json);
 				
 			case ObjectType.OBJECTIVE:
-				return new Objective(json);
+				return new Objective(idAsInt, json);
 				
 			case ObjectType.GOAL:
-				return new Goal(json);
+				return new Goal(idAsInt, json);
+				
+			case ObjectType.PROJECT_METADATA:
+				return new ProjectMetadata(idAsInt, json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

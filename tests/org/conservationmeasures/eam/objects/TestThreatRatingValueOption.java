@@ -105,7 +105,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		option.setData(ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numeric));
 		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		
-		ThreatRatingValueOption loaded = new ThreatRatingValueOption(option.toJson());
+		ThreatRatingValueOption loaded = (ThreatRatingValueOption)EAMBaseObject.createFromJson(option.getType(), option.toJson());
 		assertEquals(option.getId(), loaded.getId());
 		assertEquals(option.getLabel(), loaded.getLabel());
 		assertEquals(option.getNumericValue(), loaded.getNumericValue());

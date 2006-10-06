@@ -23,9 +23,9 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		stressLabel = "";
 	}
 
-	public ConceptualModelLinkage(JSONObject jsonObject) throws ParseException 
+	public ConceptualModelLinkage(int idAsInt, JSONObject jsonObject) throws ParseException 
 	{
-		super(jsonObject);
+		super(new BaseId(idAsInt), jsonObject);
 		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));
 		toId = new ModelNodeId(jsonObject.getInt(TAG_TO_ID));
 		stressLabel = jsonObject.optString(TAG_STRESS_LABEL, "");

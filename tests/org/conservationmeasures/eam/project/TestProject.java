@@ -688,7 +688,8 @@ public class TestProject extends EAMTestCase
 			factorId = cmdNode1.getId();
 			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
 			diskProject.executeCommand(cmdNode2);
-			CommandLinkNodes cmdLinkage = new CommandLinkNodes(cmdNode1.getId(), cmdNode2.getId());
+			ModelNodeId targetId = cmdNode2.getId();
+			CommandLinkNodes cmdLinkage = new CommandLinkNodes(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
 			CommandInsertNode cmdNode3 = new CommandInsertNode(new NodeTypeIntervention());
 			diskProject.executeCommand(cmdNode3);

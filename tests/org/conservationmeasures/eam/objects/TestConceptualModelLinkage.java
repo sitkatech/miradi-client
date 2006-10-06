@@ -25,7 +25,7 @@ public class TestConceptualModelLinkage extends EAMTestCase
 		ConceptualModelLinkage original = new ConceptualModelLinkage(id, nodeAId, nodeBId);
 		original.setData(ConceptualModelLinkage.TAG_STRESS_LABEL, "What stress!");
 		JSONObject json = original.toJson();
-		ConceptualModelLinkage gotBack = new ConceptualModelLinkage(json);
+		ConceptualModelLinkage gotBack = (ConceptualModelLinkage)EAMBaseObject.createFromJson(original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), gotBack.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), gotBack.getToNodeId());

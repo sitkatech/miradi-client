@@ -27,9 +27,9 @@ public class ThreatRatingValueOption extends EAMBaseObject
 		color = colorToUse;
 	}
 	
-	public ThreatRatingValueOption(JSONObject json)
+	public ThreatRatingValueOption(int idAsInt, JSONObject json)
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 		numeric = json.getInt(TAG_NUMERIC);
 		color = new Color(json.getInt(TAG_COLOR));
 	}

@@ -86,7 +86,7 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
-		ConceptualModelIntervention got = new ConceptualModelIntervention(intervention.toJson());
+		ConceptualModelIntervention got = (ConceptualModelIntervention)EAMBaseObject.createFromJson(intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}

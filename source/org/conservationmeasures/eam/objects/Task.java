@@ -21,9 +21,9 @@ public class Task extends EAMBaseObject
 		resourceIds = new IdList();
 	}
 	
-	public Task(JSONObject json) throws ParseException
+	public Task(int idAsInt, JSONObject json) throws ParseException
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 		String subtaskIdsAsString = json.optString(TAG_SUBTASK_IDS, "{}");
 		setSubtaskIdsFromString(subtaskIdsAsString);
 		String resourceIdsAsString = json.optString(TAG_RESOURCE_IDS, "{}");

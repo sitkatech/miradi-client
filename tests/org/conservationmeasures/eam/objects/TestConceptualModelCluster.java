@@ -28,7 +28,7 @@ public class TestConceptualModelCluster extends EAMTestCase
 		group.setData(ConceptualModelCluster.TAG_MEMBER_IDS, members.toString());
 		assertEquals("didn't save members?", members.toString(), group.getData(ConceptualModelCluster.TAG_MEMBER_IDS));
 		
-		ConceptualModelCluster got = new ConceptualModelCluster(group.toJson());
+		ConceptualModelCluster got = (ConceptualModelCluster)EAMBaseObject.createFromJson(group.getType(), group.toJson());
 		assertEquals("didn't jsonize id?", group.getId(), got.getId());
 		assertEquals("didn't jsonize members?", group.getMemberIds(), got.getMemberIds());
 	}

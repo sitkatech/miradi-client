@@ -11,10 +11,12 @@ import java.io.IOException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
@@ -70,11 +72,12 @@ public class TestDataUpgrader extends EAMTestCase
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 		upgrader.renameNodeTagFromNameToLabel();
 		
-		ConceptualModelTarget gotTarget = new ConceptualModelTarget(JSONFile.read(targetFile));
+		int nodeType = ObjectType.MODEL_NODE;
+		ConceptualModelTarget gotTarget = (ConceptualModelTarget)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
 		assertEquals(target.getLabel(), gotTarget.getLabel());
-		ConceptualModelTarget gotThreat = new ConceptualModelTarget(JSONFile.read(threatFile));
+		ConceptualModelFactor gotThreat = (ConceptualModelFactor)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
 		assertEquals(threat.getLabel(), gotThreat.getLabel());
-		ConceptualModelTarget gotIntervention = new ConceptualModelTarget(JSONFile.read(interventionFile));
+		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)EAMBaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
 		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
 	}
 

@@ -51,6 +51,7 @@ public class TestObjectManager extends EAMTestCase
 			ObjectType.INDICATOR,
 			ObjectType.OBJECTIVE,
 			ObjectType.GOAL,
+			ObjectType.PROJECT_METADATA,
 		};
 		
 		for(int i = 0; i < types.length; ++i)

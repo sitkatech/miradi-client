@@ -18,9 +18,9 @@ public class Goal extends Desire
 		super(idToUse);
 	}
 	
-	public Goal(JSONObject json)
+	public Goal(int idAsInt, JSONObject json)
 	{
-		super(json);
+		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()
