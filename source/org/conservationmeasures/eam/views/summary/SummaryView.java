@@ -55,6 +55,7 @@ public class SummaryView extends UmbrellaView
 	public void becomeInactive() throws Exception
 	{
 		lastKnownSplitLocation = bigSplitter.getDividerLocation();
+		bigSplitter.removeAll();
 		wizardPanel = null;
 		summaryPanel = null;
 	}
