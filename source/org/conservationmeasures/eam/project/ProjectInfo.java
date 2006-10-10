@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.json.JSONObject;
 
 public class ProjectInfo
@@ -41,7 +41,7 @@ public class ProjectInfo
 
 	private String getDefaultCurrentView()
 	{
-		return InterviewView.getViewName();
+		return SummaryView.getViewName();
 	}
 	
 	public IdAssigner getNodeIdAssigner()

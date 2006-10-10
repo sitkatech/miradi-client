@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
@@ -49,9 +48,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.interview.InterviewView;
-import org.conservationmeasures.eam.views.map.MapView;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase
@@ -154,30 +150,27 @@ public class TestProject extends EAMTestCase
 	
 	public void testViewChanges() throws Exception
 	{
-		class SampleViewChangeListener implements ViewChangeListener
-		{
-			public void switchToView(String viewName)
-			{
-				if(viewName.equals(MapView.getViewName()))
-					++mapViewCount;
-				else if(!viewName.equals(""))
-					throw new RuntimeException("Unknown view: " + viewName);
-			}
-
-			int mapViewCount;
-		}
-		
-		SampleViewChangeListener listener = new SampleViewChangeListener();
-		project.addViewChangeListener(listener);
-		Command toMap = new CommandSwitchView(MapView.getViewName());
+		assertEquals("didn't start in summary view?", Project.SUMMARY_VIEW_NAME, project.getCurrentView());
+		String destination = Project.MAP_VIEW_NAME;
+		CommandSwitchView toMap = new CommandSwitchView(destination);
 		project.executeCommand(toMap);
-		assertEquals("didn't notify listener of view switch?", 1, listener.mapViewCount);
+		assertEquals("didn't update project?", destination, project.getCurrentView());
 		try
 		{
 			project.executeCommand(toMap);
-			fail("Can't switch to current view");
+			fail("should have thrown for switch to current view");
 		}
 		catch(AlreadyInThatViewException ignoreExpected)
+		{
+		}
+		
+		Command illegalView = new CommandSwitchView("Not a legal view name");
+		try
+		{
+			project.executeCommand(illegalView);
+			fail("should have thrown for switch to bogus view name");
+		}
+		catch(CommandFailedException ignoreExpected)
 		{
 		}
 	}
@@ -454,12 +447,12 @@ public class TestProject extends EAMTestCase
 
 	public void testCloseClearsCurrentView() throws Exception
 	{
-		assertEquals("not starting on interview view?", InterviewView.getViewName(), project.getCurrentView());
-		String sampleViewName = "blah blah";
+		assertEquals("not starting on summary view?", Project.SUMMARY_VIEW_NAME, project.getCurrentView());
+		String sampleViewName = Project.MAP_VIEW_NAME;
 		project.switchToView(sampleViewName);
 		assertEquals("didn't switch?", sampleViewName, project.getCurrentView());
 		project.close();
-		assertEquals("didn't reset view?", NoProjectView.getViewName(), project.getCurrentView());
+		assertEquals("didn't reset view?", Project.NO_PROJECT_VIEW_NAME, project.getCurrentView());
 	}
 	
 	public void testExecuteCommandWritesDiagram() throws Exception

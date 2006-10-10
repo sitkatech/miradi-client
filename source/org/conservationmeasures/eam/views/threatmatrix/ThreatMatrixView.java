@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
@@ -53,7 +54,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 	static public String getViewName()
 	{
-		return "ThreatMatrix";
+		return Project.THREAT_MATRIX_VIEW_NAME;
 	}
 	
 	public void becomeActive() throws Exception

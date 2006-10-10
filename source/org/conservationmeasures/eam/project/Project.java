@@ -9,12 +9,13 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDoNothing;
+import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.DataUpgrader;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -36,7 +37,6 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -53,7 +53,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
@@ -62,6 +61,7 @@ import org.jgraph.graph.ParentMap;
 
 public class Project
 {
+
 	public Project() throws IOException
 	{
 		this(new ProjectServer());
@@ -71,7 +71,6 @@ public class Project
 	{
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
-		viewChangeListeners = new Vector();
 		
 		clear();
 	}
@@ -170,12 +169,10 @@ public class Project
 	
 	public String getCurrentView()
 	{
+		if(!isOpen())
+			return NO_PROJECT_VIEW_NAME;
+		
 		return projectInfo.getCurrentView();
-	}
-	
-	public void setCurrentView(String newCurrentView)
-	{
-		projectInfo.setCurrentView(newCurrentView);
 	}
 	
 	public ViewData getCurrentViewData() throws Exception
@@ -359,12 +356,22 @@ public class Project
 		createDefaultObjectsIfNeeded();
 
 		database.writeVersion();
+		fakeViewSwitchForMainWindow();
+	}
+
+	private void fakeViewSwitchForMainWindow()
+	{
 		String currentView = getCurrentView();
-		if(currentView.length() == 0)
-			setCurrentView(DiagramView.getViewName());
-		fireSwitchToView(getCurrentView());
+		if(!isLegalViewName(currentView))
+			currentView = DEFAULT_VIEW_NAME;
 		
-		fireCommandExecuted(new CommandDoNothing());
+		forceMainWindowToSwitchViews(currentView);
+	}
+
+	private void forceMainWindowToSwitchViews(String currentView)
+	{
+		CommandSwitchView cmd = new CommandSwitchView(currentView);
+		fireCommandExecuted(cmd);
 	}
 	
 	public String getFilename()
@@ -392,8 +399,7 @@ public class Project
 		{
 			EAM.logException(e);
 		}
-		setCurrentView(NoProjectView.getViewName());
-		fireSwitchToView(getCurrentView());
+		forceMainWindowToSwitchViews(NoProjectView.getViewName());
 	}
 	
 	static public boolean isValidProjectFilename(String candidate)
@@ -574,29 +580,32 @@ public class Project
 	
 	public void switchToView(String viewName) throws CommandFailedException
 	{
-		setCurrentView(viewName);
-		try
-		{
-			fireSwitchToView(viewName);
-		}
-		catch (Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
+		if(!isLegalViewName(viewName))
+			throw new CommandFailedException("Attempted switch to unknown view: " + viewName);
+		
+		projectInfo.setCurrentView(viewName);
+	}
+
+	private boolean isLegalViewName(String viewName)
+	{
+		return Arrays.asList(getLegalViewNames()).contains(viewName);
 	}
 	
-	public void addViewChangeListener(ViewChangeListener listener)
+	public String[] getLegalViewNames()
 	{
-		viewChangeListeners.add(listener);
-	}
-	
-	void fireSwitchToView(String viewName) throws Exception
-	{
-		for(int i=0; i < viewChangeListeners.size(); ++i)
-		{
-			ViewChangeListener listener = (ViewChangeListener)viewChangeListeners.get(i);
-			listener.switchToView(viewName);
-		}
+		return new String[] {
+			SUMMARY_VIEW_NAME,
+			DIAGRAM_VIEW_NAME,
+			NO_PROJECT_VIEW_NAME,
+			THREAT_MATRIX_VIEW_NAME,
+			BUDGET_VIEW_NAME,
+			WORK_PLAN_VIEW_NAME,
+			MAP_VIEW_NAME,
+			CALENDAR_VIEW_NAME,
+			IMAGES_VIEW_NAME,
+			STRATEGIC_PLAN_VIEW_NAME,
+			MONITORING_VIEW_NAME,
+		};
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -797,6 +806,9 @@ public class Project
 		
 		void save()
 		{
+			if(!isOpen())
+				return;
+			
 			try
 			{
 				getDatabase().writeProjectInfo(projectInfo);
@@ -810,7 +822,20 @@ public class Project
 		}
 	}
 
+	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
+	public static final String STRATEGIC_PLAN_VIEW_NAME = "Strategic Plan";
+	public static final String IMAGES_VIEW_NAME = "Images";
+	public static final String CALENDAR_VIEW_NAME = "Calendar";
+	public static final String MAP_VIEW_NAME = "Map";
+	public static final String WORK_PLAN_VIEW_NAME = "WorkPlan";
+	public static final String BUDGET_VIEW_NAME = "Budget";
+	public static final String THREAT_MATRIX_VIEW_NAME = "ThreatMatrix";
+	public static final String NO_PROJECT_VIEW_NAME = "";
+	public static final String DIAGRAM_VIEW_NAME = "Diagram";
+	public static final String SUMMARY_VIEW_NAME = "Summary ";
 
+	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
+	
 	public static final int DEFAULT_GRID_SIZE = 15;
 
 	ProjectInfo projectInfo;
@@ -824,7 +849,6 @@ public class Project
 	DiagramModel diagramModel;
 
 	Vector commandExecutedListeners;
-	Vector viewChangeListeners;
 	
 	LayerManager layerManager;
 	EAMGraphSelectionModel selectionModel;

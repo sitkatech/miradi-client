@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
-import org.conservationmeasures.eam.actions.views.ActionViewInterview;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
@@ -40,7 +39,6 @@ public class ViewSwitcher extends JComboBox
 	{
 		Action[] views = new Action[] {
 			actions.get(ActionViewSummary.class),
-			actions.get(ActionViewInterview.class), 
 			actions.get(ActionViewDiagram.class), 
 			actions.get(ActionViewThreatMatrix.class),
 			actions.get(ActionViewStrategicPlan.class),

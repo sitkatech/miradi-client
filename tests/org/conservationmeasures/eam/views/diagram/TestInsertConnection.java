@@ -20,14 +20,11 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testIsAvailable() throws Exception
 	{
-		OpenableProject project = new OpenableProject(getName());
+		ProjectForTesting project = new ProjectForTesting(getName());
+		InsertConnection doer = new InsertConnection();
+		doer.setProject(project);
 		try
 		{
-			InsertConnection doer = new InsertConnection();
-			doer.setProject(project);
-
-			assertFalse("enabled when no project open?", doer.isAvailable());
-			project.setIsOpen(true);
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
 			CommandInsertNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
@@ -38,27 +35,8 @@ public class TestInsertConnection extends EAMTestCase
 		{
 			project.close();
 		}
+		assertFalse("enabled when no project open?", doer.isAvailable());
 		
 	}
 
-}
-
-class OpenableProject extends ProjectForTesting
-{
-	public OpenableProject(String name) throws Exception
-	{
-		super(name);
-	}
-
-	public boolean isOpen()
-	{
-		return isOpenFlag;
-	}
-	
-	public void setIsOpen(boolean newValue)
-	{
-		isOpenFlag = newValue;
-	}
-	
-	boolean isOpenFlag;
 }

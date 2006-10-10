@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -37,7 +38,6 @@ import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.images.ImagesView;
-import org.conservationmeasures.eam.views.interview.InterviewView;
 import org.conservationmeasures.eam.views.map.MapView;
 import org.conservationmeasures.eam.views.monitoring.MonitoringView;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
@@ -48,7 +48,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 import org.martus.util.DirectoryLock;
 
-public class MainWindow extends JFrame implements CommandExecutedListener, ViewChangeListener, ClipboardOwner
+public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
 {
 	public MainWindow() throws IOException
 	{
@@ -66,7 +66,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
-		project.addViewChangeListener(this);
 
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
@@ -84,7 +83,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		noProjectView = new NoProjectView(this);
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
-		interviewView = new InterviewView(this);
 		threatMatrixView = new ThreatMatrixView(this);
 		budgetView = new BudgetView(this);
 		workPlanView = new WorkPlanView(this);
@@ -99,7 +97,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		viewHolder.add(createCenteredView(noProjectView), noProjectView.cardName());
 		viewHolder.add(summaryView, summaryView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
-		viewHolder.add(interviewView, interviewView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
 		viewHolder.add(budgetView, budgetView.cardName());
 		viewHolder.add(workPlanView, workPlanView.cardName());
@@ -144,11 +141,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		return currentView;
 	}
 	
-	private void setCurrentView(UmbrellaView view)
+	private void setCurrentView(UmbrellaView view) throws Exception
 	{
+		if(currentView != null)
+			currentView.becomeInactive();
 		CardLayout layout = (CardLayout)viewHolder.getLayout();
 		layout.show(viewHolder, view.cardName());
 		currentView = view;
+		currentView.becomeActive();
 		updateToolBar();
 	}
 
@@ -251,6 +251,17 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		try
+		{
+			if(event.getCommand().getCommandName().equals(CommandSwitchView.COMMAND_NAME))
+				updateView();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			EAM.errorDialog("Unexpected error switching view");
+		}
+		
 		actions.updateActionStates();
 		updateStatusBar();
 	}
@@ -264,14 +275,13 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		mainStatusBar.setStatusError(e);
 	}
 	
-	public void switchToView(String viewName)
+	public void updateView() throws Exception
 	{
+		String viewName = getProject().getCurrentView();
 		if(viewName.equals(summaryView.cardName()))
 			setCurrentView(summaryView);
 		else if(viewName.equals(diagramView.cardName()))
 			setCurrentView(diagramView);
-		else if(viewName.equals(interviewView.cardName()))
-			setCurrentView(interviewView);
 		else if(viewName.equals(noProjectView.cardName()))
 			setCurrentView(noProjectView);
 		else if(viewName.equals(threatMatrixView.cardName()))
@@ -291,7 +301,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 		else if(viewName.equals(monitoringView.cardName()))
 			setCurrentView(monitoringView);
 		else
+		{
 			EAM.logError("MainWindow.switchToView: Unknown view: " + viewName);
+			setCurrentView(summaryView);
+		}
 	}
 	
 	public void jump(Class stepMarker) throws CommandFailedException
@@ -361,7 +374,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, ViewC
 	private NoProjectView noProjectView;
 	private SummaryView summaryView;
 	private DiagramView diagramView;
-	private InterviewView interviewView;
 	private ThreatMatrixView threatMatrixView;
 	private BudgetView budgetView;
 	private WorkPlanView workPlanView;

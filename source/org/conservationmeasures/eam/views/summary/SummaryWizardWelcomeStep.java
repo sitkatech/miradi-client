@@ -6,9 +6,8 @@
 package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class SummaryWizardWelcomeStep extends WizardStep
+public class SummaryWizardWelcomeStep extends InterviewWizardStep
 {
 	public SummaryWizardWelcomeStep(WizardPanel wizardToUse)
 	{

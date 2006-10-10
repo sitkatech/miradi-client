@@ -71,7 +71,6 @@ import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
-import org.conservationmeasures.eam.actions.views.ActionViewInterview;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
@@ -92,7 +91,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.main.ViewChangeListener;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -103,7 +101,7 @@ import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.martus.swing.UiLabel;
 
-abstract public class UmbrellaView extends JPanel implements ViewChangeListener, CommandExecutedListener
+abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
 {
 	public UmbrellaView(MainWindow mainWindowToUse)
 	{
@@ -112,19 +110,10 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
-		getProject().addViewChangeListener(this);
 		getProject().addCommandExecutedListener(this);
 	}
 	
 	abstract public String cardName();
-	
-	public void switchToView(String viewName) throws Exception
-	{
-		if(cardName().equals(viewName))
-			becomeActive();
-		else
-			becomeInactive();
-	}
 	
 	public void jump(Class stepMarker) throws Exception
 	{
@@ -273,7 +262,6 @@ abstract public class UmbrellaView extends JPanel implements ViewChangeListener,
 		
 		addDoerToMap(ActionViewSummary.class, new ViewSummary());
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
-		addDoerToMap(ActionViewInterview.class, new ViewInterview());
 		addDoerToMap(ActionViewThreatMatrix.class, new ViewThreatMatrix());
 		addDoerToMap(ActionViewBudget.class, new ViewBudget());
 		addDoerToMap(ActionViewWorkPlan.class, new ViewWorkPlan());

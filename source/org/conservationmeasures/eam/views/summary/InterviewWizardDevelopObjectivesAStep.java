@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.interview;
+package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;

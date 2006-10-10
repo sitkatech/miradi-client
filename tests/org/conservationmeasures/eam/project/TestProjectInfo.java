@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.interview.InterviewView;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.json.JSONObject;
 import org.martus.util.TestCaseEnhanced;
 
@@ -60,7 +60,7 @@ public class TestProjectInfo extends TestCaseEnhanced
 		assertEquals("set/get metadata not working?", metadataId, info.getMetadataId());
 		
 		info.clear();
-		assertEquals("Didn't clear currentView", InterviewView.getViewName(), info.getCurrentView());
+		assertEquals("Didn't clear currentView", SummaryView.getViewName(), info.getCurrentView());
 		assertEquals("didn't clear id?", new BaseId(0), info.getNodeIdAssigner().takeNextId());
 		assertEquals("didn't clear annotation id?", new BaseId(0), info.getAnnotationIdAssigner().takeNextId());
 		assertTrue("didn't clear metadata id?", info.getMetadataId().isInvalid());

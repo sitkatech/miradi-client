@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
 
@@ -31,7 +32,7 @@ public class ImagesView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Images";
+		return Project.IMAGES_VIEW_NAME;
 	}
 
 	public void becomeActive() throws Exception

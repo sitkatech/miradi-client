@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
@@ -101,7 +102,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	static public String getViewName()
 	{
-		return "Diagram";
+		return Project.DIAGRAM_VIEW_NAME;
 	}
 	
 	public BufferedImage getImage()

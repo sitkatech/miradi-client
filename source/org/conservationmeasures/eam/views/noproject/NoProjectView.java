@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.HtmlViewer;
@@ -152,7 +153,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	
 	static public String getViewName()
 	{
-		return "";
+		return Project.NO_PROJECT_VIEW_NAME;
 	}
 
 	HtmlViewer htmlViewer;

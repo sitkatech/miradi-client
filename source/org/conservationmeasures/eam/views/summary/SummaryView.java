@@ -11,7 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiScrollPane;
 
 public class SummaryView extends UmbrellaView
 {
@@ -19,11 +21,6 @@ public class SummaryView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new SummaryToolBar(mainWindowToUse.getActions()));
-		
-		lastKnownSplitLocation = -1;
-
-		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		add(bigSplitter, BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -33,34 +30,46 @@ public class SummaryView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "Summary ";
+		return Project.SUMMARY_VIEW_NAME;
 	}
 
 	public void becomeActive() throws Exception
 	{
-		wizardPanel = new SummaryWizardPanel();
+		int dividerAt = -1;
+		if(bigSplitter != null)
+			dividerAt = bigSplitter.getDividerLocation();
+		
+		removeAll();
+		
 		summaryPanel = new SummaryPanel(getProject());
+		UiScrollPane uiScrollPane = new UiScrollPane(summaryPanel);
+		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
+
+		// NOTE: For reasons I don't understand, if we construct the splitter 
+		// in the constructor, it always ignores the setDividerLocation and ends up
+		// at zero.
+		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setResizeWeight(.5);
+		bigSplitter.setTopComponent(new SummaryWizardPanel());
+		bigSplitter.setBottomComponent(uiScrollPane);
 		
-		JScrollPane bottomHalf = new JScrollPane(summaryPanel);
+		if(dividerAt > 0)
+			bigSplitter.setDividerLocation(dividerAt);
 		
-		bigSplitter.setTopComponent(wizardPanel);
-		bigSplitter.setBottomComponent(bottomHalf);
-		bigSplitter.validate();
-		if(lastKnownSplitLocation > 0)
-			bigSplitter.setDividerLocation(lastKnownSplitLocation);
-		else
-			bigSplitter.setDividerLocation(.5);
+		add(bigSplitter, BorderLayout.CENTER);
 	}
 
 	public void becomeInactive() throws Exception
 	{
-		lastKnownSplitLocation = bigSplitter.getDividerLocation();
 		bigSplitter.removeAll();
 		wizardPanel = null;
 		summaryPanel = null;
+		removeAll();
 	}
 
-	int lastKnownSplitLocation;
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
 	SummaryPanel summaryPanel;
