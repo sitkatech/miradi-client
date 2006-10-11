@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -196,7 +197,13 @@ public class ObjectManager
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			EAMObject object = getDatabase().readObject(type, ids[i]);
+			BaseId id = ids[i];
+			if(id.isInvalid())
+			{
+				EAM.logWarning("Ignoring invalid id of type " + type);
+				continue;
+			}
+			EAMObject object = getDatabase().readObject(type, id);
 			getPool(type).put(object.getId(), object);
 		}
 	}
