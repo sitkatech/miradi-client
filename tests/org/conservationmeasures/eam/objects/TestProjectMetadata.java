@@ -20,6 +20,7 @@ public class TestProjectMetadata extends EAMTestCase
 	{
 		verifyDataField(ProjectMetadata.TAG_PROJECT_NAME, "Gobi Desert Re-humidification");
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
+		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 	}
 	
 	public void testStartDate() throws Exception

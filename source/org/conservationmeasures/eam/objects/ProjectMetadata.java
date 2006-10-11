@@ -24,16 +24,10 @@ public class ProjectMetadata extends EAMBaseObject
 	{
 		super(new BaseId(idAsInt), json);
 		projectName = json.getString(TAG_PROJECT_NAME);
-		try
-		{
-			startDate = createFromIsoDate(json.optString(TAG_START_DATE));
-		}
-		catch (Exception e)
-		{
-			startDate = null;
-		}
+		startDate = createFromIsoStringLenient(json.optString(TAG_START_DATE));
+		effectiveDate = createFromIsoStringLenient(json.optString(TAG_DATA_EFFECTIVE_DATE));
 	}
-
+	
 	public int getType()
 	{
 		return ObjectType.PROJECT_METADATA;
@@ -46,17 +40,22 @@ public class ProjectMetadata extends EAMBaseObject
 	
 	public String getStartDate()
 	{
-		if(startDate == null)
-			return "";
-		return startDate.toIsoDateString();
+		return convertMultiCalendarToIsoString(startDate);
 	}
 	
+	public String getEffectiveDate()
+	{
+		return convertMultiCalendarToIsoString(effectiveDate);
+	}
+
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(TAG_PROJECT_NAME.equals(fieldTag))
 			projectName = (String)dataValue;
 		else if(TAG_START_DATE.equals(fieldTag))
-			startDate = createFromIsoDate((String)dataValue);
+			startDate = createFromIsoStringStrict((String)dataValue);
+		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
+			effectiveDate = createFromIsoStringStrict((String)dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -67,6 +66,8 @@ public class ProjectMetadata extends EAMBaseObject
 			return getProjectName();
 		if(TAG_START_DATE.equals(fieldTag))
 			return getStartDate();
+		if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
+			return getEffectiveDate();
 		
 		return super.getData(fieldTag);
 	}
@@ -75,11 +76,32 @@ public class ProjectMetadata extends EAMBaseObject
 	{
 		JSONObject json = super.toJson();
 		json.put(TAG_PROJECT_NAME, projectName);
-		json.put(TAG_START_DATE, startDate);
+		json.put(TAG_START_DATE, getStartDate());
+		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
 		return json;
 	}
 	
-	private MultiCalendar createFromIsoDate(String iso) throws InvalidDateException
+	private String convertMultiCalendarToIsoString(MultiCalendar cal)
+	{
+		if(cal == null)
+			return "";
+		return cal.toIsoDateString();
+	}
+	
+	private MultiCalendar createFromIsoStringLenient(String isoDate)
+	{
+		try
+		{
+			return createFromIsoStringStrict(isoDate);
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
+
+	}
+
+	private MultiCalendar createFromIsoStringStrict(String iso) throws InvalidDateException
 	{
 		try
 		{
@@ -93,7 +115,9 @@ public class ProjectMetadata extends EAMBaseObject
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_START_DATE = "StartDate";
+	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 
 	String projectName;
 	MultiCalendar startDate;
+	MultiCalendar effectiveDate;
 }

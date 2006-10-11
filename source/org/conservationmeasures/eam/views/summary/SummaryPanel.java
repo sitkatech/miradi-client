@@ -40,6 +40,12 @@ public class SummaryPanel extends JPanel
 		startDate.setText(project.getMetadata().getStartDate());
 		startDate.addFocusListener(new StartDateFocusHandler());
 		add(startDate);
+
+		add(new UiLabel(EAM.text("Label|Data Effective Date:")));
+		effectiveDate = new UiTextField(10);
+		effectiveDate.setText(project.getMetadata().getEffectiveDate());
+		effectiveDate.addFocusListener(new EffectiveDateFocusHandler());
+		add(effectiveDate);
 	}
 	
 	private void save(String tag, UiTextField field)
@@ -90,7 +96,17 @@ public class SummaryPanel extends JPanel
 		}
 	}
 
+	class EffectiveDateFocusHandler extends FocusHandler
+	{
+		public void focusLost(FocusEvent arg0)
+		{
+			save(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, effectiveDate);
+			effectiveDate.setText(project.getMetadata().getEffectiveDate());
+		}
+	}
+
 	Project project;
 	UiTextField projectName;
 	UiTextField startDate;
+	UiTextField effectiveDate;
 }
