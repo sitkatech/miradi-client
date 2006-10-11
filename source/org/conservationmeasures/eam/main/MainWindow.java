@@ -251,6 +251,21 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		updateAfterCommand(event);
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		updateAfterCommand(event);
+	}
+	
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+		mainStatusBar.setStatusError(e);
+	}
+	
+	private void updateAfterCommand(CommandExecutedEvent event)
+	{
 		try
 		{
 			if(event.getCommand().getCommandName().equals(CommandSwitchView.COMMAND_NAME))
@@ -264,15 +279,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		
 		actions.updateActionStates();
 		updateStatusBar();
-	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-	}
-	
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-		mainStatusBar.setStatusError(e);
 	}
 	
 	public void updateView() throws Exception
