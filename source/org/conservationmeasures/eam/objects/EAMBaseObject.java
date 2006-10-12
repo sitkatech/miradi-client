@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
@@ -14,13 +15,13 @@ abstract public class EAMBaseObject implements EAMObject
 	public EAMBaseObject(BaseId idToUse)
 	{
 		id = idToUse;
-		label = "";
+		label = new StringData();
 	}
 	
 	EAMBaseObject(BaseId idToUse, JSONObject json)
 	{
 		id = idToUse;
-		label = json.optString(TAG_LABEL, "");
+		label = new StringData(json.optString(TAG_LABEL));
 	}
 	
 	public static EAMObject createFromJson(int type, JSONObject json) throws Exception
@@ -79,12 +80,12 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public String getLabel()
 	{
-		return label;
+		return label.get();
 	}
 	
 	public void setLabel(String newLabel)
 	{
-		label = newLabel;
+		label.set(newLabel);
 	}
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
@@ -124,7 +125,7 @@ abstract public class EAMBaseObject implements EAMObject
 	public static final String DEFAULT_LABEL = "";
 
 	private BaseId id;
-	String label;
+	StringData label;
 
 
 }

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.json.JSONObject;
 
 abstract public class Desire extends EAMBaseObject
@@ -13,22 +14,22 @@ abstract public class Desire extends EAMBaseObject
 	public Desire(BaseId idToUse)
 	{
 		super(idToUse);
-		shortLabel = "";
-		fullText = "";
+		shortLabel = new StringData();
+		fullText = new StringData();
 	}
 
 	public Desire(BaseId idToUse, JSONObject json)
 	{
 		super(idToUse, json);
-		shortLabel = json.optString(TAG_SHORT_LABEL, "");
-		fullText = json.optString(TAG_FULL_TEXT, "");
+		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
+		fullText = new StringData(json.optString(TAG_FULL_TEXT));
 	}
 
 	abstract public int getType();
 
 	public String getShortLabel()
 	{
-		return shortLabel;
+		return shortLabel.get();
 	}
 
 	public String getData(String fieldTag)
@@ -36,7 +37,7 @@ abstract public class Desire extends EAMBaseObject
 		if(fieldTag.equals(TAG_SHORT_LABEL))
 			return getShortLabel();
 		if(fieldTag.equals(TAG_FULL_TEXT))
-			return fullText;
+			return fullText.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -44,9 +45,9 @@ abstract public class Desire extends EAMBaseObject
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
-			shortLabel = dataValue;
+			shortLabel.set(dataValue);
 		else if(fieldTag.equals(TAG_FULL_TEXT))
-			fullText = dataValue;
+			fullText.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -54,8 +55,8 @@ abstract public class Desire extends EAMBaseObject
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_SHORT_LABEL, shortLabel);
-		json.put(TAG_FULL_TEXT, fullText);
+		json.put(TAG_SHORT_LABEL, getShortLabel());
+		json.put(TAG_FULL_TEXT, fullText.get());
 		
 		return json;
 	}
@@ -71,7 +72,7 @@ abstract public class Desire extends EAMBaseObject
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
 
-	String shortLabel;
-	String fullText;
+	StringData shortLabel;
+	StringData fullText;
 
 }

@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONArray;
@@ -32,7 +33,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse);
 		type = nodeType;
 		
-		comment = "";
+		comment = new StringData();
 		indicator = new IndicatorId(BaseId.INVALID.asInt());
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
@@ -43,7 +44,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse, json);
 		type = nodeType;
 
-		comment = json.optString(TAG_COMMENT);
+		comment = new StringData(json.optString(TAG_COMMENT));
 		setIndicatorId(new IndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
 		
 		goals = new GoalIds();
@@ -85,12 +86,12 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	
 	public String getComment()
 	{
-		return comment;
+		return comment.get();
 	}
 	
 	public void setComment(String newComment)
 	{
-		comment = newComment;
+		comment.set(newComment);
 	}
 	
 	public boolean isStatusDraft()
@@ -288,7 +289,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	
 	private NodeType type;
-	private String comment;
+	private StringData comment;
 
 	private IndicatorId indicator;
 	private ObjectiveIds objectives;

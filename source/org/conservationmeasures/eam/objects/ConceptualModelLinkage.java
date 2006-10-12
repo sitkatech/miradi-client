@@ -10,6 +10,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
@@ -20,7 +21,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		super(id);
 		setFromId(fromNodeId);
 		setToId(toNodeId);
-		stressLabel = "";
+		stressLabel = new StringData();
 	}
 
 	public ConceptualModelLinkage(int idAsInt, JSONObject jsonObject) throws ParseException 
@@ -28,7 +29,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		super(new BaseId(idAsInt), jsonObject);
 		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));
 		toId = new ModelNodeId(jsonObject.getInt(TAG_TO_ID));
-		stressLabel = jsonObject.optString(TAG_STRESS_LABEL, "");
+		stressLabel = new StringData(jsonObject.optString(TAG_STRESS_LABEL));
 	}
 	
 	public void setFromId(ModelNodeId fromNodeId)
@@ -58,13 +59,13 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	
 	public String getStressLabel()
 	{
-		return stressLabel;
+		return stressLabel.get();
 	}
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_STRESS_LABEL.equals(fieldTag))
-			stressLabel = dataValue;
+			stressLabel.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -100,7 +101,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		JSONObject json = super.toJson();
 		json.put(TAG_FROM_ID, fromId.asInt());
 		json.put(TAG_TO_ID, toId.asInt());
-		json.put(TAG_STRESS_LABEL, stressLabel);
+		json.put(TAG_STRESS_LABEL, getStressLabel());
 		return json;
 	}
 	
@@ -113,5 +114,5 @@ public class ConceptualModelLinkage extends EAMBaseObject
 	
 	private ModelNodeId fromId;
 	private ModelNodeId toId;
-	private String stressLabel;
+	private StringData stressLabel;
 }

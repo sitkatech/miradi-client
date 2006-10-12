@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 import org.martus.util.xml.XmlUtilities;
@@ -16,17 +17,17 @@ public class ProjectResource extends EAMBaseObject
 	public ProjectResource(BaseId idToUse)
 	{
 		super(idToUse);
-		initials = "";
-		name = "";
-		position = "";
+		initials = new StringData();
+		name = new StringData();
+		position = new StringData();
 	}
 	
 	public ProjectResource(int idAsInt, JSONObject json)
 	{
 		super(new BaseId(idAsInt), json);
-		initials = json.optString(TAG_INITIALS, "");
-		name = json.optString(TAG_NAME, "");
-		position = json.optString(TAG_POSITION);
+		initials = new StringData(json.optString(TAG_INITIALS, ""));
+		name = new StringData(json.optString(TAG_NAME, ""));
+		position = new StringData(json.optString(TAG_POSITION));
 	}
 
 	public int getType()
@@ -37,11 +38,11 @@ public class ProjectResource extends EAMBaseObject
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_INITIALS))
-			return initials;
+			return initials.get();
 		if(fieldTag.equals(TAG_NAME))
-			return name;
+			return name.get();
 		if(fieldTag.equals(TAG_POSITION))
-			return position;
+			return position.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -49,11 +50,11 @@ public class ProjectResource extends EAMBaseObject
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_INITIALS))
-			initials = dataValue;
+			initials.set(dataValue);
 		else if(fieldTag.equals(TAG_NAME))
-			name = dataValue;
+			name.set(dataValue);
 		else if(fieldTag.equals(TAG_POSITION))
-			position = dataValue;
+			position.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -61,20 +62,26 @@ public class ProjectResource extends EAMBaseObject
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_INITIALS, initials);
-		json.put(TAG_NAME, name);
-		json.put(TAG_POSITION, position);
+		json.put(TAG_INITIALS, initials.get());
+		json.put(TAG_NAME, name.get());
+		json.put(TAG_POSITION, position.get());
 		return json;
 	}
 	
 	public String toString()
 	{
-		if(initials.length() > 0)
-			return initials;
-		if(name.length() > 0)
-			return name;
-		if(position.length() > 0)
-			return position;
+		String result = initials.get();
+		if(result.length() > 0)
+			return result;
+		
+		result = name.get();
+		if(result.length() > 0)
+			return result;
+		
+		result = position.get();
+		if(result.length() > 0)
+			return result;
+		
 		return EAM.text("Label|(Undefined Resource)");
 	}
 	
@@ -97,7 +104,7 @@ public class ProjectResource extends EAMBaseObject
 	public static final String TAG_NAME = "Name";
 	public static final String TAG_POSITION = "Position";
 
-	String initials;
-	String name;
-	String position;
+	StringData initials;
+	StringData name;
+	StringData position;
 }

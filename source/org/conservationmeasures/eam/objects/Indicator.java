@@ -10,6 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
@@ -18,16 +19,16 @@ public class Indicator extends EAMBaseObject
 	public Indicator(IndicatorId idToUse)
 	{
 		super(idToUse);
-		shortLabel = "";
-		method = "";
+		shortLabel = new StringData();
+		method = new StringData();
 		resourceIds = new IdList();
 	}
 	
 	public Indicator(int idAsInt, JSONObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
-		shortLabel = json.optString(TAG_SHORT_LABEL, "");
-		method = json.optString(TAG_METHOD, "");
+		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
+		method = new StringData(json.optString(TAG_METHOD));
 		resourceIds = new IdList(json.optString(TAG_RESOURCE_IDS, "{}"));
 	}
 	
@@ -41,7 +42,7 @@ public class Indicator extends EAMBaseObject
 		if(fieldTag.equals(TAG_SHORT_LABEL))
 			return getShortLabel();
 		if(fieldTag.equals(TAG_METHOD))
-			return method;
+			return method.get();
 		if(fieldTag.equals(TAG_RESOURCE_IDS))
 			return getResourceIdList().toString();
 		
@@ -51,9 +52,9 @@ public class Indicator extends EAMBaseObject
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
-			shortLabel = dataValue;
+			shortLabel.set(dataValue);
 		else if(fieldTag.equals(TAG_METHOD))
-			method = dataValue;
+			method.set(dataValue);
 		else if(fieldTag.equals(TAG_RESOURCE_IDS))
 			resourceIds = new IdList(dataValue);
 		else
@@ -62,7 +63,7 @@ public class Indicator extends EAMBaseObject
 	
 	public String getShortLabel()
 	{
-		return shortLabel;
+		return shortLabel.get();
 	}
 	
 	public IdList getResourceIdList()
@@ -73,8 +74,8 @@ public class Indicator extends EAMBaseObject
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_SHORT_LABEL, shortLabel);
-		json.put(TAG_METHOD, method);
+		json.put(TAG_SHORT_LABEL, getShortLabel());
+		json.put(TAG_METHOD, method.get());
 		json.put(TAG_RESOURCE_IDS, resourceIds.toString());
 		
 		return json;
@@ -91,7 +92,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_METHOD = "Method";
 	public static final String TAG_RESOURCE_IDS = "ResourceIds";
 
-	String shortLabel;
-	String method;
+	StringData shortLabel;
+	StringData method;
 	IdList resourceIds;
 }
