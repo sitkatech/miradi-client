@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
@@ -19,14 +20,14 @@ public class ViewData extends EAMBaseObject
 	public ViewData(BaseId idToUse)
 	{
 		super(idToUse);
-		currentMode = "";
+		currentMode = new StringData();
 		brainstormNodeIds = new IdList();
 	}
 	
 	public ViewData(int idAsInt, JSONObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
-		currentMode = json.optString(TAG_CURRENT_MODE);
+		currentMode = new StringData(json.optString(TAG_CURRENT_MODE));
 		brainstormNodeIds = new IdList(json.optString(TAG_BRAINSTORM_NODE_IDS, "{}"));
 	}
 
@@ -86,12 +87,12 @@ public class ViewData extends EAMBaseObject
 
 	private void setCurrentMode(String currentMode)
 	{
-		this.currentMode = currentMode;
+		this.currentMode.set(currentMode);
 	}
 
 	private String getCurrentMode()
 	{
-		return currentMode;
+		return currentMode.get();
 	}
 
 	private void setBrainstormNodeIds(IdList brainstormNodeIds)
@@ -125,6 +126,6 @@ public class ViewData extends EAMBaseObject
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
 
 	private int currentTab;
-	private String currentMode;
+	private StringData currentMode;
 	private IdList brainstormNodeIds;
 }
