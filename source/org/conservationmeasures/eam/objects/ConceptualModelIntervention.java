@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.json.JSONObject;
 
 
@@ -21,15 +22,14 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
-		activityIds = new IdList();
+		activityIds = new IdListData();
 	}
 	
 	public ConceptualModelIntervention(ModelNodeId idToUse, JSONObject json) throws ParseException
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
-		String activityIdsAsString = json.optString(TAG_ACTIVITY_IDS, "{}");
-		activityIds = new IdList(activityIdsAsString);
+		activityIds = new IdListData(json.optString(TAG_ACTIVITY_IDS));
 	}
 
 	public boolean isIntervention()
@@ -64,7 +64,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	
 	public IdList getActivityIds()
 	{
-		return activityIds;
+		return activityIds.getIdList();
 	}
 
 	public String getData(String fieldTag)
@@ -79,7 +79,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ACTIVITY_IDS.equals(fieldTag))
-			activityIds = new IdList(dataValue);
+			activityIds.set(dataValue);
 		else if(TAG_STATUS.equals(fieldTag))
 			status = dataValue;
 		else
@@ -100,5 +100,5 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public static final String STATUS_REAL = "Real";
 
 	String status;
-	IdList activityIds;
+	IdListData activityIds;
 }

@@ -5,8 +5,13 @@
  */
 package org.conservationmeasures.eam.objectdata;
 
+
 abstract public class ObjectData
 {
-	abstract public void set(String newValue);
+	abstract public void set(String newValue) throws Exception;
 	abstract public String get();
+	final public String toString()
+	{
+		return get();
+	}
 }
