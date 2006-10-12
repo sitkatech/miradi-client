@@ -23,6 +23,7 @@ public class TestProjectMetadata extends EAMTestCase
 		verifyDataField(ProjectMetadata.TAG_PROJECT_VISION, "Coral reefs returned to natural state");
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
+		verifyDataField(ProjectMetadata.TAG_SIZE_IN_HECTARES, "24.3");
 	}
 	
 	public void testStartDate() throws Exception

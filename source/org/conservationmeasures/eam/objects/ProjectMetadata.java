@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.InvalidDateException;
@@ -21,6 +22,7 @@ public class ProjectMetadata extends EAMBaseObject
 		projectScope = new StringData();
 		projectVision = new StringData();
 		startDate = null;
+		sizeInHectares = new NumberData();
 	}
 
 	public ProjectMetadata(int idAsInt, JSONObject json)
@@ -31,6 +33,7 @@ public class ProjectMetadata extends EAMBaseObject
 		projectVision = new StringData(json.optString(TAG_PROJECT_VISION));
 		startDate = createFromIsoStringLenient(json.optString(TAG_START_DATE));
 		effectiveDate = createFromIsoStringLenient(json.optString(TAG_DATA_EFFECTIVE_DATE));
+		sizeInHectares = new NumberData(json.optString(TAG_SIZE_IN_HECTARES));
 	}
 	
 	public int getType()
@@ -62,19 +65,26 @@ public class ProjectMetadata extends EAMBaseObject
 	{
 		return convertMultiCalendarToIsoString(effectiveDate);
 	}
+	
+	public String getSizeInHectares()
+	{
+		return sizeInHectares.get();
+	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_PROJECT_NAME.equals(fieldTag))
-			projectName = new StringData(dataValue);
+			projectName.set(dataValue);
 		else if(TAG_PROJECT_SCOPE.equals(fieldTag))
-			projectScope = new StringData(dataValue);
+			projectScope.set(dataValue);
 		else if(TAG_PROJECT_VISION.equals(fieldTag))
-			projectVision = new StringData(dataValue);
+			projectVision.set(dataValue);
 		else if(TAG_START_DATE.equals(fieldTag))
 			startDate = createFromIsoStringStrict(dataValue);
 		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
 			effectiveDate = createFromIsoStringStrict(dataValue);
+		else if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
+			sizeInHectares.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -91,6 +101,8 @@ public class ProjectMetadata extends EAMBaseObject
 			return getStartDate();
 		if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
 			return getEffectiveDate();
+		if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
+			return sizeInHectares.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -103,6 +115,7 @@ public class ProjectMetadata extends EAMBaseObject
 		json.put(TAG_PROJECT_VISION, projectVision.get());
 		json.put(TAG_START_DATE, getStartDate());
 		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
+		json.put(TAG_SIZE_IN_HECTARES, sizeInHectares.get());
 		return json;
 	}
 	
@@ -143,10 +156,12 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
+	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
 
 	StringData projectName;
 	StringData projectScope;
 	StringData projectVision;
 	MultiCalendar startDate;
 	MultiCalendar effectiveDate;
+	NumberData sizeInHectares;
 }

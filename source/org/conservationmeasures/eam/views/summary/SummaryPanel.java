@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
+import org.conservationmeasures.eam.utils.InvalidNumberException;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
@@ -58,6 +59,12 @@ public class SummaryPanel extends JPanel
 		effectiveDate.setText(project.getMetadata().getEffectiveDate());
 		effectiveDate.addFocusListener(new EffectiveDateFocusHandler());
 		add(effectiveDate);
+
+		add(new UiLabel(EAM.text("Label|Size in Hectares:")));
+		sizeInHectares = new UiTextField(10);
+		sizeInHectares.setText(project.getMetadata().getSizeInHectares());
+		sizeInHectares.addFocusListener(new NumberDataFocusHandler(ProjectMetadata.TAG_SIZE_IN_HECTARES, sizeInHectares));
+		add(sizeInHectares);
 	}
 	
 	private void save(String tag, UiTextField field)
@@ -77,6 +84,12 @@ public class SummaryPanel extends JPanel
 			field.setText(existing);
 			field.requestFocus();
 		}
+		catch (InvalidNumberException e)
+		{
+			EAM.errorDialog(EAM.text("Text|Must be numeric"));
+			field.setText(existing);
+			field.requestFocus();
+		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
@@ -86,7 +99,7 @@ public class SummaryPanel extends JPanel
 
 	abstract class FocusHandler implements FocusListener
 	{
-		public void focusGained(FocusEvent arg0)
+		public void focusGained(FocusEvent event)
 		{
 		}
 	}
@@ -99,7 +112,7 @@ public class SummaryPanel extends JPanel
 			component = componentToUse;
 		}
 		
-		public void focusLost(FocusEvent arg0)
+		public void focusLost(FocusEvent event)
 		{
 			save(tag, component);
 		}
@@ -108,9 +121,27 @@ public class SummaryPanel extends JPanel
 		UiTextField component;
 	}
 	
+	class NumberDataFocusHandler extends FocusHandler
+	{
+		public NumberDataFocusHandler(String tagToUse, UiTextField componentToUse)
+		{
+			tag = tagToUse;
+			component = componentToUse;
+		}
+		
+		public void focusLost(FocusEvent event)
+		{
+			save(tag, component);
+			component.setText(project.getMetadata().getData(tag));
+		}
+		
+		String tag;
+		UiTextField component;
+	}
+	
 	class StartDateFocusHandler extends FocusHandler
 	{
-		public void focusLost(FocusEvent arg0)
+		public void focusLost(FocusEvent event)
 		{
 			save(ProjectMetadata.TAG_START_DATE, startDate);
 			startDate.setText(project.getMetadata().getStartDate());
@@ -119,7 +150,7 @@ public class SummaryPanel extends JPanel
 
 	class EffectiveDateFocusHandler extends FocusHandler
 	{
-		public void focusLost(FocusEvent arg0)
+		public void focusLost(FocusEvent event)
 		{
 			save(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 			effectiveDate.setText(project.getMetadata().getEffectiveDate());
@@ -132,4 +163,5 @@ public class SummaryPanel extends JPanel
 	UiTextField projectVision;
 	UiTextField startDate;
 	UiTextField effectiveDate;
+	UiTextField sizeInHectares;
 }
