@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;

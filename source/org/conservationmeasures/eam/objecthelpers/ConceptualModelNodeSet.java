@@ -1,8 +1,10 @@
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class ConceptualModelNodeSet implements Collection
 {

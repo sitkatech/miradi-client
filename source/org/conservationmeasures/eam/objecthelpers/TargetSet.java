@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelNodeSet;
 
 public class TargetSet extends ConceptualModelNodeSet
 {
