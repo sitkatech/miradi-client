@@ -20,7 +20,7 @@ public class EnhancedJsonObject extends JSONObject
 	
 	public EnhancedJsonObject(String jsonString) throws ParseException
 	{
-		super(jsonString);
+		super(handleEmptyString(jsonString));
 	}
 	
 	public void put(String tag, Color color)
@@ -46,5 +46,12 @@ public class EnhancedJsonObject extends JSONObject
 		if(!has(tag))
 			return defaultColor;
 		return getColor(tag);
+	}
+	
+	private static String handleEmptyString(String possiblyEmptyJsonString)
+	{
+		if(possiblyEmptyJsonString.length() == 0)
+			return "{}";
+		return possiblyEmptyJsonString;
 	}
 }

@@ -65,6 +65,7 @@ public class SummaryPanel extends JPanel
 		sizeInHectares.setText(project.getMetadata().getSizeInHectares());
 		sizeInHectares.addFocusListener(new NumberDataFocusHandler(ProjectMetadata.TAG_SIZE_IN_HECTARES, sizeInHectares));
 		add(sizeInHectares);
+		
 	}
 	
 	private void save(String tag, UiTextField field)

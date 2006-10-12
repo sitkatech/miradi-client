@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -44,7 +45,7 @@ public class IdList
 	
 	public IdList(String listAsJsonString) throws ParseException
 	{
-		this(new JSONObject(listAsJsonString));
+		this(new EnhancedJsonObject(listAsJsonString));
 	}
 	
 	private IdList(List dataToUse)
@@ -132,6 +133,8 @@ public class IdList
 	
 	public String toString()
 	{
+		if(size() == 0)
+			return "";
 		return toJson().toString();
 	}
 	

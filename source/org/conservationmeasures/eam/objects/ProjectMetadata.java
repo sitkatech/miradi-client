@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.DateData;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -23,6 +24,7 @@ public class ProjectMetadata extends EAMBaseObject
 		startDate = new DateData();
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
+		teamResourceIds = new IdListData();
 	}
 
 	public ProjectMetadata(int idAsInt, JSONObject json)
@@ -34,6 +36,7 @@ public class ProjectMetadata extends EAMBaseObject
 		startDate = new DateData(json.optString(TAG_START_DATE));
 		effectiveDate = new DateData(json.optString(TAG_DATA_EFFECTIVE_DATE));
 		sizeInHectares = new NumberData(json.optString(TAG_SIZE_IN_HECTARES));
+		teamResourceIds = new IdListData(json.optString(TAG_TEAM_RESOURCE_IDS));
 	}
 	
 	public int getType()
@@ -85,6 +88,8 @@ public class ProjectMetadata extends EAMBaseObject
 			effectiveDate.set(dataValue);
 		else if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
 			sizeInHectares.set(dataValue);
+		else if(TAG_TEAM_RESOURCE_IDS.equals(fieldTag))
+			teamResourceIds.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -103,6 +108,8 @@ public class ProjectMetadata extends EAMBaseObject
 			return effectiveDate.get();
 		if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
 			return sizeInHectares.get();
+		if(TAG_TEAM_RESOURCE_IDS.equals(fieldTag))
+			return teamResourceIds.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -116,6 +123,7 @@ public class ProjectMetadata extends EAMBaseObject
 		json.put(TAG_START_DATE, getStartDate());
 		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
 		json.put(TAG_SIZE_IN_HECTARES, sizeInHectares.get());
+		json.put(TAG_TEAM_RESOURCE_IDS, teamResourceIds.get());
 		return json;
 	}
 	
@@ -125,6 +133,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
+	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
 
 	StringData projectName;
 	StringData projectScope;
@@ -132,4 +141,5 @@ public class ProjectMetadata extends EAMBaseObject
 	DateData startDate;
 	DateData effectiveDate;
 	NumberData sizeInHectares;
+	IdListData teamResourceIds;
 }

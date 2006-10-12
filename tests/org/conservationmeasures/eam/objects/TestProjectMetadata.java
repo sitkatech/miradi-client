@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 
@@ -24,6 +25,8 @@ public class TestProjectMetadata extends EAMTestCase
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 		verifyDataField(ProjectMetadata.TAG_SIZE_IN_HECTARES, "24.3");
+		IdList sampleIdList = new IdList(new BaseId[] {new BaseId(1), new BaseId(7), new BaseId(152), });
+		verifyDataField(ProjectMetadata.TAG_TEAM_RESOURCE_IDS, sampleIdList.toString());
 	}
 	
 	public void testStartDate() throws Exception

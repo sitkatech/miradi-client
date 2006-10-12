@@ -9,6 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 
 public class IdListData extends ObjectData
 {
@@ -17,15 +18,21 @@ public class IdListData extends ObjectData
 		ids = new IdList();
 	}
 	
-	public IdListData(String valueToUse) throws ParseException
+	public IdListData(String valueToUse)
 	{
-		set(valueToUse);
+		this();
+		try
+		{
+			set(valueToUse);
+		}
+		catch (ParseException e)
+		{
+			EAM.logDebug("IdListData ignoring invalid: " + valueToUse);
+		}
 	}
 
 	public void set(String newValue) throws ParseException
 	{
-		if(newValue.length() == 0)
-			newValue = "{}";
 		set(new IdList(newValue));
 	}
 	

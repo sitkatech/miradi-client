@@ -70,7 +70,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public String getData(String fieldTag)
 	{
 		if(TAG_ACTIVITY_IDS.equals(fieldTag))
-			return getActivityIds().toString();
+			return activityIds.get();
 		else if(TAG_STATUS.equals(fieldTag))
 			return status;
 		return super.getData(fieldTag);
