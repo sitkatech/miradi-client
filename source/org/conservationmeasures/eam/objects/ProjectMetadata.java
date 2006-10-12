@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.json.JSONObject;
@@ -16,14 +17,14 @@ public class ProjectMetadata extends EAMBaseObject
 	public ProjectMetadata(BaseId idToUse)
 	{
 		super(idToUse);
-		projectName = "";
+		projectName = new StringData();
 		startDate = null;
 	}
 
 	public ProjectMetadata(int idAsInt, JSONObject json)
 	{
 		super(new BaseId(idAsInt), json);
-		projectName = json.getString(TAG_PROJECT_NAME);
+		projectName = new StringData(json.getString(TAG_PROJECT_NAME));
 		startDate = createFromIsoStringLenient(json.optString(TAG_START_DATE));
 		effectiveDate = createFromIsoStringLenient(json.optString(TAG_DATA_EFFECTIVE_DATE));
 	}
@@ -35,7 +36,7 @@ public class ProjectMetadata extends EAMBaseObject
 	
 	public String getProjectName()
 	{
-		return projectName;
+		return projectName.get();
 	}
 	
 	public String getStartDate()
@@ -51,7 +52,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public void setData(String fieldTag, Object dataValue) throws Exception
 	{
 		if(TAG_PROJECT_NAME.equals(fieldTag))
-			projectName = (String)dataValue;
+			projectName = new StringData((String)dataValue);
 		else if(TAG_START_DATE.equals(fieldTag))
 			startDate = createFromIsoStringStrict((String)dataValue);
 		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
@@ -75,7 +76,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_PROJECT_NAME, projectName);
+		json.put(TAG_PROJECT_NAME, projectName.get());
 		json.put(TAG_START_DATE, getStartDate());
 		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
 		return json;
@@ -117,7 +118,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 
-	String projectName;
+	StringData projectName;
 	MultiCalendar startDate;
 	MultiCalendar effectiveDate;
 }
