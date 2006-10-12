@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -54,7 +55,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
 		DiagramNode target1 = createNode(DiagramNode.TYPE_TARGET);
-		model.getProjectScopeBox().setVision("Sample Vision");
+		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));

@@ -63,6 +63,11 @@ public class DiagramModel extends DefaultGraphModel
 		return projectScopeBox;
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	public ThreatRatingFramework getThreatRatingFramework()
 	{
 		return project.getThreatRatingFramework();

@@ -19,6 +19,7 @@ public class ProjectMetadata extends EAMBaseObject
 		super(idToUse);
 		projectName = new StringData();
 		projectScope = new StringData();
+		projectVision = new StringData();
 		startDate = null;
 	}
 
@@ -27,6 +28,7 @@ public class ProjectMetadata extends EAMBaseObject
 		super(new BaseId(idAsInt), json);
 		projectName = new StringData(json.getString(TAG_PROJECT_NAME));
 		projectScope = new StringData(json.optString(TAG_PROJECT_SCOPE));
+		projectVision = new StringData(json.optString(TAG_PROJECT_VISION));
 		startDate = createFromIsoStringLenient(json.optString(TAG_START_DATE));
 		effectiveDate = createFromIsoStringLenient(json.optString(TAG_DATA_EFFECTIVE_DATE));
 	}
@@ -46,6 +48,11 @@ public class ProjectMetadata extends EAMBaseObject
 		return projectScope.get();
 	}
 	
+	public String getProjectVision()
+	{
+		return projectVision.get();
+	}
+	
 	public String getStartDate()
 	{
 		return convertMultiCalendarToIsoString(startDate);
@@ -62,6 +69,8 @@ public class ProjectMetadata extends EAMBaseObject
 			projectName = new StringData(dataValue);
 		else if(TAG_PROJECT_SCOPE.equals(fieldTag))
 			projectScope = new StringData(dataValue);
+		else if(TAG_PROJECT_VISION.equals(fieldTag))
+			projectVision = new StringData(dataValue);
 		else if(TAG_START_DATE.equals(fieldTag))
 			startDate = createFromIsoStringStrict(dataValue);
 		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
@@ -76,6 +85,8 @@ public class ProjectMetadata extends EAMBaseObject
 			return getProjectName();
 		if(TAG_PROJECT_SCOPE.equals(fieldTag))
 			return getProjectScope();
+		if(TAG_PROJECT_VISION.equals(fieldTag))
+			return getProjectVision();
 		if(TAG_START_DATE.equals(fieldTag))
 			return getStartDate();
 		if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
@@ -89,6 +100,7 @@ public class ProjectMetadata extends EAMBaseObject
 		JSONObject json = super.toJson();
 		json.put(TAG_PROJECT_NAME, projectName.get());
 		json.put(TAG_PROJECT_SCOPE, projectScope.get());
+		json.put(TAG_PROJECT_VISION, projectVision.get());
 		json.put(TAG_START_DATE, getStartDate());
 		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
 		return json;
@@ -128,11 +140,13 @@ public class ProjectMetadata extends EAMBaseObject
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
+	public static final String TAG_PROJECT_VISION = "ProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 
 	StringData projectName;
 	StringData projectScope;
+	StringData projectVision;
 	MultiCalendar startDate;
 	MultiCalendar effectiveDate;
 }

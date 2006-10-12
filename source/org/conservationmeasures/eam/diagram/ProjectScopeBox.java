@@ -23,7 +23,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	{
 		model = modelToUse;
 		autoSurroundTargets();
-		vision = "";
 		
 		setText(EAM.text("Project Scope"));
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
@@ -50,18 +49,12 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public boolean hasVision()
 	{
-		return vision.length()>0;
+		return getVision().length()>0;
 	}
 	
 	public String getVision()
 	{
-		return vision;
-	}
-	
-	public void setVision(String visionStatement)
-	{
-		vision = visionStatement;
-		autoSurroundTargets();
+		return model.getProject().getMetadata().getProjectVision();
 	}
 	
 	public Rectangle2D getBounds()
@@ -149,6 +142,4 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	final static int VISION_HEIGHT = 40;
 	
 	DiagramModel model;
-	
-	private String vision;
 }

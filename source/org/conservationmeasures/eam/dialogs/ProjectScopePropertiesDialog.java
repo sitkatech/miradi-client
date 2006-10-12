@@ -10,11 +10,14 @@ import java.awt.event.FocusListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.commands.CommandSetProjectVision;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
@@ -81,13 +84,27 @@ public class ProjectScopePropertiesDialog extends JDialog implements ActionListe
 	{
 		try
 		{
-			mainWindow.getProject().executeCommand(new CommandSetProjectVision(getText()));
+			int type = ObjectType.PROJECT_METADATA;
+			BaseId metadataId = getProject().getMetadata().getId();
+			String tag = ProjectMetadata.TAG_PROJECT_VISION;
+			String newVision = getText();
+			
+			if(newVision.equals(getProject().getMetadata().getProjectVision()))
+				return;
+			
+			CommandSetObjectData cmd = new CommandSetObjectData(type, metadataId, tag, newVision);
+			getProject().executeCommand(cmd);
 		}
 		catch (CommandFailedException e)
 		{
 			e.printStackTrace();
-			EAM.errorDialog("Unexpected error saving Project Scope Label");
+			EAM.errorDialog("Unexpected error saving Project Vision");
 		}
+	}
+
+	private Project getProject()
+	{
+		return mainWindow.getProject();
 	}
 
 	public void actionPerformed(ActionEvent e)

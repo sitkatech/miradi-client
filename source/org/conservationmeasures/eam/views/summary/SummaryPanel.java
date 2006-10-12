@@ -32,14 +32,20 @@ public class SummaryPanel extends JPanel
 		add(new UiLabel(EAM.text("Label|Project Name:")));
 		projectName = new UiTextField(50);
 		projectName.setText(project.getMetadata().getProjectName());
-		projectName.addFocusListener(new ProjectNameFocusHandler());
+		projectName.addFocusListener(new StringDataFocusHandler(ProjectMetadata.TAG_PROJECT_NAME, projectName));
 		add(projectName);
 		
 		add(new UiLabel(EAM.text("Label|Project Scope:")));
 		projectScope = new UiTextField(50);
 		projectScope.setText(project.getMetadata().getProjectScope());
-		projectScope.addFocusListener(new ProjectScopeFocusHandler());
+		projectScope.addFocusListener(new StringDataFocusHandler(ProjectMetadata.TAG_PROJECT_SCOPE, projectScope));
 		add(projectScope);
+		
+		add(new UiLabel(EAM.text("Label|Project Vision:")));
+		projectVision = new UiTextField(50);
+		projectVision.setText(project.getMetadata().getProjectVision());
+		projectVision.addFocusListener(new StringDataFocusHandler(ProjectMetadata.TAG_PROJECT_VISION, projectVision));
+		add(projectVision);
 		
 		add(new UiLabel(EAM.text("Label|Start Date:")));
 		startDate = new UiTextField(10);
@@ -85,22 +91,23 @@ public class SummaryPanel extends JPanel
 		}
 	}
 	
-	class ProjectNameFocusHandler extends FocusHandler
+	class StringDataFocusHandler extends FocusHandler
 	{
+		public StringDataFocusHandler(String tagToUse, UiTextField componentToUse)
+		{
+			tag = tagToUse;
+			component = componentToUse;
+		}
+		
 		public void focusLost(FocusEvent arg0)
 		{
-			save(ProjectMetadata.TAG_PROJECT_NAME, projectName);
+			save(tag, component);
 		}
+		
+		String tag;
+		UiTextField component;
 	}
-
-	class ProjectScopeFocusHandler extends FocusHandler
-	{
-		public void focusLost(FocusEvent arg0)
-		{
-			save(ProjectMetadata.TAG_PROJECT_SCOPE, projectScope);
-		}
-	}
-
+	
 	class StartDateFocusHandler extends FocusHandler
 	{
 		public void focusLost(FocusEvent arg0)
@@ -122,6 +129,7 @@ public class SummaryPanel extends JPanel
 	Project project;
 	UiTextField projectName;
 	UiTextField projectScope;
+	UiTextField projectVision;
 	UiTextField startDate;
 	UiTextField effectiveDate;
 }

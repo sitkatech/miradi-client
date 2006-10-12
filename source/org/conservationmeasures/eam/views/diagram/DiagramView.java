@@ -329,7 +329,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	private void refreshIfNeeded(CommandSetObjectData cmd)
 	{
-		if(cmd.getObjectType() != ObjectType.MODEL_LINKAGE)
+		if(cmd.getObjectType() != ObjectType.MODEL_LINKAGE && cmd.getObjectType() != ObjectType.PROJECT_METADATA)
 			return;
 		
 		// may have added or removed a stress
