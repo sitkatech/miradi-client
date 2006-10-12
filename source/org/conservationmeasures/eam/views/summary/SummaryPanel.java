@@ -35,6 +35,12 @@ public class SummaryPanel extends JPanel
 		projectName.addFocusListener(new ProjectNameFocusHandler());
 		add(projectName);
 		
+		add(new UiLabel(EAM.text("Label|Project Scope:")));
+		projectScope = new UiTextField(50);
+		projectScope.setText(project.getMetadata().getProjectScope());
+		projectScope.addFocusListener(new ProjectScopeFocusHandler());
+		add(projectScope);
+		
 		add(new UiLabel(EAM.text("Label|Start Date:")));
 		startDate = new UiTextField(10);
 		startDate.setText(project.getMetadata().getStartDate());
@@ -87,6 +93,14 @@ public class SummaryPanel extends JPanel
 		}
 	}
 
+	class ProjectScopeFocusHandler extends FocusHandler
+	{
+		public void focusLost(FocusEvent arg0)
+		{
+			save(ProjectMetadata.TAG_PROJECT_SCOPE, projectScope);
+		}
+	}
+
 	class StartDateFocusHandler extends FocusHandler
 	{
 		public void focusLost(FocusEvent arg0)
@@ -107,6 +121,7 @@ public class SummaryPanel extends JPanel
 
 	Project project;
 	UiTextField projectName;
+	UiTextField projectScope;
 	UiTextField startDate;
 	UiTextField effectiveDate;
 }
