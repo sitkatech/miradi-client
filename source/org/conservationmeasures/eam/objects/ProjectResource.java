@@ -46,14 +46,14 @@ public class ProjectResource extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_INITIALS))
-			initials = (String)dataValue;
+			initials = dataValue;
 		else if(fieldTag.equals(TAG_NAME))
-			name = (String)dataValue;
+			name = dataValue;
 		else if(fieldTag.equals(TAG_POSITION))
-			position = (String)dataValue;
+			position = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}

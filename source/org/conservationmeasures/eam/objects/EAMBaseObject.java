@@ -87,10 +87,10 @@ abstract public class EAMBaseObject implements EAMObject
 		label = newLabel;
 	}
 	
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_LABEL.equals(fieldTag))
-			setLabel((String)dataValue);
+			setLabel(dataValue);
 		else
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 	}

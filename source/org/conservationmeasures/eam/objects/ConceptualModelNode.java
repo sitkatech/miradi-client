@@ -199,19 +199,19 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_NODE_TYPE))
 			throw new RuntimeException("Cannot use setData to change node type");
 		
 		if(fieldTag.equals(TAG_COMMENT))
-			setComment((String)dataValue);
+			setComment(dataValue);
 		else if(fieldTag.equals(TAG_INDICATOR_ID))
-			setIndicatorId(new IndicatorId(Integer.parseInt((String)dataValue)));
+			setIndicatorId(new IndicatorId(Integer.parseInt(dataValue)));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
-			setGoals(new GoalIds(new IdList((String)dataValue)));
+			setGoals(new GoalIds(new IdList(dataValue)));
 		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
-			setObjectives(new ObjectiveIds(new IdList((String)dataValue)));
+			setObjectives(new ObjectiveIds(new IdList(dataValue)));
 		else
 			super.setData(fieldTag, dataValue);
 	}

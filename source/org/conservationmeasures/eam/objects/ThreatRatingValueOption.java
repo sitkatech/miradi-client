@@ -59,12 +59,12 @@ public class ThreatRatingValueOption extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_NUMERIC.equals(fieldTag))
-			numeric = Integer.parseInt((String)dataValue);
+			numeric = Integer.parseInt(dataValue);
 		else if(TAG_COLOR.equals(fieldTag))
-			color = new Color(Integer.parseInt((String)dataValue));
+			color = new Color(Integer.parseInt(dataValue));
 		else
 			super.setData(fieldTag, dataValue);
 	}

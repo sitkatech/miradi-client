@@ -61,10 +61,10 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		return stressLabel;
 	}
 	
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_STRESS_LABEL.equals(fieldTag))
-			stressLabel = (String)dataValue;
+			stressLabel = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}

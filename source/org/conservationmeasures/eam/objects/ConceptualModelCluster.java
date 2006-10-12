@@ -46,10 +46,10 @@ public class ConceptualModelCluster extends ConceptualModelNode
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_MEMBER_IDS))
-			setMembers(new IdList((String)dataValue));
+			setMembers(new IdList(dataValue));
 		else
 			super.setData(fieldTag, dataValue);
 	}

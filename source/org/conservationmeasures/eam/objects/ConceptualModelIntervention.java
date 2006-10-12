@@ -76,12 +76,12 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ACTIVITY_IDS.equals(fieldTag))
-			activityIds = new IdList((String)dataValue);
+			activityIds = new IdList(dataValue);
 		else if(TAG_STATUS.equals(fieldTag))
-			status = (String)dataValue;
+			status = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}

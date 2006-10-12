@@ -49,14 +49,14 @@ public class ProjectMetadata extends EAMBaseObject
 		return convertMultiCalendarToIsoString(effectiveDate);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_PROJECT_NAME.equals(fieldTag))
-			projectName = new StringData((String)dataValue);
+			projectName = new StringData(dataValue);
 		else if(TAG_START_DATE.equals(fieldTag))
-			startDate = createFromIsoStringStrict((String)dataValue);
+			startDate = createFromIsoStringStrict(dataValue);
 		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
-			effectiveDate = createFromIsoStringStrict((String)dataValue);
+			effectiveDate = createFromIsoStringStrict(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}

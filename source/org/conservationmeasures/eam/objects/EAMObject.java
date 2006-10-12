@@ -13,7 +13,7 @@ public interface EAMObject
 {
 	public BaseId getId();
 	public int getType();
-	public void setData(String fieldTag, Object dataValue) throws Exception;
+	public void setData(String fieldTag, String dataValue) throws Exception;
 	public String getData(String fieldTag);
 	public JSONObject toJson();
 }

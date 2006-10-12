@@ -104,12 +104,12 @@ public class Task extends EAMBaseObject
 		return getResourceIdList().toString();
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SUBTASK_IDS))
-			setSubtaskIdsFromString((String)dataValue);
+			setSubtaskIdsFromString(dataValue);
 		else if(fieldTag.equals(TAG_RESOURCE_IDS))
-			setResourceIdsFromString((String)dataValue);
+			setResourceIdsFromString(dataValue);
 		else super.setData(fieldTag, dataValue);
 	}
 

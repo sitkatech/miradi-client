@@ -44,14 +44,14 @@ public class ViewData extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_CURRENT_MODE.equals(fieldTag))
-			setCurrentMode((String)dataValue);
+			setCurrentMode(dataValue);
 		else if(TAG_CURRENT_TAB.equals(fieldTag))
-			setCurrentTab(new Integer((String)dataValue).intValue());
+			setCurrentTab(new Integer(dataValue).intValue());
 		else if(TAG_BRAINSTORM_NODE_IDS.equals(fieldTag))
-			setBrainstormNodeIds(new IdList((String)dataValue));
+			setBrainstormNodeIds(new IdList(dataValue));
 		else
 			super.setData(fieldTag, dataValue);
 	}

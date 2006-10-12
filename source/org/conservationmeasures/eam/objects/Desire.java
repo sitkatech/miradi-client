@@ -41,12 +41,12 @@ abstract public class Desire extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 
-	public void setData(String fieldTag, Object dataValue) throws Exception
+	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SHORT_LABEL))
-			shortLabel = (String)dataValue;
+			shortLabel = dataValue;
 		else if(fieldTag.equals(TAG_FULL_TEXT))
-			fullText = (String)dataValue;
+			fullText = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
 	}

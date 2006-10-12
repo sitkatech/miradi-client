@@ -67,7 +67,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		String nodeTypeTag = ConceptualModelNode.TAG_NODE_TYPE;
 		try
 		{
-			target.setData(nodeTypeTag, sampleData);
+			target.setData(nodeTypeTag, "This won't be used anyway");
 			fail("Should have thrown attempting to setData for node type");
 		}
 		catch(RuntimeException ignoreExpected)
