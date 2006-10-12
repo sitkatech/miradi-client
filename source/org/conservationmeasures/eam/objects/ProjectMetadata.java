@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
@@ -72,6 +73,16 @@ public class ProjectMetadata extends EAMBaseObject
 	public String getSizeInHectares()
 	{
 		return sizeInHectares.get();
+	}
+	
+	public String getTeamResourceIds()
+	{
+		return teamResourceIds.get();
+	}
+	
+	public IdList getTeamResourceIdList()
+	{
+		return teamResourceIds.getIdList();
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception

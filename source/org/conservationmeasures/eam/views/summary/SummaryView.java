@@ -41,7 +41,7 @@ public class SummaryView extends UmbrellaView
 		
 		removeAll();
 		
-		summaryPanel = new SummaryPanel(getProject());
+		summaryPanel = new SummaryPanel(getMainWindow());
 		UiScrollPane uiScrollPane = new UiScrollPane(summaryPanel);
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

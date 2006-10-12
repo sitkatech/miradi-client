@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 
 public class ObjectPool
 {
@@ -25,6 +26,11 @@ public class ObjectPool
 	public BaseId[] getIds()
 	{
 		return (BaseId[])getRawIds().toArray(new BaseId[0]);
+	}
+	
+	public IdList getIdList()
+	{
+		return new IdList(getIds());
 	}
 
 	public void put(BaseId id, Object obj)

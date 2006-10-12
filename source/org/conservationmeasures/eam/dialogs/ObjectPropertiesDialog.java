@@ -153,10 +153,7 @@ abstract public class ObjectPropertiesDialog extends JDialog
 
 	protected DialogField createResourcePicker(String tag, String label) throws ParseException
 	{
-		BaseId[] allResourceIds = getProject().getResourcePool().getIds();
-		EAMObject[] availableResources = new EAMObject[allResourceIds.length];
-		for(int i = 0; i < availableResources.length; ++i)
-			availableResources[i] = getProject().getResourcePool().find(allResourceIds[i]);
+		EAMObject[] availableResources = getProject().getAllProjectResources();
 	
 		int type = getObject().getType();
 		BaseId id = getObject().getId();

@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -52,6 +53,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
@@ -788,6 +790,21 @@ public class Project
 	}
 	
 	
+	public ProjectResource[] getAllProjectResources()
+	{
+		IdList allResourceIds = getResourcePool().getIdList();
+		return getResources(allResourceIds);
+	}
+
+	public ProjectResource[] getResources(IdList resourceIds)
+	{
+		ProjectResource[] availableResources = new ProjectResource[resourceIds.size()];
+		for(int i = 0; i < availableResources.length; ++i)
+			availableResources[i] = getResourcePool().find(resourceIds.get(i));
+		return availableResources;
+	}
+
+
 	class DiagramSaver implements CommandExecutedListener
 	{
 		public void commandExecuted(CommandExecutedEvent event)
