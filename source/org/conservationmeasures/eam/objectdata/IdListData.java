@@ -44,6 +44,21 @@ public class IdListData extends ObjectData
 		return ids;
 	}
 	
+	public int size()
+	{
+		return ids.size();
+	}
+	
+	public BaseId get(int index)
+	{
+		return ids.get(index);
+	}
+	
+	public void add(BaseId id)
+	{
+		ids.add(id);
+	}
+	
 	public void insertAt(BaseId id, int index)
 	{
 		ids.insertAt(id, index);

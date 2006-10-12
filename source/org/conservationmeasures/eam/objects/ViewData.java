@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
@@ -21,14 +22,14 @@ public class ViewData extends EAMBaseObject
 	{
 		super(idToUse);
 		currentMode = new StringData();
-		brainstormNodeIds = new IdList();
+		brainstormNodeIds = new IdListData();
 	}
 	
 	public ViewData(int idAsInt, JSONObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
 		currentMode = new StringData(json.optString(TAG_CURRENT_MODE));
-		brainstormNodeIds = new IdList(json.optString(TAG_BRAINSTORM_NODE_IDS, "{}"));
+		brainstormNodeIds = new IdListData(json.optString(TAG_BRAINSTORM_NODE_IDS));
 	}
 
 	public String getData(String fieldTag)
@@ -97,12 +98,12 @@ public class ViewData extends EAMBaseObject
 
 	private void setBrainstormNodeIds(IdList brainstormNodeIds)
 	{
-		this.brainstormNodeIds = brainstormNodeIds;
+		this.brainstormNodeIds.set(brainstormNodeIds);
 	}
 
 	private IdList getBrainstormNodeIds()
 	{
-		return brainstormNodeIds;
+		return brainstormNodeIds.getIdList();
 	}
 
 	public int getType()
@@ -114,7 +115,7 @@ public class ViewData extends EAMBaseObject
 	{
 		JSONObject json = super.toJson();
 		json.put(TAG_CURRENT_MODE, getCurrentMode());
-		json.put(TAG_BRAINSTORM_NODE_IDS, getBrainstormNodeIds().toString());
+		json.put(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds.get());
 		return json;
 	}
 
@@ -127,5 +128,5 @@ public class ViewData extends EAMBaseObject
 
 	private int currentTab;
 	private StringData currentMode;
-	private IdList brainstormNodeIds;
+	private IdListData brainstormNodeIds;
 }

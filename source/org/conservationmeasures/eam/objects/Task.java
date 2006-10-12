@@ -9,6 +9,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
@@ -17,27 +18,15 @@ public class Task extends EAMBaseObject
 	public Task(BaseId idToUse)
 	{
 		super(idToUse);
-		subtaskIds = new IdList();
-		resourceIds = new IdList();
+		subtaskIds = new IdListData();
+		resourceIds = new IdListData();
 	}
 	
 	public Task(int idAsInt, JSONObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
-		String subtaskIdsAsString = json.optString(TAG_SUBTASK_IDS, "{}");
-		setSubtaskIdsFromString(subtaskIdsAsString);
-		String resourceIdsAsString = json.optString(TAG_RESOURCE_IDS, "{}");
-		setResourceIdsFromString(resourceIdsAsString);
-	}
-
-	private void setSubtaskIdsFromString(String subtaskIdsAsString) throws ParseException
-	{
-		subtaskIds = new IdList(subtaskIdsAsString);
-	}
-
-	private void setResourceIdsFromString(String resourceIdsAsString) throws ParseException
-	{
-		resourceIds = new IdList(resourceIdsAsString);
+		subtaskIds = new IdListData(json.optString(TAG_SUBTASK_IDS));
+		resourceIds = new IdListData(json.optString(TAG_RESOURCE_IDS));
 	}
 
 	public int getType()
@@ -62,7 +51,7 @@ public class Task extends EAMBaseObject
 	
 	public IdList getSubtaskIdList()
 	{
-		return subtaskIds.createClone();
+		return subtaskIds.getIdList().createClone();
 	}
 	
 	public int getResourceCount()
@@ -72,44 +61,34 @@ public class Task extends EAMBaseObject
 	
 	public IdList getResourceIdList()
 	{
-		return resourceIds.createClone();
+		return resourceIds.getIdList().createClone();
 	}
 	
 	public JSONObject toJson()
 	{
 		JSONObject json = super.toJson();
-		json.put(TAG_SUBTASK_IDS, getSubtaskIdsAsString());
-		json.put(TAG_RESOURCE_IDS, getResourceIdsAsString());
+		json.put(TAG_SUBTASK_IDS, subtaskIds.toString());
+		json.put(TAG_RESOURCE_IDS, resourceIds.toString());
 		return json;
 	}
 
-	private String getSubtaskIdsAsString()
-	{
-		return subtaskIds.toString();
-	}
-	
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_SUBTASK_IDS))
-			return getSubtaskIdsAsString();
+			return subtaskIds.get();
 		
 		if(fieldTag.equals(TAG_RESOURCE_IDS))
-			return getResourceIdsAsString();
+			return resourceIds.get();
 		
 		return super.getData(fieldTag);
-	}
-
-	private String getResourceIdsAsString()
-	{
-		return getResourceIdList().toString();
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(fieldTag.equals(TAG_SUBTASK_IDS))
-			setSubtaskIdsFromString(dataValue);
+			subtaskIds.set(dataValue);
 		else if(fieldTag.equals(TAG_RESOURCE_IDS))
-			setResourceIdsFromString(dataValue);
+			resourceIds.set(dataValue);
 		else super.setData(fieldTag, dataValue);
 	}
 
@@ -117,6 +96,6 @@ public class Task extends EAMBaseObject
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_RESOURCE_IDS = "ResourceIds";
 	
-	IdList subtaskIds;
-	IdList resourceIds;
+	IdListData subtaskIds;
+	IdListData resourceIds;
 }
