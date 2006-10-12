@@ -39,11 +39,6 @@ public class ThreatRatingValueOption extends EAMBaseObject
 		return ObjectType.THREAT_RATING_VALUE_OPTION;
 	}
 	
-	public String getLabel()
-	{
-		return label;
-	}
-	
 	public int getNumericValue()
 	{
 		return numeric;
