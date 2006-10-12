@@ -6,12 +6,11 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.DateData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.json.JSONObject;
-import org.martus.util.MultiCalendar;
 
 public class ProjectMetadata extends EAMBaseObject
 {
@@ -21,7 +20,8 @@ public class ProjectMetadata extends EAMBaseObject
 		projectName = new StringData();
 		projectScope = new StringData();
 		projectVision = new StringData();
-		startDate = null;
+		startDate = new DateData();
+		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
 	}
 
@@ -31,8 +31,8 @@ public class ProjectMetadata extends EAMBaseObject
 		projectName = new StringData(json.getString(TAG_PROJECT_NAME));
 		projectScope = new StringData(json.optString(TAG_PROJECT_SCOPE));
 		projectVision = new StringData(json.optString(TAG_PROJECT_VISION));
-		startDate = createFromIsoStringLenient(json.optString(TAG_START_DATE));
-		effectiveDate = createFromIsoStringLenient(json.optString(TAG_DATA_EFFECTIVE_DATE));
+		startDate = new DateData(json.optString(TAG_START_DATE));
+		effectiveDate = new DateData(json.optString(TAG_DATA_EFFECTIVE_DATE));
 		sizeInHectares = new NumberData(json.optString(TAG_SIZE_IN_HECTARES));
 	}
 	
@@ -58,12 +58,12 @@ public class ProjectMetadata extends EAMBaseObject
 	
 	public String getStartDate()
 	{
-		return convertMultiCalendarToIsoString(startDate);
+		return startDate.get();
 	}
 	
 	public String getEffectiveDate()
 	{
-		return convertMultiCalendarToIsoString(effectiveDate);
+		return effectiveDate.get();
 	}
 	
 	public String getSizeInHectares()
@@ -80,9 +80,9 @@ public class ProjectMetadata extends EAMBaseObject
 		else if(TAG_PROJECT_VISION.equals(fieldTag))
 			projectVision.set(dataValue);
 		else if(TAG_START_DATE.equals(fieldTag))
-			startDate = createFromIsoStringStrict(dataValue);
+			startDate.set(dataValue);
 		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
-			effectiveDate = createFromIsoStringStrict(dataValue);
+			effectiveDate.set(dataValue);
 		else if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
 			sizeInHectares.set(dataValue);
 		else
@@ -98,9 +98,9 @@ public class ProjectMetadata extends EAMBaseObject
 		if(TAG_PROJECT_VISION.equals(fieldTag))
 			return getProjectVision();
 		if(TAG_START_DATE.equals(fieldTag))
-			return getStartDate();
+			return startDate.get();
 		if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
-			return getEffectiveDate();
+			return effectiveDate.get();
 		if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
 			return sizeInHectares.get();
 		
@@ -119,38 +119,6 @@ public class ProjectMetadata extends EAMBaseObject
 		return json;
 	}
 	
-	private String convertMultiCalendarToIsoString(MultiCalendar cal)
-	{
-		if(cal == null)
-			return "";
-		return cal.toIsoDateString();
-	}
-	
-	private MultiCalendar createFromIsoStringLenient(String isoDate)
-	{
-		try
-		{
-			return createFromIsoStringStrict(isoDate);
-		}
-		catch (Exception e)
-		{
-			return null;
-		}
-
-	}
-
-	private MultiCalendar createFromIsoStringStrict(String iso) throws InvalidDateException
-	{
-		try
-		{
-			return MultiCalendar.createFromIsoDateString(iso);
-		}
-		catch (RuntimeException e)
-		{
-			throw new InvalidDateException(e);
-		}
-	}
-
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
@@ -161,7 +129,7 @@ public class ProjectMetadata extends EAMBaseObject
 	StringData projectName;
 	StringData projectScope;
 	StringData projectVision;
-	MultiCalendar startDate;
-	MultiCalendar effectiveDate;
+	DateData startDate;
+	DateData effectiveDate;
 	NumberData sizeInHectares;
 }
