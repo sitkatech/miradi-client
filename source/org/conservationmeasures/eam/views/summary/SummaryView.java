@@ -10,7 +10,13 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
+import org.conservationmeasures.eam.actions.ActionTeamAddMember;
+import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
@@ -71,12 +77,48 @@ public class SummaryView extends UmbrellaView
 		summaryPanel = null;
 		removeAll();
 	}
+	
+	public void showTeamAddMembersDialog()
+	{
+		PossibleTeamMembersDialog dlg = new PossibleTeamMembersDialog(getMainWindow(), teamAddDoer);
+		showFloatingPropertiesDialog(dlg);
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		updateTeamList(event);
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		super.commandUndone(event);
+		updateTeamList(event);
+	}
+	
+	private void updateTeamList(CommandExecutedEvent event)
+	{
+		if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+			return;
+		
+		summaryPanel.rebuild();
+	}
 
 	private void addSummaryDoersToMap()
 	{
+		teamAddDoer = new TeamAddMember();
+		
+		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
+		addDoerToMap(ActionTeamAddMember.class, teamAddDoer);
 	}
 	
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
 	SummaryPanel summaryPanel;
+	
+	TeamAddMember teamAddDoer;
 }

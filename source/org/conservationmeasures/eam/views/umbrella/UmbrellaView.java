@@ -80,6 +80,7 @@ import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogs.FloatingPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
@@ -182,7 +183,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		if(activePropertiesDlg == null)
 			return;
 		
-		if(activePropertiesDlg.getObject().equals(object))
+		EAMObject selectedObject = activePropertiesDlg.getObject();
+		if(selectedObject == null)
+			return;
+		
+		if(selectedObject.equals(object))
 			return;
 		
 		modifyObject(object);
@@ -192,7 +197,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	{
 		ObjectPropertiesDialog dlg = createDialog(object);
 		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
-		showObjectPropertiesDialog(dlg);
+		showFloatingPropertiesDialog(dlg);
 	}
 	
 	class ObjectPropertiesDialogWindowEventHandler extends WindowAdapter
@@ -225,7 +230,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());
 	}
 
-	private void showObjectPropertiesDialog(ObjectPropertiesDialog newDialog)
+	protected void showFloatingPropertiesDialog(FloatingPropertiesDialog newDialog)
 	{
 		if(activePropertiesDlg != null)
 			activePropertiesDlg.dispose();
@@ -377,6 +382,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
 		EAMObject objectBeingEdited = activePropertiesDlg.getObject();
+		if(objectBeingEdited == null)
+			return;
 		if(cmd.getObjectType() != objectBeingEdited.getType())
 			return;
 		if(cmd.getObjectId() != objectBeingEdited.getId())
@@ -397,6 +404,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	
-	private ObjectPropertiesDialog activePropertiesDlg;
+	private FloatingPropertiesDialog activePropertiesDlg;
  
 }

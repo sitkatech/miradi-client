@@ -67,11 +67,19 @@ public class SummaryPanel extends JPanel
 		sizeInHectares.addFocusListener(new NumberDataFocusHandler(ProjectMetadata.TAG_SIZE_IN_HECTARES, sizeInHectares));
 		add(sizeInHectares);
 		
+		add(new UiLabel(EAM.text("Label|Team Members:")));
+		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindow.getActions());
+		add(teamEditorComponent);
 	}
 	
 	Project getProject()
 	{
 		return mainWindow.getProject();
+	}
+	
+	public void rebuild()
+	{
+		teamEditorComponent.rebuild();
 	}
 	
 	private void save(String tag, UiTextField field)
@@ -171,4 +179,5 @@ public class SummaryPanel extends JPanel
 	UiTextField startDate;
 	UiTextField effectiveDate;
 	UiTextField sizeInHectares;
+	TeamEditorComponent teamEditorComponent;
 }

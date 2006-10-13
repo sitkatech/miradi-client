@@ -31,7 +31,7 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
-public class ObjectManagementPanel extends JPanel implements CommandExecutedListener, ListSelectionListener
+public class ObjectManagementPanel extends JPanel implements CommandExecutedListener, ListSelectionListener, ObjectPicker
 {
 	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, EAMObjectPool pool, Class[] buttonActionClasses)
 	{
@@ -44,6 +44,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		view = viewToUse;
 		model = modelToUse;
 		
+		selectedObjects = new EAMObject[0];
 		table = new UiTableWithAlternatingRows(model);
 		
 		// TODO: set all column widths to "reasonable" values
@@ -78,6 +79,11 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		return table;
 	}
 	
+	public EAMObject[] getSelectedObjects()
+	{
+		return selectedObjects;
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		model.fireTableDataChanged();
@@ -97,8 +103,13 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		try
 		{
 			int row = table.getSelectedRow();
+			EAMObject selectedObject = model.getObjectFromRow(row);
+			if(selectedObject == null)
+				selectedObjects = new EAMObject[0];
+			else
+				selectedObjects = new EAMObject[] {selectedObject};
 			if(row >= 0)
-				view.objectWasSelected(model.getObjectFromRow(row));
+				view.objectWasSelected(selectedObject);
 			getMainWindow().getActions().updateActionStates();
 		}
 		catch (Exception e)
@@ -134,4 +145,5 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	UmbrellaView view;
 	ObjectManagerTableModel model;
 	UiTable table;
+	EAMObject[] selectedObjects;
 }

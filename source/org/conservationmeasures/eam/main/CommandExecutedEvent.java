@@ -18,6 +18,11 @@ public class CommandExecutedEvent
 	{
 		return command;
 	}
+	
+	public String getCommandName()
+	{
+		return getCommand().getCommandName();
+	}
 
 	private Command command;
 }

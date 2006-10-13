@@ -12,8 +12,6 @@ import java.awt.event.FocusListener;
 import java.text.ParseException;
 import java.util.Vector;
 
-import javax.swing.JDialog;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -27,17 +25,15 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
-abstract public class ObjectPropertiesDialog extends JDialog
+abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 {
 	ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
 	{
 		super(parentToUse);
-		mainWindow = parentToUse;
 		object = objectToEdit;
 		
 		setModal(false);
@@ -48,16 +44,6 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		return object;
 	}
 	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
-	public Project getProject()
-	{
-		return getMainWindow().getProject();
-	}
-
 	void initializeFields(String[] tags) throws Exception
 	{
 		DialogGridPanel grid = new DialogGridPanel();
@@ -161,7 +147,6 @@ abstract public class ObjectPropertiesDialog extends JDialog
 		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
 
-	MainWindow mainWindow;
 	EAMObject object;
 	DialogField[] fields;
 }

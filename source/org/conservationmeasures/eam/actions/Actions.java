@@ -129,6 +129,11 @@ public class Actions
 		registerAction(new ActionCreateGoal(mainWindow));
 		registerAction(new ActionModifyGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
+		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
+		registerAction(new ActionTeamAddMember(mainWindow));
+		registerAction(new ActionTeamRemoveMember(mainWindow));
+		
+		
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));

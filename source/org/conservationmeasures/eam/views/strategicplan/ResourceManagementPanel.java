@@ -17,7 +17,12 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 {
 	public ResourceManagementPanel(UmbrellaView viewToUse)
 	{
-		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClasses);
+		this(viewToUse, buttonActionClasses);
+	}
+	
+	public ResourceManagementPanel(UmbrellaView viewToUse, Class[] buttonActionClassesToUse)
+	{
+		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClassesToUse);
 	}
 	
 	public ProjectResource getSelectedResource()

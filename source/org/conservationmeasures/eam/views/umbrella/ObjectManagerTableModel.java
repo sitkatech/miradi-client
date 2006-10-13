@@ -44,6 +44,9 @@ public class ObjectManagerTableModel extends UiTableModel
 
 	public EAMObject getObjectFromRow(int rowIndex)
 	{
+		if(rowIndex < 0)
+			return null;
+		
 		BaseId objectId = pool.getIds()[rowIndex];
 		return (EAMObject)pool.getRawObject(objectId);
 	}
