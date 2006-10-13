@@ -18,13 +18,15 @@ public class ProjectInfo
 {
 	public ProjectInfo()
 	{
+		nodeIdAssigner = new IdAssigner(); 
+		annotationIdAssigner = new IdAssigner();
 		clear();
 	}
 	
 	public void clear()
 	{
-		nodeIdAssigner = new IdAssigner(); 
-		annotationIdAssigner = new IdAssigner();
+		nodeIdAssigner.clear(); 
+		annotationIdAssigner.clear();
 		currentView = getDefaultCurrentView();
 		metadataId = BaseId.INVALID;
 	}
@@ -88,8 +90,8 @@ public class ProjectInfo
 	{
 		clear();
 		currentView = copyFrom.optString(TAG_CURRENT_VIEW, getDefaultCurrentView());
-		nodeIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_NODE_ID, IdAssigner.INVALID_ID));
-		annotationIdAssigner = new IdAssigner(copyFrom.optInt(TAG_HIGHEST_ANNOTATION_ID, IdAssigner.INVALID_ID));
+		nodeIdAssigner.idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_NODE_ID, IdAssigner.INVALID_ID)));
+		annotationIdAssigner.idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_ANNOTATION_ID, IdAssigner.INVALID_ID)));
 		metadataId = new BaseId(copyFrom.optInt(TAG_PROJECT_METADATA_ID, -1));
 	}
 	

@@ -71,6 +71,13 @@ public class TestProject extends EAMTestCase
 		project.close();
 	}
 	
+	public void testForOnlyOneAnnotationIdAssigner() throws Exception
+	{
+		IdAssigner original = project.getAnnotationIdAssigner();
+		project.getProjectInfo().fillFrom(project.getProjectInfo().toJson());
+		assertTrue("Constructed new annotation id assigner?", original == project.getAnnotationIdAssigner());
+	}
+	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
 		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeFactor());

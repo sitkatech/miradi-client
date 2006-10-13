@@ -214,6 +214,11 @@ public class Project
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
+	public ProjectInfo getProjectInfo()
+	{
+		return projectInfo;
+	}
+	
 	public ProjectMetadata getMetadata()
 	{
 		return (ProjectMetadata)findObject(ObjectType.PROJECT_METADATA, getMetadataId());
