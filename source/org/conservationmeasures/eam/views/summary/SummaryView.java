@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
+import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiScrollPane;
@@ -116,11 +118,13 @@ public class SummaryView extends UmbrellaView
 		teamAddMemberDoer = new TeamAddMember();
 		teamRemoveMemberDoer = new TeamRemoveMember();
 		modifyResourceDoer = new ModifyResource();
+		createResourceDoer = new CreateResource();
 		
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
 		addDoerToMap(ActionTeamAddMember.class, teamAddMemberDoer);
 		addDoerToMap(ActionTeamRemoveMember.class, teamRemoveMemberDoer);
 		addDoerToMap(ActionModifyResource.class, modifyResourceDoer);
+		addDoerToMap(ActionCreateResource.class, createResourceDoer);
 	}
 	
 	JSplitPane bigSplitter;
@@ -130,4 +134,5 @@ public class SummaryView extends UmbrellaView
 	TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;
 	ModifyResource modifyResourceDoer;
+	CreateResource createResourceDoer;
 }
