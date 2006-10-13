@@ -17,11 +17,6 @@ import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class TeamAddMember extends ObjectsDoer
 {
-	public TeamAddMember()
-	{
-		super();
-	}
-
 	public boolean isAvailable()
 	{
 		if(getObjects().length == 0)
@@ -49,7 +44,7 @@ public class TeamAddMember extends ObjectsDoer
 		catch (ParseException e)
 		{
 			e.printStackTrace();
-			EAM.errorDialog(EAM.text("Text|Unknown error prevented adding this team member"));
+			EAM.errorDialog(EAM.text("Text|Unknown error prevented adding this person to the team"));
 		}
 	}
 
