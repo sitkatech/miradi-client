@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -16,6 +17,7 @@ public class TeamTable extends UiTable implements ObjectPicker
 	public TeamTable(TeamModel modelToUse)
 	{
 		super(modelToUse);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 	
 	public TeamModel getTeamModel()
