@@ -190,6 +190,11 @@ public class Actions
 		
 		return (EAMAction)action;
 	}
+	
+	public ObjectsAction getObjectsAction(Class c)
+	{
+		return (ObjectsAction)get(c);
+	}
 
 	public void updateActionStates()
 	{

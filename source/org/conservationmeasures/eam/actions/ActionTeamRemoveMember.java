@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionTeamRemoveMember extends ViewAction
+public class ActionTeamRemoveMember extends ObjectsAction
 {
 	public ActionTeamRemoveMember(MainWindow mainWindowToUse)
 	{

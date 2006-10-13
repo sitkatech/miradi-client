@@ -44,7 +44,6 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		view = viewToUse;
 		model = modelToUse;
 		
-		selectedObjects = new EAMObject[0];
 		table = new UiTableWithAlternatingRows(model);
 		
 		// TODO: set all column widths to "reasonable" values
@@ -79,10 +78,26 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		return table;
 	}
 	
+	public void addButtons(UiButton[] buttons)
+	{
+		for(int i = 0; i < buttons.length; ++i)
+			buttonBox.add(buttons[i]);
+	}
+	
 	public EAMObject[] getSelectedObjects()
 	{
-		return selectedObjects;
+		int[] rows = table.getSelectedRows();
+		EAMObject[] objects = new EAMObject[rows.length];
+		for(int i = 0; i < objects.length; ++i)
+			objects[i] = model.getObjectFromRow(rows[i]);
+		return objects;
 	}
+
+	public void addListSelectionListener(ListSelectionListener listener)
+	{
+		table.getSelectionModel().addListSelectionListener(listener);
+	}
+
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -104,10 +119,6 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		{
 			int row = table.getSelectedRow();
 			EAMObject selectedObject = model.getObjectFromRow(row);
-			if(selectedObject == null)
-				selectedObjects = new EAMObject[0];
-			else
-				selectedObjects = new EAMObject[] {selectedObject};
 			if(row >= 0)
 				view.objectWasSelected(selectedObject);
 			getMainWindow().getActions().updateActionStates();
@@ -120,7 +131,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	
 	Component createButtonPanel(Actions actions, Class[] buttonActionClasses)
 	{
-		Box buttonBox = Box.createHorizontalBox();
+		buttonBox = Box.createHorizontalBox();
 		for(int i = 0; i < buttonActionClasses.length; ++i)
 			buttonBox.add(new UiButton(actions.get(buttonActionClasses[i])));
 		
@@ -145,5 +156,5 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	UmbrellaView view;
 	ObjectManagerTableModel model;
 	UiTable table;
-	EAMObject[] selectedObjects;
+	Box buttonBox;
 }

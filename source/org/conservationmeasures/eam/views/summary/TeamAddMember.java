@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class TeamAddMember extends ObjectsDoer
@@ -33,13 +32,6 @@ public class TeamAddMember extends ObjectsDoer
 			return false;
 		
 		return true;
-	}
-
-	private BaseId getSelectedId()
-	{
-		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
-		BaseId selectedId = selectedResource.getId();
-		return selectedId;
 	}
 
 	public void doIt() throws CommandFailedException

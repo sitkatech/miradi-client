@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.Container;
 
-import org.conservationmeasures.eam.actions.ActionCreateResource;
-import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
 import org.conservationmeasures.eam.views.summary.TeamAddMember;
+import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
@@ -29,7 +29,10 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 		
 		contents.add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
 		
-		ResourceManagementPanel resourcePanel = new ResourceManagementPanel(getView(), buttonActionClasses);
+		ResourceManagementPanel resourcePanel = new ResourceManagementPanel(getView());
+		ObjectsAction addMemberAction = getMainWindow().getActions().getObjectsAction(ActionTeamAddMember.class);
+		UiButton[] extraButtons = {new ObjectsActionButton(addMemberAction, resourcePanel), };
+		resourcePanel.addButtons(extraButtons);
 		contents.add(resourcePanel, BorderLayout.CENTER);
 		addMemberDoer.setPicker(resourcePanel);
 		
@@ -55,11 +58,4 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 	}
 	
 
-
-	static final Class[] buttonActionClasses = {
-		ActionCreateResource.class, 
-		ActionModifyResource.class, 
-		ActionDeleteResource.class, 
-		ActionTeamAddMember.class,
-		};
 }

@@ -5,7 +5,9 @@
  */
 package org.conservationmeasures.eam.views;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
@@ -22,5 +24,11 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectedObjects();
 	}
 	
+	public BaseId getSelectedId()
+	{
+		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
+		return selectedResource.getId();
+	}
+
 	private ObjectPicker picker;
 }

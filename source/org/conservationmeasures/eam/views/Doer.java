@@ -10,6 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 abstract public class Doer
@@ -35,5 +36,10 @@ abstract public class Doer
 	public void setLocation(Point location)
 	{
 		// overridden by any subclass that knows about diagram locations
+	}
+	
+	public void setPicker(ObjectPicker picker)
+	{
+		// overridden by any subclass that knows about selected objects
 	}
 }
