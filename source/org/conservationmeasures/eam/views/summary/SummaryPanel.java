@@ -8,19 +8,14 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.Box;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.actions.ActionEditTeam;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
@@ -72,14 +67,6 @@ public class SummaryPanel extends JPanel
 		sizeInHectares.addFocusListener(new NumberDataFocusHandler(ProjectMetadata.TAG_SIZE_IN_HECTARES, sizeInHectares));
 		add(sizeInHectares);
 		
-		IdList teamResourceIds = getProject().getMetadata().getTeamResourceIdList();
-		ProjectResource[] resources = getProject().getResources(teamResourceIds);
-		add(new UiLabel(EAM.text("Label|Team Members:")));
-		Box teamPanel = Box.createHorizontalBox();
-		teamPanel.add(new UiLabel(ProjectResource.getResourcesAsHtml(resources)));
-		UiButton editTeamButton = new UiButton(mainWindow.getActions().get(ActionEditTeam.class));
-		teamPanel.add(editTeamButton);
-		add(teamPanel);
 	}
 	
 	Project getProject()

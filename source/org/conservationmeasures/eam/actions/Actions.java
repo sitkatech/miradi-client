@@ -175,7 +175,6 @@ public class Actions
 		registerAction(new ActionJumpShare(mainWindow));
 		registerAction(new ActionJumpCreate(mainWindow));
 		registerAction(new ActionJumpCloseTheLoop(mainWindow));
-		registerAction(new ActionEditTeam(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -21,6 +21,8 @@ public class SummaryView extends UmbrellaView
 	{
 		super(mainWindowToUse);
 		setToolBar(new SummaryToolBar(mainWindowToUse.getActions()));
+		
+		addSummaryDoersToMap();
 	}
 
 	public String cardName() 
@@ -70,6 +72,10 @@ public class SummaryView extends UmbrellaView
 		removeAll();
 	}
 
+	private void addSummaryDoersToMap()
+	{
+	}
+	
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
 	SummaryPanel summaryPanel;
