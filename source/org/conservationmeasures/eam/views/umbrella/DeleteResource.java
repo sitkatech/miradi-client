@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 import java.text.ParseException;
 import java.util.Vector;
@@ -20,21 +20,13 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class DeleteResource extends ViewDoer
+public class DeleteResource extends ObjectsDoer
 {
-	public ResourceManagementPanel getResourcePanel()
-	{
-		return ((StrategicPlanView)getView()).getResourcePanel();
-	}
-	
 	public boolean isAvailable()
 	{
-		if(getResourcePanel() == null)
-			return false;
-		
-		return getResourcePanel().getSelectedResource() != null;
+		return (getObjects().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -42,7 +34,7 @@ public class DeleteResource extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		ProjectResource resource = getResourcePanel().getSelectedResource();
+		ProjectResource resource = (ProjectResource)getObjects()[0];
 		
 		BaseId idToRemove = resource.getId();
 		Task[] tasksThatUseThisResource = findTasksThatUseThisResource(idToRemove);

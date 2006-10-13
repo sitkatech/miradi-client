@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 
 abstract public class EAMNormalObjectPool extends EAMObjectPool
@@ -20,6 +21,7 @@ abstract public class EAMNormalObjectPool extends EAMObjectPool
 	public EAMObject createObject(BaseId proposedId)
 	{
 		BaseId actualId = idAssigner.obtainRealId(proposedId);
+		EAM.logDebug("EAMNormalObjectPool.createObject requested: " + proposedId + " and took " + actualId);
 		EAMObject created = createRawObject(actualId);
 		put(actualId, created);
 		return created;

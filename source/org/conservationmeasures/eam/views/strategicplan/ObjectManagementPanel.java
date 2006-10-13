@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -151,6 +152,13 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		}
 	}
 	
+
+
+	protected ObjectsActionButton createObjectsActionButton(Class actionClass)
+	{
+		return new ObjectsActionButton(getMainWindow().getActions().getObjectsAction(actionClass), this);
+	}
+
 
 
 	UmbrellaView view;

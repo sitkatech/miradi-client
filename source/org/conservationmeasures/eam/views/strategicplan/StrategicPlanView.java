@@ -23,6 +23,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
+import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 
 public class StrategicPlanView extends TabbedView
@@ -50,13 +51,12 @@ public class StrategicPlanView extends TabbedView
 	{
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		objectivePanel = new ObjectiveManagementPanel(this);
-		resourcePanel = new ResourceManagementPanel(this);
 		goalPanel = new GoalManagementPanel(this);
 
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
 		addTab(EAM.text("Objectives"), objectivePanel);
 		addTab(EAM.text("Goals"), goalPanel);
-		addTab(EAM.text("Resources"), resourcePanel);
+		addTab(EAM.text("Resources"), new ResourceManagementPanel(this));
 	}
 	
 	public void deleteTabs()
@@ -65,18 +65,12 @@ public class StrategicPlanView extends TabbedView
 			strategicPlanPanel.close();
 		strategicPlanPanel = null;
 		objectivePanel = null;
-		resourcePanel = null;
 		goalPanel = null;
 	}
 
 	public StrategicPlanPanel getStrategicPlanPanel()
 	{
 		return strategicPlanPanel;
-	}
-	
-	public ResourceManagementPanel getResourcePanel()
-	{
-		return resourcePanel;
 	}
 	
 	public ObjectiveManagementPanel getObjectivePanel()
@@ -139,7 +133,6 @@ public class StrategicPlanView extends TabbedView
 	}
 	
 	StrategicPlanPanel strategicPlanPanel;
-	ResourceManagementPanel resourcePanel;
 	ObjectiveManagementPanel objectivePanel;
 	GoalManagementPanel goalPanel;
 	

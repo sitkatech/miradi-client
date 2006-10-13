@@ -10,17 +10,9 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.ObjectsDoer;
-import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 
 public class ModifyResource extends ObjectsDoer
 {
-	public ResourceManagementPanel getResourcePanel()
-	{
-		StrategicPlanView view = (StrategicPlanView)getView();
-		return view.getResourcePanel();
-	}
-	
 	public boolean isAvailable()
 	{
 		return (getObjects().length == 1);

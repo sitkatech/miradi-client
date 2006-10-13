@@ -23,17 +23,17 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 	{
 		super(mainWindowToUse);
 		
-		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
-		
-		contents.add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
-		
 		ResourceManagementPanel resourcePanel = new ResourceManagementPanel(getView());
+		
 		ObjectsAction addMemberAction = getMainWindow().getActions().getObjectsAction(ActionTeamAddMember.class);
 		UiButton[] extraButtons = {new ObjectsActionButton(addMemberAction, resourcePanel), };
 		resourcePanel.addButtons(extraButtons);
-		contents.add(resourcePanel, BorderLayout.CENTER);
 		
+		
+		Container contents = getContentPane();
+		contents.setLayout(new BorderLayout());
+		contents.add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
+		contents.add(resourcePanel, BorderLayout.CENTER);
 		pack();
 	}
 
