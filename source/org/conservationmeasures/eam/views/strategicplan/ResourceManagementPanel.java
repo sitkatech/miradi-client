@@ -8,21 +8,23 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiButton;
 
 public class ResourceManagementPanel extends ObjectManagementPanel 
 {
 	public ResourceManagementPanel(UmbrellaView viewToUse)
 	{
-		this(viewToUse, buttonActionClasses);
-	}
-	
-	public ResourceManagementPanel(UmbrellaView viewToUse, Class[] buttonActionClassesToUse)
-	{
-		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClassesToUse);
+		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClasses);
+		
+		ObjectsAction modifyResourceAction = getMainWindow().getActions().getObjectsAction(ActionModifyResource.class);
+		UiButton[] extraButtons = {new ObjectsActionButton(modifyResourceAction, this), };
+		addButtons(extraButtons);
 	}
 	
 	public ProjectResource getSelectedResource()
@@ -40,7 +42,6 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 	static final String[] columnTags = {"Initials", "Name", "Position", };
 	static final Class[] buttonActionClasses = {
 		ActionCreateResource.class, 
-		ActionModifyResource.class, 
 		ActionDeleteResource.class, 
 		};
 

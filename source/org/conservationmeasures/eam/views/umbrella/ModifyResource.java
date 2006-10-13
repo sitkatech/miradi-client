@@ -3,20 +3,18 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 
-public class ModifyResource extends ViewDoer
+public class ModifyResource extends ObjectsDoer
 {
-	public ModifyResource()
-	{
-	}
-	
 	public ResourceManagementPanel getResourcePanel()
 	{
 		StrategicPlanView view = (StrategicPlanView)getView();
@@ -25,10 +23,7 @@ public class ModifyResource extends ViewDoer
 	
 	public boolean isAvailable()
 	{
-		if(getResourcePanel() == null)
-			return false;
-		
-		return getResourcePanel().getSelectedResource() != null;
+		return (getObjects().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -38,7 +33,7 @@ public class ModifyResource extends ViewDoer
 		
 		try
 		{
-			ProjectResource resource = getResourcePanel().getSelectedResource();
+			ProjectResource resource = (ProjectResource)getObjects()[0];
 			getView().modifyObject(resource);
 		}
 		catch (Exception e)

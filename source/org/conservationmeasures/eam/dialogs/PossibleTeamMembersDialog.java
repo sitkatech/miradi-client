@@ -14,13 +14,12 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
-import org.conservationmeasures.eam.views.summary.TeamAddMember;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 {
-	public PossibleTeamMembersDialog(MainWindow mainWindowToUse, TeamAddMember addMemberDoer)
+	public PossibleTeamMembersDialog(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		
@@ -34,7 +33,6 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 		UiButton[] extraButtons = {new ObjectsActionButton(addMemberAction, resourcePanel), };
 		resourcePanel.addButtons(extraButtons);
 		contents.add(resourcePanel, BorderLayout.CENTER);
-		addMemberDoer.setPicker(resourcePanel);
 		
 		pack();
 	}

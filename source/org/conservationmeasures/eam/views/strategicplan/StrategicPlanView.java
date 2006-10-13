@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
+import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 
 public class StrategicPlanView extends TabbedView
 {
