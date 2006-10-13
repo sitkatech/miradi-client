@@ -17,12 +17,12 @@ public class ActionViewPossibleTeamMembers extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Add Member");
+		return EAM.text("Action|Manage|Add Members");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add a member to the team");
+		return EAM.text("TT|Add people to the team");
 	}
 	
 }
