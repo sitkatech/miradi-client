@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
+import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
@@ -80,7 +81,7 @@ public class SummaryView extends UmbrellaView
 	
 	public void showTeamAddMembersDialog()
 	{
-		PossibleTeamMembersDialog dlg = new PossibleTeamMembersDialog(getMainWindow(), teamAddDoer);
+		PossibleTeamMembersDialog dlg = new PossibleTeamMembersDialog(getMainWindow(), teamAddMemberDoer);
 		showFloatingPropertiesDialog(dlg);
 	}
 
@@ -110,15 +111,18 @@ public class SummaryView extends UmbrellaView
 
 	private void addSummaryDoersToMap()
 	{
-		teamAddDoer = new TeamAddMember();
+		teamAddMemberDoer = new TeamAddMember();
+		teamRemoveMemberDoer = new TeamRemoveMember();
 		
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
-		addDoerToMap(ActionTeamAddMember.class, teamAddDoer);
+		addDoerToMap(ActionTeamAddMember.class, teamAddMemberDoer);
+		addDoerToMap(ActionTeamRemoveMember.class, teamRemoveMemberDoer);
 	}
 	
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
 	SummaryPanel summaryPanel;
 	
-	TeamAddMember teamAddDoer;
+	TeamAddMember teamAddMemberDoer;
+	TeamRemoveMember teamRemoveMemberDoer;
 }
