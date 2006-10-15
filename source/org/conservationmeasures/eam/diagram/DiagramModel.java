@@ -421,9 +421,16 @@ public class DiagramModel extends DefaultGraphModel
 		ModelNodeId[] nodeIds = getNodePool().getModelNodeIds();
 		for(int i = 0;i < nodeIds.length; ++i)
 		{
-			DiagramNode node = getNodeById(nodeIds[i]);
-			if(node.isCluster())
-				addNodesToCluster((DiagramCluster)node);
+			try
+			{
+				DiagramNode node = getNodeById(nodeIds[i]);
+				if(node.isCluster())
+					addNodesToCluster((DiagramCluster)node);
+			}
+			catch(Exception e)
+			{
+				EAM.logWarning("Node " + nodeIds[i] + " not in the diagram");
+			}
 		}
 	}
 	

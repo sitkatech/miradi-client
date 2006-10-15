@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -89,6 +90,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion6();
 		if(readDataVersion(getTopDirectory()) == 6)
 			upgradeToVersion7();
+		if(readDataVersion(getTopDirectory()) == 7)
+			upgradeToVersion8();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -149,7 +152,7 @@ public class DataUpgrader extends ProjectServer
 		{
 			File nodeFile = new File(nodesDirectory, Integer.toString(ids[i].asInt()));
 			JSONObject json = JSONFile.read(nodeFile);
-			json.put(ConceptualModelNode.TAG_LABEL, json.get(TAG_NAME));
+			json.put(ConceptualModelNode.TAG_LABEL, json.opt(TAG_NAME));
 			// no need to clear out the old Name field
 			JSONFile.write(nodeFile, json);
 		}
@@ -273,7 +276,43 @@ public class DataUpgrader extends ProjectServer
 			}
 		}
 	}
+	
+	public void upgradeToVersion8() throws Exception
+	{
+		captureExistingValueOptions();
+		writeVersion(8);
+	}
+	
+	public void captureExistingValueOptions() throws Exception
+	{
+		final int optionType = 2;
+		final String frameworkFilename = "threatframework";
+		final String valueOptionIdsTag = "ValueOptionIds";
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File threatFrameworkFile = new File(jsonDirectory, frameworkFilename);
 
-	private static final int NODE_TYPE = ObjectType.MODEL_NODE;
+		JSONObject frameworkJson = new EnhancedJsonObject();
+		if(threatFrameworkFile.exists())
+			frameworkJson = JSONFile.read(threatFrameworkFile);
+		if(frameworkJson.has(valueOptionIdsTag))
+			EAM.logWarning("DataUpgrader.captureExistingValueOptions: Not needed");
+		
+		
+		File manifestFile = getObjectManifestFile(optionType);
+		if(!manifestFile.exists())
+			return;
+		
+		ObjectManifest manifest = readObjectManifest(optionType);
+		BaseId[] ids = manifest.getAllKeys();
+
+		IdList optionIds = new IdList();
+		for(int i = 0; i < ids.length; ++i)
+			 optionIds.add(ids[i]);
+		
+		frameworkJson.put(valueOptionIdsTag, optionIds.toJson());
+		JSONFile.write(threatFrameworkFile, frameworkJson);
+	}
+
+	private static final int NODE_TYPE = 4;
 
 }

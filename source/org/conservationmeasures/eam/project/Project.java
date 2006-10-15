@@ -303,11 +303,7 @@ public class Project
 
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
-		if(getMetadataId().isInvalid())
-			createProjectMetadata();
-		
-		if(threatRatingFramework.getCriteria().length == 0)
-			threatRatingFramework.createDefaultObjects();
+		threatRatingFramework.createDefaultObjectsIfNeeded();
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -332,9 +328,7 @@ public class Project
 		db.open(projectDirectory);
 		loadProjectInfo();
 		objectManager.loadFromDatabase();
-		loadThreatRatingFramework();
-		loadDiagram();
-		
+
 		ProjectRepairer.repairAnyProblems(this);
 	}
 	
@@ -360,6 +354,12 @@ public class Project
 
 	protected void finishOpening() throws Exception
 	{
+		if(getMetadataId().isInvalid())
+			createProjectMetadata();
+		
+		loadThreatRatingFramework();
+		loadDiagram();
+		
 		createDefaultObjectsIfNeeded();
 
 		database.writeVersion();

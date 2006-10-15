@@ -15,6 +15,7 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -40,6 +41,7 @@ public class ThreatRatingFramework
 	public void clear()
 	{
 		bundles = new HashMap();
+		valueOptionIds = new IdList();
 	}
 	
 	public Project getProject()
@@ -47,17 +49,29 @@ public class ThreatRatingFramework
 		return project;
 	}
 	
-	public void createDefaultObjects() throws Exception
+	public IdList getValueOptionIds()
 	{
-		createDefaultCriterion(EAM.text("Label|Scope")); 
-		createDefaultCriterion(EAM.text("Label|Severity"));
-		createDefaultCriterion(EAM.text("Label|Irreversibility"));
+		return valueOptionIds;
+	}
+	
+	public void createDefaultObjectsIfNeeded() throws Exception
+	{
+		if(getCriteria().length == 0)
+		{
+			createDefaultCriterion(EAM.text("Label|Scope")); 
+			createDefaultCriterion(EAM.text("Label|Severity"));
+			createDefaultCriterion(EAM.text("Label|Irreversibility"));
+		}
 		
-		createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
-		createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
-		createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
-		createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW);
-		createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
+		if(getValueOptionIds().size() == 0)
+		{
+			createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
+			createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
+			createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
+			createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW);
+			createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
+			saveFramework();
+		}
 	}
 
 	private void createDefaultValueOption(String label, int numericValue, Color color) throws Exception
@@ -67,6 +81,7 @@ public class ThreatRatingFramework
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_LABEL, label);
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		valueOptionIds.add(createdId);
 	}
 
 	private void createDefaultCriterion(String label) throws Exception
@@ -88,11 +103,10 @@ public class ThreatRatingFramework
 
 	public ThreatRatingValueOption[] getValueOptions()
 	{
-		BaseId[] ids = getOptionPool().getIds();
-		ThreatRatingValueOption[] result = new ThreatRatingValueOption[ids.length];
-		for(int i = 0; i < ids.length; ++i)
+		ThreatRatingValueOption[] result = new ThreatRatingValueOption[valueOptionIds.size()];
+		for(int i = 0; i < valueOptionIds.size(); ++i)
 		{
-			result[i] = getValueOption(ids[i]);
+			result[i] = getValueOption(valueOptionIds.get(i));
 		}
 		Arrays.sort(result, new OptionSorter());
 		return result;
@@ -351,6 +365,7 @@ public class ThreatRatingFramework
 			bundleKeys.put(pair);
 		}
 		json.put(TAG_BUNDLE_KEYS, bundleKeys);
+		json.put(TAG_VALUE_OPTION_IDS, valueOptionIds.toJson());
 		return json;
 	}
 	
@@ -362,7 +377,9 @@ public class ThreatRatingFramework
 		if(json == null)
 			return;
 
-		JSONArray bundleKeys = json.getJSONArray(TAG_BUNDLE_KEYS);
+		JSONArray bundleKeys = json.optJSONArray(TAG_BUNDLE_KEYS);
+		if(bundleKeys == null)
+			bundleKeys = new JSONArray();
 		for(int i = 0; i < bundleKeys.length(); ++i)
 		{
 			JSONObject pair = bundleKeys.getJSONObject(i);
@@ -371,6 +388,8 @@ public class ThreatRatingFramework
 			ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);
 			memorize(bundle);
 		}
+		
+		valueOptionIds = new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS));
 	}
 
 	private ProjectServer getDatabase()
@@ -380,10 +399,12 @@ public class ThreatRatingFramework
 	}
 	
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
+	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
 	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
 	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
 	private Project project;
 	
 	private HashMap bundles;
+	private IdList valueOptionIds;
 }

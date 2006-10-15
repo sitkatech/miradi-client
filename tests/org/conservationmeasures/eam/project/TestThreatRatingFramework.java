@@ -13,6 +13,7 @@ import java.util.List;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -65,16 +66,19 @@ public class TestThreatRatingFramework extends EAMTestCase
 			ModelNodeId targetId = new ModelNodeId(983);
 			ThreatRatingBundle bundle = realProject.getThreatRatingFramework().getBundle(threatId, targetId);
 			bundle.setValueId(createdId, new BaseId(838));
+			IdList realOptionIds = realProject.getThreatRatingFramework().getValueOptionIds();
 			realProject.getThreatRatingFramework().saveBundle(bundle);
 			realProject.getDatabase().writeThreatRatingFramework(realProject.getThreatRatingFramework());
 			realProject.close();
 
 			Project loadedProject = new Project();
 			loadedProject.createOrOpen(tempDir);
+			IdList loadedOptionIds = loadedProject.getThreatRatingFramework().getValueOptionIds();
 			ThreatRatingFramework loadedFramework = loadedProject.getThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());
 			ThreatRatingBundle gotBundle = loadedProject.getThreatRatingFramework().getBundle(threatId, targetId);
 			assertEquals("didn't load bundles?", bundle.getValueId(createdId), gotBundle.getValueId(createdId));
+			assertEquals("didn't load options?", realOptionIds, loadedOptionIds);
 			loadedProject.close();
 		}
 		finally
@@ -171,7 +175,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummary() throws Exception
 	{
-		framework.createDefaultObjects();
+		framework.createDefaultObjectsIfNeeded();
 		
 		ModelNodeId threatId1 = createThreat(project);
 		ModelNodeId threatId2 = createThreat(project);

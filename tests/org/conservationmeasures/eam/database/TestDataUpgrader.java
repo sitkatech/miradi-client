@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -320,6 +321,45 @@ public class TestDataUpgrader extends EAMTestCase
 		}
 		
 	}
+	
+	public void testCaptureExistingValueOptions() throws Exception
+	{
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		
+		File jsonDirectory = new File(tempDirectory, "json");
+		jsonDirectory.mkdirs();
+		File threatFrameworkFile = new File(jsonDirectory, "threatframework");
+		createFile(threatFrameworkFile, new JSONObject().toString());
+		
+		File optionsDirectory = new File(tempDirectory, "json/objects-2");
+		optionsDirectory.mkdirs();
+		
+		IdList optionIds = new IdList();
+		optionIds.add(4);
+		optionIds.add(7);
+		optionIds.add(5);
+		
+		for(int i = 0; i < optionIds.size(); ++i)
+		{
+			createFile(new File(optionsDirectory, Integer.toString(i)), buildValueOptionFileContents(i));
+		}
+		
+		File manifestFile = new File(optionsDirectory, "manifest");
+		createFile(manifestFile, buildManifestContents(optionIds));
+		
+		upgrader.captureExistingValueOptions();
+		
+		EnhancedJsonObject json = JSONFile.read(threatFrameworkFile);
+		IdList migratedOptionIds = new IdList(json.getString("ValueOptionIds"));
+		assertEquals("Wrong option count?", optionIds.size(), migratedOptionIds.size());
+		for(int i = 0; i < optionIds.size(); ++i)
+			assertTrue("Didn't capture #" + i + "?", migratedOptionIds.contains(optionIds.get(i)));
+	}
+	
+	private String buildValueOptionFileContents(int id)
+	{
+		return "{\"Color\":-14336,\"Numeric\":" + id + ",\"Label\":\"High\",\"Id\":" + id + "}";
+	}
 
 	private String readFile(File file) throws IOException
 	{
@@ -327,6 +367,14 @@ public class TestDataUpgrader extends EAMTestCase
 		String contents = reader.readAll();
 		reader.close();
 		return contents;
+	}
+	
+	String buildManifestContents(IdList idList)
+	{
+		int[] ids = new int[idList.size()];
+		for(int i = 0; i < ids.length; ++i)
+			ids[i] = idList.get(i).asInt();
+		return buildManifestContents(ids);
 	}
 	
 	String buildManifestContents(int[] ids)
