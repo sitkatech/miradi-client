@@ -15,6 +15,8 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
+import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.GraphConstants;
 
 public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListener
@@ -54,7 +56,13 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public String getVision()
 	{
-		return model.getProject().getMetadata().getProjectVision();
+		ProjectMetadata metadata = getProject().getMetadata();
+		return metadata.getProjectVision();
+	}
+
+	private Project getProject()
+	{
+		return model.getProject();
 	}
 	
 	public Rectangle2D getBounds()
