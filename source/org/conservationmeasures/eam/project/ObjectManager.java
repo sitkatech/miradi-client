@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
-import org.conservationmeasures.eam.objectpools.ThreatRatingValueOptionPool;
+import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -48,7 +48,7 @@ public class ObjectManager
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
 		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool(new LinkageMonitor()));
 		addNormalPool(new ThreatRatingCriterionPool(ida));
-		addNormalPool(new ThreatRatingValueOptionPool(ida));
+		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));
 		addNormalPool(new ViewPool(ida));
 		addNormalPool(new ResourcePool(ida));

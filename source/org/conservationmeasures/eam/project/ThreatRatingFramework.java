@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
-import org.conservationmeasures.eam.objectpools.ThreatRatingValueOptionPool;
+import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -96,9 +96,9 @@ public class ThreatRatingFramework
 		return bundles.size();
 	}
 	
-	ThreatRatingValueOptionPool getOptionPool()
+	ValueOptionPool getOptionPool()
 	{
-		return (ThreatRatingValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
+		return (ValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
 	}
 
 	public ValueOption[] getValueOptions()

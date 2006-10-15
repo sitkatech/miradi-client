@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ValueOption;
 
-public class ThreatRatingValueOptionPool extends EAMNormalObjectPool
+public class ValueOptionPool extends EAMNormalObjectPool
 {
-	public ThreatRatingValueOptionPool(IdAssigner idAssignerToUse)
+	public ValueOptionPool(IdAssigner idAssignerToUse)
 	{
 		super(idAssignerToUse, ObjectType.VALUE_OPTION);
 	}
