@@ -22,7 +22,27 @@ public class EnhancedJsonObject extends JSONObject
 	{
 		super(handleEmptyString(jsonString));
 	}
-	
+
+	// Override to return empty array instead of null if missing
+	public JSONArray optJSONArray(String key)
+	{
+		JSONArray array = super.optJSONArray(key);
+		if(array == null)
+			array = new JSONArray();
+		
+		return array;
+	}
+
+	// Override to return empty object instead of null if missing
+	public JSONObject optJSONObject(String key)
+	{
+		JSONObject json = super.optJSONObject(key);
+		if(json == null)
+			json = new JSONObject();
+		
+		return json;
+	}
+
 	public void put(String tag, Color color)
 	{
 		JSONArray rgb = new JSONArray();
@@ -54,4 +74,5 @@ public class EnhancedJsonObject extends JSONObject
 			return "{}";
 		return possiblyEmptyJsonString;
 	}
+
 }
