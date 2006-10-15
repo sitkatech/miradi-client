@@ -6,11 +6,14 @@
 package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
+import java.io.IOException;
 
+import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class StrategyRatingFramework
 {
@@ -21,9 +24,24 @@ public class StrategyRatingFramework
 		clear();
 	}
 	
+	public StrategyRatingFramework(Project owningProject, EnhancedJsonObject json)
+	{
+		this(owningProject);
+		IdList impactOptionIds = new IdList(json.optJSONObject(TAG_IMPACT_VALUE_OPTION_IDS));
+		impactValueOptions = new ValueOption[impactOptionIds.size()];
+		for(int i = 0; i < impactValueOptions.length; ++i)
+			impactValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, impactOptionIds.get(i));
+			
+	}
+	
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	public ProjectServer getDatabase()
+	{
+		return getProject().getDatabase();
 	}
 	
 	public void clear()
@@ -34,6 +52,14 @@ public class StrategyRatingFramework
 	public ValueOption[] getImpactValueOptions()
 	{
 		return impactValueOptions;
+	}
+	
+	public IdList getImpactValueOptionIds()
+	{
+		IdList result = new IdList();
+		for(int i = 0; i < impactValueOptions.length; ++i)
+			result.add(impactValueOptions[i].getId());
+		return result;
 	}
 	
 	public ValueOption findImpactValueOptionByNumericValue(int value)
@@ -62,7 +88,14 @@ public class StrategyRatingFramework
 			impactValueOptions = new ValueOption[ids.size()];
 			for(int i = 0; i < impactValueOptions.length; ++i)
 				impactValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+			
+			saveFramework();
 		}
+	}
+	
+	private void saveFramework() throws IOException
+	{
+		getDatabase().writeStrategyRatingFramework(this);
 	}
 	
 	private BaseId createDefaultValueOption(int numericValue, String label, Color color) throws Exception
@@ -73,6 +106,15 @@ public class StrategyRatingFramework
 		getProject().setObjectData(ObjectType.VALUE_OPTION, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		return createdId;
 	}
+	
+	public EnhancedJsonObject toJson()
+	{
+		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_IMPACT_VALUE_OPTION_IDS, getImpactValueOptionIds().toJson());
+		return json;
+	}
+	
+	public final static String TAG_IMPACT_VALUE_OPTION_IDS = "ImpactValueOptionIds";
 
 	Project project;
 	ValueOption[] impactValueOptions;

@@ -42,6 +42,12 @@ public class TestStrategyRatingFramework extends EAMTestCase
 		assertEquals("Wrong color?", Color.ORANGE, medium.getColor());
 	}
 	
+	public void testJson()
+	{
+		StrategyRatingFramework loaded = new StrategyRatingFramework(project, framework.toJson());
+		assertEquals("Didn't reload impact options?", framework.getImpactValueOptions().length, loaded.getImpactValueOptions().length);
+	}
+	
 	ProjectForTesting project;
 	StrategyRatingFramework framework;
 }

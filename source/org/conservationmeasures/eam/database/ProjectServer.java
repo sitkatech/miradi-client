@@ -14,8 +14,10 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.ProjectInfo;
+import org.conservationmeasures.eam.project.StrategyRatingFramework;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
@@ -193,7 +195,6 @@ public class ProjectServer
 	{
 		getJsonDirectory().mkdirs();
 		JSONFile.write(getThreatRatingFrameworkFile(), framework.toJson());
-		
 	}
 	
 	public JSONObject readRawThreatRatingFramework() throws IOException, ParseException
@@ -202,6 +203,20 @@ public class ProjectServer
 			return null;
 		
 		return JSONFile.read(getThreatRatingFrameworkFile());
+	}
+	
+	public void writeStrategyRatingFramework(StrategyRatingFramework framework) throws IOException
+	{
+		getJsonDirectory().mkdirs();
+		JSONFile.write(getStrategyRatingFrameworkFile(), framework.toJson());
+	}
+	
+	public EnhancedJsonObject readRawStrategyRatingFramework() throws IOException, ParseException
+	{
+		if(!getStrategyRatingFrameworkFile().exists())
+			return new EnhancedJsonObject();
+		
+		return JSONFile.read(getStrategyRatingFrameworkFile());
 	}
 
 	
@@ -298,6 +313,11 @@ public class ProjectServer
 		return new File(getJsonDirectory(), THREATFRAMEWORK_FILE);
 	}
 	
+	private File getStrategyRatingFrameworkFile()
+	{
+		return new File (getJsonDirectory(), STRATEGYFRAMEWORK_FILE);
+	}
+	
 	private File getThreatBundleFile(BaseId threatId, BaseId targetId)
 	{
 		String bundleKey = ThreatRatingFramework.getBundleKey(threatId, targetId);
@@ -325,6 +345,7 @@ public class ProjectServer
 	static String VERSION_FILE = "version";
 	static String PROJECTINFO_FILE = "project";
 	static String THREATFRAMEWORK_FILE = "threatframework";
+	static String STRATEGYFRAMEWORK_FILE = "strategyframework";
 	static String MANIFEST_FILE = "manifest";
 	static String DIAGRAM_FILE = "main";
 

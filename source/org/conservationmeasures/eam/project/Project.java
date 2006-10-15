@@ -55,6 +55,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
@@ -265,7 +266,9 @@ public class Project
 	
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return objectManager.createObject(objectType, objectId, extraInfo);
+		BaseId createdId = objectManager.createObject(objectType, objectId, extraInfo);
+		saveProjectInfo();
+		return createdId;
 	}
 	
 	public void deleteObject(int objectType, BaseId objectId) throws IOException, ParseException
@@ -349,9 +352,20 @@ public class Project
 		getDatabase().readProjectInfo(projectInfo);
 	}
 	
+	private void saveProjectInfo() throws IOException
+	{
+		getDatabase().writeProjectInfo(projectInfo);
+	}
+
 	private void loadThreatRatingFramework() throws Exception
 	{
 		getThreatRatingFramework().load();
+	}
+	
+	private void loadStrategyRatingFramework() throws Exception
+	{
+		EnhancedJsonObject json = getDatabase().readRawStrategyRatingFramework();
+		strategyRatingFramework = new StrategyRatingFramework(this, json);
 	}
 	
 	private void loadDiagram() throws Exception
@@ -365,6 +379,7 @@ public class Project
 			createProjectMetadata();
 		
 		loadThreatRatingFramework();
+		loadStrategyRatingFramework();
 		loadDiagram();
 		
 		createDefaultObjectsIfNeeded();
@@ -840,7 +855,7 @@ public class Project
 			
 			try
 			{
-				getDatabase().writeProjectInfo(projectInfo);
+				saveProjectInfo();
 				getDatabase().writeDiagram(getDiagramModel());
 			}
 			catch (IOException e)
@@ -849,6 +864,7 @@ public class Project
 				EAM.errorDialog(EAM.text("Error|Error writing to project"));
 			}
 		}
+
 	}
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
