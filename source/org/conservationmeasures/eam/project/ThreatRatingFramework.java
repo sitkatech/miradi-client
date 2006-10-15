@@ -96,11 +96,6 @@ public class ThreatRatingFramework
 		return bundles.size();
 	}
 	
-	ValueOptionPool getOptionPool()
-	{
-		return (ValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
-	}
-
 	public ValueOption[] getValueOptions()
 	{
 		ValueOption[] result = new ValueOption[valueOptionIds.size()];
@@ -127,7 +122,8 @@ public class ThreatRatingFramework
 	
 	public ValueOption getValueOption(BaseId id)
 	{
-		return (ValueOption)getOptionPool().findObject(id);
+		ValueOptionPool pool = (ValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
+		return (ValueOption)pool.findObject(id);
 	}
 	
 
@@ -297,10 +293,9 @@ public class ThreatRatingFramework
 	
 	public ValueOption findValueOptionByNumericValue(int value)
 	{
-		BaseId[] ids = getOptionPool().getIds();
-		for(int i = 0; i < ids.length; ++i)
+		for(int i = 0; i < valueOptionIds.size(); ++i)
 		{
-			ValueOption option = getValueOption(ids[i]);
+			ValueOption option = getValueOption(valueOptionIds.get(i));
 			if(option.getNumericValue() == value)
 				return option;
 		}
