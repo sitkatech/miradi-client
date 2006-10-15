@@ -10,9 +10,9 @@ import java.awt.Color;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestThreatRatingValueOption extends EAMTestCase
+public class TestValueOption extends EAMTestCase
 {
-	public TestThreatRatingValueOption(String name)
+	public TestValueOption(String name)
 	{
 		super(name);
 	}
