@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 
 public class TNCThreatFormula
 {
@@ -157,7 +157,7 @@ public class TNCThreatFormula
 		
 		BaseId criterionId = criterion.getId();
 		BaseId valueId = bundle.getValueId(criterionId);
-		ThreatRatingValueOption valueOption = framework.getValueOption(valueId);
+		ValueOption valueOption = framework.getValueOption(valueId);
 		return valueOption.getNumericValue();
 	}
 	

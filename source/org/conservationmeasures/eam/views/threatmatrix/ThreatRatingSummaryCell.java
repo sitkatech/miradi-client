@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.martus.swing.UiLabel;
 
@@ -40,7 +40,7 @@ public class ThreatRatingSummaryCell extends JPanel
 	
 	public void dataHasChanged() throws Exception
 	{
-		ThreatRatingValueOption result = null;
+		ValueOption result = null;
 
 		ThreatRatingFramework framework = model.getProject().getThreatRatingFramework();
 		if(threatIndex >= 0)

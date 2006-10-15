@@ -27,7 +27,7 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -460,7 +460,7 @@ public class ThreatGridPanel extends JPanel
 				if(bundle == null)
 					return new Integer(-1);
 				
-				ThreatRatingValueOption value = framework.getBundleValue(bundle);
+				ValueOption value = framework.getBundleValue(bundle);
 				return new Integer(value.getNumericValue());
 			}
 
@@ -499,9 +499,9 @@ public class ThreatGridPanel extends JPanel
 				ModelNodeId threatId0 = (ModelNodeId)raw0;
 				ModelNodeId threatId1 = (ModelNodeId)raw1;
 				
-				ThreatRatingValueOption result0 = framework.getThreatThreatRatingValue(threatId0);
+				ValueOption result0 = framework.getThreatThreatRatingValue(threatId0);
 				Integer value0 = new Integer(result0.getNumericValue());
-				ThreatRatingValueOption result1 = framework.getThreatThreatRatingValue(threatId1);
+				ValueOption result1 = framework.getThreatThreatRatingValue(threatId1);
 				Integer value1 = new Integer(result1.getNumericValue());
 				
 				int ascending = value0.compareTo(value1);

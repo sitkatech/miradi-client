@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
@@ -48,7 +48,7 @@ public class ThreatMatrixCellPanel extends JPanel implements ActionListener
 
 	public void refreshCell() throws Exception
 	{
-		ThreatRatingValueOption value = project.getThreatRatingFramework().getBundleValue(bundle);
+		ValueOption value = project.getThreatRatingFramework().getBundleValue(bundle);
 		highButton.setText(value.getLabel());
 		Color color = value.getColor();
 		highButton.setBackground(color);

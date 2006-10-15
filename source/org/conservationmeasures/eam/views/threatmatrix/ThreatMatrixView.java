@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -115,7 +115,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		validate();
 	}
 	
-	public void setBundleValue(ThreatRatingCriterion criterion, ThreatRatingValueOption value) throws Exception
+	public void setBundleValue(ThreatRatingCriterion criterion, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = grid.getSelectedBundle();
 		if(bundle == null)

@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,13 +91,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		BaseId noneId = framework.findValueOptionByNumericValue(0).getId();
 		ThreatRatingBundle bundle = new ThreatRatingBundle(new ModelNodeId(1), new ModelNodeId(2), noneId);
-		ThreatRatingValueOption result = framework.getBundleValue(bundle);
+		ValueOption result = framework.getBundleValue(bundle);
 		assertEquals("didn't default correctly? ", 0, result.getNumericValue());
 	}
 
 	public void testRatingValueOptions() throws Exception
 	{
-		ThreatRatingValueOption[] options = framework.getValueOptions();
+		ValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
 		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
 		assertEquals("wrong numeric value? ", 3, options[1].getNumericValue());
@@ -106,14 +106,14 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testFindValueOptionByNumericValue()
 	{
-		ThreatRatingValueOption optionNone = framework.findValueOptionByNumericValue(0);
+		ValueOption optionNone = framework.findValueOptionByNumericValue(0);
 		assertEquals(Color.WHITE, optionNone.getColor());
 	}
 
 	public void testDefaultValue() throws Exception
 	{
 		BaseId id = framework.getDefaultValueId();
-		ThreatRatingValueOption option = framework.getValueOption(id);
+		ValueOption option = framework.getValueOption(id);
 		assertEquals("Didn't default to zero?", 0, option.getNumericValue());
 	}
 	
@@ -182,9 +182,9 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ModelNodeId targetId1 = createTarget(project);
 		ModelNodeId targetId2 = createTarget(project);
 
-		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
-		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
-		ThreatRatingValueOption veryHigh = framework.findValueOptionByNumericValue(4);
+		ValueOption none = framework.findValueOptionByNumericValue(0);
+		ValueOption high = framework.findValueOptionByNumericValue(3);
+		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
 		
 		assertEquals("threat1 not none?", none, framework.getThreatThreatRatingValue(threatId1));
 		assertEquals("threat2 not none?", none, framework.getThreatThreatRatingValue(threatId2));
@@ -204,7 +204,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(targetId2));
 	}
 	
-	void createLinkageAndBundle(Project projectToUse, ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
+	void createLinkageAndBundle(Project projectToUse, ModelNodeId threatId, ModelNodeId targetId, ValueOption value) throws Exception
 	{
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
 		projectToUse.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
@@ -216,9 +216,9 @@ public class TestThreatRatingFramework extends EAMTestCase
 		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeFactor()));
 		ModelNodeId targetId = createTarget(project);
 
-		ThreatRatingValueOption none = framework.findValueOptionByNumericValue(0);
-		ThreatRatingValueOption high = framework.findValueOptionByNumericValue(3);
-		ThreatRatingValueOption veryHigh = framework.findValueOptionByNumericValue(4);
+		ValueOption none = framework.findValueOptionByNumericValue(0);
+		ValueOption high = framework.findValueOptionByNumericValue(3);
+		ValueOption veryHigh = framework.findValueOptionByNumericValue(4);
 
 		populateBundle(framework, threatId, targetId, veryHigh);
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
@@ -319,7 +319,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		return threatId;
 	}
 	
-	void populateBundle(ThreatRatingFramework frameworkToUse, ModelNodeId threatId, ModelNodeId targetId, ThreatRatingValueOption value) throws Exception
+	void populateBundle(ThreatRatingFramework frameworkToUse, ModelNodeId threatId, ModelNodeId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
 		ThreatRatingCriterion criteria[] = frameworkToUse.getCriteria();
@@ -350,7 +350,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 				int numericValue = valuesForTarget[threatIndex];
 				if(numericValue < 0)
 					continue;
-				ThreatRatingValueOption valueOption = trf.findValueOptionByNumericValue(numericValue);
+				ValueOption valueOption = trf.findValueOptionByNumericValue(numericValue);
 				ModelNodeId threatId = threatIds[threatIndex];
 				ModelNodeId targetId = targetIds[targetIndex];
 				createLinkageAndBundle(tempProject, threatId, targetId, valueOption);

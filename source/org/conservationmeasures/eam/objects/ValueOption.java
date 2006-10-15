@@ -11,15 +11,15 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
-public class ThreatRatingValueOption extends EAMBaseObject
+public class ValueOption extends EAMBaseObject
 {
-	public ThreatRatingValueOption(BaseId idToUse)
+	public ValueOption(BaseId idToUse)
 	{
 		super(idToUse);
 		color = Color.BLACK;
 	}
 	
-	public ThreatRatingValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
+	public ValueOption(BaseId idToUse, String labelToUse, int numericToUse, Color colorToUse) throws Exception
 	{
 		super(idToUse);
 		setData(TAG_LABEL, labelToUse);
@@ -27,7 +27,7 @@ public class ThreatRatingValueOption extends EAMBaseObject
 		color = colorToUse;
 	}
 	
-	public ThreatRatingValueOption(int idAsInt, JSONObject json)
+	public ValueOption(int idAsInt, JSONObject json)
 	{
 		super(new BaseId(idAsInt), json);
 		numeric = json.getInt(TAG_NUMERIC);

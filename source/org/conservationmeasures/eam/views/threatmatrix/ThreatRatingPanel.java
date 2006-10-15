@@ -31,7 +31,7 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.utils.UiComboBoxWithSaneActionFiring;
@@ -166,7 +166,7 @@ public class ThreatRatingPanel extends Box
 			}
 			if(!valueId.isInvalid())
 			{
-				ThreatRatingValueOption option = framework.getValueOption(valueId);
+				ValueOption option = framework.getValueOption(valueId);
 				dropdown.setSelectedItemWithoutFiring(option);
 			}
 		}
@@ -174,7 +174,7 @@ public class ThreatRatingPanel extends Box
 
 	private void updateSummary()
 	{
-		ThreatRatingValueOption value;
+		ValueOption value;
 		
 		if(bundle == null)
 			value = framework.findValueOptionByNumericValue(0);
@@ -192,13 +192,13 @@ public class ThreatRatingPanel extends Box
 		ratingSummaryPanel.setBackground(value.getColor());
 	}
 
-	private UiComboBox createRatingDropdown(ThreatRatingValueOption[] options)
+	private UiComboBox createRatingDropdown(ValueOption[] options)
 	{
 		UiComboBox dropDown = ThreatRatingPanel.createThreatDropDown(options);
 		return dropDown;
 	}
 	
-	public static UiComboBox createThreatDropDown(ThreatRatingValueOption[] options)
+	public static UiComboBox createThreatDropDown(ValueOption[] options)
 	{
 		UiComboBox dropDown = new UiComboBoxWithSaneActionFiring();
 		dropDown.setRenderer(new ThreatRenderer());
@@ -210,7 +210,7 @@ public class ThreatRatingPanel extends Box
 		return dropDown;
 	}
 	
-	public void valueWasChanged(ThreatRatingCriterion criterion, ThreatRatingValueOption value)
+	public void valueWasChanged(ThreatRatingCriterion criterion, ValueOption value)
 	{
 		if(bundle == null)
 			return;
@@ -239,7 +239,7 @@ public class ThreatRatingPanel extends Box
 		{
 			EAM.logWarning("ThreatRatingPanel.ValueListener.actionPerformed: " + event.getActionCommand());
 			UiComboBox source = (UiComboBox)event.getSource();
-			ThreatRatingValueOption selected = (ThreatRatingValueOption)source.getSelectedItem();
+			ValueOption selected = (ValueOption)source.getSelectedItem();
 			panel.valueWasChanged(criterion, selected);
 		}
 		

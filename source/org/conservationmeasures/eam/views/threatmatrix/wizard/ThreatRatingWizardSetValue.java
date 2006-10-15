@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
@@ -34,7 +34,7 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 
 	protected String[] getValueOptionLabels()
 	{
-		ThreatRatingValueOption[] options = getFramework().getValueOptions();
+		ValueOption[] options = getFramework().getValueOptions();
 		String[] optionLabels = new String[options.length];
 		for(int i = 0; i < optionLabels.length; ++i)
 			optionLabels[i] = options[i].getLabel();
@@ -56,9 +56,9 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		value = findValueOptionByName(newValue);
 	}
 	
-	public ThreatRatingValueOption findValueOptionByName(String label)
+	public ValueOption findValueOptionByName(String label)
 	{
-		ThreatRatingValueOption[] options = getFramework().getValueOptions();
+		ValueOption[] options = getFramework().getValueOptions();
 		for(int i = 0; i < options.length; ++i)
 			if(label.equals(options[i].getLabel()))
 				return options[i];
@@ -73,5 +73,5 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 	}
 
 	ThreatRatingCriterion criterion;
-	protected ThreatRatingValueOption value;
+	protected ValueOption value;
 }

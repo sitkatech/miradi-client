@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 
 public class ThreatRatingValueOptionPool extends EAMNormalObjectPool
 {
@@ -20,7 +20,7 @@ public class ThreatRatingValueOptionPool extends EAMNormalObjectPool
 
 	EAMObject createRawObject(BaseId actualId)
 	{
-		return new ThreatRatingValueOption(actualId);
+		return new ValueOption(actualId);
 	}
 
 }

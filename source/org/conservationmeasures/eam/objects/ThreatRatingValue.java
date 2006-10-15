@@ -11,12 +11,12 @@ import org.conservationmeasures.eam.ids.BaseId;
 
 public class ThreatRatingValue 
 {
-	public ThreatRatingValue(ThreatRatingValueOption value)
+	public ThreatRatingValue(ValueOption value)
 	{
 		rating = value;
 	}
 		
-	public ThreatRatingValueOption getRatingOption()
+	public ValueOption getRatingOption()
 	{
 		return rating;
 	}
@@ -50,5 +50,5 @@ public class ThreatRatingValue
 	}
 
 	
-	private ThreatRatingValueOption rating;
+	private ValueOption rating;
 }

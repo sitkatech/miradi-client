@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -57,11 +57,11 @@ public class TestCommands extends EAMTestCase
 	{
 		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
-		ThreatRatingValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
+		ValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
 		Color originalColor = option.getColor();
 		
 		Color newColor = Color.MAGENTA;
-		String field = ThreatRatingValueOption.TAG_COLOR;
+		String field = ValueOption.TAG_COLOR;
 		String value = Integer.toString(newColor.getRGB());
 		CommandSetObjectData cmd = new CommandSetObjectData(type, createdId, field, value);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -215,7 +215,7 @@ public class TestCommands extends EAMTestCase
 
 		int oldCount = framework.getValueOptions().length;
 		project.executeCommand(cmd);
-		ThreatRatingValueOption option = framework.getValueOption(cmd.getCreatedId());
+		ValueOption option = framework.getValueOption(cmd.getCreatedId());
 		assertEquals("wrong default label?", "", option.getLabel());
 		assertEquals("wrong default numeric?", 0, option.getNumericValue());
 		assertEquals("wrong default color?", Color.BLACK, option.getColor());

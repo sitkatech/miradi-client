@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ThreatRatingValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
-import org.conservationmeasures.eam.objects.ThreatRatingValueOption;
+import org.conservationmeasures.eam.objects.ValueOption;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -78,9 +78,9 @@ public class ThreatRatingFramework
 	{
 		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
-		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_LABEL, label);
-		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
-		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		project.setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
+		project.setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
+		project.setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		valueOptionIds.add(createdId);
 	}
 
@@ -101,9 +101,9 @@ public class ThreatRatingFramework
 		return (ThreatRatingValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
 	}
 
-	public ThreatRatingValueOption[] getValueOptions()
+	public ValueOption[] getValueOptions()
 	{
-		ThreatRatingValueOption[] result = new ThreatRatingValueOption[valueOptionIds.size()];
+		ValueOption[] result = new ValueOption[valueOptionIds.size()];
 		for(int i = 0; i < valueOptionIds.size(); ++i)
 		{
 			result[i] = getValueOption(valueOptionIds.get(i));
@@ -116,8 +116,8 @@ public class ThreatRatingFramework
 	{
 		public int compare(Object raw1, Object raw2)
 		{
-			ThreatRatingValueOption option1 = (ThreatRatingValueOption)raw1;
-			ThreatRatingValueOption option2 = (ThreatRatingValueOption)raw2;
+			ValueOption option1 = (ValueOption)raw1;
+			ValueOption option2 = (ValueOption)raw2;
 			Integer value1 = new Integer(option1.getNumericValue());
 			Integer value2 = new Integer(option2.getNumericValue());
 			return -(value1.compareTo(value2));
@@ -125,9 +125,9 @@ public class ThreatRatingFramework
 	
 	}
 	
-	public ThreatRatingValueOption getValueOption(BaseId id)
+	public ValueOption getValueOption(BaseId id)
 	{
-		return (ThreatRatingValueOption)getOptionPool().findObject(id);
+		return (ValueOption)getOptionPool().findObject(id);
 	}
 	
 
@@ -153,7 +153,7 @@ public class ThreatRatingFramework
 	}
 	
 
-	public ThreatRatingValueOption getBundleValue(ThreatRatingBundle bundle)
+	public ValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
 		int numericResult = formula.computeBundleValue(bundle);
@@ -161,22 +161,22 @@ public class ThreatRatingFramework
 		
 	}
 	
-	public ThreatRatingValueOption getHighestValueForThreat(BaseId threatId)
+	public ValueOption getHighestValueForThreat(BaseId threatId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
 		if(bundleArray.length == 0)
 			return findValueOptionByNumericValue(0);
-		ThreatRatingValueOption highestValue = getBundleValue(bundleArray[0]);
+		ValueOption highestValue = getBundleValue(bundleArray[0]);
 		for(int i = 0; i < bundleArray.length; ++i)
 		{
-			ThreatRatingValueOption thisValue = getBundleValue(bundleArray[i]);
+			ValueOption thisValue = getBundleValue(bundleArray[i]);
 			if(thisValue.getNumericValue() > highestValue.getNumericValue())
 				highestValue = thisValue;
 		}
 		return highestValue;
 	}
 	
-	public ThreatRatingValueOption getProjectMajorityRating()
+	public ValueOption getProjectMajorityRating()
 	{
 		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
 		int[] highestValues = new int[threats.length];
@@ -186,16 +186,16 @@ public class ThreatRatingFramework
 		return getMajorityOfNumericValues(highestValues);
 	}
 	
-	public ThreatRatingValueOption getOverallProjectRating()
+	public ValueOption getOverallProjectRating()
 	{
-		ThreatRatingValueOption rollup = getProjectRollupRating();
-		ThreatRatingValueOption majority = getProjectMajorityRating();
+		ValueOption rollup = getProjectRollupRating();
+		ValueOption majority = getProjectMajorityRating();
 		if(majority.getNumericValue() > rollup.getNumericValue())
 			return majority;
 		return rollup;
 	}
 	
-	public ThreatRatingValueOption getThreatThreatRatingValue(BaseId threatId)
+	public ValueOption getThreatThreatRatingValue(BaseId threatId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
 		return getSummaryOfBundles(bundleArray);
@@ -216,7 +216,7 @@ public class ThreatRatingFramework
 		return bundleArray;
 	}
 	
-	public ThreatRatingValueOption getTargetThreatRatingValue(BaseId targetId)
+	public ValueOption getTargetThreatRatingValue(BaseId targetId)
 	{
 		HashSet bundlesForThisThreat = new HashSet();
 		
@@ -231,13 +231,13 @@ public class ThreatRatingFramework
 		return getSummaryOfBundles(bundleArray);
 	}
 	
-	public ThreatRatingValueOption getProjectRollupRating()
+	public ValueOption getProjectRollupRating()
 	{
 		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
 		int[] numericValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
-			ThreatRatingValueOption threatSummary = getThreatThreatRatingValue(threats[i].getId());
+			ValueOption threatSummary = getThreatThreatRatingValue(threats[i].getId());
 			numericValues[i] = threatSummary.getNumericValue();
 		}
 		return getSummaryOfNumericValues(numericValues);
@@ -259,7 +259,7 @@ public class ThreatRatingFramework
 		return project.isLinked(threatId, targetId);
 	}
 	
-	public ThreatRatingValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
+	public ValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
 	{
 		int[] bundleValues = new int[bundlesToSummarize.length];
 		for(int i = 0; i < bundlesToSummarize.length; ++i)
@@ -268,14 +268,14 @@ public class ThreatRatingFramework
 		return getSummaryOfNumericValues(bundleValues);
 	}
 
-	private ThreatRatingValueOption getSummaryOfNumericValues(int[] bundleValues)
+	private ValueOption getSummaryOfNumericValues(int[] bundleValues)
 	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
 		int numericResult = formula.getSummaryOfBundles(bundleValues);
 		return findValueOptionByNumericValue(numericResult);
 	}
 	
-	private ThreatRatingValueOption getMajorityOfNumericValues(int[] bundleValues)
+	private ValueOption getMajorityOfNumericValues(int[] bundleValues)
 	{
 		TNCThreatFormula formula = new TNCThreatFormula(this);
 		int numericResult = formula.getMajority(bundleValues);
@@ -295,12 +295,12 @@ public class ThreatRatingFramework
 		return null;
 	}
 	
-	public ThreatRatingValueOption findValueOptionByNumericValue(int value)
+	public ValueOption findValueOptionByNumericValue(int value)
 	{
 		BaseId[] ids = getOptionPool().getIds();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			ThreatRatingValueOption option = getValueOption(ids[i]);
+			ValueOption option = getValueOption(ids[i]);
 			if(option.getNumericValue() == value)
 				return option;
 		}

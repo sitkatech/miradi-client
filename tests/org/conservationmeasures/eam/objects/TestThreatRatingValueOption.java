@@ -20,7 +20,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		BaseId id = new BaseId(42);
-		ThreatRatingValueOption empty = new ThreatRatingValueOption(id);
+		ValueOption empty = new ValueOption(id);
 		assertEquals("didn't set id?", id, empty.getId());
 		assertEquals("wrong default label?", "", empty.getLabel());
 		assertEquals("wrong default numeric?", 0, empty.getNumericValue());
@@ -29,7 +29,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		String label = "Hello Kitty";
 		int numeric = 7;
 		Color color = Color.RED;
-		ThreatRatingValueOption a = new ThreatRatingValueOption(id, label, numeric, color);
+		ValueOption a = new ValueOption(id, label, numeric, color);
 		assertEquals(id, a.getId());
 		assertEquals(label, a.getLabel());
 		assertEquals(numeric, a.getNumericValue());
@@ -39,16 +39,16 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	public void testSetGetData() throws Exception
 	{
 		
-		verifySetGetData(ThreatRatingValueOption.TAG_LABEL, "Hi mom!");
-		verifySetGetData(ThreatRatingValueOption.TAG_NUMERIC, "17");
+		verifySetGetData(ValueOption.TAG_LABEL, "Hi mom!");
+		verifySetGetData(ValueOption.TAG_NUMERIC, "17");
 		String color = Integer.toString(Color.CYAN.getRGB());
-		verifySetGetData(ThreatRatingValueOption.TAG_COLOR, color);
+		verifySetGetData(ValueOption.TAG_COLOR, color);
 	}
 	
 	public void testGetDataBadFieldTag() throws Exception
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		ValueOption option = new ValueOption(id);
 		try
 		{
 			option.getData("not a valid tag");
@@ -62,7 +62,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	public void testSetDataBadFieldTag() throws Exception
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		ValueOption option = new ValueOption(id);
 		try
 		{
 			option.setData("not a valid tag", "whatever");
@@ -76,7 +76,7 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	private void verifySetGetData(String tag, String value) throws Exception
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
+		ValueOption option = new ValueOption(id);
 		option.setData(tag, value);
 		assertEquals(value, option.getData(tag));
 	}
@@ -84,9 +84,9 @@ public class TestThreatRatingValueOption extends EAMTestCase
 	public void testEquals() throws Exception
 	{
 		BaseId id = new BaseId(17);
-		ThreatRatingValueOption a = new ThreatRatingValueOption(id, "abc", 1, Color.RED);
-		ThreatRatingValueOption b = new ThreatRatingValueOption(id, "def", 2, Color.BLUE);
-		ThreatRatingValueOption c = new ThreatRatingValueOption(new BaseId(id.asInt() + 1), "abc", 1, Color.RED);
+		ValueOption a = new ValueOption(id, "abc", 1, Color.RED);
+		ValueOption b = new ValueOption(id, "def", 2, Color.BLUE);
+		ValueOption c = new ValueOption(new BaseId(id.asInt() + 1), "abc", 1, Color.RED);
 		assertTrue("same id isn't equal?", a.equals(b));
 		assertTrue("same id isn't equal (reversed)?", b.equals(a));
 		assertFalse("not comparing id?", a.equals(c));
@@ -100,12 +100,12 @@ public class TestThreatRatingValueOption extends EAMTestCase
 		String label = "eifjjfi";
 		int numeric = -234;
 		Color color = Color.GRAY;
-		ThreatRatingValueOption option = new ThreatRatingValueOption(id);
-		option.setData(ThreatRatingValueOption.TAG_LABEL, label);
-		option.setData(ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numeric));
-		option.setData(ThreatRatingValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
+		ValueOption option = new ValueOption(id);
+		option.setData(ValueOption.TAG_LABEL, label);
+		option.setData(ValueOption.TAG_NUMERIC, Integer.toString(numeric));
+		option.setData(ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
 		
-		ThreatRatingValueOption loaded = (ThreatRatingValueOption)EAMBaseObject.createFromJson(option.getType(), option.toJson());
+		ValueOption loaded = (ValueOption)EAMBaseObject.createFromJson(option.getType(), option.toJson());
 		assertEquals(option.getId(), loaded.getId());
 		assertEquals(option.getLabel(), loaded.getLabel());
 		assertEquals(option.getNumericValue(), loaded.getNumericValue());
