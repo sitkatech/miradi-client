@@ -86,6 +86,7 @@ public class Project
 		diagramModel = new DiagramModel(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
+		strategyRatingFramework = new StrategyRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
 		
 		addCommandExecutedListener(new DiagramSaver());
@@ -198,6 +199,11 @@ public class Project
 		return threatRatingFramework;
 	}
 	
+	public StrategyRatingFramework getStrategyRatingFramework()
+	{
+		return strategyRatingFramework;
+	}
+	
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
@@ -304,6 +310,7 @@ public class Project
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
+		strategyRatingFramework.createDefaultObjectsIfNeeded();
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -866,6 +873,7 @@ public class Project
 	boolean isExecuting;
 
 	ThreatRatingFramework threatRatingFramework;
+	StrategyRatingFramework strategyRatingFramework;
 	
 	ProjectServer database;
 	DiagramModel diagramModel;
