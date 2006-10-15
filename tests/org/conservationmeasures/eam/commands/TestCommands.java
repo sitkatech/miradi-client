@@ -53,7 +53,7 @@ public class TestCommands extends EAMTestCase
 		project.close();
 	}
 	
-	public void testCommandSetObjectData_ThreatRatingValueOption() throws Exception
+	public void testCommandSetObjectData_ValueOption() throws Exception
 	{
 		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
