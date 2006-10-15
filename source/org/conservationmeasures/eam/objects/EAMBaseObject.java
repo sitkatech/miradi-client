@@ -32,7 +32,7 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.THREAT_RATING_CRITERION:
 				return new ThreatRatingCriterion(idAsInt, json);
 				
-			case ObjectType.THREAT_RATING_VALUE_OPTION:
+			case ObjectType.VALUE_OPTION:
 				return new ThreatRatingValueOption(idAsInt, json);
 				
 			case ObjectType.TASK:

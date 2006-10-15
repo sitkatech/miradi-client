@@ -44,7 +44,7 @@ public class TestObjectManager extends EAMTestCase
 	{
 		int[] types = new int[] {
 			ObjectType.THREAT_RATING_CRITERION, 
-			ObjectType.THREAT_RATING_VALUE_OPTION, 
+			ObjectType.VALUE_OPTION, 
 			ObjectType.TASK, 
 			ObjectType.VIEW_DATA, 
 			ObjectType.PROJECT_RESOURCE,

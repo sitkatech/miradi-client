@@ -98,7 +98,7 @@ public class DataUpgrader extends ProjectServer
 	{
 		// add manifest file to Objects-1 and Objects-2
 		createManifestFromObjects(ObjectType.THREAT_RATING_CRITERION);
-		createManifestFromObjects(ObjectType.THREAT_RATING_VALUE_OPTION);
+		createManifestFromObjects(ObjectType.VALUE_OPTION);
 		writeVersion(2);
 	}
 

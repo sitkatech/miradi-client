@@ -76,7 +76,7 @@ public class ThreatRatingFramework
 
 	private void createDefaultValueOption(String label, int numericValue, Color color) throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_LABEL, label);
 		project.setObjectData(type, createdId, ThreatRatingValueOption.TAG_NUMERIC, Integer.toString(numericValue));
@@ -98,7 +98,7 @@ public class ThreatRatingFramework
 	
 	ThreatRatingValueOptionPool getOptionPool()
 	{
-		return (ThreatRatingValueOptionPool)getProject().getPool(ObjectType.THREAT_RATING_VALUE_OPTION);
+		return (ThreatRatingValueOptionPool)getProject().getPool(ObjectType.VALUE_OPTION);
 	}
 
 	public ThreatRatingValueOption[] getValueOptions()

@@ -187,7 +187,7 @@ public class ObjectManager
 		loadPool(ObjectType.OBJECTIVE);
 		loadPool(ObjectType.GOAL);
 		loadPool(ObjectType.THREAT_RATING_CRITERION);
-		loadPool(ObjectType.THREAT_RATING_VALUE_OPTION);
+		loadPool(ObjectType.VALUE_OPTION);
 		loadPool(ObjectType.PROJECT_METADATA);
 	}
 	

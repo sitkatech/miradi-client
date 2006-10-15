@@ -15,7 +15,7 @@ public class ThreatRatingValueOptionPool extends EAMNormalObjectPool
 {
 	public ThreatRatingValueOptionPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.THREAT_RATING_VALUE_OPTION);
+		super(idAssignerToUse, ObjectType.VALUE_OPTION);
 	}
 
 	EAMObject createRawObject(BaseId actualId)

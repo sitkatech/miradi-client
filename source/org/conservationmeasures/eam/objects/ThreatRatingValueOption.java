@@ -36,7 +36,7 @@ public class ThreatRatingValueOption extends EAMBaseObject
 	
 	public int getType()
 	{
-		return ObjectType.THREAT_RATING_VALUE_OPTION;
+		return ObjectType.VALUE_OPTION;
 	}
 	
 	public int getNumericValue()

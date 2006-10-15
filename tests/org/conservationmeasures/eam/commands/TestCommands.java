@@ -55,7 +55,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetObjectData_ThreatRatingValueOption() throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
 		ThreatRatingValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
 		Color originalColor = option.getColor();
@@ -148,7 +148,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandDeleteObject_ThreatRatingValueOption() throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
@@ -208,7 +208,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandCreateObject_ThreatRatingValueOption() throws Exception
 	{
 		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		int type = ObjectType.THREAT_RATING_VALUE_OPTION;
+		int type = ObjectType.VALUE_OPTION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
 		assertEquals("created id already set?", BaseId.INVALID, cmd.getCreatedId());
