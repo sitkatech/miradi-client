@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.ids;
 
-public class ThreatRatingValueOptionId extends ObjectId
+public class ValueOptionId extends ObjectId
 {
 
-	public ThreatRatingValueOptionId(int idToUse)
+	public ValueOptionId(int idToUse)
 	{
 		super(idToUse);
 	}
