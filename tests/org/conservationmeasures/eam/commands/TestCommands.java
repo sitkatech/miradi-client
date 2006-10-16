@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -100,14 +100,14 @@ public class TestCommands extends EAMTestCase
 		
 	}
 	
-	public void testCommandSetObjectData_ThreatRatingCriterion() throws Exception
+	public void testCommandSetObjectData_RatingCriterion() throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_CRITERION;
+		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObject(type);
-		ThreatRatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
+		RatingCriterion criterion = project.getThreatRatingFramework().getCriterion(createdId);
 		String originalLabel = criterion.getLabel();
 		
-		String field = ThreatRatingCriterion.TAG_LABEL;
+		String field = RatingCriterion.TAG_LABEL;
 		String value = "Blah";
 		CommandSetObjectData cmd = new CommandSetObjectData(type, createdId, field, value);
 		assertEquals("wrong type?", type, cmd.getObjectType());
@@ -166,7 +166,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandDeleteObject_ThreatRatingCriterion() throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_CRITERION;
+		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObject(type);
 		
 		CommandDeleteObject cmd = new CommandDeleteObject(type, createdId);
@@ -185,7 +185,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandCreateObject_ThreatRatingCriterion() throws Exception
 	{
 		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		int type = ObjectType.THREAT_RATING_CRITERION;
+		int type = ObjectType.RATING_CRITERION;
 		CommandCreateObject cmd = new CommandCreateObject(type);
 		assertEquals("wrong type?", type, cmd.getObjectType());
 		assertEquals("created id already set?", BaseId.INVALID, cmd.getCreatedId());
@@ -193,7 +193,7 @@ public class TestCommands extends EAMTestCase
 		int oldCount = framework.getCriteria().length;
 		project.executeCommand(cmd);
 		assertEquals("didn't add?", oldCount+1, framework.getCriteria().length);
-		ThreatRatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
+		RatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
 		assertEquals("wrong default label?", EAMBaseObject.DEFAULT_LABEL, criterion.getLabel());
 		
 		assertNotNull("didn't create?", framework.getCriterion(cmd.getCreatedId()));

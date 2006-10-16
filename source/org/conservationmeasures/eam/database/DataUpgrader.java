@@ -97,7 +97,7 @@ public class DataUpgrader extends ProjectServer
 	void upgradeToVersion2() throws IOException, ParseException
 	{
 		// add manifest file to Objects-1 and Objects-2
-		createManifestFromObjects(ObjectType.THREAT_RATING_CRITERION);
+		createManifestFromObjects(ObjectType.RATING_CRITERION);
 		createManifestFromObjects(ObjectType.VALUE_OPTION);
 		writeVersion(2);
 	}

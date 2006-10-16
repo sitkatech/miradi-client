@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestThreatRatingCriterion extends EAMTestCase
+public class TestRatingCriterion extends EAMTestCase
 {
-	public TestThreatRatingCriterion(String name)
+	public TestRatingCriterion(String name)
 	{
 		super(name);
 	}
@@ -18,13 +18,13 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	public void testSetGetData() throws Exception
 	{
 		
-		verifySetGetData(ThreatRatingCriterion.TAG_LABEL, "Hi mom!");
+		verifySetGetData(RatingCriterion.TAG_LABEL, "Hi mom!");
 	}
 	
 	public void testGetDataBadFieldTag()
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(id);
 		try
 		{
 			option.getData("not a valid tag");
@@ -38,7 +38,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	public void testSetDataBadFieldTag() throws Exception
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(id);
 		try
 		{
 			option.setData("not a valid tag", "whatever");
@@ -52,7 +52,7 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	private void verifySetGetData(String tag, String value) throws Exception
 	{
 		BaseId id = new BaseId(6);
-		ThreatRatingCriterion option = new ThreatRatingCriterion(id);
+		RatingCriterion option = new RatingCriterion(id);
 		option.setData(tag, value);
 		assertEquals(value, option.getData(tag));
 	}
@@ -61,12 +61,12 @@ public class TestThreatRatingCriterion extends EAMTestCase
 	{
 		BaseId id = new BaseId(32);
 		String label = "Text";
-		ThreatRatingCriterion a = new ThreatRatingCriterion(id);
-		a.setData(ThreatRatingCriterion.TAG_LABEL, label);
-		ThreatRatingCriterion b = new ThreatRatingCriterion(id);
-		b.setData(ThreatRatingCriterion.TAG_LABEL, "other label");
-		ThreatRatingCriterion c = new ThreatRatingCriterion(new BaseId(id.asInt() + 1));
-		c.setData(ThreatRatingCriterion.TAG_LABEL, label);
+		RatingCriterion a = new RatingCriterion(id);
+		a.setData(RatingCriterion.TAG_LABEL, label);
+		RatingCriterion b = new RatingCriterion(id);
+		b.setData(RatingCriterion.TAG_LABEL, "other label");
+		RatingCriterion c = new RatingCriterion(new BaseId(id.asInt() + 1));
+		c.setData(RatingCriterion.TAG_LABEL, label);
 		assertEquals("id same not good enough?", a, b);
 		assertNotEquals("id different still equals?", a, c);
 		assertNotEquals("different type equals?", a, new Object());

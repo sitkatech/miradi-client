@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix.wizard;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -72,6 +72,6 @@ abstract public class ThreatRatingWizardSetValue extends ThreatRatingWizardStep
 		return true;
 	}
 
-	ThreatRatingCriterion criterion;
+	RatingCriterion criterion;
 	protected ValueOption value;
 }

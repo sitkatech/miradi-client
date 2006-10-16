@@ -9,21 +9,21 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.json.JSONObject;
 
-public class ThreatRatingCriterion extends EAMBaseObject
+public class RatingCriterion extends EAMBaseObject
 {
-	public ThreatRatingCriterion(BaseId idToUse)
+	public RatingCriterion(BaseId idToUse)
 	{
 		super(idToUse);
 	}
 	
-	public ThreatRatingCriterion(int idAsInt, JSONObject json)
+	public RatingCriterion(int idAsInt, JSONObject json)
 	{
 		super(new BaseId(idAsInt), json);
 	}
 	
 	public int getType()
 	{
-		return ObjectType.THREAT_RATING_CRITERION;
+		return ObjectType.RATING_CRITERION;
 	}
 
 	public JSONObject toJson()

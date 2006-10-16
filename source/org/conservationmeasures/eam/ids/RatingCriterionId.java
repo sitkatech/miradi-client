@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.ids;
 
-public class ThreatRatingCriterionId extends ObjectId
+public class RatingCriterionId extends ObjectId
 {
 
-	public ThreatRatingCriterionId(int idToUse)
+	public RatingCriterionId(int idToUse)
 	{
 		super(idToUse);
 	}

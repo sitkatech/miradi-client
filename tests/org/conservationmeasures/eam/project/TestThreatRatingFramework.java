@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.json.JSONArray;
@@ -60,7 +60,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		{
 			Project realProject = new Project();
 			realProject.createOrOpen(tempDir);
-			BaseId createdId = realProject.createObject(ObjectType.THREAT_RATING_CRITERION);
+			BaseId createdId = realProject.createObject(ObjectType.RATING_CRITERION);
 			
 			ModelNodeId threatId = new ModelNodeId(283);
 			ModelNodeId targetId = new ModelNodeId(983);
@@ -119,7 +119,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testThreatRatingCriteria() throws Exception
 	{
-		ThreatRatingCriterion[] criteria = framework.getCriteria();
+		RatingCriterion[] criteria = framework.getCriteria();
 		assertEquals("wrong number of default criteria?", 3, criteria.length);
 		List expectedLabels = Arrays.asList(new String[] {"Scope", "Severity", "Irreversibility", });
 		for(int i = 0; i < criteria.length; ++i)
@@ -322,7 +322,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	void populateBundle(ThreatRatingFramework frameworkToUse, ModelNodeId threatId, ModelNodeId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
-		ThreatRatingCriterion criteria[] = frameworkToUse.getCriteria();
+		RatingCriterion criteria[] = frameworkToUse.getCriteria();
 		for(int i = 0; i < criteria.length; ++i)
 			bundle.setValueId(criteria[i].getId(), value.getId());
 	}

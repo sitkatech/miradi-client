@@ -9,18 +9,18 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 
-public class ThreatRatingCriterionPool extends EAMNormalObjectPool
+public class RatingCriterionPool extends EAMNormalObjectPool
 {
-	public ThreatRatingCriterionPool(IdAssigner idAssignerToUse)
+	public RatingCriterionPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.THREAT_RATING_CRITERION);
+		super(idAssignerToUse, ObjectType.RATING_CRITERION);
 	}
 
 	EAMObject createRawObject(BaseId actualId)
 	{
-		return new ThreatRatingCriterion(actualId);
+		return new RatingCriterion(actualId);
 	}
 
 }

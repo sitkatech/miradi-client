@@ -30,7 +30,7 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -86,10 +86,10 @@ public class ThreatRatingPanel extends Box
 		int lineWidth = 1;
 		Box criteria = Box.createVerticalBox();
 
-		ThreatRatingCriterion[] criterionItems = framework.getCriteria();
+		RatingCriterion[] criterionItems = framework.getCriteria();
 		for(int i = 0; i < criterionItems.length; ++i)
 		{
-			ThreatRatingCriterion criterion = criterionItems[i];
+			RatingCriterion criterion = criterionItems[i];
 
 			CriterionLabel criterionLabel = new CriterionLabel(criterion.getLabel());
 			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
@@ -156,7 +156,7 @@ public class ThreatRatingPanel extends Box
 		Iterator iter = dropdowns.keySet().iterator();
 		while(iter.hasNext())
 		{
-			ThreatRatingCriterion criterion = (ThreatRatingCriterion)iter.next();
+			RatingCriterion criterion = (RatingCriterion)iter.next();
 			UiComboBoxWithSaneActionFiring dropdown = (UiComboBoxWithSaneActionFiring)dropdowns.get(criterion);
 
 			BaseId valueId = defaultValueId;
@@ -210,7 +210,7 @@ public class ThreatRatingPanel extends Box
 		return dropDown;
 	}
 	
-	public void valueWasChanged(ThreatRatingCriterion criterion, ValueOption value)
+	public void valueWasChanged(RatingCriterion criterion, ValueOption value)
 	{
 		if(bundle == null)
 			return;
@@ -229,7 +229,7 @@ public class ThreatRatingPanel extends Box
 	
 	static class ValueListener implements ActionListener
 	{
-		public ValueListener(ThreatRatingPanel panelToUse, ThreatRatingCriterion criterionToUse)
+		public ValueListener(ThreatRatingPanel panelToUse, RatingCriterion criterionToUse)
 		{
 			panel = panelToUse;
 			criterion = criterionToUse;
@@ -244,7 +244,7 @@ public class ThreatRatingPanel extends Box
 		}
 		
 		ThreatRatingPanel panel;
-		ThreatRatingCriterion criterion;
+		RatingCriterion criterion;
 	}
 	
 	ThreatMatrixView view;

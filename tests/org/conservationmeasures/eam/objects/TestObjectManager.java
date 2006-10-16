@@ -43,7 +43,7 @@ public class TestObjectManager extends EAMTestCase
 	public void testObjectLifecycles() throws Exception
 	{
 		int[] types = new int[] {
-			ObjectType.THREAT_RATING_CRITERION, 
+			ObjectType.RATING_CRITERION, 
 			ObjectType.VALUE_OPTION, 
 			ObjectType.TASK, 
 			ObjectType.VIEW_DATA, 
@@ -82,7 +82,7 @@ public class TestObjectManager extends EAMTestCase
 		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
 		db.readObject(type, createdId);
 		
-		String tag = ThreatRatingCriterion.TAG_LABEL;
+		String tag = RatingCriterion.TAG_LABEL;
 		manager.setObjectData(type, createdId, tag, "data");
 		EAMObject withData = db.readObject(type, createdId);
 		assertEquals("didn't write/read data?", "data", withData.getData(tag));

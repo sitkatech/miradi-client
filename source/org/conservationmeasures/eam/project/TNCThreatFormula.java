@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 
 public class TNCThreatFormula
@@ -151,7 +151,7 @@ public class TNCThreatFormula
 
 	private int getCriterionValue(ThreatRatingBundle bundle, String label)
 	{
-		ThreatRatingCriterion criterion = framework.findCriterionByLabel(label);
+		RatingCriterion criterion = framework.findCriterionByLabel(label);
 		if(criterion == null)
 			return DEFAULT_VALUE;
 		

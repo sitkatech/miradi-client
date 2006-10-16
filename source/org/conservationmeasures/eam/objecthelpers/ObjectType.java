@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objecthelpers;
 
 public class ObjectType
 {
-	public static final int THREAT_RATING_CRITERION = 1;
+	public static final int RATING_CRITERION = 1;
 	public static final int VALUE_OPTION = 2;
 	public static final int TASK = 3;
 	public static final int MODEL_NODE = 4;

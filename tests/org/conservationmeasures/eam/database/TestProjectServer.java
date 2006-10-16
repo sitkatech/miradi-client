@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -57,7 +57,7 @@ public class TestProjectServer extends EAMTestCase
 			Task task = new Task(idsToWrite[i]);
 			storage.writeObject(task);
 		}
-		ThreatRatingCriterion criterion = new ThreatRatingCriterion(new BaseId(99));
+		RatingCriterion criterion = new RatingCriterion(new BaseId(99));
 		storage.writeObject(criterion);
 
 		ObjectManifest manifest = storage.readObjectManifest(ObjectType.TASK);

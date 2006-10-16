@@ -186,7 +186,7 @@ public class TestTNCThreatFormula extends EAMTestCase
 		
 		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
 		
-		project.deleteObject(ObjectType.THREAT_RATING_CRITERION, urgencyId);
+		project.deleteObject(ObjectType.RATING_CRITERION, urgencyId);
 		assertEquals("bundle missing value not zero?", 0, formula.computeBundleValue(bundle));
 	}
 

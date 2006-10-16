@@ -20,10 +20,10 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objectpools.ThreatRatingCriterionPool;
+import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -96,9 +96,9 @@ public class ThreatRatingFramework
 
 	private void createDefaultCriterion(String label) throws Exception
 	{
-		int type = ObjectType.THREAT_RATING_CRITERION;
+		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObject(type);
-		project.setObjectData(type, createdId, ThreatRatingCriterion.TAG_LABEL, label);
+		project.setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
 	}
 	
 	public int getBundleCount()
@@ -131,15 +131,15 @@ public class ThreatRatingFramework
 	}
 	
 
-	ThreatRatingCriterionPool getCriterionPool()
+	RatingCriterionPool getCriterionPool()
 	{
-		return (ThreatRatingCriterionPool)getProject().getPool(ObjectType.THREAT_RATING_CRITERION);
+		return (RatingCriterionPool)getProject().getPool(ObjectType.RATING_CRITERION);
 	}
 	
-	public ThreatRatingCriterion[] getCriteria()
+	public RatingCriterion[] getCriteria()
 	{
 		BaseId[] ids = getCriterionPool().getIds();
-		ThreatRatingCriterion[] result = new ThreatRatingCriterion[ids.length];
+		RatingCriterion[] result = new RatingCriterion[ids.length];
 		for(int i = 0; i < ids.length; ++i)
 		{
 			result[i] = getCriterion(ids[i]);
@@ -147,9 +147,9 @@ public class ThreatRatingFramework
 		return result;
 	}
 	
-	public ThreatRatingCriterion getCriterion(BaseId id)
+	public RatingCriterion getCriterion(BaseId id)
 	{
-		return (ThreatRatingCriterion)getCriterionPool().findObject(id);
+		return (RatingCriterion)getCriterionPool().findObject(id);
 	}
 	
 
@@ -282,12 +282,12 @@ public class ThreatRatingFramework
 		return findValueOptionByNumericValue(numericResult);
 	}
 
-	public ThreatRatingCriterion findCriterionByLabel(String label)
+	public RatingCriterion findCriterionByLabel(String label)
 	{
 		BaseId[] ids = getCriterionPool().getIds();
 		for(int i = 0; i < ids.length; ++i)
 		{
-			ThreatRatingCriterion criterion = getCriterion(ids[i]);
+			RatingCriterion criterion = getCriterion(ids[i]);
 			if(criterion.getLabel().equals(label))
 				return criterion;
 		}

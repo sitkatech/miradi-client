@@ -29,8 +29,8 @@ abstract public class EAMBaseObject implements EAMObject
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
-			case ObjectType.THREAT_RATING_CRITERION:
-				return new ThreatRatingCriterion(idAsInt, json);
+			case ObjectType.RATING_CRITERION:
+				return new RatingCriterion(idAsInt, json);
 				
 			case ObjectType.VALUE_OPTION:
 				return new ValueOption(idAsInt, json);

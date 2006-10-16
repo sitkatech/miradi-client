@@ -54,7 +54,7 @@ import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
-import org.conservationmeasures.eam.objects.TestThreatRatingCriterion;
+import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.project.TestIdAssigner;
@@ -159,7 +159,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestTask.class));
 		suite.addTest(new TestSuite(TestThreatRatingBundle.class));
-		suite.addTest(new TestSuite(TestThreatRatingCriterion.class));
+		suite.addTest(new TestSuite(TestRatingCriterion.class));
 		suite.addTest(new TestSuite(TestValueOption.class));
 		suite.addTest(new TestSuite(TestViewData.class));
 		
