@@ -27,5 +27,11 @@ abstract public class EAMNormalObjectPool extends EAMObjectPool
 	
 	abstract EAMObject createRawObject(BaseId actualId);
 	
+	public void put(BaseId id, Object obj)
+	{
+		super.put(id, obj);
+		idAssigner.idTaken(id);
+	}
+
 	IdAssigner idAssigner;
 }
