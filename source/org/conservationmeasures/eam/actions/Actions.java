@@ -86,6 +86,7 @@ public class Actions
 		registerAction(new ActionInsertIndirectFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionExportZipFile(mainWindow));
+		registerAction(new ActionImportZipFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));

@@ -19,6 +19,8 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionExportZipFile;
+import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -37,7 +39,6 @@ import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionExportZipFile;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -109,7 +110,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionSaveImage.class)));
 		menu.add(createExportSetupMenu());
 		menu.add(createExportMenu(actions));
-		menu.add(createImportMenu());
+		menu.add(createImportMenu(actions));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionExit.class)));
 		return menu;
@@ -167,9 +168,10 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 	
-	private JMenu createImportMenu()
+	private JMenu createImportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Import");
+		menu.add(new JMenuItem(actions.get(ActionImportZipFile.class)));
 		menu.add(createImportProjectSubmenu());
 		menu.add(createImportMapSubmenu());
 		menu.add(createImportDiagramSubmenu());

@@ -20,11 +20,12 @@ import javax.swing.border.LineBorder;
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionExit;
+import org.conservationmeasures.eam.actions.ActionExportZipFile;
+import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionExportZipFile;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpActivitiesAndActionPlan;
 import org.conservationmeasures.eam.actions.jump.ActionJumpAdaptAndMonitorPlans;
@@ -266,6 +267,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionRedo.class, new Redo());
 		addDoerToMap(ActionPreferences.class, new Preferences());
 		addDoerToMap(ActionExportZipFile.class, new ExportZipFileDoer());
+		addDoerToMap(ActionImportZipFile.class, new ImportZipFileDoer());
 		
 		addDoerToMap(ActionViewSummary.class, new ViewSummary());
 		addDoerToMap(ActionViewDiagram.class, new ViewDiagram());
