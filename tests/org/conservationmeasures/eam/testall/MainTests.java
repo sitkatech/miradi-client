@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
 import org.conservationmeasures.eam.diagram.TestDelete;
+import org.conservationmeasures.eam.diagram.TestDiagramComponent;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.TestEamGraphCell;
@@ -125,6 +126,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramModel.class));
 		suite.addTest(new TestSuite(TestDiagramView.class));
 		suite.addTest(new TestSuite(TestProjectScopeBox.class));
+		suite.addTest(new TestSuite(TestDiagramComponent.class));
 
 		// nodes package
 		suite.addTest(new TestSuite(TestLinkNodes.class));

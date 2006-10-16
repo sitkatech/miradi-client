@@ -814,6 +814,7 @@ public class Project
 		LayerManager manager = getLayerManager();
 		boolean isVisible = manager.isVisible(node);
 		getGraphLayoutCache().setVisible(node, isVisible);
+		//System.out.println(node+" is visible = "+getGraphLayoutCache().isVisible(node));
 	}
 	
 	

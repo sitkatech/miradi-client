@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.JComponent;
@@ -26,6 +27,7 @@ import org.conservationmeasures.eam.actions.ActionNudgeNodeRight;
 import org.conservationmeasures.eam.actions.ActionNudgeNodeUp;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
+import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -41,29 +43,35 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
+import org.jgraph.graph.GraphLayoutCache;
 import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
 {
-	public DiagramComponent(MainWindow mainWindow)
-	{
-		project = mainWindow.getProject();
-		Actions actions = mainWindow.getActions();
+    
+    	public DiagramComponent()
+    	{
+    	    	setUI(new EAMGraphUI());
+        
+    	    	disableInPlaceEditing();
+    	    	setDisconnectable(false);
+    	    	setDisconnectOnMove(false);
+    	    	setBendable(false);
+    	    	setGridSize(Project.DEFAULT_GRID_SIZE);
+    	    	setGridEnabled(true);
+    	    	setGridVisible(true);
+    	    	setGridMode(JGraph.CROSS_GRID_MODE);
+    	    	setSelectionModel(new EAMGraphSelectionModel(this));
+    	}    
+        
+    	public DiagramComponent(MainWindow mainWindow)
+    	{
+    	    	this();
+    	    	project = mainWindow.getProject();
+    	    	Actions actions = mainWindow.getActions();
 
-		setUI(new EAMGraphUI());
-
-		disableInPlaceEditing();
-		setDisconnectable(false);
-		setDisconnectOnMove(false);
-		setBendable(false);
-		setGridSize(Project.DEFAULT_GRID_SIZE);
-		setGridEnabled(true);
-		setGridVisible(true);
-		setGridMode(JGraph.CROSS_GRID_MODE);
-		setSelectionModel(new EAMGraphSelectionModel(this));
-
-		installKeyBindings(actions);
-		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
+    	    	installKeyBindings(actions);
+    	    	diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
 		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
@@ -159,7 +167,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		boolean bothNodesVisible = isNodeVisible(from) && isNodeVisible(to);
 		return bothNodesVisible;
 	}
-
+	
 	public DiagramNode getSelectedNode()
 	{
 		if (getSelectionCount() != 1)
@@ -181,6 +189,37 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			}
 		}
 		return null;
+	}
+	
+	public void selectAll()
+	{
+	    clearSelection();
+	    selectAllNodes();
+	    selectAllLinkages();
+	}
+	
+	public void selectAllNodes()
+	{
+	    
+	    GraphLayoutCache graphCacheLay = getGraphLayoutCache();
+	    Vector allNodes = getDiagramModel().getAllNodes();
+	    for (int i  = 0; i < allNodes.size(); i++)
+	    {
+	        DiagramNode dNode = (DiagramNode)allNodes.elementAt(i);
+	        if (graphCacheLay.isVisible(dNode))
+	            addSelectionCell(dNode);
+	    }
+	}
+	
+	public void selectAllLinkages()
+	{
+	    GraphLayoutCache graphCacheLay = getGraphLayoutCache();
+	    Vector allLinks = getDiagramModel().getAllLinkages();
+            for (int i = 0 ; i < allLinks.size(); i++){
+                DiagramLinkage dLink = (DiagramLinkage)allLinks.elementAt(i);
+                if (graphCacheLay.isVisible(dLink))
+                    addSelectionCell(dLink);
+            }
 	}
 	
 	public void zoom(double proportion)
@@ -213,6 +252,8 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_EQUALS, KeyBinder.KEY_MODIFIER_CTRL, zoomInAction);
 		Action zoomOutAction = actions.get(ActionZoomOut.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_MINUS, KeyBinder.KEY_MODIFIER_CTRL, zoomOutAction);
+		Action  selectAllAction = actions.get(ActionSelectAll.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyBinder.KEY_MODIFIER_CTRL, selectAllAction);
 		//JAVA ISSUE: We had to create new actions here since the key pressed which caused this action
 		//Is not sent to the action.
 		//javax.swing.SwingUtilities doesn't pass the keycode to the action. 

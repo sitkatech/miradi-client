@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import java.awt.event.ActionEvent;
-
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -21,12 +18,6 @@ public class ActionSelectAll extends MainWindowAction
 	private static String getLabel()
 	{
 		return EAM.text("Action|SelectAll");
-	}
-
-	public void doAction(ActionEvent event) throws CommandFailedException
-	{
-		// TODO Auto-generated method stub
-
 	}
 
 }
