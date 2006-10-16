@@ -12,7 +12,7 @@ public class ActionImportZipFile extends MainWindowAction
 {
 	public ActionImportZipFile(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), "icons/new.gif");
+		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()

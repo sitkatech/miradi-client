@@ -21,8 +21,6 @@ public class ExportZipFileDoer extends MainWindowDoer
 	public boolean isAvailable() 
 	{
 		Project project = getProject();
-		if(!project.isOpen())
-			return false;
 		return project.isOpen();
 	}
 
@@ -50,7 +48,7 @@ public class ExportZipFileDoer extends MainWindowDoer
 			String fileName = chosen.getAbsolutePath();
 			if (!fileName.endsWith(".zip")) fileName = fileName + ".zip";
 			File newFile = new File(fileName);
-			zipFIle(newFile); 
+			zipFile(newFile); 
 		} 
 		catch (Exception e) 
 		{
@@ -59,7 +57,7 @@ public class ExportZipFileDoer extends MainWindowDoer
 		} 
 	}
 
-	private void zipFIle(File out) throws Exception 
+	private void zipFile(File out) throws Exception 
 	{
 		File projectDir = getProject().getDatabase().getTopDirectory();
 		ProjectZipper.createProjectZipFile(out,projectDir);

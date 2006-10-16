@@ -18,8 +18,6 @@ public class ImportZipFileDoer extends MainWindowDoer
 	public boolean isAvailable() 
 	{
 		Project project = getProject();
-		if(project.isOpen())
-			return false;
 		return !project.isOpen();
 	}
 
