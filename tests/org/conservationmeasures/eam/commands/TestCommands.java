@@ -192,7 +192,7 @@ public class TestCommands extends EAMTestCase
 
 		int oldCount = framework.getCriteria().length;
 		project.executeCommand(cmd);
-		assertEquals("didn't add?", oldCount+1, framework.getCriteria().length);
+		assertEquals("added to framework?", oldCount, framework.getCriteria().length);
 		RatingCriterion criterion = framework.getCriterion(cmd.getCreatedId());
 		assertEquals("wrong default label?", EAMBaseObject.DEFAULT_LABEL, criterion.getLabel());
 		

@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTNCThreatFormula extends EAMTestCase
@@ -182,12 +181,10 @@ public class TestTNCThreatFormula extends EAMTestCase
 
 		bundle.setValueId(scopeId, veryHighId);
 		bundle.setValueId(severityId, veryHighId);
+		assertEquals("bundle missing value not zero?", 0, formula.computeBundleValue(bundle));
 		bundle.setValueId(urgencyId, highId);
 		
 		assertEquals("right bundle value? ", 4, formula.computeBundleValue(bundle));
-		
-		project.deleteObject(ObjectType.RATING_CRITERION, urgencyId);
-		assertEquals("bundle missing value not zero?", 0, formula.computeBundleValue(bundle));
 	}
 
 	public void testGetSummaryOfBundles()

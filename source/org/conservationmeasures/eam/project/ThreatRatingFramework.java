@@ -41,6 +41,7 @@ public class ThreatRatingFramework
 	public void clear()
 	{
 		bundles = new HashMap();
+		criteria = new RatingCriterion[0];
 		ratingValueOptions = new ValueOption[0];
 	}
 	
@@ -57,13 +58,28 @@ public class ThreatRatingFramework
 		return ids;
 	}
 	
+	public IdList getCriterionIds()
+	{
+		IdList ids = new IdList();
+		for(int i = 0; i < criteria.length; ++i)
+			ids.add(criteria[i].getId());
+		return ids;
+	}
+	
 	public void createDefaultObjectsIfNeeded() throws Exception
 	{
 		if(getCriteria().length == 0)
 		{
-			createDefaultCriterion(EAM.text("Label|Scope")); 
-			createDefaultCriterion(EAM.text("Label|Severity"));
-			createDefaultCriterion(EAM.text("Label|Irreversibility"));
+			IdList ids = new IdList();
+			ids.add(createDefaultCriterion(EAM.text("Label|Scope"))); 
+			ids.add(createDefaultCriterion(EAM.text("Label|Severity")));
+			ids.add(createDefaultCriterion(EAM.text("Label|Irreversibility")));
+			
+			criteria = new RatingCriterion[ids.size()];
+			for(int i = 0; i < criteria.length; ++i)
+				criteria[i] = (RatingCriterion)getProject().findObject(ObjectType.RATING_CRITERION, ids.get(i));
+			
+			saveFramework();
 		}
 		
 		if(getValueOptionIds().size() == 0)
@@ -94,11 +110,12 @@ public class ThreatRatingFramework
 		return createdId;
 	}
 
-	private void createDefaultCriterion(String label) throws Exception
+	private BaseId createDefaultCriterion(String label) throws Exception
 	{
 		int type = ObjectType.RATING_CRITERION;
 		BaseId createdId = project.createObject(type);
 		project.setObjectData(type, createdId, RatingCriterion.TAG_LABEL, label);
+		return createdId;
 	}
 	
 	public int getBundleCount()
@@ -138,13 +155,7 @@ public class ThreatRatingFramework
 	
 	public RatingCriterion[] getCriteria()
 	{
-		BaseId[] ids = getCriterionPool().getIds();
-		RatingCriterion[] result = new RatingCriterion[ids.length];
-		for(int i = 0; i < ids.length; ++i)
-		{
-			result[i] = getCriterion(ids[i]);
-		}
-		return result;
+		return criteria;
 	}
 	
 	public RatingCriterion getCriterion(BaseId id)
@@ -284,12 +295,10 @@ public class ThreatRatingFramework
 
 	public RatingCriterion findCriterionByLabel(String label)
 	{
-		BaseId[] ids = getCriterionPool().getIds();
-		for(int i = 0; i < ids.length; ++i)
+		for(int i = 0; i < criteria.length; ++i)
 		{
-			RatingCriterion criterion = getCriterion(ids[i]);
-			if(criterion.getLabel().equals(label))
-				return criterion;
+			if(criteria[i].getLabel().equals(label))
+				return criteria[i];
 		}
 		
 		return null;
@@ -364,6 +373,7 @@ public class ThreatRatingFramework
 		}
 		json.put(TAG_BUNDLE_KEYS, bundleKeys);
 		json.put(TAG_VALUE_OPTION_IDS, getValueOptionIds().toJson());
+		json.put(TAG_CRITERION_IDS, getCriterionIds().toJson());
 		return json;
 	}
 	
@@ -388,15 +398,32 @@ public class ThreatRatingFramework
 		}
 		
 		ratingValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS)));
+		criteria = findCriteria(new IdList(json.optJSONObject(TAG_CRITERION_IDS)));
 	}
 
 	private ValueOption[] findValueOptions(IdList ids)
 	{
 		ValueOption[] valueOptions = new ValueOption[ids.size()];
 		for(int i = 0; i < valueOptions.length; ++i)
-			valueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+		{
+			int type = ObjectType.VALUE_OPTION;
+			valueOptions[i] = (ValueOption)getProject().findObject(type, ids.get(i));
+		}
 		
 		return valueOptions;
+	}
+	
+	private RatingCriterion[] findCriteria(IdList ids)
+	{
+		ids.removeId(BaseId.INVALID);
+		RatingCriterion[] ratingCriteria = new RatingCriterion[ids.size()];
+		for(int i = 0; i < ratingCriteria.length; ++i)
+		{
+			int type = ObjectType.RATING_CRITERION;
+			ratingCriteria[i] = (RatingCriterion)getProject().findObject(type, ids.get(i));
+		}
+		
+		return ratingCriteria;
 	}
 	
 	private ProjectServer getDatabase()
@@ -407,6 +434,7 @@ public class ThreatRatingFramework
 	
 	public static final String TAG_BUNDLE_KEYS = "BundleKeys";
 	public static final String TAG_VALUE_OPTION_IDS = "ValueOptionIds";
+	public static final String TAG_CRITERION_IDS = "CriterionIds";
 	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
 	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
@@ -414,4 +442,5 @@ public class ThreatRatingFramework
 	
 	private HashMap bundles;
 	private ValueOption[] ratingValueOptions;
+	private RatingCriterion[] criteria;
 }
