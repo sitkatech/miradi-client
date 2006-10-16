@@ -27,11 +27,17 @@ public class StrategyRatingFramework
 	public StrategyRatingFramework(Project owningProject, EnhancedJsonObject json)
 	{
 		this(owningProject);
-		IdList impactOptionIds = new IdList(json.optJSONObject(TAG_IMPACT_VALUE_OPTION_IDS));
-		impactValueOptions = new ValueOption[impactOptionIds.size()];
-		for(int i = 0; i < impactValueOptions.length; ++i)
-			impactValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, impactOptionIds.get(i));
-			
+		impactValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_IMPACT_VALUE_OPTION_IDS)));
+		feasibilityValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_FEASIBILITY_VALUE_OPTION_IDS)));
+	}
+	
+	private ValueOption[] findValueOptions(IdList ids)
+	{
+		ValueOption[] valueOptions = new ValueOption[ids.size()];
+		for(int i = 0; i < valueOptions.length; ++i)
+			valueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+		
+		return valueOptions;
 	}
 	
 	public Project getProject()
@@ -47,6 +53,7 @@ public class StrategyRatingFramework
 	public void clear()
 	{
 		impactValueOptions = new ValueOption[0];
+		feasibilityValueOptions = new ValueOption[0];
 	}
 	
 	public ValueOption[] getImpactValueOptions()
@@ -54,32 +61,57 @@ public class StrategyRatingFramework
 		return impactValueOptions;
 	}
 	
+	public ValueOption[] getFeasibilityValueOptions()
+	{
+		return feasibilityValueOptions;
+	}
+	
 	public IdList getImpactValueOptionIds()
 	{
+		return getValueOptionIds(impactValueOptions);
+	}
+
+	public IdList getFeasibilityValueOptionIds()
+	{
+		return getValueOptionIds(feasibilityValueOptions);
+	}
+
+	private IdList getValueOptionIds(ValueOption[] valueOptions)
+	{
 		IdList result = new IdList();
-		for(int i = 0; i < impactValueOptions.length; ++i)
-			result.add(impactValueOptions[i].getId());
+		for(int i = 0; i < valueOptions.length; ++i)
+			result.add(valueOptions[i].getId());
 		return result;
 	}
 	
 	public ValueOption findImpactValueOptionByNumericValue(int value)
 	{
-		for(int i = 0; i < impactValueOptions.length; ++i)
+		return findValueOptionByNumericValue(impactValueOptions, value);
+	}
+
+	public ValueOption findFeasibilityValueOptionByNumericValue(int value)
+	{
+		return findValueOptionByNumericValue(feasibilityValueOptions, value);
+	}
+
+	private ValueOption findValueOptionByNumericValue(ValueOption[] options, int value)
+	{
+		for(int i = 0; i < options.length; ++i)
 		{
-			if(impactValueOptions[i].getNumericValue() == value)
-				return impactValueOptions[i];
+			if(options[i].getNumericValue() == value)
+				return options[i];
 		}
 		
 		return null;
 	}
-
+	
 
 	public void createDefaultObjectsIfNeeded() throws Exception
 	{
-		IdList ids = new IdList();
 		if(impactValueOptions.length == 0)
 		{
-			ids.add(createDefaultValueOption(0, "None", Color.BLACK));
+			IdList ids = new IdList();
+			ids.add(createDefaultValueOption(0, "Useless", Color.BLACK));
 			ids.add(createDefaultValueOption(1, "Unlikely to solve problem(s)", Color.RED));
 			ids.add(createDefaultValueOption(2, "Likely to solve some for a while", Color.ORANGE));
 			ids.add(createDefaultValueOption(3, "Likely to solve all for a while", Color.YELLOW));
@@ -88,6 +120,22 @@ public class StrategyRatingFramework
 			impactValueOptions = new ValueOption[ids.size()];
 			for(int i = 0; i < impactValueOptions.length; ++i)
 				impactValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+			
+			saveFramework();
+		}
+		
+		if(feasibilityValueOptions.length == 0)
+		{
+			IdList ids = new IdList();
+			ids.add(createDefaultValueOption(0, "Impossible or hugely expensive", Color.BLACK));
+			ids.add(createDefaultValueOption(1, "Expensive and difficult", Color.RED));
+			ids.add(createDefaultValueOption(2, "Relatively inexpensive or easy, not both", Color.ORANGE));
+			ids.add(createDefaultValueOption(3, "Relatively inexpensive and easy", Color.YELLOW));
+			ids.add(createDefaultValueOption(4, "Inexpensive and easy", Color.GREEN));
+			
+			feasibilityValueOptions = new ValueOption[ids.size()];
+			for(int i = 0; i < feasibilityValueOptions.length; ++i)
+				feasibilityValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
 			
 			saveFramework();
 		}
@@ -111,11 +159,14 @@ public class StrategyRatingFramework
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_IMPACT_VALUE_OPTION_IDS, getImpactValueOptionIds().toJson());
+		json.put(TAG_FEASIBILITY_VALUE_OPTION_IDS, getFeasibilityValueOptionIds().toJson());
 		return json;
 	}
 	
 	public final static String TAG_IMPACT_VALUE_OPTION_IDS = "ImpactValueOptionIds";
+	public final static String TAG_FEASIBILITY_VALUE_OPTION_IDS = "FeasibilityValueOptionIds";
 
 	Project project;
 	ValueOption[] impactValueOptions;
+	ValueOption[] feasibilityValueOptions;
 }

@@ -42,10 +42,23 @@ public class TestStrategyRatingFramework extends EAMTestCase
 		assertEquals("Wrong color?", Color.ORANGE, medium.getColor());
 	}
 	
+	public void testGetFeasibilityValueOptions()
+	{
+		ValueOption[] valueOptions = framework.getFeasibilityValueOptions();
+		assertEquals(5, valueOptions.length);
+		for(int i = 0; i < valueOptions.length; ++i)
+			assertEquals("Wrong value " + i + "?", i, valueOptions[i].getNumericValue());
+		
+		ValueOption medium = framework.findFeasibilityValueOptionByNumericValue(2);
+		assertEquals("Wrong label?", "Relatively inexpensive or easy, not both", medium.getLabel());
+		assertEquals("Wrong color?", Color.ORANGE, medium.getColor());
+	}
+	
 	public void testJson()
 	{
 		StrategyRatingFramework loaded = new StrategyRatingFramework(project, framework.toJson());
 		assertEquals("Didn't reload impact options?", framework.getImpactValueOptions().length, loaded.getImpactValueOptions().length);
+		assertEquals("Didn't reload feasibility options?", framework.getFeasibilityValueOptions().length, loaded.getFeasibilityValueOptions().length);
 	}
 	
 	ProjectForTesting project;
