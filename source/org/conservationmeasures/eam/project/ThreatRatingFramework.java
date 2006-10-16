@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -68,12 +67,12 @@ public class ThreatRatingFramework
 	
 	public void createDefaultObjectsIfNeeded() throws Exception
 	{
-		if(getCriteria().length == 0)
+		if(criteria.length == 0)
 		{
 			IdList ids = new IdList();
-			ids.add(createDefaultCriterion(EAM.text("Label|Scope"))); 
-			ids.add(createDefaultCriterion(EAM.text("Label|Severity")));
-			ids.add(createDefaultCriterion(EAM.text("Label|Irreversibility")));
+			ids.add(createDefaultCriterion("Scope")); 
+			ids.add(createDefaultCriterion("Severity"));
+			ids.add(createDefaultCriterion("Irreversibility"));
 			
 			criteria = new RatingCriterion[ids.size()];
 			for(int i = 0; i < criteria.length; ++i)
@@ -82,14 +81,14 @@ public class ThreatRatingFramework
 			saveFramework();
 		}
 		
-		if(getValueOptionIds().size() == 0)
+		if(ratingValueOptions.length == 0)
 		{
 			IdList ids = new IdList();
-			ids.add(createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE));
-			ids.add(createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED));
-			ids.add(createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE));
-			ids.add(createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW));
-			ids.add(createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN));
+			ids.add(createDefaultValueOption("None", 0, Color.WHITE));
+			ids.add(createDefaultValueOption("Very High", 4, Color.RED));
+			ids.add(createDefaultValueOption("High", 3, Color.ORANGE));
+			ids.add(createDefaultValueOption("Medium", 2, Color.YELLOW));
+			ids.add(createDefaultValueOption("Low", 1, Color.GREEN));
 			
 			ratingValueOptions = new ValueOption[ids.size()];
 			for(int i = 0; i < ratingValueOptions.length; ++i)
@@ -399,6 +398,7 @@ public class ThreatRatingFramework
 		
 		ratingValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS)));
 		criteria = findCriteria(new IdList(json.optJSONObject(TAG_CRITERION_IDS)));
+		sortCriteria();
 	}
 
 	private ValueOption[] findValueOptions(IdList ids)
@@ -413,9 +413,20 @@ public class ThreatRatingFramework
 		return valueOptions;
 	}
 	
+	private void sortCriteria()
+	{
+		RatingCriterion scope = findCriterionByLabel(CRITERION_SCOPE);
+		RatingCriterion severity = findCriterionByLabel(CRITERION_SEVERITY);
+		RatingCriterion irreversibility = findCriterionByLabel(CRITERION_IRREVERSIBILITY);
+		criteria[0] = scope;
+		criteria[1] = severity;
+		criteria[2] = irreversibility;
+	}
+	
 	private RatingCriterion[] findCriteria(IdList ids)
 	{
-		ids.removeId(BaseId.INVALID);
+		if(ids.contains(BaseId.INVALID))
+			ids.removeId(BaseId.INVALID);
 		RatingCriterion[] ratingCriteria = new RatingCriterion[ids.size()];
 		for(int i = 0; i < ratingCriteria.length; ++i)
 		{
@@ -438,6 +449,10 @@ public class ThreatRatingFramework
 	public static final String TAG_BUNDLE_THREAT_ID = "BundleThreatId";
 	public static final String TAG_BUNDLE_TARGET_ID = "BundleTargetId";
 	
+	private static final String CRITERION_IRREVERSIBILITY = "Irreversibility";
+	private static final String CRITERION_SEVERITY = "Severity";
+	private static final String CRITERION_SCOPE = "Scope";
+
 	private Project project;
 	
 	private HashMap bundles;
