@@ -109,11 +109,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		indicator = indicatorToUse;
 	}
 
-	public ThreatRatingValue getThreatPriority()
-	{
-		return null;
-	}
-	
 	public ObjectiveIds getObjectives()
 	{
 		return objectives;
@@ -179,11 +174,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return false;
 	}
 
-	public boolean canHavePriority()
-	{
-		return false;
-	}
-	
 	public String getData(String fieldTag)
 	{
 		if(fieldTag.equals(TAG_NODE_TYPE))

@@ -29,13 +29,6 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		assertEquals("couldn't getComment?", sampleComment, factor.getComment());
 	}
 	
-	public void testPriority()
-	{
-		BaseId id = new BaseId(26);
-		ConceptualModelFactor factor = new ConceptualModelFactor(id);
-		assertEquals("didn't default to priority none?", null, factor.getThreatPriority());
-	}
-	
 	public void testSetGetData() throws Exception
 	{
 		BaseId id = new BaseId(72);
@@ -106,7 +99,6 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
-		assertEquals("wrong priority?", factor.getThreatPriority(), got.getThreatPriority());
 		assertEquals("wrong indicator?", factor.getIndicatorId(), got.getIndicatorId());
 		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());
 		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());

@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
@@ -139,16 +138,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.isStatusDraft();
 	}
 
-	public ThreatRatingValue getThreatRating()
-	{
-		return underlyingObject.getThreatPriority();
-	}
-	
-	public boolean canHaveThreatRating()
-	{
-		return underlyingObject.canHavePriority();
-	}
-	
 	public BaseId getIndicatorId()
 	{
 		return underlyingObject.getIndicatorId();

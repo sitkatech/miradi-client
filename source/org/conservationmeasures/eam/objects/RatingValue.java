@@ -9,9 +9,9 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.ids.BaseId;
 
-public class ThreatRatingValue 
+public class RatingValue 
 {
-	public ThreatRatingValue(ValueOption value)
+	public RatingValue(ValueOption value)
 	{
 		rating = value;
 	}
@@ -44,9 +44,9 @@ public class ThreatRatingValue
 	
 	public boolean equals(Object obj) 
 	{
-		if(!(obj instanceof ThreatRatingValue))
+		if(!(obj instanceof RatingValue))
 			return false;
-		return ((ThreatRatingValue)obj).rating.equals(rating);
+		return ((RatingValue)obj).rating.equals(rating);
 	}
 
 	

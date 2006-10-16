@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ThreatRatingValue;
+import org.conservationmeasures.eam.objects.RatingValue;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
@@ -77,9 +77,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		ThreatRatingFramework framework = model.getThreatRatingFramework();
 		priority = null;
 		if(node.isDirectThreat())
-			priority = new ThreatRatingValue(framework.getThreatThreatRatingValue(node.getWrappedId()));
+			priority = new RatingValue(framework.getThreatThreatRatingValue(node.getWrappedId()));
 		else if(node.isTarget())
-			priority = new ThreatRatingValue(framework.getTargetThreatRatingValue(node.getWrappedId()));
+			priority = new RatingValue(framework.getTargetThreatRatingValue(node.getWrappedId()));
 		indicator = ((DiagramComponent)graphToUse).getProject().getIndicatorPool().find(node.getIndicatorId());
 		return this;
 	}
@@ -176,7 +176,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 
 	
-	ThreatRatingValue priority;
+	RatingValue priority;
 	Indicator indicator;
 	DiagramNode node;
 }

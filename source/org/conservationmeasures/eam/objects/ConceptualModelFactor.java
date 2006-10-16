@@ -53,11 +53,6 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		return true;
 	}
 	
-	public boolean canHavePriority()
-	{
-		return true;
-	}
-
 	public JSONObject toJson()
 	{
 		JSONObject json = createBaseJsonObject(NodeTypeFactor.FACTOR_TYPE);

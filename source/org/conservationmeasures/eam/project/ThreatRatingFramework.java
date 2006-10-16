@@ -41,7 +41,7 @@ public class ThreatRatingFramework
 	public void clear()
 	{
 		bundles = new HashMap();
-		valueOptionIds = new IdList();
+		ratingValueOptions = new ValueOption[0];
 	}
 	
 	public Project getProject()
@@ -51,7 +51,10 @@ public class ThreatRatingFramework
 	
 	public IdList getValueOptionIds()
 	{
-		return valueOptionIds;
+		IdList ids = new IdList();
+		for(int i = 0; i < ratingValueOptions.length; ++i)
+			ids.add(ratingValueOptions[i].getId());
+		return ids;
 	}
 	
 	public void createDefaultObjectsIfNeeded() throws Exception
@@ -65,23 +68,30 @@ public class ThreatRatingFramework
 		
 		if(getValueOptionIds().size() == 0)
 		{
-			createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE);
-			createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED);
-			createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE);
-			createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW);
-			createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN);
+			IdList ids = new IdList();
+			ids.add(createDefaultValueOption(EAM.text("Label|None"), 0, Color.WHITE));
+			ids.add(createDefaultValueOption(EAM.text("Label|Very High"), 4, Color.RED));
+			ids.add(createDefaultValueOption(EAM.text("Label|High"), 3, Color.ORANGE));
+			ids.add(createDefaultValueOption(EAM.text("Label|Medium"), 2, Color.YELLOW));
+			ids.add(createDefaultValueOption(EAM.text("Label|Low"), 1, Color.GREEN));
+			
+			ratingValueOptions = new ValueOption[ids.size()];
+			for(int i = 0; i < ratingValueOptions.length; ++i)
+				ratingValueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+
+			Arrays.sort(ratingValueOptions, new OptionSorter());
 			saveFramework();
 		}
 	}
 
-	private void createDefaultValueOption(String label, int numericValue, Color color) throws Exception
+	private BaseId createDefaultValueOption(String label, int numericValue, Color color) throws Exception
 	{
 		int type = ObjectType.VALUE_OPTION;
 		BaseId createdId = project.createObject(type);
 		project.setObjectData(type, createdId, ValueOption.TAG_LABEL, label);
 		project.setObjectData(type, createdId, ValueOption.TAG_NUMERIC, Integer.toString(numericValue));
 		project.setObjectData(type, createdId, ValueOption.TAG_COLOR, Integer.toString(color.getRGB()));
-		valueOptionIds.add(createdId);
+		return createdId;
 	}
 
 	private void createDefaultCriterion(String label) throws Exception
@@ -98,13 +108,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption[] getValueOptions()
 	{
-		ValueOption[] result = new ValueOption[valueOptionIds.size()];
-		for(int i = 0; i < valueOptionIds.size(); ++i)
-		{
-			result[i] = getValueOption(valueOptionIds.get(i));
-		}
-		Arrays.sort(result, new OptionSorter());
-		return result;
+		return ratingValueOptions;
 	}
 	
 	class OptionSorter implements Comparator
@@ -293,11 +297,10 @@ public class ThreatRatingFramework
 	
 	public ValueOption findValueOptionByNumericValue(int value)
 	{
-		for(int i = 0; i < valueOptionIds.size(); ++i)
+		for(int i = 0; i < ratingValueOptions.length; ++i)
 		{
-			ValueOption option = getValueOption(valueOptionIds.get(i));
-			if(option.getNumericValue() == value)
-				return option;
+			if(ratingValueOptions[i].getNumericValue() == value)
+				return ratingValueOptions[i];
 		}
 		
 		return null;
@@ -360,7 +363,7 @@ public class ThreatRatingFramework
 			bundleKeys.put(pair);
 		}
 		json.put(TAG_BUNDLE_KEYS, bundleKeys);
-		json.put(TAG_VALUE_OPTION_IDS, valueOptionIds.toJson());
+		json.put(TAG_VALUE_OPTION_IDS, getValueOptionIds().toJson());
 		return json;
 	}
 	
@@ -384,9 +387,18 @@ public class ThreatRatingFramework
 			memorize(bundle);
 		}
 		
-		valueOptionIds = new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS));
+		ratingValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS)));
 	}
 
+	private ValueOption[] findValueOptions(IdList ids)
+	{
+		ValueOption[] valueOptions = new ValueOption[ids.size()];
+		for(int i = 0; i < valueOptions.length; ++i)
+			valueOptions[i] = (ValueOption)getProject().findObject(ObjectType.VALUE_OPTION, ids.get(i));
+		
+		return valueOptions;
+	}
+	
 	private ProjectServer getDatabase()
 	{
 		ProjectServer db = project.getDatabase();
@@ -401,5 +413,5 @@ public class ThreatRatingFramework
 	private Project project;
 	
 	private HashMap bundles;
-	private IdList valueOptionIds;
+	private ValueOption[] ratingValueOptions;
 }

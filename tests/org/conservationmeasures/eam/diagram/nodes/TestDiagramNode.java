@@ -53,15 +53,6 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals("port not first child?", target.getPort(), target.getFirstChild());
 	}
 	
-	public void testPriorities()
-	{
-		assertEquals("Lost priority?", null, directThreat.getThreatRating());
-		assertTrue(directThreat.canHaveThreatRating());
-		assertTrue(indirectFactor.canHaveThreatRating());
-		assertFalse(intervention.canHaveThreatRating());
-		assertFalse(target.canHaveThreatRating());
-	}
-	
 	public void testObjectives()
 	{
 		assertTrue(directThreat.canHaveObjectives());
