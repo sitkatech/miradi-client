@@ -8,12 +8,12 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.MainWindowDoer;
+import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 
 
 
-public class ImportZipFileDoer extends MainWindowDoer
+public class ImportZipFileDoer extends ViewDoer
 {
 	public boolean isAvailable() 
 	{
@@ -23,7 +23,7 @@ public class ImportZipFileDoer extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException 
 	{
-		NoProjectView noProjectView = (NoProjectView)getMainWindow().getCurrentView();
+		NoProjectView noProjectView = (NoProjectView)getView();
 		noProjectView.doImportZip();
 	}
 
