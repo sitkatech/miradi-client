@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
 import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
-import org.conservationmeasures.eam.actions.ActionZipFile;
+import org.conservationmeasures.eam.actions.ActionExportZipFile;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -130,7 +130,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Export");
-		menu.add(new JMenuItem(actions.get(ActionZipFile.class)));
+		menu.add(new JMenuItem(actions.get(ActionExportZipFile.class)));
 		menu.add("CMP Learning Center");
 		menu.add(createExportOrgDatabaseSubmenu());
 		menu.add(createExportDonorReportsSubmenu());

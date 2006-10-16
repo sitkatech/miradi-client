@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionZipFile extends MainWindowAction
+public class ActionExportZipFile extends MainWindowAction
 {
-	public ActionZipFile(MainWindow mainWindowToUse)
+	public ActionExportZipFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), "icons/new.gif");
 	}
