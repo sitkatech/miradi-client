@@ -361,6 +361,45 @@ public class TestDataUpgrader extends EAMTestCase
 		return "{\"Color\":-14336,\"Numeric\":" + id + ",\"Label\":\"High\",\"Id\":" + id + "}";
 	}
 
+	public void testCaptureExistingThreatRatingCriteria() throws Exception
+	{
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		
+		File jsonDirectory = new File(tempDirectory, "json");
+		jsonDirectory.mkdirs();
+		File threatFrameworkFile = new File(jsonDirectory, "threatframework");
+		createFile(threatFrameworkFile, new JSONObject().toString());
+		
+		File optionsDirectory = new File(tempDirectory, "json/objects-1");
+		optionsDirectory.mkdirs();
+		
+		IdList criterionIds = new IdList();
+		criterionIds.add(4);
+		criterionIds.add(7);
+		criterionIds.add(5);
+		
+		for(int i = 0; i < criterionIds.size(); ++i)
+		{
+			createFile(new File(optionsDirectory, Integer.toString(i)), buildCriterionFileContents(i));
+		}
+		
+		File manifestFile = new File(optionsDirectory, "manifest");
+		createFile(manifestFile, buildManifestContents(criterionIds));
+		
+		upgrader.captureExistingThreatRatingCriteria();
+		
+		EnhancedJsonObject json = JSONFile.read(threatFrameworkFile);
+		IdList migratedCriterionIds = new IdList(json.getString("CriterionIds"));
+		assertEquals("Wrong criterion count?", criterionIds.size(), migratedCriterionIds.size());
+		for(int i = 0; i < criterionIds.size(); ++i)
+			assertTrue("Didn't capture #" + i + "?", migratedCriterionIds.contains(criterionIds.get(i)));
+	}
+	
+	private String buildCriterionFileContents(int id)
+	{
+		return "{\"Label\":\"High\",\"Id\":" + id + "}";
+	}
+
 	private String readFile(File file) throws IOException
 	{
 		UnicodeReader reader = new UnicodeReader(file);

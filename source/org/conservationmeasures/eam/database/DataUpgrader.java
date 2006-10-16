@@ -92,6 +92,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion7();
 		if(readDataVersion(getTopDirectory()) == 7)
 			upgradeToVersion8();
+		if(readDataVersion(getTopDirectory()) == 8)
+			upgradeToVersion9();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -310,6 +312,41 @@ public class DataUpgrader extends ProjectServer
 			 optionIds.add(ids[i]);
 		
 		frameworkJson.put(valueOptionIdsTag, optionIds.toJson());
+		JSONFile.write(threatFrameworkFile, frameworkJson);
+	}
+	
+	public void upgradeToVersion9() throws Exception
+	{
+		captureExistingThreatRatingCriteria();
+		writeVersion(9);
+	}
+	
+	public void captureExistingThreatRatingCriteria() throws Exception
+	{
+		final int criterionType = 1;
+		final String frameworkFilename = "threatframework";
+		final String criterionIdsTag = "CriterionIds";
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File threatFrameworkFile = new File(jsonDirectory, frameworkFilename);
+
+		JSONObject frameworkJson = new EnhancedJsonObject();
+		if(threatFrameworkFile.exists())
+			frameworkJson = JSONFile.read(threatFrameworkFile);
+		if(frameworkJson.has(criterionIdsTag))
+			EAM.logWarning("DataUpgrader.captureExistingThreatRatingCriteria: Not needed");
+		
+		File manifestFile = getObjectManifestFile(criterionType);
+		if(!manifestFile.exists())
+			return;
+		
+		ObjectManifest manifest = readObjectManifest(criterionType);
+		BaseId[] ids = manifest.getAllKeys();
+
+		IdList criterionIds = new IdList();
+		for(int i = 0; i < ids.length; ++i)
+			 criterionIds.add(ids[i]);
+
+		frameworkJson.put(criterionIdsTag, criterionIds.toJson());
 		JSONFile.write(threatFrameworkFile, frameworkJson);
 	}
 
