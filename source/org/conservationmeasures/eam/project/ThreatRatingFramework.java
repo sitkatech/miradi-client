@@ -397,6 +397,7 @@ public class ThreatRatingFramework
 		}
 		
 		ratingValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS)));
+		Arrays.sort(ratingValueOptions, new OptionSorter());
 		criteria = findCriteria(new IdList(json.optJSONObject(TAG_CRITERION_IDS)));
 		sortCriteria();
 	}
@@ -415,12 +416,11 @@ public class ThreatRatingFramework
 	
 	private void sortCriteria()
 	{
-		RatingCriterion scope = findCriterionByLabel(CRITERION_SCOPE);
-		RatingCriterion severity = findCriterionByLabel(CRITERION_SEVERITY);
-		RatingCriterion irreversibility = findCriterionByLabel(CRITERION_IRREVERSIBILITY);
-		criteria[0] = scope;
-		criteria[1] = severity;
-		criteria[2] = irreversibility;
+		RatingCriterion[] sorted = new RatingCriterion[criteria.length];
+		sorted[0] = findCriterionByLabel(CRITERION_SCOPE);
+		sorted[1] = findCriterionByLabel(CRITERION_SEVERITY);
+		sorted[2] = findCriterionByLabel(CRITERION_IRREVERSIBILITY);
+		criteria = sorted;
 	}
 	
 	private RatingCriterion[] findCriteria(IdList ids)
