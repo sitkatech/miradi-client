@@ -172,6 +172,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		// in the constructor, it always ignores the setDividerLocation and ends up
 		// at zero.
 		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setOneTouchExpandable(true);
+		bigSplitter.setDividerSize(15);
 		bigSplitter.setResizeWeight(.5);
 		bigSplitter.setTopComponent(createWizard());
 		bigSplitter.setBottomComponent(uiScrollPane);
