@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -12,18 +12,14 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.EAM;
 
-public class ZIPFileFilter extends FileFilter 
+public class ZIPFileFilter extends FileFilter
 {
-	public ZIPFileFilter() 
-	{
-		super();
-	}
 
 	public boolean accept(File pathname)
 	{
-		if(pathname.isDirectory())
+		if (pathname.isDirectory())
 			return true;
-		return(pathname.getName().toLowerCase().endsWith(ZIP_EXTENSION));
+		return (pathname.getName().toLowerCase().endsWith(ZIP_EXTENSION));
 	}
 
 	public String getDescription()

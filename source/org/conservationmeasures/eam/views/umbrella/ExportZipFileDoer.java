@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -28,8 +28,8 @@ public class ExportZipFileDoer extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException 
 	{
-		EAMFileChooser emaFileChooser = new EAMZipFileChooser(getMainWindow());
-		File chosen = emaFileChooser.displayChooser();
+		EAMFileChooser eamFileChooser = new EAMZipFileChooser(getMainWindow());
+		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) return;
 		
 		try 

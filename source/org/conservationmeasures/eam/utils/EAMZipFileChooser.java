@@ -6,22 +6,52 @@
 
 package org.conservationmeasures.eam.utils;
 
+
+import javax.swing.filechooser.FileFilter;
+
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class EAMZipFileChooser extends EAMFileChooser {
+public class EAMZipFileChooser extends EAMFileChooser
+{
 
-	public EAMZipFileChooser(MainWindow mainWindow) {
+	public EAMZipFileChooser(MainWindow mainWindow)
+	{
 		super(mainWindow);
 	}
 
-public String getDialogTitleText() {return "Title|Save Zip File";}	
+	public String getDialogApproveTitleText()
+	{
+		return "Title|Save Zip File";
+	}
 
-public String getApproveButtonToolTipText(){return "TT|Save Zip File";}	
+	public String getApproveButtonToolTipText()
+	{
+		return "TT|Save Zip File";
+	}
 
-public String getDialogButtonText(){return "Save Zip";}	
+	public String getDialogApprovelButtonText()
+	{
+		return "Save Zip";
+	}
 
-public String getDialogOverideTitleText(){return "Title|Overwrite existing file?";}	
+	public String getDialogOverwriteTitleText()
+	{
+		return "Title|Overwrite existing file?";
+	}
 
-public String getDialogOverideBodyText(){return "This will replace the existing file.";}	
+	public String getDialogOverwriteBodyText()
+	{
+		return "This will replace the existing file.";
+	}
+
+	public FileFilter getFileFilter()
+	{
+		return  (FileFilter) new  ZIPFileFilter();
+	}
+
+	public String getFileExtension()
+	{
+		return ZIPFileFilter.ZIP_EXTENSION;
+	}
 
 }

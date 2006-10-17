@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -17,7 +17,7 @@ public class ActionImportZipFile extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Zip File");
+		return EAM.text("Action|Project Zip File");
 	}
 
 	public String getToolTipText()
