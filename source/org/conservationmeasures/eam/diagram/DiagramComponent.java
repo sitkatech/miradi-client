@@ -200,23 +200,23 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void selectAllNodes()
 	{
-		GraphLayoutCache graphLayoutCache = getGraphLayoutCache();
+		GraphLayoutCache glc = getGraphLayoutCache();
 		Vector allNodes = getDiagramModel().getAllNodes();
 		for (int i  = 0; i < allNodes.size(); i++)
 		{
 			DiagramNode dNode = (DiagramNode)allNodes.elementAt(i);
-			if (graphLayoutCache.isVisible(dNode))
+			if (glc.isVisible(dNode))
 				addSelectionCell(dNode);
 		}
 	}
 	
 	public void selectAllLinkages()
 	{
-		GraphLayoutCache graphLayoutCache = getGraphLayoutCache();
+		GraphLayoutCache glc = getGraphLayoutCache();
 		Vector allLinkages = getDiagramModel().getAllLinkages();
 		for (int i = 0 ; i < allLinkages.size(); i++){
 			DiagramLinkage dLinkage = (DiagramLinkage)allLinkages.elementAt(i);
-			if (graphLayoutCache.isVisible(dLinkage))
+			if (glc.isVisible(dLinkage))
 				addSelectionCell(dLinkage);
 		}
 	}

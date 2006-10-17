@@ -6,6 +6,7 @@
 
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -51,13 +52,14 @@ public class TestDiagramComponent extends EAMTestCase
 		
 		DiagramNode hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
 		DiagramNode visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);
+		DiagramLinkage hiddenLinkage = diagramComponent.getDiagramModel().createLinkage(cmLinkage);
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
 		graphLayoutCache.setVisible(cmLinkage, false);
 		graphLayoutCache.setVisible(visibleNode, true);
 		graphLayoutCache.setVisible(hiddenNode, false);
 		
-		assertFalse("Linkage still visible?", graphLayoutCache.isVisible(cmLinkage));
+		assertFalse("Linkage still visible?", graphLayoutCache.isVisible(hiddenLinkage));
 		assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
 		assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
 		
