@@ -41,6 +41,7 @@ import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
 import org.conservationmeasures.eam.main.TestMainMenu;
 import org.conservationmeasures.eam.main.TestTransferableEamList;
+import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestConceptualModelCluster;
 import org.conservationmeasures.eam.objects.TestConceptualModelIntervention;
@@ -53,9 +54,9 @@ import org.conservationmeasures.eam.objects.TestObjectManager;
 import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
+import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
-import org.conservationmeasures.eam.objects.TestRatingCriterion;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.project.TestIdAssigner;
@@ -144,6 +145,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestNodeTypeDirectThreat.class));
 		suite.addTest(new TestSuite(TestSetNodeSize.class));
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
+		
+		//objectdata package
+		suite.addTest(new TestSuite(TestDateData.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
