@@ -6,7 +6,6 @@
 
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -18,44 +17,53 @@ import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphLayoutCache;
 
-public class TestDiagramComponent extends EAMTestCase 
+public class TestDiagramComponent extends EAMTestCase
 {
-    public TestDiagramComponent(String name)
-    {
-        super(name);
-    }
-    
-    public void testSelectAll() throws Exception
-    {
-            ProjectForTesting project = new ProjectForTesting(getName());
-            
-            DiagramComponent dc = new DiagramComponent();
-            dc.setModel(project.getDiagramModel());
-            dc.setGraphLayoutCache(project.getGraphLayoutCache());
-            
-            CreateModelNodeParameter cmnp = new CreateModelNodeParameter(new NodeTypeFactor());
-            ModelNodeId hiddenId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-            ModelNodeId visibleId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-            ConceptualModelLinkage cml = new ConceptualModelLinkage(new BaseId(100), hiddenId, visibleId);
-            
-            DiagramNode hiddenNode = dc.getDiagramModel().createNode(hiddenId);
-            DiagramNode visibleNode = dc.getDiagramModel().createNode(visibleId);
-            DiagramLinkage dL = dc.getDiagramModel().createLinkage(cml);
-            
-            GraphLayoutCache graphLayoutCache = dc.getGraphLayoutCache();
-            graphLayoutCache.setVisible(cml, false);
-            graphLayoutCache.setVisible(visibleNode, true);
-            graphLayoutCache.setVisible(hiddenNode, false);
-            
-            assertFalse("Linkage still visible?", graphLayoutCache.isVisible(cml));
-            assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
-            assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
-            
-            dc.selectAll();
-            Object []selectionCells = dc.getSelectionCells();
-            assertEquals("Selection count wrong?", 1, selectionCells.length);
-            assertEquals("Wrong selection?", visibleNode, selectionCells[0]);
-    }
-    
-
+	private ProjectForTesting project;
+	
+	public TestDiagramComponent(String name)
+	{
+		super(name);
+	}
+	
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+	}
+	
+	public void tearDown() throws Exception
+	{
+		super.tearDown();
+		project.close();
+	}
+	
+	public void testSelectAll() throws Exception
+	{
+		DiagramComponent diagramComponent = new DiagramComponent();
+		diagramComponent.setModel(project.getDiagramModel());
+		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
+		
+		CreateModelNodeParameter cmnp = new CreateModelNodeParameter(new NodeTypeFactor());
+		ModelNodeId hiddenId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
+		ModelNodeId visibleId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(new BaseId(100), hiddenId, visibleId);
+		
+		DiagramNode hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
+		DiagramNode visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);
+		
+		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();
+		graphLayoutCache.setVisible(cmLinkage, false);
+		graphLayoutCache.setVisible(visibleNode, true);
+		graphLayoutCache.setVisible(hiddenNode, false);
+		
+		assertFalse("Linkage still visible?", graphLayoutCache.isVisible(cmLinkage));
+		assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
+		assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
+		
+		diagramComponent.selectAll();
+		Object[] selectionCells = diagramComponent.getSelectionCells();
+		assertEquals("Selection count wrong?", 1, selectionCells.length);
+		assertEquals("Wrong selection?", visibleNode, selectionCells[0]);
+	}
 }

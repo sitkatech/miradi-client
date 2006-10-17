@@ -193,33 +193,32 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void selectAll()
 	{
-	    clearSelection();
-	    selectAllNodes();
-	    selectAllLinkages();
+		clearSelection();
+		selectAllNodes();
+		selectAllLinkages();
 	}
 	
 	public void selectAllNodes()
 	{
-	    
-	    GraphLayoutCache graphCacheLay = getGraphLayoutCache();
-	    Vector allNodes = getDiagramModel().getAllNodes();
-	    for (int i  = 0; i < allNodes.size(); i++)
-	    {
-	        DiagramNode dNode = (DiagramNode)allNodes.elementAt(i);
-	        if (graphCacheLay.isVisible(dNode))
-	            addSelectionCell(dNode);
-	    }
+		GraphLayoutCache graphLayoutCache = getGraphLayoutCache();
+		Vector allNodes = getDiagramModel().getAllNodes();
+		for (int i  = 0; i < allNodes.size(); i++)
+		{
+			DiagramNode dNode = (DiagramNode)allNodes.elementAt(i);
+			if (graphLayoutCache.isVisible(dNode))
+				addSelectionCell(dNode);
+		}
 	}
 	
 	public void selectAllLinkages()
 	{
-	    GraphLayoutCache graphCacheLay = getGraphLayoutCache();
-	    Vector allLinks = getDiagramModel().getAllLinkages();
-            for (int i = 0 ; i < allLinks.size(); i++){
-                DiagramLinkage dLink = (DiagramLinkage)allLinks.elementAt(i);
-                if (graphCacheLay.isVisible(dLink))
-                    addSelectionCell(dLink);
-            }
+		GraphLayoutCache graphLayoutCache = getGraphLayoutCache();
+		Vector allLinkages = getDiagramModel().getAllLinkages();
+		for (int i = 0 ; i < allLinkages.size(); i++){
+			DiagramLinkage dLinkage = (DiagramLinkage)allLinkages.elementAt(i);
+			if (graphLayoutCache.isVisible(dLinkage))
+				addSelectionCell(dLinkage);
+		}
 	}
 	
 	public void zoom(double proportion)

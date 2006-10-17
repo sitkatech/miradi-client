@@ -11,23 +11,23 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class SelectAllDoer extends ViewDoer 
 {
-    public SelectAllDoer()
-    {
-        super();
-    }
-    
-    public boolean isAvailable()
-    {
-        if(!getProject().isOpen())
-            return false;
-        
-        int nSize = getProject().getDiagramModel().getAllNodes().size();
-        return (nSize > 0);
-    }
-    
-    public void doIt() throws CommandFailedException 
-    {
-        DiagramView view = (DiagramView)getView();
-        view.getDiagramComponent().selectAll();
-    }
+	public SelectAllDoer()
+	{
+		super();
+	}
+	
+	public boolean isAvailable()
+	{
+		if(!getProject().isOpen())
+			return false;
+		
+		int nSize = getProject().getDiagramModel().getAllNodes().size();
+		return (nSize > 0);
+	}
+	
+	public void doIt() throws CommandFailedException 
+	{
+		DiagramView diagramView = (DiagramView)getView();
+		diagramView.getDiagramComponent().selectAll();
+	}
 }
