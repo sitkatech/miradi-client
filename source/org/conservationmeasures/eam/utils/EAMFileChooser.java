@@ -33,9 +33,7 @@ public abstract class EAMFileChooser
 		dlg.setDialogTitle(EAM.text(getDialogApproveTitleText()));
 		dlg.setFileFilter(getFileFilter());
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		dlg
-				.setApproveButtonToolTipText(EAM
-						.text(getApproveButtonToolTipText()));
+		dlg.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
 		if (dlg.showDialog(mainWindow, EAM.text(getDialogApprovelButtonText())) != JFileChooser.APPROVE_OPTION)
 			return null;
 

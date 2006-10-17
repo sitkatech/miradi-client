@@ -46,7 +46,7 @@ public class EAMZipFileChooser extends EAMFileChooser
 
 	public FileFilter getFileFilter()
 	{
-		return  (FileFilter) new  ZIPFileFilter();
+		return new ZIPFileFilter();
 	}
 
 	public String getFileExtension()
