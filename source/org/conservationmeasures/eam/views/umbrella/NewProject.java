@@ -17,7 +17,7 @@ public class NewProject extends MainWindowDoer
 		while(true)
 		{
 			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow());
-			if(!dlg.showCreateDialog())
+			if(!dlg.showCreateDialog("Create"))
 				return;
 	
 			File chosen = dlg.getSelectedFile();

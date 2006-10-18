@@ -16,12 +16,17 @@ import java.util.zip.ZipOutputStream;
 public class ProjectZipper
 {
 
+	public static void createProjectZipFile(File destination, String prefix, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	{
+		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(destination));
+		addTreeToZip(out, prefix, projectDirectory);
+		out.close();
+	}
+	
 	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
 	{
 		String projectName = projectDirectory.getName();
-		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(destination));
-		addTreeToZip(out, projectName, projectDirectory);
-		out.close();
+		createProjectZipFile(destination,projectName,projectDirectory);
 	}
 
 	static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception

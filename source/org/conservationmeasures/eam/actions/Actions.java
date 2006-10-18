@@ -85,6 +85,7 @@ public class Actions
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertIndirectFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
+		registerAction(new ActionProjectSaveAs(mainWindow));
 		registerAction(new ActionExportZipFile(mainWindow));
 		registerAction(new ActionImportZipFile(mainWindow));
 		registerAction(new ActionProperties(mainWindow));

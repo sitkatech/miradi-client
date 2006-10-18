@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -33,54 +33,61 @@ import org.martus.swing.UiParagraphPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
+import org.martus.util.DirectoryUtils;
 
-public class CreateProjectDialog extends JDialog implements ActionListener, ListSelectionListener
+public class CreateProjectDialog extends JDialog implements ActionListener,
+		ListSelectionListener
 {
 	public CreateProjectDialog(JFrame parent) throws HeadlessException
 	{
 		super(parent);
 		setModal(true);
 		setResizable(true);
-		
+
 		projectFilenameField = createTextArea();
 		existingProjectList = createExistingProjectList();
 
 		UiParagraphPanel panel = new UiParagraphPanel();
-		panel.addOnNewLine(new UiLabel(EAM.getHomeDirectory().getAbsolutePath()));
+		panel
+				.addOnNewLine(new UiLabel(EAM.getHomeDirectory()
+						.getAbsolutePath()));
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
-		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
-		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
-		panel.addComponents(new UiLabel(EAM.text("New Project Filename: ")), projectFilenameField);
+		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField
+				.getPreferredSize().width, 200));
+		panel.addComponents(new UiLabel(EAM.text("Label|Existing Projects:")),
+				uiScrollPane);
+		panel.addComponents(new UiLabel(EAM.text("New Project Filename: ")),
+				projectFilenameField);
 		panel.addOnNewLine(createButtonBar());
 		getContentPane().add(panel);
 
 		getRootPane().setDefaultButton(okButton);
 	}
-	
-	public boolean showCreateDialog()
+
+	public boolean showCreateDialog(String buttonLabel)
 	{
-		setTitle(EAM.text("Title|Create New Project")); 
-		okButton.setText(EAM.text("Button|Create"));
+		setTitle(EAM.text("Title|Create New Project"));
+		okButton.setText(EAM.text("Button|" + buttonLabel));
 		return showDialog();
 	}
-	
+
 	private boolean showDialog()
 	{
 		pack();
 		setVisible(true);
 		return getResult();
 	}
-	
+
 	public File getSelectedFile()
 	{
 		return new File(EAM.getHomeDirectory(), projectFilenameField.getText());
 	}
-	
+
 	String getSelectedFilename()
 	{
 		return projectFilenameField.getText();
 	}
-	
+
 	private UiList createExistingProjectList()
 	{
 		File home = EAM.getHomeDirectory();
@@ -96,29 +103,31 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		{
 			dialog = dialogToControl;
 		}
-		
-		public void mouseClicked(MouseEvent e) 
+
+		public void mouseClicked(MouseEvent e)
 		{
-			if (e.getClickCount() != 2)
+			if(e.getClickCount() != 2)
 				return;
 
 			dialog.ok();
 		}
+
 		CreateProjectDialog dialog;
 	}
-	
+
 	public static class DirectoryFilter implements FilenameFilter
 	{
 		public boolean accept(File eamDataDirectory, String projectDirectoryName)
 		{
 			if(projectDirectoryName.startsWith("."))
 				return false;
-			
-			File projectDirectory = new File(eamDataDirectory, projectDirectoryName);
+
+			File projectDirectory = new File(eamDataDirectory,
+					projectDirectoryName);
 			return ProjectServer.isExistingProject(projectDirectory);
 		}
 	}
-	
+
 	private UiTextField createTextArea()
 	{
 		UiTextField textField = new UiTextField(40);
@@ -127,7 +136,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		textField.getDocument().addDocumentListener(new TextFieldListener());
 		return textField;
 	}
-	
+
 	class TextFieldListener implements DocumentListener
 	{
 		public void changedUpdate(DocumentEvent e)
@@ -162,7 +171,8 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		cancelButton.addActionListener(this);
 
 		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), okButton, cancelButton};
+		Component[] components = new Component[] { Box.createHorizontalGlue(),
+				okButton, cancelButton };
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
 	}
@@ -171,7 +181,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 	{
 		return result;
 	}
-	
+
 	public void actionPerformed(ActionEvent event)
 	{
 		if(event.getSource() == okButton)
@@ -179,42 +189,59 @@ public class CreateProjectDialog extends JDialog implements ActionListener, List
 		else
 			cancel();
 	}
-	
+
 	public void ok()
 	{
 		if(!Project.isValidProjectFilename(getSelectedFilename()))
 		{
-			String body = EAM.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than 32 characters. ");
-			EAM.errorDialog(body);
-			return;
-		}
-		
-		if(getSelectedFile().exists())
-		{
-			String body = EAM.text("Cannot overwrite an existing file or directory");
+			String body = EAM
+					.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than 32 characters. ");
 			EAM.errorDialog(body);
 			return;
 		}
 
+		if(getSelectedFile().exists())
+		{
+			Project project = EAM.mainWindow.getProject();
+			if(project.isOpen()
+					&& getSelectedFilename().equals(project.getFilename()))
+			{
+				String body = EAM.text("Cannot overwrite an open project");
+				EAM.errorDialog(body);
+				return;
+			}
+
+			String title = EAM.text("Title|Overwrite existing file?");
+			String[] body = { EAM.text("This will replace the existing file.") };
+			if(!EAM.confirmDialog(title, body))
+				return;
+			DirectoryUtils.deleteEntireDirectoryTree(getSelectedFile());
+		}
+
 		result = true;
 		dispose();
-		
+
 	}
-	
+
 	public void cancel()
 	{
 		result = false;
 		dispose();
 	}
-	
+
 	public void valueChanged(ListSelectionEvent arg0)
 	{
-		projectFilenameField.setText((String)existingProjectList.getSelectedValue());
+		projectFilenameField.setText((String) existingProjectList
+				.getSelectedValue());
 	}
 
 	boolean result;
+
 	UiList existingProjectList;
+
 	UiTextField projectFilenameField;
+
 	UiButton okButton;
+
 	UiButton cancelButton;
 }
