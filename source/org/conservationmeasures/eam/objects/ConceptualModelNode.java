@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
@@ -207,7 +205,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	public static ConceptualModelNode createFrom(int idAsInt, EnhancedJsonObject json) throws ParseException
+	public static ConceptualModelNode createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))

@@ -90,6 +90,10 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		RatingValueSet full = new RatingValueSet();
 		full.setValueId(criterionId1, valueId1);
 		full.setValueId(criterionId2, valueId2);
+		intervention.setData(ConceptualModelIntervention.TAG_RATING_VALUE_SET, full.toString());
+		assertEquals("set failed1?", valueId1, intervention.getRatingValueId(criterionId1, defaultValueId));
+		assertEquals("set failed2?", valueId2, intervention.getRatingValueId(criterionId2, defaultValueId));
+		assertEquals("get failed?", full.toString(), intervention.getData(ConceptualModelIntervention.TAG_RATING_VALUE_SET));
 	}
 	
 	public void testJson() throws Exception

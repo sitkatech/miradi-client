@@ -5,15 +5,13 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.project.RatingValueSet;
+import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -24,15 +22,15 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
 		activityIds = new IdListData();
-		ratings = new RatingValueSet();
+		ratings = new RatingData();
 	}
 	
-	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws ParseException
+	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 		activityIds = new IdListData(json.optString(TAG_ACTIVITY_IDS));
-		ratings = new RatingValueSet(json.optJson(TAG_RATING_VALUE_SET));
+		ratings = new RatingData(json.optString(TAG_RATING_VALUE_SET));
 	}
 
 	public boolean isIntervention()
@@ -86,6 +84,8 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 			return activityIds.get();
 		else if(TAG_STATUS.equals(fieldTag))
 			return status;
+		else if(TAG_RATING_VALUE_SET.equals(fieldTag))
+			return ratings.get();
 		return super.getData(fieldTag);
 	}
 
@@ -96,7 +96,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		else if(TAG_STATUS.equals(fieldTag))
 			status = dataValue;
 		else if(TAG_RATING_VALUE_SET.equals(fieldTag))
-			ratings.fillFrom(dataValue);
+			ratings.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -106,7 +106,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		EnhancedJsonObject json = createBaseJsonObject(NodeTypeIntervention.INTERVENTION_TYPE);
 		json.put(TAG_STATUS, status);
 		json.put(TAG_ACTIVITY_IDS, activityIds.toString());
-		json.put(TAG_RATING_VALUE_SET, ratings.toJson());
+		json.put(TAG_RATING_VALUE_SET, ratings.get());
 		return json;
 	}
 	
@@ -118,5 +118,5 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 
 	String status;
 	IdListData activityIds;
-	RatingValueSet ratings;
+	RatingData ratings;
 }
