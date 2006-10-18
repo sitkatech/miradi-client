@@ -23,6 +23,7 @@ public class Indicator extends EAMBaseObject
 		shortLabel = new StringData();
 		method = new StringData();
 		resourceIds = new IdListData();
+		location = new StringData();
 	}
 	
 	public Indicator(int idAsInt, EnhancedJsonObject json) throws ParseException
@@ -31,6 +32,7 @@ public class Indicator extends EAMBaseObject
 		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
 		method = new StringData(json.optString(TAG_METHOD));
 		resourceIds = new IdListData(json.optString(TAG_RESOURCE_IDS));
+		location = new StringData(json.optString(TAG_LOCATION));
 	}
 	
 	public int getType()
@@ -46,6 +48,8 @@ public class Indicator extends EAMBaseObject
 			return method.get();
 		if(fieldTag.equals(TAG_RESOURCE_IDS))
 			return resourceIds.get();
+		if(fieldTag.equals(TAG_LOCATION))
+			return location.get();
 		
 		return super.getData(fieldTag);
 	}
@@ -58,6 +62,8 @@ public class Indicator extends EAMBaseObject
 			method.set(dataValue);
 		else if(fieldTag.equals(TAG_RESOURCE_IDS))
 			resourceIds.set(dataValue);
+		else if(fieldTag.equals(TAG_LOCATION))
+			location.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -78,6 +84,7 @@ public class Indicator extends EAMBaseObject
 		json.put(TAG_SHORT_LABEL, getShortLabel());
 		json.put(TAG_METHOD, method.get());
 		json.put(TAG_RESOURCE_IDS, resourceIds.get());
+		json.put(TAG_LOCATION, location.get());
 		
 		return json;
 	}
@@ -92,8 +99,10 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_METHOD = "Method";
 	public static final String TAG_RESOURCE_IDS = "ResourceIds";
+	public static final String TAG_LOCATION = "Location";
 
 	StringData shortLabel;
 	StringData method;
 	IdListData resourceIds;
+	StringData location;
 }

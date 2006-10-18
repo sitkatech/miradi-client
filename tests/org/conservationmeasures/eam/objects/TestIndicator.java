@@ -20,5 +20,6 @@ public class TestIndicator extends ObjectTestCase
 		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL);
 		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_METHOD);
 		verifyIdListField(ObjectType.INDICATOR, Indicator.TAG_RESOURCE_IDS);
+		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_LOCATION);
 	}
 }
