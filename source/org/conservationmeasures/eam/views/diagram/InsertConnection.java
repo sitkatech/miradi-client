@@ -50,9 +50,10 @@ public class InsertConnection extends ProjectDoer
 				EAM.okDialog(EAM.text("Can't Create Link"), body);
 				return;
 			}
-			if (wouldCreateLinkageLoop(model, fromIndex, toIndex)){
-				String[] body = {EAM.text("Can't Create Link. New Link Causes Loop"), };
-				EAM.okDialog(EAM.text("Can't Create Link"), body);
+			if (wouldCreateLinkageLoop(model, fromIndex, toIndex))
+			{
+				String[] body = {EAM.text("Cannot create that connection because it would cause a loop."), };
+				EAM.okDialog(EAM.text("Error"), body);
 				return;
 			}
 		}
