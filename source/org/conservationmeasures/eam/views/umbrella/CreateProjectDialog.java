@@ -211,7 +211,8 @@ public class CreateProjectDialog extends JDialog implements ActionListener,
 				return;
 			}
 
-			if (!ProjectServer.doesProjectExist(getSelectedFile())) {
+			if (!ProjectServer.doesProjectExist(getSelectedFile())) 
+			{
 				String body = EAM.text("File exists: Cannot overwrite a non project directory");
 				EAM.errorDialog(body);
 				return;
