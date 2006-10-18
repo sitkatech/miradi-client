@@ -17,7 +17,7 @@ public class ActionProjectSaveAs extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Save As Project...");
+		return EAM.text("Action|Save Project As...");
 	}
 
 	public String getToolTipText()
