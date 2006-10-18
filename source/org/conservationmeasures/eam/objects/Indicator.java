@@ -5,12 +5,14 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -20,19 +22,33 @@ public class Indicator extends EAMBaseObject
 	public Indicator(IndicatorId idToUse)
 	{
 		super(idToUse);
+		clear();
+	}
+
+	public Indicator(int idAsInt, EnhancedJsonObject json) throws Exception
+	{
+		super(new BaseId(idAsInt), json);
+		clear();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			setData(tag, json.optString(tag));
+		}
+	}
+	
+	private void clear()
+	{
 		shortLabel = new StringData();
 		method = new StringData();
 		resourceIds = new IdListData();
 		location = new StringData();
-	}
-	
-	public Indicator(int idAsInt, EnhancedJsonObject json) throws ParseException
-	{
-		super(new BaseId(idAsInt), json);
-		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
-		method = new StringData(json.optString(TAG_METHOD));
-		resourceIds = new IdListData(json.optString(TAG_RESOURCE_IDS));
-		location = new StringData(json.optString(TAG_LOCATION));
+
+		fields = new HashMap();
+		fields.put(TAG_SHORT_LABEL, shortLabel);
+		fields.put(TAG_METHOD, method);
+		fields.put(TAG_RESOURCE_IDS, resourceIds);
+		fields.put(TAG_LOCATION, location);
 	}
 	
 	public int getType()
@@ -42,35 +58,30 @@ public class Indicator extends EAMBaseObject
 
 	public String getData(String fieldTag)
 	{
-		if(fieldTag.equals(TAG_SHORT_LABEL))
-			return getShortLabel();
-		if(fieldTag.equals(TAG_METHOD))
-			return method.get();
-		if(fieldTag.equals(TAG_RESOURCE_IDS))
-			return resourceIds.get();
-		if(fieldTag.equals(TAG_LOCATION))
-			return location.get();
+		if(!fields.containsKey(fieldTag))
+			return super.getData(fieldTag);
+
+		return getField(fieldTag).get();
 		
-		return super.getData(fieldTag);
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
-		if(fieldTag.equals(TAG_SHORT_LABEL))
-			shortLabel.set(dataValue);
-		else if(fieldTag.equals(TAG_METHOD))
-			method.set(dataValue);
-		else if(fieldTag.equals(TAG_RESOURCE_IDS))
-			resourceIds.set(dataValue);
-		else if(fieldTag.equals(TAG_LOCATION))
-			location.set(dataValue);
-		else
+		if(!fields.containsKey(fieldTag))
 			super.setData(fieldTag, dataValue);
+		else
+			getField(fieldTag).set(dataValue);
+	}
+
+	private ObjectData getField(String fieldTag)
+	{
+		ObjectData data = (ObjectData)fields.get(fieldTag);
+		return data;
 	}
 	
 	public String getShortLabel()
 	{
-		return shortLabel.get();
+		return getData(TAG_SHORT_LABEL);
 	}
 	
 	public IdList getResourceIdList()
@@ -81,10 +92,13 @@ public class Indicator extends EAMBaseObject
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_SHORT_LABEL, getShortLabel());
-		json.put(TAG_METHOD, method.get());
-		json.put(TAG_RESOURCE_IDS, resourceIds.get());
-		json.put(TAG_LOCATION, location.get());
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			ObjectData data = getField(tag);
+			json.put(tag, data.get());
+		}
 		
 		return json;
 	}
@@ -100,9 +114,12 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_METHOD = "Method";
 	public static final String TAG_RESOURCE_IDS = "ResourceIds";
 	public static final String TAG_LOCATION = "Location";
+	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 
 	StringData shortLabel;
 	StringData method;
 	IdListData resourceIds;
 	StringData location;
+	
+	HashMap fields;
 }
