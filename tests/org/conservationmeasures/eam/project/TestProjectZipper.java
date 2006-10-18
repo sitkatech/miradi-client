@@ -30,14 +30,10 @@ public class TestProjectZipper extends EAMTestCase
 	public void testCreatedZipFile() throws Exception
 	{
 		File testDir = createTempDirectory();
-		Vector zipFileEntries = new Vector();
-		String[] zipEntryNames = {"fileA", "fileF", "dirB/dirC/fileD", "dirB/dirC/fileE"};
-		String entrySearched = null;
-		File foundFile = null;
-		int aIndex;
 		
 		try
 		{
+			Vector zipFileEntries = new Vector();
 			File fileA = new File(testDir, "fileA");
 			createSampleFile(fileA);
 			zipFileEntries.add(fileA);
@@ -67,14 +63,15 @@ public class TestProjectZipper extends EAMTestCase
 			ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
 			ZipInputStream in = new ZipInputStream(byteIn);
 			
+			String[] zipEntryNames = {"fileA", "fileF", "dirB/dirC/fileD", "dirB/dirC/fileE"};
 			while (in.available() != 0)
 			{
 				ZipEntry e = in.getNextEntry();
-				
 				ArrayList aList = new ArrayList(Arrays.asList(zipEntryNames));
-				aIndex = aList.indexOf(e.getName());
-				entrySearched = aList.get(aIndex).toString();
-				
+				int aIndex = aList.indexOf(e.getName());
+				String entrySearched = aList.get(aIndex).toString();
+
+				File foundFile = null;
 				for (int i = 0; i < zipFileEntries.size(); i++)
 					if (e.getName().endsWith(((File)zipFileEntries.get(i)).getName()))
 						foundFile = (File)zipFileEntries.get(i);
