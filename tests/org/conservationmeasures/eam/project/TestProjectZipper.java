@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -27,20 +28,34 @@ public class TestProjectZipper extends EAMTestCase
 	public void testCreatedZipFile() throws Exception
 	{
 		File testDir = createTempDirectory();
+		Vector zipFileEntries = new Vector(6, 6);
+		String[] zipEntryNames = {"fileA", "fileF", "dirB/dirC/fileD", "dirB/dirC/fileE"};
+		String entrySearched = null;
+		File foundFile = null;
+		
 		try
 		{
 			File fileA = new File(testDir, "fileA");
 			createSampleFile(fileA);
+			zipFileEntries.add(fileA);
+			
 			File subDirB = new File(testDir, "dirB");
 			subDirB.mkdirs();
+			
 			File subDirC = new File(subDirB, "dirC");
 			subDirC.mkdirs();
+			
 			File fileD = new File(subDirC, "fileD");
 			createSampleFile(fileD);
+			zipFileEntries.add(fileD);
+			
 			File fileE = new File(subDirC, "fileE");
 			createSampleFile(fileE);
+			zipFileEntries.add(fileE);
+			
 			File fileF = new File(testDir, "fileF");
 			createSampleFile(fileF);
+			zipFileEntries.add(fileF);
 			
 			ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 			ZipOutputStream out = new ZipOutputStream(byteOut);
@@ -49,24 +64,27 @@ public class TestProjectZipper extends EAMTestCase
 			ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
 			ZipInputStream in = new ZipInputStream(byteIn);
 			
-			ZipEntry entryA = in.getNextEntry();
-			assertEquals("wrong name? ", fileA.getName(), entryA.getName());
-			assertEquals("wrong contents? ", fileA.getAbsolutePath(), readZipEntryContents(in));
-
-			ZipEntry entryD = in.getNextEntry();
-			assertEquals("wrong name? ","dirB/dirC/fileD", entryD.getName());
-			assertEquals("wrong contents? ", fileD.getAbsolutePath(), readZipEntryContents(in));
-
-			ZipEntry entryE = in.getNextEntry();
-			assertEquals("wrong name? ", "dirB/dirC/fileE", entryE.getName());
-			assertEquals("wrong contents? ", fileE.getAbsolutePath(), readZipEntryContents(in));
-
-
+			while (in.available() != 0)
+			{
+				ZipEntry e = in.getNextEntry();
+				for (int i = 0; i < zipEntryNames.length; i++ )
+					if (zipEntryNames[i].equals(e.getName()))
+						entrySearched = zipEntryNames[i];
+					
+				for (int i = 0; i < zipFileEntries.size(); i++)
+					if (e.getName().endsWith(((File)zipFileEntries.get(i)).getName()))
+						foundFile = (File)zipFileEntries.get(i);
+				
+				assertEquals("wrong name?",e.getName(), entrySearched);
+				assertEquals("wrong contents? ", foundFile.getAbsoluteFile().toString(), readZipEntryContents(in));
+				
+			}
 		}
 		finally
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(testDir);
 		}
+		
 	}
 
 	private void createSampleFile(File file) throws Exception
