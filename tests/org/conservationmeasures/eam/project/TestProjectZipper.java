@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.project;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -28,10 +30,11 @@ public class TestProjectZipper extends EAMTestCase
 	public void testCreatedZipFile() throws Exception
 	{
 		File testDir = createTempDirectory();
-		Vector zipFileEntries = new Vector(6, 6);
+		Vector zipFileEntries = new Vector();
 		String[] zipEntryNames = {"fileA", "fileF", "dirB/dirC/fileD", "dirB/dirC/fileE"};
 		String entrySearched = null;
 		File foundFile = null;
+		int aIndex;
 		
 		try
 		{
@@ -67,17 +70,17 @@ public class TestProjectZipper extends EAMTestCase
 			while (in.available() != 0)
 			{
 				ZipEntry e = in.getNextEntry();
-				for (int i = 0; i < zipEntryNames.length; i++ )
-					if (zipEntryNames[i].equals(e.getName()))
-						entrySearched = zipEntryNames[i];
-					
+				
+				ArrayList aList = new ArrayList(Arrays.asList(zipEntryNames));
+				aIndex = aList.indexOf(e.getName());
+				entrySearched = aList.get(aIndex).toString();
+				
 				for (int i = 0; i < zipFileEntries.size(); i++)
 					if (e.getName().endsWith(((File)zipFileEntries.get(i)).getName()))
 						foundFile = (File)zipFileEntries.get(i);
 				
 				assertEquals("wrong name?",e.getName(), entrySearched);
-				assertEquals("wrong contents? ", foundFile.getAbsoluteFile().toString(), readZipEntryContents(in));
-				
+				assertEquals("wrong contents? ", foundFile.getAbsoluteFile().toString(), readZipEntryContents(in));				
 			}
 		}
 		finally
