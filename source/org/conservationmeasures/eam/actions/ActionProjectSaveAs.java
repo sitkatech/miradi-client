@@ -17,12 +17,12 @@ public class ActionProjectSaveAs extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Project Save As");
+		return EAM.text("Action|Save As Project...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|save project as");
+		return EAM.text("TT|Save project as");
 	}
 
 }

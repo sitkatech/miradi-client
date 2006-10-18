@@ -29,7 +29,7 @@ public class SaveAsProjectDoer extends MainWindowDoer
 		while(true)
 		{
 			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow());
-			if(!dlg.showCreateDialog("Save As"))
+			if(!dlg.showCreateDialog(EAM.text("Button|Save As")))
 				return;
 
 			File chosen = dlg.getSelectedFile();
@@ -50,10 +50,10 @@ public class SaveAsProjectDoer extends MainWindowDoer
 
 	private void saveAsProject(String newProjectName) throws Exception
 	{
-		File projectDirTocpy = getProject().getDatabase().getTopDirectory();
+		File projectDirToCopy = getProject().getDatabase().getTopDirectory();
 		File homeDir = EAM.getHomeDirectory();
 		File tempZipFile = File.createTempFile(newProjectName, ZIPFileFilter.ZIP_EXTENSION);
-		ProjectZipper.createProjectZipFile(tempZipFile,  "/" + newProjectName, projectDirTocpy);
+		ProjectZipper.createProjectZipFile(tempZipFile,  "/" + newProjectName, projectDirToCopy);
 		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir);
 		tempZipFile.delete();
 	}

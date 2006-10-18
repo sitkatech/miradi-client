@@ -16,24 +16,30 @@ import java.util.zip.ZipOutputStream;
 public class ProjectZipper
 {
 
-	public static void createProjectZipFile(File destination, String prefix, File projectDirectory) throws FileNotFoundException, Exception, IOException
+	public static void createProjectZipFile(File destination,
+			String zipTopLevelDirectory, File projectDirectory)
+			throws FileNotFoundException, Exception, IOException
 	{
-		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(destination));
-		addTreeToZip(out, prefix, projectDirectory);
+		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(
+				destination));
+		addTreeToZip(out, zipTopLevelDirectory, projectDirectory);
 		out.close();
 	}
-	
-	public static void createProjectZipFile(File destination, File projectDirectory) throws FileNotFoundException, Exception, IOException
+
+	public static void createProjectZipFile(File destination,
+			File projectDirectory) throws FileNotFoundException, Exception,
+			IOException
 	{
 		String projectName = projectDirectory.getName();
-		createProjectZipFile(destination,projectName,projectDirectory);
+		createProjectZipFile(destination, projectName, projectDirectory);
 	}
 
-	static void addTreeToZip(ZipOutputStream out, String prefix, File parentDirectory) throws Exception
+	static void addTreeToZip(ZipOutputStream out, String prefix,
+			File parentDirectory) throws Exception
 	{
 		if(prefix.length() > 0)
 			prefix = prefix + "/";
-		
+
 		File[] files = parentDirectory.listFiles();
 		for(int i = 0; i < files.length; ++i)
 		{
@@ -46,7 +52,7 @@ public class ProjectZipper
 			else
 			{
 				ZipEntry entry = new ZipEntry(entryName);
-				int size = (int)thisFile.length();
+				int size = (int) thisFile.length();
 				entry.setSize(size);
 				out.putNextEntry(entry);
 				byte[] contents = new byte[size];

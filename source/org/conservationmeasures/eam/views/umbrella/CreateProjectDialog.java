@@ -17,7 +17,6 @@ import java.io.FilenameFilter;
 
 import javax.swing.Box;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
@@ -25,6 +24,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
@@ -38,7 +38,7 @@ import org.martus.util.DirectoryUtils;
 public class CreateProjectDialog extends JDialog implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(JFrame parent) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent) throws HeadlessException
 	{
 		super(parent);
 		setModal(true);
@@ -67,7 +67,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener,
 	public boolean showCreateDialog(String buttonLabel)
 	{
 		setTitle(EAM.text("Title|Create New Project"));
-		okButton.setText(EAM.text("Button|" + buttonLabel));
+		okButton.setText(EAM.text(buttonLabel));
 		return showDialog();
 	}
 
@@ -202,7 +202,7 @@ public class CreateProjectDialog extends JDialog implements ActionListener,
 
 		if(getSelectedFile().exists())
 		{
-			Project project = EAM.mainWindow.getProject();
+			Project project = ((MainWindow)getOwner()).getProject();
 			if(project.isOpen()
 					&& getSelectedFilename().equals(project.getFilename()))
 			{
@@ -211,6 +211,12 @@ public class CreateProjectDialog extends JDialog implements ActionListener,
 				return;
 			}
 
+			if (!ProjectServer.doesProjectExist(getSelectedFile())) {
+				String body = EAM.text("File exists: Cannot overwrite a non project directory");
+				EAM.errorDialog(body);
+				return;
+			}
+			
 			String title = EAM.text("Title|Overwrite existing file?");
 			String[] body = { EAM.text("This will replace the existing file.") };
 			if(!EAM.confirmDialog(title, body))
