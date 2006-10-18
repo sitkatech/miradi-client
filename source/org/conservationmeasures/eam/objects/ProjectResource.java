@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.martus.util.xml.XmlUtilities;
 
 public class ProjectResource extends EAMBaseObject
@@ -22,7 +22,7 @@ public class ProjectResource extends EAMBaseObject
 		position = new StringData();
 	}
 	
-	public ProjectResource(int idAsInt, JSONObject json)
+	public ProjectResource(int idAsInt, EnhancedJsonObject json)
 	{
 		super(new BaseId(idAsInt), json);
 		initials = new StringData(json.optString(TAG_INITIALS, ""));
@@ -59,9 +59,9 @@ public class ProjectResource extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_INITIALS, initials.get());
 		json.put(TAG_NAME, name.get());
 		json.put(TAG_POSITION, position.get());

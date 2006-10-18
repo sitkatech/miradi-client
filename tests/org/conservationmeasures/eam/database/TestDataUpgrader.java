@@ -101,7 +101,7 @@ public class TestDataUpgrader extends EAMTestCase
 			setLabel(label);
 		}
 		
-		public JSONObject toJson()
+		public EnhancedJsonObject toJson()
 		{
 			return TestDataUpgrader.makeOld(super.toJson());
 		}
@@ -116,7 +116,7 @@ public class TestDataUpgrader extends EAMTestCase
 			setLabel(label);
 		}
 		
-		public JSONObject toJson()
+		public EnhancedJsonObject toJson()
 		{
 			return TestDataUpgrader.makeOld(super.toJson());
 		}
@@ -130,18 +130,18 @@ public class TestDataUpgrader extends EAMTestCase
 			setLabel(label);
 		}
 		
-		public JSONObject toJson()
+		public EnhancedJsonObject toJson()
 		{
 			return TestDataUpgrader.makeOld(super.toJson());
 		}
 	}
 	
-	public static JSONObject makeOld(JSONObject json)
+	public static EnhancedJsonObject makeOld(EnhancedJsonObject json)
 	{
 		final String TAG_NAME = "Name";
 
 		json.put(TAG_NAME, json.get(ConceptualModelNode.TAG_LABEL));
-		json.put(ConceptualModelNode.TAG_LABEL, null);
+		json.remove(ConceptualModelNode.TAG_LABEL);
 		return json;
 
 	}
@@ -275,8 +275,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("Didn't drop stress factors?", expected.toString(), migrated.toString());
 		
 		String migratedDiagram = readFile(diagramFile);
-		JSONObject diagram = new JSONObject(migratedDiagram);
-		JSONObject nodes = diagram.getJSONObject("Nodes");
+		EnhancedJsonObject diagram = new EnhancedJsonObject(migratedDiagram);
+		JSONObject nodes = diagram.getJson("Nodes");
 		assertFalse("Didn't drop stress from diagram?", nodes.has("2"));
 		assertTrue("Dropped something else from diagram?", nodes.has("5"));
 	}

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public interface EAMObject
@@ -15,5 +15,5 @@ public interface EAMObject
 	public int getType();
 	public void setData(String fieldTag, String dataValue) throws Exception;
 	public String getData(String fieldTag);
-	public JSONObject toJson();
+	public EnhancedJsonObject toJson();
 }

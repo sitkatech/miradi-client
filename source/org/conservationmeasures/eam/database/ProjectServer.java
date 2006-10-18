@@ -197,7 +197,7 @@ public class ProjectServer
 		JSONFile.write(getThreatRatingFrameworkFile(), framework.toJson());
 	}
 	
-	public JSONObject readRawThreatRatingFramework() throws IOException, ParseException
+	public EnhancedJsonObject readRawThreatRatingFramework() throws IOException, ParseException
 	{
 		if(!getThreatRatingFrameworkFile().exists())
 			return null;

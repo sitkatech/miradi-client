@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public class Objective extends Desire
@@ -18,7 +18,7 @@ public class Objective extends Desire
 		super(id);
 	}
 	
-	public Objective(int idAsInt, JSONObject json)
+	public Objective(int idAsInt, EnhancedJsonObject json)
 	{
 		super(new BaseId(idAsInt), json);
 	}

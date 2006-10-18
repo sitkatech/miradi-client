@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.project.RatingValueSet;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestConceptualModelIntervention extends EAMTestCase
 {
@@ -78,6 +80,18 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		
 	}
 	
+	public void testRatings() throws Exception
+	{
+		BaseId interventionId = new BaseId(17);
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		RatingValueSet empty = new RatingValueSet(new EnhancedJsonObject(""));
+		intervention.setData(ConceptualModelIntervention.TAG_RATING_VALUE_SET, empty.toString());
+		assertEquals("not empty?", defaultValueId, intervention.getRatingValueId(criterionId1, defaultValueId));
+		RatingValueSet full = new RatingValueSet();
+		full.setValueId(criterionId1, valueId1);
+		full.setValueId(criterionId2, valueId2);
+	}
+	
 	public void testJson() throws Exception
 	{
 		BaseId interventionId = new BaseId(17);
@@ -86,8 +100,22 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
+		intervention.setRatingValueId(criterionId1, valueId1);
+		intervention.setRatingValueId(criterionId2, valueId2);
+		
 		ConceptualModelIntervention got = (ConceptualModelIntervention)EAMBaseObject.createFromJson(intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
+		assertEquals("Didn't read ratings1?", valueId1, got.getRatingValueId(criterionId1, defaultValueId));
+		assertEquals("Didn't read ratings2?", valueId2, got.getRatingValueId(criterionId2, defaultValueId));
+		assertEquals("Didn't default ratings?", defaultValueId, got.getRatingValueId(criterionId3, defaultValueId));
 	}
+	
+	static final BaseId criterionId1 = new BaseId(17);
+	static final BaseId criterionId2 = new BaseId(952);
+	static final BaseId criterionId3 = new BaseId(2833);
+	static final BaseId valueId1 = new BaseId(85);
+	static final BaseId valueId2 = new BaseId(2398);
+	static final BaseId defaultValueId = new BaseId(7272);
+
 }

@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ViewData extends EAMBaseObject
 {
@@ -25,7 +25,7 @@ public class ViewData extends EAMBaseObject
 		brainstormNodeIds = new IdListData();
 	}
 	
-	public ViewData(int idAsInt, JSONObject json) throws ParseException
+	public ViewData(int idAsInt, EnhancedJsonObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
 		currentMode = new StringData(json.optString(TAG_CURRENT_MODE));
@@ -111,9 +111,9 @@ public class ViewData extends EAMBaseObject
 		return ObjectType.VIEW_DATA;
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_CURRENT_MODE, getCurrentMode());
 		json.put(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds.get());
 		return json;

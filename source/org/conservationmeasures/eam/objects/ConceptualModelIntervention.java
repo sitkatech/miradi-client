@@ -13,7 +13,8 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.project.RatingValueSet;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public class ConceptualModelIntervention extends ConceptualModelNode
@@ -23,13 +24,15 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
 		activityIds = new IdListData();
+		ratings = new RatingValueSet();
 	}
 	
-	public ConceptualModelIntervention(ModelNodeId idToUse, JSONObject json) throws ParseException
+	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws ParseException
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 		activityIds = new IdListData(json.optString(TAG_ACTIVITY_IDS));
+		ratings = new RatingValueSet(json.optJson(TAG_RATING_VALUE_SET));
 	}
 
 	public boolean isIntervention()
@@ -66,6 +69,16 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		return activityIds.getIdList();
 	}
+	
+	public void setRatingValueId(BaseId criterionId, BaseId valueId)
+	{
+		ratings.setValueId(criterionId, valueId);
+	}
+	
+	public BaseId getRatingValueId(BaseId criterionId, BaseId defaultValueId)
+	{
+		return ratings.getValueId(criterionId, defaultValueId);
+	}
 
 	public String getData(String fieldTag)
 	{
@@ -82,23 +95,28 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 			activityIds.set(dataValue);
 		else if(TAG_STATUS.equals(fieldTag))
 			status = dataValue;
+		else if(TAG_RATING_VALUE_SET.equals(fieldTag))
+			ratings.fillFrom(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = createBaseJsonObject(NodeTypeIntervention.INTERVENTION_TYPE);
+		EnhancedJsonObject json = createBaseJsonObject(NodeTypeIntervention.INTERVENTION_TYPE);
 		json.put(TAG_STATUS, status);
 		json.put(TAG_ACTIVITY_IDS, activityIds.toString());
+		json.put(TAG_RATING_VALUE_SET, ratings.toJson());
 		return json;
 	}
 	
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
+	public static final String TAG_RATING_VALUE_SET = "RatingValueSet";
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
 
 	String status;
 	IdListData activityIds;
+	RatingValueSet ratings;
 }

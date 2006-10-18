@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class EAMBaseObject implements EAMObject
 {
@@ -18,13 +18,13 @@ abstract public class EAMBaseObject implements EAMObject
 		label = new StringData();
 	}
 	
-	EAMBaseObject(BaseId idToUse, JSONObject json)
+	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json)
 	{
 		id = idToUse;
 		label = new StringData(json.optString(TAG_LABEL));
 	}
 	
-	public static EAMObject createFromJson(int type, JSONObject json) throws Exception
+	public static EAMObject createFromJson(int type, EnhancedJsonObject json) throws Exception
 	{
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
@@ -110,9 +110,9 @@ abstract public class EAMBaseObject implements EAMObject
 		return id;
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_ID, getId().asInt());
 		json.put(TAG_LABEL, getLabel());
 		

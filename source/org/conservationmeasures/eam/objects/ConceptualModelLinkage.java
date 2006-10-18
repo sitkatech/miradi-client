@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelLinkage extends EAMBaseObject
 {
@@ -24,7 +24,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		stressLabel = new StringData();
 	}
 
-	public ConceptualModelLinkage(int idAsInt, JSONObject jsonObject) throws ParseException 
+	public ConceptualModelLinkage(int idAsInt, EnhancedJsonObject jsonObject) throws ParseException 
 	{
 		super(new BaseId(idAsInt), jsonObject);
 		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));
@@ -96,9 +96,9 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		throw new RuntimeException("Linkage: Unknown direction " + direction);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_FROM_ID, fromId.asInt());
 		json.put(TAG_TO_ID, toId.asInt());
 		json.put(TAG_STRESS_LABEL, getStressLabel());

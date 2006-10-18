@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ProjectMetadata extends EAMBaseObject
 {
@@ -28,7 +28,7 @@ public class ProjectMetadata extends EAMBaseObject
 		teamResourceIds = new IdListData();
 	}
 
-	public ProjectMetadata(int idAsInt, JSONObject json)
+	public ProjectMetadata(int idAsInt, EnhancedJsonObject json)
 	{
 		super(new BaseId(idAsInt), json);
 		projectName = new StringData(json.getString(TAG_PROJECT_NAME));
@@ -125,9 +125,9 @@ public class ProjectMetadata extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_PROJECT_NAME, projectName.get());
 		json.put(TAG_PROJECT_SCOPE, projectScope.get());
 		json.put(TAG_PROJECT_VISION, projectVision.get());

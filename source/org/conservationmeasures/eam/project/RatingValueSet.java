@@ -5,12 +5,12 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.json.JSONObject;
 
 public class RatingValueSet
 {
@@ -19,9 +19,19 @@ public class RatingValueSet
 		map = new HashMap();
 	}
 	
-	public RatingValueSet(JSONObject json)
+	public RatingValueSet(EnhancedJsonObject json)
 	{
 		this();
+		fillFrom(json);
+	}
+	
+	public void fillFrom(String data) throws ParseException
+	{
+		fillFrom(new EnhancedJsonObject(data));
+	}
+
+	public void fillFrom(EnhancedJsonObject json)
+	{
 		Iterator iter = json.keys();
 		while(iter.hasNext())
 		{
@@ -30,7 +40,6 @@ public class RatingValueSet
 			BaseId valueId = new BaseId(json.getInt(key));
 			setValueId(criterionId, valueId);
 		}
-
 	}
 	
 	public BaseId getValueId(BaseId criterionId, BaseId defaultValueId)
@@ -57,6 +66,11 @@ public class RatingValueSet
 		}
 
 		return values;
+	}
+	
+	public String toString()
+	{
+		return toJson().toString();
 	}
 
 	private BaseId getRawValueOptionId(BaseId criterionId)

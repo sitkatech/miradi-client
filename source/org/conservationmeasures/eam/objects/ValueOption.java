@@ -9,7 +9,7 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ValueOption extends EAMBaseObject
 {
@@ -27,7 +27,7 @@ public class ValueOption extends EAMBaseObject
 		color = colorToUse;
 	}
 	
-	public ValueOption(int idAsInt, JSONObject json)
+	public ValueOption(int idAsInt, EnhancedJsonObject json)
 	{
 		super(new BaseId(idAsInt), json);
 		numeric = json.getInt(TAG_NUMERIC);
@@ -74,9 +74,9 @@ public class ValueOption extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_NUMERIC, numeric);
 		json.put(TAG_COLOR, color.getRGB());
 		

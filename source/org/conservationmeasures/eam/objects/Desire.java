@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Desire extends EAMBaseObject
 {
@@ -18,7 +18,7 @@ abstract public class Desire extends EAMBaseObject
 		fullText = new StringData();
 	}
 
-	public Desire(BaseId idToUse, JSONObject json)
+	public Desire(BaseId idToUse, EnhancedJsonObject json)
 	{
 		super(idToUse, json);
 		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
@@ -52,9 +52,9 @@ abstract public class Desire extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_SHORT_LABEL, getShortLabel());
 		json.put(TAG_FULL_TEXT, fullText.get());
 		

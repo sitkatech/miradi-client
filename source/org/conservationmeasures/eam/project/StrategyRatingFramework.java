@@ -27,8 +27,8 @@ public class StrategyRatingFramework
 	public StrategyRatingFramework(Project owningProject, EnhancedJsonObject json)
 	{
 		this(owningProject);
-		impactValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_IMPACT_VALUE_OPTION_IDS)));
-		feasibilityValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_FEASIBILITY_VALUE_OPTION_IDS)));
+		impactValueOptions = findValueOptions(new IdList(json.optJson(TAG_IMPACT_VALUE_OPTION_IDS)));
+		feasibilityValueOptions = findValueOptions(new IdList(json.optJson(TAG_FEASIBILITY_VALUE_OPTION_IDS)));
 	}
 	
 	private ValueOption[] findValueOptions(IdList ids)

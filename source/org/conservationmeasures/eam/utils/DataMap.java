@@ -13,7 +13,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONObject;
 
-public class DataMap extends JSONObject
+public class DataMap extends EnhancedJsonObject
 {
 	public DataMap()
 	{
@@ -72,13 +72,13 @@ public class DataMap extends JSONObject
 	
 	public Point getPoint(String tag)
 	{
-		JSONObject point = getJSONObject(tag);
+		JSONObject point = getJson(tag);
 		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
 	}
 	
 	public Dimension getDimension(String tag)
 	{
-		JSONObject size = getJSONObject(tag);
+		JSONObject size = getJson(tag);
 		return new Dimension(size.getInt(TAG_WIDTH), size.getInt(TAG_HEIGHT));
 	}
 

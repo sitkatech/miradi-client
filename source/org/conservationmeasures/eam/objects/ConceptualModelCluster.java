@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelCluster extends ConceptualModelNode
 {
@@ -23,7 +23,7 @@ public class ConceptualModelCluster extends ConceptualModelNode
 		memberIds = new IdListData();
 	}
 
-	public ConceptualModelCluster(ModelNodeId idToUse, JSONObject json) throws ParseException
+	public ConceptualModelCluster(ModelNodeId idToUse, EnhancedJsonObject json) throws ParseException
 	{
 		super(idToUse, DiagramNode.TYPE_CLUSTER, json);
 		memberIds = new IdListData(json.optString(TAG_MEMBER_IDS));
@@ -54,9 +54,9 @@ public class ConceptualModelCluster extends ConceptualModelNode
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = createBaseJsonObject(NodeTypeCluster.CLUSTER_TYPE);
+		EnhancedJsonObject json = createBaseJsonObject(NodeTypeCluster.CLUSTER_TYPE);
 		json.put(TAG_MEMBER_IDS, memberIds.get());
 		return json;
 	}

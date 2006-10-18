@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Indicator extends EAMBaseObject
 {
@@ -25,7 +25,7 @@ public class Indicator extends EAMBaseObject
 		resourceIds = new IdListData();
 	}
 	
-	public Indicator(int idAsInt, JSONObject json) throws ParseException
+	public Indicator(int idAsInt, EnhancedJsonObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
 		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));
@@ -72,9 +72,9 @@ public class Indicator extends EAMBaseObject
 		return resourceIds.getIdList();
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_SHORT_LABEL, getShortLabel());
 		json.put(TAG_METHOD, method.get());
 		json.put(TAG_RESOURCE_IDS, resourceIds.get());

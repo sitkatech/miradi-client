@@ -22,8 +22,8 @@ import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.martus.util.xml.XmlUtilities;
 
 abstract public class ConceptualModelNode extends EAMBaseObject
@@ -39,7 +39,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		goals = new GoalIds();
 	}
 	
-	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, JSONObject json)
+	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json)
 	{
 		super(idToUse, json);
 		type = nodeType;
@@ -60,7 +60,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			objectives.addId(new BaseId(objectiveIds.getInt(i)));
 	}
 	
-	public abstract JSONObject toJson();
+	public abstract EnhancedJsonObject toJson();
 	
 	public ModelNodeId getModelNodeId()
 	{
@@ -207,7 +207,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			super.setData(fieldTag, dataValue);
 	}
 
-	public static ConceptualModelNode createFrom(int idAsInt, JSONObject json) throws ParseException
+	public static ConceptualModelNode createFrom(int idAsInt, EnhancedJsonObject json) throws ParseException
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
@@ -222,9 +222,9 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
 	
-	JSONObject createBaseJsonObject(String typeString)
+	EnhancedJsonObject createBaseJsonObject(String typeString)
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, typeString);
 		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().asInt());

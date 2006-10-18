@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -380,7 +381,7 @@ public class ThreatRatingFramework
 	{
 		clear();
 		ProjectServer db = getDatabase();
-		JSONObject json = db.readRawThreatRatingFramework();
+		EnhancedJsonObject json = db.readRawThreatRatingFramework();
 		if(json == null)
 			return;
 
@@ -396,9 +397,9 @@ public class ThreatRatingFramework
 			memorize(bundle);
 		}
 		
-		ratingValueOptions = findValueOptions(new IdList(json.optJSONObject(TAG_VALUE_OPTION_IDS)));
+		ratingValueOptions = findValueOptions(new IdList(json.optJson(TAG_VALUE_OPTION_IDS)));
 		Arrays.sort(ratingValueOptions, new OptionSorter());
-		criteria = findCriteria(new IdList(json.optJSONObject(TAG_CRITERION_IDS)));
+		criteria = findCriteria(new IdList(json.optJson(TAG_CRITERION_IDS)));
 		sortCriteria();
 	}
 

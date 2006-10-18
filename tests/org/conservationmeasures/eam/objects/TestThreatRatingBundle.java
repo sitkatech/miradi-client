@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestThreatRatingBundle extends EAMTestCase
 {
@@ -81,7 +81,7 @@ public class TestThreatRatingBundle extends EAMTestCase
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
 		bundle.setValueId(criterion1, rating1);
 		bundle.setValueId(criterion2, rating2);
-		JSONObject json = bundle.toJson();
+		EnhancedJsonObject json = bundle.toJson();
 		ThreatRatingBundle loaded = new ThreatRatingBundle(json);
 		assertEquals("Didn't load threat id?", bundle.getThreatId(), loaded.getThreatId());
 		assertEquals("Didn't load target id?", bundle.getTargetId(), loaded.getTargetId());

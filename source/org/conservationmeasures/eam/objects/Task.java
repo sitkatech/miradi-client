@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Task extends EAMBaseObject
 {
@@ -22,7 +22,7 @@ public class Task extends EAMBaseObject
 		resourceIds = new IdListData();
 	}
 	
-	public Task(int idAsInt, JSONObject json) throws ParseException
+	public Task(int idAsInt, EnhancedJsonObject json) throws ParseException
 	{
 		super(new BaseId(idAsInt), json);
 		subtaskIds = new IdListData(json.optString(TAG_SUBTASK_IDS));
@@ -64,9 +64,9 @@ public class Task extends EAMBaseObject
 		return resourceIds.getIdList().createClone();
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_SUBTASK_IDS, subtaskIds.toString());
 		json.put(TAG_RESOURCE_IDS, resourceIds.toString());
 		return json;

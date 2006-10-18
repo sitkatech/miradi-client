@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatRatingBundle
 {
@@ -25,7 +25,7 @@ public class ThreatRatingBundle
 		this(otherBundle.toJson());
 	}
 	
-	public ThreatRatingBundle(JSONObject json)
+	public ThreatRatingBundle(EnhancedJsonObject json)
 	{
 		this();
 		
@@ -37,12 +37,12 @@ public class ThreatRatingBundle
 		ratings = new RatingValueSet();
 	}
 	
-	private void pullDataFrom(JSONObject json)
+	private void pullDataFrom(EnhancedJsonObject json)
 	{
 		threatId = new ModelNodeId(json.getInt(TAG_THREAT_ID));
 		targetId = new ModelNodeId(json.getInt(TAG_TARGET_ID));
 		defaultValueId = new BaseId(json.getInt(TAG_DEFAULT_VALUE_ID));
-		ratings = new RatingValueSet(json.getJSONObject(TAG_VALUES));
+		ratings = new RatingValueSet(json.getJson(TAG_VALUES));
 	}
 	
 	public void pullDataFrom(ThreatRatingBundle otherBundle) throws Exception
@@ -75,9 +75,9 @@ public class ThreatRatingBundle
 		ratings.setValueId(criterionId, valueId);
 	}
 	
-	public JSONObject toJson() throws Exception
+	public EnhancedJsonObject toJson() throws Exception
 	{
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_THREAT_ID, getThreatId().asInt());
 		json.put(TAG_TARGET_ID, getTargetId().asInt());
 		json.put(TAG_DEFAULT_VALUE_ID, defaultValueId.asInt());

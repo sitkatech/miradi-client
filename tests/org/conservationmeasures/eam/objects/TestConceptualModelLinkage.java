@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestConceptualModelLinkage extends EAMTestCase
 {
@@ -24,7 +24,7 @@ public class TestConceptualModelLinkage extends EAMTestCase
 	{
 		ConceptualModelLinkage original = new ConceptualModelLinkage(id, nodeAId, nodeBId);
 		original.setData(ConceptualModelLinkage.TAG_STRESS_LABEL, "What stress!");
-		JSONObject json = original.toJson();
+		EnhancedJsonObject json = original.toJson();
 		ConceptualModelLinkage gotBack = (ConceptualModelLinkage)EAMBaseObject.createFromJson(original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), gotBack.getFromNodeId());

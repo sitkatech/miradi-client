@@ -236,12 +236,13 @@ public class DataUpgrader extends ProjectServer
 		}
 		writeObjectManifest(NODE_TYPE, manifest);
 		
-		JSONObject diagram = JSONFile.read(getDiagramFile());
-		JSONObject nodes = diagram.getJSONObject("Nodes");
+		EnhancedJsonObject diagram = JSONFile.read(getDiagramFile());
+		JSONObject nodes = diagram.getJson("Nodes");
 		for(int i = 0; i < droppedIds.size(); ++i)
 		{
 			nodes.remove(Integer.toString(droppedIds.get(i).asInt()));
 		}
+		diagram.put("Nodes", nodes);
 		JSONFile.write(getDiagramFile(), diagram);
 	}
 

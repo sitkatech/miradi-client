@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.utils.Logging;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
@@ -370,30 +371,30 @@ public class DiagramModel extends DefaultGraphModel
 		return getObjectivePool().find(id);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject nodeMap = new JSONObject();
+		EnhancedJsonObject nodeMap = new EnhancedJsonObject();
 		Vector nodes = getAllNodes();
 		for(int i=0; i < nodes.size(); ++i)
 		{
 			DiagramNode node = (DiagramNode)nodes.get(i);
 			nodeMap.put(Integer.toString(node.getDiagramNodeId().asInt()), node.toJson());
 		}
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);
 		json.put(TAG_NODES, nodeMap);
 		return json;
 	}
 	
-	public void fillFrom(JSONObject json) throws Exception
+	public void fillFrom(EnhancedJsonObject json) throws Exception
 	{
 		addNodesToModel(json);
 		addLinkagesToModel();
 	}
 
-	private void addNodesToModel(JSONObject json) throws ParseException, Exception
+	private void addNodesToModel(EnhancedJsonObject json) throws ParseException, Exception
 	{
-		JSONObject nodeMap = json.getJSONObject(TAG_NODES);
+		EnhancedJsonObject nodeMap = json.getJson(TAG_NODES);
 		JSONArray keys = nodeMap.names();
 		
 		// TODO: Really we should extend JSONObject to have a sane names() method
@@ -404,7 +405,7 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			String key = keys.getString(i);
 			ModelNodeId id = new ModelNodeId(Integer.parseInt(key));
-			JSONObject nodeJson = nodeMap.getJSONObject(key);
+			JSONObject nodeJson = nodeMap.getJson(key);
 
 			ConceptualModelNode cmObject = getNodePool().find(id);
 			if(cmObject == null)

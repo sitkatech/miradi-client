@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelFactor extends ConceptualModelNode
 {
@@ -18,7 +18,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		super(idToUse, new NodeTypeFactor());
 	}
 	
-	public ConceptualModelFactor(ModelNodeId idToUse, JSONObject json)
+	public ConceptualModelFactor(ModelNodeId idToUse, EnhancedJsonObject json)
 	{
 		super(idToUse, DiagramNode.TYPE_FACTOR, json);
 	}
@@ -53,9 +53,9 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		return true;
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = createBaseJsonObject(NodeTypeFactor.FACTOR_TYPE);
+		EnhancedJsonObject json = createBaseJsonObject(NodeTypeFactor.FACTOR_TYPE);
 		return json;
 	}
 	

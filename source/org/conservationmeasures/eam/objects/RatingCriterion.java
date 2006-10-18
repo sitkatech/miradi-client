@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class RatingCriterion extends EAMBaseObject
 {
@@ -16,7 +16,7 @@ public class RatingCriterion extends EAMBaseObject
 		super(idToUse);
 	}
 	
-	public RatingCriterion(int idAsInt, JSONObject json)
+	public RatingCriterion(int idAsInt, EnhancedJsonObject json)
 	{
 		super(new BaseId(idAsInt), json);
 	}
@@ -26,9 +26,9 @@ public class RatingCriterion extends EAMBaseObject
 		return ObjectType.RATING_CRITERION;
 	}
 
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = super.toJson();
+		EnhancedJsonObject json = super.toJson();
 
 		return json;
 	}
