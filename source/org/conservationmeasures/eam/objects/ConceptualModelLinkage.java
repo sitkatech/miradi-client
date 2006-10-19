@@ -6,8 +6,6 @@
 
 package org.conservationmeasures.eam.objects;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -24,7 +22,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		stressLabel = new StringData();
 	}
 
-	public ConceptualModelLinkage(int idAsInt, EnhancedJsonObject jsonObject) throws ParseException 
+	public ConceptualModelLinkage(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(new BaseId(idAsInt), jsonObject);
 		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));

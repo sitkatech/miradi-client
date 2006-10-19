@@ -22,7 +22,7 @@ public class ProjectResource extends EAMBaseObject
 		position = new StringData();
 	}
 	
-	public ProjectResource(int idAsInt, EnhancedJsonObject json)
+	public ProjectResource(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 		initials = new StringData(json.optString(TAG_INITIALS, ""));

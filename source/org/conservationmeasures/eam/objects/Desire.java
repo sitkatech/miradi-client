@@ -18,7 +18,7 @@ abstract public class Desire extends EAMBaseObject
 		fullText = new StringData();
 	}
 
-	public Desire(BaseId idToUse, EnhancedJsonObject json)
+	public Desire(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		shortLabel = new StringData(json.optString(TAG_SHORT_LABEL));

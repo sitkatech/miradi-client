@@ -25,7 +25,7 @@ public class ViewData extends EAMBaseObject
 		brainstormNodeIds = new IdListData();
 	}
 	
-	public ViewData(int idAsInt, EnhancedJsonObject json) throws ParseException
+	public ViewData(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 		currentMode = new StringData(json.optString(TAG_CURRENT_MODE));

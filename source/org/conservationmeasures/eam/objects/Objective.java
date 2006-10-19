@@ -18,7 +18,7 @@ public class Objective extends Desire
 		super(id);
 	}
 	
-	public Objective(int idAsInt, EnhancedJsonObject json)
+	public Objective(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 	}

@@ -18,7 +18,7 @@ public class Goal extends Desire
 		super(idToUse);
 	}
 	
-	public Goal(int idAsInt, EnhancedJsonObject json)
+	public Goal(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 	}

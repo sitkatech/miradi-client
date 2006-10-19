@@ -27,7 +27,7 @@ public class ValueOption extends EAMBaseObject
 		color = colorToUse;
 	}
 	
-	public ValueOption(int idAsInt, EnhancedJsonObject json)
+	public ValueOption(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 		numeric = json.getInt(TAG_NUMERIC);

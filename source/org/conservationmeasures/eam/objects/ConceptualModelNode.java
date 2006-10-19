@@ -37,7 +37,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		goals = new GoalIds();
 	}
 	
-	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json)
+	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		type = nodeType;

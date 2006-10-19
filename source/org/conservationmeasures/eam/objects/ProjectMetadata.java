@@ -28,7 +28,7 @@ public class ProjectMetadata extends EAMBaseObject
 		teamResourceIds = new IdListData();
 	}
 
-	public ProjectMetadata(int idAsInt, EnhancedJsonObject json)
+	public ProjectMetadata(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 		projectName = new StringData(json.getString(TAG_PROJECT_NAME));

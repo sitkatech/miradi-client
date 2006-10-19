@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -22,7 +20,7 @@ public class Task extends EAMBaseObject
 		resourceIds = new IdListData();
 	}
 	
-	public Task(int idAsInt, EnhancedJsonObject json) throws ParseException
+	public Task(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 		subtaskIds = new IdListData(json.optString(TAG_SUBTASK_IDS));

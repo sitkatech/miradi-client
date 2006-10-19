@@ -16,7 +16,7 @@ public class RatingCriterion extends EAMBaseObject
 		super(idToUse);
 	}
 	
-	public RatingCriterion(int idAsInt, EnhancedJsonObject json)
+	public RatingCriterion(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
 	}

@@ -18,7 +18,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		super(idToUse, new NodeTypeFactor());
 	}
 	
-	public ConceptualModelFactor(ModelNodeId idToUse, EnhancedJsonObject json)
+	public ConceptualModelFactor(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, DiagramNode.TYPE_FACTOR, json);
 	}
