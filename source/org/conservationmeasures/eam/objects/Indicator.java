@@ -28,7 +28,6 @@ public class Indicator extends EAMBaseObject
 	public Indicator(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
-		clear();
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
 		{
@@ -37,8 +36,9 @@ public class Indicator extends EAMBaseObject
 		}
 	}
 	
-	private void clear()
+	void clear()
 	{
+		super.clear();
 		shortLabel = new StringData();
 		method = new StringData();
 		resourceIds = new IdListData();
@@ -121,5 +121,5 @@ public class Indicator extends EAMBaseObject
 	IdListData resourceIds;
 	StringData location;
 	
-	HashMap fields;
+	private HashMap fields;
 }

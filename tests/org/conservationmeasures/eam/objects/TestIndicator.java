@@ -17,9 +17,13 @@ public class TestIndicator extends ObjectTestCase
 
 	public void testData() throws Exception
 	{
-		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL);
-		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_METHOD);
-		verifyIdListField(ObjectType.INDICATOR, Indicator.TAG_RESOURCE_IDS);
-		verifyTextField(ObjectType.INDICATOR, Indicator.TAG_LOCATION);
+		verifyTextField(type, Indicator.TAG_SHORT_LABEL);
+		verifyTextField(type, Indicator.TAG_METHOD);
+		verifyIdListField(type, Indicator.TAG_RESOURCE_IDS);
+		verifyTextField(type, Indicator.TAG_LOCATION);
+		//verifyTextField(type, Indicator.TAG_FUNDING_SOURCE);
 	}
+
+	private static final int type = ObjectType.INDICATOR;
+
 }

@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -19,15 +18,20 @@ abstract public class EAMBaseObject implements EAMObject
 {
 	public EAMBaseObject(BaseId idToUse)
 	{
-		clear();
 		setId(idToUse);
+		clear();
 	}
 	
-	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json)
+	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		clear();
 		setId(idToUse);
-		label.set(json.optString(TAG_LABEL));
+		clear();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			setData(tag, json.optString(tag));
+		}
 	}
 	
 	public static EAMObject createFromJson(int type, EnhancedJsonObject json) throws Exception
@@ -96,6 +100,12 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
+		if(TAG_ID.equals(fieldTag))
+		{
+			id = new BaseId(Integer.parseInt(dataValue));
+			return;
+		}
+		
 		if(!fields.containsKey(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 
@@ -104,6 +114,9 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public String getData(String fieldTag)
 	{
+		if(TAG_ID.equals(fieldTag))
+			return id.toString();
+		
 		if(!fields.containsKey(fieldTag))
 			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
 
@@ -113,21 +126,19 @@ abstract public class EAMBaseObject implements EAMObject
 
 	public BaseId getId()
 	{
-		return id.getId();
+		return id;
 	}
 	
 	private void setId(BaseId newId)
 	{
-		id.setId(newId);
+		id = newId;
 	}
 	
-	private void clear()
+	void clear()
 	{
-		id = new BaseIdData();
 		label = new StringData();
 		
 		fields = new HashMap();
-		fields.put(TAG_ID, id);
 		fields.put(TAG_LABEL, label);
 
 	}
@@ -141,6 +152,7 @@ abstract public class EAMBaseObject implements EAMObject
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_ID, id.asInt());
 		Iterator iter = fields.keySet().iterator();
 		while(iter.hasNext())
 		{
@@ -157,7 +169,7 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public static final String DEFAULT_LABEL = "";
 
-	BaseIdData id;
+	BaseId id;
 	StringData label;
 
 	private HashMap fields;
