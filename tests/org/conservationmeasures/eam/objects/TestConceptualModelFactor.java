@@ -5,17 +5,23 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelFactor extends EAMTestCase
+public class TestConceptualModelFactor extends ObjectTestCase
 {
 	public TestConceptualModelFactor(String name)
 	{
 		super(name);
 	}
 
-	public void testBasics()
+	public void testData() throws Exception
 	{
-		
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeFactor());
+		verifyTextFieldinModelNode(type, ConceptualModelFactor.TAG_TAXONOMY_CODE, extraInfo);
 	}
+	
+	private static final int type = ObjectType.MODEL_NODE;
+
 }

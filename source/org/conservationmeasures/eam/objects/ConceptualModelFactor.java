@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelFactor extends ConceptualModelNode
@@ -58,6 +59,15 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		EnhancedJsonObject json = super.toJson();
 		return json;
 	}
+	
+	void clear()
+	{
+		super.clear();
+		taxonomyCode = new StringData();
+		addField(TAG_TAXONOMY_CODE, taxonomyCode);
+	}	
+	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	StringData taxonomyCode; 
 	
 	private int targetCount;
 
