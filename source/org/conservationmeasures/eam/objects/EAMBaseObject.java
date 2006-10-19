@@ -139,8 +139,13 @@ abstract public class EAMBaseObject implements EAMObject
 		label = new StringData();
 		
 		fields = new HashMap();
-		fields.put(TAG_LABEL, label);
+		addField(TAG_LABEL, label);
 
+	}
+	
+	void addField(String tag, ObjectData data)
+	{
+		fields.put(tag, data);
 	}
 
 	private ObjectData getField(String fieldTag)
