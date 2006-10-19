@@ -175,10 +175,11 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public ConceptualModelNodeSet getNodesInChain(ConceptualModelNode node)
 	{
+		DiagramModel model = getProject().getDiagramModel();
 		if (node.isDirectThreat())
-			return getProject().getDiagramModel().getDirectThreatChainNodes(node);
+			return model.getDirectThreatChainNodes(node);
 		
-		return getProject().getDiagramModel().getAllUpstreamDownstreamNodes(node);
+		return model.getAllUpstreamDownstreamNodes(node);
 	}
 		
 	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(ConceptualModelNode node)
