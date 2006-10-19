@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -36,7 +35,7 @@ public class ConceptualModelTarget extends ConceptualModelNode
 
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = createBaseJsonObject(NodeTypeTarget.TARGET_TYPE);
+		EnhancedJsonObject json = super.toJson();
 		return json;
 	}
 

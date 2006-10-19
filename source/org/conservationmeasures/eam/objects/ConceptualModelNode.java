@@ -58,8 +58,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 			objectives.addId(new BaseId(objectiveIds.getInt(i)));
 	}
 	
-	public abstract EnhancedJsonObject toJson();
-	
 	public ModelNodeId getModelNodeId()
 	{
 		return new ModelNodeId(getId().asInt());
@@ -220,10 +218,10 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
 	
-	EnhancedJsonObject createBaseJsonObject(String typeString)
+	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_NODE_TYPE, typeString);
+		json.put(TAG_NODE_TYPE, type.toString());
 		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().asInt());
 		

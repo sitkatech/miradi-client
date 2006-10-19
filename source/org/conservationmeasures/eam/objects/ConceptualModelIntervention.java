@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -103,7 +102,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = createBaseJsonObject(NodeTypeIntervention.INTERVENTION_TYPE);
+		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_STATUS, status);
 		json.put(TAG_ACTIVITY_IDS, activityIds.toString());
 		json.put(TAG_RATING_VALUE_SET, ratings.get());

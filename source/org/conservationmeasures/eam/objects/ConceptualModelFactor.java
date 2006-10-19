@@ -55,7 +55,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = createBaseJsonObject(NodeTypeFactor.FACTOR_TYPE);
+		EnhancedJsonObject json = super.toJson();
 		return json;
 	}
 	
