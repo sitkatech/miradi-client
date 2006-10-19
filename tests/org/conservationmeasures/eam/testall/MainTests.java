@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestConceptualModelCluster;
+import org.conservationmeasures.eam.objects.TestConceptualModelFactor;
 import org.conservationmeasures.eam.objects.TestConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.TestConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.TestConceptualModelNode;
@@ -153,6 +154,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestActivityInsertionPoint.class));
 		suite.addTest(new TestSuite(TestConceptualModelCluster.class));
 		suite.addTest(new TestSuite(TestConceptualModelIntervention.class));
+		suite.addTest(new TestSuite(TestConceptualModelFactor.class));
 		suite.addTest(new TestSuite(TestConceptualModelLinkage.class));
 		suite.addTest(new TestSuite(TestConceptualModelNode.class));
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
