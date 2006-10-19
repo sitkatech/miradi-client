@@ -25,7 +25,7 @@ public class TestProcessDelimitedFile extends EAMTestCase
 	{
 		testAssertNoData("");
 		testAssertOneElement("xxxx");
-		testAssertTwoElement("xxxx \t xxxx");
+		testAssertTwoElement("xxxx \t yyyy");
 		testAssertTwoElementOneQouted("xxxx \t     \"xxxx\"");
 		testAssertTwoElementOneQoutedEmpty("xxxx \t     \"\"");
 		testAssertThreatFileInMain("ThreatTaxonomies.txt");
@@ -35,41 +35,41 @@ public class TestProcessDelimitedFile extends EAMTestCase
 	private void testAssertNoData(String test) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( new StringReader(test) );
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(reader);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
 		assertEquals(true, myData.size()==0);
 	}
 	
 	private void testAssertOneElement(String test) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( new StringReader(test) );
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(reader);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
 		assertEquals(true, ((Vector)myData.elementAt(0)).size()==1);
 	}
 	
 	private void testAssertTwoElement(String test) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( new StringReader(test) );
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(reader);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	private void testAssertTwoElementOneQouted(String test) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( new StringReader(test) );
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(reader);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	private void testAssertTwoElementOneQoutedEmpty(String test) throws IOException
 	{
 		BufferedReader reader = new BufferedReader( new StringReader(test) );
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(reader);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	private void testAssertThreatFileInMain(String file) throws Exception
 	{
-		Vector myData = ProcessDelimitedFile.getDelimitedContents(file);
+		Vector myData = DelimitedFileLoader.getDelimitedContents(file);
 		assertEquals(41, myData.size());
 	}
 	
