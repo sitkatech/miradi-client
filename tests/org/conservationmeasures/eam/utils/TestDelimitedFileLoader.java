@@ -23,65 +23,65 @@ public class TestDelimitedFileLoader extends EAMTestCase
 
 	public void testNoData() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData = loadDelimitedData(new StringReader(""));
 		assertEquals(true, myData.size()==0);
 	}
-	
+
 	public void testOneElement() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("xxxx") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData =  loadDelimitedData(new StringReader("xxxx"));
 		assertEquals(true, ((Vector)myData.elementAt(0)).size()==1);
 	}
 	
 	public void testTwoElement() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("xxxx \t yyyy") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData =  loadDelimitedData(new StringReader("xxxx \t yyyy"));
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	public void testTwoElementOneQouted() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("xxxx \t     \"xxxx\"") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData =  loadDelimitedData(new StringReader("xxxx \t     \"xxxx\""));
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	public void testTwoElementOneQoutedEmpty() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("xxxx \t     \"\"") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData =  loadDelimitedData(new StringReader("xxxx \t     \"\""));
 		assertEquals(2, ((Vector)myData.elementAt(0)).size());
 	}
 	
 	public void testElementContentWithTrim() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("xxxx \t     \"abcd 123\"   ") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
-		String data = (String)((Vector)myData.elementAt(0)).get(1);
-		assertEquals("abcd 123", data);
+		Vector myData =  loadDelimitedData(new StringReader("xxxx \t     \"abcd 123\"   "));
+		testItem(myData, 0, 1, "abcd 123");
 	}
 	
-
 	public void testElementTwoRows() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("124 \t     \"abcd 234\"    \n 345 \t     \"efgc 678\"  ") );
-		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
+		Vector myData =  loadDelimitedData(new StringReader("124 \t     \"abcd 234\"    \n 345 \t     \"efgc 678\"  "));
 		assertEquals(2, myData.size());
 	}
 	
 	public void testElementTwoContent() throws IOException
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("124 \t     \"abcd 234\"    \n 345 \t     \"efgc 678\"  ") );
+		Vector myData =  loadDelimitedData(new StringReader("124 \t     \"abcd 234\"    \n 345 \t     \"efgc 678\"  "));
+		testItem(myData, 0, 1, "abcd 234");
+		testItem(myData, 1, 1, "efgc 678");
+	}
+	
+	private Vector loadDelimitedData(StringReader data) throws IOException
+	{
+		BufferedReader reader = new BufferedReader( data );
 		Vector myData = DelimitedFileLoader.getDelimitedContents(reader);
-		String data = (String)((Vector)myData.elementAt(0)).get(1);
-		assertEquals("abcd 234", data);
-		String data2 = (String)((Vector)myData.elementAt(1)).get(1);
-		assertEquals("efgc 678", data2);
+		return myData;
 	}
 	
 
+	private void testItem(Vector myData, int temp0, int temp1, String tempData)
+	{
+		String data = (String)((Vector)myData.elementAt(temp0)).get(temp1);
+		assertEquals(tempData, data);
+	}
 	
 }

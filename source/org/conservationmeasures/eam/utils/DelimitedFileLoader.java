@@ -24,7 +24,6 @@ public class DelimitedFileLoader
 	public static Vector getDelimitedContents(String cvsResourceName)
 			throws Exception
 	{
-
 		InputStream is = EAM.class.getResourceAsStream(cvsResourceName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 		return getDelimitedContents(reader);
@@ -44,14 +43,20 @@ public class DelimitedFileLoader
 			while(st.hasMoreTokens())
 			{
 				String token = st.nextToken().trim();
-				if(token.startsWith(QUOTE))
-					token = token.substring(1, token.length() - 1);
-				thisLine.addElement(token);
+				addElementToLine(thisLine, token);
 			}
 			lineVec.add(thisLine);
 		}
 		reader.close();
 		return lineVec;
+	}
+
+
+	private static void addElementToLine(Vector thisLine, String token)
+	{
+		if(token.startsWith(QUOTE))
+			token = token.substring(1, token.length() - 1);
+		thisLine.addElement(token);
 	}
 
 }
