@@ -13,9 +13,30 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.ViewData;
 
 public class InsertDraftIntervention extends InsertNode
 {
+	public boolean isAvailable()
+	{
+		super.isAvailable();
+		try
+		{
+			ViewData viewData = getProject().getViewData(getView().cardName());
+			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
+			System.out.println(currentViewMode);
+			
+			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
+				return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+		return false;
+	}
+	
 	public NodeType getTypeToInsert()
 	{
 		return DiagramNode.TYPE_INTERVENTION;
@@ -32,5 +53,4 @@ public class InsertDraftIntervention extends InsertNode
 		getProject().executeCommand(setStatusCommand);
 	}
 	
-
 }
