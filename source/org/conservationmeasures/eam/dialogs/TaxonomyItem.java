@@ -7,13 +7,8 @@ package org.conservationmeasures.eam.dialogs;
 
 public class TaxonomyItem
 {
-	String taxonomyCode;
-
-	String taxonomy_Description;
-
 	public TaxonomyItem(String code, String description)
 	{
-		super();
 		taxonomyCode = code;
 		taxonomy_Description = description;
 	}
@@ -23,14 +18,19 @@ public class TaxonomyItem
 		return taxonomyCode;
 	}
 
-	public String getTaxonomy_Description()
+	public String getTaxonomyDescription()
 	{
 		return taxonomy_Description;
 	}
 
 	public String toString()
 	{
-		return getTaxonomy_Description();
+		return getTaxonomyDescription();
 
 	}
+	
+	String taxonomyCode;
+
+	String taxonomy_Description;
+	
 }

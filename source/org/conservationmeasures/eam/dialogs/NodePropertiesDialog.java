@@ -542,8 +542,8 @@ public class NodePropertiesDialog extends JDialog implements
 		String[] choices = { "error processing classifications", };
 		try
 		{
-			TaxonomyItem[] taxonomyItems = LoadTaxonomies
-					.load("ThreatTaxonomies");
+			TaxonomyItem[] taxonomyItems = TaxonomyLoader
+					.load("ThreatTaxonomies.txt");
 			return new UiComboBox(taxonomyItems);
 		}
 		catch(Exception e)
@@ -558,8 +558,8 @@ public class NodePropertiesDialog extends JDialog implements
 
 		try
 		{
-			TaxonomyItem[] taxonomyItems = LoadTaxonomies
-					.load("InterventionTaxonomies");
+			TaxonomyItem[] taxonomyItems = TaxonomyLoader
+					.load("InterventionTaxonomies.txt");
 			return new UiComboBox(taxonomyItems);
 		}
 		catch(Exception e)

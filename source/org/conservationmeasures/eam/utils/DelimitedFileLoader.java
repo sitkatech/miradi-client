@@ -30,7 +30,7 @@ public class DelimitedFileLoader
 		return getDelimitedContents(reader);
 	}
 
-	static Vector getDelimitedContents(BufferedReader reader)
+	public static Vector getDelimitedContents(BufferedReader reader)
 			throws IOException
 	{
 		Vector lineVec = new Vector();

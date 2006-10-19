@@ -82,13 +82,6 @@ public class TestDelimitedFileLoader extends EAMTestCase
 		assertEquals("efgc 678", data2);
 	}
 	
-	
-	
-	public void testThreatFileInMain() throws Exception
-	{
-		Vector myData = DelimitedFileLoader.getDelimitedContents("ThreatTaxonomies.txt");
-		assertEquals(41, myData.size());
-	}
-	
+
 	
 }
