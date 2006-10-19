@@ -5,8 +5,12 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -92,18 +96,18 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
-		if(TAG_LABEL.equals(fieldTag))
-			label.set(dataValue);
-		else
+		if(!fields.containsKey(fieldTag))
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
+
+		getField(fieldTag).set(dataValue);
 	}
 	
 	public String getData(String fieldTag)
 	{
-		if(TAG_LABEL.equals(fieldTag))
-			return label.get();
-		
-		throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
+		if(!fields.containsKey(fieldTag))
+			throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
+
+		return getField(fieldTag).get();
 	}
 	
 
@@ -121,13 +125,29 @@ abstract public class EAMBaseObject implements EAMObject
 	{
 		id = new BaseIdData();
 		label = new StringData();
+		
+		fields = new HashMap();
+		fields.put(TAG_ID, id);
+		fields.put(TAG_LABEL, label);
+
 	}
 
+	private ObjectData getField(String fieldTag)
+	{
+		ObjectData data = (ObjectData)fields.get(fieldTag);
+		return data;
+	}
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_ID, id.get());
-		json.put(TAG_LABEL, label.get());
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			ObjectData data = getField(tag);
+			json.put(tag, data.get());
+		}
 		
 		return json;
 	}
@@ -140,5 +160,5 @@ abstract public class EAMBaseObject implements EAMObject
 	BaseIdData id;
 	StringData label;
 
-
+	private HashMap fields;
 }
