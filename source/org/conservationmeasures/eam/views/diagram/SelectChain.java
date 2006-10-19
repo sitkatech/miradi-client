@@ -18,8 +18,8 @@ public class SelectChain extends ViewDoer
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 		if(selectedNodes.length != 1)
 			return false;
-		
-		return (selectedNodes[0].isDirectThreat());
+	
+		return (selectedNodes[0].isNode());
 	}
 
 	public void doIt() throws CommandFailedException
@@ -30,7 +30,8 @@ public class SelectChain extends ViewDoer
 		try
 		{
 			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
-			ConceptualModelNode[] chainNodes = getProject().getDiagramModel().getDirectThreatChainNodes(selectedNode.getUnderlyingObject()).toNodeArray();
+			ConceptualModelNode[] chainNodes = getProject().getDiagramModel().getNodesInChain(selectedNode.getUnderlyingObject()).toNodeArray();
+			
 			for(int i = 0; i < chainNodes.length; ++i)
 			{
 				// convert CMNode to DiagramNode

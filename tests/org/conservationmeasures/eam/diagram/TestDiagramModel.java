@@ -44,7 +44,39 @@ public class TestDiagramModel extends EAMTestCase
 		super.tearDown();
 	}
 	
-	public void testGetChainIds() throws Exception
+	public void testGetNodesInChain() throws Exception
+	{
+		int[] linkagePairs = getLinkagePairs();
+		SampleDiagramBuilder.buildNodeGrid(project, 7, linkagePairs);
+		int[][] expectedNodesInChain = getExpectedNodesInChain();
+		
+		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
+		{
+			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
+			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
+			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			
+			ConceptualModelNodeSet gotChainNodes = model.getNodesInChain(cmNode);
+			
+			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
+		}
+	}
+
+	private int[][] getExpectedNodesInChain()
+	{
+		int[][] expectedNodesInChain = {
+				{ 31,  11, 12, 13, 21, 22, 41 },
+				{ 32,  13, 23, 41 },
+				{ 33,  13, 23, 42, 43 },
+				{ 34,  24, 25, 26, 35, 36, 44 },
+				{ 35,  25, 26, 34, 36, 45 },
+				// 36 is actually an INDIRECT FACTOR!
+		};
+		return expectedNodesInChain;
+		
+	}
+	
+	private int[] getLinkagePairs()
 	{
 		int[] linkagePairs = {
 				11, 21,		21, 31, 	31, 41,
@@ -55,17 +87,15 @@ public class TestDiagramModel extends EAMTestCase
 				25, 35, 	35, 45,
 				26, 36, 	36, 35, 	35, 34,
 		};
-		
+		return linkagePairs;
+	}
+	
+	public void testGetChainIds() throws Exception
+	{
+		int[] linkagePairs = getLinkagePairs();
 		SampleDiagramBuilder.buildNodeGrid(project, 7, linkagePairs);
-		
-		int[][] expectedNodesInChain = {
-				{ 31,  11, 12, 13, 21, 22, 41 },
-				{ 32,  13, 23, 41 },
-				{ 33,  13, 23, 42, 43 },
-				{ 34,  24, 25, 26, 35, 36, 44 },
-				{ 35,  25, 26, 34, 36, 45 },
-				// 36 is actually an INDIRECT FACTOR!
-		};
+		int[][] expectedNodesInChain = getExpectedNodesInChain();
+				
 		for(int threatIndex = 0; threatIndex < expectedNodesInChain.length; ++threatIndex)
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
@@ -89,7 +119,7 @@ public class TestDiagramModel extends EAMTestCase
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
-			ConceptualModelNodeSet gotChainNodes = model.getAllNodesInChain(cmNode);
+			ConceptualModelNodeSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
 			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
 	}

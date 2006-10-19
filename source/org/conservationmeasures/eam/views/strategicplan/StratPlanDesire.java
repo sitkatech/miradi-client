@@ -84,7 +84,7 @@ public class StratPlanDesire extends StratPlanObject
 	
 	private boolean doesChainContainDesire(ConceptualModelNode chainMember, BaseId desireId)
 	{
-		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllNodesInChain(chainMember).toNodeArray();
+		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			if(chainNodes[i].getObjectives().contains(desireId))

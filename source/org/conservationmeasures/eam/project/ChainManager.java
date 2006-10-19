@@ -58,7 +58,7 @@ public class ChainManager
 		
 		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
 		{
-			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisIndicator[i]);
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisIndicator[i]);
 			relatedNodes.attemptToAddAll(nodesInChain);
 		}
 		
@@ -72,7 +72,7 @@ public class ChainManager
 		
 		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
 		{
-			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllNodesInChain(nodesThatUseThisObjective[i]);
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisObjective[i]);
 			relatedNodes.attemptToAddAll(nodesInChain);
 		}
 		

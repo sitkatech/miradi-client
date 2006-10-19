@@ -173,7 +173,15 @@ public class DiagramModel extends DefaultGraphModel
 		return results;
 	}
 	
-	public ConceptualModelNodeSet getAllNodesInChain(ConceptualModelNode node)
+	public ConceptualModelNodeSet getNodesInChain(ConceptualModelNode node)
+	{
+		if (node.isDirectThreat())
+			return getProject().getDiagramModel().getDirectThreatChainNodes(node);
+		
+		return getProject().getDiagramModel().getAllUpstreamDownstreamNodes(node);
+	}
+		
+	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(ConceptualModelNode node)
 	{
 		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
 		results.attemptToAddAll(getAllDownstreamNodes(node));
