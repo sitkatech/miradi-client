@@ -5,13 +5,15 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.RatingValueSet;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class TestConceptualModelIntervention extends EAMTestCase
+public class TestConceptualModelIntervention extends ObjectTestCase
 {
 	public TestConceptualModelIntervention(String name)
 	{
@@ -115,6 +117,14 @@ public class TestConceptualModelIntervention extends EAMTestCase
 		assertEquals("Didn't default ratings?", defaultValueId, got.getRatingValueId(criterionId3, defaultValueId));
 	}
 	
+	public void testData() throws Exception
+	{
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeIntervention());
+		verifyTextFieldinModelNode(type, ConceptualModelIntervention.TAG_TAXONOMY_CODE, extraInfo);
+	}
+	
+	private static final int type = ObjectType.MODEL_NODE;
+
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);
 	static final BaseId criterionId3 = new BaseId(2833);

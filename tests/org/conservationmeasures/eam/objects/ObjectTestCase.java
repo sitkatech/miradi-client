@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -20,11 +21,17 @@ public class ObjectTestCase extends EAMTestCase
 
 	public void verifyTextField(int objectType, String tag) throws Exception
 	{
+		CreateModelNodeParameter extraInfo = null;
+		verifyTextFieldinModelNode(objectType, tag, extraInfo);
+	}
+	
+	public void verifyTextFieldinModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
+	{
 		Project project = new ProjectForTesting(getName());
 		try
 		{
 			final String sampleData = "Blah blah";
-			BaseId id = project.createObject(objectType);
+			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
 			EAMObject object = project.findObject(objectType, id);
 			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
 			object.setData(tag, sampleData);
@@ -37,7 +44,7 @@ public class ObjectTestCase extends EAMTestCase
 			project.close();
 		}
 	}
-	
+
 	public void verifyIdListField(int objectType, String tag) throws Exception
 	{
 		Project project = new ProjectForTesting(getName());

@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -100,9 +101,11 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		super.clear();
 		activityIds = new IdListData();
 		ratings = new RatingData();
-
+		taxonomyCode = new StringData();
+		
 		addField(TAG_ACTIVITY_IDS, activityIds);
 		addField(TAG_RATING_VALUE_SET, ratings);
+		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -110,8 +113,10 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public static final String TAG_RATING_VALUE_SET = "RatingValueSet";
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
+	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 
 	String status;
 	IdListData activityIds;
 	RatingData ratings;
+	StringData taxonomyCode; 
 }
