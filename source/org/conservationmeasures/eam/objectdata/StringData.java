@@ -26,6 +26,21 @@ public class StringData extends ObjectData
 	{
 		return value;
 	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof StringData))
+			return false;
+		
+		StringData other = (StringData)rawOther;
+		return value.equals(other.value);
+	}
+
+	public int hashCode()
+	{
+		return value.hashCode();
+	}
+
 
 	String value;
 }

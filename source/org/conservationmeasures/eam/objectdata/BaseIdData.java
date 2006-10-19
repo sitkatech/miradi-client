@@ -39,5 +39,19 @@ public class BaseIdData extends ObjectData
 		id = new BaseId(Integer.parseInt(newValue));
 	}
 
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof BaseIdData))
+			return false;
+		
+		BaseIdData other = (BaseIdData)rawOther;
+		return id.equals(other.id);
+	}
+
+	public int hashCode()
+	{
+		return id.hashCode();
+	}
+
 	BaseId id;
 }

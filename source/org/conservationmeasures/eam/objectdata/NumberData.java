@@ -46,6 +46,21 @@ public class NumberData extends ObjectData
 			return "";
 		return Double.toString(value);
 	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof NumberData))
+			return false;
+		
+		NumberData other = (NumberData)rawOther;
+		return new Double(value).equals(new Double(other.value));
+	}
+
+	public int hashCode()
+	{
+		return (int)value;
+	}
+
 
 	double value;
 }

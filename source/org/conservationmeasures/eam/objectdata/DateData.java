@@ -48,5 +48,19 @@ public class DateData extends ObjectData
 		return date.toIsoDateString();
 	}
 
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof DateData))
+			return false;
+		
+		DateData other = (DateData)rawOther;
+		return date.equals(other.date);
+	}
+
+	public int hashCode()
+	{
+		return date.hashCode();
+	}
+	
 	MultiCalendar date;
 }

@@ -76,5 +76,20 @@ public class IdListData extends ObjectData
 		ids.removeId(id);
 	}
 	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof IdListData))
+			return false;
+		
+		IdListData other = (IdListData)rawOther;
+		return ids.equals(other.ids);
+	}
+
+	public int hashCode()
+	{
+		return ids.hashCode();
+	}
+	
+	
 	IdList ids;
 }

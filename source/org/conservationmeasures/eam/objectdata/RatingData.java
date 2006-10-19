@@ -40,6 +40,21 @@ public class RatingData extends ObjectData
 	{
 		return ratings.getValueId(criterionId, defaultValueId);
 	}
+	
+	public boolean equals(Object rawOther)
+	{
+		if(!(rawOther instanceof RatingData))
+			return false;
+		
+		RatingData other = (RatingData)rawOther;
+		return ratings.equals(other.ratings);
+	}
+
+	public int hashCode()
+	{
+		return ratings.hashCode();
+	}
+
 
 	RatingValueSet ratings;
 }
