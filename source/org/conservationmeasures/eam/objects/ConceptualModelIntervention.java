@@ -20,16 +20,12 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
-		activityIds = new IdListData();
-		ratings = new RatingData();
 	}
 	
 	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
-		activityIds = new IdListData(json.optString(TAG_ACTIVITY_IDS));
-		ratings = new RatingData(json.optString(TAG_RATING_VALUE_SET));
 	}
 
 	public boolean isIntervention()
@@ -79,23 +75,15 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 
 	public String getData(String fieldTag)
 	{
-		if(TAG_ACTIVITY_IDS.equals(fieldTag))
-			return activityIds.get();
-		else if(TAG_STATUS.equals(fieldTag))
+		if(TAG_STATUS.equals(fieldTag))
 			return status;
-		else if(TAG_RATING_VALUE_SET.equals(fieldTag))
-			return ratings.get();
 		return super.getData(fieldTag);
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
-		if(TAG_ACTIVITY_IDS.equals(fieldTag))
-			activityIds.set(dataValue);
-		else if(TAG_STATUS.equals(fieldTag))
+		if(TAG_STATUS.equals(fieldTag))
 			status = dataValue;
-		else if(TAG_RATING_VALUE_SET.equals(fieldTag))
-			ratings.set(dataValue);
 		else
 			super.setData(fieldTag, dataValue);
 	}
@@ -104,11 +92,19 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_STATUS, status);
-		json.put(TAG_ACTIVITY_IDS, activityIds.toString());
-		json.put(TAG_RATING_VALUE_SET, ratings.get());
 		return json;
 	}
 	
+	void clear()
+	{
+		super.clear();
+		activityIds = new IdListData();
+		ratings = new RatingData();
+
+		addField(TAG_ACTIVITY_IDS, activityIds);
+		addField(TAG_RATING_VALUE_SET, ratings);
+	}
+
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
 	public static final String TAG_RATING_VALUE_SET = "RatingValueSet";

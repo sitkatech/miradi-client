@@ -31,7 +31,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse);
 		type = nodeType;
 		
-		comment = new StringData();
 		indicator = new IndicatorId(BaseId.INVALID.asInt());
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
@@ -42,7 +41,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse, json);
 		type = nodeType;
 
-		comment = new StringData(json.optString(TAG_COMMENT));
 		setIndicatorId(new IndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
 		
 		goals = new GoalIds();
@@ -174,9 +172,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	{
 		if(fieldTag.equals(TAG_NODE_TYPE))
 			throw new RuntimeException("Cannot use getData to obtain node type");
-		
-		if(fieldTag.equals(TAG_COMMENT))
-			return getComment();
+
 		if(fieldTag.equals(TAG_INDICATOR_ID))
 			return Integer.toString(getIndicatorId().asInt());
 		if(fieldTag.equals(TAG_GOAL_IDS))
@@ -191,8 +187,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_NODE_TYPE))
 			throw new RuntimeException("Cannot use setData to change node type");
 		
-		if(fieldTag.equals(TAG_COMMENT))
-			setComment(dataValue);
 		else if(fieldTag.equals(TAG_INDICATOR_ID))
 			setIndicatorId(new IndicatorId(Integer.parseInt(dataValue)));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
@@ -222,7 +216,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	{
 		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, type.toString());
-		json.put(TAG_COMMENT, getComment());
 		json.put(TAG_INDICATOR_ID, getIndicatorId().asInt());
 		
 		JSONArray goalIds = new JSONArray();
@@ -266,6 +259,14 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		result.append("</html>");
 		
 		return result.toString();
+	}
+
+	void clear()
+	{
+		super.clear();
+		comment = new StringData();
+		
+		addField(TAG_COMMENT, comment);
 	}
 
 	public static final String TAG_NODE_TYPE = "Type";
