@@ -41,16 +41,29 @@ public class UiTableWithAlternatingRows extends UiTable
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
+			workAroundJavaBug(table, isSelected);
+			
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-			component.setBackground(backgrounds[row%2]);
+			if (!isSelected)
+			{
+				component.setBackground(backgrounds[row%2]);
+				component.setForeground(Color.BLACK);
+			}
+			
 			if(component instanceof JLabel)
 				((JLabel)component).setVerticalAlignment(JLabel.TOP);
-
+				
 			int height = component.getPreferredSize().height;
 			if (height > table.getRowHeight(row))
 				table.setRowHeight (row, height);
-
+			
 			return component;
+		}
+
+		private void workAroundJavaBug(JTable table, boolean isSelected)
+		{
+			if (isSelected) 
+				   table.setForeground(null);
 		}
 		
 	}
