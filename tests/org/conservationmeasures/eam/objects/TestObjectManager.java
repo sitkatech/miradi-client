@@ -79,20 +79,20 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyBasicObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception, IOException, ParseException
 	{
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, parameter);
-		assertNotEquals("Created with invalid id", BaseId.INVALID, createdId);
+		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		db.readObject(type, createdId);
 		
 		String tag = RatingCriterion.TAG_LABEL;
 		manager.setObjectData(type, createdId, tag, "data");
 		EAMObject withData = db.readObject(type, createdId);
-		assertEquals("didn't write/read data?", "data", withData.getData(tag));
-		assertEquals("can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
+		assertEquals(type + " didn't write/read data for " + tag + "?", "data", withData.getData(tag));
+		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
 		manager.deleteObject(type, createdId);
 		try
 		{
 			manager.getObjectData(type, createdId, tag);
-			fail("Should have thrown getting data from deleted object");
+			fail(type + " Should have thrown getting data from deleted object");
 		}
 		catch(Exception ignoreExpected)
 		{
@@ -101,14 +101,14 @@ public class TestObjectManager extends EAMTestCase
 		try
 		{
 			db.readObject(type, createdId);
-			fail("Should have thrown reading deleted object");
+			fail(type + " Should have thrown reading deleted object");
 		}
 		catch(Exception ignoreExpected)
 		{
 		}
 		
 		BaseId desiredId = new BaseId(2323);
-		assertEquals("didn't use requested id?", desiredId, manager.createObject(type, desiredId, parameter));
+		assertEquals(type + " didn't use requested id?", desiredId, manager.createObject(type, desiredId, parameter));
 	}
 
 	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
