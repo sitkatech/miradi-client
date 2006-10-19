@@ -40,8 +40,7 @@ public class DelimitedFileLoader
 			if(line == null)
 				break;
 			StringTokenizer st = new StringTokenizer(line, TAB);
-			Vector thisLine = null;
-			thisLine = new Vector();
+			Vector thisLine = new Vector();
 			while(st.hasMoreTokens())
 			{
 				String token = st.nextToken().trim();
