@@ -19,21 +19,22 @@ public class InsertDraftIntervention extends InsertNode
 {
 	public boolean isAvailable()
 	{
-		super.isAvailable();
+		if (!super.isAvailable())
+			return false;
+		
 		try
 		{
-			ViewData viewData = getProject().getViewData(getView().cardName());
+			ViewData viewData = getProject().getCurrentViewData();
 			String currentViewMode = viewData.getData(ViewData.TAG_CURRENT_MODE);
-			System.out.println(currentViewMode);
-			
+		
 			if(ViewData.MODE_STRATEGY_BRAINSTORM.equals(currentViewMode))
 				return true;
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return false;
 		}
+
 		return false;
 	}
 	
