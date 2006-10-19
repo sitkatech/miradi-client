@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -14,14 +15,15 @@ abstract public class EAMBaseObject implements EAMObject
 {
 	public EAMBaseObject(BaseId idToUse)
 	{
-		id = idToUse;
-		label = new StringData();
+		clear();
+		setId(idToUse);
 	}
 	
 	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json)
 	{
-		id = idToUse;
-		label = new StringData(json.optString(TAG_LABEL));
+		clear();
+		setId(idToUse);
+		label.set(json.optString(TAG_LABEL));
 	}
 	
 	public static EAMObject createFromJson(int type, EnhancedJsonObject json) throws Exception
@@ -91,7 +93,7 @@ abstract public class EAMBaseObject implements EAMObject
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_LABEL.equals(fieldTag))
-			setLabel(dataValue);
+			label.set(dataValue);
 		else
 			throw new RuntimeException("Attempted to set data for bad field: " + fieldTag);
 	}
@@ -99,7 +101,7 @@ abstract public class EAMBaseObject implements EAMObject
 	public String getData(String fieldTag)
 	{
 		if(TAG_LABEL.equals(fieldTag))
-			return getLabel();
+			return label.get();
 		
 		throw new RuntimeException("Attempted to get data for bad field: " + fieldTag);
 	}
@@ -107,14 +109,25 @@ abstract public class EAMBaseObject implements EAMObject
 
 	public BaseId getId()
 	{
-		return id;
+		return id.getId();
+	}
+	
+	private void setId(BaseId newId)
+	{
+		id.setId(newId);
+	}
+	
+	private void clear()
+	{
+		id = new BaseIdData();
+		label = new StringData();
 	}
 
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_ID, getId().asInt());
-		json.put(TAG_LABEL, getLabel());
+		json.put(TAG_ID, id.get());
+		json.put(TAG_LABEL, label.get());
 		
 		return json;
 	}
@@ -124,7 +137,7 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	public static final String DEFAULT_LABEL = "";
 
-	private BaseId id;
+	BaseIdData id;
 	StringData label;
 
 
