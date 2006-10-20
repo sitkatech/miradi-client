@@ -29,8 +29,9 @@ public class TestTaxonomyLoader extends EAMTestCase
 
 	public void testOne() throws Exception
 	{
-		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(" # \"header\"  \t H10.10 \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
-		assertEquals(1, taxonomyItem.length);
+		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(" # \t \"header\" \t \"xxxx\" \n H10.10 \t \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
+		assertEquals(3, taxonomyItem.length);
+		assertEquals("H10.10", taxonomyItem[1].getTaxonomyCode());
 	}
 	
 

@@ -39,7 +39,7 @@ public class TaxonomyLoader
 	private static Vector processVector(Vector fileVector)
 	{
 		Vector taxonomyItems = new Vector();
-		taxonomyItems.add(new TaxonomyItem("combo box default text", EAM
+		taxonomyItems.add(new TaxonomyItem("", EAM
 				.text("--Select a classification--")));
 
 		String prevLevel1Code = "";
@@ -54,16 +54,14 @@ public class TaxonomyLoader
 			String level1Descriptor = (String) row.get(1);
 			String level2Descriptor = (String) row.get(2);
 
-			if(getLevel1Code(code).equals(prevLevel1Code))
+			if(!getLevel1Code(code).equals(prevLevel1Code))
 			{
-				++level2Index;
-			}
-			else
-			{
-				level2Index = 1;
+				level2Index = 0;
 				taxonomyItems.add(new TaxonomyItem(code, ++level1Index + "   "
 						+ level1Descriptor));
 			}
+			
+			++level2Index;
 			taxonomyItems.add(new TaxonomyItem(code, "    " + level1Index + "."
 					+ level2Index + "    " + level2Descriptor));
 

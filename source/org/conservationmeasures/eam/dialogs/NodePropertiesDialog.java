@@ -17,12 +17,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Arrays;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -572,25 +572,33 @@ public class NodePropertiesDialog extends JDialog implements
 			TaxonomyItem[] taxonomyItems = TaxonomyLoader
 					.load("ThreatTaxonomies.txt");
 			dropdownThreatClassification = new UiComboBox(taxonomyItems);
+
 			String taxonomyCode = getCurrentNode().getUnderlyingObject()
 					.getData(ConceptualModelFactor.TAG_TAXONOMY_CODE);
-			if(taxonomyCode.length() > 0)
-			{
-				TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
-						taxonomyItems, taxonomyCode);
-				
-				if(foundTaxonomyItem == null)
-					dropdownThreatClassification
-							.setSelectedItem("Error item not found in datbase");
-				else
-					dropdownThreatClassification
-							.setSelectedItem(foundTaxonomyItem);
-			}
 
-			
+			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
+					taxonomyItems, taxonomyCode);
+
+			if(foundTaxonomyItem == null)
+			{
+				JOptionPane
+						.showMessageDialog(
+								new JDialog(mainWindow, true),
+								EAM
+										.text("Threat not found in table ; please make another selection"));
+			}
+			foundTaxonomyItem = taxonomyItems[0];
+
+			dropdownThreatClassification.setSelectedItem(foundTaxonomyItem);
+
 			dropdownThreatClassification
 					.addActionListener(new ThreatClassificationChangeHandler());
+
+			dropdownThreatClassification
+					.setSelectedItem("Error item not found in datbase");
+
 			return dropdownThreatClassification;
+
 		}
 		catch(Exception e)
 		{
@@ -602,8 +610,10 @@ public class NodePropertiesDialog extends JDialog implements
 	TaxonomyItem SearchTaxonomyClassificationsForCode(
 			TaxonomyItem[] taxonomyItems, String taxonomyCode)
 	{
-		for(int i = 0; i < taxonomyItems.length; i++) {
-			if(taxonomyItems[i].getTaxonomyCode().equals(taxonomyCode)) return taxonomyItems[i];
+		for(int i = 0; i < taxonomyItems.length; i++)
+		{
+			if(taxonomyItems[i].getTaxonomyCode().equals(taxonomyCode))
+				return taxonomyItems[i];
 		}
 		return null;
 	}
