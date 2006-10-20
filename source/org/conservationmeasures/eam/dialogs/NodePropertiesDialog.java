@@ -51,6 +51,8 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
+import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
@@ -586,8 +588,9 @@ public class NodePropertiesDialog extends JDialog implements
 								new JDialog(mainWindow, true),
 								EAM
 										.text("Threat not found in table ; please make another selection"));
+				foundTaxonomyItem = taxonomyItems[0];
 			}
-			foundTaxonomyItem = taxonomyItems[0];
+
 
 			dropdownThreatClassification.setSelectedItem(foundTaxonomyItem);
 

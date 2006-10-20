@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogs;
+package org.conservationmeasures.eam.objecthelpers;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
