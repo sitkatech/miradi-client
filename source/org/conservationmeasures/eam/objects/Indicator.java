@@ -35,12 +35,14 @@ public class Indicator extends EAMBaseObject
 		resourceIds = new IdListData();
 		location = new StringData();
 		priority = new RatingData();
+		status = new RatingData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_METHOD, method);
 		addField(TAG_RESOURCE_IDS, resourceIds);
 		addField(TAG_LOCATION, location);
 		addField(TAG_PRIORITY, priority);
+		addField(TAG_STATUS, status);
 	}
 	
 	public int getType()
@@ -70,6 +72,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_RESOURCE_IDS = "ResourceIds";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_PRIORITY = "Priority";
+	public static final String TAG_STATUS = "Status";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 
 	StringData shortLabel;
@@ -77,4 +80,5 @@ public class Indicator extends EAMBaseObject
 	IdListData resourceIds;
 	StringData location;
 	RatingData priority;
+	RatingData status;
 }

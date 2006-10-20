@@ -21,10 +21,10 @@ public class TaskPropertiesDialog extends ObjectPropertiesDialog
 		initializeFields(tags);
 	}
 	
-	DialogField createDialogField(String tag) throws Exception
+	DialogField createDialogField(String tag, String existingValue) throws Exception
 	{
 		
-		return super.createDialogField(tag);
+		return super.createDialogField(tag, existingValue);
 	}
 	
 	static final String[] tags = new String[] {Task.TAG_LABEL, Task.TAG_RESOURCE_IDS};

@@ -24,9 +24,8 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
+import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
@@ -52,7 +51,9 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		fields = new DialogField[tags.length];
 		for(int field = 0; field < fields.length; ++field)
 		{
-			fields[field] = createDialogField(tags[field]);
+			String tag = tags[field];
+			String existingValue = object.getData(tag);
+			fields[field] = createDialogField(tag, existingValue);
 			fields[field].getComponent().addFocusListener(new FocusHandler());
 			grid.add(new UiLabel(fields[field].getLabel()));
 			grid.add(fields[field].getComponent());
@@ -65,17 +66,13 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		pack();
 	}
 
-	DialogField createDialogField(String tag) throws Exception
+	DialogField createDialogField(String tag, String existingValue) throws Exception
 	{
 		String label = EAM.fieldLabel(object.getType(), tag);
-		String existingValue = object.getData(tag);
 
 		if(tag.equals(Task.TAG_RESOURCE_IDS))
 			return createResourcePicker(tag, label);
 		
-		if(tag.equals(Indicator.TAG_PRIORITY))
-			return createPriorityPicker(new PriorityRatingQuestion(tag), existingValue);
-
 		DialogField dialogField = new StringDialogField(tag, label, existingValue);
 		return dialogField;
 	}
@@ -152,7 +149,7 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
 	
-	protected DialogField createPriorityPicker(PriorityRatingQuestion question, String codeToSelect)
+	protected DialogField createChoiceField(RatingQuestion question, String codeToSelect)
 	{
 		ChoiceDialogField field = new ChoiceDialogField(question);
 		field.selectCode(codeToSelect);
