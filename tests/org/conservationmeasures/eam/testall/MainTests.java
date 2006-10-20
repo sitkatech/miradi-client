@@ -72,12 +72,14 @@ import org.conservationmeasures.eam.project.TestRealProject;
 import org.conservationmeasures.eam.project.TestStrategyRatingFramework;
 import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
+import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.strategicplan.TestDeleteActivity;
 import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
+import org.martus.util.TestMultiCalendar;
 import org.martus.util.xml.TestSimpleXmlParser;
 
 public class MainTests extends TestCase
@@ -176,6 +178,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestCommandCreateObject.class));
 		suite.addTest(new TestSuite(TestCommandSetObjectData.class));
 		
+		// ratings package
+		suite.addTest(new TestSuite(TestRatingChoice.class));
+		
 		// view.diagram package
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertConnection.class));
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertNode.class));
@@ -196,6 +201,7 @@ public class MainTests extends TestCase
 		
 		// martus-utils
 		suite.addTest(new TestSuite(TestSimpleXmlParser.class));
+		suite.addTest(new TestSuite(TestMultiCalendar.class));
 
 	    return suite;
 	}
