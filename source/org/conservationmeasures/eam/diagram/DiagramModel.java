@@ -164,109 +164,34 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
 	{
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		if(!directThreat.isDirectThreat())
-			return results;
-		results.attemptToAddAll(getDirectlyLinkedDownstreamNodes(directThreat));
-		results.attemptToAddAll(getAllUpstreamNodes(directThreat));
-		
-		return results;
+		ChainObject chainObject = new ChainObject(this, directThreat);
+		return chainObject.getDirectThreatChainNodes();
 	}
 	
 	public ConceptualModelNodeSet getNodesInChain(ConceptualModelNode node)
 	{
-		DiagramModel model = getProject().getDiagramModel();
-		if (node.isDirectThreat())
-			return model.getDirectThreatChainNodes(node);
-		
-		return model.getAllUpstreamDownstreamNodes(node);
+		ChainObject chainObject = new ChainObject(this, node);
+		return chainObject.getNodesInChain();
 	}
 		
 	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(ConceptualModelNode node)
 	{
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		results.attemptToAddAll(getAllDownstreamNodes(node));
-		results.attemptToAddAll(getAllUpstreamNodes(node));
-		
-		return results;
+		ChainObject chainObject = new ChainObject(this, node);
+		return chainObject.getAllUpstreamDownstreamNodes();
 	}
 
 	public ConceptualModelNodeSet getAllUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getAllLinkedNodes(ConceptualModelLinkage.TO, startingNode);
-	}
-
-	public ConceptualModelNodeSet getAllDownstreamNodes(ConceptualModelNode startingNode)
-	{
-		return getAllLinkedNodes(ConceptualModelLinkage.FROM, startingNode);
+		ChainObject chainObject = new ChainObject(this, startingNode);
+		return chainObject.getAllUpstreamNodes();
 	}
 
 	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		return getDirectlyLinkedNodes(ConceptualModelLinkage.TO, startingNode);
+		ChainObject chainObject = new ChainObject(this, startingNode);
+		return chainObject.getAllUpstreamDownstreamNodes();
 	}
-
-	public ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes(ConceptualModelNode startingNode)
-	{
-		return getDirectlyLinkedNodes(ConceptualModelLinkage.FROM, startingNode);
-	}
-
-	private ConceptualModelNodeSet getDirectlyLinkedNodes(int direction, ConceptualModelNode startingNode)
-	{
-
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		results.attemptToAdd(startingNode);
-		
-		LinkagePool linkagePool = getLinkagePool();
-		for(int i = 0; i < linkagePool.getIds().length; ++i)
-		{
-			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
-			{
-				ModelNodeId downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
-				ConceptualModelNode downstreamNode = getNodePool().find(downstreamNodeId);
-				results.attemptToAdd(downstreamNode);
-			}
-		}
-		return results;
-	}
-
-	private ConceptualModelNodeSet getAllLinkedNodes(int direction, ConceptualModelNode startingNode)
-	{
-		ConceptualModelNodeSet linkedNodes = new ConceptualModelNodeSet();
-		ConceptualModelNodeSet unprocessedNodes = new ConceptualModelNodeSet();
-		linkedNodes.attemptToAdd(startingNode);
-
-		LinkagePool linkagePool = getLinkagePool();
-		for(int i = 0; i < linkagePool.getIds().length; ++i)
-		{
-			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
-			{
-				ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-				unprocessedNodes.attemptToAdd(linkedNode);
-			}
-		}		
-		
-		while(unprocessedNodes.size() > 0)
-		{
-			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedNodes.toArray()[0];
-			linkedNodes.attemptToAdd(thisNode);
-			for(int i = 0; i < linkagePool.getIds().length; ++i)
-			{
-				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
-				if(thisLinkage.getNodeId(direction).equals(thisNode.getId()))
-				{
-					ConceptualModelNode linkedNode = getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-					unprocessedNodes.attemptToAdd(linkedNode);
-				}
-					
-			}
-			unprocessedNodes.remove(thisNode);
-		}
-		return linkedNodes;
-	}
-
+	
 	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception
 	{
 		moveNodesWithoutNotification(deltaX, deltaY, ids);

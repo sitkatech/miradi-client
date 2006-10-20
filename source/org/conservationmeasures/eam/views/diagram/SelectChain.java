@@ -5,9 +5,13 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.diagram.ChainObject;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -30,21 +34,40 @@ public class SelectChain extends ViewDoer
 		try
 		{
 			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
-			ConceptualModelNode[] chainNodes = getProject().getDiagramModel().getNodesInChain(selectedNode.getUnderlyingObject()).toNodeArray();
 			
-			for(int i = 0; i < chainNodes.length; ++i)
-			{
-				// convert CMNode to DiagramNode
-				DiagramNode nodeToSelect = getProject().getDiagramModel().getNodeById(chainNodes[i].getId());
-
-				DiagramView view = (DiagramView)getView();
-				view.getDiagramComponent().addSelectionCell(nodeToSelect);
-			}
+			DiagramModel model = getProject().getDiagramModel();
+			ChainObject chainObject = new ChainObject(model, selectedNode.getUnderlyingObject());
+			ConceptualModelNode[] chainNodes = chainObject.getNodesInChain().toNodeArray();
+			ConceptualModelLinkage[] linksInChain = chainObject.getLinksInChain();
+			
+			selectLinksInChain(model, linksInChain);
+			selectNodesInChain(model, chainNodes);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unknown error");
+		}
+	}
+
+	private void selectNodesInChain(DiagramModel model, ConceptualModelNode[] chainNodes) throws Exception
+	{
+		for(int i = 0; i < chainNodes.length; ++i)
+		{
+			// convert CMNode to DiagramNode
+			DiagramNode nodeToSelect = model.getNodeById(chainNodes[i].getId());
+			DiagramView view = (DiagramView)getView();
+			view.getDiagramComponent().addSelectionCell(nodeToSelect);
+		}
+	}
+
+	private void selectLinksInChain(DiagramModel model, ConceptualModelLinkage[] linksInChain) throws Exception
+	{
+		for (int i = 0 ; i < linksInChain.length; i++)
+		{
+			DiagramLinkage linkToSelect = model.getLinkageById(linksInChain[i].getId());
+			DiagramView view = (DiagramView)getView();
+			view.getDiagramComponent().addSelectionCell(linkToSelect);
 		}
 	}
 
