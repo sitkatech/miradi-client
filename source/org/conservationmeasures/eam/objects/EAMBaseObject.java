@@ -93,7 +93,7 @@ abstract public class EAMBaseObject implements EAMObject
 		return label.get();
 	}
 	
-	public void setLabel(String newLabel)
+	public void setLabel(String newLabel) throws Exception
 	{
 		label.set(newLabel);
 	}

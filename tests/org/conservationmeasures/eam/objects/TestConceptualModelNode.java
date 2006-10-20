@@ -19,7 +19,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		super(name);
 	}
 	
-	public void testComments()
+	public void testComments() throws Exception
 	{
 		BaseId id = new BaseId(35);
 		ConceptualModelFactor factor = new ConceptualModelFactor(id);

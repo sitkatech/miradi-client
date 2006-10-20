@@ -19,8 +19,8 @@ public class TestRatingChoice extends EAMTestCase
 
 	public void testBasics()
 	{
-		RatingChoice choice = new RatingChoice(4, "Very High", Color.RED);
-		assertEquals(4, choice.getNumericValue());
+		RatingChoice choice = new RatingChoice("4", "Very High", Color.RED);
+		assertEquals("4", choice.getCode());
 		assertEquals("Very High", choice.getLabel());
 		assertEquals(Color.RED, choice.getColor());
 	}

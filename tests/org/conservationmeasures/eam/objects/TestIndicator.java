@@ -21,6 +21,7 @@ public class TestIndicator extends ObjectTestCase
 		verifyTextField(type, Indicator.TAG_METHOD);
 		verifyIdListField(type, Indicator.TAG_RESOURCE_IDS);
 		verifyTextField(type, Indicator.TAG_LOCATION);
+		verifyRatingField(type, Indicator.TAG_PRIORITY);
 		//verifyTextField(type, Indicator.TAG_FUNDING_SOURCE);
 	}
 

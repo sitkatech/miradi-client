@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
-import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -64,16 +63,6 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		return activityIds.getIdList();
 	}
 	
-	public void setRatingValueId(BaseId criterionId, BaseId valueId)
-	{
-		ratings.setValueId(criterionId, valueId);
-	}
-	
-	public BaseId getRatingValueId(BaseId criterionId, BaseId defaultValueId)
-	{
-		return ratings.getValueId(criterionId, defaultValueId);
-	}
-
 	public String getData(String fieldTag)
 	{
 		if(TAG_STATUS.equals(fieldTag))
@@ -100,23 +89,19 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		super.clear();
 		activityIds = new IdListData();
-		ratings = new RatingData();
 		taxonomyCode = new StringData();
 		
 		addField(TAG_ACTIVITY_IDS, activityIds);
-		addField(TAG_RATING_VALUE_SET, ratings);
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
-	public static final String TAG_RATING_VALUE_SET = "RatingValueSet";
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 
 	String status;
 	IdListData activityIds;
-	RatingData ratings;
 	StringData taxonomyCode; 
 }

@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -33,11 +34,13 @@ public class Indicator extends EAMBaseObject
 		method = new StringData();
 		resourceIds = new IdListData();
 		location = new StringData();
+		priority = new RatingData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_METHOD, method);
 		addField(TAG_RESOURCE_IDS, resourceIds);
 		addField(TAG_LOCATION, location);
+		addField(TAG_PRIORITY, priority);
 	}
 	
 	public int getType()
@@ -66,10 +69,12 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_METHOD = "Method";
 	public static final String TAG_RESOURCE_IDS = "ResourceIds";
 	public static final String TAG_LOCATION = "Location";
+	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 
 	StringData shortLabel;
 	StringData method;
 	IdListData resourceIds;
 	StringData location;
+	RatingData priority;
 }

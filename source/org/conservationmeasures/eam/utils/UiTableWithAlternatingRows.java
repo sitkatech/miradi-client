@@ -41,7 +41,7 @@ public class UiTableWithAlternatingRows extends UiTable
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			workAroundJavaBug(table, isSelected);
+			//workAroundJavaBug(table, isSelected);
 			
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			if (!isSelected)

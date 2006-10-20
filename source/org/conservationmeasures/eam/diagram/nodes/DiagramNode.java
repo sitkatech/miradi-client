@@ -117,7 +117,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.getLabel();
 	}
 	
-	public void setLabel(String name)
+	public void setLabel(String name) throws Exception
 	{
 		underlyingObject.setLabel(name);
 	}

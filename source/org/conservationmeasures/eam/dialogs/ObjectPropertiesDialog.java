@@ -24,7 +24,9 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
@@ -66,12 +68,15 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 	DialogField createDialogField(String tag) throws Exception
 	{
 		String label = EAM.fieldLabel(object.getType(), tag);
-		String value = object.getData(tag);
+		String existingValue = object.getData(tag);
 
 		if(tag.equals(Task.TAG_RESOURCE_IDS))
 			return createResourcePicker(tag, label);
+		
+		if(tag.equals(Indicator.TAG_PRIORITY))
+			return createPriorityPicker(new PriorityRatingQuestion(tag), existingValue);
 
-		DialogField dialogField = new StringDialogField(tag, label, value);
+		DialogField dialogField = new StringDialogField(tag, label, existingValue);
 		return dialogField;
 	}
 
@@ -145,6 +150,13 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		BaseId id = getObject().getId();
 		IdList selectedResources = new IdList(getProject().getObjectData(type, id, Task.TAG_RESOURCE_IDS));
 		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
+	}
+	
+	protected DialogField createPriorityPicker(PriorityRatingQuestion question, String codeToSelect)
+	{
+		ChoiceDialogField field = new ChoiceDialogField(question);
+		field.selectCode(codeToSelect);
+		return field;
 	}
 
 	EAMObject object;

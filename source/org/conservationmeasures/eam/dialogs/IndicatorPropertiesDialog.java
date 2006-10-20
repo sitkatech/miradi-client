@@ -25,6 +25,7 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 		Indicator.TAG_METHOD,
 		Indicator.TAG_RESOURCE_IDS,
 		Indicator.TAG_LOCATION,
+		Indicator.TAG_PRIORITY,
 		};
 
 }

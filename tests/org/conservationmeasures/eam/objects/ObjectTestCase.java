@@ -27,10 +27,21 @@ public class ObjectTestCase extends EAMTestCase
 	
 	public void verifyTextFieldinModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
 	{
+		final String sampleData = "Blah blah";
+		
+		verifyField(objectType, tag, extraInfo, sampleData);
+	}
+	
+	public void verifyRatingField(int objectType, String tag) throws Exception
+	{
+		verifyField(objectType, tag, null, "3");
+	}
+
+	private void verifyField(int objectType, String tag, CreateModelNodeParameter extraInfo, String sampleData) throws Exception
+	{
 		Project project = new ProjectForTesting(getName());
 		try
-		{
-			final String sampleData = "Blah blah";
+		{	
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
 			EAMObject object = project.findObject(objectType, id);
 			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
@@ -66,4 +77,6 @@ public class ObjectTestCase extends EAMTestCase
 			project.close();
 		}
 	}
+	
+	
 }

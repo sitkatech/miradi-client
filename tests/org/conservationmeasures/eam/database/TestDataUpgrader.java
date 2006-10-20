@@ -95,7 +95,7 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	static class Version2ConceptualModelTarget extends ConceptualModelTarget
 	{
-		public Version2ConceptualModelTarget(String label)
+		public Version2ConceptualModelTarget(String label) throws Exception
 		{
 			super(idAssigner.takeNextId());
 			setLabel(label);
@@ -110,7 +110,7 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	static class Version2ConceptualModelThreat extends ConceptualModelFactor
 	{
-		public Version2ConceptualModelThreat(String label)
+		public Version2ConceptualModelThreat(String label) throws Exception
 		{
 			super(idAssigner.takeNextId());
 			setLabel(label);
@@ -124,7 +124,7 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	static class Version2ConceptualModelIntervention extends ConceptualModelIntervention
 	{
-		public Version2ConceptualModelIntervention(String label)
+		public Version2ConceptualModelIntervention(String label) throws Exception
 		{
 			super(idAssigner.takeNextId());
 			setLabel(label);

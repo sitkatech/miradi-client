@@ -86,7 +86,7 @@ public class ViewData extends EAMBaseObject
 		return currentTab;
 	}
 
-	private void setCurrentMode(String currentMode)
+	private void setCurrentMode(String currentMode) throws Exception
 	{
 		this.currentMode.set(currentMode);
 	}

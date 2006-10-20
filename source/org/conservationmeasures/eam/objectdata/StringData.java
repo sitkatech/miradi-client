@@ -17,7 +17,7 @@ public class StringData extends ObjectData
 		value = valueToUse;
 	}
 
-	public void set(String newValue)
+	public void set(String newValue) throws Exception
 	{
 		value = newValue;
 	}

@@ -83,7 +83,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return comment.get();
 	}
 	
-	public void setComment(String newComment)
+	public void setComment(String newComment) throws Exception
 	{
 		comment.set(newComment);
 	}

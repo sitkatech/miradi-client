@@ -9,16 +9,16 @@ import java.awt.Color;
 
 public class RatingChoice
 {
-	public RatingChoice(int numericValueToUse, String labelToUse, Color colorToUse)
+	public RatingChoice(String codeToUse, String labelToUse, Color colorToUse)
 	{
-		numericValue = numericValueToUse;
+		code = codeToUse;
 		label = labelToUse;
 		color = colorToUse;
 	}
 	
-	public int getNumericValue()
+	public String getCode()
 	{
-		return numericValue;
+		return code;
 	}
 	
 	public String getLabel()
@@ -31,7 +31,8 @@ public class RatingChoice
 		return color;
 	}
 	
-	int numericValue;
+	
+	String code;
 	String label;
 	Color color;
 }
