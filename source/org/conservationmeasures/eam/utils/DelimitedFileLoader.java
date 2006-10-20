@@ -21,14 +21,6 @@ public class DelimitedFileLoader
 
 	static String TAB = "\t";
 
-	public static Vector getDelimitedContents(String cvsResourceName)
-			throws Exception
-	{
-		InputStream is = EAM.class.getResourceAsStream(cvsResourceName);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		return getDelimitedContents(reader);
-	}
-
 	public static Vector getDelimitedContents(BufferedReader reader)
 			throws IOException
 	{

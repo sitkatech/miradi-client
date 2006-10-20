@@ -23,16 +23,23 @@ public class TestTaxonomyLoader extends EAMTestCase
 
 	public void testNoDataReturnsDefautSelection() throws Exception
 	{
-		BufferedReader reader = new BufferedReader( new StringReader("") );
-		TaxonomyItem[] taxonomyItem = TaxonomyLoader.load(reader);
+		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(""));
 		assertEquals(1, taxonomyItem.length);
 	}
 
 	public void testOne() throws Exception
 	{
-		BufferedReader reader = new BufferedReader( new StringReader(" # \"header\"  \t H10.10 \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" ") );
-		TaxonomyItem[] taxonomyItem = TaxonomyLoader.load(reader);
+		TaxonomyItem[] taxonomyItem = loadDelimitedData(new StringReader(" # \"header\"  \t H10.10 \"my level 1 descriptor\"  \t  \"my level 2 descriptor\" "));
 		assertEquals(1, taxonomyItem.length);
 	}
 	
+
+	private TaxonomyItem[] loadDelimitedData(StringReader stringReader) throws Exception
+	{
+		BufferedReader reader = new BufferedReader( stringReader );
+		TaxonomyItem[] taxonomyItem = TaxonomyLoader.load(reader);
+		return taxonomyItem;
+	}
+
+
 }

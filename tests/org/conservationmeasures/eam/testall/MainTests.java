@@ -77,6 +77,8 @@ import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
+import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
+import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.views.strategicplan.TestDeleteActivity;
 import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
@@ -126,6 +128,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestEnhancedJsonObject.class));
 		suite.addTest(new TestSuite(TestLogging.class));
 		suite.addTest(new TestSuite(TestTranslations.class));
+		suite.addTest(new TestSuite(TestDelimitedFileLoader.class));
+		suite.addTest(new TestSuite(TestTaxonomyLoader.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
