@@ -8,12 +8,8 @@ package org.conservationmeasures.eam.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.util.Vector;
-
-import org.conservationmeasures.eam.main.EAM;
 
 public class DelimitedFileLoader
 {
