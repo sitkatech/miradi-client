@@ -67,6 +67,8 @@ public class SummaryView extends UmbrellaView
 		// in the constructor, it always ignores the setDividerLocation and ends up
 		// at zero.
 		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		bigSplitter.setOneTouchExpandable(true);
+		bigSplitter.setDividerSize(15);
 		bigSplitter.setResizeWeight(.5);
 		bigSplitter.setTopComponent(new SummaryWizardPanel());
 		bigSplitter.setBottomComponent(uiScrollPane);
