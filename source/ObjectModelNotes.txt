@@ -1,3 +1,4 @@
+2006-10-20: Update StratPlan and MonPlan slightly
 2006-04-04: Original discussion with Nick, Dave, and Kevin
 2006-05-03: StratPlan discussion with Nick and Kevin
 
@@ -34,10 +35,23 @@ A Vision/Goal/Objective can be referred to as a "Result"
 =====================================================
 STRATEGIC PLAN
 
-  Strategy+Objective
-    Activity
+  Objective
+    Strategy
+      Activity
+        Task
 
-Some Activities may serve more than one Strategy+Objective. We will 
+Some Strategies may serve more than one Objective. We will 
+  visually indicate this "sharing".
+
+=====================================================
+MONITORING PLAN
+
+  Indicator
+    Strategy
+      Activity
+        Tasks
+
+Some Strategies may serve more than one Indicator. We will 
   visually indicate this "sharing".
 
 =====================================================
@@ -49,12 +63,7 @@ WORK PLAN
         Task
           Subtask
     
-  MONITORING PLAN
-    Indicator
-      Method
-        Task
-          Subtask
-    
+   
 
 Conceptually, Strategies are linked to Objectives
   For now, each Strategy may have only one Objective, and 
