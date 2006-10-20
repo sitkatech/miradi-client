@@ -17,6 +17,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
@@ -53,6 +54,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
+import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
@@ -497,6 +499,31 @@ public class NodePropertiesDialog extends JDialog implements
 
 	}
 
+	class ThreatClassificationChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			if(ignoreThreatClassificationChanges)
+				return;
+
+			try
+			{
+				int type = ObjectType.MODEL_NODE;
+				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
+				String taxonomyCode = getTaxonomyItem().getTaxonomyCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(type,
+						getNodeId(), tag, taxonomyCode);
+				getProject().executeCommand(cmd);
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+
+	}
+
 	public JComponent createComment(String comment)
 	{
 		commentField = new UiTextArea(4, 25);
@@ -544,13 +571,41 @@ public class NodePropertiesDialog extends JDialog implements
 		{
 			TaxonomyItem[] taxonomyItems = TaxonomyLoader
 					.load("ThreatTaxonomies.txt");
-			return new UiComboBox(taxonomyItems);
+			dropdownThreatClassification = new UiComboBox(taxonomyItems);
+			String taxonomyCode = getCurrentNode().getUnderlyingObject()
+					.getData(ConceptualModelFactor.TAG_TAXONOMY_CODE);
+			if(taxonomyCode.length() > 0)
+			{
+				TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
+						taxonomyItems, taxonomyCode);
+				
+				if(foundTaxonomyItem == null)
+					dropdownThreatClassification
+							.setSelectedItem("Error item not found in datbase");
+				else
+					dropdownThreatClassification
+							.setSelectedItem(foundTaxonomyItem);
+			}
+
+			
+			dropdownThreatClassification
+					.addActionListener(new ThreatClassificationChangeHandler());
+			return dropdownThreatClassification;
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			return new UiComboBox(choices);
 		}
+	}
+
+	TaxonomyItem SearchTaxonomyClassificationsForCode(
+			TaxonomyItem[] taxonomyItems, String taxonomyCode)
+	{
+		for(int i = 0; i < taxonomyItems.length; i++) {
+			if(taxonomyItems[i].getTaxonomyCode().equals(taxonomyCode)) return taxonomyItems[i];
+		}
+		return null;
 	}
 
 	JComponent createInterventionClassificationDropdown()
@@ -569,7 +624,6 @@ public class NodePropertiesDialog extends JDialog implements
 			return new UiComboBox(choices);
 		}
 	}
-
 
 	class FactorTypeRenderer extends DefaultListCellRenderer
 	{
@@ -621,6 +675,11 @@ public class NodePropertiesDialog extends JDialog implements
 		return (Indicator) dropdownIndicator.getSelectedItem();
 	}
 
+	public TaxonomyItem getTaxonomyItem()
+	{
+		return (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
+	}
+
 	public NodeType getType()
 	{
 		return (NodeType) dropdownFactorType.getSelectedItem();
@@ -652,6 +711,7 @@ public class NodePropertiesDialog extends JDialog implements
 
 		refreshIndicatorListIfNecessary(event);
 		selectNewlyCreatedIndicatorIfNecessary(event);
+
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
@@ -734,12 +794,11 @@ public class NodePropertiesDialog extends JDialog implements
 				dropdownIndicator.setSelectedItem(selected);
 			}
 		}
-
 	}
 
 	void selectNewlyCreatedIndicatorIfNecessary(CommandExecutedEvent event)
 	{
-		if(dropdownObjective == null)
+		if(dropdownIndicator == null)
 			return;
 
 		Command rawCommand = event.getCommand();
@@ -817,7 +876,11 @@ public class NodePropertiesDialog extends JDialog implements
 
 	UiCheckBox statusCheckBox;
 
+	UiComboBox dropdownThreatClassification;
+
 	boolean ignoreObjectiveChanges;
 
 	boolean ignoreIndicatorChanges;
+
+	boolean ignoreThreatClassificationChanges;
 }
