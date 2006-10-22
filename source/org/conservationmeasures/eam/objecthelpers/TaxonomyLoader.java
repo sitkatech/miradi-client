@@ -15,15 +15,6 @@ import org.conservationmeasures.eam.utils.DelimitedFileLoader;
 
 public class TaxonomyLoader
 {
-
-	public static TaxonomyItem[] load(BufferedReader reader) throws Exception
-	{
-		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
-
-		Vector taxonomyItems = processVector(fileVector);
-		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
-	}
-
 	public static TaxonomyItem[] load(String resourceFileName) throws Exception
 	{
 
@@ -36,6 +27,14 @@ public class TaxonomyLoader
 		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
 	}
 
+	public static TaxonomyItem[] load(BufferedReader reader) throws Exception
+	{
+		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+
+		Vector taxonomyItems = processVector(fileVector);
+		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
+	}
+	
 	private static Vector processVector(Vector fileVector)
 	{
 		Vector taxonomyItems = new Vector();
@@ -57,13 +56,14 @@ public class TaxonomyLoader
 			if(!getLevel1Code(code).equals(prevLevel1Code))
 			{
 				level2Index = 0;
-				taxonomyItems.add(new TaxonomyItem(code, ++level1Index + "   "
-						+ level1Descriptor));
+				String taxonomyLevel2text = ++level1Index + "   "+ level1Descriptor;
+				taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2text));
 			}
 			
 			++level2Index;
-			taxonomyItems.add(new TaxonomyItem(code, "    " + level1Index + "."
-					+ level2Index + "    " + level2Descriptor));
+			String taxonomyLevel1Text = "    " + level1Index + "."
+					+ level2Index + "    " + level2Descriptor;
+			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel1Text));
 
 			prevLevel1Code = getLevel1Code(code);
 		}
@@ -72,7 +72,7 @@ public class TaxonomyLoader
 
 	private static String getLevel1Code(String code)
 	{
-		return code.substring(0, 3);
+		return code.substring(0, code.indexOf("."));
 	}
 
 }

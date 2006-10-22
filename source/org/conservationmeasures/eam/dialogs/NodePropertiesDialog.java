@@ -512,7 +512,7 @@ public class NodePropertiesDialog extends JDialog implements
 			{
 				int type = ObjectType.MODEL_NODE;
 				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
-				String taxonomyCode = getTaxonomyItem().getTaxonomyCode();
+				String taxonomyCode = getThreatTaxonomyItem().getTaxonomyCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
 						getNodeId(), tag, taxonomyCode);
 				getProject().executeCommand(cmd);
@@ -583,29 +583,22 @@ public class NodePropertiesDialog extends JDialog implements
 
 			if(foundTaxonomyItem == null)
 			{
-				JOptionPane
-						.showMessageDialog(
-								new JDialog(mainWindow, true),
-								EAM
-										.text("Threat not found in table ; please make another selection"));
+				String errorMessage = "Threat not found in table ; please make another selection";
+				EAM.errorDialog(EAM.text(errorMessage));
 				foundTaxonomyItem = taxonomyItems[0];
 			}
-
 
 			dropdownThreatClassification.setSelectedItem(foundTaxonomyItem);
 
 			dropdownThreatClassification
 					.addActionListener(new ThreatClassificationChangeHandler());
 
-			dropdownThreatClassification
-					.setSelectedItem("Error item not found in datbase");
-
 			return dropdownThreatClassification;
 
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			return new UiComboBox(choices);
 		}
 	}
@@ -688,7 +681,7 @@ public class NodePropertiesDialog extends JDialog implements
 		return (Indicator) dropdownIndicator.getSelectedItem();
 	}
 
-	public TaxonomyItem getTaxonomyItem()
+	public TaxonomyItem getThreatTaxonomyItem()
 	{
 		return (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
 	}
