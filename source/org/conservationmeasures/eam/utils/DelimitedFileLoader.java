@@ -20,7 +20,7 @@ public class DelimitedFileLoader
 	public static Vector getDelimitedContents(BufferedReader reader)
 			throws IOException
 	{
-		Vector lineVec = new Vector();
+		Vector lineVector = new Vector();
 		while(reader.ready())
 		{
 			String line = reader.readLine();
@@ -33,10 +33,10 @@ public class DelimitedFileLoader
 				String token = st.nextToken().trim();
 				addElementToLine(thisLine, token);
 			}
-			lineVec.add(thisLine);
+			lineVector.add(thisLine);
 		}
 		reader.close();
-		return lineVec;
+		return lineVector;
 	}
 
 
