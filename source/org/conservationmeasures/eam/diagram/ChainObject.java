@@ -71,9 +71,20 @@ public class ChainObject
 		cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
 	}
 	
+	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
+		cmNodeSet.attemptToAddAll(getDirectlyLinkedUpstreamNodes());
+	}
+	
 	private ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes()
 	{
 		return getDirectlyLinkedNodes(ConceptualModelLinkage.FROM);
+	}
+	
+	private ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes()
+	{
+		return getDirectlyLinkedNodes(ConceptualModelLinkage.TO);
 	}
 	
 	private ConceptualModelNodeSet getAllUpstreamNodes()

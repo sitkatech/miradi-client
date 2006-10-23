@@ -193,7 +193,7 @@ public class DiagramModel extends DefaultGraphModel
 	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(ConceptualModelNode startingNode)
 	{
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildUpstreamDownstreamChain(this, startingNode);
+		chainObject.buildDirectlyLinkedUpstreamChain(this, startingNode);
 		return chainObject.getNodes();
 	}
 	
