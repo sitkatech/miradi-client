@@ -16,59 +16,72 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class ChainObject
 {
-	public ChainObject(DiagramModel diagramModel, ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getNodes()
 	{
-		this.diagramModel = diagramModel;
-		this.startingNode = startingNode;
-		processedLinks = new Vector();
+		return cmNodeSet;
 	}
 	
-	public ConceptualModelLinkage[] getLinksInChain()
+	public ConceptualModelLinkage[] getLinkages()
 	{
-		ConceptualModelLinkage[] cmLinks = new ConceptualModelLinkage[processedLinks.size()];
-		processedLinks.toArray(cmLinks);
+		ConceptualModelLinkage[] cmLinks = (ConceptualModelLinkage[])processedLinks.toArray(new ConceptualModelLinkage[0]);
 		return cmLinks;
-	}
-	
-	public ConceptualModelNodeSet getDirectThreatChainNodes()
-	{
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		if(!startingNode.isDirectThreat())
-			return results;
-		results.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
-		results.attemptToAddAll(getAllUpstreamNodes());
+	} 
 		
-		return results;
-	}
-	
-	public ConceptualModelNodeSet getNodesInChain()
+	public void buildDirectThreatChain(DiagramModel model, ConceptualModelNode node)
 	{
+		initializeChain(model, node);
+		if(startingNode.isDirectThreat())
+		{
+			cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
+			cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+		}
+	}
+
+	public void buildNormalChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
 		if (startingNode.isDirectThreat())
-			return getDirectThreatChainNodes();
-		
-		return getAllUpstreamDownstreamNodes();
+			buildDirectThreatChain(model, node);
+		else
+			buildUpstreamDownstreamChain(model, node);
 	}
 	
-	public ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes()
+	public void buildUpstreamDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
+		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
+		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+	}
+	
+	public void buildUpstreamChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
+		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+	}
+	
+	public void buildDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
+		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
+	}
+	
+	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	{
+		initializeChain(model, node);
+		cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
+	}
+	
+	private ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes()
 	{
 		return getDirectlyLinkedNodes(ConceptualModelLinkage.FROM);
 	}
 	
-	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes()
-	{
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
-		results.attemptToAddAll(getAllDownstreamNodes());
-		results.attemptToAddAll(getAllUpstreamNodes());
-		
-		return results;
-	}
-	
-	public ConceptualModelNodeSet getAllUpstreamNodes()
+	private ConceptualModelNodeSet getAllUpstreamNodes()
 	{
 		return getAllLinkedNodes(ConceptualModelLinkage.TO);
 	}
 
-	public ConceptualModelNodeSet getAllDownstreamNodes()
+	private ConceptualModelNodeSet getAllDownstreamNodes()
 	{
 		return getAllLinkedNodes(ConceptualModelLinkage.FROM);
 	}
@@ -132,13 +145,21 @@ public class ChainObject
 		return results;
 	}
 	
+	private void initializeChain(DiagramModel model, ConceptualModelNode node)
+	{
+		this.diagramModel = model;
+		this.startingNode = node;
+		cmNodeSet = new ConceptualModelNodeSet();
+		processedLinks = new Vector();
+	}
+	
 	private void attempToAdd(ConceptualModelLinkage thisLinkage)
 	{
 		if (!processedLinks.contains(thisLinkage))
 			processedLinks.add(thisLinkage);
 	}
 
-
+	private ConceptualModelNodeSet cmNodeSet;
 	private ConceptualModelNode startingNode;
 	private DiagramModel diagramModel;
 	private Vector processedLinks;

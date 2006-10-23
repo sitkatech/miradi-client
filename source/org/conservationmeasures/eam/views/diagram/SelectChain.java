@@ -36,9 +36,10 @@ public class SelectChain extends ViewDoer
 			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
 			
 			DiagramModel model = getProject().getDiagramModel();
-			ChainObject chainObject = new ChainObject(model, selectedNode.getUnderlyingObject());
-			ConceptualModelNode[] chainNodes = chainObject.getNodesInChain().toNodeArray();
-			ConceptualModelLinkage[] linksInChain = chainObject.getLinksInChain();
+			ChainObject chainObject = new ChainObject();
+			chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
+			ConceptualModelNode[] chainNodes = chainObject.getNodes().toNodeArray();
+			ConceptualModelLinkage[] linksInChain = chainObject.getLinkages();
 			
 			selectLinksInChain(model, linksInChain);
 			selectNodesInChain(model, chainNodes);

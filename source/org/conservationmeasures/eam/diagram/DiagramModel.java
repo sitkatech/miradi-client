@@ -164,32 +164,37 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
 	{
-		ChainObject chainObject = new ChainObject(this, directThreat);
-		return chainObject.getDirectThreatChainNodes();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildDirectThreatChain(this, directThreat);
+		return chainObject.getNodes();
 	}
 	
 	public ConceptualModelNodeSet getNodesInChain(ConceptualModelNode node)
 	{
-		ChainObject chainObject = new ChainObject(this, node);
-		return chainObject.getNodesInChain();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildNormalChain(this, node);
+		return chainObject.getNodes();
 	}
 		
 	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(ConceptualModelNode node)
 	{
-		ChainObject chainObject = new ChainObject(this, node);
-		return chainObject.getAllUpstreamDownstreamNodes();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildUpstreamDownstreamChain(this, node);
+		return chainObject.getNodes();
 	}
 
 	public ConceptualModelNodeSet getAllUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		ChainObject chainObject = new ChainObject(this, startingNode);
-		return chainObject.getAllUpstreamNodes();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildUpstreamChain(this, startingNode);
+		return chainObject.getNodes();
 	}
 
 	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(ConceptualModelNode startingNode)
 	{
-		ChainObject chainObject = new ChainObject(this, startingNode);
-		return chainObject.getAllUpstreamDownstreamNodes();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildUpstreamDownstreamChain(this, startingNode);
+		return chainObject.getNodes();
 	}
 	
 	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception
