@@ -11,6 +11,7 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import org.martus.swing.UiTable;
@@ -28,6 +29,11 @@ public class UiTableWithAlternatingRows extends UiTable
 		super(model);
 		initialize();
 	}
+	
+	public UiTableWithAlternatingRows(Object[][] data, String[] columnNames)
+	{
+		this(new DefaultTableModel(data, columnNames));
+	}
 
 	private void initialize()
 	{
@@ -41,8 +47,6 @@ public class UiTableWithAlternatingRows extends UiTable
 
 		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 		{
-			//workAroundJavaBug(table, isSelected);
-			
 			Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 			if (!isSelected)
 			{
@@ -58,12 +62,6 @@ public class UiTableWithAlternatingRows extends UiTable
 				table.setRowHeight (row, height);
 			
 			return component;
-		}
-
-		private void workAroundJavaBug(JTable table, boolean isSelected)
-		{
-			if (isSelected) 
-				   table.setForeground(null);
 		}
 		
 	}
