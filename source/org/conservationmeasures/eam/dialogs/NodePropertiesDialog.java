@@ -66,6 +66,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
+import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
@@ -219,6 +220,12 @@ public class NodePropertiesDialog extends JDialog implements
 			detailsTab.add(feasibilityComponent);
 			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
+			
+			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
+			ratingComponent = new UiTextField("");
+			ratingComponent.setEditable(false);
+			detailsTab.add(ratingComponent);
+			updateRating();
 		}
 
 		detailsTab.add(new UiLabel(EAM.text("Label|Comments")));
@@ -256,6 +263,7 @@ public class NodePropertiesDialog extends JDialog implements
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, impact);
 				getProject().executeCommand(cmd);
+				updateRating();
 			}
 			catch(CommandFailedException e)
 			{
@@ -277,6 +285,7 @@ public class NodePropertiesDialog extends JDialog implements
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, feasibility);
 				getProject().executeCommand(cmd);
+				updateRating();
 			}
 			catch(CommandFailedException e)
 			{
@@ -287,6 +296,13 @@ public class NodePropertiesDialog extends JDialog implements
 
 	}
 
+	void updateRating()
+	{
+		StrategyRatingSummary summary = new StrategyRatingSummary("");
+		RatingChoice result = summary.getResult(getSelectedImpactChoice(), getSelectedFeasibilityChoice());
+		ratingComponent.setText(result.getLabel());
+	}
+	
 	private Component createIndicatorsGrid(DiagramNode node)
 	{
 		indicatorsTab = new DialogGridPanel();
@@ -831,18 +847,30 @@ public class NodePropertiesDialog extends JDialog implements
 	
 	public String getSelectedImpactCode()
 	{
-		RatingChoice selected = (RatingChoice)impactComponent.getSelectedItem();
+		RatingChoice selected = getSelectedImpactChoice();
 		if(selected == null)
 			return "";
 		return selected.getCode();
 	}
+
+	private RatingChoice getSelectedImpactChoice()
+	{
+		RatingChoice selected = (RatingChoice)impactComponent.getSelectedItem();
+		return selected;
+	}
 	
 	public String getSelectedFeasibilityCode()
 	{
-		RatingChoice selected = (RatingChoice)feasibilityComponent.getSelectedItem();
+		RatingChoice selected = getSelectedFeasibilityChoice();
 		if(selected == null)
 			return "";
 		return selected.getCode();
+	}
+
+	private RatingChoice getSelectedFeasibilityChoice()
+	{
+		RatingChoice selected = (RatingChoice)feasibilityComponent.getSelectedItem();
+		return selected;
 	}
 
 	public ObjectiveIds getObjectives()
@@ -1043,6 +1071,8 @@ public class NodePropertiesDialog extends JDialog implements
 	UiComboBox impactComponent;
 	
 	UiComboBox feasibilityComponent;
+	
+	UiTextField ratingComponent;
 
 	boolean ignoreObjectiveChanges;
 

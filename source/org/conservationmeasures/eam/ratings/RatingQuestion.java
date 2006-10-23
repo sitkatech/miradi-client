@@ -29,6 +29,15 @@ public class RatingQuestion
 		return choices;
 	}
 	
+	public RatingChoice findChoiceByCode(String code)
+	{
+		for(int i = 0; i < choices.length; ++i)
+			if(choices[i].getCode().equals(code))
+				return choices[i];
+		
+		return null;
+	}
+	
 	String tag;
 	String label;
 	RatingChoice[] choices;

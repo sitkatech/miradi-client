@@ -74,6 +74,7 @@ import org.conservationmeasures.eam.project.TestTNCThreatFormula;
 import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
+import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
@@ -186,6 +187,7 @@ public class MainTests extends TestCase
 		// ratings package
 		suite.addTest(new TestSuite(TestRatingChoice.class));
 		suite.addTest(new TestSuite(TestRatingQuestion.class));
+		suite.addTest(new TestSuite(TestStrategyRatingSummary.class));
 		
 		// view.diagram package
 		suite.addTest(new TestSuite(org.conservationmeasures.eam.views.diagram.TestInsertConnection.class));
