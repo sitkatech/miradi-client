@@ -39,7 +39,7 @@ public class TaxonomyLoader
 	{
 		Vector taxonomyItems = new Vector();
 		taxonomyItems.add(new TaxonomyItem("", EAM
-				.text("--Select a classification--"),true));
+				.text("--Select a classification--")));
 
 		String prevLevel1Code = "";
 		int level1Index = 0;
@@ -57,13 +57,13 @@ public class TaxonomyLoader
 			{
 				level2Index = 0;
 				String taxonomyLevelText = ++level1Index + "   "+ level1Descriptor;
-				taxonomyItems.add(new TaxonomyItem(getLevel1Code(code), taxonomyLevelText,false));
+				taxonomyItems.add(new TaxonomyItem(getLevel1Code(code), taxonomyLevelText));
 			}
 			
 			++level2Index;
 			String taxonomyLevel2Text = "    " + level1Index + "."
 					+ level2Index + "    " + level2Descriptor;
-			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2Text,true));
+			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2Text));
 
 			prevLevel1Code = getLevel1Code(code);
 		}

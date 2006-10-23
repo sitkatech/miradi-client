@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.image.BufferedImage;
 
@@ -70,7 +69,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	
 	public BufferedImage getImage()
 	{
-		return BufferedImageFactory.getImage(gridWithHeadings,Color.WHITE,3);
+		return BufferedImageFactory.getImage(gridWithHeadings,0);
 	}
 	
 	public void becomeActive() throws Exception

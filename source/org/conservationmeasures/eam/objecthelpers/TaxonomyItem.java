@@ -9,11 +9,12 @@ public class TaxonomyItem
 {
 	boolean nodeTypeIindicator;
 	
-	public TaxonomyItem(String code, String description, boolean nodeTypeIindicator)
+	public TaxonomyItem(String code, String description)
 	{
 		this.nodeTypeIindicator = nodeTypeIindicator;
 		taxonomyCode = code;
 		taxonomy_Description = description;
+		nodeTypeIindicator = code.indexOf(".")!=-1;
 	}
 
 	public String getTaxonomyCode()

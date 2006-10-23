@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -41,6 +40,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
 import org.jgraph.graph.GraphLayoutCache;
@@ -87,8 +87,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		try
 		{
 			setGridVisible(false);
-			int insets = 5;
-			return this.getImage(Color.WHITE, insets);
+			return BufferedImageFactory.getImage(this,5);
 		}
 		finally
 		{
