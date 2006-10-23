@@ -40,6 +40,9 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 		Indicator.TAG_LOCATION,
 		Indicator.TAG_PRIORITY,
 		Indicator.TAG_STATUS,
+		Indicator.TAG_COST,
+		Indicator.TAG_FUNDING_SOURCE,
+		Indicator.TAG_WHEN,
 		};
 
 }
