@@ -34,6 +34,7 @@ import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 

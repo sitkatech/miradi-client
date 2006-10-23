@@ -409,7 +409,7 @@ public class ThreatGridPanel extends JPanel
 		String[] sortedNames = model.getThreatNames();
 
 		Vector unsortedNames = new Vector(Arrays.asList(sortedNames));
-		Arrays.sort(sortedNames);
+		Arrays.sort(sortedNames, new CapInsensitiveComparitor());
 		for(int i = 0; i < sortedNames.length; ++i)
 		{
 			sortedIndexes[unsortedNames.indexOf(sortedNames[i])] =  i;
@@ -417,6 +417,14 @@ public class ThreatGridPanel extends JPanel
 		populateDynamicCells();
 	}
 
+	private static class CapInsensitiveComparitor implements Comparator {
+			public int compare(Object name1, Object name2)
+		{
+			return ( ((String) name1).compareToIgnoreCase( (String) name2) );
+		}
+}
+	
+	
 	private void sortByTargetValue(int targetIndex) throws Exception
 	{
 		class BundleSorter implements Comparator
