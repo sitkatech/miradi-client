@@ -39,6 +39,9 @@ public class ObjectManagerTableModel extends UiTableModel
 	{
 		EAMObject object = getObjectFromRow(rowIndex);
 		String data = object.getData(columnTags[columnIndex]);
+		//BUG, under windows look and feel, the html tag causes unwanted 
+		//behavior.  white on white.  This happens when all the cells in a row contian
+		// the same data.
 		return "<html>" + XmlUtilities.getXmlEncoded(data) + "</html>";
 	}
 
