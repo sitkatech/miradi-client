@@ -7,13 +7,11 @@ package org.conservationmeasures.eam.objecthelpers;
 
 public class TaxonomyItem
 {
-	boolean isLeafFlag;
 	
 	public TaxonomyItem(String code, String description)
 	{
-		this.isLeafFlag = isLeafFlag;
 		taxonomyCode = code;
-		taxonomy_Description = description;
+		taxonomyDescription = description;
 		isLeafFlag = code.indexOf(".")!=-1;
 	}
 
@@ -24,7 +22,7 @@ public class TaxonomyItem
 
 	public String getTaxonomyDescription()
 	{
-		return taxonomy_Description;
+		return taxonomyDescription;
 	}
 
 	public String toString()
@@ -38,7 +36,7 @@ public class TaxonomyItem
 	}
 	
 	String taxonomyCode;
-
-	String taxonomy_Description;
+	String taxonomyDescription;
+	boolean isLeafFlag;
 	
 }
