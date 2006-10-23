@@ -13,18 +13,18 @@ import javax.swing.JSplitPane;
 public class ViewSplitPane extends JSplitPane
 {
 	
-public ViewSplitPane(Container topPanel, Container BottomPanel, JSplitPane oldJSplitPane) {
-	
-	super(JSplitPane.VERTICAL_SPLIT);
-	
-	setOneTouchExpandable(true);
-	setDividerSize(15);
-	setResizeWeight(.5);
-	setTopComponent(topPanel);
-	setBottomComponent(BottomPanel);
-	
-	if (oldJSplitPane != null)
-		setDividerLocation(oldJSplitPane.getDividerLocation());
-}
+	public ViewSplitPane(Container topPanel, Container BottomPanel, JSplitPane oldJSplitPane) 
+	{
+		super(JSplitPane.VERTICAL_SPLIT);
+		
+		setOneTouchExpandable(true);
+		setDividerSize(15);
+		setResizeWeight(.5);
+		setTopComponent(topPanel);
+		setBottomComponent(BottomPanel);
+		
+		if (oldJSplitPane != null)
+			setDividerLocation(oldJSplitPane.getDividerLocation());
+	}
 
 }
