@@ -63,6 +63,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
@@ -204,7 +205,7 @@ public class NodePropertiesDialog extends JDialog implements
 			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
 			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
 			ChoiceDialogField impactField = new ChoiceDialogField(impactQuestion);
-			UiComboBox impactComponent = (UiComboBox)impactField.getComponent();
+			impactComponent = (UiComboBox)impactField.getComponent();
 			detailsTab.add(impactComponent);
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
@@ -238,19 +239,19 @@ public class NodePropertiesDialog extends JDialog implements
 	{
 		public void itemStateChanged(ItemEvent event)
 		{
-//			try
-//			{
-//				String tag = ConceptualModelIntervention.TAG_IMPACT;
-//				String impact = getImpactField().;
-//				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
-//						getNodeId(), tag, goals);
-//				getProject().executeCommand(cmd);
-//			}
-//			catch(CommandFailedException e)
-//			{
-//				EAM.logException(e);
-//				EAM.errorDialog("That action failed due to an unknown error");
-//			}
+			try
+			{
+				String tag = ConceptualModelIntervention.TAG_IMPACT;
+				String impact = getSelectedImpactCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
+						getNodeId(), tag, impact);
+				getProject().executeCommand(cmd);
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
 		}
 
 	}
@@ -774,6 +775,14 @@ public class NodePropertiesDialog extends JDialog implements
 	{
 		return (NodeType) dropdownFactorType.getSelectedItem();
 	}
+	
+	public String getSelectedImpactCode()
+	{
+		RatingChoice selected = (RatingChoice)impactComponent.getSelectedItem();
+		if(selected == null)
+			return "";
+		return selected.getCode();
+	}
 
 	public ObjectiveIds getObjectives()
 	{
@@ -969,6 +978,8 @@ public class NodePropertiesDialog extends JDialog implements
 	UiComboBox dropdownThreatClassification;
 	
 	UiComboBox dropdownInterventionClassification;
+	
+	UiComboBox impactComponent;
 
 	boolean ignoreObjectiveChanges;
 
