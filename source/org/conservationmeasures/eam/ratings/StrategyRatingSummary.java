@@ -18,10 +18,10 @@ public class StrategyRatingSummary extends RatingQuestion
 	{
 		return new RatingChoice[] {
 			new RatingChoice("", "Unknown", Color.WHITE),
-			new RatingChoice("1", "Very Effective", Color.GREEN),
-			new RatingChoice("2", "Effective", Color.YELLOW),
-			new RatingChoice("3", "Moderate", Color.ORANGE),
-			new RatingChoice("4", "Ineffective", Color.RED),
+			new RatingChoice("1", "Ineffective", Color.RED),
+			new RatingChoice("2", "Moderate", Color.ORANGE),
+			new RatingChoice("3", "Effective", Color.YELLOW),
+			new RatingChoice("4", "Very Effective", Color.GREEN),
 		};
 	}
 

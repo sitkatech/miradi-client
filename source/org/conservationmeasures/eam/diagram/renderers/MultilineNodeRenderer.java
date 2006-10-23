@@ -52,11 +52,13 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -81,6 +83,10 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		else if(node.isTarget())
 			priority = framework.getTargetThreatRatingValue(node.getWrappedId());
 		indicator = ((DiagramComponent)graphToUse).getProject().getIndicatorPool().find(node.getIndicatorId());
+		
+		if(node.isIntervention())
+			rating = ((ConceptualModelIntervention)node.getUnderlyingObject()).getStrategyRating();
+
 		return this;
 	}
 	
@@ -179,4 +185,5 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	ValueOption priority;
 	Indicator indicator;
 	DiagramNode node;
+	RatingChoice rating;
 }

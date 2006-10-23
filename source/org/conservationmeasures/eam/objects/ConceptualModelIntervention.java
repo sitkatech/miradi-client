@@ -12,6 +12,10 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
+import org.conservationmeasures.eam.ratings.RatingChoice;
+import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
+import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
+import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -77,6 +81,19 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 			status = dataValue;
 		else
 			super.setData(fieldTag, dataValue);
+	}
+	
+	public RatingChoice getStrategyRating()
+	{
+		StrategyRatingSummary summary = new StrategyRatingSummary("");
+		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
+		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");
+		
+		RatingChoice impactRating = impactQuestion.findChoiceByCode(impact.get());
+		RatingChoice feasibilityRating = feasibilityQuestion.findChoiceByCode(feasibility.get());
+		RatingChoice result = summary.getResult(impactRating, feasibilityRating);
+
+		return result;
 	}
 
 	public EnhancedJsonObject toJson()

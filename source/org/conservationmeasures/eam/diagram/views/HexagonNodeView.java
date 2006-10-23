@@ -42,6 +42,7 @@ import java.awt.geom.Point2D;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
+import org.conservationmeasures.eam.diagram.renderers.HexagonWithRatingRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
@@ -77,6 +78,6 @@ public class HexagonNodeView extends MultilineNodeView
 		return getAttributes().createPoint(result);
 	}
 
-	protected static HexagonRenderer hexagonRenderer = new HexagonRenderer();
+	protected static HexagonRenderer hexagonRenderer = new HexagonWithRatingRenderer();
 	
 }

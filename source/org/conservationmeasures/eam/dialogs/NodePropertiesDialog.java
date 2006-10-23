@@ -66,7 +66,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
-import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
@@ -298,9 +297,8 @@ public class NodePropertiesDialog extends JDialog implements
 
 	void updateRating()
 	{
-		StrategyRatingSummary summary = new StrategyRatingSummary("");
-		RatingChoice result = summary.getResult(getSelectedImpactChoice(), getSelectedFeasibilityChoice());
-		ratingComponent.setText(result.getLabel());
+		RatingChoice rating = ((ConceptualModelIntervention)getCurrentNode().getUnderlyingObject()).getStrategyRating();
+		ratingComponent.setText(rating.getLabel());
 	}
 	
 	private Component createIndicatorsGrid(DiagramNode node)
