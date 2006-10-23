@@ -92,10 +92,12 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		activityIds = new IdListData();
 		taxonomyCode = new StringData();
 		impact = new RatingData();
+		feasibility = new RatingData();
 		
 		addField(TAG_ACTIVITY_IDS, activityIds);
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT, impact);
+		addField(TAG_FEASIBILITY, feasibility);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -104,9 +106,11 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public static final String STATUS_REAL = "Real";
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT = "Impact";
+	public static final String TAG_FEASIBILITY = "Feasibility";
 
 	String status;
 	IdListData activityIds;
 	StringData taxonomyCode; 
 	RatingData impact;
+	RatingData feasibility;
 }

@@ -98,6 +98,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeIntervention());
 		verifyTextFieldInModelNode(type, ConceptualModelIntervention.TAG_TAXONOMY_CODE, extraInfo);
 		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_IMPACT, extraInfo);
+		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_FEASIBILITY, extraInfo);
 	}
 	
 	private static final int type = ObjectType.MODEL_NODE;

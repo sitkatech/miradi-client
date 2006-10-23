@@ -64,6 +64,7 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
+import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
@@ -209,6 +210,15 @@ public class NodePropertiesDialog extends JDialog implements
 			detailsTab.add(impactComponent);
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
+			
+			String feasibilityTag = ConceptualModelIntervention.TAG_FEASIBILITY;
+			StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion(feasibilityTag);
+			detailsTab.add(new UiLabel(feasibilityQuestion.getLabel()));
+			ChoiceDialogField feasibilityField = new ChoiceDialogField(feasibilityQuestion);
+			feasibilityComponent = (UiComboBox)feasibilityField.getComponent();
+			detailsTab.add(feasibilityComponent);
+			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
+			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 		}
 
 		detailsTab.add(new UiLabel(EAM.text("Label|Comments")));
@@ -245,6 +255,27 @@ public class NodePropertiesDialog extends JDialog implements
 				String impact = getSelectedImpactCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, impact);
+				getProject().executeCommand(cmd);
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+
+	}
+
+	class FeasibilityChangeHandler implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			try
+			{
+				String tag = ConceptualModelIntervention.TAG_FEASIBILITY;
+				String feasibility = getSelectedFeasibilityCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
+						getNodeId(), tag, feasibility);
 				getProject().executeCommand(cmd);
 			}
 			catch(CommandFailedException e)
@@ -783,6 +814,14 @@ public class NodePropertiesDialog extends JDialog implements
 			return "";
 		return selected.getCode();
 	}
+	
+	public String getSelectedFeasibilityCode()
+	{
+		RatingChoice selected = (RatingChoice)feasibilityComponent.getSelectedItem();
+		if(selected == null)
+			return "";
+		return selected.getCode();
+	}
 
 	public ObjectiveIds getObjectives()
 	{
@@ -980,6 +1019,8 @@ public class NodePropertiesDialog extends JDialog implements
 	UiComboBox dropdownInterventionClassification;
 	
 	UiComboBox impactComponent;
+	
+	UiComboBox feasibilityComponent;
 
 	boolean ignoreObjectiveChanges;
 
