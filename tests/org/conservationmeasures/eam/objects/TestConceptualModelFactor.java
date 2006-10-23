@@ -19,7 +19,7 @@ public class TestConceptualModelFactor extends ObjectTestCase
 	public void testData() throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeFactor());
-		verifyTextFieldinModelNode(type, ConceptualModelFactor.TAG_TAXONOMY_CODE, extraInfo);
+		verifyTextFieldInModelNode(type, ConceptualModelFactor.TAG_TAXONOMY_CODE, extraInfo);
 	}
 	
 	private static final int type = ObjectType.MODEL_NODE;

@@ -22,10 +22,10 @@ public class ObjectTestCase extends EAMTestCase
 	public void verifyTextField(int objectType, String tag) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = null;
-		verifyTextFieldinModelNode(objectType, tag, extraInfo);
+		verifyTextFieldInModelNode(objectType, tag, extraInfo);
 	}
 	
-	public void verifyTextFieldinModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
+	public void verifyTextFieldInModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
 	{
 		final String sampleData = "Blah blah";
 		
@@ -34,7 +34,12 @@ public class ObjectTestCase extends EAMTestCase
 	
 	public void verifyRatingField(int objectType, String tag) throws Exception
 	{
-		verifyField(objectType, tag, null, "3");
+		verifyRatingFieldInModelNode(objectType, tag, null);
+	}
+
+	public void verifyRatingFieldInModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
+	{
+		verifyField(objectType, tag, extraInfo, "3");
 	}
 
 	private void verifyField(int objectType, String tag, CreateModelNodeParameter extraInfo, String sampleData) throws Exception

@@ -63,6 +63,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
@@ -198,6 +199,15 @@ public class NodePropertiesDialog extends JDialog implements
 			detailsTab.add(new UiLabel(EAM
 					.text("Label|IUCN-CMP Classification")));
 			detailsTab.add(createInterventionClassificationDropdown());
+			
+			String impactTag = ConceptualModelIntervention.TAG_IMPACT;
+			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
+			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
+			ChoiceDialogField impactField = new ChoiceDialogField(impactQuestion);
+			UiComboBox impactComponent = (UiComboBox)impactField.getComponent();
+			detailsTab.add(impactComponent);
+			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
+			impactComponent.addItemListener(new ImpactChangeHandler());
 		}
 
 		detailsTab.add(new UiLabel(EAM.text("Label|Comments")));
@@ -220,6 +230,27 @@ public class NodePropertiesDialog extends JDialog implements
 				EAM.logException(e);
 				EAM.errorDialog("That action failed due to an unknown error");
 			}
+		}
+
+	}
+
+	class ImpactChangeHandler implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+//			try
+//			{
+//				String tag = ConceptualModelIntervention.TAG_IMPACT;
+//				String impact = getImpactField().;
+//				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
+//						getNodeId(), tag, goals);
+//				getProject().executeCommand(cmd);
+//			}
+//			catch(CommandFailedException e)
+//			{
+//				EAM.logException(e);
+//				EAM.errorDialog("That action failed due to an unknown error");
+//			}
 		}
 
 	}
