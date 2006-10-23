@@ -4,7 +4,7 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.views.diagram;
+package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -27,9 +27,7 @@ public class SaveImage extends ViewDoer
 	public boolean isAvailable() 
 	{
 		Project project = getMainWindow().getProject();
-		if(!project.isOpen())
-			return false;
-		return project.getDiagramModel().getNodeCount() > 0;
+		return project.isOpen();
 	}
 
 	public void doIt() throws CommandFailedException 

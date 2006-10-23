@@ -6,13 +6,16 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.SwingConstants;
 
+import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -27,7 +30,9 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
@@ -38,10 +43,20 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		
+		addThreatMatrixiewDoersToMap();
+		
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
+		
 		getProject().addCommandExecutedListener(this);
 	}
 
+	
+	private void addThreatMatrixiewDoersToMap()
+	{
+		addDoerToMap(ActionSaveImage.class, new SaveImage());
+	}
+	
 	public String cardName()
 	{
 		return getViewName();
@@ -50,6 +65,11 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	static public String getViewName()
 	{
 		return Project.THREAT_MATRIX_VIEW_NAME;
+	}
+	
+	public BufferedImage getImage()
+	{
+		return BufferedImageFactory.getImage(gridWithHeadings,Color.WHITE,3);
 	}
 	
 	public void becomeActive() throws Exception
@@ -71,7 +91,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		grid = new ThreatGridPanel(this, model);
 		
 		JComponent heading = createHeading();
-		JPanel gridWithHeadings = new JPanel(new BorderLayout());
+		gridWithHeadings = new JPanel(new BorderLayout());
 		gridWithHeadings.add(heading, BorderLayout.BEFORE_FIRST_LINE);
 		gridWithHeadings.add(grid, BorderLayout.CENTER);
 		
@@ -204,5 +224,6 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	ThreatRatingWizardPanel wizardPanel;
 	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
+	JPanel gridWithHeadings;
 }
 
