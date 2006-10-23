@@ -29,6 +29,11 @@ abstract public class ObjectsDoer extends ViewDoer
 		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
 		return selectedResource.getId();
 	}
+	
+	public void clearSelection()
+	{
+		picker.clearSelection();
+	}
 
 	private ObjectPicker picker;
 }

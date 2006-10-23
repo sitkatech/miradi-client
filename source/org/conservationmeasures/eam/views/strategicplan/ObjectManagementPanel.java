@@ -93,6 +93,11 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			objects[i] = model.getObjectFromRow(rows[i]);
 		return objects;
 	}
+	
+	public void clearSelection()
+	{
+		table.clearSelection();
+	}
 
 	public void addListSelectionListener(ListSelectionListener listener)
 	{

@@ -36,6 +36,7 @@ public class TeamRemoveMember extends ObjectsDoer
 		
 		ProjectMetadata metadata = getProject().getMetadata();
 		BaseId selectedId = getSelectedId();
+		clearSelection();
 		try
 		{
 			Command cmd = CommandSetObjectData.createRemoveIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, selectedId);

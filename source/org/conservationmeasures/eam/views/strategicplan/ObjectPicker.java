@@ -12,5 +12,6 @@ import org.conservationmeasures.eam.objects.EAMObject;
 public interface ObjectPicker
 {
 	public EAMObject[] getSelectedObjects();
+	public void clearSelection();
 	public void addListSelectionListener(ListSelectionListener listener);
 }
