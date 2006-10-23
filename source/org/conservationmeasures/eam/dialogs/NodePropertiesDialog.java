@@ -794,12 +794,34 @@ public class NodePropertiesDialog extends JDialog implements
 
 	public TaxonomyItem getThreatTaxonomyItem()
 	{
-		return (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
+		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
+		
+		if (!taxonomyItem.isLeaf()) {
+			taxonomyItem = (TaxonomyItem) (dropdownThreatClassification.getItemAt(
+					dropdownThreatClassification.getSelectedIndex()+1));
+			
+			dropdownThreatClassification.setSelectedIndex(
+					dropdownThreatClassification.getSelectedIndex()+1);
+		}
+
+		
+		return taxonomyItem;
 	}
+	
+
 
 	public TaxonomyItem getInterventionTaxonomyItem()
 	{
-		return (TaxonomyItem) dropdownInterventionClassification.getSelectedItem();
+		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownInterventionClassification.getSelectedItem();
+		
+		if (!taxonomyItem.isLeaf()) 
+			taxonomyItem = (TaxonomyItem) (dropdownInterventionClassification.getItemAt(
+					dropdownInterventionClassification.getSelectedIndex()+1));
+
+		dropdownInterventionClassification.setSelectedIndex(
+				dropdownInterventionClassification.getSelectedIndex()+1);
+		
+		return taxonomyItem;
 	}
 	
 	public NodeType getType()
