@@ -22,7 +22,6 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -526,6 +525,33 @@ public class NodePropertiesDialog extends JDialog implements
 
 	}
 
+	
+	class InterventionClassificationChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			if(ignoreThreatClassificationChanges)
+				return;
+
+			try
+			{
+				int type = ObjectType.MODEL_NODE;
+				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
+				String taxonomyCode = getInterventionTaxonomyItem().getTaxonomyCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(type,
+						getNodeId(), tag, taxonomyCode);
+				getProject().executeCommand(cmd);
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+
+	}
+	
+	
 	public JComponent createComment(String comment)
 	{
 		commentField = new UiTextArea(4, 25);
@@ -603,6 +629,45 @@ public class NodePropertiesDialog extends JDialog implements
 		}
 	}
 
+
+
+	JComponent createInterventionClassificationDropdown()
+	{
+		String[] choices = { "error processing classifications", };
+		try
+		{
+			TaxonomyItem[] taxonomyItems = TaxonomyLoader
+					.load("InterventionTaxonomies.txt");
+			dropdownInterventionClassification = new UiComboBox(taxonomyItems);
+			
+			String taxonomyCode = getCurrentNode().getUnderlyingObject()
+			.getData(ConceptualModelFactor.TAG_TAXONOMY_CODE);
+
+			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
+					taxonomyItems, taxonomyCode);
+
+			if(foundTaxonomyItem == null)
+			{
+				String errorMessage = "Intervention not found in table ; please make another selection";
+				EAM.errorDialog(EAM.text(errorMessage));
+				foundTaxonomyItem = taxonomyItems[0];
+			}
+
+			dropdownInterventionClassification.setSelectedItem(foundTaxonomyItem);
+
+			dropdownInterventionClassification
+				.addActionListener(new InterventionClassificationChangeHandler());
+
+			return dropdownInterventionClassification;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new UiComboBox(choices);
+		}
+
+	}
+	
 	TaxonomyItem SearchTaxonomyClassificationsForCode(
 			TaxonomyItem[] taxonomyItems, String taxonomyCode)
 	{
@@ -612,23 +677,6 @@ public class NodePropertiesDialog extends JDialog implements
 				return taxonomyItems[i];
 		}
 		return null;
-	}
-
-	JComponent createInterventionClassificationDropdown()
-	{
-
-		try
-		{
-			TaxonomyItem[] taxonomyItems = TaxonomyLoader
-					.load("InterventionTaxonomies.txt");
-			return new UiComboBox(taxonomyItems);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			String[] choices = { "error processing classifications", };
-			return new UiComboBox(choices);
-		}
 	}
 
 	class FactorTypeRenderer extends DefaultListCellRenderer
@@ -686,6 +734,11 @@ public class NodePropertiesDialog extends JDialog implements
 		return (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
 	}
 
+	public TaxonomyItem getInterventionTaxonomyItem()
+	{
+		return (TaxonomyItem) dropdownInterventionClassification.getSelectedItem();
+	}
+	
 	public NodeType getType()
 	{
 		return (NodeType) dropdownFactorType.getSelectedItem();
@@ -883,6 +936,8 @@ public class NodePropertiesDialog extends JDialog implements
 	UiCheckBox statusCheckBox;
 
 	UiComboBox dropdownThreatClassification;
+	
+	UiComboBox dropdownInterventionClassification;
 
 	boolean ignoreObjectiveChanges;
 

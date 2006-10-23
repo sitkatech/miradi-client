@@ -39,13 +39,6 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		super(mainWindowToUse);
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
-		
-		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		bigSplitter.setOneTouchExpandable(true);
-		bigSplitter.setDividerSize(15);
-		bigSplitter.setResizeWeight(.5);
-		add(bigSplitter, BorderLayout.CENTER);
-
 		getProject().addCommandExecutedListener(this);
 	}
 
@@ -61,27 +54,33 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	
 	public void becomeActive() throws Exception
 	{
-		model = new ThreatMatrixTableModel(getProject());
+		removeAll();
 
-		grid = new ThreatGridPanel(this, model);
-		wizardPanel = new ThreatRatingWizardPanel(this);
-		details = new ThreatRatingBundlePanel(this);
-		JComponent heading = createHeading();
+		model = new ThreatMatrixTableModel(getProject());
 		
+		bigSplitter =new ViewSplitPane(createWizardPanel(), createThreatMatrixPanel(), bigSplitter);
+		
+		add(bigSplitter);
+			
+		selectBundle(null);
+	}
+
+
+	private Container createThreatMatrixPanel() throws Exception
+	{
+		grid = new ThreatGridPanel(this, model);
+		
+		JComponent heading = createHeading();
 		JPanel gridWithHeadings = new JPanel(new BorderLayout());
 		gridWithHeadings.add(heading, BorderLayout.BEFORE_FIRST_LINE);
 		gridWithHeadings.add(grid, BorderLayout.CENTER);
 		
+		details = new ThreatRatingBundlePanel(this);
+		
 		Container bottomHalf = new JPanel(new BorderLayout());
 		bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
-		
-		int dividerAt = bigSplitter.getDividerLocation();
-		bigSplitter.setTopComponent(wizardPanel);
-		bigSplitter.setBottomComponent(bottomHalf);
-		bigSplitter.setDividerLocation(dividerAt);
-		
-		selectBundle(null);
+		return bottomHalf;
 	}
 
 	private JComponent createHeading()
@@ -90,6 +89,12 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		UiLabel targetLabel = new UiLabel(EAM.text(targetLabelText));
 		targetLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		return targetLabel;
+	}
+	
+	private ThreatRatingWizardPanel createWizardPanel() throws Exception
+	{
+		wizardPanel = new ThreatRatingWizardPanel(this);
+		return wizardPanel;
 	}
 	
 	public void becomeInactive() throws Exception

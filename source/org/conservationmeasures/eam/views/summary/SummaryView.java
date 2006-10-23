@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.threatmatrix.ViewSplitPane;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
@@ -50,33 +51,28 @@ public class SummaryView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
-		int dividerAt = -1;
-		if(bigSplitter != null)
-			dividerAt = bigSplitter.getDividerLocation();
-		
 		removeAll();
-		
+
+		bigSplitter = new ViewSplitPane(createSummaryWizardPanel(), createScrolableSummaryPanel(), bigSplitter);
+
+		add(bigSplitter, BorderLayout.CENTER);
+	}
+
+	private SummaryWizardPanel createSummaryWizardPanel() throws Exception {
+		wizardPanel = new SummaryWizardPanel();
+	return wizardPanel;
+	}
+	
+	
+	private SummaryPanel createScrolableSummaryPanel()
+	{
 		summaryPanel = new SummaryPanel(getMainWindow());
 		UiScrollPane uiScrollPane = new UiScrollPane(summaryPanel);
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
 		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
-
-		// NOTE: For reasons I don't understand, if we construct the splitter 
-		// in the constructor, it always ignores the setDividerLocation and ends up
-		// at zero.
-		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		bigSplitter.setOneTouchExpandable(true);
-		bigSplitter.setDividerSize(15);
-		bigSplitter.setResizeWeight(.5);
-		bigSplitter.setTopComponent(new SummaryWizardPanel());
-		bigSplitter.setBottomComponent(uiScrollPane);
-		
-		if(dividerAt > 0)
-			bigSplitter.setDividerLocation(dividerAt);
-		
-		add(bigSplitter, BorderLayout.CENTER);
+		return summaryPanel;
 	}
 
 	public void becomeInactive() throws Exception

@@ -56,14 +56,14 @@ public class TaxonomyLoader
 			if(!getLevel1Code(code).equals(prevLevel1Code))
 			{
 				level2Index = 0;
-				String taxonomyLevel2text = ++level1Index + "   "+ level1Descriptor;
-				taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2text));
+				String taxonomyLevelText = ++level1Index + "   "+ level1Descriptor;
+				taxonomyItems.add(new TaxonomyItem(getLevel1Code(code), taxonomyLevelText));
 			}
 			
 			++level2Index;
-			String taxonomyLevel1Text = "    " + level1Index + "."
+			String taxonomyLevel2Text = "    " + level1Index + "."
 					+ level2Index + "    " + level2Descriptor;
-			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel1Text));
+			taxonomyItems.add(new TaxonomyItem(code, taxonomyLevel2Text));
 
 			prevLevel1Code = getLevel1Code(code);
 		}

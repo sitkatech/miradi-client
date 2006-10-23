@@ -63,6 +63,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
+import org.conservationmeasures.eam.views.threatmatrix.ViewSplitPane;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -156,48 +157,39 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public void becomeActive() throws Exception
 	{
-		int dividerAt = -1;
-		if(bigSplitter != null)
-			dividerAt = bigSplitter.getDividerLocation();
-		
 		removeAll();
 		
+		bigSplitter =new ViewSplitPane(createWizard(), createDiagramPanel(), bigSplitter);
+
+		add(bigSplitter, BorderLayout.CENTER);
+
+		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+	}
+	
+
+	private UiScrollPane createDiagramPanel()
+	{
 		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
 		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
 		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
-
-		// NOTE: For reasons I don't understand, if we construct the splitter 
-		// in the constructor, it always ignores the setDividerLocation and ends up
-		// at zero.
-		bigSplitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		bigSplitter.setOneTouchExpandable(true);
-		bigSplitter.setDividerSize(15);
-		bigSplitter.setResizeWeight(.5);
-		bigSplitter.setTopComponent(createWizard());
-		bigSplitter.setBottomComponent(uiScrollPane);
-		
-		if(dividerAt > 0)
-			bigSplitter.setDividerLocation(dividerAt);
-		
-		add(bigSplitter, BorderLayout.CENTER);
-
-		
-		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
+		return uiScrollPane;
 	}
-	
-	public void becomeInactive() throws Exception
-	{
-		// TODO: This should completely tear down the view
-	}
-	
+
 
 	public JPanel createWizard() throws Exception
 	{
 		wizardPanel = new DiagramWizardPanel();
 		return wizardPanel;
 	}
+	
+
+	public void becomeInactive() throws Exception
+	{
+		// TODO: This should completely tear down the view
+	}
+	
 	
 	public void setMode(String newMode)
 	{
