@@ -111,7 +111,10 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 				BaseId objectiveId = objectives.getId(0);
 				Objective objective = model.getObjectiveById(objectiveId);
 				if(objective != null)
-					drawAnnotation(rect, g2, EAM.text("Label|Obj ") + objective.getShortLabel());
+				{
+					String text = EAM.text("Label|Obj ") + objective.getShortLabel();
+					drawAnnotation(rect, g2, new RectangleRenderer(), text);
+				}
 			}
 			GoalIds goals = node.getGoals();
 			if(goals.hasAnnotation())
@@ -119,7 +122,10 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 				BaseId goalId = goals.getId(0);
 				Goal goal = model.getGoalById(goalId);
 				if(goal != null)
-					drawAnnotation(rect, g2, EAM.text("Label|Goal ") + goal.getShortLabel());
+				{
+					String text = EAM.text("Label|Goal ") + goal.getShortLabel();
+					drawAnnotation(rect, g2, new EllipseRenderer(), text);
+				}
 			}
 		}
 		if(diagram.areIndicatorsVisible())
