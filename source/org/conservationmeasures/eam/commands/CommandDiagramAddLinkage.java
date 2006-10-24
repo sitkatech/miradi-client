@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandLinkNodes extends Command
+public class CommandDiagramAddLinkage extends Command
 {
-	public CommandLinkNodes(ModelNodeId fromId, ModelNodeId toId)
+	public CommandDiagramAddLinkage(ModelNodeId fromId, ModelNodeId toId)
 	{
 		this.fromId = fromId;
 		this.toId = toId;
@@ -86,7 +86,7 @@ public class CommandLinkNodes extends Command
 	}
 
 
-	public static final String COMMAND_NAME = "LinkNodes";
+	public static final String COMMAND_NAME = "DiagramAddLinkage";
 
 	ModelNodeId fromId;
 	ModelNodeId toId;

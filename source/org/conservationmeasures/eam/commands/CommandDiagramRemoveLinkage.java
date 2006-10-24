@@ -68,7 +68,7 @@ public class CommandDiagramRemoveLinkage extends Command
 	{
 		try
 		{
-			CommandLinkNodes.createLinkage(target, getId(), getWasFromId(), getWasToId());
+			CommandDiagramAddLinkage.createLinkage(target, getId(), getWasFromId(), getWasToId());
 		}
 		catch (Exception e)
 		{

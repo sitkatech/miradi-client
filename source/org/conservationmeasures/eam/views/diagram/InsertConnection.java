@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -63,7 +63,7 @@ public class InsertConnection extends ProjectDoer
 			throw new CommandFailedException(e);
 		}
 		
-		CommandLinkNodes command = new CommandLinkNodes(fromIndex, toIndex);
+		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(fromIndex, toIndex);
 		getProject().executeCommand(command);
 	}
 	

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -37,7 +37,7 @@ public class TestDelete extends EAMTestCase
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
 		ModelNodeId interventionId = intervention.getWrappedId();
 		ModelNodeId factorId = factor.getWrappedId();
-		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
+		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
 		link.execute(project);
 		BaseId linkageId = link.getLinkageId();
 		

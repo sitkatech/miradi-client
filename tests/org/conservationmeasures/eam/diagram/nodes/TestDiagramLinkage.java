@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
@@ -84,7 +84,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode factor = model.getNodeById(insertFactor.getId());
 		ModelNodeId interventionId = intervention.getWrappedId();
 		ModelNodeId factorId = factor.getWrappedId();
-		CommandLinkNodes link = new CommandLinkNodes(interventionId, factorId);
+		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
 		

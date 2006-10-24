@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
@@ -689,7 +689,7 @@ public class TestProject extends EAMTestCase
 			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
 			diskProject.executeCommand(cmdNode2);
 			ModelNodeId targetId = cmdNode2.getId();
-			CommandLinkNodes cmdLinkage = new CommandLinkNodes(factorId, targetId);
+			CommandDiagramAddLinkage cmdLinkage = new CommandDiagramAddLinkage(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
 			CommandInsertNode cmdNode3 = new CommandInsertNode(new NodeTypeIntervention());
 			diskProject.executeCommand(cmdNode3);
@@ -766,7 +766,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
-		BaseId insertedId = CommandLinkNodes.createLinkage(project, id, fromId, toId);
+		BaseId insertedId = CommandDiagramAddLinkage.createLinkage(project, id, fromId, toId);
 		return project.getDiagramModel().getLinkageById(insertedId);
 	}
 

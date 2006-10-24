@@ -6,16 +6,16 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandInsertNode;
-import org.conservationmeasures.eam.commands.CommandLinkNodes;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestLinkNodes extends EAMTestCase
+public class TestDiagramAddLinkage extends EAMTestCase
 {
-	public TestLinkNodes(String name)
+	public TestDiagramAddLinkage(String name)
 	{
 		super(name);
 	}
@@ -34,7 +34,7 @@ public class TestLinkNodes extends EAMTestCase
 		ModelNodeId targetId = insertTarget.getId();
 		DiagramNode target = model.getNodeById(targetId);
 		
-		CommandLinkNodes command = new CommandLinkNodes(factorId, targetId);
+		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(factorId, targetId);
 		command.execute(project);
 		DiagramLinkage linkage = model.getLinkageById(command.getLinkageId());
 

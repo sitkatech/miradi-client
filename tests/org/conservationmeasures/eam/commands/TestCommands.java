@@ -366,7 +366,7 @@ public class TestCommands extends EAMTestCase
 
 		ModelNodeId from = insertIndirectFactor();
 		ModelNodeId to = insertTarget();
-		CommandLinkNodes cmd = new CommandLinkNodes(from, to);
+		CommandDiagramAddLinkage cmd = new CommandDiagramAddLinkage(from, to);
 		project.executeCommand(cmd);
 		BaseId linkageId = cmd.getLinkageId();
 
@@ -393,7 +393,7 @@ public class TestCommands extends EAMTestCase
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
-		CommandLinkNodes link = new CommandLinkNodes(from, to);
+		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(from, to);
 		project.executeCommand(link);
 		BaseId linkageId = link.getLinkageId();
 	
