@@ -42,7 +42,7 @@ public class TestCommands extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		Command consumeCellIdZero = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		Command consumeCellIdZero = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
 		project.executeCommand(consumeCellIdZero);
 		super.setUp();
 	}
@@ -292,7 +292,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertTarget() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
 		assertEquals("type not right?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
 		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		project.executeCommand(cmd);
@@ -306,7 +306,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
@@ -319,7 +319,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
 		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
 		
 		project.executeCommand(cmd);
@@ -330,7 +330,7 @@ public class TestCommands extends EAMTestCase
 		verifyUndoInsertNode(cmd);
 	}
 
-	private void verifyUndoInsertNode(CommandInsertNode cmd) throws CommandFailedException
+	private void verifyUndoInsertNode(CommandDiagramAddNode cmd) throws CommandFailedException
 	{
 		BaseId insertedId = cmd.getId();
 		cmd.undo(project);
@@ -552,7 +552,7 @@ public class TestCommands extends EAMTestCase
 
 	private ModelNodeId insertNode(NodeType type) throws CommandFailedException
 	{
-		CommandInsertNode insert = new CommandInsertNode(type);
+		CommandDiagramAddNode insert = new CommandDiagramAddNode(type);
 		project.executeCommand(insert);
 		ModelNodeId id = insert.getId();
 		return id;

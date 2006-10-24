@@ -13,7 +13,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -80,7 +80,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeFactor());
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new NodeTypeFactor());
 		project.executeCommand(cmd);
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
@@ -464,7 +464,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		CommandInsertNode cmd = new CommandInsertNode(new NodeTypeTarget());
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new NodeTypeTarget());
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
@@ -476,12 +476,12 @@ public class TestProject extends EAMTestCase
 		ProjectServerForTesting database = project.getTestDatabase();
 		int existingCalls = database.callsToWriteObject;
 		
-		CommandInsertNode targetCommand = new CommandInsertNode(new NodeTypeTarget());
+		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(new NodeTypeTarget());
 		project.executeCommand(targetCommand);
 		assertEquals(1 + existingCalls, database.callsToWriteObject);
 		ModelNodeId targetId = targetCommand.getId();
 		
-		CommandInsertNode factorCommand = new CommandInsertNode(new NodeTypeFactor());
+		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(new NodeTypeFactor());
 		project.executeCommand(factorCommand);
 		assertEquals(2 + existingCalls, database.callsToWriteObject);
 		ModelNodeId factorId = factorCommand.getId();
@@ -511,18 +511,18 @@ public class TestProject extends EAMTestCase
 	public void testInsertDuplicateNodes() throws Exception
 	{
 		BaseId id = new BaseId(3023);
-		BaseId gotIdFirst = CommandInsertNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
+		BaseId gotIdFirst = CommandDiagramAddNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
 		assertEquals("Didn't get our id?", id, gotIdFirst);
 		try
 		{
-			CommandInsertNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
+			CommandDiagramAddNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
 		{
 		}
 		
-		CommandInsertNode cmd = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		project.executeCommand(cmd);
 		try
 		{
@@ -683,15 +683,15 @@ public class TestProject extends EAMTestCase
 		try
 		{
 			
-			CommandInsertNode cmdNode1 = new CommandInsertNode(new NodeTypeFactor());
+			CommandDiagramAddNode cmdNode1 = new CommandDiagramAddNode(new NodeTypeFactor());
 			diskProject.executeCommand(cmdNode1);
 			factorId = cmdNode1.getId();
-			CommandInsertNode cmdNode2 = new CommandInsertNode(new NodeTypeTarget());
+			CommandDiagramAddNode cmdNode2 = new CommandDiagramAddNode(new NodeTypeTarget());
 			diskProject.executeCommand(cmdNode2);
 			ModelNodeId targetId = cmdNode2.getId();
 			CommandDiagramAddLinkage cmdLinkage = new CommandDiagramAddLinkage(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
-			CommandInsertNode cmdNode3 = new CommandInsertNode(new NodeTypeIntervention());
+			CommandDiagramAddNode cmdNode3 = new CommandDiagramAddNode(new NodeTypeIntervention());
 			diskProject.executeCommand(cmdNode3);
 			CommandDeleteNode cmdDelete = new CommandDeleteNode(cmdNode3.getId());
 			diskProject.executeCommand(cmdDelete);
@@ -760,7 +760,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = CommandInsertNode.createNode(project, nodeType, BaseId.INVALID);
+		BaseId insertedId = CommandDiagramAddNode.createNode(project, nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	

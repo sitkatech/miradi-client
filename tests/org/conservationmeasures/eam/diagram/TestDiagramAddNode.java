@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
-public class TestInsertNode extends EAMTestCase
+public class TestDiagramAddNode extends EAMTestCase
 {
-	public TestInsertNode(String name)
+	public TestDiagramAddNode(String name)
 	{
 		super(name);
 	}
@@ -36,7 +36,7 @@ public class TestInsertNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INVALID);
+		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_INVALID);
 		try
 		{
 			EAM.setLogToString();
@@ -50,7 +50,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
@@ -67,7 +67,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
@@ -84,7 +84,7 @@ public class TestInsertNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		Command insertCommand = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
+		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
 		insertCommand.execute(project);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);

@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -108,7 +108,7 @@ public class TestUndoRedo extends EAMTestCase
 	
 	private ModelNodeId insertFactor(Project p) throws CommandFailedException 
 	{
-		CommandInsertNode insert = new CommandInsertNode( DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode insert = new CommandDiagramAddNode( DiagramNode.TYPE_FACTOR);
 		p.executeCommand(insert);
 		ModelNodeId insertedId = insert.getId();
 		return insertedId;

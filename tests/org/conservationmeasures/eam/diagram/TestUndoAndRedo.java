@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -30,9 +30,9 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 		
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		project.executeCommand(insertFactor);
-		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
+		CommandDiagramAddNode insertIntervention = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
 		project.executeCommand(insertIntervention);
 		fromId = insertFactor.getId();
 		toId = insertIntervention.getId();
@@ -85,7 +85,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		CommandInsertNode insert = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		CommandDiagramAddNode insert = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
 		project.executeCommand(insert);
 		project.undo();
 		verifyNodeNotPresent(insert.getId());

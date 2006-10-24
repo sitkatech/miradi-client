@@ -57,7 +57,7 @@ public class CommandDeleteNode extends Command
 	{
 		try
 		{
-			CommandInsertNode.createNode(target, getNodeType(), getId());
+			CommandDiagramAddNode.createNode(target, getNodeType(), getId());
 		}
 		catch (Exception e)
 		{

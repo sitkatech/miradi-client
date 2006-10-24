@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -74,10 +74,10 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		CommandInsertNode insertIntervention = new CommandInsertNode(DiagramNode.TYPE_INTERVENTION);
+		CommandDiagramAddNode insertIntervention = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
 		insertIntervention.execute(project);
 
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		insertFactor.execute(project);
 
 		DiagramNode intervention = model.getNodeById(insertIntervention.getId());

@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -37,7 +37,7 @@ public class NodeCommandHelper
 
 	public ModelNodeId createNode(NodeType nodeType) throws Exception
 	{
-		CommandInsertNode commandInsertNode = new CommandInsertNode(nodeType);
+		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(nodeType);
 		executeCommand(commandInsertNode);
 		ModelNodeId id = commandInsertNode.getId();
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(id);

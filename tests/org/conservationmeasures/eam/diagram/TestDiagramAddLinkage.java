@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandInsertNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -25,11 +25,11 @@ public class TestDiagramAddLinkage extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		CommandInsertNode insertFactor = new CommandInsertNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
 		insertFactor.execute(project);
 		ModelNodeId factorId = insertFactor.getId();
 		DiagramNode factor = model.getNodeById(factorId);
-		CommandInsertNode insertTarget = new CommandInsertNode(DiagramNode.TYPE_TARGET);
+		CommandDiagramAddNode insertTarget = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
 		insertTarget.execute(project);
 		ModelNodeId targetId = insertTarget.getId();
 		DiagramNode target = model.getNodeById(targetId);

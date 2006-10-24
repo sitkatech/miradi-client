@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 
-public class CommandInsertNode extends Command
+public class CommandDiagramAddNode extends Command
 {
-	public CommandInsertNode(NodeType nodeType)
+	public CommandDiagramAddNode(NodeType nodeType)
 	{
 		type = nodeType;
 		insertedId = new ModelNodeId(BaseId.INVALID.asInt());
@@ -78,7 +78,7 @@ public class CommandInsertNode extends Command
 	}
 
 
-	public static final String COMMAND_NAME = "CommandInsertNode";
+	public static final String COMMAND_NAME = "CommandDiagramAddNode";
 
 	private NodeType type;
 	private ModelNodeId insertedId;
