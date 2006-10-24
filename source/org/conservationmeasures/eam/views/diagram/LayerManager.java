@@ -20,6 +20,7 @@ public class LayerManager
 		hiddenIds = new IdList();
 		mode = ViewData.MODE_DEFAULT;
 		desiresVisibleFlag = true;
+		indicatorsVisibleFlag = true;
 	}
 	
 	public boolean isVisible(DiagramNode node)
@@ -77,9 +78,20 @@ public class LayerManager
 	{
 		desiresVisibleFlag = newSetting;
 	}
+	
+	public boolean areIndicatorsVisible()
+	{
+		return indicatorsVisibleFlag;
+	}
+	
+	public void setIndicatorsVisible(boolean newSetting)
+	{
+		indicatorsVisibleFlag = newSetting;
+	}
 
 	Set hiddenNodeTypes;
 	IdList hiddenIds;
 	String mode;
 	boolean desiresVisibleFlag;
+	boolean indicatorsVisibleFlag;
 }

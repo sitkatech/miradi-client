@@ -89,6 +89,16 @@ public class TestLayerManager extends EAMTestCase
 		assertTrue("Didn't set visible?", manager.areDesiresVisible());
 	}
 
+	public void testIndicators() throws Exception
+	{
+		LayerManager manager = new LayerManager();
+		assertTrue("Indicators not visible by default?", manager.areIndicatorsVisible());
+		manager.setIndicatorsVisible(false);
+		assertFalse("Didn't set invisible?", manager.areIndicatorsVisible());
+		manager.setIndicatorsVisible(true);
+		assertTrue("Didn't set visible?", manager.areIndicatorsVisible());
+	}
+
 	private void verifyVisibility(String text, boolean expected, DiagramNode node, LayerManager manager)
 	{
 		assertEquals("type: " + text + " (" + node + ") ",expected, manager.isTypeVisible(node.getClass()));

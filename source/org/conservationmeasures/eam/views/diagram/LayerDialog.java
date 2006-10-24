@@ -37,6 +37,8 @@ public class LayerDialog extends JDialog implements ActionListener
 		targetCheckBox.addActionListener(this);
 		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
 		desireCheckBox.addActionListener(this);
+		indicatorCheckBox = new UiCheckBox(EAM.text("Label|Show Indicators"));
+		indicatorCheckBox.addActionListener(this);
 		
 		setControlsFromLayerManager();
 		
@@ -57,6 +59,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		options.add(factorCheckBox);
 		options.add(targetCheckBox);
 		options.add(desireCheckBox);
+		options.add(indicatorCheckBox);
 		return options;
 	}
 	
@@ -76,6 +79,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		factorCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramFactor.class));
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
 		desireCheckBox.setSelected(getLayerManager().areDesiresVisible());
+		indicatorCheckBox.setSelected(getLayerManager().areIndicatorsVisible());
 	}
 	
 	private void updateLayerManagerFromControls()
@@ -84,6 +88,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		getLayerManager().setVisibility(DiagramFactor.class, factorCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
 		getLayerManager().setDesiresVisible(desireCheckBox.isSelected());
+		getLayerManager().setIndicatorsVisible(indicatorCheckBox.isSelected());
 	}
 	
 	public void applyChanges()
@@ -111,4 +116,5 @@ public class LayerDialog extends JDialog implements ActionListener
 	UiCheckBox factorCheckBox;
 	UiCheckBox targetCheckBox;
 	UiCheckBox desireCheckBox;
+	UiCheckBox indicatorCheckBox;
 }

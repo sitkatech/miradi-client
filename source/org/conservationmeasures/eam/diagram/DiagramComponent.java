@@ -172,6 +172,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().areDesiresVisible();
 	}
 	
+	public boolean areIndicatorsVisible()
+	{
+		return project.getLayerManager().areIndicatorsVisible();
+	}
+	
 	public DiagramNode getSelectedNode()
 	{
 		if (getSelectionCount() != 1)

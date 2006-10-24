@@ -122,7 +122,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 					drawAnnotation(rect, g2, EAM.text("Label|Goal ") + goal.getShortLabel());
 			}
 		}
-		drawIndicator(rect, g2);
+		if(diagram.areIndicatorsVisible())
+			drawIndicator(rect, g2);
 	}
 	
 	public static Dimension getSizeWithoutAnnotations(Dimension size, int annotationCount)
