@@ -7,9 +7,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
@@ -26,8 +23,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.views.strategicplan.EAMUiTableWithAlternatingRows;
+import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
@@ -47,7 +45,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		view = viewToUse;
 		model = modelToUse;
 		
-		table = new EAMUiTableWithAlternatingRows(model);
+		table = new UiTableWithAlternatingRows(model);
 		
 		// TODO: set all column widths to "reasonable" values
 		// for now, a cheap hack: make the first column small,
@@ -87,17 +85,10 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			buttonBox.add(buttons[i]);
 	}
 
-	public void addDoubleClickAction(UiButton doubbleClickAction) {
-			table.setDoubleClickAction(doubbleClickAction);
-			table.addMouseListener(new MouseAdapter(){
-			     public void mouseClicked(MouseEvent e){
-			      if (e.getClickCount() == 2){
-			         UiButton ub = ((EAMUiTableWithAlternatingRows)e.getSource()).getDoubleClickAction();
-			         ub.doClick();
-			         }
-			      }
-			     } );
-			   }
+	public void addDoubleClickAction(UiButton doubbleClickAction) 
+	{
+			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubbleClickAction));
+	}
 	
 	public EAMObject[] getSelectedObjects()
 	{
@@ -182,6 +173,6 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 
 	UmbrellaView view;
 	ObjectManagerTableModel model;
-	EAMUiTableWithAlternatingRows table;
+	UiTableWithAlternatingRows table;
 	Box buttonBox;
 }
