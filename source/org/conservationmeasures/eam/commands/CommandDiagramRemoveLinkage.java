@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandDeleteLinkage extends Command
+public class CommandDiagramRemoveLinkage extends Command
 {
-	public CommandDeleteLinkage(BaseId idToDelete)
+	public CommandDiagramRemoveLinkage(BaseId idToDelete)
 	{
 		id = idToDelete;
 		wasFrom = new ModelNodeId(BaseId.INVALID.asInt());
@@ -89,7 +89,7 @@ public class CommandDeleteLinkage extends Command
 	}
 	
 
-	public static final String COMMAND_NAME = "DeleteLinkage";
+	public static final String COMMAND_NAME = "DiagramRemoveLinkage";
 
 	BaseId id;
 	ModelNodeId wasFrom;

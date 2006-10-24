@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -76,7 +76,7 @@ public class Delete extends ProjectDoer
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
 		BaseId id = linkageToDelete.getDiagramLinkageId();
-		CommandDeleteLinkage command = new CommandDeleteLinkage(id);
+		CommandDiagramRemoveLinkage command = new CommandDiagramRemoveLinkage(id);
 		getProject().executeCommand(command);
 	}
 

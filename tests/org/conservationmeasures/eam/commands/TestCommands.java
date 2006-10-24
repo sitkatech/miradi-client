@@ -397,7 +397,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(link);
 		BaseId linkageId = link.getLinkageId();
 	
-		CommandDeleteLinkage cmd = new CommandDeleteLinkage(linkageId);
+		CommandDiagramRemoveLinkage cmd = new CommandDiagramRemoveLinkage(linkageId);
 		project.executeCommand(cmd);
 		assertEquals("didn't set from?", from, cmd.getWasFromId());
 		assertEquals("didn't set to?", to, cmd.getWasToId());

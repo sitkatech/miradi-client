@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDeleteLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDeleteNode;
 import org.conservationmeasures.eam.commands.CommandInsertNode;
 import org.conservationmeasures.eam.commands.CommandLinkNodes;
@@ -43,7 +43,7 @@ public class TestDelete extends EAMTestCase
 		
 		assertTrue("linkage not found?", model.hasLinkage(intervention, factor));
 		
-		CommandDeleteLinkage delete = new CommandDeleteLinkage(linkageId);
+		CommandDiagramRemoveLinkage delete = new CommandDiagramRemoveLinkage(linkageId);
 		delete.execute(project);
 		assertFalse("linkage not deleted?", model.hasLinkage(intervention, factor));
 		

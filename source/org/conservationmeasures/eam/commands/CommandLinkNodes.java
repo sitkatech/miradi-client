@@ -57,7 +57,7 @@ public class CommandLinkNodes extends Command
 	{
 		try
 		{
-			CommandDeleteLinkage.deleteLinkage(target, getLinkageId());
+			CommandDiagramRemoveLinkage.deleteLinkage(target, getLinkageId());
 		}
 		catch (Exception e)
 		{
