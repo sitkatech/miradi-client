@@ -60,7 +60,7 @@ public class CommandDiagramAddNode extends Command
 	{
 		try
 		{
-			CommandDeleteNode.deleteNode(target, getId());
+			CommandDiagramRemoveNode.deleteNode(target, getId());
 		}
 		catch (Exception e)
 		{

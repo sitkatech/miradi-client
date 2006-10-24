@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandDeleteNode extends Command
+public class CommandDiagramRemoveNode extends Command
 {
-	public CommandDeleteNode(BaseId idToDelete)
+	public CommandDiagramRemoveNode(BaseId idToDelete)
 	{
 		id = idToDelete;
 		nodeType = DiagramNode.TYPE_INVALID;
@@ -79,7 +79,7 @@ public class CommandDeleteNode extends Command
 	}
 	
 
-	public static final String COMMAND_NAME = "DeleteNode";
+	public static final String COMMAND_NAME = "DiagramRemoveNode";
 
 	BaseId id;
 	NodeType nodeType;

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
-import org.conservationmeasures.eam.commands.CommandDeleteNode;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -58,7 +58,7 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDeleteNode deleteNode = new CommandDeleteNode(factorId);
+		CommandDiagramRemoveNode deleteNode = new CommandDiagramRemoveNode(factorId);
 		deleteNode.execute(project);
 		assertFalse("node not deleted?", model.isNodeInProject(factor));
 

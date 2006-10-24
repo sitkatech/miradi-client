@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
-import org.conservationmeasures.eam.commands.CommandDeleteNode;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
@@ -103,7 +103,7 @@ public class Delete extends ProjectDoer
 		for(int i = 0; i < commandsToClear.length; ++i)
 			getProject().executeCommand(commandsToClear[i]);
 		
-		getProject().executeCommand(new CommandDeleteNode(id));
+		getProject().executeCommand(new CommandDiagramRemoveNode(id));
 	}
 
 }

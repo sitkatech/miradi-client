@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDeleteNode;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
@@ -437,7 +437,7 @@ public class TestProject extends EAMTestCase
 		Object[] selectedCells = new DiagramNode[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(selectedCells);
 		
-		CommandDeleteNode.deleteNode(project, node1.getDiagramNodeId());
+		CommandDiagramRemoveNode.deleteNode(project, node1.getDiagramNodeId());
 		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
 
 		Point pastePoint = new Point(5,5);
@@ -693,7 +693,7 @@ public class TestProject extends EAMTestCase
 			diskProject.executeCommand(cmdLinkage);
 			CommandDiagramAddNode cmdNode3 = new CommandDiagramAddNode(new NodeTypeIntervention());
 			diskProject.executeCommand(cmdNode3);
-			CommandDeleteNode cmdDelete = new CommandDeleteNode(cmdNode3.getId());
+			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(cmdNode3.getId());
 			diskProject.executeCommand(cmdDelete);
 		}
 		finally

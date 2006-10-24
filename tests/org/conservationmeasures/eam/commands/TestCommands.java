@@ -410,7 +410,7 @@ public class TestCommands extends EAMTestCase
 	public void testDeleteNode() throws Exception
 	{
 		BaseId id = insertTarget();
-		CommandDeleteNode cmd = new CommandDeleteNode(id);
+		CommandDiagramRemoveNode cmd = new CommandDiagramRemoveNode(id);
 		assertEquals("type not defaulting properly?", DiagramNode.TYPE_INVALID, cmd.getNodeType());
 		project.executeCommand(cmd);
 		
