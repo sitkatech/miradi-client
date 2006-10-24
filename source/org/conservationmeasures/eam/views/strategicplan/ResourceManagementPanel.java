@@ -24,7 +24,13 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 			createObjectsActionButton(ActionModifyResource.class), 
 			createObjectsActionButton(ActionDeleteResource.class), 
 		};
+		
+		UiButton doubleClickAction =
+				createObjectsActionButton(ActionModifyResource.class);
+		
 		addButtons(extraButtons);
+		
+		addDoubleClickAction(doubleClickAction);
 	}
 
 	public ProjectResource getSelectedResource()

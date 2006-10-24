@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -25,7 +27,7 @@ import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
+import org.conservationmeasures.eam.views.strategicplan.EAMUiTableWithAlternatingRows;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
@@ -45,7 +47,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		view = viewToUse;
 		model = modelToUse;
 		
-		table = new UiTableWithAlternatingRows(model);
+		table = new EAMUiTableWithAlternatingRows(model);
 		
 		// TODO: set all column widths to "reasonable" values
 		// for now, a cheap hack: make the first column small,
@@ -84,6 +86,18 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		for(int i = 0; i < buttons.length; ++i)
 			buttonBox.add(buttons[i]);
 	}
+
+	public void addDoubleClickAction(UiButton doubbleClickAction) {
+			table.setDoubleClickAction(doubbleClickAction);
+			table.addMouseListener(new MouseAdapter(){
+			     public void mouseClicked(MouseEvent e){
+			      if (e.getClickCount() == 2){
+			         UiButton ub = ((EAMUiTableWithAlternatingRows)e.getSource()).getDoubleClickAction();
+			         ub.doClick();
+			         }
+			      }
+			     } );
+			   }
 	
 	public EAMObject[] getSelectedObjects()
 	{
@@ -168,6 +182,6 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 
 	UmbrellaView view;
 	ObjectManagerTableModel model;
-	UiTable table;
+	EAMUiTableWithAlternatingRows table;
 	Box buttonBox;
 }
