@@ -85,9 +85,9 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			buttonBox.add(buttons[i]);
 	}
 
-	public void addDoubleClickAction(UiButton doubbleClickAction) 
+	public void addDoubleClickAction(UiButton doubleClickAction) 
 	{
-			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubbleClickAction));
+			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubleClickAction));
 	}
 	
 	public EAMObject[] getSelectedObjects()

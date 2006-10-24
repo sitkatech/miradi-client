@@ -13,12 +13,17 @@ import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.strategicplan.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiButton;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel
 {
 	public IndicatorManagementPanel(UmbrellaView viewToUse)
 	{
 		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
+		
+		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyIndicator.class));
+		
+		addDoubleClickAction(doubleClickAction);
 	}
 	
 	public Indicator getSelectedIndicator()

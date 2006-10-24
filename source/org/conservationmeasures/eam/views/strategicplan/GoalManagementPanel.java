@@ -7,12 +7,17 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiButton;
 
 public class GoalManagementPanel extends ObjectManagementPanel
 {
 	public GoalManagementPanel(UmbrellaView viewToUse)
 	{
 		super(viewToUse, new GoalTableModel(viewToUse.getProject()), buttonActionClasses);
+		
+		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyGoal.class));
+
+		addDoubleClickAction(doubleClickAction);
 	}
 	
 	public Goal getSelectedGoal()

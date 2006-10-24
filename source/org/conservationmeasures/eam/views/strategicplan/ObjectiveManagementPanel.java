@@ -12,12 +12,17 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.UiButton;
 
 public class ObjectiveManagementPanel extends ObjectManagementPanel
 {
 	public ObjectiveManagementPanel(UmbrellaView viewToUse)
 	{
 		super(viewToUse, new ObjectiveTableModel(viewToUse.getProject()), buttonActionClasses);
+		
+		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyObjective.class));
+	
+		addDoubleClickAction(doubleClickAction);
 	}
 	
 	public Objective getSelectedObjective()

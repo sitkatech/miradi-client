@@ -25,12 +25,11 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 			createObjectsActionButton(ActionDeleteResource.class), 
 		};
 		
-		UiButton doubleClickAction =
-				createObjectsActionButton(ActionModifyResource.class);
+		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyResource.class));
+
+		addDoubleClickAction(doubleClickAction);
 		
 		addButtons(extraButtons);
-		
-		addDoubleClickAction(doubleClickAction);
 	}
 
 	public ProjectResource getSelectedResource()
