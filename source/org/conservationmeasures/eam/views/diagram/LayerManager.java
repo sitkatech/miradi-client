@@ -19,6 +19,8 @@ public class LayerManager
 		hiddenNodeTypes = new HashSet();
 		hiddenIds = new IdList();
 		mode = ViewData.MODE_DEFAULT;
+		indirectFactorsVisibleFlag = true;
+		directThreatsVisibleFlag = true;
 		desiresVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 	}
@@ -31,6 +33,12 @@ public class LayerManager
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
 		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
 			return false;
+		
+		if(node.isIndirectFactor())
+			return areIndirectFactorsVisible();
+		
+		if(node.isDirectThreat())
+			return areDirectThreatsVisible();
 		
 		if(isTypeVisible(node.getClass()))
 			return true;
@@ -69,6 +77,26 @@ public class LayerManager
 		mode = newMode;
 	}
 	
+	public boolean areIndirectFactorsVisible()
+	{
+		return indirectFactorsVisibleFlag;
+	}
+	
+	public void setIndirectFactorsVisible(boolean newSetting)
+	{
+		indirectFactorsVisibleFlag = newSetting;
+	}
+	
+	public boolean areDirectThreatsVisible()
+	{
+		return directThreatsVisibleFlag;
+	}
+	
+	public void setDirectThreatsVisible(boolean newSetting)
+	{
+		directThreatsVisibleFlag = newSetting;
+	}
+	
 	public boolean areDesiresVisible()
 	{
 		return desiresVisibleFlag;
@@ -92,6 +120,8 @@ public class LayerManager
 	Set hiddenNodeTypes;
 	IdList hiddenIds;
 	String mode;
+	boolean indirectFactorsVisibleFlag;
+	boolean directThreatsVisibleFlag;
 	boolean desiresVisibleFlag;
 	boolean indicatorsVisibleFlag;
 }

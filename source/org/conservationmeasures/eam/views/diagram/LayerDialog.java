@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.main.EAM;
@@ -31,8 +30,10 @@ public class LayerDialog extends JDialog implements ActionListener
 		
 		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Interventions"));
 		interventionCheckBox.addActionListener(this);
-		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Factors"));
+		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Indirect Factors"));
 		factorCheckBox.addActionListener(this);
+		threatCheckBox = new UiCheckBox(EAM.text("Label|Show Direct Threats"));
+		threatCheckBox.addActionListener(this);
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
 		targetCheckBox.addActionListener(this);
 		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
@@ -57,6 +58,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		UiVBox options = new UiVBox();
 		options.add(interventionCheckBox);
 		options.add(factorCheckBox);
+		options.add(threatCheckBox);
 		options.add(targetCheckBox);
 		options.add(desireCheckBox);
 		options.add(indicatorCheckBox);
@@ -76,7 +78,8 @@ public class LayerDialog extends JDialog implements ActionListener
 	private void setControlsFromLayerManager()
 	{
 		interventionCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramIntervention.class));
-		factorCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramFactor.class));
+		factorCheckBox.setSelected(getLayerManager().areIndirectFactorsVisible());
+		threatCheckBox.setSelected(getLayerManager().areDirectThreatsVisible());
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
 		desireCheckBox.setSelected(getLayerManager().areDesiresVisible());
 		indicatorCheckBox.setSelected(getLayerManager().areIndicatorsVisible());
@@ -85,7 +88,8 @@ public class LayerDialog extends JDialog implements ActionListener
 	private void updateLayerManagerFromControls()
 	{
 		getLayerManager().setVisibility(DiagramIntervention.class, interventionCheckBox.isSelected());
-		getLayerManager().setVisibility(DiagramFactor.class, factorCheckBox.isSelected());
+		getLayerManager().setIndirectFactorsVisible(factorCheckBox.isSelected());
+		getLayerManager().setDirectThreatsVisible(threatCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
 		getLayerManager().setDesiresVisible(desireCheckBox.isSelected());
 		getLayerManager().setIndicatorsVisible(indicatorCheckBox.isSelected());
@@ -114,6 +118,7 @@ public class LayerDialog extends JDialog implements ActionListener
 
 	UiCheckBox interventionCheckBox;
 	UiCheckBox factorCheckBox;
+	UiCheckBox threatCheckBox;
 	UiCheckBox targetCheckBox;
 	UiCheckBox desireCheckBox;
 	UiCheckBox indicatorCheckBox;
