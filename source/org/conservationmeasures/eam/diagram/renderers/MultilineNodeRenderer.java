@@ -101,22 +101,26 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
-		DiagramModel model = (DiagramModel)graph.getModel();
-		ObjectiveIds objectives = node.getObjectives();
-		if(objectives.hasAnnotation())
+		DiagramComponent diagram = (DiagramComponent)graph;
+		if(diagram.areDesiresVisible())
 		{
-			BaseId objectiveId = objectives.getId(0);
-			Objective objective = model.getObjectiveById(objectiveId);
-			if(objective != null)
-				drawAnnotation(rect, g2, EAM.text("Label|Obj ") + objective.getShortLabel());
-		}
-		GoalIds goals = node.getGoals();
-		if(goals.hasAnnotation())
-		{
-			BaseId goalId = goals.getId(0);
-			Goal goal = model.getGoalById(goalId);
-			if(goal != null)
-				drawAnnotation(rect, g2, EAM.text("Label|Goal ") + goal.getShortLabel());
+			DiagramModel model = (DiagramModel)graph.getModel();
+			ObjectiveIds objectives = node.getObjectives();
+			if(objectives.hasAnnotation())
+			{
+				BaseId objectiveId = objectives.getId(0);
+				Objective objective = model.getObjectiveById(objectiveId);
+				if(objective != null)
+					drawAnnotation(rect, g2, EAM.text("Label|Obj ") + objective.getShortLabel());
+			}
+			GoalIds goals = node.getGoals();
+			if(goals.hasAnnotation())
+			{
+				BaseId goalId = goals.getId(0);
+				Goal goal = model.getGoalById(goalId);
+				if(goal != null)
+					drawAnnotation(rect, g2, EAM.text("Label|Goal ") + goal.getShortLabel());
+			}
 		}
 		drawIndicator(rect, g2);
 	}

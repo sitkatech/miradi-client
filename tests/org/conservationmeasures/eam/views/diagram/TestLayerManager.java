@@ -78,6 +78,16 @@ public class TestLayerManager extends EAMTestCase
 			verifyNodeVisibility("hide ids", true, intervention, manager);
 		}
 	}
+	
+	public void testDesires() throws Exception
+	{
+		LayerManager manager = new LayerManager();
+		assertTrue("Desires not visible by default?", manager.areDesiresVisible());
+		manager.setDesiresVisible(false);
+		assertFalse("Didn't set invisible?", manager.areDesiresVisible());
+		manager.setDesiresVisible(true);
+		assertTrue("Didn't set visible?", manager.areDesiresVisible());
+	}
 
 	private void verifyVisibility(String text, boolean expected, DiagramNode node, LayerManager manager)
 	{
