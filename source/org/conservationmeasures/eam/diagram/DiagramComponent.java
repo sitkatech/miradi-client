@@ -154,19 +154,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().isVisible(node);
 	}
 	
+	public boolean areLinkagesVisible()
+	{
+		return project.getLayerManager().areLinkagesVisible();
+	}
+	
 	public boolean isProjectScopeVisible()
 	{
 		return project.getLayerManager().isTypeVisible(DiagramTarget.class);
 	}
 
-	public boolean isLinkageVisible(DiagramLinkage linkage)
-	{
-		DiagramNode from = linkage.getFromNode();
-		DiagramNode to = linkage.getToNode();
-		boolean bothNodesVisible = isNodeVisible(from) && isNodeVisible(to);
-		return bothNodesVisible;
-	}
-	
 	public boolean areDesiresVisible()
 	{
 		return project.getLayerManager().areDesiresVisible();

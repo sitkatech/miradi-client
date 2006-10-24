@@ -21,6 +21,7 @@ public class LayerManager
 		mode = ViewData.MODE_DEFAULT;
 		indirectFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
+		linkagesVisibleFlag = true;
 		desiresVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 	}
@@ -97,6 +98,16 @@ public class LayerManager
 		directThreatsVisibleFlag = newSetting;
 	}
 	
+	public boolean areLinkagesVisible()
+	{
+		return linkagesVisibleFlag;
+	}
+	
+	public void setLinkagesVisible(boolean newSetting)
+	{
+		linkagesVisibleFlag = newSetting;
+	}
+	
 	public boolean areDesiresVisible()
 	{
 		return desiresVisibleFlag;
@@ -122,6 +133,7 @@ public class LayerManager
 	String mode;
 	boolean indirectFactorsVisibleFlag;
 	boolean directThreatsVisibleFlag;
+	boolean linkagesVisibleFlag;
 	boolean desiresVisibleFlag;
 	boolean indicatorsVisibleFlag;
 }

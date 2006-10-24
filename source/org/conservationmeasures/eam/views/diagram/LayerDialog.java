@@ -36,6 +36,8 @@ public class LayerDialog extends JDialog implements ActionListener
 		threatCheckBox.addActionListener(this);
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
 		targetCheckBox.addActionListener(this);
+		linkagesCheckBox = new UiCheckBox(EAM.text("Label|Show Linkages"));
+		linkagesCheckBox.addActionListener(this);
 		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
 		desireCheckBox.addActionListener(this);
 		indicatorCheckBox = new UiCheckBox(EAM.text("Label|Show Indicators"));
@@ -60,6 +62,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		options.add(factorCheckBox);
 		options.add(threatCheckBox);
 		options.add(targetCheckBox);
+		options.add(linkagesCheckBox);
 		options.add(desireCheckBox);
 		options.add(indicatorCheckBox);
 		return options;
@@ -81,6 +84,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		factorCheckBox.setSelected(getLayerManager().areIndirectFactorsVisible());
 		threatCheckBox.setSelected(getLayerManager().areDirectThreatsVisible());
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
+		linkagesCheckBox.setSelected(getLayerManager().areLinkagesVisible());
 		desireCheckBox.setSelected(getLayerManager().areDesiresVisible());
 		indicatorCheckBox.setSelected(getLayerManager().areIndicatorsVisible());
 	}
@@ -91,6 +95,7 @@ public class LayerDialog extends JDialog implements ActionListener
 		getLayerManager().setIndirectFactorsVisible(factorCheckBox.isSelected());
 		getLayerManager().setDirectThreatsVisible(threatCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
+		getLayerManager().setLinkagesVisible(linkagesCheckBox.isSelected());
 		getLayerManager().setDesiresVisible(desireCheckBox.isSelected());
 		getLayerManager().setIndicatorsVisible(indicatorCheckBox.isSelected());
 	}
@@ -120,6 +125,7 @@ public class LayerDialog extends JDialog implements ActionListener
 	UiCheckBox factorCheckBox;
 	UiCheckBox threatCheckBox;
 	UiCheckBox targetCheckBox;
+	UiCheckBox linkagesCheckBox;
 	UiCheckBox desireCheckBox;
 	UiCheckBox indicatorCheckBox;
 }
