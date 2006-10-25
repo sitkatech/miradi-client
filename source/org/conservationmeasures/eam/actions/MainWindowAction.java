@@ -62,6 +62,11 @@ public abstract class MainWindowAction extends EAMAction
 
 	public void doAction(ActionEvent event) throws CommandFailedException
 	{
+		doAction();
+	}
+
+	public void doAction() throws CommandFailedException
+	{
 		getDoer().doIt();
 		getMainWindow().getActions().updateActionStates();
 	}
