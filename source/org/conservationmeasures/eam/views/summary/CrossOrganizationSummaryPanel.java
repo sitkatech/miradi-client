@@ -10,8 +10,14 @@ import java.awt.event.FocusListener;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
@@ -21,9 +27,9 @@ import org.martus.swing.UiTextField;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class SummaryPanel extends JPanel
+public class CrossOrganizationSummaryPanel extends JPanel implements CommandExecutedListener
 {
-	public SummaryPanel(MainWindow mainWindowToUse)
+	public CrossOrganizationSummaryPanel(MainWindow mainWindowToUse)
 	{
 		super(new BasicGridLayout(0, 2));
 		mainWindow = mainWindowToUse;
@@ -70,6 +76,8 @@ public class SummaryPanel extends JPanel
 		add(new UiLabel(EAM.text("Label|Team Members:")));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindow.getActions());
 		add(teamEditorComponent);
+		
+		mainWindow.getProject().addCommandExecutedListener(this);
 	}
 	
 	Project getProject()
@@ -110,6 +118,32 @@ public class SummaryPanel extends JPanel
 			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Text|Error prevented saving"));
 		}
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		updateTeamList(event);
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		updateTeamList(event);
+	}
+	
+	public void commandFailed(Command command, CommandFailedException exception)
+	{
+	}
+	
+	private void updateTeamList(CommandExecutedEvent event)
+	{
+		if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+			return;
+		
+		rebuild();
 	}
 
 	abstract class FocusHandler implements FocusListener

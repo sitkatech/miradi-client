@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.summary;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
@@ -15,12 +16,9 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
@@ -28,6 +26,7 @@ import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.UiScrollPane;
+import org.martus.swing.UiTabbedPane;
 
 public class SummaryView extends UmbrellaView
 {
@@ -64,20 +63,21 @@ public class SummaryView extends UmbrellaView
 	}
 	
 	
-	private UiScrollPane createScrollableSummaryPanel()
+	private JComponent createScrollableSummaryPanel()
 	{
-		summaryPanel = new SummaryPanel(getMainWindow());
-		UiScrollPane uiScrollPane = new UiScrollPane(summaryPanel);
+		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow());
+		UiTabbedPane tabbedPanel = new UiTabbedPane();
+		tabbedPanel.addTab(EAM.text("General"), new CrossOrganizationSummaryPanel(getMainWindow()));
+		UiScrollPane uiScrollPane = new UiScrollPane(crossOrganizationSummaryPanel);
 		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
 		uiScrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
-		return uiScrollPane;
+		return tabbedPanel;
 	}
 
 	public void becomeInactive() throws Exception
 	{
 		bigSplitter.removeAll();
 		wizardPanel = null;
-		summaryPanel = null;
 		removeAll();
 	}
 	
@@ -85,30 +85,6 @@ public class SummaryView extends UmbrellaView
 	{
 		PossibleTeamMembersDialog dlg = new PossibleTeamMembersDialog(getMainWindow());
 		showFloatingPropertiesDialog(dlg);
-	}
-
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		super.commandExecuted(event);
-		updateTeamList(event);
-	}
-
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		super.commandUndone(event);
-		updateTeamList(event);
-	}
-	
-	private void updateTeamList(CommandExecutedEvent event)
-	{
-		if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		
-		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
-			return;
-		
-		summaryPanel.rebuild();
 	}
 
 	private void addSummaryDoersToMap()
@@ -129,7 +105,6 @@ public class SummaryView extends UmbrellaView
 	
 	JSplitPane bigSplitter;
 	SummaryWizardPanel wizardPanel;
-	SummaryPanel summaryPanel;
 	
 	TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;
