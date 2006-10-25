@@ -25,7 +25,7 @@ public class StrategicPlanTreeTable extends JTreeTable
 	public StrategicPlanTreeTable(TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
-		super.setModel(new EAMTreeTableModelAdapter(treeTableModel, tree));
+		setModel(new EAMTreeTableModelAdapter(treeTableModel, tree));
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
 		tree.setRootVisible(false);

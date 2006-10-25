@@ -18,55 +18,23 @@ import com.java.sun.jtreetable.TreeTableModel;
 
 public class EAMTreeTableModelAdapter extends AbstractTableModel
 {
-
 	public EAMTreeTableModelAdapter(TreeTableModel treeTableModel, JTree tree)
 	{
         this.tree = tree;
         this.treeTableModel = treeTableModel;
 
         setExpansionListeners(tree);
-        setModelListerners(treeTableModel);
+        setModelListeners(treeTableModel);
 	}
 
-	private void setModelListerners(TreeTableModel treeTableModel)
+	private void setModelListeners(TreeTableModel treeTableModel)
 	{
-		treeTableModel.addTreeModelListener(new TreeModelListener() 
-		{
-			public void treeNodesChanged(TreeModelEvent e) 
-			{
-				delayedFireTableRowsUpdated();
-			}
-
-			public void treeNodesInserted(TreeModelEvent e) 
-			{
-				delayedFireTableRowsInserted();
-			}
-
-			public void treeNodesRemoved(TreeModelEvent e) 
-			{
-				delayedFireTableRowsRemoved();
-			}
-
-			public void treeStructureChanged(TreeModelEvent e) 
-			{
-				delayedFireTableDataChanged();
-			}
-		});
+		treeTableModel.addTreeModelListener(new TreeModelHandler());
 	}
 
 	private void setExpansionListeners(JTree tree)
 	{
-		tree.addTreeExpansionListener(new TreeExpansionListener() 
-		{
-			public void treeExpanded(TreeExpansionEvent event) 
-			{
-				fireTableDataChanged(); 
-			}
-			public void treeCollapsed(TreeExpansionEvent event) 
-			{
-				fireTableDataChanged(); 
-			}
-		});
+		tree.addTreeExpansionListener(new TreeExpansionHandler());
 	}
 
 	public int getColumnCount() 
@@ -112,48 +80,72 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 
 	protected void delayedFireTableRowsUpdated() 
 	{
-		SwingUtilities.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				fireTableRowsUpdated(0, getRowCount() - 1);
-			}
-		});
+		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer()); 
 	}
 	
 	protected void delayedFireTableRowsRemoved() 
 	{
-		SwingUtilities.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				fireTableDataChanged();			
-			}
-			
-		});
-	}
+		SwingUtilities.invokeLater(new DelayedTableDataChangedFirer());	}
 
 	protected void delayedFireTableRowsInserted() 
 	{
-		SwingUtilities.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				fireTableDataChanged();
-			}
-		});
+		SwingUtilities.invokeLater(new DelayedTableDataChangedFirer());
 	}
 	
 	protected void delayedFireTableDataChanged() 
 	{
-		SwingUtilities.invokeLater(new Runnable() 
-		{
-			public void run() 
-			{
-				fireTableRowsUpdated(0, getRowCount() - 1);
-			}
-		});
+		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
+	
+	private final class TreeModelHandler implements TreeModelListener
+	{
+		public void treeNodesChanged(TreeModelEvent e) 
+		{
+			delayedFireTableRowsUpdated();
+		}
+
+		public void treeNodesInserted(TreeModelEvent e) 
+		{
+			delayedFireTableRowsInserted();
+		}
+
+		public void treeNodesRemoved(TreeModelEvent e) 
+		{
+			delayedFireTableRowsRemoved();
+		}
+
+		public void treeStructureChanged(TreeModelEvent e) 
+		{
+			delayedFireTableDataChanged();
+		}
+	}
+	private final class TreeExpansionHandler implements TreeExpansionListener
+	{
+		public void treeExpanded(TreeExpansionEvent event) 
+		{
+			fireTableDataChanged(); 
+		}
+
+		public void treeCollapsed(TreeExpansionEvent event) 
+		{
+			fireTableDataChanged(); 
+		}
+	}
+	private final class DelayedTableDataChangedFirer implements Runnable
+	{
+		public void run() 
+		{
+			fireTableDataChanged();
+		}
+	}
+	private final class DelayedTableDataUpdatedFirer implements Runnable
+	{
+		public void run() 
+		{
+			fireTableRowsUpdated(0, getRowCount() - 1);
+		}
+	}
+
 
     JTree tree;
     TreeTableModel treeTableModel;
