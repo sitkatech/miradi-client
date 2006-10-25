@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -21,9 +20,7 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	{
 		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
 		
-	EAMAction doubleClickAction = 
-			getMainWindow().getActions().get(ActionModifyIndicator.class);
-		addDoubleClickAction(doubleClickAction);
+		addDoubleClickAction(ActionModifyIndicator.class);
 	}
 	
 	public Indicator getSelectedIndicator()

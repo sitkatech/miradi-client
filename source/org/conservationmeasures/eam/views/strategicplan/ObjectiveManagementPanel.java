@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Objective;
@@ -20,9 +19,7 @@ public class ObjectiveManagementPanel extends ObjectManagementPanel
 	{
 		super(viewToUse, new ObjectiveTableModel(viewToUse.getProject()), buttonActionClasses);
 		
-		EAMAction doubleClickAction = getMainWindow().getActions().get(ActionModifyObjective.class);
-	
-		addDoubleClickAction(doubleClickAction);
+		addDoubleClickAction(ActionModifyObjective.class);
 	}
 	
 	public Objective getSelectedObjective()

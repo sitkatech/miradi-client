@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+
 import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
@@ -14,7 +15,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -86,9 +86,9 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			buttonBox.add(buttons[i]);
 	}
 
-	public void addDoubleClickAction(EAMAction doubleClickAction) 
+	public void addDoubleClickAction(Class doubleClickAction) 
 	{
-			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubleClickAction));
+			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubleClickAction,getMainWindow()));
 	}
 	
 	public EAMObject[] getSelectedObjects()
