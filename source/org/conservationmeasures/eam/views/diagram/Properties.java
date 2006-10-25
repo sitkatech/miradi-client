@@ -70,7 +70,6 @@ public class Properties extends LocationDoer
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
 	{
 		ProjectScopePropertiesDialog dlg = new ProjectScopePropertiesDialog(EAM.mainWindow, getProject(), scope);
-		dlg.setText(scope.getVision());
 		setDialogLocation(dlg, scope.getBounds());
 		dlg.setVisible(true);
 	}
