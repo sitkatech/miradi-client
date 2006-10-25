@@ -31,6 +31,14 @@ public class MetadataEditingPanel extends JPanel
 		return mainWindow.getProject();
 	}
 	
+	UiTextField createFieldComponent(String tag, int length)
+	{
+		UiTextField fieldComponent = new UiTextField(length);
+		fieldComponent.setText(getProject().getMetadata().getData(tag));
+		fieldComponent.addFocusListener(new FocusHandler(tag, fieldComponent));
+		return fieldComponent;
+	}
+	
 	void save(String tag, UiTextField field)
 	{
 		String newValue = field.getText();

@@ -27,39 +27,27 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 		add(new UiLabel(getProject().getFilename()));
 		
 		add(new UiLabel(EAM.text("Label|Project Name:")));
-		projectName = new UiTextField(50);
-		projectName.setText(getProject().getMetadata().getProjectName());
-		projectName.addFocusListener(new FocusHandler(ProjectMetadata.TAG_PROJECT_NAME, projectName));
+		projectName = createFieldComponent(ProjectMetadata.TAG_PROJECT_NAME, 50);
 		add(projectName);
 		
 		add(new UiLabel(EAM.text("Label|Project Scope:")));
-		projectScope = new UiTextField(50);
-		projectScope.setText(getProject().getMetadata().getProjectScope());
-		projectScope.addFocusListener(new FocusHandler(ProjectMetadata.TAG_PROJECT_SCOPE, projectScope));
+		projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
 		add(projectScope);
 		
 		add(new UiLabel(EAM.text("Label|Project Vision:")));
-		projectVision = new UiTextField(50);
-		projectVision.setText(getProject().getMetadata().getProjectVision());
-		projectVision.addFocusListener(new FocusHandler(ProjectMetadata.TAG_PROJECT_VISION, projectVision));
+		projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
 		add(projectVision);
 		
 		add(new UiLabel(EAM.text("Label|Start Date:")));
-		startDate = new UiTextField(10);
-		startDate.setText(getProject().getMetadata().getStartDate());
-		startDate.addFocusListener(new FocusHandler(ProjectMetadata.TAG_START_DATE, startDate));
+		startDate = createFieldComponent(ProjectMetadata.TAG_START_DATE, 10);
 		add(startDate);
 
 		add(new UiLabel(EAM.text("Label|Data Effective Date:")));
-		effectiveDate = new UiTextField(10);
-		effectiveDate.setText(getProject().getMetadata().getEffectiveDate());
-		effectiveDate.addFocusListener(new FocusHandler(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, effectiveDate));;
+		effectiveDate = createFieldComponent(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, 10);
 		add(effectiveDate);
 
 		add(new UiLabel(EAM.text("Label|Size in Hectares:")));
-		sizeInHectares = new UiTextField(10);
-		sizeInHectares.setText(getProject().getMetadata().getSizeInHectares());
-		sizeInHectares.addFocusListener(new FocusHandler(ProjectMetadata.TAG_SIZE_IN_HECTARES, sizeInHectares));
+		sizeInHectares = createFieldComponent(ProjectMetadata.TAG_SIZE_IN_HECTARES, 10);
 		add(sizeInHectares);
 		
 		add(new UiLabel(EAM.text("Label|Team Members:")));
@@ -68,7 +56,7 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 		
 		mainWindow.getProject().addCommandExecutedListener(this);
 	}
-	
+
 	public void rebuild()
 	{
 		teamEditorComponent.rebuild();
