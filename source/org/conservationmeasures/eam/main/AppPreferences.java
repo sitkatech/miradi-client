@@ -83,7 +83,6 @@ public class AppPreferences
 	
 	public void setBoolean(String tag, boolean state)
 	{
-		System.out.println("setting state to "+state);
 		if (tag.equals(TAG_GRID_VISIBLE))
 			isGridVisible = state;
 		else
