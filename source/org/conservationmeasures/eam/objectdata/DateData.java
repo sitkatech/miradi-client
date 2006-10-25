@@ -31,11 +31,17 @@ public class DateData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
+		if(newValue.length() == 0)
+		{
+			date = null;
+			return;
+		}
+		
 		try
 		{
 			date = MultiCalendar.createFromIsoDateString(newValue);
 		}
-		catch (NumberFormatException e)
+		catch (Exception e)
 		{
 			throw new InvalidDateException(e);
 		}

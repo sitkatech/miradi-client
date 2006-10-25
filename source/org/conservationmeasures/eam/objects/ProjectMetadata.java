@@ -19,25 +19,12 @@ public class ProjectMetadata extends EAMBaseObject
 	public ProjectMetadata(BaseId idToUse)
 	{
 		super(idToUse);
-		projectName = new StringData();
-		projectScope = new StringData();
-		projectVision = new StringData();
-		startDate = new DateData();
-		effectiveDate = new DateData();
-		sizeInHectares = new NumberData();
-		teamResourceIds = new IdListData();
+		clear();
 	}
 
 	public ProjectMetadata(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
-		projectName = new StringData(json.getString(TAG_PROJECT_NAME));
-		projectScope = new StringData(json.optString(TAG_PROJECT_SCOPE));
-		projectVision = new StringData(json.optString(TAG_PROJECT_VISION));
-		startDate = new DateData(json.optString(TAG_START_DATE));
-		effectiveDate = new DateData(json.optString(TAG_DATA_EFFECTIVE_DATE));
-		sizeInHectares = new NumberData(json.optString(TAG_SIZE_IN_HECTARES));
-		teamResourceIds = new IdListData(json.optString(TAG_TEAM_RESOURCE_IDS));
 	}
 	
 	public int getType()
@@ -85,59 +72,26 @@ public class ProjectMetadata extends EAMBaseObject
 		return teamResourceIds.getIdList();
 	}
 
-	public void setData(String fieldTag, String dataValue) throws Exception
+	void clear()
 	{
-		if(TAG_PROJECT_NAME.equals(fieldTag))
-			projectName.set(dataValue);
-		else if(TAG_PROJECT_SCOPE.equals(fieldTag))
-			projectScope.set(dataValue);
-		else if(TAG_PROJECT_VISION.equals(fieldTag))
-			projectVision.set(dataValue);
-		else if(TAG_START_DATE.equals(fieldTag))
-			startDate.set(dataValue);
-		else if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
-			effectiveDate.set(dataValue);
-		else if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
-			sizeInHectares.set(dataValue);
-		else if(TAG_TEAM_RESOURCE_IDS.equals(fieldTag))
-			teamResourceIds.set(dataValue);
-		else
-			super.setData(fieldTag, dataValue);
-	}
-
-	public String getData(String fieldTag)
-	{
-		if(TAG_PROJECT_NAME.equals(fieldTag))
-			return getProjectName();
-		if(TAG_PROJECT_SCOPE.equals(fieldTag))
-			return getProjectScope();
-		if(TAG_PROJECT_VISION.equals(fieldTag))
-			return getProjectVision();
-		if(TAG_START_DATE.equals(fieldTag))
-			return startDate.get();
-		if(TAG_DATA_EFFECTIVE_DATE.equals(fieldTag))
-			return effectiveDate.get();
-		if(TAG_SIZE_IN_HECTARES.equals(fieldTag))
-			return sizeInHectares.get();
-		if(TAG_TEAM_RESOURCE_IDS.equals(fieldTag))
-			return teamResourceIds.get();
+		super.clear();
+		projectName = new StringData();
+		projectScope = new StringData();
+		projectVision = new StringData();
+		startDate = new DateData();
+		effectiveDate = new DateData();
+		sizeInHectares = new NumberData();
+		teamResourceIds = new IdListData();
 		
-		return super.getData(fieldTag);
+		addField(TAG_PROJECT_NAME, projectName);
+		addField(TAG_PROJECT_SCOPE, projectScope);
+		addField(TAG_PROJECT_VISION, projectVision);
+		addField(TAG_START_DATE, startDate);
+		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
+		addField(TAG_SIZE_IN_HECTARES, sizeInHectares);
+		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
 	}
 
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_PROJECT_NAME, projectName.get());
-		json.put(TAG_PROJECT_SCOPE, projectScope.get());
-		json.put(TAG_PROJECT_VISION, projectVision.get());
-		json.put(TAG_START_DATE, getStartDate());
-		json.put(TAG_DATA_EFFECTIVE_DATE, getEffectiveDate());
-		json.put(TAG_SIZE_IN_HECTARES, sizeInHectares.get());
-		json.put(TAG_TEAM_RESOURCE_IDS, teamResourceIds.get());
-		return json;
-	}
-	
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
 	public static final String TAG_PROJECT_VISION = "ProjectVision";

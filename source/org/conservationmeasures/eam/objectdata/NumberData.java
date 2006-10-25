@@ -30,6 +30,12 @@ public class NumberData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
+		if(newValue.length() == 0)
+		{
+			value = Double.NaN;
+			return;
+		}
+		
 		try
 		{
 			value = Double.parseDouble(newValue);
