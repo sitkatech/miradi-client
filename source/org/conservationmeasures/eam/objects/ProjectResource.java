@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.martus.util.xml.XmlUtilities;
 
 public class ProjectResource extends EAMBaseObject
 {
@@ -85,21 +84,6 @@ public class ProjectResource extends EAMBaseObject
 		return EAM.text("Label|(Undefined Resource)");
 	}
 	
-	public static String getResourcesAsHtml(ProjectResource[] resources)
-	{
-		StringBuffer result = new StringBuffer();
-		result.append("<html>");
-		for(int i = 0; i < resources.length; ++i)
-		{
-			if(i > 0)
-				result.append("; ");
-			result.append(XmlUtilities.getXmlEncoded(resources[i].toString()));
-		}
-		result.append("</html>");
-		
-		return result.toString();
-	}
-
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_NAME = "Name";
 	public static final String TAG_POSITION = "Position";

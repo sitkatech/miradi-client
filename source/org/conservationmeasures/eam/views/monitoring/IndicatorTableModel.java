@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.objecthelpers.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -33,7 +34,7 @@ public class IndicatorTableModel extends AnnotationTableModel
 		{
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(modelNodes);
+			return EAMBaseObject.toHtml(modelNodes);
 		}
 		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
@@ -48,13 +49,13 @@ public class IndicatorTableModel extends AnnotationTableModel
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
+			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
 		if(indicatorColumnTags[columnIndex].equals(Indicator.TAG_RESOURCE_IDS))
 		{
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorId);
 			ProjectResource[] resources = getResourcesForIndicator(project, indicator);
-			return ProjectResource.getResourcesAsHtml(resources);
+			return EAMBaseObject.toHtml(resources);
 		}
 		
 		return super.getValueAt(rowIndex, columnIndex);

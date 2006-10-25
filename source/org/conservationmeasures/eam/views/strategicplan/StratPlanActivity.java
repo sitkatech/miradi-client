@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -75,7 +76,7 @@ public class StratPlanActivity extends StratPlanObject
 	
 	String getResourcesAsHtml()
 	{
-		return ProjectResource.getResourcesAsHtml(getResources());
+		return EAMBaseObject.toHtml(getResources());
 	}
 
 	private ProjectResource[] getResources()

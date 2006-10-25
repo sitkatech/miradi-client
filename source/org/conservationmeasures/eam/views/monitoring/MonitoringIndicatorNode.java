@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -49,7 +50,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		if(MonitoringModel.columnTags[column].equals(Indicator.TAG_RESOURCE_IDS))
 		{
 			ProjectResource[] resources = IndicatorTableModel.getResourcesForIndicator(project, indicator);
-			return ProjectResource.getResourcesAsHtml(resources);
+			return EAMBaseObject.toHtml(resources);
 		}
 		return null;
 	}

@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
-import org.martus.util.xml.XmlUtilities;
 
 abstract public class ConceptualModelNode extends EAMBaseObject
 {
@@ -246,7 +245,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}
 
-	public static String getNodeLabelsAsHtml(ConceptualModelNode[] modelNodes)
+	/*public static String getNodeLabelsAsHtml(ConceptualModelNode[] modelNodes)
 	{
 		StringBuffer result = new StringBuffer();
 		result.append("<html>");
@@ -259,7 +258,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		result.append("</html>");
 		
 		return result.toString();
-	}
+	}*/
 
 	void clear()
 	{

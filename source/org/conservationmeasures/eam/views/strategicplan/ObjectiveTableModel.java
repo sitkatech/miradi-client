@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -31,28 +32,28 @@ class ObjectiveTableModel extends AnnotationTableModel
 		{
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisObjective(objectiveId).toNodeArray();
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(modelNodes);
+			return EAMBaseObject.toHtml(modelNodes);
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
 		{
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
+			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_TARGETS))
 		{
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			TargetSet directThreats = new TargetSet(modelNodes);
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
+			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
 		if(objectiveColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
 		{
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisObjective(objectiveId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
-			return ConceptualModelNode.getNodeLabelsAsHtml(directThreats.toNodeArray());
+			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
 		
 		return super.getValueAt(rowIndex, columnIndex);

@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
+import org.martus.util.xml.XmlUtilities;
 
 abstract public class EAMBaseObject implements EAMObject
 {
@@ -169,6 +170,21 @@ abstract public class EAMBaseObject implements EAMObject
 		return json;
 	}
 	
+	public static String toHtml(EAMObject[] resources)
+	{
+		StringBuffer result = new StringBuffer();
+		result.append("<html>");
+		for(int i = 0; i < resources.length; ++i)
+		{
+			if(i > 0)
+				result.append("; ");
+			result.append(XmlUtilities.getXmlEncoded(resources[i].toString()));
+		}
+		result.append("</html>");
+		
+		return result.toString();
+	}
+
 	protected static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
