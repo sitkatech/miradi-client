@@ -42,9 +42,19 @@ public class ProjectMetadata extends EAMBaseObject
 		return projectScope.get();
 	}
 	
+	public String getShortProjectScope()
+	{
+		return shortProjectScope.get();
+	}
+	
 	public String getProjectVision()
 	{
 		return projectVision.get();
+	}
+	
+	public String getShortProjectVision()
+	{
+		return shortProjectVision.get();
 	}
 	
 	public String getStartDate()
@@ -77,7 +87,9 @@ public class ProjectMetadata extends EAMBaseObject
 		super.clear();
 		projectName = new StringData();
 		projectScope = new StringData();
+		shortProjectScope = new StringData();
 		projectVision = new StringData();
+		shortProjectVision = new StringData();
 		startDate = new DateData();
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
@@ -85,7 +97,9 @@ public class ProjectMetadata extends EAMBaseObject
 		
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
+		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
 		addField(TAG_PROJECT_VISION, projectVision);
+		addField(TAG_SHORT_PROJECT_VISION, shortProjectVision);
 		addField(TAG_START_DATE, startDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_SIZE_IN_HECTARES, sizeInHectares);
@@ -100,7 +114,9 @@ public class ProjectMetadata extends EAMBaseObject
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
+	public static final String TAG_SHORT_PROJECT_SCOPE = "ShortProjectScope";
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
+	public static final String TAG_SHORT_PROJECT_VISION = "ShortProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
@@ -109,7 +125,9 @@ public class ProjectMetadata extends EAMBaseObject
 
 	StringData projectName;
 	StringData projectScope;
+	StringData shortProjectScope;
 	StringData projectVision;
+	StringData shortProjectVision;
 	DateData startDate;
 	DateData effectiveDate;
 	NumberData sizeInHectares;
