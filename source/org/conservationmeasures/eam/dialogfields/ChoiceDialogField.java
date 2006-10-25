@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogs;
+package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
 
