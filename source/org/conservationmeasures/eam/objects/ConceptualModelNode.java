@@ -230,6 +230,11 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return json;
 	}
 	
+	public String toString()
+	{
+		return getLabel();
+	}
+	
 	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, CreateModelNodeParameter parameter)
 	{
 		NodeType nodeType = parameter.getNodeType();
