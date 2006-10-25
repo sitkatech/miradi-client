@@ -65,13 +65,15 @@ public class SummaryView extends UmbrellaView
 	
 	private JComponent createScrollableSummaryPanel()
 	{
-		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow());
 		UiTabbedPane tabbedPanel = new UiTabbedPane();
+		
 		tabbedPanel.addTab(EAM.text("General"), new CrossOrganizationSummaryPanel(getMainWindow()));
-		UiScrollPane uiScrollPane = new UiScrollPane(crossOrganizationSummaryPanel);
+		tabbedPanel.addTab(EAM.text("TNC"), new TNCSummaryPanel(getMainWindow()));
+
+		UiScrollPane uiScrollPane = new UiScrollPane(tabbedPanel);
 		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
 		uiScrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
-		return tabbedPanel;
+		return uiScrollPane;
 	}
 
 	public void becomeInactive() throws Exception
