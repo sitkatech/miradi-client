@@ -8,9 +8,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectpools.ResourcePool;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 
@@ -30,18 +27,6 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 		addButtons(extraButtons);
 	}
 
-	public ProjectResource getSelectedResource()
-	{
-		int row = table.getSelectedRow();
-		if(row < 0)
-			return null;
-		
-		ResourcePool pool = getProject().getResourcePool();
-		BaseId resourceId = pool.getIds()[row];
-		ProjectResource resource = pool.find(resourceId);
-		return resource;
-	}
-	
 	static final String[] columnTags = {"Initials", "Name", "Position", };
 	static final Class[] buttonActionClasses = {
 		ActionCreateResource.class, 

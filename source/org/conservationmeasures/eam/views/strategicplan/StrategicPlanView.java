@@ -57,6 +57,7 @@ public class StrategicPlanView extends TabbedView
 		addTab(EAM.text("Goals"), goalPanel);
 		addTab(EAM.text("Objectives"), objectivePanel);
 		addTab(EAM.text("Resources"), new ResourceManagementPanel(this));
+		addTab(EAM.text("Activities"), new ActivitiesPanel(this));
 	}
 	
 	public void deleteTabs()
