@@ -21,8 +21,8 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 {
 	public CrossOrganizationSummaryPanel(MainWindow mainWindowToUse)
 	{
-		mainWindow = mainWindowToUse;
-
+		super(mainWindowToUse);
+		
 		add(new UiLabel(EAM.text("Label|Filename:")));
 		add(new UiLabel(getProject().getFilename()));
 		

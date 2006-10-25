@@ -90,6 +90,12 @@ public class ProjectMetadata extends EAMBaseObject
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
+		
+		
+		
+		tncLessonsLearned = new StringData();
+		
+		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -99,6 +105,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
+	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
 
 	StringData projectName;
 	StringData projectScope;
@@ -107,4 +114,5 @@ public class ProjectMetadata extends EAMBaseObject
 	DateData effectiveDate;
 	NumberData sizeInHectares;
 	IdListData teamResourceIds;
+	StringData tncLessonsLearned;
 }

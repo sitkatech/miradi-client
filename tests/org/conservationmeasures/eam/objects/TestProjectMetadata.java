@@ -29,6 +29,11 @@ public class TestProjectMetadata extends EAMTestCase
 		verifyDataField(ProjectMetadata.TAG_TEAM_RESOURCE_IDS, sampleIdList.toString());
 	}
 	
+	public void testTncDataFields() throws Exception
+	{
+		verifyDataField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "Lessons learned");
+	}
+	
 	public void testStartDate() throws Exception
 	{
 		ProjectMetadata info = new ProjectMetadata(new BaseId(63));

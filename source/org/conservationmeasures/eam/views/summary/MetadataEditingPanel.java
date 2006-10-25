@@ -21,9 +21,10 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class MetadataEditingPanel extends JPanel
 {
-	public MetadataEditingPanel()
+	public MetadataEditingPanel(MainWindow mainWindowToUse)
 	{
 		super(new BasicGridLayout(0, 2));
+		mainWindow = mainWindowToUse;
 	}
 	
 	Project getProject()
