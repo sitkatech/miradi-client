@@ -11,10 +11,10 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -45,6 +46,8 @@ import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -69,6 +72,26 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testGetTaskResources() throws Exception
+	{
+		BaseId taskId = project.createObject(ObjectType.TASK);
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		assertEquals("Not empty for zero resources?", 0, project.getTaskResources(task).length);
+		BaseId resourceId1 = project.createObject(ObjectType.PROJECT_RESOURCE);
+		ProjectResource resource1 = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId1);
+		resource1.setLabel("One");
+		BaseId resourceId2 = project.createObject(ObjectType.PROJECT_RESOURCE);
+		ProjectResource resource2 = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId2);
+		resource2.setLabel("Two");
+		IdList resourceIds = new IdList();
+		resourceIds.add(resourceId1);
+		resourceIds.add(resourceId2);
+		task.setData(Task.TAG_RESOURCE_IDS, resourceIds.toString());
+		assertEquals("wrong length", 2, project.getTaskResources(task).length);
+		assertEquals("wrong first", resourceId1, project.getTaskResources(task)[0].getId());
+		assertEquals("wrong second", resourceId2, project.getTaskResources(task)[1].getId());
 	}
 	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception

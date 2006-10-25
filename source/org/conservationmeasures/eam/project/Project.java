@@ -54,6 +54,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -293,6 +294,16 @@ public class Project
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		return objectManager.getObjectData(objectType, objectId, fieldTag);
+	}
+	
+	public ProjectResource[] getTaskResources(Task task)
+	{
+		ResourcePool pool = getResourcePool();
+		IdList resourceIds = task.getResourceIdList();
+		ProjectResource[] resources = new ProjectResource[resourceIds.size()];
+		for(int i = 0; i < resourceIds.size(); ++i)
+			resources[i] = pool.find(resourceIds.get(i));
+		return resources;
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
