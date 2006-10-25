@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.summary;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
@@ -19,6 +18,7 @@ import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
@@ -53,7 +53,7 @@ public class SummaryView extends UmbrellaView
 	{
 		removeAll();
 
-		bigSplitter = new ViewSplitPane(createSummaryWizardPanel(), createScrolableSummaryPanel(), bigSplitter);
+		bigSplitter = new ViewSplitPane(createSummaryWizardPanel(), createScrollableSummaryPanel(), bigSplitter);
 
 		add(bigSplitter, BorderLayout.CENTER);
 	}
@@ -64,15 +64,13 @@ public class SummaryView extends UmbrellaView
 	}
 	
 	
-	private SummaryPanel createScrolableSummaryPanel()
+	private UiScrollPane createScrollableSummaryPanel()
 	{
 		summaryPanel = new SummaryPanel(getMainWindow());
 		UiScrollPane uiScrollPane = new UiScrollPane(summaryPanel);
-		uiScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(getProject().getGridSize());
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(getProject().getGridSize());
-		return summaryPanel;
+		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
+		uiScrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
+		return uiScrollPane;
 	}
 
 	public void becomeInactive() throws Exception
