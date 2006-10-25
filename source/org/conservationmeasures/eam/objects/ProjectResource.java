@@ -92,7 +92,7 @@ public class ProjectResource extends EAMBaseObject
 		for(int i = 0; i < resources.length; ++i)
 		{
 			if(i > 0)
-				result.append(", ");
+				result.append("; ");
 			result.append(XmlUtilities.getXmlEncoded(resources[i].toString()));
 		}
 		result.append("</html>");

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestProjectResource extends EAMTestCase
@@ -13,6 +14,26 @@ public class TestProjectResource extends EAMTestCase
 	public TestProjectResource(String name)
 	{
 		super(name);
+	}
+	
+	public void testGetResourcesAsHtml()
+	{
+		int resourceCount = 3;
+		String expected = "<html>";
+		ProjectResource[] projectResources = new ProjectResource[resourceCount];
+		for (int i = 0; i < projectResources.length; i++)
+		{
+			projectResources[i] = new ProjectResource(new BaseId(i));
+			projectResources[i].name = new StringData("resource "+i);
+			expected = expected + projectResources[i].name;
+			if ((i + 1) < projectResources.length)
+				expected = expected +"; ";
+			
+		}
+		expected = expected + "</html>";
+		
+		String resourcesAsHtml = ProjectResource.getResourcesAsHtml(projectResources);
+		assertEquals("did not return resources as Html?", expected, resourcesAsHtml);
 	}
 
 	public void testFields() throws Exception
