@@ -67,8 +67,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		this();
 		project = mainWindow.getProject();
-		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
-		setGridVisible(isGridVisible);
+		updateDiagramComponent(mainWindow);
 		Actions actions = mainWindow.getActions();
 		installKeyBindings(actions);
 		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
@@ -77,13 +76,10 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 	}
     	
-    public void updateDiagramComponent(AppPreferences appPreferences, String tag)
+    public void updateDiagramComponent(MainWindow mainWindow)
     {
-    	if (tag.equals(AppPreferences.TAG_GRID_VISIBLE))
-    	{
-    		boolean isGridVisible = appPreferences.getBoolean(AppPreferences.TAG_GRID_VISIBLE);
+    		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
     		setGridVisible(isGridVisible);
-    	}
     }
     	
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()

@@ -121,6 +121,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 	}
 
+	public AppPreferences getAppPreferences()
+	{
+		return preferences;
+	}
+	
 	private File getPreferencesFile()
 	{
 		File appPreferencesFile = new File(EAM.getHomeDirectory(), APP_PREFERENCES_FILENAME);
@@ -338,7 +343,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void setBooleanPreference(String genericTag, boolean state)
 	{
 		preferences.setBoolean(genericTag, state);
-		getDiagramComponent().updateDiagramComponent(preferences, genericTag);
+		getDiagramComponent().updateDiagramComponent(this);
 		repaint();
 	}
 	
