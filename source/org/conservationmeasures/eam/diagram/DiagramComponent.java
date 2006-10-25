@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
+import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -48,35 +49,43 @@ import org.martus.swing.Utilities;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
 {
-    
-    	public DiagramComponent()
-    	{
-    	    	setUI(new EAMGraphUI());
-        
-    	    	disableInPlaceEditing();
-    	    	setDisconnectable(false);
-    	    	setDisconnectOnMove(false);
-    	    	setBendable(false);
-    	    	setGridSize(Project.DEFAULT_GRID_SIZE);
-    	    	setGridEnabled(true);
-    	    	setGridVisible(true);
-    	    	setGridMode(JGraph.CROSS_GRID_MODE);
-    	    	setSelectionModel(new EAMGraphSelectionModel(this));
-    	}    
-        
-    	public DiagramComponent(MainWindow mainWindow)
-    	{
-    	    	this();
-    	    	project = mainWindow.getProject();
-    	    	Actions actions = mainWindow.getActions();
+	public DiagramComponent()
+	{
+		setUI(new EAMGraphUI());
 
-    	    	installKeyBindings(actions);
-    	    	diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
+		disableInPlaceEditing();
+		setDisconnectable(false);
+		setDisconnectOnMove(false);
+		setBendable(false);
+		setGridSize(Project.DEFAULT_GRID_SIZE);
+		setGridEnabled(true);
+		setGridMode(JGraph.CROSS_GRID_MODE);
+		setSelectionModel(new EAMGraphSelectionModel(this));
+	}    
+
+	public DiagramComponent(MainWindow mainWindow)
+	{
+		this();
+		project = mainWindow.getProject();
+		boolean isGridVisible = mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE);
+		setGridVisible(isGridVisible);
+		Actions actions = mainWindow.getActions();
+		installKeyBindings(actions);
+		diagramContextMenuHandler = new DiagramContextMenuHandler(this, actions);
 		MouseEventHandler mouseHandler = new MouseEventHandler(mainWindow);
 		addMouseListener(mouseHandler);
 		addGraphSelectionListener(mouseHandler);
 	}
-	
+    	
+    public void updateDiagramComponent(AppPreferences appPreferences, String tag)
+    {
+    	if (tag.equals(AppPreferences.TAG_GRID_VISIBLE))
+    	{
+    		boolean isGridVisible = appPreferences.getBoolean(AppPreferences.TAG_GRID_VISIBLE);
+    		setGridVisible(isGridVisible);
+    	}
+    }
+    	
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
 	{
 		return (EAMGraphSelectionModel)getSelectionModel();

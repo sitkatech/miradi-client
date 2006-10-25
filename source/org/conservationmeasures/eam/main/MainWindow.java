@@ -335,6 +335,18 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences.save(getPreferencesFile());
 	}
 	
+	public void setBooleanPreference(String genericTag, boolean state)
+	{
+		preferences.setBoolean(genericTag, state);
+		getDiagramComponent().updateDiagramComponent(preferences, genericTag);
+		repaint();
+	}
+	
+	public boolean getBooleanPreference(String genericTag)
+	{
+		return preferences.getBoolean(genericTag);
+	}
+	
 	public Color getColorPreference(String colorTag)
 	{
 		return preferences.getColor(colorTag);

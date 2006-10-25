@@ -81,6 +81,23 @@ public class AppPreferences
 			throw new RuntimeException(tag);
 	}
 	
+	public void setBoolean(String tag, boolean state)
+	{
+		System.out.println("setting state to "+state);
+		if (tag.equals(TAG_GRID_VISIBLE))
+			isGridVisible = state;
+		else
+			throw new RuntimeException(tag);
+	}
+	
+	public boolean getBoolean(String tag)
+	{
+		if (tag.equals(TAG_GRID_VISIBLE))
+			return isGridVisible;
+	
+		throw new RuntimeException(tag);
+	}
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
@@ -90,6 +107,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_SCOPE, scopeColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
+		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		
 		return json;
 	}
@@ -102,6 +120,7 @@ public class AppPreferences
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
 		
+		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, false);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 	}
 	
@@ -111,6 +130,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
+	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
@@ -124,5 +144,6 @@ public class AppPreferences
 	public Color targetColor;
 	public Color scopeColor;
 	
+	public boolean isGridVisible; 
 	boolean isMaximized;
 }

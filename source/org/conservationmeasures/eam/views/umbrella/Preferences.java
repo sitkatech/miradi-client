@@ -28,13 +28,13 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.views.Doer;
+import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
 public class Preferences extends Doer
 {
-
 	public boolean isAvailable()
 	{
 		return true;
@@ -163,6 +163,10 @@ public class Preferences extends Doer
 			scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 			panel.add(scopeDropdown);
 			
+			gridVisibleCheckBox = new UiCheckBox("Show Grid");
+			gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
+			panel.add(gridVisibleCheckBox);
+			
 			return panel;
 		}
 
@@ -192,6 +196,8 @@ public class Preferences extends Doer
 			Color scopeColor = (Color)scopeDropdown.getSelectedItem();
 			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
 			
+			mainWindow.setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
+			
 			try
 			{
 				mainWindow.savePreferences();
@@ -209,6 +215,7 @@ public class Preferences extends Doer
 		UiComboBox indirectFactorDropdown;
 		UiComboBox targetDropdown;
 		UiComboBox scopeDropdown;
+		UiCheckBox gridVisibleCheckBox; 
 		
 		static final String headerText = "<html><H2>e-Adaptive Management Preferences</H2></html>";
 	}
