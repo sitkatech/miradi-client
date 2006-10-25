@@ -11,15 +11,14 @@ import java.awt.event.MouseEvent;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 
 public class MouseAdapterDoubleClickDelegator extends MouseAdapter
 {
 	
-	public MouseAdapterDoubleClickDelegator(Class delegateActionIn, MainWindow mainWindow) 
+	public MouseAdapterDoubleClickDelegator(EAMAction delegateActionIn) 
 	{
 		super();
-		delegateAction = mainWindow.getActions().get(delegateActionIn);
+		delegateAction = delegateActionIn;
 	}
 	
     public void mouseClicked(MouseEvent e)
