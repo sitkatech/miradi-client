@@ -25,6 +25,9 @@ public class TestViewData extends EAMTestCase
 		int tab = 6;
 		vd.setData(ViewData.TAG_CURRENT_TAB, Integer.toString(tab));
 		assertEquals(6, new Integer(vd.getData(ViewData.TAG_CURRENT_TAB)).intValue());
+		
+		ViewData got = new ViewData(55, vd.toJson());
+		assertEquals(vd.getData(ViewData.TAG_CURRENT_TAB), got.getData(ViewData.TAG_CURRENT_TAB));
 	}
 
 	public void testMode() throws Exception

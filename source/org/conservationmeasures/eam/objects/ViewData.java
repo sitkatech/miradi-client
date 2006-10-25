@@ -10,8 +10,8 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -21,43 +21,14 @@ public class ViewData extends EAMBaseObject
 	public ViewData(BaseId idToUse)
 	{
 		super(idToUse);
-		currentMode = new StringData();
-		brainstormNodeIds = new IdListData();
+		clear();
 	}
-	
+
 	public ViewData(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
-		currentMode = new StringData(json.optString(TAG_CURRENT_MODE));
-		brainstormNodeIds = new IdListData(json.optString(TAG_BRAINSTORM_NODE_IDS));
 	}
 
-	public String getData(String fieldTag)
-	{
-		if(TAG_CURRENT_MODE.equals(fieldTag))
-			return getCurrentMode();
-		
-		if(TAG_CURRENT_TAB.equals(fieldTag))
-			return Integer.toString(getCurrentTab());
-		
-		if(TAG_BRAINSTORM_NODE_IDS.equals(fieldTag))
-			return getBrainstormNodeIds().toString();
-		
-		return super.getData(fieldTag);
-	}
-
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(TAG_CURRENT_MODE.equals(fieldTag))
-			setCurrentMode(dataValue);
-		else if(TAG_CURRENT_TAB.equals(fieldTag))
-			setCurrentTab(new Integer(dataValue).intValue());
-		else if(TAG_BRAINSTORM_NODE_IDS.equals(fieldTag))
-			setBrainstormNodeIds(new IdList(dataValue));
-		else
-			super.setData(fieldTag, dataValue);
-	}
-	
 	public Command[] buildCommandsToAddNode(BaseId idToAdd) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
@@ -76,19 +47,14 @@ public class ViewData extends EAMBaseObject
 		return new Command[] {cmd};
 	}
 	
-	public void setCurrentTab(int newTab)
+	public void setCurrentTab(int newTab) throws Exception
 	{
-		currentTab = newTab;
+		currentTab.set(Integer.toString(newTab));
 	}
 	
-	private int getCurrentTab()
+	public int getCurrentTab()
 	{
-		return currentTab;
-	}
-
-	private void setCurrentMode(String currentMode) throws Exception
-	{
-		this.currentMode.set(currentMode);
+		return currentTab.asInt();
 	}
 
 	private String getCurrentMode()
@@ -96,29 +62,23 @@ public class ViewData extends EAMBaseObject
 		return currentMode.get();
 	}
 
-	private void setBrainstormNodeIds(IdList brainstormNodeIds)
-	{
-		this.brainstormNodeIds.set(brainstormNodeIds);
-	}
-
-	private IdList getBrainstormNodeIds()
-	{
-		return brainstormNodeIds.getIdList();
-	}
-
 	public int getType()
 	{
 		return ObjectType.VIEW_DATA;
 	}
 	
-	public EnhancedJsonObject toJson()
+	void clear()
 	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_CURRENT_MODE, getCurrentMode());
-		json.put(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds.get());
-		return json;
+		super.clear();
+		currentMode = new StringData();
+		brainstormNodeIds = new IdListData();
+		currentTab = new IntegerData();
+		
+		addField(TAG_CURRENT_MODE, currentMode);
+		addField(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds);
+		addField(TAG_CURRENT_TAB, currentTab);
 	}
-
+	
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_BRAINSTORM_NODE_IDS = "BrainstormNodeIds";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
@@ -126,7 +86,7 @@ public class ViewData extends EAMBaseObject
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
 
-	private int currentTab;
+	private IntegerData currentTab;
 	private StringData currentMode;
 	private IdListData brainstormNodeIds;
 }

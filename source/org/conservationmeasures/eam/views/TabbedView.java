@@ -41,8 +41,9 @@ abstract public class TabbedView extends UmbrellaView
 		try
 		{
 			createTabs();
-			EAM.logVerbose("Selecting tab " + previousCurrentTab);
-			tabs.setSelectedIndex(previousCurrentTab);
+			int desiredTab = getViewData().getCurrentTab();
+			EAM.logVerbose("Selecting tab " + desiredTab);
+			tabs.setSelectedIndex(desiredTab);
 		}
 		finally
 		{
@@ -52,9 +53,6 @@ abstract public class TabbedView extends UmbrellaView
 
 	public void becomeInactive() throws Exception
 	{
-		if(currentTab >= 0)
-			previousCurrentTab = currentTab;
-
 		ignoreTabChanges = true;
 		try
 		{
@@ -154,6 +152,7 @@ abstract public class TabbedView extends UmbrellaView
 			{
 				Command tabChangeCommand = createTabChangeCommand(newTab);
 				getViewData().setCurrentTab(newTab);
+				getProject().getDatabase().writeObject(getViewData());
 				if(!getProject().isExecutingACommand())
 				{
 					getProject().recordCommand(tabChangeCommand);
@@ -178,7 +177,6 @@ abstract public class TabbedView extends UmbrellaView
 	
 	JTabbedPane tabs;
 	int currentTab;
-	int previousCurrentTab;
 	boolean ignoreTabChanges;
 	
 }
