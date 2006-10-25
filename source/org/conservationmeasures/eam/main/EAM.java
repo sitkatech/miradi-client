@@ -152,6 +152,8 @@ public class EAM
 	}
 
 	///////////////////////////////////////////////////////////////////
+	
+	public static int STANDARD_SCROLL_INCREMENT = 12;
 
 	public static String NEWLINE = System.getProperty("line.separator");
 	public static MainWindow mainWindow;
