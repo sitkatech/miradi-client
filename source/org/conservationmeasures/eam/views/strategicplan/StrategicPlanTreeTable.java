@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.utils.EAMTreeTableModelAdapter;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
@@ -24,6 +25,7 @@ public class StrategicPlanTreeTable extends JTreeTable
 	public StrategicPlanTreeTable(TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
+		super.setModel(new EAMTreeTableModelAdapter(treeTableModel, tree));
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
 		tree.setRootVisible(false);

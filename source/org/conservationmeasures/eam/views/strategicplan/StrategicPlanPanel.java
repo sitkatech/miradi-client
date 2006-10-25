@@ -100,7 +100,6 @@ EAM.logDebug("" + row);
 		}
 		tree.clearSelection();
 		tree.setRowSelectionInterval(row, row);
-		System.out.println("Selected row " + row);
 	}
 	
 	public Task getSelectedTask()
