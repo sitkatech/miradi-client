@@ -8,7 +8,6 @@ import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextField;
 
 public class ProjectScopePropertiesDialog extends JDialog
 {
@@ -24,5 +23,4 @@ public class ProjectScopePropertiesDialog extends JDialog
 	}	
 
 	MainWindow mainWindow;
-	UiTextField textField;
 }

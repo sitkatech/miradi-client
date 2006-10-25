@@ -23,24 +23,20 @@ public class ProjectScopePanel extends MetadataEditingPanel
 	private void createFields()
 	{
 		add(new UiLabel(EAM.text("Label|Project Scope:")));
-		projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
+		UiTextField projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
 		add(projectScope);
 		
 		add(new UiLabel(EAM.text("Label|Short Project Scope:")));
-		shortProjectScope = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, 50);
+		UiTextField shortProjectScope = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, 50);
 		add(shortProjectScope);
 		
 		add(new UiLabel(EAM.text("Label|Project Vision:")));
-		projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
+		UiTextField projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
 		add(projectVision);
 		
 		add(new UiLabel(EAM.text("Label|Short Project Vision:")));
-		shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
+		UiTextField shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
 		add(shortProjectVision);
 	}
 
-	UiTextField projectScope;
-	UiTextField shortProjectScope;
-	UiTextField projectVision;
-	UiTextField shortProjectVision;
 }
