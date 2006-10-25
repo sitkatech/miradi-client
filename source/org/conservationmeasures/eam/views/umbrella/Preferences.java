@@ -162,8 +162,9 @@ public class Preferences extends Doer
 			scopeDropdown = createColorsDropdown(scopeColorChoices);
 			scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
 			panel.add(scopeDropdown);
-			
-			gridVisibleCheckBox = new UiCheckBox("Show Grid");
+
+			panel.add(new UiLabel("Show Grid"));
+			gridVisibleCheckBox = new UiCheckBox();
 			gridVisibleCheckBox.setSelected(mainWindow.getBooleanPreference(AppPreferences.TAG_GRID_VISIBLE));
 			panel.add(gridVisibleCheckBox);
 			
