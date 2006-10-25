@@ -10,6 +10,7 @@ import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 
+import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiComboBox;
@@ -52,13 +53,14 @@ public class ChoiceDialogField extends DialogField
 	
 	class RatingChoiceRenderer extends DefaultListCellRenderer
 	{
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
-			RatingChoice choice = (RatingChoice)value;
-			return super.getListCellRendererComponent(list, choice.getLabel(), index, isSelected, cellHasFocus);
+			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			RatingChoice thisOption = (RatingChoice)value;
+			setIcon(new RatingIcon(thisOption));
+			return cell;
 		}
-		
 	}
-
+	
 	UiComboBox combo;
 }

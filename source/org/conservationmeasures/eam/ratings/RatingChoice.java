@@ -31,6 +31,11 @@ public class RatingChoice
 		return color;
 	}
 	
+	public String toString()
+	{
+		return getLabel();
+	}
+	
 	
 	String code;
 	String label;

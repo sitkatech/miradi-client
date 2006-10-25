@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.dialogfields.ChoiceDialogField;
+import org.conservationmeasures.eam.dialogfields.RatingDisplayField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
@@ -67,6 +68,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
+import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
@@ -222,8 +224,8 @@ public class NodePropertiesDialog extends JDialog implements
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 			
 			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
-			ratingComponent = new UiTextField("");
-			ratingComponent.setEditable(false);
+			RatingDisplayField ratingSummaryField = new RatingDisplayField(new StrategyRatingSummary(""));
+			ratingComponent = (UiLabel)ratingSummaryField.getComponent();
 			detailsTab.add(ratingComponent);
 			updateRating();
 		}
@@ -299,7 +301,7 @@ public class NodePropertiesDialog extends JDialog implements
 	void updateRating()
 	{
 		RatingChoice rating = ((ConceptualModelIntervention)getCurrentNode().getUnderlyingObject()).getStrategyRating();
-		ratingComponent.setText(rating.getLabel());
+		ratingComponent.setText(rating.getCode());
 	}
 	
 	private Component createIndicatorsGrid(DiagramNode node)
@@ -1071,7 +1073,7 @@ public class NodePropertiesDialog extends JDialog implements
 	
 	UiComboBox feasibilityComponent;
 	
-	UiTextField ratingComponent;
+	UiLabel ratingComponent;
 
 	boolean ignoreObjectiveChanges;
 
