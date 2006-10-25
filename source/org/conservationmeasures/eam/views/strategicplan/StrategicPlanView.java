@@ -72,7 +72,7 @@ public class StrategicPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new WizardPanel();
+		return new StrategicPlanWizardPanel();
 	}
 
 	public StrategicPlanPanel getStrategicPlanPanel()
