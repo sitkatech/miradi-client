@@ -43,6 +43,11 @@ public class IntegerData extends ObjectData
 		return Integer.toString(value);
 	}
 	
+	public int asInt()
+	{
+		return value;
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof IntegerData))
