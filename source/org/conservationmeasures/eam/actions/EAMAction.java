@@ -9,6 +9,8 @@ import javax.swing.AbstractAction;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+
 public abstract class EAMAction extends AbstractAction
 {
 	public EAMAction(String label, String icon)
@@ -24,6 +26,8 @@ public abstract class EAMAction extends AbstractAction
 			
 	}
 
+	public abstract void doAction() throws CommandFailedException;
+	
 	public ImageIcon getIcon()
 	{
 		return (ImageIcon)getValue("icon");

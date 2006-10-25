@@ -7,22 +7,31 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import org.martus.swing.UiButton;
+
+import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 
 public class MouseAdapterDoubleClickDelegator extends MouseAdapter
 {
 	
-	public MouseAdapterDoubleClickDelegator(UiButton delegateActionIn) 
+	public MouseAdapterDoubleClickDelegator(EAMAction delegateActionIn) 
 	{
 		super();
 		delegateAction = delegateActionIn;
 	}
 	
-    public void mouseClicked(MouseEvent e){
+    public void mouseClicked(MouseEvent e)
+    {
 	      if (e.getClickCount() == 2){
-	    	  delegateAction.doClick();
+	    	  try {
+	    		  delegateAction.doAction();
+	    	  } catch (CommandFailedException ex) 
+	    	  {
+	    		  EAM.errorDialog("Action failed on mouseClicked:" + ex);
+	    	  }
 	         }
     }
     
-    UiButton delegateAction;
+    EAMAction delegateAction;
 }

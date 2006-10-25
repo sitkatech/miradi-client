@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -85,7 +86,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			buttonBox.add(buttons[i]);
 	}
 
-	public void addDoubleClickAction(UiButton doubleClickAction) 
+	public void addDoubleClickAction(EAMAction doubleClickAction) 
 	{
 			table.addMouseListener(new MouseAdapterDoubleClickDelegator(doubleClickAction));
 	}

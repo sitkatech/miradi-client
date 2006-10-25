@@ -8,12 +8,12 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.strategicplan.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.UiButton;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel
 {
@@ -21,8 +21,8 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	{
 		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
 		
-		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyIndicator.class));
-		
+	EAMAction doubleClickAction = 
+			getMainWindow().getActions().get(ActionModifyIndicator.class);
 		addDoubleClickAction(doubleClickAction);
 	}
 	

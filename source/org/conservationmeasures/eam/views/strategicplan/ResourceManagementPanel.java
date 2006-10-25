@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -25,7 +26,7 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 			createObjectsActionButton(ActionDeleteResource.class), 
 		};
 		
-		UiButton doubleClickAction = new UiButton(getMainWindow().getActions().get(ActionModifyResource.class));
+		EAMAction doubleClickAction = getMainWindow().getActions().get(ActionModifyResource.class);
 
 		addDoubleClickAction(doubleClickAction);
 		
