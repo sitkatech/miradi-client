@@ -54,8 +54,8 @@ public class StrategicPlanView extends TabbedView
 		goalPanel = new GoalManagementPanel(this);
 
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
-		addTab(EAM.text("Objectives"), objectivePanel);
 		addTab(EAM.text("Goals"), goalPanel);
+		addTab(EAM.text("Objectives"), objectivePanel);
 		addTab(EAM.text("Resources"), new ResourceManagementPanel(this));
 	}
 	
