@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanView extends TabbedView
 {
@@ -67,6 +68,11 @@ public class StrategicPlanView extends TabbedView
 		strategicPlanPanel = null;
 		objectivePanel = null;
 		goalPanel = null;
+	}
+
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return new WizardPanel();
 	}
 
 	public StrategicPlanPanel getStrategicPlanPanel()

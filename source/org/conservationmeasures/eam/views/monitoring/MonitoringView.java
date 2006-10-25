@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringView extends TabbedView
 {
@@ -46,6 +47,11 @@ public class MonitoringView extends TabbedView
 	{
 		monitoringPanel = null;
 		indicatorManagementPanel = null;
+	}
+
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return new WizardPanel();
 	}
 
 	public IndicatorManagementPanel getIndicatorManagementPanel()

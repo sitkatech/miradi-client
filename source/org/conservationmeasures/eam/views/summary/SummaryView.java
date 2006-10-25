@@ -5,11 +5,6 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JComponent;
-import javax.swing.JSplitPane;
-
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
@@ -20,15 +15,13 @@ import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
-import org.martus.swing.UiScrollPane;
-import org.martus.swing.UiTabbedPane;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class SummaryView extends UmbrellaView
+public class SummaryView extends TabbedView
 {
 	public SummaryView(MainWindow mainWindowToUse)
 	{
@@ -48,41 +41,22 @@ public class SummaryView extends UmbrellaView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
-	public void becomeActive() throws Exception
+	public WizardPanel createWizardPanel() throws Exception 
 	{
-		removeAll();
-
-		bigSplitter = new ViewSplitPane(createSummaryWizardPanel(), createScrollableSummaryPanel(), bigSplitter);
-
-		add(bigSplitter, BorderLayout.CENTER);
-	}
-
-	private SummaryWizardPanel createSummaryWizardPanel() throws Exception {
-		wizardPanel = new SummaryWizardPanel();
-	return wizardPanel;
+		return new SummaryWizardPanel();
 	}
 	
 	
-	private JComponent createScrollableSummaryPanel()
+	public void createTabs() throws Exception
 	{
-		UiTabbedPane tabbedPanel = new UiTabbedPane();
-		
-		tabbedPanel.addTab(EAM.text("General"), new CrossOrganizationSummaryPanel(getMainWindow()));
-		tabbedPanel.addTab(EAM.text("TNC"), new TNCSummaryPanel(getMainWindow()));
-
-		UiScrollPane uiScrollPane = new UiScrollPane(tabbedPanel);
-		uiScrollPane.getHorizontalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
-		uiScrollPane.getVerticalScrollBar().setUnitIncrement(EAM.STANDARD_SCROLL_INCREMENT);
-		return uiScrollPane;
+		addTab(EAM.text("General"), new CrossOrganizationSummaryPanel(getMainWindow()));
+		addTab(EAM.text("TNC"), new TNCSummaryPanel(getMainWindow()));
 	}
 
-	public void becomeInactive() throws Exception
+	public void deleteTabs() throws Exception
 	{
-		bigSplitter.removeAll();
-		wizardPanel = null;
-		removeAll();
 	}
-	
+
 	public void showTeamAddMembersDialog()
 	{
 		PossibleTeamMembersDialog dlg = new PossibleTeamMembersDialog(getMainWindow());
@@ -105,8 +79,6 @@ public class SummaryView extends UmbrellaView
 		addDoerToMap(ActionDeleteResource.class, deleteResourceDoer);
 	}
 	
-	JSplitPane bigSplitter;
-	SummaryWizardPanel wizardPanel;
 	
 	TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;

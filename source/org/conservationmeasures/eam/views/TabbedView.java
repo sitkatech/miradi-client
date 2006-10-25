@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
+import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -19,7 +20,10 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.views.summary.SummaryWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 abstract public class TabbedView extends UmbrellaView
 {
@@ -28,15 +32,19 @@ abstract public class TabbedView extends UmbrellaView
 		super(mainWindowToUse);
 
 		tabs = new JTabbedPane();
-		add(tabs, BorderLayout.CENTER);
 		tabs.addChangeListener(new TabChangeListener());
 	}
 
 	public abstract void createTabs() throws Exception;
 	public abstract void deleteTabs() throws Exception;
+	public abstract WizardPanel createWizardPanel() throws Exception;
 	
 	public void becomeActive() throws Exception
 	{
+		removeAll();
+		bigSplitter = new ViewSplitPane(createWizardPanel(), tabs, bigSplitter);
+		add(bigSplitter, BorderLayout.CENTER);
+		
 		ignoreTabChanges = true;
 		try
 		{
@@ -175,6 +183,9 @@ abstract public class TabbedView extends UmbrellaView
 
 	}
 	
+	JSplitPane bigSplitter;
+	SummaryWizardPanel wizardPanel;
+
 	JTabbedPane tabs;
 	int currentTab;
 	boolean ignoreTabChanges;
