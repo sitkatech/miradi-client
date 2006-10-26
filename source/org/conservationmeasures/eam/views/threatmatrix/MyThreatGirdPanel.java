@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-// import RowHeaderRendererA;
-
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
@@ -16,16 +16,16 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LookAndFeel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-
-// } }}
 
 public class MyThreatGirdPanel
 {
@@ -48,41 +48,48 @@ public class MyThreatGirdPanel
 		header.addMouseListener(new HeaderListener(table.getTableHeader()));
 
 		JTableHeader corner = rowHeader.getTableHeader();
-		JScrollPane scrollPane = setUpScrollPaneWithTableAndRowHeader(rowHeader, table, corner);
+		JScrollPane scrollPane = setUpScrollPaneWithTableAndRowHeader(
+				rowHeader, table, corner);
 
-		setTableData((DefaultTableModel)table.getModel());
+		setTableData((DefaultTableModel) table.getModel());
 
 		return scrollPane;
 	}
 
-
-	private JScrollPane setUpScrollPaneWithTableAndRowHeader(JTable rowHeader, JTable table, JTableHeader corner)
+	private JScrollPane setUpScrollPaneWithTableAndRowHeader(JTable rowHeader,
+			JTable table, JTableHeader corner)
 	{
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setRowHeaderView(rowHeader);
 		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, corner);
-		scrollPane.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane
+				.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
+		scrollPane
+				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane
+				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		return scrollPane;
 	}
-
 
 	private JTable buildThreatTable(JTable rowHeader)
 	{
 		DefaultTableModel threatData = new DefaultTableModel();
 		threatData.setColumnIdentifiers(getColumnsTargetHeaders());
 		JTable threatTable = new JTable(threatData);
-		
-		int OneForSummaryColumn = 1;
-		threatData.setNumRows(rowHeader.getRowCount()+ OneForSummaryColumn);
-		
-		//threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
+
+		threatData.setNumRows(rowHeader.getRowCount());
+
 		threatTable.setRowHeight(calculateRowHieght());
+
+		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
+		customTableCellRenderer.setParms(model,framework);
+		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
+
+		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		return threatTable;
 	}
+
 
 	private JTable buildRowHeaderTable()
 	{
@@ -95,27 +102,28 @@ public class MyThreatGirdPanel
 			headerData.addRow(row);
 		}
 		JTable rowHeader = new JTable(headerData);
-		
+
 		rowHeader.setRowHeight(calculateRowHieght());
-		
+
 		rowHeader.setIntercellSpacing(new Dimension(0, 0));
 		Dimension d = rowHeader.getPreferredScrollableViewportSize();
 		d.width = rowHeader.getPreferredSize().width;
 		rowHeader.setPreferredScrollableViewportSize(d);
 
-		// rowHeader.setDefaultRenderer(Object.class, new RowHeaderRendererA());
-		
+		rowHeader.setDefaultRenderer(Object.class, new RowHeaderRenderer());
+
 		LookAndFeel.installColorsAndFont(rowHeader, "TableHeader.background",
 				"TableHeader.foreground", "TableHeader.font");
-		
+
 		return rowHeader;
 	}
-	
-	private int calculateRowHieght() {
-		//******** Needs to change to max size of threat name
+
+	private int calculateRowHieght()
+	{
+		// ******** Needs to change to max size of threat name
 		return 100;
 	}
-	
+
 	private Vector getRowThreatHeaders()
 	{
 		Vector rowNames = new Vector();
@@ -148,31 +156,34 @@ public class MyThreatGirdPanel
 			{
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
-					setThreatRowData(data, threatIndex, targetIndex);
+					setThreatRowData(data,threatIndex,targetIndex);
 				}
 			}
 		}
-		
+
 		setTargetRowSummaryData(data);
-		
+
 		setThreatColumnSummaryData(data);
 	}
 
-	private void setThreatRowData(DefaultTableModel data, int threatIndex, int targetIndex) throws Exception
+	private void setThreatRowData(DefaultTableModel data, int threatIndex,
+			int targetIndex) throws Exception
 	{
-		ThreatRatingBundle bundle = getBundle(threatIndex,
-				targetIndex);
+		ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
 		ValueOption valueOption = framework.getBundleValue(bundle);
 		String cellValue = valueOption.getLabel();
-		data.setValueAt(cellValue, threatIndex+1, targetIndex);
+		data.setValueAt(cellValue, threatIndex, targetIndex);
+		valueOption.getColor();
+
 	}
 
 	private void setThreatColumnSummaryData(DefaultTableModel data)
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			ValueOption result = framework.getTargetThreatRatingValue(model.getThreatId(threatIndex));
-			data.setValueAt(result, model.getTargetCount(),threatIndex);
+			ValueOption result = framework.getTargetThreatRatingValue(model
+					.getThreatId(threatIndex));
+			data.setValueAt(result, model.getTargetCount(), threatIndex);
 		}
 	}
 
@@ -180,8 +191,9 @@ public class MyThreatGirdPanel
 	{
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			ValueOption result = framework.getTargetThreatRatingValue(model.getTargetId(targetIndex));
-			data.setValueAt(result, model.getTargetCount()+1,targetIndex);
+			ValueOption result = framework.getTargetThreatRatingValue(model
+					.getTargetId(targetIndex));
+			data.setValueAt(result, model.getTargetCount() + 1, targetIndex);
 		}
 	}
 
@@ -199,7 +211,6 @@ public class MyThreatGirdPanel
 		return text;
 	}
 
-
 	ThreatMatrixTableModel model;
 
 	Project project;
@@ -207,6 +218,49 @@ public class MyThreatGirdPanel
 	ThreatRatingFramework framework;
 
 }
+
+class CustomTableCellRenderer extends DefaultTableCellRenderer
+{
+	public void setParms(ThreatMatrixTableModel modelIn,
+			ThreatRatingFramework frameworkIn)
+	{
+		model = modelIn;
+		framework = frameworkIn;
+		setHorizontalAlignment(CENTER);
+	}
+
+	public Component getTableCellRendererComponent(JTable table, Object value,
+			boolean isSelected, boolean hasFocus, int row, int column)
+	{
+		Component cell = super.getTableCellRendererComponent(table, value,
+				isSelected, hasFocus, row, column);
+		
+		int targetCount =  model.getTargetCount();
+		int threatCount =  model.getThreatCount();
+		if (row>=threatCount || column>=targetCount) return cell;
+		
+		ModelNodeId threatId = model.getThreatId(row);
+		ModelNodeId targetId = model.getTargetId(column);
+		try
+		{
+			ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
+			ValueOption valueOption = framework.getBundleValue(bundle);
+			cell.setBackground(valueOption.getColor());
+			cell.setFont(new Font(null,Font.BOLD,12));
+		}
+		catch(Exception e)
+		{
+
+		}
+		
+		return cell;
+	}
+
+	ThreatRatingFramework framework;
+
+	ThreatMatrixTableModel model;
+}
+
 
 class HeaderListener extends MouseAdapter
 {
@@ -219,8 +273,8 @@ class HeaderListener extends MouseAdapter
 
 	public void mousePressed(MouseEvent e)
 	{
-		//int col = header.columnAtPoint(e.getPoint());
-		//int sortCol = header.getTable().convertColumnIndexToModel(col);
+		// int col = header.columnAtPoint(e.getPoint());
+		// int sortCol = header.getTable().convertColumnIndexToModel(col);
 		header.repaint();
 
 		if(header.getTable().isEditing())
@@ -231,7 +285,7 @@ class HeaderListener extends MouseAdapter
 
 	public void mouseReleased(MouseEvent e)
 	{
-		//int col = header.columnAtPoint(e.getPoint());
+		// int col = header.columnAtPoint(e.getPoint());
 		header.repaint();
 	}
 }
