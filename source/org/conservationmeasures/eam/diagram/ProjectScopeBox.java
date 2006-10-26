@@ -109,11 +109,14 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 			return new Rectangle();
 
 		double height = bounds.getHeight();
-		if (hasVision())
+		double y = bounds.getY();
+		if (hasVision()){
 			height += VISION_HEIGHT;
+			y -= VISION_HEIGHT;
+		}
 		
 		Rectangle result = new Rectangle();
-		result.setRect(bounds.getX(), bounds.getY(), bounds.getWidth(), height);
+		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		return result;
 	}
 

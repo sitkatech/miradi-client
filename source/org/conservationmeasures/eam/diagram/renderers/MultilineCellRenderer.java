@@ -130,7 +130,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		if(vision == null || vision.length() == 0)
 			return;
 		Rectangle scopeRect = (Rectangle)rect.clone();
-		scopeRect.setSize(scopeRect.width, scopeRect.height - borderWidth);
+		scopeRect.setSize(scopeRect.width - borderWidth, scopeRect.height - borderWidth);
+		scopeRect.y = TOP_PADDING - getHeight();
 		drawAnnotation(scopeRect, g2, new RoundRectangleRenderer(), vision);
 	}
 	
@@ -309,6 +310,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
 	private static final int CORNER_SIZE = 20;
+	private static final int TOP_PADDING = 50; 
 
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
