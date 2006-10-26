@@ -106,10 +106,15 @@ public class ProjectMetadata extends EAMBaseObject
 		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
 		
 		
-		
 		tncLessonsLearned = new StringData();
+		tncWorkbookVersionNumber = new StringData();
+		tncWorkbookVersionDate = new DateData();
+		tncDatabaseDownloadDate = new DateData();
 		
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
+		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
+		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
+		addField(TAG_TNC_DATABASE_DOWNLOAD_DATE, tncDatabaseDownloadDate);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -121,7 +126,11 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
+	
 	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
+	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
+	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
+	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
 
 	StringData projectName;
 	StringData projectScope;
@@ -132,5 +141,9 @@ public class ProjectMetadata extends EAMBaseObject
 	DateData effectiveDate;
 	NumberData sizeInHectares;
 	IdListData teamResourceIds;
+	
 	StringData tncLessonsLearned;
+	StringData tncWorkbookVersionNumber;
+	DateData tncWorkbookVersionDate;
+	DateData tncDatabaseDownloadDate;
 }

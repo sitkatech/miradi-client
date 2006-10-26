@@ -34,6 +34,9 @@ public class TestProjectMetadata extends EAMTestCase
 	public void testTncDataFields() throws Exception
 	{
 		verifyDataField(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "Lessons learned");
+		verifyDataField(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, "WB Version #");
+		verifyDataField(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, "2004-07-19");
+		verifyDataField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, "2006-04-30");
 	}
 	
 	public void testStartDate() throws Exception
