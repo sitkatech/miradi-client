@@ -64,7 +64,7 @@ public class About extends Doer
 		box.add(Box.createVerticalGlue());
 		JPanel panel = (JPanel)dlg.getContentPane();
 		panel.add(box);
-		dlg.setSize(new Dimension(700, 500));
+		dlg.setSize(new Dimension(800, 550));
 		dlg.setLocation(Utilities.center(dlg.getSize(), Utilities.getViewableRectangle()));
 		
 		dlg.getRootPane().setDefaultButton(ok);
