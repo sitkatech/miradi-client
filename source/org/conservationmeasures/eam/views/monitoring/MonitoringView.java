@@ -51,7 +51,7 @@ public class MonitoringView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new WizardPanel();
+		return new MonitoringPlanWizardPanel();
 	}
 
 	public IndicatorManagementPanel getIndicatorManagementPanel()
