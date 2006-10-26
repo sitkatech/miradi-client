@@ -46,7 +46,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 		{
 			try
 			{
-				getThreatRatingWizard().setStep(ThreatRatingWizardPanel.CHOOSE_BUNDLE);
+				getThreatRatingWizard().jump(ThreatRatingWizardChooseBundle.class);
 			}
 			catch (Exception e)
 			{

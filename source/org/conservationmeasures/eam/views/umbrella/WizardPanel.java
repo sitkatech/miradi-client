@@ -77,6 +77,12 @@ public class WizardPanel extends JPanel
 		return (steps.length - 1);
 	}
 	
+	public void jump(Class stepMarker) throws Exception
+	{
+		throw new RuntimeException("Step not in this view: " + stepMarker);
+	}
+
+
 
 	WizardStep[] steps;
 	int currentStep;

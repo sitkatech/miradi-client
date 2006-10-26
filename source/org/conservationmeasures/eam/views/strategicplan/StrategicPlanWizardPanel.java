@@ -11,15 +11,9 @@ public class StrategicPlanWizardPanel extends WizardPanel
 {
 	public StrategicPlanWizardPanel() throws Exception
 	{
-		WELCOME = addStep(new StrategicPlanWizardWelcomeStep(this));
+		int WELCOME = addStep(new StrategicPlanWizardWelcomeStep(this));
 
 		setStep(WELCOME);
 	}
 
-	public void jump(Class stepMarker) throws Exception
-	{
-		throw new RuntimeException("Step not in this view: " + stepMarker);
-	}
-
-	private int WELCOME = 0;
 }

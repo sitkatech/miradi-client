@@ -21,12 +21,12 @@ public class DiagramWizardPanel extends WizardPanel
 		PROJECT_SCOPE = addStep(new DiagramWizardProjectScopeStep(this));
 		VISION = addStep(new DiagramWizardVisionStep(this));
 		CONSERVATION_TARGET = addStep(new DiagramWizardDefineTargetsStep(this));
-		REVIEW_AND_MODIFY_TARGETS = addStep(new DiagramWizardReviewAndModifyTargetsStep(this));
+		addStep(new DiagramWizardReviewAndModifyTargetsStep(this));
 		IDENTIFY_DIRECT_THREATS = addStep(new DiagramWizardIdentifyDirectThreatStep(this));
-		LINK_DIRECT_THREATS_TO_TARGETS = addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
+		addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
 		IDENTIFY_INDIRECT_THREATS = addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
-		CONSTRUCT_CHAINS_HOWTO = addStep(new DiagramWizardConstructChainsStep(this));
-		REVIEW_MODEL_AND_ADJUST = addStep(new DiagramWizardReviewModelAndAdjustStep(this));
+		addStep(new DiagramWizardConstructChainsStep(this));
+		addStep(new DiagramWizardReviewModelAndAdjustStep(this));
 		
 		setStep(OVERVIEW);
 	}
@@ -50,14 +50,10 @@ public class DiagramWizardPanel extends WizardPanel
 	}
 	
 
-	int OVERVIEW;
-	int PROJECT_SCOPE;
-	int VISION;
-	int CONSERVATION_TARGET;
-	int REVIEW_AND_MODIFY_TARGETS;
-	int IDENTIFY_DIRECT_THREATS;
-	int LINK_DIRECT_THREATS_TO_TARGETS;
-	int IDENTIFY_INDIRECT_THREATS;
-	int CONSTRUCT_CHAINS_HOWTO;
-	int REVIEW_MODEL_AND_ADJUST;
+	private int OVERVIEW;
+	private int PROJECT_SCOPE;
+	private int VISION;
+	private int CONSERVATION_TARGET;
+	private int IDENTIFY_DIRECT_THREATS;
+	private int IDENTIFY_INDIRECT_THREATS;
 }

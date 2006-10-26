@@ -94,7 +94,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		{
 			try
 			{
-				getThreatRatingWizard().setStep(ThreatRatingWizardPanel.CHECK_TOTALS);
+				getThreatRatingWizard().jump(ThreatRatingWizardCheckTotalsStep.class);
 			}
 			catch (Exception e)
 			{

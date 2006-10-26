@@ -23,16 +23,13 @@ public class ThreatRatingWizardPanel extends WizardPanel
 	{
 		view = viewToUse;
 		
-		ThreatRatingWizardChooseBundle chooseBundleStep = new ThreatRatingWizardChooseBundle(this);
-		
-		steps = new ThreatRatingWizardStep[STEP_COUNT];
-		steps[OVERVIEW] = new ThreatRatingWizardOverviewStep(this);
-		steps[CHOOSE_BUNDLE] = chooseBundleStep;
-		steps[SET_SCOPE] = ThreatRatingWizardScopeStep.create(this);
-		steps[SET_SEVERITY] = ThreatRatingWizardSeverityStep.create(this);
-		steps[SET_IRREVERSIBILITY] = ThreatRatingWizardIrreversibilityStep.create(this);
-		steps[CHECK_BUNDLE] = new ThreatRatingWizardCheckBundleStep(this);
-		steps[CHECK_TOTALS] = new ThreatRatingWizardCheckTotalsStep(this);
+		OVERVIEW = addStep(new ThreatRatingWizardOverviewStep(this));
+		CHOOSE_BUNDLE = addStep(new ThreatRatingWizardChooseBundle(this));
+		addStep(ThreatRatingWizardScopeStep.create(this));
+		addStep(ThreatRatingWizardSeverityStep.create(this));
+		addStep(ThreatRatingWizardIrreversibilityStep.create(this));
+		addStep(new ThreatRatingWizardCheckBundleStep(this));
+		CHECK_TOTALS = addStep(new ThreatRatingWizardCheckTotalsStep(this));
 
 		selectBundle(null);
 		setStep(OVERVIEW);
@@ -59,44 +56,16 @@ public class ThreatRatingWizardPanel extends WizardPanel
 		return view;
 	}
 	
-	public void next() throws Exception
-	{
-		int nextStep = currentStep + 1;
-		if(nextStep >= steps.length)
-			nextStep = 0;
-		
-		setStep(nextStep);
-	}
-	
-	public void previous() throws Exception
-	{
-		int nextStep = currentStep - 1;
-		if(nextStep < 0)
-			return;
-		
-		setStep(nextStep);
-	}
-	
-	public void setStep(int newStep) throws Exception
-	{
-		currentStep = newStep;
-		steps[currentStep].refresh();
-		setContents(steps[currentStep]);
-	}
-	
 	public void jump(Class stepMarker) throws Exception
 	{
 		if(stepMarker.equals(ActionJumpRankDirectThreats.class))
 			setStep(OVERVIEW);
+		else if(stepMarker.equals(ThreatRatingWizardChooseBundle.class))
+			setStep(CHOOSE_BUNDLE);
+		else if(stepMarker.equals(ThreatRatingWizardCheckTotalsStep.class))
+			setStep(CHECK_TOTALS);
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
-	}
-	
-	public void refresh() throws Exception
-	{
-		for(int i = 0; i < steps.length; ++i)
-			steps[i].refresh();
-		validate();
 	}
 	
 	ThreatRatingFramework getFramework()
@@ -105,19 +74,11 @@ public class ThreatRatingWizardPanel extends WizardPanel
 		return framework;
 	}
 	
-	private static final int OVERVIEW = 0;
-	static final int CHOOSE_BUNDLE = 1;
-	private static final int SET_SCOPE = 2;
-	private static final int SET_SEVERITY = 3;
-	private static final int SET_IRREVERSIBILITY = 4;
-	private static final int CHECK_BUNDLE = 5;
-	static final int CHECK_TOTALS = 6;
-	
-	private static final int STEP_COUNT = 7;
+	private int OVERVIEW;
+	private int CHOOSE_BUNDLE;
+	private int CHECK_TOTALS;
 	
 	ThreatMatrixView view;
-	ThreatRatingWizardStep[] steps;
-	int currentStep;
 	ThreatRatingBundle selectedBundle;
 }
 
