@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionModifyActivity extends MainWindowAction
+public class ActionModifyActivity extends ObjectsAction
 {
 	public ActionModifyActivity(MainWindow mainWindowToUse)
 	{

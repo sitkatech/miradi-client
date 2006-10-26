@@ -6,33 +6,25 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class ModifyActivity extends ViewDoer
+public class ModifyActivity extends ObjectsDoer
 {
-	public StratPlanObject getSelectedObject()
-	{
-		StrategicPlanPanel panel = ((StrategicPlanView)getView()).getStrategicPlanPanel();
-		if(panel == null)
-			return null;
-		return panel.getSelectedObject();
-	}
-	
 	public boolean isAvailable()
 	{
-		StratPlanObject selected = getSelectedObject();
-		if(selected == null)
-			return false;
-		return (selected.getType() == ObjectType.TASK);
+		return (getObjects().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
 	{
+		if(!isAvailable())
+			return;
+		
 		try
 		{
-			StratPlanActivity selected = (StratPlanActivity)getSelectedObject();
-			getView().modifyObject(selected.getActivity());
+			Task task = (Task)getObjects()[0];
+			getView().modifyObject(task);
 		}
 		catch (Exception e)
 		{
