@@ -98,8 +98,16 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		details = new ThreatRatingBundlePanel(this);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
-		bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
+		boolean test = false;
+		// TEST IS FOR THE NEW JTABLE THREAT MATRIX
+		if (!test)
+			bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
+		else {
+
+			MyThreatGirdPanel mygp = new MyThreatGirdPanel(this, model,getProject());
+			bottomHalf.add(mygp.createThreatGridPanel(), BorderLayout.CENTER); 
+		}
 		return bottomHalf;
 	}
 
