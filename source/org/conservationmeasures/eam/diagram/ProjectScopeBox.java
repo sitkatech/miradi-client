@@ -110,7 +110,8 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 
 		double height = bounds.getHeight();
 		double y = bounds.getY();
-		if (hasVision()){
+		if (hasVision())
+		{
 			height += VISION_HEIGHT;
 			y -= VISION_HEIGHT;
 		}
