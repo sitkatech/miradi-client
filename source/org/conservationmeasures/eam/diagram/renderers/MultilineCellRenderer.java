@@ -110,8 +110,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
-
-		drawProjectScopeVision(g2, rect);
 	}
 
 	Stroke getStroke()
@@ -123,18 +121,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	Color getFillColor()
 	{
 		return super.getBackground();
-	}
-	
-	private void drawProjectScopeVision(Graphics2D g2, Rectangle rect)
-	{
-		if(vision == null || vision.length() == 0)
-			return;
-		Rectangle visionRect = new Rectangle();
-		visionRect.x = getAnnotationX(rect.x);
-		visionRect.y = rect.y + VISION_TOP_PADDING;
-		visionRect.width = getAnnotationsWidth(rect.width);
-		visionRect.height = getAnnotationsHeight(1);
-		drawAnnotation(visionRect, g2, new RoundRectangleRenderer(), vision);
 	}
 	
 	protected void drawLabel(Graphics2D g2, Rectangle labelRectangle, String labelMessage, Dimension size) 
@@ -163,7 +149,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		drawAnnotation(annotationsRectangle, g2, annotationRenderer, annotationText);
 	}
 
-	private void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, MultilineNodeRenderer annotationRenderer, String annotationText)
+	void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, MultilineNodeRenderer annotationRenderer, String annotationText)
 	{
 		annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 		drawAnnotationBorder(g2, annotationsRectangle, annotationRenderer);
@@ -192,22 +178,22 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return annotationsRectangle;
 	}
 	
-	private int getAnnotationX(int cellX)
+	int getAnnotationX(int cellX)
 	{
 		return cellX + getAnnotationLeftOffset();
 	}
 	
-	private int getAnnotationY(int cellY, int cellHeight, int numberLines)
+	int getAnnotationY(int cellY, int cellHeight, int numberLines)
 	{
 		return cellY + cellHeight - getAnnotationsHeight(numberLines);
 	}
 
-	private int getAnnotationsWidth(int cellWidth)
+	int getAnnotationsWidth(int cellWidth)
 	{
 		return cellWidth - getAnnotationLeftOffset() - getAnnotationRightInset();
 	}
 
-	private int getAnnotationsHeight(int numberLines)
+	int getAnnotationsHeight(int numberLines)
 	{
 		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
 		return annotationsHeight;
@@ -335,7 +321,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	public static final int INDICATOR_HEIGHT = 20;
 	public static final int ANNOTATIONS_HEIGHT = 20;
 	private static final int CORNER_SIZE = 20;
-	private static final int VISION_TOP_PADDING = 30; 
 
 	private static final Color LIGHT_BLUE = new Color(204,238,255);
 	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
