@@ -20,11 +20,13 @@ public class ObjectiveManagementPanel extends ObjectManagementPanel
 		super(viewToUse, new ObjectiveTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		addDoubleClickAction(ActionModifyObjective.class);
+		setMaxColumnWidthToHeaderWidth(0);
+		setColumnVeryWide(2);
 	}
-	
+
 	public Objective getSelectedObjective()
 	{
-		int row = table.getSelectedRow();
+		int row = getSelectedRow();
 		if(row < 0)
 			return null;
 		

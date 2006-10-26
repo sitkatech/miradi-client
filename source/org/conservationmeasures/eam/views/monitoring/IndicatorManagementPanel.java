@@ -21,6 +21,8 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		addDoubleClickAction(ActionModifyIndicator.class);
+		setMaxColumnWidthToHeaderWidth(0);
+		
 	}
 	
 	public Indicator getSelectedIndicator()

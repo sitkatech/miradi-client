@@ -25,6 +25,7 @@ public class ResourceManagementPanel extends ObjectManagementPanel
 		addDoubleClickAction(ActionModifyResource.class);
 		
 		addButtons(extraButtons);
+		setMaxColumnWidthToHeaderWidth(0);
 	}
 
 	static final String[] columnTags = {"Initials", "Name", "Position", };

@@ -15,11 +15,14 @@ public class GoalManagementPanel extends ObjectManagementPanel
 		super(viewToUse, new GoalTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		addDoubleClickAction(ActionModifyGoal.class);
+		setMaxColumnWidthToHeaderWidth(0);
+		setColumnVeryWide(2);
+
 	}
 	
 	public Goal getSelectedGoal()
 	{
-		int row = table.getSelectedRow();
+		int row = getSelectedRow();
 		if(row < 0)
 			return null;
 		

@@ -54,7 +54,6 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		// which happens to work for all our current tables
 		table.useMaxWidth();
 		table.createDefaultColumnsFromModel();
-		table.setMaxColumnWidthToHeaderWidth(0);
 		table.resizeTable();
 
 		add(new UiScrollPane(table), BorderLayout.CENTER);
@@ -174,8 +173,23 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 
 
 
-	UmbrellaView view;
-	ObjectManagerTableModel model;
-	UiTableWithAlternatingRows table;
-	Box buttonBox;
+	protected void setMaxColumnWidthToHeaderWidth(int column)
+	{
+		table.setMaxColumnWidthToHeaderWidth(column);
+	}
+
+	protected void setColumnVeryWide(int column)
+	{
+		table.setColumnWidth(column, view.getWidth() / 2);
+	}
+	
+	protected int getSelectedRow()
+	{
+		return table.getSelectedRow();
+	}
+
+	private UmbrellaView view;
+	private ObjectManagerTableModel model;
+	private UiTableWithAlternatingRows table;
+	private Box buttonBox;
 }
