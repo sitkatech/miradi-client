@@ -24,17 +24,17 @@ public class TNCSummaryPanel extends MetadataEditingPanel
 		add(new UiLabel(EAM.text("Label|CAP Workbook Version Number")));
 		workbookVersionNumber = createFieldComponent(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, 20);
 		workbookVersionNumber.setEditable(false);
-		add(workbookVersionNumber);
+		addFieldComponent(workbookVersionNumber);
 
 		add(new UiLabel(EAM.text("Label|CAP Workbook Version Date")));
 		workbookVersionDate = createFieldComponent(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, 10);
 		workbookVersionDate.setEditable(false);
-		add(workbookVersionDate);
+		addFieldComponent(workbookVersionDate);
 
 		add(new UiLabel(EAM.text("Label|CAP Database Download Date")));
 		databaseDownloadDate = createFieldComponent(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, 10);
 		databaseDownloadDate.setEditable(false);
-		add(databaseDownloadDate);
+		addFieldComponent(databaseDownloadDate);
 	}
 	
 	UiTextField lessonsLearned;

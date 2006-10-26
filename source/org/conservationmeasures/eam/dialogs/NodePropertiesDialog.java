@@ -210,7 +210,7 @@ public class NodePropertiesDialog extends JDialog implements
 			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
 			ChoiceDialogField impactField = new ChoiceDialogField(impactQuestion);
 			impactComponent = (UiComboBox)impactField.getComponent();
-			detailsTab.add(impactComponent);
+			detailsTab.add(createFieldPanel(impactComponent));
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
 			
@@ -219,14 +219,14 @@ public class NodePropertiesDialog extends JDialog implements
 			detailsTab.add(new UiLabel(feasibilityQuestion.getLabel()));
 			ChoiceDialogField feasibilityField = new ChoiceDialogField(feasibilityQuestion);
 			feasibilityComponent = (UiComboBox)feasibilityField.getComponent();
-			detailsTab.add(feasibilityComponent);
+			detailsTab.add(createFieldPanel(feasibilityComponent));
 			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 			
 			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
 			RatingDisplayField ratingSummaryField = new RatingDisplayField(new StrategyRatingSummary(""));
 			ratingComponent = (UiLabel)ratingSummaryField.getComponent();
-			detailsTab.add(ratingComponent);
+			detailsTab.add(createFieldPanel(ratingComponent));
 			updateRating();
 		}
 
@@ -1021,6 +1021,13 @@ public class NodePropertiesDialog extends JDialog implements
 	{
 		stopListening();
 		super.dispose();
+	}
+
+	Component createFieldPanel(Component component)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
+		return panel;
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;

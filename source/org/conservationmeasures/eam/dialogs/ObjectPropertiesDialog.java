@@ -6,11 +6,14 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.text.ParseException;
 import java.util.Vector;
+
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -60,7 +63,7 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 			fields[field] = createDialogField(tag, existingValue);
 			fields[field].getComponent().addFocusListener(new FocusHandler());
 			grid.add(new UiLabel(fields[field].getLabel()));
-			grid.add(fields[field].getComponent());
+			grid.add(createFieldPanel(fields[field].getComponent()));
 		}
 
 		Container contents = getContentPane();
@@ -68,6 +71,13 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		contents.add(grid, BorderLayout.CENTER);
 		Utilities.centerDlg(this);
 		pack();
+	}
+	
+	Component createFieldPanel(Component component)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
+		return panel;
 	}
 
 	DialogField createDialogField(String tag, String existingValue) throws Exception

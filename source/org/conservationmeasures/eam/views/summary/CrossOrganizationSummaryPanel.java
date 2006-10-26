@@ -24,39 +24,41 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 		super(mainWindowToUse);
 		
 		add(new UiLabel(EAM.text("Label|Filename:")));
-		add(new UiLabel(getProject().getFilename()));
+		UiTextField filename = new UiTextField(getProject().getFilename());
+		filename.setEditable(false);
+		add(filename);
 		
 		add(new UiLabel(EAM.text("Label|Project Name:")));
 		projectName = createFieldComponent(ProjectMetadata.TAG_PROJECT_NAME, 50);
-		add(projectName);
+		addFieldComponent(projectName);
 		
 		add(new UiLabel(EAM.text("Label|Project Scope:")));
 		projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
-		add(projectScope);
+		addFieldComponent(projectScope);
 		
 		add(new UiLabel(EAM.text("Label|Short Project Scope:")));
 		shortProjectScope = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, 50);
-		add(shortProjectScope);
+		addFieldComponent(shortProjectScope);
 		
 		add(new UiLabel(EAM.text("Label|Project Vision:")));
 		projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
-		add(projectVision);
+		addFieldComponent(projectVision);
 		
 		add(new UiLabel(EAM.text("Label|Short Project Vision:")));
 		shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
-		add(shortProjectVision);
+		addFieldComponent(shortProjectVision);
 		
 		add(new UiLabel(EAM.text("Label|Start Date:")));
 		startDate = createFieldComponent(ProjectMetadata.TAG_START_DATE, 10);
-		add(startDate);
+		addFieldComponent(startDate);
 
 		add(new UiLabel(EAM.text("Label|Data Effective Date:")));
 		effectiveDate = createFieldComponent(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, 10);
-		add(effectiveDate);
+		addFieldComponent(effectiveDate);
 
 		add(new UiLabel(EAM.text("Label|Size in Hectares:")));
 		sizeInHectares = createFieldComponent(ProjectMetadata.TAG_SIZE_IN_HECTARES, 10);
-		add(sizeInHectares);
+		addFieldComponent(sizeInHectares);
 		
 		add(new UiLabel(EAM.text("Label|Team Members:")));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindow.getActions());

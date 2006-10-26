@@ -8,8 +8,6 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -17,13 +15,10 @@ import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
 import org.martus.swing.UiTextField;
 
-import com.jhlabs.awt.BasicGridLayout;
-
-public class MetadataEditingPanel extends JPanel
+public class MetadataEditingPanel extends FieldEditingPanel
 {
 	public MetadataEditingPanel(MainWindow mainWindowToUse)
 	{
-		super(new BasicGridLayout(0, 2));
 		mainWindow = mainWindowToUse;
 	}
 	
