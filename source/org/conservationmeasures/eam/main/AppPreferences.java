@@ -119,7 +119,7 @@ public class AppPreferences
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
 		
-		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, false);
+		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 	}
 	
