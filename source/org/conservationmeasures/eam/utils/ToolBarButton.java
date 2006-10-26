@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.Dimension;
 
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -29,6 +30,10 @@ public class ToolBarButton extends JButton implements LocationHolder
 	{
 		super(action);
 		setText(null);
+		//FIXME adding text to the tool bar buttons.
+		//comment out setText(null); above to see text 
+		//setVerticalTextPosition(AbstractButton.BOTTOM);
+	    //setHorizontalTextPosition(AbstractButton.CENTER);
 		setToolTipText(action.getToolTipText());
 		setName(buttonName);
 	}
