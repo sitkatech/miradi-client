@@ -31,7 +31,7 @@ public class TNCSummaryPanel extends MetadataEditingPanel
 		workbookVersionDate.setEditable(false);
 		addFieldComponent(workbookVersionDate);
 
-		add(new UiLabel(EAM.text("Label|CAP Database Download Date")));
+		add(new UiLabel(EAM.text("Label|ConPro Database Download Date")));
 		databaseDownloadDate = createFieldComponent(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, 10);
 		databaseDownloadDate.setEditable(false);
 		addFieldComponent(databaseDownloadDate);
