@@ -113,7 +113,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 				if(objective != null)
 				{
 					String text = EAM.text("Label|Obj ") + objective.getShortLabel();
-					drawAnnotation(rect, g2, new RectangleRenderer(), text);
+					drawAnnotationCellRect(rect, g2, new RectangleRenderer(), text);
 				}
 			}
 			GoalIds goals = node.getGoals();
@@ -124,7 +124,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 				if(goal != null)
 				{
 					String text = EAM.text("Label|Goal ") + goal.getShortLabel();
-					drawAnnotation(rect, g2, new EllipseRenderer(), text);
+					drawAnnotationCellRect(rect, g2, new EllipseRenderer(), text);
 				}
 			}
 		}
@@ -186,7 +186,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			return super.getStroke();
 		
 		float[] dashes = {8.0f, 2.0f};
-		return new BasicStroke(borderWidth, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
+		return new BasicStroke(borderThickness, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
 	}
 
 	private static final Color LIGHT_PURPLE = new Color(204,153,255);
