@@ -163,7 +163,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		return node.getIndicatorRectWithinNode();
 	}
 	
-	Rectangle getAnnotationsRect(Rectangle rect, int numberLines) 
+	Rectangle getAnnotationsRectFromCellRect(Rectangle rect, int numberLines) 
 	{
 		Rectangle annotationsRect = node.getAnnotationsRect();
 		annotationsRect.translate(rect.x, rect.y);
