@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -171,8 +172,7 @@ public class MyThreatGirdPanel
 	{
 		ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
 		ValueOption valueOption = framework.getBundleValue(bundle);
-		String cellValue = valueOption.getLabel();
-		data.setValueAt(cellValue, threatIndex, targetIndex);
+		data.setValueAt(valueOption, threatIndex, targetIndex);
 		valueOption.getColor();
 
 	}
@@ -181,9 +181,9 @@ public class MyThreatGirdPanel
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			ValueOption result = framework.getTargetThreatRatingValue(model
+			ValueOption result = framework.getThreatThreatRatingValue(model
 					.getThreatId(threatIndex));
-			data.setValueAt(result, model.getTargetCount(), threatIndex);
+			data.setValueAt(result, threatIndex, model.getTargetCount());
 		}
 	}
 
@@ -193,7 +193,7 @@ public class MyThreatGirdPanel
 		{
 			ValueOption result = framework.getTargetThreatRatingValue(model
 					.getTargetId(targetIndex));
-			data.setValueAt(result, model.getTargetCount() + 1, targetIndex);
+			data.setValueAt(result, model.getThreatCount(), targetIndex);
 		}
 	}
 
@@ -235,23 +235,50 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		Component cell = super.getTableCellRendererComponent(table, value,
 				isSelected, hasFocus, row, column);
 		
-		int targetCount =  model.getTargetCount();
-		int threatCount =  model.getThreatCount();
-		if (row>=threatCount || column>=targetCount) return cell;
+		int targetCountRows =  model.getTargetCount();
+		int threatCountColumns =  model.getThreatCount();
 		
-		ModelNodeId threatId = model.getThreatId(row);
-		ModelNodeId targetId = model.getTargetId(column);
-		try
-		{
-			ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-			ValueOption valueOption = framework.getBundleValue(bundle);
-			cell.setBackground(valueOption.getColor());
-			cell.setFont(new Font(null,Font.BOLD,12));
-		}
-		catch(Exception e)
+		
+		if( row >= threatCountColumns || column >= targetCountRows)
 		{
 
+			if (row==threatCountColumns && column==targetCountRows ) {
+				ValueOption valueOption = framework.getOverallProjectRating();
+				cell.setBackground(valueOption.getColor());
+				cell.setFont(new Font(null,Font.BOLD,12));
+				return cell;
+			}
+			
+			if(row >= targetCountRows)
+			{
+				ValueOption valueOption = (ValueOption)table.getValueAt(row, column);
+				cell.setBackground(valueOption.getColor());
+				cell.setForeground(Color.BLACK); 
+				cell.setFont(new Font(null,Font.BOLD,12));
+				return cell;
+			}
+			
+			ValueOption valueOption = (ValueOption)table.getValueAt(row, column);
+			cell.setBackground(valueOption.getColor());
+			cell.setForeground(Color.BLACK); 
+			cell.setFont(new Font(null,Font.BOLD,12));
+			return cell;
 		}
+
+
+		ValueOption valueOption = (ValueOption)table.getValueAt(row, column);
+		if (valueOption==null) 
+		{ 
+			cell.setBackground(Color.WHITE);  
+			cell.setForeground(Color.BLACK); 
+			return cell; 
+		}
+		
+		
+		cell.setBackground(valueOption.getColor());
+		cell.setForeground(Color.BLACK); 
+		cell.setFont(new Font(null,Font.BOLD,12));
+
 		
 		return cell;
 	}
