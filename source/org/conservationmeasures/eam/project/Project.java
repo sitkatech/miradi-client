@@ -394,6 +394,7 @@ public class Project
 		loadDiagram();
 		
 		createDefaultObjectsIfNeeded();
+		getDiagramModel().updateProjectScope();
 
 		database.writeVersion();
 		fakeViewSwitchForMainWindow();

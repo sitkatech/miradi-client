@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -36,11 +37,10 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 			return;
 		Rectangle visionRect = new Rectangle();
 		visionRect.x = getAnnotationX(rect.x);
-		visionRect.y = rect.y + VISION_TOP_PADDING;
+		visionRect.y = rect.y + ProjectScopeBox.VISION_HEIGHT;
 		visionRect.width = getAnnotationsWidth(rect.width);
 		visionRect.height = getAnnotationsHeight(1);
 		drawAnnotation(visionRect, g2, new RoundRectangleRenderer(), vision);
 	}
 	
-	private static final int VISION_TOP_PADDING = 30; 
 }

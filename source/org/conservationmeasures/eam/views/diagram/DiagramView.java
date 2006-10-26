@@ -60,6 +60,7 @@ import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
@@ -266,6 +267,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		String newMode = cmd.getDataValue();
 		setModeIfRelevant(cmd, newMode);
 		refreshIfNeeded(cmd);
+		updateScopeIfNeeded(cmd);
 		
 		try
 		{
@@ -288,6 +290,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		String newMode = cmd.getPreviousDataValue();
 		setModeIfRelevant(cmd, newMode);
 		refreshIfNeeded(cmd);
+		updateScopeIfNeeded(cmd);
 		try
 		{
 			updateClusterAfterUndoIfNeeded(cmd);
@@ -398,6 +401,21 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		}
 		
 		model.updateCell(cluster);
+	}
+	
+	void updateScopeIfNeeded(CommandSetObjectData cmd)
+	{
+		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+			return;
+		if(!cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE))
+			return;
+		
+		updateProjectScope();
+	}
+
+	public void updateProjectScope()
+	{
+		getDiagramComponent().getDiagramModel().updateProjectScope();
 	}
 
 	public void jump(Class stepMarker) throws Exception

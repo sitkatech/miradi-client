@@ -14,7 +14,7 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.jgraph.graph.GraphConstants;
@@ -26,7 +26,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		model = modelToUse;
 		autoSurroundTargets();
 		
-		setText(EAM.text("Project Scope"));
 		GraphConstants.setBorderColor(getAttributes(), Color.black);
 		GraphConstants.setForeground(getAttributes(), Color.black);
 		GraphConstants.setOpaque(getAttributes(), true);
@@ -149,9 +148,9 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	}
 
 	final static int SIDE_MARGIN = 5;
-	final static int TOP_MARGIN = 20;
+	final static int TOP_MARGIN = 5 + MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	final static int BOTTOM_MARGIN = 5;
-	final static int VISION_HEIGHT = 40;
+	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
 	DiagramModel model;
 }

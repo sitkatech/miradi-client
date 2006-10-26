@@ -73,6 +73,11 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		return project.getThreatRatingFramework();
 	}
+	
+	public void setScopeText(String text)
+	{
+		getProjectScopeBox().setText(EAM.text("Project Scope: " + text));
+	}
 
 	public DiagramNode createNode(ModelNodeId id) throws Exception
 	{
@@ -397,6 +402,13 @@ public class DiagramModel extends DefaultGraphModel
 			}
 		}
 	}
+
+	public void updateProjectScope()
+	{
+		String newText = getProject().getMetadata().getShortProjectScope();
+		setScopeText(newText);
+	}
+
 	
 	public NodePool getNodePool()
 	{

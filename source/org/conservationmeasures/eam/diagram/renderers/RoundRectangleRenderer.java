@@ -33,12 +33,15 @@ public class RoundRectangleRenderer extends RectangleRenderer
 
 	int getArcWidth(Rectangle rect)
 	{
-		return rect.width / 20;
+		int proposedArc = rect.width / 20;
+		return Math.max(proposedArc, MINIMUM_ARC);
 	}
 	
 	int getArcHeight(Rectangle rect)
 	{
-		return rect.height / 20;
+		int proposedArc = rect.height / 20;
+		return Math.max(proposedArc, MINIMUM_ARC);
 	}
 
+	final static int MINIMUM_ARC = 5;
 }
