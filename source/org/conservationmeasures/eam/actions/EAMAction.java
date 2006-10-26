@@ -10,12 +10,13 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.martus.swing.ResourceImageIcon;
 
 public abstract class EAMAction extends AbstractAction
 {
 	public EAMAction(String label, String icon)
 	{
-		this(label, new ImageIcon(icon));
+		this(label, new ResourceImageIcon(icon));
 	}
 	
 	public EAMAction(String label, Icon icon)

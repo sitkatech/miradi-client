@@ -15,11 +15,11 @@ import java.awt.Dimension;
 import java.io.File;
 import java.util.Date;
 
-import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.util.MultiCalendar;
 
 class NoProjectHtmlText extends HtmlBuilder
@@ -27,7 +27,7 @@ class NoProjectHtmlText extends HtmlBuilder
 	public NoProjectHtmlText()
 	{
 		String startButtonLocation = "images/StartProject.png";
-		ImageIcon startButtonIcon = new ImageIcon(startButtonLocation);
+		ResourceImageIcon startButtonIcon = new ResourceImageIcon(startButtonLocation);
 		Dimension startButtonSize = new Dimension(startButtonIcon.getIconWidth(), startButtonIcon.getIconHeight());
 		text = 
 			font("Arial", 

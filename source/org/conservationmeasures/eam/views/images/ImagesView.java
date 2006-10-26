@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.views.images;
 
 import java.awt.BorderLayout;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiScrollPane;
 
 public class ImagesView extends UmbrellaView
@@ -60,7 +60,7 @@ public class ImagesView extends UmbrellaView
 			for(int i = 0; i < demoMaps.length; ++i)
 			{
 				String mapName = demoMaps[i] + ".jpg";
-				JLabel image = new JLabel(new ImageIcon("images/" + mapName));
+				JLabel image = new JLabel(new ResourceImageIcon("images/" + mapName));
 				image.setName(demoMaps[i]);
 				add(image);
 			}

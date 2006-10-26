@@ -13,13 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.martus.swing.HtmlViewer;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiButton;
 import org.martus.swing.Utilities;
 
@@ -123,7 +123,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 			Container contents = getContentPane();
 			contents.setLayout(new BorderLayout());
 
-			ImageIcon bundleSummaries = new ImageIcon("images/BundleSummaries.png");
+			ResourceImageIcon bundleSummaries = new ResourceImageIcon("images/BundleSummaries.png");
 			Dimension bundleSummariesSize = new Dimension(bundleSummaries.getIconWidth(), bundleSummaries.getIconHeight());
 			HtmlViewer rules = new HtmlViewer("", null);
 			rules.setText("<html>" +

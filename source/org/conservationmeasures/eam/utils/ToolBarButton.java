@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.utils;
 
 import java.awt.Dimension;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 
 import org.conservationmeasures.eam.actions.Actions;

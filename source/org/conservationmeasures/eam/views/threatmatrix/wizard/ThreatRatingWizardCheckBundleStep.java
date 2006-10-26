@@ -12,13 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
@@ -139,9 +139,9 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 					"." +
 					"</html>")), BorderLayout.BEFORE_FIRST_LINE);
 			Box hbox = Box.createHorizontalBox();
-			ImageIcon image1 = new ImageIcon("images/BundleRules1.png");
+			ResourceImageIcon image1 = new ResourceImageIcon("images/BundleRules1.png");
 			hbox.add(new UiLabel("", image1, SwingConstants.LEFT), BorderLayout.CENTER);
-			ImageIcon image2 = new ImageIcon("images/BundleRules2.png");
+			ResourceImageIcon image2 = new ResourceImageIcon("images/BundleRules2.png");
 			hbox.add(new UiLabel("", image2, SwingConstants.LEFT), BorderLayout.CENTER);
 
 			contents.add(hbox, BorderLayout.CENTER);
