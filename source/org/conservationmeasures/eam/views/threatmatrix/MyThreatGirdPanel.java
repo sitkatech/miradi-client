@@ -331,6 +331,7 @@ class CellSelectionListener implements ListSelectionListener
 		threatTable.changeSelection(row, column, true,false);
 	}
 
+	//TODO: must check to see if in bounds that it is infact a real bundle and not an empty position
 	private boolean isCellWithinRealDataBounds(int row, int column)
 	{
 		return row==threatTable.getRowCount()-1 || 
