@@ -23,8 +23,8 @@ import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZipFile;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
-import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionPreferences;
+import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -83,13 +83,13 @@ import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.dialogs.FloatingPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.GoalPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.IndicatorPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ObjectivePropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesDialog;
-import org.conservationmeasures.eam.dialogs.TaskPropertiesDialog;
+import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.ObjectPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -186,7 +186,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		if(activePropertiesDlg == null)
 			return;
 		
-		EAMObject selectedObject = activePropertiesDlg.getObject();
+		EAMObject selectedObject = activePropertiesPanel.getObject();
 		if(selectedObject == null)
 			return;
 		
@@ -198,7 +198,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void modifyObject(EAMObject object) throws Exception
 	{
-		ObjectPropertiesDialog dlg = createDialog(object);
+		
+		activePropertiesPanel = createPanelForDialog(object);
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, activePropertiesPanel, activePropertiesPanel.getPanelDescription());
 		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
 		showFloatingPropertiesDialog(dlg);
 	}
@@ -214,31 +216,32 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	}
 	
-	private ObjectPropertiesDialog createDialog(EAMObject object) throws Exception
+	private ObjectPropertiesPanel createPanelForDialog(EAMObject object) throws Exception
 	{
 		switch(object.getType())
 		{
 			case ObjectType.OBJECTIVE:
-				return new ObjectivePropertiesDialog(getMainWindow(), object);
+				return new ObjectivePropertiesPanel(getMainWindow(), object);
 			case ObjectType.INDICATOR:
-				return new IndicatorPropertiesDialog(getMainWindow(), object);
+				return new IndicatorPropertiesPanel(getMainWindow(), object);
 			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResourcePropertiesDialog(getMainWindow(), object);
+				return new ProjectResourcePropertiesPanel(getMainWindow(), object);
 			case ObjectType.TASK:
-				return new TaskPropertiesDialog(getMainWindow(), object);
+				return new TaskPropertiesPanel(getMainWindow(), object);
 			case ObjectType.GOAL:
-				return new GoalPropertiesDialog(getMainWindow(), object);
+				return new GoalPropertiesPanel(getMainWindow(), object);
 		}
 		
 		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());
 	}
 
-	protected void showFloatingPropertiesDialog(FloatingPropertiesDialog newDialog)
+	protected void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		if(activePropertiesDlg != null)
 			activePropertiesDlg.dispose();
 		
 		activePropertiesDlg = newDialog;
+		activePropertiesDlg.pack();
 		activePropertiesDlg.setVisible(true);
 	}
 	
@@ -387,7 +390,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			return;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		EAMObject objectBeingEdited = activePropertiesDlg.getObject();
+		EAMObject objectBeingEdited = activePropertiesPanel.getObject();
 		if(objectBeingEdited == null)
 			return;
 		if(cmd.getObjectType() != objectBeingEdited.getType())
@@ -400,8 +403,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void closeActivePropertiesDialog()
 	{
-		if(activePropertiesDlg != null && activePropertiesDlg.isDisplayable())
+		if(activePropertiesPanel != null && activePropertiesDlg.isDisplayable())
 			activePropertiesDlg.dispose();
+		activePropertiesPanel = null;
 		activePropertiesDlg = null;
 	}
 
@@ -410,6 +414,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	
-	private FloatingPropertiesDialog activePropertiesDlg;
+	private ObjectPropertiesPanel activePropertiesPanel;
+	private ModelessDialogWithClose activePropertiesDlg;
  
 }

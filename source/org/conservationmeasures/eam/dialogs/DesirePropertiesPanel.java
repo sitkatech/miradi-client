@@ -9,15 +9,17 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Objective;
 
-public class DesirePropertiesDialog extends ObjectPropertiesDialog
+abstract public class DesirePropertiesPanel extends ObjectPropertiesPanel
 {
-	public DesirePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit, String title) throws Exception
+	public DesirePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle(title);
+		//super(parentToUse, objectToEdit);
+		//setTitle(title);
 		initializeFields(tags);
 	}
-
+	abstract public String getPanelDescription();
+	
 	static final String[] tags = new String[] {
 		Objective.TAG_SHORT_LABEL, 
 		Objective.TAG_LABEL,

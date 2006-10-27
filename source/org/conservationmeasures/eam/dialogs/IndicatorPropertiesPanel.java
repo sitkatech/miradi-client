@@ -13,12 +13,11 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.ratings.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
 
-public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
+public class IndicatorPropertiesPanel extends ObjectPropertiesPanel
 {
-	public IndicatorPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public IndicatorPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle(EAM.text("Title|Indicator Properties"));
 		initializeFields(tags);
 	}
 
@@ -45,5 +44,10 @@ public class IndicatorPropertiesDialog extends ObjectPropertiesDialog
 		Indicator.TAG_FUNDING_SOURCE,
 		Indicator.TAG_WHEN,
 		};
+
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Indicator Properties");
+	}
 
 }

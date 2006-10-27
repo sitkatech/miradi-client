@@ -80,6 +80,7 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
+		//FIXME listener needs to be removed when the panel is no longer needed (parent disposed)
 		getProject().addCommandExecutedListener(this);
 	}
 

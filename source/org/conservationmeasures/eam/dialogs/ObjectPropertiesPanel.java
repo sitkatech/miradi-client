@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.text.ParseException;
@@ -32,20 +31,21 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
-import org.martus.swing.Utilities;
 
-abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
+abstract public class ObjectPropertiesPanel extends JPanel
 {
-	ObjectPropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit)
+	
+	public ObjectPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
-		super(parentToUse);
+		mainWindowToUse = parentToUse;
 		object = objectToEdit;
-		
-		setModal(false);
 	}
+	
+	abstract public String getPanelDescription();
 	
 	public EAMObject getObject()
 	{
@@ -66,11 +66,11 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 			grid.add(createFieldPanel(fields[field].getComponent()));
 		}
 
-		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
-		contents.add(grid, BorderLayout.CENTER);
-		Utilities.centerDlg(this);
-		pack();
+		//Container contents = getContentPane();
+		this.setLayout(new BorderLayout());
+		this.add(grid, BorderLayout.CENTER);
+		//Utilities.centerDlg(this);
+		//pack();
 	}
 	
 	Component createFieldPanel(Component component)
@@ -108,8 +108,9 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 	
 	private void closeIfObjectDeleted(CommandDeleteObject cmd)
 	{
-		if(cmd.getObjectType() == object.getType() && cmd.getObjectId().equals(object.getId()))
-			dispose();
+		//FIXME.  taken out while converting from dialog to panel
+		//if(cmd.getObjectType() == object.getType() && cmd.getObjectId().equals(object.getId()))
+	//		dispose();
 	}
 
 	class FocusHandler implements FocusListener
@@ -153,6 +154,16 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		}
 	}
 
+	public MainWindow getMainWindow()
+	{
+		return mainWindowToUse;
+	}
+	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
+	}
+	
 	protected DialogField createResourcePicker(String tag, String label) throws ParseException
 	{
 		EAMObject[] availableResources = getProject().getAllProjectResources();
@@ -170,6 +181,7 @@ abstract public class ObjectPropertiesDialog extends FloatingPropertiesDialog
 		return field;
 	}
 
+	MainWindow mainWindowToUse;
 	EAMObject object;
 	DialogField[] fields;
 }

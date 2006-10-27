@@ -12,14 +12,18 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TaskPropertiesDialog extends ObjectPropertiesDialog
+public class TaskPropertiesPanel extends ObjectPropertiesPanel
 {
 
-	public TaskPropertiesDialog(MainWindow parentToUse, EAMObject taskToEdit) throws Exception
+	public TaskPropertiesPanel(MainWindow parentToUse, EAMObject taskToEdit) throws Exception
 	{
 		super(parentToUse, taskToEdit);
-		setTitle(EAM.text("Title|Activity Properties"));
 		initializeFields(tags);
+	}
+	
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Activity Properties");	
 	}
 	
 	DialogField createDialogField(String tag, String existingValue) throws Exception

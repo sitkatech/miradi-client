@@ -9,15 +9,19 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-public class ProjectResourcePropertiesDialog extends ObjectPropertiesDialog
+public class ProjectResourcePropertiesPanel extends ObjectPropertiesPanel
 {
-	public ProjectResourcePropertiesDialog(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public ProjectResourcePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
 		super(parentToUse, objectToEdit);
-		setTitle(EAM.text("Title|Rescource Properties"));
 		initializeFields(tags);
 	}
 
 	static final String[] tags = new String[] {"Initials", "Name", "Position"};
+
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Rescource Properties");
+	}
 
 }

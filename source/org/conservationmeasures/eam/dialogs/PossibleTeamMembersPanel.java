@@ -6,22 +6,23 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
-public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
+public class PossibleTeamMembersPanel extends ObjectPropertiesPanel
 {
-	public PossibleTeamMembersDialog(MainWindow mainWindowToUse)
+	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, null);
 		
 		ResourceManagementPanel resourcePanel = new ResourceManagementPanel(getView());
 		
@@ -30,18 +31,32 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 		resourcePanel.addButtons(extraButtons);
 		
 		
-		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
-		contents.add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
-		contents.add(resourcePanel, BorderLayout.CENTER);
-		pack();
+
+		setLayout(new BorderLayout());
+		add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
+		add(resourcePanel, BorderLayout.CENTER);
 	}
 
+	public String getPanelDescription()
+	{
+		return null;
+	}
+	
 	public EAMObject getObject()
 	{
 		return null;
 	}
 	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
+	}
+	
+	public UmbrellaView getView()
+	{
+		return getMainWindow().getCurrentView();
+	}
+
 	String getOverviewText()
 	{
 		return "<html>" +
@@ -54,6 +69,6 @@ public class PossibleTeamMembersDialog extends FloatingPropertiesDialog
 				"</p>" +
 				"</html";
 	}
-	
 
+	MainWindow mainWindow;
 }

@@ -9,11 +9,16 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-public class GoalPropertiesDialog extends DesirePropertiesDialog
+public class ObjectivePropertiesPanel extends DesirePropertiesPanel
 {
-	public GoalPropertiesDialog(MainWindow parentToUse, EAMObject goalToEdit) throws Exception
+	public ObjectivePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{
-		super(parentToUse, goalToEdit, EAM.text("Title|Goal Properties"));
+		super(parentToUse, objectToEdit);
 	}
 	
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Objective Properties"); 
+	}
+
 }
