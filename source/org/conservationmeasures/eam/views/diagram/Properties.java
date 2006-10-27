@@ -70,8 +70,8 @@ public class Properties extends LocationDoer
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
 	{
-		ProjectScopePanel projectScopePanel = new ProjectScopePanel(EAM.mainWindow);
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(EAM.mainWindow, projectScopePanel, projectScopePanel.getPanelDescriptionText()); 
+		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescriptionText()); 
 		setDialogLocation(dlg, scope.getBounds());
 		dlg.pack();
 		dlg.setVisible(true);
@@ -79,7 +79,7 @@ public class Properties extends LocationDoer
 	
 	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
 	{
-		LinkagePropertiesDialog dlg = new LinkagePropertiesDialog(EAM.mainWindow, getProject(), linkage);
+		LinkagePropertiesDialog dlg = new LinkagePropertiesDialog(getMainWindow(), getProject(), linkage);
 		dlg.setText(linkage.getStressLabel());
 		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);

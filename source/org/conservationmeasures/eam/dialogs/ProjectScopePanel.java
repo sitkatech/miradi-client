@@ -5,38 +5,31 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.conservationmeasures.eam.views.summary.MetadataEditingPanel;
-import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextField;
+import org.conservationmeasures.eam.project.Project;
 
-public class ProjectScopePanel extends MetadataEditingPanel
+public class ProjectScopePanel extends ObjectDataInputPanel
 {
-	public ProjectScopePanel(MainWindow mainWindowToUse)
+	public ProjectScopePanel(Project projectToUse, ProjectMetadata metadata)
 	{
-		super(mainWindowToUse);
-		createFields();
-	}
-	
-	private void createFields()
-	{
-		add(new UiLabel(EAM.text("Label|Project Scope:")));
-		UiTextField projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
-		add(projectScope);
+		super(projectToUse, metadata.getType(), metadata.getId());
+
+		ObjectDataInputField projectScope = createStringField(metadata.TAG_PROJECT_SCOPE);
+		addField(EAM.text("Label|Project Scope"), projectScope);
 		
-		add(new UiLabel(EAM.text("Label|Short Project Scope:")));
-		UiTextField shortProjectScope = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, 50);
-		add(shortProjectScope);
+		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
+		addField(EAM.text("Label|Short Project Scope"), shortProjectScope);
 		
-		add(new UiLabel(EAM.text("Label|Project Vision:")));
-		UiTextField projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
-		add(projectVision);
+		ObjectDataInputField projectVision = createStringField(metadata.TAG_PROJECT_VISION);
+		addField(EAM.text("Label|Project Vision"), projectVision);
 		
-		add(new UiLabel(EAM.text("Label|Short Project Vision:")));
-		UiTextField shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
-		add(shortProjectVision);
+		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
+		addField(EAM.text("Label|Short Project Vision"), shortProjectVision);
+		
+		updateFieldsFromProject();
 	}
 	
 	public String getPanelDescriptionText()
