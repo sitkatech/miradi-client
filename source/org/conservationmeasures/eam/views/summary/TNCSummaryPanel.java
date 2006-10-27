@@ -5,36 +5,34 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextField;
+import org.conservationmeasures.eam.project.Project;
 
-public class TNCSummaryPanel extends MetadataEditingPanel
+public class TNCSummaryPanel extends ObjectDataInputPanel
 {
-	public TNCSummaryPanel(MainWindow mainWindowToUse)
+	public TNCSummaryPanel(Project projectToUse, ProjectMetadata metadata)
 	{
-		super(mainWindowToUse);
-		
-		add(new UiLabel(EAM.text("Label|Lessons Learned:")));
-		lessonsLearned = createFieldComponent(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, 50);
-		add(lessonsLearned);
-		
-		add(new UiLabel(EAM.text("Label|CAP Workbook Version Number")));
-		workbookVersionNumber = createFieldComponent(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, 20);
+		super(projectToUse, metadata.getType(), metadata.getId());
+
+		ObjectDataInputField lessonsLearned = createStringField(metadata.TAG_TNC_LESSONS_LEARNED);
+		addField(EAM.text("Label|Lessons Learned"), lessonsLearned);
+
+		ObjectDataInputField workbookVersionNumber = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		workbookVersionNumber.setEditable(false);
-		addFieldComponent(workbookVersionNumber);
+		addField(EAM.text("Label|CAP Workbook Version Number"), workbookVersionNumber);
 
-		add(new UiLabel(EAM.text("Label|CAP Workbook Version Date")));
-		workbookVersionDate = createFieldComponent(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, 10);
+		ObjectDataInputField workbookVersionDate = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE);
 		workbookVersionDate.setEditable(false);
-		addFieldComponent(workbookVersionDate);
+		addField(EAM.text("Label|CAP Workbook Version Date"), workbookVersionDate);
 
-		add(new UiLabel(EAM.text("Label|ConPro Database Download Date")));
-		databaseDownloadDate = createFieldComponent(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, 10);
+		ObjectDataInputField databaseDownloadDate = createStringField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		databaseDownloadDate.setEditable(false);
-		addFieldComponent(databaseDownloadDate);
+		addField(EAM.text("Label|ConPro Database Download Date"), databaseDownloadDate);
+
+		updateFieldsFromProject();
 	}
 	
 	public String getPanelDescriptionText()
@@ -42,8 +40,4 @@ public class TNCSummaryPanel extends MetadataEditingPanel
 		return EAM.text("TNC");
 	}
 	
-	UiTextField lessonsLearned;
-	UiTextField workbookVersionNumber;
-	UiTextField workbookVersionDate;
-	UiTextField databaseDownloadDate;
 }

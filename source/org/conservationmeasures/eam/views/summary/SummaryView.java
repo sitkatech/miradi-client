@@ -49,7 +49,7 @@ public class SummaryView extends TabbedView
 	{
 		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow());
 		addTab(crossOrganizationSummaryPanel.getPanelDescriptionText(), crossOrganizationSummaryPanel);
-		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getMainWindow());
+		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), getProject().getMetadata());
 		addTab(tncSummaryPanel.getPanelDescriptionText(), tncSummaryPanel);
 	}
 

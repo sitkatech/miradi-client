@@ -1,0 +1,78 @@
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.dialogfields;
+
+import java.util.Vector;
+
+import javax.swing.JPanel;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiLabel;
+
+import com.jhlabs.awt.BasicGridLayout;
+
+public class ObjectDataInputPanel extends JPanel implements CommandExecutedListener
+{
+	public ObjectDataInputPanel(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse)
+	{
+		super(new BasicGridLayout(0, 2));
+		project = projectToUse;
+		objectType = objectTypeToUse;
+		objectId = objectIdToUse;
+		fields = new Vector();
+		project.addCommandExecutedListener(this);
+	}
+	
+	public void addField(String label, ObjectDataInputField field)
+	{
+		fields.add(field);
+		add(new UiLabel(label));
+		add(field.getComponent());
+	}
+	
+	public ObjectDataInputField createStringField(String tag)
+	{
+		return new ObjectStringInputField(project, objectType, objectId, tag);
+	}
+	
+	public ObjectDataInputField createDateField(String tag)
+	{
+		return new ObjectDateInputField(project, objectType, objectId, tag);
+	}
+	
+	public void updateFieldsFromProject()
+	{
+		for(int i = 0; i < fields.size(); ++i)
+		{
+			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			field.updateFromObject();
+		}
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		updateFieldsFromProject();
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		updateFieldsFromProject();
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+
+	Project project;
+	int objectType;
+	BaseId objectId;
+	Vector fields;
+}
