@@ -24,11 +24,11 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		workbookVersionNumber.setEditable(false);
 		addField(EAM.text("Label|CAP Workbook Version Number"), workbookVersionNumber);
 
-		ObjectDataInputField workbookVersionDate = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE);
+		ObjectDataInputField workbookVersionDate = createDateField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE);
 		workbookVersionDate.setEditable(false);
 		addField(EAM.text("Label|CAP Workbook Version Date"), workbookVersionDate);
 
-		ObjectDataInputField databaseDownloadDate = createStringField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		ObjectDataInputField databaseDownloadDate = createDateField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		databaseDownloadDate.setEditable(false);
 		addField(EAM.text("Label|ConPro Database Download Date"), databaseDownloadDate);
 

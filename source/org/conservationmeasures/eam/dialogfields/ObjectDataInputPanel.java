@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -40,7 +42,14 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 	{
 		fields.add(field);
 		add(new UiLabel(label));
-		add(field.getComponent());
+		addFieldComponent(field.getComponent());
+	}
+	
+	public void addFieldComponent(Component component)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
+		add(panel);
 	}
 	
 	public ObjectDataInputField createStringField(String tag)
