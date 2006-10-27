@@ -8,8 +8,11 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
@@ -27,6 +30,11 @@ public class MetadataEditingPanel extends FieldEditingPanel
 		return mainWindow.getProject();
 	}
 	
+	public void refreshField(String tag)
+	{
+		
+	}
+	
 	protected UiTextField createFieldComponent(String tag, int length)
 	{
 		UiTextField fieldComponent = new UiTextField(length);
@@ -38,25 +46,39 @@ public class MetadataEditingPanel extends FieldEditingPanel
 	void save(String tag, UiTextField field)
 	{
 		String newValue = field.getText();
-		String existing = getProject().getMetadata().getData(tag);
+		ProjectMetadata metadata = getProject().getMetadata();
+		String existing = metadata.getData(tag);
 		try
 		{
 			if(!existing.equals(newValue))
 			{
-				getProject().setMetadata(tag, newValue);
+				CommandSetObjectData cmd = new CommandSetObjectData(metadata.getType(), metadata.getId(), tag, newValue);
+				getProject().executeCommand(cmd);
 			}
 		}
-		catch (InvalidDateException e)
+		catch(CommandFailedException outer)
 		{
-			EAM.errorDialog(EAM.text("Text|Dates must be in YYYY-MM-DD format"));
-			field.setText(existing);
-			field.requestFocus();
-		}
-		catch (InvalidNumberException e)
-		{
-			EAM.errorDialog(EAM.text("Text|Must be numeric"));
-			field.setText(existing);
-			field.requestFocus();
+			try
+			{
+				throw(outer.getCause());
+			}
+			catch (InvalidDateException ide)
+			{
+				EAM.errorDialog(EAM.text("Text|Dates must be in YYYY-MM-DD format"));
+				field.setText(existing);
+				field.requestFocus();
+			}
+			catch (InvalidNumberException ine)
+			{
+				EAM.errorDialog(EAM.text("Text|Must be numeric"));
+				field.setText(existing);
+				field.requestFocus();
+			}
+			catch(Throwable inner)
+			{
+				inner.printStackTrace();
+				EAM.errorDialog(EAM.text("Text|Error prevented saving"));
+			}
 		}
 		catch (Exception e)
 		{
