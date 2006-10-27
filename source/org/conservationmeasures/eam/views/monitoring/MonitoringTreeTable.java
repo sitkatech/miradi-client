@@ -31,6 +31,8 @@ public class MonitoringTreeTable extends JTreeTable
 		getTree().setRootVisible(false);
 		getTree().setCellRenderer(new Renderer());
 		getTree().setEditable(false);
+		getColumnModel().getColumn(0).setPreferredWidth(200);
+
 	}
 
 	void expandEverything()
