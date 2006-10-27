@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.dialogs.LinkagePropertiesDialog;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -99,7 +99,7 @@ public class Properties extends LocationDoer
 	private int getTabToStartOn(DiagramNode node, Point at)
 	{
 		if(at == null)
-			return NodePropertiesDialog.TAB_DETAILS;
+			return NodePropertiesPanel.TAB_DETAILS;
 		
 		Point cellOrigin = node.getLocation();
 		at.translate(-cellOrigin.x, -cellOrigin.y);
@@ -107,20 +107,20 @@ public class Properties extends LocationDoer
 		if(node.isPointInObjective(at))
 		{
 			EAM.logDebug("Objective");
-			return NodePropertiesDialog.TAB_OBJECTIVES;
+			return NodePropertiesPanel.TAB_OBJECTIVES;
 		}
 		if(node.isPointInIndicator(at))
 		{
 			EAM.logDebug("Indicator");
-			return NodePropertiesDialog.TAB_INDICATORS;
+			return NodePropertiesPanel.TAB_INDICATORS;
 		}
 		if(node.isPointInGoal(at))
 		{
 			EAM.logDebug("Goal");
-			return NodePropertiesDialog.TAB_GOALS;
+			return NodePropertiesPanel.TAB_GOALS;
 		}
 		
-		return NodePropertiesDialog.TAB_DETAILS;
+		return NodePropertiesPanel.TAB_DETAILS;
 	}
 
 	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)

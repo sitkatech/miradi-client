@@ -7,16 +7,12 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Container;
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
@@ -78,22 +74,13 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
-public class NodePropertiesDialog extends ModelessDialogWithClose implements
-		CommandExecutedListener
+public class NodePropertiesPanel extends JPanel implements CommandExecutedListener
 {
-	public NodePropertiesDialog(MainWindow parent,
-			DiagramComponent diagramToUse, String title)
-			throws HeadlessException
+	public NodePropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
-		super(parent, title);
-
 		mainWindow = parent;
 		diagram = diagramToUse;
-
 		getProject().addCommandExecutedListener(this);
-		addWindowListener(new WindowEventHandler());
-
-		setResizable(true);
 	}
 
 	public void selectTab(int tabIdentifier)
@@ -117,22 +104,22 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
-		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
-		contents.removeAll();
+		//Container contents = getContentPane();
+		this.setLayout(new BorderLayout());
+		this.removeAll();
 		try
 		{
 			currentNode = node;
-			contents.add(createLabelBar(currentNode),
+			this.add(createLabelBar(currentNode),
 					BorderLayout.BEFORE_FIRST_LINE);
-			contents.add(createTabbedPane(currentNode), BorderLayout.CENTER);
+			this.add(createTabbedPane(currentNode), BorderLayout.CENTER);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Error reading activity information");
 		}
-		pack();
+		//pack();
 	}
 
 	public DiagramNode getCurrentNode()
@@ -602,7 +589,6 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 		}
 
 	}
-
 	
 	class InterventionClassificationChangeHandler implements ActionListener
 	{
@@ -706,8 +692,6 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 			return new UiComboBox(choices);
 		}
 	}
-
-
 
 	JComponent createInterventionClassificationDropdown()
 	{
@@ -822,8 +806,6 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 		
 		return taxonomyItem;
 	}
-	
-
 
 	public TaxonomyItem getInterventionTaxonomyItem()
 	{
@@ -1001,26 +983,6 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 		}
 	}
 
-	class WindowEventHandler extends WindowAdapter
-	{
-		public void windowClosing(WindowEvent e)
-		{
-			stopListening();
-		}
-
-	}
-
-	void stopListening()
-	{
-		getProject().removeCommandExecutedListener(this);
-	}
-
-	public void dispose()
-	{
-		stopListening();
-		super.dispose();
-	}
-
 	Component createFieldPanel(Component component)
 	{
 		JPanel panel = new JPanel(new BorderLayout());
@@ -1029,60 +991,33 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 	}
 
 	static final int MAX_LABEL_LENGTH = 40;
-
 	public static final int TAB_DETAILS = 0;
-
 	public static final int TAB_INDICATORS = 1;
-
 	public static final int TAB_OBJECTIVES = 2;
-
 	public static final int TAB_GOALS = 3;
 
 	JTabbedPane tabs;
-
 	DialogGridPanel detailsTab;
-
 	DialogGridPanel indicatorsTab;
-
 	DialogGridPanel objectivesTab;
-
 	DialogGridPanel goalsTab;
-
 	MainWindow mainWindow;
-
 	DiagramComponent diagram;
-
 	DiagramNode currentNode;
-
 	UiTextField textField;
-
 	UiTextArea commentField;
-
 	UiComboBox dropdownFactorType;
-
 	UiComboBox dropdownThreatPriority;
-
 	UiComboBox dropdownIndicator;
-
 	UiComboBox dropdownObjective;
-
 	UiComboBox dropdownGoal;
-
 	UiCheckBox statusCheckBox;
-
 	UiComboBox dropdownThreatClassification;
-	
 	UiComboBox dropdownInterventionClassification;
-	
 	UiComboBox impactComponent;
-	
 	UiComboBox feasibilityComponent;
-	
 	UiLabel ratingComponent;
-
 	boolean ignoreObjectiveChanges;
-
 	boolean ignoreIndicatorChanges;
-
 	boolean ignoreThreatClassificationChanges;
 }

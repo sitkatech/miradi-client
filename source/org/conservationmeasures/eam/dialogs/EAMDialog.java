@@ -25,7 +25,8 @@ public class EAMDialog extends JDialog
 	
 	public EAMDialog(JFrame parent, String heading)
 	{
-		super(parent, heading);
+		this(parent);
+		setTitle(heading);
 	}
 	
 	protected JRootPane createRootPane() 

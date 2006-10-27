@@ -9,6 +9,8 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -34,7 +36,8 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
-import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.EAM;
@@ -287,7 +290,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			return;
 		
 		DiagramNode selectedNode = getSelectedNode();
-		if(selectedNode == null || !selectedNode.equals(nodePropertiesDlg.getCurrentNode()))
+		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
 			disposeOfNodePropertiesDialog();
 	}
 
@@ -296,16 +299,35 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
 		String title = EAM.text("Title|Properties");
-		nodePropertiesDlg = new NodePropertiesDialog(EAM.mainWindow, this, title);
-		nodePropertiesDlg.setCurrentNode(this, node);
+		nodePropertiesPanel = new NodePropertiesPanel(EAM.mainWindow, this);
+		nodePropertiesDlg = new ModelessDialogWithClose(EAM.mainWindow, nodePropertiesPanel, title);
+		
+		nodePropertiesPanel.setCurrentNode(this, node);
+		nodePropertiesPanel.selectTab(startingTabIdentifier);
+		nodePropertiesDlg.addWindowListener(new WindowEventHandler());
+		nodePropertiesDlg.pack();
 		nodePropertiesDlg.setVisible(true);
-		nodePropertiesDlg.selectTab(startingTabIdentifier);
+	}
+	
+	public class WindowEventHandler extends WindowAdapter
+	{
+		public void windowClosing(WindowEvent e)
+		{
+			stopListening();
+		}
+	}
+
+	void stopListening()
+	{
+		project.removeCommandExecutedListener(nodePropertiesPanel);
 	}
 	
 	private void disposeOfNodePropertiesDialog()
 	{
+		stopListening();
 		nodePropertiesDlg.dispose();
 		nodePropertiesDlg = null;
+		nodePropertiesPanel = null;
 	}
 	
 	/*
@@ -365,6 +387,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
-	NodePropertiesDialog nodePropertiesDlg;
+	ModelessDialogWithClose nodePropertiesDlg;
+	NodePropertiesPanel nodePropertiesPanel;
 }
 
