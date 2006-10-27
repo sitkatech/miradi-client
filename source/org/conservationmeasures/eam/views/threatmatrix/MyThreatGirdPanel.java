@@ -94,13 +94,12 @@ public class MyThreatGirdPanel extends JPanel
 		threatData.setColumnIdentifiers(getColumnsTargetHeaders());
 		JTable threatTable = new JTable(threatData);
 
-		
-		ListSelectionModel rowSM = threatTable.getSelectionModel();
+		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
 		threatTable.setColumnSelectionAllowed(true);
 		threatTable.setCellSelectionEnabled(true);
-		CellSelectionListener msel = new CellSelectionListener(threatTable,this);
-		rowSM.addListSelectionListener(msel);
+		CellSelectionListener selectionListener = new CellSelectionListener(threatTable,this);
+		selectionModel.addListSelectionListener(selectionListener);
 		
 		threatData.setNumRows(rowCount);
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
@@ -167,7 +166,7 @@ public class MyThreatGirdPanel extends JPanel
 			String label = createLabel(model.getThreatName(threatIndex));
 			rowNames.add(label);
 		}
-		rowNames.add("Summary Threat Rating");
+		rowNames.add(EAM.text("Summary Threat Rating"));
 		return rowNames;
 	}
 	//TODO: must add logic to calc row hieght based on lenght of user threat header names
@@ -184,7 +183,7 @@ public class MyThreatGirdPanel extends JPanel
 			String label = createLabel(model.getTargetName(targetIndex));
 			columnsNames.add(label);
 		}
-		columnsNames.add("Summary Threat Rating");
+		columnsNames.add(EAM.text("Summary Target Rating"));
 		return columnsNames;
 	}
 
@@ -197,7 +196,6 @@ public class MyThreatGirdPanel extends JPanel
 		initializeThreatSummaryData(data);
 		
 		initializeOverallProjectRating(data);
-
 	}
 
 
@@ -217,7 +215,7 @@ public class MyThreatGirdPanel extends JPanel
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
 					ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
-					setCellValue(data,valueOption,threatIndex,targetIndex);
+					data.setValueAt(valueOption, threatIndex, targetIndex);
 				}
 			}
 		}
@@ -228,13 +226,6 @@ public class MyThreatGirdPanel extends JPanel
 		ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
 		ValueOption valueOption = framework.getBundleValue(bundle);
 		return valueOption;
-	}
-
-	
-	private void setCellValue(TableModel data, ValueOption valueOption, int threatIndex,
-			int targetIndex) throws Exception
-	{
-		data.setValueAt(valueOption, threatIndex, targetIndex);
 	}
 
 	
@@ -303,9 +294,7 @@ public class MyThreatGirdPanel extends JPanel
 		globalTthreatTable.revalidate();
 		globalTthreatTable.repaint();
 	}
-	
 
-	
 	ThreatMatrixTableModel model;
 	ThreatMatrixView view;
 	Project project;
@@ -322,18 +311,24 @@ class CellSelectionListener implements ListSelectionListener
 	}
 	public void valueChanged(ListSelectionEvent e)
 	{
-		if (threatTable.getSelectedRow() == -1) 
+		if (threatTable.getSelectedRow() < 0) 
 			return;
 		
 		int row = threatTable.getSelectedRow();
 		int column = threatTable.getSelectedColumn();
 		
-		threatTable.changeSelection(row, column, true,false);
+		unselectToForceFutureNotifications(row, column);
 		
 		if ( isCellWithinRealDataBounds(row, column)) 
 			return;
 		
 		notifyComponents(row, column);
+	}
+
+	
+	private void unselectToForceFutureNotifications(int row, int column)
+	{
+		threatTable.changeSelection(row, column, true,false);
 	}
 
 	private boolean isCellWithinRealDataBounds(int row, int column)
@@ -399,6 +394,7 @@ class HeaderListener extends MouseAdapter
 
 	public void mousePressed(MouseEvent e)
 	{
+		//TODO: add sort logic here
 		// int col = header.columnAtPoint(e.getPoint());
 		// int sortCol = header.getTable().convertColumnIndexToModel(col);
 		header.repaint();
@@ -411,7 +407,6 @@ class HeaderListener extends MouseAdapter
 
 	public void mouseReleased(MouseEvent e)
 	{
-		// int col = header.columnAtPoint(e.getPoint());
 		header.repaint();
 	}
 	
