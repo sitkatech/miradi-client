@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -17,54 +19,48 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
-public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implements CommandExecutedListener
+public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implements CommandExecutedListener
 {
-	public CrossOrganizationSummaryPanel(MainWindow mainWindowToUse)
+	public CrossOrganizationSummaryPanel(MainWindow mainWindowToUse, ProjectMetadata metadata)
 	{
-		super(mainWindowToUse);
-		
-		add(new UiLabel(EAM.text("Label|Filename:")));
+		super(mainWindowToUse.getProject(), metadata.getType(), metadata.getId());
+
+		add(new UiLabel(EAM.text("Label|Filename")));
 		UiTextField filename = new UiTextField(getProject().getFilename());
 		filename.setEditable(false);
 		add(filename);
 		
-		add(new UiLabel(EAM.text("Label|Project Name:")));
-		projectName = createFieldComponent(ProjectMetadata.TAG_PROJECT_NAME, 50);
-		addFieldComponent(projectName);
+		ObjectDataInputField projectName = createStringField(metadata.TAG_PROJECT_NAME);
+		addField(EAM.text("Label|Project Name"), projectName);
 		
-		add(new UiLabel(EAM.text("Label|Project Scope:")));
-		projectScope = createFieldComponent(ProjectMetadata.TAG_PROJECT_SCOPE, 50);
-		addFieldComponent(projectScope);
+		ObjectDataInputField projectScope = createStringField(metadata.TAG_PROJECT_SCOPE);
+		addField(EAM.text("Label|Project Scope"), projectScope);
 		
-		add(new UiLabel(EAM.text("Label|Short Project Scope:")));
-		shortProjectScope = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, 50);
-		addFieldComponent(shortProjectScope);
+		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
+		addField(EAM.text("Label|Short Project Scope"), shortProjectScope);
 		
-		add(new UiLabel(EAM.text("Label|Project Vision:")));
-		projectVision = createFieldComponent(ProjectMetadata.TAG_PROJECT_VISION, 50);
-		addFieldComponent(projectVision);
+		ObjectDataInputField projectVision = createStringField(metadata.TAG_PROJECT_VISION);
+		addField(EAM.text("Label|Project Vision"), projectVision);
 		
-		add(new UiLabel(EAM.text("Label|Short Project Vision:")));
-		shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
-		addFieldComponent(shortProjectVision);
+		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
+		addField(EAM.text("Label|Short Project Vision"), shortProjectVision);
 		
-		add(new UiLabel(EAM.text("Label|Start Date:")));
-		startDate = createFieldComponent(ProjectMetadata.TAG_START_DATE, 10);
-		addFieldComponent(startDate);
+		ObjectDataInputField startDate = createDateField(metadata.TAG_START_DATE);
+		addField(EAM.text("Label|Start Date"), startDate);
 
-		add(new UiLabel(EAM.text("Label|Data Effective Date:")));
-		effectiveDate = createFieldComponent(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, 10);
-		addFieldComponent(effectiveDate);
+		ObjectDataInputField effectiveDate = createDateField(metadata.TAG_DATA_EFFECTIVE_DATE);
+		addField(EAM.text("Label|Data Effective Date"), effectiveDate);
 
-		add(new UiLabel(EAM.text("Label|Size in Hectares:")));
-		sizeInHectares = createFieldComponent(ProjectMetadata.TAG_SIZE_IN_HECTARES, 10);
-		addFieldComponent(sizeInHectares);
+		ObjectDataInputField sizeInHectares = createNumericField(metadata.TAG_SIZE_IN_HECTARES);
+		addField(EAM.text("Label|Size in Hectares"), sizeInHectares);
 		
 		add(new UiLabel(EAM.text("Label|Team Members:")));
-		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindow.getActions());
+		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
 		add(teamEditorComponent);
 		
-		mainWindow.getProject().addCommandExecutedListener(this);
+		getProject().addCommandExecutedListener(this);
+		
+		updateFieldsFromProject();
 	}
 
 	public void rebuild()
@@ -74,11 +70,13 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		super.commandExecuted(event);
 		updateTeamList(event);
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
+		super.commandUndone(event);
 		updateTeamList(event);
 	}
 	
@@ -103,13 +101,5 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 		return EAM.text("General");
 	}
 
-	UiTextField projectName;
-	UiTextField projectScope;
-	UiTextField shortProjectScope;
-	UiTextField projectVision;
-	UiTextField shortProjectVision;
-	UiTextField startDate;
-	UiTextField effectiveDate;
-	UiTextField sizeInHectares;
 	TeamEditorComponent teamEditorComponent;
 }

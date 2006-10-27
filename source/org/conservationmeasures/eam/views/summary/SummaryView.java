@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
@@ -47,9 +48,11 @@ public class SummaryView extends TabbedView
 		
 	public void createTabs() throws Exception
 	{
-		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow());
+		ProjectMetadata metadata = getProject().getMetadata();
+		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
+		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
+
 		addTab(crossOrganizationSummaryPanel.getPanelDescriptionText(), crossOrganizationSummaryPanel);
-		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), getProject().getMetadata());
 		addTab(tncSummaryPanel.getPanelDescriptionText(), tncSummaryPanel);
 	}
 

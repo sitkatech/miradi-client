@@ -31,6 +31,11 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 		project.addCommandExecutedListener(this);
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
 	public void addField(String label, ObjectDataInputField field)
 	{
 		fields.add(field);
@@ -46,6 +51,11 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 	public ObjectDataInputField createDateField(String tag)
 	{
 		return new ObjectDateInputField(project, objectType, objectId, tag);
+	}
+	
+	public ObjectDataInputField createNumericField(String tag)
+	{
+		return new ObjectNumericInputField(project, objectType, objectId, tag);
 	}
 	
 	public void updateFieldsFromProject()
@@ -71,8 +81,8 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 	{
 	}
 
-	Project project;
-	int objectType;
-	BaseId objectId;
-	Vector fields;
+	private Project project;
+	private int objectType;
+	private BaseId objectId;
+	private Vector fields;
 }
