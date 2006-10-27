@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-abstract public class FloatingPropertiesDialog extends ModelessDialogWithClose
+abstract public class FloatingPropertiesDialog extends EAMDialog
 {
 	public FloatingPropertiesDialog(MainWindow mainWindowToUse)
 	{

@@ -94,7 +94,6 @@ public class NodePropertiesDialog extends ModelessDialogWithClose implements
 		addWindowListener(new WindowEventHandler());
 
 		setResizable(true);
-		setModal(false);
 	}
 
 	public void selectTab(int tabIdentifier)

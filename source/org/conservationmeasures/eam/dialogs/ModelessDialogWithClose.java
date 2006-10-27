@@ -5,51 +5,59 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
+import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
-import javax.swing.KeyStroke;
 
-public class ModelessDialogWithClose extends JDialog
+import org.conservationmeasures.eam.main.EAM;
+import org.martus.swing.UiButton;
+import org.martus.swing.Utilities;
+
+public class ModelessDialogWithClose extends EAMDialog
 {
 	public ModelessDialogWithClose(JFrame parent)
 	{
 		super(parent);
+		setModal(false);
 	}
 	public ModelessDialogWithClose(JFrame parent,String headingText)
 	{
-		super(parent, headingText);
+		this(parent);
+		setTitle(headingText);
 	}
 	
-	public ModelessDialogWithClose(JFrame parent, JPanel contentPanel, String headingText)
+	public ModelessDialogWithClose(JFrame parent, JPanel panel, String headingText)
 	{
-		super(parent, headingText);
-		getContentPane().add(contentPanel);
+		this(parent, headingText);
+	
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.add(panel, BorderLayout.CENTER);
+		mainPanel.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
+		getContentPane().add(mainPanel);
 	}
 	
-	protected JRootPane createRootPane() 
+	private Box createButtonBar()
 	{
-		rootPane = new JRootPane();
-		KeyStroke stroke = KeyStroke.getKeyStroke("ESCAPE");
-		Action actionListener = new AbstractAction() 
+		UiButton closeButton = new UiButton(EAM.text("Button|Close"));
+		closeButton.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent actionEvent) 
+			public void actionPerformed(ActionEvent e)
 			{
 				dispose();
-			} 
-		};
+			}
+		});
 		
-		InputMap inputMap = rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
-		inputMap.put(stroke, "ESCAPE");
-		rootPane.getActionMap().put("ESCAPE", actionListener);
+		getRootPane().setDefaultButton(closeButton);
+		Box buttonBar = Box.createHorizontalBox();
+		Component[] components = new Component[] {Box.createHorizontalGlue(), closeButton};
+		Utilities.addComponentsRespectingOrientation(buttonBar, components);
+		return buttonBar;
+	}
 
-		return rootPane;
-	} 
+	
 }

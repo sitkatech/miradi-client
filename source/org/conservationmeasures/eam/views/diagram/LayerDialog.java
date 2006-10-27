@@ -51,7 +51,6 @@ public class LayerDialog extends ModelessDialogWithClose implements ActionListen
 		contents.add(bigBox);
 		pack();
 		setResizable(true);
-		setModal(false);
 	}
 
 	private Component createLayerOptions()

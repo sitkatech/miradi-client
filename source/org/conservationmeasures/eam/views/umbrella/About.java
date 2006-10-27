@@ -16,7 +16,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
@@ -42,7 +42,7 @@ public class About extends Doer
 	
 	void showOkDialog(String title, String body)
 	{
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(EAM.mainWindow, title);
+		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
 		Box textBox = Box.createHorizontalBox();

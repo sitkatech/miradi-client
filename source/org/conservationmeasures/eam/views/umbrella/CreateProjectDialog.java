@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -35,7 +35,7 @@ import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 import org.martus.util.DirectoryUtils;
 
-public class CreateProjectDialog extends ModelessDialogWithClose implements ActionListener,
+public class CreateProjectDialog extends EAMDialog implements ActionListener,
 		ListSelectionListener
 {
 	public CreateProjectDialog(MainWindow parent) throws HeadlessException

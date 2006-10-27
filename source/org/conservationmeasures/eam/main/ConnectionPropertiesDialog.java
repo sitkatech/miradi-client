@@ -16,14 +16,14 @@ import javax.swing.Box;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
-public class ConnectionPropertiesDialog extends ModelessDialogWithClose implements ActionListener
+public class ConnectionPropertiesDialog extends EAMDialog implements ActionListener
 {
 	public ConnectionPropertiesDialog(MainWindow parent) throws HeadlessException
 	{

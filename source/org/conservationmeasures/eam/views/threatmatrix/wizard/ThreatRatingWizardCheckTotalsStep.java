@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.martus.swing.HtmlViewer;
@@ -112,7 +112,7 @@ public class ThreatRatingWizardCheckTotalsStep extends ThreatRatingWizardStep
 		}
 	}
 
-	public class ShowBundleRulesDialog extends ModelessDialogWithClose implements ActionListener
+	public class ShowBundleRulesDialog extends EAMDialog implements ActionListener
 	{
 		public ShowBundleRulesDialog()
 		{

@@ -22,7 +22,7 @@ import org.martus.swing.UiTextField;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
-public class LinkagePropertiesDialog extends ModelessDialogWithClose implements ActionListener
+public class LinkagePropertiesDialog extends EAMDialog implements ActionListener
 {
 	public LinkagePropertiesDialog(MainWindow parent, Project project, EAMGraphCell scope)
 	{
