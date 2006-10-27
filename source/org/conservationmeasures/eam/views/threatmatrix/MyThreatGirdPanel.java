@@ -40,28 +40,28 @@ public class MyThreatGirdPanel
 
 	public JScrollPane createThreatGridPanel() throws Exception
 	{
-		JTable rowHeader = createRowHeaderTable();
+		JTable rowHeaderTable = createRowHeaderTable();
 
-		JTable table = createThreatTable(rowHeader);
+		JTable threatTable = createThreatTable(rowHeaderTable);
 
-		JTableHeader header = table.getTableHeader();
-		header.addMouseListener(new HeaderListener(table.getTableHeader()));
+		JTableHeader columnHeader = threatTable.getTableHeader();
+		columnHeader.addMouseListener(new HeaderListener(columnHeader));
 
-		JTableHeader corner = rowHeader.getTableHeader();
+		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
-				rowHeader, table, corner);
+				rowHeaderTable, threatTable, rowHeader);
 
-		initializeTableData((DefaultTableModel) table.getModel());
+		initializeTableData((DefaultTableModel) threatTable.getModel());
 
 		return scrollPane;
 	}
 
-	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeader,
-			JTable table, JTableHeader corner)
+	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
+			JTable threatTable, JTableHeader rowHeader)
 	{
-		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setRowHeaderView(rowHeader);
-		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, corner);
+		JScrollPane scrollPane = new JScrollPane(threatTable);
+		scrollPane.setRowHeaderView(rowHeaderTable);
+		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
 		scrollPane
 				.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
 		scrollPane
@@ -71,15 +71,15 @@ public class MyThreatGirdPanel
 		return scrollPane;
 	}
 
-	private JTable createThreatTable(JTable rowHeader)
+	private JTable createThreatTable(JTable rowHeaderTable)
 	{
 		DefaultTableModel threatData = new DefaultTableModel();
 		threatData.setColumnIdentifiers(getColumnsTargetHeaders());
 		JTable threatTable = new JTable(threatData);
 
-		threatData.setNumRows(rowHeader.getRowCount());
+		threatData.setNumRows(rowHeaderTable.getRowCount());
 
-		threatTable.setRowHeight(calculateRowHeight());
+		threatTable.setRowHeight(rowHeightForThreatTable);
 
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer(model,framework);
 		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
@@ -92,10 +92,10 @@ public class MyThreatGirdPanel
 
 	private JTable createRowHeaderTable()
 	{
-		DefaultTableModel headerData = createRowHeaderDataModel();
-		JTable rowHeaderTable = new JTable(headerData);
+		DefaultTableModel rowHeaderData = createRowHeaderDataModel();
+		JTable rowHeaderTable = new JTable(rowHeaderData);
 
-		rowHeaderTable.setRowHeight(calculateRowHeight());
+		rowHeaderTable.setRowHeight(rowHeightForThreatTable);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
@@ -116,20 +116,15 @@ public class MyThreatGirdPanel
 
 	private DefaultTableModel createRowHeaderDataModel()
 	{
-		DefaultTableModel headerData = new DefaultTableModel(0, 1);
+		DefaultTableModel rowHeaderData = new DefaultTableModel(0, 1);
 		Vector rowNames = getRowThreatHeaders();
 
 		for(int k = 0; k < rowNames.size(); k++)
 		{
 			Object[] row = new Object[] { rowNames.get(k) };
-			headerData.addRow(row);
+			rowHeaderData.addRow(row);
 		}
-		return headerData;
-	}
-
-	private int calculateRowHeight()
-	{
-		return 100;
+		return rowHeaderData;
 	}
 
 	private Vector getRowThreatHeaders()
@@ -139,11 +134,17 @@ public class MyThreatGirdPanel
 		{
 			String label = createLabel(model.getThreatName(threatIndex));
 			rowNames.add(label);
+			calculateRowHeight(label);
 		}
 		rowNames.add("Summary Threat Rating");
 		return rowNames;
 	}
 
+	private void calculateRowHeight(String label)
+	{
+		rowHeightForThreatTable = 100;
+	}
+	
 	private Object[] getColumnsTargetHeaders()
 	{
 		Vector columnsNames = new Vector();
@@ -232,6 +233,8 @@ public class MyThreatGirdPanel
 	Project project;
 
 	ThreatRatingFramework framework;
+	
+	int rowHeightForThreatTable = 100;
 
 }
 
