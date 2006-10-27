@@ -58,7 +58,6 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
 		tree = new StrategicPlanTreeTable(model);
-		expandEverything();
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
 		tree.getTree().addTreeSelectionListener(this);
@@ -243,8 +242,11 @@ EAM.logDebug("" + row);
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandEverything();
+			if(cmd.getObjectType() != ObjectType.VIEW_DATA)
+			{
+				model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+				expandEverything();
+			}
 		}
 	}
 
