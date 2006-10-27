@@ -37,23 +37,37 @@ class RowHeaderRenderer
     public void updateUI()
     {
         super.updateUI();
-        Border cellBorder = UIManager.getBorder("TableHeader.cellBorder");
-        Border foucsCellHighlightBorder = UIManager.getBorder("Table.focusCellHighlightBorder");
+        createCellSelectionBorders();
+    }
 
-        focusBorder = new BorderUIResource.CompoundBorderUIResource(cellBorder, foucsCellHighlightBorder);
- 
-        Insets insets = foucsCellHighlightBorder.getBorderInsets(this);
+	private void createCellSelectionBorders()
+	{
+		Border cellBorder = UIManager.getBorder("TableHeader.cellBorder");
+        Border focusCellHighlightBorder = UIManager.getBorder("Table.focusCellHighlightBorder");
+
+        createCellSelectedBorder(cellBorder, focusCellHighlightBorder);
+        createCellNotSelectionBorder(cellBorder, focusCellHighlightBorder);
+	}
+
+	private void createCellSelectedBorder(Border cellBorder, Border focusCellHighlightBorder)
+	{
+		focusBorder = new BorderUIResource.CompoundBorderUIResource(cellBorder, focusCellHighlightBorder);
+	}
+
+	private void createCellNotSelectionBorder(Border cellBorder, Border focusCellHighlightBorder)
+	{
+		Insets insets = focusCellHighlightBorder.getBorderInsets(this);
 
         noFocusBorder = new BorderUIResource.CompoundBorderUIResource
              (cellBorder, BorderFactory.createEmptyBorder(insets.top, insets.left, insets.bottom, insets.right));
-    }
+	}
 
     public Component getListCellRendererComponent(JList list, Object value, 
         int index, boolean selected, boolean focused) 
     {
-        Color selBackground = list.getSelectionBackground();
-        Color selForeground = list.getSelectionForeground();
-        setupCellRendereComponent(list, value, selected, focused, selBackground, selForeground);
+        Color selectionBackground = list.getSelectionBackground();
+        Color selectionForeground = list.getSelectionForeground();
+        setupCellRendererComponent(list, value, selected, focused, selectionBackground, selectionForeground);
         return this;
     }
 
@@ -61,14 +75,14 @@ class RowHeaderRenderer
     public Component getTableCellRendererComponent(JTable table, Object value,
                        boolean selected, boolean focused, int row, int column)
     {
-        Color selBackground = table.getSelectionBackground();
-        Color selForeground = table.getSelectionForeground();
-        setupCellRendereComponent(table, value, selected, focused, selBackground, selForeground);
+        Color selectionBackground = table.getSelectionBackground();
+        Color selectionForeground = table.getSelectionForeground();
+        setupCellRendererComponent(table, value, selected, focused, selectionBackground, selectionForeground);
         return this;
     }
     
     
-	private void setupCellRendereComponent(JComponent component, Object value, boolean selected, boolean focused, Color selectionBackground ,  Color selectionForeground)
+	private void setupCellRendererComponent(JComponent component, Object value, boolean selected, boolean focused, Color selectionBackground ,  Color selectionForeground)
 	{
         if (selected)
         {
