@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.martus.swing.UiScrollPane;
 
 public class SummaryView extends TabbedView
 {
@@ -52,8 +54,13 @@ public class SummaryView extends TabbedView
 		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
 		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 
-		addTab(crossOrganizationSummaryPanel.getPanelDescriptionText(), crossOrganizationSummaryPanel);
-		addTab(tncSummaryPanel.getPanelDescriptionText(), tncSummaryPanel);
+		addPanelAsTab(crossOrganizationSummaryPanel);
+		addPanelAsTab(tncSummaryPanel);
+	}
+	
+	void addPanelAsTab(ObjectDataInputPanel panel)
+	{
+		addTab(panel.getPanelDescriptionText(), new UiScrollPane(panel));
 	}
 
 	public void deleteTabs() throws Exception

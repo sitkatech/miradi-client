@@ -5,22 +5,23 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.Component;
+
+import javax.swing.JComponent;
+import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextField;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
-	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, UiTextField componentToUse)
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
 	{
 		super(projectToUse, objectType, objectId, tag);
 		field = componentToUse;
 		addFocusListener();
 	}
 
-	public Component getComponent()
+	public JComponent getComponent()
 	{
 		return field;
 	}
@@ -40,7 +41,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setEditable(newState);
 	}
 
-	UiTextField field;
+	JTextComponent field;
 
 
 }

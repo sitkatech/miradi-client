@@ -17,9 +17,6 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
-		ObjectDataInputField lessonsLearned = createStringField(metadata.TAG_TNC_LESSONS_LEARNED);
-		addField(EAM.text("Label|Lessons Learned"), lessonsLearned);
-
 		ObjectDataInputField workbookVersionNumber = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		workbookVersionNumber.setEditable(false);
 		addField(EAM.text("Label|CAP Workbook Version Number"), workbookVersionNumber);
@@ -31,6 +28,9 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		ObjectDataInputField databaseDownloadDate = createDateField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		databaseDownloadDate.setEditable(false);
 		addField(EAM.text("Label|ConPro Database Download Date"), databaseDownloadDate);
+
+		ObjectDataInputField lessonsLearned = createMultilineField(metadata.TAG_TNC_LESSONS_LEARNED);
+		addField(EAM.text("Label|Lessons Learned"), lessonsLearned);
 
 		updateFieldsFromProject();
 	}

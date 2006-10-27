@@ -7,12 +7,12 @@ package org.conservationmeasures.eam.dialogfields;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiTextField;
+import org.martus.swing.UiTextArea;
 
 public class ObjectDateInputField extends ObjectTextInputField
 {
 	public ObjectDateInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
-		super(projectToUse, objectType, objectId, tag, new UiTextField(10));
+		super(projectToUse, objectType, objectId, tag, new UiTextArea(1, 10));
 	}
 }

@@ -9,11 +9,11 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
 
-public class ObjectNumericInputField extends ObjectTextInputField
+public class ObjectMultilineInputField extends ObjectTextInputField
 {
-	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
+	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super(projectToUse, objectType, objectId, tag, new UiTextArea(1, 10));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(5, 60));
 	}
 
 }

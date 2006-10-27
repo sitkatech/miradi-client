@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextField;
+import org.martus.swing.UiTextArea;
 
 public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implements CommandExecutedListener
 {
@@ -26,20 +26,21 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		super(mainWindowToUse.getProject(), metadata.getType(), metadata.getId());
 
 		add(new UiLabel(EAM.text("Label|Filename")));
-		UiTextField filename = new UiTextField(getProject().getFilename());
+		UiTextArea filename = new UiTextArea(1, 50);
+		filename.setText(getProject().getFilename());
 		filename.setEditable(false);
 		add(filename);
 		
 		ObjectDataInputField projectName = createStringField(metadata.TAG_PROJECT_NAME);
 		addField(EAM.text("Label|Project Name"), projectName);
 		
-		ObjectDataInputField projectScope = createStringField(metadata.TAG_PROJECT_SCOPE);
+		ObjectDataInputField projectScope = createMultilineField(metadata.TAG_PROJECT_SCOPE);
 		addField(EAM.text("Label|Project Scope"), projectScope);
 		
 		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
 		addField(EAM.text("Label|Short Project Scope"), shortProjectScope);
 		
-		ObjectDataInputField projectVision = createStringField(metadata.TAG_PROJECT_VISION);
+		ObjectDataInputField projectVision = createMultilineField(metadata.TAG_PROJECT_VISION);
 		addField(EAM.text("Label|Project Vision"), projectVision);
 		
 		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);

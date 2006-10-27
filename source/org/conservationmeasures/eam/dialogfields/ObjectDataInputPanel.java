@@ -21,7 +21,7 @@ import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class ObjectDataInputPanel extends JPanel implements CommandExecutedListener
+abstract public class ObjectDataInputPanel extends JPanel implements CommandExecutedListener
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse)
 	{
@@ -32,6 +32,8 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 		fields = new Vector();
 		project.addCommandExecutedListener(this);
 	}
+	
+	abstract public String getPanelDescriptionText();
 	
 	public Project getProject()
 	{
@@ -65,6 +67,11 @@ public class ObjectDataInputPanel extends JPanel implements CommandExecutedListe
 	public ObjectDataInputField createNumericField(String tag)
 	{
 		return new ObjectNumericInputField(project, objectType, objectId, tag);
+	}
+	
+	public ObjectDataInputField createMultilineField(String tag)
+	{
+		return new ObjectMultilineInputField(project, objectType, objectId, tag);
 	}
 	
 	public void updateFieldsFromProject()

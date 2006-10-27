@@ -5,9 +5,10 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
-import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
+import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -27,7 +28,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		tag = tagToUse;
 	}
 	
-	abstract public Component getComponent();
+	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);
 
