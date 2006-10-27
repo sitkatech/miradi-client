@@ -15,20 +15,20 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 
-public class MonitoringDesireNode extends MonitoringNode
+public class MonitoringObjectiveNode extends MonitoringNode
 {
-	public MonitoringDesireNode(Project projectToUse, Desire desireToUse)
+	public MonitoringObjectiveNode(Project projectToUse, Objective objectiveToUse)
 	{
 		project = projectToUse;
-		desire = desireToUse;
+		objective = objectiveToUse;
 		children = new Vector();
 		
 		HashSet indicatorIds = new HashSet();
-		indicatorIds.addAll(getAlUpstreamIndicators(getNodesWithThisDesire(desire.getId())));
+		indicatorIds.addAll(getAlUpstreamIndicators(getNodesWithThisObjective(objective.getId())));
 		
 		Iterator iter = indicatorIds.iterator();
 		while(iter.hasNext())
@@ -44,12 +44,12 @@ public class MonitoringDesireNode extends MonitoringNode
 	private HashSet getAlUpstreamIndicators(ConceptualModelNodeSet nodes)
 	{
 		HashSet indicatorIds = new HashSet(); 
-		Iterator desireNodesIterator = nodes.iterator();
-		while(desireNodesIterator.hasNext())
+		Iterator objectiveNodesIterator = nodes.iterator();
+		while(objectiveNodesIterator.hasNext())
 		{
-			ConceptualModelNode nodeWithDesire = (ConceptualModelNode)desireNodesIterator.next();
-			indicatorIds.add(nodeWithDesire.getIndicatorId());
-			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithDesire);
+			ConceptualModelNode nodeWithObjective = (ConceptualModelNode)objectiveNodesIterator.next();
+			indicatorIds.add(nodeWithObjective.getIndicatorId());
+			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
 			Iterator chainNodesIterator = nodesInChain.iterator();
 			while(chainNodesIterator.hasNext())
 			{
@@ -63,12 +63,12 @@ public class MonitoringDesireNode extends MonitoringNode
 
 	public int getType()
 	{
-		return desire.getType();
+		return objective.getType();
 	}
 	
 	public String toString()
 	{
-		return desire.getLabel() + " (" + desire.getShortLabel() + ")";
+		return objective.getLabel() + " (" + objective.getShortLabel() + ")";
 	}
 	
 	public int getChildCount()
@@ -84,26 +84,24 @@ public class MonitoringDesireNode extends MonitoringNode
 	public Object getValueAt(int column)
 	{
 		if(column == COLUMN_ITEM_LABEL)
-			return desire.getLabel();
+			return objective.getLabel();
 		return "";
 	}
 	
-	private ConceptualModelNodeSet getNodesWithThisDesire(BaseId desireId)
+	private ConceptualModelNodeSet getNodesWithThisObjective(BaseId objectiveId)
 	{
 		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
 		ModelNodeId[] allNodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = project.findNode(allNodeIds[i]);
-			if(node.getObjectives().contains(desireId))
-				result.attemptToAdd(node);
-			if(node.getGoals().contains(desireId))
+			if(node.getObjectives().contains(objectiveId))
 				result.attemptToAdd(node);
 		}
 		return result;
 	}
 
 	Project project;
-	Desire desire;
+	Objective objective;
 	Vector children;
 }

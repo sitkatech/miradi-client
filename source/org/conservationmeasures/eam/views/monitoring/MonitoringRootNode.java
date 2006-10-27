@@ -9,7 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.DesirePool;
-import org.conservationmeasures.eam.objects.Desire;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 
 public class MonitoringRootNode extends MonitoringNode
@@ -49,7 +49,6 @@ public class MonitoringRootNode extends MonitoringNode
 	{
 		Vector desireVector = new Vector();
 		desireVector.addAll(getAllDesires(project.getGoalPool()));
-		desireVector.addAll(getAllDesires(project.getObjectivePool()));
 		children = desireVector;
 	}
 
@@ -59,8 +58,8 @@ public class MonitoringRootNode extends MonitoringNode
 		Vector desires = new Vector();
 		for(int i = 0; i < desireIds.length; ++i)
 		{
-			Desire desire = pool.findDesire(desireIds[i]);
-			desires.add(new MonitoringDesireNode(project, desire));
+			Goal desire = (Goal)pool.findDesire(desireIds[i]);
+			desires.add(new MonitoringGoalNode(project, desire));
 		}
 		return desires;
 	}
