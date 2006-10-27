@@ -26,6 +26,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -40,6 +41,7 @@ public class MyThreatGirdPanel
 		model = modelToUse;
 		project = projectToUse;
 		framework = project.getThreatRatingFramework();
+		view = viewToUse;
 	}
 
 	public JScrollPane createThreatGridPanel() throws Exception
@@ -86,7 +88,7 @@ public class MyThreatGirdPanel
 
 	private JTable createThreatTable(JTable rowHeaderTable)
 	{
-		DefaultTableModel threatData = new DefaultTableModel();
+		DefaultTableModel threatData = getNonEdditableTableModel();
 		threatData.setColumnIdentifiers(getColumnsTargetHeaders());
 		JTable threatTable = new JTable(threatData);
 
@@ -95,7 +97,7 @@ public class MyThreatGirdPanel
 		threatTable.setRowSelectionAllowed(false);
 		threatTable.setColumnSelectionAllowed(true);
 		threatTable.setCellSelectionEnabled(true);
-		CellSelectionListener msel = new CellSelectionListener(threatTable);
+		CellSelectionListener msel = new CellSelectionListener(threatTable,this);
 		rowSM.addListSelectionListener(msel);
 		
 		threatData.setNumRows(rowHeaderTable.getRowCount());
@@ -105,6 +107,17 @@ public class MyThreatGirdPanel
 		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		return threatTable;
+	}
+
+
+	private DefaultTableModel getNonEdditableTableModel()
+	{
+		DefaultTableModel threatData = new DefaultTableModel() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		return threatData;
 	}
 
 
@@ -155,7 +168,7 @@ public class MyThreatGirdPanel
 		rowNames.add("Summary Threat Rating");
 		return rowNames;
 	}
-
+	//TODO: must add logic to calc row hieght based on lenght of user threat header names
 	private int calculateRowHeight(TableModel rowHeaderData)
 	{
 		return 100;
@@ -243,7 +256,7 @@ public class MyThreatGirdPanel
 		}
 	}
 
-	private ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
+	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
 			throws Exception
 	{
 		ModelNodeId threatId = model.getThreatId(threatIndex);
@@ -251,33 +264,63 @@ public class MyThreatGirdPanel
 		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
 		return bundle;
 	}
-
+	
+	// TODO: should be removed once we are satisfied with row and column header display
 	private String createLabel(String text)
 	{
 		return text;
 	}
 
 	ThreatMatrixTableModel model;
-
+	ThreatMatrixView view;
 	Project project;
-
 	ThreatRatingFramework framework;
-
-
 }
 
 class CellSelectionListener implements ListSelectionListener
 {
-	public CellSelectionListener(JTable threatTableInUse) {
+	public CellSelectionListener(JTable threatTableInUse, MyThreatGirdPanel threatGirdPanelInUse) {
 		threatTable = threatTableInUse;
+		threatGirdPanel = threatGirdPanelInUse;
 	}
 	public void valueChanged(ListSelectionEvent e)
 	{
-		if (threatTable.getSelectedRow() == -1) return;
-		threatTable.changeSelection(threatTable.getSelectedRow(), threatTable.getSelectedColumn(), true,false);
+		if (threatTable.getSelectedRow() == -1) 
+			return;
+		
+		int row = threatTable.getSelectedRow();
+		int column = threatTable.getSelectedColumn();
+		
+		threatTable.changeSelection(row, column, true,false);
+		
+		if ( isCellWithinRealDataBounds(row, column)) 
+			return;
+		
+		notifyComponents(row, column);
+	}
+
+	private boolean isCellWithinRealDataBounds(int row, int column)
+	{
+		return row==threatTable.getRowCount()-1 || 
+			 column ==threatTable.getColumnCount()-1;
+	}
+
+	private void notifyComponents(int row, int column)
+	{
+		try
+		{
+			ThreatRatingBundle threatRatingBundle = threatGirdPanel.getBundle(row, column);
+			threatGirdPanel.view.selectBundle(threatRatingBundle);
+		}
+		// TODO: must add errDialog call....need to see how to call when on the swing event thread
+		catch(Exception ex)
+		{
+			EAM.logException(ex);
+		}
 	}
 	
 	JTable threatTable;
+	MyThreatGirdPanel threatGirdPanel;
 }
 
 
