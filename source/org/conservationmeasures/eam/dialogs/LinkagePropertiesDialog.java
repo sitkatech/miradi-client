@@ -7,15 +7,14 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
@@ -23,9 +22,9 @@ import org.martus.swing.UiTextField;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
-public class LinkagePropertiesDialog extends JDialog implements ActionListener
+public class LinkagePropertiesDialog extends ModelessDialogWithClose implements ActionListener
 {
-	public LinkagePropertiesDialog(Frame parent, Project project, EAMGraphCell scope)
+	public LinkagePropertiesDialog(MainWindow parent, Project project, EAMGraphCell scope)
 	{
 		super(parent, EAM.text("Title|Connection Properties"));
 		

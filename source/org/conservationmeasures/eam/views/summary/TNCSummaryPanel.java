@@ -37,6 +37,11 @@ public class TNCSummaryPanel extends MetadataEditingPanel
 		addFieldComponent(databaseDownloadDate);
 	}
 	
+	public String getPanelDescriptionText()
+	{
+		return EAM.text("TNC");
+	}
+	
 	UiTextField lessonsLearned;
 	UiTextField workbookVersionNumber;
 	UiTextField workbookVersionDate;

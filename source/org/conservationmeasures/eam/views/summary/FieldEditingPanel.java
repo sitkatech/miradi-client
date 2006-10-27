@@ -12,8 +12,11 @@ import javax.swing.JPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-public class FieldEditingPanel extends JPanel
+abstract public class FieldEditingPanel extends JPanel
 {
+	
+	abstract public String getPanelDescriptionText();
+	
 	public FieldEditingPanel()
 	{
 		super(new BasicGridLayout(0, 2));

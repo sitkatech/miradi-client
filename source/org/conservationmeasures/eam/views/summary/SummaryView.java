@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersDialog;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
@@ -45,12 +44,13 @@ public class SummaryView extends TabbedView
 	{
 		return new SummaryWizardPanel();
 	}
-	
-	
+		
 	public void createTabs() throws Exception
 	{
-		addTab(EAM.text("General"), new CrossOrganizationSummaryPanel(getMainWindow()));
-		addTab(EAM.text("TNC"), new TNCSummaryPanel(getMainWindow()));
+		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow());
+		addTab(crossOrganizationSummaryPanel.getPanelDescriptionText(), crossOrganizationSummaryPanel);
+		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getMainWindow());
+		addTab(tncSummaryPanel.getPanelDescriptionText(), tncSummaryPanel);
 	}
 
 	public void deleteTabs() throws Exception

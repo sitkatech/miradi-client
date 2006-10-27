@@ -38,5 +38,10 @@ public class ProjectScopePanel extends MetadataEditingPanel
 		UiTextField shortProjectVision = createFieldComponent(ProjectMetadata.TAG_SHORT_PROJECT_VISION, 50);
 		add(shortProjectVision);
 	}
+	
+	public String getPanelDescriptionText()
+	{
+		return EAM.text("Title|Project Scope Properties");
+	}
 
 }

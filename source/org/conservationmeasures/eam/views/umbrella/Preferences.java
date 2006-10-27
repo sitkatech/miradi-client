@@ -17,11 +17,11 @@ import java.io.IOException;
 import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -96,7 +96,7 @@ public class Preferences extends Doer
 		Color color;
 	}
 	
-	static class PreferencesDialog extends JDialog
+	static class PreferencesDialog extends ModelessDialogWithClose
 	{
 		public PreferencesDialog(MainWindow mainWindowToUse)
 		{

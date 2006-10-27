@@ -20,7 +20,6 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -79,7 +78,7 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
-public class NodePropertiesDialog extends JDialog implements
+public class NodePropertiesDialog extends ModelessDialogWithClose implements
 		CommandExecutedListener
 {
 	public NodePropertiesDialog(MainWindow parent,

@@ -11,17 +11,16 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JDialog;
-
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiVBox;
 
-public class LayerDialog extends JDialog implements ActionListener
+public class LayerDialog extends ModelessDialogWithClose implements ActionListener
 {
 	public LayerDialog(MainWindow mainWindowToUse) throws HeadlessException
 	{

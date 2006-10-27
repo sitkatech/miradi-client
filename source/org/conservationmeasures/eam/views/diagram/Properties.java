@@ -19,8 +19,9 @@ import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.dialogs.LinkagePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.NodePropertiesDialog;
-import org.conservationmeasures.eam.dialogs.ProjectScopePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -69,8 +70,10 @@ public class Properties extends LocationDoer
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
 	{
-		ProjectScopePropertiesDialog dlg = new ProjectScopePropertiesDialog(EAM.mainWindow, getProject(), scope);
+		ProjectScopePanel projectScopePanel = new ProjectScopePanel(EAM.mainWindow);
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(EAM.mainWindow, projectScopePanel, projectScopePanel.getPanelDescriptionText()); 
 		setDialogLocation(dlg, scope.getBounds());
+		dlg.pack();
 		dlg.setVisible(true);
 	}
 	

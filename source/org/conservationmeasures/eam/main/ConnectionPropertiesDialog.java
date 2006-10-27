@@ -12,18 +12,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 
-public class ConnectionPropertiesDialog extends JDialog implements ActionListener
+public class ConnectionPropertiesDialog extends ModelessDialogWithClose implements ActionListener
 {
 	public ConnectionPropertiesDialog(MainWindow parent) throws HeadlessException
 	{

@@ -12,10 +12,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.martus.swing.ResourceImageIcon;
@@ -112,7 +112,7 @@ public class ThreatRatingWizardCheckBundleStep extends ThreatRatingWizardStep
 		}
 	}
 
-	public class ShowBundleRulesDialog extends JDialog implements ActionListener
+	public class ShowBundleRulesDialog extends ModelessDialogWithClose implements ActionListener
 	{
 		public ShowBundleRulesDialog()
 		{

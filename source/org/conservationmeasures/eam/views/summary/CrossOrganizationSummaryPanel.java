@@ -97,6 +97,11 @@ public class CrossOrganizationSummaryPanel extends MetadataEditingPanel implemen
 		
 		rebuild();
 	}
+	
+	public String getPanelDescriptionText()
+	{
+		return EAM.text("General");
+	}
 
 	UiTextField projectName;
 	UiTextField projectScope;

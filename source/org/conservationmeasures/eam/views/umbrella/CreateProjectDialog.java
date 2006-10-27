@@ -16,13 +16,13 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -35,7 +35,7 @@ import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 import org.martus.util.DirectoryUtils;
 
-public class CreateProjectDialog extends JDialog implements ActionListener,
+public class CreateProjectDialog extends ModelessDialogWithClose implements ActionListener,
 		ListSelectionListener
 {
 	public CreateProjectDialog(MainWindow parent) throws HeadlessException

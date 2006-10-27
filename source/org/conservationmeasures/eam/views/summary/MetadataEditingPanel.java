@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
 import org.martus.swing.UiTextField;
 
-public class MetadataEditingPanel extends FieldEditingPanel
+abstract public class MetadataEditingPanel extends FieldEditingPanel
 {
 	public MetadataEditingPanel(MainWindow mainWindowToUse)
 	{
