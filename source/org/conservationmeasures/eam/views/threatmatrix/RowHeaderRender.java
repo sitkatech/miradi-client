@@ -5,10 +5,12 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -23,13 +25,11 @@ class RowHeaderRenderer
 	extends JTextArea 
     implements ListCellRenderer , TableCellRenderer
 {
-    protected Border noFocusBorder1, focusBorder;
-
 
     public RowHeaderRenderer()
     {
         setOpaque(true);
-        setBorder(noFocusBorder1);
+        setBorder(noFocusBorder);
         setWrapStyleWord(true);
         setLineWrap(true);
     }
@@ -37,91 +37,66 @@ class RowHeaderRenderer
     public void updateUI()
     {
         super.updateUI();
-        Border cell = UIManager.getBorder("TableHeader.cellBorder");
-        Border focus = UIManager.getBorder("Table.focusCellHighlightBorder");
+        Border cellBorder = UIManager.getBorder("TableHeader.cellBorder");
+        Border foucsCellHighlightBorder = UIManager.getBorder("Table.focusCellHighlightBorder");
 
-        focusBorder = new BorderUIResource.CompoundBorderUIResource(cell, focus);
+        focusBorder = new BorderUIResource.CompoundBorderUIResource(cellBorder, foucsCellHighlightBorder);
  
-        Insets i = focus.getBorderInsets(this);
+        Insets insets = foucsCellHighlightBorder.getBorderInsets(this);
 
-        noFocusBorder1 = new BorderUIResource.CompoundBorderUIResource
-             (cell, BorderFactory.createEmptyBorder(i.top, i.left, i.bottom, i.right));
+        noFocusBorder = new BorderUIResource.CompoundBorderUIResource
+             (cellBorder, BorderFactory.createEmptyBorder(insets.top, insets.left, insets.bottom, insets.right));
     }
 
     public Component getListCellRendererComponent(JList list, Object value, 
         int index, boolean selected, boolean focused) 
     {
-        if (list != null)
-        {
-            if (selected)
-            {
-                setBackground(list.getSelectionBackground());
-                setForeground(list.getSelectionForeground());
-            }
-            else
-            {
-                setBackground(list.getBackground());
-                setForeground(list.getForeground());
-            }
-
-            setFont(list.getFont());
-
-            setEnabled(list.isEnabled());
-
-            
-        }
-        else
-        {
-            setBackground(UIManager.getColor("TableHeader.background"));
-            setForeground(UIManager.getColor("TableHeader.foreground"));
-            setFont(UIManager.getFont("TableHeader.font"));
-            setEnabled(true);
-        }
-
-        if (focused)
-            setBorder(focusBorder);
-        else
-            setBorder(noFocusBorder1);
-
-        setText((String)value);
+        Color selBackground = list.getSelectionBackground();
+        Color selForeground = list.getSelectionForeground();
+        setupCellRendereComponent(list, value, selected, focused, selBackground, selForeground);
         return this;
     }
+
 
     public Component getTableCellRendererComponent(JTable table, Object value,
                        boolean selected, boolean focused, int row, int column)
     {
-        if (table != null)
+        Color selBackground = table.getSelectionBackground();
+        Color selForeground = table.getSelectionForeground();
+        setupCellRendereComponent(table, value, selected, focused, selBackground, selForeground);
+        return this;
+    }
+    
+    
+	private void setupCellRendereComponent(JComponent component, Object value, boolean selected, boolean focused, Color selectionBackground ,  Color selectionForeground)
+	{
+        if (selected)
         {
-            if (selected)
-            {
-                setBackground(table.getSelectionBackground());
-                setForeground(table.getSelectionForeground());
-            }
-            else
-            {
-                setBackground(table.getBackground());
-                setForeground(table.getForeground());
-            }
-
-            setFont(table.getFont());
-
-            setEnabled(table.isEnabled());
+            setBackground(selectionBackground);
+            setForeground(selectionForeground);
         }
         else
         {
-            setBackground(UIManager.getColor("TableHeader.background"));
-            setForeground(UIManager.getColor("TableHeader.foreground"));
-            setFont(UIManager.getFont("TableHeader.font"));
-            setEnabled(true);
+            setBackground(component.getBackground());
+            setForeground(component.getForeground());
         }
-        
+
+        setFont(component.getFont());
+
+        setEnabled(component.isEnabled());
+
         if (focused)
             setBorder(focusBorder);
         else
-            setBorder(noFocusBorder1);
+            setBorder(noFocusBorder);
 
         setText((String)value);
-        return this;
-    }
+	}
+
+    
+    protected Border noFocusBorder;
+    protected Border focusBorder;
+
+
 }
 
