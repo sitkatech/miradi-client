@@ -41,6 +41,8 @@ public class EAM
 	
 	static void setBestLookAndFeel() throws Exception
 	{
+		if(System.getProperty("os.name").equals("Linux"))
+			return;
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
 
