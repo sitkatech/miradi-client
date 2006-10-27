@@ -6,7 +6,9 @@
 package org.conservationmeasures.eam.views.diagram;
 
 
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -23,9 +25,12 @@ public class ConfigureLayers extends ViewDoer
 			return;
 		
 		MainWindow window = getMainWindow();
-		LayerDialog dlg = new LayerDialog(window);
-		dlg.setVisible(true);
-		if(!dlg.getResult())
+		LayerPanel layerPanel = new LayerPanel(window);
+		ModelessDialogWithClose modelessDialog = new ModelessDialogWithClose(window, layerPanel, EAM.text("Title|View Layers"));
+		modelessDialog.pack();
+		modelessDialog.setVisible(true);
+		
+		if(!layerPanel.getResult())
 			return;
 	}
 
