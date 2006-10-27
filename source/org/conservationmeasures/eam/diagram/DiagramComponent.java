@@ -9,8 +9,6 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.Vector;
@@ -304,27 +302,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		nodePropertiesPanel.setCurrentNode(this, node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
-		nodePropertiesDlg.addWindowListener(new WindowEventHandler());
 		nodePropertiesDlg.pack();
 		nodePropertiesDlg.setVisible(true);
 	}
 	
-	public class WindowEventHandler extends WindowAdapter
-	{
-		public void windowClosing(WindowEvent e)
-		{
-			stopListening();
-		}
-	}
-
-	void stopListening()
-	{
-		project.removeCommandExecutedListener(nodePropertiesPanel);
-	}
-	
 	private void disposeOfNodePropertiesDialog()
 	{
-		stopListening();
 		nodePropertiesDlg.dispose();
 		nodePropertiesDlg = null;
 		nodePropertiesPanel = null;
