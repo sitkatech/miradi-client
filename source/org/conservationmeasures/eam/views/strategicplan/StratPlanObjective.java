@@ -14,14 +14,14 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
 
-public class StratPlanDesire extends StratPlanObject
+public class StratPlanObjective extends StratPlanObject
 {
-	public StratPlanDesire(Project projectToUse, Desire desireToUse)
+	public StratPlanObjective(Project projectToUse, Desire objectiveToUse)
 	{
 		project = projectToUse;
-		if(desireToUse == null)
+		if(objectiveToUse == null)
 			EAM.logError("Attempted to create tree node for null objective");
-		desire = desireToUse;
+		objective = objectiveToUse;
 		strategies = new StratPlanStrategy[0];
 		rebuild();
 	}
@@ -45,17 +45,17 @@ public class StratPlanDesire extends StratPlanObject
 	
 	public int getType()
 	{
-		return desire.getType();
+		return objective.getType();
 	}
 
 	public BaseId getId()
 	{
-		return desire.getId();
+		return objective.getId();
 	}
 
 	public String toString()
 	{
-		return desire.getLabel();
+		return objective.getLabel();
 	}
 
 	public boolean canInsertActivityHere()
@@ -65,7 +65,7 @@ public class StratPlanDesire extends StratPlanObject
 
 	public void rebuild()
 	{
-		BaseId desireId = desire.getId();
+		BaseId desireId = objective.getId();
 
 		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
 		Vector strategyVector = new Vector();
@@ -97,6 +97,6 @@ public class StratPlanDesire extends StratPlanObject
 	}
 
 	Project project;
-	Desire desire;
+	Desire objective;
 	StratPlanStrategy[] strategies;
 }

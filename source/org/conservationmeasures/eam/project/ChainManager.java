@@ -52,6 +52,21 @@ public class ChainManager
 		return foundNodes;
 	}
 	
+	public ConceptualModelNodeSet findNodesThatUseThisGoal(BaseId goalId)
+	{
+		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
+		NodePool pool = getNodePool();
+		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
+		for(int i = 0; i < allNodeIds.length; ++i)
+		{
+			ConceptualModelNode node = pool.find(allNodeIds[i]);
+			if(node.getGoals().contains(goalId))
+				foundNodes.attemptToAdd(node);
+		}
+		
+		return foundNodes;
+	}
+	
 	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId)
 	{
 		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
@@ -74,6 +89,20 @@ public class ChainManager
 		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
 		{
 			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisObjective[i]);
+			relatedNodes.attemptToAddAll(nodesInChain);
+		}
+		
+		return relatedNodes;
+	}
+	
+	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId)
+	{
+		ConceptualModelNode[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
+		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
+		
+		for(int i = 0; i < nodesThatUseThisGoal.length; ++i)
+		{
+			ConceptualModelNodeSet nodesInChain = getDiagramModel().getAllUpstreamDownstreamNodes(nodesThatUseThisGoal[i]);
 			relatedNodes.attemptToAddAll(nodesInChain);
 		}
 		
