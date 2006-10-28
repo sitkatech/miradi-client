@@ -20,7 +20,7 @@ import org.martus.swing.UiLabel;
 
 public class PossibleTeamMembersPanel extends ObjectPropertiesPanel
 {
-	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
+	public PossibleTeamMembersPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, null);
 		

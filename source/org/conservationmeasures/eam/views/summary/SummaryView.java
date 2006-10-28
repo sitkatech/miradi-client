@@ -72,15 +72,7 @@ public class SummaryView extends TabbedView
 	public void showTeamAddMembersDialog() throws CommandFailedException
 	{
 		PossibleTeamMembersPanel panel;
-		try
-		{
-			panel = new PossibleTeamMembersPanel(getMainWindow());
-		}
-		catch(Exception e)
-		{
-			throw new CommandFailedException(e);
-		}
-		
+		panel = new PossibleTeamMembersPanel(getMainWindow());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
 		showFloatingPropertiesDialog(dlg);
 	}

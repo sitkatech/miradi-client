@@ -39,7 +39,7 @@ import org.martus.swing.UiLabel;
 abstract public class ObjectPropertiesPanel extends JPanel
 {
 	
-	public ObjectPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public ObjectPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit)
 	{
 		mainWindowToUse = parentToUse;
 		object = objectToEdit;
