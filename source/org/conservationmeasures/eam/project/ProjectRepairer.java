@@ -1,12 +1,14 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class ProjectRepairer
 {
@@ -24,6 +26,7 @@ public class ProjectRepairer
 	void repair()
 	{
 		fixGhostIndicatorIds();
+		fixDeletedTeamMembers();
 	}
 	
 	void fixGhostIndicatorIds()
@@ -39,13 +42,38 @@ public class ProjectRepairer
 			EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
 			if(indicator == null)
 			{
-				EAM.logDebug("Fixing node " + nodeId + " ghost indicatorId " + indicatorId);
+				EAM.logWarning("Fixing node " + nodeId + " ghost indicatorId " + indicatorId);
 				node.setIndicatorId(new IndicatorId(BaseId.INVALID.asInt()));
 				try
 				{
 					project.writeNode(nodeId);
 				}
 				catch (Exception e)
+				{
+					EAM.logError("Repair failed");
+					EAM.logException(e);
+				}
+			}
+		}
+	}
+	
+	void fixDeletedTeamMembers()
+	{
+		ProjectMetadata metadata = project.getMetadata(); 
+		IdList teamMemberIds = metadata.getTeamResourceIdList();
+		for(int i = 0; i < teamMemberIds.size(); ++i)
+		{
+			BaseId teamMemberId = teamMemberIds.get(i);
+			EAMObject resource = project.findObject(ObjectType.PROJECT_RESOURCE, teamMemberId);
+			if(resource == null)
+			{
+				EAM.logWarning("Removing deleted team member " + teamMemberId);
+				teamMemberIds.removeId(teamMemberId);
+				try
+				{
+					project.setObjectData(metadata.getType(), metadata.getId(), metadata.TAG_TEAM_RESOURCE_IDS, teamMemberIds.toString()); 
+				}
+				catch(Exception e)
 				{
 					EAM.logError("Repair failed");
 					EAM.logException(e);

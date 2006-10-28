@@ -27,6 +27,8 @@ abstract public class ObjectsDoer extends ViewDoer
 	public BaseId getSelectedId()
 	{
 		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
+		if(selectedResource == null)
+			return BaseId.INVALID;
 		return selectedResource.getId();
 	}
 	

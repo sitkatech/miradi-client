@@ -44,6 +44,9 @@ public class TeamModel extends AbstractTableModel
 	public Object getValueAt(int row, int column)
 	{
 		ProjectResource member = getObjectFromRow(row);
+		if(member == null)
+			return "(Error)";
+		
 		return member.getData(ProjectResource.TAG_NAME);
 	}
 
