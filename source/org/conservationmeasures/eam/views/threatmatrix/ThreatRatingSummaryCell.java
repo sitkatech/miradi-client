@@ -13,22 +13,22 @@ import org.martus.swing.UiLabel;
 
 public class ThreatRatingSummaryCell extends JPanel
 {
-	public static ThreatRatingSummaryCell createThreatSummary(NonEditableThreatMatrixTableModel model, int threatIndex)
+	public static ThreatRatingSummaryCell createThreatSummary(ThreatMatrixTableModel model, int threatIndex)
 	{
 		return new ThreatRatingSummaryCell(model, threatIndex, -1);
 	}
 
-	public static ThreatRatingSummaryCell createTargetSummary(NonEditableThreatMatrixTableModel model, int targetIndex)
+	public static ThreatRatingSummaryCell createTargetSummary(ThreatMatrixTableModel model, int targetIndex)
 	{
 		return new ThreatRatingSummaryCell(model, -1, targetIndex);
 	}
 
-	public static ThreatRatingSummaryCell createGrandTotal(NonEditableThreatMatrixTableModel model)
+	public static ThreatRatingSummaryCell createGrandTotal(ThreatMatrixTableModel model)
 	{
 		return new ThreatRatingSummaryCell(model, -1, -1);
 	}
 	
-	private ThreatRatingSummaryCell(NonEditableThreatMatrixTableModel modelToUse, int threatIndexToUse, int targetIndexToUse)
+	private ThreatRatingSummaryCell(ThreatMatrixTableModel modelToUse, int threatIndexToUse, int targetIndexToUse)
 	{
 		model = modelToUse;
 		threatIndex = threatIndexToUse;
@@ -60,7 +60,7 @@ public class ThreatRatingSummaryCell extends JPanel
 		setBackground(result.getColor());
 	}
 	
-	NonEditableThreatMatrixTableModel model;
+	ThreatMatrixTableModel model;
 	int threatIndex;
 	int targetIndex;
 	UiLabel label;
