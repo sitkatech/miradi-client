@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 public class MyThreatGirdPanel extends JPanel
 {
 	public MyThreatGirdPanel(ThreatMatrixView viewToUse,
-			ThreatMatrixTableModel modelToUse, Project projectToUse)
+			NonEditableThreatMatrixTableModel modelToUse, Project projectToUse)
 			throws Exception
 	{
 		model = modelToUse;
@@ -119,7 +119,7 @@ public class MyThreatGirdPanel extends JPanel
 				return false;
 			}
 		};
-		return threatData;
+		return model;
 	}
 
 
@@ -215,8 +215,9 @@ public class MyThreatGirdPanel extends JPanel
 			{
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
-					ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
-					data.setValueAt(valueOption, threatIndex, targetIndex);
+					//ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
+					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
+					data.setValueAt(bundle, threatIndex, targetIndex);
 				}
 				else 
 				{
@@ -301,7 +302,7 @@ public class MyThreatGirdPanel extends JPanel
 		globalTthreatTable.repaint();
 	}
 
-	ThreatMatrixTableModel model;
+	NonEditableThreatMatrixTableModel model;
 	ThreatMatrixView view;
 	Project project;
 	ThreatRatingFramework framework;
