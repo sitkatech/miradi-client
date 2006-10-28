@@ -207,10 +207,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	class ObjectPropertiesDialogWindowEventHandler extends WindowAdapter
 	{
 
-		public void windowClosing(WindowEvent e)
+		public void windowClosed(WindowEvent e)
 		{
+			super.windowClosed(e);
 			closeActivePropertiesDialog();
-			super.windowClosing(e);
 		}
 
 	}
