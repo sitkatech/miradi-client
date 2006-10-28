@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.ObjectPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.PossibleTeamMembersPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -71,8 +72,7 @@ public class SummaryView extends TabbedView
 
 	public void showTeamAddMembersDialog() throws CommandFailedException
 	{
-		PossibleTeamMembersPanel panel;
-		panel = new PossibleTeamMembersPanel(getMainWindow());
+		ObjectPropertiesPanel panel = new PossibleTeamMembersPanel(getMainWindow());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
 		showFloatingPropertiesDialog(dlg);
 	}
