@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -217,6 +218,11 @@ public class MyThreatGirdPanel extends JPanel
 					ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
 					data.setValueAt(valueOption, threatIndex, targetIndex);
 				}
+				else 
+				{
+					ValueOption valueOption =  new ValueOption( new BaseId(-1), "", -1 , Color.WHITE);
+					data.setValueAt(valueOption, threatIndex, targetIndex);
+				}
 			}
 		}
 	}
@@ -319,7 +325,7 @@ class CellSelectionListener implements ListSelectionListener
 		
 		unselectToForceFutureNotifications(row, column);
 		
-		if ( isCellWithinRealDataBounds(row, column)) 
+		if ( isCellOutSideRealDataBounds(row, column)) 
 			return;
 		
 		notifyComponents(row, column);
@@ -331,8 +337,27 @@ class CellSelectionListener implements ListSelectionListener
 		threatTable.changeSelection(row, column, true,false);
 	}
 
-	//TODO: must check to see if in bounds that it is infact a real bundle and not an empty position
-	private boolean isCellWithinRealDataBounds(int row, int column)
+	
+	private boolean isCellOutSideRealDataBounds(int row, int column)
+	{
+		if (isOutsideMatrixBounds(row, column)) 
+			return true;
+		
+		if (!isValidThreatTargetPair(row, column))
+			return true;
+		
+		return false;
+	}
+
+	
+	private boolean isValidThreatTargetPair(int row, int column)
+	{
+		ValueOption valueOption = (ValueOption)threatTable.getModel().getValueAt(row, column);
+		return (valueOption.getNumericValue()!=-1);
+	}
+
+	
+	private boolean isOutsideMatrixBounds(int row, int column)
 	{
 		return row==threatTable.getRowCount()-1 || 
 			 column ==threatTable.getColumnCount()-1;
@@ -370,16 +395,10 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		Component cell = super.getTableCellRendererComponent(table, value,
 				isSelected, hasFocus, row, column);
 		
-		if (value==null || value instanceof String ) 
-		{ 
-			cell.setBackground(Color.WHITE);  
-		} else 
-		{
-			cell.setBackground( ((ValueOption)value).getColor() );
-			cell.setFont(new Font(null,Font.BOLD,12));
-		}
-
+		cell.setBackground( ((ValueOption)value).getColor() );
+		cell.setFont(new Font(null,Font.BOLD,12));
 		cell.setForeground(Color.BLACK); 
+		
 		return cell;
 	}
 
