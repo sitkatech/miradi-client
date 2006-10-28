@@ -10,7 +10,6 @@ import javax.swing.table.DefaultTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
@@ -40,6 +39,30 @@ public class NonEditableThreatMatrixTableModel extends DefaultTableModel
 		Object object = super.getValueAt(row, column);
 		return (object instanceof ThreatRatingBundle);
 	}
+	
+
+	public boolean setBundle(ThreatRatingBundle bundle)
+	{
+		for(int row = 0; row < getThreatCount(); ++row)
+		{
+			for(int column = 0; column < getTargetCount(); ++column)
+			{
+				Object object = super.getValueAt(row, column);
+				if (object instanceof ThreatRatingBundle) 
+				{
+					if (object.equals(bundle)) 
+					{
+						setValueAt(bundle, row, column);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	
+	
 	
 	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
 	{

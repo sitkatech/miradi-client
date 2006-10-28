@@ -203,29 +203,20 @@ public class MyThreatGirdPanel extends JPanel
 		{
 			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 			{
+				Object value = null;
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
-					//ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
-					ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
-					data.setValueAt(bundle, threatIndex, targetIndex);
+					value = getBundle(threatIndex, targetIndex);
 				}
 				else 
 				{
-					ValueOption valueOption =  new ValueOption( new BaseId(-1), "", -1 , Color.WHITE);
-					data.setValueAt(valueOption, threatIndex, targetIndex);
+					value =  new ValueOption( new BaseId(-1), "", -1 , Color.WHITE);
 				}
+				data.setValueAt(value, threatIndex, targetIndex);
 			}
 		}
 	}
 
-	private ValueOption getBundleValue(int threatIndex, int targetIndex) throws Exception
-	{
-		ThreatRatingBundle bundle = getBundle(threatIndex, targetIndex);
-		ValueOption valueOption = framework.getBundleValue(bundle);
-		return valueOption;
-	}
-
-	
 	private void initializeThreatSummaryData(TableModel data)
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
@@ -279,15 +270,10 @@ public class MyThreatGirdPanel extends JPanel
 	
 	public void refreshCell(ThreatRatingBundle bundle) throws Exception
 	{
-
-//TODO:	loop over model target and threat ids for match on NodId to get column and row
-//		bundle.getTargetId();
-//		model.getTargetId(0); 
-//		ValueOption valueOption = getBundleValue(threatIndex, targetIndex);
-//		setCellValue(data,valueOption,threatIndex,targetIndex);
+		((NonEditableThreatMatrixTableModel)globalTthreatTable.getModel()).setBundle(bundle);
 		initializeThreatSummaryData(globalTthreatTable.getModel());
 		initializeTargetSummaryData(globalTthreatTable.getModel());
-		initializeThreatTargetRatingData(globalTthreatTable.getModel());
+
 		globalTthreatTable.revalidate();
 		globalTthreatTable.repaint();
 	}
