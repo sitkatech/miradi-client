@@ -77,7 +77,7 @@ public class TestProjectServer extends EAMTestCase
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		storage.writeObject(intervention);
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)readNode(intervention.getId());
-		assertEquals("not an intervention?", intervention.getNodeType(), gotIntervention.getNodeType());
+		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
 		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId());

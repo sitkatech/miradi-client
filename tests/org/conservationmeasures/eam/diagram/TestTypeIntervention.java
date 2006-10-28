@@ -19,7 +19,7 @@ public class TestTypeIntervention extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		NodeTypeIntervention factor = new NodeTypeIntervention();
-		assertTrue("Not an Intervention?", factor.isIntervention());
+		assertTrue("Not a strategy?", factor.isIntervention());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isIndirectFactor());

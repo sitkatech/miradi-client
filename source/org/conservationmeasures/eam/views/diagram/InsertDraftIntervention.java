@@ -45,7 +45,7 @@ public class InsertDraftIntervention extends InsertNode
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Draft Intervention");
+		return EAM.text("Label|New Draft Strategy");
 	}
 
 	void doExtraSetup(BaseId id) throws CommandFailedException

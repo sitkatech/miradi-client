@@ -18,12 +18,12 @@ public class ActionInsertDraftIntervention extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Draft Intervention");
+		return EAM.text("Action|Insert|Draft Strategy");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a draft Intervention");
+		return EAM.text("TT|Insert a draft Strategy");
 	}
 
 

@@ -22,7 +22,7 @@ public class ActionInsertActivity extends MainWindowAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert an Activity for the selected Intervention");
+		return EAM.text("TT|Insert an Activity for the selected Strategy");
 	}
 	
 }

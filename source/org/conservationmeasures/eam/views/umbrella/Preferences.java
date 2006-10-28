@@ -138,7 +138,7 @@ public class Preferences extends Doer
 		{
 			DialogGridPanel panel = new DialogGridPanel();
 			
-			panel.add(new UiLabel("Intervention (Yellow)"));
+			panel.add(new UiLabel("Strategy (Yellow)"));
 			interventionDropdown = createColorsDropdown(interventionColorChoices);
 			interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION));
 			panel.add(interventionDropdown);

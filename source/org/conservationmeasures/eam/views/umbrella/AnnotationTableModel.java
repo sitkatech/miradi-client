@@ -14,9 +14,9 @@ public class AnnotationTableModel extends ObjectManagerTableModel
 		super(resourcePool, columnTagsToUse);
 	}
 
-	public static final String COLUMN_FACTORS = "Factor(s)";
-	public static final String COLUMN_DIRECT_THREATS = "Direct Threat(s)";
-	public static final String COLUMN_TARGETS = "Target(s)";
-	public static final String COLUMN_INTERVENTIONS = "Intervention(s)";
+	public static final String COLUMN_FACTORS = "Factors";
+	public static final String COLUMN_DIRECT_THREATS = "Direct Threats";
+	public static final String COLUMN_TARGETS = "Targets";
+	public static final String COLUMN_INTERVENTIONS = "Strategies";
 	
 }

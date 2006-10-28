@@ -95,7 +95,7 @@ public class TestDiagramAddNode extends EAMTestCase
 		BaseId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not an intervention?", foundNode.isIntervention());
+		assertTrue("not a strategy?", foundNode.isIntervention());
 		assertEquals(DiagramNode.TYPE_INTERVENTION, foundNode.getNodeType());
 	}
 	

@@ -65,7 +65,7 @@ public class TestDataUpgrader extends EAMTestCase
 		Version2ConceptualModelThreat threat = new Version2ConceptualModelThreat("Threat");
 		File threatFile = writeNode(tempDirectory, manifest, threat);
 
-		Version2ConceptualModelIntervention intervention = new Version2ConceptualModelIntervention("Intervention");
+		Version2ConceptualModelIntervention intervention = new Version2ConceptualModelIntervention("Strategy");
 		File interventionFile = writeNode(tempDirectory, manifest, intervention);
 
 		manifest.write(new File(nodesDirectory, "manifest"));

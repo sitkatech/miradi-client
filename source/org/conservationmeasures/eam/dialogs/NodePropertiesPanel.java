@@ -711,7 +711,7 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 
 			if(foundTaxonomyItem == null)
 			{
-				String errorMessage = "Intervention not found in table ; please make another selection";
+				String errorMessage = "Strategy not found in table ; please make another selection";
 				EAM.errorDialog(EAM.text(errorMessage));
 				foundTaxonomyItem = taxonomyItems[0];
 			}

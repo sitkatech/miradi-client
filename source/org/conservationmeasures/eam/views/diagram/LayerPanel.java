@@ -25,7 +25,7 @@ public class LayerPanel extends JPanel implements ActionListener
 	{
 		mainWindow = mainWindowToUse;
 		
-		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Interventions"));
+		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Strategies"));
 		interventionCheckBox.addActionListener(this);
 		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Indirect Factors"));
 		factorCheckBox.addActionListener(this);

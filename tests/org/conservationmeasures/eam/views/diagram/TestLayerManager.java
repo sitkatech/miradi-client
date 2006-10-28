@@ -32,7 +32,7 @@ public class TestLayerManager extends EAMTestCase
 		cmFactor = new ConceptualModelFactor(idAssigner.takeNextId());
 		cmFactor.setLabel("Factor");
 		cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
-		cmIntervention.setLabel("Intervention");
+		cmIntervention.setLabel("Strategy");
 		
 		target = new DiagramTarget(cmTarget);
 		factor = new DiagramFactor(cmFactor);

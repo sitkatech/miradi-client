@@ -75,7 +75,7 @@ public class StratPlanStrategy extends StratPlanObject
 			Task activity = project.getTaskPool().find(activityId);
 			if(activity == null)
 			{
-				EAM.logWarning("Ignoring null activity " + activityId + " in intervention " + intervention.getId());
+				EAM.logWarning("Ignoring null activity " + activityId + " in strategy " + intervention.getId());
 				continue;
 			}
 			activityVector.add(new StratPlanActivity(project, activity));

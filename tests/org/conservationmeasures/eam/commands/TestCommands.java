@@ -325,7 +325,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		BaseId insertedId = cmd.getId();
 		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert an intervention?", inserted.isIntervention());
+		assertTrue("didn't insert a strategy?", inserted.isIntervention());
 
 		verifyUndoInsertNode(cmd);
 	}

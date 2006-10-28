@@ -18,12 +18,12 @@ public class ActionInsertIntervention extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Intervention");
+		return EAM.text("Action|Insert|Strategy");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert an Intervention");
+		return EAM.text("TT|Insert a Strategy");
 	}
 
 }

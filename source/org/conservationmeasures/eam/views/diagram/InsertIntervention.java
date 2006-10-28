@@ -18,7 +18,7 @@ public class InsertIntervention extends InsertNode
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Intervention");
+		return EAM.text("Label|New Strategy");
 	}
 
 }
