@@ -20,25 +20,23 @@ import org.martus.swing.Utilities;
 
 public class ModelessDialogWithClose extends EAMDialog
 {
-	public ModelessDialogWithClose(JFrame parent)
+	public ModelessDialogWithClose(JFrame parent, JPanel panel, String headingText)
 	{
 		super(parent);
 		setModal(false);
-	}
-	public ModelessDialogWithClose(JFrame parent,String headingText)
-	{
-		this(parent);
 		setTitle(headingText);
-	}
-	
-	public ModelessDialogWithClose(JFrame parent, JPanel panel, String headingText)
-	{
-		this(parent, headingText);
+		
+		wrappedPanel = panel;
 	
 		JPanel mainPanel = new JPanel(new BorderLayout());
-		mainPanel.add(panel, BorderLayout.CENTER);
+		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
 		mainPanel.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		getContentPane().add(mainPanel);
+	}
+	
+	public JPanel getWrappedPanel()
+	{
+		return wrappedPanel;
 	}
 	
 	private Box createButtonBar()
@@ -59,5 +57,5 @@ public class ModelessDialogWithClose extends EAMDialog
 		return buttonBar;
 	}
 
-	
+	JPanel wrappedPanel;
 }

@@ -198,9 +198,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void modifyObject(EAMObject object) throws Exception
 	{
-		
-		activePropertiesPanel = createPanelForDialog(object);
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, activePropertiesPanel, activePropertiesPanel.getPanelDescription());
+		ObjectPropertiesPanel propertiesPanel = createPanelForDialog(object);
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, propertiesPanel, propertiesPanel.getPanelDescription());
 		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
 		showFloatingPropertiesDialog(dlg);
 	}
@@ -241,6 +240,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			activePropertiesDlg.dispose();
 		
 		activePropertiesDlg = newDialog;
+		activePropertiesPanel = (ObjectPropertiesPanel)newDialog.getWrappedPanel();
 		activePropertiesDlg.pack();
 		activePropertiesDlg.setVisible(true);
 	}
