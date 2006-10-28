@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix.wizard;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
+import org.conservationmeasures.eam.views.threatmatrix.NonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
@@ -76,7 +77,7 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 
 	public ThreatRatingBundle getSelectedBundle() throws Exception
 	{
-		ThreatMatrixTableModel model = getView().getModel();
+		NonEditableThreatMatrixTableModel model = getView().getModel();
 		ModelNodeId threatId = model.findThreatByName(selectedThreatName);
 		ModelNodeId targetId = model.findTargetByName(selectedTargetName);
 		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);

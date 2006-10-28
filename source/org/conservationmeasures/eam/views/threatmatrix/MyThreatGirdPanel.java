@@ -91,7 +91,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private JTable createThreatTable(int rowCount)
 	{
-		DefaultTableModel threatData = getNonEdditableTableModel();
+		DefaultTableModel threatData = model;
 		threatData.setColumnIdentifiers(getColumnsTargetHeaders());
 		JTable threatTable = new JTable(threatData);
 
@@ -111,16 +111,6 @@ public class MyThreatGirdPanel extends JPanel
 		return threatTable;
 	}
 
-
-	private DefaultTableModel getNonEdditableTableModel()
-	{
-		DefaultTableModel threatData = new DefaultTableModel() {
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		return model;
-	}
 
 
 	private JTable createRowHeaderTable()
@@ -326,10 +316,8 @@ class CellSelectionListener implements ListSelectionListener
 		
 		unselectToForceFutureNotifications(row, column);
 		
-		if ( isCellOutSideRealDataBounds(row, column)) 
-			return;
-		
-		notifyComponents(row, column);
+		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundle(row, column) )
+			notifyComponents(row, column);
 	}
 
 	
@@ -339,31 +327,6 @@ class CellSelectionListener implements ListSelectionListener
 	}
 
 	
-	private boolean isCellOutSideRealDataBounds(int row, int column)
-	{
-		if (isOutsideMatrixBounds(row, column)) 
-			return true;
-		
-		if (!isValidThreatTargetPair(row, column))
-			return true;
-		
-		return false;
-	}
-
-	
-	private boolean isValidThreatTargetPair(int row, int column)
-	{
-		ValueOption valueOption = (ValueOption)threatTable.getModel().getValueAt(row, column);
-		return (valueOption.getNumericValue()!=-1);
-	}
-
-	
-	private boolean isOutsideMatrixBounds(int row, int column)
-	{
-		return row==threatTable.getRowCount()-1 || 
-			 column ==threatTable.getColumnCount()-1;
-	}
-
 	private void notifyComponents(int row, int column)
 	{
 		try
@@ -402,7 +365,6 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		
 		return cell;
 	}
-
 }
 
 

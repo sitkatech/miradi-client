@@ -35,6 +35,12 @@ public class NonEditableThreatMatrixTableModel extends DefaultTableModel
 		return false;
 	}
 	
+	
+	public boolean isBundle(int row, int column) {
+		Object object = super.getValueAt(row, column);
+		return (object instanceof ThreatRatingBundle);
+	}
+	
 	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
 	{
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
