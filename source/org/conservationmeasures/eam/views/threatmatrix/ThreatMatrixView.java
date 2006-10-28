@@ -105,8 +105,8 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 			bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
 		else {
 
-			MyThreatGirdPanel mygp = new MyThreatGirdPanel(this, model,getProject());
-			bottomHalf.add(mygp.createThreatGridPanel(), BorderLayout.CENTER); 
+//			MyThreatGirdPanel mygp = new MyThreatGirdPanel(this, model,getProject());
+//			bottomHalf.add(mygp.createThreatGridPanel(), BorderLayout.CENTER); 
 		}
 		return bottomHalf;
 	}
