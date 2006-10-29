@@ -27,7 +27,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
@@ -49,17 +48,18 @@ public class MyThreatGirdPanel extends JPanel
 
 	public JScrollPane createThreatGridPanel() throws Exception
 	{
-		JTable rowHeaderTable = createRowHeaderTable();
-
+		JTable rowHeaderTable = createRowHeaderTable(createRowHeaderDataModel());
+		rowHeaderTable.addMouseListener(new RowHeaderListener(rowHeaderTable));
+		
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
 		setRowHeaderHeight(rowHeaderTable, globalTthreatTable);
 		
 		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
-		columnHeader.addMouseListener(new HeaderListener(columnHeader));
+		columnHeader.addMouseListener(new HeaderListener(this));
 
 		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
-		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
+		scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowHeaderTable, globalTthreatTable, rowHeader);
 
 		initializeTableData((DefaultTableModel) globalTthreatTable.getModel());
@@ -77,16 +77,16 @@ public class MyThreatGirdPanel extends JPanel
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
 			JTable threatTable, JTableHeader rowHeader)
 	{
-		JScrollPane scrollPane = new JScrollPane(threatTable);
-		scrollPane.setRowHeaderView(rowHeaderTable);
-		scrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
-		scrollPane
+		JScrollPane newScrollPane = new JScrollPane(threatTable);
+		newScrollPane.setRowHeaderView(rowHeaderTable);
+		newScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
+		newScrollPane
 				.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
-		scrollPane
+		newScrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane
+		newScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		return scrollPane;
+		return newScrollPane;
 	}
 
 	private JTable createThreatTable(int rowCount)
@@ -113,11 +113,10 @@ public class MyThreatGirdPanel extends JPanel
 
 
 
-	private JTable createRowHeaderTable()
+	public JTable createRowHeaderTable(DefaultTableModel rowHeaderDataToUSe )
 	{
-		DefaultTableModel rowHeaderData = createRowHeaderDataModel();
+		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
-
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
@@ -138,18 +137,18 @@ public class MyThreatGirdPanel extends JPanel
 
 	private DefaultTableModel createRowHeaderDataModel()
 	{
-		DefaultTableModel rowHeaderData = new DefaultTableModel(0, 1);
+		DefaultTableModel newRowHeaderData = new DefaultTableModel(0, 1);
 		Vector rowNames = getRowThreatHeaders();
 
 		for(int k = 0; k < rowNames.size(); k++)
 		{
 			Object[] row = new Object[] { rowNames.get(k) };
-			rowHeaderData.addRow(row);
+			newRowHeaderData.addRow(row);
 		}
-		return rowHeaderData;
+		return newRowHeaderData;
 	}
 
-	private Vector getRowThreatHeaders()
+	public Vector getRowThreatHeaders()
 	{
 		Vector rowNames = new Vector();
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
@@ -161,12 +160,12 @@ public class MyThreatGirdPanel extends JPanel
 		return rowNames;
 	}
 	//TODO: must add logic to calc row hieght based on lenght of user threat header names
-	private int calculateRowHeight(TableModel rowHeaderData)
+	private int calculateRowHeight(TableModel rowHeaderDataToUse)
 	{
 		return 100;
 	}
 	
-	private Vector getColumnsTargetHeaders()
+	public Vector getColumnsTargetHeaders()
 	{
 		Vector columnsNames = new Vector();
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
@@ -206,7 +205,7 @@ public class MyThreatGirdPanel extends JPanel
 				Object value = null;
 				if(model.isActiveCell(threatIndex, targetIndex))
 				{
-					value = getBundle(threatIndex, targetIndex);
+					value = model.getBundle(threatIndex, targetIndex);
 				}
 				else 
 				{
@@ -223,6 +222,7 @@ public class MyThreatGirdPanel extends JPanel
 		{
 			ValueOption result = framework.getThreatThreatRatingValue(model
 					.getThreatId(threatIndex));
+			//TODO: this will not work with row sort: must take another approach
 			data.setValueAt(result, threatIndex, model.getTargetCount());
 		}
 	}
@@ -237,15 +237,7 @@ public class MyThreatGirdPanel extends JPanel
 		}
 	}
 
-	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
-			throws Exception
-	{
-		ModelNodeId threatId = model.getThreatId(threatIndex);
-		ModelNodeId targetId = model.getTargetId(targetIndex);
-		ThreatRatingBundle bundle = framework.getBundle(threatId, targetId);
-		return bundle;
-	}
-	
+
 	// TODO: should be removed once we are satisfied with row and column header display
 	private String createLabel(String text)
 	{
@@ -284,6 +276,8 @@ public class MyThreatGirdPanel extends JPanel
 	ThreatRatingFramework framework;
 	ThreatRatingBundle highlightedBundle;
 	JTable globalTthreatTable;
+	JScrollPane scrollPane;
+	DefaultTableModel rowHeaderData;
 }
 
 class CellSelectionListener implements ListSelectionListener
@@ -317,7 +311,8 @@ class CellSelectionListener implements ListSelectionListener
 	{
 		try
 		{
-			ThreatRatingBundle threatRatingBundle = threatGirdPanel.getBundle(row, column);
+			NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel)threatTable.getModel();
+			ThreatRatingBundle threatRatingBundle = (ThreatRatingBundle)model.realDataGetValueAt(row, column);
 			threatGirdPanel.view.selectBundle(threatRatingBundle);
 		}
 		// TODO: must add errDialog call....need to see how to call when on the swing event thread
@@ -356,29 +351,88 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 
 class HeaderListener extends MouseAdapter
 {
-	HeaderListener(JTableHeader headerToUse)
+	HeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
 	{
-		header = headerToUse;
+		threatGirdPanel = threatGirdPanelInUse;
 	}
 
 	public void mousePressed(MouseEvent e)
 	{
-		//TODO: add sort logic here
-		// int col = header.columnAtPoint(e.getPoint());
-		// int sortCol = header.getTable().convertColumnIndexToModel(col);
-		header.repaint();
-
-		if(header.getTable().isEditing())
-		{
-			header.getTable().getCellEditor().stopCellEditing();
-		}
+		sortColumn = threatGirdPanel.globalTthreatTable.columnAtPoint(e.getPoint());
 	}
 
 	public void mouseReleased(MouseEvent e)
 	{
-		header.repaint();
+		
+		if (sortColumn != threatGirdPanel.globalTthreatTable.getColumnCount()) 
+		{
+			NonEditableThreatMatrixTableModel model = ((NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel());
+			ThreatTableSorter tabelSorter = new ThreatTableSorter(threatGirdPanel.project, model);
+			int[] rows = tabelSorter.sortByColumn( sortColumn,  false);
+			
+
+			int rowCount = model.getRowCount();
+			NonEditableThreatMatrixTableModel newModel = new NonEditableThreatMatrixTableModel(threatGirdPanel.project);
+			DefaultTableModel newRowHeaderData = new DefaultTableModel(0,1);
+
+			newModel.setRowCount(model.getRowCount());
+			newModel.setColumnCount(model.getColumnCount());
+			
+			newRowHeaderData.setRowCount(model.getRowCount());
+			newRowHeaderData.setColumnCount(1);
+			
+			
+			for (int i = 0; i<rowCount; ++i) {
+				for (int j = 0; j<model.getColumnCount(); ++j) 
+				{
+					newModel.setValueAt(model.realDataGetValueAt(rows[i], j),i,j);
+				}
+				newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[i], 0)  ,i,0);
+			}
+						
+			newModel.setColumnIdentifiers(threatGirdPanel.getColumnsTargetHeaders());
+			threatGirdPanel.globalTthreatTable.setModel(newModel);
+			
+
+			JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
+			newRowHeaderTable.setRowHeight(100);
+			threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
+			
+
+			threatGirdPanel.revalidate();
+			threatGirdPanel.repaint();
+
+		}
 	}
 	
-	JTableHeader header;
+	int sortColumn = 0;
+	MyThreatGirdPanel threatGirdPanel;
+
+}
+
+class RowHeaderListener extends MouseAdapter
+{
+	RowHeaderListener(JTable threatTableIn)
+	{
+		threatTable = threatTableIn;
+	}
+
+	public void mousePressed(MouseEvent e)
+	{
+		sortColumn = threatTable.columnAtPoint(e.getPoint());
+	}
+
+	public void mouseReleased(MouseEvent e)
+	{
+		if (sortColumn != threatTable.getColumnCount()) 
+		{
+		//	((NonEditableThreatMatrixTableModel)threatTable.getModel()).sort("ROWHEADER", "ASSENDING" ,sortColumn);
+			threatTable.revalidate();
+			threatTable.repaint();
+		}
+	}
+	
+	int sortColumn = 0;
+	JTable threatTable;
 
 }
