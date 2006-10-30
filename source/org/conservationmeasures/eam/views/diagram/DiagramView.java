@@ -182,7 +182,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 	public JPanel createWizard() throws Exception
 	{
-		wizardPanel = new DiagramWizardPanel();
+		wizardPanel = new DiagramWizardPanel(getMainWindow().getActions());
 		return wizardPanel;
 	}
 	

@@ -5,18 +5,22 @@
  */
 package org.conservationmeasures.eam.views.diagram.wizard;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
+import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class DiagramWizardPanel extends WizardPanel
 {
-	public DiagramWizardPanel() throws Exception
+	public DiagramWizardPanel(Actions actionsToUse) throws Exception
 	{
+		actions = actionsToUse;
+		
 		OVERVIEW = addStep(new DiagramWizardOverviewStep(this));
 		PROJECT_SCOPE = addStep(new DiagramWizardProjectScopeStep(this));
 		VISION = addStep(new DiagramWizardVisionStep(this));
@@ -26,7 +30,7 @@ public class DiagramWizardPanel extends WizardPanel
 		addStep(new DiagramWizardLinkDirectThreatsToTargetsStep(this));
 		IDENTIFY_INDIRECT_THREATS = addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
 		addStep(new DiagramWizardConstructChainsStep(this));
-		addStep(new DiagramWizardReviewModelAndAdjustStep(this));
+		REVIEW_AND_ADJUST = addStep(new DiagramWizardReviewModelAndAdjustStep(this));
 		
 		setStep(OVERVIEW);
 	}
@@ -50,10 +54,21 @@ public class DiagramWizardPanel extends WizardPanel
 	}
 	
 
+	public void next() throws Exception
+	{
+		if(currentStep == REVIEW_AND_ADJUST)
+			actions.get(ActionJumpRankDirectThreats.class).doAction();
+		else
+			super.next();
+	}
+
+	Actions actions;
+
 	private int OVERVIEW;
 	private int PROJECT_SCOPE;
 	private int VISION;
 	private int CONSERVATION_TARGET;
 	private int IDENTIFY_DIRECT_THREATS;
 	private int IDENTIFY_INDIRECT_THREATS;
+	private int REVIEW_AND_ADJUST;
 }

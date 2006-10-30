@@ -85,6 +85,6 @@ public class WizardPanel extends JPanel
 
 
 	WizardStep[] steps;
-	int currentStep;
+	protected int currentStep;
 }
 
