@@ -76,7 +76,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		removeAll();
 
-		model = new ThreatMatrixTableModel(getProject());
+		model = new NonEditableThreatMatrixTableModel(getProject());
 		
 		bigSplitter =new ViewSplitPane(createWizardPanel(), createThreatMatrixPanel(), bigSplitter);
 		
@@ -88,26 +88,19 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 	private Container createThreatMatrixPanel() throws Exception
 	{
-		grid = new ThreatGridPanel(this, model);
+		//grid = new ThreatGridPanel(this, model);
+		grid = new MyThreatGirdPanel(this, model,getProject());
 		
 		JComponent heading = createHeading();
 		gridWithHeadings = new JPanel(new BorderLayout());
 		gridWithHeadings.add(heading, BorderLayout.BEFORE_FIRST_LINE);
 		gridWithHeadings.add(grid, BorderLayout.CENTER);
-		
 		details = new ThreatRatingBundlePanel(this);
 		
 		Container bottomHalf = new JPanel(new BorderLayout());
 		bottomHalf.add(new UiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
-		boolean test = false;
-		// TEST IS FOR THE NEW JTABLE THREAT MATRIX
-		if (!test)
-			bottomHalf.add(new UiScrollPane(gridWithHeadings), BorderLayout.CENTER);
-		else {
+		bottomHalf.add(gridWithHeadings, BorderLayout.CENTER); 
 
-//			MyThreatGirdPanel mygp = new MyThreatGirdPanel(this, model,getProject());
-//			bottomHalf.add(mygp.createThreatGridPanel(), BorderLayout.CENTER); 
-		}
 		return bottomHalf;
 	}
 
@@ -131,7 +124,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		grid = null;
 	}
 
-	public ThreatMatrixTableModel getModel()
+	public NonEditableThreatMatrixTableModel getModel()
 	{
 		return model;
 	}
@@ -228,9 +221,9 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	}
 
 	JSplitPane bigSplitter;
-	ThreatMatrixTableModel model;
+	NonEditableThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizardPanel;
-	ThreatGridPanel grid;
+	MyThreatGirdPanel grid;
 	ThreatRatingBundlePanel details;
 	JPanel gridWithHeadings;
 }
