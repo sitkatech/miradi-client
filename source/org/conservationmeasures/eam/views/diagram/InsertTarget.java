@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -21,4 +22,8 @@ public class InsertTarget extends InsertNode
 		return EAM.text("Label|New Target");
 	}
 
+	public void forceVisibleInLayerManager()
+	{
+		getProject().getLayerManager().setVisibility(DiagramTarget.class, true);
+	}
 }

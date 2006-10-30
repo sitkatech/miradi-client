@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -52,6 +53,11 @@ public class InsertDraftIntervention extends InsertNode
 	{
 		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.MODEL_NODE, id, ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
+	}
+
+	public void forceVisibleInLayerManager()
+	{
+		getProject().getLayerManager().setVisibility(DiagramIntervention.class, true);
 	}
 	
 }

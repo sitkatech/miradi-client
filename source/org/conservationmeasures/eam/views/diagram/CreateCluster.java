@@ -67,6 +67,10 @@ public class CreateCluster extends InsertNode
 //
 	}
 
+	public void forceVisibleInLayerManager()
+	{
+	}
+
 //	void doExtraSetup(BaseId id) throws CommandFailedException
 //	{
 //		Dimension originalSize = DiagramNode.getDefaultSize();

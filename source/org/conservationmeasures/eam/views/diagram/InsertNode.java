@@ -25,6 +25,7 @@ abstract public class InsertNode extends LocationDoer
 {
 	abstract public NodeType getTypeToInsert();
 	abstract public String getInitialText();
+	abstract public void forceVisibleInLayerManager();
 
 	public boolean isAvailable()
 	{
@@ -79,6 +80,8 @@ abstract public class InsertNode extends LocationDoer
 		
 		getProject().executeCommand(new CommandEndTransaction());
 		
+		forceVisibleInLayerManager();
+		getProject().updateVisibilityOfNodes();
 		return id;
 	}
 	

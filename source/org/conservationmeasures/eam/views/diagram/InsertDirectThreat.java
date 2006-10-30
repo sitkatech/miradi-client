@@ -42,5 +42,11 @@ public class InsertDirectThreat extends InsertNode
 	{
 		EAM.notifyDialog(EAM.text("Text|This will not be a Direct Threat until it is linked to a Target"));
 	}
+
+	public void forceVisibleInLayerManager()
+	{
+		getProject().getLayerManager().setIndirectFactorsVisible(true);
+		getProject().getLayerManager().setDirectThreatsVisible(true);
+	}
 }
 

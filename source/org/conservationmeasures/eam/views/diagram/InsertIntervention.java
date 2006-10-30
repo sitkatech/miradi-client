@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.main.EAM;
@@ -21,4 +22,10 @@ public class InsertIntervention extends InsertNode
 		return EAM.text("Label|New Strategy");
 	}
 
+	public void forceVisibleInLayerManager()
+	{
+		getProject().getLayerManager().setVisibility(DiagramIntervention.class, true);
+	}
+	
+	
 }
