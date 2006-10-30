@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ChoiceDialogField;
 import org.conservationmeasures.eam.dialogfields.DialogField;
+import org.conservationmeasures.eam.dialogfields.MessageField;
 import org.conservationmeasures.eam.dialogfields.MultiSelectDialogField;
 import org.conservationmeasures.eam.dialogfields.StringDialogField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -171,6 +172,8 @@ abstract public class ObjectPropertiesPanel extends JPanel
 		int type = getObject().getType();
 		BaseId id = getObject().getId();
 		IdList selectedResources = new IdList(getProject().getObjectData(type, id, Task.TAG_RESOURCE_IDS));
+		if(availableResources.length == 0)
+			return new MessageField(tag, label, selectedResources.toString(), EAM.text("(No resources defined)"));
 		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
 	
