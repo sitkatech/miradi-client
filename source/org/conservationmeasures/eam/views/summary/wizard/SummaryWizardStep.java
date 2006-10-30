@@ -6,19 +6,18 @@
 package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class InterviewWizardDefineScopeBStep extends InterviewWizardStep
+public abstract class SummaryWizardStep extends WizardStep
 {
-
-	public InterviewWizardDefineScopeBStep(WizardPanel wizardToUse)
+	public SummaryWizardStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
 
-	public String getResourceFileName()
+	public boolean save() throws Exception
 	{
-		return HTML_FILENAME;
+		return true;
 	}
-	
-	String HTML_FILENAME = "DefineScopeBStep.html";	
+
 }

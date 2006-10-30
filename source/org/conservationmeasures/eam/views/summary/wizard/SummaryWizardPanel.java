@@ -5,21 +5,25 @@
  */
 package org.conservationmeasures.eam.views.summary.wizard;
 
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class SummaryWizardPanel extends WizardPanel
 {
-	public SummaryWizardPanel() throws Exception
+	public SummaryWizardPanel(Actions actionsToUse) throws Exception
 	{
+		actions = actionsToUse;
+		
 		WELCOME = addStep(new SummaryWizardWelcomeStep(this));
-		addStep(new InterviewWizardTemporaryGuideStep(this));
-		addStep(new InterviewWizardDefineScopeAStep(this));
-		addStep(new InterviewWizardDefineScopeBStep(this));
-		addStep(new InterviewWizardDevelopObjectivesAStep(this));
-		addStep(new InterviewWizardDevelopObjectivesBStep(this));
 
 		setStep(WELCOME);
+	}
+
+	public void next() throws Exception
+	{
+		actions.get(ActionJumpCreateModel.class).doAction();
 	}
 
 	public void jump(Class stepMarker) throws Exception
@@ -30,5 +34,6 @@ public class SummaryWizardPanel extends WizardPanel
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
+	Actions actions;
 	int WELCOME;
 }

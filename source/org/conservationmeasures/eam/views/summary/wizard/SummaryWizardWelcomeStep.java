@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class SummaryWizardWelcomeStep extends InterviewWizardStep
+public class SummaryWizardWelcomeStep extends SummaryWizardStep
 {
 	public SummaryWizardWelcomeStep(WizardPanel wizardToUse)
 	{
