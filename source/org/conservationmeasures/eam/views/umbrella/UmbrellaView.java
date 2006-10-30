@@ -105,6 +105,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.NullDoer;
 import org.martus.swing.UiLabel;
+import org.martus.swing.Utilities;
 
 abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
 {
@@ -243,6 +244,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		activePropertiesDlg = newDialog;
 		activePropertiesPanel = (ModelessDialogPanel)newDialog.getWrappedPanel();
 		activePropertiesDlg.pack();
+		Utilities.centerDlg(activePropertiesDlg);
 		activePropertiesDlg.setVisible(true);
 	}
 	

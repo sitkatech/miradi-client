@@ -303,6 +303,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		nodePropertiesPanel.setCurrentNode(this, node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
+		Utilities.centerDlg(nodePropertiesDlg);
 		nodePropertiesDlg.setVisible(true);
 	}
 	
