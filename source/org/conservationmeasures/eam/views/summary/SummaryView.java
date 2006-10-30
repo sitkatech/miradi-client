@@ -49,7 +49,8 @@ public class SummaryView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception 
 	{
-		return new SummaryWizardPanel();
+		wizardPanel = new SummaryWizardPanel();
+		return wizardPanel;
 	}
 		
 	public void createTabs() throws Exception
@@ -105,6 +106,12 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, deleteResourceDoer);
 	}
 	
+	public void jump(Class stepMarker) throws Exception
+	{
+		wizardPanel.jump(stepMarker);
+	}
+
+	SummaryWizardPanel wizardPanel;
 	
 	TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;

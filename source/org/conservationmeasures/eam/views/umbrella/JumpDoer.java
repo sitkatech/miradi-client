@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
 public class JumpDoer extends MainWindowDoer
@@ -95,6 +97,9 @@ public class JumpDoer extends MainWindowDoer
 		
 		if(jumpActionClass.equals(ActionJumpRankDirectThreats.class))
 			return ThreatMatrixView.getViewName();
+		
+		if(jumpActionClass.equals(ActionJumpSelectTeam.class))
+			return SummaryView.getViewName();
 		
 		return null;
 	}
