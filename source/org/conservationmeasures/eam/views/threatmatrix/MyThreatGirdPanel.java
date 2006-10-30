@@ -122,7 +122,7 @@ public class MyThreatGirdPanel extends JPanel
 	}
 
 
-	private void setThreatTableColumnWidths(JTable threatTable)
+	public void setThreatTableColumnWidths(JTable threatTable)
 	{
 		Enumeration columns = threatTable.getColumnModel().getColumns();
 		while(columns.hasMoreElements())

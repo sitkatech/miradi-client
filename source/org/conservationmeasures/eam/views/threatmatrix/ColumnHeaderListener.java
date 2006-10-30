@@ -47,8 +47,10 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[rowIndex], 0)  ,rowIndex,0);
 		}
 					
-		newModel.setColumnIdentifiers(threatGirdPanel.getColumnTargetHeaders());
+
 		threatGirdPanel.globalTthreatTable.setModel(newModel);
+		newModel.setColumnIdentifiers(threatGirdPanel.getColumnTargetHeaders());
+		threatGirdPanel.setThreatTableColumnWidths(threatGirdPanel.globalTthreatTable);
 		
 		JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
 		threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
