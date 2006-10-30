@@ -142,6 +142,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 				Point at = event.getPoint();
 				Properties doer = new Properties(getDiagram());
 				doer.setMainWindow(mainWindow);
+				doer.setView(mainWindow.getCurrentView());
 				doer.setLocation(at);
 				doer.doIt();
 			} 
