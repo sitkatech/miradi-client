@@ -5,14 +5,14 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanWizardWelcomeStep;
+import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanWizardWelcomeStep;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringPlanWizardPanel extends WizardPanel
 {
 	public MonitoringPlanWizardPanel() throws Exception
 	{
-		int WELCOME = addStep(new StrategicPlanWizardWelcomeStep(this));
+		int WELCOME = addStep(new MonitoringPlanWizardWelcomeStep(this));
 
 		setStep(WELCOME);
 	}

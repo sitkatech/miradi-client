@@ -3,14 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.monitoring.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class StrategicPlanWizardWelcomeStep extends WizardStep
+public class MonitoringPlanWizardWelcomeStep extends WizardStep
 {
-	public StrategicPlanWizardWelcomeStep(WizardPanel wizardToUse)
+	public MonitoringPlanWizardWelcomeStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -19,8 +19,6 @@ public class StrategicPlanWizardWelcomeStep extends WizardStep
 	{
 		return HTML_FILENAME;
 	}
-	
-	String HTML_FILENAME = "WelcomeStep.html";
-	
 
+	String HTML_FILENAME = "WelcomeStep.html";
 }
