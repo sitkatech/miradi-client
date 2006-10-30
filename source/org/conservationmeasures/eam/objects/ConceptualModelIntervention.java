@@ -13,6 +13,8 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.ratings.RatingChoice;
+import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
+import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
@@ -87,11 +89,15 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		StrategyRatingSummary summary = new StrategyRatingSummary("");
 		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
+		StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion("");
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");
+		StrategyCostQuestion costQuestion = new StrategyCostQuestion("");
 		
-		RatingChoice impactRating = impactQuestion.findChoiceByCode(impact.get());
-		RatingChoice feasibilityRating = feasibilityQuestion.findChoiceByCode(feasibility.get());
-		RatingChoice result = summary.getResult(impactRating, feasibilityRating);
+		RatingChoice impact = impactQuestion.findChoiceByCode(impactRating.get());
+		RatingChoice duration = durationQuestion.findChoiceByCode(durationRating.get());
+		RatingChoice feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
+		RatingChoice cost = costQuestion.findChoiceByCode(costRating.get());
+		RatingChoice result = summary.getResult(impact, duration, feasibility, cost);
 
 		return result;
 	}
@@ -108,13 +114,17 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 		super.clear();
 		activityIds = new IdListData();
 		taxonomyCode = new StringData();
-		impact = new RatingData();
-		feasibility = new RatingData();
+		impactRating = new RatingData();
+		durationRating = new RatingData();
+		feasibilityRating = new RatingData();
+		costRating = new RatingData();
 		
 		addField(TAG_ACTIVITY_IDS, activityIds);
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
-		addField(TAG_IMPACT, impact);
-		addField(TAG_FEASIBILITY, feasibility);
+		addField(TAG_IMPACT_RATING, impactRating);
+		addField(TAG_DURATION_RATING, durationRating);
+		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
+		addField(TAG_COST_RATING, costRating);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
@@ -122,12 +132,16 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
-	public static final String TAG_IMPACT = "Impact";
-	public static final String TAG_FEASIBILITY = "Feasibility";
+	public static final String TAG_IMPACT_RATING = "ImpactRating";
+	public static final String TAG_DURATION_RATING = "DurationRating";
+	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
+	public static final String TAG_COST_RATING = "CostRating";
 
 	String status;
 	IdListData activityIds;
-	StringData taxonomyCode; 
-	RatingData impact;
-	RatingData feasibility;
+	StringData taxonomyCode;
+	RatingData impactRating;
+	RatingData durationRating;
+	RatingData feasibilityRating;
+	RatingData costRating;
 }

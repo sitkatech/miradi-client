@@ -11,17 +11,17 @@ public class StrategyImpactQuestion extends RatingQuestion
 {
 	public StrategyImpactQuestion(String tag)
 	{
-		super(tag, "Potential Impact", getImpactChoices());
+		super(tag, "Impact on Key Factors", getImpactChoices());
 	}
 	
 	static RatingChoice[] getImpactChoices()
 	{
 		return new RatingChoice[] {
 			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Useless", Color.RED),
-			new RatingChoice("2", "Partial AND Temporary Solution", Color.ORANGE),
-			new RatingChoice("3", "Partial OR Temporary Solution", Color.YELLOW),
-			new RatingChoice("4", "Complete and Permanent Solution", Color.GREEN),
+			new RatingChoice("1", "None", COLOR_1_OF_4),
+			new RatingChoice("2", "Low", COLOR_2_OF_4),
+			new RatingChoice("3", "Medium", COLOR_3_OF_4),
+			new RatingChoice("4", "High", COLOR_4_OF_4),
 		};
 	}
 

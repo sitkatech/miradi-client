@@ -61,6 +61,8 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
+import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
+import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
@@ -191,7 +193,7 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 					.text("Label|IUCN-CMP Classification")));
 			detailsTab.add(createInterventionClassificationDropdown());
 			
-			String impactTag = ConceptualModelIntervention.TAG_IMPACT;
+			String impactTag = ConceptualModelIntervention.TAG_IMPACT_RATING;
 			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
 			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
 			ChoiceDialogField impactField = new ChoiceDialogField(impactQuestion);
@@ -200,7 +202,16 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
 			
-			String feasibilityTag = ConceptualModelIntervention.TAG_FEASIBILITY;
+			String durationTag = ConceptualModelIntervention.TAG_DURATION_RATING;
+			StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion(durationTag);
+			detailsTab.add(new UiLabel(durationQuestion.getLabel()));
+			ChoiceDialogField durationField = new ChoiceDialogField(durationQuestion);
+			durationComponent = (UiComboBox)durationField.getComponent();
+			detailsTab.add(createFieldPanel(durationComponent));
+			durationField.selectCode(node.getUnderlyingObject().getData(durationTag));
+			durationComponent.addItemListener(new DurationChangeHandler());
+			
+			String feasibilityTag = ConceptualModelIntervention.TAG_FEASIBILITY_RATING;
 			StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion(feasibilityTag);
 			detailsTab.add(new UiLabel(feasibilityQuestion.getLabel()));
 			ChoiceDialogField feasibilityField = new ChoiceDialogField(feasibilityQuestion);
@@ -209,6 +220,15 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 			
+			String costTag = ConceptualModelIntervention.TAG_COST_RATING;
+			StrategyCostQuestion costQuestion = new StrategyCostQuestion(costTag);
+			detailsTab.add(new UiLabel(costQuestion.getLabel()));
+			ChoiceDialogField costField = new ChoiceDialogField(costQuestion);
+			costComponent = (UiComboBox)costField.getComponent();
+			detailsTab.add(createFieldPanel(costComponent));
+			costField.selectCode(node.getUnderlyingObject().getData(costTag));
+			costComponent.addItemListener(new CostChangeHandler());
+
 			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
 			RatingDisplayField ratingSummaryField = new RatingDisplayField(new StrategyRatingSummary(""));
 			ratingComponent = (UiLabel)ratingSummaryField.getComponent();
@@ -246,10 +266,32 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_IMPACT;
+				String tag = ConceptualModelIntervention.TAG_IMPACT_RATING;
 				String impact = getSelectedImpactCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, impact);
+				getProject().executeCommand(cmd);
+				updateRating();
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+
+	}
+
+	class DurationChangeHandler implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			try
+			{
+				String tag = ConceptualModelIntervention.TAG_DURATION_RATING;
+				String duration = getSelectedDurationCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
+						getNodeId(), tag, duration);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -268,10 +310,32 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_FEASIBILITY;
+				String tag = ConceptualModelIntervention.TAG_FEASIBILITY_RATING;
 				String feasibility = getSelectedFeasibilityCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, feasibility);
+				getProject().executeCommand(cmd);
+				updateRating();
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog("That action failed due to an unknown error");
+			}
+		}
+
+	}
+
+	class CostChangeHandler implements ItemListener
+	{
+		public void itemStateChanged(ItemEvent event)
+		{
+			try
+			{
+				String tag = ConceptualModelIntervention.TAG_COST_RATING;
+				String cost = getSelectedCostCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
+						getNodeId(), tag, cost);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -841,6 +905,20 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		return selected;
 	}
 	
+	public String getSelectedDurationCode()
+	{
+		RatingChoice selected = getSelectedDurationChoice();
+		if(selected == null)
+			return "";
+		return selected.getCode();
+	}
+
+	private RatingChoice getSelectedDurationChoice()
+	{
+		RatingChoice selected = (RatingChoice)durationComponent.getSelectedItem();
+		return selected;
+	}
+	
 	public String getSelectedFeasibilityCode()
 	{
 		RatingChoice selected = getSelectedFeasibilityChoice();
@@ -855,6 +933,20 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		return selected;
 	}
 
+	public String getSelectedCostCode()
+	{
+		RatingChoice selected = getSelectedCostChoice();
+		if(selected == null)
+			return "";
+		return selected.getCode();
+	}
+
+	private RatingChoice getSelectedCostChoice()
+	{
+		RatingChoice selected = (RatingChoice)costComponent.getSelectedItem();
+		return selected;
+	}
+	
 	public ObjectiveIds getObjectives()
 	{
 		ObjectiveIds objectives = new ObjectiveIds();
@@ -1016,7 +1108,9 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	UiComboBox dropdownThreatClassification;
 	UiComboBox dropdownInterventionClassification;
 	UiComboBox impactComponent;
+	UiComboBox durationComponent;
 	UiComboBox feasibilityComponent;
+	UiComboBox costComponent;
 	UiLabel ratingComponent;
 	boolean ignoreObjectiveChanges;
 	boolean ignoreIndicatorChanges;

@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.ratings;
 
+import java.awt.Color;
+
 public class RatingQuestion
 {
 	public RatingQuestion(String tagToUse, String labelToUse, RatingChoice[] choicesToUse)
@@ -37,6 +39,11 @@ public class RatingQuestion
 		
 		return null;
 	}
+	
+	public static final Color COLOR_1_OF_4 = Color.RED;
+	public static final Color COLOR_2_OF_4 = Color.ORANGE;
+	public static final Color COLOR_3_OF_4 = Color.YELLOW;
+	public static final Color COLOR_4_OF_4 = Color.GREEN;
 	
 	String tag;
 	String label;

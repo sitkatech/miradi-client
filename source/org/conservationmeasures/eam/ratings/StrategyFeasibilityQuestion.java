@@ -11,17 +11,17 @@ public class StrategyFeasibilityQuestion extends RatingQuestion
 {
 	public StrategyFeasibilityQuestion(String tag)
 	{
-		super(tag, "Feasibility and Cost", getFeasibilityChoices());
+		super(tag, "Feasibility", getFeasibilityChoices());
 	}
 	
 	static RatingChoice[] getFeasibilityChoices()
 	{
 		return new RatingChoice[] {
 			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Impossible or Hugely Expensive", Color.RED),
-			new RatingChoice("2", "Difficult AND Expensive", Color.ORANGE),
-			new RatingChoice("3", "Difficult OR Expensive", Color.YELLOW),
-			new RatingChoice("4", "Easy and Inexpensive", Color.GREEN),
+			new RatingChoice("1", "Impossible", COLOR_1_OF_4),
+			new RatingChoice("2", "Difficult", COLOR_2_OF_4),
+			new RatingChoice("3", "Moderate", COLOR_3_OF_4),
+			new RatingChoice("4", "Easy", COLOR_4_OF_4),
 		};
 	}
 
