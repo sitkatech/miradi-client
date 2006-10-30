@@ -13,10 +13,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 public class ComparableNode implements Comparable, Comparator
 {
 	
-	public ComparableNode(String lable)
+	public ComparableNode(String label)
 	{
 		index = -1;
-		object= null;
+		object= label;
 	}
 	
 	public ComparableNode(int indexToUse, ConceptualModelNode conceptualModelNodeToUse)
@@ -43,7 +43,7 @@ public class ComparableNode implements Comparable, Comparator
 		if (index==-1 || test1==-1) return -1;
 		
 		BaseId baseId1 = ((ComparableNode) objectToUse).getNode().getId();
-		BaseId baseId2 = object.getId();
+		BaseId baseId2 = ((ConceptualModelNode)object).getId();
 		return baseId1.compareTo(baseId2);
 	}
 
@@ -51,7 +51,7 @@ public class ComparableNode implements Comparable, Comparator
 	{
 		if (index==-1) return false;
 		BaseId baseId1 = ((ConceptualModelNode) objectToUse).getId();
-		BaseId baseId2 = object.getId();
+		BaseId baseId2 = ((ConceptualModelNode)object).getId();
 		return baseId1.compareTo(baseId2)==0;
 	}
 
@@ -62,9 +62,10 @@ public class ComparableNode implements Comparable, Comparator
 	
 	public String toString() 
 	{
-		if (object==null) 
-			return "";
-		return object.getLabel();
+		if (index == -1) 
+			return object.toString();
+		
+		return ((ConceptualModelNode)object).getLabel();
 	}
 
 	public int getIndex() {
@@ -72,10 +73,10 @@ public class ComparableNode implements Comparable, Comparator
 	}
 	
 	public ConceptualModelNode getNode() {
-		return object;
+		return (ConceptualModelNode)object;
 	}
 	
 	int index;
-	ConceptualModelNode object;
+	Object object;
 
 }

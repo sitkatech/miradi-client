@@ -11,16 +11,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
 import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.LookAndFeel;
 import javax.swing.event.ListSelectionEvent;
@@ -28,7 +24,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -55,15 +50,19 @@ public class MyThreatGirdPanel extends JPanel
 	public JScrollPane createThreatGridPanel() throws Exception
 	{
 		JTable rowHeaderTable = createRowHeaderTable(createRowHeaderDataModel());
-		
+
+
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
 		setRowHeight(globalTthreatTable);
 		
 		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
-		columnHeader.addMouseListener(new HeaderListener(this));
+		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
 
 		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
+		rowHeader.addMouseListener(new ThreatColumnHeaderListener(this));
+		
+		
 		scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowHeaderTable, globalTthreatTable, rowHeader);
 
@@ -96,7 +95,7 @@ public class MyThreatGirdPanel extends JPanel
 	private JTable createThreatTable(int rowCount)
 	{
 		DefaultTableModel threatData = model;
-		columnHeaderData = getColumnsTargetHeaders();
+		columnHeaderData = getColumnTargetHeaders();
 		threatData.setColumnIdentifiers(columnHeaderData);
 		
 		JTable threatTable = new JTable(threatData);
@@ -112,8 +111,6 @@ public class MyThreatGirdPanel extends JPanel
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
 		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
 
-
-		
 		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		return threatTable;
@@ -181,7 +178,7 @@ public class MyThreatGirdPanel extends JPanel
 	}
 	
 
-	public Vector getColumnsTargetHeaders()
+	public Vector getColumnTargetHeaders()
 	{
 		Vector columnsNames = new Vector();
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
@@ -383,58 +380,6 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 }
 
 
-class HeaderListener extends MouseAdapter
-{
-	HeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
-	{
-		threatGirdPanel = threatGirdPanelInUse;
-	}
-
-	public void mousePressed(MouseEvent e)
-	{
-		sortColumn = threatGirdPanel.globalTthreatTable.columnAtPoint(e.getPoint());
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
-		NonEditableThreatMatrixTableModel model = ((NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel());
-		ThreatTableSorter tabelSorter = new ThreatTableSorter(threatGirdPanel.project, model);
-		int[] rows = tabelSorter.sortByColumn( sortColumn,  false);
-		
-		int rowCount = model.getRowCount();
-		int columnCount = model.getColumnCount();
-		
-		NonEditableThreatMatrixTableModel newModel = new NonEditableThreatMatrixTableModel(threatGirdPanel.project);
-		DefaultTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(0,1);
-
-		newModel.setRowCount(rowCount);
-		newModel.setColumnCount(model.getColumnCount());
-		
-		newRowHeaderData.setRowCount(rowCount);
-		newRowHeaderData.setColumnCount(1);
-		
-		for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
-			for (int columnIndex = 0; columnIndex<columnCount; ++columnIndex) 
-			{
-				newModel.setValueAt(model.realDataGetValueAt(rows[rowIndex], columnIndex),rowIndex,columnIndex);
-			}
-			newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[rowIndex], 0)  ,rowIndex,0);
-		}
-					
-		newModel.setColumnIdentifiers(threatGirdPanel.getColumnsTargetHeaders());
-		threatGirdPanel.globalTthreatTable.setModel(newModel);
-		
-		JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
-		threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
-
-		threatGirdPanel.revalidate();
-		threatGirdPanel.repaint();
-	}
-	
-	int sortColumn = 0;
-	MyThreatGirdPanel threatGirdPanel;
-
-}
 
 class RowHeaderListener extends MouseAdapter
 {
