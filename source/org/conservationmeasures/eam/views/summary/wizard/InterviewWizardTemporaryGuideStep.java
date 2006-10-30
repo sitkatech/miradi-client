@@ -3,22 +3,21 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.summary;
+package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class SummaryWizardWelcomeStep extends InterviewWizardStep
+public class InterviewWizardTemporaryGuideStep extends InterviewWizardStep
 {
-	public SummaryWizardWelcomeStep(WizardPanel wizardToUse)
+	public InterviewWizardTemporaryGuideStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
-
+	
 	public String getResourceFileName()
 	{
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "WelcomeStep.html";
-	
+	String HTML_FILENAME = "TemporaryGuideStep.html";
 }

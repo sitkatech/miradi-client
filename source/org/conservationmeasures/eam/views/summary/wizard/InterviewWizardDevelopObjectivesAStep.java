@@ -3,14 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.summary;
+package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
-public class InterviewWizardDevelopObjectivesBStep extends InterviewWizardStep
+public class InterviewWizardDevelopObjectivesAStep extends InterviewWizardStep
 {
 
-	public InterviewWizardDevelopObjectivesBStep(WizardPanel wizardToUse)
+	public InterviewWizardDevelopObjectivesAStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
@@ -20,5 +20,5 @@ public class InterviewWizardDevelopObjectivesBStep extends InterviewWizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "DevelopObjectivesBStep.html";
+	String HTML_FILENAME = "DevelopObjectivesAStep.html";
 }
