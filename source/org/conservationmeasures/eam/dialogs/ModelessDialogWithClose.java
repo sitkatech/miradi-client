@@ -32,6 +32,8 @@ public class ModelessDialogWithClose extends EAMDialog
 		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
 		mainPanel.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
 		getContentPane().add(mainPanel);
+		pack();
+		Utilities.fitInScreen(this);
 	}
 	
 	public JPanel getWrappedPanel()
