@@ -17,6 +17,6 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	{
 		ThreatTableSorter tabelSorter = 
 			new ThreatTableSorter(threatGirdPanel.project, threatGirdPanel.rowHeaderData, "ROWHEADER");
-		return tabelSorter.sortByColumn( sortColumn,  assending);
+		return tabelSorter.sortByColumn( sortColumn,  true);
 	}
 }
