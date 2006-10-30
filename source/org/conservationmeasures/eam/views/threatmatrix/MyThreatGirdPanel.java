@@ -216,14 +216,20 @@ public class MyThreatGirdPanel extends JPanel
 		}
 	}
 
+	
 	private void initializeThreatSummaryData(TableModel data)
 	{
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			ValueOption result = framework.getThreatThreatRatingValue(model
-					.getThreatId(threatIndex));
-			//TODO: this will not work with row sort: must take another approach
-			data.setValueAt(result, threatIndex, model.getTargetCount());
+			ValueOption result = framework.getThreatThreatRatingValue(model.getThreatId(threatIndex));
+			String label = model.getThreatName(threatIndex);
+			for (int rowIndex=0; rowIndex<rowHeaderData.getRowCount(); ++rowIndex) 
+			{
+				String labelOnRow = (String) rowHeaderData.getValueAt(rowIndex, 0);
+				if (labelOnRow.equals(label)) {
+					data.setValueAt(result, rowIndex, model.getTargetCount());
+				}
+			}
 		}
 	}
 
