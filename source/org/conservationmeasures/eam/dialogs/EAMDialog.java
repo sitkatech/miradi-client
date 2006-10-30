@@ -16,11 +16,14 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
+import org.martus.swing.Utilities;
+
 public class EAMDialog extends JDialog
 {
 	public EAMDialog(JFrame parent)
 	{
 		super(parent);
+		Utilities.centerDlg(this);
 	}
 	
 	public EAMDialog(JFrame parent, String heading)
