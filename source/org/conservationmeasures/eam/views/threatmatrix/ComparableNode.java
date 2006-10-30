@@ -13,9 +13,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 public class ComparableNode implements Comparable, Comparator
 {
 	
-	public ComparableNode(String label)
+	public ComparableNode(String label, int oldRowToUse)
 	{
 		index = -1;
+		oldRow=oldRowToUse;
 		object= label;
 	}
 	
@@ -27,10 +28,11 @@ public class ComparableNode implements Comparable, Comparator
 
 	public int compare(Object object1, Object object2)
 	{
-		int test1 = ((ComparableNode)object1).getIndex();
-		int test2 = ((ComparableNode)object2).getIndex();
-		if (test1==-1 || test2==-1) return -1;
-		
+		int test1 = ((ComparableNode)object1).getOldRow();
+		int test2 = ((ComparableNode)object2).getOldRow();
+		if (test1==-1 || test2==-1) 
+			object1.toString().compareTo(object2.toString());
+	
 		BaseId baseId1 = ((ComparableNode) object1).getNode().getId();
 		BaseId baseId2 = ((ComparableNode) object2).getNode().getId();
 		
@@ -39,8 +41,9 @@ public class ComparableNode implements Comparable, Comparator
 
 	public int compareTo(Object objectToUse)
 	{
-		int test1 = ((ComparableNode)objectToUse).getIndex();
-		if (index==-1 || test1==-1) return -1;
+		if (objectToUse instanceof String || object instanceof String ) 
+			return object.toString().compareToIgnoreCase(objectToUse.toString());
+		
 		
 		BaseId baseId1 = ((ComparableNode) objectToUse).getNode().getId();
 		BaseId baseId2 = ((ConceptualModelNode)object).getId();
@@ -68,15 +71,21 @@ public class ComparableNode implements Comparable, Comparator
 		return ((ConceptualModelNode)object).getLabel();
 	}
 
+	public int getOldRow() {
+		return oldRow;
+	}
+	
 	public int getIndex() {
 		return index;
 	}
+	
 	
 	public ConceptualModelNode getNode() {
 		return (ConceptualModelNode)object;
 	}
 	
 	int index;
+	int oldRow;
 	Object object;
 
 }

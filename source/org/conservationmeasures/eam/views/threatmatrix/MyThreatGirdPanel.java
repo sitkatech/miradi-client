@@ -60,7 +60,7 @@ public class MyThreatGirdPanel extends JPanel
 		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
 
 		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
-		rowHeader.addMouseListener(new ThreatColumnHeaderListener(this));
+		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
 		
 		
 		scrollPane = createScrollPaneWithTableAndRowHeader(
@@ -165,7 +165,7 @@ public class MyThreatGirdPanel extends JPanel
 			ComparableNode comparableThreatNode = createNodeThreatLabel(threatIndex);
 			rowNames.add(comparableThreatNode);
 		}
-		rowNames.add(new ComparableNode(EAM.text("Summary Threat Rating")));
+		rowNames.add(new ComparableNode(EAM.text("Summary Threat Rating"), model.getThreatCount()));
 		return rowNames;
 	}
 	
@@ -186,7 +186,7 @@ public class MyThreatGirdPanel extends JPanel
 			ComparableNode comparableThreatNode = createNodeTargetLabel(targetIndex);
 			columnsNames.add(comparableThreatNode);
 		}
-		columnsNames.add(new ComparableNode(EAM.text("Summary Target Rating")));
+		columnsNames.add(new ComparableNode(EAM.text("Summary Target Rating"),model.getTargetCount()));
 		return columnsNames;
 	}
 

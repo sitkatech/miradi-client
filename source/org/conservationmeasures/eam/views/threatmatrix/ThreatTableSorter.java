@@ -15,11 +15,12 @@ import org.conservationmeasures.eam.project.Project;
 public class ThreatTableSorter
 	{
 
-		public ThreatTableSorter(Project projectToUse, DefaultTableModel modelToUse)
+		public ThreatTableSorter(Project projectToUse, DefaultTableModel modelToUse, String tableTypeToUse)
 		{
-			model = (NonEditableThreatMatrixTableModel)modelToUse;
+			model = modelToUse;
 			project = projectToUse;
 			rowCount = model.getRowCount()-summaryRow;
+			tableType = tableTypeToUse;
 		}
 
 		public int[] sortByColumn(int column, boolean ascending) 
@@ -29,7 +30,10 @@ public class ThreatTableSorter
 
 			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) 
 			{
-				columnData.add(new ColumnObject(rowIndex, model.getValueAt(rowIndex,sortColumn)));
+				if (tableType.equals("ROWHEADER"))
+					columnData.add(new ComparableNode(model.getValueAt(rowIndex,sortColumn).toString(), rowIndex));
+				else
+					columnData.add(new ColumnObject(rowIndex, model.getValueAt(rowIndex,sortColumn)));
 			}
 
 			Collections.sort(columnData);
@@ -40,7 +44,10 @@ public class ThreatTableSorter
 			int rows[] = new int[rowCount + summaryRow];
 			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) 
 			{
-				rows[rowIndex] = ((ColumnObject) columnData.get(rowIndex)).getOldRow();
+				if (tableType.equals("ROWHEADER"))
+					rows[rowIndex] = ((ComparableNode) columnData.get(rowIndex)).getOldRow();
+				else
+					rows[rowIndex] = ((ColumnObject) columnData.get(rowIndex)).getOldRow();
 			}
 			rows[rowCount] = rowCount;
 			
@@ -48,9 +55,10 @@ public class ThreatTableSorter
 		}
 		
 		int summaryRow = 1;
-		NonEditableThreatMatrixTableModel model;
+		DefaultTableModel model;
 		Project project;
 		int rowCount;
+		String tableType;
 
 
 	}
