@@ -19,9 +19,9 @@ public class IndicatorStatusRatingQuestion extends RatingQuestion
 		return new RatingChoice[] {
 			new RatingChoice("", "Not Specified", Color.WHITE),
 			new RatingChoice("1", "Not Started", Color.RED),
-			new RatingChoice("2", "Started", Color.ORANGE),
+			new RatingChoice("2", "Problems Implementing", Color.ORANGE),
 			new RatingChoice("3", "Going Well", Color.YELLOW),
-			new RatingChoice("4", "Completed", Color.GREEN),
+			new RatingChoice("4", "Fully on Schedule", Color.GREEN),
 		};
 	}
 
