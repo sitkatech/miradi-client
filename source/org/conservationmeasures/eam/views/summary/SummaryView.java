@@ -57,8 +57,19 @@ public class SummaryView extends TabbedView
 		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
 		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 
+		WWFSummaryPanel wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
+		WCSSummaryPanel wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
+		RARESummaryPanel rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
+		FOSSummaryPanel fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
+		
+		
 		addPanelAsTab(crossOrganizationSummaryPanel);
 		addPanelAsTab(tncSummaryPanel);
+		
+		addPanelAsTab(wwfSummaryPanel);
+		addPanelAsTab(wcssSummaryPanel);
+		addPanelAsTab(rareSummaryPanel);
+		addPanelAsTab(fosSummaryPanel);
 	}
 	
 	void addPanelAsTab(ObjectDataInputPanel panel)
