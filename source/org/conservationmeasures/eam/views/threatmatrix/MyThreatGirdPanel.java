@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Enumeration;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -25,6 +26,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -100,6 +102,8 @@ public class MyThreatGirdPanel extends JPanel
 		threatData.setColumnIdentifiers(columnHeaderData);
 		
 		JTable threatTable = new JTable(threatData);
+		
+		setThreatTableColumnWidths(threatTable);
 
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
@@ -115,6 +119,18 @@ public class MyThreatGirdPanel extends JPanel
 		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		return threatTable;
+	}
+
+
+	private void setThreatTableColumnWidths(JTable threatTable)
+	{
+		Enumeration columns = threatTable.getColumnModel().getColumns();
+		while(columns.hasMoreElements())
+		{
+			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
+			columnToAdjust.setPreferredWidth(150);
+			columnToAdjust.setWidth(150);
+		}
 	}
 
 
@@ -213,7 +229,7 @@ public class MyThreatGirdPanel extends JPanel
 	//TODO: must add logic to calc row hieght based on lenght of user threat header names
 	private int calculateRowHeight(TableModel rowHeaderDataToUse)
 	{
-		return 100;
+		return 60;
 	}
 	
 	
