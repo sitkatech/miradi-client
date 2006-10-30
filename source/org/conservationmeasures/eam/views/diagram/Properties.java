@@ -6,10 +6,6 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
-
-import javax.swing.JDialog;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -72,9 +68,7 @@ public class Properties extends LocationDoer
 	{
 		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescriptionText()); 
-		setDialogLocation(dlg, scope.getBounds());
-		dlg.pack();
-		dlg.setVisible(true);
+		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
 	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
@@ -121,17 +115,6 @@ public class Properties extends LocationDoer
 		}
 		
 		return NodePropertiesPanel.TAB_DETAILS;
-	}
-
-	private void setDialogLocation(JDialog dlg, Rectangle2D rect2D)
-	{
-		Rectangle rect = rect2D.getBounds();
-		int scaledX = rect.x;
-		int scaledY = rect.y + rect.height;
-		Point scaledLowerLeftCorner = new Point(scaledX, scaledY);
-		Point actualLowerLeftcorner = diagram.toWindowCoordinates(scaledLowerLeftCorner);
-		dlg.setLocation(actualLowerLeftcorner);
-		Utilities.fitInScreen(dlg);
 	}
 
 	DiagramComponent diagram;

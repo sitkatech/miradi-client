@@ -85,6 +85,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ObjectPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
@@ -234,13 +235,13 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());
 	}
 
-	protected void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
+	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		if(activePropertiesDlg != null)
 			activePropertiesDlg.dispose();
 		
 		activePropertiesDlg = newDialog;
-		activePropertiesPanel = (ObjectPropertiesPanel)newDialog.getWrappedPanel();
+		activePropertiesPanel = (ModelessDialogPanel)newDialog.getWrappedPanel();
 		activePropertiesDlg.pack();
 		activePropertiesDlg.setVisible(true);
 	}
@@ -414,7 +415,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
 	
-	private ObjectPropertiesPanel activePropertiesPanel;
+	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;
  
 }

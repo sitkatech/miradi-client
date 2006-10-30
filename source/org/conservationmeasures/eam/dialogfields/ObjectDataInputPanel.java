@@ -12,16 +12,18 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
-abstract public class ObjectDataInputPanel extends JPanel implements CommandExecutedListener
+abstract public class ObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse)
 	{
@@ -96,6 +98,13 @@ abstract public class ObjectDataInputPanel extends JPanel implements CommandExec
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}
+	
+	//FIXME: Delete this when the old ObjectPropertiesPanel goes away
+	public EAMObject getObject()
+	{
+		return null;
+	}
+
 
 	private Project project;
 	private int objectType;

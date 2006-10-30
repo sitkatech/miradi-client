@@ -37,7 +37,7 @@ import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.martus.swing.UiLabel;
 
-abstract public class ObjectPropertiesPanel extends JPanel
+abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 {
 	
 	public ObjectPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit)
