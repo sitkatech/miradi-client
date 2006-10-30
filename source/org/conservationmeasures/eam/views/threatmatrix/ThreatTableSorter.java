@@ -22,28 +22,39 @@ public class ThreatTableSorter
 			rowCount = model.getRowCount()-summaryRow;
 		}
 
-		public int[] sortByColumn(int columnToUse, boolean ascendingToUse) 
+		public int[] sortByColumn(int column, boolean ascending) 
 		{
-			int sortColumn =columnToUse;
-			ArrayList al = new ArrayList();
+			int sortColumn = column;
+			ArrayList columnData = new ArrayList();
 
-			for (int i = 0; i<rowCount; ++i) {
-				al.add(new ColumnObject(i, model.getValueAt(i,sortColumn)));
+			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
+				columnData.add(new ColumnObject(rowIndex, model.getValueAt(rowIndex,sortColumn)));
 			}
 
-			Collections.sort(al);
+			Collections.sort(columnData);
 
 			int rows[] = new int[rowCount + summaryRow];
-			for (int i = 0; i<rowCount; ++i) {
-				rows[i] = ((ColumnObject) al.get(i)).getOldRow();
+			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
+				rows[rowIndex] = ((ColumnObject) columnData.get(rowIndex)).getOldRow();
 			}
 			rows[rowCount] = rowCount;
+			
+			
+			if (!ascending) 
+			{
+				int reverserows[] = new int[rowCount + summaryRow];
+				for (int rowIndex=0; rowIndex<rows.length; ++rowIndex) 
+				{
+					reverserows[rowIndex] = rows[rows.length-rowIndex-1];
+					System.out.println(rows.length-rowIndex-1 + " oldRow=" + rows[rows.length-rowIndex-1]);
+				}
+				//rows = reverserows;
+			}
 			
 			return rows;
 		}
 		
 		int summaryRow = 1;
-		boolean ascending = true;
 		NonEditableThreatMatrixTableModel model;
 		Project project;
 		int rowCount;

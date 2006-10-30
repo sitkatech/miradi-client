@@ -49,11 +49,11 @@ public class MyThreatGirdPanel extends JPanel
 	public JScrollPane createThreatGridPanel() throws Exception
 	{
 		JTable rowHeaderTable = createRowHeaderTable(createRowHeaderDataModel());
-		rowHeaderTable.addMouseListener(new RowHeaderListener(rowHeaderTable));
+
 		
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
-		setRowHeaderHeight(rowHeaderTable, globalTthreatTable);
+		setRowHeaderHeight(globalTthreatTable);
 		
 		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
 		columnHeader.addMouseListener(new HeaderListener(this));
@@ -67,11 +67,10 @@ public class MyThreatGirdPanel extends JPanel
 		return scrollPane;
 	}
 
-	private void setRowHeaderHeight(JTable rowHeaderTable, JTable threatTable)
+	private void setRowHeaderHeight(JTable table)
 	{
-		int rowHeightForThreatTable = calculateRowHeight(rowHeaderTable.getModel());
-		rowHeaderTable.setRowHeight(rowHeightForThreatTable);
-		threatTable.setRowHeight(rowHeightForThreatTable);
+		int rowHeightForThreatTable = calculateRowHeight(table.getModel());
+		table.setRowHeight(rowHeightForThreatTable);
 	}
 
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
@@ -121,8 +120,12 @@ public class MyThreatGirdPanel extends JPanel
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
 		rowHeaderTable.setPreferredScrollableViewportSize(d);
+		
 		setDefaultRowHeaderRenderer(rowHeaderTable);
-
+		rowHeaderTable.addMouseListener(new RowHeaderListener(rowHeaderTable));
+		
+		setRowHeaderHeight(rowHeaderTable);
+		
 		LookAndFeel.installColorsAndFont(rowHeaderTable, "TableHeader.background",
 				"TableHeader.foreground", "TableHeader.font");
 
@@ -137,7 +140,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private DefaultTableModel createRowHeaderDataModel()
 	{
-		DefaultTableModel newRowHeaderData = new DefaultTableModel(0, 1);
+		DefaultTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(0,1);
 		Vector rowNames = getRowThreatHeaders();
 
 		for(int k = 0; k < rowNames.size(); k++)
@@ -369,31 +372,37 @@ class HeaderListener extends MouseAdapter
 
 	public void mouseReleased(MouseEvent e)
 	{
+		//TODO:  Row DataModel should be extend DefaultTableModel make itself non editable.
+//		public boolean isCellEditable(int row, int column)
+//		{
+//			return false;
+//		}
 		
 		if (sortColumn != threatGirdPanel.globalTthreatTable.getColumnCount()) 
 		{
 			NonEditableThreatMatrixTableModel model = ((NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel());
 			ThreatTableSorter tabelSorter = new ThreatTableSorter(threatGirdPanel.project, model);
-			int[] rows = tabelSorter.sortByColumn( sortColumn,  false);
+			int[] rows = tabelSorter.sortByColumn( sortColumn,  true);
 			
 
 			int rowCount = model.getRowCount();
+			int columnCount = model.getColumnCount();
 			NonEditableThreatMatrixTableModel newModel = new NonEditableThreatMatrixTableModel(threatGirdPanel.project);
-			DefaultTableModel newRowHeaderData = new DefaultTableModel(0,1);
+			DefaultTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(0,1);
 
-			newModel.setRowCount(model.getRowCount());
+			newModel.setRowCount(rowCount);
 			newModel.setColumnCount(model.getColumnCount());
 			
-			newRowHeaderData.setRowCount(model.getRowCount());
+			newRowHeaderData.setRowCount(rowCount);
 			newRowHeaderData.setColumnCount(1);
 			
 			
-			for (int i = 0; i<rowCount; ++i) {
-				for (int j = 0; j<model.getColumnCount(); ++j) 
+			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
+				for (int columnIndex = 0; columnIndex<columnCount; ++columnIndex) 
 				{
-					newModel.setValueAt(model.realDataGetValueAt(rows[i], j),i,j);
+					newModel.setValueAt(model.realDataGetValueAt(rows[rowIndex], columnIndex),rowIndex,columnIndex);
 				}
-				newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[i], 0)  ,i,0);
+				newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[rowIndex], 0)  ,rowIndex,0);
 			}
 						
 			newModel.setColumnIdentifiers(threatGirdPanel.getColumnsTargetHeaders());
@@ -401,7 +410,6 @@ class HeaderListener extends MouseAdapter
 			
 
 			JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
-			newRowHeaderTable.setRowHeight(100);
 			threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
 			
 
