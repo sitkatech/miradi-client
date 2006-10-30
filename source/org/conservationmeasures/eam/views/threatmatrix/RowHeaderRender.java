@@ -104,7 +104,7 @@ class RowHeaderRenderer
         else
             setBorder(noFocusBorder);
 
-        setText((String)value);
+        setText(value.toString());
 	}
 
     
