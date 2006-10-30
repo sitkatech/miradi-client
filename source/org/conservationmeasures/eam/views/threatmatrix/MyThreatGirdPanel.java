@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -40,6 +41,7 @@ public class MyThreatGirdPanel extends JPanel
 			NonEditableThreatMatrixTableModel modelToUse, Project projectToUse)
 			throws Exception
 	{
+		super(new BorderLayout());
 		model = modelToUse;
 		project = projectToUse;
 		framework = project.getThreatRatingFramework();
