@@ -53,7 +53,6 @@ public class MyThreatGirdPanel extends JPanel
 	{
 		JTable rowHeaderTable = createRowHeaderTable(createRowHeaderDataModel());
 
-
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
 		setRowHeight(globalTthreatTable);
@@ -156,7 +155,18 @@ public class MyThreatGirdPanel extends JPanel
 			Object[] row = new Object[] { rowNames.get(k) };
 			newRowHeaderData.addRow(row);
 		}
+		
+		newRowHeaderData.setColumnIdentifiers(createRowColumnHeaderName());
+		
 		return newRowHeaderData;
+	}
+
+
+	private Vector createRowColumnHeaderName()
+	{
+		Vector RowColumnHeaderName = new Vector();
+		RowColumnHeaderName.add(EAM.text("THREATS"));
+		return RowColumnHeaderName;
 	}
 
 	public Vector getRowThreatHeaders()
