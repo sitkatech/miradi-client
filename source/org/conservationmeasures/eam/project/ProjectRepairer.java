@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class ProjectRepairer
 {
-	public static void repairAnyProblems(Project project)
+	public static void repairAnyProblems(Project project) throws Exception
 	{
 		ProjectRepairer repairer = new ProjectRepairer(project);
 		repairer.repair();
@@ -23,13 +23,13 @@ public class ProjectRepairer
 		project = projectToRepair;
 	}
 	
-	void repair()
+	void repair() throws Exception
 	{
 		fixGhostIndicatorIds();
 		fixDeletedTeamMembers();
 	}
 	
-	void fixGhostIndicatorIds()
+	void fixGhostIndicatorIds() throws Exception
 	{
 		ModelNodeId[] nodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < nodeIds.length; ++i)
@@ -57,9 +57,12 @@ public class ProjectRepairer
 		}
 	}
 	
-	void fixDeletedTeamMembers()
+	void fixDeletedTeamMembers() throws Exception
 	{
-		ProjectMetadata metadata = project.getMetadata(); 
+		ProjectMetadata metadata = project.getMetadata();
+		if(metadata == null)
+			return;
+		
 		IdList teamMemberIds = metadata.getTeamResourceIdList();
 		for(int i = 0; i < teamMemberIds.size(); ++i)
 		{

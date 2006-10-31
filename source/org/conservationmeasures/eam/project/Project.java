@@ -347,10 +347,18 @@ public class Project
 
 		ProjectServer db = getDatabase();
 		db.open(projectDirectory);
-		loadProjectInfo();
-		objectManager.loadFromDatabase();
+		try
+		{
+			loadProjectInfo();
+			objectManager.loadFromDatabase();
 
-		ProjectRepairer.repairAnyProblems(this);
+			ProjectRepairer.repairAnyProblems(this);
+		}
+		catch(Exception e)
+		{
+			close();
+			throw e;
+		}
 	}
 	
 	private void createProject(File projectDirectory) throws Exception
