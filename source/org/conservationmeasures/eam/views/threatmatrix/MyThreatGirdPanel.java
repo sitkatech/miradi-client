@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.util.Enumeration;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -98,6 +99,7 @@ public class MyThreatGirdPanel extends JPanel
 		threatData.setColumnIdentifiers(columnHeaderData);
 		
 		JTable threatTable = new JTable(threatData);
+		threatTable.setIntercellSpacing(new Dimension(0, 0));
 		
 		setThreatTableColumnWidths(threatTable);
 		setRowHeight(threatTable);
@@ -407,7 +409,19 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		cell.setFont(new Font(null,Font.BOLD,12));
 		cell.setForeground(Color.BLACK); 
 		
+		setSummaryAndThreatRatingBoarders(table, row, column);
+		
 		return cell;
+	}
+
+	private void setSummaryAndThreatRatingBoarders(JTable table, int row, int column)
+	{
+		if (row==table.getRowCount()-1 || column==table.getColumnCount()-1)
+			setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createLineBorder(Color.DARK_GRAY,2),getBorder()));
+		else 
+			setBorder(BorderFactory.createCompoundBorder(
+					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
 	}
 }
 
