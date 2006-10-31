@@ -31,7 +31,7 @@ public class ThreatTableSorter
 			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) 
 			{
 				if (tableType.equals("ROWHEADER"))
-					columnData.add(new ComparableNode(model.getValueAt(rowIndex,sortColumn).toString(), rowIndex));
+					columnData.add(new ComparableNode(rowIndex, model.getValueAt(rowIndex,sortColumn).toString()));
 				else
 					columnData.add(new ColumnObject(rowIndex, model.getValueAt(rowIndex,sortColumn)));
 			}

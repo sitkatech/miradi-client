@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -57,8 +55,6 @@ public class MyThreatGirdPanel extends JPanel
 
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
-		setRowHeight(globalTthreatTable);
-		
 		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
 		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
 
@@ -104,7 +100,9 @@ public class MyThreatGirdPanel extends JPanel
 		JTable threatTable = new JTable(threatData);
 		
 		setThreatTableColumnWidths(threatTable);
-
+		setRowHeight(threatTable);
+		setColumnHeaderHeight(threatTable);
+		
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
 		threatTable.setColumnSelectionAllowed(true);
@@ -122,12 +120,19 @@ public class MyThreatGirdPanel extends JPanel
 	}
 
 
+	private void setColumnHeaderHeight(JTable threatTable)
+	{
+		threatTable.getTableHeader().setPreferredSize(new Dimension(0,60));
+	}
+
+
 	public void setThreatTableColumnWidths(JTable threatTable)
 	{
 		Enumeration columns = threatTable.getColumnModel().getColumns();
 		while(columns.hasMoreElements())
 		{
 			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
+			columnToAdjust.setHeaderRenderer(new RowHeaderRenderer());
 			columnToAdjust.setPreferredWidth(150);
 			columnToAdjust.setWidth(150);
 		}
@@ -145,7 +150,6 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeaderTable.setPreferredScrollableViewportSize(d);
 		
 		setDefaultRowHeaderRenderer(rowHeaderTable);
-		rowHeaderTable.addMouseListener(new RowHeaderListener(rowHeaderTable));
 		
 		setRowHeight(rowHeaderTable);
 		
@@ -193,7 +197,7 @@ public class MyThreatGirdPanel extends JPanel
 			ComparableNode comparableThreatNode = createNodeThreatLabel(threatIndex);
 			rowNames.add(comparableThreatNode);
 		}
-		rowNames.add(new ComparableNode(EAM.text("Summary Threat Rating"), model.getThreatCount()));
+		rowNames.add(new ComparableNode(model.getThreatCount(),EAM.text("Summary Threat Rating")));
 		return rowNames;
 	}
 	
@@ -214,7 +218,7 @@ public class MyThreatGirdPanel extends JPanel
 			ComparableNode comparableThreatNode = createNodeTargetLabel(targetIndex);
 			columnsNames.add(comparableThreatNode);
 		}
-		columnsNames.add(new ComparableNode(EAM.text("Summary Target Rating"),model.getTargetCount()));
+		columnsNames.add(new ComparableNode(model.getTargetCount(),EAM.text("Summary Target Rating")));
 		return columnsNames;
 	}
 
@@ -407,31 +411,3 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	}
 }
 
-
-
-class RowHeaderListener extends MouseAdapter
-{
-	RowHeaderListener(JTable threatTableIn)
-	{
-		threatTable = threatTableIn;
-	}
-
-	public void mousePressed(MouseEvent e)
-	{
-		sortColumn = threatTable.columnAtPoint(e.getPoint());
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
-		if (sortColumn != threatTable.getColumnCount()) 
-		{
-		//	((NonEditableThreatMatrixTableModel)threatTable.getModel()).sort("ROWHEADER", "ASSENDING" ,sortColumn);
-			threatTable.revalidate();
-			threatTable.repaint();
-		}
-	}
-	
-	int sortColumn = 0;
-	JTable threatTable;
-
-}

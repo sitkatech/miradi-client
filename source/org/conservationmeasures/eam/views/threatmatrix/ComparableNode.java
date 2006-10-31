@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 public class ComparableNode implements Comparable, Comparator
 {
 	
-	public ComparableNode(String label, int oldRowToUse)
+	public ComparableNode(int oldRowToUse, String label)
 	{
 		index = -1;
 		oldRow=oldRowToUse;

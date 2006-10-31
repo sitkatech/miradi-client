@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.Insets;
 
 import javax.swing.BorderFactory;
@@ -104,7 +105,9 @@ class RowHeaderRenderer
         else
             setBorder(noFocusBorder);
 
+        setOpaque(false);
         setText(value.toString());
+		setFont(new Font(null,Font.BOLD,12));
 	}
 
     
