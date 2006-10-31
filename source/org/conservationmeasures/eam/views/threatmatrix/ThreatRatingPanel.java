@@ -51,6 +51,7 @@ public class ThreatRatingPanel extends Box
 		ratingSummaryLabel = new UiLabel();
 		ratingSummaryLabel.setVerticalAlignment(JLabel.CENTER);
 		ratingSummaryLabel.setHorizontalAlignment(JLabel.CENTER);
+		ratingSummaryLabel.setPreferredSize(new Dimension(50,100));
 		
 		createSummaryPanel();
 
