@@ -632,8 +632,6 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			if(ignoreThreatClassificationChanges)
-				return;
 			TaxonomyItem taxonomyItem = getThreatTaxonomyItem();
 			actionSaveTaxonomySelection(dropdownThreatClassification, taxonomyItem);
 		}
@@ -644,8 +642,6 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			if(ignoreThreatClassificationChanges)
-				return;
 			TaxonomyItem taxonomyItem = getInterventionTaxonomyItem();
 			actionSaveTaxonomySelection(dropdownInterventionClassification, taxonomyItem);
 		}
@@ -1110,5 +1106,4 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	UiLabel ratingComponent;
 	boolean ignoreObjectiveChanges;
 	boolean ignoreIndicatorChanges;
-	boolean ignoreThreatClassificationChanges;
 }
