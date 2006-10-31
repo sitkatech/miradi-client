@@ -14,6 +14,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -107,7 +108,6 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 
 	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
 	{
-		//Container contents = getContentPane();
 		this.setLayout(new BorderLayout());
 		this.removeAll();
 		try
@@ -122,7 +122,6 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 			EAM.logException(e);
 			EAM.errorDialog("Error reading activity information");
 		}
-		//pack();
 	}
 
 	public DiagramNode getCurrentNode()
@@ -641,10 +640,27 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 			{
 				int type = ObjectType.MODEL_NODE;
 				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
-				String taxonomyCode = getThreatTaxonomyItem().getTaxonomyCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, taxonomyCode);
-				getProject().executeCommand(cmd);
+				TaxonomyItem taxonomyItem = getThreatTaxonomyItem();
+				if(taxonomyItem != null)
+				{
+					String taxonomyCode = taxonomyItem.getTaxonomyCode();
+					CommandSetObjectData cmd = new CommandSetObjectData(type,
+							getNodeId(), tag, taxonomyCode);
+					getProject().executeCommand(cmd);
+				}
+				else 
+				{
+					EAM.errorDialog(EAM
+							.text("Please choose a specific classification not a catagory"));
+					String code = getCurrentNode().getUnderlyingObject().getData(tag);
+					ComboBoxModel comboBoxModel = dropdownThreatClassification.getModel();
+					for (int i=0; i<comboBoxModel.getSize(); i++) {
+						TaxonomyItem foundItem = (TaxonomyItem)comboBoxModel.getElementAt(i);
+						if (code.equals(foundItem.getTaxonomyCode())) 
+							dropdownThreatClassification.setSelectedIndex(i);
+					}
+					
+				}
 			}
 			catch(CommandFailedException e)
 			{
@@ -666,10 +682,28 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 			{
 				int type = ObjectType.MODEL_NODE;
 				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
-				String taxonomyCode = getInterventionTaxonomyItem().getTaxonomyCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, taxonomyCode);
-				getProject().executeCommand(cmd);
+				
+				TaxonomyItem taxonomyItem = getInterventionTaxonomyItem();
+				if(taxonomyItem != null)
+				{
+					String taxonomyCode = taxonomyItem.getTaxonomyCode();
+					CommandSetObjectData cmd = new CommandSetObjectData(type,
+							getNodeId(), tag, taxonomyCode);
+					getProject().executeCommand(cmd);
+				}
+				else 
+				{
+					EAM.errorDialog(EAM
+							.text("Please choose a specific classification not a catagory"));
+					String code = getCurrentNode().getUnderlyingObject().getData(tag);
+					ComboBoxModel comboBoxModel = dropdownInterventionClassification.getModel();
+					for (int i=0; i<comboBoxModel.getSize(); i++) {
+						TaxonomyItem foundItem = (TaxonomyItem)comboBoxModel.getElementAt(i);
+						if (code.equals(foundItem.getTaxonomyCode())) 
+							dropdownInterventionClassification.setSelectedIndex(i);
+					}
+					
+				}
 			}
 			catch(CommandFailedException e)
 			{
@@ -860,15 +894,9 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 	{
 		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
 		
-		if (!taxonomyItem.isLeaf()) {
-			taxonomyItem = (TaxonomyItem) (dropdownThreatClassification.getItemAt(
-					dropdownThreatClassification.getSelectedIndex()+1));
-			
-			dropdownThreatClassification.setSelectedIndex(
-					dropdownThreatClassification.getSelectedIndex()+1);
-		}
+		if (!taxonomyItem.isLeaf()) 
+			return null;
 
-		
 		return taxonomyItem;
 	}
 
@@ -877,11 +905,7 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownInterventionClassification.getSelectedItem();
 		
 		if (!taxonomyItem.isLeaf()) 
-			taxonomyItem = (TaxonomyItem) (dropdownInterventionClassification.getItemAt(
-					dropdownInterventionClassification.getSelectedIndex()+1));
-
-		dropdownInterventionClassification.setSelectedIndex(
-				dropdownInterventionClassification.getSelectedIndex()+1);
+			return null;
 		
 		return taxonomyItem;
 	}
