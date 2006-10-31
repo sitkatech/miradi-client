@@ -14,7 +14,6 @@ import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JList;
@@ -635,38 +634,8 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		{
 			if(ignoreThreatClassificationChanges)
 				return;
-
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
-				TaxonomyItem taxonomyItem = getThreatTaxonomyItem();
-				if(taxonomyItem != null)
-				{
-					String taxonomyCode = taxonomyItem.getTaxonomyCode();
-					CommandSetObjectData cmd = new CommandSetObjectData(type,
-							getNodeId(), tag, taxonomyCode);
-					getProject().executeCommand(cmd);
-				}
-				else 
-				{
-					EAM.errorDialog(EAM
-							.text("Please choose a specific classification not a catagory"));
-					String code = getCurrentNode().getUnderlyingObject().getData(tag);
-					ComboBoxModel comboBoxModel = dropdownThreatClassification.getModel();
-					for (int i=0; i<comboBoxModel.getSize(); i++) {
-						TaxonomyItem foundItem = (TaxonomyItem)comboBoxModel.getElementAt(i);
-						if (code.equals(foundItem.getTaxonomyCode())) 
-							dropdownThreatClassification.setSelectedIndex(i);
-					}
-					
-				}
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
+			TaxonomyItem taxonomyItem = getThreatTaxonomyItem();
+			actionSaveTaxonomySelection(dropdownThreatClassification, taxonomyItem);
 		}
 
 	}
@@ -677,43 +646,46 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		{
 			if(ignoreThreatClassificationChanges)
 				return;
-
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
-				
-				TaxonomyItem taxonomyItem = getInterventionTaxonomyItem();
-				if(taxonomyItem != null)
-				{
-					String taxonomyCode = taxonomyItem.getTaxonomyCode();
-					CommandSetObjectData cmd = new CommandSetObjectData(type,
-							getNodeId(), tag, taxonomyCode);
-					getProject().executeCommand(cmd);
-				}
-				else 
-				{
-					EAM.errorDialog(EAM
-							.text("Please choose a specific classification not a catagory"));
-					String code = getCurrentNode().getUnderlyingObject().getData(tag);
-					ComboBoxModel comboBoxModel = dropdownInterventionClassification.getModel();
-					for (int i=0; i<comboBoxModel.getSize(); i++) {
-						TaxonomyItem foundItem = (TaxonomyItem)comboBoxModel.getElementAt(i);
-						if (code.equals(foundItem.getTaxonomyCode())) 
-							dropdownInterventionClassification.setSelectedIndex(i);
-					}
-					
-				}
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
+			TaxonomyItem taxonomyItem = getInterventionTaxonomyItem();
+			actionSaveTaxonomySelection(dropdownInterventionClassification, taxonomyItem);
 		}
-
 	}
 	
+
+	private void actionSaveTaxonomySelection(UiComboBox thisComboBox, TaxonomyItem taxonomyItem)
+	{
+		try
+		{
+			int type = ObjectType.MODEL_NODE;
+			String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
+		
+			if(taxonomyItem != null)
+			{
+				String taxonomyCode = taxonomyItem.getTaxonomyCode();
+				CommandSetObjectData cmd = new CommandSetObjectData(type,
+						getNodeId(), tag, taxonomyCode);
+				getProject().executeCommand(cmd);
+			}
+			else 
+			{
+				EAM.errorDialog(EAM
+						.text("Please choose a specific classification not a catagory"));
+				String code = getCurrentNode().getUnderlyingObject().getData(tag);
+				for (int i=0; i<thisComboBox.getItemCount(); i++) 
+				{
+					TaxonomyItem foundItem = (TaxonomyItem)thisComboBox.getItemAt(i);
+					if (code.equals(foundItem.getTaxonomyCode())) 
+						thisComboBox.setSelectedIndex(i);
+				}
+				
+			}
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("That action failed due to an unknown error");
+		}
+	}
 	
 	public JComponent createComment(String comment)
 	{

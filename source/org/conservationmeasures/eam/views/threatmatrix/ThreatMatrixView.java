@@ -88,7 +88,6 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 	private Container createThreatMatrixPanel() throws Exception
 	{
-		//grid = new ThreatGridPanel(this, model);
 		grid = new MyThreatGirdPanel(this, model,getProject());
 		
 		JComponent heading = createHeading();
