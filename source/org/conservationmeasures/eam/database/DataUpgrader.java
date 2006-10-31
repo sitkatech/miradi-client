@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.database;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Iterator;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -94,6 +95,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion8();
 		if(readDataVersion(getTopDirectory()) == 8)
 			upgradeToVersion9();
+		if(readDataVersion(getTopDirectory()) == 9)
+			upgradeToVersion10();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -349,6 +352,35 @@ public class DataUpgrader extends ProjectServer
 
 		frameworkJson.put(criterionIdsTag, criterionIds.toJson());
 		JSONFile.write(threatFrameworkFile, frameworkJson);
+	}
+	
+	public void upgradeToVersion10() throws Exception
+	{
+		addDiagramNodeWrappedIds();
+		writeVersion(10);
+	}
+	
+	public void addDiagramNodeWrappedIds() throws Exception
+	{
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File diagramsDirectory = new File(jsonDirectory, "diagrams");
+		diagramsDirectory.mkdirs();
+		File diagramFile = new File(diagramsDirectory, "main");
+	
+		EnhancedJsonObject diagram = JSONFile.read(diagramFile);
+		EnhancedJsonObject nodes = diagram.getJson("Nodes");
+		Iterator iter = nodes.keys();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			EnhancedJsonObject node = nodes.getJson(key);
+			if(node.has("WrappedId"))
+				throw new Exception("DiagramNode already has WrappedId");
+			node.put("WrappedId", node.getInt("Id"));
+			nodes.put(key, node);
+		}
+		diagram.put("Nodes", nodes);
+		JSONFile.write(diagramFile, diagram);
 	}
 
 	private static final int NODE_TYPE = 4;

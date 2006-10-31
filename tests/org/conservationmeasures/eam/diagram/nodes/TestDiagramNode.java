@@ -15,14 +15,20 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.GraphConstants;
-import org.json.JSONObject;
 
 public class TestDiagramNode extends EAMTestCase
 {
@@ -33,21 +39,35 @@ public class TestDiagramNode extends EAMTestCase
 	
 	public void setUp() throws Exception
 	{
+		super.setUp();
+		project = new ProjectForTesting(getName());
+		
 		IdAssigner idAssigner = new IdAssigner();
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
 		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId());
 		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId());
 		cmDirectThreat.increaseTargetCount();
-		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
+		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
+		BaseId cmTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		cmTarget = (ConceptualModelTarget)project.findNode(cmTargetId);
 		
-		intervention = DiagramNode.wrapConceptualModelObject(cmIntervention);
-		indirectFactor = DiagramNode.wrapConceptualModelObject(cmIndirectFactor);
-		directThreat = DiagramNode.wrapConceptualModelObject(cmDirectThreat);
-		target = DiagramNode.wrapConceptualModelObject(cmTarget);
+		DiagramNodeId interventionNodeId = new DiagramNodeId(44);
+		intervention = DiagramNode.wrapConceptualModelObject(interventionNodeId, cmIntervention);
+		DiagramNodeId indirectFactorNodeId = new DiagramNodeId(46);
+		indirectFactor = DiagramNode.wrapConceptualModelObject(indirectFactorNodeId, cmIndirectFactor);
+		DiagramNodeId directThreatNodeId = new DiagramNodeId(43);
+		directThreat = DiagramNode.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
+		DiagramNodeId targetNodeId = new DiagramNodeId(35);
+		target = DiagramNode.wrapConceptualModelObject(targetNodeId, cmTarget);
 		targetAttributeMap = target.getAttributes();
-		super.setUp();
 	}
 	
+	public void tearDown() throws Exception
+	{
+		project.close();
+		super.tearDown();
+	}
+
 	public void testPort()
 	{
 		assertEquals("port not first child?", target.getPort(), target.getFirstChild());
@@ -126,16 +146,19 @@ public class TestDiagramNode extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		
-		DiagramNode got = new DiagramTarget(cmTarget);
-		JSONObject json = target.toJson();
-		got.fillFrom(json);
+		DiagramNode got = new DiagramTarget(target.getDiagramNodeId(), null);
+		EnhancedJsonObject json = target.toJson();
+		got.fillFrom(project, json);
 		
 		assertEquals("location", target.getLocation(), got.getLocation());
 		assertEquals("size", target.getSize(), got.getSize());
+		assertEquals("id", target.getDiagramNodeId(), got.getDiagramNodeId());
+		assertEquals("wrapped id", target.getWrappedId(), got.getWrappedId());
 	}
 
 	static final double TOLERANCE = 0.00;
 	
+	Project project;
 	ConceptualModelTarget cmTarget;
 	DiagramNode intervention;
 	DiagramNode indirectFactor;

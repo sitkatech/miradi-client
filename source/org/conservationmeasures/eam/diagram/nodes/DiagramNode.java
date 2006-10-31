@@ -36,31 +36,32 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DataMap;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
-import org.json.JSONObject;
 
 abstract public class DiagramNode extends EAMGraphCell
 {
-	public static DiagramNode wrapConceptualModelObject(ConceptualModelNode cmObject)
+	public static DiagramNode wrapConceptualModelObject(DiagramNodeId idToUse, ConceptualModelNode cmObject)
 	{
 		if(cmObject.isIntervention())
-			return new DiagramIntervention((ConceptualModelIntervention)cmObject);
+			return new DiagramIntervention(idToUse, (ConceptualModelIntervention)cmObject);
 		else if(cmObject.isFactor())
-			return new DiagramFactor((ConceptualModelFactor)cmObject);
+			return new DiagramFactor(idToUse, (ConceptualModelFactor)cmObject);
 		else if(cmObject.isTarget())
-			return new DiagramTarget((ConceptualModelTarget)cmObject);
+			return new DiagramTarget(idToUse, (ConceptualModelTarget)cmObject);
 		else if(cmObject.isCluster())
-			return new DiagramCluster((ConceptualModelCluster)cmObject);
+			return new DiagramCluster(idToUse, (ConceptualModelCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
 
-	protected DiagramNode(ConceptualModelNode cmObjectToUse)
+	protected DiagramNode(DiagramNodeId idToUse, ConceptualModelNode cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
-		id = new DiagramNodeId(getWrappedId().asInt());
+		id = idToUse;
 		
 		port = new DefaultPort();
 		add(port);
@@ -410,6 +411,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		NodeDataMap dataMap = new NodeDataMap();
 		dataMap.putId(TAG_ID, getDiagramNodeId());
+		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
 		
 		// FIXME: This is a crude hack, to preserve the node type information
 		// here so we can re-create the node if it gets pasted. 
@@ -426,20 +428,25 @@ abstract public class DiagramNode extends EAMGraphCell
 		return dataMap;
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		DataMap dataMap = new DataMap();
+		EnhancedJsonObject dataMap = new DataMap();
 		dataMap.putId(TAG_ID, getDiagramNodeId());
+		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());
 		return dataMap;
 	}
 	
-	public void fillFrom(JSONObject json) throws ParseException
+	public void fillFrom(Project project, EnhancedJsonObject json) throws ParseException
 	{
 		NodeDataMap dataMap = new NodeDataMap(json);
+		id = new DiagramNodeId(dataMap.getId(TAG_ID).asInt());
 		setLocation(dataMap.getPoint(TAG_LOCATION));
 		setSize(dataMap.getDimension(TAG_SIZE));
+		
+		BaseId wrappedId = json.optId(TAG_WRAPPED_ID);
+		underlyingObject = project.findNode(wrappedId);
 	}
 	
 	public static final NodeType TYPE_INVALID = null;
@@ -456,6 +463,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static final int INT_TYPE_CLUSTER = 5;
 
 	public static final String TAG_ID = "Id";
+	public static final String TAG_WRAPPED_ID = "WrappedId";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_SIZE = "Size";
 

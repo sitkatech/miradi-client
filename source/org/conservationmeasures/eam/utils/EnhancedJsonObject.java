@@ -6,9 +6,12 @@
 package org.conservationmeasures.eam.utils;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.text.ParseException;
 import java.util.Iterator;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -101,6 +104,34 @@ public class EnhancedJsonObject extends JSONObject
 		return getColor(tag);
 	}
 	
+	public void putPoint(String tag, Point value)
+	{
+		JSONObject point = new JSONObject();
+		point.put(TAG_POINT_X, value.x);
+		point.put(TAG_POINT_Y, value.y);
+		put(tag, point);
+	}
+
+	public void putDimension(String tag, Dimension value)
+	{
+		JSONObject size = new JSONObject();
+		size.put(TAG_WIDTH, value.width);
+		size.put(TAG_HEIGHT, value.height);
+		put(tag, size);
+	}
+
+	public Point getPoint(String tag)
+	{
+		JSONObject point = getJson(tag);
+		return new Point(point.getInt(TAG_POINT_X), point.getInt(TAG_POINT_Y));
+	}
+
+	public Dimension getDimension(String tag)
+	{
+		JSONObject size = getJson(tag);
+		return new Dimension(size.getInt(TAG_WIDTH), size.getInt(TAG_HEIGHT));
+	}
+
 	public void removeAll()
 	{
 		Iterator iter = keys();
@@ -112,11 +143,33 @@ public class EnhancedJsonObject extends JSONObject
 
 	}
 	
+	public void putId(String tag, BaseId id)
+	{
+		put(tag, id.asInt());
+	}
+
+	public BaseId getId(String tag)
+	{
+		return new BaseId(getInt(tag));
+	}
+	
+	public BaseId optId(String tag)
+	{
+		if(has(tag))
+			return getId(tag);
+		return BaseId.INVALID;
+	}
+
 	private static String handleEmptyString(String possiblyEmptyJsonString)
 	{
 		if(possiblyEmptyJsonString.length() == 0)
 			return "{}";
 		return possiblyEmptyJsonString;
 	}
+
+	private static String TAG_POINT_X = "X";
+	private static String TAG_POINT_Y = "Y";
+	private static String TAG_WIDTH = "Width";
+	private static String TAG_HEIGHT = "Height";
 
 }

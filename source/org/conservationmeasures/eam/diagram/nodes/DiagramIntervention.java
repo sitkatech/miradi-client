@@ -8,15 +8,16 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 
 public class DiagramIntervention extends DiagramNode
 {
-	public DiagramIntervention(ConceptualModelIntervention cmIntervention)
+	public DiagramIntervention(DiagramNodeId idToUse, ConceptualModelIntervention cmIntervention)
 	{
-		super(cmIntervention);
+		super(idToUse, cmIntervention);
 	}
 
 	public Color getColor()

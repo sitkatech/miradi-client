@@ -11,15 +11,16 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 
 public class DiagramTarget extends DiagramNode
 {
-	public DiagramTarget(ConceptualModelTarget cmTarget)
+	public DiagramTarget(DiagramNodeId idToUse, ConceptualModelTarget cmTarget)
 	{
-		super(cmTarget);
+		super(idToUse, cmTarget);
 	}
 
 	public Color getColor()

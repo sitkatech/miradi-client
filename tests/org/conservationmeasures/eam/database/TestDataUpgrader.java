@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.database;
 
+import java.awt.Dimension;
+import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 
@@ -393,6 +395,55 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("Wrong criterion count?", criterionIds.size(), migratedCriterionIds.size());
 		for(int i = 0; i < criterionIds.size(); ++i)
 			assertTrue("Didn't capture #" + i + "?", migratedCriterionIds.contains(criterionIds.get(i)));
+	}
+	
+	public void testAddDiagramNodeWrappedIds() throws Exception
+	{
+		File jsonDirectory = new File(tempDirectory, "json");
+		File diagramsDirectory = new File(jsonDirectory, "diagrams");
+		diagramsDirectory.mkdirs();
+		File diagramFile = new File(diagramsDirectory, "main");
+		
+		EnhancedJsonObject diagramWithoutWrappedIds = new EnhancedJsonObject();
+		diagramWithoutWrappedIds.put("Type", "Diagram");
+		EnhancedJsonObject nodes = new EnhancedJsonObject();
+		nodes.put("3", createDiagramNodeJson(3));
+		nodes.put("79", createDiagramNodeJson(79));
+		nodes.put("24", createDiagramNodeJson(24));
+		diagramWithoutWrappedIds.put("Nodes", nodes);
+		createFile(diagramFile, diagramWithoutWrappedIds.toString());
+		
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.addDiagramNodeWrappedIds();
+		
+		EnhancedJsonObject with = new EnhancedJsonObject(readFile(diagramFile));
+		EnhancedJsonObject gotNodes = with.getJson("Nodes");
+		JSONObject node3 = gotNodes.getJson("3");
+		assertEquals(node3.get("Id"), node3.get("WrappedId"));
+		JSONObject node79 = gotNodes.getJson("79");
+		assertEquals(node79.get("Id"), node79.get("WrappedId"));
+		JSONObject node24 = gotNodes.getJson("24");
+		assertEquals(node24.get("Id"), node24.get("WrappedId"));
+		
+		
+		try
+		{
+			upgrader.addDiagramNodeWrappedIds();
+			fail("Should have failed if wrapped id already exists");
+		}
+		catch(Exception ignoreExpected)
+		{
+			assertContains("WrappedId", ignoreExpected.getMessage());
+		}
+	}
+
+	private EnhancedJsonObject createDiagramNodeJson(int id)
+	{
+		EnhancedJsonObject node = new EnhancedJsonObject();
+		node.put("Id", id);
+		node.putPoint("Location", new Point(5, 7));
+		node.putDimension("Size", new Dimension(110,50));
+		return node;
 	}
 	
 	private String buildCriterionFileContents(int id)

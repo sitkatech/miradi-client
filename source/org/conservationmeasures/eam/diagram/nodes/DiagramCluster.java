@@ -12,15 +12,16 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramCluster extends DiagramNode
 {
-	public DiagramCluster(ConceptualModelCluster cmGroup)
+	public DiagramCluster(DiagramNodeId idToUse, ConceptualModelCluster cmGroup)
 	{
-		super(cmGroup);
+		super(idToUse, cmGroup);
 		GraphConstants.setGroupOpaque(getAttributes(), true);
 	}
 

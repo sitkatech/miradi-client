@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,7 +40,6 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class DiagramModel extends DefaultGraphModel
 {
@@ -82,7 +82,8 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramNode createNode(ModelNodeId id) throws Exception
 	{
 		ConceptualModelNode cmObject = getNodePool().find(id);
-		DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
+		DiagramNodeId nodeId = new DiagramNodeId(cmObject.getId().asInt());
+		DiagramNode node = DiagramNode.wrapConceptualModelObject(nodeId, cmObject);
 		addNodeToModel(node);
 		return node;
 	}
@@ -349,7 +350,7 @@ public class DiagramModel extends DefaultGraphModel
 		{
 			String key = keys.getString(i);
 			ModelNodeId id = new ModelNodeId(Integer.parseInt(key));
-			JSONObject nodeJson = nodeMap.getJson(key);
+			EnhancedJsonObject nodeJson = nodeMap.getJson(key);
 
 			ConceptualModelNode cmObject = getNodePool().find(id);
 			if(cmObject == null)
@@ -357,8 +358,9 @@ public class DiagramModel extends DefaultGraphModel
 				EAM.logError("Attempted to wrap missing node: " + id);
 				continue;
 			}
-			DiagramNode node = DiagramNode.wrapConceptualModelObject(cmObject);
-			node.fillFrom(nodeJson);
+			DiagramNodeId nodeId = new DiagramNodeId(cmObject.getId().asInt());
+			DiagramNode node = DiagramNode.wrapConceptualModelObject(nodeId, cmObject);
+			node.fillFrom(getProject(), nodeJson);
 			
 			addNodeToModel(node);
 		}

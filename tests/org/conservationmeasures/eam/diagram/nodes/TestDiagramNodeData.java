@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -21,9 +22,10 @@ public class TestDiagramNodeData extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		BaseId id = new BaseId(2);
-		ConceptualModelFactor cmFactor = new ConceptualModelFactor(id);
-		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(cmFactor);
+		BaseId wrappedId = new BaseId(2);
+		ConceptualModelFactor cmFactor = new ConceptualModelFactor(wrappedId);
+		DiagramNodeId nodeId = new DiagramNodeId(44);
+		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(nodeId, cmFactor);
 		String nodeAText = "Node A";
 		nodeA.setLabel(nodeAText);
 		Point location = new Point(5,22);
@@ -32,7 +34,8 @@ public class TestDiagramNodeData extends EAMTestCase
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals("id incorrect", id, nodeAData.getId(DiagramNode.TAG_ID));
+		assertEquals("id incorrect", nodeId, nodeAData.getId(DiagramNode.TAG_ID));
+		assertEquals("wrapped id incorrect", wrappedId, nodeAData.getId(DiagramNode.TAG_WRAPPED_ID));
 	}
 	
 }

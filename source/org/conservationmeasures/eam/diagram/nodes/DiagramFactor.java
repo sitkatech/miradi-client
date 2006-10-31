@@ -8,15 +8,16 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 
 public class DiagramFactor extends DiagramNode
 {
-	public DiagramFactor(ConceptualModelFactor cmFactor)
+	public DiagramFactor(DiagramNodeId idToUse, ConceptualModelFactor cmFactor)
 	{
-		super(cmFactor);
+		super(idToUse, cmFactor);
 	}
 
 	public Color getColor()
