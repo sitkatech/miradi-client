@@ -22,12 +22,12 @@ import javax.swing.plaf.BorderUIResource;
 import javax.swing.table.TableCellRenderer;
 
 
-class RowHeaderRenderer
+class TargetRowHeaderRenderer
 	extends JTextArea 
     implements ListCellRenderer , TableCellRenderer
 {
 
-    public RowHeaderRenderer()
+    public TargetRowHeaderRenderer()
     {
         setOpaque(true);
         setBorder(noFocusBorder);

@@ -134,7 +134,7 @@ public class MyThreatGirdPanel extends JPanel
 		while(columns.hasMoreElements())
 		{
 			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
-			columnToAdjust.setHeaderRenderer(new RowHeaderRenderer());
+			columnToAdjust.setHeaderRenderer(new TargetRowHeaderRenderer());
 			columnToAdjust.setPreferredWidth(150);
 			columnToAdjust.setWidth(150);
 		}
@@ -163,7 +163,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private void setDefaultRowHeaderRenderer(JTable rowHeaderTable)
 	{
-		rowHeaderTable.setDefaultRenderer(Object.class, new RowHeaderRenderer());
+		rowHeaderTable.setDefaultRenderer(Object.class, new TargetRowHeaderRenderer());
 	}
 
 

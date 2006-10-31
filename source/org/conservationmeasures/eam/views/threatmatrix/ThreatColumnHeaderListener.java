@@ -14,8 +14,10 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 
 	public int[] sortByColumn(boolean  assending)
 	{
+		sortToggle=!sortToggle;
 		ThreatTableSorter tabelSorter = 
 			new ThreatTableSorter(threatGirdPanel.project, model, "COLUMNHEADER");
-		return tabelSorter.sortByColumn( sortColumn,  false);
+		return tabelSorter.sortByColumn( sortColumn,  sortToggle);
 	}
+	boolean sortToggle;
 }
