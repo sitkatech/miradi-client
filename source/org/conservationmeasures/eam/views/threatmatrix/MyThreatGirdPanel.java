@@ -125,6 +125,7 @@ public class MyThreatGirdPanel extends JPanel
 	private void setColumnHeaderHeight(JTable threatTable)
 	{
 		threatTable.getTableHeader().setPreferredSize(new Dimension(0,60));
+		threatTable.getTableHeader().setResizingAllowed(true);
 	}
 
 
@@ -137,6 +138,9 @@ public class MyThreatGirdPanel extends JPanel
 			columnToAdjust.setHeaderRenderer(new TargetRowHeaderRenderer());
 			columnToAdjust.setPreferredWidth(150);
 			columnToAdjust.setWidth(150);
+			columnToAdjust.setResizable(true);
+			columnToAdjust.setMinWidth(50);
+			columnToAdjust.setMaxWidth(400);
 		}
 	}
 
@@ -147,6 +151,7 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
+		
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
 		rowHeaderTable.setPreferredScrollableViewportSize(d);

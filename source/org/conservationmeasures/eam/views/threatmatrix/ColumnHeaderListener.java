@@ -7,9 +7,11 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Enumeration;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 public abstract class ColumnHeaderListener  extends MouseAdapter
 {
@@ -46,12 +48,11 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			}
 			newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[rowIndex], 0)  ,rowIndex,0);
 		}
-					
-
+		
+		int[] oldWidths = getThreatTableColumnWidths(threatGirdPanel.globalTthreatTable);
 		threatGirdPanel.globalTthreatTable.setModel(newModel);
 		newModel.setColumnIdentifiers(threatGirdPanel.getColumnTargetHeaders());
-		threatGirdPanel.setThreatTableColumnWidths(threatGirdPanel.globalTthreatTable);
-		
+		setThreatTableColumnWidths(threatGirdPanel.globalTthreatTable, oldWidths);
 		JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
 		threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
 
@@ -59,8 +60,34 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		threatGirdPanel.repaint();
 	}
 	
-	public abstract int[] sortByColumn(boolean  assending);
+	public int[] getThreatTableColumnWidths(JTable threatTable) {
+		
+		Enumeration columns = threatTable.getColumnModel().getColumns();
+		int[] oldWidths = new int[threatTable.getColumnCount()];
+		while(columns.hasMoreElements())
+		{
+			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
+			oldWidths[columnToAdjust.getModelIndex()] = columnToAdjust.getWidth();
+		}
+		return oldWidths;
+	}
 	
+	public void setThreatTableColumnWidths(JTable threatTable, int[] oldWidths)
+	{
+		Enumeration columns = threatTable.getColumnModel().getColumns();
+		while(columns.hasMoreElements())
+		{
+			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
+			columnToAdjust.setHeaderRenderer(new TargetRowHeaderRenderer());
+			columnToAdjust.setPreferredWidth(oldWidths[columnToAdjust.getModelIndex()]);
+			columnToAdjust.setWidth(oldWidths[columnToAdjust.getModelIndex()]);
+			columnToAdjust.setResizable(true);
+			columnToAdjust.setMinWidth(50);
+			columnToAdjust.setMaxWidth(400);
+		}
+	}
+	
+	public abstract int[] sortByColumn(boolean  assending);
 	
 	int sortColumn = 0;
 	MyThreatGirdPanel threatGirdPanel;

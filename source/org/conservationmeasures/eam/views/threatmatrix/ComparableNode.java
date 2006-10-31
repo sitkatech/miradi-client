@@ -65,10 +65,10 @@ public class ComparableNode implements Comparable, Comparator
 	
 	public String toString() 
 	{
-		if (index == -1) 
-			return object.toString();
+	//	if (index == -1) 
+	//		return object.toString();
 		
-		return ((ConceptualModelNode)object).getLabel();
+		return object.toString();
 	}
 
 	public int getOldRow() {
