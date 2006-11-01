@@ -32,7 +32,7 @@ public class WorkPlanStrategy extends TreeTableNode
 	{
 		if (column == 0)
 			return intervention.getLabel();
-		return null;
+		return "";
 	}
 
 	public int getChildCount()

@@ -36,7 +36,7 @@ public class WorkPlanRoot extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		return null;
+		return "";
 	}
 
 	public String toString()

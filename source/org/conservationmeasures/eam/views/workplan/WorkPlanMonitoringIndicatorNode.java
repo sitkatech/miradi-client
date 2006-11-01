@@ -40,7 +40,7 @@ public class WorkPlanMonitoringIndicatorNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		return null;
+		return "";
 	}
 
 	ChainManager getChainManager()

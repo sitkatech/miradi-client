@@ -16,7 +16,6 @@ public class WorkPlanView extends TabbedView
 		super(mainWindowToUse);
 		setToolBar(new WorkPlanToolBar(mainWindowToUse.getActions()));
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		//add(new UiScrollPane(new TaskComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
