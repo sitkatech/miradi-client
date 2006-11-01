@@ -16,7 +16,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.martus.swing.UiLabel;
@@ -65,8 +65,8 @@ public class ThreatRatingBundlePanel extends JPanel
 		}
 		else
 		{
-			BaseId threatId = workingBundle.getThreatId();
-			BaseId targetId = workingBundle.getTargetId();
+			ModelNodeId threatId = workingBundle.getThreatId();
+			ModelNodeId targetId = workingBundle.getTargetId();
 			threatName.setText(getNodeName(threatId));
 			targetName.setText(getNodeName(targetId));
 			threatName.setBorder(new LineBorder(Color.BLACK));
@@ -74,7 +74,7 @@ public class ThreatRatingBundlePanel extends JPanel
 		}
 	}
 	
-	private String getNodeName(BaseId nodeId) throws Exception
+	private String getNodeName(ModelNodeId nodeId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
 		return model.getNodeById(nodeId).getLabel();

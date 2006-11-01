@@ -60,7 +60,8 @@ abstract public class InsertNode extends LocationDoer
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		NodeType nodeType = getTypeToInsert();
-		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType);
+		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType).getModelNodeId();
+		DiagramNode addedNode = getProject().getDiagramModel().getNodeById(id);
 		
 		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
@@ -72,7 +73,7 @@ abstract public class InsertNode extends LocationDoer
 		deltaX -= deltaX % getProject().getGridSize(); 
 		deltaY -= deltaY % getProject().getGridSize();
 		
-		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new BaseId[] {id});
+		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
 		
 		doExtraSetup(id);

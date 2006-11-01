@@ -21,8 +21,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
@@ -34,7 +33,7 @@ public class NodeMoveHandler
 		project = projectToUse;
 	}
 
-	public void nodesWereMovedOrResized(int deltaX, int deltaY, BaseId[] ids) throws CommandFailedException
+	public void nodesWereMovedOrResized(int deltaX, int deltaY, DiagramNodeId[] ids) throws CommandFailedException
 	{
 		DiagramModel model = getProject().getDiagramModel();
 		model.nodesWereMoved(ids);
@@ -66,7 +65,7 @@ public class NodeMoveHandler
 		
 		if(movedNodes.size() > 0)
 		{
-			BaseId[] idsActuallyMoved = new BaseId[movedNodes.size()];
+			DiagramNodeId[] idsActuallyMoved = new DiagramNodeId[movedNodes.size()];
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode)movedNodes.get(i);
@@ -140,10 +139,11 @@ public class NodeMoveHandler
 	private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
 	{
 		DiagramModel model = getProject().getDiagramModel();
-		ModelNodeId[] allNodeIds = getProject().getNodePool().getModelNodeIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
+		Vector allNodes = model.getAllNodes();
+		for(int i = 0; i < allNodes.size(); ++i)
 		{
-			DiagramNode possibleCluster = model.getNodeById(allNodeIds[i]);
+			DiagramNode node = (DiagramNode)allNodes.get(i);
+			DiagramNode possibleCluster = model.getNodeById(node.getWrappedId());
 			if(!possibleCluster.isCluster())
 				continue;
 			

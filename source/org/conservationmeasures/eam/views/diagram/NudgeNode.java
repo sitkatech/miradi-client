@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.NodeMoveHandler;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -54,7 +54,7 @@ public class NudgeNode extends ProjectDoer
 	{
 		DiagramNode[] cells = getProject().getOnlySelectedNodes();
 
-		BaseId[] ids = new BaseId[cells.length];
+		DiagramNodeId[] ids = new DiagramNodeId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{
 			ids[i] = cells[i].getDiagramNodeId(); 

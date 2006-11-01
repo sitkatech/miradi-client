@@ -31,7 +31,7 @@ public class TestSetNodeSize extends TestCaseEnhanced
 		ModelNodeId modelNodeId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
 		DiagramNode found = model.getNodeById(modelNodeId);
 		Dimension newSize = new Dimension(200,300);
-		Command setNodeSize = new CommandSetNodeSize(modelNodeId, newSize, found.getPreviousSize());
+		Command setNodeSize = new CommandSetNodeSize(found.getDiagramNodeId(), newSize, found.getPreviousSize());
 		setNodeSize.execute(project);
 
 		Dimension foundSize = found.getSize();

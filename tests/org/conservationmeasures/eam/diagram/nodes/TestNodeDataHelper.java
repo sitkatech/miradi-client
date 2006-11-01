@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -112,13 +113,13 @@ public class TestNodeDataHelper extends EAMTestCase
 	}
 	
 
-	final BaseId originalNodeId1 = new BaseId(1);
-	final BaseId originalNodeId2 = new BaseId(2);
-	final BaseId originalNodeId3 = new BaseId(3);
-	final BaseId newNodeId1 = new BaseId(5);
-	final BaseId newNodeId2 = new BaseId(6);
-	final BaseId newNodeId3 = new BaseId(7);
-	final BaseId unknownNodeId = new BaseId(10);
+	final ModelNodeId originalNodeId1 = new ModelNodeId(1);
+	final ModelNodeId originalNodeId2 = new ModelNodeId(2);
+	final ModelNodeId originalNodeId3 = new ModelNodeId(3);
+	final ModelNodeId newNodeId1 = new ModelNodeId(5);
+	final ModelNodeId newNodeId2 = new ModelNodeId(6);
+	final ModelNodeId newNodeId3 = new ModelNodeId(7);
+	final ModelNodeId unknownNodeId = new ModelNodeId(10);
 	final int nodeLocation1x = 20;
 	final int nodeLocation1y = 50;
 	final int nodeLocation2x = 5;

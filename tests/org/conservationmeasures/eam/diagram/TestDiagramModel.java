@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -285,7 +286,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.nodesWereMoved(new BaseId[] {node2.getDiagramNodeId(), node3.getDiagramNodeId()});
+		model.nodesWereMoved(new DiagramNodeId[] {node2.getDiagramNodeId(), node3.getDiagramNodeId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);

@@ -9,8 +9,9 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.Edge;
@@ -29,6 +30,11 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	public boolean isLinkage()
 	{
 		return true;
+	}
+	
+	public ModelLinkageId getWrappedId()
+	{
+		return (ModelLinkageId)underlyingObject.getId();
 	}
 	
 	public ConnectionSet getConnectionSet()
@@ -103,12 +109,12 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return new DiagramLinkageId(underlyingObject.getId().asInt());
 	}
 	
-	public BaseId getFromId()
+	public ModelNodeId getFromId()
 	{
 		return underlyingObject.getFromNodeId();
 	}
 	
-	public BaseId getToId()
+	public ModelNodeId getToId()
 	{
 		return underlyingObject.getToNodeId();
 	}
@@ -116,7 +122,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	public LinkageDataMap createLinkageDataMap()
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
-		dataMap.setId(getDiagramLinkageId());
+		dataMap.setId(getWrappedId());
 		dataMap.setFromId(getFromId().asInt());
 		dataMap.setToId(getToId().asInt());
 		return dataMap;

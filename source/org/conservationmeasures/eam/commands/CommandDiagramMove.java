@@ -6,13 +6,13 @@
 package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramMove extends Command
 {
-	public CommandDiagramMove(int deltaX, int deltaY, BaseId[] idsToMove)
+	public CommandDiagramMove(int deltaX, int deltaY, DiagramNodeId[] idsToMove)
 	{
 		this.deltaX = deltaX;
 		this.deltaY = deltaY;
@@ -69,7 +69,7 @@ public class CommandDiagramMove extends Command
 		return deltaY;
 	}
 	
-	public BaseId[] getIds()
+	public DiagramNodeId[] getIds()
 	{
 		return ids;
 	}
@@ -79,5 +79,5 @@ public class CommandDiagramMove extends Command
 
 	int deltaX;
 	int deltaY;
-	BaseId[] ids;
+	DiagramNodeId[] ids;
 }

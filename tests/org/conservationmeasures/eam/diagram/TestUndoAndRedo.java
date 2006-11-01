@@ -7,12 +7,14 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -36,7 +38,8 @@ public class TestUndoAndRedo extends EAMTestCase
 
 		fromId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_FACTOR);
 		toId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_INTERVENTION);
-		linkId = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
+		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
+		linkId = addLinkageCommand.getDiagramLinkageId();
 	}
 	
 	public void tearDown() throws Exception
@@ -146,13 +149,29 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
-	private void verifyNodePresent(BaseId cellId) throws Exception
+	private void verifyNodePresent(DiagramNodeId cellId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
 		assertNotNull("Node not present?", model.getNodeById(cellId));
 	}
 	
-	private void verifyNodeNotPresent(BaseId cellId)
+	private void verifyNodeNotPresent(DiagramNodeId cellId)
+	{
+		DiagramModel model = project.getDiagramModel();
+		
+		EAM.setLogToString();
+		try
+		{
+			model.getNodeById(cellId);
+			fail("Cell should be gone: " + cellId);
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		EAM.setLogToConsole();
+	}
+	
+	private void verifyNodeNotPresent(ModelNodeId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		

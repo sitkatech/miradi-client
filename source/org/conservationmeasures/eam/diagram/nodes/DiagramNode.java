@@ -402,7 +402,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int y = getLocation().y;
 		return new Command[] {
 			new CommandSetNodeSize(getDiagramNodeId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new BaseId[] {getDiagramNodeId()}),
+			new CommandDiagramMove(-x, -y, new DiagramNodeId[] {getDiagramNodeId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}

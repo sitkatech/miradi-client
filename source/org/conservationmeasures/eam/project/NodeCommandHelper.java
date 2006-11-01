@@ -10,10 +10,10 @@ import java.awt.Point;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -22,15 +22,14 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.utils.Logging;
+import org.conservationmeasures.eam.views.diagram.InsertConnection;
 
 public class NodeCommandHelper
 {
@@ -39,7 +38,7 @@ public class NodeCommandHelper
 		project = projectToUse;
 	}
 
-	public ModelNodeId createNode(NodeType nodeType) throws Exception
+	public CommandDiagramAddNode createNode(NodeType nodeType) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
@@ -51,7 +50,7 @@ public class NodeCommandHelper
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(modelNodeId);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
-		return modelNodeId;
+		return commandInsertNode;
 	}
 
 
@@ -78,14 +77,15 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			BaseId originalNodeId = nodeData.getId(DiagramNode.TAG_ID);
+			ModelNodeId originalNodeId = new ModelNodeId(nodeData.getId(DiagramNode.TAG_WRAPPED_ID).asInt());
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			ModelNodeId newNodeId = createNode(type);
+			CommandDiagramAddNode addCommand = createNode(type);
+			ModelNodeId newNodeId = addCommand.getModelNodeId();
 			dataHelper.setNewId(originalNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
-			CommandSetObjectData newNodeLabel = createSetLabelCommand(newNodeId, nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		}
@@ -93,15 +93,18 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
+			ModelNodeId originalNodeId = new ModelNodeId(nodeData.getId(DiagramNode.TAG_WRAPPED_ID).asInt());
+
 			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(DiagramNode.TAG_ID), startPoint);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
-			BaseId newNodeId = dataHelper.getNewId(nodeData.getId(DiagramNode.TAG_ID));
-			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new BaseId[]{newNodeId});
+			ModelNodeId newNodeId = dataHelper.getNewId(originalNodeId);
+			DiagramNodeId newDiagramNodeId = project.getDiagramModel().getNodeById(newNodeId).getDiagramNodeId();
+			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramNodeId[]{newDiagramNodeId});
 			executeCommand(move);
 		}
 	}
 	
-	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws CommandFailedException 
+	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws Exception 
 	{
 		LinkageDataMap[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
@@ -116,15 +119,10 @@ public class NodeCommandHelper
 				continue;
 			}
 			
-			//TODO: Call InsertConnection method here?
-			CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(newFromId, newToId);
-			CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
-			executeCommand(createModelLinkage);
-			ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
-			Logging.logDebug("Paste Link : " + modelLinkageId + " from:" + extraInfo.getFromId() + " to:" + extraInfo.getToId());
-
-			CommandDiagramAddLinkage addDiagramLinkage = new CommandDiagramAddLinkage(modelLinkageId);
-			executeCommand(addDiagramLinkage);
+			DiagramNode newFromNode = project.getDiagramModel().getNodeById(newFromId);
+			DiagramNode newToNode = project.getDiagramModel().getNodeById(newToId);
+			CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
+			Logging.logDebug("Paste Link : " + addLinkageCommand.getModelLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
 	

@@ -8,38 +8,25 @@ package org.conservationmeasures.eam.commands;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveLinkage extends Command
 {
-	public CommandDiagramRemoveLinkage(BaseId idToDelete)
+	public CommandDiagramRemoveLinkage(DiagramLinkageId idToDelete)
 	{
-		id = idToDelete;
-		wasFrom = new ModelNodeId(BaseId.INVALID.asInt());
-		wasTo = new ModelNodeId(BaseId.INVALID.asInt());
+		diagramLinkageId = idToDelete;
+		modelLinkageId = new ModelLinkageId(BaseId.INVALID.asInt());
 	}
 	
-	public ModelNodeId getWasFromId()
-	{
-		return wasFrom;
-	}
-	
-	public ModelNodeId getWasToId()
-	{
-		return wasTo;
-	}
-
 	public String toString()
 	{
-		return getCommandName() + ":" + getId() + "," + getWasFromId() + "," + getWasToId();
+		return getCommandName() + ":" + getDiagramLinkageId() + "," + getModelLinkageId();
 	}
 	
 	public String getCommandName()
@@ -51,12 +38,7 @@ public class CommandDiagramRemoveLinkage extends Command
 	{
 		try
 		{
-			DiagramModel model = target.getDiagramModel();
-			BaseId idToDelete = id;
-			DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
-			wasFrom = linkageToDelete.getFromNode().getWrappedId();
-			wasTo = linkageToDelete.getToNode().getWrappedId();
-			deleteLinkage(target, linkageToDelete.getDiagramLinkageId());
+			modelLinkageId = target.removeLinkageFromDiagram(diagramLinkageId);
 		}
 		catch (Exception e)
 		{
@@ -69,7 +51,7 @@ public class CommandDiagramRemoveLinkage extends Command
 	{
 		try
 		{
-			CommandDiagramAddLinkage.createLinkage(target, getId(), getWasFromId(), getWasToId());
+			target.addLinkageToDiagram(modelLinkageId);
 		}
 		catch (Exception e)
 		{
@@ -78,11 +60,19 @@ public class CommandDiagramRemoveLinkage extends Command
 		}
 	}
 
-	public BaseId getId()
+	public DiagramLinkageId getDiagramLinkageId()
 	{
-		return id;
+		return diagramLinkageId;
 	}
 
+	public ModelLinkageId getModelLinkageId()
+	{
+		return modelLinkageId;
+	}
+
+	
+	
+	//FIXME: Delete this as soon as possible
 	public static void deleteLinkage(Project target, DiagramLinkageId idToDelete) throws Exception, IOException, ParseException
 	{
 		target.removeLinkageFromDiagram(idToDelete);
@@ -92,7 +82,6 @@ public class CommandDiagramRemoveLinkage extends Command
 
 	public static final String COMMAND_NAME = "DiagramRemoveLinkage";
 
-	BaseId id;
-	ModelNodeId wasFrom;
-	ModelNodeId wasTo;
+	DiagramLinkageId diagramLinkageId;
+	ModelLinkageId modelLinkageId;
 }

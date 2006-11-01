@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -351,7 +352,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		IdList newMembers = new IdList(cmd.getPreviousDataValue());
 		IdList oldMembers = new IdList(cmd.getDataValue());
 		
-		updateCluster(cmd.getObjectId(), newMembers, oldMembers);
+		updateCluster((ModelNodeId)cmd.getObjectId(), newMembers, oldMembers);
 	}
 	
 	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
@@ -366,16 +367,16 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
 			return;
 		
-		BaseId clusterId = cmd.getObjectId();
+		ModelNodeId clusterId = (ModelNodeId)cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
 		DiagramModel model = getDiagramComponent().getDiagramModel();
 		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
 		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(ConceptualModelCluster.TAG_MEMBER_IDS));
 		
-		updateCluster(cluster.getDiagramNodeId(), newMembers, oldMembers);
+		updateCluster(cluster.getWrappedId(), newMembers, oldMembers);
 	}
 
-	private void updateCluster(BaseId clusterId, IdList newMembers, IdList oldMembers) throws Exception
+	private void updateCluster(ModelNodeId clusterId, IdList newMembers, IdList oldMembers) throws Exception
 	{
 		IdList idsToAdd = new IdList(newMembers);
 		idsToAdd.subtract(oldMembers);
@@ -389,14 +390,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
 			BaseId memberId = idsToRemove.get(i);
-			DiagramNode memberNode = model.getNodeById(memberId);
+			DiagramNode memberNode = model.getNodeById((ModelNodeId)memberId);
 			getProject().removeNodeFromCluster(cluster, memberNode);
 		}
 		
 		for(int i = 0; i < idsToAdd.size(); ++i)
 		{
 			BaseId memberId = idsToAdd.get(i);
-			DiagramNode memberNode = model.getNodeById(memberId);
+			DiagramNode memberNode = model.getNodeById((ModelNodeId)memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}
 		

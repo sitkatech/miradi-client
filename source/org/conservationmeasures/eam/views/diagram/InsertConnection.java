@@ -87,7 +87,7 @@ public class InsertConnection extends ProjectDoer
 		return false;
     }
 	
-	public static ModelLinkageId createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, ModelNodeId fromId, ModelNodeId toId) throws CommandFailedException
+	public static CommandDiagramAddLinkage createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, ModelNodeId fromId, ModelNodeId toId) throws CommandFailedException
 	{
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
@@ -95,7 +95,7 @@ public class InsertConnection extends ProjectDoer
 		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
 		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
 		projectToUse.executeCommand(command);
-		return modelLinkageId;
+		return command;
 	}
 
 }

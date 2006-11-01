@@ -296,7 +296,7 @@ public class TestProject extends EAMTestCase
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
 
-		BaseId[] noNodesMoved = new BaseId[1];
+		DiagramNodeId[] noNodesMoved = new DiagramNodeId[1];
 		noNodesMoved[0] = node1.getDiagramNodeId();
 	
 		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, noNodesMoved);
@@ -318,7 +318,7 @@ public class TestProject extends EAMTestCase
 		node2.setPreviousLocation(new Point(10,10));
 		node2.setLocation(new Point(20,30));
 		
-		BaseId[] ids = new BaseId[2];
+		DiagramNodeId[] ids = new DiagramNodeId[2];
 		ids[0] = node1.getDiagramNodeId();
 		ids[1] = node2.getDiagramNodeId();
 		
@@ -348,7 +348,7 @@ public class TestProject extends EAMTestCase
 		node2.setPreviousLocation(new Point(0,0));
 		node2.setLocation(new Point(0,0));
 		
-		BaseId[] ids = new BaseId[2];
+		DiagramNodeId[] ids = new DiagramNodeId[2];
 		ids[0] = node1.getDiagramNodeId();
 		ids[1] = node2.getDiagramNodeId();
 		
@@ -398,7 +398,7 @@ public class TestProject extends EAMTestCase
 		nodeNotMovedOrResized.setLocation(new Point(x,y));
 
 		
-		BaseId[] ids = new BaseId[4];
+		DiagramNodeId[] ids = new DiagramNodeId[4];
 		ids[0] = nodeResizedAndMoved.getDiagramNodeId();
 		ids[1] = nodeMovedOnly.getDiagramNodeId();
 		ids[2] = nodeResizedOnly.getDiagramNodeId();
@@ -511,6 +511,7 @@ public class TestProject extends EAMTestCase
 		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(targetId);
 		project.executeCommand(targetCommand);
 		assertEquals(existingCalls, database.callsToWriteObject);
+		DiagramNode target = project.getDiagramModel().getNodeById(targetId);
 		
 		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(factorId);
 		project.executeCommand(factorCommand);
@@ -523,11 +524,11 @@ public class TestProject extends EAMTestCase
 		project.redo();
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 
-		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
+		project.executeCommand(new CommandDiagramMove(9, 9, new DiagramNodeId[] {target.getDiagramNodeId(), factor.getDiagramNodeId()} ));
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 		Dimension oldDimension = factor.getSize();
-		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
+		project.executeCommand(new CommandSetNodeSize(factor.getDiagramNodeId(), new Dimension(50, 75), oldDimension));
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 	}
@@ -782,7 +783,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = project.createNodeAndAddToDiagram(nodeType, BaseId.INVALID);
+		ModelNodeId insertedId = project.createNodeAndAddToDiagram(nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	

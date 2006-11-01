@@ -8,7 +8,7 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -41,7 +41,7 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
-		ModelNodeId insertedId = insertFactor(project);
+		ModelNodeId insertedId = insertFactor(project).getModelNodeId();
 		project.executeCommand(NodeCommandHelper.createSetLabelCommand(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
@@ -70,7 +70,7 @@ public class TestUndoRedo extends EAMTestCase
 
 	public void testUndoRedoNodeSize() throws Exception
 	{
-		BaseId insertedId = insertFactor(project);
+		DiagramNodeId insertedId = insertFactor(project).getInsertedId();
 		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
 		Dimension originalSize = node.getSize();
 
@@ -108,7 +108,7 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(newSize2, node.getSize());
 	}
 	
-	private ModelNodeId insertFactor(Project p) throws Exception 
+	private CommandDiagramAddNode insertFactor(Project p) throws Exception 
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
@@ -116,7 +116,7 @@ public class TestUndoRedo extends EAMTestCase
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
 		CommandDiagramAddNode addToDiagramCommand = new CommandDiagramAddNode(modelNodeId);
 		p.executeCommand(addToDiagramCommand);
-		return modelNodeId;
+		return addToDiagramCommand;
 	}
 
 	ProjectForTesting project;

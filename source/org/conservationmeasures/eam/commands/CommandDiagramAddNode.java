@@ -25,6 +25,11 @@ public class CommandDiagramAddNode extends Command
 	{
 		return insertedId;
 	}
+	
+	public ModelNodeId getModelNodeId()
+	{
+		return modelNodeId;
+	}
 
 	public String toString()
 	{

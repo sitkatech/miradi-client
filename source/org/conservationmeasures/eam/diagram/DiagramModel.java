@@ -172,7 +172,22 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
 	{
-		return getLinkagePool().hasLinkage(fromNode.getDiagramNodeId(), toNode.getDiagramNodeId());
+		ModelNodeId nodeId1 = fromNode.getWrappedId();
+		ModelNodeId nodeId2 = toNode.getWrappedId();
+		
+		Vector linkages = cellInventory.getAllLinkages();
+		for(int i = 0; i < linkages.size(); ++i)
+		{
+			DiagramLinkage linkage = (DiagramLinkage)linkages.get(i);
+			ModelNodeId foundId1 = linkage.getFromId();
+			ModelNodeId foundId2 = linkage.getToId();
+			if(foundId1.equals(nodeId1) && foundId2.equals(nodeId2))
+				return true;
+			if(foundId1.equals(nodeId2) && foundId2.equals(nodeId1))
+				return true;
+		}
+		
+		return false;
 	}
 	
 	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
@@ -210,17 +225,17 @@ public class DiagramModel extends DefaultGraphModel
 		return chainObject.getNodes();
 	}
 	
-	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception
+	public void moveNodes(int deltaX, int deltaY, DiagramNodeId[] ids) throws Exception
 	{
 		moveNodesWithoutNotification(deltaX, deltaY, ids);
 		nodesWereMoved(ids);
 	}
 
-	public void moveNodesWithoutNotification(int deltaX, int deltaY, BaseId[] ids) throws Exception
+	public void moveNodesWithoutNotification(int deltaX, int deltaY, DiagramNodeId[] ids) throws Exception
 	{
 		for(int i = 0; i < ids.length; ++i)
 		{
-			BaseId id = ids[i];
+			DiagramNodeId id = ids[i];
 			DiagramNode nodeToMove = getNodeById(id);
 			Point oldLocation = nodeToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
@@ -230,7 +245,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public void nodesWereMoved(BaseId[] ids)
+	public void nodesWereMoved(DiagramNodeId[] ids)
 	{
 		for(int i=0; i < ids.length; ++i)
 		{
@@ -267,12 +282,19 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
 	}
 	
-	public boolean hasNode(BaseId id)
+	public boolean hasNode(DiagramNodeId id)
 	{
 		return (rawGetNodeById(id) != null);
 	}
 	
-	public DiagramNode getNodeById(BaseId id) throws Exception
+	public boolean hasNode(ModelNodeId id)
+	{
+		return (rawGetNodeById(id) != null);
+	}
+	
+	
+	
+	public DiagramNode getNodeById(DiagramNodeId id) throws Exception
 	{
 		DiagramNode node = rawGetNodeById(id);
 		if(node == null)
@@ -280,7 +302,20 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
-	private DiagramNode rawGetNodeById(BaseId id)
+	public DiagramNode getNodeById(ModelNodeId id) throws Exception
+	{
+		DiagramNode node = rawGetNodeById(id);
+		if(node == null)
+			throw new Exception("Node doesn't exist, id: " + id);
+		return node;
+	}
+
+	private DiagramNode rawGetNodeById(DiagramNodeId id)
+	{
+		return cellInventory.getNodeById(id);
+	}
+
+	private DiagramNode rawGetNodeById(ModelNodeId id)
 	{
 		return cellInventory.getNodeById(id);
 	}
@@ -394,7 +429,7 @@ public class DiagramModel extends DefaultGraphModel
 		IdList members = cmCluster.getMemberIds();
 		for(int i = 0; i < members.size(); ++i)
 		{
-			DiagramNode memberNode = getNodeById(members.get(i));
+			DiagramNode memberNode = getNodeById((ModelNodeId)members.get(i));
 			project.addNodeToCluster(cluster, memberNode);
 		}
 	}

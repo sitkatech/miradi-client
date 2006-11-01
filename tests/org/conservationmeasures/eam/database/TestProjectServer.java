@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -196,7 +197,7 @@ public class TestProjectServer extends EAMTestCase
 		for(int i=0; i < gotNodes.size(); ++i)
 		{
 			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
-			BaseId gotId = gotNode.getDiagramNodeId();
+			DiagramNodeId gotId = gotNode.getDiagramNodeId();
 			DiagramNode expectedNode = model.getNodeById(gotId);
 			assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 		}

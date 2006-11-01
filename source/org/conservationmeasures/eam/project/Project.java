@@ -283,9 +283,10 @@ public class Project
 		if(objectType == ObjectType.MODEL_NODE)
 		{
 			DiagramModel model = getDiagramModel();
-			if(model.hasNode(objectId))
+			ModelNodeId modelNodeId = (ModelNodeId)objectId;
+			if(model.hasNode(modelNodeId))
 			{
-				DiagramNode diagramNode = getDiagramModel().getNodeById(objectId);
+				DiagramNode diagramNode = getDiagramModel().getNodeById(modelNodeId);
 				getDiagramModel().updateCell(diagramNode);
 			}
 		}
@@ -696,11 +697,13 @@ public class Project
 		return node.getDiagramNodeId();
 	}
 	
-	public void removeLinkageFromDiagram(DiagramLinkageId idToDelete) throws Exception
+	public ModelLinkageId removeLinkageFromDiagram(DiagramLinkageId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
+		ModelLinkageId modelLinkageId = linkageToDelete.getWrappedId();
 		model.deleteLinkage(linkageToDelete);
+		return modelLinkageId;
 	}
 
 	public DiagramLinkageId addLinkageToDiagram(BaseId modelLinkageId) throws Exception
@@ -717,7 +720,7 @@ public class Project
 		database.writeObject(cmNode);
 	}
 
-	public void moveNodes(int deltaX, int deltaY, BaseId[] ids) throws Exception 
+	public void moveNodes(int deltaX, int deltaY, DiagramNodeId[] ids) throws Exception 
 	{
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}

@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -56,7 +57,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			DiagramNode nodeToSelect = model.getNodeById(chainNodes[i].getId());
+			DiagramNode nodeToSelect = model.getNodeById((ModelNodeId)chainNodes[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(nodeToSelect);
 		}

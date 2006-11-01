@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -241,7 +242,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		BaseId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
+		DiagramNodeId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -281,7 +282,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandNodeResized() throws Exception
 	{
-		BaseId id = insertTarget();
+		DiagramNodeId id = insertTarget();
 		Dimension defaultSize = new Dimension(120, 60);
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		Dimension originalSize = node.getSize();
@@ -332,7 +333,7 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyUndoDiagramAddNode(CommandDiagramAddNode cmd) throws CommandFailedException
 	{
-		BaseId insertedId = cmd.getInsertedId();
+		DiagramNodeId insertedId = cmd.getInsertedId();
 		cmd.undo(project);
 		try
 		{
@@ -403,12 +404,13 @@ public class TestCommands extends EAMTestCase
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
-		BaseId linkageId = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
+		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
+		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
 	
 		CommandDiagramRemoveLinkage cmd = new CommandDiagramRemoveLinkage(linkageId);
+		assertEquals("model id not invalid?", BaseId.INVALID, cmd.getModelLinkageId());
 		project.executeCommand(cmd);
-		assertEquals("didn't set from?", from, cmd.getWasFromId());
-		assertEquals("didn't set to?", to, cmd.getWasToId());
+		assertEquals("model id not set?", addLinkageCommand.getModelLinkageId(), cmd.getModelLinkageId());
 
 		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
 		cmd.undo(project);
@@ -470,7 +472,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testRedo() throws Exception
 	{
-		BaseId insertedId = insertTarget();
+		DiagramNodeId insertedId = insertTarget();
 		project.undo();
 		project.redo();
 		

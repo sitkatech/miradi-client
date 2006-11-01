@@ -22,12 +22,12 @@ public class NodeDataHelper
 		setInitialMappingOfIdsToOriginalIds(existingNodesInProject);
 	}
 
-	public void setNewId(BaseId originalNodeId, BaseId newNodeId)
+	public void setNewId(ModelNodeId originalNodeId, ModelNodeId newNodeId)
 	{
 		mapNodeIds.put(getKey(originalNodeId), getValue(newNodeId));
 	}
 	
-	public ModelNodeId getNewId(BaseId originalNodeId)
+	public ModelNodeId getNewId(ModelNodeId originalNodeId)
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
@@ -53,7 +53,7 @@ public class NodeDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			BaseId id = ((DiagramNode) iter.next()).getDiagramNodeId();
+			ModelNodeId id = ((DiagramNode) iter.next()).getWrappedId();
 			setNewId(id, id);
 		}
 	}

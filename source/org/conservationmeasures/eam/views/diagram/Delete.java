@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
@@ -75,7 +75,7 @@ public class Delete extends ProjectDoer
 
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
-		BaseId id = linkageToDelete.getDiagramLinkageId();
+		DiagramLinkageId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveLinkage command = new CommandDiagramRemoveLinkage(id);
 		getProject().executeCommand(command);
 	}
