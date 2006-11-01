@@ -10,5 +10,4 @@ public class WorkPlanToolBar extends EAMToolBar
 	{
 		super(actions, ActionViewWorkPlan.class);
 	}
-
 }

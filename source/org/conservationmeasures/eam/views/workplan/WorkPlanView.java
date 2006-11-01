@@ -2,21 +2,21 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JLabel;
-
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.ResourceImageIcon;
-import org.martus.swing.UiScrollPane;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanWizardPanel;
 
-public class WorkPlanView extends UmbrellaView
+public class WorkPlanView extends TabbedView
 {
 	public WorkPlanView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		setToolBar(new WorkPlanToolBar(mainWindowToUse.getActions()));
 		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		add(new UiScrollPane(new TaskComponent()), BorderLayout.CENTER);
+		//add(new UiScrollPane(new TaskComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -26,24 +26,24 @@ public class WorkPlanView extends UmbrellaView
 	
 	static public String getViewName()
 	{
-		return "WorkPlan";
+		return Project.WORK_PLAN_VIEW_NAME;
 	}
 
-	public void becomeActive() throws Exception
+	public void createTabs() throws Exception
 	{
+		workPlanPanel = new WorkPlanPanel(getProject());
+		addTab(EAM.text("Work Plan"), workPlanPanel);
 	}
 
-	public void becomeInactive() throws Exception
+	public WizardPanel createWizardPanel() throws Exception
 	{
+		return new WorkPlanWizardPanel();
 	}
 
-}
-
-
-class TaskComponent extends JLabel
-{
-	public TaskComponent()
+	public void deleteTabs() throws Exception
 	{
-		super(new ResourceImageIcon("images/Tasks.png"));
+		workPlanPanel = null;
 	}
+	
+	WorkPlanPanel workPlanPanel;
 }
