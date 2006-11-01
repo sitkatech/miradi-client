@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Enumeration;
 
 import javax.swing.JTable;
@@ -31,15 +33,15 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		NonEditableThreatMatrixTableModel newModel = new NonEditableThreatMatrixTableModel(threatGirdPanel.project);
 		DefaultTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(0,1);
 	
-		int rowCount = model.getRowCount();
-		int columnCount = model.getColumnCount();
+		rowCount = model.getRowCount();
+		columnCount = model.getColumnCount();
 		newModel.setRowCount(rowCount);
 		newModel.setColumnCount(model.getColumnCount());
 		
 		newRowHeaderData.setRowCount(rowCount);
 		newRowHeaderData.setColumnCount(1);
 		
-		int[] rows = sortByColumn(false);
+		int[] rows = sortByColumn();
 		
 		for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
 			for (int columnIndex = 0; columnIndex<columnCount; ++columnIndex) 
@@ -87,8 +89,41 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		}
 	}
 	
-	public abstract int[] sortByColumn(boolean  assending);
+	public int[] sortByColumn() 
+	{
+		int newRowCount = model.getRowCount()-summaryRow;
+		ArrayList columnData = new ArrayList();
+
+		for (int rowIndex = 0; rowIndex<newRowCount; ++rowIndex) 
+		{
+				columnData.add(createComparable(rowIndex));
+		}
+
+		Collections.sort(columnData);
+		
+		if ( getToggle() ) 
+			Collections.reverse(columnData);
+
+		int rows[] = new int[newRowCount + summaryRow];
+		
+		for (int rowIndex = 0; rowIndex<newRowCount; ++rowIndex) 
+		{
+				rows[rowIndex] = getOldRow(columnData.get(rowIndex));
+		}
+		rows[newRowCount] = newRowCount;
+		
+		return rows;
+	}
 	
+	public abstract Comparable createComparable(int rowIndex);
+	
+	public abstract int getOldRow(Object object);
+	
+	public abstract boolean getToggle();
+	
+	int summaryRow = 1;
+	int rowCount = 0;
+	int columnCount = 0;
 	int sortColumn = 0;
 	MyThreatGirdPanel threatGirdPanel;
 	NonEditableThreatMatrixTableModel model;

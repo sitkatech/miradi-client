@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 
+
 public class TargetRowHeaderListener extends ColumnHeaderListener
 {
 	public TargetRowHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
@@ -13,13 +14,22 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 		super(threatGirdPanelInUse);
 	}
 
-	public int[] sortByColumn(boolean  assending)
+	public  Comparable createComparable(int rowIndex)
 	{
-		sortToggle=!sortToggle;
-		ThreatTableSorter tabelSorter = 
-			new ThreatTableSorter(threatGirdPanel.project, threatGirdPanel.rowHeaderData, "ROWHEADER");
-		return tabelSorter.sortByColumn( sortColumn,  sortToggle);
+		return new IgnoreCaseStringComparator(rowIndex, threatGirdPanel.rowHeaderData.getValueAt(rowIndex,0));
+	}
+	
+	public  int getOldRow(Object object) 
+	{
+		return((IgnoreCaseStringComparator) object).getOldRow();
+	}
+	
+	public  boolean getToggle() {
+		sortToggle = !sortToggle;
+		return sortToggle;
+		
 	}
 	
 	boolean sortToggle;
+
 }
