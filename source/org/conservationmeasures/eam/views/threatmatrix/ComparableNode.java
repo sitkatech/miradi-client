@@ -28,11 +28,6 @@ public class ComparableNode implements Comparable, Comparator
 
 	public int compare(Object object1, Object object2)
 	{
-		int test1 = ((ComparableNode)object1).getOldRow();
-		int test2 = ((ComparableNode)object2).getOldRow();
-		if (test1==-1 || test2==-1) 
-			object1.toString().compareTo(object2.toString());
-	
 		BaseId baseId1 = ((ComparableNode) object1).getNode().getId();
 		BaseId baseId2 = ((ComparableNode) object2).getNode().getId();
 		
@@ -41,10 +36,6 @@ public class ComparableNode implements Comparable, Comparator
 
 	public int compareTo(Object objectToUse)
 	{
-		if (objectToUse instanceof String || object instanceof String ) 
-			return object.toString().compareToIgnoreCase(objectToUse.toString());
-		
-		
 		BaseId baseId1 = ((ComparableNode) objectToUse).getNode().getId();
 		BaseId baseId2 = ((ConceptualModelNode)object).getId();
 		return baseId1.compareTo(baseId2);
@@ -52,7 +43,6 @@ public class ComparableNode implements Comparable, Comparator
 
 	public boolean equals(Object objectToUse)
 	{
-		if (index==-1) return false;
 		BaseId baseId1 = ((ConceptualModelNode) objectToUse).getId();
 		BaseId baseId2 = ((ConceptualModelNode)object).getId();
 		return baseId1.compareTo(baseId2)==0;
@@ -64,10 +54,7 @@ public class ComparableNode implements Comparable, Comparator
 	}
 	
 	public String toString() 
-	{
-	//	if (index == -1) 
-	//		return object.toString();
-		
+	{	
 		return object.toString();
 	}
 

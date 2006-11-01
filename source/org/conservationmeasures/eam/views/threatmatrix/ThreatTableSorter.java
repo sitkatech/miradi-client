@@ -30,8 +30,8 @@ public class ThreatTableSorter
 
 			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) 
 			{
-				if (tableType.equals("ROWHEADER"))
-					columnData.add(new ComparableNode(rowIndex, model.getValueAt(rowIndex,sortColumn).toString()));
+				if (tableType.equals("ROWHEADER"))			
+					columnData.add(new IgnoreCaseStringComparator(rowIndex, model.getValueAt(rowIndex,sortColumn)));
 				else
 					columnData.add(new ColumnObject(rowIndex, model.getValueAt(rowIndex,sortColumn)));
 			}
@@ -44,8 +44,8 @@ public class ThreatTableSorter
 			int rows[] = new int[rowCount + summaryRow];
 			for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) 
 			{
-				if (tableType.equals("ROWHEADER"))
-					rows[rowIndex] = ((ComparableNode) columnData.get(rowIndex)).getOldRow();
+				if (tableType.equals("ROWHEADER")) 
+					rows[rowIndex] = ((IgnoreCaseStringComparator) columnData.get(rowIndex)).getOldRow();
 				else
 					rows[rowIndex] = ((ColumnObject) columnData.get(rowIndex)).getOldRow();
 			}
