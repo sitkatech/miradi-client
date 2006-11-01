@@ -33,6 +33,16 @@ public class IndicatorPool extends EAMNormalObjectPool
 	{
 		return new Indicator(new IndicatorId(actualId.asInt()));
 	}
+	
+	public Indicator[] getAllIndicators()
+	{
+		BaseId[] allIds = getIds();
+		Indicator[] allIndicators = new Indicator[allIds.length];
+		for (int i = 0; i < allIndicators.length; i++)
+			allIndicators[i] = find(allIds[i]);
+			
+		return allIndicators;
+	}
 
 
 
