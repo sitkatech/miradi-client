@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -30,7 +31,7 @@ public class WorkPlanRoot extends TreeTableNode
 
 	public int getType()
 	{
-		return 0;
+		return ObjectType.MODEL_NODE;
 	}
 
 	public Object getValueAt(int column)
@@ -45,16 +46,10 @@ public class WorkPlanRoot extends TreeTableNode
 
 	private void rebuild()
 	{
-		try
-		{
-			Vector vector = new Vector();
-			vector.add(new WorkPlanStrategyRoot(project));
-			vector.add(new WorkPlanMonitoringRoot(project));
-			children = vector;
-		}
-		catch(Exception e)
-		{
-		}
+		Vector vector = new Vector();
+		vector.add(new WorkPlanStrategyRoot(project));
+		vector.add(new WorkPlanMonitoringRoot(project));
+		children = vector;
 	}
 
 	Vector children;

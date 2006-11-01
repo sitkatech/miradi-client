@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
@@ -15,7 +16,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 public class WorkPlanStrategyRoot extends TreeTableNode
 {
 	
-	public WorkPlanStrategyRoot(Project projectToUse) throws Exception
+	public WorkPlanStrategyRoot(Project projectToUse)
 	{
 		project = projectToUse;
 		rebuildAll();
@@ -33,7 +34,7 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 
 	public int getType()
 	{
-		return strategies[0].getType();
+		return ObjectType.MODEL_NODE;
 	}
 
 	public Object getValueAt(int column)
@@ -46,12 +47,9 @@ public class WorkPlanStrategyRoot extends TreeTableNode
 		return STRATEGIC_LABEL;
 	}
 	
-	private void rebuildAll() throws Exception
+	private void rebuildAll()
 	{
 		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
-		if (interventionObjects.length <= 0)
-			throw new Exception();
-		
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{
