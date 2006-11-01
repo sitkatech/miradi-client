@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.martus.swing.UiScrollPane;
 
 public class MonitoringPanel extends JPanel
@@ -23,5 +24,5 @@ public class MonitoringPanel extends JPanel
 	}
 
 	MonitoringTreeTable tree;
-	MonitoringModel model;
+	GenericTreeTableModel model;
 }

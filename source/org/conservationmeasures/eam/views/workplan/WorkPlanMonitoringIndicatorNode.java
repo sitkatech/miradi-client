@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanMonitoringIndicatorNode extends WorkPlanNode
 {
@@ -32,7 +33,7 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanNode
 		return 0;
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return null;
 	}

@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringIndicatorNode extends MonitoringNode
 {
@@ -34,7 +35,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		return 0;
 	}
 
-	public MonitoringNode getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return null;
 	}

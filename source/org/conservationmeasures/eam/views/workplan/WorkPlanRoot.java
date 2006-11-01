@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanRoot extends WorkPlanNode
 {
@@ -17,9 +18,9 @@ public class WorkPlanRoot extends WorkPlanNode
 		rebuild();
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
-		return children.get(index);
+		return (TreeTableNode)children.get(index);
 	}
 
 	public int getChildCount()

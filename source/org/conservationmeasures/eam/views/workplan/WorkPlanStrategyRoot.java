@@ -10,6 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanStrategyRoot extends WorkPlanNode
 {
@@ -20,7 +21,7 @@ public class WorkPlanStrategyRoot extends WorkPlanNode
 		rebuildAll();
 	}
 	
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return strategies[index];
 	}

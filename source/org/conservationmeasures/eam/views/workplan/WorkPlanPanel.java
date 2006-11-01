@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.martus.swing.UiScrollPane;
 
 public class WorkPlanPanel extends JPanel
@@ -18,7 +19,7 @@ public class WorkPlanPanel extends JPanel
 	{
 		super(new BorderLayout());
 		WorkPlanTreeTableModel model = new WorkPlanTreeTableModel(projectToUse);
-		WorkPlanTreeTable tree = new WorkPlanTreeTable(model);
+		TreeTableWithIcons tree = new WorkPlanTreeTable(model);
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
 	}

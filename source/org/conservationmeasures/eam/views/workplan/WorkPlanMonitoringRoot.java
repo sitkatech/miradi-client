@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanMonitoringRoot extends WorkPlanNode
 {
@@ -16,7 +17,7 @@ public class WorkPlanMonitoringRoot extends WorkPlanNode
 		rebuildAll();
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return allIndicators[index];
 	}

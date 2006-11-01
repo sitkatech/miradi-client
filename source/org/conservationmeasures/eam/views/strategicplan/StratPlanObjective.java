@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanObjective extends StratPlanObject
 {
@@ -38,7 +39,7 @@ public class StratPlanObjective extends StratPlanObject
 		return strategies.length;
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return strategies[index];
 	}

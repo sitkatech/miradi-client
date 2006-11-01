@@ -8,11 +8,9 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
-import com.java.sun.jtreetable.AbstractTreeTableModel;
-import com.java.sun.jtreetable.TreeTableModel;
-
-public class MonitoringModel extends AbstractTreeTableModel
+public class MonitoringModel extends GenericTreeTableModel
 {
 	public MonitoringModel(Project projectToUse)
 	{
@@ -20,41 +18,16 @@ public class MonitoringModel extends AbstractTreeTableModel
 		project = projectToUse;
 	}
 
-	public int getColumnCount()
-	{
-		return columnTags.length;
-	}
-
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(ObjectType.INDICATOR, columnTags[column]);
 	}
 
-	public Class getColumnClass(int column)
+	public int getColumnCount()
 	{
-		if(column == 0)
-			return TreeTableModel.class;
-		return String.class;
+		return columnTags.length;
 	}
 	
-	public Object getValueAt(Object rawNode, int column)
-	{
-		MonitoringNode node = (MonitoringNode)rawNode;
-		return node.getValueAt(column);
-	}
-
-	public int getChildCount(Object rawNode)
-	{
-		MonitoringNode node = (MonitoringNode)rawNode;
-		return node.getChildCount();
-	}
-
-	public Object getChild(Object rawNode, int index)
-	{
-		MonitoringNode node = (MonitoringNode)rawNode;
-		return node.getChild(index);
-	}
-
 	public static String[] columnTags = {
 		"Item", 
 		"Target(s)", 

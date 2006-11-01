@@ -12,11 +12,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
-import com.java.sun.jtreetable.AbstractTreeTableModel;
-import com.java.sun.jtreetable.TreeTableModel;
-
-public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
+public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 {
 	static public StrategicPlanTreeTableModel createForProject(Project project)
 	{
@@ -52,29 +50,6 @@ public class StrategicPlanTreeTableModel extends AbstractTreeTableModel
 		return columnNames[column];
 	}
 
-	public Object getValueAt(Object rawNode, int column)
-	{
-		StratPlanObject node = (StratPlanObject)rawNode;
-		return node.getValueAt(column);
-	}
-
-	public int getChildCount(Object parent)
-	{
-		return ((StratPlanObject)parent).getChildCount();
-	}
-
-	public Object getChild(Object parent, int index)
-	{
-		return ((StratPlanObject)parent).getChild(index);
-	}
-
-	public Class getColumnClass(int column)
-	{
-		if(column == 0)
-			return TreeTableModel.class;
-		return String.class;
-	}
-	
 	public TreePath getPathOfNode(int objectType, BaseId objectId)
 	{
 		return findObject(getPathToRoot(), objectType, objectId);

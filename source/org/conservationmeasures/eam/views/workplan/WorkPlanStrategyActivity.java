@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanStrategyActivity extends WorkPlanNode
 {
@@ -32,7 +33,7 @@ public class WorkPlanStrategyActivity extends WorkPlanNode
 		return 0;
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return null;
 	}

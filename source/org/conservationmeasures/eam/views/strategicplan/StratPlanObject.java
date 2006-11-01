@@ -6,19 +6,11 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
-
-abstract public class StratPlanObject
+abstract public class StratPlanObject extends TreeTableNode
 {
-	abstract public Object getValueAt(int column);
-	abstract public int getChildCount();
-	abstract public Object getChild(int index);
-	abstract public int getType();
 	abstract public BaseId getId();
-	
-	abstract public String toString();
-	
 	abstract public boolean canInsertActivityHere();
 	abstract public void rebuild();
 }
-

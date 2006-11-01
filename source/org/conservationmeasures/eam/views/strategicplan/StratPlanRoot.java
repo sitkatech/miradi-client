@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanRoot extends StratPlanObject
 {
@@ -30,7 +31,7 @@ public class StratPlanRoot extends StratPlanObject
 		return goalNodes.length;
 	}
 
-	public Object getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return goalNodes[index];
 	}

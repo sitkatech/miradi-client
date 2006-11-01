@@ -5,12 +5,10 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import org.conservationmeasures.eam.views.TreeTableNode;
 
-public abstract class WorkPlanNode
+
+public abstract class WorkPlanNode extends TreeTableNode
 {
-	abstract public int getType();
-	abstract public String toString();
-	abstract public int getChildCount();
-	abstract public Object getChild(int index);
-	abstract public Object getValueAt(int column);
+	
 }

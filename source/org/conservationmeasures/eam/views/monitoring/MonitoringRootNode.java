@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.DesirePool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringRootNode extends MonitoringNode
 {
@@ -35,7 +36,7 @@ public class MonitoringRootNode extends MonitoringNode
 		return children.size();
 	}
 
-	public MonitoringNode getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return (MonitoringNode)children.get(index);
 	}

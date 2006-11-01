@@ -5,14 +5,10 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-public abstract class MonitoringNode
+import org.conservationmeasures.eam.views.TreeTableNode;
+
+public abstract class MonitoringNode extends TreeTableNode
 {
-	abstract public int getType();
-	abstract public String toString();
-	abstract public int getChildCount();
-	abstract public MonitoringNode getChild(int index);
-	abstract public Object getValueAt(int column);
-	
 	public static final int COLUMN_ITEM_LABEL = 0;
 	public static final int COLUMN_TARGETS = 1;
 	public static final int COLUMN_THREATS = 2;

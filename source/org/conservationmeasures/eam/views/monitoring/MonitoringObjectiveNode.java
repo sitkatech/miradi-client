@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringObjectiveNode extends MonitoringNode
 {
@@ -76,7 +77,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return children.size();
 	}
 
-	public MonitoringNode getChild(int index)
+	public TreeTableNode getChild(int index)
 	{
 		return (MonitoringNode)children.get(index);
 	}
