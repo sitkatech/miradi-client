@@ -35,6 +35,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	
 		rowCount = model.getRowCount();
 		columnCount = model.getColumnCount();
+		
 		newModel.setRowCount(rowCount);
 		newModel.setColumnCount(model.getColumnCount());
 		
@@ -43,6 +44,28 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		
 		int[] rows = sortByColumn();
 		
+		buildTheatTableAndRowHeaderDataModels(newModel, newRowHeaderData, rows);
+		
+		setUpThreatTableUiForNewModel(newModel, newRowHeaderData);
+
+		threatGirdPanel.revalidate();
+		threatGirdPanel.repaint();
+	}
+
+
+	private void setUpThreatTableUiForNewModel(NonEditableThreatMatrixTableModel newModel, DefaultTableModel newRowHeaderData)
+	{
+		int[] oldWidths = getThreatTableColumnWidths(threatGirdPanel.globalTthreatTable);
+		threatGirdPanel.globalTthreatTable.setModel(newModel);
+		newModel.setColumnIdentifiers(threatGirdPanel.getColumnTargetHeaders());
+		setThreatTableColumnWidths(threatGirdPanel.globalTthreatTable, oldWidths);
+		JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
+		threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
+	}
+
+
+	private void buildTheatTableAndRowHeaderDataModels(NonEditableThreatMatrixTableModel newModel, DefaultTableModel newRowHeaderData, int[] rows)
+	{
 		for (int rowIndex = 0; rowIndex<rowCount; ++rowIndex) {
 			for (int columnIndex = 0; columnIndex<columnCount; ++columnIndex) 
 			{
@@ -50,16 +73,6 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			}
 			newRowHeaderData.setValueAt(threatGirdPanel.rowHeaderData.getValueAt(rows[rowIndex], 0)  ,rowIndex,0);
 		}
-		
-		int[] oldWidths = getThreatTableColumnWidths(threatGirdPanel.globalTthreatTable);
-		threatGirdPanel.globalTthreatTable.setModel(newModel);
-		newModel.setColumnIdentifiers(threatGirdPanel.getColumnTargetHeaders());
-		setThreatTableColumnWidths(threatGirdPanel.globalTthreatTable, oldWidths);
-		JTable newRowHeaderTable = threatGirdPanel.createRowHeaderTable(newRowHeaderData);
-		threatGirdPanel.scrollPane.setRowHeaderView(newRowHeaderTable);
-
-		threatGirdPanel.revalidate();
-		threatGirdPanel.repaint();
 	}
 	
 	public int[] getThreatTableColumnWidths(JTable threatTable) {

@@ -22,11 +22,14 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.martus.swing.UiLabel;
 
-public class ThreatRatingBundlePanel extends Box
+import com.jhlabs.awt.BasicGridLayout;
+
+public class ThreatRatingBundlePanel extends JPanel
 {
 	public ThreatRatingBundlePanel(ThreatMatrixView viewToUse) throws Exception
 	{
-		super(BoxLayout.Y_AXIS);
+	    super(new BasicGridLayout(0, 1));
+
 		view = viewToUse;
 		project = view.getProject();
 		
@@ -82,10 +85,9 @@ public class ThreatRatingBundlePanel extends Box
 	private JPanel createHeader() throws Exception
 	{
 		targetName = createNameArea();
-		
 		threatName = createNameArea();
-	
-		Box headerBox = new Box(BoxLayout.Y_AXIS);
+
+		JPanel headerBox = new JPanel(new BasicGridLayout(2, 2));		
 		headerBox.add(new UiLabel("Threat:"));
 		headerBox.add(threatName);
 		headerBox.add(new UiLabel("Target:"));
