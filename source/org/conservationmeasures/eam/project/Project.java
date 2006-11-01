@@ -674,6 +674,7 @@ public class Project
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
+	// FIXME: Delete this as soon as it is not called any more!
 	public NodeType removeNodeFromDiagram(BaseId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
@@ -683,10 +684,24 @@ public class Project
 		return nodeType;
 	}
 
-	public DiagramNodeId addNodeToDiagram(ModelNodeId realId) throws Exception
+	public ModelNodeId removeNodeFromDiagram(DiagramNodeId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramNode node = model.createNode(realId);
+		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
+		ModelNodeId modelNodeId = nodeToDelete.getWrappedId();
+		model.deleteNode(nodeToDelete);
+		return modelNodeId;
+	}
+
+	public DiagramNodeId addNodeToDiagram(ModelNodeId modelNodeId) throws Exception
+	{
+		return addNodeToDiagram(modelNodeId, new DiagramNodeId(BaseId.INVALID.asInt()));
+	}
+	
+	public DiagramNodeId addNodeToDiagram(ModelNodeId modelNodeId, DiagramNodeId requestedId) throws Exception
+	{
+		DiagramModel model = getDiagramModel();
+		DiagramNode node = model.createNode(modelNodeId, requestedId);
 		updateVisibilityOfSingleNode(node);
 		return node.getDiagramNodeId();
 	}

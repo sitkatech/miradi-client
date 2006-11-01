@@ -53,7 +53,7 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDiagramRemoveNode deleteNode = new CommandDiagramRemoveNode(factorId);
+		CommandDiagramRemoveNode deleteNode = new CommandDiagramRemoveNode(factor.getDiagramNodeId());
 		deleteNode.execute(project);
 		assertFalse("node not deleted?", model.isNodeInProject(factor));
 

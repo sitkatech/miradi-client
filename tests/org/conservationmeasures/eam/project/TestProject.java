@@ -28,6 +28,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
@@ -702,10 +703,15 @@ public class TestProject extends EAMTestCase
 			
 			CommandDiagramAddLinkage cmdLinkage = new CommandDiagramAddLinkage(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
+			
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(DiagramNode.TYPE_INTERVENTION);
+			ModelNodeId interventionId = (ModelNodeId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			DiagramNodeId diagramNodeId = diskProject.addNodeToDiagram(interventionId);
 
-			ModelNodeId interventionId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
-			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(interventionId);
+			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(diagramNodeId);
 			diskProject.executeCommand(cmdDelete);
+			
+			diskProject.deleteObject(ObjectType.MODEL_NODE, interventionId);
 		}
 		finally
 		{

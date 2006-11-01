@@ -78,11 +78,18 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		getProjectScopeBox().setText(EAM.text("Project Scope: " + text));
 	}
-
-	public DiagramNode createNode(ModelNodeId id) throws Exception
+	
+	public DiagramNode createNode(ModelNodeId idToWrap) throws Exception
 	{
-		ConceptualModelNode cmObject = getNodePool().find(id);
-		DiagramNodeId nodeId = new DiagramNodeId(cmObject.getId().asInt());
+		return createNode(idToWrap, new DiagramNodeId(BaseId.INVALID.asInt()));
+	}
+
+	public DiagramNode createNode(ModelNodeId idToWrap, DiagramNodeId requestedId) throws Exception
+	{
+		ConceptualModelNode cmObject = getNodePool().find(idToWrap);
+		DiagramNodeId nodeId = requestedId;
+		if(requestedId.isInvalid())
+			nodeId = new DiagramNodeId(cmObject.getId().asInt());
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(nodeId, cmObject);
 		addNodeToModel(node);
 		return node;

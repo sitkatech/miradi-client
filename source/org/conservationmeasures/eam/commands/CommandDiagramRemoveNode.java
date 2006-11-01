@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.commands;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -20,20 +20,15 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveNode extends Command
 {
-	public CommandDiagramRemoveNode(BaseId idToDelete)
+	public CommandDiagramRemoveNode(DiagramNodeId idToDelete)
 	{
-		id = idToDelete;
-		nodeType = DiagramNode.TYPE_INVALID;
-	}
-
-	public NodeType getNodeType()
-	{
-		return nodeType;
+		diagramNodeId = idToDelete;
+		modelNodeId = new ModelNodeId(BaseId.INVALID.asInt());
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ":" + getId();
+		return getCommandName() + ":" + getDiagramNodeId();
 	}
 	
 	public String getCommandName()
@@ -45,7 +40,7 @@ public class CommandDiagramRemoveNode extends Command
 	{
 		try
 		{
-			nodeType = deleteNode(target, getId());
+			modelNodeId = target.removeNodeFromDiagram(diagramNodeId);
 		}
 		catch (Exception e)
 		{
@@ -58,7 +53,7 @@ public class CommandDiagramRemoveNode extends Command
 	{
 		try
 		{
-			createNode(target, getNodeType(), getId());
+			target.addNodeToDiagram(modelNodeId, diagramNodeId);
 		}
 		catch (Exception e)
 		{
@@ -67,11 +62,20 @@ public class CommandDiagramRemoveNode extends Command
 		}
 	}
 
-	public BaseId getId()
+	public DiagramNodeId getDiagramNodeId()
 	{
-		return id;
+		return diagramNodeId;
+	}
+	
+	public ModelNodeId getModelNodeId()
+	{
+		return modelNodeId;
 	}
 
+
+	
+	
+	
 	public static ModelNodeId createNode(Project target, NodeType nodeType, BaseId id) throws Exception
 	{
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
@@ -90,6 +94,6 @@ public class CommandDiagramRemoveNode extends Command
 
 	public static final String COMMAND_NAME = "DiagramRemoveNode";
 
-	BaseId id;
-	NodeType nodeType;
+	DiagramNodeId diagramNodeId;
+	ModelNodeId modelNodeId;
 }

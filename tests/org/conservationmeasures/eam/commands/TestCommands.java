@@ -409,12 +409,14 @@ public class TestCommands extends EAMTestCase
 
 	public void testDeleteNode() throws Exception
 	{
-		BaseId id = insertTarget();
+		DiagramNodeId id = insertTarget();
+		ModelNodeId modelNodeId = project.getDiagramModel().getNodeById(id).getWrappedId();
+		
 		CommandDiagramRemoveNode cmd = new CommandDiagramRemoveNode(id);
-		assertEquals("type not defaulting properly?", DiagramNode.TYPE_INVALID, cmd.getNodeType());
+		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getModelNodeId());
 		project.executeCommand(cmd);
 		
-		assertEquals("type not set by execute?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
+		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getModelNodeId());
 		
 		cmd.undo(project);
 		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
