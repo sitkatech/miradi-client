@@ -54,6 +54,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		setUI(new EAMGraphUI());
 
+		setAntiAliased(true);
 		disableInPlaceEditing();
 		setDisconnectable(false);
 		setDisconnectOnMove(false);
