@@ -51,5 +51,14 @@ public class ProjectForTesting extends Project
 	}
 	
 
+	public ModelNodeId createNodeAndAddToDiagram(NodeType nodeType, BaseId id) throws Exception
+	{
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		ModelNodeId nodeId = (ModelNodeId)createObject(ObjectType.MODEL_NODE, id, parameter);
+		addNodeToDiagram(nodeId);
+		return nodeId;
+	}
+
+
 	Vector commandStack;
 }

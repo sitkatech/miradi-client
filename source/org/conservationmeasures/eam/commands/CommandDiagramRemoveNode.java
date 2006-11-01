@@ -5,14 +5,11 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveNode extends Command
@@ -68,20 +65,8 @@ public class CommandDiagramRemoveNode extends Command
 	{
 		return modelNodeId;
 	}
-
-
 	
 	
-	
-	public static ModelNodeId createNode(Project target, NodeType nodeType, BaseId id) throws Exception
-	{
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
-		ModelNodeId nodeId = (ModelNodeId)target.createObject(ObjectType.MODEL_NODE, id, parameter);
-		target.addNodeToDiagram(nodeId);
-		return nodeId;
-	}
-
-
 	public static final String COMMAND_NAME = "DiagramRemoveNode";
 
 	DiagramNodeId diagramNodeId;

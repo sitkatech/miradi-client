@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -38,9 +37,9 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		ModelNodeId node1 = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node2 = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node3 = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node1 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node2 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node3 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
 		
 		CreateModelLinkageParameter parameter12 = new CreateModelLinkageParameter(node1, node2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);
@@ -60,9 +59,9 @@ public class TestInsertConnection extends EAMTestCase
 		try
 		{
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

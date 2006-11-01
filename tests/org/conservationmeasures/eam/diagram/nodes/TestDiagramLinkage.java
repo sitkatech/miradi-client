@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
@@ -74,8 +73,8 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		ModelNodeId interventionId = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
-		ModelNodeId factorId = 	CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+		ModelNodeId interventionId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
+		ModelNodeId factorId = 	project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
 		link.execute(project);
 		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));

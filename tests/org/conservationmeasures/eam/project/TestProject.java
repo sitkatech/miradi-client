@@ -536,7 +536,7 @@ public class TestProject extends EAMTestCase
 		ModelNodeId gotId = project.createNode(DiagramNode.TYPE_FACTOR);
 		try
 		{
-			CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, gotId);
+			project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, gotId);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
@@ -703,8 +703,8 @@ public class TestProject extends EAMTestCase
 		diskProject.createOrOpen(tempDir);
 		try
 		{
-			factorId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
-			ModelNodeId targetId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_TARGET, BaseId.INVALID);
+			factorId = createNodeAndAddToDiagram(diskProject, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+			ModelNodeId targetId = createNodeAndAddToDiagram(diskProject, DiagramNode.TYPE_TARGET, BaseId.INVALID);
 			
 			CommandDiagramAddLinkage cmdLinkage = new CommandDiagramAddLinkage(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
@@ -782,7 +782,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = CommandDiagramRemoveNode.createNode(project, nodeType, BaseId.INVALID);
+		BaseId insertedId = project.createNodeAndAddToDiagram(nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
@@ -790,6 +790,14 @@ public class TestProject extends EAMTestCase
 	{
 		BaseId insertedId = CommandDiagramAddLinkage.createLinkage(project, id, fromId, toId);
 		return project.getDiagramModel().getLinkageById(insertedId);
+	}
+
+	public ModelNodeId createNodeAndAddToDiagram(Project projectToUse, NodeType nodeType, BaseId id) throws Exception
+	{
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		ModelNodeId nodeId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, id, parameter);
+		projectToUse.addNodeToDiagram(nodeId);
+		return nodeId;
 	}
 
 
