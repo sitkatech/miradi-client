@@ -32,8 +32,6 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
-		System.out.println("Rows="+threatList.length);
-		
 		Comparator comparator = new ComparableNode(sortColumnToUse, modelToSort );
 		
 		Arrays.sort(threatList, comparator );

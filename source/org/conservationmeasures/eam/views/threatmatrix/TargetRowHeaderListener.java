@@ -5,6 +5,11 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
+
 
 
 
@@ -18,6 +23,22 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	
 	public void sort(int sortColumnToUse) 
 	{
+		
+		NonEditableThreatMatrixTableModel modelToSort = 
+			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
+		
+		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		
+		Comparator comparator = new IgnoreCaseStringComparator();
+		
+		Arrays.sort(threatList, comparator );
+		
+		modelToSort.setThreatRows(threatList);
+		
+		if ( getToggle() )  
+		{
+
+		}
 	}
 	
 	public  boolean getToggle() 
