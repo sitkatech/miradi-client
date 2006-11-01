@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -84,13 +81,6 @@ public class CommandDiagramRemoveNode extends Command
 		return nodeId;
 	}
 
-	public static NodeType deleteNode(Project target, BaseId idToDelete) throws Exception, IOException, ParseException
-	{
-		NodeType type = target.removeNodeFromDiagram(idToDelete);
-		target.deleteObject(ObjectType.MODEL_NODE, new ModelNodeId(idToDelete.asInt()));
-		return type;
-	}
-	
 
 	public static final String COMMAND_NAME = "DiagramRemoveNode";
 

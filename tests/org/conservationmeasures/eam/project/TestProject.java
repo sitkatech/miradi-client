@@ -451,16 +451,21 @@ public class TestProject extends EAMTestCase
 	
 	public void testCutAndPaste() throws Exception
 	{
-		assertEquals("objects already in the pool?", 0, project.getNodePool().size());
 		DiagramModel model = project.getDiagramModel();
+
+		assertEquals("objects already in the pool?", 0, project.getNodePool().size());
+		assertEquals("nodes  already in the diagram?", 0, model.getAllNodes().size());
 
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 
 		Object[] selectedCells = new DiagramNode[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		DiagramNodeId idToDelete = node1.getDiagramNodeId();
+		project.removeNodeFromDiagram(idToDelete);
+		project.deleteObject(ObjectType.MODEL_NODE, node1.getWrappedId());
 		
-		CommandDiagramRemoveNode.deleteNode(project, node1.getDiagramNodeId());
 		assertEquals("objects still in the pool?", 0, project.getNodePool().size());
+		assertEquals("nodes  still in the diagram?", 0, model.getAllNodes().size());
 
 		Point pastePoint = new Point(5,5);
 		new NodeCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, pastePoint);

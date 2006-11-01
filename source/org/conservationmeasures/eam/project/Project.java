@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
@@ -672,16 +671,6 @@ public class Project
 		DiagramNode[] nodes = {node};
 		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
 		getGraphLayoutCache().edit(null, null, parentMap, null);
-	}
-
-	// FIXME: Delete this as soon as it is not called any more!
-	public NodeType removeNodeFromDiagram(BaseId idToDelete) throws Exception
-	{
-		DiagramModel model = getDiagramModel();
-		DiagramNode nodeToDelete = model.getNodeById(idToDelete);
-		NodeType nodeType = nodeToDelete.getNodeType();
-		model.deleteNode(nodeToDelete);
-		return nodeType;
 	}
 
 	public ModelNodeId removeNodeFromDiagram(DiagramNodeId idToDelete) throws Exception
