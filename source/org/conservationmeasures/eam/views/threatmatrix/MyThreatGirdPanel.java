@@ -23,12 +23,10 @@ import javax.swing.LookAndFeel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -52,7 +50,8 @@ public class MyThreatGirdPanel extends JPanel
 
 	public JScrollPane createThreatGridPanel() throws Exception
 	{
-		JTable rowHeaderTable = createRowHeaderTable(createRowHeaderDataModel());
+		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
+		JTable rowHeaderTable = createRowHeaderTable(newRowHeaderData);
 
 		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
 
@@ -65,8 +64,6 @@ public class MyThreatGirdPanel extends JPanel
 		
 		scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowHeaderTable, globalTthreatTable, rowHeader);
-
-		initializeTableData((DefaultTableModel) globalTthreatTable.getModel());
 
 		return scrollPane;
 	}
@@ -94,9 +91,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private JTable createThreatTable(int rowCount)
 	{
-		DefaultTableModel threatData = model;
-		columnHeaderData = getColumnTargetHeaders();
-		threatData.setColumnIdentifiers(columnHeaderData);
+		NonEditableThreatMatrixTableModel threatData = model;
 		
 		JTable threatTable = new JTable(threatData);
 		threatTable.setIntercellSpacing(new Dimension(0, 0));
@@ -112,7 +107,7 @@ public class MyThreatGirdPanel extends JPanel
 		CellSelectionListener selectionListener = new CellSelectionListener(threatTable,this);
 		selectionModel.addListSelectionListener(selectionListener);
 		
-		threatData.setNumRows(rowCount);
+		
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
 		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
 
@@ -146,7 +141,7 @@ public class MyThreatGirdPanel extends JPanel
 
 
 
-	public JTable createRowHeaderTable(DefaultTableModel rowHeaderDataToUSe )
+	public JTable createRowHeaderTable(NonEditableRowHeaderTableModel rowHeaderDataToUSe )
 	{
 		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
@@ -172,48 +167,23 @@ public class MyThreatGirdPanel extends JPanel
 	}
 
 
-	private DefaultTableModel createRowHeaderDataModel()
-	{
-		DefaultTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(0,1);
-		Vector rowNames = getRowThreatHeaders();
-
-		for(int k = 0; k < rowNames.size(); k++)
-		{
-			Object[] row = new Object[] { rowNames.get(k) };
-			newRowHeaderData.addRow(row);
-		}
-		
-		newRowHeaderData.setColumnIdentifiers(createRowColumnHeaderName());
-		
-		return newRowHeaderData;
-	}
-
-
-	private Vector createRowColumnHeaderName()
-	{
-		Vector RowColumnHeaderName = new Vector();
-		RowColumnHeaderName.add(EAM.text("THREATS"));
-		return RowColumnHeaderName;
-	}
-
 	public Vector getRowThreatHeaders()
 	{
 		Vector rowNames = new Vector();
 		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
 		{
-			ComparableNode comparableThreatNode = createNodeThreatLabel(threatIndex);
-			rowNames.add(comparableThreatNode);
+			ConceptualModelNode threatNode = createNodeThreatLabel(threatIndex);
+			rowNames.add(threatNode);
 		}
-		rowNames.add(new ComparableNode(model.getThreatCount(),EAM.text("Summary Threat Rating")));
+		rowNames.add(EAM.text("Summary Threat Rating"));
 		return rowNames;
 	}
 	
 	
 	
-	private ComparableNode createNodeThreatLabel(int index)
+	private ConceptualModelNode createNodeThreatLabel(int threatIndex)
 	{	
-		ConceptualModelNode[] conceptualModelNode = model.getDirectThreats();
-		return new ComparableNode(index, conceptualModelNode[index]);
+		return model.getThreatNode(threatIndex);
 	}
 	
 
@@ -222,18 +192,17 @@ public class MyThreatGirdPanel extends JPanel
 		Vector columnsNames = new Vector();
 		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
 		{
-			ComparableNode comparableThreatNode = createNodeTargetLabel(targetIndex);
-			columnsNames.add(comparableThreatNode);
+			ConceptualModelNode targetNode = createNodeTargetLabel(targetIndex);
+			columnsNames.add(targetNode);
 		}
-		columnsNames.add(new ComparableNode(model.getTargetCount(),EAM.text("Summary Target Rating")));
+		columnsNames.add(EAM.text("Summary Target Rating"));
 		return columnsNames;
 	}
 
 
-	private ComparableNode createNodeTargetLabel(int index)
+	private ConceptualModelNode createNodeTargetLabel(int targetIndex)
 	{	
-		ConceptualModelNode[] conceptualModelNode = model.getTargets();
-		return new ComparableNode(index, conceptualModelNode[index]);
+		return model.getTargetNode(targetIndex);
 	}
 	
 	
@@ -243,74 +212,6 @@ public class MyThreatGirdPanel extends JPanel
 		return 60;
 	}
 	
-	
-	private void initializeTableData(DefaultTableModel data) throws Exception
-	{
-		initializeThreatTargetRatingData(data);
-
-		initializeTargetSummaryData(data);
-
-		initializeThreatSummaryData(data);
-		
-		initializeOverallProjectRating(data);
-	}
-
-
-	private void initializeOverallProjectRating(DefaultTableModel data)
-	{
-		ValueOption result = framework.getOverallProjectRating();
-		data.setValueAt(result, model.getThreatCount(), model.getTargetCount());
-	}
-
-
-	private void initializeThreatTargetRatingData(TableModel data) throws Exception
-	{
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-			{
-				Object value = null;
-				if(model.isActiveCell(threatIndex, targetIndex))
-				{
-					value = model.getBundle(threatIndex, targetIndex);
-				}
-				else 
-				{
-					value =  new ValueOption( new BaseId(-1), "", -1 , Color.WHITE);
-				}
-				data.setValueAt(value, threatIndex, targetIndex);
-			}
-		}
-	}
-
-	
-	private void initializeThreatSummaryData(TableModel data)
-	{
-		for(int rowIndex = 0; rowIndex < model.getThreatCount(); ++rowIndex)
-		{
-			ComparableNode comparableNode = (ComparableNode) rowHeaderData.getValueAt(rowIndex, 0);
-			int threatIndex = comparableNode.getIndex();
-			if (threatIndex!=-1) 
-			{
-				ValueOption result = framework.getThreatThreatRatingValue(model.getThreatId(threatIndex));
-				data.setValueAt(result, rowIndex, model.getTargetCount());
-			}
-		}
-	}
-
-	private void initializeTargetSummaryData(TableModel data)
-	{
-		for(int columnIndex = 0; columnIndex < model.getTargetCount(); ++columnIndex)
-		{
-			ComparableNode comparableNode = (ComparableNode) columnHeaderData.get(columnIndex);
-			int taretIndex = comparableNode.getIndex();
-			if(taretIndex != -1)
-			{
-				ValueOption result = framework.getTargetThreatRatingValue(model.getTargetId(taretIndex));
-				data.setValueAt(result, model.getThreatCount(),columnIndex);
-			}
-		}
-	}
 
 	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
@@ -331,12 +232,7 @@ public class MyThreatGirdPanel extends JPanel
 	
 	public void refreshCell(ThreatRatingBundle bundle) throws Exception
 	{
-		((NonEditableThreatMatrixTableModel)globalTthreatTable.getModel()).setBundle(bundle);
-		initializeThreatSummaryData(globalTthreatTable.getModel());
-		initializeTargetSummaryData(globalTthreatTable.getModel());
-
-		globalTthreatTable.revalidate();
-		globalTthreatTable.repaint();
+		this.repaint();
 	}
 
 	NonEditableThreatMatrixTableModel model;
@@ -346,7 +242,7 @@ public class MyThreatGirdPanel extends JPanel
 	ThreatRatingBundle highlightedBundle;
 	JTable globalTthreatTable;
 	JScrollPane scrollPane;
-	DefaultTableModel rowHeaderData;
+	NonEditableRowHeaderTableModel rowHeaderData;
 	Vector columnHeaderData;
 }
 
@@ -366,7 +262,7 @@ class CellSelectionListener implements ListSelectionListener
 		
 		unselectToForceFutureNotifications(row, column);
 		
-		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundle(row, column) )
+		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundleTableCellABundle(row, column) )
 			notifyComponents(row, column);
 	}
 
@@ -382,7 +278,7 @@ class CellSelectionListener implements ListSelectionListener
 		try
 		{
 			NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel)threatTable.getModel();
-			ThreatRatingBundle threatRatingBundle = (ThreatRatingBundle)model.realDataGetValueAt(row, column);
+			ThreatRatingBundle threatRatingBundle = model.getBundle(row, column);
 			threatGirdPanel.view.selectBundle(threatRatingBundle);
 		}
 		// TODO: must add errDialog call....need to see how to call when on the swing event thread

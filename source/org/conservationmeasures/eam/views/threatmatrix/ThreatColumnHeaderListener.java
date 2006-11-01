@@ -5,6 +5,11 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
+
 
 public class ThreatColumnHeaderListener extends ColumnHeaderListener
 {
@@ -13,22 +18,35 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 		super(threatGirdPanelInUse);
 	}
 
-	public  Comparable createComparable(int rowIndex)
-	{
-		return new ColumnObject(rowIndex, threatGirdPanel.globalTthreatTable.getValueAt(rowIndex,sortColumn));
-	}
-	
-	public  int getOldRow(Object object) 
-	{
-		return((ColumnObject) object).getOldRow();
-	}
 	
 	public  boolean getToggle() {
 		sortToggle = !sortToggle;
 		return sortToggle;
-		
 	}
 	
+	public void sort(int sortColumnToUse) 
+	{
+		
+		NonEditableThreatMatrixTableModel modelToSort = 
+			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
+		
+		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		
+		System.out.println("Rows="+threatList.length);
+		
+		Comparator comparator = new ComparableNode(sortColumnToUse, modelToSort );
+		
+		Arrays.sort(threatList, comparator );
+		
+		modelToSort.setThreatRows(threatList);
+		
+		if ( getToggle() )  
+		{
+
+		}
+	}
+	
+
 	boolean sortToggle;
 
 }
