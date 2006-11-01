@@ -31,11 +31,14 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
-		
-		Comparator comparator = new ComparableNode(sortColumnToUse, modelToSort );
-		
-		Arrays.sort(threatList, comparator );
-		
+
+		Comparator comparator = null;
+		if(sortColumnToUse == modelToSort.getColumnCount()-1)
+			comparator = new ComparableSummaryNode(sortColumnToUse,modelToSort);
+		else
+			comparator = new ComparableNode(sortColumnToUse,modelToSort);
+
+		Arrays.sort(threatList, comparator);
 		modelToSort.setThreatRows(threatList);
 		
 		if ( getToggle() )  

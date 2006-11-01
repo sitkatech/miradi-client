@@ -43,10 +43,10 @@ public class ComparableNode implements  Comparator
 			ValueOption valueOption1 = framework.getBundleValue(bundle1);
 			ValueOption valueOption2 = framework.getBundleValue(bundle2);
 
-			Integer baseId1 = new Integer(valueOption1.getNumericValue());
-			Integer baseId2 = new Integer(valueOption2.getNumericValue());
+			Integer value1 = new Integer(valueOption1.getNumericValue());
+			Integer value2 = new Integer(valueOption2.getNumericValue());
 			
-			return baseId1.compareTo(baseId2);
+			return value1.compareTo(value2);
 		}
 		catch(Exception e)
 		{
