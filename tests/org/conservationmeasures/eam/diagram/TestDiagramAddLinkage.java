@@ -5,10 +5,11 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -25,21 +26,17 @@ public class TestDiagramAddLinkage extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
-		insertFactor.execute(project);
-		ModelNodeId factorId = insertFactor.getId();
+		ModelNodeId interventionId = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
+		DiagramNode intervention = model.getNodeById(interventionId);
+		ModelNodeId factorId = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
-		CommandDiagramAddNode insertTarget = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
-		insertTarget.execute(project);
-		ModelNodeId targetId = insertTarget.getId();
-		DiagramNode target = model.getNodeById(targetId);
-		
-		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(factorId, targetId);
+
+		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(interventionId, factorId);
 		command.execute(project);
 		DiagramLinkage linkage = model.getLinkageById(command.getLinkageId());
 
-		assertEquals("not from factor?", factor, linkage.getFromNode());
-		assertEquals("not to target?", target, linkage.getToNode());
+		assertEquals("not from intervention?", intervention, linkage.getFromNode());
+		assertEquals("not to target?", factor, linkage.getToNode());
 		
 		project.close();
 	}

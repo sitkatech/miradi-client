@@ -6,14 +6,18 @@
 package org.conservationmeasures.eam.diagram;
 
 
-import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -29,13 +33,9 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		
-		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
-		project.executeCommand(insertFactor);
-		CommandDiagramAddNode insertIntervention = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
-		project.executeCommand(insertIntervention);
-		fromId = insertFactor.getId();
-		toId = insertIntervention.getId();
+
+		fromId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_FACTOR);
+		toId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_INTERVENTION);
 		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(fromId, toId);
 		project.executeCommand(link);
 		linkId = link.getLinkageId();
@@ -62,10 +62,16 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.undo();
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 		verifyLinkageNotPresent(linkId);
-		
+
+		// undo diagram node add
+		project.undo();
+		// undo model node create
 		project.undo();
 		verifyNodeNotPresent(toId);
 
+		// undo diagram node add
+		project.undo();
+		// undo model node create
 		project.undo();
 		verifyNodeNotPresent(fromId);
 
@@ -81,14 +87,16 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	public void testUndoActUndo() throws Exception
+	public void testUndoThenCommandThenUndo() throws Exception
 	{
 		project.undo();
 		
-		CommandDiagramAddNode insert = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
+		ModelNodeId modelNodeId = project.createNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode insert = new CommandDiagramAddNode(modelNodeId);
 		project.executeCommand(insert);
+		verifyNodePresent(insert.getInsertedId());
 		project.undo();
-		verifyNodeNotPresent(insert.getId());
+		verifyNodeNotPresent(insert.getInsertedId());
 
 		project.undo();
 		verifyLinkageNotPresent(linkId);
@@ -134,6 +142,12 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
+	private void verifyNodePresent(BaseId cellId) throws Exception
+	{
+		DiagramModel model = project.getDiagramModel();
+		assertNotNull("Node not present?", model.getNodeById(cellId));
+	}
+	
 	private void verifyNodeNotPresent(BaseId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
@@ -164,6 +178,18 @@ public class TestUndoAndRedo extends EAMTestCase
 		{
 		}
 		EAM.setLogToConsole();
+	}
+	
+	private ModelNodeId createModelAndDiagramNodeWithCommands(NodeType type) throws Exception
+	{
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
+		project.executeCommand(createModelNodeCommand);
+		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
+		CommandDiagramAddNode addToDiagramCommand = new CommandDiagramAddNode(modelNodeId);
+		project.executeCommand(addToDiagramCommand);
+		return modelNodeId;
+		
 	}
 	
 	ProjectForTesting project;

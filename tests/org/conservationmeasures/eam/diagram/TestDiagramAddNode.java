@@ -9,9 +9,11 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -36,7 +38,7 @@ public class TestDiagramAddNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_INVALID);
+		Command insertCommand = new CommandDiagramAddNode(new ModelNodeId(BaseId.INVALID.asInt()));
 		try
 		{
 			EAM.setLogToString();
@@ -50,8 +52,7 @@ public class TestDiagramAddNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
-		insertCommand.execute(project);
+		CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_TARGET, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -67,8 +68,7 @@ public class TestDiagramAddNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
-		insertCommand.execute(project);
+		CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -84,8 +84,7 @@ public class TestDiagramAddNode extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
-		insertCommand.execute(project);
+		CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());

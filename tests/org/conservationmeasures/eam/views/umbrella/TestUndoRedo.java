@@ -3,13 +3,15 @@ import java.awt.Dimension;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -106,12 +108,15 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(newSize2, node.getSize());
 	}
 	
-	private ModelNodeId insertFactor(Project p) throws CommandFailedException 
+	private ModelNodeId insertFactor(Project p) throws Exception 
 	{
-		CommandDiagramAddNode insert = new CommandDiagramAddNode( DiagramNode.TYPE_FACTOR);
-		p.executeCommand(insert);
-		ModelNodeId insertedId = insert.getId();
-		return insertedId;
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
+		p.executeCommand(createModelNodeCommand);
+		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
+		CommandDiagramAddNode addToDiagramCommand = new CommandDiagramAddNode(modelNodeId);
+		p.executeCommand(addToDiagramCommand);
+		return modelNodeId;
 	}
 
 	ProjectForTesting project;

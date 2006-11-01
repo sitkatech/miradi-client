@@ -5,10 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -29,14 +28,10 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		CommandDiagramAddNode insertIntervention = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
-		CommandDiagramAddNode insertFactor = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
-		insertIntervention.execute(project);
-		DiagramNode intervention = model.getNodeById(insertIntervention.getId());
-		insertFactor.execute(project);
-		DiagramNode factor = model.getNodeById(insertFactor.getId());
-		ModelNodeId interventionId = intervention.getWrappedId();
-		ModelNodeId factorId = factor.getWrappedId();
+		ModelNodeId interventionId = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
+		DiagramNode intervention = model.getNodeById(interventionId);
+		ModelNodeId factorId = CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+		DiagramNode factor = model.getNodeById(factorId);
 		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
 		link.execute(project);
 		BaseId linkageId = link.getLinkageId();

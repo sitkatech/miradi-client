@@ -9,6 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.utils.Logging;
@@ -37,13 +39,17 @@ public class NodeCommandHelper
 
 	public ModelNodeId createNode(NodeType nodeType) throws Exception
 	{
-		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(nodeType);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
+		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
+		executeCommand(createModelNode);
+		ModelNodeId modelNodeId = new ModelNodeId(createModelNode.getCreatedId().asInt());
+
+		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(modelNodeId);
 		executeCommand(commandInsertNode);
-		ModelNodeId id = commandInsertNode.getId();
-		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(id);
+		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(modelNodeId);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);
-		return id;
+		return modelNodeId;
 	}
 
 

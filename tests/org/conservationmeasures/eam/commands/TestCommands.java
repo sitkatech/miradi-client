@@ -14,10 +14,14 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -42,9 +46,13 @@ public class TestCommands extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		project = new ProjectForTesting(getName());
-		Command consumeCellIdZero = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
-		project.executeCommand(consumeCellIdZero);
+		consumeNodeIdZero();
 		super.setUp();
+	}
+
+	private void consumeNodeIdZero() throws Exception
+	{
+		project.createNode(new NodeTypeTarget());
 	}
 	
 	public void tearDown() throws Exception
@@ -290,49 +298,38 @@ public class TestCommands extends EAMTestCase
 	}
 	
 
-	public void testCommandInsertTarget() throws Exception
+	public void testCommandAddTarget() throws Exception
 	{
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_TARGET);
-		assertEquals("type not right?", DiagramNode.TYPE_TARGET, cmd.getNodeType());
-		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
-		project.executeCommand(cmd);
-		BaseId insertedId = cmd.getId();
-		
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a target?", inserted.isTarget());
-
-		verifyUndoInsertNode(cmd);
+		verifyDiagramAddNode(new NodeTypeTarget());
 	}
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
-		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
-		
-		project.executeCommand(cmd);
-		BaseId insertedId = cmd.getId();
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a factor?", inserted.isIndirectFactor());
-
-		verifyUndoInsertNode(cmd);
+		verifyDiagramAddNode(new NodeTypeFactor());
 	}
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_INTERVENTION);
-		assertEquals("already have an id?", BaseId.INVALID, cmd.getId());
-		
-		project.executeCommand(cmd);
-		BaseId insertedId = cmd.getId();
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
-		assertTrue("didn't insert a strategy?", inserted.isIntervention());
-
-		verifyUndoInsertNode(cmd);
+		verifyDiagramAddNode(new NodeTypeIntervention());
 	}
 
-	private void verifyUndoInsertNode(CommandDiagramAddNode cmd) throws CommandFailedException
+	private void verifyDiagramAddNode(NodeType type) throws Exception, CommandFailedException
 	{
-		BaseId insertedId = cmd.getId();
+		ModelNodeId modelNodeId = project.createNode(type);
+		CommandDiagramAddNode add = new CommandDiagramAddNode(modelNodeId);
+		project.executeCommand(add);
+
+		DiagramNodeId insertedId = add.getInsertedId();
+		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
+		assertEquals("type not right?", type, node.getNodeType());
+		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramNodeId());
+
+		verifyUndoDiagramAddNode(add);
+	}
+
+	private void verifyUndoDiagramAddNode(CommandDiagramAddNode cmd) throws CommandFailedException
+	{
+		BaseId insertedId = cmd.getInsertedId();
 		cmd.undo(project);
 		try
 		{
@@ -360,13 +357,16 @@ public class TestCommands extends EAMTestCase
 		}
 	}
 
-	public void testCommandInsertLinkage() throws Exception
+	public void testCommandDiagramAddLinkage() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
+		NodeType type = DiagramNode.TYPE_FACTOR;
 
-		ModelNodeId from = insertIndirectFactor();
-		ModelNodeId to = insertTarget();
-		CommandDiagramAddLinkage cmd = new CommandDiagramAddLinkage(from, to);
+		DiagramNodeId from = insertNode(type);
+		DiagramNodeId to = insertTarget();
+		ModelNodeId fromId = model.getNodeById(from).getWrappedId();
+		ModelNodeId toId = model.getNodeById(to).getWrappedId();
+		CommandDiagramAddLinkage cmd = new CommandDiagramAddLinkage(fromId, toId);
 		project.executeCommand(cmd);
 		BaseId linkageId = cmd.getLinkageId();
 
@@ -388,12 +388,12 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		ModelNodeId from = insertIntervention();
-		ModelNodeId to = insertIndirectFactor();
+		DiagramNodeId from = insertIntervention();
+		DiagramNodeId to = insertIndirectFactor();
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
-		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(from, to);
+		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(fromNode.getWrappedId(), toNode.getWrappedId());
 		project.executeCommand(link);
 		BaseId linkageId = link.getLinkageId();
 	
@@ -532,31 +532,31 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
 	}
 	
-	private ModelNodeId insertTarget() throws Exception
+	private DiagramNodeId insertTarget() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
-	private ModelNodeId insertIndirectFactor() throws Exception
+	private DiagramNodeId insertIndirectFactor() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_FACTOR;
 		return insertNode(type);
 	}
 
-	private ModelNodeId insertIntervention() throws Exception
+	private DiagramNodeId insertIntervention() throws Exception
 	{
 		NodeType type = DiagramNode.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 
-	private ModelNodeId insertNode(NodeType type) throws CommandFailedException
+	private DiagramNodeId insertNode(NodeType type) throws Exception
 	{
-		CommandDiagramAddNode insert = new CommandDiagramAddNode(type);
-		project.executeCommand(insert);
-		ModelNodeId id = insert.getId();
-		return id;
+		ModelNodeId modelNodeId = project.createNode(type);
+		CommandDiagramAddNode add = new CommandDiagramAddNode(modelNodeId);
+		project.executeCommand(add);
+		return add.getInsertedId();
 	}
 	
-	Project project;
+	ProjectForTesting project;
 }

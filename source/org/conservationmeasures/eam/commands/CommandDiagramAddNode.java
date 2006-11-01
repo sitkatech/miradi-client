@@ -5,37 +5,30 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 
 public class CommandDiagramAddNode extends Command
 {
-	public CommandDiagramAddNode(NodeType nodeType)
+	public CommandDiagramAddNode(ModelNodeId idToWrap)
 	{
-		type = nodeType;
-		insertedId = new ModelNodeId(BaseId.INVALID.asInt());
+		modelNodeId = idToWrap;
+		insertedId = new DiagramNodeId(BaseId.INVALID.asInt());
 	}
 	
-	public NodeType getNodeType()
-	{
-		return type;
-	}
-	
-	public ModelNodeId getId()
+	public DiagramNodeId getInsertedId()
 	{
 		return insertedId;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ":" + getNodeType() + ","+ getId();
+		return getCommandName() + ":" + insertedId + ","+ modelNodeId;
 	}
 	
 	public String getCommandName()
@@ -47,7 +40,7 @@ public class CommandDiagramAddNode extends Command
 	{
 		try
 		{
-			insertedId = createNode(target, getNodeType(), getId());
+			insertedId = target.addNodeToDiagram(modelNodeId);
 		}
 		catch (Exception e)
 		{
@@ -60,7 +53,7 @@ public class CommandDiagramAddNode extends Command
 	{
 		try
 		{
-			CommandDiagramRemoveNode.deleteNode(target, getId());
+			target.removeNodeFromDiagram(insertedId);
 		}
 		catch (Exception e)
 		{
@@ -69,17 +62,8 @@ public class CommandDiagramAddNode extends Command
 		}
 	}
 
-	public static ModelNodeId createNode(Project target, NodeType nodeType, BaseId id) throws Exception
-	{
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
-		ModelNodeId nodeId = (ModelNodeId)target.createObject(ObjectType.MODEL_NODE, id, parameter);
-		target.addNodeToDiagram(nodeId);
-		return nodeId;
-	}
-
-
 	public static final String COMMAND_NAME = "CommandDiagramAddNode";
 
-	private NodeType type;
-	private ModelNodeId insertedId;
+	private ModelNodeId modelNodeId;
+	private DiagramNodeId insertedId;
 }

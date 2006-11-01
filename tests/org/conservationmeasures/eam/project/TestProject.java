@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -25,7 +24,6 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -45,7 +43,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -103,7 +100,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new NodeTypeFactor());
+		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(factorId);
 		project.executeCommand(cmd);
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
@@ -487,65 +485,59 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new NodeTypeTarget());
+		ModelNodeId modelNodeId = project.createNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(modelNodeId);
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
 		assertEquals("didn't read back our one node?", 1, copyOfModel.getAllNodes().size());
 	}
 	
-	public void testNodesGetWritten() throws Exception
+	public void testNodesDoNotGetWritten() throws Exception
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
+		
+		ModelNodeId targetId = project.createNode(DiagramNode.TYPE_TARGET);
+		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
 		int existingCalls = database.callsToWriteObject;
 		
-		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(new NodeTypeTarget());
+		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(targetId);
 		project.executeCommand(targetCommand);
-		assertEquals(1 + existingCalls, database.callsToWriteObject);
-		ModelNodeId targetId = targetCommand.getId();
+		assertEquals(existingCalls, database.callsToWriteObject);
 		
-		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(new NodeTypeFactor());
+		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(factorId);
 		project.executeCommand(factorCommand);
-		assertEquals(2 + existingCalls, database.callsToWriteObject);
-		ModelNodeId factorId = factorCommand.getId();
+		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
-		int type = factor.getUnderlyingObject().getType();
-		String tag = ConceptualModelNode.TAG_LABEL;
-		CommandSetObjectData setData = new CommandSetObjectData(type, factor.getWrappedId(), tag, "woo");
-		project.executeCommand(setData);
-		assertEquals(3 + existingCalls, database.callsToWriteObject);
-		
 		project.undo();
-		assertEquals(4 + existingCalls, database.callsToWriteObject);
+		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 		project.redo();
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(0 + existingCalls, database.callsToWriteObject);
 
 		project.executeCommand(new CommandDiagramMove(9, 9, new BaseId[] {targetId, factorId} ));
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 		Dimension oldDimension = factor.getSize();
 		project.executeCommand(new CommandSetNodeSize(factorId, new Dimension(50, 75), oldDimension));
-		assertEquals(5 + existingCalls, database.callsToWriteObject);
+		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 	}
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
-		BaseId id = new BaseId(3023);
-		BaseId gotIdFirst = CommandDiagramAddNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
-		assertEquals("Didn't get our id?", id, gotIdFirst);
+		ModelNodeId gotId = project.createNode(DiagramNode.TYPE_FACTOR);
 		try
 		{
-			CommandDiagramAddNode.createNode(project, DiagramNode.TYPE_FACTOR, id);
+			CommandDiagramRemoveNode.createNode(project, DiagramNode.TYPE_FACTOR, gotId);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
 		{
 		}
 		
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(DiagramNode.TYPE_FACTOR);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(gotId);
 		project.executeCommand(cmd);
 		try
 		{
@@ -701,22 +693,18 @@ public class TestProject extends EAMTestCase
 	{
 		ModelNodeId factorId;
 		File tempDir = createTempDirectory();
-		Project diskProject = new Project(new ProjectServer());
+		Project diskProject = new Project();
 		diskProject.createOrOpen(tempDir);
 		try
 		{
+			factorId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+			ModelNodeId targetId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_TARGET, BaseId.INVALID);
 			
-			CommandDiagramAddNode cmdNode1 = new CommandDiagramAddNode(new NodeTypeFactor());
-			diskProject.executeCommand(cmdNode1);
-			factorId = cmdNode1.getId();
-			CommandDiagramAddNode cmdNode2 = new CommandDiagramAddNode(new NodeTypeTarget());
-			diskProject.executeCommand(cmdNode2);
-			ModelNodeId targetId = cmdNode2.getId();
 			CommandDiagramAddLinkage cmdLinkage = new CommandDiagramAddLinkage(factorId, targetId);
 			diskProject.executeCommand(cmdLinkage);
-			CommandDiagramAddNode cmdNode3 = new CommandDiagramAddNode(new NodeTypeIntervention());
-			diskProject.executeCommand(cmdNode3);
-			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(cmdNode3.getId());
+
+			ModelNodeId interventionId = CommandDiagramRemoveNode.createNode(diskProject, DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
+			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(interventionId);
 			diskProject.executeCommand(cmdDelete);
 		}
 		finally
@@ -783,7 +771,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId insertedId = CommandDiagramAddNode.createNode(project, nodeType, BaseId.INVALID);
+		BaseId insertedId = CommandDiagramRemoveNode.createNode(project, nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
