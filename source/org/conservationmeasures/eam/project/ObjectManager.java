@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -27,9 +28,9 @@ import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
+import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
-import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -132,11 +133,11 @@ public class ObjectManager
 			case ObjectType.MODEL_LINKAGE:
 			{
 				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
-				objectId = getProject().obtainRealLinkageId(objectId);
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(objectId, parameter.getFromId(), parameter.getToId());
+				ModelLinkageId realId = getProject().obtainRealLinkageId(objectId);
+				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
-				pool.put(objectId, cmLinkage);
+				pool.put(realId, cmLinkage);
 				createdId = cmLinkage.getId();
 				break;
 			}

@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
@@ -90,8 +89,8 @@ abstract public class InsertNode extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
-			CommandDiagramAddLinkage cmd = new CommandDiagramAddLinkage(newlyInsertedId, nodesToLinkTo[i].getWrappedId());
-			getProject().executeCommand(cmd);
+			ModelNodeId toId = nodesToLinkTo[i].getWrappedId();
+			InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(getProject(), newlyInsertedId, toId);
 		}
 		getProject().executeCommand(new CommandEndTransaction());
 	}

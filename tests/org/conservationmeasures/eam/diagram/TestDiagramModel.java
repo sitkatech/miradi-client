@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -136,7 +137,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link = createLinkage(BaseId.INVALID, factor.getWrappedId(), target.getWrappedId());
+		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("linkage is a node?", link.isNode());
@@ -146,7 +147,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		createLinkage(BaseId.INVALID, factor.getWrappedId(), target.getWrappedId());
+		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
 	}
@@ -158,7 +159,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode newFactor = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
-		createLinkage(BaseId.INVALID, newFactor.getWrappedId(), target.getWrappedId());
+		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
 		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
 	}
@@ -168,12 +169,17 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode factor1 = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode factor2 = createNode(DiagramNode.TYPE_FACTOR);
 		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), factor1.getWrappedId(), target.getWrappedId());
-		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), factor2.getWrappedId(), target.getWrappedId());
+		DiagramLinkage linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
+		DiagramLinkage linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
 		assertTrue("missed second?", found.contains(linkage2));
+	}
+
+	private ModelLinkageId takeNextLinkageId()
+	{
+		return new ModelLinkageId(idAssigner.takeNextId().asInt());
 	}
 	
 	
@@ -195,7 +201,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		createLinkage(BaseId.INVALID, node1.getWrappedId(), node2.getWrappedId());
+		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node1.getWrappedId(), node2.getWrappedId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
@@ -209,9 +215,9 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramLinkage link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector linkages = model.getAllLinkages();
 		assertEquals(2, linkages.size());
@@ -223,7 +229,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.toJson());
@@ -263,7 +269,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
 		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramLinkage link1 = createLinkage(BaseId.INVALID, node2.getWrappedId(), node3.getWrappedId());
+		DiagramLinkage link1 = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -305,7 +311,7 @@ public class TestDiagramModel extends EAMTestCase
 		return model.createNode(cmObject.getModelNodeId());
 	}
 	
-	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
+	private DiagramLinkage createLinkage(ModelLinkageId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
 		model.getLinkagePool().put(cmLinkage);

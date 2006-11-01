@@ -5,13 +5,16 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
@@ -51,7 +54,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
 		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
-		BaseId id = new BaseId(5);
+		ModelLinkageId id = new ModelLinkageId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
@@ -65,7 +68,7 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
 		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
-		BaseId id = new BaseId(5);
+		ModelLinkageId id = new ModelLinkageId(5);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
 		assertEquals(id, linkage.getDiagramLinkageId());
@@ -75,12 +78,16 @@ public class TestDiagramLinkage extends EAMTestCase
 	{
 		ModelNodeId interventionId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
 		ModelNodeId factorId = 	project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
-		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
-		link.execute(project);
-		assertNotNull("linkage not in model?", model.getLinkageById(link.getLinkageId()));
+		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+		project.executeCommand(createModelLinkage);
+		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
+		project.executeCommand(command);
+		assertNotNull("linkage not in model?", model.getLinkageById(command.getDiagramLinkageId()));
 		
 		ProjectServer server = project.getTestDatabase();
-		ConceptualModelLinkage linkage = (ConceptualModelLinkage)server.readObject(ObjectType.MODEL_LINKAGE, link.getLinkageId());
+		ConceptualModelLinkage linkage = (ConceptualModelLinkage)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramLinkageId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromNodeId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}

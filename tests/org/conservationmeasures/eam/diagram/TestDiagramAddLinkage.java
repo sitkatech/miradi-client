@@ -5,11 +5,15 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -30,9 +34,14 @@ public class TestDiagramAddLinkage extends EAMTestCase
 		ModelNodeId factorId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
 
-		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(interventionId, factorId);
-		command.execute(project);
-		DiagramLinkage linkage = model.getLinkageById(command.getLinkageId());
+		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+		project.executeCommand(createModelLinkage);
+		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
+		project.executeCommand(command);
+
+		DiagramLinkage linkage = model.getLinkageById(command.getDiagramLinkageId());
 
 		assertEquals("not from intervention?", intervention, linkage.getFromNode());
 		assertEquals("not to target?", factor, linkage.getToNode());

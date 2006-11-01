@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -48,7 +49,7 @@ public class TestDiagramComponent extends EAMTestCase
 		CreateModelNodeParameter cmnp = new CreateModelNodeParameter(new NodeTypeFactor());
 		ModelNodeId hiddenId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
 		ModelNodeId visibleId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(new BaseId(100), hiddenId, visibleId);
+		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(new ModelLinkageId(100), hiddenId, visibleId);
 		
 		DiagramNode hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
 		DiagramNode visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);

@@ -23,8 +23,10 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -106,16 +108,23 @@ public class NodeCommandHelper
 		{
 			LinkageDataMap linkageData = links[i];
 			
-			BaseId newFromId = dataHelper.getNewId(linkageData.getFromId());
-			BaseId newToId = dataHelper.getNewId(linkageData.getToId());
+			ModelNodeId newFromId = dataHelper.getNewId(linkageData.getFromId());
+			ModelNodeId newToId = dataHelper.getNewId(linkageData.getToId());
 			if(newFromId.isInvalid() || newToId.isInvalid())
 			{
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	
 				continue;
 			}
-			CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(new ModelNodeId(newFromId.asInt()), new ModelNodeId(newToId.asInt()));
-			executeCommand(link);
-			Logging.logDebug("Paste Link : " + link.getLinkageId() + " from:" + link.getFromId() + " to:" + link.getToId());
+			
+			//TODO: Call InsertConnection method here?
+			CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(newFromId, newToId);
+			CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+			executeCommand(createModelLinkage);
+			ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+			Logging.logDebug("Paste Link : " + modelLinkageId + " from:" + extraInfo.getFromId() + " to:" + extraInfo.getToId());
+
+			CommandDiagramAddLinkage addDiagramLinkage = new CommandDiagramAddLinkage(modelLinkageId);
+			executeCommand(addDiagramLinkage);
 		}
 	}
 	

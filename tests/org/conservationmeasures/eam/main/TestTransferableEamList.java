@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -70,7 +70,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramNode node2 = model.createNode(cmTarget.getModelNodeId());
 		node2.setLocation(node2Location);
 		
-		BaseId linkage1Id = new BaseId(3);
+		ModelLinkageId linkage1Id = new ModelLinkageId(3);
 		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(linkage1Id, node1Id, node2Id);
 		DiagramLinkage linkage1 = new DiagramLinkage(model, cmLinkage);
 		

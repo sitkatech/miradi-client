@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -21,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.diagram.InsertConnection;
 
 public class TestUndoAndRedo extends EAMTestCase
 {
@@ -36,9 +36,7 @@ public class TestUndoAndRedo extends EAMTestCase
 
 		fromId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_FACTOR);
 		toId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_INTERVENTION);
-		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(fromId, toId);
-		project.executeCommand(link);
-		linkId = link.getLinkageId();
+		linkId = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 	}
 	
 	public void tearDown() throws Exception
@@ -51,6 +49,9 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		assertTrue("no linkage?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
+		// undo add linkage to diagram
+		project.undo();
+		// undo create model linkage
 		project.undo();
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 	}
@@ -59,6 +60,9 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 		
+		// undo add linkage to diagram
+		project.undo();
+		// undo create model linkage
 		project.undo();
 		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 		verifyLinkageNotPresent(linkId);

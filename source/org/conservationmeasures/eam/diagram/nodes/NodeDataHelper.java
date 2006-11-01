@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 
 public class NodeDataHelper 
 {
@@ -26,12 +27,12 @@ public class NodeDataHelper
 		mapNodeIds.put(getKey(originalNodeId), getValue(newNodeId));
 	}
 	
-	public BaseId getNewId(BaseId originalNodeId)
+	public ModelNodeId getNewId(BaseId originalNodeId)
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return BaseId.INVALID;
-		return new BaseId(newNodeId.intValue());
+			return new ModelNodeId(BaseId.INVALID.asInt());
+		return new ModelNodeId(newNodeId.intValue());
 	}
 	
 	public void setOriginalLocation(BaseId originalNodeId, Point originalLocation)

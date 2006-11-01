@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -15,6 +14,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.diagram.InsertConnection;
 
 public class TestDelete extends EAMTestCase
 {
@@ -32,9 +32,7 @@ public class TestDelete extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(interventionId);
 		ModelNodeId factorId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
-		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(interventionId, factorId);
-		link.execute(project);
-		BaseId linkageId = link.getLinkageId();
+		BaseId linkageId = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		
 		assertTrue("linkage not found?", model.hasLinkage(intervention, factor));
 		

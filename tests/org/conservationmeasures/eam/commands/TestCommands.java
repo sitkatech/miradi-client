@@ -22,10 +22,12 @@ import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -34,6 +36,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.views.diagram.InsertConnection;
 import org.conservationmeasures.eam.views.map.MapView;
 
 public class TestCommands extends EAMTestCase
@@ -366,22 +369,29 @@ public class TestCommands extends EAMTestCase
 		DiagramNodeId to = insertTarget();
 		ModelNodeId fromId = model.getNodeById(from).getWrappedId();
 		ModelNodeId toId = model.getNodeById(to).getWrappedId();
-		CommandDiagramAddLinkage cmd = new CommandDiagramAddLinkage(fromId, toId);
-		project.executeCommand(cmd);
-		BaseId linkageId = cmd.getLinkageId();
-
-		DiagramLinkage inserted = model.getLinkageById(linkageId);
+		
+		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+		project.executeCommand(createModelLinkage);
+		
+		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		CommandDiagramAddLinkage addLinkageCommand = new CommandDiagramAddLinkage(modelLinkageId);
+		project.executeCommand(addLinkageCommand);
+		
+		DiagramLinkage inserted = model.getLinkageById(modelLinkageId);
 		DiagramNode fromNode = inserted.getFromNode();
 		assertEquals("wrong source?", from, fromNode.getDiagramNodeId());
 		DiagramNode toNode = inserted.getToNode();
 		assertEquals("wrong dest?", to, toNode.getDiagramNodeId());
 
 		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
-		cmd.undo(project);
+		addLinkageCommand.undo(project);
+		createModelLinkage.undo(project);
 		assertFalse("didn't remove linkage?", project.getDiagramModel().hasLinkage(fromNode, toNode));
-		assertNull("didn't delete linkage from pool?", project.getLinkagePool().find(linkageId));
+		assertNull("didn't delete linkage from pool?", project.getLinkagePool().find(modelLinkageId));
 		
-		verifyUndoTwiceThrows(cmd);
+		verifyUndoTwiceThrows(addLinkageCommand);
+		verifyUndoTwiceThrows(createModelLinkage);
 	}
 	
 	public void testDeleteLinkage() throws Exception
@@ -393,9 +403,7 @@ public class TestCommands extends EAMTestCase
 		DiagramNode fromNode = model.getNodeById(from);
 		DiagramNode toNode = model.getNodeById(to);
 
-		CommandDiagramAddLinkage link = new CommandDiagramAddLinkage(fromNode.getWrappedId(), toNode.getWrappedId());
-		project.executeCommand(link);
-		BaseId linkageId = link.getLinkageId();
+		BaseId linkageId = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
 	
 		CommandDiagramRemoveLinkage cmd = new CommandDiagramRemoveLinkage(linkageId);
 		project.executeCommand(cmd);

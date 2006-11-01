@@ -33,6 +33,7 @@ import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -244,7 +245,7 @@ public class Project
 		setObjectData(ObjectType.PROJECT_METADATA, getMetadataId(), tag, value);
 	}
 	
-	public BaseId obtainRealLinkageId(BaseId proposedId)
+	public ModelLinkageId obtainRealLinkageId(BaseId proposedId)
 	{
 		return projectInfo.obtainRealLinkageId(proposedId);
 	}
@@ -695,7 +696,7 @@ public class Project
 		return node.getDiagramNodeId();
 	}
 	
-	public void removeLinkageFromDiagram(BaseId idToDelete) throws Exception
+	public void removeLinkageFromDiagram(DiagramLinkageId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);

@@ -10,6 +10,8 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -18,21 +20,25 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramAddLinkage extends Command
 {
-	public CommandDiagramAddLinkage(ModelNodeId fromId, ModelNodeId toId)
+	public CommandDiagramAddLinkage(ModelLinkageId idToWrap)
 	{
-		this.fromId = fromId;
-		this.toId = toId;
-		linkageId = BaseId.INVALID;
+		modelLinkageId = idToWrap;
+		diagramLinkageId = new DiagramLinkageId(BaseId.INVALID.asInt());
 	}
 	
-	public BaseId getLinkageId()
+	public DiagramLinkageId getDiagramLinkageId()
 	{
-		return linkageId;
+		return diagramLinkageId;
+	}
+
+	public ModelLinkageId getModelLinkageId()
+	{
+		return modelLinkageId;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ": " + linkageId + "," + fromId + ", " + toId;
+		return getCommandName() + ": " + diagramLinkageId + "," + modelLinkageId ;
 	}
 	
 	public String getCommandName()
@@ -44,7 +50,7 @@ public class CommandDiagramAddLinkage extends Command
 	{
 		try
 		{
-			linkageId = createLinkage(target, getLinkageId(), getFromId(), getToId());
+			diagramLinkageId = target.addLinkageToDiagram(modelLinkageId);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +63,7 @@ public class CommandDiagramAddLinkage extends Command
 	{
 		try
 		{
-			CommandDiagramRemoveLinkage.deleteLinkage(target, getLinkageId());
+			target.removeLinkageFromDiagram(diagramLinkageId);
 		}
 		catch (Exception e)
 		{
@@ -67,16 +73,8 @@ public class CommandDiagramAddLinkage extends Command
 		
 	}
 
-	public ModelNodeId getFromId()
-	{
-		return fromId;
-	}
-	
-	public ModelNodeId getToId()
-	{
-		return toId;
-	}
-	
+
+	// FIXME: Delete this as soon as possible
 	public static BaseId createLinkage(Project target, BaseId linkageId, ModelNodeId fromId, ModelNodeId toId) throws Exception, IOException, ParseException
 	{
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
@@ -88,7 +86,6 @@ public class CommandDiagramAddLinkage extends Command
 
 	public static final String COMMAND_NAME = "DiagramAddLinkage";
 
-	ModelNodeId fromId;
-	ModelNodeId toId;
-	BaseId linkageId;
+	ModelLinkageId modelLinkageId;
+	DiagramLinkageId diagramLinkageId;
 }

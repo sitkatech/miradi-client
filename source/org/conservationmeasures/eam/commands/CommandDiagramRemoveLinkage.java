@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -55,7 +56,7 @@ public class CommandDiagramRemoveLinkage extends Command
 			DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
 			wasFrom = linkageToDelete.getFromNode().getWrappedId();
 			wasTo = linkageToDelete.getToNode().getWrappedId();
-			deleteLinkage(target, idToDelete);
+			deleteLinkage(target, linkageToDelete.getDiagramLinkageId());
 		}
 		catch (Exception e)
 		{
@@ -82,7 +83,7 @@ public class CommandDiagramRemoveLinkage extends Command
 		return id;
 	}
 
-	public static void deleteLinkage(Project target, BaseId idToDelete) throws Exception, IOException, ParseException
+	public static void deleteLinkage(Project target, DiagramLinkageId idToDelete) throws Exception, IOException, ParseException
 	{
 		target.removeLinkageFromDiagram(idToDelete);
 		target.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);

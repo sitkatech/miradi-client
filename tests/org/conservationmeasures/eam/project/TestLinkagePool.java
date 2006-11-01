@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
@@ -35,7 +36,8 @@ public class TestLinkagePool extends TestCaseEnhanced
 		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
 		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
 		
-		ConceptualModelLinkage linkage = new ConceptualModelLinkage(idAssigner.takeNextId(), node1.getModelNodeId(), node2.getModelNodeId());
+		ModelLinkageId linkageId = new ModelLinkageId(idAssigner.takeNextId().asInt());
+		ConceptualModelLinkage linkage = new ConceptualModelLinkage(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);
 		
 		assertTrue("Didn't find linkage 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));

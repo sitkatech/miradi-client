@@ -7,6 +7,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -14,7 +15,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelLinkage extends EAMBaseObject
 {
-	public ConceptualModelLinkage(BaseId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
+	public ConceptualModelLinkage(ModelLinkageId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
 	{
 		super(id);
 		setFromId(fromNodeId);

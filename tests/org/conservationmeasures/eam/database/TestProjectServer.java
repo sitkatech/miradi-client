@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
@@ -21,8 +22,8 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.RatingCriterion;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ProjectServerForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -104,7 +105,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeObject(original);
 		ConceptualModelLinkage got = (ConceptualModelLinkage)storage.readObject(original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
@@ -122,7 +123,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new BaseId(1), new ModelNodeId(2), new ModelNodeId(3));
+		ConceptualModelLinkage original = new ConceptualModelLinkage(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());

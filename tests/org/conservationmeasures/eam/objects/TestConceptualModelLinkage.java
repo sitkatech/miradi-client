@@ -1,6 +1,6 @@
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -43,7 +43,7 @@ public class TestConceptualModelLinkage extends EAMTestCase
 		
 	}
 	
-	static final BaseId id = new BaseId(1);
+	static final ModelLinkageId id = new ModelLinkageId(1);
 	static final ModelNodeId nodeAId = new ModelNodeId(2);
 	static final ModelNodeId nodeBId = new ModelNodeId(3);
 
