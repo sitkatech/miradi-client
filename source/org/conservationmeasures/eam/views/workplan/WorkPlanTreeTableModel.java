@@ -25,7 +25,7 @@ public class WorkPlanTreeTableModel extends GenericTreeTableModel
 
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(ObjectType.INDICATOR, columnTags[column]);
+		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
 	}
 
 	public static String[] columnTags = {"Item", "Resources", };

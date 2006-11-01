@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringIndicatorNode extends WorkPlanNode
+public class WorkPlanMonitoringIndicatorNode extends TreeTableNode
 {
 	public WorkPlanMonitoringIndicatorNode(Project projectToUse, Indicator indicatorToUse)
 	{

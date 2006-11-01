@@ -12,10 +12,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategyRoot extends WorkPlanNode
+public class WorkPlanStrategyRoot extends TreeTableNode
 {
 	
-	public WorkPlanStrategyRoot(Project projectToUse)
+	public WorkPlanStrategyRoot(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuildAll();
@@ -46,9 +46,12 @@ public class WorkPlanStrategyRoot extends WorkPlanNode
 		return STRATEGIC_LABEL;
 	}
 	
-	private void rebuildAll()
+	private void rebuildAll() throws Exception
 	{
 		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
+		if (interventionObjects.length <= 0)
+			throw new Exception();
+		
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{

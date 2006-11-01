@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategy extends WorkPlanNode
+public class WorkPlanStrategy extends TreeTableNode
 {
 	public WorkPlanStrategy(Project projectToUse, ConceptualModelIntervention interventionToUse)
 	{
@@ -30,7 +30,9 @@ public class WorkPlanStrategy extends WorkPlanNode
 
 	public Object getValueAt(int column)
 	{
-		return intervention.getLabel();
+		if (column == 0)
+			return intervention.getLabel();
+		return null;
 	}
 
 	public int getChildCount()

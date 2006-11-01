@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringRoot extends WorkPlanNode
+public class WorkPlanMonitoringRoot extends TreeTableNode
 {
-	public WorkPlanMonitoringRoot(Project projectToUse)
+	public WorkPlanMonitoringRoot(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuildAll();
@@ -42,9 +42,12 @@ public class WorkPlanMonitoringRoot extends WorkPlanNode
 		return MONITORING_LABEL;
 	}
 
-	private void rebuildAll()
+	private void rebuildAll() throws Exception
 	{
 		Indicator[] indicators = project.getIndicatorPool().getAllIndicators();
+		if (indicators.length <= 0)
+			throw new Exception();
+			
 		allIndicators = new WorkPlanMonitoringIndicatorNode[indicators.length];
 		for(int i = 0; i < indicators.length; i++)
 			allIndicators[i] = new WorkPlanMonitoringIndicatorNode(project, indicators[i]);

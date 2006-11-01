@@ -10,7 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanRoot extends WorkPlanNode
+public class WorkPlanRoot extends TreeTableNode
 {
 	public WorkPlanRoot(Project projectToUse)
 	{
@@ -45,10 +45,16 @@ public class WorkPlanRoot extends WorkPlanNode
 
 	private void rebuild()
 	{
-		Vector vector = new Vector();
-		vector.add(new WorkPlanStrategyRoot(project));
-		vector.add(new WorkPlanMonitoringRoot(project));
-		children = vector;
+		try
+		{
+			Vector vector = new Vector();
+			vector.add(new WorkPlanStrategyRoot(project));
+			vector.add(new WorkPlanMonitoringRoot(project));
+			children = vector;
+		}
+		catch(Exception e)
+		{
+		}
 	}
 
 	Vector children;
