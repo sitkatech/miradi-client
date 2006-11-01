@@ -6,10 +6,13 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -18,8 +21,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.martus.swing.UiLabel;
-
-import com.jhlabs.awt.BasicGridLayout;
 
 public class ThreatRatingBundlePanel extends Box
 {
@@ -33,6 +34,8 @@ public class ThreatRatingBundlePanel extends Box
 		add(createRatingPanel());
 		add(Box.createVerticalGlue());
 	}
+	
+	
 	
 	public ThreatRatingBundle getBundle()
 	{
@@ -78,16 +81,34 @@ public class ThreatRatingBundlePanel extends Box
 	
 	private JPanel createHeader() throws Exception
 	{
-		threatName = new UiLabel();
-		targetName = new UiLabel();
+		targetName = createNameArea();
 		
-		JPanel panel = new JPanel(new BasicGridLayout(2, 2));
-		panel.add(new UiLabel("Threat:"));
-		panel.add(threatName);
-		panel.add(new UiLabel("Target:"));
-		panel.add(targetName);
+		threatName = createNameArea();
+	
+		Box headerBox = new Box(BoxLayout.Y_AXIS);
+		headerBox.add(new UiLabel("Threat:"));
+		headerBox.add(threatName);
+		headerBox.add(new UiLabel("Target:"));
+		headerBox.add(targetName);
+		
+		JPanel panel = new JPanel();
+		panel.add(headerBox);
+
 		panel.setBorder(new EmptyBorder(2, 5, 2, 5));
 		return panel;
+	}
+
+
+
+	private JTextArea createNameArea()
+	{
+		JTextArea area = new JTextArea("");
+		area.setWrapStyleWord(true);
+		area.setLineWrap(true);
+		area.setOpaque(false);
+		area.setFont(new Font(null,Font.BOLD,12));
+		area.setPreferredSize(new Dimension(150, 60));
+		return area;
 	}
 
 	private ThreatRatingPanel createRatingPanel()
@@ -101,6 +122,6 @@ public class ThreatRatingBundlePanel extends Box
 	ThreatRatingBundle workingBundle;
 	ThreatRatingPanel ratingPanel;
 
-	UiLabel threatName;
-	UiLabel targetName;
+	JTextArea threatName;
+	JTextArea targetName;
 }
