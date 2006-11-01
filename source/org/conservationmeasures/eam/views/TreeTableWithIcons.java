@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.views.monitoring.MonitoringNode;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
@@ -35,9 +36,21 @@ public class TreeTableWithIcons extends JTreeTable
 		getColumnModel().getColumn(0).setPreferredWidth(200);
 	}
 
-	protected void expandNode(TreePath thisPath)
+	public void expandEverything()
 	{
-		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
+		TreeTableNode root = (TreeTableNode)getTreeTableModel().getRoot();
+		TreePath rootPath = new TreePath(root);
+		expandNode(rootPath);
+	}
+
+	public GenericTreeTableModel getTreeTableModel()
+	{
+		return (GenericTreeTableModel)getModel();
+	}
+
+	public void expandNode(TreePath thisPath)
+	{
+		MonitoringNode topLevelObject = (MonitoringNode)thisPath.getLastPathComponent();
 		getTree().expandPath(thisPath);
 		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
 		{
