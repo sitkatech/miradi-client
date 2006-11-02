@@ -34,28 +34,28 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		add(filename);
 		
 		ObjectDataInputField projectName = createStringField(metadata.TAG_PROJECT_NAME);
-		addField(EAM.text("Label|Project Name"), projectName);
+		addField(projectName);
 		
 		ObjectDataInputField projectScope = createMultilineField(metadata.TAG_PROJECT_SCOPE);
-		addField(EAM.text("Label|Project Scope"), projectScope);
+		addField(projectScope);
 		
 		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
-		addField(EAM.text("Label|Short Project Scope"), shortProjectScope);
+		addField(shortProjectScope);
 		
 		ObjectDataInputField projectVision = createMultilineField(metadata.TAG_PROJECT_VISION);
-		addField(EAM.text("Label|Project Vision"), projectVision);
+		addField(projectVision);
 		
 		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
-		addField(EAM.text("Label|Short Project Vision"), shortProjectVision);
+		addField(shortProjectVision);
 		
 		ObjectDataInputField startDate = createDateField(metadata.TAG_START_DATE);
-		addField(EAM.text("Label|Start Date"), startDate);
+		addField(startDate);
 
 		ObjectDataInputField effectiveDate = createDateField(metadata.TAG_DATA_EFFECTIVE_DATE);
-		addField(EAM.text("Label|Data Effective Date"), effectiveDate);
+		addField(effectiveDate);
 
 		ObjectDataInputField sizeInHectares = createNumericField(metadata.TAG_SIZE_IN_HECTARES);
-		addField(EAM.text("Label|Size in Hectares"), sizeInHectares);
+		addField(sizeInHectares);
 		
 		add(new UiLabel(EAM.text("Label|Team Members:")));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
@@ -99,7 +99,7 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		rebuild();
 	}
 	
-	public String getPanelDescriptionText()
+	public String getPanelDescription()
 	{
 		return EAM.text("General");
 	}

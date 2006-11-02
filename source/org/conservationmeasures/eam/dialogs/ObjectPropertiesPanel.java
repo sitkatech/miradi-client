@@ -46,7 +46,6 @@ abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 		object = objectToEdit;
 	}
 	
-	abstract public String getPanelDescription();
 	
 	public EAMObject getObject()
 	{

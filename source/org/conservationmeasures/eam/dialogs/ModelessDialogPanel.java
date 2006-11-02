@@ -25,5 +25,6 @@ abstract public class ModelessDialogPanel extends JPanel
 	}
 	
 	abstract public EAMObject getObject();
+	abstract public String getPanelDescription();
 
 }

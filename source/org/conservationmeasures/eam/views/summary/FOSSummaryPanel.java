@@ -20,7 +20,7 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 		add(new UiLabel("Not implemented yet"));
 	}
 
-	public String getPanelDescriptionText()
+	public String getPanelDescription()
 	{
 		return EAM.text("Label|FOS");
 	}

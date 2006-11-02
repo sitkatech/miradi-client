@@ -18,21 +18,21 @@ public class ProjectScopePanel extends ObjectDataInputPanel
 		super(projectToUse, metadata.getType(), metadata.getId());
 
 		ObjectDataInputField projectScope = createStringField(metadata.TAG_PROJECT_SCOPE);
-		addField(EAM.text("Label|Project Scope"), projectScope);
+		addField(projectScope);
 		
 		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
-		addField(EAM.text("Label|Short Project Scope"), shortProjectScope);
+		addField(shortProjectScope);
 		
 		ObjectDataInputField projectVision = createStringField(metadata.TAG_PROJECT_VISION);
-		addField(EAM.text("Label|Project Vision"), projectVision);
+		addField(projectVision);
 		
 		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
-		addField(EAM.text("Label|Short Project Vision"), shortProjectVision);
+		addField(shortProjectVision);
 		
 		updateFieldsFromProject();
 	}
 	
-	public String getPanelDescriptionText()
+	public String getPanelDescription()
 	{
 		return EAM.text("Title|Project Scope Properties");
 	}

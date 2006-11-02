@@ -5,23 +5,26 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.project.Project;
 
-public class ProjectResourcePropertiesPanel extends ObjectPropertiesPanel
+public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 {
-	public ProjectResourcePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public ProjectResourcePropertiesPanel(Project projectToUse, ProjectResource objectToEdit) throws Exception
 	{
-		super(parentToUse, objectToEdit);
-		initializeFields(tags);
-	}
+		super(projectToUse, objectToEdit.getType(), objectToEdit.getId());
 
-	static final String[] tags = new String[] {"Initials", "Name", "Position"};
+		addField(createStringField(objectToEdit.TAG_INITIALS));
+		addField(createStringField(objectToEdit.TAG_NAME));
+		addField(createStringField(objectToEdit.TAG_POSITION));
+		
+		updateFieldsFromProject();
+	}
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Rescource Properties");
+		return EAM.text("Title|Resource Properties");
 	}
-
 }

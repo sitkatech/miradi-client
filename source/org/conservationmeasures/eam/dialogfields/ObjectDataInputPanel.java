@@ -17,6 +17,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
@@ -35,17 +36,15 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		project.addCommandExecutedListener(this);
 	}
 	
-	abstract public String getPanelDescriptionText();
-	
 	public Project getProject()
 	{
 		return project;
 	}
 	
-	public void addField(String label, ObjectDataInputField field)
+	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);
-		add(new UiLabel(label));
+		add(new UiLabel(EAM.fieldLabel(objectType, field.getTag())));
 		addFieldComponent(field.getComponent());
 	}
 	

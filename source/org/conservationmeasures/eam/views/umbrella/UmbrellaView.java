@@ -87,7 +87,6 @@ import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
@@ -100,6 +99,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -200,7 +200,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void modifyObject(EAMObject object) throws Exception
 	{
-		ObjectPropertiesPanel propertiesPanel = createPanelForDialog(object);
+		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, propertiesPanel, propertiesPanel.getPanelDescription());
 		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
 		showFloatingPropertiesDialog(dlg);
@@ -217,7 +217,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	}
 	
-	private ObjectPropertiesPanel createPanelForDialog(EAMObject object) throws Exception
+	private ModelessDialogPanel createPanelForDialog(EAMObject object) throws Exception
 	{
 		switch(object.getType())
 		{
@@ -226,7 +226,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			case ObjectType.INDICATOR:
 				return new IndicatorPropertiesPanel(getMainWindow(), object);
 			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResourcePropertiesPanel(getMainWindow(), object);
+				return new ProjectResourcePropertiesPanel(getProject(), (ProjectResource)object);
 			case ObjectType.TASK:
 				return new TaskPropertiesPanel(getMainWindow(), object);
 			case ObjectType.GOAL:

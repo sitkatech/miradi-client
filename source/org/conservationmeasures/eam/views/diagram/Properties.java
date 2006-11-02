@@ -67,7 +67,7 @@ public class Properties extends LocationDoer
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
 	{
 		ProjectScopePanel projectScopePanel = new ProjectScopePanel(getProject(), getProject().getMetadata());
-		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescriptionText()); 
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), projectScopePanel, projectScopePanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
