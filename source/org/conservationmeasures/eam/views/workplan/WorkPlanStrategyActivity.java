@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategyActivity extends TreeTableNode
+public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 {
 	public WorkPlanStrategyActivity(Project projectToUse, Task activityToUse)
 	{
@@ -66,6 +66,16 @@ public class WorkPlanStrategyActivity extends TreeTableNode
 	{
 		return EAMBaseObject.toHtml(project.getTaskResources(activity));
 	}
+	
+	public boolean canInsertActivityHere()
+	{
+		return true;
+	}
+
+	public void rebuild()
+	{
+	}
+
 
 	Project project;
 	Task activity;

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.workplan;
 
 import java.text.ParseException;
 
@@ -21,22 +21,22 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteActivity extends ViewDoer
 {
-	public DeleteActivity(StrategicPlanView viewToUse)
+	public DeleteActivity(WorkPlanView viewToUse)
 	{
 		view = viewToUse;
 	}
 	
-	public StrategicPlanPanel getStrategicPlanPanel()
+	public WorkPlanPanel getWorkPlanPanel()
 	{
-		return view.getStrategicPlanPanel();
+		return view.getWorkPlanPanel();
 	}
 	
 	public boolean isAvailable()
 	{
-		if(getStrategicPlanPanel() == null)
+		if(getWorkPlanPanel() == null)
 			return false;
 		
-		return getStrategicPlanPanel().getSelectedTask() != null;
+		return getWorkPlanPanel().getSelectedTask() != null;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -44,8 +44,8 @@ public class DeleteActivity extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Task activity = getStrategicPlanPanel().getSelectedTask();
-		ConceptualModelIntervention intervention = getStrategicPlanPanel().getParentIntervention(activity);
+		Task activity = getWorkPlanPanel().getSelectedTask();
+		ConceptualModelIntervention intervention = getWorkPlanPanel().getParentIntervention(activity);
 		try
 		{
 			deleteActivity(getProject(), intervention, activity);
@@ -78,5 +78,5 @@ public class DeleteActivity extends ViewDoer
 		}
 	}
 
-	StrategicPlanView view;
+	WorkPlanView view;
 }

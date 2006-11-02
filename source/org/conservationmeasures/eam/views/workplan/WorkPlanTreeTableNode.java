@@ -3,12 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-abstract public class StratPlanObject extends TreeTableNode
+abstract public class WorkPlanTreeTableNode extends TreeTableNode
 {
 	abstract public BaseId getId();
 	abstract public boolean canInsertActivityHere();

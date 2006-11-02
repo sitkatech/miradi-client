@@ -14,5 +14,6 @@ public class WorkPlanTreeTable extends TreeTableWithIcons
 		super(monitoringModelToUse);
 		workPlanTreeTableModel = monitoringModelToUse;
 	}
+	
 	WorkPlanTreeTableModel workPlanTreeTableModel;
 }

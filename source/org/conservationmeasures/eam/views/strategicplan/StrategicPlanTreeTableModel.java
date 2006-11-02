@@ -5,14 +5,10 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import javax.swing.tree.TreePath;
-
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 {
@@ -27,18 +23,19 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	}
 	
 	
-	private StrategicPlanTreeTableModel(Project projectToUse, StratPlanObject root)
+	private StrategicPlanTreeTableModel(Project projectToUse, TreeTableNode root)
 	{
 		super(root);
 		project = projectToUse;
 	}
 	
-	public ConceptualModelIntervention getParentIntervention(Task activity)
+//	TODO remove when transition is over
+	/*public ConceptualModelIntervention getParentIntervention(Task activity)
 	{
 		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
 		StratPlanStrategy strategy = (StratPlanStrategy)interventionPath.getLastPathComponent();
 		return strategy.getIntervention();
-	}
+	}*/
 	
 	public int getColumnCount()
 	{
@@ -50,7 +47,8 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 		return columnNames[column];
 	}
 
-	public TreePath getPathOfNode(int objectType, BaseId objectId)
+//	TODO remove when transition is over
+	/*public TreePath getPathOfNode(int objectType, BaseId objectId)
 	{
 		return findObject(getPathToRoot(), objectType, objectId);
 	}
@@ -113,6 +111,7 @@ EAM.logDebug("idListWasChanged");
 	{
 		return (StratPlanObject)getRoot();
 	}
+	*/
 
 	public static final int labelColumn = 0;
 	public static final int resourcesColumn = 1;

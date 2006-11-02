@@ -5,17 +5,18 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringRoot extends TreeTableNode
+public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 {
 	public WorkPlanMonitoringRoot(Project projectToUse)
 	{
 		project = projectToUse;
-		rebuildAll();
+		rebuild();
 	}
 
 	public TreeTableNode getChild(int index)
@@ -43,15 +44,26 @@ public class WorkPlanMonitoringRoot extends TreeTableNode
 		return MONITORING_LABEL;
 	}
 
-	private void rebuildAll()
+	public void rebuild()
 	{
 		Indicator[] indicators = project.getIndicatorPool().getAllIndicators();
 		allIndicators = new WorkPlanMonitoringIndicatorNode[indicators.length];
 		for(int i = 0; i < indicators.length; i++)
 			allIndicators[i] = new WorkPlanMonitoringIndicatorNode(project, indicators[i]);
 	}
+	
+	public boolean canInsertActivityHere()
+	{
+		return false;
+	}
+
+	public BaseId getId()
+	{
+		return null;
+	}
 
 	Project project;
 	WorkPlanMonitoringIndicatorNode[] allIndicators;
 	private static final String MONITORING_LABEL = "Monitoring";
+
 }

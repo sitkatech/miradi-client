@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class StratPlanActivity extends StratPlanObject
+public class StratPlanActivity extends TreeTableNode
 {
 	public StratPlanActivity(Project projectToUse, Task activityToUse)
 	{

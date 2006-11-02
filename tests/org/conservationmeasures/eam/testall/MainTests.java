@@ -80,7 +80,7 @@ import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
-import org.conservationmeasures.eam.views.strategicplan.TestDeleteActivity;
+import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
 import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.martus.util.TestMultiCalendar;

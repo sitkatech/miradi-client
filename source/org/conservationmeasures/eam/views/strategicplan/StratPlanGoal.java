@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class StratPlanGoal extends StratPlanObject
+public class StratPlanGoal extends TreeTableNode
 {
 	public StratPlanGoal(Project projectToUse, Goal goalToUse)
 	{

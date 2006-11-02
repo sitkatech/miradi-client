@@ -14,17 +14,15 @@ public class ActivitiesPanel extends ObjectManagementPanel
 	public ActivitiesPanel(UmbrellaView viewToUse)
 	{
 		super(viewToUse, new ActivitiesTableModel(viewToUse.getProject()), buttonActionClasses);
-		
 		addDoubleClickAction(ActionModifyActivity.class);
-
-		UiButton[] extraButtons = {
+		UiButton[] extraButtons =
+		{
 				createObjectsActionButton(ActionModifyActivity.class), 
-			};
+		};
 		
 		addButtons(extraButtons);
 	}
 
 	static final String[] columnTags = {"Label", "Strategy", "ResourceIds", };
-	static final Class[] buttonActionClasses = {
-		};
+	static final Class[] buttonActionClasses = {};
 }

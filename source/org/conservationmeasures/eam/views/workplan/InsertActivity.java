@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.workplan;
 
 import java.text.ParseException;
 
@@ -22,11 +22,11 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class InsertActivity extends StratPlanDoer
+public class InsertActivity extends WorkPlanDoer
 {
 	public boolean isAvailable()
 	{
-		StratPlanObject selected = getSelectedObject();
+		WorkPlanTreeTableNode selected = getSelectedObject();
 		if(selected == null)
 			return false;
 		return selected.canInsertActivityHere();

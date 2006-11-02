@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class StratPlanObjective extends StratPlanObject
+public class StratPlanObjective extends TreeTableNode
 {
 	public StratPlanObjective(Project projectToUse, Desire objectiveToUse)
 	{

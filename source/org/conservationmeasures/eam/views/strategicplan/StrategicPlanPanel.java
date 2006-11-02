@@ -7,40 +7,20 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.actions.ActionDeleteActivity;
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionModifyActivity;
-import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
-import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
-import org.martus.swing.UiButton;
 
 import com.java.sun.jtreetable.JTreeTable;
 
-public class StrategicPlanPanel extends JPanel implements TreeSelectionListener, CommandExecutedListener
+
+public class StrategicPlanPanel extends JPanel
+
+//TODO remove when transition is over
+/*implements TreeSelectionListener, CommandExecutedListener*/
 {
 	static public StrategicPlanPanel createForProject(MainWindow mainWindowToUse) throws Exception
 	{
@@ -60,15 +40,28 @@ public class StrategicPlanPanel extends JPanel implements TreeSelectionListener,
 		tree = new StrategicPlanTreeTable(model);
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
-		tree.getTree().addTreeSelectionListener(this);
-		add(new JScrollPane(tree), BorderLayout.CENTER);		
-		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
+		
+		//TODO remove when transition is over
+		//tree.getTree().addTreeSelectionListener(this);
+		
+		add(new JScrollPane(tree), BorderLayout.CENTER);
+		
+		//TODO remove when transition is over
+		//add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
+		
 		tree.getTree().addSelectionRow(0);
 		
-		mainWindow.getProject().addCommandExecutedListener(this);
+		//TODO remove when transition is over
+		//mainWindow.getProject().addCommandExecutedListener(this);
 	}
 	
-	public void close()
+	public StrategicPlanTreeTableModel getModel()
+	{
+		return model;
+	}
+	
+	//TODO remove when transition is over
+	/*public void close()
 	{
 		mainWindow.getProject().removeCommandExecutedListener(this);
 	}
@@ -118,17 +111,13 @@ EAM.logDebug("" + row);
 		return new ActivityInsertionPoint(path, 0);
 	}
 
-	public StrategicPlanTreeTableModel getModel()
-	{
-		return model;
-	}
 	
 	public ConceptualModelIntervention getParentIntervention(Task activity)
 	{
 		return model.getParentIntervention(activity);
 	}
 	
-	void expandEverything()
+	/*void expandEverything()
 	{
 		StratPlanObject root = model.getRootStratPlanObject();
 		TreePath rootPath = new TreePath(root);
@@ -223,7 +212,7 @@ EAM.logDebug("" + row);
 	
 	public void valueChanged(TreeSelectionEvent e)
 	{
-		mainWindow.getActions().updateActionStates();
+		//mainWindow.getActions().updateActionStates();
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
@@ -231,21 +220,21 @@ EAM.logDebug("" + row);
 		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-			expandEverything();
+			//model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
+			//expandEverything();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
 		{
-			model.objectiveWasModified();
-			expandEverything();
+			//model.objectiveWasModified();
+			//expandEverything();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			if(cmd.getObjectType() != ObjectType.VIEW_DATA)
 			{
-				model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-				expandEverything();
+				//model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+				//expandEverything();
 			}
 		}
 	}
@@ -255,26 +244,27 @@ EAM.logDebug("" + row);
 		if(isChangeActivitiesListCommand(event) || isChangeSubtaskListCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
-			expandEverything();
+			//model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
+			//expandEverything();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
 		{
-			model.objectiveWasModified();
-			expandEverything();
+			//model.objectiveWasModified();
+			//expandEverything();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandEverything();
+			//model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
+			//expandEverything();
 			
 		}
+		
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
 	{
-	}
+	}*/
 
 	MainWindow mainWindow;
 	JTreeTable tree;

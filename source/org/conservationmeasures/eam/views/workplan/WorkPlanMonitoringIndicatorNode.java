@@ -5,12 +5,13 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringIndicatorNode extends TreeTableNode
+public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 {
 	public WorkPlanMonitoringIndicatorNode(Project projectToUse, Indicator indicatorToUse)
 	{
@@ -46,6 +47,20 @@ public class WorkPlanMonitoringIndicatorNode extends TreeTableNode
 	ChainManager getChainManager()
 	{
 		return new ChainManager(project);
+	}
+	
+	public boolean canInsertActivityHere()
+	{
+		return false;
+	}
+
+	public BaseId getId()
+	{
+		return null;
+	}
+
+	public void rebuild()
+	{
 	}
 	
 	Project project;

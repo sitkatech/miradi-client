@@ -7,11 +7,12 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanRoot extends TreeTableNode
+public class WorkPlanRoot extends WorkPlanTreeTableNode
 {
 	public WorkPlanRoot(Project projectToUse)
 	{
@@ -43,15 +44,25 @@ public class WorkPlanRoot extends TreeTableNode
 	{
 		return null;
 	}
+	
+	public boolean canInsertActivityHere()
+	{
+		return false;
+	}
 
-	private void rebuild()
+	public BaseId getId()
+	{
+		return null;
+	}
+	public void rebuild()
 	{
 		Vector vector = new Vector();
 		vector.add(new WorkPlanStrategyRoot(project));
 		vector.add(new WorkPlanMonitoringRoot(project));
 		children = vector;
 	}
-
+	
 	Vector children;
 	Project project;
+
 }

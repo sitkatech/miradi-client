@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class StratPlanRoot extends StratPlanObject
+public class StratPlanRoot extends TreeTableNode
 {
 	public StratPlanRoot(Project projectToUse)
 	{

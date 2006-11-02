@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategy extends TreeTableNode
+public class WorkPlanStrategy extends WorkPlanTreeTableNode
 {
 	public WorkPlanStrategy(Project projectToUse, ConceptualModelIntervention interventionToUse)
 	{
