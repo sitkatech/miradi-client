@@ -29,6 +29,8 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		UiTextArea filename = new UiTextArea(1, 50);
 		filename.setText(getProject().getFilename());
 		filename.setEditable(false);
+		filename.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+		filename.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		add(filename);
 		
 		ObjectDataInputField projectName = createStringField(metadata.TAG_PROJECT_NAME);

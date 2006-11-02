@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.main;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Locale;
@@ -160,4 +161,8 @@ public class EAM
 	public static String NEWLINE = System.getProperty("line.separator");
 	public static MainWindow mainWindow;
 	public static String PROJECT_EXTENSION = ".eam";
+	public static final Color READONLY_BACKGROUND_COLOR = Color.LIGHT_GRAY;
+	public static final Color READONLY_FOREGROUND_COLOR = Color.black;
+	public static final Color EDITABLE_BACKGROUND_COLOR = Color.WHITE;
+	public static final Color EDITABLE_FOREGROUND_COLOR = Color.BLUE;
 }

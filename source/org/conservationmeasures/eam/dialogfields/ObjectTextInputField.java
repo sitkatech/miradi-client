@@ -6,10 +6,13 @@
 package org.conservationmeasures.eam.dialogfields;
 
 
+import java.awt.Color;
+
 import javax.swing.JComponent;
 import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectTextInputField extends ObjectDataInputField
@@ -19,6 +22,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		super(projectToUse, objectType, objectId, tag);
 		field = componentToUse;
 		addFocusListener();
+		setEditable(true);
 	}
 
 	public JComponent getComponent()
@@ -36,9 +40,18 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setText(newValue);
 	}
 	
-	public void setEditable(boolean newState)
+	public void setEditable(boolean editable)
 	{
-		field.setEditable(newState);
+		field.setEditable(editable);
+		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
+		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
+		if(!editable)
+		{
+			fg = EAM.READONLY_FOREGROUND_COLOR;
+			bg = EAM.READONLY_BACKGROUND_COLOR;
+		}
+		field.setForeground(fg);
+		field.setBackground(bg);
 	}
 
 	JTextComponent field;
