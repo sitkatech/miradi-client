@@ -52,6 +52,11 @@ abstract public class TabbedView extends UmbrellaView
 			EAM.logVerbose("Selecting tab " + desiredTab);
 			tabs.setSelectedIndex(desiredTab);
 		}
+		catch (Exception e)
+		{
+			EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
+			tabs.setSelectedIndex(0);
+		}
 		finally
 		{
 			ignoreTabChanges = false;
