@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
+
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
@@ -13,9 +14,7 @@ import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ObjectPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.PossibleTeamMembersPanel;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.dialogs.NewResourceManagementPanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
@@ -83,13 +82,13 @@ public class SummaryView extends TabbedView
 	{
 	}
 
-	public void showTeamAddMembersDialog() throws CommandFailedException
+	public void showTeamAddMembersDialog() throws Exception
 	{
-		ObjectPropertiesPanel panel = new PossibleTeamMembersPanel(getMainWindow());
+		NewResourceManagementPanel panel = new NewResourceManagementPanel(getMainWindow());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
 		showFloatingPropertiesDialog(dlg);
 	}
-
+	
 	private void addSummaryDoersToMap()
 	{
 		teamAddMemberDoer = new TeamAddMember();

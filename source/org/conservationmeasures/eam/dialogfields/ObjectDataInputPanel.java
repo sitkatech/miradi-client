@@ -41,6 +41,12 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return project;
 	}
 	
+	public void setObjectId(BaseId newId)
+	{
+		objectId = newId;
+		updateFieldsFromProject();
+	}
+	
 	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);
@@ -80,6 +86,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		for(int i = 0; i < fields.size(); ++i)
 		{
 			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			field.setObjectId(objectId);
 			field.updateFromObject();
 		}
 	}

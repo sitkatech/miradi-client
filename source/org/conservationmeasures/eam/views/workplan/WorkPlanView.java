@@ -8,9 +8,9 @@ import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
-import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
+import org.conservationmeasures.eam.dialogs.NewResourceManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -19,7 +19,6 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.strategicplan.ModifyActivity;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
-import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanWizardPanel;
@@ -49,7 +48,7 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
 		addTab(EAM.text("Work Plan"), workPlanPanel);
-		addTab(EAM.text("Resources"), new ResourceManagementPanel(this));
+		addTab(EAM.text("Resources"), new NewResourceManagementPanel(getMainWindow()));
 		addTab(EAM.text("Activities"), new ActivitiesPanel(this));
 	}
 
@@ -87,22 +86,15 @@ public class WorkPlanView extends TabbedView
 		return modifyActivityDoer;
 	}
 	
-	public ModifyResource getModifyResourceDoer()
-	{
-		return modifyResourceDoer;
-	}
-
 	private void addWorkPlanDoersToMap()
 	{
 		modifyActivityDoer = new ModifyActivity();
-		modifyResourceDoer = new ModifyResource();
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
-		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
@@ -110,7 +102,6 @@ public class WorkPlanView extends TabbedView
 	}
 	
 	ModifyActivity modifyActivityDoer;
-	ModifyResource modifyResourceDoer;
 	
 	WorkPlanPanel workPlanPanel;
 	MainWindow mainWindow;

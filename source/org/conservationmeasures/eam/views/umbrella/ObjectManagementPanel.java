@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -131,14 +132,24 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 		{
 			int row = table.getSelectedRow();
 			EAMObject selectedObject = model.getObjectFromRow(row);
+			BaseId selectedId = BaseId.INVALID;
 			if(row >= 0)
+			{
+				selectedId = selectedObject.getId();
 				view.objectWasSelected(selectedObject);
+			}
+			objectWasSelected(selectedId);
 			getMainWindow().getActions().updateActionStates();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+	
+	public void objectWasSelected(BaseId newId)
+	{
+		
 	}
 	
 	Component createButtonPanel(Actions actions, Class[] buttonActionClasses)

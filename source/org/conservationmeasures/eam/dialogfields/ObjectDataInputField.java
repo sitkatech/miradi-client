@@ -43,6 +43,11 @@ abstract public class ObjectDataInputField implements FocusListener
 		return objectId;
 	}
 	
+	public void setObjectId(BaseId newId)
+	{
+		objectId = newId;
+	}
+	
 	public String getTag()
 	{
 		return tag;
@@ -64,7 +69,17 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	public void updateFromObject()
 	{
-		setText(project.getObjectData(objectType, objectId, tag));
+		String text = "";
+		if(isValidObject())
+			text = project.getObjectData(objectType, objectId, tag);
+		setText(text);
+		setEditable(isValidObject());
+	}
+
+	private boolean isValidObject()
+	{
+		boolean isValidObject = !objectId.isInvalid();
+		return isValidObject;
 	}
 	
 	public void setEditable(boolean newState)
@@ -74,6 +89,9 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	private void save()
 	{
+		if(!isValidObject())
+			return;
+		
 		String newValue = getText();
 		String existingValue = project.getObjectData(objectType, objectId, tag);
 		if(existingValue.equals(newValue))

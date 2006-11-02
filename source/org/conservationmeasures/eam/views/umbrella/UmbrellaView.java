@@ -99,7 +99,6 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -226,7 +225,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			case ObjectType.INDICATOR:
 				return new IndicatorPropertiesPanel(getMainWindow(), object);
 			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResourcePropertiesPanel(getProject(), (ProjectResource)object);
+				return new ProjectResourcePropertiesPanel(getProject(), object.getId());
 			case ObjectType.TASK:
 				return new TaskPropertiesPanel(getMainWindow(), object);
 			case ObjectType.GOAL:

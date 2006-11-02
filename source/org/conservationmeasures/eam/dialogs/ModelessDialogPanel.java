@@ -10,6 +10,7 @@ import java.awt.LayoutManager2;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
 
 abstract public class ModelessDialogPanel extends JPanel
@@ -22,6 +23,11 @@ abstract public class ModelessDialogPanel extends JPanel
 	public ModelessDialogPanel(LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
+	}
+	
+	public void objectWasSelected(BaseId selectedId)
+	{
+		
 	}
 	
 	abstract public EAMObject getObject();
