@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.views.strategicplan.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class IndicatorManagementPanel extends ObjectManagementPanel

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -28,8 +28,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;

@@ -6,6 +6,7 @@ import org.conservationmeasures.eam.actions.ActionModifyGoal;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class GoalManagementPanel extends ObjectManagementPanel

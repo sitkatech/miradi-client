@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -49,20 +48,6 @@ public class StratPlanStrategy extends TreeTableNode
 	public int getType()
 	{
 		return intervention.getType();
-	}
-	
-	public BaseId getId()
-	{
-		return intervention.getId();
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return true;
-	}
-
-	public void rebuild()
-	{
 	}
 	
 	Project project;

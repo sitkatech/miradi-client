@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class ObjectiveManagementPanel extends ObjectManagementPanel

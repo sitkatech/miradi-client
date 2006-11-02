@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.views.strategicplan.ActivitiesTableModel;
-import org.conservationmeasures.eam.views.strategicplan.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 
