@@ -5,7 +5,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -17,9 +19,8 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 	{
 		super(threatGirdPanelInUse);
 	}
-
 	
-	public  boolean getToggle() {
+	public  boolean toggle() {
 		sortToggle = !sortToggle;
 		return sortToggle;
 	}
@@ -39,12 +40,20 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 			comparator = new ComparableNode(sortColumnToUse,modelToSort);
 
 		Arrays.sort(threatList, comparator);
-		modelToSort.setThreatRows(threatList);
 		
-		if ( getToggle() )  
-		{
+		if ( toggle() )  
+			threatList = reverseSort(threatList);
 
-		}
+		modelToSort.setThreatRows(threatList);
+	}
+
+
+	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	{
+		ArrayList list = new ArrayList(Arrays.asList(threatList));
+		Collections.reverse(list);
+		threatList = (ConceptualModelNode[]) list.toArray(new ConceptualModelNode[0]);
+		return threatList;
 	}
 	
 

@@ -317,12 +317,15 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 
 	private void setSummaryAndThreatRatingBoarders(JTable table, int row, int column)
 	{
-		if (row==table.getRowCount()-1 || column==table.getColumnCount()-1)
+		if (row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR || 
+				column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR)
 			setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createLineBorder(Color.DARK_GRAY,2),getBorder()));
 		else 
 			setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
 	}
+	
+	int SUMMARY_ROW_COLUMN_INCR = 1;
 }
 

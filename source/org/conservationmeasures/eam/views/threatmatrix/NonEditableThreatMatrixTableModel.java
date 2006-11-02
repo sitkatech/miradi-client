@@ -174,8 +174,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return isActiveThreatIdTargetIdPair(threatId, targetId);
 	}
 
-	private boolean isActiveThreatIdTargetIdPair(BaseId threatId,
-			BaseId targetId)
+	private boolean isActiveThreatIdTargetIdPair(BaseId threatId, BaseId targetId)
 	{
 		return project.isLinked(threatId, targetId);
 	}
@@ -194,8 +193,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public ConceptualModelNode getThreatNode(int threatIndex)
 	{
-		ConceptualModelNode cmNode = threatRows[threatIndex];
-		return cmNode;
+		return threatRows[threatIndex];
 	}
 
 	public String getTargetName(int targetIndex)
@@ -212,24 +210,25 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public String[] getThreatNames()
 	{
-		String[] names = new String[threatRows.length];
-		for(int i = 0; i < names.length; ++i)
-			names[i] = threatRows[i].toString();
-		return names;
+		return getNames(threatRows);
 	}
 
 	public String[] getTargetNames()
 	{
-		String[] names = new String[targetColumns.length];
+		return getNames(targetColumns);
+	}
+	
+	public String[] getNames(ConceptualModelNode[] nodes)
+	{
+		String[] names = new String[nodes.length];
 		for(int i = 0; i < names.length; ++i)
-			names[i] = targetColumns[i].toString();
+			names[i] = nodes[i].toString();
 		return names;
 	}
 
 	public ConceptualModelNode getTargetNode(int targetIndex)
 	{
-		ConceptualModelNode cmNode = targetColumns[targetIndex];
-		return cmNode;
+		return  targetColumns[targetIndex];
 	}
 
 	public int findThreatIndexById(ModelNodeId threatId)
