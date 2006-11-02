@@ -25,6 +25,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		project = projectToShow;
 		threatRows = getDirectThreats();
 		targetColumns = getTargets();
+		framework = project.getThreatRatingFramework();
 	}
 
 	public int getColumnCount()
@@ -39,8 +40,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		
 		Object value= null;
 		
 		if (row == threatRows.length && column==targetColumns.length)
@@ -58,7 +57,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		if (bundle==null)
 			value = getDefaultValueOption();
 		else 
-			value = project.getThreatRatingFramework().getBundleValue(bundle);
+			value = framework.getBundleValue(bundle);
 
 		return value;
 	}
@@ -66,16 +65,17 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	private Object getDefaultValueOption() 
 	{
-		Object value = null;
+		if (defaultValueOption!=null) return defaultValueOption;
+		
 		try
 		{
-			value = new ValueOption(new BaseId(-1), "", -1, Color.WHITE);
+			defaultValueOption = new ValueOption(new BaseId(-1), "", -1, Color.WHITE);
 		}
 		catch(Exception e)
 		{
 		}
 
-		return value;
+		return defaultValueOption;
 	}
 	
 	public String getColumnName(int columnIndex) 
@@ -110,7 +110,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	}
 	
 	public ThreatRatingFramework getFramework() {
-		return project.getThreatRatingFramework();
+		return framework;
 	}
 	
 	public boolean isCellEditable(int row, int column)
@@ -136,7 +136,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
 			return null;
 
-		return project.getThreatRatingFramework().getBundle(threatId, targetId);
+		return framework.getBundle(threatId, targetId);
 	}
 
 	public Project getProject()
@@ -261,7 +261,10 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	ConceptualModelNode threatRows[] = null;
 	ConceptualModelNode targetColumns[] =  null;
+	
 	Project project;
+	ThreatRatingFramework framework;
+	ValueOption defaultValueOption;
 	int SUMMARY_ROW_COLUMN_INCR = 1;
 
 
