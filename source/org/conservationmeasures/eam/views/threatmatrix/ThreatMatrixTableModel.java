@@ -62,12 +62,12 @@ public class ThreatMatrixTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
-		BaseId threatId = getDirectThreats()[threatIndex].getId();
-		BaseId targetId = getTargets()[targetIndex].getId();
+		ModelNodeId threatId = (ModelNodeId)getDirectThreats()[threatIndex].getId();
+		ModelNodeId targetId = (ModelNodeId)getTargets()[targetIndex].getId();
 		return isActiveThreatIdTargetIdPair(threatId, targetId);
 	}
 
-	private boolean isActiveThreatIdTargetIdPair(BaseId threatId, BaseId targetId)
+	private boolean isActiveThreatIdTargetIdPair(ModelNodeId threatId, ModelNodeId targetId)
 	{
 		return project.isLinked(threatId, targetId);
 	}

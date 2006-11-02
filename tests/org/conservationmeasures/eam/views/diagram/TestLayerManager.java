@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -27,12 +28,12 @@ public class TestLayerManager extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		IdAssigner idAssigner = new IdAssigner();
-		cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
+		idAssigner = new IdAssigner();
+		cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
 		cmTarget.setLabel("Target");
-		cmFactor = new ConceptualModelFactor(idAssigner.takeNextId());
+		cmFactor = new ConceptualModelFactor(takeNextModelNodeId());
 		cmFactor.setLabel("Factor");
-		cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
+		cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
 		DiagramNodeId targetNodeId = new DiagramNodeId(44);
@@ -116,6 +117,13 @@ public class TestLayerManager extends EAMTestCase
 	{
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(node));
 	}
+	
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
+	}
+	
+	IdAssigner idAssigner;
 
 	ConceptualModelTarget cmTarget;
 	ConceptualModelFactor cmFactor;

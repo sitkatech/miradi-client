@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -41,11 +42,11 @@ public class TestDiagramNode extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		
-		IdAssigner idAssigner = new IdAssigner();
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
-		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(idAssigner.takeNextId());
-		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(idAssigner.takeNextId());
+		idAssigner = new IdAssigner();
+
+		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
+		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(takeNextModelNodeId());
+		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
 		BaseId cmTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
@@ -156,9 +157,16 @@ public class TestDiagramNode extends EAMTestCase
 		assertEquals("wrapped id", target.getWrappedId(), got.getWrappedId());
 	}
 
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
+	}
+	
+
 	static final double TOLERANCE = 0.00;
 	
 	Project project;
+	IdAssigner idAssigner;
 	ConceptualModelTarget cmTarget;
 	DiagramNode intervention;
 	DiagramNode indirectFactor;

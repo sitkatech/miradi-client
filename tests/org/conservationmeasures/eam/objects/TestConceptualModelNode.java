@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.martus.util.TestCaseEnhanced;
 
@@ -21,7 +22,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	
 	public void testComments() throws Exception
 	{
-		BaseId id = new BaseId(35);
+		ModelNodeId id = new ModelNodeId(35);
 		ConceptualModelFactor factor = new ConceptualModelFactor(id);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
@@ -31,7 +32,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	
 	public void testSetGetData() throws Exception
 	{
-		BaseId id = new BaseId(72);
+		ModelNodeId id = new ModelNodeId(72);
 		ConceptualModelTarget target = new ConceptualModelTarget(id);
 		String[] tags = {
 			ConceptualModelNode.TAG_COMMENT,
@@ -87,7 +88,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		objectives.addId(new BaseId(7));
 		objectives.addId(new BaseId(9));
 
-		BaseId factorId = new BaseId(2342);
+		ModelNodeId factorId = new ModelNodeId(2342);
 		ConceptualModelFactor factor = new ConceptualModelFactor(factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");

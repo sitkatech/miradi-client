@@ -44,6 +44,8 @@ public class TestProjectServer extends EAMTestCase
 	{
 		storage = new ProjectServerForTesting();
 		storage.openMemoryDatabase(getName());
+		idAssigner = new IdAssigner();
+
 	}
 	
 	public void tearDown() throws Exception
@@ -74,21 +76,20 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadNode() throws Exception
 	{
-		IdAssigner idAssigner = new IdAssigner();
 
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(idAssigner.takeNextId());
+		ConceptualModelIntervention intervention = new ConceptualModelIntervention(takeNextModelNodeId());
 		storage.writeObject(intervention);
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)readNode(intervention.getId());
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		ConceptualModelFactor factor = new ConceptualModelFactor(idAssigner.takeNextId());
+		ConceptualModelFactor factor = new ConceptualModelFactor(takeNextModelNodeId());
 		
 		storage.writeObject(factor);
 		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
-		ConceptualModelTarget target = new ConceptualModelTarget(idAssigner.takeNextId());
+		ConceptualModelTarget target = new ConceptualModelTarget(takeNextModelNodeId());
 		storage.writeObject(target);
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
@@ -97,6 +98,11 @@ public class TestProjectServer extends EAMTestCase
 		ObjectManifest nodeIds = storage.readObjectManifest(ObjectType.MODEL_NODE);
 		assertEquals("not three nodes?", 3, nodeIds.size());
 		assertTrue("missing a node?", nodeIds.has(target.getId()));
+	}
+	
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
 	}
 	
 	private ConceptualModelNode readNode(BaseId id) throws Exception
@@ -153,56 +159,61 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadDiagram() throws Exception
 	{
-		IdAssigner idAssigner = new IdAssigner();
 		ProjectForTesting project = new ProjectForTesting(getName());
-		
 		try
 		{
-			storage.readDiagram(new DiagramModel(project));
+		
+			try
+			{
+				storage.readDiagram(new DiagramModel(project));
+			}
+			catch(Exception e)
+			{
+				fail("didn't allow reading non-existent diagram?");
+			}
+			
+			DiagramModel model = project.getDiagramModel();
+			NodePool nodePool = model.getNodePool();
+			storage.writeDiagram(model);
+	
+			try
+			{
+				storage.readDiagram(new DiagramModel(project));
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+				fail("didn't allow reading an empty diagram?");
+			}
+			
+			ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
+			nodePool.put(cmIntervention);
+	
+			ConceptualModelTarget cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
+			nodePool.put(cmTarget);
+			
+			model.createNode(cmIntervention.getModelNodeId());
+			model.createNode(cmTarget.getModelNodeId());
+			
+			storage.writeDiagram(model);
+			
+			DiagramModel got = new DiagramModel(project); 
+			storage.readDiagram(got);
+			Vector gotNodes = got.getAllNodes();
+			Vector expectedNodes = model.getAllNodes();
+			assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
+			for(int i=0; i < gotNodes.size(); ++i)
+			{
+				DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
+				DiagramNodeId gotId = gotNode.getDiagramNodeId();
+				DiagramNode expectedNode = model.getNodeById(gotId);
+				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
+			}
 		}
-		catch(Exception e)
+		finally
 		{
-			fail("didn't allow reading non-existent diagram?");
+			project.close();
 		}
-		
-		DiagramModel model = project.getDiagramModel();
-		NodePool nodePool = model.getNodePool();
-		storage.writeDiagram(model);
-
-		try
-		{
-			storage.readDiagram(new DiagramModel(project));
-		}
-		catch(Exception e)
-		{
-			fail("didn't allow reading an empty diagram?");
-		}
-		
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(idAssigner.takeNextId());
-		nodePool.put(cmIntervention);
-
-		ConceptualModelTarget cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
-		nodePool.put(cmTarget);
-		
-		model.createNode(cmIntervention.getModelNodeId());
-		model.createNode(cmTarget.getModelNodeId());
-		
-		storage.writeDiagram(model);
-		
-		DiagramModel got = new DiagramModel(project); 
-		storage.readDiagram(got);
-		Vector gotNodes = got.getAllNodes();
-		Vector expectedNodes = model.getAllNodes();
-		assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
-		for(int i=0; i < gotNodes.size(); ++i)
-		{
-			DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
-			DiagramNodeId gotId = gotNode.getDiagramNodeId();
-			DiagramNode expectedNode = model.getNodeById(gotId);
-			assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
-		}
-		
-		project.close();
 	}
 	
 	public void testReadAndWriteThreatRatingFramework() throws Exception
@@ -272,5 +283,6 @@ public class TestProjectServer extends EAMTestCase
 		}
 	}
 
+	IdAssigner idAssigner;
 	private ProjectServerForTesting storage;
 }

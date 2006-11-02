@@ -706,7 +706,7 @@ public class Project
 		return modelLinkageId;
 	}
 
-	public DiagramLinkageId addLinkageToDiagram(BaseId modelLinkageId) throws Exception
+	public DiagramLinkageId addLinkageToDiagram(ModelLinkageId modelLinkageId) throws Exception
 	{
 		ConceptualModelLinkage cmLinkage = getLinkagePool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
@@ -764,7 +764,7 @@ public class Project
 		return selectedCellsWithLinkages;
 	}
 	
-	public boolean isLinked(BaseId nodeId1, BaseId nodeId2)
+	public boolean isLinked(ModelNodeId nodeId1, ModelNodeId nodeId2)
 	{
 		return getLinkagePool().hasLinkage(nodeId1, nodeId2);
 	}

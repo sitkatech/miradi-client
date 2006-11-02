@@ -466,7 +466,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public void addLinkagesToModel() throws Exception
 	{
-		BaseId[] linkageIds = getLinkagePool().getIds();
+		ModelLinkageId[] linkageIds = getLinkagePool().getModelLinkageIds();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
 			ConceptualModelLinkage cmLinkage = getLinkagePool().find(linkageIds[i]);

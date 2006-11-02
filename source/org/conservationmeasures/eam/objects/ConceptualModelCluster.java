@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -14,7 +13,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelCluster extends ConceptualModelNode
 {
-	public ConceptualModelCluster(BaseId idToUse)
+	public ConceptualModelCluster(ModelNodeId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_CLUSTER);
 		memberIds = new IdListData();

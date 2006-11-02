@@ -32,9 +32,9 @@ public class TestLinkagePool extends TestCaseEnhanced
 	{
 		LinkagePool pool = new LinkagePool(new LinkageMonitor());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeFactor());
-		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
-		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
-		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(idAssigner.takeNextId(), parameter);
+		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		
 		ModelLinkageId linkageId = new ModelLinkageId(idAssigner.takeNextId().asInt());
 		ConceptualModelLinkage linkage = new ConceptualModelLinkage(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
@@ -42,7 +42,7 @@ public class TestLinkagePool extends TestCaseEnhanced
 		
 		assertTrue("Didn't find linkage 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));
 		assertTrue("Didn't find linkage 2->1?", pool.hasLinkage(linkage.getToNodeId(), linkage.getFromNodeId()));
-		assertFalse("Found linkage 1->3?", pool.hasLinkage(node1.getId(), node3.getId()));
+		assertFalse("Found linkage 1->3?", pool.hasLinkage((ModelNodeId)node1.getId(), (ModelNodeId)node3.getId()));
 	}
 	
 	class LinkageMonitor implements LinkageListener
@@ -55,5 +55,12 @@ public class TestLinkagePool extends TestCaseEnhanced
 		{
 		}		
 	}
+	
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
+	}
+	
+
 	IdAssigner idAssigner;
 }

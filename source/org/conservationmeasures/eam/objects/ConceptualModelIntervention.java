@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ConceptualModelIntervention extends ConceptualModelNode
 {
-	public ConceptualModelIntervention(BaseId idToUse)
+	public ConceptualModelIntervention(ModelNodeId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;

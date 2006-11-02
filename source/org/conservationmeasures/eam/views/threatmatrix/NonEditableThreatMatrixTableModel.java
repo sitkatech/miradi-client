@@ -169,12 +169,12 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 
-		BaseId threatId = threatRows[threatIndex].getId();
-		BaseId targetId = targetColumns[targetIndex].getId();
+		ModelNodeId threatId = (ModelNodeId)threatRows[threatIndex].getId();
+		ModelNodeId targetId = (ModelNodeId)targetColumns[targetIndex].getId();
 		return isActiveThreatIdTargetIdPair(threatId, targetId);
 	}
 
-	private boolean isActiveThreatIdTargetIdPair(BaseId threatId, BaseId targetId)
+	private boolean isActiveThreatIdTargetIdPair(ModelNodeId threatId, ModelNodeId targetId)
 	{
 		return project.isLinked(threatId, targetId);
 	}

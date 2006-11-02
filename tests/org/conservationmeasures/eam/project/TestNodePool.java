@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.project;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -31,7 +31,7 @@ public class TestNodePool extends TestCaseEnhanced
 
 		for(int i = 0; i < 2; ++i)
 		{
-			BaseId id = idAssigner.takeNextId();
+			ModelNodeId id = takeNextModelNodeId();
 			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeFactor());
 			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.
 					createConceptualModelObject(id, parameter);
@@ -46,7 +46,7 @@ public class TestNodePool extends TestCaseEnhanced
 	
 	private void addNodeToPool(NodeType type)
 	{
-		BaseId id = idAssigner.takeNextId();
+		ModelNodeId id = takeNextModelNodeId();
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(type);
 		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(id, parameter);
 		pool.put(node);
@@ -56,6 +56,11 @@ public class TestNodePool extends TestCaseEnhanced
 	{
 		assertEquals("wrong direct threat count?", 2, pool.getDirectThreats().length);
 		assertEquals("wrong target count?", 4, pool.getTargets().length);
+	}
+	
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
 	}
 	
 	IdAssigner idAssigner;

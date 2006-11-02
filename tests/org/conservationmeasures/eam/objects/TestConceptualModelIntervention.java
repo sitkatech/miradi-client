@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -20,7 +21,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 
 	public void testBasics()
 	{
-		BaseId interventionId = new BaseId(17);
+		ModelNodeId interventionId = new ModelNodeId(17);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
@@ -46,7 +47,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 	
 	public void testActivityIds() throws Exception
 	{
-		BaseId interventionId = new BaseId(66);
+		ModelNodeId interventionId = new ModelNodeId(66);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		IdList empty = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
@@ -62,7 +63,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 	
 	public void testStatus() throws Exception
 	{
-		BaseId interventionId = new BaseId(91);
+		ModelNodeId interventionId = new ModelNodeId(91);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
@@ -82,7 +83,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 	
 	public void testJson() throws Exception
 	{
-		BaseId interventionId = new BaseId(17);
+		ModelNodeId interventionId = new ModelNodeId(17);
 		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
 		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
 		intervention.insertActivityId(new BaseId(23), 0);

@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
@@ -570,18 +571,18 @@ public class TestProject extends EAMTestCase
 		ModelNodeId idA = nodeA.getWrappedId();
 		ModelNodeId idB = nodeB.getWrappedId();
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(idA, idB);
-		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
-		BaseId linkageId = createdId;
+		ModelLinkageId createdId = (ModelLinkageId)project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
+		ModelLinkageId linkageId = createdId;
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
 		assertEquals("wrong from?", nodeA.getDiagramNodeId(), cmLinkage.getFromNodeId());
 		assertEquals("wrong to?", nodeB.getDiagramNodeId(), cmLinkage.getToNodeId());
-		assertTrue("not linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
+		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
 		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
-		assertFalse("still linked?", project.isLinked(nodeA.getDiagramNodeId(), nodeB.getDiagramNodeId()));
+		assertFalse("still linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 	}
 
 	public void testFindNodesThatUseThisObjective() throws Exception
@@ -790,7 +791,7 @@ public class TestProject extends EAMTestCase
 	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
-		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
+		ModelLinkageId createdId = (ModelLinkageId)project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
 		DiagramLinkageId diagramLinkageId = project.addLinkageToDiagram(createdId);
 		return project.getDiagramModel().getLinkageById(diagramLinkageId);
 	}

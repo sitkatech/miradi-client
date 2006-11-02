@@ -123,8 +123,8 @@ public class ObjectManager
 			case ObjectType.MODEL_NODE:
 			{
 				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
-				objectId = getProject().obtainRealNodeId(objectId);
-				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(objectId, parameter);
+				ModelNodeId nodeId = new ModelNodeId(getProject().obtainRealNodeId(objectId).asInt());
+				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(nodeId, parameter);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();

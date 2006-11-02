@@ -6,6 +6,8 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.project.LinkageListener;
@@ -32,23 +34,23 @@ public class LinkagePool extends EAMObjectPool
 
 	public void remove(BaseId id)
 	{
-		ConceptualModelLinkage linkage = find(id);
+		ConceptualModelLinkage linkage = find((ModelLinkageId)id);
 		super.remove(id);
 		listener.linkageWasDeleted(linkage.getFromNodeId(), linkage.getToNodeId());
 	}
 
-	public ConceptualModelLinkage find(BaseId id)
+	public ConceptualModelLinkage find(ModelLinkageId id)
 	{
 		return (ConceptualModelLinkage)getRawObject(id);
 	}
 	
-	public boolean hasLinkage(BaseId nodeId1, BaseId nodeId2)
+	public boolean hasLinkage(ModelNodeId nodeId1, ModelNodeId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = getLinkage(i);
-			BaseId fromId = thisLinkage.getFromNodeId();
-			BaseId toId = thisLinkage.getToNodeId();
+			ModelNodeId fromId = thisLinkage.getFromNodeId();
+			ModelNodeId toId = thisLinkage.getToNodeId();
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
 				return true;
 			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
@@ -57,9 +59,17 @@ public class LinkagePool extends EAMObjectPool
 		return false;
 	}
 	
+	public ModelLinkageId[] getModelLinkageIds()
+	{
+		BaseId[] rawIds = getIds();
+		ModelLinkageId[] linkageIds = new ModelLinkageId[rawIds.length];
+		System.arraycopy(rawIds, 0, linkageIds, 0, rawIds.length);
+		return linkageIds;
+	}
+	
 	private ConceptualModelLinkage getLinkage(int index)
 	{
-		return find(getIds()[index]);
+		return find((ModelLinkageId)getIds()[index]);
 	}
 	
 	LinkageListener listener;

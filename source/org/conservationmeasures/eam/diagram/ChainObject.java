@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
@@ -104,7 +104,7 @@ public class ChainObject
 		linkedNodes.attemptToAdd(startingNode);
 		LinkagePool linkagePool = diagramModel.getLinkagePool();
 		
-		BaseId[] linkagePoolIds = linkagePool.getIds();
+		ModelLinkageId[] linkagePoolIds = linkagePool.getModelLinkageIds();
 		for(int i = 0; i < linkagePoolIds.length; ++i)
 		{
 			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePoolIds[i]);
@@ -142,9 +142,9 @@ public class ChainObject
 		results.attemptToAdd(startingNode);
 		
 		LinkagePool linkagePool = diagramModel.getLinkagePool();
-		for(int i = 0; i < linkagePool.getIds().length; ++i)
+		for(int i = 0; i < linkagePool.getModelLinkageIds().length; ++i)
 		{
-			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getIds()[i]);
+			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getModelLinkageIds()[i]);
 			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
 			{
 				attempToAdd(thisLinkage);

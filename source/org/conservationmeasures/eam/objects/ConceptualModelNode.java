@@ -235,7 +235,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(BaseId idToCreate, CreateModelNodeParameter parameter)
+	public static ConceptualModelNode createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
 	{
 		NodeType nodeType = parameter.getNodeType();
 		if(nodeType.isIntervention())

@@ -11,9 +11,9 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -78,7 +78,7 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId id = idAssigner.takeNextId();
+		ModelNodeId id = new ModelNodeId(idAssigner.takeNextId().asInt());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);

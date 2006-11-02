@@ -191,7 +191,7 @@ public class TestDiagramModel extends EAMTestCase
 		createTarget();		
 		DiagramNode lastCreated = createTarget();		
 		model.deleteNode(nodeToDelete);
-		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getDiagramNodeId());
+		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getWrappedId());
 		
 		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
 		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
@@ -298,14 +298,14 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private DiagramNode createTarget() throws Exception
 	{
-		ConceptualModelNode cmTarget = new ConceptualModelTarget(idAssigner.takeNextId());
+		ConceptualModelNode cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
 		project.getNodePool().put(cmTarget);
 		return model.createNode(cmTarget.getModelNodeId());
 	}
 	
 	private DiagramNode createNode(NodeType nodeType) throws Exception
 	{
-		BaseId id = idAssigner.takeNextId();
+		ModelNodeId id = takeNextModelNodeId();
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
 		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(id, parameter);
 		project.getNodePool().put(cmObject);
@@ -320,6 +320,11 @@ public class TestDiagramModel extends EAMTestCase
 	}
 
 
+	private ModelNodeId takeNextModelNodeId()
+	{
+		return new ModelNodeId(idAssigner.takeNextId().asInt());
+	}
+	
 	static class TestTableModel implements DiagramModelListener
 	{
 		

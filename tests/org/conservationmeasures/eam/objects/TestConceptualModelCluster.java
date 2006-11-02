@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestConceptualModelCluster extends EAMTestCase
@@ -18,7 +18,7 @@ public class TestConceptualModelCluster extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		BaseId id = new BaseId(5);
+		ModelNodeId id = new ModelNodeId(5);
 		ConceptualModelCluster group = new ConceptualModelCluster(id);
 		assertEquals("wrong id?", id, group.getId());
 		
