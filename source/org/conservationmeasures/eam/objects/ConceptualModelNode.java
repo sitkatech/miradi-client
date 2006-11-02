@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -165,6 +166,11 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public boolean canHaveGoal()
 	{
 		return false;
+	}
+
+	public CreateObjectParameter getCreationExtraInfo()
+	{
+		return new CreateModelNodeParameter(getNodeType());
 	}
 
 	public String getData(String fieldTag)

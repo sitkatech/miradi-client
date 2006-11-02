@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDeleteObject extends Command
@@ -15,6 +17,7 @@ public class CommandDeleteObject extends Command
 	{
 		type = objectType;
 		id = objectId;
+		extraInfo = null;
 	}
 	
 	public int getObjectType()
@@ -36,6 +39,8 @@ public class CommandDeleteObject extends Command
 	{
 		try
 		{
+			EAMObject object = target.findObject(type, id);
+			extraInfo = object.getCreationExtraInfo();
 			target.deleteObject(type, id);
 		}
 		catch (Exception e)
@@ -48,7 +53,7 @@ public class CommandDeleteObject extends Command
 	{
 		try
 		{
-			target.createObject(type, id);
+			target.createObject(type, id, extraInfo);
 		}
 		catch (Exception e)
 		{
@@ -60,4 +65,5 @@ public class CommandDeleteObject extends Command
 
 	int type;
 	BaseId id;
+	CreateObjectParameter extraInfo;
 }

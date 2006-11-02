@@ -1,7 +1,9 @@
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -43,6 +45,16 @@ public class TestConceptualModelLinkage extends EAMTestCase
 		
 	}
 	
+	public void testExtraInfo() throws Exception
+	{
+		ConceptualModelLinkage linkage = new ConceptualModelLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), nodeAId, nodeBId);
+
+		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(nodeAId, nodeBId);
+		CreateModelLinkageParameter gotExtraInfo = (CreateModelLinkageParameter)linkage.getCreationExtraInfo();
+		assertEquals(extraInfo.getFromId(), gotExtraInfo.getFromId());
+		assertEquals(extraInfo.getToId(), gotExtraInfo.getToId());
+	}
+
 	static final ModelLinkageId id = new ModelLinkageId(1);
 	static final ModelNodeId nodeAId = new ModelNodeId(2);
 	static final ModelNodeId nodeBId = new ModelNodeId(3);

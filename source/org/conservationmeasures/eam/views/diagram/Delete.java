@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -18,6 +19,8 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -76,8 +79,10 @@ public class Delete extends ProjectDoer
 	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
 	{
 		DiagramLinkageId id = linkageToDelete.getDiagramLinkageId();
-		CommandDiagramRemoveLinkage command = new CommandDiagramRemoveLinkage(id);
-		getProject().executeCommand(command);
+		CommandDiagramRemoveLinkage removeCommand = new CommandDiagramRemoveLinkage(id);
+		getProject().executeCommand(removeCommand);
+		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.MODEL_LINKAGE, linkageToDelete.getWrappedId());
+		getProject().executeCommand(deleteLinkage);
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
@@ -104,6 +109,10 @@ public class Delete extends ProjectDoer
 			getProject().executeCommand(commandsToClear[i]);
 		
 		getProject().executeCommand(new CommandDiagramRemoveNode(id));
+		int typeToDelete = nodeToDelete.getUnderlyingObject().getType();
+		ModelNodeId idToDelete = nodeToDelete.getWrappedId();
+		CommandDeleteObject delete = new CommandDeleteObject(typeToDelete, idToDelete);
+		getProject().executeCommand(delete);
 	}
 
 }

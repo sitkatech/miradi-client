@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -15,5 +16,6 @@ public interface EAMObject
 	public int getType();
 	public void setData(String fieldTag, String dataValue) throws Exception;
 	public String getData(String fieldTag);
+	public CreateObjectParameter getCreationExtraInfo();
 	public EnhancedJsonObject toJson();
 }
