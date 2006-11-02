@@ -68,8 +68,8 @@ abstract public class InsertNode extends LocationDoer
 		
 		Point createAt = getLocation();
 		//Snap to Grid
-		int deltaX = createAt.x;
-		int deltaY = createAt.y;
+		int deltaX = 100; //createAt.x;
+		int deltaY = 100; //createAt.y;
 		deltaX -= deltaX % getProject().getGridSize(); 
 		deltaY -= deltaY % getProject().getGridSize();
 		

@@ -44,7 +44,8 @@ public abstract class LocationAction extends MainWindowAction
 	{
 		LocationHolder invoker = (LocationHolder)event.getSource();
 		if(!invoker.hasLocation())
-			setInvokationPointToCenterOfScreen();
+			setInvocationPoint(null);	
+		
 		super.doAction(event);
 	}
 
