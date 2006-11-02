@@ -18,8 +18,10 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
@@ -320,7 +322,15 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getNodeById(id);
 	}
 
-	public DiagramLinkage getLinkageById(BaseId id) throws Exception
+	public DiagramLinkage getLinkageById(DiagramLinkageId id) throws Exception
+	{
+		DiagramLinkage linkage = cellInventory.getLinkageById(id);
+		if(linkage == null)
+			throw new Exception("Linkage doesn't exist, id: " + id);
+		return linkage;
+	}
+	
+	public DiagramLinkage getLinkageById(ModelLinkageId id) throws Exception
 	{
 		DiagramLinkage linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)

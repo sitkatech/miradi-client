@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
@@ -187,7 +187,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyLinkageNotPresent(BaseId cellId)
+	private void verifyLinkageNotPresent(DiagramLinkageId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
@@ -218,5 +218,5 @@ public class TestUndoAndRedo extends EAMTestCase
 	ProjectForTesting project;
 	ModelNodeId fromId;
 	ModelNodeId toId;
-	BaseId linkId;
+	DiagramLinkageId linkId;
 }

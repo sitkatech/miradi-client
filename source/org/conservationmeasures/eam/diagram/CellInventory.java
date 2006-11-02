@@ -10,9 +10,9 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 
 class CellInventory
@@ -86,12 +86,23 @@ class CellInventory
 		return linkages;
 	}
 	
-	public DiagramLinkage getLinkageById(BaseId id)
+	public DiagramLinkage getLinkageById(DiagramLinkageId id)
 	{
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
 			DiagramLinkage linkage = (DiagramLinkage) iter.next();
 			if(linkage.getDiagramLinkageId().equals(id))
+				return linkage;
+		}
+		return null;
+	}
+	
+	public DiagramLinkage getLinkageById(ModelLinkageId id)
+	{
+		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+		{
+			DiagramLinkage linkage = (DiagramLinkage) iter.next();
+			if(linkage.getWrappedId().equals(id))
 				return linkage;
 		}
 		return null;

@@ -5,17 +5,11 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramAddLinkage extends Command
@@ -71,16 +65,6 @@ public class CommandDiagramAddLinkage extends Command
 			throw new CommandFailedException(e);
 		}
 		
-	}
-
-
-	// FIXME: Delete this as soon as possible
-	public static BaseId createLinkage(Project target, BaseId linkageId, ModelNodeId fromId, ModelNodeId toId) throws Exception, IOException, ParseException
-	{
-		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
-		BaseId createdId = target.createObject(ObjectType.MODEL_LINKAGE, linkageId, parameter);
-		target.addLinkageToDiagram(createdId);
-		return createdId;
 	}
 
 

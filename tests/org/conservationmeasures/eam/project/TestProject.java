@@ -11,7 +11,6 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
@@ -28,6 +27,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
@@ -789,8 +789,10 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
-		BaseId insertedId = CommandDiagramAddLinkage.createLinkage(project, id, fromId, toId);
-		return project.getDiagramModel().getLinkageById(insertedId);
+		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
+		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
+		DiagramLinkageId diagramLinkageId = project.addLinkageToDiagram(createdId);
+		return project.getDiagramModel().getLinkageById(diagramLinkageId);
 	}
 
 	public ModelNodeId createNodeAndAddToDiagram(Project projectToUse, NodeType nodeType, BaseId id) throws Exception

@@ -5,15 +5,11 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveLinkage extends Command
@@ -70,14 +66,6 @@ public class CommandDiagramRemoveLinkage extends Command
 		return modelLinkageId;
 	}
 
-	
-	
-	//FIXME: Delete this as soon as possible
-	public static void deleteLinkage(Project target, DiagramLinkageId idToDelete) throws Exception, IOException, ParseException
-	{
-		target.removeLinkageFromDiagram(idToDelete);
-		target.deleteObject(ObjectType.MODEL_LINKAGE, idToDelete);
-	}
 	
 
 	public static final String COMMAND_NAME = "DiagramRemoveLinkage";
