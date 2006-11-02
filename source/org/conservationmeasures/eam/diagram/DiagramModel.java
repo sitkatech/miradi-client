@@ -504,6 +504,20 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getGoalPool();
 	}
 	
+	public DiagramNode[] getAllTargetNodes()
+	{
+		Vector allTargets = new Vector();
+		Vector allNodes = getAllNodes();
+		for (int i = 0; i < allNodes.size(); i++)
+		{
+			DiagramNode diagramNode = (DiagramNode)allNodes.get(i);
+			if (diagramNode.isTarget())
+				allTargets.add(diagramNode);
+		}
+		
+		return (DiagramNode[])allTargets.toArray(new DiagramNode[0]);
+	}
+	
 	
 	private static final String TAG_TYPE = "Type";
 	private static final String TAG_NODES = "Nodes";
