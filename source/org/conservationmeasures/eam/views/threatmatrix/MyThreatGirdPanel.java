@@ -62,7 +62,7 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
 		
 		
-		scrollPane = createScrollPaneWithTableAndRowHeader(
+		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowHeaderTable, globalTthreatTable, rowHeader);
 
 		return scrollPane;
@@ -93,13 +93,14 @@ public class MyThreatGirdPanel extends JPanel
 	{
 		NonEditableThreatMatrixTableModel threatData = model;
 		
-		JTable threatTable = new JTable(threatData);
+		JTable threatTable = new ThreatMatrixTable(threatData);
+
 		threatTable.setIntercellSpacing(new Dimension(0, 0));
 		
 		setThreatTableColumnWidths(threatTable);
 		setRowHeight(threatTable);
 		setColumnHeaderHeight(threatTable);
-		
+
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
 		threatTable.setColumnSelectionAllowed(true);
@@ -115,7 +116,6 @@ public class MyThreatGirdPanel extends JPanel
 		
 		return threatTable;
 	}
-
 
 	private void setColumnHeaderHeight(JTable threatTable)
 	{
@@ -241,9 +241,7 @@ public class MyThreatGirdPanel extends JPanel
 	ThreatRatingFramework framework;
 	ThreatRatingBundle highlightedBundle;
 	JTable globalTthreatTable;
-	JScrollPane scrollPane;
 	NonEditableRowHeaderTableModel rowHeaderData;
-	Vector columnHeaderData;
 }
 
 class CellSelectionListener implements ListSelectionListener
@@ -256,10 +254,9 @@ class CellSelectionListener implements ListSelectionListener
 	{
 		if (threatTable.getSelectedRow() < 0) 
 			return;
-		
 		int row = threatTable.getSelectedRow();
 		int column = threatTable.getSelectedColumn();
-		
+
 		unselectToForceFutureNotifications(row, column);
 		
 		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundleTableCellABundle(row, column) )

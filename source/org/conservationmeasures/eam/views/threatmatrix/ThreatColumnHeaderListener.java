@@ -35,7 +35,7 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 
 		Comparator comparator = null;
 		if(sortColumnToUse == modelToSort.getColumnCount()-1)
-			comparator = new ComparableSummaryNode(sortColumnToUse,modelToSort);
+			comparator = new ComparableSummaryNode(modelToSort);
 		else
 			comparator = new ComparableNode(sortColumnToUse,modelToSort);
 

@@ -15,9 +15,8 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 public class ComparableSummaryNode implements  Comparator
 {
 	
-	public ComparableSummaryNode(int sortColumnToUse, NonEditableThreatMatrixTableModel modelToUse )
+	public ComparableSummaryNode(NonEditableThreatMatrixTableModel modelToUse )
 	{
-		sortColumn = sortColumnToUse;
 		model = modelToUse;
 		framework = model.getFramework();
 	}
@@ -30,20 +29,20 @@ public class ComparableSummaryNode implements  Comparator
 			ValueOption valueOption1 = framework.getThreatThreatRatingValue(baseId1);
 
 			BaseId baseId2 = ((ConceptualModelNode) object2).getId();
-			ValueOption valueOption2 = framework.getTargetThreatRatingValue(baseId2);
+			ValueOption valueOption2 = framework.getThreatThreatRatingValue(baseId2);
 			
 			Integer value1 = new Integer(valueOption1.getNumericValue());
 			Integer value2 = new Integer(valueOption2.getNumericValue());
-			
+
 			return value1.compareTo(value2);
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			return -1;
 		}
 	}
 
-	int sortColumn = 0;
 	NonEditableThreatMatrixTableModel model;
 	ThreatRatingFramework framework;
 

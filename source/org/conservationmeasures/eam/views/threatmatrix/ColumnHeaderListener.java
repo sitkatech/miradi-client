@@ -15,13 +15,10 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		threatGirdPanel = threatGirdPanelInUse;
 	}
 
-	public void mousePressed(MouseEvent e)
+	public void mouseClicked(MouseEvent e) 
 	{
-		sortColumn = threatGirdPanel.globalTthreatTable.columnAtPoint(e.getPoint());
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
+		int clickedColumn = threatGirdPanel.globalTthreatTable.columnAtPoint(e.getPoint());
+		int sortColumn = threatGirdPanel.globalTthreatTable.getColumnModel().getColumn(clickedColumn).getModelIndex();
 		
 		sort(sortColumn);
 
@@ -29,10 +26,9 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		threatGirdPanel.repaint();
 	}
 
+
 	public abstract void sort(int sortColumnToUse);
 	
-	
-	int sortColumn = 0;
 	MyThreatGirdPanel threatGirdPanel;
 	NonEditableThreatMatrixTableModel model;
 
