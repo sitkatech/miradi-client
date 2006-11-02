@@ -6,19 +6,15 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
-import java.awt.geom.Point2D;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.Utilities;
 
 
 public abstract class LocationAction extends MainWindowAction
@@ -47,17 +43,6 @@ public abstract class LocationAction extends MainWindowAction
 			setInvocationPoint(null);	
 		
 		super.doAction(event);
-	}
-
-	private void setInvokationPointToCenterOfScreen()
-	{
-		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-		Rectangle rect = diagramComponent.getVisibleRect();
-		int centeredWidth = rect.width / 2;
-		int centeredHeight = rect.height / 2;
-		Point centeredLocation = new Point(rect.x + centeredWidth, rect.y + centeredHeight);
-		Point2D screenCenteredLocation2D = diagramComponent.fromScreen(centeredLocation);
-		setInvocationPoint(Utilities.createPointFromPoint2D(screenCenteredLocation2D));
 	}
 
 	public boolean shouldBeEnabled(UmbrellaView view)
