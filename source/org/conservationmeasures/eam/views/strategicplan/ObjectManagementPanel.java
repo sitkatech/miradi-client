@@ -163,15 +163,11 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 			}
 		}
 	}
-	
-
 
 	protected ObjectsActionButton createObjectsActionButton(Class actionClass)
 	{
 		return new ObjectsActionButton(getMainWindow().getActions().getObjectsAction(actionClass), this);
 	}
-
-
 
 	protected void setMaxColumnWidthToHeaderWidth(int column)
 	{

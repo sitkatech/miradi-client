@@ -13,8 +13,8 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.views.strategicplan.ResourceManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.workplan.ResourceManagementPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 

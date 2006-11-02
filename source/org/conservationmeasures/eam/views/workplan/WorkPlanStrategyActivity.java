@@ -69,13 +69,12 @@ public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 	
 	public boolean canInsertActivityHere()
 	{
-		return true;
+		return false;
 	}
 
 	public void rebuild()
 	{
 	}
-
 
 	Project project;
 	Task activity;
