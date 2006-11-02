@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram;
 
 import java.awt.Point;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -389,7 +388,7 @@ public class DiagramModel extends DefaultGraphModel
 		addLinkagesToModel();
 	}
 
-	private void addNodesToModel(EnhancedJsonObject json) throws ParseException, Exception
+	private void addNodesToModel(EnhancedJsonObject json) throws Exception
 	{
 		EnhancedJsonObject nodeMap = json.getJson(TAG_NODES);
 		JSONArray keys = nodeMap.names();
@@ -420,16 +419,37 @@ public class DiagramModel extends DefaultGraphModel
 		ModelNodeId[] nodeIds = getNodePool().getModelNodeIds();
 		for(int i = 0;i < nodeIds.length; ++i)
 		{
+			ModelNodeId modelNodeId = nodeIds[i];
+			if(!hasNode(modelNodeId))
+				addNodeToDiagram(modelNodeId);
 			try
 			{
-				DiagramNode node = getNodeById(nodeIds[i]);
+				DiagramNode node = getNodeById(modelNodeId);
 				if(node.isCluster())
 					addNodesToCluster((DiagramCluster)node);
 			}
 			catch(Exception e)
 			{
-				EAM.logWarning("Node " + nodeIds[i] + " not in the diagram");
+				EAM.logException(e);
+				EAM.errorDialog("Errors detected in the project. " +
+						"Continuing to load, but you may experience problems. " +
+						"Please contact technical support.");
 			}
+		}
+	}
+	
+	void addNodeToDiagram(ModelNodeId modelNodeId)
+	{
+		try
+		{
+			createNode(modelNodeId);
+			String[] bodyLines = {"A factor was missing from the diagram. It has been added."};
+			EAM.okDialog("Repairing Project", bodyLines);
+		}
+		catch(Exception e)
+		{
+			EAM.errorDialog("This project has some internal errors that could not be automatically repaired. " +
+					"Please contact technical support.");
 		}
 	}
 	
