@@ -25,8 +25,16 @@ public class ViewPossibleTeamMembers extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		SummaryView view = (SummaryView)getView();
-		view.showTeamAddMembersDialog();
+		try
+		{
+			SummaryView view = (SummaryView)getView();
+			view.showTeamAddMembersDialog();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new CommandFailedException(e);
+		}
 	}
 
 }
