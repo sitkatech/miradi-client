@@ -29,7 +29,7 @@ public class ToolBarButton extends JButton implements LocationHolder
 	{
 		super(action);
 		setText(null);
-		//FIXME adding text to the tool bar buttons.
+		//TODO adding text to the tool bar buttons.
 		//comment out setText(null); above to see text 
 		//setVerticalTextPosition(AbstractButton.BOTTOM);
 	    //setHorizontalTextPosition(AbstractButton.CENTER);

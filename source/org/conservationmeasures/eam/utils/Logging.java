@@ -39,7 +39,6 @@ public class Logging
 	public static void logException(Exception e)
 	{
 		logDestination.println("ERROR: ");
-		// TODO: actually print the stack trace to logDestination
 		e.printStackTrace(logDestination);
 	}
 	
