@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -69,6 +68,8 @@ abstract public class InsertNode extends LocationDoer
 		
 		int deltaX = DEFAULT_MOVE;
 		int deltaY = DEFAULT_MOVE;
+		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+		Rectangle rect = diagramComponent.getVisibleRect();
 
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 
@@ -90,7 +91,8 @@ abstract public class InsertNode extends LocationDoer
 		{
 			Point nodeLocation = selectedNodes[0].getLocation();
 			deltaX = 0;
-			if (nodeLocation.x - DEFAULT_MOVE + selectedNodes[0].getBounds().getWidth() > 0)
+			double selectedNodeWidth = selectedNodes[0].getBounds().getWidth();
+			if (nodeLocation.x - (DEFAULT_MOVE - selectedNodeWidth) > 0)
 				deltaX = nodeLocation.x - DEFAULT_MOVE;
 
 			deltaY = nodeLocation.y;
@@ -103,9 +105,10 @@ abstract public class InsertNode extends LocationDoer
 			if (allTargets.length - 1 > 0)
 			{
 				int highestY = 0;
+				double y;
 				for (int i = 0; i < allTargets.length; i++)
 				{
-					double y = allTargets[i].getBounds().getY();
+					y = allTargets[i].getBounds().getY();
 					if (y > highestY)
 						highestY = (int)y;
 				}
@@ -115,9 +118,6 @@ abstract public class InsertNode extends LocationDoer
 			}
 			else
 			{
-				DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-				Rectangle rect = diagramComponent.getVisibleRect();
-
 				int nodeWidth = addedNode.getRectangle().width + RIGHT_SPACING;
 				deltaX = rect.width - nodeWidth;
 				deltaY = rect.height / 3;
@@ -125,16 +125,11 @@ abstract public class InsertNode extends LocationDoer
 		}
 		else
 		{
-			DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-			Rectangle rect = diagramComponent.getVisibleRect();
 			int centeredWidth = rect.width / 2;
 			int centeredHeight = rect.height / 2;
 			deltaX = rect.x + centeredWidth;
 			deltaY = rect.y + centeredHeight;
 		}
-
-		deltaX -= deltaX % getProject().getGridSize(); 
-		deltaY -= deltaY % getProject().getGridSize();
 
 		Command moveCommand = new CommandDiagramMove(deltaX, deltaY, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
