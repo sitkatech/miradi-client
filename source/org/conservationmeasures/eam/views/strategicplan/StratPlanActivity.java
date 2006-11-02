@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
@@ -55,21 +54,6 @@ public class StratPlanActivity extends TreeTableNode
 	public int getType()
 	{
 		return activity.getType();
-	}
-	
-	public BaseId getId()
-	{
-		return activity.getId();
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return false;
-	}
-	
-	public void rebuild()
-	{
-		
 	}
 	
 	String getResourcesAsHtml()

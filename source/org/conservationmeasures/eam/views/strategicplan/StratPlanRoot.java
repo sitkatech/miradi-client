@@ -46,16 +46,6 @@ public class StratPlanRoot extends TreeTableNode
 		return -1;
 	}
 	
-	public BaseId getId()
-	{
-		return BaseId.INVALID;
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return false;
-	}
-	
 	public void rebuild()
 	{
 		Vector goalVector = new Vector();

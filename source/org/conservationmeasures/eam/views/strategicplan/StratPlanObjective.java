@@ -49,19 +49,9 @@ public class StratPlanObjective extends TreeTableNode
 		return objective.getType();
 	}
 
-	public BaseId getId()
-	{
-		return objective.getId();
-	}
-
 	public String toString()
 	{
 		return objective.getLabel();
-	}
-
-	public boolean canInsertActivityHere()
-	{
-		return false;
 	}
 
 	public void rebuild()
