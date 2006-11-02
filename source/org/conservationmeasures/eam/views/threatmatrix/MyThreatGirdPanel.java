@@ -6,14 +6,10 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.util.Enumeration;
 import java.util.Vector;
 
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -22,14 +18,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.LookAndFeel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -290,39 +284,5 @@ class CellSelectionListener implements ListSelectionListener
 }
 
 
-class CustomTableCellRenderer extends DefaultTableCellRenderer
-{
-	public CustomTableCellRenderer()
-	{
-		setHorizontalAlignment(CENTER);
-	}
 
-	public Component getTableCellRendererComponent(JTable table, Object value,
-			boolean isSelected, boolean hasFocus, int row, int column)
-	{
-		Component cell = super.getTableCellRendererComponent(table, value,
-				isSelected, hasFocus, row, column);
-
-		cell.setBackground( ((ValueOption)value).getColor() );
-		cell.setFont(new Font(null,Font.BOLD,12));
-		cell.setForeground(Color.BLACK); 
-		
-		setSummaryAndThreatRatingBoarders(table, row, column);
-		
-		return cell;
-	}
-
-	private void setSummaryAndThreatRatingBoarders(JTable table, int row, int column)
-	{
-		if (row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR || 
-				column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR)
-			setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createLineBorder(Color.DARK_GRAY,2),getBorder()));
-		else 
-			setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
-	}
-	
-	int SUMMARY_ROW_COLUMN_INCR = 1;
-}
 
