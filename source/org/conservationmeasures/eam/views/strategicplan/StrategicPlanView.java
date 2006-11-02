@@ -48,16 +48,10 @@ public class StrategicPlanView extends TabbedView
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
 		addTab(EAM.text("Goals"), goalPanel);
 		addTab(EAM.text("Objectives"), objectivePanel);
-		//TODO remove when transition is over
-		//addTab(EAM.text("Resources"), new ResourceManagementPanel(this));
-		//addTab(EAM.text("Activities"), new ActivitiesPanel(this));
 	}
 	
 	public void deleteTabs()
 	{
-		//TODO remove when transition is over
-		//if(strategicPlanPanel != null)
-		//	strategicPlanPanel.close();
 		strategicPlanPanel = null;
 		strategicPlanPanel = null;
 		objectivePanel = null;
@@ -84,21 +78,6 @@ public class StrategicPlanView extends TabbedView
 		return goalPanel;
 	}
 	
-	//TODO remove when transition is over
-	/*public void selectObject(EAMObject objectToSelect)
-	{
-		Component tab = getCurrentTabContents();
-		if(tab.equals(getStrategicPlanPanel()))
-		{
-			//getStrategicPlanPanel().selectObject(objectToSelect);
-		}
-		else
-		{
-			ObjectManagementPanel panel = (ObjectManagementPanel)tab;
-			panel.selectObject(objectToSelect);
-		}
-	}*/
-	
 	public ModifyActivity getModifyActivityDoer()
 	{
 		return modifyActivityDoer;
@@ -114,32 +93,16 @@ public class StrategicPlanView extends TabbedView
 		modifyActivityDoer = new ModifyActivity();
 		modifyResourceDoer = new ModifyResource();
 		
-		//TODO remove when transition is over
-		//addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
-		
-		//TODO remove when transition is over
-		//addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
-		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
-		
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
-		
-		//TODO remove when transition is over
-		//addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
-		
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
 		addDoerToMap(ActionModifyGoal.class, new ModifyGoal());
 		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
-
-		//TODO remove when transition is over
-		//addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
-		//addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 	}
 	
 	StrategicPlanPanel strategicPlanPanel;
