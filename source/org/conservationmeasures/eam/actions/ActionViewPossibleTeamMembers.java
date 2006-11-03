@@ -17,7 +17,7 @@ public class ActionViewPossibleTeamMembers extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Add Members");
+		return EAM.text("Action|Manage|Add Members...");
 	}
 
 	public String getToolTipText()
