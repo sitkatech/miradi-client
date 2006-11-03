@@ -5,69 +5,26 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.workplan.ResourceManagementPanel;
-import org.martus.swing.UiButton;
-import org.martus.swing.UiLabel;
 
-public class PossibleTeamMembersPanel extends ObjectPropertiesPanel
+public class PossibleTeamMembersPanel extends NewResourceManagementPanel
 {
-	public PossibleTeamMembersPanel(MainWindow mainWindowToUse, ModelessDialogPanel owningPanel)
+	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, null);
-		owner = owningPanel;
-		
-		ResourceManagementPanel resourcePanel = new ResourceManagementPanel(getView(), this);
-		
-		ObjectsAction addMemberAction = getMainWindow().getActions().getObjectsAction(ActionTeamAddMember.class);
-		UiButton[] extraButtons = {new ObjectsActionButton(addMemberAction, resourcePanel), };
-		resourcePanel.addButtons(extraButtons);
-		
-		
-
-		setLayout(new BorderLayout());
-		add(new UiLabel(getOverviewText()), BorderLayout.BEFORE_FIRST_LINE);
-		add(resourcePanel, BorderLayout.CENTER);
+		super(mainWindowToUse, getExtraButtonActions(mainWindowToUse), OVERVIEW_TEXT);
 	}
 
-	public String getPanelDescription()
+	private static ObjectsAction[] getExtraButtonActions(MainWindow mainWindowToUse)
 	{
-		return null;
+		ObjectsAction addMemberAction = mainWindowToUse.getActions().getObjectsAction(ActionTeamAddMember.class);
+		return new ObjectsAction[] {addMemberAction};
 	}
 	
-	public EAMObject getObject()
-	{
-		return null;
-	}
-	
-	public Project getProject()
-	{
-		return getMainWindow().getProject();
-	}
-	
-	public UmbrellaView getView()
-	{
-		return getMainWindow().getCurrentView();
-	}
-
-	public void objectWasSelected(BaseId selectedId)
-	{
-		super.objectWasSelected(selectedId);
-		owner.objectWasSelected(selectedId);
-	}
-
-	String getOverviewText()
-	{
-		return "<html>" +
+	final static String OVERVIEW_TEXT = 
+		EAM.text("<html>" +
 				"<p>" +
 				"This table lists all the Resources that have been created within this project. " +
 				"</p>" +
@@ -75,9 +32,6 @@ public class PossibleTeamMembersPanel extends ObjectPropertiesPanel
 				"You can select existing resources and add them to the team, " +
 				"or you can create new resources." +
 				"</p>" +
-				"</html";
-	}
+				"</html");
 
-	MainWindow mainWindow;
-	ModelessDialogPanel owner;
 }

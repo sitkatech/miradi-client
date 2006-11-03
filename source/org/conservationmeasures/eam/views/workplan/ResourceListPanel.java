@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 
-public class ResourceManagementPanel extends ObjectManagementPanel 
+public class ResourceListPanel extends ObjectManagementPanel 
 {
-	public ResourceManagementPanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
+	public ResourceListPanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
 	{
 		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClasses);
 		owner = owningPanel;
