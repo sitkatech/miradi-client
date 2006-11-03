@@ -122,11 +122,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		threatRows = threatRowsToUse;
 	}
 
-	public boolean isCellEditable(int row, int column)
-	{
-		return false;
-	}
-
 	
 	//***********************************************************************************
 	

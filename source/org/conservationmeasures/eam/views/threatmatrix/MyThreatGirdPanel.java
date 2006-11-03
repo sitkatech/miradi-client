@@ -244,19 +244,44 @@ class CellSelectionListener implements ListSelectionListener
 		threatTable = threatTableInUse;
 		threatGirdPanel = threatGirdPanelInUse;
 	}
+
 	public void valueChanged(ListSelectionEvent e)
 	{
-		if (threatTable.getSelectedRow() < 0) 
-			return;
-		int row = threatTable.getSelectedRow();
-		int column = threatTable.getSelectedColumn();
+		System.out.println(threatTable.getSelectedRow());
+		
+		if (threatTable.getSelectedRow() >= 0) 
+		{
+			int row = threatTable.getSelectedRow();
+			int column = threatTable.getSelectedColumn();
 
-		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundleTableCellABundle(row, column) )
-			notifyComponents(row, column);
+			if(((NonEditableThreatMatrixTableModel) threatTable.getModel())
+					.isBundleTableCellABundle(row, column))
+				notifyComponents(row, column);
+			else
+				notifyComponentsClearSelection();
+
+			unselectToForceFutureNotifications(row, column);
+		}
 	}
 
-
 	
+	private void unselectToForceFutureNotifications(int row, int column)
+	{
+		threatTable.changeSelection(row, column, true,false);
+	}
+	
+	private void notifyComponentsClearSelection()
+	{
+		try
+		{
+			threatGirdPanel.view.selectBundle(null);
+		}
+		catch(Exception ex)
+		{
+			EAM.logException(ex);
+		}
+	}
+
 	private void notifyComponents(int row, int column)
 	{
 		try
@@ -271,6 +296,8 @@ class CellSelectionListener implements ListSelectionListener
 			EAM.logException(ex);
 		}
 	}
+	
+	
 	
 	JTable threatTable;
 	MyThreatGirdPanel threatGirdPanel;

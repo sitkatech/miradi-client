@@ -50,7 +50,7 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 				setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
 		else 
 		{
-			if (!selected)
+			if (!focused)
 			setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
 			else 
