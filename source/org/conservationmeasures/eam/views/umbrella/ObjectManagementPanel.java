@@ -126,7 +126,7 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	{
 		int wasSelected = table.getSelectedRow();
 		model.fireTableDataChanged();
-		if(wasSelected >= 0)
+		if(wasSelected >= 0 && wasSelected < table.getRowCount())
 			table.setRowSelectionInterval(wasSelected, wasSelected);
 	}
 
