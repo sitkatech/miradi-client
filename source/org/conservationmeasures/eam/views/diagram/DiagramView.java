@@ -72,6 +72,7 @@ import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.UiScrollPane;
 
+
 public class DiagramView extends UmbrellaView implements CommandExecutedListener
 {
 	public DiagramView(MainWindow mainWindowToUse) throws Exception
@@ -79,6 +80,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		super(mainWindowToUse);
 		mode = ViewData.MODE_DEFAULT;
 		diagram = new DiagramComponent(getMainWindow());
+		legendDialog = new DiagramLegendPanel();
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		
 		addDiagramViewDoersToMap();
@@ -86,7 +88,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		updateToolBar();
 
 		getProject().addCommandExecutedListener(this);
-
 	}
 
 	private void updateToolBar()
@@ -161,15 +162,19 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public void becomeActive() throws Exception
 	{
 		removeAll();
-		
-		bigSplitter =new ViewSplitPane(createWizard(), createDiagramPanel(), bigSplitter);
 
+		UiScrollPane diagramComponent = createDiagramPanel();
+
+		JPanel bottomHalf = new JPanel(new BorderLayout());
+		bottomHalf.add(diagramComponent, BorderLayout.CENTER);
+		bottomHalf.add(legendDialog, BorderLayout.BEFORE_LINE_BEGINS);
+
+		bigSplitter =new ViewSplitPane(createWizard(), bottomHalf, bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
-
+		
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
 	}
 	
-
 	private UiScrollPane createDiagramPanel()
 	{
 		UiScrollPane uiScrollPane = new UiScrollPane(diagram);
@@ -429,4 +434,5 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	Properties propertiesDoer;
 	DiagramWizardPanel wizardPanel;
 	String mode;
+	DiagramLegendPanel legendDialog;
 }
