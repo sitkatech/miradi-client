@@ -114,12 +114,20 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		model.fireTableDataChanged();
+		reactToChanges();
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
+		reactToChanges();
+	}
+
+	private void reactToChanges()
+	{
+		int wasSelected = table.getSelectedRow();
 		model.fireTableDataChanged();
+		if(wasSelected >= 0)
+			table.setRowSelectionInterval(wasSelected, wasSelected);
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
