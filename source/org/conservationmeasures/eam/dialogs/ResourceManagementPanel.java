@@ -29,13 +29,13 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		ResourceListPanel resourcePanel = new ResourceListPanel(mainWindowToUse.getCurrentView(), this);
-		addExtraButtons(resourcePanel, extraButtonActions);
+		ResourceListPanel resourceListPanel = new ResourceListPanel(mainWindowToUse.getCurrentView(), this);
+		addExtraButtons(resourceListPanel, extraButtonActions);
 		
 		editResourcePanel = new ProjectResourcePropertiesPanel(project, BaseId.INVALID);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
-		add(resourcePanel, BorderLayout.CENTER);
+		add(resourceListPanel, BorderLayout.CENTER);
 		add(editResourcePanel, BorderLayout.AFTER_LAST_LINE);
 	}
 
