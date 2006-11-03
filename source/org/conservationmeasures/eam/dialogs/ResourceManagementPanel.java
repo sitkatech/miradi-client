@@ -18,14 +18,14 @@ import org.conservationmeasures.eam.views.workplan.ResourceListPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
-public class NewResourceManagementPanel extends ModelessDialogPanel
+public class ResourceManagementPanel extends ModelessDialogPanel
 {
-	public NewResourceManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public ResourceManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		this(mainWindowToUse, new ObjectsAction[0], "");
 	}
 	
-	public NewResourceManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
+	public ResourceManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
 	{
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();

@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.dialogs.NewResourceManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -48,7 +48,7 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
 		addTab(EAM.text("Work Plan"), workPlanPanel);
-		addTab(EAM.text("Resources"), new NewResourceManagementPanel(getMainWindow()));
+		addTab(EAM.text("Resources"), new ResourceManagementPanel(getMainWindow()));
 		addTab(EAM.text("Activities"), new ActivitiesPanel(this));
 	}
 

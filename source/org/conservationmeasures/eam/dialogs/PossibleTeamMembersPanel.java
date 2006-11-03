@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class PossibleTeamMembersPanel extends NewResourceManagementPanel
+public class PossibleTeamMembersPanel extends ResourceManagementPanel
 {
 	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
