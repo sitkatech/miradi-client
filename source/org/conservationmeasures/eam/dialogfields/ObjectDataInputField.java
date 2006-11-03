@@ -26,6 +26,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
 		tag = tagToUse;
+		allowEdits = true;
 	}
 	
 	abstract public JComponent getComponent();
@@ -73,16 +74,26 @@ abstract public class ObjectDataInputField implements FocusListener
 		if(isValidObject())
 			text = project.getObjectData(objectType, objectId, tag);
 		setText(text);
-		setEditable(isValidObject());
+		updateEditableState();
+	}
+	
+	public boolean allowEdits()
+	{
+		return allowEdits;
 	}
 
-	private boolean isValidObject()
+	public boolean isValidObject()
 	{
-		boolean isValidObject = !objectId.isInvalid();
-		return isValidObject;
+		return (!objectId.isInvalid());
 	}
 	
 	public void setEditable(boolean newState)
+	{
+		allowEdits = newState;
+		updateEditableState();
+	}
+
+	public void updateEditableState()
 	{
 		getComponent().setEnabled(false);
 	}
@@ -135,4 +146,5 @@ abstract public class ObjectDataInputField implements FocusListener
 	private int objectType;
 	private BaseId objectId;
 	private String tag;
+	private boolean allowEdits;
 }

@@ -40,8 +40,9 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setText(newValue);
 	}
 	
-	public void setEditable(boolean editable)
+	public void updateEditableState()
 	{
+		boolean editable = allowEdits() && isValidObject();
 		field.setEditable(editable);
 		Color fg = EAM.EDITABLE_FOREGROUND_COLOR;
 		Color bg = EAM.EDITABLE_BACKGROUND_COLOR;
