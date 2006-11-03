@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -24,8 +23,6 @@ public class ResourceListPanel extends ObjectManagementPanel
 			createObjectsActionButton(ActionDeleteResource.class), 
 		};
 	
-		addDoubleClickAction(ActionModifyResource.class);
-		
 		addButtons(extraButtons);
 		setMaxColumnWidthToHeaderWidth(0);
 	}
