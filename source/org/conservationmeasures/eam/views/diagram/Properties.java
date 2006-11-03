@@ -7,22 +7,17 @@ package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.dialogs.LinkagePropertiesDialog;
+import org.conservationmeasures.eam.dialogs.LinkagePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.martus.swing.Utilities;
 
 public class Properties extends LocationDoer
 {
@@ -73,16 +68,9 @@ public class Properties extends LocationDoer
 	
 	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
 	{
-		LinkagePropertiesDialog dlg = new LinkagePropertiesDialog(getMainWindow(), getProject(), linkage);
-		dlg.setText(linkage.getStressLabel());
-		Utilities.centerDlg(dlg);
-		dlg.setVisible(true);
-		if(!dlg.getResult())
-			return;
-
-		Command cmd = new CommandSetObjectData(ObjectType.MODEL_LINKAGE, linkage.getDiagramLinkageId(), 
-				ConceptualModelLinkage.TAG_STRESS_LABEL, dlg.getText());
-		getProject().executeCommand(cmd);
+		LinkagePropertiesPanel panel = new LinkagePropertiesPanel(getProject(), linkage.getWrappedId());
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
+		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
 	void doNodeProperties(DiagramNode selectedNode, Point at) throws CommandFailedException
