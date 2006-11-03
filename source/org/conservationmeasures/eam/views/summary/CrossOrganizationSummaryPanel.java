@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -33,29 +32,14 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		filename.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		add(filename);
 		
-		ObjectDataInputField projectName = createStringField(metadata.TAG_PROJECT_NAME);
-		addField(projectName);
-		
-		ObjectDataInputField projectScope = createMultilineField(metadata.TAG_PROJECT_SCOPE);
-		addField(projectScope);
-		
-		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
-		addField(shortProjectScope);
-		
-		ObjectDataInputField projectVision = createMultilineField(metadata.TAG_PROJECT_VISION);
-		addField(projectVision);
-		
-		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
-		addField(shortProjectVision);
-		
-		ObjectDataInputField startDate = createDateField(metadata.TAG_START_DATE);
-		addField(startDate);
-
-		ObjectDataInputField effectiveDate = createDateField(metadata.TAG_DATA_EFFECTIVE_DATE);
-		addField(effectiveDate);
-
-		ObjectDataInputField sizeInHectares = createNumericField(metadata.TAG_SIZE_IN_HECTARES);
-		addField(sizeInHectares);
+		addField(createStringField(metadata.TAG_PROJECT_NAME));
+		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
+		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
+		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
+		addField(createStringField(metadata.TAG_SHORT_PROJECT_VISION));
+		addField(createDateField(metadata.TAG_START_DATE));
+		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
+		addField(createNumericField(metadata.TAG_SIZE_IN_HECTARES));
 		
 		add(new UiLabel(EAM.text("Label|Team Members:")));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
