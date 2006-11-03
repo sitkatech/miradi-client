@@ -251,17 +251,10 @@ class CellSelectionListener implements ListSelectionListener
 		int row = threatTable.getSelectedRow();
 		int column = threatTable.getSelectedColumn();
 
-		unselectToForceFutureNotifications(row, column);
-		
 		if (((NonEditableThreatMatrixTableModel)threatTable.getModel()).isBundleTableCellABundle(row, column) )
 			notifyComponents(row, column);
 	}
 
-	
-	private void unselectToForceFutureNotifications(int row, int column)
-	{
-		threatTable.changeSelection(row, column, true,false);
-	}
 
 	
 	private void notifyComponents(int row, int column)

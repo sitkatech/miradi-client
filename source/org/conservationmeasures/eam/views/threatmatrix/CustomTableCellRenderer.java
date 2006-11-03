@@ -39,13 +39,25 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 
 	private void setBoarders(JTable table, int row, int column, boolean selected, boolean focused)
 	{
-		if (row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR || 
-				column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR)
-			setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createLineBorder(Color.DARK_GRAY,2),getBorder()));
+		
+		if ((row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR) && 
+				(column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR))
+		{
+			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
+		}
+		else
+		if (row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR)
+		{
+			setBorder(BorderFactory.createMatteBorder(5,1,1,1,Color.DARK_GRAY));
+		}
+		else 
+		if (column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR)
+		{
+				setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
+		}
 		else 
 		{
-			if (!focused)
+			if (!selected)
 			setBorder(BorderFactory.createCompoundBorder(
 					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
 			else 

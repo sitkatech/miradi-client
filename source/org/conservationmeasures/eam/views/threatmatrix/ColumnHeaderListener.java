@@ -17,6 +17,8 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 
 	public void mouseClicked(MouseEvent e) 
 	{
+		threatGirdPanel.globalTthreatTable.clearSelection();
+		
 		int clickedColumn = threatGirdPanel.globalTthreatTable.columnAtPoint(e.getPoint());
 		int sortColumn = threatGirdPanel.globalTthreatTable.getColumnModel().getColumn(clickedColumn).getModelIndex();
 		
@@ -25,7 +27,6 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		threatGirdPanel.revalidate();
 		threatGirdPanel.repaint();
 	}
-
 
 	public abstract void sort(int sortColumnToUse);
 	
