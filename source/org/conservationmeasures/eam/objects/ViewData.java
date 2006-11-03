@@ -73,15 +73,22 @@ public class ViewData extends EAMBaseObject
 		currentMode = new StringData();
 		brainstormNodeIds = new IdListData();
 		currentTab = new IntegerData();
+		sortColumnName = new StringData();
+		sortDirection = new StringData();
 		
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds);
 		addField(TAG_CURRENT_TAB, currentTab);
+		addField(TAG_SORT_COLUMN_NAME, sortColumnName);
+		addField(TAG_SORT_DIRECTION, sortDirection);
 	}
 	
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_BRAINSTORM_NODE_IDS = "BrainstormNodeIds";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
+	public static final String TAG_SORT_COLUMN_NAME = "SortColumnName";
+	public static final String TAG_SORT_DIRECTION = "SortDirecton";
+	
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -89,4 +96,6 @@ public class ViewData extends EAMBaseObject
 	private IntegerData currentTab;
 	private StringData currentMode;
 	private IdListData brainstormNodeIds;
+	private StringData sortColumnName;
+	private StringData sortDirection;
 }
