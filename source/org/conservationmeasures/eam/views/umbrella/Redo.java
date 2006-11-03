@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -37,6 +38,11 @@ public class Redo extends ProjectDoer
 		catch (NothingToRedoException e)
 		{
 			// ignore this
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error during redo"));
 		}
 	}
 }

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -40,6 +41,11 @@ public class Undo extends ProjectDoer
 		catch (NothingToUndoException e)
 		{
 			// ignore this
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error during undo"));
 		}
 	}
 
