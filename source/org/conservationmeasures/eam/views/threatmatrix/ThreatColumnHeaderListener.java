@@ -12,8 +12,6 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
-import sun.awt.windows.ThemeReader;
-
 
 public class ThreatColumnHeaderListener extends ColumnHeaderListener
 {
