@@ -42,16 +42,14 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	{
 		Object value= null;
 		
-		if (row == threatRows.length && column==targetColumns.length)
+		if (isOverallProjectRating(row,column))
 			return framework.getOverallProjectRating();
 	
-		if (row == threatRows.length) {
+		if (isSumaryRow(row,column))
 			return framework.getTargetThreatRatingValue(getTargetId(column));
-		}
 	
-		if (column==targetColumns.length) {
+		if (isSumaryColumn(row,column))
 			return framework.getThreatThreatRatingValue(getThreatId(row));
-		}
 
 		ThreatRatingBundle bundle = realDataGetValueAt(row,column);
 		if (bundle==null)
@@ -61,8 +59,22 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 		return value;
 	}
+	
+	private boolean isOverallProjectRating(int row, int column) 
+	{
+		return (row == threatRows.length && column==targetColumns.length);
+	}
+	
+	private boolean isSumaryRow(int row, int column) 
+	{
+		return (row == threatRows.length);
+	}
 
-
+	private boolean isSumaryColumn(int row, int column) 
+	{
+		return (column==targetColumns.length);
+	}
+	
 	private Object getDefaultValueOption() 
 	{
 		if (defaultValueOption!=null) return defaultValueOption;
@@ -109,19 +121,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	{
 		threatRows = threatRowsToUse;
 	}
-	
-	public void moveColumn(int fromColumnIndex , int toColumnIndex)
-	{
-		ConceptualModelNode columnNodeFrom =targetColumns[fromColumnIndex];
-		ConceptualModelNode columnNodeTo = targetColumns[toColumnIndex];
-		targetColumns[fromColumnIndex]= columnNodeTo;
-		targetColumns[toColumnIndex]= columnNodeFrom;
-	}
-	
-	public ThreatRatingFramework getFramework() {
-		return framework;
-	}
-	
+
 	public boolean isCellEditable(int row, int column)
 	{
 		return false;
@@ -129,6 +129,17 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	
 	//***********************************************************************************
+	
+	
+	public ThreatRatingFramework getFramework() {
+		return framework;
+	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+
 	
 	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
 			throws Exception
@@ -148,14 +159,10 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return framework.getBundle(threatId, targetId);
 	}
 
-	public Project getProject()
-	{
-		return project;
-	}
 
 	public int getTargetCount()
 	{
-		return getTargets().length;
+		return targetColumns.length;
 	}
 
 	ConceptualModelNode[] getDirectThreats()
@@ -165,7 +172,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public int getThreatCount()
 	{
-		return getDirectThreats().length;
+		return threatRows.length;
 	}
 
 	ConceptualModelNode[] getTargets()
@@ -178,12 +185,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return project.isLinked(threatId, targetId);
 	}
 
-	public String getThreatName(int threatIndex)
-	{
-		ConceptualModelNode cmNode = getThreatNode(threatIndex);
-		return cmNode.getLabel();
-	}
-
 	public ModelNodeId getThreatId(int threatIndex)
 	{
 		ConceptualModelNode cmNode = getThreatNode(threatIndex);
@@ -193,12 +194,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	public ConceptualModelNode getThreatNode(int threatIndex)
 	{
 		return threatRows[threatIndex];
-	}
-
-	public String getTargetName(int targetIndex)
-	{
-		ConceptualModelNode cmNode = getTargetNode(targetIndex);
-		return cmNode.getLabel();
 	}
 
 	public ModelNodeId getTargetId(int targetIndex)
