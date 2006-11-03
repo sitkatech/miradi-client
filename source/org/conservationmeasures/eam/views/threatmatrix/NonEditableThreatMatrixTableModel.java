@@ -77,7 +77,8 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	
 	private Object getDefaultValueOption() 
 	{
-		if (defaultValueOption!=null) return defaultValueOption;
+		if (defaultValueOption!=null) 
+			return defaultValueOption;
 		
 		try
 		{
@@ -85,6 +86,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 		}
 
 		return defaultValueOption;
@@ -122,6 +124,11 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		threatRows = threatRowsToUse;
 	}
 
+	public boolean isCellEditable(int row, int column)
+	{
+		return false;
+	}
+	
 	
 	//***********************************************************************************
 	
@@ -227,7 +234,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 				return i;
 		return -1;
 	}
-
 
 	public ModelNodeId findThreatByName(String threatName)
 	{

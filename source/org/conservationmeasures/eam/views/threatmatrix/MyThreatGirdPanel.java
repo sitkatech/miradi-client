@@ -87,7 +87,7 @@ public class MyThreatGirdPanel extends JPanel
 	{
 		NonEditableThreatMatrixTableModel threatData = model;
 		
-		JTable threatTable = new ThreatMatrixTable(threatData);
+		ThreatMatrixTable threatTable = new ThreatMatrixTable(threatData);
 
 		threatTable.setIntercellSpacing(new Dimension(0, 0));
 		
@@ -240,7 +240,7 @@ public class MyThreatGirdPanel extends JPanel
 
 class CellSelectionListener implements ListSelectionListener
 {
-	public CellSelectionListener(JTable threatTableInUse, MyThreatGirdPanel threatGirdPanelInUse) {
+	public CellSelectionListener(ThreatMatrixTable threatTableInUse, MyThreatGirdPanel threatGirdPanelInUse) {
 		threatTable = threatTableInUse;
 		threatGirdPanel = threatGirdPanelInUse;
 	}
@@ -250,7 +250,7 @@ class CellSelectionListener implements ListSelectionListener
 		if (threatTable.getSelectedRow() >= 0) 
 		{
 			int row = threatTable.getSelectedRow();
-			int column = threatTable.getSelectedColumn();
+			int column = threatTable.getSelectedModelColumn();
 
 			if(((NonEditableThreatMatrixTableModel) threatTable.getModel())
 					.isBundleTableCellABundle(row, column))
@@ -258,7 +258,7 @@ class CellSelectionListener implements ListSelectionListener
 			else
 				notifyComponentsClearSelection();
 
-			unselectToForceFutureNotifications(row, column);
+			unselectToForceFutureNotifications(row, threatTable.getSelectedColumn());
 		}
 	}
 
@@ -297,7 +297,7 @@ class CellSelectionListener implements ListSelectionListener
 	
 	
 	
-	JTable threatTable;
+	ThreatMatrixTable threatTable;
 	MyThreatGirdPanel threatGirdPanel;
 }
 
