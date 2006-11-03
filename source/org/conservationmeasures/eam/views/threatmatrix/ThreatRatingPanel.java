@@ -161,15 +161,21 @@ public class ThreatRatingPanel extends Box
 			UiComboBoxWithSaneActionFiring dropdown = (UiComboBoxWithSaneActionFiring)dropdowns.get(criterion);
 
 			BaseId valueId = defaultValueId;
+			
 			if(bundle != null)
 			{
+				dropdown.setEnabled(true);
 				valueId = bundle.getValueId(criterion.getId());
-			}
+			} 
+			else
+				dropdown.setEnabled(false);
+
 			if(!valueId.isInvalid())
 			{
 				ValueOption option = framework.getValueOption(valueId);
 				dropdown.setSelectedItemWithoutFiring(option);
 			}
+
 		}
 	}
 

@@ -247,8 +247,6 @@ class CellSelectionListener implements ListSelectionListener
 
 	public void valueChanged(ListSelectionEvent e)
 	{
-		System.out.println(threatTable.getSelectedRow());
-		
 		if (threatTable.getSelectedRow() >= 0) 
 		{
 			int row = threatTable.getSelectedRow();
