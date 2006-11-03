@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
@@ -51,7 +51,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 
 	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
 	{
-		ArrayList list = new ArrayList(Arrays.asList(threatList));
+		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);
 		threatList = (ConceptualModelNode[]) list.toArray(new ConceptualModelNode[0]);
 		return threatList;
