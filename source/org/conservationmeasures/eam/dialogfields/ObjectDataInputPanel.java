@@ -47,6 +47,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		updateFieldsFromProject();
 	}
 	
+	public void setFocusOnFirstField()
+	{
+		((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
+	}
+	
 	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);

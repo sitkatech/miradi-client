@@ -50,6 +50,7 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 	public void selectObject(EAMObject objectToSelect)
 	{
 		resourceListPanel.selectObject(objectToSelect);
+		editResourcePanel.setFocusOnFirstField();
 	}
 	
 	public EAMObject getObject()
