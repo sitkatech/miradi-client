@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.views.workplan.ResourceListPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
