@@ -50,12 +50,17 @@ abstract public class TabbedView extends UmbrellaView
 			createTabs();
 			int desiredTab = getViewData().getCurrentTab();
 			EAM.logVerbose("Selecting tab " + desiredTab);
+			if(desiredTab >= tabs.getTabCount())
+			{
+				EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
+				desiredTab = 0;
+			}
 			tabs.setSelectedIndex(desiredTab);
 		}
 		catch (Exception e)
 		{
-			EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
-			tabs.setSelectedIndex(0);
+			EAM.logException(e);
+			EAM.errorDialog("Unexpected error switching view");
 		}
 		finally
 		{
