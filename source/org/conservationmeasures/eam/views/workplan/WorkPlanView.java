@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
+import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -19,7 +20,6 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.strategicplan.ModifyActivity;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanWizardPanel;
 
@@ -76,7 +76,7 @@ public class WorkPlanView extends TabbedView
 		}
 		else
 		{
-			ObjectManagementPanel panel = (ObjectManagementPanel)tab;
+			ModelessDialogPanel panel = (ModelessDialogPanel)tab;
 			panel.selectObject(objectToSelect);
 		}
 	}

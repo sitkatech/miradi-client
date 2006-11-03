@@ -88,7 +88,6 @@ import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -200,6 +199,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	public void modifyObject(EAMObject object) throws Exception
 	{
 		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
+		if(propertiesPanel == null)
+			return;
+		
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(mainWindow, propertiesPanel, propertiesPanel.getPanelDescription());
 		dlg.addWindowListener(new ObjectPropertiesDialogWindowEventHandler());
 		showFloatingPropertiesDialog(dlg);
@@ -224,15 +226,14 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 				return new ObjectivePropertiesPanel(getMainWindow(), object);
 			case ObjectType.INDICATOR:
 				return new IndicatorPropertiesPanel(getMainWindow(), object);
-			case ObjectType.PROJECT_RESOURCE:
-				return new ProjectResourcePropertiesPanel(getProject(), object.getId());
 			case ObjectType.TASK:
 				return new TaskPropertiesPanel(getMainWindow(), object);
 			case ObjectType.GOAL:
 				return new GoalPropertiesPanel(getMainWindow(), object);
 		}
 		
-		throw new RuntimeException("Attempted to modify unknown type: " + object.getType());
+		EAM.logDebug("UmbrellaView.createPanelForDialog unknown type: " + object.getType());
+		return null;
 	}
 
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
@@ -249,7 +250,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void selectObject(EAMObject objectToSelect)
 	{
-		EAM.logWarning("UmbrellaView.selectObject don't know how to select: " + objectToSelect);
+		activePropertiesPanel.selectObject(objectToSelect);
 	}
 
 	protected UiLabel createScreenShotLabel()

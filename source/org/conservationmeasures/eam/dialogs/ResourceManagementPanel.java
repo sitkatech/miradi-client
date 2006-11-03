@@ -29,7 +29,7 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		ResourceListPanel resourceListPanel = new ResourceListPanel(mainWindowToUse.getCurrentView(), this);
+		resourceListPanel = new ResourceListPanel(mainWindowToUse.getCurrentView(), this);
 		addExtraButtons(resourceListPanel, extraButtonActions);
 		
 		editResourcePanel = new ProjectResourcePropertiesPanel(project, BaseId.INVALID);
@@ -45,6 +45,11 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		for(int i = 0; i < extraButtons.length; ++i)
 			extraButtons[i] = new ObjectsActionButton(extraButtonActions[i], resourcePanel);
 		resourcePanel.addButtons(extraButtons); 
+	}
+	
+	public void selectObject(EAMObject objectToSelect)
+	{
+		resourceListPanel.selectObject(objectToSelect);
 	}
 	
 	public EAMObject getObject()
@@ -63,5 +68,6 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		editResourcePanel.setObjectId(selectedId);
 	}
 
+	ResourceListPanel resourceListPanel;
 	ProjectResourcePropertiesPanel editResourcePanel;
 }
