@@ -40,21 +40,14 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	private void setBoarders(JTable table, int row, int column, boolean selected, boolean focused)
 	{
 		
-		if ((row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR) && 
-				(column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR))
-		{
+		if (isOverallRatingBorder(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
-		}
 		else
-		if (row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR)
-		{
+		if (isSummaryRowBorder(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,1,1,1,Color.DARK_GRAY));
-		}
 		else 
-		if (column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR)
-		{
+		if (isSummaryColumnBorder(table, row, column))
 				setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
-		}
 		else 
 		{
 			if (!selected)
@@ -65,7 +58,22 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 						BorderFactory.createLineBorder(Color.BLUE,3),getBorder()));
 		}
 	}
-	
 
+	private boolean isOverallRatingBorder(JTable table, int row, int column)
+	{
+		return(row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR) && 
+				(column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR);
+	}
+	
+	private boolean isSummaryRowBorder(JTable table, int row, int column)
+	{
+		return( row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR);
+	}
+	
+	private boolean isSummaryColumnBorder(JTable table, int row, int column)
+	{
+		return (column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR);
+	}
+	
 	int SUMMARY_ROW_COLUMN_INCR = 1;
 }
