@@ -13,7 +13,7 @@ public class ObjectMultilineInputField extends ObjectTextInputField
 {
 	public ObjectMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(5, 60));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, new UiTextArea(3, 50));
 	}
 
 }
