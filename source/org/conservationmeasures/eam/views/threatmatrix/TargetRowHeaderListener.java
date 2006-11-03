@@ -20,17 +20,17 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	public TargetRowHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
+		sortToggle = new boolean[1];
 	}
 
 	
-	public  boolean toggle() 
-	{
-		sortToggle = !sortToggle;
-		return sortToggle;
-		
+	public  boolean toggle(int sortColumn) {
+		sortToggle[sortColumn] = !sortToggle[sortColumn];
+		return sortToggle[sortColumn];
 	}
 	
-	public void sort(int sortColumnToUse) 
+	
+	public void sort(int sortColumn) 
 	{
 		
 		NonEditableThreatMatrixTableModel modelToSort = 
@@ -42,7 +42,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 		
 		Arrays.sort(threatList, comparator );
 		
-		if ( toggle() )  
+		if ( !toggle(0) )  
 			threatList = reverseSort(threatList);
 
 		modelToSort.setThreatRows(threatList);
@@ -58,6 +58,6 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	}
 
 	
-	boolean sortToggle;
+	boolean sortToggle[];
 
 }

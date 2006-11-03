@@ -12,20 +12,23 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
+import sun.awt.windows.ThemeReader;
+
 
 public class ThreatColumnHeaderListener extends ColumnHeaderListener
 {
 	public ThreatColumnHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
+		sortToggle = new boolean[threatGirdPanelInUse.globalTthreatTable.getRowCount()];
 	}
 	
-	public  boolean toggle() {
-		sortToggle = !sortToggle;
-		return sortToggle;
+	public  boolean toggle(int sortColumn) {
+		sortToggle[sortColumn] = !sortToggle[sortColumn];
+		return sortToggle[sortColumn];
 	}
 	
-	public void sort(int sortColumnToUse) 
+	public void sort(int sortColumn) 
 	{
 		
 		NonEditableThreatMatrixTableModel modelToSort = 
@@ -34,14 +37,14 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 
 		Comparator comparator = null;
-		if(sortColumnToUse == modelToSort.getColumnCount()-1)
+		if(sortColumn == modelToSort.getColumnCount()-1)
 			comparator = new SummaryColumnComparator(modelToSort);
 		else
-			comparator = new ComparableNode(sortColumnToUse,modelToSort);
+			comparator = new ComparableNode(sortColumn,modelToSort);
 
 		Arrays.sort(threatList, comparator);
 		
-		if ( toggle() )  
+		if ( toggle(sortColumn) )  
 			threatList = reverseSort(threatList);
 
 		modelToSort.setThreatRows(threatList);
@@ -57,6 +60,6 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 	}
 	
 
-	boolean sortToggle;
+	boolean sortToggle[];
 
 }
