@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -17,17 +16,10 @@ public class ProjectScopePanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
-		ObjectDataInputField projectScope = createStringField(metadata.TAG_PROJECT_SCOPE);
-		addField(projectScope);
-		
-		ObjectDataInputField shortProjectScope = createStringField(metadata.TAG_SHORT_PROJECT_SCOPE);
-		addField(shortProjectScope);
-		
-		ObjectDataInputField projectVision = createStringField(metadata.TAG_PROJECT_VISION);
-		addField(projectVision);
-		
-		ObjectDataInputField shortProjectVision = createStringField(metadata.TAG_SHORT_PROJECT_VISION);
-		addField(shortProjectVision);
+		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
+		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
+		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
+		addField(createStringField(metadata.TAG_SHORT_PROJECT_VISION));
 		
 		updateFieldsFromProject();
 	}
