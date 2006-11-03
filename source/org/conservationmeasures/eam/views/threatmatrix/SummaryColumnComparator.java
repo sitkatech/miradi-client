@@ -12,10 +12,10 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
-public class ComparableSummaryNode implements  Comparator
+public class SummaryColumnComparator implements  Comparator
 {
 	
-	public ComparableSummaryNode(NonEditableThreatMatrixTableModel modelToUse )
+	public SummaryColumnComparator(NonEditableThreatMatrixTableModel modelToUse )
 	{
 		model = modelToUse;
 		framework = model.getFramework();
