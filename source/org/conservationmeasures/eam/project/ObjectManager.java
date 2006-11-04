@@ -174,12 +174,6 @@ public class ObjectManager
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		EAMObject object = getPool(objectType).findObject(objectId);
-		if(object == null)
-		{
-			EAM.logWarning("Attempted getObjectData(" + objectType + ", " + objectId + ", " + fieldTag + ")");
-			EAM.notifyDialog("Unable to read part of the project. Contact technical support.");
-			return "";
-		}
 		return object.getData(fieldTag);
 	}
 	
