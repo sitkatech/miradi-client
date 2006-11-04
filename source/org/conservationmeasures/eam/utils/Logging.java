@@ -40,29 +40,36 @@ public class Logging
 	{
 		logDestination.println("ERROR: ");
 		e.printStackTrace(logDestination);
+		logDestination.flush();
 	}
 	
 	public static void logError(String text)
 	{
-		logDestination.println("ERROR: " + text);
+		log("ERROR: ", text);
 	}
 	
 	public static void logWarning(String text)
 	{
 		if(level >= LOG_NORMAL)
-			logDestination.println("WARNING: " + text);
+			log("WARNING: ", text);
 	}
 	
 	public static void logDebug(String text)
 	{
 		if(level >= LOG_DEBUG)
-			logDestination.println("DEBUG: " + text);
+			log("DEBUG: ", text);
 	}
 	
 	public static void logVerbose(String text)
 	{
 		if(level >= LOG_VERBOSE)
-			logDestination.println("VERBOSE: " + text);
+			log("VERBOSE: ", text);
+	}
+	
+	private static void log(String type, String text)
+	{
+		logDestination.println(type + text);
+		logDestination.flush();
 	}
 	
 	private static int level;
