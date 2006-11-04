@@ -82,7 +82,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
-		//FIXME listener needs to be removed when the panel is no longer needed (parent disposed)
 		getProject().addCommandExecutedListener(this);
 	}
 
