@@ -203,6 +203,12 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		ConceptualModelNode cmNode = getTargetNode(targetIndex);
 		return cmNode.getModelNodeId();
 	}
+	
+	
+	public int getTargetColumn(BaseId baseId) 
+	{
+		return findThreatIndexById(new ModelNodeId(baseId.asInt()));
+	}
 
 	public String[] getThreatNames()
 	{
@@ -227,6 +233,15 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return  targetColumns[targetIndex];
 	}
 
+	
+	public int findTargetIndexById(ModelNodeId targetId)
+	{
+		for(int i = 0; i < targetColumns.length; ++i)
+			if(targetColumns[i].getId().equals(targetId))
+				return i;
+		return -1;
+	}
+	
 	public int findThreatIndexById(ModelNodeId threatId)
 	{
 		for(int i = 0; i < threatRows.length; ++i)

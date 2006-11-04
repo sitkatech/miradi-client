@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 
@@ -41,11 +42,12 @@ public class ThreatColumnHeaderListener extends ColumnHeaderListener
 		}
 		else
 		{
-			int sortColunm= 0; // Lookup baseId and find it in column
+			ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
+			int sortColunm= modelToSort.findTargetIndexById(nodeId);
 			Arrays.sort(threatList, getComparator(sortColunm, modelToSort));
 		}
 		
-		if (currentSortDirection.equals(ViewData.SORT_DESCENDING)) 
+		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
 			threatList = reverseSort(threatList);
 		
 		modelToSort.setThreatRows(threatList);

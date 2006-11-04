@@ -98,6 +98,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			ViewData viewData = threatGirdPanel.project.getCurrentViewData();
 
 			executeCommand(new CommandBeginTransaction());
+			
 			CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_DIRECTION, order);
 			threatGirdPanel.project.executeCommand(cmd);
@@ -105,6 +106,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
 			threatGirdPanel.project.executeCommand(cmd);
+
 			executeCommand(new CommandEndTransaction());
 		}
 		catch(Exception e)
