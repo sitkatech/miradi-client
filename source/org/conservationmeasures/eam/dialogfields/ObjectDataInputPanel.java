@@ -36,6 +36,12 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		project.addCommandExecutedListener(this);
 	}
 	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+		super.dispose();
+	}
+
 	public Project getProject()
 	{
 		return project;

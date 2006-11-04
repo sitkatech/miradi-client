@@ -9,17 +9,16 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiVBox;
 
-public class LayerPanel extends JPanel implements ActionListener
+public class LayerPanel extends DisposablePanel implements ActionListener
 {
 	public LayerPanel(MainWindow mainWindowToUse)
 	{

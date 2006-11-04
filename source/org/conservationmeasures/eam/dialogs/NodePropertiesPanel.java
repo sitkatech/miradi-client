@@ -76,7 +76,7 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
-public class NodePropertiesPanel extends JPanel implements CommandExecutedListener
+public class NodePropertiesPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public NodePropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
@@ -86,6 +86,12 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 		getProject().addCommandExecutedListener(this);
 	}
 
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+		super.dispose();
+	}
+	
 	public void selectTab(int tabIdentifier)
 	{
 		switch(tabIdentifier)

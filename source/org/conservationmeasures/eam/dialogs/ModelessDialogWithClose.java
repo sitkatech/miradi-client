@@ -20,7 +20,7 @@ import org.martus.swing.Utilities;
 
 public class ModelessDialogWithClose extends EAMDialog
 {
-	public ModelessDialogWithClose(JFrame parent, JPanel panel, String headingText)
+	public ModelessDialogWithClose(JFrame parent, DisposablePanel panel, String headingText)
 	{
 		super(parent);
 		setModal(false);
@@ -61,7 +61,12 @@ public class ModelessDialogWithClose extends EAMDialog
 		}
 	}
 
+	public void dispose()
+	{
+		wrappedPanel.dispose();
+		super.dispose();
+	}
 
 
-	JPanel wrappedPanel;
+	DisposablePanel wrappedPanel;
 }

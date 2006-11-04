@@ -8,13 +8,11 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager2;
 
-import javax.swing.JPanel;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-abstract public class ModelessDialogPanel extends JPanel
+abstract public class ModelessDialogPanel extends DisposablePanel
 {
 	public ModelessDialogPanel()
 	{
