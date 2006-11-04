@@ -112,7 +112,7 @@ abstract public class TabbedView extends UmbrellaView
 				return;
 			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_TAB))
 				return;
-			EAM.logVerbose("MonitoringView.commandExecuted: " + cmd.toString());
+			EAM.logVerbose("TabbedView.commandExecuted: " + cmd.toString());
 			setTab(new Integer(cmd.getDataValue()).intValue());
 		}
 		catch(Exception e)
@@ -138,7 +138,7 @@ abstract public class TabbedView extends UmbrellaView
 				return;
 			if(!cmd.getFieldTag().equals(ViewData.TAG_CURRENT_TAB))
 				return;
-			EAM.logVerbose("MonitoringView.commandUndone: " + cmd.toString());
+			EAM.logVerbose("TabbedView.commandUndone: " + cmd.toString());
 			setTab(new Integer(cmd.getPreviousDataValue()).intValue());
 		}
 		catch(Exception e)
