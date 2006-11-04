@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -18,7 +17,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 
-public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implements CommandExecutedListener
+public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 {
 	public CrossOrganizationSummaryPanel(MainWindow mainWindowToUse, ProjectMetadata metadata)
 	{
@@ -44,8 +43,6 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel implemen
 		add(new UiLabel(EAM.text("Label|Team Members:")));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
 		add(teamEditorComponent);
-		
-		getProject().addCommandExecutedListener(this);
 		
 		updateFieldsFromProject();
 	}
