@@ -81,6 +81,9 @@ public class Project
 
 	private void clear() throws IOException
 	{
+		if(diagramSaver != null)
+			removeCommandExecutedListener(diagramSaver);
+		
 		projectInfo = new ProjectInfo();
 		objectManager = new ObjectManager(this);
 		undoRedoState = new UndoRedoState();
@@ -91,7 +94,8 @@ public class Project
 		strategyRatingFramework = new StrategyRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
 		
-		addCommandExecutedListener(new DiagramSaver());
+		diagramSaver = new DiagramSaver();
+		addCommandExecutedListener(diagramSaver);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
@@ -573,6 +577,8 @@ public class Project
 	
 	public void removeCommandExecutedListener(CommandExecutedListener listener)
 	{
+		if(!commandExecutedListeners.contains(listener))
+			EAM.logWarning("removeCommandExecutedListener not in list: " + listener.getClass());
 		commandExecutedListeners.remove(listener);
 	}
 
@@ -931,6 +937,7 @@ public class Project
 	LayerManager layerManager;
 	EAMGraphSelectionModel selectionModel;
 	GraphLayoutCache graphLayoutCache;
+	DiagramSaver diagramSaver;
 	
 	private int previousCommandListenerCount;
 }
