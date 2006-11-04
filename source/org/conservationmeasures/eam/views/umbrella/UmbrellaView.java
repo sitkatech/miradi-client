@@ -114,7 +114,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		nullDoer = new NullDoer();
 		actionToDoerMap = new HashMap();
 		addUmbrellaDoersToMap();
-		getProject().addCommandExecutedListener(this);
 	}
 	
 	abstract public String cardName();
@@ -124,8 +123,21 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		return;
 	}
 
-	abstract public void becomeActive() throws Exception;
-	abstract public void becomeInactive() throws Exception;
+	public void becomeActive() throws Exception
+	{
+		if(isActive)
+			EAM.logWarning("UmbrellaView.becomeActive was already active: " + getClass().getName());
+		getProject().addCommandExecutedListener(this);
+		isActive = true;
+	}
+	
+	public void becomeInactive() throws Exception
+	{
+		if(!isActive)
+			EAM.logWarning("UmbrellaView.becomeActive was not active: " + getClass().getName());
+		getProject().removeCommandExecutedListener(this);
+		isActive = false;
+	}
 	
 	public MainWindow getMainWindow()
 	{
@@ -416,6 +428,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private NullDoer nullDoer;
 	private JComponent toolBar;
 	private HashMap actionToDoerMap;
+	private boolean isActive;
 	
 	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;

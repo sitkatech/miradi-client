@@ -40,6 +40,7 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void becomeActive() throws Exception
 	{
+		super.becomeActive();
 		removeAll();
 		bigSplitter = new ViewSplitPane(createWizardPanel(), tabs, bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
@@ -80,6 +81,7 @@ abstract public class TabbedView extends UmbrellaView
 		{
 			ignoreTabChanges = false;
 		}
+		super.becomeInactive();
 	}
 	
 	public void addTab(String name, Component contents)

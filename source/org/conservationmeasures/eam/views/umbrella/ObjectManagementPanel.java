@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Box;
-import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -17,6 +16,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -34,7 +34,7 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
-public class ObjectManagementPanel extends JPanel implements CommandExecutedListener, ListSelectionListener, ObjectPicker
+public class ObjectManagementPanel extends DisposablePanel implements CommandExecutedListener, ListSelectionListener, ObjectPicker
 {
 	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, EAMObjectPool pool, Class[] buttonActionClasses)
 	{
@@ -65,6 +65,12 @@ public class ObjectManagementPanel extends JPanel implements CommandExecutedList
 
 	}
 	
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+		super.dispose();
+	}
+
 	public MainWindow getMainWindow()
 	{
 		return view.getMainWindow();

@@ -47,9 +47,12 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
+		resourceManagementPanel = new ResourceManagementPanel(getMainWindow());
+		activitiesPanel = new ActivitiesPanel(this);
+
 		addTab(EAM.text("Work Plan"), workPlanPanel);
-		addTab(EAM.text("Resources"), new ResourceManagementPanel(getMainWindow()));
-		addTab(EAM.text("Activities"), new ActivitiesPanel(this));
+		addTab(EAM.text("Resources"), resourceManagementPanel);
+		addTab(EAM.text("Activities"), activitiesPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
@@ -61,6 +64,10 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanPanel.dispose();
 		workPlanPanel = null;
+		resourceManagementPanel.dispose();
+		resourceManagementPanel = null;
+		activitiesPanel.dispose();
+		activitiesPanel = null;
 	}
 	
 	public WorkPlanPanel getWorkPlanPanel()
@@ -102,8 +109,11 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 	}
 	
-	ModifyActivity modifyActivityDoer;
 	
-	WorkPlanPanel workPlanPanel;
 	MainWindow mainWindow;
+	ModifyActivity modifyActivityDoer;
+
+	WorkPlanPanel workPlanPanel;
+	ResourceManagementPanel resourceManagementPanel;
+	ActivitiesPanel activitiesPanel;
 }

@@ -161,6 +161,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public void becomeActive() throws Exception
 	{
+		super.becomeActive();
 		removeAll();
 
 		UiScrollPane diagramComponent = createDiagramPanel();
@@ -196,6 +197,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public void becomeInactive() throws Exception
 	{
 		// TODO: This should completely tear down the view
+		super.becomeInactive();
 	}
 	
 	

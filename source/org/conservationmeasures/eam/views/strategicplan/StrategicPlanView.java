@@ -52,9 +52,11 @@ public class StrategicPlanView extends TabbedView
 	
 	public void deleteTabs()
 	{
+		strategicPlanPanel.dispose();
 		strategicPlanPanel = null;
-		strategicPlanPanel = null;
+		objectivePanel.dispose();
 		objectivePanel = null;
+		goalPanel.dispose();
 		goalPanel = null;
 	}
 

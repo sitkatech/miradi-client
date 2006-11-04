@@ -30,7 +30,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		
 		htmlViewer = new HtmlViewer("", this);
 		setToolBar(new NoProjectToolBar(getActions()));
-		becomeActive();
 	}
 	
 	public void linkClicked(String linkDescription)
@@ -66,6 +65,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 
 	public void becomeActive() throws Exception
 	{
+		super.becomeActive();
 		removeAll();
 		refreshText();
 		
@@ -84,6 +84,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	public void becomeInactive() throws Exception
 	{
 		// nothing to do...would clear all view data
+		super.becomeInactive();
 	}
 
 	public void valueChanged(String widget, String newValue)

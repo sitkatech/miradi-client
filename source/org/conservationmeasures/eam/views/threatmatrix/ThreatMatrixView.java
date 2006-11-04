@@ -25,7 +25,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.RatingCriterion;
@@ -43,7 +42,7 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiScrollPane;
 
 
-public class ThreatMatrixView extends UmbrellaView implements CommandExecutedListener
+public class ThreatMatrixView extends UmbrellaView
 {
 	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
@@ -52,8 +51,6 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		addThreatMatrixiewDoersToMap();
 		
 		setToolBar(new ThreatMatrixToolBar(getMainWindow().getActions()));
-		
-		getProject().addCommandExecutedListener(this);
 	}
 
 	
@@ -103,6 +100,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 
 	public void becomeActive() throws Exception
 	{
+		super.becomeActive();
 		removeAll();
 
 		model = new NonEditableThreatMatrixTableModel(getProject());
@@ -176,6 +174,7 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		// TODO: Should clear ALL view data
 		grid = null;
+		super.becomeInactive();
 	}
 
 	public NonEditableThreatMatrixTableModel getModel()

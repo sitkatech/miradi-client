@@ -39,6 +39,15 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		add(editResourcePanel, BorderLayout.AFTER_LAST_LINE);
 	}
 
+	public void dispose()
+	{
+		resourceListPanel.dispose();
+		resourceListPanel = null;
+		editResourcePanel.dispose();
+		editResourcePanel = null;
+		super.dispose();
+	}
+
 	private void addExtraButtons(ResourceListPanel resourcePanel, ObjectsAction[] extraButtonActions)
 	{
 		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];

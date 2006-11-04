@@ -33,10 +33,12 @@ public class MapView extends UmbrellaView
 
 	public void becomeActive() throws Exception
 	{
+		super.becomeActive();
 	}
 
 	public void becomeInactive() throws Exception
 	{
+		super.becomeInactive();
 	}
 
 }

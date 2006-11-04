@@ -7,17 +7,17 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 
 import com.java.sun.jtreetable.JTreeTable;
 
 
-public class StrategicPlanPanel extends JPanel
+public class StrategicPlanPanel extends DisposablePanel
 {
 	static public StrategicPlanPanel createForProject(MainWindow mainWindowToUse) throws Exception
 	{

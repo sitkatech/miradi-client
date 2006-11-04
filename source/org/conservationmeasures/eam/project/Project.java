@@ -641,9 +641,10 @@ public class Project
 		
 		projectInfo.setCurrentView(viewName);
 		
-		if(previousCommandListenerCount != commandExecutedListeners.size())
-			EAM.logDebug("previousCommandListenerCount: " + previousCommandListenerCount);
-		previousCommandListenerCount = commandExecutedListeners.size();
+		int newListenerCount = commandExecutedListeners.size();
+		if(previousCommandListenerCount != newListenerCount)
+			EAM.logDebug("Listener count went from " + previousCommandListenerCount + " to " + newListenerCount);
+		previousCommandListenerCount = newListenerCount;
 	}
 
 	private boolean isLegalViewName(String viewName)
