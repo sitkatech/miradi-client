@@ -8,7 +8,11 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -39,7 +43,6 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	{
 		threatGirdPanel.globalTthreatTable.setFocusable(false);
 		threatGirdPanel.globalTthreatTable.setFocusable(true);
-		
 	}
 
 	private void notifyComponentsClearSelection()
@@ -62,6 +65,30 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	}
 
 	
+	public static void establishPriorSortState(MyThreatGirdPanel threatGirdPanel)
+	{
+		try
+		{
+			String currentSortBy = threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
+					.getData(ViewData.TAG_CURRENT_SORT_BY);
+
+			String currentSortDirection= threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
+					.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
+
+			if (currentSortBy.equals(ViewData.SORT_TARGETS))
+				TargetRowHeaderListener.sort(threatGirdPanel, currentSortBy,
+						currentSortDirection);
+			else
+				ThreatColumnHeaderListener.sort(threatGirdPanel, currentSortBy,
+						currentSortDirection);
+		}
+		catch(Exception e)
+		{
+			EAM.logError("Unable to retrieve sort state:" + e);
+		}
+	}
+	
+	
 	void saveSortState(boolean sortDirection, String sortColumnId)
 	{
 		try
@@ -70,6 +97,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 
 			ViewData viewData = threatGirdPanel.project.getCurrentViewData();
 
+			executeCommand(new CommandBeginTransaction());
 			CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_DIRECTION, order);
 			threatGirdPanel.project.executeCommand(cmd);
@@ -77,6 +105,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
 			threatGirdPanel.project.executeCommand(cmd);
+			executeCommand(new CommandEndTransaction());
 		}
 		catch(Exception e)
 		{
@@ -84,6 +113,11 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		}
 	}
 	
+	
+	private void executeCommand(Command cmd) throws CommandFailedException
+	{
+		threatGirdPanel.project.executeCommand(cmd);
+	}
 	
 	public abstract void sort(int sortColumnToUse);
 	
