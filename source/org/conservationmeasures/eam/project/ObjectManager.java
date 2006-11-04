@@ -173,7 +173,14 @@ public class ObjectManager
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
-		return getPool(objectType).findObject(objectId).getData(fieldTag);
+		EAMObject object = getPool(objectType).findObject(objectId);
+		if(object == null)
+		{
+			EAM.logWarning("Attempted getObjectData(" + objectType + ", " + objectId + ", " + fieldTag + ")");
+			EAM.notifyDialog("Unable to read part of the project. Contact technical support.");
+			return "";
+		}
+		return object.getData(fieldTag);
 	}
 	
 	public void loadFromDatabase() throws Exception
