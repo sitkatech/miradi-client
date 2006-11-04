@@ -7,11 +7,15 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -69,9 +73,29 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	
 	public BufferedImage getImage()
 	{
-		return BufferedImageFactory.getImage(gridWithHeadings,0);
+		try
+		{
+			JScrollPane scrollPane =  grid.createThreatGridPanel();
+			JPanel panel = new JPanel(new BorderLayout());
+			panel.add(scrollPane);
+			JWindow window = new JWindow();
+			Dimension dinmension = new Dimension();
+			dinmension = Toolkit.getDefaultToolkit().getScreenSize();
+			window.setSize(dinmension);
+			window.getContentPane().add(panel);
+			window.setVisible(true);
+			BufferedImage bufferedImage = BufferedImageFactory.getImage(panel, 0);
+			window.dispose();
+			return bufferedImage;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
-	
+
+
 	public void becomeActive() throws Exception
 	{
 		removeAll();

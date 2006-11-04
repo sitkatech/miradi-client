@@ -47,7 +47,7 @@ public class MyThreatGirdPanel extends JPanel
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
 		JTable rowHeaderTable = createRowHeaderTable(newRowHeaderData);
 
-		globalTthreatTable = createThreatTable(rowHeaderTable.getRowCount());
+		globalTthreatTable = createThreatTable();
 
 		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
 		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
@@ -55,12 +55,12 @@ public class MyThreatGirdPanel extends JPanel
 		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
 		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
 		
-		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowHeaderTable, globalTthreatTable, rowHeader);
 
 		return scrollPane;
 	}
+	
 
 	private void setRowHeight(JTable table)
 	{
@@ -83,7 +83,7 @@ public class MyThreatGirdPanel extends JPanel
 		return newScrollPane;
 	}
 
-	private JTable createThreatTable(int rowCount)
+	private JTable createThreatTable()
 	{
 		NonEditableThreatMatrixTableModel threatData = model;
 		
