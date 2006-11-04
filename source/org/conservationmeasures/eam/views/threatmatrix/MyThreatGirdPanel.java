@@ -144,6 +144,8 @@ public class MyThreatGirdPanel extends JPanel
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
 		rowHeaderTable.setPreferredScrollableViewportSize(d);
+		rowHeaderTable.getTableHeader().setResizingAllowed(true);
+		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		setDefaultRowHeaderRenderer(rowHeaderTable);
 		
@@ -160,26 +162,6 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeaderTable.setDefaultRenderer(Object.class, new TargetRowHeaderRenderer());
 	}
 
-
-	public Vector getRowThreatHeaders()
-	{
-		Vector rowNames = new Vector();
-		for(int threatIndex = 0; threatIndex < model.getThreatCount(); ++threatIndex)
-		{
-			ConceptualModelNode threatNode = createNodeThreatLabel(threatIndex);
-			rowNames.add(threatNode);
-		}
-		rowNames.add(EAM.text("Summary Threat Rating"));
-		return rowNames;
-	}
-	
-	
-	
-	private ConceptualModelNode createNodeThreatLabel(int threatIndex)
-	{	
-		return model.getThreatNode(threatIndex);
-	}
-	
 
 	public Vector getColumnTargetHeaders()
 	{
