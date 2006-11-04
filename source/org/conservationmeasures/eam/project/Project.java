@@ -634,6 +634,10 @@ public class Project
 			throw new CommandFailedException("Attempted switch to unknown view: " + viewName);
 		
 		projectInfo.setCurrentView(viewName);
+		
+		if(previousCommandListenerCount != commandExecutedListeners.size())
+			EAM.logDebug("previousCommandListenerCount: " + previousCommandListenerCount);
+		previousCommandListenerCount = commandExecutedListeners.size();
 	}
 
 	private boolean isLegalViewName(String viewName)
@@ -927,5 +931,7 @@ public class Project
 	LayerManager layerManager;
 	EAMGraphSelectionModel selectionModel;
 	GraphLayoutCache graphLayoutCache;
+	
+	private int previousCommandListenerCount;
 }
 
