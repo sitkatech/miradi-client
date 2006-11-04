@@ -55,13 +55,13 @@ public class SummaryView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
-		CrossOrganizationSummaryPanel crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
-		TNCSummaryPanel tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
+		crossOrganizationSummaryPanel = new CrossOrganizationSummaryPanel(getMainWindow(), metadata);
+		tncSummaryPanel = new TNCSummaryPanel(getProject(), metadata);
 
-		WWFSummaryPanel wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
-		WCSSummaryPanel wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
-		RARESummaryPanel rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
-		FOSSummaryPanel fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
+		wwfSummaryPanel = new WWFSummaryPanel(getProject(), metadata);
+		wcssSummaryPanel =new WCSSummaryPanel(getProject(), metadata); 
+		rareSummaryPanel = new RARESummaryPanel(getProject(), metadata);
+		fosSummaryPanel = new FOSSummaryPanel(getProject(), metadata);
 		
 		
 		addPanelAsTab(crossOrganizationSummaryPanel);
@@ -80,6 +80,12 @@ public class SummaryView extends TabbedView
 
 	public void deleteTabs() throws Exception
 	{
+		crossOrganizationSummaryPanel.dispose();
+		tncSummaryPanel.dispose();
+		wwfSummaryPanel.dispose();
+		wcssSummaryPanel.dispose();
+		rareSummaryPanel.dispose();
+		fosSummaryPanel.dispose();
 	}
 
 	public void showTeamAddMembersDialog() throws Exception
@@ -111,6 +117,14 @@ public class SummaryView extends TabbedView
 	}
 
 	SummaryWizardPanel wizardPanel;
+	
+	CrossOrganizationSummaryPanel crossOrganizationSummaryPanel;
+	TNCSummaryPanel tncSummaryPanel;
+
+	WWFSummaryPanel wwfSummaryPanel;
+	WCSSummaryPanel wcssSummaryPanel; 
+	RARESummaryPanel rareSummaryPanel;
+	FOSSummaryPanel fosSummaryPanel;
 	
 	TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;

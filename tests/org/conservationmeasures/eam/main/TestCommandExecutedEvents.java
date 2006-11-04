@@ -81,6 +81,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		}
 		assertEquals("redo again fired a failure?", 0, listener.failureCount);
 		
+		project.removeCommandExecutedListener(listener);
 		project.close();
 	}
 }

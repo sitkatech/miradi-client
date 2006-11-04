@@ -59,6 +59,7 @@ public class WorkPlanView extends TabbedView
 
 	public void deleteTabs() throws Exception
 	{
+		workPlanPanel.dispose();
 		workPlanPanel = null;
 	}
 	

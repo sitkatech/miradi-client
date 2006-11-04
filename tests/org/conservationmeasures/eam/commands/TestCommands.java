@@ -542,6 +542,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		assertEquals("didn't undo one command?", 1, undoListener.undoneCommands.size());
 		assertEquals("didn't fire proper undo?", cmd.toString(), undoListener.undoneCommands.get(0).toString());
+		project.removeCommandExecutedListener(undoListener);
 	}
 	
 	private DiagramNodeId insertTarget() throws Exception

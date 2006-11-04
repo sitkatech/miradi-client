@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.workplan;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
-import javax.swing.JPanel;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
@@ -24,6 +23,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -41,7 +41,7 @@ import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
-public class WorkPlanPanel extends JPanel implements TreeSelectionListener, CommandExecutedListener
+public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListener, CommandExecutedListener
 {
 	public WorkPlanPanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
@@ -61,9 +61,10 @@ public class WorkPlanPanel extends JPanel implements TreeSelectionListener, Comm
 		mainWindow.getProject().addCommandExecutedListener(this);
 	}
 
-	public void close()
+	public void dispose()
 	{
 		mainWindow.getProject().removeCommandExecutedListener(this);
+		super.dispose();
 	}
 
 	public WorkPlanTreeTableNode getSelectedObject()
