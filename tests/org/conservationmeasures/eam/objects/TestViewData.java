@@ -30,6 +30,21 @@ public class TestViewData extends EAMTestCase
 		assertEquals(vd.getData(ViewData.TAG_CURRENT_TAB), got.getData(ViewData.TAG_CURRENT_TAB));
 	}
 
+	
+	public void testCurrentSortData() throws Exception
+	{
+		
+		ViewData vd1 = new ViewData(new BaseId(33));
+		vd1.setData(ViewData.TAG_CURRENT_SORT_BY, "TAREGT");
+		assertEquals("TAREGT", vd1.getData(ViewData.TAG_CURRENT_SORT_BY));
+
+		ViewData vd2 = new ViewData(new BaseId(34));
+		vd2.setData(ViewData.TAG_CURRENT_SORT_DIRECTION, "ASCENDING");
+		assertEquals("ASCENDING", vd2.getData(ViewData.TAG_CURRENT_SORT_DIRECTION));
+		
+	}
+	
+	
 	public void testMode() throws Exception
 	{
 		ViewData vd = new ViewData(new BaseId(33));
