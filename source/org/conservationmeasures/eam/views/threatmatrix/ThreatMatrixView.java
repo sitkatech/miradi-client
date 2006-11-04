@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -75,6 +76,9 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 	{
 		try
 		{
+			String[] text = {EAM.text("Column movements will not be recorded")};
+			EAM.confirmDialog(EAM.text("Image Save"),text);
+			
 			JScrollPane scrollPane =  grid.createThreatGridPanel();
 			JPanel panel = new JPanel(new BorderLayout());
 			panel.add(scrollPane);
@@ -90,7 +94,8 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
+			EAM.errorDialog("Error prevented the save: " + e.getMessage());
 			return null;
 		}
 	}
@@ -107,9 +112,35 @@ public class ThreatMatrixView extends UmbrellaView implements CommandExecutedLis
 		add(bigSplitter);
 			
 		selectBundle(null);
+		
+		establishPriorSortState();
 	}
 
+	
+	private void establishPriorSortState()
+	{
+		try
+		{
+			String currentSortBy = grid.project.getViewData(cardName())
+					.getData(ViewData.TAG_CURRENT_SORT_BY);
 
+			String currentSortDirection = grid.project.getViewData(cardName())
+					.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
+
+			if (currentSortBy.equals(ViewData.SORT_TARGETS))
+				TargetRowHeaderListener.sort(grid, currentSortBy,
+						currentSortDirection);
+			else
+				ThreatColumnHeaderListener.sort(grid, currentSortBy,
+						currentSortDirection);
+		}
+		catch(Exception e)
+		{
+			EAM.logError("Unable to retrieve sort state:" + e);
+		}
+	}
+	
+	
 	private Container createThreatMatrixPanel() throws Exception
 	{
 		grid = new MyThreatGirdPanel(this, model,getProject());

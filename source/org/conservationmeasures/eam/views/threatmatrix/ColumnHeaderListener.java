@@ -8,7 +8,10 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ViewData;
 
 public abstract class ColumnHeaderListener  extends MouseAdapter
 {
@@ -50,6 +53,37 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			EAM.logException(ex);
 		}
 	}
+
+
+	void saveSortState(boolean sortDirection, ConceptualModelNode sortColumnNode)
+	{
+		String value = sortColumnNode.getId().toString();
+		saveSortState(sortDirection, value);
+	}
+
+	
+	void saveSortState(boolean sortDirection, String sortColumnId)
+	{
+		try
+		{
+			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
+
+			ViewData viewData = threatGirdPanel.project.getCurrentViewData();
+
+			CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
+					ViewData.TAG_CURRENT_SORT_DIRECTION, order);
+			threatGirdPanel.project.executeCommand(cmd);
+
+			cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
+					ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
+			threatGirdPanel.project.executeCommand(cmd);
+		}
+		catch(Exception e)
+		{
+			EAM.logError("Unable to save sort state:" + e);
+		}
+	}
+	
 	
 	public abstract void sort(int sortColumnToUse);
 	

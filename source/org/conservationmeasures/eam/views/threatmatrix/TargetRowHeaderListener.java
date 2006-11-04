@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.ViewData;
 
 
 
@@ -20,13 +21,29 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	public TargetRowHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
-		sortToggle = new boolean[1];
+		sortToggle = new boolean[] {true};
 	}
 
 	
 	public  boolean toggle(int sortColumn) {
 		sortToggle[sortColumn] = !sortToggle[sortColumn];
 		return sortToggle[sortColumn];
+	}
+	
+	
+	public static void sort(MyThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
+	{
+		NonEditableThreatMatrixTableModel modelToSort = 
+			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
+		
+		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		
+		Arrays.sort(threatList, getComparator());
+		
+		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
+			threatList = reverseSort(threatList);
+		
+		modelToSort.setThreatRows(threatList);
 	}
 	
 	
@@ -38,18 +55,35 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
-		Comparator comparator = new IgnoreCaseStringComparator();
+		Comparator comparator = getComparator();
 		
 		Arrays.sort(threatList, comparator );
 		
-		if ( !toggle(0) )  
+		if ( toggle(sortColumn) )  
 			threatList = reverseSort(threatList);
 
 		modelToSort.setThreatRows(threatList);
+		
+		saveState(sortColumn,null);
+		
 	}
 
 
-	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	private void saveState(int sortColumn,  NonEditableThreatMatrixTableModel modelToSort)
+	{
+		saveSortState(sortToggle[sortColumn], ViewData.SORT_TARGETS);
+	}
+
+
+	private static Comparator getComparator()
+	{
+		Comparator comparator;
+		comparator = new IgnoreCaseStringComparator();
+		return comparator;
+	}
+
+
+	private static ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
 	{
 		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);
