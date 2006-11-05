@@ -13,10 +13,8 @@ import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
@@ -25,7 +23,7 @@ import javax.swing.table.TableCellRenderer;
 
 class TargetRowHeaderRenderer
 	extends JTextArea 
-    implements ListCellRenderer , TableCellRenderer
+    implements TableCellRenderer
 {
 
     public TargetRowHeaderRenderer()
@@ -57,15 +55,6 @@ class TargetRowHeaderRenderer
         noFocusBorder = new BorderUIResource.CompoundBorderUIResource
              (cellBorder, BorderFactory.createEmptyBorder(insets.top, insets.left, insets.bottom, insets.right));
 	}
-
-    public Component getListCellRendererComponent(JList list, Object value, 
-        int index, boolean selected, boolean focused) 
-    {
-        Color selectionBackground = list.getSelectionBackground();
-        Color selectionForeground = list.getSelectionForeground();
-        setupCellRendererComponent(list, value, selected, focused, selectionBackground, selectionForeground);
-        return this;
-    }
 
 
     public Component getTableCellRendererComponent(JTable table, Object value,

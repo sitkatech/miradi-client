@@ -9,16 +9,14 @@ import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.ListCellRenderer;
 import javax.swing.table.TableCellRenderer;
 
 
 class ThreatRowHeaderRenderer
 	extends JTextArea 
-    implements ListCellRenderer , TableCellRenderer
+    implements TableCellRenderer
 {
 
     public ThreatRowHeaderRenderer()
@@ -30,13 +28,6 @@ class ThreatRowHeaderRenderer
     public void updateUI()
     {
         super.updateUI();
-    }
-
-    public Component getListCellRendererComponent(JList list, Object value, 
-        int index, boolean selected, boolean focused) 
-    {
-        setupCellRendererComponent(list, value, selected, focused);
-        return this;
     }
 
     public Component getTableCellRendererComponent(JTable table, Object value,
