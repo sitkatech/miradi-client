@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
 
@@ -29,10 +30,10 @@ class TargetRowHeaderRenderer
 
     public TargetRowHeaderRenderer()
     {
-        setOpaque(true);
         setBorder(noFocusBorder);
         setWrapStyleWord(true);
         setLineWrap(true);
+        setPreferredSize(new Dimension(150,60));
     }
 
     public void updateUI()

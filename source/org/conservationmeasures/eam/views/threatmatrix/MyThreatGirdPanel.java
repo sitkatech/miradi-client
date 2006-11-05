@@ -93,7 +93,6 @@ public class MyThreatGirdPanel extends JPanel
 		
 		setThreatTableColumnWidths(threatTable);
 		setRowHeight(threatTable);
-		setColumnHeaderHeight(threatTable);
 
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
@@ -109,12 +108,6 @@ public class MyThreatGirdPanel extends JPanel
 		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		return threatTable;
-	}
-
-	private void setColumnHeaderHeight(JTable threatTable)
-	{
-		threatTable.getTableHeader().setPreferredSize(new Dimension(0,60));
-		threatTable.getTableHeader().setResizingAllowed(true);
 	}
 
 
