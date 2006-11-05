@@ -8,11 +8,8 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
