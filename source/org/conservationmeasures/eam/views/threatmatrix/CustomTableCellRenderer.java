@@ -61,19 +61,22 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 
 	private boolean isOverallRatingBorder(JTable table, int row, int column)
 	{
-		return(row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR) && 
-				(column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR);
+		return(row==maxIndex(table.getRowCount())) && 
+				(column==maxIndex(table.getColumnCount()));
 	}
 	
 	private boolean isSummaryRowBorder(JTable table, int row, int column)
 	{
-		return( row==table.getRowCount()-SUMMARY_ROW_COLUMN_INCR);
+		return( row==maxIndex(table.getRowCount()));
 	}
 	
 	private boolean isSummaryColumnBorder(JTable table, int row, int column)
 	{
-		return (column==table.getColumnCount()-SUMMARY_ROW_COLUMN_INCR);
+		return (column==maxIndex(table.getColumnCount()));
 	}
 	
-	int SUMMARY_ROW_COLUMN_INCR = 1;
+	public int maxIndex(int arraySize) 
+	{
+		return arraySize-1;
+	}
 }
