@@ -45,15 +45,10 @@ class TargetRowHeaderRenderer
 	{
 		Border cellBorder = UIManager.getBorder("TableHeader.cellBorder");
         Border focusCellHighlightBorder = UIManager.getBorder("Table.focusCellHighlightBorder");
-
-        createCellSelectedBorder(cellBorder, focusCellHighlightBorder);
+        
         createCellNotSelectionBorder(cellBorder, focusCellHighlightBorder);
 	}
 
-	private void createCellSelectedBorder(Border cellBorder, Border focusCellHighlightBorder)
-	{
-		focusBorder = new BorderUIResource.CompoundBorderUIResource(cellBorder, focusCellHighlightBorder);
-	}
 
 	private void createCellNotSelectionBorder(Border cellBorder, Border focusCellHighlightBorder)
 	{
@@ -85,25 +80,9 @@ class TargetRowHeaderRenderer
     
 	private void setupCellRendererComponent(JComponent component, Object value, boolean selected, boolean focused, Color selectionBackground ,  Color selectionForeground)
 	{
-        if (selected)
-        {
-            setBackground(selectionBackground);
-            setForeground(selectionForeground);
-        }
-        else
-        {
-            setBackground(component.getBackground());
-            setForeground(component.getForeground());
-        }
-
-        setFont(component.getFont());
-
-        setEnabled(component.isEnabled());
-
-        if (focused)
-            setBorder(focusBorder);
-        else
-            setBorder(noFocusBorder);
+        setBackground(component.getBackground());
+        setForeground(component.getForeground());
+        setBorder(noFocusBorder);
 
         setOpaque(false);
         setText(value.toString());
@@ -114,8 +93,5 @@ class TargetRowHeaderRenderer
 
     
     protected Border noFocusBorder;
-    protected Border focusBorder;
-
-
 }
 

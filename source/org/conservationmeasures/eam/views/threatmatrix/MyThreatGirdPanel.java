@@ -20,7 +20,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -61,13 +60,7 @@ public class MyThreatGirdPanel extends JPanel
 		return scrollPane;
 	}
 	
-
-	private void setRowHeight(JTable table)
-	{
-		int rowHeightForThreatTable = calculateRowHeight(table.getModel());
-		table.setRowHeight(rowHeightForThreatTable);
-	}
-
+	
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
 			JTable threatTable, JTableHeader rowHeader)
 	{
@@ -92,7 +85,7 @@ public class MyThreatGirdPanel extends JPanel
 		threatTable.setIntercellSpacing(new Dimension(0, 0));
 		
 		setThreatTableColumnWidths(threatTable);
-		setRowHeight(threatTable);
+		threatTable.setRowHeight(60);
 
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
 		threatTable.setRowSelectionAllowed(false);
@@ -100,7 +93,6 @@ public class MyThreatGirdPanel extends JPanel
 		threatTable.setCellSelectionEnabled(true);
 		CellSelectionListener selectionListener = new CellSelectionListener(threatTable,this);
 		selectionModel.addListSelectionListener(selectionListener);
-		
 		
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
 		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
@@ -132,18 +124,18 @@ public class MyThreatGirdPanel extends JPanel
 	{
 		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
-		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
-		
-		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
-		d.width = rowHeaderTable.getPreferredSize().width;
-		rowHeaderTable.setPreferredScrollableViewportSize(d);
+
 		rowHeaderTable.getTableHeader().setResizingAllowed(true);
 		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
+		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
+		rowHeaderTable.setRowHeight(60);
+		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
+		d.width = rowHeaderTable.getPreferredSize().width;
+		rowHeaderTable.setPreferredScrollableViewportSize(d);
+		
 		setDefaultRowHeaderRenderer(rowHeaderTable);
-		
-		setRowHeight(rowHeaderTable);
-		
+	
 		LookAndFeel.installColorsAndFont(rowHeaderTable, "TableHeader.background",
 				"TableHeader.foreground", "TableHeader.font");
 
@@ -152,7 +144,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private void setDefaultRowHeaderRenderer(JTable rowHeaderTable)
 	{
-		rowHeaderTable.setDefaultRenderer(Object.class, new TargetRowHeaderRenderer());
+		rowHeaderTable.setDefaultRenderer(Object.class, new ThreatRowHeaderRenderer());
 	}
 
 
@@ -173,16 +165,7 @@ public class MyThreatGirdPanel extends JPanel
 	{	
 		return model.getTargetNode(targetIndex);
 	}
-	
-	
-	//TODO: must add logic to calc row hieght based on lenght of user threat header names
-	private int calculateRowHeight(TableModel rowHeaderDataToUse)
-	{
-		return 60;
-	}
-	
 
-	
 	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
 	{
 		view.selectBundle(bundle);

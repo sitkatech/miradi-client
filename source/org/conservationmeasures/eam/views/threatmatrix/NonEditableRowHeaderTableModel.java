@@ -29,7 +29,7 @@ public class NonEditableRowHeaderTableModel extends AbstractTableModel
 	{
 		if (row==model.getRowCount()-1) 
 			return EAM.text("Summary Threat Rating");
-		return model.getThreatNode(row).toString();
+		return model.getThreatNode(row);
 	}
 
 	public boolean isCellEditable(int row, int column)
