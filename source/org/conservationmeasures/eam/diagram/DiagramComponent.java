@@ -45,6 +45,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
+import org.jgraph.graph.CellView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.martus.swing.Utilities;
 
@@ -308,6 +309,24 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		nodePropertiesDlg.setVisible(true);
 	}
 	
+	public CellView getNextSelectableViewAt(CellView current, double x, double y)
+	{
+		CellView candidateView = super.getNextSelectableViewAt(current, x, y);
+		// if they want the first node, we know it is ok because the project scope box
+		// is always behind the targets
+		if(current == null)
+			return candidateView;
+		
+		EAMGraphCell candidateCell = (EAMGraphCell)candidateView.getCell();
+		if(candidateCell.isProjectScope())
+		{
+			// skip the project scope box and get the next one (if any)
+			candidateView = super.getNextSelectableViewAt(candidateView, x, y);
+		}
+		
+		return candidateView;
+	}
+
 	private void disposeOfNodePropertiesDialog()
 	{
 		nodePropertiesDlg.dispose();
