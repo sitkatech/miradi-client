@@ -145,6 +145,7 @@ public class MyThreatGirdPanel extends JPanel
 
 	private void setDefaultRowHeaderRenderer(JTable rowHeaderTable)
 	{
+		rowHeaderTable.getTableHeader().setDefaultRenderer( new TargetRowHeaderRenderer());
 		rowHeaderTable.setDefaultRenderer(Object.class, new ThreatRowHeaderRenderer());
 	}
 
