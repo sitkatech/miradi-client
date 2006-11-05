@@ -84,7 +84,7 @@ public class MyThreatGirdPanel extends JPanel
 
 		threatTable.setIntercellSpacing(new Dimension(0, 0));
 		
-		setThreatTableColumnWidths(threatTable);
+		setTableColumnWidths(threatTable,150);
 		threatTable.setRowHeight(60);
 
 		ListSelectionModel selectionModel = threatTable.getSelectionModel();
@@ -103,15 +103,15 @@ public class MyThreatGirdPanel extends JPanel
 	}
 
 
-	public void setThreatTableColumnWidths(JTable threatTable)
+	public void setTableColumnWidths(JTable table, int width)
 	{
-		Enumeration columns = threatTable.getColumnModel().getColumns();
+		Enumeration columns = table.getColumnModel().getColumns();
 		while(columns.hasMoreElements())
 		{
 			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
 			columnToAdjust.setHeaderRenderer(new TargetRowHeaderRenderer());
-			columnToAdjust.setPreferredWidth(150);
-			columnToAdjust.setWidth(150);
+			columnToAdjust.setPreferredWidth(width);
+			columnToAdjust.setWidth(width);
 			columnToAdjust.setResizable(true);
 			columnToAdjust.setMinWidth(50);
 			columnToAdjust.setMaxWidth(400);
@@ -125,12 +125,14 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
 
-		rowHeaderTable.getTableHeader().setResizingAllowed(true);
+		rowHeaderTable.getTableHeader().setResizingAllowed(false);
 		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
+		setTableColumnWidths(rowHeaderTable, 80);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
 		rowHeaderTable.setRowHeight(60);
+		
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
 		rowHeaderTable.setPreferredScrollableViewportSize(d);
@@ -145,7 +147,6 @@ public class MyThreatGirdPanel extends JPanel
 
 	private void setDefaultRowHeaderRenderer(JTable rowHeaderTable)
 	{
-		rowHeaderTable.getTableHeader().setDefaultRenderer( new TargetRowHeaderRenderer());
 		rowHeaderTable.setDefaultRenderer(Object.class, new ThreatRowHeaderRenderer());
 	}
 

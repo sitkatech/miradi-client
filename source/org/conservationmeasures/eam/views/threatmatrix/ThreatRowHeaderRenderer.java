@@ -43,7 +43,6 @@ class ThreatRowHeaderRenderer
         setOpaque(false);
         setText(value.toString());
 		setFont(new Font(null,Font.BOLD,12));
-		setSize(60,60);
 	}
 
 }
