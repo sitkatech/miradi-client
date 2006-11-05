@@ -77,7 +77,9 @@ public class ThreatMatrixView extends UmbrellaView
 			JScrollPane scrollPane =  grid.createThreatGridPanel();
 			
 			JPanel panel = new JPanel(new BorderLayout());
-			panel.setPreferredSize(new Dimension(2000,3000));
+			int rows = grid.globalTthreatTable.getRowCount();
+			int columns = grid.globalTthreatTable.getColumnCount();
+			panel.setPreferredSize(new Dimension(150*(columns+1) ,60*(rows+2)));
 			panel.add(scrollPane);
 
 			JWindow window = new JWindow();
