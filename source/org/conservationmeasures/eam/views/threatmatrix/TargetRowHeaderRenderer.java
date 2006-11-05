@@ -33,7 +33,6 @@ class TargetRowHeaderRenderer
         setBorder(noFocusBorder);
         setWrapStyleWord(true);
         setLineWrap(true);
-        setPreferredSize(new Dimension(150,60));
     }
 
     public void updateUI()
@@ -109,6 +108,8 @@ class TargetRowHeaderRenderer
         setOpaque(false);
         setText(value.toString());
 		setFont(new Font(null,Font.BOLD,12));
+        setSize(150,Short.MAX_VALUE);
+        setPreferredSize(new Dimension(150,getPreferredSize().height));
 	}
 
     
