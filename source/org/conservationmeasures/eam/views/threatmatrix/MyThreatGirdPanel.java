@@ -126,6 +126,7 @@ public class MyThreatGirdPanel extends JPanel
 		JTable rowHeaderTable = new JTable(rowHeaderData);
 
 		rowHeaderTable.getTableHeader().setResizingAllowed(true);
+		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));

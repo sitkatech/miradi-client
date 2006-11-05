@@ -26,8 +26,8 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 
 	
 	public  boolean toggle(int sortColumn) {
-		sortToggle[sortColumn] = !sortToggle[sortColumn];
-		return sortToggle[sortColumn];
+		sortToggle[0] = !sortToggle[0];
+		return sortToggle[0];
 	}
 	
 	
@@ -71,7 +71,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 
 	private void saveState(int sortColumn,  NonEditableThreatMatrixTableModel modelToSort)
 	{
-		saveSortState(sortToggle[sortColumn], ViewData.SORT_TARGETS);
+		saveSortState(sortToggle[0], ViewData.SORT_TARGETS);
 	}
 
 
