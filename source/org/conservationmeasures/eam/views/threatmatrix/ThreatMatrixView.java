@@ -78,11 +78,9 @@ public class ThreatMatrixView extends UmbrellaView
 			EAM.confirmDialog(EAM.text("Image Save"),text);
 			
 			JScrollPane scrollPane =  grid.createThreatGridPanel();
-			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 			
 			JPanel panel = new JPanel(new BorderLayout());
-			panel.setPreferredSize(new Dimension(2000,2000));
+			panel.setPreferredSize(new Dimension(2000,3000));
 			panel.add(scrollPane);
 
 			JWindow window = new JWindow();
