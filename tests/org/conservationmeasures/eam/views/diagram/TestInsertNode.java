@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -30,7 +31,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		OurMainWindow mainWindow = new OurMainWindow(project);
-
+		
 		try
 		{
 			Point at = project.getSnapped(new Point(25,167));
@@ -46,11 +47,28 @@ public class TestInsertNode extends TestCaseEnhanced
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 
 			assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
+			centerLocation(mainWindow, project);
 		}
 		finally
 		{
 			project.close();
 		}
+	}
+	
+	
+	private void centerLocation(OurMainWindow mainWindow, Project project) throws Exception
+	{
+		Point at = project.getSnapped(new Point(25,167));
+		InsertInterventionWithFakePropertiesEditing inserter = new InsertInterventionWithFakePropertiesEditing();
+		inserter.setMainWindow(mainWindow);
+		inserter.setView(new DiagramView(mainWindow));
+		inserter.setLocation(at);
+		
+		Point center = inserter.getCenterLocation();
+		Point validCenter = new Point(250, 250);
+		
+		assertEquals("is centered?", center, validCenter);
+ 
 	}
 
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
@@ -70,6 +88,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			super(projectToUse);
 			actions = new Actions(this);
 			diagramComponent = new DiagramComponent(this);
+			diagramComponent.setBounds(new Rectangle(0, 0, 500, 500));
 		}
 		public DiagramComponent getDiagramComponent()
 		{
