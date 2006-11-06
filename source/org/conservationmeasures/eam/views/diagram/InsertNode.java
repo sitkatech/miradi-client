@@ -64,7 +64,6 @@ abstract public class InsertNode extends LocationDoer
 	private ModelNodeId insertNodeItself() throws Exception
 	{
 		Point createAt = getLocation();
-		Point deltaPoint;
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -75,11 +74,10 @@ abstract public class InsertNode extends LocationDoer
 		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
 
-		deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
+		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
 		
 		Command moveCommand = new CommandDiagramMove(deltaPoint.x, deltaPoint.y, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
-
 		doExtraSetup(id);
 		getProject().executeCommand(new CommandEndTransaction());
 
@@ -90,11 +88,11 @@ abstract public class InsertNode extends LocationDoer
 	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, NodeType nodeType, DiagramNode addedNode)
 	{
 		if (createAt != null)
-			return getMouseLocation(createAt);
+			return createAt;
 		else if (selectedNodes.length > 0 && !nodeType.isTarget())
-			return getLocationSelectedNonTargetNode( selectedNodes, (int)addedNode.getBounds().getWidth());
+			return getLocationSelectedNonTargetNode(selectedNodes, (int)addedNode.getBounds().getWidth());
 		else if (nodeType.isTarget())
-			return getTargetLocation( addedNode);
+			return getTargetLocation(addedNode);
 		else
 			return getCenterLocation();
 	}
@@ -106,7 +104,7 @@ abstract public class InsertNode extends LocationDoer
 		return visibleRectangle;
 	}
 	
-	private Point getCenterLocation()
+	public Point getCenterLocation()
 	{
 		Point deltaPoint = new Point();
 		Rectangle visibleRectangle = getDiagramVisibleRect();
@@ -119,7 +117,7 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getTargetLocation( DiagramNode addedNode)
+	public Point getTargetLocation(DiagramNode addedNode)
 	{
 		Rectangle visibleRectangle = getDiagramVisibleRect();
 		Point deltaPoint = new Point();
@@ -152,7 +150,7 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getLocationSelectedNonTargetNode(DiagramNode[] selectedNodes, int nodeWidth)
+	public Point getLocationSelectedNonTargetNode(DiagramNode[] selectedNodes, int nodeWidth)
 	{
 		final int DEFAULT_MOVE = 150;
 		Point deltaPoint = new Point();
@@ -164,14 +162,6 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getMouseLocation(Point createAt)
-	{
-		Point deltaPoint = new Point();
-		deltaPoint.x = createAt.x;
-		deltaPoint.y = createAt.y;
-		return deltaPoint;
-	}
-
 	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
