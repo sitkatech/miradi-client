@@ -314,7 +314,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		CellView candidateView = super.getNextSelectableViewAt(current, x, y);
 		// if they want the first node, we know it is ok because the project scope box
 		// is always behind the targets
-		if(current == null)
+		if(current == null || candidateView == null)
 			return candidateView;
 		
 		EAMGraphCell candidateCell = (EAMGraphCell)candidateView.getCell();
