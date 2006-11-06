@@ -8,6 +8,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyGoal;
+import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -100,6 +101,7 @@ public class StrategicPlanView extends TabbedView
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
+		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
 		
 		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
