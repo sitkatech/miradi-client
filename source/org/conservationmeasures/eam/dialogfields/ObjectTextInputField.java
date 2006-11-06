@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogfields;
 
 
 import java.awt.Color;
+import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
 import javax.swing.text.JTextComponent;
@@ -55,6 +56,13 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setBackground(bg);
 	}
 
+	public void focusGained(FocusEvent e)
+	{
+		field.setSelectionStart(0);
+		field.setSelectionEnd(field.getSize().width);
+	}
+	
+	
 	JTextComponent field;
 
 
