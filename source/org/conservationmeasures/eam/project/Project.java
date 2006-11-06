@@ -815,6 +815,11 @@ public class Project
 		return DEFAULT_GRID_SIZE;
 	}
 	
+	public Point getSnapped(int x, int y)
+	{
+		return getSnapped(new Point(x, y));
+	}
+	
 	public Point getSnapped(Point point)
 	{
 		int gridSize = getGridSize();

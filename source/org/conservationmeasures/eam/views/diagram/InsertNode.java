@@ -76,7 +76,8 @@ abstract public class InsertNode extends LocationDoer
 
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
 		
-		Command moveCommand = new CommandDiagramMove(deltaPoint.x, deltaPoint.y, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
+		Point snappedPoint  = getProject().getSnapped(deltaPoint);
+		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
 		doExtraSetup(id);
 		getProject().executeCommand(new CommandEndTransaction());
@@ -85,6 +86,7 @@ abstract public class InsertNode extends LocationDoer
 		getProject().updateVisibilityOfNodes();
 		return id;
 	}
+	
 	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, NodeType nodeType, DiagramNode addedNode)
 	{
 		if (createAt != null)
@@ -92,9 +94,9 @@ abstract public class InsertNode extends LocationDoer
 		else if (selectedNodes.length > 0 && !nodeType.isTarget())
 			return getLocationSelectedNonTargetNode(selectedNodes, (int)addedNode.getBounds().getWidth());
 		else if (nodeType.isTarget())
-			return getTargetLocation(addedNode);
+			return getTargetLocation(addedNode, getDiagramVisibleRect());
 		else
-			return getCenterLocation();
+			return getCenterLocation(getDiagramVisibleRect());
 	}
 	
 	private Rectangle getDiagramVisibleRect()
@@ -104,10 +106,9 @@ abstract public class InsertNode extends LocationDoer
 		return visibleRectangle;
 	}
 	
-	public Point getCenterLocation()
+	public Point getCenterLocation(Rectangle visibleRectangle)
 	{
 		Point deltaPoint = new Point();
-		Rectangle visibleRectangle = getDiagramVisibleRect();
 		int centeredWidth = visibleRectangle.width / 2;
 		int centeredHeight = visibleRectangle.height / 2;
 		
@@ -117,13 +118,9 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(DiagramNode addedNode)
+	public Point getTargetLocation(DiagramNode addedNode, Rectangle visibleRectangle)
 	{
-		Rectangle visibleRectangle = getDiagramVisibleRect();
 		Point deltaPoint = new Point();
-		final int TARGET_TOP_LOCATION = 150;
-		final int TARGET_BETWEEN_SPACING = 20;
-		final int TARGET_RIGHT_SPACING = 10;
 		DiagramModel diagramModel = getProject().getDiagramModel();
 		DiagramNode[] allTargets = diagramModel.getAllTargetNodes();
 
@@ -142,7 +139,7 @@ abstract public class InsertNode extends LocationDoer
 				y = allTargets[i].getBounds().getY();
 				highestY = (int)Math.max(highestY, y);
 			}
-
+			
 			deltaPoint.x = (int)allTargets[0].getBounds().getX();
 			deltaPoint.y = highestY + (int)allTargets[0].getBounds().getHeight() + TARGET_BETWEEN_SPACING;
 		}
@@ -152,14 +149,10 @@ abstract public class InsertNode extends LocationDoer
 	
 	public Point getLocationSelectedNonTargetNode(DiagramNode[] selectedNodes, int nodeWidth)
 	{
-		final int DEFAULT_MOVE = 150;
-		Point deltaPoint = new Point();
 		Point nodeLocation = selectedNodes[0].getLocation();
-		deltaPoint.x = 0;
-		deltaPoint.x = nodeLocation.x - (DEFAULT_MOVE + nodeWidth);
-		deltaPoint.x = Math.max(0, deltaPoint.x);
-		deltaPoint.y = nodeLocation.y;
-		return deltaPoint;
+		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
+		
+		return new Point(x, nodeLocation.y);
 	}
 	
 	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
@@ -187,4 +180,9 @@ abstract public class InsertNode extends LocationDoer
 	{
 		return (DiagramView)getView();
 	}
+	
+	public static final int TARGET_TOP_LOCATION = 150;
+	public static final int TARGET_BETWEEN_SPACING = 20;
+	public static final int TARGET_RIGHT_SPACING = 10;
+	public static final int DEFAULT_MOVE = 150;
 }
