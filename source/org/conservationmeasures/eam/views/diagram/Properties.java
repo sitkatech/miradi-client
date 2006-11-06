@@ -75,7 +75,8 @@ public class Properties extends LocationDoer
 	
 	void doNodeProperties(DiagramNode selectedNode, Point at) throws CommandFailedException
 	{
-		diagram.showNodeProperties(selectedNode, getTabToStartOn(selectedNode, at));
+		DiagramView view = (DiagramView)getView();
+		view.showNodeProperties(selectedNode, getTabToStartOn(selectedNode, at));
 	}
 
 	private int getTabToStartOn(DiagramNode node, Point at)

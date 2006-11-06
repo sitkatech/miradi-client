@@ -34,11 +34,8 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.KeyBinder;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -284,31 +281,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 	}
 	
-	public void selectionWasChanged()
-	{
-		if(nodePropertiesDlg == null)
-			return;
-		
-		DiagramNode selectedNode = getSelectedNode();
-		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
-			disposeOfNodePropertiesDialog();
-	}
-
-	public void showNodeProperties(DiagramNode node, int startingTabIdentifier)
-	{
-		if(nodePropertiesDlg != null)
-			disposeOfNodePropertiesDialog();
-		String title = EAM.text("Title|Properties");
-		nodePropertiesPanel = new NodePropertiesPanel(EAM.mainWindow, this);
-		nodePropertiesDlg = new ModelessDialogWithClose(EAM.mainWindow, nodePropertiesPanel, title);
-		
-		nodePropertiesPanel.setCurrentNode(this, node);
-		nodePropertiesPanel.selectTab(startingTabIdentifier);
-		nodePropertiesDlg.pack();
-		Utilities.centerDlg(nodePropertiesDlg);
-		nodePropertiesDlg.setVisible(true);
-	}
-	
 	public CellView getNextSelectableViewAt(CellView current, double x, double y)
 	{
 		CellView candidateView = super.getNextSelectableViewAt(current, x, y);
@@ -327,13 +299,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return candidateView;
 	}
 
-	private void disposeOfNodePropertiesDialog()
-	{
-		nodePropertiesDlg.dispose();
-		nodePropertiesDlg = null;
-		nodePropertiesPanel = null;
-	}
-	
 	/*
 	 * NOTE: The following method is a refactored version of what is in the JGraph
 	 * class in jgraph 5.8. It's here for debugging weird selection model issues.
@@ -391,7 +356,5 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
-	ModelessDialogWithClose nodePropertiesDlg;
-	NodePropertiesPanel nodePropertiesPanel;
 }
 

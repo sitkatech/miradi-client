@@ -49,6 +49,8 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
+import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -71,6 +73,7 @@ import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.UiScrollPane;
+import org.martus.swing.Utilities;
 
 
 public class DiagramView extends UmbrellaView implements CommandExecutedListener
@@ -197,6 +200,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public void becomeInactive() throws Exception
 	{
 		// TODO: This should completely tear down the view
+		disposeOfNodePropertiesDialog();
+		diagram.clearSelection();
 		super.becomeInactive();
 	}
 	
@@ -431,10 +436,49 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		wizardPanel.jump(stepMarker);
 	}
 
+	public void showNodeProperties(DiagramNode node, int startingTabIdentifier)
+	{
+		closeActivePropertiesDialog();
+		if(nodePropertiesDlg != null)
+			disposeOfNodePropertiesDialog();
+		String title = EAM.text("Title|Properties");
+		nodePropertiesPanel = new NodePropertiesPanel(getMainWindow(), diagram);
+		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
+		
+		nodePropertiesPanel.setCurrentNode(diagram, node);
+		nodePropertiesPanel.selectTab(startingTabIdentifier);
+		nodePropertiesDlg.pack();
+		Utilities.centerDlg(nodePropertiesDlg);
+		nodePropertiesDlg.setVisible(true);
+	}
+
+	private void disposeOfNodePropertiesDialog()
+	{
+		if(nodePropertiesDlg != null)
+			nodePropertiesDlg.dispose();
+		nodePropertiesDlg = null;
+		nodePropertiesPanel = null;
+	}
+	
+	public void selectionWasChanged()
+	{
+		if(nodePropertiesDlg == null)
+			return;
+		
+		DiagramNode selectedNode = diagram.getSelectedNode();
+		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
+			disposeOfNodePropertiesDialog();
+	}
+
+	
 	JSplitPane bigSplitter;
 	DiagramComponent diagram;
 	Properties propertiesDoer;
 	DiagramWizardPanel wizardPanel;
 	String mode;
 	DiagramLegendPanel legendDialog;
+	
+	ModelessDialogWithClose nodePropertiesDlg;
+	NodePropertiesPanel nodePropertiesPanel;
+
 }

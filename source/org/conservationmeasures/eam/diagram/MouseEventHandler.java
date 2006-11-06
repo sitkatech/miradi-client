@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.NodeMoveHandler;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.Properties;
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
@@ -166,7 +167,11 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 	{
 		selectedCells = getDiagram().getSelectionCells();
 		getActions().updateActionStates();
-		getDiagram().selectionWasChanged();
+		if(mainWindow.getCurrentView().cardName().equals(DiagramView.getViewName()))
+		{
+			DiagramView view = (DiagramView)mainWindow.getCurrentView();
+			view.selectionWasChanged();
+		}
 	}
 
 	MainWindow mainWindow;
