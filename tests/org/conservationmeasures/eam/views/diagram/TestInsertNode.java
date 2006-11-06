@@ -30,7 +30,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		OurMainWindow mainWindow = new OurMainWindow(project);
-		
+
 		try
 		{
 			Point at = project.getSnapped(new Point(25,167));
@@ -39,12 +39,12 @@ public class TestInsertNode extends TestCaseEnhanced
 			inserter.setView(new DiagramView(mainWindow));
 			inserter.setLocation(at);
 			inserter.doIt();
-			
+
 			ModelNodeId id = project.getNodePool().getModelNodeIds()[0];
 			DiagramNode node = project.getDiagramModel().getNodeById(id);
 			assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 			assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
-			
+
 			assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
 		}
 		finally
@@ -52,7 +52,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			project.close();
 		}
 	}
-	
+
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
 		void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
@@ -62,7 +62,7 @@ public class TestInsertNode extends TestCaseEnhanced
 
 		public boolean wasPropertiesEditorLaunched; 
 	}
-	
+
 	static class OurMainWindow extends MainWindow
 	{
 		public OurMainWindow(Project projectToUse) throws IOException
@@ -75,9 +75,8 @@ public class TestInsertNode extends TestCaseEnhanced
 		{
 			return diagramComponent;
 		}
-		
+
 		private DiagramComponent diagramComponent;
 
 	}
-	
-	}
+}

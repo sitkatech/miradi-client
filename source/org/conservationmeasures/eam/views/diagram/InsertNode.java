@@ -64,12 +64,7 @@ abstract public class InsertNode extends LocationDoer
 	private ModelNodeId insertNodeItself() throws Exception
 	{
 		Point createAt = getLocation();
-		final int DEFAULT_MOVE = 150;
-		Point deltaPoint = new Point(DEFAULT_MOVE, DEFAULT_MOVE);
-		
-		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
-		Rectangle visibleRectangle = diagramComponent.getVisibleRect();
-
+		Point deltaPoint;
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 
 		getProject().executeCommand(new CommandBeginTransaction());
@@ -80,14 +75,7 @@ abstract public class InsertNode extends LocationDoer
 		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
 
-		if (createAt != null)
-			deltaPoint = getMouseLocation(createAt, deltaPoint);
-		else if (selectedNodes.length > 0 && !nodeType.isTarget())
-			deltaPoint = getLocationSelectedNonTargetNode(DEFAULT_MOVE, deltaPoint, selectedNodes, (int)addedNode.getBounds().getWidth());
-		else if (nodeType.isTarget())
-			deltaPoint = getTargetLocation(deltaPoint, visibleRectangle, addedNode);
-		else
-			deltaPoint = getCenterLocation(deltaPoint, visibleRectangle);
+		deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
 		
 		Command moveCommand = new CommandDiagramMove(deltaPoint.x, deltaPoint.y, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
@@ -99,10 +87,29 @@ abstract public class InsertNode extends LocationDoer
 		getProject().updateVisibilityOfNodes();
 		return id;
 	}
-	
-	private Point getCenterLocation(Point deltaPointToUse, Rectangle visibleRectangle)
+	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, NodeType nodeType, DiagramNode addedNode)
 	{
-		Point deltaPoint = new Point(deltaPointToUse);
+		if (createAt != null)
+			return getMouseLocation(createAt);
+		else if (selectedNodes.length > 0 && !nodeType.isTarget())
+			return getLocationSelectedNonTargetNode( selectedNodes, (int)addedNode.getBounds().getWidth());
+		else if (nodeType.isTarget())
+			return getTargetLocation( addedNode);
+		else
+			return getCenterLocation();
+	}
+	
+	private Rectangle getDiagramVisibleRect()
+	{
+		DiagramComponent diagramComponent = getMainWindow().getDiagramComponent();
+		Rectangle visibleRectangle = diagramComponent.getVisibleRect();
+		return visibleRectangle;
+	}
+	
+	private Point getCenterLocation()
+	{
+		Point deltaPoint = new Point();
+		Rectangle visibleRectangle = getDiagramVisibleRect();
 		int centeredWidth = visibleRectangle.width / 2;
 		int centeredHeight = visibleRectangle.height / 2;
 		
@@ -112,9 +119,10 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getTargetLocation(Point deltaPointToUse, Rectangle visibleRectangle, DiagramNode addedNode)
+	private Point getTargetLocation( DiagramNode addedNode)
 	{
-		Point deltaPoint = new Point(deltaPointToUse);
+		Rectangle visibleRectangle = getDiagramVisibleRect();
+		Point deltaPoint = new Point();
 		final int TARGET_TOP_LOCATION = 150;
 		final int TARGET_BETWEEN_SPACING = 20;
 		final int TARGET_RIGHT_SPACING = 10;
@@ -144,9 +152,10 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getLocationSelectedNonTargetNode(final int DEFAULT_MOVE, Point deltaPointToUse, DiagramNode[] selectedNodes, int nodeWidth)
+	private Point getLocationSelectedNonTargetNode(DiagramNode[] selectedNodes, int nodeWidth)
 	{
-		Point deltaPoint = new Point(deltaPointToUse);
+		final int DEFAULT_MOVE = 150;
+		Point deltaPoint = new Point();
 		Point nodeLocation = selectedNodes[0].getLocation();
 		deltaPoint.x = 0;
 		deltaPoint.x = nodeLocation.x - (DEFAULT_MOVE + nodeWidth);
@@ -155,9 +164,9 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getMouseLocation(Point createAt, Point deltaPointToUse)
+	private Point getMouseLocation(Point createAt)
 	{
-		Point deltaPoint = new Point(deltaPointToUse);
+		Point deltaPoint = new Point();
 		deltaPoint.x = createAt.x;
 		deltaPoint.y = createAt.y;
 		return deltaPoint;
