@@ -88,6 +88,7 @@ import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -242,6 +243,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 				return new TaskPropertiesPanel(getMainWindow(), object);
 			case ObjectType.GOAL:
 				return new GoalPropertiesPanel(getMainWindow(), object);
+			case ObjectType.PROJECT_RESOURCE:
+				return new ProjectResourcePropertiesPanel(getProject(), object.getId());
 		}
 		
 		EAM.logDebug("UmbrellaView.createPanelForDialog unknown type: " + object.getType());

@@ -74,10 +74,21 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 			return;
 		
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
+		if(!isInterestingType(cmd.getObjectType()))
 			return;
 		
 		rebuild();
+	}
+
+	private boolean isInterestingType(int modifiedObjectType)
+	{
+		if(modifiedObjectType == ObjectType.PROJECT_METADATA)
+			return true;
+		
+		if(modifiedObjectType == ObjectType.PROJECT_RESOURCE)
+			return true;
+		
+		return false;
 	}
 	
 	public String getPanelDescription()

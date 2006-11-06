@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.actions.ActionProperties;
+import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
@@ -45,7 +45,7 @@ class TeamEditorComponent extends JPanel
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
-		box.add(new UiButton(actions.get(ActionProperties.class)));
+		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
 		return box;
 	}
 	
