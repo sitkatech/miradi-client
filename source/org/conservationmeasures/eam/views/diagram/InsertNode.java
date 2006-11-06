@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 
 abstract public class InsertNode extends LocationDoer
@@ -49,6 +50,7 @@ abstract public class InsertNode extends LocationDoer
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 	}
@@ -79,13 +81,13 @@ abstract public class InsertNode extends LocationDoer
 		getProject().executeCommand(setNameCommand);
 
 		if (createAt != null)
-			getMouseLocation(createAt, deltaPoint);
+			deltaPoint = getMouseLocation(createAt, deltaPoint);
 		else if (selectedNodes.length > 0 && !nodeType.isTarget())
-			getLocationSelectedNoneTargetNode(DEFAULT_MOVE, deltaPoint, selectedNodes);
+			deltaPoint = getLocationSelectedNonTargetNode(DEFAULT_MOVE, deltaPoint, selectedNodes, (int)addedNode.getBounds().getWidth());
 		else if (nodeType.isTarget())
-			getTargetLocation(deltaPoint, visibleRectangle, addedNode);
+			deltaPoint = getTargetLocation(deltaPoint, visibleRectangle, addedNode);
 		else
-			getCenterLocation(deltaPoint, visibleRectangle);
+			deltaPoint = getCenterLocation(deltaPoint, visibleRectangle);
 		
 		Command moveCommand = new CommandDiagramMove(deltaPoint.x, deltaPoint.y, new DiagramNodeId[] {addedNode.getDiagramNodeId()});
 		getProject().executeCommand(moveCommand);
@@ -98,27 +100,32 @@ abstract public class InsertNode extends LocationDoer
 		return id;
 	}
 	
-	private void getCenterLocation(Point deltaPoint, Rectangle visibleRectangle)
+	private Point getCenterLocation(Point deltaPointToUse, Rectangle visibleRectangle)
 	{
+		Point deltaPoint = new Point(deltaPointToUse);
 		int centeredWidth = visibleRectangle.width / 2;
 		int centeredHeight = visibleRectangle.height / 2;
 		
 		deltaPoint.x = visibleRectangle.x + centeredWidth;
 		deltaPoint.y = visibleRectangle.y + centeredHeight;
+		
+		return deltaPoint;
 	}
 	
-	private void getTargetLocation(Point deltaPoint, Rectangle visibleRectangle, DiagramNode addedNode)
+	private Point getTargetLocation(Point deltaPointToUse, Rectangle visibleRectangle, DiagramNode addedNode)
 	{
-		final int TARGET_SPACING = 20;
-		final int RIGHT_SPACING = 10;
+		Point deltaPoint = new Point(deltaPointToUse);
+		final int TARGET_TOP_LOCATION = 150;
+		final int TARGET_BETWEEN_SPACING = 20;
+		final int TARGET_RIGHT_SPACING = 10;
 		DiagramModel diagramModel = getProject().getDiagramModel();
 		DiagramNode[] allTargets = diagramModel.getAllTargetNodes();
 
 		if (allTargets.length == 1)
 		{
-			int nodeWidth = addedNode.getRectangle().width + RIGHT_SPACING;
-			deltaPoint.x = visibleRectangle.width - nodeWidth;
-			deltaPoint.y = visibleRectangle.height / 3;
+			int nodeWidth = addedNode.getRectangle().width;
+			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - nodeWidth;
+			deltaPoint.y = TARGET_TOP_LOCATION;
 		}
 		else
 		{
@@ -127,30 +134,33 @@ abstract public class InsertNode extends LocationDoer
 			for (int i = 0; i < allTargets.length; i++)
 			{
 				y = allTargets[i].getBounds().getY();
-				if (y > highestY)
-					highestY = (int)y;
+				highestY = (int)Math.max(highestY, y);
 			}
 
 			deltaPoint.x = (int)allTargets[0].getBounds().getX();
-			deltaPoint.y = highestY + (int)allTargets[0].getBounds().getHeight() + TARGET_SPACING;
+			deltaPoint.y = highestY + (int)allTargets[0].getBounds().getHeight() + TARGET_BETWEEN_SPACING;
 		}
+		
+		return deltaPoint;
 	}
 	
-	private void getLocationSelectedNoneTargetNode(final int DEFAULT_MOVE, Point deltaPoint, DiagramNode[] selectedNodes)
+	private Point getLocationSelectedNonTargetNode(final int DEFAULT_MOVE, Point deltaPointToUse, DiagramNode[] selectedNodes, int nodeWidth)
 	{
+		Point deltaPoint = new Point(deltaPointToUse);
 		Point nodeLocation = selectedNodes[0].getLocation();
 		deltaPoint.x = 0;
-		double selectedNodeWidth = selectedNodes[0].getBounds().getWidth();
-		if (nodeLocation.x - (DEFAULT_MOVE + selectedNodeWidth) > 0)
-			deltaPoint.x = nodeLocation.x - DEFAULT_MOVE;
-		
+		deltaPoint.x = nodeLocation.x - (DEFAULT_MOVE + nodeWidth);
+		deltaPoint.x = Math.max(0, deltaPoint.x);
 		deltaPoint.y = nodeLocation.y;
+		return deltaPoint;
 	}
 	
-	private void getMouseLocation(Point createAt, Point deltaPoint)
+	private Point getMouseLocation(Point createAt, Point deltaPointToUse)
 	{
+		Point deltaPoint = new Point(deltaPointToUse);
 		deltaPoint.x = createAt.x;
 		deltaPoint.y = createAt.y;
+		return deltaPoint;
 	}
 
 	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
