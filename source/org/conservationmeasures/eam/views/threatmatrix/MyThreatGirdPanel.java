@@ -113,8 +113,6 @@ public class MyThreatGirdPanel extends JPanel
 			columnToAdjust.setPreferredWidth(width);
 			columnToAdjust.setWidth(width);
 			columnToAdjust.setResizable(true);
-			columnToAdjust.setMinWidth(50);
-			columnToAdjust.setMaxWidth(400);
 		}
 	}
 
