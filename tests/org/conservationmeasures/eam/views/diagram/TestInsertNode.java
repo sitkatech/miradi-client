@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.io.IOException;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -29,6 +30,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		OurMainWindow mainWindow = new OurMainWindow(project);
+		
 		try
 		{
 			Point at = project.getSnapped(new Point(25,167));
@@ -49,7 +51,6 @@ public class TestInsertNode extends TestCaseEnhanced
 		{
 			project.close();
 		}
-		
 	}
 	
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
@@ -68,9 +69,15 @@ public class TestInsertNode extends TestCaseEnhanced
 		{
 			super(projectToUse);
 			actions = new Actions(this);
+			diagramComponent = new DiagramComponent(this);
+		}
+		public DiagramComponent getDiagramComponent()
+		{
+			return diagramComponent;
 		}
 		
+		private DiagramComponent diagramComponent;
+
 	}
-
-
-}
+	
+	}
