@@ -38,28 +38,22 @@ public class DeleteResource extends ObjectsDoer
 		
 		BaseId idToRemove = resource.getId();
 		Task[] tasksThatUseThisResource = findTasksThatUseThisResource(idToRemove);
-		if(tasksThatUseThisResource.length > 0)
-		{
-			String[] dialogText = {
-					"This resource is assigned to one or more tasks.", 
-					"Are you sure you want to delete it?", 
-					};
-			String[] buttons = {"Yes", "No", };
-			if(!EAM.confirmDialog("Delete Resource", dialogText, buttons))
-				return;
-		}
 		
-		if(isTeamMember(idToRemove))
-		{
-			String[] dialogText = {
-					"This resource is a member of the project team.", 
-					"Are you sure you want to delete it?", 
-					};
-			String[] buttons = {"Yes", "No", };
-			if(!EAM.confirmDialog("Delete Resource", dialogText, buttons))
-				return;
+		Vector dialogText = new Vector();
+		
+		if(tasksThatUseThisResource.length > 0)
+			dialogText.add("This resource is assigned to one or more tasks.");
 
-		}
+		if(isTeamMember(idToRemove))
+			dialogText.add("This resource is a member of the project team.");
+
+		dialogText.add("\nAre you sure you want to delete this resource?");
+
+		String[] buttons = {"Yes", "No", };
+		if(!EAM.confirmDialog("Delete Resource", (String[])dialogText.toArray(new String[0]), buttons))
+			return;
+
+		
 		
 		try
 		{
