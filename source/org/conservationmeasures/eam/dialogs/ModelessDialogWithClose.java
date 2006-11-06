@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.UiButton;
@@ -31,7 +32,7 @@ public class ModelessDialogWithClose extends EAMDialog
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
 		mainPanel.add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
-		getContentPane().add(mainPanel);
+		getContentPane().add(new JScrollPane(mainPanel));
 		pack();
 		Utilities.fitInScreen(this);
 	}
