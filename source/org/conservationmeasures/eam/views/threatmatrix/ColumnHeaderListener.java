@@ -72,6 +72,9 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			String currentSortBy = threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
 					.getData(ViewData.TAG_CURRENT_SORT_BY);
 
+			if (currentSortBy.length()==0)
+				return;
+			
 			String currentSortDirection= threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
 					.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
 
