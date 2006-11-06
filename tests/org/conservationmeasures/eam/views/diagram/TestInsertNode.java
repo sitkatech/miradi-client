@@ -86,10 +86,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		inserter.setMainWindow(mainWindow);
 		inserter.setView(new DiagramView(mainWindow));
 
-		CreateModelNodeParameter modelNodeParameter1 = new CreateModelNodeParameter(new NodeTypeTarget());
-		ModelNodeId nodeId1 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter1);
-		DiagramNodeId dModelid1 = project.addNodeToDiagram(nodeId1);
-		DiagramNode dNode1 = project.getDiagramModel().getNodeById(dModelid1);
+		DiagramNode dNode1 = getDiagramNode(project);
 
 		final Rectangle visibleRect = new Rectangle(0, 0, SAME_HEIGHT_WIDTH, SAME_HEIGHT_WIDTH);
 		Point newNodeLocation1 = inserter.getTargetLocation(dNode1, visibleRect);
@@ -100,17 +97,22 @@ public class TestInsertNode extends TestCaseEnhanced
 		Point firstPoint = new Point(x, y);
 		assertEquals("is first target Location?", firstPoint, newNodeLocation1);
 
-		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new NodeTypeTarget());
-		ModelNodeId nodeId2 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
-		DiagramNodeId  dModelId2 = project.addNodeToDiagram(nodeId2);
-		DiagramNode dNode2 = project.getDiagramModel().getNodeById(dModelId2);	
+		DiagramNode dNode2 = getDiagramNode(project);	
 
 		y = (int)dNode1.getRectangle().getHeight() + InsertNode.TARGET_TOP_LOCATION + InsertNode.TARGET_BETWEEN_SPACING;
 
 		Point secondPoint  = new Point(x, y);
 		Point newNodeLocation2 = inserter.getTargetLocation(dNode2, visibleRect);
 		assertEquals("is second target Location?", secondPoint, newNodeLocation2);
+	}
 
+	private DiagramNode getDiagramNode(Project project) throws Exception
+	{
+		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new NodeTypeTarget());
+		ModelNodeId nodeId2 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
+		DiagramNodeId  dModelId2 = project.addNodeToDiagram(nodeId2);
+		DiagramNode dNode2 = project.getDiagramModel().getNodeById(dModelId2);
+		return dNode2;
 	}
 
 	private void verifyMouseLocation(OurMainWindow mainWindow, Project project) throws Exception
@@ -134,10 +136,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		inserter.setMainWindow(mainWindow);
 		inserter.setView(new DiagramView(mainWindow));
 
-		CreateModelNodeParameter modelNodeParameter1 = new CreateModelNodeParameter(new NodeTypeTarget());
-		ModelNodeId modelNodeId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter1);
-		DiagramNodeId diagramNodeId = project.addNodeToDiagram(modelNodeId);
-		DiagramNode diagramNode = project.getDiagramModel().getNodeById(diagramNodeId);
+		DiagramNode diagramNode = getDiagramNode(project);
 
 		checkNodeLocation(project, inserter, diagramNode, someFirstPoint);
 		checkNodeLocation(project, inserter, diagramNode, someSecondPoint);
