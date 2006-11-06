@@ -72,23 +72,28 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 			String currentSortBy = threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
 					.getData(ViewData.TAG_CURRENT_SORT_BY);
 
-			if (currentSortBy.length()==0)
-				return;
-			
-			String currentSortDirection= threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
-					.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
-
-			if (currentSortBy.equals(ViewData.SORT_TARGETS))
-				TargetRowHeaderListener.sort(threatGirdPanel, currentSortBy,
-						currentSortDirection);
-			else
-				ThreatColumnHeaderListener.sort(threatGirdPanel, currentSortBy,
-						currentSortDirection);
+			boolean hastPriorSortBy = currentSortBy.length()!=0;
+			if (hastPriorSortBy)
+				restorePriorSortState(threatGirdPanel, currentSortBy);
 		}
 		catch(Exception e)
 		{
 			EAM.logError("Unable to retrieve sort state:" + e);
 		}
+	}
+
+
+	private static void restorePriorSortState(MyThreatGirdPanel threatGirdPanel, String currentSortBy) throws Exception
+	{
+		String currentSortDirection= threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
+				.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
+
+		if (currentSortBy.equals(ViewData.SORT_TARGETS))
+			TargetRowHeaderListener.sort(threatGirdPanel, currentSortBy,
+					currentSortDirection);
+		else
+			ThreatColumnHeaderListener.sort(threatGirdPanel, currentSortBy,
+					currentSortDirection);
 	}
 	
 	
