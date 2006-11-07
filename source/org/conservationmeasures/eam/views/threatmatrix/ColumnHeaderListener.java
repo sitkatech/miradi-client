@@ -69,7 +69,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	{
 		try
 		{
-			String currentSortBy = threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
+			String currentSortBy = threatGirdPanel.getProject().getViewData(threatGirdPanel.getProject().getCurrentView())
 					.getData(ViewData.TAG_CURRENT_SORT_BY);
 
 			boolean hastPriorSortBy = currentSortBy.length()!=0;
@@ -85,7 +85,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 
 	private static void restorePriorSortState(MyThreatGirdPanel threatGirdPanel, String currentSortBy) throws Exception
 	{
-		String currentSortDirection= threatGirdPanel.project.getViewData(threatGirdPanel.project.getCurrentView())
+		String currentSortDirection= threatGirdPanel.getProject().getViewData(threatGirdPanel.getProject().getCurrentView())
 				.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
 
 		if (currentSortBy.equals(ViewData.SORT_TARGETS))
@@ -103,17 +103,17 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		{
 			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
 
-			ViewData viewData = threatGirdPanel.project.getCurrentViewData();
+			ViewData viewData = threatGirdPanel.getProject().getCurrentViewData();
 
 			executeCommand(new CommandBeginTransaction());
 			
 			CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_DIRECTION, order);
-			threatGirdPanel.project.executeCommand(cmd);
+			threatGirdPanel.getProject().executeCommand(cmd);
 
 			cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
 					ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
-			threatGirdPanel.project.executeCommand(cmd);
+			threatGirdPanel.getProject().executeCommand(cmd);
 
 			executeCommand(new CommandEndTransaction());
 		}
@@ -126,7 +126,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	
 	private void executeCommand(Command cmd) throws CommandFailedException
 	{
-		threatGirdPanel.project.executeCommand(cmd);
+		threatGirdPanel.getProject().executeCommand(cmd);
 	}
 	
 	public abstract void sort(int sortColumnToUse);

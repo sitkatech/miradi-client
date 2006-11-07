@@ -30,13 +30,11 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 public class MyThreatGirdPanel extends JPanel
 {
 	public MyThreatGirdPanel(ThreatMatrixView viewToUse,
-			NonEditableThreatMatrixTableModel modelToUse, Project projectToUse)
+			NonEditableThreatMatrixTableModel modelToUse)
 			throws Exception
 	{
 		super(new BorderLayout());
 		model = modelToUse;
-		project = projectToUse;
-		framework = project.getThreatRatingFramework();
 		view = viewToUse;
 		add(createThreatGridPanel());
 	}
@@ -188,10 +186,19 @@ public class MyThreatGirdPanel extends JPanel
 		this.repaint();
 	}
 
+	public Project getProject() 
+	{
+		return view.getProject();
+	}
+	
+	
+	public ThreatRatingFramework getThreatRatingFramework() 
+	{
+		return view.getThreatRatingFramework();
+	}
+	
 	NonEditableThreatMatrixTableModel model;
 	ThreatMatrixView view;
-	Project project;
-	ThreatRatingFramework framework;
 	ThreatRatingBundle highlightedBundle;
 	JTable globalTthreatTable;
 	NonEditableRowHeaderTableModel rowHeaderData;
