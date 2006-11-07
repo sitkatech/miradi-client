@@ -40,13 +40,13 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	private void setBoarders(JTable table, int row, int column, boolean selected, boolean focused)
 	{
 		
-		if (isOverallRatingBorder(table, row, column))
+		if (isOverallRatingCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
 		else
-		if (isSummaryRowBorder(table, row, column))
+		if (isSummaryRowCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,1,1,1,Color.DARK_GRAY));
 		else 
-		if (isSummaryColumnBorder(table, row, column))
+		if (isSummaryColumnCell(table, row, column))
 				setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
 		else 
 		{
@@ -59,18 +59,18 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		}
 	}
 
-	private boolean isOverallRatingBorder(JTable table, int row, int column)
+	private boolean isOverallRatingCell(JTable table, int row, int column)
 	{
 		return(row==maxIndex(table.getRowCount())) && 
 				(column==maxIndex(table.getColumnCount()));
 	}
 	
-	private boolean isSummaryRowBorder(JTable table, int row, int column)
+	private boolean isSummaryRowCell(JTable table, int row, int column)
 	{
 		return( row==maxIndex(table.getRowCount()));
 	}
 	
-	private boolean isSummaryColumnBorder(JTable table, int row, int column)
+	private boolean isSummaryColumnCell(JTable table, int row, int column)
 	{
 		return (column==maxIndex(table.getColumnCount()));
 	}
