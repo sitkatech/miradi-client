@@ -74,11 +74,12 @@ public class ThreatMatrixView extends UmbrellaView
 			String[] text = {EAM.text("Column movements will not be recorded")};
 			EAM.confirmDialog(EAM.text("Image Save"),text);
 			
-			JScrollPane scrollPane =  grid.createThreatGridPanel();
+//			NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) grid.getThreatMatrixTable().getModel();
+			JScrollPane scrollPane =  grid.createThreatGridPanel(model);
 			
 			JPanel panel = new JPanel(new BorderLayout());
-			int rows = grid.globalTthreatTable.getRowCount();
-			int columns = grid.globalTthreatTable.getColumnCount();
+			int rows = grid.getThreatMatrixTable().getRowCount();
+			int columns = grid.getThreatMatrixTable().getColumnCount();
 			panel.setPreferredSize(new Dimension(150*(columns+1) ,60*(rows+2)));
 			panel.add(scrollPane);
 

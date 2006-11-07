@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.util.Enumeration;
-import java.util.Vector;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -16,13 +15,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.LookAndFeel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -34,35 +29,34 @@ public class MyThreatGirdPanel extends JPanel
 			throws Exception
 	{
 		super(new BorderLayout());
-		model = modelToUse;
 		view = viewToUse;
-		add(createThreatGridPanel());
+		add(createThreatGridPanel(modelToUse));
 	}
 
-	public JScrollPane createThreatGridPanel() throws Exception
+	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
 		JTable rowHeaderTable = createRowHeaderTable(newRowHeaderData);
 
-		globalTthreatTable = createThreatTable();
+		threatTable = createThreatTable(model);
 
-		JTableHeader columnHeader = globalTthreatTable.getTableHeader();
+		JTableHeader columnHeader = threatTable.getTableHeader();
 		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
 
 		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
 		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
-				rowHeaderTable, globalTthreatTable, rowHeader);
+				rowHeaderTable, threatTable, rowHeader);
 
 		return scrollPane;
 	}
 	
 	
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
-			JTable threatTable, JTableHeader rowHeader)
+			JTable table, JTableHeader rowHeader)
 	{
-		JScrollPane newScrollPane = new JScrollPane(threatTable);
+		JScrollPane newScrollPane = new JScrollPane(table);
 		newScrollPane.setRowHeaderView(rowHeaderTable);
 		newScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
 		newScrollPane
@@ -74,34 +68,35 @@ public class MyThreatGirdPanel extends JPanel
 		return newScrollPane;
 	}
 
-	private JTable createThreatTable()
+	
+	private ThreatMatrixTable createThreatTable(NonEditableThreatMatrixTableModel model)
 	{
 		NonEditableThreatMatrixTableModel threatData = model;
 		
-		ThreatMatrixTable threatTable = new ThreatMatrixTable(threatData);
+		ThreatMatrixTable table = new ThreatMatrixTable(threatData);
 
-		threatTable.setIntercellSpacing(new Dimension(0, 0));
+		table.setIntercellSpacing(new Dimension(0, 0));
 		
-		setTableColumnWidths(threatTable,150);
-		threatTable.setRowHeight(60);
+		setColumnWidths(table,150);
+		table.setRowHeight(60);
 
-		ListSelectionModel selectionModel = threatTable.getSelectionModel();
-		threatTable.setRowSelectionAllowed(false);
-		threatTable.setColumnSelectionAllowed(true);
-		threatTable.setCellSelectionEnabled(true);
-		CellSelectionListener selectionListener = new CellSelectionListener(threatTable,this);
+		ListSelectionModel selectionModel = table.getSelectionModel();
+		table.setRowSelectionAllowed(false);
+		table.setColumnSelectionAllowed(true);
+		table.setCellSelectionEnabled(true);
+		CellSelectionListener selectionListener = new CellSelectionListener(table,this);
 		selectionModel.addListSelectionListener(selectionListener);
 		
 		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
-		threatTable.setDefaultRenderer(Object.class, customTableCellRenderer);
+		table.setDefaultRenderer(Object.class, customTableCellRenderer);
 
-		threatTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		return threatTable;
+		return table;
 	}
 
 
-	public void setTableColumnWidths(JTable table, int width)
+	private void setColumnWidths(JTable table, int width)
 	{
 		Enumeration columns = table.getColumnModel().getColumns();
 		while(columns.hasMoreElements())
@@ -116,16 +111,16 @@ public class MyThreatGirdPanel extends JPanel
 
 
 
-	public JTable createRowHeaderTable(NonEditableRowHeaderTableModel rowHeaderDataToUSe )
+	private JTable createRowHeaderTable(NonEditableRowHeaderTableModel rowHeaderDataToUSe )
 	{
-		rowHeaderData = rowHeaderDataToUSe;
+		NonEditableRowHeaderTableModel rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
 
 		rowHeaderTable.getTableHeader().setResizingAllowed(false);
 		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		setTableColumnWidths(rowHeaderTable, 80);
+		setColumnWidths(rowHeaderTable, 80);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
 		rowHeaderTable.setRowHeight(60);
 		
@@ -141,51 +136,32 @@ public class MyThreatGirdPanel extends JPanel
 		return rowHeaderTable;
 	}
 
+	
 	private void setDefaultRowHeaderRenderer(JTable rowHeaderTable)
 	{
 		rowHeaderTable.setDefaultRenderer(Object.class, new ThreatRowHeaderRenderer());
 	}
-
-
-	public Vector getColumnTargetHeaders()
-	{
-		Vector columnsNames = new Vector();
-		for(int targetIndex = 0; targetIndex < model.getTargetCount(); ++targetIndex)
-		{
-			ConceptualModelNode targetNode = createNodeTargetLabel(targetIndex);
-			columnsNames.add(targetNode);
-		}
-		columnsNames.add(EAM.text("Summary Target Rating"));
-		return columnsNames;
-	}
-
-
-	private ConceptualModelNode createNodeTargetLabel(int targetIndex)
-	{	
-		return model.getTargetNode(targetIndex);
-	}
-
-	public void bundleWasClicked(ThreatRatingBundle bundle) throws Exception
-	{
-		view.selectBundle(bundle);
-	}
+	
 	
 	public ThreatRatingBundle getSelectedBundle()
 	{
 		return highlightedBundle;
 	}
 
+	
 	public void selectBundle(ThreatRatingBundle bundle) throws Exception
 	{
 		highlightedBundle = bundle;
 		refreshCell(bundle);
 	}
 	
-	public void refreshCell(ThreatRatingBundle bundle) throws Exception
+	
+	private void refreshCell(ThreatRatingBundle bundle) throws Exception
 	{
 		this.repaint();
 	}
 
+	
 	public Project getProject() 
 	{
 		return view.getProject();
@@ -197,76 +173,22 @@ public class MyThreatGirdPanel extends JPanel
 		return view.getThreatRatingFramework();
 	}
 	
-	NonEditableThreatMatrixTableModel model;
+	
+	public ThreatMatrixView getThreatMatrixView() 
+	{
+		return view;
+	}
+	
+	
+	public ThreatMatrixTable getThreatMatrixTable() 
+	{
+		return threatTable;
+	}
+	
 	ThreatMatrixView view;
 	ThreatRatingBundle highlightedBundle;
-	JTable globalTthreatTable;
-	NonEditableRowHeaderTableModel rowHeaderData;
-}
-
-class CellSelectionListener implements ListSelectionListener
-{
-	public CellSelectionListener(ThreatMatrixTable threatTableInUse, MyThreatGirdPanel threatGirdPanelInUse) {
-		threatTable = threatTableInUse;
-		threatGirdPanel = threatGirdPanelInUse;
-	}
-
-	public void valueChanged(ListSelectionEvent e)
-	{
-		if (threatTable.getSelectedRow() >= 0) 
-		{
-			int row = threatTable.getSelectedRow();
-			int column = threatTable.getSelectedModelColumn();
-
-			if(((NonEditableThreatMatrixTableModel) threatTable.getModel())
-					.isBundleTableCellABundle(row, column))
-				notifyComponents(row, column);
-			else
-				notifyComponentsClearSelection();
-
-			unselectToForceFutureNotifications(row, threatTable.getSelectedColumn());
-		}
-	}
-
-	
-	private void unselectToForceFutureNotifications(int row, int column)
-	{
-		threatTable.changeSelection(row, column, true,false);
-	}
-	
-	private void notifyComponentsClearSelection()
-	{
-		try
-		{
-			threatGirdPanel.view.selectBundle(null);
-		}
-		catch(Exception ex)
-		{
-			EAM.logException(ex);
-		}
-	}
-
-	private void notifyComponents(int row, int column)
-	{
-		try
-		{
-			NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel)threatTable.getModel();
-			ThreatRatingBundle threatRatingBundle = model.getBundle(row, column);
-			threatGirdPanel.view.selectBundle(threatRatingBundle);
-		}
-		// TODO: must add errDialog call....need to see how to call when on the swing event thread
-		catch(Exception ex)
-		{
-			EAM.logException(ex);
-		}
-	}
-	
-	
-	
 	ThreatMatrixTable threatTable;
-	MyThreatGirdPanel threatGirdPanel;
 }
-
 
 
 

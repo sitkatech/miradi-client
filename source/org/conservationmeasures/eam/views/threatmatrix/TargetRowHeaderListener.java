@@ -34,7 +34,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	public static void sort(MyThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
 	{
 		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
+			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
@@ -51,7 +51,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	{
 		
 		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.globalTthreatTable.getModel();
+			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
