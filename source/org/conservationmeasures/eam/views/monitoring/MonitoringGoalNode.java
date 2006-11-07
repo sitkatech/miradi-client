@@ -8,11 +8,13 @@ package org.conservationmeasures.eam.views.monitoring;
 import java.util.Iterator;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -34,7 +36,7 @@ public class MonitoringGoalNode extends MonitoringNode
 	
 	public String toString()
 	{
-		return goal.getLabel() + " (" + goal.getShortLabel() + ")";
+		return goal.getShortLabel() + "." + goal.getLabel();
 	}
 	
 	public int getChildCount()
@@ -59,9 +61,15 @@ public class MonitoringGoalNode extends MonitoringNode
 		children = new Vector();
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();
+		
 		while(iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			
+			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
+			if (node.isTarget() && indicator != null && indicator.getLabel() != null)
+				children.add(new MonitoringIndicatorNode(project, indicator));
+			
 			ObjectiveIds objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{
