@@ -59,17 +59,14 @@ public class MonitoringGoalNode extends MonitoringNode
 	{
 		children = new Vector();
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
-		Iterator iter = relatedNodes.iterator();
-		
-		while (iter.hasNext())
-		{
-			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
-			if (node.isTarget() && indicator != null && indicator.getLabel() != null)
-				children.add(new MonitoringIndicatorNode(project, indicator));
-		}
-		
-		iter = relatedNodes.iterator();
+		children.addAll(getIndicatorNodes(relatedNodes));
+		children.addAll(getObjectiveNodes(relatedNodes));
+	}
+	
+	private Vector getObjectiveNodes(ConceptualModelNodeSet relatedNodesToUse)
+	{
+		Vector vector = new Vector();
+		Iterator iter = relatedNodesToUse.iterator();
 		while(iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
@@ -79,9 +76,24 @@ public class MonitoringGoalNode extends MonitoringNode
 				if(objectiveIds.get(i).isInvalid())
 					continue;
 				Objective objective = (Objective)project.findObject(ObjectType.OBJECTIVE, objectiveIds.get(i));
-				children.add(new MonitoringObjectiveNode(project, objective));
+				vector.add(new MonitoringObjectiveNode(project, objective));
 			}
 		}
+		return vector;
+	}
+
+	private Vector getIndicatorNodes(ConceptualModelNodeSet relatedNodesToUse)
+	{
+		Iterator iter = relatedNodesToUse.iterator();
+		Vector vector = new Vector();
+		while (iter.hasNext())
+		{
+			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
+			if (node.isTarget() && indicator != null && indicator.getLabel() != null)
+				vector.add(new MonitoringIndicatorNode(project, indicator));
+		}
+		return vector;
 	}
 
 	Goal goal;
