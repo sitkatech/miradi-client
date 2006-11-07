@@ -48,11 +48,11 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
 		resourceManagementPanel = new ResourceManagementPanel(getMainWindow());
-		activitiesPanel = new ActivitiesPanel(this);
+		activitiesManagementPanel = new ActivitiesManagementPanel(getMainWindow());
 
 		addTab(EAM.text("Work Plan"), workPlanPanel);
 		addTab(EAM.text("Resources"), resourceManagementPanel);
-		addTab(EAM.text("Activities"), activitiesPanel);
+		addTab(EAM.text("Activities"), activitiesManagementPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
@@ -66,8 +66,8 @@ public class WorkPlanView extends TabbedView
 		workPlanPanel = null;
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
-		activitiesPanel.dispose();
-		activitiesPanel = null;
+		activitiesManagementPanel.dispose();
+		activitiesManagementPanel = null;
 	}
 	
 	public WorkPlanPanel getWorkPlanPanel()
@@ -115,5 +115,5 @@ public class WorkPlanView extends TabbedView
 
 	WorkPlanPanel workPlanPanel;
 	ResourceManagementPanel resourceManagementPanel;
-	ActivitiesPanel activitiesPanel;
+	ActivitiesManagementPanel activitiesManagementPanel;
 }
