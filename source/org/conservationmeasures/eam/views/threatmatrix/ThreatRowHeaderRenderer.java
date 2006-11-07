@@ -33,12 +33,12 @@ class ThreatRowHeaderRenderer
     public Component getTableCellRendererComponent(JTable table, Object value,
                        boolean selected, boolean focused, int row, int column)
     {
-        setupCellRendererComponent(table, value, selected, focused);
+        setupCellRendererComponent(value);
         return this;
     }
     
     
-	private void setupCellRendererComponent(JComponent component, Object value, boolean selected, boolean focused)
+	private void setupCellRendererComponent(Object value)
 	{
         setOpaque(false);
         setText(value.toString());
