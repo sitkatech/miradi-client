@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.monitoring;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -62,14 +61,18 @@ public class MonitoringGoalNode extends MonitoringNode
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();
 		
-		while(iter.hasNext())
+		while (iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			
 			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
 			if (node.isTarget() && indicator != null && indicator.getLabel() != null)
 				children.add(new MonitoringIndicatorNode(project, indicator));
-			
+		}
+		
+		iter = relatedNodes.iterator();
+		while(iter.hasNext())
+		{
+			ConceptualModelNode node = (ConceptualModelNode)iter.next();
 			ObjectiveIds objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{
