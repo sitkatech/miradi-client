@@ -77,8 +77,9 @@ public class MyThreatGirdPanel extends JPanel
 
 		table.setIntercellSpacing(new Dimension(0, 0));
 		
-		setColumnWidths(table,150);
-		table.setRowHeight(60);
+
+		setColumnWidths(table,ABOUT_TWO_INCHES);
+		table.setRowHeight(ABOUT_ONE_INCH);
 
 		ListSelectionModel selectionModel = table.getSelectionModel();
 		table.setRowSelectionAllowed(false);
@@ -120,9 +121,9 @@ public class MyThreatGirdPanel extends JPanel
 		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		setColumnWidths(rowHeaderTable, 80);
+		setColumnWidths(rowHeaderTable, ABOUT_ONE_AND_HALF_INCH);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
-		rowHeaderTable.setRowHeight(60);
+		rowHeaderTable.setRowHeight(ABOUT_ONE_INCH);
 		
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
@@ -188,6 +189,11 @@ public class MyThreatGirdPanel extends JPanel
 	ThreatMatrixView view;
 	ThreatRatingBundle highlightedBundle;
 	ThreatMatrixTable threatTable;
+	
+	int ABOUT_ONE_INCH = 60;
+	int ABOUT_TWO_INCHES = 150;
+	int ABOUT_ONE_AND_HALF_INCH = 80;
+	
 }
 
 
