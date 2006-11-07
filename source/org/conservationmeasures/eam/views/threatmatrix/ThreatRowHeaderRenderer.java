@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.Component;
 import java.awt.Font;
 
-import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.TableCellRenderer;
