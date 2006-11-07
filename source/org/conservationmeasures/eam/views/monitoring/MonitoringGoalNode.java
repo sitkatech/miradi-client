@@ -59,11 +59,11 @@ public class MonitoringGoalNode extends MonitoringNode
 	{
 		children = new Vector();
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
-		children.addAll(getIndicatorNodes(relatedNodes));
-		children.addAll(getObjectiveNodes(relatedNodes));
+		children.addAll(createIndicatorNodes(relatedNodes));
+		children.addAll(createObjectiveNodes(relatedNodes));
 	}
 	
-	private Vector getObjectiveNodes(ConceptualModelNodeSet relatedNodesToUse)
+	private Vector createObjectiveNodes(ConceptualModelNodeSet relatedNodesToUse)
 	{
 		Vector vector = new Vector();
 		Iterator iter = relatedNodesToUse.iterator();
@@ -82,7 +82,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		return vector;
 	}
 
-	private Vector getIndicatorNodes(ConceptualModelNodeSet relatedNodesToUse)
+	private Vector createIndicatorNodes(ConceptualModelNodeSet relatedNodesToUse)
 	{
 		Iterator iter = relatedNodesToUse.iterator();
 		Vector vector = new Vector();
