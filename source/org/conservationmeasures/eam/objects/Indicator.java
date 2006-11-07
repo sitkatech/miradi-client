@@ -70,7 +70,7 @@ public class Indicator extends EAMBaseObject
 	{
 		if(getId().isInvalid())
 			return "(None)";
-		return shortLabel + ": " + getLabel();
+		return shortLabel + "." + getLabel();
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";

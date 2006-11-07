@@ -65,7 +65,7 @@ abstract public class Desire extends EAMBaseObject
 	{
 		if(getId().isInvalid())
 			return "(None)";
-		return shortLabel + ": " + getLabel();
+		return shortLabel + "." + getLabel();
 	}
 
 	
