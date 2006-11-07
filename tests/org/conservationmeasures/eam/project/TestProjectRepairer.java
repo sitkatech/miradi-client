@@ -29,14 +29,16 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
 			ConceptualModelNode node = project.findNode(nodeId);
-			node.setIndicatorId(new IndicatorId(23252));
+			IdList bogusIndicators = new IdList();
+			bogusIndicators.add(new IndicatorId(23252));
+			node.setIndicators(bogusIndicators);
 			project.writeNode(nodeId);
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);
 			assertContains("ghost", EAM.getLoggedString());
 			node = project.findNode(nodeId);
-			assertEquals("Didn't fix ghost IndicatorId?", BaseId.INVALID, node.getIndicatorId());
+			assertEquals("Didn't fix ghost IndicatorId?", 0, node.getIndicators().size());
 		}
 		finally
 		{

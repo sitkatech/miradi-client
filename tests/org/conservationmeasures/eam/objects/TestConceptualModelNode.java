@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.martus.util.TestCaseEnhanced;
@@ -36,7 +35,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		ConceptualModelTarget target = new ConceptualModelTarget(id);
 		String[] tags = {
 			ConceptualModelNode.TAG_COMMENT,
-			ConceptualModelNode.TAG_INDICATOR_ID,
+			ConceptualModelNode.TAG_INDICATOR_IDS,
 			ConceptualModelNode.TAG_GOAL_IDS,
 			ConceptualModelNode.TAG_OBJECTIVE_IDS,
 		};
@@ -47,7 +46,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		
 		String[] sampleData = {
 			"Whatever comment",
-			"7",
+			sampleIdList.toString(),
 			sampleIdList.toString(),
 			sampleIdList.toString(),
 		};
@@ -87,12 +86,16 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(7));
 		objectives.addId(new BaseId(9));
+		
+		IdList indicators = new IdList();
+		indicators.add(new BaseId(23));
+		indicators.add(new BaseId(422));
 
 		ModelNodeId factorId = new ModelNodeId(2342);
 		ConceptualModelFactor factor = new ConceptualModelFactor(factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
-		factor.setIndicatorId(new IndicatorId(99));
+		factor.setIndicators(indicators);
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
 		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFromJson(factor.getType(), factor.toJson());
@@ -100,7 +103,8 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
-		assertEquals("wrong indicator?", factor.getIndicatorId(), got.getIndicatorId());
+		assertEquals("wrong indicator count?", factor.getIndicators().size(), got.getIndicators().size());
+		assertEquals("wrong indicators?", factor.getIndicators(), got.getIndicators());
 		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());
 		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());
 		assertEquals("wrong objectives count?", factor.getObjectives().size(), got.getObjectives().size());

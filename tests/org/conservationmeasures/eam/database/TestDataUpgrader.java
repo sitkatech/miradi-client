@@ -437,6 +437,43 @@ public class TestDataUpgrader extends EAMTestCase
 			assertContains("WrappedId", ignoreExpected.getMessage());
 		}
 	}
+	
+	public void testConvertIndicatorIdToIdList() throws Exception
+	{
+		String manifest = "{\"Type\":\"NodeManifest\",\"68\":true,}";
+		String factor = "{\"Id\":68,\"Type\":\"Factor\",\"Label\":\"This is a test\"," +
+				"\"Comment\":\"\",\"TaxonomyCode\":\"\"," +
+				"\"GoalIds\":[],\"ObjectiveIds\":[],\"IndicatorId\":21}";
+		
+		File jsonDirectory = new File(tempDirectory, "json");
+		File modelNodeDirectory = new File(jsonDirectory, "objects-4");
+		modelNodeDirectory.mkdirs();
+		File manifestFile = new File(modelNodeDirectory, "manifest");
+		createFile(manifestFile, manifest);
+		File factorFile = new File(modelNodeDirectory, "68");
+		createFile(factorFile, factor);
+
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.convertIndicatorIdToIdList();
+		
+		EnhancedJsonObject converted = new EnhancedJsonObject(readFile(factorFile));
+		assertEquals(68, converted.getId("Id").asInt());
+		assertEquals(21, converted.getId("IndicatorId").asInt());
+		IdList indicatorIds = new IdList(converted.getString("IndicatorIds"));
+		assertEquals(1, indicatorIds.size());
+		assertEquals(21, indicatorIds.get(0).asInt());
+		
+		try
+		{
+			upgrader.convertIndicatorIdToIdList();
+			fail("Should have failed if IndicatorIds already exists");
+		}
+		catch(Exception ignoreExpected)
+		{
+			assertContains("IndicatorIds", ignoreExpected.getMessage());
+		}
+		
+	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)
 	{

@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.monitoring;
 import java.util.Iterator;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -89,9 +90,15 @@ public class MonitoringGoalNode extends MonitoringNode
 		while (iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
-			if (node.isTarget() && indicator != null)
+			if(!node.isTarget())
+				continue;
+			
+			IdList indicators = node.getIndicators();
+			for(int i = 0; i < indicators.size(); ++i)
+			{
+				Indicator indicator = project.getIndicatorPool().find(indicators.get(i));
 				result.add(new MonitoringIndicatorNode(project, indicator));
+			}
 		}
 		return result;
 	}

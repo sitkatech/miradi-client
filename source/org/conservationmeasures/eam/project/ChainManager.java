@@ -45,7 +45,7 @@ public class ChainManager
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getIndicatorId().equals(indicatorId))
+			if(node.getIndicators().contains(indicatorId))
 				foundNodes.attemptToAdd(node);
 		}
 		

@@ -97,6 +97,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion9();
 		if(readDataVersion(getTopDirectory()) == 9)
 			upgradeToVersion10();
+		if(readDataVersion(getTopDirectory()) == 10)
+			upgradeToVersion11();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -381,6 +383,50 @@ public class DataUpgrader extends ProjectServer
 		}
 		diagram.put("Nodes", nodes);
 		JSONFile.write(diagramFile, diagram);
+	}
+	
+	public void upgradeToVersion11() throws Exception
+	{
+		convertIndicatorIdToIdList();
+		writeVersion(11);
+	}
+	
+	public void convertIndicatorIdToIdList() throws Exception
+	{
+		int optionType = ObjectType.MODEL_NODE;
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File modelNodesDirectory = new File(jsonDirectory, "objects-4");
+		if(!modelNodesDirectory.exists())
+			return;
+		
+		File manifestFile = getObjectManifestFile(optionType);
+		if(!manifestFile.exists())
+			return;
+		
+		ObjectManifest manifest = readObjectManifest(optionType);
+		BaseId[] ids = manifest.getAllKeys();
+
+		for(int i = 0; i < ids.length; ++i)
+		{
+			BaseId id = ids[i];
+			File objectFile = getObjectFile(NODE_TYPE, id);
+			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
+			if(nodeData.has("IndicatorIds"))
+				throw new Exception("IndicatorIds field already exists in " + id);
+		}
+		
+		for(int i = 0; i < ids.length; ++i)
+		{
+			BaseId id = ids[i];
+			File objectFile = getObjectFile(NODE_TYPE, id);
+			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
+			BaseId oldIndicatorId = nodeData.optId("IndicatorId");
+			IdList indicatorsIds = new IdList();
+			if(!oldIndicatorId.isInvalid())
+				indicatorsIds.add(oldIndicatorId);
+			nodeData.put("IndicatorIds", indicatorsIds.toString());
+			JSONFile.write(objectFile, nodeData);
+		}
 	}
 
 	private static final int NODE_TYPE = 4;

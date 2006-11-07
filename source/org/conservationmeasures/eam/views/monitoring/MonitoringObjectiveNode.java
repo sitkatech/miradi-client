@@ -34,7 +34,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		Iterator iter = indicatorIds.iterator();
 		while(iter.hasNext())
 		{
-			IndicatorId id = (IndicatorId)iter.next();
+			BaseId id = (BaseId)iter.next();
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, id);
 			if(indicator == null)
 				throw new RuntimeException("Missing Indicator " + id);
@@ -49,13 +49,15 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		while(objectiveNodesIterator.hasNext())
 		{
 			ConceptualModelNode nodeWithObjective = (ConceptualModelNode)objectiveNodesIterator.next();
-			indicatorIds.add(nodeWithObjective.getIndicatorId());
+			for(int i = 0; i < nodeWithObjective.getIndicators().size(); ++i)
+				indicatorIds.add(nodeWithObjective.getIndicators().get(i));
 			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
 			Iterator chainNodesIterator = nodesInChain.iterator();
 			while(chainNodesIterator.hasNext())
 			{
 				ConceptualModelNode nodeInChain = (ConceptualModelNode)chainNodesIterator.next();
-				indicatorIds.add(nodeInChain.getIndicatorId());
+				for(int i = 0; i < nodeInChain.getIndicators().size(); ++i)
+					indicatorIds.add(nodeInChain.getIndicators().get(i));
 			}
 		}
 		indicatorIds.remove(new IndicatorId(BaseId.INVALID.asInt()));

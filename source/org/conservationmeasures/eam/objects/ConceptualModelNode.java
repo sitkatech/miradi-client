@@ -12,9 +12,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
-import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -31,7 +29,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse);
 		type = nodeType;
 		
-		indicator = new IndicatorId(BaseId.INVALID.asInt());
+		indicators = new IdList();
 		objectives = new ObjectiveIds();
 		goals = new GoalIds();
 	}
@@ -41,7 +39,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse, json);
 		type = nodeType;
 
-		setIndicatorId(new IndicatorId(json.optInt(TAG_INDICATOR_ID, IdAssigner.INVALID_ID)));
+		indicators = new IdList(json.optString(TAG_INDICATOR_IDS));
 		
 		goals = new GoalIds();
 		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
@@ -93,14 +91,14 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return false;
 	}
 
-	public IndicatorId getIndicatorId()
+	public IdList getIndicators()
 	{
-		return indicator;
+		return indicators;
 	}
 	
-	public void setIndicatorId(IndicatorId indicatorToUse)
+	public void setIndicators(IdList indicatorsToUse)
 	{
-		indicator = indicatorToUse;
+		indicators = indicatorsToUse;
 	}
 
 	public ObjectiveIds getObjectives()
@@ -178,8 +176,8 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_NODE_TYPE))
 			throw new RuntimeException("Cannot use getData to obtain node type");
 
-		if(fieldTag.equals(TAG_INDICATOR_ID))
-			return Integer.toString(getIndicatorId().asInt());
+		if(fieldTag.equals(TAG_INDICATOR_IDS))
+			return indicators.toString();
 		if(fieldTag.equals(TAG_GOAL_IDS))
 			return goals.toString();
 		if(fieldTag.equals(TAG_OBJECTIVE_IDS))
@@ -192,8 +190,8 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(fieldTag.equals(TAG_NODE_TYPE))
 			throw new RuntimeException("Cannot use setData to change node type");
 		
-		else if(fieldTag.equals(TAG_INDICATOR_ID))
-			setIndicatorId(new IndicatorId(Integer.parseInt(dataValue)));
+		else if(fieldTag.equals(TAG_INDICATOR_IDS))
+			setIndicators(new IdList(dataValue));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
 			setGoals(new GoalIds(new IdList(dataValue)));
 		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
@@ -221,7 +219,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	{
 		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, type.toString());
-		json.put(TAG_INDICATOR_ID, getIndicatorId().asInt());
+		json.put(TAG_INDICATOR_IDS, getIndicators().toString());
 		
 		JSONArray goalIds = new JSONArray();
 		for(int i = 0; i < goals.size(); ++i)
@@ -266,14 +264,14 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
-	public static final String TAG_INDICATOR_ID = "IndicatorId";
+	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_GOAL_IDS = "GoalIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	
 	private NodeType type;
 	private StringData comment;
 
-	private IndicatorId indicator;
+	private IdList indicators;
 	private ObjectiveIds objectives;
 	private GoalIds goals;
 }

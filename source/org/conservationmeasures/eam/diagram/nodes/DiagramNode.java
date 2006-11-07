@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.NodeAnnotationIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -139,9 +140,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		return underlyingObject.isStatusDraft();
 	}
 
-	public BaseId getIndicatorId()
+	public IdList getIndicators()
 	{
-		return underlyingObject.getIndicatorId();
+		return underlyingObject.getIndicators();
 	}
 	
 	public boolean canHaveObjectives()
@@ -206,7 +207,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int numberOfAnnotations = 0;
 		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
 
-		if(!getIndicatorId().isInvalid() && numberOfAnnotations == 0)
+		if(getIndicators().size() > 0 && numberOfAnnotations == 0)
 			numberOfAnnotations = 1;
 
 		return numberOfAnnotations;
@@ -346,7 +347,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public Rectangle getAnnotationsRect(int numberLines)
 	{
-		if(numberLines == 0 && !getIndicatorId().isInvalid())
+		if(numberLines == 0 && getIndicators().size() > 0)
 			numberLines = 1;
 		
 		Rectangle rect = new Rectangle(getSize());
@@ -364,7 +365,7 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	int getAnnotationLeftOffset()
 	{
-		if(getIndicatorId().isInvalid())
+		if(getIndicators().size() == 0)
 			return MultilineCellRenderer.INDICATOR_WIDTH / 2;
 		
 		int indicatorOffset = getInsetDimension().width - MultilineCellRenderer.INDICATOR_WIDTH / 2;

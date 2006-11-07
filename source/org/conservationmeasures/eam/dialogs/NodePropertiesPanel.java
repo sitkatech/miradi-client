@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -362,7 +363,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		indicatorsTab = new DialogGridPanel();
 
 		indicatorsTab.add(new UiLabel(EAM.text("Label|Indicator")));
-		indicatorsTab.add(createIndicatorDropdown(node.getIndicatorId()));
+		indicatorsTab.add(createIndicatorDropdown());
 
 		indicatorsTab.add(new UiLabel(""));
 		EAMAction action = mainWindow.getActions().get(
@@ -567,11 +568,11 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 
 	}
 
-	public Component createIndicatorDropdown(BaseId indicatorId)
+	public Component createIndicatorDropdown()
 	{
 		dropdownIndicator = new UiComboBox();
 		populateIndicators();
-		selectCurrentIndicator(indicatorId);
+		selectCurrentIndicators();
 		dropdownIndicator.addActionListener(new IndicatorChangeHandler());
 
 		JPanel component = new JPanel(new BorderLayout());
@@ -579,11 +580,15 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		return component;
 	}
 
-	private void selectCurrentIndicator(BaseId indicatorId)
+	private void selectCurrentIndicators()
 	{
 		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
+		IdList currentIndicators = getCurrentNode().getIndicators();
 		Object nullIndicator = dropdownIndicator.getItemAt(0);
-		Object selected = allAvailableIndicators.find(indicatorId);
+
+		Object selected = nullIndicator;
+		if(currentIndicators.size() > 0)
+			selected = allAvailableIndicators.find(currentIndicators.get(0));
 		if(selected == null)
 			selected = nullIndicator;
 		dropdownIndicator.setSelectedItem(selected);
@@ -618,10 +623,10 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			try
 			{
 				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelNode.TAG_INDICATOR_ID;
-				String indicator = getIndicator().getId().toString();
+				String tag = ConceptualModelNode.TAG_INDICATOR_IDS;
+				String indicators = getIndicators().toString();
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, indicator);
+						getNodeId(), tag, indicators);
 				getProject().executeCommand(cmd);
 			}
 			catch(CommandFailedException e)
@@ -858,9 +863,13 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		return commentField.getText();
 	}
 
-	public Indicator getIndicator()
+	public IdList getIndicators()
 	{
-		return (Indicator) dropdownIndicator.getSelectedItem();
+		IdList selected = new IdList();
+		Indicator indicator = (Indicator)dropdownIndicator.getSelectedItem();
+		if(indicator != null && !indicator.getId().isInvalid())
+			selected.add(indicator.getId());
+		return selected;
 	}
 
 	public TaxonomyItem getThreatTaxonomyItem()

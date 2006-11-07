@@ -645,8 +645,10 @@ public class TestProject extends EAMTestCase
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IndicatorId indicatorId2 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		
-		nodeA.getUnderlyingObject().setIndicatorId(indicatorId1);
-		nodeB.getUnderlyingObject().setIndicatorId(indicatorId1);
+		IdList indicators1 = new IdList();
+		indicators1.add(indicatorId1);
+		nodeA.getUnderlyingObject().setIndicators(indicators1);
+		nodeB.getUnderlyingObject().setIndicators(indicators1);
 		
 		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
 				
@@ -665,7 +667,9 @@ public class TestProject extends EAMTestCase
 		DiagramNode nodeDirectThreat = createNode(new NodeTypeFactor());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
-		nodeIndirectFactor.getUnderlyingObject().setIndicatorId(indicatorId1);
+		IdList indicators1 = new IdList();
+		indicators1.add(indicatorId1);
+		nodeIndirectFactor.getUnderlyingObject().setIndicators(indicators1);
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		

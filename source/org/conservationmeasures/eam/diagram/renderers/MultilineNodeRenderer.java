@@ -50,8 +50,10 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -82,11 +84,17 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			priority = framework.getThreatThreatRatingValue(node.getWrappedId());
 		else if(node.isTarget())
 			priority = framework.getTargetThreatRatingValue(node.getWrappedId());
-		indicator = ((DiagramComponent)graphToUse).getProject().getIndicatorPool().find(node.getIndicatorId());
 		
 		if(node.isIntervention())
 			rating = ((ConceptualModelIntervention)node.getUnderlyingObject()).getStrategyRating();
 
+		indicatorText = null;
+		IdList indicators = node.getIndicators();
+		if(indicators.size() == 1)
+			indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
+		else if(indicators.size() > 1)
+			indicatorText = "*";
+	
 		return this;
 	}
 	
@@ -141,13 +149,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	private void drawIndicator(Rectangle rect, Graphics2D g2) 
 	{
-		if(indicator == null)
+		if(indicatorText == null)
 			return;
-		
-		BaseId indicatorId = indicator.getId();
-		if(indicatorId.isInvalid())
-			return;
-		
+
 		TriangleRenderer indicatorRenderer = new TriangleRenderer();
 		Rectangle smallTriangle = getIndicatorRectWithinNode();
 		smallTriangle.translate(rect.x, rect.y);
@@ -155,7 +159,8 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		indicatorRenderer.fillShape(g2, smallTriangle, INDICATOR_COLOR);
 		drawAnnotationBorder(g2, smallTriangle, indicatorRenderer);
 		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
-		drawLabel(g2, smallTriangle, indicator.getShortLabel(), smallTriangle.getSize());
+		
+		drawLabel(g2, smallTriangle, indicatorText, smallTriangle.getSize());
 	}
 	
 	private Rectangle getIndicatorRectWithinNode()
@@ -194,7 +199,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	
 	ValueOption priority;
-	Indicator indicator;
 	DiagramNode node;
 	RatingChoice rating;
+	String indicatorText;
 }

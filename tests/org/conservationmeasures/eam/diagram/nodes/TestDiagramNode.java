@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -84,8 +85,8 @@ public class TestDiagramNode extends EAMTestCase
 
 	public void testIndicator()
 	{
-		BaseId indicator = directThreat.getIndicatorId();
-		assertEquals(BaseId.INVALID, indicator);
+		IdList indicators = directThreat.getIndicators();
+		assertEquals(0, indicators.size());
 	}
 	
 	public void testGoals()

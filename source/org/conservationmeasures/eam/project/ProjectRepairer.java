@@ -36,23 +36,31 @@ public class ProjectRepairer
 		{
 			ModelNodeId nodeId = nodeIds[i];
 			ConceptualModelNode node = project.findNode(nodeId);
-			IndicatorId indicatorId = node.getIndicatorId();
-			if(indicatorId.isInvalid())
-				continue;
-			EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
-			if(indicator == null)
+			IdList newIndicatorIds = new IdList();
+			IdList oldIndicatorIds = node.getIndicators();
+			for(int j = 0; j < oldIndicatorIds.size(); ++j)
 			{
-				EAM.logWarning("Fixing node " + nodeId + " ghost indicatorId " + indicatorId);
-				node.setIndicatorId(new IndicatorId(BaseId.INVALID.asInt()));
-				try
-				{
-					project.writeNode(nodeId);
-				}
-				catch (Exception e)
-				{
-					EAM.logError("Repair failed");
-					EAM.logException(e);
-				}
+				IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
+				if(indicatorId.isInvalid())
+					continue;
+				EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
+				if(indicator == null)
+					EAM.logWarning("Fixing node " + nodeId + " ghost indicatorId " + indicatorId);
+				else
+					newIndicatorIds.add(indicatorId);
+			}
+			if(newIndicatorIds.equals(oldIndicatorIds))
+				continue;
+			
+			try
+			{
+				node.setIndicators(newIndicatorIds);
+				project.writeNode(nodeId);
+			}
+			catch (Exception e)
+			{
+				EAM.logError("Repair failed");
+				EAM.logException(e);
 			}
 		}
 	}
