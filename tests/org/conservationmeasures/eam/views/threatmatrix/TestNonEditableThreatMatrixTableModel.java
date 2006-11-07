@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestThreatMatrixModel extends TestCaseEnhanced
+public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 {
-	public TestThreatMatrixModel(String name)
+	public TestNonEditableThreatMatrixTableModel(String name)
 	{
 		super(name);
 	}
@@ -29,7 +29,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		model = new ThreatMatrixTableModel(project);
+		model = new NonEditableThreatMatrixTableModel(project);
 	}
 
 	protected void tearDown() throws Exception
@@ -45,6 +45,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		createThreat("one");
 		createThreat("two");
 		createThreat("three");
+		model.resetMatrix();
 		assertEquals(3, model.getThreatCount());
 	}
 	
@@ -54,6 +55,7 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		createTarget("one");
 		createTarget("two");
 		createTarget("three");
+		model.resetMatrix();
 		assertEquals(3, model.getTargetCount());
 	}
 	
@@ -62,6 +64,8 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		String[] threatNames = new String[] {"one", "two"};
 		for(int i = 0; i < threatNames.length; ++i)
 			createThreat(threatNames[i]);
+		
+		model.resetMatrix();
 		
 		for(int i = 0; i < threatNames.length; ++i)
 		{
@@ -75,6 +79,8 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		String targetNames[] = new String[] {"a", "b"};
 		for(int i = 0; i < targetNames.length; ++i)
 			createTarget(targetNames[i]);
+		
+		model.resetMatrix();
 		
 		for(int i = 0; i < targetNames.length; ++i)
 		{
@@ -97,6 +103,8 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to2);
 		CreateModelLinkageParameter link2to2 = new CreateModelLinkageParameter(threat2, target2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link2to2);
+		
+		model.resetMatrix();
 		
 		assertFalse(model.isActiveCell(-1, -1));
 		int row1 = 0;
@@ -138,5 +146,5 @@ public class TestThreatMatrixModel extends TestCaseEnhanced
 	}
 	
 	ProjectForTesting project;
-	ThreatMatrixTableModel model;
+	NonEditableThreatMatrixTableModel model;
 }

@@ -81,7 +81,7 @@ import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
-import org.conservationmeasures.eam.views.threatmatrix.TestThreatMatrixModel;
+import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.martus.util.TestMultiCalendar;
 import org.martus.util.xml.TestSimpleXmlParser;
@@ -201,7 +201,7 @@ public class MainTests extends TestCase
 		
 		
 		// view.threatmatrix package
-		suite.addTest(new TestSuite(TestThreatMatrixModel.class));
+		suite.addTest(new TestSuite(TestNonEditableThreatMatrixTableModel.class));
 		
 		// view.umbrella package
 		suite.addTest(new TestSuite(TestUndoRedo.class));

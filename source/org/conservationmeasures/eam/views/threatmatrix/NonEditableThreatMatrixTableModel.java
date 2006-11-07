@@ -23,9 +23,8 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	public NonEditableThreatMatrixTableModel(Project projectToShow)
 	{
 		project = projectToShow;
-		threatRows = project.getNodePool().getDirectThreats();
-		targetColumns = project.getNodePool().getTargets();
 		framework = project.getThreatRatingFramework();
+		resetMatrix();
 	}
 
 	public int getColumnCount()
@@ -119,6 +118,12 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return bundle;
 	}
 
+	public void resetMatrix() 
+	{
+		threatRows = project.getNodePool().getDirectThreats();
+		targetColumns = project.getNodePool().getTargets();
+	}
+	
 	public void setThreatRows(ConceptualModelNode threatRowsToUse[] ) 
 	{
 		threatRows = threatRowsToUse;
@@ -182,7 +187,17 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return targetColumns;
 	}
 
-	private boolean isActiveThreatIdTargetIdPair(ModelNodeId threatId, ModelNodeId targetId)
+	public boolean isActiveCell(int threatIndex, int targetIndex)
+	{
+		if(threatIndex < 0 || targetIndex < 0)
+			return false;
+		
+		ModelNodeId threatId = (ModelNodeId)getDirectThreats()[threatIndex].getId();
+		ModelNodeId targetId = (ModelNodeId)getTargets()[targetIndex].getId();
+		return isActiveThreatIdTargetIdPair(threatId, targetId);
+	}
+	
+	public boolean isActiveThreatIdTargetIdPair(ModelNodeId threatId, ModelNodeId targetId)
 	{
 		return project.isLinked(threatId, targetId);
 	}
@@ -198,6 +213,12 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return threatRows[threatIndex];
 	}
 
+	public String getThreatName(int threatIndex)
+	{
+		return threatRows[threatIndex].getLabel();
+	}
+	
+	
 	public ModelNodeId getTargetId(int targetIndex)
 	{
 		ConceptualModelNode cmNode = getTargetNode(targetIndex);
@@ -230,9 +251,13 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public ConceptualModelNode getTargetNode(int targetIndex)
 	{
-		return  targetColumns[targetIndex];
+		return targetColumns[targetIndex];
 	}
 
+	public String getTargetName(int targetIndex)
+	{
+		return targetColumns[targetIndex].getLabel();
+	}
 	
 	public int findTargetIndexById(ModelNodeId targetId)
 	{
