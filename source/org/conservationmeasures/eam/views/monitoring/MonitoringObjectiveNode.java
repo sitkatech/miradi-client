@@ -69,7 +69,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	
 	public String toString()
 	{
-		return objective.getLabel() + " (" + objective.getShortLabel() + ")";
+		return objective.toString();
 	}
 	
 	public int getChildCount()

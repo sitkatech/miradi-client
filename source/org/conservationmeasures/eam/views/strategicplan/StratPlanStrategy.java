@@ -42,7 +42,7 @@ public class StratPlanStrategy extends TreeTableNode
 	
 	public String toString()
 	{
-		return intervention.getLabel();
+		return intervention.toString();
 	}
 
 	public int getType()

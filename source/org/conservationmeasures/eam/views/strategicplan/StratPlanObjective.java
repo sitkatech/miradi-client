@@ -51,7 +51,7 @@ public class StratPlanObjective extends TreeTableNode
 
 	public String toString()
 	{
-		return objective.getLabel();
+		return objective.toString();
 	}
 
 	public void rebuild()

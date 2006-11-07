@@ -35,7 +35,7 @@ public class MonitoringGoalNode extends MonitoringNode
 	
 	public String toString()
 	{
-		return goal.getShortLabel() + "." + goal.getLabel();
+		return goal.toString();
 	}
 	
 	public int getChildCount()
@@ -65,7 +65,7 @@ public class MonitoringGoalNode extends MonitoringNode
 	
 	private Vector createObjectiveNodes(ConceptualModelNodeSet relatedNodesToUse)
 	{
-		Vector vector = new Vector();
+		Vector result = new Vector();
 		Iterator iter = relatedNodesToUse.iterator();
 		while(iter.hasNext())
 		{
@@ -76,24 +76,24 @@ public class MonitoringGoalNode extends MonitoringNode
 				if(objectiveIds.get(i).isInvalid())
 					continue;
 				Objective objective = (Objective)project.findObject(ObjectType.OBJECTIVE, objectiveIds.get(i));
-				vector.add(new MonitoringObjectiveNode(project, objective));
+				result.add(new MonitoringObjectiveNode(project, objective));
 			}
 		}
-		return vector;
+		return result;
 	}
 
 	private Vector createIndicatorNodes(ConceptualModelNodeSet relatedNodesToUse)
 	{
 		Iterator iter = relatedNodesToUse.iterator();
-		Vector vector = new Vector();
+		Vector result = new Vector();
 		while (iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
 			Indicator indicator = project.getIndicatorPool().find(node.getIndicatorId());
-			if (node.isTarget() && indicator != null && indicator.getLabel() != null)
-				vector.add(new MonitoringIndicatorNode(project, indicator));
+			if (node.isTarget() && indicator != null)
+				result.add(new MonitoringIndicatorNode(project, indicator));
 		}
-		return vector;
+		return result;
 	}
 
 	Goal goal;

@@ -27,7 +27,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 
 	public String toString()
 	{
-		return indicator.getLabel() + " (" + indicator.getShortLabel() + ")";
+		return indicator.toString();
 	}
 
 	public int getChildCount()

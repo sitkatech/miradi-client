@@ -44,7 +44,7 @@ public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 	
 	public String toString()
 	{
-		return activity.getLabel();
+		return activity.toString();
 	}
 	
 	public Task getActivity()

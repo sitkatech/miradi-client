@@ -66,7 +66,7 @@ public class StratPlanGoal extends TreeTableNode
 
 	public String toString()
 	{
-		return goal.getLabel();
+		return goal.toString();
 	}
 
 	public void rebuild()

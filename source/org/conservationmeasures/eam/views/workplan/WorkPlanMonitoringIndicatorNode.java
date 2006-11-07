@@ -26,7 +26,7 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 
 	public String toString()
 	{
-		return indicator.getLabel();
+		return indicator.toString();
 	}
 
 	public int getChildCount()

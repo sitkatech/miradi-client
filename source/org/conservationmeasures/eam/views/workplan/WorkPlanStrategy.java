@@ -47,7 +47,7 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 
 	public String toString()
 	{
-		return intervention.getLabel();
+		return intervention.toString();
 	}
 
 	public int getType()
