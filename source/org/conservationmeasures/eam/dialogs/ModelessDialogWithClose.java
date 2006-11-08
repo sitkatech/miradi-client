@@ -64,7 +64,11 @@ public class ModelessDialogWithClose extends EAMDialog
 
 	public void dispose()
 	{
+		if(wrappedPanel == null)
+			return;
+		
 		wrappedPanel.dispose();
+		wrappedPanel = null;
 		super.dispose();
 	}
 
