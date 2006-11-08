@@ -25,7 +25,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	}
 
 	
-	public  boolean toggle(int sortColumn) {
+	public  boolean toggle() {
 		sortToggle = !sortToggle;
 		return sortToggle;
 	}
@@ -59,7 +59,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 		
 		Arrays.sort(threatList, comparator );
 		
-		if ( toggle(sortColumn) )  
+		if ( toggle() )  
 			threatList = reverseSort(threatList);
 
 		modelToSort.setThreatRows(threatList);
