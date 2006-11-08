@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 
 public class AnnotationTableModel extends ObjectManagerTableModel
@@ -18,5 +19,10 @@ public class AnnotationTableModel extends ObjectManagerTableModel
 	public static final String COLUMN_DIRECT_THREATS = "Direct Threats";
 	public static final String COLUMN_TARGETS = "Targets";
 	public static final String COLUMN_INTERVENTIONS = "Strategies";
+	
+	public String getTableCellDisplayString(int rowIndex, int columnIndex, BaseId indicatorId, String columnTag)
+	{
+		return null;
+	}
 	
 }

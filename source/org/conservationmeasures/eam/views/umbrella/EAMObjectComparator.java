@@ -11,18 +11,25 @@ import org.conservationmeasures.eam.objects.EAMObject;
 
 public class EAMObjectComparator implements Comparator
 {
-		public EAMObjectComparator(String columnTagToUse)
+		public EAMObjectComparator(ObjectManagerTableModel tableModelToUse, int sortColumnToUse)
 		{
-			columnTag = columnTagToUse;
+			sortColumn = sortColumnToUse;
+			columnTag = tableModelToUse.getColumnTag(sortColumnToUse);
+			tableModel = (AnnotationTableModel)tableModelToUse;
 		}
 
 		public int compare(Object object1, Object object2)
 		{
-			String value1 = ((EAMObject) object1).getData(columnTag);
-			String value2 = ((EAMObject) object2).getData(columnTag);
+			int row1 = ((ObjectManagerTableModel)tableModel).getRowIndex((EAMObject)object1);
+			int row2 = ((ObjectManagerTableModel)tableModel).getRowIndex((EAMObject)object2);
+			
+			String value1 = tableModel.getTableCellDisplayString(row1, sortColumn, ((EAMObject)object1).getId(), columnTag);
+			String value2 = tableModel.getTableCellDisplayString(row2, sortColumn, ((EAMObject)object2).getId(), columnTag);
+			
 			return value1.compareToIgnoreCase(value2);
-
 		}
-
+		int sortColumn;
 		String columnTag;
+		AnnotationTableModel tableModel;
+		
 	}

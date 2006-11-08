@@ -13,11 +13,13 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
+import org.martus.util.xml.XmlUtilities;
 
 public class IndicatorTableModel extends AnnotationTableModel
 {
@@ -29,36 +31,44 @@ public class IndicatorTableModel extends AnnotationTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseId indicatorId = getPool().getIds()[rowIndex];
-		if(indicatorColumnTags[columnIndex].equals(COLUMN_FACTORS))
+		BaseId indicatorId = super.getEAMObjectRows()[rowIndex].getId();
+		String columnTag = indicatorColumnTags[columnIndex];
+		return getTableCellDisplayString(rowIndex, columnIndex, indicatorId, columnTag);
+	}
+
+	public String getTableCellDisplayString(int rowIndex, int columnIndex, BaseId indicatorId, String columnTag)
+	{
+		if(columnTag.equals(COLUMN_FACTORS))
 		{
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 			
 			return EAMBaseObject.toHtml(modelNodes);
 		}
-		if(indicatorColumnTags[columnIndex].equals(COLUMN_DIRECT_THREATS))
+		if(columnTag.equals(COLUMN_DIRECT_THREATS))
 		{
 			return getChainManager().getRelatedDirectThreatsAsHtml(indicatorId);
 		}
-		if(indicatorColumnTags[columnIndex].equals(COLUMN_TARGETS))
+		if(columnTag.equals(COLUMN_TARGETS))
 		{
 			return getChainManager().getRelatedTargetsAsHtml(indicatorId);
 		}
-		if(indicatorColumnTags[columnIndex].equals(COLUMN_INTERVENTIONS))
+		if(columnTag.equals(COLUMN_INTERVENTIONS))
 		{
 			ConceptualModelNodeSet modelNodes =  getChainManager().findAllNodesRelatedToThisIndicator(indicatorId);
 			NonDraftInterventionSet directThreats = new NonDraftInterventionSet(modelNodes);
 			
 			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
-		if(indicatorColumnTags[columnIndex].equals(Indicator.TAG_RESOURCE_IDS))
+		if(columnTag.equals(Indicator.TAG_RESOURCE_IDS))
 		{
 			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, indicatorId);
 			ProjectResource[] resources = getResourcesForIndicator(project, indicator);
 			return EAMBaseObject.toHtml(resources);
 		}
 		
-		return super.getValueAt(rowIndex, columnIndex);
+		EAMObject object = super.getObjectFromRow(rowIndex);
+		String data = object.getData(super.getColumnTag(columnIndex));
+		return "<html>" + XmlUtilities.getXmlEncoded(data) + "</html>";
 	}
 
 	public static ProjectResource[] getResourcesForIndicator(Project project, Indicator indicator)

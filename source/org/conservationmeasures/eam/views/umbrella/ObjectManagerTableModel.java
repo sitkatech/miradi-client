@@ -51,6 +51,16 @@ public class ObjectManagerTableModel extends UiTableModel
 		return eamObjectRows[rowIndex];
 	}
 
+	public int getRowIndex(EAMObject object)
+	{
+		for (int i=0; i<eamObjectRows.length; ++i)
+		{
+			if (object.equals(eamObjectRows[i]))
+				return i;
+		}
+		return -1;
+	}
+	
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(pool.getObjectType(), columnTags[column]);

@@ -28,7 +28,7 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 		ObjectManagerTableModel objectManagerTableModel = (ObjectManagerTableModel)table.getModel();
 		EAMObject rowsToSort[] = objectManagerTableModel.getEAMObjectRows();
 
-		Arrays.sort(rowsToSort,  new EAMObjectComparator(objectManagerTableModel.getColumnTag(sortColumn)) );
+		Arrays.sort(rowsToSort,  new EAMObjectComparator(objectManagerTableModel, sortColumn));
 		
 		if ( toggle(sortColumn) )  
 		{

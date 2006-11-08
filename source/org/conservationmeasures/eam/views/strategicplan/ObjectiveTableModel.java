@@ -31,6 +31,11 @@ class ObjectiveTableModel extends AnnotationTableModel
 	{
 		BaseId objectiveId = super.getEAMObjectRows()[rowIndex].getId();
 		String columnTag = objectiveColumnTags[columnIndex];
+		return getTableCellDisplayString(rowIndex, columnIndex, objectiveId, columnTag);
+	}
+
+	public String getTableCellDisplayString(int rowIndex, int columnIndex, BaseId objectiveId, String columnTag)
+	{
 		if(columnTag.equals(COLUMN_FACTORS))
 		{
 			ConceptualModelNode[] modelNodes =  getChainManager().findNodesThatUseThisObjective(objectiveId).toNodeArray();
