@@ -147,10 +147,10 @@ public class ObjectManagementPanel extends DisposablePanel implements CommandExe
 		try
 		{
 			int row = table.getSelectedRow();
-			EAMObject selectedObject = model.getObjectFromRow(row);
 			BaseId selectedId = BaseId.INVALID;
 			if(row >= 0)
 			{
+				EAMObject selectedObject = model.getObjectFromRow(row);
 				selectedId = selectedObject.getId();
 				view.objectWasSelected(selectedObject);
 			}
