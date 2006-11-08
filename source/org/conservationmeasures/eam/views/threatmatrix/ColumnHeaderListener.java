@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 
 public abstract class ColumnHeaderListener  extends MouseAdapter
 {
-	public ColumnHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
+	public ColumnHeaderListener(ThreatGirdPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
 	}
@@ -65,7 +65,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	}
 
 	
-	public static void establishPriorSortState(MyThreatGirdPanel threatGirdPanel)
+	public static void establishPriorSortState(ThreatGirdPanel threatGirdPanel)
 	{
 		try
 		{
@@ -83,7 +83,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	}
 
 
-	private static void restorePriorSortState(MyThreatGirdPanel threatGirdPanel, String currentSortBy) throws Exception
+	private static void restorePriorSortState(ThreatGirdPanel threatGirdPanel, String currentSortBy) throws Exception
 	{
 		String currentSortDirection= threatGirdPanel.getProject().getViewData(threatGirdPanel.getProject().getCurrentView())
 				.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
@@ -131,7 +131,7 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	
 	public abstract void sort(int sortColumnToUse);
 	
-	MyThreatGirdPanel threatGirdPanel;
+	ThreatGirdPanel threatGirdPanel;
 	NonEditableThreatMatrixTableModel model;
 
 }

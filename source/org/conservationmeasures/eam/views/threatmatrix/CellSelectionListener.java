@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 class CellSelectionListener implements ListSelectionListener
 {
-	public CellSelectionListener(ThreatMatrixTable threatTableInUse, MyThreatGirdPanel threatGirdPanelInUse) {
+	public CellSelectionListener(ThreatMatrixTable threatTableInUse, ThreatGirdPanel threatGirdPanelInUse) {
 		threatTable = threatTableInUse;
 		threatGirdPanel = threatGirdPanelInUse;
 	}
@@ -72,6 +72,6 @@ class CellSelectionListener implements ListSelectionListener
 	
 	
 	ThreatMatrixTable threatTable;
-	MyThreatGirdPanel threatGirdPanel;
+	ThreatGirdPanel threatGirdPanel;
 }
 

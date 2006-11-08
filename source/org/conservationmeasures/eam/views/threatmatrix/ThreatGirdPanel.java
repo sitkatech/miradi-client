@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
-public class MyThreatGirdPanel extends JPanel
+public class ThreatGirdPanel extends JPanel
 {
-	public MyThreatGirdPanel(ThreatMatrixView viewToUse,
+	public ThreatGirdPanel(ThreatMatrixView viewToUse,
 			NonEditableThreatMatrixTableModel modelToUse)
 			throws Exception
 	{
@@ -36,28 +36,33 @@ public class MyThreatGirdPanel extends JPanel
 	public JScrollPane createThreatGridPanel(NonEditableThreatMatrixTableModel model) throws Exception
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
-		JTable rowHeaderTable = createRowHeaderTable(newRowHeaderData);
+		JTable rowTable = createRowHeaderTable(newRowHeaderData);
 
-		threatTable = createThreatTable(model);
+		ThreatMatrixTable table = createThreatTable(model);
 
-		JTableHeader columnHeader = threatTable.getTableHeader();
+		JTableHeader columnHeader = table.getTableHeader();
 		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
 
-		JTableHeader rowHeader = rowHeaderTable.getTableHeader();
+		JTableHeader rowHeader = rowTable.getTableHeader();
 		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
-				rowHeaderTable, threatTable, rowHeader);
+				rowTable, table);
 
+		threatTable = table;
+		rowHeaderTable = rowTable;
+		
 		return scrollPane;
 	}
 	
 	
-	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTable,
-			JTable table, JTableHeader rowHeader)
+	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTableToUse,
+			JTable table)
 	{
+		JTableHeader rowHeader = rowHeaderTableToUse.getTableHeader();
+		
 		JScrollPane newScrollPane = new JScrollPane(table);
-		newScrollPane.setRowHeaderView(rowHeaderTable);
+		newScrollPane.setRowHeaderView(rowHeaderTableToUse);
 		newScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
 		newScrollPane
 				.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
@@ -115,26 +120,26 @@ public class MyThreatGirdPanel extends JPanel
 	private JTable createRowHeaderTable(NonEditableRowHeaderTableModel rowHeaderDataToUSe )
 	{
 		NonEditableRowHeaderTableModel rowHeaderData = rowHeaderDataToUSe;
-		JTable rowHeaderTable = new JTable(rowHeaderData);
+		JTable rowHeaderTableToUse = new JTable(rowHeaderData);
 
-		rowHeaderTable.getTableHeader().setResizingAllowed(false);
-		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
-		rowHeaderTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		rowHeaderTableToUse.getTableHeader().setResizingAllowed(false);
+		rowHeaderTableToUse.getTableHeader().setReorderingAllowed(false);
+		rowHeaderTableToUse.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		setColumnWidths(rowHeaderTable, ABOUT_ONE_AND_HALF_INCH);
-		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
-		rowHeaderTable.setRowHeight(ABOUT_ONE_INCH);
+		setColumnWidths(rowHeaderTableToUse, ABOUT_ONE_AND_HALF_INCH);
+		rowHeaderTableToUse.setIntercellSpacing(new Dimension(0, 0));
+		rowHeaderTableToUse.setRowHeight(ABOUT_ONE_INCH);
 		
-		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
-		d.width = rowHeaderTable.getPreferredSize().width;
-		rowHeaderTable.setPreferredScrollableViewportSize(d);
+		Dimension d = rowHeaderTableToUse.getPreferredScrollableViewportSize();
+		d.width = rowHeaderTableToUse.getPreferredSize().width;
+		rowHeaderTableToUse.setPreferredScrollableViewportSize(d);
 		
-		setDefaultRowHeaderRenderer(rowHeaderTable);
+		setDefaultRowHeaderRenderer(rowHeaderTableToUse);
 	
-		LookAndFeel.installColorsAndFont(rowHeaderTable, "TableHeader.background",
+		LookAndFeel.installColorsAndFont(rowHeaderTableToUse, "TableHeader.background",
 				"TableHeader.foreground", "TableHeader.font");
 
-		return rowHeaderTable;
+		return rowHeaderTableToUse;
 	}
 
 	
@@ -186,9 +191,16 @@ public class MyThreatGirdPanel extends JPanel
 		return threatTable;
 	}
 	
+	
+	public JTable getRowHeaderTable() 
+	{
+		return rowHeaderTable;
+	}
+	
 	ThreatMatrixView view;
 	ThreatRatingBundle highlightedBundle;
 	ThreatMatrixTable threatTable;
+	JTable rowHeaderTable;
 	
 	int ABOUT_ONE_INCH = 60;
 	int ABOUT_TWO_INCHES = 150;

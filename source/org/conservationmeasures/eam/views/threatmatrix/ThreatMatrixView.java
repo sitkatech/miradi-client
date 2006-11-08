@@ -7,14 +7,11 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JWindow;
 import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.ActionSaveImage;
@@ -31,7 +28,6 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.views.threatmatrix.wizard.ThreatRatingWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -69,35 +65,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	public BufferedImage getImage()
 	{
-		try
-		{
-			String[] text = {EAM.text("Column movements will not be recorded")};
-			EAM.confirmDialog(EAM.text("Image Save"),text);
-			
-//			NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) grid.getThreatMatrixTable().getModel();
-			JScrollPane scrollPane =  grid.createThreatGridPanel(model);
-			
-			JPanel panel = new JPanel(new BorderLayout());
-			int rows = grid.getThreatMatrixTable().getRowCount();
-			int columns = grid.getThreatMatrixTable().getColumnCount();
-			panel.setPreferredSize(new Dimension(150*(columns+1) ,60*(rows+2)));
-			panel.add(scrollPane);
-
-			JWindow window = new JWindow();
-
-			JScrollPane sp = new JScrollPane(panel);
-			window.getContentPane().add(sp);
-			window.setVisible(true);
-			BufferedImage bufferedImage = BufferedImageFactory.getImage(panel, 0);
-			window.dispose();
-			return bufferedImage;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog("Error prevented the save: " + e.getMessage());
-			return null;
-		}
+		return MatrixTableImageCreator.createImage(grid.getThreatMatrixTable(),grid.getRowHeaderTable());
 	}
 
 
@@ -126,7 +94,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private Container createThreatMatrixPanel() throws Exception
 	{
-		grid = new MyThreatGirdPanel(this, model);
+		grid = new ThreatGirdPanel(this, model);
 		
 		JComponent heading = createHeading();
 		gridWithHeadings = new JPanel(new BorderLayout());
@@ -261,7 +229,7 @@ public class ThreatMatrixView extends UmbrellaView
 	JSplitPane bigSplitter;
 	NonEditableThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizardPanel;
-	MyThreatGirdPanel grid;
+	ThreatGirdPanel grid;
 	ThreatRatingBundlePanel details;
 	JPanel gridWithHeadings;
 }

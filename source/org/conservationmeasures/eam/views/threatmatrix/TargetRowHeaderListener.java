@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 
 public class TargetRowHeaderListener extends ColumnHeaderListener
 {
-	public TargetRowHeaderListener(MyThreatGirdPanel threatGirdPanelInUse)
+	public TargetRowHeaderListener(ThreatGirdPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
 		sortToggle = true;
@@ -31,7 +31,7 @@ public class TargetRowHeaderListener extends ColumnHeaderListener
 	}
 	
 	
-	public static void sort(MyThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
+	public static void sort(ThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
 	{
 		NonEditableThreatMatrixTableModel modelToSort = 
 			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
