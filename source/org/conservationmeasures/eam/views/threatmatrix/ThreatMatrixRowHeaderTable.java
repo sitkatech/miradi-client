@@ -23,8 +23,8 @@ public class ThreatMatrixRowHeaderTable extends JTable
 	public void columnMarginChanged(ChangeEvent e)    
 	{
         super.columnMarginChanged(e);
-		Dimension d = table.getPreferredScrollableViewportSize();
-		d.width = table.getPreferredSize().width;
-		table.setPreferredScrollableViewportSize(d);
+		Dimension dimension = table.getPreferredScrollableViewportSize();
+		dimension.width = table.getPreferredSize().width;
+		table.setPreferredScrollableViewportSize(dimension);
     }
 }
