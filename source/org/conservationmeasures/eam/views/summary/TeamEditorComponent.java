@@ -27,7 +27,7 @@ public class TeamEditorComponent extends JPanel
 		project = projectToUse;
 
 		teamModel = new TeamModel(project);
-		teamTable = new TeamTable(teamModel);
+		teamTable = new ObjectListTable(teamModel);
 		teamTable.resizeTable(10);
 		rebuild();
 		
@@ -51,5 +51,5 @@ public class TeamEditorComponent extends JPanel
 	
 	Project project;
 	TeamModel teamModel;
-	TeamTable teamTable;
+	ObjectListTable teamTable;
 }

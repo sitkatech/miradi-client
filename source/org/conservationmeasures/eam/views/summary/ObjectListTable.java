@@ -12,17 +12,17 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
 import org.martus.swing.UiTable;
 
-public class TeamTable extends UiTable implements ObjectPicker
+public class ObjectListTable extends UiTable implements ObjectPicker
 {
-	public TeamTable(TeamModel modelToUse)
+	public ObjectListTable(TeamModel modelToUse)
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 	}
 	
-	public TeamModel getTeamModel()
+	public ObjectListTableModel getObjectListTableModel()
 	{
-		return (TeamModel)getModel();
+		return (ObjectListTableModel)getModel();
 	}
 	
 	public EAMObject[] getSelectedObjects()
@@ -30,7 +30,7 @@ public class TeamTable extends UiTable implements ObjectPicker
 		int[] rows = getSelectedRows();
 		EAMObject[] objects = new EAMObject[rows.length];
 		for(int i = 0; i < objects.length; ++i)
-			objects[i] = getTeamModel().getObjectFromRow(rows[i]);
+			objects[i] = getObjectListTableModel().getObjectFromRow(rows[i]);
 		return objects;
 	}
 
