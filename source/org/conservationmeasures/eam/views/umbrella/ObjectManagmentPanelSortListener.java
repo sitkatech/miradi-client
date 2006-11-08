@@ -25,10 +25,10 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 		int clickedColumn = tableHeader.columnAtPoint(e.getPoint());
 		int sortColumn = tableHeader.getColumnModel().getColumn(clickedColumn).getModelIndex();
 		
-		ObjectManagerTableModel objectManagerTableModel = (ObjectManagerTableModel)table.getModel();
-		EAMObject rowsToSort[] = objectManagerTableModel.getEAMObjectRows();
+		AnnotationTableModel annotationTableModel = (AnnotationTableModel)table.getModel();
+		EAMObject rowsToSort[] = annotationTableModel.getEAMObjectRows();
 
-		Arrays.sort(rowsToSort,  new EAMObjectComparator(objectManagerTableModel, sortColumn));
+		Arrays.sort(rowsToSort,  new EAMObjectComparator(annotationTableModel, sortColumn));
 		
 		if ( toggle(sortColumn) )  
 		{
@@ -37,7 +37,7 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 			rowsToSort = (EAMObject[])list.toArray(new EAMObject[0]);
 		}
 
-		objectManagerTableModel.setEAMObjectRows(rowsToSort);
+		annotationTableModel.setEAMObjectRows(rowsToSort);
 		
 		table.revalidate();
 		table.repaint();

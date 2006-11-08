@@ -11,11 +11,11 @@ import org.conservationmeasures.eam.objects.EAMObject;
 
 public class EAMObjectComparator implements Comparator
 {
-		public EAMObjectComparator(ObjectManagerTableModel tableModelToUse, int sortColumnToUse)
+		public EAMObjectComparator(AnnotationTableModel tableModelToUse, int sortColumnToUse)
 		{
 			sortColumn = sortColumnToUse;
 			columnTag = tableModelToUse.getColumnTag(sortColumnToUse);
-			tableModel = (AnnotationTableModel)tableModelToUse;
+			tableModel = tableModelToUse;
 		}
 
 		public int compare(Object object1, Object object2)
