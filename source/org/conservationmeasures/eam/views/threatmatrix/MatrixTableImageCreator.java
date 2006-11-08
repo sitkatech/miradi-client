@@ -34,10 +34,10 @@ public class MatrixTableImageCreator
     }
 
 
-	private static void writeData(JComponent rowHeaderSet, Graphics2D g2D, int offsetWidth, int offsetHeight)
+	private static void writeData(JComponent component, Graphics2D g2D, int offsetWidth, int offsetHeight)
 	{
 		g2D.translate(offsetWidth, offsetHeight);
-		rowHeaderSet.paint(g2D); 
+		component.paint(g2D); 
 	}
 
 
