@@ -21,6 +21,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -98,6 +99,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public ObjectDataInputField createMultilineField(String tag)
 	{
 		return new ObjectMultilineInputField(project, objectType, objectId, tag);
+	}
+	
+	public ObjectDataInputField createRatingField(RatingQuestion question)
+	{
+		return new ObjectRatingField(project, objectType, objectId, question);
 	}
 	
 	public void saveModifiedFields()
