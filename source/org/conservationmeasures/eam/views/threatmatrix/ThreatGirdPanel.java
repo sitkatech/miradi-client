@@ -120,9 +120,9 @@ public class ThreatGirdPanel extends JPanel
 	private JTable createRowHeaderTable(NonEditableRowHeaderTableModel rowHeaderDataToUSe )
 	{
 		NonEditableRowHeaderTableModel rowHeaderData = rowHeaderDataToUSe;
-		JTable rowHeaderTableToUse = new JTable(rowHeaderData);
+		JTable rowHeaderTableToUse = new ThreatMatrixRowHeaderTable(rowHeaderData);
 
-		rowHeaderTableToUse.getTableHeader().setResizingAllowed(false);
+		rowHeaderTableToUse.getTableHeader().setResizingAllowed(true);
 		rowHeaderTableToUse.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTableToUse.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
