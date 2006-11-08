@@ -12,12 +12,10 @@ import org.conservationmeasures.eam.objecthelpers.NonDraftInterventionSet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
-import org.martus.util.xml.XmlUtilities;
 
 class ObjectiveTableModel extends AnnotationTableModel
 {	
@@ -63,10 +61,8 @@ class ObjectiveTableModel extends AnnotationTableModel
 			
 			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
-		
-		EAMObject object = super.getObjectFromRow(rowIndex);
-		String data = object.getData(super.getColumnTag(columnIndex));
-		return "<html>" + XmlUtilities.getXmlEncoded(data) + "</html>";
+
+		return (String) super.getValueAt(rowIndex, columnIndex);
 	}
 	
 	ChainManager getChainManager()

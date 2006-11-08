@@ -13,13 +13,11 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
-import org.martus.util.xml.XmlUtilities;
 
 public class IndicatorTableModel extends AnnotationTableModel
 {
@@ -66,9 +64,7 @@ public class IndicatorTableModel extends AnnotationTableModel
 			return EAMBaseObject.toHtml(resources);
 		}
 		
-		EAMObject object = super.getObjectFromRow(rowIndex);
-		String data = object.getData(super.getColumnTag(columnIndex));
-		return "<html>" + XmlUtilities.getXmlEncoded(data) + "</html>";
+		return (String) super.getValueAt(rowIndex, columnIndex);
 	}
 
 	public static ProjectResource[] getResourcesForIndicator(Project project, Indicator indicator)
