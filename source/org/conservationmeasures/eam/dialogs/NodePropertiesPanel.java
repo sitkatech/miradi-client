@@ -968,6 +968,11 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(!isValid())
+		{
+			getProject().removeCommandExecutedListener(this);
+			return;
+		}
 		refreshObjectiveListIfNecessary(event);
 		selectNewlyCreatedObjectiveIfNecessary(event);
 
@@ -978,6 +983,11 @@ public class NodePropertiesPanel extends JPanel implements CommandExecutedListen
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
+		if(!isValid())
+		{
+			getProject().removeCommandExecutedListener(this);
+			return;
+		}
 		refreshObjectiveListIfNecessary(event);
 
 		refreshIndicatorListIfNecessary(event);
