@@ -56,7 +56,8 @@ public class ObjectManagementPanel extends DisposablePanel implements CommandExe
 		table.createDefaultColumnsFromModel();
 		table.resizeTable();
 		table.getTableHeader().setReorderingAllowed(true);
-
+		table.getTableHeader().addMouseListener(new ObjectManagmentPanelSortListener());
+		
 		add(new UiScrollPane(table), BorderLayout.CENTER);
 		add(createButtonPanel(getMainWindow().getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

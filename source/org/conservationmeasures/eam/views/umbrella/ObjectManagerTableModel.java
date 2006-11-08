@@ -18,6 +18,7 @@ public class ObjectManagerTableModel extends UiTableModel
 	{
 		pool = resourcePool;
 		columnTags = columnTagsToUse;
+		resetObjects();
 	}
 	
 	public boolean isEnabled(int row)
@@ -32,12 +33,12 @@ public class ObjectManagerTableModel extends UiTableModel
 
 	public int getRowCount()
 	{
-		return pool.size();
+		return eamObjectRows.length;
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		EAMObject object = getObjectFromRow(rowIndex);
+		EAMObject object = eamObjectRows[rowIndex];
 		String data = object.getData(columnTags[columnIndex]);
 		//FIXME, under windows look and feel, the html tag causes unwanted 
 		//behavior.  white on white.  This happens when all the cells in a row contian
@@ -47,12 +48,7 @@ public class ObjectManagerTableModel extends UiTableModel
 
 	public EAMObject getObjectFromRow(int rowIndex)
 	{
-		BaseId[] poolIds = pool.getIds();
-		if(rowIndex < 0 || rowIndex >= poolIds.length)
-			return null;
-		
-		BaseId objectId = poolIds[rowIndex];
-		return (EAMObject)pool.getRawObject(objectId);
+		return eamObjectRows[rowIndex];
 	}
 
 	public String getColumnName(int column)
@@ -65,6 +61,33 @@ public class ObjectManagerTableModel extends UiTableModel
 		return pool;
 	}
 	
+	public String getColumnTag(int column) 
+	{
+		return columnTags[column];
+	}
+	
+	public void resetObjects() 
+	{
+		eamObjectRows = new EAMObject[pool.size()];
+		BaseId baseIds[] = pool.getIds();
+		for (int i=0; i<baseIds.length; ++i) 
+		{
+			eamObjectRows[i] = (EAMObject)pool.getRawObject(baseIds[i]);
+		}
+	}
+	
+	public void setEAMObjectRows(EAMObject objectRowsToUse[]) 
+	{
+		eamObjectRows = objectRowsToUse;
+	}
+	
+	
+	public EAMObject[] getEAMObjectRows() 
+	{
+		return eamObjectRows;
+	}
+	
+	private EAMObject eamObjectRows[];;
 	private EAMObjectPool pool;
 	private String[] columnTags;
 }
