@@ -8,6 +8,8 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.table.JTableHeader;
+
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -29,8 +31,8 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 		clearSelectionCellBorder();
 		notifyComponentsClearSelection();
 		
-		int clickedColumn = threatGirdPanel.getThreatMatrixTable().columnAtPoint(e.getPoint());
-		int sortColumn = threatGirdPanel.getThreatMatrixTable().getColumnModel().getColumn(clickedColumn).getModelIndex();
+		int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
+		int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
 		
 		sort(sortColumn);
 
