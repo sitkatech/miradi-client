@@ -55,6 +55,7 @@ public class ObjectManagementPanel extends DisposablePanel implements CommandExe
 		table.useMaxWidth();
 		table.createDefaultColumnsFromModel();
 		table.resizeTable();
+		table.getTableHeader().setReorderingAllowed(true);
 
 		add(new UiScrollPane(table), BorderLayout.CENTER);
 		add(createButtonPanel(getMainWindow().getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
