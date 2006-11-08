@@ -13,8 +13,6 @@ import javax.swing.table.TableModel;
 
 public class ThreatMatrixRowHeaderTable extends JTable
 {
-	final JTable table = this;
-	
 	public ThreatMatrixRowHeaderTable(TableModel rowHeaderData)
 	{
 		super(rowHeaderData);
@@ -28,8 +26,8 @@ public class ThreatMatrixRowHeaderTable extends JTable
 
 	private void resetWidthToAllowResizeOfRowHeader()
 	{
-		Dimension dimension = table.getPreferredScrollableViewportSize();
-		dimension.width = table.getPreferredSize().width;
-		table.setPreferredScrollableViewportSize(dimension);
+		Dimension dimension =getPreferredScrollableViewportSize();
+		dimension.width = getPreferredSize().width;
+		setPreferredScrollableViewportSize(dimension);
 	}
 }

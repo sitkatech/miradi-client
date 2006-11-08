@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.util.Enumeration;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -65,8 +64,6 @@ public class ThreatGirdPanel extends JPanel
 		newScrollPane.setRowHeaderView(rowHeaderTableToUse);
 		newScrollPane.setCorner(JScrollPane.UPPER_LEFT_CORNER, rowHeader);
 		newScrollPane
-				.setHorizontalScrollBar(new JScrollBar(JScrollBar.HORIZONTAL));
-		newScrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		newScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -82,7 +79,6 @@ public class ThreatGirdPanel extends JPanel
 
 		table.setIntercellSpacing(new Dimension(0, 0));
 		
-
 		setColumnWidths(table,ABOUT_TWO_INCHES);
 		table.setRowHeight(ABOUT_ONE_INCH);
 
@@ -129,11 +125,7 @@ public class ThreatGirdPanel extends JPanel
 		setColumnWidths(rowHeaderTableToUse, ABOUT_ONE_AND_HALF_INCH);
 		rowHeaderTableToUse.setIntercellSpacing(new Dimension(0, 0));
 		rowHeaderTableToUse.setRowHeight(ABOUT_ONE_INCH);
-		
-		Dimension d = rowHeaderTableToUse.getPreferredScrollableViewportSize();
-		d.width = rowHeaderTableToUse.getPreferredSize().width;
-		rowHeaderTableToUse.setPreferredScrollableViewportSize(d);
-		
+
 		setDefaultRowHeaderRenderer(rowHeaderTableToUse);
 	
 		LookAndFeel.installColorsAndFont(rowHeaderTableToUse, "TableHeader.background",
