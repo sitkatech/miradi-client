@@ -28,6 +28,17 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 		AnnotationTableModel annotationTableModel = (AnnotationTableModel)table.getModel();
 		EAMObject rowsToSort[] = annotationTableModel.getEAMObjectRows();
 
+		rowsToSort = sortTable(sortColumn, annotationTableModel, rowsToSort);
+
+		annotationTableModel.setEAMObjectRows(rowsToSort);
+		
+		table.revalidate();
+		table.repaint();
+	}
+
+
+	private EAMObject[] sortTable(int sortColumn, AnnotationTableModel annotationTableModel, EAMObject[] rowsToSort)
+	{
 		Arrays.sort(rowsToSort,  new EAMObjectComparator(annotationTableModel, sortColumn));
 		
 		if ( toggle(sortColumn) )  
@@ -36,11 +47,7 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 			Collections.reverse(list);
 			rowsToSort = (EAMObject[])list.toArray(new EAMObject[0]);
 		}
-
-		annotationTableModel.setEAMObjectRows(rowsToSort);
-		
-		table.revalidate();
-		table.repaint();
+		return rowsToSort;
 	}
 	
 	public  boolean toggle(int sortColumn) {
