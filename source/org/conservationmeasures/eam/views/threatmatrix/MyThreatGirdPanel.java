@@ -102,6 +102,7 @@ public class MyThreatGirdPanel extends JPanel
 		threatData.setColumnIdentifiers(columnHeaderData);
 		
 		JTable threatTable = new JTable(threatData);
+		threatTable.getTableHeader().setReorderingAllowed(false);
 		
 		setThreatTableColumnWidths(threatTable);
 
@@ -139,6 +140,7 @@ public class MyThreatGirdPanel extends JPanel
 	{
 		rowHeaderData = rowHeaderDataToUSe;
 		JTable rowHeaderTable = new JTable(rowHeaderData);
+		rowHeaderTable.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTable.setIntercellSpacing(new Dimension(0, 0));
 		Dimension d = rowHeaderTable.getPreferredScrollableViewportSize();
 		d.width = rowHeaderTable.getPreferredSize().width;
