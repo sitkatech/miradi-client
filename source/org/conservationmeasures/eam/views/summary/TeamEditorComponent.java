@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
-class TeamEditorComponent extends JPanel
+public class TeamEditorComponent extends JPanel
 {
 	public TeamEditorComponent(Project projectToUse, Actions actions)
 	{

@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.views.strategicplan.ActivitiesTableModel;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActivitiesPanel extends ObjectManagementPanel
+public class ActivitiesTablePanel extends ObjectManagementPanel
 {
-	public ActivitiesPanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
+	public ActivitiesTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
 	{
 		super(viewToUse, new ActivitiesTableModel(viewToUse.getProject()), buttonActionClasses);
 		owner = owningPanel;

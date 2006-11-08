@@ -98,7 +98,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		getComponent().setEnabled(false);
 	}
 	
-	private void save()
+	public void save()
 	{
 		if(!isValidObject())
 			return;

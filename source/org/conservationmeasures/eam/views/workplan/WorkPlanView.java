@@ -8,8 +8,10 @@ import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
+import org.conservationmeasures.eam.actions.ActionResourceListAdd;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
+import org.conservationmeasures.eam.dialogfields.ResourceListAdd;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -107,6 +109,8 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
+		
+		addDoerToMap(ActionResourceListAdd.class, new ResourceListAdd());
 	}
 	
 	

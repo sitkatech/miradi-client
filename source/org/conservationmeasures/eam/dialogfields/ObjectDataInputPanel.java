@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -50,6 +51,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public void setObjectId(BaseId newId)
 	{
 		objectId = newId;
+		saveModifiedFields();
 		updateFieldsFromProject();
 	}
 	
@@ -57,6 +59,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
 	}
+	
 	
 	public void addField(ObjectDataInputField field)
 	{
@@ -70,6 +73,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
+	}
+	
+	public ObjectDataInputField createListField(Actions actions, String tag)
+	{
+		return new ObjectResourceListField(actions, project, objectType, objectId, tag);
 	}
 	
 	public ObjectDataInputField createStringField(String tag)
@@ -90,6 +98,15 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public ObjectDataInputField createMultilineField(String tag)
 	{
 		return new ObjectMultilineInputField(project, objectType, objectId, tag);
+	}
+	
+	public void saveModifiedFields()
+	{
+		for(int i = 0; i < fields.size(); ++i)
+		{
+			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			field.save();
+		}
 	}
 	
 	public void updateFieldsFromProject()

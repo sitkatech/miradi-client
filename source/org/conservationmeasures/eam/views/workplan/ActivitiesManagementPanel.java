@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.views.workplan;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.dialogs.ActivitiesPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
-import org.conservationmeasures.eam.dialogs.ProjectActivitiesPropertiesPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -30,32 +30,32 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		activitiesPanel = new ActivitiesPanel(mainWindowToUse.getCurrentView(), this);
-		addExtraButtons(activitiesPanel, extraButtonActions);
+		tablePanel = new ActivitiesTablePanel(mainWindowToUse.getCurrentView(), this);
+		addExtraButtons(tablePanel, extraButtonActions);
 		
-		editActivitiesPanel = new ProjectActivitiesPropertiesPanel(project, BaseId.INVALID);
+		propertiesPanel = new ActivitiesPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
-		add(activitiesPanel, BorderLayout.CENTER);
-		add(editActivitiesPanel, BorderLayout.AFTER_LAST_LINE);
+		add(tablePanel, BorderLayout.CENTER);
+		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void selectObject(EAMObject objectToSelect)
 	{
-		activitiesPanel.selectObject(objectToSelect);
-		editActivitiesPanel.setFocusOnFirstField();
+		tablePanel.selectObject(objectToSelect);
+		propertiesPanel.setFocusOnFirstField();
 	}
 
 	public void dispose()
 	{
-		activitiesPanel.dispose();
-		activitiesPanel = null;
-		editActivitiesPanel.dispose();
-		editActivitiesPanel = null;
+		tablePanel.dispose();
+		tablePanel = null;
+		propertiesPanel.dispose();
+		propertiesPanel = null;
 		super.dispose();
 	}
 	
-	private void addExtraButtons(ActivitiesPanel resourcePanel, ObjectsAction[] extraButtonActions)
+	private void addExtraButtons(ActivitiesTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
 	{
 		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
 		for(int i = 0; i < extraButtons.length; ++i)
@@ -66,10 +66,9 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 	public void objectWasSelected(BaseId selectedId)
 	{
 		super.objectWasSelected(selectedId);
-		editActivitiesPanel.setObjectId(selectedId);
+		propertiesPanel.setObjectId(selectedId);
 	}
 	
-
 	public EAMObject getObject()
 	{
 		return null;
@@ -80,6 +79,6 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		return null;
 	}
 	
-	private ProjectActivitiesPropertiesPanel editActivitiesPanel;
-	private ActivitiesPanel activitiesPanel;
+	private ActivitiesPropertiesPanel propertiesPanel;
+	private ActivitiesTablePanel tablePanel;
 }
