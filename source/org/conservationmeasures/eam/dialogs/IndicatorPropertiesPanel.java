@@ -5,45 +5,33 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.dialogfields.DialogField;
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.IndicatorStatusRatingQuestion;
 import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
 
-public class IndicatorPropertiesPanel extends ObjectPropertiesPanel
+public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
-	public IndicatorPropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public IndicatorPropertiesPanel(Project projectToUse, Actions actions, Indicator indicator) throws Exception
 	{
-		super(parentToUse, objectToEdit);
-		initializeFields(tags);
-	}
-
-	DialogField createDialogField(String tag, String existingValue) throws Exception
-	{
-		if(tag.equals(Indicator.TAG_PRIORITY))
-			return createChoiceField(new PriorityRatingQuestion(tag), existingValue);
+		super(projectToUse, indicator.getType(), indicator.getId());
 		
-		if(tag.equals(Indicator.TAG_STATUS))
-			return createChoiceField(new IndicatorStatusRatingQuestion(tag), existingValue);
-
-		return super.createDialogField(tag, existingValue);
+		addField(createStringField(indicator.TAG_SHORT_LABEL));
+		addField(createStringField(indicator.TAG_LABEL));
+		addField(createMultilineField(indicator.TAG_METHOD));
+		addField(createRatingField(new PriorityRatingQuestion(indicator.TAG_PRIORITY)));
+		addField(createRatingField(new IndicatorStatusRatingQuestion(indicator.TAG_STATUS)));			// Rating
+		addField(createStringField(indicator.TAG_LOCATION));
+		addField(createStringField(indicator.TAG_COST));
+		addField(createStringField(indicator.TAG_FUNDING_SOURCE));
+		addField(createStringField(indicator.TAG_WHEN));
+		addField(createListField(actions, indicator.TAG_RESOURCE_IDS));
+		
+		updateFieldsFromProject();
 	}
-	
-	static final String[] tags = new String[] {
-		Indicator.TAG_SHORT_LABEL, 
-		Indicator.TAG_LABEL,
-		Indicator.TAG_METHOD,
-		Indicator.TAG_RESOURCE_IDS,
-		Indicator.TAG_LOCATION,
-		Indicator.TAG_PRIORITY,
-		Indicator.TAG_STATUS,
-		Indicator.TAG_COST,
-		Indicator.TAG_FUNDING_SOURCE,
-		Indicator.TAG_WHEN,
-		};
 
 	public String getPanelDescription()
 	{
