@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ModifyObjective extends ViewDoer
 {
-	public ObjectiveManagementPanel getObjectivePanel()
+	public ObjectivePoolTablePanel getObjectivePanel()
 	{
 		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getObjectivePanel();

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 import javax.swing.event.ListSelectionListener;
 

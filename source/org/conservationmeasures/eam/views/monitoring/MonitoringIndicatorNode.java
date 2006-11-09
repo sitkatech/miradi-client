@@ -50,7 +50,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 			return indicator.getData(Indicator.TAG_METHOD);
 		if(MonitoringModel.columnTags[column].equals(Indicator.TAG_RESOURCE_IDS))
 		{
-			ProjectResource[] resources = IndicatorTableModel.getResourcesForIndicator(project, indicator);
+			ProjectResource[] resources = IndicatorPoolTableModel.getResourcesForIndicator(project, indicator);
 			return EAMBaseObject.toHtml(resources);
 		}
 		return null;

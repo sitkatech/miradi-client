@@ -11,11 +11,11 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class IndicatorManagementPanel extends ObjectManagementPanel
+public class IndicatorPoolTablePanel extends ObjectManagementPanel
 {
-	public IndicatorManagementPanel(UmbrellaView viewToUse)
+	public IndicatorPoolTablePanel(UmbrellaView viewToUse)
 	{
-		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
+		super(viewToUse, new IndicatorPoolTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		setMaxColumnWidthToHeaderWidth(0);
 		

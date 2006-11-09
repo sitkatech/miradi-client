@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
 
-public class IndicatorTableModel extends AnnotationTableModel
+public class IndicatorPoolTableModel extends AnnotationTableModel
 {
-	IndicatorTableModel(Project projectToUse)
+	IndicatorPoolTableModel(Project projectToUse)
 	{
 		super(projectToUse.getIndicatorPool(), indicatorColumnTags);
 		project = projectToUse;

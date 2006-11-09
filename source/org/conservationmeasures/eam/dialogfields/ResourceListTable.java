@@ -9,7 +9,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiTable;
 
 public class ResourceListTable extends UiTable implements ObjectPicker

@@ -10,7 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 abstract public class Doer

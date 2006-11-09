@@ -3,9 +3,8 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.strategicplan.wizard;
 
-import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanWizardWelcomeStep;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanWizardPanel extends WizardPanel

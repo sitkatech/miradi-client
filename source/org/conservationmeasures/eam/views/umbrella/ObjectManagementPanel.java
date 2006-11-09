@@ -29,7 +29,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.conservationmeasures.eam.utils.UiTableWithAlternatingRows;
-import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;

@@ -3,9 +3,8 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.monitoring;
+package org.conservationmeasures.eam.views.monitoring.wizard;
 
-import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanWizardWelcomeStep;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringPlanWizardPanel extends WizardPanel

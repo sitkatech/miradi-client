@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Vector;
 
@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
 
-public class ActivitiesTableModel extends ObjectManagerTableModel
+public class ActivityPoolTableModel extends ObjectManagerTableModel
 {
-	public ActivitiesTableModel(Project projectToUse)
+	public ActivityPoolTableModel(Project projectToUse)
 	{
 		super(projectToUse.getPool(ObjectType.TASK), columnLabels);
 		project = projectToUse;

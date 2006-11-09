@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteGoal extends ViewDoer
 {
-	public GoalManagementPanel getGoalPanel()
+	public GoalPoolTablePanel getGoalPanel()
 	{
 		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getGoalPanel();

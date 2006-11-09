@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.monitoring.wizard.MonitoringPlanWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringView extends TabbedView
@@ -34,7 +35,7 @@ public class MonitoringView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		monitoringPanel = new MonitoringPanel(getProject());
-		indicatorManagementPanel = new IndicatorManagementPanel(this);
+		indicatorManagementPanel = new IndicatorPoolTablePanel(this);
 		addTab(EAM.text("Monitoring Plan"), monitoringPanel);
 		addTab(EAM.text("Indicators"), indicatorManagementPanel);
 	}
@@ -51,7 +52,7 @@ public class MonitoringView extends TabbedView
 		return new MonitoringPlanWizardPanel();
 	}
 
-	public IndicatorManagementPanel getIndicatorManagementPanel()
+	public IndicatorPoolTablePanel getIndicatorManagementPanel()
 	{
 		return indicatorManagementPanel;
 	}
@@ -61,5 +62,5 @@ public class MonitoringView extends TabbedView
 	}
 	
 	MonitoringPanel monitoringPanel;
-	IndicatorManagementPanel indicatorManagementPanel;
+	IndicatorPoolTablePanel indicatorManagementPanel;
 }

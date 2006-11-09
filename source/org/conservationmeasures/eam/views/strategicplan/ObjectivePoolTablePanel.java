@@ -14,11 +14,11 @@ import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ObjectiveManagementPanel extends ObjectManagementPanel
+public class ObjectivePoolTablePanel extends ObjectManagementPanel
 {
-	public ObjectiveManagementPanel(UmbrellaView viewToUse)
+	public ObjectivePoolTablePanel(UmbrellaView viewToUse)
 	{
-		super(viewToUse, new ObjectiveTableModel(viewToUse.getProject()), buttonActionClasses);
+		super(viewToUse, new ObjectivePoolTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		addDoubleClickAction(ActionModifyObjective.class);
 		setMaxColumnWidthToHeaderWidth(0);

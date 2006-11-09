@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
 
-class ObjectiveTableModel extends AnnotationTableModel
+class ObjectivePoolTableModel extends AnnotationTableModel
 {	
-	ObjectiveTableModel(Project projectToUse)
+	ObjectivePoolTableModel(Project projectToUse)
 	{
 		super(projectToUse.getObjectivePool(), objectiveColumnTags);
 		project = projectToUse;

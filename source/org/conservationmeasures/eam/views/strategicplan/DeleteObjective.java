@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class DeleteObjective extends ViewDoer
 {
-	public ObjectiveManagementPanel getObjectivePanel()
+	public ObjectivePoolTablePanel getObjectivePanel()
 	{
 		StrategicPlanView view = (StrategicPlanView)getView();
 		return view.getObjectivePanel();

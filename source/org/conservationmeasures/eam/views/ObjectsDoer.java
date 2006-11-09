@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.views.strategicplan.ObjectPicker;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
 {

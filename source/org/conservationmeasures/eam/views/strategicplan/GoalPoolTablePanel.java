@@ -9,11 +9,11 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class GoalManagementPanel extends ObjectManagementPanel
+public class GoalPoolTablePanel extends ObjectManagementPanel
 {
-	public GoalManagementPanel(UmbrellaView viewToUse)
+	public GoalPoolTablePanel(UmbrellaView viewToUse)
 	{
-		super(viewToUse, new GoalTableModel(viewToUse.getProject()), buttonActionClasses);
+		super(viewToUse, new GoalPoolTableModel(viewToUse.getProject()), buttonActionClasses);
 		
 		addDoubleClickAction(ActionModifyGoal.class);
 		setMaxColumnWidthToHeaderWidth(0);
