@@ -97,7 +97,7 @@ public class ObjectManagerTableModel extends UiTableModel
 		return eamObjectRows;
 	}
 	
-	private EAMObject eamObjectRows[];;
+	private EAMObject eamObjectRows[];
 	private EAMObjectPool pool;
 	private String[] columnTags;
 }
