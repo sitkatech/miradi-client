@@ -41,12 +41,12 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 
 	public void dispose()
 	{
-		//FIXME uncomment but make sure it works
-		//resourceListPanel.dispose();
-		//resourceListPanel = null;
-		//editResourcePanel.dispose();
-		//editResourcePanel = null;
-		//super.dispose();
+		resourceListPanel.dispose();
+		resourceListPanel = null;
+		
+		editResourcePanel.dispose();
+		editResourcePanel = null;
+		super.dispose();
 	}
 
 	private void addExtraButtons(ResourceListPanel resourcePanel, ObjectsAction[] extraButtonActions)

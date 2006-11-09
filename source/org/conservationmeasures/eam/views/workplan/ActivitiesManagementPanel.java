@@ -42,8 +42,10 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 	
 	public EAMObject getSelectedObject()
 	{
-		System.out.println("length of selectedobject  = "+tablePanel.getSelectedObjects().length);
-		return tablePanel.getSelectedObjects()[0];
+		if (tablePanel.getSelectedObjects().length > 0)
+			return tablePanel.getSelectedObjects()[0];
+		
+		return null;
 	}
 	
 	public void selectObject(EAMObject objectToSelect)

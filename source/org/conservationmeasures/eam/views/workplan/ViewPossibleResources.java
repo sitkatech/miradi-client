@@ -6,15 +6,23 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class ViewPossibleResources extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return getProject().isOpen();
-	}
+		if (!getProject().isOpen())
+			return false;
 
+		EAMObject selectedObject = getWorkPlanView().getSelectedObject();
+		if (selectedObject == null)
+			return false;
+
+		return true;
+	}
+	
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
@@ -22,13 +30,17 @@ public class ViewPossibleResources extends ObjectsDoer
 		
 		try
 		{
-			WorkPlanView view = (WorkPlanView)getView();
-			view.showResourceAddDialog();
+			getWorkPlanView().showResourceAddDialog();
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			throw new CommandFailedException(e);
 		}
+	}
+	
+	private WorkPlanView getWorkPlanView()
+	{
+		return (WorkPlanView)getView();
 	}
 }

@@ -58,7 +58,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		//On the other hand
 		//The ActivitiesPoolTablePanel is not updated by the "add rources"
 		//of the ResourceTablePoolPanel popup dialog
-		saveModifiedFields();
+		//saveModifiedFields();
 		updateFieldsFromProject();
 	}
 	
@@ -66,8 +66,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
 	}
-	
-	
+		
 	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);

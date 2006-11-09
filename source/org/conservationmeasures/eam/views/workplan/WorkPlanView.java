@@ -133,8 +133,7 @@ public class WorkPlanView extends TabbedView
 	
 	public EAMObject getSelectedObject()
 	{
-		Component tab = getCurrentTabContents();
-		if(tab.equals(getActivitiesManagementPanel()))
+		if (getActivitiesManagementPanel() != null)
 			return getActivitiesManagementPanel().getSelectedObject();
 		
 		return null;
