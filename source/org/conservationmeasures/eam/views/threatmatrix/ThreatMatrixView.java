@@ -88,7 +88,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private void establishPriorSortState()
 	{
-		ColumnHeaderListener.establishPriorSortState(grid);
+		ColumnSortListener.establishPriorSortState(grid);
 	}
 	
 	

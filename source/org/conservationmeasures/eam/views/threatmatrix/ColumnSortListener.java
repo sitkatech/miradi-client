@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 
-public abstract class ColumnHeaderListener  extends MouseAdapter
+public abstract class ColumnSortListener  extends MouseAdapter
 {
-	public ColumnHeaderListener(ThreatGirdPanel threatGirdPanelInUse)
+	public ColumnSortListener(ThreatGirdPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
 	}
@@ -30,13 +30,15 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 	{
 		int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
 		if (clickedColumn >= 0)
-			sortBySelectedColumn(e, clickedColumn);
+		{
+			int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
+			sortBySelectedColumn(e, sortColumn);
+		}
 	}
 
 
-	private void sortBySelectedColumn(MouseEvent e, int clickedColumn)
+	private void sortBySelectedColumn(MouseEvent e, int sortColumn)
 	{
-		int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
 		sort(sortColumn);
 		threatGirdPanel.revalidate();
 		threatGirdPanel.repaint();
@@ -73,10 +75,10 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 				.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
 
 		if (currentSortBy.equals(ViewData.SORT_TARGETS))
-			TargetRowHeaderListener.sort(threatGirdPanel, currentSortBy,
+			TargetColumnSortListener.sort(threatGirdPanel, currentSortBy,
 					currentSortDirection);
 		else
-			ThreatColumnHeaderListener.sort(threatGirdPanel, currentSortBy,
+			ThreatColumnSortListener.sort(threatGirdPanel, currentSortBy,
 					currentSortDirection);
 	}
 	

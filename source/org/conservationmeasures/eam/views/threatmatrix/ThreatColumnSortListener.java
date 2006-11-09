@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 
 
-public class ThreatColumnHeaderListener extends ColumnHeaderListener
+public class ThreatColumnSortListener extends ColumnSortListener
 {
-	public ThreatColumnHeaderListener(ThreatGirdPanel threatGirdPanelInUse)
+	public ThreatColumnSortListener(ThreatGirdPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
 		sortToggle = false;

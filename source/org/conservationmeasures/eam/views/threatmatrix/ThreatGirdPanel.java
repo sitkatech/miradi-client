@@ -40,10 +40,10 @@ public class ThreatGirdPanel extends JPanel
 		ThreatMatrixTable table = createThreatTable(model);
 
 		JTableHeader columnHeader = table.getTableHeader();
-		columnHeader.addMouseListener(new ThreatColumnHeaderListener(this));
+		columnHeader.addMouseListener(new ThreatColumnSortListener(this));
 
 		JTableHeader rowHeader = rowTable.getTableHeader();
-		rowHeader.addMouseListener(new TargetRowHeaderListener(this));
+		rowHeader.addMouseListener(new TargetColumnSortListener(this));
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowTable, table);
