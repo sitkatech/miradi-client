@@ -80,8 +80,9 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	    GraphConstants.setBackground(getAttributes(), Color.BLACK);
 	    GraphConstants.setForeground(getAttributes(), Color.BLACK);
 	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
-//		Font font = getFont().deriveFont(Font.BOLD);
-//		GraphConstants.setFont(thisMap, font);
+		int arrow = GraphConstants.ARROW_CLASSIC;
+		GraphConstants.setLineEnd(getAttributes(), arrow);
+		GraphConstants.setEndFill(getAttributes(), true);
 	}
 
 	public Object getSource()
