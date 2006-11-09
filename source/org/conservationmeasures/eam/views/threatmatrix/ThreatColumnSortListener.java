@@ -34,15 +34,7 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
-		Comparator comparator = null;
-		if (currentSortBy.equals(ViewData.SORT_SUMMARY)) 
-			comparator = getComparator(modelToSort.getColumnCount(),modelToSort);
-		else
-		{
-			ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
-			int sortColumn= modelToSort.findTargetIndexById(nodeId);
-			comparator = getComparator(sortColumn, modelToSort);
-		}
+		Comparator comparator = getComparator(currentSortBy, modelToSort);
 		
 		Arrays.sort(threatList, comparator);
 		
@@ -51,10 +43,11 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		
 		modelToSort.setThreatRows(threatList);
 	}
+
+
 	
 	public void sort(int sortColumn) 
 	{
-		
 		NonEditableThreatMatrixTableModel modelToSort = 
 			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
 		
@@ -81,7 +74,24 @@ public class ThreatColumnSortListener extends ColumnSortListener
 			saveSortState(sortToggle, modelToSort.getTargets()[sortColumn]);
 	}
 
+	
 
+	private Comparator getComparator(String currentSortBy, NonEditableThreatMatrixTableModel modelToSort)
+	{
+		Comparator comparator = null;
+		if (currentSortBy.equals(ViewData.SORT_SUMMARY)) 
+			comparator = getComparator(modelToSort.getColumnCount(),modelToSort);
+		else
+		{
+			ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
+			int sortColumn= modelToSort.findTargetIndexById(nodeId);
+			comparator = getComparator(sortColumn, modelToSort);
+		}
+		return comparator;
+	}
+
+	
+	
 	private Comparator getComparator(int sortColumn, NonEditableThreatMatrixTableModel modelToSort)
 	{
 		Comparator comparator;

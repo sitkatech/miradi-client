@@ -69,13 +69,11 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		try
 		{
 			String order = (sortDirection) ? ViewData.SORT_ASCENDING: ViewData.SORT_DESCENDING;
-
 			ViewData viewData = threatGirdPanel.getProject().getCurrentViewData();
 
 			executeCommand(new CommandBeginTransaction());
 			
 			saveSortDirection(order, viewData);
-
 			saveSortByColumn(sortColumnId, viewData);
 
 			executeCommand(new CommandEndTransaction());
