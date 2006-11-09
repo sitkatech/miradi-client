@@ -160,8 +160,8 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		tabs = new JTabbedPane();
 		tabs.add(createMainGrid(node), EAM.text("Tab|Details"));
 		
-		IndicatorListManagementPanel indicatorListManagementPanel = new IndicatorListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
-		tabs.add(indicatorListManagementPanel, indicatorListManagementPanel.getPanelDescription());
+		indicatorsTab = new IndicatorListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+		tabs.add(indicatorsTab, indicatorsTab.getPanelDescription());
 		
 		if(node.canHaveObjectives())
 			tabs.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
