@@ -33,12 +33,12 @@ public class ObjectManagerTableModel extends UiTableModel
 
 	public int getRowCount()
 	{
-		return eamObjectRows.length;
+		return getEAMObjectRows().length;
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		EAMObject object = eamObjectRows[rowIndex];
+		EAMObject object = getEAMObjectRows()[rowIndex];
 		String data = object.getData(columnTags[columnIndex]);
 		//FIXME, under windows look and feel, the html tag causes unwanted 
 		//behavior.  white on white.  This happens when all the cells in a row contian
@@ -48,14 +48,14 @@ public class ObjectManagerTableModel extends UiTableModel
 
 	public EAMObject getObjectFromRow(int rowIndex)
 	{
-		return eamObjectRows[rowIndex];
+		return getEAMObjectRows()[rowIndex];
 	}
 
 	public int getRowIndex(EAMObject object)
 	{
-		for (int i=0; i<eamObjectRows.length; ++i)
+		for (int i=0; i<getEAMObjectRows().length; ++i)
 		{
-			if (object.equals(eamObjectRows[i]))
+			if (object.equals(getEAMObjectRows()[i]))
 				return i;
 		}
 		return -1;
