@@ -57,6 +57,7 @@ public class ObjectRatingField extends ObjectDataInputField
 
 	public void updateEditableState()
 	{
+		combo.setEnabled(isValidObject());
 	}
 
 	class RatingChoiceRenderer extends DefaultListCellRenderer
