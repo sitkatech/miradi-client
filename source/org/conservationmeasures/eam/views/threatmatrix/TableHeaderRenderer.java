@@ -21,12 +21,12 @@ import javax.swing.plaf.BorderUIResource;
 import javax.swing.table.TableCellRenderer;
 
 
-class TargetRowHeaderRenderer
+class TableHeaderRenderer
 	extends JTextArea 
     implements TableCellRenderer
 {
 
-    public TargetRowHeaderRenderer()
+	public TableHeaderRenderer()
     {
         setBorder(noFocusBorder);
         setWrapStyleWord(true);
@@ -51,9 +51,8 @@ class TargetRowHeaderRenderer
 	private void createCellNotSelectionBorder(Border cellBorder, Border focusCellHighlightBorder)
 	{
 		Insets insets = focusCellHighlightBorder.getBorderInsets(this);
-
-        noFocusBorder = new BorderUIResource.CompoundBorderUIResource
-             (cellBorder, BorderFactory.createEmptyBorder(insets.top, insets.left, insets.bottom, insets.right));
+		noFocusBorder = new BorderUIResource.CompoundBorderUIResource
+             (cellBorder, BorderFactory.createEmptyBorder(insets.top, EIGTH_OF_INCH, insets.bottom, insets.right));
 	}
 
 
@@ -62,12 +61,12 @@ class TargetRowHeaderRenderer
     {
         Color selectionBackground = table.getSelectionBackground();
         Color selectionForeground = table.getSelectionForeground();
-        setupCellRendererComponent(table, value, selected, focused, selectionBackground, selectionForeground);
+        setupCellRendererComponent(table, value, selectionBackground, selectionForeground);
         return this;
     }
     
     
-	private void setupCellRendererComponent(JComponent component, Object value, boolean selected, boolean focused, Color selectionBackground ,  Color selectionForeground)
+	private void setupCellRendererComponent(JComponent component, Object value,Color selectionBackground ,  Color selectionForeground)
 	{
         setBackground(component.getBackground());
         setForeground(component.getForeground());
@@ -76,11 +75,12 @@ class TargetRowHeaderRenderer
         setOpaque(false);
         setText(value.toString());
 		setFont(new Font(null,Font.BOLD,12));
-        setSize(150,Short.MAX_VALUE);
-        setPreferredSize(new Dimension(150,getPreferredSize().height));
+		int height = (getPreferredSize().height<THREE_QUATERS_INCH) ? THREE_QUATERS_INCH: getPreferredSize().height;
+        setPreferredSize(new Dimension(150,height));
 	}
 
-    
-    protected Border noFocusBorder;
+	private static final int EIGTH_OF_INCH = 5;
+    private static final int THREE_QUATERS_INCH = 55;
+	private Border noFocusBorder;
 }
 
