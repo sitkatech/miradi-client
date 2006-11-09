@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.dialogs.ActivitiesPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ActivityPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -33,7 +33,7 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		tablePanel = new ActivitiesTablePanel(mainWindowToUse.getCurrentView(), this);
 		addExtraButtons(tablePanel, extraButtonActions);
 		
-		propertiesPanel = new ActivitiesPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
+		propertiesPanel = new ActivityPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 		add(tablePanel, BorderLayout.CENTER);
@@ -87,6 +87,6 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		return null;
 	}
 	
-	private ActivitiesPropertiesPanel propertiesPanel;
+	private ActivityPropertiesPanel propertiesPanel;
 	private ActivitiesTablePanel tablePanel;
 }

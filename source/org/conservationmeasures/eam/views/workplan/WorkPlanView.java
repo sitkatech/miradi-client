@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourceListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -52,7 +52,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
-		resourceManagementPanel = new ResourceManagementPanel(getMainWindow());
+		resourceManagementPanel = new ResourceListManagementPanel(getMainWindow());
 		activitiesManagementPanel = new ActivitiesManagementPanel(getMainWindow());
 
 		addTab(EAM.text("Work Plan"), workPlanPanel);
@@ -143,6 +143,6 @@ public class WorkPlanView extends TabbedView
 	ModifyActivity modifyActivityDoer;
 
 	WorkPlanPanel workPlanPanel;
-	ResourceManagementPanel resourceManagementPanel;
+	ResourceListManagementPanel resourceManagementPanel;
 	ActivitiesManagementPanel activitiesManagementPanel;
 }

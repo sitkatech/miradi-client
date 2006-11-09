@@ -17,19 +17,19 @@ import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
-public class ResourceManagementPanel extends ModelessDialogPanel
+public class ResourceListManagementPanel extends ModelessDialogPanel
 {
-	public ResourceManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public ResourceListManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		this(mainWindowToUse, new ObjectsAction[0], "");
 	}
 	
-	public ResourceManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
+	public ResourceListManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
 	{
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		resourceListPanel = new ResourceListPanel(mainWindowToUse.getCurrentView(), this);
+		resourceListPanel = new ResourcePoolTablePanel(mainWindowToUse.getCurrentView(), this);
 		addExtraButtons(resourceListPanel, extraButtonActions);
 		
 		editResourcePanel = new ProjectResourcePropertiesPanel(project, BaseId.INVALID);
@@ -49,7 +49,7 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 
-	private void addExtraButtons(ResourceListPanel resourcePanel, ObjectsAction[] extraButtonActions)
+	private void addExtraButtons(ResourcePoolTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
 	{
 		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
 		for(int i = 0; i < extraButtons.length; ++i)
@@ -79,6 +79,6 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 		editResourcePanel.setObjectId(selectedId);
 	}
 
-	ResourceListPanel resourceListPanel;
+	ResourcePoolTablePanel resourceListPanel;
 	ProjectResourcePropertiesPanel editResourcePanel;
 }

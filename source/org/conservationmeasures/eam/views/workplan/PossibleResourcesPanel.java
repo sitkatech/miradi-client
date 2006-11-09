@@ -7,11 +7,11 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.actions.ActionResourceListAdd;
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourceListManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class PossibleResourcesPanel extends ResourceManagementPanel
+public class PossibleResourcesPanel extends ResourceListManagementPanel
 {
 	public PossibleResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{

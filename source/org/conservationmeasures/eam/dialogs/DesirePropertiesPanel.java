@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Objective;
 
-abstract public class DesirePropertiesPanel extends ObjectPropertiesPanel
+abstract public class DesirePropertiesPanel extends LegacyObjectPropertiesPanel
 {
 	public DesirePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
 	{

@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TaskPropertiesPanel extends ObjectPropertiesPanel
+public class TaskPropertiesPanel extends LegacyObjectPropertiesPanel
 {
 
 	public TaskPropertiesPanel(MainWindow parentToUse, EAMObject taskToEdit) throws Exception

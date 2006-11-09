@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class ActivitiesPropertiesPanel extends ObjectDataInputPanel
+public class ActivityPropertiesPanel extends ObjectDataInputPanel
 {
-	public ActivitiesPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit, MainWindow mainWindow) throws Exception
+	public ActivityPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit, MainWindow mainWindow) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		setBorder(BorderFactory.createEtchedBorder());
