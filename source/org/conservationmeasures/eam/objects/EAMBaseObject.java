@@ -24,6 +24,11 @@ abstract public class EAMBaseObject implements EAMObject
 		clear();
 	}
 	
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(getType(), getId());
+	}
+	
 	EAMBaseObject(BaseId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		setId(idToUse);
@@ -80,7 +85,7 @@ abstract public class EAMBaseObject implements EAMObject
 	}
 	
 	abstract public int getType();
-
+	
 	public boolean equals(Object rawOther)
 	{
 		if(!(rawOther instanceof EAMObject))

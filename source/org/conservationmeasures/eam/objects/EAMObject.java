@@ -18,4 +18,5 @@ public interface EAMObject
 	public String getData(String fieldTag);
 	public CreateObjectParameter getCreationExtraInfo();
 	public EnhancedJsonObject toJson();
+	public ObjectReference getObjectReference();
 }
