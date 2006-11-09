@@ -137,6 +137,11 @@ public class Actions
 		registerAction(new ActionTeamRemoveMember(mainWindow));
 		
 		registerAction(new ActionResourceListAdd(mainWindow));
+		registerAction(new ActionResourceListRemove(mainWindow));
+		registerAction(new ActionResourceListModify(mainWindow));
+		registerAction(new ActionViewPossibleResources(mainWindow));
+		
+		
 		
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));

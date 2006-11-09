@@ -40,6 +40,12 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
+	public EAMObject getSelectedObject()
+	{
+		System.out.println("length of selectedobject  = "+tablePanel.getSelectedObjects().length);
+		return tablePanel.getSelectedObjects()[0];
+	}
+	
 	public void selectObject(EAMObject objectToSelect)
 	{
 		tablePanel.selectObject(objectToSelect);

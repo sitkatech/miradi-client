@@ -41,11 +41,12 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 
 	public void dispose()
 	{
-		resourceListPanel.dispose();
-		resourceListPanel = null;
-		editResourcePanel.dispose();
-		editResourcePanel = null;
-		super.dispose();
+		//FIXME uncomment but make sure it works
+		//resourceListPanel.dispose();
+		//resourceListPanel = null;
+		//editResourcePanel.dispose();
+		//editResourcePanel = null;
+		//super.dispose();
 	}
 
 	private void addExtraButtons(ResourceListPanel resourcePanel, ObjectsAction[] extraButtonActions)
@@ -69,7 +70,7 @@ public class ResourceManagementPanel extends ModelessDialogPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Project Team");
+		return EAM.text("Title|Project Resource");
 	}
 	
 	public void objectWasSelected(BaseId selectedId)

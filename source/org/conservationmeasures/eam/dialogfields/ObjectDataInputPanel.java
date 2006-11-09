@@ -52,6 +52,12 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public void setObjectId(BaseId newId)
 	{
 		objectId = newId;
+		//FIXME This is not the right solution to where the propertiesPanel 
+		//field is changed by the user but the activitiespooltable panel is 
+		//not changed.  
+		//On the other hand
+		//The ActivitiesPoolTablePanel is not updated by the "add rources"
+		//of the ResourceTablePoolPanel popup dialog
 		saveModifiedFields();
 		updateFieldsFromProject();
 	}

@@ -8,20 +8,20 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionResourceListAdd extends ObjectsAction
+public class ActionViewPossibleResources extends ObjectsAction
 {
-	public ActionResourceListAdd(MainWindow mainWindowToUse)
+	public ActionViewPossibleResources(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Add Resource");
+		return EAM.text("Action|Manage|Add Resources...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add");
+		return EAM.text("TT|Add resources to activity");
 	}
 }

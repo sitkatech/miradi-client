@@ -9,10 +9,13 @@ import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionResourceListAdd;
+import org.conservationmeasures.eam.actions.ActionResourceListModify;
+import org.conservationmeasures.eam.actions.ActionResourceListRemove;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.dialogfields.ResourceListAdd;
+import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourceManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -76,6 +79,11 @@ public class WorkPlanView extends TabbedView
 	{
 		return workPlanPanel;
 	}
+	
+	public ActivitiesManagementPanel getActivitiesManagementPanel()
+	{
+		return activitiesManagementPanel;
+	}
 
 	public void selectObject(EAMObject objectToSelect)
 	{
@@ -90,7 +98,7 @@ public class WorkPlanView extends TabbedView
 			panel.selectObject(objectToSelect);
 		}
 	}
-	
+		
 	public ModifyActivity getModifyActivityDoer()
 	{
 		return modifyActivityDoer;
@@ -110,9 +118,27 @@ public class WorkPlanView extends TabbedView
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 		
+		addDoerToMap(ActionViewPossibleResources.class, new ViewPossibleResources());
 		addDoerToMap(ActionResourceListAdd.class, new ResourceListAdd());
+		addDoerToMap(ActionResourceListModify.class, new ResourceListModify());
+		addDoerToMap(ActionResourceListRemove.class, new ResourceListRemove());
 	}
 	
+	public void showResourceAddDialog() throws Exception
+	{
+		PossibleResourcesPanel panel = new PossibleResourcesPanel(getMainWindow());
+		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription());
+		showFloatingPropertiesDialog(dlg);
+	}
+	
+	public EAMObject getSelectedObject()
+	{
+		Component tab = getCurrentTabContents();
+		if(tab.equals(getActivitiesManagementPanel()))
+			return getActivitiesManagementPanel().getSelectedObject();
+		
+		return null;
+	}
 	
 	MainWindow mainWindow;
 	ModifyActivity modifyActivityDoer;

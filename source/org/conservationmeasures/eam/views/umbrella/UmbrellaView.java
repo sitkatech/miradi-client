@@ -220,6 +220,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		showFloatingPropertiesDialog(dlg);
 	}
 	
+	public EAMObject getSelectedObject()
+	{
+		return null;
+	}
+	
 	class ObjectPropertiesDialogWindowEventHandler extends WindowAdapter
 	{
 

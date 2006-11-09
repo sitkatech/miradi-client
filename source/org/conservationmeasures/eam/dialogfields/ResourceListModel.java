@@ -16,10 +16,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ResourceListModel extends AbstractTableModel
 {
-	public ResourceListModel(Project projectToUse, IdList idListToUse)
+	public ResourceListModel(Project projectToUse)
 	{
 		project = projectToUse;
-		idList = idListToUse;
+		idList = new IdList();
 	}
 
 	public void setList(IdList idListToUse)
@@ -39,10 +39,7 @@ public class ResourceListModel extends AbstractTableModel
 
 	public int getRowCount()
 	{
-		if (idList != null)
-			return idList.size();
-		
-		return 0;
+		return idList.size();
 	}
 
 	public Object getValueAt(int row, int column)

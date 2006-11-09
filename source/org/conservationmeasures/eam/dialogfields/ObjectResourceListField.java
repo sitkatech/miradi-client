@@ -22,8 +22,7 @@ public class ObjectResourceListField extends ObjectDataInputField
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		project = projectToUse;
 		actions = actionsToUse;
-		idList = new IdList();
-		listComponent = new ResourceListEditorComponent(project, actions, idList);
+		listComponent = new ResourceListEditorComponent(project, actions);
 	}
 	
 	public JComponent getComponent()
@@ -33,31 +32,30 @@ public class ObjectResourceListField extends ObjectDataInputField
 
 	public String getText()
 	{
-		return idListString;
+		return idList.toString();
 	}
 
 	public void setText(String idListToUse)
 	{
-		idListString = idListToUse;
+		try
+		{
+			idList =  new IdList(idListToUse);
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			idList = new IdList();
+		}
 		rebuildComponent();
 	}
 
 	private void rebuildComponent()
 	{
-		try
-		{
-			idList = new IdList(idListString);
-			listComponent.setList(idList);
-		}
-		catch(ParseException e)
-		{
-			EAM.logException(e);
-		}
+		listComponent.setList(idList);
 	}
 
 	private IdList idList;
 	private Actions actions;
 	private Project project;
-	private String idListString = "";
 	private ResourceListEditorComponent listComponent;
 }

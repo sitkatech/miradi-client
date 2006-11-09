@@ -10,9 +10,9 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.actions.ActionModifyResource;
-import org.conservationmeasures.eam.actions.ActionResourceListAdd;
-import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
+import org.conservationmeasures.eam.actions.ActionResourceListModify;
+import org.conservationmeasures.eam.actions.ActionResourceListRemove;
+import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.project.Project;
@@ -22,12 +22,12 @@ import org.martus.swing.UiScrollPane;
 
 public class ResourceListEditorComponent extends JPanel
 {
-	public ResourceListEditorComponent(Project projectToUse, Actions actions, IdList idList)
+	public ResourceListEditorComponent(Project projectToUse, Actions actions)
 	{
 		super(new BorderLayout());
 		project = projectToUse;
 
-		resourceListModel = new ResourceListModel(project, idList);
+		resourceListModel = new ResourceListModel(project);
 		resourceListTable = new ResourceListTable(resourceListModel);
 		resourceListTable.resizeTable(10);
 		rebuild();
@@ -50,9 +50,9 @@ public class ResourceListEditorComponent extends JPanel
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();
-		box.add(new UiButton(actions.get(ActionResourceListAdd.class)));
-		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), resourceListTable));
-		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), resourceListTable));
+		box.add(new UiButton(actions.get(ActionViewPossibleResources.class)));
+		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionResourceListRemove.class), resourceListTable));
+		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionResourceListModify.class), resourceListTable));
 		return box;
 	}
 	

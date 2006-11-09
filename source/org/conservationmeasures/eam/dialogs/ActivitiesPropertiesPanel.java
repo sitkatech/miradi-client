@@ -21,9 +21,11 @@ public class ActivitiesPropertiesPanel extends ObjectDataInputPanel
 	public ActivitiesPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit, MainWindow mainWindow) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
-		this.setBorder(BorderFactory.createEtchedBorder());
+		setBorder(BorderFactory.createEtchedBorder());
+		
 		addField(createStringField(Task.TAG_LABEL));
 		addField(createListField(actions, Task.TAG_RESOURCE_IDS));
+		
 		updateFieldsFromProject();
 	}
 
