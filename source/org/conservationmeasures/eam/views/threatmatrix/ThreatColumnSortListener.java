@@ -29,7 +29,7 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	}
 	
 	
-	public static void sort(ThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
+	public  void sort(String currentSortBy, String currentSortDirection) 
 	{
 		NonEditableThreatMatrixTableModel modelToSort = 
 			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
@@ -83,7 +83,7 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	}
 
 
-	private static Comparator getComparator(int sortColumn, NonEditableThreatMatrixTableModel modelToSort)
+	private Comparator getComparator(int sortColumn, NonEditableThreatMatrixTableModel modelToSort)
 	{
 		Comparator comparator;
 		if(isSummaryColumn(sortColumn, modelToSort))
@@ -93,12 +93,12 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		return comparator;
 	}
 
-	private static  boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
+	private boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
 	{
 	 return (sortColumn == modelToSort.getColumnCount()-1);
 	}
 	
-	private static ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
 	{
 		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);

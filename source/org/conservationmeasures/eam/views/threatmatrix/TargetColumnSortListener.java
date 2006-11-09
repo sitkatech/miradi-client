@@ -29,7 +29,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 	}
 	
 	
-	public static void sort(ThreatGirdPanel threatGirdPanel, String currentSortBy, String currentSortDirection) 
+	public void sort(String currentSortBy, String currentSortDirection) 
 	{
 		NonEditableThreatMatrixTableModel modelToSort = 
 			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
@@ -73,7 +73,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 	}
 
 
-	private static Comparator getComparator()
+	private Comparator getComparator()
 	{
 		Comparator comparator;
 		comparator = new IgnoreCaseStringComparator();
@@ -81,7 +81,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 	}
 
 
-	private static ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
 	{
 		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);

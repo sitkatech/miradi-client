@@ -17,6 +17,7 @@ import javax.swing.LookAndFeel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -40,10 +41,12 @@ public class ThreatGirdPanel extends JPanel
 		ThreatMatrixTable table = createThreatTable(model);
 
 		JTableHeader columnHeader = table.getTableHeader();
-		columnHeader.addMouseListener(new ThreatColumnSortListener(this));
+		threatColumnSortListener = new ThreatColumnSortListener(this);
+		columnHeader.addMouseListener(threatColumnSortListener);
 
 		JTableHeader rowHeader = rowTable.getTableHeader();
-		rowHeader.addMouseListener(new TargetColumnSortListener(this));
+		targetColumnSortListener = new TargetColumnSortListener(this);
+		rowHeader.addMouseListener(targetColumnSortListener);
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowTable, table);
@@ -54,6 +57,27 @@ public class ThreatGirdPanel extends JPanel
 		return scrollPane;
 	}
 	
+	public void establishPriorSortState() throws Exception  
+	{
+		String currentSortBy = getProject().getViewData(
+				getProject().getCurrentView()).getData(
+				ViewData.TAG_CURRENT_SORT_BY);
+		
+		boolean hastPriorSortBy = currentSortBy.length() != 0;
+		if(hastPriorSortBy)
+		{
+			String currentSortDirection = getProject().getViewData(
+					getProject().getCurrentView()).getData(
+					ViewData.TAG_CURRENT_SORT_DIRECTION);
+
+			if(currentSortBy.equals(ViewData.SORT_TARGETS))
+				targetColumnSortListener.sort(currentSortBy,
+						currentSortDirection);
+			else
+				targetColumnSortListener.sort(currentSortBy,
+						currentSortDirection);
+		}
+	}
 	
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTableToUse,
 			JTable table)
@@ -189,10 +213,12 @@ public class ThreatGirdPanel extends JPanel
 		return rowHeaderTable;
 	}
 	
-	ThreatMatrixView view;
-	ThreatRatingBundle highlightedBundle;
-	ThreatMatrixTable threatTable;
-	JTable rowHeaderTable;
+	private ThreatMatrixView view;
+	private ThreatRatingBundle highlightedBundle;
+	private ThreatMatrixTable threatTable;
+	private ThreatColumnSortListener threatColumnSortListener;
+	private TargetColumnSortListener targetColumnSortListener;
+	private JTable rowHeaderTable;
 	
 	int ABOUT_ONE_INCH = 60;
 	int ABOUT_TWO_INCHES = 150;

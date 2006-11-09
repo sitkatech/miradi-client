@@ -44,44 +44,13 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		threatGirdPanel.repaint();
 	}
 
+	
 	void saveSortState(boolean sortDirection, ConceptualModelNode sortColumnNode)
 	{
 		String value = sortColumnNode.getId().toString();
 		saveSortState(sortDirection, value);
 	}
 
-	
-	public static void establishPriorSortState(ThreatGirdPanel threatGirdPanel)
-	{
-		try
-		{
-			String currentSortBy = threatGirdPanel.getProject().getViewData(threatGirdPanel.getProject().getCurrentView())
-					.getData(ViewData.TAG_CURRENT_SORT_BY);
-
-			boolean hastPriorSortBy = currentSortBy.length()!=0;
-			if (hastPriorSortBy)
-				restorePriorSortState(threatGirdPanel, currentSortBy);
-		}
-		catch(Exception e)
-		{
-			EAM.logError("Unable to retrieve sort state:" + e);
-		}
-	}
-
-
-	private static void restorePriorSortState(ThreatGirdPanel threatGirdPanel, String currentSortBy) throws Exception
-	{
-		String currentSortDirection= threatGirdPanel.getProject().getViewData(threatGirdPanel.getProject().getCurrentView())
-				.getData(ViewData.TAG_CURRENT_SORT_DIRECTION);
-
-		if (currentSortBy.equals(ViewData.SORT_TARGETS))
-			TargetColumnSortListener.sort(threatGirdPanel, currentSortBy,
-					currentSortDirection);
-		else
-			ThreatColumnSortListener.sort(threatGirdPanel, currentSortBy,
-					currentSortDirection);
-	}
-	
 	
 	void saveSortState(boolean sortDirection, String sortColumnId)
 	{

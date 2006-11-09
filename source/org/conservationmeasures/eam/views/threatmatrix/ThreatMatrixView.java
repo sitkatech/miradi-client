@@ -82,15 +82,9 @@ public class ThreatMatrixView extends UmbrellaView
 			
 		selectBundle(null);
 		
-		establishPriorSortState();
+		grid.establishPriorSortState();
 	}
 
-	
-	private void establishPriorSortState()
-	{
-		ColumnSortListener.establishPriorSortState(grid);
-	}
-	
 	
 	private Container createThreatMatrixPanel() throws Exception
 	{
