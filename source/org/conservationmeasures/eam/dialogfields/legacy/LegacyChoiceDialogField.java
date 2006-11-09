@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiComboBox;
 
-public class ChoiceDialogField extends DialogField
+public class LegacyChoiceDialogField extends LegacyDialogField
 {
-	public ChoiceDialogField(RatingQuestion question)
+	public LegacyChoiceDialogField(RatingQuestion question)
 	{
 		super(question.getTag(), question.getLabel());
 		combo = new UiComboBox(question.getChoices());

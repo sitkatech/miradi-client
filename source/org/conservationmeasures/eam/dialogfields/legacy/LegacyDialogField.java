@@ -9,13 +9,13 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
-abstract public class DialogField
+abstract public class LegacyDialogField
 {
-	public DialogField(String tagToUse, String labelToUse)
+	public LegacyDialogField(String tagToUse, String labelToUse)
 	{
 		tag = tagToUse;
 		label = labelToUse;

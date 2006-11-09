@@ -3,15 +3,16 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
+import org.conservationmeasures.eam.dialogfields.RatingLabel;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 
-public class RatingDisplayField extends DialogField
+public class LegacyRatingDisplayField extends LegacyDialogField
 {
-	public RatingDisplayField(RatingQuestion questionToUse)
+	public LegacyRatingDisplayField(RatingQuestion questionToUse)
 	{
 		super("", "");
 		labelComponent = new RatingLabel(questionToUse);

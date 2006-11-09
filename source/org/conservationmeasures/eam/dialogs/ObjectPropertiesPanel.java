@@ -19,11 +19,11 @@ import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.dialogfields.ChoiceDialogField;
-import org.conservationmeasures.eam.dialogfields.DialogField;
-import org.conservationmeasures.eam.dialogfields.MessageField;
-import org.conservationmeasures.eam.dialogfields.MultiSelectDialogField;
-import org.conservationmeasures.eam.dialogfields.StringDialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyChoiceDialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyDialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyMessageField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyMultiSelectDialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyStringDialogField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -55,7 +55,7 @@ abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 	void initializeFields(String[] tags) throws Exception
 	{
 		DialogGridPanel grid = new DialogGridPanel();
-		fields = new DialogField[tags.length];
+		fields = new LegacyDialogField[tags.length];
 		for(int field = 0; field < fields.length; ++field)
 		{
 			String tag = tags[field];
@@ -80,14 +80,14 @@ abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 		return panel;
 	}
 
-	DialogField createDialogField(String tag, String existingValue) throws Exception
+	LegacyDialogField createDialogField(String tag, String existingValue) throws Exception
 	{
 		String label = EAM.fieldLabel(object.getType(), tag);
 
 		if(tag.equals(Task.TAG_RESOURCE_IDS))
 			return createResourcePicker(tag, label);
 		
-		DialogField dialogField = new StringDialogField(tag, label, existingValue);
+		LegacyDialogField dialogField = new LegacyStringDialogField(tag, label, existingValue);
 		return dialogField;
 	}
 
@@ -164,7 +164,7 @@ abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 		return getMainWindow().getProject();
 	}
 	
-	protected DialogField createResourcePicker(String tag, String label) throws ParseException
+	protected LegacyDialogField createResourcePicker(String tag, String label) throws ParseException
 	{
 		EAMObject[] availableResources = getProject().getAllProjectResources();
 	
@@ -172,19 +172,19 @@ abstract public class ObjectPropertiesPanel extends ModelessDialogPanel
 		BaseId id = getObject().getId();
 		IdList selectedResources = new IdList(getProject().getObjectData(type, id, Task.TAG_RESOURCE_IDS));
 		if(availableResources.length == 0)
-			return new MessageField(tag, label, selectedResources.toString(), EAM.text("(No resources defined)"));
-		return new MultiSelectDialogField(tag, label, availableResources, selectedResources);
+			return new LegacyMessageField(tag, label, selectedResources.toString(), EAM.text("(No resources defined)"));
+		return new LegacyMultiSelectDialogField(tag, label, availableResources, selectedResources);
 	}
 	
-	protected DialogField createChoiceField(RatingQuestion question, String codeToSelect)
+	protected LegacyDialogField createChoiceField(RatingQuestion question, String codeToSelect)
 	{
-		ChoiceDialogField field = new ChoiceDialogField(question);
+		LegacyChoiceDialogField field = new LegacyChoiceDialogField(question);
 		field.selectCode(codeToSelect);
 		return field;
 	}
 
 	MainWindow mainWindowToUse;
 	EAMObject object;
-	DialogField[] fields;
+	LegacyDialogField[] fields;
 }
 

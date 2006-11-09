@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectDataInputField;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
@@ -17,15 +17,15 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
-		ObjectDataInputField workbookVersionNumber = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
+		LegacyObjectDataInputField workbookVersionNumber = createStringField(metadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		workbookVersionNumber.setEditable(false);
 		addField(workbookVersionNumber);
 
-		ObjectDataInputField workbookVersionDate = createDateField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE);
+		LegacyObjectDataInputField workbookVersionDate = createDateField(metadata.TAG_TNC_WORKBOOK_VERSION_DATE);
 		workbookVersionDate.setEditable(false);
 		addField(workbookVersionDate);
 
-		ObjectDataInputField databaseDownloadDate = createDateField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
+		LegacyObjectDataInputField databaseDownloadDate = createDateField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		databaseDownloadDate.setEditable(false);
 		addField(databaseDownloadDate);
 

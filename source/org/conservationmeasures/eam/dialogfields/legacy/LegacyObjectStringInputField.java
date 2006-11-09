@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import javax.swing.JTextField;
 
@@ -13,9 +13,9 @@ import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
 
-public class ObjectStringInputField extends ObjectTextInputField
+public class LegacyObjectStringInputField extends LegacyObjectTextInputField
 {
-	public ObjectStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
+	public LegacyObjectStringInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
 		super(projectToUse, objectType, objectId, tag, new UiTextField());
 		UiTextArea textArea = new UiTextArea(1,50);

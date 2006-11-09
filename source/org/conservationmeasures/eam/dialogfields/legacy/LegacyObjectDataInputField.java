@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.InvalidDateException;
 import org.conservationmeasures.eam.utils.InvalidNumberException;
 
-abstract public class ObjectDataInputField implements FocusListener
+abstract public class LegacyObjectDataInputField implements FocusListener
 {
-	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public LegacyObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
 		project = projectToUse;
 		objectType = objectTypeToUse;

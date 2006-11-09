@@ -31,8 +31,8 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
-import org.conservationmeasures.eam.dialogfields.ChoiceDialogField;
-import org.conservationmeasures.eam.dialogfields.RatingDisplayField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyChoiceDialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
@@ -198,7 +198,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			String impactTag = ConceptualModelIntervention.TAG_IMPACT_RATING;
 			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
 			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
-			ChoiceDialogField impactField = new ChoiceDialogField(impactQuestion);
+			LegacyChoiceDialogField impactField = new LegacyChoiceDialogField(impactQuestion);
 			impactComponent = (UiComboBox)impactField.getComponent();
 			detailsTab.add(createFieldPanel(impactComponent));
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
@@ -207,7 +207,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			String durationTag = ConceptualModelIntervention.TAG_DURATION_RATING;
 			StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion(durationTag);
 			detailsTab.add(new UiLabel(durationQuestion.getLabel()));
-			ChoiceDialogField durationField = new ChoiceDialogField(durationQuestion);
+			LegacyChoiceDialogField durationField = new LegacyChoiceDialogField(durationQuestion);
 			durationComponent = (UiComboBox)durationField.getComponent();
 			detailsTab.add(createFieldPanel(durationComponent));
 			durationField.selectCode(node.getUnderlyingObject().getData(durationTag));
@@ -216,7 +216,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			String feasibilityTag = ConceptualModelIntervention.TAG_FEASIBILITY_RATING;
 			StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion(feasibilityTag);
 			detailsTab.add(new UiLabel(feasibilityQuestion.getLabel()));
-			ChoiceDialogField feasibilityField = new ChoiceDialogField(feasibilityQuestion);
+			LegacyChoiceDialogField feasibilityField = new LegacyChoiceDialogField(feasibilityQuestion);
 			feasibilityComponent = (UiComboBox)feasibilityField.getComponent();
 			detailsTab.add(createFieldPanel(feasibilityComponent));
 			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
@@ -225,14 +225,14 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			String costTag = ConceptualModelIntervention.TAG_COST_RATING;
 			StrategyCostQuestion costQuestion = new StrategyCostQuestion(costTag);
 			detailsTab.add(new UiLabel(costQuestion.getLabel()));
-			ChoiceDialogField costField = new ChoiceDialogField(costQuestion);
+			LegacyChoiceDialogField costField = new LegacyChoiceDialogField(costQuestion);
 			costComponent = (UiComboBox)costField.getComponent();
 			detailsTab.add(createFieldPanel(costComponent));
 			costField.selectCode(node.getUnderlyingObject().getData(costTag));
 			costComponent.addItemListener(new CostChangeHandler());
 
 			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
-			RatingDisplayField ratingSummaryField = new RatingDisplayField(new StrategyRatingSummary(""));
+			LegacyRatingDisplayField ratingSummaryField = new LegacyRatingDisplayField(new StrategyRatingSummary(""));
 			ratingComponent = (UiLabel)ratingSummaryField.getComponent();
 			detailsTab.add(createFieldPanel(ratingComponent));
 			updateRating();

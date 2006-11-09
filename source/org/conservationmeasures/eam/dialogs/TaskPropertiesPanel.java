@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 
-import org.conservationmeasures.eam.dialogfields.DialogField;
+import org.conservationmeasures.eam.dialogfields.legacy.LegacyDialogField;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -26,7 +26,7 @@ public class TaskPropertiesPanel extends ObjectPropertiesPanel
 		return EAM.text("Title|Activity Properties");	
 	}
 	
-	DialogField createDialogField(String tag, String existingValue) throws Exception
+	LegacyDialogField createDialogField(String tag, String existingValue) throws Exception
 	{
 		
 		return super.createDialogField(tag, existingValue);

@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiComboBox;
 
-public class ObjectRatingField extends ObjectDataInputField
+public class LegacyObjectRatingField extends LegacyObjectDataInputField
 {
-	public ObjectRatingField(Project projectToUse, int objectType, BaseId objectId, RatingQuestion questionToUse)
+	public LegacyObjectRatingField(Project projectToUse, int objectType, BaseId objectId, RatingQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		combo = new UiComboBox(questionToUse.getChoices());

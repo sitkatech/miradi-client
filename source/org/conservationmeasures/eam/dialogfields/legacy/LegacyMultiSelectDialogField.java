@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiList;
 
-public class MultiSelectDialogField extends DialogField
+public class LegacyMultiSelectDialogField extends LegacyDialogField
 {
-	public MultiSelectDialogField(String tagToUse, String labelToUse, EAMObject[] availableObjects, IdList selectedObjects)
+	public LegacyMultiSelectDialogField(String tagToUse, String labelToUse, EAMObject[] availableObjects, IdList selectedObjects)
 	{
 		super(tagToUse, labelToUse);
 		listComponent = new UiList(availableObjects);

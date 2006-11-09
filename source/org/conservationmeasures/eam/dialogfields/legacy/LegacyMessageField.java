@@ -3,15 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
 import org.martus.swing.UiLabel;
 
-public class MessageField extends DialogField
+public class LegacyMessageField extends LegacyDialogField
 {
-	public MessageField(String tag, String label, String valueToUse, String translatedMessage)
+	public LegacyMessageField(String tag, String label, String valueToUse, String translatedMessage)
 	{
 		super(tag, label);
 		dataValue = valueToUse;

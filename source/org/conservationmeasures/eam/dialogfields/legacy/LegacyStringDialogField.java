@@ -3,15 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogfields.legacy;
 
 import java.awt.Component;
 
 import org.martus.swing.UiTextField;
 
-public class StringDialogField extends DialogField
+public class LegacyStringDialogField extends LegacyDialogField
 {
-	public StringDialogField(String tagToUse, String labelToUse, String value)
+	public LegacyStringDialogField(String tagToUse, String labelToUse, String value)
 	{
 		super(tagToUse, labelToUse);
 		textField = new UiTextField(50);
