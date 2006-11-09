@@ -5,14 +5,12 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.umbrella.CreateIndicator;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class MonitoringView extends TabbedView
@@ -62,7 +60,6 @@ public class MonitoringView extends TabbedView
 	
 	private void addMonitoringPlanDoersToMap()
 	{
-		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionModifyIndicator.class, new ModifyIndicator());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 	}

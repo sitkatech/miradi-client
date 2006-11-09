@@ -22,7 +22,7 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		IndicatorId invalidId = new IndicatorId(BaseId.INVALID.asInt());
 		
-		listComponent = new IndicatorListTablePanel(projectToUse, nodeId);
+		listComponent = new IndicatorListTablePanel(projectToUse, actions, nodeId);
 		add(listComponent, BorderLayout.CENTER);
 		
 		IndicatorPropertiesPanel propertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions, invalidId);

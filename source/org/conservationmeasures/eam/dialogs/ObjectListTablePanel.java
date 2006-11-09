@@ -7,10 +7,12 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputPanel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,16 +20,22 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.views.summary.ObjectListTable;
 import org.conservationmeasures.eam.views.summary.ObjectListTableModel;
+import org.martus.swing.UiButton;
+import org.martus.swing.UiScrollPane;
 
 abstract public class ObjectListTablePanel extends JPanel implements ListSelectionListener
 {
-	public ObjectListTablePanel(ObjectListTableModel model)
+	public ObjectListTablePanel(ObjectListTableModel model, MainWindowAction createAction, MainWindowAction deleteAction)
 	{
 		super(new BorderLayout());
 		table = new ObjectListTable(model);
 		table.addListSelectionListener(this);
-		add(table, BorderLayout.CENTER);
+		add(new UiScrollPane(table), BorderLayout.CENTER);
 
+		Box buttons = Box.createVerticalBox();
+		buttons.add(new UiButton(createAction));
+		buttons.add(new UiButton(deleteAction));
+		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 	}
 
 	
