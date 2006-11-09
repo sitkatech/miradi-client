@@ -109,6 +109,7 @@ public class ThreatRatingBundlePanel extends JPanel
 		area.setOpaque(false);
 		area.setFont(new Font(null,Font.BOLD,12));
 		area.setPreferredSize(new Dimension(150, 60));
+		area.setEditable(false);
 		return area;
 	}
 
