@@ -16,7 +16,7 @@ public class GoalTableModel extends AnnotationTableModel
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
 		
-		return super.getValueAt(rowIndex, columnIndex);
+		return getTableCellDisplayString(rowIndex, columnIndex, null, null);
 	}
 
 	static final String[] goalColumnTags = {
