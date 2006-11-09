@@ -30,6 +30,14 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
+	public void dispose()
+	{
+		listComponent.dispose();
+		listComponent = null;
+		
+		super.dispose();
+	}
+
 	public void refresh()
 	{
 		

@@ -18,9 +18,11 @@ import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -62,6 +64,7 @@ import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
@@ -122,6 +125,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return diagram.getPrintableComponent();
 	}
 	
+	public EAMObject getSelectedObject()
+	{
+		DiagramNode node = diagram.getSelectedNode();
+		if(node == null)
+			return null;
+		return node.getUnderlyingObject();
+	}
+
 	public Properties getPropertiesDoer()
 	{
 		return propertiesDoer;
@@ -157,6 +168,9 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionNudgeNodeLeft.class, new NudgeNode(KeyEvent.VK_LEFT));
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
+	
+		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
+		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 	}
 	
 	public void becomeActive() throws Exception

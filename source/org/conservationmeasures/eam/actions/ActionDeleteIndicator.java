@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDeleteIndicator extends MainWindowAction
+public class ActionDeleteIndicator extends ObjectsAction
 {
 	public ActionDeleteIndicator(MainWindow mainWindowToUse)
 	{
