@@ -132,6 +132,7 @@ public class ObjectPoolTablePanel extends DisposablePanel implements CommandExec
 	private void reactToChanges()
 	{
 		int wasSelected = table.getSelectedRow();
+		model.resetObjects();
 		model.fireTableDataChanged();
 		if(wasSelected >= 0 && wasSelected < table.getRowCount())
 			table.setRowSelectionInterval(wasSelected, wasSelected);
