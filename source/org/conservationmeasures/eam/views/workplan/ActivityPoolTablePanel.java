@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ActivitiesTablePanel extends ObjectManagementPanel implements ObjectPicker
+public class ActivityPoolTablePanel extends ObjectPoolTablePanel implements ObjectPicker
 {
-	public ActivitiesTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
+	public ActivityPoolTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
 	{
 		super(viewToUse, new ActivityPoolTableModel(viewToUse.getProject()), buttonActionClasses);
 		owner = owningPanel;

@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagerTableModel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPoolTableModel;
 
-public class ActivityPoolTableModel extends ObjectManagerTableModel
+public class ActivityPoolTableModel extends ObjectPoolTableModel
 {
 	public ActivityPoolTableModel(Project projectToUse)
 	{

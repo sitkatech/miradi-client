@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
+import org.conservationmeasures.eam.views.umbrella.AnnotationPoolTableModel;
 
-public class IndicatorPoolTableModel extends AnnotationTableModel
+public class IndicatorPoolTableModel extends AnnotationPoolTableModel
 {
 	IndicatorPoolTableModel(Project projectToUse)
 	{

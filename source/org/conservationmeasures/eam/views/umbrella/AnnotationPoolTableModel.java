@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.umbrella;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 
-public abstract class AnnotationTableModel extends ObjectManagerTableModel
+public abstract class AnnotationPoolTableModel extends ObjectPoolTableModel
 {
-	public AnnotationTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
+	public AnnotationPoolTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
 	{
 		super(resourcePool, columnTagsToUse);
 	}

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
+import org.conservationmeasures.eam.dialogs.ObjectListTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;

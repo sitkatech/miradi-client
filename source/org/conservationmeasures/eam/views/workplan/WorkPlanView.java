@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ResourceListManagementPanel;
+import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -52,8 +52,8 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
-		resourceManagementPanel = new ResourceListManagementPanel(getMainWindow());
-		activitiesManagementPanel = new ActivitiesManagementPanel(getMainWindow());
+		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow());
+		activitiesManagementPanel = new ActivityPoolManagementPanel(getMainWindow());
 
 		addTab(EAM.text("Work Plan"), workPlanPanel);
 		addTab(EAM.text("Resources"), resourceManagementPanel);
@@ -80,7 +80,7 @@ public class WorkPlanView extends TabbedView
 		return workPlanPanel;
 	}
 	
-	public ActivitiesManagementPanel getActivitiesManagementPanel()
+	public ActivityPoolManagementPanel getActivitiesManagementPanel()
 	{
 		return activitiesManagementPanel;
 	}
@@ -143,6 +143,6 @@ public class WorkPlanView extends TabbedView
 	ModifyActivity modifyActivityDoer;
 
 	WorkPlanPanel workPlanPanel;
-	ResourceListManagementPanel resourceManagementPanel;
-	ActivitiesManagementPanel activitiesManagementPanel;
+	ResourcePoolManagementPanel resourceManagementPanel;
+	ActivityPoolManagementPanel activitiesManagementPanel;
 }

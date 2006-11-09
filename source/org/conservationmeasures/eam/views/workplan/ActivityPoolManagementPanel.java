@@ -18,19 +18,19 @@ import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
-public class ActivitiesManagementPanel extends ModelessDialogPanel
+public class ActivityPoolManagementPanel extends ModelessDialogPanel
 {
-	public ActivitiesManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public ActivityPoolManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		this(mainWindowToUse, new ObjectsAction[0], "");
 	}
 	
-	public ActivitiesManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
+	public ActivityPoolManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
 	{
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		tablePanel = new ActivitiesTablePanel(mainWindowToUse.getCurrentView(), this);
+		tablePanel = new ActivityPoolTablePanel(mainWindowToUse.getCurrentView(), this);
 		addExtraButtons(tablePanel, extraButtonActions);
 		
 		propertiesPanel = new ActivityPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
@@ -63,7 +63,7 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 	
-	private void addExtraButtons(ActivitiesTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
+	private void addExtraButtons(ActivityPoolTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
 	{
 		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
 		for(int i = 0; i < extraButtons.length; ++i)
@@ -88,5 +88,5 @@ public class ActivitiesManagementPanel extends ModelessDialogPanel
 	}
 	
 	private ActivityPropertiesPanel propertiesPanel;
-	private ActivitiesTablePanel tablePanel;
+	private ActivityPoolTablePanel tablePanel;
 }

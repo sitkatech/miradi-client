@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.UiButton;
 
-public class ResourcePoolTablePanel extends ObjectManagementPanel 
+public class ResourcePoolTablePanel extends ObjectPoolTablePanel 
 {
 	public ResourcePoolTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
 	{

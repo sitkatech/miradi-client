@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class IndicatorPoolTablePanel extends ObjectManagementPanel
+public class IndicatorPoolTablePanel extends ObjectPoolTablePanel
 {
 	public IndicatorPoolTablePanel(UmbrellaView viewToUse)
 	{

@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.summary.IndicatorListTableModel;
 
 public class IndicatorListTablePanel extends ObjectListTablePanel
 {

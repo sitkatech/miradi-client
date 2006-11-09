@@ -33,14 +33,14 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTable;
 
-public class ObjectManagementPanel extends DisposablePanel implements CommandExecutedListener, ListSelectionListener, ObjectPicker
+public class ObjectPoolTablePanel extends DisposablePanel implements CommandExecutedListener, ListSelectionListener, ObjectPicker
 {
-	public ObjectManagementPanel(UmbrellaView viewToUse, String[] columnTags, EAMObjectPool pool, Class[] buttonActionClasses)
+	public ObjectPoolTablePanel(UmbrellaView viewToUse, String[] columnTags, EAMObjectPool pool, Class[] buttonActionClasses)
 	{
-		this(viewToUse, new ObjectManagerTableModel(pool, columnTags), buttonActionClasses);
+		this(viewToUse, new ObjectPoolTableModel(pool, columnTags), buttonActionClasses);
 	}
 	
-	public ObjectManagementPanel(UmbrellaView viewToUse, ObjectManagerTableModel modelToUse, Class[] buttonActionClasses)
+	public ObjectPoolTablePanel(UmbrellaView viewToUse, ObjectPoolTableModel modelToUse, Class[] buttonActionClasses)
 	{
 		super(new BorderLayout());
 		view = viewToUse;
@@ -55,7 +55,7 @@ public class ObjectManagementPanel extends DisposablePanel implements CommandExe
 		table.createDefaultColumnsFromModel();
 		table.resizeTable();
 		table.getTableHeader().setReorderingAllowed(true);
-		table.getTableHeader().addMouseListener(new ObjectManagmentPanelSortListener());
+		table.getTableHeader().addMouseListener(new ObjectPoolTablePanelSortListener());
 		
 		add(new UiScrollPane(table), BorderLayout.CENTER);
 		add(createButtonPanel(getMainWindow().getActions(), buttonActionClasses), BorderLayout.AFTER_LAST_LINE);
@@ -210,7 +210,7 @@ public class ObjectManagementPanel extends DisposablePanel implements CommandExe
 	}
 
 	private UmbrellaView view;
-	private ObjectManagerTableModel model;
+	private ObjectPoolTableModel model;
 	private UiTableWithAlternatingRows table;
 	private Box buttonBox;
 }

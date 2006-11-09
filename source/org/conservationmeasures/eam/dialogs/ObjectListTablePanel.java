@@ -27,8 +27,6 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.conservationmeasures.eam.views.summary.ObjectListTable;
-import org.conservationmeasures.eam.views.summary.ObjectListTableModel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 

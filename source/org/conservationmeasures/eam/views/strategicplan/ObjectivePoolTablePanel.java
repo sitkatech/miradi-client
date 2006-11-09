@@ -11,10 +11,10 @@ import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.views.umbrella.ObjectManagementPanel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class ObjectivePoolTablePanel extends ObjectManagementPanel
+public class ObjectivePoolTablePanel extends ObjectPoolTablePanel
 {
 	public ObjectivePoolTablePanel(UmbrellaView viewToUse)
 	{

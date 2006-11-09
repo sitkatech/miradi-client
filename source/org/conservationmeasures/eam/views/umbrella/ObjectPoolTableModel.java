@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTableModel;
 import org.martus.util.xml.XmlUtilities;
 
-public class ObjectManagerTableModel extends UiTableModel
+public class ObjectPoolTableModel extends UiTableModel
 {
-	public ObjectManagerTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
+	public ObjectPoolTableModel(EAMObjectPool resourcePool, String[] columnTagsToUse)
 	{
 		pool = resourcePool;
 		columnTags = columnTagsToUse;

@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
+import org.conservationmeasures.eam.views.umbrella.AnnotationPoolTableModel;
 
-class ObjectivePoolTableModel extends AnnotationTableModel
+class ObjectivePoolTableModel extends AnnotationPoolTableModel
 {	
 	ObjectivePoolTableModel(Project projectToUse)
 	{

@@ -3,9 +3,9 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.AnnotationTableModel;
+import org.conservationmeasures.eam.views.umbrella.AnnotationPoolTableModel;
 
-public class GoalPoolTableModel extends AnnotationTableModel
+public class GoalPoolTableModel extends AnnotationPoolTableModel
 {
 	GoalPoolTableModel(Project projectToUse)
 	{

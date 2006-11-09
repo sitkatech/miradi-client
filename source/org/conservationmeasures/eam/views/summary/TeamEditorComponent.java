@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;

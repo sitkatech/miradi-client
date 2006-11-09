@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTable.UiTableHeader;
 
-public class ObjectManagmentPanelSortListener  extends MouseAdapter
+public class ObjectPoolTablePanelSortListener  extends MouseAdapter
 {	
 	public void mouseClicked(MouseEvent e) 
 	{
@@ -25,7 +25,7 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 		int clickedColumn = tableHeader.columnAtPoint(e.getPoint());
 		int sortColumn = tableHeader.getColumnModel().getColumn(clickedColumn).getModelIndex();
 		
-		AnnotationTableModel annotationTableModel = (AnnotationTableModel)table.getModel();
+		AnnotationPoolTableModel annotationTableModel = (AnnotationPoolTableModel)table.getModel();
 		EAMObject rowsToSort[] = annotationTableModel.getEAMObjectRows();
 
 		rowsToSort = sortTable(sortColumn, annotationTableModel, rowsToSort);
@@ -37,7 +37,7 @@ public class ObjectManagmentPanelSortListener  extends MouseAdapter
 	}
 
 
-	private EAMObject[] sortTable(int sortColumn, AnnotationTableModel annotationTableModel, EAMObject[] rowsToSort)
+	private EAMObject[] sortTable(int sortColumn, AnnotationPoolTableModel annotationTableModel, EAMObject[] rowsToSort)
 	{
 		Arrays.sort(rowsToSort,  new EAMObjectComparator(annotationTableModel, sortColumn));
 		
