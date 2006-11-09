@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.actions.ActionCreateIndicator;
-import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
-import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -20,7 +17,6 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 	{
 		super(viewToUse, new IndicatorTableModel(viewToUse.getProject()), buttonActionClasses);
 		
-		addDoubleClickAction(ActionModifyIndicator.class);
 		setMaxColumnWidthToHeaderWidth(0);
 		
 	}
@@ -40,9 +36,6 @@ public class IndicatorManagementPanel extends ObjectManagementPanel
 
 	
 	static final Class[] buttonActionClasses = {
-		ActionCreateIndicator.class, 
-		ActionModifyIndicator.class, 
-		ActionDeleteIndicator.class, 
 		};
 
 }

@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
-import org.conservationmeasures.eam.actions.ActionModifyIndicator;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -60,8 +58,6 @@ public class MonitoringView extends TabbedView
 	
 	private void addMonitoringPlanDoersToMap()
 	{
-		addDoerToMap(ActionModifyIndicator.class, new ModifyIndicator());
-		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 	}
 	
 	MonitoringPanel monitoringPanel;

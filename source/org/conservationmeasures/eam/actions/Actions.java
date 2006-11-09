@@ -124,7 +124,6 @@ public class Actions
 		registerAction(new ActionModifyResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
 		registerAction(new ActionCreateIndicator(mainWindow));
-		registerAction(new ActionModifyIndicator(mainWindow));
 		registerAction(new ActionDeleteIndicator(mainWindow));
 		registerAction(new ActionCreateObjective(mainWindow));
 		registerAction(new ActionModifyObjective(mainWindow));
