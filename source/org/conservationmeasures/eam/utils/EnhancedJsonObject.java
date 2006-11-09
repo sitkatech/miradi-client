@@ -79,6 +79,16 @@ public class EnhancedJsonObject extends JSONObject
 		return getJson(key);
 	}
 	
+	public JSONArray getJSONArray(String key)
+	{
+		throw new RuntimeException("Use getJsonArray instead!");
+	}
+	
+	public EnhancedJsonArray getJsonArray(String key)
+	{
+		return new EnhancedJsonArray(super.getJSONArray(key));
+	}
+	
 	public void put(String tag, Color color)
 	{
 		JSONArray rgb = new JSONArray();
