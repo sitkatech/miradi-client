@@ -14,11 +14,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 class CustomTableCellRenderer extends DefaultTableCellRenderer
 {
-	public CustomTableCellRenderer()
+	public CustomTableCellRenderer(ThreatGirdPanel threatGridPanelToUse)
 	{
+		threatGridPanel = threatGridPanelToUse;
 		setHorizontalAlignment(CENTER);
 	}
 
@@ -32,12 +34,12 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		cell.setFont(new Font(null,Font.BOLD,12));
 		cell.setForeground(Color.BLACK); 
 		
-		setBoarders(table, row, column, isSelected, hasFocus);
+		setBoarders(table, row, column);
 		
 		return cell;
 	}
 
-	private void setBoarders(JTable table, int row, int column, boolean selected, boolean focused)
+	private void setBoarders(JTable table, int row, int column)
 	{
 		
 		if (isOverallRatingCell(table, row, column))
@@ -49,14 +51,32 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		if (isSummaryColumnCell(table, row, column))
 				setBorder(BorderFactory.createMatteBorder(1,5,1,1,Color.DARK_GRAY));
 		else 
+			setBorderForCell(row, column);
+	}
+
+
+	private void setBorderForCell(int row, int column)
+	{
+		try 
 		{
-			if (!focused)
-			setBorder(BorderFactory.createCompoundBorder(
-					BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
-			else 
-				setBorder(BorderFactory.createCompoundBorder(
-						BorderFactory.createLineBorder(Color.BLUE,3),getBorder()));
+			int indirectColumn = threatGridPanel.getThreatMatrixTable().getColumnModel().getColumn(column).getModelIndex();
+			ThreatRatingBundle bundle = 
+				((NonEditableThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel()).getBundle(row, indirectColumn);
+			if(bundle != null)
+				if(threatGridPanel.getSelectedBundle().equals(bundle))
+				{
+					setBorder(BorderFactory.createCompoundBorder(BorderFactory
+							.createLineBorder(Color.BLUE, 3), getBorder()));
+					return;
+				}
 		}
+		catch (Exception e)
+		{
+		}
+		
+		setBorder(BorderFactory.createCompoundBorder(
+				BorderFactory.createLineBorder(Color.LIGHT_GRAY,1),getBorder()));
+		return;
 	}
 
 	private boolean isOverallRatingCell(JTable table, int row, int column)
@@ -79,4 +99,5 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	{
 		return arraySize-1;
 	}
+	ThreatGirdPanel threatGridPanel;
 }

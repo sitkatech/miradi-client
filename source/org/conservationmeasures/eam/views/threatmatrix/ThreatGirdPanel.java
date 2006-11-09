@@ -89,7 +89,7 @@ public class ThreatGirdPanel extends JPanel
 		CellSelectionListener selectionListener = new CellSelectionListener(table,this);
 		selectionModel.addListSelectionListener(selectionListener);
 		
-		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer();
+		CustomTableCellRenderer customTableCellRenderer = new CustomTableCellRenderer(this);
 		table.setDefaultRenderer(Object.class, customTableCellRenderer);
 
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

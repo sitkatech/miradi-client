@@ -28,37 +28,19 @@ public abstract class ColumnHeaderListener  extends MouseAdapter
 
 	public void mouseClicked(MouseEvent e) 
 	{
-		clearSelectionCellBorder();
-		notifyComponentsClearSelection();
-		
 		int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
-		int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
-		
-		sort(sortColumn);
+		if (clickedColumn >= 0)
+			sortBySelectedColumn(e, clickedColumn);
+	}
 
+
+	private void sortBySelectedColumn(MouseEvent e, int clickedColumn)
+	{
+		int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
+		sort(sortColumn);
 		threatGirdPanel.revalidate();
 		threatGirdPanel.repaint();
 	}
-
-//TODO: It is not understood why the selection listner is not called every time.  So it can not be used to set selection cell border
-	private void clearSelectionCellBorder()
-	{
-		threatGirdPanel.getThreatMatrixTable().setFocusable(false);
-		threatGirdPanel.getThreatMatrixTable().setFocusable(true);
-	}
-
-	private void notifyComponentsClearSelection()
-	{
-		try
-		{
-			threatGirdPanel.getThreatMatrixView().selectBundle(null);
-		}
-		catch(Exception ex)
-		{
-			EAM.logException(ex);
-		}
-	}
-
 
 	void saveSortState(boolean sortDirection, ConceptualModelNode sortColumnNode)
 	{
