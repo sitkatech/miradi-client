@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
@@ -39,8 +38,6 @@ import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalIds;
-import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -51,13 +48,11 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objectpools.GoalPool;
-import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
@@ -164,7 +159,10 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	{
 		tabs = new JTabbedPane();
 		tabs.add(createMainGrid(node), EAM.text("Tab|Details"));
-		tabs.add(createIndicatorsGrid(node), EAM.text("Tab|Indicators"));
+		
+		IndicatorListManagementPanel indicatorListManagementPanel = new IndicatorListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+		tabs.add(indicatorListManagementPanel, indicatorListManagementPanel.getPanelDescription());
+		
 		if(node.canHaveObjectives())
 			tabs.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
 		if(node.canHaveGoal())
@@ -358,24 +356,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		ratingComponent.setText(rating.getCode());
 	}
 	
-	private Component createIndicatorsGrid(DiagramNode node)
-	{
-		indicatorsTab = new DialogGridPanel();
-
-		indicatorsTab.add(new UiLabel(EAM.text("Label|Indicator")));
-		indicatorsTab.add(createIndicatorDropdown());
-
-		indicatorsTab.add(new UiLabel(""));
-		EAMAction action = mainWindow.getActions().get(
-				ActionCreateIndicator.class);
-		UiButton buttonCreate = new UiButton(action);
-		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
-		indicatorsTab.add(panel);
-
-		return indicatorsTab;
-	}
-
 	private Component createObjectivesGrid(DiagramNode node)
 	{
 		objectivesTab = new DialogGridPanel();
@@ -557,76 +537,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 				String goals = getGoals().toString();
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
 						getNodeId(), tag, goals);
-				getProject().executeCommand(cmd);
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	public Component createIndicatorDropdown()
-	{
-		dropdownIndicator = new UiComboBox();
-		populateIndicators();
-		selectCurrentIndicators();
-		dropdownIndicator.addActionListener(new IndicatorChangeHandler());
-
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(dropdownIndicator, BorderLayout.LINE_START);
-		return component;
-	}
-
-	private void selectCurrentIndicators()
-	{
-		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
-		IdList currentIndicators = getCurrentNode().getIndicators();
-		Object nullIndicator = dropdownIndicator.getItemAt(0);
-
-		Object selected = nullIndicator;
-		if(currentIndicators.size() > 0)
-			selected = allAvailableIndicators.find(currentIndicators.get(0));
-		if(selected == null)
-			selected = nullIndicator;
-		dropdownIndicator.setSelectedItem(selected);
-	}
-
-	private Indicator populateIndicators()
-	{
-		ignoreIndicatorChanges = true;
-		dropdownIndicator.removeAllItems();
-		Indicator nullIndicator = new Indicator(new IndicatorId(BaseId.INVALID
-				.asInt()));
-		dropdownIndicator.addItem(nullIndicator);
-
-		IndicatorPool allAvailableIndicators = getProject().getIndicatorPool();
-		BaseId[] availableIds = allAvailableIndicators.getIds();
-		for(int i = 0; i < availableIds.length; ++i)
-		{
-			dropdownIndicator.addItem(allAvailableIndicators
-					.find(availableIds[i]));
-		}
-		ignoreIndicatorChanges = false;
-		return nullIndicator;
-	}
-
-	class IndicatorChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			if(ignoreIndicatorChanges)
-				return;
-
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelNode.TAG_INDICATOR_IDS;
-				String indicators = getIndicators().toString();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, indicators);
 				getProject().executeCommand(cmd);
 			}
 			catch(CommandFailedException e)
@@ -863,15 +773,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		return commentField.getText();
 	}
 
-	public IdList getIndicators()
-	{
-		IdList selected = new IdList();
-		Indicator indicator = (Indicator)dropdownIndicator.getSelectedItem();
-		if(indicator != null && !indicator.getId().isInvalid())
-			selected.add(indicator.getId());
-		return selected;
-	}
-
 	public TaxonomyItem getThreatTaxonomyItem()
 	{
 		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
@@ -977,16 +878,14 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		refreshObjectiveListIfNecessary(event);
 		selectNewlyCreatedObjectiveIfNecessary(event);
 
-		refreshIndicatorListIfNecessary(event);
-		selectNewlyCreatedIndicatorIfNecessary(event);
-
+		indicatorsTab.refresh();
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		refreshObjectiveListIfNecessary(event);
 
-		refreshIndicatorListIfNecessary(event);
+		indicatorsTab.refresh();
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -1038,50 +937,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		}
 	}
 
-	void refreshIndicatorListIfNecessary(CommandExecutedEvent event)
-	{
-		if(dropdownIndicator == null)
-			return;
-		Command rawCommand = event.getCommand();
-		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-		{
-			CommandCreateObject cmd = (CommandCreateObject) rawCommand;
-			if(cmd.getObjectType() == ObjectType.INDICATOR)
-			{
-				populateIndicators();
-			}
-		}
-		if(rawCommand.getCommandName()
-				.equals(CommandSetObjectData.COMMAND_NAME))
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData) rawCommand;
-			if(cmd.getObjectType() == ObjectType.INDICATOR)
-			{
-				Object selected = dropdownIndicator.getSelectedItem();
-				populateIndicators();
-				dropdownIndicator.setSelectedItem(selected);
-			}
-		}
-	}
-
-	void selectNewlyCreatedIndicatorIfNecessary(CommandExecutedEvent event)
-	{
-		if(dropdownIndicator == null)
-			return;
-
-		Command rawCommand = event.getCommand();
-		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-		{
-			CommandCreateObject cmd = (CommandCreateObject) rawCommand;
-			if(cmd.getObjectType() == ObjectType.INDICATOR)
-			{
-				Indicator newIndicator = getProject().getIndicatorPool().find(
-						cmd.getCreatedId());
-				dropdownIndicator.setSelectedItem(newIndicator);
-			}
-		}
-	}
-
 	Component createFieldPanel(Component component)
 	{
 		JPanel panel = new JPanel(new BorderLayout());
@@ -1097,9 +952,9 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 
 	JTabbedPane tabs;
 	DialogGridPanel detailsTab;
-	DialogGridPanel indicatorsTab;
 	DialogGridPanel objectivesTab;
 	DialogGridPanel goalsTab;
+	IndicatorListManagementPanel indicatorsTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
 	DiagramNode currentNode;
@@ -1107,7 +962,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	UiTextArea commentField;
 	UiComboBox dropdownFactorType;
 	UiComboBox dropdownThreatPriority;
-	UiComboBox dropdownIndicator;
 	UiComboBox dropdownObjective;
 	UiComboBox dropdownGoal;
 	UiCheckBox statusCheckBox;
@@ -1119,5 +973,4 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	UiComboBox costComponent;
 	UiLabel ratingComponent;
 	boolean ignoreObjectiveChanges;
-	boolean ignoreIndicatorChanges;
 }
