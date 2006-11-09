@@ -6,9 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -36,16 +34,17 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		
 		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
 		
+		Comparator comparator = null;
 		if (currentSortBy.equals(ViewData.SORT_SUMMARY)) 
-		{
-			Arrays.sort(threatList, getComparator(modelToSort.getColumnCount(),modelToSort));
-		}
+			comparator = getComparator(modelToSort.getColumnCount(),modelToSort);
 		else
 		{
 			ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
-			int sortColunm= modelToSort.findTargetIndexById(nodeId);
-			Arrays.sort(threatList, getComparator(sortColunm, modelToSort));
+			int sortColumn= modelToSort.findTargetIndexById(nodeId);
+			comparator = getComparator(sortColumn, modelToSort);
 		}
+		
+		Arrays.sort(threatList, comparator);
 		
 		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
 			threatList = reverseSort(threatList);
@@ -93,17 +92,10 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		return comparator;
 	}
 
+	
 	private boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
 	{
 	 return (sortColumn == modelToSort.getColumnCount()-1);
-	}
-	
-	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
-	{
-		Vector list = new Vector(Arrays.asList(threatList));
-		Collections.reverse(list);
-		threatList = (ConceptualModelNode[]) list.toArray(new ConceptualModelNode[0]);
-		return threatList;
 	}
 	
 

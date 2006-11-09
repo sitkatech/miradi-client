@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Vector;
 
 import javax.swing.table.JTableHeader;
 
@@ -44,6 +47,15 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		threatGirdPanel.repaint();
 	}
 
+	
+	public ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	{
+		Vector list = new Vector(Arrays.asList(threatList));
+		Collections.reverse(list);
+		threatList = (ConceptualModelNode[]) list.toArray(new ConceptualModelNode[0]);
+		return threatList;
+	}
+	
 	
 	void saveSortState(boolean sortDirection, ConceptualModelNode sortColumnNode)
 	{
@@ -83,6 +95,9 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	{
 		threatGirdPanel.getProject().executeCommand(cmd);
 	}
+	
+	
+	
 	
 	public abstract void sort(int sortColumnToUse);
 	
