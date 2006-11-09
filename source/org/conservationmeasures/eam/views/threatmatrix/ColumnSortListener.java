@@ -74,13 +74,9 @@ public abstract class ColumnSortListener  extends MouseAdapter
 
 			executeCommand(new CommandBeginTransaction());
 			
-			CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
-					ViewData.TAG_CURRENT_SORT_DIRECTION, order);
-			threatGirdPanel.getProject().executeCommand(cmd);
+			saveSortDirection(order, viewData);
 
-			cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
-					ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
-			threatGirdPanel.getProject().executeCommand(cmd);
+			saveSortByColumn(sortColumnId, viewData);
 
 			executeCommand(new CommandEndTransaction());
 		}
@@ -89,6 +85,22 @@ public abstract class ColumnSortListener  extends MouseAdapter
 			EAM.logError("Unable to save sort state:" + e);
 		}
 	}
+
+
+	private void saveSortByColumn(String sortColumnId, ViewData viewData) throws CommandFailedException
+	{
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(),viewData.getId(), 
+				ViewData.TAG_CURRENT_SORT_BY, sortColumnId);
+		threatGirdPanel.getProject().executeCommand(cmd);
+	}
+
+
+	private void saveSortDirection(String order, ViewData viewData) throws CommandFailedException
+	{
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId(), 
+				ViewData.TAG_CURRENT_SORT_DIRECTION, order);
+		threatGirdPanel.getProject().executeCommand(cmd);
+	}
 	
 	
 	private void executeCommand(Command cmd) throws CommandFailedException
@@ -96,12 +108,11 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		threatGirdPanel.getProject().executeCommand(cmd);
 	}
 	
-	
-	
-	
+
 	public abstract void sort(int sortColumnToUse);
+	public abstract void sort(String currentSortBy, String currentSortDirection);
 	
-	ThreatGirdPanel threatGirdPanel;
-	NonEditableThreatMatrixTableModel model;
+	protected ThreatGirdPanel threatGirdPanel;
+	protected NonEditableThreatMatrixTableModel model;
 
 }
