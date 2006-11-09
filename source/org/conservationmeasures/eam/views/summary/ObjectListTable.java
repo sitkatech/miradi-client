@@ -14,7 +14,7 @@ import org.martus.swing.UiTable;
 
 public class ObjectListTable extends UiTable implements ObjectPicker
 {
-	public ObjectListTable(TeamModel modelToUse)
+	public ObjectListTable(ObjectListTableModel modelToUse)
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
