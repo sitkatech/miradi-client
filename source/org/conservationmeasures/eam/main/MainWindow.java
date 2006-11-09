@@ -22,6 +22,7 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
@@ -283,8 +284,16 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.errorDialog("Unexpected error switching view");
 		}
 		
-		actions.updateActionStates();
+		SwingUtilities.invokeLater(new ActionUpdater());
 		updateStatusBar();
+	}
+	
+	class ActionUpdater implements Runnable
+	{
+		public void run()
+		{
+			actions.updateActionStates();
+		}
 	}
 	
 	public void updateView() throws Exception
