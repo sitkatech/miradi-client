@@ -18,6 +18,7 @@ public class ObjectListTable extends UiTable implements ObjectPicker
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		resizeTable(4);
 	}
 	
 	public ObjectListTableModel getObjectListTableModel()

@@ -29,7 +29,7 @@ public class ResourceListEditorComponent extends JPanel
 
 		resourceListModel = new ResourceListModel(project);
 		resourceListTable = new ResourceListTable(resourceListModel);
-		resourceListTable.resizeTable(10);
+		resourceListTable.resizeTable(4);
 		rebuild();
 		
 		add(new UiScrollPane(resourceListTable), BorderLayout.CENTER);
