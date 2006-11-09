@@ -29,7 +29,7 @@ public class IndicatorTableModel extends AnnotationTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseId indicatorId = super.getEAMObjectRows()[rowIndex].getId();
+		BaseId indicatorId = getEAMObjectRows()[rowIndex].getId();
 		String columnTag = indicatorColumnTags[columnIndex];
 		return getTableCellDisplayString(rowIndex, columnIndex, indicatorId, columnTag);
 	}

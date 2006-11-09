@@ -27,7 +27,7 @@ class ObjectiveTableModel extends AnnotationTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		BaseId objectiveId = super.getEAMObjectRows()[rowIndex].getId();
+		BaseId objectiveId = getEAMObjectRows()[rowIndex].getId();
 		String columnTag = objectiveColumnTags[columnIndex];
 		return getTableCellDisplayString(rowIndex, columnIndex, objectiveId, columnTag);
 	}
