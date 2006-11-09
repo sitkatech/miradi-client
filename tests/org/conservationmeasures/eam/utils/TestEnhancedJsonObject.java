@@ -44,4 +44,20 @@ public class TestEnhancedJsonObject extends EAMTestCase
 		EnhancedJsonObject got = new EnhancedJsonObject(json.toString());
 		assertEquals("Didn't stringize?", json.getColor(tag), got.getColor(tag));
 	}
+	
+	public void testEnhancedJsonArray() throws Exception
+	{
+		EnhancedJsonObject small = new EnhancedJsonObject();
+		small.putId("Id", new BaseId(14));
+		
+		EnhancedJsonArray array = new EnhancedJsonArray();
+		array.put(small);
+		
+		EnhancedJsonObject bigObject = new EnhancedJsonObject();
+		bigObject.put("Array", array);
+		
+		EnhancedJsonArray gotArray = bigObject.getJsonArray("Array");
+		EnhancedJsonObject gotSmall = gotArray.getJson(0);
+		assertEquals(gotSmall.getId("Id"), small.getId("Id"));
+	}
 }
