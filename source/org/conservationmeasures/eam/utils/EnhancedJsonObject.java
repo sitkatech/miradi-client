@@ -100,7 +100,7 @@ public class EnhancedJsonObject extends JSONObject
 
 	public Color getColor(String tag)
 	{
-		JSONArray rgb = getJSONArray(tag);
+		JSONArray rgb = getJsonArray(tag);
 		int red = rgb.getInt(0);
 		int green = rgb.getInt(1);
 		int blue = rgb.getInt(2);

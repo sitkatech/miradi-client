@@ -42,7 +42,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		indicators = new IdList(json.optString(TAG_INDICATOR_IDS));
 		
 		goals = new GoalIds();
-		JSONArray goalIds = json.getJSONArray(TAG_GOAL_IDS);
+		JSONArray goalIds = json.getJsonArray(TAG_GOAL_IDS);
 		for(int i = 0; i < goalIds.length(); ++i)
 			goals.addId(new BaseId(goalIds.getInt(i)));
 		

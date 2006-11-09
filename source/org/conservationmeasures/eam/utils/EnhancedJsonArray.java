@@ -19,7 +19,7 @@ public class EnhancedJsonArray extends JSONArray
 	
 	public EnhancedJsonArray(JSONArray copyFrom)
 	{
-		for(int i = 0; i < length(); ++i)
+		for(int i = 0; i < copyFrom.length(); ++i)
 			put(i, copyFrom.get(i));
 	}
 
