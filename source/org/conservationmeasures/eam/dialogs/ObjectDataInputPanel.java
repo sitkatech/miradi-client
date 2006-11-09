@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -13,14 +13,13 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectDataInputField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectDateInputField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectMultilineInputField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectNumericInputField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectRatingField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectResourceListField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyObjectStringInputField;
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectRatingField;
+import org.conservationmeasures.eam.dialogfields.ObjectResourceListField;
+import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -71,10 +70,10 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	
 	public void setFocusOnFirstField()
 	{
-		((LegacyObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
+		((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
 	}
 		
-	public void addField(LegacyObjectDataInputField field)
+	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);
 		add(new UiLabel(EAM.fieldLabel(objectType, field.getTag())));
@@ -88,41 +87,41 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		add(panel);
 	}
 	
-	public LegacyObjectDataInputField createListField(Actions actions, String tag)
+	public ObjectDataInputField createListField(Actions actions, String tag)
 	{
-		return new LegacyObjectResourceListField(actions, project, objectType, objectId, tag);
+		return new ObjectResourceListField(actions, project, objectType, objectId, tag);
 	}
 	
-	public LegacyObjectDataInputField createStringField(String tag)
+	public ObjectDataInputField createStringField(String tag)
 	{
-		return new LegacyObjectStringInputField(project, objectType, objectId, tag);
+		return new ObjectStringInputField(project, objectType, objectId, tag);
 	}
 	
-	public LegacyObjectDataInputField createDateField(String tag)
+	public ObjectDataInputField createDateField(String tag)
 	{
-		return new LegacyObjectDateInputField(project, objectType, objectId, tag);
+		return new ObjectDateInputField(project, objectType, objectId, tag);
 	}
 	
-	public LegacyObjectDataInputField createNumericField(String tag)
+	public ObjectDataInputField createNumericField(String tag)
 	{
-		return new LegacyObjectNumericInputField(project, objectType, objectId, tag);
+		return new ObjectNumericInputField(project, objectType, objectId, tag);
 	}
 	
-	public LegacyObjectDataInputField createMultilineField(String tag)
+	public ObjectDataInputField createMultilineField(String tag)
 	{
-		return new LegacyObjectMultilineInputField(project, objectType, objectId, tag);
+		return new ObjectMultilineInputField(project, objectType, objectId, tag);
 	}
 	
-	public LegacyObjectDataInputField createRatingField(RatingQuestion question)
+	public ObjectDataInputField createRatingField(RatingQuestion question)
 	{
-		return new LegacyObjectRatingField(project, objectType, objectId, question);
+		return new ObjectRatingField(project, objectType, objectId, question);
 	}
 	
 	public void saveModifiedFields()
 	{
 		for(int i = 0; i < fields.size(); ++i)
 		{
-			LegacyObjectDataInputField field = (LegacyObjectDataInputField)fields.get(i);
+			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
 			field.save();
 		}
 	}
@@ -131,7 +130,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		for(int i = 0; i < fields.size(); ++i)
 		{
-			LegacyObjectDataInputField field = (LegacyObjectDataInputField)fields.get(i);
+			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
 			field.setObjectId(objectId);
 			field.updateFromObject();
 		}

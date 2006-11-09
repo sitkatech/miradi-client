@@ -3,15 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields.legacy;
+package org.conservationmeasures.eam.dialogfields;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
 
-public class LegacyObjectNumericInputField extends LegacyObjectTextInputField
+public class ObjectNumericInputField extends ObjectTextInputField
 {
-	public LegacyObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
+	public ObjectNumericInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
 		super(projectToUse, objectType, objectId, tag, new UiTextArea(1, 10));
 	}

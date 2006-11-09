@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields.legacy;
+package org.conservationmeasures.eam.dialogfields;
 
 
 import java.awt.Color;
@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class LegacyObjectTextInputField extends LegacyObjectDataInputField
+public class ObjectTextInputField extends ObjectDataInputField
 {
-	public LegacyObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
+	public ObjectTextInputField(Project projectToUse, int objectType, BaseId objectId, String tag, JTextComponent componentToUse)
 	{
 		super(projectToUse, objectType, objectId, tag);
 		field = componentToUse;

@@ -3,22 +3,21 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.dialogfields.legacy;
+package org.conservationmeasures.eam.dialogfields;
 
 import java.text.ParseException;
 
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogfields.ResourceListEditorComponent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class LegacyObjectResourceListField extends LegacyObjectDataInputField
+public class ObjectResourceListField extends ObjectDataInputField
 {
-	public LegacyObjectResourceListField(Actions actionsToUse, Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectResourceListField(Actions actionsToUse, Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		project = projectToUse;
