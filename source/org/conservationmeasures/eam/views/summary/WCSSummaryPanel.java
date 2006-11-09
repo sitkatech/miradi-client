@@ -22,7 +22,7 @@ public class WCSSummaryPanel extends ObjectDataInputPanel
 
 	public String getPanelDescriptionText()
 	{
-		return EAM.text("Label|WCSS");
+		return EAM.text("Label|WCS");
 	}
 
 }
