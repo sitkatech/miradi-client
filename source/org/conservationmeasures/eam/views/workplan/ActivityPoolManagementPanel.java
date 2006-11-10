@@ -67,7 +67,7 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 	{
 		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
 		for(int i = 0; i < extraButtons.length; ++i)
-			extraButtons[i] = new ObjectsActionButton(extraButtonActions[i], resourcePanel);
+			extraButtons[i] = createObjectsActionButton(extraButtonActions[i], resourcePanel);
 		resourcePanel.addButtons(extraButtons); 
 	}
 	

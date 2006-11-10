@@ -192,7 +192,7 @@ public class ObjectPoolTablePanel extends DisposablePanel implements CommandExec
 
 	protected ObjectsActionButton createObjectsActionButton(Class actionClass)
 	{
-		return new ObjectsActionButton(getMainWindow().getActions().getObjectsAction(actionClass), this);
+		return createObjectsActionButton(getMainWindow().getActions().getObjectsAction(actionClass), this);
 	}
 
 	protected void setMaxColumnWidthToHeaderWidth(int column)

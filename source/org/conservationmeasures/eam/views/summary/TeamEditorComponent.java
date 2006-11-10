@@ -8,19 +8,18 @@ package org.conservationmeasures.eam.views.summary;
 import java.awt.BorderLayout;
 
 import javax.swing.Box;
-import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
-public class TeamEditorComponent extends JPanel
+public class TeamEditorComponent extends DisposablePanel
 {
 	public TeamEditorComponent(Project projectToUse, Actions actions)
 	{
@@ -36,6 +35,11 @@ public class TeamEditorComponent extends JPanel
 		add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
 	}
 	
+	public void dispose()
+	{
+		super.dispose();
+	}
+	
 	public void rebuild()
 	{
 		teamModel.fireTableDataChanged();
@@ -45,8 +49,8 @@ public class TeamEditorComponent extends JPanel
 	{
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
-		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
-		box.add(new ObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
+		box.add(createObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
+		box.add(createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
 		return box;
 	}
 	

@@ -40,7 +40,7 @@ abstract public class ObjectListTablePanel extends DisposablePanel implements Li
 
 		Box buttons = Box.createVerticalBox();
 		buttons.add(new UiButton(createAction));
-		buttons.add(new ObjectsActionButton(deleteAction, table));
+		buttons.add(createObjectsActionButton(deleteAction, table));
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 		
 		project.addCommandExecutedListener(this);
