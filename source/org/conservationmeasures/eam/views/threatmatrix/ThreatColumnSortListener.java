@@ -31,7 +31,9 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	{
 		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 		
-		Arrays.sort(threatList, getComparator());
+		Comparator comparator = getComparator();
+			
+		Arrays.sort(threatList, comparator);
 		
 		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
 			threatList = reverseSort(threatList);
@@ -66,9 +68,7 @@ public class ThreatColumnSortListener extends ColumnSortListener
 
 	private Comparator getComparator()
 	{
-		Comparator comparator;
-		comparator = new IgnoreCaseStringComparator();
-		return comparator;
+		return  new IgnoreCaseStringComparator();
 	}
 
 	

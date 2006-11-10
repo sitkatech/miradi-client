@@ -99,7 +99,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 	
 	private boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
 	{
-	 return (sortColumn == modelToSort.getColumnCount()-1);
+		return (sortColumn == modelToSort.getColumnCount()-1);
 	}
 	
 
