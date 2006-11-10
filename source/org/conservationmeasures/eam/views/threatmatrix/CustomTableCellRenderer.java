@@ -59,7 +59,7 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	{
 		try 
 		{
-			int indirectColumn = threatGridPanel.getThreatMatrixTable().getColumnModel().getColumn(column).getModelIndex();
+			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
 			ThreatRatingBundle bundle = 
 				((NonEditableThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel()).getBundle(row, indirectColumn);
 			if(bundle != null)

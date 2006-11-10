@@ -35,7 +35,7 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		int clickedColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
 		if (clickedColumn >= 0)
 		{
-			int sortColumn = ((JTableHeader)e.getSource()).getColumnModel().getColumn(clickedColumn).getModelIndex();
+			int sortColumn = ((JTableHeader)e.getSource()).getTable().convertColumnIndexToModel(clickedColumn);
 			sortBySelectedColumn(e, sortColumn);
 		}
 	}

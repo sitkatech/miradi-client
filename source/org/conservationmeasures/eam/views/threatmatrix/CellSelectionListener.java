@@ -24,7 +24,7 @@ class CellSelectionListener implements ListSelectionListener
 		if (threatTable.getSelectedRow() >= 0) 
 		{
 			int row = threatTable.getSelectedRow();
-			int column = threatTable.getSelectedModelColumn();
+			int column = threatTable.convertColumnIndexToModel(threatTable.getSelectedColumn());
 
 			if(((NonEditableThreatMatrixTableModel) threatTable.getModel())
 					.isBundleTableCellABundle(row, column))

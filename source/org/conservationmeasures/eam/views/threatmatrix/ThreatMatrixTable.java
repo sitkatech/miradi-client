@@ -14,11 +14,4 @@ public class ThreatMatrixTable extends JTable
 	{
 		super(model);
 	}
-
-	public int getSelectedModelColumn() {
-		int tableColumn = super.getSelectedColumn();
-		int newColumn = getColumnModel().getColumn(tableColumn).getModelIndex();
-		return newColumn;
-	}
-
 }
