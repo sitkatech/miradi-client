@@ -21,8 +21,7 @@ import javax.swing.plaf.BorderUIResource;
 import javax.swing.table.TableCellRenderer;
 
 
-class TableHeaderRenderer
-	extends JTextArea implements TableCellRenderer
+class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 {
 
 	public TableHeaderRenderer()
@@ -81,7 +80,9 @@ class TableHeaderRenderer
 
 	private int calculatePerferredHeight()
 	{
-		return(getPreferredSize().height<ABOUT_THREE_TEXT_LINES) ? ABOUT_THREE_TEXT_LINES: getPreferredSize().height;
+		if (getPreferredSize().height<ABOUT_THREE_TEXT_LINES)
+			return ABOUT_THREE_TEXT_LINES;
+		return getPreferredSize().height;
 	}
 
 	private static final int SMALL_MARGIN = 5;
