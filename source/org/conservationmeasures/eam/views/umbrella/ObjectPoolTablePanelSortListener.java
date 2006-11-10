@@ -23,7 +23,7 @@ public class ObjectPoolTablePanelSortListener  extends MouseAdapter
 		UiTableHeader tableHeader = (UiTableHeader)e.getSource();
 		JTable table = tableHeader.getTable();
 		int clickedColumn = tableHeader.columnAtPoint(e.getPoint());
-		int sortColumn = tableHeader.getColumnModel().getColumn(clickedColumn).getModelIndex();
+		int sortColumn = tableHeader.getTable().convertColumnIndexToModel(clickedColumn);
 		
 		AnnotationPoolTableModel annotationTableModel = (AnnotationPoolTableModel)table.getModel();
 		EAMObject rowsToSort[] = annotationTableModel.getEAMObjectRows();
