@@ -1,13 +1,10 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
-import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
-import org.conservationmeasures.eam.actions.ActionModifyGoal;
 import org.conservationmeasures.eam.actions.ActionModifyObjective;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.main.EAM;
@@ -104,10 +101,6 @@ public class StrategicPlanView extends TabbedView
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionModifyObjective.class, new ModifyObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
-		
-		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
-		addDoerToMap(ActionModifyGoal.class, new ModifyGoal());
-		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
 	}
 	
 	StrategicPlanPanel strategicPlanPanel;
