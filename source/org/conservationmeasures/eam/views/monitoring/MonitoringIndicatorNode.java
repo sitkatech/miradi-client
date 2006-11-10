@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -20,6 +21,11 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		indicator = indicatorToUse;
 	}
 
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(indicator.getType(), indicator.getId());
+	}
+	
 	public int getType()
 	{
 		return indicator.getType();

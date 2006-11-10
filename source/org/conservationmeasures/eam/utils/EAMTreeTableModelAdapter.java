@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.utils;
 
+import java.text.ParseException;
+
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TreeExpansionEvent;
@@ -14,15 +16,28 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.TreePath;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
+import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
+import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
+
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class EAMTreeTableModelAdapter extends AbstractTableModel
+public class EAMTreeTableModelAdapter extends AbstractTableModel implements CommandExecutedListener
 {
-	public EAMTreeTableModelAdapter(TreeTableModel treeTableModel, JTree tree)
+	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
 	{
-        this.tree = tree;
-        this.treeTableModel = treeTableModel;
+        tree = treeToUse;
+        treeTableModel = treeTableModelToUse;
+        project = projectToUse;
 
+        project.addCommandExecutedListener(this);
         setExpansionListeners(tree);
         setModelListeners(treeTableModel);
 	}
@@ -97,14 +112,45 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
 	
-	private void saveTreeExpansionState()
+	private void saveTreeExpansionState() throws Exception
 	{
-		
+		int rowCount = tree.getRowCount();
+		ObjectReferenceList objRefList = new ObjectReferenceList();
+		for (int i = 0; i < rowCount; i ++)
+		{
+			TreePath treePath = tree.getPathForRow(i);
+			
+			if (tree.isExpanded(i))
+			{
+				
+				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+	//			System.out.println("NODE EXPANDED "+node);
+				ObjectReference objectReference = node.getObjectReference();
+				if (objectReference != null)
+				{
+					//TODO remove commented print
+					//System.out.println("writing state OF "+new TreePath(node));
+					objRefList.add(node.getObjectReference());
+
+				}
+			}
+			//System.out.println(treePath+" " +tree.isExpanded(i));
+		}
+		saveExpandedPath(objRefList);
 	}
 	
-	private void loadTreeExpansionState()
+	private void saveExpandedPath(ObjectReferenceList  newObjRefList) throws Exception
 	{
+		//TreeTableNode node = (TreeTableNode)expandedNode;
+		//System.out.println(node.getType());
+
+		//int nodeType = node.getType();
+		//BaseId nodeId = node.getObjectReference().getObjectId();
 		
+		//(int objectType, BaseId objectId, String fieldTag, String dataValue)
+		ViewData viewData = project.getViewData(project.getCurrentView());		
+		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
+		project.executeCommand(cmd);
 	}
 	
 	private final class TreeModelHandler implements TreeModelListener
@@ -134,15 +180,24 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 	{
 		public void treeExpanded(TreeExpansionEvent event) 
 		{
-			System.out.println("TREE EXPANDED");
-			saveTreeExpansionState();
-			fireTableDataChanged(); 
+			//TODO remove commented print
+			//System.out.println("EXPANING");
+			try
+			{
+				saveTreeExpansionState();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			fireTableDataChanged();
 		}
 
 		public void treeCollapsed(TreeExpansionEvent event) 
 		{
-			System.out.println("TREE COLAPSED");
-			fireTableDataChanged(); 
+			//TODO remove commented print
+			//System.out.println("tree collapsed event");
+			fireTableDataChanged();
 		}
 	}
 	
@@ -161,7 +216,53 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 			fireTableRowsUpdated(0, getRowCount() - 1);
 		}
 	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
 
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
+		//System.out.println("PREVIOUS DATA = "+cmd.getPreviousDataValue());
+		int rowCount = tree.getRowCount();
+		try
+		{
+			ObjectReferenceList objRefList = new ObjectReferenceList(cmd.getPreviousDataValue());
+
+			for (int i = 0; i < rowCount; i ++)
+			{
+				TreePath treePath = tree.getPathForRow(i);
+				if (treePath != null)
+				{
+					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+					for (int j  = 0; j < objRefList.size(); j++)
+					{
+						ObjectReference or = objRefList.get(j);
+						if (or.equals(node.getObjectReference()) && j != 0)
+						{
+							//TODO remove commented print
+							//System.out.println(" COLLPASING NODE ="+new TreePath(node));
+							tree.collapsePath(treePath);
+						}
+					}
+				}
+
+			}	
+		}
+		catch(ParseException e)
+		{
+		}
+		
+		
+	}
+
+
+	Project project;
     JTree tree;
     TreeTableModel treeTableModel;
 }

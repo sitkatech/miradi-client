@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -52,6 +53,11 @@ public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 		return activity;
 	}
 
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(activity.getType(), activity.getId());
+	}
+	
 	public int getType()
 	{
 		return activity.getType();

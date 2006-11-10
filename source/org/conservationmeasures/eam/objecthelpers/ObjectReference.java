@@ -18,8 +18,8 @@ public class ObjectReference
 	
 	public ObjectReference(EnhancedJsonObject json)
 	{
-		objectType = json.getInt(TAG_OBJECT_TYPE);
-		objectId = json.getId(TAG_OBJECT_ID);
+		objectType = json.optInt(TAG_OBJECT_TYPE);
+		objectId = json.optId(TAG_OBJECT_ID);
 	}
 	
 	public EnhancedJsonObject toJson()
@@ -47,7 +47,7 @@ public class ObjectReference
 			return false;
 		
 		ObjectReference other = (ObjectReference)rawOther;
-		if (other.getObjectId() == objectId && other.getObjectType() == objectType)
+		if (other.getObjectId().equals(objectId) && other.getObjectType() == objectType)
 			return true;
 		
 		return false;

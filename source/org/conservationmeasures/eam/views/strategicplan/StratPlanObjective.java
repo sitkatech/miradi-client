@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Desire;
@@ -42,6 +43,11 @@ public class StratPlanObjective extends TreeTableNode
 	public TreeTableNode getChild(int index)
 	{
 		return strategies[index];
+	}
+	
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(objective.getType(), objective.getId());
 	}
 	
 	public int getType()

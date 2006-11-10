@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -64,6 +65,11 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return indicatorIds;
 	}
 
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(objective.getType(), objective.getId());
+	}
+	
 	public int getType()
 	{
 		return objective.getType();

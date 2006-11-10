@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
+import org.conservationmeasures.eam.objectdata.ObjectReferenceListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -75,12 +76,14 @@ public class ViewData extends EAMBaseObject
 		currentTab = new IntegerData();
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
+		expandedNodesList = new ObjectReferenceListData();
 		
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds);
 		addField(TAG_CURRENT_TAB, currentTab);
 		addField(TAG_CURRENT_SORT_BY, currentSortBy);
 		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
+		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 	}
 	
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
@@ -88,6 +91,7 @@ public class ViewData extends EAMBaseObject
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
 	public static final String TAG_CURRENT_SORT_BY = "CurrentSortBy";
 	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
+	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	
 	
 	public static final String MODE_DEFAULT = "";
@@ -105,4 +109,6 @@ public class ViewData extends EAMBaseObject
 	private IdListData brainstormNodeIds;
 	private StringData currentSortBy;
 	private StringData currentSortDirecton;
+	
+	private ObjectReferenceListData expandedNodesList;
 }

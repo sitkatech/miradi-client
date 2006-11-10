@@ -34,7 +34,7 @@ public class StrategicPlanPanel extends DisposablePanel
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		model = modelToUse;
-		tree = new StrategicPlanTreeTable(model);
+		tree = new StrategicPlanTreeTable(mainWindow.getProject(), model);
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
 		add(new JScrollPane(tree), BorderLayout.CENTER);

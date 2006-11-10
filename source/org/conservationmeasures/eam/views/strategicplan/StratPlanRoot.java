@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
@@ -39,6 +40,11 @@ public class StratPlanRoot extends TreeTableNode
 	public String toString()
 	{
 		return project.getFilename();
+	}
+	
+	public ObjectReference getObjectReference()
+	{
+		return null;
 	}
 
 	public int getType()

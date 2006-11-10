@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
@@ -29,6 +30,11 @@ public class MonitoringGoalNode extends MonitoringNode
 		rebuild();
 	}
 
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(goal.getType(), goal.getId());
+	}
+	
 	public int getType()
 	{
 		return goal.getType();

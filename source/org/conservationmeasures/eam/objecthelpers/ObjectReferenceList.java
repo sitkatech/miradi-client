@@ -27,10 +27,18 @@ public class ObjectReferenceList
 	
 	public ObjectReferenceList(EnhancedJsonObject json)
 	{
+		
 		this();
-		EnhancedJsonArray array = json.getJsonArray(TAG_REFERENCES);
-		for(int i = 0; i < array.length(); ++i)
-			add(new ObjectReference(array.getJson(i)));
+		try
+		{
+			EnhancedJsonArray array = json.getJsonArray(TAG_REFERENCES);
+			for(int i = 0; i < array.length(); ++i)
+				add(new ObjectReference(array.getJson(i)));
+		}
+		catch (Exception e)
+		{
+			//e.printStackTrace();
+		}
 	}
 	
 	public EnhancedJsonObject toJson()
@@ -40,7 +48,6 @@ public class ObjectReferenceList
 		for (int i = 0; i < data.size(); i++)
 		{
 			array.put(get(i).toJson());
-			
 		}
 		json.put(TAG_REFERENCES, array);
 		return json;

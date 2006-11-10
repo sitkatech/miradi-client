@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
@@ -27,6 +28,11 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 	public int getChildCount()
 	{
 		return allIndicators.length;
+	}
+	
+	public ObjectReference getObjectReference()
+	{
+		return null;
 	}
 
 	public int getType()

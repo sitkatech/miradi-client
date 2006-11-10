@@ -109,6 +109,12 @@ EAM.logDebug("idListWasChanged");
 		}
 		return null;
 	}
+	
+	public TreeTableNode getCurrentExpandedNode()
+	{
+		System.out.println("here in getcurrentExpandedNode");
+		return null;
+	}
 
 	public static String[] columnTags = {"Item", "Resources", };
 	Project project;

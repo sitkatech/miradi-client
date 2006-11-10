@@ -48,11 +48,12 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		super(new BorderLayout());
 		mainWindow = mainWindowToUse;
 		model = new WorkPlanTreeTableModel(projectToUse);
-		tree = new WorkPlanTreeTable(model);
+		tree = new WorkPlanTreeTable(mainWindow.getProject(), model);
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
 		tree.getTree().addTreeSelectionListener(this);
-
+		expandRootNodes();
+		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
 		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
@@ -138,6 +139,22 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 			WorkPlanTreeTableNode secondLevelObject = (WorkPlanTreeTableNode)topLevelObject.getChild(childIndex);
 			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
 			expandNode(secondLevelPath);
+		}
+	}
+	
+	//FIXME refactor with above code.  
+	private void expandRootNodes()
+	{
+		TreeTableNode root = model.getRootWorkPlanObject();
+		TreePath rootPath = new TreePath(root);
+		WorkPlanTreeTableNode topLevelObject = (WorkPlanTreeTableNode)rootPath.getLastPathComponent();
+		tree.getTree().expandPath(rootPath);
+		
+		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+		{
+			WorkPlanTreeTableNode secondLevelObject = (WorkPlanTreeTableNode)topLevelObject.getChild(childIndex);
+			TreePath secondLevelPath = rootPath.pathByAddingChild(secondLevelObject);
+			tree.getTree().expandPath(secondLevelPath);
 		}
 	}
 

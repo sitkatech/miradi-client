@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
@@ -19,6 +20,11 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 		indicator = indicatorToUse;
 	}
 
+	public ObjectReference getObjectReference()
+	{
+		return new ObjectReference(indicator.getType(), indicator.getId());
+	}
+	
 	public int getType()
 	{
 		return indicator.getType();
