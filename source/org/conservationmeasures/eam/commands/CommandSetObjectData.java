@@ -103,7 +103,7 @@ public class CommandSetObjectData extends Command
 		{
 			String currentValue = target.getObjectData(type, id, tag);
 			if(!newValue.equals(currentValue))
-				throw new RuntimeException("CommandSetDataObject undo expected " + newValue + " but was " + currentValue);
+				throw new RuntimeException("CommandSetDataObject undo " + type + ":" + id + " expected " + newValue + " but was " + currentValue);
 			target.setObjectData(type, id, tag, oldValue);
 		}
 		catch (Exception e)
