@@ -25,7 +25,7 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 		listComponent = new IndicatorListTablePanel(projectToUse, actions, nodeId);
 		add(listComponent, BorderLayout.CENTER);
 		
-		IndicatorPropertiesPanel propertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions, invalidId);
+		propertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions, invalidId);
 		listComponent.setPropertiesPanel(propertiesPanel);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
@@ -34,6 +34,9 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 	{
 		listComponent.dispose();
 		listComponent = null;
+		
+		propertiesPanel.dispose();
+		propertiesPanel = null;
 		
 		super.dispose();
 	}
@@ -49,6 +52,7 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 	}
 	
 	IndicatorListTablePanel listComponent;
+	IndicatorPropertiesPanel propertiesPanel;
 }
 
 

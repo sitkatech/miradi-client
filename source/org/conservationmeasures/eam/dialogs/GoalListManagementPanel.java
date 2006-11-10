@@ -25,7 +25,7 @@ public class GoalListManagementPanel extends ModelessDialogPanel
 		listComponent = new GoalListTablePanel(projectToUse, actions, nodeId);
 		add(listComponent, BorderLayout.CENTER);
 		
-		GoalPropertiesPanel propertiesPanel = new GoalPropertiesPanel(projectToUse, actions, invalidId);
+		propertiesPanel = new GoalPropertiesPanel(projectToUse, actions, invalidId);
 		listComponent.setPropertiesPanel(propertiesPanel);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
@@ -34,6 +34,9 @@ public class GoalListManagementPanel extends ModelessDialogPanel
 	{
 		listComponent.dispose();
 		listComponent = null;
+		
+		propertiesPanel.dispose();
+		propertiesPanel = null;
 		
 		super.dispose();
 	}
@@ -50,4 +53,5 @@ public class GoalListManagementPanel extends ModelessDialogPanel
 	}
 	
 	GoalListTablePanel listComponent;
+	GoalPropertiesPanel propertiesPanel;
 }
