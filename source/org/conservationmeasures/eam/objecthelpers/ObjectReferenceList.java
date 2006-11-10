@@ -74,6 +74,11 @@ public class ObjectReferenceList
 		return other.toString().equals(toString());	
 	}
 	
+	public int hashCode()
+	{
+		return data.hashCode();
+	}
+		
 	public int size()
 	{
 		return data.size();

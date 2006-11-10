@@ -97,6 +97,16 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
 	
+	private void saveTreeExpansionState()
+	{
+		
+	}
+	
+	private void loadTreeExpansionState()
+	{
+		
+	}
+	
 	private final class TreeModelHandler implements TreeModelListener
 	{
 		public void treeNodesChanged(TreeModelEvent e) 
@@ -119,18 +129,23 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 			delayedFireTableDataChanged();
 		}
 	}
+	
 	private final class TreeExpansionHandler implements TreeExpansionListener
 	{
 		public void treeExpanded(TreeExpansionEvent event) 
 		{
+			System.out.println("TREE EXPANDED");
+			saveTreeExpansionState();
 			fireTableDataChanged(); 
 		}
 
 		public void treeCollapsed(TreeExpansionEvent event) 
 		{
+			System.out.println("TREE COLAPSED");
 			fireTableDataChanged(); 
 		}
 	}
+	
 	private final class DelayedTableDataChangedFirer implements Runnable
 	{
 		public void run() 
@@ -138,6 +153,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 			fireTableDataChanged();
 		}
 	}
+	
 	private final class DelayedTableDataUpdatedFirer implements Runnable
 	{
 		public void run() 
@@ -145,7 +161,6 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel
 			fireTableRowsUpdated(0, getRowCount() - 1);
 		}
 	}
-
 
     JTree tree;
     TreeTableModel treeTableModel;

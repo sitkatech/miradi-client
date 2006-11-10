@@ -53,6 +53,11 @@ public class ObjectReference
 		return false;
 	}
 	
+	public int hashCode()
+	{
+		return toJson().hashCode();
+	}
+	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";
 	private static final String TAG_OBJECT_ID = "ObjectId";
 	
