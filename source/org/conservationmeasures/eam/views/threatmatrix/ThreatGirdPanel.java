@@ -41,12 +41,12 @@ public class ThreatGirdPanel extends JPanel
 		ThreatMatrixTable table = createThreatTable(model);
 
 		JTableHeader columnHeader = table.getTableHeader();
-		threatColumnSortListener = new ThreatColumnSortListener(this);
-		columnHeader.addMouseListener(threatColumnSortListener);
+		targetColumnSortListener = new TargetColumnSortListener(this);
+		columnHeader.addMouseListener(targetColumnSortListener);
 
 		JTableHeader rowHeader = rowTable.getTableHeader();
-		targetColumnSortListener = new TargetColumnSortListener(this);
-		rowHeader.addMouseListener(targetColumnSortListener);
+		threatColumnSortListener = new ThreatColumnSortListener(this);
+		rowHeader.addMouseListener(threatColumnSortListener);
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowTable, table);
@@ -74,7 +74,7 @@ public class ThreatGirdPanel extends JPanel
 				targetColumnSortListener.sort(currentSortBy,
 						currentSortDirection);
 			else
-				targetColumnSortListener.sort(currentSortBy,
+				threatColumnSortListener.sort(currentSortBy,
 						currentSortDirection);
 		}
 	}
