@@ -71,8 +71,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
-import org.conservationmeasures.eam.views.strategicplan.CreateGoal;
-import org.conservationmeasures.eam.views.strategicplan.DeleteGoal;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;

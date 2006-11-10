@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
