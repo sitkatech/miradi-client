@@ -90,7 +90,13 @@ public class Task extends EAMBaseObject
 		else super.setData(fieldTag, dataValue);
 	}
 
-	
+
+	public String toString()
+	{
+		return getLabel();
+	}
+
+
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_RESOURCE_IDS = "ResourceIds";
 	
