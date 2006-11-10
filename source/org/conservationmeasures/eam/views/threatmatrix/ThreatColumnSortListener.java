@@ -29,27 +29,20 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	
 	public void sort(String currentSortBy, String currentSortDirection) 
 	{
-		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
-		
-		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 		
 		Arrays.sort(threatList, getComparator());
 		
 		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
 			threatList = reverseSort(threatList);
 		
-		modelToSort.setThreatRows(threatList);
+		mainTableModel.setThreatRows(threatList);
 	}
 	
 	
 	public void sort(int sortColumn) 
 	{
-		
-		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
-		
-		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 		
 		Comparator comparator = getComparator();
 		
@@ -58,16 +51,16 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		if ( toggle() )  
 			threatList = reverseSort(threatList);
 
-		modelToSort.setThreatRows(threatList);
+		mainTableModel.setThreatRows(threatList);
 		
-		saveState(sortColumn,null);
+		saveState(sortColumn);
 		
 	}
 
 
-	private void saveState(int sortColumn,  NonEditableThreatMatrixTableModel modelToSort)
+	private void saveState(int sortColumn)
 	{
-		saveSortState(sortToggle, ViewData.SORT_TARGETS);
+		saveSortState(sortToggle, ViewData.SORT_THREATS);
 	}
 
 

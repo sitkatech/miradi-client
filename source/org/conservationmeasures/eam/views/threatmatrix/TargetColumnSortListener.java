@@ -29,76 +29,70 @@ public class TargetColumnSortListener extends ColumnSortListener
 	
 	public  void sort(String currentSortBy, String currentSortDirection) 
 	{
-		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 		
-		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
-		
-		Comparator comparator = getComparator(currentSortBy, modelToSort);
+		Comparator comparator = getComparator(currentSortBy);
 		
 		Arrays.sort(threatList, comparator);
 		
 		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
 			threatList = reverseSort(threatList);
 		
-		modelToSort.setThreatRows(threatList);
+		mainTableModel.setThreatRows(threatList);
 	}
 
 
 	
 	public void sort(int sortColumn) 
 	{
-		NonEditableThreatMatrixTableModel modelToSort = 
-			(NonEditableThreatMatrixTableModel)threatGirdPanel.getThreatMatrixTable().getModel();
-		
-		ConceptualModelNode[] threatList = modelToSort.getDirectThreats();
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 
-		Comparator comparator = getComparator(sortColumn, modelToSort);
+		Comparator comparator = getComparator(sortColumn);
 
 		Arrays.sort(threatList, comparator);
 		
 		if ( toggle() )  
 			threatList = reverseSort(threatList);
 
-		modelToSort.setThreatRows(threatList);
+		mainTableModel.setThreatRows(threatList);
 		
-		saveState(sortColumn, modelToSort);
+		saveState(sortColumn);
 	}
 
 
-	private void saveState(int sortColumn, NonEditableThreatMatrixTableModel modelToSort)
+	private void saveState(int sortColumn)
 	{
-		if(isSummaryColumn(sortColumn, modelToSort))
+		if(isSummaryColumn(sortColumn, mainTableModel))
 			saveSortState(sortToggle, ViewData.SORT_SUMMARY);
 		else
-			saveSortState(sortToggle, modelToSort.getTargets()[sortColumn]);
+			saveSortState(sortToggle, mainTableModel.getTargets()[sortColumn]);
 	}
 
 	
 
-	private Comparator getComparator(String currentSortBy, NonEditableThreatMatrixTableModel modelToSort)
+	private Comparator getComparator(String currentSortBy)
 	{
 		Comparator comparator = null;
 		if (currentSortBy.equals(ViewData.SORT_SUMMARY)) 
-			comparator = getComparator(modelToSort.getColumnCount(),modelToSort);
+			comparator = getComparator(mainTableModel.getColumnCount());
 		else
 		{
 			ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
-			int sortColumn= modelToSort.findTargetIndexById(nodeId);
-			comparator = getComparator(sortColumn, modelToSort);
+			int sortColumn= mainTableModel.findTargetIndexById(nodeId);
+			comparator = getComparator(sortColumn);
 		}
 		return comparator;
 	}
 
 	
 	
-	private Comparator getComparator(int sortColumn, NonEditableThreatMatrixTableModel modelToSort)
+	private Comparator getComparator(int sortColumn)
 	{
 		Comparator comparator;
-		if(isSummaryColumn(sortColumn, modelToSort))
-			comparator = new SummaryColumnComparator(modelToSort);
+		if(isSummaryColumn(sortColumn, mainTableModel))
+			comparator = new SummaryColumnComparator(mainTableModel);
 		else
-			comparator = new ComparableNode(sortColumn,modelToSort);
+			comparator = new ComparableNode(sortColumn,mainTableModel);
 		return comparator;
 	}
 

@@ -27,6 +27,7 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	public ColumnSortListener(ThreatGirdPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
+		 mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();
 	}
 
 	public void mouseClicked(MouseEvent e) 
@@ -111,6 +112,6 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	public abstract void sort(String currentSortBy, String currentSortDirection);
 	
 	protected ThreatGirdPanel threatGirdPanel;
-	protected NonEditableThreatMatrixTableModel model;
+	protected NonEditableThreatMatrixTableModel mainTableModel;
 
 }

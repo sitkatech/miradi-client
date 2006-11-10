@@ -97,6 +97,7 @@ public class ViewData extends EAMBaseObject
 	public static final String SORT_DESCENDING = "DESCENDING";
 	public static final String SORT_SUMMARY = "SUMMARY";
 	public static final String SORT_TARGETS = "TARGETS";
+	public static final String SORT_THREATS = "THREATS";
 	
 	
 	private IntegerData currentTab;

@@ -37,9 +37,11 @@ public class ThreatGirdPanel extends JPanel
 	{
 		NonEditableRowHeaderTableModel newRowHeaderData = new NonEditableRowHeaderTableModel(model);
 		JTable rowTable = createRowHeaderTable(newRowHeaderData);
-
+		rowHeaderTable = rowTable;
+		
 		ThreatMatrixTable table = createThreatTable(model);
-
+		threatTable = table;
+		
 		JTableHeader columnHeader = table.getTableHeader();
 		targetColumnSortListener = new TargetColumnSortListener(this);
 		columnHeader.addMouseListener(targetColumnSortListener);
@@ -50,9 +52,6 @@ public class ThreatGirdPanel extends JPanel
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
 				rowTable, table);
-
-		threatTable = table;
-		rowHeaderTable = rowTable;
 		
 		return scrollPane;
 	}
@@ -70,11 +69,14 @@ public class ThreatGirdPanel extends JPanel
 					getProject().getCurrentView()).getData(
 					ViewData.TAG_CURRENT_SORT_DIRECTION);
 
-			if(currentSortBy.equals(ViewData.SORT_TARGETS))
-				targetColumnSortListener.sort(currentSortBy,
+			//TODO: the reference to SORT_TARGETS should be removed after at some point as project data
+			//TODO: was writen using this id instead of SORT_THREATS. Most projects will there for self correct 
+			//TODO: once they are opend and resaved. Or a conversion can be wrtten
+			if(currentSortBy.equals(ViewData.SORT_THREATS) || currentSortBy.equals(ViewData.SORT_TARGETS))
+				threatColumnSortListener.sort(currentSortBy,
 						currentSortDirection);
 			else
-				threatColumnSortListener.sort(currentSortBy,
+				targetColumnSortListener.sort(currentSortBy,
 						currentSortDirection);
 		}
 	}
