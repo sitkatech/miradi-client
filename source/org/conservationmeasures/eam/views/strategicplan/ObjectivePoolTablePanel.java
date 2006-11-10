@@ -31,8 +31,8 @@ public class ObjectivePoolTablePanel extends ObjectPoolTablePanel
 		if(row < 0)
 			return null;
 		
+		BaseId objectiveId = getObjectFromRow(row).getId();
 		ObjectivePool pool = getProject().getObjectivePool();
-		BaseId objectiveId = pool.getIds()[row];
 		Objective objective = pool.find(objectiveId);
 		return objective;
 	}

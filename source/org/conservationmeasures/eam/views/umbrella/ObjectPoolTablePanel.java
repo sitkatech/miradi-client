@@ -209,7 +209,13 @@ public class ObjectPoolTablePanel extends DisposablePanel implements CommandExec
 	{
 		return table.getSelectedRow();
 	}
-
+	
+	protected EAMObject getObjectFromRow(int row)
+	{
+		return model.getObjectFromRow(row);
+	}
+	
+	
 	private UmbrellaView view;
 	private ObjectPoolTableModel model;
 	private UiTableWithAlternatingRows table;

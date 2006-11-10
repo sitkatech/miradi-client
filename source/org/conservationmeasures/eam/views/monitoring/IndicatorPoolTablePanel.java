@@ -27,8 +27,8 @@ public class IndicatorPoolTablePanel extends ObjectPoolTablePanel
 		if(row < 0)
 			return null;
 		
+		BaseId indicatorId = getObjectFromRow(row).getId();
 		IndicatorPool pool = getProject().getIndicatorPool();
-		BaseId indicatorId = pool.getIds()[row];
 		Indicator indicator = pool.find(indicatorId);
 		return indicator;
 	}
