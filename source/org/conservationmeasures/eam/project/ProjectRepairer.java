@@ -1,6 +1,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -25,43 +26,70 @@ public class ProjectRepairer
 	
 	void repair() throws Exception
 	{
-		fixGhostIndicatorIds();
+		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
 	}
 	
-	void fixGhostIndicatorIds() throws Exception
+	void fixNodeAnnotationIds() throws Exception
 	{
 		ModelNodeId[] nodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
 			ModelNodeId nodeId = nodeIds[i];
 			ConceptualModelNode node = project.findNode(nodeId);
-			IdList newIndicatorIds = new IdList();
-			IdList oldIndicatorIds = node.getIndicators();
-			for(int j = 0; j < oldIndicatorIds.size(); ++j)
-			{
-				IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
-				if(indicatorId.isInvalid())
-					continue;
-				EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
-				if(indicator == null)
-					EAM.logWarning("Fixing node " + nodeId + " ghost indicatorId " + indicatorId);
-				else
-					newIndicatorIds.add(indicatorId);
-			}
-			if(newIndicatorIds.equals(oldIndicatorIds))
+			fixGhostIndicatorIds(node);
+			removeInvalidGoalIds(node);
+		}
+	}
+	
+	private void fixGhostIndicatorIds(ConceptualModelNode node)
+	{
+		IdList newIndicatorIds = new IdList();
+		IdList oldIndicatorIds = node.getIndicators();
+		for(int j = 0; j < oldIndicatorIds.size(); ++j)
+		{
+			IndicatorId indicatorId = new IndicatorId(oldIndicatorIds.get(j).asInt());
+			if(indicatorId.isInvalid())
 				continue;
-			
-			try
-			{
-				node.setIndicators(newIndicatorIds);
-				project.writeNode(nodeId);
-			}
-			catch (Exception e)
-			{
-				EAM.logError("Repair failed");
-				EAM.logException(e);
-			}
+			EAMObject indicator = project.findObject(ObjectType.INDICATOR, indicatorId);
+			if(indicator == null)
+				EAM.logWarning("Fixing node " + node.getId() + " ghost indicatorId " + indicatorId);
+			else
+				newIndicatorIds.add(indicatorId);
+		}
+		if(newIndicatorIds.equals(oldIndicatorIds))
+			return;
+		
+		try
+		{
+			node.setIndicators(newIndicatorIds);
+			project.writeNode(node.getModelNodeId());
+		}
+		catch (Exception logAndContinue)
+		{
+			EAM.logError("Repair failed");
+			EAM.logException(logAndContinue);
+		}
+
+	}
+	
+	private void removeInvalidGoalIds(ConceptualModelNode node)
+	{
+		GoalIds ids = node.getGoals();
+		if(!ids.contains(BaseId.INVALID))
+			return;
+		
+		EAM.logWarning("Removing invalid goal id for " + node.getId());
+		ids.removeId(BaseId.INVALID);
+		node.setGoals(ids);
+		try
+		{
+			project.writeNode(node.getModelNodeId());
+		}
+		catch(Exception logAndContinue)
+		{
+			EAM.logError("Repair failed");
+			EAM.logException(logAndContinue);
 		}
 	}
 	

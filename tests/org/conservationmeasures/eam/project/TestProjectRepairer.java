@@ -2,6 +2,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -47,6 +48,32 @@ public class TestProjectRepairer extends EAMTestCase
 		}
 	}
 
+	public void testInvalidGoalId() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		try
+		{
+			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
+			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			ConceptualModelNode node = project.findNode(nodeId);
+			GoalIds bogusGoals = new GoalIds();
+			bogusGoals.add(BaseId.INVALID);
+			node.setGoals(bogusGoals);
+			project.writeNode(nodeId);
+			
+			EAM.setLogToString();
+			ProjectRepairer.repairAnyProblems(project);
+			assertContains("invalid goal", EAM.getLoggedString());
+			node = project.findNode(nodeId);
+			assertEquals("Didn't fix invalid GoalId?", 0, node.getGoals().size());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+			project.close();
+		}
+	}
 	public void testDeletedTeamMemberId() throws Exception
 	{
 		Project project = new ProjectForTesting(getName());
