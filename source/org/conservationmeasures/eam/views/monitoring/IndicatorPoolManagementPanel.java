@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.monitoring;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.objects.EAMObject;
 
-public class InidicatorPoolManagementPanel extends ModelessDialogPanel
+public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 {
 
 	public EAMObject getObject()
