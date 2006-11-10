@@ -21,8 +21,8 @@ public class ObjectListTableModel extends AbstractTableModel
 			String idListFieldTag, int listedItemType, String tableColumnTag)
 	{
 		project = projectToUse;
-		type = objectType;
-		id = objectId;
+		containingObjectType = objectType;
+		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
 		rowObjectType = listedItemType;
 		columnTag = tableColumnTag;
@@ -50,6 +50,26 @@ public class ObjectListTableModel extends AbstractTableModel
 			throw new RuntimeException("Parse error reading IdList " + tagOfIdList);
 		}
 	}
+	
+	public int getContainingObjectType()
+	{
+		return containingObjectType;
+	}
+	
+	public BaseId getContainingObjectId()
+	{
+		return containingObjectId;
+	}
+	
+	public int getRowObjectType()
+	{
+		return rowObjectType;
+	}
+	
+	public String getFieldTag()
+	{
+		return tagOfIdList;
+	}
 
 	private IdList getIdList() throws ParseException
 	{
@@ -58,7 +78,7 @@ public class ObjectListTableModel extends AbstractTableModel
 
 	private EAMObject getObject()
 	{
-		return project.findObject(type, id);
+		return project.findObject(containingObjectType, containingObjectId);
 	}
 
 	public Object getValueAt(int row, int column)
@@ -90,10 +110,21 @@ public class ObjectListTableModel extends AbstractTableModel
 			throw new RuntimeException("TeamModel.getObjectFromRow error");
 		}
 	}
+	
+	public int findRowObject(BaseId id)
+	{
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			if(getObjectFromRow(row).getId().equals(id))
+				return row;
+		}
+		
+		return -1;
+	}
 
 	Project project;
-	int type;
-	BaseId id;
+	int containingObjectType;
+	BaseId containingObjectId;
 	String tagOfIdList;
 	int rowObjectType;
 	String columnTag;

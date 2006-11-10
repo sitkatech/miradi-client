@@ -14,6 +14,7 @@ import javax.swing.event.ListSelectionListener;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -86,26 +87,19 @@ abstract public class ObjectListTablePanel extends DisposablePanel implements Li
 
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		updateTableIfObjectsChanged(event);
+		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			table.updateTableAfterCommand((CommandSetObjectData)event.getCommand());
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
-		updateTableIfObjectsChanged(event);
+		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			table.updateTableAfterUndo((CommandSetObjectData)event.getCommand());
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 	}
-	
-	void updateTableIfObjectsChanged(CommandExecutedEvent e)
-	{
-		// TODO: Attempt to implement the following:
-		// if a row object was added to the list, rebuild table and select new object
-		// if a row object was deleted from the list, rebuild table and select same row
-		// if a row object was modified, fire table rows updated (and keep selection)
-	}
-	
 	
 	Project project;
 	int objectType;
