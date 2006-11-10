@@ -3,13 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.ids;
+package org.conservationmeasures.eam.objecthelpers;
 
 import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.objects.ObjectReference;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -41,11 +40,13 @@ public class ObjectReferenceList
 		for (int i = 0; i < data.size(); i++)
 		{
 			array.put(get(i).toJson());
+			
 		}
+		json.put(TAG_REFERENCES, array);
 		return json;
 	}
 	
-	private void add(ObjectReference objectReferenceToUse)
+	public void add(ObjectReference objectReferenceToUse)
 	{
 		data.add(objectReferenceToUse);
 	}
@@ -59,10 +60,23 @@ public class ObjectReferenceList
 	{
 		data = new Vector(listToUse);
 	}
-	
+		
 	public String toString()
 	{
 		return toJson().toString();
+	}
+	
+	public boolean equals(Object other)
+	{	
+		if (! (other instanceof ObjectReferenceList))
+			return false;
+		
+		return other.toString().equals(toString());	
+	}
+	
+	public int size()
+	{
+		return data.size();
 	}
 	
 	private Vector data;

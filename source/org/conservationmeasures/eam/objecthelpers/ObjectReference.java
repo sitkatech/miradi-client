@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.objects;
+package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -41,8 +41,22 @@ public class ObjectReference
 		return objectType;
 	}
 	
-	private int objectType;
-	private BaseId objectId;
+	public boolean equals(Object rawOther)
+	{
+		if (! (rawOther instanceof ObjectReference))
+			return false;
+		
+		ObjectReference other = (ObjectReference)rawOther;
+		if (other.getObjectId() == objectId && other.getObjectType() == objectType)
+			return true;
+		
+		return false;
+	}
+	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";
 	private static final String TAG_OBJECT_ID = "ObjectId";
+	
+	private int objectType;
+	private BaseId objectId;
+	
 }

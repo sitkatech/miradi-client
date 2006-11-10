@@ -19,12 +19,12 @@ import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
 import org.conservationmeasures.eam.diagram.TestDelete;
+import org.conservationmeasures.eam.diagram.TestDiagramAddLinkage;
+import org.conservationmeasures.eam.diagram.TestDiagramAddNode;
 import org.conservationmeasures.eam.diagram.TestDiagramComponent;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.TestEamGraphCell;
-import org.conservationmeasures.eam.diagram.TestDiagramAddNode;
-import org.conservationmeasures.eam.diagram.TestDiagramAddLinkage;
 import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
 import org.conservationmeasures.eam.diagram.TestSetNodeSize;
 import org.conservationmeasures.eam.diagram.TestTypeIntervention;
@@ -52,6 +52,7 @@ import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
 import org.conservationmeasures.eam.objects.TestObjectManager;
+import org.conservationmeasures.eam.objects.TestObjectReferenceList;
 import org.conservationmeasures.eam.objects.TestObjective;
 import org.conservationmeasures.eam.objects.TestProjectMetadata;
 import org.conservationmeasures.eam.objects.TestProjectResource;
@@ -75,14 +76,14 @@ import org.conservationmeasures.eam.project.TestThreatRatingFramework;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
+import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
-import org.conservationmeasures.eam.utils.TestTranslations;
-import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
-import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
+import org.conservationmeasures.eam.utils.TestTranslations;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
+import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
 import org.martus.util.TestMultiCalendar;
 import org.martus.util.xml.TestSimpleXmlParser;
 
@@ -178,6 +179,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestRatingCriterion.class));
 		suite.addTest(new TestSuite(TestValueOption.class));
 		suite.addTest(new TestSuite(TestViewData.class));
+		suite.addTest(new TestSuite(TestObjectReferenceList.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

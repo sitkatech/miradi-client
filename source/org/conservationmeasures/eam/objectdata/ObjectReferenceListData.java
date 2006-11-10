@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.ids.ObjectReferenceList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
 
 public class ObjectReferenceListData extends ObjectData
 {
