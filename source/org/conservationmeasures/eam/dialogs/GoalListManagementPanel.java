@@ -38,10 +38,6 @@ public class GoalListManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 
-	public void refresh()
-	{
-		
-	}
 
 	public EAMObject getObject()
 	{

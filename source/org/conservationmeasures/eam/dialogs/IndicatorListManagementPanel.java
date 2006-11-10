@@ -38,11 +38,6 @@ public class IndicatorListManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 
-	public void refresh()
-	{
-		
-	}
-
 	public EAMObject getObject()
 	{
 		return listComponent.getSelectedObject();

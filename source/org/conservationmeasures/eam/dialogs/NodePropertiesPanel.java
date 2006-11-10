@@ -872,17 +872,11 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	{
 		refreshObjectiveListIfNecessary(event);
 		selectNewlyCreatedObjectiveIfNecessary(event);
-
-		indicatorsTab.refresh();
-		goalTab.refresh();
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		refreshObjectiveListIfNecessary(event);
-
-		indicatorsTab.refresh();
-		goalTab.refresh();
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
