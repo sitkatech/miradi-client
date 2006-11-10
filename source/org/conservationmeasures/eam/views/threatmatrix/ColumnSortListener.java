@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 
 public abstract class ColumnSortListener  extends MouseAdapter
 {
-	public ColumnSortListener(ThreatGirdPanel threatGirdPanelInUse)
+	public ColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
 		 mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();
@@ -36,12 +36,12 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		if (clickedColumn >= 0)
 		{
 			int sortColumn = ((JTableHeader)e.getSource()).getTable().convertColumnIndexToModel(clickedColumn);
-			sortBySelectedColumn(e, sortColumn);
+			sortBySelectedColumn(sortColumn);
 		}
 	}
 
 
-	private void sortBySelectedColumn(MouseEvent e, int sortColumn)
+	private void sortBySelectedColumn(int sortColumn)
 	{
 		sort(sortColumn);
 		threatGirdPanel.revalidate();
@@ -111,7 +111,7 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	public abstract void sort(int sortColumnToUse);
 	public abstract void sort(String currentSortBy, String currentSortDirection);
 	
-	protected ThreatGirdPanel threatGirdPanel;
+	protected ThreatGridPanel threatGirdPanel;
 	protected NonEditableThreatMatrixTableModel mainTableModel;
 
 }

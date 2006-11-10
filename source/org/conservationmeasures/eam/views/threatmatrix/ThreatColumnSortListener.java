@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 
 public class ThreatColumnSortListener extends ColumnSortListener
 {
-	public ThreatColumnSortListener(ThreatGirdPanel threatGirdPanelInUse)
+	public ThreatColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
 		sortToggle = true;

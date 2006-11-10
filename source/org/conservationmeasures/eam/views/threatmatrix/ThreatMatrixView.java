@@ -88,7 +88,7 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	private Container createThreatMatrixPanel() throws Exception
 	{
-		grid = new ThreatGirdPanel(this, model);
+		grid = new ThreatGridPanel(this, model);
 		
 		JComponent heading = createHeading();
 		gridWithHeadings = new JPanel(new BorderLayout());
@@ -223,7 +223,7 @@ public class ThreatMatrixView extends UmbrellaView
 	JSplitPane bigSplitter;
 	NonEditableThreatMatrixTableModel model;
 	ThreatRatingWizardPanel wizardPanel;
-	ThreatGirdPanel grid;
+	ThreatGridPanel grid;
 	ThreatRatingBundlePanel details;
 	JPanel gridWithHeadings;
 }

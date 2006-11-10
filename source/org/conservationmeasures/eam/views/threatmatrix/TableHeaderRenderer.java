@@ -22,8 +22,7 @@ import javax.swing.table.TableCellRenderer;
 
 
 class TableHeaderRenderer
-	extends JTextArea 
-    implements TableCellRenderer
+	extends JTextArea implements TableCellRenderer
 {
 
 	public TableHeaderRenderer()
@@ -52,7 +51,7 @@ class TableHeaderRenderer
 	{
 		Insets insets = focusCellHighlightBorder.getBorderInsets(this);
 		noFocusBorder = new BorderUIResource.CompoundBorderUIResource
-             (cellBorder, BorderFactory.createEmptyBorder(insets.top, EIGTH_OF_INCH, insets.bottom, insets.right));
+             (cellBorder, BorderFactory.createEmptyBorder(insets.top, SMALL_MARGIN, insets.bottom, insets.right));
 	}
 
 
@@ -75,12 +74,18 @@ class TableHeaderRenderer
         setOpaque(false);
         setText(value.toString());
 		setFont(new Font(null,Font.BOLD,12));
-		int height = (getPreferredSize().height<THREE_QUATERS_INCH) ? THREE_QUATERS_INCH: getPreferredSize().height;
+		int height = calculatePerferredHeight();
         setPreferredSize(new Dimension(150,height));
 	}
 
-	private static final int EIGTH_OF_INCH = 5;
-    private static final int THREE_QUATERS_INCH = 55;
+
+	private int calculatePerferredHeight()
+	{
+		return(getPreferredSize().height<ABOUT_THREE_TEXT_LINES) ? ABOUT_THREE_TEXT_LINES: getPreferredSize().height;
+	}
+
+	private static final int SMALL_MARGIN = 5;
+    private static final int ABOUT_THREE_TEXT_LINES = 55;
 	private Border noFocusBorder;
 }
 

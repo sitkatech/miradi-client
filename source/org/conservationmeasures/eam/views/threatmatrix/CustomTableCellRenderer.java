@@ -13,12 +13,13 @@ import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 
 class CustomTableCellRenderer extends DefaultTableCellRenderer
 {
-	public CustomTableCellRenderer(ThreatGirdPanel threatGridPanelToUse)
+	public CustomTableCellRenderer(ThreatGridPanel threatGridPanelToUse)
 	{
 		threatGridPanel = threatGridPanelToUse;
 		setHorizontalAlignment(CENTER);
@@ -34,14 +35,13 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		cell.setFont(new Font(null,Font.BOLD,12));
 		cell.setForeground(Color.BLACK); 
 		
-		setBoarders(table, row, column);
+		setBorders(table, row, column);
 		
 		return cell;
 	}
 
-	private void setBoarders(JTable table, int row, int column)
+	private void setBorders(JTable table, int row, int column)
 	{
-		
 		if (isOverallRatingCell(table, row, column))
 			setBorder(BorderFactory.createMatteBorder(5,5,1,1,Color.DARK_GRAY));
 		else
@@ -62,7 +62,7 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 			int indirectColumn = threatGridPanel.getThreatMatrixTable().convertColumnIndexToModel(column);
 			ThreatRatingBundle bundle = 
 				((NonEditableThreatMatrixTableModel)threatGridPanel.getThreatMatrixTable().getModel()).getBundle(row, indirectColumn);
-			if(bundle != null)
+			if(bundle != null && threatGridPanel.getSelectedBundle()!= null)
 				if(threatGridPanel.getSelectedBundle().equals(bundle))
 				{
 					setBorder(BorderFactory.createCompoundBorder(BorderFactory
@@ -72,6 +72,7 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 		}
 		
 		setBorder(BorderFactory.createCompoundBorder(
@@ -99,5 +100,5 @@ class CustomTableCellRenderer extends DefaultTableCellRenderer
 	{
 		return arraySize-1;
 	}
-	ThreatGirdPanel threatGridPanel;
+	ThreatGridPanel threatGridPanel;
 }

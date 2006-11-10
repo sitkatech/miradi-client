@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
-public class ThreatGirdPanel extends JPanel
+public class ThreatGridPanel extends JPanel
 {
-	public ThreatGirdPanel(ThreatMatrixView viewToUse,
+	public ThreatGridPanel(ThreatMatrixView viewToUse,
 			NonEditableThreatMatrixTableModel modelToUse)
 			throws Exception
 	{
@@ -106,7 +106,7 @@ public class ThreatGirdPanel extends JPanel
 		table.setIntercellSpacing(new Dimension(0, 0));
 		
 		setColumnWidths(table,ABOUT_TWO_INCHES);
-		table.setRowHeight(ABOUT_ONE_INCH);
+		table.setRowHeight(ABOUT_THREE_LINES);
 
 		ListSelectionModel selectionModel = table.getSelectionModel();
 		table.setRowSelectionAllowed(false);
@@ -148,9 +148,9 @@ public class ThreatGirdPanel extends JPanel
 		rowHeaderTableToUse.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTableToUse.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		setColumnWidths(rowHeaderTableToUse, ABOUT_ONE_AND_HALF_INCH);
+		setColumnWidths(rowHeaderTableToUse, ABOUT_FOUR_LINES);
 		rowHeaderTableToUse.setIntercellSpacing(new Dimension(0, 0));
-		rowHeaderTableToUse.setRowHeight(ABOUT_ONE_INCH);
+		rowHeaderTableToUse.setRowHeight(ABOUT_THREE_LINES);
 
 		setDefaultRowHeaderRenderer(rowHeaderTableToUse);
 	
@@ -222,9 +222,9 @@ public class ThreatGirdPanel extends JPanel
 	private TargetColumnSortListener targetColumnSortListener;
 	private JTable rowHeaderTable;
 	
-	int ABOUT_ONE_INCH = 60;
-	int ABOUT_TWO_INCHES = 150;
-	int ABOUT_ONE_AND_HALF_INCH = 80;
+	private final static int ABOUT_THREE_LINES = 60;
+	private final static int ABOUT_TWO_INCHES = 150;
+	private final static int ABOUT_FOUR_LINES = 80;
 	
 }
 
