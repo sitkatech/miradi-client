@@ -84,6 +84,10 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	public void dispose()
 	{
 		getProject().removeCommandExecutedListener(this);
+		if(indicatorsTab != null)
+			indicatorsTab.dispose();
+		if(goalsTab != null)
+			goalsTab.dispose();
 		super.dispose();
 	}
 	
@@ -168,8 +172,8 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		
 		if(node.canHaveGoal())
 		{
-			goalTab = new GoalListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
-			tabs.add(goalTab, goalTab.getPanelDescription());
+			goalsTab = new GoalListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+			tabs.add(goalsTab, goalsTab.getPanelDescription());
 		}
 		
 		if(node.isIntervention())
@@ -944,9 +948,8 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	JTabbedPane tabs;
 	DialogGridPanel detailsTab;
 	DialogGridPanel objectivesTab;
-	DialogGridPanel goalsTab;
 	IndicatorListManagementPanel indicatorsTab;
-	GoalListManagementPanel goalTab;
+	GoalListManagementPanel goalsTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
 	DiagramNode currentNode;
