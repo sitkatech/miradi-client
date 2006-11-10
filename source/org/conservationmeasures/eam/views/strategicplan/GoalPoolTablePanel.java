@@ -1,8 +1,5 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.actions.ActionCreateGoal;
-import org.conservationmeasures.eam.actions.ActionDeleteGoal;
-import org.conservationmeasures.eam.actions.ActionModifyGoal;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
@@ -15,7 +12,6 @@ public class GoalPoolTablePanel extends ObjectPoolTablePanel
 	{
 		super(viewToUse, new GoalPoolTableModel(viewToUse.getProject()), buttonActionClasses);
 		
-		addDoubleClickAction(ActionModifyGoal.class);
 		setMaxColumnWidthToHeaderWidth(0);
 		setColumnVeryWide(2);
 
@@ -34,9 +30,6 @@ public class GoalPoolTablePanel extends ObjectPoolTablePanel
 	}
 
 	static final Class[] buttonActionClasses = {
-		ActionCreateGoal.class,
-		ActionModifyGoal.class,
-		ActionDeleteGoal.class,
 		};
 
 

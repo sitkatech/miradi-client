@@ -1,36 +1,29 @@
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import java.text.ParseException;
-
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.project.ChainManager;
+import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class DeleteGoal extends ViewDoer
+public class DeleteGoal extends ObjectsDoer
 {
-	public GoalPoolTablePanel getGoalPanel()
-	{
-		StrategicPlanView view = (StrategicPlanView)getView();
-		return view.getGoalPanel();
-	}
-	
 	public boolean isAvailable()
 	{
-		if(getGoalPanel() == null)
-			return false;
-		
-		return getGoalPanel().getSelectedGoal() != null;
+		return (getObjects().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -38,71 +31,56 @@ public class DeleteGoal extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Goal goal = getGoalPanel().getSelectedGoal();
-
+		ConceptualModelNode node = getSelectedNode();
+		Goal goal = (Goal)getObjects()[0];
 		BaseId idToRemove = goal.getId();
-		ConceptualModelNodeSet targetsThatUseThisGoal = findTargetsThatUseThisGoal(idToRemove);
-		if(targetsThatUseThisGoal.size() > 0)
-		{
-			String[] dialogText = {
-					"This Goal is assigned to one or more Targets.", 
-					"Are you sure you want to delete it?", 
-					};
-			String[] buttons = {"Yes", "No", };
-			if(!EAM.confirmDialog("Delete Goal", dialogText, buttons))
-				return;
-		}
-
-		Command[] removeFromNodes = createCommandsToRemoveGoalsFromTargets(idToRemove, targetsThatUseThisGoal);
 		
+		String[] dialogText = {
+				"Are you sure you want to delete this Goal?", 
+		};
+		String[] buttons = {"Delete", "Retain", };
+		if(!EAM.confirmDialog("Delete Goal", dialogText, buttons))
+			return;
+
+		String tag = ConceptualModelNode.TAG_GOAL_IDS;
 		getProject().executeCommand(new CommandBeginTransaction());
-		for(int i = 0; i < removeFromNodes.length; ++i)
-		{
-			getProject().executeCommand(removeFromNodes[i]);
-		}
-		int type = goal.getType();
-		BaseId id = idToRemove;
-		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
-		getProject().executeCommand(new CommandSetObjectData(type, id, Goal.TAG_SHORT_LABEL, ""));
-		getProject().executeCommand(new CommandSetObjectData(type, id, Goal.TAG_FULL_TEXT, ""));
-		getProject().executeCommand(new CommandDeleteObject(type, id));
-		
-		getProject().executeCommand(new CommandEndTransaction());
-	}
-
-	private ConceptualModelNodeSet findTargetsThatUseThisGoal(BaseId goalId)
-	{
-		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
-		ConceptualModelNode[] targets = getProject().getNodePool().getTargets();
-		for(int i = 0; i < targets.length; ++i)
-		{
-			ConceptualModelTarget target = (ConceptualModelTarget)targets[i];
-			if(target.getGoals().contains(goalId))
-				result.attemptToAdd(target);
-		}
-		
-		return result;
-	}
-	
-	
-	private Command[] createCommandsToRemoveGoalsFromTargets(BaseId idToRemove, ConceptualModelNodeSet targetsThatUseThisGoal) throws CommandFailedException
-	{
-		ConceptualModelNode[] nodes = targetsThatUseThisGoal.toNodeArray();
-		Command[] removeFromNodes = new Command[nodes.length];
 		try
 		{
-			for(int i = 0; i < removeFromNodes.length; ++i)
-			{
-				String tag = ConceptualModelNode.TAG_GOAL_IDS;
-				ConceptualModelNode node = nodes[i];
-				removeFromNodes[i] = CommandSetObjectData.createRemoveIdCommand(node, tag, idToRemove);
-			}
+			getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(node, tag, idToRemove));
+			ConceptualModelNodeSet nodesThatUseThisGoal = new ChainManager(getProject()).findNodesThatUseThisGoal(idToRemove);
+			if(nodesThatUseThisGoal.size() == 0)
+				deleteGoal(goal);
 		}
-		catch (ParseException e)
+		catch(Exception e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-		return removeFromNodes;
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+	}
+
+	
+	public ConceptualModelNode getSelectedNode()
+	{
+		EAMObject selected = getView().getSelectedObject();
+		if(selected == null)
+			return null;
+		
+		if(selected.getType() != ObjectType.MODEL_NODE)
+			return null;
+		
+		return (ConceptualModelNode)selected;
 	}
 	
+	void deleteGoal(Goal goal) throws CommandFailedException
+	{
+		int type = goal.getType();
+		BaseId id = goal.getId();
+		getProject().executeCommand(new CommandSetObjectData(type, id, goal.TAG_LABEL, goal.DEFAULT_LABEL));
+		getProject().executeCommand(new CommandSetObjectData(type, id, goal.TAG_SHORT_LABEL, ""));
+	}
+
 }

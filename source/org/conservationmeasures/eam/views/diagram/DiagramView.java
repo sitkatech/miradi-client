@@ -18,10 +18,12 @@ import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
+import org.conservationmeasures.eam.actions.ActionCreateGoal;
 import org.conservationmeasures.eam.actions.ActionCreateIndicator;
 import org.conservationmeasures.eam.actions.ActionCreateObjective;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
+import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -69,6 +71,8 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
+import org.conservationmeasures.eam.views.strategicplan.CreateGoal;
+import org.conservationmeasures.eam.views.strategicplan.DeleteGoal;
 import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
@@ -171,6 +175,9 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
+		
+		addDoerToMap(ActionCreateGoal.class, new CreateGoal());
+		addDoerToMap(ActionDeleteGoal.class, new DeleteGoal());
 	}
 	
 	public void becomeActive() throws Exception

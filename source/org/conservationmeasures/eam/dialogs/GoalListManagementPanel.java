@@ -1,0 +1,57 @@
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
+package org.conservationmeasures.eam.dialogs;
+
+import java.awt.BorderLayout;
+
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.GoalId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.project.Project;
+
+public class GoalListManagementPanel extends ModelessDialogPanel
+{
+	public GoalListManagementPanel(Project projectToUse, ModelNodeId nodeId, Actions actions) throws Exception
+	{
+		super(new BorderLayout());
+		GoalId invalidId = new GoalId(BaseId.INVALID.asInt());
+		
+		listComponent = new GoalListTablePanel(projectToUse, actions, nodeId);
+		add(listComponent, BorderLayout.CENTER);
+		
+		GoalPropertiesPanel propertiesPanel = new GoalPropertiesPanel(projectToUse, actions, invalidId);
+		listComponent.setPropertiesPanel(propertiesPanel);
+		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
+	}
+	
+	public void dispose()
+	{
+		listComponent.dispose();
+		listComponent = null;
+		
+		super.dispose();
+	}
+
+	public void refresh()
+	{
+		
+	}
+
+	public EAMObject getObject()
+	{
+		return listComponent.getSelectedObject();
+	}
+
+	public String getPanelDescription()
+	{
+		return EAM.text("Tab|Goals");
+	}
+	
+	GoalListTablePanel listComponent;
+}

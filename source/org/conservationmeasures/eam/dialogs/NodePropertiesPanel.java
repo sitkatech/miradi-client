@@ -165,10 +165,16 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		
 		if(node.canHaveObjectives())
 			tabs.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
+		
 		if(node.canHaveGoal())
-			tabs.add(createGoalsGrid(node), EAM.text("Tab|Goals"));
+		{
+			goalTab = new GoalListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+			tabs.add(goalTab, goalTab.getPanelDescription());
+		}
+		
 		if(node.isIntervention())
 			tabs.add(createTasksGrid(node), EAM.text("Tab|Actions"));
+		
 		return tabs;
 	}
 
@@ -372,17 +378,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		objectivesTab.add(panel);
 
 		return objectivesTab;
-	}
-
-	private Component createGoalsGrid(DiagramNode node)
-	{
-		goalsTab = new DialogGridPanel();
-
-		goalsTab.add(new UiLabel(EAM.text("Label|Goal")));
-		goalsTab.add(createTargetGoal(getProject().getGoalPool(), node
-				.getGoals()));
-
-		return goalsTab;
 	}
 
 	private Component createTasksGrid(DiagramNode node) throws Exception
@@ -879,6 +874,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		selectNewlyCreatedObjectiveIfNecessary(event);
 
 		indicatorsTab.refresh();
+		goalTab.refresh();
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
@@ -886,6 +882,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		refreshObjectiveListIfNecessary(event);
 
 		indicatorsTab.refresh();
+		goalTab.refresh();
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
@@ -955,6 +952,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	DialogGridPanel objectivesTab;
 	DialogGridPanel goalsTab;
 	IndicatorListManagementPanel indicatorsTab;
+	GoalListManagementPanel goalTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
 	DiagramNode currentNode;
