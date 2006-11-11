@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -60,9 +60,12 @@ public class ObjectTestCase extends EAMTestCase
 		EAMObject got = EAMBaseObject.createFromJson(object.getType(), object.toJson());
 		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
 		
-		Command[] commandsToDelete = object.createCommandsToClear();
+		CommandSetObjectData[] commandsToDelete = object.createCommandsToClear();
 		for(int i = 0; i < commandsToDelete.length; ++i)
+		{
+			assertNotEquals("Tried to clear Id?", EAMBaseObject.TAG_ID, commandsToDelete[i].getFieldTag());
 			project.executeCommand(commandsToDelete[i]);
+		}
 		assertEquals("Didn't clear " + tag + "?", "", object.getData(tag));
 		for(int i = 0; i < commandsToDelete.length; ++i)
 			project.undo();

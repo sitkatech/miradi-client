@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectReference;
@@ -21,5 +21,5 @@ public interface EAMObject
 	public CreateObjectParameter getCreationExtraInfo();
 	public EnhancedJsonObject toJson();
 	public ObjectReference getObjectReference();
-	public Command[] createCommandsToClear();
+	public CommandSetObjectData[] createCommandsToClear();
 }

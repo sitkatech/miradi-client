@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ObjectData;
@@ -175,7 +174,7 @@ abstract public class EAMBaseObject implements EAMObject
 		return null;
 	}
 	
-	public Command[] createCommandsToClear()
+	public CommandSetObjectData[] createCommandsToClear()
 	{
 		Vector commands = new Vector();
 		Iterator iter = fields.keySet().iterator();
@@ -184,7 +183,7 @@ abstract public class EAMBaseObject implements EAMObject
 			String tag = (String)iter.next();
 			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
 		}
-		return (Command[])commands.toArray(new Command[0]);
+		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 	
 	public EnhancedJsonObject toJson()
