@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -77,10 +78,8 @@ public class DeleteGoal extends ObjectsDoer
 	
 	void deleteGoal(Goal goal) throws CommandFailedException
 	{
-		int type = goal.getType();
-		BaseId id = goal.getId();
-		getProject().executeCommand(new CommandSetObjectData(type, id, goal.TAG_LABEL, goal.DEFAULT_LABEL));
-		getProject().executeCommand(new CommandSetObjectData(type, id, goal.TAG_SHORT_LABEL, ""));
+		getProject().executeCommands(goal.createCommandsToClear());
+		getProject().executeCommand(new CommandDeleteObject(goal.getType(), goal.getId()));
 	}
 
 }
