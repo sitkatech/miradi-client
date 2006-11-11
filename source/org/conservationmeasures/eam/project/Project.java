@@ -493,6 +493,12 @@ public class Project
 			isExecuting = false;
 		}
 	}
+	
+	public void executeCommands(Command[] commands) throws CommandFailedException
+	{
+		for(int i = 0; i < commands.length; ++i)
+			executeCommand(commands[i]);
+	}
 
 	public Command undo() throws CommandFailedException
 	{
