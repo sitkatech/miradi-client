@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -65,12 +64,8 @@ public class DeleteObjective extends ViewDoer
 		{
 			getProject().executeCommand(removeFromNodes[i]);
 		}
-		int type = objective.getType();
-		BaseId id = idToRemove;
-		getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
-		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_SHORT_LABEL, ""));
-		getProject().executeCommand(new CommandSetObjectData(type, id, Objective.TAG_FULL_TEXT, ""));
-		getProject().executeCommand(new CommandDeleteObject(type, id));
+		getProject().executeCommands(objective.createCommandsToClear());
+		getProject().executeCommand(new CommandDeleteObject(objective.getType(), idToRemove));
 		
 		getProject().executeCommand(new CommandEndTransaction());
 	}

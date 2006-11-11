@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectpools.TaskPool;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
@@ -67,10 +66,7 @@ public class DeleteResource extends ObjectsDoer
 				getProject().executeCommand(removeFromTeam[i]);
 			int type = resource.getType();
 			BaseId id = idToRemove;
-			getProject().executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, EAMBaseObject.DEFAULT_LABEL));
-			getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_INITIALS, ""));
-			getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_NAME, ""));
-			getProject().executeCommand(new CommandSetObjectData(type, id, ProjectResource.TAG_POSITION, ""));
+			getProject().executeCommands(resource.createCommandsToClear());
 			getProject().executeCommand(new CommandDeleteObject(type, id));
 			getProject().executeCommand(new CommandEndTransaction());
 		}

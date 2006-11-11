@@ -14,7 +14,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -68,8 +67,7 @@ public class DeleteActivity extends ViewDoer
 					ConceptualModelIntervention.TAG_ACTIVITY_IDS, id);
 			project.executeCommand(removeChild);
 	
-			project.executeCommand(new CommandSetObjectData(type, id, EAMBaseObject.TAG_LABEL, ""));
-			project.executeCommand(new CommandSetObjectData(type, id, Task.TAG_RESOURCE_IDS, ""));
+			project.executeCommands(activity.createCommandsToClear());
 			project.executeCommand(new CommandDeleteObject(type, id));
 		}
 		finally

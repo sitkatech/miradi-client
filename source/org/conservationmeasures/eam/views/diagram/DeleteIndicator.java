@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -79,13 +78,8 @@ public class DeleteIndicator extends ObjectsDoer
 	
 	void deleteIndicator(Indicator indicator) throws CommandFailedException
 	{
-		int type = indicator.getType();
-		BaseId id = indicator.getId();
-		getProject().executeCommand(new CommandSetObjectData(type, id, indicator.TAG_LABEL, indicator.DEFAULT_LABEL));
-		getProject().executeCommand(new CommandSetObjectData(type, id, indicator.TAG_SHORT_LABEL, ""));
-		getProject().executeCommand(new CommandSetObjectData(type, id, indicator.TAG_METHOD, ""));
-		getProject().executeCommand(new CommandSetObjectData(type, id, indicator.TAG_RESOURCE_IDS, new IdList().toString()));
-		getProject().executeCommand(new CommandDeleteObject(type, id));
+		getProject().executeCommands(indicator.createCommandsToClear());
+		getProject().executeCommand(new CommandDeleteObject(indicator.getType(), indicator.getId()));
 		
 	
 	}

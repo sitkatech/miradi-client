@@ -16,17 +16,12 @@ public class ProjectResource extends EAMBaseObject
 	public ProjectResource(BaseId idToUse)
 	{
 		super(idToUse);
-		initials = new StringData();
-		name = new StringData();
-		position = new StringData();
+		clear();
 	}
 	
 	public ProjectResource(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(new BaseId(idAsInt), json);
-		initials = new StringData(json.optString(TAG_INITIALS, ""));
-		name = new StringData(json.optString(TAG_NAME, ""));
-		position = new StringData(json.optString(TAG_POSITION));
 	}
 
 	public int getType()
@@ -34,39 +29,6 @@ public class ProjectResource extends EAMBaseObject
 		return ObjectType.PROJECT_RESOURCE;
 	}
 
-	public String getData(String fieldTag)
-	{
-		if(fieldTag.equals(TAG_INITIALS))
-			return initials.get();
-		if(fieldTag.equals(TAG_NAME))
-			return name.get();
-		if(fieldTag.equals(TAG_POSITION))
-			return position.get();
-		
-		return super.getData(fieldTag);
-	}
-
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(fieldTag.equals(TAG_INITIALS))
-			initials.set(dataValue);
-		else if(fieldTag.equals(TAG_NAME))
-			name.set(dataValue);
-		else if(fieldTag.equals(TAG_POSITION))
-			position.set(dataValue);
-		else
-			super.setData(fieldTag, dataValue);
-	}
-
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_INITIALS, initials.get());
-		json.put(TAG_NAME, name.get());
-		json.put(TAG_POSITION, position.get());
-		return json;
-	}
-	
 	public String toString()
 	{
 		String result = initials.get();
@@ -82,6 +44,19 @@ public class ProjectResource extends EAMBaseObject
 			return result;
 		
 		return EAM.text("Label|(Undefined Resource)");
+	}
+	
+	public void clear()
+	{
+		super.clear();
+		
+		initials = new StringData();
+		name = new StringData();
+		position = new StringData();
+		
+		addField(TAG_INITIALS, initials);
+		addField(TAG_NAME, name);
+		addField(TAG_POSITION, position);
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
