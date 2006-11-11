@@ -34,8 +34,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -61,31 +59,16 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
-public class NodePropertiesPanel extends DisposablePanel implements CommandExecutedListener
+public class NodePropertiesPanel extends DisposablePanel
 {
 	public NodePropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
-		getProject().addCommandExecutedListener(this);
-	}
-
-
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-	}
-
-	public void commandUndone(CommandExecutedEvent event)
-	{
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
 	}
 	
 	public void dispose()
 	{
-		getProject().removeCommandExecutedListener(this);
 		if(indicatorsTab != null)
 			indicatorsTab.dispose();
 		if(goalsTab != null)
