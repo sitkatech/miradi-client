@@ -80,9 +80,7 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 
 	private int calculatePerferredHeight()
 	{
-		if (getPreferredSize().height<ABOUT_THREE_TEXT_LINES)
-			return ABOUT_THREE_TEXT_LINES;
-		return getPreferredSize().height;
+		return Math.max(getPreferredSize().height, ABOUT_THREE_TEXT_LINES);
 	}
 
 	private static final int SMALL_MARGIN = 5;
