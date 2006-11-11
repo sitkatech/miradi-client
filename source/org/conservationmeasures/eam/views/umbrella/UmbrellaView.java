@@ -242,7 +242,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		switch(object.getType())
 		{
 			case ObjectType.OBJECTIVE:
-				return new ObjectivePropertiesPanel(getMainWindow(), object);
+				return new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), (Objective)object);
 			case ObjectType.INDICATOR:
 				return new IndicatorPropertiesPanel(getProject(), getMainWindow().getActions(), (Indicator)object);
 			case ObjectType.TASK:

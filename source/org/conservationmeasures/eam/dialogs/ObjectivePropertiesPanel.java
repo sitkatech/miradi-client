@@ -5,20 +5,32 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.project.Project;
 
-public class ObjectivePropertiesPanel extends DesirePropertiesPanel
+public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 {
-	public ObjectivePropertiesPanel(MainWindow parentToUse, EAMObject objectToEdit) throws Exception
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actions, Objective objective) throws Exception
 	{
-		super(parentToUse, objectToEdit);
+		this(projectToUse, actions, (ObjectiveId)objective.getId());
 	}
 	
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actions, ObjectiveId idToShow) throws Exception
+	{
+		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
+		
+		addField(createStringField(Objective.TAG_SHORT_LABEL));
+		addField(createStringField(Objective.TAG_LABEL));
+		updateFieldsFromProject();
+	}
+
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Objective Properties"); 
+		return EAM.text("Title|Objective Properties");
 	}
 
 }

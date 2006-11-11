@@ -21,8 +21,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
-import org.conservationmeasures.eam.actions.ActionCreateObjective;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -47,7 +45,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
-import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -65,7 +62,6 @@ import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
 import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -88,6 +84,8 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 			indicatorsTab.dispose();
 		if(goalsTab != null)
 			goalsTab.dispose();
+		if(objectivesTab != null)
+			objectivesTab.dispose();
 		super.dispose();
 	}
 	
@@ -168,7 +166,10 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		tabs.add(indicatorsTab, indicatorsTab.getPanelDescription());
 		
 		if(node.canHaveObjectives())
-			tabs.add(createObjectivesGrid(node), EAM.text("Tab|Objectives"));
+		{
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+			tabs.add(objectivesTab, objectivesTab.getPanelDescription());
+		}
 		
 		if(node.canHaveGoal())
 		{
@@ -366,23 +367,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		ratingComponent.setText(rating.getCode());
 	}
 	
-	private Component createObjectivesGrid(DiagramNode node)
-	{
-		objectivesTab = new DialogGridPanel();
-
-		objectivesTab.add(new UiLabel(EAM.text("Label|Objective")));
-		objectivesTab.add(createObjectiveDropdown());
-
-		objectivesTab.add(new UiLabel(""));
-		EAMAction action = mainWindow.getActions().get(
-				ActionCreateObjective.class);
-		UiButton buttonCreate = new UiButton(action);
-		JPanel panel = new JPanel(new BorderLayout());
-		panel.add(buttonCreate, BorderLayout.BEFORE_LINE_BEGINS);
-		objectivesTab.add(panel);
-
-		return objectivesTab;
-	}
 
 	private Component createTasksGrid(DiagramNode node) throws Exception
 	{
@@ -430,55 +414,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		}
 	}
 
-	public Component createObjectiveDropdown()
-	{
-		dropdownObjective = new UiComboBox();
-		populateObjectives();
-		selectCurrentObjectives();
-		dropdownObjective.addActionListener(new ObjectiveChangeHandler());
-
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(dropdownObjective, BorderLayout.LINE_START);
-		return component;
-	}
-
-	class ObjectiveChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			if(ignoreObjectiveChanges)
-				return;
-
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelNode.TAG_OBJECTIVE_IDS;
-				String goals = getObjectives().toString();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, goals);
-				getProject().executeCommand(cmd);
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	private void selectCurrentObjectives()
-	{
-		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
-		ObjectiveIds currentObjectives = currentNode.getObjectives();
-		Object nullObjective = dropdownObjective.getItemAt(0);
-		Object selected = nullObjective;
-		if(currentObjectives.size() > 0)
-			selected = allAvailableObjectives.find(currentObjectives.getId(0));
-		if(selected == null)
-			selected = nullObjective;
-		dropdownObjective.setSelectedItem(selected);
-	}
 
 	private void populateObjectives()
 	{
@@ -497,55 +432,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		ignoreObjectiveChanges = false;
 	}
 
-	public Component createTargetGoal(GoalPool allAvailableGoals,
-			GoalIds currentGoals)
-	{
-		dropdownGoal = new UiComboBox();
-		BaseId[] goalIds = allAvailableGoals.getIds();
-		for(int i = 0; i < goalIds.length; ++i)
-		{
-			dropdownGoal.addItem(allAvailableGoals.find(goalIds[i]));
-		}
 
-		if(currentGoals.size() == 0)
-		{
-			dropdownGoal
-					.setSelectedItem(allAvailableGoals.find(BaseId.INVALID));
-		}
-		else
-		{
-			BaseId id = currentGoals.getId(0);
-			Goal goal = allAvailableGoals.find(id);
-			dropdownGoal.setSelectedItem(goal);
-		}
-		dropdownGoal.addActionListener(new GoalChangeHandler());
-
-		JPanel component = new JPanel(new BorderLayout());
-		component.add(dropdownGoal, BorderLayout.LINE_START);
-		return component;
-	}
-
-	class GoalChangeHandler implements ActionListener
-	{
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelNode.TAG_GOAL_IDS;
-				String goals = getGoals().toString();
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, goals);
-				getProject().executeCommand(cmd);
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
 
 	class ThreatClassificationChangeHandler implements ActionListener
 	{
@@ -947,7 +834,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 
 	JTabbedPane tabs;
 	DialogGridPanel detailsTab;
-	DialogGridPanel objectivesTab;
+	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;
 	MainWindow mainWindow;

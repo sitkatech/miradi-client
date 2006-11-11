@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionDeleteGoal;
 import org.conservationmeasures.eam.actions.ActionDeleteIndicator;
+import org.conservationmeasures.eam.actions.ActionDeleteObjective;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
@@ -71,7 +72,6 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.wizard.DiagramWizardPanel;
-import org.conservationmeasures.eam.views.umbrella.CreateObjective;
 import org.conservationmeasures.eam.views.umbrella.SaveImage;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
@@ -169,8 +169,10 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionNudgeNodeDown.class, new NudgeNode(KeyEvent.VK_DOWN));
 		addDoerToMap(ActionNudgeNodeLeft.class, new NudgeNode(KeyEvent.VK_LEFT));
 		addDoerToMap(ActionNudgeNodeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
+		
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
-	
+		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());
+		
 		addDoerToMap(ActionCreateIndicator.class, new CreateIndicator());
 		addDoerToMap(ActionDeleteIndicator.class, new DeleteIndicator());
 		
