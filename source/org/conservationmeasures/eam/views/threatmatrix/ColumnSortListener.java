@@ -9,6 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.table.JTableHeader;
@@ -108,10 +109,44 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	}
 	
 
-	public abstract void sort(int sortColumnToUse);
-	public abstract void sort(String currentSortBy, String currentSortDirection);
+	public  void sort(String currentSortBy, String currentSortDirection) 
+	{
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
+		
+		Comparator comparator = getComparator(currentSortBy);
+		
+		Arrays.sort(threatList, comparator);
+		
+		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
+			threatList = reverseSort(threatList);
+		
+		mainTableModel.setThreatRows(threatList);
+	}
+
 	
-	protected ThreatGridPanel threatGirdPanel;
+	public void sort(int sortColumn) 
+	{
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
+
+		Comparator comparator = getComparator(sortColumn);
+
+		Arrays.sort(threatList, comparator);
+		
+		if ( toggle() )  
+			threatList = reverseSort(threatList);
+
+		mainTableModel.setThreatRows(threatList);
+		
+		saveState(sortColumn);
+	}
+	
+	
+	public abstract Comparator getComparator(String currentSortBy);
+	public abstract Comparator getComparator(int sortColumn);
+	public abstract void saveState(int sortColumn);
+	public abstract boolean toggle();
+	
+	private ThreatGridPanel threatGirdPanel;
 	protected NonEditableThreatMatrixTableModel mainTableModel;
 
 }
