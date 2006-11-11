@@ -31,10 +31,13 @@ public class TargetColumnSortListener extends ColumnSortListener
 		if(isSummaryColumn(sortColumn, mainTableModel))
 			saveSortState(sortToggle, ViewData.SORT_SUMMARY);
 		else
-			saveSortState(sortToggle, mainTableModel.getTargets()[sortColumn]);
+		{
+			String columnBaseIdToSort = mainTableModel.getTargets()[sortColumn].getId().toString();
+			saveSortState(sortToggle, columnBaseIdToSort);
+		}
 	}
 
-	
+
 
 	public Comparator getComparator(String currentSortBy)
 	{

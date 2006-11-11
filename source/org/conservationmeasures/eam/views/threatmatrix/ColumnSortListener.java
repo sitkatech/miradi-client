@@ -58,12 +58,6 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		return threatList;
 	}
 	
-	
-	void saveSortState(boolean sortDirection, ConceptualModelNode sortColumnNode)
-	{
-		String value = sortColumnNode.getId().toString();
-		saveSortState(sortDirection, value);
-	}
 
 	
 	void saveSortState(boolean sortDirection, String sortColumnId)
