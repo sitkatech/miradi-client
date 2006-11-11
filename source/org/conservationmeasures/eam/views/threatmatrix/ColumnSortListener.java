@@ -50,7 +50,7 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	}
 
 	
-	public ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
 	{
 		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);
@@ -118,7 +118,7 @@ public abstract class ColumnSortListener  extends MouseAdapter
 	}
 
 	
-	public void sort(int sortColumn) 
+	private void sort(int sortColumn) 
 	{
 		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 
