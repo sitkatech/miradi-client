@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -18,6 +17,12 @@ public class TestConceptualModelFactor extends ObjectTestCase
 		super(name);
 	}
 	
+	public void testFields() throws Exception
+	{
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		verifyFields(ObjectType.MODEL_NODE, extraInfo);
+	}
+	
 	public void testExtraInfo() throws Exception
 	{
 		ModelNodeId idToCreate = new ModelNodeId(17);
@@ -26,13 +31,4 @@ public class TestConceptualModelFactor extends ObjectTestCase
 		CreateModelNodeParameter gotExtraInfo = (CreateModelNodeParameter)node.getCreationExtraInfo();
 		assertEquals(extraInfo.getNodeType(), gotExtraInfo.getNodeType());
 	}
-
-	public void testData() throws Exception
-	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeFactor());
-		verifyTextFieldInModelNode(type, ConceptualModelFactor.TAG_TAXONOMY_CODE, extraInfo);
-	}
-	
-	private static final int type = ObjectType.MODEL_NODE;
-
 }

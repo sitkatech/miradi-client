@@ -5,9 +5,13 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objectdata.IdListData;
+import org.conservationmeasures.eam.objectdata.ObjectData;
+import org.conservationmeasures.eam.objectdata.RatingData;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -19,69 +23,68 @@ public class ObjectTestCase extends EAMTestCase
 		super(name);
 	}
 
-	public void verifyTextField(int objectType, String tag) throws Exception
+	public void verifyFields(int objectType) throws Exception
 	{
-		CreateModelNodeParameter extraInfo = null;
-		verifyTextFieldInModelNode(objectType, tag, extraInfo);
+		verifyFields(objectType, null);
 	}
 	
-	public void verifyTextFieldInModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
-	{
-		final String sampleData = "Blah blah";
-		
-		verifyField(objectType, tag, extraInfo, sampleData);
-	}
-	
-	public void verifyRatingField(int objectType, String tag) throws Exception
-	{
-		verifyRatingFieldInModelNode(objectType, tag, null);
-	}
-
-	public void verifyRatingFieldInModelNode(int objectType, String tag, CreateModelNodeParameter extraInfo) throws Exception
-	{
-		verifyField(objectType, tag, extraInfo, "3");
-	}
-
-	private void verifyField(int objectType, String tag, CreateModelNodeParameter extraInfo, String sampleData) throws Exception
+	public void verifyFields(int objectType, CreateObjectParameter extraInfo) throws Exception
 	{
 		Project project = new ProjectForTesting(getName());
 		try
-		{	
+		{
 			BaseId id = project.createObject(objectType, BaseId.INVALID, extraInfo);
-			EAMObject object = project.findObject(objectType, id);
-			assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
-			object.setData(tag, sampleData);
-			assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-			EAMObject got = EAMBaseObject.createFromJson(objectType, object.toJson());
-			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
+			EAMBaseObject object = (EAMBaseObject)project.findObject(objectType, id);
+			String[] tags = object.getFieldTags();
+			for(int i = 0; i < tags.length; ++i)
+			{
+				verifyFieldLifecycle(project, object, tags[i]);
+			}
 		}
 		finally
 		{
 			project.close();
 		}
+	}
+	
+	private void verifyFieldLifecycle(Project project, EAMBaseObject object, String tag) throws Exception
+	{
+		if(tag.equals(EAMBaseObject.TAG_ID))
+			return;
+		
+		String sampleData = getSampleData(object, tag);
+
+		assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));
+		object.setData(tag, sampleData);
+		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
+		EAMObject got = EAMBaseObject.createFromJson(object.getType(), object.toJson());
+		assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
+		
+		Command[] commandsToDelete = object.createCommandsToClear();
+		for(int i = 0; i < commandsToDelete.length; ++i)
+			project.executeCommand(commandsToDelete[i]);
+		assertEquals("Didn't clear " + tag + "?", "", object.getData(tag));
+		for(int i = 0; i < commandsToDelete.length; ++i)
+			project.undo();
+		assertEquals("Didn't restore " + tag + "?", sampleData, object.getData(tag));
+
 	}
 
-	public void verifyIdListField(int objectType, String tag) throws Exception
+	private String getSampleData(EAMBaseObject object, String tag)
 	{
-		Project project = new ProjectForTesting(getName());
-		try
+		ObjectData field = object.getField(tag);
+		if(field instanceof IdListData)
 		{
-			IdList sampleData = new IdList();
-			sampleData.add(7);
-			sampleData.add(49);
-			BaseId id = project.createObject(objectType);
-			EAMObject object = project.findObject(objectType, id);
-			assertEquals("didn't default " + tag + " empty?", 0, new IdList(object.getData(tag)).size());
-			object.setData(tag, sampleData.toString());
-			assertEquals("did't set " + tag + "?", sampleData, new IdList(object.getData(tag)));
-			EAMObject got = EAMBaseObject.createFromJson(objectType, object.toJson());
-			assertEquals("didn't jsonize " + tag + "?", object.getData(tag), got.getData(tag));
+			IdList list = new IdList();
+			list.add(new BaseId(7));
+			return list.toString();
 		}
-		finally
+		
+		if(field instanceof RatingData)
 		{
-			project.close();
+			return "3";
 		}
+		
+		return tag + tag;
 	}
-	
-	
 }

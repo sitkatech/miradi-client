@@ -7,7 +7,10 @@ package org.conservationmeasures.eam.objects;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Vector;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.ObjectData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -155,8 +158,13 @@ abstract public class EAMBaseObject implements EAMObject
 	{
 		fields.put(tag, data);
 	}
+	
+	public String[] getFieldTags()
+	{
+		return (String[])fields.keySet().toArray(new String[0]);
+	}
 
-	private ObjectData getField(String fieldTag)
+	ObjectData getField(String fieldTag)
 	{
 		ObjectData data = (ObjectData)fields.get(fieldTag);
 		return data;
@@ -165,6 +173,18 @@ abstract public class EAMBaseObject implements EAMObject
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return null;
+	}
+	
+	public Command[] createCommandsToClear()
+	{
+		Vector commands = new Vector();
+		Iterator iter = fields.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String tag = (String)iter.next();
+			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
+		}
+		return (Command[])commands.toArray(new Command[0]);
 	}
 	
 	public EnhancedJsonObject toJson()

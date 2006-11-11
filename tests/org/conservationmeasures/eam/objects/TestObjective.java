@@ -15,9 +15,8 @@ public class TestObjective extends ObjectTestCase
 		super(name);
 	}
 
-	public void testData() throws Exception
+	public void testCreateCommandsToClear() throws Exception
 	{
-		verifyTextField(ObjectType.OBJECTIVE, Objective.TAG_SHORT_LABEL);
-		verifyTextField(ObjectType.OBJECTIVE, Objective.TAG_FULL_TEXT);
+		verifyFields(ObjectType.OBJECTIVE);
 	}
 }

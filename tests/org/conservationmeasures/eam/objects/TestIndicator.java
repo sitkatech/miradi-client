@@ -15,19 +15,8 @@ public class TestIndicator extends ObjectTestCase
 		super(name);
 	}
 
-	public void testData() throws Exception
+	public void testFields() throws Exception
 	{
-		verifyTextField(type, Indicator.TAG_SHORT_LABEL);
-		verifyTextField(type, Indicator.TAG_METHOD);
-		verifyIdListField(type, Indicator.TAG_RESOURCE_IDS);
-		verifyTextField(type, Indicator.TAG_LOCATION);
-		verifyRatingField(type, Indicator.TAG_PRIORITY);
-		verifyRatingField(type, Indicator.TAG_STATUS);
-		verifyTextField(type, Indicator.TAG_COST);
-		verifyTextField(type, Indicator.TAG_FUNDING_SOURCE);
-		verifyTextField(type, Indicator.TAG_WHEN);
+		verifyFields(ObjectType.INDICATOR);
 	}
-
-	private static final int type = ObjectType.INDICATOR;
-
 }

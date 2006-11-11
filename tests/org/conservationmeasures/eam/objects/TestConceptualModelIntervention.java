@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -19,6 +19,12 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 		super(name);
 	}
 
+	public void testFields() throws Exception
+	{
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_INTERVENTION);
+		verifyFields(ObjectType.MODEL_NODE, extraInfo);
+	}
+	
 	public void testBasics()
 	{
 		ModelNodeId interventionId = new ModelNodeId(17);
@@ -94,17 +100,6 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}
 	
-	public void testData() throws Exception
-	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(new NodeTypeIntervention());
-		verifyTextFieldInModelNode(type, ConceptualModelIntervention.TAG_TAXONOMY_CODE, extraInfo);
-		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_IMPACT_RATING, extraInfo);
-		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_DURATION_RATING, extraInfo);
-		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_FEASIBILITY_RATING, extraInfo);
-		verifyRatingFieldInModelNode(type, ConceptualModelIntervention.TAG_COST_RATING, extraInfo);
-	}
-	
-	private static final int type = ObjectType.MODEL_NODE;
 
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);
