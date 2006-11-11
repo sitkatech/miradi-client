@@ -22,7 +22,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -34,10 +33,7 @@ import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.IndirectFactorIcon;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -45,12 +41,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
-import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
@@ -77,6 +70,19 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		getProject().addCommandExecutedListener(this);
 	}
 
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+	
 	public void dispose()
 	{
 		getProject().removeCommandExecutedListener(this);
@@ -415,25 +421,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	}
 
 
-	private void populateObjectives()
-	{
-		ignoreObjectiveChanges = true;
-		dropdownObjective.removeAllItems();
-		Objective nullObjective = new Objective(BaseId.INVALID);
-		dropdownObjective.addItem(nullObjective);
-
-		ObjectivePool allAvailableObjectives = getProject().getObjectivePool();
-		BaseId[] objectiveIds = allAvailableObjectives.getIds();
-		for(int i = 0; i < objectiveIds.length; ++i)
-		{
-			dropdownObjective.addItem(allAvailableObjectives
-					.find(objectiveIds[i]));
-		}
-		ignoreObjectiveChanges = false;
-	}
-
-
-
 	class ThreatClassificationChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
@@ -679,11 +666,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		return taxonomyItem;
 	}
 	
-	public NodeType getType()
-	{
-		return (NodeType) dropdownFactorType.getSelectedItem();
-	}
-	
+
 	public String getSelectedImpactCode()
 	{
 		RatingChoice selected = getSelectedImpactChoice();
@@ -739,85 +722,7 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 		RatingChoice selected = (RatingChoice)costComponent.getSelectedItem();
 		return selected;
 	}
-	
-	public ObjectiveIds getObjectives()
-	{
-		ObjectiveIds objectives = new ObjectiveIds();
-		Objective oneObjective = (Objective) dropdownObjective
-				.getSelectedItem();
-		if(!oneObjective.getId().isInvalid())
-			objectives.setObjectives(oneObjective);
-		return objectives;
-	}
 
-	public GoalIds getGoals()
-	{
-		Goal oneGoal = (Goal) dropdownGoal.getSelectedItem();
-		GoalIds goals = new GoalIds();
-		if(oneGoal != null)
-			goals.addId(oneGoal.getId());
-		return goals;
-	}
-
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		refreshObjectiveListIfNecessary(event);
-		selectNewlyCreatedObjectiveIfNecessary(event);
-	}
-
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		refreshObjectiveListIfNecessary(event);
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
-
-	void refreshObjectiveListIfNecessary(CommandExecutedEvent event)
-	{
-		if(dropdownObjective == null)
-			return;
-		Command rawCommand = event.getCommand();
-		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-		{
-			CommandCreateObject cmd = (CommandCreateObject) rawCommand;
-			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
-			{
-				populateObjectives();
-			}
-		}
-		if(rawCommand.getCommandName()
-				.equals(CommandSetObjectData.COMMAND_NAME))
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData) rawCommand;
-			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
-			{
-				Object selected = dropdownObjective.getSelectedItem();
-				populateObjectives();
-				dropdownObjective.setSelectedItem(selected);
-			}
-		}
-
-	}
-
-	void selectNewlyCreatedObjectiveIfNecessary(CommandExecutedEvent event)
-	{
-		if(dropdownObjective == null)
-			return;
-
-		Command rawCommand = event.getCommand();
-		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
-		{
-			CommandCreateObject cmd = (CommandCreateObject) rawCommand;
-			if(cmd.getObjectType() == ObjectType.OBJECTIVE)
-			{
-				Objective newObjective = getProject().getObjectivePool().find(
-						cmd.getCreatedId());
-				dropdownObjective.setSelectedItem(newObjective);
-			}
-		}
-	}
 
 	Component createFieldPanel(Component component)
 	{
@@ -842,10 +747,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	DiagramNode currentNode;
 	UiTextField textField;
 	UiTextArea commentField;
-	UiComboBox dropdownFactorType;
-	UiComboBox dropdownThreatPriority;
-	UiComboBox dropdownObjective;
-	UiComboBox dropdownGoal;
 	UiCheckBox statusCheckBox;
 	UiComboBox dropdownThreatClassification;
 	UiComboBox dropdownInterventionClassification;
@@ -855,4 +756,6 @@ public class NodePropertiesPanel extends DisposablePanel implements CommandExecu
 	UiComboBox costComponent;
 	UiLabel ratingComponent;
 	boolean ignoreObjectiveChanges;
+	
+
 }
