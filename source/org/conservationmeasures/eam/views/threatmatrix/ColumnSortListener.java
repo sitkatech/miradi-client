@@ -5,8 +5,10 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,7 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 
-public abstract class ColumnSortListener  extends MouseAdapter
+public abstract class ColumnSortListener  extends MouseAdapter implements MouseMotionListener
 {
 	public ColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
 	{
@@ -41,6 +43,26 @@ public abstract class ColumnSortListener  extends MouseAdapter
 		}
 	}
 
+
+	public void mouseDragged(MouseEvent e)
+	{
+	}
+
+	public void mouseMoved(MouseEvent e)
+	{
+		JTableHeader header = ((JTableHeader)e.getSource());
+		header.setReorderingAllowed(!isMouseInSummaryColumn(header, e.getPoint()));
+	}
+
+	private boolean isMouseInSummaryColumn(JTableHeader header, Point p)
+	{
+		return (header.columnAtPoint(p) == getSummaryColumn());
+	}
+	
+	int getSummaryColumn()
+	{
+		return threatGirdPanel.getThreatMatrixTable().getSummaryColumn();
+	}
 
 	private void sortBySelectedColumn(int sortColumn)
 	{

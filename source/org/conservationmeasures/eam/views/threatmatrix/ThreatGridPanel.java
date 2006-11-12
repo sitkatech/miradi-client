@@ -45,6 +45,7 @@ public class ThreatGridPanel extends JPanel
 		JTableHeader columnHeader = table.getTableHeader();
 		targetColumnSortListener = new TargetColumnSortListener(this);
 		columnHeader.addMouseListener(targetColumnSortListener);
+		columnHeader.addMouseMotionListener(targetColumnSortListener);
 
 		JTableHeader rowHeader = rowTable.getTableHeader();
 		threatColumnSortListener = new ThreatColumnSortListener(this);

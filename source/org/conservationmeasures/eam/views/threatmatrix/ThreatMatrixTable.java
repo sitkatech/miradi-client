@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import javax.swing.JTable;
+import javax.swing.event.TableColumnModelEvent;
 import javax.swing.table.TableModel;
 
 public class ThreatMatrixTable extends JTable
@@ -14,4 +15,18 @@ public class ThreatMatrixTable extends JTable
 	{
 		super(model);
 	}
+
+	public void columnMoved(TableColumnModelEvent event)
+	{
+		if(event.getToIndex() == getSummaryColumn())
+			moveColumn(event.getToIndex(), event.getFromIndex());
+		else
+			super.columnMoved(event);
+	}
+	
+	public int getSummaryColumn()
+	{
+		return getColumnCount() - 1;
+	}
+
 }
