@@ -5,6 +5,11 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.awt.Component;
+
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.conservationmeasures.eam.project.Project;
@@ -22,5 +27,15 @@ public class StrategicPlanTreeTable extends TreeTableWithIcons
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
 		tree.setRootVisible(false);
+		TableCellEditor ce = new TreeTableCellEditor()
+		{
+			public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+			{
+			    ((JTextField)getComponent()).setEditable(false);
+				return super.getTableCellEditorComponent(table, value, isSelected, r, c);
+			}
+		};
+		setDefaultEditor(TreeTableModel.class, ce);
+
 	}
 }
