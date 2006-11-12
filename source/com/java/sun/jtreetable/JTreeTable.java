@@ -64,6 +64,13 @@ import java.util.EventObject;
  * @author Philip Milne
  * @author Scott Violet
  */
+
+
+/**
+ * Modified by Benetech : TreeTableTextField class
+ * @version
+ */
+
 public class JTreeTable extends JTable {
     /** A subclass of JTree. */
     protected TreeTableCellRenderer tree;
@@ -454,6 +461,10 @@ public class JTreeTable extends JTable {
      */
     static class TreeTableTextField extends JTextField {
 	public int offset;
+
+	/**
+	 * Replaced deprecated reshape with setBounds 2006-11-12 rn
+	 */	 
 
 	public void setBounds(int x, int y, int w, int h) {
 	    int newX = Math.max(x, offset);
