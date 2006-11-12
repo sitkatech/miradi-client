@@ -7,7 +7,10 @@ package org.conservationmeasures.eam.views;
 
 import java.awt.Component;
 
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
@@ -34,6 +37,8 @@ public class TreeTableWithIcons extends JTreeTable
 		getTree().setCellRenderer(new Renderer());
 		getTree().setEditable(false);
 		getColumnModel().getColumn(0).setPreferredWidth(200);
+		TableCellEditor ce = new NonEditableTreeTableCellEditor();
+		setDefaultEditor(TreeTableModel.class, ce);
 	}
 
 	public void expandEverything()
@@ -110,4 +115,19 @@ public class TreeTableWithIcons extends JTreeTable
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer interventionRenderer;
 	}
+
+	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
+	{
+		public NonEditableTreeTableCellEditor() 
+		{
+		    super();
+		}
+		
+		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int r, int c)
+		{
+		    ((JTextField)getComponent()).setEditable(false);
+			return super.getTableCellEditorComponent(table, value, isSelected, r, c);
+		}
+	}
+	
 }
