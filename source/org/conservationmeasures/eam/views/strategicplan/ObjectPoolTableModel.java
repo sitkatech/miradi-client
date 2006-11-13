@@ -15,11 +15,12 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectPoolTableModel extends AbstractTableModel
 {
-	public ObjectPoolTableModel(Project projectToUse, int listedItemType)
+	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String columnTagToUse)
 	{
 		project = projectToUse;
 		rowObjectType = listedItemType;
 		rowObjectPool = projectToUse.getPool(rowObjectType).getIdList();
+		columnTag = columnTagToUse;
 	}
 	
 	public int getColumnCount()
@@ -86,5 +87,5 @@ public class ObjectPoolTableModel extends AbstractTableModel
 	Project project;
 	int rowObjectType;
 	IdList rowObjectPool;
-	String columnTag = "Goal";
+	String columnTag;
 }

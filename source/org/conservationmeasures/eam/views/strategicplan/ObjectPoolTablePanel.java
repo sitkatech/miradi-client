@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiScrollPane;
 
@@ -44,12 +43,12 @@ abstract public class ObjectPoolTablePanel extends DisposablePanel implements Li
 	}
 
 
-	public Goal getSelectedObject()
+	public EAMObject getSelectedObject()
 	{
 		EAMObject[] selected = table.getSelectedObjects();
 		if(selected.length == 0)
 			return null;
-		return (Goal)selected[0];
+		return selected[0];
 	}
 	
 	public void valueChanged(ListSelectionEvent event)
