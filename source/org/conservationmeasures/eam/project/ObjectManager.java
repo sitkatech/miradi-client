@@ -174,6 +174,8 @@ public class ObjectManager
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		EAMObject object = getPool(objectType).findObject(objectId);
+		if(object == null)
+			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId);
 		return object.getData(fieldTag);
 	}
 	
