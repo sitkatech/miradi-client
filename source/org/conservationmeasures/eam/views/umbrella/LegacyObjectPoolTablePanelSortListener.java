@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiTable.UiTableHeader;
 
-public class ObjectPoolTablePanelSortListener  extends MouseAdapter
+public class LegacyObjectPoolTablePanelSortListener  extends MouseAdapter
 {	
 	public void mouseClicked(MouseEvent e) 
 	{

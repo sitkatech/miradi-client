@@ -20,8 +20,8 @@ public class EAMObjectComparator implements Comparator
 
 		public int compare(Object object1, Object object2)
 		{
-			int row1 = ((ObjectPoolTableModel)tableModel).getRowIndex((EAMObject)object1);
-			int row2 = ((ObjectPoolTableModel)tableModel).getRowIndex((EAMObject)object2);
+			int row1 = ((LegacyObjectPoolTableModel)tableModel).getRowIndex((EAMObject)object1);
+			int row2 = ((LegacyObjectPoolTableModel)tableModel).getRowIndex((EAMObject)object2);
 			
 			String value1 = tableModel.getTableCellDisplayString(row1, sortColumn, ((EAMObject)object1).getId(), columnTag);
 			String value2 = tableModel.getTableCellDisplayString(row2, sortColumn, ((EAMObject)object2).getId(), columnTag);

@@ -3,10 +3,10 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.views.umbrella.ObjectPoolTablePanel;
+import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
-public class GoalPoolTablePanel extends ObjectPoolTablePanel
+public class GoalPoolTablePanel extends LegacyObjectPoolTablePanel
 {
 	public GoalPoolTablePanel(UmbrellaView viewToUse)
 	{
