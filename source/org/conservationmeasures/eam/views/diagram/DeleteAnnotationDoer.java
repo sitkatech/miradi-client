@@ -5,6 +5,10 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import java.text.ParseException;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
@@ -18,6 +22,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.ChainManager;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public abstract class DeleteAnnotationDoer extends ObjectsDoer
@@ -42,11 +47,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 
 
-	protected void deleteAnnotationViaCommands(ConceptualModelNode node, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	void deleteAnnotationViaCommands(ConceptualModelNode node, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
-		int type = annotationToDelete.getType();
-		BaseId idToRemove = annotationToDelete.getId();
 	
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
@@ -55,13 +58,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			getProject().executeCommand(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
-			ConceptualModelNodeSet nodesThatUseThisAnnotation = new ChainManager(getProject()).findNodesThatUseThisAnnotation(type, idToRemove);
-			if(nodesThatUseThisAnnotation.size() == 0)
-			{
-				getProject().executeCommands(annotationToDelete.createCommandsToClear());
-				getProject().executeCommand(new CommandDeleteObject(type, idToRemove));
-			}
+			Command[] commands = buildCommandsToDeleteAnnotation(getProject(), node, annotationIdListTag, annotationToDelete);
+			for(int i = 0; i < commands.length; ++i)
+				getProject().executeCommand(commands[i]);
 		}
 		catch(Exception e)
 		{
@@ -72,6 +71,23 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+	
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, ConceptualModelNode node, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	{
+		Vector commands = new Vector();
+	
+		int type = annotationToDelete.getType();
+		BaseId idToRemove = annotationToDelete.getId();
+		commands.add(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
+		ConceptualModelNodeSet nodesThatUseThisAnnotation = new ChainManager(project).findNodesThatUseThisAnnotation(type, idToRemove);
+		if(nodesThatUseThisAnnotation.size() == 0)
+		{
+			commands.add(annotationToDelete.createCommandsToClear());
+			commands.add(new CommandDeleteObject(type, idToRemove));
+		}
+		
+		return (Command[])commands.toArray(new Command[0]);
 	}
 
 	public ConceptualModelNode getSelectedNode()
