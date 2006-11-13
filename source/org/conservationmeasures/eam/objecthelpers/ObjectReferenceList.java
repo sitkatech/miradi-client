@@ -73,6 +73,11 @@ public class ObjectReferenceList
 		return other.toString().equals(toString());	
 	}
 	
+	public boolean contains(ObjectReference objectRef)
+	{
+		return data.contains(objectRef);
+	}
+	
 	public int hashCode()
 	{
 		return data.hashCode();

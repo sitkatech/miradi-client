@@ -36,7 +36,6 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableNode;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
@@ -51,7 +50,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
 		tree.getTree().addTreeSelectionListener(this);
-		tree.getModelAdapter().restoreTreeState();
+		restoreTreeExpansionState();
 		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
@@ -59,6 +58,19 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 
 		tree.getTree().addSelectionRow(0);
 		mainWindow.getProject().addCommandExecutedListener(this);
+	}
+
+	private void restoreTreeExpansionState() 
+	{
+		try
+		{
+			tree.getModelAdapter().restoreTreeState();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Error restoring tree state"));
+		}
 	}
 
 	public void dispose()
@@ -120,25 +132,6 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 	public ConceptualModelIntervention getParentIntervention(Task activity)
 	{
 		return model.getParentIntervention(activity);
-	}
-
-	void expandEverything()
-	{
-		TreeTableNode root = model.getRootWorkPlanObject();
-		TreePath rootPath = new TreePath(root);
-		expandNode(rootPath);
-	}
-
-	private void expandNode(TreePath thisPath)
-	{
-		WorkPlanTreeTableNode topLevelObject = (WorkPlanTreeTableNode)thisPath.getLastPathComponent();
-		tree.getTree().expandPath(thisPath);
-		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
-		{
-			WorkPlanTreeTableNode secondLevelObject = (WorkPlanTreeTableNode)topLevelObject.getChild(childIndex);
-			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-			expandNode(secondLevelPath);
-		}
 	}
 	
 	private Box createButtonBox(Actions actions)
@@ -225,21 +218,19 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getDataValue());
-			expandEverything();
+			restoreTreeExpansionState();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
 		{
 			model.objectiveWasModified();
-			expandEverything();
+			restoreTreeExpansionState();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			if(cmd.getObjectType() != ObjectType.VIEW_DATA)
-			{
 				model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-				expandEverything();
-			}
+			restoreTreeExpansionState();
 		}
 	}
 
@@ -253,19 +244,18 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.idListWasChanged(cmd.getObjectType(), cmd.getObjectId(), cmd.getPreviousDataValue());
-			expandEverything();
+			restoreTreeExpansionState();
 		}
 		else if(isCreateObjectCommand(event) || isDeleteObjectCommand(event) || isChangeObjectiveListCommand(event))
 		{
 			model.objectiveWasModified();
-			expandEverything();
+			restoreTreeExpansionState();
 		}
 		else if(isSetDataCommand(event))
 		{
 			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 			model.dataWasChanged(cmd.getObjectType(), cmd.getObjectId());
-			expandEverything();
-
+			restoreTreeExpansionState();
 		}
 	}
 
