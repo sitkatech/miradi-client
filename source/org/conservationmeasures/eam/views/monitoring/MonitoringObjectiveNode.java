@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringObjectiveNode extends MonitoringNode
@@ -41,6 +43,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 				throw new RuntimeException("Missing Indicator " + id);
 			children.add(new MonitoringIndicatorNode(project, indicator));
 		}
+		Collections.sort(children, new IgnoreCaseStringComparator());
 	}
 
 	private HashSet getAlUpstreamIndicators(ConceptualModelNodeSet nodes)

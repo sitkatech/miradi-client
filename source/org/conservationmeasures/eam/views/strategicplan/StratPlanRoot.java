@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -12,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanRoot extends TreeTableNode
@@ -57,6 +59,7 @@ public class StratPlanRoot extends TreeTableNode
 		Vector goalVector = new Vector();
 		goalVector.addAll(getAllGoals(project.getGoalPool()));
 		goalNodes = (StratPlanGoal[])goalVector.toArray(new StratPlanGoal[0]);
+		Arrays.sort(goalNodes, new IgnoreCaseStringComparator());
 	}
 
 	private Vector getAllGoals(GoalPool pool) throws Exception
