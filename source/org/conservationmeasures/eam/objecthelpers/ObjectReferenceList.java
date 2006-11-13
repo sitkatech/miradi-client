@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
@@ -29,19 +28,11 @@ public class ObjectReferenceList
 	public ObjectReferenceList(EnhancedJsonObject json)
 	{
 		this();
-		try
-		{
-			EnhancedJsonArray array = json.optJsonArray(TAG_REFERENCES);
-			for(int i = 0; i < array.length(); ++i){
-				add(new ObjectReference(array.getJson(i)));
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		EnhancedJsonArray array = json.optJsonArray(TAG_REFERENCES);
+		for(int i = 0; i < array.length(); ++i)
+			add(new ObjectReference(array.getJson(i)));
 	}
-	
+
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
