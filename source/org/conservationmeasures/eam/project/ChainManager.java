@@ -5,9 +5,13 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.text.ParseException;
+
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
@@ -22,7 +26,22 @@ public class ChainManager
 		project = projectToUse;
 	}
 
-	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId)
+	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId) throws ParseException
+	{
+		return findNodesThatHaveThisAnnotation(objectiveId, ConceptualModelNode.TAG_OBJECTIVE_IDS);
+	}
+
+	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId) throws ParseException
+	{
+		return findNodesThatHaveThisAnnotation(indicatorId, ConceptualModelNode.TAG_INDICATOR_IDS);
+	}
+	
+	public ConceptualModelNodeSet findNodesThatUseThisGoal(BaseId goalId) throws ParseException
+	{
+		return findNodesThatHaveThisAnnotation(goalId, ConceptualModelNode.TAG_GOAL_IDS);
+	}
+	
+	private ConceptualModelNodeSet findNodesThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
@@ -30,44 +49,15 @@ public class ChainManager
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getObjectives().contains(objectiveId))
+			IdList annotationIds = new IdList(node.getData(tag));
+			if(annotationIds.contains(objectiveId))
 				foundNodes.attemptToAdd(node);
 		}
 		
 		return foundNodes;
 	}
 
-	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId)
-	{
-		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
-		NodePool pool = getNodePool();
-		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getIndicators().contains(indicatorId))
-				foundNodes.attemptToAdd(node);
-		}
-		
-		return foundNodes;
-	}
-	
-	public ConceptualModelNodeSet findNodesThatUseThisGoal(BaseId goalId)
-	{
-		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
-		NodePool pool = getNodePool();
-		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
-		for(int i = 0; i < allNodeIds.length; ++i)
-		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
-			if(node.getGoals().contains(goalId))
-				foundNodes.attemptToAdd(node);
-		}
-		
-		return foundNodes;
-	}
-	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId) throws ParseException
 	{
 		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -81,7 +71,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId) throws ParseException
 	{
 		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -95,7 +85,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId)
+	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId) throws ParseException
 	{
 		ConceptualModelNode[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -126,19 +116,37 @@ public class ChainManager
 	
 	public String getRelatedTargetsAsHtml(BaseId indicatorId)
 	{
-		ConceptualModelNodeSet modelNodes = findAllNodesRelatedToThisIndicator(indicatorId);
-		TargetSet targets = new TargetSet(modelNodes);
-		
-		return EAMBaseObject.toHtml(targets.toNodeArray());
+		try
+		{
+			ConceptualModelNodeSet modelNodes = findAllNodesRelatedToThisIndicator(indicatorId);
+			TargetSet targets = new TargetSet(modelNodes);
+			
+			return EAMBaseObject.toHtml(targets.toNodeArray());
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return HTML_ERROR;
+		}
 	}
 
 	public String getRelatedDirectThreatsAsHtml(BaseId indicatorId)
 	{
-		ConceptualModelNodeSet modelNodes =  findAllNodesRelatedToThisIndicator(indicatorId);
-		DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
-		
-		return EAMBaseObject.toHtml(directThreats.toNodeArray());
+		try
+		{
+			ConceptualModelNodeSet modelNodes =  findAllNodesRelatedToThisIndicator(indicatorId);
+			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
+			
+			return EAMBaseObject.toHtml(directThreats.toNodeArray());
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return HTML_ERROR;
+		}
 	}
 
+	static final String HTML_ERROR = "<html>(Error)</html>";
+	
 	Project project;
 }

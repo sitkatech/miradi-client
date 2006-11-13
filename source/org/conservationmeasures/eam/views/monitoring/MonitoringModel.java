@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.views.GenericTreeTableModel;
 
 public class MonitoringModel extends GenericTreeTableModel
 {
-	public MonitoringModel(Project projectToUse)
+	public MonitoringModel(Project projectToUse) throws Exception
 	{
 		super(new MonitoringRootNode(projectToUse));
 		project = projectToUse;

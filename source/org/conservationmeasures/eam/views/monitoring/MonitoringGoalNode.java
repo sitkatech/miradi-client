@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringGoalNode extends MonitoringNode
 {
-	public MonitoringGoalNode(Project projectToUse, Goal goalToUse)
+	public MonitoringGoalNode(Project projectToUse, Goal goalToUse) throws Exception
 	{
 		project = projectToUse;
 		goal = goalToUse;
@@ -62,7 +62,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		return "";
 	}
 	
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		children = new Vector();
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());

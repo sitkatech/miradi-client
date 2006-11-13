@@ -16,7 +16,7 @@ import org.martus.swing.UiScrollPane;
 
 public class MonitoringPanel extends JPanel
 {
-	public MonitoringPanel(Project projectToUse)
+	public MonitoringPanel(Project projectToUse) throws Exception
 	{
 		super(new BorderLayout());
 		model = new MonitoringModel(projectToUse);

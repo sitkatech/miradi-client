@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 {
-	static public StrategicPlanTreeTableModel createForProject(Project project)
+	static public StrategicPlanTreeTableModel createForProject(Project project) throws Exception
 	{
 		return new StrategicPlanTreeTableModel(project, new StratPlanRoot(project));
 	}

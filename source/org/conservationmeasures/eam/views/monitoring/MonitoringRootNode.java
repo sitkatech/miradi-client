@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringRootNode extends MonitoringNode
 {
-	public MonitoringRootNode(Project projectToUse)
+	public MonitoringRootNode(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuild();
@@ -52,14 +52,14 @@ public class MonitoringRootNode extends MonitoringNode
 		return "";
 	}
 
-	private void rebuild()
+	private void rebuild() throws Exception
 	{
 		Vector desireVector = new Vector();
 		desireVector.addAll(getAllDesires(project.getGoalPool()));
 		children = desireVector;
 	}
 
-	private Vector getAllDesires(DesirePool pool)
+	private Vector getAllDesires(DesirePool pool) throws Exception
 	{
 		BaseId[] desireIds = pool.getIds();
 		Vector desires = new Vector();

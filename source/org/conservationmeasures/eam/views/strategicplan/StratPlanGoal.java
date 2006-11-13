@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanGoal extends TreeTableNode
 {
-	public StratPlanGoal(Project projectToUse, Goal goalToUse)
+	public StratPlanGoal(Project projectToUse, Goal goalToUse) throws Exception
 	{
 		project = projectToUse;
 		if(goalToUse == null)
@@ -75,7 +75,7 @@ public class StratPlanGoal extends TreeTableNode
 		return goal.toString();
 	}
 
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		objectiveVector = new Vector();
 		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());

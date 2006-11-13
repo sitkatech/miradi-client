@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanRoot extends TreeTableNode
 {
-	public StratPlanRoot(Project projectToUse)
+	public StratPlanRoot(Project projectToUse) throws Exception
 	{
 		project = projectToUse;
 		rebuild();
@@ -52,14 +52,14 @@ public class StratPlanRoot extends TreeTableNode
 		return -1;
 	}
 	
-	public void rebuild()
+	public void rebuild() throws Exception
 	{
 		Vector goalVector = new Vector();
 		goalVector.addAll(getAllGoals(project.getGoalPool()));
 		goalNodes = (StratPlanGoal[])goalVector.toArray(new StratPlanGoal[0]);
 	}
 
-	private Vector getAllGoals(GoalPool pool)
+	private Vector getAllGoals(GoalPool pool) throws Exception
 	{
 		BaseId[] goalIds = pool.getIds();
 		Vector goals = new Vector();
