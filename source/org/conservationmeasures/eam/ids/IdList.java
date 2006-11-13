@@ -9,9 +9,9 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class IdList
 {
@@ -32,12 +32,12 @@ public class IdList
 			add(ids[i]);
 	}
 	
-	public IdList(JSONObject json)
+	public IdList(EnhancedJsonObject json)
 	{
 		this();
-		JSONArray array = json.optJSONArray(TAG_IDS);
+		EnhancedJsonArray array = json.optJsonArray(TAG_IDS);
 		if(array == null)
-			array = new JSONArray();
+			array = new EnhancedJsonArray();
 		for(int i = 0; i < array.length(); ++i)
 			add(new BaseId(array.getInt(i)));
 		
@@ -121,9 +121,9 @@ public class IdList
 		}
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray array = new JSONArray();
 		for(int i = 0; i < size(); ++i)
 			array.appendInt(get(i).asInt());

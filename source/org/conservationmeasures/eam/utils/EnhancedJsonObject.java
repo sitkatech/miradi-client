@@ -43,16 +43,6 @@ public class EnhancedJsonObject extends JSONObject
 		super(handleEmptyString(jsonString));
 	}
 
-	// Override to return empty array instead of null if missing
-	public JSONArray optJSONArray(String key)
-	{
-		JSONArray array = super.optJSONArray(key);
-		if(array == null)
-			array = new JSONArray();
-		
-		return array;
-	}
-
 	// Don't use this!
 	public JSONObject getJSONObject(String key)
 	{
@@ -77,6 +67,20 @@ public class EnhancedJsonObject extends JSONObject
 			return new EnhancedJsonObject();
 		
 		return getJson(key);
+	}
+
+	// Override to return empty array instead of null if missing
+	public JSONArray optJSONArray(String key)
+	{
+		throw new RuntimeException("Use optJsonArray instead!");
+	}
+	
+	public EnhancedJsonArray optJsonArray(String key)
+	{
+		if (has(key))
+			return getJsonArray(key);
+		
+		return new EnhancedJsonArray();
 	}
 	
 	public JSONArray getJSONArray(String key)

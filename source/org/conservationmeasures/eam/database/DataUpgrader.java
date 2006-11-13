@@ -272,11 +272,11 @@ public class DataUpgrader extends ProjectServer
 		{
 			BaseId id = ids[i];
 			File objectFile = getObjectFile(NODE_TYPE, id);
-			JSONObject nodeData = JSONFile.read(objectFile);
+			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
 			String type = nodeData.optString("Type", "");
 			if(type.equals("Target"))
 			{
-				JSONArray oldGoals = nodeData.optJSONArray("GoalIds");
+				JSONArray oldGoals = nodeData.optJsonArray("GoalIds");
 				if(oldGoals != null && oldGoals.equals(noGoals))
 					continue;
 				nodeData.put("GoalIds", noGoals);

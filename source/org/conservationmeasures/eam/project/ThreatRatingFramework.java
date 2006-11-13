@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
+import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -385,12 +386,12 @@ public class ThreatRatingFramework
 		if(json == null)
 			return;
 
-		JSONArray bundleKeys = json.optJSONArray(TAG_BUNDLE_KEYS);
+		EnhancedJsonArray bundleKeys = json.optJsonArray(TAG_BUNDLE_KEYS);
 		if(bundleKeys == null)
-			bundleKeys = new JSONArray();
+			bundleKeys = new EnhancedJsonArray();
 		for(int i = 0; i < bundleKeys.length(); ++i)
 		{
-			JSONObject pair = bundleKeys.getJSONObject(i);
+			JSONObject pair = bundleKeys.getJson(i);
 			BaseId threatId = new BaseId(pair.getInt(TAG_BUNDLE_THREAT_ID));
 			BaseId targetId = new BaseId(pair.getInt(TAG_BUNDLE_TARGET_ID));
 			ThreatRatingBundle bundle = db.readThreatRatingBundle(threatId, targetId);

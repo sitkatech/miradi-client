@@ -5,10 +5,8 @@
  */
 package org.conservationmeasures.eam.ids;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.json.JSONObject;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestIdList extends EAMTestCase
 {
@@ -33,7 +31,7 @@ public class TestIdList extends EAMTestCase
 	public void testJson()
 	{
 		IdList list = createSampleIdList();
-		JSONObject json = list.toJson();
+		EnhancedJsonObject json = list.toJson();
 		
 		IdList loaded = new IdList(json);
 		assertEquals("wrong size?", list.size(), loaded.size());

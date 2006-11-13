@@ -113,8 +113,11 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 
 	private void saveTreeExpansionState() throws Exception
 	{
+		if (!isListening)
+			return;
+
 		int rowCount = tree.getRowCount();
-		ObjectReferenceList objRefList = new ObjectReferenceList();;
+		ObjectReferenceList objRefList = new ObjectReferenceList();
 		for (int i = 0; i < rowCount; i ++)
 		{
 			TreePath treePath = tree.getPathForRow(i);
@@ -126,9 +129,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 					objRefList.add(objectReference);
 			}
 		}
-		
-		if (isListening)
-			saveExpandedPath(objRefList);
+		saveExpandedPath(objRefList);
 	}
 
 	private void saveExpandedPath(ObjectReferenceList  newObjRefList) throws Exception
@@ -149,35 +150,43 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 		{
 			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
 			TreePath secondLevelPath = rootPath.pathByAddingChild(secondLevelObject);
-			tree.expandPath(secondLevelPath);
+			if (secondLevelObject.getObjectReference() == null)
+				tree.expandPath(secondLevelPath);
 		}
 	}
 
 	public void restoreTreeState()
 	{
-		try
+		isListening = false;
+		expandRootNodes();
+		int rowCount = tree.getRowCount();
+		for (int rowCounter = 0; rowCounter < rowCount; rowCounter ++)
 		{
-			isListening = false;
-			expandRootNodes();
+			TreePath treePath = tree.getPathForRow(rowCounter);
+			TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+			ObjectReference nodeObjRef = node.getObjectReference();
+			if (nodeObjRef != null)
+				possiblyExpandNode(treePath, nodeObjRef);
+		}
+
+		isListening = true;
+	}
+
+	private void possiblyExpandNode(TreePath treePath, ObjectReference nodeObjRef)
+	{
+		try{
 			ViewData viewData = project.getViewData(project.getCurrentView());
 			ObjectReferenceList objRefList= new ObjectReferenceList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
-			int rowCount = tree.getRowCount();
-			for (int rowCounter = 0; rowCounter < rowCount; rowCounter ++)
-			{
-				TreePath treePath = tree.getPathForRow(rowCounter);
-				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-				ObjectReference nodeObjRef = node.getObjectReference();
-				if (nodeObjRef != null)
-					for (int objRefListCounter  = 0; objRefListCounter < objRefList.size(); objRefListCounter++)
-						if (nodeObjRef.equals(objRefList.get(objRefListCounter)))
-							tree.expandPath(treePath);
-			}
+
+			for (int objRefListCounter  = 0; objRefListCounter < objRefList.size(); objRefListCounter++)
+				if (nodeObjRef.equals(objRefList.get(objRefListCounter)))
+					tree.expandPath(treePath);
+
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-		isListening = true;
 	}
 
 	private final class TreeModelHandler implements TreeModelListener
@@ -207,18 +216,15 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 	{
 		public void treeExpanded(TreeExpansionEvent event) 
 		{
-			try
-			{
-				saveTreeExpansionState();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-			fireTableDataChanged();
+			treeExpansionStateChanged();
 		}
 
 		public void treeCollapsed(TreeExpansionEvent event) 
+		{
+			treeExpansionStateChanged();
+		}
+		
+		private void treeExpansionStateChanged()
 		{
 			try
 			{
