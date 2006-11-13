@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanGoal extends TreeTableNode
@@ -92,6 +94,7 @@ public class StratPlanGoal extends TreeTableNode
 				objectiveVector.add(new StratPlanObjective(project, objective));
 			}
 		}
+		Collections.sort(objectiveVector, new IgnoreCaseStringComparator());
 	}
 
 	Project project;

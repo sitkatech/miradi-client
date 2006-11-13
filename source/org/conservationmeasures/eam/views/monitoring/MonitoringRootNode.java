@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import java.util.Collections;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -12,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objectpools.DesirePool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringRootNode extends MonitoringNode
@@ -57,6 +59,7 @@ public class MonitoringRootNode extends MonitoringNode
 		Vector desireVector = new Vector();
 		desireVector.addAll(getAllDesires(project.getGoalPool()));
 		children = desireVector;
+		Collections.sort(children, new IgnoreCaseStringComparator());
 	}
 
 	private Vector getAllDesires(DesirePool pool) throws Exception

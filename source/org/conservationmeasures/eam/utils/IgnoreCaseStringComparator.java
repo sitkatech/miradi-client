@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.threatmatrix;
+package org.conservationmeasures.eam.utils;
 
 import java.util.Comparator;
 

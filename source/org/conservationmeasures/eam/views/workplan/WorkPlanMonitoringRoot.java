@@ -5,11 +5,14 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import java.util.Arrays;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
@@ -56,6 +59,7 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 		allIndicators = new WorkPlanMonitoringIndicatorNode[indicators.length];
 		for(int i = 0; i < indicators.length; i++)
 			allIndicators[i] = new WorkPlanMonitoringIndicatorNode(project, indicators[i]);
+		Arrays.sort(allIndicators, new IgnoreCaseStringComparator());
 	}
 	
 	public boolean canInsertActivityHere()

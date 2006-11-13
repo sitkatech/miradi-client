@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -19,6 +20,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringGoalNode extends MonitoringNode
@@ -86,6 +88,7 @@ public class MonitoringGoalNode extends MonitoringNode
 				result.add(new MonitoringObjectiveNode(project, objective));
 			}
 		}
+		Collections.sort(result, new IgnoreCaseStringComparator());
 		return result;
 	}
 
@@ -106,6 +109,7 @@ public class MonitoringGoalNode extends MonitoringNode
 				result.add(new MonitoringIndicatorNode(project, indicator));
 			}
 		}
+		Collections.sort(result, new IgnoreCaseStringComparator());
 		return result;
 	}
 

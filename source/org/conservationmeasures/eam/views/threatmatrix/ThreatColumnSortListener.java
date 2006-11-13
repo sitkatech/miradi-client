@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.util.Comparator;
 
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 
 
 public class ThreatColumnSortListener extends ColumnSortListener

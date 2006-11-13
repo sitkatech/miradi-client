@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -14,6 +15,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanObjective extends TreeTableNode
@@ -77,6 +79,7 @@ public class StratPlanObjective extends TreeTableNode
 				strategyVector.add(new StratPlanStrategy(project, intervention));
 		}
 		strategies = (StratPlanStrategy[])strategyVector.toArray(new StratPlanStrategy[0]);
+		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 	
 	private boolean doesChainContainDesire(ConceptualModelNode chainMember, BaseId desireId)

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -13,6 +14,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
@@ -67,6 +69,7 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 			strategyVector.add(workPlanStrategy);
 		}
 		strategies = (WorkPlanStrategy[])strategyVector.toArray(new WorkPlanStrategy[0]);
+		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 	
 	public boolean canInsertActivityHere()
