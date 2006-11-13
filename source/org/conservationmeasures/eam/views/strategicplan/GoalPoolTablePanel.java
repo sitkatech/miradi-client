@@ -1,36 +1,14 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectpools.GoalPool;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 
-public class GoalPoolTablePanel extends LegacyObjectPoolTablePanel
+public class GoalPoolTablePanel extends ObjectPoolTablePanel
 {
-	public GoalPoolTablePanel(UmbrellaView viewToUse)
+	public GoalPoolTablePanel(Project projectToUse)
 	{
-		super(viewToUse, new GoalPoolTableModel(viewToUse.getProject()), buttonActionClasses);
-		
-		setMaxColumnWidthToHeaderWidth(0);
-		setColumnVeryWide(2);
-
+		super(projectToUse, ObjectType.GOAL, 
+				new GoalPoolTableModel(projectToUse)
+		);
 	}
-	
-	public Goal getSelectedGoal()
-	{
-		int row = getSelectedRow();
-		if(row < 0)
-			return null;
-		
-		BaseId id = getObjectFromRow(row).getId();
-		GoalPool pool = getProject().getGoalPool();
-		Goal goal = pool.find(id);
-		return goal;
-	}
-
-	static final Class[] buttonActionClasses = {
-		};
-
-
 }

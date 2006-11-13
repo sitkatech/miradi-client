@@ -38,7 +38,7 @@ public class StrategicPlanView extends TabbedView
 	{
 		strategicPlanPanel = StrategicPlanPanel.createForProject(getMainWindow());
 		objectivePanel = new ObjectivePoolTablePanel(this);
-		goalPanel = new GoalPoolTablePanel(this);
+		goalPanel = new GoalPoolManagementPanel(getMainWindow().getProject(), getMainWindow().getActions());
 
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
 		addTab(EAM.text("Goals"), goalPanel);
@@ -70,7 +70,7 @@ public class StrategicPlanView extends TabbedView
 		return objectivePanel;
 	}
 	
-	public GoalPoolTablePanel getGoalPanel()
+	public GoalPoolManagementPanel getGoalPanel()
 	{
 		return goalPanel;
 	}
@@ -98,7 +98,7 @@ public class StrategicPlanView extends TabbedView
 	
 	StrategicPlanPanel strategicPlanPanel;
 	ObjectivePoolTablePanel objectivePanel;
-	GoalPoolTablePanel goalPanel;
+	GoalPoolManagementPanel goalPanel;
 	
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
