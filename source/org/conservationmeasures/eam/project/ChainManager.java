@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -25,20 +26,32 @@ public class ChainManager
 	{
 		project = projectToUse;
 	}
-
-	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId) throws ParseException
+	
+	public ConceptualModelNodeSet findNodesThatUseThisAnnotation(int type, BaseId id) throws Exception
 	{
-		return findNodesThatHaveThisAnnotation(objectiveId, ConceptualModelNode.TAG_OBJECTIVE_IDS);
+		if(type == ObjectType.OBJECTIVE)
+			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_OBJECTIVE_IDS);
+		if(type == ObjectType.GOAL)
+			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_GOAL_IDS);
+		if(type == ObjectType.INDICATOR)
+			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_INDICATOR_IDS);
+		
+		throw new RuntimeException("Not an annotation type? " + type);
 	}
 
-	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId) throws ParseException
+	public ConceptualModelNodeSet findNodesThatUseThisObjective(BaseId objectiveId) throws Exception
 	{
-		return findNodesThatHaveThisAnnotation(indicatorId, ConceptualModelNode.TAG_INDICATOR_IDS);
+		return findNodesThatUseThisAnnotation(ObjectType.OBJECTIVE, objectiveId);
+	}
+
+	public ConceptualModelNodeSet findNodesThatUseThisIndicator(BaseId indicatorId) throws Exception
+	{
+		return findNodesThatUseThisAnnotation(ObjectType.INDICATOR, indicatorId);
 	}
 	
-	public ConceptualModelNodeSet findNodesThatUseThisGoal(BaseId goalId) throws ParseException
+	public ConceptualModelNodeSet findNodesThatUseThisGoal(BaseId goalId) throws Exception
 	{
-		return findNodesThatHaveThisAnnotation(goalId, ConceptualModelNode.TAG_GOAL_IDS);
+		return findNodesThatUseThisAnnotation(ObjectType.GOAL, goalId);
 	}
 	
 	private ConceptualModelNodeSet findNodesThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
@@ -57,7 +70,7 @@ public class ChainManager
 		return foundNodes;
 	}
 
-	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId) throws ParseException
+	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
 		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -71,7 +84,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId) throws ParseException
+	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId) throws Exception
 	{
 		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -85,7 +98,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId) throws ParseException
+	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId) throws Exception
 	{
 		ConceptualModelNode[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
@@ -123,7 +136,7 @@ public class ChainManager
 			
 			return EAMBaseObject.toHtml(targets.toNodeArray());
 		}
-		catch(ParseException e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 			return HTML_ERROR;
@@ -139,7 +152,7 @@ public class ChainManager
 			
 			return EAMBaseObject.toHtml(directThreats.toNodeArray());
 		}
-		catch(ParseException e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 			return HTML_ERROR;
