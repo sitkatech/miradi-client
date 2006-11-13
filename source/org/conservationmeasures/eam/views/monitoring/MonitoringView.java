@@ -35,7 +35,7 @@ public class MonitoringView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		monitoringPanel = new MonitoringPanel(getProject());
-		indicatorManagementPanel = new IndicatorPoolTablePanel(this);
+		indicatorManagementPanel = new IndicatorPoolManagementPanel(getProject(), getActions());
 		addTab(EAM.text("Monitoring Plan"), monitoringPanel);
 		addTab(EAM.text("Indicators"), indicatorManagementPanel);
 	}
@@ -52,7 +52,7 @@ public class MonitoringView extends TabbedView
 		return new MonitoringPlanWizardPanel();
 	}
 
-	public IndicatorPoolTablePanel getIndicatorManagementPanel()
+	public IndicatorPoolManagementPanel getIndicatorManagementPanel()
 	{
 		return indicatorManagementPanel;
 	}
@@ -62,5 +62,5 @@ public class MonitoringView extends TabbedView
 	}
 	
 	MonitoringPanel monitoringPanel;
-	IndicatorPoolTablePanel indicatorManagementPanel;
+	IndicatorPoolManagementPanel indicatorManagementPanel;
 }

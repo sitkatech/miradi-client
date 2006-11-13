@@ -5,37 +5,16 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectpools.IndicatorPool;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 
-public class IndicatorPoolTablePanel extends LegacyObjectPoolTablePanel
+public class IndicatorPoolTablePanel extends ObjectPoolTablePanel
 {
-	public IndicatorPoolTablePanel(UmbrellaView viewToUse)
+	public IndicatorPoolTablePanel(Project projectToUse)
 	{
-		super(viewToUse, new IndicatorPoolTableModel(viewToUse.getProject()), buttonActionClasses);
-		
-		setMaxColumnWidthToHeaderWidth(0);
-		
+		super(projectToUse, ObjectType.INDICATOR, 
+				new IndicatorPoolTableModel(projectToUse)
+		);
 	}
-	
-	public Indicator getSelectedIndicator()
-	{
-		int row = getTable().getSelectedRow();
-		if(row < 0)
-			return null;
-		
-		BaseId indicatorId = getObjectFromRow(row).getId();
-		IndicatorPool pool = getProject().getIndicatorPool();
-		Indicator indicator = pool.find(indicatorId);
-		return indicator;
-	}
-	
-
-	
-	static final Class[] buttonActionClasses = {
-		};
-
 }
