@@ -35,10 +35,5 @@ public class DiagramTarget extends DiagramNode
 		return new Dimension(insideUpperLeftCorner.x, insideUpperLeftCorner.y);
 	}
 
-	public Rectangle getAnnotationsRect()
-	{
-		return getAnnotationsRect(getGoals().size());
-	}
-
 
 }

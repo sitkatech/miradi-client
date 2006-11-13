@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
-import java.awt.Rectangle;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -28,11 +27,6 @@ public class DiagramCluster extends DiagramNode
 	public Color getColor()
 	{
 		return DiagramConstants.COLOR_CLUSTER;
-	}
-
-	public Rectangle getAnnotationsRect()
-	{
-		return getAnnotationsRect(0);
 	}
 
 	public Command[] buildCommandsToClear()

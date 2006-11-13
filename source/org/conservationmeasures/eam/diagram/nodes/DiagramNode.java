@@ -29,7 +29,6 @@ import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.NodeAnnotationIds;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
@@ -204,29 +203,12 @@ abstract public class DiagramNode extends EAMGraphCell
 
 	public int getAnnotationRows()
 	{
-		int numberOfAnnotations = 0;
-		numberOfAnnotations = getAnnotationCount(getObjectives()) + getAnnotationCount(getGoals());
+		if(getGoals().size() > 0 || getObjectives().size() > 0 || getIndicators().size() > 0)
+			return 1;
 
-		if(getIndicators().size() > 0 && numberOfAnnotations == 0)
-			numberOfAnnotations = 1;
-
-		return numberOfAnnotations;
+		return 0;
 	}
 
-	private int getAnnotationCount(NodeAnnotationIds annotations)
-	{
-		int numberOfAnnotations = 0;
-		if(annotations != null)
-		{
-			for(int i = 0; i < annotations.size(); ++i)
-			{
-				if(annotations.getId(i).asInt() >= 0)
-					++numberOfAnnotations;
-			}
-		}
-		return numberOfAnnotations;
-	}
-	
 	abstract public Color getColor();
 
 	public boolean isTarget()
@@ -340,22 +322,18 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		if(getGoals().size() == 0)
 			return false;
-		return getAnnotationsRect(getGoals().size()).contains(p);
+		return getAnnotationsRect().contains(p);
 	}
 	
-	abstract public Rectangle getAnnotationsRect();
-	
-	public Rectangle getAnnotationsRect(int numberLines)
+	public Rectangle getAnnotationsRect()
 	{
-		if(numberLines == 0 && getIndicators().size() > 0)
-			numberLines = 1;
 		
 		Rectangle rect = new Rectangle(getSize());
 		
 		Rectangle annotationsRectangle = new Rectangle();
 		int annotationLeftInset = getAnnotationLeftOffset();
 		annotationsRectangle.x = rect.x + annotationLeftInset;
-		int annotationsHeight = numberLines * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		int annotationsHeight = getAnnotationRows() * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 		annotationsRectangle.y = rect.y + (rect.height - annotationsHeight);
 		int avoidGoingPastClippingEdge = 1;
 		annotationsRectangle.width = rect.width - annotationLeftInset - getAnnotationRightInset() - avoidGoingPastClippingEdge;

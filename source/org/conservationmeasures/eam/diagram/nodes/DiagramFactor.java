@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Color;
-import java.awt.Rectangle;
 
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -30,11 +29,6 @@ public class DiagramFactor extends DiagramNode
 			return DiagramConstants.COLOR_STRESS;
 		
 		throw new RuntimeException("Unknown factor type: " + getNodeType().getClass());
-	}
-
-	public Rectangle getAnnotationsRect()
-	{
-		return getAnnotationsRect(getObjectives().size());
 	}
 
 

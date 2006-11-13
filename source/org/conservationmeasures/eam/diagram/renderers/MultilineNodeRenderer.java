@@ -48,10 +48,7 @@ import java.awt.Stroke;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
@@ -88,15 +85,42 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		if(node.isIntervention())
 			rating = ((ConceptualModelIntervention)node.getUnderlyingObject()).getStrategyRating();
 
+		DiagramComponent diagram = (DiagramComponent)graph;
+
 		indicatorText = null;
-		IdList indicators = node.getIndicators();
-		if(indicators.size() == 1)
-			indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
-		else if(indicators.size() > 1)
-			indicatorText = "*";
+		if(diagram.areIndicatorsVisible())
+		{
+			IdList indicators = node.getIndicators();
+			if(indicators.size() == 1)
+				indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
+			else if(indicators.size() > 1)
+				indicatorText = "*";
+		}
+		
+		desireText = null;
+		if(diagram.areDesiresVisible())
+		{
+			if(node.canHaveGoal())
+			{
+				IdList goalIds = node.getGoals();
+				if(goalIds.size() == 1)
+					desireText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
+				else if(goalIds.size() > 1)
+					desireText = "" + goalIds.size() + " " + EAM.text("Goals");
+			}
+			else if(node.canHaveObjectives())
+			{
+				IdList objectiveIds = node.getObjectives();
+				if(objectiveIds.size() == 1)
+					desireText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
+				else if(objectiveIds.size() > 1)
+					desireText = "" + objectiveIds.size() + " " + EAM.text("Objs");
+			}
+		}
 	
 		return this;
 	}
+	
 	
 	public void paint(Graphics g1)
 	{
@@ -109,34 +133,9 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 		Rectangle rect = getNonBorderBounds();
 		Graphics2D g2 = (Graphics2D) g1;
 
-		DiagramComponent diagram = (DiagramComponent)graph;
-		if(diagram.areDesiresVisible())
-		{
-			DiagramModel model = (DiagramModel)graph.getModel();
-			ObjectiveIds objectives = node.getObjectives();
-			if(objectives.hasAnnotation())
-			{
-				BaseId objectiveId = objectives.getId(0);
-				Objective objective = model.getObjectiveById(objectiveId);
-				if(objective != null)
-				{
-					String text = EAM.text("Label|Obj ") + objective.getShortLabel();
-					drawAnnotationCellRect(rect, g2, new RectangleRenderer(), text);
-				}
-			}
-			GoalIds goals = node.getGoals();
-			if(goals.hasAnnotation())
-			{
-				BaseId goalId = goals.getId(0);
-				Goal goal = model.getGoalById(goalId);
-				if(goal != null)
-				{
-					String text = EAM.text("Label|Goal ") + goal.getShortLabel();
-					drawAnnotationCellRect(rect, g2, new EllipseRenderer(), text);
-				}
-			}
-		}
-		if(diagram.areIndicatorsVisible())
+		if(desireText != null)
+			drawAnnotationCellRect(rect, g2, new RectangleRenderer(), desireText);
+		if(indicatorText != null)
 			drawIndicator(rect, g2);
 	}
 	
@@ -202,4 +201,5 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	DiagramNode node;
 	RatingChoice rating;
 	String indicatorText;
+	String desireText;
 }

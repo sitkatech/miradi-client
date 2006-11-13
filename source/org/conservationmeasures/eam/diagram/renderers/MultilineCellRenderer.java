@@ -143,8 +143,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		if(annotationText == null)
 			return;
 
-		final int singleAnnotation = 1;
-		Rectangle annotationsRectangle = getAnnotationsRectFromCellRect(rect, singleAnnotation);
+		Rectangle annotationsRectangle = getAnnotationsRectFromCellRect(rect);
 		setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 		drawAnnotation(annotationsRectangle, g2, annotationRenderer, annotationText);
 	}
@@ -168,13 +167,13 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		annotationRenderer.drawBorder(g2, annotationsRectangle, color);
 	}
 
-	Rectangle getAnnotationsRectFromCellRect(Rectangle rect, int numberLines) 
+	Rectangle getAnnotationsRectFromCellRect(Rectangle rect) 
 	{
 		Rectangle annotationsRectangle = new Rectangle();
 		annotationsRectangle.x = getAnnotationX(rect.x);
-		annotationsRectangle.y = getAnnotationY(rect.y, rect.height, numberLines);
+		annotationsRectangle.y = getAnnotationY(rect.y, rect.height);
 		annotationsRectangle.width = getAnnotationsWidth(rect.width);
-		annotationsRectangle.height = getAnnotationsHeight(numberLines);
+		annotationsRectangle.height = getAnnotationsHeight();
 		return annotationsRectangle;
 	}
 	
@@ -183,9 +182,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return cellX + getAnnotationLeftOffset();
 	}
 	
-	int getAnnotationY(int cellY, int cellHeight, int numberLines)
+	int getAnnotationY(int cellY, int cellHeight)
 	{
-		return cellY + cellHeight - getAnnotationsHeight(numberLines);
+		return cellY + cellHeight - getAnnotationsHeight();
 	}
 
 	int getAnnotationsWidth(int cellWidth)
@@ -193,10 +192,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return cellWidth - getAnnotationLeftOffset() - getAnnotationRightInset();
 	}
 
-	int getAnnotationsHeight(int numberLines)
+	int getAnnotationsHeight()
 	{
-		int annotationsHeight = numberLines * ANNOTATIONS_HEIGHT;
-		return annotationsHeight;
+		return ANNOTATIONS_HEIGHT;
 	}
 
 	int getAnnotationLeftOffset()

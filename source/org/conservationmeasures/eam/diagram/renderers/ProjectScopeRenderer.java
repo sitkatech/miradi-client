@@ -39,7 +39,7 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		visionRect.x = getAnnotationX(rect.x);
 		visionRect.y = rect.y + ProjectScopeBox.VISION_HEIGHT;
 		visionRect.width = getAnnotationsWidth(rect.width);
-		visionRect.height = getAnnotationsHeight(1);
+		visionRect.height = getAnnotationsHeight();
 		drawAnnotation(visionRect, g2, new RoundRectangleRenderer(), vision);
 	}
 	
