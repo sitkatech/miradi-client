@@ -6,16 +6,23 @@
 package org.conservationmeasures.eam.views.monitoring;
 
 
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.EAMTreeTableModelAdapter;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableWithIcons;
 
 public class MonitoringTreeTable extends TreeTableWithIcons
 {
-	public MonitoringTreeTable(GenericTreeTableModel monitoringModelToUse)
+	public MonitoringTreeTable(Project projectToUse, GenericTreeTableModel monitoringModelToUse)
 	{
 		super(monitoringModelToUse);
-		monitoringModel = monitoringModelToUse;
+		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, monitoringModelToUse, tree);
 	}
-
-	public GenericTreeTableModel monitoringModel;
+	
+	public EAMTreeTableModelAdapter getModelAdapter()
+	{
+		return treeTableModelAdapter;
+	}
+	
+	private EAMTreeTableModelAdapter treeTableModelAdapter;
 }
