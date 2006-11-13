@@ -84,6 +84,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Hashtable nest = new Hashtable();
 		nest.put(this, getAttributes());
 		model.edit(nest, null, null, null);
+		model.toBack(new Object[] {this});
 	}
 	
 	public Rectangle2D computeCurrentTargetBounds()
