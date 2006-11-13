@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.utils;
 
-import java.text.ParseException;
-
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TreeExpansionEvent;
@@ -21,6 +19,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectReference;
 import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -33,13 +32,13 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 {
 	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
 	{
-        tree = treeToUse;
-        treeTableModel = treeTableModelToUse;
-        project = projectToUse;
+		tree = treeToUse;
+		treeTableModel = treeTableModelToUse;
+		project = projectToUse;
 
-        project.addCommandExecutedListener(this);
-        setExpansionListeners(tree);
-        setModelListeners(treeTableModel);
+		project.addCommandExecutedListener(this);
+		setExpansionListeners(tree);
+		setModelListeners(treeTableModel);
 	}
 
 	private void setModelListeners(TreeTableModel treeTableModel)
@@ -97,7 +96,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer()); 
 	}
-	
+
 	protected void delayedFireTableRowsRemoved() 
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataChangedFirer());	}
@@ -106,53 +105,81 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataChangedFirer());
 	}
-	
+
 	protected void delayedFireTableDataChanged() 
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
-	
+
 	private void saveTreeExpansionState() throws Exception
 	{
 		int rowCount = tree.getRowCount();
-		ObjectReferenceList objRefList = new ObjectReferenceList();
+		ObjectReferenceList objRefList = new ObjectReferenceList();;
 		for (int i = 0; i < rowCount; i ++)
 		{
 			TreePath treePath = tree.getPathForRow(i);
-			
-			if (tree.isExpanded(i))
+			if (tree.isExpanded(treePath))
 			{
-				
 				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-	//			System.out.println("NODE EXPANDED "+node);
 				ObjectReference objectReference = node.getObjectReference();
 				if (objectReference != null)
-				{
-					//TODO remove commented print
-					//System.out.println("writing state OF "+new TreePath(node));
-					objRefList.add(node.getObjectReference());
-
-				}
+					objRefList.add(objectReference);
 			}
-			//System.out.println(treePath+" " +tree.isExpanded(i));
 		}
-		saveExpandedPath(objRefList);
+		
+		if (isListening)
+			saveExpandedPath(objRefList);
 	}
-	
+
 	private void saveExpandedPath(ObjectReferenceList  newObjRefList) throws Exception
 	{
-		//TreeTableNode node = (TreeTableNode)expandedNode;
-		//System.out.println(node.getType());
-
-		//int nodeType = node.getType();
-		//BaseId nodeId = node.getObjectReference().getObjectId();
-		
-		//(int objectType, BaseId objectId, String fieldTag, String dataValue)
 		ViewData viewData = project.getViewData(project.getCurrentView());		
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
 		project.executeCommand(cmd);
 	}
-	
+
+	private void expandRootNodes()
+	{
+		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
+		TreePath rootPath = new TreePath(root);
+		TreeTableNode topLevelObject = (TreeTableNode)rootPath.getLastPathComponent();
+		tree.expandPath(rootPath);
+
+		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
+		{
+			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
+			TreePath secondLevelPath = rootPath.pathByAddingChild(secondLevelObject);
+			tree.expandPath(secondLevelPath);
+		}
+	}
+
+	public void restoreTreeState()
+	{
+		try
+		{
+			isListening = false;
+			expandRootNodes();
+			ViewData viewData = project.getViewData(project.getCurrentView());
+			ObjectReferenceList objRefList= new ObjectReferenceList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
+			int rowCount = tree.getRowCount();
+			for (int rowCounter = 0; rowCounter < rowCount; rowCounter ++)
+			{
+				TreePath treePath = tree.getPathForRow(rowCounter);
+				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+				ObjectReference nodeObjRef = node.getObjectReference();
+				if (nodeObjRef != null)
+					for (int objRefListCounter  = 0; objRefListCounter < objRefList.size(); objRefListCounter++)
+						if (nodeObjRef.equals(objRefList.get(objRefListCounter)))
+							tree.expandPath(treePath);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		isListening = true;
+	}
+
 	private final class TreeModelHandler implements TreeModelListener
 	{
 		public void treeNodesChanged(TreeModelEvent e) 
@@ -175,32 +202,36 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 			delayedFireTableDataChanged();
 		}
 	}
-	
+
 	private final class TreeExpansionHandler implements TreeExpansionListener
 	{
 		public void treeExpanded(TreeExpansionEvent event) 
 		{
-			//TODO remove commented print
-			//System.out.println("EXPANING");
 			try
 			{
 				saveTreeExpansionState();
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				EAM.logException(e);
 			}
 			fireTableDataChanged();
 		}
 
 		public void treeCollapsed(TreeExpansionEvent event) 
 		{
-			//TODO remove commented print
-			//System.out.println("tree collapsed event");
+			try
+			{
+				saveTreeExpansionState();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
 			fireTableDataChanged();
 		}
 	}
-	
+
 	private final class DelayedTableDataChangedFirer implements Runnable
 	{
 		public void run() 
@@ -208,7 +239,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 			fireTableDataChanged();
 		}
 	}
-	
+
 	private final class DelayedTableDataUpdatedFirer implements Runnable
 	{
 		public void run() 
@@ -216,37 +247,43 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 			fireTableRowsUpdated(0, getRowCount() - 1);
 		}
 	}
-	
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		//FIXME add functionality so that undo and redo work
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)
 	{
+		//FIXME add functionality so that undo and redo work
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
+		//TODO remove comments and make undo work
+		/*
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
 		//System.out.println("PREVIOUS DATA = "+cmd.getPreviousDataValue());
-		int rowCount = tree.getRowCount();
-		try
+		//int rowCount = tree.getRowCount();
+		//try
 		{
 			ObjectReferenceList objRefList = new ObjectReferenceList(cmd.getPreviousDataValue());
-
-			for (int i = 0; i < rowCount; i ++)
+					for (int i = 0; i < rowCount; i ++)
 			{
 				TreePath treePath = tree.getPathForRow(i);
 				if (treePath != null)
 				{
 					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
+					//System.out.println("node = "+node);
 					for (int j  = 0; j < objRefList.size(); j++)
 					{
 						ObjectReference or = objRefList.get(j);
+						System.out.println("or = "+or);
+
 						if (or.equals(node.getObjectReference()) && j != 0)
 						{
 							//TODO remove commented print
-							//System.out.println(" COLLPASING NODE ="+new TreePath(node));
+							System.out.println(" COLLPASING NODE ="+new TreePath(node));
 							tree.collapsePath(treePath);
 						}
 					}
@@ -257,12 +294,11 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 		catch(ParseException e)
 		{
 		}
-		
-		
+		 */
 	}
 
-
+	boolean isListening = true;
 	Project project;
-    JTree tree;
-    TreeTableModel treeTableModel;
+	JTree tree;
+	TreeTableModel treeTableModel;
 }

@@ -18,9 +18,17 @@ public class StrategicPlanTreeTable extends TreeTableWithIcons
 	public StrategicPlanTreeTable(Project projectToUse, TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
-		setModel(new EAMTreeTableModelAdapter(projectToUse, treeTableModel, tree));
+		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableModel, tree);
+		setModel(treeTableModelAdapter);
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
 		tree.setRootVisible(false);
 	}
+	
+	public EAMTreeTableModelAdapter getModelAdapter()
+	{
+		return treeTableModelAdapter;
+	}
+	
+	EAMTreeTableModelAdapter treeTableModelAdapter;
 }

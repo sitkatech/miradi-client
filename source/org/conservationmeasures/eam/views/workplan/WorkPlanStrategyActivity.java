@@ -55,7 +55,7 @@ public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 
 	public ObjectReference getObjectReference()
 	{
-		return new ObjectReference(activity.getType(), activity.getId());
+		return activity.getObjectReference();
 	}
 	
 	public int getType()

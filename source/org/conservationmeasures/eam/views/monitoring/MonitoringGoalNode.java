@@ -32,7 +32,7 @@ public class MonitoringGoalNode extends MonitoringNode
 
 	public ObjectReference getObjectReference()
 	{
-		return new ObjectReference(goal.getType(), goal.getId());
+		return goal.getObjectReference();
 	}
 	
 	public int getType()

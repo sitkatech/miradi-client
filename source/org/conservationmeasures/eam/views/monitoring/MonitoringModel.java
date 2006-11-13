@@ -9,7 +9,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringModel extends GenericTreeTableModel
 {
@@ -27,11 +26,6 @@ public class MonitoringModel extends GenericTreeTableModel
 	public int getColumnCount()
 	{
 		return columnTags.length;
-	}
-	
-	public TreeTableNode getCurrentExpandedNode()
-	{
-		return null;
 	}
 	
 	public static String[] columnTags = {

@@ -27,16 +27,19 @@ public class ObjectReferenceList
 	
 	public ObjectReferenceList(EnhancedJsonObject json)
 	{
-		
 		this();
 		try
 		{
 			EnhancedJsonArray array = json.getJsonArray(TAG_REFERENCES);
-			for(int i = 0; i < array.length(); ++i)
+			for(int i = 0; i < array.length(); ++i){
 				add(new ObjectReference(array.getJson(i)));
+			}
 		}
 		catch (Exception e)
 		{
+			//TODO this should be fixed.  why nullpointer is thrown?  
+			// find out and fix
+			//EAM.logException(e);
 			//e.printStackTrace();
 		}
 	}
@@ -92,5 +95,5 @@ public class ObjectReferenceList
 	}
 	
 	private Vector data;
-	private static final String TAG_REFERENCES = "references";
+	private static final String TAG_REFERENCES = "References";
 }

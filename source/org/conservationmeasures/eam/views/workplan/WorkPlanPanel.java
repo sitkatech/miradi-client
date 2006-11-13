@@ -37,7 +37,6 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.TreeTableWithIcons;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
@@ -52,7 +51,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.getTree().setShowsRootHandles(true);
 		tree.getTree().addTreeSelectionListener(this);
-		expandRootNodes();
+		tree.getModelAdapter().restoreTreeState();
 		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
@@ -142,22 +141,6 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		}
 	}
 	
-	//FIXME refactor with above code.  
-	private void expandRootNodes()
-	{
-		TreeTableNode root = model.getRootWorkPlanObject();
-		TreePath rootPath = new TreePath(root);
-		WorkPlanTreeTableNode topLevelObject = (WorkPlanTreeTableNode)rootPath.getLastPathComponent();
-		tree.getTree().expandPath(rootPath);
-		
-		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
-		{
-			WorkPlanTreeTableNode secondLevelObject = (WorkPlanTreeTableNode)topLevelObject.getChild(childIndex);
-			TreePath secondLevelPath = rootPath.pathByAddingChild(secondLevelObject);
-			tree.getTree().expandPath(secondLevelPath);
-		}
-	}
-
 	private Box createButtonBox(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
@@ -287,6 +270,6 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 	}
 
 	MainWindow mainWindow;
-	TreeTableWithIcons tree;
+	WorkPlanTreeTable tree;
 	WorkPlanTreeTableModel model;
 }

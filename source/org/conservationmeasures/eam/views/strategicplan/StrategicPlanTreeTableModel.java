@@ -39,11 +39,6 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 		return columnNames[column];
 	}
 	
-	public TreeTableNode getCurrentExpandedNode()
-	{
-		return null;
-	}
-
 	public static final int labelColumn = 0;
 	public static final int resourcesColumn = 1;
 	public static final int budgetColumn = 2;

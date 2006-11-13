@@ -40,6 +40,4 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel
 		return node.getChildCount();
 	}
 	
-	public abstract TreeTableNode getCurrentExpandedNode();
-	
 }

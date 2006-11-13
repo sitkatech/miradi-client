@@ -43,6 +43,7 @@ public class TreeTableWithIcons extends JTreeTable
 
 	public void expandEverything()
 	{
+		System.out.println("EXPAND EVERYTHING CALLED");
 		TreeTableNode root = (TreeTableNode)getTreeTableModel().getRoot();
 		TreePath rootPath = new TreePath(root);
 		expandNode(rootPath);

@@ -23,7 +23,7 @@ public class MonitoringIndicatorNode extends MonitoringNode
 
 	public ObjectReference getObjectReference()
 	{
-		return new ObjectReference(indicator.getType(), indicator.getId());
+		return indicator.getObjectReference();
 	}
 	
 	public int getType()

@@ -14,9 +14,15 @@ public class WorkPlanTreeTable extends TreeTableWithIcons
 	public WorkPlanTreeTable(Project projectToUse, WorkPlanTreeTableModel monitoringModelToUse)
 	{
 		super(monitoringModelToUse);
-		setModel(new EAMTreeTableModelAdapter(projectToUse, monitoringModelToUse, tree));
-		workPlanTreeTableModel = monitoringModelToUse;
+		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, monitoringModelToUse, tree);
+		setModel(treeTableModelAdapter);
 	}
 	
-	WorkPlanTreeTableModel workPlanTreeTableModel;
+	public EAMTreeTableModelAdapter getModelAdapter()
+	{
+		return treeTableModelAdapter;
+	}
+	
+	private EAMTreeTableModelAdapter treeTableModelAdapter;
+
 }

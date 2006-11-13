@@ -14,9 +14,6 @@ import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 
-import com.java.sun.jtreetable.JTreeTable;
-
-
 public class StrategicPlanPanel extends DisposablePanel
 {
 	static public StrategicPlanPanel createForProject(MainWindow mainWindowToUse) throws Exception
@@ -39,6 +36,7 @@ public class StrategicPlanPanel extends DisposablePanel
 		tree.getTree().setShowsRootHandles(true);
 		add(new JScrollPane(tree), BorderLayout.CENTER);
 		tree.getTree().addSelectionRow(0);
+		tree.getModelAdapter().restoreTreeState();
 	}
 	
 	public StrategicPlanTreeTableModel getModel()
@@ -47,7 +45,7 @@ public class StrategicPlanPanel extends DisposablePanel
 	}
 	
 	MainWindow mainWindow;
-	JTreeTable tree;
+	StrategicPlanTreeTable tree;
 	StrategicPlanTreeTableModel model;
 }
 

@@ -18,8 +18,8 @@ public class ObjectReference
 	
 	public ObjectReference(EnhancedJsonObject json)
 	{
-		objectType = json.optInt(TAG_OBJECT_TYPE);
-		objectId = json.optId(TAG_OBJECT_ID);
+		objectType = json.getInt(TAG_OBJECT_TYPE);
+		objectId = json.getId(TAG_OBJECT_ID);
 	}
 	
 	public EnhancedJsonObject toJson()

@@ -47,7 +47,7 @@ public class StratPlanObjective extends TreeTableNode
 	
 	public ObjectReference getObjectReference()
 	{
-		return new ObjectReference(objective.getType(), objective.getId());
+		return objective.getObjectReference();
 	}
 	
 	public int getType()
