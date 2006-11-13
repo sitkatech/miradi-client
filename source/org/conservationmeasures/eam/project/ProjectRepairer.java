@@ -5,6 +5,7 @@ import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -39,6 +40,8 @@ public class ProjectRepairer
 			ConceptualModelNode node = project.findNode(nodeId);
 			fixGhostIndicatorIds(node);
 			removeInvalidGoalIds(node);
+			removeInvalidObjectiveIds(node);
+			removeMissingObjectiveIds(node);
 		}
 	}
 	
@@ -82,6 +85,54 @@ public class ProjectRepairer
 		EAM.logWarning("Removing invalid goal id for " + node.getId());
 		ids.removeId(BaseId.INVALID);
 		node.setGoals(ids);
+		try
+		{
+			project.writeNode(node.getModelNodeId());
+		}
+		catch(Exception logAndContinue)
+		{
+			EAM.logError("Repair failed");
+			EAM.logException(logAndContinue);
+		}
+	}
+	
+	private void removeInvalidObjectiveIds(ConceptualModelNode node)
+	{
+		ObjectiveIds ids = node.getObjectives();
+		if(!ids.contains(BaseId.INVALID))
+			return;
+		
+		EAM.logWarning("Removing invalid objective id for " + node.getId());
+		ids.removeId(BaseId.INVALID);
+		node.setObjectives(ids);
+		try
+		{
+			project.writeNode(node.getModelNodeId());
+		}
+		catch(Exception logAndContinue)
+		{
+			EAM.logError("Repair failed");
+			EAM.logException(logAndContinue);
+		}
+	}
+	
+	private void removeMissingObjectiveIds(ConceptualModelNode node)
+	{
+		ObjectiveIds newIds = new ObjectiveIds();
+		ObjectiveIds oldIds = node.getObjectives();
+		for(int i = 0; i < oldIds.size(); ++i)
+		{
+			BaseId id = oldIds.get(i);
+			if(project.findObject(ObjectType.OBJECTIVE, id) == null)
+				EAM.logWarning("Removing missing objective id " + id + " for " + node.getId());
+			else
+				newIds.add(id);
+		}
+
+		if(newIds.size() == oldIds.size())
+			return;
+		
+		node.setObjectives(newIds);
 		try
 		{
 			project.writeNode(node.getModelNodeId());

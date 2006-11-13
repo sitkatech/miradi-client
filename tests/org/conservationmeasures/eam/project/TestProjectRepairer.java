@@ -6,6 +6,7 @@ import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -74,6 +75,61 @@ public class TestProjectRepairer extends EAMTestCase
 			project.close();
 		}
 	}
+
+	public void testInvalidObjectiveId() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		try
+		{
+			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
+			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			ConceptualModelNode node = project.findNode(nodeId);
+			ObjectiveIds bogusObjectives = new ObjectiveIds();
+			bogusObjectives.add(BaseId.INVALID);
+			node.setObjectives(bogusObjectives);
+			project.writeNode(nodeId);
+			
+			EAM.setLogToString();
+			ProjectRepairer.repairAnyProblems(project);
+			assertContains("invalid objective", EAM.getLoggedString());
+			node = project.findNode(nodeId);
+			assertEquals("Didn't fix invalid ObjectiveId?", 0, node.getObjectives().size());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+			project.close();
+		}
+	}
+
+	public void testMissingObjectiveId() throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		try
+		{
+			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
+			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			ConceptualModelNode node = project.findNode(nodeId);
+			ObjectiveIds bogusObjectives = new ObjectiveIds();
+			bogusObjectives.add(new BaseId(235));
+			node.setObjectives(bogusObjectives);
+			project.writeNode(nodeId);
+			
+			EAM.setLogToString();
+			ProjectRepairer.repairAnyProblems(project);
+			assertContains("missing objective", EAM.getLoggedString());
+			node = project.findNode(nodeId);
+			assertEquals("Didn't fix missing ObjectiveId?", 0, node.getObjectives().size());
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+			project.close();
+		}
+	}
+
 	public void testDeletedTeamMemberId() throws Exception
 	{
 		Project project = new ProjectForTesting(getName());
