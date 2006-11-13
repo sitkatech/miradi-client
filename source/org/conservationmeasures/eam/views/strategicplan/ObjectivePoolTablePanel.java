@@ -1,39 +1,14 @@
-/*
- * Copyright 2006, The Benetech Initiative
- * 
- * This file is confidential and proprietary
- */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objectpools.ObjectivePool;
-import org.conservationmeasures.eam.objects.Objective;
-import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 
-public class ObjectivePoolTablePanel extends LegacyObjectPoolTablePanel
+public class ObjectivePoolTablePanel extends ObjectPoolTablePanel
 {
-	public ObjectivePoolTablePanel(UmbrellaView viewToUse)
+	public ObjectivePoolTablePanel(Project projectToUse)
 	{
-		super(viewToUse, new ObjectivePoolTableModel(viewToUse.getProject()), buttonActionClasses);
-		
-		setMaxColumnWidthToHeaderWidth(0);
-		setColumnVeryWide(2);
+		super(projectToUse, ObjectType.OBJECTIVE, 
+				new ObjectivePoolTableModel(projectToUse)
+		);
 	}
-
-	public Objective getSelectedObjective()
-	{
-		int row = getSelectedRow();
-		if(row < 0)
-			return null;
-		
-		BaseId objectiveId = getObjectFromRow(row).getId();
-		ObjectivePool pool = getProject().getObjectivePool();
-		Objective objective = pool.find(objectiveId);
-		return objective;
-	}
-
-	static final Class[] buttonActionClasses = {
-		};
-
 }
