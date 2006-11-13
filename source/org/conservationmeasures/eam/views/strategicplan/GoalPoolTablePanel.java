@@ -1,5 +1,6 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
