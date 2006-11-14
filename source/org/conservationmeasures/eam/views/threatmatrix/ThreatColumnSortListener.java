@@ -44,9 +44,12 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	}
 
 	
+	public void setToggle(boolean sortOrder) 
+	{
+		sortToggle = !sortOrder;
+	}
+	
 	boolean sortToggle;
-
-
 
 
 }

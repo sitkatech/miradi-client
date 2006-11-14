@@ -125,15 +125,15 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 	}
 	
 
-	public  void sort(String currentSortBy, String currentSortDirection) 
+	public  void sort(String currentSortBy) 
 	{
-		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
-		
 		Comparator comparator = getComparator(currentSortBy);
+		
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 		
 		Arrays.sort(threatList, comparator);
 		
-		if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
+		if ( toggle() )  
 			threatList = reverseSort(threatList);
 		
 		mainTableModel.setThreatRows(threatList);
@@ -142,9 +142,9 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 	
 	private void sort(int sortColumn) 
 	{
-		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
-
 		Comparator comparator = getComparator(sortColumn);
+
+		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
 
 		Arrays.sort(threatList, comparator);
 		
