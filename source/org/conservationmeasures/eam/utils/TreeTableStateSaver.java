@@ -92,25 +92,25 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		ObjectReferenceList objRefList = getExpandedNodeList();
 		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 		TreePath rootPath = new TreePath(root);
-		expandNode(objRefList, rootPath);
+		possiblyChangeNodeExpansionState(objRefList, rootPath);
 	}
 
-	private void expandNode(ObjectReferenceList objRefToUse, TreePath thisPath)
+	private void possiblyChangeNodeExpansionState(ObjectReferenceList objRefListToUse, TreePath thisPath)
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ObjectReference topLevelObjRef = topLevelObject.getObjectReference();
-		if ( ! (objRefToUse.contains(topLevelObjRef) || topLevelObjRef == null))
+		if ( ! (objRefListToUse.contains(topLevelObjRef) || topLevelObjRef == null))
 		{
 			tree.collapsePath(thisPath);
 			return;
 		}
-			tree.expandPath(thisPath);
+		tree.expandPath(thisPath);
 		
 		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
 		{
 			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
 			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-			expandNode(objRefToUse, secondLevelPath);
+			possiblyChangeNodeExpansionState(objRefListToUse, secondLevelPath);
 		}
 	}
 
