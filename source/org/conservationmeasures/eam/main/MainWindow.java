@@ -23,6 +23,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.ToolTipManager;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.Actions;
@@ -59,7 +60,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public MainWindow(Project projectToUse)
 	{
 		preferences = new AppPreferences();
-		project = projectToUse;		
+		project = projectToUse;
 	}
 	
 	public void start(String[] args) throws Exception
@@ -67,7 +68,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
-
+		
+		ToolTipManager.sharedInstance().setInitialDelay(TOOL_TIP_INI_DELAY);
+		
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
 		toolBarBox = new ToolBarContainer();
@@ -399,7 +402,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	}
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
-
+	private static final int TOOL_TIP_INI_DELAY = 0;
+	
 	protected Actions actions;
 	private AppPreferences preferences;
 	private Project project;
