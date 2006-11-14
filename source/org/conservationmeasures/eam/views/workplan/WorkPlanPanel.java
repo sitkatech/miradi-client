@@ -64,7 +64,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 	{
 		try
 		{
-			tree.getModelAdapter().restoreTreeState();
+			tree.restoreTreeState();
 		}
 		catch(Exception e)
 		{

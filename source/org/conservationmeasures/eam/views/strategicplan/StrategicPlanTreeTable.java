@@ -8,27 +8,16 @@ package org.conservationmeasures.eam.views.strategicplan;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.EAMTreeTableModelAdapter;
-import org.conservationmeasures.eam.views.TreeTableWithIcons;
+import org.conservationmeasures.eam.views.GenericTreeTableModel;
+import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
 
-import com.java.sun.jtreetable.TreeTableModel;
-
-public class StrategicPlanTreeTable extends TreeTableWithIcons
+public class StrategicPlanTreeTable extends TreeTableWithStateSaving
 {
-	public StrategicPlanTreeTable(Project projectToUse, TreeTableModel treeTableModel)
+	public StrategicPlanTreeTable(Project projectToUse, GenericTreeTableModel treeTableModel)
 	{
-		super(treeTableModel);
-		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableModel, tree);
+		super(projectToUse, treeTableModel);
 		setModel(treeTableModelAdapter);
 		DefaultTreeCellRenderer renderer = new Renderer();
 		tree.setCellRenderer(renderer);
-		tree.setRootVisible(false);
 	}
-	
-	public EAMTreeTableModelAdapter getModelAdapter()
-	{
-		return treeTableModelAdapter;
-	}
-	
-	EAMTreeTableModelAdapter treeTableModelAdapter;
 }

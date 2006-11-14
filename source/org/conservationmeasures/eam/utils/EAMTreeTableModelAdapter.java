@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.utils;
 
-import java.text.ParseException;
-
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.event.TreeExpansionEvent;
@@ -16,29 +14,20 @@ import javax.swing.event.TreeModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
-import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
-import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableNode;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class EAMTreeTableModelAdapter extends AbstractTableModel implements CommandExecutedListener
+public class EAMTreeTableModelAdapter extends AbstractTableModel //implements CommandExecutedListener
 {
-	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
+	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableStateSaver treeTableStateSaverToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
 	{
 		tree = treeToUse;
 		treeTableModel = treeTableModelToUse;
 		project = projectToUse;
-
-		project.addCommandExecutedListener(this);
+		treeTableStateSaver = treeTableStateSaverToUse; 
+		//project.addCommandExecutedListener(this);
 		setExpansionListeners(tree);
 		setModelListeners(treeTableModel);
 	}
@@ -112,7 +101,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
-
+/*
 	private void saveTreeExpansionState() throws Exception
 	{
 		if (!isListening)
@@ -181,7 +170,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 		ObjectReferenceList objRefList= new ObjectReferenceList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
 		return objRefList;
 	}
-
+*/
 	private final class TreeModelHandler implements TreeModelListener
 	{
 		public void treeNodesChanged(TreeModelEvent e) 
@@ -221,7 +210,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 		{
 			try
 			{
-				saveTreeExpansionState();
+				treeTableStateSaver.saveTreeExpansionState();
 			}
 			catch(Exception e)
 			{
@@ -246,7 +235,12 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 			fireTableRowsUpdated(0, getRowCount() - 1);
 		}
 	}
-
+	
+	public void restoreTreeState() throws Exception
+	{
+		treeTableStateSaver.restoreTreeState();
+	}
+/*
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		executeTreeStateRestore(event);
@@ -276,7 +270,10 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel implements Comm
 	}
 
 	boolean isListening = true;
+	
+*/	
 	Project project;
 	JTree tree;
 	TreeTableModel treeTableModel;
+	TreeTableStateSaver treeTableStateSaver;
 }

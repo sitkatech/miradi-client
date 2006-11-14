@@ -36,7 +36,7 @@ public class StrategicPlanPanel extends DisposablePanel
 		tree.getTree().setShowsRootHandles(true);
 		add(new JScrollPane(tree), BorderLayout.CENTER);
 		tree.getTree().addSelectionRow(0);
-		tree.getModelAdapter().restoreTreeState();
+		tree.restoreTreeState();
 	}
 	
 	public StrategicPlanTreeTableModel getModel()

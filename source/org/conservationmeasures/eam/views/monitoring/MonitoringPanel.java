@@ -29,7 +29,7 @@ public class MonitoringPanel extends JPanel
 	{
 		try
 		{
-			tree.getModelAdapter().restoreTreeState();
+			tree.restoreTreeState();
 		}
 		catch(Exception e)
 		{
