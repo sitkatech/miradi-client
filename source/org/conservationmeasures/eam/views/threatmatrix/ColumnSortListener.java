@@ -30,7 +30,7 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 	public ColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
-		 mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();
+		mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();
 	}
 
 	public void mouseClicked(MouseEvent e) 
@@ -125,22 +125,7 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 	}
 	
 
-	public  void sort(String currentSortBy) 
-	{
-		Comparator comparator = getComparator(currentSortBy);
-		
-		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
-		
-		Arrays.sort(threatList, comparator);
-		
-		if ( toggle() )  
-			threatList = reverseSort(threatList);
-		
-		mainTableModel.setThreatRows(threatList);
-	}
-
-	
-	private void sort(int sortColumn) 
+	public void sort(int sortColumn) 
 	{
 		Comparator comparator = getComparator(sortColumn);
 
@@ -148,7 +133,7 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 
 		Arrays.sort(threatList, comparator);
 		
-		if ( toggle() )  
+		if ( getToggle() )  
 			threatList = reverseSort(threatList);
 
 		mainTableModel.setThreatRows(threatList);
@@ -157,12 +142,11 @@ public abstract class ColumnSortListener  extends MouseAdapter implements MouseM
 	}
 	
 	
-	public abstract Comparator getComparator(String currentSortBy);
 	public abstract Comparator getComparator(int sortColumn);
 	public abstract void saveState(int sortColumn);
-	public abstract boolean toggle();
+	public abstract boolean getToggle();
 	
-	private ThreatGridPanel threatGirdPanel;
+	protected ThreatGridPanel threatGirdPanel;
 	protected NonEditableThreatMatrixTableModel mainTableModel;
 
 }

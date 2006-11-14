@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.util.Comparator;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ViewData;
 
 
@@ -18,13 +17,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 		super(threatGirdPanelInUse);
 		sortToggle = false;
 	}
-	
-	public  boolean toggle() 
-	{
-		sortToggle = !sortToggle;
-		return sortToggle;
-	}
-	
+
 
 	public void saveState(int sortColumn)
 	{
@@ -37,19 +30,6 @@ public class TargetColumnSortListener extends ColumnSortListener
 		saveSortState(sortToggle, columnBaseIdToSort);
 	}
 
-
-
-	public Comparator getComparator(String currentSortBy)
-	{
-		if (currentSortBy.equals(ViewData.SORT_SUMMARY)) 
-			return getComparator(mainTableModel.getColumnCount());
-
-		ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
-		int sortColumn= mainTableModel.findTargetIndexById(nodeId);
-		return getComparator(sortColumn);
-	}
-
-	
 	
 	public Comparator getComparator(int sortColumn)
 	{
@@ -61,7 +41,7 @@ public class TargetColumnSortListener extends ColumnSortListener
 	
 	private boolean isSummaryColumn(int sortColumn, NonEditableThreatMatrixTableModel modelToSort) 
 	{
-		return (sortColumn == modelToSort.getColumnCount()-1);
+		return (sortColumn == threatGirdPanel.getThreatMatrixTable().getSummaryColumn());
 	}
 	
 	
@@ -70,7 +50,14 @@ public class TargetColumnSortListener extends ColumnSortListener
 		sortToggle = !sortOrder;
 	}
 	
-
+	
+	public  boolean getToggle() 
+	{
+		sortToggle = !sortToggle;
+		return sortToggle;
+	}
+	
+	
 	boolean sortToggle;
 
 }

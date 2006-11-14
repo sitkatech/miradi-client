@@ -19,24 +19,12 @@ public class ThreatColumnSortListener extends ColumnSortListener
 		sortToggle = true;
 	}
 
-	public  boolean toggle() 
-	{
-		sortToggle = !sortToggle;
-		return sortToggle;
-	}
-	
 
 	public void saveState(int sortColumn)
 	{
 		saveSortState(sortToggle, ViewData.SORT_THREATS);
 	}
 
-	
-	public Comparator getComparator(String currentSortBy)
-	{
-		return getComparator(0);
-	}
-	
 	
 	public Comparator getComparator(int sortColumn)
 	{
@@ -48,6 +36,13 @@ public class ThreatColumnSortListener extends ColumnSortListener
 	{
 		sortToggle = !sortOrder;
 	}
+	
+	public  boolean getToggle() 
+	{
+		sortToggle = !sortToggle;
+		return sortToggle;
+	}
+	
 	
 	boolean sortToggle;
 

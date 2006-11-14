@@ -17,6 +17,7 @@ import javax.swing.LookAndFeel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -70,10 +71,8 @@ public class ThreatGridPanel extends JPanel
 					getProject().getCurrentView()).getData(
 					ViewData.TAG_CURRENT_SORT_DIRECTION);
 
-			boolean sortOrder = false;
-			if (currentSortDirection.equals(ViewData.SORT_ASCENDING)) 
-				sortOrder = true;
-				
+			boolean sortOrder = currentSortDirection.equals(ViewData.SORT_ASCENDING);
+
 			
 			//TODO: the reference to SORT_TARGETS should be removed after at some point as project data
 			//TODO: was writen using this id instead of SORT_THREATS. Most projects will there for self correct 
@@ -81,12 +80,18 @@ public class ThreatGridPanel extends JPanel
 			if(currentSortBy.equals(ViewData.SORT_THREATS) || currentSortBy.equals(ViewData.SORT_TARGETS))
 			{
 				threatColumnSortListener.setToggle(sortOrder);
-				threatColumnSortListener.sort(currentSortBy);
+				threatColumnSortListener.sort(0);
 			}
 			else
 			{
+				int columnToSort = threatTable.getSummaryColumn();
+				if (!currentSortBy.equals(ViewData.SORT_SUMMARY)) 
+				{
+					ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
+					columnToSort= ((NonEditableThreatMatrixTableModel)threatTable.getModel()).findTargetIndexById(nodeId);
+				}
 				targetColumnSortListener.setToggle(sortOrder);
-				targetColumnSortListener.sort(currentSortBy);
+				targetColumnSortListener.sort(columnToSort);
 			}
 		}
 	}
