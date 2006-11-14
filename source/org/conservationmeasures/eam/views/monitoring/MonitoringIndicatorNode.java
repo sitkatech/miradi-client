@@ -56,6 +56,8 @@ public class MonitoringIndicatorNode extends MonitoringNode
 			return getChainManager().getRelatedDirectThreatsAsHtml(indicator.getId());
 		if(column == COLUMN_METHODS)
 			return indicator.getData(Indicator.TAG_METHOD);
+		if(column == COLUMN_ITEM_LABEL)
+			return indicator.toString();
 		if(MonitoringModel.columnTags[column].equals(Indicator.TAG_RESOURCE_IDS))
 		{
 			ProjectResource[] resources = getResourcesForIndicator(project, indicator);

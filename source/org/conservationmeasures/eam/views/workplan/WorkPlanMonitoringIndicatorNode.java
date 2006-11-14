@@ -47,6 +47,8 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 
 	public Object getValueAt(int column)
 	{
+		if(column == COLUMN_ITEM_LABEL)
+			return indicator.toString();
 		return "";
 	}
 
@@ -71,4 +73,5 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 	
 	Project project;
 	Indicator indicator;
+	public static final int COLUMN_ITEM_LABEL = 0;
 }
