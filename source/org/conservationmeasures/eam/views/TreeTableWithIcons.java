@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -20,6 +21,7 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.martus.swing.UiLabel;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
@@ -48,6 +50,9 @@ public class TreeTableWithIcons extends JTreeTable
 	{
 		public Renderer()
 		{
+			Font boldFont = new UiLabel().getFont().deriveFont(Font.BOLD);
+			Font italicFont = new UiLabel().getFont().deriveFont(Font.ITALIC);
+			
 			interventionRenderer = new DefaultTreeCellRenderer();
 			interventionRenderer.setClosedIcon(new InterventionIcon());
 			interventionRenderer.setOpenIcon(new InterventionIcon());
@@ -57,6 +62,7 @@ public class TreeTableWithIcons extends JTreeTable
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
 			objectiveRenderer.setLeafIcon(new ObjectiveIcon());
+			objectiveRenderer.setFont(boldFont);
 
 			indicatorRenderer = new DefaultTreeCellRenderer();
 			indicatorRenderer.setClosedIcon(new IndicatorIcon());
@@ -67,7 +73,11 @@ public class TreeTableWithIcons extends JTreeTable
 			goalRenderer.setClosedIcon(new GoalIcon());
 			goalRenderer.setOpenIcon(new GoalIcon());
 			goalRenderer.setLeafIcon(new GoalIcon());
-
+			goalRenderer.setFont(boldFont);
+			
+			taskRenderer = new DefaultTreeCellRenderer();
+			taskRenderer.setFont(italicFont);
+			
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
 
@@ -84,7 +94,10 @@ public class TreeTableWithIcons extends JTreeTable
 				renderer = objectiveRenderer;
 			else if(node.getType() == ObjectType.GOAL)
 				renderer = goalRenderer;
-
+			else if(node.getType() == ObjectType.TASK)
+				renderer = taskRenderer;
+			
+			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
 
@@ -93,6 +106,7 @@ public class TreeTableWithIcons extends JTreeTable
 		DefaultTreeCellRenderer indicatorRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer interventionRenderer;
+		DefaultTreeCellRenderer taskRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
