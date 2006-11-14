@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 
 
-public class ThreatColumnSortListener extends ColumnSortListener
+public class ThreatNameColumnHandler extends ColumnSortHandler
 {
-	public ThreatColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
+	public ThreatNameColumnHandler(ThreatGridPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
 		sortToggle = true;

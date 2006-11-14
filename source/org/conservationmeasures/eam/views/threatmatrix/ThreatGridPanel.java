@@ -44,12 +44,12 @@ public class ThreatGridPanel extends JPanel
 		threatTable = table;
 		
 		JTableHeader columnHeader = table.getTableHeader();
-		targetColumnSortListener = new TargetColumnSortListener(this);
+		targetColumnSortListener = new BundleColumnSortHandler(this);
 		columnHeader.addMouseListener(targetColumnSortListener);
 		columnHeader.addMouseMotionListener(targetColumnSortListener);
 
 		JTableHeader rowHeader = rowTable.getTableHeader();
-		threatColumnSortListener = new ThreatColumnSortListener(this);
+		threatColumnSortListener = new ThreatNameColumnHandler(this);
 		rowHeader.addMouseListener(threatColumnSortListener);
 		
 		JScrollPane scrollPane = createScrollPaneWithTableAndRowHeader(
@@ -233,8 +233,8 @@ public class ThreatGridPanel extends JPanel
 	private ThreatMatrixView view;
 	private ThreatRatingBundle highlightedBundle;
 	private ThreatMatrixTable threatTable;
-	private ThreatColumnSortListener threatColumnSortListener;
-	private TargetColumnSortListener targetColumnSortListener;
+	private ThreatNameColumnHandler threatColumnSortListener;
+	private BundleColumnSortHandler targetColumnSortListener;
 	private JTable rowHeaderTable;
 	
 	private final static int ABOUT_THREE_LINES = 60;

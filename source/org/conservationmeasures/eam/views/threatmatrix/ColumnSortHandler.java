@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ViewData;
 
-public abstract class ColumnSortListener  extends MouseAdapter implements MouseMotionListener
+public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMotionListener
 {
-	public ColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
+	public ColumnSortHandler(ThreatGridPanel threatGirdPanelInUse)
 	{
 		threatGirdPanel = threatGirdPanelInUse;
 		mainTableModel = (NonEditableThreatMatrixTableModel)threatGirdPanelInUse.getThreatMatrixTable().getModel();

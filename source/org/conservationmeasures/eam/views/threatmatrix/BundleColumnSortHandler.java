@@ -10,9 +10,9 @@ import java.util.Comparator;
 import org.conservationmeasures.eam.objects.ViewData;
 
 
-public class TargetColumnSortListener extends ColumnSortListener
+public class BundleColumnSortHandler extends ColumnSortHandler
 {
-	public TargetColumnSortListener(ThreatGridPanel threatGirdPanelInUse)
+	public BundleColumnSortHandler(ThreatGridPanel threatGirdPanelInUse)
 	{
 		super(threatGirdPanelInUse);
 		sortToggle = false;
