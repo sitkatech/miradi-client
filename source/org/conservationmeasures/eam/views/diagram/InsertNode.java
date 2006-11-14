@@ -46,7 +46,9 @@ abstract public class InsertNode extends LocationDoer
 			else
 				notLinkingToAnyNodes();
 
-			launchPropertiesEditor(new DiagramNodeId(id.asInt()));
+			DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
+			selectNewNode(newNode);
+			launchPropertiesEditor(newNode);
 		}
 		catch (Exception e)
 		{
@@ -54,11 +56,15 @@ abstract public class InsertNode extends LocationDoer
 			throw new CommandFailedException(e);
 		}
 	}
-
-	void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
+	
+	private void selectNewNode(DiagramNode newNodeToUse) throws Exception
 	{
-		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
-		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
+		getDiagramView().getDiagramComponent().getSelectionModel().setSelectionCell(newNodeToUse);
+	}
+	
+	void launchPropertiesEditor(DiagramNode diagramNodeToUse) throws Exception, CommandFailedException
+	{
+		getDiagramView().getPropertiesDoer().doNodeProperties(diagramNodeToUse, null);
 	}
 
 	private ModelNodeId insertNodeItself() throws Exception
