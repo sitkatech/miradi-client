@@ -1,5 +1,9 @@
 package org.conservationmeasures.eam.project;
-
+/*
+ * Copyright 2006, The Benetech Initiative
+ * 
+ * This file is confidential and proprietary
+ */
 import java.io.File;
 
 import jxl.Cell;
