@@ -32,7 +32,6 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDetermineNeeds;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopActivities;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopBudgets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopCharter;
-import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopGoal;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
@@ -188,8 +187,6 @@ public class Actions
 		registerAction(new ActionJumpShare(mainWindow));
 		registerAction(new ActionJumpCreate(mainWindow));
 		registerAction(new ActionJumpCloseTheLoop(mainWindow));
-		
-		registerAction(new ActionJumpDevelopGoal(mainWindow));
 	}
 	
 	public EAMAction get(Class c)
