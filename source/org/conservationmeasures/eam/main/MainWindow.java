@@ -69,7 +69,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences.load(appPreferencesFile);
 		project.addCommandExecutedListener(this);
 		
-		ToolTipManager.sharedInstance().setInitialDelay(TOOL_TIP_INI_DELAY);
+		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
 		
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
@@ -402,7 +402,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	}
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
-	private static final int TOOL_TIP_INI_DELAY = 0;
+	private static final int TOOP_TIP_DELAY_MILLIS = 0;
 	
 	protected Actions actions;
 	private AppPreferences preferences;

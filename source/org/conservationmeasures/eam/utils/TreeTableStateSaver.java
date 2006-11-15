@@ -99,11 +99,34 @@ public class TreeTableStateSaver implements CommandExecutedListener
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
 		ObjectReference topLevelObjRef = topLevelObject.getObjectReference();
+		
 		if ( ! (objRefListToUse.contains(topLevelObjRef) || topLevelObjRef == null))
 		{
 			tree.collapsePath(thisPath);
 			return;
 		}
+		
+		if (topLevelObject.getObjectReference() == null)
+		{
+			if (tree.isCollapsed(thisPath) && (isFirst))
+			{
+				isFirst = false;
+				tree.expandPath(thisPath);
+				return;
+			}
+			else if (tree.isCollapsed(thisPath))
+			{
+				tree.collapsePath(thisPath);
+				return;
+			}
+			else if (!tree.isCollapsed(thisPath)) 
+			{
+				tree.expandPath(thisPath);
+				return;
+			}
+				
+		}
+		
 		tree.expandPath(thisPath);
 		
 		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
@@ -128,6 +151,7 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		return objRefList;
 	}
 	
+	boolean isFirst;
 	boolean isListening = true;
 	Project project;
 	JTree tree;
