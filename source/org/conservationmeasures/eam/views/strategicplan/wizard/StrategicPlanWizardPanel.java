@@ -11,9 +11,9 @@ public class StrategicPlanWizardPanel extends WizardPanel
 {
 	public StrategicPlanWizardPanel() throws Exception
 	{
-		int WELCOME = addStep(new StrategicPlanWizardWelcomeStep(this));
-
+		WELCOME = addStep(new StrategicPlanWizardWelcomeStep(this));
 		setStep(WELCOME);
 	}
-
+	
+	private int WELCOME;
 }
