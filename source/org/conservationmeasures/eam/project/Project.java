@@ -881,7 +881,19 @@ public class Project
 		return availableResources;
 	}
 
-
+	public void selectNode(ModelNodeId idToUse)
+	{
+		try
+		{
+			DiagramNode nodeToSelect = diagramModel.getNodeById(idToUse);
+			selectionModel.setSelectionCell(nodeToSelect);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
 	class DiagramSaver implements CommandExecutedListener
 	{
 		public void commandExecuted(CommandExecutedEvent event)
@@ -952,5 +964,6 @@ public class Project
 	DiagramSaver diagramSaver;
 	
 	private int previousCommandListenerCount;
+
 }
 
