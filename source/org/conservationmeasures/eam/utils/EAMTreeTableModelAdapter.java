@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.project.Project;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class EAMTreeTableModelAdapter extends AbstractTableModel //implements CommandExecutedListener
+public class EAMTreeTableModelAdapter extends AbstractTableModel
 {
 	public EAMTreeTableModelAdapter(Project projectToUse, TreeTableStateSaver treeTableStateSaverToUse, TreeTableModel treeTableModelToUse, JTree treeToUse)
 	{
@@ -27,7 +27,6 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel //implements Co
 		treeTableModel = treeTableModelToUse;
 		project = projectToUse;
 		treeTableStateSaver = treeTableStateSaverToUse; 
-		//project.addCommandExecutedListener(this);
 		setExpansionListeners(tree);
 		setModelListeners(treeTableModel);
 	}
@@ -101,76 +100,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel //implements Co
 	{
 		SwingUtilities.invokeLater(new DelayedTableDataUpdatedFirer());
 	}
-/*
-	private void saveTreeExpansionState() throws Exception
-	{
-		if (!isListening)
-			return;
 
-		int rowCount = tree.getRowCount();
-		ObjectReferenceList objRefList = new ObjectReferenceList();
-		for (int i = 0; i < rowCount; i ++)
-		{
-			TreePath treePath = tree.getPathForRow(i);
-			if (tree.isExpanded(treePath))
-			{
-				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-				ObjectReference objectReference = node.getObjectReference();
-				if (objectReference != null)
-					objRefList.add(objectReference);
-			}
-		}
-		saveExpandedPath(objRefList);
-	}
-
-	private void saveExpandedPath(ObjectReferenceList  newObjRefList) throws Exception
-	{
-		ViewData viewData = project.getViewData(project.getCurrentView());		
-		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
-		project.executeCommand(cmd);
-	}
-	
-	void setTreeExpansionState() throws Exception
-	{
-		ObjectReferenceList objRefList = getExpandedNodeList();
-		TreeTableNode root = (TreeTableNode)treeTableModel.getRoot();
-		TreePath rootPath = new TreePath(root);
-		expandNode(objRefList, rootPath);
-	}
-
-	private void expandNode(ObjectReferenceList objRefToUse, TreePath thisPath)
-	{
-		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
-		ObjectReference topLevelObjRef = topLevelObject.getObjectReference();
-		if ( ! (objRefToUse.contains(topLevelObjRef) || topLevelObjRef == null))
-		{
-			tree.collapsePath(thisPath);
-			return;
-		}
-			tree.expandPath(thisPath);
-		
-		for(int childIndex = 0; childIndex < topLevelObject.getChildCount(); ++childIndex)
-		{
-			TreeTableNode secondLevelObject = topLevelObject.getChild(childIndex);
-			TreePath secondLevelPath = thisPath.pathByAddingChild(secondLevelObject);
-			expandNode(objRefToUse, secondLevelPath);
-		}
-	}
-
-	public void restoreTreeState() throws Exception
-	{
-		isListening = false;
-		setTreeExpansionState();
-		isListening = true;
-	}
-	
-	private ObjectReferenceList getExpandedNodeList() throws Exception, ParseException
-	{
-		ViewData viewData = project.getViewData(project.getCurrentView());
-		ObjectReferenceList objRefList= new ObjectReferenceList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
-		return objRefList;
-	}
-*/
 	private final class TreeModelHandler implements TreeModelListener
 	{
 		public void treeNodesChanged(TreeModelEvent e) 
@@ -240,38 +170,7 @@ public class EAMTreeTableModelAdapter extends AbstractTableModel //implements Co
 	{
 		treeTableStateSaver.restoreTreeState();
 	}
-/*
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		executeTreeStateRestore(event);
-	}
-	
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		executeTreeStateRestore(event);
-	}
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
 
-	private void executeTreeStateRestore(CommandExecutedEvent event)
-	{
-		if(!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
-		try
-		{
-			restoreTreeState();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Unexpected Error has occured"));
-		}
-	}
-
-	boolean isListening = true;
-	
-*/	
 	Project project;
 	JTree tree;
 	TreeTableModel treeTableModel;
