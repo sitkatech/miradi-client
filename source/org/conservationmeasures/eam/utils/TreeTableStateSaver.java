@@ -93,6 +93,7 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 		TreePath rootPath = new TreePath(root);
 		possiblyChangeNodeExpansionState(objRefList, rootPath);
+		isFirstTime =false;
 	}
 
 	private void possiblyChangeNodeExpansionState(ObjectReferenceList objRefListToUse, TreePath thisPath)
@@ -104,27 +105,6 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		{
 			tree.collapsePath(thisPath);
 			return;
-		}
-		
-		if (topLevelObject.getObjectReference() == null)
-		{
-			if (tree.isCollapsed(thisPath) && (isFirst))
-			{
-				isFirst = false;
-				tree.expandPath(thisPath);
-				return;
-			}
-			else if (tree.isCollapsed(thisPath))
-			{
-				tree.collapsePath(thisPath);
-				return;
-			}
-			else if (!tree.isCollapsed(thisPath)) 
-			{
-				tree.expandPath(thisPath);
-				return;
-			}
-				
 		}
 		
 		tree.expandPath(thisPath);
@@ -140,8 +120,14 @@ public class TreeTableStateSaver implements CommandExecutedListener
 	public void restoreTreeState() throws Exception
 	{
 		isListening = false;
-		setTreeExpansionState();
-		isListening = true;
+		try
+		{
+				setTreeExpansionState();
+		}
+		finally
+		{
+				isListening = true;
+		}
 	}
 	
 	private ObjectReferenceList getExpandedNodeList() throws Exception, ParseException
@@ -151,7 +137,7 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		return objRefList;
 	}
 	
-	boolean isFirst;
+	boolean isFirstTime = true;
 	boolean isListening = true;
 	Project project;
 	JTree tree;
