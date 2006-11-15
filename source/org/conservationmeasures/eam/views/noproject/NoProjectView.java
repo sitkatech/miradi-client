@@ -11,7 +11,10 @@ import java.io.File;
 import javax.swing.Action;
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.actions.ActionImportTncCapProjectFile;
+import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -34,32 +37,46 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	
 	public void linkClicked(String linkDescription)
 	{
-		if(linkDescription.equals(NoProjectHtmlText.NEW_PROJECT))
+		try 
 		{
-			Action action = new ActionNewProject(getMainWindow());
-			action.actionPerformed(null);
+			if(linkDescription.equals(NoProjectHtmlText.NEW_PROJECT))
+			{
+				Action action = new ActionNewProject(getMainWindow());
+				action.actionPerformed(null);
+			}
+			else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
+			{
+				String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
+				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
+				getMainWindow().createOrOpenProject(projectDirectory);
+			}
+			else if(linkDescription.equals(NoProjectHtmlText.IMPORT_ZIP))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportZipFile.class);
+				action.doAction();
+			}
+			else if(linkDescription.equals(NoProjectHtmlText.IMPORT_TNC_CAP_PROJECT))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapProjectFile.class);
+				action.doAction();
+			}
+			else if(linkDescription.equals("Definition:Project"))
+			{
+				EAM.okDialog("Definition: Project", new String[] {"A project is..."});
+			}
+			else if(linkDescription.equals("Definition:EAM"))
+			{
+				EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
+			}
+			else
+			{
+				EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
+			}
 		}
-		else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
+		catch (Exception e)
 		{
-			String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
-			File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
-			getMainWindow().createOrOpenProject(projectDirectory);
-		}
-		else if(linkDescription.equals(NoProjectHtmlText.IMPORT_ZIP))
-		{
-			doImportZip();
-		}
-		else if(linkDescription.equals("Definition:Project"))
-		{
-			EAM.okDialog("Definition: Project", new String[] {"A project is..."});
-		}
-		else if(linkDescription.equals("Definition:EAM"))
-		{
-			EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
-		}
-		else
-		{
-			EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
 		}
 	}
 
@@ -91,6 +108,9 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 	}
 
+	
+
+	
 	public void doImportZip()
 	{
 		File startingDirectory = UiFileChooser.getHomeDirectoryFile();

@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionImportZipFile extends MainWindowAction
+public class ActionImportTncCapProjectFile extends MainWindowAction
 {
-	public ActionImportZipFile(MainWindow mainWindowToUse)
+	public ActionImportTncCapProjectFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Project Zip File");
+		return EAM.text("Action|Project Tnc Cap File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Import zip file");
+		return EAM.text("TT|Import to Tnc Cap file");
 	}
 
 }

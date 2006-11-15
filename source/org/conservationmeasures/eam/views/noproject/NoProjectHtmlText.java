@@ -54,6 +54,8 @@ class NoProjectHtmlText extends HtmlBuilder
 				paragraph(
 					definition(IMPORT_ZIP, "Import a zipped project", "Browse to a zipped project")) +
 				paragraph(
+					definition(IMPORT_TNC_CAP_PROJECT, "Import a Tnc Cap project", "Browse to a tnc cap project")) +
+				paragraph(
 					definition("BrowseProject", "Browse to find other projects", "Browse to existing...")) +
 				paragraph(
 					definition("ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
@@ -97,6 +99,7 @@ class NoProjectHtmlText extends HtmlBuilder
 	public static final String NEW_PROJECT = "NewProject";
 	public static final String OPEN_PREFIX = "Open:";
 	public static final String IMPORT_ZIP = "ImportZip";
+	public static final String IMPORT_TNC_CAP_PROJECT = "ImportTncCapProject";
 
 	String text;
 }

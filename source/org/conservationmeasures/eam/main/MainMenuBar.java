@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZipFile;
+import org.conservationmeasures.eam.actions.ActionImportTncCapProjectFile;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionInsertConnection;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
@@ -174,6 +175,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu("Import");
 		menu.add(new JMenuItem(actions.get(ActionImportZipFile.class)));
+		menu.add(new JMenuItem(actions.get(ActionImportTncCapProjectFile.class)));
 		menu.add(createImportProjectSubmenu());
 		menu.add(createImportMapSubmenu());
 		menu.add(createImportDiagramSubmenu());
