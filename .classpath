@@ -7,5 +7,6 @@
 	<classpathentry kind="src" path="/martus-utils"/>
 	<classpathentry kind="lib" path="third-party/jgraph/jgraph.jar" sourcepath="third-party/jgraph/jgraph 5.10.0.0 Beta 2 -src.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="third-party/jexcel/jxl.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
