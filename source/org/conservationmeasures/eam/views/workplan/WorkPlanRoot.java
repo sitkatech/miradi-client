@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -31,7 +31,7 @@ public class WorkPlanRoot extends WorkPlanTreeTableNode
 		return children.size();
 	}
 
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return null;
 	}

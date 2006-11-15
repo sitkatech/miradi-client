@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
-import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -21,14 +21,14 @@ public class TestObjectReferenceList extends EAMTestCase
 
 	public void testObjectReferenceList()
 	{
-		ObjectReferenceList objRefList = new ObjectReferenceList();
-		ObjectReference objectRef = new ObjectReference(ObjectType.GOAL, BaseId.INVALID);
+		ORefList objRefList = new ORefList();
+		ORef objectRef = new ORef(ObjectType.GOAL, BaseId.INVALID);
 		objRefList.add(objectRef);
 		EnhancedJsonObject json = objRefList.toJson();
-		ObjectReferenceList got = new ObjectReferenceList(json);
+		ORefList got = new ORefList(json);
 		assertEquals("lists are equal?", objRefList, got);
 		
-		ObjectReference gotObjRef = objRefList.get(0);
+		ORef gotObjRef = objRefList.get(0);
 		assertEquals("object references equal?", objectRef, gotObjRef);
 	}
 }

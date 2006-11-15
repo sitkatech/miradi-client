@@ -8,15 +8,15 @@ package org.conservationmeasures.eam.objecthelpers;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ObjectReference
+public class ORef
 {
-	public ObjectReference(int objectTypeToUse, BaseId objectIdToUse)
+	public ORef(int objectTypeToUse, BaseId objectIdToUse)
 	{
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
 	}
 	
-	public ObjectReference(EnhancedJsonObject json)
+	public ORef(EnhancedJsonObject json)
 	{
 		objectType = json.getInt(TAG_OBJECT_TYPE);
 		objectId = json.getId(TAG_OBJECT_ID);
@@ -43,10 +43,10 @@ public class ObjectReference
 	
 	public boolean equals(Object rawOther)
 	{
-		if (! (rawOther instanceof ObjectReference))
+		if (! (rawOther instanceof ORef))
 			return false;
 		
-		ObjectReference other = (ObjectReference)rawOther;
+		ORef other = (ORef)rawOther;
 		if (other.getObjectId().equals(objectId) && other.getObjectType() == objectType)
 			return true;
 		

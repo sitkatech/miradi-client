@@ -13,24 +13,24 @@ import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 
-public class ObjectReferenceList
+public class ORefList
 {
-	public ObjectReferenceList()
+	public ORefList()
 	{
 		this(new Vector());
 	}
 	
-	public ObjectReferenceList(String listAsJsonString) throws ParseException
+	public ORefList(String listAsJsonString) throws ParseException
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
 	}
 	
-	public ObjectReferenceList(EnhancedJsonObject json)
+	public ORefList(EnhancedJsonObject json)
 	{
 		this();
 		EnhancedJsonArray array = json.optJsonArray(TAG_REFERENCES);
 		for(int i = 0; i < array.length(); ++i)
-			add(new ObjectReference(array.getJson(i)));
+			add(new ORef(array.getJson(i)));
 	}
 
 	public EnhancedJsonObject toJson()
@@ -45,17 +45,17 @@ public class ObjectReferenceList
 		return json;
 	}
 	
-	public void add(ObjectReference objectReferenceToUse)
+	public void add(ORef objectReferenceToUse)
 	{
 		data.add(objectReferenceToUse);
 	}
 	
-	public ObjectReference get(int index)
+	public ORef get(int index)
 	{
-		return (ObjectReference)data.get(index);
+		return (ORef)data.get(index);
 	}
 		
-	private ObjectReferenceList(List listToUse)
+	private ORefList(List listToUse)
 	{
 		data = new Vector(listToUse);
 	}
@@ -67,13 +67,13 @@ public class ObjectReferenceList
 	
 	public boolean equals(Object other)
 	{	
-		if (! (other instanceof ObjectReferenceList))
+		if (! (other instanceof ORefList))
 			return false;
 		
 		return other.toString().equals(toString());	
 	}
 	
-	public boolean contains(ObjectReference objectRef)
+	public boolean contains(ORef objectRef)
 	{
 		return data.contains(objectRef);
 	}

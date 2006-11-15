@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -52,7 +52,7 @@ public class StratPlanActivity extends TreeTableNode
 		return activity;
 	}
 	
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return activity.getObjectReference();
 	}

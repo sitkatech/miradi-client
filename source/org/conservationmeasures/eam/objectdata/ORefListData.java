@@ -6,16 +6,16 @@
 package org.conservationmeasures.eam.objectdata;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 
-public class ObjectReferenceListData extends ObjectData
+public class ORefListData extends ObjectData
 {
-	public ObjectReferenceListData()
+	public ORefListData()
 	{
-		objectReferenceList = new ObjectReferenceList();
+		objectReferenceList = new ORefList();
 	}
 	
-	public ObjectReferenceListData(String valueToUse)
+	public ORefListData(String valueToUse)
 	{
 		this();
 		try
@@ -30,7 +30,7 @@ public class ObjectReferenceListData extends ObjectData
 	
 	public boolean equals(Object rawOther)
 	{
-		if (! (rawOther instanceof ObjectReferenceListData))
+		if (! (rawOther instanceof ORefListData))
 			return false;
 		
 		return rawOther.toString().equals(toString());
@@ -48,13 +48,13 @@ public class ObjectReferenceListData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
-		set(new ObjectReferenceList(newValue));	
+		set(new ORefList(newValue));	
 	}
 	
-	private void set(ObjectReferenceList objectReferenceToUse)
+	private void set(ORefList objectReferenceToUse)
 	{
 		objectReferenceList = objectReferenceToUse;
 	}
 
-	private ObjectReferenceList objectReferenceList;
+	private ORefList objectReferenceList;
 }

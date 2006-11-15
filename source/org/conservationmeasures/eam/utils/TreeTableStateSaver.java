@@ -16,8 +16,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
-import org.conservationmeasures.eam.objecthelpers.ObjectReferenceList;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -65,14 +65,14 @@ public class TreeTableStateSaver implements CommandExecutedListener
 			return;
 
 		int rowCount = tree.getRowCount();
-		ObjectReferenceList objRefList = new ObjectReferenceList();
+		ORefList objRefList = new ORefList();
 		for (int i = 0; i < rowCount; i ++)
 		{
 			TreePath treePath = tree.getPathForRow(i);
 			if (tree.isExpanded(treePath))
 			{
 				TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-				ObjectReference objectReference = node.getObjectReference();
+				ORef objectReference = node.getObjectReference();
 				if (objectReference != null)
 					objRefList.add(objectReference);
 			}
@@ -80,7 +80,7 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		saveExpandedPath(objRefList);
 	}
 
-	private void saveExpandedPath(ObjectReferenceList  newObjRefList) throws Exception
+	private void saveExpandedPath(ORefList  newObjRefList) throws Exception
 	{
 		ViewData viewData = project.getViewData(project.getCurrentView());		
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
@@ -89,17 +89,17 @@ public class TreeTableStateSaver implements CommandExecutedListener
 	
 	void setTreeExpansionState() throws Exception
 	{
-		ObjectReferenceList objRefList = getExpandedNodeList();
+		ORefList objRefList = getExpandedNodeList();
 		TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 		TreePath rootPath = new TreePath(root);
 		possiblyChangeNodeExpansionState(objRefList, rootPath);
 		isFirstTime =false;
 	}
 
-	private void possiblyChangeNodeExpansionState(ObjectReferenceList objRefListToUse, TreePath thisPath)
+	private void possiblyChangeNodeExpansionState(ORefList objRefListToUse, TreePath thisPath)
 	{
 		TreeTableNode topLevelObject = (TreeTableNode)thisPath.getLastPathComponent();
-		ObjectReference topLevelObjRef = topLevelObject.getObjectReference();
+		ORef topLevelObjRef = topLevelObject.getObjectReference();
 		
 		if ( ! (objRefListToUse.contains(topLevelObjRef) || topLevelObjRef == null))
 		{
@@ -130,10 +130,10 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		}
 	}
 	
-	private ObjectReferenceList getExpandedNodeList() throws Exception, ParseException
+	private ORefList getExpandedNodeList() throws Exception, ParseException
 	{
 		ViewData viewData = project.getViewData(project.getCurrentView());
-		ObjectReferenceList objRefList= new ObjectReferenceList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
+		ORefList objRefList= new ORefList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
 		return objRefList;
 	}
 	

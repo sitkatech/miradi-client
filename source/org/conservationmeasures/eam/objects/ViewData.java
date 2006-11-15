@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
-import org.conservationmeasures.eam.objectdata.ObjectReferenceListData;
+import org.conservationmeasures.eam.objectdata.ORefListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -76,7 +76,7 @@ public class ViewData extends EAMBaseObject
 		currentTab = new IntegerData();
 		currentSortBy = new StringData();
 		currentSortDirecton = new StringData();
-		expandedNodesList = new ObjectReferenceListData();
+		expandedNodesList = new ORefListData();
 		
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_BRAINSTORM_NODE_IDS, brainstormNodeIds);
@@ -110,5 +110,5 @@ public class ViewData extends EAMBaseObject
 	private StringData currentSortBy;
 	private StringData currentSortDirecton;
 	
-	private ObjectReferenceListData expandedNodesList;
+	private ORefListData expandedNodesList;
 }

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.DesirePool;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
@@ -24,7 +24,7 @@ public class MonitoringRootNode extends MonitoringNode
 		rebuild();
 	}
 	
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return null;
 	}

@@ -5,12 +5,12 @@
  */
 package org.conservationmeasures.eam.views;
 
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public abstract class TreeTableNode
 {
 	public abstract int getType();
-	abstract public ObjectReference getObjectReference();
+	abstract public ORef getObjectReference();
 	public abstract String toString();
 	public abstract int getChildCount();
 	public abstract TreeTableNode getChild(int index);

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Goal;
@@ -50,7 +50,7 @@ public class StratPlanGoal extends TreeTableNode
 		return objectiveVector.size();
 	}
 	
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return goal.getObjectReference();
 	}

@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -46,7 +46,7 @@ public class StratPlanStrategy extends TreeTableNode
 		return intervention.toString();
 	}
 	
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return intervention.getObjectReference();
 	}

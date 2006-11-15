@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
@@ -20,6 +20,6 @@ public interface EAMObject
 	public String getData(String fieldTag);
 	public CreateObjectParameter getCreationExtraInfo();
 	public EnhancedJsonObject toJson();
-	public ObjectReference getObjectReference();
+	public ORef getObjectReference();
 	public CommandSetObjectData[] createCommandsToClear();
 }

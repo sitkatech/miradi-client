@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objecthelpers.ObjectReference;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -35,7 +35,7 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 		return strategies.length;
 	}
 
-	public ObjectReference getObjectReference()
+	public ORef getObjectReference()
 	{
 		return null;
 	}
