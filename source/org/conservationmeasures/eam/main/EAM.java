@@ -12,6 +12,9 @@ import java.util.Locale;
 
 import javax.swing.UIManager;
 
+import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.utils.Translation;
 import org.martus.swing.UiNotifyDlg;
@@ -165,4 +168,8 @@ public class EAM
 	public static final Color READONLY_FOREGROUND_COLOR = Color.black;
 	public static final Color EDITABLE_BACKGROUND_COLOR = Color.WHITE;
 	public static final Color EDITABLE_FOREGROUND_COLOR = Color.BLUE;
+	
+	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
+	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
+	
 }

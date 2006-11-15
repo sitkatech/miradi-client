@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import java.util.Arrays;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -35,7 +36,7 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return null;
+		return EAM.WORKPLAN_MONITORING_ROOT;
 	}
 
 	public int getType()
