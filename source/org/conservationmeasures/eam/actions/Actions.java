@@ -88,7 +88,7 @@ public class Actions
 		registerAction(new ActionProjectSaveAs(mainWindow));
 		registerAction(new ActionExportZipFile(mainWindow));
 		registerAction(new ActionImportZipFile(mainWindow));
-		registerAction(new ActionImportTncCapProjectFile(mainWindow));
+		registerAction(new ActionImportTncCapWorkbook(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
 		registerAction(new ActionPaste(mainWindow));

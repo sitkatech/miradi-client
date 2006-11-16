@@ -20,7 +20,7 @@ import org.martus.swing.UiFileChooser;
 
 
 
-public class ImportTncCapProjectFileDoer extends ViewDoer
+public class ImportTncCapWorkbookDoer extends ViewDoer
 {
 	public boolean isAvailable() 
 	{

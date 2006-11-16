@@ -11,7 +11,7 @@ import java.io.File;
 import javax.swing.Action;
 import javax.swing.JScrollPane;
 
-import org.conservationmeasures.eam.actions.ActionImportTncCapProjectFile;
+import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.EAMAction;
@@ -57,7 +57,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			}
 			else if(linkDescription.equals(NoProjectHtmlText.IMPORT_TNC_CAP_PROJECT))
 			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapProjectFile.class);
+				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
 				action.doAction();
 			}
 			else if(linkDescription.equals("Definition:Project"))

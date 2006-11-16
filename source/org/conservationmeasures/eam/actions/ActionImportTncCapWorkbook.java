@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionImportTncCapProjectFile extends MainWindowAction
+public class ActionImportTncCapWorkbook extends MainWindowAction
 {
-	public ActionImportTncCapProjectFile(MainWindow mainWindowToUse)
+	public ActionImportTncCapWorkbook(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
