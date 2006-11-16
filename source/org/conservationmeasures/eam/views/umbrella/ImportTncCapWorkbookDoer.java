@@ -22,9 +22,16 @@ public class ImportTncCapWorkbookDoer extends ImportDoer
 			Project project = new Project();
 			project.createOrOpen(finalProjectDirectory);
 			project.setMetadata(ProjectMetadata.TAG_PROJECT_NAME, importFileName);
+			project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, importer.getProjectVision());
+			project.setMetadata(ProjectMetadata.TAG_PROJECT_SCOPE, importer.getProjectScopeFull());
+			project.setMetadata(ProjectMetadata.TAG_START_DATE, importer.getProjectStartDate());
+			project.setMetadata(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, importer.getProjectDataEffectiveDate());
+			project.setMetadata(ProjectMetadata.TAG_SIZE_IN_HECTARES, importer.getProjectSize());
 			project.setMetadata(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, importer.getProjectDownloadDate());
 			project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, importer.getProjectVersionDate());
 			project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, importer.getProjectVersion());
+			project.setMetadata(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, importer.getProjectLessonsLearned());
+	
 			project.close();
 			return true;
 		}
