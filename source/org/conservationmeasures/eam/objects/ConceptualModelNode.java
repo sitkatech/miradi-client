@@ -26,8 +26,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	{
 		super(idToUse);
 		type = nodeType;
-		
-		clear();
 	}
 	
 	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception

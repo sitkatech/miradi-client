@@ -16,6 +16,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	public ConceptualModelFactor(ModelNodeId idToUse)
 	{
 		super(idToUse, new NodeTypeFactor());
+		clear();
 	}
 	
 	public ConceptualModelFactor(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
@@ -53,18 +54,13 @@ public class ConceptualModelFactor extends ConceptualModelNode
 		return true;
 	}
 	
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		return json;
-	}
-	
 	void clear()
 	{
 		super.clear();
 		taxonomyCode = new StringData();
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 	}	
+	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	StringData taxonomyCode; 
 	

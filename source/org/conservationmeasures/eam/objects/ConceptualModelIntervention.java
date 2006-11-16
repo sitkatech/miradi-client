@@ -27,6 +27,7 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 	{
 		super(idToUse, DiagramNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
+		clear();
 	}
 	
 	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception

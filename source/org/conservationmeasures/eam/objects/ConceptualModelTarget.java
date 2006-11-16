@@ -15,6 +15,7 @@ public class ConceptualModelTarget extends ConceptualModelNode
 	public ConceptualModelTarget(ModelNodeId idToUse)
 	{
 		super(idToUse, DiagramNode.TYPE_TARGET);
+		clear();
 	}
 	
 	public ConceptualModelTarget(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
@@ -31,11 +32,4 @@ public class ConceptualModelTarget extends ConceptualModelNode
 	{
 		return true;
 	}
-
-	public EnhancedJsonObject toJson()
-	{
-		EnhancedJsonObject json = super.toJson();
-		return json;
-	}
-
 }
