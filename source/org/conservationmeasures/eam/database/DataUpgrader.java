@@ -102,6 +102,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion11();
 		if(readDataVersion(getTopDirectory()) == 11)
 			upgradeToVersion12();
+		if(readDataVersion(getTopDirectory()) == 12)
+			upgradeToVersion13();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -477,6 +479,15 @@ public class DataUpgrader extends ProjectServer
 
 		nodeDataToUse.put(converTag, newIds.toString());
 	}
+	
+	public void upgradeToVersion13() throws Exception
+	{
+		// no changes, but we bumped the version to indicate that from now on,
+		// diagram node ids are not necessarily the same as model node ids
+		writeVersion(13);
+	}
+	
+
 
 	private static final int NODE_TYPE = 4;
 

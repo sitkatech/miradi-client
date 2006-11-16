@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramLinkageId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.utils.DataMap;
 
 public class LinkageDataMap extends DataMap
@@ -16,34 +16,34 @@ public class LinkageDataMap extends DataMap
 		super();
 	}
 
-	public void setId(ModelLinkageId id)
+	public void setId(DiagramLinkageId id)
 	{
 		putId(TAG_ID, id);
 	}
 	
-	public ModelLinkageId getId()
+	public DiagramLinkageId getId()
 	{
-		return new ModelLinkageId(getId(TAG_ID).asInt());
+		return new DiagramLinkageId(getId(TAG_ID).asInt());
 	}
 
-	public void setFromId(int fromId)
+	public void setFromId(DiagramNodeId fromId)
 	{
-		putInt(TAG_FROM_ID, fromId);
+		putInt(TAG_FROM_ID, fromId.asInt());
 	}
 
-	public ModelNodeId getFromId()
+	public DiagramNodeId getFromId()
 	{
-		return new ModelNodeId(getId(TAG_FROM_ID).asInt());
+		return new DiagramNodeId(getId(TAG_FROM_ID).asInt());
 	}
 
-	public void setToId(int toId)
+	public void setToId(DiagramNodeId toId)
 	{
-		putInt(TAG_TO_ID, toId);
+		putInt(TAG_TO_ID, toId.asInt());
 	}
 
-	public ModelNodeId getToId()
+	public DiagramNodeId getToId()
 	{
-		return new ModelNodeId(getId(TAG_TO_ID).asInt());
+		return new DiagramNodeId(getId(TAG_TO_ID).asInt());
 	}
 
 	public static final String TAG_ID = "Id";

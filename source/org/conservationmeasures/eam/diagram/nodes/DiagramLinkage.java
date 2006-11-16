@@ -46,7 +46,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		try
 		{
-			return model.getNodeById(getFromId());
+			return model.getNodeById(getFromModelNodeId());
 		}
 		catch (Exception e)
 		{
@@ -58,7 +58,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		try
 		{
-			return model.getNodeById(getToId());
+			return model.getNodeById(getToModelNodeId());
 		}
 		catch (Exception e)
 		{
@@ -110,22 +110,22 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return new DiagramLinkageId(underlyingObject.getId().asInt());
 	}
 	
-	public ModelNodeId getFromId()
+	public ModelNodeId getFromModelNodeId()
 	{
 		return underlyingObject.getFromNodeId();
 	}
 	
-	public ModelNodeId getToId()
+	public ModelNodeId getToModelNodeId()
 	{
 		return underlyingObject.getToNodeId();
 	}
 	
-	public LinkageDataMap createLinkageDataMap()
+	public LinkageDataMap createLinkageDataMap() throws Exception
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
-		dataMap.setId(getWrappedId());
-		dataMap.setFromId(getFromId().asInt());
-		dataMap.setToId(getToId().asInt());
+		dataMap.setId(getDiagramLinkageId());
+		dataMap.setFromId(model.getNodeById(getFromModelNodeId()).getDiagramNodeId());
+		dataMap.setToId(model.getNodeById(getToModelNodeId()).getDiagramNodeId());
 		return dataMap;
 	}
 	

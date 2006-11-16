@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
@@ -45,7 +46,7 @@ public class NodeCommandHelper
 		executeCommand(createModelNode);
 		ModelNodeId modelNodeId = new ModelNodeId(createModelNode.getCreatedId().asInt());
 
-		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(modelNodeId);
+		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		executeCommand(commandInsertNode);
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(modelNodeId);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
@@ -77,13 +78,13 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			ModelNodeId originalNodeId = new ModelNodeId(nodeData.getId(DiagramNode.TAG_WRAPPED_ID).asInt());
+			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 			
 			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
 			CommandDiagramAddNode addCommand = createNode(type);
-			ModelNodeId newNodeId = addCommand.getModelNodeId();
-			dataHelper.setNewId(originalNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
+			DiagramNodeId newNodeId = addCommand.getInsertedId();
+			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
+			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
 			
 			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
@@ -93,11 +94,11 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
-			ModelNodeId originalNodeId = new ModelNodeId(nodeData.getId(DiagramNode.TAG_WRAPPED_ID).asInt());
+			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 
-			Point newNodeLocation = dataHelper.getNewLocation(nodeData.getId(DiagramNode.TAG_ID), startPoint);
+			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
-			ModelNodeId newNodeId = dataHelper.getNewId(originalNodeId);
+			DiagramNodeId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			DiagramNodeId newDiagramNodeId = project.getDiagramModel().getNodeById(newNodeId).getDiagramNodeId();
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramNodeId[]{newDiagramNodeId});
 			executeCommand(move);
@@ -111,8 +112,9 @@ public class NodeCommandHelper
 		{
 			LinkageDataMap linkageData = links[i];
 			
-			ModelNodeId newFromId = dataHelper.getNewId(linkageData.getFromId());
-			ModelNodeId newToId = dataHelper.getNewId(linkageData.getToId());
+			DiagramNodeId oldFromDiagramId = linkageData.getFromId();
+			DiagramNodeId newFromId = dataHelper.getNewId(oldFromDiagramId);
+			DiagramNodeId newToId = dataHelper.getNewId(linkageData.getToId());
 			if(newFromId.isInvalid() || newToId.isInvalid())
 			{
 				Logging.logWarning("Unable to Paste Link : from OriginalId:" + linkageData.getFromId() + " to OriginalId:" + linkageData.getToId()+" node deleted?");	

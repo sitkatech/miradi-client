@@ -148,9 +148,9 @@ public class TestDiagramNode extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		
-		DiagramNode got = new DiagramTarget(target.getDiagramNodeId(), null);
+		DiagramNode got = new DiagramTarget(target.getDiagramNodeId(), cmTarget);
 		EnhancedJsonObject json = target.toJson();
-		got.fillFrom(project, json);
+		got.fillFrom(json);
 		
 		assertEquals("location", target.getLocation(), got.getLocation());
 		assertEquals("size", target.getSize(), got.getSize());

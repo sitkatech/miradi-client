@@ -24,7 +24,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -54,6 +53,16 @@ abstract public class DiagramNode extends EAMGraphCell
 			return new DiagramCluster(idToUse, (ConceptualModelCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
+	}
+	
+	public static DiagramNode createFromJson(Project project, EnhancedJsonObject json) throws Exception
+	{
+		DiagramNodeId id = new DiagramNodeId(json.getId(TAG_ID).asInt());
+		ModelNodeId wrappedId = new ModelNodeId(json.getId(TAG_WRAPPED_ID).asInt());
+		ConceptualModelNode cmNode = project.findNode(wrappedId);
+		DiagramNode node = wrapConceptualModelObject(id, cmNode);
+		node.fillFrom(json);
+		return node;
 	}
 
 	protected DiagramNode(DiagramNodeId idToUse, ConceptualModelNode cmObjectToUse)
@@ -415,15 +424,11 @@ abstract public class DiagramNode extends EAMGraphCell
 		return dataMap;
 	}
 	
-	public void fillFrom(Project project, EnhancedJsonObject json) throws ParseException
+	public void fillFrom(EnhancedJsonObject json) throws ParseException
 	{
 		NodeDataMap dataMap = new NodeDataMap(json);
-		id = new DiagramNodeId(dataMap.getId(TAG_ID).asInt());
 		setLocation(dataMap.getPoint(TAG_LOCATION));
 		setSize(dataMap.getDimension(TAG_SIZE));
-		
-		BaseId wrappedId = json.optId(TAG_WRAPPED_ID);
-		underlyingObject = project.findNode(wrappedId);
 	}
 	
 	public static final NodeType TYPE_INVALID = null;

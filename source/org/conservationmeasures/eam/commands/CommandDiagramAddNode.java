@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
@@ -15,10 +14,10 @@ import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramAddNode extends Command
 {
-	public CommandDiagramAddNode(ModelNodeId idToWrap)
+	public CommandDiagramAddNode(DiagramNodeId idToUse, ModelNodeId idToWrap)
 	{
 		modelNodeId = idToWrap;
-		insertedId = new DiagramNodeId(BaseId.INVALID.asInt());
+		insertedId = idToUse;
 	}
 	
 	public DiagramNodeId getInsertedId()
@@ -45,7 +44,7 @@ public class CommandDiagramAddNode extends Command
 	{
 		try
 		{
-			insertedId = target.addNodeToDiagram(modelNodeId);
+			insertedId = target.addNodeToDiagram(modelNodeId, insertedId);
 		}
 		catch (Exception e)
 		{

@@ -33,7 +33,8 @@ public class TransferableEamList implements Transferable
 		for (int i = 0; i < cells.length; i++) 
 		{
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
-			try {
+			try 
+			{
 				if(cell.isLinkage())
 				{
 					linkages.add(((DiagramLinkage)cell).createLinkageDataMap());

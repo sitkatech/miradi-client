@@ -103,7 +103,7 @@ public class TestProject extends EAMTestCase
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
 		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(factorId);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
 		project.executeCommand(cmd);
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
@@ -493,7 +493,7 @@ public class TestProject extends EAMTestCase
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
 		ModelNodeId modelNodeId = project.createNode(DiagramNode.TYPE_FACTOR);
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(modelNodeId);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
@@ -508,19 +508,21 @@ public class TestProject extends EAMTestCase
 		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
 		int existingCalls = database.callsToWriteObject;
 		
-		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(targetId);
+		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), targetId);
 		project.executeCommand(targetCommand);
 		assertEquals(existingCalls, database.callsToWriteObject);
 		DiagramNode target = project.getDiagramModel().getNodeById(targetId);
 		
-		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(factorId);
+		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
 		project.executeCommand(factorCommand);
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
 		
+		// undo the AddNode
 		project.undo();
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
+		// redo the AddNode
 		project.redo();
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 
@@ -545,7 +547,7 @@ public class TestProject extends EAMTestCase
 		{
 		}
 		
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(gotId);
+		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), gotId);
 		project.executeCommand(cmd);
 		try
 		{
@@ -575,8 +577,8 @@ public class TestProject extends EAMTestCase
 		LinkagePool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		ConceptualModelLinkage cmLinkage = linkagePool.find(linkageId);
-		assertEquals("wrong from?", nodeA.getDiagramNodeId(), cmLinkage.getFromNodeId());
-		assertEquals("wrong to?", nodeB.getDiagramNodeId(), cmLinkage.getToNodeId());
+		assertEquals("wrong from?", idA, cmLinkage.getFromNodeId());
+		assertEquals("wrong to?", idB, cmLinkage.getToNodeId());
 		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
 		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);

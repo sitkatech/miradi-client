@@ -320,7 +320,7 @@ public class TestCommands extends EAMTestCase
 	private void verifyDiagramAddNode(NodeType type) throws Exception, CommandFailedException
 	{
 		ModelNodeId modelNodeId = project.createNode(type);
-		CommandDiagramAddNode add = new CommandDiagramAddNode(modelNodeId);
+		CommandDiagramAddNode add = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(add);
 
 		DiagramNodeId insertedId = add.getInsertedId();
@@ -566,7 +566,7 @@ public class TestCommands extends EAMTestCase
 	private DiagramNodeId insertNode(NodeType type) throws Exception
 	{
 		ModelNodeId modelNodeId = project.createNode(type);
-		CommandDiagramAddNode add = new CommandDiagramAddNode(modelNodeId);
+		CommandDiagramAddNode add = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(add);
 		return add.getInsertedId();
 	}

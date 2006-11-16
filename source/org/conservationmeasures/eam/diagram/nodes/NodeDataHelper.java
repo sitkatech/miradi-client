@@ -13,7 +13,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 
 public class NodeDataHelper 
 {
@@ -22,25 +22,25 @@ public class NodeDataHelper
 		setInitialMappingOfIdsToOriginalIds(existingNodesInProject);
 	}
 
-	public void setNewId(ModelNodeId originalNodeId, ModelNodeId newNodeId)
+	public void setNewId(DiagramNodeId originalNodeId, DiagramNodeId newNodeId)
 	{
 		mapNodeIds.put(getKey(originalNodeId), getValue(newNodeId));
 	}
 	
-	public ModelNodeId getNewId(ModelNodeId originalNodeId)
+	public DiagramNodeId getNewId(DiagramNodeId originalNodeId)
 	{
 		Integer newNodeId = (Integer)mapNodeIds.get(getKey(originalNodeId));
 		if(newNodeId == null)
-			return new ModelNodeId(BaseId.INVALID.asInt());
-		return new ModelNodeId(newNodeId.intValue());
+			return new DiagramNodeId(BaseId.INVALID.asInt());
+		return new DiagramNodeId(newNodeId.intValue());
 	}
 	
-	public void setOriginalLocation(BaseId originalNodeId, Point originalLocation)
+	public void setOriginalLocation(DiagramNodeId originalNodeId, Point originalLocation)
 	{
 		mapNodeLocations.put(getKey(originalNodeId), originalLocation);
 	}
 	
-	public Point getNewLocation(BaseId originalNodeId, Point insertionPoint)
+	public Point getNewLocation(DiagramNodeId originalNodeId, Point insertionPoint)
 	{
 		Point delta = computeDeltas(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
@@ -53,7 +53,7 @@ public class NodeDataHelper
 	{
 		for (Iterator iter = existingNodesInProject.iterator(); iter.hasNext();) 
 		{
-			ModelNodeId id = ((DiagramNode) iter.next()).getWrappedId();
+			DiagramNodeId id = ((DiagramNode) iter.next()).getDiagramNodeId();
 			setNewId(id, id);
 		}
 	}

@@ -90,10 +90,15 @@ public class DiagramModel extends DefaultGraphModel
 		ConceptualModelNode cmObject = getNodePool().find(idToWrap);
 		DiagramNodeId nodeId = requestedId;
 		if(requestedId.isInvalid())
-			nodeId = new DiagramNodeId(cmObject.getId().asInt());
+			nodeId = takeNextDiagramNodeId();
 		DiagramNode node = DiagramNode.wrapConceptualModelObject(nodeId, cmObject);
 		addNodeToModel(node);
 		return node;
+	}
+	
+	private DiagramNodeId takeNextDiagramNodeId()
+	{
+		return new DiagramNodeId(getProject().getAnnotationIdAssigner().takeNextId().asInt());
 	}
 
 	private void addNodeToModel(DiagramNode node) throws Exception
@@ -180,8 +185,8 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < linkages.size(); ++i)
 		{
 			DiagramLinkage linkage = (DiagramLinkage)linkages.get(i);
-			ModelNodeId foundId1 = linkage.getFromId();
-			ModelNodeId foundId2 = linkage.getToId();
+			ModelNodeId foundId1 = linkage.getFromModelNodeId();
+			ModelNodeId foundId2 = linkage.getToModelNodeId();
 			if(foundId1.equals(nodeId1) && foundId2.equals(nodeId2))
 				return true;
 			if(foundId1.equals(nodeId2) && foundId2.equals(nodeId1))
@@ -400,19 +405,8 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < keys.length(); ++i)
 		{
 			String key = keys.getString(i);
-			ModelNodeId id = new ModelNodeId(Integer.parseInt(key));
 			EnhancedJsonObject nodeJson = nodeMap.getJson(key);
-
-			ConceptualModelNode cmObject = getNodePool().find(id);
-			if(cmObject == null)
-			{
-				EAM.logError("Attempted to wrap missing node: " + id);
-				continue;
-			}
-			DiagramNodeId nodeId = new DiagramNodeId(cmObject.getId().asInt());
-			DiagramNode node = DiagramNode.wrapConceptualModelObject(nodeId, cmObject);
-			node.fillFrom(getProject(), nodeJson);
-			
+			DiagramNode node = DiagramNode.createFromJson(getProject(), nodeJson);
 			addNodeToModel(node);
 		}
 		

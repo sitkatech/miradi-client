@@ -38,7 +38,7 @@ public class TestDiagramAddNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(new ModelNodeId(BaseId.INVALID.asInt()));
+		Command insertCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), new ModelNodeId(BaseId.INVALID.asInt()));
 		try
 		{
 			EAM.setLogToString();
