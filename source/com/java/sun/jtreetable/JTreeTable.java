@@ -67,8 +67,10 @@ import java.util.EventObject;
  * @author Scott Violet
  */
 /**
- * Modified 11/16/2006
- * Benetech.org	
+ * Modified 11/16/2006 
+ * See Comment: 6085 
+ * 
+ * author Benetech.org	
  */
 public class JTreeTable extends JTable {
     /** A subclass of JTree. */
@@ -387,19 +389,21 @@ public class JTreeTable extends JTable {
 	    Component component = super.getTableCellEditorComponent
 		(table, value, isSelected, r, c);
 	    JTree t = getTree();
-//	    Removed : It appears that the table row passed in is a table row and not as this line indicates a tree row
-//	    boolean rv = t.isRootVisible();
-//	    int offsetRow = rv ? r : r - 1;
-	    Rectangle bounds = t.getRowBounds(r);
+//	    Comment: 6085 
+//	    	Removed : It appears that the table row passed in is a table row and not as this line indicates a tree row
+//	    	boolean rv = t.isRootVisible();
+//	    	int offsetRow = rv ? r : r - 1;
+	    int offsetRow = r;
+	    Rectangle bounds = t.getRowBounds(offsetRow);
 	    int offset = bounds.x;
 	    TreeCellRenderer tcr = t.getCellRenderer();
 	    if (tcr instanceof DefaultTreeCellRenderer) {
-		Object node = t.getPathForRow(r).
+		Object node = t.getPathForRow(offsetRow).
 		                getLastPathComponent();
 		Icon icon;
 		if (t.getModel().isLeaf(node))
 		    icon = ((DefaultTreeCellRenderer)tcr).getLeafIcon();
-		else if (tree.isExpanded(r))
+		else if (tree.isExpanded(offsetRow))
 		    icon = ((DefaultTreeCellRenderer)tcr).getOpenIcon();
 		else
 		    icon = ((DefaultTreeCellRenderer)tcr).getClosedIcon();
