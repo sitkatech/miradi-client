@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -26,19 +27,13 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		super(idToUse);
 		type = nodeType;
 		
-		indicators = new IdList();
-		objectives = new IdList();
-		goals = new IdList();
+		clear();
 	}
 	
 	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		type = nodeType;
-
-		indicators = new IdList(json.optString(TAG_INDICATOR_IDS));
-		goals = new IdList(json.optString(TAG_GOAL_IDS));
-		objectives = new IdList(json.optString(TAG_OBJECTIVE_IDS));
 	}
 	
 	public ModelNodeId getModelNodeId()
@@ -80,32 +75,32 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 
 	public IdList getIndicators()
 	{
-		return indicators;
+		return indicators.getIdList();
 	}
 	
 	public void setIndicators(IdList indicatorsToUse)
 	{
-		indicators = indicatorsToUse;
+		indicators.set(indicatorsToUse);
 	}
 
 	public IdList getObjectives()
 	{
-		return objectives;
+		return objectives.getIdList();
 	}
 
 	public void setObjectives(IdList objectivesToUse)
 	{
-		objectives = objectivesToUse;
+		objectives.set(objectivesToUse);
 	}
 	
 	public IdList getGoals()
 	{
-		return goals;
+		return goals.getIdList();
 	}
 
 	public void setGoals(IdList goalsToUse)
 	{
-		goals = goalsToUse;
+		goals.set(goalsToUse);
 	}
 
 	public boolean isIntervention()
@@ -158,35 +153,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return new CreateModelNodeParameter(getNodeType());
 	}
 
-	public String getData(String fieldTag)
-	{
-		if(fieldTag.equals(TAG_NODE_TYPE))
-			throw new RuntimeException("Cannot use getData to obtain node type");
-
-		if(fieldTag.equals(TAG_INDICATOR_IDS))
-			return indicators.toString();
-		if(fieldTag.equals(TAG_GOAL_IDS))
-			return goals.toString();
-		if(fieldTag.equals(TAG_OBJECTIVE_IDS))
-			return objectives.toString();
-		return super.getData(fieldTag);
-	}
-
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(fieldTag.equals(TAG_NODE_TYPE))
-			throw new RuntimeException("Cannot use setData to change node type");
-		
-		else if(fieldTag.equals(TAG_INDICATOR_IDS))
-			setIndicators(new IdList(dataValue));
-		else if(fieldTag.equals(TAG_GOAL_IDS))
-			setGoals(new IdList(dataValue));
-		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
-			setObjectives(new IdList(dataValue));
-		else
-			super.setData(fieldTag, dataValue);
-	}
-
 	public static ConceptualModelNode createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
@@ -204,15 +170,12 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_NODE_TYPE, type.toString());
-		json.put(TAG_INDICATOR_IDS, getIndicators().toString());
-		json.put(TAG_GOAL_IDS, goals.toString());
-		json.put(TAG_OBJECTIVE_IDS, objectives.toString());
+		EnhancedJsonObject superJson = super.toJson();
+		superJson.put(TAG_NODE_TYPE , type);
 		
-		return json;
+		return superJson;
 	}
-	
+
 	public String toString()
 	{
 		return getLabel();
@@ -237,20 +200,26 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	{
 		super.clear();
 		comment = new StringData();
+	    indicators = new IdListData();
+		objectives = new IdListData();
+		goals = new IdListData();
 		
 		addField(TAG_COMMENT, comment);
+		addField(TAG_INDICATOR_IDS, indicators);
+		addField(TAG_OBJECTIVE_IDS, objectives);
+		addField(TAG_GOAL_IDS, goals);
 	}
 
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
-	public static final String TAG_GOAL_IDS = "GoalIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
+	public static final String TAG_GOAL_IDS = "GoalIds";
 	
 	private NodeType type;
 	private StringData comment;
 
-	private IdList indicators;
-	private IdList objectives;
-	private IdList goals;
+	private IdListData indicators;
+	private IdListData objectives;
+	private IdListData goals;
 }
