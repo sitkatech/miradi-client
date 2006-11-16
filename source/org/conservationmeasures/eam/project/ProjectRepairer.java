@@ -4,7 +4,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -117,7 +116,7 @@ public class ProjectRepairer
 	
 	private void removeMissingObjectiveIds(ConceptualModelNode node)
 	{
-		ObjectiveIds newIds = new ObjectiveIds();
+		IdList newIds = new IdList();
 		IdList oldIds = node.getObjectives();
 		for(int i = 0; i < oldIds.size(); ++i)
 		{

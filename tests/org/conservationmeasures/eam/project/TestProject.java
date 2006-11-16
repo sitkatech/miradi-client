@@ -34,7 +34,6 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
@@ -594,7 +593,7 @@ public class TestProject extends EAMTestCase
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
 
-		ObjectiveIds objectiveId = new ObjectiveIds();
+		IdList objectiveId = new IdList();
 		objectiveId.add(objectiveId1);
 		
 		nodeA.getUnderlyingObject().setObjectives(objectiveId);
@@ -619,7 +618,7 @@ public class TestProject extends EAMTestCase
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
-		ObjectiveIds objectiveId = new ObjectiveIds();
+		IdList objectiveId = new IdList();
 		objectiveId.add(objectiveId1);
 
 		nodeIndirectFactor.getUnderlyingObject().setObjectives(objectiveId);

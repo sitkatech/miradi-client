@@ -5,7 +5,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -84,7 +83,7 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
 			ConceptualModelNode node = project.findNode(nodeId);
-			ObjectiveIds bogusObjectives = new ObjectiveIds();
+			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(BaseId.INVALID);
 			node.setObjectives(bogusObjectives);
 			project.writeNode(nodeId);
@@ -111,7 +110,7 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
 			ConceptualModelNode node = project.findNode(nodeId);
-			ObjectiveIds bogusObjectives = new ObjectiveIds();
+			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(new BaseId(235));
 			node.setObjectives(bogusObjectives);
 			project.writeNode(nodeId);

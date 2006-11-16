@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestConceptualModelNode extends TestCaseEnhanced
@@ -82,9 +81,9 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		goals.add(new BaseId(2));
 		goals.add(new BaseId(5));
 		
-		ObjectiveIds objectives = new ObjectiveIds();
-		objectives.addId(new BaseId(7));
-		objectives.addId(new BaseId(9));
+		IdList objectives = new IdList();
+		objectives.add(new BaseId(7));
+		objectives.add(new BaseId(9));
 		
 		IdList indicators = new IdList();
 		indicators.add(new BaseId(23));
