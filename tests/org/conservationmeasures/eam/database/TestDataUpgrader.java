@@ -10,7 +10,6 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -21,6 +20,7 @@ import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
@@ -307,20 +307,20 @@ public class TestDataUpgrader extends EAMTestCase
 
 		for(int i = 0; i < oldNodeFileContents.length; ++i)
 			createFile(new File(nodesDirectory, Integer.toString(i)), oldNodeFileContents[i]);
-
+		
 		File manifestFile = new File(nodesDirectory, "manifest");
 		createFile(manifestFile, buildManifestContents(allIds));
 		
 		upgrader.dropOldSampleGoals();
 		
-		IdList noGoals = new IdList();
-		noGoals.add(-1);
-		final int NODE_TYPE = 4;
 		for(int i = 0; i < targetIds.length; ++i)
 		{
-			BaseId targetId = new BaseId(targetIds[i]);
-			ConceptualModelTarget target = (ConceptualModelTarget)upgrader.readObject(NODE_TYPE, targetId);
-			assertEquals("Didn't remove old sample goals?", noGoals, target.getGoals());
+			File existingFile = new File(nodesDirectory, Integer.toString(targetIds[i]));
+			EnhancedJsonObject json = JSONFile.read(existingFile);
+			EnhancedJsonArray jsonArray = json.getJsonArray("GoalIds");
+			
+			assertEquals("Is the length the same?", jsonArray.length(), 1);
+			assertEquals("Is the content the same?", jsonArray.get(0), new Integer(-1));
 		}
 		
 	}
