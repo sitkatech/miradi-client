@@ -169,7 +169,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject superJson = super.toJson();
-		superJson.put(TAG_NODE_TYPE , type);
+		superJson.put(TAG_NODE_TYPE , type.toString());
 		
 		return superJson;
 	}
