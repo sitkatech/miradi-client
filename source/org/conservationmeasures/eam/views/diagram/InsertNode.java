@@ -47,7 +47,7 @@ abstract public class InsertNode extends LocationDoer
 				notLinkingToAnyNodes();
 			
 			selectNewNode(id);
-			launchPropertiesEditor(new DiagramNodeId(id.asInt()));
+			launchPropertiesEditor(id);
 		}
 		catch (Exception e)
 		{
@@ -61,7 +61,7 @@ abstract public class InsertNode extends LocationDoer
 		getProject().selectNode(idToUse);
 	}
 	
-	void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
+	void launchPropertiesEditor(ModelNodeId id) throws Exception, CommandFailedException
 	{
 		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
 		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);

@@ -428,6 +428,11 @@ public class DataUpgrader extends ProjectServer
 			JSONFile.write(objectFile, nodeData);
 		}
 	}
+	
+	public void convertGoalIdToIdList() throws Exception
+	{
+		
+	}
 
 	private static final int NODE_TYPE = 4;
 

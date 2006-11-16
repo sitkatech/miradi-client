@@ -474,6 +474,8 @@ public class TestDataUpgrader extends EAMTestCase
 		}
 		
 	}
+	
+	
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)
 	{

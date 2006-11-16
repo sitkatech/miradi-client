@@ -168,7 +168,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			return nodeSelectCalled;
 		}
 
-		void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
+		void launchPropertiesEditor(ModelNodeId id) throws Exception, CommandFailedException
 		{
 			wasPropertiesEditorLaunched = true;
 		}
