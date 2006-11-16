@@ -17,12 +17,12 @@ public class ActionImportTncCapProjectFile extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Project Tnc Cap File");
+		return EAM.text("Action|Project TNC CAP File");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Import to Tnc Cap file");
+		return EAM.text("TT|Import to TNC CAP file");
 	}
 
 }

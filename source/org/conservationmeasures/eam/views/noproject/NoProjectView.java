@@ -92,7 +92,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		add(scrollPane, BorderLayout.CENTER);
 	}
 
-	private void refreshText()
+	public void refreshText()
 	{
 		String htmlText = new NoProjectHtmlText().getText();
 		htmlViewer.setText(htmlText);

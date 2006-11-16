@@ -18,7 +18,7 @@ public class TncCapWorkbookImporter
 		fileName = fileNameToUse;
 		workbook = Workbook.getWorkbook(new File(fileName)); 
 		if (!isValidVersion()) 
-			throw new Exception("Invalid Tnc Cap File Version");
+			throw new Exception("Invalid TNC CAP File Version");
 	}
 	
 

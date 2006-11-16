@@ -54,7 +54,7 @@ class NoProjectHtmlText extends HtmlBuilder
 				paragraph(
 					definition(IMPORT_ZIP, "Import a zipped project", "Browse to a zipped project")) +
 				paragraph(
-					definition(IMPORT_TNC_CAP_PROJECT, "Import a Tnc Cap project", "Browse to a tnc cap project")) +
+					definition(IMPORT_TNC_CAP_PROJECT, "Import a TNC CAP project", "Browse to a tnc cap project")) +
 				paragraph(
 					definition("BrowseProject", "Browse to find other projects", "Browse to existing...")) +
 				paragraph(
