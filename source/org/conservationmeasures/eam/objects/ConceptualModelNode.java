@@ -11,7 +11,6 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -40,8 +39,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 
 		indicators = new IdList(json.optString(TAG_INDICATOR_IDS));
 		
-		IdList goalIds = new IdList(json.optString(TAG_GOAL_IDS));
-		goals = new GoalIds(goalIds);
+		goals = new IdList(json.optString(TAG_GOAL_IDS));
 		
 		IdList objectiveIds = new IdList(json.optString(TAG_OBJECTIVE_IDS));
 		objectives = new ObjectiveIds(objectiveIds);
@@ -186,7 +184,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		else if(fieldTag.equals(TAG_INDICATOR_IDS))
 			setIndicators(new IdList(dataValue));
 		else if(fieldTag.equals(TAG_GOAL_IDS))
-			setGoals(new GoalIds(new IdList(dataValue)));
+			setGoals(new IdList(dataValue));
 		else if(fieldTag.equals(TAG_OBJECTIVE_IDS))
 			setObjectives(new ObjectiveIds(new IdList(dataValue)));
 		else

@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -58,7 +57,7 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
 			ConceptualModelNode node = project.findNode(nodeId);
-			GoalIds bogusGoals = new GoalIds();
+			IdList bogusGoals = new IdList();
 			bogusGoals.add(BaseId.INVALID);
 			node.setGoals(bogusGoals);
 			project.writeNode(nodeId);

@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.ids.ObjectiveIds;
@@ -79,9 +78,9 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 
 	public void testJson() throws Exception
 	{
-		GoalIds goals = new GoalIds();
-		goals.addId(new BaseId(2));
-		goals.addId(new BaseId(5));
+		IdList goals = new IdList();
+		goals.add(new BaseId(2));
+		goals.add(new BaseId(5));
 		
 		ObjectiveIds objectives = new ObjectiveIds();
 		objectives.addId(new BaseId(7));
