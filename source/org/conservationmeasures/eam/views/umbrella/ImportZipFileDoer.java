@@ -6,26 +6,35 @@
 
 package org.conservationmeasures.eam.views.umbrella;
 
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ViewDoer;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
+import java.io.File;
 
+import org.conservationmeasures.eam.project.ProjectUnzipper;
 
-
-public class ImportZipFileDoer extends ViewDoer
+public class ImportZipFileDoer  extends ImportDoer
 {
-	public boolean isAvailable() 
+	public boolean createProject(File finalProjectDirectory, File importFile, String importFileName)
 	{
-		Project project = getProject();
-		return !project.isOpen();
+		try
+		{
+			ProjectUnzipper.unzipToProjectDirectory(importFile, finalProjectDirectory);
+			return true;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 
-	public void doIt() throws CommandFailedException 
+	public boolean verifyFileType(File importFile)
 	{
-		NoProjectView noProjectView = (NoProjectView)getView();
-		noProjectView.doImportZip();
+		try
+		{
+			return (ProjectUnzipper.isZipFileImportable(importFile));
+		}
+		catch (Exception e) 
+		{
+		}
+		return false;
 	}
-
-
 }

@@ -15,15 +15,12 @@ import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.EAMAction;
-import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.swing.UiFileChooser;
 
 public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 {
@@ -108,61 +105,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 	}
 
-	
-
-	
-	public void doImportZip()
-	{
-		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
-		String windowTitle = EAM.text("Import Zipped Project");
-		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
-				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory);
-		if (results.wasCancelChoosen())
-			return;
-		File zipToImport = results.getChosenFile();
-		String projectName = withoutExtension(zipToImport.getName());
-		File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
-		if(ProjectServer.isExistingProject(finalProjectDirectory))
-		{
-			EAM.notifyDialog("Cannot import a project that already exists: " + projectName);
-			return;
-		}
-		if(finalProjectDirectory.exists())
-		{
-			EAM.notifyDialog("Cannot import over an existing file or directory: " + 
-					finalProjectDirectory.getAbsolutePath());
-			return;
-		}
-		
-		try
-		{
-			if(!ProjectUnzipper.isZipFileImportable(zipToImport))
-			{
-				EAM.notifyDialog("Not a valid project zip file");
-				return;
-			}
-			
-			ProjectUnzipper.unzipToProjectDirectory(zipToImport, finalProjectDirectory);
-			
-			refreshText();
-			EAM.notifyDialog("Import complete");
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			EAM.errorDialog("Import failed");
-		}
-		
-	}
-	
-	private String withoutExtension(String fileName)
-	{
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		return fileName.substring(0, lastDotAt);
-	}
-	
 	public void buttonPressed(String buttonName)
 	{
 	}

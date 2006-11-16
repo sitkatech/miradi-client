@@ -8,61 +8,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
-import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TncCapWorkbookImporter;
-import org.conservationmeasures.eam.views.ViewDoer;
-import org.conservationmeasures.eam.views.noproject.NoProjectView;
-import org.martus.swing.UiFileChooser;
 
-
-
-public class ImportTncCapWorkbookDoer extends ViewDoer
+public class ImportTncCapWorkbookDoer extends ImportDoer
 {
-	public boolean isAvailable() 
-	{
-		Project project = getProject();
-		return !project.isOpen();
-	}
-
-	public void doIt() throws CommandFailedException 
-	{
-		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
-		String windowTitle = EAM.text("Import Project");
-		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
-				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory);
-		
-		if (results.wasCancelChoosen())
-			return;
-		
-		File fileToImport = results.getChosenFile();
-		String projectName = withoutExtension(fileToImport.getName());
-		File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
-		
-		if(ProjectServer.isExistingProject(finalProjectDirectory))
-		{
-			EAM.notifyDialog("Cannot import a project that already exists: " + projectName);
-			return;
-		}
-		
-		if(finalProjectDirectory.exists())
-		{
-			EAM.notifyDialog("Cannot import over an existing file or directory: " + 
-					finalProjectDirectory.getAbsolutePath());
-			return;
-		}
-		
-		boolean test = createProject(finalProjectDirectory, fileToImport, projectName);
-		if (test)
-			EAM.notifyDialog("Import complete");
-		else
-			EAM.errorDialog("Import failed");
-	}
-
-	private boolean createProject(File finalProjectDirectory, File importFile, String importFileName)
+	public boolean createProject(File finalProjectDirectory, File importFile, String importFileName)
 	{
 		try
 		{
@@ -74,8 +26,6 @@ public class ImportTncCapWorkbookDoer extends ViewDoer
 			project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, importer.getProjectVersionDate());
 			project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, importer.getProjectVersion());
 			project.close();
-			NoProjectView noProjectView = (NoProjectView)getView();
-			noProjectView.refreshText();
 			return true;
 		}
 		catch (Exception e)
@@ -85,12 +35,16 @@ public class ImportTncCapWorkbookDoer extends ViewDoer
 		}
 	}
 	
-	private String withoutExtension(String fileName)
+	public boolean verifyFileType(File importFile)
 	{
-		int lastDotAt = fileName.lastIndexOf('.');
-		if(lastDotAt < 0)
-			return fileName;
-		return fileName.substring(0, lastDotAt);
+		try
+		{
+			return (importFile.getName().endsWith(".xls"));
+		}
+		catch (Exception e) 
+		{
+		}
+		return false;
 	}
-
+	
 }
