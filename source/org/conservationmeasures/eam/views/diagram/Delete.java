@@ -126,14 +126,16 @@ public class Delete extends ProjectDoer
 	private void removeNodeFromDiagram(DiagramNode nodeToDelete, DiagramNodeId id) throws CommandFailedException
 	{
 		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
-		for(int i = 0; i < commandsToClear.length; ++i)
-			getProject().executeCommand(commandsToClear[i]);
+		getProject().executeCommands(commandsToClear);
 		
 		getProject().executeCommand(new CommandDiagramRemoveNode(id));
 	}
 
 	private void deleteUnderlyingNode(ConceptualModelNode nodeToDelete) throws CommandFailedException
 	{
+		Command[] commandsToClear = nodeToDelete.createCommandsToClear();
+		getProject().executeCommands(commandsToClear);
+		
 		getProject().executeCommand(new CommandDeleteObject(nodeToDelete.getType(), nodeToDelete.getModelNodeId()));
 	}
 	
