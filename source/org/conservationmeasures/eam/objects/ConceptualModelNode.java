@@ -29,8 +29,8 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		type = nodeType;
 		
 		indicators = new IdList();
-		objectives = new ObjectiveIds();
-		goals = new GoalIds();
+		objectives = new IdList();
+		goals = new IdList();
 	}
 	
 	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
