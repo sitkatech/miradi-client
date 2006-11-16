@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelCluster extends EAMTestCase
+public class TestConceptualModelCluster extends ObjectTestCase
 {
 	public TestConceptualModelCluster(String name)
 	{
@@ -31,5 +31,10 @@ public class TestConceptualModelCluster extends EAMTestCase
 		ConceptualModelCluster got = (ConceptualModelCluster)EAMBaseObject.createFromJson(group.getType(), group.toJson());
 		assertEquals("didn't jsonize id?", group.getId(), got.getId());
 		assertEquals("didn't jsonize members?", group.getMemberIds(), got.getMemberIds());
+	}
+	
+	public void testFields() throws Exception
+	{
+		verifyFields(ObjectType.MODEL_NODE);
 	}
 }
