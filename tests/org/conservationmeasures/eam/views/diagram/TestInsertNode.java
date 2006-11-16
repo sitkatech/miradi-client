@@ -158,8 +158,6 @@ public class TestInsertNode extends TestCaseEnhanced
 
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
-		
-		boolean nodeSelectCalled;
 		protected void selectNewNode(ModelNodeId idToUse)
 		{
 			nodeSelectCalled = true;
@@ -175,7 +173,8 @@ public class TestInsertNode extends TestCaseEnhanced
 			wasPropertiesEditorLaunched = true;
 		}
 
-		public boolean wasPropertiesEditorLaunched; 
+		public boolean wasPropertiesEditorLaunched;
+		private boolean nodeSelectCalled;
 	}
 
 	static class OurMainWindow extends MainWindow
