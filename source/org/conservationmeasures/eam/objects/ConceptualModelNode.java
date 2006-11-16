@@ -20,7 +20,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
-import org.json.JSONArray;
 
 abstract public class ConceptualModelNode extends EAMBaseObject
 {
@@ -41,17 +40,11 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 
 		indicators = new IdList(json.optString(TAG_INDICATOR_IDS));
 		
-		goals = new GoalIds();
-		JSONArray goalIds = json.getJsonArray(TAG_GOAL_IDS);
-		for(int i = 0; i < goalIds.length(); ++i)
-			goals.addId(new BaseId(goalIds.getInt(i)));
+		IdList goalIds = new IdList(json.optString(TAG_GOAL_IDS));
+		goals = new GoalIds(goalIds);
 		
-		objectives = new ObjectiveIds();
-		JSONArray objectiveIds = json.optJsonArray(TAG_OBJECTIVE_IDS);
-		if(objectiveIds == null)
-			objectiveIds = new JSONArray();
-		for(int i = 0; i < objectiveIds.length(); ++i)
-			objectives.addId(new BaseId(objectiveIds.getInt(i)));
+		IdList objectiveIds = new IdList(json.optString(TAG_OBJECTIVE_IDS));
+		objectives = new ObjectiveIds(objectiveIds);
 	}
 	
 	public ModelNodeId getModelNodeId()
@@ -220,16 +213,8 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_NODE_TYPE, type.toString());
 		json.put(TAG_INDICATOR_IDS, getIndicators().toString());
-		
-		JSONArray goalIds = new JSONArray();
-		for(int i = 0; i < goals.size(); ++i)
-			goalIds.appendInt(goals.getId(i).asInt());
-		json.put(TAG_GOAL_IDS, goalIds);
-		
-		JSONArray objectiveIds = new JSONArray();
-		for(int i = 0; i < objectives.size(); ++i)
-			objectiveIds.appendInt(objectives.getId(i).asInt());
-		json.put(TAG_OBJECTIVE_IDS, objectiveIds);
+		json.put(TAG_GOAL_IDS, goals.toString());
+		json.put(TAG_OBJECTIVE_IDS, objectives.toString());
 		
 		return json;
 	}

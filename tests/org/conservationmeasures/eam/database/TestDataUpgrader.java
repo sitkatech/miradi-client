@@ -478,16 +478,15 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 		String[] oldNodeFileContents = {
-			"{\"Type\":\"Factor\",\"Id\":0}",
-			
 			"{\"Type\":\"Target\",\"Id\":1}",
 			"{\"Type\":\"Target\",\"GoalIds\":[],\"Id\":2}",
 			"{\"Type\":\"Target\",\"GoalIds\":[-1],\"Id\":3}",
 			"{\"Type\":\"Target\",\"GoalIds\":[33, 44],\"Id\":4}",
 			
-			"{\"Type\":\"Objective\",\"GoalIds\":[],\"Id\":5}",
-			"{\"Type\":\"Objective\",\"GoalIds\":[-1],\"Id\":6}",
-			"{\"Type\":\"Objective\",\"GoalIds\":[10, 20],\"Id\":7}",
+			"{\"Type\":\"Factor\",\"Id\":0}",
+			"{\"Type\":\"Factor\",\"ObjectiveIds\":[],\"Id\":5}",
+			"{\"Type\":\"Factor\",\"ObjectiveIds\":[-1],\"Id\":6}",
+			"{\"Type\":\"Factor\",\"ObjectiveIds\":[10, 20],\"Id\":7}",
 			
 			"{\"Type\":\"Intervention\",\"Id\":8}",
 		};
@@ -505,7 +504,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File manifestFile = new File(nodesDirectory, "manifest");
 		createFile(manifestFile, buildManifestContents(allIds));
 		
-		upgrader.convertGoalIdToIdList();
+		upgrader.convertGoalsAndObjectivesToIdLists();
 		for (int n = 0; n < typesToConvert.length; n++)
 		{
 			for(int i = 0; i < allIds.length; ++i)

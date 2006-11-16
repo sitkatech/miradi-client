@@ -100,6 +100,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion10();
 		if(readDataVersion(getTopDirectory()) == 10)
 			upgradeToVersion11();
+		if(readDataVersion(getTopDirectory()) == 11)
+			upgradeToVersion12();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -430,9 +432,14 @@ public class DataUpgrader extends ProjectServer
 		}
 	}
 	
-	public void convertGoalIdToIdList() throws Exception
+	public void upgradeToVersion12() throws Exception
 	{
-		String[] typesToConvert = {"GoalIds", "ObjectiveIds"};
+		convertGoalsAndObjectivesToIdLists();
+		writeVersion(12);
+	}
+	
+	public void convertGoalsAndObjectivesToIdLists() throws Exception
+	{
 		int objectType = ObjectType.MODEL_NODE;
 		
 		File jsonDirectory = new File(getTopDirectory(), "json");
@@ -447,21 +454,21 @@ public class DataUpgrader extends ProjectServer
 		ObjectManifest manifest = readObjectManifest(objectType);
 		BaseId[] ids = manifest.getAllKeys();
 
-		for (int n = 0; n < typesToConvert.length; n++)
+		
+		for(int i = 0; i < ids.length; ++i)
 		{
-			for(int i = 0; i < ids.length; ++i)
-			{
-				BaseId id = ids[i];
-				File objectFile = new File(modelNodesDirectory, Integer.toString(id.asInt()));
-				EnhancedJsonObject nodeData = JSONFile.read(objectFile);
-				
-				EnhancedJsonObject newNodeList = convertJsonArrayToIdList(typesToConvert[n], nodeData);
-				JSONFile.write(objectFile, newNodeList);
-			}
+			BaseId id = ids[i];
+			File objectFile = new File(modelNodesDirectory, Integer.toString(id.asInt()));
+			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
+			
+			convertJsonArrayToIdList("GoalIds", nodeData);
+			convertJsonArrayToIdList("ObjectiveIds", nodeData);
+			
+			JSONFile.write(objectFile, nodeData);
 		}
 	}
 
-	private EnhancedJsonObject convertJsonArrayToIdList(String converTag, EnhancedJsonObject nodeDataToUse)
+	private void convertJsonArrayToIdList(String converTag, EnhancedJsonObject nodeDataToUse)
 	{
 		EnhancedJsonArray jsonArray = nodeDataToUse.optJsonArray(converTag);
 		IdList newIds = new IdList();
@@ -469,7 +476,6 @@ public class DataUpgrader extends ProjectServer
 			newIds.add(new BaseId(jsonArray.getInt(aCounter))); 
 
 		nodeDataToUse.put(converTag, newIds.toString());
-		return nodeDataToUse;
 	}
 
 	private static final int NODE_TYPE = 4;
