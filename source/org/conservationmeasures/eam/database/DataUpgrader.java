@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectZipper;
+import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -431,7 +432,38 @@ public class DataUpgrader extends ProjectServer
 	
 	public void convertGoalIdToIdList() throws Exception
 	{
+		final String GOAL_IDS_STRING = "GoalIds";
+		int optionType = ObjectType.MODEL_NODE;
 		
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		File modelNodesDirectory = new File(jsonDirectory, "objects-4");
+		if(!modelNodesDirectory.exists())
+			return;
+		
+		File manifestFile = getObjectManifestFile(optionType);
+		if(!manifestFile.exists())
+			return;
+
+		ObjectManifest manifest = readObjectManifest(optionType);
+		BaseId[] ids = manifest.getAllKeys();
+
+		for(int i = 0; i < ids.length; ++i)
+		{
+			BaseId id = ids[i];
+			File objectFile = getObjectFile(NODE_TYPE, id);
+			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
+			
+			EnhancedJsonArray jsonArray = nodeData.optJsonArray(GOAL_IDS_STRING);
+
+			BaseId[] extractedIds = new BaseId[jsonArray.length()];
+
+			for (int aCounter = 0; aCounter < jsonArray.length(); aCounter++)
+				extractedIds[aCounter] = new BaseId(jsonArray.getInt(aCounter));
+			
+			IdList newGoalIds = new IdList(extractedIds);
+			nodeData.put(GOAL_IDS_STRING, newGoalIds.toString());
+			JSONFile.write(objectFile, nodeData);
+		}
 	}
 
 	private static final int NODE_TYPE = 4;

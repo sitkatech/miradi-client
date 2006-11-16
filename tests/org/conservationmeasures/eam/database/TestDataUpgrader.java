@@ -471,11 +471,55 @@ public class TestDataUpgrader extends EAMTestCase
 		catch(Exception ignoreExpected)
 		{
 			assertContains("IndicatorIds", ignoreExpected.getMessage());
-		}
-		
+		}	
 	}
 	
-	
+	public void testConvertGoalIdToIdList() throws Exception
+	{
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		String[] oldNodeFileContents = {
+			"{\"Type\":\"Factor\",\"Id\":0}",
+			"{\"Type\":\"Target\",\"Id\":1}",
+			"{\"Type\":\"Target\",\"GoalIds\":[],\"Id\":2}",
+			"{\"Type\":\"Target\",\"GoalIds\":[-1],\"Id\":3}",
+			"{\"Type\":\"Target\",\"GoalIds\":[33, 44],\"Id\":4}",
+			"{\"Type\":\"Intervention\",\"Id\":5}",
+		};
+		
+		int[] allIds = {0, 1, 2, 3, 4, 5, };
+		final String GOAL_IDS_STRING = "GoalIds";
+		
+		File nodesDirectory = new File(tempDirectory, "json/objects-4");
+		// missing nodes directory is not a problem
+		nodesDirectory.mkdirs();
+
+		for(int i = 0; i < oldNodeFileContents.length; ++i)
+			createFile(new File(nodesDirectory, Integer.toString(i)), oldNodeFileContents[i]);
+		
+		File manifestFile = new File(nodesDirectory, "manifest");
+		createFile(manifestFile, buildManifestContents(allIds));
+		
+		upgrader.convertGoalIdToIdList();
+		
+		for(int i = 0; i < allIds.length; ++i)
+		{
+			File existingFile = new File(nodesDirectory, Integer.toString(allIds[i]));
+			EnhancedJsonObject json = JSONFile.read(existingFile);
+			String jsonListAsString = json.getString(GOAL_IDS_STRING);
+			
+			IdList newIdList = new IdList(jsonListAsString);
+			
+			EnhancedJsonObject oldObject = new EnhancedJsonObject(oldNodeFileContents[i]);
+			EnhancedJsonArray oldArray = oldObject.optJsonArray(GOAL_IDS_STRING);
+			
+			assertEquals("are old list and new list same size?", oldArray.length(), newIdList.size());
+			for (int j = 0; j < oldArray.length(); j++)
+				assertEquals("is content the same?", oldArray.getInt(j), newIdList.get(j).asInt());
+			
+		}
+
+		
+	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)
 	{
