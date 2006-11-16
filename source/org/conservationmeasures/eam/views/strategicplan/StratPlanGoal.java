@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -85,7 +85,7 @@ public class StratPlanGoal extends TreeTableNode
 		while(iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			ObjectiveIds objectiveIds = node.getObjectives();
+			IdList objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{
 				if(objectiveIds.get(i).isInvalid())

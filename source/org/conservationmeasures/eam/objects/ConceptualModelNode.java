@@ -94,22 +94,22 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		indicators = indicatorsToUse;
 	}
 
-	public ObjectiveIds getObjectives()
+	public IdList getObjectives()
 	{
 		return objectives;
 	}
 
-	public void setObjectives(ObjectiveIds objectivesToUse)
+	public void setObjectives(IdList objectivesToUse)
 	{
 		objectives = objectivesToUse;
 	}
 	
-	public GoalIds getGoals()
+	public IdList getGoals()
 	{
 		return goals;
 	}
 
-	public void setGoals(GoalIds goalsToUse)
+	public void setGoals(IdList goalsToUse)
 	{
 		goals = goalsToUse;
 	}
@@ -257,6 +257,6 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	private StringData comment;
 
 	private IdList indicators;
-	private ObjectiveIds objectives;
-	private GoalIds goals;
+	private IdList objectives;
+	private IdList goals;
 }

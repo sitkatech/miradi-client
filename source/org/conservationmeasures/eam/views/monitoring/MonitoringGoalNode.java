@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ObjectiveIds;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -79,7 +78,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		while(iter.hasNext())
 		{
 			ConceptualModelNode node = (ConceptualModelNode)iter.next();
-			ObjectiveIds objectiveIds = node.getObjectives();
+			IdList objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{
 				if(objectiveIds.get(i).isInvalid())

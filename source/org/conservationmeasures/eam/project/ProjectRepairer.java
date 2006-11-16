@@ -1,7 +1,6 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.GoalIds;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -78,7 +77,7 @@ public class ProjectRepairer
 	
 	private void removeInvalidGoalIds(ConceptualModelNode node)
 	{
-		GoalIds ids = node.getGoals();
+		IdList ids = node.getGoals();
 		if(!ids.contains(BaseId.INVALID))
 			return;
 		
@@ -98,7 +97,7 @@ public class ProjectRepairer
 	
 	private void removeInvalidObjectiveIds(ConceptualModelNode node)
 	{
-		ObjectiveIds ids = node.getObjectives();
+		IdList ids = node.getObjectives();
 		if(!ids.contains(BaseId.INVALID))
 			return;
 		
@@ -119,7 +118,7 @@ public class ProjectRepairer
 	private void removeMissingObjectiveIds(ConceptualModelNode node)
 	{
 		ObjectiveIds newIds = new ObjectiveIds();
-		ObjectiveIds oldIds = node.getObjectives();
+		IdList oldIds = node.getObjectives();
 		for(int i = 0; i < oldIds.size(); ++i)
 		{
 			BaseId id = oldIds.get(i);
