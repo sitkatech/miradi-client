@@ -61,6 +61,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		DiagramNode node = project.getDiagramModel().getNodeById(id);
 		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
+		assertTrue("select node was called?", inserter.wasSelectNodeCalled());
 
 		assertTrue("didn't invoke editor?", inserter.wasPropertiesEditorLaunched);
 	}
@@ -157,6 +158,18 @@ public class TestInsertNode extends TestCaseEnhanced
 
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
+		
+		boolean nodeSelectCalled;
+		protected void selectNewNode(ModelNodeId idToUse)
+		{
+			nodeSelectCalled = true;
+		}
+		
+		boolean wasSelectNodeCalled()
+		{
+			return nodeSelectCalled;
+		}
+
 		void launchPropertiesEditor(DiagramNodeId id) throws Exception, CommandFailedException
 		{
 			wasPropertiesEditorLaunched = true;

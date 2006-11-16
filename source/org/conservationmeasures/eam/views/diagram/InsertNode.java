@@ -56,7 +56,7 @@ abstract public class InsertNode extends LocationDoer
 		}
 	}
 	
-	private void selectNewNode(ModelNodeId idToUse)
+    protected void selectNewNode(ModelNodeId idToUse)
 	{
 		getProject().selectNode(idToUse);
 	}
