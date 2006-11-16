@@ -99,14 +99,15 @@ public class TncCapWorkbookImporter
 	final static int PROJECT_SHEET_NUMBER = 0;
 	final static int EXPECTED_ROW = 6;
 	
-	final static int EXPECTED_WKBK_VERSION_COL = 28;
-	final static int EXPECTED_WWKBK_VERSION_DATE_COL = 29;
-	final static int EXPECTED_DOWNLOAD_DATE_COL = 23;
-	final static int EXPECTED_PROJECT_LESSONS_LEARNED_COL = 15;
+
 	final static int EXPECTED_PROJECT_START_DATE_COL = 7;
 	final static int EXPECTED_DATA_EFFECTIVE_DATE_COL = 8;
 	final static int EXPECTED_PROJECT_AREA_SIZE_HECTARES_COL = 11;
-	final static int EXPECTED_PROJECT_GOAL_COMMENT_COL = 13;
 	final static int EXPECTED_PROJECT_DESCR_COMMENT_COL = 12;
+	final static int EXPECTED_PROJECT_GOAL_COMMENT_COL = 13;
+	final static int EXPECTED_PROJECT_LESSONS_LEARNED_COL = 15;
+	final static int EXPECTED_DOWNLOAD_DATE_COL = 23;
+	final static int EXPECTED_WKBK_VERSION_COL = 28;
+	final static int EXPECTED_WWKBK_VERSION_DATE_COL = 29;
 
 }

@@ -8,11 +8,12 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 
 public class ImportZipFileDoer  extends ImportDoer
 {
-	public boolean createProject(File finalProjectDirectory, File importFile, String importFileName)
+	public boolean createProject(File finalProjectDirectory, File importFile)
 	{
 		try
 		{
@@ -21,12 +22,12 @@ public class ImportZipFileDoer  extends ImportDoer
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			return false;
 		}
 	}
 
-	public boolean verifyFileType(File importFile)
+	public boolean isCorrectFileType(File importFile)
 	{
 		try
 		{
@@ -34,7 +35,8 @@ public class ImportZipFileDoer  extends ImportDoer
 		}
 		catch (Exception e) 
 		{
+			EAM.logException(e);
+			return false;
 		}
-		return false;
 	}
 }

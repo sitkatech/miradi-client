@@ -17,9 +17,9 @@ import org.martus.swing.UiFileChooser;
 
 public abstract class ImportDoer extends ViewDoer
 {
-	public abstract boolean createProject(File finalProjectDirectory, File importFile, String importFileName);
+	public abstract boolean createProject(File finalProjectDirectory, File importFile);
 	
-	public abstract boolean verifyFileType(File importFile);
+	public abstract boolean isCorrectFileType(File importFile);
 
 	public boolean isAvailable() 
 	{
@@ -54,15 +54,13 @@ public abstract class ImportDoer extends ViewDoer
 			return;
 		}
 		
-		boolean fileTest = verifyFileType(fileToImport);
-		if (!fileTest)
+		if (!isCorrectFileType(fileToImport))
 		{
 			EAM.notifyDialog(EAM.text("Import failed: Incorect file type"));
 			return;
 		}
 		
-		boolean importTest = createProject(finalProjectDirectory, fileToImport, projectName);
-		if (!importTest)
+		if (!createProject(finalProjectDirectory, fileToImport))
 		{
 			EAM.notifyDialog(EAM.text("Import failed"));
 			return;
