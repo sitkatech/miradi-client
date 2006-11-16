@@ -479,15 +479,21 @@ public class TestDataUpgrader extends EAMTestCase
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 		String[] oldNodeFileContents = {
 			"{\"Type\":\"Factor\",\"Id\":0}",
+			
 			"{\"Type\":\"Target\",\"Id\":1}",
 			"{\"Type\":\"Target\",\"GoalIds\":[],\"Id\":2}",
 			"{\"Type\":\"Target\",\"GoalIds\":[-1],\"Id\":3}",
 			"{\"Type\":\"Target\",\"GoalIds\":[33, 44],\"Id\":4}",
-			"{\"Type\":\"Intervention\",\"Id\":5}",
+			
+			"{\"Type\":\"Objective\",\"GoalIds\":[],\"Id\":5}",
+			"{\"Type\":\"Objective\",\"GoalIds\":[-1],\"Id\":6}",
+			"{\"Type\":\"Objective\",\"GoalIds\":[10, 20],\"Id\":7}",
+			
+			"{\"Type\":\"Intervention\",\"Id\":8}",
 		};
 		
-		int[] allIds = {0, 1, 2, 3, 4, 5, };
-		final String GOAL_IDS_STRING = "GoalIds";
+		int[] allIds = {0, 1, 2, 3, 4, 5, 6, 7, 8, };
+		String[] typesToConvert = {"GoalIds", "ObjectiveIds"};
 		
 		File nodesDirectory = new File(tempDirectory, "json/objects-4");
 		// missing nodes directory is not a problem
@@ -500,25 +506,24 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(manifestFile, buildManifestContents(allIds));
 		
 		upgrader.convertGoalIdToIdList();
-		
-		for(int i = 0; i < allIds.length; ++i)
+		for (int n = 0; n < typesToConvert.length; n++)
 		{
-			File existingFile = new File(nodesDirectory, Integer.toString(allIds[i]));
-			EnhancedJsonObject json = JSONFile.read(existingFile);
-			String jsonListAsString = json.getString(GOAL_IDS_STRING);
-			
-			IdList newIdList = new IdList(jsonListAsString);
-			
-			EnhancedJsonObject oldObject = new EnhancedJsonObject(oldNodeFileContents[i]);
-			EnhancedJsonArray oldArray = oldObject.optJsonArray(GOAL_IDS_STRING);
-			
-			assertEquals("are old list and new list same size?", oldArray.length(), newIdList.size());
-			for (int j = 0; j < oldArray.length(); j++)
-				assertEquals("is content the same?", oldArray.getInt(j), newIdList.get(j).asInt());
-			
-		}
+			for(int i = 0; i < allIds.length; ++i)
+			{
+				File existingFile = new File(nodesDirectory, Integer.toString(allIds[i]));
+				EnhancedJsonObject json = JSONFile.read(existingFile);
+				String jsonListAsString = json.getString(typesToConvert[n]);
 
-		
+				IdList newIdList = new IdList(jsonListAsString);
+
+				EnhancedJsonObject oldObject = new EnhancedJsonObject(oldNodeFileContents[i]);
+				EnhancedJsonArray oldArray = oldObject.optJsonArray(typesToConvert[n]);
+
+				assertEquals("different size ?", oldArray.length(), newIdList.size());
+				for (int j = 0; j < oldArray.length(); j++)
+					assertEquals("wrong id?", oldArray.getInt(j), newIdList.get(j).asInt());
+			}
+		}
 	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)

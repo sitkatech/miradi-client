@@ -432,38 +432,44 @@ public class DataUpgrader extends ProjectServer
 	
 	public void convertGoalIdToIdList() throws Exception
 	{
-		final String GOAL_IDS_STRING = "GoalIds";
-		int optionType = ObjectType.MODEL_NODE;
+		String[] typesToConvert = {"GoalIds", "ObjectiveIds"};
+		int objectType = ObjectType.MODEL_NODE;
 		
 		File jsonDirectory = new File(getTopDirectory(), "json");
 		File modelNodesDirectory = new File(jsonDirectory, "objects-4");
 		if(!modelNodesDirectory.exists())
 			return;
 		
-		File manifestFile = getObjectManifestFile(optionType);
+		File manifestFile = getObjectManifestFile(objectType);
 		if(!manifestFile.exists())
 			return;
 
-		ObjectManifest manifest = readObjectManifest(optionType);
+		ObjectManifest manifest = readObjectManifest(objectType);
 		BaseId[] ids = manifest.getAllKeys();
 
-		for(int i = 0; i < ids.length; ++i)
+		for (int n = 0; n < typesToConvert.length; n++)
 		{
-			BaseId id = ids[i];
-			File objectFile = getObjectFile(NODE_TYPE, id);
-			EnhancedJsonObject nodeData = JSONFile.read(objectFile);
-			
-			EnhancedJsonArray jsonArray = nodeData.optJsonArray(GOAL_IDS_STRING);
-
-			BaseId[] extractedIds = new BaseId[jsonArray.length()];
-
-			for (int aCounter = 0; aCounter < jsonArray.length(); aCounter++)
-				extractedIds[aCounter] = new BaseId(jsonArray.getInt(aCounter));
-			
-			IdList newGoalIds = new IdList(extractedIds);
-			nodeData.put(GOAL_IDS_STRING, newGoalIds.toString());
-			JSONFile.write(objectFile, nodeData);
+			for(int i = 0; i < ids.length; ++i)
+			{
+				BaseId id = ids[i];
+				File objectFile = new File(modelNodesDirectory, Integer.toString(id.asInt()));
+				EnhancedJsonObject nodeData = JSONFile.read(objectFile);
+				
+				EnhancedJsonObject newNodeList = convertJsonArrayToIdList(typesToConvert[n], nodeData);
+				JSONFile.write(objectFile, newNodeList);
+			}
 		}
+	}
+
+	private EnhancedJsonObject convertJsonArrayToIdList(String converTag, EnhancedJsonObject nodeDataToUse)
+	{
+		EnhancedJsonArray jsonArray = nodeDataToUse.optJsonArray(converTag);
+		IdList newIds = new IdList();
+		for (int aCounter = 0; aCounter < jsonArray.length(); aCounter++)
+			newIds.add(new BaseId(jsonArray.getInt(aCounter))); 
+
+		nodeDataToUse.put(converTag, newIds.toString());
+		return nodeDataToUse;
 	}
 
 	private static final int NODE_TYPE = 4;
