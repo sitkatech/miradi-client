@@ -32,7 +32,6 @@ abstract public class ObjectDataInputField implements FocusListener
 	abstract public JComponent getComponent();
 	abstract public String getText();
 	abstract public void setText(String newValue);
-
 	
 	public int getObjectType()
 	{
@@ -65,11 +64,12 @@ abstract public class ObjectDataInputField implements FocusListener
 
 	public void focusLost(FocusEvent e)
 	{
-		save();
+		saveIfNeeded();
 	}
 	
 	public void updateFromObject()
 	{
+		saveIfNeeded();
 		String text = "";
 		if(isValidObject())
 			text = project.getObjectData(objectType, objectId, tag);
@@ -98,9 +98,27 @@ abstract public class ObjectDataInputField implements FocusListener
 		getComponent().setEnabled(false);
 	}
 	
-	public void save()
+	boolean needsToBeSaved()
+	{
+		return needsSave;
+	}
+	
+	void setNeedsSave()
+	{
+		needsSave = true;
+	}
+	
+	void clearNeedsSave()
+	{
+		needsSave = false;
+	}
+	
+	public void saveIfNeeded()
 	{
 		if(!isValidObject())
+			return;
+		
+		if(!needsToBeSaved())
 			return;
 		
 		String newValue = getText();
@@ -111,6 +129,7 @@ abstract public class ObjectDataInputField implements FocusListener
 		try
 		{
 			project.executeCommand(cmd);
+			clearNeedsSave();
 			updateFromObject();
 		}
 		catch(CommandFailedException e)
@@ -147,4 +166,5 @@ abstract public class ObjectDataInputField implements FocusListener
 	private BaseId objectId;
 	private String tag;
 	private boolean allowEdits;
+	private boolean needsSave;
 }

@@ -10,6 +10,8 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.JTextComponent;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -24,6 +26,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field = componentToUse;
 		addFocusListener();
 		setEditable(true);
+		field.getDocument().addDocumentListener(new DocumentEventHandler());
 	}
 
 	public JComponent getComponent()
@@ -39,6 +42,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 	public void setText(String newValue)
 	{
 		field.setText(newValue);
+		clearNeedsSave();
 	}
 	
 	public void updateEditableState()
@@ -62,8 +66,23 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setSelectionEnd(field.getSize().width);
 	}
 	
+	class DocumentEventHandler implements DocumentListener
+	{
+		public void changedUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void insertUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+
+		public void removeUpdate(DocumentEvent arg0)
+		{
+			setNeedsSave();
+		}
+	}
 	
 	JTextComponent field;
-
-
 }
