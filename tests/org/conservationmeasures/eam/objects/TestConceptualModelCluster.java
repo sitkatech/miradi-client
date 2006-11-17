@@ -5,8 +5,10 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestConceptualModelCluster extends ObjectTestCase
@@ -35,6 +37,7 @@ public class TestConceptualModelCluster extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.MODEL_NODE);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_CLUSTER);
+		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 }
