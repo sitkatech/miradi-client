@@ -13,7 +13,6 @@ import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
@@ -21,9 +20,11 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.VersionConstants;
 import org.conservationmeasures.eam.views.Doer;
+import org.martus.swing.HtmlViewer;
+import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
-public class About extends Doer
+public class About extends Doer  implements HyperlinkHandler
 {
 	public About()
 	{
@@ -47,7 +48,7 @@ public class About extends Doer
 		
 		Box textBox = Box.createHorizontalBox();
 		textBox.add(Box.createHorizontalGlue());
-		JLabel bodyComponent = new JLabel(body);
+		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
 		textBox.add(bodyComponent);
 		bodyComponent.setFont(Font.getFont("Arial"));
 		textBox.add(Box.createHorizontalGlue());
@@ -63,7 +64,9 @@ public class About extends Doer
 		box.add(textBox);
 		box.add(buttonBox);
 		box.add(Box.createVerticalGlue());
+		
 		JPanel panel = (JPanel)dlg.getContentPane();
+		panel.setBackground(bodyComponent.getBackground());
 		panel.add(box);
 		dlg.setSize(new Dimension(800, 550));
 		dlg.setLocation(Utilities.center(dlg.getSize(), Utilities.getViewableRectangle()));
@@ -97,6 +100,7 @@ public class About extends Doer
 		"</p>" +
 		"<p></p>" + 
 		"<p>" +
+//		"<p align=\"left\">" +
 		"This software program is being developed to assist conservation practitioners " +
 		"to go through the adaptive management process outlined in the CMP's Open Standards " +
 		"for the Practice of Conservation. To obtain a copy of the latest version of these standards, " +
@@ -131,5 +135,17 @@ public class About extends Doer
 		"<p></p>" + 
 		"</font>" + 
 		"</td></tr></table></html>";
+
+	public void buttonPressed(String buttonName)
+	{
+	}
+
+	public void linkClicked(String linkDescription)
+	{
+	}
+
+	public void valueChanged(String widget, String newValue)
+	{
+	}
 	
 }
