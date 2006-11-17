@@ -51,7 +51,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMeth
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
@@ -188,6 +191,9 @@ public class Actions
 		registerAction(new ActionJumpShare(mainWindow));
 		registerAction(new ActionJumpCreate(mainWindow));
 		registerAction(new ActionJumpCloseTheLoop(mainWindow));
+		registerAction(new ActionJumpViewAllGoals(mainWindow));
+		registerAction(new ActionJumpViewAllObjectives(mainWindow));
+		registerAction(new ActionJumpStratPlanWelcome(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

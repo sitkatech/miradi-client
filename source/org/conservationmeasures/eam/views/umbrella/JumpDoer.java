@@ -7,12 +7,17 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDefineScope;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
+import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
@@ -20,6 +25,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.utils.JumpLocation;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
+import org.conservationmeasures.eam.views.strategicplan.StrategicPlanView;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 
@@ -100,6 +106,21 @@ public class JumpDoer extends MainWindowDoer
 		
 		if(jumpActionClass.equals(ActionJumpSelectTeam.class))
 			return SummaryView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpDevelopTargetGoals.class))
+			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpViewAllGoals.class))
+			return StrategicPlanView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpDevelopObjectives.class))
+			return DiagramView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpViewAllObjectives.class))
+			return StrategicPlanView.getViewName();
+		
+		if (jumpActionClass.equals(ActionJumpStratPlanWelcome.class))
+			return StrategicPlanView.getViewName();
 		
 		return null;
 	}

@@ -57,8 +57,15 @@ public class StrategicPlanView extends TabbedView
 
 	public WizardPanel createWizardPanel() throws Exception
 	{
-		return new StrategicPlanWizardPanel();
+		stratPlanWizardPanel = new StrategicPlanWizardPanel(getMainWindow().getActions());
+		return stratPlanWizardPanel;
 	}
+	
+	public void jump(Class stepMarker) throws Exception
+	{
+		stratPlanWizardPanel.jump(stepMarker);
+	}
+
 
 	public StrategicPlanPanel getStrategicPlanPanel()
 	{
@@ -96,6 +103,7 @@ public class StrategicPlanView extends TabbedView
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
+	StrategicPlanWizardPanel stratPlanWizardPanel;
 	StrategicPlanPanel strategicPlanPanel;
 	ObjectivePoolManagementPanel objectivePanel;
 	GoalPoolManagementPanel goalPanel;

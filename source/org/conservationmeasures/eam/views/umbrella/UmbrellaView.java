@@ -70,7 +70,10 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpSelectAppropriateMeth
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
+import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
+import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
 import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
@@ -365,6 +368,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpCreate.class);
 		
 		addJumpDoerToMap(ActionJumpCloseTheLoop.class);
+		
+		addJumpDoerToMap(ActionJumpViewAllGoals.class);
+		addJumpDoerToMap(ActionJumpViewAllObjectives.class);
+		addJumpDoerToMap(ActionJumpStratPlanWelcome.class);
 	}
 	
 	private void addJumpDoerToMap(Class actionClass)

@@ -8,18 +8,17 @@ package org.conservationmeasures.eam.views.strategicplan.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class StrategicPlanAssignGoalAndTargetsStep extends WizardStep
+public class StrategicPlanViewAllGoals extends WizardStep
 {
-	//	TODO this content no longer belongs to this view
-	public StrategicPlanAssignGoalAndTargetsStep(WizardPanel wizardToUse)
+	public StrategicPlanViewAllGoals(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}
-
+	
 	public String getResourceFileName()
 	{
 		return HTML_FILE_NAME;
 	}
 	
-	private static final String HTML_FILE_NAME = "AssignGoalAndTargets.html";
+	private static final String HTML_FILE_NAME = "ViewAllGoals.html";
 }
