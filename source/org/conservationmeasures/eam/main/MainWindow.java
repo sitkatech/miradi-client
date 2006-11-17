@@ -48,6 +48,7 @@ import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.conservationmeasures.eam.views.threatmatrix.ThreatMatrixView;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
+import org.martus.swing.ResourceImageIcon;
 import org.martus.util.DirectoryLock;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner
@@ -70,7 +71,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.addCommandExecutedListener(this);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
-		
+		setIconImage(new ResourceImageIcon("images/cmp_icon_Trasparent_48x48.gif").getImage());
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
 		toolBarBox = new ToolBarContainer();
