@@ -53,6 +53,8 @@ public class AppPreferences
 	{
 		if(tag.equals(TAG_COLOR_INTERVENTION))
 			return interventionColor;
+		if(tag.equals(TAG_COLOR_ACTIVITIES))
+			return activitiesColor;
 		if(tag.equals(TAG_COLOR_INDIRECT_FACTOR))
 			return indirectFactorColor;
 		if(tag.equals(TAG_COLOR_DIRECT_THREAT))
@@ -69,6 +71,8 @@ public class AppPreferences
 	{
 		if(tag.equals(TAG_COLOR_INTERVENTION))
 			interventionColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_ACTIVITIES))
+			activitiesColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_INDIRECT_FACTOR))
 			indirectFactorColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_DIRECT_THREAT))
@@ -101,6 +105,7 @@ public class AppPreferences
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_COLOR_INTERVENTION, interventionColor);
+		json.put(TAG_COLOR_ACTIVITIES, activitiesColor);
 		json.put(TAG_COLOR_INDIRECT_FACTOR, indirectFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
@@ -114,6 +119,7 @@ public class AppPreferences
 	public void loadFrom(EnhancedJsonObject json)
 	{
 		interventionColor = json.optColor(TAG_COLOR_INTERVENTION, DEFAULT_INTERVENTION_COLOR);
+		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DEFAULT_ACTIVITIES_COLOR);
 		indirectFactorColor = json.optColor(TAG_COLOR_INDIRECT_FACTOR, DEFAULT_INDIRECT_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
@@ -124,6 +130,7 @@ public class AppPreferences
 	}
 	
 	public static final String TAG_COLOR_INTERVENTION = "ColorIntervention";
+	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_INDIRECT_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
@@ -135,9 +142,11 @@ public class AppPreferences
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
 	private static final Color DEFAULT_INDIRECT_FACTOR_COLOR = new Color(255, 190, 0);
 	private static final Color DEFAULT_INTERVENTION_COLOR = new Color(255, 255, 0);
+	private static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);
 	private static final Color DEFAULT_SCOPE_COLOR = new Color(0, 255, 0);
 	
 	public Color interventionColor;
+	public Color activitiesColor;
 	public Color indirectFactorColor;
 	public Color directThreatColor;
 	public Color targetColor;
