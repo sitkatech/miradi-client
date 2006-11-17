@@ -19,9 +19,9 @@ public class ObjectStringInputField extends ObjectTextInputField
 	{
 		super(projectToUse, objectType, objectId, tag, new UiTextField());
 		UiTextArea textArea = new UiTextArea(1,50);
-		JTextField jTextArea = (JTextField)getComponent();
-		jTextArea.setBorder(textArea.getBorder());
-		jTextArea.setFont(textArea.getFont());
-		jTextArea.setPreferredSize(textArea.getPreferredSize());
+		JTextField jTextField = (JTextField)getComponent();
+		jTextField.setBorder(textArea.getBorder());
+		jTextField.setFont(textArea.getFont());
+		jTextField.setPreferredSize(textArea.getPreferredSize());
 	}
 }
