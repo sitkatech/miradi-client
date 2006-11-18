@@ -32,7 +32,7 @@ public class ProjectRepairer
 	{
 		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
-		//repairUnsnappedNodes();
+		repairUnsnappedNodes();
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
@@ -183,35 +183,26 @@ public class ProjectRepairer
 		for (int i=0; i<diagramNodes.size(); ++i) 
 		{
 			DiagramNode diagramNode = (DiagramNode) diagramNodes.get(i);	
-			
 			Point currentLocation = diagramNode.getLocation();
-			Point expectedLocation  = project.getSnapped(currentLocation);
-
-			int x = expectedLocation.x - currentLocation.x;
-			int y = expectedLocation.y - currentLocation.y;
-			
-			if (x<0)
-				x = currentLocation.x - expectedLocation.x;
-			
-			if (y<0)
-				y = currentLocation.y - expectedLocation.y;
-			
-			if (x!=0 || y!=0)
-				fixLocation(diagramNode, x ,y);
+			fixLocation(diagramNode, currentLocation );
 		}
 	}
 
-	private void fixLocation(DiagramNode digramNode, int x, int y)
+	private void fixLocation(DiagramNode digramNode, Point currentLocation)
 	{
-		try
-		{
-			System.out.println("HGERE" + x +  "/" + y);
-			project.moveNodes(x, y, new DiagramNodeId[] {digramNode.getDiagramNodeId()});
-		} 
-		catch (Exception  e)
-		{
-			EAM.logException(e);
-		}
+		Point expectedLocation  = project.getSnapped(currentLocation);
+		int x = expectedLocation.x - currentLocation.x;
+		int y = expectedLocation.y - currentLocation.y;
+
+		if(x != 0 || y != 0)
+			try
+			{
+				project.moveNodes(x, y, new DiagramNodeId[] { digramNode.getDiagramNodeId() });
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
 	}	
 	
 	Project project;
