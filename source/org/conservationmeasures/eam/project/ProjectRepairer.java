@@ -1,6 +1,13 @@
 package org.conservationmeasures.eam.project;
 
+import java.awt.Point;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandDiagramMove;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -27,6 +34,7 @@ public class ProjectRepairer
 	{
 		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
+		repairUnSnapNodes();
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
@@ -169,6 +177,37 @@ public class ProjectRepairer
 			}
 		}
 	}
+	
+
+	private void repairUnSnapNodes()
+	{
+		
+		Vector diagramNodes = project.getDiagramModel().getAllNodes();
+		for (int i=0; i<diagramNodes.size(); ++i) 
+		{
+			DiagramNode digramNode = (DiagramNode) diagramNodes.get(i);
+			Point currentLocation = digramNode.getLocation();
+			Point expectedLocation  = project.getSnapped(digramNode.getLocation());
+			System.out.println("before= " + currentLocation.x + "/" + currentLocation.y );
+			System.out.println("after= " + expectedLocation.x + "/" + expectedLocation.y );
+			if (!currentLocation.equals(expectedLocation))
+				fixLocation(digramNode, expectedLocation);
+		}
+	}
+
+	private void fixLocation(DiagramNode digramNode, Point expectedLocation)
+	{
+		Command moveCommand = new CommandDiagramMove(expectedLocation.x, expectedLocation.y, 
+						new DiagramNodeId[] {digramNode.getDiagramNodeId()});
+		try
+		{
+			project.executeCommand(moveCommand);
+		} 
+		catch (Exception  e)
+		{
+			EAM.logException(e);
+		}
+	}	
 	
 	Project project;
 }
