@@ -75,7 +75,7 @@ public class ProjectRepairer
 		catch (Exception logAndContinue)
 		{
 			EAM.logError("Repair failed");
-			EAM.logException(logAndContinue);
+			logAndContinue(logAndContinue);
 		}
 
 	}
@@ -96,7 +96,7 @@ public class ProjectRepairer
 		catch(Exception logAndContinue)
 		{
 			EAM.logError("Repair failed");
-			EAM.logException(logAndContinue);
+			logAndContinue(logAndContinue);
 		}
 	}
 	
@@ -116,7 +116,7 @@ public class ProjectRepairer
 		catch(Exception logAndContinue)
 		{
 			EAM.logError("Repair failed");
-			EAM.logException(logAndContinue);
+			logAndContinue(logAndContinue);
 		}
 	}
 	
@@ -144,7 +144,7 @@ public class ProjectRepairer
 		catch(Exception logAndContinue)
 		{
 			EAM.logError("Repair failed");
-			EAM.logException(logAndContinue);
+			logAndContinue(logAndContinue);
 		}
 	}
 	
@@ -170,7 +170,7 @@ public class ProjectRepairer
 				catch(Exception e)
 				{
 					EAM.logError("Repair failed");
-					EAM.logException(e);
+					logAndContinue(e);
 				}
 			}
 		}
@@ -181,28 +181,30 @@ public class ProjectRepairer
 	{
 		Vector diagramNodes = project.getDiagramModel().getAllNodes();
 		for (int i=0; i<diagramNodes.size(); ++i) 
+			fixLocation((DiagramNode) diagramNodes.get(i));
+	}
+
+	private void fixLocation(DiagramNode diagramNode)
+	{
+		Point currentLocation = diagramNode.getLocation();
+		Point expectedLocation  = project.getSnapped(currentLocation);
+		int deltaX = expectedLocation.x - currentLocation.x;
+		int deltaY = expectedLocation.y - currentLocation.y;
+
+		try
 		{
-			DiagramNode diagramNode = (DiagramNode) diagramNodes.get(i);	
-			Point currentLocation = diagramNode.getLocation();
-			fixLocation(diagramNode, currentLocation );
+			if(deltaX != 0 || deltaY != 0)
+				project.moveNodes(deltaX, deltaY, new DiagramNodeId[] { diagramNode.getDiagramNodeId() });
+		}
+		catch(Exception e)
+		{
+			logAndContinue(e);
 		}
 	}
 
-	private void fixLocation(DiagramNode digramNode, Point currentLocation)
+	private void logAndContinue(Exception e)
 	{
-		Point expectedLocation  = project.getSnapped(currentLocation);
-		int x = expectedLocation.x - currentLocation.x;
-		int y = expectedLocation.y - currentLocation.y;
-
-		if(x != 0 || y != 0)
-			try
-			{
-				project.moveNodes(x, y, new DiagramNodeId[] { digramNode.getDiagramNodeId() });
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
+		EAM.logException(e);
 	}	
 	
 	Project project;
