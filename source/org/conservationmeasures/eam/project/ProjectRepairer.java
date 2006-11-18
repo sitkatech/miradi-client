@@ -3,8 +3,6 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -34,7 +32,7 @@ public class ProjectRepairer
 	{
 		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
-		//repairUnSnapNodes();
+		//repairUnsnappedNodes();
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
@@ -179,30 +177,36 @@ public class ProjectRepairer
 	}
 	
 
-	private void repairUnSnapNodes()
+	private void repairUnsnappedNodes()
 	{
 		Vector diagramNodes = project.getDiagramModel().getAllNodes();
 		for (int i=0; i<diagramNodes.size(); ++i) 
 		{
-			DiagramNode digramNode = (DiagramNode) diagramNodes.get(i);	
-			Point currentLocation = digramNode.getLocation();
-			Point expectedLocation  = project.getSnapped(digramNode.getLocation());
+			DiagramNode diagramNode = (DiagramNode) diagramNodes.get(i);	
 			
-//			System.out.println(	"before= " + currentLocation.x + "/" + currentLocation.y );
-//			System.out.println("after= " + expectedLocation.x + "/" + expectedLocation.y );
+			Point currentLocation = diagramNode.getLocation();
+			Point expectedLocation  = project.getSnapped(currentLocation);
+
+			int x = expectedLocation.x - currentLocation.x;
+			int y = expectedLocation.y - currentLocation.y;
 			
-			if (!currentLocation.equals(expectedLocation))
-				fixLocation(digramNode, expectedLocation.x , expectedLocation.y);
+			if (currentLocation.x > expectedLocation.x )
+				x = currentLocation.x - expectedLocation.x;
+			
+			if (currentLocation.y > expectedLocation.y)
+				y = currentLocation.y - expectedLocation.y;
+			
+			if (x+y!=0)
+				fixLocation(diagramNode, x ,y);
 		}
 	}
 
 	private void fixLocation(DiagramNode digramNode, int x, int y)
 	{
-//		System.out.println("HERE");
-		Command moveCommand = new CommandDiagramMove(x, y, new DiagramNodeId[] {digramNode.getDiagramNodeId()});
 		try
 		{
-			project.executeCommand(moveCommand);
+			System.out.println("HGERE");
+			project.moveNodes(x, y, new DiagramNodeId[] {digramNode.getDiagramNodeId()});
 		} 
 		catch (Exception  e)
 		{
