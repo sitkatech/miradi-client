@@ -16,7 +16,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.icons.ActivitiesIcon;
+import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.InterventionIcon;
@@ -77,9 +77,9 @@ public class TreeTableWithIcons extends JTreeTable
 			
 			
 			activitiesRenderer = new DefaultTreeCellRenderer();
-			activitiesRenderer.setClosedIcon(new ActivitiesIcon());
-			activitiesRenderer.setOpenIcon(new ActivitiesIcon());
-			activitiesRenderer.setLeafIcon(new ActivitiesIcon());
+			activitiesRenderer.setClosedIcon(new ActivityIcon());
+			activitiesRenderer.setOpenIcon(new ActivityIcon());
+			activitiesRenderer.setLeafIcon(new ActivityIcon());
 			activitiesRenderer.setFont(boldFont);
 
 			defaultRenderer = new DefaultTreeCellRenderer();

@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class ActivitiesIcon extends EamIcon
+public class ActivityIcon extends EamIcon
 {
 	MultilineNodeRenderer getRenderer()
 	{
