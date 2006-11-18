@@ -330,6 +330,7 @@ public class Project
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		strategyRatingFramework.createDefaultObjectsIfNeeded();
+		ProjectRepairer.repairAnyProblems(this);
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -356,8 +357,6 @@ public class Project
 		{
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
-
-			ProjectRepairer.repairAnyProblems(this);
 		}
 		catch(Exception e)
 		{

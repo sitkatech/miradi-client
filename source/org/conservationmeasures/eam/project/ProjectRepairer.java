@@ -34,7 +34,7 @@ public class ProjectRepairer
 	{
 		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
-		repairUnSnapNodes();
+		//repairUnSnapNodes();
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
@@ -181,24 +181,25 @@ public class ProjectRepairer
 
 	private void repairUnSnapNodes()
 	{
-		
 		Vector diagramNodes = project.getDiagramModel().getAllNodes();
 		for (int i=0; i<diagramNodes.size(); ++i) 
 		{
-			DiagramNode digramNode = (DiagramNode) diagramNodes.get(i);
+			DiagramNode digramNode = (DiagramNode) diagramNodes.get(i);	
 			Point currentLocation = digramNode.getLocation();
 			Point expectedLocation  = project.getSnapped(digramNode.getLocation());
-			System.out.println("before= " + currentLocation.x + "/" + currentLocation.y );
-			System.out.println("after= " + expectedLocation.x + "/" + expectedLocation.y );
+			
+//			System.out.println(	"before= " + currentLocation.x + "/" + currentLocation.y );
+//			System.out.println("after= " + expectedLocation.x + "/" + expectedLocation.y );
+			
 			if (!currentLocation.equals(expectedLocation))
-				fixLocation(digramNode, expectedLocation);
+				fixLocation(digramNode, expectedLocation.x , expectedLocation.y);
 		}
 	}
 
-	private void fixLocation(DiagramNode digramNode, Point expectedLocation)
+	private void fixLocation(DiagramNode digramNode, int x, int y)
 	{
-		Command moveCommand = new CommandDiagramMove(expectedLocation.x, expectedLocation.y, 
-						new DiagramNodeId[] {digramNode.getDiagramNodeId()});
+//		System.out.println("HERE");
+		Command moveCommand = new CommandDiagramMove(x, y, new DiagramNodeId[] {digramNode.getDiagramNodeId()});
 		try
 		{
 			project.executeCommand(moveCommand);
