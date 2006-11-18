@@ -8,8 +8,11 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
+import javax.swing.filechooser.FileFilter;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
+import org.conservationmeasures.eam.utils.ZIPFileFilter;
 
 public class ImportZipFileDoer  extends ImportDoer
 {
@@ -27,16 +30,13 @@ public class ImportZipFileDoer  extends ImportDoer
 		}
 	}
 
-	public boolean isCorrectFileType(File importFile)
+	public FileFilter getFileFilter()
 	{
-		try
-		{
-			return (ProjectUnzipper.isZipFileImportable(importFile));
-		}
-		catch (Exception e) 
-		{
-			EAM.logException(e);
-			return false;
-		}
+		return new ZIPFileFilter();
+	}
+	
+	public String getFileExtension()
+	{
+		return ZIPFileFilter.EXTENSION;
 	}
 }

@@ -52,7 +52,7 @@ public class SaveAsProjectDoer extends MainWindowDoer
 	{
 		File projectDirToCopy = getProject().getDatabase().getTopDirectory();
 		File homeDir = EAM.getHomeDirectory();
-		File tempZipFile = File.createTempFile(newProjectName, ZIPFileFilter.ZIP_EXTENSION);
+		File tempZipFile = File.createTempFile(newProjectName, ZIPFileFilter.EXTENSION);
 		ProjectZipper.createProjectZipFile(tempZipFile,  "/" + newProjectName, projectDirToCopy);
 		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir);
 		tempZipFile.delete();

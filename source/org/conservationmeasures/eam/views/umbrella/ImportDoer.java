@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
+import javax.swing.filechooser.FileFilter;
+
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -19,7 +21,9 @@ public abstract class ImportDoer extends ViewDoer
 {
 	public abstract boolean createProject(File finalProjectDirectory, File importFile);
 	
-	public abstract boolean isCorrectFileType(File importFile);
+	public abstract String getFileExtension();
+	
+	public abstract FileFilter getFileFilter();
 
 	public boolean isAvailable() 
 	{
@@ -32,7 +36,7 @@ public abstract class ImportDoer extends ViewDoer
 		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
 		String windowTitle = EAM.text("Import Project");
 		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
-				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory);
+				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory, null, getFileFilter());
 		
 		if (results.wasCancelChoosen())
 			return;
@@ -51,12 +55,6 @@ public abstract class ImportDoer extends ViewDoer
 		{
 			EAM.notifyDialog(EAM.text("Cannot import over an existing file or directory: ") + 
 					finalProjectDirectory.getAbsolutePath());
-			return;
-		}
-		
-		if (!isCorrectFileType(fileToImport))
-		{
-			EAM.notifyDialog(EAM.text("Import failed: Incorect file type"));
 			return;
 		}
 		

@@ -8,10 +8,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.io.File;
 
+import javax.swing.filechooser.FileFilter;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TncCapWorkbookImporter;
+import org.conservationmeasures.eam.utils.XLSFileFilter;
 
 public class ImportTncCapWorkbookDoer extends ImportDoer
 {
@@ -49,17 +52,15 @@ public class ImportTncCapWorkbookDoer extends ImportDoer
 		}
 	}
 	
-	public boolean isCorrectFileType(File importFile)
+	
+	public FileFilter getFileFilter()
 	{
-		try
-		{
-			return (importFile.getName().endsWith(".xls"));
-		}
-		catch (Exception e) 
-		{
-			EAM.logException(e);
-			return false;
-		}
+		return new XLSFileFilter();
+	}
+	
+	public String getFileExtension()
+	{
+		return XLSFileFilter.XLS_EXTENSION;
 	}
 	
 }
