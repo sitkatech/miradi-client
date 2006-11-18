@@ -5,12 +5,13 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import info.clearthought.layout.TableLayout;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
-import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -46,29 +47,29 @@ public class About extends Doer  implements HyperlinkHandler
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
-		Box textBox = Box.createHorizontalBox();
-		textBox.add(Box.createHorizontalGlue());
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
-		textBox.add(bodyComponent);
 		bodyComponent.setFont(Font.getFont("Arial"));
-		textBox.add(Box.createHorizontalGlue());
+		bodyComponent.setSize(new Dimension(750, Short.MAX_VALUE));
 		
 		JButton ok = new JButton(new OkAction(dlg));
-		Box buttonBox = Box.createHorizontalBox();
-		buttonBox.add(Box.createHorizontalGlue());
-		buttonBox.add(ok);
-		buttonBox.add(Box.createHorizontalGlue());
-		
-		Box box = Box.createVerticalBox();
-		box.add(Box.createVerticalGlue());
-		box.add(textBox);
-		box.add(buttonBox);
-		box.add(Box.createVerticalGlue());
-		
+
 		JPanel panel = (JPanel)dlg.getContentPane();
+
+		// Seems like there should be an easier way to enforce a fixed width
+		// and allow an HTML text component to become as high as necessary.
+		// I couldn't find any sane way using any built-in LayoutManager,
+		// nor with any jhlabs LayoutManager. 2006-11-18 kbs
+		double[] rowSizes = {bodyComponent.getWidth()};
+		double[] columnSizes = {TableLayout.PREFERRED, TableLayout.PREFERRED};
+		double gridSizes[][] = { rowSizes, columnSizes };
+		panel.setLayout(new TableLayout(gridSizes));
+		String columnZeroRowZero = "0, 0";
+		panel.add(bodyComponent, columnZeroRowZero);
+		String columnZeroRowOneCenteredCentered = "0, 1, c, c";
+		panel.add(ok, columnZeroRowOneCenteredCentered);
+		
 		panel.setBackground(bodyComponent.getBackground());
-		panel.add(box);
-		dlg.setSize(new Dimension(800, 550));
+		dlg.pack();
 		dlg.setLocation(Utilities.center(dlg.getSize(), Utilities.getViewableRectangle()));
 		
 		dlg.getRootPane().setDefaultButton(ok);
@@ -98,7 +99,6 @@ public class About extends Doer  implements HyperlinkHandler
 		"Copyright 2005-2006, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
 		"and Beneficent Technology, Inc. (Benetech, at www.benetech.org)" +
 		"</p>" +
-		"<p></p>" + 
 		"<p>" +
 //		"<p align=\"left\">" +
 		"This software program is being developed to assist conservation practitioners " +
@@ -110,9 +110,7 @@ public class About extends Doer  implements HyperlinkHandler
 		"If you have questions or suggestions, " +
 		"please contact Nick Salafsky at Nick@FOSonline.org or at 1-301-263-2784. " +
 		"</p>" +
-		"<p></p>" +
 		"<p>NOT FOR RELEASE OR REDISTRIBUTION</p>" +
-		"<p></p>" +
 		"<b>VERSION " + VersionConstants.VERSION_STRING +
 		"</p>";
 
@@ -131,10 +129,9 @@ public class About extends Doer  implements HyperlinkHandler
 		"<p>" +
 		licenseText + 
 		"</p>" +
-		"<p></p>" + 
-		"<p></p>" + 
 		"</font>" + 
-		"</td></tr></table></html>";
+		"</td></tr>" +
+		"</table></html>";
 
 	public void buttonPressed(String buttonName)
 	{
