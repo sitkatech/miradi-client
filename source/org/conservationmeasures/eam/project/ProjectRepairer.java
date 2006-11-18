@@ -190,13 +190,13 @@ public class ProjectRepairer
 			int x = expectedLocation.x - currentLocation.x;
 			int y = expectedLocation.y - currentLocation.y;
 			
-			if (currentLocation.x > expectedLocation.x )
+			if (x<0)
 				x = currentLocation.x - expectedLocation.x;
 			
-			if (currentLocation.y > expectedLocation.y)
+			if (y<0)
 				y = currentLocation.y - expectedLocation.y;
 			
-			if (x+y!=0)
+			if (x!=0 || y!=0)
 				fixLocation(diagramNode, x ,y);
 		}
 	}
@@ -205,7 +205,7 @@ public class ProjectRepairer
 	{
 		try
 		{
-			System.out.println("HGERE");
+			System.out.println("HGERE" + x +  "/" + y);
 			project.moveNodes(x, y, new DiagramNodeId[] {digramNode.getDiagramNodeId()});
 		} 
 		catch (Exception  e)
