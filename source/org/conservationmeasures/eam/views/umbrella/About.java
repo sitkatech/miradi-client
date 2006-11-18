@@ -9,6 +9,7 @@ import info.clearthought.layout.TableLayout;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -48,6 +49,7 @@ public class About extends Doer  implements HyperlinkHandler
 		dlg.setModal(true);
 		
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
+		bodyComponent.setMargin(new Insets(0,15,0,15));
 		bodyComponent.setFont(Font.getFont("Arial"));
 		bodyComponent.setSize(new Dimension(750, Short.MAX_VALUE));
 		
@@ -99,8 +101,8 @@ public class About extends Doer  implements HyperlinkHandler
 		"Copyright 2005-2006, The Conservation Measures Partnership (CMP, at www.conservationmeasures.org) " +
 		"and Beneficent Technology, Inc. (Benetech, at www.benetech.org)" +
 		"</p>" +
-		"<p>" +
-//		"<p align=\"left\">" +
+
+		"<p align=\"left\">" +
 		"This software program is being developed to assist conservation practitioners " +
 		"to go through the adaptive management process outlined in the CMP's Open Standards " +
 		"for the Practice of Conservation. To obtain a copy of the latest version of these standards, " +
@@ -115,10 +117,12 @@ public class About extends Doer  implements HyperlinkHandler
 		"</p>";
 
 	public static final String licenseText = 
+		"<p align=\"left\">"  +
 		"This pre-release version is intended for evaluation and feedback only. " +
 		"Please send suggestions and other feedback to e-AM@conservationmeasures.org. " +
 		"You are not allowed to redistribute this program without the express written " +
-		"permission of The CMP or Benetech.";
+		"permission of The CMP or Benetech." + 
+		"</p>" ;
 
 	static final String aboutText = 
 		"<html><table><tr><td align='center' valign='top'>" +
@@ -126,9 +130,9 @@ public class About extends Doer  implements HyperlinkHandler
 		"<font face='Arial'>" +
 		mainAboutText + 
 		"<p></p>" +
-		"<p>" +
 		licenseText + 
-		"</p>" +
+		"<p></p>" +
+		"<p></p>" +
 		"</font>" + 
 		"</td></tr>" +
 		"</table></html>";
