@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
@@ -16,7 +16,7 @@ public class ActivityIcon extends EamIcon
 {
 	MultilineNodeRenderer getRenderer()
 	{
-		return new IconHexagonRenderer(false);
+		return new RoundRectangleRenderer();
 	}
 	
 	Color getIconColor()
