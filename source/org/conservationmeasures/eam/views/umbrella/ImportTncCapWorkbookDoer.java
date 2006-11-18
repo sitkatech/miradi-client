@@ -60,7 +60,7 @@ public class ImportTncCapWorkbookDoer extends ImportDoer
 	
 	public String getFileExtension()
 	{
-		return XLSFileFilter.XLS_EXTENSION;
+		return XLSFileFilter.EXTENSION;
 	}
 	
 }

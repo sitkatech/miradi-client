@@ -19,7 +19,7 @@ public class XLSFileFilter extends FileFilter
 	{
 		if (pathname.isDirectory())
 			return true;
-		return (pathname.getName().toLowerCase().endsWith(XLS_EXTENSION));
+		return (pathname.getName().toLowerCase().endsWith(EXTENSION));
 	}
 
 	public String getDescription()
@@ -27,5 +27,5 @@ public class XLSFileFilter extends FileFilter
 		return EAM.text("FileFilter|XLS (*.xls)");
 	}
 
-	public static final String XLS_EXTENSION = ".xls";
+	public static final String EXTENSION = ".xls";
 }
