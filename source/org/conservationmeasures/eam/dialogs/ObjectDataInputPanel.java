@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.util.Vector;
 
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
@@ -30,13 +31,16 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiLabel;
 
-import com.jhlabs.awt.BasicGridLayout;
+import com.jhlabs.awt.Alignment;
+import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class ObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener
 {
 	public ObjectDataInputPanel(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse)
 	{
-		super(new BasicGridLayout(0, 2));
+		GridLayoutPlus layout = new GridLayoutPlus(0, 2);
+		layout.setColAlignment(0, Alignment.NORTHEAST);
+		setLayout(layout);
 		project = projectToUse;
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
@@ -70,8 +74,15 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public void addField(ObjectDataInputField field)
 	{
 		fields.add(field);
-		add(new UiLabel(EAM.fieldLabel(objectType, field.getTag())));
+		addLabel(field.getTag());
 		addFieldComponent(field.getComponent());
+	}
+
+	public void addLabel(String translatedLabelText)
+	{
+		UiLabel label = new UiLabel(EAM.fieldLabel(objectType, translatedLabelText));
+		label.setVerticalAlignment(SwingConstants.TOP);
+		add(label);
 	}
 	
 	public void addFieldComponent(Component component)

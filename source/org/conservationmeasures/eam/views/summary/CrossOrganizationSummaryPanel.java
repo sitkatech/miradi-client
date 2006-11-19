@@ -40,7 +40,7 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
 		addField(createNumericField(metadata.TAG_SIZE_IN_HECTARES));
 		
-		add(new UiLabel(EAM.text("Label|Team Members:")));
+		addLabel(EAM.text("Label|Team Members:"));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
 		add(teamEditorComponent);
 		
