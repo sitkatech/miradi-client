@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiScrollPane;
 
 public class GoalListManagementPanel extends ModelessDialogPanel
 {
@@ -27,7 +28,7 @@ public class GoalListManagementPanel extends ModelessDialogPanel
 		
 		propertiesPanel = new GoalPropertiesPanel(projectToUse, actions, invalidId);
 		listComponent.setPropertiesPanel(propertiesPanel);
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
+		add(new UiScrollPane(propertiesPanel), BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void dispose()
