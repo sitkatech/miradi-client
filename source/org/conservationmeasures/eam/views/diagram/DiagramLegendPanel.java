@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JPanel;
@@ -50,6 +51,8 @@ public class DiagramLegendPanel extends JPanel
 		add(new UiLabel(EAM.text("Objective"), new ObjectiveIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Indicator"), new IndicatorIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Stress"), new StressIcon(), UiLabel.LEADING));
+		
+		setMinimumSize(new Dimension(0,0));
 	}
 
 }

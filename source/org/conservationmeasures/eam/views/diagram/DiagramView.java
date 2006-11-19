@@ -187,10 +187,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 
 		UiScrollPane diagramComponent = createDiagramPanel();
 
-		JPanel bottomHalf = new JPanel(new BorderLayout());
-		bottomHalf.add(diagramComponent, BorderLayout.CENTER);
-		bottomHalf.add(legendDialog, BorderLayout.BEFORE_LINE_BEGINS);
-
+		JSplitPane bottomHalf = new JSplitPane();
+		bottomHalf.setRightComponent(diagramComponent);
+		bottomHalf.setLeftComponent(legendDialog);
+		bottomHalf.setDividerLocation(100);
+		
 		bigSplitter =new ViewSplitPane(createWizard(), bottomHalf, bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
 		
