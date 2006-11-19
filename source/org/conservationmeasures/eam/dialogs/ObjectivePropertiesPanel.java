@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
 
@@ -24,7 +25,8 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.OBJECTIVE, idToShow);
 		
 		addField(createStringField(Objective.TAG_SHORT_LABEL));
-		addField(createMultilineField(Objective.TAG_LABEL));
+		addField(createStringField(Objective.TAG_LABEL));
+		addField(createMultilineField(Goal.TAG_FULL_TEXT));
 		updateFieldsFromProject();
 	}
 

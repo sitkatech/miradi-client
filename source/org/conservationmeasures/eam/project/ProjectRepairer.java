@@ -191,10 +191,12 @@ public class ProjectRepairer
 		int deltaX = expectedLocation.x - currentLocation.x;
 		int deltaY = expectedLocation.y - currentLocation.y;
 
+		if(deltaX != 0 && deltaY != 0)
+			return;
+			
 		try
 		{
-			if(deltaX != 0 || deltaY != 0)
-				project.moveNodes(deltaX, deltaY, new DiagramNodeId[] { diagramNode.getDiagramNodeId() });
+			project.moveNodes(deltaX, deltaY, new DiagramNodeId[] { diagramNode.getDiagramNodeId() });
 		}
 		catch(Exception e)
 		{
