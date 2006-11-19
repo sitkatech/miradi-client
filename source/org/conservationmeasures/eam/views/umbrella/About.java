@@ -63,7 +63,6 @@ public class About extends Doer  implements HyperlinkHandler
 		double[] columnSizes = {TableLayout.PREFERRED, TableLayout.PREFERRED};
 		double gridSizes[][] = { rowSizes, columnSizes };
 		JPanel panel = new JPanel(new TableLayout(gridSizes));
-		panel.setLayout(new TableLayout(gridSizes));
 		String columnZeroRowZero = "0, 0";
 		panel.add(bodyComponent, columnZeroRowZero);
 		String columnZeroRowOneCenteredCentered = "0, 1, c, c";
