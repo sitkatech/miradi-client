@@ -191,7 +191,7 @@ public class ProjectRepairer
 		int deltaX = expectedLocation.x - currentLocation.x;
 		int deltaY = expectedLocation.y - currentLocation.y;
 
-		if(deltaX != 0 && deltaY != 0)
+		if(deltaX == 0 && deltaY == 0)
 			return;
 			
 		try
