@@ -9,7 +9,7 @@ import java.awt.BorderLayout;
 import java.io.File;
 
 import javax.swing.Action;
-import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
@@ -18,9 +18,12 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
+import org.martus.swing.UiScrollPane;
 
 public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 {
@@ -28,7 +31,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		super(mainWindow);
 		
-		htmlViewer = new HtmlViewer("", this);
 		setToolBar(new NoProjectToolBar(getActions()));
 	}
 	
@@ -61,10 +63,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			{
 				EAM.okDialog("Definition: Project", new String[] {"A project is..."});
 			}
-			else if(linkDescription.equals("Definition:EAM"))
-			{
-				EAM.okDialog("Definition: e-Adaptive Management", new String[] {"e-Adaptive Management is..."});
-			}
 			else
 			{
 				EAM.okDialog("Not implemented yet", new String[] {"Not implemented yet"});
@@ -81,24 +79,24 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		super.becomeActive();
 		removeAll();
+
+		htmlViewer = new HtmlViewer("", this);
 		refreshText();
+		wizardPanel = new NoProjectWizardPanel(this);
 		
-		JScrollPane scrollPane = new JScrollPane(htmlViewer);
-		
-		setLayout(new BorderLayout());
-		add(scrollPane, BorderLayout.CENTER);
+		bigSplitter = new ViewSplitPane(new UiScrollPane(wizardPanel), new UiScrollPane(htmlViewer), bigSplitter);
+		add(bigSplitter, BorderLayout.CENTER);
 	}
 
-	public void refreshText()
-	{
-		String htmlText = new NoProjectHtmlText().getText();
-		htmlViewer.setText(htmlText);
-	}
-	
 	public void becomeInactive() throws Exception
 	{
 		// nothing to do...would clear all view data
 		super.becomeInactive();
+	}
+	
+	public void refreshText()
+	{
+		htmlViewer.setText(new NoProjectHtmlText().getText());
 	}
 
 	public void valueChanged(String widget, String newValue)
@@ -119,6 +117,8 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		return Project.NO_PROJECT_VIEW_NAME;
 	}
 
+	JSplitPane bigSplitter;
+	NoProjectWizardPanel wizardPanel;
 	HtmlViewer htmlViewer;
 }
 

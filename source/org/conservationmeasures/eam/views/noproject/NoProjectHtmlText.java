@@ -11,54 +11,22 @@
  */
 package org.conservationmeasures.eam.views.noproject;
 
-import java.awt.Dimension;
 import java.io.File;
 import java.util.Date;
-
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
-import org.martus.swing.ResourceImageIcon;
 import org.martus.util.MultiCalendar;
 
 class NoProjectHtmlText extends HtmlBuilder
 {
 	public NoProjectHtmlText()
 	{
-		String startButtonLocation = "images/StartProject.png";
-		ResourceImageIcon startButtonIcon = new ResourceImageIcon(startButtonLocation);
-		Dimension startButtonSize = new Dimension(startButtonIcon.getIconWidth(), startButtonIcon.getIconHeight());
 		text = 
 			font("Arial", 
-				heading("Welcome to e-Adaptive Management!") + 
-				horizontalLine() + heading("Get Started") +
-				indent(
-						paragraph("To begin a new " + 
-								definition("Definition:Project", "project", "A project is...") + 
-								", select " + bold("Start Project") + ".") +
-								centered(anchorTag(NEW_PROJECT, 
-										image(startButtonLocation, startButtonSize))) +
-						paragraph("New to e-Adaptive Management? See an " +
-								definition("Definition:EAM", "Overview of e-AM", "e-Adaptive Management is...") + 
-								".")
-					) +
-				horizontalLine() +
-				heading("Work on Existing Project") + 
-				indent(
-						paragraph("To work on an existing project, choose it from the list below:") +
-						newline() + 
-						existingProjectTable()
-						) +
-				horizontalLine() +
-				paragraph(
-					definition(IMPORT_ZIP, "Import a zipped project", "Browse to a zipped project")) +
-				paragraph(
-					definition(IMPORT_TNC_CAP_PROJECT, "Import a TNC CAP project", "Browse to a tnc cap project")) +
-				paragraph(
-					definition("BrowseProject", "Browse to find other projects", "Browse to existing...")) +
-				paragraph(
-					definition("ManageProject", "Copy, rename, or delete projects", "Manage projects..."))
+				heading("Existing Projects:") +
+				existingProjectTable()
 				);
 
 	}
