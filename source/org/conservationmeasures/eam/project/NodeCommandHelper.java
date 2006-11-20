@@ -96,12 +96,7 @@ public class NodeCommandHelper
 			NodeDataMap nodeData = nodes[i];
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 
-			Point newNodeLocation;
-			if (startPoint != null)
-				newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
-			else 
-				newNodeLocation = dataHelper.getLeftmostUppermostCorner();
-			
+			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			DiagramNodeId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			DiagramNodeId newDiagramNodeId = project.getDiagramModel().getNodeById(newNodeId).getDiagramNodeId();
