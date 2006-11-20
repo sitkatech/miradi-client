@@ -84,7 +84,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		refreshText();
 		wizardPanel = new NoProjectWizardPanel(this);
 		
-		bigSplitter = new ViewSplitPane(new UiScrollPane(wizardPanel), new UiScrollPane(htmlViewer), bigSplitter);
+		bigSplitter = new ViewSplitPane(wizardPanel, new UiScrollPane(htmlViewer), bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
 	}
 
