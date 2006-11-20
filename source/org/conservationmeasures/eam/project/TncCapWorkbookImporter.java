@@ -36,7 +36,7 @@ public class TncCapWorkbookImporter
 	
 	public String getProjectVersionDate()
 	{
-		return getProjectCell(EXPECTED_WWKBK_VERSION_DATE_COL);
+		return getProjectCell(EXPECTED_WKBK_VERSION_DATE_COL);
 	}
 	
 	
@@ -55,6 +55,12 @@ public class TncCapWorkbookImporter
 	public String getProjectStartDate()
 	{
 		return getProjectCell(EXPECTED_PROJECT_START_DATE_COL);
+	}
+	
+	
+	public String getPlanningTeamComment()
+	{
+		return getProjectCell(EXPECTED_PLANNING_TEAM_COMMENT);
 	}
 	
 	
@@ -81,7 +87,7 @@ public class TncCapWorkbookImporter
 		return getProjectCell(EXPECTED_PROJECT_DESCR_COMMENT_COL);
 	}
 	
-	
+
 	private String getProjectCell(int column)
 	{
 		Sheet sheet = workbook.getSheet(PROJECT_SHEET_NUMBER);
@@ -105,9 +111,9 @@ public class TncCapWorkbookImporter
 	final static int EXPECTED_PROJECT_AREA_SIZE_HECTARES_COL = 11;
 	final static int EXPECTED_PROJECT_DESCR_COMMENT_COL = 12;
 	final static int EXPECTED_PROJECT_GOAL_COMMENT_COL = 13;
+	final static int EXPECTED_PLANNING_TEAM_COMMENT = 14;
 	final static int EXPECTED_PROJECT_LESSONS_LEARNED_COL = 15;
 	final static int EXPECTED_DOWNLOAD_DATE_COL = 23;
 	final static int EXPECTED_WKBK_VERSION_COL = 28;
-	final static int EXPECTED_WWKBK_VERSION_DATE_COL = 29;
-
+	final static int EXPECTED_WKBK_VERSION_DATE_COL = 29;
 }

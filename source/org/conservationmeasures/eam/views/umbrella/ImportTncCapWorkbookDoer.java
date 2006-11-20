@@ -38,6 +38,7 @@ public class ImportTncCapWorkbookDoer extends ImportDoer
 				project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, importer.getProjectVersionDate());
 				project.setMetadata(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, importer.getProjectVersion());
 				project.setMetadata(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, importer.getProjectLessonsLearned());
+				project.setMetadata(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, importer.getPlanningTeamComment());
 			} 
 			finally
 			{
