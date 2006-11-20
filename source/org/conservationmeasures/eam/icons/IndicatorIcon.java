@@ -30,7 +30,7 @@ public class IndicatorIcon implements Icon
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
-		Rectangle rect = new Rectangle(1, 1, WIDTH-2, HEIGHT-2);
+		Rectangle rect = new Rectangle(x+1, y+1, WIDTH-2, HEIGHT-2);
 		Polygon triangle = TriangleRenderer.buildTriangle(rect);
 		g.setColor(MultilineNodeRenderer.INDICATOR_COLOR);
 		g.fillPolygon(triangle);
