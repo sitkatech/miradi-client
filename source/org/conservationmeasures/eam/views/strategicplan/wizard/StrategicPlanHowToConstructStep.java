@@ -28,20 +28,20 @@ public class StrategicPlanHowToConstructStep extends WizardStep
 		if(linkDescription.equals("Definition:StrategicPlan"))
 		{
 			EAM.okDialog("Definition:StrategicPlan", new String[] {
-				"Strategic plan "+Character.toChars(45)[0]+" An outline of how the project team proposes to" +
-				" change the world that contains a project"+Character.toChars(39)[0]+"s goals, objectives," +
+				"Strategic plan -- An outline of how the project team proposes to" +
+				" change the world that contains a project's goals, objectives," +
 				" and strategies." });
 		}
 		if(linkDescription.equals("Definition:Goal"))
 		{
 			EAM.okDialog("Definition:Goals", new String[] {
-				"Goal "+Character.toChars(45)[0]+" A formal statement detailing a desired impact of a project.  " +
+				"Goal -- A formal statement detailing a desired impact of a project.  " +
 				"In conservation projects, it is the desired future status of a target." });
 		}
 		if(linkDescription.equals("Definition:Objective"))
 		{
 			EAM.okDialog("Definition:Objective", new String[] {
-				"Objective "+Character.toChars(45)[0]+" A formal statement detailing a desired " +
+				"Objective -- A formal statement detailing a desired " +
 				"outcome of a project, such as reducing a critical threat." });
 		}
 		if(linkDescription.equals("Definition:Strategies"))
