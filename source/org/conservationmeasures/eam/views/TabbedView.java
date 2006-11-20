@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views;
 import java.awt.BorderLayout;
 import java.awt.Component;
 
+import javax.swing.Icon;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -89,6 +90,11 @@ abstract public class TabbedView extends UmbrellaView
 		tabs.add(name, contents);
 	}
 
+	public void addTab(String name, Icon icon, Component contents)
+	{
+		tabs.addTab(name, icon, contents);
+	}
+	
 	public void setTab(int newTab)
 	{
 		tabs.setSelectedIndex(newTab);

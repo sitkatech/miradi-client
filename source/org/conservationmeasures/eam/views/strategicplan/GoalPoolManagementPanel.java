@@ -7,9 +7,12 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalId;
 import org.conservationmeasures.eam.main.EAM;
@@ -52,6 +55,12 @@ public class GoalPoolManagementPanel extends ModelessDialogPanel
 	{
 		return EAM.text("Tab|Goals");
 	}
+	
+	public Icon getIcon()
+	{
+		return new GoalIcon();
+	}
+	
 	
 	GoalPoolTablePanel PoolComponent;
 	GoalPropertiesPanel propertiesPanel;

@@ -41,8 +41,8 @@ public class StrategicPlanView extends TabbedView
 		goalPanel = new GoalPoolManagementPanel(getProject(), getActions());
 
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
-		addTab(EAM.text("Goals"), goalPanel);
-		addTab(EAM.text("Objectives"), objectivePanel);
+		addTab(goalPanel.getPanelDescription(), goalPanel.getIcon(), goalPanel);
+		addTab(objectivePanel.getPanelDescription(), objectivePanel.getIcon(), objectivePanel);
 	}
 	
 	public void deleteTabs()
