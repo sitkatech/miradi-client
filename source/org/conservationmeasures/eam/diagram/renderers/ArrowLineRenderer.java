@@ -11,16 +11,17 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
-import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
+import org.jgraph.graph.EdgeView;
 import org.martus.swing.Utilities;
 
 public class ArrowLineRenderer extends EdgeRenderer
@@ -52,6 +53,32 @@ public class ArrowLineRenderer extends EdgeRenderer
 		drawStress(g);
 		
 	}
+	
+	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
+	{
+		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
+		DiagramLinkage linkageToUse = (DiagramLinkage)viewToUse.getCell();
+		
+		String text = linkageToUse.getStressLabel();
+		if (text.length()==0)
+			return graphBounds;
+		
+		Rectangle2D union = calculateNewBoundsForStress(graphBounds, linkageToUse);
+		return union;
+	}
+
+	
+	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, DiagramLinkage linkageToUse)
+	{
+		Graphics2D g2 = (Graphics2D)fontGraphics;
+		TextLayout textLayout = new TextLayout(linkageToUse.getStressLabel(), g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		Point upperLeftToDrawText = Utilities.center(textBounds.getBounds().getSize(), graphBounds.getBounds());
+		textBounds.setLocation(upperLeftToDrawText);
+		Rectangle2D union = graphBounds.createUnion(textBounds);
+		return union;
+	}
+	
 
 	private void drawStress(Graphics g)
 	{
@@ -63,17 +90,15 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return;
 		
 		Graphics2D g2 = (Graphics2D)g;
-		g2.setClip(EAM.mainWindow.getDiagramComponent().getVisibleRect());
-		
 		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
 		Rectangle2D textBounds = textLayout.getBounds();
 		
 		int textWidth = (int)textBounds.getWidth();
 		int textHeight = (int)textBounds.getHeight();
 		Dimension textSize = new Dimension(textWidth, textHeight);
-		Point upperLeftToDrawText = Utilities.center(textSize, getBounds());
+		Point upperLeftToDrawText = Utilities.center(textSize,  getBounds());
 		int textX = upperLeftToDrawText.x;
-		int textY = upperLeftToDrawText.y;
+		int textY =  upperLeftToDrawText.y;
 
 		int cushion = 5;
 		
