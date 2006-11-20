@@ -46,6 +46,7 @@ abstract public class Desire extends EAMBaseObject
 		addField(TAG_FULL_TEXT, fullText);
 	}
 	
+	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
 

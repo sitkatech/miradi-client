@@ -25,7 +25,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.INDICATOR, idToShow);
 		
-		addField(createStringField("pseudoField"));
+		addField(createStringField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createStringField(Indicator.TAG_SHORT_LABEL));
 		addField(createStringField(Indicator.TAG_LABEL));
 		addField(createMultilineField(Indicator.TAG_METHOD));

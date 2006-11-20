@@ -38,7 +38,9 @@ import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Indicator;
 
 public class ObjectManager
 {
@@ -175,13 +177,31 @@ public class ObjectManager
 	
 	public boolean isPseudoTag(String fieldTag)
 	{
-		if (fieldTag.startsWith("pseudoField"))
+		if (fieldTag.startsWith("PseudoTag"))
 			return true;
 
 		return false;
 	}
 	
-	public String getPseudoObject(int objectType, BaseId objectId)
+	public String getPseudoField(int objectType, BaseId objectId, String fieldTag)
+	{
+		switch (objectType)
+		{
+			case ObjectType.GOAL:
+				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+					return getAnnotationFactorLabel(objectType, objectId);
+			case ObjectType.OBJECTIVE:
+				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+					return getAnnotationFactorLabel(objectType, objectId);
+			case ObjectType.INDICATOR:
+				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+					return getAnnotationFactorLabel(objectType, objectId);
+		}
+			
+		throw new RuntimeException();
+	}
+	
+	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
 	{
 		try
 		{
@@ -205,7 +225,7 @@ public class ObjectManager
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		if (isPseudoTag(fieldTag))
-			return getPseudoObject(objectType, objectId);
+			return getPseudoField(objectType, objectId, fieldTag);
 	
 		EAMObject object = getPool(objectType).findObject(objectId);
 		if(object == null)

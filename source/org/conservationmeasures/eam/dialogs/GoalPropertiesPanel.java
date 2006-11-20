@@ -23,7 +23,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.GOAL, idToShow);
 		
-		addField(createStringField("pseudoField"));
+		addField(createStringField(Goal.PSEUDO_TAG_FACTOR));
 		addField(createStringField(Goal.TAG_SHORT_LABEL));
 		addField(createStringField(Goal.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
