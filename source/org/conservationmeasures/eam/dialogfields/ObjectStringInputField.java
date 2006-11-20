@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Dimension;
+
 import javax.swing.JTextField;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -22,6 +24,10 @@ public class ObjectStringInputField extends ObjectTextInputField
 		JTextField jTextField = (JTextField)getComponent();
 		jTextField.setBorder(textArea.getBorder());
 		jTextField.setFont(textArea.getFont());
-		jTextField.setPreferredSize(textArea.getPreferredSize());
+		
+		int preferredHeight = jTextField.getPreferredSize().height;
+		int preferredWidth = textArea.getPreferredSize().width;
+		Dimension preferredSize = new Dimension(preferredWidth, preferredHeight);
+		jTextField.setPreferredSize(preferredSize);
 	}
 }
