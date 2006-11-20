@@ -195,10 +195,9 @@ public class ObjectManager
 					return getAnnotationFactorLabel(objectType, objectId);
 			case ObjectType.INDICATOR:
 				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-					return getAnnotationFactorLabel(objectType, objectId);
-			default:
-				throw new RuntimeException();	
+					return getAnnotationFactorLabel(objectType, objectId);				
 		}
+		throw new RuntimeException();	
 	}
 	
 	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
@@ -208,18 +207,15 @@ public class ObjectManager
 			ChainManager chainManager = new ChainManager(project);
 			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
 			Iterator iterator = cmNodeSet.iterator();
-			if (iterator.hasNext())
-			{
-				ConceptualModelNode node = (ConceptualModelNode)iterator.next();
-				return node.getLabel();
-			}
+			ConceptualModelNode node = (ConceptualModelNode)iterator.next();
+			return node.getLabel();
 		}
 		catch( Exception e)
 		{
 			EAM.logException(e);
+			return "";
 		}
-
-		return "";
+	
 	}
 	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
