@@ -110,11 +110,13 @@ public class ProjectMetadata extends EAMBaseObject
 		tncWorkbookVersionNumber = new StringData();
 		tncWorkbookVersionDate = new DateData();
 		tncDatabaseDownloadDate = new DateData();
+		tncPlanningTeamComment = new StringData();
 		
 		addField(TAG_TNC_LESSONS_LEARNED, tncLessonsLearned);
 		addField(TAG_TNC_WORKBOOK_VERSION_NUMBER, tncWorkbookVersionNumber);
 		addField(TAG_TNC_WORKBOOK_VERSION_DATE, tncWorkbookVersionDate);
 		addField(TAG_TNC_DATABASE_DOWNLOAD_DATE, tncDatabaseDownloadDate);
+		addField(TAG_TNC_PLANNING_TEAM_COMMENT, tncPlanningTeamComment);
 	}
 
 	public static final String TAG_PROJECT_NAME = "ProjectName";
@@ -131,6 +133,8 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
+	public static final String TAG_TNC_PLANNING_TEAM_COMMENT = "TNC.PlanningTeamComment";
+
 
 	StringData projectName;
 	StringData projectScope;
@@ -146,4 +150,5 @@ public class ProjectMetadata extends EAMBaseObject
 	StringData tncWorkbookVersionNumber;
 	DateData tncWorkbookVersionDate;
 	DateData tncDatabaseDownloadDate;
+	StringData tncPlanningTeamComment;
 }
