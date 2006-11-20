@@ -60,7 +60,7 @@ public class TncCapWorkbookImporter
 	
 	public String getPlanningTeamComment()
 	{
-		return getProjectCell(EXPECTED_PLANNING_TEAM_COMMENT);
+		return getProjectCell(EXPECTED_PLANNING_TEAM_COMMENT_COL);
 	}
 	
 	
@@ -111,7 +111,7 @@ public class TncCapWorkbookImporter
 	final static int EXPECTED_PROJECT_AREA_SIZE_HECTARES_COL = 11;
 	final static int EXPECTED_PROJECT_DESCR_COMMENT_COL = 12;
 	final static int EXPECTED_PROJECT_GOAL_COMMENT_COL = 13;
-	final static int EXPECTED_PLANNING_TEAM_COMMENT = 14;
+	final static int EXPECTED_PLANNING_TEAM_COMMENT_COL = 14;
 	final static int EXPECTED_PROJECT_LESSONS_LEARNED_COL = 15;
 	final static int EXPECTED_DOWNLOAD_DATE_COL = 23;
 	final static int EXPECTED_WKBK_VERSION_COL = 28;
