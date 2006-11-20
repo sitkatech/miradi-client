@@ -28,7 +28,6 @@ public class DiagramWizardPanel extends WizardPanel
 	{
 		actions = actionsToUse;
 		
-		
 		OVERVIEW = addStep(new DiagramWizardOverviewStep(this));
 		PROJECT_SCOPE = addStep(new DiagramWizardProjectScopeStep(this));
 		VISION = addStep(new DiagramWizardVisionStep(this));
@@ -39,6 +38,8 @@ public class DiagramWizardPanel extends WizardPanel
 		IDENTIFY_INDIRECT_THREATS = addStep(new DiagramWizardIdentifyIndirectThreatStep(this));
 		addStep(new DiagramWizardConstructChainsStep(this));
 		REVIEW_AND_ADJUST = addStep(new DiagramWizardReviewModelAndAdjustStep(this));
+		DEVELOP_GOAL = addStep(new StrategicPlanDevelopGoalStep(this));
+		DEVELOP_OBJECTIVE = addStep(new StrategicPlanDevelopObjectivesStep(this));	
 		
 		setStep(OVERVIEW);
 	}
@@ -58,15 +59,9 @@ public class DiagramWizardPanel extends WizardPanel
 		else if(stepMarker.equals(ActionJumpCreateModel.class))
 			setStep(OVERVIEW);
 		else if (stepMarker.equals(ActionJumpDevelopTargetGoals.class))
-		{
-			DEVELOP_GOAL = addStep(new StrategicPlanDevelopGoalStep(this));
 			setStep(DEVELOP_GOAL);
-		}
 		else if (stepMarker.equals(ActionJumpDevelopObjectives.class))
-		{
-			DEVELOP_OBJECTIVE = addStep(new StrategicPlanDevelopObjectivesStep(this));
 			setStep(DEVELOP_OBJECTIVE);
-		}
 		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
