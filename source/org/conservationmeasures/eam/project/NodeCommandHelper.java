@@ -89,16 +89,22 @@ public class NodeCommandHelper
 			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			
+			
 		}
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			NodeDataMap nodeData = nodes[i];
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
-
+			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			DiagramNodeId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
+			
+			DiagramNode addedNode = getProject().getDiagramModel().getNodeById(newNodeId);
+			addedNode.setSize(nodeData.getDimension(DiagramNode.TAG_SIZE));
+			
 			DiagramNodeId newDiagramNodeId = project.getDiagramModel().getNodeById(newNodeId).getDiagramNodeId();
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramNodeId[]{newDiagramNodeId});
 			executeCommand(move);
