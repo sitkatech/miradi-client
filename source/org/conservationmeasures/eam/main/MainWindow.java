@@ -71,7 +71,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		project.addCommandExecutedListener(this);
 		
 		ToolTipManager.sharedInstance().setInitialDelay(TOOP_TIP_DELAY_MILLIS);
-		setIconImage(new ResourceImageIcon("images/appIcon.gif").getImage());
+		setIconImage(new ResourceImageIcon("images/appIcon.png").getImage());
 		
 		actions = new Actions(this);
 		mainMenuBar = new MainMenuBar(actions);
