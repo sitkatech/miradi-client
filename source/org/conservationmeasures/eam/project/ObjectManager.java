@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
@@ -16,6 +17,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -173,14 +175,38 @@ public class ObjectManager
 	
 	public boolean isPseudoTag(String fieldTag)
 	{
-		if (fieldTag.equals("pseudoField"))
+		if (fieldTag.startsWith("pseudoField"))
 			return true;
 
 		return false;
 	}
 	
+	public String getPseudoObject(int objectType, BaseId objectId)
+	{
+		try
+		{
+			ChainManager chainManager = new ChainManager(project);
+			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisGoal(objectId);
+			Iterator iterator = cmNodeSet.iterator();
+			if (iterator.hasNext())
+			{
+				ConceptualModelNode node = (ConceptualModelNode)iterator.next();
+				return node.getLabel();
+			}
+		}
+		catch( Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		return "";
+	}
+	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
+		if (isPseudoTag(fieldTag))
+			return getPseudoObject(objectType, objectId);
+	
 		EAMObject object = getPool(objectType).findObject(objectId);
 		if(object == null)
 			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId);

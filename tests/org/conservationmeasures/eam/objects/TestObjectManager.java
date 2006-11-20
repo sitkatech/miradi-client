@@ -72,10 +72,10 @@ public class TestObjectManager extends EAMTestCase
 	public void testIsPseudoTag() throws Exception
 	{
 			boolean isPseudoTag = manager.isPseudoTag("pseudoField");
-			assertEquals("is pyeudo tag?", true, isPseudoTag);
+			assertEquals("pseudo tag?", true, isPseudoTag);
 			
 			isPseudoTag = manager.isPseudoTag("notAPseudoField");
-			assertEquals("is pyeudo tag?", false, isPseudoTag);
+			assertEquals("not pseudo tag?", false, isPseudoTag);
 	}
 
 	private void verifyObjectLifecycle(int type, CreateObjectParameter parameter) throws Exception
