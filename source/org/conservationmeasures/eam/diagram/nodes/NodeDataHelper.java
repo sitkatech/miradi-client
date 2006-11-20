@@ -80,6 +80,15 @@ public class NodeDataHelper
 	
 	private Point computeDeltas(Point insertionPoint)
 	{
+		Point upperLeft = getLeftmostUppermostCorner();
+		
+		int deltaX = insertionPoint.x - upperLeft.x;
+		int deltaY = insertionPoint.y - upperLeft.y;
+		return new Point(deltaX, deltaY);	
+	}
+
+	public Point getLeftmostUppermostCorner()
+	{
 		Rectangle rect = null;
 		for (Iterator iter = mapNodeLocations.values().iterator(); iter.hasNext();) 
 		{
@@ -90,10 +99,10 @@ public class NodeDataHelper
 				rect.add(nodeLocation);
 		}
 		
-		int deltaX = insertionPoint.x - rect.x;
-		int deltaY = insertionPoint.y - rect.y;
-		return new Point(deltaX, deltaY);	
+		Point upperLeft = rect.getLocation();
+		return upperLeft;
 	}
+	
 	HashMap mapNodeLocations = new HashMap();
 	HashMap mapNodeIds = new HashMap();
 }
