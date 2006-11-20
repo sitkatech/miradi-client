@@ -37,7 +37,7 @@ public class MonitoringView extends TabbedView
 		monitoringPanel = new MonitoringPanel(getProject());
 		indicatorManagementPanel = new IndicatorPoolManagementPanel(getProject(), getActions());
 		addTab(EAM.text("Monitoring Plan"), monitoringPanel);
-		addTab(EAM.text("Indicators"), indicatorManagementPanel);
+		addTab(EAM.text("Indicators"), indicatorManagementPanel.getIcon(), indicatorManagementPanel);
 	}
 
 	public void deleteTabs() throws Exception
