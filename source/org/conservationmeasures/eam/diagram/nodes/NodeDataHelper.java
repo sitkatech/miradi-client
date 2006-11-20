@@ -43,7 +43,7 @@ public class NodeDataHelper
 	public Point getNewLocation(DiagramNodeId originalNodeId, Point insertionPoint)
 	{
 		if (insertionPoint == null)
-			return getLeftmostUppermostCorner();
+			insertionPoint = getLeftmostUppermostCorner();
 		
 		Point delta = computeDeltas(insertionPoint);
 		Point originalNodeLocation = (Point)mapNodeLocations.get(getKey(originalNodeId));
