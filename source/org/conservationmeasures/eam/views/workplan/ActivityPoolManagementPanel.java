@@ -7,10 +7,14 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.dialogs.ActivityPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
@@ -84,7 +88,12 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Tab|Activities");
+	}
+	
+	public Icon getIcon()
+	{
+		return new ActivityIcon();
 	}
 	
 	private ActivityPropertiesPanel propertiesPanel;

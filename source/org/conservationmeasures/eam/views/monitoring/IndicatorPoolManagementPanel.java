@@ -7,9 +7,12 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
+import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -50,7 +53,12 @@ public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Objectives");
+		return EAM.text("Tab|Indicators");
+	}
+	
+	public Icon getIcon()
+	{
+		return new IndicatorIcon();
 	}
 	
 	IndicatorPoolTablePanel PoolComponent;
