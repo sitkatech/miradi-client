@@ -171,6 +171,14 @@ public class ObjectManager
 		getDatabase().writeObject(object);
 	}
 	
+	public boolean isPseudoTag(String fieldTag)
+	{
+		if (fieldTag.equals("pseudoField"))
+			return true;
+
+		return false;
+	}
+	
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		EAMObject object = getPool(objectType).findObject(objectId);
