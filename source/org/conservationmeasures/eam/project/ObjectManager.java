@@ -186,7 +186,7 @@ public class ObjectManager
 		try
 		{
 			ChainManager chainManager = new ChainManager(project);
-			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisGoal(objectId);
+			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
 			Iterator iterator = cmNodeSet.iterator();
 			if (iterator.hasNext())
 			{
