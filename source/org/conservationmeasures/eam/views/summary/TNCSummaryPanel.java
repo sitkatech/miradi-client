@@ -30,6 +30,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(databaseDownloadDate);
 
 		addField(createMultilineField(metadata.TAG_TNC_LESSONS_LEARNED));
+		
+		addField(createMultilineField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 
 		updateFieldsFromProject();
 	}
