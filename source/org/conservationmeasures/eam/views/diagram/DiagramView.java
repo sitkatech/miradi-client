@@ -190,7 +190,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		JSplitPane bottomHalf = new JSplitPane();
 		bottomHalf.setRightComponent(diagramComponent);
 		bottomHalf.setLeftComponent(legendDialog);
-		bottomHalf.setDividerLocation(100);
+		bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
 		
 		bigSplitter =new ViewSplitPane(createWizard(), bottomHalf, bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
