@@ -196,9 +196,9 @@ public class ObjectManager
 			case ObjectType.INDICATOR:
 				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 					return getAnnotationFactorLabel(objectType, objectId);
+			default:
+				throw new RuntimeException();	
 		}
-			
-		throw new RuntimeException();
 	}
 	
 	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
