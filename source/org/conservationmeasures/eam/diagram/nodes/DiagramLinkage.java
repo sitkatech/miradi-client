@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
@@ -37,11 +36,6 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return (ModelLinkageId)underlyingObject.getId();
 	}
 	
-	public ConnectionSet getConnectionSet()
-	{
-		return new ConnectionSet(this, getSource(), getTarget());		
-	}
-
 	public DiagramNode getFromNode()
 	{
 		try
@@ -54,6 +48,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 			throw new RuntimeException("From node not found");
 		}
 	}
+	
 	public DiagramNode getToNode()
 	{
 		try

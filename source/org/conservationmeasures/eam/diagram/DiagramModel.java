@@ -160,7 +160,9 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramLinkage linkage = new DiagramLinkage(this, cmLinkage);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);
-		ConnectionSet cs = linkage.getConnectionSet();
+		DiagramNode from = getNodeById(linkage.getFromModelNodeId());
+		DiagramNode to = getNodeById(linkage.getToModelNodeId());
+		ConnectionSet cs = new ConnectionSet(linkage, from.getPort(), to.getPort());
 		insert(linkages, nestedMap, cs, null, null);
 		cellInventory.addLinkage(linkage);
 		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierLinkageAdded());
