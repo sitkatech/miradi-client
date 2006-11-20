@@ -26,7 +26,7 @@ public class StrategicPlanDevelopObjectivesStep extends WizardStep
 		if(linkDescription.equals("Definition:Objective"))
 		{
 			EAM.okDialog("Definition:Objective", new String[] {
-				"Objective – A formal statement detailing a desired " +
+				"Objective "+Character.toChars(45)[0]+" A formal statement detailing a desired " +
 				"outcome of a project, such as reducing a critical threat." });
 		}
 	}

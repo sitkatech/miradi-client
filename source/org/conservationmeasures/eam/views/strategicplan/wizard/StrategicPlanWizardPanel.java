@@ -60,9 +60,7 @@ public class StrategicPlanWizardPanel extends WizardPanel
 	}
 	
 	Actions actions;
-	int DEVELIP_OBJECTIVES;
 	int VIEW_ALL_GOALS;
 	int VIEW_ALL_OBJECTIVES;
 	int HOW_TO_CONSTRUCT_STRAT_PLAN;
-	
 }

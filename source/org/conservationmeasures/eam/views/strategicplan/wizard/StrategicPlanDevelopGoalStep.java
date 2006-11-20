@@ -26,7 +26,7 @@ public class StrategicPlanDevelopGoalStep extends WizardStep
 		if(linkDescription.equals("Definition:Goal"))
 		{
 			EAM.okDialog("Definition:Goals", new String[] {
-				"Goal – A formal statement detailing a desired impact of a project.  " +
+				"Goal "+Character.toChars(45)[0]+" A formal statement detailing a desired impact of a project.  " +
 				"In conservation projects, it is the desired future status of a target." });
 		}
 	}
