@@ -46,9 +46,11 @@ public class StrategicPlanHowToConstructStep extends WizardStep
 		}
 		if(linkDescription.equals("Definition:Strategies"))
 		{
-			//TODO define "strategies"
-			EAM.okDialog("Definition:Goal", new String[] {
-				"Not defined yet" });
+			EAM.okDialog("Definition:Strategies", new String[] {
+				"Strategies -- A broad course of action designed to restore natural systems, " +
+				"reduce threats, and/or develop capacity.  A strategy is typically " +
+				"used as an umbrella term to describe a set of specific " +
+				"conservation actions." });
 		}
 	}
 	
