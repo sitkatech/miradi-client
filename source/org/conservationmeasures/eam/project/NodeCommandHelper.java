@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -14,6 +15,7 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
@@ -102,13 +104,20 @@ public class NodeCommandHelper
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			DiagramNodeId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			
-			DiagramNode addedNode = getProject().getDiagramModel().getNodeById(newNodeId);
-			addedNode.setSize(nodeData.getDimension(DiagramNode.TAG_SIZE));
+			DiagramNode newNode = getDiagramNodeById(newNodeId);
+			Dimension originalDimension = nodeData.getDimension(DiagramNode.TAG_SIZE);
+			CommandSetNodeSize resize = new CommandSetNodeSize(newNodeId, originalDimension, newNode.getSize());
+			executeCommand(resize);
 			
-			DiagramNodeId newDiagramNodeId = project.getDiagramModel().getNodeById(newNodeId).getDiagramNodeId();
+			DiagramNodeId newDiagramNodeId = getDiagramNodeById(newNodeId).getDiagramNodeId();
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramNodeId[]{newDiagramNodeId});
 			executeCommand(move);
 		}
+	}
+
+	private DiagramNode getDiagramNodeById(DiagramNodeId newNodeId) throws Exception
+	{
+		return getDiagramModel().getNodeById(newNodeId);
 	}
 	
 	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws Exception 
@@ -127,8 +136,8 @@ public class NodeCommandHelper
 				continue;
 			}
 			
-			DiagramNode newFromNode = project.getDiagramModel().getNodeById(newFromId);
-			DiagramNode newToNode = project.getDiagramModel().getNodeById(newToId);
+			DiagramNode newFromNode = getDiagramNodeById(newFromId);
+			DiagramNode newToNode = getDiagramNodeById(newToId);
 			CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
 			Logging.logDebug("Paste Link : " + addLinkageCommand.getModelLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
