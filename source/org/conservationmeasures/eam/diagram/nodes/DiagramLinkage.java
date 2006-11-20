@@ -18,10 +18,11 @@ import org.jgraph.graph.GraphConstants;
 
 public class DiagramLinkage extends EAMGraphCell implements Edge
 {
-	public DiagramLinkage(DiagramModel modelToUse, ConceptualModelLinkage cmLinkage) throws Exception
+	public DiagramLinkage(DiagramModel model, ConceptualModelLinkage cmLinkage) throws Exception
 	{
-		model = modelToUse;
 		underlyingObject = cmLinkage;
+		from = model.getNodeById(cmLinkage.getFromNodeId());
+		to = model.getNodeById(cmLinkage.getToNodeId());
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
@@ -38,28 +39,12 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	
 	public DiagramNode getFromNode()
 	{
-		try
-		{
-			return model.getNodeById(getFromModelNodeId());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException("From node not found");
-		}
+		return from;
 	}
 	
 	public DiagramNode getToNode()
 	{
-		try
-		{
-			return model.getNodeById(getToModelNodeId());
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			throw new RuntimeException("To node not found");
-		}
+		return to;
 	}
 	
 	public String getStressLabel()
@@ -119,11 +104,12 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 	{
 		LinkageDataMap dataMap = new LinkageDataMap();
 		dataMap.setId(getDiagramLinkageId());
-		dataMap.setFromId(model.getNodeById(getFromModelNodeId()).getDiagramNodeId());
-		dataMap.setToId(model.getNodeById(getToModelNodeId()).getDiagramNodeId());
+		dataMap.setFromId(from.getDiagramNodeId());
+		dataMap.setToId(to.getDiagramNodeId());
 		return dataMap;
 	}
 	
-	private DiagramModel model;
 	private ConceptualModelLinkage underlyingObject;
+	private DiagramNode from;
+	private DiagramNode to;
 }
