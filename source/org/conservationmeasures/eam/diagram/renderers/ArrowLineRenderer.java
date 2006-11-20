@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -26,6 +25,7 @@ import org.martus.swing.Utilities;
 
 public class ArrowLineRenderer extends EdgeRenderer
 {
+
 	public Component getRendererComponent(JGraph graphToUse, CellView cellView, 
 					boolean sel, boolean hasFocus, boolean previewMode)
 	{
@@ -70,14 +70,28 @@ public class ArrowLineRenderer extends EdgeRenderer
 	
 	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, DiagramLinkage linkageToUse)
 	{
-		Graphics2D g2 = (Graphics2D)fontGraphics;
-		TextLayout textLayout = new TextLayout(linkageToUse.getStressLabel(), g2.getFont(), g2.getFontRenderContext());
-		Rectangle textBounds = textLayout.getBounds().getBounds();
-		Point upperLeftToDrawText = Utilities.center(textBounds.getBounds().getSize(), graphBounds.getBounds());
-		textBounds.setLocation(upperLeftToDrawText);
+		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, linkageToUse);
 		Rectangle2D union = graphBounds.createUnion(textBounds);
 		return union;
 	}
+
+	
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, DiagramLinkage linkageToUse)
+	{
+		Graphics2D g2 = (Graphics2D)fontGraphics;
+		
+		TextLayout textLayout = new TextLayout(linkageToUse.getStressLabel(), g2.getFont(), g2.getFontRenderContext());
+		Rectangle textBounds = textLayout.getBounds().getBounds();
+		
+		textBounds.width = textBounds.width + 2*CUSHION;
+		textBounds.height = textBounds.height +2*CUSHION;
+		
+		Point upperLeftToDrawText = Utilities.center(textBounds.getSize(), graphBounds.getBounds().getBounds());
+		textBounds.setLocation(upperLeftToDrawText);
+		return textBounds;
+	}
+
+
 	
 
 	private void drawStress(Graphics g)
@@ -90,32 +104,18 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return;
 		
 		Graphics2D g2 = (Graphics2D)g;
-		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
-		Rectangle2D textBounds = textLayout.getBounds();
-		
-		int textWidth = (int)textBounds.getWidth();
-		int textHeight = (int)textBounds.getHeight();
-		Dimension textSize = new Dimension(textWidth, textHeight);
-		Point upperLeftToDrawText = Utilities.center(textSize,  getBounds());
-		int textX = upperLeftToDrawText.x;
-		int textY =  upperLeftToDrawText.y;
-
-		int cushion = 5;
-		
-		int rectX = textX - cushion;
-		int rectY = textY - cushion;
-		int rectWidth = textSize.width + 2*cushion;
-		int rectHeight = textSize.height +2*cushion;
+		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), linkage);
 
 		int arc = 5;
 
 		g2.setColor(DiagramConstants.COLOR_STRESS);
-		g2.fillRoundRect(rectX, rectY, rectWidth, rectHeight, arc, arc);
+		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
 		g2.setColor(Color.BLACK);
-		g2.drawRoundRect(rectX, rectY, rectWidth, rectHeight, arc, arc);
-		g2.drawString(text, textX, textY + textHeight);
+		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
+		g2.drawString(text, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
 	}
 	
+	private static final int CUSHION = 5;
 	DiagramLinkage linkage;
 	boolean isVisible;
 }
