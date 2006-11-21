@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
