@@ -19,6 +19,6 @@ public class NodeTypeIndirectFactor extends NodeTypeFactor
 
 	public String toString()
 	{
-		return EAM.text("Type|Indirect Factor");
+		return EAM.text("Type|Contributing Factor");
 	}
 }

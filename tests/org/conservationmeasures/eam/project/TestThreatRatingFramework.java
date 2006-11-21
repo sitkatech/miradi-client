@@ -230,8 +230,8 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
 		((ConceptualModelFactor)project.findNode(threatId)).decreaseTargetCount();
-		assertEquals("threat value included indirect factor?", none, framework.getThreatThreatRatingValue(threatId));
-		assertEquals("target value included indirect factor?", none, framework.getTargetThreatRatingValue(targetId));
+		assertEquals("threat value included contributing factor?", none, framework.getThreatThreatRatingValue(threatId));
+		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
 	
 	public void testGetHighestValueForThreat() throws Exception

@@ -78,7 +78,7 @@ public class TestDiagramAddNode extends EAMTestCase
 		DiagramNodeId id = insertedNode.getDiagramNodeId();
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not an indirect factor?", foundNode.isIndirectFactor());
+		assertTrue("not a contributing factor?", foundNode.isIndirectFactor());
 		assertEquals(DiagramNode.TYPE_FACTOR, foundNode.getNodeType());
 	}
 

@@ -21,7 +21,7 @@ public class InsertIndirectFactor extends InsertNode
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Indirect Factor");
+		return EAM.text("Label|New Contributing Factor");
 	}
 
 	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException

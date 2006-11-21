@@ -19,7 +19,7 @@ public class TestNodeTypeIndirectFactor extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		NodeTypeIndirectFactor factor = new NodeTypeIndirectFactor();
-		assertTrue("Not a indirect factor?", factor.isIndirectFactor());
+		assertTrue("Not a contributing factor?", factor.isIndirectFactor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isTarget());

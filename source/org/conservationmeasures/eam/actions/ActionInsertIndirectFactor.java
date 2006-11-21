@@ -18,12 +18,12 @@ public class ActionInsertIndirectFactor extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Indirect Factor");
+		return EAM.text("Action|Insert|Contributing Factor");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Indirect Factor");
+		return EAM.text("TT|Insert a Contributing Factor");
 	}
 
 }

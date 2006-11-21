@@ -43,7 +43,7 @@ public class DiagramLegendPanel extends JPanel
 		add(new UiLabel(EAM.text("Project Scope"), new ProjectScopeIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Target"), new TargetIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Direct Threat"), new DirectThreatIcon(), UiLabel.LEADING));
-		add(new UiLabel(EAM.text("Indirect Factor"), new IndirectFactorIcon(), UiLabel.LEADING));
+		add(new UiLabel(EAM.text("Contributing Factor"), new IndirectFactorIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Strategy"), new InterventionIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Link"), new ConnectionIcon(), UiLabel.LEADING));
 		

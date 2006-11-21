@@ -148,7 +148,7 @@ public class Preferences extends Doer
 			directThreatDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT));
 			panel.add(directThreatDropdown);
 			
-			panel.add(new UiLabel("Indirect Factor (Orange)"));
+			panel.add(new UiLabel("Contributing Factor (Orange)"));
 			indirectFactorDropdown = createColorsDropdown(indirectFactorColorChoices);
 			indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR));
 			panel.add(indirectFactorDropdown);

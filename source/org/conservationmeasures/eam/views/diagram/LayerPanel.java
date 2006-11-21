@@ -26,7 +26,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		
 		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Strategies"));
 		interventionCheckBox.addActionListener(this);
-		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Indirect Factors"));
+		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Contributing Factors"));
 		factorCheckBox.addActionListener(this);
 		threatCheckBox = new UiCheckBox(EAM.text("Label|Show Direct Threats"));
 		threatCheckBox.addActionListener(this);

@@ -21,8 +21,8 @@ public class DiagramWizardIdentifyIndirectThreatStep extends WizardStep
 	{
 		if(linkDescription.equals("Definition:IndirectThreat"))
 		{
-			EAM.okDialog("Definition: Indirect Threat", new String[] {"" +
-					"Indirect threats and Opportunities (indirect factors)" +
+			EAM.okDialog("Definition: Contributing Factor", new String[] {"" +
+					"Contributing factors (Indirect threats and Opportunities)" +
 					" – Human-induced actions and event that underlie or lead" +
 					" to the direct threats"});
 		}

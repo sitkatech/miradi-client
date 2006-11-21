@@ -631,7 +631,7 @@ public class TestProject extends EAMTestCase
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing indirect factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing contributing factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
 		
 		
 	}
@@ -678,7 +678,7 @@ public class TestProject extends EAMTestCase
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing indirect factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing contributing factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
 		
 		
 	}
