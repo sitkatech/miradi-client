@@ -13,9 +13,12 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
@@ -50,7 +53,12 @@ public class TeamEditorComponent extends DisposablePanel
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
-		box.add(createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
+		ObjectsActionButton modifyResrouceAction = createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable);
+		box.add(modifyResrouceAction);
+		
+		EAMAction action = actions.get(ActionModifyResource.class);
+		teamTable.addMouseListener(new MouseAdapterDoubleClickDelegator(action));
+		
 		return box;
 	}
 	
