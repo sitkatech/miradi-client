@@ -13,7 +13,6 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
@@ -32,6 +31,8 @@ public class TeamEditorComponent extends DisposablePanel
 		teamModel = new TeamModel(project);
 		teamTable = new ObjectListTable(teamModel);
 		teamTable.resizeTable(10);
+		teamTable.addMouseListener(new MouseAdapterDoubleClickDelegator(actions.get(ActionModifyResource.class)));
+		
 		rebuild();
 		
 		add(new UiScrollPane(teamTable), BorderLayout.CENTER);
@@ -53,11 +54,7 @@ public class TeamEditorComponent extends DisposablePanel
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
-		ObjectsActionButton modifyResrouceAction = createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable);
-		box.add(modifyResrouceAction);
-		
-		EAMAction action = actions.get(ActionModifyResource.class);
-		teamTable.addMouseListener(new MouseAdapterDoubleClickDelegator(action));
+		box.add(createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
 		
 		return box;
 	}
