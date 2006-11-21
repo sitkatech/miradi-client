@@ -165,15 +165,23 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void updateToolBar()
 	{
-		UmbrellaView view = getCurrentView();
-		if(view == null)
-			return;
-		JComponent toolBar = view.getToolBar();
-		if(toolBar == null)
-			throw new RuntimeException("View must have toolbar");
-		toolBarBox.removeAll();
-		toolBarBox.add(toolBar);
-		toolBarBox.repaint();
+		SwingUtilities.invokeLater(new ToolBarUpdater());
+	}
+	
+	class ToolBarUpdater implements Runnable
+	{
+		public void run()
+		{
+			UmbrellaView view = getCurrentView();
+			if(view == null)
+				return;
+			JComponent toolBar = view.getToolBar();
+			if(toolBar == null)
+				throw new RuntimeException("View must have toolbar");
+			toolBarBox.removeAll();
+			toolBarBox.add(toolBar);
+			validate();
+		}
 	}
 
 	public Project getProject()
