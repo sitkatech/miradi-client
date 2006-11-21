@@ -11,7 +11,7 @@ import javax.swing.Icon;
 
 import org.conservationmeasures.eam.dialogs.InterventionPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
-import org.conservationmeasures.eam.icons.ActivityIcon;
+import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -51,10 +51,9 @@ public class StrategiesPoolManagementPanel extends ModelessDialogPanel
 		return EAM.text("Tab|Strategies");
 	}
 	
-	//TODO change icon to strategies Icon
 	public Icon getIcon()
 	{
-		return new ActivityIcon();
+		return new InterventionIcon();
 	}
 
 	InterventionPoolTablePanel poolComponent;
