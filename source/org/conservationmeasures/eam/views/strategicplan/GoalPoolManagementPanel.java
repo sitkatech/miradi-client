@@ -26,18 +26,18 @@ public class GoalPoolManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		GoalId invalidId = new GoalId(BaseId.INVALID.asInt());
 		
-		PoolComponent = new GoalPoolTablePanel(projectToUse);
-		add(PoolComponent, BorderLayout.CENTER);
+		poolComponent = new GoalPoolTablePanel(projectToUse);
+		add(poolComponent, BorderLayout.CENTER);
 		
 		propertiesPanel = new GoalPropertiesPanel(projectToUse, actions, invalidId);
-		PoolComponent.setPropertiesPanel(propertiesPanel);
+		poolComponent.setPropertiesPanel(propertiesPanel);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void dispose()
 	{
-		PoolComponent.dispose();
-		PoolComponent = null;
+		poolComponent.dispose();
+		poolComponent = null;
 		
 		propertiesPanel.dispose();
 		propertiesPanel = null;
@@ -48,7 +48,7 @@ public class GoalPoolManagementPanel extends ModelessDialogPanel
 
 	public EAMObject getObject()
 	{
-		return PoolComponent.getSelectedObject();
+		return poolComponent.getSelectedObject();
 	}
 
 	public String getPanelDescription()
@@ -62,6 +62,6 @@ public class GoalPoolManagementPanel extends ModelessDialogPanel
 	}
 	
 	
-	GoalPoolTablePanel PoolComponent;
+	GoalPoolTablePanel poolComponent;
 	GoalPropertiesPanel propertiesPanel;
 }
