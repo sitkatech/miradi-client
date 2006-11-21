@@ -36,11 +36,13 @@ public class TestDiagramLinkage extends EAMTestCase
 		model = project.getDiagramModel();
 
 		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new NodeTypeIntervention());
-		BaseId interventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
+		BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
+		ModelNodeId interventionId = new ModelNodeId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
-		BaseId targetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		ModelNodeId targetId = new ModelNodeId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
 	}
 	

@@ -221,7 +221,7 @@ public class Project
 		return pool.findObject(objectId);
 	}
 	
-	public ConceptualModelNode findNode(BaseId nodeId)
+	public ConceptualModelNode findNode(ModelNodeId nodeId)
 	{
 		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
 	}

@@ -9,6 +9,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -42,7 +43,8 @@ public class ActivityPoolTableModel extends LegacyObjectPoolTableModel
 		IdList nodeIds = project.getNodePool().getIdList();
 		for(int i = 0; i < nodeIds.size(); ++i)
 		{
-			ConceptualModelNode node = project.findNode(nodeIds.get(i));
+			ModelNodeId nodeId = new ModelNodeId(nodeIds.get(i).asInt());
+			ConceptualModelNode node = project.findNode(nodeId);
 			if(node.isIntervention())
 			{
 				ConceptualModelIntervention intervention = (ConceptualModelIntervention)node;

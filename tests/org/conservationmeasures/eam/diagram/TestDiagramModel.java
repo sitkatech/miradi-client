@@ -130,7 +130,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
 		for(int i = 0; i < values.length; ++i)
-			result.attemptToAdd(project.findNode(new BaseId(values[i])));
+			result.attemptToAdd(project.findNode(new ModelNodeId(values[i])));
 		return result;
 	}
 

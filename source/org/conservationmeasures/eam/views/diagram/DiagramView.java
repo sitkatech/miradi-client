@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -247,14 +248,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			IdList visibleIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
-			visibleIds.addAll(getRelatedDraftInterventions(visibleIds));
+			IdList visibleDiagramNodeIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
+			visibleDiagramNodeIds.addAll(getRelatedDraftInterventions(visibleDiagramNodeIds));
 			Vector allNodes = getProject().getDiagramModel().getAllNodes();
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
 				DiagramNode node = (DiagramNode) allNodes.get(i);
 				BaseId id = node.getDiagramNodeId();
-				if (!visibleIds.contains(id))
+				if (!visibleDiagramNodeIds.contains(id))
 					idsToHide.add(id);
 			}
 		}
@@ -265,20 +266,21 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return idsToHide;
 	}
 	
-	IdList getRelatedDraftInterventions(IdList chainIds)
+	IdList getRelatedDraftInterventions(IdList diagramNodeIds) throws Exception
 	{
 		IdList draftsToAdd = new IdList();
 		
-		for(int i = 0; i < chainIds.size(); ++i)
+		DiagramModel diagramModel = getProject().getDiagramModel();
+		for(int i = 0; i < diagramNodeIds.size(); ++i)
 		{
-			BaseId nodeId = chainIds.get(i);
-			ConceptualModelNode node = getProject().findNode(nodeId);
-			ConceptualModelNodeSet possibleDraftInterventionIds = getProject().getDiagramModel().getDirectlyLinkedUpstreamNodes(node);
+			DiagramNodeId nodeId = new DiagramNodeId(diagramNodeIds.get(i).asInt());
+			ConceptualModelNode node = diagramModel.getNodeById(nodeId).getUnderlyingObject();
+			ConceptualModelNodeSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{
-				BaseId possibleInterventionId = ((ConceptualModelNode)iter.next()).getId();
-				if(chainIds.contains(possibleInterventionId))
+				ModelNodeId possibleInterventionId = ((ConceptualModelNode)iter.next()).getModelNodeId();
+				if(diagramNodeIds.contains(possibleInterventionId))
 					continue;
 				ConceptualModelNode possibleIntervention = getProject().findNode(possibleInterventionId);
 				if(possibleIntervention.isIntervention() && possibleIntervention.isStatusDraft())
@@ -370,7 +372,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
 			return;
 		
-		ConceptualModelNode cmNode = getProject().findNode(cmd.getObjectId());
+		ModelNodeId nodeId = new ModelNodeId(cmd.getObjectId().asInt());
+		ConceptualModelNode cmNode = getProject().findNode(nodeId);
 		if(!cmNode.isCluster())
 			return;
 		
@@ -388,7 +391,8 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
 			return;
 		
-		ConceptualModelNode cmNode = getProject().findNode(cmd.getObjectId());
+		ModelNodeId nodeId = new ModelNodeId(cmd.getObjectId().asInt());
+		ConceptualModelNode cmNode = getProject().findNode(nodeId);
 		if(!cmNode.isCluster())
 			return;
 		

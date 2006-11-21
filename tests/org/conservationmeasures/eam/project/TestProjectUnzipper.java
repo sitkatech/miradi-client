@@ -13,7 +13,7 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -79,7 +79,7 @@ public class TestProjectUnzipper extends EAMTestCase
 	
 	public void testUnzip() throws Exception
 	{
-		BaseId targetId = new BaseId(39);
+		ModelNodeId targetId = new ModelNodeId(39);
 		
 		File originalDirectory = createTempDirectory();
 		try

@@ -50,7 +50,8 @@ public class TestDiagramNode extends EAMTestCase
 		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
-		BaseId cmTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		ModelNodeId cmTargetId = new ModelNodeId(rawTargetId.asInt());
 		cmTarget = (ConceptualModelTarget)project.findNode(cmTargetId);
 		
 		DiagramNodeId interventionNodeId = new DiagramNodeId(44);
