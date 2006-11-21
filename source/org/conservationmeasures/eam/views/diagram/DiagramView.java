@@ -193,7 +193,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		bottomHalf.setLeftComponent(legendDialog);
 		bottomHalf.setDividerLocation(legendDialog.getPreferredSize().width);
 		
-		bigSplitter =new ViewSplitPane(createWizard(), bottomHalf, bigSplitter);
+		bigSplitter =new ViewSplitPane(getMainWindow(), createWizard(), bottomHalf, bigSplitter);
 		add(bigSplitter, BorderLayout.CENTER);
 		
 		setMode(getViewData().getData(ViewData.TAG_CURRENT_MODE));
