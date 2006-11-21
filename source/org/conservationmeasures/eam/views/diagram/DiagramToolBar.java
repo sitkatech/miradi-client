@@ -37,11 +37,9 @@ public class DiagramToolBar extends EAMToolBar
 	
 	static JComponent[][] createButtons(Actions actions, String mode)
 	{
-		ToolBarButton insertDraftInterventionButton = new ToolBarButton(actions, ActionInsertDraftIntervention.class);
-		ToolBarButton insertInterventionButton = new ToolBarButton(actions, ActionInsertIntervention.class);
 		JComponent[][] buttons = new JComponent[][] {
 			{
-				null,
+				getInsertInterventionButton(actions, mode),
 				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
@@ -61,16 +59,25 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionZoomOut.class),
 			},
 			{
-				new ToolBarButton(actions, ActionNormalDiagramMode.class),
-				new ToolBarButton(actions, ActionStrategyBrainstormMode.class),
+				getModeSwitchButton(actions, mode),
 			},
 		};
 		
-		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-			buttons[0][0] = insertDraftInterventionButton;
-		else
-			buttons[0][0] = insertInterventionButton;
 		return buttons;
+	}
+	
+	static ToolBarButton getInsertInterventionButton(Actions actions, String mode)
+	{
+		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			return new ToolBarButton(actions, ActionInsertDraftIntervention.class);
+		return new ToolBarButton(actions, ActionInsertIntervention.class);
+	}
+
+	static ToolBarButton getModeSwitchButton(Actions actions, String mode)
+	{
+		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			return new ToolBarButton(actions, ActionNormalDiagramMode.class);
+		return new ToolBarButton(actions, ActionStrategyBrainstormMode.class);
 	}
 }
 
