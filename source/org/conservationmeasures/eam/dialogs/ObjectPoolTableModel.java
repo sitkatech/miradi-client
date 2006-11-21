@@ -19,7 +19,15 @@ public class ObjectPoolTableModel extends AbstractTableModel
 	{
 		project = projectToUse;
 		rowObjectType = listedItemType;
-		rowObjectPool = projectToUse.getPool(rowObjectType).getIdList();
+		rowObjectIds = projectToUse.getPool(rowObjectType).getIdList();
+		columnTag = columnTagToUse;
+	}
+	
+	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String columnTagToUse)
+	{
+		project = projectToUse;
+		rowObjectType = listedItemType;
+		rowObjectIds = listToUse;
 		columnTag = columnTagToUse;
 	}
 	
@@ -35,7 +43,7 @@ public class ObjectPoolTableModel extends AbstractTableModel
 
 	public int getRowCount()
 	{
-		return rowObjectPool.size();
+		return rowObjectIds.size();
 	}
 	
 	public int getRowObjectType()
@@ -62,7 +70,7 @@ public class ObjectPoolTableModel extends AbstractTableModel
 	{
 		try
 		{
-			BaseId rowObjectId = rowObjectPool.get(row);
+			BaseId rowObjectId = rowObjectIds.get(row);
 			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
 			return rowObject;
 		}
@@ -86,6 +94,6 @@ public class ObjectPoolTableModel extends AbstractTableModel
 
 	Project project;
 	int rowObjectType;
-	IdList rowObjectPool;
+	IdList rowObjectIds;
 	String columnTag;
 }

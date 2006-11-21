@@ -12,6 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -41,6 +42,16 @@ public class NodePool extends EAMObjectPool
 	public ModelNodeId[] getModelNodeIds()
 	{
 		return (ModelNodeId[])new HashSet(getRawIds()).toArray(new ModelNodeId[0]);
+	}
+	
+	public IdList getInterventionIds()
+	{
+		ConceptualModelNode[] cmNodeList = getInterventions();
+		IdList interventionIds = new IdList();
+		for (int i = 0; i < cmNodeList.length; i++)
+			interventionIds.add(cmNodeList[i].getId());
+		
+		return interventionIds;
 	}
 
 	public ConceptualModelNode[] getInterventions()
