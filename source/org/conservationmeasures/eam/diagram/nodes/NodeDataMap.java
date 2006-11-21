@@ -43,7 +43,7 @@ public class NodeDataMap extends DataMap
 			case DiagramNode.INT_TYPE_CLUSTER:
 				return new NodeTypeCluster();
 			default:
-				throw new RuntimeException("Unknown node type: " + rawType);
+				throw new RuntimeException("Unknown factor type: " + rawType);
 		}
 		
 	}
@@ -64,6 +64,6 @@ public class NodeDataMap extends DataMap
 		if(type.isFactor())
 			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
 
-		throw new RuntimeException("Unknown node type: " + type);
+		throw new RuntimeException("Unknown factor type: " + type);
 	}
 }
