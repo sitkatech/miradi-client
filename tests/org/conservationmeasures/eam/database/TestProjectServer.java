@@ -120,8 +120,8 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
 		
 		ObjectManifest linkageIds = storage.readObjectManifest(original.getType());
-		assertEquals("not one linkage?", 1, linkageIds.size());
-		assertTrue("wrong linkage id in manifest?", linkageIds.has(original.getId()));
+		assertEquals("not one link?", 1, linkageIds.size());
+		assertTrue("wrong link id in manifest?", linkageIds.has(original.getId()));
 		
 		storage.writeObject(original);
 		assertEquals("dupe in manifest?", 1, storage.readObjectManifest(original.getType()).size());

@@ -32,7 +32,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		threatCheckBox.addActionListener(this);
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
 		targetCheckBox.addActionListener(this);
-		linkagesCheckBox = new UiCheckBox(EAM.text("Label|Show Linkages"));
+		linkagesCheckBox = new UiCheckBox(EAM.text("Label|Show Links"));
 		linkagesCheckBox.addActionListener(this);
 		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
 		desireCheckBox.addActionListener(this);

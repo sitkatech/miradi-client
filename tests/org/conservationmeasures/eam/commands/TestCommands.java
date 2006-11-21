@@ -414,7 +414,7 @@ public class TestCommands extends EAMTestCase
 
 		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
 		cmd.undo(project);
-		assertTrue("didn't restore linkage?", model.hasLinkage(fromNode, toNode));
+		assertTrue("didn't restore link?", model.hasLinkage(fromNode, toNode));
 	}
 
 	public void testDeleteNode() throws Exception

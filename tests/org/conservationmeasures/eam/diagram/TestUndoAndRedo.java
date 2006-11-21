@@ -52,7 +52,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testSingleUndo() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertTrue("no linkage?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
+		assertTrue("no link?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
 		// undo add linkage to diagram
 		project.undo();
 		// undo create model linkage

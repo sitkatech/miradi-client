@@ -60,7 +60,7 @@ public class TestDiagramComponent extends EAMTestCase
 		graphLayoutCache.setVisible(visibleNode, true);
 		graphLayoutCache.setVisible(hiddenNode, false);
 		
-		assertFalse("Linkage still visible?", graphLayoutCache.isVisible(hiddenLinkage));
+		assertFalse("Link still visible?", graphLayoutCache.isVisible(hiddenLinkage));
 		assertFalse("Hidden Node still visible?", graphLayoutCache.isVisible(hiddenNode));
 		assertTrue("Visible Node Not visible?", graphLayoutCache.isVisible(visibleNode));
 		

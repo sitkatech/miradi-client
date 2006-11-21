@@ -40,9 +40,9 @@ public class TestLinkagePool extends TestCaseEnhanced
 		ConceptualModelLinkage linkage = new ConceptualModelLinkage(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);
 		
-		assertTrue("Didn't find linkage 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));
-		assertTrue("Didn't find linkage 2->1?", pool.hasLinkage(linkage.getToNodeId(), linkage.getFromNodeId()));
-		assertFalse("Found linkage 1->3?", pool.hasLinkage((ModelNodeId)node1.getId(), (ModelNodeId)node3.getId()));
+		assertTrue("Didn't find link 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));
+		assertTrue("Didn't find link 2->1?", pool.hasLinkage(linkage.getToNodeId(), linkage.getFromNodeId()));
+		assertFalse("Found link 1->3?", pool.hasLinkage((ModelNodeId)node1.getId(), (ModelNodeId)node3.getId()));
 	}
 	
 	class LinkageMonitor implements LinkageListener

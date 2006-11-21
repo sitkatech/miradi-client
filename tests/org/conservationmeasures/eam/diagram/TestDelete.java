@@ -37,17 +37,17 @@ public class TestDelete extends EAMTestCase
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
 		
-		assertTrue("linkage not found?", model.hasLinkage(intervention, factor));
+		assertTrue("link not found?", model.hasLinkage(intervention, factor));
 		
 		CommandDiagramRemoveLinkage delete = new CommandDiagramRemoveLinkage(linkageId);
 		delete.execute(project);
-		assertFalse("linkage not deleted?", model.hasLinkage(intervention, factor));
+		assertFalse("link not deleted?", model.hasLinkage(intervention, factor));
 		
 		EAM.setLogToString();
 		try
 		{
 			delete.execute(project);
-			fail("should have thrown for deleting non-existant linkage");
+			fail("should have thrown for deleting non-existant link");
 		}
 		catch(CommandFailedException ignoreExpected)
 		{
@@ -62,7 +62,7 @@ public class TestDelete extends EAMTestCase
 		try
 		{
 			deleteNode.execute(project);
-			fail("should have thrown for deleting non-existant linkage");
+			fail("should have thrown for deleting non-existant link");
 		}
 		catch(CommandFailedException ignoreExpected)
 		{

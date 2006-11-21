@@ -84,7 +84,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
 		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
 		project.executeCommand(command);
-		assertNotNull("linkage not in model?", model.getLinkageById(command.getDiagramLinkageId()));
+		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramLinkageId()));
 		
 		ProjectServer server = project.getTestDatabase();
 		ConceptualModelLinkage linkage = (ConceptualModelLinkage)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramLinkageId());

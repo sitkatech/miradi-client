@@ -89,7 +89,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 			return getFromNodeId();
 		if(direction == TO)
 			return getToNodeId();
-		throw new RuntimeException("Linkage: Unknown direction " + direction);
+		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
 	public ModelNodeId getOppositeNodeId(int direction)
@@ -98,7 +98,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 			return getNodeId(TO);
 		if(direction == TO)
 			return getNodeId(FROM);
-		throw new RuntimeException("Linkage: Unknown direction " + direction);
+		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
 	public EnhancedJsonObject toJson()

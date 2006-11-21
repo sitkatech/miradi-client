@@ -141,7 +141,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
-		assertFalse("linkage is a node?", link.isNode());
+		assertFalse("link is a node?", link.isNode());
 	}
 	
 	public void testCounts()throws Exception
@@ -237,7 +237,7 @@ public class TestDiagramModel extends EAMTestCase
 		
 		assertNotNull("missing node1?", copy.getNodeById(node1.getDiagramNodeId()));
 		assertNotNull("missing node2?", copy.getNodeById(node2.getDiagramNodeId()));
-		assertNotNull("missing linkage?", copy.getLinkageById(link1.getDiagramLinkageId()));
+		assertNotNull("missing link?", copy.getLinkageById(link1.getDiagramLinkageId()));
 	}
 	
 	public void testActionsFiring() throws Exception
@@ -284,7 +284,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a node change notify?", 1, testModel.nodeChanged);
 		assertEquals("link delete did a node move notify?", 0, testModel.nodeMoved);
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
-		assertEquals("test model linkageDeleted action not called?",1, testModel.linkDeleted);
+		assertEquals("test model linkDeleted action not called?",1, testModel.linkDeleted);
 		
 		model.nodesWereMoved(new DiagramNodeId[] {node2.getDiagramNodeId(), node3.getDiagramNodeId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);

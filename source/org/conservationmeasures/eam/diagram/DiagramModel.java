@@ -332,7 +332,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		DiagramLinkage linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
-			throw new Exception("Linkage doesn't exist, id: " + id);
+			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
 	
@@ -340,7 +340,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		DiagramLinkage linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
-			throw new Exception("Linkage doesn't exist, id: " + id);
+			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
 	
