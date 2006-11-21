@@ -51,7 +51,9 @@ public class TreeTableWithIcons extends JTreeTable
 	{
 		public Renderer()
 		{
-			Font boldFont = new UiLabel().getFont().deriveFont(Font.BOLD);
+			Font uiLabelFont = new UiLabel().getFont();
+			Font boldFont = uiLabelFont.deriveFont(Font.BOLD);
+			Font italicFont = uiLabelFont.deriveFont(Font.ITALIC);
 			
 			interventionRenderer = new DefaultTreeCellRenderer();
 			interventionRenderer.setClosedIcon(new InterventionIcon());
@@ -80,7 +82,7 @@ public class TreeTableWithIcons extends JTreeTable
 			activitiesRenderer.setClosedIcon(new ActivityIcon());
 			activitiesRenderer.setOpenIcon(new ActivityIcon());
 			activitiesRenderer.setLeafIcon(new ActivityIcon());
-			activitiesRenderer.setFont(boldFont);
+			activitiesRenderer.setFont(italicFont);
 
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
