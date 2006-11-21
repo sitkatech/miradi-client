@@ -67,7 +67,7 @@ public class NudgeNode extends ProjectDoer
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			throw new CommandFailedException("Unable to move nodes");
+			throw new CommandFailedException("Unable to move factors");
 		}
 	}
 
