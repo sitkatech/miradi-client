@@ -16,8 +16,10 @@ import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
+import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -57,6 +59,10 @@ public class DiagramToolBar extends EAMToolBar
 			{
 				new ToolBarButton(actions, ActionZoomIn.class),
 				new ToolBarButton(actions, ActionZoomOut.class),
+			},
+			{
+				new ToolBarButton(actions, ActionNormalDiagramMode.class),
+				new ToolBarButton(actions, ActionStrategyBrainstormMode.class),
 			},
 		};
 		

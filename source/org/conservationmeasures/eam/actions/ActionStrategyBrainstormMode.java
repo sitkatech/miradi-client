@@ -12,10 +12,14 @@ public class ActionStrategyBrainstormMode extends MainWindowAction
 {
 	public ActionStrategyBrainstormMode(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
-
+		super(mainWindow, getLabel(), getIconName());
 	}
 
+	private static String getIconName()
+	{
+		return "icons/chain.gif";
+	}
+	
 	private static String getLabel()
 	{
 		return EAM.text("Action|Strategy Brainstorm Mode");

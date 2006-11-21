@@ -12,18 +12,21 @@ public class ActionNormalDiagramMode extends MainWindowAction
 {
 	public ActionNormalDiagramMode(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel());
-
+		super(mainWindow, getLabel(), getIconName());
+	}
+	
+	private static String getIconName()
+	{
+		return "icons/fullmodel.gif";
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Normal Diagram Mode");
+		return EAM.text("Action|Normal Mode");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Return to normal diagram mode");
+		return EAM.text("TT|Return to normal mode");
 	}
-
 }
