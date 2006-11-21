@@ -11,7 +11,6 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
@@ -43,7 +42,7 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 	
 	public int getType()
 	{
-		return ObjectType.MODEL_NODE;
+		return getObjectReference().getObjectType();
 	}
 
 	public Object getValueAt(int column)
@@ -85,5 +84,5 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 	
 	Project project;
 	WorkPlanStrategy[] strategies;
-	private static final String STRATEGIC_LABEL = "Strategic";
+	private static final String STRATEGIC_LABEL = "Strategies";
 }

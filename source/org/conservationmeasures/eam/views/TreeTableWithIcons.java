@@ -59,7 +59,7 @@ public class TreeTableWithIcons extends JTreeTable
 			interventionRenderer.setClosedIcon(new InterventionIcon());
 			interventionRenderer.setOpenIcon(new InterventionIcon());
 			interventionRenderer.setLeafIcon(new InterventionIcon());
-
+			
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
 			objectiveRenderer.setOpenIcon(new ObjectiveIcon());
@@ -70,7 +70,7 @@ public class TreeTableWithIcons extends JTreeTable
 			indicatorRenderer.setClosedIcon(new IndicatorIcon());
 			indicatorRenderer.setOpenIcon(new IndicatorIcon());
 			indicatorRenderer.setLeafIcon(new IndicatorIcon());
-
+			
 			goalRenderer = new DefaultTreeCellRenderer();
 			goalRenderer.setClosedIcon(new GoalIcon());
 			goalRenderer.setOpenIcon(new GoalIcon());
@@ -84,15 +84,22 @@ public class TreeTableWithIcons extends JTreeTable
 			activitiesRenderer.setLeafIcon(new ActivityIcon());
 			activitiesRenderer.setFont(italicFont);
 
+			stringNoIconRenderer = new DefaultTreeCellRenderer();
+			stringNoIconRenderer.setClosedIcon(null);
+			stringNoIconRenderer.setOpenIcon(null);
+			stringNoIconRenderer.setLeafIcon(null);
+			
 			defaultRenderer = new DefaultTreeCellRenderer();
 		}
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
 			TreeCellRenderer renderer = defaultRenderer;
-
+			
 			TreeTableNode node = (TreeTableNode) value;
-			if(node.getType() == ObjectType.INDICATOR)
+			if (node.getType() == ObjectType.FAKE)
+				renderer  = stringNoIconRenderer;
+			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.MODEL_NODE)
 				renderer = interventionRenderer;
@@ -103,7 +110,6 @@ public class TreeTableWithIcons extends JTreeTable
 			else if(node.getType() == ObjectType.TASK)
 				renderer = activitiesRenderer;
 			
-			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
 
@@ -113,6 +119,7 @@ public class TreeTableWithIcons extends JTreeTable
 		DefaultTreeCellRenderer activitiesRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer interventionRenderer;
+		DefaultTreeCellRenderer stringNoIconRenderer;
 	}
 
 	class NonEditableTreeTableCellEditor extends TreeTableCellEditor
