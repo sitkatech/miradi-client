@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
 import org.conservationmeasures.eam.actions.jump.ActionJumpStratPlanWelcome;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
@@ -72,6 +73,8 @@ public class DiagramWizardPanel extends WizardPanel
 			actions.get(ActionJumpStratPlanWelcome.class).doAction();
 		 if (currentStep == DEVELOP_OBJECTIVE)
 			actions.get(ActionJumpViewAllGoals.class).doAction();
+		 if (currentStep == OVERVIEW)
+			 actions.get(ActionJumpSelectTeam.class).doAction();
 		 
 		super.previous();
 	}
