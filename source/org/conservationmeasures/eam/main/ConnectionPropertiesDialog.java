@@ -27,7 +27,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 {
 	public ConnectionPropertiesDialog(MainWindow parent) throws HeadlessException
 	{
-		super(parent, EAM.text("Title|Connection Properties"));
+		super(parent, EAM.text("Title|Link Properties"));
 		mainWindow = parent;
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createFromToBox());
@@ -95,7 +95,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		{
 			if(from.getSelectedIndex() == 0 || to.getSelectedIndex() == 0)
 			{
-				String title = EAM.text("Must Specify What to Connect");
+				String title = EAM.text("Incomplete Link");
 				String body = EAM.text("You must select one item in each of the two lists");
 				EAM.okDialog(title, new String[] {body});
 				toFront();

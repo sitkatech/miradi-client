@@ -18,12 +18,12 @@ public class ActionInsertConnection extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Connection...");
+		return EAM.text("Action|Insert|Link...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Add a relationship between two factors");
+		return EAM.text("TT|Add a link between two factors");
 	}
 
 }
