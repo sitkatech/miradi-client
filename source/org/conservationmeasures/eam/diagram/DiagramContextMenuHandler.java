@@ -22,26 +22,32 @@ import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
 import org.conservationmeasures.eam.actions.ActionInsertIntervention;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
+import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
+import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 import org.martus.swing.Utilities;
 
 public class DiagramContextMenuHandler
 {
-	public DiagramContextMenuHandler(DiagramComponent diagramComponentToUse, Actions actionsToUse)
+	public DiagramContextMenuHandler(MainWindow  mainWindowToUse, DiagramComponent diagramComponentToUse, Actions actionsToUse)
 	{
+		mainWindow = mainWindowToUse;
 		diagramComponent = diagramComponentToUse;
 		actions = actionsToUse;
 	}
@@ -62,6 +68,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
+		menu.add(getModeSwitchMenuItem());
 		menu.addSeparator();
 		menu.add(createMenuItem(ActionProperties.class, menuInvokedAt));
 		return menu;
@@ -100,6 +107,15 @@ public class DiagramContextMenuHandler
 		menu.show(diagramComponent, e.getX(), e.getY());
 	}
 	
+	private MenuItemWithoutLocation getModeSwitchMenuItem()
+	{
+		String mode = ((DiagramView)mainWindow.getCurrentView()).getCurrentMode();
+		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+			return new MenuItemWithoutLocation(actions.get(ActionNormalDiagramMode.class));
+		
+		return new MenuItemWithoutLocation(actions.get(ActionStrategyBrainstormMode.class));
+	}
+	
 	static class ContextMenuItemAtLocation extends JMenuItem implements LocationHolder
 	{
 		public ContextMenuItemAtLocation(Action action)
@@ -113,6 +129,7 @@ public class DiagramContextMenuHandler
 		}
 	}
 
+	MainWindow mainWindow;
 	DiagramComponent diagramComponent;
 	Actions actions;
 }
