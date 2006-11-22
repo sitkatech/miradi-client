@@ -190,7 +190,7 @@ public class ObjectManager
 		switch (objectType)
 		{
 			case ObjectType.GOAL:			
-				return getGoalFactorString(objectType, objectId, fieldTag);
+				return getGoalPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.OBJECTIVE:
 				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 					return getAnnotationFactorLabel(objectType, objectId);
@@ -202,30 +202,25 @@ public class ObjectManager
 		throw new RuntimeException();	
 	}
 
-	private String getGoalFactorString(int objectType, BaseId objectId, String fieldTag)
+	private String getGoalPseudoField(int objectType, BaseId objectId, String fieldTag)
 	{
 		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 			return getAnnotationFactorLabel(objectType, objectId);
 
-		return getFactorBasedOnAnnotation(objectType, objectId, fieldTag);
-	}
-	
-	public String getFactorBasedOnAnnotation(int objectType, BaseId objectId, String fieldTag)
-	{		
 		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-			return getFactorString(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
 		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREAT))
-			return getDirectThreadString(DiagramNode.TYPE_FACTOR, objectId, fieldTag);
+			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, fieldTag);
 
 		return "";
 	}
-
-	private String getFactorString(NodeType nodeType, int objectType, BaseId objectId, String fieldTag)
+	
+	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
 	{
 		String label ="";
 		try
 		{
-			ConceptualModelNodeSet cmNodeSet = getConceptualModelSet(objectType, objectId);
+			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
 			Iterator iterator = cmNodeSet.iterator();
 			while (iterator.hasNext())
 			{
@@ -242,21 +237,21 @@ public class ObjectManager
 		return label;
 	}
 
-	private ConceptualModelNodeSet getConceptualModelSet(int objectType, BaseId objectId) throws Exception
+	private ConceptualModelNodeSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
 		ChainManager chainManager = new ChainManager(project);
 		ConceptualModelNodeSet cmNodeSet = null;
-		if (objectType == ObjectType.GOAL)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(objectId);
-		else if (objectType == ObjectType.OBJECTIVE)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(objectId);
-		else if (objectType == ObjectType.INDICATOR)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(objectId);
+		if (annotationType == ObjectType.GOAL)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(annotationId);
+		else if (annotationType == ObjectType.OBJECTIVE)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(annotationId);
+		else if (annotationType == ObjectType.INDICATOR)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(annotationId);
 		
 		return cmNodeSet;
 	}
 
-	private String getDirectThreadString(NodeType nodeType, BaseId objectId, String fieldTag)
+	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId objectId, String fieldTag)
 	{
 		String label ="";
 		try
