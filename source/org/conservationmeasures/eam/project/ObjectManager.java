@@ -207,8 +207,10 @@ public class ObjectManager
 			ChainManager chainManager = new ChainManager(project);
 			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
 			Iterator iterator = cmNodeSet.iterator();
-			ConceptualModelNode node = (ConceptualModelNode)iterator.next();
-			return node.getLabel();
+			if (!iterator.hasNext())
+				return ""; 
+				
+			return ((ConceptualModelNode)iterator.next()).getLabel();
 		}
 		catch( Exception e)
 		{
