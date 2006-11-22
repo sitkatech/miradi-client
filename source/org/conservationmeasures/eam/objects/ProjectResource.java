@@ -53,17 +53,25 @@ public class ProjectResource extends EAMBaseObject
 		initials = new StringData();
 		name = new StringData();
 		position = new StringData();
+		phoneNumber = new StringData();
+		email = new StringData();
 		
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
 		addField(TAG_POSITION, position);
+		addField(TAG_PHONE_NUMBER, phoneNumber);
+		addField(TAG_EMAIL, email);
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_NAME = "Name";
 	public static final String TAG_POSITION = "Position";
+	public static final String TAG_PHONE_NUMBER = "Phone Number";
+	public static final String TAG_EMAIL = "Email";
 
 	StringData initials;
 	StringData name;
 	StringData position;
+	StringData phoneNumber;
+	StringData email;
 }

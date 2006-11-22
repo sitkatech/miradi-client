@@ -20,6 +20,8 @@ public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectResource.TAG_INITIALS));
 		addField(createStringField(ProjectResource.TAG_NAME));
 		addField(createStringField(ProjectResource.TAG_POSITION));
+		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));
+		addField(createStringField(ProjectResource.TAG_EMAIL));
 		
 		updateFieldsFromProject();
 	}
