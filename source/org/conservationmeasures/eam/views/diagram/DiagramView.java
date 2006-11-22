@@ -495,6 +495,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
 			disposeOfNodePropertiesDialog();
 	}
+	
+	public String getCurrentMode()
+	{
+		return mode;
+	}
 
 	
 	JSplitPane bigSplitter;
