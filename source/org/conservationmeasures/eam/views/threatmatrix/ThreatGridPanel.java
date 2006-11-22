@@ -7,6 +7,10 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.font.TextLayout;
+import java.awt.image.BufferedImage;
 import java.util.Enumeration;
 
 import javax.swing.JPanel;
@@ -120,8 +124,8 @@ public class ThreatGridPanel extends JPanel
 
 		table.setIntercellSpacing(new Dimension(0, 0));
 		
-		setColumnWidths(table,ABOUT_TWO_INCHES);
-		table.setRowHeight(ABOUT_THREE_LINES);
+		setColumnWidths(table);
+		table.setRowHeight(ROW_HEIGHT);
 
 		ListSelectionModel selectionModel = table.getSelectionModel();
 		table.setRowSelectionAllowed(false);
@@ -139,12 +143,20 @@ public class ThreatGridPanel extends JPanel
 	}
 
 
-	private void setColumnWidths(JTable table, int width)
+	private void setColumnWidths(JTable table)
 	{
+		Graphics2D g2 = (Graphics2D)staticGraphics;
 		Enumeration columns = table.getColumnModel().getColumns();
 		while(columns.hasMoreElements())
 		{
 			TableColumn columnToAdjust = (TableColumn)columns.nextElement();
+			String headerText = (String)columnToAdjust.getHeaderValue();
+			int firstSpace = headerText.indexOf(' ');
+			if(firstSpace >= 0)
+				headerText = headerText.substring(0, firstSpace);
+			TextLayout textLayout = new TextLayout(headerText, g2.getFont(), g2.getFontRenderContext());
+			int textWidth = textLayout.getBounds().getBounds().width;
+			int width = Math.max(DEFAULT_COLUMN_WIDTH, textWidth + 20);
 			columnToAdjust.setHeaderRenderer(new TableHeaderRenderer());
 			columnToAdjust.setPreferredWidth(width);
 			columnToAdjust.setWidth(width);
@@ -163,9 +175,9 @@ public class ThreatGridPanel extends JPanel
 		rowHeaderTableToUse.getTableHeader().setReorderingAllowed(false);
 		rowHeaderTableToUse.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		setColumnWidths(rowHeaderTableToUse, ABOUT_FOUR_LINES);
+		rowHeaderTableToUse.getColumnModel().getColumn(0).setPreferredWidth(LEFTMOST_COLUMN_WIDTH);
 		rowHeaderTableToUse.setIntercellSpacing(new Dimension(0, 0));
-		rowHeaderTableToUse.setRowHeight(ABOUT_THREE_LINES);
+		rowHeaderTableToUse.setRowHeight(ROW_HEIGHT);
 
 		setDefaultRowHeaderRenderer(rowHeaderTableToUse);
 	
@@ -230,6 +242,8 @@ public class ThreatGridPanel extends JPanel
 		return rowHeaderTable;
 	}
 	
+	
+	private final static Graphics staticGraphics = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB).getGraphics();
 	private ThreatMatrixView view;
 	private ThreatRatingBundle highlightedBundle;
 	private ThreatMatrixTable threatTable;
@@ -237,9 +251,12 @@ public class ThreatGridPanel extends JPanel
 	private BundleColumnSortHandler targetColumnSortListener;
 	private JTable rowHeaderTable;
 	
-	private final static int ABOUT_THREE_LINES = 60;
-	private final static int ABOUT_TWO_INCHES = 150;
-	private final static int ABOUT_FOUR_LINES = 80;
+	private final static int ABOUT_ONE_LINE = 20;
+	private final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
+
+	private final static int ABOUT_ONE_INCH = 72;
+	private final static int LEFTMOST_COLUMN_WIDTH = 2 * ABOUT_ONE_INCH;
+	private final static int DEFAULT_COLUMN_WIDTH = ABOUT_ONE_INCH;
 	
 }
 
