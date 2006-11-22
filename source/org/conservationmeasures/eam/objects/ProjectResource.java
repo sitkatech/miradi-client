@@ -66,7 +66,7 @@ public class ProjectResource extends EAMBaseObject
 	public static final String TAG_INITIALS = "Initials";
 	public static final String TAG_NAME = "Name";
 	public static final String TAG_POSITION = "Position";
-	public static final String TAG_PHONE_NUMBER = "Phone Number";
+	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
 	public static final String TAG_EMAIL = "Email";
 
 	StringData initials;
