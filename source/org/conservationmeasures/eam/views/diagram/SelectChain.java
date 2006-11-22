@@ -23,9 +23,9 @@ public class SelectChain extends ViewDoer
 	{
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 		DiagramLinkage[] selectedLinkages = getProject().getOnlySelectedLinkages();
-		int combinedLenghts = selectedLinkages.length + selectedNodes.length;
+		int combinedLengths = selectedLinkages.length + selectedNodes.length;
 		
-		if (combinedLenghts != 1)
+		if (combinedLengths != 1)
 			return false;
 	    
 		return (isNode(selectedNodes) || isLinkage(selectedLinkages));
