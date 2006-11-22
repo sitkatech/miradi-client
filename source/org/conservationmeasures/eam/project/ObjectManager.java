@@ -274,9 +274,9 @@ public class ObjectManager
 			if (cmNode.getNodeType().equals(nodeType))
 			{
 				if (!isFirst)
-					label = label + "\n"+ cmNode.getLabel();
-				else
-					label = label + cmNode.getLabel();
+					label += "\n";
+				label += cmNode.getLabel();
+				
 				isFirst = false;
 			}
 		}
@@ -294,9 +294,9 @@ public class ObjectManager
 			if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
 			{
 				if (!isFirst)
-					label = label + "\n" + cmNode.getLabel();
-				else 
-					label = label + cmNode.getLabel();
+					label += "\n"; 
+				label += cmNode.getLabel();
+				
 				isFirst = false;
 			}
 		}
