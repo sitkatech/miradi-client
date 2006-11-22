@@ -201,76 +201,108 @@ public class ObjectManager
 	
 	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
 	{
-		if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-			return getAnnotationFactorLabel(annotationType, annotationId);
-
-		if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
-			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
-		if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
-			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
-		if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
-			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
-			
-		return "";
-	}
-	
-	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
-	{
-		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-			return getAnnotationFactorLabel(objectType, objectId);
-		
-		if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
-		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
-		if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
-		
-		return "";
-	}
-	
-	private String getGoalPseudoField(int objectType, BaseId objectId, String fieldTag)
-	{
-		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-			return getAnnotationFactorLabel(objectType, objectId);
-		
-		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
-		if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
-
-		return "";
-	}
-		
-	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
-	{
-		String label ="";
 		try
 		{
-			ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-			boolean isFirst = true;
-			for (int i = 0; i < cmNodes.length; i++)
-			{
-				ConceptualModelNode cmNode = cmNodes[i];
-				if (cmNode.getNodeType().equals(nodeType))
-				{
-					if (!isFirst)
-						label = label + "\n"+ cmNode.getLabel();
-					else
-						label = label + cmNode.getLabel();
-					isFirst = false;
-				}
-			
-			}
+			if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+				return getAnnotationFactorLabel(annotationType, annotationId);
+
+			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
+				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
+			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
+				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
+			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
+				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		}
+		return "";
+	}
+
+	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
+	{
+		try
+		{
+			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+				return getAnnotationFactorLabel(objectType, objectId);
+
+			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
+				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
+			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
+				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return "";
+	}
+
+	private String getGoalPseudoField(int objectType, BaseId objectId, String fieldTag)
+	{
+		try
+		{
+			if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+				return getAnnotationFactorLabel(objectType, objectId);
+
+			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
+				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return "";
+	}
+
+	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
+	{
+		String label ="";
+		ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		boolean isFirst = true;
+		for (int i = 0; i < cmNodes.length; i++)
+		{
+			ConceptualModelNode cmNode = cmNodes[i];
+			if (cmNode.getNodeType().equals(nodeType))
+			{
+				if (!isFirst)
+					label = label + "\n"+ cmNode.getLabel();
+				else
+					label = label + cmNode.getLabel();
+				isFirst = false;
+			}
+		}
 		return label;
 	}
 
+	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
+	{
+		String label ="";
+		ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		boolean isFirst = true;
+		for (int i = 0; i < cmNodes.length; i++)
+		{
+			ConceptualModelNode cmNode = cmNodes[i];
+			if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
+			{
+				if (!isFirst)
+					label = label + "\n" + cmNode.getLabel();
+				else 
+					label = label + cmNode.getLabel();
+				isFirst = false;
+			}
+		}
+		return label;
+	}
+	
 	private ConceptualModelNodeSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
 		ChainManager chainManager = new ChainManager(project);
@@ -282,36 +314,6 @@ public class ObjectManager
 			return chainManager.findAllNodesRelatedToThisIndicator(annotationId);
 		
 		return new ConceptualModelNodeSet();
-	}
-
-	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId annotationId, int annotationType, String fieldTag)
-	{
-		String label ="";
-		try
-		{
-			ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
-			boolean isFirst = true;
-			for (int i = 0; i < cmNodes.length; i++)
-			{
-				ConceptualModelNode cmNode = cmNodes[i];
-				if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
-				{
-					if (!isFirst)
-						label = label + "\n" + cmNode.getLabel();
-					else 
-						label = label + cmNode.getLabel();
-					isFirst = false;
-				}
-			}
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		
-		
-		return label;
 	}
 
 	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
