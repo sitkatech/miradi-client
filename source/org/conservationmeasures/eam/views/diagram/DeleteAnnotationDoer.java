@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -81,9 +82,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		BaseId idToRemove = annotationToDelete.getId();
 		commands.add(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
 		ConceptualModelNodeSet nodesThatUseThisAnnotation = new ChainManager(project).findNodesThatUseThisAnnotation(type, idToRemove);
-		if(nodesThatUseThisAnnotation.size() == 0)
+		if(nodesThatUseThisAnnotation.size() == 1)
 		{
-			commands.add(annotationToDelete.createCommandsToClear());
+			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(type, idToRemove));
 		}
 		

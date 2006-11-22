@@ -1,5 +1,7 @@
 package org.conservationmeasures.eam.project;
 
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -145,6 +147,59 @@ public class TestProjectRepairer extends EAMTestCase
 			IdList fixed = new IdList(project.getMetadata().getData(ProjectMetadata.TAG_TEAM_RESOURCE_IDS));
 			assertEquals("Didn't remove the bad resource?", 1, fixed.size());
 			assertTrue("Lost the good resource?", fixed.contains(realResourceId));
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+			project.close();
+		}
+	}
+	
+	public void testDeleteOrphanObjectives() throws Exception
+	{
+		int annotationType = ObjectType.OBJECTIVE;
+		String nodeTagForAnnotationList = ConceptualModelNode.TAG_OBJECTIVE_IDS;
+
+		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		
+	}
+
+	public void testDeleteOrphanGoals() throws Exception
+	{
+		int annotationType = ObjectType.GOAL;
+		String nodeTagForAnnotationList = ConceptualModelNode.TAG_GOAL_IDS;
+
+		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_TARGET, nodeTagForAnnotationList);
+		
+	}
+
+	public void testDeleteOrphanIndicators() throws Exception
+	{
+		int annotationType = ObjectType.INDICATOR;
+		String nodeTagForAnnotationList = ConceptualModelNode.TAG_INDICATOR_IDS;
+
+		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		
+	}
+
+	private void verifyDeleteOrphanAnnotations(int annotationType, NodeType nodeType, String nodeTagForAnnotationList) throws Exception
+	{
+		Project project = new ProjectForTesting(getName());
+		try
+		{
+			BaseId orphan = project.createObject(annotationType);
+			BaseId nonOrphan = project.createObject(annotationType);
+			CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
+			ModelNodeId nodeId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, extraInfo);
+			IdList annotationIds = new IdList();
+			annotationIds.add(nonOrphan);
+			project.setObjectData(ObjectType.MODEL_NODE, nodeId, nodeTagForAnnotationList, annotationIds.toString());
+			
+			EAM.setLogToString();
+			ProjectRepairer.repairAnyProblems(project);
+			assertContains("Deleting orphan", EAM.getLoggedString());
+			assertNull("Didn't delete orphan?", project.findObject(annotationType, orphan));
+			assertEquals("Deleted non-orphan?", nonOrphan, project.findObject(annotationType, nonOrphan).getId());
 		}
 		finally
 		{

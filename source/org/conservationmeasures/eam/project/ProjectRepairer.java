@@ -10,6 +10,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -33,6 +34,7 @@ public class ProjectRepairer
 		fixNodeAnnotationIds();
 		fixDeletedTeamMembers();
 		repairUnsnappedNodes();
+		deleteOrphanAnnotations();
 	}
 	
 	void fixNodeAnnotationIds() throws Exception
@@ -201,6 +203,36 @@ public class ProjectRepairer
 		catch(Exception e)
 		{
 			logAndContinue(e);
+		}
+	}
+	
+	public void deleteOrphanAnnotations()
+	{
+		deleteOrphanAnnotations(ObjectType.OBJECTIVE);
+		deleteOrphanAnnotations(ObjectType.GOAL);
+		deleteOrphanAnnotations(ObjectType.INDICATOR);
+	}
+
+	private void deleteOrphanAnnotations(int annotationType)
+	{
+		IdList allIds = project.getPool(annotationType).getIdList();
+		ChainManager chainManager = new ChainManager(project);
+		for(int i = 0; i < allIds.size(); ++i)
+		{
+			BaseId annotationId = allIds.get(i);
+			try
+			{
+				ConceptualModelNodeSet nodes = chainManager.findNodesThatUseThisAnnotation(annotationType, annotationId);
+				if(nodes.size() == 0)
+				{
+					EAM.logWarning("Deleting orphan " + annotationType + ":" + annotationId);
+					project.deleteObject(annotationType, annotationId);
+				}
+			}
+			catch(Exception e)
+			{
+				logAndContinue(e);
+			}
 		}
 	}
 

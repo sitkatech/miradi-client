@@ -330,7 +330,6 @@ public class Project
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
 		strategyRatingFramework.createDefaultObjectsIfNeeded();
-		ProjectRepairer.repairAnyProblems(this);
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -406,22 +405,11 @@ public class Project
 		loadDiagram();
 		
 		createDefaultObjectsIfNeeded();
-		getDiagramModel().updateProjectScope();
-
 		database.writeVersion();
-		fakeViewSwitchForMainWindow();
+
 	}
 
-	private void fakeViewSwitchForMainWindow()
-	{
-		String currentView = getCurrentView();
-		if(!isLegalViewName(currentView))
-			currentView = DEFAULT_VIEW_NAME;
-		
-		forceMainWindowToSwitchViews(currentView);
-	}
-
-	private void forceMainWindowToSwitchViews(String currentView)
+	public void forceMainWindowToSwitchViews(String currentView)
 	{
 		CommandSwitchView cmd = new CommandSwitchView(currentView);
 		fireCommandExecuted(cmd);
@@ -652,7 +640,7 @@ public class Project
 		previousCommandListenerCount = newListenerCount;
 	}
 
-	private boolean isLegalViewName(String viewName)
+	public boolean isLegalViewName(String viewName)
 	{
 		return Arrays.asList(getLegalViewNames()).contains(viewName);
 	}

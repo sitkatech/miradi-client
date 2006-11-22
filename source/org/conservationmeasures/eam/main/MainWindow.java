@@ -35,6 +35,7 @@ import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.project.ProjectRepairer;
 import org.conservationmeasures.eam.views.Doer;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
@@ -204,6 +205,10 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		try
 		{
 			project.createOrOpen(projectDirectory);
+			ProjectRepairer.repairAnyProblems(project);
+			project.getDiagramModel().updateProjectScope();
+			fakeViewSwitchForMainWindow();
+
 			validate();
 			updateTitle();
 			updateStatusBar();
@@ -239,6 +244,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	}
 	
+	private void fakeViewSwitchForMainWindow()
+	{
+		String currentProjectView = project.getCurrentView();
+		if(!project.isLegalViewName(currentProjectView))
+			currentProjectView = project.DEFAULT_VIEW_NAME;
+		
+		project.forceMainWindowToSwitchViews(currentProjectView);
+	}
+
 	public void closeProject() throws Exception
 	{
 		project.close();
