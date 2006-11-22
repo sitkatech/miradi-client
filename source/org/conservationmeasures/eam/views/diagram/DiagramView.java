@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
@@ -229,8 +230,13 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	public void setMode(String newMode)
 	{
 		IdList hiddenIds = new IdList();
+		getDiagramComponent().setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
+		{
 			hiddenIds = getIdsToHide();
+			getDiagramComponent().setBackground(Color.LIGHT_GRAY);
+		}
+			
 
 		LayerManager manager = getProject().getLayerManager();
 		manager.setHiddenIds(hiddenIds);

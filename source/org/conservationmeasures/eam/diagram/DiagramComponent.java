@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -61,6 +62,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridEnabled(true);
 		setGridMode(JGraph.CROSS_GRID_MODE);
 		setSelectionModel(new EAMGraphSelectionModel(this));
+		defaultBackgroundColor = getBackground();
 	}    
 
 	public DiagramComponent(MainWindow mainWindow)
@@ -89,13 +91,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public BufferedImage getImage()
 	{
+		Color currentColor = getBackground();
 		try
 		{
+			setToDefaultBackgroundColor();
 			setGridVisible(false);
 			return BufferedImageFactory.getImage(this,5);
 		}
 		finally
 		{
+			setBackground(currentColor);
 			setGridVisible(true);
 		}
 	}
@@ -298,6 +303,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		return candidateView;
 	}
+	
+	public void setToDefaultBackgroundColor()
+	{
+		setBackground(defaultBackgroundColor);
+	}
 
 	/*
 	 * NOTE: The following method is a refactored version of what is in the JGraph
@@ -354,6 +364,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 //		return first;
 //	}
 	
+	Color defaultBackgroundColor;
 	Project project;
 	DiagramContextMenuHandler diagramContextMenuHandler;
 }
