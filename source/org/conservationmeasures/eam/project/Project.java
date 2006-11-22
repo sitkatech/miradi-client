@@ -806,12 +806,32 @@ public class Project
 	public DiagramNode[] getOnlySelectedNodes(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
-		for(int i=0; i < allSelectedCells.length; ++i)
+		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)allSelectedCells[i]).isNode())
 				nodes.add(allSelectedCells[i]);
 		}
 		return (DiagramNode[])nodes.toArray(new DiagramNode[0]);
+	}
+	
+	public DiagramLinkage[] getOnlySelectedLinkages()
+	{
+		if(selectionModel == null)
+			return new DiagramLinkage[0];
+		
+		Object[] rawCells = selectionModel.getSelectionCells();
+		return getOnlySelectedLinkages(rawCells);
+	}
+	
+	public DiagramLinkage[] getOnlySelectedLinkages(Object [] allSelectedCells)
+	{
+		Vector linkages = new Vector();
+		for(int i = 0; i < allSelectedCells.length; ++i)
+		{
+			if(((EAMGraphCell)allSelectedCells[i]).isLinkage())
+				linkages.add(allSelectedCells[i]);
+		}
+		return (DiagramLinkage[])linkages.toArray(new DiagramLinkage[0]);
 	}
 
 	

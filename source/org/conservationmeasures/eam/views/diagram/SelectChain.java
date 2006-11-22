@@ -22,24 +22,42 @@ public class SelectChain extends ViewDoer
 	public boolean isAvailable()
 	{
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
-		if(selectedNodes.length != 1)
+		DiagramLinkage[] selectedLinkages = getProject().getOnlySelectedLinkages();
+		int combinedLenghts = selectedLinkages.length + selectedNodes.length;
+		
+		if (combinedLenghts != 1)
 			return false;
-	
-		return (selectedNodes[0].isNode());
+	    
+		return (isNode(selectedNodes) || isLinkage(selectedLinkages));
+	}
+
+	private boolean isNode(DiagramNode[] selectedNodes)
+	{
+		boolean isNode = false;
+		if (selectedNodes.length == 1)
+			isNode = selectedNodes[0].isNode();
+		return isNode;
+	}
+
+	private boolean isLinkage(DiagramLinkage[] selectedLinkages)
+	{
+		boolean isLinkage  = false;
+		if (selectedLinkages.length == 1 )
+			isLinkage = selectedLinkages[0].isLinkage();
+		
+		return isLinkage;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())
 			return;
-		
+		DiagramNode startingNode = getStartingNode();
 		try
 		{
-			DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
-			
 			DiagramModel model = getProject().getDiagramModel();
 			ChainObject chainObject = new ChainObject();
-			chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
+			chainObject.buildNormalChain(model, startingNode.getUnderlyingObject());
 			ConceptualModelNode[] chainNodes = chainObject.getNodes().toNodeArray();
 			ConceptualModelLinkage[] linksInChain = chainObject.getLinkages();
 			
@@ -51,6 +69,17 @@ public class SelectChain extends ViewDoer
 			EAM.logException(e);
 			EAM.errorDialog("Unknown error");
 		}
+	}
+
+	private DiagramNode getStartingNode()
+	{
+		DiagramNode[] onlySelectedNodes = getProject().getOnlySelectedNodes();
+		if (onlySelectedNodes.length == 1)
+			return onlySelectedNodes[0];
+			
+		DiagramLinkage[] onlySelectedLinkages = getProject().getOnlySelectedLinkages();
+		DiagramLinkage selectedLinkage = onlySelectedLinkages[0];
+		return selectedLinkage.getToNode();
 	}
 
 	private void selectNodesInChain(DiagramModel model, ConceptualModelNode[] chainNodes) throws Exception
