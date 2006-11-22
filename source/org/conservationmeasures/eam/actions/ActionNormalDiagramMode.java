@@ -22,11 +22,11 @@ public class ActionNormalDiagramMode extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Full Mode");
+		return EAM.text("Action|Show Full Model");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Return to full mode");
+		return EAM.text("TT|Show the full conceptual model");
 	}
 }
