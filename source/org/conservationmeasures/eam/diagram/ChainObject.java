@@ -21,6 +21,12 @@ public class ChainObject
 		return cmNodeSet;
 	}
 	
+	public ConceptualModelNode[] getNodesArray()
+	{	
+		ConceptualModelNode[] cmNodes = (ConceptualModelNode[])cmNodeSet.toArray(new ConceptualModelNode[0]);
+		return cmNodes;
+	}
+	
 	public ConceptualModelLinkage[] getLinkages()
 	{
 		ConceptualModelLinkage[] cmLinks = (ConceptualModelLinkage[])processedLinks.toArray(new ConceptualModelLinkage[0]);
