@@ -33,7 +33,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		strategiesPseudoTagField.setEditable(false);
 		addField(strategiesPseudoTagField);
 		
-		ObjectDataInputField directThreatPseudoTagField = createMultilineField(Goal.PSEUDO_TAG_DIRECT_THREAT);
+		ObjectDataInputField directThreatPseudoTagField = createMultilineField(Goal.PSEUDO_TAG_DIRECT_THREATS);
 		directThreatPseudoTagField.setEditable(false);
 		addField(directThreatPseudoTagField);
 		

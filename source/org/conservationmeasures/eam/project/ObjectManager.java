@@ -192,9 +192,7 @@ public class ObjectManager
 			case ObjectType.GOAL:			
 				return getGoalPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.OBJECTIVE:
-				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-					return getAnnotationFactorLabel(objectType, objectId);
-
+				return getObjectivePseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
 				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 					return getAnnotationFactorLabel(objectType, objectId);	
@@ -202,18 +200,60 @@ public class ObjectManager
 		throw new RuntimeException();	
 	}
 
+	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
+	{
+		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+			return getAnnotationFactorLabel(objectType, objectId);
+		
+		
+		if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
+			return getRelatedTargetLabelsAsMultiline(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
+		
+		else if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
+			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+		
+		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
+		
+		return "";
+	}
+	
 	private String getGoalPseudoField(int objectType, BaseId objectId, String fieldTag)
 	{
 		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 			return getAnnotationFactorLabel(objectType, objectId);
-
 		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
 			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
-		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREAT))
-			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, fieldTag);
+		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
 
 		return "";
 	}
+	
+	private String getRelatedTargetLabelsAsMultiline(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
+	{
+		String label ="";
+		try
+		{
+			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
+			Iterator iterator = cmNodeSet.iterator();
+			while (iterator.hasNext())
+			{
+				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
+				if (cmNode.getNodeType().equals(nodeType))
+					label = label + cmNode.getLabel()+"\n";
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return label;
+
+	}
+
+
 	
 	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
 	{
@@ -240,24 +280,22 @@ public class ObjectManager
 	private ConceptualModelNodeSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
 		ChainManager chainManager = new ChainManager(project);
-		ConceptualModelNodeSet cmNodeSet = null;
 		if (annotationType == ObjectType.GOAL)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(annotationId);
+			return chainManager.findAllNodesRelatedToThisGoal(annotationId);
 		else if (annotationType == ObjectType.OBJECTIVE)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(annotationId);
+			return  chainManager.findAllNodesRelatedToThisObjective(annotationId);
 		else if (annotationType == ObjectType.INDICATOR)
-			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(annotationId);
+			return chainManager.findAllNodesRelatedToThisObjective(annotationId);
 		
-		return cmNodeSet;
+		return new ConceptualModelNodeSet();
 	}
 
-	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId objectId, String fieldTag)
+	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId annotationId, int annotationType, String fieldTag)
 	{
 		String label ="";
 		try
 		{
-			ChainManager chainManager = new ChainManager(project);
-			ConceptualModelNodeSet cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(objectId);
+			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
 			Iterator iterator = cmNodeSet.iterator();
 			while (iterator.hasNext())
 			{
@@ -271,6 +309,8 @@ public class ObjectManager
 			EAM.logException(e);
 			return "";
 		}
+		
+		
 		return label;
 	}
 
