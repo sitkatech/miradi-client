@@ -82,7 +82,11 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_FUNDING_SOURCE = "Funding Source";
 	public static final String TAG_COST = "Cost";
 	public static final String TAG_WHEN = "When";
+	
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
+	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
+	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
+	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 
 	StringData shortLabel;
 	StringData method;

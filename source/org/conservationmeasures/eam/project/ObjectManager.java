@@ -194,12 +194,28 @@ public class ObjectManager
 			case ObjectType.OBJECTIVE:
 				return getObjectivePseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
-				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-					return getAnnotationFactorLabel(objectType, objectId);	
+				return getIndicatorsPseudoField(objectType, objectId, fieldTag);
 		}
 		throw new RuntimeException();	
 	}
+	
+	private String getIndicatorsPseudoField(int annotationType, BaseId annotationId, String fieldTag)
+	{
+		if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+			return getAnnotationFactorLabel(annotationType, annotationId);
 
+		if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
+			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
+		
+		if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
+			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
+		
+		if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
+			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
+			
+		return "";
+	}
+	
 	private String getObjectivePseudoField(int objectType, BaseId objectId, String fieldTag)
 	{
 		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
@@ -258,7 +274,7 @@ public class ObjectManager
 		if (annotationType == ObjectType.OBJECTIVE)
 			return  chainManager.findAllNodesRelatedToThisObjective(annotationId);
 		if (annotationType == ObjectType.INDICATOR)
-			return chainManager.findAllNodesRelatedToThisObjective(annotationId);
+			return chainManager.findAllNodesRelatedToThisIndicator(annotationId);
 		
 		return new ConceptualModelNodeSet();
 	}
