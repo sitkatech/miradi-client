@@ -205,14 +205,11 @@ public class ObjectManager
 		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 			return getAnnotationFactorLabel(objectType, objectId);
 		
-		
 		if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-			return getRelatedTargetLabelsAsMultiline(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
-		
-		else if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
+			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
+		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
 			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
-		
-		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+		if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
 		
 		return "";
@@ -222,39 +219,15 @@ public class ObjectManager
 	{
 		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 			return getAnnotationFactorLabel(objectType, objectId);
+		
 		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
 			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
-		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
+		if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
 			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
 
 		return "";
 	}
-	
-	private String getRelatedTargetLabelsAsMultiline(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
-	{
-		String label ="";
-		try
-		{
-			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
-			Iterator iterator = cmNodeSet.iterator();
-			while (iterator.hasNext())
-			{
-				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
-				if (cmNode.getNodeType().equals(nodeType))
-					label = label + cmNode.getLabel()+"\n";
-			}
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-		return label;
-
-	}
-
-
-	
+		
 	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag)
 	{
 		String label ="";
@@ -282,9 +255,9 @@ public class ObjectManager
 		ChainManager chainManager = new ChainManager(project);
 		if (annotationType == ObjectType.GOAL)
 			return chainManager.findAllNodesRelatedToThisGoal(annotationId);
-		else if (annotationType == ObjectType.OBJECTIVE)
+		if (annotationType == ObjectType.OBJECTIVE)
 			return  chainManager.findAllNodesRelatedToThisObjective(annotationId);
-		else if (annotationType == ObjectType.INDICATOR)
+		if (annotationType == ObjectType.INDICATOR)
 			return chainManager.findAllNodesRelatedToThisObjective(annotationId);
 		
 		return new ConceptualModelNodeSet();
