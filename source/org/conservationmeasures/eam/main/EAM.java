@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -26,6 +29,7 @@ public class EAM
 		setLogLevel(LOG_DEBUG);
 		if(Arrays.asList(args).contains("--verbose"))
 			setLogLevel(LOG_VERBOSE);
+		setExceptionLoggingDestination();
 		
 		try
 		{
@@ -55,6 +59,20 @@ public class EAM
 		File home = new File(System.getProperty("user.home"), "eAM");
 		home.mkdirs();
 		return home;
+	}
+	
+	public static void setExceptionLoggingDestination()
+	{
+		try
+		{
+			File destination = new File(getHomeDirectory(), "exceptions.log");
+			Logging.setExceptionLoggingDestination(new PrintStream(new FileOutputStream(destination)));
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Unable to create exception logging file: " + e.getLocalizedMessage());
+		}
+
 	}
 	
 	///////////////////////////////////////////////////////////////////

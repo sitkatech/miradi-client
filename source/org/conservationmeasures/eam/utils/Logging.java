@@ -15,6 +15,11 @@ public class Logging
 		logDestination = dest;
 	}
 	
+	public static void setExceptionLoggingDestination(PrintStream destination)
+	{
+		exceptionDestination = destination;
+	}
+	
 	public static void setLogToString()
 	{
 		logContents = new ByteArrayOutputStream();
@@ -41,6 +46,8 @@ public class Logging
 		logDestination.println("ERROR: ");
 		e.printStackTrace(logDestination);
 		logDestination.flush();
+		e.printStackTrace(exceptionDestination);
+		exceptionDestination.flush();
 	}
 	
 	public static void logError(String text)
@@ -75,6 +82,7 @@ public class Logging
 	private static int level;
 	private static PrintStream logDestination = System.out;
 	private static ByteArrayOutputStream logContents;
+	private static PrintStream exceptionDestination = new PrintStream(new ByteArrayOutputStream());
 
 	public static final int LOG_QUIET = -1;
 	public static final int LOG_NORMAL = 0;
