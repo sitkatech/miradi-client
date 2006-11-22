@@ -22,12 +22,12 @@ public class ActionStrategyBrainstormMode extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Strategy Brainstorm Mode");
+		return EAM.text("Action|Show Chain");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Enter the mode that allows brainstorming of strategies");
+		return EAM.text("TT|Enter the mode that shows chain of strategies");
 	}
 
 }
