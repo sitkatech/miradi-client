@@ -30,7 +30,7 @@ public class SelectChain extends ViewDoer
 	    
 		return (isNode(selectedNodes) || isLinkage(selectedLinkages));
 	}
-
+	
 	private boolean isNode(DiagramNode[] selectedNodes)
 	{
 		boolean isNode = false;
@@ -52,17 +52,12 @@ public class SelectChain extends ViewDoer
 	{
 		if(!isAvailable())
 			return;
-		DiagramNode startingNode = getStartingNode();
 		try
 		{
-			DiagramModel model = getProject().getDiagramModel();
-			ChainObject chainObject = new ChainObject();
-			chainObject.buildNormalChain(model, startingNode.getUnderlyingObject());
-			ConceptualModelNode[] chainNodes = chainObject.getNodes().toNodeArray();
-			ConceptualModelLinkage[] linksInChain = chainObject.getLinkages();
-			
-			selectLinksInChain(model, linksInChain);
-			selectNodesInChain(model, chainNodes);
+			if (getProject().getOnlySelectedNodes().length == 1)
+				selectChainBasedOnNodeSelection();
+			else if (getProject().getOnlySelectedLinkages().length == 1)
+				selectChainBasedOnLinkageSelection();
 		}
 		catch (Exception e)
 		{
@@ -71,15 +66,41 @@ public class SelectChain extends ViewDoer
 		}
 	}
 
-	private DiagramNode getStartingNode()
+	private void selectChainBasedOnNodeSelection() throws Exception
 	{
-		DiagramNode[] onlySelectedNodes = getProject().getOnlySelectedNodes();
-		if (onlySelectedNodes.length == 1)
-			return onlySelectedNodes[0];
-			
+		DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
+		DiagramModel model = getProject().getDiagramModel();
+		ChainObject chainObject = new ChainObject();
+		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
+		ConceptualModelNode[] chainNodes = chainObject.getNodes().toNodeArray();
+		ConceptualModelLinkage[] linksInChain = chainObject.getLinkages();
+	
+		selectLinksInChain(model, linksInChain);
+		selectNodesInChain(model, chainNodes);
+	}
+	
+	private void selectChainBasedOnLinkageSelection() throws Exception
+	{
 		DiagramLinkage[] onlySelectedLinkages = getProject().getOnlySelectedLinkages();
 		DiagramLinkage selectedLinkage = onlySelectedLinkages[0];
-		return selectedLinkage.getToNode();
+		DiagramModel diagramModel = getProject().getDiagramModel();
+		
+		ChainObject upstreamChain = new ChainObject();
+		upstreamChain.buildUpstreamChain(diagramModel, selectedLinkage.getFromNode().getUnderlyingObject());
+		
+		ChainObject downstreamChain = new ChainObject();
+		downstreamChain.buildDownstreamChain(diagramModel, selectedLinkage.getToNode().getUnderlyingObject());
+		
+		ConceptualModelLinkage[] downLinkages = downstreamChain.getLinkages();
+		ConceptualModelLinkage[] upLinkages = upstreamChain.getLinkages();
+		ConceptualModelNode[] upNodes = upstreamChain.getNodesArray();
+		ConceptualModelNode[] downNodes = downstreamChain.getNodesArray();
+		
+		selectNodesInChain(diagramModel, upNodes);
+		selectNodesInChain(diagramModel, downNodes);
+		
+		selectLinksInChain(diagramModel, upLinkages);
+		selectLinksInChain(diagramModel, downLinkages);
 	}
 
 	private void selectNodesInChain(DiagramModel model, ConceptualModelNode[] chainNodes) throws Exception
