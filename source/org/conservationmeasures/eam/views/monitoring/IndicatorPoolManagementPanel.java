@@ -26,18 +26,18 @@ public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		IndicatorId invalidId = new IndicatorId(BaseId.INVALID.asInt());
 		
-		PoolComponent = new IndicatorPoolTablePanel(projectToUse);
-		add(PoolComponent, BorderLayout.CENTER);
+		poolComponent = new IndicatorPoolTablePanel(projectToUse);
+		add(poolComponent, BorderLayout.CENTER);
 		
 		propertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions, invalidId);
-		PoolComponent.setPropertiesPanel(propertiesPanel);
+		poolComponent.setPropertiesPanel(propertiesPanel);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void dispose()
 	{
-		PoolComponent.dispose();
-		PoolComponent = null;
+		poolComponent.dispose();
+		poolComponent = null;
 		
 		propertiesPanel.dispose();
 		propertiesPanel = null;
@@ -48,7 +48,7 @@ public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 
 	public EAMObject getObject()
 	{
-		return PoolComponent.getSelectedObject();
+		return poolComponent.getSelectedObject();
 	}
 
 	public String getPanelDescription()
@@ -61,6 +61,6 @@ public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 		return new IndicatorIcon();
 	}
 	
-	IndicatorPoolTablePanel PoolComponent;
+	IndicatorPoolTablePanel poolComponent;
 	IndicatorPropertiesPanel propertiesPanel;
 }
