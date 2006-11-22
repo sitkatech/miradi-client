@@ -10,6 +10,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 
@@ -35,6 +36,11 @@ public class Paste extends LocationDoer
 			if(!contents.isDataFlavorSupported(TransferableEamList.eamListDataFlavor))
 				return;
 			TransferableEamList list = (TransferableEamList)contents.getTransferData(TransferableEamList.eamListDataFlavor);
+			if(!list.getProjectFileName().equals(getProject().getFilename()))
+			{
+				EAM.notifyDialog(EAM.text("Paste between different e-AM projects not yet supported"));
+				return;
+			}
 			pasteCellsIntoProject(list);
 		} 
 		catch (Exception e) 

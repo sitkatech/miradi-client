@@ -267,7 +267,7 @@ public class TestProject extends EAMTestCase
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, model.getAllNodes().size());
 		assertEquals(2, model.getLinkages(node1).size());
 		assertEquals(1, model.getLinkages(node2).size());
@@ -438,7 +438,7 @@ public class TestProject extends EAMTestCase
 		
 		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
-		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, model.getAllNodes().size());
 		assertEquals(2, model.getLinkages(node1).size());
 		assertEquals(1, model.getLinkages(node2).size());
@@ -460,7 +460,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
 
 		Object[] selectedCells = new DiagramNode[] {node1};
-		TransferableEamList transferableList = new TransferableEamList(selectedCells);
+		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramNodeId idToDelete = node1.getDiagramNodeId();
 		project.removeNodeFromDiagram(idToDelete);
 		project.deleteObject(ObjectType.MODEL_NODE, node1.getWrappedId());

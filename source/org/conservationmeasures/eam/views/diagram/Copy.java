@@ -41,7 +41,7 @@ public class Copy extends ProjectDoer
 		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;
-		TransferableEamList eamList = new TransferableEamList(selectedCells);
+		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
 		
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(eamList, EAM.mainWindow);

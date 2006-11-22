@@ -35,7 +35,7 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testGetTransferDataFlavors() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableEamList eamList = new TransferableEamList(emptyCells);
+		TransferableEamList eamList = new TransferableEamList("SomeProjectName", emptyCells);
 		DataFlavor flavors[] = eamList.getTransferDataFlavors();
 		assertEquals("Should only support 1 flavor", 1, flavors.length);
 		assertEquals("EamListDataFlavor not found?", TransferableEamList.eamListDataFlavor, flavors[0]);
@@ -44,8 +44,15 @@ public class TestTransferableEamList extends EAMTestCase
 	public void testIsDataFlavorSupported() throws Exception
 	{
 		EAMGraphCell emptyCells[] = {};
-		TransferableEamList eamList = new TransferableEamList(emptyCells);
+		TransferableEamList eamList = new TransferableEamList("SomeProjectName", emptyCells);
 		assertTrue("EamListDataFlavor not supported?", eamList.isDataFlavorSupported(TransferableEamList.eamListDataFlavor));
+	}
+	
+	public void testProjectFileName() throws Exception
+	{
+		String projectFileName = "blah blah";
+		TransferableEamList eamList = new TransferableEamList(projectFileName, new EAMGraphCell[0]);
+		assertEquals("wrong project filename?", projectFileName, eamList.getProjectFileName());
 	}
 
 	public void testGetTransferData() throws Exception
@@ -75,7 +82,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramLinkage linkage1 = new DiagramLinkage(model, cmLinkage);
 		
 		EAMGraphCell dataCells[] = {node1, node2, linkage1};
-		TransferableEamList eamList = new TransferableEamList(dataCells);
+		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);
 		

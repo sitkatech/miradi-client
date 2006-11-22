@@ -20,12 +20,18 @@ import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
 
 public class TransferableEamList implements Transferable 
 {
-	public TransferableEamList (Object[] cells)
+	public TransferableEamList (String projectFileName, Object[] cells)
 	{
 		super();
+		projectName = projectFileName;
 		linkages = new Vector();
 		nodes = new Vector();
 		storeData(cells);
+	}
+	
+	public String getProjectFileName()
+	{
+		return projectName;
 	}
 	
 	private void storeData(Object[] cells)
@@ -84,6 +90,8 @@ public class TransferableEamList implements Transferable
 	}
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
+	
+	String projectName;
 	Vector linkages;
 	Vector nodes;
 }
