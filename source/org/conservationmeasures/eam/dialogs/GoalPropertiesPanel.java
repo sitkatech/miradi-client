@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.ids.GoalId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -28,14 +27,8 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Goal.TAG_SHORT_LABEL));
 		addField(createStringField(Goal.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
-		
-		ObjectDataInputField strategiesPseudoTagField = createMultilineField(Goal.PSEUDO_TAG_STRATEGIES);
-		strategiesPseudoTagField.setEditable(false);
-		addField(strategiesPseudoTagField);
-		
-		ObjectDataInputField directThreatPseudoTagField = createMultilineField(Goal.PSEUDO_TAG_DIRECT_THREATS);
-		directThreatPseudoTagField.setEditable(false);
-		addField(directThreatPseudoTagField);
+		addField(createMultilineDisplayField(Goal.PSEUDO_TAG_STRATEGIES));
+		addField(createMultilineDisplayField(Goal.PSEUDO_TAG_DIRECT_THREATS));
 		
 		updateFieldsFromProject();
 	}

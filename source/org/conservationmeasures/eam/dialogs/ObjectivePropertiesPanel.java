@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -29,18 +28,9 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Objective.TAG_SHORT_LABEL));
 		addField(createStringField(Objective.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
-		
-		ObjectDataInputField strategiesMultilineField = createMultilineField(Objective.PSEUDO_TAG_STRATEGIES);
-		strategiesMultilineField.setEditable(false);
-		addField(strategiesMultilineField);
-
-		ObjectDataInputField directThreatsMultilineField = createMultilineField(Objective.PSEUDO_TAG_DIRECT_THREATS);
-		directThreatsMultilineField.setEditable(false);
-		addField(directThreatsMultilineField);
-		
-		ObjectDataInputField targetsMultilineField = createMultilineField(Objective.PSEUDO_TAG_TARGETS);
-		targetsMultilineField.setEditable(false);
-		addField(targetsMultilineField);
+		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_STRATEGIES));
+		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_DIRECT_THREATS));
+		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_TARGETS));
 				
 		updateFieldsFromProject();
 	}

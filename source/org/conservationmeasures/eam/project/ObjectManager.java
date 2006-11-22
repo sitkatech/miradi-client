@@ -194,22 +194,20 @@ public class ObjectManager
 			case ObjectType.OBJECTIVE:
 				return getObjectivePseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
-				return getIndicatorsPseudoField(objectType, objectId, fieldTag);
+				return getIndicatorPseudoField(objectType, objectId, fieldTag);
 		}
 		throw new RuntimeException();	
 	}
 	
-	private String getIndicatorsPseudoField(int annotationType, BaseId annotationId, String fieldTag)
+	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
 	{
 		if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 			return getAnnotationFactorLabel(annotationType, annotationId);
 
 		if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
 			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
-		
 		if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
 			return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
-		
 		if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
 			return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
 			
@@ -249,13 +247,20 @@ public class ObjectManager
 		String label ="";
 		try
 		{
-			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
-			Iterator iterator = cmNodeSet.iterator();
-			while (iterator.hasNext())
+			ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+			boolean isFirst = true;
+			for (int i = 0; i < cmNodes.length; i++)
 			{
-				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
+				ConceptualModelNode cmNode = cmNodes[i];
 				if (cmNode.getNodeType().equals(nodeType))
-					label = label + cmNode.getLabel()+"\n";
+				{
+					if (!isFirst)
+						label = label + "\n"+ cmNode.getLabel();
+					else
+						label = label + cmNode.getLabel();
+					isFirst = false;
+				}
+			
 			}
 		}
 		catch(Exception e)
@@ -284,13 +289,19 @@ public class ObjectManager
 		String label ="";
 		try
 		{
-			ConceptualModelNodeSet cmNodeSet = getNodesRelatedToAnnotation(annotationType, annotationId);
-			Iterator iterator = cmNodeSet.iterator();
-			while (iterator.hasNext())
+			ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+			boolean isFirst = true;
+			for (int i = 0; i < cmNodes.length; i++)
 			{
-				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
+				ConceptualModelNode cmNode = cmNodes[i];
 				if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
-					label = label + cmNode.getLabel()+"\n";
+				{
+					if (!isFirst)
+						label = label + "\n" + cmNode.getLabel();
+					else 
+						label = label + cmNode.getLabel();
+					isFirst = false;
+				}
 			}
 		}
 		catch(Exception e)
