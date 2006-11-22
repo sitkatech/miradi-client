@@ -12,6 +12,8 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -47,7 +49,7 @@ public class ObjectManager
 	public ObjectManager(Project projectToUse)
 	{
 		project = projectToUse;
-		
+
 		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
 		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
@@ -63,47 +65,47 @@ public class ObjectManager
 		addNormalPool(new ProjectMetadataPool(ida));
 
 	}
-	
+
 	private void addNormalPool(EAMNormalObjectPool pool)
 	{
 		pools.put(new Integer(pool.getObjectType()), pool);
 	}
-	
+
 	private IdAssigner getAnnotationIdAssigner()
 	{
 		return getProject().getAnnotationIdAssigner();
 	}
-	
+
 	public EAMObjectPool getPool(int objectType)
 	{
 		return (EAMObjectPool)pools.get(new Integer(objectType));
 	}
-	
+
 	public NodePool getNodePool()
 	{
 		return (NodePool)getPool(ObjectType.MODEL_NODE);
 	}
-	
+
 	public LinkagePool getLinkagePool()
 	{
 		return (LinkagePool)getPool(ObjectType.MODEL_LINKAGE);
 	}
-	
+
 	public TaskPool getTaskPool()
 	{
 		return (TaskPool)getPool(ObjectType.TASK);
 	}
-	
+
 	public ViewPool getViewPool()
 	{
 		return (ViewPool)getPool(ObjectType.VIEW_DATA);
 	}
-	
+
 	public ResourcePool getResourcePool()
 	{
 		return (ResourcePool)getPool(ObjectType.PROJECT_RESOURCE);
 	}
-	
+
 	public IndicatorPool getIndicatorPool()
 	{
 		return (IndicatorPool)getPool(ObjectType.INDICATOR);
@@ -113,12 +115,12 @@ public class ObjectManager
 	{
 		return (ObjectivePool)getPool(ObjectType.OBJECTIVE);
 	}
-	
+
 	public GoalPool getGoalPool()
 	{
 		return (GoalPool)getPool(ObjectType.GOAL);
 	}
-	
+
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
@@ -153,9 +155,9 @@ public class ObjectManager
 				createdId = created.getId();
 				break;
 			}
-			
+
 		}
-		
+
 		return createdId;
 	}
 
@@ -167,14 +169,14 @@ public class ObjectManager
 		pool.remove(objectId);
 		getDatabase().deleteObject(objectType, objectId);
 	}
-	
+
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		EAMObject object = getPool(objectType).findObject(objectId);
 		object.setData(fieldTag, dataValue);
 		getDatabase().writeObject(object);
 	}
-	
+
 	public boolean isPseudoTag(String fieldTag)
 	{
 		if (fieldTag.startsWith("PseudoTag"))
@@ -182,24 +184,101 @@ public class ObjectManager
 
 		return false;
 	}
-	
+
 	public String getPseudoField(int objectType, BaseId objectId, String fieldTag)
 	{
 		switch (objectType)
 		{
-			case ObjectType.GOAL:
-				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
-					return getAnnotationFactorLabel(objectType, objectId);
+			case ObjectType.GOAL:			
+				return getGoalFactorString(objectType, objectId, fieldTag);
 			case ObjectType.OBJECTIVE:
 				if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
 					return getAnnotationFactorLabel(objectType, objectId);
+
 			case ObjectType.INDICATOR:
 				if (fieldTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-					return getAnnotationFactorLabel(objectType, objectId);				
+					return getAnnotationFactorLabel(objectType, objectId);	
 		}
 		throw new RuntimeException();	
 	}
+
+	private String getGoalFactorString(int objectType, BaseId objectId, String fieldTag)
+	{
+		if (fieldTag.equals(Desire.PSEUDO_TAG_FACTOR))
+			return getAnnotationFactorLabel(objectType, objectId);
+
+		return getFactorBasedOnAnnotation(objectType, objectId, fieldTag);
+	}
 	
+	public String getFactorBasedOnAnnotation(int objectType, BaseId objectId, String fieldTag)
+	{		
+		if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
+			return getFactorString(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+		else if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREAT))
+			return getDirectThreadString(DiagramNode.TYPE_FACTOR, objectId, fieldTag);
+
+		return "";
+	}
+
+	private String getFactorString(NodeType nodeType, int objectType, BaseId objectId, String fieldTag)
+	{
+		String label ="";
+		try
+		{
+			ConceptualModelNodeSet cmNodeSet = getConceptualModelSet(objectType, objectId);
+			Iterator iterator = cmNodeSet.iterator();
+			while (iterator.hasNext())
+			{
+				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
+				if (cmNode.getNodeType().equals(nodeType))
+					label = label + cmNode.getLabel()+"\n";
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return label;
+	}
+
+	private ConceptualModelNodeSet getConceptualModelSet(int objectType, BaseId objectId) throws Exception
+	{
+		ChainManager chainManager = new ChainManager(project);
+		ConceptualModelNodeSet cmNodeSet = null;
+		if (objectType == ObjectType.GOAL)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(objectId);
+		else if (objectType == ObjectType.OBJECTIVE)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(objectId);
+		else if (objectType == ObjectType.INDICATOR)
+			cmNodeSet = chainManager.findAllNodesRelatedToThisObjective(objectId);
+		
+		return cmNodeSet;
+	}
+
+	private String getDirectThreadString(NodeType nodeType, BaseId objectId, String fieldTag)
+	{
+		String label ="";
+		try
+		{
+			ChainManager chainManager = new ChainManager(project);
+			ConceptualModelNodeSet cmNodeSet = chainManager.findAllNodesRelatedToThisGoal(objectId);
+			Iterator iterator = cmNodeSet.iterator();
+			while (iterator.hasNext())
+			{
+				ConceptualModelNode cmNode = (ConceptualModelNode)iterator.next();
+				if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
+					label = label + cmNode.getLabel()+"\n";
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return label;
+	}
+
 	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
 	{
 		try
@@ -209,7 +288,7 @@ public class ObjectManager
 			Iterator iterator = cmNodeSet.iterator();
 			if (!iterator.hasNext())
 				return ""; 
-				
+
 			return ((ConceptualModelNode)iterator.next()).getLabel();
 		}
 		catch( Exception e)
@@ -217,20 +296,19 @@ public class ObjectManager
 			EAM.logException(e);
 			return "";
 		}
-	
 	}
-	
+
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		if (isPseudoTag(fieldTag))
 			return getPseudoField(objectType, objectId, fieldTag);
-	
+
 		EAMObject object = getPool(objectType).findObject(objectId);
 		if(object == null)
 			EAM.logDebug("getObjectData no such object: " + objectType + ":" + objectId);
 		return object.getData(fieldTag);
 	}
-	
+
 	public void loadFromDatabase() throws Exception
 	{
 		loadPool(ObjectType.MODEL_NODE);
@@ -246,7 +324,7 @@ public class ObjectManager
 		loadPool(ObjectType.VALUE_OPTION);
 		loadPool(ObjectType.PROJECT_METADATA);
 	}
-	
+
 	private void loadPool(int type) throws IOException, ParseException, Exception
 	{
 		ObjectManifest manifest = getDatabase().readObjectManifest(type);
@@ -263,22 +341,22 @@ public class ObjectManager
 			getPool(type).put(object.getId(), object);
 		}
 	}
-	
+
 	Project getProject()
 	{
 		return project;
 	}
-	
+
 	ThreatRatingFramework getThreatRatingFramework()
 	{
 		return getProject().getThreatRatingFramework();
 	}
-	
+
 	ProjectServer getDatabase()
 	{
 		return getProject().getDatabase();
 	}
-	
+
 	class LinkageMonitor implements LinkageListener
 	{
 		public void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
@@ -297,8 +375,8 @@ public class ObjectManager
 				((ConceptualModelFactor)from).decreaseTargetCount();
 		}		
 	}
-	
+
 	Project project;
-	
+
 	HashMap pools;
 }

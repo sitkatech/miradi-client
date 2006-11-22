@@ -46,6 +46,8 @@ abstract public class Desire extends EAMBaseObject
 		addField(TAG_FULL_TEXT, fullText);
 	}
 	
+	public static final String PSEUDO_TAG_DIRECT_THREAT = "PseudoTagDirectThreat";
+	public final static String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
