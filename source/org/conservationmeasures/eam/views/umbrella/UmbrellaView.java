@@ -85,7 +85,6 @@ import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
@@ -181,24 +180,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	
-	public void createObjective() throws Exception
-	{
-		CommandCreateObject cmd = new CommandCreateObject(ObjectType.OBJECTIVE);
-		getProject().executeCommand(cmd);
-		Objective objective = getProject().getObjectivePool().find(cmd.getCreatedId());
-		modifyObject(objective);
-		selectObject(objective);
-	}
-
-	public void createIndicator() throws Exception
-	{
-		CommandCreateObject cmd = new CommandCreateObject(ObjectType.INDICATOR);
-		getProject().executeCommand(cmd);
-		Indicator indicator = getProject().getIndicatorPool().find(cmd.getCreatedId());
-		modifyObject(indicator);
-		selectObject(indicator);
-	}
-
 	public void objectWasSelected(EAMObject object) throws Exception
 	{
 		if(activePropertiesDlg == null)
@@ -273,11 +254,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		activePropertiesDlg.setVisible(true);
 	}
 	
-	public void selectObject(EAMObject objectToSelect)
-	{
-		activePropertiesPanel.selectObject(objectToSelect);
-	}
-
 	protected UiLabel createScreenShotLabel()
 	{
 		UiLabel label = new UiLabel("Demo Screen Shot");

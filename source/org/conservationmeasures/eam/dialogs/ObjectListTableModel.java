@@ -7,25 +7,53 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.text.ParseException;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ObjectListTableModel extends AbstractTableModel
+public class ObjectListTableModel extends ObjectTableModel
 {
 	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
 			String idListFieldTag, int listedItemType, String tableColumnTag)
 	{
-		project = projectToUse;
+		super(projectToUse, listedItemType);
 		containingObjectType = objectType;
 		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
-		rowObjectType = listedItemType;
 		columnTag = tableColumnTag;
+	}
+	
+	public EAMObject getObjectFromRow(int row) throws RuntimeException
+	{
+		try
+		{
+			BaseId rowObjectId = getIdList().get(row);
+			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
+			return rowObject;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new RuntimeException("TeamModel.getObjectFromRow error");
+		}
+	}
+	
+	public int findRowObject(BaseId id)
+	{
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			if(getObjectFromRow(row).getId().equals(id))
+				return row;
+		}
+		
+		return -1;
+	}
+
+	public String getColumnTag(int column)
+	{
+		return columnTag;
 	}
 	
 	public int getColumnCount()
@@ -61,11 +89,6 @@ public class ObjectListTableModel extends AbstractTableModel
 		return containingObjectId;
 	}
 	
-	public int getRowObjectType()
-	{
-		return rowObjectType;
-	}
-	
 	public String getFieldTag()
 	{
 		return tagOfIdList;
@@ -73,59 +96,16 @@ public class ObjectListTableModel extends AbstractTableModel
 
 	private IdList getIdList() throws ParseException
 	{
-		return new IdList(getObject().getData(tagOfIdList));
+		return new IdList(getContainingObject().getData(tagOfIdList));
 	}
 
-	private EAMObject getObject()
+	private EAMObject getContainingObject()
 	{
 		return project.findObject(containingObjectType, containingObjectId);
 	}
 
-	public Object getValueAt(int row, int column)
-	{
-		try
-		{
-			EAMObject rowObject;
-			rowObject = getObjectFromRow(row);
-			return rowObject.getData(columnTag);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "(Error)";
-		}
-	}
-
-	public EAMObject getObjectFromRow(int row) throws RuntimeException
-	{
-		try
-		{
-			BaseId rowObjectId = getIdList().get(row);
-			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
-			return rowObject;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new RuntimeException("TeamModel.getObjectFromRow error");
-		}
-	}
-	
-	public int findRowObject(BaseId id)
-	{
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			if(getObjectFromRow(row).getId().equals(id))
-				return row;
-		}
-		
-		return -1;
-	}
-
-	Project project;
 	int containingObjectType;
 	BaseId containingObjectId;
 	String tagOfIdList;
-	int rowObjectType;
 	String columnTag;
 }

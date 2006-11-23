@@ -6,15 +6,11 @@
 package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiTable;
 
-public class ObjectPoolTable extends UiTable implements ObjectPicker
+public class ObjectPoolTable extends ObjectTable
 {
 	public ObjectPoolTable(ObjectPoolTableModel modelToUse)
 	{
@@ -28,38 +24,15 @@ public class ObjectPoolTable extends UiTable implements ObjectPicker
 		return (ObjectPoolTableModel)getModel();
 	}
 	
-	public EAMObject[] getSelectedObjects()
-	{
-		int[] rows = getSelectedRows();
-		EAMObject[] objects = new EAMObject[rows.length];
-		for(int i = 0; i < objects.length; ++i)
-			objects[i] = getObjectFromRow(rows[i]);
-		return objects;
-	}
-
-	private EAMObject getObjectFromRow(int row)
-	{
-		return getObjectPoolTableModel().getObjectFromRow(row);
-	}
-	
-	private int findRowObject(BaseId id)
-	{
-		return getObjectPoolTableModel().findRowObject(id);
-	}
-
-	public void addListSelectionListener(ListSelectionListener listener)
-	{
-		getSelectionModel().addListSelectionListener(listener);
-	}
-	
-	
 	void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
+		super.updateTableAfterCommand(cmd);
 		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 	}
 	
 	void updateTableAfterUndo(CommandSetObjectData cmd)
 	{
+		super.updateTableAfterUndo(cmd);
 		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 	}
 	

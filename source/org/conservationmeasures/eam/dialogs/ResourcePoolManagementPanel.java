@@ -13,8 +13,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 public class ResourcePoolManagementPanel extends ModelessDialogPanel
@@ -29,10 +27,10 @@ public class ResourcePoolManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		resourceListPanel = new ResourcePoolTablePanel(mainWindowToUse.getCurrentView(), this);
-		addExtraButtons(resourceListPanel, extraButtonActions);
+		resourceListPanel = new ResourcePoolTablePanel(project, mainWindowToUse.getActions());
 		
 		editResourcePanel = new ProjectResourcePropertiesPanel(project, BaseId.INVALID);
+		resourceListPanel.setPropertiesPanel(editResourcePanel);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 		add(resourceListPanel, BorderLayout.CENTER);
@@ -49,34 +47,14 @@ public class ResourcePoolManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 
-	private void addExtraButtons(ResourcePoolTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
-	{
-		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
-		for(int i = 0; i < extraButtons.length; ++i)
-			extraButtons[i] = createObjectsActionButton(extraButtonActions[i], resourcePanel);
-		resourcePanel.addButtons(extraButtons); 
-	}
-	
-	public void selectObject(EAMObject objectToSelect)
-	{
-		resourceListPanel.selectObject(objectToSelect);
-		editResourcePanel.setFocusOnFirstField();
-	}
-	
-	public EAMObject getObject()
-	{
-		return null;
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Project Resource");
 	}
 	
-	public void objectWasSelected(BaseId selectedId)
+	public EAMObject getObject()
 	{
-		super.objectWasSelected(selectedId);
-		editResourcePanel.setObjectId(selectedId);
+		return resourceListPanel.getSelectedObject();
 	}
 
 	ResourcePoolTablePanel resourceListPanel;

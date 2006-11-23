@@ -8,17 +8,13 @@ package org.conservationmeasures.eam.dialogs;
 import java.text.ParseException;
 
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiTable;
 
-public class ObjectListTable extends UiTable implements ObjectPicker
+public class ObjectListTable extends ObjectTable
 {
 	public ObjectListTable(ObjectListTableModel modelToUse)
 	{
@@ -32,55 +28,22 @@ public class ObjectListTable extends UiTable implements ObjectPicker
 		return (ObjectListTableModel)getModel();
 	}
 	
-	public EAMObject[] getSelectedObjects()
-	{
-		int[] rows = getSelectedRows();
-		EAMObject[] objects = new EAMObject[rows.length];
-		for(int i = 0; i < objects.length; ++i)
-			objects[i] = getObjectFromRow(rows[i]);
-		return objects;
-	}
-
-	private EAMObject getObjectFromRow(int row)
-	{
-		return getObjectListTableModel().getObjectFromRow(row);
-	}
-	
-	private int findRowObject(BaseId id)
-	{
-		return getObjectListTableModel().findRowObject(id);
-	}
-
-	public void addListSelectionListener(ListSelectionListener listener)
-	{
-		getSelectionModel().addListSelectionListener(listener);
-	}
-	
-	
 	void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
+		super.updateTableAfterCommand(cmd);
+		
 		String oldData = cmd.getPreviousDataValue();
 		String newData = cmd.getDataValue();
-		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 		updateTableIfRowWasAddedOrDeleted(cmd.getObjectType(), cmd.getObjectId(), cmd.getFieldTag(), oldData, newData);
 	}
 	
 	void updateTableAfterUndo(CommandSetObjectData cmd)
 	{
+		super.updateTableAfterUndo(cmd);
+		
 		String oldData = cmd.getDataValue();
 		String newData = cmd.getPreviousDataValue();
-		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 		updateTableIfRowWasAddedOrDeleted(cmd.getObjectType(), cmd.getObjectId(), cmd.getFieldTag(), oldData, newData);
-	}
-	
-	void updateIfRowObjectWasModified(int type, BaseId id)
-	{
-		if(type != getObjectListTableModel().getRowObjectType())
-			return;
-		
-		int row = findRowObject(id);
-		if(row >= 0)
-			getObjectListTableModel().fireTableRowsUpdated(row, row);
 	}
 	
 	void updateTableIfRowWasAddedOrDeleted(int type, BaseId id, String tag, String oldData, String newData)

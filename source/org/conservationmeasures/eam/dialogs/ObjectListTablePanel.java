@@ -5,102 +5,21 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
-import javax.swing.Box;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.CommandExecutedEvent;
-import org.conservationmeasures.eam.main.CommandExecutedListener;
-import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiButton;
-import org.martus.swing.UiScrollPane;
 
-abstract public class ObjectListTablePanel extends DisposablePanel implements ListSelectionListener, CommandExecutedListener
+abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
 	public ObjectListTablePanel(Project projectToUse, int objectTypeToUse, ObjectListTableModel model, MainWindowAction createAction, ObjectsAction deleteAction)
 	{
-		super(new BorderLayout());
-		project = projectToUse;
-		objectType = objectTypeToUse;
-		table = new ObjectListTable(model);
-		table.addListSelectionListener(this);
-		add(new UiScrollPane(table), BorderLayout.CENTER);
-
-		Box buttons = Box.createVerticalBox();
-		buttons.add(new UiButton(createAction));
-		buttons.add(createObjectsActionButton(deleteAction, table));
-		add(buttons, BorderLayout.AFTER_LINE_ENDS);
-		
-		project.addCommandExecutedListener(this);
+		super(projectToUse, objectTypeToUse, new ObjectListTable(model), createAction, deleteAction);
 	}
 
 	public void dispose()
 	{
-		project.removeCommandExecutedListener(this);
 		super.dispose();
 	}
 
 
-	public EAMObject getSelectedObject()
-	{
-		EAMObject[] selected = table.getSelectedObjects();
-		if(selected.length == 0)
-			return null;
-		return selected[0];
-	}
-	
-	public void valueChanged(ListSelectionEvent event)
-	{
-		try
-		{
-			BaseId selectedId = BaseId.INVALID;
-			int row = table.getSelectedRow();
-			if(row >= 0)
-			{
-				EAMObject selectedObject = table.getObjectListTableModel().getObjectFromRow(row);
-				selectedId = selectedObject.getId();
-			}
-			propertiesPanel.setObjectId(selectedId);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
-	public void setPropertiesPanel(ObjectDataInputPanel panel)
-	{
-		propertiesPanel = panel;
-	}
-
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			table.updateTableAfterCommand((CommandSetObjectData)event.getCommand());
-	}
-
-	public void commandUndone(CommandExecutedEvent event)
-	{
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			table.updateTableAfterUndo((CommandSetObjectData)event.getCommand());
-	}
-
-	public void commandFailed(Command command, CommandFailedException e)
-	{
-	}
-	
-	Project project;
-	int objectType;
-	ObjectListTable table;
-	ObjectDataInputPanel propertiesPanel;
 }

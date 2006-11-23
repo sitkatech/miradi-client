@@ -5,28 +5,22 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ObjectPoolTableModel extends AbstractTableModel
+public class ObjectPoolTableModel extends ObjectTableModel
 {
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String columnTagToUse)
 	{
-		project = projectToUse;
-		rowObjectType = listedItemType;
-		rowObjectIds = projectToUse.getPool(rowObjectType).getIdList();
-		columnTag = columnTagToUse;
+		this(projectToUse, listedItemType, projectToUse.getPool(listedItemType).getIdList(), columnTagToUse);
 	}
 	
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String columnTagToUse)
 	{
-		project = projectToUse;
-		rowObjectType = listedItemType;
+		super(projectToUse, listedItemType);
 		rowObjectIds = listToUse;
 		columnTag = columnTagToUse;
 	}
@@ -36,9 +30,14 @@ public class ObjectPoolTableModel extends AbstractTableModel
 		return 1;
 	}
 
+	public String getColumnTag(int column)
+	{
+		return columnTag;
+	}
+
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(rowObjectType, columnTag);
+		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 
 	public int getRowCount()
@@ -55,9 +54,7 @@ public class ObjectPoolTableModel extends AbstractTableModel
 	{
 		try
 		{
-			EAMObject rowObject;
-			rowObject = getObjectFromRow(row);
-			return rowObject.toString();
+			return project.getObjectData(getRowObjectType(), getObjectFromRow(row).getId(), getColumnTag(column));
 		}
 		catch(Exception e)
 		{
@@ -92,8 +89,12 @@ public class ObjectPoolTableModel extends AbstractTableModel
 		return -1;
 	}
 
-	Project project;
-	int rowObjectType;
+	public void rowsWereAddedOrRemoved()
+	{
+		rowObjectIds = project.getPool(getRowObjectType()).getIdList();
+		fireTableDataChanged();
+	}
+	
 	IdList rowObjectIds;
 	String columnTag;
 }

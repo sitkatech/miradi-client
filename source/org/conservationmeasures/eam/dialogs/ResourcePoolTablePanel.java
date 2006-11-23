@@ -7,37 +7,20 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.martus.swing.UiButton;
+import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.actions.MainWindowAction;
+import org.conservationmeasures.eam.actions.ObjectsAction;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 
-public class ResourcePoolTablePanel extends LegacyObjectPoolTablePanel 
+public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ResourcePoolTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
+	public ResourcePoolTablePanel(Project project, Actions actions)
 	{
-		super(viewToUse, columnTags, viewToUse.getProject().getResourcePool(), buttonActionClasses);
-		owner = owningPanel;
-		
-		UiButton[] extraButtons = {
-			createObjectsActionButton(ActionDeleteResource.class), 
-		};
+		super(project, ObjectType.PROJECT_RESOURCE, 
+				new ResourcePoolTable(new ResourcePoolTableModel(project)),
+				(MainWindowAction)actions.get(ActionCreateResource.class),
+				(ObjectsAction)actions.get(ActionDeleteResource.class));
+	}
 	
-		addButtons(extraButtons);
-		setMaxColumnWidthToHeaderWidth(0);
-	}
-
-	public void objectWasSelected(BaseId newId)
-	{
-		super.objectWasSelected(newId);
-		if(owner != null)
-			owner.objectWasSelected(newId);
-	}
-
-	static final String[] columnTags = {"Initials", "Name", "Position", };
-	static final Class[] buttonActionClasses = {
-		ActionCreateResource.class, 
-		};
-
-	ModelessDialogPanel owner;
 }

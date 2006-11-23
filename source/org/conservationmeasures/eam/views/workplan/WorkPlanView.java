@@ -1,7 +1,6 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteActivity;
@@ -14,7 +13,6 @@ import org.conservationmeasures.eam.actions.ActionResourceListRemove;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -85,20 +83,6 @@ public class WorkPlanView extends TabbedView
 		return activitiesManagementPanel;
 	}
 
-	public void selectObject(EAMObject objectToSelect)
-	{
-		Component tab = getCurrentTabContents();
-		if(tab.equals(getWorkPlanPanel()))
-		{
-			getWorkPlanPanel().selectObject(objectToSelect);
-		}
-		else
-		{
-			ModelessDialogPanel panel = (ModelessDialogPanel)tab;
-			panel.selectObject(objectToSelect);
-		}
-	}
-		
 	public ModifyActivity getModifyActivityDoer()
 	{
 		return modifyActivityDoer;
