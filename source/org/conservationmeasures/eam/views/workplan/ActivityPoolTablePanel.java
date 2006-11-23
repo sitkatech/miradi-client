@@ -5,29 +5,14 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.views.umbrella.LegacyObjectPoolTablePanel;
-import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.dialogs.ObjectPoolTablePanel;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.project.Project;
 
-public class ActivityPoolTablePanel extends LegacyObjectPoolTablePanel implements ObjectPicker
+public class ActivityPoolTablePanel extends ObjectPoolTablePanel
 {
-	public ActivityPoolTablePanel(UmbrellaView viewToUse, ModelessDialogPanel owningPanel)
+	public ActivityPoolTablePanel(Project project)
 	{
-		super(viewToUse, new ActivityPoolTableModel(viewToUse.getProject()), buttonActionClasses);
-		owner = owningPanel;
-		setMaxColumnWidthToHeaderWidth(0);
+		super(project, ObjectType.TASK, new ActivityPoolTableModel(project));
 	}
-	
-	public void objectWasSelected(BaseId newId)
-	{
-		super.objectWasSelected(newId);
-		if(owner != null)
-			owner.objectWasSelected(newId);
-	}
-
-	ModelessDialogPanel owner;
-	static final String[] columnTags = {"Label", "Strategy", "ResourceIds", };
-	static final Class[] buttonActionClasses = {};
 }

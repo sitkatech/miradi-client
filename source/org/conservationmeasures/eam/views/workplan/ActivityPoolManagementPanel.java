@@ -18,8 +18,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 public class ActivityPoolManagementPanel extends ModelessDialogPanel
@@ -34,30 +32,16 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
 
-		tablePanel = new ActivityPoolTablePanel(mainWindowToUse.getCurrentView(), this);
-		addExtraButtons(tablePanel, extraButtonActions);
+		tablePanel = new ActivityPoolTablePanel(project);
 		
 		propertiesPanel = new ActivityPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
+		tablePanel.setPropertiesPanel(propertiesPanel);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 		add(tablePanel, BorderLayout.CENTER);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
-	public EAMObject getSelectedObject()
-	{
-		if (tablePanel.getSelectedObjects().length > 0)
-			return tablePanel.getSelectedObjects()[0];
-		
-		return null;
-	}
-	
-	public void selectObject(EAMObject objectToSelect)
-	{
-		tablePanel.selectObject(objectToSelect);
-		propertiesPanel.setFocusOnFirstField();
-	}
-
 	public void dispose()
 	{
 		tablePanel.dispose();
@@ -67,25 +51,6 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 	
-	private void addExtraButtons(ActivityPoolTablePanel resourcePanel, ObjectsAction[] extraButtonActions)
-	{
-		UiButton[] extraButtons = new ObjectsActionButton[extraButtonActions.length];
-		for(int i = 0; i < extraButtons.length; ++i)
-			extraButtons[i] = createObjectsActionButton(extraButtonActions[i], resourcePanel);
-		resourcePanel.addButtons(extraButtons); 
-	}
-	
-	public void objectWasSelected(BaseId selectedId)
-	{
-		super.objectWasSelected(selectedId);
-		propertiesPanel.setObjectId(selectedId);
-	}
-	
-	public EAMObject getObject()
-	{
-		return null;
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Activities");
@@ -96,6 +61,11 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 		return new ActivityIcon();
 	}
 	
+	public EAMObject getObject()
+	{
+		return tablePanel.getSelectedObject();
+	}
+
 	private ActivityPropertiesPanel propertiesPanel;
 	private ActivityPoolTablePanel tablePanel;
 }

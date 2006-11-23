@@ -25,20 +25,19 @@ public class LegacyObjectPoolTablePanelSortListener  extends MouseAdapter
 		int clickedColumn = tableHeader.columnAtPoint(e.getPoint());
 		int sortColumn = tableHeader.getTable().convertColumnIndexToModel(clickedColumn);
 		
-		AnnotationPoolTableModel annotationTableModel = (AnnotationPoolTableModel)table.getModel();
-		EAMObject rowsToSort[] = annotationTableModel.getEAMObjectRows();
+		LegacyObjectPoolTableModel annotationTableModel = (LegacyObjectPoolTableModel)table.getModel();
+		sortTable(sortColumn, annotationTableModel);
 
-		rowsToSort = sortTable(sortColumn, annotationTableModel, rowsToSort);
-
-		annotationTableModel.setEAMObjectRows(rowsToSort);
-		
 		table.revalidate();
 		table.repaint();
 	}
 
 
-	private EAMObject[] sortTable(int sortColumn, AnnotationPoolTableModel annotationTableModel, EAMObject[] rowsToSort)
+	private void sortTable(int sortColumn, LegacyObjectPoolTableModel annotationTableModel)
 	{
+		EAMObject[] originalRows = annotationTableModel.getEAMObjectRows();
+		EAMObject[] rowsToSort = new EAMObject[originalRows.length];
+		System.arraycopy(rowsToSort, 0, originalRows, 0, rowsToSort.length);
 		Arrays.sort(rowsToSort,  new EAMObjectComparator(annotationTableModel, sortColumn));
 		
 		if ( toggle(sortColumn) )  
@@ -47,7 +46,8 @@ public class LegacyObjectPoolTablePanelSortListener  extends MouseAdapter
 			Collections.reverse(list);
 			rowsToSort = (EAMObject[])list.toArray(new EAMObject[0]);
 		}
-		return rowsToSort;
+		
+		annotationTableModel.setEAMObjectRows(rowsToSort);
 	}
 	
 	public  boolean toggle(int sortColumn) {

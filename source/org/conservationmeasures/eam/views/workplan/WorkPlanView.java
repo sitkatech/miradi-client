@@ -134,7 +134,7 @@ public class WorkPlanView extends TabbedView
 	public EAMObject getSelectedObject()
 	{
 		if (getActivitiesManagementPanel() != null)
-			return getActivitiesManagementPanel().getSelectedObject();
+			return getActivitiesManagementPanel().getObject();
 		
 		return null;
 	}
