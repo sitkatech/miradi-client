@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
@@ -138,21 +140,42 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	
 	public void updateFieldsFromProject()
 	{
+		setFieldObjectIds(objectId);
 		for(int i = 0; i < fields.size(); ++i)
 		{
 			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
-			field.setObjectId(objectId);
 			field.updateFromObject();
+		}
+	}
+	
+	public void setFieldObjectIds(BaseId newObjectId)
+	{
+		for(int i = 0; i < fields.size(); ++i)
+		{
+			ObjectDataInputField field = (ObjectDataInputField)fields.get(i);
+			field.setObjectId(newObjectId);
 		}
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		if(wasOurObjectJustDeleted(event))
+		{
+			setFieldObjectIds(BaseId.INVALID);
+			setObjectId(BaseId.INVALID);
+			return;
+		}
 		updateFieldsFromProject();
 	}
-
+	
 	public void commandUndone(CommandExecutedEvent event)
 	{
+		if(wasOurObjectJustCreateUndone(event))
+		{
+			setFieldObjectIds(BaseId.INVALID);
+			setObjectId(BaseId.INVALID);
+			return;
+		}
 		updateFieldsFromProject();
 	}
 
@@ -160,6 +183,32 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 	}
 	
+	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
+	{
+		if(!event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return false;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
+		if(cmd.getObjectType() != objectType)
+			return false;
+		if(!cmd.getObjectId().equals(objectId))
+			return false;
+		return true;
+	}
+
+	boolean wasOurObjectJustCreateUndone(CommandExecutedEvent event)
+	{
+		if(!event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			return false;
+		
+		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
+		if(cmd.getObjectType() != objectType)
+			return false;
+		if(cmd.getObjectId().equals(objectId))
+			return false;
+		return true;
+	}
+
 	//FIXME: Delete this when the old ObjectPropertiesPanel goes away
 	public EAMObject getObject()
 	{
