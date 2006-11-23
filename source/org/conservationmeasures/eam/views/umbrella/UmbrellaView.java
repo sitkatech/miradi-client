@@ -86,11 +86,8 @@ import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
 import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.dialogs.GoalPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.IndicatorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ObjectivePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -100,9 +97,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Goal;
-import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.Doer;
@@ -180,21 +175,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	
-	public void objectWasSelected(EAMObject object) throws Exception
-	{
-		if(activePropertiesDlg == null)
-			return;
-		
-		EAMObject selectedObject = activePropertiesPanel.getObject();
-		if(selectedObject == null)
-			return;
-		
-		if(selectedObject.equals(object))
-			return;
-		
-		modifyObject(object);
-	}
-	
 	public void modifyObject(EAMObject object) throws Exception
 	{
 		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
@@ -226,14 +206,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	{
 		switch(object.getType())
 		{
-			case ObjectType.OBJECTIVE:
-				return new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), (Objective)object);
-			case ObjectType.INDICATOR:
-				return new IndicatorPropertiesPanel(getProject(), getMainWindow().getActions(), (Indicator)object);
 			case ObjectType.TASK:
-				return new TaskPropertiesPanel(getMainWindow(), object);
-			case ObjectType.GOAL:
-				return new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), (Goal)object);
+				return new TaskPropertiesPanel(getProject(), getMainWindow().getActions(), (Task)object);
 			case ObjectType.PROJECT_RESOURCE:
 				return new ProjectResourcePropertiesPanel(getProject(), object.getId());
 		}

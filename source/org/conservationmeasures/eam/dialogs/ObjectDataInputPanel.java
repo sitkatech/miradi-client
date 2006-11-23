@@ -209,7 +209,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return true;
 	}
 
-	//FIXME: Delete this when the old ObjectPropertiesPanel goes away
 	public EAMObject getObject()
 	{
 		return null;

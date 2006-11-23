@@ -6,32 +6,25 @@
 package org.conservationmeasures.eam.dialogs;
 
 
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyDialogField;
+import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.Project;
 
-public class TaskPropertiesPanel extends LegacyObjectPropertiesPanel
+public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-
-	public TaskPropertiesPanel(MainWindow parentToUse, EAMObject taskToEdit) throws Exception
+	public TaskPropertiesPanel(Project projectToUse, Actions actions, Task taskToEdit)
 	{
-		super(parentToUse, taskToEdit);
-		initializeFields(tags);
+		super(projectToUse, taskToEdit.getType(), taskToEdit.getId());
+		
+		addField(createStringField(Task.TAG_LABEL));
+		// FIXME: Add ResourceIds field
+
+		updateFieldsFromProject();
 	}
-	
+
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Activity Properties");	
 	}
-	
-	LegacyDialogField createDialogField(String tag, String existingValue) throws Exception
-	{
-		
-		return super.createDialogField(tag, existingValue);
-	}
-	
-	static final String[] tags = new String[] {Task.TAG_LABEL, Task.TAG_RESOURCE_IDS};
-
 }

@@ -130,7 +130,6 @@ public class Actions
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionDeleteIndicator(mainWindow));
 		registerAction(new ActionCreateObjective(mainWindow));
-		registerAction(new ActionModifyObjective(mainWindow));
 		registerAction(new ActionDeleteObjective(mainWindow));
 		registerAction(new ActionCreateGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
