@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -14,6 +15,6 @@ public class GoalPoolTableModel extends ObjectPoolTableModel
 {
 	public GoalPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.GOAL, "Goal");
+		super(projectToUse, ObjectType.GOAL, Goal.TAG_LABEL);
 	}
 }

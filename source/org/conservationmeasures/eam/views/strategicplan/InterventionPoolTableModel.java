@@ -7,12 +7,13 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
 
 public class InterventionPoolTableModel extends ObjectPoolTableModel
 {
 	public InterventionPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getNodePool().getInterventionIds(), "Strategy");	
+		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getNodePool().getInterventionIds(), ConceptualModelNode.TAG_LABEL);	
 	}
 }

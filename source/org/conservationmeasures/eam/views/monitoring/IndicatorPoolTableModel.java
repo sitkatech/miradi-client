@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 
 
@@ -14,6 +15,6 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 {
 	public IndicatorPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.INDICATOR, "Indicator");
+		super(projectToUse, ObjectType.INDICATOR, Indicator.TAG_LABEL);
 	}
 }
