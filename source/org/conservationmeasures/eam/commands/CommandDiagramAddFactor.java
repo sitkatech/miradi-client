@@ -16,23 +16,23 @@ public class CommandDiagramAddFactor extends Command
 {
 	public CommandDiagramAddFactor(DiagramFactorId idToUse, FactorId idToWrap)
 	{
-		modelNodeId = idToWrap;
-		insertedId = idToUse;
+		wrappedFactorId = idToWrap;
+		insertedDiagramFactorId = idToUse;
 	}
 	
 	public DiagramFactorId getInsertedId()
 	{
-		return insertedId;
+		return insertedDiagramFactorId;
 	}
 	
-	public FactorId getModelNodeId()
+	public FactorId getFactorId()
 	{
-		return modelNodeId;
+		return wrappedFactorId;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ":" + insertedId + ","+ modelNodeId;
+		return getCommandName() + ":" + insertedDiagramFactorId + ","+ wrappedFactorId;
 	}
 	
 	public String getCommandName()
@@ -44,7 +44,7 @@ public class CommandDiagramAddFactor extends Command
 	{
 		try
 		{
-			insertedId = target.addNodeToDiagram(modelNodeId, insertedId);
+			insertedDiagramFactorId = target.addNodeToDiagram(wrappedFactorId, insertedDiagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +57,7 @@ public class CommandDiagramAddFactor extends Command
 	{
 		try
 		{
-			target.removeNodeFromDiagram(insertedId);
+			target.removeNodeFromDiagram(insertedDiagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -66,8 +66,8 @@ public class CommandDiagramAddFactor extends Command
 		}
 	}
 
-	public static final String COMMAND_NAME = "CommandDiagramAddNode";
+	public static final String COMMAND_NAME = "CommandDiagramAddFactor";
 
-	private FactorId modelNodeId;
-	private DiagramFactorId insertedId;
+	private FactorId wrappedFactorId;
+	private DiagramFactorId insertedDiagramFactorId;
 }

@@ -36,7 +36,7 @@ public class TestDelete extends EAMTestCase
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramFactor factor = model.getNodeById(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
-		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramLinkageId();
+		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 		
 		assertTrue("link not found?", model.hasLinkage(intervention, factor));
 		

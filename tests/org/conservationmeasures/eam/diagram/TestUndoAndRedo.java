@@ -40,7 +40,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		fromId = createModelAndDiagramNodeWithCommands(Factor.TYPE_CAUSE);
 		toId = createModelAndDiagramNodeWithCommands(Factor.TYPE_INTERVENTION);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
-		linkId = addLinkageCommand.getDiagramLinkageId();
+		linkId = addLinkageCommand.getDiagramFactorLinkId();
 	}
 	
 	public void tearDown() throws Exception

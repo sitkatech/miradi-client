@@ -16,23 +16,23 @@ public class CommandDiagramAddFactorLink extends Command
 {
 	public CommandDiagramAddFactorLink(FactorLinkId idToWrap)
 	{
-		modelLinkageId = idToWrap;
-		diagramLinkageId = new DiagramFactorLinkId(BaseId.INVALID.asInt());
+		wrappedFactorLinkId = idToWrap;
+		insertedDiagramFactorLinkId = new DiagramFactorLinkId(BaseId.INVALID.asInt());
 	}
 	
-	public DiagramFactorLinkId getDiagramLinkageId()
+	public DiagramFactorLinkId getDiagramFactorLinkId()
 	{
-		return diagramLinkageId;
+		return insertedDiagramFactorLinkId;
 	}
 
-	public FactorLinkId getModelLinkageId()
+	public FactorLinkId getFactorLinkId()
 	{
-		return modelLinkageId;
+		return wrappedFactorLinkId;
 	}
 
 	public String toString()
 	{
-		return getCommandName() + ": " + diagramLinkageId + "," + modelLinkageId ;
+		return getCommandName() + ": " + insertedDiagramFactorLinkId + "," + wrappedFactorLinkId ;
 	}
 	
 	public String getCommandName()
@@ -44,7 +44,7 @@ public class CommandDiagramAddFactorLink extends Command
 	{
 		try
 		{
-			diagramLinkageId = target.addLinkageToDiagram(modelLinkageId);
+			insertedDiagramFactorLinkId = target.addLinkageToDiagram(wrappedFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +57,7 @@ public class CommandDiagramAddFactorLink extends Command
 	{
 		try
 		{
-			target.removeLinkageFromDiagram(diagramLinkageId);
+			target.removeLinkageFromDiagram(insertedDiagramFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -68,8 +68,8 @@ public class CommandDiagramAddFactorLink extends Command
 	}
 
 
-	public static final String COMMAND_NAME = "DiagramAddLinkage";
+	public static final String COMMAND_NAME = "CommandDiagramAddFactorLink";
 
-	FactorLinkId modelLinkageId;
-	DiagramFactorLinkId diagramLinkageId;
+	FactorLinkId wrappedFactorLinkId;
+	DiagramFactorLinkId insertedDiagramFactorLinkId;
 }

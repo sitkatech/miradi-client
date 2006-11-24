@@ -406,12 +406,12 @@ public class TestCommands extends EAMTestCase
 		DiagramFactor toNode = model.getNodeById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
-		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramLinkageId();
+		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 	
 		CommandDiagramRemoveFactorLink cmd = new CommandDiagramRemoveFactorLink(linkageId);
-		assertEquals("model id not invalid?", BaseId.INVALID, cmd.getModelLinkageId());
+		assertEquals("model id not invalid?", BaseId.INVALID, cmd.getFactorLinkId());
 		project.executeCommand(cmd);
-		assertEquals("model id not set?", addLinkageCommand.getModelLinkageId(), cmd.getModelLinkageId());
+		assertEquals("model id not set?", addLinkageCommand.getFactorLinkId(), cmd.getFactorLinkId());
 
 		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
 		cmd.undo(project);
@@ -424,10 +424,10 @@ public class TestCommands extends EAMTestCase
 		FactorId modelNodeId = project.getDiagramModel().getNodeById(id).getWrappedId();
 		
 		CommandDiagramRemoveFactor cmd = new CommandDiagramRemoveFactor(id);
-		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getModelNodeId());
+		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getFactorId());
 		project.executeCommand(cmd);
 		
-		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getModelNodeId());
+		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		cmd.undo(project);
 		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());

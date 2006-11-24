@@ -88,10 +88,10 @@ public class TestDiagramFactorLink extends EAMTestCase
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
-		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramLinkageId()));
+		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramFactorLinkId()));
 		
 		ProjectServer server = project.getTestDatabase();
-		FactorLink linkage = (FactorLink)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramLinkageId());
+		FactorLink linkage = (FactorLink)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramFactorLinkId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromNodeId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToNodeId());
 	}

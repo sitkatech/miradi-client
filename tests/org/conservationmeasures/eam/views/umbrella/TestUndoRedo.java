@@ -43,7 +43,7 @@ public class TestUndoRedo extends EAMTestCase
 	{
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
-		FactorId insertedId = insertFactor(project).getModelNodeId();
+		FactorId insertedId = insertFactor(project).getFactorId();
 		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());

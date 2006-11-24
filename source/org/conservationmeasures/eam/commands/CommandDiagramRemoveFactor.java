@@ -16,8 +16,8 @@ public class CommandDiagramRemoveFactor extends Command
 {
 	public CommandDiagramRemoveFactor(DiagramFactorId idToDelete)
 	{
-		diagramNodeId = idToDelete;
-		modelNodeId = new FactorId(BaseId.INVALID.asInt());
+		diagramFactorId = idToDelete;
+		wrappedFactorId = new FactorId(BaseId.INVALID.asInt());
 	}
 
 	public String toString()
@@ -34,7 +34,7 @@ public class CommandDiagramRemoveFactor extends Command
 	{
 		try
 		{
-			modelNodeId = target.removeNodeFromDiagram(diagramNodeId);
+			wrappedFactorId = target.removeNodeFromDiagram(diagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -47,7 +47,7 @@ public class CommandDiagramRemoveFactor extends Command
 	{
 		try
 		{
-			target.addNodeToDiagram(modelNodeId, diagramNodeId);
+			target.addNodeToDiagram(wrappedFactorId, diagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -58,17 +58,17 @@ public class CommandDiagramRemoveFactor extends Command
 
 	public DiagramFactorId getDiagramNodeId()
 	{
-		return diagramNodeId;
+		return diagramFactorId;
 	}
 	
-	public FactorId getModelNodeId()
+	public FactorId getFactorId()
 	{
-		return modelNodeId;
+		return wrappedFactorId;
 	}
 	
 	
-	public static final String COMMAND_NAME = "DiagramRemoveNode";
+	public static final String COMMAND_NAME = "CommandDiagramRemoveFactor";
 
-	DiagramFactorId diagramNodeId;
-	FactorId modelNodeId;
+	DiagramFactorId diagramFactorId;
+	FactorId wrappedFactorId;
 }

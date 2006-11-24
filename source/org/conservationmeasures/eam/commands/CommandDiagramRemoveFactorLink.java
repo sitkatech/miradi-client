@@ -16,13 +16,13 @@ public class CommandDiagramRemoveFactorLink extends Command
 {
 	public CommandDiagramRemoveFactorLink(DiagramFactorLinkId idToDelete)
 	{
-		diagramLinkageId = idToDelete;
-		modelLinkageId = new FactorLinkId(BaseId.INVALID.asInt());
+		diagramFactorLinkId = idToDelete;
+		wrappedFactorLinkId = new FactorLinkId(BaseId.INVALID.asInt());
 	}
 	
 	public String toString()
 	{
-		return getCommandName() + ":" + getDiagramLinkageId() + "," + getModelLinkageId();
+		return getCommandName() + ":" + getDiagramFactorLinkId() + "," + getFactorLinkId();
 	}
 	
 	public String getCommandName()
@@ -34,7 +34,7 @@ public class CommandDiagramRemoveFactorLink extends Command
 	{
 		try
 		{
-			modelLinkageId = target.removeLinkageFromDiagram(diagramLinkageId);
+			wrappedFactorLinkId = target.removeLinkageFromDiagram(diagramFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -47,7 +47,7 @@ public class CommandDiagramRemoveFactorLink extends Command
 	{
 		try
 		{
-			target.addLinkageToDiagram(modelLinkageId);
+			target.addLinkageToDiagram(wrappedFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -56,20 +56,20 @@ public class CommandDiagramRemoveFactorLink extends Command
 		}
 	}
 
-	public DiagramFactorLinkId getDiagramLinkageId()
+	public DiagramFactorLinkId getDiagramFactorLinkId()
 	{
-		return diagramLinkageId;
+		return diagramFactorLinkId;
 	}
 
-	public FactorLinkId getModelLinkageId()
+	public FactorLinkId getFactorLinkId()
 	{
-		return modelLinkageId;
+		return wrappedFactorLinkId;
 	}
 
 	
 
-	public static final String COMMAND_NAME = "DiagramRemoveLinkage";
+	public static final String COMMAND_NAME = "CommandDiagramRemoveFactorLink";
 
-	DiagramFactorLinkId diagramLinkageId;
-	FactorLinkId modelLinkageId;
+	DiagramFactorLinkId diagramFactorLinkId;
+	FactorLinkId wrappedFactorLinkId;
 }

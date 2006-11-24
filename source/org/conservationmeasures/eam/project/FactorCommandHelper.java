@@ -88,7 +88,7 @@ public class FactorCommandHelper
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramFactor.TAG_LOCATION));
 			
-			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
+			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getFactorId(), nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
 			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			
@@ -139,7 +139,7 @@ public class FactorCommandHelper
 			DiagramFactor newFromNode = getDiagramNodeById(newFromId);
 			DiagramFactor newToNode = getDiagramNodeById(newToId);
 			CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
-			Logging.logDebug("Paste Link : " + addLinkageCommand.getModelLinkageId() + " from:" + newFromId + " to:" + newToId);
+			Logging.logDebug("Paste Link : " + addLinkageCommand.getFactorLinkId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}
 	
