@@ -21,9 +21,9 @@ public class TestProjectInfo extends TestCaseEnhanced
 	{
 		ProjectInfo info = new ProjectInfo();
 		info.setCurrentView("super-view");
-		info.obtainRealNodeId(new BaseId(27));
-		info.obtainRealLinkageId(new BaseId(55));
-		info.getAnnotationIdAssigner().takeNextId();
+		info.obtainRealFactorId(new BaseId(27));
+		info.obtainRealLinkId(new BaseId(55));
+		info.getNormalIdAssigner().takeNextId();
 		info.setMetadataId(new BaseId(79));
 		
 		ProjectInfo loaded = new ProjectInfo();
@@ -34,8 +34,8 @@ public class TestProjectInfo extends TestCaseEnhanced
 	private void verifyLoadedData(ProjectInfo loaded, ProjectInfo info)
 	{
 		assertEquals("Didn't keep current view?", info.getCurrentView(), loaded.getCurrentView());
-		assertEquals("Didn't keep next id?", info.getNodeIdAssigner().getHighestAssignedId(), loaded.getNodeIdAssigner().getHighestAssignedId());
-		assertEquals("Didn't keep next annotation id?", info.getAnnotationIdAssigner().getHighestAssignedId(), loaded.getAnnotationIdAssigner().getHighestAssignedId());
+		assertEquals("Didn't keep next id?", info.getFactorAndLinkIdAssigner().getHighestAssignedId(), loaded.getFactorAndLinkIdAssigner().getHighestAssignedId());
+		assertEquals("Didn't keep next annotation id?", info.getNormalIdAssigner().getHighestAssignedId(), loaded.getNormalIdAssigner().getHighestAssignedId());
 		assertEquals("Didn't keep metadata id?", info.getMetadataId(), loaded.getMetadataId());
 	}
 	
@@ -52,8 +52,8 @@ public class TestProjectInfo extends TestCaseEnhanced
 	{
 		ProjectInfo info = new ProjectInfo();
 		info.setCurrentView("super-view");
-		info.obtainRealNodeId(new BaseId(27));
-		info.getAnnotationIdAssigner().takeNextId();
+		info.obtainRealFactorId(new BaseId(27));
+		info.getNormalIdAssigner().takeNextId();
 		assertTrue("MetadataId not invalid?", info.getMetadataId().isInvalid());
 		BaseId metadataId = new BaseId(525);
 		info.setMetadataId(metadataId);
@@ -61,8 +61,8 @@ public class TestProjectInfo extends TestCaseEnhanced
 		
 		info.clear();
 		assertEquals("Didn't clear currentView", SummaryView.getViewName(), info.getCurrentView());
-		assertEquals("didn't clear id?", new BaseId(0), info.getNodeIdAssigner().takeNextId());
-		assertEquals("didn't clear annotation id?", new BaseId(0), info.getAnnotationIdAssigner().takeNextId());
+		assertEquals("didn't clear id?", new BaseId(0), info.getFactorAndLinkIdAssigner().takeNextId());
+		assertEquals("didn't clear annotation id?", new BaseId(0), info.getNormalIdAssigner().takeNextId());
 		assertTrue("didn't clear metadata id?", info.getMetadataId().isInvalid());
 	}
 

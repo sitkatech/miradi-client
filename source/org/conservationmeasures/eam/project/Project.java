@@ -103,12 +103,12 @@ public class Project
 	
 	public IdAssigner getNodeIdAssigner()
 	{
-		return projectInfo.getNodeIdAssigner();
+		return projectInfo.getFactorAndLinkIdAssigner();
 	}
 	
 	public IdAssigner getAnnotationIdAssigner()
 	{
-		return projectInfo.getAnnotationIdAssigner();
+		return projectInfo.getNormalIdAssigner();
 	}
 	
 	public ProjectServer getDatabase()
@@ -251,12 +251,12 @@ public class Project
 	
 	public FactorLinkId obtainRealLinkageId(BaseId proposedId)
 	{
-		return projectInfo.obtainRealLinkageId(proposedId);
+		return projectInfo.obtainRealLinkId(proposedId);
 	}
 	
 	public BaseId obtainRealNodeId(BaseId proposedId)
 	{
-		return projectInfo.obtainRealNodeId(proposedId);
+		return projectInfo.obtainRealFactorId(proposedId);
 	}
 	
 	public BaseId createObject(int objectType) throws Exception
