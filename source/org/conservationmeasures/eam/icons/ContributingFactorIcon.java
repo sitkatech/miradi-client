@@ -7,20 +7,20 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 
-public class InterventionIcon extends EamIcon
+public class ContributingFactorIcon extends EamIcon
 {
 	FactorRenderer getRenderer()
 	{
-		return new IconHexagonRenderer(false);
+		return new RectangleRenderer();
 	}
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR);
 	}
 }

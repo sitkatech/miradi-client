@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.DraftInterventionIcon;
+import org.conservationmeasures.eam.icons.DraftStrategyIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertDraftStrategy extends LocationAction
 {
 	public ActionInsertDraftStrategy(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new DraftInterventionIcon());
+		super(mainWindow, getLabel(), new DraftStrategyIcon());
 	}
 
 	private static String getLabel()

@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.IndirectFactorIcon;
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertContributingFactor extends LocationAction
 {
 	public ActionInsertContributingFactor(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new IndirectFactorIcon());
+		super(mainWindow, getLabel(), new ContributingFactorIcon());
 	}
 
 	private static String getLabel()

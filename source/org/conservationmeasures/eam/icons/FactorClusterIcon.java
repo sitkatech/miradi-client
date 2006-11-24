@@ -8,18 +8,20 @@ package org.conservationmeasures.eam.icons;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-public class DraftInterventionIcon extends EamIcon
+
+public class FactorClusterIcon extends EamIcon
 {
 	FactorRenderer getRenderer()
 	{
-		return new IconHexagonRenderer(true);
+		return new RectangleRenderer();
 	}
-	
+
 	Color getIconColor()
 	{
-		return DiagramConstants.COLOR_DRAFT_STRATEGY;
+		return DiagramConstants.COLOR_FACTOR_CLUSTER;
 	}
+
 }

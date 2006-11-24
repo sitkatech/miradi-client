@@ -19,7 +19,7 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
-import org.conservationmeasures.eam.icons.InterventionIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.martus.swing.UiLabel;
@@ -56,9 +56,9 @@ public class TreeTableWithIcons extends JTreeTable
 			Font italicFont = uiLabelFont.deriveFont(Font.ITALIC);
 			
 			interventionRenderer = new DefaultTreeCellRenderer();
-			interventionRenderer.setClosedIcon(new InterventionIcon());
-			interventionRenderer.setOpenIcon(new InterventionIcon());
-			interventionRenderer.setLeafIcon(new InterventionIcon());
+			interventionRenderer.setClosedIcon(new StrategyIcon());
+			interventionRenderer.setOpenIcon(new StrategyIcon());
+			interventionRenderer.setLeafIcon(new StrategyIcon());
 			
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());

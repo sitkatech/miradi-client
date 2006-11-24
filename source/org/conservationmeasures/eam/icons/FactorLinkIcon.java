@@ -11,7 +11,7 @@ import java.awt.Graphics;
 
 import javax.swing.Icon;
 
-public class ConnectionIcon implements Icon
+public class FactorLinkIcon implements Icon
 {
 	public int getIconHeight()
 	{

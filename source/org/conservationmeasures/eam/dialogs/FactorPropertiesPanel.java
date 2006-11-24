@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.dialogfields.legacy.LegacyChoiceDialogField;
 import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
-import org.conservationmeasures.eam.icons.IndirectFactorIcon;
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -594,7 +594,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			if(((FactorType) value).isDirectThreat())
 				setIcon(new DirectThreatIcon());
 			if(((FactorType) value).isContributingFactor())
-				setIcon(new IndirectFactorIcon());
+				setIcon(new ContributingFactorIcon());
 			return cell;
 		}
 	}

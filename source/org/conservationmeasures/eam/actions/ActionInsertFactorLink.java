@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.ConnectionIcon;
+import org.conservationmeasures.eam.icons.FactorLinkIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertFactorLink extends MainWindowAction
 {
 	public ActionInsertFactorLink(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new ConnectionIcon());
+		super(mainWindow, getLabel(), new FactorLinkIcon());
 	}
 
 	private static String getLabel()

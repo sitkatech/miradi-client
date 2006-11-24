@@ -13,12 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import org.conservationmeasures.eam.icons.ConnectionIcon;
+import org.conservationmeasures.eam.icons.FactorLinkIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
-import org.conservationmeasures.eam.icons.IndirectFactorIcon;
-import org.conservationmeasures.eam.icons.InterventionIcon;
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.icons.ProjectScopeIcon;
 import org.conservationmeasures.eam.icons.StressIcon;
@@ -43,9 +43,9 @@ public class DiagramLegendPanel extends JPanel
 		add(new UiLabel(EAM.text("Project Scope"), new ProjectScopeIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Target"), new TargetIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Direct Threat"), new DirectThreatIcon(), UiLabel.LEADING));
-		add(new UiLabel(EAM.text("Contributing Factor"), new IndirectFactorIcon(), UiLabel.LEADING));
-		add(new UiLabel(EAM.text("Strategy"), new InterventionIcon(), UiLabel.LEADING));
-		add(new UiLabel(EAM.text("Link"), new ConnectionIcon(), UiLabel.LEADING));
+		add(new UiLabel(EAM.text("Contributing Factor"), new ContributingFactorIcon(), UiLabel.LEADING));
+		add(new UiLabel(EAM.text("Strategy"), new StrategyIcon(), UiLabel.LEADING));
+		add(new UiLabel(EAM.text("Link"), new FactorLinkIcon(), UiLabel.LEADING));
 		
 		add(new UiLabel(EAM.text("Goal"), new GoalIcon(), UiLabel.LEADING));
 		add(new UiLabel(EAM.text("Objective"), new ObjectiveIcon(), UiLabel.LEADING));

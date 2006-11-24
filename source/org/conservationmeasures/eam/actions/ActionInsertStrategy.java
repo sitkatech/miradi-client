@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.actions;
 
-import org.conservationmeasures.eam.icons.InterventionIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -13,7 +13,7 @@ public class ActionInsertStrategy extends LocationAction
 {
 	public ActionInsertStrategy(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new InterventionIcon());
+		super(mainWindow, getLabel(), new StrategyIcon());
 	}
 
 	private static String getLabel()
