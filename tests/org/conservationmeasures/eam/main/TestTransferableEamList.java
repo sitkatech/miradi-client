@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -87,7 +87,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertNotNull(eamTransferData);
 		
 		FactorDataMap[] nodesData = eamTransferData.getNodeDataCells();
-		LinkageDataMap[] linkagesData = eamTransferData.getLinkageDataCells();
+		FactorLinkDataMap[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
 		assertEquals(node1.getDiagramNodeId(), nodesData[0].getId(DiagramNode.TAG_ID));

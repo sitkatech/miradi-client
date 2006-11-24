@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
-import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
@@ -122,10 +122,10 @@ public class NodeCommandHelper
 	
 	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 
 	{
-		LinkageDataMap[] links = list.getLinkageDataCells();
+		FactorLinkDataMap[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
 		{
-			LinkageDataMap linkageData = links[i];
+			FactorLinkDataMap linkageData = links[i];
 			
 			DiagramNodeId oldFromDiagramId = linkageData.getFromId();
 			DiagramNodeId newFromId = dataHelper.getNewId(oldFromDiagramId);

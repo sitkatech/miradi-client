@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.utils.DataMap;
 
-public class LinkageDataMap extends DataMap
+public class FactorLinkDataMap extends DataMap
 {
-	public LinkageDataMap()
+	public FactorLinkDataMap()
 	{
 		super();
 	}

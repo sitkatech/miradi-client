@@ -99,9 +99,9 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return underlyingObject.getToNodeId();
 	}
 	
-	public LinkageDataMap createLinkageDataMap() throws Exception
+	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
-		LinkageDataMap dataMap = new LinkageDataMap();
+		FactorLinkDataMap dataMap = new FactorLinkDataMap();
 		dataMap.setId(getDiagramLinkageId());
 		dataMap.setFromId(from.getDiagramNodeId());
 		dataMap.setToId(to.getDiagramNodeId());

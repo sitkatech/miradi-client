@@ -15,7 +15,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 
 public class TransferableEamList implements Transferable 
@@ -79,9 +79,9 @@ public class TransferableEamList implements Transferable
 		throw new UnsupportedFlavorException(flavor);
 	}
 	
-	public LinkageDataMap[] getLinkageDataCells()
+	public FactorLinkDataMap[] getLinkageDataCells()
 	{
-		return (LinkageDataMap[])linkages.toArray(new LinkageDataMap[0]);
+		return (FactorLinkDataMap[])linkages.toArray(new FactorLinkDataMap[0]);
 	}
 	
 	public FactorDataMap[] getNodeDataCells()
