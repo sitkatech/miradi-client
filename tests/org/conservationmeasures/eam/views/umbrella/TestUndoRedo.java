@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.project.NodeCommandHelper;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -44,7 +44,7 @@ public class TestUndoRedo extends EAMTestCase
 		String target1Text = "Target 1 Text";
 		project.executeCommand(new CommandBeginTransaction());
 		FactorId insertedId = insertFactor(project).getModelNodeId();
-		project.executeCommand(NodeCommandHelper.createSetLabelCommand(insertedId, target1Text));
+		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
 		

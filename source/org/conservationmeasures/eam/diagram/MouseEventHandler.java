@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.project.NodeMoveHandler;
+import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.Properties;
@@ -118,7 +118,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 
 		try
 		{
-			new NodeMoveHandler(getProject()).nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
+			new FactorMoveHandler(getProject()).nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
 		}
 		catch(CommandFailedException e)
 		{

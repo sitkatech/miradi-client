@@ -34,9 +34,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.InsertConnection;
 
-public class NodeCommandHelper
+public class FactorCommandHelper
 {
-	public NodeCommandHelper(Project projectToUse)
+	public FactorCommandHelper(Project projectToUse)
 	{
 		project = projectToUse;
 	}

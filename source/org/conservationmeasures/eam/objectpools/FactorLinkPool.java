@@ -10,11 +10,11 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.project.LinkageListener;
+import org.conservationmeasures.eam.project.FactorLinkListener;
 
 public class FactorLinkPool extends EAMObjectPool
 {
-	public FactorLinkPool(LinkageListener listenerToNotify)
+	public FactorLinkPool(FactorLinkListener listenerToNotify)
 	{
 		super(ObjectType.MODEL_LINKAGE);
 		listener = listenerToNotify;
@@ -72,5 +72,5 @@ public class FactorLinkPool extends EAMObjectPool
 		return find((FactorLinkId)getIds()[index]);
 	}
 	
-	LinkageListener listener;
+	FactorLinkListener listener;
 }

@@ -274,7 +274,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getLinkages(node2).size());
 		assertEquals(1, model.getLinkages(node3).size());
 		
-		new NodeCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
 		assertEquals(4, nodes.size());
 		assertEquals(4, model.getAllLinkages().size());
@@ -285,7 +285,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.deleteNode(node2);
-		new NodeCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getLinkages(node1).size());
 		assertEquals(3, model.getLinkages(node3).size());
 	}
@@ -300,7 +300,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactorId[] noNodesMoved = new DiagramFactorId[1];
 		noNodesMoved[0] = node1.getDiagramNodeId();
 	
-		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, noNodesMoved);
+		new FactorMoveHandler(project).nodesWereMovedOrResized(0, 0, noNodesMoved);
 		try
 		{
 			project.getLastCommand();
@@ -324,7 +324,7 @@ public class TestProject extends EAMTestCase
 		ids[1] = node2.getDiagramNodeId();
 		
 		
-		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
+		new FactorMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		project.getLastCommand(); //End Transaction
 		CommandDiagramMove commandDiagramMoveRecorded = (CommandDiagramMove)project.getLastCommand();
 		assertEquals(deltaX, commandDiagramMoveRecorded.getDeltaX());
@@ -353,7 +353,7 @@ public class TestProject extends EAMTestCase
 		ids[0] = node1.getDiagramNodeId();
 		ids[1] = node2.getDiagramNodeId();
 		
-		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, ids);
+		new FactorMoveHandler(project).nodesWereMovedOrResized(0, 0, ids);
 		project.getLastCommand(); //End Transaction
 		CommandSetFactorSize commandSetNodeSize2Recorded = (CommandSetFactorSize)project.getLastCommand();
 		assertEquals(node2.getSize(), commandSetNodeSize2Recorded.getCurrentSize());
@@ -405,7 +405,7 @@ public class TestProject extends EAMTestCase
 		ids[2] = nodeResizedOnly.getDiagramNodeId();
 		ids[3] = nodeNotMovedOrResized.getDiagramNodeId();
 
-		new NodeMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
+		new FactorMoveHandler(project).nodesWereMovedOrResized(deltaX, deltaY, ids);
 		
 		project.getLastCommand(); //End Transaction
 		
@@ -445,7 +445,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getLinkages(node2).size());
 		assertEquals(1, model.getLinkages(node3).size());
 		
-		new NodeCommandHelper(project).pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllNodes();
 		assertEquals(4, nodes.size());
 		assertEquals(2, model.getAllLinkages().size());
@@ -470,7 +470,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, model.getAllNodes().size());
 
 		Point pastePoint = new Point(5,5);
-		new NodeCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, pastePoint);
+		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, pastePoint);
 		Vector nodes = model.getAllNodes();
 		assertEquals(1, nodes.size());
 		DiagramFactor pastedNode = (DiagramFactor)nodes.get(0);

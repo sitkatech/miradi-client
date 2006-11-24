@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.FactorId;
 
-public interface LinkageListener
+public interface FactorLinkListener
 {
 	public void linkageWasCreated(FactorId fromId, FactorId toId);
 	public void linkageWasDeleted(FactorId fromId, FactorId toId);

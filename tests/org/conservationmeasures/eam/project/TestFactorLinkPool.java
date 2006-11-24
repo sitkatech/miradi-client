@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestLinkagePool extends TestCaseEnhanced
+public class TestFactorLinkPool extends TestCaseEnhanced
 {
-	public TestLinkagePool(String name)
+	public TestFactorLinkPool(String name)
 	{
 		super(name);
 	}
@@ -45,7 +45,7 @@ public class TestLinkagePool extends TestCaseEnhanced
 		assertFalse("Found link 1->3?", pool.hasLinkage((FactorId)node1.getId(), (FactorId)node3.getId()));
 	}
 	
-	class LinkageMonitor implements LinkageListener
+	class LinkageMonitor implements FactorLinkListener
 	{
 		public void linkageWasCreated(FactorId linkFromId, FactorId linkToId)
 		{

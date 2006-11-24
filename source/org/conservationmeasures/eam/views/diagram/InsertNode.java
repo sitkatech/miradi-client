@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.project.NodeCommandHelper;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 abstract public class InsertNode extends LocationDoer
 {
@@ -74,10 +74,10 @@ abstract public class InsertNode extends LocationDoer
 
 		getProject().executeCommand(new CommandBeginTransaction());
 		FactorType nodeType = getTypeToInsert();
-		FactorId id = new NodeCommandHelper(getProject()).createNode(nodeType).getModelNodeId();
+		FactorId id = new FactorCommandHelper(getProject()).createNode(nodeType).getModelNodeId();
 		DiagramFactor addedNode = getProject().getDiagramModel().getNodeById(id);
 
-		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
+		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
 
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);

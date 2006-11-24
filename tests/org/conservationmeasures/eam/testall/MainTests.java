@@ -61,8 +61,8 @@ import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
 import org.conservationmeasures.eam.project.TestIdAssigner;
-import org.conservationmeasures.eam.project.TestLinkagePool;
-import org.conservationmeasures.eam.project.TestNodePool;
+import org.conservationmeasures.eam.project.TestFactorLinkPool;
+import org.conservationmeasures.eam.project.TestFactorPool;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestProjectRepairer;
@@ -113,8 +113,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTransferableEamList.class));
 		
 		// project package
-		suite.addTest(new TestSuite(TestLinkagePool.class));
-		suite.addTest(new TestSuite(TestNodePool.class));
+		suite.addTest(new TestSuite(TestFactorLinkPool.class));
+		suite.addTest(new TestSuite(TestFactorPool.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));

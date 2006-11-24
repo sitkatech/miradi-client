@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestNodePool extends TestCaseEnhanced
+public class TestFactorPool extends TestCaseEnhanced
 {
-	public TestNodePool(String name)
+	public TestFactorPool(String name)
 	{
 		super(name);
 	}

@@ -42,7 +42,7 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.project.NodeCommandHelper;
+import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
@@ -391,7 +391,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 				return;
 			try
 			{
-				CommandSetObjectData cmd = NodeCommandHelper
+				CommandSetObjectData cmd = FactorCommandHelper
 						.createSetLabelCommand(getNodeId(), newText);
 				getProject().executeCommand(cmd);
 			}

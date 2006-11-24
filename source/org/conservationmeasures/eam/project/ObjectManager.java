@@ -393,7 +393,7 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
-	class LinkageMonitor implements LinkageListener
+	class LinkageMonitor implements FactorLinkListener
 	{
 		public void linkageWasCreated(FactorId linkFromId, FactorId linkToId)
 		{

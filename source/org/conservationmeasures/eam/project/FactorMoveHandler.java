@@ -26,9 +26,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.FactorCluster;
 
-public class NodeMoveHandler
+public class FactorMoveHandler
 {
-	public NodeMoveHandler(Project projectToUse)
+	public FactorMoveHandler(Project projectToUse)
 	{
 		project = projectToUse;
 	}
