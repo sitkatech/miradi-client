@@ -45,7 +45,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 
-public class EllipseRenderer extends MultilineNodeRenderer
+public class EllipseRenderer extends FactorRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{

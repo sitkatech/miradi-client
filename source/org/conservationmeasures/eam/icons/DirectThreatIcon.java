@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 public class DirectThreatIcon extends EamIcon 
 {
 
-	MultilineNodeRenderer getRenderer() 
+	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}

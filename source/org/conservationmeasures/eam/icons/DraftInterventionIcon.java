@@ -9,11 +9,11 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.renderers.IconHexagonRenderer;
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 
 public class DraftInterventionIcon extends EamIcon
 {
-	MultilineNodeRenderer getRenderer()
+	FactorRenderer getRenderer()
 	{
 		return new IconHexagonRenderer(true);
 	}

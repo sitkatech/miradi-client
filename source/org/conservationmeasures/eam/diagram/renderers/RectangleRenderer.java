@@ -18,7 +18,7 @@ import java.awt.geom.Rectangle2D;
 import org.jgraph.graph.VertexView;
 
 
-public class RectangleRenderer extends MultilineNodeRenderer
+public class RectangleRenderer extends FactorRenderer
 {
 	Dimension getInsetDimension()
 	{

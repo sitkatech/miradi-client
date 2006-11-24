@@ -63,7 +63,7 @@ import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
 
 
-public abstract class MultilineNodeRenderer extends MultilineCellRenderer implements CellViewRenderer
+public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
 	abstract public void fillShape(Graphics g, Rectangle rect, Color color);
 	abstract public void drawBorder(Graphics2D g2, Rectangle rect, Color color);

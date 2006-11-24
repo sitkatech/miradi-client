@@ -138,7 +138,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.translate(-labelRectangle.x, -labelRectangle.y);
 	}
 
-	void drawAnnotationCellRect(Rectangle rect, Graphics2D g2, MultilineNodeRenderer annotationRenderer, String annotationText) 
+	void drawAnnotationCellRect(Rectangle rect, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText) 
 	{
 		if(annotationText == null)
 			return;
@@ -148,7 +148,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		drawAnnotation(annotationsRectangle, g2, annotationRenderer, annotationText);
 	}
 
-	void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, MultilineNodeRenderer annotationRenderer, String annotationText)
+	void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText)
 	{
 		annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
 		drawAnnotationBorder(g2, annotationsRectangle, annotationRenderer);
@@ -158,7 +158,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		drawLabel(g2, annotationsRectangle, labelMessage, annotationsRectangle.getSize());
 	}
 
-	void drawAnnotationBorder(Graphics2D g2, Rectangle annotationsRectangle, MultilineNodeRenderer annotationRenderer) 
+	void drawAnnotationBorder(Graphics2D g2, Rectangle annotationsRectangle, FactorRenderer annotationRenderer) 
 	{
 		Color color = Color.BLACK;
 		Stroke stroke = new BasicStroke(borderThickness);

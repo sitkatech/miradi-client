@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.icons;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
 
 public class ClusterIcon extends EamIcon
 {
-	MultilineNodeRenderer getRenderer()
+	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}

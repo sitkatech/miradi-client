@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 
@@ -18,7 +18,7 @@ public class RatingIcon extends EamIcon
 		color = option.getColor();
 	}
 	
-	MultilineNodeRenderer getRenderer() 
+	FactorRenderer getRenderer() 
 	{
 		return new RectangleRenderer();
 	}

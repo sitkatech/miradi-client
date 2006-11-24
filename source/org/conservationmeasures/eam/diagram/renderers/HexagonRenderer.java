@@ -16,7 +16,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 
-public class HexagonRenderer extends MultilineNodeRenderer
+public class HexagonRenderer extends FactorRenderer
 {
 	Dimension getInsetDimension()
 	{

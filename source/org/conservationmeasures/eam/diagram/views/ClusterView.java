@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
 import org.conservationmeasures.eam.main.EAM;
@@ -50,7 +50,7 @@ public class ClusterView extends CompoundVertexView
 	public Rectangle2D getRectangleWithoutAnnotations()
 	{
 		Rectangle2D rectangleCopy = (Rectangle2D)getBounds().clone();
-		Dimension sizeWithoutAnnotations = MultilineNodeRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), cluster.getAnnotationRows());
+		Dimension sizeWithoutAnnotations = FactorRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), cluster.getAnnotationRows());
 		rectangleCopy.setRect(getBounds().getX(), getBounds().getY(), sizeWithoutAnnotations.getWidth(), sizeWithoutAnnotations.getHeight());
 		return rectangleCopy;
 	}

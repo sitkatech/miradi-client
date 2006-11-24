@@ -16,7 +16,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JLabel;
 
-public class TriangleRenderer extends MultilineNodeRenderer {
+public class TriangleRenderer extends FactorRenderer {
 
 	Dimension getInsetDimension() 
 	{

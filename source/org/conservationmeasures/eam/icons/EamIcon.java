@@ -14,13 +14,13 @@ import java.awt.Rectangle;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 
 
 abstract public class EamIcon implements Icon 
 {
 	
-	abstract MultilineNodeRenderer getRenderer();
+	abstract FactorRenderer getRenderer();
 	abstract Color getIconColor();
 	
 	public int getIconHeight()
@@ -37,7 +37,7 @@ abstract public class EamIcon implements Icon
 	{
 		Rectangle rect = new Rectangle(x, y, getIconWidth(), getIconHeight() * 3 / 4);
 		Color color = getIconColor();
-		MultilineNodeRenderer renderer = getRenderer();
+		FactorRenderer renderer = getRenderer();
 		renderer.fillShape(g, rect, color);
 		renderer.drawBorder((Graphics2D)g, rect, Color.BLACK);
 	}
