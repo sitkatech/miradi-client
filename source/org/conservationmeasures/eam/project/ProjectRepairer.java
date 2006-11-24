@@ -222,7 +222,7 @@ public class ProjectRepairer
 			BaseId annotationId = allIds.get(i);
 			try
 			{
-				FactorSet nodes = chainManager.findNodesThatUseThisAnnotation(annotationType, annotationId);
+				FactorSet nodes = chainManager.findFactorsThatUseThisAnnotation(annotationType, annotationId);
 				if(nodes.size() == 0)
 				{
 					EAM.logWarning("Deleting orphan " + annotationType + ":" + annotationId);

@@ -80,7 +80,7 @@ public class StratPlanGoal extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		objectiveVector = new Vector();
-		FactorSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
+		FactorSet relatedNodes = new ChainManager(project).findAllFactorsRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
 		{

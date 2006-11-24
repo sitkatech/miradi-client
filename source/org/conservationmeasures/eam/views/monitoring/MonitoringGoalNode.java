@@ -66,7 +66,7 @@ public class MonitoringGoalNode extends MonitoringNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		FactorSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
+		FactorSet relatedNodes = new ChainManager(project).findAllFactorsRelatedToThisGoal(goal.getId());
 		children.addAll(createIndicatorNodes(relatedNodes));
 		children.addAll(createObjectiveNodes(relatedNodes));
 	}

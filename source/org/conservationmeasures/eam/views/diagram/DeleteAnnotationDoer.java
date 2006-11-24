@@ -81,7 +81,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
 		commands.add(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
-		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findNodesThatUseThisAnnotation(type, idToRemove);
+		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findFactorsThatUseThisAnnotation(type, idToRemove);
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
 			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));

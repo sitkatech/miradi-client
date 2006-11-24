@@ -27,37 +27,37 @@ public class ChainManager
 		project = projectToUse;
 	}
 	
-	public FactorSet findNodesThatUseThisAnnotation(int type, BaseId id) throws Exception
+	public FactorSet findFactorsThatUseThisAnnotation(int type, BaseId id) throws Exception
 	{
 		if(type == ObjectType.OBJECTIVE)
-			return findNodesThatHaveThisAnnotation(id, Factor.TAG_OBJECTIVE_IDS);
+			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_OBJECTIVE_IDS);
 		if(type == ObjectType.GOAL)
-			return findNodesThatHaveThisAnnotation(id, Factor.TAG_GOAL_IDS);
+			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_GOAL_IDS);
 		if(type == ObjectType.INDICATOR)
-			return findNodesThatHaveThisAnnotation(id, Factor.TAG_INDICATOR_IDS);
+			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_INDICATOR_IDS);
 		
 		throw new RuntimeException("Not an annotation type? " + type);
 	}
 
-	public FactorSet findNodesThatUseThisObjective(BaseId objectiveId) throws Exception
+	public FactorSet findFactorsThatUseThisObjective(BaseId objectiveId) throws Exception
 	{
-		return findNodesThatUseThisAnnotation(ObjectType.OBJECTIVE, objectiveId);
+		return findFactorsThatUseThisAnnotation(ObjectType.OBJECTIVE, objectiveId);
 	}
 
-	public FactorSet findNodesThatUseThisIndicator(BaseId indicatorId) throws Exception
+	public FactorSet findFactorsThatUseThisIndicator(BaseId indicatorId) throws Exception
 	{
-		return findNodesThatUseThisAnnotation(ObjectType.INDICATOR, indicatorId);
+		return findFactorsThatUseThisAnnotation(ObjectType.INDICATOR, indicatorId);
 	}
 	
-	public FactorSet findNodesThatUseThisGoal(BaseId goalId) throws Exception
+	public FactorSet findFactorsThatUseThisGoal(BaseId goalId) throws Exception
 	{
-		return findNodesThatUseThisAnnotation(ObjectType.GOAL, goalId);
+		return findFactorsThatUseThisAnnotation(ObjectType.GOAL, goalId);
 	}
 	
-	private FactorSet findNodesThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
+	private FactorSet findFactorsThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
 	{
 		FactorSet foundNodes = new FactorSet();
-		FactorPool pool = getNodePool();
+		FactorPool pool = getFactorPool();
 		FactorId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
@@ -70,9 +70,9 @@ public class ChainManager
 		return foundNodes;
 	}
 
-	public FactorSet findAllNodesRelatedToThisIndicator(BaseId indicatorId) throws Exception
+	public FactorSet findAllFactorsRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
-		Factor[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
+		Factor[] nodesThatUseThisIndicator = findFactorsThatUseThisIndicator(indicatorId).toNodeArray();
 		FactorSet relatedNodes = new FactorSet();
 		
 		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
@@ -84,9 +84,9 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public FactorSet findAllNodesRelatedToThisObjective(BaseId objectiveId) throws Exception
+	public FactorSet findAllFactorsRelatedToThisObjective(BaseId objectiveId) throws Exception
 	{
-		Factor[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
+		Factor[] nodesThatUseThisObjective = findFactorsThatUseThisObjective(objectiveId).toNodeArray();
 		FactorSet relatedNodes = new FactorSet();
 		
 		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
@@ -98,9 +98,9 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	public FactorSet findAllNodesRelatedToThisGoal(BaseId goalId) throws Exception
+	public FactorSet findAllFactorsRelatedToThisGoal(BaseId goalId) throws Exception
 	{
-		Factor[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
+		Factor[] nodesThatUseThisGoal = findFactorsThatUseThisGoal(goalId).toNodeArray();
 		FactorSet relatedNodes = new FactorSet();
 		
 		for(int i = 0; i < nodesThatUseThisGoal.length; ++i)
@@ -112,7 +112,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	FactorPool getNodePool()
+	FactorPool getFactorPool()
 	{
 		return getProject().getFactorPool();
 	}
@@ -131,7 +131,7 @@ public class ChainManager
 	{
 		try
 		{
-			FactorSet modelNodes = findAllNodesRelatedToThisIndicator(indicatorId);
+			FactorSet modelNodes = findAllFactorsRelatedToThisIndicator(indicatorId);
 			TargetSet targets = new TargetSet(modelNodes);
 			
 			return EAMBaseObject.toHtml(targets.toNodeArray());
@@ -147,7 +147,7 @@ public class ChainManager
 	{
 		try
 		{
-			FactorSet modelNodes =  findAllNodesRelatedToThisIndicator(indicatorId);
+			FactorSet modelNodes =  findAllFactorsRelatedToThisIndicator(indicatorId);
 			DirectThreatSet directThreats = new DirectThreatSet(modelNodes);
 			
 			return EAMBaseObject.toHtml(directThreats.toNodeArray());

@@ -306,11 +306,11 @@ public class ObjectManager
 	{
 		ChainManager chainManager = new ChainManager(project);
 		if (annotationType == ObjectType.GOAL)
-			return chainManager.findAllNodesRelatedToThisGoal(annotationId);
+			return chainManager.findAllFactorsRelatedToThisGoal(annotationId);
 		if (annotationType == ObjectType.OBJECTIVE)
-			return  chainManager.findAllNodesRelatedToThisObjective(annotationId);
+			return  chainManager.findAllFactorsRelatedToThisObjective(annotationId);
 		if (annotationType == ObjectType.INDICATOR)
-			return chainManager.findAllNodesRelatedToThisIndicator(annotationId);
+			return chainManager.findAllFactorsRelatedToThisIndicator(annotationId);
 		
 		return new FactorSet();
 	}
@@ -320,7 +320,7 @@ public class ObjectManager
 		try
 		{
 			ChainManager chainManager = new ChainManager(project);
-			FactorSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
+			FactorSet cmNodeSet = chainManager.findFactorsThatUseThisAnnotation(objectType, objectId); 
 			Iterator iterator = cmNodeSet.iterator();
 			if (!iterator.hasNext())
 				return ""; 

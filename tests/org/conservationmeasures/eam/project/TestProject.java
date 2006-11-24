@@ -602,13 +602,13 @@ public class TestProject extends EAMTestCase
 		nodeA.getUnderlyingObject().setObjectives(objectiveId);
 		nodeB.getUnderlyingObject().setObjectives(objectiveId);
 		
-		FactorSet foundNodes = chainManager.findNodesThatUseThisObjective(objectiveId1);
+		FactorSet foundNodes = chainManager.findFactorsThatUseThisObjective(objectiveId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		FactorSet noNodes = chainManager.findNodesThatUseThisObjective(objectiveId2);
+		FactorSet noNodes = chainManager.findFactorsThatUseThisObjective(objectiveId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 		
@@ -628,7 +628,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
-		FactorSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
+		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObjective(objectiveId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
@@ -652,13 +652,13 @@ public class TestProject extends EAMTestCase
 		nodeA.getUnderlyingObject().setIndicators(indicators1);
 		nodeB.getUnderlyingObject().setIndicators(indicators1);
 		
-		FactorSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
+		FactorSet foundNodes = chainManager.findFactorsThatUseThisIndicator(indicatorId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		FactorSet noNodes = chainManager.findNodesThatUseThisIndicator(indicatorId2);
+		FactorSet noNodes = chainManager.findFactorsThatUseThisIndicator(indicatorId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 	}
@@ -675,7 +675,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
-		FactorSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
+		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisIndicator(indicatorId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
