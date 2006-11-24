@@ -22,7 +22,7 @@ public class DiagramStrategy extends DiagramNode
 	public Color getColor()
 	{
 		if(isStatusDraft())
-			return DiagramConstants.COLOR_DRAFT_INTERVENTION;
+			return DiagramConstants.COLOR_DRAFT_STRATEGY;
 		
 		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
 	}

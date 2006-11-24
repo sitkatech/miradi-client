@@ -20,6 +20,6 @@ public class DraftInterventionIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return DiagramConstants.COLOR_DRAFT_INTERVENTION;
+		return DiagramConstants.COLOR_DRAFT_STRATEGY;
 	}
 }

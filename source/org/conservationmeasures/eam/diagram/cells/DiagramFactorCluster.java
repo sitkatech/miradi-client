@@ -26,7 +26,7 @@ public class DiagramFactorCluster extends DiagramNode
 
 	public Color getColor()
 	{
-		return DiagramConstants.COLOR_CLUSTER;
+		return DiagramConstants.COLOR_FACTOR_CLUSTER;
 	}
 
 	public Command[] buildCommandsToClear()

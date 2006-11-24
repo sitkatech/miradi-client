@@ -21,7 +21,7 @@ public class ClusterIcon extends EamIcon
 
 	Color getIconColor()
 	{
-		return DiagramConstants.COLOR_CLUSTER;
+		return DiagramConstants.COLOR_FACTOR_CLUSTER;
 	}
 
 }
