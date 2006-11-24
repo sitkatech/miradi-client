@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -22,13 +22,13 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 abstract public class Factor extends EAMBaseObject
 {
-	protected Factor(BaseId idToUse, NodeType nodeType)
+	protected Factor(BaseId idToUse, FactorType nodeType)
 	{
 		super(idToUse);
 		type = nodeType;
 	}
 	
-	protected Factor(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
+	protected Factor(ModelNodeId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		type = nodeType;
@@ -44,14 +44,14 @@ abstract public class Factor extends EAMBaseObject
 		return ObjectType.MODEL_NODE;
 	}
 	
-	public NodeType getNodeType()
+	public FactorType getNodeType()
 	{
 		if(isDirectThreat() || isIndirectFactor())
-			return new NodeTypeCause();
+			return new FactorTypeCause();
 		return type;
 	}
 	
-	public void setNodeType(NodeType typeToUse)
+	public void setNodeType(FactorType typeToUse)
 	{
 		type = typeToUse;
 	}
@@ -154,13 +154,13 @@ abstract public class Factor extends EAMBaseObject
 	public static Factor createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
-		if(typeString.equals(NodeTypeStrategy.STRATEGY_TYPE))
+		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
 			return new Strategy(new ModelNodeId(idAsInt), json);
-		if(typeString.equals(NodeTypeCause.CAUSE_TYPE))
+		if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
 			return new Cause(new ModelNodeId(idAsInt), json);
-		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
+		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
 			return new Target(new ModelNodeId(idAsInt), json);
-		if(typeString.equals(NodeTypeCluster.CLUSTER_TYPE))
+		if(typeString.equals(FactorTypeCluster.CLUSTER_TYPE))
 			return new FactorCluster(new ModelNodeId(idAsInt), json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
@@ -181,7 +181,7 @@ abstract public class Factor extends EAMBaseObject
 	
 	public static Factor createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
 	{
-		NodeType nodeType = parameter.getNodeType();
+		FactorType nodeType = parameter.getNodeType();
 		if(nodeType.isStrategy())
 			return new Strategy(idToCreate);
 		else if(nodeType.isCause())
@@ -208,11 +208,11 @@ abstract public class Factor extends EAMBaseObject
 		addField(TAG_GOAL_IDS, goals);
 	}
 
-	public static final NodeType TYPE_INVALID = null;
-	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
-	public static final NodeType TYPE_CAUSE = new NodeTypeCause();
-	public static final NodeType TYPE_INTERVENTION = new NodeTypeStrategy();
-	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
+	public static final FactorType TYPE_INVALID = null;
+	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
+	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
+	public static final FactorType TYPE_INTERVENTION = new FactorTypeStrategy();
+	public static final FactorType TYPE_CLUSTER = new FactorTypeCluster();
 	
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
@@ -220,7 +220,7 @@ abstract public class Factor extends EAMBaseObject
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
 	public static final String TAG_GOAL_IDS = "GoalIds";
 	
-	private NodeType type;
+	private FactorType type;
 	private StringData comment;
 
 	private IdListData indicators;

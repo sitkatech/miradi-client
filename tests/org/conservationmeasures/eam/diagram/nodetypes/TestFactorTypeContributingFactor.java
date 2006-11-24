@@ -6,19 +6,19 @@
 
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeContributingFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeContributingFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeTypeContributingFactor extends EAMTestCase 
+public class TestFactorTypeContributingFactor extends EAMTestCase 
 {
-	public TestNodeTypeContributingFactor(String name) 
+	public TestFactorTypeContributingFactor(String name) 
 	{
 		super(name);
 	}
 	
 	public void testBasics() throws Exception
 	{
-		NodeTypeContributingFactor factor = new NodeTypeContributingFactor();
+		FactorTypeContributingFactor factor = new FactorTypeContributingFactor();
 		assertTrue("Not a contributing factor?", factor.isContributingFactor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isStrategy());

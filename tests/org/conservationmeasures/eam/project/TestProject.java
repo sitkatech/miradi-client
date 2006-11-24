@@ -21,9 +21,9 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -132,8 +132,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
-		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeTarget()));
+		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeCause()));
+		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeTarget()));
 		Cause factor = (Cause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
@@ -568,8 +568,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testLinkagePool() throws Exception
 	{
-		DiagramNode nodeA = createNode(new NodeTypeCause());
-		DiagramNode nodeB = createNode(new NodeTypeTarget());
+		DiagramNode nodeA = createNode(new FactorTypeCause());
+		DiagramNode nodeB = createNode(new FactorTypeTarget());
 		ModelNodeId idA = nodeA.getWrappedId();
 		ModelNodeId idB = nodeB.getWrappedId();
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(idA, idB);
@@ -589,9 +589,9 @@ public class TestProject extends EAMTestCase
 
 	public void testFindNodesThatUseThisObjective() throws Exception
 	{
-		DiagramNode nodeA = createNode(new NodeTypeTarget());
-		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		createNode(new NodeTypeTarget());
+		DiagramNode nodeA = createNode(new FactorTypeTarget());
+		DiagramNode nodeB = createNode(new FactorTypeTarget());
+		createNode(new FactorTypeTarget());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		BaseId objectiveId2 = project.createObject(ObjectType.OBJECTIVE);
@@ -616,8 +616,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeCause());
-		DiagramNode nodeDirectThreat = createNode(new NodeTypeCause());
+		DiagramNode nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramNode nodeDirectThreat = createNode(new FactorTypeCause());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
 		
@@ -640,9 +640,9 @@ public class TestProject extends EAMTestCase
 	public void testFindNodesThatUseThisIndicator() throws Exception
 	{
 		
-		DiagramNode nodeA = createNode(new NodeTypeTarget());
-		DiagramNode nodeB = createNode(new NodeTypeTarget());
-		createNode(new NodeTypeTarget());
+		DiagramNode nodeA = createNode(new FactorTypeTarget());
+		DiagramNode nodeB = createNode(new FactorTypeTarget());
+		createNode(new FactorTypeTarget());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IndicatorId indicatorId2 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
@@ -665,8 +665,8 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeCause());
-		DiagramNode nodeDirectThreat = createNode(new NodeTypeCause());
+		DiagramNode nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramNode nodeDirectThreat = createNode(new FactorTypeCause());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList();
@@ -686,10 +686,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testDirectThreatSet() throws Exception
 	{
-		DiagramNode nodeIndirectFactor = createNode(new NodeTypeCause());
-		DiagramNode nodeDirectThreatA = createNode(new NodeTypeCause());	
+		DiagramNode nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramNode nodeDirectThreatA = createNode(new FactorTypeCause());	
 		((Cause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
-		DiagramNode nodeDirectThreatB = createNode(new NodeTypeCause());
+		DiagramNode nodeDirectThreatB = createNode(new FactorTypeCause());
 		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
@@ -788,7 +788,7 @@ public class TestProject extends EAMTestCase
 		}
 	}
 	
-	private DiagramNode createNode(NodeType nodeType) throws Exception
+	private DiagramNode createNode(FactorType nodeType) throws Exception
 	{
 		ModelNodeId insertedId = project.createNodeAndAddToDiagram(nodeType, BaseId.INVALID);
 		return project.getDiagramModel().getNodeById(insertedId);
@@ -802,7 +802,7 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getLinkageById(diagramLinkageId);
 	}
 
-	public ModelNodeId createNodeAndAddToDiagram(Project projectToUse, NodeType nodeType, BaseId id) throws Exception
+	public ModelNodeId createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType, BaseId id) throws Exception
 	{
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
 		ModelNodeId nodeId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, id, parameter);

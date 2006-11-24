@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 
 
 
-public abstract class NodeType
+public abstract class FactorType
 {
 	public boolean isStrategy()
 	{

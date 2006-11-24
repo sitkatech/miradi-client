@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -31,7 +31,7 @@ public class TestLinkagePool extends TestCaseEnhanced
 	public void testHasLinkage() throws Exception
 	{
 		LinkagePool pool = new LinkagePool(new LinkageMonitor());
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
+		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeCause());
 		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);

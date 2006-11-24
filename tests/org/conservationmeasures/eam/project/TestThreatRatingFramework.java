@@ -10,8 +10,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -213,7 +213,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
+		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeCause()));
 		ModelNodeId targetId = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
@@ -308,13 +308,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ModelNodeId createTarget(Project projectToUse) throws Exception
 	{
-		ModelNodeId targetId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeTarget()));
+		ModelNodeId targetId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeTarget()));
 		return targetId;
 	}
 
 	private ModelNodeId createThreat(Project projectToUse) throws Exception
 	{
-		ModelNodeId threatId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
+		ModelNodeId threatId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeCause()));
 		((Cause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

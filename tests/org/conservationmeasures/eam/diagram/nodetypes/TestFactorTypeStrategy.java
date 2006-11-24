@@ -6,19 +6,19 @@
 
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeTypeStrategy extends EAMTestCase 
+public class TestFactorTypeStrategy extends EAMTestCase 
 {
-	public TestNodeTypeStrategy(String name) 
+	public TestFactorTypeStrategy(String name) 
 	{
 		super(name);
 	}
 	
 	public void testBasics() throws Exception
 	{
-		NodeTypeStrategy factor = new NodeTypeStrategy();
+		FactorTypeStrategy factor = new FactorTypeStrategy();
 		assertTrue("Not a strategy?", factor.isStrategy());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isTarget());

@@ -6,21 +6,21 @@
 
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeTypeDirectThreat extends EAMTestCase 
+public class TestFactorTypeTarget extends EAMTestCase 
 {
-	public TestNodeTypeDirectThreat(String name) 
+	public TestFactorTypeTarget(String name) 
 	{
 		super(name);
 	}
 	
 	public void testBasics() throws Exception
 	{
-		NodeTypeDirectThreat factor = new NodeTypeDirectThreat();
-		assertTrue("Not a Direct Threat?", factor.isDirectThreat());
-		assertFalse(factor.isTarget());
+		FactorTypeTarget factor = new FactorTypeTarget();
+		assertTrue("Not a Target?", factor.isTarget());
+		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isStrategy());
 		assertFalse(factor.isContributingFactor());
 	}

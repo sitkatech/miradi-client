@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
@@ -204,7 +204,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private ModelNodeId createModelAndDiagramNodeWithCommands(NodeType type) throws Exception
+	private ModelNodeId createModelAndDiagramNodeWithCommands(FactorType type) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);

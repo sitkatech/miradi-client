@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -126,12 +126,12 @@ abstract public class DiagramNode extends EAMGraphCell
 		underlyingObject.setLabel(name);
 	}
 
-	public NodeType getNodeType()
+	public FactorType getNodeType()
 	{
 		return underlyingObject.getNodeType();
 	}
 
-	public void setNodeType(NodeType typeToUse)
+	public void setNodeType(FactorType typeToUse)
 	{
 		underlyingObject.setNodeType(typeToUse);
 		setColors();

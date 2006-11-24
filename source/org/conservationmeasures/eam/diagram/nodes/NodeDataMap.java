@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.json.JSONObject;
 
@@ -35,27 +35,27 @@ public class NodeDataMap extends DataMap
 		super(copyFrom);
 	}
 	
-	public static NodeType convertIntToNodeType(int rawType)
+	public static FactorType convertIntToNodeType(int rawType)
 	{
 		switch(rawType)
 		{
 			case NodeDataMap.INT_TYPE_TARGET:
-				return new NodeTypeTarget();
+				return new FactorTypeTarget();
 			case NodeDataMap.INT_TYPE_INDIRECT_FACTOR:
-				return new NodeTypeCause();
+				return new FactorTypeCause();
 			case NodeDataMap.INT_TYPE_DIRECT_THREAT:
-				return new NodeTypeCause();
+				return new FactorTypeCause();
 			case NodeDataMap.INT_TYPE_INTERVENTION:
-				return new NodeTypeStrategy();
+				return new FactorTypeStrategy();
 			case NodeDataMap.INT_TYPE_CLUSTER:
-				return new NodeTypeCluster();
+				return new FactorTypeCluster();
 			default:
 				throw new RuntimeException("Unknown factor type: " + rawType);
 		}
 		
 	}
 	
-	public static int convertNodeTypeToInt(NodeType type)
+	public static int convertNodeTypeToInt(FactorType type)
 	{
 		if(type.isTarget())
 			return NodeDataMap.INT_TYPE_TARGET;

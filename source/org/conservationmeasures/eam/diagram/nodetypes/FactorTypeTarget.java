@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.nodetypes;
 
 
-public class NodeTypeTarget extends NodeType
+public class FactorTypeTarget extends FactorType
 {
 	public boolean isTarget()
 	{

@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 
 
 
-public class NodeTypeContributingFactor extends NodeTypeCause
+public class FactorTypeContributingFactor extends FactorTypeCause
 {
 	public boolean isContributingFactor()
 	{

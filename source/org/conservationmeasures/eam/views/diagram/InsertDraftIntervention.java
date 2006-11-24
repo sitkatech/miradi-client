@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.nodes.DiagramStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,7 +39,7 @@ public class InsertDraftIntervention extends InsertNode
 		return false;
 	}
 	
-	public NodeType getTypeToInsert()
+	public FactorType getTypeToInsert()
 	{
 		return Factor.TYPE_INTERVENTION;
 	}

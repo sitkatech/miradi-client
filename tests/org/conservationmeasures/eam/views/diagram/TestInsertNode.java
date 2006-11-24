@@ -12,7 +12,7 @@ import java.io.IOException;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -149,7 +149,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	
 	private DiagramNode createDiagramNode(Project project) throws Exception
 	{
-		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new NodeTypeTarget());
+		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new FactorTypeTarget());
 		ModelNodeId nodeId2 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
 		DiagramNodeId  dModelId2 = project.addNodeToDiagram(nodeId2);
 		DiagramNode dNode2 = project.getDiagramModel().getNodeById(dModelId2);

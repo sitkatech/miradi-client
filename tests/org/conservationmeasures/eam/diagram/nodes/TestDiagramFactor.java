@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -49,7 +49,7 @@ public class TestDiagramFactor extends EAMTestCase
 		Cause cmIndirectFactor = new Cause(takeNextModelNodeId());
 		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
-		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
+		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new FactorTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		ModelNodeId cmTargetId = new ModelNodeId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);

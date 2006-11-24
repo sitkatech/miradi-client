@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -76,7 +76,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));
 	}
 
-	private DiagramNode createNode(NodeType nodeType) throws Exception
+	private DiagramNode createNode(FactorType nodeType) throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(idAssigner.takeNextId().asInt());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);

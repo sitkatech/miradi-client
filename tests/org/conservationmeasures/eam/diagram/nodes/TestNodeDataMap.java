@@ -5,12 +5,12 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeContributingFactor;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeContributingFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataMap extends EAMTestCase
@@ -22,19 +22,19 @@ public class TestNodeDataMap extends EAMTestCase
 
 	public void testConvertNodeTypeToInt()
 	{
-		assertEquals(NodeDataMap.INT_TYPE_TARGET, NodeDataMap.convertNodeTypeToInt(new NodeTypeTarget()));
-		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeDirectThreat()));
-		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeContributingFactor()));
-		assertEquals(NodeDataMap.INT_TYPE_INTERVENTION, NodeDataMap.convertNodeTypeToInt(new NodeTypeStrategy()));
-		assertEquals(NodeDataMap.INT_TYPE_CLUSTER, NodeDataMap.convertNodeTypeToInt(new NodeTypeCluster()));
+		assertEquals(NodeDataMap.INT_TYPE_TARGET, NodeDataMap.convertNodeTypeToInt(new FactorTypeTarget()));
+		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new FactorTypeDirectThreat()));
+		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new FactorTypeContributingFactor()));
+		assertEquals(NodeDataMap.INT_TYPE_INTERVENTION, NodeDataMap.convertNodeTypeToInt(new FactorTypeStrategy()));
+		assertEquals(NodeDataMap.INT_TYPE_CLUSTER, NodeDataMap.convertNodeTypeToInt(new FactorTypeCluster()));
 	}
 	
 	public void testConvertIntToNodeType()
 	{
-		assertEquals(new NodeTypeTarget(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_TARGET));
-		assertEquals(new NodeTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_DIRECT_THREAT));
-		assertEquals(new NodeTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INDIRECT_FACTOR));
-		assertEquals(new NodeTypeStrategy(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INTERVENTION));
-		assertEquals(new NodeTypeCluster(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_CLUSTER));
+		assertEquals(new FactorTypeTarget(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_TARGET));
+		assertEquals(new FactorTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_DIRECT_THREAT));
+		assertEquals(new FactorTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INDIRECT_FACTOR));
+		assertEquals(new FactorTypeStrategy(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INTERVENTION));
+		assertEquals(new FactorTypeCluster(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_CLUSTER));
 	}
 }

@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -29,7 +29,7 @@ public class TestCommandCreateObject extends EAMTestCase
 		try
 		{
 			int type = ObjectType.MODEL_NODE;
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeCause());
 			CommandCreateObject cmd = new CommandCreateObject(type, parameter);
 			assertEquals("already has an id?", BaseId.INVALID, cmd.getCreatedId());
 			assertEquals("didn't memorize extraInfo?", parameter, cmd.getParameter());

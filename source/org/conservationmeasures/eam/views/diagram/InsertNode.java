@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -26,7 +26,7 @@ import org.conservationmeasures.eam.project.NodeCommandHelper;
 
 abstract public class InsertNode extends LocationDoer
 {
-	abstract public NodeType getTypeToInsert();
+	abstract public FactorType getTypeToInsert();
 	abstract public String getInitialText();
 	abstract public void forceVisibleInLayerManager();
 
@@ -73,7 +73,7 @@ abstract public class InsertNode extends LocationDoer
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
 
 		getProject().executeCommand(new CommandBeginTransaction());
-		NodeType nodeType = getTypeToInsert();
+		FactorType nodeType = getTypeToInsert();
 		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType).getModelNodeId();
 		DiagramNode addedNode = getProject().getDiagramModel().getNodeById(id);
 
@@ -93,7 +93,7 @@ abstract public class InsertNode extends LocationDoer
 		return id;
 	}
 	
-	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, NodeType nodeType, DiagramNode addedNode)
+	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, FactorType nodeType, DiagramNode addedNode)
 	{
 		if (createAt != null)
 			return createAt;

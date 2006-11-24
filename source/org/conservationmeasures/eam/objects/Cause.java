@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -14,7 +14,7 @@ public class Cause extends Factor
 {
 	public Cause(ModelNodeId idToUse)
 	{
-		super(idToUse, new NodeTypeCause());
+		super(idToUse, new FactorTypeCause());
 		clear();
 	}
 	

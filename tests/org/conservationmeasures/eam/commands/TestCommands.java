@@ -13,10 +13,10 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
@@ -57,7 +57,7 @@ public class TestCommands extends EAMTestCase
 
 	private void consumeNodeIdZero() throws Exception
 	{
-		project.createNode(new NodeTypeTarget());
+		project.createNode(new FactorTypeTarget());
 	}
 	
 	public void tearDown() throws Exception
@@ -305,20 +305,20 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandAddTarget() throws Exception
 	{
-		verifyDiagramAddNode(new NodeTypeTarget());
+		verifyDiagramAddNode(new FactorTypeTarget());
 	}
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		verifyDiagramAddNode(new NodeTypeCause());
+		verifyDiagramAddNode(new FactorTypeCause());
 	}
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		verifyDiagramAddNode(new NodeTypeStrategy());
+		verifyDiagramAddNode(new FactorTypeStrategy());
 	}
 
-	private void verifyDiagramAddNode(NodeType type) throws Exception, CommandFailedException
+	private void verifyDiagramAddNode(FactorType type) throws Exception, CommandFailedException
 	{
 		ModelNodeId modelNodeId = project.createNode(type);
 		CommandDiagramAddNode add = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
@@ -365,7 +365,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		NodeType type = Factor.TYPE_CAUSE;
+		FactorType type = Factor.TYPE_CAUSE;
 
 		DiagramNodeId from = insertNode(type);
 		DiagramNodeId to = insertTarget();
@@ -548,23 +548,23 @@ public class TestCommands extends EAMTestCase
 	
 	private DiagramNodeId insertTarget() throws Exception
 	{
-		NodeType type = Factor.TYPE_TARGET;
+		FactorType type = Factor.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
 	private DiagramNodeId insertIndirectFactor() throws Exception
 	{
-		NodeType type = Factor.TYPE_CAUSE;
+		FactorType type = Factor.TYPE_CAUSE;
 		return insertNode(type);
 	}
 
 	private DiagramNodeId insertIntervention() throws Exception
 	{
-		NodeType type = Factor.TYPE_INTERVENTION;
+		FactorType type = Factor.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 
-	private DiagramNodeId insertNode(NodeType type) throws Exception
+	private DiagramNodeId insertNode(FactorType type) throws Exception
 	{
 		ModelNodeId modelNodeId = project.createNode(type);
 		CommandDiagramAddNode add = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);

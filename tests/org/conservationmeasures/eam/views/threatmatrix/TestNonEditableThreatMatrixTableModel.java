@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.views.threatmatrix;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -126,17 +126,17 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	private ModelNodeId createThreat(String name) throws Exception
 	{
-		ModelNodeId createdId = createNode(new NodeTypeCause(), name);
+		ModelNodeId createdId = createNode(new FactorTypeCause(), name);
 		((Cause)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}
 
 	private ModelNodeId createTarget(String name) throws Exception
 	{
-		return createNode(new NodeTypeTarget(), name);
+		return createNode(new FactorTypeTarget(), name);
 	}
 
-	private ModelNodeId createNode(NodeType type, String name) throws Exception
+	private ModelNodeId createNode(FactorType type, String name) throws Exception
 	{
 		ModelNodeId id = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);

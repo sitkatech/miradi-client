@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -35,12 +35,12 @@ public class TestDiagramFactorLink extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
 
-		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new NodeTypeStrategy());
+		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new FactorTypeStrategy());
 		BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
 		ModelNodeId interventionId = new ModelNodeId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
-		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
+		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new FactorTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		ModelNodeId targetId = new ModelNodeId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);

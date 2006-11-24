@@ -25,9 +25,9 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeContributingFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeContributingFactor;
 import org.conservationmeasures.eam.dialogfields.legacy.LegacyChoiceDialogField;
 import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -136,9 +136,9 @@ public class NodePropertiesPanel extends DisposablePanel
 		if(node.isFactor())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
-			String subTypeString = new NodeTypeContributingFactor().toString();
+			String subTypeString = new FactorTypeContributingFactor().toString();
 			if(node.isDirectThreat())
-				subTypeString = new NodeTypeDirectThreat().toString();
+				subTypeString = new FactorTypeDirectThreat().toString();
 			grid.add(new UiLabel(subTypeString));
 		}
 
@@ -591,9 +591,9 @@ public class NodePropertiesPanel extends DisposablePanel
 		{
 			Component cell = super.getListCellRendererComponent(list, value,
 					index, isSelected, cellHasFocus);
-			if(((NodeType) value).isDirectThreat())
+			if(((FactorType) value).isDirectThreat())
 				setIcon(new DirectThreatIcon());
-			if(((NodeType) value).isContributingFactor())
+			if(((FactorType) value).isContributingFactor())
 				setIcon(new IndirectFactorIcon());
 			return cell;
 		}

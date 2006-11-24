@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataHelper;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -41,7 +41,7 @@ public class NodeCommandHelper
 		project = projectToUse;
 	}
 
-	public CommandDiagramAddNode createNode(NodeType nodeType) throws Exception
+	public CommandDiagramAddNode createNode(FactorType nodeType) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
@@ -82,7 +82,7 @@ public class NodeCommandHelper
 			NodeDataMap nodeData = nodes[i];
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 			
-			NodeType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
+			FactorType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
 			CommandDiagramAddNode addCommand = createNode(type);
 			DiagramNodeId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);

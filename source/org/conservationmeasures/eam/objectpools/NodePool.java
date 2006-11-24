@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -56,7 +56,7 @@ public class NodePool extends EAMObjectPool
 
 	public Factor[] getInterventions()
 	{
-		return getNodesOfType(new NodeTypeStrategy());
+		return getNodesOfType(new FactorTypeStrategy());
 	}
 	
 	public Factor[] getDirectThreats()
@@ -75,10 +75,10 @@ public class NodePool extends EAMObjectPool
 
 	public Factor[] getTargets()
 	{
-		return getNodesOfType(new NodeTypeTarget());
+		return getNodesOfType(new FactorTypeTarget());
 	}
 
-	private Factor[] getNodesOfType(NodeType type)
+	private Factor[] getNodesOfType(FactorType type)
 	{
 		Vector cmNodes = new Vector();
 		ModelNodeId[] ids = getModelNodeIds();

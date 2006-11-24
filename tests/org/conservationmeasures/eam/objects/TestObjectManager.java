@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -59,10 +59,10 @@ public class TestObjectManager extends EAMTestCase
 			verifyObjectLifecycle(types[i], null);
 		}
 		
-		CreateModelNodeParameter factor = new CreateModelNodeParameter(new NodeTypeCause());
+		CreateModelNodeParameter factor = new CreateModelNodeParameter(new FactorTypeCause());
 		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
 		
-		CreateModelNodeParameter target = new CreateModelNodeParameter(new NodeTypeTarget());
+		CreateModelNodeParameter target = new CreateModelNodeParameter(new FactorTypeTarget());
 		ModelNodeId factorId = (ModelNodeId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
 		ModelNodeId targetId = (ModelNodeId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
 		CreateModelLinkageParameter link = new CreateModelLinkageParameter(factorId, targetId);
@@ -152,7 +152,7 @@ public class TestObjectManager extends EAMTestCase
 	{
 		CreateObjectParameter cop = null;
 		if(type == ObjectType.MODEL_NODE)
-			cop = new CreateModelNodeParameter(new NodeTypeTarget());
+			cop = new CreateModelNodeParameter(new FactorTypeTarget());
 		else if(type == ObjectType.MODEL_LINKAGE)
 			cop = new CreateModelLinkageParameter(new ModelNodeId(1), new ModelNodeId(2));
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);

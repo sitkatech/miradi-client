@@ -12,7 +12,7 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -262,7 +262,7 @@ public class ObjectManager
 		return "";
 	}
 
-	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
+	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
 	{
 		String label ="";
 		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
@@ -282,7 +282,7 @@ public class ObjectManager
 		return label;
 	}
 
-	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
+	private String getRelatedDirectThreatLabelsAsMultiLine(FactorType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
 	{
 		String label ="";
 		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();

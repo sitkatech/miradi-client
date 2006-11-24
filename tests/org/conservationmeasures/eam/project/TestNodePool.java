@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -32,19 +32,19 @@ public class TestNodePool extends TestCaseEnhanced
 		for(int i = 0; i < 2; ++i)
 		{
 			ModelNodeId id = takeNextModelNodeId();
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeCause());
 			Cause node = (Cause)Factor.
 					createConceptualModelObject(id, parameter);
 			node.increaseTargetCount();
 			pool.put(node);
 		}
 		for(int i = 0; i < 3; ++i)
-			addNodeToPool(new NodeTypeCause());
+			addNodeToPool(new FactorTypeCause());
 		for(int i = 0; i < 4; ++i)
-			addNodeToPool(new NodeTypeTarget());
+			addNodeToPool(new FactorTypeTarget());
 	}
 	
-	private void addNodeToPool(NodeType type)
+	private void addNodeToPool(FactorType type)
 	{
 		ModelNodeId id = takeNextModelNodeId();
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(type);

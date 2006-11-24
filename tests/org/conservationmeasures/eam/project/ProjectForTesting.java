@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
+import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -43,7 +43,7 @@ public class ProjectForTesting extends Project
 		return (ProjectServerForTesting)getDatabase();
 	}
 	
-	public ModelNodeId createNode(NodeType nodeType) throws Exception
+	public ModelNodeId createNode(FactorType nodeType) throws Exception
 	{
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(nodeType);
 		ModelNodeId cmTargetId = (ModelNodeId)createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
@@ -51,7 +51,7 @@ public class ProjectForTesting extends Project
 	}
 	
 
-	public ModelNodeId createNodeAndAddToDiagram(NodeType nodeType, BaseId id) throws Exception
+	public ModelNodeId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
 	{
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
 		ModelNodeId nodeId = (ModelNodeId)createObject(ObjectType.MODEL_NODE, id, parameter);

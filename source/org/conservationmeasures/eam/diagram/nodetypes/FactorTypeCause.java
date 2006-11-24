@@ -6,18 +6,19 @@
 package org.conservationmeasures.eam.diagram.nodetypes;
 
 
-public class NodeTypeStrategy extends NodeType
+
+public class FactorTypeCause extends FactorType
 {
-	public boolean isStrategy()
+	public boolean isCause()
 	{
 		return true;
 	}
 	
 	public String toString()
 	{
-		return STRATEGY_TYPE; 
+		return CAUSE_TYPE;
 	}
 
-	public static final String STRATEGY_TYPE = "Intervention";
+	public static final String CAUSE_TYPE = "Factor";
 
 }
