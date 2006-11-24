@@ -9,6 +9,6 @@ import org.conservationmeasures.eam.ids.FactorId;
 
 public interface FactorLinkListener
 {
-	public void linkageWasCreated(FactorId fromId, FactorId toId);
-	public void linkageWasDeleted(FactorId fromId, FactorId toId);
+	public void factorLinkWasCreated(FactorId fromId, FactorId toId);
+	public void factorLinkWasDeleted(FactorId fromId, FactorId toId);
 }

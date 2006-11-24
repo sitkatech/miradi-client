@@ -395,7 +395,7 @@ public class ObjectManager
 
 	class LinkageMonitor implements FactorLinkListener
 	{
-		public void linkageWasCreated(FactorId linkFromId, FactorId linkToId)
+		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
 		{
 			Factor from = getNodePool().find(linkFromId); 
 			Factor to = getNodePool().find(linkToId);
@@ -403,7 +403,7 @@ public class ObjectManager
 				((Cause)from).increaseTargetCount();
 		}
 
-		public void linkageWasDeleted(FactorId linkFromId, FactorId linkToId)
+		public void factorLinkWasDeleted(FactorId linkFromId, FactorId linkToId)
 		{
 			Factor from = getNodePool().find(linkFromId);
 			Factor to = getNodePool().find(linkToId);

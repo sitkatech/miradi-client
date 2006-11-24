@@ -47,11 +47,11 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 	
 	class LinkageMonitor implements FactorLinkListener
 	{
-		public void linkageWasCreated(FactorId linkFromId, FactorId linkToId)
+		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
 		{
 		}
 
-		public void linkageWasDeleted(FactorId linkFromId, FactorId linkToId)
+		public void factorLinkWasDeleted(FactorId linkFromId, FactorId linkToId)
 		{
 		}		
 	}
