@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -42,7 +42,7 @@ public class TestDiagramAddLinkage extends EAMTestCase
 		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
 		project.executeCommand(command);
 
-		DiagramLinkage linkage = model.getLinkageById(command.getDiagramLinkageId());
+		DiagramFactorLink linkage = model.getLinkageById(command.getDiagramLinkageId());
 
 		assertEquals("not from intervention?", intervention, linkage.getFromNode());
 		assertEquals("not to target?", factor, linkage.getToNode());

@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
@@ -155,9 +155,9 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 	}
 	
-	public DiagramLinkage createLinkage(FactorLink cmLinkage) throws Exception
+	public DiagramFactorLink createLinkage(FactorLink cmLinkage) throws Exception
 	{
-		DiagramLinkage linkage = new DiagramLinkage(this, cmLinkage);
+		DiagramFactorLink linkage = new DiagramFactorLink(this, cmLinkage);
 		Object[] linkages = new Object[]{linkage};
 		Map nestedMap = getNestedAttributeMap(linkage);
 		DiagramNode from = getNodeById(linkage.getFromModelNodeId());
@@ -170,7 +170,7 @@ public class DiagramModel extends DefaultGraphModel
 		return linkage;
 	}
 	
-	public void deleteLinkage(DiagramLinkage linkageToDelete) throws Exception
+	public void deleteLinkage(DiagramFactorLink linkageToDelete) throws Exception
 	{
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
@@ -186,7 +186,7 @@ public class DiagramModel extends DefaultGraphModel
 		Vector linkages = cellInventory.getAllLinkages();
 		for(int i = 0; i < linkages.size(); ++i)
 		{
-			DiagramLinkage linkage = (DiagramLinkage)linkages.get(i);
+			DiagramFactorLink linkage = (DiagramFactorLink)linkages.get(i);
 			ModelNodeId foundId1 = linkage.getFromModelNodeId();
 			ModelNodeId foundId2 = linkage.getToModelNodeId();
 			if(foundId1.equals(nodeId1) && foundId2.equals(nodeId2))
@@ -328,17 +328,17 @@ public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getNodeById(id);
 	}
 
-	public DiagramLinkage getLinkageById(DiagramLinkageId id) throws Exception
+	public DiagramFactorLink getLinkageById(DiagramLinkageId id) throws Exception
 	{
-		DiagramLinkage linkage = cellInventory.getLinkageById(id);
+		DiagramFactorLink linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
 	
-	public DiagramLinkage getLinkageById(ModelLinkageId id) throws Exception
+	public DiagramFactorLink getLinkageById(ModelLinkageId id) throws Exception
 	{
-		DiagramLinkage linkage = cellInventory.getLinkageById(id);
+		DiagramFactorLink linkage = cellInventory.getLinkageById(id);
 		if(linkage == null)
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
@@ -349,7 +349,7 @@ public class DiagramModel extends DefaultGraphModel
 		return (cellInventory.getNodeById(node.getDiagramNodeId()) != null);
 	}
 
-	public boolean isLinkageInProject(DiagramLinkage linkage)
+	public boolean isLinkageInProject(DiagramFactorLink linkage)
 	{
 		return (cellInventory.getLinkageById(linkage.getDiagramLinkageId()) != null);
 	}
@@ -422,7 +422,7 @@ public class DiagramModel extends DefaultGraphModel
 			{
 				DiagramNode node = getNodeById(modelNodeId);
 				if(node.isCluster())
-					addNodesToCluster((DiagramCluster)node);
+					addNodesToCluster((DiagramFactorCluster)node);
 			}
 			catch(Exception e)
 			{
@@ -449,7 +449,7 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	void addNodesToCluster(DiagramCluster cluster) throws Exception
+	void addNodesToCluster(DiagramFactorCluster cluster) throws Exception
 	{
 		FactorCluster cmCluster = (FactorCluster)cluster.getUnderlyingObject();
 		IdList members = cmCluster.getMemberIds();

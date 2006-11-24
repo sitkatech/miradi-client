@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RoundRectangleRenderer;
@@ -20,7 +20,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class ClusterView extends CompoundVertexView
 {
-	public ClusterView(DiagramCluster clusterToUse)
+	public ClusterView(DiagramFactorCluster clusterToUse)
 	{
 		super(clusterToUse);
 		cluster = clusterToUse;
@@ -55,6 +55,6 @@ public class ClusterView extends CompoundVertexView
 		return rectangleCopy;
 	}
 
-	DiagramCluster cluster;
+	DiagramFactorCluster cluster;
 	protected static RectangleRenderer clusterRenderer = new RoundRectangleRenderer();
 }

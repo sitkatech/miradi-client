@@ -22,8 +22,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
@@ -665,14 +665,14 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
-	public void addNodeToCluster(DiagramCluster cluster, DiagramNode node)
+	public void addNodeToCluster(DiagramFactorCluster cluster, DiagramNode node)
 	{
 		ParentMap parentMap = new ParentMap();
 		parentMap.addEntry(node, cluster);
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
-	public void removeNodeFromCluster(DiagramCluster cluster, DiagramNode node)
+	public void removeNodeFromCluster(DiagramFactorCluster cluster, DiagramNode node)
 	{
 		DiagramNode[] nodes = {node};
 		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
@@ -704,7 +704,7 @@ public class Project
 	public ModelLinkageId removeLinkageFromDiagram(DiagramLinkageId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramLinkage linkageToDelete = model.getLinkageById(idToDelete);
+		DiagramFactorLink linkageToDelete = model.getLinkageById(idToDelete);
 		ModelLinkageId modelLinkageId = linkageToDelete.getWrappedId();
 		model.deleteLinkage(linkageToDelete);
 		return modelLinkageId;
@@ -714,7 +714,7 @@ public class Project
 	{
 		FactorLink cmLinkage = getLinkagePool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
-		DiagramLinkage linkage = model.createLinkage(cmLinkage);
+		DiagramFactorLink linkage = model.createLinkage(cmLinkage);
 		return linkage.getDiagramLinkageId();
 	}
 
@@ -802,16 +802,16 @@ public class Project
 		return (DiagramNode[])nodes.toArray(new DiagramNode[0]);
 	}
 	
-	public DiagramLinkage[] getOnlySelectedLinkages()
+	public DiagramFactorLink[] getOnlySelectedLinkages()
 	{
 		if(selectionModel == null)
-			return new DiagramLinkage[0];
+			return new DiagramFactorLink[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
 		return getOnlySelectedLinkages(rawCells);
 	}
 	
-	public DiagramLinkage[] getOnlySelectedLinkages(Object [] allSelectedCells)
+	public DiagramFactorLink[] getOnlySelectedLinkages(Object [] allSelectedCells)
 	{
 		Vector linkages = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
@@ -819,7 +819,7 @@ public class Project
 			if(((EAMGraphCell)allSelectedCells[i]).isLinkage())
 				linkages.add(allSelectedCells[i]);
 		}
-		return (DiagramLinkage[])linkages.toArray(new DiagramLinkage[0]);
+		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
 	}
 
 	

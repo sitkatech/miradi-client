@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.views;
 
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
@@ -48,7 +48,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		}
 		if(node.isCluster())
 		{
-			return new ClusterView((DiagramCluster)node);
+			return new ClusterView((DiagramFactorCluster)node);
 		}
 		throw new RuntimeException("Unknown node type");
 	}

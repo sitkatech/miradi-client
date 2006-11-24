@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestDiagramCluster extends EAMTestCase
+public class TestDiagramFactorCluster extends EAMTestCase
 {
-	public TestDiagramCluster(String name)
+	public TestDiagramFactorCluster(String name)
 	{
 		super(name);
 	}
@@ -27,7 +27,7 @@ public class TestDiagramCluster extends EAMTestCase
 		cmCluster.setData(FactorCluster.TAG_MEMBER_IDS, memberIds.toString());
 
 		DiagramNodeId nodeId = new DiagramNodeId(44);
-		DiagramCluster cluster = new DiagramCluster(nodeId, cmCluster);
+		DiagramFactorCluster cluster = new DiagramFactorCluster(nodeId, cmCluster);
 		Command[] commands = cluster.buildCommandsToClear();
 		CommandSetObjectData memberClearing = (CommandSetObjectData)commands[0];
 		assertEquals(new IdList().toString(), memberClearing.getDataValue());

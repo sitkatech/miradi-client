@@ -52,7 +52,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
@@ -408,7 +408,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		ModelNodeId clusterId = (ModelNodeId)cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
 		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
+		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getNodeById(clusterId);
 		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(FactorCluster.TAG_MEMBER_IDS));
 		
 		updateCluster(cluster.getWrappedId(), newMembers, oldMembers);
@@ -423,7 +423,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		idsToRemove.subtract(newMembers);
 
 		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
+		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getNodeById(clusterId);
 		
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{

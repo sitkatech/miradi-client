@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactor;
-import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramCause;
+import org.conservationmeasures.eam.diagram.nodes.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -39,9 +39,9 @@ public class TestLayerManager extends EAMTestCase
 		DiagramNodeId targetNodeId = new DiagramNodeId(44);
 		target = new DiagramTarget(targetNodeId, cmTarget);
 		DiagramNodeId factorNodeId = new DiagramNodeId(48);
-		factor = new DiagramFactor(factorNodeId, cmFactor);
+		factor = new DiagramCause(factorNodeId, cmFactor);
 		DiagramNodeId interventionNodeId = new DiagramNodeId(99);
-		intervention = new DiagramIntervention(interventionNodeId, cmIntervention);
+		intervention = new DiagramStrategy(interventionNodeId, cmIntervention);
 	}
 
 	public void testDefaultAllVisible() throws Exception
@@ -59,13 +59,13 @@ public class TestLayerManager extends EAMTestCase
 		DiagramNodeId nodeId1 = new DiagramNodeId(44);
 		DiagramNodeId nodeId2 = new DiagramNodeId(77);
 		LayerManager manager = new LayerManager();
-		manager.setVisibility(DiagramIntervention.class, false);
-		verifyVisibility("hidden type", false, new DiagramIntervention(nodeId1, cmIntervention), manager);
+		manager.setVisibility(DiagramStrategy.class, false);
+		verifyVisibility("hidden type", false, new DiagramStrategy(nodeId1, cmIntervention), manager);
 		verifyVisibility("non-hidden type", true, new DiagramTarget(nodeId2, cmTarget), manager);
 		assertFalse("All layers still visible?", manager.areAllNodesVisible());
 		
 		DiagramNodeId nodeId3 = new DiagramNodeId(99);
-		manager.setVisibility(DiagramIntervention.class, true);
+		manager.setVisibility(DiagramStrategy.class, true);
 		verifyVisibility("unhidden type", true, new DiagramTarget(nodeId3, cmTarget), manager);
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
 	}

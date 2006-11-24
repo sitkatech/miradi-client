@@ -9,9 +9,9 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeContributingFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeTypeIndirectFactor extends EAMTestCase 
+public class TestNodeTypeContributingFactor extends EAMTestCase 
 {
-	public TestNodeTypeIndirectFactor(String name) 
+	public TestNodeTypeContributingFactor(String name) 
 	{
 		super(name);
 	}

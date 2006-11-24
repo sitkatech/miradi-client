@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.EventObject;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 
 
@@ -25,9 +25,9 @@ public class DiagramModelEvent extends EventObject
 		return (DiagramNode)cell;
 	}
 	
-	public DiagramLinkage getLinkage()
+	public DiagramFactorLink getLinkage()
 	{
-		return (DiagramLinkage)cell;
+		return (DiagramFactorLink)cell;
 	}
 	
 	private EAMGraphCell cell;

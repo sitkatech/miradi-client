@@ -40,13 +40,13 @@ abstract public class DiagramNode extends EAMGraphCell
 	public static DiagramNode wrapConceptualModelObject(DiagramNodeId idToUse, Factor cmObject)
 	{
 		if(cmObject.isIntervention())
-			return new DiagramIntervention(idToUse, (Strategy)cmObject);
+			return new DiagramStrategy(idToUse, (Strategy)cmObject);
 		else if(cmObject.isFactor())
-			return new DiagramFactor(idToUse, (Cause)cmObject);
+			return new DiagramCause(idToUse, (Cause)cmObject);
 		else if(cmObject.isTarget())
 			return new DiagramTarget(idToUse, (Target)cmObject);
 		else if(cmObject.isCluster())
-			return new DiagramCluster(idToUse, (FactorCluster)cmObject);
+			return new DiagramFactorCluster(idToUse, (FactorCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}

@@ -11,7 +11,7 @@ import java.awt.datatransfer.DataFlavor;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
@@ -79,7 +79,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		ModelLinkageId linkage1Id = new ModelLinkageId(3);
 		FactorLink cmLinkage = new FactorLink(linkage1Id, node1Id, node2Id);
-		DiagramLinkage linkage1 = new DiagramLinkage(model, cmLinkage);
+		DiagramFactorLink linkage1 = new DiagramFactorLink(model, cmLinkage);
 		
 		EAMGraphCell dataCells[] = {node1, node2, linkage1};
 		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);

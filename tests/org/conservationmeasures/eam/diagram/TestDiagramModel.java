@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -138,7 +138,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode factor = createNode(Factor.TYPE_CAUSE);
 		DiagramNode target = createNode(Factor.TYPE_TARGET);
-		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
+		DiagramFactorLink link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
 		assertFalse("link is a node?", link.isNode());
@@ -170,8 +170,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramNode factor1 = createNode(Factor.TYPE_CAUSE);
 		DiagramNode factor2 = createNode(Factor.TYPE_CAUSE);
 		DiagramNode target = createNode(Factor.TYPE_TARGET);
-		DiagramLinkage linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
-		DiagramLinkage linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
+		DiagramFactorLink linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
+		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getLinkages(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
@@ -216,9 +216,9 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(Factor.TYPE_TARGET);		
 		DiagramNode node2 = createNode(Factor.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramNode node3 = createNode(Factor.TYPE_TARGET);		
-		DiagramLinkage link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramFactorLink link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector linkages = model.getAllLinkages();
 		assertEquals(2, linkages.size());
@@ -230,7 +230,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramNode node1 = createNode(Factor.TYPE_TARGET);		
 		DiagramNode node2 = createNode(Factor.TYPE_TARGET);		
-		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.toJson());
@@ -270,7 +270,7 @@ public class TestDiagramModel extends EAMTestCase
 
 		DiagramNode node2 = createNode(Factor.TYPE_TARGET);
 		DiagramNode node3 = createNode(Factor.TYPE_TARGET);
-		DiagramLinkage link1 = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
+		DiagramFactorLink link1 = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("add link did a node change notify?", 1, testModel.nodeChanged);
@@ -312,7 +312,7 @@ public class TestDiagramModel extends EAMTestCase
 		return model.createNode(cmObject.getModelNodeId());
 	}
 	
-	private DiagramLinkage createLinkage(ModelLinkageId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
+	private DiagramFactorLink createLinkage(ModelLinkageId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
 		FactorLink cmLinkage = new FactorLink(id, fromId, toId);
 		model.getLinkagePool().put(cmLinkage);

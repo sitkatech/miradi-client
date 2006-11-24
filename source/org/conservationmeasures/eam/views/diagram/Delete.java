@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
@@ -60,7 +60,7 @@ public class Delete extends ProjectDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isLinkage())
-					deleteLinkage((DiagramLinkage)cell);	
+					deleteLinkage((DiagramFactorLink)cell);	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
@@ -80,7 +80,7 @@ public class Delete extends ProjectDoer
 		}
 	}
 
-	private void deleteLinkage(DiagramLinkage linkageToDelete) throws CommandFailedException
+	private void deleteLinkage(DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{
 		DiagramLinkageId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveLinkage removeCommand = new CommandDiagramRemoveLinkage(id);
@@ -105,7 +105,7 @@ public class Delete extends ProjectDoer
 
 	private void removeFromCluster(DiagramNode nodeToDelete, DiagramNodeId id) throws ParseException, CommandFailedException
 	{
-		DiagramCluster cluster = (DiagramCluster)nodeToDelete.getParent();
+		DiagramFactorCluster cluster = (DiagramFactorCluster)nodeToDelete.getParent();
 		if(cluster != null)
 		{
 			CommandSetObjectData removeFromCluster = CommandSetObjectData.createRemoveIdCommand(

@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramCluster;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -109,7 +109,7 @@ public class NodeMoveHandler
 		if(node.isCluster())
 			return result;
 		
-		DiagramCluster cluster = getFirstClusterThatContains(node.getRectangle());
+		DiagramFactorCluster cluster = getFirstClusterThatContains(node.getRectangle());
 		if(cluster == null)
 			return result;
 		
@@ -124,7 +124,7 @@ public class NodeMoveHandler
 	private List buildDetachFromClusterCommand(DiagramNode node) throws ParseException
 	{
 		Vector result = new Vector();
-		DiagramCluster cluster = (DiagramCluster)node.getParent();
+		DiagramFactorCluster cluster = (DiagramFactorCluster)node.getParent();
 		if(cluster.getRectangle().contains(node.getRectangle()))
 			return result;
 		
@@ -136,7 +136,7 @@ public class NodeMoveHandler
 		return result;
 	}
 	
-	private DiagramCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
+	private DiagramFactorCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
 	{
 		DiagramModel model = getProject().getDiagramModel();
 		Vector allNodes = model.getAllNodes();
@@ -148,7 +148,7 @@ public class NodeMoveHandler
 				continue;
 			
 			if(possibleCluster.getRectangle().contains(candidateRect))
-				return (DiagramCluster)possibleCluster;
+				return (DiagramFactorCluster)possibleCluster;
 		}
 		
 		return null;

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -57,7 +57,7 @@ public class InsertDraftIntervention extends InsertNode
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramIntervention.class, true);
+		getProject().getLayerManager().setVisibility(DiagramStrategy.class, true);
 	}
 	
 }

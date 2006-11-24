@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
@@ -212,8 +212,8 @@ public class TestProject extends EAMTestCase
 		DiagramNode node2 =  createNode(Factor.TYPE_INTERVENTION);
 		DiagramNode node3 =  createNode(Factor.TYPE_CAUSE);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
-		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
+		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
@@ -239,7 +239,7 @@ public class TestProject extends EAMTestCase
 		DiagramNode node1 = createNode(Factor.TYPE_TARGET);
 		DiagramNode node2 =  createNode(Factor.TYPE_INTERVENTION);
 		
-		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
+		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
@@ -794,7 +794,7 @@ public class TestProject extends EAMTestCase
 		return project.getDiagramModel().getNodeById(insertedId);
 	}
 	
-	private DiagramLinkage createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
+	private DiagramFactorLink createLinkage(BaseId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
 		ModelLinkageId createdId = (ModelLinkageId)project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);

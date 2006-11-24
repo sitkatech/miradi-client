@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -231,7 +231,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		GraphLayoutCache glc = getGraphLayoutCache();
 		Vector allLinkages = getDiagramModel().getAllLinkages();
 		for (int i = 0 ; i < allLinkages.size(); i++){
-			DiagramLinkage dLinkage = (DiagramLinkage)allLinkages.elementAt(i);
+			DiagramFactorLink dLinkage = (DiagramFactorLink)allLinkages.elementAt(i);
 			if (glc.isVisible(dLinkage))
 				addSelectionCell(dLinkage);
 		}

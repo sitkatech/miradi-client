@@ -10,7 +10,7 @@ import java.awt.Point;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.ProjectScopeBox;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.dialogs.LinkagePropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
@@ -38,7 +38,7 @@ public class Properties extends LocationDoer
 			return true;
 		if(selected[0].isLinkage())
 		{
-			DiagramLinkage linkage = (DiagramLinkage)selected[0];
+			DiagramFactorLink linkage = (DiagramFactorLink)selected[0];
 			if(linkage.getToNode().isTarget())
 				return true;
 		}
@@ -56,7 +56,7 @@ public class Properties extends LocationDoer
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isLinkage())
-			doLinkageProperties((DiagramLinkage)selected);
+			doLinkageProperties((DiagramFactorLink)selected);
 	}
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
@@ -66,7 +66,7 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doLinkageProperties(DiagramLinkage linkage) throws CommandFailedException
+	void doLinkageProperties(DiagramFactorLink linkage) throws CommandFailedException
 	{
 		LinkagePropertiesPanel panel = new LinkagePropertiesPanel(getProject(), linkage.getWrappedId());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 

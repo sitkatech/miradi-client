@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -22,7 +22,7 @@ public class SelectChain extends ViewDoer
 	public boolean isAvailable()
 	{
 		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
-		DiagramLinkage[] selectedLinkages = getProject().getOnlySelectedLinkages();
+		DiagramFactorLink[] selectedLinkages = getProject().getOnlySelectedLinkages();
 		int combinedLengths = selectedLinkages.length + selectedNodes.length;
 		
 		if (combinedLengths != 1)
@@ -39,7 +39,7 @@ public class SelectChain extends ViewDoer
 		return isNode;
 	}
 
-	private boolean isLinkage(DiagramLinkage[] selectedLinkages)
+	private boolean isLinkage(DiagramFactorLink[] selectedLinkages)
 	{
 		boolean isLinkage  = false;
 		if (selectedLinkages.length == 1 )
@@ -81,8 +81,8 @@ public class SelectChain extends ViewDoer
 	
 	private void selectChainBasedOnLinkageSelection() throws Exception
 	{
-		DiagramLinkage[] onlySelectedLinkages = getProject().getOnlySelectedLinkages();
-		DiagramLinkage selectedLinkage = onlySelectedLinkages[0];
+		DiagramFactorLink[] onlySelectedLinkages = getProject().getOnlySelectedLinkages();
+		DiagramFactorLink selectedLinkage = onlySelectedLinkages[0];
 		DiagramModel diagramModel = getProject().getDiagramModel();
 		
 		ChainObject upstreamChain = new ChainObject();
@@ -118,7 +118,7 @@ public class SelectChain extends ViewDoer
 	{
 		for (int i = 0 ; i < linksInChain.length; i++)
 		{
-			DiagramLinkage linkToSelect = model.getLinkageById((ModelLinkageId)linksInChain[i].getId());
+			DiagramFactorLink linkToSelect = model.getLinkageById((ModelLinkageId)linksInChain[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(linkToSelect);
 		}

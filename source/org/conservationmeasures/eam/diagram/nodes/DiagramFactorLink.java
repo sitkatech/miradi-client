@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramLinkage extends EAMGraphCell implements Edge
+public class DiagramFactorLink extends EAMGraphCell implements Edge
 {
-	public DiagramLinkage(DiagramModel model, FactorLink cmLinkage) throws Exception
+	public DiagramFactorLink(DiagramModel model, FactorLink cmLinkage) throws Exception
 	{
 		underlyingObject = cmLinkage;
 		from = model.getNodeById(cmLinkage.getFromNodeId());

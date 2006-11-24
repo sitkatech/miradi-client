@@ -16,7 +16,7 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.nodes.DiagramConstants;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -32,7 +32,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
-		linkage = (DiagramLinkage)cellView.getCell();
+		linkage = (DiagramFactorLink)cellView.getCell();
 		if(sel)
 		{
 			renderer.lineWidth = 4;
@@ -57,7 +57,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
-		DiagramLinkage linkageToUse = (DiagramLinkage)viewToUse.getCell();
+		DiagramFactorLink linkageToUse = (DiagramFactorLink)viewToUse.getCell();
 		
 		String text = linkageToUse.getStressLabel();
 		if (text.length()==0)
@@ -68,7 +68,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 
 	
-	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, DiagramLinkage linkageToUse)
+	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, DiagramFactorLink linkageToUse)
 	{
 		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, linkageToUse);
 		Rectangle2D union = graphBounds.createUnion(textBounds);
@@ -76,7 +76,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 
 	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, DiagramLinkage linkageToUse)
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, DiagramFactorLink linkageToUse)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		
@@ -116,6 +116,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 	
 	private static final int CUSHION = 5;
-	DiagramLinkage linkage;
+	DiagramFactorLink linkage;
 	boolean isVisible;
 }

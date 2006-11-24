@@ -16,9 +16,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramCluster extends DiagramNode
+public class DiagramFactorCluster extends DiagramNode
 {
-	public DiagramCluster(DiagramNodeId idToUse, FactorCluster cmGroup)
+	public DiagramFactorCluster(DiagramNodeId idToUse, FactorCluster cmGroup)
 	{
 		super(idToUse, cmGroup);
 		GraphConstants.setGroupOpaque(getAttributes(), true);

@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
@@ -43,7 +43,7 @@ public class TransferableEamList implements Transferable
 			{
 				if(cell.isLinkage())
 				{
-					linkages.add(((DiagramLinkage)cell).createLinkageDataMap());
+					linkages.add(((DiagramFactorLink)cell).createLinkageDataMap());
 				}
 				if(cell.isNode())
 				{

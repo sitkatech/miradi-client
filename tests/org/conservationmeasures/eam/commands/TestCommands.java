@@ -11,7 +11,7 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
+import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
@@ -380,7 +380,7 @@ public class TestCommands extends EAMTestCase
 		CommandDiagramAddLinkage addLinkageCommand = new CommandDiagramAddLinkage(modelLinkageId);
 		project.executeCommand(addLinkageCommand);
 		
-		DiagramLinkage inserted = model.getLinkageById(modelLinkageId);
+		DiagramFactorLink inserted = model.getLinkageById(modelLinkageId);
 		DiagramNode fromNode = inserted.getFromNode();
 		assertEquals("wrong source?", from, fromNode.getDiagramNodeId());
 		DiagramNode toNode = inserted.getToNode();

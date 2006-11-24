@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestDiagramLinkage extends EAMTestCase
+public class TestDiagramFactorLink extends EAMTestCase
 {
-	public TestDiagramLinkage(String name)
+	public TestDiagramFactorLink(String name)
 	{
 		super(name);
 	}
@@ -58,7 +58,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
 		ModelLinkageId id = new ModelLinkageId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
+		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
 
@@ -72,7 +72,7 @@ public class TestDiagramLinkage extends EAMTestCase
 		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
 		ModelLinkageId id = new ModelLinkageId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramLinkage linkage = new DiagramLinkage(model, cmLinkage);
+		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
 		assertEquals(id, linkage.getDiagramLinkageId());
 	}
 	

@@ -32,9 +32,9 @@ import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.GraphConstants;
 
-public class TestDiagramNode extends EAMTestCase
+public class TestDiagramFactor extends EAMTestCase
 {
-	public TestDiagramNode(String name)
+	public TestDiagramFactor(String name)
 	{
 		super(name);
 	}

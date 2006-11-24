@@ -9,7 +9,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
+import org.conservationmeasures.eam.diagram.nodes.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -72,7 +72,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	
 	private void setControlsFromLayerManager()
 	{
-		interventionCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramIntervention.class));
+		interventionCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramStrategy.class));
 		factorCheckBox.setSelected(getLayerManager().areIndirectFactorsVisible());
 		threatCheckBox.setSelected(getLayerManager().areDirectThreatsVisible());
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
@@ -83,7 +83,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	
 	private void updateLayerManagerFromControls()
 	{
-		getLayerManager().setVisibility(DiagramIntervention.class, interventionCheckBox.isSelected());
+		getLayerManager().setVisibility(DiagramStrategy.class, interventionCheckBox.isSelected());
 		getLayerManager().setIndirectFactorsVisible(factorCheckBox.isSelected());
 		getLayerManager().setDirectThreatsVisible(threatCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
