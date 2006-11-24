@@ -7,18 +7,18 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 
 
 
-public class NodeTypeFactor extends NodeType
+public class NodeTypeCause extends NodeType
 {
-	public boolean isFactor()
+	public boolean isCause()
 	{
 		return true;
 	}
 	
 	public String toString()
 	{
-		return FACTOR_TYPE;
+		return CAUSE_TYPE;
 	}
 
-	public static final String FACTOR_TYPE = "Factor";
+	public static final String CAUSE_TYPE = "Factor";
 
 }

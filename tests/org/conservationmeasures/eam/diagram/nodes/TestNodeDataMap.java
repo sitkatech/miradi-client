@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
@@ -32,8 +32,8 @@ public class TestNodeDataMap extends EAMTestCase
 	public void testConvertIntToNodeType()
 	{
 		assertEquals(new NodeTypeTarget(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_TARGET));
-		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_DIRECT_THREAT));
-		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INDIRECT_FACTOR));
+		assertEquals(new NodeTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_DIRECT_THREAT));
+		assertEquals(new NodeTypeCause(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INDIRECT_FACTOR));
 		assertEquals(new NodeTypeIntervention(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INTERVENTION));
 		assertEquals(new NodeTypeCluster(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_CLUSTER));
 	}

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.threatmatrix;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -126,7 +126,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	private ModelNodeId createThreat(String name) throws Exception
 	{
-		ModelNodeId createdId = createNode(new NodeTypeFactor(), name);
+		ModelNodeId createdId = createNode(new NodeTypeCause(), name);
 		((ConceptualModelFactor)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}

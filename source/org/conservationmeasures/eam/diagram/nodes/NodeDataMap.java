@@ -10,7 +10,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
@@ -42,9 +42,9 @@ public class NodeDataMap extends DataMap
 			case NodeDataMap.INT_TYPE_TARGET:
 				return new NodeTypeTarget();
 			case NodeDataMap.INT_TYPE_INDIRECT_FACTOR:
-				return new NodeTypeFactor();
+				return new NodeTypeCause();
 			case NodeDataMap.INT_TYPE_DIRECT_THREAT:
-				return new NodeTypeFactor();
+				return new NodeTypeCause();
 			case NodeDataMap.INT_TYPE_INTERVENTION:
 				return new NodeTypeIntervention();
 			case NodeDataMap.INT_TYPE_CLUSTER:
@@ -68,7 +68,7 @@ public class NodeDataMap extends DataMap
 		if(type.isCluster())
 			return NodeDataMap.INT_TYPE_CLUSTER;
 		
-		if(type.isFactor())
+		if(type.isCause())
 			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
 
 		throw new RuntimeException("Unknown factor type: " + type);

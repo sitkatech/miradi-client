@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -26,8 +26,8 @@ public class SampleDiagramBuilder
 		for(int i = 0; i < itemsPerType; ++i)
 		{
 			project.createObject(ObjectType.MODEL_NODE, new BaseId(interventionIndexBase + i), new CreateModelNodeParameter(new NodeTypeIntervention()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateModelNodeParameter(new NodeTypeFactor()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateModelNodeParameter(new NodeTypeFactor()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateModelNodeParameter(new NodeTypeCause()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateModelNodeParameter(new NodeTypeCause()));
 			project.createObject(ObjectType.MODEL_NODE, new BaseId(targetIndexBase + i), new CreateModelNodeParameter(new NodeTypeTarget()));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)

@@ -69,7 +69,7 @@ public class TestDiagramAddNode extends EAMTestCase
 
 	public void testInsertFactor() throws Exception
 	{
-		project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
+		project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_CAUSE, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -80,7 +80,7 @@ public class TestDiagramAddNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isIndirectFactor());
-		assertEquals(ConceptualModelNode.TYPE_FACTOR, foundNode.getNodeType());
+		assertEquals(ConceptualModelNode.TYPE_CAUSE, foundNode.getNodeType());
 	}
 
 	public void testInsertIntervention() throws Exception

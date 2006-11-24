@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -59,7 +59,7 @@ public class TestObjectManager extends EAMTestCase
 			verifyObjectLifecycle(types[i], null);
 		}
 		
-		CreateModelNodeParameter factor = new CreateModelNodeParameter(new NodeTypeFactor());
+		CreateModelNodeParameter factor = new CreateModelNodeParameter(new NodeTypeCause());
 		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
 		
 		CreateModelNodeParameter target = new CreateModelNodeParameter(new NodeTypeTarget());

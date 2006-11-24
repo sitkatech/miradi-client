@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.nodes.DiagramLinkage;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -310,7 +310,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertFactor() throws Exception
 	{
-		verifyDiagramAddNode(new NodeTypeFactor());
+		verifyDiagramAddNode(new NodeTypeCause());
 	}
 
 	public void testCommandInsertIntervention() throws Exception
@@ -365,7 +365,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		NodeType type = ConceptualModelNode.TYPE_FACTOR;
+		NodeType type = ConceptualModelNode.TYPE_CAUSE;
 
 		DiagramNodeId from = insertNode(type);
 		DiagramNodeId to = insertTarget();
@@ -554,7 +554,7 @@ public class TestCommands extends EAMTestCase
 	
 	private DiagramNodeId insertIndirectFactor() throws Exception
 	{
-		NodeType type = ConceptualModelNode.TYPE_FACTOR;
+		NodeType type = ConceptualModelNode.TYPE_CAUSE;
 		return insertNode(type);
 	}
 

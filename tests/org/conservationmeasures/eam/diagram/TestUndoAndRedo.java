@@ -37,7 +37,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 
-		fromId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_FACTOR);
+		fromId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_CAUSE);
 		toId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_INTERVENTION);
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramLinkageId();
@@ -99,7 +99,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		ModelNodeId modelNodeId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
+		ModelNodeId modelNodeId = project.createNode(ConceptualModelNode.TYPE_CAUSE);
 		CommandDiagramAddNode insert = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(insert);
 		verifyNodePresent(insert.getInsertedId());
@@ -206,7 +206,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private ModelNodeId createModelAndDiagramNodeWithCommands(NodeType type) throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		project.executeCommand(createModelNodeCommand);
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();

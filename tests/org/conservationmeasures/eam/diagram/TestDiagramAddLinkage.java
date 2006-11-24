@@ -32,7 +32,7 @@ public class TestDiagramAddLinkage extends EAMTestCase
 
 		ModelNodeId interventionId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramNode intervention = model.getNodeById(interventionId);
-		ModelNodeId factorId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
+		ModelNodeId factorId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_CAUSE, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
 
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);

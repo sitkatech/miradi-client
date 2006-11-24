@@ -33,7 +33,7 @@ public class TestDelete extends EAMTestCase
 		
 		ModelNodeId interventionId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramNode intervention = model.getNodeById(interventionId);
-		ModelNodeId factorId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
+		ModelNodeId factorId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_CAUSE, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();

@@ -18,14 +18,14 @@ public class TestConceptualModelFactor extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	
 	public void testExtraInfo() throws Exception
 	{
 		ModelNodeId idToCreate = new ModelNodeId(17);
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
 		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idToCreate, extraInfo);
 		CreateModelNodeParameter gotExtraInfo = (CreateModelNodeParameter)node.getCreationExtraInfo();
 		assertEquals(extraInfo.getNodeType(), gotExtraInfo.getNodeType());

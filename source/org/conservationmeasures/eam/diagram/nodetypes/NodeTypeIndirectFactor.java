@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 
 
 
-public class NodeTypeIndirectFactor extends NodeTypeFactor
+public class NodeTypeIndirectFactor extends NodeTypeCause
 {
 	public boolean isIndirectFactor()
 	{

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 
 
 
-public class NodeTypeDirectThreat extends NodeTypeFactor
+public class NodeTypeDirectThreat extends NodeTypeCause
 {
 	public boolean isDirectThreat() 
 	{

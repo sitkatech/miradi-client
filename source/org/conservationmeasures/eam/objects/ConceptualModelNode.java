@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -47,7 +47,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 	public NodeType getNodeType()
 	{
 		if(isDirectThreat() || isIndirectFactor())
-			return new NodeTypeFactor();
+			return new NodeTypeCause();
 		return type;
 	}
 	
@@ -156,7 +156,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
 			return new ConceptualModelIntervention(new ModelNodeId(idAsInt), json);
-		if(typeString.equals(NodeTypeFactor.FACTOR_TYPE))
+		if(typeString.equals(NodeTypeCause.CAUSE_TYPE))
 			return new ConceptualModelFactor(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
 			return new ConceptualModelTarget(new ModelNodeId(idAsInt), json);
@@ -184,7 +184,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		NodeType nodeType = parameter.getNodeType();
 		if(nodeType.isIntervention())
 			return new ConceptualModelIntervention(idToCreate);
-		else if(nodeType.isFactor())
+		else if(nodeType.isCause())
 			return new ConceptualModelFactor(idToCreate);
 		else if(nodeType.isTarget())
 			return new ConceptualModelTarget(idToCreate);
@@ -210,7 +210,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 
 	public static final NodeType TYPE_INVALID = null;
 	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
-	public static final NodeType TYPE_FACTOR = new NodeTypeFactor();
+	public static final NodeType TYPE_CAUSE = new NodeTypeCause();
 	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
 	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
 	

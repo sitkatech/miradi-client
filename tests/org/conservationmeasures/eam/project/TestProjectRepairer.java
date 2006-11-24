@@ -159,7 +159,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.OBJECTIVE;
 		String nodeTagForAnnotationList = ConceptualModelNode.TAG_OBJECTIVE_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_CAUSE, nodeTagForAnnotationList);
 		
 	}
 
@@ -177,7 +177,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.INDICATOR;
 		String nodeTagForAnnotationList = ConceptualModelNode.TAG_INDICATOR_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_CAUSE, nodeTagForAnnotationList);
 		
 	}
 

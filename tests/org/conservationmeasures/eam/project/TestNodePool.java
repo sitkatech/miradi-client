@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -32,14 +32,14 @@ public class TestNodePool extends TestCaseEnhanced
 		for(int i = 0; i < 2; ++i)
 		{
 			ModelNodeId id = takeNextModelNodeId();
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeFactor());
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
 			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.
 					createConceptualModelObject(id, parameter);
 			node.increaseTargetCount();
 			pool.put(node);
 		}
 		for(int i = 0; i < 3; ++i)
-			addNodeToPool(new NodeTypeFactor());
+			addNodeToPool(new NodeTypeCause());
 		for(int i = 0; i < 4; ++i)
 			addNodeToPool(new NodeTypeTarget());
 	}

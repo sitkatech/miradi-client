@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -213,7 +213,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeFactor()));
+		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
 		ModelNodeId targetId = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
@@ -314,7 +314,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private ModelNodeId createThreat(Project projectToUse) throws Exception
 	{
-		ModelNodeId threatId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeFactor()));
+		ModelNodeId threatId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
 		((ConceptualModelFactor)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

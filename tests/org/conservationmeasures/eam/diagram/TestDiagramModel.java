@@ -136,7 +136,7 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testIsNode() throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
 		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
@@ -146,7 +146,7 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testCounts()throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
 		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getNodeCount());
@@ -155,9 +155,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
 		model.deleteNode(factor);
-		DiagramNode newFactor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode newFactor = createNode(ConceptualModelNode.TYPE_CAUSE);
 		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
@@ -167,8 +167,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetLinkages() throws Exception
 	{
-		DiagramNode factor1 = createNode(ConceptualModelNode.TYPE_FACTOR);
-		DiagramNode factor2 = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode factor1 = createNode(ConceptualModelNode.TYPE_CAUSE);
+		DiagramNode factor2 = createNode(ConceptualModelNode.TYPE_CAUSE);
 		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		DiagramLinkage linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
