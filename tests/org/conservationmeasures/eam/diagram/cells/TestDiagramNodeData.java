@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
-import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.Cause;
@@ -32,7 +32,7 @@ public class TestDiagramNodeData extends EAMTestCase
 		nodeA.setLabel(nodeAText);
 		Point location = new Point(5,22);
 		nodeA.setLocation(location);
-		NodeDataMap nodeAData = nodeA.createNodeDataMap();
+		FactorDataMap nodeAData = nodeA.createNodeDataMap();
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));

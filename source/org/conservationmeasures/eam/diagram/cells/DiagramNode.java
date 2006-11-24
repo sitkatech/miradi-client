@@ -388,9 +388,9 @@ abstract public class DiagramNode extends EAMGraphCell
 		};
 	}
 	
-	public NodeDataMap createNodeDataMap()
+	public FactorDataMap createNodeDataMap()
 	{
-		NodeDataMap dataMap = new NodeDataMap();
+		FactorDataMap dataMap = new FactorDataMap();
 		dataMap.putId(TAG_ID, getDiagramNodeId());
 		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
 		
@@ -399,7 +399,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		// Really, for each node copied to the clipboard, we should copy 
 		// the json for both the ConceptualModelNode and for the DiagramNode.
 		// That will also fix the current bug that objectives and goals are not copied
-		dataMap.put(TAG_NODE_TYPE, NodeDataMap.convertNodeTypeToInt(getNodeType()));
+		dataMap.put(TAG_NODE_TYPE, FactorDataMap.convertNodeTypeToInt(getNodeType()));
 		
 		
 		dataMap.putPoint(TAG_LOCATION, getLocation());
@@ -421,7 +421,7 @@ abstract public class DiagramNode extends EAMGraphCell
 	
 	public void fillFrom(EnhancedJsonObject json) throws ParseException
 	{
-		NodeDataMap dataMap = new NodeDataMap(json);
+		FactorDataMap dataMap = new FactorDataMap(json);
 		setLocation(dataMap.getPoint(TAG_LOCATION));
 		setSize(dataMap.getDimension(TAG_SIZE));
 	}

@@ -32,7 +32,7 @@ import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramNodeData;
-import org.conservationmeasures.eam.diagram.cells.TestNodeDataMap;
+import org.conservationmeasures.eam.diagram.cells.TestFactorDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeContributingFactor;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeStrategy;
@@ -150,7 +150,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramFactorLink.class));
 		suite.addTest(new TestSuite(TestDiagramFactor.class));
 		suite.addTest(new TestSuite(TestDiagramNodeData.class));
-		suite.addTest(new TestSuite(TestNodeDataMap.class));
+		suite.addTest(new TestSuite(TestFactorDataMap.class));
 		suite.addTest(new TestSuite(TestFactorTypeContributingFactor.class));
 		suite.addTest(new TestSuite(TestFactorTypeTarget.class));
 		suite.addTest(new TestSuite(TestFactorTypeStrategy.class));

@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
-import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 
 public class TransferableEamList implements Transferable 
 {
@@ -84,9 +84,9 @@ public class TransferableEamList implements Transferable
 		return (LinkageDataMap[])linkages.toArray(new LinkageDataMap[0]);
 	}
 	
-	public NodeDataMap[] getNodeDataCells()
+	public FactorDataMap[] getNodeDataCells()
 	{
-		return (NodeDataMap[])nodes.toArray(new NodeDataMap[0]);
+		return (FactorDataMap[])nodes.toArray(new FactorDataMap[0]);
 	}
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");

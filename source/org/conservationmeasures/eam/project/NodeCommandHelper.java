@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
-import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
+import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -76,13 +76,13 @@ public class NodeCommandHelper
 
 	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
 	{
-		NodeDataMap[] nodes = list.getNodeDataCells();
+		FactorDataMap[] nodes = list.getNodeDataCells();
 		for (int i = 0; i < nodes.length; i++) 
 		{
-			NodeDataMap nodeData = nodes[i];
+			FactorDataMap nodeData = nodes[i];
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 			
-			FactorType type = NodeDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
+			FactorType type = FactorDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
 			CommandDiagramAddNode addCommand = createNode(type);
 			DiagramNodeId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
@@ -97,7 +97,7 @@ public class NodeCommandHelper
 		
 		for (int i = 0; i < nodes.length; i++) 
 		{
-			NodeDataMap nodeData = nodes[i];
+			FactorDataMap nodeData = nodes[i];
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
