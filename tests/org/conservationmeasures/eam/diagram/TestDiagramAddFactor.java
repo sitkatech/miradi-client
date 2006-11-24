@@ -20,9 +20,9 @@ import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
 
-public class TestDiagramAddNode extends EAMTestCase
+public class TestDiagramAddFactor extends EAMTestCase
 {
-	public TestDiagramAddNode(String name)
+	public TestDiagramAddFactor(String name)
 	{
 		super(name);
 	}

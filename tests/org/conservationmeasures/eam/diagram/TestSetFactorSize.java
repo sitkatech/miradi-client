@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestSetNodeSize extends TestCaseEnhanced 
+public class TestSetFactorSize extends TestCaseEnhanced 
 {
-	public TestSetNodeSize(String name)
+	public TestSetFactorSize(String name)
 	{
 		super(name);
 	}

@@ -19,14 +19,14 @@ import org.conservationmeasures.eam.commands.TestCommands;
 import org.conservationmeasures.eam.database.TestDataUpgrader;
 import org.conservationmeasures.eam.database.TestProjectServer;
 import org.conservationmeasures.eam.diagram.TestDelete;
-import org.conservationmeasures.eam.diagram.TestDiagramAddLinkage;
-import org.conservationmeasures.eam.diagram.TestDiagramAddNode;
+import org.conservationmeasures.eam.diagram.TestDiagramAddFactorLink;
+import org.conservationmeasures.eam.diagram.TestDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.TestDiagramComponent;
 import org.conservationmeasures.eam.diagram.TestDiagramModel;
 import org.conservationmeasures.eam.diagram.TestDiagramView;
 import org.conservationmeasures.eam.diagram.TestEamGraphCell;
 import org.conservationmeasures.eam.diagram.TestProjectScopeBox;
-import org.conservationmeasures.eam.diagram.TestSetNodeSize;
+import org.conservationmeasures.eam.diagram.TestSetFactorSize;
 import org.conservationmeasures.eam.diagram.TestUndoAndRedo;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.TestDiagramFactorCluster;
@@ -142,10 +142,10 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramComponent.class));
 
 		// nodes package
-		suite.addTest(new TestSuite(TestDiagramAddLinkage.class));
+		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
 		suite.addTest(new TestSuite(TestDelete.class));
 		suite.addTest(new TestSuite(TestEamGraphCell.class));
-		suite.addTest(new TestSuite(TestDiagramAddNode.class));
+		suite.addTest(new TestSuite(TestDiagramAddFactor.class));
 		suite.addTest(new TestSuite(TestDiagramFactorCluster.class));
 		suite.addTest(new TestSuite(TestDiagramFactorLink.class));
 		suite.addTest(new TestSuite(TestDiagramFactor.class));
@@ -155,7 +155,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFactorTypeTarget.class));
 		suite.addTest(new TestSuite(TestFactorTypeStrategy.class));
 		suite.addTest(new TestSuite(TestFactorTypeDirectThreat.class));
-		suite.addTest(new TestSuite(TestSetNodeSize.class));
+		suite.addTest(new TestSuite(TestSetFactorSize.class));
 		suite.addTest(new TestSuite(TestUndoAndRedo.class));
 		
 		//objectdata package

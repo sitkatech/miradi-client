@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestDiagramAddLinkage extends EAMTestCase
+public class TestDiagramAddFactorLink extends EAMTestCase
 {
-	public TestDiagramAddLinkage(String name)
+	public TestDiagramAddFactorLink(String name)
 	{
 		super(name);
 	}
