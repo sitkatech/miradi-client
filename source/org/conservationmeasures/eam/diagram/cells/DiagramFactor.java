@@ -38,13 +38,13 @@ abstract public class DiagramFactor extends EAMGraphCell
 {
 	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, Factor cmObject)
 	{
-		if(cmObject.isIntervention())
+		if(cmObject.isStrategy())
 			return new DiagramStrategy(idToUse, (Strategy)cmObject);
-		else if(cmObject.isFactor())
+		else if(cmObject.isCause())
 			return new DiagramCause(idToUse, (Cause)cmObject);
 		else if(cmObject.isTarget())
 			return new DiagramTarget(idToUse, (Target)cmObject);
-		else if(cmObject.isCluster())
+		else if(cmObject.isFactorCluster())
 			return new DiagramFactorCluster(idToUse, (FactorCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
@@ -85,7 +85,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return new Dimension(120, 60);
 	}
 	
-	public boolean isNode()
+	public boolean isFactor()
 	{
 		return true;
 	}
@@ -95,7 +95,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return underlyingObject;
 	}
 	
-	public DiagramFactorId getDiagramNodeId()
+	public DiagramFactorId getDiagramFactorId()
 	{
 		return id;
 	}
@@ -156,9 +156,9 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return underlyingObject.canHaveGoal();
 	}
 
-	public boolean isFactor()
+	public boolean isCause()
 	{
-		return underlyingObject.isFactor();
+		return underlyingObject.isCause();
 	}
 
 	public Point getLocation()
@@ -218,9 +218,9 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return underlyingObject.isTarget();
 	}
 	
-	public boolean isIndirectFactor()
+	public boolean isContributingFactor()
 	{
-		return underlyingObject.isIndirectFactor();
+		return underlyingObject.isContributingFactor();
 	}
 	
 	public boolean isDirectThreat()
@@ -233,14 +233,14 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return underlyingObject.isStress();
 	}
 	
-	public boolean isIntervention()
+	public boolean isStrategy()
 	{
-		return underlyingObject.isIntervention();
+		return underlyingObject.isStrategy();
 	}
 	
-	public boolean isCluster()
+	public boolean isFactorCluster()
 	{
-		return underlyingObject.isCluster();
+		return underlyingObject.isFactorCluster();
 	}
 	
 	public DefaultPort getPort()
@@ -382,8 +382,8 @@ abstract public class DiagramFactor extends EAMGraphCell
 		int x = getLocation().x;
 		int y = getLocation().y;
 		return new Command[] {
-			new CommandSetFactorSize(getDiagramNodeId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new DiagramFactorId[] {getDiagramNodeId()}),
+			new CommandSetFactorSize(getDiagramFactorId(), getDefaultSize(), getSize()),
+			new CommandDiagramMove(-x, -y, new DiagramFactorId[] {getDiagramFactorId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
@@ -391,7 +391,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 	public FactorDataMap createNodeDataMap()
 	{
 		FactorDataMap dataMap = new FactorDataMap();
-		dataMap.putId(TAG_ID, getDiagramNodeId());
+		dataMap.putId(TAG_ID, getDiagramFactorId());
 		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
 		
 		// FIXME: This is a crude hack, to preserve the node type information
@@ -412,7 +412,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject dataMap = new DataMap();
-		dataMap.putId(TAG_ID, getDiagramNodeId());
+		dataMap.putId(TAG_ID, getDiagramFactorId());
 		dataMap.putId(TAG_WRAPPED_ID, getWrappedId());
 		dataMap.putPoint(TAG_LOCATION, getLocation());
 		dataMap.putDimension(TAG_SIZE, getSize());

@@ -46,34 +46,34 @@ public class TestUndoRedo extends EAMTestCase
 		FactorId insertedId = insertFactor(project).getFactorId();
 		project.executeCommand(FactorCommandHelper.createSetLabelCommand(insertedId, target1Text));
 		project.executeCommand(new CommandEndTransaction());
-		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getNodeCount());
+		assertEquals("Should have 1 node now.", 1, project.getDiagramModel().getFactorCount());
 		
-		project.getDiagramModel().getNodeById(insertedId);
+		project.getDiagramModel().getDiagramFactorByWrappedId(insertedId);
 		Undo undo = new Undo();
 		undo.setProject(project);
 		undo.doIt();
-		assertEquals("Should have 0 nodes now.", 0, project.getDiagramModel().getNodeCount());
+		assertEquals("Should have 0 nodes now.", 0, project.getDiagramModel().getFactorCount());
 
 		Redo redo = new Redo();
 		redo.setProject(project);
 		redo.doIt();
 
-		Vector inserted = project.getDiagramModel().getAllNodes();
+		Vector inserted = project.getDiagramModel().getAllDiagramFactors();
 		
-		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getNodeCount());
+		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getFactorCount());
 		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
 		DiagramFactor node = (DiagramFactor)inserted.get(0);
-		assertTrue(project.getDiagramModel().isNodeInProject(node));
+		assertTrue(project.getDiagramModel().doesDiagramFactorExist(node));
 		assertEquals("Incorrect label?", target1Text, node.getLabel());
 		
 		undo.doIt();
-		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getNodeCount());
+		assertEquals("Should have 0 nodes again.", 0, project.getDiagramModel().getFactorCount());
 	}
 
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		DiagramFactorId insertedId = insertFactor(project).getInsertedId();
-		DiagramFactor node = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(insertedId);
 		Dimension originalSize = node.getSize();
 
 		Dimension newSize1 = new Dimension(5,10);

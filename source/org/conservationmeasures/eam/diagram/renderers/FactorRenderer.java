@@ -82,7 +82,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		else if(node.isTarget())
 			priority = framework.getTargetThreatRatingValue(node.getWrappedId());
 		
-		if(node.isIntervention())
+		if(node.isStrategy())
 			rating = ((Strategy)node.getUnderlyingObject()).getStrategyRating();
 
 		DiagramComponent diagram = (DiagramComponent)graph;

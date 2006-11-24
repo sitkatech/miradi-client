@@ -23,7 +23,7 @@ public class FactorCluster extends Factor
 		super(idToUse, Factor.TYPE_CLUSTER, json);
 	}
 	
-	public boolean isCluster()
+	public boolean isFactorCluster()
 	{
 		return true;
 	}

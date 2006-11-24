@@ -32,17 +32,17 @@ public class TestDelete extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
-		DiagramFactor intervention = model.getNodeById(interventionId);
+		DiagramFactor intervention = model.getDiagramFactorByWrappedId(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
-		DiagramFactor factor = model.getNodeById(factorId);
+		DiagramFactor factor = model.getDiagramFactorByWrappedId(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
 		
-		assertTrue("link not found?", model.hasLinkage(intervention, factor));
+		assertTrue("link not found?", model.areLinked(intervention, factor));
 		
 		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(linkageId);
 		delete.execute(project);
-		assertFalse("link not deleted?", model.hasLinkage(intervention, factor));
+		assertFalse("link not deleted?", model.areLinked(intervention, factor));
 		
 		EAM.setLogToString();
 		try
@@ -55,9 +55,9 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(factor.getDiagramNodeId());
+		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(factor.getDiagramFactorId());
 		deleteNode.execute(project);
-		assertFalse("node not deleted?", model.isNodeInProject(factor));
+		assertFalse("node not deleted?", model.doesDiagramFactorExist(factor));
 
 		EAM.setLogToString();
 		try

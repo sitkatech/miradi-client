@@ -41,11 +41,11 @@ public class TransferableEamList implements Transferable
 			EAMGraphCell cell = (EAMGraphCell)cells[i];
 			try 
 			{
-				if(cell.isLinkage())
+				if(cell.isFactorLink())
 				{
 					linkages.add(((DiagramFactorLink)cell).createLinkageDataMap());
 				}
-				if(cell.isNode())
+				if(cell.isFactor())
 				{
 					nodes.add(((DiagramFactor)cell).createNodeDataMap());
 				}

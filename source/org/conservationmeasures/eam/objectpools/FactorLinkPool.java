@@ -59,7 +59,7 @@ public class FactorLinkPool extends EAMObjectPool
 		return false;
 	}
 	
-	public FactorLinkId[] getModelLinkageIds()
+	public FactorLinkId[] getFactorLinkIds()
 	{
 		BaseId[] rawIds = getIds();
 		FactorLinkId[] linkageIds = new FactorLinkId[rawIds.length];

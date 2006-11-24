@@ -58,14 +58,14 @@ public class TestTransferableEamList extends EAMTestCase
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
-		FactorPool nodePool = model.getNodePool();
+		FactorPool nodePool = model.getFactorPool();
 
 		FactorId node1Id = new FactorId(1);
 		Point node1Location = new Point(1,2);
 		
 		Strategy cmIntervention = new Strategy(node1Id);
 		nodePool.put(cmIntervention);
-		DiagramFactor node1 = model.createNode(cmIntervention.getModelNodeId());
+		DiagramFactor node1 = model.createDiagramFactor(cmIntervention.getModelNodeId());
 		node1.setLocation(node1Location);
 		
 		FactorId node2Id = new FactorId(2);
@@ -73,7 +73,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Target cmTarget = new Target(node2Id);
 		nodePool.put(cmTarget);
-		DiagramFactor node2 = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor node2 = model.createDiagramFactor(cmTarget.getModelNodeId());
 		node2.setLocation(node2Location);
 		
 		FactorLinkId linkage1Id = new FactorLinkId(3);
@@ -89,15 +89,15 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorLinkDataMap[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
-		assertEquals(node1.getDiagramNodeId(), nodesData[0].getId(DiagramFactor.TAG_ID));
+		assertEquals(node1.getDiagramFactorId(), nodesData[0].getId(DiagramFactor.TAG_ID));
 		assertEquals(node1Location, nodesData[0].getPoint(DiagramFactor.TAG_LOCATION));
-		assertEquals(node2.getDiagramNodeId(), nodesData[1].getId(DiagramFactor.TAG_ID));
+		assertEquals(node2.getDiagramFactorId(), nodesData[1].getId(DiagramFactor.TAG_ID));
 		assertEquals(node2Location, nodesData[1].getPoint(DiagramFactor.TAG_LOCATION));
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());
-		assertEquals(node1.getDiagramNodeId(), linkagesData[0].getFromId());
-		assertEquals(node2.getDiagramNodeId(), linkagesData[0].getToId());
+		assertEquals(node1.getDiagramFactorId(), linkagesData[0].getFromId());
+		assertEquals(node2.getDiagramFactorId(), linkagesData[0].getToId());
 		
 		project.close();
 	}

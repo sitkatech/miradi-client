@@ -16,157 +16,157 @@ import org.conservationmeasures.eam.objects.Factor;
 
 public class ChainObject
 {
-	public FactorSet getNodes()
+	public FactorSet getFactors()
 	{
-		return cmNodeSet;
+		return factorSet;
 	}
 	
-	public Factor[] getNodesArray()
+	public Factor[] getFactorsArray()
 	{	
-		Factor[] cmNodes = (Factor[])cmNodeSet.toArray(new Factor[0]);
+		Factor[] cmNodes = (Factor[])factorSet.toArray(new Factor[0]);
 		return cmNodes;
 	}
 	
-	public FactorLink[] getLinkages()
+	public FactorLink[] getFactorLinksArray()
 	{
 		FactorLink[] cmLinks = (FactorLink[])processedLinks.toArray(new FactorLink[0]);
 		return cmLinks;
 	} 
 		
-	public void buildDirectThreatChain(DiagramModel model, Factor node)
+	public void buildDirectThreatChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		if(startingNode.isDirectThreat())
+		initializeChain(model, factor);
+		if(startingFactor.isDirectThreat())
 		{
-			cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
-			cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+			factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
+			factorSet.attemptToAddAll(getAllUpstreamFactors());
 		}
 	}
 
-	public void buildNormalChain(DiagramModel model, Factor node)
+	public void buildNormalChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		if (startingNode.isDirectThreat())
-			buildDirectThreatChain(model, node);
+		initializeChain(model, factor);
+		if (startingFactor.isDirectThreat())
+			buildDirectThreatChain(model, factor);
 		else
-			buildUpstreamDownstreamChain(model, node);
+			buildUpstreamDownstreamChain(model, factor);
 	}
 	
-	public void buildUpstreamDownstreamChain(DiagramModel model, Factor node)
+	public void buildUpstreamDownstreamChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
-		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+		initializeChain(model, factor);
+		factorSet.attemptToAddAll(getAllDownstreamFactors());
+		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildUpstreamChain(DiagramModel model, Factor node)
+	public void buildUpstreamChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
+		initializeChain(model, factor);
+		factorSet.attemptToAddAll(getAllUpstreamFactors());
 	}
 	
-	public void buildDownstreamChain(DiagramModel model, Factor node)
+	public void buildDownstreamChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
+		initializeChain(model, factor);
+		factorSet.attemptToAddAll(getAllDownstreamFactors());
 	}
 	
-	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, Factor node)
+	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
+		initializeChain(model, factor);
+		factorSet.attemptToAddAll(getDirectlyLinkedDownstreamFactors());
 	}
 	
-	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor node)
+	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor factor)
 	{
-		initializeChain(model, node);
-		cmNodeSet.attemptToAddAll(getDirectlyLinkedUpstreamNodes());
+		initializeChain(model, factor);
+		factorSet.attemptToAddAll(getDirectlyLinkedUpstreamFactors());
 	}
 	
-	private FactorSet getDirectlyLinkedDownstreamNodes()
+	private FactorSet getDirectlyLinkedDownstreamFactors()
 	{
-		return getDirectlyLinkedNodes(FactorLink.FROM);
+		return getDirectlyLinkedFactors(FactorLink.FROM);
 	}
 	
-	private FactorSet getDirectlyLinkedUpstreamNodes()
+	private FactorSet getDirectlyLinkedUpstreamFactors()
 	{
-		return getDirectlyLinkedNodes(FactorLink.TO);
+		return getDirectlyLinkedFactors(FactorLink.TO);
 	}
 	
-	private FactorSet getAllUpstreamNodes()
+	private FactorSet getAllUpstreamFactors()
 	{
-		return getAllLinkedNodes(FactorLink.TO);
+		return getAllLinkedFactors(FactorLink.TO);
 	}
 
-	private FactorSet getAllDownstreamNodes()
+	private FactorSet getAllDownstreamFactors()
 	{
-		return getAllLinkedNodes(FactorLink.FROM);
+		return getAllLinkedFactors(FactorLink.FROM);
 	}
 	
-	private FactorSet getAllLinkedNodes(int direction)
+	private FactorSet getAllLinkedFactors(int direction)
 	{
-		FactorSet linkedNodes = new FactorSet();
-		FactorSet unprocessedNodes = new FactorSet();
-		linkedNodes.attemptToAdd(startingNode);
-		FactorLinkPool linkagePool = diagramModel.getLinkagePool();
+		FactorSet linkedFactors = new FactorSet();
+		FactorSet unprocessedFactors = new FactorSet();
+		linkedFactors.attemptToAdd(startingFactor);
+		FactorLinkPool factorLinkPool = diagramModel.getFactorLinkPool();
 		
-		FactorLinkId[] linkagePoolIds = linkagePool.getModelLinkageIds();
-		for(int i = 0; i < linkagePoolIds.length; ++i)
+		FactorLinkId[] linkIds = factorLinkPool.getFactorLinkIds();
+		for(int i = 0; i < linkIds.length; ++i)
 		{
-			FactorLink thisLinkage = linkagePool.find(linkagePoolIds[i]);
-			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
+			FactorLink thisLink = factorLinkPool.find(linkIds[i]);
+			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
 			{
-				attempToAdd(thisLinkage);
-				Factor linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-				unprocessedNodes.attemptToAdd(linkedNode);
+				attempToAdd(thisLink);
+				Factor linkedFactor = diagramModel.getFactorPool().find(thisLink.getOppositeNodeId(direction));
+				unprocessedFactors.attemptToAdd(linkedFactor);
 			}
 		}		
 		
-		while(unprocessedNodes.size() > 0)
+		while(unprocessedFactors.size() > 0)
 		{
-			Factor thisNode = (Factor)unprocessedNodes.toArray()[0];
-			linkedNodes.attemptToAdd(thisNode);
-			for(int i = 0; i < linkagePoolIds.length; ++i)
+			Factor thisFactor = (Factor)unprocessedFactors.toArray()[0];
+			linkedFactors.attemptToAdd(thisFactor);
+			for(int i = 0; i < linkIds.length; ++i)
 			{
-				FactorLink thisLinkage = linkagePool.find(linkagePoolIds[i]);
-				if(thisLinkage.getNodeId(direction).equals(thisNode.getId()))
+				FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
+				if(thisLinkage.getNodeId(direction).equals(thisFactor.getId()))
 				{
 					attempToAdd(thisLinkage);
-					Factor linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
-					unprocessedNodes.attemptToAdd(linkedNode);
+					Factor linkedNode = diagramModel.getFactorPool().find(thisLinkage.getOppositeNodeId(direction));
+					unprocessedFactors.attemptToAdd(linkedNode);
 				}
 			}
-			unprocessedNodes.remove(thisNode);
+			unprocessedFactors.remove(thisFactor);
 		}
 		
-		return linkedNodes;
+		return linkedFactors;
 	}
 
-	private FactorSet getDirectlyLinkedNodes(int direction)
+	private FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
-		results.attemptToAdd(startingNode);
+		results.attemptToAdd(startingFactor);
 		
-		FactorLinkPool linkagePool = diagramModel.getLinkagePool();
-		for(int i = 0; i < linkagePool.getModelLinkageIds().length; ++i)
+		FactorLinkPool factorLinkPool = diagramModel.getFactorLinkPool();
+		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
 		{
-			FactorLink thisLinkage = linkagePool.find(linkagePool.getModelLinkageIds()[i]);
-			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
+			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
+			if(thisLink.getNodeId(direction).equals(startingFactor.getId()))
 			{
-				attempToAdd(thisLinkage);
-				FactorId downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
-				Factor downstreamNode = diagramModel.getNodePool().find(downstreamNodeId);
-				results.attemptToAdd(downstreamNode);
+				attempToAdd(thisLink);
+				FactorId downstreamFactorId = thisLink.getOppositeNodeId(direction);
+				Factor downstreamFactor = diagramModel.getFactorPool().find(downstreamFactorId);
+				results.attemptToAdd(downstreamFactor);
 			}
 		}
 		return results;
 	}
 	
-	private void initializeChain(DiagramModel model, Factor node)
+	private void initializeChain(DiagramModel model, Factor factor)
 	{
 		this.diagramModel = model;
-		this.startingNode = node;
-		cmNodeSet = new FactorSet();
+		this.startingFactor = factor;
+		factorSet = new FactorSet();
 		processedLinks = new Vector();
 	}
 	
@@ -176,8 +176,8 @@ public class ChainObject
 			processedLinks.add(thisLinkage);
 	}
 
-	private FactorSet cmNodeSet;
-	private Factor startingNode;
+	private FactorSet factorSet;
+	private Factor startingFactor;
 	private DiagramModel diagramModel;
 	private Vector processedLinks;
 }

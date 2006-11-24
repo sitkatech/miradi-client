@@ -82,32 +82,32 @@ public class DiagramModel extends DefaultGraphModel
 		getProjectScopeBox().setText(EAM.text("Project Scope: " + text));
 	}
 	
-	public DiagramFactor createNode(FactorId idToWrap) throws Exception
+	public DiagramFactor createDiagramFactor(FactorId idToWrap) throws Exception
 	{
-		return createNode(idToWrap, new DiagramFactorId(BaseId.INVALID.asInt()));
+		return createDiagramFactor(idToWrap, new DiagramFactorId(BaseId.INVALID.asInt()));
 	}
 
-	public DiagramFactor createNode(FactorId idToWrap, DiagramFactorId requestedId) throws Exception
+	public DiagramFactor createDiagramFactor(FactorId idToWrap, DiagramFactorId requestedId) throws Exception
 	{
-		Factor cmObject = getNodePool().find(idToWrap);
-		DiagramFactorId nodeId = requestedId;
+		Factor factor = getFactorPool().find(idToWrap);
+		DiagramFactorId factorId = requestedId;
 		if(requestedId.isInvalid())
-			nodeId = takeNextDiagramNodeId();
-		DiagramFactor node = DiagramFactor.wrapConceptualModelObject(nodeId, cmObject);
-		addNodeToModel(node);
-		return node;
+			factorId = takeNextDiagramFactorId();
+		DiagramFactor diagramFactor = DiagramFactor.wrapConceptualModelObject(factorId, factor);
+		addFactorToModel(diagramFactor);
+		return diagramFactor;
 	}
 	
-	private DiagramFactorId takeNextDiagramNodeId()
+	private DiagramFactorId takeNextDiagramFactorId()
 	{
 		return new DiagramFactorId(getProject().getAnnotationIdAssigner().takeNextId().asInt());
 	}
 
-	private void addNodeToModel(DiagramFactor node) throws Exception
+	private void addFactorToModel(DiagramFactor factor) throws Exception
 	{
-		insertCellIntoGraph(node);
-		cellInventory.addNode(node);
-		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierFactorAdded());
+		insertCellIntoGraph(factor);
+		cellInventory.addFactor(factor);
+		notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorAdded());
 	}
 
 	private void insertCellIntoGraph(DefaultGraphCell cell)
@@ -125,9 +125,9 @@ public class DiagramModel extends DefaultGraphModel
 	}
 
 	
-	private DiagramModelEvent createDiagramModelEvent(EAMGraphCell node) throws Exception 
+	private DiagramModelEvent createDiagramModelEvent(EAMGraphCell cell) throws Exception 
 	{
-		return new DiagramModelEvent(this, node);
+		return new DiagramModelEvent(this, cell);
 	}
 	
 	public void addDiagramModelListener(DiagramModelListener listener)
@@ -148,52 +148,52 @@ public class DiagramModel extends DefaultGraphModel
         }                
     }
 	
-    public void deleteNode(DiagramFactor nodeToDelete) throws Exception
+    public void deleteDiagramFactor(DiagramFactor diagramFactorToDelete) throws Exception
 	{
-		Object[] nodes = new Object[]{nodeToDelete};
-		remove(nodes);
-		cellInventory.removeNode(nodeToDelete);
+		Object[] cells = new Object[]{diagramFactorToDelete};
+		remove(cells);
+		cellInventory.removeFactor(diagramFactorToDelete);
 
-		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierFactorDeleted());
+		notifyListeners(createDiagramModelEvent(diagramFactorToDelete), new ModelEventNotifierFactorDeleted());
 	}
 	
-	public DiagramFactorLink createLinkage(FactorLink cmLinkage) throws Exception
+	public DiagramFactorLink createDiagramFactorLink(FactorLink factorLinkToWrap) throws Exception
 	{
-		DiagramFactorLink linkage = new DiagramFactorLink(this, cmLinkage);
-		Object[] linkages = new Object[]{linkage};
-		Map nestedMap = getNestedAttributeMap(linkage);
-		DiagramFactor from = getNodeById(linkage.getFromModelNodeId());
-		DiagramFactor to = getNodeById(linkage.getToModelNodeId());
-		ConnectionSet cs = new ConnectionSet(linkage, from.getPort(), to.getPort());
-		insert(linkages, nestedMap, cs, null, null);
-		cellInventory.addLinkage(linkage);
-		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierFactorLinkAdded());
+		DiagramFactorLink newLink = new DiagramFactorLink(this, factorLinkToWrap);
+		Object[] newLinks = new Object[]{newLink};
+		Map nestedMap = getNestedAttributeMap(newLink);
+		DiagramFactor from = getDiagramFactorByWrappedId(newLink.getFromFactorId());
+		DiagramFactor to = getDiagramFactorByWrappedId(newLink.getToFactorId());
+		ConnectionSet cs = new ConnectionSet(newLink, from.getPort(), to.getPort());
+		insert(newLinks, nestedMap, cs, null, null);
+		cellInventory.addFactorLink(newLink);
+		notifyListeners(createDiagramModelEvent(newLink), new ModelEventNotifierFactorLinkAdded());
 		
-		return linkage;
+		return newLink;
 	}
 	
-	public void deleteLinkage(DiagramFactorLink linkageToDelete) throws Exception
+	public void deleteDiagramFactorLink(DiagramFactorLink diagramFactorLinkToDelete) throws Exception
 	{
-		Object[] linkages = new Object[]{linkageToDelete};
-		remove(linkages);
-		cellInventory.removeLinkage(linkageToDelete);
-		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierFactorLinkDeleted());
+		Object[] links = new Object[]{diagramFactorLinkToDelete};
+		remove(links);
+		cellInventory.removeFactorLink(diagramFactorLinkToDelete);
+		notifyListeners(createDiagramModelEvent(diagramFactorLinkToDelete), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
-	public boolean hasLinkage(DiagramFactor fromNode, DiagramFactor toNode) throws Exception
+	public boolean areLinked(DiagramFactor fromFactor, DiagramFactor toFactor) throws Exception
 	{
-		FactorId nodeId1 = fromNode.getWrappedId();
-		FactorId nodeId2 = toNode.getWrappedId();
+		FactorId id1 = fromFactor.getWrappedId();
+		FactorId id2 = toFactor.getWrappedId();
 		
-		Vector linkages = cellInventory.getAllLinkages();
-		for(int i = 0; i < linkages.size(); ++i)
+		Vector links = cellInventory.getAllFactorLinks();
+		for(int i = 0; i < links.size(); ++i)
 		{
-			DiagramFactorLink linkage = (DiagramFactorLink)linkages.get(i);
-			FactorId foundId1 = linkage.getFromModelNodeId();
-			FactorId foundId2 = linkage.getToModelNodeId();
-			if(foundId1.equals(nodeId1) && foundId2.equals(nodeId2))
+			DiagramFactorLink thisLink = (DiagramFactorLink)links.get(i);
+			FactorId foundId1 = thisLink.getFromFactorId();
+			FactorId foundId2 = thisLink.getToFactorId();
+			if(foundId1.equals(id1) && foundId2.equals(id2))
 				return true;
-			if(foundId1.equals(nodeId2) && foundId2.equals(nodeId1))
+			if(foundId1.equals(id2) && foundId2.equals(id1))
 				return true;
 		}
 		
@@ -204,65 +204,65 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildDirectThreatChain(this, directThreat);
-		return chainObject.getNodes();
+		return chainObject.getFactors();
 	}
 	
-	public FactorSet getNodesInChain(Factor node)
+	public FactorSet getNodesInChain(Factor startingFactor)
 	{
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildNormalChain(this, node);
-		return chainObject.getNodes();
+		chainObject.buildNormalChain(this, startingFactor);
+		return chainObject.getFactors();
 	}
 		
-	public FactorSet getAllUpstreamDownstreamNodes(Factor node)
+	public FactorSet getAllUpstreamDownstreamNodes(Factor startingFactor)
 	{
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildUpstreamDownstreamChain(this, node);
-		return chainObject.getNodes();
+		chainObject.buildUpstreamDownstreamChain(this, startingFactor);
+		return chainObject.getFactors();
 	}
 
-	public FactorSet getAllUpstreamNodes(Factor startingNode)
+	public FactorSet getAllUpstreamNodes(Factor startingFactor)
 	{
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildUpstreamChain(this, startingNode);
-		return chainObject.getNodes();
+		chainObject.buildUpstreamChain(this, startingFactor);
+		return chainObject.getFactors();
 	}
 
-	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingNode)
+	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingFactor)
 	{
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildDirectlyLinkedUpstreamChain(this, startingNode);
-		return chainObject.getNodes();
+		chainObject.buildDirectlyLinkedUpstreamChain(this, startingFactor);
+		return chainObject.getFactors();
 	}
 	
-	public void moveNodes(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
+	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
 	{
-		moveNodesWithoutNotification(deltaX, deltaY, ids);
-		nodesWereMoved(ids);
+		moveFactorsWithoutNotification(deltaX, deltaY, ids);
+		factorsWereMoved(ids);
 	}
 
-	public void moveNodesWithoutNotification(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
+	public void moveFactorsWithoutNotification(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception
 	{
 		for(int i = 0; i < ids.length; ++i)
 		{
 			DiagramFactorId id = ids[i];
-			DiagramFactor nodeToMove = getNodeById(id);
-			Point oldLocation = nodeToMove.getLocation();
+			DiagramFactor factorToMove = getDiagramFactorById(id);
+			Point oldLocation = factorToMove.getLocation();
 			Point newLocation = new Point(oldLocation.x + deltaX, oldLocation.y + deltaY);
 			Logging.logVerbose("moved Node from:"+ oldLocation +" to:"+ newLocation);
-			nodeToMove.setLocation(newLocation);
-			updateCell(nodeToMove);
+			factorToMove.setLocation(newLocation);
+			updateCell(factorToMove);
 		}
 	}
 	
-	public void nodesWereMoved(DiagramFactorId[] ids)
+	public void factorsWereMoved(DiagramFactorId[] ids)
 	{
 		for(int i=0; i < ids.length; ++i)
 		{
 			try
 			{
-				DiagramFactor node = getNodeById(ids[0]);
-				notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierFactorMoved());
+				DiagramFactor factor = getDiagramFactorById(ids[0]);
+				notifyListeners(createDiagramModelEvent(factor), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)
 			{
@@ -271,99 +271,99 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	public int getNodeCount()
+	public int getFactorCount()
 	{
-		return getAllNodes().size();
+		return getAllDiagramFactors().size();
 	}
 	
-	public int getLinkageCount()
+	public int getFactorLinkCount()
 	{
-		return getAllLinkages().size();
+		return getAllDiagramFactorLinks().size();
 	}
 
-	public Set getLinkages(DiagramFactor node)
+	public Set getFactorLinks(DiagramFactor node)
 	{
 		return getEdges(this, new Object[] {node});
 	}
 	
-	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
+	public void updateCell(EAMGraphCell cellToUpdate) throws Exception
 	{
-		edit(getNestedAttributeMap(nodeToUpdate), null, null, null);
-		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierFactorChanged());
+		edit(getNestedAttributeMap(cellToUpdate), null, null, null);
+		notifyListeners(createDiagramModelEvent(cellToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
-	public boolean hasNode(DiagramFactorId id)
+	public boolean doesDiagramFactorExist(DiagramFactorId id)
 	{
-		return (rawGetNodeById(id) != null);
+		return (rawGetFactorById(id) != null);
 	}
 	
-	public boolean hasNode(FactorId id)
+	public boolean doesFactorExist(FactorId id)
 	{
-		return (rawGetNodeById(id) != null);
+		return (rawGetFactorByWrappedId(id) != null);
 	}
 	
 	
 	
-	public DiagramFactor getNodeById(DiagramFactorId id) throws Exception
+	public DiagramFactor getDiagramFactorById(DiagramFactorId id) throws Exception
 	{
-		DiagramFactor node = rawGetNodeById(id);
+		DiagramFactor node = rawGetFactorById(id);
 		if(node == null)
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
 	}
 
-	public DiagramFactor getNodeById(FactorId id) throws Exception
+	public DiagramFactor getDiagramFactorByWrappedId(FactorId id) throws Exception
 	{
-		DiagramFactor node = rawGetNodeById(id);
+		DiagramFactor node = rawGetFactorByWrappedId(id);
 		if(node == null)
 			throw new Exception("Node doesn't exist, id: " + id);
 		return node;
 	}
 
-	private DiagramFactor rawGetNodeById(DiagramFactorId id)
+	private DiagramFactor rawGetFactorById(DiagramFactorId id)
 	{
-		return cellInventory.getNodeById(id);
+		return cellInventory.getFactorById(id);
 	}
 
-	private DiagramFactor rawGetNodeById(FactorId id)
+	private DiagramFactor rawGetFactorByWrappedId(FactorId id)
 	{
-		return cellInventory.getNodeById(id);
+		return cellInventory.getFactorById(id);
 	}
 
-	public DiagramFactorLink getLinkageById(DiagramFactorLinkId id) throws Exception
+	public DiagramFactorLink getDiagramFactorLinkById(DiagramFactorLinkId id) throws Exception
 	{
-		DiagramFactorLink linkage = cellInventory.getLinkageById(id);
+		DiagramFactorLink linkage = cellInventory.getFactorLinkById(id);
 		if(linkage == null)
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
 	
-	public DiagramFactorLink getLinkageById(FactorLinkId id) throws Exception
+	public DiagramFactorLink getDiagramFactorLinkbyWrappedId(FactorLinkId id) throws Exception
 	{
-		DiagramFactorLink linkage = cellInventory.getLinkageById(id);
+		DiagramFactorLink linkage = cellInventory.getFactorLinkById(id);
 		if(linkage == null)
 			throw new Exception("Link doesn't exist, id: " + id);
 		return linkage;
 	}
 	
-	public boolean isNodeInProject(DiagramFactor node)
+	public boolean doesDiagramFactorExist(DiagramFactor factor)
 	{
-		return (cellInventory.getNodeById(node.getDiagramNodeId()) != null);
+		return (cellInventory.getFactorById(factor.getDiagramFactorId()) != null);
 	}
 
-	public boolean isLinkageInProject(DiagramFactorLink linkage)
+	public boolean doesDiagramFactorLinkExist(DiagramFactorLink link)
 	{
-		return (cellInventory.getLinkageById(linkage.getDiagramLinkageId()) != null);
+		return (cellInventory.getFactorLinkById(link.getDiagramLinkageId()) != null);
 	}
 
-	public Vector getAllNodes()
+	public Vector getAllDiagramFactors()
 	{
-		return cellInventory.getAllNodes();
+		return cellInventory.getAllFactors();
 	}
 	
-	public Vector getAllLinkages()
+	public Vector getAllDiagramFactorLinks()
 	{
-		return cellInventory.getAllLinkages();
+		return cellInventory.getAllFactorLinks();
 	}
 	
 	public Goal getGoalById(BaseId id)
@@ -378,29 +378,29 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public EnhancedJsonObject toJson()
 	{
-		EnhancedJsonObject nodeMap = new EnhancedJsonObject();
-		Vector nodes = getAllNodes();
-		for(int i=0; i < nodes.size(); ++i)
+		EnhancedJsonObject jsonFactors = new EnhancedJsonObject();
+		Vector factors = getAllDiagramFactors();
+		for(int i=0; i < factors.size(); ++i)
 		{
-			DiagramFactor node = (DiagramFactor)nodes.get(i);
-			nodeMap.put(Integer.toString(node.getDiagramNodeId().asInt()), node.toJson());
+			DiagramFactor factor = (DiagramFactor)factors.get(i);
+			jsonFactors.put(Integer.toString(factor.getDiagramFactorId().asInt()), factor.toJson());
 		}
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_TYPE, JSON_TYPE_DIAGRAM);
-		json.put(TAG_NODES, nodeMap);
+		json.put(TAG_FACTORS, jsonFactors);
 		return json;
 	}
 	
 	public void fillFrom(EnhancedJsonObject json) throws Exception
 	{
-		addNodesToModel(json);
-		addLinkagesToModel();
+		addFactorsToModel(json);
+		addLinksToModel();
 	}
 
-	private void addNodesToModel(EnhancedJsonObject json) throws Exception
+	private void addFactorsToModel(EnhancedJsonObject json) throws Exception
 	{
-		EnhancedJsonObject nodeMap = json.getJson(TAG_NODES);
-		JSONArray keys = nodeMap.names();
+		EnhancedJsonObject jsonFactors = json.getJson(TAG_FACTORS);
+		JSONArray keys = jsonFactors.names();
 		
 		// TODO: Really we should extend JSONObject to have a sane names() method
 		// that returns an empty array if there are no names
@@ -409,22 +409,22 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i=0; i < keys.length(); ++i)
 		{
 			String key = keys.getString(i);
-			EnhancedJsonObject nodeJson = nodeMap.getJson(key);
-			DiagramFactor node = DiagramFactor.createFromJson(getProject(), nodeJson);
-			addNodeToModel(node);
+			EnhancedJsonObject factorJson = jsonFactors.getJson(key);
+			DiagramFactor factor = DiagramFactor.createFromJson(getProject(), factorJson);
+			addFactorToModel(factor);
 		}
 		
-		FactorId[] nodeIds = getNodePool().getModelNodeIds();
-		for(int i = 0;i < nodeIds.length; ++i)
+		FactorId[] factorIds = getFactorPool().getModelNodeIds();
+		for(int i = 0;i < factorIds.length; ++i)
 		{
-			FactorId modelNodeId = nodeIds[i];
-			if(!hasNode(modelNodeId))
-				addNodeToDiagram(modelNodeId);
+			FactorId factorId = factorIds[i];
+			if(!doesFactorExist(factorId))
+				addFactorToDiagram(factorId);
 			try
 			{
-				DiagramFactor node = getNodeById(modelNodeId);
-				if(node.isCluster())
-					addNodesToCluster((DiagramFactorCluster)node);
+				DiagramFactor diagramFactor = getDiagramFactorByWrappedId(factorId);
+				if(diagramFactor.isFactorCluster())
+					addFactorsToCluster((DiagramFactorCluster)diagramFactor);
 			}
 			catch(Exception e)
 			{
@@ -436,11 +436,11 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	void addNodeToDiagram(FactorId modelNodeId)
+	void addFactorToDiagram(FactorId factorId)
 	{
 		try
 		{
-			createNode(modelNodeId);
+			createDiagramFactor(factorId);
 			String[] bodyLines = {"A factor was missing from the diagram. It has been added."};
 			EAM.okDialog("Repairing Project", bodyLines);
 		}
@@ -451,26 +451,26 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 	
-	void addNodesToCluster(DiagramFactorCluster cluster) throws Exception
+	void addFactorsToCluster(DiagramFactorCluster diagramCluster) throws Exception
 	{
-		FactorCluster cmCluster = (FactorCluster)cluster.getUnderlyingObject();
-		IdList members = cmCluster.getMemberIds();
+		FactorCluster cluster = (FactorCluster)diagramCluster.getUnderlyingObject();
+		IdList members = cluster.getMemberIds();
 		for(int i = 0; i < members.size(); ++i)
 		{
-			DiagramFactor memberNode = getNodeById((FactorId)members.get(i));
-			project.addNodeToCluster(cluster, memberNode);
+			DiagramFactor memberFactor = getDiagramFactorByWrappedId((FactorId)members.get(i));
+			project.addNodeToCluster(diagramCluster, memberFactor);
 		}
 	}
 	
-	public void addLinkagesToModel() throws Exception
+	public void addLinksToModel() throws Exception
 	{
-		FactorLinkId[] linkageIds = getLinkagePool().getModelLinkageIds();
-		for(int i = 0; i < linkageIds.length; ++i)
+		FactorLinkId[] linkIds = getFactorLinkPool().getFactorLinkIds();
+		for(int i = 0; i < linkIds.length; ++i)
 		{
-			FactorLink cmLinkage = getLinkagePool().find(linkageIds[i]);
-			if(hasNode(cmLinkage.getFromNodeId()) && hasNode(cmLinkage.getToNodeId()))
+			FactorLink link = getFactorLinkPool().find(linkIds[i]);
+			if(doesFactorExist(link.getFromNodeId()) && doesFactorExist(link.getToNodeId()))
 			{
-				createLinkage(cmLinkage);
+				createDiagramFactorLink(link);
 			}
 		}
 	}
@@ -482,14 +482,14 @@ public class DiagramModel extends DefaultGraphModel
 	}
 
 	
-	public FactorPool getNodePool()
+	public FactorPool getFactorPool()
 	{
-		return project.getNodePool();
+		return project.getFactorPool();
 	}
 	
-	FactorLinkPool getLinkagePool()
+	FactorLinkPool getFactorLinkPool()
 	{
-		return project.getLinkagePool();
+		return project.getFactorLinkPool();
 	}
 	
 	ObjectivePool getObjectivePool()
@@ -502,15 +502,15 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getGoalPool();
 	}
 	
-	public DiagramFactor[] getAllTargetNodes()
+	public DiagramFactor[] getAllDiagramTargets()
 	{
 		Vector allTargets = new Vector();
-		Vector allNodes = getAllNodes();
-		for (int i = 0; i < allNodes.size(); i++)
+		Vector allFactors = getAllDiagramFactors();
+		for (int i = 0; i < allFactors.size(); i++)
 		{
-			DiagramFactor diagramNode = (DiagramFactor)allNodes.get(i);
-			if (diagramNode.isTarget())
-				allTargets.add(diagramNode);
+			DiagramFactor diagramFactor = (DiagramFactor)allFactors.get(i);
+			if (diagramFactor.isTarget())
+				allTargets.add(diagramFactor);
 		}
 		
 		return (DiagramFactor[])allTargets.toArray(new DiagramFactor[0]);
@@ -518,7 +518,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	
 	private static final String TAG_TYPE = "Type";
-	private static final String TAG_NODES = "Nodes";
+	private static final String TAG_FACTORS = "Nodes";
 	
 	private static final String JSON_TYPE_DIAGRAM = "Diagram";
 	

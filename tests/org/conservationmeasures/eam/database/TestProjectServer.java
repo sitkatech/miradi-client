@@ -173,7 +173,7 @@ public class TestProjectServer extends EAMTestCase
 			}
 			
 			DiagramModel model = project.getDiagramModel();
-			FactorPool nodePool = model.getNodePool();
+			FactorPool nodePool = model.getFactorPool();
 			storage.writeDiagram(model);
 	
 			try
@@ -192,21 +192,21 @@ public class TestProjectServer extends EAMTestCase
 			Target cmTarget = new Target(takeNextModelNodeId());
 			nodePool.put(cmTarget);
 			
-			model.createNode(cmIntervention.getModelNodeId());
-			model.createNode(cmTarget.getModelNodeId());
+			model.createDiagramFactor(cmIntervention.getModelNodeId());
+			model.createDiagramFactor(cmTarget.getModelNodeId());
 			
 			storage.writeDiagram(model);
 			
 			DiagramModel got = new DiagramModel(project); 
 			storage.readDiagram(got);
-			Vector gotNodes = got.getAllNodes();
-			Vector expectedNodes = model.getAllNodes();
+			Vector gotNodes = got.getAllDiagramFactors();
+			Vector expectedNodes = model.getAllDiagramFactors();
 			assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
 			for(int i=0; i < gotNodes.size(); ++i)
 			{
 				DiagramFactor gotNode = (DiagramFactor)gotNodes.get(i);
-				DiagramFactorId gotId = gotNode.getDiagramNodeId();
-				DiagramFactor expectedNode = model.getNodeById(gotId);
+				DiagramFactorId gotId = gotNode.getDiagramFactorId();
+				DiagramFactor expectedNode = model.getDiagramFactorById(gotId);
 				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 			}
 		}

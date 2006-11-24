@@ -39,7 +39,7 @@ public class ProjectRepairer
 	
 	void fixNodeAnnotationIds() throws Exception
 	{
-		FactorId[] nodeIds = project.getNodePool().getModelNodeIds();
+		FactorId[] nodeIds = project.getFactorPool().getModelNodeIds();
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
 			FactorId nodeId = nodeIds[i];
@@ -181,7 +181,7 @@ public class ProjectRepairer
 
 	private void repairUnsnappedNodes()
 	{
-		Vector diagramNodes = project.getDiagramModel().getAllNodes();
+		Vector diagramNodes = project.getDiagramModel().getAllDiagramFactors();
 		for (int i=0; i<diagramNodes.size(); ++i) 
 			fixLocation((DiagramFactor) diagramNodes.get(i));
 	}
@@ -198,7 +198,7 @@ public class ProjectRepairer
 			
 		try
 		{
-			project.moveNodes(deltaX, deltaY, new DiagramFactorId[] { diagramNode.getDiagramNodeId() });
+			project.moveNodes(deltaX, deltaY, new DiagramFactorId[] { diagramNode.getDiagramFactorId() });
 		}
 		catch(Exception e)
 		{

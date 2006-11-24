@@ -28,7 +28,7 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		return (getProject().getDiagramModel().getNodeCount() >= 2);
+		return (getProject().getDiagramModel().getFactorCount() >= 2);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -51,7 +51,7 @@ public class InsertFactorLinkDoer extends ProjectDoer
 					
 		try
 		{
-			if(model.hasLinkage(dialog.getFrom(), dialog.getTo()))
+			if(model.areLinked(dialog.getFrom(), dialog.getTo()))
 			{
 				String[] body = {EAM.text("Those items are already linked"), };
 				EAM.okDialog(EAM.text("Can't Create Link"), body);
@@ -77,7 +77,7 @@ public class InsertFactorLinkDoer extends ProjectDoer
 	
 	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromNodeId, FactorId toNodeId)
     {
-		Factor cmFromNode = dModel.getNodePool().find(fromNodeId);
+		Factor cmFromNode = dModel.getFactorPool().find(fromNodeId);
 		Factor[] cmUpstreamNodes = dModel.getAllUpstreamNodes(cmFromNode).toNodeArray();
 		
 		for (int i  = 0; i < cmUpstreamNodes.length; i++)

@@ -35,7 +35,7 @@ public class Strategy extends Factor
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 
-	public boolean isIntervention()
+	public boolean isStrategy()
 	{
 		return true;
 	}

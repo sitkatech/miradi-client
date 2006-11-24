@@ -103,7 +103,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	private FactorSet getNodesWithThisObjective(BaseId objectiveId)
 	{
 		FactorSet result = new FactorSet();
-		FactorId[] allNodeIds = project.getNodePool().getModelNodeIds();
+		FactorId[] allNodeIds = project.getFactorPool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			Factor node = project.findNode(allNodeIds[i]);

@@ -249,7 +249,7 @@ public class TestCommands extends EAMTestCase
 		
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramFactor node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramFactor node = project.getDiagramModel().getDiagramFactorById(ids[i]);
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
@@ -257,7 +257,7 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramFactor node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramFactor node = project.getDiagramModel().getDiagramFactorById(ids[i]);
 			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
 		}
 	}
@@ -285,7 +285,7 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramFactorId id = insertTarget();
 		Dimension defaultSize = new Dimension(120, 60);
-		DiagramFactor node = project.getDiagramModel().getNodeById(id);
+		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(id);
 		Dimension originalSize = node.getSize();
 		assertEquals(defaultSize, originalSize);
 		
@@ -297,7 +297,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("didn't change to new size?", newSize, node.getSize());
 
 		cmd.undo(project);
-		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getNodeById(id).getSize());
+		assertEquals("didn't undo?", originalSize, project.getDiagramModel().getDiagramFactorById(id).getSize());
 		
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -325,9 +325,9 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(add);
 
 		DiagramFactorId insertedId = add.getInsertedId();
-		DiagramFactor node = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(insertedId);
 		assertEquals("type not right?", type, node.getNodeType());
-		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramNodeId());
+		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
 
 		verifyUndoDiagramAddNode(add);
 	}
@@ -339,7 +339,7 @@ public class TestCommands extends EAMTestCase
 		try
 		{
 			EAM.setLogToString();
-			project.getDiagramModel().getNodeById(insertedId);
+			project.getDiagramModel().getDiagramFactorById(insertedId);
 			fail("Should have thrown because node didn't exist");
 		}
 		catch(Exception ignoreExpected)
@@ -369,8 +369,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId from = insertNode(type);
 		DiagramFactorId to = insertTarget();
-		FactorId fromId = model.getNodeById(from).getWrappedId();
-		FactorId toId = model.getNodeById(to).getWrappedId();
+		FactorId fromId = model.getDiagramFactorById(from).getWrappedId();
+		FactorId toId = model.getDiagramFactorById(to).getWrappedId();
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
@@ -380,17 +380,17 @@ public class TestCommands extends EAMTestCase
 		CommandDiagramAddFactorLink addLinkageCommand = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(addLinkageCommand);
 		
-		DiagramFactorLink inserted = model.getLinkageById(modelLinkageId);
+		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
 		DiagramFactor fromNode = inserted.getFromNode();
-		assertEquals("wrong source?", from, fromNode.getDiagramNodeId());
+		assertEquals("wrong source?", from, fromNode.getDiagramFactorId());
 		DiagramFactor toNode = inserted.getToNode();
-		assertEquals("wrong dest?", to, toNode.getDiagramNodeId());
+		assertEquals("wrong dest?", to, toNode.getDiagramFactorId());
 
-		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
+		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNode, toNode));
 		addLinkageCommand.undo(project);
 		createModelLinkage.undo(project);
-		assertFalse("didn't remove linkage?", project.getDiagramModel().hasLinkage(fromNode, toNode));
-		assertNull("didn't delete linkage from pool?", project.getLinkagePool().find(modelLinkageId));
+		assertFalse("didn't remove linkage?", project.getDiagramModel().areLinked(fromNode, toNode));
+		assertNull("didn't delete linkage from pool?", project.getFactorLinkPool().find(modelLinkageId));
 		
 		verifyUndoTwiceThrows(addLinkageCommand);
 		verifyUndoTwiceThrows(createModelLinkage);
@@ -402,8 +402,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId from = insertIntervention();
 		DiagramFactorId to = insertIndirectFactor();
-		DiagramFactor fromNode = model.getNodeById(from);
-		DiagramFactor toNode = model.getNodeById(to);
+		DiagramFactor fromNode = model.getDiagramFactorById(from);
+		DiagramFactor toNode = model.getDiagramFactorById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramFactorLinkId();
@@ -413,15 +413,15 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(cmd);
 		assertEquals("model id not set?", addLinkageCommand.getFactorLinkId(), cmd.getFactorLinkId());
 
-		assertFalse("linkage not deleted?", model.hasLinkage(fromNode, toNode));
+		assertFalse("linkage not deleted?", model.areLinked(fromNode, toNode));
 		cmd.undo(project);
-		assertTrue("didn't restore link?", model.hasLinkage(fromNode, toNode));
+		assertTrue("didn't restore link?", model.areLinked(fromNode, toNode));
 	}
 
 	public void testDeleteNode() throws Exception
 	{
 		DiagramFactorId id = insertTarget();
-		FactorId modelNodeId = project.getDiagramModel().getNodeById(id).getWrappedId();
+		FactorId modelNodeId = project.getDiagramModel().getDiagramFactorById(id).getWrappedId();
 		
 		CommandDiagramRemoveFactor cmd = new CommandDiagramRemoveFactor(id);
 		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getFactorId());
@@ -430,7 +430,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -477,7 +477,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		project.redo();
 		
-		DiagramFactor inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor inserted = project.getDiagramModel().getDiagramFactorById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}

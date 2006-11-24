@@ -23,12 +23,12 @@ public class Cause extends Factor
 		super(idToUse, Factor.TYPE_CAUSE, json);
 	}
 
-	public boolean isFactor()
+	public boolean isCause()
 	{
 		return true;
 	}
 	
-	public boolean isIndirectFactor()
+	public boolean isContributingFactor()
 	{
 		return !isDirectThreat();
 	}

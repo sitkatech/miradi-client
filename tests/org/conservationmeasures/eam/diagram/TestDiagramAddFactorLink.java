@@ -31,9 +31,9 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
-		DiagramFactor intervention = model.getNodeById(interventionId);
+		DiagramFactor intervention = model.getDiagramFactorByWrappedId(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
-		DiagramFactor factor = model.getNodeById(factorId);
+		DiagramFactor factor = model.getDiagramFactorByWrappedId(factorId);
 
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
@@ -42,7 +42,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
 
-		DiagramFactorLink linkage = model.getLinkageById(command.getDiagramFactorLinkId());
+		DiagramFactorLink linkage = model.getDiagramFactorLinkById(command.getDiagramFactorLinkId());
 
 		assertEquals("not from intervention?", intervention, linkage.getFromNode());
 		assertEquals("not to target?", factor, linkage.getToNode());

@@ -57,7 +57,7 @@ public class NudgeDoer extends ProjectDoer
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
 		{
-			ids[i] = cells[i].getDiagramNodeId(); 
+			ids[i] = cells[i].getDiagramFactorId(); 
 		}
 		try
 		{

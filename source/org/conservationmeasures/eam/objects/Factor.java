@@ -46,7 +46,7 @@ abstract public class Factor extends EAMBaseObject
 	
 	public FactorType getNodeType()
 	{
-		if(isDirectThreat() || isIndirectFactor())
+		if(isDirectThreat() || isContributingFactor())
 			return new FactorTypeCause();
 		return type;
 	}
@@ -101,12 +101,12 @@ abstract public class Factor extends EAMBaseObject
 		goals.set(goalsToUse);
 	}
 
-	public boolean isIntervention()
+	public boolean isStrategy()
 	{
 		return false;
 	}
 	
-	public boolean isFactor()
+	public boolean isCause()
 	{
 		return false;
 	}
@@ -116,7 +116,7 @@ abstract public class Factor extends EAMBaseObject
 		return false;
 	}
 	
-	public boolean isIndirectFactor()
+	public boolean isContributingFactor()
 	{
 		return false;
 	}
@@ -131,7 +131,7 @@ abstract public class Factor extends EAMBaseObject
 		return false;
 	}
 	
-	public boolean isCluster()
+	public boolean isFactorCluster()
 	{
 		return false;
 	}

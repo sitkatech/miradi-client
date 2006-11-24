@@ -66,7 +66,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		}
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
-			if(((EAMGraphCell)selectedCells[i]).isNode())
+			if(((EAMGraphCell)selectedCells[i]).isFactor())
 			{
 				DiagramFactor node = (DiagramFactor)selectedCells[i];
 				node.setPreviousLocation(node.getLocation());
@@ -91,7 +91,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		Vector selectedNodes = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
-			if(((EAMGraphCell)selectedCells[i]).isNode())
+			if(((EAMGraphCell)selectedCells[i]).isFactor())
 				selectedNodes.add(selectedCells[i]);
 		}
 		
@@ -101,7 +101,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		DiagramFactorId[] selectedNodeIds = new DiagramFactorId[selectedNodes.size()];
 		for(int i = 0; i < selectedNodes.size(); ++i)
 		{
-			selectedNodeIds[i] = ((DiagramFactor)selectedNodes.get(i)).getDiagramNodeId();
+			selectedNodeIds[i] = ((DiagramFactor)selectedNodes.get(i)).getDiagramFactorId();
 		}
 
 		Point dragEndedAt = event.getPoint();

@@ -139,9 +139,9 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor factor = createNode(Factor.TYPE_CAUSE);
 		DiagramFactor target = createNode(Factor.TYPE_TARGET);
 		DiagramFactorLink link = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
-		assertTrue("factor isn't a node?", factor.isNode());
-		assertTrue("target isn't a node?", target.isNode());
-		assertFalse("link is a node?", link.isNode());
+		assertTrue("factor isn't a node?", factor.isFactor());
+		assertTrue("target isn't a node?", target.isFactor());
+		assertFalse("link is a node?", link.isFactor());
 	}
 	
 	public void testCounts()throws Exception
@@ -149,20 +149,20 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor factor = createNode(Factor.TYPE_CAUSE);
 		DiagramFactor target = createNode(Factor.TYPE_TARGET);
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
-		assertEquals(2, model.getNodeCount());
-		assertEquals(1, model.getLinkageCount());
+		assertEquals(2, model.getFactorCount());
+		assertEquals(1, model.getFactorLinkCount());
 	}
 	
 	public void testHasLinkage() throws Exception
 	{
 		DiagramFactor factor = createNode(Factor.TYPE_CAUSE);
-		model.deleteNode(factor);
+		model.deleteDiagramFactor(factor);
 		DiagramFactor newFactor = createNode(Factor.TYPE_CAUSE);
 		DiagramFactor target = createNode(Factor.TYPE_TARGET);
-		assertFalse("already linked?", model.hasLinkage(newFactor, target));
+		assertFalse("already linked?", model.areLinked(newFactor, target));
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
-		assertTrue("not linked?", model.hasLinkage(newFactor, target));
-		assertTrue("reverse link not detected?", model.hasLinkage(target, newFactor));
+		assertTrue("not linked?", model.areLinked(newFactor, target));
+		assertTrue("reverse link not detected?", model.areLinked(target, newFactor));
 	}
 	
 	public void testGetLinkages() throws Exception
@@ -172,7 +172,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor target = createNode(Factor.TYPE_TARGET);
 		DiagramFactorLink linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
-		Set found = model.getLinkages(target);
+		Set found = model.getFactorLinks(target);
 		assertEquals("Didn't see both links?", 2, found.size());
 		assertTrue("missed first?", found.contains(linkage1));
 		assertTrue("missed second?", found.contains(linkage2));
@@ -190,12 +190,12 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor nodeToDelete = createTarget();
 		createTarget();		
 		DiagramFactor lastCreated = createTarget();		
-		model.deleteNode(nodeToDelete);
+		model.deleteDiagramFactor(nodeToDelete);
 		Target cmTargetToUndo = new Target(nodeToDelete.getWrappedId());
 		
-		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
+		model.createDiagramFactor(cmTargetToUndo.getModelNodeId()); //simulates an undo
 		DiagramFactor nodeAfterUndo = createNode(Factor.TYPE_TARGET);
-		assertTrue("reused an id?", nodeAfterUndo.getDiagramNodeId().asInt() > lastCreated.getDiagramNodeId().asInt());
+		assertTrue("reused an id?", nodeAfterUndo.getDiagramFactorId().asInt() > lastCreated.getDiagramFactorId().asInt());
 	}
 
 	public void testGetAllNodes() throws Exception
@@ -205,7 +205,7 @@ public class TestDiagramModel extends EAMTestCase
 		createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), node1.getWrappedId(), node2.getWrappedId());
 		DiagramFactor node3 = createNode(Factor.TYPE_TARGET);		
 		
-		Vector nodes = model.getAllNodes();
+		Vector nodes = model.getAllDiagramFactors();
 		assertEquals(3, nodes.size());
 		assertContains(node1, nodes);
 		assertContains(node2, nodes);
@@ -220,7 +220,7 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactor node3 = createNode(Factor.TYPE_TARGET);		
 		DiagramFactorLink link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector linkages = model.getAllLinkages();
+		Vector linkages = model.getAllDiagramFactorLinks();
 		assertEquals(2, linkages.size());
 		assertContains(link1, linkages);
 		assertContains(link2, linkages);
@@ -235,9 +235,9 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.toJson());
 		
-		assertNotNull("missing node1?", copy.getNodeById(node1.getDiagramNodeId()));
-		assertNotNull("missing node2?", copy.getNodeById(node2.getDiagramNodeId()));
-		assertNotNull("missing link?", copy.getLinkageById(link1.getDiagramLinkageId()));
+		assertNotNull("missing node1?", copy.getDiagramFactorById(node1.getDiagramFactorId()));
+		assertNotNull("missing node2?", copy.getDiagramFactorById(node2.getDiagramFactorId()));
+		assertNotNull("missing link?", copy.getDiagramFactorLinkById(link1.getDiagramLinkageId()));
 	}
 	
 	public void testActionsFiring() throws Exception
@@ -260,7 +260,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("update did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("update did a linkdeleted notify?", 0, testModel.linkDeleted);
 		
-		model.deleteNode(node1);
+		model.deleteDiagramFactor(node1);
 		assertEquals("delete node didn't notify?", 1, testModel.nodeDeleted);
 		assertEquals("delete node triggered a node add notify?", 1, testModel.nodeAdded);
 		assertEquals("test model modify action called for delete?", 1, testModel.nodeChanged);
@@ -278,7 +278,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("test model linkageAdded action not called for addition of a link?", 1, testModel.linkAdded);
 		assertEquals("add link did a delete link notify?", 0, testModel.linkDeleted);
 
-		model.deleteLinkage(link1);
+		model.deleteDiagramFactorLink(link1);
 		assertEquals("link delete did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("link delete did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("link delete did a node change notify?", 1, testModel.nodeChanged);
@@ -286,7 +286,7 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("link delete did a link add notify?", 1, testModel.linkAdded);
 		assertEquals("test model linkDeleted action not called?",1, testModel.linkDeleted);
 		
-		model.nodesWereMoved(new DiagramFactorId[] {node2.getDiagramNodeId(), node3.getDiagramNodeId()});
+		model.factorsWereMoved(new DiagramFactorId[] {node2.getDiagramFactorId(), node3.getDiagramFactorId()});
 		assertEquals("move nodes did a node add notify?", 3, testModel.nodeAdded);
 		assertEquals("move nodes did a node delete notify?", 1, testModel.nodeDeleted);
 		assertEquals("move nodes did a node change notify?", 1, testModel.nodeChanged);
@@ -299,8 +299,8 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramFactor createTarget() throws Exception
 	{
 		Factor cmTarget = new Target(takeNextModelNodeId());
-		project.getNodePool().put(cmTarget);
-		return model.createNode(cmTarget.getModelNodeId());
+		project.getFactorPool().put(cmTarget);
+		return model.createDiagramFactor(cmTarget.getModelNodeId());
 	}
 	
 	private DiagramFactor createNode(FactorType nodeType) throws Exception
@@ -308,15 +308,15 @@ public class TestDiagramModel extends EAMTestCase
 		FactorId id = takeNextModelNodeId();
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
-		project.getNodePool().put(cmObject);
-		return model.createNode(cmObject.getModelNodeId());
+		project.getFactorPool().put(cmObject);
+		return model.createDiagramFactor(cmObject.getModelNodeId());
 	}
 	
 	private DiagramFactorLink createLinkage(FactorLinkId id, FactorId fromId, FactorId toId) throws Exception
 	{
 		FactorLink cmLinkage = new FactorLink(id, fromId, toId);
-		model.getLinkagePool().put(cmLinkage);
-		return model.createLinkage(cmLinkage);
+		model.getFactorLinkPool().put(cmLinkage);
+		return model.createDiagramFactorLink(cmLinkage);
 	}
 
 

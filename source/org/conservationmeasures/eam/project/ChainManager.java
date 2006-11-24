@@ -114,7 +114,7 @@ public class ChainManager
 	
 	FactorPool getNodePool()
 	{
-		return getProject().getNodePool();
+		return getProject().getFactorPool();
 	}
 	
 	DiagramModel getDiagramModel()

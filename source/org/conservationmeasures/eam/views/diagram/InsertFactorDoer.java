@@ -63,7 +63,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 	{
-		DiagramFactor newNode = getProject().getDiagramModel().getNodeById(id);
+		DiagramFactor newNode = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
 		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
 	}
 
@@ -75,7 +75,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		FactorType nodeType = getTypeToInsert();
 		FactorId id = new FactorCommandHelper(getProject()).createNode(nodeType).getFactorId();
-		DiagramFactor addedNode = getProject().getDiagramModel().getNodeById(id);
+		DiagramFactor addedNode = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
@@ -83,7 +83,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
 		
 		Point snappedPoint  = getProject().getSnapped(deltaPoint);
-		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedNode.getDiagramNodeId()});
+		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedNode.getDiagramFactorId()});
 		getProject().executeCommand(moveCommand);
 		doExtraSetup(id);
 		getProject().executeCommand(new CommandEndTransaction());
@@ -128,7 +128,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		Point deltaPoint = new Point();
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		DiagramFactor[] allTargets = diagramModel.getAllTargetNodes();
+		DiagramFactor[] allTargets = diagramModel.getAllDiagramTargets();
 
 		if (allTargets.length == 1)
 		{

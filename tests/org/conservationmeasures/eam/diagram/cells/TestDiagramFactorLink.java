@@ -56,8 +56,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
-		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
+		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
@@ -70,8 +70,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
-		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
+		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
@@ -88,7 +88,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
-		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramFactorLinkId()));
+		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
 		
 		ProjectServer server = project.getTestDatabase();
 		FactorLink linkage = (FactorLink)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramFactorLinkId());

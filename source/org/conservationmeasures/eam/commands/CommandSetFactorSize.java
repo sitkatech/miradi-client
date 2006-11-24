@@ -39,7 +39,7 @@ public class CommandSetFactorSize extends Command
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
-			DiagramFactor node = model.getNodeById(getId());
+			DiagramFactor node = model.getDiagramFactorById(getId());
 			Dimension currentNodeSize = node.getSize();
 			if(expectedSize != null && !currentNodeSize.equals(expectedSize))
 				throw new Exception("CommandSetNodeSize expected " + expectedSize + " but was " + currentNodeSize);

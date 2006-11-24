@@ -20,13 +20,13 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 	public DiagramFactorLink(DiagramModel model, FactorLink cmLinkage) throws Exception
 	{
 		underlyingObject = cmLinkage;
-		from = model.getNodeById(cmLinkage.getFromNodeId());
-		to = model.getNodeById(cmLinkage.getToNodeId());
+		from = model.getDiagramFactorByWrappedId(cmLinkage.getFromNodeId());
+		to = model.getDiagramFactorByWrappedId(cmLinkage.getToNodeId());
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
 	
-	public boolean isLinkage()
+	public boolean isFactorLink()
 	{
 		return true;
 	}
@@ -89,12 +89,12 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return new DiagramFactorLinkId(underlyingObject.getId().asInt());
 	}
 	
-	public FactorId getFromModelNodeId()
+	public FactorId getFromFactorId()
 	{
 		return underlyingObject.getFromNodeId();
 	}
 	
-	public FactorId getToModelNodeId()
+	public FactorId getToFactorId()
 	{
 		return underlyingObject.getToNodeId();
 	}
@@ -103,8 +103,8 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
 		dataMap.setId(getDiagramLinkageId());
-		dataMap.setFromId(from.getDiagramNodeId());
-		dataMap.setToId(to.getDiagramNodeId());
+		dataMap.setFromId(from.getDiagramFactorId());
+		dataMap.setToId(to.getDiagramFactorId());
 		return dataMap;
 	}
 	

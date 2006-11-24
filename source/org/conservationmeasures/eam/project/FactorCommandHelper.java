@@ -60,7 +60,7 @@ public class FactorCommandHelper
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllNodes());
+		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
 		pasteNodesIntoProject(list, startPoint, dataHelper);
 		pasteLinksIntoProject(list, dataHelper);
 		executeCommand(new CommandEndTransaction());
@@ -69,7 +69,7 @@ public class FactorCommandHelper
 	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllNodes());
+		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
 		pasteNodesIntoProject(list, startPoint, dataHelper);
 		executeCommand(new CommandEndTransaction());
 	}
@@ -109,7 +109,7 @@ public class FactorCommandHelper
 			CommandSetFactorSize resize = new CommandSetFactorSize(newNodeId, originalDimension, newNode.getSize());
 			executeCommand(resize);
 			
-			DiagramFactorId newDiagramNodeId = getDiagramNodeById(newNodeId).getDiagramNodeId();
+			DiagramFactorId newDiagramNodeId = getDiagramNodeById(newNodeId).getDiagramFactorId();
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramFactorId[]{newDiagramNodeId});
 			executeCommand(move);
 		}
@@ -117,7 +117,7 @@ public class FactorCommandHelper
 
 	private DiagramFactor getDiagramNodeById(DiagramFactorId newNodeId) throws Exception
 	{
-		return getDiagramModel().getNodeById(newNodeId);
+		return getDiagramModel().getDiagramFactorById(newNodeId);
 	}
 	
 	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 

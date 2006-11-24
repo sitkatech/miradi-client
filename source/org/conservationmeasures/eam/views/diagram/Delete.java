@@ -59,14 +59,14 @@ public class Delete extends ProjectDoer
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
-				if(cell.isLinkage())
+				if(cell.isFactorLink())
 					deleteLinkage((DiagramFactorLink)cell);	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
-				if(cell.isNode())
+				if(cell.isFactor())
 					deleteNode((DiagramFactor)cell);
 			}
 		}
@@ -92,7 +92,7 @@ public class Delete extends ProjectDoer
 	// TODO: This method should be inside Project and should have unit tests
 	private void deleteNode(DiagramFactor nodeToDelete) throws Exception
 	{
-		DiagramFactorId id = nodeToDelete.getDiagramNodeId();
+		DiagramFactorId id = nodeToDelete.getDiagramFactorId();
 
 		removeFromView(id);
 		removeFromCluster(nodeToDelete, id);

@@ -126,12 +126,12 @@ public class Project
 		return objectManager.getPool(objectType);
 	}
 	
-	public FactorPool getNodePool()
+	public FactorPool getFactorPool()
 	{
 		return objectManager.getNodePool();
 	}
 	
-	public FactorLinkPool getLinkagePool()
+	public FactorLinkPool getFactorLinkPool()
 	{
 		return objectManager.getLinkagePool();
 	}
@@ -288,9 +288,9 @@ public class Project
 		{
 			DiagramModel model = getDiagramModel();
 			FactorId modelNodeId = (FactorId)objectId;
-			if(model.hasNode(modelNodeId))
+			if(model.doesFactorExist(modelNodeId))
 			{
-				DiagramFactor diagramNode = getDiagramModel().getNodeById(modelNodeId);
+				DiagramFactor diagramNode = getDiagramModel().getDiagramFactorByWrappedId(modelNodeId);
 				getDiagramModel().updateCell(diagramNode);
 			}
 		}
@@ -682,9 +682,9 @@ public class Project
 	public FactorId removeNodeFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramFactor nodeToDelete = model.getNodeById(idToDelete);
+		DiagramFactor nodeToDelete = model.getDiagramFactorById(idToDelete);
 		FactorId modelNodeId = nodeToDelete.getWrappedId();
-		model.deleteNode(nodeToDelete);
+		model.deleteDiagramFactor(nodeToDelete);
 		return modelNodeId;
 	}
 
@@ -696,37 +696,37 @@ public class Project
 	public DiagramFactorId addNodeToDiagram(FactorId modelNodeId, DiagramFactorId requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramFactor node = model.createNode(modelNodeId, requestedId);
+		DiagramFactor node = model.createDiagramFactor(modelNodeId, requestedId);
 		updateVisibilityOfSingleNode(node);
-		return node.getDiagramNodeId();
+		return node.getDiagramFactorId();
 	}
 	
 	public FactorLinkId removeLinkageFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
-		DiagramFactorLink linkageToDelete = model.getLinkageById(idToDelete);
+		DiagramFactorLink linkageToDelete = model.getDiagramFactorLinkById(idToDelete);
 		FactorLinkId modelLinkageId = linkageToDelete.getWrappedId();
-		model.deleteLinkage(linkageToDelete);
+		model.deleteDiagramFactorLink(linkageToDelete);
 		return modelLinkageId;
 	}
 
 	public DiagramFactorLinkId addLinkageToDiagram(FactorLinkId modelLinkageId) throws Exception
 	{
-		FactorLink cmLinkage = getLinkagePool().find(modelLinkageId);
+		FactorLink cmLinkage = getFactorLinkPool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
-		DiagramFactorLink linkage = model.createLinkage(cmLinkage);
+		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
 		return linkage.getDiagramLinkageId();
 	}
 
 	protected void writeNode(FactorId nodeId) throws IOException, ParseException
 	{
-		Factor cmNode = getNodePool().find(nodeId);
+		Factor cmNode = getFactorPool().find(nodeId);
 		database.writeObject(cmNode);
 	}
 
 	public void moveNodes(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
 	{
-		getDiagramModel().moveNodes(deltaX, deltaY, ids);
+		getDiagramModel().moveFactors(deltaX, deltaY, ids);
 	}
 	
 	public void setSelectionModel(EAMGraphSelectionModel selectionModelToUse)
@@ -748,14 +748,14 @@ public class Project
 		for(int i=0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell cell = (EAMGraphCell)selectedCells[i];
-			if(cell.isLinkage())
+			if(cell.isFactorLink())
 			{
 				if(!selectedCellsWithLinkages.contains(cell))
 					selectedCellsWithLinkages.add(cell);
 			}
-			else if(cell.isNode())
+			else if(cell.isFactor())
 			{
-				Set linkages = model.getLinkages((DiagramFactor)cell);
+				Set linkages = model.getFactorLinks((DiagramFactor)cell);
 				for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 				{
 					EAMGraphCell link = (EAMGraphCell) iter.next();
@@ -770,7 +770,7 @@ public class Project
 	
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
-		return getLinkagePool().hasLinkage(nodeId1, nodeId2);
+		return getFactorLinkPool().hasLinkage(nodeId1, nodeId2);
 	}
 
 	public EAMGraphCell[] getOnlySelectedCells()
@@ -796,7 +796,7 @@ public class Project
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
-			if(((EAMGraphCell)allSelectedCells[i]).isNode())
+			if(((EAMGraphCell)allSelectedCells[i]).isFactor())
 				nodes.add(allSelectedCells[i]);
 		}
 		return (DiagramFactor[])nodes.toArray(new DiagramFactor[0]);
@@ -816,7 +816,7 @@ public class Project
 		Vector linkages = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
-			if(((EAMGraphCell)allSelectedCells[i]).isLinkage())
+			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
 				linkages.add(allSelectedCells[i]);
 		}
 		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
@@ -856,7 +856,7 @@ public class Project
 	{
 		DiagramModel model = getDiagramModel();
 		
-		Vector nodes = model.getAllNodes();
+		Vector nodes = model.getAllDiagramFactors();
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			DiagramFactor node = (DiagramFactor)nodes.get(i);
@@ -892,7 +892,7 @@ public class Project
 	{
 		try
 		{
-			DiagramFactor nodeToSelect = diagramModel.getNodeById(idToUse);
+			DiagramFactor nodeToSelect = diagramModel.getDiagramFactorByWrappedId(idToUse);
 			selectionModel.setSelectionCell(nodeToSelect);
 		}
 		catch (Exception e)

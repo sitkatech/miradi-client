@@ -13,7 +13,7 @@ public class EAMGraphCell extends DefaultGraphCell
 	{
 	}
 
-	public boolean isNode()
+	public boolean isFactor()
 	{
 		return false;
 	}
@@ -23,7 +23,7 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
-	public boolean isLinkage()
+	public boolean isFactorLink()
 	{
 		return false;
 	}

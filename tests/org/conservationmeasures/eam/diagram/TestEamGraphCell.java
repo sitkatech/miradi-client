@@ -19,7 +19,7 @@ public class TestEamGraphCell extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		EAMGraphCell cell = new EAMGraphCell();
-		assertFalse("is node?", cell.isNode());
-		assertFalse("is link?", cell.isLinkage());
+		assertFalse("is node?", cell.isFactor());
+		assertFalse("is link?", cell.isFactorLink());
 	}
 }

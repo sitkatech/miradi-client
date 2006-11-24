@@ -120,8 +120,8 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public void resetMatrix() 
 	{
-		threatRows =  getProject().getNodePool().getDirectThreats();
-		targetColumns =  getProject().getNodePool().getTargets();
+		threatRows =  getProject().getFactorPool().getDirectThreats();
+		targetColumns =  getProject().getFactorPool().getTargets();
 	}
 	
 	public void setThreatRows(Factor threatRowsToUse[] ) 

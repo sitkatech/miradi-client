@@ -185,20 +185,20 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().areIndicatorsVisible();
 	}
 	
-	public DiagramFactor getSelectedNode()
+	public DiagramFactor getSelectedFactor()
 	{
 		if (getSelectionCount() != 1)
 			return null;
-		return getSelectedNode(0);
+		return getSelectedFactor(0);
 	}
 	
-	public DiagramFactor getSelectedNode(int index)
+	public DiagramFactor getSelectedFactor(int index)
 	{
 		Object[] selectedCells = getSelectionCells();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
 			EAMGraphCell thisCell = (EAMGraphCell)selectedCells[i];
-			if(thisCell.isNode())
+			if(thisCell.isFactor())
 			{
 				if(index == 0)
 					return (DiagramFactor)thisCell;
@@ -211,30 +211,30 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	public void selectAll()
 	{
 		clearSelection();
-		selectAllNodes();
-		selectAllLinkages();
+		selectAllFactors();
+		selectAllFactorLinks();
 	}
 	
-	public void selectAllNodes()
+	public void selectAllFactors()
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
-		Vector allNodes = getDiagramModel().getAllNodes();
-		for (int i  = 0; i < allNodes.size(); i++)
+		Vector allDiagramFactors = getDiagramModel().getAllDiagramFactors();
+		for (int i  = 0; i < allDiagramFactors.size(); i++)
 		{
-			DiagramFactor dNode = (DiagramFactor)allNodes.elementAt(i);
-			if (glc.isVisible(dNode))
-				addSelectionCell(dNode);
+			DiagramFactor diagramFactor = (DiagramFactor)allDiagramFactors.elementAt(i);
+			if (glc.isVisible(diagramFactor))
+				addSelectionCell(diagramFactor);
 		}
 	}
 	
-	public void selectAllLinkages()
+	public void selectAllFactorLinks()
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
-		Vector allLinkages = getDiagramModel().getAllLinkages();
-		for (int i = 0 ; i < allLinkages.size(); i++){
-			DiagramFactorLink dLinkage = (DiagramFactorLink)allLinkages.elementAt(i);
-			if (glc.isVisible(dLinkage))
-				addSelectionCell(dLinkage);
+		Vector allDiagramFactorLinks = getDiagramModel().getAllDiagramFactorLinks();
+		for (int i = 0 ; i < allDiagramFactorLinks.size(); i++){
+			DiagramFactorLink diagramFactorLink = (DiagramFactorLink)allDiagramFactorLinks.elementAt(i);
+			if (glc.isVisible(diagramFactorLink))
+				addSelectionCell(diagramFactorLink);
 		}
 	}
 	

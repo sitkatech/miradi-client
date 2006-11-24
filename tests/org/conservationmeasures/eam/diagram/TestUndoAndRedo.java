@@ -52,12 +52,12 @@ public class TestUndoAndRedo extends EAMTestCase
 	public void testSingleUndo() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertTrue("no link?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
+		assertTrue("no link?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
 		// undo add linkage to diagram
 		project.undo();
 		// undo create model linkage
 		project.undo();
-		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
+		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
 	}
 	
 	public void testMultipleUndo() throws Exception
@@ -68,7 +68,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.undo();
 		// undo create model linkage
 		project.undo();
-		assertFalse("didn't undo?", model.hasLinkage(model.getNodeById(fromId), model.getNodeById(toId)));
+		assertFalse("didn't undo?", model.areLinked(model.getDiagramFactorByWrappedId(fromId), model.getDiagramFactorByWrappedId(toId)));
 		verifyLinkageNotPresent(linkId);
 
 		// undo diagram node add
@@ -153,7 +153,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	private void verifyNodePresent(DiagramFactorId cellId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		assertNotNull("Node not present?", model.getNodeById(cellId));
+		assertNotNull("Node not present?", model.getDiagramFactorById(cellId));
 	}
 	
 	private void verifyNodeNotPresent(DiagramFactorId cellId)
@@ -163,7 +163,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getNodeById(cellId);
+			model.getDiagramFactorById(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)
@@ -179,7 +179,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getNodeById(cellId);
+			model.getDiagramFactorByWrappedId(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)
@@ -195,7 +195,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToString();
 		try
 		{
-			model.getLinkageById(cellId);
+			model.getDiagramFactorLinkById(cellId);
 			fail("Cell should be gone: " + cellId);
 		}
 		catch(Exception ignoreExpected)

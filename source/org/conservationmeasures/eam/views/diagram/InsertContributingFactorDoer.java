@@ -28,7 +28,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 	{
 		super.linkToPreviouslySelectedNodes(newlyInsertedId, nodesToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);
-		if(!insertedNode.isIndirectFactor())
+		if(!insertedNode.isContributingFactor())
 			warnNotIndirectFactor();
 	}
 

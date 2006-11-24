@@ -35,7 +35,7 @@ public class SelectChain extends ViewDoer
 	{
 		boolean isNode = false;
 		if (selectedNodes.length == 1)
-			isNode = selectedNodes[0].isNode();
+			isNode = selectedNodes[0].isFactor();
 		return isNode;
 	}
 
@@ -43,7 +43,7 @@ public class SelectChain extends ViewDoer
 	{
 		boolean isLinkage  = false;
 		if (selectedLinkages.length == 1 )
-			isLinkage = selectedLinkages[0].isLinkage();
+			isLinkage = selectedLinkages[0].isFactorLink();
 		
 		return isLinkage;
 	}
@@ -72,8 +72,8 @@ public class SelectChain extends ViewDoer
 		DiagramModel model = getProject().getDiagramModel();
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
-		Factor[] chainNodes = chainObject.getNodes().toNodeArray();
-		FactorLink[] linksInChain = chainObject.getLinkages();
+		Factor[] chainNodes = chainObject.getFactors().toNodeArray();
+		FactorLink[] linksInChain = chainObject.getFactorLinksArray();
 	
 		selectLinksInChain(model, linksInChain);
 		selectNodesInChain(model, chainNodes);
@@ -91,10 +91,10 @@ public class SelectChain extends ViewDoer
 		ChainObject downstreamChain = new ChainObject();
 		downstreamChain.buildDownstreamChain(diagramModel, selectedLinkage.getToNode().getUnderlyingObject());
 		
-		FactorLink[] downLinkages = downstreamChain.getLinkages();
-		FactorLink[] upLinkages = upstreamChain.getLinkages();
-		Factor[] upNodes = upstreamChain.getNodesArray();
-		Factor[] downNodes = downstreamChain.getNodesArray();
+		FactorLink[] downLinkages = downstreamChain.getFactorLinksArray();
+		FactorLink[] upLinkages = upstreamChain.getFactorLinksArray();
+		Factor[] upNodes = upstreamChain.getFactorsArray();
+		Factor[] downNodes = downstreamChain.getFactorsArray();
 		
 		selectNodesInChain(diagramModel, upNodes);
 		selectNodesInChain(diagramModel, downNodes);
@@ -108,7 +108,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			DiagramFactor nodeToSelect = model.getNodeById((FactorId)chainNodes[i].getId());
+			DiagramFactor nodeToSelect = model.getDiagramFactorByWrappedId((FactorId)chainNodes[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(nodeToSelect);
 		}
@@ -118,7 +118,7 @@ public class SelectChain extends ViewDoer
 	{
 		for (int i = 0 ; i < linksInChain.length; i++)
 		{
-			DiagramFactorLink linkToSelect = model.getLinkageById((FactorLinkId)linksInChain[i].getId());
+			DiagramFactorLink linkToSelect = model.getDiagramFactorLinkbyWrappedId((FactorLinkId)linksInChain[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(linkToSelect);
 		}

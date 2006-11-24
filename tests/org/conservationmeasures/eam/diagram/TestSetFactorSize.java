@@ -30,9 +30,9 @@ public class TestSetFactorSize extends TestCaseEnhanced
 		DiagramModel model = project.getDiagramModel();
 
 		FactorId modelNodeId = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
-		DiagramFactor found = model.getNodeById(modelNodeId);
+		DiagramFactor found = model.getDiagramFactorByWrappedId(modelNodeId);
 		Dimension newSize = new Dimension(200,300);
-		Command setNodeSize = new CommandSetFactorSize(found.getDiagramNodeId(), newSize, found.getPreviousSize());
+		Command setNodeSize = new CommandSetFactorSize(found.getDiagramFactorId(), newSize, found.getPreviousSize());
 		setNodeSize.execute(project);
 
 		Dimension foundSize = found.getSize();

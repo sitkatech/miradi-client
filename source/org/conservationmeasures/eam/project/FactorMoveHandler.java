@@ -36,7 +36,7 @@ public class FactorMoveHandler
 	public void nodesWereMovedOrResized(int deltaX, int deltaY, DiagramFactorId[] ids) throws CommandFailedException
 	{
 		DiagramModel model = getProject().getDiagramModel();
-		model.nodesWereMoved(ids);
+		model.factorsWereMoved(ids);
 
 		Vector commandsToRecord = new Vector();
 		Vector commandsToExecute = new Vector();
@@ -45,7 +45,7 @@ public class FactorMoveHandler
 		{
 			try 
 			{
-				DiagramFactor node = model.getNodeById(ids[i]);
+				DiagramFactor node = model.getDiagramFactorById(ids[i]);
 				if(node.getParent() != null)
 					commandsToExecute.addAll(buildDetachFromClusterCommand(node));
 				if(node.getParent() == null)
@@ -69,7 +69,7 @@ public class FactorMoveHandler
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
 				DiagramFactor node = (DiagramFactor)movedNodes.get(i);
-				idsActuallyMoved[i] = node.getDiagramNodeId();
+				idsActuallyMoved[i] = node.getDiagramFactorId();
 			}
 			
 			commandsToRecord.add(new CommandDiagramMove(deltaX, deltaY, idsActuallyMoved));
@@ -106,7 +106,7 @@ public class FactorMoveHandler
 	private List buildAttachToClusterCommand(DiagramFactor node) throws Exception
 	{
 		Vector result = new Vector();
-		if(node.isCluster())
+		if(node.isFactorCluster())
 			return result;
 		
 		DiagramFactorCluster cluster = getFirstClusterThatContains(node.getRectangle());
@@ -116,7 +116,7 @@ public class FactorMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like addNodeToCluster()
 		getProject().addNodeToCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-				FactorCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
+				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
 		result.add(cmd);
 		return result;
 	}
@@ -131,7 +131,7 @@ public class FactorMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like removeNodeFromCluster()
 		getProject().removeNodeFromCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				FactorCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
+				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
 		result.add(cmd);
 		return result;
 	}
@@ -139,12 +139,12 @@ public class FactorMoveHandler
 	private DiagramFactorCluster getFirstClusterThatContains(Rectangle candidateRect) throws Exception
 	{
 		DiagramModel model = getProject().getDiagramModel();
-		Vector allNodes = model.getAllNodes();
+		Vector allNodes = model.getAllDiagramFactors();
 		for(int i = 0; i < allNodes.size(); ++i)
 		{
 			DiagramFactor node = (DiagramFactor)allNodes.get(i);
-			DiagramFactor possibleCluster = model.getNodeById(node.getWrappedId());
-			if(!possibleCluster.isCluster())
+			DiagramFactor possibleCluster = model.getDiagramFactorByWrappedId(node.getWrappedId());
+			if(!possibleCluster.isFactorCluster())
 				continue;
 			
 			if(possibleCluster.getRectangle().contains(candidateRect))
@@ -156,7 +156,7 @@ public class FactorMoveHandler
 	
 	private Command buildResizeCommand(DiagramFactor node)
 	{
-		return new CommandSetFactorSize(node.getDiagramNodeId(), node.getSize(), node.getPreviousSize());
+		return new CommandSetFactorSize(node.getDiagramFactorId(), node.getSize(), node.getPreviousSize());
 	}
 	
 

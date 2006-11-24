@@ -41,7 +41,7 @@ public class InsertActivity extends WorkPlanDoer
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
 		FactorId interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
-		Factor intervention = getProject().getNodePool().find(interventionId);
+		Factor intervention = getProject().getFactorPool().find(interventionId);
 
 		try
 		{

@@ -92,7 +92,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public Rectangle2D computeCurrentTargetBounds()
 	{
 		Rectangle2D bounds = null;
-		Vector nodes = model.getAllNodes();
+		Vector nodes = model.getAllDiagramFactors();
 		for(int i=0; i < nodes.size(); ++i)
 		{
 			DiagramFactor node = (DiagramFactor)nodes.get(i);

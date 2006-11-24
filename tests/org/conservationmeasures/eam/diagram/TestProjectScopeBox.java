@@ -34,7 +34,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
-		nodePool = model.getNodePool();
+		nodePool = model.getFactorPool();
 		idAssigner = new IdAssigner();
 	}
 	
@@ -62,7 +62,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
 
-		model.moveNodes(100, 100, new DiagramFactorId[] {target1.getDiagramNodeId()});
+		model.moveFactors(100, 100, new DiagramFactorId[] {target1.getDiagramFactorId()});
 		Rectangle2D movedTarget = scope.getBounds();
 		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
@@ -70,7 +70,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
 		DiagramFactor target2 = createNode(Factor.TYPE_TARGET);
-		model.moveNodes(200, 200, new DiagramFactorId[] {target2.getDiagramNodeId()});
+		model.moveFactors(200, 200, new DiagramFactorId[] {target2.getDiagramFactorId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));
@@ -83,7 +83,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);
-		return model.createNode(cmObject.getModelNodeId());
+		return model.createDiagramFactor(cmObject.getModelNodeId());
 	}
 
 	ProjectForTesting project;

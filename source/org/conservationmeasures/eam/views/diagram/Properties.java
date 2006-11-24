@@ -34,9 +34,9 @@ public class Properties extends LocationDoer
 		EAMGraphCell[] selected = getProject().getOnlySelectedCells();
 		if(selected.length != 1)
 			return false;
-		if(selected[0].isNode() || selected[0].isProjectScope())
+		if(selected[0].isFactor() || selected[0].isProjectScope())
 			return true;
-		if(selected[0].isLinkage())
+		if(selected[0].isFactorLink())
 		{
 			DiagramFactorLink linkage = (DiagramFactorLink)selected[0];
 			if(linkage.getToNode().isTarget())
@@ -51,11 +51,11 @@ public class Properties extends LocationDoer
 			return;
 
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
-		if(selected.isNode())
+		if(selected.isFactor())
 			doNodeProperties((DiagramFactor)selected, getLocation());
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
-		else if(selected.isLinkage())
+		else if(selected.isFactorLink())
 			doLinkageProperties((DiagramFactorLink)selected);
 	}
 	

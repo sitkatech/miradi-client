@@ -16,7 +16,7 @@ public class NonDraftStrategySet extends FactorSet
 
 	public boolean isLegal(Factor node)
 	{
-		return (node.isIntervention() && !node.isStatusDraft());
+		return (node.isStrategy() && !node.isStatusDraft());
 	}
 	
 

@@ -47,10 +47,10 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		from = createChoices();
 		to = createChoices();
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
-		DiagramFactor firstSelected = diagram.getSelectedNode(0);
+		DiagramFactor firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
 			from.setSelectedItem(firstSelected);
-		DiagramFactor secondSelected = diagram.getSelectedNode(1);
+		DiagramFactor secondSelected = diagram.getSelectedFactor(1);
 		if(secondSelected != null)
 			to.setSelectedItem(secondSelected);
 		Box box = Box.createHorizontalBox();

@@ -131,7 +131,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public EAMObject getSelectedObject()
 	{
-		DiagramFactor node = diagram.getSelectedNode();
+		DiagramFactor node = diagram.getSelectedFactor();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -256,11 +256,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			ViewData viewData = getProject().getCurrentViewData();
 			IdList visibleDiagramNodeIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
 			visibleDiagramNodeIds.addAll(getRelatedDraftInterventions(visibleDiagramNodeIds));
-			Vector allNodes = getProject().getDiagramModel().getAllNodes();
+			Vector allNodes = getProject().getDiagramModel().getAllDiagramFactors();
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
 				DiagramFactor node = (DiagramFactor) allNodes.get(i);
-				BaseId id = node.getDiagramNodeId();
+				BaseId id = node.getDiagramFactorId();
 				if (!visibleDiagramNodeIds.contains(id))
 					idsToHide.add(id);
 			}
@@ -280,7 +280,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		for(int i = 0; i < diagramNodeIds.size(); ++i)
 		{
 			DiagramFactorId nodeId = new DiagramFactorId(diagramNodeIds.get(i).asInt());
-			Factor node = diagramModel.getNodeById(nodeId).getUnderlyingObject();
+			Factor node = diagramModel.getDiagramFactorById(nodeId).getUnderlyingObject();
 			FactorSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
@@ -289,7 +289,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 				if(diagramNodeIds.contains(possibleInterventionId))
 					continue;
 				Factor possibleIntervention = getProject().findNode(possibleInterventionId);
-				if(possibleIntervention.isIntervention() && possibleIntervention.isStatusDraft())
+				if(possibleIntervention.isStrategy() && possibleIntervention.isStatusDraft())
 					draftsToAdd.add(possibleIntervention.getId());
 			}
 		}
@@ -380,7 +380,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
 		Factor cmNode = getProject().findNode(nodeId);
-		if(!cmNode.isCluster())
+		if(!cmNode.isFactorCluster())
 			return;
 		
 		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
@@ -399,7 +399,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		
 		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
 		Factor cmNode = getProject().findNode(nodeId);
-		if(!cmNode.isCluster())
+		if(!cmNode.isFactorCluster())
 			return;
 		
 		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
@@ -408,7 +408,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		FactorId clusterId = (FactorId)cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
 		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getNodeById(clusterId);
+		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getDiagramFactorByWrappedId(clusterId);
 		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(FactorCluster.TAG_MEMBER_IDS));
 		
 		updateCluster(cluster.getWrappedId(), newMembers, oldMembers);
@@ -423,19 +423,19 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		idsToRemove.subtract(newMembers);
 
 		DiagramModel model = getDiagramComponent().getDiagramModel();
-		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getNodeById(clusterId);
+		DiagramFactorCluster cluster = (DiagramFactorCluster)model.getDiagramFactorByWrappedId(clusterId);
 		
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
 			BaseId memberId = idsToRemove.get(i);
-			DiagramFactor memberNode = model.getNodeById((FactorId)memberId);
+			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
 			getProject().removeNodeFromCluster(cluster, memberNode);
 		}
 		
 		for(int i = 0; i < idsToAdd.size(); ++i)
 		{
 			BaseId memberId = idsToAdd.get(i);
-			DiagramFactor memberNode = model.getNodeById((FactorId)memberId);
+			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}
 		
@@ -491,7 +491,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(nodePropertiesDlg == null)
 			return;
 		
-		DiagramFactor selectedNode = diagram.getSelectedNode();
+		DiagramFactor selectedNode = diagram.getSelectedFactor();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
 			disposeOfNodePropertiesDialog();
 	}

@@ -57,8 +57,8 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		inserter.setLocation(at);
 		inserter.doIt();
 
-		FactorId id = project.getNodePool().getModelNodeIds()[0];
-		DiagramFactor node = project.getDiagramModel().getNodeById(id);
+		FactorId id = project.getFactorPool().getModelNodeIds()[0];
+		DiagramFactor node = project.getDiagramModel().getDiagramFactorByWrappedId(id);
 		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 		assertTrue("select node was called?", inserter.wasSelectNodeCalled());
@@ -152,7 +152,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 		CreateFactorParameter modelNodeParameter2 = new CreateFactorParameter(new FactorTypeTarget());
 		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
 		DiagramFactorId  dModelId2 = project.addNodeToDiagram(nodeId2);
-		DiagramFactor dNode2 = project.getDiagramModel().getNodeById(dModelId2);
+		DiagramFactor dNode2 = project.getDiagramModel().getDiagramFactorById(dModelId2);
 		return dNode2;
 	}
 

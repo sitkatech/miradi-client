@@ -133,7 +133,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		grid.add(new UiLabel(EAM.text("Label|Label")));
 		grid.add(textField);
 
-		if(node.isFactor())
+		if(node.isCause())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
 			String subTypeString = new FactorTypeContributingFactor().toString();
@@ -166,7 +166,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			tabs.add(goalsTab, goalsTab.getPanelDescription());
 		}
 		
-		if(node.isIntervention())
+		if(node.isStrategy())
 			tabs.add(createTasksGrid(node), EAM.text("Tab|Actions"));
 		
 		return tabs;
@@ -184,7 +184,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			detailsTab.add(createThreatClassificationDropdown());
 		}
 
-		if(node.isIntervention())
+		if(node.isStrategy())
 		{
 			detailsTab.add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(node.isStatusDraft());
@@ -605,7 +605,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		if(statusCheckBox.isSelected())
 			newValue = Strategy.STATUS_DRAFT;
 		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode
-				.getDiagramNodeId(), Strategy.TAG_STATUS,
+				.getDiagramFactorId(), Strategy.TAG_STATUS,
 				newValue);
 	}
 

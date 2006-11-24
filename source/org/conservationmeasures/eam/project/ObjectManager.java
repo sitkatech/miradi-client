@@ -399,7 +399,7 @@ public class ObjectManager
 		{
 			Factor from = getNodePool().find(linkFromId); 
 			Factor to = getNodePool().find(linkToId);
-			if(from.isFactor() && to.isTarget())
+			if(from.isCause() && to.isTarget())
 				((Cause)from).increaseTargetCount();
 		}
 
@@ -407,7 +407,7 @@ public class ObjectManager
 		{
 			Factor from = getNodePool().find(linkFromId);
 			Factor to = getNodePool().find(linkToId);
-			if(from.isFactor() && to.isTarget())
+			if(from.isCause() && to.isTarget())
 				((Cause)from).decreaseTargetCount();
 		}		
 	}

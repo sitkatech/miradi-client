@@ -17,7 +17,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 	protected VertexView createVertexView(Object view)
 	{
 		EAMGraphCell cell = (EAMGraphCell)view;
-		if(cell.isNode())
+		if(cell.isFactor())
 			return createNodeView(view);
 		
 		return new ProjectScopeView(view);
@@ -38,15 +38,15 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new RectangleFactorView(node);
 		}
-		if(node.isIndirectFactor())
+		if(node.isContributingFactor())
 		{
 			return new RectangleFactorView(node);
 		}
-		if(node.isIntervention())
+		if(node.isStrategy())
 		{
 			return new HexagonFactorView(node);
 		}
-		if(node.isCluster())
+		if(node.isFactorCluster())
 		{
 			return new FactorClusterView((DiagramFactorCluster)node);
 		}

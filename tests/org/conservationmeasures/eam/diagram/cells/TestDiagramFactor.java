@@ -151,13 +151,13 @@ public class TestDiagramFactor extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		
-		DiagramFactor got = new DiagramTarget(target.getDiagramNodeId(), cmTarget);
+		DiagramFactor got = new DiagramTarget(target.getDiagramFactorId(), cmTarget);
 		EnhancedJsonObject json = target.toJson();
 		got.fillFrom(json);
 		
 		assertEquals("location", target.getLocation(), got.getLocation());
 		assertEquals("size", target.getSize(), got.getSize());
-		assertEquals("id", target.getDiagramNodeId(), got.getDiagramNodeId());
+		assertEquals("id", target.getDiagramFactorId(), got.getDiagramFactorId());
 		assertEquals("wrapped id", target.getWrappedId(), got.getWrappedId());
 	}
 

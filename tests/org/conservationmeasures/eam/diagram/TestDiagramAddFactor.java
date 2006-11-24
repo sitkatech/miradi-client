@@ -55,13 +55,13 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
-		DiagramFactor insertedNode = (DiagramFactor)model.getAllNodes().get(0);
+		DiagramFactor insertedNode = (DiagramFactor)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramNodeId();
-		DiagramFactor foundNode = model.getNodeById(id);
+		DiagramFactorId id = insertedNode.getDiagramFactorId();
+		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
 		assertEquals(Factor.TYPE_TARGET, foundNode.getNodeType());
@@ -71,15 +71,15 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
-		DiagramFactor insertedNode = (DiagramFactor)model.getAllNodes().get(0);
+		DiagramFactor insertedNode = (DiagramFactor)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramNodeId();
-		DiagramFactor foundNode = model.getNodeById(id);
+		DiagramFactorId id = insertedNode.getDiagramFactorId();
+		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not a contributing factor?", foundNode.isIndirectFactor());
+		assertTrue("not a contributing factor?", foundNode.isContributingFactor());
 		assertEquals(Factor.TYPE_CAUSE, foundNode.getNodeType());
 	}
 
@@ -87,15 +87,15 @@ public class TestDiagramAddFactor extends EAMTestCase
 	{
 		project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
-		DiagramFactor insertedNode = (DiagramFactor)model.getAllNodes().get(0);
+		DiagramFactor insertedNode = (DiagramFactor)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramFactorId id = insertedNode.getDiagramNodeId();
-		DiagramFactor foundNode = model.getNodeById(id);
+		DiagramFactorId id = insertedNode.getDiagramFactorId();
+		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
-		assertTrue("not a strategy?", foundNode.isIntervention());
+		assertTrue("not a strategy?", foundNode.isStrategy());
 		assertEquals(Factor.TYPE_INTERVENTION, foundNode.getNodeType());
 	}
 	

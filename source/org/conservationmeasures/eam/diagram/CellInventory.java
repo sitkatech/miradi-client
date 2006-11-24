@@ -19,100 +19,100 @@ class CellInventory
 {
 	public CellInventory()
 	{
-		nodes = new Vector();
-		linkages = new Vector();
+		factors = new Vector();
+		factorLinks = new Vector();
 	}
 	
 	public void clear()
 	{
-		nodes.clear();
-		linkages.clear();
+		factors.clear();
+		factorLinks.clear();
 	}
 
-	public void addNode(DiagramFactor node)
+	public void addFactor(DiagramFactor node)
 	{
-		DiagramFactorId realId = node.getDiagramNodeId();
+		DiagramFactorId realId = node.getDiagramFactorId();
 		
-		if(getNodeById(realId) != null)
+		if(getFactorById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		nodes.add(node);
+		factors.add(node);
 	}
 	
-	public Vector getAllNodes()
+	public Vector getAllFactors()
 	{
-		return nodes;
+		return factors;
 	}
 	
-	public DiagramFactor getNodeById(DiagramFactorId id)
+	public DiagramFactor getFactorById(DiagramFactorId id)
 	{
-		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
+		for (Iterator iter = factors.iterator(); iter.hasNext();) 
 		{
-			DiagramFactor node = (DiagramFactor)iter.next();
-			if(node.getDiagramNodeId().equals(id))
-				return node;
+			DiagramFactor factor = (DiagramFactor)iter.next();
+			if(factor.getDiagramFactorId().equals(id))
+				return factor;
 		}
 		return null;
 	}
 	
-	public DiagramFactor getNodeById(FactorId id)
+	public DiagramFactor getFactorById(FactorId id)
 	{
-		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
+		for (Iterator iter = factors.iterator(); iter.hasNext();) 
 		{
-			DiagramFactor node = (DiagramFactor)iter.next();
-			if(node.getWrappedId().equals(id))
-				return node;
+			DiagramFactor factor = (DiagramFactor)iter.next();
+			if(factor.getWrappedId().equals(id))
+				return factor;
 		}
 		return null;
 	}
 	
-	public void removeNode(DiagramFactor node)
+	public void removeFactor(DiagramFactor node)
 	{
-		nodes.remove(node);
+		factors.remove(node);
 	}
 	
-	public void addLinkage(DiagramFactorLink linkage)
+	public void addFactorLink(DiagramFactorLink linkage)
 	{
 		DiagramFactorLinkId realId = linkage.getDiagramLinkageId();
 		
-		if(getLinkageById(realId) != null)
+		if(getFactorLinkById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		linkages.add(linkage);
+		factorLinks.add(linkage);
 	}
 
-	public Vector getAllLinkages()
+	public Vector getAllFactorLinks()
 	{
-		return linkages;
+		return factorLinks;
 	}
 	
-	public DiagramFactorLink getLinkageById(DiagramFactorLinkId id)
+	public DiagramFactorLink getFactorLinkById(DiagramFactorLinkId id)
 	{
-		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+		for (Iterator iter = factorLinks.iterator(); iter.hasNext();) 
 		{
-			DiagramFactorLink linkage = (DiagramFactorLink) iter.next();
-			if(linkage.getDiagramLinkageId().equals(id))
-				return linkage;
+			DiagramFactorLink link = (DiagramFactorLink) iter.next();
+			if(link.getDiagramLinkageId().equals(id))
+				return link;
 		}
 		return null;
 	}
 	
-	public DiagramFactorLink getLinkageById(FactorLinkId id)
+	public DiagramFactorLink getFactorLinkById(FactorLinkId id)
 	{
-		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
+		for (Iterator iter = factorLinks.iterator(); iter.hasNext();) 
 		{
-			DiagramFactorLink linkage = (DiagramFactorLink) iter.next();
-			if(linkage.getWrappedId().equals(id))
-				return linkage;
+			DiagramFactorLink link = (DiagramFactorLink) iter.next();
+			if(link.getWrappedId().equals(id))
+				return link;
 		}
 		return null;
 	}
 	
-	public void removeLinkage(DiagramFactorLink linkage)
+	public void removeFactorLink(DiagramFactorLink linkage)
 	{
-		linkages.remove(linkage);
+		factorLinks.remove(linkage);
 	}
 	
-	Vector nodes;
-	Vector linkages;
+	Vector factors;
+	Vector factorLinks;
 }

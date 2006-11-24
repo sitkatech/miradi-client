@@ -21,12 +21,12 @@ public class DiagramModelEvent extends EventObject
 		cell = cellToUse;
 	}
 	
-	public DiagramFactor getNode()
+	public DiagramFactor getDiagramFactor()
 	{
 		return (DiagramFactor)cell;
 	}
 	
-	public DiagramFactorLink getLinkage()
+	public DiagramFactorLink getDiagramFactorLink()
 	{
 		return (DiagramFactorLink)cell;
 	}

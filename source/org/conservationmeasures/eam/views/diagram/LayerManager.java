@@ -28,14 +28,14 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramFactor node)
 	{
-		if(hiddenIds.contains(node.getDiagramNodeId()))
+		if(hiddenIds.contains(node.getDiagramFactorId()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
 		if(mode.equals(ViewData.MODE_DEFAULT) && isDraft)
 			return false;
 		
-		if(node.isIndirectFactor())
+		if(node.isContributingFactor())
 			return areIndirectFactorsVisible();
 		
 		if(node.isDirectThreat())

@@ -190,7 +190,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectMajorityRating()
 	{
-		Factor[] threats = getProject().getNodePool().getDirectThreats();
+		Factor[] threats = getProject().getFactorPool().getDirectThreats();
 		int[] highestValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 			highestValues[i] = getHighestValueForThreat(threats[i].getId()).getNumericValue();
@@ -245,7 +245,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectRollupRating()
 	{
-		Factor[] threats = getProject().getNodePool().getDirectThreats();
+		Factor[] threats = getProject().getFactorPool().getDirectThreats();
 		int[] numericValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
@@ -257,7 +257,7 @@ public class ThreatRatingFramework
 
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
-		FactorPool nodePool = project.getNodePool();
+		FactorPool nodePool = project.getFactorPool();
 		FactorId threatId = bundle.getThreatId();
 		Factor threat = nodePool.find(threatId);
 		if(threat == null || !threat.isDirectThreat())

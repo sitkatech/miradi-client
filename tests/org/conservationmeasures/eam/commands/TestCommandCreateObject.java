@@ -39,7 +39,7 @@ public class TestCommandCreateObject extends EAMTestCase
 			assertEquals("didn't assign an id?", highestId, createdId.asInt());
 			
 			Factor node = project.findNode(createdId);
-			assertTrue("Didn't construct with extraInfo?", node.isFactor());
+			assertTrue("Didn't construct with extraInfo?", node.isCause());
 			
 			cmd.undo(project);
 			assertEquals("lost id?", highestId, cmd.getCreatedId().asInt());
