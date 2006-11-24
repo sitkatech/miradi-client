@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -51,11 +51,11 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
-		createNode(ConceptualModelNode.TYPE_CAUSE);
+		createNode(Factor.TYPE_CAUSE);
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
-		DiagramNode target1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode target1 = createNode(Factor.TYPE_TARGET);
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
@@ -68,7 +68,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
-		DiagramNode target2 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode target2 = createNode(Factor.TYPE_TARGET);
 		model.moveNodes(200, 200, new DiagramNodeId[] {target2.getDiagramNodeId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
@@ -80,7 +80,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	{
 		ModelNodeId id = new ModelNodeId(idAssigner.takeNextId().asInt());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(id, parameter);
+		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);
 		return model.createNode(cmObject.getModelNodeId());
 	}

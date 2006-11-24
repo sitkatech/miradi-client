@@ -9,17 +9,17 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
-public class ConceptualModelTarget extends ConceptualModelNode
+public class Target extends Factor
 {
-	public ConceptualModelTarget(ModelNodeId idToUse)
+	public Target(ModelNodeId idToUse)
 	{
-		super(idToUse, ConceptualModelNode.TYPE_TARGET);
+		super(idToUse, Factor.TYPE_TARGET);
 		clear();
 	}
 	
-	public ConceptualModelTarget(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public Target(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, ConceptualModelNode.TYPE_TARGET, json);
+		super(idToUse, Factor.TYPE_TARGET, json);
 	}
 
 	public boolean isTarget()

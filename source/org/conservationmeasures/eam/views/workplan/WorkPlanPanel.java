@@ -31,8 +31,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -129,7 +129,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		return model;
 	}
 
-	public ConceptualModelIntervention getParentIntervention(Task activity)
+	public Strategy getParentIntervention(Task activity)
 	{
 		return model.getParentIntervention(activity);
 	}
@@ -164,7 +164,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelIntervention.TAG_ACTIVITY_IDS))
+		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		return false;
 	}
@@ -188,7 +188,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(ConceptualModelNode.TAG_OBJECTIVE_IDS))
+		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(Factor.TAG_OBJECTIVE_IDS))
 		{
 			return true;
 		}

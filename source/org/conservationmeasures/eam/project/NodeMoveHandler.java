@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
+import org.conservationmeasures.eam.objects.FactorCluster;
 
 public class NodeMoveHandler
 {
@@ -116,7 +116,7 @@ public class NodeMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like addNodeToCluster()
 		getProject().addNodeToCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
+				FactorCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
 		result.add(cmd);
 		return result;
 	}
@@ -131,7 +131,7 @@ public class NodeMoveHandler
 		// FIXME: It looks wrong to mix commands with a non-command call like removeNodeFromCluster()
 		getProject().removeNodeFromCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
-				ConceptualModelCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
+				FactorCluster.TAG_MEMBER_IDS, node.getDiagramNodeId());
 		result.add(cmd);
 		return result;
 	}

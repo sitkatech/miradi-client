@@ -12,7 +12,7 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -124,7 +124,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		targetColumns =  getProject().getNodePool().getTargets();
 	}
 	
-	public void setThreatRows(ConceptualModelNode threatRowsToUse[] ) 
+	public void setThreatRows(Factor threatRowsToUse[] ) 
 	{
 		threatRows = threatRowsToUse;
 	}
@@ -184,11 +184,11 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 
 	public ModelNodeId getThreatId(int threatIndex)
 	{
-		ConceptualModelNode cmNode = getThreatNode(threatIndex);
+		Factor cmNode = getThreatNode(threatIndex);
 		return cmNode.getModelNodeId();
 	}
 
-	public ConceptualModelNode getThreatNode(int threatIndex)
+	public Factor getThreatNode(int threatIndex)
 	{
 		return getDirectThreats()[threatIndex];
 	}
@@ -201,7 +201,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	
 	public ModelNodeId getTargetId(int targetIndex)
 	{
-		ConceptualModelNode cmNode = getTargetNode(targetIndex);
+		Factor cmNode = getTargetNode(targetIndex);
 		return cmNode.getModelNodeId();
 	}
 	
@@ -221,7 +221,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return getNames(getTargets());
 	}
 	
-	public String[] getNames(ConceptualModelNode[] nodes)
+	public String[] getNames(Factor[] nodes)
 	{
 		String[] names = new String[nodes.length];
 		for(int i = 0; i < names.length; ++i)
@@ -229,7 +229,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return names;
 	}
 
-	public ConceptualModelNode getTargetNode(int targetIndex)
+	public Factor getTargetNode(int targetIndex)
 	{
 		return getTargets()[targetIndex];
 	}
@@ -265,7 +265,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return findNodeByName(getTargets(), targetName);
 	}
 
-	private ModelNodeId findNodeByName(ConceptualModelNode[] nodes, String name)
+	private ModelNodeId findNodeByName(Factor[] nodes, String name)
 	{
 		for(int i = 0; i < nodes.length; ++i)
 			if(nodes[i].getLabel().equals(name))
@@ -275,7 +275,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	}
 
 	
-	ConceptualModelNode[] getTargets()
+	Factor[] getTargets()
 	{
 		return targetColumns;
 	}
@@ -285,7 +285,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return getTargets().length;
 	}
 
-	ConceptualModelNode[] getDirectThreats()
+	Factor[] getDirectThreats()
 	{
 		return threatRows;
 	}
@@ -296,8 +296,8 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	}
 
 	
-	private ConceptualModelNode threatRows[] = null;
-	private ConceptualModelNode targetColumns[] =  null;
+	private Factor threatRows[] = null;
+	private Factor targetColumns[] =  null;
 	
 	private Project project;
 	private ThreatRatingFramework framework;

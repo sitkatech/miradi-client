@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 
 public class ChainManager
@@ -30,11 +30,11 @@ public class ChainManager
 	public ConceptualModelNodeSet findNodesThatUseThisAnnotation(int type, BaseId id) throws Exception
 	{
 		if(type == ObjectType.OBJECTIVE)
-			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_OBJECTIVE_IDS);
+			return findNodesThatHaveThisAnnotation(id, Factor.TAG_OBJECTIVE_IDS);
 		if(type == ObjectType.GOAL)
-			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_GOAL_IDS);
+			return findNodesThatHaveThisAnnotation(id, Factor.TAG_GOAL_IDS);
 		if(type == ObjectType.INDICATOR)
-			return findNodesThatHaveThisAnnotation(id, ConceptualModelNode.TAG_INDICATOR_IDS);
+			return findNodesThatHaveThisAnnotation(id, Factor.TAG_INDICATOR_IDS);
 		
 		throw new RuntimeException("Not an annotation type? " + type);
 	}
@@ -61,7 +61,7 @@ public class ChainManager
 		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
-			ConceptualModelNode node = pool.find(allNodeIds[i]);
+			Factor node = pool.find(allNodeIds[i]);
 			IdList annotationIds = new IdList(node.getData(tag));
 			if(annotationIds.contains(objectiveId))
 				foundNodes.attemptToAdd(node);
@@ -72,7 +72,7 @@ public class ChainManager
 
 	public ConceptualModelNodeSet findAllNodesRelatedToThisIndicator(BaseId indicatorId) throws Exception
 	{
-		ConceptualModelNode[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
+		Factor[] nodesThatUseThisIndicator = findNodesThatUseThisIndicator(indicatorId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
 		
 		for(int i = 0; i < nodesThatUseThisIndicator.length; ++i)
@@ -86,7 +86,7 @@ public class ChainManager
 	
 	public ConceptualModelNodeSet findAllNodesRelatedToThisObjective(BaseId objectiveId) throws Exception
 	{
-		ConceptualModelNode[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
+		Factor[] nodesThatUseThisObjective = findNodesThatUseThisObjective(objectiveId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
 		
 		for(int i = 0; i < nodesThatUseThisObjective.length; ++i)
@@ -100,7 +100,7 @@ public class ChainManager
 	
 	public ConceptualModelNodeSet findAllNodesRelatedToThisGoal(BaseId goalId) throws Exception
 	{
-		ConceptualModelNode[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
+		Factor[] nodesThatUseThisGoal = findNodesThatUseThisGoal(goalId).toNodeArray();
 		ConceptualModelNodeSet relatedNodes = new ConceptualModelNodeSet();
 		
 		for(int i = 0; i < nodesThatUseThisGoal.length; ++i)

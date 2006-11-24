@@ -10,7 +10,7 @@ import javax.swing.tree.TreePath;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
@@ -34,7 +34,7 @@ public class WorkPlanTreeTableModel extends GenericTreeTableModel
 		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
 	}
 	
-	public ConceptualModelIntervention getParentIntervention(Task activity)
+	public Strategy getParentIntervention(Task activity)
 	{
 		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
 		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();

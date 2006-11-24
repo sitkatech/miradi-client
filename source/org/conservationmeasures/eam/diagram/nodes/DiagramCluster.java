@@ -13,12 +13,12 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
+import org.conservationmeasures.eam.objects.FactorCluster;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramCluster extends DiagramNode
 {
-	public DiagramCluster(DiagramNodeId idToUse, ConceptualModelCluster cmGroup)
+	public DiagramCluster(DiagramNodeId idToUse, FactorCluster cmGroup)
 	{
 		super(idToUse, cmGroup);
 		GraphConstants.setGroupOpaque(getAttributes(), true);
@@ -32,7 +32,7 @@ public class DiagramCluster extends DiagramNode
 	public Command[] buildCommandsToClear()
 	{
 		Vector commands = new Vector();
-		commands.add(new CommandSetObjectData(getWrappedType(), getWrappedId(), ConceptualModelCluster.TAG_MEMBER_IDS, new IdList().toString()));
+		commands.add(new CommandSetObjectData(getWrappedType(), getWrappedId(), FactorCluster.TAG_MEMBER_IDS, new IdList().toString()));
 		commands.addAll(Arrays.asList(super.buildCommandsToClear()));
 		return (Command[])commands.toArray(new Command[0]);
 	}

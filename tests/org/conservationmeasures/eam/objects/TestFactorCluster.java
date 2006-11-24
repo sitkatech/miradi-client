@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelCluster extends ObjectTestCase
+public class TestFactorCluster extends ObjectTestCase
 {
-	public TestConceptualModelCluster(String name)
+	public TestFactorCluster(String name)
 	{
 		super(name);
 	}
@@ -20,23 +20,23 @@ public class TestConceptualModelCluster extends ObjectTestCase
 	public void testBasics() throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(5);
-		ConceptualModelCluster group = new ConceptualModelCluster(id);
+		FactorCluster group = new FactorCluster(id);
 		assertEquals("wrong id?", id, group.getId());
 		
 		IdList members = new IdList();
 		members.add(3);
 		members.add(91);
-		group.setData(ConceptualModelCluster.TAG_MEMBER_IDS, members.toString());
-		assertEquals("didn't save members?", members.toString(), group.getData(ConceptualModelCluster.TAG_MEMBER_IDS));
+		group.setData(FactorCluster.TAG_MEMBER_IDS, members.toString());
+		assertEquals("didn't save members?", members.toString(), group.getData(FactorCluster.TAG_MEMBER_IDS));
 		
-		ConceptualModelCluster got = (ConceptualModelCluster)EAMBaseObject.createFromJson(group.getType(), group.toJson());
+		FactorCluster got = (FactorCluster)EAMBaseObject.createFromJson(group.getType(), group.toJson());
 		assertEquals("didn't jsonize id?", group.getId(), got.getId());
 		assertEquals("didn't jsonize members?", group.getMemberIds(), got.getMemberIds());
 	}
 	
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CLUSTER);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CLUSTER);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 }

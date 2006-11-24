@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -17,7 +17,7 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 		return new StrategicPlanTreeTableModel(project, new StratPlanRoot(project));
 	}
 	
-	static public StrategicPlanTreeTableModel createForStrategy(Project project, ConceptualModelIntervention strategy)
+	static public StrategicPlanTreeTableModel createForStrategy(Project project, Strategy strategy)
 	{
 		return new StrategicPlanTreeTableModel(project, new StratPlanStrategy(project, strategy));
 	}

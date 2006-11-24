@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -38,7 +38,7 @@ public class TestCommandCreateObject extends EAMTestCase
 			int highestId = project.getNodeIdAssigner().getHighestAssignedId();
 			assertEquals("didn't assign an id?", highestId, createdId.asInt());
 			
-			ConceptualModelNode node = project.findNode(createdId);
+			Factor node = project.findNode(createdId);
 			assertTrue("Didn't construct with extraInfo?", node.isFactor());
 			
 			cmd.undo(project);

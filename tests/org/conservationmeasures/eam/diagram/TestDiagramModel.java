@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -56,7 +56,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
 			
 			ConceptualModelNodeSet gotChainNodes = model.getNodesInChain(cmNode);
 			
@@ -102,7 +102,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
 			ConceptualModelNodeSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
 			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
@@ -120,7 +120,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			ConceptualModelNode cmNode = (ConceptualModelNode)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
 			ConceptualModelNodeSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
 			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
@@ -136,8 +136,8 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testIsNode() throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
-		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode factor = createNode(Factor.TYPE_CAUSE);
+		DiagramNode target = createNode(Factor.TYPE_TARGET);
 		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
@@ -146,8 +146,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testCounts()throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
-		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode factor = createNode(Factor.TYPE_CAUSE);
+		DiagramNode target = createNode(Factor.TYPE_TARGET);
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
@@ -155,10 +155,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramNode factor = createNode(ConceptualModelNode.TYPE_CAUSE);
+		DiagramNode factor = createNode(Factor.TYPE_CAUSE);
 		model.deleteNode(factor);
-		DiagramNode newFactor = createNode(ConceptualModelNode.TYPE_CAUSE);
-		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode newFactor = createNode(Factor.TYPE_CAUSE);
+		DiagramNode target = createNode(Factor.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
@@ -167,9 +167,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetLinkages() throws Exception
 	{
-		DiagramNode factor1 = createNode(ConceptualModelNode.TYPE_CAUSE);
-		DiagramNode factor2 = createNode(ConceptualModelNode.TYPE_CAUSE);
-		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode factor1 = createNode(Factor.TYPE_CAUSE);
+		DiagramNode factor2 = createNode(Factor.TYPE_CAUSE);
+		DiagramNode target = createNode(Factor.TYPE_TARGET);
 		DiagramLinkage linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getLinkages(target);
@@ -191,19 +191,19 @@ public class TestDiagramModel extends EAMTestCase
 		createTarget();		
 		DiagramNode lastCreated = createTarget();		
 		model.deleteNode(nodeToDelete);
-		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getWrappedId());
+		Target cmTargetToUndo = new Target(nodeToDelete.getWrappedId());
 		
 		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
-		DiagramNode nodeAfterUndo = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode nodeAfterUndo = createNode(Factor.TYPE_TARGET);
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramNodeId().asInt() > lastCreated.getDiagramNodeId().asInt());
 	}
 
 	public void testGetAllNodes() throws Exception
 	{
-		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(Factor.TYPE_TARGET);		
+		DiagramNode node2 = createNode(Factor.TYPE_TARGET);		
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node1.getWrappedId(), node2.getWrappedId());
-		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node3 = createNode(Factor.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
 		assertEquals(3, nodes.size());
@@ -214,10 +214,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetAllLinkages() throws Exception
 	{
-		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(Factor.TYPE_TARGET);		
+		DiagramNode node2 = createNode(Factor.TYPE_TARGET);		
 		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
-		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node3 = createNode(Factor.TYPE_TARGET);		
 		DiagramLinkage link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector linkages = model.getAllLinkages();
@@ -228,8 +228,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testFillFrom() throws Exception
 	{
-		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(Factor.TYPE_TARGET);		
+		DiagramNode node2 = createNode(Factor.TYPE_TARGET);		
 		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 
 		DiagramModel copy = new DiagramModel(project);
@@ -244,7 +244,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node1 = createNode(Factor.TYPE_TARGET);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals("node changed already called?", 0, testModel.nodeChanged);
 		assertEquals("node deleted already called?", 0, testModel.nodeDeleted);
@@ -268,8 +268,8 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("delete node did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("delete node did a link delete notify?", 0, testModel.linkDeleted);
 
-		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);
-		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node2 = createNode(Factor.TYPE_TARGET);
+		DiagramNode node3 = createNode(Factor.TYPE_TARGET);
 		DiagramLinkage link1 = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);
@@ -298,7 +298,7 @@ public class TestDiagramModel extends EAMTestCase
 	
 	private DiagramNode createTarget() throws Exception
 	{
-		ConceptualModelNode cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
+		Factor cmTarget = new Target(takeNextModelNodeId());
 		project.getNodePool().put(cmTarget);
 		return model.createNode(cmTarget.getModelNodeId());
 	}
@@ -307,14 +307,14 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		ModelNodeId id = takeNextModelNodeId();
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
-		ConceptualModelNode cmObject = ConceptualModelNode.createConceptualModelObject(id, parameter);
+		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		project.getNodePool().put(cmObject);
 		return model.createNode(cmObject.getModelNodeId());
 	}
 	
 	private DiagramLinkage createLinkage(ModelLinkageId id, ModelNodeId fromId, ModelNodeId toId) throws Exception
 	{
-		ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(id, fromId, toId);
+		FactorLink cmLinkage = new FactorLink(id, fromId, toId);
 		model.getLinkagePool().put(cmLinkage);
 		return model.createLinkage(cmLinkage);
 	}

@@ -23,9 +23,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -45,14 +45,14 @@ public class TestDiagramNode extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		idAssigner = new IdAssigner();
 
-		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
-		ConceptualModelCause cmIndirectFactor = new ConceptualModelCause(takeNextModelNodeId());
-		ConceptualModelCause cmDirectThreat = new ConceptualModelCause(takeNextModelNodeId());
+		Strategy cmIntervention = new Strategy(takeNextModelNodeId());
+		Cause cmIndirectFactor = new Cause(takeNextModelNodeId());
+		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		ModelNodeId cmTargetId = new ModelNodeId(rawTargetId.asInt());
-		cmTarget = (ConceptualModelTarget)project.findNode(cmTargetId);
+		cmTarget = (Target)project.findNode(cmTargetId);
 		
 		DiagramNodeId interventionNodeId = new DiagramNodeId(44);
 		intervention = DiagramNode.wrapConceptualModelObject(interventionNodeId, cmIntervention);
@@ -169,7 +169,7 @@ public class TestDiagramNode extends EAMTestCase
 	
 	Project project;
 	IdAssigner idAssigner;
-	ConceptualModelTarget cmTarget;
+	Target cmTarget;
 	DiagramNode intervention;
 	DiagramNode indirectFactor;
 	DiagramNode directThreat;

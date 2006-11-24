@@ -10,11 +10,11 @@ import java.awt.Color;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
+import org.conservationmeasures.eam.objects.Cause;
 
 public class DiagramFactor extends DiagramNode
 {
-	public DiagramFactor(DiagramNodeId idToUse, ConceptualModelCause cmFactor)
+	public DiagramFactor(DiagramNodeId idToUse, Cause cmFactor)
 	{
 		super(idToUse, cmFactor);
 	}

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class CreateIndicator  extends CreateAnnotationDoer
 {
@@ -16,6 +16,6 @@ public class CreateIndicator  extends CreateAnnotationDoer
 	}
 	String getAnnotationIdListTag()
 	{
-		return ConceptualModelNode.TAG_INDICATOR_IDS;
+		return Factor.TAG_INDICATOR_IDS;
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class ConceptualModelNodeSet implements Collection
 {
@@ -13,7 +13,7 @@ public class ConceptualModelNodeSet implements Collection
 		nodes = new HashSet();
 	}
 	
-	public void attemptToAdd(ConceptualModelNode node)
+	public void attemptToAdd(Factor node)
 	{
 		if(isLegal(node))
 		{
@@ -23,12 +23,12 @@ public class ConceptualModelNodeSet implements Collection
 	
 	public void attemptToAddAll(ConceptualModelNodeSet nodesToAdd)
 	{
-		ConceptualModelNode[] nodesAsArray = nodesToAdd.toNodeArray();
+		Factor[] nodesAsArray = nodesToAdd.toNodeArray();
 		for(int i = 0; i < nodesAsArray.length; ++i)
 			attemptToAdd(nodesAsArray[i]);
 	}
 	
-	public boolean isLegal(ConceptualModelNode node)
+	public boolean isLegal(Factor node)
 	{
 		
 		return true;
@@ -46,13 +46,13 @@ public class ConceptualModelNodeSet implements Collection
 
 	}
 
-	public ConceptualModelNode[] toNodeArray()
+	public Factor[] toNodeArray()
 	{
-		return (ConceptualModelNode[])nodes.toArray(new ConceptualModelNode[0]);
+		return (Factor[])nodes.toArray(new Factor[0]);
 
 	}
 	
-	public boolean contains(ConceptualModelNode node)
+	public boolean contains(Factor node)
 	{
 		return nodes.contains(node);
 	}
@@ -133,7 +133,7 @@ public class ConceptualModelNodeSet implements Collection
 		Iterator iter = iterator();
 		while(iter.hasNext())
 		{
-			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			Factor node = (Factor)iter.next();
 			result.append(node.getId());
 			result.append(",");
 		}

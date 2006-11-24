@@ -8,13 +8,13 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class InsertIntervention extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return ConceptualModelNode.TYPE_INTERVENTION;
+		return Factor.TYPE_INTERVENTION;
 	}
 
 	public String getInitialText()

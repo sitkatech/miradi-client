@@ -10,17 +10,17 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ConceptualModelCluster extends ConceptualModelNode
+public class FactorCluster extends Factor
 {
-	public ConceptualModelCluster(ModelNodeId idToUse)
+	public FactorCluster(ModelNodeId idToUse)
 	{
-		super(idToUse, ConceptualModelNode.TYPE_CLUSTER);
+		super(idToUse, Factor.TYPE_CLUSTER);
 		clear();
 	}
 
-	public ConceptualModelCluster(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public FactorCluster(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, ConceptualModelNode.TYPE_CLUSTER, json);
+		super(idToUse, Factor.TYPE_CLUSTER, json);
 	}
 	
 	public boolean isCluster()

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -77,7 +77,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		Iterator iter = relatedNodesToUse.iterator();
 		while(iter.hasNext())
 		{
-			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			Factor node = (Factor)iter.next();
 			IdList objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{
@@ -97,7 +97,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		Vector result = new Vector();
 		while (iter.hasNext())
 		{
-			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			Factor node = (Factor)iter.next();
 			if(!node.isTarget())
 				continue;
 			

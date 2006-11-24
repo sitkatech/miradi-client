@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -77,8 +77,8 @@ public class InsertConnection extends ProjectDoer
 	
 	boolean wouldCreateLinkageLoop(DiagramModel dModel, ModelNodeId fromNodeId, ModelNodeId toNodeId)
     {
-		ConceptualModelNode cmFromNode = dModel.getNodePool().find(fromNodeId);
-		ConceptualModelNode[] cmUpstreamNodes = dModel.getAllUpstreamNodes(cmFromNode).toNodeArray();
+		Factor cmFromNode = dModel.getNodePool().find(fromNodeId);
+		Factor[] cmUpstreamNodes = dModel.getAllUpstreamNodes(cmFromNode).toNodeArray();
 		
 		for (int i  = 0; i < cmUpstreamNodes.length; i++)
 			if (cmUpstreamNodes[i].getId().equals(toNodeId))

@@ -7,13 +7,13 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class CreateCluster extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return ConceptualModelNode.TYPE_CLUSTER;
+		return Factor.TYPE_CLUSTER;
 	}
 
 	public String getInitialText()

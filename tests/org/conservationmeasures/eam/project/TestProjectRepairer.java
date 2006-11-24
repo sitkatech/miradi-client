@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -29,7 +29,7 @@ public class TestProjectRepairer extends EAMTestCase
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
-			ConceptualModelNode node = project.findNode(nodeId);
+			Factor node = project.findNode(nodeId);
 			IdList bogusIndicators = new IdList();
 			bogusIndicators.add(new IndicatorId(23252));
 			node.setIndicators(bogusIndicators);
@@ -56,7 +56,7 @@ public class TestProjectRepairer extends EAMTestCase
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
-			ConceptualModelNode node = project.findNode(nodeId);
+			Factor node = project.findNode(nodeId);
 			IdList bogusGoals = new IdList();
 			bogusGoals.add(BaseId.INVALID);
 			node.setGoals(bogusGoals);
@@ -83,7 +83,7 @@ public class TestProjectRepairer extends EAMTestCase
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
-			ConceptualModelNode node = project.findNode(nodeId);
+			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(BaseId.INVALID);
 			node.setObjectives(bogusObjectives);
@@ -110,7 +110,7 @@ public class TestProjectRepairer extends EAMTestCase
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new NodeTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
-			ConceptualModelNode node = project.findNode(nodeId);
+			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(new BaseId(235));
 			node.setObjectives(bogusObjectives);
@@ -157,27 +157,27 @@ public class TestProjectRepairer extends EAMTestCase
 	public void testDeleteOrphanObjectives() throws Exception
 	{
 		int annotationType = ObjectType.OBJECTIVE;
-		String nodeTagForAnnotationList = ConceptualModelNode.TAG_OBJECTIVE_IDS;
+		String nodeTagForAnnotationList = Factor.TAG_OBJECTIVE_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_CAUSE, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_CAUSE, nodeTagForAnnotationList);
 		
 	}
 
 	public void testDeleteOrphanGoals() throws Exception
 	{
 		int annotationType = ObjectType.GOAL;
-		String nodeTagForAnnotationList = ConceptualModelNode.TAG_GOAL_IDS;
+		String nodeTagForAnnotationList = Factor.TAG_GOAL_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_TARGET, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_TARGET, nodeTagForAnnotationList);
 		
 	}
 
 	public void testDeleteOrphanIndicators() throws Exception
 	{
 		int annotationType = ObjectType.INDICATOR;
-		String nodeTagForAnnotationList = ConceptualModelNode.TAG_INDICATOR_IDS;
+		String nodeTagForAnnotationList = Factor.TAG_INDICATOR_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_CAUSE, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, Factor.TYPE_CAUSE, nodeTagForAnnotationList);
 		
 	}
 

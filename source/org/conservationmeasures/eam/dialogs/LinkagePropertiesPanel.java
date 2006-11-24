@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.dialogs;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
 public class LinkagePropertiesPanel extends ObjectDataInputPanel
@@ -17,7 +17,7 @@ public class LinkagePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.MODEL_LINKAGE, objectIdToUse);
 
-		addField(createStringField(ConceptualModelLinkage.TAG_STRESS_LABEL));
+		addField(createStringField(FactorLink.TAG_STRESS_LABEL));
 		
 		updateFieldsFromProject();
 	}

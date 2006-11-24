@@ -59,13 +59,13 @@ abstract public class EAMBaseObject implements EAMObject
 				return new Task(idAsInt, json);
 			
 			case ObjectType.MODEL_NODE:
-				return ConceptualModelNode.createFrom(idAsInt, json);
+				return Factor.createFrom(idAsInt, json);
 
 			case ObjectType.VIEW_DATA:
 				return new ViewData(idAsInt, json);
 				
 			case ObjectType.MODEL_LINKAGE:
-				return new ConceptualModelLinkage(idAsInt, json);
+				return new FactorLink(idAsInt, json);
 				
 			case ObjectType.PROJECT_RESOURCE:
 				return new ProjectResource(idAsInt, json);

@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestConceptualModelNode extends TestCaseEnhanced
+public class TestFactor extends TestCaseEnhanced
 {
-	public TestConceptualModelNode(String name)
+	public TestFactor(String name)
 	{
 		super(name);
 	}
@@ -20,7 +20,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testComments() throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(35);
-		ConceptualModelCause factor = new ConceptualModelCause(id);
+		Cause factor = new Cause(id);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
 		factor.setComment(sampleComment);
@@ -30,12 +30,12 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testSetGetData() throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(72);
-		ConceptualModelTarget target = new ConceptualModelTarget(id);
+		Target target = new Target(id);
 		String[] tags = {
-			ConceptualModelNode.TAG_COMMENT,
-			ConceptualModelNode.TAG_INDICATOR_IDS,
-			ConceptualModelNode.TAG_GOAL_IDS,
-			ConceptualModelNode.TAG_OBJECTIVE_IDS,
+			Factor.TAG_COMMENT,
+			Factor.TAG_INDICATOR_IDS,
+			Factor.TAG_GOAL_IDS,
+			Factor.TAG_OBJECTIVE_IDS,
 		};
 		
 		IdList sampleIdList = new IdList();
@@ -55,7 +55,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 			assertEquals("didn't set/get for " + tags[i], sampleData[i], target.getData(tags[i]));
 		}
 		
-		String nodeTypeTag = ConceptualModelNode.TAG_NODE_TYPE;
+		String nodeTypeTag = Factor.TAG_NODE_TYPE;
 		try
 		{
 			target.setData(nodeTypeTag, "This won't be used anyway");
@@ -90,13 +90,13 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		indicators.add(new BaseId(422));
 
 		ModelNodeId factorId = new ModelNodeId(2342);
-		ConceptualModelCause factor = new ConceptualModelCause(factorId);
+		Cause factor = new Cause(factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicators(indicators);
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
-		ConceptualModelCause got = (ConceptualModelCause)ConceptualModelNode.createFromJson(factor.getType(), factor.toJson());
+		Cause got = (Cause)Factor.createFromJson(factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());

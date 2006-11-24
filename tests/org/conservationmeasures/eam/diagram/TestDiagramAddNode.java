@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.jgraph.graph.GraphConstants;
@@ -53,7 +53,7 @@ public class TestDiagramAddNode extends EAMTestCase
 
 	public void testInsertTarget() throws Exception
 	{
-		project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
+		project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -64,12 +64,12 @@ public class TestDiagramAddNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(ConceptualModelNode.TYPE_TARGET, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_TARGET, foundNode.getNodeType());
 	}
 
 	public void testInsertFactor() throws Exception
 	{
-		project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_CAUSE, BaseId.INVALID);
+		project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -80,12 +80,12 @@ public class TestDiagramAddNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isIndirectFactor());
-		assertEquals(ConceptualModelNode.TYPE_CAUSE, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_CAUSE, foundNode.getNodeType());
 	}
 
 	public void testInsertIntervention() throws Exception
 	{
-		project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_INTERVENTION, BaseId.INVALID);
+		project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramNode insertedNode = (DiagramNode)model.getAllNodes().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -96,7 +96,7 @@ public class TestDiagramAddNode extends EAMTestCase
 		DiagramNode foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isIntervention());
-		assertEquals(ConceptualModelNode.TYPE_INTERVENTION, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_INTERVENTION, foundNode.getNodeType());
 	}
 	
 	ProjectForTesting project;

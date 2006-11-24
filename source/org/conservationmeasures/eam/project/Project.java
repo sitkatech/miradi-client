@@ -49,8 +49,8 @@ import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -221,9 +221,9 @@ public class Project
 		return pool.findObject(objectId);
 	}
 	
-	public ConceptualModelNode findNode(ModelNodeId nodeId)
+	public Factor findNode(ModelNodeId nodeId)
 	{
-		return (ConceptualModelNode)findObject(ObjectType.MODEL_NODE, nodeId);
+		return (Factor)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
 	
 	public ProjectInfo getProjectInfo()
@@ -712,7 +712,7 @@ public class Project
 
 	public DiagramLinkageId addLinkageToDiagram(ModelLinkageId modelLinkageId) throws Exception
 	{
-		ConceptualModelLinkage cmLinkage = getLinkagePool().find(modelLinkageId);
+		FactorLink cmLinkage = getLinkagePool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
 		DiagramLinkage linkage = model.createLinkage(cmLinkage);
 		return linkage.getDiagramLinkageId();
@@ -720,7 +720,7 @@ public class Project
 
 	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
 	{
-		ConceptualModelNode cmNode = getNodePool().find(nodeId);
+		Factor cmNode = getNodePool().find(nodeId);
 		database.writeObject(cmNode);
 	}
 

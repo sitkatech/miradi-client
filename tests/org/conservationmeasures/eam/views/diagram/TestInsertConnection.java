@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -37,9 +37,9 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		ModelNodeId node1 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node2 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node3 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		
 		CreateModelLinkageParameter parameter12 = new CreateModelLinkageParameter(node1, node2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);
@@ -59,9 +59,9 @@ public class TestInsertConnection extends EAMTestCase
 		try
 		{
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_CAUSE, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

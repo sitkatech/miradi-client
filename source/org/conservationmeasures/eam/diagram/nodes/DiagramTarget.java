@@ -14,11 +14,11 @@ import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Target;
 
 public class DiagramTarget extends DiagramNode
 {
-	public DiagramTarget(DiagramNodeId idToUse, ConceptualModelTarget cmTarget)
+	public DiagramTarget(DiagramNodeId idToUse, Target cmTarget)
 	{
 		super(idToUse, cmTarget);
 	}

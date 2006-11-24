@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
@@ -190,7 +190,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectMajorityRating()
 	{
-		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
+		Factor[] threats = getProject().getNodePool().getDirectThreats();
 		int[] highestValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 			highestValues[i] = getHighestValueForThreat(threats[i].getId()).getNumericValue();
@@ -245,7 +245,7 @@ public class ThreatRatingFramework
 	
 	public ValueOption getProjectRollupRating()
 	{
-		ConceptualModelNode[] threats = getProject().getNodePool().getDirectThreats();
+		Factor[] threats = getProject().getNodePool().getDirectThreats();
 		int[] numericValues = new int[threats.length];
 		for(int i = 0; i < threats.length; ++i)
 		{
@@ -259,12 +259,12 @@ public class ThreatRatingFramework
 	{
 		NodePool nodePool = project.getNodePool();
 		ModelNodeId threatId = bundle.getThreatId();
-		ConceptualModelNode threat = nodePool.find(threatId);
+		Factor threat = nodePool.find(threatId);
 		if(threat == null || !threat.isDirectThreat())
 			return false;
 		
 		ModelNodeId targetId = bundle.getTargetId();
-		ConceptualModelNode target = nodePool.find(targetId);
+		Factor target = nodePool.find(targetId);
 		if(target == null || !target.isTarget())
 			return false;
 

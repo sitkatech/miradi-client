@@ -10,21 +10,21 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class WorkPlanStrategy extends WorkPlanTreeTableNode
 {
-	public WorkPlanStrategy(Project projectToUse, ConceptualModelIntervention interventionToUse)
+	public WorkPlanStrategy(Project projectToUse, Strategy interventionToUse)
 	{
 		project = projectToUse;
 		intervention = interventionToUse;
 		rebuild();
 	}
 
-	public ConceptualModelIntervention getIntervention()
+	public Strategy getIntervention()
 	{
 		return intervention;
 	}
@@ -91,7 +91,7 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 
 	
 	Project project;
-	ConceptualModelIntervention intervention;
+	Strategy intervention;
 	WorkPlanStrategyActivity[] activities;
 }
 

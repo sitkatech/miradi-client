@@ -6,19 +6,19 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class StratPlanStrategy extends TreeTableNode
 {
-	public StratPlanStrategy(Project projectToUse, ConceptualModelIntervention interventionToUse)
+	public StratPlanStrategy(Project projectToUse, Strategy interventionToUse)
 	{
 		project = projectToUse;
 		intervention = interventionToUse;
 	}
 	
-	public ConceptualModelIntervention getIntervention()
+	public Strategy getIntervention()
 	{
 		return intervention;
 	}
@@ -57,6 +57,6 @@ public class StratPlanStrategy extends TreeTableNode
 	}
 	
 	Project project;
-	ConceptualModelIntervention intervention;
+	Strategy intervention;
 }
 

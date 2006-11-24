@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -34,7 +34,7 @@ public class TestDeleteActivity extends EAMTestCase
 			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeIntervention());
 			BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			ModelNodeId interventionId = new ModelNodeId(rawInterventionId.asInt());
-			ConceptualModelIntervention intervention = (ConceptualModelIntervention)project.findNode(interventionId);
+			Strategy intervention = (Strategy)project.findNode(interventionId);
 			BaseId resourceId = project.createObject(ObjectType.PROJECT_RESOURCE);
 	//		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
 			

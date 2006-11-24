@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectZipper;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -164,7 +164,7 @@ public class DataUpgrader extends ProjectServer
 		{
 			File nodeFile = new File(nodesDirectory, Integer.toString(ids[i].asInt()));
 			JSONObject json = JSONFile.read(nodeFile);
-			json.put(ConceptualModelNode.TAG_LABEL, json.opt(TAG_NAME));
+			json.put(Factor.TAG_LABEL, json.opt(TAG_NAME));
 			// no need to clear out the old Name field
 			JSONFile.write(nodeFile, json);
 		}

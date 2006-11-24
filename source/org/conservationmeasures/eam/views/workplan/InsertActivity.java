@@ -17,8 +17,8 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 
 public class InsertActivity extends WorkPlanDoer
@@ -41,7 +41,7 @@ public class InsertActivity extends WorkPlanDoer
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
 		ModelNodeId interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
-		ConceptualModelNode intervention = getProject().getNodePool().find(interventionId);
+		Factor intervention = getProject().getNodePool().find(interventionId);
 
 		try
 		{
@@ -54,7 +54,7 @@ public class InsertActivity extends WorkPlanDoer
 		}
 	}
 
-	public static void insertActivity(Project project, ConceptualModelNode intervention, int childIndex) throws CommandFailedException, ParseException, Exception
+	public static void insertActivity(Project project, Factor intervention, int childIndex) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -64,7 +64,7 @@ public class InsertActivity extends WorkPlanDoer
 			BaseId createdId = create.getCreatedId();
 	
 			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(intervention, 
-					ConceptualModelIntervention.TAG_ACTIVITY_IDS, createdId, childIndex);
+					Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
 			project.executeCommand(addChild);
 		}
 		finally

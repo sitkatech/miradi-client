@@ -12,13 +12,13 @@ import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramLinkage extends EAMGraphCell implements Edge
 {
-	public DiagramLinkage(DiagramModel model, ConceptualModelLinkage cmLinkage) throws Exception
+	public DiagramLinkage(DiagramModel model, FactorLink cmLinkage) throws Exception
 	{
 		underlyingObject = cmLinkage;
 		from = model.getNodeById(cmLinkage.getFromNodeId());
@@ -109,7 +109,7 @@ public class DiagramLinkage extends EAMGraphCell implements Edge
 		return dataMap;
 	}
 	
-	private ConceptualModelLinkage underlyingObject;
+	private FactorLink underlyingObject;
 	private DiagramNode from;
 	private DiagramNode to;
 }

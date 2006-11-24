@@ -10,11 +10,11 @@ import java.awt.Color;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 
 public class DiagramIntervention extends DiagramNode
 {
-	public DiagramIntervention(DiagramNodeId idToUse, ConceptualModelIntervention cmIntervention)
+	public DiagramIntervention(DiagramNodeId idToUse, Strategy cmIntervention)
 	{
 		super(idToUse, cmIntervention);
 	}

@@ -9,7 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
+import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestDiagramNodeData extends EAMTestCase 
@@ -23,7 +23,7 @@ public class TestDiagramNodeData extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		ModelNodeId wrappedId = new ModelNodeId(2);
-		ConceptualModelCause cmFactor = new ConceptualModelCause(wrappedId);
+		Cause cmFactor = new Cause(wrappedId);
 		DiagramNodeId nodeId = new DiagramNodeId(44);
 		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(nodeId, cmFactor);
 		String nodeAText = "Node A";

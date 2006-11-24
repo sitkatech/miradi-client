@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
@@ -43,7 +43,7 @@ public class ProjectRepairer
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
 			ModelNodeId nodeId = nodeIds[i];
-			ConceptualModelNode node = project.findNode(nodeId);
+			Factor node = project.findNode(nodeId);
 			fixGhostIndicatorIds(node);
 			removeInvalidGoalIds(node);
 			removeInvalidObjectiveIds(node);
@@ -51,7 +51,7 @@ public class ProjectRepairer
 		}
 	}
 	
-	private void fixGhostIndicatorIds(ConceptualModelNode node)
+	private void fixGhostIndicatorIds(Factor node)
 	{
 		IdList newIndicatorIds = new IdList();
 		IdList oldIndicatorIds = node.getIndicators();
@@ -82,7 +82,7 @@ public class ProjectRepairer
 
 	}
 	
-	private void removeInvalidGoalIds(ConceptualModelNode node)
+	private void removeInvalidGoalIds(Factor node)
 	{
 		IdList ids = node.getGoals();
 		if(!ids.contains(BaseId.INVALID))
@@ -102,7 +102,7 @@ public class ProjectRepairer
 		}
 	}
 	
-	private void removeInvalidObjectiveIds(ConceptualModelNode node)
+	private void removeInvalidObjectiveIds(Factor node)
 	{
 		IdList ids = node.getObjectives();
 		if(!ids.contains(BaseId.INVALID))
@@ -122,7 +122,7 @@ public class ProjectRepairer
 		}
 	}
 	
-	private void removeMissingObjectiveIds(ConceptualModelNode node)
+	private void removeMissingObjectiveIds(Factor node)
 	{
 		IdList newIds = new IdList();
 		IdList oldIds = node.getObjectives();

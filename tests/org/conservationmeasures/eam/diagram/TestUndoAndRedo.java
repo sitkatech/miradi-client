@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -37,8 +37,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 
-		fromId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_CAUSE);
-		toId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_INTERVENTION);
+		fromId = createModelAndDiagramNodeWithCommands(Factor.TYPE_CAUSE);
+		toId = createModelAndDiagramNodeWithCommands(Factor.TYPE_INTERVENTION);
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramLinkageId();
 	}
@@ -99,7 +99,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		ModelNodeId modelNodeId = project.createNode(ConceptualModelNode.TYPE_CAUSE);
+		ModelNodeId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
 		CommandDiagramAddNode insert = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(insert);
 		verifyNodePresent(insert.getInsertedId());
@@ -206,7 +206,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private ModelNodeId createModelAndDiagramNodeWithCommands(NodeType type) throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		project.executeCommand(createModelNodeCommand);
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();

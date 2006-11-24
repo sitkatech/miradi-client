@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -84,7 +84,7 @@ public class StratPlanGoal extends TreeTableNode
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
 		{
-			ConceptualModelNode node = (ConceptualModelNode)iter.next();
+			Factor node = (Factor)iter.next();
 			IdList objectiveIds = node.getObjectives();
 			for(int i = 0; i < objectiveIds.size(); ++i)
 			{

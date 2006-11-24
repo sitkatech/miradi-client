@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class DeleteGoal extends DeleteAnnotationDoer
 {
@@ -16,7 +16,7 @@ public class DeleteGoal extends DeleteAnnotationDoer
 
 	String getAnnotationIdListTag()
 	{
-		return ConceptualModelNode.TAG_GOAL_IDS;
+		return Factor.TAG_GOAL_IDS;
 	}
 
 }

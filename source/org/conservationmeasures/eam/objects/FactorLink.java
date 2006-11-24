@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ConceptualModelLinkage extends EAMBaseObject
+public class FactorLink extends EAMBaseObject
 {
-	public ConceptualModelLinkage(ModelLinkageId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
+	public FactorLink(ModelLinkageId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
 	{
 		super(id);
 		setFromId(fromNodeId);
@@ -24,7 +24,7 @@ public class ConceptualModelLinkage extends EAMBaseObject
 		stressLabel = new StringData();
 	}
 
-	public ConceptualModelLinkage(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
+	public FactorLink(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(new ModelLinkageId(idAsInt), jsonObject);
 		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));

@@ -13,8 +13,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class SelectChain extends ViewDoer
@@ -72,8 +72,8 @@ public class SelectChain extends ViewDoer
 		DiagramModel model = getProject().getDiagramModel();
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
-		ConceptualModelNode[] chainNodes = chainObject.getNodes().toNodeArray();
-		ConceptualModelLinkage[] linksInChain = chainObject.getLinkages();
+		Factor[] chainNodes = chainObject.getNodes().toNodeArray();
+		FactorLink[] linksInChain = chainObject.getLinkages();
 	
 		selectLinksInChain(model, linksInChain);
 		selectNodesInChain(model, chainNodes);
@@ -91,10 +91,10 @@ public class SelectChain extends ViewDoer
 		ChainObject downstreamChain = new ChainObject();
 		downstreamChain.buildDownstreamChain(diagramModel, selectedLinkage.getToNode().getUnderlyingObject());
 		
-		ConceptualModelLinkage[] downLinkages = downstreamChain.getLinkages();
-		ConceptualModelLinkage[] upLinkages = upstreamChain.getLinkages();
-		ConceptualModelNode[] upNodes = upstreamChain.getNodesArray();
-		ConceptualModelNode[] downNodes = downstreamChain.getNodesArray();
+		FactorLink[] downLinkages = downstreamChain.getLinkages();
+		FactorLink[] upLinkages = upstreamChain.getLinkages();
+		Factor[] upNodes = upstreamChain.getNodesArray();
+		Factor[] downNodes = downstreamChain.getNodesArray();
 		
 		selectNodesInChain(diagramModel, upNodes);
 		selectNodesInChain(diagramModel, downNodes);
@@ -103,7 +103,7 @@ public class SelectChain extends ViewDoer
 		selectLinksInChain(diagramModel, downLinkages);
 	}
 
-	private void selectNodesInChain(DiagramModel model, ConceptualModelNode[] chainNodes) throws Exception
+	private void selectNodesInChain(DiagramModel model, Factor[] chainNodes) throws Exception
 	{
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
@@ -114,7 +114,7 @@ public class SelectChain extends ViewDoer
 		}
 	}
 
-	private void selectLinksInChain(DiagramModel model, ConceptualModelLinkage[] linksInChain) throws Exception
+	private void selectLinksInChain(DiagramModel model, FactorLink[] linksInChain) throws Exception
 	{
 		for (int i = 0 ; i < linksInChain.length; i++)
 		{

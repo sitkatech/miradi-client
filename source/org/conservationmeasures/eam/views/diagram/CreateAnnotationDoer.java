@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.ViewDoer;
 
@@ -34,7 +34,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		ConceptualModelNode node = getSelectedNode();
+		Factor node = getSelectedNode();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
@@ -55,7 +55,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		}
 	}
 	
-	public ConceptualModelNode getSelectedNode()
+	public Factor getSelectedNode()
 	{
 		EAMObject selected = getView().getSelectedObject();
 		if(selected == null)
@@ -64,7 +64,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		if(selected.getType() != ObjectType.MODEL_NODE)
 			return null;
 		
-		return (ConceptualModelNode)selected;
+		return (Factor)selected;
 	}
 
 }

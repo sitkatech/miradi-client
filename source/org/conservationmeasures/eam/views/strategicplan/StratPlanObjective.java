@@ -11,8 +11,8 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
@@ -66,11 +66,11 @@ public class StratPlanObjective extends TreeTableNode
 	{
 		BaseId desireId = objective.getId();
 
-		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
+		Factor[] interventionObjects = project.getNodePool().getInterventions();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{
-			ConceptualModelIntervention intervention = (ConceptualModelIntervention)interventionObjects[i];
+			Strategy intervention = (Strategy)interventionObjects[i];
 			if(intervention.isStatusDraft())
 				continue;
 			
@@ -82,9 +82,9 @@ public class StratPlanObjective extends TreeTableNode
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 	
-	private boolean doesChainContainDesire(ConceptualModelNode chainMember, BaseId desireId)
+	private boolean doesChainContainDesire(Factor chainMember, BaseId desireId)
 	{
-		ConceptualModelNode[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
+		Factor[] chainNodes = project.getDiagramModel().getAllUpstreamDownstreamNodes(chainMember).toNodeArray();
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			if(chainNodes[i].getObjectives().contains(desireId))

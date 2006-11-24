@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class NodePool extends EAMObjectPool
 {
@@ -24,14 +24,14 @@ public class NodePool extends EAMObjectPool
 		super(ObjectType.MODEL_NODE);
 	}
 	
-	public void put(ConceptualModelNode node)
+	public void put(Factor node)
 	{
 		put(node.getModelNodeId(), node);
 	}
 	
-	public ConceptualModelNode find(ModelNodeId id)
+	public Factor find(ModelNodeId id)
 	{
-		return (ConceptualModelNode)getRawObject(id);
+		return (Factor)getRawObject(id);
 	}
 	
 	public void remove(ModelNodeId id)
@@ -46,7 +46,7 @@ public class NodePool extends EAMObjectPool
 	
 	public IdList getInterventionIds()
 	{
-		ConceptualModelNode[] cmNodeList = getInterventions();
+		Factor[] cmNodeList = getInterventions();
 		IdList interventionIds = new IdList();
 		for (int i = 0; i < cmNodeList.length; i++)
 			interventionIds.add(cmNodeList[i].getId());
@@ -54,42 +54,42 @@ public class NodePool extends EAMObjectPool
 		return interventionIds;
 	}
 
-	public ConceptualModelNode[] getInterventions()
+	public Factor[] getInterventions()
 	{
 		return getNodesOfType(new NodeTypeIntervention());
 	}
 	
-	public ConceptualModelNode[] getDirectThreats()
+	public Factor[] getDirectThreats()
 	{
 		Vector cmNodes = new Vector();
 		ModelNodeId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
-			ConceptualModelNode cmNode = (ConceptualModelNode)getRawObject(ids[i]);
+			Factor cmNode = (Factor)getRawObject(ids[i]);
 			if(cmNode.isDirectThreat())
 				cmNodes.add(cmNode);
 		}
-		return (ConceptualModelNode[])cmNodes.toArray(new ConceptualModelNode[0]);
+		return (Factor[])cmNodes.toArray(new Factor[0]);
 	}
 
-	public ConceptualModelNode[] getTargets()
+	public Factor[] getTargets()
 	{
 		return getNodesOfType(new NodeTypeTarget());
 	}
 
-	private ConceptualModelNode[] getNodesOfType(NodeType type)
+	private Factor[] getNodesOfType(NodeType type)
 	{
 		Vector cmNodes = new Vector();
 		ModelNodeId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
-			ConceptualModelNode cmNode = (ConceptualModelNode)getRawObject(ids[i]);
+			Factor cmNode = (Factor)getRawObject(ids[i]);
 			if(cmNode.getNodeType().equals(type))
 				cmNodes.add(cmNode);
 		}
-		return (ConceptualModelNode[])cmNodes.toArray(new ConceptualModelNode[0]);
+		return (Factor[])cmNodes.toArray(new Factor[0]);
 	}
 	
 }

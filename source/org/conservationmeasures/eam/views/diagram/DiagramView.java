@@ -67,8 +67,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -280,15 +280,15 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		for(int i = 0; i < diagramNodeIds.size(); ++i)
 		{
 			DiagramNodeId nodeId = new DiagramNodeId(diagramNodeIds.get(i).asInt());
-			ConceptualModelNode node = diagramModel.getNodeById(nodeId).getUnderlyingObject();
+			Factor node = diagramModel.getNodeById(nodeId).getUnderlyingObject();
 			ConceptualModelNodeSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{
-				ModelNodeId possibleInterventionId = ((ConceptualModelNode)iter.next()).getModelNodeId();
+				ModelNodeId possibleInterventionId = ((Factor)iter.next()).getModelNodeId();
 				if(diagramNodeIds.contains(possibleInterventionId))
 					continue;
-				ConceptualModelNode possibleIntervention = getProject().findNode(possibleInterventionId);
+				Factor possibleIntervention = getProject().findNode(possibleInterventionId);
 				if(possibleIntervention.isIntervention() && possibleIntervention.isStatusDraft())
 					draftsToAdd.add(possibleIntervention.getId());
 			}
@@ -379,11 +379,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			return;
 		
 		ModelNodeId nodeId = new ModelNodeId(cmd.getObjectId().asInt());
-		ConceptualModelNode cmNode = getProject().findNode(nodeId);
+		Factor cmNode = getProject().findNode(nodeId);
 		if(!cmNode.isCluster())
 			return;
 		
-		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
+		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
 			return;
 		
 		IdList newMembers = new IdList(cmd.getPreviousDataValue());
@@ -398,18 +398,18 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			return;
 		
 		ModelNodeId nodeId = new ModelNodeId(cmd.getObjectId().asInt());
-		ConceptualModelNode cmNode = getProject().findNode(nodeId);
+		Factor cmNode = getProject().findNode(nodeId);
 		if(!cmNode.isCluster())
 			return;
 		
-		if(!cmd.getFieldTag().equals(ConceptualModelCluster.TAG_MEMBER_IDS))
+		if(!cmd.getFieldTag().equals(FactorCluster.TAG_MEMBER_IDS))
 			return;
 		
 		ModelNodeId clusterId = (ModelNodeId)cmd.getObjectId();
 		IdList newMembers = new IdList(cmd.getDataValue());
 		DiagramModel model = getDiagramComponent().getDiagramModel();
 		DiagramCluster cluster = (DiagramCluster)model.getNodeById(clusterId);
-		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(ConceptualModelCluster.TAG_MEMBER_IDS));
+		IdList oldMembers = new IdList(cluster.getUnderlyingObject().getData(FactorCluster.TAG_MEMBER_IDS));
 		
 		updateCluster(cluster.getWrappedId(), newMembers, oldMembers);
 	}

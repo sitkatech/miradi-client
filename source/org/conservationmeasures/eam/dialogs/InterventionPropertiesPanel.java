@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
 public class InterventionPropertiesPanel extends ObjectDataInputPanel
@@ -15,7 +15,7 @@ public class InterventionPropertiesPanel extends ObjectDataInputPanel
 	public InterventionPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
 	{
 		super(projectToUse, objectTypeToUse, idToShow);
-		addField(createStringField(ConceptualModelIntervention.TAG_LABEL));
+		addField(createStringField(Strategy.TAG_LABEL));
 		updateFieldsFromProject();
 	}
 

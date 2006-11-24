@@ -36,9 +36,9 @@ import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
@@ -129,7 +129,7 @@ public class ObjectManager
 			{
 				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
 				ModelNodeId nodeId = new ModelNodeId(getProject().obtainRealNodeId(objectId).asInt());
-				ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(nodeId, parameter);
+				Factor node = Factor.createConceptualModelObject(nodeId, parameter);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
 				createdId = node.getId();
@@ -139,7 +139,7 @@ public class ObjectManager
 			{
 				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
 				ModelLinkageId realId = getProject().obtainRealLinkageId(objectId);
-				ConceptualModelLinkage cmLinkage = new ConceptualModelLinkage(realId, parameter.getFromId(), parameter.getToId());
+				FactorLink cmLinkage = new FactorLink(realId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
 				pool.put(realId, cmLinkage);
@@ -206,11 +206,11 @@ public class ObjectManager
 				return getAnnotationFactorLabel(annotationType, annotationId);
 
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_CAUSE, annotationId, annotationType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, annotationId, annotationType, fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -228,11 +228,11 @@ public class ObjectManager
 				return getAnnotationFactorLabel(objectType, objectId);
 
 			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_TARGET, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_TARGET, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_INTERVENTION, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_CAUSE, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -250,9 +250,9 @@ public class ObjectManager
 				return getAnnotationFactorLabel(objectType, objectId);
 
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_INTERVENTION, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_CAUSE, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, objectId, objectType, fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -265,11 +265,11 @@ public class ObjectManager
 	private String getRelatedFactorLabelsAsMultiLine(NodeType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
 	{
 		String label ="";
-		ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
 		boolean isFirst = true;
 		for (int i = 0; i < cmNodes.length; i++)
 		{
-			ConceptualModelNode cmNode = cmNodes[i];
+			Factor cmNode = cmNodes[i];
 			if (cmNode.getNodeType().equals(nodeType))
 			{
 				if (!isFirst)
@@ -285,11 +285,11 @@ public class ObjectManager
 	private String getRelatedDirectThreatLabelsAsMultiLine(NodeType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
 	{
 		String label ="";
-		ConceptualModelNode[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
 		boolean isFirst = true;
 		for (int i = 0; i < cmNodes.length; i++)
 		{
-			ConceptualModelNode cmNode = cmNodes[i];
+			Factor cmNode = cmNodes[i];
 			if (cmNode.isDirectThreat() && cmNode.getNodeType().equals(nodeType))
 			{
 				if (!isFirst)
@@ -325,7 +325,7 @@ public class ObjectManager
 			if (!iterator.hasNext())
 				return ""; 
 
-			return ((ConceptualModelNode)iterator.next()).getLabel();
+			return ((Factor)iterator.next()).getLabel();
 		}
 		catch( Exception e)
 		{
@@ -397,18 +397,18 @@ public class ObjectManager
 	{
 		public void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
 		{
-			ConceptualModelNode from = getNodePool().find(linkFromId); 
-			ConceptualModelNode to = getNodePool().find(linkToId);
+			Factor from = getNodePool().find(linkFromId); 
+			Factor to = getNodePool().find(linkToId);
 			if(from.isFactor() && to.isTarget())
-				((ConceptualModelCause)from).increaseTargetCount();
+				((Cause)from).increaseTargetCount();
 		}
 
 		public void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
 		{
-			ConceptualModelNode from = getNodePool().find(linkFromId);
-			ConceptualModelNode to = getNodePool().find(linkToId);
+			Factor from = getNodePool().find(linkFromId);
+			Factor to = getNodePool().find(linkToId);
 			if(from.isFactor() && to.isTarget())
-				((ConceptualModelCause)from).decreaseTargetCount();
+				((Cause)from).decreaseTargetCount();
 		}		
 	}
 

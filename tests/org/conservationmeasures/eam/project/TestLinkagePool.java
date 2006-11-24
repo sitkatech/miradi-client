@@ -11,8 +11,8 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestLinkagePool extends TestCaseEnhanced
@@ -32,12 +32,12 @@ public class TestLinkagePool extends TestCaseEnhanced
 	{
 		LinkagePool pool = new LinkagePool(new LinkageMonitor());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
-		ConceptualModelNode node1 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
-		ConceptualModelNode node2 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
-		ConceptualModelNode node3 = ConceptualModelNode.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
+		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		
 		ModelLinkageId linkageId = new ModelLinkageId(idAssigner.takeNextId().asInt());
-		ConceptualModelLinkage linkage = new ConceptualModelLinkage(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
+		FactorLink linkage = new FactorLink(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);
 		
 		assertTrue("Didn't find link 1->2?", pool.hasLinkage(linkage.getFromNodeId(), linkage.getToNodeId()));

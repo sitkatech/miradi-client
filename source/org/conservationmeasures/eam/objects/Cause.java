@@ -10,17 +10,17 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-public class ConceptualModelCause extends ConceptualModelNode
+public class Cause extends Factor
 {
-	public ConceptualModelCause(ModelNodeId idToUse)
+	public Cause(ModelNodeId idToUse)
 	{
 		super(idToUse, new NodeTypeCause());
 		clear();
 	}
 	
-	public ConceptualModelCause(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public Cause(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, ConceptualModelNode.TYPE_CAUSE, json);
+		super(idToUse, Factor.TYPE_CAUSE, json);
 	}
 
 	public boolean isFactor()

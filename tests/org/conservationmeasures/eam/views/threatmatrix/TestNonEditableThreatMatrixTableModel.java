@@ -13,8 +13,8 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
@@ -127,7 +127,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	private ModelNodeId createThreat(String name) throws Exception
 	{
 		ModelNodeId createdId = createNode(new NodeTypeCause(), name);
-		((ConceptualModelCause)project.findNode(createdId)).increaseTargetCount();
+		((Cause)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}
 
@@ -140,7 +140,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	{
 		ModelNodeId id = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
-		ConceptualModelNode node = project.findNode(id);
+		Factor node = project.findNode(id);
 		node.setLabel(name);
 		return id;
 	}

@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public class InsertDraftIntervention extends InsertNode
@@ -41,7 +41,7 @@ public class InsertDraftIntervention extends InsertNode
 	
 	public NodeType getTypeToInsert()
 	{
-		return ConceptualModelNode.TYPE_INTERVENTION;
+		return Factor.TYPE_INTERVENTION;
 	}
 
 	public String getInitialText()
@@ -51,7 +51,7 @@ public class InsertDraftIntervention extends InsertNode
 
 	void doExtraSetup(BaseId id) throws CommandFailedException
 	{
-		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.MODEL_NODE, id, ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
+		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.MODEL_NODE, id, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
 	}
 

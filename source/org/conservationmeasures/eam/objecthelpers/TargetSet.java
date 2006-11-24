@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objecthelpers;
 
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class TargetSet extends ConceptualModelNodeSet
 {
@@ -14,7 +14,7 @@ public class TargetSet extends ConceptualModelNodeSet
 		attemptToAddAll(nodesToAttemptToAdd);
 	}
 
-	public boolean isLegal(ConceptualModelNode node)
+	public boolean isLegal(Factor node)
 	{
 		return (node.isTarget());
 	}

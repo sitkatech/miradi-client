@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -44,7 +44,7 @@ public class DeleteActivity extends ViewDoer
 			return;
 		
 		Task activity = getWorkPlanPanel().getSelectedTask();
-		ConceptualModelIntervention intervention = getWorkPlanPanel().getParentIntervention(activity);
+		Strategy intervention = getWorkPlanPanel().getParentIntervention(activity);
 		try
 		{
 			deleteActivity(getProject(), intervention, activity);
@@ -55,7 +55,7 @@ public class DeleteActivity extends ViewDoer
 		}
 	}
 
-	public static void deleteActivity(Project project, ConceptualModelIntervention intervention, Task activity) throws ParseException, CommandFailedException
+	public static void deleteActivity(Project project, Strategy intervention, Task activity) throws ParseException, CommandFailedException
 	{
 		int type = activity.getType();
 		BaseId id = activity.getId();
@@ -64,7 +64,7 @@ public class DeleteActivity extends ViewDoer
 		try
 		{
 			CommandSetObjectData removeChild = CommandSetObjectData.createRemoveIdCommand(intervention, 
-					ConceptualModelIntervention.TAG_ACTIVITY_IDS, id);
+					Strategy.TAG_ACTIVITY_IDS, id);
 			project.executeCommand(removeChild);
 	
 			project.executeCommands(activity.createCommandsToClear());

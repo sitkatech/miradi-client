@@ -23,8 +23,8 @@ import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
@@ -98,7 +98,7 @@ public class Delete extends ProjectDoer
 		removeFromCluster(nodeToDelete, id);
 		removeNodeFromDiagram(nodeToDelete, id);
 
-		ConceptualModelNode underlyingNode = nodeToDelete.getUnderlyingObject();
+		Factor underlyingNode = nodeToDelete.getUnderlyingObject();
 		deleteAnnotations(underlyingNode);
 		deleteUnderlyingNode(underlyingNode);
 	}
@@ -110,7 +110,7 @@ public class Delete extends ProjectDoer
 		{
 			CommandSetObjectData removeFromCluster = CommandSetObjectData.createRemoveIdCommand(
 					cluster.getUnderlyingObject(),
-					ConceptualModelCluster.TAG_MEMBER_IDS, 
+					FactorCluster.TAG_MEMBER_IDS, 
 					id);
 			getProject().executeCommand(removeFromCluster);
 		}
@@ -131,7 +131,7 @@ public class Delete extends ProjectDoer
 		getProject().executeCommand(new CommandDiagramRemoveNode(id));
 	}
 
-	private void deleteUnderlyingNode(ConceptualModelNode nodeToDelete) throws CommandFailedException
+	private void deleteUnderlyingNode(Factor nodeToDelete) throws CommandFailedException
 	{
 		Command[] commandsToClear = nodeToDelete.createCommandsToClear();
 		getProject().executeCommands(commandsToClear);
@@ -139,14 +139,14 @@ public class Delete extends ProjectDoer
 		getProject().executeCommand(new CommandDeleteObject(nodeToDelete.getType(), nodeToDelete.getModelNodeId()));
 	}
 	
-	private void deleteAnnotations(ConceptualModelNode nodeToDelete) throws Exception
+	private void deleteAnnotations(Factor nodeToDelete) throws Exception
 	{
 		deleteAnnotations(nodeToDelete, ObjectType.GOAL, nodeToDelete.TAG_GOAL_IDS);
 		deleteAnnotations(nodeToDelete, ObjectType.OBJECTIVE, nodeToDelete.TAG_OBJECTIVE_IDS);
 		deleteAnnotations(nodeToDelete, ObjectType.INDICATOR, nodeToDelete.TAG_INDICATOR_IDS);
 	}
 
-	private void deleteAnnotations(ConceptualModelNode nodeToDelete, int annotationType, String annotationListTag) throws Exception
+	private void deleteAnnotations(Factor nodeToDelete, int annotationType, String annotationListTag) throws Exception
 	{
 		IdList ids = new IdList(nodeToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)

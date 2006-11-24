@@ -51,7 +51,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -83,7 +83,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 			priority = framework.getTargetThreatRatingValue(node.getWrappedId());
 		
 		if(node.isIntervention())
-			rating = ((ConceptualModelIntervention)node.getUnderlyingObject()).getStrategyRating();
+			rating = ((Strategy)node.getUnderlyingObject()).getStrategyRating();
 
 		DiagramComponent diagram = (DiagramComponent)graph;
 

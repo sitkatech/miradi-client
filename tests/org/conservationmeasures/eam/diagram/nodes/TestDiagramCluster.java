@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
+import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestDiagramCluster extends EAMTestCase
@@ -22,9 +22,9 @@ public class TestDiagramCluster extends EAMTestCase
 
 	public void testBuildCommandsToClear() throws Exception
 	{
-		ConceptualModelCluster cmCluster = new ConceptualModelCluster(new ModelNodeId(94));
+		FactorCluster cmCluster = new FactorCluster(new ModelNodeId(94));
 		IdList memberIds = new IdList(new ModelNodeId[] {new ModelNodeId(2), new ModelNodeId(27), new ModelNodeId(4), new ModelNodeId(25)});
-		cmCluster.setData(ConceptualModelCluster.TAG_MEMBER_IDS, memberIds.toString());
+		cmCluster.setData(FactorCluster.TAG_MEMBER_IDS, memberIds.toString());
 
 		DiagramNodeId nodeId = new DiagramNodeId(44);
 		DiagramCluster cluster = new DiagramCluster(nodeId, cmCluster);

@@ -20,15 +20,15 @@ import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
-abstract public class ConceptualModelNode extends EAMBaseObject
+abstract public class Factor extends EAMBaseObject
 {
-	protected ConceptualModelNode(BaseId idToUse, NodeType nodeType)
+	protected Factor(BaseId idToUse, NodeType nodeType)
 	{
 		super(idToUse);
 		type = nodeType;
 	}
 	
-	protected ConceptualModelNode(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
+	protected Factor(ModelNodeId idToUse, NodeType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		type = nodeType;
@@ -151,17 +151,17 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return new CreateModelNodeParameter(getNodeType());
 	}
 
-	public static ConceptualModelNode createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
+	public static Factor createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
-			return new ConceptualModelIntervention(new ModelNodeId(idAsInt), json);
+			return new Strategy(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCause.CAUSE_TYPE))
-			return new ConceptualModelCause(new ModelNodeId(idAsInt), json);
+			return new Cause(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
-			return new ConceptualModelTarget(new ModelNodeId(idAsInt), json);
+			return new Target(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCluster.CLUSTER_TYPE))
-			return new ConceptualModelCluster(new ModelNodeId(idAsInt), json);
+			return new FactorCluster(new ModelNodeId(idAsInt), json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
@@ -179,17 +179,17 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public static ConceptualModelNode createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
+	public static Factor createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
 	{
 		NodeType nodeType = parameter.getNodeType();
 		if(nodeType.isIntervention())
-			return new ConceptualModelIntervention(idToCreate);
+			return new Strategy(idToCreate);
 		else if(nodeType.isCause())
-			return new ConceptualModelCause(idToCreate);
+			return new Cause(idToCreate);
 		else if(nodeType.isTarget())
-			return new ConceptualModelTarget(idToCreate);
+			return new Target(idToCreate);
 		else if(nodeType.isCluster())
-			return new ConceptualModelCluster(idToCreate);
+			return new FactorCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
 	}

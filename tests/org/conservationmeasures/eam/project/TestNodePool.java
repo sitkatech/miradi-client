@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
 
 public class TestNodePool extends TestCaseEnhanced
@@ -33,7 +33,7 @@ public class TestNodePool extends TestCaseEnhanced
 		{
 			ModelNodeId id = takeNextModelNodeId();
 			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
-			ConceptualModelCause node = (ConceptualModelCause)ConceptualModelNode.
+			Cause node = (Cause)Factor.
 					createConceptualModelObject(id, parameter);
 			node.increaseTargetCount();
 			pool.put(node);
@@ -48,7 +48,7 @@ public class TestNodePool extends TestCaseEnhanced
 	{
 		ModelNodeId id = takeNextModelNodeId();
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(type);
-		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(id, parameter);
+		Factor node = Factor.createConceptualModelObject(id, parameter);
 		pool.put(node);
 	}
 

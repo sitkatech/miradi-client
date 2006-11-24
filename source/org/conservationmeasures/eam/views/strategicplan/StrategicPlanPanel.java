@@ -12,7 +12,7 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
+import org.conservationmeasures.eam.objects.Strategy;
 
 public class StrategicPlanPanel extends DisposablePanel
 {
@@ -21,7 +21,7 @@ public class StrategicPlanPanel extends DisposablePanel
 		return new StrategicPlanPanel(mainWindowToUse, StrategicPlanTreeTableModel.createForProject(mainWindowToUse.getProject()));
 	}
 	
-	static public StrategicPlanPanel createForStrategy(MainWindow mainWindowToUse, ConceptualModelIntervention intervention) throws Exception
+	static public StrategicPlanPanel createForStrategy(MainWindow mainWindowToUse, Strategy intervention) throws Exception
 	{
 		return new StrategicPlanPanel(mainWindowToUse, StrategicPlanTreeTableModel.createForStrategy(mainWindowToUse.getProject(), intervention));
 	}

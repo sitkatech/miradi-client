@@ -11,8 +11,8 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -57,11 +57,11 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 	
 	public void rebuild()
 	{
-		ConceptualModelNode[] interventionObjects = project.getNodePool().getInterventions();
+		Factor[] interventionObjects = project.getNodePool().getInterventions();
 		Vector strategyVector = new Vector();
 		for(int i = 0; i < interventionObjects.length; ++i)
 		{
-			ConceptualModelIntervention intervention = (ConceptualModelIntervention)interventionObjects[i];
+			Strategy intervention = (Strategy)interventionObjects[i];
 			if(intervention.isStatusDraft())
 				continue;
 	

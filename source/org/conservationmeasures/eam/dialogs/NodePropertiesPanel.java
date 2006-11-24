@@ -39,9 +39,9 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
@@ -195,7 +195,7 @@ public class NodePropertiesPanel extends DisposablePanel
 					.text("Label|IUCN-CMP Classification")));
 			detailsTab.add(createInterventionClassificationDropdown());
 			
-			String impactTag = ConceptualModelIntervention.TAG_IMPACT_RATING;
+			String impactTag = Strategy.TAG_IMPACT_RATING;
 			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
 			detailsTab.add(new UiLabel(impactQuestion.getLabel()));
 			LegacyChoiceDialogField impactField = new LegacyChoiceDialogField(impactQuestion);
@@ -204,7 +204,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
 			
-			String durationTag = ConceptualModelIntervention.TAG_DURATION_RATING;
+			String durationTag = Strategy.TAG_DURATION_RATING;
 			StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion(durationTag);
 			detailsTab.add(new UiLabel(durationQuestion.getLabel()));
 			LegacyChoiceDialogField durationField = new LegacyChoiceDialogField(durationQuestion);
@@ -213,7 +213,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			durationField.selectCode(node.getUnderlyingObject().getData(durationTag));
 			durationComponent.addItemListener(new DurationChangeHandler());
 			
-			String feasibilityTag = ConceptualModelIntervention.TAG_FEASIBILITY_RATING;
+			String feasibilityTag = Strategy.TAG_FEASIBILITY_RATING;
 			StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion(feasibilityTag);
 			detailsTab.add(new UiLabel(feasibilityQuestion.getLabel()));
 			LegacyChoiceDialogField feasibilityField = new LegacyChoiceDialogField(feasibilityQuestion);
@@ -222,7 +222,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 			
-			String costTag = ConceptualModelIntervention.TAG_COST_RATING;
+			String costTag = Strategy.TAG_COST_RATING;
 			StrategyCostQuestion costQuestion = new StrategyCostQuestion(costTag);
 			detailsTab.add(new UiLabel(costQuestion.getLabel()));
 			LegacyChoiceDialogField costField = new LegacyChoiceDialogField(costQuestion);
@@ -268,7 +268,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_IMPACT_RATING;
+				String tag = Strategy.TAG_IMPACT_RATING;
 				String impact = getSelectedImpactCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, impact);
@@ -290,7 +290,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_DURATION_RATING;
+				String tag = Strategy.TAG_DURATION_RATING;
 				String duration = getSelectedDurationCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, duration);
@@ -312,7 +312,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_FEASIBILITY_RATING;
+				String tag = Strategy.TAG_FEASIBILITY_RATING;
 				String feasibility = getSelectedFeasibilityCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, feasibility);
@@ -334,7 +334,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		{
 			try
 			{
-				String tag = ConceptualModelIntervention.TAG_COST_RATING;
+				String tag = Strategy.TAG_COST_RATING;
 				String cost = getSelectedCostCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
 						getNodeId(), tag, cost);
@@ -352,14 +352,14 @@ public class NodePropertiesPanel extends DisposablePanel
 
 	void updateRating()
 	{
-		RatingChoice rating = ((ConceptualModelIntervention)getCurrentNode().getUnderlyingObject()).getStrategyRating();
+		RatingChoice rating = ((Strategy)getCurrentNode().getUnderlyingObject()).getStrategyRating();
 		ratingComponent.setText(rating.getCode());
 	}
 	
 
 	private Component createTasksGrid(DiagramNode node) throws Exception
 	{
-		ConceptualModelIntervention intervention = (ConceptualModelIntervention) node
+		Strategy intervention = (Strategy) node
 				.getUnderlyingObject();
 		return StrategicPlanPanel.createForStrategy(mainWindow, intervention);
 	}
@@ -429,7 +429,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		try
 		{
 			int type = ObjectType.MODEL_NODE;
-			String tag = ConceptualModelCause.TAG_TAXONOMY_CODE;
+			String tag = Cause.TAG_TAXONOMY_CODE;
 		
 			if(taxonomyItem != null)
 			{
@@ -485,7 +485,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			try
 			{
 				int type = ObjectType.MODEL_NODE;
-				String tag = ConceptualModelNode.TAG_COMMENT;
+				String tag = Factor.TAG_COMMENT;
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
 						getNodeId(), tag, newComment);
 				getProject().executeCommand(cmd);
@@ -509,7 +509,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			dropdownThreatClassification = new UiComboBox(taxonomyItems);
 
 			String taxonomyCode = getCurrentNode().getUnderlyingObject()
-					.getData(ConceptualModelCause.TAG_TAXONOMY_CODE);
+					.getData(Cause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
 					taxonomyItems, taxonomyCode);
@@ -546,7 +546,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			dropdownInterventionClassification = new UiComboBox(taxonomyItems);
 			
 			String taxonomyCode = getCurrentNode().getUnderlyingObject()
-			.getData(ConceptualModelCause.TAG_TAXONOMY_CODE);
+			.getData(Cause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
 					taxonomyItems, taxonomyCode);
@@ -601,11 +601,11 @@ public class NodePropertiesPanel extends DisposablePanel
 
 	Command buildStatusCommand()
 	{
-		String newValue = ConceptualModelIntervention.STATUS_REAL;
+		String newValue = Strategy.STATUS_REAL;
 		if(statusCheckBox.isSelected())
-			newValue = ConceptualModelIntervention.STATUS_DRAFT;
+			newValue = Strategy.STATUS_DRAFT;
 		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode
-				.getDiagramNodeId(), ConceptualModelIntervention.TAG_STATUS,
+				.getDiagramNodeId(), Strategy.TAG_STATUS,
 				newValue);
 	}
 

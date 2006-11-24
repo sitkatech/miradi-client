@@ -23,11 +23,11 @@ import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DataMap;
@@ -37,16 +37,16 @@ import org.jgraph.graph.GraphConstants;
 
 abstract public class DiagramNode extends EAMGraphCell
 {
-	public static DiagramNode wrapConceptualModelObject(DiagramNodeId idToUse, ConceptualModelNode cmObject)
+	public static DiagramNode wrapConceptualModelObject(DiagramNodeId idToUse, Factor cmObject)
 	{
 		if(cmObject.isIntervention())
-			return new DiagramIntervention(idToUse, (ConceptualModelIntervention)cmObject);
+			return new DiagramIntervention(idToUse, (Strategy)cmObject);
 		else if(cmObject.isFactor())
-			return new DiagramFactor(idToUse, (ConceptualModelCause)cmObject);
+			return new DiagramFactor(idToUse, (Cause)cmObject);
 		else if(cmObject.isTarget())
-			return new DiagramTarget(idToUse, (ConceptualModelTarget)cmObject);
+			return new DiagramTarget(idToUse, (Target)cmObject);
 		else if(cmObject.isCluster())
-			return new DiagramCluster(idToUse, (ConceptualModelCluster)cmObject);
+			return new DiagramCluster(idToUse, (FactorCluster)cmObject);
 			
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
@@ -55,13 +55,13 @@ abstract public class DiagramNode extends EAMGraphCell
 	{
 		DiagramNodeId id = new DiagramNodeId(json.getId(TAG_ID).asInt());
 		ModelNodeId wrappedId = new ModelNodeId(json.getId(TAG_WRAPPED_ID).asInt());
-		ConceptualModelNode cmNode = project.findNode(wrappedId);
+		Factor cmNode = project.findNode(wrappedId);
 		DiagramNode node = wrapConceptualModelObject(id, cmNode);
 		node.fillFrom(json);
 		return node;
 	}
 
-	protected DiagramNode(DiagramNodeId idToUse, ConceptualModelNode cmObjectToUse)
+	protected DiagramNode(DiagramNodeId idToUse, Factor cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
 		id = idToUse;
@@ -91,7 +91,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		return true;
 	}
 	
-	public ConceptualModelNode getUnderlyingObject()
+	public Factor getUnderlyingObject()
 	{
 		return underlyingObject;
 	}
@@ -444,6 +444,6 @@ abstract public class DiagramNode extends EAMGraphCell
 	Point previousLocation;
 	
 	DiagramNodeId id;
-	ConceptualModelNode underlyingObject;
+	Factor underlyingObject;
 }
 

@@ -22,7 +22,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
 
 public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMotionListener
@@ -72,11 +72,11 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	}
 
 	
-	private ConceptualModelNode[] reverseSort(ConceptualModelNode[] threatList)
+	private Factor[] reverseSort(Factor[] threatList)
 	{
 		Vector list = new Vector(Arrays.asList(threatList));
 		Collections.reverse(list);
-		threatList = (ConceptualModelNode[]) list.toArray(new ConceptualModelNode[0]);
+		threatList = (Factor[]) list.toArray(new Factor[0]);
 		return threatList;
 	}
 	
@@ -129,7 +129,7 @@ public abstract class ColumnSortHandler  extends MouseAdapter implements MouseMo
 	{
 		Comparator comparator = getComparator(sortColumn);
 
-		ConceptualModelNode[] threatList = mainTableModel.getDirectThreats();
+		Factor[] threatList = mainTableModel.getDirectThreats();
 
 		Arrays.sort(threatList, comparator);
 		

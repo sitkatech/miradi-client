@@ -1,7 +1,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class CreateGoal  extends CreateAnnotationDoer
 {
@@ -11,6 +11,6 @@ public class CreateGoal  extends CreateAnnotationDoer
 	}
 	String getAnnotationIdListTag()
 	{
-		return ConceptualModelNode.TAG_GOAL_IDS;
+		return Factor.TAG_GOAL_IDS;
 	}
 }

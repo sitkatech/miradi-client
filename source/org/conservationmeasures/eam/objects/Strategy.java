@@ -20,18 +20,18 @@ import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
-public class ConceptualModelIntervention extends ConceptualModelNode
+public class Strategy extends Factor
 {
-	public ConceptualModelIntervention(ModelNodeId idToUse)
+	public Strategy(ModelNodeId idToUse)
 	{
-		super(idToUse, ConceptualModelNode.TYPE_INTERVENTION);
+		super(idToUse, Factor.TYPE_INTERVENTION);
 		status = STATUS_REAL;
 		clear();
 	}
 	
-	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public Strategy(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, ConceptualModelNode.TYPE_INTERVENTION, json);
+		super(idToUse, Factor.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 

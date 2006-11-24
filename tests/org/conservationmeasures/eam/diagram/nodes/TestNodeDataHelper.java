@@ -12,7 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataHelper extends EAMTestCase 
@@ -30,15 +30,15 @@ public class TestNodeDataHelper extends EAMTestCase
 		DiagramNodeId nodeId2 = new DiagramNodeId(25);
 		DiagramNodeId nodeId3 = new DiagramNodeId(6346);
 
-		ConceptualModelTarget cmTarget1 = new ConceptualModelTarget(originalNodeId1);
+		Target cmTarget1 = new Target(originalNodeId1);
 		node1 = DiagramNode.wrapConceptualModelObject(nodeId1, cmTarget1);
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
-		ConceptualModelTarget cmTarget2 = new ConceptualModelTarget(originalNodeId2);
+		Target cmTarget2 = new Target(originalNodeId2);
 		node2 = DiagramNode.wrapConceptualModelObject(nodeId2, cmTarget2);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
-		ConceptualModelTarget cmTarget3 = new ConceptualModelTarget(originalNodeId3);
+		Target cmTarget3 = new Target(originalNodeId3);
 		node3 = DiagramNode.wrapConceptualModelObject(nodeId3, cmTarget3);
 		
 		nodes = new Vector();

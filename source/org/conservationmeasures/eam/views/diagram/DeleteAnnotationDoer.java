@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -48,7 +48,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	}
 
 
-	void deleteAnnotationViaCommands(ConceptualModelNode node, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	void deleteAnnotationViaCommands(Factor node, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
 	
@@ -74,7 +74,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, ConceptualModelNode node, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, Factor node, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
 	
@@ -91,7 +91,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return (Command[])commands.toArray(new Command[0]);
 	}
 
-	public ConceptualModelNode getSelectedNode()
+	public Factor getSelectedNode()
 	{
 		EAMObject selected = getView().getSelectedObject();
 		if(selected == null)
@@ -100,7 +100,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		if(selected.getType() != ObjectType.MODEL_NODE)
 			return null;
 		
-		return (ConceptualModelNode)selected;
+		return (Factor)selected;
 	}
 
 }

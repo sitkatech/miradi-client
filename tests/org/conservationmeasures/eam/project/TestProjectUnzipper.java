@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 
@@ -102,7 +102,7 @@ public class TestProjectUnzipper extends EAMTestCase
 				{
 					ProjectUnzipper.unzipToProjectDirectory(zip, unzippedDirectory);
 					unzippedProject.createOrOpen(unzippedDirectory);
-					ConceptualModelNode target = unzippedProject.findNode(targetId);
+					Factor target = unzippedProject.findNode(targetId);
 					assertNotNull("didn't find the target we wrote?", target);
 				}
 				finally

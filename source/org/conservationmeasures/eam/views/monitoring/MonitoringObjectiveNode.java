@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
@@ -52,14 +52,14 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		Iterator objectiveNodesIterator = nodes.iterator();
 		while(objectiveNodesIterator.hasNext())
 		{
-			ConceptualModelNode nodeWithObjective = (ConceptualModelNode)objectiveNodesIterator.next();
+			Factor nodeWithObjective = (Factor)objectiveNodesIterator.next();
 			for(int i = 0; i < nodeWithObjective.getIndicators().size(); ++i)
 				indicatorIds.add(nodeWithObjective.getIndicators().get(i));
 			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
 			Iterator chainNodesIterator = nodesInChain.iterator();
 			while(chainNodesIterator.hasNext())
 			{
-				ConceptualModelNode nodeInChain = (ConceptualModelNode)chainNodesIterator.next();
+				Factor nodeInChain = (Factor)chainNodesIterator.next();
 				for(int i = 0; i < nodeInChain.getIndicators().size(); ++i)
 					indicatorIds.add(nodeInChain.getIndicators().get(i));
 			}
@@ -106,7 +106,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		ModelNodeId[] allNodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
-			ConceptualModelNode node = project.findNode(allNodeIds[i]);
+			Factor node = project.findNode(allNodeIds[i]);
 			if(node.getObjectives().contains(objectiveId))
 				result.attemptToAdd(node);
 		}

@@ -11,8 +11,8 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class ChainObject
 {
@@ -21,19 +21,19 @@ public class ChainObject
 		return cmNodeSet;
 	}
 	
-	public ConceptualModelNode[] getNodesArray()
+	public Factor[] getNodesArray()
 	{	
-		ConceptualModelNode[] cmNodes = (ConceptualModelNode[])cmNodeSet.toArray(new ConceptualModelNode[0]);
+		Factor[] cmNodes = (Factor[])cmNodeSet.toArray(new Factor[0]);
 		return cmNodes;
 	}
 	
-	public ConceptualModelLinkage[] getLinkages()
+	public FactorLink[] getLinkages()
 	{
-		ConceptualModelLinkage[] cmLinks = (ConceptualModelLinkage[])processedLinks.toArray(new ConceptualModelLinkage[0]);
+		FactorLink[] cmLinks = (FactorLink[])processedLinks.toArray(new FactorLink[0]);
 		return cmLinks;
 	} 
 		
-	public void buildDirectThreatChain(DiagramModel model, ConceptualModelNode node)
+	public void buildDirectThreatChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		if(startingNode.isDirectThreat())
@@ -43,7 +43,7 @@ public class ChainObject
 		}
 	}
 
-	public void buildNormalChain(DiagramModel model, ConceptualModelNode node)
+	public void buildNormalChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		if (startingNode.isDirectThreat())
@@ -52,32 +52,32 @@ public class ChainObject
 			buildUpstreamDownstreamChain(model, node);
 	}
 	
-	public void buildUpstreamDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	public void buildUpstreamDownstreamChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
 		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
 	}
 	
-	public void buildUpstreamChain(DiagramModel model, ConceptualModelNode node)
+	public void buildUpstreamChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		cmNodeSet.attemptToAddAll(getAllUpstreamNodes());
 	}
 	
-	public void buildDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	public void buildDownstreamChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		cmNodeSet.attemptToAddAll(getAllDownstreamNodes());
 	}
 	
-	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, ConceptualModelNode node)
+	public void buidDirectlyLinkedDownstreamChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		cmNodeSet.attemptToAddAll(getDirectlyLinkedDownstreamNodes());
 	}
 	
-	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, ConceptualModelNode node)
+	public void buildDirectlyLinkedUpstreamChain(DiagramModel model, Factor node)
 	{
 		initializeChain(model, node);
 		cmNodeSet.attemptToAddAll(getDirectlyLinkedUpstreamNodes());
@@ -85,22 +85,22 @@ public class ChainObject
 	
 	private ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes()
 	{
-		return getDirectlyLinkedNodes(ConceptualModelLinkage.FROM);
+		return getDirectlyLinkedNodes(FactorLink.FROM);
 	}
 	
 	private ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes()
 	{
-		return getDirectlyLinkedNodes(ConceptualModelLinkage.TO);
+		return getDirectlyLinkedNodes(FactorLink.TO);
 	}
 	
 	private ConceptualModelNodeSet getAllUpstreamNodes()
 	{
-		return getAllLinkedNodes(ConceptualModelLinkage.TO);
+		return getAllLinkedNodes(FactorLink.TO);
 	}
 
 	private ConceptualModelNodeSet getAllDownstreamNodes()
 	{
-		return getAllLinkedNodes(ConceptualModelLinkage.FROM);
+		return getAllLinkedNodes(FactorLink.FROM);
 	}
 	
 	private ConceptualModelNodeSet getAllLinkedNodes(int direction)
@@ -113,26 +113,26 @@ public class ChainObject
 		ModelLinkageId[] linkagePoolIds = linkagePool.getModelLinkageIds();
 		for(int i = 0; i < linkagePoolIds.length; ++i)
 		{
-			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePoolIds[i]);
+			FactorLink thisLinkage = linkagePool.find(linkagePoolIds[i]);
 			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
 			{
 				attempToAdd(thisLinkage);
-				ConceptualModelNode linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
+				Factor linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 				unprocessedNodes.attemptToAdd(linkedNode);
 			}
 		}		
 		
 		while(unprocessedNodes.size() > 0)
 		{
-			ConceptualModelNode thisNode = (ConceptualModelNode)unprocessedNodes.toArray()[0];
+			Factor thisNode = (Factor)unprocessedNodes.toArray()[0];
 			linkedNodes.attemptToAdd(thisNode);
 			for(int i = 0; i < linkagePoolIds.length; ++i)
 			{
-				ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePoolIds[i]);
+				FactorLink thisLinkage = linkagePool.find(linkagePoolIds[i]);
 				if(thisLinkage.getNodeId(direction).equals(thisNode.getId()))
 				{
 					attempToAdd(thisLinkage);
-					ConceptualModelNode linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
+					Factor linkedNode = diagramModel.getNodePool().find(thisLinkage.getOppositeNodeId(direction));
 					unprocessedNodes.attemptToAdd(linkedNode);
 				}
 			}
@@ -150,19 +150,19 @@ public class ChainObject
 		LinkagePool linkagePool = diagramModel.getLinkagePool();
 		for(int i = 0; i < linkagePool.getModelLinkageIds().length; ++i)
 		{
-			ConceptualModelLinkage thisLinkage = linkagePool.find(linkagePool.getModelLinkageIds()[i]);
+			FactorLink thisLinkage = linkagePool.find(linkagePool.getModelLinkageIds()[i]);
 			if(thisLinkage.getNodeId(direction).equals(startingNode.getId()))
 			{
 				attempToAdd(thisLinkage);
 				ModelNodeId downstreamNodeId = thisLinkage.getOppositeNodeId(direction);
-				ConceptualModelNode downstreamNode = diagramModel.getNodePool().find(downstreamNodeId);
+				Factor downstreamNode = diagramModel.getNodePool().find(downstreamNodeId);
 				results.attemptToAdd(downstreamNode);
 			}
 		}
 		return results;
 	}
 	
-	private void initializeChain(DiagramModel model, ConceptualModelNode node)
+	private void initializeChain(DiagramModel model, Factor node)
 	{
 		this.diagramModel = model;
 		this.startingNode = node;
@@ -170,14 +170,14 @@ public class ChainObject
 		processedLinks = new Vector();
 	}
 	
-	private void attempToAdd(ConceptualModelLinkage thisLinkage)
+	private void attempToAdd(FactorLink thisLinkage)
 	{
 		if (!processedLinks.contains(thisLinkage))
 			processedLinks.add(thisLinkage);
 	}
 
 	private ConceptualModelNodeSet cmNodeSet;
-	private ConceptualModelNode startingNode;
+	private Factor startingNode;
 	private DiagramModel diagramModel;
 	private Vector processedLinks;
 }

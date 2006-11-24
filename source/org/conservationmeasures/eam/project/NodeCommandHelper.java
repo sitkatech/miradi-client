@@ -30,7 +30,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.views.diagram.InsertConnection;
 
@@ -146,7 +146,7 @@ public class NodeCommandHelper
 	public static CommandSetObjectData createSetLabelCommand(ModelNodeId id, String newLabel)
 	{
 		int type = ObjectType.MODEL_NODE;
-		String tag = ConceptualModelNode.TAG_LABEL;
+		String tag = Factor.TAG_LABEL;
 		CommandSetObjectData cmd = new CommandSetObjectData(type, id, tag, newLabel);
 		return cmd;
 	}

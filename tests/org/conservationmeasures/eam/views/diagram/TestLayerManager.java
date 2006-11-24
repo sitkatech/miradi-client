@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestLayerManager extends EAMTestCase
@@ -29,11 +29,11 @@ public class TestLayerManager extends EAMTestCase
 	{
 		super.setUp();
 		idAssigner = new IdAssigner();
-		cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
+		cmTarget = new Target(takeNextModelNodeId());
 		cmTarget.setLabel("Target");
-		cmFactor = new ConceptualModelCause(takeNextModelNodeId());
+		cmFactor = new Cause(takeNextModelNodeId());
 		cmFactor.setLabel("Factor");
-		cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
+		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
 		DiagramNodeId targetNodeId = new DiagramNodeId(44);
@@ -125,9 +125,9 @@ public class TestLayerManager extends EAMTestCase
 	
 	IdAssigner idAssigner;
 
-	ConceptualModelTarget cmTarget;
-	ConceptualModelCause cmFactor;
-	ConceptualModelIntervention cmIntervention;
+	Target cmTarget;
+	Cause cmFactor;
+	Strategy cmIntervention;
 	
 	DiagramNode target;
 	DiagramNode factor;

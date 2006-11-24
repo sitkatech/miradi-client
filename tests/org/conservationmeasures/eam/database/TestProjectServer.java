@@ -18,11 +18,11 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -77,21 +77,21 @@ public class TestProjectServer extends EAMTestCase
 	public void testWriteAndReadNode() throws Exception
 	{
 
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(takeNextModelNodeId());
+		Strategy intervention = new Strategy(takeNextModelNodeId());
 		storage.writeObject(intervention);
-		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)readNode(intervention.getId());
+		Strategy gotIntervention = (Strategy)readNode(intervention.getId());
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		ConceptualModelCause factor = new ConceptualModelCause(takeNextModelNodeId());
+		Cause factor = new Cause(takeNextModelNodeId());
 		
 		storage.writeObject(factor);
-		ConceptualModelCause gotIndirectFactor = (ConceptualModelCause)readNode(factor.getId());
+		Cause gotIndirectFactor = (Cause)readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
-		ConceptualModelTarget target = new ConceptualModelTarget(takeNextModelNodeId());
+		Target target = new Target(takeNextModelNodeId());
 		storage.writeObject(target);
-		ConceptualModelTarget gotTarget = (ConceptualModelTarget)readNode(target.getId());
+		Target gotTarget = (Target)readNode(target.getId());
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		
 		
@@ -105,16 +105,16 @@ public class TestProjectServer extends EAMTestCase
 		return new ModelNodeId(idAssigner.takeNextId().asInt());
 	}
 	
-	private ConceptualModelNode readNode(BaseId id) throws Exception
+	private Factor readNode(BaseId id) throws Exception
 	{
-		return (ConceptualModelNode)storage.readObject(ObjectType.MODEL_NODE, id);
+		return (Factor)storage.readObject(ObjectType.MODEL_NODE, id);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
+		FactorLink original = new FactorLink(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeObject(original);
-		ConceptualModelLinkage got = (ConceptualModelLinkage)storage.readObject(original.getType(), original.getId());
+		FactorLink got = (FactorLink)storage.readObject(original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
 		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
 		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
@@ -130,7 +130,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		ConceptualModelLinkage original = new ConceptualModelLinkage(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
+		FactorLink original = new FactorLink(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
@@ -186,10 +186,10 @@ public class TestProjectServer extends EAMTestCase
 				fail("didn't allow reading an empty diagram?");
 			}
 			
-			ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
+			Strategy cmIntervention = new Strategy(takeNextModelNodeId());
 			nodePool.put(cmIntervention);
 	
-			ConceptualModelTarget cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
+			Target cmTarget = new Target(takeNextModelNodeId());
 			nodePool.put(cmTarget);
 			
 			model.createNode(cmIntervention.getModelNodeId());

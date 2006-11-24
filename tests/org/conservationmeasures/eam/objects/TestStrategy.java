@@ -11,23 +11,23 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelIntervention extends ObjectTestCase
+public class TestStrategy extends ObjectTestCase
 {
-	public TestConceptualModelIntervention(String name)
+	public TestStrategy(String name)
 	{
 		super(name);
 	}
 
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_INTERVENTION);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_INTERVENTION);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	
 	public void testBasics()
 	{
 		ModelNodeId interventionId = new ModelNodeId(17);
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		Strategy intervention = new Strategy(interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
 		BaseId activityId1 = new BaseId(77);
@@ -53,34 +53,34 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 	public void testActivityIds() throws Exception
 	{
 		ModelNodeId interventionId = new ModelNodeId(66);
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
-		IdList empty = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
+		Strategy intervention = new Strategy(interventionId);
+		IdList empty = new IdList(intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
 		
 		BaseId activityId = new BaseId(828);
 		IdList oneItem = new IdList();
 		oneItem.add(activityId);
-		intervention.setData(ConceptualModelIntervention.TAG_ACTIVITY_IDS, oneItem.toString());
+		intervention.setData(Strategy.TAG_ACTIVITY_IDS, oneItem.toString());
 		
-		IdList got = new IdList(intervention.getData(ConceptualModelIntervention.TAG_ACTIVITY_IDS));
+		IdList got = new IdList(intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("round trip failed?", oneItem, got);
 	}
 	
 	public void testStatus() throws Exception
 	{
 		ModelNodeId interventionId = new ModelNodeId(91);
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
+		Strategy intervention = new Strategy(interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
-		assertEquals("Didn't default to valid status?", ConceptualModelIntervention.STATUS_REAL, intervention.getData(ConceptualModelIntervention.TAG_STATUS));
-		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
-		assertEquals("set/get didn't work?", ConceptualModelIntervention.STATUS_DRAFT, intervention.getData(ConceptualModelIntervention.TAG_STATUS));
+		assertEquals("Didn't default to valid status?", Strategy.STATUS_REAL, intervention.getData(Strategy.TAG_STATUS));
+		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		assertEquals("set/get didn't work?", Strategy.STATUS_DRAFT, intervention.getData(Strategy.TAG_STATUS));
 		assertFalse("didn't unset real status?", intervention.isStatusReal());
 		assertTrue("didn't set to draft status?", intervention.isStatusDraft());
-		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_REAL);
+		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_REAL);
 		assertTrue("didn't restore to real status?", intervention.isStatusReal());
 		assertFalse("didn't unset draft status?", intervention.isStatusDraft());
-		intervention.setData(ConceptualModelIntervention.TAG_STATUS, "OIJFW*FJJF");
+		intervention.setData(Strategy.TAG_STATUS, "OIJFW*FJJF");
 		assertTrue("didn't treat unknown as real?", intervention.isStatusReal());
 		assertFalse("treated unknown as draft?", intervention.isStatusDraft());
 		
@@ -89,12 +89,12 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 	public void testJson() throws Exception
 	{
 		ModelNodeId interventionId = new ModelNodeId(17);
-		ConceptualModelIntervention intervention = new ConceptualModelIntervention(interventionId);
-		intervention.setData(ConceptualModelIntervention.TAG_STATUS, ConceptualModelIntervention.STATUS_DRAFT);
+		Strategy intervention = new Strategy(interventionId);
+		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		intervention.insertActivityId(new BaseId(23), 0);
 		intervention.insertActivityId(new BaseId(37), 1);
 		
-		ConceptualModelIntervention got = (ConceptualModelIntervention)EAMBaseObject.createFromJson(intervention.getType(), intervention.toJson());
+		Strategy got = (Strategy)EAMBaseObject.createFromJson(intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
 	}

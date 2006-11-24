@@ -28,9 +28,9 @@ import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
-import org.conservationmeasures.eam.objects.ConceptualModelCluster;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.project.Project;
@@ -87,7 +87,7 @@ public class DiagramModel extends DefaultGraphModel
 
 	public DiagramNode createNode(ModelNodeId idToWrap, DiagramNodeId requestedId) throws Exception
 	{
-		ConceptualModelNode cmObject = getNodePool().find(idToWrap);
+		Factor cmObject = getNodePool().find(idToWrap);
 		DiagramNodeId nodeId = requestedId;
 		if(requestedId.isInvalid())
 			nodeId = takeNextDiagramNodeId();
@@ -155,7 +155,7 @@ public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
 	}
 	
-	public DiagramLinkage createLinkage(ConceptualModelLinkage cmLinkage) throws Exception
+	public DiagramLinkage createLinkage(FactorLink cmLinkage) throws Exception
 	{
 		DiagramLinkage linkage = new DiagramLinkage(this, cmLinkage);
 		Object[] linkages = new Object[]{linkage};
@@ -198,35 +198,35 @@ public class DiagramModel extends DefaultGraphModel
 		return false;
 	}
 	
-	public ConceptualModelNodeSet getDirectThreatChainNodes(ConceptualModelNode directThreat)
+	public ConceptualModelNodeSet getDirectThreatChainNodes(Factor directThreat)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildDirectThreatChain(this, directThreat);
 		return chainObject.getNodes();
 	}
 	
-	public ConceptualModelNodeSet getNodesInChain(ConceptualModelNode node)
+	public ConceptualModelNodeSet getNodesInChain(Factor node)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(this, node);
 		return chainObject.getNodes();
 	}
 		
-	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(ConceptualModelNode node)
+	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(Factor node)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildUpstreamDownstreamChain(this, node);
 		return chainObject.getNodes();
 	}
 
-	public ConceptualModelNodeSet getAllUpstreamNodes(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getAllUpstreamNodes(Factor startingNode)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildUpstreamChain(this, startingNode);
 		return chainObject.getNodes();
 	}
 
-	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(ConceptualModelNode startingNode)
+	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(Factor startingNode)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildDirectlyLinkedUpstreamChain(this, startingNode);
@@ -451,7 +451,7 @@ public class DiagramModel extends DefaultGraphModel
 	
 	void addNodesToCluster(DiagramCluster cluster) throws Exception
 	{
-		ConceptualModelCluster cmCluster = (ConceptualModelCluster)cluster.getUnderlyingObject();
+		FactorCluster cmCluster = (FactorCluster)cluster.getUnderlyingObject();
 		IdList members = cmCluster.getMemberIds();
 		for(int i = 0; i < members.size(); ++i)
 		{
@@ -465,7 +465,7 @@ public class DiagramModel extends DefaultGraphModel
 		ModelLinkageId[] linkageIds = getLinkagePool().getModelLinkageIds();
 		for(int i = 0; i < linkageIds.length; ++i)
 		{
-			ConceptualModelLinkage cmLinkage = getLinkagePool().find(linkageIds[i]);
+			FactorLink cmLinkage = getLinkagePool().find(linkageIds[i]);
 			if(hasNode(cmLinkage.getFromNodeId()) && hasNode(cmLinkage.getToNodeId()))
 			{
 				createLinkage(cmLinkage);

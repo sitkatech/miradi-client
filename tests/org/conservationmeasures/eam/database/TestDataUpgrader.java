@@ -14,10 +14,10 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelCause;
-import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
-import org.conservationmeasures.eam.objects.ConceptualModelTarget;
+import org.conservationmeasures.eam.objects.Cause;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
@@ -77,15 +77,15 @@ public class TestDataUpgrader extends EAMTestCase
 		upgrader.renameNodeTagFromNameToLabel();
 		
 		int nodeType = ObjectType.MODEL_NODE;
-		ConceptualModelTarget gotTarget = (ConceptualModelTarget)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
+		Target gotTarget = (Target)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
 		assertEquals(target.getLabel(), gotTarget.getLabel());
-		ConceptualModelCause gotThreat = (ConceptualModelCause)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
+		Cause gotThreat = (Cause)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
 		assertEquals(threat.getLabel(), gotThreat.getLabel());
-		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)EAMBaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
+		Strategy gotIntervention = (Strategy)EAMBaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
 		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
 	}
 
-	private File writeNode(File topDirectory, ObjectManifest manifest, ConceptualModelNode node) throws IOException
+	private File writeNode(File topDirectory, ObjectManifest manifest, Factor node) throws IOException
 	{
 		manifest.put(node.getId());
 		String nodeFilename = Integer.toString(node.getId().asInt());
@@ -96,7 +96,7 @@ public class TestDataUpgrader extends EAMTestCase
 		return targetFile;
 	}
 	
-	static class Version2ConceptualModelTarget extends ConceptualModelTarget
+	static class Version2ConceptualModelTarget extends Target
 	{
 		public Version2ConceptualModelTarget(String label) throws Exception
 		{
@@ -111,7 +111,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 	}
 	
-	static class Version2ConceptualModelThreat extends ConceptualModelCause
+	static class Version2ConceptualModelThreat extends Cause
 	{
 		public Version2ConceptualModelThreat(String label) throws Exception
 		{
@@ -125,7 +125,7 @@ public class TestDataUpgrader extends EAMTestCase
 		}
 	}
 	
-	static class Version2ConceptualModelIntervention extends ConceptualModelIntervention
+	static class Version2ConceptualModelIntervention extends Strategy
 	{
 		public Version2ConceptualModelIntervention(String label) throws Exception
 		{
@@ -143,8 +143,8 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		final String TAG_NAME = "Name";
 
-		json.put(TAG_NAME, json.get(ConceptualModelNode.TAG_LABEL));
-		json.remove(ConceptualModelNode.TAG_LABEL);
+		json.put(TAG_NAME, json.get(Factor.TAG_LABEL));
+		json.remove(Factor.TAG_LABEL);
 		return json;
 
 	}

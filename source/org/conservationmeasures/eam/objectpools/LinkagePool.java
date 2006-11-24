@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.LinkageListener;
 
 public class LinkagePool extends EAMObjectPool
@@ -20,7 +20,7 @@ public class LinkagePool extends EAMObjectPool
 		listener = listenerToNotify;
 	}
 	
-	public void put(ConceptualModelLinkage linkage)
+	public void put(FactorLink linkage)
 	{
 		put(linkage.getId(), linkage);
 	}
@@ -28,27 +28,27 @@ public class LinkagePool extends EAMObjectPool
 	public void put(BaseId id, Object object)
 	{
 		super.put(id, object);
-		ConceptualModelLinkage linkage = (ConceptualModelLinkage)object;
+		FactorLink linkage = (FactorLink)object;
 		listener.linkageWasCreated(linkage.getFromNodeId(), linkage.getToNodeId());
 	}
 
 	public void remove(BaseId id)
 	{
-		ConceptualModelLinkage linkage = find((ModelLinkageId)id);
+		FactorLink linkage = find((ModelLinkageId)id);
 		super.remove(id);
 		listener.linkageWasDeleted(linkage.getFromNodeId(), linkage.getToNodeId());
 	}
 
-	public ConceptualModelLinkage find(ModelLinkageId id)
+	public FactorLink find(ModelLinkageId id)
 	{
-		return (ConceptualModelLinkage)getRawObject(id);
+		return (FactorLink)getRawObject(id);
 	}
 	
 	public boolean hasLinkage(ModelNodeId nodeId1, ModelNodeId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
-			ConceptualModelLinkage thisLinkage = getLinkage(i);
+			FactorLink thisLinkage = getLinkage(i);
 			ModelNodeId fromId = thisLinkage.getFromNodeId();
 			ModelNodeId toId = thisLinkage.getToNodeId();
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
@@ -67,7 +67,7 @@ public class LinkagePool extends EAMObjectPool
 		return linkageIds;
 	}
 	
-	private ConceptualModelLinkage getLinkage(int index)
+	private FactorLink getLinkage(int index)
 	{
 		return find((ModelLinkageId)getIds()[index]);
 	}

@@ -9,24 +9,24 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelCause extends ObjectTestCase
+public class TestCause extends ObjectTestCase
 {
-	public TestConceptualModelCause(String name)
+	public TestCause(String name)
 	{
 		super(name);
 	}
 	
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	
 	public void testExtraInfo() throws Exception
 	{
 		ModelNodeId idToCreate = new ModelNodeId(17);
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_CAUSE);
-		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idToCreate, extraInfo);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
+		Factor node = Factor.createConceptualModelObject(idToCreate, extraInfo);
 		CreateModelNodeParameter gotExtraInfo = (CreateModelNodeParameter)node.getCreationExtraInfo();
 		assertEquals(extraInfo.getNodeType(), gotExtraInfo.getNodeType());
 	}

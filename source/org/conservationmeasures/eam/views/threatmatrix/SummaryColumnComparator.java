@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.util.Comparator;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.ConceptualModelNode;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
@@ -25,10 +25,10 @@ public class SummaryColumnComparator implements  Comparator
 	{
 		try
 		{
-			BaseId baseId1 = ((ConceptualModelNode) object1).getId();
+			BaseId baseId1 = ((Factor) object1).getId();
 			ValueOption valueOption1 = framework.getThreatThreatRatingValue(baseId1);
 
-			BaseId baseId2 = ((ConceptualModelNode) object2).getId();
+			BaseId baseId2 = ((Factor) object2).getId();
 			ValueOption valueOption2 = framework.getThreatThreatRatingValue(baseId2);
 			
 			Integer value1 = new Integer(valueOption1.getNumericValue());
