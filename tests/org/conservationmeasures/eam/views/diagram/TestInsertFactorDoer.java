@@ -151,7 +151,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 	{
 		CreateFactorParameter modelNodeParameter2 = new CreateFactorParameter(new FactorTypeTarget());
 		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
-		DiagramFactorId  dModelId2 = project.addNodeToDiagram(nodeId2);
+		DiagramFactorId  dModelId2 = project.addFactorToDiagram(nodeId2);
 		DiagramFactor dNode2 = project.getDiagramModel().getDiagramFactorById(dModelId2);
 		return dNode2;
 	}

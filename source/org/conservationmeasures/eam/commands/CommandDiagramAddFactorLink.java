@@ -44,7 +44,7 @@ public class CommandDiagramAddFactorLink extends Command
 	{
 		try
 		{
-			insertedDiagramFactorLinkId = target.addLinkageToDiagram(wrappedFactorLinkId);
+			insertedDiagramFactorLinkId = target.addLinkToDiagram(wrappedFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +57,7 @@ public class CommandDiagramAddFactorLink extends Command
 	{
 		try
 		{
-			target.removeLinkageFromDiagram(insertedDiagramFactorLinkId);
+			target.removeLinkFromDiagram(insertedDiagramFactorLinkId);
 		}
 		catch (Exception e)
 		{

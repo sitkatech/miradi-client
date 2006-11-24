@@ -251,7 +251,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			try
 			{
 				getProject().executeCommand(buildStatusCommand());
-				getProject().updateVisibilityOfSingleNode(getCurrentDiagramFactor());
+				getProject().updateVisibilityOfSingleFactor(getCurrentDiagramFactor());
 			}
 			catch(CommandFailedException e)
 			{

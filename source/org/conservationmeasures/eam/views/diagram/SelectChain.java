@@ -21,8 +21,8 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
-		DiagramFactorLink[] selectedLinkages = getProject().getOnlySelectedLinkages();
+		DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
+		DiagramFactorLink[] selectedLinkages = getProject().getOnlySelectedLinks();
 		int combinedLengths = selectedLinkages.length + selectedNodes.length;
 		
 		if (combinedLengths != 1)
@@ -54,9 +54,9 @@ public class SelectChain extends ViewDoer
 			return;
 		try
 		{
-			if (getProject().getOnlySelectedNodes().length == 1)
+			if (getProject().getOnlySelectedFactors().length == 1)
 				selectChainBasedOnNodeSelection();
-			else if (getProject().getOnlySelectedLinkages().length == 1)
+			else if (getProject().getOnlySelectedLinks().length == 1)
 				selectChainBasedOnLinkageSelection();
 		}
 		catch (Exception e)
@@ -68,7 +68,7 @@ public class SelectChain extends ViewDoer
 
 	private void selectChainBasedOnNodeSelection() throws Exception
 	{
-		DiagramFactor selectedNode = getProject().getOnlySelectedNodes()[0];
+		DiagramFactor selectedNode = getProject().getOnlySelectedFactors()[0];
 		DiagramModel model = getProject().getDiagramModel();
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
@@ -81,7 +81,7 @@ public class SelectChain extends ViewDoer
 	
 	private void selectChainBasedOnLinkageSelection() throws Exception
 	{
-		DiagramFactorLink[] onlySelectedLinkages = getProject().getOnlySelectedLinkages();
+		DiagramFactorLink[] onlySelectedLinkages = getProject().getOnlySelectedLinks();
 		DiagramFactorLink selectedLinkage = onlySelectedLinkages[0];
 		DiagramModel diagramModel = getProject().getDiagramModel();
 		

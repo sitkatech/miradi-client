@@ -39,7 +39,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		try
 		{
-			DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
+			DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
 			FactorId id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
@@ -58,7 +58,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
     protected void selectNewNode(FactorId idToUse)
 	{
-		getProject().selectNode(idToUse);
+		getProject().selectFactor(idToUse);
 	}
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
@@ -70,7 +70,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private FactorId insertNodeItself() throws Exception
 	{
 		Point createAt = getLocation();
-		DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
+		DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
 
 		getProject().executeCommand(new CommandBeginTransaction());
 		FactorType nodeType = getTypeToInsert();
@@ -89,7 +89,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		getProject().executeCommand(new CommandEndTransaction());
 
 		forceVisibleInLayerManager();
-		getProject().updateVisibilityOfNodes();
+		getProject().updateVisibilityOfFactors();
 		return id;
 	}
 	

@@ -665,21 +665,21 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 	
-	public void addNodeToCluster(DiagramFactorCluster cluster, DiagramFactor node)
+	public void addDiagramFactorToCluster(DiagramFactorCluster cluster, DiagramFactor node)
 	{
 		ParentMap parentMap = new ParentMap();
 		parentMap.addEntry(node, cluster);
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
-	public void removeNodeFromCluster(DiagramFactorCluster cluster, DiagramFactor node)
+	public void removeDiagramFactorFromCluster(DiagramFactorCluster cluster, DiagramFactor node)
 	{
 		DiagramFactor[] nodes = {node};
 		ParentMap parentMap = ParentMap.create(getDiagramModel(), nodes, true, false);
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
-	public FactorId removeNodeFromDiagram(DiagramFactorId idToDelete) throws Exception
+	public FactorId removeDiagramFactorFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactor nodeToDelete = model.getDiagramFactorById(idToDelete);
@@ -688,20 +688,20 @@ public class Project
 		return modelNodeId;
 	}
 
-	public DiagramFactorId addNodeToDiagram(FactorId modelNodeId) throws Exception
+	public DiagramFactorId addFactorToDiagram(FactorId modelNodeId) throws Exception
 	{
-		return addNodeToDiagram(modelNodeId, new DiagramFactorId(BaseId.INVALID.asInt()));
+		return addFactorToDiagram(modelNodeId, new DiagramFactorId(BaseId.INVALID.asInt()));
 	}
 	
-	public DiagramFactorId addNodeToDiagram(FactorId modelNodeId, DiagramFactorId requestedId) throws Exception
+	public DiagramFactorId addFactorToDiagram(FactorId modelNodeId, DiagramFactorId requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactor node = model.createDiagramFactor(modelNodeId, requestedId);
-		updateVisibilityOfSingleNode(node);
+		updateVisibilityOfSingleFactor(node);
 		return node.getDiagramFactorId();
 	}
 	
-	public FactorLinkId removeLinkageFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
+	public FactorLinkId removeLinkFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactorLink linkageToDelete = model.getDiagramFactorLinkById(idToDelete);
@@ -710,21 +710,21 @@ public class Project
 		return modelLinkageId;
 	}
 
-	public DiagramFactorLinkId addLinkageToDiagram(FactorLinkId modelLinkageId) throws Exception
+	public DiagramFactorLinkId addLinkToDiagram(FactorLinkId linkId) throws Exception
 	{
-		FactorLink cmLinkage = getFactorLinkPool().find(modelLinkageId);
+		FactorLink cmLinkage = getFactorLinkPool().find(linkId);
 		DiagramModel model = getDiagramModel();
 		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
 		return linkage.getDiagramLinkageId();
 	}
 
-	protected void writeNode(FactorId nodeId) throws IOException, ParseException
+	protected void writeFactor(FactorId factorId) throws IOException, ParseException
 	{
-		Factor cmNode = getFactorPool().find(nodeId);
+		Factor cmNode = getFactorPool().find(factorId);
 		database.writeObject(cmNode);
 	}
 
-	public void moveNodes(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
+	public void moveFactors(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
 	{
 		getDiagramModel().moveFactors(deltaX, deltaY, ids);
 	}
@@ -737,11 +737,11 @@ public class Project
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		Object[] selectedCells = selectionModel.getSelectionCells();
-		Vector cellVector = getAllSelectedCellsWithLinkages(selectedCells);
+		Vector cellVector = getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		return (EAMGraphCell[])cellVector.toArray(new EAMGraphCell[0]);
 	}
 
-	public Vector getAllSelectedCellsWithLinkages(Object[] selectedCells) 
+	public Vector getAllSelectedCellsWithRelatedLinkages(Object[] selectedCells) 
 	{
 		DiagramModel model = getDiagramModel();
 		Vector selectedCellsWithLinkages = new Vector();
@@ -770,7 +770,7 @@ public class Project
 	
 	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
-		return getFactorLinkPool().hasLinkage(nodeId1, nodeId2);
+		return getFactorLinkPool().isLinked(nodeId1, nodeId2);
 	}
 
 	public EAMGraphCell[] getOnlySelectedCells()
@@ -782,16 +782,16 @@ public class Project
 		return cells;
 	}
 	
-	public DiagramFactor[] getOnlySelectedNodes()
+	public DiagramFactor[] getOnlySelectedFactors()
 	{
 		if(selectionModel == null)
 			return new DiagramFactor[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedNodes(rawCells);
+		return getOnlySelectedFactors(rawCells);
 	}
 
-	public DiagramFactor[] getOnlySelectedNodes(Object[] allSelectedCells)
+	public DiagramFactor[] getOnlySelectedFactors(Object[] allSelectedCells)
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
@@ -802,16 +802,16 @@ public class Project
 		return (DiagramFactor[])nodes.toArray(new DiagramFactor[0]);
 	}
 	
-	public DiagramFactorLink[] getOnlySelectedLinkages()
+	public DiagramFactorLink[] getOnlySelectedLinks()
 	{
 		if(selectionModel == null)
 			return new DiagramFactorLink[0];
 		
 		Object[] rawCells = selectionModel.getSelectionCells();
-		return getOnlySelectedLinkages(rawCells);
+		return getOnlySelectedLinks(rawCells);
 	}
 	
-	public DiagramFactorLink[] getOnlySelectedLinkages(Object [] allSelectedCells)
+	public DiagramFactorLink[] getOnlySelectedLinks(Object [] allSelectedCells)
 	{
 		Vector linkages = new Vector();
 		for(int i = 0; i < allSelectedCells.length; ++i)
@@ -852,7 +852,7 @@ public class Project
 		return valueToRound * sign;
 	}
 
-	public void updateVisibilityOfNodes()
+	public void updateVisibilityOfFactors()
 	{
 		DiagramModel model = getDiagramModel();
 		
@@ -860,13 +860,13 @@ public class Project
 		for(int i = 0; i < nodes.size(); ++i)
 		{
 			DiagramFactor node = (DiagramFactor)nodes.get(i);
-			updateVisibilityOfSingleNode(node);
+			updateVisibilityOfSingleFactor(node);
 		}
 		
 		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), true);
 	}
 
-	public void updateVisibilityOfSingleNode(DiagramFactor node)
+	public void updateVisibilityOfSingleFactor(DiagramFactor node)
 	{
 		LayerManager manager = getLayerManager();
 		boolean isVisible = manager.isVisible(node);
@@ -888,7 +888,7 @@ public class Project
 		return availableResources;
 	}
 
-	public void selectNode(FactorId idToUse)
+	public void selectFactor(FactorId idToUse)
 	{
 		try
 		{

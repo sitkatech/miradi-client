@@ -458,7 +458,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < members.size(); ++i)
 		{
 			DiagramFactor memberFactor = getDiagramFactorByWrappedId((FactorId)members.get(i));
-			project.addNodeToCluster(diagramCluster, memberFactor);
+			project.addDiagramFactorToCluster(diagramCluster, memberFactor);
 		}
 	}
 	

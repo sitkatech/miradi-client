@@ -34,7 +34,7 @@ public class CommandDiagramRemoveFactor extends Command
 	{
 		try
 		{
-			wrappedFactorId = target.removeNodeFromDiagram(diagramFactorId);
+			wrappedFactorId = target.removeDiagramFactorFromDiagram(diagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -47,7 +47,7 @@ public class CommandDiagramRemoveFactor extends Command
 	{
 		try
 		{
-			target.addNodeToDiagram(wrappedFactorId, diagramFactorId);
+			target.addFactorToDiagram(wrappedFactorId, diagramFactorId);
 		}
 		catch (Exception e)
 		{

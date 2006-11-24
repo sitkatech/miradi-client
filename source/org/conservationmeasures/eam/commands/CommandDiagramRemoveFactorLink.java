@@ -34,7 +34,7 @@ public class CommandDiagramRemoveFactorLink extends Command
 	{
 		try
 		{
-			wrappedFactorLinkId = target.removeLinkageFromDiagram(diagramFactorLinkId);
+			wrappedFactorLinkId = target.removeLinkFromDiagram(diagramFactorLinkId);
 		}
 		catch (Exception e)
 		{
@@ -47,7 +47,7 @@ public class CommandDiagramRemoveFactorLink extends Command
 	{
 		try
 		{
-			target.addLinkageToDiagram(wrappedFactorLinkId);
+			target.addLinkToDiagram(wrappedFactorLinkId);
 		}
 		catch (Exception e)
 		{

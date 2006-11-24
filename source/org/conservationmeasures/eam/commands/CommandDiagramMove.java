@@ -37,7 +37,7 @@ public class CommandDiagramMove extends Command
 	{
 		try
 		{
-			target.moveNodes(getDeltaX(), getDeltaY(), getIds());
+			target.moveFactors(getDeltaX(), getDeltaY(), getIds());
 		}
 		catch (Exception e)
 		{
@@ -50,7 +50,7 @@ public class CommandDiagramMove extends Command
 	{
 		try
 		{
-			target.moveNodes(-getDeltaX(), -getDeltaY(), getIds());
+			target.moveFactors(-getDeltaX(), -getDeltaY(), getIds());
 		}
 		catch (Exception e)
 		{

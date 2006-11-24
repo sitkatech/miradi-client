@@ -44,7 +44,7 @@ public class CommandDiagramAddFactor extends Command
 	{
 		try
 		{
-			insertedDiagramFactorId = target.addNodeToDiagram(wrappedFactorId, insertedDiagramFactorId);
+			insertedDiagramFactorId = target.addFactorToDiagram(wrappedFactorId, insertedDiagramFactorId);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +57,7 @@ public class CommandDiagramAddFactor extends Command
 	{
 		try
 		{
-			target.removeNodeFromDiagram(insertedDiagramFactorId);
+			target.removeDiagramFactorFromDiagram(insertedDiagramFactorId);
 		}
 		catch (Exception e)
 		{

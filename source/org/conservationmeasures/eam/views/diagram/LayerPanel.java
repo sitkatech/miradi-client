@@ -95,7 +95,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	public void applyChanges()
 	{
 		updateLayerManagerFromControls();
-		getProject().updateVisibilityOfNodes();
+		getProject().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
 	}
 

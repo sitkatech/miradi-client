@@ -44,7 +44,7 @@ public class FactorLinkPool extends EAMObjectPool
 		return (FactorLink)getRawObject(id);
 	}
 	
-	public boolean hasLinkage(FactorId nodeId1, FactorId nodeId2)
+	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{

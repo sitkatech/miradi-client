@@ -114,7 +114,7 @@ public class FactorMoveHandler
 			return result;
 		
 		// FIXME: It looks wrong to mix commands with a non-command call like addNodeToCluster()
-		getProject().addNodeToCluster(cluster, node);
+		getProject().addDiagramFactorToCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(cluster.getUnderlyingObject(), 
 				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
 		result.add(cmd);
@@ -129,7 +129,7 @@ public class FactorMoveHandler
 			return result;
 		
 		// FIXME: It looks wrong to mix commands with a non-command call like removeNodeFromCluster()
-		getProject().removeNodeFromCluster(cluster, node);
+		getProject().removeDiagramFactorFromCluster(cluster, node);
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(cluster.getUnderlyingObject(), 
 				FactorCluster.TAG_MEMBER_IDS, node.getDiagramFactorId());
 		result.add(cmd);

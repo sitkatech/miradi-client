@@ -216,18 +216,18 @@ public class TestProject extends EAMTestCase
 		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
-		Vector selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
+		Vector selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(linkage1, selectedItems);
 		
 		selectedCells[0] = node2;
-		selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
+		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(2, selectedItems.size());
 		assertContains(node2, selectedItems);
 		assertContains(linkage1, selectedItems);
 		
 		selectedCells[0] = node1;
-		selectedItems = project.getAllSelectedCellsWithLinkages(selectedCells);
+		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(3, selectedItems.size());
 		assertContains(node1, selectedItems);
 		assertContains(linkage1, selectedItems);
@@ -242,16 +242,16 @@ public class TestProject extends EAMTestCase
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
 		EAMGraphCell[] selectedCells = {linkage1};
-		EAMGraphCell[] selectedItems = project.getOnlySelectedNodes(selectedCells);
+		EAMGraphCell[] selectedItems = project.getOnlySelectedFactors(selectedCells);
 		assertEquals(0, selectedItems.length);
 		
 		selectedCells[0] = node2;
-		selectedItems = project.getOnlySelectedNodes(selectedCells);
+		selectedItems = project.getOnlySelectedFactors(selectedCells);
 		assertEquals(1, selectedItems.length);
 		assertEquals(node2, selectedItems[0]);
 		
 		EAMGraphCell[] selectedCellsTwo = {node2,linkage1,node1};
-		selectedItems = project.getOnlySelectedNodes(selectedCellsTwo);
+		selectedItems = project.getOnlySelectedFactors(selectedCellsTwo);
 		assertEquals(2, selectedItems.length);
 	}
 	
@@ -266,7 +266,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
+		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, model.getAllDiagramFactors().size());
@@ -437,7 +437,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		Vector cellVector = project.getAllSelectedCellsWithLinkages(new EAMGraphCell[]{node1});
+		Vector cellVector = project.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
 		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		assertEquals(3, model.getAllDiagramFactors().size());
@@ -463,7 +463,7 @@ public class TestProject extends EAMTestCase
 		Object[] selectedCells = new DiagramFactor[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
-		project.removeNodeFromDiagram(idToDelete);
+		project.removeDiagramFactorFromDiagram(idToDelete);
 		project.deleteObject(ObjectType.MODEL_NODE, node1.getWrappedId());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
@@ -719,7 +719,7 @@ public class TestProject extends EAMTestCase
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			DiagramFactorId diagramNodeId = diskProject.addNodeToDiagram(interventionId);
+			DiagramFactorId diagramNodeId = diskProject.addFactorToDiagram(interventionId);
 
 			CommandDiagramRemoveFactor cmdDelete = new CommandDiagramRemoveFactor(diagramNodeId);
 			diskProject.executeCommand(cmdDelete);
@@ -798,7 +798,7 @@ public class TestProject extends EAMTestCase
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
-		DiagramFactorLinkId diagramLinkageId = project.addLinkageToDiagram(createdId);
+		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdId);
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
 
@@ -806,7 +806,7 @@ public class TestProject extends EAMTestCase
 	{
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		FactorId nodeId = (FactorId)projectToUse.createObject(ObjectType.MODEL_NODE, id, parameter);
-		projectToUse.addNodeToDiagram(nodeId);
+		projectToUse.addFactorToDiagram(nodeId);
 		return nodeId;
 	}
 

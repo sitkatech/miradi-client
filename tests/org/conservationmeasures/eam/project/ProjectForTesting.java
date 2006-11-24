@@ -55,7 +55,7 @@ public class ProjectForTesting extends Project
 	{
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		FactorId nodeId = (FactorId)createObject(ObjectType.MODEL_NODE, id, parameter);
-		addNodeToDiagram(nodeId);
+		addFactorToDiagram(nodeId);
 		return nodeId;
 	}
 

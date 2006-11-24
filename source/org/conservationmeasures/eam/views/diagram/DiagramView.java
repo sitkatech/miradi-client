@@ -245,7 +245,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		updateToolBar();
 		getMainWindow().updateStatusBar();
 		getDiagramComponent().clearSelection();
-		getProject().updateVisibilityOfNodes();
+		getProject().updateVisibilityOfFactors();
 	}
 
 	private IdList getIdsToHide()
@@ -429,14 +429,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			BaseId memberId = idsToRemove.get(i);
 			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
-			getProject().removeNodeFromCluster(cluster, memberNode);
+			getProject().removeDiagramFactorFromCluster(cluster, memberNode);
 		}
 		
 		for(int i = 0; i < idsToAdd.size(); ++i)
 		{
 			BaseId memberId = idsToAdd.get(i);
 			DiagramFactor memberNode = model.getDiagramFactorByWrappedId((FactorId)memberId);
-			getProject().addNodeToCluster(cluster, memberNode);
+			getProject().addDiagramFactorToCluster(cluster, memberNode);
 		}
 		
 		model.updateCell(cluster);

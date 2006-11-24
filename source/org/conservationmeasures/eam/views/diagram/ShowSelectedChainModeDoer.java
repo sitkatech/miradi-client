@@ -36,7 +36,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return false;
 		}
 
-		if(getProject().getOnlySelectedNodes().length < 1)
+		if(getProject().getOnlySelectedFactors().length < 1)
 			return false;
 		
 		if (!getProject().getLayerManager().isTypeVisible(DiagramStrategy.class))
@@ -55,7 +55,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			Project project = getMainWindow().getProject();
 			BaseId viewId = getCurrentViewId();
 
-			DiagramFactor[] selectedNodes = project.getOnlySelectedNodes();
+			DiagramFactor[] selectedNodes = project.getOnlySelectedFactors();
 			IdList selectedNodeIds = new IdList();
 			for(int i = 0; i < selectedNodes.length; ++i)
 			{

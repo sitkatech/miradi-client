@@ -33,7 +33,7 @@ public class TestProjectRepairer extends EAMTestCase
 			IdList bogusIndicators = new IdList();
 			bogusIndicators.add(new IndicatorId(23252));
 			node.setIndicators(bogusIndicators);
-			project.writeNode(nodeId);
+			project.writeFactor(nodeId);
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);
@@ -60,7 +60,7 @@ public class TestProjectRepairer extends EAMTestCase
 			IdList bogusGoals = new IdList();
 			bogusGoals.add(BaseId.INVALID);
 			node.setGoals(bogusGoals);
-			project.writeNode(nodeId);
+			project.writeFactor(nodeId);
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);
@@ -87,7 +87,7 @@ public class TestProjectRepairer extends EAMTestCase
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(BaseId.INVALID);
 			node.setObjectives(bogusObjectives);
-			project.writeNode(nodeId);
+			project.writeFactor(nodeId);
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);
@@ -114,7 +114,7 @@ public class TestProjectRepairer extends EAMTestCase
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(new BaseId(235));
 			node.setObjectives(bogusObjectives);
-			project.writeNode(nodeId);
+			project.writeFactor(nodeId);
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);

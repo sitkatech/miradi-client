@@ -40,9 +40,9 @@ public class TestFactorLinkPool extends TestCaseEnhanced
 		FactorLink linkage = new FactorLink(linkageId, node1.getModelNodeId(), node2.getModelNodeId());
 		pool.put(linkage);
 		
-		assertTrue("Didn't find link 1->2?", pool.hasLinkage(linkage.getFromFactorId(), linkage.getToFactorId()));
-		assertTrue("Didn't find link 2->1?", pool.hasLinkage(linkage.getToFactorId(), linkage.getFromFactorId()));
-		assertFalse("Found link 1->3?", pool.hasLinkage((FactorId)node1.getId(), (FactorId)node3.getId()));
+		assertTrue("Didn't find link 1->2?", pool.isLinked(linkage.getFromFactorId(), linkage.getToFactorId()));
+		assertTrue("Didn't find link 2->1?", pool.isLinked(linkage.getToFactorId(), linkage.getFromFactorId()));
+		assertFalse("Found link 1->3?", pool.isLinked((FactorId)node1.getId(), (FactorId)node3.getId()));
 	}
 	
 	class LinkageMonitor implements FactorLinkListener

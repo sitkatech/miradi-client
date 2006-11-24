@@ -24,7 +24,7 @@ public class NudgeDoer extends ProjectDoer
 	
 	public boolean isAvailable()
 	{
-		return getProject().getOnlySelectedNodes().length > 0;
+		return getProject().getOnlySelectedFactors().length > 0;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -52,7 +52,7 @@ public class NudgeDoer extends ProjectDoer
 
 	private void moveSelectedNodes(int deltaX, int deltaY) throws CommandFailedException
 	{
-		DiagramFactor[] cells = getProject().getOnlySelectedNodes();
+		DiagramFactor[] cells = getProject().getOnlySelectedFactors();
 
 		DiagramFactorId[] ids = new DiagramFactorId[cells.length];
 		for(int i = 0; i < cells.length; ++i)
@@ -61,7 +61,7 @@ public class NudgeDoer extends ProjectDoer
 		}
 		try
 		{
-			getProject().moveNodes(deltaX, deltaY, ids);
+			getProject().moveFactors(deltaX, deltaY, ids);
 			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(deltaX, deltaY, ids);
 		}
 		catch (Exception e)
