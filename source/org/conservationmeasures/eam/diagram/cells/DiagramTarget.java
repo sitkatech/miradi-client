@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Target;
 
-public class DiagramTarget extends DiagramNode
+public class DiagramTarget extends DiagramFactor
 {
 	public DiagramTarget(DiagramNodeId idToUse, Target cmTarget)
 	{

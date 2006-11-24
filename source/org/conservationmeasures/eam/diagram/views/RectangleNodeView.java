@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.views;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
 import org.conservationmeasures.eam.main.EAM;
@@ -18,7 +18,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class RectangleNodeView extends MultilineNodeView
 {
-	public RectangleNodeView(DiagramNode node)
+	public RectangleNodeView(DiagramFactor node)
 	{
 		super(node);
 	}

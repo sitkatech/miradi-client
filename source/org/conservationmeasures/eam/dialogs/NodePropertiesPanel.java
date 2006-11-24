@@ -24,7 +24,7 @@ import javax.swing.JTabbedPane;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeContributingFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeDirectThreat;
@@ -97,7 +97,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public void setCurrentNode(DiagramComponent diagram, DiagramNode node)
+	public void setCurrentNode(DiagramComponent diagram, DiagramFactor node)
 	{
 		this.setLayout(new BorderLayout());
 		this.removeAll();
@@ -115,7 +115,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public DiagramNode getCurrentNode()
+	public DiagramFactor getCurrentNode()
 	{
 		return currentNode;
 	}
@@ -125,7 +125,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		return getCurrentNode().getWrappedId();
 	}
 
-	private Component createLabelBar(DiagramNode node)
+	private Component createLabelBar(DiagramFactor node)
 	{
 		createTextField(node.getLabel(), MAX_LABEL_LENGTH);
 
@@ -146,7 +146,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		return grid;
 	}
 
-	private Component createTabbedPane(DiagramNode node) throws Exception
+	private Component createTabbedPane(DiagramFactor node) throws Exception
 	{
 		tabs = new JTabbedPane();
 		tabs.add(createMainGrid(node), EAM.text("Tab|Details"));
@@ -172,7 +172,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		return tabs;
 	}
 
-	private Component createMainGrid(DiagramNode node)
+	private Component createMainGrid(DiagramFactor node)
 	{
 		detailsTab = new DialogGridPanel();
 		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
@@ -357,7 +357,7 @@ public class NodePropertiesPanel extends DisposablePanel
 	}
 	
 
-	private Component createTasksGrid(DiagramNode node) throws Exception
+	private Component createTasksGrid(DiagramFactor node) throws Exception
 	{
 		Strategy intervention = (Strategy) node
 				.getUnderlyingObject();
@@ -727,7 +727,7 @@ public class NodePropertiesPanel extends DisposablePanel
 	GoalListManagementPanel goalsTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
-	DiagramNode currentNode;
+	DiagramFactor currentNode;
 	UiTextField textField;
 	UiTextArea commentField;
 	UiCheckBox statusCheckBox;

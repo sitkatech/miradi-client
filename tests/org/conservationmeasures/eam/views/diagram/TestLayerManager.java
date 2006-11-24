@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramCause;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -107,13 +107,13 @@ public class TestLayerManager extends EAMTestCase
 		assertTrue("Didn't set visible?", manager.areIndicatorsVisible());
 	}
 
-	private void verifyVisibility(String text, boolean expected, DiagramNode node, LayerManager manager)
+	private void verifyVisibility(String text, boolean expected, DiagramFactor node, LayerManager manager)
 	{
 		assertEquals("type: " + text + " (" + node + ") ",expected, manager.isTypeVisible(node.getClass()));
 		verifyNodeVisibility(text, expected, node, manager);
 	}
 
-	private void verifyNodeVisibility(String text, boolean expected, DiagramNode node, LayerManager manager)
+	private void verifyNodeVisibility(String text, boolean expected, DiagramFactor node, LayerManager manager)
 	{
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(node));
 	}
@@ -129,7 +129,7 @@ public class TestLayerManager extends EAMTestCase
 	Cause cmFactor;
 	Strategy cmIntervention;
 	
-	DiagramNode target;
-	DiagramNode factor;
-	DiagramNode intervention;
+	DiagramFactor target;
+	DiagramFactor factor;
+	DiagramFactor intervention;
 }

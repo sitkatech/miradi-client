@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
@@ -32,9 +32,9 @@ public class TestDelete extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		ModelNodeId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
-		DiagramNode intervention = model.getNodeById(interventionId);
+		DiagramFactor intervention = model.getNodeById(interventionId);
 		ModelNodeId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
-		DiagramNode factor = model.getNodeById(factorId);
+		DiagramFactor factor = model.getNodeById(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
 		

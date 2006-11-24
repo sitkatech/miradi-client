@@ -36,12 +36,12 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return (ModelLinkageId)underlyingObject.getId();
 	}
 	
-	public DiagramNode getFromNode()
+	public DiagramFactor getFromNode()
 	{
 		return from;
 	}
 	
-	public DiagramNode getToNode()
+	public DiagramFactor getToNode()
 	{
 		return to;
 	}
@@ -109,6 +109,6 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 	}
 	
 	private FactorLink underlyingObject;
-	private DiagramNode from;
-	private DiagramNode to;
+	private DiagramFactor from;
+	private DiagramFactor to;
 }

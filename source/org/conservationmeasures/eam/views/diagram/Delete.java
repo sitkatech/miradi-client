@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
@@ -67,7 +67,7 @@ public class Delete extends ProjectDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isNode())
-					deleteNode((DiagramNode)cell);
+					deleteNode((DiagramFactor)cell);
 			}
 		}
 		catch (Exception e)
@@ -90,7 +90,7 @@ public class Delete extends ProjectDoer
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
-	private void deleteNode(DiagramNode nodeToDelete) throws Exception
+	private void deleteNode(DiagramFactor nodeToDelete) throws Exception
 	{
 		DiagramNodeId id = nodeToDelete.getDiagramNodeId();
 
@@ -103,7 +103,7 @@ public class Delete extends ProjectDoer
 		deleteUnderlyingNode(underlyingNode);
 	}
 
-	private void removeFromCluster(DiagramNode nodeToDelete, DiagramNodeId id) throws ParseException, CommandFailedException
+	private void removeFromCluster(DiagramFactor nodeToDelete, DiagramNodeId id) throws ParseException, CommandFailedException
 	{
 		DiagramFactorCluster cluster = (DiagramFactorCluster)nodeToDelete.getParent();
 		if(cluster != null)
@@ -123,7 +123,7 @@ public class Delete extends ProjectDoer
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramNode nodeToDelete, DiagramNodeId id) throws CommandFailedException
+	private void removeNodeFromDiagram(DiagramFactor nodeToDelete, DiagramNodeId id) throws CommandFailedException
 	{
 		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
 		getProject().executeCommands(commandsToClear);

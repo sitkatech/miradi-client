@@ -34,9 +34,9 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphConstants;
 
-abstract public class DiagramNode extends EAMGraphCell
+abstract public class DiagramFactor extends EAMGraphCell
 {
-	public static DiagramNode wrapConceptualModelObject(DiagramNodeId idToUse, Factor cmObject)
+	public static DiagramFactor wrapConceptualModelObject(DiagramNodeId idToUse, Factor cmObject)
 	{
 		if(cmObject.isIntervention())
 			return new DiagramStrategy(idToUse, (Strategy)cmObject);
@@ -50,17 +50,17 @@ abstract public class DiagramNode extends EAMGraphCell
 		throw new RuntimeException("Tried to wrap unknown cmObject: " + cmObject);
 	}
 	
-	public static DiagramNode createFromJson(Project project, EnhancedJsonObject json) throws Exception
+	public static DiagramFactor createFromJson(Project project, EnhancedJsonObject json) throws Exception
 	{
 		DiagramNodeId id = new DiagramNodeId(json.getId(TAG_ID).asInt());
 		ModelNodeId wrappedId = new ModelNodeId(json.getId(TAG_WRAPPED_ID).asInt());
 		Factor cmNode = project.findNode(wrappedId);
-		DiagramNode node = wrapConceptualModelObject(id, cmNode);
+		DiagramFactor node = wrapConceptualModelObject(id, cmNode);
 		node.fillFrom(json);
 		return node;
 	}
 
-	protected DiagramNode(DiagramNodeId idToUse, Factor cmObjectToUse)
+	protected DiagramFactor(DiagramNodeId idToUse, Factor cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
 		id = idToUse;

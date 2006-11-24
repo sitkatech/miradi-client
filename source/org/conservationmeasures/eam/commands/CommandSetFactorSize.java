@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.commands;
 import java.awt.Dimension;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,7 +39,7 @@ public class CommandSetFactorSize extends Command
 		try
 		{
 			DiagramModel model = target.getDiagramModel();
-			DiagramNode node = model.getNodeById(getId());
+			DiagramFactor node = model.getNodeById(getId());
 			Dimension currentNodeSize = node.getSize();
 			if(expectedSize != null && !currentNodeSize.equals(expectedSize))
 				throw new Exception("CommandSetNodeSize expected " + expectedSize + " but was " + currentNodeSize);

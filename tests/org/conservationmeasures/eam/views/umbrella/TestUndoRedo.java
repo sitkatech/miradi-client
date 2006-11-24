@@ -7,7 +7,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorSize;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -62,7 +62,7 @@ public class TestUndoRedo extends EAMTestCase
 		
 		assertEquals("Should have 1 node again after redo.", 1, project.getDiagramModel().getNodeCount());
 		assertEquals("wrong number of nodes after redo?", 1, inserted.size());
-		DiagramNode node = (DiagramNode)inserted.get(0);
+		DiagramFactor node = (DiagramFactor)inserted.get(0);
 		assertTrue(project.getDiagramModel().isNodeInProject(node));
 		assertEquals("Incorrect label?", target1Text, node.getLabel());
 		
@@ -73,7 +73,7 @@ public class TestUndoRedo extends EAMTestCase
 	public void testUndoRedoNodeSize() throws Exception
 	{
 		DiagramNodeId insertedId = insertFactor(project).getInsertedId();
-		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor node = project.getDiagramModel().getNodeById(insertedId);
 		Dimension originalSize = node.getSize();
 
 		Dimension newSize1 = new Dimension(5,10);

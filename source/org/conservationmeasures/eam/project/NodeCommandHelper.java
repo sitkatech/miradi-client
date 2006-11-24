@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
@@ -80,17 +80,17 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			FactorDataMap nodeData = nodes[i];
-			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
+			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
-			FactorType type = FactorDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
+			FactorType type = FactorDataMap.convertIntToNodeType(nodeData.getInt(DiagramFactor.TAG_NODE_TYPE)); 
 			CommandDiagramAddFactor addCommand = createNode(type);
 			DiagramNodeId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
+			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramFactor.TAG_LOCATION));
 			
-			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getModelNodeId(), nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
-			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramNode.TAG_VISIBLE_LABEL));
+			Logging.logDebug("Paste Node: " + newNodeId +":" + nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			
 			
 		}
@@ -98,14 +98,14 @@ public class NodeCommandHelper
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			FactorDataMap nodeData = nodes[i];
-			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
+			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			DiagramNodeId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			
-			DiagramNode newNode = getDiagramNodeById(newNodeId);
-			Dimension originalDimension = nodeData.getDimension(DiagramNode.TAG_SIZE);
+			DiagramFactor newNode = getDiagramNodeById(newNodeId);
+			Dimension originalDimension = nodeData.getDimension(DiagramFactor.TAG_SIZE);
 			CommandSetFactorSize resize = new CommandSetFactorSize(newNodeId, originalDimension, newNode.getSize());
 			executeCommand(resize);
 			
@@ -115,7 +115,7 @@ public class NodeCommandHelper
 		}
 	}
 
-	private DiagramNode getDiagramNodeById(DiagramNodeId newNodeId) throws Exception
+	private DiagramFactor getDiagramNodeById(DiagramNodeId newNodeId) throws Exception
 	{
 		return getDiagramModel().getNodeById(newNodeId);
 	}
@@ -136,8 +136,8 @@ public class NodeCommandHelper
 				continue;
 			}
 			
-			DiagramNode newFromNode = getDiagramNodeById(newFromId);
-			DiagramNode newToNode = getDiagramNodeById(newToId);
+			DiagramFactor newFromNode = getDiagramNodeById(newFromId);
+			DiagramFactor newToNode = getDiagramNodeById(newToId);
 			CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
 			Logging.logDebug("Paste Link : " + addLinkageCommand.getModelLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}

@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.views;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
@@ -25,7 +25,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 
 	private VertexView createNodeView(Object view)
 	{
-		DiagramNode node = (DiagramNode)view;
+		DiagramFactor node = (DiagramFactor)view;
 		if(node.isTarget())
 		{
 			return new EllipseNodeView(node);

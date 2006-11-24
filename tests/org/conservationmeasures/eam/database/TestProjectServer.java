@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -204,9 +204,9 @@ public class TestProjectServer extends EAMTestCase
 			assertEquals("wrong node count?", expectedNodes.size(), gotNodes.size());
 			for(int i=0; i < gotNodes.size(); ++i)
 			{
-				DiagramNode gotNode = (DiagramNode)gotNodes.get(i);
+				DiagramFactor gotNode = (DiagramFactor)gotNodes.get(i);
 				DiagramNodeId gotId = gotNode.getDiagramNodeId();
-				DiagramNode expectedNode = model.getNodeById(gotId);
+				DiagramFactor expectedNode = model.getNodeById(gotId);
 				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 			}
 		}

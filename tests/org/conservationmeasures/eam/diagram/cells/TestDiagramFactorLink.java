@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -56,8 +56,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 
 	public void testBasics() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
-		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
+		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
 		ModelLinkageId id = new ModelLinkageId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
@@ -70,8 +70,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 	
 	public void testIds() throws Exception
 	{
-		DiagramNode factor = model.createNode(cmIntervention.getModelNodeId());
-		DiagramNode target = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
+		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
 		ModelLinkageId id = new ModelLinkageId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);

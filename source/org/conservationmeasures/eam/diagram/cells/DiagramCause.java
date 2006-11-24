@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Cause;
 
-public class DiagramCause extends DiagramNode
+public class DiagramCause extends DiagramFactor
 {
 	public DiagramCause(DiagramNodeId idToUse, Cause cmFactor)
 	{

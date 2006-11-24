@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -24,7 +24,7 @@ public class InsertIndirectFactor extends InsertNode
 		return EAM.text("Label|New Contributing Factor");
 	}
 
-	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
 	{
 		super.linkToPreviouslySelectedNodes(newlyInsertedId, nodesToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);

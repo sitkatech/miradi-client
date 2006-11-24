@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -58,7 +58,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		inserter.doIt();
 
 		ModelNodeId id = project.getNodePool().getModelNodeIds()[0];
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		DiagramFactor node = project.getDiagramModel().getNodeById(id);
 		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
 		assertTrue("select node was called?", inserter.wasSelectNodeCalled());
@@ -91,7 +91,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	{
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 
-		DiagramNode dNode1 = createDiagramNode(project);
+		DiagramFactor dNode1 = createDiagramNode(project);
 
 		final Rectangle visibleRect = new Rectangle(0, 0, DIAGRAM_WIDTH, DIAGRAM_HEIGHT);
 		Point newNodeLocation1 = inserter.getTargetLocation(dNode1, visibleRect);
@@ -102,7 +102,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		Point firstPoint = new Point(x, y);
 		assertEquals("first target location wrong?", firstPoint, newNodeLocation1);
 
-		DiagramNode dNode2 = createDiagramNode(project);	
+		DiagramFactor dNode2 = createDiagramNode(project);	
 
 		y = InsertNode.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertNode.TARGET_BETWEEN_SPACING;
 
@@ -117,7 +117,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		Point someSecondPoint = project.getSnapped(0, 500);
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 		
-		DiagramNode diagramNode = createDiagramNode(project);
+		DiagramFactor diagramNode = createDiagramNode(project);
 		int x = (int)diagramNode.getBounds().getWidth() / 2 + InsertNode.DEFAULT_MOVE;
 		Point someThirdPoint = project.getSnapped(x , 500);
 
@@ -126,11 +126,11 @@ public class TestInsertNode extends TestCaseEnhanced
 		checkNodeLocation(project, inserter, diagramNode, someThirdPoint);
 	}
 
-	private void checkNodeLocation(Project project, InsertInterventionWithFakePropertiesEditing inserter, DiagramNode diagramNode, Point somePoint)
+	private void checkNodeLocation(Project project, InsertInterventionWithFakePropertiesEditing inserter, DiagramFactor diagramNode, Point somePoint)
 	{
 		diagramNode.setLocation(somePoint);
 		int nodeWidth = (int)diagramNode.getBounds().getWidth();
-		DiagramNode[] selectedNodes = new DiagramNode[1];
+		DiagramFactor[] selectedNodes = new DiagramFactor[1];
 		selectedNodes[0] = diagramNode;
 		Point movedLocation = inserter.getLocationSelectedNonTargetNode(selectedNodes, nodeWidth);
 		int snappedX = project.getSnapped(somePoint).x;
@@ -147,12 +147,12 @@ public class TestInsertNode extends TestCaseEnhanced
 		return inserter;
 	}
 	
-	private DiagramNode createDiagramNode(Project project) throws Exception
+	private DiagramFactor createDiagramNode(Project project) throws Exception
 	{
 		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new FactorTypeTarget());
 		ModelNodeId nodeId2 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
 		DiagramNodeId  dModelId2 = project.addNodeToDiagram(nodeId2);
-		DiagramNode dNode2 = project.getDiagramModel().getNodeById(dModelId2);
+		DiagramFactor dNode2 = project.getDiagramModel().getNodeById(dModelId2);
 		return dNode2;
 	}
 

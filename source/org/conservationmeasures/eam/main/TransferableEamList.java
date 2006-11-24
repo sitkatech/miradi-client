@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
@@ -47,7 +47,7 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isNode())
 				{
-					nodes.add(((DiagramNode)cell).createNodeDataMap());
+					nodes.add(((DiagramFactor)cell).createNodeDataMap());
 				}
 			} 
 			catch (Exception e) 

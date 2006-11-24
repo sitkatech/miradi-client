@@ -11,7 +11,7 @@ import java.awt.datatransfer.DataFlavor;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
@@ -66,7 +66,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Strategy cmIntervention = new Strategy(node1Id);
 		nodePool.put(cmIntervention);
-		DiagramNode node1 = model.createNode(cmIntervention.getModelNodeId());
+		DiagramFactor node1 = model.createNode(cmIntervention.getModelNodeId());
 		node1.setLocation(node1Location);
 		
 		ModelNodeId node2Id = new ModelNodeId(2);
@@ -74,7 +74,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		Target cmTarget = new Target(node2Id);
 		nodePool.put(cmTarget);
-		DiagramNode node2 = model.createNode(cmTarget.getModelNodeId());
+		DiagramFactor node2 = model.createNode(cmTarget.getModelNodeId());
 		node2.setLocation(node2Location);
 		
 		ModelLinkageId linkage1Id = new ModelLinkageId(3);
@@ -90,10 +90,10 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorLinkDataMap[] linkagesData = eamTransferData.getLinkageDataCells();
 		
 		assertEquals(2, nodesData.length);
-		assertEquals(node1.getDiagramNodeId(), nodesData[0].getId(DiagramNode.TAG_ID));
-		assertEquals(node1Location, nodesData[0].getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals(node2.getDiagramNodeId(), nodesData[1].getId(DiagramNode.TAG_ID));
-		assertEquals(node2Location, nodesData[1].getPoint(DiagramNode.TAG_LOCATION));
+		assertEquals(node1.getDiagramNodeId(), nodesData[0].getId(DiagramFactor.TAG_ID));
+		assertEquals(node1Location, nodesData[0].getPoint(DiagramFactor.TAG_LOCATION));
+		assertEquals(node2.getDiagramNodeId(), nodesData[1].getId(DiagramFactor.TAG_ID));
+		assertEquals(node2Location, nodesData[1].getPoint(DiagramFactor.TAG_LOCATION));
 
 		assertEquals(1, linkagesData.length);
 		assertEquals(linkage1Id, linkagesData[0].getId());

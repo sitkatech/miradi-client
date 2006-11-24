@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -39,7 +39,7 @@ abstract public class InsertNode extends LocationDoer
 	{
 		try
 		{
-			DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+			DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
 			ModelNodeId id = insertNodeItself();
 			if(selectedNodes.length > 0)
 				linkToPreviouslySelectedNodes(id, selectedNodes);
@@ -63,19 +63,19 @@ abstract public class InsertNode extends LocationDoer
 	
 	void launchPropertiesEditor(ModelNodeId id) throws Exception, CommandFailedException
 	{
-		DiagramNode newNode = getProject().getDiagramModel().getNodeById(id);
+		DiagramFactor newNode = getProject().getDiagramModel().getNodeById(id);
 		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
 	}
 
 	private ModelNodeId insertNodeItself() throws Exception
 	{
 		Point createAt = getLocation();
-		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+		DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
 
 		getProject().executeCommand(new CommandBeginTransaction());
 		FactorType nodeType = getTypeToInsert();
 		ModelNodeId id = new NodeCommandHelper(getProject()).createNode(nodeType).getModelNodeId();
-		DiagramNode addedNode = getProject().getDiagramModel().getNodeById(id);
+		DiagramFactor addedNode = getProject().getDiagramModel().getNodeById(id);
 
 		CommandSetObjectData setNameCommand = NodeCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
@@ -93,7 +93,7 @@ abstract public class InsertNode extends LocationDoer
 		return id;
 	}
 	
-	private Point getDeltaPoint(Point createAt, DiagramNode[] selectedNodes, FactorType nodeType, DiagramNode addedNode)
+	private Point getDeltaPoint(Point createAt, DiagramFactor[] selectedNodes, FactorType nodeType, DiagramFactor addedNode)
 	{
 		if (createAt != null)
 			return createAt;
@@ -124,11 +124,11 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(DiagramNode addedNode, Rectangle visibleRectangle)
+	public Point getTargetLocation(DiagramFactor addedNode, Rectangle visibleRectangle)
 	{
 		Point deltaPoint = new Point();
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		DiagramNode[] allTargets = diagramModel.getAllTargetNodes();
+		DiagramFactor[] allTargets = diagramModel.getAllTargetNodes();
 
 		if (allTargets.length == 1)
 		{
@@ -153,7 +153,7 @@ abstract public class InsertNode extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getLocationSelectedNonTargetNode(DiagramNode[] selectedNodes, int nodeWidth)
+	public Point getLocationSelectedNonTargetNode(DiagramFactor[] selectedNodes, int nodeWidth)
 	{
 		Point nodeLocation = selectedNodes[0].getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
@@ -161,7 +161,7 @@ abstract public class InsertNode extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramNode[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedNodes(ModelNodeId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)

@@ -47,7 +47,7 @@ import java.awt.Stroke;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -73,7 +73,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 	{
 		super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 
-		node = (DiagramNode)view.getCell();
+		node = (DiagramFactor)view.getCell();
 		DiagramModel model = (DiagramModel)graphToUse.getModel();
 		ThreatRatingFramework framework = model.getThreatRatingFramework();
 		priority = null;
@@ -198,7 +198,7 @@ public abstract class MultilineNodeRenderer extends MultilineCellRenderer implem
 
 	
 	ValueOption priority;
-	DiagramNode node;
+	DiagramFactor node;
 	RatingChoice rating;
 	String indicatorText;
 	String desireText;

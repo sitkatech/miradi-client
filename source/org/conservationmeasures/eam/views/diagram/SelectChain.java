@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -21,7 +21,7 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		DiagramNode[] selectedNodes = getProject().getOnlySelectedNodes();
+		DiagramFactor[] selectedNodes = getProject().getOnlySelectedNodes();
 		DiagramFactorLink[] selectedLinkages = getProject().getOnlySelectedLinkages();
 		int combinedLengths = selectedLinkages.length + selectedNodes.length;
 		
@@ -31,7 +31,7 @@ public class SelectChain extends ViewDoer
 		return (isNode(selectedNodes) || isLinkage(selectedLinkages));
 	}
 	
-	private boolean isNode(DiagramNode[] selectedNodes)
+	private boolean isNode(DiagramFactor[] selectedNodes)
 	{
 		boolean isNode = false;
 		if (selectedNodes.length == 1)
@@ -68,7 +68,7 @@ public class SelectChain extends ViewDoer
 
 	private void selectChainBasedOnNodeSelection() throws Exception
 	{
-		DiagramNode selectedNode = getProject().getOnlySelectedNodes()[0];
+		DiagramFactor selectedNode = getProject().getOnlySelectedNodes()[0];
 		DiagramModel model = getProject().getDiagramModel();
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
@@ -108,7 +108,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			DiagramNode nodeToSelect = model.getNodeById((ModelNodeId)chainNodes[i].getId());
+			DiagramFactor nodeToSelect = model.getNodeById((ModelNodeId)chainNodes[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(nodeToSelect);
 		}

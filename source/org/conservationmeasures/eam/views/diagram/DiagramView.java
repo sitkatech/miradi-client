@@ -53,7 +53,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -131,7 +131,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	public EAMObject getSelectedObject()
 	{
-		DiagramNode node = diagram.getSelectedNode();
+		DiagramFactor node = diagram.getSelectedNode();
 		if(node == null)
 			return null;
 		return node.getUnderlyingObject();
@@ -259,7 +259,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			Vector allNodes = getProject().getDiagramModel().getAllNodes();
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
-				DiagramNode node = (DiagramNode) allNodes.get(i);
+				DiagramFactor node = (DiagramFactor) allNodes.get(i);
 				BaseId id = node.getDiagramNodeId();
 				if (!visibleDiagramNodeIds.contains(id))
 					idsToHide.add(id);
@@ -428,14 +428,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		for(int i = 0; i < idsToRemove.size(); ++i)
 		{
 			BaseId memberId = idsToRemove.get(i);
-			DiagramNode memberNode = model.getNodeById((ModelNodeId)memberId);
+			DiagramFactor memberNode = model.getNodeById((ModelNodeId)memberId);
 			getProject().removeNodeFromCluster(cluster, memberNode);
 		}
 		
 		for(int i = 0; i < idsToAdd.size(); ++i)
 		{
 			BaseId memberId = idsToAdd.get(i);
-			DiagramNode memberNode = model.getNodeById((ModelNodeId)memberId);
+			DiagramFactor memberNode = model.getNodeById((ModelNodeId)memberId);
 			getProject().addNodeToCluster(cluster, memberNode);
 		}
 		
@@ -462,7 +462,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		wizardPanel.jump(stepMarker);
 	}
 
-	public void showNodeProperties(DiagramNode node, int startingTabIdentifier)
+	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
 		if(nodePropertiesDlg != null)
@@ -491,7 +491,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(nodePropertiesDlg == null)
 			return;
 		
-		DiagramNode selectedNode = diagram.getSelectedNode();
+		DiagramFactor selectedNode = diagram.getSelectedNode();
 		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
 			disposeOfNodePropertiesDialog();
 	}

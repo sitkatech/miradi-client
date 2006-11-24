@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.main.AppPreferences;
@@ -160,7 +160,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		diagramContextMenuHandler.showContextMenu(e);
 	}
 	
-	public boolean isNodeVisible(DiagramNode node)
+	public boolean isNodeVisible(DiagramFactor node)
 	{
 		return project.getLayerManager().isVisible(node);
 	}
@@ -185,14 +185,14 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().areIndicatorsVisible();
 	}
 	
-	public DiagramNode getSelectedNode()
+	public DiagramFactor getSelectedNode()
 	{
 		if (getSelectionCount() != 1)
 			return null;
 		return getSelectedNode(0);
 	}
 	
-	public DiagramNode getSelectedNode(int index)
+	public DiagramFactor getSelectedNode(int index)
 	{
 		Object[] selectedCells = getSelectionCells();
 		for(int i = 0; i < selectedCells.length; ++i)
@@ -201,7 +201,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			if(thisCell.isNode())
 			{
 				if(index == 0)
-					return (DiagramNode)thisCell;
+					return (DiagramFactor)thisCell;
 				--index;
 			}
 		}
@@ -221,7 +221,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Vector allNodes = getDiagramModel().getAllNodes();
 		for (int i  = 0; i < allNodes.size(); i++)
 		{
-			DiagramNode dNode = (DiagramNode)allNodes.elementAt(i);
+			DiagramFactor dNode = (DiagramFactor)allNodes.elementAt(i);
 			if (glc.isVisible(dNode))
 				addSelectionCell(dNode);
 		}

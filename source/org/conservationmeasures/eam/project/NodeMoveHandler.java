@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.EAM;
@@ -45,7 +45,7 @@ public class NodeMoveHandler
 		{
 			try 
 			{
-				DiagramNode node = model.getNodeById(ids[i]);
+				DiagramFactor node = model.getNodeById(ids[i]);
 				if(node.getParent() != null)
 					commandsToExecute.addAll(buildDetachFromClusterCommand(node));
 				if(node.getParent() == null)
@@ -68,7 +68,7 @@ public class NodeMoveHandler
 			DiagramNodeId[] idsActuallyMoved = new DiagramNodeId[movedNodes.size()];
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
-				DiagramNode node = (DiagramNode)movedNodes.get(i);
+				DiagramFactor node = (DiagramFactor)movedNodes.get(i);
 				idsActuallyMoved[i] = node.getDiagramNodeId();
 			}
 			
@@ -103,7 +103,7 @@ public class NodeMoveHandler
 
 	}
 	
-	private List buildAttachToClusterCommand(DiagramNode node) throws Exception
+	private List buildAttachToClusterCommand(DiagramFactor node) throws Exception
 	{
 		Vector result = new Vector();
 		if(node.isCluster())
@@ -121,7 +121,7 @@ public class NodeMoveHandler
 		return result;
 	}
 	
-	private List buildDetachFromClusterCommand(DiagramNode node) throws ParseException
+	private List buildDetachFromClusterCommand(DiagramFactor node) throws ParseException
 	{
 		Vector result = new Vector();
 		DiagramFactorCluster cluster = (DiagramFactorCluster)node.getParent();
@@ -142,8 +142,8 @@ public class NodeMoveHandler
 		Vector allNodes = model.getAllNodes();
 		for(int i = 0; i < allNodes.size(); ++i)
 		{
-			DiagramNode node = (DiagramNode)allNodes.get(i);
-			DiagramNode possibleCluster = model.getNodeById(node.getWrappedId());
+			DiagramFactor node = (DiagramFactor)allNodes.get(i);
+			DiagramFactor possibleCluster = model.getNodeById(node.getWrappedId());
 			if(!possibleCluster.isCluster())
 				continue;
 			
@@ -154,7 +154,7 @@ public class NodeMoveHandler
 		return null;
 	}
 	
-	private Command buildResizeCommand(DiagramNode node)
+	private Command buildResizeCommand(DiagramFactor node)
 	{
 		return new CommandSetFactorSize(node.getDiagramNodeId(), node.getSize(), node.getPreviousSize());
 	}

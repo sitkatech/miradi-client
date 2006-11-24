@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Point;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -27,17 +27,17 @@ public class TestDiagramNodeData extends EAMTestCase
 		ModelNodeId wrappedId = new ModelNodeId(2);
 		Cause cmFactor = new Cause(wrappedId);
 		DiagramNodeId nodeId = new DiagramNodeId(44);
-		DiagramNode nodeA = DiagramNode.wrapConceptualModelObject(nodeId, cmFactor);
+		DiagramFactor nodeA = DiagramFactor.wrapConceptualModelObject(nodeId, cmFactor);
 		String nodeAText = "Node A";
 		nodeA.setLabel(nodeAText);
 		Point location = new Point(5,22);
 		nodeA.setLocation(location);
 		FactorDataMap nodeAData = nodeA.createNodeDataMap();
 		
-		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramNode.TAG_VISIBLE_LABEL));
-		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramNode.TAG_LOCATION));
-		assertEquals("id incorrect", nodeId, nodeAData.getId(DiagramNode.TAG_ID));
-		assertEquals("wrapped id incorrect", wrappedId, nodeAData.getId(DiagramNode.TAG_WRAPPED_ID));
+		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
+		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramFactor.TAG_LOCATION));
+		assertEquals("id incorrect", nodeId, nodeAData.getId(DiagramFactor.TAG_ID));
+		assertEquals("wrapped id incorrect", wrappedId, nodeAData.getId(DiagramFactor.TAG_WRAPPED_ID));
 	}
 	
 }

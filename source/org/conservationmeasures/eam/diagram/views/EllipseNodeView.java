@@ -39,7 +39,7 @@ package org.conservationmeasures.eam.diagram.views;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
@@ -48,7 +48,7 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class EllipseNodeView extends MultilineNodeView
 {
-	public EllipseNodeView(DiagramNode nodeToUse)
+	public EllipseNodeView(DiagramFactor nodeToUse)
 	{
 		super(nodeToUse);
 	}

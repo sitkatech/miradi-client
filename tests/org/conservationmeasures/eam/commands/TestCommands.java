@@ -12,7 +12,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
@@ -249,7 +249,7 @@ public class TestCommands extends EAMTestCase
 		
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramNode node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramFactor node = project.getDiagramModel().getNodeById(ids[i]);
 			assertEquals("didn't set location?", moveTo, node.getLocation());
 		}
 
@@ -257,7 +257,7 @@ public class TestCommands extends EAMTestCase
 		cmd.undo(project);
 		for(int i=0; i < ids.length; ++i)
 		{
-			DiagramNode node = project.getDiagramModel().getNodeById(ids[i]);
+			DiagramFactor node = project.getDiagramModel().getNodeById(ids[i]);
 			assertEquals("didn't restore original location?", zeroZero, node.getLocation());
 		}
 	}
@@ -285,7 +285,7 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramNodeId id = insertTarget();
 		Dimension defaultSize = new Dimension(120, 60);
-		DiagramNode node = project.getDiagramModel().getNodeById(id);
+		DiagramFactor node = project.getDiagramModel().getNodeById(id);
 		Dimension originalSize = node.getSize();
 		assertEquals(defaultSize, originalSize);
 		
@@ -325,7 +325,7 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(add);
 
 		DiagramNodeId insertedId = add.getInsertedId();
-		DiagramNode node = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor node = project.getDiagramModel().getNodeById(insertedId);
 		assertEquals("type not right?", type, node.getNodeType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramNodeId());
 
@@ -381,9 +381,9 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(addLinkageCommand);
 		
 		DiagramFactorLink inserted = model.getLinkageById(modelLinkageId);
-		DiagramNode fromNode = inserted.getFromNode();
+		DiagramFactor fromNode = inserted.getFromNode();
 		assertEquals("wrong source?", from, fromNode.getDiagramNodeId());
-		DiagramNode toNode = inserted.getToNode();
+		DiagramFactor toNode = inserted.getToNode();
 		assertEquals("wrong dest?", to, toNode.getDiagramNodeId());
 
 		assertTrue("linkage not created?", project.getDiagramModel().hasLinkage(fromNode, toNode));
@@ -402,8 +402,8 @@ public class TestCommands extends EAMTestCase
 
 		DiagramNodeId from = insertIntervention();
 		DiagramNodeId to = insertIndirectFactor();
-		DiagramNode fromNode = model.getNodeById(from);
-		DiagramNode toNode = model.getNodeById(to);
+		DiagramFactor fromNode = model.getNodeById(from);
+		DiagramFactor toNode = model.getNodeById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
@@ -477,7 +477,7 @@ public class TestCommands extends EAMTestCase
 		project.undo();
 		project.redo();
 		
-		DiagramNode inserted = project.getDiagramModel().getNodeById(insertedId);
+		DiagramFactor inserted = project.getDiagramModel().getNodeById(insertedId);
 		assertTrue("wrong node?", inserted.isTarget());
 		
 	}

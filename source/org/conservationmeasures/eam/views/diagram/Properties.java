@@ -9,7 +9,7 @@ import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.dialogs.LinkagePropertiesPanel;
@@ -52,7 +52,7 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isNode())
-			doNodeProperties((DiagramNode)selected, getLocation());
+			doNodeProperties((DiagramFactor)selected, getLocation());
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isLinkage())
@@ -73,13 +73,13 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doNodeProperties(DiagramNode selectedNode, Point at) throws CommandFailedException
+	void doNodeProperties(DiagramFactor selectedNode, Point at) throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
 		view.showNodeProperties(selectedNode, getTabToStartOn(selectedNode, at));
 	}
 
-	private int getTabToStartOn(DiagramNode node, Point at)
+	private int getTabToStartOn(DiagramFactor node, Point at)
 	{
 		if(at == null)
 			return NodePropertiesPanel.TAB_DETAILS;

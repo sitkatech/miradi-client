@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.MultilineNodeRenderer;
 import org.conservationmeasures.eam.main.EAM;
 import org.jgraph.graph.EdgeView;
@@ -18,7 +18,7 @@ import org.jgraph.graph.VertexView;
 
 public class MultilineNodeView extends VertexView
 {
-    public MultilineNodeView(DiagramNode nodeToUse) 
+    public MultilineNodeView(DiagramFactor nodeToUse) 
     {
         super(nodeToUse);
         node = nodeToUse;
@@ -38,5 +38,5 @@ public class MultilineNodeView extends VertexView
 		return rectangleCopy;
 	}
 
-	protected DiagramNode node;
+	protected DiagramFactor node;
 }

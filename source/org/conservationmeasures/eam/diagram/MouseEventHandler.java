@@ -11,7 +11,7 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -68,7 +68,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		{
 			if(((EAMGraphCell)selectedCells[i]).isNode())
 			{
-				DiagramNode node = (DiagramNode)selectedCells[i];
+				DiagramFactor node = (DiagramFactor)selectedCells[i];
 				node.setPreviousLocation(node.getLocation());
 				node.setPreviousSize(node.getSize());
 			}
@@ -101,7 +101,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		DiagramNodeId[] selectedNodeIds = new DiagramNodeId[selectedNodes.size()];
 		for(int i = 0; i < selectedNodes.size(); ++i)
 		{
-			selectedNodeIds[i] = ((DiagramNode)selectedNodes.get(i)).getDiagramNodeId();
+			selectedNodeIds[i] = ((DiagramFactor)selectedNodes.get(i)).getDiagramNodeId();
 		}
 
 		Point dragEndedAt = event.getPoint();
@@ -112,7 +112,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			return;
 
 		// adjust for snap
-		DiagramNode node = (DiagramNode)selectedNodes.get(0);
+		DiagramFactor node = (DiagramFactor)selectedNodes.get(0);
 		deltaX = node.getLocation().x - node.getPreviousLocation().x;
 		deltaY = node.getLocation().y - node.getPreviousLocation().y;
 

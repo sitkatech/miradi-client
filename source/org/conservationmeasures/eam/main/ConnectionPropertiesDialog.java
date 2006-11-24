@@ -15,7 +15,7 @@ import javax.swing.Box;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -47,10 +47,10 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		from = createChoices();
 		to = createChoices();
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
-		DiagramNode firstSelected = diagram.getSelectedNode(0);
+		DiagramFactor firstSelected = diagram.getSelectedNode(0);
 		if(firstSelected != null)
 			from.setSelectedItem(firstSelected);
-		DiagramNode secondSelected = diagram.getSelectedNode(1);
+		DiagramFactor secondSelected = diagram.getSelectedNode(1);
 		if(secondSelected != null)
 			to.setSelectedItem(secondSelected);
 		Box box = Box.createHorizontalBox();
@@ -67,7 +67,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		Object[] all = DiagramModel.getAll(model);
 		for(int i=0; i < all.length; ++i)
 		{
-			if(all[i] instanceof DiagramNode)
+			if(all[i] instanceof DiagramFactor)
 			{
 				comboBox.addItem(all[i]);
 			}
@@ -111,14 +111,14 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		return result;
 	}
 	
-	public DiagramNode getFrom()
+	public DiagramFactor getFrom()
 	{
-		return (DiagramNode)from.getSelectedItem();
+		return (DiagramFactor)from.getSelectedItem();
 	}
 	
-	public DiagramNode getTo()
+	public DiagramFactor getTo()
 	{
-		return (DiagramNode)to.getSelectedItem();
+		return (DiagramFactor)to.getSelectedItem();
 	}
 	
 	MainWindow mainWindow;

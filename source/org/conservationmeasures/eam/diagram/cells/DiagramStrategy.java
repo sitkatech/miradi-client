@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
 
-public class DiagramStrategy extends DiagramNode
+public class DiagramStrategy extends DiagramFactor
 {
 	public DiagramStrategy(DiagramNodeId idToUse, Strategy cmIntervention)
 	{

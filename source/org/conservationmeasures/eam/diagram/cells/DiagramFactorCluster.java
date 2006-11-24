@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.jgraph.graph.GraphConstants;
 
-public class DiagramFactorCluster extends DiagramNode
+public class DiagramFactorCluster extends DiagramFactor
 {
 	public DiagramFactorCluster(DiagramNodeId idToUse, FactorCluster cmGroup)
 	{

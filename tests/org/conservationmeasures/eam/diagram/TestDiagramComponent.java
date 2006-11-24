@@ -7,7 +7,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -51,8 +51,8 @@ public class TestDiagramComponent extends EAMTestCase
 		ModelNodeId visibleId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
 		FactorLink cmLinkage = new FactorLink(new ModelLinkageId(100), hiddenId, visibleId);
 		
-		DiagramNode hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
-		DiagramNode visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);
+		DiagramFactor hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
+		DiagramFactor visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);
 		DiagramFactorLink hiddenLinkage = diagramComponent.getDiagramModel().createLinkage(cmLinkage);
 		
 		GraphLayoutCache graphLayoutCache = diagramComponent.getGraphLayoutCache();

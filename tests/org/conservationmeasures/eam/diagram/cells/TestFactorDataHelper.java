@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -33,15 +33,15 @@ public class TestFactorDataHelper extends EAMTestCase
 		DiagramNodeId nodeId3 = new DiagramNodeId(6346);
 
 		Target cmTarget1 = new Target(originalNodeId1);
-		node1 = DiagramNode.wrapConceptualModelObject(nodeId1, cmTarget1);
+		node1 = DiagramFactor.wrapConceptualModelObject(nodeId1, cmTarget1);
 		nodeLocation1 = new Point(nodeLocation1x,nodeLocation1y);
 		
 		Target cmTarget2 = new Target(originalNodeId2);
-		node2 = DiagramNode.wrapConceptualModelObject(nodeId2, cmTarget2);
+		node2 = DiagramFactor.wrapConceptualModelObject(nodeId2, cmTarget2);
 		nodeLocation2 = new Point(nodeLocation2x,nodeLocation2y);
 
 		Target cmTarget3 = new Target(originalNodeId3);
-		node3 = DiagramNode.wrapConceptualModelObject(nodeId3, cmTarget3);
+		node3 = DiagramFactor.wrapConceptualModelObject(nodeId3, cmTarget3);
 		
 		nodes = new Vector();
 		nodes.add(node1);
@@ -128,9 +128,9 @@ public class TestFactorDataHelper extends EAMTestCase
 	final int nodeLocation2x = 5;
 	final int nodeLocation2y = 10;
 	
-	DiagramNode node1;
-	DiagramNode node2;
-	DiagramNode node3;
+	DiagramFactor node1;
+	DiagramFactor node2;
+	DiagramFactor node3;
 
 	Vector nodes;
 	Point nodeLocation1;

@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -183,10 +183,10 @@ public class ProjectRepairer
 	{
 		Vector diagramNodes = project.getDiagramModel().getAllNodes();
 		for (int i=0; i<diagramNodes.size(); ++i) 
-			fixLocation((DiagramNode) diagramNodes.get(i));
+			fixLocation((DiagramFactor) diagramNodes.get(i));
 	}
 
-	private void fixLocation(DiagramNode diagramNode)
+	private void fixLocation(DiagramFactor diagramNode)
 	{
 		Point currentLocation = diagramNode.getLocation();
 		Point expectedLocation  = project.getSnapped(currentLocation);

@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
@@ -29,7 +29,7 @@ class CellInventory
 		linkages.clear();
 	}
 
-	public void addNode(DiagramNode node)
+	public void addNode(DiagramFactor node)
 	{
 		DiagramNodeId realId = node.getDiagramNodeId();
 		
@@ -44,29 +44,29 @@ class CellInventory
 		return nodes;
 	}
 	
-	public DiagramNode getNodeById(DiagramNodeId id)
+	public DiagramFactor getNodeById(DiagramNodeId id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
-			DiagramNode node = (DiagramNode)iter.next();
+			DiagramFactor node = (DiagramFactor)iter.next();
 			if(node.getDiagramNodeId().equals(id))
 				return node;
 		}
 		return null;
 	}
 	
-	public DiagramNode getNodeById(ModelNodeId id)
+	public DiagramFactor getNodeById(ModelNodeId id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
-			DiagramNode node = (DiagramNode)iter.next();
+			DiagramFactor node = (DiagramFactor)iter.next();
 			if(node.getWrappedId().equals(id))
 				return node;
 		}
 		return null;
 	}
 	
-	public void removeNode(DiagramNode node)
+	public void removeNode(DiagramFactor node)
 	{
 		nodes.remove(node);
 	}

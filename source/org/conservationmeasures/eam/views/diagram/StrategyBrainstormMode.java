@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -55,7 +55,7 @@ public class StrategyBrainstormMode extends ViewDoer
 			Project project = getMainWindow().getProject();
 			BaseId viewId = getCurrentViewId();
 
-			DiagramNode[] selectedNodes = project.getOnlySelectedNodes();
+			DiagramFactor[] selectedNodes = project.getOnlySelectedNodes();
 			IdList selectedNodeIds = new IdList();
 			for(int i = 0; i < selectedNodes.length; ++i)
 			{

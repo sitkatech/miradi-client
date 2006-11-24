@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -57,13 +57,13 @@ public class TestDiagramFactor extends EAMTestCase
 		cmTarget = (Target)project.findNode(cmTargetId);
 		
 		DiagramNodeId interventionNodeId = new DiagramNodeId(44);
-		intervention = DiagramNode.wrapConceptualModelObject(interventionNodeId, cmIntervention);
+		intervention = DiagramFactor.wrapConceptualModelObject(interventionNodeId, cmIntervention);
 		DiagramNodeId indirectFactorNodeId = new DiagramNodeId(46);
-		indirectFactor = DiagramNode.wrapConceptualModelObject(indirectFactorNodeId, cmIndirectFactor);
+		indirectFactor = DiagramFactor.wrapConceptualModelObject(indirectFactorNodeId, cmIndirectFactor);
 		DiagramNodeId directThreatNodeId = new DiagramNodeId(43);
-		directThreat = DiagramNode.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
+		directThreat = DiagramFactor.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
 		DiagramNodeId targetNodeId = new DiagramNodeId(35);
-		target = DiagramNode.wrapConceptualModelObject(targetNodeId, cmTarget);
+		target = DiagramFactor.wrapConceptualModelObject(targetNodeId, cmTarget);
 		targetAttributeMap = target.getAttributes();
 	}
 	
@@ -151,7 +151,7 @@ public class TestDiagramFactor extends EAMTestCase
 		target.setLocation(new Point(100, 200));
 		target.setSize(new Dimension(50, 75));
 		
-		DiagramNode got = new DiagramTarget(target.getDiagramNodeId(), cmTarget);
+		DiagramFactor got = new DiagramTarget(target.getDiagramNodeId(), cmTarget);
 		EnhancedJsonObject json = target.toJson();
 		got.fillFrom(json);
 		
@@ -172,9 +172,9 @@ public class TestDiagramFactor extends EAMTestCase
 	Project project;
 	IdAssigner idAssigner;
 	Target cmTarget;
-	DiagramNode intervention;
-	DiagramNode indirectFactor;
-	DiagramNode directThreat;
-	DiagramNode target;
+	DiagramFactor intervention;
+	DiagramFactor indirectFactor;
+	DiagramFactor directThreat;
+	DiagramFactor target;
 	Map targetAttributeMap;
 }

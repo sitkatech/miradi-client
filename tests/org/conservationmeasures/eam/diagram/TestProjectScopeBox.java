@@ -9,7 +9,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -56,7 +56,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
-		DiagramNode target1 = createNode(Factor.TYPE_TARGET);
+		DiagramFactor target1 = createNode(Factor.TYPE_TARGET);
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
@@ -69,7 +69,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
-		DiagramNode target2 = createNode(Factor.TYPE_TARGET);
+		DiagramFactor target2 = createNode(Factor.TYPE_TARGET);
 		model.moveNodes(200, 200, new DiagramNodeId[] {target2.getDiagramNodeId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
@@ -77,7 +77,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertTrue("didn't surround target2?", twoTargets.contains(target2.getBounds()));
 	}
 
-	private DiagramNode createNode(FactorType nodeType) throws Exception
+	private DiagramFactor createNode(FactorType nodeType) throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(idAssigner.takeNextId().asInt());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
