@@ -47,7 +47,7 @@ public class TransferableEamList implements Transferable
 				}
 				if(cell.isFactor())
 				{
-					nodes.add(((DiagramFactor)cell).createNodeDataMap());
+					nodes.add(((DiagramFactor)cell).createFactorDataMap());
 				}
 			} 
 			catch (Exception e) 

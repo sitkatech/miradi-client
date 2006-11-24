@@ -468,7 +468,7 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < linkIds.length; ++i)
 		{
 			FactorLink link = getFactorLinkPool().find(linkIds[i]);
-			if(doesFactorExist(link.getFromNodeId()) && doesFactorExist(link.getToNodeId()))
+			if(doesFactorExist(link.getFromFactorId()) && doesFactorExist(link.getToFactorId()))
 			{
 				createDiagramFactorLink(link);
 			}

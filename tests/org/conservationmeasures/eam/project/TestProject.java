@@ -578,8 +578,8 @@ public class TestProject extends EAMTestCase
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		FactorLink cmLinkage = linkagePool.find(linkageId);
-		assertEquals("wrong from?", idA, cmLinkage.getFromNodeId());
-		assertEquals("wrong to?", idB, cmLinkage.getToNodeId());
+		assertEquals("wrong from?", idA, cmLinkage.getFromFactorId());
+		assertEquals("wrong to?", idB, cmLinkage.getToFactorId());
 		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
 		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);

@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.objects.Strategy;
 
 public class DiagramStrategy extends DiagramFactor
 {
-	public DiagramStrategy(DiagramFactorId idToUse, Strategy cmIntervention)
+	public DiagramStrategy(DiagramFactorId idToUse, Strategy strategyToWrap)
 	{
-		super(idToUse, cmIntervention);
+		super(idToUse, strategyToWrap);
 	}
 
 	public Color getColor()

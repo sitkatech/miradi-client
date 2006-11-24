@@ -116,8 +116,8 @@ public class TestProjectServer extends EAMTestCase
 		storage.writeObject(original);
 		FactorLink got = (FactorLink)storage.readObject(original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
-		assertEquals("wrong from?", original.getFromNodeId(), got.getFromNodeId());
-		assertEquals("wrong to?", original.getToNodeId(), got.getToNodeId());
+		assertEquals("wrong from?", original.getFromFactorId(), got.getFromFactorId());
+		assertEquals("wrong to?", original.getToFactorId(), got.getToFactorId());
 		
 		ObjectManifest linkageIds = storage.readObjectManifest(original.getType());
 		assertEquals("not one link?", 1, linkageIds.size());

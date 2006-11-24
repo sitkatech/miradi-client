@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.objects.Target;
 
 public class DiagramTarget extends DiagramFactor
 {
-	public DiagramTarget(DiagramFactorId idToUse, Target cmTarget)
+	public DiagramTarget(DiagramFactorId idToUse, Target targetToWrap)
 	{
-		super(idToUse, cmTarget);
+		super(idToUse, targetToWrap);
 	}
 
 	public Color getColor()

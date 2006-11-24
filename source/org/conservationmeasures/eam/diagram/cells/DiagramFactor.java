@@ -54,15 +54,15 @@ abstract public class DiagramFactor extends EAMGraphCell
 	{
 		DiagramFactorId id = new DiagramFactorId(json.getId(TAG_ID).asInt());
 		FactorId wrappedId = new FactorId(json.getId(TAG_WRAPPED_ID).asInt());
-		Factor cmNode = project.findNode(wrappedId);
-		DiagramFactor node = wrapConceptualModelObject(id, cmNode);
-		node.fillFrom(json);
-		return node;
+		Factor factor = project.findNode(wrappedId);
+		DiagramFactor diagramFactor = wrapConceptualModelObject(id, factor);
+		diagramFactor.fillFrom(json);
+		return diagramFactor;
 	}
 
-	protected DiagramFactor(DiagramFactorId idToUse, Factor cmObjectToUse)
+	protected DiagramFactor(DiagramFactorId idToUse, Factor factorToWrap)
 	{
-		underlyingObject = cmObjectToUse;
+		underlyingObject = factorToWrap;
 		id = idToUse;
 		
 		port = new DefaultPort();
@@ -125,7 +125,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		underlyingObject.setLabel(name);
 	}
 
-	public FactorType getNodeType()
+	public FactorType getFactorType()
 	{
 		return underlyingObject.getNodeType();
 	}
@@ -388,7 +388,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		};
 	}
 	
-	public FactorDataMap createNodeDataMap()
+	public FactorDataMap createFactorDataMap()
 	{
 		FactorDataMap dataMap = new FactorDataMap();
 		dataMap.putId(TAG_ID, getDiagramFactorId());
@@ -399,7 +399,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		// Really, for each node copied to the clipboard, we should copy 
 		// the json for both the ConceptualModelNode and for the DiagramNode.
 		// That will also fix the current bug that objectives and goals are not copied
-		dataMap.put(TAG_NODE_TYPE, FactorDataMap.convertNodeTypeToInt(getNodeType()));
+		dataMap.put(TAG_NODE_TYPE, FactorDataMap.convertNodeTypeToInt(getFactorType()));
 		
 		
 		dataMap.putPoint(TAG_LOCATION, getLocation());

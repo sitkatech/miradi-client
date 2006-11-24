@@ -17,11 +17,11 @@ import org.jgraph.graph.GraphConstants;
 
 public class DiagramFactorLink extends EAMGraphCell implements Edge
 {
-	public DiagramFactorLink(DiagramModel model, FactorLink cmLinkage) throws Exception
+	public DiagramFactorLink(DiagramModel model, FactorLink linkToWrap) throws Exception
 	{
-		underlyingObject = cmLinkage;
-		from = model.getDiagramFactorByWrappedId(cmLinkage.getFromNodeId());
-		to = model.getDiagramFactorByWrappedId(cmLinkage.getToNodeId());
+		underlyingObject = linkToWrap;
+		from = model.getDiagramFactorByWrappedId(linkToWrap.getFromFactorId());
+		to = model.getDiagramFactorByWrappedId(linkToWrap.getToFactorId());
 		String label = "";
 		fillConnectorAttributeMap(label);
 	}
@@ -91,12 +91,12 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 	
 	public FactorId getFromFactorId()
 	{
-		return underlyingObject.getFromNodeId();
+		return underlyingObject.getFromFactorId();
 	}
 	
 	public FactorId getToFactorId()
 	{
-		return underlyingObject.getToNodeId();
+		return underlyingObject.getToFactorId();
 	}
 	
 	public FactorLinkDataMap createLinkageDataMap() throws Exception

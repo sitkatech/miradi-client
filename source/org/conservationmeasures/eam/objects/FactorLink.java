@@ -47,12 +47,12 @@ public class FactorLink extends EAMBaseObject
 		return ObjectType.MODEL_LINKAGE;
 	}
 	
-	public FactorId getFromNodeId()
+	public FactorId getFromFactorId()
 	{
 		return fromId;
 	}
 	
-	public FactorId getToNodeId()
+	public FactorId getToFactorId()
 	{
 		return toId;
 	}
@@ -64,7 +64,7 @@ public class FactorLink extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateFactorLinkParameter(getFromNodeId(), getToNodeId());
+		return new CreateFactorLinkParameter(getFromFactorId(), getToFactorId());
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception
@@ -86,9 +86,9 @@ public class FactorLink extends EAMBaseObject
 	public FactorId getNodeId(int direction)
 	{
 		if(direction == FROM)
-			return getFromNodeId();
+			return getFromFactorId();
 		if(direction == TO)
-			return getToNodeId();
+			return getToFactorId();
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	

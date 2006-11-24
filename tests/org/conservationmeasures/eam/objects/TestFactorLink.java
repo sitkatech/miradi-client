@@ -18,8 +18,8 @@ public class TestFactorLink extends EAMTestCase
 	{
 		FactorLink linkageData = new FactorLink(id, nodeAId, nodeBId);
 		assertEquals("Id not the same?", id, linkageData.getId());
-		assertEquals("From Node Ids don't match", nodeAId, linkageData.getFromNodeId());
-		assertEquals("To Node Ids don't match", nodeBId, linkageData.getToNodeId());
+		assertEquals("From Node Ids don't match", nodeAId, linkageData.getFromFactorId());
+		assertEquals("To Node Ids don't match", nodeBId, linkageData.getToFactorId());
 	}
 
 	public void testToJson() throws Exception
@@ -29,8 +29,8 @@ public class TestFactorLink extends EAMTestCase
 		EnhancedJsonObject json = original.toJson();
 		FactorLink gotBack = (FactorLink)EAMBaseObject.createFromJson(original.getType(), json);
 		assertEquals("wrong id?", original.getId(), gotBack.getId());
-		assertEquals("wrong from?", original.getFromNodeId(), gotBack.getFromNodeId());
-		assertEquals("wrong to?", original.getToNodeId(), gotBack.getToNodeId());
+		assertEquals("wrong from?", original.getFromFactorId(), gotBack.getFromFactorId());
+		assertEquals("wrong to?", original.getToFactorId(), gotBack.getToFactorId());
 		assertEquals("wrong stress label?", original.getStressLabel(), gotBack.getStressLabel());
 	}
 	

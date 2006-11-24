@@ -64,7 +64,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(Factor.TYPE_TARGET, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_TARGET, foundNode.getFactorType());
 	}
 
 	public void testInsertFactor() throws Exception
@@ -80,7 +80,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isContributingFactor());
-		assertEquals(Factor.TYPE_CAUSE, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_CAUSE, foundNode.getFactorType());
 	}
 
 	public void testInsertIntervention() throws Exception
@@ -96,7 +96,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
-		assertEquals(Factor.TYPE_INTERVENTION, foundNode.getNodeType());
+		assertEquals(Factor.TYPE_INTERVENTION, foundNode.getFactorType());
 	}
 	
 	ProjectForTesting project;

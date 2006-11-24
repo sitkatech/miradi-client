@@ -29,7 +29,7 @@ public class DiagramCause extends DiagramFactor
 		if(isStress())
 			return DiagramConstants.COLOR_STRESS;
 		
-		throw new RuntimeException("Unknown factor type: " + getNodeType().getClass());
+		throw new RuntimeException("Unknown factor type: " + getFactorType().getClass());
 	}
 
 

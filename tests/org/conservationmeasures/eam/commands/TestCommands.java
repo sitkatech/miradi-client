@@ -326,7 +326,7 @@ public class TestCommands extends EAMTestCase
 
 		DiagramFactorId insertedId = add.getInsertedId();
 		DiagramFactor node = project.getDiagramModel().getDiagramFactorById(insertedId);
-		assertEquals("type not right?", type, node.getNodeType());
+		assertEquals("type not right?", type, node.getFactorType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramFactorId());
 
 		verifyUndoDiagramAddNode(add);
@@ -430,7 +430,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getFactorId());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getNodeType());
+		assertEquals("didn't undo delete?", Factor.TYPE_TARGET, project.getDiagramModel().getDiagramFactorById(id).getFactorType());
 
 		verifyUndoTwiceThrows(cmd);
 	}

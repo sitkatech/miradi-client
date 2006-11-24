@@ -29,14 +29,14 @@ public class FactorLinkPool extends EAMObjectPool
 	{
 		super.put(id, object);
 		FactorLink linkage = (FactorLink)object;
-		listener.linkageWasCreated(linkage.getFromNodeId(), linkage.getToNodeId());
+		listener.linkageWasCreated(linkage.getFromFactorId(), linkage.getToFactorId());
 	}
 
 	public void remove(BaseId id)
 	{
 		FactorLink linkage = find((FactorLinkId)id);
 		super.remove(id);
-		listener.linkageWasDeleted(linkage.getFromNodeId(), linkage.getToNodeId());
+		listener.linkageWasDeleted(linkage.getFromFactorId(), linkage.getToFactorId());
 	}
 
 	public FactorLink find(FactorLinkId id)
@@ -49,8 +49,8 @@ public class FactorLinkPool extends EAMObjectPool
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			FactorLink thisLinkage = getLinkage(i);
-			FactorId fromId = thisLinkage.getFromNodeId();
-			FactorId toId = thisLinkage.getToNodeId();
+			FactorId fromId = thisLinkage.getFromFactorId();
+			FactorId toId = thisLinkage.getToFactorId();
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
 				return true;
 			if(fromId.equals(nodeId2) && toId.equals(nodeId1))

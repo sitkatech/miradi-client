@@ -54,7 +54,7 @@ public class TestFactorDataMap extends EAMTestCase
 		nodeA.setLabel(nodeAText);
 		Point location = new Point(5,22);
 		nodeA.setLocation(location);
-		FactorDataMap nodeAData = nodeA.createNodeDataMap();
+		FactorDataMap nodeAData = nodeA.createFactorDataMap();
 		
 		assertEquals("Text incorrect", nodeAText, nodeAData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 		assertEquals("location incorrect", location, nodeAData.getPoint(DiagramFactor.TAG_LOCATION));
