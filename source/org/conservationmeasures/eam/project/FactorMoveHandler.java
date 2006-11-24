@@ -33,7 +33,7 @@ public class FactorMoveHandler
 		project = projectToUse;
 	}
 
-	public void nodesWereMovedOrResized(int deltaX, int deltaY, DiagramFactorId[] ids) throws CommandFailedException
+	public void factorsWereMovedOrResized(int deltaX, int deltaY, DiagramFactorId[] ids) throws CommandFailedException
 	{
 		DiagramModel model = getProject().getDiagramModel();
 		model.factorsWereMoved(ids);

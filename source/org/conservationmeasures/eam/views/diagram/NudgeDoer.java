@@ -62,7 +62,7 @@ public class NudgeDoer extends ProjectDoer
 		try
 		{
 			getProject().moveNodes(deltaX, deltaY, ids);
-			new FactorMoveHandler(getProject()).nodesWereMovedOrResized(deltaX, deltaY, ids);
+			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(deltaX, deltaY, ids);
 		}
 		catch (Exception e)
 		{

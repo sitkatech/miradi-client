@@ -68,9 +68,9 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		{
 			if(((EAMGraphCell)selectedCells[i]).isFactor())
 			{
-				DiagramFactor node = (DiagramFactor)selectedCells[i];
-				node.setPreviousLocation(node.getLocation());
-				node.setPreviousSize(node.getSize());
+				DiagramFactor factor = (DiagramFactor)selectedCells[i];
+				factor.setPreviousLocation(factor.getLocation());
+				factor.setPreviousSize(factor.getSize());
 			}
 		}
 		
@@ -88,20 +88,20 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(dragStartedAt == null)
 			return;
 		
-		Vector selectedNodes = new Vector();
+		Vector selectedFactors = new Vector();
 		for(int i = 0; i < selectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)selectedCells[i]).isFactor())
-				selectedNodes.add(selectedCells[i]);
+				selectedFactors.add(selectedCells[i]);
 		}
 		
-		if(selectedNodes.size() == 0)
+		if(selectedFactors.size() == 0)
 			return;
 		
-		DiagramFactorId[] selectedNodeIds = new DiagramFactorId[selectedNodes.size()];
-		for(int i = 0; i < selectedNodes.size(); ++i)
+		DiagramFactorId[] selectedFactorIds = new DiagramFactorId[selectedFactors.size()];
+		for(int i = 0; i < selectedFactors.size(); ++i)
 		{
-			selectedNodeIds[i] = ((DiagramFactor)selectedNodes.get(i)).getDiagramFactorId();
+			selectedFactorIds[i] = ((DiagramFactor)selectedFactors.get(i)).getDiagramFactorId();
 		}
 
 		Point dragEndedAt = event.getPoint();
@@ -112,13 +112,13 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 			return;
 
 		// adjust for snap
-		DiagramFactor node = (DiagramFactor)selectedNodes.get(0);
+		DiagramFactor node = (DiagramFactor)selectedFactors.get(0);
 		deltaX = node.getLocation().x - node.getPreviousLocation().x;
 		deltaY = node.getLocation().y - node.getPreviousLocation().y;
 
 		try
 		{
-			new FactorMoveHandler(getProject()).nodesWereMovedOrResized(deltaX, deltaY, selectedNodeIds);
+			new FactorMoveHandler(getProject()).factorsWereMovedOrResized(deltaX, deltaY, selectedFactorIds);
 		}
 		catch(CommandFailedException e)
 		{
