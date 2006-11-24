@@ -471,7 +471,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), diagram);
 		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
 		
-		nodePropertiesPanel.setCurrentNode(diagram, node);
+		nodePropertiesPanel.setCurrentDiagramFactor(diagram, node);
 		nodePropertiesPanel.selectTab(startingTabIdentifier);
 		nodePropertiesDlg.pack();
 		Utilities.centerDlg(nodePropertiesDlg);
@@ -492,7 +492,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 			return;
 		
 		DiagramFactor selectedNode = diagram.getSelectedFactor();
-		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentNode()))
+		if(selectedNode == null || !selectedNode.equals(nodePropertiesPanel.getCurrentDiagramFactor()))
 			disposeOfNodePropertiesDialog();
 	}
 	

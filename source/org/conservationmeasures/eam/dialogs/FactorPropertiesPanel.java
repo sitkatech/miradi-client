@@ -97,16 +97,16 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public void setCurrentNode(DiagramComponent diagram, DiagramFactor node)
+	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
 	{
 		this.setLayout(new BorderLayout());
 		this.removeAll();
 		try
 		{
-			currentNode = node;
-			this.add(createLabelBar(currentNode),
+			currentDiagramFactor = diagramFactor;
+			this.add(createLabelBar(currentDiagramFactor),
 					BorderLayout.BEFORE_FIRST_LINE);
-			this.add(createTabbedPane(currentNode), BorderLayout.CENTER);
+			this.add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
 		}
 		catch(Exception e)
 		{
@@ -115,29 +115,29 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 	}
 
-	public DiagramFactor getCurrentNode()
+	public DiagramFactor getCurrentDiagramFactor()
 	{
-		return currentNode;
+		return currentDiagramFactor;
 	}
 
-	public FactorId getNodeId()
+	public FactorId getCurrentFactorId()
 	{
-		return getCurrentNode().getWrappedId();
+		return getCurrentDiagramFactor().getWrappedId();
 	}
 
-	private Component createLabelBar(DiagramFactor node)
+	private Component createLabelBar(DiagramFactor diagramFactor)
 	{
-		createTextField(node.getLabel(), MAX_LABEL_LENGTH);
+		createTextField(diagramFactor.getLabel(), MAX_LABEL_LENGTH);
 
 		DialogGridPanel grid = new DialogGridPanel();
 		grid.add(new UiLabel(EAM.text("Label|Label")));
 		grid.add(textField);
 
-		if(node.isCause())
+		if(diagramFactor.isCause())
 		{
 			grid.add(new UiLabel(EAM.text("Label|Type")));
 			String subTypeString = new FactorTypeContributingFactor().toString();
-			if(node.isDirectThreat())
+			if(diagramFactor.isDirectThreat())
 				subTypeString = new FactorTypeDirectThreat().toString();
 			grid.add(new UiLabel(subTypeString));
 		}
@@ -146,54 +146,54 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return grid;
 	}
 
-	private Component createTabbedPane(DiagramFactor node) throws Exception
+	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{
 		tabs = new JTabbedPane();
-		tabs.add(createMainGrid(node), EAM.text("Tab|Details"));
+		tabs.add(createMainGrid(diagramFactor), EAM.text("Tab|Details"));
 		
-		indicatorsTab = new IndicatorListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+		indicatorsTab = new IndicatorListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 		tabs.add(indicatorsTab, indicatorsTab.getPanelDescription());
 		
-		if(node.canHaveObjectives())
+		if(diagramFactor.canHaveObjectives())
 		{
-			objectivesTab = new ObjectiveListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+			objectivesTab = new ObjectiveListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			tabs.add(objectivesTab, objectivesTab.getPanelDescription());
 		}
 		
-		if(node.canHaveGoal())
+		if(diagramFactor.canHaveGoal())
 		{
-			goalsTab = new GoalListManagementPanel(getProject(), getCurrentNode().getWrappedId(), mainWindow.getActions());
+			goalsTab = new GoalListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
 			tabs.add(goalsTab, goalsTab.getPanelDescription());
 		}
 		
-		if(node.isStrategy())
-			tabs.add(createTasksGrid(node), EAM.text("Tab|Actions"));
+		if(diagramFactor.isStrategy())
+			tabs.add(createTasksGrid(diagramFactor), EAM.text("Tab|Actions"));
 		
 		return tabs;
 	}
 
-	private Component createMainGrid(DiagramFactor node)
+	private Component createMainGrid(DiagramFactor diagramFactor)
 	{
 		detailsTab = new DialogGridPanel();
 		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
 
-		if(node.isDirectThreat())
+		if(diagramFactor.isDirectThreat())
 		{
 			detailsTab.add(new UiLabel(EAM
 					.text("Label|IUCN-CMP Classification")));
 			detailsTab.add(createThreatClassificationDropdown());
 		}
 
-		if(node.isStrategy())
+		if(diagramFactor.isStrategy())
 		{
 			detailsTab.add(new UiLabel(EAM.text("Label|Status")));
-			statusCheckBox.setSelected(node.isStatusDraft());
+			statusCheckBox.setSelected(diagramFactor.isStatusDraft());
 			statusCheckBox.addItemListener(new StatusChangeHandler());
 			detailsTab.add(statusCheckBox);
 
 			detailsTab.add(new UiLabel(EAM
 					.text("Label|IUCN-CMP Classification")));
-			detailsTab.add(createInterventionClassificationDropdown());
+			detailsTab.add(createStrategyClassificationDropdown());
 			
 			String impactTag = Strategy.TAG_IMPACT_RATING;
 			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
@@ -201,7 +201,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			LegacyChoiceDialogField impactField = new LegacyChoiceDialogField(impactQuestion);
 			impactComponent = (UiComboBox)impactField.getComponent();
 			detailsTab.add(createFieldPanel(impactComponent));
-			impactField.selectCode(node.getUnderlyingObject().getData(impactTag));
+			impactField.selectCode(diagramFactor.getUnderlyingObject().getData(impactTag));
 			impactComponent.addItemListener(new ImpactChangeHandler());
 			
 			String durationTag = Strategy.TAG_DURATION_RATING;
@@ -210,7 +210,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			LegacyChoiceDialogField durationField = new LegacyChoiceDialogField(durationQuestion);
 			durationComponent = (UiComboBox)durationField.getComponent();
 			detailsTab.add(createFieldPanel(durationComponent));
-			durationField.selectCode(node.getUnderlyingObject().getData(durationTag));
+			durationField.selectCode(diagramFactor.getUnderlyingObject().getData(durationTag));
 			durationComponent.addItemListener(new DurationChangeHandler());
 			
 			String feasibilityTag = Strategy.TAG_FEASIBILITY_RATING;
@@ -219,7 +219,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			LegacyChoiceDialogField feasibilityField = new LegacyChoiceDialogField(feasibilityQuestion);
 			feasibilityComponent = (UiComboBox)feasibilityField.getComponent();
 			detailsTab.add(createFieldPanel(feasibilityComponent));
-			feasibilityField.selectCode(node.getUnderlyingObject().getData(feasibilityTag));
+			feasibilityField.selectCode(diagramFactor.getUnderlyingObject().getData(feasibilityTag));
 			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
 			
 			String costTag = Strategy.TAG_COST_RATING;
@@ -228,7 +228,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			LegacyChoiceDialogField costField = new LegacyChoiceDialogField(costQuestion);
 			costComponent = (UiComboBox)costField.getComponent();
 			detailsTab.add(createFieldPanel(costComponent));
-			costField.selectCode(node.getUnderlyingObject().getData(costTag));
+			costField.selectCode(diagramFactor.getUnderlyingObject().getData(costTag));
 			costComponent.addItemListener(new CostChangeHandler());
 
 			detailsTab.add(new UiLabel(EAM.text("Label|Rating")));
@@ -239,7 +239,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 
 		detailsTab.add(new UiLabel(EAM.text("Label|Comments")));
-		detailsTab.add(createComment(node.getComment()));
+		detailsTab.add(createComment(diagramFactor.getComment()));
 
 		return detailsTab;
 	}
@@ -251,7 +251,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 			try
 			{
 				getProject().executeCommand(buildStatusCommand());
-				getProject().updateVisibilityOfSingleNode(getCurrentNode());
+				getProject().updateVisibilityOfSingleNode(getCurrentDiagramFactor());
 			}
 			catch(CommandFailedException e)
 			{
@@ -270,8 +270,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			{
 				String tag = Strategy.TAG_IMPACT_RATING;
 				String impact = getSelectedImpactCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
-						getNodeId(), tag, impact);
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
+						getCurrentFactorId(), tag, impact);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -292,8 +292,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			{
 				String tag = Strategy.TAG_DURATION_RATING;
 				String duration = getSelectedDurationCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
-						getNodeId(), tag, duration);
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
+						getCurrentFactorId(), tag, duration);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -314,8 +314,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			{
 				String tag = Strategy.TAG_FEASIBILITY_RATING;
 				String feasibility = getSelectedFeasibilityCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
-						getNodeId(), tag, feasibility);
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
+						getCurrentFactorId(), tag, feasibility);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -336,8 +336,8 @@ public class FactorPropertiesPanel extends DisposablePanel
 			{
 				String tag = Strategy.TAG_COST_RATING;
 				String cost = getSelectedCostCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentNode().getType(),
-						getNodeId(), tag, cost);
+				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
+						getCurrentFactorId(), tag, cost);
 				getProject().executeCommand(cmd);
 				updateRating();
 			}
@@ -352,14 +352,14 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 	void updateRating()
 	{
-		RatingChoice rating = ((Strategy)getCurrentNode().getUnderlyingObject()).getStrategyRating();
+		RatingChoice rating = ((Strategy)getCurrentDiagramFactor().getUnderlyingObject()).getStrategyRating();
 		ratingComponent.setText(rating.getCode());
 	}
 	
 
-	private Component createTasksGrid(DiagramFactor node) throws Exception
+	private Component createTasksGrid(DiagramFactor diagramFactor) throws Exception
 	{
-		Strategy intervention = (Strategy) node
+		Strategy intervention = (Strategy) diagramFactor
 				.getUnderlyingObject();
 		return StrategicPlanPanel.createForStrategy(mainWindow, intervention);
 	}
@@ -387,12 +387,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 		public void focusLost(FocusEvent event)
 		{
 			String newText = getText();
-			if(newText.equals(getCurrentNode().getLabel()))
+			if(newText.equals(getCurrentDiagramFactor().getLabel()))
 				return;
 			try
 			{
 				CommandSetObjectData cmd = FactorCommandHelper
-						.createSetLabelCommand(getNodeId(), newText);
+						.createSetLabelCommand(getCurrentFactorId(), newText);
 				getProject().executeCommand(cmd);
 			}
 			catch(CommandFailedException e)
@@ -414,12 +414,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 	}
 	
-	class InterventionClassificationChangeHandler implements ActionListener
+	class StrategyClassificationChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
-			TaxonomyItem taxonomyItem = getInterventionTaxonomyItem();
-			actionSaveTaxonomySelection(dropdownInterventionClassification, taxonomyItem);
+			TaxonomyItem taxonomyItem = getStrategyTaxonomyItem();
+			actionSaveTaxonomySelection(dropdownStrategyClassification, taxonomyItem);
 		}
 	}
 	
@@ -429,20 +429,21 @@ public class FactorPropertiesPanel extends DisposablePanel
 		try
 		{
 			int type = ObjectType.MODEL_NODE;
+			// TODO: This looks wrong...could be called for Strategy or DirectThreat
 			String tag = Cause.TAG_TAXONOMY_CODE;
 		
 			if(taxonomyItem != null)
 			{
 				String taxonomyCode = taxonomyItem.getTaxonomyCode();
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, taxonomyCode);
+						getCurrentFactorId(), tag, taxonomyCode);
 				getProject().executeCommand(cmd);
 			}
 			else 
 			{
 				EAM.errorDialog(EAM
 						.text("Please choose a specific classification not a catagory"));
-				String code = getCurrentNode().getUnderlyingObject().getData(tag);
+				String code = getCurrentDiagramFactor().getUnderlyingObject().getData(tag);
 				for (int i=0; i<thisComboBox.getItemCount(); i++) 
 				{
 					TaxonomyItem foundItem = (TaxonomyItem)thisComboBox.getItemAt(i);
@@ -480,14 +481,14 @@ public class FactorPropertiesPanel extends DisposablePanel
 		public void focusLost(FocusEvent event)
 		{
 			String newComment = getComment();
-			if(newComment.equals(getCurrentNode().getComment()))
+			if(newComment.equals(getCurrentDiagramFactor().getComment()))
 				return;
 			try
 			{
 				int type = ObjectType.MODEL_NODE;
 				String tag = Factor.TAG_COMMENT;
 				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getNodeId(), tag, newComment);
+						getCurrentFactorId(), tag, newComment);
 				getProject().executeCommand(cmd);
 			}
 			catch(CommandFailedException e)
@@ -508,7 +509,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 					.load("ThreatTaxonomies.txt");
 			dropdownThreatClassification = new UiComboBox(taxonomyItems);
 
-			String taxonomyCode = getCurrentNode().getUnderlyingObject()
+			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
 					.getData(Cause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
@@ -536,16 +537,16 @@ public class FactorPropertiesPanel extends DisposablePanel
 		}
 	}
 
-	JComponent createInterventionClassificationDropdown()
+	JComponent createStrategyClassificationDropdown()
 	{
 		String[] choices = { "error processing classifications", };
 		try
 		{
 			TaxonomyItem[] taxonomyItems = TaxonomyLoader
 					.load("InterventionTaxonomies.txt");
-			dropdownInterventionClassification = new UiComboBox(taxonomyItems);
+			dropdownStrategyClassification = new UiComboBox(taxonomyItems);
 			
-			String taxonomyCode = getCurrentNode().getUnderlyingObject()
+			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
 			.getData(Cause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
@@ -558,12 +559,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 				foundTaxonomyItem = taxonomyItems[0];
 			}
 
-			dropdownInterventionClassification.setSelectedItem(foundTaxonomyItem);
+			dropdownStrategyClassification.setSelectedItem(foundTaxonomyItem);
 
-			dropdownInterventionClassification
-				.addActionListener(new InterventionClassificationChangeHandler());
+			dropdownStrategyClassification
+				.addActionListener(new StrategyClassificationChangeHandler());
 
-			return dropdownInterventionClassification;
+			return dropdownStrategyClassification;
 		}
 		catch(Exception e)
 		{
@@ -604,7 +605,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		String newValue = Strategy.STATUS_REAL;
 		if(statusCheckBox.isSelected())
 			newValue = Strategy.STATUS_DRAFT;
-		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentNode
+		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentDiagramFactor
 				.getDiagramFactorId(), Strategy.TAG_STATUS,
 				newValue);
 	}
@@ -639,9 +640,9 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return taxonomyItem;
 	}
 
-	public TaxonomyItem getInterventionTaxonomyItem()
+	public TaxonomyItem getStrategyTaxonomyItem()
 	{
-		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownInterventionClassification.getSelectedItem();
+		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownStrategyClassification.getSelectedItem();
 		
 		if (!taxonomyItem.isLeaf()) 
 			return null;
@@ -727,12 +728,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 	GoalListManagementPanel goalsTab;
 	MainWindow mainWindow;
 	DiagramComponent diagram;
-	DiagramFactor currentNode;
+	DiagramFactor currentDiagramFactor;
 	UiTextField textField;
 	UiTextArea commentField;
 	UiCheckBox statusCheckBox;
 	UiComboBox dropdownThreatClassification;
-	UiComboBox dropdownInterventionClassification;
+	UiComboBox dropdownStrategyClassification;
 	UiComboBox impactComponent;
 	UiComboBox durationComponent;
 	UiComboBox feasibilityComponent;
