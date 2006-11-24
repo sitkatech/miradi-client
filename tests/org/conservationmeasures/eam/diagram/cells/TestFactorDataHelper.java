@@ -10,17 +10,17 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
-import org.conservationmeasures.eam.diagram.cells.NodeDataHelper;
+import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestNodeDataHelper extends EAMTestCase 
+public class TestFactorDataHelper extends EAMTestCase 
 {
 
-	public TestNodeDataHelper(String name)
+	public TestFactorDataHelper(String name)
 	{
 		super(name);
 	}
@@ -54,7 +54,7 @@ public class TestNodeDataHelper extends EAMTestCase
 
 	public void testBasics()
 	{
-		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
+		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
 		assertEquals(node1.getDiagramNodeId(), dataHelper.getNewId(node1.getDiagramNodeId()));
 		assertEquals(node2.getDiagramNodeId(), dataHelper.getNewId(node2.getDiagramNodeId()));
 		assertEquals(node3.getDiagramNodeId(), dataHelper.getNewId(node3.getDiagramNodeId()));
@@ -63,7 +63,7 @@ public class TestNodeDataHelper extends EAMTestCase
 	
 	public void testSetNewId()
 	{
-		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
+		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
 		dataHelper.setNewId(node1.getDiagramNodeId(), newNodeId1);
 		dataHelper.setNewId(node2.getDiagramNodeId(), newNodeId2);
 		dataHelper.setNewId(node3.getDiagramNodeId(), newNodeId3);
@@ -74,7 +74,7 @@ public class TestNodeDataHelper extends EAMTestCase
 	
 	public void testSetGetLocation()
 	{
-		NodeDataHelper dataHelper = new NodeDataHelper(nodes);
+		FactorDataHelper dataHelper = new FactorDataHelper(nodes);
 		dataHelper.setOriginalLocation(node1.getDiagramNodeId(), nodeLocation1);
 		int insertX = 0;
 		int insertY = 0;
@@ -95,7 +95,7 @@ public class TestNodeDataHelper extends EAMTestCase
 		insertX = 50;
 		insertY = 50;
 		insertionPoint.setLocation(insertX, insertY); 
-		NodeDataHelper dataHelper2 = new NodeDataHelper(nodes);
+		FactorDataHelper dataHelper2 = new FactorDataHelper(nodes);
 		dataHelper2.setOriginalLocation(node1.getDiagramNodeId(), nodeLocation1);
 		newNode1Location = dataHelper2.getNewLocation(node1.getDiagramNodeId(), insertionPoint);
 		assertEquals(insertX, newNode1Location.x);

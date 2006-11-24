@@ -20,7 +20,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
-import org.conservationmeasures.eam.diagram.cells.NodeDataHelper;
+import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -60,7 +60,7 @@ public class NodeCommandHelper
 	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
+		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllNodes());
 		pasteNodesIntoProject(list, startPoint, dataHelper);
 		pasteLinksIntoProject(list, dataHelper);
 		executeCommand(new CommandEndTransaction());
@@ -69,12 +69,12 @@ public class NodeCommandHelper
 	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
-		NodeDataHelper dataHelper = new NodeDataHelper(getDiagramModel().getAllNodes());
+		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllNodes());
 		pasteNodesIntoProject(list, startPoint, dataHelper);
 		executeCommand(new CommandEndTransaction());
 	}
 
-	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, NodeDataHelper dataHelper) throws Exception 
+	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
 	{
 		NodeDataMap[] nodes = list.getNodeDataCells();
 		for (int i = 0; i < nodes.length; i++) 
@@ -120,7 +120,7 @@ public class NodeCommandHelper
 		return getDiagramModel().getNodeById(newNodeId);
 	}
 	
-	private void pasteLinksIntoProject(TransferableEamList list, NodeDataHelper dataHelper) throws Exception 
+	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 
 	{
 		LinkageDataMap[] links = list.getLinkageDataCells();
 		for (int i = 0; i < links.length; i++) 
