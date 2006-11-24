@@ -11,9 +11,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.Project;
 
-public class LinkagePropertiesPanel extends ObjectDataInputPanel
+public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public LinkagePropertiesPanel(Project projectToUse, ModelLinkageId objectIdToUse)
+	public FactorLinkPropertiesPanel(Project projectToUse, ModelLinkageId objectIdToUse)
 	{
 		super(projectToUse, ObjectType.MODEL_LINKAGE, objectIdToUse);
 

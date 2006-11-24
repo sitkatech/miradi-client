@@ -55,7 +55,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.NodePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -468,7 +468,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		if(nodePropertiesDlg != null)
 			disposeOfNodePropertiesDialog();
 		String title = EAM.text("Title|Properties");
-		nodePropertiesPanel = new NodePropertiesPanel(getMainWindow(), diagram);
+		nodePropertiesPanel = new FactorPropertiesPanel(getMainWindow(), diagram);
 		nodePropertiesDlg = new ModelessDialogWithClose(getMainWindow(), nodePropertiesPanel, title);
 		
 		nodePropertiesPanel.setCurrentNode(diagram, node);
@@ -510,6 +510,6 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	DiagramLegendPanel legendDialog;
 	
 	ModelessDialogWithClose nodePropertiesDlg;
-	NodePropertiesPanel nodePropertiesPanel;
+	FactorPropertiesPanel nodePropertiesPanel;
 
 }

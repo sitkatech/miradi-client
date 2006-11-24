@@ -59,9 +59,9 @@ import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextArea;
 import org.martus.swing.UiTextField;
 
-public class NodePropertiesPanel extends DisposablePanel
+public class FactorPropertiesPanel extends DisposablePanel
 {
-	public NodePropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
+	public FactorPropertiesPanel(MainWindow parent,DiagramComponent diagramToUse)
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
