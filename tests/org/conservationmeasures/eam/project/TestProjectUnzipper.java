@@ -15,7 +15,7 @@ import java.util.zip.ZipOutputStream;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -86,7 +86,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		{
 			Project project = new Project();
 			project.createOrOpen(originalDirectory);
-			project.createObject(ObjectType.MODEL_NODE, targetId, new CreateModelNodeParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.MODEL_NODE, targetId, new CreateFactorParameter(new FactorTypeTarget()));
 			
 			File zip = createTempFile();
 			try

@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.Logging;
@@ -43,7 +43,7 @@ public class NodeCommandHelper
 
 	public CommandDiagramAddFactor createNode(FactorType nodeType) throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		executeCommand(createModelNode);
 		FactorId modelNodeId = new FactorId(createModelNode.getCreatedId().asInt());

@@ -6,9 +6,9 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.objects.Factor;
 
-public class ConceptualModelNodeSet implements Collection
+public class FactorSet implements Collection
 {
-	public ConceptualModelNodeSet()
+	public FactorSet()
 	{
 		nodes = new HashSet();
 	}
@@ -21,7 +21,7 @@ public class ConceptualModelNodeSet implements Collection
 		}
 	}
 	
-	public void attemptToAddAll(ConceptualModelNodeSet nodesToAdd)
+	public void attemptToAddAll(FactorSet nodesToAdd)
 	{
 		Factor[] nodesAsArray = nodesToAdd.toNodeArray();
 		for(int i = 0; i < nodesAsArray.length; ++i)
@@ -114,10 +114,10 @@ public class ConceptualModelNodeSet implements Collection
 	
 	public boolean equals(Object rawOther)
 	{
-		if(!(rawOther instanceof ConceptualModelNodeSet))
+		if(!(rawOther instanceof FactorSet))
 			return false;
 		
-		ConceptualModelNodeSet other = (ConceptualModelNodeSet)rawOther;
+		FactorSet other = (FactorSet)rawOther;
 		return nodes.equals(other.nodes);
 	}
 

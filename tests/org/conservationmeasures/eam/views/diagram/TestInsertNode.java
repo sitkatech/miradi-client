@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -149,7 +149,7 @@ public class TestInsertNode extends TestCaseEnhanced
 	
 	private DiagramFactor createDiagramNode(Project project) throws Exception
 	{
-		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new FactorTypeTarget());
+		CreateFactorParameter modelNodeParameter2 = new CreateFactorParameter(new FactorTypeTarget());
 		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
 		DiagramFactorId  dModelId2 = project.addNodeToDiagram(nodeId2);
 		DiagramFactor dNode2 = project.getDiagramModel().getNodeById(dModelId2);

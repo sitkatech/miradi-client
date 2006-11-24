@@ -9,14 +9,14 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 
 public class ChainObject
 {
-	public ConceptualModelNodeSet getNodes()
+	public FactorSet getNodes()
 	{
 		return cmNodeSet;
 	}
@@ -83,30 +83,30 @@ public class ChainObject
 		cmNodeSet.attemptToAddAll(getDirectlyLinkedUpstreamNodes());
 	}
 	
-	private ConceptualModelNodeSet getDirectlyLinkedDownstreamNodes()
+	private FactorSet getDirectlyLinkedDownstreamNodes()
 	{
 		return getDirectlyLinkedNodes(FactorLink.FROM);
 	}
 	
-	private ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes()
+	private FactorSet getDirectlyLinkedUpstreamNodes()
 	{
 		return getDirectlyLinkedNodes(FactorLink.TO);
 	}
 	
-	private ConceptualModelNodeSet getAllUpstreamNodes()
+	private FactorSet getAllUpstreamNodes()
 	{
 		return getAllLinkedNodes(FactorLink.TO);
 	}
 
-	private ConceptualModelNodeSet getAllDownstreamNodes()
+	private FactorSet getAllDownstreamNodes()
 	{
 		return getAllLinkedNodes(FactorLink.FROM);
 	}
 	
-	private ConceptualModelNodeSet getAllLinkedNodes(int direction)
+	private FactorSet getAllLinkedNodes(int direction)
 	{
-		ConceptualModelNodeSet linkedNodes = new ConceptualModelNodeSet();
-		ConceptualModelNodeSet unprocessedNodes = new ConceptualModelNodeSet();
+		FactorSet linkedNodes = new FactorSet();
+		FactorSet unprocessedNodes = new FactorSet();
 		linkedNodes.attemptToAdd(startingNode);
 		LinkagePool linkagePool = diagramModel.getLinkagePool();
 		
@@ -142,9 +142,9 @@ public class ChainObject
 		return linkedNodes;
 	}
 
-	private ConceptualModelNodeSet getDirectlyLinkedNodes(int direction)
+	private FactorSet getDirectlyLinkedNodes(int direction)
 	{
-		ConceptualModelNodeSet results = new ConceptualModelNodeSet();
+		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingNode);
 		
 		LinkagePool linkagePool = diagramModel.getLinkagePool();
@@ -166,7 +166,7 @@ public class ChainObject
 	{
 		this.diagramModel = model;
 		this.startingNode = node;
-		cmNodeSet = new ConceptualModelNodeSet();
+		cmNodeSet = new FactorSet();
 		processedLinks = new Vector();
 	}
 	
@@ -176,7 +176,7 @@ public class ChainObject
 			processedLinks.add(thisLinkage);
 	}
 
-	private ConceptualModelNodeSet cmNodeSet;
+	private FactorSet cmNodeSet;
 	private Factor startingNode;
 	private DiagramModel diagramModel;
 	private Vector processedLinks;

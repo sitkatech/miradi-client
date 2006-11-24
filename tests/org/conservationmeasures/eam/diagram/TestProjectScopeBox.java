@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
@@ -80,7 +80,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	private DiagramFactor createNode(FactorType nodeType) throws Exception
 	{
 		FactorId id = new FactorId(idAssigner.takeNextId().asInt());
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);
 		return model.createNode(cmObject.getModelNodeId());

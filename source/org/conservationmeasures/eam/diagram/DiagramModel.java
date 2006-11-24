@@ -25,7 +25,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objectpools.NodePool;
@@ -200,35 +200,35 @@ public class DiagramModel extends DefaultGraphModel
 		return false;
 	}
 	
-	public ConceptualModelNodeSet getDirectThreatChainNodes(Factor directThreat)
+	public FactorSet getDirectThreatChainNodes(Factor directThreat)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildDirectThreatChain(this, directThreat);
 		return chainObject.getNodes();
 	}
 	
-	public ConceptualModelNodeSet getNodesInChain(Factor node)
+	public FactorSet getNodesInChain(Factor node)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildNormalChain(this, node);
 		return chainObject.getNodes();
 	}
 		
-	public ConceptualModelNodeSet getAllUpstreamDownstreamNodes(Factor node)
+	public FactorSet getAllUpstreamDownstreamNodes(Factor node)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildUpstreamDownstreamChain(this, node);
 		return chainObject.getNodes();
 	}
 
-	public ConceptualModelNodeSet getAllUpstreamNodes(Factor startingNode)
+	public FactorSet getAllUpstreamNodes(Factor startingNode)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildUpstreamChain(this, startingNode);
 		return chainObject.getNodes();
 	}
 
-	public ConceptualModelNodeSet getDirectlyLinkedUpstreamNodes(Factor startingNode)
+	public FactorSet getDirectlyLinkedUpstreamNodes(Factor startingNode)
 	{
 		ChainObject chainObject = new ChainObject();
 		chainObject.buildDirectlyLinkedUpstreamChain(this, startingNode);

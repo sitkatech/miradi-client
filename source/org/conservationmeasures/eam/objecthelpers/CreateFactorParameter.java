@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 
-public class CreateModelNodeParameter extends CreateObjectParameter
+public class CreateFactorParameter extends CreateObjectParameter
 {
-	public CreateModelNodeParameter(FactorType type)
+	public CreateFactorParameter(FactorType type)
 	{
 		nodeType = type;
 	}

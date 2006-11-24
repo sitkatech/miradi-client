@@ -12,7 +12,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -80,7 +80,7 @@ public class StratPlanGoal extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		objectiveVector = new Vector();
-		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
+		FactorSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
 		Iterator iter = relatedNodes.iterator();
 		while(iter.hasNext())
 		{

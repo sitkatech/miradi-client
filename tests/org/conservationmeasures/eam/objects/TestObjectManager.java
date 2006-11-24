@@ -9,8 +9,8 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -59,13 +59,13 @@ public class TestObjectManager extends EAMTestCase
 			verifyObjectLifecycle(types[i], null);
 		}
 		
-		CreateModelNodeParameter factor = new CreateModelNodeParameter(new FactorTypeCause());
+		CreateFactorParameter factor = new CreateFactorParameter(new FactorTypeCause());
 		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
 		
-		CreateModelNodeParameter target = new CreateModelNodeParameter(new FactorTypeTarget());
+		CreateFactorParameter target = new CreateFactorParameter(new FactorTypeTarget());
 		FactorId factorId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
 		FactorId targetId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
-		CreateModelLinkageParameter link = new CreateModelLinkageParameter(factorId, targetId);
+		CreateFactorLinkParameter link = new CreateFactorLinkParameter(factorId, targetId);
 		verifyBasicObjectLifecycle(ObjectType.MODEL_LINKAGE, link);
 	}
 
@@ -152,9 +152,9 @@ public class TestObjectManager extends EAMTestCase
 	{
 		CreateObjectParameter cop = null;
 		if(type == ObjectType.MODEL_NODE)
-			cop = new CreateModelNodeParameter(new FactorTypeTarget());
+			cop = new CreateFactorParameter(new FactorTypeTarget());
 		else if(type == ObjectType.MODEL_LINKAGE)
-			cop = new CreateModelLinkageParameter(new FactorId(1), new FactorId(2));
+			cop = new CreateFactorLinkParameter(new FactorId(1), new FactorId(2));
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);

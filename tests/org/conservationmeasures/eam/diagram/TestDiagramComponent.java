@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -46,7 +46,7 @@ public class TestDiagramComponent extends EAMTestCase
 		diagramComponent.setModel(project.getDiagramModel());
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
-		CreateModelNodeParameter cmnp = new CreateModelNodeParameter(new FactorTypeCause());
+		CreateFactorParameter cmnp = new CreateFactorParameter(new FactorTypeCause());
 		FactorId hiddenId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
 		FactorId visibleId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);

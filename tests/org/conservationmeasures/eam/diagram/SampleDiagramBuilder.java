@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
 
@@ -25,16 +25,16 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(interventionIndexBase + i), new CreateModelNodeParameter(new FactorTypeStrategy()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateModelNodeParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateModelNodeParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(targetIndexBase + i), new CreateModelNodeParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.MODEL_NODE, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
 			FactorId fromId = new FactorId(linkagePairs[i*2]);
 			FactorId toId = new FactorId(linkagePairs[i*2+1]);
-			CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
+			CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 			project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		}
 	}

@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
@@ -32,7 +32,7 @@ public class TestNodePool extends TestCaseEnhanced
 		for(int i = 0; i < 2; ++i)
 		{
 			FactorId id = takeNextModelNodeId();
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeCause());
+			CreateFactorParameter parameter = new CreateFactorParameter(new FactorTypeCause());
 			Cause node = (Cause)Factor.
 					createConceptualModelObject(id, parameter);
 			node.increaseTargetCount();
@@ -47,7 +47,7 @@ public class TestNodePool extends TestCaseEnhanced
 	private void addNodeToPool(FactorType type)
 	{
 		FactorId id = takeNextModelNodeId();
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(type);
+		CreateFactorParameter parameter = new CreateFactorParameter(type);
 		Factor node = Factor.createConceptualModelObject(id, parameter);
 		pool.put(node);
 	}

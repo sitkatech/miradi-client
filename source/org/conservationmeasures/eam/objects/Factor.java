@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -148,7 +148,7 @@ abstract public class Factor extends EAMBaseObject
 
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateModelNodeParameter(getNodeType());
+		return new CreateFactorParameter(getNodeType());
 	}
 
 	public static Factor createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
@@ -179,7 +179,7 @@ abstract public class Factor extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public static Factor createConceptualModelObject(FactorId idToCreate, CreateModelNodeParameter parameter)
+	public static Factor createConceptualModelObject(FactorId idToCreate, CreateFactorParameter parameter)
 	{
 		FactorType nodeType = parameter.getNodeType();
 		if(nodeType.isStrategy())

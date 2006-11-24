@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.ids.FactorId;
 
-public class CreateModelLinkageParameter extends CreateObjectParameter
+public class CreateFactorLinkParameter extends CreateObjectParameter
 {
-	public CreateModelLinkageParameter(FactorId from, FactorId to)
+	public CreateFactorLinkParameter(FactorId from, FactorId to)
 	{
 		fromId = from;
 		toId = to;

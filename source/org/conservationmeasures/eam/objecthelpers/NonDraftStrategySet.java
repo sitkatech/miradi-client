@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.objects.Factor;
 
-public class NonDraftInterventionSet extends ConceptualModelNodeSet
+public class NonDraftStrategySet extends FactorSet
 {
-	public NonDraftInterventionSet(ConceptualModelNodeSet nodesToAttemptToAdd)
+	public NonDraftStrategySet(FactorSet nodesToAttemptToAdd)
 	{
 		attemptToAddAll(nodesToAttemptToAdd);
 	}

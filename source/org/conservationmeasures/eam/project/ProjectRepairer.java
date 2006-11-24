@@ -10,7 +10,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -222,7 +222,7 @@ public class ProjectRepairer
 			BaseId annotationId = allIds.get(i);
 			try
 			{
-				ConceptualModelNodeSet nodes = chainManager.findNodesThatUseThisAnnotation(annotationType, annotationId);
+				FactorSet nodes = chainManager.findNodesThatUseThisAnnotation(annotationType, annotationId);
 				if(nodes.size() == 0)
 				{
 					EAM.logWarning("Deleting orphan " + annotationType + ":" + annotationId);

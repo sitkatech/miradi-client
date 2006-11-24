@@ -36,9 +36,9 @@ import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
@@ -132,11 +132,11 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeCause()));
-		FactorId targetId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new FactorTypeTarget()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId targetId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
 		Cause factor = (Cause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
-		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
 		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		BaseId linkageId = createdId;
 		assertTrue("didn't become direct threat?", factor.isDirectThreat());
@@ -572,7 +572,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactor nodeB = createNode(new FactorTypeTarget());
 		FactorId idA = nodeA.getWrappedId();
 		FactorId idB = nodeB.getWrappedId();
-		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(idA, idB);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
 		LinkagePool linkagePool = project.getLinkagePool();
@@ -602,13 +602,13 @@ public class TestProject extends EAMTestCase
 		nodeA.getUnderlyingObject().setObjectives(objectiveId);
 		nodeB.getUnderlyingObject().setObjectives(objectiveId);
 		
-		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisObjective(objectiveId1);
+		FactorSet foundNodes = chainManager.findNodesThatUseThisObjective(objectiveId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		ConceptualModelNodeSet noNodes = chainManager.findNodesThatUseThisObjective(objectiveId2);
+		FactorSet noNodes = chainManager.findNodesThatUseThisObjective(objectiveId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 		
@@ -628,7 +628,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
-		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
+		FactorSet foundNodes = chainManager.findAllNodesRelatedToThisObjective(objectiveId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
@@ -652,13 +652,13 @@ public class TestProject extends EAMTestCase
 		nodeA.getUnderlyingObject().setIndicators(indicators1);
 		nodeB.getUnderlyingObject().setIndicators(indicators1);
 		
-		ConceptualModelNodeSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
+		FactorSet foundNodes = chainManager.findNodesThatUseThisIndicator(indicatorId1);
 				
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
 		assertContains("missing nodeA? ", nodeA.getUnderlyingObject(), foundNodes);
 		assertContains("missing nodeB?", nodeB.getUnderlyingObject(), foundNodes);
 
-		ConceptualModelNodeSet noNodes = chainManager.findNodesThatUseThisIndicator(indicatorId2);
+		FactorSet noNodes = chainManager.findNodesThatUseThisIndicator(indicatorId2);
 		
 		assertEquals("found a node?", 0, noNodes.size());
 	}
@@ -675,7 +675,7 @@ public class TestProject extends EAMTestCase
 		
 		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
-		ConceptualModelNodeSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
+		FactorSet foundNodes = chainManager.findAllNodesRelatedToThisIndicator(indicatorId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
@@ -692,7 +692,7 @@ public class TestProject extends EAMTestCase
 		DiagramFactor nodeDirectThreatB = createNode(new FactorTypeCause());
 		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
-		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
+		FactorSet allNodes = new FactorSet();
 		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());
 		allNodes.attemptToAdd(nodeDirectThreatA.getUnderlyingObject());
 		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());	
@@ -717,7 +717,7 @@ public class TestProject extends EAMTestCase
 			
 			InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(Factor.TYPE_INTERVENTION);
+			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			DiagramFactorId diagramNodeId = diskProject.addNodeToDiagram(interventionId);
 
@@ -796,7 +796,7 @@ public class TestProject extends EAMTestCase
 	
 	private DiagramFactorLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
 	{
-		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
+		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
 		DiagramFactorLinkId diagramLinkageId = project.addLinkageToDiagram(createdId);
 		return project.getDiagramModel().getLinkageById(diagramLinkageId);
@@ -804,7 +804,7 @@ public class TestProject extends EAMTestCase
 
 	public FactorId createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType, BaseId id) throws Exception
 	{
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		FactorId nodeId = (FactorId)projectToUse.createObject(ObjectType.MODEL_NODE, id, parameter);
 		projectToUse.addNodeToDiagram(nodeId);
 		return nodeId;

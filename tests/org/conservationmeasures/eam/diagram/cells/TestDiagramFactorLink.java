@@ -16,8 +16,8 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -37,12 +37,12 @@ public class TestDiagramFactorLink extends EAMTestCase
 		project = new ProjectForTesting(getName());
 		model = project.getDiagramModel();
 
-		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new FactorTypeStrategy());
+		CreateFactorParameter createIntervention = new CreateFactorParameter(new FactorTypeStrategy());
 		BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
 		FactorId interventionId = new FactorId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
-		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new FactorTypeTarget());
+		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		FactorId targetId = new FactorId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
@@ -82,7 +82,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 	{
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
-		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();

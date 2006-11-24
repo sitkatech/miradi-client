@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 
@@ -45,7 +45,7 @@ public class ProjectForTesting extends Project
 	
 	public FactorId createNode(FactorType nodeType) throws Exception
 	{
-		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter createTarget = new CreateFactorParameter(nodeType);
 		FactorId cmTargetId = (FactorId)createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		return cmTargetId;
 	}
@@ -53,7 +53,7 @@ public class ProjectForTesting extends Project
 
 	public FactorId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
 	{
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		FactorId nodeId = (FactorId)createObject(ObjectType.MODEL_NODE, id, parameter);
 		addNodeToDiagram(nodeId);
 		return nodeId;

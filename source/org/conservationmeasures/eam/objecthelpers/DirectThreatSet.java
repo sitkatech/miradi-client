@@ -7,9 +7,9 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import org.conservationmeasures.eam.objects.Factor;
 
-public class DirectThreatSet extends ConceptualModelNodeSet
+public class DirectThreatSet extends FactorSet
 {
-	public DirectThreatSet(ConceptualModelNodeSet nodesToAttemptToAdd)
+	public DirectThreatSet(FactorSet nodesToAttemptToAdd)
 	{
 		attemptToAddAll(nodesToAttemptToAdd);
 	}

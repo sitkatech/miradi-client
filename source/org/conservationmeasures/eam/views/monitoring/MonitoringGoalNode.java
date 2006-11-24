@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -66,12 +66,12 @@ public class MonitoringGoalNode extends MonitoringNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		ConceptualModelNodeSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
+		FactorSet relatedNodes = new ChainManager(project).findAllNodesRelatedToThisGoal(goal.getId());
 		children.addAll(createIndicatorNodes(relatedNodes));
 		children.addAll(createObjectiveNodes(relatedNodes));
 	}
 	
-	private Vector createObjectiveNodes(ConceptualModelNodeSet relatedNodesToUse)
+	private Vector createObjectiveNodes(FactorSet relatedNodesToUse)
 	{
 		Vector result = new Vector();
 		Iterator iter = relatedNodesToUse.iterator();
@@ -91,7 +91,7 @@ public class MonitoringGoalNode extends MonitoringNode
 		return result;
 	}
 
-	private Vector createIndicatorNodes(ConceptualModelNodeSet relatedNodesToUse)
+	private Vector createIndicatorNodes(FactorSet relatedNodesToUse)
 	{
 		Iterator iter = relatedNodesToUse.iterator();
 		Vector result = new Vector();

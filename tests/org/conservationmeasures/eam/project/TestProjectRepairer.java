@@ -7,7 +7,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -26,7 +26,7 @@ public class TestProjectRepairer extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
+			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
@@ -53,7 +53,7 @@ public class TestProjectRepairer extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
+			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
@@ -80,7 +80,7 @@ public class TestProjectRepairer extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
+			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
@@ -107,7 +107,7 @@ public class TestProjectRepairer extends EAMTestCase
 		Project project = new ProjectForTesting(getName());
 		try
 		{
-			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
+			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
@@ -188,7 +188,7 @@ public class TestProjectRepairer extends EAMTestCase
 		{
 			BaseId orphan = project.createObject(annotationType);
 			BaseId nonOrphan = project.createObject(annotationType);
-			CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
+			CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
 			FactorId nodeId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, extraInfo);
 			IdList annotationIds = new IdList();
 			annotationIds.add(nonOrphan);

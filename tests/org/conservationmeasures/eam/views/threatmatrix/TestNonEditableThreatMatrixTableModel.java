@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
@@ -97,11 +97,11 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		FactorId target1 = createTarget("target one");
 		FactorId target2 = createTarget("target two");
 		createTarget("target three");
-		CreateModelLinkageParameter link1to1 = new CreateModelLinkageParameter(threat1, target1);
+		CreateFactorLinkParameter link1to1 = new CreateFactorLinkParameter(threat1, target1);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to1);
-		CreateModelLinkageParameter link1to2 = new CreateModelLinkageParameter(threat1, target2);
+		CreateFactorLinkParameter link1to2 = new CreateFactorLinkParameter(threat1, target2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to2);
-		CreateModelLinkageParameter link2to2 = new CreateModelLinkageParameter(threat2, target2);
+		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2, target2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link2to2);
 		
 		model.resetMatrix();
@@ -138,7 +138,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 
 	private FactorId createNode(FactorType type, String name) throws Exception
 	{
-		FactorId id = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
+		FactorId id = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		Factor node = project.findNode(id);
 		node.setLabel(name);

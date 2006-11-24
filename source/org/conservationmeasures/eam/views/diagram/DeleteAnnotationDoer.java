@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -81,7 +81,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
 		commands.add(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
-		ConceptualModelNodeSet nodesThatUseThisAnnotation = new ChainManager(project).findNodesThatUseThisAnnotation(type, idToRemove);
+		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findNodesThatUseThisAnnotation(type, idToRemove);
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
 			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));

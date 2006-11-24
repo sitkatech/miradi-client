@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -41,10 +41,10 @@ public class TestInsertConnection extends EAMTestCase
 		FactorId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		
-		CreateModelLinkageParameter parameter12 = new CreateModelLinkageParameter(node1, node2);
+		CreateFactorLinkParameter parameter12 = new CreateFactorLinkParameter(node1, node2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);
 		
-		CreateModelLinkageParameter parameter23 = new CreateModelLinkageParameter(node2, node3);
+		CreateFactorLinkParameter parameter23 = new CreateFactorLinkParameter(node2, node3);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter23);
 		
 		DiagramModel model = project.getDiagramModel();

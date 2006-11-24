@@ -18,9 +18,9 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
@@ -127,7 +127,7 @@ public class ObjectManager
 		{
 			case ObjectType.MODEL_NODE:
 			{
-				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
+				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
 				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
 				Factor node = Factor.createConceptualModelObject(nodeId, parameter);
 				getNodePool().put(node);
@@ -137,7 +137,7 @@ public class ObjectManager
 			}
 			case ObjectType.MODEL_LINKAGE:
 			{
-				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
+				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
 				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
 				FactorLink cmLinkage = new FactorLink(realId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
@@ -302,7 +302,7 @@ public class ObjectManager
 		return label;
 	}
 	
-	private ConceptualModelNodeSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
+	private FactorSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
 		ChainManager chainManager = new ChainManager(project);
 		if (annotationType == ObjectType.GOAL)
@@ -312,7 +312,7 @@ public class ObjectManager
 		if (annotationType == ObjectType.INDICATOR)
 			return chainManager.findAllNodesRelatedToThisIndicator(annotationId);
 		
-		return new ConceptualModelNodeSet();
+		return new FactorSet();
 	}
 
 	public String getAnnotationFactorLabel(int objectType, BaseId objectId)
@@ -320,7 +320,7 @@ public class ObjectManager
 		try
 		{
 			ChainManager chainManager = new ChainManager(project);
-			ConceptualModelNodeSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
+			FactorSet cmNodeSet = chainManager.findNodesThatUseThisAnnotation(objectType, objectId); 
 			Iterator iterator = cmNodeSet.iterator();
 			if (!iterator.hasNext())
 				return ""; 

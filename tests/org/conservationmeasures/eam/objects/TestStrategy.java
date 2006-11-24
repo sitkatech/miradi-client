@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestStrategy extends ObjectTestCase
@@ -20,7 +20,7 @@ public class TestStrategy extends ObjectTestCase
 
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_INTERVENTION);
+		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	

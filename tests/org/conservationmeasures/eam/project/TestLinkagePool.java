@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -31,7 +31,7 @@ public class TestLinkagePool extends TestCaseEnhanced
 	public void testHasLinkage() throws Exception
 	{
 		LinkagePool pool = new LinkagePool(new LinkageMonitor());
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeCause());
+		CreateFactorParameter parameter = new CreateFactorParameter(new FactorTypeCause());
 		Factor node1 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		Factor node2 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);
 		Factor node3 = Factor.createConceptualModelObject(takeNextModelNodeId(), parameter);

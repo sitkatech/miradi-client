@@ -13,7 +13,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -46,7 +46,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		Collections.sort(children, new IgnoreCaseStringComparator());
 	}
 
-	private HashSet getAlUpstreamIndicators(ConceptualModelNodeSet nodes)
+	private HashSet getAlUpstreamIndicators(FactorSet nodes)
 	{
 		HashSet indicatorIds = new HashSet(); 
 		Iterator objectiveNodesIterator = nodes.iterator();
@@ -55,7 +55,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 			Factor nodeWithObjective = (Factor)objectiveNodesIterator.next();
 			for(int i = 0; i < nodeWithObjective.getIndicators().size(); ++i)
 				indicatorIds.add(nodeWithObjective.getIndicators().get(i));
-			ConceptualModelNodeSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
+			FactorSet nodesInChain = project.getDiagramModel().getAllUpstreamNodes(nodeWithObjective);
 			Iterator chainNodesIterator = nodesInChain.iterator();
 			while(chainNodesIterator.hasNext())
 			{
@@ -100,9 +100,9 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		return "";
 	}
 	
-	private ConceptualModelNodeSet getNodesWithThisObjective(BaseId objectiveId)
+	private FactorSet getNodesWithThisObjective(BaseId objectiveId)
 	{
-		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
+		FactorSet result = new FactorSet();
 		FactorId[] allNodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{

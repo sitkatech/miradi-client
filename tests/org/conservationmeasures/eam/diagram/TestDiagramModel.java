@@ -16,8 +16,8 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -58,7 +58,7 @@ public class TestDiagramModel extends EAMTestCase
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
 			
-			ConceptualModelNodeSet gotChainNodes = model.getNodesInChain(cmNode);
+			FactorSet gotChainNodes = model.getNodesInChain(cmNode);
 			
 			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
@@ -103,7 +103,7 @@ public class TestDiagramModel extends EAMTestCase
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
-			ConceptualModelNodeSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
+			FactorSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
 			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
 
@@ -121,14 +121,14 @@ public class TestDiagramModel extends EAMTestCase
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
 			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
-			ConceptualModelNodeSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
+			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
 			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
 	}
 	
-	public ConceptualModelNodeSet findNodes(int[] values)
+	public FactorSet findNodes(int[] values)
 	{
-		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
+		FactorSet result = new FactorSet();
 		for(int i = 0; i < values.length; ++i)
 			result.attemptToAdd(project.findNode(new FactorId(values[i])));
 		return result;
@@ -306,7 +306,7 @@ public class TestDiagramModel extends EAMTestCase
 	private DiagramFactor createNode(FactorType nodeType) throws Exception
 	{
 		FactorId id = takeNextModelNodeId();
-		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
+		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		project.getNodePool().put(cmObject);
 		return model.createNode(cmObject.getModelNodeId());

@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -64,7 +64,7 @@ public class FactorLink extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateModelLinkageParameter(getFromNodeId(), getToNodeId());
+		return new CreateFactorLinkParameter(getFromNodeId(), getToNodeId());
 	}
 
 	public void setData(String fieldTag, String dataValue) throws Exception

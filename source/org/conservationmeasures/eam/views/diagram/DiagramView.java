@@ -65,7 +65,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.objects.Factor;
@@ -281,7 +281,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			DiagramFactorId nodeId = new DiagramFactorId(diagramNodeIds.get(i).asInt());
 			Factor node = diagramModel.getNodeById(nodeId).getUnderlyingObject();
-			ConceptualModelNodeSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
+			FactorSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{

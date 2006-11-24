@@ -3,7 +3,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -49,8 +49,8 @@ public class TestFactorLink extends EAMTestCase
 	{
 		FactorLink linkage = new FactorLink(new FactorLinkId(BaseId.INVALID.asInt()), nodeAId, nodeBId);
 
-		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(nodeAId, nodeBId);
-		CreateModelLinkageParameter gotExtraInfo = (CreateModelLinkageParameter)linkage.getCreationExtraInfo();
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(nodeAId, nodeBId);
+		CreateFactorLinkParameter gotExtraInfo = (CreateFactorLinkParameter)linkage.getCreationExtraInfo();
 		assertEquals(extraInfo.getFromId(), gotExtraInfo.getFromId());
 		assertEquals(extraInfo.getToId(), gotExtraInfo.getToId());
 	}

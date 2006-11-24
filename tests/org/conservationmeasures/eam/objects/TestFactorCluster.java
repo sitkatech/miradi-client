@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestFactorCluster extends ObjectTestCase
@@ -36,7 +36,7 @@ public class TestFactorCluster extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CLUSTER);
+		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CLUSTER);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 }

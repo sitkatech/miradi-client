@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
@@ -372,7 +372,7 @@ public class TestCommands extends EAMTestCase
 		FactorId fromId = model.getNodeById(from).getWrappedId();
 		FactorId toId = model.getNodeById(to).getWrappedId();
 		
-		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
