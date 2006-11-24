@@ -11,20 +11,20 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 
-abstract public class NodeAnnotationIds extends IdList
+abstract public class AnnotationIds extends IdList
 {
 	abstract public void readDataFrom(DataInputStream dataIn) throws IOException;
 
-	public NodeAnnotationIds()
+	public AnnotationIds()
 	{
 	}
 	
-	public NodeAnnotationIds(IdList ids)
+	public AnnotationIds(IdList ids)
 	{
 		super(ids);
 	}
 	
-	public NodeAnnotationIds(DataInputStream dataIn) throws IOException
+	public AnnotationIds(DataInputStream dataIn) throws IOException
 	{
 		this();
 		readDataFrom(dataIn);

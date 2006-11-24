@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
@@ -29,7 +29,7 @@ public class TestSetFactorSize extends TestCaseEnhanced
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		ModelNodeId modelNodeId = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		FactorId modelNodeId = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		DiagramFactor found = model.getNodeById(modelNodeId);
 		Dimension newSize = new Dimension(200,300);
 		Command setNodeSize = new CommandSetFactorSize(found.getDiagramNodeId(), newSize, found.getPreviousSize());

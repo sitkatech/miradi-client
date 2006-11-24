@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
@@ -18,7 +18,7 @@ import org.martus.swing.UiScrollPane;
 
 public class GoalListManagementPanel extends ModelessDialogPanel
 {
-	public GoalListManagementPanel(Project projectToUse, ModelNodeId nodeId, Actions actions) throws Exception
+	public GoalListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(new BorderLayout());
 		GoalId invalidId = new GoalId(BaseId.INVALID.asInt());

@@ -6,26 +6,26 @@
 package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 
 public class CommandDiagramAddFactor extends Command
 {
-	public CommandDiagramAddFactor(DiagramNodeId idToUse, ModelNodeId idToWrap)
+	public CommandDiagramAddFactor(DiagramFactorId idToUse, FactorId idToWrap)
 	{
 		modelNodeId = idToWrap;
 		insertedId = idToUse;
 	}
 	
-	public DiagramNodeId getInsertedId()
+	public DiagramFactorId getInsertedId()
 	{
 		return insertedId;
 	}
 	
-	public ModelNodeId getModelNodeId()
+	public FactorId getModelNodeId()
 	{
 		return modelNodeId;
 	}
@@ -68,6 +68,6 @@ public class CommandDiagramAddFactor extends Command
 
 	public static final String COMMAND_NAME = "CommandDiagramAddNode";
 
-	private ModelNodeId modelNodeId;
-	private DiagramNodeId insertedId;
+	private FactorId modelNodeId;
+	private DiagramFactorId insertedId;
 }

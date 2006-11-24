@@ -8,7 +8,7 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -63,8 +63,8 @@ public class TestObjectManager extends EAMTestCase
 		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
 		
 		CreateModelNodeParameter target = new CreateModelNodeParameter(new FactorTypeTarget());
-		ModelNodeId factorId = (ModelNodeId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
-		ModelNodeId targetId = (ModelNodeId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
+		FactorId factorId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
+		FactorId targetId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
 		CreateModelLinkageParameter link = new CreateModelLinkageParameter(factorId, targetId);
 		verifyBasicObjectLifecycle(ObjectType.MODEL_LINKAGE, link);
 	}
@@ -154,7 +154,7 @@ public class TestObjectManager extends EAMTestCase
 		if(type == ObjectType.MODEL_NODE)
 			cop = new CreateModelNodeParameter(new FactorTypeTarget());
 		else if(type == ObjectType.MODEL_LINKAGE)
-			cop = new CreateModelLinkageParameter(new ModelNodeId(1), new ModelNodeId(2));
+			cop = new CreateModelLinkageParameter(new FactorId(1), new FactorId(2));
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);
 		assertNotNull("Missing pool type " + type, pool);

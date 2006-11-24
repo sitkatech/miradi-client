@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -128,7 +128,7 @@ public class ObjectManager
 			case ObjectType.MODEL_NODE:
 			{
 				CreateModelNodeParameter parameter = (CreateModelNodeParameter)extraInfo;
-				ModelNodeId nodeId = new ModelNodeId(getProject().obtainRealNodeId(objectId).asInt());
+				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
 				Factor node = Factor.createConceptualModelObject(nodeId, parameter);
 				getNodePool().put(node);
 				getDatabase().writeObject(node);
@@ -138,7 +138,7 @@ public class ObjectManager
 			case ObjectType.MODEL_LINKAGE:
 			{
 				CreateModelLinkageParameter parameter = (CreateModelLinkageParameter)extraInfo;
-				ModelLinkageId realId = getProject().obtainRealLinkageId(objectId);
+				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
 				FactorLink cmLinkage = new FactorLink(realId, parameter.getFromId(), parameter.getToId());
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
@@ -395,7 +395,7 @@ public class ObjectManager
 
 	class LinkageMonitor implements LinkageListener
 	{
-		public void linkageWasCreated(ModelNodeId linkFromId, ModelNodeId linkToId)
+		public void linkageWasCreated(FactorId linkFromId, FactorId linkToId)
 		{
 			Factor from = getNodePool().find(linkFromId); 
 			Factor to = getNodePool().find(linkToId);
@@ -403,7 +403,7 @@ public class ObjectManager
 				((Cause)from).increaseTargetCount();
 		}
 
-		public void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
+		public void linkageWasDeleted(FactorId linkFromId, FactorId linkToId)
 		{
 			Factor from = getNodePool().find(linkFromId);
 			Factor to = getNodePool().find(linkToId);

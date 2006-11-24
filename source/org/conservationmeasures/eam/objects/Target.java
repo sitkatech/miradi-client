@@ -5,19 +5,19 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 
 public class Target extends Factor
 {
-	public Target(ModelNodeId idToUse)
+	public Target(FactorId idToUse)
 	{
 		super(idToUse, Factor.TYPE_TARGET);
 		clear();
 	}
 	
-	public Target(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public Target(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, Factor.TYPE_TARGET, json);
 	}

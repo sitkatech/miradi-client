@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -39,7 +39,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), new ModelNodeId(BaseId.INVALID.asInt()));
+		Command insertCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), new FactorId(BaseId.INVALID.asInt()));
 		try
 		{
 			EAM.setLogToString();
@@ -60,7 +60,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramNodeId id = insertedNode.getDiagramNodeId();
+		DiagramFactorId id = insertedNode.getDiagramNodeId();
 		DiagramFactor foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
@@ -76,7 +76,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramNodeId id = insertedNode.getDiagramNodeId();
+		DiagramFactorId id = insertedNode.getDiagramNodeId();
 		DiagramFactor foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a contributing factor?", foundNode.isIndirectFactor());
@@ -92,7 +92,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		assertEquals("wrong x?", 0, (int)bounds.getX());
 		assertEquals("wrong y?", 0, (int)bounds.getY());
 		assertContains("wrong text?", "", insertedNode.getLabel());
-		DiagramNodeId id = insertedNode.getDiagramNodeId();
+		DiagramFactorId id = insertedNode.getDiagramNodeId();
 		DiagramFactor foundNode = model.getNodeById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isIntervention());

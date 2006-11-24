@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -149,14 +149,14 @@ public class ThreatMatrixView extends UmbrellaView
 		if(bundle == null)
 			return;
 		
-		ModelNodeId threatId = bundle.getThreatId();
-		ModelNodeId targetId = bundle.getTargetId();
+		FactorId threatId = bundle.getThreatId();
+		FactorId targetId = bundle.getTargetId();
 		BaseId criterionId = criterion.getId();
 		BaseId valueId = value.getId();
 		setBundleValue(threatId, targetId, criterionId, valueId);
 	}
 
-	private void setBundleValue(ModelNodeId threatId, ModelNodeId targetId, BaseId criterionId, BaseId valueId) throws CommandFailedException
+	private void setBundleValue(FactorId threatId, FactorId targetId, BaseId criterionId, BaseId valueId) throws CommandFailedException
 	{
 		try
 		{

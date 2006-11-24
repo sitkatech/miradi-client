@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -19,7 +19,7 @@ public class TestFactorCluster extends ObjectTestCase
 
 	public void testBasics() throws Exception
 	{
-		ModelNodeId id = new ModelNodeId(5);
+		FactorId id = new FactorId(5);
 		FactorCluster group = new FactorCluster(id);
 		assertEquals("wrong id?", id, group.getId());
 		

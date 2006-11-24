@@ -21,7 +21,7 @@ import javax.swing.LookAndFeel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -91,7 +91,7 @@ public class ThreatGridPanel extends JPanel
 				int columnToSort = threatTable.getSummaryColumn();
 				if (!currentSortBy.equals(ViewData.SORT_SUMMARY)) 
 				{
-					ModelNodeId nodeId = new ModelNodeId(new Integer(currentSortBy).intValue());
+					FactorId nodeId = new FactorId(new Integer(currentSortBy).intValue());
 					columnToSort= ((NonEditableThreatMatrixTableModel)threatTable.getModel()).findTargetIndexById(nodeId);
 				}
 				targetColumnSortListener.setToggle(sortOrder);

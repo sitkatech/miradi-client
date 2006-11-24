@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public FactorLinkPropertiesPanel(Project projectToUse, ModelLinkageId objectIdToUse)
+	public FactorLinkPropertiesPanel(Project projectToUse, FactorLinkId objectIdToUse)
 	{
 		super(projectToUse, ObjectType.MODEL_LINKAGE, objectIdToUse);
 

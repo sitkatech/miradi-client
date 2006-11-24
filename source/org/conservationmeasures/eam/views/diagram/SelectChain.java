@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -108,7 +108,7 @@ public class SelectChain extends ViewDoer
 		for(int i = 0; i < chainNodes.length; ++i)
 		{
 			// convert CMNode to DiagramNode
-			DiagramFactor nodeToSelect = model.getNodeById((ModelNodeId)chainNodes[i].getId());
+			DiagramFactor nodeToSelect = model.getNodeById((FactorId)chainNodes[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(nodeToSelect);
 		}
@@ -118,7 +118,7 @@ public class SelectChain extends ViewDoer
 	{
 		for (int i = 0 ; i < linksInChain.length; i++)
 		{
-			DiagramFactorLink linkToSelect = model.getLinkageById((ModelLinkageId)linksInChain[i].getId());
+			DiagramFactorLink linkToSelect = model.getLinkageById((FactorLinkId)linksInChain[i].getId());
 			DiagramView view = (DiagramView)getView();
 			view.getDiagramComponent().addSelectionCell(linkToSelect);
 		}

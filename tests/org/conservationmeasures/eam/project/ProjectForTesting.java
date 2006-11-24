@@ -10,7 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -43,18 +43,18 @@ public class ProjectForTesting extends Project
 		return (ProjectServerForTesting)getDatabase();
 	}
 	
-	public ModelNodeId createNode(FactorType nodeType) throws Exception
+	public FactorId createNode(FactorType nodeType) throws Exception
 	{
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(nodeType);
-		ModelNodeId cmTargetId = (ModelNodeId)createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		FactorId cmTargetId = (FactorId)createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
 		return cmTargetId;
 	}
 	
 
-	public ModelNodeId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
+	public FactorId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
 	{
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
-		ModelNodeId nodeId = (ModelNodeId)createObject(ObjectType.MODEL_NODE, id, parameter);
+		FactorId nodeId = (FactorId)createObject(ObjectType.MODEL_NODE, id, parameter);
 		addNodeToDiagram(nodeId);
 		return nodeId;
 	}

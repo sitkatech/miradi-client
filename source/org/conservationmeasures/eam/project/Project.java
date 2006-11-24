@@ -29,12 +29,12 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -221,7 +221,7 @@ public class Project
 		return pool.findObject(objectId);
 	}
 	
-	public Factor findNode(ModelNodeId nodeId)
+	public Factor findNode(FactorId nodeId)
 	{
 		return (Factor)findObject(ObjectType.MODEL_NODE, nodeId);
 	}
@@ -249,7 +249,7 @@ public class Project
 		setObjectData(ObjectType.PROJECT_METADATA, getMetadataId(), tag, value);
 	}
 	
-	public ModelLinkageId obtainRealLinkageId(BaseId proposedId)
+	public FactorLinkId obtainRealLinkageId(BaseId proposedId)
 	{
 		return projectInfo.obtainRealLinkageId(proposedId);
 	}
@@ -287,7 +287,7 @@ public class Project
 		if(objectType == ObjectType.MODEL_NODE)
 		{
 			DiagramModel model = getDiagramModel();
-			ModelNodeId modelNodeId = (ModelNodeId)objectId;
+			FactorId modelNodeId = (FactorId)objectId;
 			if(model.hasNode(modelNodeId))
 			{
 				DiagramFactor diagramNode = getDiagramModel().getNodeById(modelNodeId);
@@ -679,21 +679,21 @@ public class Project
 		getGraphLayoutCache().edit(null, null, parentMap, null);
 	}
 
-	public ModelNodeId removeNodeFromDiagram(DiagramNodeId idToDelete) throws Exception
+	public FactorId removeNodeFromDiagram(DiagramFactorId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactor nodeToDelete = model.getNodeById(idToDelete);
-		ModelNodeId modelNodeId = nodeToDelete.getWrappedId();
+		FactorId modelNodeId = nodeToDelete.getWrappedId();
 		model.deleteNode(nodeToDelete);
 		return modelNodeId;
 	}
 
-	public DiagramNodeId addNodeToDiagram(ModelNodeId modelNodeId) throws Exception
+	public DiagramFactorId addNodeToDiagram(FactorId modelNodeId) throws Exception
 	{
-		return addNodeToDiagram(modelNodeId, new DiagramNodeId(BaseId.INVALID.asInt()));
+		return addNodeToDiagram(modelNodeId, new DiagramFactorId(BaseId.INVALID.asInt()));
 	}
 	
-	public DiagramNodeId addNodeToDiagram(ModelNodeId modelNodeId, DiagramNodeId requestedId) throws Exception
+	public DiagramFactorId addNodeToDiagram(FactorId modelNodeId, DiagramFactorId requestedId) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactor node = model.createNode(modelNodeId, requestedId);
@@ -701,16 +701,16 @@ public class Project
 		return node.getDiagramNodeId();
 	}
 	
-	public ModelLinkageId removeLinkageFromDiagram(DiagramLinkageId idToDelete) throws Exception
+	public FactorLinkId removeLinkageFromDiagram(DiagramFactorLinkId idToDelete) throws Exception
 	{
 		DiagramModel model = getDiagramModel();
 		DiagramFactorLink linkageToDelete = model.getLinkageById(idToDelete);
-		ModelLinkageId modelLinkageId = linkageToDelete.getWrappedId();
+		FactorLinkId modelLinkageId = linkageToDelete.getWrappedId();
 		model.deleteLinkage(linkageToDelete);
 		return modelLinkageId;
 	}
 
-	public DiagramLinkageId addLinkageToDiagram(ModelLinkageId modelLinkageId) throws Exception
+	public DiagramFactorLinkId addLinkageToDiagram(FactorLinkId modelLinkageId) throws Exception
 	{
 		FactorLink cmLinkage = getLinkagePool().find(modelLinkageId);
 		DiagramModel model = getDiagramModel();
@@ -718,13 +718,13 @@ public class Project
 		return linkage.getDiagramLinkageId();
 	}
 
-	protected void writeNode(ModelNodeId nodeId) throws IOException, ParseException
+	protected void writeNode(FactorId nodeId) throws IOException, ParseException
 	{
 		Factor cmNode = getNodePool().find(nodeId);
 		database.writeObject(cmNode);
 	}
 
-	public void moveNodes(int deltaX, int deltaY, DiagramNodeId[] ids) throws Exception 
+	public void moveNodes(int deltaX, int deltaY, DiagramFactorId[] ids) throws Exception 
 	{
 		getDiagramModel().moveNodes(deltaX, deltaY, ids);
 	}
@@ -768,7 +768,7 @@ public class Project
 		return selectedCellsWithLinkages;
 	}
 	
-	public boolean isLinked(ModelNodeId nodeId1, ModelNodeId nodeId2)
+	public boolean isLinked(FactorId nodeId1, FactorId nodeId2)
 	{
 		return getLinkagePool().hasLinkage(nodeId1, nodeId2);
 	}
@@ -888,7 +888,7 @@ public class Project
 		return availableResources;
 	}
 
-	public void selectNode(ModelNodeId idToUse)
+	public void selectNode(FactorId idToUse)
 	{
 		try
 		{

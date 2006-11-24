@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -20,8 +20,8 @@ public class TestThreatRatingBundle extends EAMTestCase
 
 	public void testBasics()
 	{
-		ModelNodeId threatId = new ModelNodeId(5);
-		ModelNodeId targetId = new ModelNodeId(9);
+		FactorId threatId = new FactorId(5);
+		FactorId targetId = new FactorId(9);
 		BaseId defaultValueId = new BaseId(29);
 		
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultValueId);
@@ -38,11 +38,11 @@ public class TestThreatRatingBundle extends EAMTestCase
 	
 	public void testPullDataFrom() throws Exception
 	{
-		ModelNodeId threatId = new ModelNodeId(5);
-		ModelNodeId targetId = new ModelNodeId(9);
+		FactorId threatId = new FactorId(5);
+		FactorId targetId = new FactorId(9);
 		BaseId defaultValueId = new BaseId(29);
-		ModelNodeId threatId2 = new ModelNodeId(7);
-		ModelNodeId targetId2 = new ModelNodeId(8);
+		FactorId threatId2 = new FactorId(7);
+		FactorId targetId2 = new FactorId(8);
 		BaseId defaultValueId2 = new BaseId(59);
 		
 		BaseId criterionId = new BaseId(34);
@@ -70,8 +70,8 @@ public class TestThreatRatingBundle extends EAMTestCase
 	
 	public void testJson() throws Exception
 	{
-		ModelNodeId threatId = new ModelNodeId(5);
-		ModelNodeId targetId = new ModelNodeId(9);
+		FactorId threatId = new FactorId(5);
+		FactorId targetId = new FactorId(9);
 		BaseId defaultValueId = new BaseId(29);
 		BaseId criterion1 = new BaseId(32);
 		BaseId rating1 = new BaseId(1);

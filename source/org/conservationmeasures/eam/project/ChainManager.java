@@ -10,7 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
@@ -58,7 +58,7 @@ public class ChainManager
 	{
 		ConceptualModelNodeSet foundNodes = new ConceptualModelNodeSet();
 		NodePool pool = getNodePool();
-		ModelNodeId[] allNodeIds = pool.getModelNodeIds();
+		FactorId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			Factor node = pool.find(allNodeIds[i]);

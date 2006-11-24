@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -24,7 +24,7 @@ public class TestCause extends ObjectTestCase
 	
 	public void testExtraInfo() throws Exception
 	{
-		ModelNodeId idToCreate = new ModelNodeId(17);
+		FactorId idToCreate = new FactorId(17);
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		Factor node = Factor.createConceptualModelObject(idToCreate, extraInfo);
 		CreateModelNodeParameter gotExtraInfo = (CreateModelNodeParameter)node.getCreationExtraInfo();

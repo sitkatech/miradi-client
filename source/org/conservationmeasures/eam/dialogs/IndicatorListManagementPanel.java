@@ -10,14 +10,14 @@ import java.awt.BorderLayout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class IndicatorListManagementPanel extends ModelessDialogPanel
 {
-	public IndicatorListManagementPanel(Project projectToUse, ModelNodeId nodeId, Actions actions) throws Exception
+	public IndicatorListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(new BorderLayout());
 		IndicatorId invalidId = new IndicatorId(BaseId.INVALID.asInt());

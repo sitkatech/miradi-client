@@ -19,8 +19,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorCluster;
@@ -82,7 +82,7 @@ public class Delete extends ProjectDoer
 
 	private void deleteLinkage(DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{
-		DiagramLinkageId id = linkageToDelete.getDiagramLinkageId();
+		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
 		getProject().executeCommand(removeCommand);
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.MODEL_LINKAGE, linkageToDelete.getWrappedId());
@@ -92,7 +92,7 @@ public class Delete extends ProjectDoer
 	// TODO: This method should be inside Project and should have unit tests
 	private void deleteNode(DiagramFactor nodeToDelete) throws Exception
 	{
-		DiagramNodeId id = nodeToDelete.getDiagramNodeId();
+		DiagramFactorId id = nodeToDelete.getDiagramNodeId();
 
 		removeFromView(id);
 		removeFromCluster(nodeToDelete, id);
@@ -103,7 +103,7 @@ public class Delete extends ProjectDoer
 		deleteUnderlyingNode(underlyingNode);
 	}
 
-	private void removeFromCluster(DiagramFactor nodeToDelete, DiagramNodeId id) throws ParseException, CommandFailedException
+	private void removeFromCluster(DiagramFactor nodeToDelete, DiagramFactorId id) throws ParseException, CommandFailedException
 	{
 		DiagramFactorCluster cluster = (DiagramFactorCluster)nodeToDelete.getParent();
 		if(cluster != null)
@@ -116,14 +116,14 @@ public class Delete extends ProjectDoer
 		}
 	}
 
-	private void removeFromView(DiagramNodeId id) throws ParseException, Exception, CommandFailedException
+	private void removeFromView(DiagramFactorId id) throws ParseException, Exception, CommandFailedException
 	{
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramFactor nodeToDelete, DiagramNodeId id) throws CommandFailedException
+	private void removeNodeFromDiagram(DiagramFactor nodeToDelete, DiagramFactorId id) throws CommandFailedException
 	{
 		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
 		getProject().executeCommands(commandsToClear);

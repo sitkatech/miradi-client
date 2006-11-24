@@ -10,10 +10,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 
 class CellInventory
 {
@@ -31,7 +31,7 @@ class CellInventory
 
 	public void addNode(DiagramFactor node)
 	{
-		DiagramNodeId realId = node.getDiagramNodeId();
+		DiagramFactorId realId = node.getDiagramNodeId();
 		
 		if(getNodeById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -44,7 +44,7 @@ class CellInventory
 		return nodes;
 	}
 	
-	public DiagramFactor getNodeById(DiagramNodeId id)
+	public DiagramFactor getNodeById(DiagramFactorId id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
@@ -55,7 +55,7 @@ class CellInventory
 		return null;
 	}
 	
-	public DiagramFactor getNodeById(ModelNodeId id)
+	public DiagramFactor getNodeById(FactorId id)
 	{
 		for (Iterator iter = nodes.iterator(); iter.hasNext();) 
 		{
@@ -73,7 +73,7 @@ class CellInventory
 	
 	public void addLinkage(DiagramFactorLink linkage)
 	{
-		DiagramLinkageId realId = linkage.getDiagramLinkageId();
+		DiagramFactorLinkId realId = linkage.getDiagramLinkageId();
 		
 		if(getLinkageById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
@@ -86,7 +86,7 @@ class CellInventory
 		return linkages;
 	}
 	
-	public DiagramFactorLink getLinkageById(DiagramLinkageId id)
+	public DiagramFactorLink getLinkageById(DiagramFactorLinkId id)
 	{
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
@@ -97,7 +97,7 @@ class CellInventory
 		return null;
 	}
 	
-	public DiagramFactorLink getLinkageById(ModelLinkageId id)
+	public DiagramFactorLink getLinkageById(FactorLinkId id)
 	{
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{

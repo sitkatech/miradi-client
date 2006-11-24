@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -39,7 +39,7 @@ public class InsertActivity extends WorkPlanDoer
 	private void doInsertActivity() throws CommandFailedException
 	{
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
-		ModelNodeId interventionId = insertAt.getInterventionId();
+		FactorId interventionId = insertAt.getInterventionId();
 		int childIndex = insertAt.getIndex();
 		Factor intervention = getProject().getNodePool().find(interventionId);
 

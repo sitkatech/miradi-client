@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
 
 public class DiagramStrategy extends DiagramFactor
 {
-	public DiagramStrategy(DiagramNodeId idToUse, Strategy cmIntervention)
+	public DiagramStrategy(DiagramFactorId idToUse, Strategy cmIntervention)
 	{
 		super(idToUse, cmIntervention);
 	}

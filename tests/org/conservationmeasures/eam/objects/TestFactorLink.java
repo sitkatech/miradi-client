@@ -1,8 +1,8 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -47,7 +47,7 @@ public class TestFactorLink extends EAMTestCase
 	
 	public void testExtraInfo() throws Exception
 	{
-		FactorLink linkage = new FactorLink(new ModelLinkageId(BaseId.INVALID.asInt()), nodeAId, nodeBId);
+		FactorLink linkage = new FactorLink(new FactorLinkId(BaseId.INVALID.asInt()), nodeAId, nodeBId);
 
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(nodeAId, nodeBId);
 		CreateModelLinkageParameter gotExtraInfo = (CreateModelLinkageParameter)linkage.getCreationExtraInfo();
@@ -55,8 +55,8 @@ public class TestFactorLink extends EAMTestCase
 		assertEquals(extraInfo.getToId(), gotExtraInfo.getToId());
 	}
 
-	static final ModelLinkageId id = new ModelLinkageId(1);
-	static final ModelNodeId nodeAId = new ModelNodeId(2);
-	static final ModelNodeId nodeBId = new ModelNodeId(3);
+	static final FactorLinkId id = new FactorLinkId(1);
+	static final FactorId nodeAId = new FactorId(2);
+	static final FactorId nodeBId = new FactorId(3);
 
 }

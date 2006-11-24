@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -57,7 +57,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		inserter.setLocation(at);
 		inserter.doIt();
 
-		ModelNodeId id = project.getNodePool().getModelNodeIds()[0];
+		FactorId id = project.getNodePool().getModelNodeIds()[0];
 		DiagramFactor node = project.getDiagramModel().getNodeById(id);
 		assertEquals("didn't set location?", inserter.getLocation(), node.getLocation());
 		assertEquals("didn't set name?", inserter.getInitialText(), node.getLabel());
@@ -150,15 +150,15 @@ public class TestInsertNode extends TestCaseEnhanced
 	private DiagramFactor createDiagramNode(Project project) throws Exception
 	{
 		CreateModelNodeParameter modelNodeParameter2 = new CreateModelNodeParameter(new FactorTypeTarget());
-		ModelNodeId nodeId2 = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
-		DiagramNodeId  dModelId2 = project.addNodeToDiagram(nodeId2);
+		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
+		DiagramFactorId  dModelId2 = project.addNodeToDiagram(nodeId2);
 		DiagramFactor dNode2 = project.getDiagramModel().getNodeById(dModelId2);
 		return dNode2;
 	}
 
 	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
 	{
-		protected void selectNewNode(ModelNodeId idToUse)
+		protected void selectNewNode(FactorId idToUse)
 		{
 			nodeSelectCalled = true;
 		}
@@ -168,7 +168,7 @@ public class TestInsertNode extends TestCaseEnhanced
 			return nodeSelectCalled;
 		}
 
-		void launchPropertiesEditor(ModelNodeId id) throws Exception, CommandFailedException
+		void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 		{
 			wasPropertiesEditorLaunched = true;
 		}

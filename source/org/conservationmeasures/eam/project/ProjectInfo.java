@@ -10,8 +10,8 @@ import java.util.NoSuchElementException;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.views.summary.SummaryView;
 import org.json.JSONObject;
 
@@ -52,14 +52,14 @@ public class ProjectInfo
 		return nodeIdAssigner;
 	}
 	
-	public ModelNodeId obtainRealNodeId(BaseId proposedId)
+	public FactorId obtainRealNodeId(BaseId proposedId)
 	{
-		return new ModelNodeId(nodeIdAssigner.obtainRealId(proposedId).asInt());
+		return new FactorId(nodeIdAssigner.obtainRealId(proposedId).asInt());
 	}
 	
-	public ModelLinkageId obtainRealLinkageId(BaseId proposedId)
+	public FactorLinkId obtainRealLinkageId(BaseId proposedId)
 	{
-		return new ModelLinkageId(nodeIdAssigner.obtainRealId(proposedId).asInt());
+		return new FactorLinkId(nodeIdAssigner.obtainRealId(proposedId).asInt());
 	}
 
 	public IdAssigner getAnnotationIdAssigner()

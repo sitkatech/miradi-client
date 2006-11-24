@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
@@ -28,15 +28,15 @@ abstract public class Factor extends EAMBaseObject
 		type = nodeType;
 	}
 	
-	protected Factor(ModelNodeId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
+	protected Factor(FactorId idToUse, FactorType nodeType, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, json);
 		type = nodeType;
 	}
 	
-	public ModelNodeId getModelNodeId()
+	public FactorId getModelNodeId()
 	{
-		return new ModelNodeId(getId().asInt());
+		return new FactorId(getId().asInt());
 	}
 	
 	public int getType()
@@ -155,13 +155,13 @@ abstract public class Factor extends EAMBaseObject
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
 		if(typeString.equals(FactorTypeStrategy.STRATEGY_TYPE))
-			return new Strategy(new ModelNodeId(idAsInt), json);
+			return new Strategy(new FactorId(idAsInt), json);
 		if(typeString.equals(FactorTypeCause.CAUSE_TYPE))
-			return new Cause(new ModelNodeId(idAsInt), json);
+			return new Cause(new FactorId(idAsInt), json);
 		if(typeString.equals(FactorTypeTarget.TARGET_TYPE))
-			return new Target(new ModelNodeId(idAsInt), json);
+			return new Target(new FactorId(idAsInt), json);
 		if(typeString.equals(FactorTypeCluster.CLUSTER_TYPE))
-			return new FactorCluster(new ModelNodeId(idAsInt), json);
+			return new FactorCluster(new FactorId(idAsInt), json);
 		
 		throw new RuntimeException("Read unknown node type: " + typeString);
 	}
@@ -179,7 +179,7 @@ abstract public class Factor extends EAMBaseObject
 		return getLabel();
 	}
 	
-	public static Factor createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
+	public static Factor createConceptualModelObject(FactorId idToCreate, CreateModelNodeParameter parameter)
 	{
 		FactorType nodeType = parameter.getNodeType();
 		if(nodeType.isStrategy())

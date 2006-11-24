@@ -12,8 +12,8 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.FactorDataHelper;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -28,9 +28,9 @@ public class TestFactorDataHelper extends EAMTestCase
 	
 	public void setUp() throws Exception 
 	{
-		DiagramNodeId nodeId1 = new DiagramNodeId(44);
-		DiagramNodeId nodeId2 = new DiagramNodeId(25);
-		DiagramNodeId nodeId3 = new DiagramNodeId(6346);
+		DiagramFactorId nodeId1 = new DiagramFactorId(44);
+		DiagramFactorId nodeId2 = new DiagramFactorId(25);
+		DiagramFactorId nodeId3 = new DiagramFactorId(6346);
 
 		Target cmTarget1 = new Target(originalNodeId1);
 		node1 = DiagramFactor.wrapConceptualModelObject(nodeId1, cmTarget1);
@@ -115,14 +115,14 @@ public class TestFactorDataHelper extends EAMTestCase
 	}
 	
 
-	final ModelNodeId originalNodeId1 = new ModelNodeId(1);
-	final ModelNodeId originalNodeId2 = new ModelNodeId(2);
-	final ModelNodeId originalNodeId3 = new ModelNodeId(3);
-	final DiagramNodeId newNodeId1 = new DiagramNodeId(5);
-	final DiagramNodeId newNodeId2 = new DiagramNodeId(6);
-	final DiagramNodeId newNodeId3 = new DiagramNodeId(7);
-	final ModelNodeId unknownModelId = new ModelNodeId(10);
-	final DiagramNodeId unknownDiagramId = new DiagramNodeId(11);
+	final FactorId originalNodeId1 = new FactorId(1);
+	final FactorId originalNodeId2 = new FactorId(2);
+	final FactorId originalNodeId3 = new FactorId(3);
+	final DiagramFactorId newNodeId1 = new DiagramFactorId(5);
+	final DiagramFactorId newNodeId2 = new DiagramFactorId(6);
+	final DiagramFactorId newNodeId3 = new DiagramFactorId(7);
+	final FactorId unknownModelId = new FactorId(10);
+	final DiagramFactorId unknownDiagramId = new DiagramFactorId(11);
 	final int nodeLocation1x = 20;
 	final int nodeLocation1y = 50;
 	final int nodeLocation2x = 5;

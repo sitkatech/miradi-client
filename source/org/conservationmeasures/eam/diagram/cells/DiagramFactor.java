@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -36,7 +36,7 @@ import org.jgraph.graph.GraphConstants;
 
 abstract public class DiagramFactor extends EAMGraphCell
 {
-	public static DiagramFactor wrapConceptualModelObject(DiagramNodeId idToUse, Factor cmObject)
+	public static DiagramFactor wrapConceptualModelObject(DiagramFactorId idToUse, Factor cmObject)
 	{
 		if(cmObject.isIntervention())
 			return new DiagramStrategy(idToUse, (Strategy)cmObject);
@@ -52,15 +52,15 @@ abstract public class DiagramFactor extends EAMGraphCell
 	
 	public static DiagramFactor createFromJson(Project project, EnhancedJsonObject json) throws Exception
 	{
-		DiagramNodeId id = new DiagramNodeId(json.getId(TAG_ID).asInt());
-		ModelNodeId wrappedId = new ModelNodeId(json.getId(TAG_WRAPPED_ID).asInt());
+		DiagramFactorId id = new DiagramFactorId(json.getId(TAG_ID).asInt());
+		FactorId wrappedId = new FactorId(json.getId(TAG_WRAPPED_ID).asInt());
 		Factor cmNode = project.findNode(wrappedId);
 		DiagramFactor node = wrapConceptualModelObject(id, cmNode);
 		node.fillFrom(json);
 		return node;
 	}
 
-	protected DiagramFactor(DiagramNodeId idToUse, Factor cmObjectToUse)
+	protected DiagramFactor(DiagramFactorId idToUse, Factor cmObjectToUse)
 	{
 		underlyingObject = cmObjectToUse;
 		id = idToUse;
@@ -95,7 +95,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return underlyingObject;
 	}
 	
-	public DiagramNodeId getDiagramNodeId()
+	public DiagramFactorId getDiagramNodeId()
 	{
 		return id;
 	}
@@ -105,7 +105,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		return getWrappedType();
 	}
 	
-	public ModelNodeId getWrappedId()
+	public FactorId getWrappedId()
 	{
 		return underlyingObject.getModelNodeId();
 	}
@@ -383,7 +383,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 		int y = getLocation().y;
 		return new Command[] {
 			new CommandSetFactorSize(getDiagramNodeId(), getDefaultSize(), getSize()),
-			new CommandDiagramMove(-x, -y, new DiagramNodeId[] {getDiagramNodeId()}),
+			new CommandDiagramMove(-x, -y, new DiagramFactorId[] {getDiagramNodeId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};
 	}
@@ -442,7 +442,7 @@ abstract public class DiagramFactor extends EAMGraphCell
 	Dimension previousSize;
 	Point previousLocation;
 	
-	DiagramNodeId id;
+	DiagramFactorId id;
 	Factor underlyingObject;
 }
 

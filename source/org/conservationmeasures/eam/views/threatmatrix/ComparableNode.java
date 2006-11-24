@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 
 import java.util.Comparator;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -28,10 +28,10 @@ public class ComparableNode implements  Comparator
 	{
 		try
 		{
-			ModelNodeId nodeIdColumn = targetList[sortColumn].getModelNodeId();
+			FactorId nodeIdColumn = targetList[sortColumn].getModelNodeId();
 
-			ModelNodeId nodeIdRow1 = ((Factor) object1).getModelNodeId();
-			ModelNodeId nodeIdRow2 = ((Factor) object2).getModelNodeId();
+			FactorId nodeIdRow1 = ((Factor) object1).getModelNodeId();
+			FactorId nodeIdRow2 = ((Factor) object2).getModelNodeId();
 
 			ThreatRatingBundle bundle1 = model.getBundle(nodeIdRow1,nodeIdColumn);
 			ThreatRatingBundle bundle2 = model.getBundle(nodeIdRow2,nodeIdColumn);

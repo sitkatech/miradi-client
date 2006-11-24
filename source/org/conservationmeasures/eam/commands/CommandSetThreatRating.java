@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
 public class CommandSetThreatRating extends Command
 {
-	public CommandSetThreatRating(ModelNodeId threatIdToUpdate, ModelNodeId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
+	public CommandSetThreatRating(FactorId threatIdToUpdate, FactorId targetIdToUpdate, BaseId criterionIdToUpdate, BaseId valueIdToUse)
 	{
 		threatId = threatIdToUpdate;
 		targetId = targetIdToUpdate;
@@ -63,12 +63,12 @@ public class CommandSetThreatRating extends Command
 		}
 	}
 
-	public ModelNodeId getThreatId()
+	public FactorId getThreatId()
 	{
 		return threatId;
 	}
 	
-	public ModelNodeId getTargetId()
+	public FactorId getTargetId()
 	{
 		return targetId;
 	}
@@ -91,8 +91,8 @@ public class CommandSetThreatRating extends Command
 
 	public static final String COMMAND_NAME = "SetThreatRatingValue";
 
-	ModelNodeId threatId;
-	ModelNodeId targetId;
+	FactorId threatId;
+	FactorId targetId;
 	BaseId criterionId;
 	BaseId valueId;
 	BaseId previousValueId;

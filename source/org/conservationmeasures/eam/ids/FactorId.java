@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.ids;
 
-public class ModelLinkageId extends ObjectId
+public class FactorId extends ObjectId
 {
 
-	public ModelLinkageId(int idToUse)
+	public FactorId(int idToUse)
 	{
 		super(idToUse);
 	}

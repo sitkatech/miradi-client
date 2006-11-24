@@ -7,17 +7,17 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveFactor extends Command
 {
-	public CommandDiagramRemoveFactor(DiagramNodeId idToDelete)
+	public CommandDiagramRemoveFactor(DiagramFactorId idToDelete)
 	{
 		diagramNodeId = idToDelete;
-		modelNodeId = new ModelNodeId(BaseId.INVALID.asInt());
+		modelNodeId = new FactorId(BaseId.INVALID.asInt());
 	}
 
 	public String toString()
@@ -56,12 +56,12 @@ public class CommandDiagramRemoveFactor extends Command
 		}
 	}
 
-	public DiagramNodeId getDiagramNodeId()
+	public DiagramFactorId getDiagramNodeId()
 	{
 		return diagramNodeId;
 	}
 	
-	public ModelNodeId getModelNodeId()
+	public FactorId getModelNodeId()
 	{
 		return modelNodeId;
 	}
@@ -69,6 +69,6 @@ public class CommandDiagramRemoveFactor extends Command
 	
 	public static final String COMMAND_NAME = "DiagramRemoveNode";
 
-	DiagramNodeId diagramNodeId;
-	ModelNodeId modelNodeId;
+	DiagramFactorId diagramNodeId;
+	FactorId modelNodeId;
 }

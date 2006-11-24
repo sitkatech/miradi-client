@@ -19,10 +19,10 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
@@ -53,16 +53,16 @@ public class TestDiagramFactor extends EAMTestCase
 		cmDirectThreat.increaseTargetCount();
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new FactorTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
-		ModelNodeId cmTargetId = new ModelNodeId(rawTargetId.asInt());
+		FactorId cmTargetId = new FactorId(rawTargetId.asInt());
 		cmTarget = (Target)project.findNode(cmTargetId);
 		
-		DiagramNodeId interventionNodeId = new DiagramNodeId(44);
+		DiagramFactorId interventionNodeId = new DiagramFactorId(44);
 		intervention = DiagramFactor.wrapConceptualModelObject(interventionNodeId, cmIntervention);
-		DiagramNodeId indirectFactorNodeId = new DiagramNodeId(46);
+		DiagramFactorId indirectFactorNodeId = new DiagramFactorId(46);
 		indirectFactor = DiagramFactor.wrapConceptualModelObject(indirectFactorNodeId, cmIndirectFactor);
-		DiagramNodeId directThreatNodeId = new DiagramNodeId(43);
+		DiagramFactorId directThreatNodeId = new DiagramFactorId(43);
 		directThreat = DiagramFactor.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
-		DiagramNodeId targetNodeId = new DiagramNodeId(35);
+		DiagramFactorId targetNodeId = new DiagramFactorId(35);
 		target = DiagramFactor.wrapConceptualModelObject(targetNodeId, cmTarget);
 		targetAttributeMap = target.getAttributes();
 	}
@@ -161,9 +161,9 @@ public class TestDiagramFactor extends EAMTestCase
 		assertEquals("wrapped id", target.getWrappedId(), got.getWrappedId());
 	}
 
-	private ModelNodeId takeNextModelNodeId()
+	private FactorId takeNextModelNodeId()
 	{
-		return new ModelNodeId(idAssigner.takeNextId().asInt());
+		return new FactorId(idAssigner.takeNextId().asInt());
 	}
 	
 

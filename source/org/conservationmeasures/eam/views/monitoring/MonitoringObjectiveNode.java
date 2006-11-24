@@ -12,7 +12,7 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -103,7 +103,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 	private ConceptualModelNodeSet getNodesWithThisObjective(BaseId objectiveId)
 	{
 		ConceptualModelNodeSet result = new ConceptualModelNodeSet();
-		ModelNodeId[] allNodeIds = project.getNodePool().getModelNodeIds();
+		FactorId[] allNodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			Factor node = project.findNode(allNodeIds[i]);

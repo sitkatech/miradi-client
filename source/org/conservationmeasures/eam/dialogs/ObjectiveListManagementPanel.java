@@ -10,7 +10,7 @@ import java.awt.BorderLayout;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
@@ -18,7 +18,7 @@ import org.martus.swing.UiScrollPane;
 
 public class ObjectiveListManagementPanel extends ModelessDialogPanel
 {
-	public ObjectiveListManagementPanel(Project projectToUse, ModelNodeId nodeId, Actions actions) throws Exception
+	public ObjectiveListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(new BorderLayout());
 		ObjectiveId invalidId = new ObjectiveId(BaseId.INVALID.asInt());

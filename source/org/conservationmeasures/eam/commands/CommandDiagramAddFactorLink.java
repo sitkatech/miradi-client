@@ -7,25 +7,25 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramAddFactorLink extends Command
 {
-	public CommandDiagramAddFactorLink(ModelLinkageId idToWrap)
+	public CommandDiagramAddFactorLink(FactorLinkId idToWrap)
 	{
 		modelLinkageId = idToWrap;
-		diagramLinkageId = new DiagramLinkageId(BaseId.INVALID.asInt());
+		diagramLinkageId = new DiagramFactorLinkId(BaseId.INVALID.asInt());
 	}
 	
-	public DiagramLinkageId getDiagramLinkageId()
+	public DiagramFactorLinkId getDiagramLinkageId()
 	{
 		return diagramLinkageId;
 	}
 
-	public ModelLinkageId getModelLinkageId()
+	public FactorLinkId getModelLinkageId()
 	{
 		return modelLinkageId;
 	}
@@ -70,6 +70,6 @@ public class CommandDiagramAddFactorLink extends Command
 
 	public static final String COMMAND_NAME = "DiagramAddLinkage";
 
-	ModelLinkageId modelLinkageId;
-	DiagramLinkageId diagramLinkageId;
+	FactorLinkId modelLinkageId;
+	DiagramFactorLinkId diagramLinkageId;
 }

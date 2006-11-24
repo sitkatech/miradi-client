@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -39,12 +39,12 @@ public class TestDiagramFactorLink extends EAMTestCase
 
 		CreateModelNodeParameter createIntervention = new CreateModelNodeParameter(new FactorTypeStrategy());
 		BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
-		ModelNodeId interventionId = new ModelNodeId(rawInterventionId.asInt());
+		FactorId interventionId = new FactorId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new FactorTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
-		ModelNodeId targetId = new ModelNodeId(rawTargetId.asInt());
+		FactorId targetId = new FactorId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
 	}
 	
@@ -58,7 +58,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 	{
 		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
 		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
-		ModelLinkageId id = new ModelLinkageId(5);
+		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
@@ -72,7 +72,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 	{
 		DiagramFactor factor = model.createNode(cmIntervention.getModelNodeId());
 		DiagramFactor target = model.createNode(cmTarget.getModelNodeId());
-		ModelLinkageId id = new ModelLinkageId(5);
+		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
 		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
 		assertEquals(id, linkage.getDiagramLinkageId());
@@ -80,12 +80,12 @@ public class TestDiagramFactorLink extends EAMTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		ModelNodeId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
-		ModelNodeId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
-		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
 		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramLinkageId()));

@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -47,9 +47,9 @@ public class TestDiagramComponent extends EAMTestCase
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
 		CreateModelNodeParameter cmnp = new CreateModelNodeParameter(new FactorTypeCause());
-		ModelNodeId hiddenId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-		ModelNodeId visibleId = (ModelNodeId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-		FactorLink cmLinkage = new FactorLink(new ModelLinkageId(100), hiddenId, visibleId);
+		FactorId hiddenId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
+		FactorId visibleId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
+		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
 		
 		DiagramFactor hiddenNode = diagramComponent.getDiagramModel().createNode(hiddenId);
 		DiagramFactor visibleNode = diagramComponent.getDiagramModel().createNode(visibleId);

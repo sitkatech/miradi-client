@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -30,15 +30,15 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		ModelNodeId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramFactor intervention = model.getNodeById(interventionId);
-		ModelNodeId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
+		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramFactor factor = model.getNodeById(factorId);
 
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
-		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
 

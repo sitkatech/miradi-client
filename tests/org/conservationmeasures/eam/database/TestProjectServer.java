@@ -12,10 +12,10 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.Cause;
@@ -100,9 +100,9 @@ public class TestProjectServer extends EAMTestCase
 		assertTrue("missing a node?", nodeIds.has(target.getId()));
 	}
 	
-	private ModelNodeId takeNextModelNodeId()
+	private FactorId takeNextModelNodeId()
 	{
-		return new ModelNodeId(idAssigner.takeNextId().asInt());
+		return new FactorId(idAssigner.takeNextId().asInt());
 	}
 	
 	private Factor readNode(BaseId id) throws Exception
@@ -112,7 +112,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteAndReadLinkage() throws Exception
 	{
-		FactorLink original = new FactorLink(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
+		FactorLink original = new FactorLink(new FactorLinkId(1), new FactorId(2), new FactorId(3));
 		storage.writeObject(original);
 		FactorLink got = (FactorLink)storage.readObject(original.getType(), original.getId());
 		assertEquals("wrong id?", original.getId(), got.getId());
@@ -130,7 +130,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testDeleteLinkage() throws Exception
 	{
-		FactorLink original = new FactorLink(new ModelLinkageId(1), new ModelNodeId(2), new ModelNodeId(3));
+		FactorLink original = new FactorLink(new FactorLinkId(1), new FactorId(2), new FactorId(3));
 		storage.writeObject(original);
 		storage.deleteObject(original.getType(), original.getId());
 		assertEquals("didn't delete?", 0, storage.readObjectManifest(original.getType()).size());
@@ -145,8 +145,8 @@ public class TestProjectServer extends EAMTestCase
 	
 	public void testWriteThreatRatingBundle() throws Exception
 	{
-		ModelNodeId threatId = new ModelNodeId(68);
-		ModelNodeId targetId = new ModelNodeId(99);
+		FactorId threatId = new FactorId(68);
+		FactorId targetId = new FactorId(99);
 		BaseId defaultId = new BaseId(929);
 		ThreatRatingBundle bundle = new ThreatRatingBundle(threatId, targetId, defaultId);
 		storage.writeThreatRatingBundle(bundle);
@@ -205,7 +205,7 @@ public class TestProjectServer extends EAMTestCase
 			for(int i=0; i < gotNodes.size(); ++i)
 			{
 				DiagramFactor gotNode = (DiagramFactor)gotNodes.get(i);
-				DiagramNodeId gotId = gotNode.getDiagramNodeId();
+				DiagramFactorId gotId = gotNode.getDiagramNodeId();
 				DiagramFactor expectedNode = model.getNodeById(gotId);
 				assertEquals("node data not right?", expectedNode.getLocation(), gotNode.getLocation());
 			}

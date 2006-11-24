@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
@@ -26,7 +26,7 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testBasics()
 	{
-		ModelNodeId interventionId = new ModelNodeId(17);
+		FactorId interventionId = new FactorId(17);
 		Strategy intervention = new Strategy(interventionId);
 		assertEquals("already has activities?", 0, intervention.getActivityIds().size());
 		
@@ -52,7 +52,7 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testActivityIds() throws Exception
 	{
-		ModelNodeId interventionId = new ModelNodeId(66);
+		FactorId interventionId = new FactorId(66);
 		Strategy intervention = new Strategy(interventionId);
 		IdList empty = new IdList(intervention.getData(Strategy.TAG_ACTIVITY_IDS));
 		assertEquals("not empty to start?", 0, empty.size());
@@ -68,7 +68,7 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testStatus() throws Exception
 	{
-		ModelNodeId interventionId = new ModelNodeId(91);
+		FactorId interventionId = new FactorId(91);
 		Strategy intervention = new Strategy(interventionId);
 		assertTrue("didn't default to real status?", intervention.isStatusReal());
 		assertFalse("defaulted to draft status?", intervention.isStatusDraft());
@@ -88,7 +88,7 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testJson() throws Exception
 	{
-		ModelNodeId interventionId = new ModelNodeId(17);
+		FactorId interventionId = new FactorId(17);
 		Strategy intervention = new Strategy(interventionId);
 		intervention.setData(Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		intervention.insertActivityId(new BaseId(23), 0);

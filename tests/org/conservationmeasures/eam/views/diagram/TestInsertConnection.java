@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
@@ -37,9 +37,9 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		ModelNodeId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		FactorId node1 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		FactorId node2 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
+		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		
 		CreateModelLinkageParameter parameter12 = new CreateModelLinkageParameter(node1, node2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);

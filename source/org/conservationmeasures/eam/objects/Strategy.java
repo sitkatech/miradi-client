@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -22,14 +22,14 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Strategy extends Factor
 {
-	public Strategy(ModelNodeId idToUse)
+	public Strategy(FactorId idToUse)
 	{
 		super(idToUse, Factor.TYPE_INTERVENTION);
 		status = STATUS_REAL;
 		clear();
 	}
 	
-	public Strategy(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
+	public Strategy(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(idToUse, Factor.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);

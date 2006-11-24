@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -100,7 +100,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelTarget(String label) throws Exception
 		{
-			super(new ModelNodeId(idAssigner.takeNextId().asInt()));
+			super(new FactorId(idAssigner.takeNextId().asInt()));
 			setLabel(label);
 		}
 		
@@ -115,7 +115,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelThreat(String label) throws Exception
 		{
-			super(new ModelNodeId(idAssigner.takeNextId().asInt()));
+			super(new FactorId(idAssigner.takeNextId().asInt()));
 			setLabel(label);
 		}
 		
@@ -129,7 +129,7 @@ public class TestDataUpgrader extends EAMTestCase
 	{
 		public Version2ConceptualModelIntervention(String label) throws Exception
 		{
-			super(new ModelNodeId(idAssigner.takeNextId().asInt()));
+			super(new FactorId(idAssigner.takeNextId().asInt()));
 			setLabel(label);
 		}
 		

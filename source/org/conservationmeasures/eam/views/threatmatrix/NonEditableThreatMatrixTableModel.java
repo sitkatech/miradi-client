@@ -10,7 +10,7 @@ import java.awt.Color;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -151,14 +151,14 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	public ThreatRatingBundle getBundle(int threatIndex, int targetIndex)
 			throws Exception
 	{
-		ModelNodeId threatId = getDirectThreats()[threatIndex].getModelNodeId();
-		ModelNodeId targetId = getTargets()[targetIndex].getModelNodeId();
+		FactorId threatId = getDirectThreats()[threatIndex].getModelNodeId();
+		FactorId targetId = getTargets()[targetIndex].getModelNodeId();
 		ThreatRatingBundle bundle = getBundle(threatId, targetId);
 		return bundle;
 	}
 	
-	public ThreatRatingBundle getBundle(ModelNodeId threatId,
-			ModelNodeId targetId) throws Exception
+	public ThreatRatingBundle getBundle(FactorId threatId,
+			FactorId targetId) throws Exception
 	{
 		if(!isActiveThreatIdTargetIdPair(threatId, targetId))
 			return null;
@@ -172,17 +172,17 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
-		ModelNodeId threatId = (ModelNodeId)getDirectThreats()[threatIndex].getId();
-		ModelNodeId targetId = (ModelNodeId)getTargets()[targetIndex].getId();
+		FactorId threatId = (FactorId)getDirectThreats()[threatIndex].getId();
+		FactorId targetId = (FactorId)getTargets()[targetIndex].getId();
 		return isActiveThreatIdTargetIdPair(threatId, targetId);
 	}
 	
-	public boolean isActiveThreatIdTargetIdPair(ModelNodeId threatId, ModelNodeId targetId)
+	public boolean isActiveThreatIdTargetIdPair(FactorId threatId, FactorId targetId)
 	{
 		return getProject().isLinked(threatId, targetId);
 	}
 
-	public ModelNodeId getThreatId(int threatIndex)
+	public FactorId getThreatId(int threatIndex)
 	{
 		Factor cmNode = getThreatNode(threatIndex);
 		return cmNode.getModelNodeId();
@@ -199,7 +199,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	}
 	
 	
-	public ModelNodeId getTargetId(int targetIndex)
+	public FactorId getTargetId(int targetIndex)
 	{
 		Factor cmNode = getTargetNode(targetIndex);
 		return cmNode.getModelNodeId();
@@ -208,7 +208,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 	
 	public int getTargetColumn(BaseId baseId) 
 	{
-		return findThreatIndexById(new ModelNodeId(baseId.asInt()));
+		return findThreatIndexById(new FactorId(baseId.asInt()));
 	}
 
 	public String[] getThreatNames()
@@ -239,7 +239,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return getTargets()[targetIndex].getLabel();
 	}
 	
-	public int findTargetIndexById(ModelNodeId targetId)
+	public int findTargetIndexById(FactorId targetId)
 	{
 		for(int i = 0; i < getTargets().length; ++i)
 			if(getTargets()[i].getId().equals(targetId))
@@ -247,7 +247,7 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return -1;
 	}
 	
-	public int findThreatIndexById(ModelNodeId threatId)
+	public int findThreatIndexById(FactorId threatId)
 	{
 		for(int i = 0; i < getDirectThreats().length; ++i)
 			if(getDirectThreats()[i].getId().equals(threatId))
@@ -255,23 +255,23 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return -1;
 	}
 
-	public ModelNodeId findThreatByName(String threatName)
+	public FactorId findThreatByName(String threatName)
 	{
 		return findNodeByName(getDirectThreats(), threatName);
 	}
 
-	public ModelNodeId findTargetByName(String targetName)
+	public FactorId findTargetByName(String targetName)
 	{
 		return findNodeByName(getTargets(), targetName);
 	}
 
-	private ModelNodeId findNodeByName(Factor[] nodes, String name)
+	private FactorId findNodeByName(Factor[] nodes, String name)
 	{
 		for(int i = 0; i < nodes.length; ++i)
 			if(nodes[i].getLabel().equals(name))
 				return nodes[i].getModelNodeId();
 
-		return new ModelNodeId(BaseId.INVALID.asInt());
+		return new FactorId(BaseId.INVALID.asInt());
 	}
 
 	

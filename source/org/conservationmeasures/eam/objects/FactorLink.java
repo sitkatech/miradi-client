@@ -6,8 +6,8 @@
 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class FactorLink extends EAMBaseObject
 {
-	public FactorLink(ModelLinkageId id, ModelNodeId fromNodeId, ModelNodeId toNodeId)
+	public FactorLink(FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
 	{
 		super(id);
 		setFromId(fromNodeId);
@@ -26,18 +26,18 @@ public class FactorLink extends EAMBaseObject
 
 	public FactorLink(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
-		super(new ModelLinkageId(idAsInt), jsonObject);
-		fromId = new ModelNodeId(jsonObject.getInt(TAG_FROM_ID));
-		toId = new ModelNodeId(jsonObject.getInt(TAG_TO_ID));
+		super(new FactorLinkId(idAsInt), jsonObject);
+		fromId = new FactorId(jsonObject.getInt(TAG_FROM_ID));
+		toId = new FactorId(jsonObject.getInt(TAG_TO_ID));
 		stressLabel = new StringData(jsonObject.optString(TAG_STRESS_LABEL));
 	}
 	
-	public void setFromId(ModelNodeId fromNodeId)
+	public void setFromId(FactorId fromNodeId)
 	{
 		fromId = fromNodeId;
 	}
 	
-	public void setToId(ModelNodeId toNodeId)
+	public void setToId(FactorId toNodeId)
 	{
 		toId = toNodeId;
 	}
@@ -47,12 +47,12 @@ public class FactorLink extends EAMBaseObject
 		return ObjectType.MODEL_LINKAGE;
 	}
 	
-	public ModelNodeId getFromNodeId()
+	public FactorId getFromNodeId()
 	{
 		return fromId;
 	}
 	
-	public ModelNodeId getToNodeId()
+	public FactorId getToNodeId()
 	{
 		return toId;
 	}
@@ -83,7 +83,7 @@ public class FactorLink extends EAMBaseObject
 		return super.getData(fieldTag);
 	}
 	
-	public ModelNodeId getNodeId(int direction)
+	public FactorId getNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getFromNodeId();
@@ -92,7 +92,7 @@ public class FactorLink extends EAMBaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public ModelNodeId getOppositeNodeId(int direction)
+	public FactorId getOppositeNodeId(int direction)
 	{
 		if(direction == FROM)
 			return getNodeId(TO);
@@ -117,7 +117,7 @@ public class FactorLink extends EAMBaseObject
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	
-	private ModelNodeId fromId;
-	private ModelNodeId toId;
+	private FactorId fromId;
+	private FactorId toId;
 	private StringData stressLabel;
 }

@@ -21,10 +21,10 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -243,7 +243,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		DiagramNodeId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
+		DiagramFactorId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -264,8 +264,8 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandSetThreatRating() throws Exception
 	{
-		ModelNodeId threatId = new ModelNodeId(100);
-		ModelNodeId targetId = new ModelNodeId(101);
+		FactorId threatId = new FactorId(100);
+		FactorId targetId = new FactorId(101);
 		BaseId criterionId = new BaseId(102);
 		BaseId valueId = new BaseId(103);
 		ThreatRatingFramework framework = project.getThreatRatingFramework();
@@ -283,7 +283,7 @@ public class TestCommands extends EAMTestCase
 	
 	public void testCommandNodeResized() throws Exception
 	{
-		DiagramNodeId id = insertTarget();
+		DiagramFactorId id = insertTarget();
 		Dimension defaultSize = new Dimension(120, 60);
 		DiagramFactor node = project.getDiagramModel().getNodeById(id);
 		Dimension originalSize = node.getSize();
@@ -320,11 +320,11 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyDiagramAddNode(FactorType type) throws Exception, CommandFailedException
 	{
-		ModelNodeId modelNodeId = project.createNode(type);
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId modelNodeId = project.createNode(type);
+		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(add);
 
-		DiagramNodeId insertedId = add.getInsertedId();
+		DiagramFactorId insertedId = add.getInsertedId();
 		DiagramFactor node = project.getDiagramModel().getNodeById(insertedId);
 		assertEquals("type not right?", type, node.getNodeType());
 		assertNotEquals("already have an id?", BaseId.INVALID, node.getDiagramNodeId());
@@ -334,7 +334,7 @@ public class TestCommands extends EAMTestCase
 
 	private void verifyUndoDiagramAddNode(CommandDiagramAddFactor cmd) throws CommandFailedException
 	{
-		DiagramNodeId insertedId = cmd.getInsertedId();
+		DiagramFactorId insertedId = cmd.getInsertedId();
 		cmd.undo(project);
 		try
 		{
@@ -367,16 +367,16 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		FactorType type = Factor.TYPE_CAUSE;
 
-		DiagramNodeId from = insertNode(type);
-		DiagramNodeId to = insertTarget();
-		ModelNodeId fromId = model.getNodeById(from).getWrappedId();
-		ModelNodeId toId = model.getNodeById(to).getWrappedId();
+		DiagramFactorId from = insertNode(type);
+		DiagramFactorId to = insertTarget();
+		FactorId fromId = model.getNodeById(from).getWrappedId();
+		FactorId toId = model.getNodeById(to).getWrappedId();
 		
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
-		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink addLinkageCommand = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(addLinkageCommand);
 		
@@ -400,13 +400,13 @@ public class TestCommands extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNodeId from = insertIntervention();
-		DiagramNodeId to = insertIndirectFactor();
+		DiagramFactorId from = insertIntervention();
+		DiagramFactorId to = insertIndirectFactor();
 		DiagramFactor fromNode = model.getNodeById(from);
 		DiagramFactor toNode = model.getNodeById(to);
 
 		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromNode.getWrappedId(), toNode.getWrappedId());
-		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
+		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramLinkageId();
 	
 		CommandDiagramRemoveFactorLink cmd = new CommandDiagramRemoveFactorLink(linkageId);
 		assertEquals("model id not invalid?", BaseId.INVALID, cmd.getModelLinkageId());
@@ -420,8 +420,8 @@ public class TestCommands extends EAMTestCase
 
 	public void testDeleteNode() throws Exception
 	{
-		DiagramNodeId id = insertTarget();
-		ModelNodeId modelNodeId = project.getDiagramModel().getNodeById(id).getWrappedId();
+		DiagramFactorId id = insertTarget();
+		FactorId modelNodeId = project.getDiagramModel().getNodeById(id).getWrappedId();
 		
 		CommandDiagramRemoveFactor cmd = new CommandDiagramRemoveFactor(id);
 		assertEquals("modelNodeId not invalid?", BaseId.INVALID, cmd.getModelNodeId());
@@ -473,7 +473,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testRedo() throws Exception
 	{
-		DiagramNodeId insertedId = insertTarget();
+		DiagramFactorId insertedId = insertTarget();
 		project.undo();
 		project.redo();
 		
@@ -546,28 +546,28 @@ public class TestCommands extends EAMTestCase
 		project.removeCommandExecutedListener(undoListener);
 	}
 	
-	private DiagramNodeId insertTarget() throws Exception
+	private DiagramFactorId insertTarget() throws Exception
 	{
 		FactorType type = Factor.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
-	private DiagramNodeId insertIndirectFactor() throws Exception
+	private DiagramFactorId insertIndirectFactor() throws Exception
 	{
 		FactorType type = Factor.TYPE_CAUSE;
 		return insertNode(type);
 	}
 
-	private DiagramNodeId insertIntervention() throws Exception
+	private DiagramFactorId insertIntervention() throws Exception
 	{
 		FactorType type = Factor.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 
-	private DiagramNodeId insertNode(FactorType type) throws Exception
+	private DiagramFactorId insertNode(FactorType type) throws Exception
 	{
-		ModelNodeId modelNodeId = project.createNode(type);
-		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId modelNodeId = project.createNode(type);
+		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(add);
 		return add.getInsertedId();
 	}

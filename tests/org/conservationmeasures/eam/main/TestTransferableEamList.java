@@ -15,8 +15,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -61,7 +61,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		NodePool nodePool = model.getNodePool();
 
-		ModelNodeId node1Id = new ModelNodeId(1);
+		FactorId node1Id = new FactorId(1);
 		Point node1Location = new Point(1,2);
 		
 		Strategy cmIntervention = new Strategy(node1Id);
@@ -69,7 +69,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramFactor node1 = model.createNode(cmIntervention.getModelNodeId());
 		node1.setLocation(node1Location);
 		
-		ModelNodeId node2Id = new ModelNodeId(2);
+		FactorId node2Id = new FactorId(2);
 		Point node2Location = new Point(2,3);
 		
 		Target cmTarget = new Target(node2Id);
@@ -77,7 +77,7 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramFactor node2 = model.createNode(cmTarget.getModelNodeId());
 		node2.setLocation(node2Location);
 		
-		ModelLinkageId linkage1Id = new ModelLinkageId(3);
+		FactorLinkId linkage1Id = new FactorLinkId(3);
 		FactorLink cmLinkage = new FactorLink(linkage1Id, node1Id, node2Id);
 		DiagramFactorLink linkage1 = new DiagramFactorLink(model, cmLinkage);
 		

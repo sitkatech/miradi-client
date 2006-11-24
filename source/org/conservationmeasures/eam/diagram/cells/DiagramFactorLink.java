@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
@@ -31,9 +31,9 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return true;
 	}
 	
-	public ModelLinkageId getWrappedId()
+	public FactorLinkId getWrappedId()
 	{
-		return (ModelLinkageId)underlyingObject.getId();
+		return (FactorLinkId)underlyingObject.getId();
 	}
 	
 	public DiagramFactor getFromNode()
@@ -84,17 +84,17 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		// not allowed--ignore attempts to reset the target
 	}
 
-	public DiagramLinkageId getDiagramLinkageId()
+	public DiagramFactorLinkId getDiagramLinkageId()
 	{
-		return new DiagramLinkageId(underlyingObject.getId().asInt());
+		return new DiagramFactorLinkId(underlyingObject.getId().asInt());
 	}
 	
-	public ModelNodeId getFromModelNodeId()
+	public FactorId getFromModelNodeId()
 	{
 		return underlyingObject.getFromNodeId();
 	}
 	
-	public ModelNodeId getToModelNodeId()
+	public FactorId getToModelNodeId()
 	{
 		return underlyingObject.getToNodeId();
 	}

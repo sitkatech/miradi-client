@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
@@ -29,19 +29,19 @@ public class NodePool extends EAMObjectPool
 		put(node.getModelNodeId(), node);
 	}
 	
-	public Factor find(ModelNodeId id)
+	public Factor find(FactorId id)
 	{
 		return (Factor)getRawObject(id);
 	}
 	
-	public void remove(ModelNodeId id)
+	public void remove(FactorId id)
 	{
 		super.remove(id);
 	}
 
-	public ModelNodeId[] getModelNodeIds()
+	public FactorId[] getModelNodeIds()
 	{
-		return (ModelNodeId[])new HashSet(getRawIds()).toArray(new ModelNodeId[0]);
+		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
 	}
 	
 	public IdList getInterventionIds()
@@ -62,7 +62,7 @@ public class NodePool extends EAMObjectPool
 	public Factor[] getDirectThreats()
 	{
 		Vector cmNodes = new Vector();
-		ModelNodeId[] ids = getModelNodeIds();
+		FactorId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
@@ -81,7 +81,7 @@ public class NodePool extends EAMObjectPool
 	private Factor[] getNodesOfType(FactorType type)
 	{
 		Vector cmNodes = new Vector();
-		ModelNodeId[] ids = getModelNodeIds();
+		FactorId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{

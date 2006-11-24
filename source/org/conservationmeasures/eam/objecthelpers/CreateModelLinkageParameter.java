@@ -5,26 +5,26 @@
  */
 package org.conservationmeasures.eam.objecthelpers;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 
 public class CreateModelLinkageParameter extends CreateObjectParameter
 {
-	public CreateModelLinkageParameter(ModelNodeId from, ModelNodeId to)
+	public CreateModelLinkageParameter(FactorId from, FactorId to)
 	{
 		fromId = from;
 		toId = to;
 	}
 
-	public ModelNodeId getFromId()
+	public FactorId getFromId()
 	{
 		return fromId;
 	}
 	
-	public ModelNodeId getToId()
+	public FactorId getToId()
 	{
 		return toId;
 	}
 	
-	ModelNodeId fromId;
-	ModelNodeId toId;
+	FactorId fromId;
+	FactorId toId;
 }

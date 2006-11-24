@@ -5,10 +5,10 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ConceptualModelNodeSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -39,10 +39,10 @@ public class ProjectRepairer
 	
 	void fixNodeAnnotationIds() throws Exception
 	{
-		ModelNodeId[] nodeIds = project.getNodePool().getModelNodeIds();
+		FactorId[] nodeIds = project.getNodePool().getModelNodeIds();
 		for(int i = 0; i < nodeIds.length; ++i)
 		{
-			ModelNodeId nodeId = nodeIds[i];
+			FactorId nodeId = nodeIds[i];
 			Factor node = project.findNode(nodeId);
 			fixGhostIndicatorIds(node);
 			removeInvalidGoalIds(node);
@@ -198,7 +198,7 @@ public class ProjectRepairer
 			
 		try
 		{
-			project.moveNodes(deltaX, deltaY, new DiagramNodeId[] { diagramNode.getDiagramNodeId() });
+			project.moveNodes(deltaX, deltaY, new DiagramFactorId[] { diagramNode.getDiagramNodeId() });
 		}
 		catch(Exception e)
 		{

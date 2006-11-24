@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.ids;
 
-public class DiagramNodeId extends BaseId
+public class DiagramFactorId extends BaseId
 {
 
-	public DiagramNodeId(int idToUse)
+	public DiagramFactorId(int idToUse)
 	{
 		super(idToUse);
 	}

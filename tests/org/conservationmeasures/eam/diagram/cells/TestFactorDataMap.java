@@ -14,8 +14,8 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeContributingFa
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -46,9 +46,9 @@ public class TestFactorDataMap extends EAMTestCase
 
 	public void testFactorDataMap() throws Exception
 	{
-		ModelNodeId wrappedId = new ModelNodeId(2);
+		FactorId wrappedId = new FactorId(2);
 		Cause cmFactor = new Cause(wrappedId);
-		DiagramNodeId nodeId = new DiagramNodeId(44);
+		DiagramFactorId nodeId = new DiagramFactorId(44);
 		DiagramFactor nodeA = DiagramFactor.wrapConceptualModelObject(nodeId, cmFactor);
 		String nodeAText = "Node A";
 		nodeA.setLabel(nodeAText);

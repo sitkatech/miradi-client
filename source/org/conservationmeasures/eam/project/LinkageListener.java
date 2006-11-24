@@ -5,10 +5,10 @@
  */
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 
 public interface LinkageListener
 {
-	public void linkageWasCreated(ModelNodeId fromId, ModelNodeId toId);
-	public void linkageWasDeleted(ModelNodeId fromId, ModelNodeId toId);
+	public void linkageWasCreated(FactorId fromId, FactorId toId);
+	public void linkageWasDeleted(FactorId fromId, FactorId toId);
 }

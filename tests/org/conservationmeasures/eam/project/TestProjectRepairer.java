@@ -5,7 +5,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -28,7 +28,7 @@ public class TestProjectRepairer extends EAMTestCase
 		{
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusIndicators = new IdList();
 			bogusIndicators.add(new IndicatorId(23252));
@@ -55,7 +55,7 @@ public class TestProjectRepairer extends EAMTestCase
 		{
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusGoals = new IdList();
 			bogusGoals.add(BaseId.INVALID);
@@ -82,7 +82,7 @@ public class TestProjectRepairer extends EAMTestCase
 		{
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(BaseId.INVALID);
@@ -109,7 +109,7 @@ public class TestProjectRepairer extends EAMTestCase
 		{
 			CreateObjectParameter parameter = new CreateModelNodeParameter(new FactorTypeTarget());
 			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			ModelNodeId nodeId = new ModelNodeId(rawNodeId.asInt());
+			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
 			bogusObjectives.add(new BaseId(235));
@@ -189,7 +189,7 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId orphan = project.createObject(annotationType);
 			BaseId nonOrphan = project.createObject(annotationType);
 			CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
-			ModelNodeId nodeId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, extraInfo);
+			FactorId nodeId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, extraInfo);
 			IdList annotationIds = new IdList();
 			annotationIds.add(nonOrphan);
 			project.setObjectData(ObjectType.MODEL_NODE, nodeId, nodeTagForAnnotationList, annotationIds.toString());

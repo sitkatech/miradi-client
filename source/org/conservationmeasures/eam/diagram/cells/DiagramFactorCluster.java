@@ -12,14 +12,14 @@ import java.util.Vector;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.jgraph.graph.GraphConstants;
 
 public class DiagramFactorCluster extends DiagramFactor
 {
-	public DiagramFactorCluster(DiagramNodeId idToUse, FactorCluster cmGroup)
+	public DiagramFactorCluster(DiagramFactorId idToUse, FactorCluster cmGroup)
 	{
 		super(idToUse, cmGroup);
 		GraphConstants.setGroupOpaque(getAttributes(), true);

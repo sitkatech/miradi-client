@@ -11,8 +11,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -31,12 +31,12 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		ModelNodeId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramFactor intervention = model.getNodeById(interventionId);
-		ModelNodeId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
+		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramFactor factor = model.getNodeById(factorId);
 		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
-		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
+		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramLinkageId();
 		
 		assertTrue("link not found?", model.hasLinkage(intervention, factor));
 		

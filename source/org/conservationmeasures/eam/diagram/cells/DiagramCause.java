@@ -8,14 +8,14 @@ package org.conservationmeasures.eam.diagram.cells;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Cause;
 
 public class DiagramCause extends DiagramFactor
 {
-	public DiagramCause(DiagramNodeId idToUse, Cause cmFactor)
+	public DiagramCause(DiagramFactorId idToUse, Cause cmFactor)
 	{
 		super(idToUse, cmFactor);
 	}

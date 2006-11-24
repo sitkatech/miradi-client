@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.NodeMoveHandler;
@@ -98,7 +98,7 @@ public class MouseEventHandler implements MouseListener, GraphSelectionListener
 		if(selectedNodes.size() == 0)
 			return;
 		
-		DiagramNodeId[] selectedNodeIds = new DiagramNodeId[selectedNodes.size()];
+		DiagramFactorId[] selectedNodeIds = new DiagramFactorId[selectedNodes.size()];
 		for(int i = 0; i < selectedNodes.size(); ++i)
 		{
 			selectedNodeIds[i] = ((DiagramFactor)selectedNodes.get(i)).getDiagramNodeId();

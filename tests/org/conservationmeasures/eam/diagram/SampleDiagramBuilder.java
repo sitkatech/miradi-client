@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -32,8 +32,8 @@ public class SampleDiagramBuilder
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
-			ModelNodeId fromId = new ModelNodeId(linkagePairs[i*2]);
-			ModelNodeId toId = new ModelNodeId(linkagePairs[i*2+1]);
+			FactorId fromId = new FactorId(linkagePairs[i*2]);
+			FactorId toId = new FactorId(linkagePairs[i*2+1]);
 			CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(fromId, toId);
 			project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
 		}

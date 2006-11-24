@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.FactorCluster;
@@ -33,7 +33,7 @@ public class NodeMoveHandler
 		project = projectToUse;
 	}
 
-	public void nodesWereMovedOrResized(int deltaX, int deltaY, DiagramNodeId[] ids) throws CommandFailedException
+	public void nodesWereMovedOrResized(int deltaX, int deltaY, DiagramFactorId[] ids) throws CommandFailedException
 	{
 		DiagramModel model = getProject().getDiagramModel();
 		model.nodesWereMoved(ids);
@@ -65,7 +65,7 @@ public class NodeMoveHandler
 		
 		if(movedNodes.size() > 0)
 		{
-			DiagramNodeId[] idsActuallyMoved = new DiagramNodeId[movedNodes.size()];
+			DiagramFactorId[] idsActuallyMoved = new DiagramFactorId[movedNodes.size()];
 			for(int i = 0; i < movedNodes.size(); ++i)
 			{
 				DiagramFactor node = (DiagramFactor)movedNodes.get(i);

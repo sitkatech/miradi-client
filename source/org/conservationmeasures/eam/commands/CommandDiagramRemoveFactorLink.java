@@ -7,17 +7,17 @@ package org.conservationmeasures.eam.commands;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 public class CommandDiagramRemoveFactorLink extends Command
 {
-	public CommandDiagramRemoveFactorLink(DiagramLinkageId idToDelete)
+	public CommandDiagramRemoveFactorLink(DiagramFactorLinkId idToDelete)
 	{
 		diagramLinkageId = idToDelete;
-		modelLinkageId = new ModelLinkageId(BaseId.INVALID.asInt());
+		modelLinkageId = new FactorLinkId(BaseId.INVALID.asInt());
 	}
 	
 	public String toString()
@@ -56,12 +56,12 @@ public class CommandDiagramRemoveFactorLink extends Command
 		}
 	}
 
-	public DiagramLinkageId getDiagramLinkageId()
+	public DiagramFactorLinkId getDiagramLinkageId()
 	{
 		return diagramLinkageId;
 	}
 
-	public ModelLinkageId getModelLinkageId()
+	public FactorLinkId getModelLinkageId()
 	{
 		return modelLinkageId;
 	}
@@ -70,6 +70,6 @@ public class CommandDiagramRemoveFactorLink extends Command
 
 	public static final String COMMAND_NAME = "DiagramRemoveLinkage";
 
-	DiagramLinkageId diagramLinkageId;
-	ModelLinkageId modelLinkageId;
+	DiagramFactorLinkId diagramLinkageId;
+	FactorLinkId modelLinkageId;
 }

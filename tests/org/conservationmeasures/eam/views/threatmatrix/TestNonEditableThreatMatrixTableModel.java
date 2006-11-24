@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -91,11 +91,11 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 	
 	public void testIsActiveCell() throws Exception
 	{
-		ModelNodeId threat1 = createThreat("threat one");
-		ModelNodeId threat2 = createThreat("threat two");
+		FactorId threat1 = createThreat("threat one");
+		FactorId threat2 = createThreat("threat two");
 		createThreat("threat three");
-		ModelNodeId target1 = createTarget("target one");
-		ModelNodeId target2 = createTarget("target two");
+		FactorId target1 = createTarget("target one");
+		FactorId target2 = createTarget("target two");
 		createTarget("target three");
 		CreateModelLinkageParameter link1to1 = new CreateModelLinkageParameter(threat1, target1);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to1);
@@ -124,21 +124,21 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		assertFalse(model.isActiveCell(row3, col3));
 	}
 	
-	private ModelNodeId createThreat(String name) throws Exception
+	private FactorId createThreat(String name) throws Exception
 	{
-		ModelNodeId createdId = createNode(new FactorTypeCause(), name);
+		FactorId createdId = createNode(new FactorTypeCause(), name);
 		((Cause)project.findNode(createdId)).increaseTargetCount();
 		return createdId;
 	}
 
-	private ModelNodeId createTarget(String name) throws Exception
+	private FactorId createTarget(String name) throws Exception
 	{
 		return createNode(new FactorTypeTarget(), name);
 	}
 
-	private ModelNodeId createNode(FactorType type, String name) throws Exception
+	private FactorId createNode(FactorType type, String name) throws Exception
 	{
-		ModelNodeId id = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
+		FactorId id = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		Factor node = project.findNode(id);
 		node.setLabel(name);

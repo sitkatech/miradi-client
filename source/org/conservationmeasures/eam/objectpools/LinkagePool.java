@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.LinkageListener;
@@ -34,23 +34,23 @@ public class LinkagePool extends EAMObjectPool
 
 	public void remove(BaseId id)
 	{
-		FactorLink linkage = find((ModelLinkageId)id);
+		FactorLink linkage = find((FactorLinkId)id);
 		super.remove(id);
 		listener.linkageWasDeleted(linkage.getFromNodeId(), linkage.getToNodeId());
 	}
 
-	public FactorLink find(ModelLinkageId id)
+	public FactorLink find(FactorLinkId id)
 	{
 		return (FactorLink)getRawObject(id);
 	}
 	
-	public boolean hasLinkage(ModelNodeId nodeId1, ModelNodeId nodeId2)
+	public boolean hasLinkage(FactorId nodeId1, FactorId nodeId2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			FactorLink thisLinkage = getLinkage(i);
-			ModelNodeId fromId = thisLinkage.getFromNodeId();
-			ModelNodeId toId = thisLinkage.getToNodeId();
+			FactorId fromId = thisLinkage.getFromNodeId();
+			FactorId toId = thisLinkage.getToNodeId();
 			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
 				return true;
 			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
@@ -59,17 +59,17 @@ public class LinkagePool extends EAMObjectPool
 		return false;
 	}
 	
-	public ModelLinkageId[] getModelLinkageIds()
+	public FactorLinkId[] getModelLinkageIds()
 	{
 		BaseId[] rawIds = getIds();
-		ModelLinkageId[] linkageIds = new ModelLinkageId[rawIds.length];
+		FactorLinkId[] linkageIds = new FactorLinkId[rawIds.length];
 		System.arraycopy(rawIds, 0, linkageIds, 0, rawIds.length);
 		return linkageIds;
 	}
 	
 	private FactorLink getLinkage(int index)
 	{
-		return find((ModelLinkageId)getIds()[index]);
+		return find((FactorLinkId)getIds()[index]);
 	}
 	
 	LinkageListener listener;

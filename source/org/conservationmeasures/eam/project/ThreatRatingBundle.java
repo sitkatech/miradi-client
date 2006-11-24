@@ -6,12 +6,12 @@
 package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class ThreatRatingBundle
 {
-	public ThreatRatingBundle(ModelNodeId threatIdToUse, ModelNodeId targetIdToUse, BaseId defaultValueIdToUse)
+	public ThreatRatingBundle(FactorId threatIdToUse, FactorId targetIdToUse, BaseId defaultValueIdToUse)
 	{
 		this();
 		
@@ -39,8 +39,8 @@ public class ThreatRatingBundle
 	
 	private void pullDataFrom(EnhancedJsonObject json)
 	{
-		threatId = new ModelNodeId(json.getInt(TAG_THREAT_ID));
-		targetId = new ModelNodeId(json.getInt(TAG_TARGET_ID));
+		threatId = new FactorId(json.getInt(TAG_THREAT_ID));
+		targetId = new FactorId(json.getInt(TAG_TARGET_ID));
 		defaultValueId = new BaseId(json.getInt(TAG_DEFAULT_VALUE_ID));
 		ratings = new RatingValueSet(json.getJson(TAG_VALUES));
 	}
@@ -50,12 +50,12 @@ public class ThreatRatingBundle
 		pullDataFrom(otherBundle.toJson());
 	}
 	
-	public ModelNodeId getThreatId()
+	public FactorId getThreatId()
 	{
 		return threatId;
 	}
 	
-	public ModelNodeId getTargetId()
+	public FactorId getTargetId()
 	{
 		return targetId;
 	}
@@ -112,8 +112,8 @@ public class ThreatRatingBundle
 	private static final String TAG_DEFAULT_VALUE_ID = "DefaultValueId";
 	private static final String TAG_VALUES = "Values";
 	
-	ModelNodeId threatId;
-	ModelNodeId targetId;
+	FactorId threatId;
+	FactorId targetId;
 	BaseId defaultValueId;
 	RatingValueSet ratings;
 }

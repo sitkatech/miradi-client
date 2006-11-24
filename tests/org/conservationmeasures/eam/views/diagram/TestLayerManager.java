@@ -9,10 +9,10 @@ import org.conservationmeasures.eam.diagram.cells.DiagramCause;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Target;
@@ -36,11 +36,11 @@ public class TestLayerManager extends EAMTestCase
 		cmIntervention = new Strategy(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
 		
-		DiagramNodeId targetNodeId = new DiagramNodeId(44);
+		DiagramFactorId targetNodeId = new DiagramFactorId(44);
 		target = new DiagramTarget(targetNodeId, cmTarget);
-		DiagramNodeId factorNodeId = new DiagramNodeId(48);
+		DiagramFactorId factorNodeId = new DiagramFactorId(48);
 		factor = new DiagramCause(factorNodeId, cmFactor);
-		DiagramNodeId interventionNodeId = new DiagramNodeId(99);
+		DiagramFactorId interventionNodeId = new DiagramFactorId(99);
 		intervention = new DiagramStrategy(interventionNodeId, cmIntervention);
 	}
 
@@ -56,15 +56,15 @@ public class TestLayerManager extends EAMTestCase
 	
 	public void testHide() throws Exception
 	{
-		DiagramNodeId nodeId1 = new DiagramNodeId(44);
-		DiagramNodeId nodeId2 = new DiagramNodeId(77);
+		DiagramFactorId nodeId1 = new DiagramFactorId(44);
+		DiagramFactorId nodeId2 = new DiagramFactorId(77);
 		LayerManager manager = new LayerManager();
 		manager.setVisibility(DiagramStrategy.class, false);
 		verifyVisibility("hidden type", false, new DiagramStrategy(nodeId1, cmIntervention), manager);
 		verifyVisibility("non-hidden type", true, new DiagramTarget(nodeId2, cmTarget), manager);
 		assertFalse("All layers still visible?", manager.areAllNodesVisible());
 		
-		DiagramNodeId nodeId3 = new DiagramNodeId(99);
+		DiagramFactorId nodeId3 = new DiagramFactorId(99);
 		manager.setVisibility(DiagramStrategy.class, true);
 		verifyVisibility("unhidden type", true, new DiagramTarget(nodeId3, cmTarget), manager);
 		assertTrue("All layers not visible again?", manager.areAllNodesVisible());
@@ -118,9 +118,9 @@ public class TestLayerManager extends EAMTestCase
 		assertEquals("node: " + text + " (" + node.getLabel() + ") ",expected, manager.isVisible(node));
 	}
 	
-	private ModelNodeId takeNextModelNodeId()
+	private FactorId takeNextModelNodeId()
 	{
-		return new ModelNodeId(idAssigner.takeNextId().asInt());
+		return new FactorId(idAssigner.takeNextId().asInt());
 	}
 	
 	IdAssigner idAssigner;

@@ -12,9 +12,9 @@ import java.awt.geom.Rectangle2D;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objects.Factor;
@@ -62,7 +62,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle2D oneTarget = scope.getBounds();
 		assertTrue("didn't surround target?", oneTarget.contains(target1.getBounds()));
 
-		model.moveNodes(100, 100, new DiagramNodeId[] {target1.getDiagramNodeId()});
+		model.moveNodes(100, 100, new DiagramFactorId[] {target1.getDiagramNodeId()});
 		Rectangle2D movedTarget = scope.getBounds();
 		assertTrue("didn't follow move?", movedTarget.contains(target1.getBounds()));
 		assertNotEquals("still at x zero?", 0, (int)movedTarget.getX());
@@ -70,7 +70,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
 		DiagramFactor target2 = createNode(Factor.TYPE_TARGET);
-		model.moveNodes(200, 200, new DiagramNodeId[] {target2.getDiagramNodeId()});
+		model.moveNodes(200, 200, new DiagramFactorId[] {target2.getDiagramNodeId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
 		assertTrue("didn't surround target1?", twoTargets.contains(target1.getBounds()));
@@ -79,7 +79,7 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	private DiagramFactor createNode(FactorType nodeType) throws Exception
 	{
-		ModelNodeId id = new ModelNodeId(idAssigner.takeNextId().asInt());
+		FactorId id = new FactorId(idAssigner.takeNextId().asInt());
 		CreateModelNodeParameter parameter = new CreateModelNodeParameter(nodeType);
 		Factor cmObject = Factor.createConceptualModelObject(id, parameter);
 		nodePool.put(cmObject);

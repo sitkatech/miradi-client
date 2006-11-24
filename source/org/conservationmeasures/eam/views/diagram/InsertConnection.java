@@ -11,8 +11,8 @@ import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.ModelLinkageId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.ConnectionPropertiesDialog;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
@@ -39,8 +39,8 @@ public class InsertConnection extends ProjectDoer
 			return;
 		
 		DiagramModel model = getProject().getDiagramModel();
-		ModelNodeId fromId = dialog.getFrom().getWrappedId();
-		ModelNodeId toId = dialog.getTo().getWrappedId();
+		FactorId fromId = dialog.getFrom().getWrappedId();
+		FactorId toId = dialog.getTo().getWrappedId();
 		
 		if(fromId.equals(toId))
 		{
@@ -75,7 +75,7 @@ public class InsertConnection extends ProjectDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 	
-	boolean wouldCreateLinkageLoop(DiagramModel dModel, ModelNodeId fromNodeId, ModelNodeId toNodeId)
+	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromNodeId, FactorId toNodeId)
     {
 		Factor cmFromNode = dModel.getNodePool().find(fromNodeId);
 		Factor[] cmUpstreamNodes = dModel.getAllUpstreamNodes(cmFromNode).toNodeArray();
@@ -87,12 +87,12 @@ public class InsertConnection extends ProjectDoer
 		return false;
     }
 	
-	public static CommandDiagramAddFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, ModelNodeId fromId, ModelNodeId toId) throws CommandFailedException
+	public static CommandDiagramAddFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, FactorId fromId, FactorId toId) throws CommandFailedException
 	{
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		projectToUse.executeCommand(createModelLinkage);
-		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
+		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		projectToUse.executeCommand(command);
 		return command;

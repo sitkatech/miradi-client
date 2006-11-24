@@ -16,7 +16,7 @@ import java.util.Iterator;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -258,12 +258,12 @@ public class ThreatRatingFramework
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		NodePool nodePool = project.getNodePool();
-		ModelNodeId threatId = bundle.getThreatId();
+		FactorId threatId = bundle.getThreatId();
 		Factor threat = nodePool.find(threatId);
 		if(threat == null || !threat.isDirectThreat())
 			return false;
 		
-		ModelNodeId targetId = bundle.getTargetId();
+		FactorId targetId = bundle.getTargetId();
 		Factor target = nodePool.find(targetId);
 		if(target == null || !target.isTarget())
 			return false;
@@ -318,7 +318,7 @@ public class ThreatRatingFramework
 	
 
 	
-	public ThreatRatingBundle getBundle(ModelNodeId threatId, ModelNodeId targetId) throws Exception
+	public ThreatRatingBundle getBundle(FactorId threatId, FactorId targetId) throws Exception
 	{
 		ThreatRatingBundle existing = (ThreatRatingBundle)bundles.get(getBundleKey(threatId, targetId));
 		if(existing != null)

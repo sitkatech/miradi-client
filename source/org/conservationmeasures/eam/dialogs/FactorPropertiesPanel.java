@@ -33,7 +33,7 @@ import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -120,7 +120,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		return currentNode;
 	}
 
-	public ModelNodeId getNodeId()
+	public FactorId getNodeId()
 	{
 		return getCurrentNode().getWrappedId();
 	}

@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -33,7 +33,7 @@ public class TestDeleteActivity extends EAMTestCase
 		{
 			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new FactorTypeStrategy());
 			BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
-			ModelNodeId interventionId = new ModelNodeId(rawInterventionId.asInt());
+			FactorId interventionId = new FactorId(rawInterventionId.asInt());
 			Strategy intervention = (Strategy)project.findNode(interventionId);
 			BaseId resourceId = project.createObject(ObjectType.PROJECT_RESOURCE);
 	//		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);

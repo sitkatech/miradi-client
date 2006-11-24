@@ -10,14 +10,14 @@ import java.awt.Dimension;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 
 public class CommandSetFactorSize extends Command
 {
-	public CommandSetFactorSize(DiagramNodeId idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
+	public CommandSetFactorSize(DiagramFactorId idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
 	{
 		id = idToUpdate;
 		currentSize = updatedSize;
@@ -70,7 +70,7 @@ public class CommandSetFactorSize extends Command
 		return previousSize;
 	}
 
-	DiagramNodeId getId()
+	DiagramFactorId getId()
 	{
 		return id;
 	}
@@ -82,7 +82,7 @@ public class CommandSetFactorSize extends Command
 	
 	public static final String COMMAND_NAME = "ReSize";
 
-	DiagramNodeId id;
+	DiagramFactorId id;
 	Dimension currentSize;
 	Dimension previousSize;
 }

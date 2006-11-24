@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramLinkageId;
-import org.conservationmeasures.eam.ids.DiagramNodeId;
-import org.conservationmeasures.eam.ids.ModelNodeId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -99,8 +99,8 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		ModelNodeId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
+		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(insert);
 		verifyNodePresent(insert.getInsertedId());
 		project.undo();
@@ -150,13 +150,13 @@ public class TestUndoAndRedo extends EAMTestCase
 		
 	}
 	
-	private void verifyNodePresent(DiagramNodeId cellId) throws Exception
+	private void verifyNodePresent(DiagramFactorId cellId) throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
 		assertNotNull("Node not present?", model.getNodeById(cellId));
 	}
 	
-	private void verifyNodeNotPresent(DiagramNodeId cellId)
+	private void verifyNodeNotPresent(DiagramFactorId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
@@ -172,7 +172,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyNodeNotPresent(ModelNodeId cellId)
+	private void verifyNodeNotPresent(FactorId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
@@ -188,7 +188,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private void verifyLinkageNotPresent(DiagramLinkageId cellId)
+	private void verifyLinkageNotPresent(DiagramFactorLinkId cellId)
 	{
 		DiagramModel model = project.getDiagramModel();
 		
@@ -204,20 +204,20 @@ public class TestUndoAndRedo extends EAMTestCase
 		EAM.setLogToConsole();
 	}
 	
-	private ModelNodeId createModelAndDiagramNodeWithCommands(FactorType type) throws Exception
+	private FactorId createModelAndDiagramNodeWithCommands(FactorType type) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		project.executeCommand(createModelNodeCommand);
-		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
-		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		FactorId modelNodeId = (FactorId)createModelNodeCommand.getCreatedId();
+		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(addToDiagramCommand);
 		return modelNodeId;
 		
 	}
 	
 	ProjectForTesting project;
-	ModelNodeId fromId;
-	ModelNodeId toId;
-	DiagramLinkageId linkId;
+	FactorId fromId;
+	FactorId toId;
+	DiagramFactorLinkId linkId;
 }
