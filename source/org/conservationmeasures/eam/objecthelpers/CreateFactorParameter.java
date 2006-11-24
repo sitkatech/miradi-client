@@ -11,13 +11,13 @@ public class CreateFactorParameter extends CreateObjectParameter
 {
 	public CreateFactorParameter(FactorType type)
 	{
-		nodeType = type;
+		factorType = type;
 	}
 
 	public FactorType getNodeType()
 	{
-		return nodeType;
+		return factorType;
 	}
 	
-	FactorType nodeType;
+	FactorType factorType;
 }
