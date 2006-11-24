@@ -44,6 +44,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
 import org.conservationmeasures.eam.objects.ConceptualModelFactor;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -102,7 +103,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
-		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
+		ModelNodeId factorId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
 		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
 		project.executeCommand(cmd);
 		DiagramModel model = new DiagramModel(project);
@@ -207,9 +208,9 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(ConceptualModelNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		
 		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -235,8 +236,8 @@ public class TestProject extends EAMTestCase
 
 	public void testGetAllSelectedNodes() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(ConceptualModelNode.TYPE_INTERVENTION);
 		
 		DiagramLinkage linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
@@ -258,9 +259,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node2 =  createNode(ConceptualModelNode.TYPE_INTERVENTION);
+		DiagramNode node3 =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -291,7 +292,7 @@ public class TestProject extends EAMTestCase
 
 	public void testDiagramMoveOnly() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 		node1.setPreviousSize(node1.getSize());
@@ -314,7 +315,7 @@ public class TestProject extends EAMTestCase
 		int deltaY = 88;
 		node1.setLocation(new Point(deltaX,deltaY));
 		
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node2 =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		node2.setPreviousLocation(new Point(10,10));
 		node2.setLocation(new Point(20,30));
 		
@@ -336,13 +337,13 @@ public class TestProject extends EAMTestCase
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		DiagramNode node1 =  createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode node1 =  createNode(ConceptualModelNode.TYPE_INTERVENTION);
 		node1.setSize(new Dimension(5,10));
 		node1.setPreviousSize((new Dimension(55, 80)));
 		node1.setPreviousLocation(new Point(0,0));
 		node1.setLocation(new Point(0,0));
 
-		DiagramNode node2 =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node2 =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		node2.setSize(new Dimension(15,15));
 		node2.setPreviousSize((new Dimension(52, 33)));
 		node2.setPreviousLocation(new Point(0,0));
@@ -373,25 +374,25 @@ public class TestProject extends EAMTestCase
 		Dimension position2 = new Dimension(95, 88);
 		
 		
-		DiagramNode nodeResizedAndMoved =  createNode(DiagramNode.TYPE_INTERVENTION);
+		DiagramNode nodeResizedAndMoved =  createNode(ConceptualModelNode.TYPE_INTERVENTION);
 		nodeResizedAndMoved.setSize(position1);
 		nodeResizedAndMoved.setPreviousSize(position2);
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
 		nodeResizedAndMoved.setLocation(new Point(x+deltaX, y+deltaY));
 
-		DiagramNode nodeMovedOnly =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode nodeMovedOnly =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		nodeMovedOnly.setSize(position1);
 		nodeMovedOnly.setPreviousSize(position1);
 		nodeMovedOnly.setPreviousLocation(new Point(x,y));
 		nodeMovedOnly.setLocation(new Point(x+deltaX, y+deltaY));
 		
-		DiagramNode nodeResizedOnly = createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode nodeResizedOnly = createNode(ConceptualModelNode.TYPE_FACTOR);
 		nodeResizedOnly.setSize(position1);
 		nodeResizedOnly.setPreviousSize(position2);
 		nodeResizedOnly.setPreviousLocation(new Point(x,y));
 		nodeResizedOnly.setLocation(new Point(x,y));
 
-		DiagramNode nodeNotMovedOrResized =  createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode nodeNotMovedOrResized =  createNode(ConceptualModelNode.TYPE_FACTOR);
 		nodeNotMovedOrResized.setSize(position1);
 		nodeNotMovedOrResized.setPreviousSize(position1);
 		nodeNotMovedOrResized.setPreviousLocation(new Point(x,y));
@@ -429,9 +430,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramModel model = project.getDiagramModel();
 
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node2 = createNode(DiagramNode.TYPE_INTERVENTION);
-		DiagramNode node3 = createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_INTERVENTION);
+		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_FACTOR);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
@@ -457,7 +458,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("objects already in the pool?", 0, project.getNodePool().size());
 		assertEquals("nodes  already in the diagram?", 0, model.getAllNodes().size());
 
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
 
 		Object[] selectedCells = new DiagramNode[] {node1};
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
@@ -492,7 +493,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
-		ModelNodeId modelNodeId = project.createNode(DiagramNode.TYPE_FACTOR);
+		ModelNodeId modelNodeId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
 		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
@@ -504,8 +505,8 @@ public class TestProject extends EAMTestCase
 	{
 		ProjectServerForTesting database = project.getTestDatabase();
 		
-		ModelNodeId targetId = project.createNode(DiagramNode.TYPE_TARGET);
-		ModelNodeId factorId = project.createNode(DiagramNode.TYPE_FACTOR);
+		ModelNodeId targetId = project.createNode(ConceptualModelNode.TYPE_TARGET);
+		ModelNodeId factorId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
 		int existingCalls = database.callsToWriteObject;
 		
 		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), targetId);
@@ -537,10 +538,10 @@ public class TestProject extends EAMTestCase
 	
 	public void testInsertDuplicateNodes() throws Exception
 	{
-		ModelNodeId gotId = project.createNode(DiagramNode.TYPE_FACTOR);
+		ModelNodeId gotId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
 		try
 		{
-			project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, gotId);
+			project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, gotId);
 			fail("Should have thrown for inserting a duplicate id");
 		}
 		catch(RuntimeException ignoreExpected)
@@ -711,12 +712,12 @@ public class TestProject extends EAMTestCase
 		diskProject.createOrOpen(tempDir);
 		try
 		{
-			factorId = createNodeAndAddToDiagram(diskProject, DiagramNode.TYPE_FACTOR, BaseId.INVALID);
-			ModelNodeId targetId = createNodeAndAddToDiagram(diskProject, DiagramNode.TYPE_TARGET, BaseId.INVALID);
+			factorId = createNodeAndAddToDiagram(diskProject, ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
+			ModelNodeId targetId = createNodeAndAddToDiagram(diskProject, ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
 			
 			InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
-			CreateModelNodeParameter parameter = new CreateModelNodeParameter(DiagramNode.TYPE_INTERVENTION);
+			CreateModelNodeParameter parameter = new CreateModelNodeParameter(ConceptualModelNode.TYPE_INTERVENTION);
 			ModelNodeId interventionId = (ModelNodeId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			DiagramNodeId diagramNodeId = diskProject.addNodeToDiagram(interventionId);
 

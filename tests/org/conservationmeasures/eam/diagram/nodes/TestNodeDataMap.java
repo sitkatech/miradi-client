@@ -22,19 +22,19 @@ public class TestNodeDataMap extends EAMTestCase
 
 	public void testConvertNodeTypeToInt()
 	{
-		assertEquals(DiagramNode.INT_TYPE_TARGET, NodeDataMap.convertNodeTypeToInt(new NodeTypeTarget()));
-		assertEquals(DiagramNode.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeDirectThreat()));
-		assertEquals(DiagramNode.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeIndirectFactor()));
-		assertEquals(DiagramNode.INT_TYPE_INTERVENTION, NodeDataMap.convertNodeTypeToInt(new NodeTypeIntervention()));
-		assertEquals(DiagramNode.INT_TYPE_CLUSTER, NodeDataMap.convertNodeTypeToInt(new NodeTypeCluster()));
+		assertEquals(NodeDataMap.INT_TYPE_TARGET, NodeDataMap.convertNodeTypeToInt(new NodeTypeTarget()));
+		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeDirectThreat()));
+		assertEquals(NodeDataMap.INT_TYPE_INDIRECT_FACTOR, NodeDataMap.convertNodeTypeToInt(new NodeTypeIndirectFactor()));
+		assertEquals(NodeDataMap.INT_TYPE_INTERVENTION, NodeDataMap.convertNodeTypeToInt(new NodeTypeIntervention()));
+		assertEquals(NodeDataMap.INT_TYPE_CLUSTER, NodeDataMap.convertNodeTypeToInt(new NodeTypeCluster()));
 	}
 	
 	public void testConvertIntToNodeType()
 	{
-		assertEquals(new NodeTypeTarget(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_TARGET));
-		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_DIRECT_THREAT));
-		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_INDIRECT_FACTOR));
-		assertEquals(new NodeTypeIntervention(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_INTERVENTION));
-		assertEquals(new NodeTypeCluster(), NodeDataMap.convertIntToNodeType(DiagramNode.INT_TYPE_CLUSTER));
+		assertEquals(new NodeTypeTarget(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_TARGET));
+		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_DIRECT_THREAT));
+		assertEquals(new NodeTypeFactor(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INDIRECT_FACTOR));
+		assertEquals(new NodeTypeIntervention(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_INTERVENTION));
+		assertEquals(new NodeTypeCluster(), NodeDataMap.convertIntToNodeType(NodeDataMap.INT_TYPE_CLUSTER));
 	}
 }

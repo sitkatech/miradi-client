@@ -6,15 +6,15 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.nodes.DiagramIntervention;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class InsertIntervention extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return DiagramNode.TYPE_INTERVENTION;
+		return ConceptualModelNode.TYPE_INTERVENTION;
 	}
 
 	public String getInitialText()

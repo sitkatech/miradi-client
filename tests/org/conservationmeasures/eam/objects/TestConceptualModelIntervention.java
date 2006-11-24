@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -21,7 +20,7 @@ public class TestConceptualModelIntervention extends ObjectTestCase
 
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_INTERVENTION);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_INTERVENTION);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	

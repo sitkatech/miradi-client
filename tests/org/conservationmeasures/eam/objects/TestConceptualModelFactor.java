@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -19,14 +18,14 @@ public class TestConceptualModelFactor extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
 		verifyFields(ObjectType.MODEL_NODE, extraInfo);
 	}
 	
 	public void testExtraInfo() throws Exception
 	{
 		ModelNodeId idToCreate = new ModelNodeId(17);
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
 		ConceptualModelNode node = ConceptualModelNode.createConceptualModelObject(idToCreate, extraInfo);
 		CreateModelNodeParameter gotExtraInfo = (CreateModelNodeParameter)node.getCreationExtraInfo();
 		assertEquals(extraInfo.getNodeType(), gotExtraInfo.getNodeType());

@@ -136,8 +136,8 @@ public class TestDiagramModel extends EAMTestCase
 
 	public void testIsNode() throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		DiagramLinkage link = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isNode());
 		assertTrue("target isn't a node?", target.isNode());
@@ -146,8 +146,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testCounts()throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertEquals(2, model.getNodeCount());
 		assertEquals(1, model.getLinkageCount());
@@ -155,10 +155,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testHasLinkage() throws Exception
 	{
-		DiagramNode factor = createNode(DiagramNode.TYPE_FACTOR);
+		DiagramNode factor = createNode(ConceptualModelNode.TYPE_FACTOR);
 		model.deleteNode(factor);
-		DiagramNode newFactor = createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode newFactor = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		assertFalse("already linked?", model.hasLinkage(newFactor, target));
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), newFactor.getWrappedId(), target.getWrappedId());
 		assertTrue("not linked?", model.hasLinkage(newFactor, target));
@@ -167,9 +167,9 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetLinkages() throws Exception
 	{
-		DiagramNode factor1 = createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode factor2 = createNode(DiagramNode.TYPE_FACTOR);
-		DiagramNode target = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode factor1 = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode factor2 = createNode(ConceptualModelNode.TYPE_FACTOR);
+		DiagramNode target = createNode(ConceptualModelNode.TYPE_TARGET);
 		DiagramLinkage linkage1 = createLinkage(takeNextLinkageId(), factor1.getWrappedId(), target.getWrappedId());
 		DiagramLinkage linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getLinkages(target);
@@ -194,16 +194,16 @@ public class TestDiagramModel extends EAMTestCase
 		ConceptualModelTarget cmTargetToUndo = new ConceptualModelTarget(nodeToDelete.getWrappedId());
 		
 		model.createNode(cmTargetToUndo.getModelNodeId()); //simulates an undo
-		DiagramNode nodeAfterUndo = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode nodeAfterUndo = createNode(ConceptualModelNode.TYPE_TARGET);
 		assertTrue("reused an id?", nodeAfterUndo.getDiagramNodeId().asInt() > lastCreated.getDiagramNodeId().asInt());
 	}
 
 	public void testGetAllNodes() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
 		createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node1.getWrappedId(), node2.getWrappedId());
-		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);		
 		
 		Vector nodes = model.getAllNodes();
 		assertEquals(3, nodes.size());
@@ -214,10 +214,10 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testGetAllLinkages() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
 		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
-		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);		
 		DiagramLinkage link2 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node3.getWrappedId());
 		
 		Vector linkages = model.getAllLinkages();
@@ -228,8 +228,8 @@ public class TestDiagramModel extends EAMTestCase
 	
 	public void testFillFrom() throws Exception
 	{
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);		
-		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);		
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);		
+		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);		
 		DiagramLinkage link1 = createLinkage(takeNextLinkageId(), node1.getWrappedId(), node2.getWrappedId());
 
 		DiagramModel copy = new DiagramModel(project);
@@ -244,7 +244,7 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		TestTableModel testModel = new TestTableModel();
 		testModel.addListener(model);
-		DiagramNode node1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node1 = createNode(ConceptualModelNode.TYPE_TARGET);
 		assertEquals("test model wasn't notified of add action?", 1, testModel.nodeAdded);
 		assertEquals("node changed already called?", 0, testModel.nodeChanged);
 		assertEquals("node deleted already called?", 0, testModel.nodeDeleted);
@@ -268,8 +268,8 @@ public class TestDiagramModel extends EAMTestCase
 		assertEquals("delete node did a link add notify?", 0, testModel.linkAdded);
 		assertEquals("delete node did a link delete notify?", 0, testModel.linkDeleted);
 
-		DiagramNode node2 = createNode(DiagramNode.TYPE_TARGET);
-		DiagramNode node3 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode node2 = createNode(ConceptualModelNode.TYPE_TARGET);
+		DiagramNode node3 = createNode(ConceptualModelNode.TYPE_TARGET);
 		DiagramLinkage link1 = createLinkage(new ModelLinkageId(BaseId.INVALID.asInt()), node2.getWrappedId(), node3.getWrappedId());
 		assertEquals("didn't do more node add notify's?", 3, testModel.nodeAdded);
 		assertEquals("add link did a node delete notify?", 1, testModel.nodeDeleted);

@@ -208,6 +208,12 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		addField(TAG_GOAL_IDS, goals);
 	}
 
+	public static final NodeType TYPE_INVALID = null;
+	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
+	public static final NodeType TYPE_FACTOR = new NodeTypeFactor();
+	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
+	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
+	
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";

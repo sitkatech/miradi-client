@@ -5,15 +5,15 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class CreateCluster extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return DiagramNode.TYPE_CLUSTER;
+		return ConceptualModelNode.TYPE_CLUSTER;
 	}
 
 	public String getInitialText()

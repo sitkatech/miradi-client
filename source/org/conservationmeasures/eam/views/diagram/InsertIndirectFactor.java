@@ -16,7 +16,7 @@ public class InsertIndirectFactor extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return DiagramNode.TYPE_FACTOR;
+		return ConceptualModelNode.TYPE_FACTOR;
 	}
 
 	public String getInitialText()

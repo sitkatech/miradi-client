@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -21,7 +20,7 @@ public class ConceptualModelFactor extends ConceptualModelNode
 	
 	public ConceptualModelFactor(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, DiagramNode.TYPE_FACTOR, json);
+		super(idToUse, ConceptualModelNode.TYPE_FACTOR, json);
 	}
 
 	public boolean isFactor()

@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
 import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -20,6 +19,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -37,8 +37,8 @@ public class TestUndoAndRedo extends EAMTestCase
 		super.setUp();
 		project = new ProjectForTesting(getName());
 
-		fromId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_FACTOR);
-		toId = createModelAndDiagramNodeWithCommands(DiagramNode.TYPE_INTERVENTION);
+		fromId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_FACTOR);
+		toId = createModelAndDiagramNodeWithCommands(ConceptualModelNode.TYPE_INTERVENTION);
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramLinkageId();
 	}
@@ -99,7 +99,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	{
 		project.undo();
 		
-		ModelNodeId modelNodeId = project.createNode(DiagramNode.TYPE_FACTOR);
+		ModelNodeId modelNodeId = project.createNode(ConceptualModelNode.TYPE_FACTOR);
 		CommandDiagramAddNode insert = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(insert);
 		verifyNodePresent(insert.getInsertedId());
@@ -206,7 +206,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private ModelNodeId createModelAndDiagramNodeWithCommands(NodeType type) throws Exception
 	{
-		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(DiagramNode.TYPE_FACTOR);
+		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(ConceptualModelNode.TYPE_FACTOR);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		project.executeCommand(createModelNodeCommand);
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();

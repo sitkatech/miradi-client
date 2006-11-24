@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -25,14 +24,14 @@ public class ConceptualModelIntervention extends ConceptualModelNode
 {
 	public ConceptualModelIntervention(ModelNodeId idToUse)
 	{
-		super(idToUse, DiagramNode.TYPE_INTERVENTION);
+		super(idToUse, ConceptualModelNode.TYPE_INTERVENTION);
 		status = STATUS_REAL;
 		clear();
 	}
 	
 	public ConceptualModelIntervention(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, DiagramNode.TYPE_INTERVENTION, json);
+		super(idToUse, ConceptualModelNode.TYPE_INTERVENTION, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 

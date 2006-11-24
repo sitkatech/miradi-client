@@ -1,6 +1,5 @@
 package org.conservationmeasures.eam.project;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -160,7 +159,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.OBJECTIVE;
 		String nodeTagForAnnotationList = ConceptualModelNode.TAG_OBJECTIVE_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_FACTOR, nodeTagForAnnotationList);
 		
 	}
 
@@ -169,7 +168,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.GOAL;
 		String nodeTagForAnnotationList = ConceptualModelNode.TAG_GOAL_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_TARGET, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_TARGET, nodeTagForAnnotationList);
 		
 	}
 
@@ -178,7 +177,7 @@ public class TestProjectRepairer extends EAMTestCase
 		int annotationType = ObjectType.INDICATOR;
 		String nodeTagForAnnotationList = ConceptualModelNode.TAG_INDICATOR_IDS;
 
-		verifyDeleteOrphanAnnotations(annotationType, DiagramNode.TYPE_FACTOR, nodeTagForAnnotationList);
+		verifyDeleteOrphanAnnotations(annotationType, ConceptualModelNode.TYPE_FACTOR, nodeTagForAnnotationList);
 		
 	}
 

@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.InsertConnection;
@@ -30,9 +31,9 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		ModelNodeId interventionId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
+		ModelNodeId interventionId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_INTERVENTION, BaseId.INVALID);
 		DiagramNode intervention = model.getNodeById(interventionId);
-		ModelNodeId factorId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+		ModelNodeId factorId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
 		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();

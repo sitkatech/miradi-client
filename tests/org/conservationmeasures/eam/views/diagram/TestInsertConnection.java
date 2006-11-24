@@ -6,11 +6,11 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
@@ -37,9 +37,9 @@ public class TestInsertConnection extends EAMTestCase
 	
 	public void testwouldCreateLinkageLoop() throws Exception
 	{
-		ModelNodeId node1 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node2 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
-		ModelNodeId node3 = project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node1 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node2 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
+		ModelNodeId node3 = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
 		
 		CreateModelLinkageParameter parameter12 = new CreateModelLinkageParameter(node1, node2);
 		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);
@@ -59,9 +59,9 @@ public class TestInsertConnection extends EAMTestCase
 		try
 		{
 			assertFalse("Enabled when no nodes in the system?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(DiagramNode.TYPE_TARGET, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_TARGET, BaseId.INVALID);
 			assertFalse("Enabled when only 1 node?", doer.isAvailable());
-			project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+			project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
 			assertTrue("not enabled when 2 nodes?", doer.isAvailable());
 		}
 		finally

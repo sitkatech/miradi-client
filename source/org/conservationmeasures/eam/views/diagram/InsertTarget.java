@@ -5,16 +5,16 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodes.DiagramTarget;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 
 public class InsertTarget extends InsertNode
 {
 	public NodeType getTypeToInsert()
 	{
-		return DiagramNode.TYPE_TARGET;
+		return ConceptualModelNode.TYPE_TARGET;
 	}
 
 	public String getInitialText()

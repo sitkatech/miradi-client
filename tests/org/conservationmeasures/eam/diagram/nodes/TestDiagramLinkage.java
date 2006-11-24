@@ -78,8 +78,8 @@ public class TestDiagramLinkage extends EAMTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		ModelNodeId interventionId = project.createNodeAndAddToDiagram(DiagramNode.TYPE_INTERVENTION, BaseId.INVALID);
-		ModelNodeId factorId = 	project.createNodeAndAddToDiagram(DiagramNode.TYPE_FACTOR, BaseId.INVALID);
+		ModelNodeId interventionId = project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_INTERVENTION, BaseId.INVALID);
+		ModelNodeId factorId = 	project.createNodeAndAddToDiagram(ConceptualModelNode.TYPE_FACTOR, BaseId.INVALID);
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);

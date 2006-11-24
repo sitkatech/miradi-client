@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectdata.IdListData;
@@ -15,13 +14,13 @@ public class ConceptualModelCluster extends ConceptualModelNode
 {
 	public ConceptualModelCluster(ModelNodeId idToUse)
 	{
-		super(idToUse, DiagramNode.TYPE_CLUSTER);
+		super(idToUse, ConceptualModelNode.TYPE_CLUSTER);
 		clear();
 	}
 
 	public ConceptualModelCluster(ModelNodeId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, DiagramNode.TYPE_CLUSTER, json);
+		super(idToUse, ConceptualModelNode.TYPE_CLUSTER, json);
 	}
 	
 	public boolean isCluster()

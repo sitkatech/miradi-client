@@ -12,7 +12,6 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
@@ -207,11 +206,11 @@ public class ObjectManager
 				return getAnnotationFactorLabel(annotationType, annotationId);
 
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_TARGET, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_FACTOR, annotationId, annotationType, fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -229,11 +228,11 @@ public class ObjectManager
 				return getAnnotationFactorLabel(objectType, objectId);
 
 			if (fieldTag.equals(Desire.PSEUDO_TAG_TARGETS))
-				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_TARGET, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_TARGET, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_FACTOR, objectId, objectType, fieldTag);
 		}
 		catch(Exception e)
 		{
@@ -251,9 +250,9 @@ public class ObjectManager
 				return getAnnotationFactorLabel(objectType, objectId);
 
 			if (fieldTag.equals(Desire.PSEUDO_TAG_STRATEGIES))
-				return getRelatedFactorLabelsAsMultiLine(DiagramNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
+				return getRelatedFactorLabelsAsMultiLine(ConceptualModelNode.TYPE_INTERVENTION, objectType, objectId, fieldTag);
 			if (fieldTag.equals(Desire.PSEUDO_TAG_DIRECT_THREATS))
-				return getRelatedDirectThreatLabelsAsMultiLine(DiagramNode.TYPE_FACTOR, objectId, objectType, fieldTag);
+				return getRelatedDirectThreatLabelsAsMultiLine(ConceptualModelNode.TYPE_FACTOR, objectId, objectType, fieldTag);
 		}
 		catch(Exception e)
 		{

@@ -30,6 +30,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
@@ -364,7 +365,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
 		DiagramModel model = project.getDiagramModel();
-		NodeType type = DiagramNode.TYPE_FACTOR;
+		NodeType type = ConceptualModelNode.TYPE_FACTOR;
 
 		DiagramNodeId from = insertNode(type);
 		DiagramNodeId to = insertTarget();
@@ -429,7 +430,7 @@ public class TestCommands extends EAMTestCase
 		assertEquals("modelNodeId not set by execute?", modelNodeId, cmd.getModelNodeId());
 		
 		cmd.undo(project);
-		assertEquals("didn't undo delete?", DiagramNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
+		assertEquals("didn't undo delete?", ConceptualModelNode.TYPE_TARGET, project.getDiagramModel().getNodeById(id).getNodeType());
 
 		verifyUndoTwiceThrows(cmd);
 	}
@@ -547,19 +548,19 @@ public class TestCommands extends EAMTestCase
 	
 	private DiagramNodeId insertTarget() throws Exception
 	{
-		NodeType type = DiagramNode.TYPE_TARGET;
+		NodeType type = ConceptualModelNode.TYPE_TARGET;
 		return insertNode(type);
 	}
 	
 	private DiagramNodeId insertIndirectFactor() throws Exception
 	{
-		NodeType type = DiagramNode.TYPE_FACTOR;
+		NodeType type = ConceptualModelNode.TYPE_FACTOR;
 		return insertNode(type);
 	}
 
 	private DiagramNodeId insertIntervention() throws Exception
 	{
-		NodeType type = DiagramNode.TYPE_INTERVENTION;
+		NodeType type = ConceptualModelNode.TYPE_INTERVENTION;
 		return insertNode(type);
 	}
 

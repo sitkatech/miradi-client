@@ -19,6 +19,13 @@ import org.json.JSONObject;
 
 public class NodeDataMap extends DataMap 
 {
+	public static final int INT_TYPE_INVALID = -1;
+	public static final int INT_TYPE_TARGET = 1;
+	public static final int INT_TYPE_INDIRECT_FACTOR = 2;
+	public static final int INT_TYPE_INTERVENTION = 3;
+	public static final int INT_TYPE_DIRECT_THREAT = 4;
+	public static final int INT_TYPE_CLUSTER = 5;
+
 	public NodeDataMap()
 	{
 	}
@@ -32,15 +39,15 @@ public class NodeDataMap extends DataMap
 	{
 		switch(rawType)
 		{
-			case DiagramNode.INT_TYPE_TARGET:
+			case NodeDataMap.INT_TYPE_TARGET:
 				return new NodeTypeTarget();
-			case DiagramNode.INT_TYPE_INDIRECT_FACTOR:
+			case NodeDataMap.INT_TYPE_INDIRECT_FACTOR:
 				return new NodeTypeFactor();
-			case DiagramNode.INT_TYPE_DIRECT_THREAT:
+			case NodeDataMap.INT_TYPE_DIRECT_THREAT:
 				return new NodeTypeFactor();
-			case DiagramNode.INT_TYPE_INTERVENTION:
+			case NodeDataMap.INT_TYPE_INTERVENTION:
 				return new NodeTypeIntervention();
-			case DiagramNode.INT_TYPE_CLUSTER:
+			case NodeDataMap.INT_TYPE_CLUSTER:
 				return new NodeTypeCluster();
 			default:
 				throw new RuntimeException("Unknown factor type: " + rawType);
@@ -51,18 +58,18 @@ public class NodeDataMap extends DataMap
 	public static int convertNodeTypeToInt(NodeType type)
 	{
 		if(type.isTarget())
-			return DiagramNode.INT_TYPE_TARGET;
+			return NodeDataMap.INT_TYPE_TARGET;
 		if(type.isIndirectFactor())
-			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
+			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
 		if(type.isIntervention())
-			return DiagramNode.INT_TYPE_INTERVENTION;
+			return NodeDataMap.INT_TYPE_INTERVENTION;
 		if(type.isDirectThreat())
-			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
+			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
 		if(type.isCluster())
-			return DiagramNode.INT_TYPE_CLUSTER;
+			return NodeDataMap.INT_TYPE_CLUSTER;
 		
 		if(type.isFactor())
-			return DiagramNode.INT_TYPE_INDIRECT_FACTOR;
+			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
 
 		throw new RuntimeException("Unknown factor type: " + type);
 	}

@@ -19,10 +19,6 @@ import org.conservationmeasures.eam.commands.CommandSetNodeSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.EAMGraphCell;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeFactor;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -431,19 +427,6 @@ abstract public class DiagramNode extends EAMGraphCell
 		setSize(dataMap.getDimension(TAG_SIZE));
 	}
 	
-	public static final NodeType TYPE_INVALID = null;
-	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
-	public static final NodeType TYPE_FACTOR = new NodeTypeFactor();
-	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
-	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
-
-	public static final int INT_TYPE_INVALID = -1;
-	public static final int INT_TYPE_TARGET = 1;
-	public static final int INT_TYPE_INDIRECT_FACTOR = 2;
-	public static final int INT_TYPE_INTERVENTION = 3;
-	public static final int INT_TYPE_DIRECT_THREAT = 4;
-	public static final int INT_TYPE_CLUSTER = 5;
-
 	public static final String TAG_ID = "Id";
 	public static final String TAG_WRAPPED_ID = "WrappedId";
 	public static final String TAG_LOCATION = "Location";

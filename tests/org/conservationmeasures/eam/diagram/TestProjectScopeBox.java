@@ -51,11 +51,11 @@ public class TestProjectScopeBox extends EAMTestCase
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);
 		
-		createNode(DiagramNode.TYPE_FACTOR);
+		createNode(ConceptualModelNode.TYPE_FACTOR);
 		Rectangle2D oneNonTarget = scope.getBounds();
 		assertEquals("not all zeros with one non-target?", allZeros, oneNonTarget);
 
-		DiagramNode target1 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode target1 = createNode(ConceptualModelNode.TYPE_TARGET);
 		project.setMetadata(ProjectMetadata.TAG_PROJECT_VISION, "Sample Vision");
 		Dimension targetSize = target1.getSize();
 		Rectangle2D oneTarget = scope.getBounds();
@@ -68,7 +68,7 @@ public class TestProjectScopeBox extends EAMTestCase
 		assertNotEquals("still at y zero?", 0, (int)movedTarget.getY());
 		assertEquals("affected target?", targetSize, target1.getSize());
 		
-		DiagramNode target2 = createNode(DiagramNode.TYPE_TARGET);
+		DiagramNode target2 = createNode(ConceptualModelNode.TYPE_TARGET);
 		model.moveNodes(200, 200, new DiagramNodeId[] {target2.getDiagramNodeId()});
 		model.updateCell(target2);
 		Rectangle2D twoTargets = scope.getBounds();
