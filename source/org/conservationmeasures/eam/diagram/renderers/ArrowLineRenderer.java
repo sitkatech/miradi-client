@@ -15,7 +15,7 @@ import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramConstants;
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;

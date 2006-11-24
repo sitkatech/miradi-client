@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.EAM;
