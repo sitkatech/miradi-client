@@ -18,9 +18,9 @@ import org.jgraph.graph.GraphCellEditor;
 
 public class RectangleFactorView extends FactorView
 {
-	public RectangleFactorView(DiagramFactor node)
+	public RectangleFactorView(DiagramFactor factor)
 	{
-		super(node);
+		super(factor);
 	}
 
     public CellViewRenderer getRenderer() 

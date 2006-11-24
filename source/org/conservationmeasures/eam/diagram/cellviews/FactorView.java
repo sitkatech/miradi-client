@@ -18,10 +18,10 @@ import org.jgraph.graph.VertexView;
 
 public class FactorView extends VertexView
 {
-    public FactorView(DiagramFactor nodeToUse) 
+    public FactorView(DiagramFactor factorToUse) 
     {
-        super(nodeToUse);
-        node = nodeToUse;
+        super(factorToUse);
+        factor = factorToUse;
     }
 
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D arg1, Point2D arg2)
@@ -33,10 +33,10 @@ public class FactorView extends VertexView
 	public Rectangle2D getRectangleWithoutAnnotations()
 	{
 		Rectangle2D rectangleCopy = (Rectangle2D)getBounds().clone();
-		Dimension sizeWithoutAnnotations = FactorRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), node.getAnnotationRows());
+		Dimension sizeWithoutAnnotations = FactorRenderer.getSizeWithoutAnnotations(rectangleCopy.getBounds().getSize(), factor.getAnnotationRows());
 		rectangleCopy.setRect(getBounds().getX(), getBounds().getY(), sizeWithoutAnnotations.getWidth(), sizeWithoutAnnotations.getHeight());
 		return rectangleCopy;
 	}
 
-	protected DiagramFactor node;
+	protected DiagramFactor factor;
 }

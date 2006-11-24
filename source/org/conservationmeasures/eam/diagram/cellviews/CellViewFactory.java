@@ -14,46 +14,46 @@ import org.jgraph.graph.VertexView;
 
 public class CellViewFactory extends DefaultCellViewFactory
 {
-	protected VertexView createVertexView(Object view)
+	protected VertexView createVertexView(Object cell)
 	{
-		EAMGraphCell cell = (EAMGraphCell)view;
-		if(cell.isFactor())
-			return createNodeView(view);
+		EAMGraphCell eamGraphCell = (EAMGraphCell)cell;
+		if(eamGraphCell.isFactor())
+			return createNodeView(eamGraphCell);
 		
-		return new ProjectScopeView(view);
+		return new ProjectScopeView(eamGraphCell);
 	}
 
-	private VertexView createNodeView(Object view)
+	private VertexView createNodeView(EAMGraphCell cell)
 	{
-		DiagramFactor node = (DiagramFactor)view;
-		if(node.isTarget())
+		DiagramFactor diagramFactor = (DiagramFactor)cell;
+		if(diagramFactor.isTarget())
 		{
-			return new EllipseFactorView(node);
+			return new EllipseFactorView(diagramFactor);
 		}
-		if(node.isDirectThreat())
+		if(diagramFactor.isDirectThreat())
 		{
-			return new RectangleFactorView(node);
+			return new RectangleFactorView(diagramFactor);
 		}
-		if(node.isStress())
+		if(diagramFactor.isStress())
 		{
-			return new RectangleFactorView(node);
+			return new RectangleFactorView(diagramFactor);
 		}
-		if(node.isContributingFactor())
+		if(diagramFactor.isContributingFactor())
 		{
-			return new RectangleFactorView(node);
+			return new RectangleFactorView(diagramFactor);
 		}
-		if(node.isStrategy())
+		if(diagramFactor.isStrategy())
 		{
-			return new HexagonFactorView(node);
+			return new HexagonFactorView(diagramFactor);
 		}
-		if(node.isFactorCluster())
+		if(diagramFactor.isFactorCluster())
 		{
-			return new FactorClusterView((DiagramFactorCluster)node);
+			return new FactorClusterView((DiagramFactorCluster)diagramFactor);
 		}
 		throw new RuntimeException("Unknown node type");
 	}
 
-	protected EdgeView createEdgeView(Object edge)
+	protected EdgeView createEdgeView(EAMGraphCell edge)
 	{
 		return new FactorLinkView(edge);
 	}
