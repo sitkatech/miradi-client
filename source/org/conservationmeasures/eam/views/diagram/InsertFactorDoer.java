@@ -74,7 +74,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 		getProject().executeCommand(new CommandBeginTransaction());
 		FactorType nodeType = getTypeToInsert();
-		FactorId id = new FactorCommandHelper(getProject()).createNode(nodeType).getFactorId();
+		FactorId id = new FactorCommandHelper(getProject()).createFactorAndDiagramFactor(nodeType).getFactorId();
 		DiagramFactor addedNode = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(id, getInitialText());

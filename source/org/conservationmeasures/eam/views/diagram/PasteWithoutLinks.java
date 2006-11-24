@@ -13,6 +13,6 @@ public class PasteWithoutLinks extends Paste
 {
 	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
-		new FactorCommandHelper(getProject()).pasteNodesOnlyIntoProject(list, getLocation());
+		new FactorCommandHelper(getProject()).pasteFactorsOnlyIntoProject(list, getLocation());
 	}
 }

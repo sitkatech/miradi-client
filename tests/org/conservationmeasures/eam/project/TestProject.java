@@ -274,7 +274,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllDiagramFactors();
 		assertEquals(4, nodes.size());
 		assertEquals(4, model.getAllDiagramFactorLinks().size());
@@ -285,7 +285,7 @@ public class TestProject extends EAMTestCase
 		
 		//Test when a pasted item has linkages to a previously deleted node
 		model.deleteDiagramFactor(node2);
-		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, new Point(5,5));
 		assertEquals(2, model.getFactorLinks(node1).size());
 		assertEquals(3, model.getFactorLinks(node3).size());
 	}
@@ -445,7 +445,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, model.getFactorLinks(node2).size());
 		assertEquals(1, model.getFactorLinks(node3).size());
 		
-		new FactorCommandHelper(project).pasteNodesOnlyIntoProject(transferableList, new Point(5,5));
+		new FactorCommandHelper(project).pasteFactorsOnlyIntoProject(transferableList, new Point(5,5));
 		Vector nodes = model.getAllDiagramFactors();
 		assertEquals(4, nodes.size());
 		assertEquals(2, model.getAllDiagramFactorLinks().size());
@@ -470,7 +470,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  still in the diagram?", 0, model.getAllDiagramFactors().size());
 
 		Point pastePoint = new Point(5,5);
-		new FactorCommandHelper(project).pasteNodesAndLinksIntoProject(transferableList, pastePoint);
+		new FactorCommandHelper(project).pasteFactorsAndLinksIntoProject(transferableList, pastePoint);
 		Vector nodes = model.getAllDiagramFactors();
 		assertEquals(1, nodes.size());
 		DiagramFactor pastedNode = (DiagramFactor)nodes.get(0);

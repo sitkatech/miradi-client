@@ -41,7 +41,7 @@ public class FactorCommandHelper
 		project = projectToUse;
 	}
 
-	public CommandDiagramAddFactor createNode(FactorType nodeType) throws Exception
+	public CommandDiagramAddFactor createFactorAndDiagramFactor(FactorType nodeType) throws Exception
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
@@ -57,24 +57,24 @@ public class FactorCommandHelper
 	}
 
 
-	public void pasteNodesAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
+	public void pasteFactorsAndLinksIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
 		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
-		pasteNodesIntoProject(list, startPoint, dataHelper);
+		pasteFactorsIntoProject(list, startPoint, dataHelper);
 		pasteLinksIntoProject(list, dataHelper);
 		executeCommand(new CommandEndTransaction());
 	}
 	
-	public void pasteNodesOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
+	public void pasteFactorsOnlyIntoProject(TransferableEamList list, Point startPoint) throws Exception
 	{
 		executeCommand(new CommandBeginTransaction());
 		FactorDataHelper dataHelper = new FactorDataHelper(getDiagramModel().getAllDiagramFactors());
-		pasteNodesIntoProject(list, startPoint, dataHelper);
+		pasteFactorsIntoProject(list, startPoint, dataHelper);
 		executeCommand(new CommandEndTransaction());
 	}
 
-	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
+	private void pasteFactorsIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
 	{
 		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
 		for (int i = 0; i < nodes.length; i++) 
@@ -83,7 +83,7 @@ public class FactorCommandHelper
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
 			FactorType type = FactorDataMap.convertIntToNodeType(nodeData.getInt(DiagramFactor.TAG_NODE_TYPE)); 
-			CommandDiagramAddFactor addCommand = createNode(type);
+			CommandDiagramAddFactor addCommand = createFactorAndDiagramFactor(type);
 			DiagramFactorId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramFactor.TAG_LOCATION));
@@ -104,18 +104,18 @@ public class FactorCommandHelper
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			
-			DiagramFactor newNode = getDiagramNodeById(newNodeId);
+			DiagramFactor newNode = getDiagramFactorById(newNodeId);
 			Dimension originalDimension = nodeData.getDimension(DiagramFactor.TAG_SIZE);
 			CommandSetFactorSize resize = new CommandSetFactorSize(newNodeId, originalDimension, newNode.getSize());
 			executeCommand(resize);
 			
-			DiagramFactorId newDiagramNodeId = getDiagramNodeById(newNodeId).getDiagramFactorId();
+			DiagramFactorId newDiagramNodeId = getDiagramFactorById(newNodeId).getDiagramFactorId();
 			CommandDiagramMove move = new CommandDiagramMove(newNodeLocation.x, newNodeLocation.y, new DiagramFactorId[]{newDiagramNodeId});
 			executeCommand(move);
 		}
 	}
 
-	private DiagramFactor getDiagramNodeById(DiagramFactorId newNodeId) throws Exception
+	private DiagramFactor getDiagramFactorById(DiagramFactorId newNodeId) throws Exception
 	{
 		return getDiagramModel().getDiagramFactorById(newNodeId);
 	}
@@ -136,8 +136,8 @@ public class FactorCommandHelper
 				continue;
 			}
 			
-			DiagramFactor newFromNode = getDiagramNodeById(newFromId);
-			DiagramFactor newToNode = getDiagramNodeById(newToId);
+			DiagramFactor newFromNode = getDiagramFactorById(newFromId);
+			DiagramFactor newToNode = getDiagramFactorById(newToId);
 			CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
 			Logging.logDebug("Paste Link : " + addLinkageCommand.getFactorLinkId() + " from:" + newFromId + " to:" + newToId);
 		}

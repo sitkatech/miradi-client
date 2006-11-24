@@ -52,6 +52,6 @@ public class Paste extends LocationDoer
 
 	public void pasteCellsIntoProject(TransferableEamList list) throws Exception 
 	{
-		new FactorCommandHelper(getProject()).pasteNodesAndLinksIntoProject(list, getLocation());
+		new FactorCommandHelper(getProject()).pasteFactorsAndLinksIntoProject(list, getLocation());
 	}
 }
