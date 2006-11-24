@@ -24,8 +24,8 @@ public class TransferableEamList implements Transferable
 	{
 		super();
 		projectName = projectFileName;
-		linkages = new Vector();
-		nodes = new Vector();
+		links = new Vector();
+		factors = new Vector();
 		storeData(cells);
 	}
 	
@@ -43,11 +43,11 @@ public class TransferableEamList implements Transferable
 			{
 				if(cell.isFactorLink())
 				{
-					linkages.add(((DiagramFactorLink)cell).createLinkageDataMap());
+					links.add(((DiagramFactorLink)cell).createLinkageDataMap());
 				}
 				if(cell.isFactor())
 				{
-					nodes.add(((DiagramFactor)cell).createFactorDataMap());
+					factors.add(((DiagramFactor)cell).createFactorDataMap());
 				}
 			} 
 			catch (Exception e) 
@@ -79,19 +79,19 @@ public class TransferableEamList implements Transferable
 		throw new UnsupportedFlavorException(flavor);
 	}
 	
-	public FactorLinkDataMap[] getLinkageDataCells()
+	public FactorLinkDataMap[] getArrayOfFactorLinkDataMaps()
 	{
-		return (FactorLinkDataMap[])linkages.toArray(new FactorLinkDataMap[0]);
+		return (FactorLinkDataMap[])links.toArray(new FactorLinkDataMap[0]);
 	}
 	
-	public FactorDataMap[] getNodeDataCells()
+	public FactorDataMap[] getArrayOfFactorDataMaps()
 	{
-		return (FactorDataMap[])nodes.toArray(new FactorDataMap[0]);
+		return (FactorDataMap[])factors.toArray(new FactorDataMap[0]);
 	}
 
 	public static DataFlavor eamListDataFlavor = new DataFlavor(TransferableEamList.class, "EAM Objects");
 	
 	String projectName;
-	Vector linkages;
-	Vector nodes;
+	Vector links;
+	Vector factors;
 }

@@ -85,8 +85,8 @@ public class TestTransferableEamList extends EAMTestCase
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);
 		
-		FactorDataMap[] nodesData = eamTransferData.getNodeDataCells();
-		FactorLinkDataMap[] linkagesData = eamTransferData.getLinkageDataCells();
+		FactorDataMap[] nodesData = eamTransferData.getArrayOfFactorDataMaps();
+		FactorLinkDataMap[] linkagesData = eamTransferData.getArrayOfFactorLinkDataMaps();
 		
 		assertEquals(2, nodesData.length);
 		assertEquals(node1.getDiagramFactorId(), nodesData[0].getId(DiagramFactor.TAG_ID));

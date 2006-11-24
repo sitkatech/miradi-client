@@ -76,7 +76,7 @@ public class FactorCommandHelper
 
 	private void pasteNodesIntoProject(TransferableEamList list, Point startPoint, FactorDataHelper dataHelper) throws Exception 
 	{
-		FactorDataMap[] nodes = list.getNodeDataCells();
+		FactorDataMap[] nodes = list.getArrayOfFactorDataMaps();
 		for (int i = 0; i < nodes.length; i++) 
 		{
 			FactorDataMap nodeData = nodes[i];
@@ -122,7 +122,7 @@ public class FactorCommandHelper
 	
 	private void pasteLinksIntoProject(TransferableEamList list, FactorDataHelper dataHelper) throws Exception 
 	{
-		FactorLinkDataMap[] links = list.getLinkageDataCells();
+		FactorLinkDataMap[] links = list.getArrayOfFactorLinkDataMaps();
 		for (int i = 0; i < links.length; i++) 
 		{
 			FactorLinkDataMap linkageData = links[i];
