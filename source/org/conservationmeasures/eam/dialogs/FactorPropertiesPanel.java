@@ -543,7 +543,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 		try
 		{
 			TaxonomyItem[] taxonomyItems = TaxonomyLoader
-					.load("InterventionTaxonomies.txt");
+					.load("StrategyTaxonomies.txt");
 			dropdownStrategyClassification = new UiComboBox(taxonomyItems);
 			
 			String taxonomyCode = getCurrentDiagramFactor().getUnderlyingObject()
