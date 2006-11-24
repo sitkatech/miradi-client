@@ -52,11 +52,11 @@ public class Properties extends LocationDoer
 
 		EAMGraphCell selected = getProject().getOnlySelectedCells()[0];
 		if(selected.isFactor())
-			doNodeProperties((DiagramFactor)selected, getLocation());
+			doFactorProperties((DiagramFactor)selected, getLocation());
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isFactorLink())
-			doLinkageProperties((DiagramFactorLink)selected);
+			doFactorLinkProperties((DiagramFactorLink)selected);
 	}
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException
@@ -66,38 +66,38 @@ public class Properties extends LocationDoer
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doLinkageProperties(DiagramFactorLink linkage) throws CommandFailedException
+	void doFactorLinkProperties(DiagramFactorLink linkage) throws CommandFailedException
 	{
 		FactorLinkPropertiesPanel panel = new FactorLinkPropertiesPanel(getProject(), linkage.getWrappedId());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), panel, panel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	void doNodeProperties(DiagramFactor selectedNode, Point at) throws CommandFailedException
+	void doFactorProperties(DiagramFactor selectedFactor, Point at) throws CommandFailedException
 	{
 		DiagramView view = (DiagramView)getView();
-		view.showNodeProperties(selectedNode, getTabToStartOn(selectedNode, at));
+		view.showNodeProperties(selectedFactor, getTabToStartOn(selectedFactor, at));
 	}
 
-	private int getTabToStartOn(DiagramFactor node, Point at)
+	private int getTabToStartOn(DiagramFactor factor, Point at)
 	{
 		if(at == null)
 			return FactorPropertiesPanel.TAB_DETAILS;
 		
-		Point cellOrigin = node.getLocation();
+		Point cellOrigin = factor.getLocation();
 		at.translate(-cellOrigin.x, -cellOrigin.y);
 		EAM.logDebug(at.toString());
-		if(node.isPointInObjective(at))
+		if(factor.isPointInObjective(at))
 		{
 			EAM.logDebug("Objective");
 			return FactorPropertiesPanel.TAB_OBJECTIVES;
 		}
-		if(node.isPointInIndicator(at))
+		if(factor.isPointInIndicator(at))
 		{
 			EAM.logDebug("Indicator");
 			return FactorPropertiesPanel.TAB_INDICATORS;
 		}
-		if(node.isPointInGoal(at))
+		if(factor.isPointInGoal(at))
 		{
 			EAM.logDebug("Goal");
 			return FactorPropertiesPanel.TAB_GOALS;

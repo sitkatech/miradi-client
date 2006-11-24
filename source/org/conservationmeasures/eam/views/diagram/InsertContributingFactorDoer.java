@@ -24,9 +24,9 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 		return EAM.text("Label|New Contributing Factor");
 	}
 
-	void linkToPreviouslySelectedNodes(FactorId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] factorsToLinkTo) throws CommandFailedException
 	{
-		super.linkToPreviouslySelectedNodes(newlyInsertedId, nodesToLinkTo);
+		super.linkToPreviouslySelectedFactors(newlyInsertedId, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);
 		if(!insertedNode.isContributingFactor())
 			warnNotIndirectFactor();
@@ -39,7 +39,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 	
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setIndirectFactorsVisible(true);
+		getProject().getLayerManager().setContributingFactorsVisible(true);
 		getProject().getLayerManager().setDirectThreatsVisible(true);
 	}
 

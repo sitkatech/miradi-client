@@ -75,13 +75,13 @@ public class InsertFactorLinkDoer extends ProjectDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 	
-	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromNodeId, FactorId toNodeId)
+	boolean wouldCreateLinkageLoop(DiagramModel dModel, FactorId fromId, FactorId toId)
     {
-		Factor cmFromNode = dModel.getFactorPool().find(fromNodeId);
-		Factor[] cmUpstreamNodes = dModel.getAllUpstreamNodes(cmFromNode).toNodeArray();
+		Factor fromFactor = dModel.getFactorPool().find(fromId);
+		Factor[] upstreamFactors = dModel.getAllUpstreamNodes(fromFactor).toNodeArray();
 		
-		for (int i  = 0; i < cmUpstreamNodes.length; i++)
-			if (cmUpstreamNodes[i].getId().equals(toNodeId))
+		for (int i  = 0; i < upstreamFactors.length; i++)
+			if (upstreamFactors[i].getId().equals(toId))
 				return true;
 		
 		return false;

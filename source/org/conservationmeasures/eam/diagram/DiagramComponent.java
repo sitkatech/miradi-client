@@ -167,7 +167,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public boolean areLinkagesVisible()
 	{
-		return project.getLayerManager().areLinkagesVisible();
+		return project.getLayerManager().areFactorLinksVisible();
 	}
 	
 	public boolean isProjectScopeVisible()

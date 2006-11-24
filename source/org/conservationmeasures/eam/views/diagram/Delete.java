@@ -60,14 +60,14 @@ public class Delete extends ProjectDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
-					deleteLinkage((DiagramFactorLink)cell);	
+					deleteFactorLink((DiagramFactorLink)cell);	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactor())
-					deleteNode((DiagramFactor)cell);
+					deleteFactor((DiagramFactor)cell);
 			}
 		}
 		catch (Exception e)
@@ -80,7 +80,7 @@ public class Delete extends ProjectDoer
 		}
 	}
 
-	private void deleteLinkage(DiagramFactorLink linkageToDelete) throws CommandFailedException
+	private void deleteFactorLink(DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
@@ -90,22 +90,23 @@ public class Delete extends ProjectDoer
 	}
 
 	// TODO: This method should be inside Project and should have unit tests
-	private void deleteNode(DiagramFactor nodeToDelete) throws Exception
+	private void deleteFactor(DiagramFactor factorToDelete) throws Exception
 	{
-		DiagramFactorId id = nodeToDelete.getDiagramFactorId();
+		DiagramFactorId id = factorToDelete.getDiagramFactorId();
 
 		removeFromView(id);
-		removeFromCluster(nodeToDelete, id);
-		removeNodeFromDiagram(nodeToDelete, id);
+		//TODO: Silly to pass id since it is in the factor itself
+		removeFromCluster(factorToDelete, id);
+		removeNodeFromDiagram(factorToDelete, id);
 
-		Factor underlyingNode = nodeToDelete.getUnderlyingObject();
+		Factor underlyingNode = factorToDelete.getUnderlyingObject();
 		deleteAnnotations(underlyingNode);
 		deleteUnderlyingNode(underlyingNode);
 	}
 
-	private void removeFromCluster(DiagramFactor nodeToDelete, DiagramFactorId id) throws ParseException, CommandFailedException
+	private void removeFromCluster(DiagramFactor factorToDelete, DiagramFactorId id) throws ParseException, CommandFailedException
 	{
-		DiagramFactorCluster cluster = (DiagramFactorCluster)nodeToDelete.getParent();
+		DiagramFactorCluster cluster = (DiagramFactorCluster)factorToDelete.getParent();
 		if(cluster != null)
 		{
 			CommandSetObjectData removeFromCluster = CommandSetObjectData.createRemoveIdCommand(
@@ -123,36 +124,36 @@ public class Delete extends ProjectDoer
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 
-	private void removeNodeFromDiagram(DiagramFactor nodeToDelete, DiagramFactorId id) throws CommandFailedException
+	private void removeNodeFromDiagram(DiagramFactor factorToDelete, DiagramFactorId id) throws CommandFailedException
 	{
-		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
+		Command[] commandsToClear = factorToDelete.buildCommandsToClear();
 		getProject().executeCommands(commandsToClear);
 		
 		getProject().executeCommand(new CommandDiagramRemoveFactor(id));
 	}
 
-	private void deleteUnderlyingNode(Factor nodeToDelete) throws CommandFailedException
+	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException
 	{
-		Command[] commandsToClear = nodeToDelete.createCommandsToClear();
+		Command[] commandsToClear = factorToDelete.createCommandsToClear();
 		getProject().executeCommands(commandsToClear);
 		
-		getProject().executeCommand(new CommandDeleteObject(nodeToDelete.getType(), nodeToDelete.getModelNodeId()));
+		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getModelNodeId()));
 	}
 	
-	private void deleteAnnotations(Factor nodeToDelete) throws Exception
+	private void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
-		deleteAnnotations(nodeToDelete, ObjectType.GOAL, nodeToDelete.TAG_GOAL_IDS);
-		deleteAnnotations(nodeToDelete, ObjectType.OBJECTIVE, nodeToDelete.TAG_OBJECTIVE_IDS);
-		deleteAnnotations(nodeToDelete, ObjectType.INDICATOR, nodeToDelete.TAG_INDICATOR_IDS);
+		deleteAnnotations(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
+		deleteAnnotations(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
+		deleteAnnotations(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
 	}
 
-	private void deleteAnnotations(Factor nodeToDelete, int annotationType, String annotationListTag) throws Exception
+	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
 	{
-		IdList ids = new IdList(nodeToDelete.getData(annotationListTag));
+		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			EAMBaseObject thisAnnotation = (EAMBaseObject)getProject().findObject(annotationType, ids.get(annotationIndex));
-			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), nodeToDelete, annotationListTag, thisAnnotation);
+			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			
 			for(int commandIndex = 0; commandIndex < commands.length; ++commandIndex)
 				getProject().executeCommand(commands[commandIndex]);

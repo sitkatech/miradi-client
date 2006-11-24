@@ -24,17 +24,17 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return EAM.text("Label|New Direct Threat");
 	}
 
-	void linkToPreviouslySelectedNodes(FactorId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] factorsToLinkTo) throws CommandFailedException
 	{
-		super.linkToPreviouslySelectedNodes(newlyInsertedId, nodesToLinkTo);
+		super.linkToPreviouslySelectedFactors(newlyInsertedId, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);
 		if(!insertedNode.isDirectThreat())
 			warnNotDirectThreat();
 	}
 
-	void notLinkingToAnyNodes() throws CommandFailedException
+	void notLinkingToAnyFactors() throws CommandFailedException
 	{
-		super.notLinkingToAnyNodes();
+		super.notLinkingToAnyFactors();
 		warnNotDirectThreat();
 	}
 
@@ -45,7 +45,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setIndirectFactorsVisible(true);
+		getProject().getLayerManager().setContributingFactorsVisible(true);
 		getProject().getLayerManager().setDirectThreatsVisible(true);
 	}
 }

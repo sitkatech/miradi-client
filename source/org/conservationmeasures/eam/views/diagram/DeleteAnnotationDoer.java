@@ -44,11 +44,11 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		String tag = getAnnotationIdListTag();
 		String[] dialogText = getDialogText();
 	
-		deleteAnnotationViaCommands(getSelectedNode(), tag, dialogText);
+		deleteAnnotationViaCommands(getSelectedFactor(), tag, dialogText);
 	}
 
 
-	void deleteAnnotationViaCommands(Factor node, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	void deleteAnnotationViaCommands(Factor factor, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
 		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
 	
@@ -59,7 +59,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = buildCommandsToDeleteAnnotation(getProject(), node, annotationIdListTag, annotationToDelete);
+			Command[] commands = buildCommandsToDeleteAnnotation(getProject(), factor, annotationIdListTag, annotationToDelete);
 			for(int i = 0; i < commands.length; ++i)
 				getProject().executeCommand(commands[i]);
 		}
@@ -74,13 +74,13 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 	}
 	
-	public static Command[] buildCommandsToDeleteAnnotation(Project project, Factor node, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
+	public static Command[] buildCommandsToDeleteAnnotation(Project project, Factor factor, String annotationIdListTag, EAMBaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
 	
 		int type = annotationToDelete.getType();
 		BaseId idToRemove = annotationToDelete.getId();
-		commands.add(CommandSetObjectData.createRemoveIdCommand(node, annotationIdListTag, idToRemove));
+		commands.add(CommandSetObjectData.createRemoveIdCommand(factor, annotationIdListTag, idToRemove));
 		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findFactorsThatUseThisAnnotation(type, idToRemove);
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
@@ -91,7 +91,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return (Command[])commands.toArray(new Command[0]);
 	}
 
-	public Factor getSelectedNode()
+	public Factor getSelectedFactor()
 	{
 		EAMObject selected = getView().getSelectedObject();
 		if(selected == null)

@@ -24,16 +24,16 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	{
 		mainWindow = mainWindowToUse;
 		
-		interventionCheckBox = new UiCheckBox(EAM.text("Label|Show Strategies"));
-		interventionCheckBox.addActionListener(this);
-		factorCheckBox = new UiCheckBox(EAM.text("Label|Show Contributing Factors"));
-		factorCheckBox.addActionListener(this);
+		strategyCheckBox = new UiCheckBox(EAM.text("Label|Show Strategies"));
+		strategyCheckBox.addActionListener(this);
+		contributingFactorCheckBox = new UiCheckBox(EAM.text("Label|Show Contributing Factors"));
+		contributingFactorCheckBox.addActionListener(this);
 		threatCheckBox = new UiCheckBox(EAM.text("Label|Show Direct Threats"));
 		threatCheckBox.addActionListener(this);
 		targetCheckBox = new UiCheckBox(EAM.text("Label|Show Targets"));
 		targetCheckBox.addActionListener(this);
-		linkagesCheckBox = new UiCheckBox(EAM.text("Label|Show Links"));
-		linkagesCheckBox.addActionListener(this);
+		factorLinkCheckBox = new UiCheckBox(EAM.text("Label|Show Links"));
+		factorLinkCheckBox.addActionListener(this);
 		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
 		desireCheckBox.addActionListener(this);
 		indicatorCheckBox = new UiCheckBox(EAM.text("Label|Show Indicators"));
@@ -50,11 +50,11 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	private Component createLayerOptions()
 	{
 		UiVBox options = new UiVBox();
-		options.add(interventionCheckBox);
-		options.add(factorCheckBox);
+		options.add(strategyCheckBox);
+		options.add(contributingFactorCheckBox);
 		options.add(threatCheckBox);
 		options.add(targetCheckBox);
-		options.add(linkagesCheckBox);
+		options.add(factorLinkCheckBox);
 		options.add(desireCheckBox);
 		options.add(indicatorCheckBox);
 		return options;
@@ -72,22 +72,22 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	
 	private void setControlsFromLayerManager()
 	{
-		interventionCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramStrategy.class));
-		factorCheckBox.setSelected(getLayerManager().areIndirectFactorsVisible());
+		strategyCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramStrategy.class));
+		contributingFactorCheckBox.setSelected(getLayerManager().areContributingFactorsVisible());
 		threatCheckBox.setSelected(getLayerManager().areDirectThreatsVisible());
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
-		linkagesCheckBox.setSelected(getLayerManager().areLinkagesVisible());
+		factorLinkCheckBox.setSelected(getLayerManager().areFactorLinksVisible());
 		desireCheckBox.setSelected(getLayerManager().areDesiresVisible());
 		indicatorCheckBox.setSelected(getLayerManager().areIndicatorsVisible());
 	}
 	
 	private void updateLayerManagerFromControls()
 	{
-		getLayerManager().setVisibility(DiagramStrategy.class, interventionCheckBox.isSelected());
-		getLayerManager().setIndirectFactorsVisible(factorCheckBox.isSelected());
+		getLayerManager().setVisibility(DiagramStrategy.class, strategyCheckBox.isSelected());
+		getLayerManager().setContributingFactorsVisible(contributingFactorCheckBox.isSelected());
 		getLayerManager().setDirectThreatsVisible(threatCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
-		getLayerManager().setLinkagesVisible(linkagesCheckBox.isSelected());
+		getLayerManager().setFactorLinksVisible(factorLinkCheckBox.isSelected());
 		getLayerManager().setDesiresVisible(desireCheckBox.isSelected());
 		getLayerManager().setIndicatorsVisible(indicatorCheckBox.isSelected());
 	}
@@ -113,11 +113,11 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	MainWindow mainWindow;
 	boolean result;
 
-	UiCheckBox interventionCheckBox;
-	UiCheckBox factorCheckBox;
+	UiCheckBox strategyCheckBox;
+	UiCheckBox contributingFactorCheckBox;
 	UiCheckBox threatCheckBox;
 	UiCheckBox targetCheckBox;
-	UiCheckBox linkagesCheckBox;
+	UiCheckBox factorLinkCheckBox;
 	UiCheckBox desireCheckBox;
 	UiCheckBox indicatorCheckBox;
 }

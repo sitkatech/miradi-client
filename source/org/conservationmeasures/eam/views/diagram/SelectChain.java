@@ -21,31 +21,31 @@ public class SelectChain extends ViewDoer
 {
 	public boolean isAvailable()
 	{
-		DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
-		DiagramFactorLink[] selectedLinkages = getProject().getOnlySelectedLinks();
-		int combinedLengths = selectedLinkages.length + selectedNodes.length;
+		DiagramFactor[] selectedFactors = getProject().getOnlySelectedFactors();
+		DiagramFactorLink[] selectedLinks = getProject().getOnlySelectedLinks();
+		int combinedLengths = selectedLinks.length + selectedFactors.length;
 		
 		if (combinedLengths != 1)
 			return false;
 	    
-		return (isNode(selectedNodes) || isLinkage(selectedLinkages));
+		return (isFactor(selectedFactors) || isLink(selectedLinks));
 	}
 	
-	private boolean isNode(DiagramFactor[] selectedNodes)
+	private boolean isFactor(DiagramFactor[] selectedFactors)
 	{
-		boolean isNode = false;
-		if (selectedNodes.length == 1)
-			isNode = selectedNodes[0].isFactor();
-		return isNode;
+		boolean isFactor = false;
+		if (selectedFactors.length == 1)
+			isFactor = selectedFactors[0].isFactor();
+		return isFactor;
 	}
 
-	private boolean isLinkage(DiagramFactorLink[] selectedLinkages)
+	private boolean isLink(DiagramFactorLink[] selectedLinkages)
 	{
-		boolean isLinkage  = false;
+		boolean isLink = false;
 		if (selectedLinkages.length == 1 )
-			isLinkage = selectedLinkages[0].isFactorLink();
+			isLink = selectedLinkages[0].isFactorLink();
 		
-		return isLinkage;
+		return isLink;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -55,9 +55,9 @@ public class SelectChain extends ViewDoer
 		try
 		{
 			if (getProject().getOnlySelectedFactors().length == 1)
-				selectChainBasedOnNodeSelection();
+				selectChainBasedOnFactorSelection();
 			else if (getProject().getOnlySelectedLinks().length == 1)
-				selectChainBasedOnLinkageSelection();
+				selectChainBasedOnLinkSelection();
 		}
 		catch (Exception e)
 		{
@@ -66,20 +66,20 @@ public class SelectChain extends ViewDoer
 		}
 	}
 
-	private void selectChainBasedOnNodeSelection() throws Exception
+	private void selectChainBasedOnFactorSelection() throws Exception
 	{
-		DiagramFactor selectedNode = getProject().getOnlySelectedFactors()[0];
+		DiagramFactor selectedFactor = getProject().getOnlySelectedFactors()[0];
 		DiagramModel model = getProject().getDiagramModel();
 		ChainObject chainObject = new ChainObject();
-		chainObject.buildNormalChain(model, selectedNode.getUnderlyingObject());
+		chainObject.buildNormalChain(model, selectedFactor.getUnderlyingObject());
 		Factor[] chainNodes = chainObject.getFactors().toNodeArray();
 		FactorLink[] linksInChain = chainObject.getFactorLinksArray();
 	
 		selectLinksInChain(model, linksInChain);
-		selectNodesInChain(model, chainNodes);
+		selectFactorsInChain(model, chainNodes);
 	}
 	
-	private void selectChainBasedOnLinkageSelection() throws Exception
+	private void selectChainBasedOnLinkSelection() throws Exception
 	{
 		DiagramFactorLink[] onlySelectedLinkages = getProject().getOnlySelectedLinks();
 		DiagramFactorLink selectedLinkage = onlySelectedLinkages[0];
@@ -91,19 +91,19 @@ public class SelectChain extends ViewDoer
 		ChainObject downstreamChain = new ChainObject();
 		downstreamChain.buildDownstreamChain(diagramModel, selectedLinkage.getToNode().getUnderlyingObject());
 		
-		FactorLink[] downLinkages = downstreamChain.getFactorLinksArray();
-		FactorLink[] upLinkages = upstreamChain.getFactorLinksArray();
-		Factor[] upNodes = upstreamChain.getFactorsArray();
-		Factor[] downNodes = downstreamChain.getFactorsArray();
+		FactorLink[] downstreamLinks = downstreamChain.getFactorLinksArray();
+		FactorLink[] upstreamLinks = upstreamChain.getFactorLinksArray();
+		Factor[] upstreamFactors = upstreamChain.getFactorsArray();
+		Factor[] downstreamFactors = downstreamChain.getFactorsArray();
 		
-		selectNodesInChain(diagramModel, upNodes);
-		selectNodesInChain(diagramModel, downNodes);
+		selectFactorsInChain(diagramModel, upstreamFactors);
+		selectFactorsInChain(diagramModel, downstreamFactors);
 		
-		selectLinksInChain(diagramModel, upLinkages);
-		selectLinksInChain(diagramModel, downLinkages);
+		selectLinksInChain(diagramModel, upstreamLinks);
+		selectLinksInChain(diagramModel, downstreamLinks);
 	}
 
-	private void selectNodesInChain(DiagramModel model, Factor[] chainNodes) throws Exception
+	private void selectFactorsInChain(DiagramModel model, Factor[] chainNodes) throws Exception
 	{
 		for(int i = 0; i < chainNodes.length; ++i)
 		{

@@ -19,7 +19,7 @@ public class LayerManager
 		hiddenNodeTypes = new HashSet();
 		hiddenIds = new IdList();
 		mode = ViewData.MODE_DEFAULT;
-		indirectFactorsVisibleFlag = true;
+		contributingFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
 		linkagesVisibleFlag = true;
 		desiresVisibleFlag = true;
@@ -36,7 +36,7 @@ public class LayerManager
 			return false;
 		
 		if(node.isContributingFactor())
-			return areIndirectFactorsVisible();
+			return areContributingFactorsVisible();
 		
 		if(node.isDirectThreat())
 			return areDirectThreatsVisible();
@@ -78,14 +78,14 @@ public class LayerManager
 		mode = newMode;
 	}
 	
-	public boolean areIndirectFactorsVisible()
+	public boolean areContributingFactorsVisible()
 	{
-		return indirectFactorsVisibleFlag;
+		return contributingFactorsVisibleFlag;
 	}
 	
-	public void setIndirectFactorsVisible(boolean newSetting)
+	public void setContributingFactorsVisible(boolean newSetting)
 	{
-		indirectFactorsVisibleFlag = newSetting;
+		contributingFactorsVisibleFlag = newSetting;
 	}
 	
 	public boolean areDirectThreatsVisible()
@@ -98,12 +98,12 @@ public class LayerManager
 		directThreatsVisibleFlag = newSetting;
 	}
 	
-	public boolean areLinkagesVisible()
+	public boolean areFactorLinksVisible()
 	{
 		return linkagesVisibleFlag;
 	}
 	
-	public void setLinkagesVisible(boolean newSetting)
+	public void setFactorLinksVisible(boolean newSetting)
 	{
 		linkagesVisibleFlag = newSetting;
 	}
@@ -131,7 +131,7 @@ public class LayerManager
 	Set hiddenNodeTypes;
 	IdList hiddenIds;
 	String mode;
-	boolean indirectFactorsVisibleFlag;
+	boolean contributingFactorsVisibleFlag;
 	boolean directThreatsVisibleFlag;
 	boolean linkagesVisibleFlag;
 	boolean desiresVisibleFlag;

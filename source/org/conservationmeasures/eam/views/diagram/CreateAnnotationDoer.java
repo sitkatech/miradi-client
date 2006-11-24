@@ -26,7 +26,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 
 	public boolean isAvailable()
 	{
-		return (getSelectedNode() != null);
+		return (getSelectedFactor() != null);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -34,7 +34,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Factor node = getSelectedNode();
+		Factor factor = getSelectedFactor();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
@@ -42,7 +42,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 			CommandCreateObject create = new CommandCreateObject(getAnnotationType());
 			getProject().executeCommand(create);
 			BaseId createdId = create.getCreatedId();
-			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(node, getAnnotationIdListTag(), createdId));
+			getProject().executeCommand(CommandSetObjectData.createAppendIdCommand(factor, getAnnotationIdListTag(), createdId));
 		}
 		catch(Exception e)
 		{
@@ -55,7 +55,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		}
 	}
 	
-	public Factor getSelectedNode()
+	public Factor getSelectedFactor()
 	{
 		EAMObject selected = getView().getSelectedObject();
 		if(selected == null)

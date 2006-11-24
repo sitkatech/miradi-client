@@ -158,7 +158,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 
 	static class InsertInterventionWithFakePropertiesEditing extends InsertStrategyDoer
 	{
-		protected void selectNewNode(FactorId idToUse)
+		protected void selectNewFactor(FactorId idToUse)
 		{
 			nodeSelectCalled = true;
 		}

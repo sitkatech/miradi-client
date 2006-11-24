@@ -39,14 +39,14 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		try
 		{
-			DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
-			FactorId id = insertNodeItself();
-			if(selectedNodes.length > 0)
-				linkToPreviouslySelectedNodes(id, selectedNodes);
+			DiagramFactor[] selectedFactors = getProject().getOnlySelectedFactors();
+			FactorId id = insertFactorItself();
+			if(selectedFactors.length > 0)
+				linkToPreviouslySelectedFactors(id, selectedFactors);
 			else
-				notLinkingToAnyNodes();
+				notLinkingToAnyFactors();
 			
-			selectNewNode(id);
+			selectNewFactor(id);
 			launchPropertiesEditor(id);
 		}
 		catch (Exception e)
@@ -56,34 +56,34 @@ abstract public class InsertFactorDoer extends LocationDoer
 		}
 	}
 	
-    protected void selectNewNode(FactorId idToUse)
+    protected void selectNewFactor(FactorId idToUse)
 	{
 		getProject().selectFactor(idToUse);
 	}
 	
 	void launchPropertiesEditor(FactorId id) throws Exception, CommandFailedException
 	{
-		DiagramFactor newNode = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
-		getDiagramView().getPropertiesDoer().doNodeProperties(newNode, null);
+		DiagramFactor newFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
+		getDiagramView().getPropertiesDoer().doFactorProperties(newFactor, null);
 	}
 
-	private FactorId insertNodeItself() throws Exception
+	private FactorId insertFactorItself() throws Exception
 	{
 		Point createAt = getLocation();
 		DiagramFactor[] selectedNodes = getProject().getOnlySelectedFactors();
 
 		getProject().executeCommand(new CommandBeginTransaction());
-		FactorType nodeType = getTypeToInsert();
-		FactorId id = new FactorCommandHelper(getProject()).createFactorAndDiagramFactor(nodeType).getFactorId();
-		DiagramFactor addedNode = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
+		FactorType factorType = getTypeToInsert();
+		FactorId id = new FactorCommandHelper(getProject()).createFactorAndDiagramFactor(factorType).getFactorId();
+		DiagramFactor addedFactor = getProject().getDiagramModel().getDiagramFactorByWrappedId(id);
 
 		CommandSetObjectData setNameCommand = FactorCommandHelper.createSetLabelCommand(id, getInitialText());
 		getProject().executeCommand(setNameCommand);
 
-		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, nodeType, addedNode);
+		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, addedFactor);
 		
 		Point snappedPoint  = getProject().getSnapped(deltaPoint);
-		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedNode.getDiagramFactorId()});
+		Command moveCommand = new CommandDiagramMove(snappedPoint.x, snappedPoint.y, new DiagramFactorId[] {addedFactor.getDiagramFactorId()});
 		getProject().executeCommand(moveCommand);
 		doExtraSetup(id);
 		getProject().executeCommand(new CommandEndTransaction());
@@ -93,14 +93,14 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return id;
 	}
 	
-	private Point getDeltaPoint(Point createAt, DiagramFactor[] selectedNodes, FactorType nodeType, DiagramFactor addedNode)
+	private Point getDeltaPoint(Point createAt, DiagramFactor[] selectedFactors, FactorType factorType, DiagramFactor newFactor)
 	{
 		if (createAt != null)
 			return createAt;
-		else if (selectedNodes.length > 0 && !nodeType.isTarget())
-			return getLocationSelectedNonTargetNode(selectedNodes, (int)addedNode.getBounds().getWidth());
-		else if (nodeType.isTarget())
-			return getTargetLocation(addedNode, getDiagramVisibleRect());
+		else if (selectedFactors.length > 0 && !factorType.isTarget())
+			return getLocationSelectedNonTargetNode(selectedFactors, (int)newFactor.getBounds().getWidth());
+		else if (factorType.isTarget())
+			return getTargetLocation(newFactor, getDiagramVisibleRect());
 		else
 			return getCenterLocation(getDiagramVisibleRect());
 	}
@@ -161,7 +161,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	void linkToPreviouslySelectedNodes(FactorId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
+	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] nodesToLinkTo) throws CommandFailedException
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
@@ -172,7 +172,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		getProject().executeCommand(new CommandEndTransaction());
 	}
 
-	void notLinkingToAnyNodes() throws CommandFailedException
+	void notLinkingToAnyFactors() throws CommandFailedException
 	{
 
 	}
