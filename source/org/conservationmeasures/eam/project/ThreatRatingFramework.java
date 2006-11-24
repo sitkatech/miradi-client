@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objects.Factor;
@@ -257,7 +257,7 @@ public class ThreatRatingFramework
 
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
-		NodePool nodePool = project.getNodePool();
+		FactorPool nodePool = project.getNodePool();
 		FactorId threatId = bundle.getThreatId();
 		Factor threat = nodePool.find(threatId);
 		if(threat == null || !threat.isDirectThreat())

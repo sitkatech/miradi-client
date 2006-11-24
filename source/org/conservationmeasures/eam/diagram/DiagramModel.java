@@ -27,8 +27,8 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objectpools.GoalPool;
-import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -482,12 +482,12 @@ public class DiagramModel extends DefaultGraphModel
 	}
 
 	
-	public NodePool getNodePool()
+	public FactorPool getNodePool()
 	{
 		return project.getNodePool();
 	}
 	
-	LinkagePool getLinkagePool()
+	FactorLinkPool getLinkagePool()
 	{
 		return project.getLinkagePool();
 	}

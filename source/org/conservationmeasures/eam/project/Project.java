@@ -43,8 +43,8 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
-import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
@@ -126,12 +126,12 @@ public class Project
 		return objectManager.getPool(objectType);
 	}
 	
-	public NodePool getNodePool()
+	public FactorPool getNodePool()
 	{
 		return objectManager.getNodePool();
 	}
 	
-	public LinkagePool getLinkagePool()
+	public FactorLinkPool getLinkagePool()
 	{
 		return objectManager.getLinkagePool();
 	}

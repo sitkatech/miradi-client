@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.LinkageListener;
 
-public class LinkagePool extends EAMObjectPool
+public class FactorLinkPool extends EAMObjectPool
 {
-	public LinkagePool(LinkageListener listenerToNotify)
+	public FactorLinkPool(LinkageListener listenerToNotify)
 	{
 		super(ObjectType.MODEL_LINKAGE);
 		listener = listenerToNotify;

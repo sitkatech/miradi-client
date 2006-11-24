@@ -27,8 +27,8 @@ import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
-import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -51,8 +51,8 @@ public class ObjectManager
 
 		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
-		pools.put(new Integer(ObjectType.MODEL_NODE), new NodePool());
-		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new LinkagePool(new LinkageMonitor()));
+		pools.put(new Integer(ObjectType.MODEL_NODE), new FactorPool());
+		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(new LinkageMonitor()));
 		addNormalPool(new RatingCriterionPool(ida));
 		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));
@@ -80,14 +80,14 @@ public class ObjectManager
 		return (EAMObjectPool)pools.get(new Integer(objectType));
 	}
 
-	public NodePool getNodePool()
+	public FactorPool getNodePool()
 	{
-		return (NodePool)getPool(ObjectType.MODEL_NODE);
+		return (FactorPool)getPool(ObjectType.MODEL_NODE);
 	}
 
-	public LinkagePool getLinkagePool()
+	public FactorLinkPool getLinkagePool()
 	{
-		return (LinkagePool)getPool(ObjectType.MODEL_LINKAGE);
+		return (FactorLinkPool)getPool(ObjectType.MODEL_LINKAGE);
 	}
 
 	public TaskPool getTaskPool()

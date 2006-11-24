@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 
@@ -57,7 +57,7 @@ public class ChainManager
 	private FactorSet findNodesThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
 	{
 		FactorSet foundNodes = new FactorSet();
-		NodePool pool = getNodePool();
+		FactorPool pool = getNodePool();
 		FactorId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
@@ -112,7 +112,7 @@ public class ChainManager
 		return relatedNodes;
 	}
 	
-	NodePool getNodePool()
+	FactorPool getNodePool()
 	{
 		return getProject().getNodePool();
 	}

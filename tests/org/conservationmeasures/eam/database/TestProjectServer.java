@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -173,7 +173,7 @@ public class TestProjectServer extends EAMTestCase
 			}
 			
 			DiagramModel model = project.getDiagramModel();
-			NodePool nodePool = model.getNodePool();
+			FactorPool nodePool = model.getNodePool();
 			storage.writeDiagram(model);
 	
 			try

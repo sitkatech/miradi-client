@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.martus.util.TestCaseEnhanced;
@@ -27,7 +27,7 @@ public class TestNodePool extends TestCaseEnhanced
 	{
 		super.setUp();
 		idAssigner = new IdAssigner();
-		pool = new NodePool();
+		pool = new FactorPool();
 
 		for(int i = 0; i < 2; ++i)
 		{
@@ -64,5 +64,5 @@ public class TestNodePool extends TestCaseEnhanced
 	}
 	
 	IdAssigner idAssigner;
-	NodePool pool;
+	FactorPool pool;
 }

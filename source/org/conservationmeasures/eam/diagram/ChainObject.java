@@ -10,7 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objectpools.LinkagePool;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 
@@ -108,7 +108,7 @@ public class ChainObject
 		FactorSet linkedNodes = new FactorSet();
 		FactorSet unprocessedNodes = new FactorSet();
 		linkedNodes.attemptToAdd(startingNode);
-		LinkagePool linkagePool = diagramModel.getLinkagePool();
+		FactorLinkPool linkagePool = diagramModel.getLinkagePool();
 		
 		FactorLinkId[] linkagePoolIds = linkagePool.getModelLinkageIds();
 		for(int i = 0; i < linkagePoolIds.length; ++i)
@@ -147,7 +147,7 @@ public class ChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingNode);
 		
-		LinkagePool linkagePool = diagramModel.getLinkagePool();
+		FactorLinkPool linkagePool = diagramModel.getLinkagePool();
 		for(int i = 0; i < linkagePool.getModelLinkageIds().length; ++i)
 		{
 			FactorLink thisLinkage = linkagePool.find(linkagePool.getModelLinkageIds()[i]);

@@ -41,7 +41,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.LinkagePool;
+import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
@@ -575,7 +575,7 @@ public class TestProject extends EAMTestCase
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
 		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
-		LinkagePool linkagePool = project.getLinkagePool();
+		FactorLinkPool linkagePool = project.getLinkagePool();
 		assertEquals("not in pool?", 1, linkagePool.size());
 		FactorLink cmLinkage = linkagePool.find(linkageId);
 		assertEquals("wrong from?", idA, cmLinkage.getFromNodeId());

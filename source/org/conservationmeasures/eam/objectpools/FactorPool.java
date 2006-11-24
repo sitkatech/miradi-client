@@ -17,9 +17,9 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class NodePool extends EAMObjectPool
+public class FactorPool extends EAMObjectPool
 {
-	public NodePool()
+	public FactorPool()
 	{
 		super(ObjectType.MODEL_NODE);
 	}

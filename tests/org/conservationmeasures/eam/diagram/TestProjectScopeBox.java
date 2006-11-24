@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.ProjectForTesting;
@@ -87,7 +87,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	}
 
 	ProjectForTesting project;
-	NodePool nodePool;
+	FactorPool nodePool;
 	DiagramModel model;
 	IdAssigner idAssigner;
 }

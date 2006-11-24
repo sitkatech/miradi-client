@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
 import org.conservationmeasures.eam.diagram.cells.FactorDataMap;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objectpools.NodePool;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
@@ -59,7 +59,7 @@ public class TestTransferableEamList extends EAMTestCase
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
-		NodePool nodePool = model.getNodePool();
+		FactorPool nodePool = model.getNodePool();
 
 		FactorId node1Id = new FactorId(1);
 		Point node1Location = new Point(1,2);
