@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 
 import java.awt.Point;
 
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.Cause;

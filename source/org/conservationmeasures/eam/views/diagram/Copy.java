@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 
-import org.conservationmeasures.eam.diagram.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.TransferableEamList;

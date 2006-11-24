@@ -15,7 +15,7 @@ import javax.swing.Box;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;

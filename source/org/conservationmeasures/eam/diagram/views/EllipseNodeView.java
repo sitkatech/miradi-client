@@ -39,7 +39,7 @@ package org.conservationmeasures.eam.diagram.views;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;

@@ -26,8 +26,8 @@ import javax.swing.JLabel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.ProjectScopeBox;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;

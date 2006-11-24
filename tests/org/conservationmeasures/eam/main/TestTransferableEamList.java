@@ -10,11 +10,11 @@ import java.awt.Point;
 import java.awt.datatransfer.DataFlavor;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
-import org.conservationmeasures.eam.diagram.nodes.LinkageDataMap;
-import org.conservationmeasures.eam.diagram.nodes.NodeDataMap;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.LinkageDataMap;
+import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
 import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objectpools.NodePool;

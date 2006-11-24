@@ -13,9 +13,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramLinkageId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;

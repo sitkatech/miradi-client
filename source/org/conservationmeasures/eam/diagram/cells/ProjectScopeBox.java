@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram;
+package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,7 +13,9 @@ import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.DiagramModelEvent;
+import org.conservationmeasures.eam.diagram.DiagramModelListener;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.project.Project;

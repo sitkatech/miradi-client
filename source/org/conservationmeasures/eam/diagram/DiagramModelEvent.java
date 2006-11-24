@@ -8,8 +8,9 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.EventObject;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 
 
 public class DiagramModelEvent extends EventObject 

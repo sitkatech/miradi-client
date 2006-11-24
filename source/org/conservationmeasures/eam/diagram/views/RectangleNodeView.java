@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.diagram.views;
 
 import java.awt.geom.Point2D;
 
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleWithPriorityRenderer;
 import org.conservationmeasures.eam.main.EAM;

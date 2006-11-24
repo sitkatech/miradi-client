@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram.views;
 
-import org.conservationmeasures.eam.diagram.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.nodes.DiagramFactorCluster;
-import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;

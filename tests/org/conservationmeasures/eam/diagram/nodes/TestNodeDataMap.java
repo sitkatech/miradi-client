@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.nodes;
 
+import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
 import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeDirectThreat;
 import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;

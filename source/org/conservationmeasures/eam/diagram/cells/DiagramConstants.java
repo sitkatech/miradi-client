@@ -1,4 +1,4 @@
-package org.conservationmeasures.eam.diagram.nodes;
+package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 

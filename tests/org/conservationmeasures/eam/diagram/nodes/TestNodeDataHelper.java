@@ -9,6 +9,8 @@ package org.conservationmeasures.eam.diagram.nodes;
 import java.awt.Point;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.diagram.cells.DiagramNode;
+import org.conservationmeasures.eam.diagram.cells.NodeDataHelper;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
