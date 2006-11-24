@@ -123,30 +123,30 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return result;
 	}
 
-	public void nodeAdded(DiagramModelEvent event)
+	public void factorAdded(DiagramModelEvent event)
 	{
 		autoSurroundTargets();
 	}
 
-	public void nodeChanged(DiagramModelEvent event)
+	public void factorChanged(DiagramModelEvent event)
 	{
 	}
 
-	public void nodeDeleted(DiagramModelEvent event)
-	{
-		autoSurroundTargets();
-	}
-
-	public void nodeMoved(DiagramModelEvent event)
+	public void factorDeleted(DiagramModelEvent event)
 	{
 		autoSurroundTargets();
 	}
 
-	public void linkageAdded(DiagramModelEvent event)
+	public void factorMoved(DiagramModelEvent event)
+	{
+		autoSurroundTargets();
+	}
+
+	public void linkAdded(DiagramModelEvent event)
 	{
 	}
 
-	public void linkageDeleted(DiagramModelEvent event)
+	public void linkDeleted(DiagramModelEvent event)
 	{
 	}
 

@@ -9,6 +9,6 @@ public class ModelEventNotifierFactorMoved implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.nodeMoved(event);
+		listener.factorMoved(event);
 	}
 }

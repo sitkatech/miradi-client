@@ -10,6 +10,6 @@ public class ModelEventNotifierFactorChanged implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.nodeChanged(event);
+		listener.factorChanged(event);
 	}
 }

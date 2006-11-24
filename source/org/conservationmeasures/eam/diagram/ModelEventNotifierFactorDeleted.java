@@ -10,6 +10,6 @@ public class ModelEventNotifierFactorDeleted implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.nodeDeleted(event);
+		listener.factorDeleted(event);
 	}
 }

@@ -10,6 +10,6 @@ public class ModelEventNotifierFactorLinkAdded implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.linkageAdded(event);
+		listener.linkAdded(event);
 	}
 }

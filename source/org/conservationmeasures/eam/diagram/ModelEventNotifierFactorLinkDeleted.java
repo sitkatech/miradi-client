@@ -10,6 +10,6 @@ public class ModelEventNotifierFactorLinkDeleted implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.linkageDeleted(event);
+		listener.linkDeleted(event);
 	}
 }

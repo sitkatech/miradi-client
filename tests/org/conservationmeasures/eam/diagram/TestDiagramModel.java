@@ -333,32 +333,32 @@ public class TestDiagramModel extends EAMTestCase
 			model.addDiagramModelListener(this);
 		}
 
-		public void nodeAdded(DiagramModelEvent event) 
+		public void factorAdded(DiagramModelEvent event) 
 		{
 			nodeAdded++;
 		}
 
-		public void nodeDeleted(DiagramModelEvent event) 
+		public void factorDeleted(DiagramModelEvent event) 
 		{
 			nodeDeleted++;
 		}
 
-		public void nodeChanged(DiagramModelEvent event) 
+		public void factorChanged(DiagramModelEvent event) 
 		{
 			nodeChanged++;
 		}
 		
-		public void nodeMoved(DiagramModelEvent event) 
+		public void factorMoved(DiagramModelEvent event) 
 		{
 			nodeMoved++;
 		}
 
-		public void linkageAdded(DiagramModelEvent event) 
+		public void linkAdded(DiagramModelEvent event) 
 		{
 			linkAdded++;
 		}
 
-		public void linkageDeleted(DiagramModelEvent event) 
+		public void linkDeleted(DiagramModelEvent event) 
 		{
 			linkDeleted++;
 		}
