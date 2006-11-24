@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.diagram.InsertConnection;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class TestDelete extends EAMTestCase
 {
@@ -35,7 +35,7 @@ public class TestDelete extends EAMTestCase
 		DiagramFactor intervention = model.getNodeById(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramFactor factor = model.getNodeById(factorId);
-		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
+		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramFactorLinkId linkageId = addLinkageCommand.getDiagramLinkageId();
 		
 		assertTrue("link not found?", model.hasLinkage(intervention, factor));

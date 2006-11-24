@@ -50,7 +50,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
-import org.conservationmeasures.eam.views.diagram.InsertConnection;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 import org.martus.util.DirectoryUtils;
 
 public class TestProject extends EAMTestCase
@@ -715,7 +715,7 @@ public class TestProject extends EAMTestCase
 			factorId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_CAUSE, BaseId.INVALID);
 			FactorId targetId = createNodeAndAddToDiagram(diskProject, Factor.TYPE_TARGET, BaseId.INVALID);
 			
-			InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
+			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);

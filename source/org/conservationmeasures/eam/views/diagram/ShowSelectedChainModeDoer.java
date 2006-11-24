@@ -19,7 +19,7 @@ import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class StrategyBrainstormMode extends ViewDoer
+public class ShowSelectedChainModeDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{

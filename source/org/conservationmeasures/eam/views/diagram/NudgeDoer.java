@@ -14,10 +14,10 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.FactorMoveHandler;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class NudgeNode extends ProjectDoer
+public class NudgeDoer extends ProjectDoer
 {
 
-	public NudgeNode(int directionToNudge)
+	public NudgeDoer(int directionToNudge)
 	{
 		direction = directionToNudge;
 	}

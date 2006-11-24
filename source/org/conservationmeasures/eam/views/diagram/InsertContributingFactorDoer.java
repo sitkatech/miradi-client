@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class InsertIndirectFactor extends InsertNode
+public class InsertContributingFactorDoer extends InsertFactorDoer
 {
 	public FactorType getTypeToInsert()
 	{

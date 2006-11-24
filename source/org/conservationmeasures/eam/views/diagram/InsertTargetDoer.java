@@ -5,27 +5,25 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
+import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class InsertIntervention extends InsertNode
+public class InsertTargetDoer extends InsertFactorDoer
 {
 	public FactorType getTypeToInsert()
 	{
-		return Factor.TYPE_INTERVENTION;
+		return Factor.TYPE_TARGET;
 	}
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Strategy");
+		return EAM.text("Label|New Target");
 	}
 
 	public void forceVisibleInLayerManager()
 	{
-		getProject().getLayerManager().setVisibility(DiagramStrategy.class, true);
+		getProject().getLayerManager().setVisibility(DiagramTarget.class, true);
 	}
-	
-	
 }

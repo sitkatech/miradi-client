@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class CreateCluster extends InsertNode
+public class CreateFactorClusterDoer extends InsertFactorDoer
 {
 	public FactorType getTypeToInsert()
 	{

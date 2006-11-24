@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
-import org.conservationmeasures.eam.views.diagram.InsertConnection;
+import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class TestUndoAndRedo extends EAMTestCase
 {
@@ -39,7 +39,7 @@ public class TestUndoAndRedo extends EAMTestCase
 
 		fromId = createModelAndDiagramNodeWithCommands(Factor.TYPE_CAUSE);
 		toId = createModelAndDiagramNodeWithCommands(Factor.TYPE_INTERVENTION);
-		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
+		CommandDiagramAddFactorLink addLinkageCommand = InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramLinkageId();
 	}
 	

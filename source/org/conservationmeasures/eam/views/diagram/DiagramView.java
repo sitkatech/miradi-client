@@ -146,12 +146,12 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	{
 		propertiesDoer = new Properties(diagram);
 
-		addDoerToMap(ActionInsertTarget.class, new InsertTarget());
-		addDoerToMap(ActionInsertContributingFactor.class, new InsertIndirectFactor());
-		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreat());
-		addDoerToMap(ActionInsertStrategy.class, new InsertIntervention());
-		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftIntervention());
-		addDoerToMap(ActionInsertFactorLink.class, new InsertConnection());
+		addDoerToMap(ActionInsertTarget.class, new InsertTargetDoer());
+		addDoerToMap(ActionInsertContributingFactor.class, new InsertContributingFactorDoer());
+		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
+		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
+		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
+		addDoerToMap(ActionInsertFactorLink.class, new InsertFactorLinkDoer());
 		addDoerToMap(ActionCopy.class, new Copy());
 		addDoerToMap(ActionSelectAll.class, new SelectAllDoer());
 		addDoerToMap(ActionCut.class, new Cut());
@@ -163,14 +163,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionSaveImage.class, new SaveImage());
 		addDoerToMap(ActionConfigureLayers.class, new ConfigureLayers());
-		addDoerToMap(ActionShowSelectedChainMode.class, new StrategyBrainstormMode());
-		addDoerToMap(ActionShowFullModelMode.class, new NormalDiagramMode());
+		addDoerToMap(ActionShowSelectedChainMode.class, new ShowSelectedChainModeDoer());
+		addDoerToMap(ActionShowFullModelMode.class, new ShowFullModelModeDoer());
 		addDoerToMap(ActionZoomIn.class, new ZoomIn());
 		addDoerToMap(ActionZoomOut.class, new ZoomOut());
-		addDoerToMap(ActionNudgeUp.class, new NudgeNode(KeyEvent.VK_UP)); 
-		addDoerToMap(ActionNudgeDown.class, new NudgeNode(KeyEvent.VK_DOWN));
-		addDoerToMap(ActionNudgeLeft.class, new NudgeNode(KeyEvent.VK_LEFT));
-		addDoerToMap(ActionNudgeRight.class, new NudgeNode(KeyEvent.VK_RIGHT));
+		addDoerToMap(ActionNudgeUp.class, new NudgeDoer(KeyEvent.VK_UP)); 
+		addDoerToMap(ActionNudgeDown.class, new NudgeDoer(KeyEvent.VK_DOWN));
+		addDoerToMap(ActionNudgeLeft.class, new NudgeDoer(KeyEvent.VK_LEFT));
+		addDoerToMap(ActionNudgeRight.class, new NudgeDoer(KeyEvent.VK_RIGHT));
 		
 		addDoerToMap(ActionCreateObjective.class, new CreateObjective());
 		addDoerToMap(ActionDeleteObjective.class, new DeleteObjective());

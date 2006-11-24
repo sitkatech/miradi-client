@@ -97,14 +97,14 @@ public class TestInsertNode extends TestCaseEnhanced
 		Point newNodeLocation1 = inserter.getTargetLocation(dNode1, visibleRect);
 		dNode1.setLocation(newNodeLocation1);
 
-		int x = DIAGRAM_WIDTH - (int)dNode1.getBounds().getWidth() - InsertNode.TARGET_RIGHT_SPACING;
-		int y = InsertNode.TARGET_TOP_LOCATION;
+		int x = DIAGRAM_WIDTH - (int)dNode1.getBounds().getWidth() - InsertFactorDoer.TARGET_RIGHT_SPACING;
+		int y = InsertFactorDoer.TARGET_TOP_LOCATION;
 		Point firstPoint = new Point(x, y);
 		assertEquals("first target location wrong?", firstPoint, newNodeLocation1);
 
 		DiagramFactor dNode2 = createDiagramNode(project);	
 
-		y = InsertNode.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertNode.TARGET_BETWEEN_SPACING;
+		y = InsertFactorDoer.TARGET_TOP_LOCATION + (int)dNode1.getRectangle().getHeight() + InsertFactorDoer.TARGET_BETWEEN_SPACING;
 
 		Point secondPoint  = new Point(x, y);
 		Point newNodeLocation2 = inserter.getTargetLocation(dNode2, visibleRect);
@@ -118,7 +118,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		InsertInterventionWithFakePropertiesEditing inserter = createInserter(mainWindow);
 		
 		DiagramFactor diagramNode = createDiagramNode(project);
-		int x = (int)diagramNode.getBounds().getWidth() / 2 + InsertNode.DEFAULT_MOVE;
+		int x = (int)diagramNode.getBounds().getWidth() / 2 + InsertFactorDoer.DEFAULT_MOVE;
 		Point someThirdPoint = project.getSnapped(x , 500);
 
 		checkNodeLocation(project, inserter, diagramNode, someFirstPoint);
@@ -135,7 +135,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		Point movedLocation = inserter.getLocationSelectedNonTargetNode(selectedNodes, nodeWidth);
 		int snappedX = project.getSnapped(somePoint).x;
 
-		Point shouldBeLocation = new Point(Math.max(0, snappedX - nodeWidth - InsertNode.DEFAULT_MOVE), project.getSnapped(somePoint).y);
+		Point shouldBeLocation = new Point(Math.max(0, snappedX - nodeWidth - InsertFactorDoer.DEFAULT_MOVE), project.getSnapped(somePoint).y);
 		assertEquals("node is in bounds", shouldBeLocation, movedLocation);
 	}
 	
@@ -156,7 +156,7 @@ public class TestInsertNode extends TestCaseEnhanced
 		return dNode2;
 	}
 
-	static class InsertInterventionWithFakePropertiesEditing extends InsertIntervention
+	static class InsertInterventionWithFakePropertiesEditing extends InsertStrategyDoer
 	{
 		protected void selectNewNode(FactorId idToUse)
 		{

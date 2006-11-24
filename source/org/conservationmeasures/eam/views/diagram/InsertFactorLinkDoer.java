@@ -21,7 +21,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
-public class InsertConnection extends ProjectDoer
+public class InsertFactorLinkDoer extends ProjectDoer
 {
 	public boolean isAvailable()
 	{

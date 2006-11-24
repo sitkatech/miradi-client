@@ -25,7 +25,7 @@ public class TestInsertConnection extends EAMTestCase
 	{
 		super.setUp();
 		project = new ProjectForTesting(getName());
-		doer = new InsertConnection();
+		doer = new InsertFactorLinkDoer();
 		doer.setProject(project);
 	}
 	
@@ -73,6 +73,6 @@ public class TestInsertConnection extends EAMTestCase
 	}
 
 	private ProjectForTesting project;
-	private InsertConnection doer;
+	private InsertFactorLinkDoer doer;
 
 }

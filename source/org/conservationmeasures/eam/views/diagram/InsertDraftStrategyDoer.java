@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ViewData;
 
-public class InsertDraftIntervention extends InsertNode
+public class InsertDraftStrategyDoer extends InsertFactorDoer
 {
 	public boolean isAvailable()
 	{

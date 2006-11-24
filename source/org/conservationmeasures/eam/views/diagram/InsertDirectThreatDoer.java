@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class InsertDirectThreat extends InsertNode
+public class InsertDirectThreatDoer extends InsertFactorDoer
 {
 	public FactorType getTypeToInsert()
 	{

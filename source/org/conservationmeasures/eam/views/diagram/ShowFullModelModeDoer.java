@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class NormalDiagramMode extends ViewDoer
+public class ShowFullModelModeDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{

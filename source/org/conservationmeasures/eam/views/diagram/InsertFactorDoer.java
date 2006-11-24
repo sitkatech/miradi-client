@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
-abstract public class InsertNode extends LocationDoer
+abstract public class InsertFactorDoer extends LocationDoer
 {
 	abstract public FactorType getTypeToInsert();
 	abstract public String getInitialText();
@@ -167,7 +167,7 @@ abstract public class InsertNode extends LocationDoer
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
 			FactorId toId = nodesToLinkTo[i].getWrappedId();
-			InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(getProject(), newlyInsertedId, toId);
+			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(getProject(), newlyInsertedId, toId);
 		}
 		getProject().executeCommand(new CommandEndTransaction());
 	}
