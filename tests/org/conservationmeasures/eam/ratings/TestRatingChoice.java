@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestRatingChoice extends EAMTestCase
 {

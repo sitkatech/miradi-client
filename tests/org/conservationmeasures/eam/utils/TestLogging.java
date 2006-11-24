@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.utils;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestLogging extends EAMTestCase
 {

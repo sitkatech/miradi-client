@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTransferableEamList extends EAMTestCase 
 {

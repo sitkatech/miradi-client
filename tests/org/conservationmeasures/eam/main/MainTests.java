@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.testall;
+package org.conservationmeasures.eam.main;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,9 +37,6 @@ import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeDirectThre
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeTarget;
 import org.conservationmeasures.eam.ids.TestIdList;
-import org.conservationmeasures.eam.main.TestCommandExecutedEvents;
-import org.conservationmeasures.eam.main.TestMainMenu;
-import org.conservationmeasures.eam.main.TestTransferableEamList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestCause;

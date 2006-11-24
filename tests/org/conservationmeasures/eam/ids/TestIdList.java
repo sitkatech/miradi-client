@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.ids;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestIdList extends EAMTestCase

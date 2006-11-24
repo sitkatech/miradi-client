@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestRatingCriterion extends EAMTestCase
 {

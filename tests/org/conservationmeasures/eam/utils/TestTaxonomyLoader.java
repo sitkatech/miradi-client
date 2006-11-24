@@ -9,9 +9,9 @@ package org.conservationmeasures.eam.utils;
 import java.io.BufferedReader;
 import java.io.StringReader;
 
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTaxonomyLoader extends EAMTestCase
 {

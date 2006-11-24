@@ -15,7 +15,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;

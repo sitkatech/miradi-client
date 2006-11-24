@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestDelimitedFileLoader extends EAMTestCase
 {

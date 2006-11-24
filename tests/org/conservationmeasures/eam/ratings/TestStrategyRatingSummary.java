@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.ratings;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestStrategyRatingSummary extends EAMTestCase
 {

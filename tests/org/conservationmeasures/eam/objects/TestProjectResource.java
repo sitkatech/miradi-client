@@ -6,8 +6,8 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.martus.util.xml.XmlUtilities;
 
 public class TestProjectResource extends EAMTestCase

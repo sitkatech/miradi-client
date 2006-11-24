@@ -6,10 +6,10 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ORefList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestObjectReferenceList extends EAMTestCase

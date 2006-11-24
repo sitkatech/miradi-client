@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.testall;
+package org.conservationmeasures.eam.main;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.utils.Translation;

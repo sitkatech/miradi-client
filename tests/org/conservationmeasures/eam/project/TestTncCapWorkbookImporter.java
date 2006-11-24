@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import java.io.File;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.martus.util.DirectoryUtils;
 
 public class TestTncCapWorkbookImporter extends EAMTestCase

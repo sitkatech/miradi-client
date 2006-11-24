@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.project;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestTNCThreatFormula extends EAMTestCase
 {

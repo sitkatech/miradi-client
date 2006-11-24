@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objectdata;
 
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 
 public class TestDateData extends EAMTestCase

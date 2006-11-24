@@ -9,9 +9,9 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestTranslations extends EAMTestCase
 {

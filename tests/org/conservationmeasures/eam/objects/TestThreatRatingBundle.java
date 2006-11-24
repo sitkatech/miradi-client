@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class TestThreatRatingBundle extends EAMTestCase

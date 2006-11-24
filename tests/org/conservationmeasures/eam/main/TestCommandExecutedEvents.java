@@ -10,7 +10,6 @@ import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestCommandExecutedEvents extends EAMTestCase
 {

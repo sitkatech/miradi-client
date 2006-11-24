@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.utils;
 import java.awt.Color;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestEnhancedJsonObject extends EAMTestCase
 {

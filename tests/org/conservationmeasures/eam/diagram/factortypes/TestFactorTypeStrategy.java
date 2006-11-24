@@ -7,7 +7,7 @@
 package org.conservationmeasures.eam.diagram.factortypes;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.testall.EAMTestCase;
+import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestFactorTypeStrategy extends EAMTestCase 
 {

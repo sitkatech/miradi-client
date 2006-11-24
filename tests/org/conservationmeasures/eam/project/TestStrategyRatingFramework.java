@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.project;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objects.ValueOption;
-import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestStrategyRatingFramework extends EAMTestCase
 {
