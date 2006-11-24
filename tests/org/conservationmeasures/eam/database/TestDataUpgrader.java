@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -79,7 +79,7 @@ public class TestDataUpgrader extends EAMTestCase
 		int nodeType = ObjectType.MODEL_NODE;
 		ConceptualModelTarget gotTarget = (ConceptualModelTarget)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
 		assertEquals(target.getLabel(), gotTarget.getLabel());
-		ConceptualModelFactor gotThreat = (ConceptualModelFactor)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
+		ConceptualModelCause gotThreat = (ConceptualModelCause)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));
 		assertEquals(threat.getLabel(), gotThreat.getLabel());
 		ConceptualModelIntervention gotIntervention = (ConceptualModelIntervention)EAMBaseObject.createFromJson(nodeType, JSONFile.read(interventionFile));
 		assertEquals(intervention.getLabel(), gotIntervention.getLabel());
@@ -111,7 +111,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 	}
 	
-	static class Version2ConceptualModelThreat extends ConceptualModelFactor
+	static class Version2ConceptualModelThreat extends ConceptualModelCause
 	{
 		public Version2ConceptualModelThreat(String label) throws Exception
 		{

@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
@@ -83,10 +83,10 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
 		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
 
-		ConceptualModelFactor factor = new ConceptualModelFactor(takeNextModelNodeId());
+		ConceptualModelCause factor = new ConceptualModelCause(takeNextModelNodeId());
 		
 		storage.writeObject(factor);
-		ConceptualModelFactor gotIndirectFactor = (ConceptualModelFactor)readNode(factor.getId());
+		ConceptualModelCause gotIndirectFactor = (ConceptualModelCause)readNode(factor.getId());
 		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
 		
 		ConceptualModelTarget target = new ConceptualModelTarget(takeNextModelNodeId());

@@ -24,7 +24,7 @@ import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objects.ConceptualModelCluster;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
@@ -42,7 +42,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		if(cmObject.isIntervention())
 			return new DiagramIntervention(idToUse, (ConceptualModelIntervention)cmObject);
 		else if(cmObject.isFactor())
-			return new DiagramFactor(idToUse, (ConceptualModelFactor)cmObject);
+			return new DiagramFactor(idToUse, (ConceptualModelCause)cmObject);
 		else if(cmObject.isTarget())
 			return new DiagramTarget(idToUse, (ConceptualModelTarget)cmObject);
 		else if(cmObject.isCluster())

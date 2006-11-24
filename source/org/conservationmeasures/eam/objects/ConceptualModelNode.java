@@ -157,7 +157,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
 			return new ConceptualModelIntervention(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCause.CAUSE_TYPE))
-			return new ConceptualModelFactor(new ModelNodeId(idAsInt), json);
+			return new ConceptualModelCause(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeTarget.TARGET_TYPE))
 			return new ConceptualModelTarget(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCluster.CLUSTER_TYPE))
@@ -185,7 +185,7 @@ abstract public class ConceptualModelNode extends EAMBaseObject
 		if(nodeType.isIntervention())
 			return new ConceptualModelIntervention(idToCreate);
 		else if(nodeType.isCause())
-			return new ConceptualModelFactor(idToCreate);
+			return new ConceptualModelCause(idToCreate);
 		else if(nodeType.isTarget())
 			return new ConceptualModelTarget(idToCreate);
 		else if(nodeType.isCluster())

@@ -39,7 +39,7 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
 import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.project.NodeCommandHelper;
@@ -429,7 +429,7 @@ public class NodePropertiesPanel extends DisposablePanel
 		try
 		{
 			int type = ObjectType.MODEL_NODE;
-			String tag = ConceptualModelFactor.TAG_TAXONOMY_CODE;
+			String tag = ConceptualModelCause.TAG_TAXONOMY_CODE;
 		
 			if(taxonomyItem != null)
 			{
@@ -509,7 +509,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			dropdownThreatClassification = new UiComboBox(taxonomyItems);
 
 			String taxonomyCode = getCurrentNode().getUnderlyingObject()
-					.getData(ConceptualModelFactor.TAG_TAXONOMY_CODE);
+					.getData(ConceptualModelCause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
 					taxonomyItems, taxonomyCode);
@@ -546,7 +546,7 @@ public class NodePropertiesPanel extends DisposablePanel
 			dropdownInterventionClassification = new UiComboBox(taxonomyItems);
 			
 			String taxonomyCode = getCurrentNode().getUnderlyingObject()
-			.getData(ConceptualModelFactor.TAG_TAXONOMY_CODE);
+			.getData(ConceptualModelCause.TAG_TAXONOMY_CODE);
 
 			TaxonomyItem foundTaxonomyItem = SearchTaxonomyClassificationsForCode(
 					taxonomyItems, taxonomyCode);

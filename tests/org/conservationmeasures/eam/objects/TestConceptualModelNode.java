@@ -20,7 +20,7 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 	public void testComments() throws Exception
 	{
 		ModelNodeId id = new ModelNodeId(35);
-		ConceptualModelFactor factor = new ConceptualModelFactor(id);
+		ConceptualModelCause factor = new ConceptualModelCause(id);
 		assertEquals("started with a comment?", "", factor.getComment());
 		String sampleComment = "yowza";
 		factor.setComment(sampleComment);
@@ -90,13 +90,13 @@ public class TestConceptualModelNode extends TestCaseEnhanced
 		indicators.add(new BaseId(422));
 
 		ModelNodeId factorId = new ModelNodeId(2342);
-		ConceptualModelFactor factor = new ConceptualModelFactor(factorId);
+		ConceptualModelCause factor = new ConceptualModelCause(factorId);
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicators(indicators);
 		factor.setGoals(goals);
 		factor.setObjectives(objectives);
-		ConceptualModelFactor got = (ConceptualModelFactor)ConceptualModelNode.createFromJson(factor.getType(), factor.toJson());
+		ConceptualModelCause got = (ConceptualModelCause)ConceptualModelNode.createFromJson(factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());

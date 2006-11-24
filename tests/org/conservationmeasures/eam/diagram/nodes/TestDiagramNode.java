@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.project.Project;
@@ -46,8 +46,8 @@ public class TestDiagramNode extends EAMTestCase
 		idAssigner = new IdAssigner();
 
 		ConceptualModelIntervention cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
-		ConceptualModelFactor cmIndirectFactor = new ConceptualModelFactor(takeNextModelNodeId());
-		ConceptualModelFactor cmDirectThreat = new ConceptualModelFactor(takeNextModelNodeId());
+		ConceptualModelCause cmIndirectFactor = new ConceptualModelCause(takeNextModelNodeId());
+		ConceptualModelCause cmDirectThreat = new ConceptualModelCause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateModelNodeParameter createTarget = new CreateModelNodeParameter(new NodeTypeTarget());
 		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);

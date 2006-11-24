@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objectpools.NodePool;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.martus.util.TestCaseEnhanced;
 
@@ -33,7 +33,7 @@ public class TestNodePool extends TestCaseEnhanced
 		{
 			ModelNodeId id = takeNextModelNodeId();
 			CreateModelNodeParameter parameter = new CreateModelNodeParameter(new NodeTypeCause());
-			ConceptualModelFactor node = (ConceptualModelFactor)ConceptualModelNode.
+			ConceptualModelCause node = (ConceptualModelCause)ConceptualModelNode.
 					createConceptualModelObject(id, parameter);
 			node.increaseTargetCount();
 			pool.put(node);

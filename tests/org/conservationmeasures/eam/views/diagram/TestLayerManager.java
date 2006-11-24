@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.DiagramNodeId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelIntervention;
 import org.conservationmeasures.eam.objects.ConceptualModelTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -31,7 +31,7 @@ public class TestLayerManager extends EAMTestCase
 		idAssigner = new IdAssigner();
 		cmTarget = new ConceptualModelTarget(takeNextModelNodeId());
 		cmTarget.setLabel("Target");
-		cmFactor = new ConceptualModelFactor(takeNextModelNodeId());
+		cmFactor = new ConceptualModelCause(takeNextModelNodeId());
 		cmFactor.setLabel("Factor");
 		cmIntervention = new ConceptualModelIntervention(takeNextModelNodeId());
 		cmIntervention.setLabel("Strategy");
@@ -126,7 +126,7 @@ public class TestLayerManager extends EAMTestCase
 	IdAssigner idAssigner;
 
 	ConceptualModelTarget cmTarget;
-	ConceptualModelFactor cmFactor;
+	ConceptualModelCause cmFactor;
 	ConceptualModelIntervention cmIntervention;
 	
 	DiagramNode target;

@@ -42,7 +42,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.LinkagePool;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -134,7 +134,7 @@ public class TestProject extends EAMTestCase
 	{
 		ModelNodeId threatId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
 		ModelNodeId targetId = (ModelNodeId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeTarget()));
-		ConceptualModelFactor factor = (ConceptualModelFactor)project.findNode(threatId);
+		ConceptualModelCause factor = (ConceptualModelCause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateModelLinkageParameter parameter = new CreateModelLinkageParameter(threatId, targetId);
 		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
@@ -688,9 +688,9 @@ public class TestProject extends EAMTestCase
 	{
 		DiagramNode nodeIndirectFactor = createNode(new NodeTypeCause());
 		DiagramNode nodeDirectThreatA = createNode(new NodeTypeCause());	
-		((ConceptualModelFactor)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
+		((ConceptualModelCause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
 		DiagramNode nodeDirectThreatB = createNode(new NodeTypeCause());
-		((ConceptualModelFactor)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
+		((ConceptualModelCause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		ConceptualModelNodeSet allNodes = new ConceptualModelNodeSet();
 		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());
@@ -741,7 +741,7 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't preserve next node id?", diskProject.getNodeIdAssigner().takeNextId(), loadedProject.getNodeIdAssigner().takeNextId());
 			BaseId expectedAnnotationId = diskProject.getAnnotationIdAssigner().takeNextId();
 			assertEquals("didn't preserve next annotation id?", expectedAnnotationId, loadedProject.getAnnotationIdAssigner().takeNextId());
-			ConceptualModelFactor factor = (ConceptualModelFactor)loadedProject.findNode(factorId);
+			ConceptualModelCause factor = (ConceptualModelCause)loadedProject.findNode(factorId);
 			assertTrue("didn't update factor target count?", factor.isDirectThreat());
 		}
 		finally

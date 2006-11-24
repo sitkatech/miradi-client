@@ -36,7 +36,7 @@ import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.ConceptualModelLinkage;
 import org.conservationmeasures.eam.objects.ConceptualModelNode;
 import org.conservationmeasures.eam.objects.Desire;
@@ -400,7 +400,7 @@ public class ObjectManager
 			ConceptualModelNode from = getNodePool().find(linkFromId); 
 			ConceptualModelNode to = getNodePool().find(linkToId);
 			if(from.isFactor() && to.isTarget())
-				((ConceptualModelFactor)from).increaseTargetCount();
+				((ConceptualModelCause)from).increaseTargetCount();
 		}
 
 		public void linkageWasDeleted(ModelNodeId linkFromId, ModelNodeId linkToId)
@@ -408,7 +408,7 @@ public class ObjectManager
 			ConceptualModelNode from = getNodePool().find(linkFromId);
 			ConceptualModelNode to = getNodePool().find(linkToId);
 			if(from.isFactor() && to.isTarget())
-				((ConceptualModelFactor)from).decreaseTargetCount();
+				((ConceptualModelCause)from).decreaseTargetCount();
 		}		
 	}
 

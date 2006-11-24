@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestConceptualModelFactor extends ObjectTestCase
+public class TestConceptualModelCause extends ObjectTestCase
 {
-	public TestConceptualModelFactor(String name)
+	public TestConceptualModelCause(String name)
 	{
 		super(name);
 	}

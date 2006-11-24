@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.CreateModelLinkageParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateModelNodeParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ConceptualModelFactor;
+import org.conservationmeasures.eam.objects.ConceptualModelCause;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.testall.EAMTestCase;
@@ -229,7 +229,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
 
-		((ConceptualModelFactor)project.findNode(threatId)).decreaseTargetCount();
+		((ConceptualModelCause)project.findNode(threatId)).decreaseTargetCount();
 		assertEquals("threat value included contributing factor?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("target value included contributing factor?", none, framework.getTargetThreatRatingValue(targetId));
 	}
@@ -315,7 +315,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 	private ModelNodeId createThreat(Project projectToUse) throws Exception
 	{
 		ModelNodeId threatId = (ModelNodeId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateModelNodeParameter(new NodeTypeCause()));
-		((ConceptualModelFactor)projectToUse.findNode(threatId)).increaseTargetCount();
+		((ConceptualModelCause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}
 	
