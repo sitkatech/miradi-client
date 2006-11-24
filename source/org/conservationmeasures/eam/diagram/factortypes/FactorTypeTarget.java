@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.nodetypes;
+package org.conservationmeasures.eam.diagram.factortypes;
 
 
 public class FactorTypeTarget extends FactorType

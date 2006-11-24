@@ -4,9 +4,9 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.diagram.nodetypes;
+package org.conservationmeasures.eam.diagram.factortypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeDirectThreat;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestFactorTypeDirectThreat extends EAMTestCase 

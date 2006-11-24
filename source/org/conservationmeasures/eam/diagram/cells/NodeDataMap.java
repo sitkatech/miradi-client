@@ -8,11 +8,11 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.text.ParseException;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.json.JSONObject;
 

@@ -10,8 +10,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;

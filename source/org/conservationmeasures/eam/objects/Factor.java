@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;

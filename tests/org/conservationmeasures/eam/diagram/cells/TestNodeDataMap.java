@@ -6,12 +6,12 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import org.conservationmeasures.eam.diagram.cells.NodeDataMap;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCluster;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeDirectThreat;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeContributingFactor;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCluster;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeContributingFactor;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeDirectThreat;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeDataMap extends EAMTestCase

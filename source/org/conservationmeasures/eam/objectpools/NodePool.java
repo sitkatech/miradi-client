@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeStrategy;
-import org.conservationmeasures.eam.diagram.nodetypes.FactorTypeTarget;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
+import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;

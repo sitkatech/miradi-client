@@ -5,7 +5,7 @@
  */
 package org.conservationmeasures.eam.objecthelpers;
 
-import org.conservationmeasures.eam.diagram.nodetypes.FactorType;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 
 public class CreateModelNodeParameter extends CreateObjectParameter
 {
