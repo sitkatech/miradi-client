@@ -13,10 +13,10 @@ import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
 
-public class ComparableNode implements  Comparator
+public class FactorComparator implements  Comparator
 {
 	
-	public ComparableNode(int sortColumnToUse, NonEditableThreatMatrixTableModel modelToUse )
+	public FactorComparator(int sortColumnToUse, NonEditableThreatMatrixTableModel modelToUse )
 	{
 		sortColumn = sortColumnToUse;
 		model = modelToUse;

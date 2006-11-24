@@ -35,7 +35,7 @@ public class BundleColumnSortHandler extends ColumnSortHandler
 	{
 		if(isSummaryColumn(sortColumn, mainTableModel))
 			return new SummaryColumnComparator(mainTableModel);
-		return new ComparableNode(sortColumn,mainTableModel);
+		return new FactorComparator(sortColumn,mainTableModel);
 	}
 
 	

@@ -24,9 +24,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.martus.util.TestCaseEnhanced;
 
-public class TestInsertNode extends TestCaseEnhanced
+public class TestInsertFactorDoer extends TestCaseEnhanced
 {
-	public TestInsertNode(String name)
+	public TestInsertFactorDoer(String name)
 	{
 		super(name);
 	}

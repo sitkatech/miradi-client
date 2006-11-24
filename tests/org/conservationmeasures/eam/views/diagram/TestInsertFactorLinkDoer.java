@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestInsertConnection extends EAMTestCase
+public class TestInsertFactorLinkDoer extends EAMTestCase
 {
-	public TestInsertConnection(String name)
+	public TestInsertFactorLinkDoer(String name)
 	{
 		super(name);
 	}
