@@ -10,16 +10,16 @@ import javax.swing.JComponent;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
-import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
+import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
+import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
+import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPrint;
-import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
+import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
 import org.conservationmeasures.eam.actions.Actions;
@@ -40,10 +40,10 @@ public class DiagramToolBar extends EAMToolBar
 		JComponent[][] buttons = new JComponent[][] {
 			{
 				getInsertInterventionButton(actions, mode),
-				new ToolBarButton(actions, ActionInsertIndirectFactor.class),
+				new ToolBarButton(actions, ActionInsertContributingFactor.class),
 				new ToolBarButton(actions, ActionInsertDirectThreat.class),
 				new ToolBarButton(actions, ActionInsertTarget.class),
-				new ToolBarButton(actions, ActionInsertConnection.class),
+				new ToolBarButton(actions, ActionInsertFactorLink.class),
 			},
 			{
 				new ToolBarButton(actions, ActionCut.class),
@@ -69,15 +69,15 @@ public class DiagramToolBar extends EAMToolBar
 	static ToolBarButton getInsertInterventionButton(Actions actions, String mode)
 	{
 		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-			return new ToolBarButton(actions, ActionInsertDraftIntervention.class);
-		return new ToolBarButton(actions, ActionInsertIntervention.class);
+			return new ToolBarButton(actions, ActionInsertDraftStrategy.class);
+		return new ToolBarButton(actions, ActionInsertStrategy.class);
 	}
 
 	static ToolBarButton getModeSwitchButton(Actions actions, String mode)
 	{
 		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-			return new ToolBarButton(actions, ActionNormalDiagramMode.class);
-		return new ToolBarButton(actions, ActionStrategyBrainstormMode.class);
+			return new ToolBarButton(actions, ActionShowFullModelMode.class);
+		return new ToolBarButton(actions, ActionShowSelectedChainMode.class);
 	}
 }
 

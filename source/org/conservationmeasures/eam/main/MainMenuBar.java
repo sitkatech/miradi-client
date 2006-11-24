@@ -22,15 +22,15 @@ import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZipFile;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
-import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
-import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
+import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
+import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
-import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
+import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPreferences;
@@ -39,7 +39,7 @@ import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
-import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
+import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
 import org.conservationmeasures.eam.actions.ActionZoomOut;
@@ -233,13 +233,13 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createInsertMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Insert"));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftIntervention.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIntervention.class)));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIndirectFactor.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class)));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertContributingFactor.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class)));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class)));
 		menu.addSeparator();
-		menu.add(new JMenuItem(actions.get(ActionInsertConnection.class)));
+		menu.add(new JMenuItem(actions.get(ActionInsertFactorLink.class)));
 		return menu;
 	}
 	
@@ -260,8 +260,8 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new JMenuItem(actions.get(ActionZoomOut.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionConfigureLayers.class)));
-		menu.add(new JMenuItem(actions.get(ActionStrategyBrainstormMode.class)));
-		menu.add(new JMenuItem(actions.get(ActionNormalDiagramMode.class)));
+		menu.add(new JMenuItem(actions.get(ActionShowSelectedChainMode.class)));
+		menu.add(new JMenuItem(actions.get(ActionShowFullModelMode.class)));
 		return menu;
 	}
 	

@@ -8,15 +8,15 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionNudgeNodeLeft extends MainWindowAction
+public class ActionNudgeDown extends MainWindowAction
 {
-	public ActionNudgeNodeLeft(MainWindow mainWindowToUse)
+	public ActionNudgeDown(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Nudge Item Left");
+		return EAM.text("Action|Nudge Item Down");
 	}
 }

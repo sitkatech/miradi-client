@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.icons.ConnectionIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertConnection extends MainWindowAction
+public class ActionInsertFactorLink extends MainWindowAction
 {
-	public ActionInsertConnection(MainWindow mainWindow)
+	public ActionInsertFactorLink(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new ConnectionIcon());
 	}

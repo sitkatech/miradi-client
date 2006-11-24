@@ -8,26 +8,25 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionStrategyBrainstormMode extends MainWindowAction
+public class ActionShowFullModelMode extends MainWindowAction
 {
-	public ActionStrategyBrainstormMode(MainWindow mainWindow)
+	public ActionShowFullModelMode(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), getIconName());
 	}
-
+	
 	private static String getIconName()
 	{
-		return "icons/chain.gif";
+		return "icons/fullmodel.gif";
 	}
-	
+
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Only Selected Chain");
+		return EAM.text("Action|Show Full Model");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Show only the selected chain");
+		return EAM.text("TT|Show the full conceptual model");
 	}
-
 }

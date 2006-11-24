@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.icons.DraftInterventionIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertDraftIntervention extends LocationAction
+public class ActionInsertDraftStrategy extends LocationAction
 {
-	public ActionInsertDraftIntervention(MainWindow mainWindow)
+	public ActionInsertDraftStrategy(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new DraftInterventionIcon());
 	}

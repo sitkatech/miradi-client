@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.icons.InterventionIcon;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertIntervention extends LocationAction
+public class ActionInsertStrategy extends LocationAction
 {
-	public ActionInsertIntervention(MainWindow mainWindow)
+	public ActionInsertStrategy(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new InterventionIcon());
 	}

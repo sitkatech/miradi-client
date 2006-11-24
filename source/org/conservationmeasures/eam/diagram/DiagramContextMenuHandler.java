@@ -16,20 +16,20 @@ import javax.swing.JPopupMenu;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionInsertConnection;
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
-import org.conservationmeasures.eam.actions.ActionInsertDraftIntervention;
-import org.conservationmeasures.eam.actions.ActionInsertIndirectFactor;
-import org.conservationmeasures.eam.actions.ActionInsertIntervention;
+import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
+import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
+import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
-import org.conservationmeasures.eam.actions.ActionNormalDiagramMode;
+import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionProperties;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
-import org.conservationmeasures.eam.actions.ActionStrategyBrainstormMode;
+import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.LocationAction;
@@ -78,13 +78,13 @@ public class DiagramContextMenuHandler
 	{
 		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
 
-		insertMenu.add(createMenuItem(ActionInsertDraftIntervention.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionInsertIntervention.class, menuInvokedAt));
-		insertMenu.add(createMenuItem(ActionInsertIndirectFactor.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertDraftStrategy.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertStrategy.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertContributingFactor.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertDirectThreat.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTarget.class, menuInvokedAt));
 		insertMenu.addSeparator();
-		insertMenu.add(actions.get(ActionInsertConnection.class));
+		insertMenu.add(actions.get(ActionInsertFactorLink.class));
 
 		return insertMenu;
 	}
@@ -111,9 +111,9 @@ public class DiagramContextMenuHandler
 	{
 		String mode = ((DiagramView)mainWindow.getCurrentView()).getCurrentMode();
 		if(mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))
-			return new MenuItemWithoutLocation(actions.get(ActionNormalDiagramMode.class));
+			return new MenuItemWithoutLocation(actions.get(ActionShowFullModelMode.class));
 		
-		return new MenuItemWithoutLocation(actions.get(ActionStrategyBrainstormMode.class));
+		return new MenuItemWithoutLocation(actions.get(ActionShowSelectedChainMode.class));
 	}
 	
 	static class ContextMenuItemAtLocation extends JMenuItem implements LocationHolder

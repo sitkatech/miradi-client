@@ -81,12 +81,12 @@ public class Actions
 		registerAction(new ActionDelete(mainWindow));
 		registerAction(new ActionExit(mainWindow));
 		registerAction(new ActionPrint(mainWindow));
-		registerAction(new ActionInsertConnection(mainWindow));
+		registerAction(new ActionInsertFactorLink(mainWindow));
 		registerAction(new ActionInsertTarget(mainWindow));
-		registerAction(new ActionInsertDraftIntervention(mainWindow));
-		registerAction(new ActionInsertIntervention(mainWindow));
+		registerAction(new ActionInsertDraftStrategy(mainWindow));
+		registerAction(new ActionInsertStrategy(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
-		registerAction(new ActionInsertIndirectFactor(mainWindow));
+		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionProjectSaveAs(mainWindow));
 		registerAction(new ActionExportZipFile(mainWindow));
@@ -113,14 +113,14 @@ public class Actions
 		registerAction(new ActionViewMonitoring(mainWindow));
 		
 		registerAction(new ActionConfigureLayers(mainWindow));
-		registerAction(new ActionStrategyBrainstormMode(mainWindow));
-		registerAction(new ActionNormalDiagramMode(mainWindow));
+		registerAction(new ActionShowSelectedChainMode(mainWindow));
+		registerAction(new ActionShowFullModelMode(mainWindow));
 		registerAction(new ActionZoomIn(mainWindow));
 		registerAction(new ActionZoomOut(mainWindow));
-		registerAction(new ActionNudgeNodeUp(mainWindow));
-		registerAction(new ActionNudgeNodeDown(mainWindow));
-		registerAction(new ActionNudgeNodeLeft(mainWindow));
-		registerAction(new ActionNudgeNodeRight(mainWindow));
+		registerAction(new ActionNudgeUp(mainWindow));
+		registerAction(new ActionNudgeDown(mainWindow));
+		registerAction(new ActionNudgeLeft(mainWindow));
+		registerAction(new ActionNudgeRight(mainWindow));
 		registerAction(new ActionInsertActivity(mainWindow));
 		registerAction(new ActionModifyActivity(mainWindow));
 		registerAction(new ActionDeleteActivity(mainWindow));

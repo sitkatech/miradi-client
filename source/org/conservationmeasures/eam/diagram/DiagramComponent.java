@@ -21,10 +21,10 @@ import org.conservationmeasures.eam.actions.ActionContextualHelp;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionNudgeNodeDown;
-import org.conservationmeasures.eam.actions.ActionNudgeNodeLeft;
-import org.conservationmeasures.eam.actions.ActionNudgeNodeRight;
-import org.conservationmeasures.eam.actions.ActionNudgeNodeUp;
+import org.conservationmeasures.eam.actions.ActionNudgeDown;
+import org.conservationmeasures.eam.actions.ActionNudgeLeft;
+import org.conservationmeasures.eam.actions.ActionNudgeRight;
+import org.conservationmeasures.eam.actions.ActionNudgeUp;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
@@ -273,16 +273,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		//JAVA ISSUE: We had to create new actions here since the key pressed which caused this action
 		//Is not sent to the action.
 		//javax.swing.SwingUtilities doesn't pass the keycode to the action. 
-		Action nudgeActionUp = actions.get(ActionNudgeNodeUp.class);
+		Action nudgeActionUp = actions.get(ActionNudgeUp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
-		Action nudgeActionDown = actions.get(ActionNudgeNodeDown.class);
+		Action nudgeActionDown = actions.get(ActionNudgeDown.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
-		Action nudgeActionLeft = actions.get(ActionNudgeNodeLeft.class);
+		Action nudgeActionLeft = actions.get(ActionNudgeLeft.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
-		Action nudgeActionRight = actions.get(ActionNudgeNodeRight.class);
+		Action nudgeActionRight = actions.get(ActionNudgeRight.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 	}
