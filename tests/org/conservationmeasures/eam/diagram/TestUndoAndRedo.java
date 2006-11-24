@@ -7,8 +7,8 @@ package org.conservationmeasures.eam.diagram;
 
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDoNothing;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -39,7 +39,7 @@ public class TestUndoAndRedo extends EAMTestCase
 
 		fromId = createModelAndDiagramNodeWithCommands(Factor.TYPE_CAUSE);
 		toId = createModelAndDiagramNodeWithCommands(Factor.TYPE_INTERVENTION);
-		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
+		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, fromId, toId);
 		linkId = addLinkageCommand.getDiagramLinkageId();
 	}
 	
@@ -100,7 +100,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		project.undo();
 		
 		ModelNodeId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddNode insert = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		CommandDiagramAddFactor insert = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(insert);
 		verifyNodePresent(insert.getInsertedId());
 		project.undo();
@@ -210,7 +210,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		project.executeCommand(createModelNodeCommand);
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
-		CommandDiagramAddNode addToDiagramCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(addToDiagramCommand);
 		return modelNodeId;
 		

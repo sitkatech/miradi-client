@@ -15,9 +15,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.Logging;
 
-public class CommandSetNodeSize extends Command
+public class CommandSetFactorSize extends Command
 {
-	public CommandSetNodeSize(DiagramNodeId idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
+	public CommandSetFactorSize(DiagramNodeId idToUpdate, Dimension updatedSize, Dimension previousSizeToUse)
 	{
 		id = idToUpdate;
 		currentSize = updatedSize;

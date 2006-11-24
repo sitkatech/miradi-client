@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.Dimension;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -32,7 +32,7 @@ public class TestSetNodeSize extends TestCaseEnhanced
 		ModelNodeId modelNodeId = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		DiagramNode found = model.getNodeById(modelNodeId);
 		Dimension newSize = new Dimension(200,300);
-		Command setNodeSize = new CommandSetNodeSize(found.getDiagramNodeId(), newSize, found.getPreviousSize());
+		Command setNodeSize = new CommandSetFactorSize(found.getDiagramNodeId(), newSize, found.getPreviousSize());
 		setNodeSize.execute(project);
 
 		Dimension foundSize = found.getSize();

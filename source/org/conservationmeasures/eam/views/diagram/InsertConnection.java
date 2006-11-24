@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -87,13 +87,13 @@ public class InsertConnection extends ProjectDoer
 		return false;
     }
 	
-	public static CommandDiagramAddLinkage createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, ModelNodeId fromId, ModelNodeId toId) throws CommandFailedException
+	public static CommandDiagramAddFactorLink createModelLinkageAndAddToDiagramUsingCommands(Project projectToUse, ModelNodeId fromId, ModelNodeId toId) throws CommandFailedException
 	{
 		CreateModelLinkageParameter extraInfo = new CreateModelLinkageParameter(fromId, toId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		projectToUse.executeCommand(createModelLinkage);
 		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
-		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
+		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		projectToUse.executeCommand(command);
 		return command;
 	}

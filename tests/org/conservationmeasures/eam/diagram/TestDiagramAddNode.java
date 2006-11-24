@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -39,7 +39,7 @@ public class TestDiagramAddNode extends EAMTestCase
 	
 	public void testBadInsert() throws Exception
 	{
-		Command insertCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), new ModelNodeId(BaseId.INVALID.asInt()));
+		Command insertCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), new ModelNodeId(BaseId.INVALID.asInt()));
 		try
 		{
 			EAM.setLogToString();

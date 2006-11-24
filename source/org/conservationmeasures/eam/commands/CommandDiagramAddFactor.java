@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
 
-public class CommandDiagramAddNode extends Command
+public class CommandDiagramAddFactor extends Command
 {
-	public CommandDiagramAddNode(DiagramNodeId idToUse, ModelNodeId idToWrap)
+	public CommandDiagramAddFactor(DiagramNodeId idToUse, ModelNodeId idToWrap)
 	{
 		modelNodeId = idToWrap;
 		insertedId = idToUse;

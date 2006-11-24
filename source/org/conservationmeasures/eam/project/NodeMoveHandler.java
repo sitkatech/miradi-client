@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -156,7 +156,7 @@ public class NodeMoveHandler
 	
 	private Command buildResizeCommand(DiagramNode node)
 	{
-		return new CommandSetNodeSize(node.getDiagramNodeId(), node.getSize(), node.getPreviousSize());
+		return new CommandSetFactorSize(node.getDiagramNodeId(), node.getSize(), node.getPreviousSize());
 	}
 	
 

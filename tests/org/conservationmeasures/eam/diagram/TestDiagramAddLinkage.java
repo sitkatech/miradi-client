@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -39,7 +39,7 @@ public class TestDiagramAddLinkage extends EAMTestCase
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
 		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
-		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
+		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
 
 		DiagramFactorLink linkage = model.getLinkageById(command.getDiagramLinkageId());

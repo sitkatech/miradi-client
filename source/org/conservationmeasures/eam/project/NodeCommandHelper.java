@@ -11,11 +11,11 @@ import java.awt.Point;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
@@ -41,14 +41,14 @@ public class NodeCommandHelper
 		project = projectToUse;
 	}
 
-	public CommandDiagramAddNode createNode(FactorType nodeType) throws Exception
+	public CommandDiagramAddFactor createNode(FactorType nodeType) throws Exception
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(nodeType);
 		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		executeCommand(createModelNode);
 		ModelNodeId modelNodeId = new ModelNodeId(createModelNode.getCreatedId().asInt());
 
-		CommandDiagramAddNode commandInsertNode = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		CommandDiagramAddFactor commandInsertNode = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		executeCommand(commandInsertNode);
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(modelNodeId);
 		for(int i = 0; i < commandsToAddToView.length; ++i)
@@ -83,7 +83,7 @@ public class NodeCommandHelper
 			DiagramNodeId originalDiagramNodeId = new DiagramNodeId(nodeData.getId(DiagramNode.TAG_ID).asInt());
 			
 			FactorType type = FactorDataMap.convertIntToNodeType(nodeData.getInt(DiagramNode.TAG_NODE_TYPE)); 
-			CommandDiagramAddNode addCommand = createNode(type);
+			CommandDiagramAddFactor addCommand = createNode(type);
 			DiagramNodeId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
 			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramNode.TAG_LOCATION));
@@ -106,7 +106,7 @@ public class NodeCommandHelper
 			
 			DiagramNode newNode = getDiagramNodeById(newNodeId);
 			Dimension originalDimension = nodeData.getDimension(DiagramNode.TAG_SIZE);
-			CommandSetNodeSize resize = new CommandSetNodeSize(newNodeId, originalDimension, newNode.getSize());
+			CommandSetFactorSize resize = new CommandSetFactorSize(newNodeId, originalDimension, newNode.getSize());
 			executeCommand(resize);
 			
 			DiagramNodeId newDiagramNodeId = getDiagramNodeById(newNodeId).getDiagramNodeId();
@@ -138,7 +138,7 @@ public class NodeCommandHelper
 			
 			DiagramNode newFromNode = getDiagramNodeById(newFromId);
 			DiagramNode newToNode = getDiagramNodeById(newToId);
-			CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
+			CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, newFromNode.getWrappedId(), newToNode.getWrappedId());
 			Logging.logDebug("Paste Link : " + addLinkageCommand.getModelLinkageId() + " from:" + newFromId + " to:" + newToId);
 		}
 	}

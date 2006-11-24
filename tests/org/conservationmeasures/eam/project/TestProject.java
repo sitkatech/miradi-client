@@ -11,10 +11,10 @@ import java.io.File;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
@@ -104,7 +104,7 @@ public class TestProject extends EAMTestCase
 	public void testUndoRedoSaveInfoAndDiagram() throws Exception
 	{
 		ModelNodeId factorId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
 		project.executeCommand(cmd);
 		DiagramModel model = new DiagramModel(project);
 		project.getDatabase().readDiagram(model);
@@ -355,10 +355,10 @@ public class TestProject extends EAMTestCase
 		
 		new NodeMoveHandler(project).nodesWereMovedOrResized(0, 0, ids);
 		project.getLastCommand(); //End Transaction
-		CommandSetNodeSize commandSetNodeSize2Recorded = (CommandSetNodeSize)project.getLastCommand();
+		CommandSetFactorSize commandSetNodeSize2Recorded = (CommandSetFactorSize)project.getLastCommand();
 		assertEquals(node2.getSize(), commandSetNodeSize2Recorded.getCurrentSize());
 		assertEquals(node2.getPreviousSize(), commandSetNodeSize2Recorded.getPreviousSize());
-		CommandSetNodeSize commandSetNodeSize1Recorded = (CommandSetNodeSize)project.getLastCommand();
+		CommandSetFactorSize commandSetNodeSize1Recorded = (CommandSetFactorSize)project.getLastCommand();
 		assertEquals(node1.getSize(), commandSetNodeSize1Recorded.getCurrentSize());
 		assertEquals(node1.getPreviousSize(), commandSetNodeSize1Recorded.getPreviousSize());
 		project.getLastCommand(); //begin Transaction
@@ -415,11 +415,11 @@ public class TestProject extends EAMTestCase
 		assertEquals(nodeResizedAndMoved.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[0]);
 		assertEquals(nodeMovedOnly.getDiagramNodeId(), commandDiagramMoveRecorded.getIds()[1]);
 
-		CommandSetNodeSize commandNodeResizedOnlyRecorded = (CommandSetNodeSize)project.getLastCommand();
+		CommandSetFactorSize commandNodeResizedOnlyRecorded = (CommandSetFactorSize)project.getLastCommand();
 		assertEquals(nodeResizedOnly.getSize(), commandNodeResizedOnlyRecorded.getCurrentSize());
 		assertEquals(nodeResizedOnly.getPreviousSize(), commandNodeResizedOnlyRecorded.getPreviousSize());
 		
-		CommandSetNodeSize commandNodeResizedAndMovedRecorded = (CommandSetNodeSize)project.getLastCommand();
+		CommandSetFactorSize commandNodeResizedAndMovedRecorded = (CommandSetFactorSize)project.getLastCommand();
 		assertEquals(nodeResizedAndMoved.getSize(), commandNodeResizedAndMovedRecorded.getCurrentSize());
 		assertEquals(nodeResizedAndMoved.getPreviousSize(), commandNodeResizedAndMovedRecorded.getPreviousSize());
 		
@@ -494,7 +494,7 @@ public class TestProject extends EAMTestCase
 	public void testExecuteCommandWritesDiagram() throws Exception
 	{
 		ModelNodeId modelNodeId = project.createNode(Factor.TYPE_CAUSE);
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(cmd);
 		DiagramModel copyOfModel = new DiagramModel(project);
 		project.getDatabase().readDiagram(copyOfModel);
@@ -509,12 +509,12 @@ public class TestProject extends EAMTestCase
 		ModelNodeId factorId = project.createNode(Factor.TYPE_CAUSE);
 		int existingCalls = database.callsToWriteObject;
 		
-		CommandDiagramAddNode targetCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), targetId);
+		CommandDiagramAddFactor targetCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), targetId);
 		project.executeCommand(targetCommand);
 		assertEquals(existingCalls, database.callsToWriteObject);
 		DiagramNode target = project.getDiagramModel().getNodeById(targetId);
 		
-		CommandDiagramAddNode factorCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
+		CommandDiagramAddFactor factorCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), factorId);
 		project.executeCommand(factorCommand);
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		DiagramNode factor = project.getDiagramModel().getNodeById(factorId);
@@ -531,7 +531,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 		Dimension oldDimension = factor.getSize();
-		project.executeCommand(new CommandSetNodeSize(factor.getDiagramNodeId(), new Dimension(50, 75), oldDimension));
+		project.executeCommand(new CommandSetFactorSize(factor.getDiagramNodeId(), new Dimension(50, 75), oldDimension));
 		assertEquals(0 + existingCalls, database.callsToWriteObject);
 		
 	}
@@ -548,7 +548,7 @@ public class TestProject extends EAMTestCase
 		{
 		}
 		
-		CommandDiagramAddNode cmd = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), gotId);
+		CommandDiagramAddFactor cmd = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), gotId);
 		project.executeCommand(cmd);
 		try
 		{
@@ -721,7 +721,7 @@ public class TestProject extends EAMTestCase
 			ModelNodeId interventionId = (ModelNodeId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
 			DiagramNodeId diagramNodeId = diskProject.addNodeToDiagram(interventionId);
 
-			CommandDiagramRemoveNode cmdDelete = new CommandDiagramRemoveNode(diagramNodeId);
+			CommandDiagramRemoveFactor cmdDelete = new CommandDiagramRemoveFactor(diagramNodeId);
 			diskProject.executeCommand(cmdDelete);
 			
 			diskProject.deleteObject(ObjectType.MODEL_NODE, interventionId);

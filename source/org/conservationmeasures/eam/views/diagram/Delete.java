@@ -10,8 +10,8 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
@@ -83,7 +83,7 @@ public class Delete extends ProjectDoer
 	private void deleteLinkage(DiagramFactorLink linkageToDelete) throws CommandFailedException
 	{
 		DiagramLinkageId id = linkageToDelete.getDiagramLinkageId();
-		CommandDiagramRemoveLinkage removeCommand = new CommandDiagramRemoveLinkage(id);
+		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
 		getProject().executeCommand(removeCommand);
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.MODEL_LINKAGE, linkageToDelete.getWrappedId());
 		getProject().executeCommand(deleteLinkage);
@@ -128,7 +128,7 @@ public class Delete extends ProjectDoer
 		Command[] commandsToClear = nodeToDelete.buildCommandsToClear();
 		getProject().executeCommands(commandsToClear);
 		
-		getProject().executeCommand(new CommandDiagramRemoveNode(id));
+		getProject().executeCommand(new CommandDiagramRemoveFactor(id));
 	}
 
 	private void deleteUnderlyingNode(Factor nodeToDelete) throws CommandFailedException

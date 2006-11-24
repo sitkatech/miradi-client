@@ -13,7 +13,7 @@ import java.util.Map;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
@@ -141,7 +141,7 @@ public class TestDiagramFactor extends EAMTestCase
 		Command[] commands = target.buildCommandsToClear();
 		assertEquals(3, commands.length);
 		int next = 0;
-		assertEquals(CommandSetNodeSize.COMMAND_NAME, commands[next++].getCommandName());
+		assertEquals(CommandSetFactorSize.COMMAND_NAME, commands[next++].getCommandName());
 		assertEquals(CommandDiagramMove.COMMAND_NAME, commands[next++].getCommandName());
 		assertEquals(CommandSetObjectData.COMMAND_NAME, commands[next++].getCommandName());
 	}

@@ -15,7 +15,7 @@ import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDiagramMove;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.renderers.MultilineCellRenderer;
@@ -382,7 +382,7 @@ abstract public class DiagramNode extends EAMGraphCell
 		int x = getLocation().x;
 		int y = getLocation().y;
 		return new Command[] {
-			new CommandSetNodeSize(getDiagramNodeId(), getDefaultSize(), getSize()),
+			new CommandSetFactorSize(getDiagramNodeId(), getDefaultSize(), getSize()),
 			new CommandDiagramMove(-x, -y, new DiagramNodeId[] {getDiagramNodeId()}),
 			new CommandSetObjectData(getWrappedType(), getWrappedId(), TAG_VISIBLE_LABEL, EAMBaseObject.DEFAULT_LABEL),
 		};

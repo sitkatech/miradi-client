@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.ids.ModelNodeId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandDiagramRemoveNode extends Command
+public class CommandDiagramRemoveFactor extends Command
 {
-	public CommandDiagramRemoveNode(DiagramNodeId idToDelete)
+	public CommandDiagramRemoveFactor(DiagramNodeId idToDelete)
 	{
 		diagramNodeId = idToDelete;
 		modelNodeId = new ModelNodeId(BaseId.INVALID.asInt());

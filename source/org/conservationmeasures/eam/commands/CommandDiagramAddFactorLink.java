@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandDiagramAddLinkage extends Command
+public class CommandDiagramAddFactorLink extends Command
 {
-	public CommandDiagramAddLinkage(ModelLinkageId idToWrap)
+	public CommandDiagramAddFactorLink(ModelLinkageId idToWrap)
 	{
 		modelLinkageId = idToWrap;
 		diagramLinkageId = new DiagramLinkageId(BaseId.INVALID.asInt());

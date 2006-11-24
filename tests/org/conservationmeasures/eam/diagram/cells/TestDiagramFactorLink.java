@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.diagram.cells;
 
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
@@ -86,7 +86,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
 		project.executeCommand(createModelLinkage);
 		ModelLinkageId modelLinkageId = (ModelLinkageId)createModelLinkage.getCreatedId();
-		CommandDiagramAddLinkage command = new CommandDiagramAddLinkage(modelLinkageId);
+		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
 		project.executeCommand(command);
 		assertNotNull("link not in model?", model.getLinkageById(command.getDiagramLinkageId()));
 		

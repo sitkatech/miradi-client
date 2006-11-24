@@ -4,9 +4,9 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
-import org.conservationmeasures.eam.commands.CommandDiagramAddNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactor;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetNodeSize;
+import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramNodeId;
@@ -78,14 +78,14 @@ public class TestUndoRedo extends EAMTestCase
 
 		Dimension newSize1 = new Dimension(5,10);
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetNodeSize(insertedId, newSize1, originalSize));
+		project.executeCommand(new CommandSetFactorSize(insertedId, newSize1, originalSize));
 		project.executeCommand(new CommandEndTransaction());
 
 		assertEquals(newSize1, node.getSize());
 
 		Dimension newSize2 = new Dimension(20,30);
 		project.executeCommand(new CommandBeginTransaction());
-		project.executeCommand(new CommandSetNodeSize(insertedId, newSize2, newSize1));
+		project.executeCommand(new CommandSetFactorSize(insertedId, newSize2, newSize1));
 		project.executeCommand(new CommandEndTransaction());
 		assertEquals(newSize2, node.getSize());
 
@@ -110,13 +110,13 @@ public class TestUndoRedo extends EAMTestCase
 		assertEquals(newSize2, node.getSize());
 	}
 	
-	private CommandDiagramAddNode insertFactor(Project p) throws Exception 
+	private CommandDiagramAddFactor insertFactor(Project p) throws Exception 
 	{
 		CreateModelNodeParameter extraInfo = new CreateModelNodeParameter(Factor.TYPE_CAUSE);
 		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
 		p.executeCommand(createModelNodeCommand);
 		ModelNodeId modelNodeId = (ModelNodeId)createModelNodeCommand.getCreatedId();
-		CommandDiagramAddNode addToDiagramCommand = new CommandDiagramAddNode(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
+		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramNodeId(BaseId.INVALID.asInt()), modelNodeId);
 		p.executeCommand(addToDiagramCommand);
 		return addToDiagramCommand;
 	}

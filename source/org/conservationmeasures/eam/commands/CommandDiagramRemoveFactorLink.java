@@ -12,9 +12,9 @@ import org.conservationmeasures.eam.ids.ModelLinkageId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 
-public class CommandDiagramRemoveLinkage extends Command
+public class CommandDiagramRemoveFactorLink extends Command
 {
-	public CommandDiagramRemoveLinkage(DiagramLinkageId idToDelete)
+	public CommandDiagramRemoveFactorLink(DiagramLinkageId idToDelete)
 	{
 		diagramLinkageId = idToDelete;
 		modelLinkageId = new ModelLinkageId(BaseId.INVALID.asInt());

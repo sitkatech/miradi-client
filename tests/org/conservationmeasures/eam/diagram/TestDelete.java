@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.commands.CommandDiagramAddLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveLinkage;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveNode;
+import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramNode;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -35,12 +35,12 @@ public class TestDelete extends EAMTestCase
 		DiagramNode intervention = model.getNodeById(interventionId);
 		ModelNodeId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramNode factor = model.getNodeById(factorId);
-		CommandDiagramAddLinkage addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
+		CommandDiagramAddFactorLink addLinkageCommand = InsertConnection.createModelLinkageAndAddToDiagramUsingCommands(project, interventionId, factorId);
 		DiagramLinkageId linkageId = addLinkageCommand.getDiagramLinkageId();
 		
 		assertTrue("link not found?", model.hasLinkage(intervention, factor));
 		
-		CommandDiagramRemoveLinkage delete = new CommandDiagramRemoveLinkage(linkageId);
+		CommandDiagramRemoveFactorLink delete = new CommandDiagramRemoveFactorLink(linkageId);
 		delete.execute(project);
 		assertFalse("link not deleted?", model.hasLinkage(intervention, factor));
 		
@@ -55,7 +55,7 @@ public class TestDelete extends EAMTestCase
 		}
 		EAM.setLogToConsole();
 		
-		CommandDiagramRemoveNode deleteNode = new CommandDiagramRemoveNode(factor.getDiagramNodeId());
+		CommandDiagramRemoveFactor deleteNode = new CommandDiagramRemoveFactor(factor.getDiagramNodeId());
 		deleteNode.execute(project);
 		assertFalse("node not deleted?", model.isNodeInProject(factor));
 
