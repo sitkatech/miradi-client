@@ -52,7 +52,7 @@ public class ObjectManager
 		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
 		pools.put(new Integer(ObjectType.MODEL_NODE), new FactorPool());
-		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(new LinkageMonitor()));
+		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(new FactorLinkMonitor()));
 		addNormalPool(new RatingCriterionPool(ida));
 		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));
@@ -265,7 +265,7 @@ public class ObjectManager
 	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
 	{
 		String label ="";
-		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
 		boolean isFirst = true;
 		for (int i = 0; i < cmNodes.length; i++)
 		{
@@ -285,7 +285,7 @@ public class ObjectManager
 	private String getRelatedDirectThreatLabelsAsMultiLine(FactorType nodeType, BaseId annotationId, int annotationType, String fieldTag) throws Exception
 	{
 		String label ="";
-		Factor[] cmNodes = getNodesRelatedToAnnotation(annotationType, annotationId).toNodeArray();
+		Factor[] cmNodes = getFactorsRelatedToAnnotation(annotationType, annotationId).toNodeArray();
 		boolean isFirst = true;
 		for (int i = 0; i < cmNodes.length; i++)
 		{
@@ -302,7 +302,7 @@ public class ObjectManager
 		return label;
 	}
 	
-	private FactorSet getNodesRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
+	private FactorSet getFactorsRelatedToAnnotation(int annotationType, BaseId annotationId) throws Exception
 	{
 		ChainManager chainManager = new ChainManager(project);
 		if (annotationType == ObjectType.GOAL)
@@ -393,7 +393,7 @@ public class ObjectManager
 		return getProject().getDatabase();
 	}
 
-	class LinkageMonitor implements FactorLinkListener
+	class FactorLinkMonitor implements FactorLinkListener
 	{
 		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
 		{
