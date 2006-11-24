@@ -140,7 +140,7 @@ public class Preferences extends Doer
 			
 			panel.add(new UiLabel("Strategy (Yellow)"));
 			interventionDropdown = createColorsDropdown(interventionColorChoices);
-			interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION));
+			interventionDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY));
 			panel.add(interventionDropdown);
 			
 			panel.add(new UiLabel("Direct Threat (Pink)"));
@@ -150,7 +150,7 @@ public class Preferences extends Doer
 			
 			panel.add(new UiLabel("Contributing Factor (Orange)"));
 			indirectFactorDropdown = createColorsDropdown(indirectFactorColorChoices);
-			indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR));
+			indirectFactorDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR));
 			panel.add(indirectFactorDropdown);
 			
 			panel.add(new UiLabel("Target (Light Green)"));
@@ -183,10 +183,10 @@ public class Preferences extends Doer
 		void okWasPressed()
 		{
 			Color interventionColor = (Color)interventionDropdown.getSelectedItem();
-			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERVENTION, interventionColor);
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_STRATEGY, interventionColor);
 			
 			Color indirectFactorColor = (Color)indirectFactorDropdown.getSelectedItem();
-			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR, indirectFactorColor);
+			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR, indirectFactorColor);
 			
 			Color directThreatColor = (Color)directThreatDropdown.getSelectedItem();
 			mainWindow.setColorPreference(AppPreferences.TAG_COLOR_DIRECT_THREAT, directThreatColor);

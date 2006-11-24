@@ -21,6 +21,6 @@ public class ContributingFactorIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INDIRECT_FACTOR);
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 	}
 }

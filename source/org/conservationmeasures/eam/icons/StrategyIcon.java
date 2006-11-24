@@ -21,6 +21,6 @@ public class StrategyIcon extends EamIcon
 	
 	Color getIconColor()
 	{
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
 	}
 }

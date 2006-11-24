@@ -25,7 +25,7 @@ public class DiagramStrategy extends DiagramFactor
 		if(isStatusDraft())
 			return DiagramConstants.COLOR_DRAFT_STRATEGY;
 		
-		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_INTERVENTION);
+		return EAM.mainWindow.getColorPreference(AppPreferences.TAG_COLOR_STRATEGY);
 	}
 
 }

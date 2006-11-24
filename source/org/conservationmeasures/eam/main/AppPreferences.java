@@ -51,12 +51,12 @@ public class AppPreferences
 	
 	public Color getColor(String tag)
 	{
-		if(tag.equals(TAG_COLOR_INTERVENTION))
-			return interventionColor;
+		if(tag.equals(TAG_COLOR_STRATEGY))
+			return strategyColor;
 		if(tag.equals(TAG_COLOR_ACTIVITIES))
 			return activitiesColor;
-		if(tag.equals(TAG_COLOR_INDIRECT_FACTOR))
-			return indirectFactorColor;
+		if(tag.equals(TAG_COLOR_CONTRIBUTING_FACTOR))
+			return contributingFactorColor;
 		if(tag.equals(TAG_COLOR_DIRECT_THREAT))
 			return directThreatColor;
 		if(tag.equals(TAG_COLOR_TARGET))
@@ -69,12 +69,12 @@ public class AppPreferences
 	
 	public void setColor(String tag, Color colorToUse)
 	{
-		if(tag.equals(TAG_COLOR_INTERVENTION))
-			interventionColor = colorToUse;
+		if(tag.equals(TAG_COLOR_STRATEGY))
+			strategyColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_ACTIVITIES))
 			activitiesColor = colorToUse;
-		else if(tag.equals(TAG_COLOR_INDIRECT_FACTOR))
-			indirectFactorColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_CONTRIBUTING_FACTOR))
+			contributingFactorColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_DIRECT_THREAT))
 			directThreatColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_TARGET))
@@ -104,9 +104,9 @@ public class AppPreferences
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_COLOR_INTERVENTION, interventionColor);
+		json.put(TAG_COLOR_STRATEGY, strategyColor);
 		json.put(TAG_COLOR_ACTIVITIES, activitiesColor);
-		json.put(TAG_COLOR_INDIRECT_FACTOR, indirectFactorColor);
+		json.put(TAG_COLOR_CONTRIBUTING_FACTOR, contributingFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
 		json.put(TAG_COLOR_SCOPE, scopeColor);
@@ -118,9 +118,9 @@ public class AppPreferences
 	
 	public void loadFrom(EnhancedJsonObject json)
 	{
-		interventionColor = json.optColor(TAG_COLOR_INTERVENTION, DEFAULT_INTERVENTION_COLOR);
+		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DEFAULT_STRATEGY_COLOR);
 		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DEFAULT_ACTIVITIES_COLOR);
-		indirectFactorColor = json.optColor(TAG_COLOR_INDIRECT_FACTOR, DEFAULT_INDIRECT_FACTOR_COLOR);
+		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DEFAULT_CONTRIBUTING_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DEFAULT_TARGET_COLOR);
 		scopeColor = json.optColor(TAG_COLOR_SCOPE, DEFAULT_SCOPE_COLOR);
@@ -129,9 +129,9 @@ public class AppPreferences
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
 	}
 	
-	public static final String TAG_COLOR_INTERVENTION = "ColorIntervention";
+	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
-	public static final String TAG_COLOR_INDIRECT_FACTOR = "ColorIndirectFactor";
+	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
@@ -140,14 +140,14 @@ public class AppPreferences
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
-	private static final Color DEFAULT_INDIRECT_FACTOR_COLOR = new Color(255, 190, 0);
-	private static final Color DEFAULT_INTERVENTION_COLOR = new Color(255, 255, 0);
+	private static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = new Color(255, 190, 0);
+	private static final Color DEFAULT_STRATEGY_COLOR = new Color(255, 255, 0);
 	private static final Color DEFAULT_ACTIVITIES_COLOR = new Color(255, 255, 0);
 	private static final Color DEFAULT_SCOPE_COLOR = new Color(0, 255, 0);
 	
-	public Color interventionColor;
+	public Color strategyColor;
 	public Color activitiesColor;
-	public Color indirectFactorColor;
+	public Color contributingFactorColor;
 	public Color directThreatColor;
 	public Color targetColor;
 	public Color scopeColor;
