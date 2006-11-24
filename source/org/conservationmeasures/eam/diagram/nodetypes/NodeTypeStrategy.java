@@ -6,18 +6,18 @@
 package org.conservationmeasures.eam.diagram.nodetypes;
 
 
-public class NodeTypeIntervention extends NodeType
+public class NodeTypeStrategy extends NodeType
 {
-	public boolean isIntervention()
+	public boolean isStrategy()
 	{
 		return true;
 	}
 	
 	public String toString()
 	{
-		return INTERVENTION_TYPE; 
+		return STRATEGY_TYPE; 
 	}
 
-	public static final String INTERVENTION_TYPE = "Intervention";
+	public static final String STRATEGY_TYPE = "Intervention";
 
 }

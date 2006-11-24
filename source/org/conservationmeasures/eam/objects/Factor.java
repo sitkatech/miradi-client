@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -154,7 +154,7 @@ abstract public class Factor extends EAMBaseObject
 	public static Factor createFrom(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		String typeString = json.getString(TAG_NODE_TYPE);
-		if(typeString.equals(NodeTypeIntervention.INTERVENTION_TYPE))
+		if(typeString.equals(NodeTypeStrategy.STRATEGY_TYPE))
 			return new Strategy(new ModelNodeId(idAsInt), json);
 		if(typeString.equals(NodeTypeCause.CAUSE_TYPE))
 			return new Cause(new ModelNodeId(idAsInt), json);
@@ -182,13 +182,13 @@ abstract public class Factor extends EAMBaseObject
 	public static Factor createConceptualModelObject(ModelNodeId idToCreate, CreateModelNodeParameter parameter)
 	{
 		NodeType nodeType = parameter.getNodeType();
-		if(nodeType.isIntervention())
+		if(nodeType.isStrategy())
 			return new Strategy(idToCreate);
 		else if(nodeType.isCause())
 			return new Cause(idToCreate);
 		else if(nodeType.isTarget())
 			return new Target(idToCreate);
-		else if(nodeType.isCluster())
+		else if(nodeType.isFactorCluster())
 			return new FactorCluster(idToCreate);
 	
 		throw new RuntimeException("Tried to create unknown node type: " + nodeType);
@@ -211,7 +211,7 @@ abstract public class Factor extends EAMBaseObject
 	public static final NodeType TYPE_INVALID = null;
 	public static final NodeType TYPE_TARGET = new NodeTypeTarget();
 	public static final NodeType TYPE_CAUSE = new NodeTypeCause();
-	public static final NodeType TYPE_INTERVENTION = new NodeTypeIntervention();
+	public static final NodeType TYPE_INTERVENTION = new NodeTypeStrategy();
 	public static final NodeType TYPE_CLUSTER = new NodeTypeCluster();
 	
 	public static final String TAG_NODE_TYPE = "Type";

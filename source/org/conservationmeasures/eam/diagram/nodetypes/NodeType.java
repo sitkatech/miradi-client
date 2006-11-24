@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 
 public abstract class NodeType
 {
-	public boolean isIntervention()
+	public boolean isStrategy()
 	{
 		return false;
 	}
@@ -34,7 +34,7 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isCluster()
+	public boolean isFactorCluster()
 	{
 		return false;
 	}

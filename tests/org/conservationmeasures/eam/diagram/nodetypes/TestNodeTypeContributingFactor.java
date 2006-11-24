@@ -21,7 +21,7 @@ public class TestNodeTypeContributingFactor extends EAMTestCase
 		NodeTypeContributingFactor factor = new NodeTypeContributingFactor();
 		assertTrue("Not a contributing factor?", factor.isContributingFactor());
 		assertFalse(factor.isDirectThreat());
-		assertFalse(factor.isIntervention());
+		assertFalse(factor.isStrategy());
 		assertFalse(factor.isTarget());
 	}
 }

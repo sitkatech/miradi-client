@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ModelNodeId;
@@ -56,7 +56,7 @@ public class NodePool extends EAMObjectPool
 
 	public Factor[] getInterventions()
 	{
-		return getNodesOfType(new NodeTypeIntervention());
+		return getNodesOfType(new NodeTypeStrategy());
 	}
 	
 	public Factor[] getDirectThreats()

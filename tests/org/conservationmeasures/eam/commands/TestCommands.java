@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.diagram.nodes.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.nodes.DiagramNode;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
@@ -315,7 +315,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandInsertIntervention() throws Exception
 	{
-		verifyDiagramAddNode(new NodeTypeIntervention());
+		verifyDiagramAddNode(new NodeTypeStrategy());
 	}
 
 	private void verifyDiagramAddNode(NodeType type) throws Exception, CommandFailedException

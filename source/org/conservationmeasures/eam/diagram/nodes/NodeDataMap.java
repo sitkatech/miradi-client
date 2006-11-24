@@ -11,7 +11,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeType;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCluster;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeCause;
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
 import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeTarget;
 import org.conservationmeasures.eam.utils.DataMap;
 import org.json.JSONObject;
@@ -46,7 +46,7 @@ public class NodeDataMap extends DataMap
 			case NodeDataMap.INT_TYPE_DIRECT_THREAT:
 				return new NodeTypeCause();
 			case NodeDataMap.INT_TYPE_INTERVENTION:
-				return new NodeTypeIntervention();
+				return new NodeTypeStrategy();
 			case NodeDataMap.INT_TYPE_CLUSTER:
 				return new NodeTypeCluster();
 			default:
@@ -61,11 +61,11 @@ public class NodeDataMap extends DataMap
 			return NodeDataMap.INT_TYPE_TARGET;
 		if(type.isContributingFactor())
 			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
-		if(type.isIntervention())
+		if(type.isStrategy())
 			return NodeDataMap.INT_TYPE_INTERVENTION;
 		if(type.isDirectThreat())
 			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
-		if(type.isCluster())
+		if(type.isFactorCluster())
 			return NodeDataMap.INT_TYPE_CLUSTER;
 		
 		if(type.isCause())

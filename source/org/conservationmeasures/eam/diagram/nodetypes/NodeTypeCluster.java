@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.diagram.nodetypes;
 
 public class NodeTypeCluster extends NodeType
 {
-	public boolean isCluster()
+	public boolean isFactorCluster()
 	{
 		return true;
 	}

@@ -4,22 +4,22 @@
  * This file is confidential and proprietary
  */
 
-package org.conservationmeasures.eam.diagram;
+package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIntervention;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeStrategy;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
-public class TestTypeIntervention extends EAMTestCase 
+public class TestNodeTypeStrategy extends EAMTestCase 
 {
-	public TestTypeIntervention(String name) 
+	public TestNodeTypeStrategy(String name) 
 	{
 		super(name);
 	}
 	
 	public void testBasics() throws Exception
 	{
-		NodeTypeIntervention factor = new NodeTypeIntervention();
-		assertTrue("Not a strategy?", factor.isIntervention());
+		NodeTypeStrategy factor = new NodeTypeStrategy();
+		assertTrue("Not a strategy?", factor.isStrategy());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isContributingFactor());
