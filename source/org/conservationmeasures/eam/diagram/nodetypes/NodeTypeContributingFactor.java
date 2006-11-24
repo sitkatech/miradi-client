@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.main.EAM;
 
 
 
-public class NodeTypeIndirectFactor extends NodeTypeCause
+public class NodeTypeContributingFactor extends NodeTypeCause
 {
-	public boolean isIndirectFactor()
+	public boolean isContributingFactor()
 	{
 		return true;
 	}

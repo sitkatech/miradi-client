@@ -22,6 +22,6 @@ public class TestNodeTypeDirectThreat extends EAMTestCase
 		assertTrue("Not a Direct Threat?", factor.isDirectThreat());
 		assertFalse(factor.isTarget());
 		assertFalse(factor.isIntervention());
-		assertFalse(factor.isIndirectFactor());
+		assertFalse(factor.isContributingFactor());
 	}
 }

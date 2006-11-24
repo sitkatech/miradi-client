@@ -59,7 +59,7 @@ public class NodeDataMap extends DataMap
 	{
 		if(type.isTarget())
 			return NodeDataMap.INT_TYPE_TARGET;
-		if(type.isIndirectFactor())
+		if(type.isContributingFactor())
 			return NodeDataMap.INT_TYPE_INDIRECT_FACTOR;
 		if(type.isIntervention())
 			return NodeDataMap.INT_TYPE_INTERVENTION;

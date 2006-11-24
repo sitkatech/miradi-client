@@ -16,7 +16,7 @@ public abstract class NodeType
 	
 	public boolean isCause()
 	{
-		return isIndirectFactor() || isDirectThreat();
+		return isContributingFactor() || isDirectThreat();
 	}
 	
 	public boolean isTarget()
@@ -24,7 +24,7 @@ public abstract class NodeType
 		return false;
 	}
 	
-	public boolean isIndirectFactor()
+	public boolean isContributingFactor()
 	{
 		return false;
 	}

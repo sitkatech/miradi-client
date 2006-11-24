@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.diagram.nodetypes;
 
-import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeIndirectFactor;
+import org.conservationmeasures.eam.diagram.nodetypes.NodeTypeContributingFactor;
 import org.conservationmeasures.eam.testall.EAMTestCase;
 
 public class TestNodeTypeIndirectFactor extends EAMTestCase 
@@ -18,8 +18,8 @@ public class TestNodeTypeIndirectFactor extends EAMTestCase
 	
 	public void testBasics() throws Exception
 	{
-		NodeTypeIndirectFactor factor = new NodeTypeIndirectFactor();
-		assertTrue("Not a contributing factor?", factor.isIndirectFactor());
+		NodeTypeContributingFactor factor = new NodeTypeContributingFactor();
+		assertTrue("Not a contributing factor?", factor.isContributingFactor());
 		assertFalse(factor.isDirectThreat());
 		assertFalse(factor.isIntervention());
 		assertFalse(factor.isTarget());
