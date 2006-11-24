@@ -616,7 +616,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisObjective() throws Exception
 	{
-		DiagramFactor nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
 		DiagramFactor nodeDirectThreat = createNode(new FactorTypeCause());
 		
 		BaseId objectiveId1 = project.createObject(ObjectType.OBJECTIVE);
@@ -624,15 +624,15 @@ public class TestProject extends EAMTestCase
 		IdList objectiveId = new IdList();
 		objectiveId.add(objectiveId1);
 
-		nodeIndirectFactor.getUnderlyingObject().setObjectives(objectiveId);
+		nodeContributingFactor.getUnderlyingObject().setObjectives(objectiveId);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
+		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObjective(objectiveId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing contributing factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing contributing factor?", nodeContributingFactor.getUnderlyingObject(), foundNodes);
 		
 		
 	}
@@ -665,35 +665,35 @@ public class TestProject extends EAMTestCase
 	
 	public void testFindAllNodesRelatedToThisIndicator() throws Exception
 	{
-		DiagramFactor nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
 		DiagramFactor nodeDirectThreat = createNode(new FactorTypeCause());
 		
 		IndicatorId indicatorId1 = (IndicatorId)project.createObject(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList();
 		indicators1.add(indicatorId1);
-		nodeIndirectFactor.getUnderlyingObject().setIndicators(indicators1);
+		nodeContributingFactor.getUnderlyingObject().setIndicators(indicators1);
 		
-		createLinkage(BaseId.INVALID, nodeIndirectFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
+		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedId(), nodeDirectThreat.getWrappedId());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisIndicator(indicatorId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
 		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing contributing factor?", nodeIndirectFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing contributing factor?", nodeContributingFactor.getUnderlyingObject(), foundNodes);
 		
 		
 	}
 	
 	public void testDirectThreatSet() throws Exception
 	{
-		DiagramFactor nodeIndirectFactor = createNode(new FactorTypeCause());
+		DiagramFactor nodeContributingFactor = createNode(new FactorTypeCause());
 		DiagramFactor nodeDirectThreatA = createNode(new FactorTypeCause());	
 		((Cause)nodeDirectThreatA.getUnderlyingObject()).increaseTargetCount();
 		DiagramFactor nodeDirectThreatB = createNode(new FactorTypeCause());
 		((Cause)nodeDirectThreatB.getUnderlyingObject()).increaseTargetCount();
 		
 		FactorSet allNodes = new FactorSet();
-		allNodes.attemptToAdd(nodeIndirectFactor.getUnderlyingObject());
+		allNodes.attemptToAdd(nodeContributingFactor.getUnderlyingObject());
 		allNodes.attemptToAdd(nodeDirectThreatA.getUnderlyingObject());
 		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());	
 		

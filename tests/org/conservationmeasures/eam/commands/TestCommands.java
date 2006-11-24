@@ -243,7 +243,7 @@ public class TestCommands extends EAMTestCase
 	public void testCommandDiagramMove() throws Exception
 	{
 		Point moveTo = new Point(25, -68);
-		DiagramFactorId[] ids = {insertTarget(), insertIndirectFactor(), insertIndirectFactor(), insertIntervention()};
+		DiagramFactorId[] ids = {insertTarget(), insertContributingFactor(), insertContributingFactor(), insertIntervention()};
 		CommandDiagramMove cmd = new CommandDiagramMove(moveTo.x, moveTo.y, ids);
 		project.executeCommand(cmd);
 		
@@ -401,7 +401,7 @@ public class TestCommands extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramFactorId from = insertIntervention();
-		DiagramFactorId to = insertIndirectFactor();
+		DiagramFactorId to = insertContributingFactor();
 		DiagramFactor fromNode = model.getDiagramFactorById(from);
 		DiagramFactor toNode = model.getDiagramFactorById(to);
 
@@ -552,7 +552,7 @@ public class TestCommands extends EAMTestCase
 		return insertNode(type);
 	}
 	
-	private DiagramFactorId insertIndirectFactor() throws Exception
+	private DiagramFactorId insertContributingFactor() throws Exception
 	{
 		FactorType type = Factor.TYPE_CAUSE;
 		return insertNode(type);

@@ -38,7 +38,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
@@ -157,7 +157,7 @@ public class Actions
 		registerAction(new ActionJumpDescribeTargets(mainWindow));
 		registerAction(new ActionJumpIdentifyDirectThreats(mainWindow));
 		registerAction(new ActionJumpRankDirectThreats(mainWindow));
-		registerAction(new ActionJumpIdentifyIndirectThreats(mainWindow));
+		registerAction(new ActionJumpIdentifyContributingFactors(mainWindow));
 		registerAction(new ActionJumpAssessStakeholders(mainWindow));
 		registerAction(new ActionJumpAnalyzeProjectCapacity(mainWindow));
 		registerAction(new ActionJumpArticulateCoreAssumptions(mainWindow));

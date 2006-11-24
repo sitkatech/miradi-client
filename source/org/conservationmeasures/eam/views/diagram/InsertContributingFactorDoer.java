@@ -29,10 +29,10 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 		super.linkToPreviouslySelectedFactors(newlyInsertedId, factorsToLinkTo);
 		Factor insertedNode = getProject().findNode(newlyInsertedId);
 		if(!insertedNode.isContributingFactor())
-			warnNotIndirectFactor();
+			warnNotContributingFactor();
 	}
 
-	void warnNotIndirectFactor()
+	void warnNotContributingFactor()
 	{
 		EAM.notifyDialog(EAM.text("Text|This is a Direct Threat because it is linked to a Target"));
 	}

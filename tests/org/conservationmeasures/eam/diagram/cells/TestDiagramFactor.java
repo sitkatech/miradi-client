@@ -48,7 +48,7 @@ public class TestDiagramFactor extends EAMTestCase
 		idAssigner = new IdAssigner();
 
 		Strategy cmIntervention = new Strategy(takeNextModelNodeId());
-		Cause cmIndirectFactor = new Cause(takeNextModelNodeId());
+		Cause cmContributingFactor = new Cause(takeNextModelNodeId());
 		Cause cmDirectThreat = new Cause(takeNextModelNodeId());
 		cmDirectThreat.increaseTargetCount();
 		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
@@ -59,7 +59,7 @@ public class TestDiagramFactor extends EAMTestCase
 		DiagramFactorId interventionNodeId = new DiagramFactorId(44);
 		intervention = DiagramFactor.wrapConceptualModelObject(interventionNodeId, cmIntervention);
 		DiagramFactorId indirectFactorNodeId = new DiagramFactorId(46);
-		indirectFactor = DiagramFactor.wrapConceptualModelObject(indirectFactorNodeId, cmIndirectFactor);
+		indirectFactor = DiagramFactor.wrapConceptualModelObject(indirectFactorNodeId, cmContributingFactor);
 		DiagramFactorId directThreatNodeId = new DiagramFactorId(43);
 		directThreat = DiagramFactor.wrapConceptualModelObject(directThreatNodeId, cmDirectThreat);
 		DiagramFactorId targetNodeId = new DiagramFactorId(35);

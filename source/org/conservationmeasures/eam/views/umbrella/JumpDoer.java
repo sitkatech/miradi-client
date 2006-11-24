@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopObjectives;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpRankDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
@@ -95,7 +95,7 @@ public class JumpDoer extends MainWindowDoer
 		if(jumpActionClass.equals(ActionJumpIdentifyDirectThreats.class))
 			return DiagramView.getViewName();
 		
-		if(jumpActionClass.equals(ActionJumpIdentifyIndirectThreats.class))
+		if(jumpActionClass.equals(ActionJumpIdentifyContributingFactors.class))
 			return DiagramView.getViewName();
 		
 		if(jumpActionClass.equals(ActionJumpCreateModel.class))

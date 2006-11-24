@@ -73,7 +73,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyIndirectThreats;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
@@ -283,7 +283,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu1c = new JMenu("1C. Understand project context");
 		menu1c.add(actions.get(ActionJumpIdentifyDirectThreats.class));
 		menu1c.add(actions.get(ActionJumpRankDirectThreats.class));
-		menu1c.add(actions.get(ActionJumpIdentifyIndirectThreats.class)); 
+		menu1c.add(actions.get(ActionJumpIdentifyContributingFactors.class)); 
 		menu1c.add(actions.get(ActionJumpAssessStakeholders.class));
 		menu1c.add(actions.get(ActionJumpAnalyzeProjectCapacity.class));
 		

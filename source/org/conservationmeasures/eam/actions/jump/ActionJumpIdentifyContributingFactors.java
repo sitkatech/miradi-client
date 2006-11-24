@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionJumpIdentifyIndirectThreats extends MainWindowAction
+public class ActionJumpIdentifyContributingFactors extends MainWindowAction
 {
-	public ActionJumpIdentifyIndirectThreats(MainWindow mainWindowToUse)
+	public ActionJumpIdentifyContributingFactors(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

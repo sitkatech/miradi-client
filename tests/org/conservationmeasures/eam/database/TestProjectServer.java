@@ -86,8 +86,8 @@ public class TestProjectServer extends EAMTestCase
 		Cause factor = new Cause(takeNextModelNodeId());
 		
 		storage.writeObject(factor);
-		Cause gotIndirectFactor = (Cause)readNode(factor.getId());
-		assertEquals("not indirect factor?", factor.getNodeType(), gotIndirectFactor.getNodeType());
+		Cause gotContributingFactor = (Cause)readNode(factor.getId());
+		assertEquals("not indirect factor?", factor.getNodeType(), gotContributingFactor.getNodeType());
 		
 		Target target = new Target(takeNextModelNodeId());
 		storage.writeObject(target);
