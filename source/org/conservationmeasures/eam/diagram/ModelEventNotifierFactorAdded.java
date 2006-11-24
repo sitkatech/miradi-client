@@ -6,10 +6,10 @@
 
 package org.conservationmeasures.eam.diagram;
 
-public class ModelEventNotifierNodeDeleted implements ModelEventNotifier 
+public class ModelEventNotifierFactorAdded implements ModelEventNotifier 
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.nodeDeleted(event);
+		listener.nodeAdded(event);
 	}
 }

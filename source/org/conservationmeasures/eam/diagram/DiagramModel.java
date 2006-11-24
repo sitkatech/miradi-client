@@ -107,7 +107,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		insertCellIntoGraph(node);
 		cellInventory.addNode(node);
-		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeAdded());
+		notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierFactorAdded());
 	}
 
 	private void insertCellIntoGraph(DefaultGraphCell cell)
@@ -154,7 +154,7 @@ public class DiagramModel extends DefaultGraphModel
 		remove(nodes);
 		cellInventory.removeNode(nodeToDelete);
 
-		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierNodeDeleted());
+		notifyListeners(createDiagramModelEvent(nodeToDelete), new ModelEventNotifierFactorDeleted());
 	}
 	
 	public DiagramFactorLink createLinkage(FactorLink cmLinkage) throws Exception
@@ -167,7 +167,7 @@ public class DiagramModel extends DefaultGraphModel
 		ConnectionSet cs = new ConnectionSet(linkage, from.getPort(), to.getPort());
 		insert(linkages, nestedMap, cs, null, null);
 		cellInventory.addLinkage(linkage);
-		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierLinkageAdded());
+		notifyListeners(createDiagramModelEvent(linkage), new ModelEventNotifierFactorLinkAdded());
 		
 		return linkage;
 	}
@@ -177,7 +177,7 @@ public class DiagramModel extends DefaultGraphModel
 		Object[] linkages = new Object[]{linkageToDelete};
 		remove(linkages);
 		cellInventory.removeLinkage(linkageToDelete);
-		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierLinkageDeleted());
+		notifyListeners(createDiagramModelEvent(linkageToDelete), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
 	public boolean hasLinkage(DiagramNode fromNode, DiagramNode toNode) throws Exception
@@ -262,7 +262,7 @@ public class DiagramModel extends DefaultGraphModel
 			try
 			{
 				DiagramNode node = getNodeById(ids[0]);
-				notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierNodeMoved());
+				notifyListeners(createDiagramModelEvent(node), new ModelEventNotifierFactorMoved());
 			}
 			catch (Exception e)
 			{
@@ -289,7 +289,7 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateCell(EAMGraphCell nodeToUpdate) throws Exception
 	{
 		edit(getNestedAttributeMap(nodeToUpdate), null, null, null);
-		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierNodeChanged());
+		notifyListeners(createDiagramModelEvent(nodeToUpdate), new ModelEventNotifierFactorChanged());
 	}
 	
 	public boolean hasNode(DiagramNodeId id)

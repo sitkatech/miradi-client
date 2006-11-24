@@ -3,13 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-
 package org.conservationmeasures.eam.diagram;
 
-public class ModelEventNotifierLinkageDeleted implements ModelEventNotifier 
+public class ModelEventNotifierFactorMoved implements ModelEventNotifier
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
-		listener.linkageDeleted(event);
+		listener.nodeMoved(event);
 	}
 }

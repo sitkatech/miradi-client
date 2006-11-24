@@ -6,7 +6,7 @@
 
 package org.conservationmeasures.eam.diagram;
 
-public class ModelEventNotifierNodeChanged implements ModelEventNotifier 
+public class ModelEventNotifierFactorChanged implements ModelEventNotifier 
 {
 	public void doNotify(DiagramModelListener listener, DiagramModelEvent event) 
 	{
