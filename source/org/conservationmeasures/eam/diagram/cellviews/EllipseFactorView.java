@@ -35,29 +35,27 @@
  */
 
 
-package org.conservationmeasures.eam.diagram.views;
+package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
-import org.conservationmeasures.eam.diagram.renderers.HexagonRenderer;
-import org.conservationmeasures.eam.diagram.renderers.HexagonWithRatingRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
 
-public class HexagonFactorView extends FactorView
+public class EllipseFactorView extends FactorView
 {
-	public HexagonFactorView(DiagramFactor node)
+	public EllipseFactorView(DiagramFactor nodeToUse)
 	{
-		super(node);
+		super(nodeToUse);
 	}
 
     public CellViewRenderer getRenderer() 
     {
-        return hexagonRenderer;
+        return ellipseRenderer;
     }
 
     public GraphCellEditor getEditor() 
@@ -73,11 +71,9 @@ public class HexagonFactorView extends FactorView
 	public Point2D getPerimeterPoint(EdgeView arg0, Point2D source, Point2D p)
 	{
 		// TODO: Need better implementation?
-		/* ellipse is close enough for now */
 		Point2D result = EllipseRenderer.getPerimeterPoint(p, getRectangleWithoutAnnotations());
 		return getAttributes().createPoint(result);
 	}
-
-	protected static HexagonRenderer hexagonRenderer = new HexagonWithRatingRenderer();
 	
+	protected static EllipseRenderer ellipseRenderer = new EllipseRenderer();
 }

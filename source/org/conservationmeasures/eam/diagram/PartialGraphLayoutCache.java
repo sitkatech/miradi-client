@@ -11,7 +11,7 @@
  */
 package org.conservationmeasures.eam.diagram;
 
-import org.conservationmeasures.eam.diagram.views.CellViewFactory;
+import org.conservationmeasures.eam.diagram.cellviews.CellViewFactory;
 import org.jgraph.graph.GraphLayoutCache;
 
 public class PartialGraphLayoutCache extends GraphLayoutCache

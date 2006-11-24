@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.diagram.views;
+package org.conservationmeasures.eam.diagram.cellviews;
 
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.jgraph.graph.CellViewRenderer;

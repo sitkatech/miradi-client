@@ -8,7 +8,7 @@
  * 
 */
 
-package org.conservationmeasures.eam.diagram.views;
+package org.conservationmeasures.eam.diagram.cellviews;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
