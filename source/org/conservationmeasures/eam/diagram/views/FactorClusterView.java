@@ -18,9 +18,9 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
-public class ClusterView extends CompoundVertexView
+public class FactorClusterView extends CompoundVertexView
 {
-	public ClusterView(DiagramFactorCluster clusterToUse)
+	public FactorClusterView(DiagramFactorCluster clusterToUse)
 	{
 		super(clusterToUse);
 		cluster = clusterToUse;

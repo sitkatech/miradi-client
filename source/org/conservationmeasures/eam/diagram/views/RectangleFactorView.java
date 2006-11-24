@@ -16,9 +16,9 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
 
-public class RectangleNodeView extends MultilineNodeView
+public class RectangleFactorView extends FactorView
 {
-	public RectangleNodeView(DiagramFactor node)
+	public RectangleFactorView(DiagramFactor node)
 	{
 		super(node);
 	}

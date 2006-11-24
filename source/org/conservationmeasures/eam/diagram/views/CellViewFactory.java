@@ -28,33 +28,33 @@ public class CellViewFactory extends DefaultCellViewFactory
 		DiagramFactor node = (DiagramFactor)view;
 		if(node.isTarget())
 		{
-			return new EllipseNodeView(node);
+			return new EllipseFactorView(node);
 		}
 		if(node.isDirectThreat())
 		{
-			return new RectangleNodeView(node);
+			return new RectangleFactorView(node);
 		}
 		if(node.isStress())
 		{
-			return new RectangleNodeView(node);
+			return new RectangleFactorView(node);
 		}
 		if(node.isIndirectFactor())
 		{
-			return new RectangleNodeView(node);
+			return new RectangleFactorView(node);
 		}
 		if(node.isIntervention())
 		{
-			return new HexagonNodeView(node);
+			return new HexagonFactorView(node);
 		}
 		if(node.isCluster())
 		{
-			return new ClusterView((DiagramFactorCluster)node);
+			return new FactorClusterView((DiagramFactorCluster)node);
 		}
 		throw new RuntimeException("Unknown node type");
 	}
 
 	protected EdgeView createEdgeView(Object edge)
 	{
-		return new LinkageView(edge);
+		return new FactorLinkView(edge);
 	}
 }

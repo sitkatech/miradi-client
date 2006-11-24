@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 
-public class LinkageView extends EdgeView
+public class FactorLinkView extends EdgeView
 {
-	public LinkageView(Object edge)
+	public FactorLinkView(Object edge)
 	{
 		super(edge);
 	}

@@ -48,9 +48,9 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
 
-public class HexagonNodeView extends MultilineNodeView
+public class HexagonFactorView extends FactorView
 {
-	public HexagonNodeView(DiagramFactor node)
+	public HexagonFactorView(DiagramFactor node)
 	{
 		super(node);
 	}

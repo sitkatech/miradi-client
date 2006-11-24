@@ -46,9 +46,9 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
 
 
-public class EllipseNodeView extends MultilineNodeView
+public class EllipseFactorView extends FactorView
 {
-	public EllipseNodeView(DiagramFactor nodeToUse)
+	public EllipseFactorView(DiagramFactor nodeToUse)
 	{
 		super(nodeToUse);
 	}

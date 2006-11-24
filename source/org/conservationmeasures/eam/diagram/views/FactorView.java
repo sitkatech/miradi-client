@@ -16,9 +16,9 @@ import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.VertexView;
 
 
-public class MultilineNodeView extends VertexView
+public class FactorView extends VertexView
 {
-    public MultilineNodeView(DiagramFactor nodeToUse) 
+    public FactorView(DiagramFactor nodeToUse) 
     {
         super(nodeToUse);
         node = nodeToUse;
