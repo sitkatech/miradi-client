@@ -43,6 +43,7 @@ import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 
 public class ObjectManager
@@ -198,8 +199,10 @@ public class ObjectManager
 				return getIndicatorPseudoField(objectType, objectId, fieldTag);
 			case ObjectType.MODEL_NODE:
 				return getFactorPseudoField(objectId, fieldTag);
+			case ObjectType.TASK:
+				return getTaskPseudoField(objectId, fieldTag);
 		}
-		throw new RuntimeException();	
+		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
 	
 	private String getIndicatorPseudoField(int annotationType, BaseId annotationId, String fieldTag)
@@ -287,6 +290,45 @@ public class ObjectManager
 		RatingChoice rating = ((Strategy)project.findNode(factorId)).getStrategyRating();
 		return rating.getCode();
 
+	}
+	
+	private String getTaskPseudoField(BaseId taskId, String fieldTag)
+	{
+		try
+		{
+			if(fieldTag.equals(Task.PSEUDO_TAG_FACTOR_LABEL))
+				return getLabelOfStrategyContainingActivity(taskId);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return "";
+	}
+	
+	private String getLabelOfStrategyContainingActivity(BaseId taskId) throws Exception
+	{
+		ChainManager chainManager = new ChainManager(getProject());
+		FactorSet factors = chainManager.findFactorsThatHaveThisObject(Factor.TYPE_INTERVENTION, taskId, Strategy.TAG_ACTIVITY_IDS);
+		return factorLabelsAsMultiline((Factor[])factors.toArray(new Factor[0]));
+	}
+	
+	// TODO: Convert other methods in this file to call this one
+	private String factorLabelsAsMultiline(Factor[] factors)
+	{
+		String label ="";
+		boolean isFirst = true;
+		for (int i = 0; i < factors.length; i++)
+		{
+			Factor cmNode = factors[i];
+			if (!isFirst)
+				label += "\n";
+			label += cmNode.getLabel();
+			
+			isFirst = false;
+		}
+		return label;
 	}
 
 	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception

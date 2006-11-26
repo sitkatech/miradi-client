@@ -76,6 +76,7 @@ public class Task extends EAMBaseObject
 
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_RESOURCE_IDS = "ResourceIds";
+	public final static String PSEUDO_TAG_FACTOR_LABEL = "PseudoTagFactorLabel";
 	
 	IdListData subtaskIds;
 	IdListData resourceIds;

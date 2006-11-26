@@ -28,9 +28,9 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Objective.TAG_SHORT_LABEL));
 		addField(createStringField(Objective.TAG_LABEL));
 		addField(createMultilineField(Goal.TAG_FULL_TEXT));
-		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_STRATEGIES));
-		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_DIRECT_THREATS));
-		addField(createMultilineDisplayField(Objective.PSEUDO_TAG_TARGETS));
+		addField(createReadonlyTextField(Objective.PSEUDO_TAG_STRATEGIES));
+		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
+		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 				
 		updateFieldsFromProject();
 	}

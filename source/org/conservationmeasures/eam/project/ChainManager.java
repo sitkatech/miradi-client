@@ -8,17 +8,18 @@ package org.conservationmeasures.eam.project;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.FactorPool;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.Factor;
 
 public class ChainManager
 {
@@ -30,11 +31,11 @@ public class ChainManager
 	public FactorSet findFactorsThatUseThisAnnotation(int type, BaseId id) throws Exception
 	{
 		if(type == ObjectType.OBJECTIVE)
-			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_OBJECTIVE_IDS);
+			return findFactorsThatHaveThisObject(id, Factor.TAG_OBJECTIVE_IDS);
 		if(type == ObjectType.GOAL)
-			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_GOAL_IDS);
+			return findFactorsThatHaveThisObject(id, Factor.TAG_GOAL_IDS);
 		if(type == ObjectType.INDICATOR)
-			return findFactorsThatHaveThisAnnotation(id, Factor.TAG_INDICATOR_IDS);
+			return findFactorsThatHaveThisObject(id, Factor.TAG_INDICATOR_IDS);
 		
 		throw new RuntimeException("Not an annotation type? " + type);
 	}
@@ -54,20 +55,28 @@ public class ChainManager
 		return findFactorsThatUseThisAnnotation(ObjectType.GOAL, goalId);
 	}
 	
-	private FactorSet findFactorsThatHaveThisAnnotation(BaseId objectiveId, String tag) throws ParseException
+	public FactorSet findFactorsThatHaveThisObject(BaseId objectId, String tag) throws ParseException
 	{
-		FactorSet foundNodes = new FactorSet();
+		return findFactorsThatHaveThisObject(null, objectId, tag);
+	}
+
+	public FactorSet findFactorsThatHaveThisObject(FactorType type, BaseId objectId, String tag) throws ParseException
+	{
+		FactorSet foundFactors = new FactorSet();
 		FactorPool pool = getFactorPool();
 		FactorId[] allNodeIds = pool.getModelNodeIds();
 		for(int i = 0; i < allNodeIds.length; ++i)
 		{
 			Factor node = pool.find(allNodeIds[i]);
-			IdList annotationIds = new IdList(node.getData(tag));
-			if(annotationIds.contains(objectiveId))
-				foundNodes.attemptToAdd(node);
+			if(type == null || type.equals(node.getNodeType()))
+			{
+				IdList candidateIds = new IdList(node.getData(tag));
+				if(candidateIds.contains(objectId))
+					foundFactors.attemptToAdd(node);
+			}
 		}
 		
-		return foundNodes;
+		return foundFactors;
 	}
 
 	public FactorSet findAllFactorsRelatedToThisIndicator(BaseId indicatorId) throws Exception

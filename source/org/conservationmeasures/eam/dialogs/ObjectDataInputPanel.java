@@ -120,7 +120,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectMultilineInputField(project, objectType, objectId, tag);
 	}
 	
-	public ObjectDataInputField createMultilineDisplayField(String tag)
+	public ObjectDataInputField createReadonlyTextField(String tag)
 	{
 		return new ObjectMultilineDisplayField(project, objectType, objectId, tag);
 	}
