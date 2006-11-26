@@ -41,17 +41,20 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 		if(factorToEdit.isDirectThreat())
 		{
+			// FIXME: Convert to new mechanism
 			add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
 			add(createThreatClassificationDropdown());
 		}
 
 		if(factorToEdit.isStrategy())
 		{
+			// FIXME: Convert to new mechanism (create status field or just checkbox field?)
 			add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
 			statusCheckBox.addItemListener(new StatusChangeHandler());
 			add(statusCheckBox);
 
+			// FIXME: Convert to new mechanism
 			add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
 			add(createStrategyClassificationDropdown());
 			
@@ -62,8 +65,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			addField(createRatingSummaryField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		}
 
-		add(new UiLabel(EAM.text("Label|Comments")));
-		add(createComment(factorToEdit.getComment()));
+		addField(createMultilineField(Factor.TAG_COMMENT));
 		
 		updateFieldsFromProject();
 	}
