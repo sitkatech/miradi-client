@@ -23,6 +23,9 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
+import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
+import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.martus.swing.UiCheckBox;
@@ -59,9 +62,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			add(createStrategyClassificationDropdown());
 			
 			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_DURATION_RATING)));
-			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_COST_RATING)));
+			addField(createRatingField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
+			addField(createRatingField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+			addField(createRatingField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 			addField(createRatingSummaryField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		}
 
