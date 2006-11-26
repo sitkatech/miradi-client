@@ -42,6 +42,7 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.ratings.RatingChoice;
@@ -201,6 +202,8 @@ public class ObjectManager
 				return getFactorPseudoField(objectId, fieldTag);
 			case ObjectType.TASK:
 				return getTaskPseudoField(objectId, fieldTag);
+			case ObjectType.PROJECT_METADATA:
+				return getProjectMetadataPseudoField(objectId, fieldTag);
 		}
 		throw new RuntimeException("Unknown PseudoTag: " + fieldTag + " for type " + objectType);	
 	}
@@ -298,6 +301,21 @@ public class ObjectManager
 		{
 			if(fieldTag.equals(Task.PSEUDO_TAG_FACTOR_LABEL))
 				return getLabelOfStrategyContainingActivity(taskId);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return "";
+	}
+	
+	private String getProjectMetadataPseudoField(BaseId taskId, String fieldTag)
+	{
+		try
+		{
+			if(fieldTag.equals(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME))
+				return getProject().getFilename();
 		}
 		catch(Exception e)
 		{

@@ -14,8 +14,6 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
-import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextArea;
 
 public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 {
@@ -23,14 +21,7 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), metadata.getType(), metadata.getId());
 
-		add(new UiLabel(EAM.text("Label|Filename")));
-		UiTextArea filename = new UiTextArea(1, 50);
-		filename.setText(getProject().getFilename());
-		filename.setEditable(false);
-		filename.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		filename.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		add(filename);
-		
+		addField(createReadonlyTextField(metadata.PSEUDO_TAG_PROJECT_FILENAME));
 		addField(createStringField(metadata.TAG_PROJECT_NAME));
 		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));

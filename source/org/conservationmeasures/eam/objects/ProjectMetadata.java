@@ -129,6 +129,8 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
 	
+	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
+	
 	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
 	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
