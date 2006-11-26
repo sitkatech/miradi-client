@@ -2,13 +2,10 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JComponent;
-import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -31,7 +28,6 @@ import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
-import org.martus.swing.UiTextArea;
 
 public class FactorDetailsPanel extends ObjectDataInputPanel
 {
@@ -236,49 +232,9 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		String newValue = Strategy.STATUS_REAL;
 		if(statusCheckBox.isSelected())
 			newValue = Strategy.STATUS_DRAFT;
-		return new CommandSetObjectData(ObjectType.MODEL_NODE, currentDiagramFactor
-				.getDiagramFactorId(), Strategy.TAG_STATUS,
-				newValue);
-	}
 
-	public JComponent createComment(String comment)
-	{
-		commentField = new UiTextArea(4, 25);
-		commentField.setWrapStyleWord(true);
-		commentField.setLineWrap(true);
-		commentField.setText(comment);
-		commentField.addFocusListener(new CommentFocusHandler());
-
-		JScrollPane component = new JScrollPane(commentField);
-		return component;
-	}
-
-	class CommentFocusHandler implements FocusListener
-	{
-		public void focusGained(FocusEvent event)
-		{
-		}
-
-		public void focusLost(FocusEvent event)
-		{
-			String newComment = getComment();
-			if(newComment.equals(getCurrentDiagramFactor().getComment()))
-				return;
-			try
-			{
-				int type = ObjectType.MODEL_NODE;
-				String tag = Factor.TAG_COMMENT;
-				CommandSetObjectData cmd = new CommandSetObjectData(type,
-						getCurrentFactorId(), tag, newComment);
-				getProject().executeCommand(cmd);
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
+		return new CommandSetObjectData(ObjectType.MODEL_NODE, getCurrentFactorId(), 
+				Strategy.TAG_STATUS, newValue);
 	}
 
 
@@ -302,11 +258,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		return taxonomyItem;
 	}
 	
-	public String getComment()
-	{
-		return commentField.getText();
-	}
-	
 	DiagramFactor getCurrentDiagramFactor()
 	{
 		return currentDiagramFactor;
@@ -326,5 +277,4 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	private UiCheckBox statusCheckBox;
 	private UiComboBox dropdownThreatClassification;
 	private UiComboBox dropdownStrategyClassification;
-	private UiTextArea commentField;
 }
