@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 
 import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
@@ -33,7 +34,9 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);
 		CompoundBorder border = new CompoundBorder(lineBorder, emptyBorder);
 		component.setBorder(border);
-		
+		component.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+		component.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+
 	}
 	
 	public void setText(String code)

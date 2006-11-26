@@ -15,6 +15,7 @@ import javax.swing.JList;
 
 import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.RatingQuestion;
@@ -28,6 +29,8 @@ public class ObjectRatingField extends ObjectDataInputField
 		combo = new UiComboBox(questionToUse.getChoices());
 		combo.setRenderer(new RatingChoiceRenderer());
 		combo.addActionListener(new ComboChangeHandler());
+		combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
+		combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		addFocusListener();
 	}
 
