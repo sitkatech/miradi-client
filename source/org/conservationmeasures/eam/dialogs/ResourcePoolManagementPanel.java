@@ -22,6 +22,8 @@ public class ResourcePoolManagementPanel extends ModelessDialogPanel
 		this(mainWindowToUse, new ObjectsAction[0], "");
 	}
 	
+	// TODO: The extraButtonActions parameter is deprecated, and should be removed 
+	// as soon as all callers are adding the buttons themselves.
 	public ResourcePoolManagementPanel(MainWindow mainWindowToUse, ObjectsAction[] extraButtonActions, String overviewText) throws Exception
 	{
 		super(new BorderLayout());
@@ -45,6 +47,11 @@ public class ResourcePoolManagementPanel extends ModelessDialogPanel
 		editResourcePanel.dispose();
 		editResourcePanel = null;
 		super.dispose();
+	}
+	
+	public void addTablePanelButton(ObjectsAction action)
+	{
+		resourceListPanel.addButton(action);
 	}
 
 	public String getPanelDescription()

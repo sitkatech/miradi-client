@@ -14,15 +14,10 @@ public class PossibleTeamMembersPanel extends ResourcePoolManagementPanel
 {
 	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, getExtraButtonActions(mainWindowToUse), OVERVIEW_TEXT);
+		super(mainWindowToUse, new ObjectsAction[0], OVERVIEW_TEXT);
+		addTablePanelButton(mainWindowToUse.getActions().getObjectsAction(ActionTeamAddMember.class));
 	}
 
-	private static ObjectsAction[] getExtraButtonActions(MainWindow mainWindowToUse)
-	{
-		ObjectsAction addMemberAction = mainWindowToUse.getActions().getObjectsAction(ActionTeamAddMember.class);
-		return new ObjectsAction[] {addMemberAction};
-	}
-	
 	final static String OVERVIEW_TEXT = 
 		EAM.text("<html>" +
 				"<p>" +
