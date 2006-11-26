@@ -79,6 +79,7 @@ public class ObjectRatingField extends ObjectDataInputField
 		public void actionPerformed(ActionEvent arg0)
 		{
 			setNeedsSave();
+			saveIfNeeded();
 		}
 		
 	}
