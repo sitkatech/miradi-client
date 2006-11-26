@@ -13,8 +13,6 @@ import javax.swing.JScrollPane;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyChoiceDialogField;
-import org.conservationmeasures.eam.dialogfields.legacy.LegacyRatingDisplayField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,10 +23,6 @@ import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.RatingChoice;
-import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
-import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
-import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
 import org.martus.swing.UiCheckBox;
@@ -61,51 +55,17 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			add(new UiLabel(EAM.text("Label|IUCN-CMP Classification")));
 			add(createStrategyClassificationDropdown());
 			
-			String impactTag = Strategy.TAG_IMPACT_RATING;
-			StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion(impactTag);
-			add(new UiLabel(impactQuestion.getLabel()));
-			LegacyChoiceDialogField impactField = new LegacyChoiceDialogField(impactQuestion);
-			impactComponent = (UiComboBox)impactField.getComponent();
-			add(impactComponent);
-			impactField.selectCode(factorToEdit.getUnderlyingObject().getData(impactTag));
-			impactComponent.addItemListener(new ImpactChangeHandler());
-			
-			String durationTag = Strategy.TAG_DURATION_RATING;
-			StrategyDurationQuestion durationQuestion = new StrategyDurationQuestion(durationTag);
-			add(new UiLabel(durationQuestion.getLabel()));
-			LegacyChoiceDialogField durationField = new LegacyChoiceDialogField(durationQuestion);
-			durationComponent = (UiComboBox)durationField.getComponent();
-			add(durationComponent);
-			durationField.selectCode(factorToEdit.getUnderlyingObject().getData(durationTag));
-			durationComponent.addItemListener(new DurationChangeHandler());
-			
-			String feasibilityTag = Strategy.TAG_FEASIBILITY_RATING;
-			StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion(feasibilityTag);
-			add(new UiLabel(feasibilityQuestion.getLabel()));
-			LegacyChoiceDialogField feasibilityField = new LegacyChoiceDialogField(feasibilityQuestion);
-			feasibilityComponent = (UiComboBox)feasibilityField.getComponent();
-			add(feasibilityComponent);
-			feasibilityField.selectCode(factorToEdit.getUnderlyingObject().getData(feasibilityTag));
-			feasibilityComponent.addItemListener(new FeasibilityChangeHandler());
-			
-			String costTag = Strategy.TAG_COST_RATING;
-			StrategyCostQuestion costQuestion = new StrategyCostQuestion(costTag);
-			add(new UiLabel(costQuestion.getLabel()));
-			LegacyChoiceDialogField costField = new LegacyChoiceDialogField(costQuestion);
-			costComponent = (UiComboBox)costField.getComponent();
-			add(costComponent);
-			costField.selectCode(factorToEdit.getUnderlyingObject().getData(costTag));
-			costComponent.addItemListener(new CostChangeHandler());
-
-			add(new UiLabel(EAM.text("Label|Rating")));
-			LegacyRatingDisplayField ratingSummaryField = new LegacyRatingDisplayField(new StrategyRatingSummary(""));
-			ratingComponent = (UiLabel)ratingSummaryField.getComponent();
-			add(ratingComponent);
-			updateRating();
+			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
+			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_DURATION_RATING)));
+			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_COST_RATING)));
+			addField(createRatingSummaryField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		}
 
 		add(new UiLabel(EAM.text("Label|Comments")));
 		add(createComment(factorToEdit.getComment()));
+		
+		updateFieldsFromProject();
 	}
 
 	class StatusChangeHandler implements ItemListener
@@ -126,7 +86,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 	}
 
-	JComponent createThreatClassificationDropdown()
+	private JComponent createThreatClassificationDropdown()
 	{
 		String[] choices = { "error processing classifications", };
 		try
@@ -163,7 +123,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		}
 	}
 
-	JComponent createStrategyClassificationDropdown()
+	private JComponent createStrategyClassificationDropdown()
 	{
 		String[] choices = { "error processing classifications", };
 		try
@@ -200,7 +160,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 	}
 	
-	TaxonomyItem SearchTaxonomyClassificationsForCode(
+	private TaxonomyItem SearchTaxonomyClassificationsForCode(
 			TaxonomyItem[] taxonomyItems, String taxonomyCode)
 	{
 		for(int i = 0; i < taxonomyItems.length; i++)
@@ -266,100 +226,6 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		}
 	}
 	
-	class ImpactChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			try
-			{
-				String tag = Strategy.TAG_IMPACT_RATING;
-				String impact = getSelectedImpactCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
-						getCurrentFactorId(), tag, impact);
-				getProject().executeCommand(cmd);
-				updateRating();
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	class DurationChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			try
-			{
-				String tag = Strategy.TAG_DURATION_RATING;
-				String duration = getSelectedDurationCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
-						getCurrentFactorId(), tag, duration);
-				getProject().executeCommand(cmd);
-				updateRating();
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	class FeasibilityChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			try
-			{
-				String tag = Strategy.TAG_FEASIBILITY_RATING;
-				String feasibility = getSelectedFeasibilityCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
-						getCurrentFactorId(), tag, feasibility);
-				getProject().executeCommand(cmd);
-				updateRating();
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	class CostChangeHandler implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent event)
-		{
-			try
-			{
-				String tag = Strategy.TAG_COST_RATING;
-				String cost = getSelectedCostCode();
-				CommandSetObjectData cmd = new CommandSetObjectData(getCurrentDiagramFactor().getType(),
-						getCurrentFactorId(), tag, cost);
-				getProject().executeCommand(cmd);
-				updateRating();
-			}
-			catch(CommandFailedException e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("That action failed due to an unknown error");
-			}
-		}
-
-	}
-
-	void updateRating()
-	{
-		RatingChoice rating = ((Strategy)getCurrentDiagramFactor().getUnderlyingObject()).getStrategyRating();
-		ratingComponent.setText(rating.getCode());
-	}
-	
 	Command buildStatusCommand()
 	{
 		String newValue = Strategy.STATUS_REAL;
@@ -411,63 +277,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	}
 
 
-	public String getSelectedImpactCode()
-	{
-		RatingChoice selected = getSelectedImpactChoice();
-		if(selected == null)
-			return "";
-		return selected.getCode();
-	}
-
-	private RatingChoice getSelectedImpactChoice()
-	{
-		RatingChoice selected = (RatingChoice)impactComponent.getSelectedItem();
-		return selected;
-	}
-	
-	public String getSelectedDurationCode()
-	{
-		RatingChoice selected = getSelectedDurationChoice();
-		if(selected == null)
-			return "";
-		return selected.getCode();
-	}
-
-	private RatingChoice getSelectedDurationChoice()
-	{
-		RatingChoice selected = (RatingChoice)durationComponent.getSelectedItem();
-		return selected;
-	}
-	
-	public String getSelectedFeasibilityCode()
-	{
-		RatingChoice selected = getSelectedFeasibilityChoice();
-		if(selected == null)
-			return "";
-		return selected.getCode();
-	}
-
-	private RatingChoice getSelectedFeasibilityChoice()
-	{
-		RatingChoice selected = (RatingChoice)feasibilityComponent.getSelectedItem();
-		return selected;
-	}
-
-	public String getSelectedCostCode()
-	{
-		RatingChoice selected = getSelectedCostChoice();
-		if(selected == null)
-			return "";
-		return selected.getCode();
-	}
-
-	private RatingChoice getSelectedCostChoice()
-	{
-		RatingChoice selected = (RatingChoice)costComponent.getSelectedItem();
-		return selected;
-	}
-
-	public TaxonomyItem getThreatTaxonomyItem()
+	private TaxonomyItem getThreatTaxonomyItem()
 	{
 		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownThreatClassification.getSelectedItem();
 		
@@ -477,7 +287,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		return taxonomyItem;
 	}
 
-	public TaxonomyItem getStrategyTaxonomyItem()
+	private TaxonomyItem getStrategyTaxonomyItem()
 	{
 		TaxonomyItem taxonomyItem = (TaxonomyItem) dropdownStrategyClassification.getSelectedItem();
 		
@@ -511,10 +321,5 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	private UiCheckBox statusCheckBox;
 	private UiComboBox dropdownThreatClassification;
 	private UiComboBox dropdownStrategyClassification;
-	private UiComboBox impactComponent;
-	private UiComboBox durationComponent;
-	private UiComboBox feasibilityComponent;
-	private UiComboBox costComponent;
-	private UiLabel ratingComponent;
 	private UiTextArea commentField;
 }

@@ -42,6 +42,8 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.ratings.RatingChoice;
 
 public class ObjectManager
 {
@@ -194,6 +196,8 @@ public class ObjectManager
 				return getObjectivePseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
 				return getIndicatorPseudoField(objectType, objectId, fieldTag);
+			case ObjectType.MODEL_NODE:
+				return getFactorPseudoField(objectId, fieldTag);
 		}
 		throw new RuntimeException();	
 	}
@@ -260,6 +264,29 @@ public class ObjectManager
 			return "";
 		}
 		return "";
+	}
+	
+	private String getFactorPseudoField(BaseId factorId, String fieldTag)
+	{
+		try
+		{
+			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
+				return getStrategyRatingSummary((FactorId)factorId);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+		return "";
+		
+	}
+	
+	private String getStrategyRatingSummary(FactorId factorId)
+	{
+		RatingChoice rating = ((Strategy)project.findNode(factorId)).getStrategyRating();
+		return rating.getCode();
+
 	}
 
 	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
