@@ -47,6 +47,11 @@ public class EAM
 		}
 	}
 	
+	public static String getJavaVersion()
+	{
+		return System.getProperty("java.version");
+	}
+	
 	static void setBestLookAndFeel() throws Exception
 	{
 		if(System.getProperty("os.name").equals("Linux"))
