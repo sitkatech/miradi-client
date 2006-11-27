@@ -73,6 +73,8 @@ abstract public class ObjectDataInputField implements FocusListener
 		String text = "";
 		if(isValidObject())
 			text = project.getObjectData(objectType, objectId, tag);
+		if (text.equals(getText()))
+			return;
 		setText(text);
 		updateEditableState();
 	}
