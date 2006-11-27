@@ -32,10 +32,8 @@ public class DeleteActivity extends ViewDoer
 	
 	public boolean isAvailable()
 	{
-		if(getWorkPlanPanel() == null)
-			return false;
-		
-		return getWorkPlanPanel().getSelectedTask() != null;
+		// FIXME: Overhaul to work with ActionDeleteActivity as an ObjectsAction
+		return false;
 	}
 
 	public void doIt() throws CommandFailedException

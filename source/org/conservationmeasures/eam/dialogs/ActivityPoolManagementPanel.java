@@ -32,7 +32,7 @@ public class ActivityPoolManagementPanel extends ModelessDialogPanel
 
 		tablePanel = new ActivityPoolTablePanel(project);
 		
-		propertiesPanel = new ActivityPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID, mainWindowToUse);
+		propertiesPanel = new ActivityPropertiesPanel(mainWindowToUse.getActions(), project, BaseId.INVALID);
 		tablePanel.setPropertiesPanel(propertiesPanel);
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);

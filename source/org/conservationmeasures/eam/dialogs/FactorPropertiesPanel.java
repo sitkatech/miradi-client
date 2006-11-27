@@ -24,12 +24,10 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DialogGridPanel;
 import org.conservationmeasures.eam.utils.UiTextFieldWithLengthLimit;
-import org.conservationmeasures.eam.views.strategicplan.StrategicPlanPanel;
 import org.martus.swing.UiLabel;
 import org.martus.swing.UiTextField;
 
@@ -171,9 +169,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 	private Component createTasksGrid(DiagramFactor diagramFactor) throws Exception
 	{
-		Strategy intervention = (Strategy) diagramFactor
-				.getUnderlyingObject();
-		return StrategicPlanPanel.createForStrategy(mainWindow, intervention);
+		return new ActivityListManagementPanel(getProject(), getCurrentFactorId(), mainWindow.getActions());
 	}
 
 	private Component createTextField(String initialText, int maxLength)

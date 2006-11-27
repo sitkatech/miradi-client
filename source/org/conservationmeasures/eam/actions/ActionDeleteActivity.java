@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionDeleteActivity extends MainWindowAction
+public class ActionDeleteActivity extends ObjectsAction
 {
 	public ActionDeleteActivity(MainWindow mainWindowToUse)
 	{

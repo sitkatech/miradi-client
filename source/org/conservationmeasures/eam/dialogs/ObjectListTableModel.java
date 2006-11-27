@@ -18,11 +18,17 @@ public class ObjectListTableModel extends ObjectTableModel
 	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
 			String idListFieldTag, int listedItemType, String tableColumnTag)
 	{
+		this(projectToUse, objectType, objectId, idListFieldTag, listedItemType, new String[] {tableColumnTag});
+	}
+	
+	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
+			String idListFieldTag, int listedItemType, String[] tableColumnTags)
+	{
 		super(projectToUse, listedItemType);
 		containingObjectType = objectType;
 		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
-		columnTag = tableColumnTag;
+		columnTags = tableColumnTags;
 	}
 	
 	public EAMObject getObjectFromRow(int row) throws RuntimeException
@@ -53,17 +59,17 @@ public class ObjectListTableModel extends ObjectTableModel
 
 	public String getColumnTag(int column)
 	{
-		return columnTag;
+		return columnTags[column];
 	}
 	
 	public int getColumnCount()
 	{
-		return 1;
+		return columnTags.length;
 	}
 
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(rowObjectType, columnTag);
+		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 
 	public int getRowCount()
@@ -107,5 +113,5 @@ public class ObjectListTableModel extends ObjectTableModel
 	int containingObjectType;
 	BaseId containingObjectId;
 	String tagOfIdList;
-	String columnTag;
+	String[] columnTags;
 }

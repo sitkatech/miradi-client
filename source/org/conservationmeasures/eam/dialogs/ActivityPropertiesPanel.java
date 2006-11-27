@@ -10,14 +10,17 @@ import javax.swing.BorderFactory;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class ActivityPropertiesPanel extends ObjectDataInputPanel
 {
-	public ActivityPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit, MainWindow mainWindow) throws Exception
+	public ActivityPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	{
+		this(actions, projectToUse, BaseId.INVALID);
+	}
+	public ActivityPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		setBorder(BorderFactory.createEtchedBorder());
