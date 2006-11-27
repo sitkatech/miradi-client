@@ -26,20 +26,20 @@ abstract public class ObjectsDoer extends ViewDoer
 	
 	public BaseId[] getSelectedIds()
 	{
-		EAMObject[] selectetObjects = getObjects();
-		if (selectetObjects == null)
+		EAMObject[] selectedObjects = getObjects();
+		if (selectedObjects == null)
 		{
 			BaseId[] emptyIds  = {BaseId.INVALID};
 			return emptyIds;
 		}
-		return getObjectIds(selectetObjects);
+		return getObjectIds(selectedObjects);
 	}
 	
-	private BaseId[] getObjectIds(EAMObject[] selectetObjects)
+	private BaseId[] getObjectIds(EAMObject[] selectedObjects)
 	{
-		BaseId[] objectIds = new BaseId[selectetObjects.length];
-		for (int i = 0; i < selectetObjects.length; i++)
-			objectIds[i] = selectetObjects[i].getId();
+		BaseId[] objectIds = new BaseId[selectedObjects.length];
+		for (int i = 0; i < selectedObjects.length; i++)
+			objectIds[i] = selectedObjects[i].getId();
 		
 		return objectIds;
 	}
