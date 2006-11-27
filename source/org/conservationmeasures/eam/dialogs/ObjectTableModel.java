@@ -5,9 +5,12 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.text.ParseException;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
@@ -23,6 +26,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	abstract public EAMObject getObjectFromRow(int row) throws RuntimeException;
 	abstract public int findRowObject(BaseId id);
 	abstract public String getColumnTag(int column);
+	abstract public IdList getIdList() throws ParseException;
 	
 	// TODO: Actually implement this, probably by pulling the IdList up into this class,
 	// and detecting when it gets modified externally (e.g. create/delete object)

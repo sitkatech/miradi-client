@@ -100,7 +100,7 @@ public class ObjectListTableModel extends ObjectTableModel
 		return tagOfIdList;
 	}
 
-	private IdList getIdList() throws ParseException
+	public IdList getIdList() throws ParseException
 	{
 		return new IdList(getContainingObject().getData(tagOfIdList));
 	}

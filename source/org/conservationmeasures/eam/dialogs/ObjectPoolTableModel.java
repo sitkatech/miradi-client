@@ -42,7 +42,7 @@ public class ObjectPoolTableModel extends ObjectTableModel
 
 	public int getRowCount()
 	{
-		return rowObjectIds.size();
+		return getIdList().size();
 	}
 	
 	public int getRowObjectType()
@@ -63,11 +63,16 @@ public class ObjectPoolTableModel extends ObjectTableModel
 		}
 	}
 
+	public IdList getIdList()
+	{
+		return rowObjectIds;
+	}
+	
 	public EAMObject getObjectFromRow(int row) throws RuntimeException
 	{
 		try
 		{
-			BaseId rowObjectId = rowObjectIds.get(row);
+			BaseId rowObjectId = getIdList().get(row);
 			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
 			return rowObject;
 		}
@@ -77,7 +82,7 @@ public class ObjectPoolTableModel extends ObjectTableModel
 			throw new RuntimeException("TeamModel.getObjectFromRow error");
 		}
 	}
-	
+
 	public int findRowObject(BaseId id)
 	{
 		for(int row = 0; row < getRowCount(); ++row)
