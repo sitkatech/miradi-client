@@ -27,7 +27,7 @@ public class StrategyPoolManagementPanel extends ModelessDialogPanel
 		add(poolComponent, BorderLayout.CENTER);
 		
 		BaseId invalidId = new BaseId(BaseId.INVALID.asInt());
-		propertiesPanel = new InterventionPropertiesPanel(project, ObjectType.MODEL_NODE, invalidId);
+		propertiesPanel = new StrategyPropertiesPanel(project, ObjectType.MODEL_NODE, invalidId);
 		poolComponent.setPropertiesPanel(propertiesPanel);
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
@@ -55,5 +55,5 @@ public class StrategyPoolManagementPanel extends ModelessDialogPanel
 	}
 
 	StrategyPoolTablePanel poolComponent;
-	InterventionPropertiesPanel propertiesPanel;
+	StrategyPropertiesPanel propertiesPanel;
 }

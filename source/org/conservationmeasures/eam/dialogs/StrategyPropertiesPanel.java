@@ -10,9 +10,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
-public class InterventionPropertiesPanel extends ObjectDataInputPanel
+public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {
-	public InterventionPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
+	public StrategyPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
 	{
 		super(projectToUse, objectTypeToUse, idToShow);
 		addField(createStringField(Strategy.TAG_LABEL));
