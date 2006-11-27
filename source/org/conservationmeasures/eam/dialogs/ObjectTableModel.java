@@ -29,13 +29,15 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		return getIdList().size();
 	}
 	
-	// TODO: Actually implement this, probably by pulling the IdList up into this class,
-	// and detecting when it gets modified externally (e.g. create/delete object)
 	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
 	{
-		EAM.logDebug("ObjectTableModel: Sort requested: ");
+		IdList newList = new IdList();
 		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
-			EAM.logDebug("   " + existingRowIndexesInNewOrder[i]);
+		{
+			int nextExistingRowIndex = existingRowIndexesInNewOrder[i].intValue();
+			newList.add(rowObjectIds.get(nextExistingRowIndex));
+		}
+		rowObjectIds = newList;
 	}
 
 	public EAMObject getObjectFromRow(int row) throws RuntimeException
@@ -87,7 +89,22 @@ abstract public class ObjectTableModel extends AbstractTableModel
 
 	public void rowsWereAddedOrRemoved()
 	{
-		rowObjectIds = getLatestIdListFromProject();
+		IdList availableIds = getLatestIdListFromProject();
+		IdList newList = new IdList();
+		for(int i = 0; i < rowObjectIds.size(); ++i)
+		{
+			BaseId thisId = rowObjectIds.get(i);
+			if(availableIds.contains(thisId))
+			{
+				newList.add(thisId);
+				availableIds.removeId(thisId);
+			}
+		}
+		for(int i = 0; i < availableIds.size(); ++i)
+		{
+			newList.add(availableIds.get(i));
+		}
+		rowObjectIds = newList;
 		fireTableDataChanged();
 	}
 
