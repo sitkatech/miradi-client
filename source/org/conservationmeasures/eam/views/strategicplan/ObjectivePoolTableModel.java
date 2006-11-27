@@ -15,6 +15,13 @@ public class ObjectivePoolTableModel extends ObjectPoolTableModel
 {
 	public ObjectivePoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.OBJECTIVE, new String[] {Objective.TAG_LABEL});
+		super(projectToUse, ObjectType.OBJECTIVE, COLUMN_TAGS);
 	}
+
+	private static final String[] COLUMN_TAGS = new String[] {
+		Objective.TAG_SHORT_LABEL,
+		Objective.TAG_LABEL,
+		Objective.PSEUDO_TAG_FACTOR,
+	};
+
 }

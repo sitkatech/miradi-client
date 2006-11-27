@@ -14,6 +14,12 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 {
 	public ActivityPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.TASK, new String[] {Task.TAG_LABEL});
+		super(projectToUse, ObjectType.TASK, COLUMN_TAGS);
 	}
+	
+	private static final String[] COLUMN_TAGS = new String[] {
+		Task.TAG_LABEL,
+		Task.PSEUDO_TAG_FACTOR_LABEL,
+	};
+
 }
