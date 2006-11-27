@@ -207,10 +207,10 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		if(!event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 			return false;
 		
-		CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
+		CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
 		if(cmd.getObjectType() != objectType)
 			return false;
-		if(cmd.getObjectId().equals(objectId))
+		if(cmd.getCreatedId().equals(objectId))
 			return false;
 		return true;
 	}
