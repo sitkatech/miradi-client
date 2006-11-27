@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.workplan;
+package org.conservationmeasures.eam.views.umbrella;
 
 import java.text.ParseException;
 
@@ -16,24 +16,14 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.ViewDoer;
+import org.conservationmeasures.eam.views.ObjectsDoer;
+import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
-public class DeleteActivity extends ViewDoer
+public class DeleteActivity extends ObjectsDoer
 {
-	public DeleteActivity(WorkPlanView viewToUse)
-	{
-		view = viewToUse;
-	}
-	
-	public WorkPlanPanel getWorkPlanPanel()
-	{
-		return view.getWorkPlanPanel();
-	}
-	
 	public boolean isAvailable()
 	{
-		// FIXME: Overhaul to work with ActionDeleteActivity as an ObjectsAction
-		return false;
+		return (getObjects().length == 1);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -41,11 +31,12 @@ public class DeleteActivity extends ViewDoer
 		if(!isAvailable())
 			return;
 		
-		Task activity = getWorkPlanPanel().getSelectedTask();
-		Strategy intervention = getWorkPlanPanel().getParentIntervention(activity);
+		Task activity = (Task)getObjects()[0];
+		
+		Strategy strategy = (Strategy)getView().getSelectedObject();
 		try
 		{
-			deleteActivity(getProject(), intervention, activity);
+			deleteActivity(getProject(), strategy, activity);
 		}
 		catch(Exception e)
 		{

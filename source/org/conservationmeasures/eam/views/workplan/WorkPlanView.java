@@ -3,7 +3,6 @@ package org.conservationmeasures.eam.views.workplan;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
-import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
@@ -95,7 +94,8 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
-		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
+		// FIXME: Re-add, but make sure this view supports getSelectedObject
+//		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity(this));
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
