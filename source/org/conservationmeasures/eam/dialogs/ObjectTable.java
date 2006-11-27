@@ -28,12 +28,15 @@ public class ObjectTable extends UiTable implements ObjectPicker
 	public ObjectTable(ObjectTableModel modelToUse)
 	{
 		super(modelToUse);
+		currentSortColumn = -1;
+		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		JTableHeader columnHeader = getTableHeader();
+		columnHeader.setReorderingAllowed(true);
 		ColumnSortListener sortListener = new ColumnSortListener(this);
 		columnHeader.addMouseListener(sortListener);
-
+		
 		resizeTable(4);
 	}
 	
@@ -61,11 +64,28 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		return getObjectTableModel().findRowObject(id);
 	}
 	
-	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
+	public void sort(int sortColumn) 
 	{
-		getObjectTableModel().setNewRowOrder(existingRowIndexesInNewOrder);
-	}
+		Comparator comparator = new TableColumnComparator(this, sortColumn);
+		Vector rows = new Vector();
+		for(int i = 0; i < getRowCount(); ++i)
+			rows.add(new Integer(i));
 
+		Vector unsortedRows = (Vector)rows.clone();
+		Collections.sort(rows, comparator);
+		
+		if (sortColumn == currentSortColumn && rows.equals(unsortedRows))
+			Collections.reverse(rows);
+
+		getObjectTableModel().setNewRowOrder(((Integer[])rows.toArray(new Integer[0])));
+		
+		// TODO: Should memorize sort order for each table
+		currentSortColumn = sortColumn;
+		
+		revalidate();
+		repaint();
+	}
+	
 	public void addListSelectionListener(ListSelectionListener listener)
 	{
 		getSelectionModel().addListSelectionListener(listener);
@@ -120,29 +140,9 @@ public class ObjectTable extends UiTable implements ObjectPicker
 
 		private void sortByTableColumn(int sortColumn)
 		{
-			sort(sortColumn);
-			table.revalidate();
-			table.repaint();
+			table.sort(sortColumn);
 		}
 
-		public void sort(int sortColumn) 
-		{
-			Comparator comparator = new TableColumnComparator(table, sortColumn);
-			Vector rows = new Vector();
-			for(int i = 0; i < table.getRowCount(); ++i)
-				rows.add(new Integer(i));
-			Collections.sort(rows, comparator);
-			
-			// TODO: Not implemented yet
-//			if ( getToggle() )  
-//				Collections.reverse(rows);
-
-			table.setNewRowOrder((Integer[])rows.toArray(new Integer[0]));
-			
-			// TODO: Not implemented yet
-			//saveState(sortColumn);
-		}
-		
 		ObjectTable table;
 	}
 	
@@ -167,4 +167,5 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		int column;
 	}
 
+	int currentSortColumn;
 }
