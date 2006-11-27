@@ -22,30 +22,14 @@ public class ObjectListTableModel extends ObjectTableModel
 	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
 			String idListFieldTag, int listedItemType, String[] tableColumnTags)
 	{
-		super(projectToUse, listedItemType);
+		super(projectToUse, listedItemType, tableColumnTags);
 		containingObjectType = objectType;
 		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
-		columnTags = tableColumnTags;
 
 		rowObjectIds = getLatestIdListFromProject();
 	}
 	
-	public String getColumnTag(int column)
-	{
-		return columnTags[column];
-	}
-	
-	public int getColumnCount()
-	{
-		return columnTags.length;
-	}
-
-	public String getColumnName(int column)
-	{
-		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
-	}
-
 	public int getContainingObjectType()
 	{
 		return containingObjectType;
@@ -82,5 +66,4 @@ public class ObjectListTableModel extends ObjectTableModel
 	int containingObjectType;
 	BaseId containingObjectId;
 	String tagOfIdList;
-	String[] columnTags;
 }

@@ -18,26 +18,10 @@ public class ObjectPoolTableModel extends ObjectTableModel
 	
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String[] columnTagsToUse)
 	{
-		super(projectToUse, listedItemType);
+		super(projectToUse, listedItemType, columnTagsToUse);
 		rowObjectIds = listToUse;
-		columnTags = columnTagsToUse;
 	}
 	
-	public int getColumnCount()
-	{
-		return columnTags.length;
-	}
-
-	public String getColumnTag(int column)
-	{
-		return columnTags[column];
-	}
-
-	public String getColumnName(int column)
-	{
-		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
-	}
-
 	public int getRowObjectType()
 	{
 		return rowObjectType;
@@ -60,6 +44,4 @@ public class ObjectPoolTableModel extends ObjectTableModel
 	{
 		return project.getPool(getRowObjectType()).getIdList();
 	}
-	
-	String[] columnTags;
 }

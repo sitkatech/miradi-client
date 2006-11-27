@@ -15,13 +15,13 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectTableModel extends AbstractTableModel
 {
-	public ObjectTableModel(Project projectToUse, int listedItemType)
+	public ObjectTableModel(Project projectToUse, int listedItemType, String[] tableColumnTags)
 	{
+		columnTags = tableColumnTags;
 		project = projectToUse;
 		rowObjectType = listedItemType;
 	}
 	
-	abstract public String getColumnTag(int column);
 	abstract public IdList getLatestIdListFromProject();
 	
 	public int getRowCount()
@@ -97,10 +97,24 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		return rowObjectIds;
 	}
 
+	public String getColumnTag(int column)
+	{
+		return columnTags[column];
+	}
+	
+	public int getColumnCount()
+	{
+		return columnTags.length;
+	}
+
+	public String getColumnName(int column)
+	{
+		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
+	}
+
 
 	Project project;
 	int rowObjectType;
-	protected IdList rowObjectIds;
-
-
+	IdList rowObjectIds;
+	String[] columnTags;
 }
