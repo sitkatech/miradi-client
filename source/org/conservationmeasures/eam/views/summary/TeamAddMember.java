@@ -39,7 +39,7 @@ public class TeamAddMember extends ObjectsDoer
 		try
 		{
 			ProjectMetadata metadata = getMetaData();
-			IdList selectedIds = getUniqueSelectedIds();
+			IdList selectedIds = getSelectedIdsNotInTeam();
 			Command cmd = CommandSetObjectData.createAppendIdsCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, selectedIds);
 			getProject().executeCommand(cmd);
 		}
@@ -50,7 +50,7 @@ public class TeamAddMember extends ObjectsDoer
 		}
 	}
 	
-	private IdList getUniqueSelectedIds()
+	private IdList getSelectedIdsNotInTeam()
 	{
 		BaseId[] selectedIds = getSelectedIds();
 		IdList teamResourceIdList = getMetaData().getTeamResourceIdList();
