@@ -14,8 +14,7 @@ public class GoalListManagementPanel extends ObjectListManagementPanel
 {
 	public GoalListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(projectToUse, nodeId, actions, 
-				new GoalListTablePanel(projectToUse, actions, nodeId),
+		super(new GoalListTablePanel(projectToUse, actions, nodeId),
 				new GoalPropertiesPanel(projectToUse, actions));
 	}
 	

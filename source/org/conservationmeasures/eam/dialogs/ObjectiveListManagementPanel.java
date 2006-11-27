@@ -14,8 +14,7 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
 	public ObjectiveListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(projectToUse, nodeId, actions, 
-				new ObjectiveListTablePanel(projectToUse, actions, nodeId),
+		super(new ObjectiveListTablePanel(projectToUse, actions, nodeId),
 				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	

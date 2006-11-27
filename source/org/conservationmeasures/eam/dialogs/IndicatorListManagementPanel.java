@@ -14,8 +14,7 @@ public class IndicatorListManagementPanel extends ObjectListManagementPanel
 {
 	public IndicatorListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(projectToUse, nodeId, actions, 
-				new IndicatorListTablePanel(projectToUse, actions, nodeId),
+		super(new IndicatorListTablePanel(projectToUse, actions, nodeId),
 				new IndicatorPropertiesPanel(projectToUse, actions));
 	}
 	

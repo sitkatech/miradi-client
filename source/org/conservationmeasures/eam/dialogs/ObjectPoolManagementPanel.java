@@ -5,46 +5,15 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.objects.EAMObject;
-
-abstract public class ObjectPoolManagementPanel extends ModelessDialogPanel
+abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
-	public ObjectPoolManagementPanel(ObjectPoolTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse)
+	public ObjectPoolManagementPanel(ObjectPoolTablePanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
-		poolComponent = tablePanelToUse;
-		add(poolComponent, BorderLayout.CENTER);
-		
-		propertiesPanel = propertiesPanelToUse;
-		poolComponent.setPropertiesPanel(propertiesPanel);
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
-
+		super(tablePanelToUse, propertiesPanelToUse);
 	}
 	
-	abstract public String getPanelDescription();
 	abstract public Icon getIcon();
 	
-	public void dispose()
-	{
-		poolComponent.dispose();
-		poolComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
-		
-		super.dispose();
-	}
-
-
-	public EAMObject getObject()
-	{
-		return poolComponent.getSelectedObject();
-	}
-
-	
-	ObjectPoolTablePanel poolComponent;
-	ObjectDataInputPanel propertiesPanel;
 }

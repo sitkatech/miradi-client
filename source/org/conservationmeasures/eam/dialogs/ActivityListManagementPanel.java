@@ -9,8 +9,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 {
 	public ActivityListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(projectToUse, nodeId, actions, 
-				new ActivityListTablePanel(projectToUse, actions, nodeId),
+		super(new ActivityListTablePanel(projectToUse, actions, nodeId),
 				new ActivityPropertiesPanel(projectToUse, actions));
 	}
 	
