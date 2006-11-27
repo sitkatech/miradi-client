@@ -10,6 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
@@ -39,7 +40,7 @@ public class ViewData extends EAMBaseObject
 		return new Command[] {cmd};
 	}
 
-	public Command[] buildCommandsToRemoveNode(BaseId idToRemove) throws ParseException
+	public Command[] buildCommandsToRemoveNode(FactorId idToRemove) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];

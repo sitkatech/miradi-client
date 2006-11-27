@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objects;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
@@ -104,7 +105,7 @@ public class TestViewData extends EAMTestCase
 		ViewData vd = new ViewData(new BaseId(33));
 		IdList sampleIds = createSampleIdList();
 		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
-		BaseId idToRemove = sampleIds.get(0);
+		FactorId idToRemove = new FactorId(sampleIds.get(0).asInt());
 		Command[] inNormalMode = vd.buildCommandsToRemoveNode(idToRemove);
 		assertEquals("removed when not in brainstorm mode?", 0, inNormalMode.length);
 		

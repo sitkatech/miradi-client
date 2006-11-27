@@ -10,22 +10,23 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactor;
+import org.conservationmeasures.eam.commands.CommandDiagramRemoveFactorLink;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.FactorCluster;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorCluster;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
 
@@ -94,7 +95,7 @@ public class Delete extends ProjectDoer
 	{
 		DiagramFactorId id = factorToDelete.getDiagramFactorId();
 
-		removeFromView(id);
+		removeFromView(factorToDelete.getWrappedId());
 		//TODO: Silly to pass id since it is in the factor itself
 		removeFromCluster(factorToDelete, id);
 		removeNodeFromDiagram(factorToDelete, id);
@@ -117,7 +118,7 @@ public class Delete extends ProjectDoer
 		}
 	}
 
-	private void removeFromView(DiagramFactorId id) throws ParseException, Exception, CommandFailedException
+	private void removeFromView(FactorId id) throws ParseException, Exception, CommandFailedException
 	{
 		Command[] commandsToRemoveFromView = getProject().getCurrentViewData().buildCommandsToRemoveNode(id);
 		for(int i = 0; i < commandsToRemoveFromView.length; ++i)
