@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.main.EAM;
 
 public class ObjectListTable extends ObjectTable
 {
-	public ObjectListTable(ObjectListTableModel modelToUse)
+	public ObjectListTable(ObjectTableModel modelToUse)
 	{
 		super(modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

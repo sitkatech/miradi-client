@@ -5,10 +5,8 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
 public class ObjectPoolTableModel extends ObjectTableModel
@@ -40,11 +38,6 @@ public class ObjectPoolTableModel extends ObjectTableModel
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 
-	public int getRowCount()
-	{
-		return getIdList().size();
-	}
-	
 	public int getRowObjectType()
 	{
 		return rowObjectType;
@@ -63,48 +56,10 @@ public class ObjectPoolTableModel extends ObjectTableModel
 		}
 	}
 
-	public IdList getIdList()
-	{
-		return rowObjectIds;
-	}
-	
-	public EAMObject getObjectFromRow(int row) throws RuntimeException
-	{
-		try
-		{
-			BaseId rowObjectId = getIdList().get(row);
-			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
-			return rowObject;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new RuntimeException("TeamModel.getObjectFromRow error");
-		}
-	}
-
-	public int findRowObject(BaseId id)
-	{
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			if(getObjectFromRow(row).getId().equals(id))
-				return row;
-		}
-		
-		return -1;
-	}
-
-	public void rowsWereAddedOrRemoved()
-	{
-		rowObjectIds = getLatestIdListFromProject();
-		fireTableDataChanged();
-	}
-
 	public IdList getLatestIdListFromProject()
 	{
 		return project.getPool(getRowObjectType()).getIdList();
 	}
 	
-	IdList rowObjectIds;
 	String[] columnTags;
 }

@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
@@ -33,32 +31,6 @@ public class ObjectListTableModel extends ObjectTableModel
 		rowObjectIds = getLatestIdListFromProject();
 	}
 	
-	public EAMObject getObjectFromRow(int row) throws RuntimeException
-	{
-		try
-		{
-			BaseId rowObjectId = getIdList().get(row);
-			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
-			return rowObject;
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			throw new RuntimeException("TeamModel.getObjectFromRow error");
-		}
-	}
-	
-	public int findRowObject(BaseId id)
-	{
-		for(int row = 0; row < getRowCount(); ++row)
-		{
-			if(getObjectFromRow(row).getId().equals(id))
-				return row;
-		}
-		
-		return -1;
-	}
-
 	public String getColumnTag(int column)
 	{
 		return columnTags[column];
@@ -74,19 +46,6 @@ public class ObjectListTableModel extends ObjectTableModel
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
 
-	public int getRowCount()
-	{
-		try
-		{
-			return getIdList().size();
-		}
-		catch(ParseException e)
-		{
-			EAM.logException(e);
-			throw new RuntimeException("Parse error reading IdList " + tagOfIdList);
-		}
-	}
-	
 	public int getContainingObjectType()
 	{
 		return containingObjectType;
@@ -102,22 +61,11 @@ public class ObjectListTableModel extends ObjectTableModel
 		return tagOfIdList;
 	}
 
-	public IdList getIdList() throws ParseException
-	{
-		return rowObjectIds;
-	}
-
 	private EAMObject getContainingObject()
 	{
 		return project.findObject(containingObjectType, containingObjectId);
 	}
 
-	public void rowsWereAddedOrRemoved()
-	{
-		rowObjectIds = getLatestIdListFromProject();
-		fireTableDataChanged();
-	}
-	
 	public IdList getLatestIdListFromProject()
 	{
 		try
@@ -135,5 +83,4 @@ public class ObjectListTableModel extends ObjectTableModel
 	BaseId containingObjectId;
 	String tagOfIdList;
 	String[] columnTags;
-	IdList rowObjectIds;
 }

@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.text.ParseException;
-
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
@@ -23,11 +21,13 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		rowObjectType = listedItemType;
 	}
 	
-	abstract public EAMObject getObjectFromRow(int row) throws RuntimeException;
-	abstract public int findRowObject(BaseId id);
 	abstract public String getColumnTag(int column);
-	abstract public IdList getIdList() throws ParseException;
-	abstract public void rowsWereAddedOrRemoved();
+	abstract public IdList getLatestIdListFromProject();
+	
+	public int getRowCount()
+	{
+		return getIdList().size();
+	}
 	
 	// TODO: Actually implement this, probably by pulling the IdList up into this class,
 	// and detecting when it gets modified externally (e.g. create/delete object)
@@ -36,6 +36,32 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		EAM.logDebug("ObjectTableModel: Sort requested: ");
 		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
 			EAM.logDebug("   " + existingRowIndexesInNewOrder[i]);
+	}
+
+	public EAMObject getObjectFromRow(int row) throws RuntimeException
+	{
+		try
+		{
+			BaseId rowObjectId = getIdList().get(row);
+			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
+			return rowObject;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new RuntimeException("TeamModel.getObjectFromRow error");
+		}
+	}
+	
+	public int findRowObject(BaseId id)
+	{
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			if(getObjectFromRow(row).getId().equals(id))
+				return row;
+		}
+		
+		return -1;
 	}
 
 	public int getRowObjectType()
@@ -59,8 +85,22 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	}
 
 
+	public void rowsWereAddedOrRemoved()
+	{
+		rowObjectIds = getLatestIdListFromProject();
+		fireTableDataChanged();
+	}
+
+
+	public IdList getIdList()
+	{
+		return rowObjectIds;
+	}
+
+
 	Project project;
 	int rowObjectType;
+	protected IdList rowObjectIds;
 
 
 }

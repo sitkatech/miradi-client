@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.project.Project;
 
 abstract public class ObjectListTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
-	public ObjectListTablePanel(Project projectToUse, int objectTypeToUse, ObjectListTableModel model, MainWindowAction createAction, ObjectsAction deleteAction)
+	public ObjectListTablePanel(Project projectToUse, int objectTypeToUse, ObjectTableModel model, MainWindowAction createAction, ObjectsAction deleteAction)
 	{
 		super(projectToUse, objectTypeToUse, new ObjectListTable(model), createAction, deleteAction);
 	}
