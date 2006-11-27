@@ -29,8 +29,6 @@ public class ObjectRatingField extends ObjectDataInputField
 		combo = new UiComboBox(questionToUse.getChoices());
 		combo.setRenderer(new RatingChoiceRenderer());
 		combo.addActionListener(new ComboChangeHandler());
-		combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-		combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		addFocusListener();
 	}
 
@@ -64,6 +62,17 @@ public class ObjectRatingField extends ObjectDataInputField
 	public void updateEditableState()
 	{
 		combo.setEnabled(isValidObject());
+		if(isValidObject())
+		{
+			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
+			combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
+		}
+		else
+		{
+			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+			
+		}
 	}
 
 	class RatingChoiceRenderer extends DefaultListCellRenderer
