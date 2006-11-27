@@ -29,6 +29,8 @@ public class ObjectListTableModel extends ObjectTableModel
 		containingObjectId = objectId;
 		tagOfIdList = idListFieldTag;
 		columnTags = tableColumnTags;
+
+		rowObjectIds = getLatestIdListFromProject();
 	}
 	
 	public EAMObject getObjectFromRow(int row) throws RuntimeException
@@ -102,7 +104,7 @@ public class ObjectListTableModel extends ObjectTableModel
 
 	public IdList getIdList() throws ParseException
 	{
-		return new IdList(getContainingObject().getData(tagOfIdList));
+		return rowObjectIds;
 	}
 
 	private EAMObject getContainingObject()
@@ -110,8 +112,28 @@ public class ObjectListTableModel extends ObjectTableModel
 		return project.findObject(containingObjectType, containingObjectId);
 	}
 
+	public void rowsWereAddedOrRemoved()
+	{
+		rowObjectIds = getLatestIdListFromProject();
+		fireTableDataChanged();
+	}
+	
+	public IdList getLatestIdListFromProject()
+	{
+		try
+		{
+			return new IdList(getContainingObject().getData(tagOfIdList));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new RuntimeException();
+		}
+	}
+	
 	int containingObjectType;
 	BaseId containingObjectId;
 	String tagOfIdList;
 	String[] columnTags;
+	IdList rowObjectIds;
 }

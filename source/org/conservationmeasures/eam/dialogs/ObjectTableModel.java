@@ -27,6 +27,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	abstract public int findRowObject(BaseId id);
 	abstract public String getColumnTag(int column);
 	abstract public IdList getIdList() throws ParseException;
+	abstract public void rowsWereAddedOrRemoved();
 	
 	// TODO: Actually implement this, probably by pulling the IdList up into this class,
 	// and detecting when it gets modified externally (e.g. create/delete object)

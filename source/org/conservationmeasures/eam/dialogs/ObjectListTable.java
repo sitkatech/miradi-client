@@ -70,7 +70,7 @@ public class ObjectListTable extends ObjectTable
 			EAM.logException(nothingWeCanDoAboutIt);
 		}
 
-		getObjectListTableModel().fireTableDataChanged();
+		getObjectListTableModel().rowsWereAddedOrRemoved();
 		desiredSelectionRow = Math.min(desiredSelectionRow, getRowCount() - 1);
 		if(desiredSelectionRow >= 0)
 			setRowSelectionInterval(desiredSelectionRow, desiredSelectionRow);

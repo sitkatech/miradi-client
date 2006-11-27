@@ -96,8 +96,13 @@ public class ObjectPoolTableModel extends ObjectTableModel
 
 	public void rowsWereAddedOrRemoved()
 	{
-		rowObjectIds = project.getPool(getRowObjectType()).getIdList();
+		rowObjectIds = getLatestIdListFromProject();
 		fireTableDataChanged();
+	}
+
+	public IdList getLatestIdListFromProject()
+	{
+		return project.getPool(getRowObjectType()).getIdList();
 	}
 	
 	IdList rowObjectIds;
