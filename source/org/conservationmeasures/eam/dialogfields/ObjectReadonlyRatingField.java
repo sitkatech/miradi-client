@@ -42,7 +42,7 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 	public void setText(String code)
 	{
 		RatingChoice choice = getRatingChoice(code);
-
+		currentCode = code;
 		String text = "";
 		Icon icon = null;
 		if(choice != null)
@@ -67,13 +67,14 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 
 	public String getText()
 	{
-		return null;
+		return currentCode;
 	}
 
 	public void updateEditableState()
 	{
 	}
-	
+
+	String currentCode;
 	RatingQuestion question;
 	UiLabel component;
 }
