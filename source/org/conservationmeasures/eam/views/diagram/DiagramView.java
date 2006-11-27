@@ -452,15 +452,11 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	{
 		if(cmd.getObjectType() != ObjectType.PROJECT_METADATA)
 			return;
-		if(!cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE))
-			return;
-		
-		updateProjectScope();
-	}
-
-	public void updateProjectScope()
-	{
-		getDiagramComponent().getDiagramModel().updateProjectScope();
+		if(cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
+				cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION))
+		{
+			getDiagramComponent().getDiagramModel().updateProjectScopeBox();
+		}
 	}
 
 	public void jump(Class stepMarker) throws Exception

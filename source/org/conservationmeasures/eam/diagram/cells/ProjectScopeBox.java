@@ -71,7 +71,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return GraphConstants.getBounds(getAttributes());
 	}
 	
-	private void autoSurroundTargets()
+	public void autoSurroundTargets()
 	{
 		Rectangle2D targetBounds = computeCurrentTargetBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);

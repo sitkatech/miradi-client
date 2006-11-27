@@ -77,11 +77,6 @@ public class DiagramModel extends DefaultGraphModel
 		return project.getThreatRatingFramework();
 	}
 	
-	public void setScopeText(String text)
-	{
-		getProjectScopeBox().setText(EAM.text("Project Scope: " + text));
-	}
-	
 	public DiagramFactor createDiagramFactor(FactorId idToWrap) throws Exception
 	{
 		return createDiagramFactor(idToWrap, new DiagramFactorId(BaseId.INVALID.asInt()));
@@ -475,10 +470,11 @@ public class DiagramModel extends DefaultGraphModel
 		}
 	}
 
-	public void updateProjectScope()
+	public void updateProjectScopeBox()
 	{
 		String newText = getProject().getMetadata().getShortProjectScope();
-		setScopeText(newText);
+		getProjectScopeBox().setText(EAM.text("Project Scope: " + newText));
+		getProjectScopeBox().autoSurroundTargets();
 	}
 
 	
