@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -16,6 +17,11 @@ import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
+	public IndicatorPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	{
+		this(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt()));
+	}
+	
 	public IndicatorPropertiesPanel(Project projectToUse, Actions actions, Indicator indicator) throws Exception
 	{
 		this(projectToUse, actions, (IndicatorId)indicator.getId());

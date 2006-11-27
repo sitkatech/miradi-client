@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.GoalId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -14,6 +15,11 @@ import org.conservationmeasures.eam.project.Project;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanel
 {
+	public GoalPropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	{
+		this(projectToUse, actions, new GoalId(BaseId.INVALID.asInt()));
+	}
+	
 	public GoalPropertiesPanel(Project projectToUse, Actions actions, Goal goal) throws Exception
 	{
 		this(projectToUse, actions, (GoalId)goal.getId());

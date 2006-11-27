@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -15,6 +16,11 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 {
+	public ObjectivePropertiesPanel(Project projectToUse, Actions actions) throws Exception
+	{
+		this(projectToUse, actions, new ObjectiveId(BaseId.INVALID.asInt()));
+	}
+	
 	public ObjectivePropertiesPanel(Project projectToUse, Actions actions, Objective objective) throws Exception
 	{
 		this(projectToUse, actions, (ObjectiveId)objective.getId());

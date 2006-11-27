@@ -5,54 +5,22 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.martus.swing.UiScrollPane;
 
-public class ObjectiveListManagementPanel extends ModelessDialogPanel
+public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 {
 	public ObjectiveListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
-		super(new BorderLayout());
-		ObjectiveId invalidId = new ObjectiveId(BaseId.INVALID.asInt());
-		
-		listComponent = new ObjectiveListTablePanel(projectToUse, actions, nodeId);
-		add(listComponent, BorderLayout.CENTER);
-		
-		propertiesPanel = new ObjectivePropertiesPanel(projectToUse, actions, invalidId);
-		listComponent.setPropertiesPanel(propertiesPanel);
-		add(new UiScrollPane(propertiesPanel), BorderLayout.AFTER_LAST_LINE);
+		super(projectToUse, nodeId, actions, 
+				new ObjectiveListTablePanel(projectToUse, actions, nodeId),
+				new ObjectivePropertiesPanel(projectToUse, actions));
 	}
 	
-	public void dispose()
-	{
-		listComponent.dispose();
-		listComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
-		
-		super.dispose();
-	}
-
-
-	public EAMObject getObject()
-	{
-		return listComponent.getSelectedObject();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Objectives");
 	}
-	
-	ObjectiveListTablePanel listComponent;
-	ObjectivePropertiesPanel propertiesPanel;
 }
