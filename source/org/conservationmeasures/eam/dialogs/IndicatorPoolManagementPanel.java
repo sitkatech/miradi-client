@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -14,41 +12,16 @@ import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IndicatorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class IndicatorPoolManagementPanel extends ModelessDialogPanel
+public class IndicatorPoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public IndicatorPoolManagementPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(new BorderLayout());
-		IndicatorId invalidId = new IndicatorId(BaseId.INVALID.asInt());
-		
-		poolComponent = new IndicatorPoolTablePanel(projectToUse);
-		add(poolComponent, BorderLayout.CENTER);
-		
-		propertiesPanel = new IndicatorPropertiesPanel(projectToUse, actions, invalidId);
-		poolComponent.setPropertiesPanel(propertiesPanel);
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
+		super(new IndicatorPoolTablePanel(projectToUse),
+				new IndicatorPropertiesPanel(projectToUse, actions, new IndicatorId(BaseId.INVALID.asInt())));
 	}
 	
-	public void dispose()
-	{
-		poolComponent.dispose();
-		poolComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
-		
-		super.dispose();
-	}
-
-
-	public EAMObject getObject()
-	{
-		return poolComponent.getSelectedObject();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Indicators");
@@ -58,7 +31,4 @@ public class IndicatorPoolManagementPanel extends ModelessDialogPanel
 	{
 		return new IndicatorIcon();
 	}
-	
-	IndicatorPoolTablePanel poolComponent;
-	IndicatorPropertiesPanel propertiesPanel;
 }

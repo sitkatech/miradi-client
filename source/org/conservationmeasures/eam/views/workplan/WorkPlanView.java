@@ -51,7 +51,7 @@ public class WorkPlanView extends TabbedView
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow());
-		activitiesManagementPanel = new ActivityPoolManagementPanel(getMainWindow());
+		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
 
 		addTab(EAM.text("Work Plan"), workPlanPanel);
 		addTab(activitiesManagementPanel.getPanelDescription(),activitiesManagementPanel.getIcon(), activitiesManagementPanel);

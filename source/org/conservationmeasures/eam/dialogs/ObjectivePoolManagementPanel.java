@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -14,41 +12,16 @@ import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ObjectiveId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class ObjectivePoolManagementPanel extends ModelessDialogPanel
+public class ObjectivePoolManagementPanel extends ObjectPoolManagementPanel
 {
 	public ObjectivePoolManagementPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(new BorderLayout());
-		ObjectiveId invalidId = new ObjectiveId(BaseId.INVALID.asInt());
-		
-		PoolComponent = new ObjectivePoolTablePanel(projectToUse);
-		add(PoolComponent, BorderLayout.CENTER);
-		
-		propertiesPanel = new ObjectivePropertiesPanel(projectToUse, actions, invalidId);
-		PoolComponent.setPropertiesPanel(propertiesPanel);
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
+		super(new ObjectivePoolTablePanel(projectToUse), 
+				new ObjectivePropertiesPanel(projectToUse, actions, new ObjectiveId(BaseId.INVALID.asInt())));
 	}
 	
-	public void dispose()
-	{
-		PoolComponent.dispose();
-		PoolComponent = null;
-		
-		propertiesPanel.dispose();
-		propertiesPanel = null;
-		
-		super.dispose();
-	}
-
-
-	public EAMObject getObject()
-	{
-		return PoolComponent.getSelectedObject();
-	}
-
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Objectives");
@@ -58,8 +31,4 @@ public class ObjectivePoolManagementPanel extends ModelessDialogPanel
 	{
 		return new ObjectiveIcon();
 	}
-	
-	
-	ObjectivePoolTablePanel PoolComponent;
-	ObjectivePropertiesPanel propertiesPanel;
 }
