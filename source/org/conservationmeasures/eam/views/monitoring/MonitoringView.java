@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.dialogs.IndicatorPoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -39,11 +38,10 @@ public class MonitoringView extends TabbedView
 	{
 		monitoringPanel = new MonitoringPanel(getProject());
 		indicatorManagementPanel = new IndicatorPoolManagementPanel(getProject(), getActions());
-		JScrollPane scrollPane = new JScrollPane(indicatorManagementPanel);
 		addTab(EAM.text("Monitoring Plan"), monitoringPanel);
-		addTab(indicatorManagementPanel.getPanelDescription(), indicatorManagementPanel.getIcon(), scrollPane);
+		addScrollableTab(indicatorManagementPanel);
 	}
-
+	
 	public void deleteTabs() throws Exception
 	{
 		monitoringPanel = null;

@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 
 import javax.swing.Icon;
+import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
@@ -16,6 +17,7 @@ import javax.swing.event.ChangeListener;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.dialogs.ObjectPoolManagementPanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -153,6 +155,12 @@ abstract public class TabbedView extends UmbrellaView
 		{
 			EAM.logException(e);
 		}
+	}
+
+	public void addScrollableTab(ObjectPoolManagementPanel panel)
+	{
+		JScrollPane scrollPane = new JScrollPane(panel);
+		addTab(panel.getPanelDescription(), panel.getIcon(), scrollPane);
 	}
 
 	class TabChangeListener implements ChangeListener

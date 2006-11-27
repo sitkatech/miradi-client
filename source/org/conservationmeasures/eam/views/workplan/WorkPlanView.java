@@ -50,12 +50,12 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
-		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow());
+		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
 
 		addTab(EAM.text("Work Plan"), workPlanPanel);
-		addTab(activitiesManagementPanel.getPanelDescription(),activitiesManagementPanel.getIcon(), activitiesManagementPanel);
-		addTab(EAM.text("Resources"), resourceManagementPanel);
+		addScrollableTab(activitiesManagementPanel);
+		addScrollableTab(resourceManagementPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception

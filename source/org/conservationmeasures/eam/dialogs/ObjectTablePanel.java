@@ -7,9 +7,11 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
+import javax.swing.Box;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -22,6 +24,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.ObjectsActionButton;
+import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
 public class ObjectTablePanel extends DisposablePanel implements ListSelectionListener, CommandExecutedListener
@@ -34,6 +38,9 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		table = tableToUse;
 		table.addListSelectionListener(this);
 		add(new UiScrollPane(table), BorderLayout.CENTER);
+
+		buttons = Box.createVerticalBox();
+		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 
 		project.addCommandExecutedListener(this);
 	}
@@ -112,9 +119,20 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	{
 	}
 	
+	public void addButton(ObjectsAction action)
+	{
+		addButton(new ObjectsActionButton(action, table));
+	}
+	
+	public void addButton(UiButton button)
+	{
+		buttons.add(button);
+	}
+	
 	Project project;
 	int objectType;
 	ObjectTable table;
 	ObjectDataInputPanel propertiesPanel;
+	Box buttons;
 
 }

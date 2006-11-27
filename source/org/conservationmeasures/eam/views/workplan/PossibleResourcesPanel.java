@@ -15,13 +15,9 @@ public class PossibleResourcesPanel extends ResourcePoolManagementPanel
 {
 	public PossibleResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(mainWindowToUse, getExtraButtonActions(mainWindowToUse), OVERVIEW_TEXT);
-	}
-	
-	private static ObjectsAction[] getExtraButtonActions(MainWindow mainWindowToUse)
-	{
+		super(mainWindowToUse.getProject(), mainWindowToUse.getActions(), OVERVIEW_TEXT);
 		ObjectsAction addResourceAction = mainWindowToUse.getActions().getObjectsAction(ActionResourceListAdd.class);
-		return new ObjectsAction[] {addResourceAction};
+		addTablePanelButton(addResourceAction);
 	}
 	
 	final static String OVERVIEW_TEXT = 

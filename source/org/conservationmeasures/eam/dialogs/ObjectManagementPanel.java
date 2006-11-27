@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
+import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.martus.swing.UiScrollPane;
 
@@ -33,6 +34,10 @@ abstract public class ObjectManagementPanel extends ModelessDialogPanel
 		super.dispose();
 	}
 
+	public void addTablePanelButton(ObjectsAction action)
+	{
+		listComponent.addButton(action);
+	}
 
 	public EAMObject getObject()
 	{

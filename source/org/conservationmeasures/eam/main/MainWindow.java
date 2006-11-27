@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.exceptions.UnknownCommandException;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectRepairer;
 import org.conservationmeasures.eam.views.Doer;
+import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.BudgetView;
 import org.conservationmeasures.eam.views.calendar.CalendarView;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
@@ -442,7 +443,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private CalendarView calendarView;
 	private ImagesView imagesView;
 	private StrategicPlanView strategicPlanView;
-	private MonitoringView monitoringView;
+	private TabbedView monitoringView;
 	
 	private UmbrellaView currentView;
 	private JPanel viewHolder;
