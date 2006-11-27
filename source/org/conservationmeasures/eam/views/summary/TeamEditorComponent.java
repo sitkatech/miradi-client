@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectListTable;
 import org.conservationmeasures.eam.project.Project;
@@ -32,8 +33,6 @@ public class TeamEditorComponent extends DisposablePanel
 		teamTable.resizeTable(10);
 		teamTable.addMouseListener(new MouseAdapterDoubleClickDelegator(actions.get(ActionModifyResource.class)));
 		
-		rebuild();
-		
 		add(new UiScrollPane(teamTable), BorderLayout.CENTER);
 		add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
 	}
@@ -43,9 +42,9 @@ public class TeamEditorComponent extends DisposablePanel
 		super.dispose();
 	}
 	
-	public void rebuild()
+	public void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
-		teamModel.fireTableDataChanged();
+		teamTable.updateTableAfterCommand(cmd);
 	}
 	
 	Box createButtonBar(Actions actions)

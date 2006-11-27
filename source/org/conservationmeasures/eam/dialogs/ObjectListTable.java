@@ -28,7 +28,7 @@ public class ObjectListTable extends ObjectTable
 		return (ObjectListTableModel)getModel();
 	}
 	
-	void updateTableAfterCommand(CommandSetObjectData cmd)
+	public void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
 		super.updateTableAfterCommand(cmd);
 		

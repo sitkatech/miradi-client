@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 
 public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
@@ -38,11 +37,6 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public void rebuild()
-	{
-		teamEditorComponent.rebuild();
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
@@ -65,23 +59,10 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 			return;
 		
 		CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-		if(!isInterestingType(cmd.getObjectType()))
-			return;
 		
-		rebuild();
+		teamEditorComponent.updateTableAfterCommand(cmd);
 	}
 
-	private boolean isInterestingType(int modifiedObjectType)
-	{
-		if(modifiedObjectType == ObjectType.PROJECT_METADATA)
-			return true;
-		
-		if(modifiedObjectType == ObjectType.PROJECT_RESOURCE)
-			return true;
-		
-		return false;
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("General");
