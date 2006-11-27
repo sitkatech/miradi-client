@@ -23,6 +23,7 @@ public class ObjectResourceListField extends ObjectDataInputField
 		project = projectToUse;
 		actions = actionsToUse;
 		listComponent = new ResourceListEditorComponent(project, actions);
+		idList = new IdList();
 	}
 	
 	public JComponent getComponent()
