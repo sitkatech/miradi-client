@@ -23,6 +23,15 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	abstract public EAMObject getObjectFromRow(int row) throws RuntimeException;
 	abstract public int findRowObject(BaseId id);
 	abstract public String getColumnTag(int column);
+	
+	// TODO: Actually implement this, probably by pulling the IdList up into this class,
+	// and detecting when it gets modified externally (e.g. create/delete object)
+	void setNewRowOrder(Integer[] existingRowIndexesInNewOrder)
+	{
+		EAM.logDebug("ObjectTableModel: Sort requested: ");
+		for(int i = 0; i < existingRowIndexesInNewOrder.length; ++i)
+			EAM.logDebug("   " + existingRowIndexesInNewOrder[i]);
+	}
 
 	public int getRowObjectType()
 	{
@@ -43,6 +52,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 			return "(Error)";
 		}
 	}
+
 
 	Project project;
 	int rowObjectType;
