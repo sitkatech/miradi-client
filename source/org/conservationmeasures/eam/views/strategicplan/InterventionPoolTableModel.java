@@ -14,6 +14,6 @@ public class InterventionPoolTableModel extends ObjectPoolTableModel
 {
 	public InterventionPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getFactorPool().getInterventionIds(), Factor.TAG_LABEL);	
+		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getFactorPool().getInterventionIds(), new String[] {Factor.TAG_LABEL});	
 	}
 }

@@ -15,6 +15,6 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 {
 	public IndicatorPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.INDICATOR, Indicator.TAG_LABEL);
+		super(projectToUse, ObjectType.INDICATOR, new String[] {Indicator.TAG_LABEL});
 	}
 }

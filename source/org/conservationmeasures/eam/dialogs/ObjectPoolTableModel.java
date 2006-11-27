@@ -13,26 +13,26 @@ import org.conservationmeasures.eam.project.Project;
 
 public class ObjectPoolTableModel extends ObjectTableModel
 {
-	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String columnTagToUse)
+	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
 	{
-		this(projectToUse, listedItemType, projectToUse.getPool(listedItemType).getIdList(), columnTagToUse);
+		this(projectToUse, listedItemType, projectToUse.getPool(listedItemType).getIdList(), columnTagsToUse);
 	}
 	
-	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String columnTagToUse)
+	public ObjectPoolTableModel(Project projectToUse, int listedItemType, IdList listToUse, String[] columnTagsToUse)
 	{
 		super(projectToUse, listedItemType);
 		rowObjectIds = listToUse;
-		columnTag = columnTagToUse;
+		columnTags = columnTagsToUse;
 	}
 	
 	public int getColumnCount()
 	{
-		return 1;
+		return columnTags.length;
 	}
 
 	public String getColumnTag(int column)
 	{
-		return columnTag;
+		return columnTags[column];
 	}
 
 	public String getColumnName(int column)
@@ -96,5 +96,5 @@ public class ObjectPoolTableModel extends ObjectTableModel
 	}
 	
 	IdList rowObjectIds;
-	String columnTag;
+	String[] columnTags;
 }

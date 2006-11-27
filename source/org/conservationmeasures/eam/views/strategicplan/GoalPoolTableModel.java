@@ -15,6 +15,6 @@ public class GoalPoolTableModel extends ObjectPoolTableModel
 {
 	public GoalPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.GOAL, Goal.TAG_LABEL);
+		super(projectToUse, ObjectType.GOAL, new String[] {Goal.TAG_LABEL});
 	}
 }
