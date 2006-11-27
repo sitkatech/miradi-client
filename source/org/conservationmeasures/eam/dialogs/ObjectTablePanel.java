@@ -64,10 +64,10 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		try
 		{
 			BaseId selectedId = BaseId.INVALID;
-			int row = table.getSelectedRow();
-			if(row >= 0)
+			int[] row = table.getSelectedRows();
+			if (row.length == 1 )
 			{
-				EAMObject selectedObject = table.getObjectTableModel().getObjectFromRow(row);
+				EAMObject selectedObject = table.getObjectTableModel().getObjectFromRow(row[0]);
 				selectedId = selectedObject.getId();
 			}
 			propertiesPanel.setObjectId(selectedId);

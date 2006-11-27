@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -22,6 +20,9 @@ public class TeamAddMember extends ObjectsDoer
 		if(getObjects().length == 0)
 			return false;
 		
+		if (getSelectedIds().length > 1)
+			return true;
+		
 		ProjectMetadata metadata = getProject().getMetadata();
 		if(metadata.getTeamResourceIdList().contains(getSelectedId()))
 			return false;
@@ -34,18 +35,25 @@ public class TeamAddMember extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		ProjectMetadata metadata = getProject().getMetadata();
-		BaseId selectedId = getSelectedId();
 		try
 		{
-			Command cmd = CommandSetObjectData.createAppendIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, selectedId);
-			getProject().executeCommand(cmd);
+			BaseId[] selectedIds = getSelectedIds();
+			tryToAddSelectedIds(selectedIds);
 		}
-		catch (ParseException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 			EAM.errorDialog(EAM.text("Text|Unknown error prevented adding this person to the team"));
 		}
 	}
 
+	private void tryToAddSelectedIds(BaseId[] selectedIds) throws Exception
+	{
+		ProjectMetadata metadata = getProject().getMetadata();
+		for (int i = 0; i < selectedIds.length; i++)
+		{
+			Command cmd = CommandSetObjectData.createAppendIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, selectedIds[i]);
+			getProject().executeCommand(cmd);
+		}
+	}
 }

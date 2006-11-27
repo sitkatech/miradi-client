@@ -24,6 +24,26 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectedObjects();
 	}
 	
+	public BaseId[] getSelectedIds()
+	{
+		EAMObject[] selectetObjects = getObjects();
+		if (selectetObjects == null)
+		{
+			BaseId[] emptyIds  = {BaseId.INVALID};
+			return emptyIds;
+		}
+		return getObjectIds(selectetObjects);
+	}
+	
+	private BaseId[] getObjectIds(EAMObject[] selectetObjects)
+	{
+		BaseId[] objectIds = new BaseId[selectetObjects.length];
+		for (int i = 0; i < selectetObjects.length; i++)
+			objectIds[i] = selectetObjects[i].getId();
+		
+		return objectIds;
+	}
+
 	public BaseId getSelectedId()
 	{
 		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
