@@ -4,6 +4,9 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
+import org.conservationmeasures.eam.dialogs.GoalPoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.ObjectivePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.StrategyPoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -40,7 +43,7 @@ public class StrategicPlanView extends TabbedView
 		objectivePanel =  new ObjectivePoolManagementPanel(getProject(), getActions());
 		goalPanel = new GoalPoolManagementPanel(getProject(), getActions());
 		
-		strategyPoolManagementPanel = new StrategiesPoolManagementPanel(getMainWindow());
+		strategyPoolManagementPanel = new StrategyPoolManagementPanel(getMainWindow());
 		
 		addTab(EAM.text("Strategic Plan"), strategicPlanPanel);
 		addTab(goalPanel.getPanelDescription(), goalPanel.getIcon(), goalPanel);
@@ -112,7 +115,7 @@ public class StrategicPlanView extends TabbedView
 	StrategicPlanPanel strategicPlanPanel;
 	ObjectivePoolManagementPanel objectivePanel;
 	GoalPoolManagementPanel goalPanel;
-	StrategiesPoolManagementPanel strategyPoolManagementPanel;
+	StrategyPoolManagementPanel strategyPoolManagementPanel;
 	
 	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;

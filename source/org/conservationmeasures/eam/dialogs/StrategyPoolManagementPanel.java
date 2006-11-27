@@ -3,14 +3,12 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.dialogs.InterventionPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -19,13 +17,13 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
-public class StrategiesPoolManagementPanel extends ModelessDialogPanel
+public class StrategyPoolManagementPanel extends ModelessDialogPanel
 {
-	public StrategiesPoolManagementPanel(MainWindow mainWindowToUse) throws Exception
+	public StrategyPoolManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(new BorderLayout());
 		Project project = mainWindowToUse.getProject();
-		poolComponent = new InterventionPoolTablePanel(project);
+		poolComponent = new StrategyPoolTablePanel(project);
 		add(poolComponent, BorderLayout.CENTER);
 		
 		BaseId invalidId = new BaseId(BaseId.INVALID.asInt());
@@ -56,6 +54,6 @@ public class StrategiesPoolManagementPanel extends ModelessDialogPanel
 		return new StrategyIcon();
 	}
 
-	InterventionPoolTablePanel poolComponent;
+	StrategyPoolTablePanel poolComponent;
 	InterventionPropertiesPanel propertiesPanel;
 }

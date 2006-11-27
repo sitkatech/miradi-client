@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.monitoring;
 
 import javax.swing.JScrollPane;
 
+import org.conservationmeasures.eam.dialogs.IndicatorPoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;

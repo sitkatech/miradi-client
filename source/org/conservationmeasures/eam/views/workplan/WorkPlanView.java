@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.actions.ActionResourceListRemove;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
+import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;

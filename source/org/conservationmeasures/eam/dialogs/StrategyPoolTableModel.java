@@ -3,16 +3,15 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.strategicplan;
+package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 
-public class InterventionPoolTableModel extends ObjectPoolTableModel
+public class StrategyPoolTableModel extends ObjectPoolTableModel
 {
-	public InterventionPoolTableModel(Project projectToUse)
+	public StrategyPoolTableModel(Project projectToUse)
 	{
 		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getFactorPool().getInterventionIds(), COLUMN_TAGS);	
 	}

@@ -3,15 +3,13 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.workplan;
+package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
 import javax.swing.Icon;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
-import org.conservationmeasures.eam.dialogs.ActivityPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;

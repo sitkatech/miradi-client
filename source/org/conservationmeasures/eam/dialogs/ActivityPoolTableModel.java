@@ -3,9 +3,8 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.workplan;
+package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
