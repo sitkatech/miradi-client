@@ -81,7 +81,7 @@ public class ObjectRatingField extends ObjectDataInputField
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
 			RatingChoice thisOption = (RatingChoice)value;
-			setIcon(RatingIcon.createFromColor(thisOption));
+			setIcon(RatingIcon.createFromChoice(thisOption));
 			return cell;
 		}
 	}

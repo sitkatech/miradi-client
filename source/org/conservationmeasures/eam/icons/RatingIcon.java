@@ -28,12 +28,12 @@ public class RatingIcon extends EamIcon
 		return color;
 	}
 	
-	public static RatingIcon createFromColor(RatingChoice choice)
+	public static RatingIcon createFromChoice(RatingChoice choice)
 	{
-		if (choice.getColor() != null)
-			return new RatingIcon(choice);
+		if (choice.getColor() == null)
+			return null;
 		
-		return null;
+		return new RatingIcon(choice);
 	}
 	
 	private Color color;
