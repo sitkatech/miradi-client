@@ -1,24 +1,22 @@
 package org.conservationmeasures.eam.views.budget;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JLabel;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
+import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiScrollPane;
 
-public class BudgetView extends UmbrellaView
+public class BudgetView extends TabbedView
 {
-
 	public BudgetView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
-		add(createScreenShotLabel(), BorderLayout.BEFORE_FIRST_LINE);
-		add(new UiScrollPane(new BudgetComponent()), BorderLayout.CENTER);
 	}
 
 	public String cardName() 
@@ -41,12 +39,31 @@ public class BudgetView extends UmbrellaView
 		super.becomeInactive();
 	}
 
+	public void createTabs() throws Exception
+	{
+		budgetPanel = new BudgetPanel();
+		addTab(EAM.text("Budget"), budgetPanel);
+		addTab(EAM.text("Image"), new UiScrollPane(new BudgetComponent()));
+	}
+
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return new BudgetWizardPanel();
+	}
+
+	public void deleteTabs() throws Exception
+	{
+		budgetPanel.dispose();
+		budgetPanel = null;
+	}
+	
+	BudgetPanel budgetPanel;
 }
 
-	class BudgetComponent extends JLabel
+class BudgetComponent extends JLabel
+{
+	public BudgetComponent()
 	{
-		public BudgetComponent()
-		{
-			super(new ResourceImageIcon("images/Budget.png"));
-		}
+		super(new ResourceImageIcon("images/Budget.png"));
 	}
+}

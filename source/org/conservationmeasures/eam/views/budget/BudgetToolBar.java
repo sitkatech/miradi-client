@@ -10,5 +10,4 @@ public class BudgetToolBar extends EAMToolBar
 	{
 		super(actions, ActionViewBudget.class);
 	}
-
 }
