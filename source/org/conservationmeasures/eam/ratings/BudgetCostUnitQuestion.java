@@ -16,11 +16,11 @@ public class BudgetCostUnitQuestion extends RatingQuestion
 	{
 		return new RatingChoice[] {
 				new RatingChoice("", "Not Specified"),
-				new RatingChoice("1", "Hour"),
-				new RatingChoice("2", "Day"),
-				new RatingChoice("3", "Week"),
-				new RatingChoice("4", "Month"),
-				new RatingChoice("5", "Each"),
+				new RatingChoice("h", "Hours"),
+				new RatingChoice("d", "Days"),
+				new RatingChoice("w", "Weeks"),
+				new RatingChoice("m", "Months"),
+				new RatingChoice("e", "Each"),
 		};
 	}
 }

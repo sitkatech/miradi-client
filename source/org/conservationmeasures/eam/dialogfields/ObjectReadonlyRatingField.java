@@ -48,19 +48,11 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 		if(choice != null)
 		{
 			text = choice.getLabel();
-			icon = getPossibleIcon(choice);
+			icon = RatingIcon.createFromColor(choice);
 		}
 		component.setText(text);
 		component.setIcon(icon);
 		component.invalidate();
-	}
-
-	private Icon getPossibleIcon(RatingChoice choice)
-	{
-		if (choice.getColor() != null)
-			return new RatingIcon(choice);
-		
-		return null;
 	}
 
 	private RatingChoice getRatingChoice(String text)

@@ -20,12 +20,12 @@ public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ProjectResource.TAG_INITIALS));
 		addField(createStringField(ProjectResource.TAG_NAME));
+		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));
 		addField(createStringField(ProjectResource.TAG_EMAIL));
-		addField(createNumericField(ProjectResource.TAG_COST_PER_UNIT));
 		addField(createRatingField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
-		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
+		addField(createNumericField(ProjectResource.TAG_COST_PER_UNIT));
 		
 		updateFieldsFromProject();
 	}

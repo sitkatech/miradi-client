@@ -63,12 +63,13 @@ public class ProjectResource extends EAMBaseObject
 		
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
+		addField(TAG_ORGANIZATION, organization);
 		addField(TAG_POSITION, position);
 		addField(TAG_PHONE_NUMBER, phoneNumber);
 		addField(TAG_EMAIL, email);
-		addField(TAG_COST_PER_UNIT, costPerUnit);
 		addField(TAG_COST_UNIT, costUnit);
-		addField(TAG_ORGANIZATION, organization);
+		addField(TAG_COST_PER_UNIT, costPerUnit);
+		
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
