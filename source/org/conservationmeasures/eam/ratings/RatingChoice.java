@@ -9,6 +9,11 @@ import java.awt.Color;
 
 public class RatingChoice
 {
+	public RatingChoice(String codeToUse, String labelToUse)
+	{
+		this(codeToUse, labelToUse, null);
+	}
+	
 	public RatingChoice(String codeToUse, String labelToUse, Color colorToUse)
 	{
 		code = codeToUse;

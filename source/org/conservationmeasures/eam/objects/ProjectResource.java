@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.NumberData;
+import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -55,12 +57,18 @@ public class ProjectResource extends EAMBaseObject
 		position = new StringData();
 		phoneNumber = new StringData();
 		email = new StringData();
+		costPerUnit = new NumberData();
+		costUnit = new RatingData();
+		organization = new StringData();
 		
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
 		addField(TAG_POSITION, position);
 		addField(TAG_PHONE_NUMBER, phoneNumber);
 		addField(TAG_EMAIL, email);
+		addField(TAG_COST_PER_UNIT, costPerUnit);
+		addField(TAG_COST_UNIT, costUnit);
+		addField(TAG_ORGANIZATION, organization);
 	}
 	
 	public static final String TAG_INITIALS = "Initials";
@@ -68,10 +76,16 @@ public class ProjectResource extends EAMBaseObject
 	public static final String TAG_POSITION = "Position";
 	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
 	public static final String TAG_EMAIL = "Email";
+	public static final String TAG_COST_PER_UNIT = "CostPerUnit";
+	public static final String TAG_COST_UNIT = "CostUnit";
+	public static final String TAG_ORGANIZATION = "Organization";
 
 	StringData initials;
 	StringData name;
 	StringData position;
 	StringData phoneNumber;
 	StringData email;
+	NumberData costPerUnit;
+	RatingData costUnit;
+	StringData organization;
 }
