@@ -44,10 +44,9 @@ public class WizardHtmlViewer extends HtmlViewer
 	private boolean cssDotPrefixWorksCorrectly()
 	{
 		String javaVersion = EAM.getJavaVersion();
-		if (javaVersion.startsWith("1.5"))
-			return true;
-		
-		return false;
+		if (javaVersion.startsWith("1.4"))
+			return false;
+		return true;
 	}
 	
 	/*
