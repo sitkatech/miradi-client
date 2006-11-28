@@ -9,9 +9,18 @@ import org.conservationmeasures.eam.main.MainWindow;
 
 public class PreferencesDialog extends ModelessDialogWithClose
 {
-	public PreferencesDialog(MainWindow mainWindowToUse, DisposablePanel panel, String headingText)
+	public PreferencesDialog(MainWindow mainWindowToUse, DisposablePanel disposablePanelToUse, String headingText)
 	{
-		super(mainWindowToUse, panel, headingText);
+		super(mainWindowToUse, disposablePanelToUse, headingText);
+		disposablePanel = disposablePanelToUse;
 	}
-
+	
+	public void dispose()
+	{
+		disposablePanel.dispose();
+		disposablePanel = null;
+		super.dispose();
+	}
+	
+	DisposablePanel disposablePanel;
 }

@@ -28,11 +28,11 @@ import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 
-public class PreferencesPanel extends ObjectDataInputPanel implements ActionListener
+public class PreferencesPanel extends DataInputPanel implements ActionListener
 {
 	public PreferencesPanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse.getProject(), -1, null);
+		super(mainWindowToUse.getProject());
 		mainWindow = mainWindowToUse;
 		
 		Box textBox = Box.createHorizontalBox();
