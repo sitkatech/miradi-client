@@ -154,9 +154,9 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramFactorLink createDiagramFactorLink(FactorLink factorLinkToWrap) throws Exception
 	{
-		DiagramFactorLink newLink = new DiagramFactorLink(this, factorLinkToWrap);
-		DiagramFactor from = getDiagramFactorByWrappedId(newLink.getFromFactorId());
-		DiagramFactor to = getDiagramFactorByWrappedId(newLink.getToFactorId());
+		DiagramFactor from = getDiagramFactorByWrappedId(factorLinkToWrap.getFromFactorId());
+		DiagramFactor to = getDiagramFactorByWrappedId(factorLinkToWrap.getToFactorId());
+		DiagramFactorLink newLink = new DiagramFactorLink(factorLinkToWrap, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{newLink.getCell()};
 		Map nestedMap = getNestedAttributeMap(newLink.getCell());

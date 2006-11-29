@@ -60,7 +60,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
+		DiagramFactorLink linkage = new DiagramFactorLink(cmLinkage, factor, target);
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
 
@@ -74,7 +74,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage = new DiagramFactorLink(model, cmLinkage);
+		DiagramFactorLink linkage = new DiagramFactorLink(cmLinkage, factor, target);
 		assertEquals(id, linkage.getDiagramLinkageId());
 	}
 	
