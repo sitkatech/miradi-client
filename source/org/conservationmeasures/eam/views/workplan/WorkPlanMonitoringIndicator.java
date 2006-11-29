@@ -8,13 +8,12 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
+public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 {
-	public WorkPlanMonitoringIndicatorNode(Project projectToUse, Indicator indicatorToUse)
+	public WorkPlanMonitoringIndicator(Project projectToUse, Indicator indicatorToUse)
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
@@ -32,7 +31,7 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 
 	public String toString()
 	{
-		return indicator.toString();
+		return indicator.getLabel();
 	}
 
 	public int getChildCount()
@@ -47,14 +46,13 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if(column == COLUMN_ITEM_LABEL)
-			return indicator.toString();
+		if (column == 0)
+			return toString();
+		
+		//TODO should this be HTML?
+		if (column == 1)
+			return toString();
 		return "";
-	}
-
-	ChainManager getChainManager()
-	{
-		return new ChainManager(project);
 	}
 	
 	public boolean canInsertActivityHere()
@@ -64,7 +62,7 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 
 	public BaseId getId()
 	{
-		return null;
+		return indicator.getId();
 	}
 
 	public void rebuild()
@@ -73,5 +71,4 @@ public class WorkPlanMonitoringIndicatorNode extends WorkPlanTreeTableNode
 	
 	Project project;
 	Indicator indicator;
-	public static final int COLUMN_ITEM_LABEL = 0;
 }

@@ -9,8 +9,9 @@ import java.util.Arrays;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -25,12 +26,12 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 
 	public TreeTableNode getChild(int index)
 	{
-		return allIndicators[index];
+		return allFactorsWithIndicators[index];
 	}
 
 	public int getChildCount()
 	{
-		return allIndicators.length;
+		return allFactorsWithIndicators.length;
 	}
 	
 	public ORef getObjectReference()
@@ -55,11 +56,33 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 
 	public void rebuild()
 	{
-		Indicator[] indicators = project.getIndicatorPool().getAllIndicators();
-		allIndicators = new WorkPlanMonitoringIndicatorNode[indicators.length];
-		for(int i = 0; i < indicators.length; i++)
-			allIndicators[i] = new WorkPlanMonitoringIndicatorNode(project, indicators[i]);
-		Arrays.sort(allIndicators, new IgnoreCaseStringComparator());
+		FactorSet factorsWithIndicators = new FactorSet();
+		
+		Factor[] targets = project.getFactorPool().getTargets();
+		Factor[] directThreats = project.getFactorPool().getDirectThreats();
+		Factor[] interventions = project.getFactorPool().getInterventions();
+		
+		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(targets));
+		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(directThreats));
+		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(interventions));
+		
+		allFactorsWithIndicators = new WorkPlanMonitoringFactor[factorsWithIndicators.size()];
+		Object[] nodeArray = factorsWithIndicators.toArray();
+		
+		for(int i = 0; i < allFactorsWithIndicators.length; i++)
+			allFactorsWithIndicators[i] = new WorkPlanMonitoringFactor(project, (Factor)nodeArray[i]);
+		
+		Arrays.sort(allFactorsWithIndicators, new IgnoreCaseStringComparator());
+	}
+
+	private FactorSet getPossibleIndicators(Factor[] factors)
+	{
+		FactorSet possibleIndicators = new FactorSet(); 
+		for (int i = 0; i < factors.length; i++)
+			if (factors[i].getIndicators().size() > 0)
+				possibleIndicators.attemptToAdd(factors[i]);
+		
+		return possibleIndicators;
 	}
 	
 	public boolean canInsertActivityHere()
@@ -73,7 +96,7 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 	}
 
 	Project project;
-	WorkPlanMonitoringIndicatorNode[] allIndicators;
+	WorkPlanMonitoringFactor[] allFactorsWithIndicators;
 	private static final String MONITORING_LABEL = "Monitoring";
 
 }
