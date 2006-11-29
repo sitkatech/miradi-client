@@ -11,6 +11,7 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
@@ -19,19 +20,25 @@ import javax.swing.tree.TreeSelectionModel;
 import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
-import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
+import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiLabel;
 
 import com.java.sun.jtreetable.JTreeTable;
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class TreeTableWithIcons extends JTreeTable
+public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 {
-	public TreeTableWithIcons(TreeTableModel treeTableModel)
+	public TreeTableWithIcons(Project projectToUse, TreeTableModel treeTableModel)
 	{
 		super(treeTableModel);
+		project = projectToUse;
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 		getTree().setRootVisible(false);
@@ -135,5 +142,31 @@ public class TreeTableWithIcons extends JTreeTable
 			return super.getTableCellEditorComponent(table, value, isSelected, r, c);
 		}
 	}
+
+	public void addListSelectionListener(ListSelectionListener listener)
+	{
+		getSelectionModel().addListSelectionListener(listener);
+	}
+
+	public EAMObject[] getSelectedObjects()
+	{
+		EAMObject[] selectedObjects = new EAMObject[1];
+		TreeTableNode selectedNode = (TreeTableNode)getTree().getLastSelectedPathComponent();
+		
+		if (selectedNode == null)
+			return  null;
+		
+		ORef oRef = selectedNode.getObjectReference();
+		EAMObjectPool pool = project.getPool(oRef.getObjectType());
+		
+		if (pool == null)
+			return null;
+		
+		EAMObject foundObject = pool.findObject(oRef.getObjectId());
+		selectedObjects[0] = foundObject;
 	
+		return selectedObjects;
+	}
+	
+	Project project;
 }

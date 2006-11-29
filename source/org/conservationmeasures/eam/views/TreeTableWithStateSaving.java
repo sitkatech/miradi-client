@@ -13,7 +13,7 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons
 {
 	public TreeTableWithStateSaving(Project projectToUse, GenericTreeTableModel treeTableModel)
 	{
-		super(treeTableModel);
+		super(projectToUse, treeTableModel);
 		treeTableStateSaver = new TreeTableStateSaver(projectToUse, tree);
 		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableStateSaver, treeTableModel, tree);
 	}

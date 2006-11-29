@@ -13,6 +13,8 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -23,7 +25,16 @@ public class DeleteActivity extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return (getObjects().length == 1);
+		if (getObjects() == null)
+			return false;
+		
+		if ((getObjects().length != 1))
+			return false;
+		
+		if (!(getObjects()[0].getType() == ObjectType.TASK))
+			return false;
+			
+		return true;
 	}
 
 	public void doIt() throws CommandFailedException
@@ -32,8 +43,8 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 		
 		Task activity = (Task)getObjects()[0];
-		
-		Strategy strategy = (Strategy)getView().getSelectedObject();
+		Strategy strategy = findStragetyForActivity(activity);
+
 		try
 		{
 			deleteActivity(getProject(), strategy, activity);
@@ -64,6 +75,17 @@ public class DeleteActivity extends ObjectsDoer
 			project.executeCommand(new CommandEndTransaction());
 		}
 	}
+	
+	private Strategy findStragetyForActivity(Task activity)
+	{
+		Factor[] factors = getProject().getFactorPool().getInterventions();
+		for (int i = 0; i < factors.length; i++)
+			if (((Strategy)factors[i]).getActivityIds().contains(activity.getId()))
+				return (Strategy)factors[i];
+
+		return null;
+	}
+
 
 	WorkPlanView view;
 }
