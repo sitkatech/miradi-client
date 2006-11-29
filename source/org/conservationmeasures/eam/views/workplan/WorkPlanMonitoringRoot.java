@@ -6,10 +6,11 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Arrays;
+import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
@@ -56,33 +57,18 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 
 	public void rebuild()
 	{
-		FactorSet factorsWithIndicators = new FactorSet();
+		FactorId[] factorNodeIds = project.getFactorPool().getModelNodeIds();
+		Vector workPlanMonFactors = new Vector();
 		
-		Factor[] targets = project.getFactorPool().getTargets();
-		Factor[] directThreats = project.getFactorPool().getDirectThreats();
-		Factor[] interventions = project.getFactorPool().getInterventions();
+		for (int i  =0; i < factorNodeIds.length; i++)
+		{
+			Factor factor = project.getFactorPool().find(factorNodeIds[i]);
+			if (factor.getIndicators().size() > 0)
+				workPlanMonFactors.add(new WorkPlanMonitoringFactor(project, factor));
+		}
 		
-		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(targets));
-		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(directThreats));
-		factorsWithIndicators.attemptToAddAll(getPossibleIndicators(interventions));
-		
-		allFactorsWithIndicators = new WorkPlanMonitoringFactor[factorsWithIndicators.size()];
-		Object[] nodeArray = factorsWithIndicators.toArray();
-		
-		for(int i = 0; i < allFactorsWithIndicators.length; i++)
-			allFactorsWithIndicators[i] = new WorkPlanMonitoringFactor(project, (Factor)nodeArray[i]);
-		
+		allFactorsWithIndicators = (WorkPlanMonitoringFactor[])workPlanMonFactors.toArray(new WorkPlanMonitoringFactor[0]);
 		Arrays.sort(allFactorsWithIndicators, new IgnoreCaseStringComparator());
-	}
-
-	private FactorSet getPossibleIndicators(Factor[] factors)
-	{
-		FactorSet possibleIndicators = new FactorSet(); 
-		for (int i = 0; i < factors.length; i++)
-			if (factors[i].getIndicators().size() > 0)
-				possibleIndicators.attemptToAdd(factors[i]);
-		
-		return possibleIndicators;
 	}
 	
 	public boolean canInsertActivityHere()
