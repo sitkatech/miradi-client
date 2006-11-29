@@ -5,30 +5,25 @@
  */
 package org.conservationmeasures.eam.diagram.cells;
 
-import java.awt.Color;
-
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.jgraph.graph.Edge;
-import org.jgraph.graph.GraphConstants;
 
-public class DiagramFactorLink extends EAMGraphCell implements Edge
+public class DiagramFactorLink
 {
 	public DiagramFactorLink(DiagramModel model, FactorLink linkToWrap) throws Exception
 	{
 		underlyingObject = linkToWrap;
 		from = model.getDiagramFactorByWrappedId(linkToWrap.getFromFactorId());
 		to = model.getDiagramFactorByWrappedId(linkToWrap.getToFactorId());
-		String label = "";
-		fillConnectorAttributeMap(label);
+		cell = new LinkCell(this);
 	}
 	
-	public boolean isFactorLink()
+	public LinkCell getCell()
 	{
-		return true;
+		return cell;
 	}
 	
 	public FactorLinkId getWrappedId()
@@ -51,39 +46,6 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return underlyingObject.getStressLabel();
 	}
 	
-	private void fillConnectorAttributeMap(String label)
-	{
-	    GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_SIMPLE);
-	    GraphConstants.setValue(getAttributes(), label);
-	    GraphConstants.setOpaque(getAttributes(), true);
-	    GraphConstants.setBackground(getAttributes(), Color.BLACK);
-	    GraphConstants.setForeground(getAttributes(), Color.BLACK);
-	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
-		int arrow = GraphConstants.ARROW_CLASSIC;
-		GraphConstants.setLineEnd(getAttributes(), arrow);
-		GraphConstants.setEndFill(getAttributes(), true);
-	}
-
-	public Object getSource()
-	{
-		return getFromNode().getPort();
-	}
-
-	public Object getTarget()
-	{
-		return getToNode().getPort();
-	}
-
-	public void setSource(Object source)
-	{
-		// not allowed--ignore attempts to reset the source
-	}
-
-	public void setTarget(Object target)
-	{
-		// not allowed--ignore attempts to reset the target
-	}
-
 	public DiagramFactorLinkId getDiagramLinkageId()
 	{
 		return new DiagramFactorLinkId(underlyingObject.getId().asInt());
@@ -108,6 +70,7 @@ public class DiagramFactorLink extends EAMGraphCell implements Edge
 		return dataMap;
 	}
 	
+	private LinkCell cell;
 	private FactorLink underlyingObject;
 	private DiagramFactor from;
 	private DiagramFactor to;

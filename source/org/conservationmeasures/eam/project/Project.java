@@ -21,37 +21,38 @@ import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.EAMGraphSelectionModel;
 import org.conservationmeasures.eam.diagram.PartialGraphLayoutCache;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.FutureVersionException;
 import org.conservationmeasures.eam.exceptions.OldVersionException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
-import org.conservationmeasures.eam.objectpools.GoalPool;
-import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
+import org.conservationmeasures.eam.objectpools.GoalPool;
+import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
-import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
@@ -817,7 +818,10 @@ public class Project
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
-				linkages.add(allSelectedCells[i]);
+			{
+				LinkCell cell = (LinkCell)allSelectedCells[i];
+				linkages.add(cell.getDiagramFactorLink());
+			}
 		}
 		return (DiagramFactorLink[])linkages.toArray(new DiagramFactorLink[0]);
 	}

@@ -138,10 +138,8 @@ public class TestDiagramModel extends EAMTestCase
 	{
 		DiagramFactor factor = createNode(Factor.TYPE_CAUSE);
 		DiagramFactor target = createNode(Factor.TYPE_TARGET);
-		DiagramFactorLink link = createLinkage(new FactorLinkId(BaseId.INVALID.asInt()), factor.getWrappedId(), target.getWrappedId());
 		assertTrue("factor isn't a node?", factor.isFactor());
 		assertTrue("target isn't a node?", target.isFactor());
-		assertFalse("link is a node?", link.isFactor());
 	}
 	
 	public void testCounts()throws Exception
@@ -174,8 +172,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getFactorLinks(target);
 		assertEquals("Didn't see both links?", 2, found.size());
-		assertTrue("missed first?", found.contains(linkage1));
-		assertTrue("missed second?", found.contains(linkage2));
+		assertTrue("missed first?", found.contains(linkage1.getCell()));
+		assertTrue("missed second?", found.contains(linkage2.getCell()));
 	}
 
 	private FactorLinkId takeNextLinkageId()

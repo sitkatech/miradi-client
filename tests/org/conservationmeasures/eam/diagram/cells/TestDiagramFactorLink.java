@@ -64,8 +64,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 		assertEquals("didn't remember from?", factor, linkage.getFromNode());
 		assertEquals("didn't remember to?", target, linkage.getToNode());
 
-		assertEquals("source not the port of from?", factor.getPort(), linkage.getSource());
-		assertEquals("target not the port of to?", target.getPort(), linkage.getTarget());
+		assertEquals("source not the port of from?", factor.getPort(), linkage.getCell().getSource());
+		assertEquals("target not the port of to?", target.getPort(), linkage.getCell().getTarget());
 	}
 	
 	public void testIds() throws Exception

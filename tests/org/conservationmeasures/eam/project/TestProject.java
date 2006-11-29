@@ -215,23 +215,23 @@ public class TestProject extends EAMTestCase
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		EAMGraphCell[] selectedCells = {linkage1};
+		EAMGraphCell[] selectedCells = {linkage1.getCell()};
 		Vector selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
-		assertContains(linkage1, selectedItems);
+		assertContains(linkage1.getCell(), selectedItems);
 		
 		selectedCells[0] = node2;
 		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(2, selectedItems.size());
 		assertContains(node2, selectedItems);
-		assertContains(linkage1, selectedItems);
+		assertContains(linkage1.getCell(), selectedItems);
 		
 		selectedCells[0] = node1;
 		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(3, selectedItems.size());
 		assertContains(node1, selectedItems);
-		assertContains(linkage1, selectedItems);
-		assertContains(linkage2, selectedItems);
+		assertContains(linkage1.getCell(), selectedItems);
+		assertContains(linkage2.getCell(), selectedItems);
 	}
 
 	public void testGetAllSelectedNodes() throws Exception
@@ -241,7 +241,7 @@ public class TestProject extends EAMTestCase
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
-		EAMGraphCell[] selectedCells = {linkage1};
+		EAMGraphCell[] selectedCells = {linkage1.getCell()};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedFactors(selectedCells);
 		assertEquals(0, selectedItems.length);
 		
@@ -250,7 +250,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, selectedItems.length);
 		assertEquals(node2, selectedItems[0]);
 		
-		EAMGraphCell[] selectedCellsTwo = {node2,linkage1,node1};
+		EAMGraphCell[] selectedCellsTwo = {node2,linkage1.getCell(),node1};
 		selectedItems = project.getOnlySelectedFactors(selectedCellsTwo);
 		assertEquals(2, selectedItems.length);
 	}

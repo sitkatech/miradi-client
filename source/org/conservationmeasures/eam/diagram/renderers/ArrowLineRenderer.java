@@ -17,6 +17,7 @@ import java.awt.geom.Rectangle2D;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -32,7 +33,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
-		linkage = (DiagramFactorLink)cellView.getCell();
+		LinkCell cell = (LinkCell)cellView.getCell();
+		linkage = cell.getDiagramFactorLink();
 		if(sel)
 		{
 			renderer.lineWidth = 4;
@@ -57,7 +59,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
-		DiagramFactorLink linkageToUse = (DiagramFactorLink)viewToUse.getCell();
+		LinkCell cell = (LinkCell)viewToUse.getCell();
+		DiagramFactorLink linkageToUse = cell.getDiagramFactorLink();
 		
 		String text = linkageToUse.getStressLabel();
 		if (text.length()==0)

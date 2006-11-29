@@ -155,24 +155,26 @@ public class DiagramModel extends DefaultGraphModel
 	public DiagramFactorLink createDiagramFactorLink(FactorLink factorLinkToWrap) throws Exception
 	{
 		DiagramFactorLink newLink = new DiagramFactorLink(this, factorLinkToWrap);
-		Object[] newLinks = new Object[]{newLink};
-		Map nestedMap = getNestedAttributeMap(newLink);
 		DiagramFactor from = getDiagramFactorByWrappedId(newLink.getFromFactorId());
 		DiagramFactor to = getDiagramFactorByWrappedId(newLink.getToFactorId());
-		ConnectionSet cs = new ConnectionSet(newLink, from.getPort(), to.getPort());
+		
+		EAMGraphCell[] newLinks = new EAMGraphCell[]{newLink.getCell()};
+		Map nestedMap = getNestedAttributeMap(newLink.getCell());
+		ConnectionSet cs = new ConnectionSet(newLink.getCell(), from.getPort(), to.getPort());
 		insert(newLinks, nestedMap, cs, null, null);
+
 		cellInventory.addFactorLink(newLink);
-		notifyListeners(createDiagramModelEvent(newLink), new ModelEventNotifierFactorLinkAdded());
+		notifyListeners(createDiagramModelEvent(newLink.getCell()), new ModelEventNotifierFactorLinkAdded());
 		
 		return newLink;
 	}
 	
 	public void deleteDiagramFactorLink(DiagramFactorLink diagramFactorLinkToDelete) throws Exception
 	{
-		Object[] links = new Object[]{diagramFactorLinkToDelete};
+		Object[] links = new Object[]{diagramFactorLinkToDelete.getCell()};
 		remove(links);
 		cellInventory.removeFactorLink(diagramFactorLinkToDelete);
-		notifyListeners(createDiagramModelEvent(diagramFactorLinkToDelete), new ModelEventNotifierFactorLinkDeleted());
+		notifyListeners(createDiagramModelEvent(diagramFactorLinkToDelete.getCell()), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
 	public boolean areLinked(DiagramFactor fromFactor, DiagramFactor toFactor) throws Exception

@@ -28,4 +28,8 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
+	public DiagramFactorLink getDiagramFactorLink()
+	{
+		return null;
+	}
 }

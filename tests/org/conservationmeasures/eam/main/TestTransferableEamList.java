@@ -80,7 +80,7 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorLink cmLinkage = new FactorLink(linkage1Id, node1Id, node2Id);
 		DiagramFactorLink linkage1 = new DiagramFactorLink(model, cmLinkage);
 		
-		EAMGraphCell dataCells[] = {node1, node2, linkage1};
+		EAMGraphCell dataCells[] = {node1, node2, linkage1.getCell()};
 		TransferableEamList eamList = new TransferableEamList(project.getFilename(), dataCells);
 		TransferableEamList eamTransferData = (TransferableEamList)eamList.getTransferData(TransferableEamList.eamListDataFlavor);
 		assertNotNull(eamTransferData);

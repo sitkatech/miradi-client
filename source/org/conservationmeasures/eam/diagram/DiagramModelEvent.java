@@ -8,8 +8,8 @@ package org.conservationmeasures.eam.diagram;
 
 import java.util.EventObject;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 
 
@@ -28,7 +28,7 @@ public class DiagramModelEvent extends EventObject
 	
 	public DiagramFactorLink getDiagramFactorLink()
 	{
-		return (DiagramFactorLink)cell;
+		return cell.getDiagramFactorLink();
 	}
 	
 	private EAMGraphCell cell;

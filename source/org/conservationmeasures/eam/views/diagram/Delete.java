@@ -61,7 +61,7 @@ public class Delete extends ProjectDoer
 			{
 				EAMGraphCell cell = selectedRelatedCells[i];
 				if(cell.isFactorLink())
-					deleteFactorLink((DiagramFactorLink)cell);	
+					deleteFactorLink(cell.getDiagramFactorLink());	
 			}
 			
 			for(int i=0; i < selectedRelatedCells.length; ++i)

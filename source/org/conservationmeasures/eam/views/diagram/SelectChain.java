@@ -28,26 +28,9 @@ public class SelectChain extends ViewDoer
 		if (combinedLengths != 1)
 			return false;
 	    
-		return (isFactor(selectedFactors) || isLink(selectedLinks));
+		return true;
 	}
 	
-	private boolean isFactor(DiagramFactor[] selectedFactors)
-	{
-		boolean isFactor = false;
-		if (selectedFactors.length == 1)
-			isFactor = selectedFactors[0].isFactor();
-		return isFactor;
-	}
-
-	private boolean isLink(DiagramFactorLink[] selectedLinkages)
-	{
-		boolean isLink = false;
-		if (selectedLinkages.length == 1 )
-			isLink = selectedLinkages[0].isFactorLink();
-		
-		return isLink;
-	}
-
 	public void doIt() throws CommandFailedException
 	{
 		if(!isAvailable())

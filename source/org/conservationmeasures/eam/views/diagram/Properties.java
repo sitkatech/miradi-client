@@ -38,7 +38,7 @@ public class Properties extends LocationDoer
 			return true;
 		if(selected[0].isFactorLink())
 		{
-			DiagramFactorLink linkage = (DiagramFactorLink)selected[0];
+			DiagramFactorLink linkage = selected[0].getDiagramFactorLink();
 			if(linkage.getToNode().isTarget())
 				return true;
 		}
@@ -56,7 +56,7 @@ public class Properties extends LocationDoer
 		else if(selected.isProjectScope())
 			doProjectScopeProperties((ProjectScopeBox)selected);
 		else if(selected.isFactorLink())
-			doFactorLinkProperties((DiagramFactorLink)selected);
+			doFactorLinkProperties(selected.getDiagramFactorLink());
 	}
 	
 	void doProjectScopeProperties(ProjectScopeBox scope) throws CommandFailedException

@@ -5,8 +5,8 @@
  */
 package org.conservationmeasures.eam.diagram.cellviews;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorCluster;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;
@@ -53,7 +53,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		throw new RuntimeException("Unknown node type");
 	}
 
-	protected EdgeView createEdgeView(EAMGraphCell edge)
+	protected EdgeView createEdgeView(Object edge)
 	{
 		return new FactorLinkView(edge);
 	}
