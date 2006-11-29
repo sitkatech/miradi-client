@@ -34,7 +34,7 @@ public class DeleteActivity extends ObjectsDoer
 		if (!(getObjects()[0].getType() == ObjectType.TASK))
 			return false;
 			
-		//FIXME this must be false, fix for deleting tasks and subtasks
+		//FIXME this must be true, fix for deleting tasks and subtasks
 		return false;
 	}
 
