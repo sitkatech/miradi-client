@@ -76,6 +76,11 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 	{
 		return false;
 	}
+	
+	public boolean canInsertTaskHere()
+	{
+		return false;
+	}
 
 	public BaseId getId()
 	{

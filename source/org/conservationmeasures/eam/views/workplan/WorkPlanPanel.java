@@ -115,6 +115,9 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		if(selected.getType() != ObjectType.TASK)
 			return null;
 
+		if (! (selected instanceof WorkPlanStrategyActivity))
+			return null;
+		
 		return ((WorkPlanStrategyActivity)selected).getActivity();
 	}
 

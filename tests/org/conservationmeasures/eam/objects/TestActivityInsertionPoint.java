@@ -28,7 +28,7 @@ public class TestActivityInsertionPoint extends EAMTestCase
 		TreePath path = new TreePath(new Object[] {root, parent});
 		int index = 9;
 		ActivityInsertionPoint aip = new ActivityInsertionPoint(path, index);
-		assertEquals("wrong id?", parentTask.getId(), aip.getInterventionId());
+		assertEquals("wrong id?", parentTask.getId(), aip.getProposedParentORef().getObjectId());
 		assertEquals("wrong index?", index, aip.getIndex());
 	}
 }

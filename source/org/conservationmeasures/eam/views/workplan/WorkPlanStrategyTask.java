@@ -9,32 +9,28 @@ import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
+public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
 {
-	public WorkPlanStrategyActivity(Project projectToUse, Task activityToUse)
+	public WorkPlanStrategyTask(Project projectToUse, Task taskToUse)
 	{
 		project = projectToUse;
-		
-		if(activityToUse == null)
-			EAM.logError("Attempted to create tree node for null activity");
-		activity = activityToUse;
+		currentTask = taskToUse;
 		rebuild();
 	}
 	
-	public Object getValueAt(int column)
+	public BaseId getId()
 	{
-		if(column == 0)
-			return toString();
-		if(column == 1)
-			return getResourcesAsHtml();
-		return "";
+		return getObjectReference().getObjectId();
+	}
+
+	public TreeTableNode getChild(int index)
+	{
+		return tasks[index];
 	}
 
 	public int getChildCount()
@@ -42,66 +38,50 @@ public class WorkPlanStrategyActivity extends WorkPlanTreeTableNode
 		return tasks.length;
 	}
 
-	public TreeTableNode getChild(int index)
-	{
-		return tasks[index];
-	}
-	
-	public String toString()
-	{
-		return activity.toString();
-	}
-	
-	public Task getActivity()
-	{
-		return activity;
-	}
-
 	public ORef getObjectReference()
 	{
-		return activity.getObjectReference();
-	}
-	
-	public int getType()
-	{
-		return activity.getType();
-	}
-	
-	public BaseId getId()
-	{
-		return activity.getId();
-	}
-	
-	String getResourcesAsHtml()
-	{
-		return EAMBaseObject.toHtml(project.getTaskResources(activity));
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return true;
-	}
-	
-	public boolean canInsertTaskHere()
-	{
-		return false;
+		return currentTask.getObjectReference();
 	}
 
+	public int getType()
+	{
+		return getObjectReference().getObjectType();
+	}
+
+	public Object getValueAt(int index)
+	{
+		return toString();
+	}
+
+	public String toString()
+	{
+		return currentTask.getLabel();
+	}
+	
 	public void rebuild()
 	{
-		IdList taskIdList = activity.getSubtaskIdList();
+		IdList taskIdList = currentTask.getSubtaskIdList();
 		Vector possibleTasks = new Vector();
 		for (int i = 0; i < taskIdList.size(); i++)
 		{
 			Task task = project.getTaskPool().find(taskIdList.get(i));
 			possibleTasks.add(new WorkPlanStrategyTask(project, task));
 		}
-		
 		//TODO sort nodes in tree
 		tasks = (WorkPlanStrategyTask[])possibleTasks.toArray(new WorkPlanStrategyTask[0]);
 	}
-
+	
+	public boolean canInsertActivityHere()
+	{
+		return false;
+	}
+	
+	public boolean canInsertTaskHere()
+	{
+		return true;
+	}
+	
 	Project project;
-	Task activity;
+	Task currentTask;
 	WorkPlanStrategyTask[] tasks;
 }

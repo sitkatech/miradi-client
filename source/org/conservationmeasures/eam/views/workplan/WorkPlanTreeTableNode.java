@@ -12,5 +12,6 @@ abstract public class WorkPlanTreeTableNode extends TreeTableNode
 {
 	abstract public BaseId getId();
 	abstract public boolean canInsertActivityHere();
+	abstract public boolean canInsertTaskHere();
 	abstract public void rebuild();
 }

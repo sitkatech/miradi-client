@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTableNode;
 
 public class ActivityInsertionPoint
@@ -28,9 +27,9 @@ public class ActivityInsertionPoint
 		return (WorkPlanTreeTableNode)path.getLastPathComponent();
 	}
 	
-	public FactorId getInterventionId()
+	public ORef getProposedParentORef()
 	{
-		return new FactorId(getParent().getId().asInt());
+		return getParent().getObjectReference();
 	}
 	
 	public int getIndex()

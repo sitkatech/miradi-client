@@ -70,6 +70,11 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 	{
 		return true;
 	}
+	
+	public boolean canInsertTaskHere()
+	{
+		return false;
+	}
 
 	public void rebuild()
 	{
