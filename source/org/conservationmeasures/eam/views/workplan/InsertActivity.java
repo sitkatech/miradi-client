@@ -42,12 +42,11 @@ public class InsertActivity extends WorkPlanDoer
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
 		ORef proposedParentORef = insertAt.getProposedParentORef();
 		int childIndex = insertAt.getIndex();
-		EAMObject foundObject = getProject().getPool(proposedParentORef.getObjectType()).findObject(proposedParentORef.getObjectId());
-		
+		EAMObject foundObject = getProject().findObject(proposedParentORef.getObjectType(), proposedParentORef.getObjectId()); 
+
 		try
 		{
-			CommandSetObjectData commandSetObjectData = createSetObjectDataCommand(getProject(), foundObject, childIndex);
-			insertActivity(getProject(), commandSetObjectData);
+			insertActivity(getProject(), foundObject, childIndex);
 		}
 		catch (Exception e)
 		{
@@ -56,30 +55,26 @@ public class InsertActivity extends WorkPlanDoer
 		}
 	}
 
-	
-	public static CommandSetObjectData createSetObjectDataCommand(Project project, EAMObject object, int childIndex) throws Exception
-	{
-		CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
-		project.executeCommand(create);
-		BaseId createdId = create.getCreatedId();
-
-		if (object.getType() == ObjectType.MODEL_NODE)
-			return CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
-
-		return CommandSetObjectData.createInsertIdCommand(object, Task.TAG_SUBTASK_IDS, createdId, childIndex);
-	}
-
-	public static void insertActivity(Project project, CommandSetObjectData addChildCommand) throws CommandFailedException, ParseException, Exception
+	public static void insertActivity(Project project, EAMObject object, int childIndex) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
+			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+			project.executeCommand(create);
+			BaseId createdId = create.getCreatedId();
+
+			CommandSetObjectData addChildCommand;
+			if (object.getType() == ObjectType.MODEL_NODE)
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
+			else
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Task.TAG_SUBTASK_IDS, createdId, childIndex);
+			
 			project.executeCommand(addChildCommand);
 		}
 		finally
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-		
 	}
 }

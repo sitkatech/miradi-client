@@ -39,8 +39,7 @@ public class TestDeleteActivity extends EAMTestCase
 			BaseId resourceId = project.createObject(ObjectType.PROJECT_RESOURCE);
 	//		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
 			
-			CommandSetObjectData addChildCommand = InsertActivity.createSetObjectDataCommand(project, intervention, 0);
-			InsertActivity.insertActivity(project, addChildCommand);
+			InsertActivity.insertActivity(project, intervention, 0);
 			BaseId activityId = intervention.getActivityIds().get(0);
 			Task activity = (Task)project.findObject(ObjectType.TASK, activityId);
 			CommandSetObjectData addResource = CommandSetObjectData.createAppendIdCommand(activity, Task.TAG_RESOURCE_IDS, resourceId);
