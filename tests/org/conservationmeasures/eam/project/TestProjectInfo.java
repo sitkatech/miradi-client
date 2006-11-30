@@ -61,8 +61,8 @@ public class TestProjectInfo extends TestCaseEnhanced
 		
 		info.clear();
 		assertEquals("Didn't clear currentView", SummaryView.getViewName(), info.getCurrentView());
-		assertEquals("didn't clear id?", new BaseId(0), info.getFactorAndLinkIdAssigner().takeNextId());
-		assertEquals("didn't clear annotation id?", new BaseId(0), info.getNormalIdAssigner().takeNextId());
+		assertEquals("didn't clear id?", -1, info.getFactorAndLinkIdAssigner().getHighestAssignedId());
+		assertEquals("didn't clear annotation id?", -1, info.getNormalIdAssigner().getHighestAssignedId());
 		assertTrue("didn't clear metadata id?", info.getMetadataId().isInvalid());
 	}
 
