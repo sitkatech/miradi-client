@@ -95,7 +95,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(node2Location, nodesData[1].getPoint(DiagramFactor.TAG_LOCATION));
 
 		assertEquals(1, linkagesData.length);
-		assertEquals(linkage1Id, linkagesData[0].getId());
+		assertEquals(linkage1.getId(), linkagesData[0].getId());
 		assertEquals(node1.getDiagramFactorId(), linkagesData[0].getFromId());
 		assertEquals(node2.getDiagramFactorId(), linkagesData[0].getToId());
 		

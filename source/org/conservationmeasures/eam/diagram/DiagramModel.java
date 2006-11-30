@@ -159,7 +159,9 @@ public class DiagramModel extends DefaultGraphModel
 		FactorLinkId factorLinkId = (FactorLinkId)factorLinkToWrap.getId();
 		DiagramFactor from = getDiagramFactorByWrappedId(factorLinkToWrap.getFromFactorId());
 		DiagramFactor to = getDiagramFactorByWrappedId(factorLinkToWrap.getToFactorId());
-		DiagramFactorLink newLink = new DiagramFactorLink(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		
+		DiagramFactorLinkId newDiagramLinkId = new DiagramFactorLinkId(factorLinkId.asInt());
+		DiagramFactorLink newLink = new DiagramFactorLink(newDiagramLinkId, factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
 		LinkCell cell = new LinkCell(factorLinkToWrap, newLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};

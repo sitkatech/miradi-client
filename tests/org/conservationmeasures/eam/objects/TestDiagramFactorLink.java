@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
@@ -71,8 +72,9 @@ public class TestDiagramFactorLink extends EAMTestCase
 	{
 		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
-		FactorLinkId id = new FactorLinkId(5);
-		DiagramFactorLink linkage = new DiagramFactorLink(id, factor.getDiagramFactorId(), target.getDiagramFactorId());
+		FactorLinkId linkId = new FactorLinkId(5);
+		DiagramFactorLinkId id = new DiagramFactorLinkId(17); 
+		DiagramFactorLink linkage = new DiagramFactorLink(id, linkId, factor.getDiagramFactorId(), target.getDiagramFactorId());
 		assertEquals(id, linkage.getDiagramLinkageId());
 	}
 	
@@ -89,7 +91,8 @@ public class TestDiagramFactorLink extends EAMTestCase
 		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
 		
 		ProjectServer server = project.getTestDatabase();
-		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, command.getDiagramFactorLinkId());
+		DiagramFactorLink dfl = project.getDiagramModel().getDiagramFactorLinkById(command.getDiagramFactorLinkId());
+		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
 	}

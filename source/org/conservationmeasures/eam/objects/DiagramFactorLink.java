@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class DiagramFactorLink extends EAMBaseObject
 {
-	public DiagramFactorLink(FactorLinkId factorLinkId, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse) throws Exception
+	public DiagramFactorLink(DiagramFactorLinkId idToUse, FactorLinkId factorLinkId, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse) throws Exception
 	{
-		super(new DiagramFactorLinkId(factorLinkId.asInt()));
+		super(idToUse);
 		clear();
 		
 		underlyingObjectId.set(factorLinkId.toString());
