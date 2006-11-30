@@ -12,16 +12,17 @@ import java.util.Vector;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 
-public class FactorPool extends EAMObjectPool
+public class FactorPool extends PoolWithIdAssigner
 {
-	public FactorPool()
+	public FactorPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.MODEL_NODE);
+		super(ObjectType.MODEL_NODE, idAssignerToUse);
 	}
 	
 	public void put(Factor node)

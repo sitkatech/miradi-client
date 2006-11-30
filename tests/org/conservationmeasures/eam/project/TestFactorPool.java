@@ -27,7 +27,7 @@ public class TestFactorPool extends TestCaseEnhanced
 	{
 		super.setUp();
 		idAssigner = new IdAssigner();
-		pool = new FactorPool();
+		pool = new FactorPool(idAssigner);
 
 		for(int i = 0; i < 2; ++i)
 		{

@@ -6,17 +6,18 @@
 package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.project.FactorLinkListener;
 
-public class FactorLinkPool extends EAMObjectPool
+public class FactorLinkPool extends PoolWithIdAssigner
 {
-	public FactorLinkPool(FactorLinkListener listenerToNotify)
+	public FactorLinkPool(IdAssigner idAssignerToUse, FactorLinkListener listenerToNotify)
 	{
-		super(ObjectType.MODEL_LINKAGE);
+		super(ObjectType.MODEL_LINKAGE, idAssignerToUse);
 		listener = listenerToNotify;
 	}
 	

@@ -53,10 +53,12 @@ public class ObjectManager
 	{
 		project = projectToUse;
 
-		IdAssigner ida = getAnnotationIdAssigner();
 		pools = new HashMap();
-		pools.put(new Integer(ObjectType.MODEL_NODE), new FactorPool());
-		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(new FactorLinkMonitor()));
+		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
+		pools.put(new Integer(ObjectType.MODEL_NODE), new FactorPool(factorAndLinkIdAssigner));
+		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(factorAndLinkIdAssigner, new FactorLinkMonitor()));
+
+		IdAssigner ida = getAnnotationIdAssigner();
 		addNormalPool(new RatingCriterionPool(ida));
 		addNormalPool(new ValueOptionPool(ida));
 		addNormalPool(new TaskPool(ida));

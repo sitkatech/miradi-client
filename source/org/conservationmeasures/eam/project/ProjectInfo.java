@@ -19,14 +19,12 @@ public class ProjectInfo
 {
 	public ProjectInfo()
 	{
-		factorAndLinkIdAssigner = new IdAssigner(); 
 		normalObjectIdAssigner = new IdAssigner();
 		clear();
 	}
 	
 	public void clear()
 	{
-		factorAndLinkIdAssigner.clear(); 
 		normalObjectIdAssigner.clear();
 		currentView = getDefaultCurrentView();
 		metadataId = BaseId.INVALID;
@@ -49,17 +47,17 @@ public class ProjectInfo
 	
 	public IdAssigner getFactorAndLinkIdAssigner()
 	{
-		return factorAndLinkIdAssigner;
+		return getNormalIdAssigner();
 	}
 	
 	public FactorId obtainRealFactorId(BaseId proposedId)
 	{
-		return new FactorId(factorAndLinkIdAssigner.obtainRealId(proposedId).asInt());
+		return new FactorId(normalObjectIdAssigner.obtainRealId(proposedId).asInt());
 	}
 	
 	public FactorLinkId obtainRealLinkId(BaseId proposedId)
 	{
-		return new FactorLinkId(factorAndLinkIdAssigner.obtainRealId(proposedId).asInt());
+		return new FactorLinkId(normalObjectIdAssigner.obtainRealId(proposedId).asInt());
 	}
 
 	public IdAssigner getNormalIdAssigner()
@@ -81,7 +79,7 @@ public class ProjectInfo
 	{
 		JSONObject json = new JSONObject();
 		json.put(TAG_CURRENT_VIEW, currentView);
-		json.put(TAG_HIGHEST_FACTOR_OR_LINK_ID, factorAndLinkIdAssigner.getHighestAssignedId());
+		json.put(TAG_HIGHEST_FACTOR_OR_LINK_ID, normalObjectIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_NORMAL_ID, normalObjectIdAssigner.getHighestAssignedId());
 		json.put(TAG_PROJECT_METADATA_ID, metadataId.asInt());
 		return json;
@@ -91,7 +89,7 @@ public class ProjectInfo
 	{
 		clear();
 		currentView = copyFrom.optString(TAG_CURRENT_VIEW, getDefaultCurrentView());
-		factorAndLinkIdAssigner.idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_FACTOR_OR_LINK_ID, IdAssigner.INVALID_ID)));
+		normalObjectIdAssigner.idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_FACTOR_OR_LINK_ID, IdAssigner.INVALID_ID)));
 		normalObjectIdAssigner.idTaken(new BaseId(copyFrom.optInt(TAG_HIGHEST_NORMAL_ID, IdAssigner.INVALID_ID)));
 		metadataId = new BaseId(copyFrom.optInt(TAG_PROJECT_METADATA_ID, -1));
 	}
@@ -101,7 +99,6 @@ public class ProjectInfo
 	static String TAG_HIGHEST_NORMAL_ID = "HighestUsedAnnotationId";
 	static String TAG_PROJECT_METADATA_ID = "ProjectMetadataId";
 	
-	IdAssigner factorAndLinkIdAssigner;
 	IdAssigner normalObjectIdAssigner;
 	String currentView;
 	BaseId metadataId;
