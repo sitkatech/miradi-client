@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.cells;
 
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -12,11 +13,11 @@ import org.conservationmeasures.eam.objects.FactorLink;
 
 public class DiagramFactorLink
 {
-	public DiagramFactorLink(FactorLink linkToWrap, DiagramFactor fromToUse, DiagramFactor toToUse)
+	public DiagramFactorLink(FactorLink linkToWrap, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
 	{
 		underlyingObject = linkToWrap;
-		from = fromToUse;
-		to = toToUse;
+		fromId = fromIdToUse;
+		toId = toIdToUse;
 	}
 	
 	public FactorLinkId getWrappedId()
@@ -48,12 +49,12 @@ public class DiagramFactorLink
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
 		dataMap.setId(getDiagramLinkageId());
-		dataMap.setFromId(from.getDiagramFactorId());
-		dataMap.setToId(to.getDiagramFactorId());
+		dataMap.setFromId(fromId);
+		dataMap.setToId(toId);
 		return dataMap;
 	}
 	
 	private FactorLink underlyingObject;
-	private DiagramFactor from;
-	private DiagramFactor to;
+	private DiagramFactorId fromId;
+	private DiagramFactorId toId;
 }

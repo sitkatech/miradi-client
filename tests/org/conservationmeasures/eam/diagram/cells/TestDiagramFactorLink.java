@@ -75,7 +75,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage = new DiagramFactorLink(cmLinkage, factor, target);
+		DiagramFactorLink linkage = new DiagramFactorLink(cmLinkage, factor.getDiagramFactorId(), target.getDiagramFactorId());
 		assertEquals(id, linkage.getDiagramLinkageId());
 	}
 	
