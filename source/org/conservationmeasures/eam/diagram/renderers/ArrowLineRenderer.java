@@ -16,8 +16,8 @@ import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramConstants;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.LinkCell;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
@@ -41,6 +41,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 		DiagramComponent diagram = (DiagramComponent)graphToUse;
 		isVisible = diagram.areLinkagesVisible();
+		stressText = cell.getFactorLink().getStressLabel();
 
 		return renderer;
 	}
@@ -63,31 +64,31 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
+
 		LinkCell thisCell = (LinkCell)viewToUse.getCell();
-		DiagramFactorLink linkageToUse = thisCell.getDiagramFactorLink();
-		
-		String text = linkageToUse.getStressLabel();
-		if (text.length()==0)
+		FactorLink factorLink = thisCell.getFactorLink();
+		String text = factorLink.getStressLabel();
+		if (text == null || text.length()==0)
 			return graphBounds;
 		
-		Rectangle2D union = calculateNewBoundsForStress(graphBounds, linkageToUse);
+		Rectangle2D union = calculateNewBoundsForStress(graphBounds, text);
 		return union;
 	}
 
 	
-	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, DiagramFactorLink linkageToUse)
+	private Rectangle2D calculateNewBoundsForStress(Rectangle2D graphBounds, String text)
 	{
-		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, linkageToUse);
+		Rectangle textBounds = calcalateCenteredAndCushioned(graphBounds, text);
 		Rectangle2D union = graphBounds.createUnion(textBounds);
 		return union;
 	}
 
 	
-	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, DiagramFactorLink linkageToUse)
+	private Rectangle calcalateCenteredAndCushioned(Rectangle2D graphBounds, String text)
 	{
 		Graphics2D g2 = (Graphics2D)fontGraphics;
 		
-		TextLayout textLayout = new TextLayout(linkageToUse.getStressLabel(), g2.getFont(), g2.getFontRenderContext());
+		TextLayout textLayout = new TextLayout(text, g2.getFont(), g2.getFontRenderContext());
 		Rectangle textBounds = textLayout.getBounds().getBounds();
 		
 		textBounds.width = textBounds.width + 2*CUSHION;
@@ -106,12 +107,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 		if(!getLinkCell().getTo().isTarget())
 			return;
 		
-		String text = cell.getDiagramFactorLink().getStressLabel();
-		if(text == null || text.length() < 1)
+		if(stressText == null || stressText.length() < 1)
 			return;
 		
 		Graphics2D g2 = (Graphics2D)g;
-		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), cell.getDiagramFactorLink());
+		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), stressText);
 
 		int arc = 5;
 
@@ -119,11 +119,12 @@ public class ArrowLineRenderer extends EdgeRenderer
 		g2.fillRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
 		g2.setColor(Color.BLACK);
 		g2.drawRoundRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height, arc, arc);
-		g2.drawString(text, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
+		g2.drawString(stressText, rectangle.x+CUSHION, rectangle.y + rectangle.height-CUSHION);
 	}
 	
 	private static final int CUSHION = 5;
 	
 	LinkCell cell;
 	boolean isVisible;
+	String stressText;
 }

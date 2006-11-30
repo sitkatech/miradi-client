@@ -7,14 +7,15 @@ package org.conservationmeasures.eam.views.diagram;
 
 import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class SelectChain extends ViewDoer
@@ -67,13 +68,14 @@ public class SelectChain extends ViewDoer
 		DiagramFactorLink[] onlySelectedLinkages = getProject().getOnlySelectedLinks();
 		DiagramFactorLink selectedLinkage = onlySelectedLinkages[0];
 		DiagramModel diagramModel = getProject().getDiagramModel();
+		LinkCell cell = diagramModel.findLinkCell(selectedLinkage);
 		
 		ChainObject upstreamChain = new ChainObject();
-		Factor from = getProject().findNode(selectedLinkage.getFromFactorId());
+		Factor from = getProject().findNode(cell.getFrom().getWrappedId());
 		upstreamChain.buildUpstreamChain(diagramModel, from);
 		
 		ChainObject downstreamChain = new ChainObject();
-		Factor to = getProject().findNode(selectedLinkage.getToFactorId());
+		Factor to = getProject().findNode(cell.getTo().getWrappedId());
 		downstreamChain.buildDownstreamChain(diagramModel, to);
 		
 		FactorLink[] downstreamLinks = downstreamChain.getFactorLinksArray();

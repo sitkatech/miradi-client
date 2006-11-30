@@ -7,13 +7,18 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
 public class LinkCell extends EAMGraphCell implements Edge
 {
-	public LinkCell(DiagramFactorLink linkToUse, DiagramFactor fromToUse, DiagramFactor toToUse)
+	public LinkCell(DiagramModel modelToUse, DiagramFactorLink linkToUse, DiagramFactor fromToUse, DiagramFactor toToUse)
 	{
+		model = modelToUse;
 		link = linkToUse;
 		from = fromToUse;
 		to = toToUse;
@@ -38,6 +43,12 @@ public class LinkCell extends EAMGraphCell implements Edge
 	public DiagramFactor getTo()
 	{
 		return to;
+	}
+	
+	public FactorLink getFactorLink()
+	{
+		FactorLinkId factorLinkId = getDiagramFactorLink().getWrappedId();
+		return (FactorLink)model.getProject().findObject(ObjectType.MODEL_LINKAGE, factorLinkId);
 	}
 
 	// BEGIN Edge Interface
@@ -76,7 +87,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	}
 
 
-
+	DiagramModel model;
 	DiagramFactorLink link;
 	DiagramFactor from;
 	DiagramFactor to;

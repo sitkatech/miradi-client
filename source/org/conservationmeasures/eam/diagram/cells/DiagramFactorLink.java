@@ -7,42 +7,26 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.objects.FactorLink;
 
 public class DiagramFactorLink
 {
-	public DiagramFactorLink(FactorLink linkToWrap, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
+	public DiagramFactorLink(FactorLinkId factorLinkId, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse)
 	{
-		underlyingObject = linkToWrap;
+		id = new DiagramFactorLinkId(factorLinkId.asInt());
+		underlyingObjectId = factorLinkId;
 		fromId = fromIdToUse;
 		toId = toIdToUse;
 	}
 	
-	public FactorLinkId getWrappedId()
-	{
-		return (FactorLinkId)underlyingObject.getId();
-	}
-	
-	public String getStressLabel()
-	{
-		return underlyingObject.getStressLabel();
-	}
-	
 	public DiagramFactorLinkId getDiagramLinkageId()
 	{
-		return new DiagramFactorLinkId(underlyingObject.getId().asInt());
+		return id; 
 	}
 	
-	public FactorId getFromFactorId()
+	public FactorLinkId getWrappedId()
 	{
-		return underlyingObject.getFromFactorId();
-	}
-	
-	public FactorId getToFactorId()
-	{
-		return underlyingObject.getToFactorId();
+		return underlyingObjectId;
 	}
 	
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
@@ -53,8 +37,9 @@ public class DiagramFactorLink
 		dataMap.setToId(toId);
 		return dataMap;
 	}
-	
-	private FactorLink underlyingObject;
+
+	private DiagramFactorLinkId id;
+	private FactorLinkId underlyingObjectId;
 	private DiagramFactorId fromId;
 	private DiagramFactorId toId;
 }

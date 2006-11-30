@@ -155,10 +155,11 @@ public class DiagramModel extends DefaultGraphModel
 	
 	public DiagramFactorLink createDiagramFactorLink(FactorLink factorLinkToWrap) throws Exception
 	{
+		FactorLinkId factorLinkId = (FactorLinkId)factorLinkToWrap.getId();
 		DiagramFactor from = getDiagramFactorByWrappedId(factorLinkToWrap.getFromFactorId());
 		DiagramFactor to = getDiagramFactorByWrappedId(factorLinkToWrap.getToFactorId());
-		DiagramFactorLink newLink = new DiagramFactorLink(factorLinkToWrap, from.getDiagramFactorId(), to.getDiagramFactorId());
-		LinkCell cell = new LinkCell(newLink, from, to);
+		DiagramFactorLink newLink = new DiagramFactorLink(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		LinkCell cell = new LinkCell(this, newLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};
 		Map nestedMap = getNestedAttributeMap(cell);
@@ -189,8 +190,9 @@ public class DiagramModel extends DefaultGraphModel
 		for(int i = 0; i < links.size(); ++i)
 		{
 			DiagramFactorLink thisLink = (DiagramFactorLink)links.get(i);
-			FactorId foundId1 = thisLink.getFromFactorId();
-			FactorId foundId2 = thisLink.getToFactorId();
+			LinkCell link = findLinkCell(thisLink);
+			FactorId foundId1 = link.getFrom().getWrappedId();
+			FactorId foundId2 = link.getTo().getWrappedId();
 			if(foundId1.equals(id1) && foundId2.equals(id2))
 				return true;
 			if(foundId1.equals(id2) && foundId2.equals(id1))
