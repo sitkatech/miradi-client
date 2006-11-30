@@ -8,6 +8,9 @@ package org.conservationmeasures.eam.commands;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 
 public class TestCommandSetObjectData extends EAMTestCase
@@ -19,7 +22,9 @@ public class TestCommandSetObjectData extends EAMTestCase
 
 	public void testListInsert() throws Exception
 	{
-		Task task = new Task(new BaseId(39));
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
+		Task task = new Task(new BaseId(39), extraInfo);
 		BaseId id1 = new BaseId(75);
 		CommandSetObjectData fromEmpty = CommandSetObjectData.createInsertIdCommand(task, Task.TAG_SUBTASK_IDS, id1, 0);
 		assertEquals("wrong type?", task.getType(), fromEmpty.getObjectType());
@@ -38,9 +43,11 @@ public class TestCommandSetObjectData extends EAMTestCase
 	
 	public void testListRemove() throws Exception
 	{
-		BaseId id2 = new BaseId(99);
-		Task task = new Task(new BaseId(47));
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
+		Task task = new Task(new BaseId(47), extraInfo);
 		task.addSubtaskId(new BaseId(12));
+		BaseId id2 = new BaseId(99);
 		task.addSubtaskId(id2);
 		task.addSubtaskId(new BaseId(747));
 		CommandSetObjectData removeMiddle = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_SUBTASK_IDS, id2);

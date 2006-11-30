@@ -53,7 +53,7 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return intervention.getObjectReference();
+		return intervention.getRef();
 	}
 
 	public int getType()

@@ -54,7 +54,7 @@ public class StratPlanActivity extends TreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return activity.getObjectReference();
+		return activity.getRef();
 	}
 
 	public int getType()

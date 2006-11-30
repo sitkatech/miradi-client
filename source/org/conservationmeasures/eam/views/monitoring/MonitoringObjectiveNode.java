@@ -70,7 +70,7 @@ public class MonitoringObjectiveNode extends MonitoringNode
 
 	public ORef getObjectReference()
 	{
-		return objective.getObjectReference();
+		return objective.getRef();
 	}
 	
 	public int getType()

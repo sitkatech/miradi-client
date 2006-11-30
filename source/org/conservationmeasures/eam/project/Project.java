@@ -270,6 +270,11 @@ public class Project
 		return createObject(objectType, objectId, null);
 	}
 	
+	public BaseId createObject(int objectType, CreateObjectParameter extraInfo) throws Exception
+	{
+		return createObject(objectType, BaseId.INVALID, extraInfo);
+	}
+	
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = objectManager.createObject(objectType, objectId, extraInfo);

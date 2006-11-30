@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -60,7 +61,7 @@ public class InsertActivity extends WorkPlanDoer
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK);
+			CommandCreateObject create = new CommandCreateObject(ObjectType.TASK, new CreateTaskParameter(object.getRef()));
 			project.executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 

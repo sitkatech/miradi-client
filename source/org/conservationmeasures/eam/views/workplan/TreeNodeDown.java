@@ -19,7 +19,7 @@ public class TreeNodeDown extends WorkPlanDoer
 		Task selected = getSelectedTask();
 		if(selected == null)
 			return false;
-		//FIXME make it work
+		//FIXME make it work, move node down
 		//Strategy parent = getPanel().getParentIntervention(selected);
 		//IdList siblings = parent.getActivityIds();
 		//if(siblings.find(selected.getId())== siblings.size() - 1)

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objectpools;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -28,7 +29,7 @@ public class ResourcePool extends EAMNormalObjectPool
 		return (ProjectResource)getRawObject(id);
 	}
 
-	EAMObject createRawObject(BaseId actualId)
+	EAMObject createRawObject(BaseId actualId, CreateObjectParameter extraInfo)
 	{
 		return new ProjectResource(actualId);
 	}

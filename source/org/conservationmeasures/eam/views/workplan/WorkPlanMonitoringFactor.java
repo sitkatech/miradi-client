@@ -59,7 +59,7 @@ public class WorkPlanMonitoringFactor extends WorkPlanTreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return factor.getObjectReference();
+		return factor.getRef();
 	}
 
 	public int getType()

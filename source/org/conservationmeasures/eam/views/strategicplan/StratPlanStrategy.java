@@ -48,7 +48,7 @@ public class StratPlanStrategy extends TreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return intervention.getObjectReference();
+		return intervention.getRef();
 	}
 
 	public int getType()

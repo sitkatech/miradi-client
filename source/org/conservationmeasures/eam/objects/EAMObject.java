@@ -20,6 +20,6 @@ public interface EAMObject
 	public String getData(String fieldTag);
 	public CreateObjectParameter getCreationExtraInfo();
 	public EnhancedJsonObject toJson();
-	public ORef getObjectReference();
+	public ORef getRef();
 	public CommandSetObjectData[] createCommandsToClear();
 }

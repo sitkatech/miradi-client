@@ -27,7 +27,7 @@ abstract public class EAMBaseObject implements EAMObject
 		clear();
 	}
 	
-	public ORef getObjectReference()
+	public ORef getRef()
 	{
 		return new ORef(getType(), getId());
 	}

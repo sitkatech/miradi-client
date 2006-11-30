@@ -10,6 +10,9 @@ import javax.swing.tree.TreePath;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyTask;
 
 public class TestActivityInsertionPoint extends EAMTestCase
@@ -19,10 +22,12 @@ public class TestActivityInsertionPoint extends EAMTestCase
 		super(name);
 	}
 
-	public void testValidInsertionPoint()
+	public void testValidInsertionPoint() throws Exception 
 	{
-		Task rootTask = new Task(new BaseId(23));
-		Task parentTask = new Task(new BaseId(58));
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
+		Task rootTask = new Task(new BaseId(23), extraInfo);
+		Task parentTask = new Task(new BaseId(58), extraInfo);
 		WorkPlanStrategyTask root = new WorkPlanStrategyTask(null, rootTask);
 		WorkPlanStrategyTask parent = new WorkPlanStrategyTask(null, parentTask);
 		TreePath path = new TreePath(new Object[] {root, parent});

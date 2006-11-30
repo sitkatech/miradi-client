@@ -61,7 +61,7 @@ public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return task.getObjectReference();
+		return task.getRef();
 	}
 	
 	public int getType()

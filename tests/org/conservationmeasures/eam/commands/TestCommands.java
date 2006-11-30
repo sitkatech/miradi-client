@@ -31,6 +31,8 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
@@ -540,7 +542,7 @@ public class TestCommands extends EAMTestCase
 	{
 		UndoListener undoListener = new UndoListener();
 		project.addCommandExecutedListener(undoListener);
-		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK);
+		CommandCreateObject cmd = new CommandCreateObject(ObjectType.TASK, getTaskExtraInfo());
 		project.executeCommand(cmd);
 		project.undo();
 		assertEquals("didn't undo one command?", 1, undoListener.undoneCommands.size());
@@ -572,6 +574,13 @@ public class TestCommands extends EAMTestCase
 		CommandDiagramAddFactor add = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);
 		project.executeCommand(add);
 		return add.getInsertedId();
+	}
+	
+	private CreateTaskParameter getTaskExtraInfo()
+	{
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
+		return extraInfo;
 	}
 	
 	ProjectForTesting project;

@@ -17,6 +17,8 @@ import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.Cause;
@@ -56,9 +58,11 @@ public class TestProjectServer extends EAMTestCase
 	public void testObjectManifest() throws Exception
 	{
 		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
-			Task task = new Task(idsToWrite[i]);
+			Task task = new Task(idsToWrite[i], extraInfo);
 			storage.writeObject(task);
 		}
 		RatingCriterion criterion = new RatingCriterion(new BaseId(99));

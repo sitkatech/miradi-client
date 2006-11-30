@@ -52,7 +52,7 @@ public class StratPlanGoal extends TreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return goal.getObjectReference();
+		return goal.getRef();
 	}
 
 	public BaseId getId()

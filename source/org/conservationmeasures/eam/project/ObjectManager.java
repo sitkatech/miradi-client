@@ -155,7 +155,7 @@ public class ObjectManager
 			default:
 			{
 				EAMNormalObjectPool pool = (EAMNormalObjectPool)getPool(objectType);
-				EAMObject created = pool.createObject(objectId);
+				EAMObject created = pool.createObject(objectId, extraInfo);
 				getDatabase().writeObject(created);
 				createdId = created.getId();
 				break;

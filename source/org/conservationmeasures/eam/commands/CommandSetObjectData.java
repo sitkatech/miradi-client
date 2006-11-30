@@ -10,6 +10,7 @@ import java.text.ParseException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -101,6 +102,7 @@ public class CommandSetObjectData extends Command
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 	}
@@ -111,7 +113,7 @@ public class CommandSetObjectData extends Command
 		{
 			String currentValue = target.getObjectData(type, id, tag);
 			if(!newValue.equals(currentValue))
-				throw new RuntimeException("CommandSetDataObject undo " + type + ":" + id + " expected " + newValue + " but was " + currentValue);
+				throw new RuntimeException("CommandSetDataObject undo for object " + type + ":" + id + " Tag "+ tag +" expected " + newValue + " but was " + currentValue);
 			target.setObjectData(type, id, tag, oldValue);
 		}
 		catch (Exception e)

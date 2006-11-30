@@ -18,6 +18,13 @@ public class ORef
 	
 	public ORef(EnhancedJsonObject json)
 	{
+		if (! json.has(TAG_OBJECT_TYPE))
+		{
+			objectType = ObjectType.FAKE;
+			objectId = null;
+			return;
+		}
+			
 		objectType = json.getInt(TAG_OBJECT_TYPE);
 		objectId = json.getId(TAG_OBJECT_ID);
 	}
@@ -25,9 +32,11 @@ public class ORef
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_OBJECT_TYPE, objectType);
-		json.putId(TAG_OBJECT_ID, objectId);
-		
+		if (objectId != null)
+		{
+			json.put(TAG_OBJECT_TYPE, objectType);
+			json.putId(TAG_OBJECT_ID, objectId);
+		}
 		return json;
 	}
 	
@@ -56,6 +65,13 @@ public class ORef
 	public int hashCode()
 	{
 		return toJson().hashCode();
+	}
+	
+	public String toString()
+	{
+		if (objectId == null)
+			return "";
+		return toJson().toString();
 	}
 	
 	private static final String TAG_OBJECT_TYPE = "ObjectType";

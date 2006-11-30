@@ -33,7 +33,7 @@ public class MonitoringGoalNode extends MonitoringNode
 
 	public ORef getObjectReference()
 	{
-		return goal.getObjectReference();
+		return goal.getRef();
 	}
 	
 	public int getType()

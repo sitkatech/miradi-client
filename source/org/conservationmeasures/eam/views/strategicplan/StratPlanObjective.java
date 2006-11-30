@@ -49,7 +49,7 @@ public class StratPlanObjective extends TreeTableNode
 	
 	public ORef getObjectReference()
 	{
-		return objective.getObjectReference();
+		return objective.getRef();
 	}
 	
 	public int getType()

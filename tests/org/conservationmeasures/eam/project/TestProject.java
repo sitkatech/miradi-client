@@ -40,8 +40,10 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Cause;
@@ -75,9 +77,16 @@ public class TestProject extends EAMTestCase
 		project.close();
 	}
 	
+	private CreateTaskParameter getTaskExtraInfo()
+	{
+		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
+		return extraInfo;
+	}
+	
 	public void testGetTaskResources() throws Exception
 	{
-		BaseId taskId = project.createObject(ObjectType.TASK);
+		BaseId taskId = project.createObject(ObjectType.TASK, getTaskExtraInfo());
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
 		assertEquals("Not empty for zero resources?", 0, project.getTaskResources(task).length);
 		BaseId resourceId1 = project.createObject(ObjectType.PROJECT_RESOURCE);

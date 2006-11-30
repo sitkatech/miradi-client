@@ -21,7 +21,7 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 
 	public ORef getObjectReference()
 	{
-		return indicator.getObjectReference();
+		return indicator.getRef();
 	}
 	
 	public int getType()
