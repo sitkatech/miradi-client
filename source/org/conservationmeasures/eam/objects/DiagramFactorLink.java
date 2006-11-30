@@ -10,18 +10,20 @@ import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
+import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class DiagramFactorLink extends EAMBaseObject
 {
-	public DiagramFactorLink(DiagramFactorLinkId idToUse, FactorLinkId factorLinkId, DiagramFactorId fromIdToUse, DiagramFactorId toIdToUse) throws Exception
+	public DiagramFactorLink(DiagramFactorLinkId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
 		super(idToUse);
 		clear();
 		
-		underlyingObjectId.set(factorLinkId.toString());
-		fromId.set(fromIdToUse.toString());
-		toId.set(toIdToUse.toString());
+		underlyingObjectId.setId(extraInfo.getFactorLinkId());
+		fromId.setId(extraInfo.getFromFactorId());
+		toId.setId(extraInfo.getToFactorId());
 	}
 	
 	public int getType()
@@ -46,6 +48,14 @@ public class DiagramFactorLink extends EAMBaseObject
 		dataMap.setFromId(new DiagramFactorId(fromId.getId().asInt()));
 		dataMap.setToId(new DiagramFactorId(toId.getId().asInt()));
 		return dataMap;
+	}
+
+	public CreateObjectParameter getCreationExtraInfo()
+	{
+		return new CreateDiagramFactorLinkParameter(
+				new FactorLinkId(underlyingObjectId.getId().asInt()), 
+				new DiagramFactorId(fromId.getId().asInt()), 
+				new DiagramFactorId(toId.getId().asInt()));
 	}
 
 	void clear()

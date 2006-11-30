@@ -25,6 +25,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
@@ -161,7 +162,9 @@ public class DiagramModel extends DefaultGraphModel
 		DiagramFactor to = getDiagramFactorByWrappedId(factorLinkToWrap.getToFactorId());
 		
 		DiagramFactorLinkId newDiagramLinkId = new DiagramFactorLinkId(factorLinkId.asInt());
-		DiagramFactorLink newLink = new DiagramFactorLink(newDiagramLinkId, factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(
+				factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		DiagramFactorLink newLink = new DiagramFactorLink(newDiagramLinkId, extraInfo);
 		LinkCell cell = new LinkCell(factorLinkToWrap, newLink, from, to);
 		
 		EAMGraphCell[] newLinks = new EAMGraphCell[]{cell};

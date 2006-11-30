@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -73,9 +74,17 @@ public class TestDiagramFactorLink extends EAMTestCase
 		DiagramFactor factor = model.createDiagramFactor(cmIntervention.getModelNodeId());
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId linkId = new FactorLinkId(5);
-		DiagramFactorLinkId id = new DiagramFactorLinkId(17); 
-		DiagramFactorLink linkage = new DiagramFactorLink(id, linkId, factor.getDiagramFactorId(), target.getDiagramFactorId());
+		DiagramFactorLinkId id = new DiagramFactorLinkId(17);
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(
+				linkId, factor.getDiagramFactorId(), target.getDiagramFactorId());
+		DiagramFactorLink linkage = new DiagramFactorLink(id, extraInfo);
 		assertEquals(id, linkage.getDiagramLinkageId());
+		assertEquals(linkId, linkage.getWrappedId());
+		
+		CreateDiagramFactorLinkParameter gotExtraInfo = (CreateDiagramFactorLinkParameter)linkage.getCreationExtraInfo();
+		assertEquals(extraInfo.getFactorLinkId(), gotExtraInfo.getFactorLinkId());
+		assertEquals(extraInfo.getFromFactorId(), gotExtraInfo.getFromFactorId());
+		assertEquals(extraInfo.getToFactorId(), gotExtraInfo.getToFactorId());
 	}
 	
 	public void testLinkNodes() throws Exception
