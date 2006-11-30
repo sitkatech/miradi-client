@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;

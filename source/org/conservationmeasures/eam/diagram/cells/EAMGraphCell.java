@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.diagram.cells;
 
+import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.jgraph.graph.DefaultGraphCell;
 
 public class EAMGraphCell extends DefaultGraphCell
