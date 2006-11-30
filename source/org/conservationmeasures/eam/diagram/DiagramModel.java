@@ -87,8 +87,9 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		Factor factor = getFactorPool().find(idToWrap);
 		DiagramFactorId factorId = requestedId;
-		if(requestedId.isInvalid())
+		if(factorId.isInvalid())
 			factorId = takeNextDiagramFactorId();
+		EAM.logDebug("DiagramModel.createDiagramFactor: " + factorId);
 		DiagramFactor diagramFactor = DiagramFactor.wrapConceptualModelObject(factorId, factor);
 		addFactorToModel(diagramFactor);
 		return diagramFactor;
