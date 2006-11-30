@@ -5,22 +5,24 @@
  */
 package org.conservationmeasures.eam.diagram;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 
 class CellInventory
 {
 	public CellInventory()
 	{
 		factors = new Vector();
-		factorLinks = new Vector();
+		factorLinks = new HashMap();
 	}
 	
 	public void clear()
@@ -71,24 +73,25 @@ class CellInventory
 		factors.remove(node);
 	}
 	
-	public void addFactorLink(DiagramFactorLink linkage)
+	public void addFactorLink(DiagramFactorLink link, LinkCell cell)
 	{
-		DiagramFactorLinkId realId = linkage.getDiagramLinkageId();
+		DiagramFactorLinkId realId = link.getDiagramLinkageId();
 		
 		if(getFactorLinkById(realId) != null)
 			throw new RuntimeException("Can't add over existing id " + realId);
 		
-		factorLinks.add(linkage);
+		factorLinks.put(link, cell);
 	}
 
 	public Vector getAllFactorLinks()
 	{
-		return factorLinks;
+		return new Vector(factorLinks.keySet());
 	}
 	
 	public DiagramFactorLink getFactorLinkById(DiagramFactorLinkId id)
 	{
-		for (Iterator iter = factorLinks.iterator(); iter.hasNext();) 
+		Iterator iter = factorLinks.keySet().iterator();
+		while(iter.hasNext()) 
 		{
 			DiagramFactorLink link = (DiagramFactorLink) iter.next();
 			if(link.getDiagramLinkageId().equals(id))
@@ -99,7 +102,8 @@ class CellInventory
 	
 	public DiagramFactorLink getFactorLinkById(FactorLinkId id)
 	{
-		for (Iterator iter = factorLinks.iterator(); iter.hasNext();) 
+		Iterator iter = factorLinks.keySet().iterator();
+		while(iter.hasNext())
 		{
 			DiagramFactorLink link = (DiagramFactorLink) iter.next();
 			if(link.getWrappedId().equals(id))
@@ -108,11 +112,16 @@ class CellInventory
 		return null;
 	}
 	
+	public LinkCell getLinkCell(DiagramFactorLink link)
+	{
+		return (LinkCell)factorLinks.get(link);
+	}
+	
 	public void removeFactorLink(DiagramFactorLink linkage)
 	{
 		factorLinks.remove(linkage);
 	}
 	
-	Vector factors;
-	Vector factorLinks;
+	private Vector factors;
+	private HashMap factorLinks;
 }

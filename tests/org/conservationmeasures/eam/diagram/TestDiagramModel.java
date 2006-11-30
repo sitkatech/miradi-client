@@ -172,8 +172,8 @@ public class TestDiagramModel extends EAMTestCase
 		DiagramFactorLink linkage2 = createLinkage(takeNextLinkageId(), factor2.getWrappedId(), target.getWrappedId());
 		Set found = model.getFactorLinks(target);
 		assertEquals("Didn't see both links?", 2, found.size());
-		assertTrue("missed first?", found.contains(linkage1.getCell()));
-		assertTrue("missed second?", found.contains(linkage2.getCell()));
+		assertTrue("missed first?", found.contains(model.findLinkCell(linkage1)));
+		assertTrue("missed second?", found.contains(model.findLinkCell(linkage2)));
 	}
 
 	private FactorLinkId takeNextLinkageId()

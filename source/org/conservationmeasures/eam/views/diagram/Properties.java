@@ -8,13 +8,14 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Point;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.conservationmeasures.eam.dialogs.FactorLinkPropertiesPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ProjectScopePanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -38,8 +39,8 @@ public class Properties extends LocationDoer
 			return true;
 		if(selected[0].isFactorLink())
 		{
-			DiagramFactorLink linkage = selected[0].getDiagramFactorLink();
-			if(linkage.getToNode().isTarget())
+			LinkCell cell = (LinkCell)selected[0];
+			if(cell.getTo().isTarget())
 				return true;
 		}
 		return false;

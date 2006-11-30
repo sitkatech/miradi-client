@@ -17,27 +17,11 @@ public class DiagramFactorLink
 		underlyingObject = linkToWrap;
 		from = fromToUse;
 		to = toToUse;
-		cell = new LinkCell(this);
-	}
-	
-	public LinkCell getCell()
-	{
-		return cell;
 	}
 	
 	public FactorLinkId getWrappedId()
 	{
 		return (FactorLinkId)underlyingObject.getId();
-	}
-	
-	public DiagramFactor getFromNode()
-	{
-		return from;
-	}
-	
-	public DiagramFactor getToNode()
-	{
-		return to;
 	}
 	
 	public String getStressLabel()
@@ -69,7 +53,6 @@ public class DiagramFactorLink
 		return dataMap;
 	}
 	
-	private LinkCell cell;
 	private FactorLink underlyingObject;
 	private DiagramFactor from;
 	private DiagramFactor to;

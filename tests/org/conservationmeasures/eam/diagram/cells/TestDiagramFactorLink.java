@@ -60,12 +60,13 @@ public class TestDiagramFactorLink extends EAMTestCase
 		DiagramFactor target = model.createDiagramFactor(cmTarget.getModelNodeId());
 		FactorLinkId id = new FactorLinkId(5);
 		FactorLink cmLinkage = new FactorLink(id, factor.getWrappedId(), target.getWrappedId());
-		DiagramFactorLink linkage = new DiagramFactorLink(cmLinkage, factor, target);
-		assertEquals("didn't remember from?", factor, linkage.getFromNode());
-		assertEquals("didn't remember to?", target, linkage.getToNode());
+		DiagramFactorLink linkage = model.createDiagramFactorLink(cmLinkage);
+		LinkCell cell = model.findLinkCell(linkage);
+		assertEquals("didn't remember from?", factor, cell.getFrom());
+		assertEquals("didn't remember to?", target, cell.getTo());
 
-		assertEquals("source not the port of from?", factor.getPort(), linkage.getCell().getSource());
-		assertEquals("target not the port of to?", target.getPort(), linkage.getCell().getTarget());
+		assertEquals("source not the port of from?", factor.getPort(), cell.getSource());
+		assertEquals("target not the port of to?", target.getPort(), cell.getTarget());
 	}
 	
 	public void testIds() throws Exception

@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDiagramAddFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
@@ -43,9 +44,10 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		project.executeCommand(command);
 
 		DiagramFactorLink linkage = model.getDiagramFactorLinkById(command.getDiagramFactorLinkId());
+		LinkCell cell = project.getDiagramModel().findLinkCell(linkage);
 
-		assertEquals("not from intervention?", intervention, linkage.getFromNode());
-		assertEquals("not to target?", factor, linkage.getToNode());
+		assertEquals("not from intervention?", intervention, cell.getFrom());
+		assertEquals("not to target?", factor, cell.getTo());
 		
 		project.close();
 	}

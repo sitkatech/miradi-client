@@ -11,8 +11,9 @@ import java.awt.Point;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
@@ -21,18 +22,18 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.exceptions.NothingToRedoException;
 import org.conservationmeasures.eam.exceptions.NothingToUndoException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
@@ -381,9 +382,10 @@ public class TestCommands extends EAMTestCase
 		project.executeCommand(addLinkageCommand);
 		
 		DiagramFactorLink inserted = model.getDiagramFactorLinkbyWrappedId(modelLinkageId);
-		DiagramFactor fromNode = inserted.getFromNode();
+		LinkCell cell = model.findLinkCell(inserted);
+		DiagramFactor fromNode = cell.getFrom();
 		assertEquals("wrong source?", from, fromNode.getDiagramFactorId());
-		DiagramFactor toNode = inserted.getToNode();
+		DiagramFactor toNode = cell.getTo();
 		assertEquals("wrong dest?", to, toNode.getDiagramFactorId());
 
 		assertTrue("linkage not created?", project.getDiagramModel().areLinked(fromNode, toNode));

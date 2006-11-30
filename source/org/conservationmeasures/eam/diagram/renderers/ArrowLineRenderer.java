@@ -33,8 +33,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
-		LinkCell cell = (LinkCell)cellView.getCell();
-		linkage = cell.getDiagramFactorLink();
+		cell = (LinkCell)cellView.getCell();
 		if(sel)
 		{
 			renderer.lineWidth = 4;
@@ -46,6 +45,11 @@ public class ArrowLineRenderer extends EdgeRenderer
 		return renderer;
 	}
 
+	private LinkCell getLinkCell()
+	{
+		return cell;
+	}
+	
 	public void paint(Graphics g)
 	{
 		if(!isVisible)
@@ -59,8 +63,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);
-		LinkCell cell = (LinkCell)viewToUse.getCell();
-		DiagramFactorLink linkageToUse = cell.getDiagramFactorLink();
+		LinkCell thisCell = (LinkCell)viewToUse.getCell();
+		DiagramFactorLink linkageToUse = thisCell.getDiagramFactorLink();
 		
 		String text = linkageToUse.getStressLabel();
 		if (text.length()==0)
@@ -99,15 +103,15 @@ public class ArrowLineRenderer extends EdgeRenderer
 
 	private void drawStress(Graphics g)
 	{
-		if(!linkage.getToNode().isTarget())
+		if(!getLinkCell().getTo().isTarget())
 			return;
 		
-		String text = linkage.getStressLabel();
+		String text = cell.getDiagramFactorLink().getStressLabel();
 		if(text == null || text.length() < 1)
 			return;
 		
 		Graphics2D g2 = (Graphics2D)g;
-		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), linkage);
+		Rectangle rectangle = calcalateCenteredAndCushioned(getBounds(), cell.getDiagramFactorLink());
 
 		int arc = 5;
 
@@ -119,6 +123,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 	
 	private static final int CUSHION = 5;
-	DiagramFactorLink linkage;
+	
+	LinkCell cell;
 	boolean isVisible;
 }

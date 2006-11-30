@@ -18,34 +18,35 @@ import org.conservationmeasures.eam.commands.CommandSetFactorSize;
 import org.conservationmeasures.eam.commands.CommandSwitchView;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.DiagramModel;
-import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactorLink;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.exceptions.AlreadyInThatViewException;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
+import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.IndicatorId;
-import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
@@ -215,23 +216,25 @@ public class TestProject extends EAMTestCase
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		DiagramFactorLink linkage2 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node3.getWrappedId());
 		
-		EAMGraphCell[] selectedCells = {linkage1.getCell()};
+		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
+		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
+		EAMGraphCell[] selectedCells = {cell1};
 		Vector selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
-		assertContains(linkage1.getCell(), selectedItems);
+		assertContains(cell1, selectedItems);
 		
 		selectedCells[0] = node2;
 		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(2, selectedItems.size());
 		assertContains(node2, selectedItems);
-		assertContains(linkage1.getCell(), selectedItems);
+		assertContains(cell1, selectedItems);
 		
 		selectedCells[0] = node1;
 		selectedItems = project.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(3, selectedItems.size());
 		assertContains(node1, selectedItems);
-		assertContains(linkage1.getCell(), selectedItems);
-		assertContains(linkage2.getCell(), selectedItems);
+		assertContains(cell1, selectedItems);
+		assertContains(cell2, selectedItems);
 	}
 
 	public void testGetAllSelectedNodes() throws Exception
@@ -241,7 +244,9 @@ public class TestProject extends EAMTestCase
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
-		EAMGraphCell[] selectedCells = {linkage1.getCell()};
+		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
+
+		EAMGraphCell[] selectedCells = {cell1};
 		EAMGraphCell[] selectedItems = project.getOnlySelectedFactors(selectedCells);
 		assertEquals(0, selectedItems.length);
 		
@@ -250,7 +255,7 @@ public class TestProject extends EAMTestCase
 		assertEquals(1, selectedItems.length);
 		assertEquals(node2, selectedItems[0]);
 		
-		EAMGraphCell[] selectedCellsTwo = {node2,linkage1.getCell(),node1};
+		EAMGraphCell[] selectedCellsTwo = {node2, cell1, node1};
 		selectedItems = project.getOnlySelectedFactors(selectedCellsTwo);
 		assertEquals(2, selectedItems.length);
 	}
