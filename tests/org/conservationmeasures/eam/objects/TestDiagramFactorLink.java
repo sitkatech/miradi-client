@@ -14,17 +14,17 @@ import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
-import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 
-public class TestDiagramFactorLink extends EAMTestCase
+public class TestDiagramFactorLink extends ObjectTestCase
 {
 	public TestDiagramFactorLink(String name)
 	{
@@ -52,6 +52,13 @@ public class TestDiagramFactorLink extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
+	}
+	
+	public void testAsObject() throws Exception
+	{
+		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(
+				new FactorLinkId(27), new DiagramFactorId(29), new DiagramFactorId(99));
+		verifyFields(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
 
 	public void testBasics() throws Exception

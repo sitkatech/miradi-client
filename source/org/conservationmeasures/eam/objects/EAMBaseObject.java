@@ -82,6 +82,9 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.PROJECT_METADATA:
 				return new ProjectMetadata(idAsInt, json);
 				
+			case ObjectType.DIAGRAM_LINK:
+				return new DiagramFactorLink(idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

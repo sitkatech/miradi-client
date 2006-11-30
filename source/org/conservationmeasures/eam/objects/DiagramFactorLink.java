@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.diagram.cells.FactorLinkDataMap;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.DiagramFactorLinkId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
@@ -13,12 +14,13 @@ import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class DiagramFactorLink extends EAMBaseObject
 {
-	public DiagramFactorLink(DiagramFactorLinkId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
+	public DiagramFactorLink(BaseId idToUse, CreateDiagramFactorLinkParameter extraInfo) throws Exception
 	{
-		super(idToUse);
+		super(new DiagramFactorLinkId(idToUse.asInt()));
 		clear();
 		
 		underlyingObjectId.setId(extraInfo.getFactorLinkId());
@@ -26,6 +28,23 @@ public class DiagramFactorLink extends EAMBaseObject
 		toId.setId(extraInfo.getToFactorId());
 	}
 	
+	public DiagramFactorLink(int idToUse, EnhancedJsonObject json) throws Exception
+	{
+		super(new DiagramFactorLinkId(idToUse), json);
+		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
+		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
+		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
+	}
+	
+	public EnhancedJsonObject toJson()
+	{
+		EnhancedJsonObject json = super.toJson();
+		json.putId(TAG_WRAPPED_ID, underlyingObjectId.getId());
+		json.putId(TAG_FROM_DIAGRAM_FACTOR_ID, fromId.getId());
+		json.putId(TAG_TO_DIAGRAM_FACTOR_ID, toId.getId());
+		return json;
+	}
+
 	public int getType()
 	{
 		return ObjectType.DIAGRAM_LINK;
@@ -41,6 +60,28 @@ public class DiagramFactorLink extends EAMBaseObject
 		return new FactorLinkId(underlyingObjectId.getId().asInt());
 	}
 	
+	public String getData(String fieldTag)
+	{
+		if(fieldTag.equals(TAG_WRAPPED_ID))
+			return underlyingObjectId.get();
+		if(fieldTag.equals(TAG_FROM_DIAGRAM_FACTOR_ID))
+			return fromId.get();
+		if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
+			return toId.get();
+		return super.getData(fieldTag);
+	}
+
+	public void setData(String fieldTag, String dataValue) throws Exception
+	{
+		if(fieldTag.equals(TAG_WRAPPED_ID))
+			underlyingObjectId.set(dataValue);
+		else if(fieldTag.equals(TAG_FROM_DIAGRAM_FACTOR_ID))
+			fromId.set(dataValue);
+		else if(fieldTag.equals(TAG_TO_DIAGRAM_FACTOR_ID))
+			toId.set(dataValue);
+		else super.setData(fieldTag, dataValue);
+	}
+
 	public FactorLinkDataMap createLinkageDataMap() throws Exception
 	{
 		FactorLinkDataMap dataMap = new FactorLinkDataMap();
@@ -64,10 +105,6 @@ public class DiagramFactorLink extends EAMBaseObject
 		underlyingObjectId = new BaseIdData();
 		fromId = new BaseIdData();
 		toId = new BaseIdData();
-		
-		addField(TAG_WRAPPED_ID, underlyingObjectId);
-		addField(TAG_FROM_DIAGRAM_FACTOR_ID, fromId);
-		addField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 	}
 	
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";

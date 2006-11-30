@@ -14,21 +14,22 @@ import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdAssigner;
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
-import org.conservationmeasures.eam.objectpools.GoalPool;
-import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
+import org.conservationmeasures.eam.objectpools.GoalPool;
+import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
 import org.conservationmeasures.eam.objectpools.ProjectMetadataPool;
 import org.conservationmeasures.eam.objectpools.RatingCriterionPool;
@@ -37,10 +38,10 @@ import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -68,6 +69,7 @@ public class ObjectManager
 		addNormalPool(new ObjectivePool(ida));
 		addNormalPool(new GoalPool(ida));
 		addNormalPool(new ProjectMetadataPool(ida));
+		addNormalPool(new DiagramFactorLinkPool(ida));
 
 	}
 
