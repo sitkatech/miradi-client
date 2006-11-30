@@ -18,7 +18,6 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.icons.ActivityIcon;
-import org.conservationmeasures.eam.icons.EamIcon;
 import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
@@ -122,11 +121,10 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		{
 			DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
 			FactorIcon factorIcon = new FactorIcon(factor);
-			EamIcon icon = factorIcon.getIcon();
 
-			renderer.setClosedIcon(icon);
-			renderer.setOpenIcon(icon);
-			renderer.setLeafIcon(icon);
+			renderer.setClosedIcon(factorIcon);
+			renderer.setOpenIcon(factorIcon);
+			renderer.setLeafIcon(factorIcon);
 			return renderer;
 		}
 

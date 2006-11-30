@@ -17,11 +17,6 @@ public class FactorIcon extends EamIcon
 		factor = factorToUse;
 	}
 	
-	public EamIcon getIcon()
-	{
-		return findCorrespondingIcon();
-	}
-	
 	private EamIcon findCorrespondingIcon()
 	{
 		if (factor.isStrategy())
