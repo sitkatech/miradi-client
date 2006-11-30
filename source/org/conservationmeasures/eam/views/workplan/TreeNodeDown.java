@@ -19,12 +19,13 @@ public class TreeNodeDown extends WorkPlanDoer
 		Task selected = getSelectedTask();
 		if(selected == null)
 			return false;
-		Strategy parent = getPanel().getParentIntervention(selected);
-		IdList siblings = parent.getActivityIds();
-		if(siblings.find(selected.getId())== siblings.size() - 1)
+		//FIXME make it work
+		//Strategy parent = getPanel().getParentIntervention(selected);
+		//IdList siblings = parent.getActivityIds();
+		//if(siblings.find(selected.getId())== siblings.size() - 1)
 			return false;
 		
-		return true;
+		//return true;
 	}
 
 	public void doIt() throws CommandFailedException

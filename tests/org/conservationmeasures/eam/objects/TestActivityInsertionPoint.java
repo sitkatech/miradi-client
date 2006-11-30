@@ -10,7 +10,7 @@ import javax.swing.tree.TreePath;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
-import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyActivity;
+import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyTask;
 
 public class TestActivityInsertionPoint extends EAMTestCase
 {
@@ -23,8 +23,8 @@ public class TestActivityInsertionPoint extends EAMTestCase
 	{
 		Task rootTask = new Task(new BaseId(23));
 		Task parentTask = new Task(new BaseId(58));
-		WorkPlanStrategyActivity root = new WorkPlanStrategyActivity(null, rootTask);
-		WorkPlanStrategyActivity parent = new WorkPlanStrategyActivity(null, parentTask);
+		WorkPlanStrategyTask root = new WorkPlanStrategyTask(null, rootTask);
+		WorkPlanStrategyTask parent = new WorkPlanStrategyTask(null, parentTask);
 		TreePath path = new TreePath(new Object[] {root, parent});
 		int index = 9;
 		ActivityInsertionPoint aip = new ActivityInsertionPoint(path, index);

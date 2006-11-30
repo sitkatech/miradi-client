@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -150,22 +151,22 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 
 	public EAMObject[] getSelectedObjects()
 	{
-		EAMObject[] selectedObjects = new EAMObject[1];
+		Vector selectedObjects = new Vector();
 		TreeTableNode selectedNode = (TreeTableNode)getTree().getLastSelectedPathComponent();
 		
 		if (selectedNode == null)
-			return  null;
+			return (EAMObject[])selectedObjects.toArray(new EAMObject[0]);
 		
 		ORef oRef = selectedNode.getObjectReference();
 		EAMObjectPool pool = project.getPool(oRef.getObjectType());
 		
 		if (pool == null)
-			return null;
+			return (EAMObject[])selectedObjects.toArray(new EAMObject[0]);
 		
 		EAMObject foundObject = pool.findObject(oRef.getObjectId());
-		selectedObjects[0] = foundObject;
+		selectedObjects.add(foundObject);
 	
-		return selectedObjects;
+		return (EAMObject[])selectedObjects.toArray(new EAMObject[0]);
 	}
 	
 	Project project;

@@ -29,7 +29,7 @@ public class InsertActivity extends WorkPlanDoer
 		WorkPlanTreeTableNode selected = getSelectedObject();
 		if(selected == null)
 			return false;
-		return (selected.canInsertActivityHere() || selected.canInsertTaskHere());
+		return (selected.canInsertActivityHere());
 	}
 
 	public void doIt() throws CommandFailedException

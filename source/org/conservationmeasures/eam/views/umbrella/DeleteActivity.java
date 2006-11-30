@@ -13,10 +13,12 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
@@ -43,11 +45,12 @@ public class DeleteActivity extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		Task activity = (Task)getObjects()[0];
-		Strategy strategy = findStragetyForActivity(activity);
-
+	
 		try
 		{
+			Task activity = (Task)getObjects()[0];
+			Strategy strategy = findStrategyForActivity(activity);
+
 			deleteActivity(getProject(), strategy, activity);
 		}
 		catch(Exception e)
@@ -77,16 +80,12 @@ public class DeleteActivity extends ObjectsDoer
 		}
 	}
 	
-	private Strategy findStragetyForActivity(Task activity)
+	private Strategy findStrategyForActivity(Task activity) throws Exception
 	{
-		Factor[] factors = getProject().getFactorPool().getInterventions();
-		for (int i = 0; i < factors.length; i++)
-			if (((Strategy)factors[i]).getActivityIds().contains(activity.getId()))
-				return (Strategy)factors[i];
-
-		return null;
+		ChainManager chainManager = new ChainManager(getProject());
+		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Factor.TYPE_INTERVENTION, activity.getId(), Factor.TAG_INDICATOR_IDS);
+		return (Strategy)factorSet.iterator().next();
 	}
-
 
 	WorkPlanView view;
 }

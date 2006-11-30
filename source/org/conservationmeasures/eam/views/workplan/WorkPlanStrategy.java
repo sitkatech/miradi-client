@@ -71,11 +71,6 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 		return true;
 	}
 	
-	public boolean canInsertTaskHere()
-	{
-		return false;
-	}
-
 	public void rebuild()
 	{
 		int childCount = intervention.getActivityIds().size();
@@ -89,14 +84,14 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 				EAM.logWarning("Ignoring null activity " + activityId + " in work plan " + intervention.getId());
 				continue;
 			}
-			activityVector.add(new WorkPlanStrategyActivity(project, activity));
+			activityVector.add(new WorkPlanStrategyTask(project, activity));
 		}
-		activities = (WorkPlanStrategyActivity[])activityVector.toArray(new WorkPlanStrategyActivity[0]);
+		activities = (WorkPlanStrategyTask[])activityVector.toArray(new WorkPlanStrategyTask[0]);
 	}
 
 	
 	Project project;
 	Strategy intervention;
-	WorkPlanStrategyActivity[] activities;
+	WorkPlanStrategyTask[] activities;
 }
 
