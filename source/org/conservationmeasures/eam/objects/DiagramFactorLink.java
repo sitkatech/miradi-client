@@ -60,7 +60,7 @@ public class DiagramFactorLink extends EAMBaseObject
 		addField(TAG_TO_DIAGRAM_FACTOR_ID, toId);
 	}
 	
-	public static final String TAG_WRAPPED_ID = "WrappedId";
+	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
 	
