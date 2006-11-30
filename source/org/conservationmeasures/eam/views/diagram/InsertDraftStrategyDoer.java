@@ -51,7 +51,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 
 	void doExtraSetup(BaseId id) throws CommandFailedException
 	{
-		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.MODEL_NODE, id, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		CommandSetObjectData setStatusCommand = new CommandSetObjectData(ObjectType.FACTOR, id, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 		getProject().executeCommand(setStatusCommand);
 	}
 

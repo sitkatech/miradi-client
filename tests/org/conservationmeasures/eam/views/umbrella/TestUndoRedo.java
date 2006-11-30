@@ -113,7 +113,7 @@ public class TestUndoRedo extends EAMTestCase
 	private CommandDiagramAddFactor insertFactor(Project p) throws Exception 
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CAUSE);
-		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
+		CommandCreateObject createModelNodeCommand = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
 		p.executeCommand(createModelNodeCommand);
 		FactorId modelNodeId = (FactorId)createModelNodeCommand.getCreatedId();
 		CommandDiagramAddFactor addToDiagramCommand = new CommandDiagramAddFactor(new DiagramFactorId(BaseId.INVALID.asInt()), modelNodeId);

@@ -133,7 +133,7 @@ public class TestTask extends ObjectTestCase
 
 	private CreateTaskParameter getTaskExtraInfo()
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		return extraInfo;
 	}

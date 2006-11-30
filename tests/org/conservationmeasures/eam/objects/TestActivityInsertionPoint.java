@@ -24,7 +24,7 @@ public class TestActivityInsertionPoint extends EAMTestCase
 
 	public void testValidInsertionPoint() throws Exception 
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		Task rootTask = new Task(new BaseId(23), extraInfo);
 		Task parentTask = new Task(new BaseId(58), extraInfo);

@@ -44,7 +44,7 @@ public class FactorLink extends EAMBaseObject
 
 	public int getType()
 	{
-		return ObjectType.MODEL_LINKAGE;
+		return ObjectType.FACTOR_LINK;
 	}
 	
 	public FactorId getFromFactorId()

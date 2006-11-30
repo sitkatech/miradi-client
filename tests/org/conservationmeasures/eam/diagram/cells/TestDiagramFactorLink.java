@@ -38,12 +38,12 @@ public class TestDiagramFactorLink extends EAMTestCase
 		model = project.getDiagramModel();
 
 		CreateFactorParameter createIntervention = new CreateFactorParameter(new FactorTypeStrategy());
-		BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createIntervention);
+		BaseId rawInterventionId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, createIntervention);
 		FactorId interventionId = new FactorId(rawInterventionId.asInt());
 		cmIntervention = project.findNode(interventionId);
 		
 		CreateFactorParameter createTarget = new CreateFactorParameter(new FactorTypeTarget());
-		BaseId rawTargetId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		BaseId rawTargetId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
 		FactorId targetId = new FactorId(rawTargetId.asInt());
 		cmTarget = project.findNode(targetId);
 	}
@@ -83,7 +83,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
 		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
 		CommandDiagramAddFactorLink command = new CommandDiagramAddFactorLink(modelLinkageId);
@@ -91,7 +91,7 @@ public class TestDiagramFactorLink extends EAMTestCase
 		assertNotNull("link not in model?", model.getDiagramFactorLinkById(command.getDiagramFactorLinkId()));
 		
 		ProjectServer server = project.getTestDatabase();
-		FactorLink linkage = (FactorLink)server.readObject(ObjectType.MODEL_LINKAGE, command.getDiagramFactorLinkId());
+		FactorLink linkage = (FactorLink)server.readObject(ObjectType.FACTOR_LINK, command.getDiagramFactorLinkId());
 		assertEquals("Didn't load from id?", interventionId, linkage.getFromFactorId());
 		assertEquals("Didn't load to id?", factorId, linkage.getToFactorId());
 	}

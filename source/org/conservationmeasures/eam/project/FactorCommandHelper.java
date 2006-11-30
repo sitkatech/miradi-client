@@ -44,7 +44,7 @@ public class FactorCommandHelper
 	public CommandDiagramAddFactor createFactorAndDiagramFactor(FactorType nodeType) throws Exception
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
-		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.MODEL_NODE, extraInfo);
+		CommandCreateObject createModelNode = new CommandCreateObject(ObjectType.FACTOR, extraInfo);
 		executeCommand(createModelNode);
 		FactorId modelNodeId = new FactorId(createModelNode.getCreatedId().asInt());
 
@@ -145,7 +145,7 @@ public class FactorCommandHelper
 	
 	public static CommandSetObjectData createSetLabelCommand(FactorId id, String newLabel)
 	{
-		int type = ObjectType.MODEL_NODE;
+		int type = ObjectType.FACTOR;
 		String tag = Factor.TAG_LABEL;
 		CommandSetObjectData cmd = new CommandSetObjectData(type, id, tag, newLabel);
 		return cmd;

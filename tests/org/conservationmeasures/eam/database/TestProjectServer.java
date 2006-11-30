@@ -58,7 +58,7 @@ public class TestProjectServer extends EAMTestCase
 	public void testObjectManifest() throws Exception
 	{
 		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
@@ -99,7 +99,7 @@ public class TestProjectServer extends EAMTestCase
 		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
 		
 		
-		ObjectManifest nodeIds = storage.readObjectManifest(ObjectType.MODEL_NODE);
+		ObjectManifest nodeIds = storage.readObjectManifest(ObjectType.FACTOR);
 		assertEquals("not three nodes?", 3, nodeIds.size());
 		assertTrue("missing a node?", nodeIds.has(target.getId()));
 	}
@@ -111,7 +111,7 @@ public class TestProjectServer extends EAMTestCase
 	
 	private Factor readNode(BaseId id) throws Exception
 	{
-		return (Factor)storage.readObject(ObjectType.MODEL_NODE, id);
+		return (Factor)storage.readObject(ObjectType.FACTOR, id);
 	}
 	
 	public void testWriteAndReadLinkage() throws Exception

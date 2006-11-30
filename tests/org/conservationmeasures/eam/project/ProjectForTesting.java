@@ -46,7 +46,7 @@ public class ProjectForTesting extends Project
 	public FactorId createNode(FactorType nodeType) throws Exception
 	{
 		CreateFactorParameter createTarget = new CreateFactorParameter(nodeType);
-		FactorId cmTargetId = (FactorId)createObject(ObjectType.MODEL_NODE, BaseId.INVALID, createTarget);
+		FactorId cmTargetId = (FactorId)createObject(ObjectType.FACTOR, BaseId.INVALID, createTarget);
 		return cmTargetId;
 	}
 	
@@ -54,7 +54,7 @@ public class ProjectForTesting extends Project
 	public FactorId createNodeAndAddToDiagram(FactorType nodeType, BaseId id) throws Exception
 	{
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
-		FactorId nodeId = (FactorId)createObject(ObjectType.MODEL_NODE, id, parameter);
+		FactorId nodeId = (FactorId)createObject(ObjectType.FACTOR, id, parameter);
 		addFactorToDiagram(nodeId);
 		return nodeId;
 	}

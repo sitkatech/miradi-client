@@ -42,10 +42,10 @@ public class TestInsertFactorLinkDoer extends EAMTestCase
 		FactorId node3 = project.createNodeAndAddToDiagram(Factor.TYPE_TARGET, BaseId.INVALID);
 		
 		CreateFactorLinkParameter parameter12 = new CreateFactorLinkParameter(node1, node2);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter12);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter12);
 		
 		CreateFactorLinkParameter parameter23 = new CreateFactorLinkParameter(node2, node3);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter23);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter23);
 		
 		DiagramModel model = project.getDiagramModel();
 		assertTrue("Didnt catch loop?", doer.wouldCreateLinkageLoop(model, node3, node1));

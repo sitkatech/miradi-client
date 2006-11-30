@@ -398,7 +398,7 @@ public class DataUpgrader extends ProjectServer
 	
 	public void convertIndicatorIdToIdList() throws Exception
 	{
-		int optionType = ObjectType.MODEL_NODE;
+		int optionType = ObjectType.FACTOR;
 		File jsonDirectory = new File(getTopDirectory(), "json");
 		File modelNodesDirectory = new File(jsonDirectory, "objects-4");
 		if(!modelNodesDirectory.exists())
@@ -442,7 +442,7 @@ public class DataUpgrader extends ProjectServer
 	
 	public void convertGoalsAndObjectivesToIdLists() throws Exception
 	{
-		int objectType = ObjectType.MODEL_NODE;
+		int objectType = ObjectType.FACTOR;
 		
 		File jsonDirectory = new File(getTopDirectory(), "json");
 		File modelNodesDirectory = new File(jsonDirectory, "objects-4");

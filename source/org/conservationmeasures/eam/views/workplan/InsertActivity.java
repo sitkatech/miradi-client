@@ -66,7 +66,7 @@ public class InsertActivity extends WorkPlanDoer
 			BaseId createdId = create.getCreatedId();
 
 			CommandSetObjectData addChildCommand;
-			if (object.getType() == ObjectType.MODEL_NODE)
+			if (object.getType() == ObjectType.FACTOR)
 				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
 			else
 				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Task.TAG_SUBTASK_IDS, createdId, childIndex);

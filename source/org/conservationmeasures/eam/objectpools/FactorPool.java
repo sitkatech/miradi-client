@@ -22,7 +22,7 @@ public class FactorPool extends PoolWithIdAssigner
 {
 	public FactorPool(IdAssigner idAssignerToUse)
 	{
-		super(ObjectType.MODEL_NODE, idAssignerToUse);
+		super(ObjectType.FACTOR, idAssignerToUse);
 	}
 	
 	public void put(Factor node)

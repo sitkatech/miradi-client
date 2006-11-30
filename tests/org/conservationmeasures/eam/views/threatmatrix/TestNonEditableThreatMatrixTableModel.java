@@ -98,11 +98,11 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 		FactorId target2 = createTarget("target two");
 		createTarget("target three");
 		CreateFactorLinkParameter link1to1 = new CreateFactorLinkParameter(threat1, target1);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to1);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to1);
 		CreateFactorLinkParameter link1to2 = new CreateFactorLinkParameter(threat1, target2);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link1to2);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link1to2);
 		CreateFactorLinkParameter link2to2 = new CreateFactorLinkParameter(threat2, target2);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, link2to2);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, link2to2);
 		
 		model.resetMatrix();
 		
@@ -138,7 +138,7 @@ public class TestNonEditableThreatMatrixTableModel extends TestCaseEnhanced
 
 	private FactorId createNode(FactorType type, String name) throws Exception
 	{
-		FactorId id = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(type));
+		FactorId id = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(type));
 		assertNotEquals("didn't fix id?", BaseId.INVALID, id);
 		Factor node = project.findNode(id);
 		node.setLabel(name);

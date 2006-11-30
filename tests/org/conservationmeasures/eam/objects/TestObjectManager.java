@@ -59,13 +59,13 @@ public class TestObjectManager extends EAMTestCase
 		}
 		
 		CreateFactorParameter factor = new CreateFactorParameter(new FactorTypeCause());
-		verifyObjectLifecycle(ObjectType.MODEL_NODE, factor);
+		verifyObjectLifecycle(ObjectType.FACTOR, factor);
 		
 		CreateFactorParameter target = new CreateFactorParameter(new FactorTypeTarget());
-		FactorId factorId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, factor);
-		FactorId targetId = (FactorId)manager.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, target);
+		FactorId factorId = (FactorId)manager.createObject(ObjectType.FACTOR, BaseId.INVALID, factor);
+		FactorId targetId = (FactorId)manager.createObject(ObjectType.FACTOR, BaseId.INVALID, target);
 		CreateFactorLinkParameter link = new CreateFactorLinkParameter(factorId, targetId);
-		verifyBasicObjectLifecycle(ObjectType.MODEL_LINKAGE, link);
+		verifyBasicObjectLifecycle(ObjectType.FACTOR_LINK, link);
 	}
 
 	public void testIsPseudoTag() throws Exception
@@ -150,9 +150,9 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyGetPool(int type) throws Exception
 	{
 		CreateObjectParameter cop = null;
-		if(type == ObjectType.MODEL_NODE)
+		if(type == ObjectType.FACTOR)
 			cop = new CreateFactorParameter(new FactorTypeTarget());
-		else if(type == ObjectType.MODEL_LINKAGE)
+		else if(type == ObjectType.FACTOR_LINK)
 			cop = new CreateFactorLinkParameter(new FactorId(1), new FactorId(2));
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, cop);
 		EAMObjectPool pool = manager.getPool(type);

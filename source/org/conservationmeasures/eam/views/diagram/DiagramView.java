@@ -381,7 +381,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	private void updateClusterAfterUndoIfNeeded(CommandSetObjectData cmd) throws Exception
 	{
-		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
+		if(cmd.getObjectType() != ObjectType.FACTOR)
 			return;
 		
 		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());
@@ -400,7 +400,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 	
 	private void captureClusterIfNeeded(CommandSetObjectData cmd) throws Exception
 	{
-		if(cmd.getObjectType() != ObjectType.MODEL_NODE)
+		if(cmd.getObjectType() != ObjectType.FACTOR)
 			return;
 		
 		FactorId nodeId = new FactorId(cmd.getObjectId().asInt());

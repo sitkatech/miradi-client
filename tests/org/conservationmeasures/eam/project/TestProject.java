@@ -79,7 +79,7 @@ public class TestProject extends EAMTestCase
 	
 	private CreateTaskParameter getTaskExtraInfo()
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		return extraInfo;
 	}
@@ -142,15 +142,15 @@ public class TestProject extends EAMTestCase
 	
 	public void testCreateAndDeleteModelLinkage() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
-		FactorId targetId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId targetId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
 		Cause factor = (Cause)project.findNode(threatId);
 		assertFalse("already direct threat?", factor.isDirectThreat());
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		BaseId createdId = project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
+		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		BaseId linkageId = createdId;
 		assertTrue("didn't become direct threat?", factor.isDirectThreat());
-		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);
+		project.deleteObject(ObjectType.FACTOR_LINK, linkageId);
 		assertFalse("still a direct threat?", factor.isDirectThreat());
 	}
 	
@@ -478,7 +478,7 @@ public class TestProject extends EAMTestCase
 		TransferableEamList transferableList = new TransferableEamList(project.getFilename(), selectedCells);
 		DiagramFactorId idToDelete = node1.getDiagramFactorId();
 		project.removeDiagramFactorFromDiagram(idToDelete);
-		project.deleteObject(ObjectType.MODEL_NODE, node1.getWrappedId());
+		project.deleteObject(ObjectType.FACTOR, node1.getWrappedId());
 		
 		assertEquals("objects still in the pool?", 0, project.getFactorPool().size());
 		assertEquals("nodes  still in the diagram?", 0, model.getAllDiagramFactors().size());
@@ -587,7 +587,7 @@ public class TestProject extends EAMTestCase
 		FactorId idA = nodeA.getWrappedId();
 		FactorId idB = nodeB.getWrappedId();
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(idA, idB);
-		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, idAssigner.takeNextId(), parameter);
+		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, idAssigner.takeNextId(), parameter);
 		FactorLinkId linkageId = createdId;
 		FactorLinkPool linkagePool = project.getFactorLinkPool();
 		assertEquals("not in pool?", 1, linkagePool.size());
@@ -596,7 +596,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("wrong to?", idB, cmLinkage.getToFactorId());
 		assertTrue("not linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 		
-		project.deleteObject(ObjectType.MODEL_LINKAGE, linkageId);
+		project.deleteObject(ObjectType.FACTOR_LINK, linkageId);
 		assertEquals("Didn't remove from pool?", 0, linkagePool.size());
 		assertFalse("still linked?", project.isLinked(nodeA.getWrappedId(), nodeB.getWrappedId()));
 	}
@@ -732,13 +732,13 @@ public class TestProject extends EAMTestCase
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
 			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
-			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			DiagramFactorId diagramNodeId = diskProject.addFactorToDiagram(interventionId);
 
 			CommandDiagramRemoveFactor cmdDelete = new CommandDiagramRemoveFactor(diagramNodeId);
 			diskProject.executeCommand(cmdDelete);
 			
-			diskProject.deleteObject(ObjectType.MODEL_NODE, interventionId);
+			diskProject.deleteObject(ObjectType.FACTOR, interventionId);
 		}
 		finally
 		{
@@ -811,7 +811,7 @@ public class TestProject extends EAMTestCase
 	private DiagramFactorLink createLinkage(BaseId id, FactorId fromId, FactorId toId) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
-		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.MODEL_LINKAGE, id, parameter);
+		FactorLinkId createdId = (FactorLinkId)project.createObject(ObjectType.FACTOR_LINK, id, parameter);
 		DiagramFactorLinkId diagramLinkageId = project.addLinkToDiagram(createdId);
 		return project.getDiagramModel().getDiagramFactorLinkById(diagramLinkageId);
 	}
@@ -819,7 +819,7 @@ public class TestProject extends EAMTestCase
 	public FactorId createNodeAndAddToDiagram(Project projectToUse, FactorType nodeType, BaseId id) throws Exception
 	{
 		CreateFactorParameter parameter = new CreateFactorParameter(nodeType);
-		FactorId nodeId = (FactorId)projectToUse.createObject(ObjectType.MODEL_NODE, id, parameter);
+		FactorId nodeId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, id, parameter);
 		projectToUse.addFactorToDiagram(nodeId);
 		return nodeId;
 	}

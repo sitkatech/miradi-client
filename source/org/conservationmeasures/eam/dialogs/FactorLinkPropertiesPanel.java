@@ -15,7 +15,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
 	public FactorLinkPropertiesPanel(Project projectToUse, FactorLinkId objectIdToUse)
 	{
-		super(projectToUse, ObjectType.MODEL_LINKAGE, objectIdToUse);
+		super(projectToUse, ObjectType.FACTOR_LINK, objectIdToUse);
 
 		addField(createStringField(FactorLink.TAG_STRESS_LABEL));
 		

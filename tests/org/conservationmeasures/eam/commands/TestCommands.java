@@ -376,7 +376,7 @@ public class TestCommands extends EAMTestCase
 		FactorId toId = model.getDiagramFactorById(to).getWrappedId();
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromId, toId);
-		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.MODEL_LINKAGE, extraInfo);
+		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);
 		project.executeCommand(createModelLinkage);
 		
 		FactorLinkId modelLinkageId = (FactorLinkId)createModelLinkage.getCreatedId();
@@ -578,7 +578,7 @@ public class TestCommands extends EAMTestCase
 	
 	private CreateTaskParameter getTaskExtraInfo()
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		return extraInfo;
 	}

@@ -18,7 +18,7 @@ public class StrategyPoolManagementPanel extends ObjectPoolManagementPanel
 	public StrategyPoolManagementPanel(Project projectToUse) throws Exception
 	{
 		super(new StrategyPoolTablePanel(projectToUse),
-				new StrategyPropertiesPanel(projectToUse, ObjectType.MODEL_NODE, BaseId.INVALID));
+				new StrategyPropertiesPanel(projectToUse, ObjectType.FACTOR, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()

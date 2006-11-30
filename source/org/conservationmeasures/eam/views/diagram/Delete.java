@@ -86,7 +86,7 @@ public class Delete extends ProjectDoer
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
 		getProject().executeCommand(removeCommand);
-		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.MODEL_LINKAGE, linkageToDelete.getWrappedId());
+		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId());
 		getProject().executeCommand(deleteLinkage);
 	}
 

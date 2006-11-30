@@ -37,6 +37,6 @@ public class TestFactorCluster extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_CLUSTER);
-		verifyFields(ObjectType.MODEL_NODE, extraInfo);
+		verifyFields(ObjectType.FACTOR, extraInfo);
 	}
 }

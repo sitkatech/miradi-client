@@ -150,7 +150,7 @@ public class TestInsertFactorDoer extends TestCaseEnhanced
 	private DiagramFactor createDiagramNode(Project project) throws Exception
 	{
 		CreateFactorParameter modelNodeParameter2 = new CreateFactorParameter(new FactorTypeTarget());
-		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, modelNodeParameter2);
+		FactorId nodeId2 = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, modelNodeParameter2);
 		DiagramFactorId  dModelId2 = project.addFactorToDiagram(nodeId2);
 		DiagramFactor dNode2 = project.getDiagramModel().getDiagramFactorById(dModelId2);
 		return dNode2;

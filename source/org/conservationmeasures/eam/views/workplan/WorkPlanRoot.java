@@ -38,7 +38,7 @@ public class WorkPlanRoot extends WorkPlanTreeTableNode
 	
 	public int getType()
 	{
-		return ObjectType.MODEL_NODE;
+		return ObjectType.FACTOR;
 	}
 
 	public Object getValueAt(int column)

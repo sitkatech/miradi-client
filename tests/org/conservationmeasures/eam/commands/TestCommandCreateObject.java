@@ -28,7 +28,7 @@ public class TestCommandCreateObject extends EAMTestCase
 		
 		try
 		{
-			int type = ObjectType.MODEL_NODE;
+			int type = ObjectType.FACTOR;
 			CreateFactorParameter parameter = new CreateFactorParameter(new FactorTypeCause());
 			CommandCreateObject cmd = new CommandCreateObject(type, parameter);
 			assertEquals("already has an id?", BaseId.INVALID, cmd.getCreatedId());

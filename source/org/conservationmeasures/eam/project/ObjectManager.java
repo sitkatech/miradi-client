@@ -55,8 +55,8 @@ public class ObjectManager
 
 		pools = new HashMap();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
-		pools.put(new Integer(ObjectType.MODEL_NODE), new FactorPool(factorAndLinkIdAssigner));
-		pools.put(new Integer(ObjectType.MODEL_LINKAGE), new FactorLinkPool(factorAndLinkIdAssigner, new FactorLinkMonitor()));
+		pools.put(new Integer(ObjectType.FACTOR), new FactorPool(factorAndLinkIdAssigner));
+		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner, new FactorLinkMonitor()));
 
 		IdAssigner ida = getAnnotationIdAssigner();
 		addNormalPool(new RatingCriterionPool(ida));
@@ -88,12 +88,12 @@ public class ObjectManager
 
 	public FactorPool getNodePool()
 	{
-		return (FactorPool)getPool(ObjectType.MODEL_NODE);
+		return (FactorPool)getPool(ObjectType.FACTOR);
 	}
 
 	public FactorLinkPool getLinkagePool()
 	{
-		return (FactorLinkPool)getPool(ObjectType.MODEL_LINKAGE);
+		return (FactorLinkPool)getPool(ObjectType.FACTOR_LINK);
 	}
 
 	public TaskPool getTaskPool()
@@ -131,7 +131,7 @@ public class ObjectManager
 		BaseId createdId = BaseId.INVALID;
 		switch(objectType)
 		{
-			case ObjectType.MODEL_NODE:
+			case ObjectType.FACTOR:
 			{
 				CreateFactorParameter parameter = (CreateFactorParameter)extraInfo;
 				FactorId nodeId = new FactorId(getProject().obtainRealNodeId(objectId).asInt());
@@ -141,7 +141,7 @@ public class ObjectManager
 				createdId = node.getId();
 				break;
 			}
-			case ObjectType.MODEL_LINKAGE:
+			case ObjectType.FACTOR_LINK:
 			{
 				CreateFactorLinkParameter parameter = (CreateFactorLinkParameter)extraInfo;
 				FactorLinkId realId = getProject().obtainRealLinkageId(objectId);
@@ -200,7 +200,7 @@ public class ObjectManager
 				return getObjectivePseudoField(objectType, objectId, fieldTag);
 			case ObjectType.INDICATOR:
 				return getIndicatorPseudoField(objectType, objectId, fieldTag);
-			case ObjectType.MODEL_NODE:
+			case ObjectType.FACTOR:
 				return getFactorPseudoField(objectId, fieldTag);
 			case ObjectType.TASK:
 				return getTaskPseudoField(objectId, fieldTag);
@@ -436,8 +436,8 @@ public class ObjectManager
 
 	public void loadFromDatabase() throws Exception
 	{
-		loadPool(ObjectType.MODEL_NODE);
-		loadPool(ObjectType.MODEL_LINKAGE);
+		loadPool(ObjectType.FACTOR);
+		loadPool(ObjectType.FACTOR_LINK);
 
 		loadPool(ObjectType.TASK);
 		loadPool(ObjectType.VIEW_DATA);

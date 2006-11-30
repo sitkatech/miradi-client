@@ -62,10 +62,10 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			Font boldFont = uiLabelFont.deriveFont(Font.BOLD);
 			Font italicFont = uiLabelFont.deriveFont(Font.ITALIC);
 			
-			interventionRenderer = new DefaultTreeCellRenderer();
-			interventionRenderer.setClosedIcon(new StrategyIcon());
-			interventionRenderer.setOpenIcon(new StrategyIcon());
-			interventionRenderer.setLeafIcon(new StrategyIcon());
+			strategyRenderer = new DefaultTreeCellRenderer();
+			strategyRenderer.setClosedIcon(new StrategyIcon());
+			strategyRenderer.setOpenIcon(new StrategyIcon());
+			strategyRenderer.setLeafIcon(new StrategyIcon());
 			
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
@@ -108,8 +108,8 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 				renderer  = stringNoIconRenderer;
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
-			else if(node.getType() == ObjectType.MODEL_NODE)
-				renderer = interventionRenderer;
+			else if(node.getType() == ObjectType.FACTOR)
+				renderer = strategyRenderer;
 			else if(node.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;
 			else if(node.getType() == ObjectType.GOAL)
@@ -125,7 +125,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer indicatorRenderer;
 		DefaultTreeCellRenderer activitiesRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
-		DefaultTreeCellRenderer interventionRenderer;
+		DefaultTreeCellRenderer strategyRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;
 	}
 

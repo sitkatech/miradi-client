@@ -17,7 +17,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 {
 	public FactorLinkPool(IdAssigner idAssignerToUse, FactorLinkListener listenerToNotify)
 	{
-		super(ObjectType.MODEL_LINKAGE, idAssignerToUse);
+		super(ObjectType.FACTOR_LINK, idAssignerToUse);
 		listener = listenerToNotify;
 	}
 	

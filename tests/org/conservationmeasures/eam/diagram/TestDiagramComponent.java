@@ -47,8 +47,8 @@ public class TestDiagramComponent extends EAMTestCase
 		diagramComponent.setGraphLayoutCache(project.getGraphLayoutCache());
 		
 		CreateFactorParameter cmnp = new CreateFactorParameter(new FactorTypeCause());
-		FactorId hiddenId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
-		FactorId visibleId = (FactorId) project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, cmnp);
+		FactorId hiddenId = (FactorId) project.createObject(ObjectType.FACTOR, BaseId.INVALID, cmnp);
+		FactorId visibleId = (FactorId) project.createObject(ObjectType.FACTOR, BaseId.INVALID, cmnp);
 		FactorLink cmLinkage = new FactorLink(new FactorLinkId(100), hiddenId, visibleId);
 		
 		DiagramFactor hiddenNode = diagramComponent.getDiagramModel().createDiagramFactor(hiddenId);

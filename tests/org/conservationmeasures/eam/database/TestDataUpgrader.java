@@ -76,7 +76,7 @@ public class TestDataUpgrader extends EAMTestCase
 		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
 		upgrader.renameNodeTagFromNameToLabel();
 		
-		int nodeType = ObjectType.MODEL_NODE;
+		int nodeType = ObjectType.FACTOR;
 		Target gotTarget = (Target)EAMBaseObject.createFromJson(nodeType, JSONFile.read(targetFile));
 		assertEquals(target.getLabel(), gotTarget.getLabel());
 		Cause gotThreat = (Cause)EAMBaseObject.createFromJson(nodeType, JSONFile.read(threatFile));

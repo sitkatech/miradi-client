@@ -10,7 +10,7 @@ public class ActivityListTableModel extends ObjectListTableModel
 {
 	public ActivityListTableModel(Project projectToUse, FactorId nodeId)
 	{
-		super(projectToUse, ObjectType.MODEL_NODE, nodeId, Strategy.TAG_ACTIVITY_IDS, ObjectType.TASK, COLUMN_TAGS);
+		super(projectToUse, ObjectType.FACTOR, nodeId, Strategy.TAG_ACTIVITY_IDS, ObjectType.TASK, COLUMN_TAGS);
 	}
 
 	private static String[] COLUMN_TAGS = {

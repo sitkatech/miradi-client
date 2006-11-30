@@ -33,7 +33,7 @@ public class TestDeleteActivity extends EAMTestCase
 		try
 		{
 			CreateFactorParameter parameter = new CreateFactorParameter(new FactorTypeStrategy());
-			BaseId rawInterventionId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			BaseId rawInterventionId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			FactorId interventionId = new FactorId(rawInterventionId.asInt());
 			Strategy intervention = (Strategy)project.findNode(interventionId);
 			BaseId resourceId = project.createObject(ObjectType.PROJECT_RESOURCE);

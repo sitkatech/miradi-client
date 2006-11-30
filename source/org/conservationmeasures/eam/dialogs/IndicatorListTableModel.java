@@ -15,6 +15,6 @@ public class IndicatorListTableModel extends ObjectListTableModel
 {
 	public IndicatorListTableModel(Project projectToUse, FactorId nodeId)
 	{
-		super(projectToUse, ObjectType.MODEL_NODE, nodeId, Factor.TAG_INDICATOR_IDS, ObjectType.INDICATOR, Indicator.TAG_LABEL);
+		super(projectToUse, ObjectType.FACTOR, nodeId, Factor.TAG_INDICATOR_IDS, ObjectType.INDICATOR, Indicator.TAG_LABEL);
 	}
 }

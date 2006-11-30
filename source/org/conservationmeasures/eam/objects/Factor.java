@@ -41,7 +41,7 @@ abstract public class Factor extends EAMBaseObject
 	
 	public int getType()
 	{
-		return ObjectType.MODEL_NODE;
+		return ObjectType.FACTOR;
 	}
 	
 	public FactorType getNodeType()

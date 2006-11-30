@@ -56,7 +56,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
 			
 			FactorSet gotChainNodes = model.getNodesInChain(cmNode);
 			
@@ -102,7 +102,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInChain[threatIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
 			FactorSet gotChainNodes = model.getDirectThreatChainNodes(cmNode);
 			assertEquals("wrong direct threat chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}
@@ -120,7 +120,7 @@ public class TestDiagramModel extends EAMTestCase
 		{
 			int[] expectedChainNodeIds = expectedNodesInFullChain[nodeIndex];
 			BaseId threatId = new BaseId(expectedChainNodeIds[0]);
-			Factor cmNode = (Factor)project.findObject(ObjectType.MODEL_NODE, threatId);
+			Factor cmNode = (Factor)project.findObject(ObjectType.FACTOR, threatId);
 			FactorSet gotChainNodes = model.getAllUpstreamDownstreamNodes(cmNode);
 			assertEquals("wrong chain nodes for " + threatId + "?", findNodes(expectedChainNodeIds), gotChainNodes);
 		}

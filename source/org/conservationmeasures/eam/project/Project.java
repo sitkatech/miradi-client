@@ -224,7 +224,7 @@ public class Project
 	
 	public Factor findNode(FactorId nodeId)
 	{
-		return (Factor)findObject(ObjectType.MODEL_NODE, nodeId);
+		return (Factor)findObject(ObjectType.FACTOR, nodeId);
 	}
 	
 	public ProjectInfo getProjectInfo()
@@ -290,7 +290,7 @@ public class Project
 	public void setObjectData(int objectType, BaseId objectId, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectType, objectId, fieldTag, dataValue);
-		if(objectType == ObjectType.MODEL_NODE)
+		if(objectType == ObjectType.FACTOR)
 		{
 			DiagramModel model = getDiagramModel();
 			FactorId modelNodeId = (FactorId)objectId;

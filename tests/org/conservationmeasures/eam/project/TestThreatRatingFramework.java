@@ -137,11 +137,11 @@ public class TestThreatRatingFramework extends EAMTestCase
 	public void testBundlesForDeletedNodes() throws Exception
 	{
 		ThreatRatingBundle bundle1 = createThreatTargetAndBundle();
-		project.deleteObject(ObjectType.MODEL_NODE, bundle1.getThreatId());
+		project.deleteObject(ObjectType.FACTOR, bundle1.getThreatId());
 		assertFalse("deleted threatId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle1));
 		
 		ThreatRatingBundle bundle2 = createThreatTargetAndBundle();
-		project.deleteObject(ObjectType.MODEL_NODE, bundle2.getTargetId());
+		project.deleteObject(ObjectType.FACTOR, bundle2.getTargetId());
 		assertFalse("deleted targetId case failed?", framework.isBundleForLinkedThreatAndTarget(bundle2));
 		
 	}
@@ -207,13 +207,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 	void createLinkageAndBundle(Project projectToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
 	{
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		projectToUse.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
+		projectToUse.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		populateBundle(projectToUse.getThreatRatingFramework(), threatId, targetId, value);
 	}
 	
 	public void testGetThreatRatingSummaryUnlinked() throws Exception
 	{
-		FactorId threatId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
 		FactorId targetId = createTarget(project);
 
 		ValueOption none = framework.findValueOptionByNumericValue(0);
@@ -224,7 +224,7 @@ public class TestThreatRatingFramework extends EAMTestCase
 		assertEquals("included unlinked bundle in threat value?", none, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("included unlinked bundle in target value?", none, framework.getTargetThreatRatingValue(targetId));
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threatId, targetId);
-		project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
+		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		
 		assertEquals("linking didn't include value for threat?", high, framework.getThreatThreatRatingValue(threatId));
 		assertEquals("linking didn't include value for target?", high, framework.getTargetThreatRatingValue(targetId));
@@ -308,13 +308,13 @@ public class TestThreatRatingFramework extends EAMTestCase
 
 	private FactorId createTarget(Project projectToUse) throws Exception
 	{
-		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
+		FactorId targetId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeTarget()));
 		return targetId;
 	}
 
 	private FactorId createThreat(Project projectToUse) throws Exception
 	{
-		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
+		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.FACTOR, BaseId.INVALID, new CreateFactorParameter(new FactorTypeCause()));
 		((Cause)projectToUse.findNode(threatId)).increaseTargetCount();
 		return threatId;
 	}

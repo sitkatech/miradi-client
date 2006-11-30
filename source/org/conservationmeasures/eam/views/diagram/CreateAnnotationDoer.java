@@ -61,7 +61,7 @@ public abstract class CreateAnnotationDoer extends ViewDoer
 		if(selected == null)
 			return null;
 		
-		if(selected.getType() != ObjectType.MODEL_NODE)
+		if(selected.getType() != ObjectType.FACTOR)
 			return null;
 		
 		return (Factor)selected;

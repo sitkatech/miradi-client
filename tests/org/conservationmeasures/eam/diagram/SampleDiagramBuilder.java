@@ -25,17 +25,17 @@ public class SampleDiagramBuilder
 		final int targetIndexBase = 41;
 		for(int i = 0; i < itemsPerType; ++i)
 		{
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
-			project.createObject(ObjectType.MODEL_NODE, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
+			project.createObject(ObjectType.FACTOR, new BaseId(interventionIndexBase + i), new CreateFactorParameter(new FactorTypeStrategy()));
+			project.createObject(ObjectType.FACTOR, new BaseId(indirectFactorIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.FACTOR, new BaseId(directThreatIndexBase + i), new CreateFactorParameter(new FactorTypeCause()));
+			project.createObject(ObjectType.FACTOR, new BaseId(targetIndexBase + i), new CreateFactorParameter(new FactorTypeTarget()));
 		}
 		for(int i = 0; i < linkagePairs.length / 2; ++i)
 		{
 			FactorId fromId = new FactorId(linkagePairs[i*2]);
 			FactorId toId = new FactorId(linkagePairs[i*2+1]);
 			CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromId, toId);
-			project.createObject(ObjectType.MODEL_LINKAGE, BaseId.INVALID, parameter);
+			project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
 		}
 	}
 }

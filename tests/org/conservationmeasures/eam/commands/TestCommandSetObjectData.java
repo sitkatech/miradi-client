@@ -22,7 +22,7 @@ public class TestCommandSetObjectData extends EAMTestCase
 
 	public void testListInsert() throws Exception
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		Task task = new Task(new BaseId(39), extraInfo);
 		BaseId id1 = new BaseId(75);
@@ -43,7 +43,7 @@ public class TestCommandSetObjectData extends EAMTestCase
 	
 	public void testListRemove() throws Exception
 	{
-		ORef parentRef = new ORef(ObjectType.MODEL_NODE, new BaseId(45));
+		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		Task task = new Task(new BaseId(47), extraInfo);
 		task.addSubtaskId(new BaseId(12));

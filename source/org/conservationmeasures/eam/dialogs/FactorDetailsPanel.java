@@ -195,7 +195,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	{
 		try
 		{
-			int type = ObjectType.MODEL_NODE;
+			int type = ObjectType.FACTOR;
 			// TODO: This looks wrong...could be called for Strategy or DirectThreat
 			String tag = Cause.TAG_TAXONOMY_CODE;
 		
@@ -233,7 +233,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(statusCheckBox.isSelected())
 			newValue = Strategy.STATUS_DRAFT;
 
-		return new CommandSetObjectData(ObjectType.MODEL_NODE, getCurrentFactorId(), 
+		return new CommandSetObjectData(ObjectType.FACTOR, getCurrentFactorId(), 
 				Strategy.TAG_STATUS, newValue);
 	}
 

@@ -27,7 +27,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusIndicators = new IdList();
@@ -54,7 +54,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusGoals = new IdList();
@@ -81,7 +81,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
@@ -108,7 +108,7 @@ public class TestProjectRepairer extends EAMTestCase
 		try
 		{
 			CreateObjectParameter parameter = new CreateFactorParameter(new FactorTypeTarget());
-			BaseId rawNodeId = project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, parameter);
+			BaseId rawNodeId = project.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			FactorId nodeId = new FactorId(rawNodeId.asInt());
 			Factor node = project.findNode(nodeId);
 			IdList bogusObjectives = new IdList();
@@ -189,10 +189,10 @@ public class TestProjectRepairer extends EAMTestCase
 			BaseId orphan = project.createObject(annotationType);
 			BaseId nonOrphan = project.createObject(annotationType);
 			CreateFactorParameter extraInfo = new CreateFactorParameter(nodeType);
-			FactorId nodeId = (FactorId)project.createObject(ObjectType.MODEL_NODE, BaseId.INVALID, extraInfo);
+			FactorId nodeId = (FactorId)project.createObject(ObjectType.FACTOR, BaseId.INVALID, extraInfo);
 			IdList annotationIds = new IdList();
 			annotationIds.add(nonOrphan);
-			project.setObjectData(ObjectType.MODEL_NODE, nodeId, nodeTagForAnnotationList, annotationIds.toString());
+			project.setObjectData(ObjectType.FACTOR, nodeId, nodeTagForAnnotationList, annotationIds.toString());
 			
 			EAM.setLogToString();
 			ProjectRepairer.repairAnyProblems(project);

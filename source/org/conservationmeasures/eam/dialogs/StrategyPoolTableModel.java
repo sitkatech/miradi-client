@@ -13,7 +13,7 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 {
 	public StrategyPoolTableModel(Project projectToUse)
 	{
-		super(projectToUse, ObjectType.MODEL_NODE,projectToUse.getFactorPool().getInterventionIds(), COLUMN_TAGS);	
+		super(projectToUse, ObjectType.FACTOR,projectToUse.getFactorPool().getInterventionIds(), COLUMN_TAGS);	
 	}
 
 	private static final String[] COLUMN_TAGS = new String[] {

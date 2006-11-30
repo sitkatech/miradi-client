@@ -164,7 +164,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(Strategy.TAG_ACTIVITY_IDS))
+		if(cmd.getObjectType() == ObjectType.FACTOR && cmd.getFieldTag().equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		return false;
 	}
@@ -188,7 +188,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 
 		Command rawCommand = event.getCommand();
 		CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-		if(cmd.getObjectType() == ObjectType.MODEL_NODE && cmd.getFieldTag().equals(Factor.TAG_OBJECTIVE_IDS))
+		if(cmd.getObjectType() == ObjectType.FACTOR && cmd.getFieldTag().equals(Factor.TAG_OBJECTIVE_IDS))
 		{
 			return true;
 		}
