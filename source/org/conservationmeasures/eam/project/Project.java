@@ -357,6 +357,8 @@ public class Project
 		{
 			loadProjectInfo();
 			objectManager.loadFromDatabase();
+			EAM.logDebug("Highest Factor Id: " + getNodeIdAssigner().getHighestAssignedId());
+			EAM.logDebug("Highest Normal Id: " + getAnnotationIdAssigner().getHighestAssignedId());
 		}
 		catch(Exception e)
 		{
