@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -17,6 +18,11 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
+	}
+	
+	public EAMObject getObject()
+	{
+		return indicator;
 	}
 
 	public ORef getObjectReference()

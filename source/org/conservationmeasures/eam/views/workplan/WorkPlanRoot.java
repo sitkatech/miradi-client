@@ -10,6 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -19,6 +20,11 @@ public class WorkPlanRoot extends WorkPlanTreeTableNode
 	{
 		project = projectToUse;
 		rebuild();
+	}
+	
+	public EAMObject getObject()
+	{
+		return null;
 	}
 
 	public TreeTableNode getChild(int index)

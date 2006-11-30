@@ -10,6 +10,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -22,6 +23,11 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 		project = projectToUse;
 		intervention = interventionToUse;
 		rebuild();
+	}
+	
+	public EAMObject getObject()
+	{
+		return intervention;
 	}
 
 	public Strategy getIntervention()

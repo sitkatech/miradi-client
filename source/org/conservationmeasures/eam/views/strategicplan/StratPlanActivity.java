@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.strategicplan;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -21,6 +22,11 @@ public class StratPlanActivity extends TreeTableNode
 		if(activityToUse == null)
 			EAM.logError("Attempted to create tree node for null activity");
 		activity = activityToUse;
+	}
+	
+	public EAMObject getObject()
+	{
+		return activity;
 	}
 	
 	public Object getValueAt(int column)

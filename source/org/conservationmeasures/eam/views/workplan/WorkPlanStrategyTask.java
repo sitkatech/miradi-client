@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
@@ -28,6 +29,11 @@ public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
 			EAM.logError("Attempted to create tree node for null activity");
 		task = taskToUse;
 		rebuild();
+	}
+	
+	public EAMObject getObject()
+	{
+		return task;
 	}
 	
 	public Object getValueAt(int column)

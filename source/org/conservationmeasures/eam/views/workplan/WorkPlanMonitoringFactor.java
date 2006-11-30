@@ -10,6 +10,7 @@ import java.util.Arrays;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
@@ -23,6 +24,11 @@ public class WorkPlanMonitoringFactor extends WorkPlanTreeTableNode
 		project = projectToUse;
 		factor = factorToUse;
 		rebuild();
+	}
+	
+	public EAMObject getObject()
+	{
+		return factor;
 	}
 	
 	public boolean canInsertActivityHere()

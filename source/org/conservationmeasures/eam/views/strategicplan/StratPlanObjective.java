@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Desire;
@@ -28,6 +29,11 @@ public class StratPlanObjective extends TreeTableNode
 		objective = objectiveToUse;
 		strategies = new StratPlanStrategy[0];
 		rebuild();
+	}
+	
+	public EAMObject getObject()
+	{
+		return objective;
 	}
 	
 	public Object getValueAt(int column)

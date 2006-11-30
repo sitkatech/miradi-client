@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -16,6 +17,11 @@ public class StratPlanStrategy extends TreeTableNode
 	{
 		project = projectToUse;
 		intervention = interventionToUse;
+	}
+	
+	public EAMObject getObject()
+	{
+		return intervention;
 	}
 	
 	public Strategy getIntervention()

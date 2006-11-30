@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objects.EAMObject;
 
 public abstract class TreeTableNode
 {
@@ -15,4 +16,5 @@ public abstract class TreeTableNode
 	public abstract int getChildCount();
 	public abstract TreeTableNode getChild(int index);
 	public abstract Object getValueAt(int column);
+	public abstract EAMObject getObject();
 }

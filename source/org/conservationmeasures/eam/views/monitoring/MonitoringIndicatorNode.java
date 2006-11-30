@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objectpools.ResourcePool;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -21,6 +22,11 @@ public class MonitoringIndicatorNode extends MonitoringNode
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
+	}
+	
+	public EAMObject getObject()
+	{
+		return indicator;
 	}
 
 	public ORef getObjectReference()

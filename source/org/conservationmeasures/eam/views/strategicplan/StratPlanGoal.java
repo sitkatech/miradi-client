@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Objective;
@@ -33,6 +34,11 @@ public class StratPlanGoal extends TreeTableNode
 		goal = goalToUse;
 		rebuild();
 		
+	}
+	
+	public EAMObject getObject()
+	{
+		return goal;
 	}
 	
 	public boolean canInsertActivityHere()

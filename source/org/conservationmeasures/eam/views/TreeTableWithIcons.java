@@ -18,14 +18,16 @@ import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.icons.ActivityIcon;
+import org.conservationmeasures.eam.icons.EamIcon;
+import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
-import org.conservationmeasures.eam.icons.StrategyIcon;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiLabel;
@@ -62,10 +64,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			Font boldFont = uiLabelFont.deriveFont(Font.BOLD);
 			Font italicFont = uiLabelFont.deriveFont(Font.ITALIC);
 			
-			strategyRenderer = new DefaultTreeCellRenderer();
-			strategyRenderer.setClosedIcon(new StrategyIcon());
-			strategyRenderer.setOpenIcon(new StrategyIcon());
-			strategyRenderer.setLeafIcon(new StrategyIcon());
+			factorRenderer = new DefaultTreeCellRenderer();
 			
 			objectiveRenderer = new DefaultTreeCellRenderer();
 			objectiveRenderer.setClosedIcon(new ObjectiveIcon());
@@ -83,7 +82,6 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			goalRenderer.setOpenIcon(new GoalIcon());
 			goalRenderer.setLeafIcon(new GoalIcon());
 			goalRenderer.setFont(boldFont);
-			
 			
 			activitiesRenderer = new DefaultTreeCellRenderer();
 			activitiesRenderer.setClosedIcon(new ActivityIcon());
@@ -109,7 +107,7 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			else if(node.getType() == ObjectType.INDICATOR)
 				renderer = indicatorRenderer;
 			else if(node.getType() == ObjectType.FACTOR)
-				renderer = strategyRenderer;
+				renderer = getFactorRenderer((Factor)node.getObject());
 			else if(node.getType() == ObjectType.OBJECTIVE)
 				renderer = objectiveRenderer;
 			else if(node.getType() == ObjectType.GOAL)
@@ -120,12 +118,24 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
 		}
 
+		private TreeCellRenderer getFactorRenderer(Factor factor)
+		{
+			DefaultTreeCellRenderer renderer = new DefaultTreeCellRenderer();
+			FactorIcon factorIcon = new FactorIcon(factor);
+			EamIcon icon = factorIcon.getIcon();
+
+			renderer.setClosedIcon(icon);
+			renderer.setOpenIcon(icon);
+			renderer.setLeafIcon(icon);
+			return renderer;
+		}
+
 		DefaultTreeCellRenderer objectiveRenderer;
 		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer indicatorRenderer;
 		DefaultTreeCellRenderer activitiesRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
-		DefaultTreeCellRenderer strategyRenderer;
+		DefaultTreeCellRenderer factorRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;
 	}
 

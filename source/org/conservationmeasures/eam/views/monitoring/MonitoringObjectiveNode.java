@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
@@ -44,6 +45,11 @@ public class MonitoringObjectiveNode extends MonitoringNode
 			children.add(new MonitoringIndicatorNode(project, indicator));
 		}
 		Collections.sort(children, new IgnoreCaseStringComparator());
+	}
+	
+	public EAMObject getObject()
+	{
+		return objective;
 	}
 
 	private HashSet getAlUpstreamIndicators(FactorSet nodes)
