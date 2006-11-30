@@ -75,7 +75,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
-import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
+import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
@@ -260,7 +260,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewWorkPlan.class, new ViewWorkPlan());
 		addDoerToMap(ActionViewMap.class, new ViewMap());
 		addDoerToMap(ActionViewImages.class, new ViewImages());
-		addDoerToMap(ActionViewCalendar.class, new ViewCalendar());
+		addDoerToMap(ActionViewSchedule.class, new ViewSchedule());
 		addDoerToMap(ActionViewStrategicPlan.class, new ViewStrategicPlan());
 		addDoerToMap(ActionViewMonitoring.class, new ViewMonitoring());
 		

@@ -56,7 +56,7 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
-import org.conservationmeasures.eam.actions.views.ActionViewCalendar;
+import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
@@ -109,7 +109,7 @@ public class Actions
 		registerAction(new ActionViewMap(mainWindow));
 		registerAction(new ActionViewStrategicPlan(mainWindow));
 		registerAction(new ActionViewImages(mainWindow));
-		registerAction(new ActionViewCalendar(mainWindow));
+		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
 		
 		registerAction(new ActionConfigureLayers(mainWindow));

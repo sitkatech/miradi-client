@@ -4,21 +4,21 @@ import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionViewCalendar extends MainWindowAction
+public class ActionViewSchedule extends MainWindowAction
 {
-	public ActionViewCalendar(MainWindow mainWindowToUse)
+	public ActionViewSchedule(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Calendar") + DEMO_INDICATOR;
+		return EAM.text("Action|Schedule") + DEMO_INDICATOR;
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Calendar");
+		return EAM.text("TT|Switch to the Schedule");
 	}
 	
 	public String toString()
