@@ -17,12 +17,12 @@ public class ActionModifyResource extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Edit Resource");
+		return EAM.text("Action|Manage|Modify Member ...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Edit the selected resource");
+		return EAM.text("TT|Modify the selected member");
 	}
 	
 
