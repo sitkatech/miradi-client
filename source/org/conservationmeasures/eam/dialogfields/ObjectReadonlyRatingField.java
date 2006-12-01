@@ -18,13 +18,11 @@ import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.RatingChoice;
-import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiLabel;
 
 public class ObjectReadonlyRatingField extends ObjectDataInputField
 {
-	public ObjectReadonlyRatingField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, RatingQuestion questionToUse)
+	public ObjectReadonlyRatingField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		question = questionToUse;
@@ -41,7 +39,7 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 	
 	public void setText(String code)
 	{
-		RatingChoice choice = getRatingChoice(code);
+		ChoiceItem choice = getRatingChoice(code);
 		currentCode = code;
 		String text = "";
 		Icon icon = null;
@@ -55,7 +53,7 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 		component.invalidate();
 	}
 
-	private RatingChoice getRatingChoice(String text)
+	private ChoiceItem getRatingChoice(String text)
 	{
 		return question.findChoiceByCode(text);
 	}
@@ -75,6 +73,6 @@ public class ObjectReadonlyRatingField extends ObjectDataInputField
 	}
 
 	String currentCode;
-	RatingQuestion question;
+	ChoiceQuestion question;
 	UiLabel component;
 }

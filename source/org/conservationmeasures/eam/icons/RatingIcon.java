@@ -9,11 +9,11 @@ import java.awt.Color;
 
 import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
-import org.conservationmeasures.eam.ratings.RatingChoice;
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 
 public class RatingIcon extends EamIcon
 {
-	public RatingIcon(RatingChoice option)
+	public RatingIcon(ChoiceItem option)
 	{
 		color = option.getColor();
 	}
@@ -28,7 +28,7 @@ public class RatingIcon extends EamIcon
 		return color;
 	}
 	
-	public static RatingIcon createFromChoice(RatingChoice choice)
+	public static RatingIcon createFromChoice(ChoiceItem choice)
 	{
 		if (choice.getColor() == null)
 			return null;

@@ -5,13 +5,13 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
 import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
@@ -85,7 +85,7 @@ public class Strategy extends Factor
 			super.setData(fieldTag, dataValue);
 	}
 	
-	public RatingChoice getStrategyRating()
+	public ChoiceItem getStrategyRating()
 	{
 		StrategyRatingSummary summary = new StrategyRatingSummary("");
 		StrategyImpactQuestion impactQuestion = new StrategyImpactQuestion("");
@@ -93,11 +93,11 @@ public class Strategy extends Factor
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("");
 		StrategyCostQuestion costQuestion = new StrategyCostQuestion("");
 		
-		RatingChoice impact = impactQuestion.findChoiceByCode(impactRating.get());
-		RatingChoice duration = durationQuestion.findChoiceByCode(durationRating.get());
-		RatingChoice feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
-		RatingChoice cost = costQuestion.findChoiceByCode(costRating.get());
-		RatingChoice result = summary.getResult(impact, duration, feasibility, cost);
+		ChoiceItem impact = impactQuestion.findChoiceByCode(impactRating.get());
+		ChoiceItem duration = durationQuestion.findChoiceByCode(durationRating.get());
+		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityRating.get());
+		ChoiceItem cost = costQuestion.findChoiceByCode(costRating.get());
+		ChoiceItem result = summary.getResult(impact, duration, feasibility, cost);
 
 		return result;
 	}

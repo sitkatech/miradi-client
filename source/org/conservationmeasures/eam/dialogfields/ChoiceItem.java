@@ -3,18 +3,18 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.ratings;
+package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
 
-public class RatingChoice
+public class ChoiceItem
 {
-	public RatingChoice(String codeToUse, String labelToUse)
+	public ChoiceItem(String codeToUse, String labelToUse)
 	{
 		this(codeToUse, labelToUse, null);
 	}
 	
-	public RatingChoice(String codeToUse, String labelToUse, Color colorToUse)
+	public ChoiceItem(String codeToUse, String labelToUse, Color colorToUse)
 	{
 		code = codeToUse;
 		label = labelToUse;

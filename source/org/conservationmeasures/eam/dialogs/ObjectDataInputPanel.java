@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultiCodeInputField;
@@ -32,7 +33,6 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.Alignment;
@@ -131,12 +131,12 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectMultilineDisplayField(project, objectType, objectId, tag);
 	}
 		
-	public ObjectDataInputField createRatingField(RatingQuestion question)
+	public ObjectDataInputField createRatingField(ChoiceQuestion question)
 	{
 		return new ObjectRatingField(project, objectType, objectId, question);
 	}
 	
-	public ObjectDataInputField createRatingSummaryField(RatingQuestion question)
+	public ObjectDataInputField createRatingSummaryField(ChoiceQuestion question)
 	{
 		return new ObjectReadonlyRatingField(project, objectType, objectId, question);
 	}

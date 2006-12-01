@@ -7,21 +7,24 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class PriorityRatingQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class PriorityRatingQuestion extends ChoiceQuestion
 {
 	public PriorityRatingQuestion(String tag)
 	{
 		super(tag, "Priority", getPriorityChoices());
 	}
 	
-	static RatingChoice[] getPriorityChoices()
+	static ChoiceItem[] getPriorityChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Low", Color.GREEN),
-			new RatingChoice("2", "Medium", Color.YELLOW),
-			new RatingChoice("3", "High", Color.ORANGE),
-			new RatingChoice("4", "Very High", Color.RED),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Not Specified", Color.WHITE),
+			new ChoiceItem("1", "Low", Color.GREEN),
+			new ChoiceItem("2", "Medium", Color.YELLOW),
+			new ChoiceItem("3", "High", Color.ORANGE),
+			new ChoiceItem("4", "Very High", Color.RED),
 		};
 	}
 }

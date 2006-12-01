@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.ratings;
 
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestStrategyRatingSummary extends EAMTestCase
@@ -36,11 +37,11 @@ public class TestStrategyRatingSummary extends EAMTestCase
 		StrategyFeasibilityQuestion feasibilityQuestion = new StrategyFeasibilityQuestion("feasibility");
 		StrategyCostQuestion costQuestion = new StrategyCostQuestion("feasibility");
 		StrategyRatingSummary summary = new StrategyRatingSummary("summary");
-		RatingChoice impact = impactQuestion.findChoiceByCode(impactCode);
-		RatingChoice duration = durationQuestion.findChoiceByCode(durationCode);
-		RatingChoice feasibility = feasibilityQuestion.findChoiceByCode(feasibilityCode);
-		RatingChoice cost = costQuestion.findChoiceByCode(costCode);
-		RatingChoice result = summary.getResult(impact, duration, feasibility, cost);
+		ChoiceItem impact = impactQuestion.findChoiceByCode(impactCode);
+		ChoiceItem duration = durationQuestion.findChoiceByCode(durationCode);
+		ChoiceItem feasibility = feasibilityQuestion.findChoiceByCode(feasibilityCode);
+		ChoiceItem cost = costQuestion.findChoiceByCode(costCode);
+		ChoiceItem result = summary.getResult(impact, duration, feasibility, cost);
 		assertEquals(message, resultCode, result.getCode());
 	}
 }

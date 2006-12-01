@@ -7,25 +7,28 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class StrategyRatingSummary extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class StrategyRatingSummary extends ChoiceQuestion
 {
 	public StrategyRatingSummary(String tag)
 	{
 		super(tag, "Priority", getStrategyRatingChoices());
 	}
 	
-	static RatingChoice[] getStrategyRatingChoices()
+	static ChoiceItem[] getStrategyRatingChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Unknown", Color.WHITE),
-			new RatingChoice("1", "Completely Ineffective", COLOR_1_OF_4),
-			new RatingChoice("2", "Ineffective", COLOR_2_OF_4),
-			new RatingChoice("3", "Effective", COLOR_3_OF_4),
-			new RatingChoice("4", "Very Effective", COLOR_4_OF_4),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Unknown", Color.WHITE),
+			new ChoiceItem("1", "Completely Ineffective", COLOR_1_OF_4),
+			new ChoiceItem("2", "Ineffective", COLOR_2_OF_4),
+			new ChoiceItem("3", "Effective", COLOR_3_OF_4),
+			new ChoiceItem("4", "Very Effective", COLOR_4_OF_4),
 		};
 	}
 
-	public RatingChoice getResult(RatingChoice impact, RatingChoice duration, RatingChoice feasibility, RatingChoice cost)
+	public ChoiceItem getResult(ChoiceItem impact, ChoiceItem duration, ChoiceItem feasibility, ChoiceItem cost)
 	{
 		String impactCode = impact.getCode();
 		String durationCode = duration.getCode();

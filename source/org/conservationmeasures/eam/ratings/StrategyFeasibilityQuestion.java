@@ -7,21 +7,24 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class StrategyFeasibilityQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class StrategyFeasibilityQuestion extends ChoiceQuestion
 {
 	public StrategyFeasibilityQuestion(String tag)
 	{
 		super(tag, "Feasibility", getFeasibilityChoices());
 	}
 	
-	static RatingChoice[] getFeasibilityChoices()
+	static ChoiceItem[] getFeasibilityChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Impossible", COLOR_1_OF_4),
-			new RatingChoice("2", "Difficult", COLOR_2_OF_4),
-			new RatingChoice("3", "Moderate", COLOR_3_OF_4),
-			new RatingChoice("4", "Easy", COLOR_4_OF_4),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Not Specified", Color.WHITE),
+			new ChoiceItem("1", "Impossible", COLOR_1_OF_4),
+			new ChoiceItem("2", "Difficult", COLOR_2_OF_4),
+			new ChoiceItem("3", "Moderate", COLOR_3_OF_4),
+			new ChoiceItem("4", "Easy", COLOR_4_OF_4),
 		};
 	}
 

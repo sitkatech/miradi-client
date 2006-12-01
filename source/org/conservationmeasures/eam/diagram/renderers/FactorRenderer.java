@@ -48,6 +48,7 @@ import java.awt.Stroke;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -57,7 +58,6 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
-import org.conservationmeasures.eam.ratings.RatingChoice;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -199,7 +199,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	ValueOption priority;
 	DiagramFactor node;
-	RatingChoice rating;
+	ChoiceItem rating;
 	String indicatorText;
 	String desireText;
 }

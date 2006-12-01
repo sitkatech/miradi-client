@@ -7,21 +7,24 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class StrategyDurationQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class StrategyDurationQuestion extends ChoiceQuestion
 {
 	public StrategyDurationQuestion(String tag)
 	{
 		super(tag, "Duration of Impact", getDurationChoices());
 	}
 	
-	static RatingChoice[] getDurationChoices()
+	static ChoiceItem[] getDurationChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Useless", COLOR_1_OF_4),
-			new RatingChoice("2", "Short-Term", COLOR_2_OF_4),
-			new RatingChoice("3", "Long-Term", COLOR_3_OF_4),
-			new RatingChoice("4", "Permanent", COLOR_4_OF_4),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Not Specified", Color.WHITE),
+			new ChoiceItem("1", "Useless", COLOR_1_OF_4),
+			new ChoiceItem("2", "Short-Term", COLOR_2_OF_4),
+			new ChoiceItem("3", "Long-Term", COLOR_3_OF_4),
+			new ChoiceItem("4", "Permanent", COLOR_4_OF_4),
 		};
 	}
 

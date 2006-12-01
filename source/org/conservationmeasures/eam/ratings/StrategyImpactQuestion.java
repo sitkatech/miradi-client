@@ -7,21 +7,24 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class StrategyImpactQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class StrategyImpactQuestion extends ChoiceQuestion
 {
 	public StrategyImpactQuestion(String tag)
 	{
 		super(tag, "Impact on Key Factors", getImpactChoices());
 	}
 	
-	static RatingChoice[] getImpactChoices()
+	static ChoiceItem[] getImpactChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "None", COLOR_1_OF_4),
-			new RatingChoice("2", "Low", COLOR_2_OF_4),
-			new RatingChoice("3", "Medium", COLOR_3_OF_4),
-			new RatingChoice("4", "High", COLOR_4_OF_4),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Not Specified", Color.WHITE),
+			new ChoiceItem("1", "None", COLOR_1_OF_4),
+			new ChoiceItem("2", "Low", COLOR_2_OF_4),
+			new ChoiceItem("3", "Medium", COLOR_3_OF_4),
+			new ChoiceItem("4", "High", COLOR_4_OF_4),
 		};
 	}
 

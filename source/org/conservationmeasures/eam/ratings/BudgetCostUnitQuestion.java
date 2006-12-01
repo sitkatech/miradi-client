@@ -5,22 +5,25 @@
  */
 package org.conservationmeasures.eam.ratings;
 
-public class BudgetCostUnitQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class BudgetCostUnitQuestion extends ChoiceQuestion
 {
 	public BudgetCostUnitQuestion(String tagToUse)
 	{
 		super(tagToUse, "Cost Units", getCostUnitChoices());
 	}
 
-	static RatingChoice[] getCostUnitChoices()
+	static ChoiceItem[] getCostUnitChoices()
 	{
-		return new RatingChoice[] {
-				new RatingChoice("", "Not Specified"),
-				new RatingChoice("hours", "Hours"),
-				new RatingChoice("days", "Days"),
-				new RatingChoice("weeks", "Weeks"),
-				new RatingChoice("months", "Months"),
-				new RatingChoice("each", "Each"),
+		return new ChoiceItem[] {
+				new ChoiceItem("", "Not Specified"),
+				new ChoiceItem("hours", "Hours"),
+				new ChoiceItem("days", "Days"),
+				new ChoiceItem("weeks", "Weeks"),
+				new ChoiceItem("months", "Months"),
+				new ChoiceItem("each", "Each"),
 		};
 	}
 }

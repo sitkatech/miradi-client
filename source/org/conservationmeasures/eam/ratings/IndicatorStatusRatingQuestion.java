@@ -7,21 +7,24 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
-public class IndicatorStatusRatingQuestion extends RatingQuestion
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
+
+public class IndicatorStatusRatingQuestion extends ChoiceQuestion
 {
 	public IndicatorStatusRatingQuestion(String tag)
 	{
 		super(tag, "Status", getStatusChoices());
 	}
 	
-	static RatingChoice[] getStatusChoices()
+	static ChoiceItem[] getStatusChoices()
 	{
-		return new RatingChoice[] {
-			new RatingChoice("", "Not Specified", Color.WHITE),
-			new RatingChoice("1", "Not Started", Color.RED),
-			new RatingChoice("2", "Problems Implementing", Color.ORANGE),
-			new RatingChoice("3", "Going Well", Color.YELLOW),
-			new RatingChoice("4", "Fully on Schedule", Color.GREEN),
+		return new ChoiceItem[] {
+			new ChoiceItem("", "Not Specified", Color.WHITE),
+			new ChoiceItem("1", "Not Started", Color.RED),
+			new ChoiceItem("2", "Problems Implementing", Color.ORANGE),
+			new ChoiceItem("3", "Going Well", Color.YELLOW),
+			new ChoiceItem("4", "Fully on Schedule", Color.GREEN),
 		};
 	}
 

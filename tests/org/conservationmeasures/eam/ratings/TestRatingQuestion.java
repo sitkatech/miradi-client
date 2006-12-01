@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestRatingQuestion extends EAMTestCase
@@ -18,11 +20,11 @@ public class TestRatingQuestion extends EAMTestCase
 
 	public void testBasics()
 	{
-		RatingChoice[] choices = {
-			new RatingChoice("", "None", Color.BLACK),
-			new RatingChoice("1", "Low", Color.GREEN),
+		ChoiceItem[] choices = {
+			new ChoiceItem("", "None", Color.BLACK),
+			new ChoiceItem("1", "Low", Color.GREEN),
 		};
-		RatingQuestion question = new RatingQuestion("Feasibility", "Feasibility and Cost", choices);
+		ChoiceQuestion question = new ChoiceQuestion("Feasibility", "Feasibility and Cost", choices);
 		assertEquals("Feasibility", question.getTag());
 		assertEquals("Feasibility and Cost", question.getLabel());
 		assertEquals(2, question.getChoices().length);

@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.ratings;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.main.EAMTestCase;
 
 public class TestRatingChoice extends EAMTestCase
@@ -19,7 +20,7 @@ public class TestRatingChoice extends EAMTestCase
 
 	public void testBasics()
 	{
-		RatingChoice choice = new RatingChoice("4", "Very High", Color.RED);
+		ChoiceItem choice = new ChoiceItem("4", "Very High", Color.RED);
 		assertEquals("4", choice.getCode());
 		assertEquals("Very High", choice.getLabel());
 		assertEquals(Color.RED, choice.getColor());

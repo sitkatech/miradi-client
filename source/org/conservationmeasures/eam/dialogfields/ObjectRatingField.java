@@ -17,13 +17,11 @@ import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.RatingChoice;
-import org.conservationmeasures.eam.ratings.RatingQuestion;
 import org.martus.swing.UiComboBox;
 
 public class ObjectRatingField extends ObjectDataInputField
 {
-	public ObjectRatingField(Project projectToUse, int objectType, BaseId objectId, RatingQuestion questionToUse)
+	public ObjectRatingField(Project projectToUse, int objectType, BaseId objectId, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectType, objectId, questionToUse.getTag());
 		combo = new UiComboBox(questionToUse.getChoices());
@@ -39,7 +37,7 @@ public class ObjectRatingField extends ObjectDataInputField
 
 	public String getText()
 	{
-		RatingChoice selected = (RatingChoice)combo.getSelectedItem();
+		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
 		if(selected == null)
 			return "";
 		return selected.getCode();
@@ -49,7 +47,7 @@ public class ObjectRatingField extends ObjectDataInputField
 	{
 		for(int i = 0; i < combo.getItemCount(); ++i)
 		{
-			RatingChoice choice = (RatingChoice)combo.getItemAt(i);
+			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
 			if(choice.getCode().equals(code))
 			{
 				combo.setSelectedIndex(i);
@@ -80,7 +78,7 @@ public class ObjectRatingField extends ObjectDataInputField
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
 			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
-			RatingChoice thisOption = (RatingChoice)value;
+			ChoiceItem thisOption = (ChoiceItem)value;
 			setIcon(RatingIcon.createFromChoice(thisOption));
 			return cell;
 		}

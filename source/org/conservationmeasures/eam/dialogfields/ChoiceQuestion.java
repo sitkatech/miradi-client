@@ -3,13 +3,14 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.ratings;
+package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
 
-public class RatingQuestion
+
+public class ChoiceQuestion
 {
-	public RatingQuestion(String tagToUse, String labelToUse, RatingChoice[] choicesToUse)
+	public ChoiceQuestion(String tagToUse, String labelToUse, ChoiceItem[] choicesToUse)
 	{
 		tag = tagToUse;
 		label = labelToUse;
@@ -26,12 +27,12 @@ public class RatingQuestion
 		return label;
 	}
 	
-	public RatingChoice[] getChoices()
+	public ChoiceItem[] getChoices()
 	{
 		return choices;
 	}
 	
-	public RatingChoice findChoiceByCode(String code)
+	public ChoiceItem findChoiceByCode(String code)
 	{
 		for(int i = 0; i < choices.length; ++i)
 			if(choices[i].getCode().equals(code))
@@ -47,5 +48,5 @@ public class RatingQuestion
 	
 	String tag;
 	String label;
-	RatingChoice[] choices;
+	ChoiceItem[] choices;
 }
