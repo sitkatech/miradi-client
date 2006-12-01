@@ -135,6 +135,7 @@ public class Actions
 		registerAction(new ActionCreateGoal(mainWindow));
 		registerAction(new ActionDeleteGoal(mainWindow));
 		registerAction(new ActionViewPossibleTeamMembers(mainWindow));
+		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionTeamAddMember(mainWindow));
 		registerAction(new ActionTeamRemoveMember(mainWindow));
 		

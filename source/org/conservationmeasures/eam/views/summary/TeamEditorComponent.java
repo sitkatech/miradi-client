@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import javax.swing.Box;
 
 import org.conservationmeasures.eam.actions.ActionModifyResource;
+import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
@@ -51,6 +52,7 @@ public class TeamEditorComponent extends DisposablePanel
 	{
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
+		box.add(new UiButton(actions.get(ActionTeamCreateMember.class)));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionTeamRemoveMember.class), teamTable));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
 		

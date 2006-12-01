@@ -10,10 +10,6 @@ import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ViewPossibleTeamMembers extends ViewDoer
 {
-	public ViewPossibleTeamMembers()
-	{
-		super();
-	}
 
 	public boolean isAvailable()
 	{
