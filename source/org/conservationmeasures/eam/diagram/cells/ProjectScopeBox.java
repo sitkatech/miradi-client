@@ -7,11 +7,14 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 import java.util.Hashtable;
 import java.util.Vector;
+
+import javax.swing.JTextPane;
 
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.DiagramModelEvent;
@@ -77,8 +80,8 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
 		{
-			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY() - TOP_MARGIN);
-			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + TOP_MARGIN + BOTTOM_MARGIN);
+			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - calculateTextMargin(targetBounds.getBounds().width));
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + calculateTextMargin(targetBounds.getBounds().width)  + BOTTOM_MARGIN);
 			newBounds = new Rectangle(location, size);
 		}
 		
@@ -88,6 +91,16 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		model.edit(nest, null, null, null);
 		model.toBack(new Object[] {this});
 	}
+	
+	public int calculateTextMargin(int width)
+	{
+		JTextPane ja = new JTextPane();
+		ja.setText(getText());
+		ja.setFont(Font.getFont("Arial"));
+		ja.setSize(width, ja.getMaximumSize().height);
+		return ja.getPreferredSize().height;
+	}
+	
 	
 	public Rectangle2D computeCurrentTargetBounds()
 	{
@@ -152,7 +165,6 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	}
 
 	final static int SIDE_MARGIN = 5;
-	final static int TOP_MARGIN = 5 + MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	final static int BOTTOM_MARGIN = 5;
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
