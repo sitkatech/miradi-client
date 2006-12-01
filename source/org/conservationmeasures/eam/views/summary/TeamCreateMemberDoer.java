@@ -3,7 +3,9 @@ package org.conservationmeasures.eam.views.summary;
 import java.text.ParseException;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -27,10 +29,10 @@ public class TeamCreateMemberDoer extends ViewDoer
 		
 		try
 		{
+			getProject().executeCommand(new CommandBeginTransaction());
 			ProjectResource resource = createBlankResource();
-			
 			addMemberToList(resource);
-			
+			getProject().executeCommand(new CommandEndTransaction());
 			getView().showPropertiesDialog(resource);
 		}
 		catch (Exception e)

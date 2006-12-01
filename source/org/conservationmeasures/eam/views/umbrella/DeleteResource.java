@@ -15,7 +15,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objectpools.TaskPool;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
@@ -36,7 +35,7 @@ public class DeleteResource extends ObjectsDoer
 		ProjectResource resource = (ProjectResource)getObjects()[0];
 		
 		BaseId idToRemove = resource.getId();
-		Task[] tasksThatUseThisResource = findTasksThatUseThisResource(idToRemove);
+		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
 		
 		Vector dialogText = new Vector();
 		
@@ -105,20 +104,5 @@ public class DeleteResource extends ObjectsDoer
 		ProjectMetadata metadata = getProject().getMetadata();
 		Command cmd = CommandSetObjectData.createRemoveIdCommand(metadata, metadata.TAG_TEAM_RESOURCE_IDS, idToRemove);
 		return new Command[] {cmd};
-	}
-	
-	Task[] findTasksThatUseThisResource(BaseId resourceId)
-	{
-		Vector foundTasks = new Vector();
-		TaskPool pool = getProject().getTaskPool();
-		BaseId[] allTaskIds = pool.getIds();
-		for(int i = 0; i < allTaskIds.length; ++i)
-		{
-			Task task = pool.find(allTaskIds[i]);
-			if(task.getResourceIdList().contains(resourceId))
-				foundTasks.add(task);
-		}
-		
-		return (Task[])foundTasks.toArray(new Task[0]);
 	}
 }

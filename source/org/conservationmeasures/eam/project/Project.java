@@ -317,6 +317,22 @@ public class Project
 		return resources;
 	}
 	
+	
+	public Task[] findTasksThatUseThisResource(BaseId resourceId)
+	{
+		Vector foundTasks = new Vector();
+		TaskPool pool = getTaskPool();
+		BaseId[] allTaskIds = pool.getIds();
+		for(int i = 0; i < allTaskIds.length; ++i)
+		{
+			Task task = pool.find(allTaskIds[i]);
+			if(task.getResourceIdList().contains(resourceId))
+				foundTasks.add(task);
+		}
+		
+		return (Task[])foundTasks.toArray(new Task[0]);
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	

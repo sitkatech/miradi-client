@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
+import org.conservationmeasures.eam.actions.ActionTeamDeleteMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
@@ -107,7 +107,7 @@ public class SummaryView extends TabbedView
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
 		addDoerToMap(ActionTeamAddMember.class, teamAddMemberDoer);
-		addDoerToMap(ActionTeamRemoveMember.class, teamRemoveMemberDoer);
+		addDoerToMap(ActionTeamDeleteMember.class, teamRemoveMemberDoer);
 		addDoerToMap(ActionCreateResource.class, createResourceDoer);
 		addDoerToMap(ActionModifyResource.class, modifyResourceDoer);
 		addDoerToMap(ActionDeleteResource.class, deleteResourceDoer);
