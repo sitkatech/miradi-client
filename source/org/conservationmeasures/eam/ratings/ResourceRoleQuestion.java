@@ -18,12 +18,12 @@ public class ResourceRoleQuestion extends ChoiceQuestion
 	static ChoiceItem[] getRoleChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("hours", "Hours"),
-				new ChoiceItem("days", "Days"),
-				new ChoiceItem("weeks", "Weeks"),
-				new ChoiceItem("months", "Months"),
-				new ChoiceItem("each", "Each"),
+				new ChoiceItem("contact", "Team Contact"),
+				new ChoiceItem("days", "Team Member"),
+				new ChoiceItem("weeks", "Leader/Manager"),
+				new ChoiceItem("months", "Process Facilitator"),
+				new ChoiceItem("each", "Project Advisor"),
+				new ChoiceItem("each", "Stakeholder"),
 		};
 	}
 }

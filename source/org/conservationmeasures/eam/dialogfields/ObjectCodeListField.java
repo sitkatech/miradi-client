@@ -6,70 +6,81 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
-import org.martus.swing.UiComboBox;
+import org.conservationmeasures.eam.utils.CodeList;
+import org.martus.swing.UiList;
 
 public class ObjectCodeListField extends ObjectDataInputField
 {
 	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ResourceRoleQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
-		combo = new UiComboBox(questionToUse.getChoices());
-		combo.setRenderer(new RatingChoiceRenderer());
-		combo.addActionListener(new ComboChangeHandler());
+		list = new UiList(questionToUse.getChoices());
+		list.addListSelectionListener(new ComboChangeHandler());
 		addFocusListener();
 	}
 	
 	public JComponent getComponent()
 	{
-		return combo;
+		return list;
 	}
 
 	public String getText()
 	{
-		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
-		if(selected == null)
+		Object[] selected = list.getSelectedValues();
+		if(selected.length==0)
 			return "";
-		return selected.getCode();
+		CodeList codeList = new CodeList();
+		for (int i=0; i<selected.length; ++i)
+		{
+			codeList.add(((ChoiceItem)selected[i]).getCode());
+		}
+		return codeList.toString();
 	}
 
-	public void setText(String code)
+	public void setText(String codes)
 	{
-		for(int i = 0; i < combo.getItemCount(); ++i)
+		try
 		{
-			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
-			if(choice.getCode().equals(code))
+			CodeList codeList = new CodeList(codes);
+			for(int i = 0; i < list.getModel().getSize(); ++i)
 			{
-				combo.setSelectedIndex(i);
-				return;
+				ChoiceItem choiceItem = (ChoiceItem)list.getModel().getElementAt(i);
+				if (codeList.contains(choiceItem.getCode()))
+					list.addSelectionInterval(i,i);
 			}
 		}
-		combo.setSelectedIndex(-1);
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Internal Error"));
+		}
+		
 	}
 	
 	public void updateEditableState()
 	{
-		combo.setEnabled(isValidObject());
+		list.setEnabled(isValidObject());
 		if(isValidObject())
 		{
-			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
-			combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
+			list.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
+			list.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		}
 		else
 		{
-			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+			list.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			list.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 			
 		}
 	}
@@ -85,15 +96,14 @@ public class ObjectCodeListField extends ObjectDataInputField
 		}
 	}
 	
-	class ComboChangeHandler implements ActionListener
+	class ComboChangeHandler implements ListSelectionListener
 	{
-		public void actionPerformed(ActionEvent arg0)
+		public void valueChanged(ListSelectionEvent arg0)
 		{
 			setNeedsSave();
 			saveIfNeeded();
 		}
-		
 	}
 
-	UiComboBox combo;
+	UiList list;
 }
