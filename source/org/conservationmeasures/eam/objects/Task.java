@@ -78,7 +78,7 @@ public class Task extends EAMBaseObject
 		return new CreateTaskParameter(parentRef.getRawRef());
 	}
 	
-	public void setCreationExtraInfo(CreateTaskParameter extraInfo) throws Exception
+	public void setParentRef(CreateTaskParameter extraInfo) throws Exception
 	{
 		parentRef.set(extraInfo.getParentRef().toString());
 	}

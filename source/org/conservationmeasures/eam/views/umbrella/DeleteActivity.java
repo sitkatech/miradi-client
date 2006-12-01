@@ -16,16 +16,16 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
@@ -73,18 +73,10 @@ public class DeleteActivity extends ObjectsDoer
 		if (selectedTask.getParentRef().getObjectType() != ObjectType.FAKE)
 			return;
 		
-		FactorPool factorPool = (FactorPool)project.getPool(ObjectType.FACTOR);
-		Factor[] strategies = factorPool.getInterventions();
-		
-		for (int i = 0; i < strategies.length; i++)
-		{
-			IdList activityIds = ((Strategy)strategies[i]).getActivityIds();
-			if (activityIds.contains(selectedTask.getId()))
-			{
-				Task activity = (Task)project.findObject(ObjectType.TASK, selectedTask.getId());
-				activity.setCreationExtraInfo(new CreateTaskParameter(strategies[i].getRef()));
-			}
-		}
+		ChainManager chainManager = new ChainManager(project);
+		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Strategy.TYPE_INTERVENTION, selectedTask.getId(), Strategy.TAG_ACTIVITY_IDS);
+		Factor strategy = (Factor)factorSet.iterator().next();
+		selectedTask.setParentRef(new CreateTaskParameter(strategy.getRef()));
 	}
 
 	public static void deleteTasks(Project project, Task selectedTask) throws Exception
