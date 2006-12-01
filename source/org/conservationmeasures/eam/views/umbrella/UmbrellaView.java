@@ -175,7 +175,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	
-	public void modifyObject(EAMObject object) throws Exception
+	public void showPropertiesDialog(EAMObject object) throws Exception
 	{
 		ModelessDialogPanel propertiesPanel = createPanelForDialog(object);
 		if(propertiesPanel == null)

@@ -24,7 +24,7 @@ public class ModifyActivity extends ObjectsDoer
 		try
 		{
 			Task task = (Task)getObjects()[0];
-			getView().modifyObject(task);
+			getView().showPropertiesDialog(task);
 		}
 		catch (Exception e)
 		{

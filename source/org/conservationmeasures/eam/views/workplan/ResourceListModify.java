@@ -30,7 +30,7 @@ public class ResourceListModify extends ObjectsDoer
 		try
 		{
 			ProjectResource resource = (ProjectResource)getObjects()[0];
-			getView().modifyObject(resource);
+			getView().showPropertiesDialog(resource);
 		}
 		catch(Exception e)
 		{
