@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -75,6 +76,16 @@ public class Task extends EAMBaseObject
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateTaskParameter(parentRef.getRawRef());
+	}
+	
+	public void setCreationExtraInfo(CreateTaskParameter extraInfo) throws Exception
+	{
+		parentRef.set(extraInfo.getParentRef().toString());
+	}
+	
+	public ORef getParentRef()
+	{
+		return parentRef.getRawRef();
 	}
 
 	public String toString()

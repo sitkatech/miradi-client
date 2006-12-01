@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -15,11 +16,14 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.FactorPool;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -39,11 +43,6 @@ public class DeleteActivity extends ObjectsDoer
 		if (!(getObjects()[0].getType() == ObjectType.TASK))
 			return false;
 		
-		//FIXME remove below check after migration
-		ORef parentRef = ((CreateTaskParameter)((Task)getObjects()[0]).getCreationExtraInfo()).getParentRef();
-		if (parentRef.getObjectType() == ObjectType.FAKE)
-			return false;
-		
 		return true;
 	}
 
@@ -55,12 +54,36 @@ public class DeleteActivity extends ObjectsDoer
 		try
 		{
 			Task selectedTask = (Task)getObjects()[0];
-			deleteTasks(getProject(), selectedTask);			
+			//FIXME we are adding the parentRef during runtime to the tasks.
+			//This is done to avoid to having to deal with writing the data
+			//migration code. This method call can be eliminated with a data
+			//migration.
+			possiblySetParentRef(getProject(), selectedTask);
+			deleteTasks(getProject(), selectedTask);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+	}
+
+	private void possiblySetParentRef(Project project, Task selectedTask) throws Exception
+	{
+		if (selectedTask.getParentRef().getObjectType() != ObjectType.FAKE)
+			return;
+		
+		FactorPool factorPool = (FactorPool)project.getPool(ObjectType.FACTOR);
+		Factor[] strategies = factorPool.getInterventions();
+		
+		for (int i = 0; i < strategies.length; i++)
+		{
+			IdList activityIds = ((Strategy)strategies[i]).getActivityIds();
+			if (activityIds.contains(selectedTask.getId()))
+			{
+				Task activity = (Task)project.findObject(ObjectType.TASK, selectedTask.getId());
+				activity.setCreationExtraInfo(new CreateTaskParameter(strategies[i].getRef()));
+			}
 		}
 	}
 
@@ -88,7 +111,7 @@ public class DeleteActivity extends ObjectsDoer
 	{
 		deleteIdCommandList = new Vector();
 		
-		ORef parentRef = ((CreateTaskParameter)task.getCreationExtraInfo()).getParentRef();
+		ORef parentRef = task.getParentRef();
 		EAMObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
 		CommandSetObjectData commandSetObjectData;
 		if (parentRef.getObjectType() == ObjectType.FACTOR)
@@ -110,6 +133,8 @@ public class DeleteActivity extends ObjectsDoer
 			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
 			destroyTask(project, subTask, deleteIds);
 		}
+		
+		deleteIdCommandList.addAll(Arrays.asList(task.createCommandsToClear()));
 		deleteIds.add(new CommandDeleteObject(task.getType(), task.getId()));
 	}
 	
