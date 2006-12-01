@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
@@ -60,6 +61,7 @@ public class ProjectResource extends EAMBaseObject
 		costPerUnit = new NumberData();
 		costUnit = new RatingData();
 		organization = new StringData();
+		roleCodes = new CodeListData();
 		
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
@@ -69,6 +71,7 @@ public class ProjectResource extends EAMBaseObject
 		addField(TAG_EMAIL, email);
 		addField(TAG_COST_UNIT, costUnit);
 		addField(TAG_COST_PER_UNIT, costPerUnit);
+		addField(TAG_ROLE_CODES, roleCodes);
 		
 	}
 	
@@ -80,6 +83,7 @@ public class ProjectResource extends EAMBaseObject
 	public static final String TAG_COST_PER_UNIT = "CostPerUnit";
 	public static final String TAG_COST_UNIT = "CostUnit";
 	public static final String TAG_ORGANIZATION = "Organization";
+	public static final String TAG_ROLE_CODES = "RoleCodes";
 
 	StringData initials;
 	StringData name;
@@ -89,4 +93,5 @@ public class ProjectResource extends EAMBaseObject
 	NumberData costPerUnit;
 	RatingData costUnit;
 	StringData organization;
+	CodeListData roleCodes;
 }
