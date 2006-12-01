@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
+import org.conservationmeasures.eam.dialogfields.ObjectMultiCodeInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRatingField;
@@ -118,6 +119,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	public ObjectDataInputField createMultilineField(String tag)
 	{
 		return new ObjectMultilineInputField(project, objectType, objectId, tag);
+	}
+	
+	public ObjectDataInputField createMultiCodeField(String tag)
+	{
+		return new ObjectMultiCodeInputField(project, objectType, objectId, tag);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)
