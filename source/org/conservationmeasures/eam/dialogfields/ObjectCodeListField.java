@@ -5,55 +5,95 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
-import java.text.ParseException;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
+import javax.swing.JList;
 
+import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.CodeList;
+import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
+import org.martus.swing.UiComboBox;
 
 public class ObjectCodeListField extends ObjectDataInputField
 {
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ResourceRoleQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		project = projectToUse;
-		listComponent = new CodeListEditorComponent(project);
-		codeList = new CodeList();
+		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
+		combo = new UiComboBox(questionToUse.getChoices());
+		combo.setRenderer(new RatingChoiceRenderer());
+		combo.addActionListener(new ComboChangeHandler());
+		addFocusListener();
 	}
 	
 	public JComponent getComponent()
 	{
-		return listComponent;
+		return combo;
 	}
 
 	public String getText()
 	{
-		return codeList.toString();
+		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
+		if(selected == null)
+			return "";
+		return selected.getCode();
 	}
 
-	public void setText(String codeListToUse)
+	public void setText(String code)
 	{
-		try
+		for(int i = 0; i < combo.getItemCount(); ++i)
 		{
-			codeList =  new CodeList(codeListToUse);
+			ChoiceItem choice = (ChoiceItem)combo.getItemAt(i);
+			if(choice.getCode().equals(code))
+			{
+				combo.setSelectedIndex(i);
+				return;
+			}
 		}
-		catch(ParseException e)
-		{
-			EAM.logException(e);
-			codeList = new CodeList();
-		}
-		rebuildComponent();
+		combo.setSelectedIndex(-1);
 	}
-
-	private void rebuildComponent()
+	
+	public void updateEditableState()
 	{
-		listComponent.setList(codeList);
+		combo.setEnabled(isValidObject());
+		if(isValidObject())
+		{
+			combo.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
+			combo.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
+		}
+		else
+		{
+			combo.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+			combo.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+			
+		}
+	}
+	
+	class RatingChoiceRenderer extends DefaultListCellRenderer
+	{
+		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+		{
+			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			ChoiceItem thisOption = (ChoiceItem)value;
+			setIcon(RatingIcon.createFromChoice(thisOption));
+			return cell;
+		}
+	}
+	
+	class ComboChangeHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent arg0)
+		{
+			setNeedsSave();
+			saveIfNeeded();
+		}
+		
 	}
 
-	private CodeList codeList;
-	private Project project;
-	private CodeListEditorComponent listComponent;
+	UiComboBox combo;
 }
