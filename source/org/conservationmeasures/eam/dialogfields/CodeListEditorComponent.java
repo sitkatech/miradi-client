@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.utils.CodeList;
 import org.martus.swing.UiList;
 import org.martus.swing.UiScrollPane;
 
-public class ResourceCodeListEditorComponent extends DisposablePanel
+public class CodeListEditorComponent extends DisposablePanel
 {
-	public ResourceCodeListEditorComponent(Project projectToUse)
+	public CodeListEditorComponent(Project projectToUse)
 	{
 		super(new BorderLayout());
 		project = projectToUse;

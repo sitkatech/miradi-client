@@ -14,13 +14,13 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.CodeList;
 
-public class ObjectResourceCodeListField extends ObjectDataInputField
+public class ObjectCodeListField extends ObjectDataInputField
 {
-	public ObjectResourceCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
+	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		project = projectToUse;
-		listComponent = new ResourceCodeListEditorComponent(project);
+		listComponent = new CodeListEditorComponent(project);
 		codeList = new CodeList();
 	}
 	
@@ -55,5 +55,5 @@ public class ObjectResourceCodeListField extends ObjectDataInputField
 
 	private CodeList codeList;
 	private Project project;
-	private ResourceCodeListEditorComponent listComponent;
+	private CodeListEditorComponent listComponent;
 }
