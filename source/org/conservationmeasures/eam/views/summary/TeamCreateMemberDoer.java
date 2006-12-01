@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.ViewDoer;
 
-public class TeamCreateMember extends ViewDoer
+public class TeamCreateMemberDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
@@ -29,9 +29,9 @@ public class TeamCreateMember extends ViewDoer
 		{
 			ProjectResource resource = createBlankResource();
 			
-			getView().showPropertiesDialog(resource);
-			
 			addMemberToList(resource);
+			
+			getView().showPropertiesDialog(resource);
 		}
 		catch (Exception e)
 		{
@@ -43,8 +43,8 @@ public class TeamCreateMember extends ViewDoer
 	private void addMemberToList(ProjectResource resource) throws ParseException, CommandFailedException
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
-		Command cmd2 = CommandSetObjectData.createAppendIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, resource.getId());
-		getProject().executeCommand(cmd2);
+		Command cmd = CommandSetObjectData.createAppendIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, resource.getId());
+		getProject().executeCommand(cmd);
 	}
 
 	private ProjectResource createBlankResource() throws CommandFailedException

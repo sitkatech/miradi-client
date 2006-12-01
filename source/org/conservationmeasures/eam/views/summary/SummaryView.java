@@ -105,7 +105,7 @@ public class SummaryView extends TabbedView
 		deleteResourceDoer = new DeleteResource();
 		
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
-		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMember());
+		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
 		addDoerToMap(ActionTeamAddMember.class, teamAddMemberDoer);
 		addDoerToMap(ActionTeamRemoveMember.class, teamRemoveMemberDoer);
 		addDoerToMap(ActionCreateResource.class, createResourceDoer);
