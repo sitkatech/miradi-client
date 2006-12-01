@@ -48,7 +48,10 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		if(cell.isProjectScope())
 		{
+			//TODO: renderering of labels in the scope box should be centralized and in both ScopeBox and ScopeRenderer 
 			vision = ((ProjectScopeBox)(view.getCell())).getVision();
+			Rectangle2D targetBounds = ((ProjectScopeBox)(view.getCell())).computeCurrentTargetBounds();
+			textMargin = ((ProjectScopeBox)(view.getCell())).calculateTextMargin(targetBounds.getBounds().width);
 		}
 
 		String text = cell.toString();
@@ -332,5 +335,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	boolean preview;
 	
 	String vision;
+	int textMargin;
 	
 }
