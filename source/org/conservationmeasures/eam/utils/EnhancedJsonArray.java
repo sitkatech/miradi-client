@@ -32,4 +32,9 @@ public class EnhancedJsonArray extends JSONArray
 	{
 		return new EnhancedJsonObject(super.getJSONObject(index));
 	}
+	
+    public void appendString(String value)
+    {
+    	put(length(), value);
+    }
 }

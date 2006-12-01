@@ -73,6 +73,7 @@ import org.conservationmeasures.eam.project.TestTncCapWorkbookImporter;
 import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
+import org.conservationmeasures.eam.utils.TestCodeList;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
@@ -166,6 +167,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestConceptualModelThreatRatings.class));
 		suite.addTest(new TestSuite(TestGoal.class));
 		suite.addTest(new TestSuite(TestIdList.class));
+		suite.addTest(new TestSuite(TestCodeList.class));
 		suite.addTest(new TestSuite(TestIndicator.class));
 		suite.addTest(new TestSuite(TestObjective.class));
 		suite.addTest(new TestSuite(TestObjectManager.class));
