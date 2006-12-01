@@ -43,7 +43,7 @@ public class BudgetView extends TabbedView
 	{
 		budgetPanel = new BudgetPanel();
 		addTab(EAM.text("Budget"), budgetPanel);
-		addTab(EAM.text("Image"), new UiScrollPane(new BudgetComponent()));
+		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
