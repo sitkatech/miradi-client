@@ -27,7 +27,6 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
-import org.conservationmeasures.eam.diagram.cells.ProjectScopeBox;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -46,14 +45,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			boolean sel, boolean focus, boolean previewMode)
 	{
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
-		if(cell.isProjectScope())
-		{
-			//TODO: renderering of labels in the scope box should be centralized and in both ScopeBox and ScopeRenderer 
-			vision = ((ProjectScopeBox)(view.getCell())).getVision();
-			Rectangle2D targetBounds = ((ProjectScopeBox)(view.getCell())).computeCurrentTargetBounds();
-			textMargin = ((ProjectScopeBox)(view.getCell())).calculateTextMargin(targetBounds.getBounds().width);
-		}
-
 		String text = cell.toString();
 		String formattedLabel = HTML_BEFORE_TEXT + XmlUtilities.getXmlEncoded(text) + HTML_AFTER_TEXT;
 		label.setText(formattedLabel);
@@ -333,8 +324,5 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	Color gradientColor;
 	boolean selected;
 	boolean preview;
-	
-	String vision;
-	int textMargin;
 	
 }

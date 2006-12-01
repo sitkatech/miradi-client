@@ -74,15 +74,20 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		return GraphConstants.getBounds(getAttributes());
 	}
 	
+	public int getShortScopeHeight()
+	{
+		return shortScopeHeight;
+	}
+	
 	public void autoSurroundTargets()
 	{
 		Rectangle2D targetBounds = computeCurrentTargetBounds();
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
 		{
-			int textMargin = calculateTextMargin(targetBounds.getBounds().width);
-			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - textMargin);
-			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + textMargin  + BOTTOM_MARGIN);
+			shortScopeHeight = calculateShortScopeHeight(targetBounds.getBounds().width);
+			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - shortScopeHeight);
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + shortScopeHeight  + BOTTOM_MARGIN);
 			newBounds = new Rectangle(location, size);
 		}
 		
@@ -93,11 +98,13 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		model.toBack(new Object[] {this});
 	}
 	
-	public int calculateTextMargin(int width)
+	/*TODO: should change MultilineCellRenderer and this method to use the same component to display html 
+	 * : see AboutBox that uses the HtmlViewer as in  About.class */
+	public int calculateShortScopeHeight(int width) 
 	{
 		JTextPane ja = new JTextPane();
 		ja.setText(getText());
-		ja.setFont(Font.getFont("Arial"));
+		ja.setFont(new Font("Arial", Font.PLAIN, 14));
 		ja.setSize(width, ja.getMaximumSize().height);
 		return ja.getPreferredSize().height;
 	}
@@ -170,4 +177,5 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	
 	DiagramModel model;
+	int shortScopeHeight;
 }
