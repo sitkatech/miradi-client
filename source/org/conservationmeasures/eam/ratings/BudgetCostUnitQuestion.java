@@ -19,11 +19,11 @@ public class BudgetCostUnitQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", "Not Specified"),
-				new ChoiceItem("hours", "Hours"),
-				new ChoiceItem("days", "Days"),
-				new ChoiceItem("weeks", "Weeks"),
-				new ChoiceItem("months", "Months"),
-				new ChoiceItem("each", "Each"),
+				new ChoiceItem("Hours", "Hours"),
+				new ChoiceItem("Days", "Days"),
+				new ChoiceItem("Weeks", "Weeks"),
+				new ChoiceItem("Months", "Months"),
+				new ChoiceItem("Each", "Each"),
 		};
 	}
 }
