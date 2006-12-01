@@ -80,8 +80,9 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
 		{
-			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - calculateTextMargin(targetBounds.getBounds().width));
-			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + calculateTextMargin(targetBounds.getBounds().width)  + BOTTOM_MARGIN);
+			int textMargin = calculateTextMargin(targetBounds.getBounds().width);
+			Point location = new Point((int)targetBounds.getX() - SIDE_MARGIN, (int)targetBounds.getY()  - textMargin);
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 2*SIDE_MARGIN, (int)targetBounds.getHeight() + textMargin  + BOTTOM_MARGIN);
 			newBounds = new Rectangle(location, size);
 		}
 		
