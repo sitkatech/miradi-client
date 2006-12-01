@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.views.schedule.wizard;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class CalendarWizardWelcomeStep extends WizardStep
+public class ScheduleWizardWelcomeStep extends WizardStep
 {
-	public CalendarWizardWelcomeStep(WizardPanel wizardToUse)
+	public ScheduleWizardWelcomeStep(WizardPanel wizardToUse)
 	{
 		super(wizardToUse);
 	}

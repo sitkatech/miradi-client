@@ -34,16 +34,16 @@ public class ScheduleView extends TabbedView
 	
 	static public String getViewName()
 	{
-		return Project.SCHEDULING_VIEW_NAME;
+		return Project.SCHEDULE_VIEW_NAME;
 	}
 
 	public void createTabs() throws Exception
 	{
 		UiScrollPane calendarPanel = new UiScrollPane(new ScheduleComponent("images/Calendar.png"));
-		UiScrollPane gamttPanel = new UiScrollPane(new ScheduleComponent("images/Tasks.png"));
+		UiScrollPane ganttPanel = new UiScrollPane(new ScheduleComponent("images/Tasks.png"));
 
 		addTab(EAM.text("Calendar"),calendarPanel);
-		addTab(EAM.text("Tasks"),gamttPanel);
+		addTab(EAM.text("Tasks"),ganttPanel);
 	}
 
 

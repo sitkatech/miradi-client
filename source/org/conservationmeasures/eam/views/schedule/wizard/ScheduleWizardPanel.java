@@ -11,7 +11,7 @@ public class ScheduleWizardPanel extends WizardPanel
 {
 	public ScheduleWizardPanel() throws Exception
 	{
-		int WELCOME = addStep(new CalendarWizardWelcomeStep(this));
+		int WELCOME = addStep(new ScheduleWizardWelcomeStep(this));
 		setStep(WELCOME);
 	}
 }

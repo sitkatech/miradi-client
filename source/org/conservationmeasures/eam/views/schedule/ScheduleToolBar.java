@@ -6,13 +6,13 @@
 package org.conservationmeasures.eam.views.schedule;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.views.ActionViewWorkPlan;
+import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.main.EAMToolBar;
 
 public class ScheduleToolBar extends EAMToolBar
 {
 	public ScheduleToolBar(Actions actions)
 	{
-		super(actions, ActionViewWorkPlan.class);
+		super(actions, ActionViewSchedule.class);
 	}
 }
