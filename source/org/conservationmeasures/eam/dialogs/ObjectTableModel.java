@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 
@@ -46,6 +47,8 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		{
 			BaseId rowObjectId = getIdList().get(row);
 			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
+			if(rowObject == null)
+				throw new RuntimeException("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
 			return rowObject;
 		}
 		catch(Exception e)

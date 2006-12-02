@@ -9,6 +9,7 @@ import javax.swing.ListSelectionModel;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 
 public class ObjectPoolTable extends ObjectTable
 {
@@ -44,6 +45,18 @@ public class ObjectPoolTable extends ObjectTable
 		int row = findRowObject(id);
 		if(row >= 0)
 			getObjectPoolTableModel().fireTableRowsUpdated(row, row);
+	}
+	
+	void updateTableAfterObjectCreated(ORef newObjectRef)
+	{
+		super.updateTableAfterObjectCreated(newObjectRef);
+		getObjectPoolTableModel().rowsWereAddedOrRemoved();
+	}
+	
+	void updateTableAfterObjectDeleted(ORef deletedObjectRef)
+	{
+		super.updateTableAfterObjectDeleted(deletedObjectRef);
+		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
 	
 	

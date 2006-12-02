@@ -101,6 +101,7 @@ public class DeleteActivity extends ObjectsDoer
 
 	private static void createDeleteCommands(Project project, Task task) throws Exception
 	{
+		EAM.logDebug("DeleteActivity: " + task.getId());
 		deleteIdCommandList = new Vector();
 		
 		ORef parentRef = task.getParentRef();
