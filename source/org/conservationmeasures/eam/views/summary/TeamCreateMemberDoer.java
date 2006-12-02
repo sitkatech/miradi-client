@@ -32,13 +32,16 @@ public class TeamCreateMemberDoer extends ViewDoer
 			getProject().executeCommand(new CommandBeginTransaction());
 			ProjectResource resource = createBlankResource();
 			addMemberToList(resource);
-			getProject().executeCommand(new CommandEndTransaction());
 			getView().showPropertiesDialog(resource);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 
