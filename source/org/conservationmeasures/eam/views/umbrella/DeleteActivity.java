@@ -17,7 +17,6 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -59,7 +58,7 @@ public class DeleteActivity extends ObjectsDoer
 			//migration code. This method call can be eliminated with a data
 			//migration.
 			possiblySetParentRef(getProject(), selectedTask);
-			deleteTasks(getProject(), selectedTask);
+			deleteTaskTree(getProject(), selectedTask);
 		}
 		catch(Exception e)
 		{
@@ -76,21 +75,20 @@ public class DeleteActivity extends ObjectsDoer
 		ChainManager chainManager = new ChainManager(project);
 		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Strategy.TYPE_INTERVENTION, selectedTask.getId(), Strategy.TAG_ACTIVITY_IDS);
 		Factor strategy = (Factor)factorSet.iterator().next();
-		selectedTask.setParentRef(new CreateTaskParameter(strategy.getRef()));
+		selectedTask.setParentRef(strategy.getRef());
 	}
 
-	public static void deleteTasks(Project project, Task selectedTask) throws Exception
+	public static void deleteTaskTree(Project project, Task selectedTask) throws Exception
 	{
-		createDeleteCommands(project, selectedTask);
-		executeDeleteCommands(project);
+		Command commandToDeleteTasks[] = createDeleteCommands(project, selectedTask); 
+		executeDeleteCommands(project, commandToDeleteTasks);
 	}
 	
-	private static void executeDeleteCommands(Project project) throws ParseException, CommandFailedException
+	private static void executeDeleteCommands(Project project, Command[] commands) throws ParseException, CommandFailedException
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = (Command[])deleteIdCommandList.toArray(new Command[0]);
 			project.executeCommands(commands);
 		}
 		finally
@@ -99,10 +97,9 @@ public class DeleteActivity extends ObjectsDoer
 		}
 	}
 
-	private static void createDeleteCommands(Project project, Task task) throws Exception
+	private static Command[] createDeleteCommands(Project project, Task task) throws Exception
 	{
-		EAM.logDebug("DeleteActivity: " + task.getId());
-		deleteIdCommandList = new Vector();
+		Vector commandsToDeleteTasks = new Vector();
 		
 		ORef parentRef = task.getParentRef();
 		EAMObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
@@ -112,14 +109,16 @@ public class DeleteActivity extends ObjectsDoer
 		else 
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
 
-		deleteIdCommandList.add(commandSetObjectData);
-		destroyTask(project, task, deleteIdCommandList);
+		commandsToDeleteTasks.add(commandSetObjectData);
+		destroyTask(project, task, commandsToDeleteTasks);
+		
+		return (Command[])commandsToDeleteTasks.toArray(new Command[0]);
 	}
 
 	private static void destroyTask(Project project, Task task, Vector deleteIds) throws Exception
 	{
-		int subTaskCount = task.getSubtaskCount();
 		deleteIds.add(new CommandSetObjectData(task.getType(), task.getId(), Task.TAG_SUBTASK_IDS, ""));
+		int subTaskCount = task.getSubtaskCount();
 		for (int index = 0; index < subTaskCount; index++)
 		{
 			BaseId subTaskId = task.getSubtaskId(index);
@@ -127,10 +126,9 @@ public class DeleteActivity extends ObjectsDoer
 			destroyTask(project, subTask, deleteIds);
 		}
 		
-		deleteIdCommandList.addAll(Arrays.asList(task.createCommandsToClear()));
+		deleteIds.addAll(Arrays.asList(task.createCommandsToClear()));
 		deleteIds.add(new CommandDeleteObject(task.getType(), task.getId()));
 	}
-	
-	static Vector deleteIdCommandList;
+
 	WorkPlanView view;
 }
