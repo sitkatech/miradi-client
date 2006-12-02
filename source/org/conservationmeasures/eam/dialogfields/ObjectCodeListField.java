@@ -54,9 +54,11 @@ public class ObjectCodeListField extends ObjectDataInputField
 		try
 		{
 			CodeList codeList = new CodeList(codes);
+			System.out.println("HERE Start");
 			for(int i = 0; i < list.getModel().getSize(); ++i)
 			{
 				ChoiceItem choiceItem = (ChoiceItem)list.getModel().getElementAt(i);
+				System.out.println("HERE" + choiceItem.getLabel() + "/" + choiceItem.getCode() + " found=" + codeList.contains(choiceItem.getCode()));
 				if (codeList.contains(choiceItem.getCode()))
 					list.addSelectionInterval(i,i);
 			}
@@ -87,9 +89,9 @@ public class ObjectCodeListField extends ObjectDataInputField
 	
 	class RatingChoiceRenderer extends DefaultListCellRenderer
 	{
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) 
+		public Component getListCellRendererComponent(JList listToUse, Object value, int index, boolean isSelected, boolean cellHasFocus) 
 		{
-			Component cell = super.getListCellRendererComponent(list, value, index, isSelected,	cellHasFocus);
+			Component cell = super.getListCellRendererComponent(listToUse, value, index, isSelected,	cellHasFocus);
 			ChoiceItem thisOption = (ChoiceItem)value;
 			setIcon(RatingIcon.createFromChoice(thisOption));
 			return cell;

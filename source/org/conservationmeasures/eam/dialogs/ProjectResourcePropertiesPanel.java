@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.BudgetCostUnitQuestion;
+import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
 
 public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 {
@@ -20,7 +21,7 @@ public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ProjectResource.TAG_INITIALS));
 		addField(createStringField(ProjectResource.TAG_NAME));
-		addField(createMultiCodeField(ProjectResource.TAG_ROLE_CODES));
+		addField(createMultiCodeField(new ResourceRoleQuestion(ProjectResource.TAG_ROLE_CODES)));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));
 		addField(createStringField(ProjectResource.TAG_PHONE_NUMBER));
