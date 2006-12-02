@@ -12,7 +12,7 @@ public class ActionTeamCreateMember extends ViewAction
 
 		private static String getLabel()
 		{
-			return EAM.text("Action|Manage|Create Member ...");
+			return EAM.text("Action|Manage|Create Member");
 		}
 
 		public String getToolTipText()

@@ -51,11 +51,10 @@ public class TeamEditorComponent extends DisposablePanel
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();
-		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 		box.add(new UiButton(actions.get(ActionTeamCreateMember.class)));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionTeamDeleteMember.class), teamTable));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionModifyResource.class), teamTable));
-		
+		box.add(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 		return box;
 	}
 	
