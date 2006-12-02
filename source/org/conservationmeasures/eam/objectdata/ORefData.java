@@ -50,7 +50,12 @@ public class ORefData extends ObjectData
 	{
 		return ref.hashCode();
 	}
-
+   
+	public void set(ORef refToUse)
+	{
+		ref = refToUse;
+	}
+	 
 	public void set(String newValue) throws Exception
 	{
 		ref = new ORef(new EnhancedJsonObject(newValue));
