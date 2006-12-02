@@ -36,13 +36,13 @@ public class TestCodeList extends EAMTestCase
 	public void testRemove()
 	{
 		CodeList list = createSampleCodeList();
-		list.removeId(list.get(1));
+		list.removeCode(list.get(1));
 		assertEquals(2, list.size());
 		assertEquals("RoleC", list.get(1));
 		
 		try
 		{
-			list.removeId("RolaB");
+			list.removeCode("RolaB");
 			fail("Should have thrown removing non-existant id");
 		}
 		catch (RuntimeException ignoreExpected)

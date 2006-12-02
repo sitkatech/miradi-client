@@ -14,7 +14,7 @@ public class CodeListData extends ObjectData
 {
 	public CodeListData()
 	{
-		ids = new CodeList();
+		codes = new CodeList();
 	}
 	
 	public CodeListData(String valueToUse)
@@ -37,37 +37,37 @@ public class CodeListData extends ObjectData
 	
 	public String get()
 	{
-		return ids.toString();
+		return codes.toString();
 	}
 	
-	public void set(CodeList newIds)
+	public void set(CodeList newCodes)
 	{
-		ids = newIds;
+		codes = newCodes;
 	}
 	
 	public CodeList getCodeList()
 	{
-		return ids;
+		return codes;
 	}
 	
 	public int size()
 	{
-		return ids.size();
+		return codes.size();
 	}
 	
 	public String get(int index)
 	{
-		return ids.get(index);
+		return codes.get(index);
 	}
 	
-	public void add(String id)
+	public void add(String code)
 	{
-		ids.add(id);
+		codes.add(code);
 	}
 	
-	public void removeId(String id)
+	public void removeCode(String code)
 	{
-		ids.removeId(id);
+		codes.removeCode(code);
 	}
 	
 	public boolean equals(Object rawOther)
@@ -76,14 +76,14 @@ public class CodeListData extends ObjectData
 			return false;
 		
 		CodeListData other = (CodeListData)rawOther;
-		return ids.equals(other.ids);
+		return codes.equals(other.codes);
 	}
 
 	public int hashCode()
 	{
-		return ids.hashCode();
+		return codes.hashCode();
 	}
 	
 	
-	CodeList ids;
+	CodeList codes;
 }

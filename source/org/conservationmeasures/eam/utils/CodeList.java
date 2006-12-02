@@ -49,9 +49,9 @@ public class CodeList
 	}
 
 	
-	public void add(String id)
+	public void add(String code)
 	{
-		data.add(id);
+		data.add(code);
 	}
 		
 	public String get(int index)
@@ -59,30 +59,30 @@ public class CodeList
 		return (String)data.get(index);
 	}
 	
-	public boolean contains(String id)
+	public boolean contains(String code)
 	{
-		return data.contains(id);
+		return data.contains(code);
 	}
 	
-	public int find(String id)
+	public int find(String code)
 	{
-		return data.indexOf(id);
+		return data.indexOf(code);
 	}
 	
-	public void removeId(String id)
+	public void removeCode(String code)
 	{
-		if(!data.contains(id))
-			throw new RuntimeException("Attempted to remove non-existant Id: " + id + " from: " + toString());
-		data.remove(id);
+		if(!data.contains(code))
+			throw new RuntimeException("Attempted to remove non-existant code: " + code + " from: " + toString());
+		data.remove(code);
 	}
 	
 	public void subtract(CodeList other)
 	{
 		for(int i = 0; i < other.size(); ++i)
 		{
-			String id = other.get(i);
-			if(contains(id))
-				removeId(id);
+			String code = other.get(i);
+			if(contains(code))
+				removeCode(code);
 		}
 	}
 	
