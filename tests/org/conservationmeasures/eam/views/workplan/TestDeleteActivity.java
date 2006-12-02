@@ -59,17 +59,17 @@ public class TestDeleteActivity extends EAMTestCase
 			project.executeCommand(addResource3);
 			
 			assertEquals("Parent doesn't have child?", 1, parentHasChild.getSubtaskCount());
-			DeleteActivity.deleteTasks(project, leafChild);
+			DeleteActivity.deleteTaskTree(project, leafChild);
 			assertEquals("Didn't delete subtasks?", 0, parentHasChild.getSubtaskCount());
 			Undo.undo(project);
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
-			DeleteActivity.deleteTasks(project, parentNoChild);
+			DeleteActivity.deleteTaskTree(project, parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
 			Undo.undo(project);
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
-			DeleteActivity.deleteTasks(project, parentHasChild);
+			DeleteActivity.deleteTaskTree(project, parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
