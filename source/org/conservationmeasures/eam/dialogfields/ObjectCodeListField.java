@@ -5,11 +5,13 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
 import javax.swing.JList;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -28,6 +30,7 @@ public class ObjectCodeListField extends ObjectDataInputField
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		list = new UiList(questionToUse.getChoices());
 		list.addListSelectionListener(new ComboChangeHandler());
+		list.setBorder(new LineBorder(Color.LIGHT_GRAY, 1));
 		addFocusListener();
 	}
 	
