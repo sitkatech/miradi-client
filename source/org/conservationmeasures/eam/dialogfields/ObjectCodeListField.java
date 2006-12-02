@@ -54,11 +54,9 @@ public class ObjectCodeListField extends ObjectDataInputField
 		try
 		{
 			CodeList codeList = new CodeList(codes);
-			System.out.println("HERE Start");
 			for(int i = 0; i < list.getModel().getSize(); ++i)
 			{
 				ChoiceItem choiceItem = (ChoiceItem)list.getModel().getElementAt(i);
-				System.out.println("HERE" + choiceItem.getLabel() + "/" + choiceItem.getCode() + " found=" + codeList.contains(choiceItem.getCode()));
 				if (codeList.contains(choiceItem.getCode()))
 					list.addSelectionInterval(i,i);
 			}
