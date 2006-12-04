@@ -122,7 +122,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		return commands;
 	}
-	
+
+	//FIXME there are duplicates of this method.  the second one is in umbrella.DeleteActivity.
+	//refactor it.  Task.destroySelf or somehting similiar
 	private static void destroyTask(Project project, Task task, Vector deleteIds) throws Exception
 	{
 		deleteIds.add(new CommandSetObjectData(task.getType(), task.getId(), Task.TAG_SUBTASK_IDS, ""));
