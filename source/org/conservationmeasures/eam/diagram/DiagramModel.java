@@ -329,7 +329,7 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		DiagramFactor node = rawGetFactorByWrappedId(id);
 		if(node == null)
-			throw new Exception("Node doesn't exist, id: " + id);
+			EAM.logDebug("getDiagramFactorByWrappedId about to return null for: " + id);
 		return node;
 	}
 
