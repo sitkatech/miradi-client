@@ -5,12 +5,20 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
+import java.text.ParseException;
+import java.util.Vector;
+
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramModel;
+import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class ShowFullModelModeDoer extends ViewDoer
@@ -40,9 +48,14 @@ public class ShowFullModelModeDoer extends ViewDoer
 
 		try
 		{
+			IdList factorsToMakeSelected = getFactorsToMakeSelected();
+			
 			BaseId viewId = getCurrentViewId();
 			getProject().executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 
 					ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT));
+			
+			selectFactors(factorsToMakeSelected);
+			
 		}
 		catch (Exception e)
 		{
@@ -51,6 +64,31 @@ public class ShowFullModelModeDoer extends ViewDoer
 		}
 	}
 
+	private IdList getFactorsToMakeSelected() throws Exception, ParseException
+	{
+		Project project = getMainWindow().getProject();
+		String listOfIds = project.getCurrentViewData().getData(ViewData.TAG_BRAINSTORM_NODE_IDS);
+		IdList factorsToMakeVisible = new IdList(listOfIds);
+		return factorsToMakeVisible;
+	}
+
+	private void selectFactors(IdList factorIds) throws Exception
+	{
+
+		DiagramView diagramView = (DiagramView)getView();
+		DiagramModel diagramModel = getProject().getDiagramModel();
+		Vector allFactors = diagramModel.getAllDiagramFactors();
+		
+		for(int i = 0; i < factorIds.size(); ++i)
+		{
+			DiagramFactorId nodeId = new DiagramFactorId(factorIds.get(i).asInt());
+			DiagramFactor diagramFactor = diagramModel.getDiagramFactorById(nodeId);
+			if (! (allFactors.indexOf(diagramFactor)<0)) 
+				diagramView.getDiagramComponent().addSelectionCell(diagramFactor);
+		}
+	}
+	
+	
 	private BaseId getCurrentViewId() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
