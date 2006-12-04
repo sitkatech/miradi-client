@@ -85,7 +85,7 @@ public class TestViewData extends EAMTestCase
 		ViewData vd = new ViewData(new BaseId(33));
 		IdList sampleIds = createSampleIdList();
 		vd.setData(ViewData.TAG_BRAINSTORM_NODE_IDS, sampleIds.toString());
-		BaseId idToAdd = new BaseId(983);
+		FactorId idToAdd = new FactorId(983);
 		Command[] inNormalMode = vd.buildCommandsToAddNode(idToAdd);
 		assertEquals("added when not in brainstorm mode?", 0, inNormalMode.length);
 		

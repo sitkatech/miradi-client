@@ -31,7 +31,7 @@ public class ViewData extends EAMBaseObject
 		super(new BaseId(idAsInt), json);
 	}
 
-	public Command[] buildCommandsToAddNode(BaseId idToAdd) throws ParseException
+	public Command[] buildCommandsToAddNode(FactorId idToAdd) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
 			return new Command[0];

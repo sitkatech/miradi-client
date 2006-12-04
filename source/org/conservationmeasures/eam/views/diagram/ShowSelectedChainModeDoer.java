@@ -59,7 +59,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			IdList selectedNodeIds = new IdList();
 			for(int i = 0; i < selectedNodes.length; ++i)
 			{
-				selectedNodeIds.add(selectedNodes[i].getDiagramFactorId());
+				selectedNodeIds.add(selectedNodes[i].getWrappedId());
 			}
 			project.executeCommand(new CommandBeginTransaction());
 			project.executeCommand(new CommandSetObjectData(ObjectType.VIEW_DATA, viewId, 

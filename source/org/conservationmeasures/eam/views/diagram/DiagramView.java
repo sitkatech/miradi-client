@@ -60,7 +60,6 @@ import org.conservationmeasures.eam.dialogs.FactorPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
@@ -260,14 +259,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			IdList visibleDiagramNodeIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
-			visibleDiagramNodeIds.addAll(getRelatedDraftInterventions(visibleDiagramNodeIds));
+			IdList visibleFactorIds = new IdList(viewData.getData(ViewData.TAG_BRAINSTORM_NODE_IDS));
+			visibleFactorIds.addAll(getRelatedDraftInterventions(visibleFactorIds));
 			Vector allNodes = getProject().getDiagramModel().getAllDiagramFactors();
 			for (int i = 0; i < allNodes.size(); ++i)
 			{
 				DiagramFactor node = (DiagramFactor) allNodes.get(i);
-				BaseId id = node.getDiagramFactorId();
-				if (!visibleDiagramNodeIds.contains(id))
+				FactorId id = node.getWrappedId();
+				if (!visibleFactorIds.contains(id))
 					idsToHide.add(id);
 			}
 		}
@@ -278,21 +277,21 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		return idsToHide;
 	}
 	
-	IdList getRelatedDraftInterventions(IdList diagramNodeIds) throws Exception
+	IdList getRelatedDraftInterventions(IdList factorIds) throws Exception
 	{
 		IdList draftsToAdd = new IdList();
 		
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		for(int i = 0; i < diagramNodeIds.size(); ++i)
+		for(int i = 0; i < factorIds.size(); ++i)
 		{
-			DiagramFactorId nodeId = new DiagramFactorId(diagramNodeIds.get(i).asInt());
-			Factor node = diagramModel.getDiagramFactorById(nodeId).getUnderlyingObject();
+			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
+			Factor node = diagramModel.getDiagramFactorByWrappedId(nodeId).getUnderlyingObject();
 			FactorSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
 			Iterator iter = possibleDraftInterventionIds.iterator();
 			while(iter.hasNext())
 			{
 				FactorId possibleInterventionId = ((Factor)iter.next()).getModelNodeId();
-				if(diagramNodeIds.contains(possibleInterventionId))
+				if(factorIds.contains(possibleInterventionId))
 					continue;
 				Factor possibleIntervention = getProject().findNode(possibleInterventionId);
 				if(possibleIntervention.isStrategy() && possibleIntervention.isStatusDraft())
