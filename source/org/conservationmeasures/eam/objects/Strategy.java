@@ -5,6 +5,10 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import java.util.Arrays;
+import java.util.Vector;
+
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
@@ -107,6 +111,14 @@ public class Strategy extends Factor
 		EnhancedJsonObject json = super.toJson();
 		json.put(TAG_STATUS, status);
 		return json;
+	}
+	
+	public CommandSetObjectData[] createCommandsToClear()
+	{
+		CommandSetObjectData[] commandSetObjectData = super.createCommandsToClear();
+		Vector commands = new Vector(Arrays.asList(commandSetObjectData));
+		commands.add(new CommandSetObjectData(getType(), getId(), TAG_STATUS, STATUS_REAL));
+		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 	
 	void clear()
