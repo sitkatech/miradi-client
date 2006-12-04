@@ -78,11 +78,11 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 
 	public void rebuild()
 	{	
-		int childCount = indicator.getSubtaskCount();
+		int childCount = indicator.getTaskCount();
 		Vector taskVector = new Vector();
 		for(int i = 0; i < childCount; ++i)
 		{
-			BaseId taskId = indicator.getSubtaskId(i);
+			BaseId taskId = indicator.getTaskId(i);
 			Task task = project.getTaskPool().find(taskId);
 			if(task == null)
 			{
