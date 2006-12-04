@@ -154,6 +154,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 			add(new JScrollPane(realPanel));
 		}
 
+		public void dispose()
+		{
+			realPanel.dispose();
+			super.dispose();
+		}
+
 		public EAMObject getObject()
 		{
 			return realPanel.getObject();
