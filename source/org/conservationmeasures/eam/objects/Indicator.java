@@ -27,6 +27,26 @@ public class Indicator extends EAMBaseObject
 		super(new BaseId(idAsInt), json);
 	}
 	
+	public int getSubtaskCount()
+	{
+		return subtaskIds.size();
+	}
+	
+	public BaseId getSubtaskId(int index)
+	{
+		return subtaskIds.get(index);
+	}
+	
+	public IdList getSubtaskIdList()
+	{
+		return subtaskIds.getIdList().createClone();
+	}
+	
+	public void addSubtaskId(BaseId subtaskId)
+	{
+		subtaskIds.add(subtaskId);
+	}
+	
 	void clear()
 	{
 		super.clear();
@@ -39,6 +59,7 @@ public class Indicator extends EAMBaseObject
 		cost = new StringData();
 		fundingSource = new StringData();
 		when = new StringData();
+		subtaskIds = new IdListData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_METHOD, method);
@@ -49,6 +70,7 @@ public class Indicator extends EAMBaseObject
 		addField(TAG_COST, cost);
 		addField(TAG_FUNDING_SOURCE, fundingSource);
 		addField(TAG_WHEN, when);
+		addField(TAG_SUBTASK_IDS, subtaskIds);
 	}
 	
 	public int getType()
@@ -82,6 +104,7 @@ public class Indicator extends EAMBaseObject
 	public static final String TAG_FUNDING_SOURCE = "Funding Source";
 	public static final String TAG_COST = "Cost";
 	public static final String TAG_WHEN = "When";
+	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
@@ -97,4 +120,5 @@ public class Indicator extends EAMBaseObject
 	StringData cost;
 	StringData fundingSource;
 	StringData when;
+	IdListData subtaskIds;
 }

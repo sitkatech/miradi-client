@@ -5,10 +5,14 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+import java.util.Vector;
+
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
@@ -18,6 +22,7 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 	{
 		project = projectToUse;
 		indicator = indicatorToUse;
+		rebuild();
 	}
 	
 	public EAMObject getObject()
@@ -42,12 +47,12 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 
 	public int getChildCount()
 	{
-		return 0;
+		return tasks.length;
 	}
 
 	public TreeTableNode getChild(int index)
 	{
-		return null;
+		return tasks[index];
 	}
 
 	public Object getValueAt(int column)
@@ -63,7 +68,7 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 	
 	public boolean canInsertActivityHere()
 	{
-		return false;
+		return true;
 	}
 	
 	public BaseId getId()
@@ -72,9 +77,25 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 	}
 
 	public void rebuild()
-	{
+	{	
+		int childCount = indicator.getSubtaskCount();
+		Vector taskVector = new Vector();
+		for(int i = 0; i < childCount; ++i)
+		{
+			BaseId taskId = indicator.getSubtaskId(i);
+			Task task = project.getTaskPool().find(taskId);
+			if(task == null)
+			{
+				EAM.logWarning("Ignoring null activity " + taskId + " in work plan " + indicator.getId());
+				continue;
+			}
+			taskVector.add(new WorkPlanStrategyTask(project, task));
+		}
+		tasks = (WorkPlanStrategyTask[])taskVector.toArray(new WorkPlanStrategyTask[0]);
+
 	}
-	
+
+	WorkPlanStrategyTask[] tasks;
 	Project project;
 	Indicator indicator;
 }

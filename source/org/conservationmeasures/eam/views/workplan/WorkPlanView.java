@@ -3,8 +3,8 @@ package org.conservationmeasures.eam.views.workplan;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
-import org.conservationmeasures.eam.actions.ActionDeleteActivity;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
+import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionResourceListAdd;
@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -23,7 +24,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.strategicplan.ModifyActivity;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
-import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.conservationmeasures.eam.views.workplan.wizard.WorkPlanWizardPanel;
@@ -96,7 +96,7 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
-		addDoerToMap(ActionDeleteActivity.class, new DeleteActivity());
+		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
@@ -131,4 +131,6 @@ public class WorkPlanView extends TabbedView
 	WorkPlanPanel workPlanPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;
+	WorkPlanManagementPanel workPlanManagementPanel;
+		
 }

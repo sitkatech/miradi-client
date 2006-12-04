@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
+//TODO refactor name since this node is being used by both strat and mon.
 public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
 {
 	public WorkPlanStrategyTask(Project projectToUse, Task taskToUse)

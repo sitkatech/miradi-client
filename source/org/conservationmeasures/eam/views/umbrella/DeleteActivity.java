@@ -50,15 +50,24 @@ public class DeleteActivity extends ObjectsDoer
 		if(!isAvailable())
 			return;
 	
+		Task selectedTask = (Task)getObjects()[0];
+		deleteTask(getProject(), selectedTask);
+	}
+
+	public static void deleteTask(Project project, Task selectedTask) throws CommandFailedException
+	{
+		String[] buttons = {"Delete", "Retain", };
+		String[] confirmText = {"Are you sure you want to delete?"};
+		if(!EAM.confirmDialog("Delete", confirmText, buttons))
+			return;
 		try
 		{
-			Task selectedTask = (Task)getObjects()[0];
 			//FIXME we are adding the parentRef during runtime to the tasks.
 			//This is done to avoid to having to deal with writing the data
 			//migration code. This method call can be eliminated with a data
 			//migration.
-			possiblySetParentRef(getProject(), selectedTask);
-			deleteTaskTree(getProject(), selectedTask);
+			possiblySetParentRef(project, selectedTask);
+			deleteTaskTree(project, selectedTask);
 		}
 		catch(Exception e)
 		{
@@ -67,7 +76,7 @@ public class DeleteActivity extends ObjectsDoer
 		}
 	}
 
-	private void possiblySetParentRef(Project project, Task selectedTask) throws Exception
+	private static void possiblySetParentRef(Project project, Task selectedTask) throws Exception
 	{
 		if (selectedTask.getParentRef().getObjectType() != ObjectType.FAKE)
 			return;

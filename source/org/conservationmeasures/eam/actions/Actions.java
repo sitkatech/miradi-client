@@ -37,8 +37,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
@@ -56,11 +56,11 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpViewAllObjectives;
 import org.conservationmeasures.eam.actions.views.ActionViewBudget;
-import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewDiagram;
 import org.conservationmeasures.eam.actions.views.ActionViewImages;
 import org.conservationmeasures.eam.actions.views.ActionViewMap;
 import org.conservationmeasures.eam.actions.views.ActionViewMonitoring;
+import org.conservationmeasures.eam.actions.views.ActionViewSchedule;
 import org.conservationmeasures.eam.actions.views.ActionViewStrategicPlan;
 import org.conservationmeasures.eam.actions.views.ActionViewSummary;
 import org.conservationmeasures.eam.actions.views.ActionViewThreatMatrix;
@@ -145,7 +145,7 @@ public class Actions
 		registerAction(new ActionViewPossibleResources(mainWindow));
 		
 		
-		
+		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionTreeNodeUp(mainWindow));
 		registerAction(new ActionTreeNodeDown(mainWindow));

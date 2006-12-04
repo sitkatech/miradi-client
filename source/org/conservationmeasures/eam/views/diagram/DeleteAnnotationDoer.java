@@ -16,12 +16,15 @@ import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -43,25 +46,24 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		String tag = getAnnotationIdListTag();
 		String[] dialogText = getDialogText();
-	
-		deleteAnnotationViaCommands(getSelectedFactor(), tag, dialogText);
+		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
+		Factor selectedFactor = getSelectedFactor();
+		
+		deleteAnnotationViaCommands(getProject(), selectedFactor, annotationToDelete, tag, dialogText);
 	}
 
-
-	void deleteAnnotationViaCommands(Factor factor, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
+	public static void deleteAnnotationViaCommands(Project project, Factor factor, EAMBaseObject annotationToDelete, String annotationIdListTag, String[] confirmDialogText) throws CommandFailedException
 	{
-		EAMBaseObject annotationToDelete = (EAMBaseObject)getObjects()[0];
-	
 		String[] buttons = {"Delete", "Retain", };
 		if(!EAM.confirmDialog("Delete", confirmDialogText, buttons))
 			return;
 	
-		getProject().executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = buildCommandsToDeleteAnnotation(getProject(), factor, annotationIdListTag, annotationToDelete);
+			Command[] commands = buildCommandsToDeleteAnnotation(project, factor, annotationIdListTag, annotationToDelete);
 			for(int i = 0; i < commands.length; ++i)
-				getProject().executeCommand(commands[i]);
+				project.executeCommand(commands[i]);
 		}
 		catch(Exception e)
 		{
@@ -70,7 +72,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		}
 		finally
 		{
-			getProject().executeCommand(new CommandEndTransaction());
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 	
@@ -84,6 +86,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		FactorSet nodesThatUseThisAnnotation = new ChainManager(project).findFactorsThatUseThisAnnotation(type, idToRemove);
 		if(nodesThatUseThisAnnotation.size() == 1)
 		{
+			commands.addAll(buildCommandsToDeleteSubTasks(project, type, idToRemove));
 			commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(type, idToRemove));
 		}
@@ -102,5 +105,36 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		return (Factor)selected;
 	}
-
+	
+	private static Vector buildCommandsToDeleteSubTasks(Project project, int type, BaseId id) throws Exception
+	{
+		Vector commands = new Vector();
+		if (!(type == ObjectType.INDICATOR))
+			return commands;
+	
+		Indicator indicator = (Indicator)project.findObject(type, id);
+		IdList subtaskList = indicator.getSubtaskIdList();
+		for (int i  = 0; i < subtaskList.size(); i++)
+		{
+			Task taskToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
+			destroyTask(project, taskToDelete, commands);
+		}
+		
+		return commands;
+	}
+	
+	private static void destroyTask(Project project, Task task, Vector deleteIds) throws Exception
+	{
+		deleteIds.add(new CommandSetObjectData(task.getType(), task.getId(), Task.TAG_SUBTASK_IDS, ""));
+		int subTaskCount = task.getSubtaskCount();
+		for (int index = 0; index < subTaskCount; index++)
+		{
+			BaseId subTaskId = task.getSubtaskId(index);
+			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+			destroyTask(project, subTask, deleteIds);
+		}
+		
+		deleteIds.addAll(Arrays.asList(task.createCommandsToClear()));
+		deleteIds.add(new CommandDeleteObject(task.getType(), task.getId()));
+	}
 }

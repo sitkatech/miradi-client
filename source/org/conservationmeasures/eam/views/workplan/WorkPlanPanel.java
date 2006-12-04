@@ -13,7 +13,7 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
-import org.conservationmeasures.eam.actions.ActionDeleteActivity;
+import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
@@ -139,7 +139,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
 		UiButton editButton = new UiButton(actions.get(ActionModifyActivity.class));
-		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteActivity.class), tree);
+		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteWorkPlanNode.class), tree);
 		UiButton upButton = new UiButton(actions.get(ActionTreeNodeUp.class));
 		UiButton downButton = new UiButton(actions.get(ActionTreeNodeDown.class));
 		buttonBox.add(addButton);
