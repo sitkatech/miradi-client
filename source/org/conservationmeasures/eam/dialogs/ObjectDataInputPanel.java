@@ -217,9 +217,8 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
 		if(cmd.getObjectType() != objectType)
 			return false;
-		if(cmd.getCreatedId().equals(objectId))
-			return false;
-		return true;
+
+		return (cmd.getCreatedId().equals(objectId));
 	}
 
 	public EAMObject getObject()
