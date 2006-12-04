@@ -16,7 +16,6 @@ import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
-import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -131,6 +130,4 @@ public class WorkPlanView extends TabbedView
 	WorkPlanPanel workPlanPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;
-	WorkPlanManagementPanel workPlanManagementPanel;
-		
 }
