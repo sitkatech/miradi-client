@@ -43,8 +43,10 @@ public class DeleteWorkPlanTreeNode extends WorkPlanDoer
 			Project project = getProject();
 			ORef selectedRef = getSelectedObject().getObjectReference();
 			if (selectedRef.getObjectType() == ObjectType.TASK)
+			{
 				DeleteActivity.deleteTask(project, (Task)getSelectedObject().getObject());
-			if (selectedRef.getObjectType() == ObjectType.INDICATOR)
+			}
+			else if (selectedRef.getObjectType() == ObjectType.INDICATOR)
 			{
 				Factor factor = getFactor(project, getSelectedObject().getId());
 				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)getSelectedObject().getObject(), Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
