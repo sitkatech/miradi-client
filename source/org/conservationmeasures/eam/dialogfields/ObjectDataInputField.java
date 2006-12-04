@@ -127,11 +127,12 @@ abstract public class ObjectDataInputField implements FocusListener
 		String existingValue = project.getObjectData(objectType, objectId, tag);
 		if(existingValue.equals(newValue))
 			return;
+		
 		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
 		try
 		{
-			project.executeCommand(cmd);
 			clearNeedsSave();
+			project.executeCommand(cmd);
 			updateFromObject();
 		}
 		catch(CommandFailedException e)
