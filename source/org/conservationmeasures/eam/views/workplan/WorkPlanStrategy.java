@@ -90,14 +90,14 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 				EAM.logWarning("Ignoring null activity " + activityId + " in work plan " + intervention.getId());
 				continue;
 			}
-			activityVector.add(new WorkPlanStrategyTask(project, activity));
+			activityVector.add(new WorkPlanTaskNode(project, activity));
 		}
-		activities = (WorkPlanStrategyTask[])activityVector.toArray(new WorkPlanStrategyTask[0]);
+		activities = (WorkPlanTaskNode[])activityVector.toArray(new WorkPlanTaskNode[0]);
 	}
 
 	
 	Project project;
 	Strategy intervention;
-	WorkPlanStrategyTask[] activities;
+	WorkPlanTaskNode[] activities;
 }
 

@@ -19,10 +19,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-//TODO refactor name since this node is being used by both strat and mon.
-public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
+public class WorkPlanTaskNode extends WorkPlanTreeTableNode
 {
-	public WorkPlanStrategyTask(Project projectToUse, Task taskToUse)
+	public WorkPlanTaskNode(Project projectToUse, Task taskToUse)
 	{
 		project = projectToUse;
 		
@@ -98,14 +97,14 @@ public class WorkPlanStrategyTask extends WorkPlanTreeTableNode
 		for (int i = 0; i < taskIdList.size(); i++)
 		{
 			Task taskFromPool = project.getTaskPool().find(taskIdList.get(i));
-			possibleTasks.add(new WorkPlanStrategyTask(project, taskFromPool));
+			possibleTasks.add(new WorkPlanTaskNode(project, taskFromPool));
 		}
 		
-		tasks = (WorkPlanStrategyTask[])possibleTasks.toArray(new WorkPlanStrategyTask[0]);
+		tasks = (WorkPlanTaskNode[])possibleTasks.toArray(new WorkPlanTaskNode[0]);
 		Arrays.sort(tasks, new IgnoreCaseStringComparator());
 	}
 
 	Project project;
 	Task task;
-	WorkPlanStrategyTask[] tasks;
+	WorkPlanTaskNode[] tasks;
 }

@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.ActivityInsertionPoint;
 import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.views.workplan.WorkPlanStrategyTask;
+import org.conservationmeasures.eam.views.workplan.WorkPlanTaskNode;
 
 public class TestActivityInsertionPoint extends EAMTestCase
 {
@@ -28,8 +28,8 @@ public class TestActivityInsertionPoint extends EAMTestCase
 		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
 		Task rootTask = new Task(new BaseId(23), extraInfo);
 		Task parentTask = new Task(new BaseId(58), extraInfo);
-		WorkPlanStrategyTask root = new WorkPlanStrategyTask(null, rootTask);
-		WorkPlanStrategyTask parent = new WorkPlanStrategyTask(null, parentTask);
+		WorkPlanTaskNode root = new WorkPlanTaskNode(null, rootTask);
+		WorkPlanTaskNode parent = new WorkPlanTaskNode(null, parentTask);
 		TreePath path = new TreePath(new Object[] {root, parent});
 		int index = 9;
 		ActivityInsertionPoint aip = new ActivityInsertionPoint(path, index);

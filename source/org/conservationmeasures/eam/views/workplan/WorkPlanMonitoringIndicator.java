@@ -89,13 +89,13 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 				EAM.logWarning("Ignoring null activity " + taskId + " in work plan " + indicator.getId());
 				continue;
 			}
-			taskVector.add(new WorkPlanStrategyTask(project, task));
+			taskVector.add(new WorkPlanTaskNode(project, task));
 		}
-		tasks = (WorkPlanStrategyTask[])taskVector.toArray(new WorkPlanStrategyTask[0]);
+		tasks = (WorkPlanTaskNode[])taskVector.toArray(new WorkPlanTaskNode[0]);
 
 	}
 
-	WorkPlanStrategyTask[] tasks;
+	WorkPlanTaskNode[] tasks;
 	Project project;
 	Indicator indicator;
 }
