@@ -65,6 +65,6 @@ public class DeleteWorkPlanTreeNode extends WorkPlanDoer
 
 	private String[] getConfirmDialogText()
 	{
-		return new String[] {"Are you sure you want to delete?"};
+		return new String[] {EAM.text("Are you sure you want to delete?")};
 	}
 }
