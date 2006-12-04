@@ -177,14 +177,7 @@ public class TestUndoAndRedo extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
-		try
-		{
-			model.getDiagramFactorByWrappedId(cellId);
-			fail("Cell should be gone: " + cellId);
-		}
-		catch(Exception ignoreExpected)
-		{
-		}
+		assertNull("Found the deleted factor?", model.getDiagramFactorByWrappedId(cellId));
 		EAM.setLogToConsole();
 	}
 	

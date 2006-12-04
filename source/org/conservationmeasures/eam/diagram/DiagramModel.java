@@ -325,7 +325,7 @@ public class DiagramModel extends DefaultGraphModel
 		return node;
 	}
 
-	public DiagramFactor getDiagramFactorByWrappedId(FactorId id) throws Exception
+	public DiagramFactor getDiagramFactorByWrappedId(FactorId id)
 	{
 		DiagramFactor node = rawGetFactorByWrappedId(id);
 		if(node == null)
