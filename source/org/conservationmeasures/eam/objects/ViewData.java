@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.IntegerData;
 import org.conservationmeasures.eam.objectdata.ORefListData;
@@ -43,6 +44,10 @@ public class ViewData extends EAMBaseObject
 	public Command[] buildCommandsToRemoveNode(FactorId idToRemove) throws ParseException
 	{
 		if(getCurrentMode().equals(MODE_DEFAULT))
+			return new Command[0];
+		
+		IdList currentIds = new IdList(getData(TAG_BRAINSTORM_NODE_IDS));
+		if(!currentIds.contains(idToRemove))
 			return new Command[0];
 		
 		CommandSetObjectData cmd = CommandSetObjectData.createRemoveIdCommand(this, TAG_BRAINSTORM_NODE_IDS, idToRemove);
