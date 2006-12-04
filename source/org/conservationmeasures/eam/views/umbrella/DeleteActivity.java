@@ -80,7 +80,7 @@ public class DeleteActivity extends ObjectsDoer
 
 	public static void deleteTaskTree(Project project, Task selectedTask) throws Exception
 	{
-		Command commandToDeleteTasks[] = createDeleteCommands(project, selectedTask); 
+		Command[] commandToDeleteTasks = createDeleteCommands(project, selectedTask); 
 		executeDeleteCommands(project, commandToDeleteTasks);
 	}
 	
