@@ -17,9 +17,9 @@ import javax.swing.JTabbedPane;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeContributingFactor;
-import org.conservationmeasures.eam.diagram.factortypes.FactorTypeDirectThreat;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -108,11 +108,12 @@ public class FactorPropertiesPanel extends DisposablePanel
 
 		if(diagramFactor.isCause())
 		{
+			//TODO: Factor lables should be consoldated
 			grid.add(new UiLabel(EAM.text("Label|Type")));
-			String subTypeString = new FactorTypeContributingFactor().toString();
 			if(diagramFactor.isDirectThreat())
-				subTypeString = new FactorTypeDirectThreat().toString();
-			grid.add(new UiLabel(subTypeString));
+				grid.add(new UiLabel(EAM.text("Direct Threat"), new DirectThreatIcon(), UiLabel.LEADING));
+			else
+				grid.add(new UiLabel(EAM.text("Contributing Factor"), new ContributingFactorIcon(), UiLabel.LEADING));
 		}
 
 		grid.add(new UiLabel());
