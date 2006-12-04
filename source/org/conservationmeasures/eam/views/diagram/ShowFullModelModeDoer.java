@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.views.diagram;
 
 import java.text.ParseException;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -20,6 +20,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
+import org.jgraph.graph.GraphLayoutCache;
 
 public class ShowFullModelModeDoer extends ViewDoer
 {
@@ -74,17 +75,16 @@ public class ShowFullModelModeDoer extends ViewDoer
 
 	private void selectFactors(IdList factorIds) throws Exception
 	{
-
-		DiagramView diagramView = (DiagramView)getView();
+		DiagramComponent diagramComponent  = ((DiagramView)getView()).getDiagramComponent();
+		GraphLayoutCache glc  = diagramComponent.getGraphLayoutCache();
 		DiagramModel diagramModel = getProject().getDiagramModel();
-		Vector allFactors = diagramModel.getAllDiagramFactors();
 		
 		for(int i = 0; i < factorIds.size(); ++i)
 		{
 			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
 			DiagramFactor diagramFactor = diagramModel.getDiagramFactorByWrappedId(nodeId);
-			if (! (allFactors.indexOf(diagramFactor)<0)) 
-				diagramView.getDiagramComponent().addSelectionCell(diagramFactor);
+			if (glc.isVisible(diagramFactor))
+				diagramComponent.addSelectionCell(diagramFactor);
 		}
 	}
 	
