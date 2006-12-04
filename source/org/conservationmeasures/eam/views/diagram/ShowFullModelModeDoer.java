@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.DiagramFactorId;
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -81,8 +81,8 @@ public class ShowFullModelModeDoer extends ViewDoer
 		
 		for(int i = 0; i < factorIds.size(); ++i)
 		{
-			DiagramFactorId nodeId = new DiagramFactorId(factorIds.get(i).asInt());
-			DiagramFactor diagramFactor = diagramModel.getDiagramFactorById(nodeId);
+			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
+			DiagramFactor diagramFactor = diagramModel.getDiagramFactorByWrappedId(nodeId);
 			if (! (allFactors.indexOf(diagramFactor)<0)) 
 				diagramView.getDiagramComponent().addSelectionCell(diagramFactor);
 		}
