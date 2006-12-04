@@ -26,6 +26,7 @@ import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
@@ -215,10 +216,14 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		WorkPlanTreeTableNode selectedObject = getSelectedObject();
 		if (selectedObject == null)
 			return;
-		if (selectedObject.getType() != ObjectType.TASK)
+		if (propertiesPanel == null)
 			return;
 		
-		propertiesPanel.setObjectId(getSelectedObject().getId());
+		BaseId baseId = BaseId.INVALID;
+		if (selectedObject.getType() == ObjectType.TASK)
+			baseId = getSelectedObject().getId();
+		
+		propertiesPanel.setObjectId(baseId);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
