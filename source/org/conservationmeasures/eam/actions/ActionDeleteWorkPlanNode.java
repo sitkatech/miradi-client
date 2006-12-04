@@ -22,7 +22,6 @@ public class ActionDeleteWorkPlanNode extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		//TODO come up with a better name instead of 'object'
-		return EAM.text("TT|Delete the selected object");
+		return EAM.text("TT|Delete the selected item");
 	}
 }
