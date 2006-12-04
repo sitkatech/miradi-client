@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
+import org.conservationmeasures.eam.dialogs.ObjectDataInputPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -210,6 +211,14 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 	public void valueChanged(TreeSelectionEvent e)
 	{
 		mainWindow.getActions().updateActionStates();
+		
+		WorkPlanTreeTableNode selectedObject = getSelectedObject();
+		if (selectedObject == null)
+			return;
+		if (selectedObject.getType() != ObjectType.TASK)
+			return;
+		
+		propertiesPanel.setObjectId(getSelectedObject().getId());
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
@@ -258,8 +267,14 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 			restoreTreeExpansionState();
 		}
 	}
+	
+	public void setPropertiesPanel(ObjectDataInputPanel propertiesPanelToUse)
+	{
+		propertiesPanel = propertiesPanelToUse;
+	}
 
 	MainWindow mainWindow;
 	WorkPlanTreeTable tree;
 	WorkPlanTreeTableModel model;
+	ObjectDataInputPanel propertiesPanel;
 }

@@ -6,7 +6,6 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionResourceListAdd;
 import org.conservationmeasures.eam.actions.ActionResourceListModify;
 import org.conservationmeasures.eam.actions.ActionResourceListRemove;
@@ -14,8 +13,10 @@ import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.ActivityPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -51,10 +52,12 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
+		ActivityPropertiesPanel taskPropertiesPanel = new ActivityPropertiesPanel(getProject(), getMainWindow().getActions());
+		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
 
-		addTab(EAM.text("Work Plan"), workPlanPanel);
+		addTab(EAM.text("Work Plan"), workPlanManagementPanel);
 		addScrollableTab(activitiesManagementPanel);
 		addScrollableTab(resourceManagementPanel);
 	}
@@ -83,7 +86,7 @@ public class WorkPlanView extends TabbedView
 	{
 		return activitiesManagementPanel;
 	}
-
+	
 	public ModifyActivity getModifyActivityDoer()
 	{
 		return modifyActivityDoer;
@@ -94,7 +97,8 @@ public class WorkPlanView extends TabbedView
 		modifyActivityDoer = new ModifyActivity();
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
+		//TODO Modify needs to be removed.  
+		//addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
@@ -130,4 +134,6 @@ public class WorkPlanView extends TabbedView
 	WorkPlanPanel workPlanPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;
+	WorkPlanManagementPanel workPlanManagementPanel;
+		
 }
