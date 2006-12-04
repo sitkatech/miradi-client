@@ -20,6 +20,8 @@ import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.icons.ContributingFactorIcon;
 import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -106,15 +108,17 @@ public class FactorPropertiesPanel extends DisposablePanel
 		grid.add(new UiLabel(EAM.text("Label|Label")));
 		grid.add(textField);
 
-		if(diagramFactor.isCause())
-		{
-			//TODO: Factor lables should be consoldated
-			grid.add(new UiLabel(EAM.text("Label|Type")));
-			if(diagramFactor.isDirectThreat())
+		grid.add(new UiLabel(EAM.text("Label|Type")));
+		
+		//TODO: factor labes should be centralized in a common properties file or class
+		if(diagramFactor.isDirectThreat())
 				grid.add(new UiLabel(EAM.text("Direct Threat"), new DirectThreatIcon(), UiLabel.LEADING));
-			else
+		if (diagramFactor.isContributingFactor())
 				grid.add(new UiLabel(EAM.text("Contributing Factor"), new ContributingFactorIcon(), UiLabel.LEADING));
-		}
+		if (diagramFactor.isStrategy()) 
+				grid.add(new UiLabel(EAM.text("Strategy"), new StrategyIcon(), UiLabel.LEADING));
+		if (diagramFactor.isTarget())
+				grid.add(new UiLabel(EAM.text("Target"), new TargetIcon(), UiLabel.LEADING));
 
 		grid.add(new UiLabel());
 		return grid;
