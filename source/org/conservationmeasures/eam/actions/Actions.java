@@ -122,7 +122,6 @@ public class Actions
 		registerAction(new ActionNudgeLeft(mainWindow));
 		registerAction(new ActionNudgeRight(mainWindow));
 		registerAction(new ActionInsertActivity(mainWindow));
-		registerAction(new ActionModifyActivity(mainWindow));
 		registerAction(new ActionCreateActivity(mainWindow));
 		registerAction(new ActionDeleteActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));

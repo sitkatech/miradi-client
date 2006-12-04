@@ -2,7 +2,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionModifyActivity;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.dialogs.GoalPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePoolManagementPanel;
@@ -90,11 +89,6 @@ public class StrategicPlanView extends TabbedView
 		return goalPanel;
 	}
 	
-	public ModifyActivity getModifyActivityDoer()
-	{
-		return modifyActivityDoer;
-	}
-	
 	public ModifyResource getModifyResourceDoer()
 	{
 		return modifyResourceDoer;
@@ -102,10 +96,8 @@ public class StrategicPlanView extends TabbedView
 
 	private void addStrategicPlanDoersToMap()
 	{
-		modifyActivityDoer = new ModifyActivity();
 		modifyResourceDoer = new ModifyResource();
 		
-		addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
@@ -117,7 +109,6 @@ public class StrategicPlanView extends TabbedView
 	GoalPoolManagementPanel goalPanel;
 	StrategyPoolManagementPanel strategyPoolManagementPanel;
 	
-	ModifyActivity modifyActivityDoer;
 	ModifyResource modifyResourceDoer;
 }
 

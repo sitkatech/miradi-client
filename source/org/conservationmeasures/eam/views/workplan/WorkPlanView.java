@@ -22,7 +22,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
-import org.conservationmeasures.eam.views.strategicplan.ModifyActivity;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -87,18 +86,10 @@ public class WorkPlanView extends TabbedView
 		return activitiesManagementPanel;
 	}
 	
-	public ModifyActivity getModifyActivityDoer()
-	{
-		return modifyActivityDoer;
-	}
-	
 	private void addWorkPlanDoersToMap()
 	{
-		modifyActivityDoer = new ModifyActivity();
 		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		//TODO Modify needs to be removed.  
-		//addDoerToMap(ActionModifyActivity.class, modifyActivityDoer);
 		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
@@ -129,7 +120,6 @@ public class WorkPlanView extends TabbedView
 	}
 	
 	MainWindow mainWindow;
-	ModifyActivity modifyActivityDoer;
 
 	WorkPlanPanel workPlanPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
