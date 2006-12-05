@@ -57,9 +57,9 @@ import org.conservationmeasures.eam.objects.TestTask;
 import org.conservationmeasures.eam.objects.TestThreatRatingBundle;
 import org.conservationmeasures.eam.objects.TestValueOption;
 import org.conservationmeasures.eam.objects.TestViewData;
-import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestFactorLinkPool;
 import org.conservationmeasures.eam.project.TestFactorPool;
+import org.conservationmeasures.eam.project.TestIdAssigner;
 import org.conservationmeasures.eam.project.TestProject;
 import org.conservationmeasures.eam.project.TestProjectInfo;
 import org.conservationmeasures.eam.project.TestProjectRepairer;
@@ -74,6 +74,7 @@ import org.conservationmeasures.eam.ratings.TestRatingChoice;
 import org.conservationmeasures.eam.ratings.TestRatingQuestion;
 import org.conservationmeasures.eam.ratings.TestStrategyRatingSummary;
 import org.conservationmeasures.eam.utils.TestCodeList;
+import org.conservationmeasures.eam.utils.TestDateRange;
 import org.conservationmeasures.eam.utils.TestDelimitedFileLoader;
 import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
@@ -131,6 +132,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTranslations.class));
 		suite.addTest(new TestSuite(TestDelimitedFileLoader.class));
 		suite.addTest(new TestSuite(TestTaxonomyLoader.class));
+		suite.addTest(new TestSuite(TestDateRange.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));

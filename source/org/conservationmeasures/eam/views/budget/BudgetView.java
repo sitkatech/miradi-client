@@ -47,7 +47,7 @@ public class BudgetView extends TabbedView
 		workPlanPanel = new WorkPlanPanel(getMainWindow(), getProject());
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions());
 		budgetManagetmentPanel = new BudgetManagementPanel(workPlanPanel, budgetPropertiesPanel);
-		addTab(EAM.text("Budget"), budgetManagetmentPanel);
+		addTab(budgetManagetmentPanel.getPanelDescription(), budgetManagetmentPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
 

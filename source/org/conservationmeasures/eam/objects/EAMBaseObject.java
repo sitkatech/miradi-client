@@ -85,6 +85,9 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.DIAGRAM_LINK:
 				return new DiagramFactorLink(idAsInt, json);
 				
+			case ObjectType.ASSIGNMENT:
+				return new Assignment(idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
@@ -152,7 +155,7 @@ abstract public class EAMBaseObject implements EAMObject
 		label = new StringData();
 		
 		fields = new HashMap();
-		noClearFields = new Vector();
+		noneClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 
 	}
@@ -165,7 +168,7 @@ abstract public class EAMBaseObject implements EAMObject
 	
 	void addNoClearField(String tag, ObjectData data)
 	{
-		noClearFields.add(tag);
+		noneClearedFieldTags.add(tag);
 		fields.put(tag, data);
 	}
 	
@@ -192,7 +195,7 @@ abstract public class EAMBaseObject implements EAMObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			if (!noClearFields.contains(tag))
+			if (!noneClearedFieldTags.contains(tag))
 				commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
 		}
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
@@ -228,6 +231,11 @@ abstract public class EAMBaseObject implements EAMObject
 		return result.toString();
 	}
 
+	public Vector getNoneClearedFieldTags()
+	{
+		return noneClearedFieldTags;
+	}
+	
 	protected static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	
@@ -237,5 +245,5 @@ abstract public class EAMBaseObject implements EAMObject
 	StringData label;
 
 	private HashMap fields;
-	private Vector noClearFields;
+	private Vector noneClearedFieldTags;
 }

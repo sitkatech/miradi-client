@@ -51,7 +51,9 @@ public class ObjectTestCase extends EAMTestCase
 	{
 		if(tag.equals(EAMBaseObject.TAG_ID))
 			return;
-		
+		if (object.getNoneClearedFieldTags().contains(tag))
+			return;
+				
 		String sampleData = getSampleData(object, tag);
 
 		assertEquals("didn't default " + tag + " blank?", "", object.getData(tag));

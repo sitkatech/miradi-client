@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -70,7 +71,7 @@ public class ObjectManager
 		addNormalPool(new GoalPool(ida));
 		addNormalPool(new ProjectMetadataPool(ida));
 		addNormalPool(new DiagramFactorLinkPool(ida));
-
+		addNormalPool(new AssignmentPool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -128,6 +129,11 @@ public class ObjectManager
 		return (GoalPool)getPool(ObjectType.GOAL);
 	}
 
+	public AssignmentPool getAssignmentPool()
+	{
+		return (AssignmentPool)getPool(ObjectType.ASSIGNMENT);
+	}
+	
 	public BaseId createObject(int objectType, BaseId objectId, CreateObjectParameter extraInfo) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
@@ -450,6 +456,7 @@ public class ObjectManager
 		loadPool(ObjectType.RATING_CRITERION);
 		loadPool(ObjectType.VALUE_OPTION);
 		loadPool(ObjectType.PROJECT_METADATA);
+		loadPool(ObjectType.ASSIGNMENT);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

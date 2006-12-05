@@ -20,5 +20,6 @@ public class ObjectType
 	public static final int PROJECT_METADATA = 11;
 	public static final int FAKE = 12;
 	public static final int DIAGRAM_LINK = 13;
+	public static final int ASSIGNMENT = 14;
 }
 
