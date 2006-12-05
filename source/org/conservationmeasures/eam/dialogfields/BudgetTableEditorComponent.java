@@ -36,7 +36,7 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		add(fixedRowHeaderScrollPane, BorderLayout.WEST);
 		
 		UiScrollPane scrollPane = new UiScrollPane(budgetTable);
-		add(scrollPane, BorderLayout.EAST);
+		add(scrollPane, BorderLayout.CENTER);
 		//FIXME budget code - add and remove buttons in bar
 		//add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
 	}
