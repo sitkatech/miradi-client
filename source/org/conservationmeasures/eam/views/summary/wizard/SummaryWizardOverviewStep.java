@@ -6,12 +6,14 @@
 package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class SummaryWizardWelcomeStep extends SummaryWizardStep
+public class SummaryWizardOverviewStep extends WizardStep
 {
-	public SummaryWizardWelcomeStep(WizardPanel wizardToUse)
+
+	public SummaryWizardOverviewStep(WizardPanel panelToUse) 
 	{
-		super(wizardToUse);
+		super(panelToUse);
 	}
 
 	public String getResourceFileName()
@@ -19,6 +21,7 @@ public class SummaryWizardWelcomeStep extends SummaryWizardStep
 		return HTML_FILENAME;
 	}
 	
-	String HTML_FILENAME = "WelcomeStep.html";
-	
+
+	String HTML_FILENAME = "SummaryOverviewStep.html";
 }
+

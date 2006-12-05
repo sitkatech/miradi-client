@@ -16,7 +16,7 @@ public class SummaryWizardPanel extends WizardPanel
 	{
 		actions = actionsToUse;
 		
-		WELCOME = addStep(new SummaryWizardWelcomeStep(this));
+		WELCOME = addStep(new SummaryWizardOverviewStep(this));
 
 		setStep(WELCOME);
 	}
