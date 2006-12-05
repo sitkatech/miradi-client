@@ -29,14 +29,14 @@ public class BudgetPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.TASK, idToShow);
 		
-		BudgetTableEditorComponent tableEditroComponent = new BudgetTableEditorComponent(projectToUse, actions);
-		add(tableEditroComponent);
+		BudgetTableEditorComponent tableEditorComponent = new BudgetTableEditorComponent(projectToUse, actions);
+		add(tableEditorComponent);
 		//FIXME budget code - not working yet
 		//updateFieldsFromProject();
 	}
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Text|Budget propertiess");
+		return EAM.text("Text|Budget properties");
 	}
 }

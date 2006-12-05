@@ -44,7 +44,7 @@ public class BudgetManagementPanel extends ModelessDialogPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Budget managemnet");
+		return EAM.text("Budget management");
 	}
 
 	WorkPlanPanel treeTableComponent;
