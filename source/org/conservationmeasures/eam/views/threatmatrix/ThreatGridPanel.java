@@ -93,11 +93,19 @@ public class ThreatGridPanel extends JPanel
 				{
 					FactorId nodeId = new FactorId(new Integer(currentSortBy).intValue());
 					columnToSort= ((NonEditableThreatMatrixTableModel)threatTable.getModel()).findTargetIndexById(nodeId);
+					if (wasTargetDeleted(columnToSort)) 
+						return;
 				}
 				targetColumnSortListener.setToggle(sortOrder);
 				targetColumnSortListener.sort(columnToSort);
 			}
 		}
+	}
+
+
+	private boolean wasTargetDeleted(int columnToSort)
+	{
+		return columnToSort<0;
 	}
 	
 	private JScrollPane createScrollPaneWithTableAndRowHeader(JTable rowHeaderTableToUse,
