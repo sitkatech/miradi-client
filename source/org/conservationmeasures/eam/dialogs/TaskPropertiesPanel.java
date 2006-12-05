@@ -5,26 +5,35 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import javax.swing.BorderFactory;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesPanel(Project projectToUse, Actions actions, Task taskToEdit)
+	public TaskPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(projectToUse, taskToEdit.getType(), taskToEdit.getId());
-		
-		addField(createStringField(Task.TAG_LABEL));
-		// FIXME: Add ResourceIds field
+		this(actions, projectToUse, BaseId.INVALID);
+	}
+	public TaskPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit) throws Exception
+	{
+		super(projectToUse, ObjectType.TASK, idToEdit);
+		setBorder(BorderFactory.createEtchedBorder());
 
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_FACTOR_LABEL));
+		addField(createStringField(Task.TAG_LABEL));
+		addField(createListField(actions, Task.TAG_RESOURCE_IDS));
+		
 		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Activity Properties");	
+		return EAM.text("Title|Activity Properties");
 	}
 }

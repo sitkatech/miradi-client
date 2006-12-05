@@ -10,7 +10,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public ActivityListManagementPanel(Project projectToUse, FactorId nodeId, Actions actions) throws Exception
 	{
 		super(new ActivityListTablePanel(projectToUse, actions, nodeId),
-				new ActivityPropertiesPanel(projectToUse, actions));
+				new TaskPropertiesPanel(projectToUse, actions));
 	}
 	
 	public String getPanelDescription()
