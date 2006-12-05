@@ -6,8 +6,9 @@
 
 package org.conservationmeasures.eam.objects;
 
-import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.FactorLinkId;
+import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.StringData;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -19,27 +20,24 @@ public class FactorLink extends EAMBaseObject
 	public FactorLink(FactorLinkId id, FactorId fromNodeId, FactorId toNodeId)
 	{
 		super(id);
+		clear();
 		setFromId(fromNodeId);
 		setToId(toNodeId);
-		stressLabel = new StringData();
 	}
 
 	public FactorLink(int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(new FactorLinkId(idAsInt), jsonObject);
-		fromId = new FactorId(jsonObject.getInt(TAG_FROM_ID));
-		toId = new FactorId(jsonObject.getInt(TAG_TO_ID));
-		stressLabel = new StringData(jsonObject.optString(TAG_STRESS_LABEL));
 	}
 	
 	public void setFromId(FactorId fromNodeId)
 	{
-		fromId = fromNodeId;
+		fromId.setId(fromNodeId);
 	}
 	
 	public void setToId(FactorId toNodeId)
 	{
-		toId = toNodeId;
+		toId.setId(toNodeId);
 	}
 
 	public int getType()
@@ -49,12 +47,12 @@ public class FactorLink extends EAMBaseObject
 	
 	public FactorId getFromFactorId()
 	{
-		return fromId;
+		return new FactorId(fromId.getId().asInt());
 	}
 	
 	public FactorId getToFactorId()
 	{
-		return toId;
+		return new FactorId(toId.getId().asInt());
 	}
 	
 	public String getStressLabel()
@@ -67,22 +65,7 @@ public class FactorLink extends EAMBaseObject
 		return new CreateFactorLinkParameter(getFromFactorId(), getToFactorId());
 	}
 
-	public void setData(String fieldTag, String dataValue) throws Exception
-	{
-		if(TAG_STRESS_LABEL.equals(fieldTag))
-			stressLabel.set(dataValue);
-		else
-			super.setData(fieldTag, dataValue);
-	}
-	
-	public String getData(String fieldTag)
-	{
-		if(TAG_STRESS_LABEL.equals(fieldTag))
-			return getStressLabel();
-		
-		return super.getData(fieldTag);
-	}
-	
+
 	public FactorId getNodeId(int direction)
 	{
 		if(direction == FROM)
@@ -101,14 +84,18 @@ public class FactorLink extends EAMBaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
-	public EnhancedJsonObject toJson()
+	void clear()
 	{
-		EnhancedJsonObject json = super.toJson();
-		json.put(TAG_FROM_ID, fromId.asInt());
-		json.put(TAG_TO_ID, toId.asInt());
-		json.put(TAG_STRESS_LABEL, getStressLabel());
-		return json;
+		super.clear();
+		fromId = new BaseIdData();
+		toId = new BaseIdData();
+		stressLabel = new StringData();
+		
+		addNoClearField(TAG_FROM_ID, fromId);
+		addNoClearField(TAG_TO_ID, toId);
+		addField(TAG_STRESS_LABEL, stressLabel);
 	}
+	
 	
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
@@ -117,7 +104,7 @@ public class FactorLink extends EAMBaseObject
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	
-	private FactorId fromId;
-	private FactorId toId;
+	private BaseIdData fromId;
+	private BaseIdData toId;
 	private StringData stressLabel;
 }

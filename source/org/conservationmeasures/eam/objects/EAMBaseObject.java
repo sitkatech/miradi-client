@@ -152,12 +152,20 @@ abstract public class EAMBaseObject implements EAMObject
 		label = new StringData();
 		
 		fields = new HashMap();
+		noClearFields = new Vector();
 		addField(TAG_LABEL, label);
 
 	}
 	
 	void addField(String tag, ObjectData data)
 	{
+		fields.put(tag, data);
+	}
+	
+	
+	void addNoClearField(String tag, ObjectData data)
+	{
+		noClearFields.add(tag);
 		fields.put(tag, data);
 	}
 	
@@ -184,7 +192,8 @@ abstract public class EAMBaseObject implements EAMObject
 		while(iter.hasNext())
 		{
 			String tag = (String)iter.next();
-			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
+			if (!noClearFields.contains(tag))
+				commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
 		}
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
@@ -228,4 +237,5 @@ abstract public class EAMBaseObject implements EAMObject
 	StringData label;
 
 	private HashMap fields;
+	private Vector noClearFields;
 }

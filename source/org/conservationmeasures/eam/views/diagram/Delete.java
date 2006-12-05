@@ -82,10 +82,13 @@ public class Delete extends ProjectDoer
 	}
 
 	private void deleteFactorLink(DiagramFactorLink linkageToDelete) throws CommandFailedException
-	{
+	{	
 		DiagramFactorLinkId id = linkageToDelete.getDiagramLinkageId();
 		CommandDiagramRemoveFactorLink removeCommand = new CommandDiagramRemoveFactorLink(id);
 		getProject().executeCommand(removeCommand);
+		
+		Command[] commandsToClear = getProject().findObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId()).createCommandsToClear();
+		getProject().executeCommands(commandsToClear);
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, linkageToDelete.getWrappedId());
 		getProject().executeCommand(deleteLinkage);
 	}
