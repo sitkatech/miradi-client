@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.diagram;
 
 import javax.swing.JComponent;
 
+import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
@@ -60,6 +61,7 @@ public class DiagramToolBar extends EAMToolBar
 			},
 			{
 				getModeSwitchButton(actions, mode),
+				new ToolBarButton(actions, ActionConfigureLayers.class),
 			},
 		};
 		

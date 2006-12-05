@@ -12,7 +12,7 @@ public class ActionConfigureLayers extends MainWindowAction
 {
 	public ActionConfigureLayers(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), "images/layers.png");
 	}
 
 	private static String getLabel()
