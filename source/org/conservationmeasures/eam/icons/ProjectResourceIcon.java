@@ -14,7 +14,7 @@ public class ProjectResourceIcon extends EamIcon
 {
 	Color getIconColor()
 	{
-		return Color.MAGENTA;
+		return new Color(193,142,23);
 	}
 
 	FactorRenderer getRenderer()
