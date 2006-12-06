@@ -2,6 +2,8 @@ package org.conservationmeasures.eam.views.budget;
 
 import javax.swing.JLabel;
 
+import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -19,6 +21,7 @@ public class BudgetView extends TabbedView
 	public BudgetView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
+		addBudgetDoersToMap();
 		setToolBar(new BudgetToolBar(mainWindowToUse.getActions()));
 	}
 
@@ -50,12 +53,7 @@ public class BudgetView extends TabbedView
 		addTab(budgetManagmentPanel.getPanelDescription(), budgetManagmentPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
-
-	public WizardPanel createWizardPanel() throws Exception
-	{
-		return new BudgetWizardPanel();
-	}
-
+	
 	public void deleteTabs() throws Exception
 	{
 		budgetPropertiesPanel.dispose();
@@ -66,6 +64,17 @@ public class BudgetView extends TabbedView
 		
 		budgetManagmentPanel.dispose();
 		budgetManagmentPanel = null;
+	}
+	
+	private void addBudgetDoersToMap()
+	{
+		addDoerToMap(ActionAddAssignment.class, new AddAssignment());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignment());
+	}
+	
+	public WizardPanel createWizardPanel() throws Exception
+	{
+		return new BudgetWizardPanel();
 	}
 	
 	BudgetPropertiesPanel budgetPropertiesPanel;

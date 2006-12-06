@@ -5,11 +5,11 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 
 import org.conservationmeasures.eam.project.Project;
 
-public class BudgetTableModel extends AbstractTableModel
+public class BudgetTableModel extends DefaultTableModel
 {
 	public BudgetTableModel(Project projectToUse)
 	{

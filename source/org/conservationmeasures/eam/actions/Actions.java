@@ -143,6 +143,8 @@ public class Actions
 		registerAction(new ActionResourceListModify(mainWindow));
 		registerAction(new ActionViewPossibleResources(mainWindow));
 		
+		registerAction(new ActionAddAssignment(mainWindow));
+		registerAction(new ActionRemoveAssignment(mainWindow));
 		
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));

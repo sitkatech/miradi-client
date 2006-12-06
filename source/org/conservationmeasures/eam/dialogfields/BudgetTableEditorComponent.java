@@ -9,14 +9,17 @@ import java.awt.BorderLayout;
 
 import javax.swing.Box;
 
+import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.budget.RowHeaderTable;
-import org.conservationmeasures.eam.views.budget.RowHeaderTableModel;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
+import org.conservationmeasures.eam.views.budget.RowHeaderTable;
+import org.conservationmeasures.eam.views.budget.RowHeaderTableModel;
+import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetTableEditorComponent extends DisposablePanel
@@ -26,19 +29,21 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		super(new BorderLayout());
 		project = projectToUse;
 
-		budgetTableModel = new BudgetTableModel(project);
-		budgetTable = new BudgetTable(budgetTableModel);
+		//FIXME budget code - add model to table
+		//budgetTableModel = new BudgetTableModel(project);
+		budgetTable = new BudgetTable(project);
 		
 		rowHeaderTableModel = new RowHeaderTableModel(project);
 		rowHeaderTable = new RowHeaderTable(project);
 		
-		UiScrollPane fixedRowHeaderScrollPane = new UiScrollPane(rowHeaderTable);
-		add(fixedRowHeaderScrollPane, BorderLayout.WEST);
+		//FIXME budget code - only one table, no fixed row header
+		//UiScrollPane fixedRowHeaderScrollPane = new UiScrollPane(rowHeaderTable);
+		//add(fixedRowHeaderScrollPane, BorderLayout.WEST);
 		
 		UiScrollPane scrollPane = new UiScrollPane(budgetTable);
 		add(scrollPane, BorderLayout.CENTER);
 		//FIXME budget code - add and remove buttons in bar
-		//add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
+		add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
 	}
 
 	public void dispose()
@@ -61,10 +66,10 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();
-		//FIXME budget code - create "add" "remove" assingment buttons and doerss
-		//box.add(new UiButton(actions.get(ActionViewPossibleResources.class)));
-		//box.add(createObjectsActionButton(actions.getObjectsAction(ActionResourceListRemove.class), resourceListTable));
-		//box.add(createObjectsActionButton(actions.getObjectsAction(ActionResourceListModify.class), resourceListTable));
+		box.add(new UiButton(actions.get(ActionRemoveAssignment.class)));
+		box.add(new UiButton(actions.get(ActionAddAssignment.class)));
+		//FIXME table needs to be picker for remove
+		//box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), budgetTable));
 		return box;
 	}
 
