@@ -60,6 +60,11 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		tree.getTree().addSelectionRow(0);
 		mainWindow.getProject().addCommandExecutedListener(this);
 	}
+	
+	public 	WorkPlanTreeTable getTree()
+	{
+		return tree;
+	}
 
 	private void restoreTreeExpansionState() 
 	{
