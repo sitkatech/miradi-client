@@ -113,7 +113,7 @@ public class TncCapWorkbookImporter
 	final static int EXPECTED_PROJECT_GOAL_COMMENT_COL = 13;
 	final static int EXPECTED_PLANNING_TEAM_COMMENT_COL = 14;
 	final static int EXPECTED_PROJECT_LESSONS_LEARNED_COL = 15;
-	final static int EXPECTED_DOWNLOAD_DATE_COL = 23;
+	final static int EXPECTED_DOWNLOAD_DATE_COL = 33;
 	final static int EXPECTED_WKBK_VERSION_COL = 28;
 	final static int EXPECTED_WKBK_VERSION_DATE_COL = 29;
 }

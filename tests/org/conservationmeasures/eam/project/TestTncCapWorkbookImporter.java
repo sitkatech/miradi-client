@@ -48,7 +48,7 @@ public class TestTncCapWorkbookImporter extends EAMTestCase
 	}
 	
 	final static String PROJECT_VERSION = "CAP_v5a.xls";
-	final static String PROJECT_VERSION_DATE = "2006-08-23";
-	final static String PROJECT_DOWNLOAD_DATE = "";
+	final static String PROJECT_VERSION_DATE = "2006-11-13";
+	final static String PROJECT_DOWNLOAD_DATE = "05 05 2006 12:00:00";
 	File projectDirectory;
 }
