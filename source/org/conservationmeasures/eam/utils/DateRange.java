@@ -47,8 +47,8 @@ public class DateRange
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_START_DATE, startDate);
-		json.put(TAG_END_DATE, endDate);
+		json.put(TAG_START_DATE, startDate.toIsoDateString());
+		json.put(TAG_END_DATE, endDate.toIsoDateString());
 		return json;
 	}
 	
