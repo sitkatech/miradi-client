@@ -22,19 +22,22 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 
 		addField(createReadonlyTextField(metadata.PSEUDO_TAG_PROJECT_FILENAME));
 		addField(createStringField(metadata.TAG_PROJECT_NAME));
+		addField(createDateField(metadata.TAG_START_DATE));
+		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
+		addFieldTeam(mainWindowToUse);
 		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
 		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
 		addField(createStringField(metadata.TAG_SHORT_PROJECT_VISION));
-		addField(createDateField(metadata.TAG_START_DATE));
-		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
-		addField(createNumericField(metadata.TAG_SIZE_IN_HECTARES));
-		
+
+		updateFieldsFromProject();
+	}
+
+	private void addFieldTeam(MainWindow mainWindowToUse)
+	{
 		addLabel(EAM.text("Label|Team Members:"));
 		teamEditorComponent = new TeamEditorComponent(getProject(), mainWindowToUse.getActions());
 		add(teamEditorComponent);
-		
-		updateFieldsFromProject();
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)

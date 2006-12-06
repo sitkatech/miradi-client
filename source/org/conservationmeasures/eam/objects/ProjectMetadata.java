@@ -102,7 +102,7 @@ public class ProjectMetadata extends EAMBaseObject
 		addField(TAG_SHORT_PROJECT_VISION, shortProjectVision);
 		addField(TAG_START_DATE, startDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
-		addField(TAG_SIZE_IN_HECTARES, sizeInHectares);
+		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
 		
 		
@@ -126,7 +126,6 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_SHORT_PROJECT_VISION = "ShortProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
-	public static final String TAG_SIZE_IN_HECTARES = "SizeInHectares";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
 	
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
@@ -136,6 +135,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
 	public static final String TAG_TNC_PLANNING_TEAM_COMMENT = "TNC.PlanningTeamComment";
+	public static final String TAG_TNC_SIZE_IN_HECTARES = "TNC.SizeInHectares";
 
 
 	StringData projectName;
