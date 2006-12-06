@@ -6,8 +6,7 @@
 package org.conservationmeasures.eam.views.summary.wizard;
 
 import org.conservationmeasures.eam.actions.Actions;
-import org.conservationmeasures.eam.actions.jump.ActionJumpCreateModel;
-import org.conservationmeasures.eam.actions.jump.ActionJumpSelectTeam;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class SummaryWizardPanel extends WizardPanel
@@ -16,24 +15,37 @@ public class SummaryWizardPanel extends WizardPanel
 	{
 		actions = actionsToUse;
 		
-		WELCOME = addStep(new SummaryWizardOverviewStep(this));
+		OVERVIEW = addStep(new SummaryWizardOverviewStep(this));
+		TEAM_MEMBERS = addStep(new SummaryWizardDefineTeamMembers(this));
 
-		setStep(WELCOME);
-	}
-
-	public void next() throws Exception
-	{
-		actions.get(ActionJumpCreateModel.class).doAction();
+		setStep(OVERVIEW);
 	}
 
 	public void jump(Class stepMarker) throws Exception
 	{
-		if(stepMarker.equals(ActionJumpSelectTeam.class))
-			setStep(WELCOME);
-		else
+//		if(stepMarker.equals(ActionJumpSelectTeam.class))
+//			setStep(OVERVIEW);
+//		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
+	public void previous() throws Exception
+	{
+//		 if (currentStep == OVERVIEW)
+//			 actions.get(ActionJumpSelectTeam.class).doAction();
+		 
+		super.previous();
+	}
+	
+	public void next() throws Exception
+	{
+//		if(currentStep == TEAM_MEMBERS)
+//			actions.get(ActionJumpSelectTeam.class).doAction();
+		
+		super.next();
+	}
+
 	Actions actions;
-	int WELCOME;
+	int OVERVIEW;
+	int TEAM_MEMBERS;
 }
