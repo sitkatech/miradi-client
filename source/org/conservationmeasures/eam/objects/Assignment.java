@@ -9,8 +9,10 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
+import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -21,6 +23,7 @@ public class Assignment extends EAMBaseObject
 		super(idToUse);
 		taskId  = extraInfoToUse.getTaskId();
 		resourceId = extraInfoToUse.getResourceId();
+		detailList = extraInfoToUse.getDateRangeEffortList();
 		clear();
 	}
 	
@@ -36,7 +39,7 @@ public class Assignment extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateAssignmentParameter((TaskId)taskIdData.getId(), (ProjectResourceId)resourceIdData.getId());
+		return new CreateAssignmentParameter(taskId, resourceId, detailList);
 	}
 	
 	public void clear()
@@ -48,18 +51,22 @@ public class Assignment extends EAMBaseObject
 		resourceIdData = new BaseIdData();
 		resourceIdData.setId(resourceId);
 		
+		detailListData = new DateRangeEffortListData();
+		
 		addNoClearField(TAG_ASSIGNMENT_TASK_ID, taskIdData);
 		addNoClearField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
+		addNoClearField(TAG_DATERANGE_EFFORTS, detailListData);
 	}
 	
 	public static final String TAG_ASSIGNMENT_TASK_ID = "TaskId";
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
+	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	
 	BaseIdData taskIdData;
 	BaseIdData resourceIdData;
+	DateRangeEffortListData detailListData;
 	
 	TaskId taskId;
 	ProjectResourceId resourceId; 
-	
-	
+	DateRangeEffortList detailList;
 }

@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
+import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
 public class TestAssignment extends ObjectTestCase
@@ -27,6 +28,7 @@ public class TestAssignment extends ObjectTestCase
 	{
 		TaskId taskId = new TaskId(BaseId.INVALID.asInt());
 		ProjectResourceId resourceId = new ProjectResourceId(BaseId.INVALID.asInt());
-		return new CreateAssignmentParameter(taskId, resourceId);
+		DateRangeEffortList detailList = new DateRangeEffortList();
+		return new CreateAssignmentParameter(taskId, resourceId, detailList);
 	}
 }
