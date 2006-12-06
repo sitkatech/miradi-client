@@ -9,7 +9,7 @@ package org.conservationmeasures.eam.utils;
 public class DateRangeEffort
 {
 	
-	public DateRangeEffort(int costUnitToUse, float unitQuantityToUse, DateRange dateRangeToUse)
+	public DateRangeEffort(String costUnitToUse, float unitQuantityToUse, DateRange dateRangeToUse)
 	{
 		costUnitCode = costUnitToUse;
 		numberOfUnits = unitQuantityToUse;
@@ -18,7 +18,7 @@ public class DateRangeEffort
 	
 	public DateRangeEffort(EnhancedJsonObject json) throws Exception 
 	{
-		costUnitCode = json.getInt(TAG_COST_UNIT_CODE);
+		costUnitCode = json.getString(TAG_COST_UNIT_CODE);
 		numberOfUnits = json.getDouble(TAG_NUMBER_OF_UNITS);
 		dateRange = new DateRange(json.getJson(TAG_DATERANGE));
 	}
@@ -35,7 +35,7 @@ public class DateRangeEffort
 		return json;	
 	}
 	
-	public int getCostUnit()
+	public String getCostUnit()
 	{
 		return costUnitCode;
 	}
@@ -59,7 +59,7 @@ public class DateRangeEffort
 	private static final String TAG_DATERANGE = "DateRange";
 	private static final String TAG_NUMBER_OF_UNITS = "NumberOfUnits";
 	
-	private int costUnitCode;
+	private String costUnitCode;
 	private DateRange dateRange;
 	private double numberOfUnits;	
 }

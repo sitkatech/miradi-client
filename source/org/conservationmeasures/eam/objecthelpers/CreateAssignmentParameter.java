@@ -10,11 +10,10 @@ import org.conservationmeasures.eam.ids.TaskId;
 
 public class CreateAssignmentParameter extends CreateObjectParameter
 {
-	public CreateAssignmentParameter(TaskId taskIdToUse, ProjectResourceId resourceIdToUse, DateRangeEffortList dateRangeEffortListToUse)
+	public CreateAssignmentParameter(TaskId taskIdToUse, ProjectResourceId resourceIdToUse)
 	{
 		taskId = taskIdToUse;
 		resourceId = resourceIdToUse;
-		dateRangeEffortList = dateRangeEffortListToUse;
 	}
 	
 	public TaskId getTaskId()
@@ -27,12 +26,6 @@ public class CreateAssignmentParameter extends CreateObjectParameter
 		return resourceId;
 	}
 	
-	public DateRangeEffortList getDateRangeEffortList()
-	{
-		return dateRangeEffortList;
-	}
-	
 	TaskId taskId;
 	ProjectResourceId resourceId;
-	DateRangeEffortList dateRangeEffortList;
 }

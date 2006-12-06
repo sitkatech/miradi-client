@@ -18,12 +18,9 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends EAMBaseObject
 {
-	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfoToUse)
+	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfoToUse, DateRangeEffortList detailListToUse)
 	{
 		super(idToUse);
-		taskId  = extraInfoToUse.getTaskId();
-		resourceId = extraInfoToUse.getResourceId();
-		detailList = extraInfoToUse.getDateRangeEffortList();
 		clear();
 	}
 	
@@ -39,18 +36,14 @@ public class Assignment extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateAssignmentParameter(taskId, resourceId, detailList);
+		return new CreateAssignmentParameter((TaskId)taskIdData.getId(), (ProjectResourceId)resourceIdData.getId());
 	}
 	
 	public void clear()
 	{
 		super.clear();
 		taskIdData = new BaseIdData();
-		taskIdData.setId(taskId);
-		
 		resourceIdData = new BaseIdData();
-		resourceIdData.setId(resourceId);
-		
 		detailListData = new DateRangeEffortListData();
 		
 		addNoClearField(TAG_ASSIGNMENT_TASK_ID, taskIdData);
@@ -66,7 +59,4 @@ public class Assignment extends EAMBaseObject
 	BaseIdData resourceIdData;
 	DateRangeEffortListData detailListData;
 	
-	TaskId taskId;
-	ProjectResourceId resourceId; 
-	DateRangeEffortList detailList;
 }
