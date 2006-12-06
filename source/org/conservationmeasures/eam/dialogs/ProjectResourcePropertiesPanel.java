@@ -28,6 +28,7 @@ public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectResource.TAG_EMAIL));
 		addField(createRatingField(new BudgetCostUnitQuestion(ProjectResource.TAG_COST_UNIT)));
 		addField(createNumericField(ProjectResource.TAG_COST_PER_UNIT));
+		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
 	}

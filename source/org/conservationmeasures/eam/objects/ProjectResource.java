@@ -62,6 +62,7 @@ public class ProjectResource extends EAMBaseObject
 		costUnit = new RatingData();
 		organization = new StringData();
 		roleCodes = new CodeListData();
+		comments = new StringData();
 		
 		addField(TAG_INITIALS, initials);
 		addField(TAG_NAME, name);
@@ -72,6 +73,7 @@ public class ProjectResource extends EAMBaseObject
 		addField(TAG_COST_UNIT, costUnit);
 		addField(TAG_COST_PER_UNIT, costPerUnit);
 		addField(TAG_ROLE_CODES, roleCodes);
+		addField(TAG_COMMENTS, comments);
 		
 	}
 	
@@ -84,6 +86,7 @@ public class ProjectResource extends EAMBaseObject
 	public static final String TAG_COST_UNIT = "CostUnit";
 	public static final String TAG_ORGANIZATION = "Organization";
 	public static final String TAG_ROLE_CODES = "RoleCodes";
+	public static final String TAG_COMMENTS = "Comments";
 
 	StringData initials;
 	StringData name;
@@ -94,4 +97,5 @@ public class ProjectResource extends EAMBaseObject
 	RatingData costUnit;
 	StringData organization;
 	CodeListData roleCodes;
+	StringData comments;
 }
