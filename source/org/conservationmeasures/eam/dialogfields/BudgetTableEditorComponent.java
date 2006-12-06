@@ -13,22 +13,23 @@ import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
-import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
 import org.conservationmeasures.eam.views.budget.RowHeaderTable;
 import org.conservationmeasures.eam.views.budget.RowHeaderTableModel;
+import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetTableEditorComponent extends DisposablePanel
 {
-	public BudgetTableEditorComponent(Project projectToUse, Actions actions)
+	public BudgetTableEditorComponent(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponentToUse)
 	{
 		super(new BorderLayout());
 		project = projectToUse;
-
+		treeTableComponent = treeTableComponentToUse;
 		//FIXME budget code - add model to table
 		//budgetTableModel = new BudgetTableModel(project);
 		budgetTable = new BudgetTable(project);
@@ -42,7 +43,6 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		
 		UiScrollPane scrollPane = new UiScrollPane(budgetTable);
 		add(scrollPane, BorderLayout.CENTER);
-		//FIXME budget code - add and remove buttons in bar
 		add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
 	}
 
@@ -51,25 +51,25 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		super.dispose();
 	}
 
-	public void setList(IdList idList)
-	{
-		//FIXME budget code - table needs to be updated from here. 
-		//budgetTable.setTable(idList);
+	public void setTaskId(BaseId taskId)
+	{ 
+		budgetTable.setTask(taskId);
 		rebuild();
 	}
 
 	public void rebuild()
 	{
-		budgetTableModel.fireTableDataChanged();
+		System.out.println("budgetTableEditor rebuild");
+		//FIXME budget code - table needs to fire 
+		//budgetTableModel.fireTableDataChanged();
+		//treeTableComponent.getTree().getModel()
 	}
 
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();
 		box.add(new UiButton(actions.get(ActionRemoveAssignment.class)));
-		box.add(new UiButton(actions.get(ActionAddAssignment.class)));
-		//FIXME table needs to be picker for remove
-		//box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), budgetTable));
+		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), treeTableComponent.getTree()));
 		return box;
 	}
 
@@ -77,5 +77,6 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	BudgetTableModel budgetTableModel;
 	BudgetTable budgetTable;
 	RowHeaderTable rowHeaderTable;
-	RowHeaderTableModel rowHeaderTableModel; 
+	RowHeaderTableModel rowHeaderTableModel;
+	WorkPlanPanel treeTableComponent;
 }

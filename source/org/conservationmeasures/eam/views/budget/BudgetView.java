@@ -47,9 +47,10 @@ public class BudgetView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		workPlanPanel = new WorkPlanPanel(getMainWindow(), getProject());
-		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions());
-		budgetManagmentPanel = new BudgetManagementPanel(workPlanPanel, budgetPropertiesPanel);
+	
+		treeTableComponent = new WorkPlanPanel(getMainWindow(), getProject());
+		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
+		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
 		addTab(budgetManagmentPanel.getPanelDescription(), budgetManagmentPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
@@ -59,17 +60,14 @@ public class BudgetView extends TabbedView
 		budgetPropertiesPanel.dispose();
 		budgetPropertiesPanel = null;
 		
-		workPlanPanel.dispose();
-		workPlanPanel = null;
-		
 		budgetManagmentPanel.dispose();
 		budgetManagmentPanel = null;
 	}
 	
 	private void addBudgetDoersToMap()
 	{
-		addDoerToMap(ActionAddAssignment.class, new AddAssignment());
-		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignment());
+		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 	}
 	
 	public WizardPanel createWizardPanel() throws Exception
@@ -79,7 +77,7 @@ public class BudgetView extends TabbedView
 	
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;
-	WorkPlanPanel workPlanPanel;
+	WorkPlanPanel treeTableComponent;
 }
 
 class BudgetComponent extends JLabel

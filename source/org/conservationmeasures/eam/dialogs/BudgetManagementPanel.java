@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.dialogs;
 import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetManagementPanel extends ModelessDialogPanel
 {
-	public BudgetManagementPanel(WorkPlanPanel treeTablePanelToUse, BudgetPropertiesPanel propertiesPanelToUse)
+	public BudgetManagementPanel(MainWindow mainWindow, Project project, BudgetPropertiesPanel propertiesPanelToUse, WorkPlanPanel treeTableComponentToUse)
 	{
 		propertiesPanel = propertiesPanelToUse;
-		treeTableComponent = treeTablePanelToUse;
+		treeTableComponent = treeTableComponentToUse;
 		add(treeTableComponent, BorderLayout.CENTER);
-
-		//FIXME budget code -  properties panel needs to be updated
-		//propertiesPanel = propertiesPanelToUse;
-		//treeTableComponent.setPropertiesPanel(propertiesPanel);
+		
+		treeTableComponent.setPropertiesPanel(propertiesPanel);
 		add(new UiScrollPane(propertiesPanel), BorderLayout.AFTER_LAST_LINE);
 	}
 

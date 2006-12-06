@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -25,6 +26,14 @@ public class BudgetTable extends UiTable
 	public BudgetTable(Project projectToUse)
 	{
 		project = projectToUse;
+		rebuild();
+	}
+	
+	public void setTask(BaseId taskId)
+	{
+		//TODO budget code - remove commented code
+		//Task selectedTask = (Task)project.findObject(ObjectType.TASK, taskId);
+		//System.out.println("selected task  = "+selectedTask.getLabel());
 		rebuild();
 	}
 	
