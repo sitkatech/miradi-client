@@ -14,7 +14,7 @@ public class ProjectResourceIcon extends EamIcon
 {
 	Color getIconColor()
 	{
-		return new Color(193,142,23);
+		return LITE_BROWN;
 	}
 
 	FactorRenderer getRenderer()
@@ -22,4 +22,5 @@ public class ProjectResourceIcon extends EamIcon
 		return new RectangleRenderer();
 	}
 
+	final private static Color LITE_BROWN = new Color(193,142,23);
 }
