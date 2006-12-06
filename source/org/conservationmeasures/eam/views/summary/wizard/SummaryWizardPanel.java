@@ -16,35 +16,28 @@ public class SummaryWizardPanel extends WizardPanel
 		
 		OVERVIEW = addStep(new SummaryWizardOverviewStep(this));
 		TEAM_MEMBERS = addStep(new SummaryWizardDefineTeamMembers(this));
+		PROJECT_LEADER = addStep(new SummaryWizardDefineProjectLeader(this));
 
 		setStep(OVERVIEW);
 	}
 
 	public void jump(Class stepMarker) throws Exception
 	{
-//		if(stepMarker.equals(ActionJumpSelectTeam.class))
-//			setStep(OVERVIEW);
-//		else
 			throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
 	public void previous() throws Exception
 	{
-//		 if (currentStep == OVERVIEW)
-//			 actions.get(ActionJumpSelectTeam.class).doAction();
-		 
 		super.previous();
 	}
 	
 	public void next() throws Exception
-	{
-//		if(currentStep == TEAM_MEMBERS)
-//			actions.get(ActionJumpSelectTeam.class).doAction();
-		
+	{	
 		super.next();
 	}
 
 	Actions actions;
 	int OVERVIEW;
 	int TEAM_MEMBERS;
+	int PROJECT_LEADER;
 }
