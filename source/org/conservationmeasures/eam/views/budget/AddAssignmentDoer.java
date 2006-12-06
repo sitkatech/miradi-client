@@ -9,13 +9,11 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -50,13 +48,10 @@ public class AddAssignmentDoer extends ObjectsDoer
 	private void createAssignment(Project project) throws Exception
 	{
 		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
-		//Assignment newAssignment =  new Assignment(BaseId.INVALID, );
 		
 		CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT, createExtraInfo(project, selectedTask));
 		project.executeCommand(createAssignment);
-		BaseId createId = createAssignment.getCreatedId();
-		Assignment newAssignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, createId);
-		Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, newAssignment.getId());
+		Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
 		project.executeCommand(appendAssignment);
 	}
 	
