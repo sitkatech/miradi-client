@@ -24,10 +24,10 @@ public class SummaryWizardDefineTeamMembers extends WizardStep
 	
 	public void linkClicked(String linkDescription)
 	{
-		if(linkDescription.equals("InitialProjectTeam"))
+		if(linkDescription.equals("Definition:InitialProjectTeam"))
 		{
-			EAM.okDialog("Definition:Initial Project Team", new String[] {
-					" TO BE SPECIFIED "});
+			EAM.okDialog("Definition: Initial Project Team", new String[] {
+					"The people who conceive of and initiate the project."});
 		}
 	}
 	
