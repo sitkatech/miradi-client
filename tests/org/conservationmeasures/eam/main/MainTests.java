@@ -38,6 +38,7 @@ import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeTarget;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
+import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestCause;
 import org.conservationmeasures.eam.objects.TestConceptualModelThreatRatings;
 import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
@@ -181,6 +182,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestValueOption.class));
 		suite.addTest(new TestSuite(TestViewData.class));
 		suite.addTest(new TestSuite(TestObjectReferenceList.class));
+		suite.addTest(new TestSuite(TestAssignment.class));
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));
