@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.budget;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
-public class RemoveAssignment extends ObjectsDoer
+public class RemoveAssignmentDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
