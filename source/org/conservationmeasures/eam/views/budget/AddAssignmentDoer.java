@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.budget;
 
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -13,7 +14,6 @@ import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
-import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Task;
@@ -24,6 +24,11 @@ public class AddAssignmentDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if (getObjects().length != 1)
+			return false;
+		if (getObjects()[0].getType() != ObjectType.TASK)
+			return false;
+		
 		return true;
 	}
 	
@@ -44,16 +49,17 @@ public class AddAssignmentDoer extends ObjectsDoer
 
 	private void createAssignment(Project project) throws Exception
 	{
-		DateRangeEffortList effortList = new DateRangeEffortList();
-		Assignment newAssignment =  new Assignment(BaseId.INVALID, createExtraInfo(project), effortList);
+		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
+		Assignment newAssignment =  new Assignment(BaseId.INVALID, createExtraInfo(project, selectedTask));
 		
-		Command addAssignmentCommand = CommandSetObjectData.createAppendIdCommand(newAssignment, Task.TAG_ASSIGNMENT_IDS, newAssignment.getId());
-		getProject().executeCommand(addAssignmentCommand);
+		Command createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT);
+		project.executeCommand(createAssignment);
+		Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, newAssignment.getId());
+		project.executeCommand(appendAssignment);
 	}
 	
-	private CreateAssignmentParameter createExtraInfo(Project project)
+	private CreateAssignmentParameter createExtraInfo(Project project, Task selectedTask)
 	{
-		Task selectedTask = (Task)project.findObject(ObjectType.TASK, getSelectedIds()[0]);
 		TaskId  taskId = new TaskId(selectedTask.getId().asInt());
 		ProjectResourceId resourceId = ProjectResourceId.INVALID;
 		

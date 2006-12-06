@@ -14,11 +14,11 @@ import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
-import org.conservationmeasures.eam.views.budget.RowHeaderTable;
-import org.conservationmeasures.eam.views.budget.RowHeaderTableModel;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
@@ -30,16 +30,9 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		super(new BorderLayout());
 		project = projectToUse;
 		treeTableComponent = treeTableComponentToUse;
-		//FIXME budget code - add model to table
-		//budgetTableModel = new BudgetTableModel(project);
-		budgetTable = new BudgetTable(project);
-		
-		rowHeaderTableModel = new RowHeaderTableModel(project);
-		rowHeaderTable = new RowHeaderTable(project);
-		
-		//FIXME budget code - only one table, no fixed row header
-		//UiScrollPane fixedRowHeaderScrollPane = new UiScrollPane(rowHeaderTable);
-		//add(fixedRowHeaderScrollPane, BorderLayout.WEST);
+
+		budgetTableModel = new BudgetTableModel(project, new DateRange[0], new Assignment[0]);
+		budgetTable = new BudgetTable(project, budgetTableModel);
 		
 		UiScrollPane scrollPane = new UiScrollPane(budgetTable);
 		add(scrollPane, BorderLayout.CENTER);
@@ -53,16 +46,15 @@ public class BudgetTableEditorComponent extends DisposablePanel
 
 	public void setTaskId(BaseId taskId)
 	{ 
-		budgetTable.setTask(taskId);
-		rebuild();
+		//FIXME budget code - rebuild table after new task has been selected in tree
+		//budgetTable.setTask(taskId);
+		//rebuild();
 	}
 
 	public void rebuild()
 	{
-		System.out.println("budgetTableEditor rebuild");
-		//FIXME budget code - table needs to fire 
+		//FIXME budget code - table needs to fire??? 
 		//budgetTableModel.fireTableDataChanged();
-		//treeTableComponent.getTree().getModel()
 	}
 
 	Box createButtonBar(Actions actions)
@@ -76,7 +68,5 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	Project project;
 	BudgetTableModel budgetTableModel;
 	BudgetTable budgetTable;
-	RowHeaderTable rowHeaderTable;
-	RowHeaderTableModel rowHeaderTableModel;
 	WorkPlanPanel treeTableComponent;
 }

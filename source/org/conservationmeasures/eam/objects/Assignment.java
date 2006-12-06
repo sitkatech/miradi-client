@@ -12,13 +12,12 @@ import org.conservationmeasures.eam.objectdata.BaseIdData;
 import org.conservationmeasures.eam.objectdata.DateRangeEffortListData;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
-import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends EAMBaseObject
 {
-	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfoToUse, DateRangeEffortList detailListToUse)
+	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfoToUse)
 	{
 		super(idToUse);
 		clear();

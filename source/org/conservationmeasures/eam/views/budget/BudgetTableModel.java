@@ -7,14 +7,18 @@ package org.conservationmeasures.eam.views.budget;
 
 import javax.swing.table.DefaultTableModel;
 
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.DateRange;
 import org.martus.util.MultiCalendar;
 
 public class BudgetTableModel extends DefaultTableModel
 {
-	public BudgetTableModel(Project projectToUse)
+	public BudgetTableModel(Project projectToUse, DateRange[] dateRangesToUse, Assignment[] assignmentsToUse)
 	{
 		project = projectToUse;
+		dateRanges = dateRangesToUse;
+		assignments  = assignmentsToUse;
 		setProjectStartEndDates();
 	}
 	
@@ -26,27 +30,27 @@ public class BudgetTableModel extends DefaultTableModel
 
 	public int getColumnCount()
 	{
-		return 0;
+		return dateRanges.length;
 	}
 
 	public int getRowCount()
 	{
-		return 0;
+		return assignments.length;
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
+	public String getColumnName(int column)
 	{
-		return null;
+		return dateRanges[column].getLabel();
 	}
 	
-	//FIXME budget code - finish this
-	//private DateRange createQuarterDateRange(MultiCalendar dateToUse) throws Exception
-	//{
-	//	DateRange dateRange = new DateRange(projectStartDate, projectEndDate);
-	//	return dateRange;
-	//}
+	public Object getValueAt(int rowIndex, int columnIndex)
+	{
+		return dateRanges[columnIndex];
+	}
 	
 	Project project;
 	MultiCalendar projectStartDate;
 	MultiCalendar projectEndDate;
+	DateRange[] dateRanges;
+	Assignment[] assignments;
 }
