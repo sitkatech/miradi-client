@@ -18,7 +18,7 @@ public class ActionJumpSelectTeam extends MainWindowAction
 
 	static String getLabel()
 	{
-		return EAM.text("Select initial project team");
+		return EAM.text("Select team members");
 	}
 	
 }
