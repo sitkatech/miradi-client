@@ -14,9 +14,10 @@ import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.dialogs.DisposablePanel;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
@@ -25,18 +26,18 @@ import org.martus.swing.UiScrollPane;
 
 public class BudgetTableEditorComponent extends DisposablePanel
 {
-	public BudgetTableEditorComponent(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponentToUse)
+	public BudgetTableEditorComponent(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponentToUse) throws Exception
 	{
 		super(new BorderLayout());
 		project = projectToUse;
 		treeTableComponent = treeTableComponentToUse;
 
-		budgetTableModel = new BudgetTableModel(project, new DateRange[0], new Assignment[0]);
+		budgetTableModel = new BudgetTableModel(project, new IdList());
 		budgetTable = new BudgetTable(project, budgetTableModel);
 		
 		UiScrollPane scrollPane = new UiScrollPane(budgetTable);
 		add(scrollPane, BorderLayout.CENTER);
-		add(createButtonBar(actions), BorderLayout.AFTER_LINE_ENDS);
+		add(createButtonBar(actions), BorderLayout.EAST);
 	}
 
 	public void dispose()
@@ -47,14 +48,16 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	public void setTaskId(BaseId taskId)
 	{ 
 		//FIXME budget code - rebuild table after new task has been selected in tree
-		//budgetTable.setTask(taskId);
-		//rebuild();
+		budgetTable.setTask(taskId);
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		rebuild(task);
 	}
 
-	public void rebuild()
+	public void rebuild(Task taskToUse)
 	{
-		//FIXME budget code - table needs to fire??? 
-		//budgetTableModel.fireTableDataChanged();
+		//FIXME budget code - table needs to fire???
+		budgetTableModel.setTask(taskToUse);
+		budgetTableModel.fireTableDataChanged();
 	}
 
 	Box createButtonBar(Actions actions)

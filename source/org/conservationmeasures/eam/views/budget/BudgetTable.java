@@ -17,9 +17,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiComboBox;
-import org.martus.swing.UiTable;
 
-public class BudgetTable extends UiTable
+public class BudgetTable extends JTable
 {
 	public BudgetTable(Project projectToUse, BudgetTableModel modelToUse)
 	{

@@ -46,7 +46,7 @@ public class DateRange
 	
 	public String getLabel()
 	{
-		return startDate.toString();
+		return startDate.toString() +" - "+ endDate.toString();
 	}
 	
 	public EnhancedJsonObject toJson()
