@@ -35,7 +35,10 @@ public class BudgetTableModel extends DefaultTableModel
 
 	public int getRowCount()
 	{
-		return assignments.length;
+		if (assignments != null)
+			return assignments.length;
+		
+		return 0;
 	}
 
 	public String getColumnName(int column)
