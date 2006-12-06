@@ -40,6 +40,7 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
@@ -165,6 +166,11 @@ public class Project
 	public GoalPool getGoalPool()
 	{
 		return objectManager.getGoalPool();
+	}
+	
+	public AssignmentPool getAssignmentPool()
+	{
+		return objectManager.getAssignmentPool();
 	}
 	
 	public DiagramModel getDiagramModel()
