@@ -17,7 +17,8 @@ public class SummaryWizardPanel extends WizardPanel
 		OVERVIEW = addStep(new SummaryWizardOverviewStep(this));
 		TEAM_MEMBERS = addStep(new SummaryWizardDefineTeamMembers(this));
 		PROJECT_LEADER = addStep(new SummaryWizardDefineProjectLeader(this));
-
+		PROJECT_SCOPE = addStep(new SummaryWizardDefineProjecScope(this));
+		PROJECT_VISION = addStep(new SummaryWizardDefineProjectVision(this));
 		setStep(OVERVIEW);
 	}
 
@@ -40,4 +41,6 @@ public class SummaryWizardPanel extends WizardPanel
 	int OVERVIEW;
 	int TEAM_MEMBERS;
 	int PROJECT_LEADER;
+	int PROJECT_SCOPE;
+	int PROJECT_VISION;
 }
