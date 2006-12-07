@@ -6,16 +6,13 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.Color;
-import java.awt.Component;
 
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComponent;
-import javax.swing.JList;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.conservationmeasures.eam.icons.RatingIcon;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -29,6 +26,7 @@ public class ObjectCodeListField extends ObjectDataInputField
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		list = new UiList(questionToUse.getChoices());
+		list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		list.addListSelectionListener(new ComboChangeHandler());
 		list.setBorder(new LineBorder(Color.LIGHT_GRAY, 1));
 		addFocusListener();
@@ -85,18 +83,6 @@ public class ObjectCodeListField extends ObjectDataInputField
 		{
 			list.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 			list.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-			
-		}
-	}
-	
-	class RatingChoiceRenderer extends DefaultListCellRenderer
-	{
-		public Component getListCellRendererComponent(JList listToUse, Object value, int index, boolean isSelected, boolean cellHasFocus) 
-		{
-			Component cell = super.getListCellRendererComponent(listToUse, value, index, isSelected,	cellHasFocus);
-			ChoiceItem thisOption = (ChoiceItem)value;
-			setIcon(RatingIcon.createFromChoice(thisOption));
-			return cell;
 		}
 	}
 	
@@ -105,7 +91,6 @@ public class ObjectCodeListField extends ObjectDataInputField
 		public void valueChanged(ListSelectionEvent arg0)
 		{
 			setNeedsSave();
-			saveIfNeeded();
 		}
 	}
 
