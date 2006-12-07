@@ -19,11 +19,12 @@ public class ResourceRoleQuestion extends ChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("Contact", "Team Contact"),
-				new ChoiceItem("TeamMember", "Team Member"),
+				new ChoiceItem(TeamMemberRoleCode, "Team Member"),
 				new ChoiceItem("Leader", "Leader/Manager"),
 				new ChoiceItem("Facilitator", "Process Facilitator"),
 				new ChoiceItem("Advisor", "Project Advisor"),
 				new ChoiceItem("Stakeholder", "Stakeholder"),
 		};
 	}
+	public static final String TeamMemberRoleCode = "TeamMember";
 }

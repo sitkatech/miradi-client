@@ -1,7 +1,5 @@
 package org.conservationmeasures.eam.views.summary;
 
-import java.text.ParseException;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -11,8 +9,9 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ViewDoer;
 
 public class TeamCreateMemberDoer extends ViewDoer
@@ -31,7 +30,7 @@ public class TeamCreateMemberDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandBeginTransaction());
 			ProjectResource resource = createBlankResource();
-			addMemberToList(resource);
+			addTeamMemberRole(resource);
 			getView().showResourcePropertiesDialog(resource);
 		}
 		catch (Exception e)
@@ -45,11 +44,16 @@ public class TeamCreateMemberDoer extends ViewDoer
 		}
 	}
 
-	private void addMemberToList(ProjectResource resource) throws ParseException, CommandFailedException
+	private void addTeamMemberRole(ProjectResource resource) throws Exception
 	{
-		ProjectMetadata metadata = getProject().getMetadata();
-		Command cmd = CommandSetObjectData.createAppendIdCommand(metadata, ProjectMetadata.TAG_TEAM_RESOURCE_IDS, resource.getId());
-		getProject().executeCommand(cmd);
+		String codes = resource.getData(ProjectResource.TAG_ROLE_CODES);
+		CodeList listData = new CodeList(codes);
+		if (!listData.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+		{
+			listData.add(ResourceRoleQuestion.TeamMemberRoleCode);
+			Command cmd = new CommandSetObjectData(resource.getType(), resource.getId(), resource.TAG_ROLE_CODES, listData.toString());
+			getProject().executeCommand(cmd);
+		}
 	}
 
 	private ProjectResource createBlankResource() throws CommandFailedException

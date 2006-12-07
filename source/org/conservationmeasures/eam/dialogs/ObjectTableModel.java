@@ -131,6 +131,11 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	{
 		return EAM.fieldLabel(rowObjectType, getColumnTag(column));
 	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
 
 
 	Project project;

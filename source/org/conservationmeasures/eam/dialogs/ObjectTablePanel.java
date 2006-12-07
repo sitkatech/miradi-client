@@ -11,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
@@ -24,6 +25,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
@@ -61,6 +63,8 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	
 	public void valueChanged(ListSelectionEvent event)
 	{
+		if (propertiesPanel==null)
+			return;
 		try
 		{
 			BaseId selectedId = BaseId.INVALID;
@@ -87,6 +91,7 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	{
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
 			table.updateTableAfterCommand((CommandSetObjectData)event.getCommand());
+		
 		if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 		{
 			CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
@@ -127,6 +132,16 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void addButton(UiButton button)
 	{
 		buttons.add(button);
+	}
+	
+	public void addDoubleClickAction(EAMAction action ) 
+	{
+		table.addMouseListener(new MouseAdapterDoubleClickDelegator(action)); 
+	}
+	
+	public ObjectTable getTable()
+	{
+		return table;
 	}
 	
 	Project project;

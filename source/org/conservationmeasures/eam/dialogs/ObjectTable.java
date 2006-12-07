@@ -91,7 +91,7 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		getSelectionModel().addListSelectionListener(listener);
 	}
 	
-	void updateTableAfterCommand(CommandSetObjectData cmd)
+	public void updateTableAfterCommand(CommandSetObjectData cmd)
 	{
 		updateIfRowObjectWasModified(cmd.getObjectType(), cmd.getObjectId());
 	}

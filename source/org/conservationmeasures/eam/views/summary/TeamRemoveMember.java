@@ -66,7 +66,7 @@ public class TeamRemoveMember extends ObjectsDoer
 	private void deleteResourceIfNotUsedElsewhere(BaseId selectedId) throws CommandFailedException
 	{
 		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(selectedId);
-		if (tasksThatUseThisResource.length>0)
+		if (tasksThatUseThisResource.length==0)
 		{
 			ProjectResource resource = (ProjectResource)getProject().findObject(ObjectType.PROJECT_RESOURCE, selectedId);
 			getProject().executeCommands(resource.createCommandsToClear());
