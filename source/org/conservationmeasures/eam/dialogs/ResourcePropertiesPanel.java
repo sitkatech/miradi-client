@@ -13,9 +13,9 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.BudgetCostUnitQuestion;
 import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
 
-public class ProjectResourcePropertiesPanel extends ObjectDataInputPanel
+public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {
-	public ProjectResourcePropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
+	public ResourcePropertiesPanel(Project projectToUse, BaseId idToEdit) throws Exception
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
 

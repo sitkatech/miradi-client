@@ -88,7 +88,7 @@ import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
-import org.conservationmeasures.eam.dialogs.ProjectResourcePropertiesPanel;
+import org.conservationmeasures.eam.dialogs.ResourcePropertiesPanel;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
@@ -201,7 +201,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	private ModelessDialogPanel createPanelForDialog(EAMObject object) throws Exception
 	{	
-		return new ProjectResourcePropertiesPanel(getProject(), object.getId());
+		return new ResourcePropertiesPanel(getProject(), object.getId());
 	}
 
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)

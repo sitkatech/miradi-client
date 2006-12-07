@@ -21,7 +21,7 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	public ResourcePoolManagementPanel(Project projectToUse, Actions actionsToUse, String overviewText) throws Exception
 	{
 		super(new ResourcePoolTablePanel(projectToUse, actionsToUse),
-				new ProjectResourcePropertiesPanel(projectToUse, BaseId.INVALID));
+				new ResourcePropertiesPanel(projectToUse, BaseId.INVALID));
 
 		add(new UiLabel(overviewText), BorderLayout.BEFORE_FIRST_LINE);
 	}
