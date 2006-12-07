@@ -8,6 +8,11 @@ package org.conservationmeasures.eam.ids;
 
 public class BaseId implements Comparable
 {
+	public BaseId(String idAsString)
+	{
+		this(Integer.parseInt(idAsString));
+	}
+	
 	public BaseId(int idToUse)
 	{
 		id = idToUse;

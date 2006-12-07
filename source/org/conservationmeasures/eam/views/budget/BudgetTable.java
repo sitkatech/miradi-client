@@ -11,6 +11,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
@@ -25,6 +26,7 @@ public class BudgetTable extends JTable
 		super(modelToUse);
 		model = modelToUse;
 		project = projectToUse;
+		
 		rebuild();
 	}
 	
@@ -38,23 +40,19 @@ public class BudgetTable extends JTable
 	
 	private void rebuild()
 	{
+		if (model.getColumnCount() <= 0)
+			return;
 		
-		//FIXME budget code - remove comments, resources should be in model
-		//model = getModel();
-	    //model.addColumn(COLUMN_HEADER_TITLE, new String[]{""});
-
-		//projectResources = project.getAllProjectResources();
-		//String[] resourceNames = new String[projectResources.length];
-		//resourceCombo = new UiComboBox();
-		//for (int i = 0; i < projectResources.length; i++)
-		//	resourceNames[i] = projectResources[i].getData(ProjectResource.TAG_NAME);
 		
-		 //int vColIndex = 0;
-		 //TableColumn col = getColumnModel().getColumn(vColIndex);
-		 //col.setCellEditor(new ComboBoxEditor(resourceNames));
-		 //col.setCellRenderer(new ComboBoxRenderer(resourceNames));
+		projectResources = project.getAllProjectResources();
+		JComboBox combo = new JComboBox(projectResources);
+		
+		TableColumn col = getColumnModel().getColumn(RESOURCE_COLUMN);
+		col.setCellEditor(new DefaultCellEditor(combo));
+		col.setCellRenderer(new ComboBoxRenderer(projectResources));
 	}
 	
+	public static final int RESOURCE_COLUMN = 0;
 	Project project;
 	UiComboBox resourceCombo;
 	ProjectResource[] projectResources;
@@ -65,7 +63,7 @@ public class BudgetTable extends JTable
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
 {
-    public ComboBoxRenderer(String[] items) 
+    public ComboBoxRenderer(Object[] items) 
     {
         super(items);
     }
@@ -73,6 +71,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
     public Component getTableCellRendererComponent(JTable table, Object value,
             boolean isSelected, boolean hasFocus, int row, int column) 
     {
+
         if (isSelected) 
         {
             setForeground(table.getSelectionForeground());
@@ -91,7 +90,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
 
 class ComboBoxEditor extends DefaultCellEditor 
 {
-    public ComboBoxEditor(String[] items) 
+    public ComboBoxEditor(Object[] items) 
     {
         super(new JComboBox(items));
     }

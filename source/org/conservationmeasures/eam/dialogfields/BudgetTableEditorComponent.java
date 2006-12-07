@@ -50,6 +50,9 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		//FIXME budget code - rebuild table after new task has been selected in tree
 		budgetTable.setTask(taskId);
 		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		
+		if (task == null)
+			return;
 		rebuild(task);
 	}
 

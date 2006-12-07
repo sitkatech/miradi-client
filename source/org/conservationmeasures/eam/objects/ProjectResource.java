@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objectdata.NumberData;
@@ -24,7 +25,7 @@ public class ProjectResource extends EAMBaseObject
 	
 	public ProjectResource(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(new BaseId(idAsInt), json);
+		super(new ProjectResourceId(idAsInt), json);
 	}
 
 	public int getType()

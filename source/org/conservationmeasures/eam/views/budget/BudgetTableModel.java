@@ -5,21 +5,35 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.ProjectResourceId;
+import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.DateRange;
 import org.martus.util.MultiCalendar;
 
-public class BudgetTableModel extends DefaultTableModel
+public class BudgetTableModel extends AbstractTableModel
 {
 	public BudgetTableModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
 		project = projectToUse;
 		assignmentIdList  = assignmentIdListToUse;
 		setProjectDateRanges();
+	}
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex) 
+	{
+		return true;
 	}
 	
 	private void setProjectDateRanges() throws Exception
@@ -36,7 +50,6 @@ public class BudgetTableModel extends DefaultTableModel
 			
 			dateRanges[i] = new DateRange(start, end);
 		}
-		
 	}
 
 	public void setTask(Task task)
@@ -67,11 +80,51 @@ public class BudgetTableModel extends DefaultTableModel
 	
 	public Object getValueAt(int row, int col)
 	{
-		
 		if (col == 0)
-			return null;
+		{
+			return getSelectedResource(row);
+		}
 		
 		return dateRanges[col - 1].getLabel();
+	}
+	
+	public ProjectResource getSelectedResource(int row)
+	{
+		BaseId aId = assignmentIdList.get(row);
+		BaseId resourceId = new BaseId(project.getObjectData(ObjectType.ASSIGNMENT, aId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID));
+		
+		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
+		
+		return resource;
+	}
+	
+	public void setValueAt(Object value, int row, int col)
+	{
+		if (value == null)
+		{
+			EAM.logDebug("value in setValueAt is null");
+			return;
+		}
+		if (col == 0)
+		{
+			try
+			{
+				ProjectResource projectResource = (ProjectResource)value;
+				ProjectResourceId resourceId = (ProjectResourceId)(projectResource).getId();
+				setResource(resourceId, row);
+			}
+			catch(CommandFailedException e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+
+	public void setResource(ProjectResourceId resourceId, int row) throws CommandFailedException
+	{
+		BaseId  assignmentId = assignmentIdList.get(row);
+		Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
+		project.executeCommand(command);
 	}
 	
 	Project project;
