@@ -23,7 +23,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiComboBox;
 
-public class BudgetTable extends JTable implements ObjectPicker
+public class BudgetTable extends JTable implements ObjectPicker 
 {
 	public BudgetTable(Project projectToUse, BudgetTableModel modelToUse)
 	{

@@ -85,7 +85,12 @@ public class BudgetTableModel extends AbstractTableModel
 			return getSelectedResource(row);
 		}
 		
-		return Integer.toString(0);
+		return getAssignment(row).getData(Assignment.TAG_ASSIGNMENT_TASK_ID);
+	}
+	
+	public Assignment getAssignment(int row)
+	{
+		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getSelectedAssignment(row));
 	}
 	
 	public BaseId getSelectedAssignment(int row)

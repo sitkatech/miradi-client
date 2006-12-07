@@ -5,13 +5,18 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.util.Arrays;
+import java.util.Vector;
+
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
-import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Assignment;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ObjectsDoer;
@@ -33,9 +38,8 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 	
 		try
 		{
-			BaseId selectedId = getObjects()[0].getId();
-			removeAssignment(getProject(), selectedId);
-			
+			Assignment selectedObject = (Assignment)getObjects()[0];
+			removeAssignment(getProject(), selectedObject);
 		}
 		catch (Exception e)
 		{
@@ -43,19 +47,20 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		}
 	}
 
-	public static void removeAssignment(Project project, BaseId idToRemove) throws Exception
+	public static void removeAssignment(Project project, Assignment assignmentToRemove) throws Exception
 	{
-		Task task = getTaskForAssignment(project, idToRemove);
+		Vector commands = new Vector();
+		TaskId taskId = ((CreateAssignmentParameter)assignmentToRemove.getCreationExtraInfo()).getTaskId();
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
 		
-		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, idToRemove);
-		project.executeCommand(removeIdCommand);
+		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
+		commands.add(removeIdCommand);
 		
-		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, idToRemove);
-		project.executeCommand(deleteCommand);
-	}
-
-	private static Task getTaskForAssignment(Project project, BaseId idToRemove)
-	{
-		return project.findTasksThatUseThisAssignment(idToRemove)[0];
+		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
+		
+		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
+		commands.add(deleteCommand);
+		
+		project.executeCommands((Command[])commands.toArray(new Command[0]));
 	}
 }
