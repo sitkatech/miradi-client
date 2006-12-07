@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -16,6 +17,7 @@ import org.conservationmeasures.eam.utils.CodeList;
 
 public class TeamModel extends ObjectPoolTableModel
 {
+
 	public TeamModel(Project projectToUse)
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, COLUMN_TAGS);
@@ -46,6 +48,7 @@ public class TeamModel extends ObjectPoolTableModel
 		}
 		catch (Exception e)  
 		{
+			EAM.logException(e);
 			return new CodeList();
 		}
 	}
