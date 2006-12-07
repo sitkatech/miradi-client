@@ -323,25 +323,6 @@ public class Project
 		return resources;
 	}
 	
-
-	//FIXME budget code - refactor with findTasksThatUseThisResource
-	public Task[] findTasksThatUseThisAssignment(BaseId assignmentId)
-	{
-		Vector foundTasks = new Vector();
-		TaskPool pool = getTaskPool();
-		BaseId[] allTaskIds = pool.getIds();
-		for(int i = 0; i < allTaskIds.length; ++i)
-		{
-			Task task = pool.find(allTaskIds[i]);
-			if(task.getAssignmentIdList().contains(assignmentId))
-				foundTasks.add(task);
-		}
-		
-		return (Task[])foundTasks.toArray(new Task[0]);
-	}
-	
-	
-	
 	public Task[] findTasksThatUseThisResource(BaseId resourceId)
 	{
 		Vector foundTasks = new Vector();
