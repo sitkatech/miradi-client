@@ -56,6 +56,7 @@ public class ObjectCodeListField extends ObjectDataInputField
 	{
 		try
 		{
+			list.clearSelection();
 			CodeList codeList = new CodeList(codes);
 			for(int i = 0; i < list.getModel().getSize(); ++i)
 			{
