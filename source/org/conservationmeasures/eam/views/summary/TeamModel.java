@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.dialogs.ObjectPoolTableModel;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objectdata.CodeListData;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
@@ -40,10 +39,15 @@ public class TeamModel extends ObjectPoolTableModel
 
 	private CodeList extractCodeList(BaseId baseId)
 	{
-		ProjectResource resource = (ProjectResource)getProject().findObject(ObjectType.PROJECT_RESOURCE, baseId);
-		String codes = resource.getData(ProjectResource.TAG_ROLE_CODES);
-		CodeList listData = new CodeListData(codes).getCodeList();
-		return listData;
+		try 
+		{
+			String codes = getProject().getObjectData(ObjectType.PROJECT_RESOURCE, baseId, ProjectResource.TAG_ROLE_CODES);
+			return new CodeList(codes);
+		}
+		catch (Exception e)  
+		{
+			return new CodeList();
+		}
 	}
 	
 	private static final String[] COLUMN_TAGS = new String[] {
