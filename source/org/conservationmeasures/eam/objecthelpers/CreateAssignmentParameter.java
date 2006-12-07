@@ -26,6 +26,21 @@ public class CreateAssignmentParameter extends CreateObjectParameter
 		return resourceId;
 	}
 	
+	public boolean equals(Object other)
+	{
+		if (! (other instanceof CreateAssignmentParameter))
+			return false;
+		
+		CreateAssignmentParameter otherExrtraInfo = (CreateAssignmentParameter)other;
+		if (! (otherExrtraInfo.getResourceId().equals(resourceId)))
+			return false;
+		
+		if (! (otherExrtraInfo.getTaskId().equals(taskId)))
+			return false;
+		
+		return true;
+	}
+	
 	TaskId taskId;
 	ProjectResourceId resourceId;
 }
