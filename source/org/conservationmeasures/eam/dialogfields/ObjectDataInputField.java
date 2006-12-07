@@ -117,10 +117,12 @@ abstract public class ObjectDataInputField implements FocusListener
 	
 	public void saveIfNeeded()
 	{
-		if(!isValidObject())
+		if(!needsToBeSaved())
 			return;
 		
-		if(!needsToBeSaved())
+		clearNeedsSave();
+
+		if(!isValidObject())
 			return;
 		
 		String newValue = getText();
@@ -128,10 +130,10 @@ abstract public class ObjectDataInputField implements FocusListener
 		if(existingValue.equals(newValue))
 			return;
 		
+		EAM.logDebug("ObjectDataInputField.saveIfNeeded, saving " + tag + ":" + newValue);
 		CommandSetObjectData cmd = new CommandSetObjectData(objectType, objectId, tag, newValue);
 		try
 		{
-			clearNeedsSave();
 			project.executeCommand(cmd);
 			updateFromObject();
 		}
