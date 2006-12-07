@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.dialogfields.BudgetTableEditorComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -42,22 +43,23 @@ public class BudgetPropertiesPanel extends ObjectDataInputPanel
 		tableEditorComponent.setTaskId(newId);
 	}
 
-	private void updateTable()
+	private void updateTable(CommandSetObjectData command)
 	{
-		//FIXME budget code - should not be empty list
-		//tableEditorComponent.setList(new IdList());
+		tableEditorComponent.dataWasChanged();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		updateTable();
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			updateTable((CommandSetObjectData)event.getCommand());
 	}
 	
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		super.commandUndone(event);
-		updateTable();
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			updateTable((CommandSetObjectData)event.getCommand());
 	}
 
 	public void commandFailed(Command command, CommandFailedException e)

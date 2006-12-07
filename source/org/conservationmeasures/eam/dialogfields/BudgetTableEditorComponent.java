@@ -52,16 +52,15 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		
 		if (task == null)
 			return;
-		rebuild(task);
+		
+		budgetTableModel.setTask(task);
 	}
 
-	public void rebuild(Task taskToUse)
+	public void dataWasChanged()
 	{
-		//FIXME budget code - table needs to fire???
-		budgetTableModel.setTask(taskToUse);
-		budgetTableModel.fireTableDataChanged();
+		budgetTableModel.dataWasChanged();
 	}
-
+	
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();

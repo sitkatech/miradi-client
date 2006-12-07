@@ -52,9 +52,16 @@ public class BudgetTableModel extends AbstractTableModel
 		}
 	}
 
-	public void setTask(Task task)
+	public void setTask(Task taskToUse)
+	{
+		task = taskToUse;
+		dataWasChanged();
+	}
+	
+	public void dataWasChanged()
 	{
 		assignmentIdList = task.getAssignmentIdList();
+		fireTableDataChanged();
 	}
 	
 	public int getColumnCount()
@@ -143,8 +150,10 @@ public class BudgetTableModel extends AbstractTableModel
 	MultiCalendar projectEndDate;
 	DateRange[] dateRanges;
 	IdList assignmentIdList;
+	Task task;
 	
 	public static final int NUM_OF_RESOURCE_COLUMNS = 1;
 	public static final int NUM_OF_TOTALS_COLUMNS = 0;
-	public static final int EXTRA_NUM_OF_ROWS = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS; 
+	public static final int EXTRA_NUM_OF_ROWS = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS;
+	 
 }
