@@ -17,10 +17,14 @@ import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 public class Assignment extends EAMBaseObject
 {
-	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfoToUse)
+	public Assignment(BaseId idToUse, CreateAssignmentParameter extraInfo)
 	{
 		super(idToUse);
 		clear();
+		taskIdData.setId(extraInfo.getTaskId());
+		resourceIdData.setId(extraInfo.getResourceId());
+		
+		
 	}
 	
 	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception
@@ -35,7 +39,10 @@ public class Assignment extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateAssignmentParameter(new TaskId(taskIdData.getId().asInt()), new ProjectResourceId(resourceIdData.getId().asInt()));
+		//TODO create ResourceIdData and TaskIdData classes
+		ProjectResourceId resourceId = new ProjectResourceId(resourceIdData.getId().asInt());
+		TaskId taskId = new TaskId(taskIdData.getId().asInt());
+		return new CreateAssignmentParameter(taskId, resourceId);
 	}
 	
 	public void clear()
