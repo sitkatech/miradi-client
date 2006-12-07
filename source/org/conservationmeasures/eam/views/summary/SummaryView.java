@@ -9,7 +9,6 @@ package org.conservationmeasures.eam.views.summary;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionModifyResource;
-import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
 import org.conservationmeasures.eam.actions.ActionTeamDeleteMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
@@ -98,7 +97,6 @@ public class SummaryView extends TabbedView
 	
 	private void addSummaryDoersToMap()
 	{
-		teamAddMemberDoer = new TeamAddMember();
 		teamRemoveMemberDoer = new TeamRemoveMember();
 		createResourceDoer = new CreateResource();
 		modifyResourceDoer = new ModifyResource();
@@ -106,7 +104,6 @@ public class SummaryView extends TabbedView
 		
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
-		addDoerToMap(ActionTeamAddMember.class, teamAddMemberDoer);
 		addDoerToMap(ActionTeamDeleteMember.class, teamRemoveMemberDoer);
 		addDoerToMap(ActionCreateResource.class, createResourceDoer);
 		addDoerToMap(ActionModifyResource.class, modifyResourceDoer);
@@ -128,7 +125,7 @@ public class SummaryView extends TabbedView
 	RARESummaryPanel rareSummaryPanel;
 	FOSSummaryPanel fosSummaryPanel;
 	
-	TeamAddMember teamAddMemberDoer;
+	//TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;
 	CreateResource createResourceDoer;
 	ModifyResource modifyResourceDoer;

@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import org.conservationmeasures.eam.actions.ActionTeamAddMember;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
@@ -14,7 +13,6 @@ public class PossibleTeamMembersPanel extends ResourcePoolManagementPanel
 	public PossibleTeamMembersPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), mainWindowToUse.getActions(), OVERVIEW_TEXT);
-		addTablePanelButton(mainWindowToUse.getActions().getObjectsAction(ActionTeamAddMember.class));
 	}
 
 	final static String OVERVIEW_TEXT = 
