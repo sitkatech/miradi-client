@@ -41,6 +41,8 @@ abstract public class ObjectManagementPanel extends ModelessDialogPanel
 
 	public EAMObject getObject()
 	{
+		if(listComponent == null)
+			return null;
 		return listComponent.getSelectedObject();
 	}
 

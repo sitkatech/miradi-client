@@ -48,7 +48,7 @@ abstract public class ObjectTableModel extends AbstractTableModel
 			BaseId rowObjectId = getIdList().get(row);
 			EAMObject rowObject = project.findObject(rowObjectType, rowObjectId);
 			if(rowObject == null)
-				throw new RuntimeException("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
+				EAM.logDebug("ObjectTableModel.getObjectFromRow: Missing object: " + new ORef(rowObjectType, rowObjectId));
 			return rowObject;
 		}
 		catch(Exception e)

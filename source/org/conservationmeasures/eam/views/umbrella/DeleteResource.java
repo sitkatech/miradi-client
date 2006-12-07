@@ -52,13 +52,19 @@ public class DeleteResource extends ObjectsDoer
 			Command[] removeFromTasks = createCommandsToRemoveResourceFromTasks(idToRemove, tasksThatUseThisResource);
 			
 			getProject().executeCommand(new CommandBeginTransaction());
-			for(int i = 0; i < removeFromTasks.length; ++i)
-				getProject().executeCommand(removeFromTasks[i]);
-			int type = resource.getType();
-			BaseId id = idToRemove;
-			getProject().executeCommands(resource.createCommandsToClear());
-			getProject().executeCommand(new CommandDeleteObject(type, id));
-			getProject().executeCommand(new CommandEndTransaction());
+			try
+			{
+				for(int i = 0; i < removeFromTasks.length; ++i)
+					getProject().executeCommand(removeFromTasks[i]);
+				int type = resource.getType();
+				BaseId id = idToRemove;
+				getProject().executeCommands(resource.createCommandsToClear());
+				getProject().executeCommand(new CommandDeleteObject(type, id));
+			}
+			finally
+			{
+				getProject().executeCommand(new CommandEndTransaction());
+			}
 		}
 		catch(CommandFailedException e)
 		{

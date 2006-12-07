@@ -26,7 +26,6 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
-import org.conservationmeasures.eam.utils.ObjectsActionButton;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
@@ -90,14 +89,15 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+		{
 			table.updateTableAfterCommand((CommandSetObjectData)event.getCommand());
-		
-		if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+		}
+		else if(event.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
 		{
 			CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
 			table.updateTableAfterObjectCreated(new ORef(cmd.getObjectType(), cmd.getCreatedId()));
 		}
-		if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+		else if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 		{
 			CommandDeleteObject cmd = (CommandDeleteObject)event.getCommand();
 			table.updateTableAfterObjectDeleted(new ORef(cmd.getObjectType(), cmd.getObjectId()));
@@ -126,7 +126,7 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	
 	public void addButton(ObjectsAction action)
 	{
-		addButton(new ObjectsActionButton(action, table));
+		addButton(createObjectsActionButton(action, table));
 	}
 	
 	public void addButton(UiButton button)
