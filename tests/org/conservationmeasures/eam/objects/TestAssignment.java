@@ -21,6 +21,12 @@ public class TestAssignment extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.ASSIGNMENT, getExtraInfo());
+		
+		Assignment assignment = new Assignment(TaskId.INVALID, getExtraInfo());
+		assertEquals("same task id?", getExtraInfo().getTaskId().toString(), assignment.getData(Assignment.TAG_ASSIGNMENT_TASK_ID));
+		assertEquals("same resource id?", getExtraInfo().getResourceId().toString(), assignment.getData(Assignment.TAG_ASSIGNMENT_RESOURCE_ID));
+		assertEquals("same extraInfo?", getExtraInfo(), assignment.getCreationExtraInfo());
+		
 	}
 	
 	private CreateAssignmentParameter getExtraInfo()
