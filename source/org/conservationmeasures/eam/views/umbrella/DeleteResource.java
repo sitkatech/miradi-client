@@ -72,7 +72,7 @@ public class DeleteResource extends ObjectsDoer
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace();
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 	}
