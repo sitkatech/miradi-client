@@ -125,7 +125,6 @@ public class SummaryView extends TabbedView
 	RARESummaryPanel rareSummaryPanel;
 	FOSSummaryPanel fosSummaryPanel;
 	
-	//TeamAddMember teamAddMemberDoer;
 	TeamRemoveMember teamRemoveMemberDoer;
 	CreateResource createResourceDoer;
 	ModifyResource modifyResourceDoer;
