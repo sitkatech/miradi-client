@@ -85,13 +85,19 @@ public class BudgetTableModel extends AbstractTableModel
 			return getSelectedResource(row);
 		}
 		
-		return dateRanges[col - 1].getLabel();
+		return Integer.toString(0);
+	}
+	
+	public BaseId getSelectedAssignment(int row)
+	{
+		return assignmentIdList.get(row);
 	}
 	
 	public ProjectResource getSelectedResource(int row)
 	{
 		BaseId aId = assignmentIdList.get(row);
-		BaseId resourceId = new BaseId(project.getObjectData(ObjectType.ASSIGNMENT, aId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID));
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, aId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
+		BaseId resourceId = new BaseId(stringId);
 		
 		ProjectResource resource = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId);
 		

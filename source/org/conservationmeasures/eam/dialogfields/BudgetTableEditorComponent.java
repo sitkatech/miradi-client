@@ -21,7 +21,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetTableEditorComponent extends DisposablePanel
@@ -66,7 +65,7 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	Box createButtonBar(Actions actions)
 	{
 		Box box = Box.createVerticalBox();
-		box.add(new UiButton(actions.get(ActionRemoveAssignment.class)));
+		box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), budgetTable));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), treeTableComponent.getTree()));
 		return box;
 	}

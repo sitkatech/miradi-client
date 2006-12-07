@@ -25,7 +25,7 @@ public class Assignment extends EAMBaseObject
 	
 	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(new BaseId(idAsInt), json);
+		super(new TaskId(idAsInt), json);
 	}
 
 	public int getType()
@@ -35,7 +35,7 @@ public class Assignment extends EAMBaseObject
 	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateAssignmentParameter((TaskId)taskIdData.getId(), (ProjectResourceId)resourceIdData.getId());
+		return new CreateAssignmentParameter(new TaskId(taskIdData.getId().asInt()), new ProjectResourceId(resourceIdData.getId().asInt()));
 	}
 	
 	public void clear()

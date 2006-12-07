@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.ORefData;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
@@ -26,7 +27,7 @@ public class Task extends EAMBaseObject
 	
 	public Task(int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(new BaseId(idAsInt), json);
+		super(new TaskId(idAsInt), json);
 		parentRef.set(json.optString(TAG_PARENT_REF));
 	}
 	

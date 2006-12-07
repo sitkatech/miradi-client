@@ -10,16 +10,20 @@ import java.awt.Component;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiComboBox;
 
-public class BudgetTable extends JTable
+public class BudgetTable extends JTable implements ObjectPicker
 {
 	public BudgetTable(Project projectToUse, BudgetTableModel modelToUse)
 	{
@@ -52,6 +56,31 @@ public class BudgetTable extends JTable
 		col.setCellRenderer(new ComboBoxRenderer(projectResources));
 	}
 	
+	public void addListSelectionListener(ListSelectionListener listener)
+	{
+		getSelectionModel().addListSelectionListener(listener);
+	}
+
+	public EAMObject[] getSelectedObjects()
+	{
+		int selectedRow = getSelectedRow();
+		if (selectedRow < 0)
+			return new EAMObject[0];
+		BaseId selectedId = getBudgetModel().getSelectedAssignment(selectedRow);
+		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
+		
+		if (selectedObject == null)
+			return new EAMObject[0];
+		
+		return new EAMObject[] {selectedObject};
+	}
+
+	private BudgetTableModel getBudgetModel()
+	{
+		return (BudgetTableModel)getModel();
+	}
+
+	
 	public static final int RESOURCE_COLUMN = 0;
 	Project project;
 	UiComboBox resourceCombo;
@@ -59,6 +88,7 @@ public class BudgetTable extends JTable
 	BudgetTableModel model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
+
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
