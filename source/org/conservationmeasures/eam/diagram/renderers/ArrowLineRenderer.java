@@ -10,9 +10,11 @@ import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.font.TextLayout;
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import org.conservationmeasures.eam.diagram.DiagramComponent;
@@ -70,6 +72,23 @@ public class ArrowLineRenderer extends EdgeRenderer
 		// To prevent drawing the line body, uncomment the following
 		//view.lineShape = null;
 		return shape;
+	}
+
+	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
+	{
+		if(style != ARROW_JUST_LINE)
+			return super.createLineEnd(size, style, src, dst);
+		
+		if (src == null || dst == null)
+			return null;
+		int d = (int) Math.max(1, dst.distance(src));
+		int ax = (int) -(size * (dst.getX() - src.getX()) / d);
+		int ay = (int) -(size * (dst.getY() - src.getY()) / d);
+		Polygon poly = new Polygon();
+		poly.addPoint((int) dst.getX(), (int) dst.getY());
+		dst.setLocation(dst.getX() + ax, dst.getY() + ay);
+		poly.addPoint((int) dst.getX(), (int) dst.getY());
+		return poly;
 	}
 
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
@@ -134,6 +153,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 	
 	private static final int CUSHION = 5;
+	public static final int ARROW_JUST_LINE = 23253;
 	
 	LinkCell cell;
 	boolean isVisible;

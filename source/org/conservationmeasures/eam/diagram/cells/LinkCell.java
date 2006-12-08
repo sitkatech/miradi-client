@@ -78,9 +78,12 @@ public class LinkCell extends EAMGraphCell implements Edge
 	    GraphConstants.setBackground(getAttributes(), Color.BLACK);
 	    GraphConstants.setForeground(getAttributes(), Color.BLACK);
 	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
-		int arrow = GraphConstants.ARROW_CLASSIC;
-		GraphConstants.setLineEnd(getAttributes(), arrow);
+		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
+// TODO: Only turn this on for stubble
+//		GraphConstants.setLineBegin(getAttributes(), ArrowLineRenderer.ARROW_JUST_LINE);
+//		GraphConstants.setBeginFill(getAttributes(), false);
+//		GraphConstants.setBeginSize(getAttributes(), 10);
 	}
 
 
