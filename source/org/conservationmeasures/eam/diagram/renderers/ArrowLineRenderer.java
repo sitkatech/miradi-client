@@ -58,7 +58,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return;
 		
 		super.paint(g);
-		//drawStress(g);
+		drawStress(g);
 		
 	}
 	
@@ -67,7 +67,8 @@ public class ArrowLineRenderer extends EdgeRenderer
 	protected Shape createShape()
 	{
 		Shape shape = super.createShape();
-		view.lineShape = null;
+		// To prevent drawing the line body, uncomment the following
+		//view.lineShape = null;
 		return shape;
 	}
 

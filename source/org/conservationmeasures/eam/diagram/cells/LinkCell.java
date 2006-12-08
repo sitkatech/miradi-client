@@ -81,8 +81,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 		int arrow = GraphConstants.ARROW_CLASSIC;
 		GraphConstants.setLineEnd(getAttributes(), arrow);
 		GraphConstants.setEndFill(getAttributes(), true);
-		GraphConstants.setLineBegin(getAttributes(), GraphConstants.ARROW_DIAMOND);
-		GraphConstants.setBeginFill(getAttributes(), true);
 	}
 
 
