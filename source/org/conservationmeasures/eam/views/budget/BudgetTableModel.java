@@ -41,15 +41,20 @@ public class BudgetTableModel extends AbstractTableModel
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
-		projectStartDate  = MultiCalendar.createFromIsoDateString(startDate);
+		//FIXME budget code - view fails if no start date is set.  fix
+		projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		int year = projectStartDate.getGregorianYear();
 		dateRanges = new DateRange[4];
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar end = null;
+		//FIXME budget code - start date should be end date + 1
 		for (int i = 0; i < dateRanges.length; i++)
 		{
 			if (i > 0)
+			{
 				start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
+				start.addDays(-1);
+			}
 			
 			int endMonth  =  (i + 1) * 3;
 			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
@@ -130,6 +135,9 @@ public class BudgetTableModel extends AbstractTableModel
 		try
 		{
 			DateRangeEffortList dREffortList = getDateRangeEffortList(row);
+			if (dREffortList.size() < col)
+				return null;
+			
 			dateRangeEffort = dREffortList.get(col - 1);
 		}
 		catch (Exception e)
@@ -173,7 +181,7 @@ public class BudgetTableModel extends AbstractTableModel
 			setResource(value, row);
 			return;
 		}
-		if (col < 4)
+		if (col < 5)
 			setUnit(value, row, col);
 	}
 
@@ -188,7 +196,7 @@ public class BudgetTableModel extends AbstractTableModel
 			
 			//FIXME budget code - take out daterange
 			if (dateRangeEffort == null)
-				dateRangeEffort = new DateRangeEffort("", numOfUnits, dateRanges[col]);
+				dateRangeEffort = new DateRangeEffort("", numOfUnits, dateRanges[col - 1]);
 			
 			dateRangeEffort.setUnitQuantity(numOfUnits);
 			dateRangeEffortList.setDateRangeEffort(dateRangeEffort);
