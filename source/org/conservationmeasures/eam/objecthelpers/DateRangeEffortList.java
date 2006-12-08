@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.objecthelpers;
 import java.util.List;
 import java.util.Vector;
 
+import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -37,6 +38,46 @@ public class DateRangeEffortList
 	{
 		data = new Vector(listToUse);
 	}
+	
+	public float getUnitsFor(DateRange dateRangeToUse)
+	{
+		float total = 0;
+		
+		for (int i = 0; i < data.size(); i++)
+		{
+			//TODO budget data must check for end date too.
+			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			DateRange ourDateRange = dateRangeEffort.getDateRange();
+			if (ourDateRange.surroundsThis(dateRangeToUse.getStartDate()))
+					total += dateRangeEffort.getUnitQuantity();
+		}
+		return total;
+	}
+	
+	public void setUnitFor(DateRange dateRangeToUse, String costUnitCode, float units)
+	{
+		for (int i = 0; i < data.size(); i++)
+		{
+			//DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			//if (! dateRangeEffort.getDateRange().equals(dateRangeToUse))
+			//	add(new DateRangeEffort(costUnitCode, units,dateRangeToUse));
+		}
+	}
+	
+	public void setDateRangeEffort(DateRangeEffort dateRangeEffortToUse)
+	{
+		for (int i = 0; i < data.size(); i++)
+		{
+			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
+			if (dateRangeEffort.getDateRange().equals(dateRangeEffortToUse.getDateRange()))
+			{
+				dateRangeEffort.setUnitQuantity(dateRangeEffortToUse.getUnitQuantity());
+				return;
+			}
+		}
+		add(dateRangeEffortToUse);
+	}
+
 
 	public EnhancedJsonObject toJson()
 	{
