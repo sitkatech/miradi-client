@@ -62,19 +62,14 @@ public class DateRange
 		return toJson().toString();
 	}
 	
-	public boolean equals(Object other)
+	public boolean equals(Object rawOther)
 	{
-		if (! (other instanceof DateRange))
+		if (! (rawOther instanceof DateRange))
 			return false;
 		
-		DateRange otherDateRange = (DateRange)other;
-		if (! (startDate.equals(otherDateRange.getStartDate())))
-			return false;
+		DateRange other = (DateRange)rawOther;
 		
-		if (! (endDate.equals(otherDateRange.getEndDate())))
-			return false;
-		
-		return true;
+		return toJson().equals(other.toJson());
 	}
 	
 	private static final String TAG_START_DATE = "StartDate";

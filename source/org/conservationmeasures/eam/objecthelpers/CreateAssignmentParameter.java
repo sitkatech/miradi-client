@@ -26,16 +26,16 @@ public class CreateAssignmentParameter extends CreateObjectParameter
 		return resourceId;
 	}
 	
-	public boolean equals(Object other)
+	public boolean equals(Object rawOther)
 	{
-		if (! (other instanceof CreateAssignmentParameter))
+		if (! (rawOther instanceof CreateAssignmentParameter))
 			return false;
 		
-		CreateAssignmentParameter otherExrtraInfo = (CreateAssignmentParameter)other;
-		if (! (otherExrtraInfo.getResourceId().equals(resourceId)))
+		CreateAssignmentParameter other = (CreateAssignmentParameter)rawOther;
+		if (! (other.getResourceId().equals(resourceId)))
 			return false;
 		
-		if (! (otherExrtraInfo.getTaskId().equals(taskId)))
+		if (! (other.getTaskId().equals(taskId)))
 			return false;
 		
 		return true;

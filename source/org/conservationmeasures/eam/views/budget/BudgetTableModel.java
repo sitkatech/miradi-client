@@ -41,25 +41,22 @@ public class BudgetTableModel extends AbstractTableModel
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
-		//FIXME budget code - view fails if no start date is set.  fix
-		projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
+		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 1, 1);
+		if (startDate.length() > 0 )
+			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
+		
 		int year = projectStartDate.getGregorianYear();
 		dateRanges = new DateRange[4];
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar end = null;
-		//FIXME budget code - start date should be end date + 1
 		for (int i = 0; i < dateRanges.length; i++)
 		{
-			if (i > 0)
-			{
-				start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
-				start.addDays(-1);
-			}
-			
 			int endMonth  =  (i + 1) * 3;
 			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
 			
 			dateRanges[i] = new DateRange(start, end);
+			start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
+			start.addDays(-1);
 		}
 	}
 
@@ -77,7 +74,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public int getColumnCount()
 	{
-		return dateRanges.length + EXTRA_NUM_OF_ROWS;
+		return dateRanges.length + EXTRA_COLUMN_COUNT;
 	}
 
 	public int getRowCount()
@@ -101,16 +98,16 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == 0)
 			return getSelectedResource(row);
 
-		return getUnitsFor(row, col);
+		return getUnitsFor(row, col - 1);
 	}
 	
-	public String getUnitsFor(int row, int col)
+	public String getUnitsFor(int row, int timeIndex)
 	{
 		double units = 0;
 		try
 		{
-			DateRangeEffortList dREffortList = getDateRangeEffortList(row);
-			units = dREffortList.get(col - 1).getUnitQuantity();
+			DateRangeEffortList effortList = getDateRangeEffortList(row);
+			units = effortList.get(timeIndex).getUnitQuantity();
 		}
 		catch (Exception e)
 		{
@@ -129,16 +126,16 @@ public class BudgetTableModel extends AbstractTableModel
 		return dREffortList;
 	}
 	
-	public DateRangeEffort getDateRangeEffort(int row, int col)
+	public DateRangeEffort getDateRangeEffort(int row, int timeIndex)
 	{
 		DateRangeEffort dateRangeEffort = null;
 		try
 		{
-			DateRangeEffortList dREffortList = getDateRangeEffortList(row);
-			if (dREffortList.size() < col)
+			DateRangeEffortList effortList = getDateRangeEffortList(row);
+			if (effortList.size() < timeIndex)
 				return null;
 			
-			dateRangeEffort = dREffortList.get(col - 1);
+			dateRangeEffort = effortList.get(timeIndex);
 		}
 		catch (Exception e)
 		{
@@ -160,7 +157,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public ProjectResource getSelectedResource(int row)
 	{
-		BaseId assignmentId = assignmentIdList.get(row);
+		BaseId assignmentId = getSelectedAssignment(row);
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
 		
@@ -182,25 +179,25 @@ public class BudgetTableModel extends AbstractTableModel
 			return;
 		}
 		if (col < 5)
-			setUnit(value, row, col);
+			setUnits(value, row, col - 1);
 	}
 
-	private void setUnit(Object value, int row, int col)
+	private void setUnits(Object value, int row, int timeIndex)
 	{
 		try
 		{
 			Assignment assignment = getAssignment(row);
-			DateRangeEffort dateRangeEffort = getDateRangeEffort(row, col);
+			DateRangeEffort dateRangeEffort = getDateRangeEffort(row, timeIndex);
 			DateRangeEffortList dateRangeEffortList = getDateRangeEffortList(row);
-			double numOfUnits = Double.parseDouble(value.toString());
+			double units = Double.parseDouble(value.toString());
 			
 			//FIXME budget code - take out daterange
 			if (dateRangeEffort == null)
-				dateRangeEffort = new DateRangeEffort("", numOfUnits, dateRanges[col - 1]);
+				dateRangeEffort = new DateRangeEffort("", units, dateRanges[timeIndex]);
 			
-			dateRangeEffort.setUnitQuantity(numOfUnits);
+			dateRangeEffort.setUnitQuantity(units);
 			dateRangeEffortList.setDateRangeEffort(dateRangeEffort);
-			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignment.getId(), Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+			Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 			project.executeCommand(command);
 		}
 		catch (Exception e)
@@ -236,5 +233,5 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public static final int NUM_OF_RESOURCE_COLUMNS = 1;
 	public static final int NUM_OF_TOTALS_COLUMNS = 0;
-	public static final int EXTRA_NUM_OF_ROWS = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS;	 
+	public static final int EXTRA_COLUMN_COUNT = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS;	 
 }
