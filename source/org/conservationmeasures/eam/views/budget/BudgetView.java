@@ -3,7 +3,10 @@ package org.conservationmeasures.eam.views.budget;
 import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
+import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
+import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
+import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
 import org.conservationmeasures.eam.main.EAM;
@@ -47,16 +50,23 @@ public class BudgetView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-	
 		treeTableComponent = new WorkPlanPanel(getMainWindow(), getProject());
+		
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
+		
+		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
+		
 		addTab(budgetManagmentPanel.getPanelDescription(), budgetManagmentPanel);
+		addTab(accountingCodePoolManagementPanel.getPanelDescription(), accountingCodePoolManagementPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
 	
 	public void deleteTabs() throws Exception
 	{
+		accountingCodePoolManagementPanel.dispose();
+		accountingCodePoolManagementPanel = null;
+		
 		budgetPropertiesPanel.dispose();
 		budgetPropertiesPanel = null;
 		
@@ -68,6 +78,8 @@ public class BudgetView extends TabbedView
 	{
 		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
+		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
 	}
 	
 	public WizardPanel createWizardPanel() throws Exception
@@ -75,9 +87,12 @@ public class BudgetView extends TabbedView
 		return new BudgetWizardPanel();
 	}
 	
+	WorkPlanPanel treeTableComponent;
+	
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;
-	WorkPlanPanel treeTableComponent;
+
+	AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 }
 
 class BudgetComponent extends JLabel

@@ -144,6 +144,8 @@ public class Actions
 		
 		registerAction(new ActionAddAssignment(mainWindow));
 		registerAction(new ActionRemoveAssignment(mainWindow));
+		registerAction(new ActionCreateAccountingCode(mainWindow));
+		registerAction(new ActionDeleteAccountingCode(mainWindow));
 		
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));

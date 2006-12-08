@@ -183,6 +183,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestViewData.class));
 		suite.addTest(new TestSuite(TestObjectReferenceList.class));
 		suite.addTest(new TestSuite(TestAssignment.class));
+		suite.addTest(new TestSuite(TestProjectResource.class));
+		
 		
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

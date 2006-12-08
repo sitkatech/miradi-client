@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
 import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
@@ -72,6 +73,7 @@ public class ObjectManager
 		addNormalPool(new ProjectMetadataPool(ida));
 		addNormalPool(new DiagramFactorLinkPool(ida));
 		addNormalPool(new AssignmentPool(ida));
+		addNormalPool(new AccountingCodePool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -457,6 +459,7 @@ public class ObjectManager
 		loadPool(ObjectType.VALUE_OPTION);
 		loadPool(ObjectType.PROJECT_METADATA);
 		loadPool(ObjectType.ASSIGNMENT);
+		loadPool(ObjectType.ACCOUNTING_CODE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
