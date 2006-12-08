@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
@@ -46,10 +45,10 @@ abstract public class ObjectsDoer extends ViewDoer
 
 	public BaseId getSelectedId()
 	{
-		ProjectResource selectedResource = (ProjectResource)getObjects()[0];
-		if(selectedResource == null)
+		EAMObject selected = getObjects()[0];
+		if(selected == null)
 			return BaseId.INVALID;
-		return selectedResource.getId();
+		return selected.getId();
 	}
 	
 	public void clearSelection()
