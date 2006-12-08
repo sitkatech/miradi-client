@@ -76,6 +76,8 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public void dataWasChanged()
 	{
+		if(task == null)
+			return;
 		assignmentIdList = task.getAssignmentIdList();
 		fireTableDataChanged();
 	}
