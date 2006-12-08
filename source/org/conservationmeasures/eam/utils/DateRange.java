@@ -44,6 +44,16 @@ public class DateRange
 		return endDate;
 	}
 	
+	public boolean surroundsThis(MultiCalendar date)
+	{
+		if (startDate.after(date))
+			return false;
+		if (endDate.before(date))
+			return false;
+		
+		return true;
+	}
+	
 	public String getLabel()
 	{
 		return startDate.toString() +" - "+ endDate.toString();
@@ -55,6 +65,11 @@ public class DateRange
 		json.put(TAG_START_DATE, startDate.toIsoDateString());
 		json.put(TAG_END_DATE, endDate.toIsoDateString());
 		return json;
+	}
+	
+	public String toString()
+	{
+		return toJson().toString();
 	}
 	
 	private static final String TAG_START_DATE = "StartDate";
