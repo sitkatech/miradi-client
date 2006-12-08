@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.diagram.renderers;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -25,6 +26,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
+import org.jgraph.graph.GraphConstants;
 import org.martus.swing.Utilities;
 
 public class ArrowLineRenderer extends EdgeRenderer
@@ -46,9 +48,23 @@ public class ArrowLineRenderer extends EdgeRenderer
 		isVisible = diagram.areLinkagesVisible();
 		stressText = cell.getFactorLink().getStressLabel();
 
+		if (sel) 
+		{
+			Graphics2D g2 = (Graphics2D) diagram.getGraphics();
+			paintSelectionBorder(g2);
+		}
+		
 		return renderer;
 	}
 
+	protected void paintSelectionBorder(Graphics2D g2) 
+	{
+		g2.setStroke(GraphConstants.SELECTION_STROKE);
+		g2.setColor(highlightColor);
+		Dimension d = getSize();
+		g2.drawRect(0, 0, d.width - 1, d.height - 1);
+	}
+	
 	private LinkCell getLinkCell()
 	{
 		return cell;
