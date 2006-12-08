@@ -38,6 +38,9 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getTotalsColumnIndex())
 			return false;
 		
+		if (isOddRow(row))
+			return false;
+			
 		return true;
 	}
 	
@@ -77,6 +80,14 @@ public class BudgetTableModel extends AbstractTableModel
 		fireTableDataChanged();
 	}
 	
+	public int getRowCount()
+	{
+		if (assignmentIdList != null)
+			return assignmentIdList.size() * 2;
+		
+		return 0;
+	}
+	
 	public int getColumnCount()
 	{
 		return dateRanges.length + EXTRA_COLUMN_COUNT;
@@ -89,14 +100,6 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public int getResourcesColumnIndex()
 	{
-		return 0;
-	}
-
-	public int getRowCount()
-	{
-		if (assignmentIdList != null)
-			return assignmentIdList.size();
-		
 		return 0;
 	}
 
@@ -113,7 +116,13 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public Object getValueAt(int row, int col)
 	{
-		if (col == 0)
+		
+		if (isOddRow(row))
+			return new String("");
+			
+		row = getCorrectedRow(row);
+		
+		if (col == getResourcesColumnIndex())
 			return getSelectedResource(row);
 		
 		if (col == getTotalsColumnIndex())
@@ -148,8 +157,7 @@ public class BudgetTableModel extends AbstractTableModel
 		}
 		catch (Exception e)
 		{
-			//FIXME budget code - uncomment when done with setting units
-			//EAM.logException(e);
+			EAM.logException(e);
 		}
 		
 		return Double.toString(units);
@@ -169,7 +177,7 @@ public class BudgetTableModel extends AbstractTableModel
 		try
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			if (effortList.size() < timeIndex)
+			if (effortList.size() <= timeIndex)
 				return null;
 			
 			dateRangeEffort = effortList.get(timeIndex);
@@ -205,18 +213,32 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public void setValueAt(Object value, int row, int col)
 	{
+		if (isOddRow(row))
+			return;
+		
+		row = getCorrectedRow(row); 
 		if (value == null)
 		{
 			EAM.logDebug("value in setValueAt is null");
 			return;
 		}
-		if (col == 0)
+		if (col == getResourcesColumnIndex())
 		{
 			setResource(value, row);
 			return;
 		}
 		if (col < 5)
 			setUnits(value, row, col - 1);
+	}
+
+	public int getCorrectedRow(int row)
+	{
+		return row /= 2;
+	}
+
+	boolean isOddRow(int row)
+	{
+		return row % 2 != 0;
 	}
 
 	private void setUnits(Object value, int row, int timeIndex)
@@ -250,7 +272,7 @@ public class BudgetTableModel extends AbstractTableModel
 			ProjectResource projectResource = (ProjectResource)value;
 			ProjectResourceId resourceId = (ProjectResourceId)(projectResource).getId();
 			
-			BaseId  assignmentId = assignmentIdList.get(row);
+			BaseId  assignmentId = getSelectedAssignment(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
 			project.executeCommand(command);
 		}

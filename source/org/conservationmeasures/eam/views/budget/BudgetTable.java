@@ -9,6 +9,7 @@ import java.awt.Component;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
@@ -66,7 +67,19 @@ public class BudgetTable extends JTable implements ObjectPicker
 		int selectedRow = getSelectedRow();
 		if (selectedRow < 0)
 			return new EAMObject[0];
-		BaseId selectedId = getBudgetModel().getSelectedAssignment(selectedRow);
+		
+		BudgetTableModel budgetModel = getBudgetModel();
+		if (budgetModel.isOddRow(selectedRow))
+			return new EAMObject[0];
+		
+		selectedRow = budgetModel.getCorrectedRow(selectedRow);
+		
+		//FIXME budget code - remove commented code
+		
+		//ProjectResource resource = (ProjectResource)budgetModel.getValueAt(selectedRow, budgetModel.getResourcesColumnIndex());
+		//BaseId selectedId = resource.getId();
+
+		BaseId selectedId = budgetModel.getSelectedAssignment(selectedRow);
 		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
 		
 		if (selectedObject == null)
@@ -75,7 +88,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return new EAMObject[] {selectedObject};
 	}
 
-	private BudgetTableModel getBudgetModel()
+	public BudgetTableModel getBudgetModel()
 	{
 		return (BudgetTableModel)getModel();
 	}
@@ -88,7 +101,6 @@ public class BudgetTable extends JTable implements ObjectPicker
 	BudgetTableModel model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
-
 }
 
 class ComboBoxRenderer extends JComboBox implements TableCellRenderer 
@@ -99,7 +111,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
     }
 
     public Component getTableCellRendererComponent(JTable table, Object value,
-            boolean isSelected, boolean hasFocus, int row, int column) 
+            boolean isSelected, boolean hasFocus, int row, int col) 
     {
 
         if (isSelected) 
@@ -112,7 +124,11 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
             setForeground(table.getForeground());
             setBackground(table.getBackground());
         }
-
+        
+        boolean isRowEditable = ((BudgetTable)table).getBudgetModel().isCellEditable(row, col);
+        if (! isRowEditable)
+        	return new JLabel("");
+        
         setSelectedItem(value);
         return this;
     }
