@@ -53,6 +53,17 @@ public class DateRangeEffortList
 		}
 		return total;
 	}
+	
+	public double getTotalUnitQuantity()
+	{
+		double totalUnits = 0.0;
+		for (int i = 0; i < data.size(); i++)
+		{
+			DateRangeEffort effort = (DateRangeEffort)data.get(i);
+			totalUnits += effort.getUnitQuantity();
+		}
+		return totalUnits;
+	}
 		
 	public void setDateRangeEffort(DateRangeEffort dateRangeEffortToUse)
 	{
@@ -65,7 +76,6 @@ public class DateRangeEffortList
 				return;
 			}
 		}
-	
 		add(dateRangeEffortToUse);
 	}
 
@@ -122,4 +132,5 @@ public class DateRangeEffortList
 	
 	private Vector data;
 	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";
+	
 }
