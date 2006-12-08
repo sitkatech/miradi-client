@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.diagram;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramStrategy;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -36,7 +37,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 			return false;
 		}
 
-		if(getProject().getOnlySelectedFactors().length < 1)
+		if(getProject().getOnlySelectedCells().length < 1)
 			return false;
 		
 		if (!getProject().getLayerManager().isTypeVisible(DiagramStrategy.class))
@@ -52,6 +53,10 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		
 		try
 		{
+			DiagramView view = (DiagramView)getView();
+			DiagramComponent diagram = view.getDiagramComponent();
+			SelectChain.selectAllChainsRelatedToAllSelectedCells(diagram);
+
 			Project project = getMainWindow().getProject();
 			BaseId viewId = getCurrentViewId();
 
