@@ -31,6 +31,7 @@ import org.conservationmeasures.eam.objectpools.EAMNormalObjectPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objectpools.FactorPool;
+import org.conservationmeasures.eam.objectpools.FundingSourcePool;
 import org.conservationmeasures.eam.objectpools.GoalPool;
 import org.conservationmeasures.eam.objectpools.IndicatorPool;
 import org.conservationmeasures.eam.objectpools.ObjectivePool;
@@ -45,6 +46,7 @@ import org.conservationmeasures.eam.objects.Desire;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
@@ -74,6 +76,7 @@ public class ObjectManager
 		addNormalPool(new DiagramFactorLinkPool(ida));
 		addNormalPool(new AssignmentPool(ida));
 		addNormalPool(new AccountingCodePool(ida));
+		addNormalPool(new FundingSourcePool(ida));
 	}
 
 	private void addNormalPool(EAMNormalObjectPool pool)
@@ -115,6 +118,18 @@ public class ObjectManager
 	{
 		return (ResourcePool)getPool(ObjectType.PROJECT_RESOURCE);
 	}
+	
+	public AccountingCodePool getAccountingCodePool()
+	{
+		return (AccountingCodePool)getPool(ObjectType.ACCOUNTING_CODE);
+	}
+
+	
+	public FundingSourcePool getFundingSourcePool()
+	{
+		return (FundingSourcePool)getPool(ObjectType.FUNDING_SOURCE);
+	}
+
 
 	public IndicatorPool getIndicatorPool()
 	{
@@ -460,6 +475,7 @@ public class ObjectManager
 		loadPool(ObjectType.PROJECT_METADATA);
 		loadPool(ObjectType.ASSIGNMENT);
 		loadPool(ObjectType.ACCOUNTING_CODE);
+		loadPool(ObjectType.FUNDING_SOURCE);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception

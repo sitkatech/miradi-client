@@ -22,5 +22,6 @@ public class ObjectType
 	public static final int DIAGRAM_LINK = 13;
 	public static final int ASSIGNMENT = 14;
 	public static final int ACCOUNTING_CODE = 15;
+	public static final int FUNDING_SOURCE = 16;
 }
 

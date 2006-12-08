@@ -4,11 +4,14 @@ import javax.swing.JLabel;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
+import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
+import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
+import org.conservationmeasures.eam.dialogs.FundingSourcePoolManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -57,13 +60,19 @@ public class BudgetView extends TabbedView
 		
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		
+		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
+		
 		addTab(budgetManagmentPanel.getPanelDescription(), budgetManagmentPanel);
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(), accountingCodePoolManagementPanel);
+		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
 	
 	public void deleteTabs() throws Exception
 	{
+		fundingSourcePoolManagementPanel.dispose();
+		fundingSourcePoolManagementPanel = null;
+		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
 		
@@ -80,6 +89,8 @@ public class BudgetView extends TabbedView
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
 		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
+		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
+		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
 	}
 	
 	public WizardPanel createWizardPanel() throws Exception
@@ -93,6 +104,8 @@ public class BudgetView extends TabbedView
 	BudgetManagementPanel budgetManagmentPanel;
 
 	AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
+	
+	FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 }
 
 class BudgetComponent extends JLabel

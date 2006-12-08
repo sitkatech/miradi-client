@@ -91,6 +91,9 @@ abstract public class EAMBaseObject implements EAMObject
 			case ObjectType.ACCOUNTING_CODE:
 				return new AccountingCode(idAsInt, json);
 				
+			case ObjectType.FUNDING_SOURCE:
+				return new FundingSource(idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
