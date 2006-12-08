@@ -38,6 +38,9 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getTotalsColumnIndex())
 			return false;
 		
+		if (isLabelColumn(col))
+			return false;
+		
 		if (isOdd(row))
 			return false;
 			
@@ -110,22 +113,33 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getResourcesColumnIndex())
 			return "Resources";
 		
+		if (isLabelColumn(col))
+			return "";
+		
 		if (col == getTotalsColumnIndex())
 			return "Totals";
 		
 		if (isUnitsColumn(col))
-		  return dateRanges[getUnitsColumn(col)].getLabel();
+			return dateRanges[getUnitsColumn(col)].getLabel();
 		
 		return "";
 	}
 
+	private boolean isLabelColumn(int col)
+	{
+		return 1 <= col && col <= STATIC_LABEL_COLUMN_COUNT;
+	}
+
 	private boolean isUnitsColumn(int col)
 	{
-		return ! isOdd(col + NUM_OF_RESOURCE_COLUMNS);
+		return ! isOdd(col + RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT);
 	}
 	
 	public Object getValueAt(int row, int col)
 	{
+		
+		if (isStaticLabelColum(col))
+			return getStaticCellLabel(row, col); 
 		
 		if (isOdd(row))
 			return new String("");
@@ -135,19 +149,55 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getResourcesColumnIndex())
 			return getSelectedResource(row);
 		
+		if (isLabelColumn(col))
+			return getResourceCellLabel(row, col);
+		
 		if (col == getTotalsColumnIndex())
 			return getTotalUnits(row);
 		
 		if (isUnitsColumn(col))
 			return getUnitsFor(row, getUnitsColumn(col));
-
+		
 		return new String();
+	}
+
+	
+	private boolean isStaticLabelColum(int col)
+	{
+		if (col == COST_UNIT_LABEL_COLUMN)
+			return true;
+		
+		return false;
 	}
 
 	private int getUnitsColumn(int col)
 	{
-		return (col + 1) / 2 - 1;
+		return (col - (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT)) / 2;
 	}
+	
+	private String getResourceCellLabel(int row, int col)
+	{
+		ProjectResource resource = getSelectedResource(row);
+		if (resource  == null)
+			return "";
+		
+		if (col == 1)
+			return resource.getData(ProjectResource.TAG_COST_PER_UNIT);
+		
+		if (col == 2)
+			return resource.getData(ProjectResource.TAG_COST_UNIT);
+			
+		return "";
+	}
+	
+	private String getStaticCellLabel(int row, int col)
+	{
+		if (!isOdd(row))
+			return "Cost";
+		return "Units";
+	}
+
+
 	
 	private Object getTotalUnits(int row)
 	{
@@ -312,7 +362,12 @@ public class BudgetTableModel extends AbstractTableModel
 	IdList assignmentIdList;
 	Task task;
 	
-	public static final int NUM_OF_RESOURCE_COLUMNS = 1;
-	public static final int NUM_OF_TOTALS_COLUMNS = 1;
-	public static final int EXTRA_COLUMN_COUNT = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS;	 
+	
+	private static final int COST_UNIT_LABEL_COLUMN = 3;
+	private static final int RESOURCE_COLUMN_COUNT = 1;
+	private static final int TOTALS_COLUMNS_COUNT = 1;
+	private static final int STATIC_LABEL_COLUMN_COUNT = 3;
+	private static final int EXTRA_COLUMN_COUNT = RESOURCE_COLUMN_COUNT + 
+												  TOTALS_COLUMNS_COUNT + 
+												  STATIC_LABEL_COLUMN_COUNT;	 
 }
