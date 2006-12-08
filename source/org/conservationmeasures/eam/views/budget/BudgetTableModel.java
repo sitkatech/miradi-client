@@ -165,7 +165,7 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isTotalColumn(col))
 			return getTotalUnits(getCorrectedRow(row));
 		
-		if (isCostTotalsColumn(col))
+		if (isOdd(row) && isCostTotalsColumn(col))
 			return getTotalCost(getCorrectedRow(row));
 		
 		if (isOdd(row) && (isCostColumn(col)))
@@ -174,7 +174,7 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isUnitsColumn(col))
 			return getUnitsFor(getCorrectedRow(row), getUnitsColumn(col));
 		
-		return new String();
+		return new String("");
 	}
 
 	private boolean isResourceColumn(int col)
