@@ -17,8 +17,8 @@ public class AccountingCodePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.ACCOUNTING_CODE, idToEdit);
 		
-		addField(createStringField(AccountingCode.TAG_LABEL));
 		addField(createStringField(AccountingCode.TAG_CODE));
+		addField(createStringField(AccountingCode.TAG_LABEL));
 		addField(createMultilineField(AccountingCode.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
