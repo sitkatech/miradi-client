@@ -1,8 +1,5 @@
 package org.conservationmeasures.eam.views.strategicplan;
 
-import org.conservationmeasures.eam.actions.ActionCreateResource;
-import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.dialogs.GoalPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ObjectivePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.StrategyPoolManagementPanel;
@@ -11,9 +8,6 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.strategicplan.wizard.StrategicPlanWizardPanel;
-import org.conservationmeasures.eam.views.umbrella.CreateResource;
-import org.conservationmeasures.eam.views.umbrella.DeleteResource;
-import org.conservationmeasures.eam.views.umbrella.ModifyResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 
 public class StrategicPlanView extends TabbedView
@@ -89,18 +83,8 @@ public class StrategicPlanView extends TabbedView
 		return goalPanel;
 	}
 	
-	public ModifyResource getModifyResourceDoer()
-	{
-		return modifyResourceDoer;
-	}
-
 	private void addStrategicPlanDoersToMap()
 	{
-		modifyResourceDoer = new ModifyResource();
-		
-		addDoerToMap(ActionCreateResource.class, new CreateResource());
-		addDoerToMap(ActionModifyResource.class, getModifyResourceDoer());
-		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
 	StrategicPlanWizardPanel stratPlanWizardPanel;
@@ -108,7 +92,5 @@ public class StrategicPlanView extends TabbedView
 	ObjectivePoolManagementPanel objectivePanel;
 	GoalPoolManagementPanel goalPanel;
 	StrategyPoolManagementPanel strategyPoolManagementPanel;
-	
-	ModifyResource modifyResourceDoer;
 }
 
