@@ -44,16 +44,6 @@ public class DateRange
 		return endDate;
 	}
 	
-	public boolean surroundsThis(MultiCalendar date)
-	{
-		if (startDate.after(date))
-			return false;
-		if (endDate.before(date))
-			return false;
-		
-		return true;
-	}
-	
 	public String getLabel()
 	{
 		return startDate.toString() +" - "+ endDate.toString();
@@ -70,6 +60,21 @@ public class DateRange
 	public String toString()
 	{
 		return toJson().toString();
+	}
+	
+	public boolean equals(Object other)
+	{
+		if (! (other instanceof DateRange))
+			return false;
+		
+		DateRange otherDateRange = (DateRange)other;
+		if (! (startDate.equals(otherDateRange.getStartDate())))
+			return false;
+		
+		if (! (endDate.equals(otherDateRange.getEndDate())))
+			return false;
+		
+		return true;
 	}
 	
 	private static final String TAG_START_DATE = "StartDate";
