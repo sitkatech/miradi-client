@@ -10,16 +10,16 @@ import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
 
+import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.IdAssigner;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Cause;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
+import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.utils.EnhancedJsonArray;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.json.JSONObject;
@@ -523,6 +523,49 @@ public class TestDataUpgrader extends EAMTestCase
 					assertEquals("wrong id?", oldArray.getInt(j), newIdList.get(j).asInt());
 			}
 		}
+	}
+	
+	public void testConvertTeamListToRoleCodes() throws Exception
+	{
+		String[] sampleResources = {
+			"{\"Position\":\"position\",\"Label\":\"\",\"Name\":\"Not In Team\",\"Initials\":\"initials\",\"Id\":0}",
+			"{\"Position\":\"position\",\"Label\":\"\",\"Name\":\"In Team\",\"Initials\":\"initials\",\"Id\":1}",
+		};
+		
+		File resourcesDirectory = new File(tempDirectory, "json/objects-7");
+		// missing nodes directory is not a problem
+		resourcesDirectory.mkdirs();
+
+		int[] allIds = new int[sampleResources.length];
+		for(int i = 0; i < sampleResources.length; ++i)
+		{
+			allIds[i] = i;
+			createFile(new File(resourcesDirectory, Integer.toString(i)), sampleResources[i]);
+		}
+		
+		File resourceManifestFile = new File(resourcesDirectory, "manifest");
+		createFile(resourceManifestFile, buildManifestContents(allIds));
+	
+		File metadataDirectory = new File(tempDirectory, "json/objects-11");
+		metadataDirectory.mkdirs();
+		
+		String sampleMetadata = "{\"TeamResourceIds\":\"{\\\"Ids\\\":[1]}\"," +
+				"\"ProjectScope\":\"Scope\"}";
+		createFile(new File(metadataDirectory, "0"), sampleMetadata);
+		File metadataManifestFile = new File(metadataDirectory, "manifest");
+		createFile(metadataManifestFile, buildManifestContents(allIds));
+		
+		File projectFile = new File(tempDirectory, "json/project");
+		createFile(projectFile, "{\"ProjectMetadataId\":0}");
+		
+		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		upgrader.convertTeamListToRoleCodes();
+		
+		String teamCode = "\"RoleCodes\":\"{\\\"Codes\\\":[\\\"TeamMember\\\"]}";
+		String notInTeam = readFile(new File(resourcesDirectory, "0"));
+		assertNotContains("added to team?", "TeamMember", notInTeam);
+		String inTeam = readFile(new File(resourcesDirectory, "1"));
+		assertContains("didn't add to team?", teamCode, inTeam);
 	}
 
 	private EnhancedJsonObject createDiagramNodeJson(int id)

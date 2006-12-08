@@ -352,7 +352,7 @@ public class ProjectServer
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 13;
+	static public int DATA_VERSION = 14;
 
 	File topDirectory;
 	String name;

@@ -104,6 +104,8 @@ public class DataUpgrader extends ProjectServer
 			upgradeToVersion12();
 		if(readDataVersion(getTopDirectory()) == 12)
 			upgradeToVersion13();
+		if(readDataVersion(getTopDirectory()) == 13)
+			upgradeToVersion14();
 	}
 
 	void upgradeToVersion2() throws IOException, ParseException
@@ -485,6 +487,47 @@ public class DataUpgrader extends ProjectServer
 		// no changes, but we bumped the version to indicate that from now on,
 		// diagram node ids are not necessarily the same as model node ids
 		writeVersion(13);
+	}
+	
+	public void upgradeToVersion14() throws Exception
+	{
+		convertTeamListToRoleCodes();
+		writeVersion(14);
+	}
+	
+	public void convertTeamListToRoleCodes() throws Exception
+	{
+		File jsonDirectory = new File(getTopDirectory(), "json");
+		
+		File projectFile = new File(jsonDirectory, "project");
+		EnhancedJsonObject projectJson = JSONFile.read(projectFile);
+		BaseId metadataId = projectJson.optId("ProjectMetadataId");
+		if(metadataId.isInvalid())
+			return;
+		
+		File metadataDirectory = new File(jsonDirectory, "objects-11");
+		if(!metadataDirectory.exists())
+			return;
+		File metadataFile = new File(metadataDirectory, metadataId.toString());
+		EnhancedJsonObject metadataJson = JSONFile.read(metadataFile);
+		IdList teamList = new IdList(metadataJson.optString("TeamResourceIds"));
+		
+		File resourcesDirectory = new File(jsonDirectory, "objects-7");
+		if(!resourcesDirectory.exists())
+			return;
+		for(int i = 0; i < teamList.size(); ++i)
+		{
+			BaseId id = teamList.get(i);
+			File resourceFile = new File(resourcesDirectory, id.toString());
+			if(!resourceFile.exists())
+			{
+				EAM.logWarning("Could not add missing resource to team: " + id);
+				continue;
+			}
+			EnhancedJsonObject json = JSONFile.read(resourceFile);
+			json.put("RoleCodes", "{\"Codes\":[\"TeamMember\"]}");
+			JSONFile.write(resourceFile, json);
+		}
 	}
 	
 
