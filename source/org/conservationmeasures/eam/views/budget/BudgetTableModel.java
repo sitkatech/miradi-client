@@ -44,11 +44,15 @@ public class BudgetTableModel extends AbstractTableModel
 		projectStartDate  = MultiCalendar.createFromIsoDateString(startDate);
 		int year = projectStartDate.getGregorianYear();
 		dateRanges = new DateRange[4];
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+		MultiCalendar end = null;
 		for (int i = 0; i < dateRanges.length; i++)
 		{
-			MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+			if (i > 0)
+				start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
+			
 			int endMonth  =  (i + 1) * 3;
-			MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
+			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
 			
 			dateRanges[i] = new DateRange(start, end);
 		}
@@ -101,8 +105,7 @@ public class BudgetTableModel extends AbstractTableModel
 		try
 		{
 			DateRangeEffortList dREffortList = getDateRangeEffortList(row);
-			DateRange dateRange = dREffortList.get(col - 1).getDateRange();
-			units = dREffortList.getUnitsFor(dateRange);
+			units = dREffortList.get(col - 1).getUnitQuantity();
 		}
 		catch (Exception e)
 		{
