@@ -33,8 +33,11 @@ public class BudgetTableModel extends AbstractTableModel
 		setProjectDateRanges();
 	}
 	
-	public boolean isCellEditable(int rowIndex, int columnIndex) 
+	public boolean isCellEditable(int row, int col) 
 	{
+		if (col == getTotalsColumnIndex())
+			return false;
+		
 		return true;
 	}
 	
@@ -49,14 +52,16 @@ public class BudgetTableModel extends AbstractTableModel
 		dateRanges = new DateRange[4];
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar end = null;
+		final int YEAR_QUARTER = 3;
+		final int MINUS_A_DAY = -1;
 		for (int i = 0; i < dateRanges.length; i++)
 		{
-			int endMonth  =  (i + 1) * 3;
+			int endMonth  =  (i + 1) * YEAR_QUARTER;
 			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
 			
 			dateRanges[i] = new DateRange(start, end);
 			start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
-			start.addDays(-1);
+			start.addDays(MINUS_A_DAY);
 		}
 	}
 
@@ -76,6 +81,16 @@ public class BudgetTableModel extends AbstractTableModel
 	{
 		return dateRanges.length + EXTRA_COLUMN_COUNT;
 	}
+	
+	public int getTotalsColumnIndex()
+	{
+		return getColumnCount() - 1;	
+	}
+	
+	public int getResourcesColumnIndex()
+	{
+		return 0;
+	}
 
 	public int getRowCount()
 	{
@@ -87,9 +102,12 @@ public class BudgetTableModel extends AbstractTableModel
 
 	public String getColumnName(int col)
 	{
-		if (col == 0)
+		if (col == getResourcesColumnIndex())
 			return "Resources";
-			
+		
+		if (col == getTotalsColumnIndex())
+			return "Totals";
+		
 		return dateRanges[col - 1].getLabel();
 	}
 	
@@ -97,10 +115,29 @@ public class BudgetTableModel extends AbstractTableModel
 	{
 		if (col == 0)
 			return getSelectedResource(row);
+		
+		if (col == getTotalsColumnIndex())
+			return getTotalUnits(row);
 
 		return getUnitsFor(row, col - 1);
 	}
 	
+	private Object getTotalUnits(int row)
+	{
+		double totalUnits = 0.0;
+		try
+		{
+			DateRangeEffortList effortList = getDateRangeEffortList(row);
+			totalUnits = effortList.getTotalUnitQuantity();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		return Double.toString(totalUnits);
+	}
+
 	public String getUnitsFor(int row, int timeIndex)
 	{
 		double units = 0;
@@ -232,6 +269,6 @@ public class BudgetTableModel extends AbstractTableModel
 	Task task;
 	
 	public static final int NUM_OF_RESOURCE_COLUMNS = 1;
-	public static final int NUM_OF_TOTALS_COLUMNS = 0;
+	public static final int NUM_OF_TOTALS_COLUMNS = 1;
 	public static final int EXTRA_COLUMN_COUNT = NUM_OF_RESOURCE_COLUMNS + NUM_OF_TOTALS_COLUMNS;	 
 }
