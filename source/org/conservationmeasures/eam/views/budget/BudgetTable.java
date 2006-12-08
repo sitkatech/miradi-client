@@ -44,9 +44,9 @@ public class BudgetTable extends JTable implements ObjectPicker
 	
 	private void rebuild()
 	{
+		//TODO budget code - verify the need for this if
 		if (model.getColumnCount() <= 0)
 			return;
-		
 		
 		projectResources = project.getAllProjectResources();
 		JComboBox combo = new JComboBox(projectResources);
