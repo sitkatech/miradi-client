@@ -67,9 +67,7 @@ public class DateRange
 		if (! (rawOther instanceof DateRange))
 			return false;
 		
-		DateRange other = (DateRange)rawOther;
-		
-		return toJson().equals(other.toJson());
+		return toString().equals(rawOther.toString());
 	}
 	
 	private static final String TAG_START_DATE = "StartDate";
