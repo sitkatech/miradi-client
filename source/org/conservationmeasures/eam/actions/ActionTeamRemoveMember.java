@@ -8,21 +8,21 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionTeamDeleteMember extends ObjectsAction
+public class ActionTeamRemoveMember extends ObjectsAction
 {
-	public ActionTeamDeleteMember(MainWindow mainWindowToUse)
+	public ActionTeamRemoveMember(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Delete Member");
+		return EAM.text("Action|Manage|Remove Member");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete a member from the team");
+		return EAM.text("TT|Remove a member from the team");
 	}
 
 }

@@ -6,16 +6,12 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionResourceListAdd;
-import org.conservationmeasures.eam.actions.ActionResourceListModify;
-import org.conservationmeasures.eam.actions.ActionResourceListRemove;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
-import org.conservationmeasures.eam.actions.ActionViewPossibleResources;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
-import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -97,11 +93,6 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
-		
-		addDoerToMap(ActionViewPossibleResources.class, new ViewPossibleResources());
-		addDoerToMap(ActionResourceListAdd.class, new ResourceListAdd());
-		addDoerToMap(ActionResourceListModify.class, new ResourceListModify());
-		addDoerToMap(ActionResourceListRemove.class, new ResourceListRemove());
 	}
 	
 	public void showResourceAddDialog() throws Exception

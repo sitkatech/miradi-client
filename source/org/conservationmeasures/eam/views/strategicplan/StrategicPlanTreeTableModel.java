@@ -40,11 +40,10 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	}
 	
 	public static final int labelColumn = 0;
-	public static final int resourcesColumn = 1;
-	public static final int budgetColumn = 2;
-	public static final int datesColumn = 3;
+	public static final int budgetColumn = 1;
+	public static final int datesColumn = 2;
 	
-	static final String[] columnNames = {"Item", "Resources", "Budget", "Dates", };
+	static final String[] columnNames = {"Item", "Budget", "Dates", };
 
 	Project project;
 

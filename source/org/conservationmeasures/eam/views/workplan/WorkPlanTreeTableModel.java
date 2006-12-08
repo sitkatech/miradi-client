@@ -110,6 +110,6 @@ EAM.logDebug("idListWasChanged");
 		return null;
 	}
 
-	public static String[] columnTags = {"Item", "Resources", };
+	public static String[] columnTags = {"Item", };
 	Project project;
 }

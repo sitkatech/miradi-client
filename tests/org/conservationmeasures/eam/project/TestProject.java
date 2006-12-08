@@ -39,18 +39,14 @@ import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.main.TransferableEamList;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
-import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.FactorLinkPool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
-import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.views.diagram.DiagramView;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
@@ -75,33 +71,6 @@ public class TestProject extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
-	}
-	
-	private CreateTaskParameter getTaskExtraInfo()
-	{
-		ORef parentRef = new ORef(ObjectType.FACTOR, new BaseId(45));
-		CreateTaskParameter extraInfo = new CreateTaskParameter(parentRef);
-		return extraInfo;
-	}
-	
-	public void testGetTaskResources() throws Exception
-	{
-		BaseId taskId = project.createObject(ObjectType.TASK, getTaskExtraInfo());
-		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
-		assertEquals("Not empty for zero resources?", 0, project.getTaskResources(task).length);
-		BaseId resourceId1 = project.createObject(ObjectType.PROJECT_RESOURCE);
-		ProjectResource resource1 = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId1);
-		resource1.setLabel("One");
-		BaseId resourceId2 = project.createObject(ObjectType.PROJECT_RESOURCE);
-		ProjectResource resource2 = (ProjectResource)project.findObject(ObjectType.PROJECT_RESOURCE, resourceId2);
-		resource2.setLabel("Two");
-		IdList resourceIds = new IdList();
-		resourceIds.add(resourceId1);
-		resourceIds.add(resourceId2);
-		task.setData(Task.TAG_RESOURCE_IDS, resourceIds.toString());
-		assertEquals("wrong length", 2, project.getTaskResources(task).length);
-		assertEquals("wrong first", resourceId1, project.getTaskResources(task)[0].getId());
-		assertEquals("wrong second", resourceId2, project.getTaskResources(task)[1].getId());
 	}
 	
 	public void testForOnlyOneAnnotationIdAssigner() throws Exception

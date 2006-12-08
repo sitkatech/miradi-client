@@ -5,13 +5,9 @@
  */
 package org.conservationmeasures.eam.views.monitoring;
 
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objectpools.ResourcePool;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
-import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -64,24 +60,9 @@ public class MonitoringIndicatorNode extends MonitoringNode
 			return indicator.getData(Indicator.TAG_METHOD);
 		if(column == COLUMN_ITEM_LABEL)
 			return indicator.toString();
-		if(MonitoringModel.columnTags[column].equals(Indicator.TAG_RESOURCE_IDS))
-		{
-			ProjectResource[] resources = getResourcesForIndicator(project, indicator);
-			return EAMBaseObject.toHtml(resources);
-		}
 		return null;
 	}
 
-	public static ProjectResource[] getResourcesForIndicator(Project project, Indicator indicator)
-	{
-		ResourcePool resourcePool = project.getResourcePool();
-		IdList resourceIds = indicator.getResourceIdList();
-		ProjectResource[] resources = new ProjectResource[resourceIds.size()];
-		for(int i = 0; i < resourceIds.size(); ++i)
-			resources[i] = resourcePool.find(resourceIds.get(i));
-		return resources;
-	}
-	
 	ChainManager getChainManager()
 	{
 		return new ChainManager(project);

@@ -52,7 +52,6 @@ public class Indicator extends EAMBaseObject
 		super.clear();
 		shortLabel = new StringData();
 		method = new StringData();
-		resourceIds = new IdListData();
 		location = new StringData();
 		priority = new RatingData();
 		status = new RatingData();
@@ -63,7 +62,6 @@ public class Indicator extends EAMBaseObject
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_METHOD, method);
-		addField(TAG_RESOURCE_IDS, resourceIds);
 		addField(TAG_LOCATION, location);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
@@ -83,11 +81,6 @@ public class Indicator extends EAMBaseObject
 		return getData(TAG_SHORT_LABEL);
 	}
 	
-	public IdList getResourceIdList()
-	{
-		return resourceIds.getIdList();
-	}
-
 	public String toString()
 	{
 		if(getId().isInvalid())
@@ -97,7 +90,6 @@ public class Indicator extends EAMBaseObject
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_METHOD = "Method";
-	public static final String TAG_RESOURCE_IDS = "ResourceIds";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_STATUS = "Status";
@@ -113,7 +105,6 @@ public class Indicator extends EAMBaseObject
 
 	StringData shortLabel;
 	StringData method;
-	IdListData resourceIds;
 	StringData location;
 	RatingData priority;
 	RatingData status;

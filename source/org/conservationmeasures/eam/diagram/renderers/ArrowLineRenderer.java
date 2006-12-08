@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 
@@ -57,10 +58,19 @@ public class ArrowLineRenderer extends EdgeRenderer
 			return;
 		
 		super.paint(g);
-		drawStress(g);
+		//drawStress(g);
 		
 	}
 	
+	
+	
+	protected Shape createShape()
+	{
+		Shape shape = super.createShape();
+		view.lineShape = null;
+		return shape;
+	}
+
 	public Rectangle2D getPaintBounds(EdgeView viewToUse) 
 	{
 		Rectangle2D graphBounds = super.getPaintBounds(viewToUse);

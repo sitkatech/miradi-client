@@ -64,16 +64,6 @@ public class Task extends EAMBaseObject
 		return subtaskIds.getIdList().createClone();
 	}
 	
-	public int getResourceCount()
-	{
-		return resourceIds.size();
-	}
-	
-	public IdList getResourceIdList()
-	{
-		return resourceIds.getIdList().createClone();
-	}
-	
 	public IdList getAssignmentIdList()
 	{
 		return assignmentIds.getIdList().createClone();
@@ -122,22 +112,18 @@ public class Task extends EAMBaseObject
 		super.clear();
 		parentRef = new ORefData();
 		subtaskIds = new IdListData();
-		resourceIds = new IdListData();
 		assignmentIds = new IdListData();
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
-		addField(TAG_RESOURCE_IDS, resourceIds);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 	}
 
 	public final static String TAG_PARENT_REF = "ParentRef";
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
-	public final static String TAG_RESOURCE_IDS = "ResourceIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 	public final static String PSEUDO_TAG_FACTOR_LABEL = "PseudoTagFactorLabel";
 	
 	IdListData subtaskIds;
-	IdListData resourceIds;
 	IdListData assignmentIds;
 	ORefData parentRef;
 }

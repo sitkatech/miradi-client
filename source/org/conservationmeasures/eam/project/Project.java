@@ -56,7 +56,6 @@ import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.objects.ViewData;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
@@ -311,31 +310,6 @@ public class Project
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		return objectManager.getObjectData(objectType, objectId, fieldTag);
-	}
-	
-	public ProjectResource[] getTaskResources(Task task)
-	{
-		ResourcePool pool = getResourcePool();
-		IdList resourceIds = task.getResourceIdList();
-		ProjectResource[] resources = new ProjectResource[resourceIds.size()];
-		for(int i = 0; i < resourceIds.size(); ++i)
-			resources[i] = pool.find(resourceIds.get(i));
-		return resources;
-	}
-	
-	public Task[] findTasksThatUseThisResource(BaseId resourceId)
-	{
-		Vector foundTasks = new Vector();
-		TaskPool pool = getTaskPool();
-		BaseId[] allTaskIds = pool.getIds();
-		for(int i = 0; i < allTaskIds.length; ++i)
-		{
-			Task task = pool.find(allTaskIds[i]);
-			if(task.getResourceIdList().contains(resourceId))
-				foundTasks.add(task);
-		}
-		
-		return (Task[])foundTasks.toArray(new Task[0]);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////

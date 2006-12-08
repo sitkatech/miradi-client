@@ -42,7 +42,6 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createStringField(Indicator.TAG_COST));
 		addField(createStringField(Indicator.TAG_FUNDING_SOURCE));
 		addField(createStringField(Indicator.TAG_WHEN));
-		addField(createListField(actions, Indicator.TAG_RESOURCE_IDS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));

@@ -7,16 +7,13 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.util.Vector;
 
-import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandEndTransaction;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -32,14 +29,14 @@ public class DeleteResource extends ObjectsDoer
 			return;
 		
 		ProjectResource resource = (ProjectResource)getObjects()[0];
-		
 		BaseId idToRemove = resource.getId();
-		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
 		
 		Vector dialogText = new Vector();
 		
-		if(tasksThatUseThisResource.length > 0)
-			dialogText.add("This resource is assigned to one or more tasks.");
+		// FIXME: Needs to look in Assignments
+//		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(idToRemove);
+//		if(tasksThatUseThisResource.length > 0)
+//			dialogText.add("This resource is assigned to one or more tasks.");
 
 		dialogText.add("\nAre you sure you want to delete this resource?");
 
@@ -49,13 +46,9 @@ public class DeleteResource extends ObjectsDoer
 
 		try
 		{
-			Command[] removeFromTasks = createCommandsToRemoveResourceFromTasks(idToRemove, tasksThatUseThisResource);
-			
 			getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
-				for(int i = 0; i < removeFromTasks.length; ++i)
-					getProject().executeCommand(removeFromTasks[i]);
 				int type = resource.getType();
 				BaseId id = idToRemove;
 				getProject().executeCommands(resource.createCommandsToClear());
@@ -77,15 +70,4 @@ public class DeleteResource extends ObjectsDoer
 		}
 	}
 
-	private Command[] createCommandsToRemoveResourceFromTasks(BaseId idToRemove, Task[] tasksThatUseThisResource) throws Exception
-	{
-		Command[] removeFromTasks = new Command[tasksThatUseThisResource.length];
-		for(int i = 0; i < removeFromTasks.length; ++i)
-		{
-			String tag = Task.TAG_RESOURCE_IDS;
-			Task task = tasksThatUseThisResource[i];
-			removeFromTasks[i] = CommandSetObjectData.createRemoveIdCommand(task, tag, idToRemove);
-		}
-		return removeFromTasks;
-	}
 }

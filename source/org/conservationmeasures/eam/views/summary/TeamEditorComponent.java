@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.summary;
 
 import org.conservationmeasures.eam.actions.ActionModifyResource;
 import org.conservationmeasures.eam.actions.ActionTeamCreateMember;
-import org.conservationmeasures.eam.actions.ActionTeamDeleteMember;
+import org.conservationmeasures.eam.actions.ActionTeamRemoveMember;
 import org.conservationmeasures.eam.actions.ActionViewPossibleTeamMembers;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -36,7 +36,7 @@ public class TeamEditorComponent extends ObjectTablePanel
 	void createButtonBar(Actions actions)
 	{
 		addButton(new UiButton(actions.get(ActionTeamCreateMember.class)));
-		addButton(actions.getObjectsAction(ActionTeamDeleteMember.class));
+		addButton(actions.getObjectsAction(ActionTeamRemoveMember.class));
 		addButton(actions.getObjectsAction(ActionModifyResource.class));
 		addButton(new UiButton(actions.get(ActionViewPossibleTeamMembers.class)));
 	}

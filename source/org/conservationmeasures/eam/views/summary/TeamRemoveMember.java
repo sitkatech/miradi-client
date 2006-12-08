@@ -5,15 +5,16 @@
  */
 package org.conservationmeasures.eam.views.summary;
 
-import org.conservationmeasures.eam.commands.CommandBeginTransaction;
-import org.conservationmeasures.eam.commands.CommandDeleteObject;
-import org.conservationmeasures.eam.commands.CommandEndTransaction;
+import java.text.ParseException;
+
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
+import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 
 public class TeamRemoveMember extends ObjectsDoer
@@ -38,9 +39,7 @@ public class TeamRemoveMember extends ObjectsDoer
 		clearSelection();
 		try
 		{
-			getProject().executeCommand(new CommandBeginTransaction());
-			deleteResourceIfNotUsedElsewhere(selectedId);
-			getProject().executeCommand(new CommandEndTransaction());
+			removeFromTeam(selectedId);
 		}
 		catch (Exception e)
 		{
@@ -49,14 +48,14 @@ public class TeamRemoveMember extends ObjectsDoer
 		}
 	}
 
-	private void deleteResourceIfNotUsedElsewhere(BaseId selectedId) throws CommandFailedException
+	private void removeFromTeam(BaseId selectedId) throws ParseException, CommandFailedException
 	{
-		Task[] tasksThatUseThisResource = getProject().findTasksThatUseThisResource(selectedId);
-		if (tasksThatUseThisResource.length==0)
-		{
-			ProjectResource resource = (ProjectResource)getProject().findObject(ObjectType.PROJECT_RESOURCE, selectedId);
-			getProject().executeCommands(resource.createCommandsToClear());
-			getProject().executeCommand(new CommandDeleteObject(ObjectType.PROJECT_RESOURCE, selectedId));
-		}
+		int type = ObjectType.PROJECT_RESOURCE;
+		String tag = ProjectResource.TAG_ROLE_CODES;
+		CodeList roles = new CodeList(getProject().getObjectData(type, selectedId, tag));
+		roles.removeCode(ResourceRoleQuestion.TeamMemberRoleCode);
+		CommandSetObjectData command = new CommandSetObjectData(type, selectedId, tag, roles.toString());
+		getProject().executeCommand(command);
 	}
+
 }

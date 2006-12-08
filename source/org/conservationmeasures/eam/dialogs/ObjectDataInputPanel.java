@@ -12,7 +12,6 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandCreateObject;
 import org.conservationmeasures.eam.commands.CommandDeleteObject;
@@ -24,7 +23,6 @@ import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectRatingField;
 import org.conservationmeasures.eam.dialogfields.ObjectReadonlyRatingField;
-import org.conservationmeasures.eam.dialogfields.ObjectResourceListField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -95,11 +93,6 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		JPanel panel = new JPanel(new BorderLayout());
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
-	}
-	
-	public ObjectDataInputField createListField(Actions actions, String tag)
-	{
-		return new ObjectResourceListField(actions, project, objectType, objectId, tag);
 	}
 	
 	public ObjectDataInputField createStringField(String tag)

@@ -27,7 +27,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_FACTOR_LABEL));
 		addField(createStringField(Task.TAG_LABEL));
-		addField(createListField(actions, Task.TAG_RESOURCE_IDS));
 		
 		updateFieldsFromProject();
 	}

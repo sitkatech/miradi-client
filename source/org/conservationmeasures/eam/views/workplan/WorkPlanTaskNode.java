@@ -12,7 +12,6 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -40,8 +39,6 @@ public class WorkPlanTaskNode extends WorkPlanTreeTableNode
 	{
 		if(column == 0)
 			return toString();
-		if(column == 1)
-			return getResourcesAsHtml();
 		return "";
 	}
 
@@ -78,11 +75,6 @@ public class WorkPlanTaskNode extends WorkPlanTreeTableNode
 	public BaseId getId()
 	{
 		return task.getId();
-	}
-	
-	String getResourcesAsHtml()
-	{
-		return EAMBaseObject.toHtml(project.getTaskResources(task));
 	}
 	
 	public boolean canInsertActivityHere()

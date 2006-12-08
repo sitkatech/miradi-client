@@ -37,7 +37,6 @@ public class MonitoringModel extends GenericTreeTableModel
 		"Status", 
 		"When", 
 		"Where", 
-		"ResourceIds", 
 		"Cost", 
 		"Funding",	
 	};

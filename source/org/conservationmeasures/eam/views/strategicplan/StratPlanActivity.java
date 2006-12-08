@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.views.strategicplan;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
-import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -33,8 +32,6 @@ public class StratPlanActivity extends TreeTableNode
 	{
 		if(column == StrategicPlanTreeTableModel.labelColumn)
 			return toString();
-		if(column == StrategicPlanTreeTableModel.resourcesColumn)
-			return getResourcesAsHtml();
 		return "";
 	}
 
@@ -68,11 +65,6 @@ public class StratPlanActivity extends TreeTableNode
 		return activity.getType();
 	}
 	
-	String getResourcesAsHtml()
-	{
-		return EAMBaseObject.toHtml(project.getTaskResources(activity));
-	}
-
 	Project project;
 	Task activity;
 }
