@@ -17,7 +17,7 @@ public class AccountingCodePoolTableModel extends ObjectPoolTableModel
 	}
 
 	private static final String[] COLUMN_TAGS = new String[] {
-		AccountingCode.TAG_LABEL,
 		AccountingCode.TAG_CODE,
+		AccountingCode.TAG_LABEL,
 	};
 }

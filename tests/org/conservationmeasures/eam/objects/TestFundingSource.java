@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestFundingSource extends EAMTestCase
+public class TestFundingSource extends ObjectTestCase
 {
 	public TestFundingSource(String name)
 	{
@@ -17,6 +17,7 @@ public class TestFundingSource extends EAMTestCase
 	
 	public void testFields() throws Exception
 	{
+		verifyFields(ObjectType.FUNDING_SOURCE);
 		verifyTagBehavior(FundingSource.TAG_LABEL);
 		verifyTagBehavior(FundingSource.TAG_LABEL);
 		verifyTagBehavior(FundingSource.TAG_COMMENTS);

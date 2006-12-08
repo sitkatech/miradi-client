@@ -6,9 +6,9 @@
 package org.conservationmeasures.eam.objects;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
 
-public class TestAccountingCode extends EAMTestCase
+public class TestAccountingCode extends ObjectTestCase
 {
 	public TestAccountingCode(String name)
 	{
@@ -17,6 +17,7 @@ public class TestAccountingCode extends EAMTestCase
 	
 	public void testFields() throws Exception
 	{
+		verifyFields(ObjectType.ACCOUNTING_CODE);
 		verifyTagBehavior(AccountingCode.TAG_LABEL);
 		verifyTagBehavior(AccountingCode.TAG_LABEL);
 		verifyTagBehavior(AccountingCode.TAG_COMMENTS);

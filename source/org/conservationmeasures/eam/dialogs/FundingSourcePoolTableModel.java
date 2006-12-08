@@ -17,7 +17,7 @@ public class FundingSourcePoolTableModel extends ObjectPoolTableModel
 	}
 
 	private static final String[] COLUMN_TAGS = new String[] {
-		FundingSource.TAG_LABEL,
 		FundingSource.TAG_CODE,
+		FundingSource.TAG_LABEL,
 	};
 }
