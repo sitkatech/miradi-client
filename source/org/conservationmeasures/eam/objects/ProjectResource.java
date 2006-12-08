@@ -50,9 +50,9 @@ public class ProjectResource extends EAMBaseObject
 		return EAM.text("Label|(Undefined Resource)");
 	}
 	
-	public double getCostUnit()
+	public double getCostPerUnit()
 	{
-		if (costUnit.toString().length() == 0)
+		if (costPerUnit.toString().length() == 0)
 			return 0;
 		return Double.parseDouble(costPerUnit.toString());
 	}

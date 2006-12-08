@@ -199,7 +199,7 @@ public class BudgetTableModel extends AbstractTableModel
 			return "";
 		
 		double units = new Double(getUnitsFor(getCorrectedRow(row), getUnitsColumn(col))).doubleValue();
-		double costPerUnit = currentResource.getCostUnit();
+		double costPerUnit = currentResource.getCostPerUnit();
 		return new Double(units * costPerUnit);
 	}
 
@@ -250,7 +250,7 @@ public class BudgetTableModel extends AbstractTableModel
 			return "";
 	
 		double totalUnits = Double.parseDouble(getTotalUnits(row).toString());
-		double costPerUnit = currentResource.getCostUnit();
+		double costPerUnit = currentResource.getCostPerUnit();
 		return new Double(totalUnits * costPerUnit);
 	}
 	
