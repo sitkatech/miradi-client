@@ -97,17 +97,12 @@ public class SummaryView extends TabbedView
 	
 	private void addSummaryDoersToMap()
 	{
-		teamRemoveMemberDoer = new TeamRemoveMember();
-		createResourceDoer = new CreateResource();
-		modifyResourceDoer = new ModifyResource();
-		deleteResourceDoer = new DeleteResource();
-		
 		addDoerToMap(ActionViewPossibleTeamMembers.class, new ViewPossibleTeamMembers());
 		addDoerToMap(ActionTeamCreateMember.class, new TeamCreateMemberDoer());
-		addDoerToMap(ActionTeamDeleteMember.class, teamRemoveMemberDoer);
-		addDoerToMap(ActionCreateResource.class, createResourceDoer);
-		addDoerToMap(ActionModifyResource.class, modifyResourceDoer);
-		addDoerToMap(ActionDeleteResource.class, deleteResourceDoer);
+		addDoerToMap(ActionTeamDeleteMember.class, new TeamRemoveMember());
+		addDoerToMap(ActionCreateResource.class, new CreateResource());
+		addDoerToMap(ActionModifyResource.class, new ModifyResource());
+		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 	}
 	
 	public void jump(Class stepMarker) throws Exception
@@ -125,8 +120,4 @@ public class SummaryView extends TabbedView
 	RARESummaryPanel rareSummaryPanel;
 	FOSSummaryPanel fosSummaryPanel;
 	
-	TeamRemoveMember teamRemoveMemberDoer;
-	CreateResource createResourceDoer;
-	ModifyResource modifyResourceDoer;
-	DeleteResource deleteResourceDoer;
 }
