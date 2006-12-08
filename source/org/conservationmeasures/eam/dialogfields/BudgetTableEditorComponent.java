@@ -31,7 +31,7 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		super(new BorderLayout());
 		
 		//FIXME budget code - remove, added just to display bigger columns
-		Dimension dimension = new Dimension(1200,400);
+		Dimension dimension = new Dimension(900,400);
 		setPreferredSize(dimension);
 		setMinimumSize(dimension);
 		
