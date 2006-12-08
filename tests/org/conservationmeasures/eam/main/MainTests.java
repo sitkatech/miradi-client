@@ -37,6 +37,7 @@ import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeStrategy;
 import org.conservationmeasures.eam.diagram.factortypes.TestFactorTypeTarget;
 import org.conservationmeasures.eam.ids.TestIdList;
 import org.conservationmeasures.eam.objectdata.TestDateData;
+import org.conservationmeasures.eam.objects.TestAccountingCode;
 import org.conservationmeasures.eam.objects.TestActivityInsertionPoint;
 import org.conservationmeasures.eam.objects.TestAssignment;
 import org.conservationmeasures.eam.objects.TestCause;
@@ -45,6 +46,7 @@ import org.conservationmeasures.eam.objects.TestDiagramFactorLink;
 import org.conservationmeasures.eam.objects.TestFactor;
 import org.conservationmeasures.eam.objects.TestFactorCluster;
 import org.conservationmeasures.eam.objects.TestFactorLink;
+import org.conservationmeasures.eam.objects.TestFundingSource;
 import org.conservationmeasures.eam.objects.TestGoal;
 import org.conservationmeasures.eam.objects.TestIndicator;
 import org.conservationmeasures.eam.objects.TestObjectManager;
@@ -184,6 +186,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjectReferenceList.class));
 		suite.addTest(new TestSuite(TestAssignment.class));
 		suite.addTest(new TestSuite(TestProjectResource.class));
+		suite.addTest(new TestSuite(TestFundingSource.class));
+		suite.addTest(new TestSuite(TestAccountingCode.class));
+		
 		
 		
 		// commands package
