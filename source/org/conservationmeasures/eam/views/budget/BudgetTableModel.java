@@ -38,11 +38,16 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isTotalColumn(col))
 			return false;
 		
+		if (isCostTotalsColumn(col))
+			return false;
+		
 		if (isLabelColumn(col))
 			return false;
 		
 		if (isOdd(row))
 			return false;
+		
+		
 			
 		return true;
 	}
@@ -100,7 +105,12 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public int getTotalsColumnIndex()
 	{
-		return getColumnCount() - 1;	
+		return getColumnCount() - 2;	
+	}
+	
+	private int getCostTotalsColumnIndex()
+	{
+		return getColumnCount() - 1;
 	}
 	
 	public int getResourcesColumnIndex()
@@ -117,7 +127,10 @@ public class BudgetTableModel extends AbstractTableModel
 			return "";
 		
 		if (isTotalColumn(col))
-			return "Totals";
+			return "Unit Totals";
+	
+		if (isCostTotalsColumn(col))
+			return "Cost Totals";
 		
 		if (isUnitsColumn(col))
 			return dateRanges[getUnitsColumn(col)].getLabel();
@@ -151,7 +164,10 @@ public class BudgetTableModel extends AbstractTableModel
 		
 		if (isTotalColumn(col))
 			return getTotalUnits(getCorrectedRow(row));
-	
+		
+		if (isCostTotalsColumn(col))
+			return getTotalCost(getCorrectedRow(row));
+		
 		if (isOdd(row) && (isCostColumn(col)))
 			return getCost(row, col);
 		
@@ -166,6 +182,11 @@ public class BudgetTableModel extends AbstractTableModel
 		return col == getResourcesColumnIndex();
 	}
 
+	private boolean isCostTotalsColumn(int col)
+	{
+		return col == getCostTotalsColumnIndex();
+	}
+	
 	private boolean isTotalColumn(int col)
 	{
 		return col == getTotalsColumnIndex();
@@ -222,6 +243,17 @@ public class BudgetTableModel extends AbstractTableModel
 		return "Units";
 	}
 	
+	private Object getTotalCost(int row)
+	{
+		ProjectResource currentResource = getCurrentResource(row);
+		if (currentResource == null)
+			return "";
+	
+		double totalUnits = Double.parseDouble(getTotalUnits(row).toString());
+		double costPerUnit = currentResource.getCostUnit();
+		return new Double(totalUnits * costPerUnit);
+	}
+	
 	private Object getTotalUnits(int row)
 	{
 		double totalUnits = 0.0;
@@ -235,7 +267,7 @@ public class BudgetTableModel extends AbstractTableModel
 			EAM.logException(e);
 		}
 
-		return Double.toString(totalUnits);
+		return new Double(totalUnits);
 	}
 
 	//FIXME budget code - dont return string just the value
@@ -384,7 +416,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private static final int COST_UNIT_LABEL_COLUMN = 3;
 	private static final int RESOURCE_COLUMN_COUNT = 1;
-	private static final int TOTALS_COLUMNS_COUNT = 1;
+	private static final int TOTALS_COLUMNS_COUNT = 2;
 	private static final int STATIC_LABEL_COLUMN_COUNT = 3;
 	private static final int EXTRA_COLUMN_COUNT = RESOURCE_COLUMN_COUNT + 
 												  TOTALS_COLUMNS_COUNT + 
