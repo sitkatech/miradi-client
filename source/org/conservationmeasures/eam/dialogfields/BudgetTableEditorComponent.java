@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.Box;
 
@@ -28,6 +29,12 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	public BudgetTableEditorComponent(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponentToUse) throws Exception
 	{
 		super(new BorderLayout());
+		
+		//FIXME budget code - remove, added just to display bigger columns
+		Dimension dimension = new Dimension(1200,400);
+		setPreferredSize(dimension);
+		setMinimumSize(dimension);
+		
 		project = projectToUse;
 		treeTableComponent = treeTableComponentToUse;
 
