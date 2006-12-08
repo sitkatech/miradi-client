@@ -39,19 +39,28 @@ public class DateRangeEffortList
 		data = new Vector(listToUse);
 	}
 	
-	public double getTotalUnitsFor(DateRange dateRangeToUse)
+	public DateRangeEffort getEffortForDateRange(DateRange dateRangeToUse)
 	{
-		double total = 0;
-		
 		for (int i = 0; i < data.size(); i++)
 		{
-			//TODO budget data must check for end date too.
 			DateRangeEffort dateRangeEffort = (DateRangeEffort)data.get(i);
-			DateRange ourDateRange = dateRangeEffort.getDateRange();
-			if (ourDateRange.equals(dateRangeToUse.getStartDate()))
-					total += dateRangeEffort.getUnitQuantity();
+			DateRange dateRange = dateRangeEffort.getDateRange();
+			if (dateRange.equals(dateRangeToUse))
+				return dateRangeEffort;
 		}
-		return total;
+
+		return null;
+	}
+
+	
+	public double getUnitsForDateRange(DateRange dateRangeToUse)
+	{
+		
+		DateRangeEffort effort = getEffortForDateRange(dateRangeToUse);
+		if (effort != null)
+			return effort.getUnitQuantity();
+		
+		return 0;
 	}
 	
 	public double getTotalUnitQuantity()
@@ -78,7 +87,6 @@ public class DateRangeEffortList
 		}
 		add(dateRangeEffortToUse);
 	}
-
 
 	public EnhancedJsonObject toJson()
 	{
@@ -131,6 +139,5 @@ public class DateRangeEffortList
 	}
 	
 	private Vector data;
-	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";
-	
+	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";	
 }
