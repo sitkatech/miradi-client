@@ -176,8 +176,9 @@ public class BudgetTableModel extends AbstractTableModel
 		ProjectResource currentResource = getCurrentResource(getCorrectedRow(row));
 		if (currentResource == null)
 			return "";
+		
 		double units = new Double(getUnitsFor(getCorrectedRow(row), getUnitsColumn(col))).doubleValue();
-		double costPerUnit = new Double(currentResource.getData(ProjectResource.TAG_COST_PER_UNIT)).doubleValue();
+		double costPerUnit = currentResource.getCostUnit();
 		return new Double(units * costPerUnit);
 	}
 
@@ -244,12 +245,7 @@ public class BudgetTableModel extends AbstractTableModel
 		try
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			//if (effortList.size() <= timeIndex)
-			//	return Double.toString(units);
-
 			units = effortList.getUnitsForDateRange(dateRanges[timeIndex]);
-			//FIXME budget code - remove  comment
-			//units = effortList.get(timeIndex).getUnitQuantity();
 		}
 		catch (Exception e)
 		{
