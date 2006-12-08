@@ -5,11 +5,9 @@
  */
 package org.conservationmeasures.eam.utils;
 
-
 public class DateRangeEffort
 {
-	
-	public DateRangeEffort(String costUnitToUse, float unitQuantityToUse, DateRange dateRangeToUse)
+	public DateRangeEffort(String costUnitToUse, double unitQuantityToUse, DateRange dateRangeToUse)
 	{
 		costUnitCode = costUnitToUse;
 		numberOfUnits = unitQuantityToUse;
@@ -48,6 +46,16 @@ public class DateRangeEffort
 	public DateRange getDateRange()
 	{
 		return dateRange;
+	}
+	
+	public void setCostUnit(String costUnitCodeToUse)
+	{
+		costUnitCode = costUnitCodeToUse;
+	}
+	
+	public void setUnitQuantity(double unitQuantity)
+	{
+		numberOfUnits = unitQuantity;
 	}
 	
 	public String toString()
