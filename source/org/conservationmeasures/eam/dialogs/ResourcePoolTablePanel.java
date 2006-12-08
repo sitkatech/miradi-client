@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import javax.swing.ListSelectionModel;
-
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.Actions;
@@ -23,8 +21,6 @@ public class ResourcePoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 				new ResourcePoolTable(new ResourcePoolTableModel(project)),
 				(MainWindowAction)actions.get(ActionCreateResource.class),
 				(ObjectsAction)actions.get(ActionDeleteResource.class));
-
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 	}
 	
 }
