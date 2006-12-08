@@ -106,7 +106,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			Stroke stroke = getSelectionStroke();
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2, rect, Color.BLUE);
+			drawBorder(g2, rect, Color.BLACK);
 		}
 	}
 
@@ -117,9 +117,9 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	
 	Stroke getSelectionStroke()
 	{
-		float[] dash = { 5f, 5f };
+		float[] dash = { 20f, 5f };
 
-		Stroke SELECTION_STROKE = new BasicStroke(borderThickness + 5,
+		Stroke SELECTION_STROKE = new BasicStroke(borderThickness + 2,
 				BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
 		
 		return SELECTION_STROKE;
