@@ -38,7 +38,7 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getTotalsColumnIndex())
 			return false;
 		
-		if (isOddRow(row))
+		if (isOdd(row))
 			return false;
 			
 		return true;
@@ -92,7 +92,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public int getColumnCount()
 	{
-		return dateRanges.length + EXTRA_COLUMN_COUNT;
+		return (dateRanges.length * 2) + EXTRA_COLUMN_COUNT;
 	}
 	
 	public int getTotalsColumnIndex()
@@ -113,13 +113,21 @@ public class BudgetTableModel extends AbstractTableModel
 		if (col == getTotalsColumnIndex())
 			return "Totals";
 		
-		return dateRanges[col - 1].getLabel();
+		if (isUnitsColumn(col))
+		  return dateRanges[getUnitsColumn(col)].getLabel();
+		
+		return "";
+	}
+
+	private boolean isUnitsColumn(int col)
+	{
+		return ! isOdd(col + NUM_OF_RESOURCE_COLUMNS);
 	}
 	
 	public Object getValueAt(int row, int col)
 	{
 		
-		if (isOddRow(row))
+		if (isOdd(row))
 			return new String("");
 			
 		row = getCorrectedRow(row);
@@ -129,8 +137,16 @@ public class BudgetTableModel extends AbstractTableModel
 		
 		if (col == getTotalsColumnIndex())
 			return getTotalUnits(row);
+		
+		if (isUnitsColumn(col))
+			return getUnitsFor(row, getUnitsColumn(col));
 
-		return getUnitsFor(row, col - 1);
+		return new String();
+	}
+
+	private int getUnitsColumn(int col)
+	{
+		return (col + 1) / 2 - 1;
 	}
 	
 	private Object getTotalUnits(int row)
@@ -155,6 +171,9 @@ public class BudgetTableModel extends AbstractTableModel
 		try
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList(row);
+			if (effortList.size() <= timeIndex)
+				return Double.toString(units);
+			
 			units = effortList.get(timeIndex).getUnitQuantity();
 		}
 		catch (Exception e)
@@ -215,7 +234,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public void setValueAt(Object value, int row, int col)
 	{
-		if (isOddRow(row))
+		if (isOdd(row))
 			return;
 		
 		row = getCorrectedRow(row); 
@@ -229,8 +248,9 @@ public class BudgetTableModel extends AbstractTableModel
 			setResource(value, row);
 			return;
 		}
-		if (col < 5)
-			setUnits(value, row, col - 1);
+		
+		if (isUnitsColumn(col))
+			setUnits(value, row, getUnitsColumn(col));
 	}
 
 	public int getCorrectedRow(int row)
@@ -238,9 +258,9 @@ public class BudgetTableModel extends AbstractTableModel
 		return row /= 2;
 	}
 
-	boolean isOddRow(int row)
+	boolean isOdd(int value)
 	{
-		return row % 2 != 0;
+		return value % 2 != 0;
 	}
 
 	private void setUnits(Object value, int row, int timeIndex)
