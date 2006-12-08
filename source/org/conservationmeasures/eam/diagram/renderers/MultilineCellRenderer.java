@@ -96,20 +96,33 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			g2.setStroke(stroke);
 			drawBorder(g2, rect, Color.BLACK);
 		}
+		
 		if (selected)
 		{
+			if (graph.getSelectionCount()>1) 
+				graph.setHandleSize(0);
+			
 			Color color = graph.getHighlightColor();
-			Stroke stroke = GraphConstants.SELECTION_STROKE;
+			Stroke stroke = getSelectionStroke();
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2, rect, Color.BLACK);
+			drawBorder(g2, rect, Color.BLUE);
 		}
 	}
 
 	Stroke getStroke()
 	{
-		Stroke stroke = new BasicStroke(borderThickness);
-		return stroke;
+		return  new BasicStroke(borderThickness);
+	}
+	
+	Stroke getSelectionStroke()
+	{
+		float[] dash = { 5f, 5f };
+
+		Stroke SELECTION_STROKE = new BasicStroke(borderThickness + 5,
+				BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
+		
+		return SELECTION_STROKE;
 	}
 
 	Color getFillColor()
