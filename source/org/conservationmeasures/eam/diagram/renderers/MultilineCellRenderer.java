@@ -97,13 +97,13 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			drawBorder(g2, rect, Color.BLACK);
 		}
 		
+		if (graph.getSelectionCount()>1) 
+			graph.setHandleSize(0);
+		else 
+			graph.setHandleSize(4);
+		
 		if (selected)
 		{
-			if (graph.getSelectionCount()>1) 
-				graph.setHandleSize(0);
-			else 
-				graph.setHandleSize(4);
-			
 			Color color = graph.getHighlightColor();
 			Stroke stroke = getSelectionStroke();
 			g2.setColor(color);
