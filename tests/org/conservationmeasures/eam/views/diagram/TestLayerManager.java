@@ -75,8 +75,8 @@ public class TestLayerManager extends EAMTestCase
 		LayerManager manager = new LayerManager();
 		assertTrue("all nodes not visible to start?", manager.areAllNodesVisible());
 		IdList idsToHide = new IdList();
-		idsToHide.add(target.getDiagramFactorId());
-		idsToHide.add(factor.getDiagramFactorId());
+		idsToHide.add(target.getWrappedId());
+		idsToHide.add(factor.getWrappedId());
 		manager.setHiddenIds(idsToHide);
 		assertFalse("thinks all nodes are visible?", manager.areAllNodesVisible());
 		for(int i = 0; i < idsToHide.size(); ++i)
