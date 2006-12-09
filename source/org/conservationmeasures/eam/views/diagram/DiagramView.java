@@ -286,14 +286,14 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		{
 			FactorId nodeId = new FactorId(factorIds.get(i).asInt());
 			Factor node = diagramModel.getDiagramFactorByWrappedId(nodeId).getUnderlyingObject();
-			FactorSet possibleDraftInterventionIds = diagramModel.getDirectlyLinkedUpstreamNodes(node);
-			Iterator iter = possibleDraftInterventionIds.iterator();
+			FactorSet possibleDraftStrategies = diagramModel.getDirectlyLinkedUpstreamNodes(node);
+			Iterator iter = possibleDraftStrategies.iterator();
 			while(iter.hasNext())
 			{
-				FactorId possibleInterventionId = ((Factor)iter.next()).getModelNodeId();
-				if(factorIds.contains(possibleInterventionId))
+				FactorId possibleStrategyId = ((Factor)iter.next()).getModelNodeId();
+				if(factorIds.contains(possibleStrategyId))
 					continue;
-				Factor possibleIntervention = getProject().findNode(possibleInterventionId);
+				Factor possibleIntervention = getProject().findNode(possibleStrategyId);
 				if(possibleIntervention.isStrategy() && possibleIntervention.isStatusDraft())
 					draftsToAdd.add(possibleIntervention.getId());
 			}
