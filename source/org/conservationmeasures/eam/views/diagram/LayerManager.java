@@ -28,7 +28,7 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramFactor node)
 	{
-		if(hiddenIds.contains(node.getDiagramFactorId()))
+		if(hiddenIds.contains(node.getWrappedId()))
 			return false;
 		
 		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
