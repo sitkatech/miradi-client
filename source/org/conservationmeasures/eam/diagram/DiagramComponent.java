@@ -12,6 +12,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.Action;
@@ -35,6 +37,7 @@ import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.cells.DiagramTarget;
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
+import org.conservationmeasures.eam.diagram.cells.LinkCell;
 import org.conservationmeasures.eam.main.AppPreferences;
 import org.conservationmeasures.eam.main.ComponentWithContextMenu;
 import org.conservationmeasures.eam.main.KeyBinder;
@@ -44,11 +47,13 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.BufferedImageFactory;
 import org.conservationmeasures.eam.utils.LocationHolder;
 import org.jgraph.JGraph;
+import org.jgraph.event.GraphSelectionEvent;
+import org.jgraph.event.GraphSelectionListener;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.GraphLayoutCache;
 import org.martus.swing.Utilities;
 
-public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder
+public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
 	public DiagramComponent()
 	{
@@ -64,6 +69,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		setGridMode(JGraph.CROSS_GRID_MODE);
 		setSelectionModel(new EAMGraphSelectionModel(this));
 		defaultBackgroundColor = getBackground();
+		addGraphSelectionListener(this);
 	}    
 
 	public DiagramComponent(MainWindow mainWindow)
@@ -309,6 +315,50 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		setBackground(defaultBackgroundColor);
 	}
+
+	public void valueChanged(GraphSelectionEvent e)
+	{
+		Object[] cells = e.getCells();
+		for(int i = 0; i < cells.length; ++i)
+		{
+			EAMGraphCell cell = (EAMGraphCell)cells[i];
+			if(cell.isFactor())
+			{
+				GraphLayoutCache glc = getGraphLayoutCache();
+				repaintLinks(glc.getOutgoingEdges(cell, null, true, false));
+				repaintLinks(glc.getIncomingEdges(cell, null, true, false));
+			}
+			else if(cell.isFactorLink())
+			{
+				Vector thisLink = new Vector();
+				thisLink.add(cell);
+				repaintLinks(thisLink);
+			}
+		}
+	}
+
+	private void repaintLinks(List edges)
+	{
+		GraphLayoutCache glc = getGraphLayoutCache();
+		Iterator iter = edges.iterator();
+		while(iter.hasNext())
+		{
+			LinkCell link = (LinkCell)iter.next();
+			CellView view = glc.getMapping(link, false);
+			if(view != null)
+			{
+				repaint(view.getBounds().getBounds());
+				link.update(this);
+				view.update();
+				repaint(view.getBounds().getBounds());
+			}
+		}
+		// TODO: This shouldn't be necessary, but merely repainting the bounds of
+		// the individual links is not enough for the "Lake Ontario". When clicking 
+		// on the links in the lower center and right, they are not fully repainted
+		repaint(getBounds());
+	}
+
 
 	/*
 	 * NOTE: The following method is a refactored version of what is in the JGraph

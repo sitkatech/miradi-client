@@ -7,6 +7,8 @@ package org.conservationmeasures.eam.diagram.cells;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.diagram.DiagramComponent;
+import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
 import org.jgraph.graph.Edge;
@@ -47,6 +49,25 @@ public class LinkCell extends EAMGraphCell implements Edge
 	{
 		return link;
 	}
+	
+	public void update(DiagramComponent diagram)
+	{
+		boolean linksVisible = diagram.getProject().getLayerManager().areFactorLinksVisible();
+		boolean isSelected = diagram.isCellSelected(this);
+		boolean isAttachedFactorSelected = diagram.isCellSelected(getFrom()) || diagram.isCellSelected(getTo());
+		if(linksVisible || isSelected || isAttachedFactorSelected)
+			setTail(GraphConstants.ARROW_NONE);
+		else
+			setTail(ArrowLineRenderer.ARROW_JUST_LINE);
+	}
+	
+	private void setTail(int arrowStyle)
+	{
+		GraphConstants.setLineBegin(getAttributes(), arrowStyle);
+		GraphConstants.setBeginFill(getAttributes(), false);
+		GraphConstants.setBeginSize(getAttributes(), 10);
+		
+	}
 
 	// BEGIN Edge Interface
 	public Object getSource()
@@ -80,10 +101,6 @@ public class LinkCell extends EAMGraphCell implements Edge
 	    GraphConstants.setGradientColor(getAttributes(), Color.BLACK); //Windows 2000 quirk required to see line.
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
-// TODO: Only turn this on for stubble
-//		GraphConstants.setLineBegin(getAttributes(), ArrowLineRenderer.ARROW_JUST_LINE);
-//		GraphConstants.setBeginFill(getAttributes(), false);
-//		GraphConstants.setBeginSize(getAttributes(), 10);
 	}
 
 

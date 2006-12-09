@@ -14,6 +14,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.font.TextLayout;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
@@ -25,6 +26,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
+import org.jgraph.graph.GraphConstants;
 import org.martus.swing.Utilities;
 
 public class ArrowLineRenderer extends EdgeRenderer
@@ -36,51 +38,79 @@ public class ArrowLineRenderer extends EdgeRenderer
 		ArrowLineRenderer renderer = 
 			(ArrowLineRenderer)super.getRendererComponent(graphToUse, cellView, sel, hasFocus, previewMode);
 		
-		cell = (LinkCell)cellView.getCell();
-		if(sel)
+		if(sel || isAttachedToSelectedFactor())
 		{
 			renderer.lineWidth = 4;
 		}
 
-		DiagramComponent diagram = (DiagramComponent)graphToUse;
-		isVisible = diagram.areLinkagesVisible();
-		stressText = cell.getFactorLink().getStressLabel();
+		stressText = getLinkCell().getFactorLink().getStressLabel();
 
 		return renderer;
 	}
 
 	private LinkCell getLinkCell()
 	{
-		return cell;
+		return (LinkCell)view.getCell();
 	}
 	
 	public void paint(Graphics g)
 	{
-		if(!isVisible)
-			return;
-		
 		super.paint(g);
-		drawStress(g);
-		
+		if(isArrowBodyVisible())
+			drawStress(g);
 	}
-	
 	
 	
 	protected Shape createShape()
 	{
 		Shape shape = super.createShape();
-		// To prevent drawing the line body, uncomment the following
-		//view.lineShape = null;
+		DiagramComponent diagram = getDiagram();
+		if(diagram == null)
+			return shape;
+		
+		if(isArrowBodyVisible())
+			return shape;
+		
+		GeneralPath pathShape = (GeneralPath)shape;
+		pathShape.reset();
+		if(view.beginShape != null)
+			pathShape.append(view.beginShape, false);
+		if(view.endShape != null)
+			pathShape.append(view.endShape, false);
+		view.lineShape = null;
 		return shape;
+	}
+
+	private boolean isArrowBodyVisible()
+	{
+		return !(GraphConstants.getLineBegin(getLinkCell().getAttributes()) == ARROW_JUST_LINE);
+	}
+
+	private DiagramComponent getDiagram()
+	{
+		if(graph == null)
+			return null;
+		DiagramComponent diagram = (DiagramComponent)graph.get();
+		return diagram;
+	}
+
+	private boolean isAttachedToSelectedFactor()
+	{
+		DiagramComponent diagram = getDiagram();
+		if(diagram == null)
+			return false;
+		
+		boolean isFromFactorSelected = diagram.isCellSelected(getLinkCell().getFrom());
+		boolean isToFactorSelected = diagram.isCellSelected(getLinkCell().getTo());
+		return (isFromFactorSelected || isToFactorSelected);
 	}
 
 	protected Shape createLineEnd(int size, int style, Point2D src, Point2D dst)
 	{
-		if(style != ARROW_JUST_LINE)
+		DiagramComponent diagram = getDiagram();
+		if(style != ARROW_JUST_LINE || src == null || dst == null || diagram == null)
 			return super.createLineEnd(size, style, src, dst);
 		
-		if (src == null || dst == null)
-			return null;
 		int d = (int) Math.max(1, dst.distance(src));
 		int ax = (int) -(size * (dst.getX() - src.getX()) / d);
 		int ay = (int) -(size * (dst.getY() - src.getY()) / d);
@@ -155,7 +185,6 @@ public class ArrowLineRenderer extends EdgeRenderer
 	private static final int CUSHION = 5;
 	public static final int ARROW_JUST_LINE = 23253;
 	
-	LinkCell cell;
 	boolean isVisible;
 	String stressText;
 }
