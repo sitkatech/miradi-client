@@ -99,7 +99,7 @@ public class CodeListComponent extends JPanel implements ItemListener
 		}
 	}
 	
-	public void setEnable(boolean isValidObject)
+	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
 		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
