@@ -38,7 +38,7 @@ public class ObjectCodeListField extends ObjectDataInputField implements ListSel
 	
 	public void updateEditableState()
 	{
-		component.enable(isValidObject());
+		component.setEnable(isValidObject());
 	}
 	
 	public void valueChanged(ListSelectionEvent arg0)

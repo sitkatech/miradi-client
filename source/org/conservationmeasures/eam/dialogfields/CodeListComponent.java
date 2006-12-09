@@ -99,10 +99,10 @@ public class CodeListComponent extends JPanel implements ItemListener
 		}
 	}
 	
-	public void enable(boolean isValidObject)
+	public void setEnable(boolean isValidObject)
 	{
 		//FIXME: For some reason this code does not disable the check boxes even when isValidObject=false
-		super.enable(isValidObject);
+		super.setEnabled(isValidObject);
 	}
 	
 
