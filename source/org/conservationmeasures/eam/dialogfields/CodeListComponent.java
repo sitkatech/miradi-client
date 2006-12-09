@@ -60,12 +60,12 @@ public class CodeListComponent extends JPanel implements ItemListener
 	public String getText()
 	{
 		CodeList codes = new CodeList();
-		for (int codeIndex = 0; codeIndex<checkBoxes.length; ++codeIndex )
+		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
 		{
-			JCheckBox checkBox = checkBoxes[codeIndex];
+			JCheckBox checkBox = checkBoxes[checkBoxIndex];
 			if (checkBox.isSelected())
 			{
-				ChoiceItem choiceItem = choiceItems[codeIndex];
+				ChoiceItem choiceItem = choiceItems[checkBoxIndex];
 				codes.add(choiceItem.getCode());
 			}
 		}
@@ -84,8 +84,8 @@ public class CodeListComponent extends JPanel implements ItemListener
 			{
 				checkBoxes[choiceIndex].setSelected(false);
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
-					if (codes.contains(choiceItem.getCode()))
-						checkBoxes[choiceIndex].setSelected(true);
+				boolean isChecked  = codes.contains(choiceItem.getCode());
+				checkBoxes[choiceIndex].setSelected(isChecked);
 			}
 		}
 		catch(Exception e)
