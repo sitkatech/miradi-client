@@ -74,18 +74,17 @@ public class CodeListComponent extends JPanel implements ItemListener
 	public void setText(String codesToUse)
 	{
 		skipNotice=true;
-		clearCheckBoxes();
 		try
 		{
 			CodeList codes = new CodeList(codesToUse);
-			for(int codeIndex = 0; codeIndex < codes.size(); ++codeIndex)
+
+			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
-				for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
-				{
-					ChoiceItem choiceItem = choiceItems[choiceIndex];
+				checkBoxes[choiceIndex].setSelected(false);
+				ChoiceItem choiceItem = choiceItems[choiceIndex];
+				for(int codeIndex = 0; codeIndex < codes.size(); ++codeIndex)
 					if (codes.get(codeIndex).equals(choiceItem.getCode()))
 						checkBoxes[choiceIndex].setSelected(true);
-				}
 			}
 		}
 		catch(Exception e)
@@ -99,22 +98,13 @@ public class CodeListComponent extends JPanel implements ItemListener
 		}
 	}
 	
-	
 	public void enable(boolean isValidObject)
 	{
 		//FIXME: For some reason this code does not disable the check boxes even when isValidObject=false
 		super.enable(isValidObject);
 	}
 	
-	
-	public void clearCheckBoxes()
-	{
-		for (int i=0; i<checkBoxes.length; ++i)
-		{
-			checkBoxes[i].setSelected(false);
-		}
-	}
-	
+
 	private JCheckBox checkBoxes[];
 	private ChoiceItem choiceItems[];
 	private ListSelectionListener listSelectionListener;
