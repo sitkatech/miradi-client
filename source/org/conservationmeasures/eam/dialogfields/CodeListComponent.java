@@ -43,7 +43,9 @@ public class CodeListComponent extends JPanel implements ItemListener
 	{
 	    if (e.getStateChange() == ItemEvent.SELECTED || 
 	    	e.getStateChange() == ItemEvent.DESELECTED)
+	    {
 	    	valueChanged();
+	    }
 	}
 	
 	public void valueChanged()
@@ -82,8 +84,7 @@ public class CodeListComponent extends JPanel implements ItemListener
 			{
 				checkBoxes[choiceIndex].setSelected(false);
 				ChoiceItem choiceItem = choiceItems[choiceIndex];
-				for(int codeIndex = 0; codeIndex < codes.size(); ++codeIndex)
-					if (codes.get(codeIndex).equals(choiceItem.getCode()))
+					if (codes.contains(choiceItem.getCode()))
 						checkBoxes[choiceIndex].setSelected(true);
 			}
 		}
