@@ -568,11 +568,13 @@ public class Project
 
 	public void addCommandExecutedListener(CommandExecutedListener listener)
 	{
+		EAM.logVerbose("addCommandExecutedListener: " + listener.getClass());
 		commandExecutedListeners.add(listener);
 	}
 	
 	public void removeCommandExecutedListener(CommandExecutedListener listener)
 	{
+		EAM.logVerbose("removeCommandExecutedListener: " + listener.getClass());
 		if(!commandExecutedListeners.contains(listener))
 			EAM.logWarning("removeCommandExecutedListener not in list: " + listener.getClass());
 		commandExecutedListeners.remove(listener);
