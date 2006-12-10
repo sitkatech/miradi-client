@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Collections;
@@ -12,7 +13,9 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
 
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -36,8 +39,28 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		columnHeader.setReorderingAllowed(true);
 		ColumnSortListener sortListener = new ColumnSortListener(this);
 		columnHeader.addMouseListener(sortListener);
-		
+		modelToUse.addTableModelListener(this);
 		resizeTable(4);
+	}
+	
+	public void tableChanged(TableModelEvent e)
+	{
+		super.tableChanged(e);
+		if (e.getType()==TableModelEvent.INSERT)
+		{
+			SwingUtilities.invokeLater(new scrollTOnewRow());
+		}
+	}
+	
+	private class  scrollTOnewRow implements Runnable
+	{
+		public void run()
+		{
+			Rectangle rect = getCellRect(getRowCount()-1, 0, true);
+			scrollRectToVisible(rect);
+			setRowSelectionInterval(getRowCount()-1, getRowCount()-1);
+		}
+		
 	}
 	
 	public ObjectTableModel getObjectTableModel()

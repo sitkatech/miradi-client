@@ -107,8 +107,15 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		{
 			newList.add(availableIds.get(i));
 		}
+		
+		int priorCount = rowObjectIds.size();
+		
 		rowObjectIds = newList;
-		fireTableDataChanged();
+		
+		if (newList.size() > priorCount)
+			fireTableRowsInserted(newList.size()-1, newList.size()-1);
+		else
+			fireTableDataChanged();
 	}
 
 
