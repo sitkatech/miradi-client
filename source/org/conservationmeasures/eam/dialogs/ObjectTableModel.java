@@ -110,6 +110,10 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		
 		int priorCount = rowObjectIds.size();
 		
+		//NOTE: Assumes one row at a time insert or delete
+		if (newList.size() == priorCount) 
+			return;
+		
 		rowObjectIds = newList;
 		
 		if (newList.size() > priorCount)
