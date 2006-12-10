@@ -48,11 +48,11 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		super.tableChanged(e);
 		if (e.getType()==TableModelEvent.INSERT)
 		{
-			SwingUtilities.invokeLater(new scrollTOnewRow());
+			SwingUtilities.invokeLater(new ScrollToNewRow());
 		}
 	}
 	
-	private class  scrollTOnewRow implements Runnable
+	private class  ScrollToNewRow implements Runnable
 	{
 		public void run()
 		{
