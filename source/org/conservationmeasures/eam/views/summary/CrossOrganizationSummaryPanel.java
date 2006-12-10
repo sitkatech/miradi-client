@@ -29,6 +29,12 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	public void dispose()
+	{
+		super.dispose();
+		teamEditorComponent.dispose();
+	}
+
 	private void addFieldTeam(MainWindow mainWindowToUse)
 	{
 		addLabel(EAM.text("Label|Team Members:"));
