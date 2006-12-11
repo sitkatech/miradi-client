@@ -57,7 +57,6 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
-import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
@@ -92,7 +91,6 @@ public class Project
 		diagramModel = new DiagramModel(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
-		strategyRatingFramework = new StrategyRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
 		
 		diagramSaver = new DiagramSaver();
@@ -211,11 +209,6 @@ public class Project
 		return threatRatingFramework;
 	}
 	
-	public StrategyRatingFramework getStrategyRatingFramework()
-	{
-		return strategyRatingFramework;
-	}
-	
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
@@ -330,7 +323,6 @@ public class Project
 	private void createDefaultObjectsIfNeeded() throws Exception
 	{
 		threatRatingFramework.createDefaultObjectsIfNeeded();
-		strategyRatingFramework.createDefaultObjectsIfNeeded();
 	}
 	
 	private void createProjectMetadata() throws Exception
@@ -387,12 +379,6 @@ public class Project
 		getThreatRatingFramework().load();
 	}
 	
-	private void loadStrategyRatingFramework() throws Exception
-	{
-		EnhancedJsonObject json = getDatabase().readRawStrategyRatingFramework();
-		strategyRatingFramework = new StrategyRatingFramework(this, json);
-	}
-	
 	private void loadDiagram() throws Exception
 	{
 		getDatabase().readDiagram(getDiagramModel());
@@ -404,7 +390,6 @@ public class Project
 			createProjectMetadata();
 		
 		loadThreatRatingFramework();
-		loadStrategyRatingFramework();
 		loadDiagram();
 		
 		createDefaultObjectsIfNeeded();
@@ -966,7 +951,6 @@ public class Project
 	boolean isExecuting;
 
 	ThreatRatingFramework threatRatingFramework;
-	StrategyRatingFramework strategyRatingFramework;
 	
 	ProjectServer database;
 	DiagramModel diagramModel;

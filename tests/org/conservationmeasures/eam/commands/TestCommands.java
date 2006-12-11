@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.commands;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Vector;
@@ -37,7 +36,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.RatingCriterion;
-import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectForTesting;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
@@ -67,53 +65,6 @@ public class TestCommands extends EAMTestCase
 	{
 		super.tearDown();
 		project.close();
-	}
-	
-	public void testCommandSetObjectData_ValueOption() throws Exception
-	{
-		int type = ObjectType.VALUE_OPTION;
-		BaseId createdId = project.createObject(type);
-		ValueOption option = project.getThreatRatingFramework().getValueOption(createdId);
-		Color originalColor = option.getColor();
-		
-		Color newColor = Color.MAGENTA;
-		String field = ValueOption.TAG_COLOR;
-		String value = Integer.toString(newColor.getRGB());
-		CommandSetObjectData cmd = new CommandSetObjectData(type, createdId, field, value);
-		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("wrong id?", createdId, cmd.getObjectId());
-		assertEquals("wrong field?", field, cmd.getFieldTag());
-		assertEquals("wrong value?", value, cmd.getDataValue());
-		
-		project.executeCommand(cmd);
-		assertEquals("didn't set value?", newColor, option.getColor());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", originalColor, option.getColor());
-		
-		verifyUndoTwiceThrows(cmd);
-		
-		
-		CommandSetObjectData badId = new CommandSetObjectData(type, new BaseId(-99), field, value);
-		try
-		{
-			project.executeCommand(badId);
-			fail("Should have thrown for bad id");
-		}
-		catch (CommandFailedException ignoreExpected)
-		{
-		}
-		
-		CommandSetObjectData badField = new CommandSetObjectData(type, createdId, "bogus", value);
-		try
-		{
-			project.executeCommand(badField);
-			fail("Should have thrown for bad field tag");
-		}
-		catch (CommandFailedException ignoreExpected)
-		{
-		}
-		
 	}
 	
 	public void testCommandSetObjectData_RatingCriterion() throws Exception
@@ -216,28 +167,6 @@ public class TestCommands extends EAMTestCase
 		
 		cmd.undo(project);
 		assertEquals("didn't undo?", oldCount, framework.getCriteria().length);
-		
-		verifyUndoTwiceThrows(cmd);
-
-	}
-	
-	public void testCommandCreateObject_ThreatRatingValueOption() throws Exception
-	{
-		ThreatRatingFramework framework = project.getThreatRatingFramework();
-		int type = ObjectType.VALUE_OPTION;
-		CommandCreateObject cmd = new CommandCreateObject(type);
-		assertEquals("wrong type?", type, cmd.getObjectType());
-		assertEquals("created id already set?", BaseId.INVALID, cmd.getCreatedId());
-
-		int oldCount = framework.getValueOptions().length;
-		project.executeCommand(cmd);
-		ValueOption option = framework.getValueOption(cmd.getCreatedId());
-		assertEquals("wrong default label?", "", option.getLabel());
-		assertEquals("wrong default numeric?", 0, option.getNumericValue());
-		assertEquals("wrong default color?", Color.BLACK, option.getColor());
-		
-		cmd.undo(project);
-		assertEquals("didn't undo?", oldCount, framework.getValueOptions().length);
 		
 		verifyUndoTwiceThrows(cmd);
 

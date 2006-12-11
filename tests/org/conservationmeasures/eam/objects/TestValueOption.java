@@ -24,7 +24,6 @@ public class TestValueOption extends EAMTestCase
 		assertEquals("didn't set id?", id, empty.getId());
 		assertEquals("wrong default label?", "", empty.getLabel());
 		assertEquals("wrong default numeric?", 0, empty.getNumericValue());
-		assertEquals("wrong default color?", Color.BLACK, empty.getColor());
 		
 		String label = "Hello Kitty";
 		int numeric = 7;
@@ -33,7 +32,6 @@ public class TestValueOption extends EAMTestCase
 		assertEquals(id, a.getId());
 		assertEquals(label, a.getLabel());
 		assertEquals(numeric, a.getNumericValue());
-		assertEquals(color, a.getColor());
 	}
 	
 	public void testSetGetData() throws Exception
@@ -41,8 +39,6 @@ public class TestValueOption extends EAMTestCase
 		
 		verifySetGetData(ValueOption.TAG_LABEL, "Hi mom!");
 		verifySetGetData(ValueOption.TAG_NUMERIC, "17");
-		String color = Integer.toString(Color.CYAN.getRGB());
-		verifySetGetData(ValueOption.TAG_COLOR, color);
 	}
 	
 	public void testGetDataBadFieldTag() throws Exception

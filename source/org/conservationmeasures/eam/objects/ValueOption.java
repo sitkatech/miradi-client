@@ -7,7 +7,9 @@ package org.conservationmeasures.eam.objects;
 
 import java.awt.Color;
 
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
@@ -44,9 +46,22 @@ public class ValueOption extends EAMBaseObject
 		return numeric;
 	}
 	
+	// FIXME: This is a hack that allows us to override any colors that might
+	// be in the ValueOption objects. Eventually we will completely replace 
+	// ValueOptions and RatingCriteria with the new RatingQuestion classes
 	public Color getColor()
 	{
-		return color;
+		switch(getNumericValue())
+		{
+			case -1: return Color.DARK_GRAY;
+			case 0: return Color.WHITE;
+			case 1: return ChoiceQuestion.COLOR_4_OF_4;
+			case 2: return ChoiceQuestion.COLOR_3_OF_4;
+			case 3: return ChoiceQuestion.COLOR_2_OF_4;
+			case 4: return ChoiceQuestion.COLOR_1_OF_4;
+		}
+		EAM.logDebug("ValueOption.getColor for unknown numeric value: " + getNumericValue());
+		return Color.BLACK;
 	}
 	
 	public String toString()
