@@ -46,7 +46,7 @@ public class WorkPlanView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		workPlanPanel = new WorkPlanPanel(mainWindow, getProject());
+		workPlanPanel = WorkPlanPanel.createWorkPlanPanel(mainWindow, getProject());
 		TaskPropertiesPanel taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions());
 		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");

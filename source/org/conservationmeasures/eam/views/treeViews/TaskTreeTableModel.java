@@ -3,44 +3,42 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.workplan;
+package org.conservationmeasures.eam.views.treeViews;
 
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.workplan.WorkPlanStrategy;
 
-public class WorkPlanTreeTableModel extends GenericTreeTableModel
+public class TaskTreeTableModel extends GenericTreeTableModel
 {
-	public WorkPlanTreeTableModel(Project projectToUse)
+	public TaskTreeTableModel(Object root)
 	{
-		super(new WorkPlanRoot(projectToUse));
-		project = projectToUse;
+		super(root);
 	}
 
 	public int getColumnCount()
 	{
-		return columnTags.length;
+		return 0;
 	}
 
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
+		return null;
 	}
-	
+
 	public Strategy getParentIntervention(Task activity)
 	{
 		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
 		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();
 		return workPlanStrategy.getIntervention();
 	}
-	
+
 	public TreePath getPathOfParent(int objectType, BaseId objectId)
 	{
 		TreePath path = getPathOfNode(objectType, objectId);
@@ -48,7 +46,7 @@ public class WorkPlanTreeTableModel extends GenericTreeTableModel
 			return null;
 		return path.getParentPath();
 	}
-	
+
 	public TreePath getPathOfNode(int objectType, BaseId objectId)
 	{
 		return findObject(getPathToRoot(), objectType, objectId);
@@ -58,47 +56,58 @@ public class WorkPlanTreeTableModel extends GenericTreeTableModel
 	{
 		return new TreePath(getRootWorkPlanObject());
 	}
-	
+
 	TreeTableNode getRootWorkPlanObject()
 	{
 		return (TreeTableNode)getRoot();
 	}
-	
+
 	public void objectiveWasModified()
 	{
 EAM.logDebug("objectiveWasModified");
-		getRootStratPlanObject().rebuild();
+		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 	}
-	
+
 	public void dataWasChanged(int objectType, BaseId objectId)
 	{
-		getRootStratPlanObject().rebuild();
+		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
-		
+
 EAM.logDebug("dataWasChanged");
 	}
-	
-	WorkPlanTreeTableNode getRootStratPlanObject()
+
+	private void rebuildNode()
 	{
-		return (WorkPlanTreeTableNode)getRoot();
+		try
+		{
+			getRootStratPlanObject().rebuild();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	TreeTableNode getRootStratPlanObject()
+	{
+		return (TreeTableNode)getRoot();
 	}
 
 	public void idListWasChanged(int objectType, BaseId objectId, String newIdListAsString)
 	{
-		getRootStratPlanObject().rebuild();
+		rebuildNode();
 		fireTreeStructureChanged(getRoot(), new Object[] {getRoot()}, null, null);
 
 EAM.logDebug("idListWasChanged");
 	}
-	
-	
-	TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
+
+	public TreePath findObject(TreePath pathToStartSearch, int objectType, BaseId objectId)
 	{
-		WorkPlanTreeTableNode nodeToSearch = (WorkPlanTreeTableNode)pathToStartSearch.getLastPathComponent();
-		if(nodeToSearch.getType() == objectType && nodeToSearch.getId().equals(objectId))
+		TreeTableNode nodeToSearch = (TreeTableNode)pathToStartSearch.getLastPathComponent();
+		if(nodeToSearch.getType() == objectType && nodeToSearch.getObjectReference().getObjectId().equals(objectId))
 			return pathToStartSearch;
-		
+
 		for(int i = 0; i < nodeToSearch.getChildCount(); ++i)
 		{
 			TreeTableNode thisChild = nodeToSearch.getChild(i);
@@ -110,6 +119,4 @@ EAM.logDebug("idListWasChanged");
 		return null;
 	}
 
-	public static String[] columnTags = {"Item", };
-	Project project;
 }

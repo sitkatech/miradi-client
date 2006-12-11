@@ -21,12 +21,12 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
+import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetTableEditorComponent extends DisposablePanel
 {
-	public BudgetTableEditorComponent(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponentToUse) throws Exception
+	public BudgetTableEditorComponent(Project projectToUse, Actions actions, BudgetTreeTablePanel treeTableComponentToUse) throws Exception
 	{
 		super(new BorderLayout());
 		
@@ -79,5 +79,5 @@ public class BudgetTableEditorComponent extends DisposablePanel
 	Project project;
 	BudgetTableModel budgetTableModel;
 	BudgetTable budgetTable;
-	WorkPlanPanel treeTableComponent;
+	BudgetTreeTablePanel treeTableComponent;
 }

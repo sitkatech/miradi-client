@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
+public class WorkPlanMonitoringRoot extends TreeTableNode
 {
 	public WorkPlanMonitoringRoot(Project projectToUse)
 	{
@@ -75,11 +75,6 @@ public class WorkPlanMonitoringRoot extends WorkPlanTreeTableNode
 		
 		allFactorsWithIndicators = (WorkPlanMonitoringFactor[])workPlanMonFactors.toArray(new WorkPlanMonitoringFactor[0]);
 		Arrays.sort(allFactorsWithIndicators, new IgnoreCaseStringComparator());
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return false;
 	}
 	
 	public BaseId getId()

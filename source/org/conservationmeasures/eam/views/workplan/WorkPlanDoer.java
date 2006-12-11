@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTableNode;
+import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.workplan.WorkPlanView;
 
 public abstract class WorkPlanDoer extends ViewDoer
@@ -19,7 +19,7 @@ public abstract class WorkPlanDoer extends ViewDoer
 		return panel;
 	}
 	
-	public WorkPlanTreeTableNode getSelectedObject()
+	public TreeTableNode getSelectedObject()
 	{
 		WorkPlanPanel panel = getPanel();
 		if(panel == null)

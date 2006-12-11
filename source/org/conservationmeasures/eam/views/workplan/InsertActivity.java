@@ -19,18 +19,20 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class InsertActivity extends WorkPlanDoer
 {
 	public boolean isAvailable()
 	{
-		WorkPlanTreeTableNode selected = getSelectedObject();
+		TreeTableNode selected = getSelectedObject();
 		if(selected == null)
 			return false;
-		return (selected.canInsertActivityHere());
+		return canInsertHere(selected);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -68,6 +70,8 @@ public class InsertActivity extends WorkPlanDoer
 			CommandSetObjectData addChildCommand;
 			if (object.getType() == ObjectType.FACTOR)
 				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
+			else if (object.getType() == ObjectType.INDICATOR)
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Indicator.TAG_TASK_IDS, createdId, childIndex);
 			else
 				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Task.TAG_SUBTASK_IDS, createdId, childIndex);
 			
@@ -78,4 +82,18 @@ public class InsertActivity extends WorkPlanDoer
 			project.executeCommand(new CommandEndTransaction());
 		}
 	}
+	
+	private boolean canInsertHere(TreeTableNode selected)
+	{
+		int type = selected.getObjectReference().getObjectType();
+		if (type == ObjectType.TASK)
+			return true;
+		if (type == ObjectType.INDICATOR)
+			return true;
+		
+		return false;
+	}
+
+
+	
 }

@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
@@ -22,7 +23,7 @@ public class DeleteWorkPlanTreeNode extends WorkPlanDoer
 {
 	public boolean isAvailable()
 	{
-		WorkPlanTreeTableNode selectedNode = getSelectedObject();
+		TreeTableNode selectedNode = getSelectedObject();
 		if (selectedNode == null)
 			return false;
 		
@@ -48,7 +49,7 @@ public class DeleteWorkPlanTreeNode extends WorkPlanDoer
 			}
 			else if (selectedRef.getObjectType() == ObjectType.INDICATOR)
 			{
-				Factor factor = getFactor(project, getSelectedObject().getId());
+				Factor factor = getFactor(project, getSelectedObject().getObjectReference().getObjectId());
 				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)getSelectedObject().getObject(), Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
 			}
 		}

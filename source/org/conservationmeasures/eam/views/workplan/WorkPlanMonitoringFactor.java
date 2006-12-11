@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringFactor extends WorkPlanTreeTableNode
+public class WorkPlanMonitoringFactor extends TreeTableNode
 {
 	public WorkPlanMonitoringFactor(Project projectToUse, Factor factorToUse)
 	{
@@ -29,11 +29,6 @@ public class WorkPlanMonitoringFactor extends WorkPlanTreeTableNode
 	public EAMObject getObject()
 	{
 		return factor;
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return false;
 	}
 	
 	public BaseId getId()

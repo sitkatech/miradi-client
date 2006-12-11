@@ -52,7 +52,7 @@ public class BudgetView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		treeTableComponent = new BudgetTreeTablePanel(getMainWindow(), getProject());
+		treeTableComponent = BudgetTreeTablePanel.createBudgetTreeTablePanel(getMainWindow(), getProject());
 		
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);

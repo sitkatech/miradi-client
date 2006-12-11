@@ -68,6 +68,11 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		return new ChainManager(project);
 	}
 	
+	public void rebuild() throws Exception
+	{
+	}
+	
 	Project project;
 	Indicator indicator;
+	
 }

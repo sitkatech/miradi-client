@@ -11,12 +11,12 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
+import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 import org.martus.swing.UiScrollPane;
 
 public class BudgetManagementPanel extends ModelessDialogPanel
 {
-	public BudgetManagementPanel(MainWindow mainWindow, Project project, BudgetPropertiesPanel propertiesPanelToUse, WorkPlanPanel treeTableComponentToUse)
+	public BudgetManagementPanel(MainWindow mainWindow, Project project, BudgetPropertiesPanel propertiesPanelToUse, BudgetTreeTablePanel treeTableComponentToUse)
 	{
 		propertiesPanel = propertiesPanelToUse;
 		treeTableComponent = treeTableComponentToUse;
@@ -47,6 +47,6 @@ public class BudgetManagementPanel extends ModelessDialogPanel
 		return EAM.text("Budget management");
 	}
 
-	WorkPlanPanel treeTableComponent;
+	BudgetTreeTablePanel treeTableComponent;
 	BudgetPropertiesPanel propertiesPanel;
 }

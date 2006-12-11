@@ -62,6 +62,11 @@ public class StratPlanStrategy extends TreeTableNode
 		return intervention.getType();
 	}
 	
+	public void rebuild() throws Exception
+	{
+	}
+
+	
 	Project project;
 	Strategy intervention;
 }

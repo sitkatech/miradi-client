@@ -15,16 +15,16 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
+import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 
 public class BudgetPropertiesPanel extends ObjectDataInputPanel
 {
-	public BudgetPropertiesPanel(Project projectToUse, Actions actions, WorkPlanPanel treeTableComponent) throws Exception
+	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BudgetTreeTablePanel treeTableComponent) throws Exception
 	{
 		this(projectToUse, actions, BaseId.INVALID, treeTableComponent);
 	}
 	
-	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow, WorkPlanPanel treeTableComponent) throws Exception
+	public BudgetPropertiesPanel(Project projectToUse, Actions actions, BaseId idToShow, BudgetTreeTablePanel treeTableComponent) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToShow);
 		tableEditorComponent = new BudgetTableEditorComponent(projectToUse, actions, treeTableComponent);

@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanTaskNode extends WorkPlanTreeTableNode
+public class WorkPlanTaskNode extends TreeTableNode
 {
 	public WorkPlanTaskNode(Project projectToUse, Task taskToUse)
 	{
@@ -75,11 +75,6 @@ public class WorkPlanTaskNode extends WorkPlanTreeTableNode
 	public BaseId getId()
 	{
 		return task.getId();
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return true;
 	}
 	
 	public void rebuild()

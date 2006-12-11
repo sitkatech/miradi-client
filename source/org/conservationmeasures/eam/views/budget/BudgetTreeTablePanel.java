@@ -5,33 +5,23 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import java.awt.BorderLayout;
-
-import javax.swing.tree.TreeSelectionModel;
-
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTable;
-import org.martus.swing.UiScrollPane;
+import org.conservationmeasures.eam.views.treeViews.BudgetTreeTableModel;
+import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 
-public class BudgetTreeTablePanel extends WorkPlanPanel
+public class BudgetTreeTablePanel extends TaskTreeTablePanel
 {
-	public BudgetTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse)
+	public static BudgetTreeTablePanel createBudgetTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse)
 	{
-		super(mainWindowToUse, projectToUse);
-		model = new BudgetTreeTableModel(projectToUse);
-		tree = new WorkPlanTreeTable(projectToUse, model);
-		tree.setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-		tree.getTree().setShowsRootHandles(true);
-		tree.getTree().addTreeSelectionListener(this);
-		restoreTreeExpansionState();
-		
-		UiScrollPane uiScrollPane = new UiScrollPane(tree);
-		add(uiScrollPane, BorderLayout.CENTER);
-		add(createButtonBox(mainWindowToUse.getActions()), BorderLayout.AFTER_LAST_LINE);
-
-		tree.getTree().addSelectionRow(0);
-		mainWindowToUse.getProject().addCommandExecutedListener(this);
+		BudgetTreeTableModel model = new BudgetTreeTableModel(projectToUse);
+		BudgetTreeTable tree = new BudgetTreeTable(projectToUse, model);
+		return new BudgetTreeTablePanel(mainWindowToUse, projectToUse,tree, model);
+	}
+	
+	private BudgetTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, BudgetTreeTable treeToUse, BudgetTreeTableModel modelToUse)
+	{
+		super(mainWindowToUse, projectToUse, treeToUse);
+		model = modelToUse;
 	}
 }

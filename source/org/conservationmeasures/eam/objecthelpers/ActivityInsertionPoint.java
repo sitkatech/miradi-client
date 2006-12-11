@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.objecthelpers;
 
 import javax.swing.tree.TreePath;
 
-import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTableNode;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class ActivityInsertionPoint
 {
@@ -22,9 +22,9 @@ public class ActivityInsertionPoint
 		return path;
 	}
 	
-	public WorkPlanTreeTableNode getParent()
+	public TreeTableNode getParent()
 	{
-		return (WorkPlanTreeTableNode)path.getLastPathComponent();
+		return (TreeTableNode)path.getLastPathComponent();
 	}
 	
 	public ORef getProposedParentORef()

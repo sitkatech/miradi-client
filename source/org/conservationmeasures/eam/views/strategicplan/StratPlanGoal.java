@@ -41,11 +41,6 @@ public class StratPlanGoal extends TreeTableNode
 		return goal;
 	}
 	
-	public boolean canInsertActivityHere()
-	{
-		return false;
-	}
-
 	public TreeTableNode getChild(int index)
 	{
 		return (TreeTableNode)objectiveVector.get(index);

@@ -18,7 +18,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
+public class WorkPlanStrategyRoot extends TreeTableNode
 {
 	public WorkPlanStrategyRoot(Project projectToUse)
 	{
@@ -78,11 +78,7 @@ public class WorkPlanStrategyRoot extends WorkPlanTreeTableNode
 		Arrays.sort(strategies, new IgnoreCaseStringComparator());
 	}
 	
-	public boolean canInsertActivityHere()
-	{
-		return false;
-	}
-	
+
 	public BaseId getId()
 	{
 		return null;

@@ -17,4 +17,5 @@ public abstract class TreeTableNode
 	public abstract TreeTableNode getChild(int index);
 	public abstract Object getValueAt(int column);
 	public abstract EAMObject getObject();
+	abstract public void rebuild() throws Exception;
 }

@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanRoot extends WorkPlanTreeTableNode
+public class WorkPlanRoot extends TreeTableNode
 {
 	public WorkPlanRoot(Project projectToUse)
 	{
@@ -55,11 +55,6 @@ public class WorkPlanRoot extends WorkPlanTreeTableNode
 	public String toString()
 	{
 		return null;
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return false;
 	}
 	
 	public BaseId getId()

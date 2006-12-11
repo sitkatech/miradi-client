@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
+public class WorkPlanMonitoringIndicator extends TreeTableNode
 {
 	public WorkPlanMonitoringIndicator(Project projectToUse, Indicator indicatorToUse)
 	{
@@ -64,11 +64,6 @@ public class WorkPlanMonitoringIndicator extends WorkPlanTreeTableNode
 		if (column == 1)
 			return toString();
 		return "";
-	}
-	
-	public boolean canInsertActivityHere()
-	{
-		return true;
 	}
 	
 	public BaseId getId()

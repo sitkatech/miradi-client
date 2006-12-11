@@ -65,6 +65,11 @@ public class StratPlanActivity extends TreeTableNode
 		return activity.getType();
 	}
 	
+	public void rebuild() throws Exception
+	{
+	}
+
+	
 	Project project;
 	Task activity;
 }

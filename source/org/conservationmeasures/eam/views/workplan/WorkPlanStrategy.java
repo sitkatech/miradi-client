@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class WorkPlanStrategy extends WorkPlanTreeTableNode
+public class WorkPlanStrategy extends TreeTableNode
 {
 	public WorkPlanStrategy(Project projectToUse, Strategy interventionToUse)
 	{
@@ -72,11 +72,6 @@ public class WorkPlanStrategy extends WorkPlanTreeTableNode
 		return intervention.getId();
 	}
 
-	public boolean canInsertActivityHere()
-	{
-		return true;
-	}
-	
 	public void rebuild()
 	{
 		int childCount = intervention.getActivityIds().size();

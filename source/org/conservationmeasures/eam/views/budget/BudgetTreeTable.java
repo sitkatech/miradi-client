@@ -3,21 +3,22 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.workplan;
+package org.conservationmeasures.eam.views.budget;
 
 import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
-import org.conservationmeasures.eam.views.treeViews.WorkPlanTreeTableModel;
+import org.conservationmeasures.eam.views.treeViews.BudgetTreeTableModel;
 
-public class WorkPlanTreeTable extends TreeTableWithStateSaving 
+public class BudgetTreeTable extends TreeTableWithStateSaving
 {
-	public WorkPlanTreeTable(Project projectToUse, WorkPlanTreeTableModel monitoringModelToUse)
+	public BudgetTreeTable(Project projectToUse, BudgetTreeTableModel treeTableModel)
 	{
-		super(projectToUse, monitoringModelToUse);
+		super(projectToUse, treeTableModel);
 		setModel(treeTableModelAdapter);
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
 	}
+
 }

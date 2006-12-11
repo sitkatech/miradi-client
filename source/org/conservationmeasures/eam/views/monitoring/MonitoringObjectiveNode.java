@@ -118,6 +118,11 @@ public class MonitoringObjectiveNode extends MonitoringNode
 		}
 		return result;
 	}
+	
+	public void rebuild() throws Exception
+	{
+	}
+
 
 	Project project;
 	Objective objective;

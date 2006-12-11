@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.budget;
+package org.conservationmeasures.eam.views.treeViews;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
@@ -11,14 +11,15 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTableModel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanTreeTableNode;
+import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
+import org.conservationmeasures.eam.views.workplan.WorkPlanRoot;
+import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class BudgetTreeTableModel extends WorkPlanTreeTableModel
+public class BudgetTreeTableModel extends TaskTreeTableModel
 {
 	public BudgetTreeTableModel(Project projectToUse)
 	{
-		super(projectToUse);
+		super(new WorkPlanRoot(projectToUse));
 		project = projectToUse;
 	}
 	
@@ -34,18 +35,19 @@ public class BudgetTreeTableModel extends WorkPlanTreeTableModel
 	
 	public Object getValueAt(Object rawNode, int column)
 	{
-		WorkPlanTreeTableNode node = (WorkPlanTreeTableNode)rawNode;
+		TreeTableNode node = (TreeTableNode)rawNode;
 		String totalCost = Double.toString(calculateTotalCost(node.getObjectReference()));
 		return totalCost;
 	}
 	
 	private double calculateTotalCost(ORef oRef)
 	{
-		try{
-			EAMObject foundObject = project.findObject(ObjectType.TASK, oRef.getObjectId());
-			if (foundObject == null)
-				return 0.0;
-
+		if (oRef.getObjectType() != ObjectType.TASK)
+			return 0.0;
+		
+		try
+		{
+			EAMObject foundObject = project.findObject(oRef.getObjectType(), oRef.getObjectId());
 			BudgetTotalsCalculator totalCalculator = new BudgetTotalsCalculator(project);
 			return totalCalculator.getTotalCost((Task)foundObject);
 		}
@@ -58,8 +60,5 @@ public class BudgetTreeTableModel extends WorkPlanTreeTableModel
 	}
 
 	private Project project;
-	
 	private static final String COLUMN_TAGS[] = {"Items", "Cost", };
-
-	
 }

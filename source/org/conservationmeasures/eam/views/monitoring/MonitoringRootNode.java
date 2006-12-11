@@ -60,7 +60,7 @@ public class MonitoringRootNode extends MonitoringNode
 		return "";
 	}
 
-	private void rebuild() throws Exception
+	public void rebuild() throws Exception
 	{
 		Vector desireVector = new Vector();
 		desireVector.addAll(getAllDesires(project.getGoalPool()));
