@@ -51,8 +51,8 @@ public class DateRangeEffortList
 
 		return null;
 	}
-
 	
+	//FIXME budget code - this method should no longer be used, replace with getTotalUnitQuantity()
 	public double getUnitsForDateRange(DateRange dateRangeToUse)
 	{
 		
@@ -61,6 +61,19 @@ public class DateRangeEffortList
 			return effort.getUnitQuantity();
 		
 		return 0;
+	}
+	
+	public double getTotalUnitQuantity(DateRange boundryDateRange)
+	{
+		double totalUnits = 0.0;
+		for (int i = 0; i < data.size(); i++)
+		{
+			DateRangeEffort effort = (DateRangeEffort)data.get(i);
+			DateRange dateRange = effort.getDateRange();
+			if (boundryDateRange.contains(dateRange))
+				totalUnits += effort.getUnitQuantity();
+		}
+		return totalUnits;
 	}
 	
 	public double getTotalUnitQuantity()
