@@ -33,7 +33,7 @@ public class FundingSourceIcon implements Icon
 		Polygon triangle = TriangleRenderer.buildTriangle(rect);
 		g.setColor(Color.GREEN);
 		g.fillPolygon(triangle);
-		g.setColor(Color.GREEN);
+		g.setColor(Color.BLACK);
 		g.drawPolygon(triangle);
 	}
 	
