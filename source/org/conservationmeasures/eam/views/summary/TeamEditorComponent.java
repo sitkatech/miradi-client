@@ -16,6 +16,7 @@ import org.conservationmeasures.eam.dialogs.ObjectTableModel;
 import org.conservationmeasures.eam.dialogs.ObjectTablePanel;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiButton;
 
@@ -45,13 +46,15 @@ public class TeamEditorComponent extends ObjectTablePanel
 	{
 		super.commandExecuted(event);
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
+			if (((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES))
+				((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
 	}
 	
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		super.commandUndone(event);
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			if (((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES))
 			((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
 	}
 	
