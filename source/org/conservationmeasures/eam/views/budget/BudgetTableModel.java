@@ -31,7 +31,7 @@ public class BudgetTableModel extends AbstractTableModel
 		project = projectToUse;
 		assignmentIdList  = assignmentIdListToUse;
 		
-		totalsCalculator = new BudgetTotalColumnCalculator();
+		totalsCalculator = new BudgetTotalColumnCalculator(project);
 	
 		setProjectDateRanges();
 	}
@@ -169,7 +169,7 @@ public class BudgetTableModel extends AbstractTableModel
 			return getTotalUnits(getCorrectedRow(row));
 		
 		if (isOdd(row) && isCostTotalsColumn(col))
-			return getTotalCost(getCorrectedRow(row), col);
+			return getTotalCost(getCorrectedRow(row));
 		
 		if (isOdd(row) && (isCostColumn(col)))
 			return getCost(row, col);
@@ -246,24 +246,28 @@ public class BudgetTableModel extends AbstractTableModel
 		return "Units";
 	}
 	
-	private Object getTotalCost(int row, int col)
+	private String getTotalCost(int row)
 	{
-		ProjectResource currentResource = getCurrentResource(row);
-		if (currentResource == null)
-			return "";
-	
-		double totalUnits = Double.parseDouble(getTotalUnits(row).toString());
-		double costPerUnit = currentResource.getCostPerUnit();
-		return new Double(totalUnits * costPerUnit);
+		try
+		{
+			DateRange combinedDateRange = getCombinedDateRange();
+			double totalCost = totalsCalculator.getTotalCost(getAssignment(row), combinedDateRange);
+			return Double.toString(totalCost);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		return "";
 	}
 	
 	private Object getTotalUnits(int row)
 	{
 		try
 		{
-			DateRange combinedDateRange = DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
-			String totalUnitsAsString = totalsCalculator.getTotalUnitsAsString(getAssignment(row), combinedDateRange);
-			return totalUnitsAsString;
+			DateRange combinedDateRange = getCombinedDateRange();
+			double totalUnits = totalsCalculator.getTotalUnits(getAssignment(row), combinedDateRange);
+			return Double.toString(totalUnits);
 		}
 		catch(Exception e)
 		{
@@ -271,6 +275,12 @@ public class BudgetTableModel extends AbstractTableModel
 		}
 		
 		return new String("");
+	}
+
+	private DateRange getCombinedDateRange() throws Exception
+	{
+		DateRange combinedDateRange = DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
+		return combinedDateRange;
 	}
 
 	//FIXME budget code - dont return string just the value
