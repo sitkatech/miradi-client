@@ -13,7 +13,6 @@ import java.awt.Rectangle;
 
 import javax.swing.Icon;
 
-import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
 import org.conservationmeasures.eam.diagram.renderers.TriangleRenderer;
 
 public class FundingSourceIcon implements Icon
