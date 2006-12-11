@@ -62,6 +62,49 @@ public class DateRange
 		return toJson().toString();
 	}
 	
+	private boolean containsEnd(MultiCalendar end)
+	{
+		if (end.before(endDate) || end.equals(endDate))
+			return true;
+		
+		return false;
+	}
+	
+	private boolean containsStart(MultiCalendar start)
+	{
+		if (startDate.before(start) || startDate.equals(start))
+			return true;
+		
+		return false;
+	}
+	
+	public boolean contains(DateRange other)
+	{
+		if (! containsStart(other.getStartDate()))
+			return false;
+		if (! containsEnd(other.getEndDate()))
+			return false;
+		
+		return true;
+	}
+	
+	public static DateRange combine(DateRange range1, DateRange range2) throws Exception
+	{
+		MultiCalendar combinedStartDate;
+		if (range1.getStartDate().before(range2.getStartDate()))
+			combinedStartDate = range1.getStartDate();
+		else
+			combinedStartDate = range2.getStartDate();
+		
+		MultiCalendar combinedEndDate;
+		if (range1.getEndDate().after(range2.getEndDate()))
+			combinedEndDate = range1.getEndDate();
+		else 
+			combinedEndDate = range2.getEndDate();
+		
+		return new DateRange(combinedStartDate, combinedEndDate);
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof DateRange))
