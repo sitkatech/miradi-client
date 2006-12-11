@@ -19,12 +19,14 @@ import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
 import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
 import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
 import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
 import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
+import org.conservationmeasures.eam.ratings.TargetStatusQuestion;
 import org.martus.swing.UiCheckBox;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -38,6 +40,11 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		
 		statusCheckBox = new UiCheckBox(EAM.text("Label|Draft"));
 
+		if(factorToEdit.isTarget())
+		{
+			addField(createRatingField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
+		}
+		
 		if(factorToEdit.isDirectThreat())
 		{
 			// FIXME: Convert to new mechanism
