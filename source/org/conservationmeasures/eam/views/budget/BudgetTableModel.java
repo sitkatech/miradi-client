@@ -242,8 +242,8 @@ public class BudgetTableModel extends AbstractTableModel
 	private String getStaticCellLabel(int row, int col)
 	{
 		if (!isOdd(row))
-			return "Cost";
-		return "Units";
+			return "Units";
+		return "Cost";
 	}
 	
 	private String getTotalCost(int row)
