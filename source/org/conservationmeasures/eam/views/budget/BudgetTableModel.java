@@ -30,6 +30,9 @@ public class BudgetTableModel extends AbstractTableModel
 	{
 		project = projectToUse;
 		assignmentIdList  = assignmentIdListToUse;
+		
+		totalsCalculator = new BudgetTotalColumnCalculator();
+	
 		setProjectDateRanges();
 	}
 	
@@ -166,7 +169,7 @@ public class BudgetTableModel extends AbstractTableModel
 			return getTotalUnits(getCorrectedRow(row));
 		
 		if (isOdd(row) && isCostTotalsColumn(col))
-			return getTotalCost(getCorrectedRow(row));
+			return getTotalCost(getCorrectedRow(row), col);
 		
 		if (isOdd(row) && (isCostColumn(col)))
 			return getCost(row, col);
@@ -243,7 +246,7 @@ public class BudgetTableModel extends AbstractTableModel
 		return "Units";
 	}
 	
-	private Object getTotalCost(int row)
+	private Object getTotalCost(int row, int col)
 	{
 		ProjectResource currentResource = getCurrentResource(row);
 		if (currentResource == null)
@@ -256,18 +259,18 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getTotalUnits(int row)
 	{
-		double totalUnits = 0.0;
 		try
 		{
-			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			totalUnits = effortList.getTotalUnitQuantity();
+			DateRange combinedDateRange = DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
+			String totalUnitsAsString = totalsCalculator.getTotalUnitsAsString(getAssignment(row), combinedDateRange);
+			return totalUnitsAsString;
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
-
-		return new Double(totalUnits);
+		
+		return new String("");
 	}
 
 	//FIXME budget code - dont return string just the value
@@ -412,7 +415,7 @@ public class BudgetTableModel extends AbstractTableModel
 	DateRange[] dateRanges;
 	IdList assignmentIdList;
 	Task task;
-	
+	BudgetTotalColumnCalculator totalsCalculator;
 	
 	private static final int COST_UNIT_LABEL_COLUMN = 3;
 	private static final int RESOURCE_COLUMN_COUNT = 1;
