@@ -11,12 +11,12 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -49,6 +49,7 @@ import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.BasicGridLayout;
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class DiagramLegendPanel extends JPanel implements ActionListener
 {
@@ -73,7 +74,8 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	
 	private JPanel createLegendButtonPanel(Actions actions)
 	{
-		JPanel jpanel = new JPanel(new BasicGridLayout(0,3));
+		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
+		
 		addButtonIconLineWithoutCheckBox(jpanel, "Project Scope", new ProjectScopeIcon());
 		
 		addButtonLine(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
@@ -110,7 +112,6 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		component.putClientProperty(LAYER, new String(text));
 		component.addActionListener(this);
 		addToIconLinePanel(jpanel, text, icon, component);
-		
 	}
 
 	private void addButtonIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
@@ -121,9 +122,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 
 	private void addToIconLinePanel(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
-		JPanel centeringPanel = new JPanel();
-		centeringPanel.add(new UiLabel("",icon,AbstractButton.LEFT));
-		jpanel.add(centeringPanel);
+		jpanel.add(new UiLabel("",icon,JLabel.CENTER));
 		jpanel.add(new UiLabel(EAM.text(text)));
 		jpanel.add(component);
 	}
