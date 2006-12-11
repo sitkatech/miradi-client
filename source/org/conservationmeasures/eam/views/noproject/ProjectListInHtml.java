@@ -19,13 +19,12 @@ import org.conservationmeasures.eam.utils.HtmlBuilder;
 import org.conservationmeasures.eam.views.umbrella.CreateProjectDialog;
 import org.martus.util.MultiCalendar;
 
-class NoProjectHtmlText extends HtmlBuilder
+class ProjectListInHtml extends HtmlBuilder
 {
-	public NoProjectHtmlText()
+	public ProjectListInHtml()
 	{
 		text = 
 			font("Arial", 
-				heading("Existing Projects:") +
 				existingProjectTable()
 				);
 
@@ -39,15 +38,14 @@ class NoProjectHtmlText extends HtmlBuilder
 	public String existingProjectTable()
 	{
 		File[] projectDirectories = getProjectDirectories();
-		String rows = tableRow(tableHeader("Project Filename") + tableHeader("Last Modified") + tableHeader("File Location") + "</tr>");
+		String rows = tableRow(tableHeader("Project Filename") + tableHeader("Last Modified") + "</tr>");
 		for(int i = 0; i < projectDirectories.length; ++i)
 		{
 			File projectFile = projectDirectories[i];
 			String name = projectFile.getName();
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
-			String path = projectFile.getAbsolutePath();
-			rows += tableRow(tableCell(clickableProject(name)) + tableCell(isoDate) + tableCell(path));
+			rows += tableRow(tableCell(clickableProject(name)) + tableCell(isoDate));
 		}
 		return table(rows);
 	}

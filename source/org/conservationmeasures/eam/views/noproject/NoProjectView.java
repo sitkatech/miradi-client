@@ -6,10 +6,11 @@
 package org.conservationmeasures.eam.views.noproject;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.io.File;
 
 import javax.swing.Action;
-import javax.swing.JSplitPane;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
@@ -18,9 +19,9 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.noproject.wizard.NoProjectWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
-import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
+import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
+import org.conservationmeasures.eam.views.umbrella.WizardStep;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.UiScrollPane;
@@ -38,30 +39,35 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		try 
 		{
-			if(linkDescription.equals(NoProjectHtmlText.NEW_PROJECT))
+			if(linkDescription.startsWith(ProjectListInHtml.OPEN_PREFIX))
 			{
-				Action action = new ActionNewProject(getMainWindow());
-				action.actionPerformed(null);
-			}
-			else if(linkDescription.startsWith(NoProjectHtmlText.OPEN_PREFIX))
-			{
-				String projectName = linkDescription.substring(NoProjectHtmlText.OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(ProjectListInHtml.OPEN_PREFIX.length());
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				getMainWindow().createOrOpenProject(projectDirectory);
-			}
-			else if(linkDescription.equals(NoProjectHtmlText.IMPORT_ZIP))
-			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportZipFile.class);
-				action.doAction();
-			}
-			else if(linkDescription.equals(NoProjectHtmlText.IMPORT_TNC_CAP_PROJECT))
-			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
-				action.doAction();
 			}
 			else if(linkDescription.equals("Definition:Project"))
 			{
 				EAM.okDialog("Definition: Project", new String[] {"A project is..."});
+			}
+			else if(linkDescription.equals("Definition:CMP"))
+			{
+				EAM.okDialog("Definition: Conservation Measures Partnership", new String[] {"The Conservation Measures Partnership (CMP) is..."});
+			}
+			else if(linkDescription.equals("Definition:OpenStandards"))
+			{
+				EAM.okDialog("Definition: Open Standards", new String[] {"The Open Standards are..."});
+			}
+			else if(linkDescription.equals("Definition:NewProject"))
+			{
+				EAM.okDialog("Definition: New Project", new String[] {"A New Project is..."});
+			}
+			else if(linkDescription.equals("Definition:ImportZip"))
+			{
+				EAM.okDialog("Definition: Zipped Project", new String[] {"A Zipped Project is..."});
+			}
+			else if(linkDescription.equals("Definition:ImportCAP"))
+			{
+				EAM.okDialog("Definition: CAP Workbook", new String[] {"A CAP Workbook is..."});
 			}
 			else
 			{
@@ -75,17 +81,58 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		}
 	}
 
+	public void valueChanged(String widget, String newValue)
+	{
+	}
+
+	public void buttonPressed(String buttonName)
+	{
+		try
+		{
+			if(buttonName.equals("NewProject"))
+			{
+				Action action = new ActionNewProject(getMainWindow());
+				action.actionPerformed(null);
+			}
+			else if(buttonName.equals("ImportZip"))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportZipFile.class);
+				action.doAction();
+			}
+			else if(buttonName.equals("ImportCAP"))
+			{
+				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
+				action.doAction();
+			}
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
+		}
+	}
+
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
 		removeAll();
 
-		htmlViewer = new HtmlViewer("", this);
-		refreshText();
-		wizardPanel = new NoProjectWizardPanel(this);
+		String header = WizardStep.loadHtmlFile(getClass(), "WelcomeHeader.html");
+		WizardHtmlViewer headerHtmlViewer = new WizardHtmlViewer(this);
+		headerHtmlViewer.setText(header);
+		add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
+
+		JPanel panel = new JPanel(new GridLayout(1, 2));
+		String newProject = WizardStep.loadHtmlFile(getClass(), "WelcomeNew.html");
+		HtmlViewer newProjectHtmlViewer = new HtmlViewer(newProject, this);
+		newProjectHtmlViewer.setText(newProject);
+		panel.add(newProjectHtmlViewer);
 		
-		bigSplitter = new ViewSplitPane(getMainWindow(), wizardPanel, new UiScrollPane(htmlViewer), bigSplitter);
-		add(bigSplitter, BorderLayout.CENTER);
+		projectList = new HtmlViewer("", this);
+		refreshText();
+		panel.add(new UiScrollPane(projectList));
+		
+		add(panel, BorderLayout.CENTER);
 	}
 
 	public void becomeInactive() throws Exception
@@ -96,15 +143,8 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	
 	public void refreshText()
 	{
-		htmlViewer.setText(new NoProjectHtmlText().getText());
-	}
-
-	public void valueChanged(String widget, String newValue)
-	{
-	}
-
-	public void buttonPressed(String buttonName)
-	{
+		String html = new ProjectListInHtml().getText();
+		projectList.setText(html);
 	}
 
 	public String cardName()
@@ -117,8 +157,6 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		return Project.NO_PROJECT_VIEW_NAME;
 	}
 
-	JSplitPane bigSplitter;
-	NoProjectWizardPanel wizardPanel;
-	HtmlViewer htmlViewer;
+	HtmlViewer projectList;
 }
 

@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
 import java.net.URL;
 
 import javax.swing.JPanel;
@@ -39,7 +40,11 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 		if(resourceFileName == null)
 			return "Missing text";
 		
-		Class thisClass = getClass();
+		return loadHtmlFile(getClass(), resourceFileName);
+	}
+
+	public static String loadHtmlFile(Class thisClass, String resourceFileName) throws IOException
+	{
 		URL htmlFile = thisClass.getResource(resourceFileName);
 		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
 		try
