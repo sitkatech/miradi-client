@@ -31,7 +31,7 @@ public class BudgetTableModel extends AbstractTableModel
 		project = projectToUse;
 		assignmentIdList  = assignmentIdListToUse;
 		
-		totalsCalculator = new BudgetTotalColumnCalculator(project);
+		totalsCalculator = new BudgetTotalsCalculator(project);
 	
 		setProjectDateRanges();
 	}
@@ -425,7 +425,7 @@ public class BudgetTableModel extends AbstractTableModel
 	DateRange[] dateRanges;
 	IdList assignmentIdList;
 	Task task;
-	BudgetTotalColumnCalculator totalsCalculator;
+	BudgetTotalsCalculator totalsCalculator;
 	
 	private static final int COST_UNIT_LABEL_COLUMN = 3;
 	private static final int RESOURCE_COLUMN_COUNT = 1;

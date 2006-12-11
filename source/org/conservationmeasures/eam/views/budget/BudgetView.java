@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiScrollPane;
 
@@ -53,7 +52,7 @@ public class BudgetView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		treeTableComponent = new WorkPlanPanel(getMainWindow(), getProject());
+		treeTableComponent = new BudgetTreeTablePanel(getMainWindow(), getProject());
 		
 		budgetPropertiesPanel = new BudgetPropertiesPanel(getProject(), getMainWindow().getActions(), treeTableComponent);
 		budgetManagmentPanel = new BudgetManagementPanel(getMainWindow(), getProject(), budgetPropertiesPanel, treeTableComponent);
@@ -98,7 +97,7 @@ public class BudgetView extends TabbedView
 		return new BudgetWizardPanel();
 	}
 	
-	WorkPlanPanel treeTableComponent;
+	BudgetTreeTablePanel treeTableComponent;
 	
 	BudgetPropertiesPanel budgetPropertiesPanel;
 	BudgetManagementPanel budgetManagmentPanel;

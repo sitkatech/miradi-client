@@ -66,7 +66,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		return tree;
 	}
 
-	private void restoreTreeExpansionState() 
+	protected void restoreTreeExpansionState() 
 	{
 		try
 		{
@@ -140,7 +140,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 		return model.getParentIntervention(activity);
 	}
 	
-	private Box createButtonBox(Actions actions)
+	protected Box createButtonBox(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
 		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
@@ -281,7 +281,7 @@ public class WorkPlanPanel extends DisposablePanel implements TreeSelectionListe
 	}
 
 	MainWindow mainWindow;
-	WorkPlanTreeTable tree;
-	WorkPlanTreeTableModel model;
+	protected WorkPlanTreeTable tree;
+	protected WorkPlanTreeTableModel model;
 	ObjectDataInputPanel propertiesPanel;
 }
