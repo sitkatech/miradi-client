@@ -25,11 +25,11 @@ public class AccountCodeIcon implements Icon
 	public void paintIcon(Component c, Graphics g, int x, int y)
 	{
 		g.setColor(new Color(237, 185, 0));
-		g.fillOval(x, y + HEIGHT/4, WIDTH, HEIGHT/2);
+		g.fillOval(x, y , WIDTH, HEIGHT);
 		g.setColor(Color.BLACK);
-		g.drawOval(x, y + HEIGHT/4, WIDTH, HEIGHT/2);
+		g.drawOval(x, y , WIDTH, HEIGHT);
 	}
 	
-	protected static final int WIDTH = 16;
-	protected static final int HEIGHT = 16;
+	protected static final int WIDTH = 14;
+	protected static final int HEIGHT = 14;
 }

@@ -63,8 +63,8 @@ public class BudgetView extends TabbedView
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		
 		addTab(budgetManagmentPanel.getPanelDescription(), budgetManagmentPanel);
-		addTab(accountingCodePoolManagementPanel.getPanelDescription(), accountingCodePoolManagementPanel);
-		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel);
+		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
+		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
 	}
 	
