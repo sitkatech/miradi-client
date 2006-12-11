@@ -90,7 +90,7 @@ public class DiagramView extends UmbrellaView implements CommandExecutedListener
 		super(mainWindowToUse);
 		mode = ViewData.MODE_DEFAULT;
 		diagram = new DiagramComponent(getMainWindow());
-		legendDialog = new DiagramLegendPanel();
+		legendDialog = new DiagramLegendPanel(getMainWindow().getActions());
 		getProject().setSelectionModel(diagram.getEAMGraphSelectionModel());
 		
 		addDiagramViewDoersToMap();
