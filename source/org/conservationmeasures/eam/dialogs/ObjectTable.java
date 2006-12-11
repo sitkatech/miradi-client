@@ -13,7 +13,6 @@ import java.util.Comparator;
 import java.util.Vector;
 
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.JTableHeader;
@@ -39,7 +38,6 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		columnHeader.setReorderingAllowed(true);
 		ColumnSortListener sortListener = new ColumnSortListener(this);
 		columnHeader.addMouseListener(sortListener);
-		modelToUse.addTableModelListener(this);
 		resizeTable(4);
 	}
 	
@@ -48,20 +46,17 @@ public class ObjectTable extends UiTable implements ObjectPicker
 		super.tableChanged(e);
 		if (e.getType()==TableModelEvent.INSERT)
 		{
-			SwingUtilities.invokeLater(new ScrollToNewRow());
+			scrollToAndSelectInsertedRow();
 		}
 	}
-	
-	private class  ScrollToNewRow implements Runnable
+
+	private void scrollToAndSelectInsertedRow()
 	{
-		public void run()
-		{
-			Rectangle rect = getCellRect(getRowCount()-1, 0, true);
-			scrollRectToVisible(rect);
-			setRowSelectionInterval(getRowCount()-1, getRowCount()-1);
-		}
-		
+		Rectangle rect = getCellRect(getRowCount()-1, 0, true);
+		scrollRectToVisible(rect);
+		setRowSelectionInterval(getRowCount()-1, getRowCount()-1);
 	}
+
 	
 	public ObjectTableModel getObjectTableModel()
 	{
