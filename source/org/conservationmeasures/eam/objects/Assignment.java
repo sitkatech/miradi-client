@@ -61,6 +61,8 @@ public class Assignment extends EAMBaseObject
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	
+	public static final String OBJECT_NAME = "Assignment";
+	
 	BaseIdData taskIdData;
 	BaseIdData resourceIdData;
 	DateRangeEffortListData detailListData;

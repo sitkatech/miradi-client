@@ -28,4 +28,6 @@ public class Objective extends Desire
 		return ObjectType.OBJECTIVE;
 	}
 	
+	public static final String OBJECT_NAME = "Objective";
+	
 }

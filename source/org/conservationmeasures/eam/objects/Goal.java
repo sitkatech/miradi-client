@@ -28,4 +28,5 @@ public class Goal extends Desire
 		return ObjectType.GOAL;
 	}
 
+	public static final String OBJECT_NAME = "Goal";
 }

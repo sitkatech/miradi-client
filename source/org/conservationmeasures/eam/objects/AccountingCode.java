@@ -51,6 +51,7 @@ public class AccountingCode extends EAMBaseObject
 	
 	public static final String TAG_CODE = "Code";
 	public static final String TAG_COMMENTS = "Comments";
+	public static final String OBJECT_NAME = "AccountingCode";
 
 	StringData code;
 	StringData comments;

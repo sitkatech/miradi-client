@@ -51,6 +51,8 @@ public class FundingSource extends EAMBaseObject
 	
 	public static final String TAG_CODE = "Code";
 	public static final String TAG_COMMENTS = "Comments";
+	public static final String OBJECT_NAME = "FundingSource";
+	
 
 	StringData code;
 	StringData comments;

@@ -61,6 +61,7 @@ public class Cause extends Factor
 	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String OBJECT_NAME = "Cause";
 	StringData taxonomyCode; 
 	
 	private int targetCount;

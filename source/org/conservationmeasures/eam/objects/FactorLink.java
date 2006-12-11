@@ -100,6 +100,7 @@ public class FactorLink extends EAMBaseObject
 	private static String TAG_FROM_ID = "FromId";
 	private static String TAG_TO_ID = "ToId";
 	public static String TAG_STRESS_LABEL = "StressLabel";
+	public static final String OBJECT_NAME = "Link";
 	
 	public static final int FROM = 1;
 	public static final int TO = 2;

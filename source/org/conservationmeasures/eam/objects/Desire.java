@@ -52,6 +52,7 @@ abstract public class Desire extends EAMBaseObject
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
+	public static final String OBJECT_NAME = "Desire";
 
 	StringData shortLabel;
 	StringData fullText;

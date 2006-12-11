@@ -218,7 +218,10 @@ abstract public class Factor extends EAMBaseObject
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
-	public static final String TAG_GOAL_IDS = "GoalIds";
+	public static final String TAG_GOAL_IDS = "GoalIds"; 
+	public static final String OBJECT_NAME = "Factor";
+	public static final String OBJECT_NAME_THREAT = "Direct Threat";
+	public static final String OBJECT_NAME_IN_CONTRIBUTING_THREAT = "Contributing Threat";
 	
 	private FactorType type;
 	private StringData comment;

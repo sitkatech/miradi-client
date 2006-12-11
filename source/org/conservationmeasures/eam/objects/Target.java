@@ -42,6 +42,6 @@ public class Target extends Factor
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
-	
+	public static final String OBJECT_NAME = "Target";
 	RatingData targetStatus;
 }

@@ -149,7 +149,8 @@ public class Strategy extends Factor
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_COST_RATING = "CostRating";
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "PseudoTagRatingSummary";
-
+	public static final String OBJECT_NAME = "Strategy";
+	
 	String status;
 	IdListData activityIds;
 	StringData taxonomyCode;
