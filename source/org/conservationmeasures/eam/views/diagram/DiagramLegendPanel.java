@@ -77,7 +77,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		
 		addButtonLine(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		addButtonLine(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLine(jpanel, Factor.OBJECT_NAME_IN_CONTRIBUTING_THREAT, actions.get(ActionInsertContributingFactor.class));
+		addButtonLine(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 		addButtonLine(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLine(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		
@@ -134,7 +134,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 			manager.setVisibility(DiagramStrategy.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTarget.class, checkBox.isSelected());
-		else if (property.equals(Factor.OBJECT_NAME_IN_CONTRIBUTING_THREAT))
+		else if (property.equals(Factor.OBJECT_NAME_CONTRIBUTING_FACTOR))
 			manager.setContributingFactorsVisible(checkBox.isSelected());
 		else if (property.equals(Factor.OBJECT_NAME_THREAT))
 			manager.setDirectThreatsVisible(checkBox.isSelected());
