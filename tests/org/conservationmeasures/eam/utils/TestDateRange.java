@@ -32,4 +32,40 @@ public class TestDateRange extends EAMTestCase
 		assertEquals("start date is same?", start, dateRange2.getStartDate());
 		assertEquals("end date is same?", end, dateRange2.getEndDate());	
 	}
+	
+	public void testIsWithinBounds() throws Exception
+	{
+		MultiCalendar boundsStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar boundsEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
+		
+		DateRange boundsDateRange = new DateRange(boundsStartDate, boundsEndDate);
+		
+		MultiCalendar innerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 5);
+		MultiCalendar innerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 10);
+		DateRange innerDateRange = new DateRange(innerStartDate, innerEndDate);
+		
+		MultiCalendar partialInnerStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 15);
+		MultiCalendar partialInnerEndDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 25);
+		DateRange  partialyInDateRange = new DateRange(partialInnerStartDate, partialInnerEndDate);
+		
+		assertEquals("is within bounds?", true, boundsDateRange.contains(innerDateRange));
+		assertEquals("is within bounds?", false, boundsDateRange.contains(partialyInDateRange));
+		assertEquals("contains itself?", true, boundsDateRange.contains(boundsDateRange));
+	}
+	
+	public void testCombine() throws Exception
+	{
+		MultiCalendar dateRange1Start = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 5);
+		MultiCalendar dateRange1End = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 10);
+		DateRange dateRange1 = new DateRange(dateRange1Start, dateRange1End);
+		
+		MultiCalendar dateRange2Start = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 15);
+		MultiCalendar dateRange2End = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 20);
+		DateRange dateRange2 = new DateRange(dateRange2Start, dateRange2End);	
+		
+		DateRange combined = new DateRange(dateRange1Start, dateRange2End); 
+		
+		assertEquals("combined date ranges?", combined, DateRange.combine(dateRange1, dateRange2));
+		assertEquals("combine with self is same?", dateRange1, DateRange.combine(dateRange1, dateRange1));
+	}
 }
