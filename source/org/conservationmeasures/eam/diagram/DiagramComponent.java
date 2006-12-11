@@ -186,6 +186,16 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return project.getLayerManager().areDesiresVisible();
 	}
 	
+	public boolean areGoalsVisible()
+	{
+		return project.getLayerManager().areGoalsVisible();
+	}
+	
+	public boolean areObjectivesVisible()
+	{
+		return project.getLayerManager().areObjectivesVisible();
+	}
+	
 	public boolean areIndicatorsVisible()
 	{
 		return project.getLayerManager().areIndicatorsVisible();

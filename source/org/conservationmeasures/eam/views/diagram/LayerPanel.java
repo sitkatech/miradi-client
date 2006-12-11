@@ -34,8 +34,11 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		targetCheckBox.addActionListener(this);
 		factorLinkCheckBox = new UiCheckBox(EAM.text("Label|Show Links"));
 		factorLinkCheckBox.addActionListener(this);
-		desireCheckBox = new UiCheckBox(EAM.text("Label|Show Goals and Objectives"));
-		desireCheckBox.addActionListener(this);
+		goalsCheckBox = new UiCheckBox(EAM.text("Label|Show Goals"));
+		goalsCheckBox.addActionListener(this);
+		objectivesCheckBox = new UiCheckBox(EAM.text("Label|Show Objectives"));
+		objectivesCheckBox.addActionListener(this);
+		
 		indicatorCheckBox = new UiCheckBox(EAM.text("Label|Show Indicators"));
 		indicatorCheckBox.addActionListener(this);
 		
@@ -55,7 +58,8 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		options.add(threatCheckBox);
 		options.add(targetCheckBox);
 		options.add(factorLinkCheckBox);
-		options.add(desireCheckBox);
+		options.add(goalsCheckBox);
+		options.add(objectivesCheckBox);
 		options.add(indicatorCheckBox);
 		return options;
 	}
@@ -77,7 +81,8 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		threatCheckBox.setSelected(getLayerManager().areDirectThreatsVisible());
 		targetCheckBox.setSelected(getLayerManager().isTypeVisible(DiagramTarget.class));
 		factorLinkCheckBox.setSelected(getLayerManager().areFactorLinksVisible());
-		desireCheckBox.setSelected(getLayerManager().areDesiresVisible());
+		goalsCheckBox.setSelected(getLayerManager().areGoalsVisible());
+		objectivesCheckBox.setSelected(getLayerManager().areObjectivesVisible());
 		indicatorCheckBox.setSelected(getLayerManager().areIndicatorsVisible());
 	}
 	
@@ -88,7 +93,8 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 		getLayerManager().setDirectThreatsVisible(threatCheckBox.isSelected());
 		getLayerManager().setVisibility(DiagramTarget.class, targetCheckBox.isSelected());
 		getLayerManager().setFactorLinksVisible(factorLinkCheckBox.isSelected());
-		getLayerManager().setDesiresVisible(desireCheckBox.isSelected());
+		getLayerManager().setGoalsVisible(goalsCheckBox.isSelected());
+		getLayerManager().setObjectivesVisible(objectivesCheckBox.isSelected());
 		getLayerManager().setIndicatorsVisible(indicatorCheckBox.isSelected());
 	}
 	
@@ -118,6 +124,7 @@ public class LayerPanel extends DisposablePanel implements ActionListener
 	UiCheckBox threatCheckBox;
 	UiCheckBox targetCheckBox;
 	UiCheckBox factorLinkCheckBox;
-	UiCheckBox desireCheckBox;
+	UiCheckBox goalsCheckBox;
+	UiCheckBox objectivesCheckBox;
 	UiCheckBox indicatorCheckBox;
 }

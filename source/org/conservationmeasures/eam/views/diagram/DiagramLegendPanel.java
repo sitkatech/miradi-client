@@ -16,6 +16,7 @@ import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -73,7 +74,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	private JPanel createLegendButtonPanel(Actions actions)
 	{
 		JPanel jpanel = new JPanel(new BasicGridLayout(0,3));
-		addButtonLine(jpanel, "Project Scope", new ProjectScopeIcon(),false);
+		addButtonIconLineWithoutCheckBox(jpanel, "Project Scope", new ProjectScopeIcon());
 		
 		addButtonLine(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		addButtonLine(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
@@ -81,10 +82,10 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addButtonLine(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLine(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		
-		addButtonLine(jpanel, Goal.OBJECT_NAME, new GoalIcon(),true);
-		addButtonLine(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon(),true);
-		addButtonLine(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon(),true);
-		addButtonLine(jpanel, "Stress", new StressIcon(),false);
+		addButtonIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
+		addButtonIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
+		addButtonIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
+		addButtonIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
 		
 		return jpanel;
 	}
@@ -102,22 +103,29 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		jpanel.add(checkBox);
 	}
 	
-	private void addButtonLine(JPanel jpanel, String text, Icon icon, boolean hasCheckBox)
+	private void addButtonIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)
+	{
+		JCheckBox component = new JCheckBox();
+		component.setSelected(true);
+		component.putClientProperty(LAYER, new String(text));
+		component.addActionListener(this);
+		addToIconLinePanel(jpanel, text, icon, component);
+		
+	}
+
+	private void addButtonIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
+	{
+		UiLabel component = new UiLabel("");
+		addToIconLinePanel(jpanel, text, icon, component);
+	}
+
+	private void addToIconLinePanel(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
 		JPanel centeringPanel = new JPanel();
 		centeringPanel.add(new UiLabel("",icon,AbstractButton.LEFT));
 		jpanel.add(centeringPanel);
 		jpanel.add(new UiLabel(EAM.text(text)));
-		if (hasCheckBox)
-		{
-			JCheckBox checkBox = new JCheckBox();
-			checkBox.setSelected(true);
-			checkBox.putClientProperty(LAYER, new String(text));
-			checkBox.addActionListener(this);
-			jpanel.add(checkBox);
-		}
-		else
-			jpanel.add(new UiLabel(""));
+		jpanel.add(component);
 	}
 
 	
@@ -142,10 +150,10 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 			manager.setVisibility(DiagramTarget.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
 			manager.setFactorLinksVisible(checkBox.isSelected());
-		else if (property.equals(Objective.OBJECT_NAME))
-			manager.setDesiresVisible(checkBox.isSelected());
 		else if (property.equals(Goal.OBJECT_NAME))
-			manager.setDesiresVisible(checkBox.isSelected());
+			manager.setGoalsVisible(checkBox.isSelected());
+		else if (property.equals(Objective.OBJECT_NAME))
+			manager.setObjectivesVisible(checkBox.isSelected());
 		else if (property.equals(Indicator.OBJECT_NAME))
 			manager.setIndicatorsVisible(checkBox.isSelected());
 

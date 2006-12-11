@@ -22,7 +22,8 @@ public class LayerManager
 		contributingFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
 		linkagesVisibleFlag = true;
-		desiresVisibleFlag = true;
+		goalsVisibleFlag = true;
+		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
 	}
 	
@@ -110,12 +111,33 @@ public class LayerManager
 	
 	public boolean areDesiresVisible()
 	{
-		return desiresVisibleFlag;
+		return goalsVisibleFlag && objectivesVisibleFlag;
+	}
+	
+	public boolean areGoalsVisible()
+	{
+		return goalsVisibleFlag;
+	}
+	
+	public boolean areObjectivesVisible()
+	{
+		return objectivesVisibleFlag;
 	}
 	
 	public void setDesiresVisible(boolean newSetting)
 	{
-		desiresVisibleFlag = newSetting;
+		setGoalsVisible(newSetting);
+		setObjectivesVisible(newSetting);
+	}
+	
+	public void setGoalsVisible(boolean newSetting)
+	{
+		goalsVisibleFlag = newSetting;
+	}
+	
+	public void setObjectivesVisible(boolean newSetting)
+	{
+		objectivesVisibleFlag = newSetting;
 	}
 	
 	public boolean areIndicatorsVisible()
@@ -134,6 +156,7 @@ public class LayerManager
 	boolean contributingFactorsVisibleFlag;
 	boolean directThreatsVisibleFlag;
 	boolean linkagesVisibleFlag;
-	boolean desiresVisibleFlag;
+	boolean goalsVisibleFlag;
+	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;
 }
