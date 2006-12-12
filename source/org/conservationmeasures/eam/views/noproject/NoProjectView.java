@@ -48,6 +48,29 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				getMainWindow().createOrOpenProject(projectDirectory);
 			}
+			else if(linkDescription.startsWith(COPY_PREFIX))
+			{
+				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
+				copyProject(projectDirectory);
+			}
+			else if(linkDescription.startsWith(EXPORT_PREFIX))
+			{
+				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
+				exportProject(projectDirectory);
+			}
+			else if(linkDescription.startsWith(DELETE_PREFIX))
+			{
+				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
+				deleteProjectAfterConfirmation(projectDirectory);
+			}
+			else if(linkDescription.startsWith(RENAME_PREFIX))
+			{
+				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				renameProject(projectName);
+			}
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
 				showDefinition(linkDescription);
@@ -101,9 +124,12 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		JPopupMenu menu = new JPopupMenu();
 		menu.add(new FakeHyperlinkAction("Open", this, OPEN_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Copy", this, COPY_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Rename", this, RENAME_PREFIX + itemText));
-		menu.add(new FakeHyperlinkAction("Delete", this, DELETE_PREFIX + itemText));
+		menu.addSeparator();
+		menu.add(new FakeHyperlinkAction("Rename...", this, RENAME_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction("Copy to...", this, COPY_PREFIX + itemText));
+		menu.add(new FakeHyperlinkAction("Export to Zip...", this, EXPORT_PREFIX + itemText));
+		menu.addSeparator();
+		menu.add(new FakeHyperlinkAction("Delete...", this, DELETE_PREFIX + itemText));
 		return menu;
 	}
 	
@@ -189,6 +215,26 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		projectList.refresh();
 	}
 
+	private void renameProject(String projectName)
+	{
+		// TODO implement this
+	}
+
+	private void deleteProjectAfterConfirmation(File projectDirectory)
+	{
+		// TODO implement this
+	}
+
+	private void exportProject(File projectDirectory)
+	{
+		// TODO implement this
+	}
+
+	private void copyProject(File projectDirectory)
+	{
+		// TODO implement this
+	}
+
 	public String cardName()
 	{
 		return getViewName();
@@ -203,6 +249,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	public static final String COPY_PREFIX = "COPY:";
 	public static final String RENAME_PREFIX = "RENAME:";
 	public static final String DELETE_PREFIX = "DELETE:";
+	public static final String EXPORT_PREFIX = "EXPORT:";
 	
 	public static final String DEFINITION_PREFIX = "Definition:";
 
