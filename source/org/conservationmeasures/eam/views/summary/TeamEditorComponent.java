@@ -45,25 +45,24 @@ public class TeamEditorComponent extends ObjectTablePanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			if (isResourceRoleCodeUpdate(event))
-				((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
+		notifyTableRoleCodeChange(event);
 	}
 
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		super.commandUndone(event);
-		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			if (isResourceRoleCodeUpdate(event))
-			((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
+		notifyTableRoleCodeChange(event);
 	}
 	
-	private boolean isResourceRoleCodeUpdate(CommandExecutedEvent event)
+	private void notifyTableRoleCodeChange(CommandExecutedEvent event)
 	{
-		if (((CommandSetObjectData)event.getCommand()).getObjectType() == ObjectType.PROJECT_RESOURCE) 
-		{
-			return ((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES);
-		}
-		return false;
+		if (!event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+		
+		if (((CommandSetObjectData) event.getCommand()).getObjectType() != ObjectType.PROJECT_RESOURCE)
+			return;
+		
+		if (((CommandSetObjectData) event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES))
+			((ObjectTableModel) getTable().getModel()).rowsWereAddedOrRemoved();
 	}
 }
