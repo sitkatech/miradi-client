@@ -36,23 +36,6 @@ public class BudgetTableModel extends AbstractTableModel
 		setProjectDateRanges();
 	}
 	
-	public boolean isCellEditable(int row, int col) 
-	{
-		if (isUnitsTotalColumn(col))
-			return false;
-		
-		if (isCostTotalsColumn(col))
-			return false;
-		
-		if (isLabelColumn(col))
-			return false;
-		
-		if (isOdd(row))
-			return false;
-			
-		return true;
-	}
-	
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
@@ -94,7 +77,7 @@ public class BudgetTableModel extends AbstractTableModel
 	public int getRowCount()
 	{
 		if (assignmentIdList != null)
-			return assignmentIdList.size() * 2;
+			return (assignmentIdList.size() * 2) + 2;
 		
 		return 0;
 	}
@@ -117,6 +100,34 @@ public class BudgetTableModel extends AbstractTableModel
 	public int getResourcesColumnIndex()
 	{
 		return 0;
+	}
+
+	public boolean isCellEditable(int row, int col) 
+	{
+		if (isUnitsTotalColumn(col))
+			return false;
+		
+		if (isCostTotalsColumn(col))
+			return false;
+		
+		if (isLabelColumn(col))
+			return false;
+		
+		if (isTotalsRow(row))
+			return false;
+		
+		if (isOdd(row))
+			return false;
+			
+		return true;
+	}
+	
+	private boolean isTotalsRow(int row)
+	{
+		if (row < (getRowCount() - 2))
+			return false;
+			
+		return true;
 	}
 
 	public String getColumnName(int col)
@@ -161,6 +172,28 @@ public class BudgetTableModel extends AbstractTableModel
 		
 		return new String("");
 	}
+	
+	public void setValueAt(Object value, int row, int col)
+	{
+		if (isOdd(row))
+			return;
+		
+		row = getCorrectedRow(row); 
+		if (value == null)
+		{
+			EAM.logDebug("value in setValueAt is null");
+			return;
+		}
+		if (isResourceColumn(col))
+		{
+			setResource(value, row);
+			return;
+		}
+		
+		if (isUnitsColumn(col))
+			setUnits(value, row, covertToUnitsColumn(col));
+	}
+
 
 	private boolean isLabelColumn(int col)
 	{
@@ -184,6 +217,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getCost(int row, int col)
 	{
+		if (isTotalsRow(row))
+			return "";
+		
 		if (!isOdd(row))
 			return "";
 		
@@ -236,6 +272,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private String getResourceCellLabel(int row, int col)
 	{
+		if (isTotalsRow(row))
+			return "";
+		
 		if (isStaticLabelColum(col))
 			return getStaticCellLabel(row, col); 
 		
@@ -262,6 +301,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private String getTotalCost(int row)
 	{
+		if (isTotalsRow(row))
+			return"";
+		
 		if (!isOdd(row))
 			return "";
 		
@@ -281,6 +323,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getTotalUnits(int row)
 	{
+		if (isTotalsRow(row))
+			return"";
+		
 		if (isOdd(row))
 			return "";
 		try
@@ -307,10 +352,13 @@ public class BudgetTableModel extends AbstractTableModel
 	//FIXME budget code - dont return string just the value
 	public String getUnit(int row, int col)
 	{
-		double units = 0;
+		if (isTotalsRow(row))
+			return "";
+		
 		if (isOdd(row))
 			return "";
 		
+		double units = 0;
 		try
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
@@ -361,6 +409,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public ProjectResource getCurrentResource(int row)
 	{
+		if (isTotalsRow(row))
+			return null;
+		
 		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
@@ -370,27 +421,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return resource;
 	}
 	
-	public void setValueAt(Object value, int row, int col)
-	{
-		if (isOdd(row))
-			return;
-		
-		row = getCorrectedRow(row); 
-		if (value == null)
-		{
-			EAM.logDebug("value in setValueAt is null");
-			return;
-		}
-		if (col == getResourcesColumnIndex())
-		{
-			setResource(value, row);
-			return;
-		}
-		
-		if (isUnitsColumn(col))
-			setUnits(value, row, covertToUnitsColumn(col));
-	}
-
 	public int getCorrectedRow(int row)
 	{
 		return row /= 2;
