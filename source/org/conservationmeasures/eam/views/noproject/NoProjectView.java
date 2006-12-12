@@ -19,9 +19,11 @@ import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZipFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.EAMAction;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 import org.conservationmeasures.eam.views.umbrella.WizardHtmlViewer;
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
@@ -50,25 +52,25 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			}
 			else if(linkDescription.startsWith(COPY_PREFIX))
 			{
-				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(COPY_PREFIX.length());
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				copyProject(projectDirectory);
 			}
 			else if(linkDescription.startsWith(EXPORT_PREFIX))
 			{
-				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(EXPORT_PREFIX.length());
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				exportProject(projectDirectory);
 			}
 			else if(linkDescription.startsWith(DELETE_PREFIX))
 			{
-				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(DELETE_PREFIX.length());
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				deleteProjectAfterConfirmation(projectDirectory);
 			}
 			else if(linkDescription.startsWith(RENAME_PREFIX))
 			{
-				String projectName = linkDescription.substring(OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(RENAME_PREFIX.length());
 				renameProject(projectName);
 			}
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
@@ -225,9 +227,9 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		// TODO implement this
 	}
 
-	private void exportProject(File projectDirectory)
+	private void exportProject(File projectDirectory) throws CommandFailedException
 	{
-		// TODO implement this
+		ExportZippedProjectFileDoer.perform(getMainWindow(), projectDirectory);
 	}
 
 	private void copyProject(File projectDirectory)
