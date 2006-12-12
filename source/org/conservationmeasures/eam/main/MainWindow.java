@@ -163,6 +163,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		currentView = view;
 		currentView.becomeActive();
 		updateToolBar();
+		savePreferences();
 	}
 
 	public void updateToolBar()
