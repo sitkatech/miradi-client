@@ -72,6 +72,9 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (budgetModel.isOdd(selectedRow))
 			return new EAMObject[0];
 		
+		if (budgetModel.isTotalsRow(selectedRow))
+			return new EAMObject[0];
+		
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
 		//FIXME budget code - remove commented code

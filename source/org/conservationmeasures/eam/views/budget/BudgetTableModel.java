@@ -122,7 +122,7 @@ public class BudgetTableModel extends AbstractTableModel
 		return true;
 	}
 	
-	private boolean isTotalsRow(int row)
+	public boolean isTotalsRow(int row)
 	{
 		if (row < (getRowCount() - 2))
 			return false;
