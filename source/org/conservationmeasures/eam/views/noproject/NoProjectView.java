@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -222,9 +223,9 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 		// TODO implement this
 	}
 
-	private void deleteProjectAfterConfirmation(File projectDirectory)
+	private void deleteProjectAfterConfirmation(File projectDirectory) throws FileNotFoundException, CommandFailedException
 	{
-		// TODO implement this
+		DeleteProject.doIt(getMainWindow(), projectDirectory);
 	}
 
 	private void exportProject(File projectDirectory) throws CommandFailedException
