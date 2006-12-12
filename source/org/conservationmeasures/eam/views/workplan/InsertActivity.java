@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
@@ -88,7 +89,15 @@ public class InsertActivity extends WorkPlanDoer
 		int type = selected.getObjectReference().getObjectType();
 		if (type == ObjectType.TASK)
 			return true;
-		if (type == ObjectType.INDICATOR)
+		
+			if (type == ObjectType.INDICATOR)
+			return true;
+		
+		if (type != ObjectType.FACTOR )
+			return false;
+		
+		Factor factor = ((Factor)selected.getObject());
+		if (factor.isStrategy())
 			return true;
 		
 		return false;
