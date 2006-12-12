@@ -42,35 +42,15 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	{
 		try 
 		{
-			if(linkDescription.startsWith(NoProjectView.OPEN_PREFIX))
+			if(linkDescription.startsWith(OPEN_PREFIX))
 			{
-				String projectName = linkDescription.substring(NoProjectView.OPEN_PREFIX.length());
+				String projectName = linkDescription.substring(OPEN_PREFIX.length());
 				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
 				getMainWindow().createOrOpenProject(projectDirectory);
 			}
-			else if(linkDescription.equals("Definition:Project"))
+			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
-				EAM.okDialog("Definition: Project", new String[] {"A project is..."});
-			}
-			else if(linkDescription.equals("Definition:CMP"))
-			{
-				EAM.okDialog("Definition: Conservation Measures Partnership", new String[] {"The Conservation Measures Partnership (CMP) is..."});
-			}
-			else if(linkDescription.equals("Definition:OpenStandards"))
-			{
-				EAM.okDialog("Definition: Open Standards", new String[] {"The Open Standards are..."});
-			}
-			else if(linkDescription.equals("Definition:NewProject"))
-			{
-				EAM.okDialog("Definition: New Project", new String[] {"A New Project is..."});
-			}
-			else if(linkDescription.equals("Definition:ImportZip"))
-			{
-				EAM.okDialog("Definition: Zipped Project", new String[] {"A Zipped Project is..."});
-			}
-			else if(linkDescription.equals("Definition:ImportCAP"))
-			{
-				EAM.okDialog("Definition: CAP Workbook", new String[] {"A CAP Workbook is..."});
+				showDefinition(linkDescription);
 			}
 			else
 			{
@@ -83,7 +63,40 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
 		}
 	}
-
+	
+	void showDefinition(String linkDescription)
+	{
+		String itemToDefine = linkDescription.substring(DEFINITION_PREFIX.length());
+		String[] definition = new String[] {"Not available"};
+		
+		if(itemToDefine.equals("Project"))
+		{
+			definition = new String[] {"A project is..."};
+		}
+		else if(itemToDefine.equals("CMP"))
+		{
+			definition = new String[] {"The Conservation Measures Partnership (CMP) is..."};
+		}
+		else if(itemToDefine.equals("OpenStandards"))
+		{
+			definition = new String[] {"The Open Standards are..."};
+		}
+		else if(itemToDefine.equals("NewProject"))
+		{
+			definition = new String[] {"A New Project is..."};
+		}
+		else if(itemToDefine.equals("ImportZip"))
+		{
+			definition = new String[] {"A Zipped Project is..."};
+		}
+		else if(itemToDefine.equals("ImportCAP"))
+		{
+			definition = new String[] {"A CAP Workbook is..."};
+		}
+		
+		EAM.okDialog("Definition", definition);
+	}
+	
 	public JPopupMenu getRightClickMenu(String itemText)
 	{
 		JPopupMenu menu = new JPopupMenu();
@@ -190,6 +203,8 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 	public static final String COPY_PREFIX = "COPY:";
 	public static final String RENAME_PREFIX = "RENAME:";
 	public static final String DELETE_PREFIX = "DELETE:";
+	
+	public static final String DEFINITION_PREFIX = "Definition:";
 
 	ProjectList projectList;
 }
