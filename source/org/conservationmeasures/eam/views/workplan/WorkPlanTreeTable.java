@@ -9,7 +9,6 @@ import javax.swing.tree.TreeSelectionModel;
 
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableWithStateSaving;
-import org.conservationmeasures.eam.views.treeViews.WorkPlanTreeTableModel;
 
 public class WorkPlanTreeTable extends TreeTableWithStateSaving 
 {

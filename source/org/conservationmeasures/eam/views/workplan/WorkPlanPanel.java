@@ -6,9 +6,10 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
-import org.conservationmeasures.eam.views.treeViews.WorkPlanTreeTableModel;
 
 public class WorkPlanPanel extends TaskTreeTablePanel
 {
@@ -24,4 +25,10 @@ public class WorkPlanPanel extends TaskTreeTablePanel
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
 	}
+	
+	public Strategy getParentIntervention(Task activity)
+	{
+		return ((WorkPlanTreeTableModel)model).getParentIntervention(activity);
+	}
+	
 }

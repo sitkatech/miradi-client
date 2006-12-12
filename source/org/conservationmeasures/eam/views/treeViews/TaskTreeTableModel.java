@@ -9,11 +9,8 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.objects.Strategy;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.views.GenericTreeTableModel;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.workplan.WorkPlanStrategy;
 
 public class TaskTreeTableModel extends GenericTreeTableModel
 {
@@ -30,13 +27,6 @@ public class TaskTreeTableModel extends GenericTreeTableModel
 	public String getColumnName(int column)
 	{
 		return null;
-	}
-
-	public Strategy getParentIntervention(Task activity)
-	{
-		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
-		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();
-		return workPlanStrategy.getIntervention();
 	}
 
 	public TreePath getPathOfParent(int objectType, BaseId objectId)

@@ -135,11 +135,6 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	{
 		return model;
 	}
-
-	public Strategy getParentIntervention(Task activity)
-	{
-		return model.getParentIntervention(activity);
-	}
 	
 	protected Box createButtonBox(Actions actions)
 	{
