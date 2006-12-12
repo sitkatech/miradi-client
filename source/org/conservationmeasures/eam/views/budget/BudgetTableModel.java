@@ -49,8 +49,6 @@ public class BudgetTableModel extends AbstractTableModel
 		
 		if (isOdd(row))
 			return false;
-		
-		
 			
 		return true;
 	}
@@ -136,34 +134,27 @@ public class BudgetTableModel extends AbstractTableModel
 			return "Cost Totals";
 		
 		if (isUnitsColumn(col))
-			return dateRanges[getUnitsColumn(col)].getLabel();
+			return dateRanges[covertToUnitsColumn(col)].getLabel();
 		
 		return "";
 	}
 
-	private boolean isLabelColumn(int col)
-	{
-		return 1 <= col && col <= STATIC_LABEL_COLUMN_COUNT;
-	}
-
-	private boolean isUnitsColumn(int col)
-	{
-		return ! isOdd(col + RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT);
-	}
-	
 	public Object getValueAt(int row, int col)
 	{
-		if (isStaticLabelColum(col))
-			return getStaticCellLabel(row, col); 
-		
-		if (isOdd(row) && ! isCostColumn(col))
-			return new String("");
-		
 		if (isResourceColumn(col))
-			return getCurrentResource(getCorrectedRow(row));
+			return getCurrentResource(row);
 		
 		if (isLabelColumn(col))
-			return getResourceCellLabel(getCorrectedRow(row), col);
+			return getResourceCellLabel(row, col);
+		
+		if (isCostColumn(col))
+			return getCost(row, col);
+		
+		if (isUnitsColumn(col))
+			return getUnitsFor(row, col);
+		
+	
+		
 		
 		if (isTotalColumn(col))
 			return getTotalUnits(getCorrectedRow(row));
@@ -171,15 +162,16 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isOdd(row) && isCostTotalsColumn(col))
 			return getTotalCost(getCorrectedRow(row));
 		
-		if (isOdd(row) && (isCostColumn(col)))
-			return getCost(row, col);
 		
-		if (isUnitsColumn(col))
-			return getUnitsFor(getCorrectedRow(row), getUnitsColumn(col));
 		
 		return new String("");
 	}
 
+	private boolean isLabelColumn(int col)
+	{
+		return 1 <= col && col <= STATIC_LABEL_COLUMN_COUNT;
+	}
+	
 	private boolean isResourceColumn(int col)
 	{
 		return col == getResourcesColumnIndex();
@@ -197,35 +189,61 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getCost(int row, int col)
 	{
-		ProjectResource currentResource = getCurrentResource(getCorrectedRow(row));
+		if (!isOdd(row))
+			return "";
+		
+		ProjectResource currentResource = getCurrentResource(row);
 		if (currentResource == null)
 			return "";
 		
-		double units = new Double(getUnitsFor(getCorrectedRow(row), getUnitsColumn(col))).doubleValue();
+		double units = new Double(getUnitsFor(row, col)).doubleValue();
 		double costPerUnit = currentResource.getCostPerUnit();
 		return new Double(units * costPerUnit);
 	}
 
+	private boolean isUnitsColumn(int col)
+	{
+		if (col < (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT))
+			return false;
+		
+		if (isOdd(col))
+			return false;
+		
+		if (col  < (getColumnCount() - TOTALS_COLUMNS_COUNT ))
+			return true;
+		
+		return false;
+	}
+	
 	private boolean isCostColumn(int col)
 	{
-		return isOdd(col + RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT);
-	}
-
-	private boolean isStaticLabelColum(int col)
-	{
-		if (col == COST_UNIT_LABEL_COLUMN)
+		if (col < (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT))
+			return false;
+		
+		if (!isOdd(col))
+			return false;
+		
+		if (col  < (getColumnCount() - TOTALS_COLUMNS_COUNT ))
 			return true;
 		
 		return false;
 	}
 
-	private int getUnitsColumn(int col)
+	private boolean isStaticLabelColum(int col)
+	{
+		return col == COST_UNIT_LABEL_COLUMN;
+	}
+
+	private int covertToUnitsColumn(int col)
 	{
 		return (col - (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT)) / 2;
 	}
 	
 	private String getResourceCellLabel(int row, int col)
 	{
+		if (isStaticLabelColum(col))
+			return getStaticCellLabel(row, col); 
+		
 		ProjectResource resource = getCurrentResource(row);
 		if (resource  == null)
 			return "";
@@ -284,13 +302,13 @@ public class BudgetTableModel extends AbstractTableModel
 	}
 
 	//FIXME budget code - dont return string just the value
-	public String getUnitsFor(int row, int timeIndex)
+	public String getUnitsFor(int row, int col)
 	{
 		double units = 0;
 		try
 		{
-			DateRangeEffortList effortList = getDateRangeEffortList(row);
-			units = effortList.getUnitsForDateRange(dateRanges[timeIndex]);
+			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
+			units = effortList.getUnitsForDateRange(dateRanges[covertToUnitsColumn(col)]);
 		}
 		catch (Exception e)
 		{
@@ -337,7 +355,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public ProjectResource getCurrentResource(int row)
 	{
-		BaseId assignmentId = getSelectedAssignment(row);
+		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
 		
@@ -364,7 +382,7 @@ public class BudgetTableModel extends AbstractTableModel
 		}
 		
 		if (isUnitsColumn(col))
-			setUnits(value, row, getUnitsColumn(col));
+			setUnits(value, row, covertToUnitsColumn(col));
 	}
 
 	public int getCorrectedRow(int row)
