@@ -15,6 +15,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
@@ -146,6 +147,11 @@ public class About extends Doer  implements HyperlinkHandler
 
 	public void linkClicked(String linkDescription)
 	{
+	}
+
+	public JPopupMenu getRightClickMenu(String url)
+	{
+		return null;
 	}
 
 	public void valueChanged(String widget, String newValue)

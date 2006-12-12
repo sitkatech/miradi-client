@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -92,6 +93,11 @@ public abstract class WizardStep extends JPanel implements HyperlinkHandler
 	
 	public void linkClicked(String linkDescription)
 	{
+	}
+
+	public JPopupMenu getRightClickMenu(String url)
+	{
+		return null;
 	}
 
 	public void valueChanged(String widget, String newValue)
