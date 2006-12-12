@@ -3,12 +3,16 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.treeViews;
+package org.conservationmeasures.eam.views.workplan;
+
+import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.workplan.WorkPlanRoot;
+import org.conservationmeasures.eam.views.treeViews.TaskTreeTableModel;
 
 public class WorkPlanTreeTableModel extends TaskTreeTableModel
 {
@@ -26,6 +30,13 @@ public class WorkPlanTreeTableModel extends TaskTreeTableModel
 	public String getColumnName(int column)
 	{
 		return EAM.fieldLabel(ObjectType.TASK, columnTags[column]);
+	}
+	
+	public Strategy getParentIntervention(Task activity)
+	{
+		TreePath interventionPath = getPathOfParent(activity.getType(), activity.getId());
+		WorkPlanStrategy workPlanStrategy = (WorkPlanStrategy)interventionPath.getLastPathComponent();
+		return workPlanStrategy.getIntervention();
 	}
 
 	public static String[] columnTags = {"Item", };

@@ -3,17 +3,17 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.treeViews;
+package org.conservationmeasures.eam.views.budget;
 
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
-import org.conservationmeasures.eam.views.workplan.WorkPlanRoot;
 import org.conservationmeasures.eam.views.TreeTableNode;
+import org.conservationmeasures.eam.views.treeViews.TaskTreeTableModel;
+import org.conservationmeasures.eam.views.workplan.WorkPlanRoot;
 
 public class BudgetTreeTableModel extends TaskTreeTableModel
 {
@@ -36,27 +36,41 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	public Object getValueAt(Object rawNode, int column)
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
-		String totalCost = Double.toString(calculateTotalCost(node.getObjectReference()));
+		String totalCost = Double.toString(calculateTotalCost(node));
 		return totalCost;
 	}
 	
-	private double calculateTotalCost(ORef oRef)
+	private double calculateTotalCost(TreeTableNode node)
 	{
-		if (oRef.getObjectType() != ObjectType.TASK)
-			return 0.0;
-		
 		try
 		{
-			EAMObject foundObject = project.findObject(oRef.getObjectType(), oRef.getObjectId());
+			ORef oRef = node.getObjectReference();
+			int type = node.getObjectReference().getObjectType();
 			BudgetTotalsCalculator totalCalculator = new BudgetTotalsCalculator(project);
-			return totalCalculator.getTotalCost((Task)foundObject);
+			
+			if (type == ObjectType.INDICATOR)
+				return totalCalculator.getTotalIndicatorCost(oRef);
+			
+			if (type == ObjectType.FACTOR)
+				return totalCalculator.getTotalFactorCost(getFactor(oRef));
+
+			if (oRef.getObjectType() == ObjectType.TASK)
+				return totalCalculator.getTotalTaskCost((TaskId)oRef.getObjectId());
+			
+			if (oRef.getObjectType() == ObjectType.FAKE)
+				return totalCalculator.getTotalFakeCost(node);
+				
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
-	
 		return  0.0;
+	}
+
+	private Factor getFactor(ORef oRef)
+	{
+		return (Factor)project.findObject(oRef.getObjectType(), oRef.getObjectId());
 	}
 
 	private Project project;
