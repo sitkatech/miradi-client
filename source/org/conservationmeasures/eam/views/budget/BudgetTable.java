@@ -128,8 +128,8 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
             setBackground(table.getBackground());
         }
         
-        boolean isRowEditable = ((BudgetTable)table).getBudgetModel().isCellEditable(row, col);
-        if (! isRowEditable)
+        BudgetTableModel budgetModel = ((BudgetTable)table).getBudgetModel();
+		if (! budgetModel.isCellEditable(row, col))
         	return new JLabel("");
         
         setSelectedItem(value);
