@@ -29,6 +29,21 @@ public class BudgetTotalsCalculator
 		project = projectToUse;
 	}
 	
+	public double getTotalUnits(IdList assignmentIdList, DateRange dateRange) throws Exception
+	{
+		double totalDateRangeUnits = 0.0;
+		for (int i = 0 ; i < assignmentIdList.size(); i++)
+			totalDateRangeUnits += getTotalUnits(assignmentIdList.get(i), dateRange);
+		
+		return totalDateRangeUnits;
+	}
+	
+	public double getTotalUnits(BaseId assignmentId, DateRange dateRange) throws Exception
+	{
+		Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, assignmentId);
+		return getTotalUnits(assignment, dateRange);
+	}
+	
 	public double getTotalUnits(Assignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(assignment);

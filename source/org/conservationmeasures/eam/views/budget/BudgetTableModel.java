@@ -223,7 +223,7 @@ public class BudgetTableModel extends AbstractTableModel
 				return "";
 
 			if (isTotalsRow(row))
-				return new Double(getTotalCostForColumn(row, col));
+				return Double.toString(getTotalCostForColumn(row, col));
 
 			ProjectResource currentResource = getCurrentResource(row);
 			if (currentResource == null)
@@ -232,7 +232,7 @@ public class BudgetTableModel extends AbstractTableModel
 			final int BACK_ONE_ROW = 1;
 			double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
 			double costPerUnit = currentResource.getCostPerUnit();
-			return new Double(units * costPerUnit);
+			return Double.toString(units * costPerUnit);
 		}
 		catch (Exception e)
 		{
@@ -372,15 +372,15 @@ public class BudgetTableModel extends AbstractTableModel
 	//FIXME budget code - dont return string just the value
 	public String getUnit(int row, int col)
 	{
-		if (isTotalsRow(row))
-			return "";
-		
 		if (isOdd(row))
 			return "";
-		
-		double units = 0;
+
+		double units = 0.0;
 		try
 		{
+			if (isTotalsRow(row))
+				return Double.toString(getTotalColumnUnits(row, col));
+			
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
 			units = effortList.getUnitsForDateRange(dateRanges[covertToUnitsColumn(col)]);
 		}
@@ -388,8 +388,17 @@ public class BudgetTableModel extends AbstractTableModel
 		{
 			EAM.logException(e);
 		}
-
 		return Double.toString(units);
+	}
+
+	private double getTotalColumnUnits(int row, int col) throws Exception
+	{
+		if (getRowCount() <= 2)
+			return 0.0;
+		
+		DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+		double totalCostColumn = totalsCalculator.getTotalUnits(assignmentIdList, dateRange);
+		return totalCostColumn;
 	}
 
 	private DateRangeEffortList getDateRangeEffortList(int row) throws Exception
