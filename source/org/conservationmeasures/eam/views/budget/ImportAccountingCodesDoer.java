@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.StringReader;
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.commands.CommandBeginTransaction;
@@ -21,6 +22,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.AccountingCodeData;
 import org.conservationmeasures.eam.objecthelpers.AccountingCodeLoader;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ViewDoer;
@@ -86,12 +88,18 @@ public class ImportAccountingCodesDoer extends ViewDoer
 
 	private static AccountingCode[] processData(Project project, AccountingCodeData[] accountingCodes) throws Exception
 	{
+		AccountMap map = new AccountMap(project);
 		Vector accountingCodeVector = new Vector();
 		for (int i=0; i<accountingCodes.length; ++i) 
 		{
 			AccountingCodeData AccountingCodeData = accountingCodes[i];
+			
+			if (map.isDuplicate(AccountingCodeData.getCode(), AccountingCodeData.getLabel()))
+					continue;
+			
 			CommandCreateObject cmd = new CommandCreateObject(ObjectType.ACCOUNTING_CODE);
 			project.executeCommand(cmd);
+			
 			BaseId baseId = cmd.getCreatedId();
 			AccountingCode accountingCode = new AccountingCode(baseId);
 			accountingCodeVector.add(accountingCode);
@@ -108,8 +116,34 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		AccountingCode[] toArray = (AccountingCode[])accountingCodeVector.toArray(new AccountingCode[0]);
 		return toArray;
 	}
+
+}
+
+class AccountMap extends HashMap
+{
+	public AccountMap(Project project)
+	{
+		super();
+		EAMObjectPool accountingCodePool = project.getPool(ObjectType.ACCOUNTING_CODE);
+		BaseId[] existingBaseIds = accountingCodePool.getIds();
+		loadExistingCodes(project, existingBaseIds);
+	}
 	
+	public boolean isDuplicate(String code, String label)
+	{
+		if (!containsKey(code))
+			return false;
+				
+		return (get(code).equals(label));
+	}
 	
-	
-	
+	private void loadExistingCodes(Project project, BaseId[] existingBaseIds)
+	{
+		for (int i =0; i< existingBaseIds.length; ++i)
+		{
+			String key = project.getObjectData(ObjectType.ACCOUNTING_CODE, existingBaseIds[i], AccountingCode.TAG_CODE);
+			String value = project.getObjectData(ObjectType.ACCOUNTING_CODE, existingBaseIds[i], AccountingCode.TAG_LABEL);
+			put(key, value);
+		}
+	}
 }

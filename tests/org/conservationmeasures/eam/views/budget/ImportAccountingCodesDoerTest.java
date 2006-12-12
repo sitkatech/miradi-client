@@ -45,9 +45,12 @@ public class ImportAccountingCodesDoerTest extends EAMTestCase
 		assertEquals("code1A", accountingCode.getData(AccountingCode.TAG_CODE));
 	}
 
-	public void testOne() throws Exception
+	public void testRejectionOfDuplicates() throws Exception
 	{
-		
+		testTwoRows();
+		String data = "code1A \t label1A \n code1B \t label1B";
+		ImportAccountingCodesDoer.importCodes(data, project);
+		assertEquals(2, project.getPool(ObjectType.ACCOUNTING_CODE).size());
 	}
 	
 	Project project;
