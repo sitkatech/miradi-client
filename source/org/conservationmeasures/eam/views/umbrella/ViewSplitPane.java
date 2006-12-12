@@ -16,9 +16,10 @@ public class ViewSplitPane extends JSplitPane
 {
 		
 	
-	public ViewSplitPane(MainWindow mainWindowToUse, Container topPanel, Container bottomPanel, JSplitPane oldJSplitPane) 
+	public ViewSplitPane(MainWindow mainWindowToUse, Container topPanel, Container bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
+		mainWindow = mainWindowToUse;
 		
 		setOneTouchExpandable(true);
 		setDividerSize(15);
@@ -26,10 +27,19 @@ public class ViewSplitPane extends JSplitPane
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
 		
-		if (oldJSplitPane != null)
-			setDividerLocation(oldJSplitPane.getDividerLocation());
-		else
-			setDividerLocation((int)mainWindowToUse.getSize().getHeight() / 2);
+		setDividerLocationWithoutNotifications(mainWindow.getWizardSplitterLocation());
 	}
 
+	public void setDividerLocation(int location)
+	{
+		setDividerLocationWithoutNotifications(location);
+		mainWindow.setWizardSplitterLocation(location);
+	}
+
+	private void setDividerLocationWithoutNotifications(int location)
+	{
+		super.setDividerLocation(location);
+	}
+
+	MainWindow mainWindow;
 }

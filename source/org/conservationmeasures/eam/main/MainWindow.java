@@ -163,7 +163,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		currentView = view;
 		currentView.becomeActive();
 		updateToolBar();
-		savePreferences();
 	}
 
 	public void updateToolBar()
@@ -401,6 +400,20 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences.setColor(colorTag, colorToUse);
 		repaint();
 	}
+	
+	public void setWizardSplitterLocation(int location)
+	{
+		int splitPercent = location * 100 / viewHolder.getHeight();
+		int splitPercentFromMiddle = splitPercent * 2 - 100;
+		preferences.setTaggedInt(WIZARD_SPLIT_TAG + project.getCurrentView(), splitPercentFromMiddle);
+	}
+
+	public int getWizardSplitterLocation()
+	{
+		int splitPercentFromMiddle = preferences.getTaggedInt(WIZARD_SPLIT_TAG + project.getCurrentView());
+		int splitPercent = (splitPercentFromMiddle + 100) / 2;
+		return viewHolder.getHeight() * splitPercent / 100; 
+	}
 
 	public void lostOwnership(Clipboard clipboard, Transferable contents) 
 	{
@@ -429,6 +442,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 0;
+	private static final String WIZARD_SPLIT_TAG = "WizardSplit";
 	
 	protected Actions actions;
 	private AppPreferences preferences;

@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.JSONFile;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
@@ -101,6 +103,21 @@ public class AppPreferences
 		throw new RuntimeException(tag);
 	}
 	
+	public void setTaggedInt(String tag, int value)
+	{
+		EAM.logDebug("setTaggedInt " + tag + ":" + value);
+		taggedIntMap.put(tag, new Integer(value));
+	}
+	
+	public int getTaggedInt(String tag)
+	{
+		Integer value = (Integer)taggedIntMap.get(tag);
+		EAM.logDebug("getTaggedInt " + tag + ":" + value);
+		if(value == null)
+			return 0;
+		return value.intValue();
+	}
+	
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
@@ -112,6 +129,16 @@ public class AppPreferences
 		json.put(TAG_COLOR_SCOPE, scopeColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
+		
+		EnhancedJsonObject taggedIntJson = new EnhancedJsonObject();
+		Iterator iter = taggedIntMap.keySet().iterator();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			Integer value = (Integer)taggedIntMap.get(key);
+			taggedIntJson.put(key, value.intValue());
+		}
+		json.put(TAG_TAGGED_INTS, taggedIntJson);
 		
 		return json;
 	}
@@ -127,6 +154,16 @@ public class AppPreferences
 		
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, true);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, false);
+		
+		taggedIntMap = new HashMap();
+		EnhancedJsonObject taggedIntJson = json.optJson(TAG_TAGGED_INTS);
+		Iterator iter = taggedIntJson.keys();
+		while(iter.hasNext())
+		{
+			String key = (String)iter.next();
+			int value = taggedIntJson.getInt(key);
+			taggedIntMap.put(key, new Integer(value));
+		}
 	}
 	
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
@@ -137,6 +174,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_SCOPE = "ColorScope";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
+	public static final String TAG_TAGGED_INTS = "TaggedInts";
 	
 	private static final Color DEFAULT_TARGET_COLOR = new Color(153, 255, 153);
 	private static final Color DEFAULT_DIRECT_THREAT_COLOR = new Color(255, 150, 150);
@@ -154,4 +192,6 @@ public class AppPreferences
 	
 	public boolean isGridVisible; 
 	boolean isMaximized;
+	
+	HashMap taggedIntMap;
 }
