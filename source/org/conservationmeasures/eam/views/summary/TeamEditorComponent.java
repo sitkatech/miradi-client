@@ -46,16 +46,24 @@ public class TeamEditorComponent extends ObjectTablePanel
 	{
 		super.commandExecuted(event);
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			if (((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES))
+			if (isResourceRoleCodeUpdate(event))
 				((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
 	}
-	
+
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		super.commandUndone(event);
 		if(event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			if (((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES))
+			if (isResourceRoleCodeUpdate(event))
 			((ObjectTableModel)getTable().getModel()).rowsWereAddedOrRemoved();
 	}
 	
+	private boolean isResourceRoleCodeUpdate(CommandExecutedEvent event)
+	{
+		if (((CommandSetObjectData)event.getCommand()).getObjectType() == ObjectType.PROJECT_RESOURCE) 
+		{
+			return ((CommandSetObjectData)event.getCommand()).getFieldTag().equals(ProjectResource.TAG_ROLE_CODES);
+		}
+		return false;
+	}
 }

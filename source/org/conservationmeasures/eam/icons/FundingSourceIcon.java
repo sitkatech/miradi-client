@@ -6,38 +6,26 @@
 package org.conservationmeasures.eam.icons;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.Polygon;
-import java.awt.Rectangle;
 
-import javax.swing.Icon;
+import org.conservationmeasures.eam.diagram.renderers.FactorRenderer;
+import org.conservationmeasures.eam.diagram.renderers.RectangleRenderer;
 
-import org.conservationmeasures.eam.diagram.renderers.TriangleRenderer;
-
-public class FundingSourceIcon implements Icon
+public class FundingSourceIcon  extends EamIcon 
 {
-	public int getIconHeight()
+
+	FactorRenderer getRenderer() 
 	{
-		return HEIGHT;
+		return new RectangleRenderer();
 	}
 
-	public int getIconWidth()
+	Color getIconColor() 
 	{
-		return WIDTH;
-	}
-
-	public void paintIcon(Component c, Graphics g, int x, int y)
-	{
-		Rectangle rect = new Rectangle(x+1, y+1, WIDTH-2, HEIGHT-2);
-		Polygon triangle = TriangleRenderer.buildTriangle(rect);
-		g.setColor(Color.GREEN);
-		g.fillPolygon(triangle);
-		g.setColor(Color.BLACK);
-		g.drawPolygon(triangle);
+		return Color.GREEN;
 	}
 	
-	static final int WIDTH = 16;
-	static final int HEIGHT = 16;
+	public int getIconHeight()
+	{
+		return 10;
+	}
 
 }
