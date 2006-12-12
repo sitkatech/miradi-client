@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandCreateObject;
+import org.conservationmeasures.eam.commands.CommandDeleteObject;
 import org.conservationmeasures.eam.commands.CommandSetThreatRating;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -175,9 +177,28 @@ public class ThreatMatrixView extends UmbrellaView
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
+		updateAfterCommand(event.getCommand());
+	}
+
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		updateAfterCommand(event.getCommand());
+	}
+
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+	}
+	
+	private void updateAfterCommand(Command rawCommand)
+	{
+		if(rawCommand.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			updateAfterCreateOrUndo((CommandCreateObject)rawCommand);
+		if(rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			updateAfterDeleteOrUndo((CommandDeleteObject)rawCommand);
+		
 		try
 		{
-			snapUiToExecutedCommand(event.getCommand());
+			snapUiToExecutedCommand(rawCommand);
 			if(grid != null)
 			{
 				selectBundle(grid.getSelectedBundle());
@@ -188,21 +209,15 @@ public class ThreatMatrixView extends UmbrellaView
 			EAM.logException(e);
 		}
 	}
-
-	public void commandUndone(CommandExecutedEvent event)
+	
+	private void updateAfterCreateOrUndo(CommandCreateObject commandDoneOrUndone)
 	{
-		try
-		{
-			snapUiToExecutedCommand(event.getCommand());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		model.fireTableDataChanged();
 	}
-
-	public void commandFailed(Command command, CommandFailedException e)
+	
+	private void updateAfterDeleteOrUndo(CommandDeleteObject commandDoneOrUndone)
 	{
+		model.fireTableDataChanged();
 	}
 	
 	private void snapUiToExecutedCommand(Command executedCommand) throws Exception

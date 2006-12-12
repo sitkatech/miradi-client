@@ -64,12 +64,12 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return (row == getDirectThreats().length && column==getTargets().length);
 	}
 	
-	private boolean isSumaryRow(int row, int column) 
+	boolean isSumaryRow(int row, int column) 
 	{
 		return (row == getDirectThreats().length);
 	}
 
-	private boolean isSumaryColumn(int row, int column) 
+	boolean isSumaryColumn(int row, int column) 
 	{
 		return (column==getTargets().length);
 	}
@@ -97,12 +97,6 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 			return EAM.text("Summary Target Rating");
 		return getTargets()[columnIndex].toString();
 	}
-	
-	public boolean isBundleTableCellABundle(int row, int column)
-	{
-		return realDataGetValueAt(row, column)!=null;
-	}
-	
 	
 	public ThreatRatingBundle realDataGetValueAt(int row, int column)
 	{
