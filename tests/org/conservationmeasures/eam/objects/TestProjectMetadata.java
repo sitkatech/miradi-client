@@ -25,6 +25,7 @@ public class TestProjectMetadata extends EAMTestCase
 		verifyDataField(ProjectMetadata.TAG_PROJECT_VISION, "Coral reefs returned to natural state");
 		verifyDataField(ProjectMetadata.TAG_SHORT_PROJECT_VISION, "Increase in Sea Life");
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
+		verifyDataField(ProjectMetadata.TAG_EXPECTED_END_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 		verifyDataField(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "24.3");
 		IdList sampleIdList = new IdList(new BaseId[] {new BaseId(1), new BaseId(7), new BaseId(152), });
@@ -45,6 +46,19 @@ public class TestProjectMetadata extends EAMTestCase
 		try
 		{
 			info.setData(ProjectMetadata.TAG_START_DATE, "illegal date");
+			fail("Should have thrown for illegal ISO date string");
+		}
+		catch (InvalidDateException ignoreExpected)
+		{
+		}
+	}
+	
+	public void testExpectedEndDate() throws Exception
+	{
+		ProjectMetadata info = new ProjectMetadata(new BaseId(63));
+		try
+		{
+			info.setData(ProjectMetadata.TAG_EXPECTED_END_DATE, "illegal date");
 			fail("Should have thrown for illegal ISO date string");
 		}
 		catch (InvalidDateException ignoreExpected)

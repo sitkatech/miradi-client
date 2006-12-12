@@ -62,6 +62,11 @@ public class ProjectMetadata extends EAMBaseObject
 		return startDate.get();
 	}
 	
+	public String getExpectedEndDate()
+	{
+		return expectedEndDate.get();
+	}
+	
 	public String getEffectiveDate()
 	{
 		return effectiveDate.get();
@@ -91,6 +96,7 @@ public class ProjectMetadata extends EAMBaseObject
 		projectVision = new StringData();
 		shortProjectVision = new StringData();
 		startDate = new DateData();
+		expectedEndDate = new DateData();
 		effectiveDate = new DateData();
 		sizeInHectares = new NumberData();
 		teamResourceIds = new IdListData();
@@ -101,6 +107,7 @@ public class ProjectMetadata extends EAMBaseObject
 		addField(TAG_PROJECT_VISION, projectVision);
 		addField(TAG_SHORT_PROJECT_VISION, shortProjectVision);
 		addField(TAG_START_DATE, startDate);
+		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
 		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_TEAM_RESOURCE_IDS, teamResourceIds);
@@ -125,6 +132,7 @@ public class ProjectMetadata extends EAMBaseObject
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
 	public static final String TAG_SHORT_PROJECT_VISION = "ShortProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
+	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
 	public static final String TAG_TEAM_RESOURCE_IDS = "TeamResourceIds";
 	
@@ -144,6 +152,7 @@ public class ProjectMetadata extends EAMBaseObject
 	StringData projectVision;
 	StringData shortProjectVision;
 	DateData startDate;
+	DateData expectedEndDate;
 	DateData effectiveDate;
 	NumberData sizeInHectares;
 	IdListData teamResourceIds;

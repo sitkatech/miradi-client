@@ -19,6 +19,7 @@ public class CrossOrganizationSummaryPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(metadata.PSEUDO_TAG_PROJECT_FILENAME));
 		addField(createStringField(metadata.TAG_PROJECT_NAME));
 		addField(createDateField(metadata.TAG_START_DATE));
+		addField(createDateField(metadata.TAG_EXPECTED_END_DATE));
 		addField(createDateField(metadata.TAG_DATA_EFFECTIVE_DATE));
 		addFieldTeam(mainWindowToUse);
 		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));

@@ -82,6 +82,7 @@ import org.conservationmeasures.eam.utils.TestEnhancedJsonObject;
 import org.conservationmeasures.eam.utils.TestLogging;
 import org.conservationmeasures.eam.utils.TestTaxonomyLoader;
 import org.conservationmeasures.eam.utils.TestTranslations;
+import org.conservationmeasures.eam.views.budget.ImportAccountingCodesDoerTest;
 import org.conservationmeasures.eam.views.threatmatrix.TestNonEditableThreatMatrixTableModel;
 import org.conservationmeasures.eam.views.umbrella.TestUndoRedo;
 import org.conservationmeasures.eam.views.workplan.TestDeleteActivity;
@@ -209,6 +210,8 @@ public class MainTests extends TestCase
 		// view.strategicplan package
 		suite.addTest(new TestSuite(TestDeleteActivity.class));
 		
+		// view.buget
+		suite.addTest(new TestSuite(ImportAccountingCodesDoerTest.class));
 		
 		// view.threatmatrix package
 		suite.addTest(new TestSuite(TestNonEditableThreatMatrixTableModel.class));
