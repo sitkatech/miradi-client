@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.budget;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -60,6 +61,38 @@ public class BudgetTotalsCalculator
 		
 		return resource;
 	}
+	
+	public double calculateTotalCost(TreeTableNode node)
+	{
+		try
+		{
+			ORef oRef = node.getObjectReference();
+			int type = node.getObjectReference().getObjectType();
+
+			if (type == ObjectType.INDICATOR)
+				return getTotalIndicatorCost(oRef);
+			
+			if (type == ObjectType.FACTOR)
+				return getTotalFactorCost(getFactor(oRef));
+
+			if (oRef.getObjectType() == ObjectType.TASK)
+				return getTotalTaskCost((TaskId)oRef.getObjectId());
+			
+			if (oRef.getObjectType() == ObjectType.FAKE)
+				return getTotalFakeCost(node);				
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return  0.0;
+	}
+
+	private Factor getFactor(ORef oRef)
+	{
+		return (Factor)project.findObject(oRef.getObjectType(), oRef.getObjectId());
+	}
+
 	
 	public double getTotalIndicatorsCost(IdList idList) throws Exception
 	{
