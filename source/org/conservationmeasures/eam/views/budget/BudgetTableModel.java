@@ -217,19 +217,39 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getCost(int row, int col)
 	{
-		if (isTotalsRow(row))
-			return "";
+		try
+		{
+			if (!isOdd(row))
+				return "";
+
+			if (isTotalsRow(row))
+				return new Double(getTotalCostForColumn(row, col));
+
+			ProjectResource currentResource = getCurrentResource(row);
+			if (currentResource == null)
+				return "";
+
+			final int BACK_ONE_ROW = 1;
+			double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
+			double costPerUnit = currentResource.getCostPerUnit();
+			return new Double(units * costPerUnit);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 		
-		if (!isOdd(row))
-			return "";
+		return "";
+	}
+
+	private double getTotalCostForColumn(int row, int col) throws Exception
+	{
+		if (getRowCount() <= 2)
+			return 0.0;
 		
-		ProjectResource currentResource = getCurrentResource(row);
-		if (currentResource == null)
-			return "";
-		final int BACK_ONE_ROW = 1;
-		double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
-		double costPerUnit = currentResource.getCostPerUnit();
-		return new Double(units * costPerUnit);
+		DateRange dateRange = dateRanges[covertToUnitsColumn(col)];
+		double totalCostColumn = totalsCalculator.getTotalCost(assignmentIdList, dateRange);
+		return totalCostColumn;
 	}
 
 	private boolean isUnitsColumn(int col)

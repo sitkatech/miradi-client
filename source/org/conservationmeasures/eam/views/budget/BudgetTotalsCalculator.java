@@ -41,6 +41,21 @@ public class BudgetTotalsCalculator
 		return new DateRangeEffortList(effortListAsString);
 	}
 	
+	public double getTotalCost(IdList assignmentIds, DateRange dateRange) throws Exception
+	{
+		double totalDateRangeCost = 0.0;
+		for (int i = 0; i < assignmentIds.size(); i++)
+			totalDateRangeCost += getTotalCost(assignmentIds.get(i), dateRange);
+		
+		return totalDateRangeCost;
+	}
+	
+	public double getTotalCost(BaseId assignmentId, DateRange dateRange) throws Exception
+	{
+		Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, assignmentId);
+		return getTotalCost(assignment, dateRange);
+	}
+	
 	public double getTotalCost(Assignment assignment, DateRange dateRange) throws Exception
 	{
 		ProjectResource resource = getProjectResource(assignment.getId());
