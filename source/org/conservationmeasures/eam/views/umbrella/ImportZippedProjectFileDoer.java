@@ -14,7 +14,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.ProjectUnzipper;
 import org.conservationmeasures.eam.utils.ZIPFileFilter;
 
-public class ImportZipFileDoer  extends ImportDoer
+public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 {
 	public boolean createProject(File finalProjectDirectory, File importFile)
 	{

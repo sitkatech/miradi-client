@@ -17,7 +17,7 @@ import org.conservationmeasures.eam.views.ViewDoer;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.martus.swing.UiFileChooser;
 
-public abstract class ImportDoer extends ViewDoer
+public abstract class ImportProjectDoer extends ViewDoer
 {
 	public abstract boolean createProject(File finalProjectDirectory, File importFile);
 	

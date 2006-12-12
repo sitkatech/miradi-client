@@ -7,6 +7,7 @@ import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
+import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
@@ -88,6 +89,7 @@ public class BudgetView extends TabbedView
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
 		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
+		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
 	}

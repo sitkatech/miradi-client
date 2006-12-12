@@ -16,12 +16,12 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
 
-public abstract class EAMFileChooser
+public abstract class EAMFileSaveChooser
 {
 
 	MainWindow mainWindow;
 
-	EAMFileChooser(MainWindow mainWindow)
+	EAMFileSaveChooser(MainWindow mainWindow)
 	{
 		this.mainWindow = mainWindow;
 	}

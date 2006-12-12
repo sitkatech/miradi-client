@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
+import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.actions.MainWindowAction;
 import org.conservationmeasures.eam.actions.ObjectsAction;
@@ -18,9 +19,11 @@ public class AccountingCodePoolTablePanel extends ObjectTablePanelWithCreateAndD
 	public AccountingCodePoolTablePanel(Project project, Actions actions)
 	{
 		super(project, ObjectType.ACCOUNTING_CODE, 
-				new AccountingCodePoolTable(new AccountingCodePoolTableModel(project)),
-				(MainWindowAction)actions.get(ActionCreateAccountingCode.class),
-				(ObjectsAction)actions.get(ActionDeleteAccountingCode.class));
+			new AccountingCodePoolTable(new AccountingCodePoolTableModel(project)),
+			(MainWindowAction)actions.get(ActionCreateAccountingCode.class),
+			(ObjectsAction)actions.get(ActionDeleteAccountingCode.class));
+		
+		ObjectsAction importAction = (ObjectsAction)actions.get(ActionImportAccountingCodes.class);
+		addButton(importAction);
 	}
-	
 }

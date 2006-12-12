@@ -12,13 +12,13 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.ProjectZipper;
-import org.conservationmeasures.eam.utils.EAMFileChooser;
+import org.conservationmeasures.eam.utils.EAMFileSaveChooser;
 import org.conservationmeasures.eam.utils.EAMZipFileChooser;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
 
 
-public class ExportZipFileDoer extends MainWindowDoer
+public class ExportZippedProjectFileDoer extends MainWindowDoer
 {
 	public boolean isAvailable() 
 	{
@@ -28,7 +28,7 @@ public class ExportZipFileDoer extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException 
 	{
-		EAMFileChooser eamFileChooser = new EAMZipFileChooser(getMainWindow());
+		EAMFileSaveChooser eamFileChooser = new EAMZipFileChooser(getMainWindow());
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) return;
 		

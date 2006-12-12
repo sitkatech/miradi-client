@@ -16,7 +16,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.project.TncCapWorkbookImporter;
 import org.conservationmeasures.eam.utils.XLSFileFilter;
 
-public class ImportTncCapWorkbookDoer extends ImportDoer
+public class ImportTncCapWorkbookDoer extends ImportProjectDoer
 {
 	public boolean createProject(File finalProjectDirectory, File importFile)
 	{

@@ -11,7 +11,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class EAMZipFileChooser extends EAMFileChooser
+public class EAMZipFileChooser extends EAMFileSaveChooser
 {
 
 	public EAMZipFileChooser(MainWindow mainWindow)

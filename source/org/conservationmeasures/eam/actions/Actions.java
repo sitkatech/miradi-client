@@ -146,6 +146,7 @@ public class Actions
 		registerAction(new ActionRemoveAssignment(mainWindow));
 		registerAction(new ActionCreateAccountingCode(mainWindow));
 		registerAction(new ActionDeleteAccountingCode(mainWindow));
+		registerAction(new ActionImportAccountingCodes(mainWindow));
 		registerAction(new ActionCreateFundingSource(mainWindow));
 		registerAction(new ActionDeleteFundingSource(mainWindow));
 		
