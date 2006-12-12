@@ -108,12 +108,7 @@ public class LayerManager
 	{
 		linkagesVisibleFlag = newSetting;
 	}
-	
-	public boolean areDesiresVisible()
-	{
-		return goalsVisibleFlag && objectivesVisibleFlag;
-	}
-	
+
 	public boolean areGoalsVisible()
 	{
 		return goalsVisibleFlag;
@@ -122,12 +117,6 @@ public class LayerManager
 	public boolean areObjectivesVisible()
 	{
 		return objectivesVisibleFlag;
-	}
-	
-	public void setDesiresVisible(boolean newSetting)
-	{
-		setGoalsVisible(newSetting);
-		setObjectivesVisible(newSetting);
 	}
 	
 	public void setGoalsVisible(boolean newSetting)

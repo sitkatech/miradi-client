@@ -87,14 +87,25 @@ public class TestLayerManager extends EAMTestCase
 		}
 	}
 	
-	public void testDesires() throws Exception
+	public void testGoals() throws Exception
 	{
 		LayerManager manager = new LayerManager();
-		assertTrue("Desires not visible by default?", manager.areDesiresVisible());
-		manager.setDesiresVisible(false);
-		assertFalse("Didn't set invisible?", manager.areDesiresVisible());
-		manager.setDesiresVisible(true);
-		assertTrue("Didn't set visible?", manager.areDesiresVisible());
+		assertTrue("Goals not visible by default?", manager.areGoalsVisible());
+		manager.setGoalsVisible(false);
+		assertFalse("Didn't set invisible?", manager.areGoalsVisible());
+		manager.setGoalsVisible(true);
+		assertTrue("Didn't set visible?", manager.areGoalsVisible());
+	}
+	
+	
+	public void testObjectives() throws Exception
+	{
+		LayerManager manager = new LayerManager();
+		assertTrue("Objectives not visible by default?", manager.areObjectivesVisible());
+		manager.setObjectivesVisible(false);
+		assertFalse("Didn't set invisible?", manager.areObjectivesVisible());
+		manager.setObjectivesVisible(true);
+		assertTrue("Didn't set visible?", manager.areObjectivesVisible());
 	}
 
 	public void testIndicators() throws Exception
