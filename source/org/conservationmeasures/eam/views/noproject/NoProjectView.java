@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
-import org.conservationmeasures.eam.actions.ActionImportZipFile;
+import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -168,7 +168,7 @@ public class NoProjectView extends UmbrellaView implements HyperlinkHandler
 			}
 			else if(buttonName.equals("ImportZip"))
 			{
-				EAMAction action = getMainWindow().getActions().get(ActionImportZipFile.class);
+				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
 				action.doAction();
 			}
 			else if(buttonName.equals("ImportCAP"))

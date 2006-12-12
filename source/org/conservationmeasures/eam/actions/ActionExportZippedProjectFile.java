@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionExportZipFile extends MainWindowAction
+public class ActionExportZippedProjectFile extends MainWindowAction
 {
-	public ActionExportZipFile(MainWindow mainWindowToUse)
+	public ActionExportZippedProjectFile(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

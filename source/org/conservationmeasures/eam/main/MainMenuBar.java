@@ -19,9 +19,9 @@ import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
-import org.conservationmeasures.eam.actions.ActionExportZipFile;
+import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
-import org.conservationmeasures.eam.actions.ActionImportZipFile;
+import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
@@ -134,7 +134,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Export");
-		menu.add(new JMenuItem(actions.get(ActionExportZipFile.class)));
+		menu.add(new JMenuItem(actions.get(ActionExportZippedProjectFile.class)));
 		menu.add("CMP Learning Center");
 		menu.add(createExportOrgDatabaseSubmenu());
 		menu.add(createExportDonorReportsSubmenu());
@@ -174,7 +174,7 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createImportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Import");
-		menu.add(new JMenuItem(actions.get(ActionImportZipFile.class)));
+		menu.add(new JMenuItem(actions.get(ActionImportZippedProjectFile.class)));
 		menu.add(new JMenuItem(actions.get(ActionImportTncCapWorkbook.class)));
 		menu.add(createImportProjectSubmenu());
 		menu.add(createImportMapSubmenu());

@@ -89,8 +89,8 @@ public class Actions
 		registerAction(new ActionInsertContributingFactor(mainWindow));
 		registerAction(new ActionNewProject(mainWindow));
 		registerAction(new ActionProjectSaveAs(mainWindow));
-		registerAction(new ActionExportZipFile(mainWindow));
-		registerAction(new ActionImportZipFile(mainWindow));
+		registerAction(new ActionExportZippedProjectFile(mainWindow));
+		registerAction(new ActionImportZippedProjectFile(mainWindow));
 		registerAction(new ActionImportTncCapWorkbook(mainWindow));
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImage(mainWindow));
