@@ -8,10 +8,10 @@ package org.conservationmeasures.eam.views.diagram;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -95,7 +95,6 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	private void addButtonLineWithCheckBox(JPanel jpanel, String text, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
-		button.setText(null);
 		jpanel.add(button);
 		jpanel.add(new UiLabel(EAM.text(text)));
 		jpanel.add(createCheckBox(text));
@@ -123,7 +122,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	
 	private void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
-		jpanel.add(new UiLabel("",icon,JLabel.CENTER));
+		jpanel.add(new JLabel(icon));
 		jpanel.add(new UiLabel(EAM.text(text)));
 		jpanel.add(component);
 	}
@@ -163,9 +162,11 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	
 	class LocationButton extends UiButton implements LocationHolder
 	{
-		LocationButton(Action action)
+		LocationButton(EAMAction action)
 		{
 			super(action);
+			setText(null);
+			setMargin(new Insets(0, 0, 0 ,0));
 		}
 		
 		public boolean hasLocation()
@@ -173,6 +174,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 			return false;
 		}
 	}
+	
 	final static String LAYER = "LAYER";
 	MainWindow mainWindow;
 }
