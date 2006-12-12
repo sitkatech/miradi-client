@@ -38,7 +38,7 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	public boolean isCellEditable(int row, int col) 
 	{
-		if (isTotalColumn(col))
+		if (isUnitsTotalColumn(col))
 			return false;
 		
 		if (isCostTotalsColumn(col))
@@ -104,7 +104,7 @@ public class BudgetTableModel extends AbstractTableModel
 		return (dateRanges.length * 2) + EXTRA_COLUMN_COUNT;
 	}
 	
-	public int getTotalsColumnIndex()
+	public int getUnitTotalsColumnIndex()
 	{
 		return getColumnCount() - 2;	
 	}
@@ -127,7 +127,7 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isLabelColumn(col))
 			return "";
 		
-		if (isTotalColumn(col))
+		if (isUnitsTotalColumn(col))
 			return "Unit Totals";
 	
 		if (isCostTotalsColumn(col))
@@ -151,18 +151,13 @@ public class BudgetTableModel extends AbstractTableModel
 			return getCost(row, col);
 		
 		if (isUnitsColumn(col))
-			return getUnitsFor(row, col);
+			return getUnit(row, col);
+			
+		if (isUnitsTotalColumn(col))
+			return getTotalUnits(row);
 		
-	
-		
-		
-		if (isTotalColumn(col))
-			return getTotalUnits(getCorrectedRow(row));
-		
-		if (isOdd(row) && isCostTotalsColumn(col))
-			return getTotalCost(getCorrectedRow(row));
-		
-		
+		if (isCostTotalsColumn(col))
+			return getTotalCost(row);
 		
 		return new String("");
 	}
@@ -182,9 +177,9 @@ public class BudgetTableModel extends AbstractTableModel
 		return col == getCostTotalsColumnIndex();
 	}
 	
-	private boolean isTotalColumn(int col)
+	private boolean isUnitsTotalColumn(int col)
 	{
-		return col == getTotalsColumnIndex();
+		return col == getUnitTotalsColumnIndex();
 	}
 	
 	private Object getCost(int row, int col)
@@ -195,8 +190,8 @@ public class BudgetTableModel extends AbstractTableModel
 		ProjectResource currentResource = getCurrentResource(row);
 		if (currentResource == null)
 			return "";
-		
-		double units = new Double(getUnitsFor(row, col)).doubleValue();
+		final int BACK_ONE_ROW = 1;
+		double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
 		double costPerUnit = currentResource.getCostPerUnit();
 		return new Double(units * costPerUnit);
 	}
@@ -259,17 +254,22 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private String getStaticCellLabel(int row, int col)
 	{
-		if (!isOdd(row))
-			return "Units";
-		return "Cost";
+		if (isOdd(row))
+			return "Cost";
+		
+		return "Units";
 	}
 	
 	private String getTotalCost(int row)
 	{
+		if (!isOdd(row))
+			return "";
+		
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
-			double totalCost = totalsCalculator.getTotalCost(getAssignment(row), combinedDateRange);
+			Assignment assignment = getAssignment(getCorrectedRow(row));
+			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
 			return Double.toString(totalCost);
 		}
 		catch(Exception e)
@@ -281,10 +281,13 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private Object getTotalUnits(int row)
 	{
+		if (isOdd(row))
+			return "";
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
-			double totalUnits = totalsCalculator.getTotalUnits(getAssignment(row), combinedDateRange);
+			Assignment assignment = getAssignment(getCorrectedRow(row));
+			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
 			return Double.toString(totalUnits);
 		}
 		catch(Exception e)
@@ -302,9 +305,12 @@ public class BudgetTableModel extends AbstractTableModel
 	}
 
 	//FIXME budget code - dont return string just the value
-	public String getUnitsFor(int row, int col)
+	public String getUnit(int row, int col)
 	{
 		double units = 0;
+		if (isOdd(row))
+			return "";
+		
 		try
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
