@@ -76,58 +76,58 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
-		addButtonIconLineWithoutCheckBox(jpanel, "Project Scope", new ProjectScopeIcon());
+		addIconLineWithoutCheckBox(jpanel, "Project Scope", new ProjectScopeIcon());
 		
-		addButtonLine(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
-		addButtonLine(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
-		addButtonLine(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
-		addButtonLine(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
-		addButtonLine(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
+		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
+		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
+		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
+		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
+		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		
-		addButtonIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
-		addButtonIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
-		addButtonIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
-		addButtonIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
+		addIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
+		addIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
+		addIconLineWithCheckBox(jpanel, Indicator.OBJECT_NAME, new IndicatorIcon());
+		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
 		
 		return jpanel;
 	}
 	
-	private void addButtonLine(JPanel jpanel, String text, EAMAction action)
+	private void addButtonLineWithCheckBox(JPanel jpanel, String text, EAMAction action)
 	{
 		JButton button = new LocationButton(action);
 		button.setText(null);
 		jpanel.add(button);
 		jpanel.add(new UiLabel(EAM.text(text)));
-		JCheckBox checkBox = new JCheckBox();
-		checkBox.setSelected(true);
-		checkBox.putClientProperty(LAYER, new String(text));
-		checkBox.addActionListener(this);
-		jpanel.add(checkBox);
+		jpanel.add(createCheckBox(text));
 	}
 	
-	private void addButtonIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)
+	private void addIconLineWithCheckBox(JPanel jpanel, String text, Icon icon)
+	{
+		addIconLine(jpanel, text, icon, createCheckBox(text));
+	}
+
+
+	private void addIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
+	{
+		addIconLine(jpanel, text, icon, new UiLabel(""));
+	}
+
+	private JCheckBox createCheckBox(String text)
 	{
 		JCheckBox component = new JCheckBox();
 		component.setSelected(true);
 		component.putClientProperty(LAYER, new String(text));
 		component.addActionListener(this);
-		addToIconLinePanel(jpanel, text, icon, component);
+		return component;
 	}
-
-	private void addButtonIconLineWithoutCheckBox(JPanel jpanel, String text, Icon icon)
-	{
-		UiLabel component = new UiLabel("");
-		addToIconLinePanel(jpanel, text, icon, component);
-	}
-
-	private void addToIconLinePanel(JPanel jpanel, String text, Icon icon, JComponent component)
+	
+	private void addIconLine(JPanel jpanel, String text, Icon icon, JComponent component)
 	{
 		jpanel.add(new UiLabel("",icon,JLabel.CENTER));
 		jpanel.add(new UiLabel(EAM.text(text)));
 		jpanel.add(component);
 	}
 
-	
 	public void actionPerformed(ActionEvent event)
 	{
 		JCheckBox checkBox = (JCheckBox)event.getSource();
