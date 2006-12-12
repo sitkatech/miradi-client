@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.actions;
 
 import javax.swing.AbstractAction;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.martus.swing.ResourceImageIcon;
@@ -29,9 +28,12 @@ public abstract class EAMAction extends AbstractAction
 
 	public abstract void doAction() throws CommandFailedException;
 	
-	public ImageIcon getIcon()
+	public Icon getIcon()
 	{
-		return (ImageIcon)getValue("icon");
+		Object icon = getValue("icon");
+		if(icon == null)
+			icon = getValue("SmallIcon");
+		return (Icon)icon;
 	}
 
 	public String getToolTipText()
