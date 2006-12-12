@@ -71,10 +71,11 @@ public class ProjectList extends JPanel
 	
 	static class Hyperlink extends UiLabel implements MouseListener
 	{
-		public Hyperlink(String urlToReturn, String text, HyperlinkHandler handlerToUse)
+		public Hyperlink(String urlToReturn, String textToShow, HyperlinkHandler handlerToUse)
 		{
-			super("<html><u>" + text + "</u></html>");
+			super("<html><u>" + textToShow + "</u></html>");
 			url = urlToReturn;
+			text = textToShow;
 			handler = handlerToUse;
 			
 			setBackground(Color.WHITE);
@@ -115,11 +116,12 @@ public class ProjectList extends JPanel
 		
 		void fireRightClick(MouseEvent e)
 		{
-			JPopupMenu menu = handler.getRightClickMenu(getText());
+			JPopupMenu menu = handler.getRightClickMenu(text);
 			menu.show(this, e.getX(), e.getY());
 		}
 		
 		String url;
+		String text;
 		HyperlinkHandler handler;
 	}
 	
