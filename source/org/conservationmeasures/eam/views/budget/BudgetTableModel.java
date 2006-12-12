@@ -292,12 +292,12 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private String getResourceCellLabel(int row, int col)
 	{
-		if (isTotalsRow(row))
-			return "";
-		
 		if (isStaticLabelColum(col))
 			return getStaticCellLabel(row, col); 
-		
+
+		if (isTotalsRow(row))
+			return getStaticRowTotalsLabel(row, col);
+
 		ProjectResource resource = getCurrentResource(row);
 		if (resource  == null)
 			return "";
@@ -311,6 +311,19 @@ public class BudgetTableModel extends AbstractTableModel
 		return "";
 	}
 	
+	private String getStaticRowTotalsLabel(int row, int col)
+	{
+		final int TOTAL_COLUMN_ROW_HEADER = 2;
+		
+		if (col != TOTAL_COLUMN_ROW_HEADER)
+			return  "";
+		
+		if (isOdd(row))
+			return "Total";
+		
+		return "Total";
+	}
+
 	private String getStaticCellLabel(int row, int col)
 	{
 		if (isOdd(row))
