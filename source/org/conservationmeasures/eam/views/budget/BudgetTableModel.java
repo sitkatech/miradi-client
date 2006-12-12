@@ -334,15 +334,15 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private String getTotalCost(int row)
 	{
-		if (isTotalsRow(row))
-			return"";
-		
 		if (!isOdd(row))
 			return "";
 		
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
+			if (isTotalsRow(row))
+				return Double.toString(getTotalsCostTotals(combinedDateRange));
+			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
 			return Double.toString(totalCost);
@@ -354,16 +354,22 @@ public class BudgetTableModel extends AbstractTableModel
 		return "";
 	}
 	
+	private double getTotalsCostTotals(DateRange combinedDateRange) throws Exception
+	{
+		return totalsCalculator.getTotalCost(assignmentIdList, combinedDateRange);
+	}
+
 	private Object getTotalUnits(int row)
 	{
-		if (isTotalsRow(row))
-			return"";
-		
 		if (isOdd(row))
 			return "";
 		try
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
+		
+			if (isTotalsRow(row))
+				return Double.toString(getTotalsForTotalsUnits(combinedDateRange));
+			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
 			return Double.toString(totalUnits);
@@ -376,10 +382,14 @@ public class BudgetTableModel extends AbstractTableModel
 		return new String("");
 	}
 
+	private double getTotalsForTotalsUnits(DateRange combinedDateRange) throws Exception
+	{
+		return totalsCalculator.getTotalUnits(assignmentIdList, combinedDateRange);
+	}
+
 	private DateRange getCombinedDateRange() throws Exception
 	{
-		DateRange combinedDateRange = DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
-		return combinedDateRange;
+		return DateRange.combine(dateRanges[0], dateRanges[dateRanges.length - 1]);
 	}
 
 	//FIXME budget code - dont return string just the value
