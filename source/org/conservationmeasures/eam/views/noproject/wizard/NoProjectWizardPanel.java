@@ -15,6 +15,7 @@ import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
+import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
@@ -61,7 +62,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 			else if(linkDescription.startsWith(RENAME_PREFIX))
 			{
 				String projectName = linkDescription.substring(RENAME_PREFIX.length());
-				renameProject(projectName);
+				File projectDirectory = new File(EAM.getHomeDirectory(), projectName);
+				renameProject(projectDirectory);
 			}
 			else if(linkDescription.startsWith(DEFINITION_PREFIX))
 			{
@@ -187,9 +189,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		}
 	}
 
-	private void renameProject(String projectName)
+	private void renameProject(File projectDirectory) throws Exception
 	{
-		// TODO implement this
+		RenameProject.doIt(getMainWindow(), projectDirectory);
+		refresh();
 	}
 
 	private void deleteProjectAfterConfirmation(File projectDirectory) throws Exception

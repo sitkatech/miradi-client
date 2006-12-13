@@ -6,14 +6,12 @@
 package org.conservationmeasures.eam.views.noproject;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
-import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class DeleteProject
 {
@@ -26,39 +24,25 @@ public class DeleteProject
 			return;
 		}
 		
-		if (isProjectOpened(projectToDelete))
+		DirectoryLock directoryLock = new DirectoryLock();
+
+		if (!directoryLock.getDirectoryLock(projectToDelete))
 		{
 			EAM.notifyDialog(EAM.text("Unable to delete this project because it is in use by another copy of this application:\n") +  projectToDelete.getName());
 			return;
 		}
-		
-		String[] body = {"Are you sure you want to delete this project? ", 
+
+		String[] body = {EAM.text("Are you sure you want to delete this project? "), 
 				projectToDelete.getName(),
 		};
-		String[] buttons = {"Delete", "Keep", };
-		if(!EAM.confirmDialog("Delete Project", body, buttons))
+		String[] buttons = {EAM.text("Delete"), EAM.text("Keep"), };
+		if(!EAM.confirmDialog(EAM.text("Delete Project"), body, buttons))
+		{
+			directoryLock.close();
 			return;
-
+		}
+		
+		directoryLock.close();
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
 	}
-	
-	//FIXME: this code should not be duplicated here but called from the LockDirectory
-	static private boolean isProjectOpened(File directory) throws IOException
-	{
-		DirectoryLock lock = new DirectoryLock();
-		try
-		{
-			lock.lock(directory);
-			return false;
-		}
-		catch(AlreadyLockedException e)
-		{
-			return true;
-		}
-		finally
-		{
-			lock.close();
-		}
-	}
-
 }
