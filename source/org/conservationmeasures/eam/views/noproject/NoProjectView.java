@@ -34,8 +34,9 @@ public class NoProjectView extends UmbrellaView
 		super.becomeInactive();
 	}
 	
-	public void refreshText()
+	public void refreshText() throws Exception
 	{
+		wizard.refresh();
 	}
 
 	public String cardName()
