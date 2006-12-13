@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -17,9 +18,11 @@ public class DelimitedFileLoader
 
 	static String TAB = "\t";
 
-	public static Vector getDelimitedContents(BufferedReader reader)
+	public static Vector getDelimitedContents(Reader rawReader)
 			throws IOException
 	{
+		BufferedReader reader = new BufferedReader(rawReader);
+		
 		Vector lineVector = new Vector();
 		while(reader.ready())
 		{

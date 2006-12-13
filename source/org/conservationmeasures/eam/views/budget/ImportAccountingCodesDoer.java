@@ -5,9 +5,9 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -50,7 +50,9 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		File fileToImport = results.getChosenFile();
 		try 
 		{
-			importCodes(new BufferedReader(new FileReader(fileToImport)), getProject());
+			FileReader fileReader = new FileReader(fileToImport);
+			importCodes(fileReader, getProject());
+			fileReader.close();
 		}
 		catch (Exception e)
 		{
@@ -61,11 +63,11 @@ public class ImportAccountingCodesDoer extends ViewDoer
 	}
 
 
-	static public AccountingCode[] importCodes(BufferedReader fileToImport, Project project) throws Exception
+	static public AccountingCode[] importCodes(Reader fileToImport, Project project) throws Exception
 	{
 		AccountingCodeData[] accountingCodes = new AccountingCodeData[0];
+
 		project.executeCommand(new CommandBeginTransaction());
-		
 		try
 		{
 			accountingCodes = AccountingCodeLoader.load(fileToImport);

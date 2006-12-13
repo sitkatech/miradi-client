@@ -5,10 +5,8 @@
  */
 package org.conservationmeasures.eam.objecthelpers;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringBufferInputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.utils.DelimitedFileLoader;
@@ -17,14 +15,12 @@ public class AccountingCodeLoader
 {
 	public static AccountingCodeData[] load(String data) throws Exception
 	{
-		InputStream is = new StringBufferInputStream(data);
-		return load(new BufferedReader(new InputStreamReader(is)));
+		return load(new StringReader(data));
 	}
 
-	public static AccountingCodeData[] load(BufferedReader reader) throws Exception
+	public static AccountingCodeData[] load(Reader reader) throws Exception
 	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
-		reader.close();
 		return processVector(fileVector);
 	}
 	
