@@ -32,17 +32,20 @@ public class DeleteProject
 			return;
 		}
 
-		String[] body = {EAM.text("Are you sure you want to delete this project? "), 
-				projectToDelete.getName(),
-		};
-		String[] buttons = {EAM.text("Delete"), EAM.text("Keep"), };
-		if(!EAM.confirmDialog(EAM.text("Delete Project"), body, buttons))
+		try
+		{
+			String[] body = {EAM.text("Are you sure you want to delete this project? "), 
+					projectToDelete.getName(),
+			};
+			String[] buttons = {EAM.text("Delete"), EAM.text("Keep"), };
+			if(!EAM.confirmDialog(EAM.text("Delete Project"), body, buttons))
+				return;
+		}
+		finally
 		{
 			directoryLock.close();
-			return;
 		}
 		
-		directoryLock.close();
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
 	}
 }
