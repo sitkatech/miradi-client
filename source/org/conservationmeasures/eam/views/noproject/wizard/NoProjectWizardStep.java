@@ -17,7 +17,7 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 		headerHtmlViewer.setText(header);
 		add(headerHtmlViewer, BorderLayout.BEFORE_FIRST_LINE);
 
-		projectList = new ProjectList(wizardToUse);
+		projectList = new ProjectListPanel(wizardToUse);
 	}
 
 	public void refresh() throws Exception
@@ -25,6 +25,6 @@ public class NoProjectWizardStep extends SkeletonWizardStep
 		projectList.refresh();
 	}
 	
-	ProjectList projectList;
+	ProjectListPanel projectList;
 
 }

@@ -7,13 +7,14 @@ import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.views.umbrella.WizardStep;
 
-public class NoProjectWizardWelcomeStep extends NoProjectWizardStep
+public class NoProjectWizardImportStep extends NoProjectWizardStep
 {
-	public NoProjectWizardWelcomeStep(NoProjectWizardPanel wizardToUse) throws Exception
+
+	public NoProjectWizardImportStep(NoProjectWizardPanel wizardToUse) throws Exception
 	{
 		super(wizardToUse);
 		
-		String html = WizardStep.loadHtmlFile(getClass(), "WelcomeNew.html");
+		String html = WizardStep.loadHtmlFile(getClass(), "WelcomeImport.html");
 		LeftSideTextPanel left = new LeftSideTextPanel(html, wizardToUse);
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));

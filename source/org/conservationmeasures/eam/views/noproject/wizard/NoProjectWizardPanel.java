@@ -24,7 +24,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 	public NoProjectWizardPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		mainWindow = mainWindowToUse;
-		int WELCOME = addStep(new NoProjectWizardWelcomeStep(this));
+		WELCOME = addStep(new NoProjectWizardWelcomeStep(this));
+		IMPORT = addStep(new NoProjectWizardImportStep(this));
 
 		setStep(WELCOME);
 	}
@@ -155,6 +156,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 				Action action = new ActionNewProject(getMainWindow());
 				action.actionPerformed(null);
 			}
+			else if(buttonName.equals("Import"))
+			{
+				setStep(IMPORT);
+			}
 			else if(buttonName.equals("ImportZip"))
 			{
 				EAMAction action = getMainWindow().getActions().get(ActionImportZippedProjectFile.class);
@@ -165,6 +170,15 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 				EAMAction action = getMainWindow().getActions().get(ActionImportTncCapWorkbook.class);
 				action.doAction();
 			}
+			else if(buttonName.indexOf("Next") >= 0)
+			{
+				next();
+			}
+			else if(buttonName.indexOf("Back") >= 0)
+			{
+				previous();
+			}
+
 		}
 		catch(Exception e)
 		{
@@ -199,6 +213,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		return mainWindow;
 	}
 
+	
 	public static final String OPEN_PREFIX = "OPEN:";
 	public static final String COPY_PREFIX = "COPY:";
 	public static final String RENAME_PREFIX = "RENAME:";
@@ -208,5 +223,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 	public static final String DEFINITION_PREFIX = "Definition:";
 
 	MainWindow mainWindow;
+	int WELCOME;
+	int IMPORT;
 
 }
