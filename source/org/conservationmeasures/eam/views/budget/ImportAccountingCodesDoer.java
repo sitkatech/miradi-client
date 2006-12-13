@@ -48,9 +48,10 @@ public class ImportAccountingCodesDoer extends ViewDoer
 			return;
 		
 		File fileToImport = results.getChosenFile();
+		FileReader fileReader = null;
 		try 
 		{
-			FileReader fileReader = new FileReader(fileToImport);
+			fileReader = new FileReader(fileToImport);
 			importCodes(fileReader, getProject());
 			fileReader.close();
 		}
@@ -58,12 +59,21 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		{
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			try 
+			{
+				if (fileReader!=null)
+					fileReader.close();
+			}
+			catch (Exception e) {}
+		}
 		
 		EAM.notifyDialog(EAM.text("Import Competed"));
 	}
 
 
-	static public AccountingCode[] importCodes(Reader fileToImport, Project project) throws Exception
+	static public AccountingCode[] importCodes(Reader fileToImport, Project project) throws Exception 
 	{
 		AccountingCodeData[] accountingCodes = new AccountingCodeData[0];
 
@@ -74,7 +84,8 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		}
 		catch (Exception e)
 		{
-			throw new CommandFailedException(e);
+			EAM.errorDialog(EAM.text("Unable to process file: verify file format"));
+			throw(e);
 		}
 		finally
 		{
