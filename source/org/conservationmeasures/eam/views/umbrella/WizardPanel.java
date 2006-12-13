@@ -83,6 +83,10 @@ public class WizardPanel extends JPanel
 		throw new RuntimeException("Step not in this view: " + stepMarker);
 	}
 
+	public int getCurrentStep()
+	{
+		return currentStep;
+	}
 
 
 	SkeletonWizardStep[] steps;

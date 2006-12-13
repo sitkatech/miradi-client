@@ -4,12 +4,10 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
-import org.conservationmeasures.eam.actions.ActionNewProject;
 import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -20,6 +18,7 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
+import org.martus.swing.UiOptionPane;
 
 public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandler
 {
@@ -28,6 +27,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		mainWindow = mainWindowToUse;
 		WELCOME = addStep(new NoProjectWizardWelcomeStep(this));
 		IMPORT = addStep(new NoProjectWizardImportStep(this));
+		CREATE =addStep(new NoProjectWizardProjectCreateStep(this));
 
 		setStep(WELCOME);
 	}
@@ -103,6 +103,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		{
 			definition = new String[] {"A New Project is..."};
 		}
+		else if(itemToDefine.equals("CreateProject"))
+		{
+			definition = new String[] {"A New Project is..."};
+		}
 		else if(itemToDefine.equals("ImportZip"))
 		{
 			definition = new String[] {"A Zipped Project is..."};
@@ -156,8 +160,11 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		{
 			if(buttonName.equals("NewProject"))
 			{
-				Action action = new ActionNewProject(getMainWindow());
-				action.actionPerformed(null);
+				setStep(CREATE);
+			}
+			else if(buttonName.equals("CreateProject"))
+			{
+				createProject();
 			}
 			else if(buttonName.equals("Import"))
 			{
@@ -179,14 +186,26 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 			}
 			else if(buttonName.indexOf("Back") >= 0)
 			{
-				previous();
+				if (getCurrentStep() == CREATE)
+					setStep(WELCOME);
+				else
+					previous();
 			}
-
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("Unable to process request: ") + e);
+		}
+	}
+
+	private void createProject() throws Exception
+	{
+		String newName = UiOptionPane.showInputDialog("Enter New Project Name");
+		if (newName != null)
+		{
+			File newFile = new File(EAM.getHomeDirectory(),newName);
+			getMainWindow().createOrOpenProject(newFile);
 		}
 	}
 
@@ -230,5 +249,6 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 	MainWindow mainWindow;
 	int WELCOME;
 	int IMPORT;
+	int CREATE;
 
 }
