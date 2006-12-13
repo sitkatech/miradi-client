@@ -42,14 +42,18 @@ public class BudgetTableModel extends AbstractTableModel
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
-		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
 		if (startDate.length() > 0 )
 			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		
+		int yearCount = 3;
+		String endDate = project.getMetadata().getExpectedEndDate();
+		if (endDate.length() > 0)
+			yearCount = DateRange.getYearsInBetween(projectStartDate, MultiCalendar.createFromIsoDateString(endDate));
+		
 		int year = projectStartDate.getGregorianYear();
-		final int YEAR_COUNT = 3;
 		Vector vector = new Vector();
-		for (int i = 0; i < YEAR_COUNT; i++)
+		for (int i = 0; i < yearCount; i++)
 		{
 			vector.addAll(getQuarters(year));
 			year++;
@@ -429,8 +433,6 @@ public class BudgetTableModel extends AbstractTableModel
 			
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
 			units = effortList.getTotalUnitQuantity(dateRanges[covertToUnitsColumn(col)]);
-			//FIXME budget code - remove comment
-			//units = effortList.getUnitsForDateRange(dateRanges[covertToUnitsColumn(col)]);
 		}
 		catch (Exception e)
 		{
@@ -551,8 +553,6 @@ public class BudgetTableModel extends AbstractTableModel
 	}
 	
 	Project project;
-	MultiCalendar projectStartDate;
-	MultiCalendar projectEndDate;
 	DateRange[] dateRanges;
 	IdList assignmentIdList;
 	Task task;
