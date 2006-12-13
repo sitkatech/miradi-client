@@ -50,6 +50,9 @@ public class ProjectList extends JPanel
 			add(new Hyperlink(NoProjectWizardPanel.OPEN_PREFIX+name, name, handler));
 			add(new TableHeadingText(isoDate));
 		}
+		
+		// NOTE: invalidate() is not strong enough to blank the bottom row after delete
+		repaint();
 	}
 
 	public File[] getProjectDirectories()

@@ -181,6 +181,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 	private void deleteProjectAfterConfirmation(File projectDirectory) throws Exception
 	{
 		DeleteProject.doIt(getMainWindow(), projectDirectory);
+		refresh();
 	}
 
 	private void exportProject(File projectDirectory) throws CommandFailedException

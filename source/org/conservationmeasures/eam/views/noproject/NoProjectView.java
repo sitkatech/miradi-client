@@ -24,10 +24,8 @@ public class NoProjectView extends UmbrellaView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
-		removeAll();
-
-		add(wizard);
 		wizard.refresh();
+		add(wizard);
 	}
 
 	public void becomeInactive() throws Exception
