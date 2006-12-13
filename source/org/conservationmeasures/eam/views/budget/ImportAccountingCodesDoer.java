@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.budget;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -32,11 +31,14 @@ public class ImportAccountingCodesDoer extends ViewDoer
 {
 	public boolean isAvailable() 
 	{
-		return true;
+		return getProject().isOpen();
 	}
 
 	public void doIt() throws CommandFailedException 
 	{
+		if (!isAvailable())
+			return;
+		
 		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
 		String windowTitle = EAM.text("Import Accounting Codes");
 		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
@@ -48,8 +50,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		File fileToImport = results.getChosenFile();
 		try 
 		{
-			Project project = getProject();
-			importCodes(new BufferedReader(new FileReader(fileToImport)), project);
+			importCodes(new BufferedReader(new FileReader(fileToImport)), getProject());
 		}
 		catch (Exception e)
 		{
@@ -60,16 +61,11 @@ public class ImportAccountingCodesDoer extends ViewDoer
 	}
 
 
-	static public AccountingCode[] importCodes(String fileToImport, Project project) throws Exception
-	{
-		return importCodes(new BufferedReader(new StringReader(fileToImport)),project);
-	}
-	
-
 	static public AccountingCode[] importCodes(BufferedReader fileToImport, Project project) throws Exception
 	{
 		AccountingCodeData[] accountingCodes = new AccountingCodeData[0];
 		project.executeCommand(new CommandBeginTransaction());
+		
 		try
 		{
 			accountingCodes = AccountingCodeLoader.load(fileToImport);
@@ -82,13 +78,14 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		{
 			project.executeCommand(new CommandEndTransaction());
 		}
-		return processData(project, accountingCodes);
+		
+		return createAccountingCodeObjectsFromDataObjects(project, accountingCodes);
 	}
 
 
-	private static AccountingCode[] processData(Project project, AccountingCodeData[] accountingCodes) throws Exception
+	private static AccountingCode[] createAccountingCodeObjectsFromDataObjects(Project project, AccountingCodeData[] accountingCodes) throws Exception
 	{
-		AccountMap map = new AccountMap(project);
+		AccountingCodesDataMap map = new AccountingCodesDataMap(project);
 		Vector accountingCodeVector = new Vector();
 		for (int i=0; i<accountingCodes.length; ++i) 
 		{
@@ -119,14 +116,12 @@ public class ImportAccountingCodesDoer extends ViewDoer
 
 }
 
-class AccountMap extends HashMap
+class AccountingCodesDataMap extends HashMap
 {
-	public AccountMap(Project project)
+	public AccountingCodesDataMap(Project project)
 	{
 		super();
-		EAMObjectPool accountingCodePool = project.getPool(ObjectType.ACCOUNTING_CODE);
-		BaseId[] existingBaseIds = accountingCodePool.getIds();
-		loadExistingCodes(project, existingBaseIds);
+		loadExistingCodes(project);
 	}
 	
 	public boolean isDuplicate(String code, String label)
@@ -137,8 +132,10 @@ class AccountMap extends HashMap
 		return (get(code).equals(label));
 	}
 	
-	private void loadExistingCodes(Project project, BaseId[] existingBaseIds)
+	private void loadExistingCodes(Project project)
 	{
+		EAMObjectPool accountingCodePool = project.getPool(ObjectType.ACCOUNTING_CODE);
+		BaseId[] existingBaseIds = accountingCodePool.getIds();
 		for (int i =0; i< existingBaseIds.length; ++i)
 		{
 			String key = project.getObjectData(ObjectType.ACCOUNTING_CODE, existingBaseIds[i], AccountingCode.TAG_CODE);

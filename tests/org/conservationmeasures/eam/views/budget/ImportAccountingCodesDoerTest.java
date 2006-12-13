@@ -5,6 +5,9 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.io.BufferedReader;
+import java.io.StringReader;
+
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.AccountingCode;
@@ -36,7 +39,7 @@ public class ImportAccountingCodesDoerTest extends EAMTestCase
 	public void testTwoRows() throws Exception
 	{
 		String data = "code1A \t label1A \n code1B \t label1B";
-		AccountingCode[] accountingCodes = ImportAccountingCodesDoer.importCodes(data, project);
+		AccountingCode[] accountingCodes = ImportAccountingCodesDoer.importCodes(new BufferedReader(new StringReader(data)),project);
 		assertEquals(2, accountingCodes.length);
 		EAMObject object = project.findObject(ObjectType.ACCOUNTING_CODE, accountingCodes[0].getId());
 		assertNotNull(object);
@@ -49,7 +52,7 @@ public class ImportAccountingCodesDoerTest extends EAMTestCase
 	{
 		testTwoRows();
 		String data = "code1A \t label1A \n code1B \t label1B";
-		ImportAccountingCodesDoer.importCodes(data, project);
+		ImportAccountingCodesDoer.importCodes(new BufferedReader(new StringReader(data)),project);
 		assertEquals(2, project.getPool(ObjectType.ACCOUNTING_CODE).size());
 	}
 	
