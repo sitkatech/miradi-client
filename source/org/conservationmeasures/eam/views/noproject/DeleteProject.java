@@ -6,18 +6,18 @@
 package org.conservationmeasures.eam.views.noproject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Vector;
+import java.io.IOException;
 
 import org.conservationmeasures.eam.database.ProjectServer;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class DeleteProject
 {
-	static public void doIt(MainWindow mainWindow, File projectToDelete) throws CommandFailedException, FileNotFoundException 
+	static public void doIt(MainWindow mainWindow, File projectToDelete) throws Exception 
 	{
 		
 		if(!ProjectServer.isExistingProject(projectToDelete))
@@ -28,14 +28,15 @@ public class DeleteProject
 		
 		if (isProjectOpened(projectToDelete))
 		{
-			EAM.notifyDialog(EAM.text("Cannot delete an opened project: ") +  projectToDelete.getName());
+			EAM.notifyDialog(EAM.text("Unable to delete this project because it is in use by another copy of this application:\n") +  projectToDelete.getName());
 			return;
 		}
 		
-		Vector dialogText = new Vector();
-		dialogText.add("\nAre you sure you want to delete this project? " + projectToDelete.getName());
+		String[] body = {"Are you sure you want to delete this project? ", 
+				projectToDelete.getName(),
+		};
 		String[] buttons = {"Delete", "Keep", };
-		if(!EAM.confirmDialog("Delete Project: ", (String[])dialogText.toArray(new String[0]), buttons))
+		if(!EAM.confirmDialog("Delete Project", body, buttons))
 			return;
 
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
@@ -44,13 +45,22 @@ public class DeleteProject
 	}
 	
 	//FIXME: this code should not be duplicated here but called from the LockDirectory
-	static private boolean isProjectOpened(File directory) throws FileNotFoundException
+	static private boolean isProjectOpened(File directory) throws IOException
 	{
-	// Always return true????
-	//	File lockFile = new File(directory, "lock");
-	//	FileOutputStream tempLockStream = new FileOutputStream(lockFile);
-	//	return tempLockStream.getChannel().isOpen();
-		return false;
+		DirectoryLock lock = new DirectoryLock();
+		try
+		{
+			lock.lock(directory);
+			return false;
+		}
+		catch(AlreadyLockedException e)
+		{
+			return true;
+		}
+		finally
+		{
+			lock.close();
+		}
 	}
 
 }
