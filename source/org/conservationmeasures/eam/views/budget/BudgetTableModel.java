@@ -39,24 +39,34 @@ public class BudgetTableModel extends AbstractTableModel
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
-		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 1, 1);
+		
+		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2005, 1, 1);
 		if (startDate.length() > 0 )
 			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		
 		int year = projectStartDate.getGregorianYear();
-		dateRanges = new DateRange[4];
+		dateRanges = new DateRange[12];
+		
 		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar end = null;
-		final int YEAR_QUARTER = 3;
-		final int MINUS_A_DAY = -1;
+		final int QUARTER_IN_MONTHS = 3;
+		final int YEAR_QUARTER_COUNT = 4;
+		
+		//FIXME come up with a better way (and not if (i != 0)) 
+		year--;
 		for (int i = 0; i < dateRanges.length; i++)
 		{
-			int endMonth  =  (i + 1) * YEAR_QUARTER;
-			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
+			if (i % 4 == 0)
+				year++;
+
+			int endMonth  =  ((i % YEAR_QUARTER_COUNT)+ 1) * QUARTER_IN_MONTHS;
 			
+			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
 			dateRanges[i] = new DateRange(start, end);
-			start = MultiCalendar.createFromGregorianYearMonthDay(end.getGregorianYear(), end.getGregorianMonth(), end.getGregorianDay());
-			start.addDays(MINUS_A_DAY);
+			start = MultiCalendar.createFromGregorianYearMonthDay(year, end.getGregorianMonth(), end.getGregorianDay());
+			//FIXME budget code - remove
+			//final int MINUS_A_DAY = -1;
+			//start.addDays(MINUS_A_DAY);
 		}
 	}
 
