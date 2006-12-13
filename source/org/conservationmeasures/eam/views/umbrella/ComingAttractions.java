@@ -40,7 +40,7 @@ public class ComingAttractions extends Doer  implements HyperlinkHandler
 	
 	public void doIt() throws CommandFailedException
 	{
-		String title = EAM.text("Title|Comming Attractions");
+		String title = EAM.text("Title|Coming Attractions");
 		showOkDialog(title, comingAttractonstext);
 	}
 	
@@ -99,7 +99,7 @@ public class ComingAttractions extends Doer  implements HyperlinkHandler
 
 	static final String comingAttractonstext = 
 		"<html><table><tr><td align='center' valign='top'>" +
-		"<h1>e-Adaptive Management Pre-Release Comming Attractions</h1>" +
+		"<h1>e-Adaptive Management Pre-Release Coming Attractions</h1>" +
 		"<font face='Arial'>" +
 		"</font>" + 
 		"</td></tr>" +
