@@ -28,7 +28,8 @@ public class WizardPanel extends JPanel
 
 		add(contents, BorderLayout.CENTER);
 		allowSplitterToHideUsCompletely();
-		validate();
+		revalidate();
+		repaint();
 	}
 	
 	public void next() throws Exception
