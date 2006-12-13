@@ -47,11 +47,17 @@ public class CopyProject
 				return;
 			}
 			
+			if (!mainWindow.getProject().isValidProjectFilename(newName))
+			{
+				EAM.notifyDialog(EAM.text("Invalid project name, choose antother name."));
+				return;
+			}
+			
 			String[] body = {EAM.text("Are you sure you want to copy project: "), 
 					projectToCopy.getName(),
 			};
 			String[] buttons = {EAM.text("Copy"), EAM.text("Cancel"), };
-			if(!EAM.confirmDialog(EAM.text("Rename Project"), body, buttons))
+			if(!EAM.confirmDialog(EAM.text("Copy Project"), body, buttons))
 				return;
 		
 			directoryLock.close();

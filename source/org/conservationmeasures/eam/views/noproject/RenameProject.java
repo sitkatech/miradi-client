@@ -35,11 +35,21 @@ public class RenameProject
 		try
 		{
 			String newName = UiOptionPane.showInputDialog("Enter New Project Name");
+			if (newName == null)
+				return;
+			
 			File newFile = new File(projectToRename.getParentFile(),newName);
 			
 			if(ProjectServer.isExistingProject(newFile))
 			{
 				EAM.notifyDialog(EAM.text("Project by this name already exists, choose antother name."));
+				return;
+			}
+			
+			
+			if (!mainWindow.getProject().isValidProjectFilename(newName))
+			{
+				EAM.notifyDialog(EAM.text("Invalid project name, choose antother name."));
 				return;
 			}
 			
