@@ -107,19 +107,7 @@ public class DateRange
 	
 	public static int getYearsInBetween(MultiCalendar date1, MultiCalendar date2)
 	{
-		int count = 0;
-		if (date1.after(date2))
-			return count;
-		
-		while (date1.before(date2))
-		{
-			int year = date1.getGregorianYear();
-			year += 1;
-			date1 = MultiCalendar.createFromGregorianYearMonthDay(year, date1.getGregorianMonth(), date1.getGregorianDay());
-			count++;
-		}
-		
-		return count;
+		return date2.getGregorianYear() - date1.getGregorianYear();
 	}
 	
 	public boolean equals(Object rawOther)
