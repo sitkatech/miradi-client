@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.UiOptionPane;
 import org.martus.util.DirectoryLock;
+import org.martus.util.DirectoryUtils;
 
 public class CopyProject
 {
@@ -35,6 +36,9 @@ public class CopyProject
 		try
 		{
 			String newName = UiOptionPane.showInputDialog("Enter New Project Name");
+			if (newName == null)
+				return;
+			
 			File newFile = new File(projectToCopy.getParentFile(),newName);
 			
 			if(ProjectServer.isExistingProject(newFile))
@@ -51,11 +55,13 @@ public class CopyProject
 				return;
 		
 			directoryLock.close();
-			projectToCopy.renameTo(newFile);
+			DirectoryUtils.copyDirectory(projectToCopy, newFile);
 		}
 		finally
 		{
 			directoryLock.close();
 		}
 	}
+
+
 }
