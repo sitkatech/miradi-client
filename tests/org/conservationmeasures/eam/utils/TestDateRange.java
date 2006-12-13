@@ -68,4 +68,13 @@ public class TestDateRange extends EAMTestCase
 		assertEquals("combined date ranges?", combined, DateRange.combine(dateRange1, dateRange2));
 		assertEquals("combine with self is same?", dateRange1, DateRange.combine(dateRange1, dateRange1));
 	}
+	
+	public void testGetYearsInBetween() throws Exception
+	{
+		MultiCalendar date1 = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar date2 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
+		
+		assertEquals("count years in betweem?", 2, DateRange.getYearsInBetween(date1, date2));
+		assertEquals("no years in between?", 0 , DateRange.getYearsInBetween(date2, date1));
+	}
 }
