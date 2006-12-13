@@ -231,7 +231,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	private void addUmbrellaDoersToMap()
 	{
-		addDoerToMap(ActionAbout.class, new About());
+		addDoerToMap(ActionAbout.class, new AboutDoer());
 		addDoerToMap(ActionComingAttractions.class, new ComingAttractions());
 		addDoerToMap(ActionNewProject.class, new NewProject());
 		addDoerToMap(ActionProjectSaveAs.class, new SaveAsProjectDoer());

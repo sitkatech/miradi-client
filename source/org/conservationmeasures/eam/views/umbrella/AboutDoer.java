@@ -28,9 +28,9 @@ import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
-public class About extends Doer  implements HyperlinkHandler
+public class AboutDoer extends Doer  implements HyperlinkHandler
 {
-	public About()
+	public AboutDoer()
 	{
 	}
 	
