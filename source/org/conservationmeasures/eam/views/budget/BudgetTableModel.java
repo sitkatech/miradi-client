@@ -5,6 +5,10 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.commands.Command;
@@ -30,7 +34,6 @@ public class BudgetTableModel extends AbstractTableModel
 	{
 		project = projectToUse;
 		assignmentIdList  = assignmentIdListToUse;
-		
 		totalsCalculator = new BudgetTotalsCalculator(project);
 	
 		setProjectDateRanges();
@@ -39,35 +42,45 @@ public class BudgetTableModel extends AbstractTableModel
 	private void setProjectDateRanges() throws Exception
 	{
 		String startDate = project.getMetadata().getStartDate();
-		
-		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2005, 1, 1);
+		projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
 		if (startDate.length() > 0 )
 			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		
 		int year = projectStartDate.getGregorianYear();
-		dateRanges = new DateRange[12];
-		
-		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
-		MultiCalendar end = null;
+		final int YEAR_COUNT = 1;
+		Vector vector = new Vector();
+		for (int i = 0; i < YEAR_COUNT; i++)
+		{
+			vector.addAll(getQuarters(year));
+			year++;
+		}
+		dateRanges = (DateRange[])vector.toArray(new DateRange[0]);
+	}
+
+	private List getQuarters(int year) throws Exception
+	{
 		final int QUARTER_IN_MONTHS = 3;
 		final int YEAR_QUARTER_COUNT = 4;
+		final int MINUS_A_DAY = -1;
 		
-		//FIXME come up with a better way (and not if (i != 0)) 
-		year--;
-		for (int i = 0; i < dateRanges.length; i++)
+		DateRange[] ranges= new DateRange[5];
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+		MultiCalendar end = null;
+		MultiCalendar yearStart = start;
+		
+		for (int i = 0; i < YEAR_QUARTER_COUNT; i++)
 		{
-			if (i % 4 == 0)
-				year++;
-
 			int endMonth  =  ((i % YEAR_QUARTER_COUNT)+ 1) * QUARTER_IN_MONTHS;
-			
 			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
-			dateRanges[i] = new DateRange(start, end);
+
+			ranges[i] = new DateRange(start, end);
 			start = MultiCalendar.createFromGregorianYearMonthDay(year, end.getGregorianMonth(), end.getGregorianDay());
-			//FIXME budget code - remove
-			//final int MINUS_A_DAY = -1;
-			//start.addDays(MINUS_A_DAY);
+			start.addDays(MINUS_A_DAY);
 		}
+		final int YEAR_TOTAL_INDEX = 4;
+		ranges[YEAR_TOTAL_INDEX] = new DateRange(yearStart, end);
+	
+		return Arrays.asList(ranges);
 	}
 
 	public void setTask(Task taskToUse)
