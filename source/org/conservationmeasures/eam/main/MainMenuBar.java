@@ -14,6 +14,7 @@ import javax.swing.JMenuItem;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
+import org.conservationmeasures.eam.actions.ActionComingAttractions;
 import org.conservationmeasures.eam.actions.ActionConfigureLayers;
 import org.conservationmeasures.eam.actions.ActionCopy;
 import org.conservationmeasures.eam.actions.ActionCut;
@@ -404,7 +405,8 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createHelpMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
-		menu.add(new JMenuItem(actions.get(ActionAbout.class)));
+		menu.add(actions.get(ActionAbout.class));
+		menu.add(actions.get(ActionComingAttractions.class));
 		return menu;
 	}
 }

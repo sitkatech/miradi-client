@@ -74,6 +74,7 @@ public class Actions
 		actions = new HashMap();
 		
 		registerAction(new ActionAbout(mainWindow));
+		registerAction(new ActionComingAttractions(mainWindow));
 		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
 		registerAction(new ActionCopy(mainWindow));
