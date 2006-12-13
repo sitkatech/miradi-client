@@ -33,42 +33,50 @@ public abstract class ImportProjectDoer extends ViewDoer
 
 	public void doIt() throws CommandFailedException 
 	{
-		File startingDirectory = UiFileChooser.getHomeDirectoryFile();
-		String windowTitle = EAM.text("Import Project");
-		UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
-				getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory, null, getFileFilter());
-		
-		if (results.wasCancelChoosen())
-			return;
-		
-		File fileToImport = results.getChosenFile();
-		String projectName = withoutExtension(fileToImport.getName());
-		File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
-		
-		if(ProjectServer.isExistingProject(finalProjectDirectory))
+		try
 		{
-			EAM.notifyDialog(EAM.text("Cannot import a project that already exists: ") + projectName);
-			return;
-		}
-		
-		if(finalProjectDirectory.exists())
-		{
-			EAM.notifyDialog(EAM.text("Cannot import over an existing file or directory: ") + 
-					finalProjectDirectory.getAbsolutePath());
-			return;
-		}
-		
-		if (!createProject(finalProjectDirectory, fileToImport))
-		{
-			EAM.notifyDialog(EAM.text("Import failed"));
-			return;
-		}
+			File startingDirectory = UiFileChooser.getHomeDirectoryFile();
+			String windowTitle = EAM.text("Import Project");
+			UiFileChooser.FileDialogResults results = UiFileChooser.displayFileOpenDialog(
+					getMainWindow(), windowTitle, UiFileChooser.NO_FILE_SELECTED, startingDirectory, null, getFileFilter());
+			
+			if (results.wasCancelChoosen())
+				return;
+			
+			File fileToImport = results.getChosenFile();
+			String projectName = withoutExtension(fileToImport.getName());
+			File finalProjectDirectory = new File(EAM.getHomeDirectory(), projectName);
+			
+			if(ProjectServer.isExistingProject(finalProjectDirectory))
+			{
+				EAM.notifyDialog(EAM.text("Cannot import a project that already exists: ") + projectName);
+				return;
+			}
+			
+			if(finalProjectDirectory.exists())
+			{
+				EAM.notifyDialog(EAM.text("Cannot import over an existing file or directory: ") + 
+						finalProjectDirectory.getAbsolutePath());
+				return;
+			}
+			
+			if (!createProject(finalProjectDirectory, fileToImport))
+			{
+				EAM.notifyDialog(EAM.text("Import failed"));
+				return;
+			}
 
-		refreshNoProjectPanel();
-		EAM.notifyDialog(EAM.text("Import Competed"));
+			refreshNoProjectPanel();
+			EAM.notifyDialog(EAM.text("Import Competed"));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog("Unexpected error has occurred");
+		}
 	}
 
-	private void refreshNoProjectPanel()
+	private void refreshNoProjectPanel() throws Exception
 	{
 		NoProjectView noProjectView = (NoProjectView)getView();
 		noProjectView.refreshText();
