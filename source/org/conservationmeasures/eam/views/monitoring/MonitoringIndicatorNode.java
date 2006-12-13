@@ -56,8 +56,6 @@ public class MonitoringIndicatorNode extends MonitoringNode
 			return getChainManager().getRelatedTargetsAsHtml(indicator.getId());
 		if(column == COLUMN_THREATS)
 			return getChainManager().getRelatedDirectThreatsAsHtml(indicator.getId());
-		if(column == COLUMN_METHODS)
-			return indicator.getData(Indicator.TAG_METHOD);
 		if(column == COLUMN_ITEM_LABEL)
 			return indicator.toString();
 		return null;

@@ -51,23 +51,13 @@ public class Indicator extends EAMBaseObject
 	{
 		super.clear();
 		shortLabel = new StringData();
-		method = new StringData();
-		location = new StringData();
 		priority = new RatingData();
 		status = new RatingData();
-		cost = new StringData();
-		fundingSource = new StringData();
-		when = new StringData();
 		taskIds = new IdListData();
 
 		addField(TAG_SHORT_LABEL, shortLabel);
-		addField(TAG_METHOD, method);
-		addField(TAG_LOCATION, location);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
-		addField(TAG_COST, cost);
-		addField(TAG_FUNDING_SOURCE, fundingSource);
-		addField(TAG_WHEN, when);
 		addField(TAG_TASK_IDS, taskIds);
 	}
 	
@@ -89,13 +79,8 @@ public class Indicator extends EAMBaseObject
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
-	public static final String TAG_METHOD = "Method";
-	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_PRIORITY = "Priority";
 	public static final String TAG_STATUS = "Status";
-	public static final String TAG_FUNDING_SOURCE = "Funding Source";
-	public static final String TAG_COST = "Cost";
-	public static final String TAG_WHEN = "When";
 	public final static String TAG_TASK_IDS = "TaskIds";
 	
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
@@ -106,12 +91,7 @@ public class Indicator extends EAMBaseObject
 	public static final String OBJECT_NAME = "Indicator";
 
 	StringData shortLabel;
-	StringData method;
-	StringData location;
 	RatingData priority;
 	RatingData status;
-	StringData cost;
-	StringData fundingSource;
-	StringData when;
 	IdListData taskIds;
 }

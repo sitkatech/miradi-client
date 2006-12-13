@@ -30,18 +30,12 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 	public IndicatorPropertiesPanel(Project projectToUse, Actions actions, IndicatorId idToShow) throws Exception
 	{
 		super(projectToUse, ObjectType.INDICATOR, idToShow);
-		
-		
+
 		addField(createStringField(Indicator.TAG_SHORT_LABEL));
 		addField(createStringField(Indicator.TAG_LABEL));
-		addField(createMultilineField(Indicator.TAG_METHOD));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createRatingField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createRatingField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));			// Rating
-		addField(createStringField(Indicator.TAG_LOCATION));
-		addField(createStringField(Indicator.TAG_COST));
-		addField(createStringField(Indicator.TAG_FUNDING_SOURCE));
-		addField(createStringField(Indicator.TAG_WHEN));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));
