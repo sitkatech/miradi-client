@@ -17,25 +17,18 @@ public class AccountingCodeLoader
 {
 	public static AccountingCodeData[] load(String data) throws Exception
 	{
-
 		InputStream is = new StringBufferInputStream(data);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
-		reader.close();
-
-		Vector accountingCodes = processVector(fileVector);
-		return (AccountingCodeData[]) accountingCodes.toArray(new AccountingCodeData[0]);
+		return load(new BufferedReader(new InputStreamReader(is)));
 	}
 
 	public static AccountingCodeData[] load(BufferedReader reader) throws Exception
 	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
-
-		Vector accountingCodes = processVector(fileVector);
-		return (AccountingCodeData[]) accountingCodes.toArray(new AccountingCodeData[0]);
+		reader.close();
+		return processVector(fileVector);
 	}
 	
-	private static Vector processVector(Vector fileVector)
+	private static AccountingCodeData[] processVector(Vector fileVector)
 	{
 		Vector AccountingCodeData = new Vector();
 		for(int vectorIndex = 0; vectorIndex < fileVector.size(); ++vectorIndex)
@@ -45,7 +38,7 @@ public class AccountingCodeLoader
 			String label = (String) row.get(1);
 			AccountingCodeData.add(new AccountingCodeData(code, label));
 		}
-		return AccountingCodeData;
+		return (AccountingCodeData[]) AccountingCodeData.toArray(new AccountingCodeData[0]);
 	}
 
 }
