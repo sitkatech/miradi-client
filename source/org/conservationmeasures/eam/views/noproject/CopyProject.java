@@ -61,7 +61,7 @@ public class CopyProject
 				return;
 		
 			directoryLock.close();
-			DirectoryUtils.copyDirectory(projectToCopy, newFile);
+			DirectoryUtils.copyDirectoryTree(projectToCopy, newFile);
 		}
 		finally
 		{
