@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.views.noproject;
+package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -47,7 +47,7 @@ public class ProjectList extends JPanel
 			String name = projectFile.getName();
 			MultiCalendar date = new MultiCalendar(new Date(projectFile.lastModified()));
 			String isoDate = date.toIsoDateString();
-			add(new Hyperlink(NoProjectView.OPEN_PREFIX+name, name, handler));
+			add(new Hyperlink(NoProjectWizardPanel.OPEN_PREFIX+name, name, handler));
 			add(new TableHeadingText(isoDate));
 		}
 	}

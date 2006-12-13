@@ -19,7 +19,7 @@ public class WizardPanel extends JPanel
 	{
 		super(new BorderLayout());
 		
-		steps = new WizardStep[0];
+		steps = new SkeletonWizardStep[0];
 	}
 
 	public void setContents(JPanel contents)
@@ -68,12 +68,12 @@ public class WizardPanel extends JPanel
 		validate();
 	}
 	
-	public int addStep(WizardStep step)
+	public int addStep(SkeletonWizardStep step)
 	{
 		List existingSteps = Arrays.asList(steps);
 		Vector newSteps = new Vector(existingSteps);
 		newSteps.add(step);
-		steps = (WizardStep[])newSteps.toArray(new WizardStep[0]);
+		steps = (SkeletonWizardStep[])newSteps.toArray(new SkeletonWizardStep[0]);
 		return (steps.length - 1);
 	}
 	
@@ -84,7 +84,7 @@ public class WizardPanel extends JPanel
 
 
 
-	WizardStep[] steps;
+	SkeletonWizardStep[] steps;
 	protected int currentStep;
 }
 
