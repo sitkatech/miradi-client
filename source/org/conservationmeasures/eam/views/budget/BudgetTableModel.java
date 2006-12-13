@@ -47,7 +47,7 @@ public class BudgetTableModel extends AbstractTableModel
 			projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
 		
 		int year = projectStartDate.getGregorianYear();
-		final int YEAR_COUNT = 1;
+		final int YEAR_COUNT = 3;
 		Vector vector = new Vector();
 		for (int i = 0; i < YEAR_COUNT; i++)
 		{
@@ -428,7 +428,9 @@ public class BudgetTableModel extends AbstractTableModel
 				return Double.toString(getTotalColumnUnits(row, col));
 			
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
-			units = effortList.getUnitsForDateRange(dateRanges[covertToUnitsColumn(col)]);
+			units = effortList.getTotalUnitQuantity(dateRanges[covertToUnitsColumn(col)]);
+			//FIXME budget code - remove comment
+			//units = effortList.getUnitsForDateRange(dateRanges[covertToUnitsColumn(col)]);
 		}
 		catch (Exception e)
 		{
