@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.actions.EAMAction;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.noproject.CopyProject;
 import org.conservationmeasures.eam.views.noproject.DeleteProject;
 import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
@@ -206,9 +207,10 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		ExportZippedProjectFileDoer.perform(getMainWindow(), projectDirectory);
 	}
 
-	private void copyProject(File projectDirectory)
+	private void copyProject(File projectDirectory) throws Exception
 	{
-		// TODO implement this
+		CopyProject.doIt(getMainWindow(), projectDirectory);
+		refresh();
 	}
 
 	MainWindow getMainWindow()
