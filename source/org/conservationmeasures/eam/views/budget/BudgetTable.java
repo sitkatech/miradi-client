@@ -31,7 +31,8 @@ public class BudgetTable extends JTable implements ObjectPicker
 		super(modelToUse);
 		model = modelToUse;
 		project = projectToUse;
-		
+		//FIXME budget code - turn off auto resize
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		rebuild();
 	}
 	
