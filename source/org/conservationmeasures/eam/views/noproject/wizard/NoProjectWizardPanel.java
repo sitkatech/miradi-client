@@ -204,8 +204,13 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		String newName = UiOptionPane.showInputDialog("Enter New Project Name");
 		if (newName != null)
 		{
-			File newFile = new File(EAM.getHomeDirectory(),newName);
-			getMainWindow().createOrOpenProject(newFile);
+			if (getMainWindow().getProject().isValidProjectFilename(newName))
+			{
+				File newFile = new File(EAM.getHomeDirectory(),newName);
+				getMainWindow().createOrOpenProject(newFile);
+			}
+			else
+				EAM.notifyDialog(EAM.text("Invalid project name, choose antother name."));
 		}
 	}
 
