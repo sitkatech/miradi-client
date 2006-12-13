@@ -48,25 +48,21 @@ public class ImportAccountingCodesDoer extends ViewDoer
 			return;
 		
 		File fileToImport = results.getChosenFile();
-		FileReader fileReader = null;
 		try 
 		{
-			fileReader = new FileReader(fileToImport);
-			importCodes(fileReader, getProject());
-			fileReader.close();
+			FileReader fileReader  = new FileReader(fileToImport);
+			try
+			{
+				importCodes(fileReader, getProject());
+			}
+			finally
+			{
+				fileReader.close();
+			}
 		}
 		catch (Exception e)
 		{
 			throw new CommandFailedException(e);
-		}
-		finally
-		{
-			try 
-			{
-				if (fileReader!=null)
-					fileReader.close();
-			}
-			catch (Exception e) {}
 		}
 		
 		EAM.notifyDialog(EAM.text("Import Competed"));
