@@ -54,6 +54,11 @@ public class ImportAccountingCodesDoer extends ViewDoer
 			try
 			{
 				importCodes(fileReader, getProject());
+				EAM.notifyDialog(EAM.text("Import Competed"));
+			}
+			catch (ImportFileErrorException e)
+			{
+				EAM.errorDialog(EAM.text("Unable to process file: verify file format"));
 			}
 			finally
 			{
@@ -64,8 +69,6 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		{
 			throw new CommandFailedException(e);
 		}
-		
-		EAM.notifyDialog(EAM.text("Import Competed"));
 	}
 
 
@@ -80,8 +83,7 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog(EAM.text("Unable to process file: verify file format"));
-			throw(e);
+			throw(new ImportFileErrorException());
 		}
 		finally
 		{
@@ -122,8 +124,11 @@ public class ImportAccountingCodesDoer extends ViewDoer
 		AccountingCode[] toArray = (AccountingCode[])accountingCodeVector.toArray(new AccountingCode[0]);
 		return toArray;
 	}
-
+	
 }
+
+
+class ImportFileErrorException extends Exception {}
 
 class AccountingCodesDataMap extends HashMap
 {
