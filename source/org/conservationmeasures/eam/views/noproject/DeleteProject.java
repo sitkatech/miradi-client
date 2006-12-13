@@ -19,30 +19,28 @@ public class DeleteProject
 {
 	static public void doIt(MainWindow mainWindow, File projectToDelete) throws CommandFailedException, FileNotFoundException 
 	{
-		Vector dialogText = new Vector();
-		
-		dialogText.add("\nAre you sure you want to delete this project? " + projectToDelete.getName());
-
-		String[] buttons = {"Yes", "No", };
-		if(!EAM.confirmDialog("Delete Accounting Code", (String[])dialogText.toArray(new String[0]), buttons))
-			return;
 		
 		if(!ProjectServer.isExistingProject(projectToDelete))
 		{
 			EAM.notifyDialog(EAM.text("Project does not exist: ") + projectToDelete.getName());
 			return;
 		}
-
+		
 		if (isProjectOpened(projectToDelete))
 		{
 			EAM.notifyDialog(EAM.text("Cannot delete an opened project: ") +  projectToDelete.getName());
 			return;
 		}
 		
-		EAM.notifyDialog(EAM.text("Delete Competed"));
-		
+		Vector dialogText = new Vector();
+		dialogText.add("\nAre you sure you want to delete this project? " + projectToDelete.getName());
+		String[] buttons = {"Delete", "Keep", };
+		if(!EAM.confirmDialog("Delete Project: ", (String[])dialogText.toArray(new String[0]), buttons))
+			return;
+
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
 		
+		EAM.notifyDialog(EAM.text("Delete Competed"));
 	}
 	
 	//FIXME: this code should not be duplicated here but called from the LockDirectory
