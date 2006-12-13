@@ -5,8 +5,6 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
@@ -55,36 +53,29 @@ public class BudgetTableModel extends AbstractTableModel
 		Vector vector = new Vector();
 		for (int i = 0; i < yearCount; i++)
 		{
-			vector.addAll(getQuarters(year));
+			vector.addAll(getQuartersPlustYearlyRange(year));
 			year++;
 		}
 		dateRanges = (DateRange[])vector.toArray(new DateRange[0]);
 	}
 
-	private List getQuarters(int year) throws Exception
+	private Vector getQuartersPlustYearlyRange(int year) throws Exception
 	{
-		final int QUARTER_IN_MONTHS = 3;
-		final int YEAR_QUARTER_COUNT = 4;
-		final int MINUS_A_DAY = -1;
+		Vector ranges = new Vector();
+		ranges.add(createQuarter(year, 1, 31));
+		ranges.add(createQuarter(year, 4 , 30));
+		ranges.add(createQuarter(year, 7 , 30));
+		ranges.add(createQuarter(year, 10, 31));
+		ranges.add(DateRange.combine((DateRange)ranges.get(0), (DateRange)ranges.get(3)));
 		
-		DateRange[] ranges= new DateRange[5];
-		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
-		MultiCalendar end = null;
-		MultiCalendar yearStart = start;
-		
-		for (int i = 0; i < YEAR_QUARTER_COUNT; i++)
-		{
-			int endMonth  =  ((i % YEAR_QUARTER_COUNT)+ 1) * QUARTER_IN_MONTHS;
-			end = MultiCalendar.createFromGregorianYearMonthDay(year, endMonth, 1);
-
-			ranges[i] = new DateRange(start, end);
-			start = MultiCalendar.createFromGregorianYearMonthDay(year, end.getGregorianMonth(), end.getGregorianDay());
-			start.addDays(MINUS_A_DAY);
-		}
-		final int YEAR_TOTAL_INDEX = 4;
-		ranges[YEAR_TOTAL_INDEX] = new DateRange(yearStart, end);
+		return ranges;
+	}
 	
-		return Arrays.asList(ranges);
+	private DateRange createQuarter(int year, int startMonth, int endDay) throws Exception
+	{
+		MultiCalendar start = MultiCalendar.createFromGregorianYearMonthDay(year, startMonth, 1);
+		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(year, startMonth + 2, endDay);
+		return new DateRange(start, end);
 	}
 
 	public void setTask(Task taskToUse)
