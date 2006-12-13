@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-import org.conservationmeasures.eam.views.umbrella.WizardStep;
+import org.conservationmeasures.eam.main.EAM;
 
 public class NoProjectWizardImportStep extends NoProjectWizardStep
 {
@@ -14,7 +14,7 @@ public class NoProjectWizardImportStep extends NoProjectWizardStep
 	{
 		super(wizardToUse);
 		
-		String html = WizardStep.loadHtmlFile(getClass(), "WelcomeImport.html");
+		String html = EAM.loadResourceFile(getClass(), "WelcomeImport.html");
 		LeftSideTextPanel left = new LeftSideTextPanel(html, wizardToUse);
 		
 		JPanel panel = new JPanel(new GridLayout(1, 2));

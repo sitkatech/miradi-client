@@ -1,15 +1,12 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.BorderLayout;
-import java.io.IOException;
-import java.net.URL;
 
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import org.conservationmeasures.eam.main.EAM;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.util.UnicodeReader;
 
 public abstract class SkeletonWizardStep extends JPanel implements HyperlinkHandler
 {
@@ -33,21 +30,7 @@ public abstract class SkeletonWizardStep extends JPanel implements HyperlinkHand
 		if(resourceFileName == null)
 			return "Missing text";
 		
-		return loadHtmlFile(getClass(), resourceFileName);
-	}
-
-	public static String loadHtmlFile(Class thisClass, String resourceFileName) throws IOException
-	{
-		URL htmlFile = thisClass.getResource(resourceFileName);
-		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
-		try
-		{
-			return reader.readAll();
-		}
-		finally
-		{
-			reader.close();
-		}
+		return EAM.loadResourceFile(getClass(), resourceFileName);
 	}
 
 	public String getResourceFileName()

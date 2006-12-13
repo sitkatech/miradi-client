@@ -20,35 +20,22 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import org.conservationmeasures.eam.dialogs.EAMDialog;
-import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
-public class ComingAttractions extends Doer  implements HyperlinkHandler
+public class ComingAttractionsPanel implements HyperlinkHandler
 {
-	public ComingAttractions()
-	{
-	}
-	
-	public boolean isAvailable()
-	{
-		return true;
-	}
-	
-	public void doIt() throws CommandFailedException
+	void showOkDialog()
 	{
 		String title = EAM.text("Title|Coming Attractions");
-		showOkDialog(title, comingAttractonstext);
-	}
-	
-	void showOkDialog(String title, String body)
-	{
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
+		String body = loadComingAttractonsHtml();
+		if (body == null)
+			return;
 		HtmlViewer bodyComponent =  new HtmlViewer(body, this);
 		bodyComponent.setFont(Font.getFont("Arial"));
 		bodyComponent.setSize(new Dimension(750, Short.MAX_VALUE));
@@ -81,6 +68,19 @@ public class ComingAttractions extends Doer  implements HyperlinkHandler
 		
 	}
 
+	private String loadComingAttractonsHtml()
+	{
+		try
+		{
+			return EAM.loadResourceFile(getClass(), COMMING_ATTRACTONS_HTML);
+		}
+		catch (Exception e)
+		{
+			EAM.errorDialog("ERROR: Feature file not found: " + COMMING_ATTRACTONS_HTML );
+			return null;
+		}
+	}
+
 	static class CloseAction extends AbstractAction
 	{
 		public CloseAction(JDialog dialogToClose)
@@ -97,19 +97,7 @@ public class ComingAttractions extends Doer  implements HyperlinkHandler
 		JDialog dlg;
 	}
 
-	static final String comingAttractonstext = 
-		"<html><table><tr><td align='center' valign='top'>" +
-		"<h1>e-Adaptive Management Pre-Release Coming Attractions</h1>" +
-		"<font face='Arial'>" +
-		"</font>" + 
-		"</td></tr>" +
-		"</table></html>";
-
 	public void buttonPressed(String buttonName)
-	{
-	}
-
-	public void linkClicked(String linkDescription)
 	{
 	}
 
@@ -118,9 +106,14 @@ public class ComingAttractions extends Doer  implements HyperlinkHandler
 		return null;
 	}
 
+	public void linkClicked(String linkDescription)
+	{	
+	}
+
 	public void valueChanged(String widget, String newValue)
 	{
 	}
 	
-}
+	private static final String COMMING_ATTRACTONS_HTML = "myhtml.html";
 
+}

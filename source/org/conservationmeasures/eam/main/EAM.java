@@ -9,7 +9,9 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -21,6 +23,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.utils.Logging;
 import org.conservationmeasures.eam.utils.Translation;
 import org.martus.swing.UiNotifyDlg;
+import org.martus.util.UnicodeReader;
 
 public class EAM
 {
@@ -194,5 +197,20 @@ public class EAM
 	
 	public static final ORef WORKPLAN_STRATEGY_ROOT = new ORef(ObjectType.FAKE, new BaseId(1));
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
+
+
+	public static String loadResourceFile(Class thisClass, String resourceFileName) throws IOException
+	{
+		URL htmlFile = thisClass.getResource(resourceFileName);
+		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
+		try
+		{
+			return reader.readAll();
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
 	
 }
