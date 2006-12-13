@@ -15,6 +15,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 	public StrategyPropertiesPanel(Project projectToUse, int objectTypeToUse, BaseId idToShow)
 	{
 		super(projectToUse, objectTypeToUse, idToShow);
+		addField(createStringField(Strategy.TAG_SHORT_LABEL));
 		addField(createStringField(Strategy.TAG_LABEL));
 		updateFieldsFromProject();
 	}

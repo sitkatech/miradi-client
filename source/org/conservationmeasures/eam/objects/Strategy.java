@@ -130,6 +130,7 @@ public class Strategy extends Factor
 		durationRating = new RatingData();
 		feasibilityRating = new RatingData();
 		costRating = new RatingData();
+		shortLabel = new StringData();
 		
 		addField(TAG_ACTIVITY_IDS, activityIds);
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
@@ -137,12 +138,14 @@ public class Strategy extends Factor
 		addField(TAG_DURATION_RATING, durationRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
 		addField(TAG_COST_RATING, costRating);
+		addField(TAG_SHORT_LABEL, shortLabel);
 	}
 
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
 	public static final String STATUS_DRAFT = "Draft";
 	public static final String STATUS_REAL = "Real";
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_DURATION_RATING = "DurationRating";
@@ -152,6 +155,7 @@ public class Strategy extends Factor
 	public static final String OBJECT_NAME = "Strategy";
 	
 	String status;
+	StringData shortLabel;
 	IdListData activityIds;
 	StringData taxonomyCode;
 	RatingData impactRating;

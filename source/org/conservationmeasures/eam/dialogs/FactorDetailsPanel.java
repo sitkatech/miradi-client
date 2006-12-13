@@ -54,6 +54,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 		if(factorToEdit.isStrategy())
 		{
+			addField(createStringField(Strategy.TAG_SHORT_LABEL));
+			
 			// FIXME: Convert to new mechanism (create status field or just checkbox field?)
 			add(new UiLabel(EAM.text("Label|Status")));
 			statusCheckBox.setSelected(factorToEdit.isStatusDraft());
