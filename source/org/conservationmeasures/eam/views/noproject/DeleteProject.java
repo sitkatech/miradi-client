@@ -40,8 +40,6 @@ public class DeleteProject
 			return;
 
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
-		
-		EAM.notifyDialog(EAM.text("Delete Competed"));
 	}
 	
 	//FIXME: this code should not be duplicated here but called from the LockDirectory
