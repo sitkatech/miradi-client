@@ -30,7 +30,6 @@ public class Paste extends LocationDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramClipboard clipboard = DiagramClipboard.EMA_CLIPBOARD;
-		clipboard.incrementCount();
 		try 
 		{
 			Transferable contents = clipboard.getContents(null);

@@ -88,9 +88,9 @@ public class FactorCommandHelper
 			DiagramFactorId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
 			
-			int count = DiagramClipboard.EMA_CLIPBOARD.getCount();
+			int count = DiagramClipboard.EMA_CLIPBOARD.getPasteOffset();
 			Point point = nodeData.getPoint(DiagramFactor.TAG_LOCATION);
-			point.setLocation(point.x + PASTE_OFFSET*count, point.y + PASTE_OFFSET*count);
+			point.setLocation(point.x + count, point.y + count);
 			
 			dataHelper.setOriginalLocation(originalDiagramNodeId, point);
 			
@@ -108,8 +108,8 @@ public class FactorCommandHelper
 			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			
-			int count = DiagramClipboard.EMA_CLIPBOARD.getCount();
-			newNodeLocation.setLocation(newNodeLocation.x + PASTE_OFFSET*count, newNodeLocation.y + PASTE_OFFSET*count);
+			int count = DiagramClipboard.EMA_CLIPBOARD.getPasteOffset();
+			newNodeLocation.setLocation(newNodeLocation.x + count, newNodeLocation.y + count);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			
 			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
@@ -174,8 +174,6 @@ public class FactorCommandHelper
 	{
 		return getProject().getDiagramModel();
 	}
-	
-	private static final int PASTE_OFFSET = 10;
 
 	Project project;
 }

@@ -10,6 +10,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
 
+import org.conservationmeasures.eam.project.Project;
+
 public class DiagramClipboard extends Clipboard
 {
 	public DiagramClipboard(String name)
@@ -17,29 +19,31 @@ public class DiagramClipboard extends Clipboard
 		super(name);
 	}
 	
-	public synchronized int getCount() 
+	public synchronized int getPasteOffset() 
 	{
-		return count;
+		return count * Project.DEFAULT_GRID_SIZE;
 	}
 
-	public synchronized int incrementCount() 
+	private synchronized int incrementCount() 
 	{
 		return count = count+1;
 	}
 	
 
-	public synchronized int resetCount() 
+	private synchronized int resetCount() 
 	{
 		return count = 0;
 	}
 	
 	public void setContents(Transferable contents, ClipboardOwner owner) 
 	{
+		resetCount();
 		clipboard.setContents(contents, owner);
 	}
 	
 	public Transferable getContents(Object requestor)
 	{
+		incrementCount() ;
 		return clipboard.getContents(requestor);
 	}
 	
