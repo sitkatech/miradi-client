@@ -9,11 +9,10 @@ import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 
-public class BudgetTableUnitsModel extends BudgetTableModel
+public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 {
 	public BudgetTableUnitsModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
-		super(projectToUse, assignmentIdListToUse);
 		project = projectToUse;
 		assignmentIdList = assignmentIdListToUse;
 		budgetModel = new BudgetTableModel(project, assignmentIdList);
@@ -21,7 +20,7 @@ public class BudgetTableUnitsModel extends BudgetTableModel
 	
 	public void setTask(Task taskToUse)
 	{
-		budgetModel.setTask(taskToUse);
+		
 	}
 	
 	public boolean isCellEditable(int row, int col) 
@@ -31,12 +30,12 @@ public class BudgetTableUnitsModel extends BudgetTableModel
 		
 	public int getColumnCount()
 	{
-		return 10;
+		return 0;
 	}
 
 	public int getRowCount()
 	{
-		return 10;
+		return 0;
 	}
 	
 	public String getColumnName(int col)
@@ -54,7 +53,7 @@ public class BudgetTableUnitsModel extends BudgetTableModel
 		
 	}
     
+	BudgetTableModel budgetModel;
 	private Project project;
-	private BudgetTableModel budgetModel;
 	private IdList assignmentIdList;
 }

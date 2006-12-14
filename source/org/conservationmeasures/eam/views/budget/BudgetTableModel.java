@@ -7,8 +7,6 @@ package org.conservationmeasures.eam.views.budget;
 
 import java.util.Vector;
 
-import javax.swing.table.AbstractTableModel;
-
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -30,7 +28,7 @@ import org.conservationmeasures.eam.utils.DateRange;
 import org.conservationmeasures.eam.utils.DateRangeEffort;
 import org.martus.util.MultiCalendar;
 
-public class BudgetTableModel extends AbstractTableModel
+public class BudgetTableModel extends AbstractBudgetTableModel
 {
 	public BudgetTableModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
@@ -109,51 +107,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return (dateRanges.length * 2) + TOTAL_ROW_HEADER_COLUMN_COUNT + TOTALS_COLUMN_COUNT;
 	}
 	
-	public int getUnitTotalsColumnIndex()
-	{
-		return getColumnCount() - 2;	
-	}
-	
-	public int getCostTotalsColumnIndex()
-	{
-		return getColumnCount() - 1;
-	}
-
-	public int getRowTotalsLabelColumnIndex()
-	{
-		return ROW_TOTALS_LABEL_COLUMN_INDEX;
-	}
-	
-	public int getUnitsAndCostLabelColumnIndex()
-	{
-		return UNITS_AND_COST_LABEL_COLUMN_INDEX;
-	}
-	
-	public int getCostPerUnitLabelColumnIndex()
-	{
-		return COST_PER_UNIT_COLUMN_INDEX;
-	}
-	
-	public int getUnitsLabelColumnIndex()
-	{
-		return UNITS_LABEL_COLUMN_INDEX;
-	}
-	
-	public int getAccountingCodeColumnIndex()
-	{
-		return ACCOUNTING_CODE_COLUMN_INDEX;
-	}
-	
-	public int getFundingSourceColumnIndex()
-	{
-		return FUNDING_SOURCE_COLUMN_INDEX;
-	}
-	
-	public int getResourcesColumnIndex()
-	{
-		return RESOURCES_COLUMN_INDEX;
-	}
-
 	public boolean isCellEditable(int row, int col) 
 	{
 		if (isUnitsTotalColumn(col))
@@ -174,14 +127,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return true;
 	}
 	
-	public boolean isTotalsRow(int row)
-	{
-		if (row < (getRowCount() - 2))
-			return false;
-			
-		return true;
-	}
-
 	public String getColumnName(int col)
 	{
 		if (isResourceColumn(col))
@@ -276,36 +221,6 @@ public class BudgetTableModel extends AbstractTableModel
 			setUnits(value, row, covertToUnitsColumn(col));
 	}
 
-	private boolean isFundingSourceColumn(int col)
-	{
-		return col == getFundingSourceColumnIndex();
-	}
-	
-	private boolean isAccountingCodeColumn(int col)
-	{
-		return col == getAccountingCodeColumnIndex();
-	}
-
-	private boolean isLabelColumn(int col)
-	{
-		return 3 <= col && col < TOTAL_ROW_HEADER_COLUMN_COUNT;
-	}
-	
-	private boolean isResourceColumn(int col)
-	{
-		return col == getResourcesColumnIndex();
-	}
-
-	private boolean isCostTotalsColumn(int col)
-	{
-		return col == getCostTotalsColumnIndex();
-	}
-	
-	private boolean isUnitsTotalColumn(int col)
-	{
-		return col == getUnitTotalsColumnIndex();
-	}
-	
 	private Object getCost(int row, int col)
 	{
 		try
@@ -343,49 +258,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return totalCostColumn;
 	}
 
-	private boolean isUnitsColumn(int col)
-	{
-		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
-			return false;
-		
-		if (!isOdd(col))
-			return false;
-		
-		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
-			return true;
-		
-		return false;
-	}
-	
-	private boolean isCostColumn(int col)
-	{
-		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
-			return false;
-		
-		if (isOdd(col))
-			return false;
-		
-		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
-			return true;
-		
-		return false;
-	}
-
-	private boolean isStaticLabelColum(int col)
-	{
-		return col == UNITS_AND_COST_LABEL_COLUMN_INDEX;
-	}
-	
-	private boolean isCostPerUnitLabelColumn(int col)
-	{
-		return col == getCostPerUnitLabelColumnIndex();
-	}
-	
-	private boolean isUnitsLabelColumn(int col)
-	{
-		return col == getUnitsLabelColumnIndex();
-	}
-	
 	private int covertToUnitsColumn(int col)
 	{
 		return (col - (TOTAL_ROW_HEADER_COLUMN_COUNT)) / 2;
@@ -403,10 +275,10 @@ public class BudgetTableModel extends AbstractTableModel
 		if (resource  == null)
 			return "";
 		
-		if (col == UNITS_LABEL_COLUMN_INDEX && !isOdd(row))
+		if (col == getUnitsLabelColumnIndex() && !isOdd(row))
 			return resource.getData(ProjectResource.TAG_COST_UNIT);
 		
-		if (col == COST_PER_UNIT_COLUMN_INDEX && isOdd(row))
+		if (col == getCostPerUnitLabelColumnIndex() && isOdd(row))
 			return resource.getData(ProjectResource.TAG_COST_PER_UNIT);
 			
 		return "";
@@ -555,11 +427,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getSelectedAssignment(row));
 	}
 	
-	public BaseId getSelectedAssignment(int row)
-	{
-		return assignmentIdList.get(row);
-	}
-	
 	public Object getCurrentAccountingCode(int row)
 	{
 		if (isTotalsRow(row))
@@ -600,16 +467,6 @@ public class BudgetTableModel extends AbstractTableModel
 		return resource;
 	}
 	
-	public int getCorrectedRow(int row)
-	{
-		return row /= 2;
-	}
-
-	boolean isOdd(int value)
-	{
-		return value % 2 != 0;
-	}
-
 	private void setUnits(Object value, int row, int timeIndex)
 	{
 		try
@@ -688,20 +545,9 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	Project project;
 	DateRange[] dateRanges;
-	IdList assignmentIdList;
+	
 	Task task;
 	BudgetTotalsCalculator totalsCalculator;
-	
-	private static final int RESOURCES_COLUMN_INDEX = 0;
-	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
-	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
-	private static final int UNITS_LABEL_COLUMN_INDEX = 3;
-	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	
-	private static final int UNITS_AND_COST_LABEL_COLUMN_INDEX = 5;
-	private static final int ROW_TOTALS_LABEL_COLUMN_INDEX = 6;
-	
-	private static final int TOTAL_ROW_HEADER_COLUMN_COUNT = 7;
-	
-	private static final int TOTALS_ROW_COUNT = 2;
-	private static final int TOTALS_COLUMN_COUNT = 2;	 
+		
+		 
 }

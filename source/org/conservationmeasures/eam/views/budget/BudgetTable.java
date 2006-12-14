@@ -28,7 +28,7 @@ import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
 {
-	public BudgetTable(Project projectToUse, BudgetTableModel modelToUse)
+	public BudgetTable(Project projectToUse, AbstractBudgetTableModel modelToUse)
 	{
 		super(modelToUse);
 		model = modelToUse;
@@ -63,6 +63,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
 		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
 		createComboColumn(accountingCodes, accountingCodesColumn);
+		
 	}
 
 	private void createComboColumn(EAMBaseObject[] projectResources, int col)
@@ -85,7 +86,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		if (selectedRow < 0)
 			return new EAMObject[0];
 		
-		BudgetTableModel budgetModel = getBudgetModel();
+		AbstractBudgetTableModel budgetModel = getBudgetModel();
 		if (budgetModel.isOdd(selectedRow))
 			return new EAMObject[0];
 		
@@ -108,13 +109,13 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return new EAMObject[] {selectedObject};
 	}
 
-	public BudgetTableModel getBudgetModel()
+	public AbstractBudgetTableModel  getBudgetModel()
 	{
-		return (BudgetTableModel)getModel();
+		return (AbstractBudgetTableModel)getModel();
 	}
 
 	Project project;
-	BudgetTableModel model;
+	AbstractBudgetTableModel model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
 }
@@ -141,7 +142,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
             setBackground(table.getBackground());
         }
         
-        BudgetTableModel budgetModel = ((BudgetTable)table).getBudgetModel();
+        AbstractBudgetTableModel budgetModel = ((BudgetTable)table).getBudgetModel();
 		if (! budgetModel.isCellEditable(row, col))
         	return new JLabel("");
         
