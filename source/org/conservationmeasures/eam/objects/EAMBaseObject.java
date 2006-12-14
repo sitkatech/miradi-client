@@ -242,6 +242,18 @@ abstract public class EAMBaseObject implements EAMObject
 		return noneClearedFieldTags;
 	}
 	
+	public String combineShortLabelAndLabel(String shortLabel, String Longlabel)
+	{
+		if (shortLabel.length() <= 0)
+			return Longlabel;
+		
+		if (Longlabel.length() <= 0)
+			return "";
+		
+		return shortLabel + "." + Longlabel;
+		
+	}
+	
 	protected static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	

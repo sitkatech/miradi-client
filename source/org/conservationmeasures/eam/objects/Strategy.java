@@ -121,6 +121,11 @@ public class Strategy extends Factor
 		return (CommandSetObjectData[])commands.toArray(new CommandSetObjectData[0]);
 	}
 	
+	public String toString()
+	{
+		return combineShortLabelAndLabel(shortLabel.toString(), label.toString());
+	}
+	
 	void clear()
 	{
 		super.clear();
