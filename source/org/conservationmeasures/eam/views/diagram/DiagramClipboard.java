@@ -14,9 +14,9 @@ import org.conservationmeasures.eam.project.Project;
 
 public class DiagramClipboard extends Clipboard
 {
-	public DiagramClipboard(String name)
+	public DiagramClipboard()
 	{
-		super(name);
+		super(DiagramClipboard.class.getName());
 	}
 	
 	public synchronized int getPasteOffset() 
@@ -49,6 +49,6 @@ public class DiagramClipboard extends Clipboard
 	
 	private int count = 0;
 	final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-	final public static DiagramClipboard EMA_CLIPBOARD = new DiagramClipboard("DUMMY");
+	final public static DiagramClipboard EAM_CLIPBOARD = new DiagramClipboard();
 	
 }

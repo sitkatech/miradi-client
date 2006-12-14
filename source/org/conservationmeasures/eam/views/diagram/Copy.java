@@ -40,7 +40,7 @@ public class Copy extends ProjectDoer
 			return;
 		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
 		
-		DiagramClipboard clipboard = DiagramClipboard.EMA_CLIPBOARD;
+		DiagramClipboard clipboard = DiagramClipboard.EAM_CLIPBOARD;
 		clipboard.setContents(eamList, EAM.mainWindow);
 	}
 
