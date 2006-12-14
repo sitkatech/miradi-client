@@ -9,6 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.ratings.StrategyTaxonomyQuestion;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {
@@ -17,6 +18,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, objectTypeToUse, idToShow);
 		addField(createStringField(Strategy.TAG_SHORT_LABEL));
 		addField(createStringField(Strategy.TAG_LABEL));
+		addField(createRatingSummaryField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
 		updateFieldsFromProject();
 	}
 
