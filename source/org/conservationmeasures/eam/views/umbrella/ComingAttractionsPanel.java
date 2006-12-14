@@ -114,6 +114,6 @@ public class ComingAttractionsPanel implements HyperlinkHandler
 	{
 	}
 	
-	private static final String COMMING_ATTRACTONS_HTML = "myhtml.html";
+	private static final String COMMING_ATTRACTONS_HTML = "ComingAttractions.html";
 
 }

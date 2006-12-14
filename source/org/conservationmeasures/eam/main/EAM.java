@@ -183,6 +183,20 @@ public class EAM
 		return (dlg.getResult().equals(buttons[0]));
 	}
 
+
+	public static String loadResourceFile(Class thisClass, String resourceFileName) throws IOException
+	{
+		URL htmlFile = thisClass.getResource(resourceFileName);
+		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
+		try
+		{
+			return reader.readAll();
+		}
+		finally
+		{
+			reader.close();
+		}
+	}
 	///////////////////////////////////////////////////////////////////
 	
 	public static int STANDARD_SCROLL_INCREMENT = 12;
@@ -199,18 +213,5 @@ public class EAM
 	public static final ORef WORKPLAN_MONITORING_ROOT = new ORef(ObjectType.FAKE, new BaseId(2));
 
 
-	public static String loadResourceFile(Class thisClass, String resourceFileName) throws IOException
-	{
-		URL htmlFile = thisClass.getResource(resourceFileName);
-		UnicodeReader reader = new UnicodeReader(htmlFile.openStream());
-		try
-		{
-			return reader.readAll();
-		}
-		finally
-		{
-			reader.close();
-		}
-	}
 	
 }
