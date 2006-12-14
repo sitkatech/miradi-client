@@ -39,11 +39,7 @@ public class SummaryColumnComparator implements  Comparator
 			
 			int test = value1.compareTo(value2);
 			if (test == 0)
-			{
-				String label1 = factor1.getData(Factor.TAG_LABEL);
-				String label2 = factor2.getData(Factor.TAG_LABEL);
-				return label1.compareToIgnoreCase(label2);
-			}
+				return factor1.getLabel().compareToIgnoreCase(factor2.getLabel());
 
 			return test;
 		}
