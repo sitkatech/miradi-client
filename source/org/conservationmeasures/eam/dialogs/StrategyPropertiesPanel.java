@@ -9,7 +9,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.StrategyTaxonomyQuestion;
+import org.conservationmeasures.eam.questions.StrategyTaxonomyQuestion;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanel
 {

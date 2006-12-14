@@ -16,11 +16,11 @@ import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.objectdata.IdListData;
 import org.conservationmeasures.eam.objectdata.RatingData;
 import org.conservationmeasures.eam.objectdata.StringData;
-import org.conservationmeasures.eam.ratings.StrategyCostQuestion;
-import org.conservationmeasures.eam.ratings.StrategyDurationQuestion;
-import org.conservationmeasures.eam.ratings.StrategyFeasibilityQuestion;
-import org.conservationmeasures.eam.ratings.StrategyImpactQuestion;
-import org.conservationmeasures.eam.ratings.StrategyRatingSummary;
+import org.conservationmeasures.eam.questions.StrategyCostQuestion;
+import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
+import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
+import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
+import org.conservationmeasures.eam.questions.StrategyRatingSummary;
 import org.conservationmeasures.eam.utils.EnhancedJsonObject;
 
 

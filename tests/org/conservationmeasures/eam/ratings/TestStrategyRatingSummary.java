@@ -7,6 +7,11 @@ package org.conservationmeasures.eam.ratings;
 
 import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.main.EAMTestCase;
+import org.conservationmeasures.eam.questions.StrategyCostQuestion;
+import org.conservationmeasures.eam.questions.StrategyDurationQuestion;
+import org.conservationmeasures.eam.questions.StrategyFeasibilityQuestion;
+import org.conservationmeasures.eam.questions.StrategyImpactQuestion;
+import org.conservationmeasures.eam.questions.StrategyRatingSummary;
 
 public class TestStrategyRatingSummary extends EAMTestCase
 {

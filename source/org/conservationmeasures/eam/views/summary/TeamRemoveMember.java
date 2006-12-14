@@ -13,7 +13,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
-import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 import org.conservationmeasures.eam.views.ObjectsDoer;
 

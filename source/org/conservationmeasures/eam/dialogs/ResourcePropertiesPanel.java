@@ -10,8 +10,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.BudgetCostUnitQuestion;
-import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
+import org.conservationmeasures.eam.questions.BudgetCostUnitQuestion;
+import org.conservationmeasures.eam.questions.ResourceRoleQuestion;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {

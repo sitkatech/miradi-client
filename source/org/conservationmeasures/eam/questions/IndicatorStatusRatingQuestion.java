@@ -3,7 +3,7 @@
  * 
  * This file is confidential and proprietary
  */
-package org.conservationmeasures.eam.ratings;
+package org.conservationmeasures.eam.questions;
 
 import java.awt.Color;
 

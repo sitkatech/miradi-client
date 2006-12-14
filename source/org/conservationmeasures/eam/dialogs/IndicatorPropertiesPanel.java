@@ -12,8 +12,8 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.IndicatorStatusRatingQuestion;
-import org.conservationmeasures.eam.ratings.PriorityRatingQuestion;
+import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 {
