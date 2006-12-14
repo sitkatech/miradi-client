@@ -34,7 +34,6 @@ class CellSelectionListener implements ListSelectionListener
 
 		try
 		{
-			offerToCreateLink(row, column);
 			ThreatRatingBundle bundle = getBundleIfAny(row, column);
 			threatGirdPanel.getThreatMatrixView().selectBundle(bundle);
 		}
@@ -54,16 +53,13 @@ class CellSelectionListener implements ListSelectionListener
 			return null;
 		
 		if(!isLinked(row, column))
-			return null;
+			offerToCreateLink(row, column);
 		
-		return (model).getBundle(row, column);
+		return model.getBundle(row, column);
 	}
 
 	private void offerToCreateLink(int row, int column) throws CommandFailedException
 	{
-		if(isLinked(row, column))
-			return;
-		
 		NonEditableThreatMatrixTableModel model = (NonEditableThreatMatrixTableModel) threatTable.getModel();
 		String[] body = new String[] {
 				EAM.text("Do you want to create a link between these this Threat and Target?"),
