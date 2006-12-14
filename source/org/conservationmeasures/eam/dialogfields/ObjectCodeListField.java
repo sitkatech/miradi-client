@@ -11,11 +11,10 @@ import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
 
 public class ObjectCodeListField extends ObjectDataInputField implements ListSelectionListener
 {
-	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ResourceRoleQuestion questionToUse)
+	public ObjectCodeListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		component = new CodeListComponent(questionToUse,this);

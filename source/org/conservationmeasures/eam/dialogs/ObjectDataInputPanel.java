@@ -31,7 +31,6 @@ import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
 import org.martus.swing.UiLabel;
 
 import com.jhlabs.awt.Alignment;
@@ -115,7 +114,7 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectMultilineInputField(project, objectType, objectId, tag);
 	}
 	
-	public ObjectDataInputField createMultiCodeField(ResourceRoleQuestion question)
+	public ObjectDataInputField createMultiCodeField(ChoiceQuestion question)
 	{
 		return new ObjectCodeListField(project, objectType, objectId, question);
 	}

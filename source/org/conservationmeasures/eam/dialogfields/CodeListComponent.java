@@ -14,14 +14,13 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.ratings.ResourceRoleQuestion;
 import org.conservationmeasures.eam.utils.CodeList;
 
 import com.jhlabs.awt.BasicGridLayout;
 
 public class CodeListComponent extends JPanel implements ItemListener
 {
-	public CodeListComponent(ResourceRoleQuestion questionToUse, ListSelectionListener listener)
+	public CodeListComponent(ChoiceQuestion questionToUse, ListSelectionListener listener)
 	{
 		super(new BasicGridLayout(0,3));
 		listSelectionListener = listener;
