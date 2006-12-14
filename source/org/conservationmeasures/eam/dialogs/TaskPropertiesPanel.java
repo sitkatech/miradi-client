@@ -79,7 +79,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		
 	private void updateTable()
 	{
-		System.out.println("update table called");
 		if (editorComponent == null)
 			return;
 		
