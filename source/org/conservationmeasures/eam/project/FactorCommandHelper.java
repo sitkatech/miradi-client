@@ -32,6 +32,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.Logging;
+import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
@@ -86,7 +87,12 @@ public class FactorCommandHelper
 			CommandDiagramAddFactor addCommand = createFactorAndDiagramFactor(type);
 			DiagramFactorId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
-			dataHelper.setOriginalLocation(originalDiagramNodeId, nodeData.getPoint(DiagramFactor.TAG_LOCATION));
+			
+			int count = DiagramClipboard.EMA_CLIPBOARD.getCount();
+			Point point = nodeData.getPoint(DiagramFactor.TAG_LOCATION);
+			point.setLocation(point.x + PASTE_OFFSET*count, point.y + PASTE_OFFSET*count);
+			
+			dataHelper.setOriginalLocation(originalDiagramNodeId, point);
 			
 			CommandSetObjectData newNodeLabel = createSetLabelCommand(addCommand.getFactorId(), nodeData.getString(DiagramFactor.TAG_VISIBLE_LABEL));
 			executeCommand(newNodeLabel);
@@ -101,9 +107,12 @@ public class FactorCommandHelper
 			DiagramFactorId originalDiagramNodeId = new DiagramFactorId(nodeData.getId(DiagramFactor.TAG_ID).asInt());
 			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
-			newNodeLocation = getProject().getSnapped(newNodeLocation);
-			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			
+			int count = DiagramClipboard.EMA_CLIPBOARD.getCount();
+			newNodeLocation.setLocation(newNodeLocation.x + PASTE_OFFSET*count, newNodeLocation.y + PASTE_OFFSET*count);
+			newNodeLocation = getProject().getSnapped(newNodeLocation);
+			
+			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
 			DiagramFactor newNode = getDiagramFactorById(newNodeId);
 			Dimension originalDimension = nodeData.getDimension(DiagramFactor.TAG_SIZE);
 			CommandSetFactorSize resize = new CommandSetFactorSize(newNodeId, originalDimension, newNode.getSize());
@@ -166,5 +175,7 @@ public class FactorCommandHelper
 		return getProject().getDiagramModel();
 	}
 	
+	private static final int PASTE_OFFSET = 10;
+
 	Project project;
 }

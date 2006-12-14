@@ -5,9 +5,6 @@
  */
 package org.conservationmeasures.eam.views.diagram;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-
 import org.conservationmeasures.eam.diagram.cells.EAMGraphCell;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -43,8 +40,12 @@ public class Copy extends ProjectDoer
 			return;
 		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
 		
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		DiagramClipboard clipboard = DiagramClipboard.EMA_CLIPBOARD;
+		clipboard.resetCount();
 		clipboard.setContents(eamList, EAM.mainWindow);
 	}
 
+	
+	
+	
 }
