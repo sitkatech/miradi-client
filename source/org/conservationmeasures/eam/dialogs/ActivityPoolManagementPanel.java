@@ -18,7 +18,7 @@ public class ActivityPoolManagementPanel extends ObjectPoolManagementPanel
 	public ActivityPoolManagementPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(new ActivityPoolTablePanel(projectToUse),
-				new TaskPropertiesPanel(actions, projectToUse, BaseId.INVALID));
+				new TaskPropertiesPanel(projectToUse, actions, BaseId.INVALID));
 	}
 	
 	public String getPanelDescription()

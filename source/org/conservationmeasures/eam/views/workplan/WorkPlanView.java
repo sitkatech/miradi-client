@@ -2,10 +2,12 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
+import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
@@ -18,6 +20,8 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
+import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
+import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -47,7 +51,7 @@ public class WorkPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanPanel = WorkPlanPanel.createWorkPlanPanel(mainWindow, getProject());
-		TaskPropertiesPanel taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions());
+		TaskPropertiesPanel taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions(), workPlanPanel.getTree());
 		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
@@ -93,6 +97,9 @@ public class WorkPlanView extends TabbedView
 		
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
+		
+		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 	}
 	
 	public void showResourceAddDialog() throws Exception

@@ -47,7 +47,6 @@ public class BudgetTable extends JTable implements ObjectPicker
 	
 	private void rebuild()
 	{
-		System.out.println("Rebuild called");
 		//TODO budget code - verify the need for this if
 		if (model.getColumnCount() <= 0)
 			return;
@@ -100,7 +99,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		//ProjectResource resource = (ProjectResource)budgetModel.getValueAt(selectedRow, budgetModel.getResourcesColumnIndex());
 		//BaseId selectedId = resource.getId();
 
-		BaseId selectedId = budgetModel.getSelectedAssignment(selectedRow);
+		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
 		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
 		
 		if (selectedObject == null)

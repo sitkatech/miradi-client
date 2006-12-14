@@ -5,45 +5,125 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
-import java.awt.BorderLayout;
-
 import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.commands.Command;
+import org.conservationmeasures.eam.commands.CommandSetObjectData;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
+import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.budget.BudgetTable;
-import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
+import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
+import org.conservationmeasures.eam.views.workplan.AssignmentEditorComponent;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
 	public TaskPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		this(actions, projectToUse, BaseId.INVALID);
+		this(projectToUse, actions, BaseId.INVALID);
 	}
-	public TaskPropertiesPanel(Actions actions, Project projectToUse, BaseId idToEdit) throws Exception
+	
+	public TaskPropertiesPanel(Project projectToUse, Actions actions, ObjectPicker objectPicker) throws Exception
+	{
+		this(projectToUse, actions, BaseId.INVALID, objectPicker);
+	}
+	
+	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit, ObjectPicker objectPicker) throws Exception
 	{
 		super(projectToUse, ObjectType.TASK, idToEdit);
+		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
-
-		BudgetTableUnitsModel unitsModel = new BudgetTableUnitsModel(projectToUse, new IdList());
-		BudgetTable budgetTable = new BudgetTable(projectToUse, unitsModel);
-		JScrollPane scrollPane = new JScrollPane(budgetTable);
-		add(scrollPane, BorderLayout.BEFORE_FIRST_LINE);
+		editorComponent = new AssignmentEditorComponent(actions, project, objectPicker);
 		
+		add(editorComponent);
+		addCommonFields();
+	}
+
+	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
+	{
+		super(projectToUse, ObjectType.TASK, idToEdit);
+		project = projectToUse;
+		setBorder(BorderFactory.createEtchedBorder());
+		
+		addCommonFields();
+	}
+	
+	private void addCommonFields()
+	{
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_FACTOR_LABEL));
 		addField(createStringField(Task.TAG_LABEL));
 		
 		updateFieldsFromProject();
 	}
-
+	
+	public void setObjectId(BaseId id)
+	{
+		super.setObjectId(id);
+		if (editorComponent == null)
+			return;
+	
+		editorComponent.setTaskId(id);
+	}
+	
+	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Activity Properties");
 	}
+		
+	private void updateTable()
+	{
+		System.out.println("update table called");
+		if (editorComponent == null)
+			return;
+		
+		editorComponent.dataWasChanged();
+	}
+	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			updateTable();
+	}
+	
+	public void commandUndone(CommandExecutedEvent event)
+	{
+		super.commandUndone(event);
+		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			updateTable();
+	}
+	
+	public void commandFailed(Command command, CommandFailedException e)
+	{
+		super.commandFailed(command, e);
+	}
+	
+		
+	Project project;
+	AssignmentEditorComponent editorComponent;
+	
 }
+
+class FakePicker implements ObjectPicker
+{
+	public void addListSelectionListener(ListSelectionListener listener)
+	{
+	}
+	
+	public void clearSelection()
+	{
+	}
+	
+	public EAMObject[] getSelectedObjects()
+	{
+			return new Task[0];
+	}	
+}
+

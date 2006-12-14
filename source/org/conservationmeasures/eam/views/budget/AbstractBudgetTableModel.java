@@ -8,11 +8,9 @@ package org.conservationmeasures.eam.views.budget;
 import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 
 public abstract class AbstractBudgetTableModel extends AbstractTableModel
 {
-	
 	public int getAccountingCodeColumnIndex()
 	{
 		return ACCOUNTING_CODE_COLUMN_INDEX;
@@ -148,12 +146,9 @@ public abstract class AbstractBudgetTableModel extends AbstractTableModel
 			
 		return true;
 	}
-
-	public BaseId getSelectedAssignment(int row)
-	{
-		return assignmentIdList.get(row);
-	}
-
+	
+	abstract public BaseId getAssignmentForRow(int row);
+	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
 	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
@@ -167,6 +162,4 @@ public abstract class AbstractBudgetTableModel extends AbstractTableModel
 	static final int TOTALS_ROW_COUNT = 2;
 	static final int TOTALS_COLUMN_COUNT = 2;
 	
-	IdList assignmentIdList;
-
 }

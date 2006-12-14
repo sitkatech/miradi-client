@@ -208,9 +208,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	}
 
 	public void valueChanged(TreeSelectionEvent e)
-	{
-		mainWindow.getActions().updateActionStates();
-		
+	{	
 		TreeTableNode selectedObject = getSelectedObject();
 		if (selectedObject == null)
 			return;
@@ -222,6 +220,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 			baseId = getSelectedObject().getObjectReference().getObjectId();
 		
 		propertiesPanel.setObjectId(baseId);
+		mainWindow.getActions().updateActionStates();
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)

@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -13,47 +14,58 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 {
 	public BudgetTableUnitsModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
-		project = projectToUse;
-		assignmentIdList = assignmentIdListToUse;
-		budgetModel = new BudgetTableModel(project, assignmentIdList);
+		budgetModel = new BudgetTableModel(projectToUse, assignmentIdListToUse);
+	}
+	
+	public void dataWasChanged()
+	{
+		budgetModel.dataWasChanged();
+		fireTableDataChanged();
 	}
 	
 	public void setTask(Task taskToUse)
 	{
-		
+		budgetModel.setTask(taskToUse);
+		fireTableDataChanged();
 	}
 	
 	public boolean isCellEditable(int row, int col) 
 	{
-		return true;
+		return budgetModel.isCellEditable(row, col);
 	}
 		
 	public int getColumnCount()
 	{
-		return 0;
+		return budgetModel.getColumnCount();
 	}
 
 	public int getRowCount()
 	{
-		return 0;
+		return budgetModel.getRowCount();
 	}
 	
 	public String getColumnName(int col)
 	{
-		return "test";
+		return budgetModel.getColumnName(col);
 	}
 
-	public Object getValueAt(int rowIndex, int columnIndex)
+	public Object getValueAt(int row, int col)
 	{
-		return "";
+		return budgetModel.getValueAt(row, col);
 	}
 	
 	public void setValueAt(Object value, int row, int col)
 	{
-		
+		budgetModel.setValueAt(value, row, col);
 	}
+	
+	public BaseId getAssignmentForRow(int row)
+	{
+		return budgetModel.getAssignmentForRow(row);
+	}
+
     
 	BudgetTableModel budgetModel;
-	private Project project;
-	private IdList assignmentIdList;
+	//private Project project;
+
 }

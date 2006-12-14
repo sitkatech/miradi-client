@@ -26,6 +26,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 	{
 		if (getObjects().length != 1)
 			return false;
+		
 		if (getObjects()[0].getType() != ObjectType.TASK)
 			return false;
 		

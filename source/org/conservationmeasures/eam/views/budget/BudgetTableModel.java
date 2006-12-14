@@ -79,6 +79,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		MultiCalendar end = MultiCalendar.createFromGregorianYearMonthDay(year, startMonth + 2, endDay);
 		return new DateRange(start, end);
 	}
+	
+	public BaseId getAssignmentForRow(int row)
+	{
+		return assignmentIdList.get(row);
+	}
 
 	public void setTask(Task taskToUse)
 	{
@@ -89,8 +94,10 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	public void dataWasChanged()
 	{
 		if(task == null)
-			return;
-		assignmentIdList = task.getAssignmentIdList();
+			assignmentIdList = new IdList();
+		else
+			assignmentIdList = task.getAssignmentIdList();
+		
 		fireTableDataChanged();
 	}
 	
@@ -424,7 +431,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	public Assignment getAssignment(int row)
 	{
-		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getSelectedAssignment(row));
+		return (Assignment)project.findObject(ObjectType.ASSIGNMENT, getAssignmentForRow(row));
 	}
 	
 	public Object getCurrentAccountingCode(int row)
@@ -432,7 +439,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		if (isTotalsRow(row))
 			return null;
 		
-		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
+		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
 		BaseId accountingId = new BaseId(stringId);
 		
@@ -445,7 +452,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		if (isTotalsRow(row))
 			return null;
 		
-		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
+		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
 		BaseId fundingId = new BaseId(stringId);
 		
@@ -458,7 +465,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		if (isTotalsRow(row))
 			return null;
 		
-		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
+		BaseId assignmentId = getAssignmentForRow(getCorrectedRow(row));
 		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
 		BaseId resourceId = new BaseId(stringId);
 		
@@ -498,7 +505,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			ProjectResource projectResource = (ProjectResource)value;
 			ProjectResourceId resourceId = (ProjectResourceId)(projectResource).getId();
 			
-			BaseId  assignmentId = getSelectedAssignment(row);
+			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId.toString());
 			project.executeCommand(command);
 		}
@@ -516,7 +523,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			FundingSource fSource = (FundingSource)value;
 			FundingSourceId fSourceId = (FundingSourceId)(fSource).getId();
 			
-			BaseId  assignmentId = getSelectedAssignment(row);
+			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fSourceId.toString());
 			project.executeCommand(command);
 		}
@@ -533,7 +540,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			AccountingCode aCode = (AccountingCode)value;
 			AccountingCodeId aCodeId = (AccountingCodeId)(aCode).getId();
 			
-			BaseId  assignmentId = getSelectedAssignment(row);
+			BaseId  assignmentId = getAssignmentForRow(row);
 			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
 			project.executeCommand(command);
 		}
@@ -548,6 +555,6 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	
 	Task task;
 	BudgetTotalsCalculator totalsCalculator;
-		
+	IdList assignmentIdList;	
 		 
 }
