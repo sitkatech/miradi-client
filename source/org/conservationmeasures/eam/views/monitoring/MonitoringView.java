@@ -44,6 +44,7 @@ public class MonitoringView extends TabbedView
 	
 	public void deleteTabs() throws Exception
 	{
+		monitoringPanel.dispose();
 		monitoringPanel = null;
 		indicatorManagementPanel.dispose();
 		indicatorManagementPanel = null;

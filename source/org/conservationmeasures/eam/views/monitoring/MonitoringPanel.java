@@ -25,6 +25,11 @@ public class MonitoringPanel extends JPanel
 		add(new UiScrollPane(tree), BorderLayout.CENTER);
 	}
 	
+	public void dispose()
+	{
+		tree.dispose();
+	}
+	
 	private void restoreTreeExpansionState() 
 	{
 		try
