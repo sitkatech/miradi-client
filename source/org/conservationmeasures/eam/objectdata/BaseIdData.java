@@ -36,7 +36,10 @@ public class BaseIdData extends ObjectData
 
 	public void set(String newValue) throws Exception
 	{
-		id = new BaseId(Integer.parseInt(newValue));
+		if(newValue.length() == 0)
+			id = BaseId.INVALID;
+		else
+			id = new BaseId(Integer.parseInt(newValue));
 	}
 
 	public boolean equals(Object rawOther)

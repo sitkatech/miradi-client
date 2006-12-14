@@ -13,6 +13,7 @@ import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectResource;
@@ -216,11 +217,16 @@ public class BudgetTotalsCalculator
 	
 	private double getFactorTotal(TreeTableNode node) throws Exception
 	{
-		Factor factor = (Factor)node.getChild(0).getObject();
-		if (factor.isStrategy())
-			return getStrategiesChildrenTotal(node);
+		ORef nodeRef = node.getObjectReference();
+		if(nodeRef.getObjectType() != ObjectType.FAKE)
+			throw new RuntimeException("Unexpected tree node root type: " + nodeRef);
 		
-		return getFactorTotals(node);
+		if(nodeRef.getObjectId().equals(EAM.WORKPLAN_STRATEGY_ROOT))
+			return getStrategiesChildrenTotal(node);
+		else if(nodeRef.getObjectId().equals(EAM.WORKPLAN_MONITORING_ROOT))
+			return getFactorTotals(node);
+
+		throw new RuntimeException("Unexpected tree node root id: " + nodeRef);
 	}
 	
 	private double getStrategiesChildrenTotal(TreeTableNode node) throws Exception
@@ -228,7 +234,8 @@ public class BudgetTotalsCalculator
 		double childrenTotal = 0.0;
 		for (int i = 0; i < node.getChildCount(); i++)
 		{
-			Strategy strategy = (Strategy)node.getChild(i).getObject();
+			EAMObject object = node.getChild(i).getObject();
+			Strategy strategy = (Strategy)object;
 			childrenTotal += getTotalStrategyCost(strategy);
 		}
 		return childrenTotal;
