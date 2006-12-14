@@ -5,7 +5,9 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objectdata.BaseIdData;
@@ -23,8 +25,8 @@ public class Assignment extends EAMBaseObject
 		clear();
 		taskIdData.setId(extraInfo.getTaskId());
 		resourceIdData.setId(extraInfo.getResourceId());
-		
-		
+		accountingIdData.setId(extraInfo.getAccountingCodeId());
+		fundingIdData.setId(extraInfo.getFundingSourceId());
 	}
 	
 	public Assignment(int idAsInt, EnhancedJsonObject json) throws Exception
@@ -42,7 +44,10 @@ public class Assignment extends EAMBaseObject
 		//TODO create ResourceIdData and TaskIdData classes
 		ProjectResourceId resourceId = new ProjectResourceId(resourceIdData.getId().asInt());
 		TaskId taskId = new TaskId(taskIdData.getId().asInt());
-		return new CreateAssignmentParameter(taskId, resourceId);
+		AccountingCodeId accountingId = new AccountingCodeId(accountingIdData.getId().asInt());
+		FundingSourceId fundingId = new FundingSourceId(fundingIdData.getId().asInt());
+		
+		return new CreateAssignmentParameter(taskId, resourceId, accountingId, fundingId);
 	}
 	
 	public void clear()
@@ -51,20 +56,28 @@ public class Assignment extends EAMBaseObject
 		taskIdData = new BaseIdData();
 		resourceIdData = new BaseIdData();
 		detailListData = new DateRangeEffortListData();
+		accountingIdData = new BaseIdData();
+		fundingIdData = new BaseIdData();
 		
 		addNoClearField(TAG_ASSIGNMENT_TASK_ID, taskIdData);
 		addNoClearField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addNoClearField(TAG_DATERANGE_EFFORTS, detailListData);
+		addNoClearField(TAG_ACCOUNTING_CODE, accountingIdData);
+		addNoClearField(TAG_FUNDING_SOURCE, fundingIdData);
 	}
 	
 	public static final String TAG_ASSIGNMENT_TASK_ID = "TaskId";
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
+	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
+	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	
 	public static final String OBJECT_NAME = "Assignment";
 	
 	BaseIdData taskIdData;
 	BaseIdData resourceIdData;
 	DateRangeEffortListData detailListData;
+	BaseIdData accountingIdData;
+	BaseIdData fundingIdData;
 	
 }

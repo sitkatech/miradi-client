@@ -5,7 +5,9 @@
  */
 package org.conservationmeasures.eam.objects;
 
+import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.objecthelpers.CreateAssignmentParameter;
@@ -33,7 +35,9 @@ public class TestAssignment extends ObjectTestCase
 	{
 		TaskId taskId = new TaskId(BaseId.INVALID.asInt());
 		ProjectResourceId resourceId = new ProjectResourceId(BaseId.INVALID.asInt());
-
-		return new CreateAssignmentParameter(taskId, resourceId);
+		AccountingCodeId accountingId = AccountingCodeId.INVALID;
+		FundingSourceId fundingId = FundingSourceId.INVALID;
+		
+		return new CreateAssignmentParameter(taskId, resourceId, accountingId, fundingId);
 	}
 }
