@@ -12,6 +12,7 @@ import org.conservationmeasures.eam.project.Project;
 
 public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 {
+	
 	public BudgetTableUnitsModel(Project projectToUse, IdList assignmentIdListToUse) throws Exception
 	{
 		budgetModel = new BudgetTableModel(projectToUse, assignmentIdListToUse);
@@ -31,19 +32,20 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	
 	public boolean isCellEditable(int row, int col) 
 	{
-		return budgetModel.isCellEditable(row, col);
+		return budgetModel.isCellEditable(row * 2, col);
 	}
 		
 	public int getColumnCount()
 	{
 		return budgetModel.getColumnCount();
 	}
-
+	
 	public int getRowCount()
 	{
-		return budgetModel.getRowCount();
+		int rowCount = budgetModel.getRowCount();
+		return rowCount / 2;
 	}
-	
+		
 	public String getColumnName(int col)
 	{
 		return budgetModel.getColumnName(col);
@@ -51,21 +53,18 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 
 	public Object getValueAt(int row, int col)
 	{
-		return budgetModel.getValueAt(row, col);
+		return budgetModel.getValueAt(row * 2, col);
 	}
 	
 	public void setValueAt(Object value, int row, int col)
 	{
-		budgetModel.setValueAt(value, row, col);
+		budgetModel.setValueAt(value, row * 2, col);
 	}
 	
 	public BaseId getAssignmentForRow(int row)
 	{
-		return budgetModel.getAssignmentForRow(row);
+		return budgetModel.getAssignmentForRow(row * 2);
 	}
-
     
 	BudgetTableModel budgetModel;
-	//private Project project;
-
 }
