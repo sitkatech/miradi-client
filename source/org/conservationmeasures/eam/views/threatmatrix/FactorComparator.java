@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.util.Comparator;
 
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -60,6 +61,7 @@ public class FactorComparator implements  Comparator
 		}
 		catch(Exception e)
 		{
+			EAM.logException(e);
 			return -1;
 		}
 	}
