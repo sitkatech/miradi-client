@@ -29,4 +29,13 @@ public class FundingSourcePool extends EAMNormalObjectPool
 		return new FundingSource(actualId);
 	}
 
+	public FundingSource[] getAllFundingSources()
+	{
+		BaseId[] allIds = getIds();
+		FundingSource[] allFundingSources = new FundingSource[allIds.length];
+		for (int i = 0; i < allFundingSources.length; i++)
+			allFundingSources[i] = find(allIds[i]);
+			
+		return allFundingSources;
+	}
 }

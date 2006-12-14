@@ -28,5 +28,15 @@ public class AccountingCodePool extends EAMNormalObjectPool
 	{
 		return new AccountingCode(actualId);
 	}
+	
+	public AccountingCode[] getAllAccountingCodes()
+	{
+		BaseId[] allIds = getIds();
+		AccountingCode[] allAccountingCodes = new AccountingCode[allIds.length];
+		for (int i = 0; i < allAccountingCodes.length; i++)
+			allAccountingCodes[i] = find(allIds[i]);
+			
+		return allAccountingCodes;
+	}
 
 }
