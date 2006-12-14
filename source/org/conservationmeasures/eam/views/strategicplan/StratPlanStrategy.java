@@ -5,7 +5,10 @@
  */
 package org.conservationmeasures.eam.views.strategicplan;
 
+import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.TaxonomyItem;
+import org.conservationmeasures.eam.objecthelpers.TaxonomyLoader;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.project.Project;
@@ -34,7 +37,32 @@ public class StratPlanStrategy extends TreeTableNode
 		if(column == StrategicPlanTreeTableModel.labelColumn)
 			return intervention.getLabel();
 		
-		return "";
+		return getTaxonomyLabel();
+	}
+
+	private String getTaxonomyLabel()
+	{
+		try
+		{
+		String taxonomyCode = intervention.getData(Strategy.TAG_TAXONOMY_CODE);
+		TaxonomyItem[] taxonomyItems = TaxonomyLoader.load(TaxonomyLoader.STRATEGY_TAXONOMIES_FILE);
+		for(int i = 0; i < taxonomyItems.length; i++)
+		{
+			if(taxonomyItems[i].getTaxonomyCode().equals(taxonomyCode))
+			{
+				if (i == 0) 
+					return "";
+				return taxonomyItems[i].getTaxonomyDescription();
+			}
+		}
+		return intervention.getData(Strategy.TAG_TAXONOMY_CODE);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+
 	}
 
 	public int getChildCount()

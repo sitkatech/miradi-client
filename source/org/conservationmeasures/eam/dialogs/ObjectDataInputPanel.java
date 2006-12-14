@@ -218,6 +218,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		return null;
 	}
+	
+	public BaseId getObjectId()
+	{
+		return objectId;
+	}
 
 
 	private Project project;

@@ -41,8 +41,8 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	
 	public static final int labelColumn = 0;
 	
-	static final String[] columnNames = {"Item", };
-
+	static final String[] columnNames = {"Item", Strategy.TAG_TAXONOMY_CODE};
+	
 	Project project;
 
 	

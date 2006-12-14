@@ -6,8 +6,10 @@
 package org.conservationmeasures.eam.objecthelpers;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Hashtable;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.main.EAM;
@@ -17,20 +19,25 @@ public class TaxonomyLoader
 {
 	public static TaxonomyItem[] load(String resourceFileName) throws Exception
 	{
-
+		if (tablePreLoad.contains(resourceFileName))
+			return (TaxonomyItem[])tablePreLoad.get(resourceFileName);
+		
 		InputStream is = EAM.class.getResourceAsStream(resourceFileName);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
+		TaxonomyItem[] table = getTaxomonies(reader);
+		tablePreLoad.put(resourceFileName, table);
 		reader.close();
-
-		Vector taxonomyItems = processVector(fileVector);
-		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
+		return table;
 	}
 
 	public static TaxonomyItem[] load(BufferedReader reader) throws Exception
 	{
+		return getTaxomonies(reader);
+	}
+	
+	private static TaxonomyItem[] getTaxomonies(BufferedReader reader) throws IOException
+	{
 		Vector fileVector = DelimitedFileLoader.getDelimitedContents(reader);
-
 		Vector taxonomyItems = processVector(fileVector);
 		return (TaxonomyItem[]) taxonomyItems.toArray(new TaxonomyItem[0]);
 	}
@@ -74,5 +81,9 @@ public class TaxonomyLoader
 	{
 		return code.substring(0, code.indexOf("."));
 	}
+	
+	private static Hashtable tablePreLoad = new Hashtable();
+	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.txt";
+	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.txt";
 
 }
