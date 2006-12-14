@@ -20,9 +20,9 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiLabel;
 
-public class ObjectReadonlyRatingField extends ObjectDataInputField
+public class ObjectReadonlyChoiceField extends ObjectDataInputField
 {
-	public ObjectReadonlyRatingField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
+	public ObjectReadonlyChoiceField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse.getTag());
 		question = questionToUse;

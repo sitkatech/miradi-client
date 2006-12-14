@@ -21,8 +21,8 @@ import org.conservationmeasures.eam.dialogfields.ObjectDataInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectDateInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectMultilineInputField;
 import org.conservationmeasures.eam.dialogfields.ObjectNumericInputField;
-import org.conservationmeasures.eam.dialogfields.ObjectRatingField;
-import org.conservationmeasures.eam.dialogfields.ObjectReadonlyRatingField;
+import org.conservationmeasures.eam.dialogfields.ObjectChoiceField;
+import org.conservationmeasures.eam.dialogfields.ObjectReadonlyChoiceField;
 import org.conservationmeasures.eam.dialogfields.ObjectStringInputField;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -124,14 +124,14 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 		return new ObjectMultilineDisplayField(project, objectType, objectId, tag);
 	}
 		
-	public ObjectDataInputField createRatingField(ChoiceQuestion question)
+	public ObjectDataInputField createChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectRatingField(project, objectType, objectId, question);
+		return new ObjectChoiceField(project, objectType, objectId, question);
 	}
 	
-	public ObjectDataInputField createRatingSummaryField(ChoiceQuestion question)
+	public ObjectDataInputField createReadOnlyChoiceField(ChoiceQuestion question)
 	{
-		return new ObjectReadonlyRatingField(project, objectType, objectId, question);
+		return new ObjectReadonlyChoiceField(project, objectType, objectId, question);
 	}
 	
 	public void saveModifiedFields()

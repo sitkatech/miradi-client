@@ -42,7 +42,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 
 		if(factorToEdit.isTarget())
 		{
-			addField(createRatingField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
+			addField(createChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
 		}
 		
 		if(factorToEdit.isDirectThreat())
@@ -66,11 +66,11 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			add(new UiLabel(EAM.text("Label|" + Strategy.TAG_TAXONOMY_CODE)));
 			add(createStrategyClassificationDropdown());
 			
-			addField(createRatingField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
-			addField(createRatingField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
-			addField(createRatingField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
-			addField(createRatingField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
-			addField(createRatingSummaryField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			addField(createChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
+			addField(createChoiceField(new StrategyDurationQuestion(Strategy.TAG_DURATION_RATING)));
+			addField(createChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
+			addField(createChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
+			addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		}
 
 		addField(createMultilineField(Factor.TAG_COMMENT));
