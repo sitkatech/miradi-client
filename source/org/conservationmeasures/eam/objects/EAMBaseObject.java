@@ -248,7 +248,7 @@ abstract public class EAMBaseObject implements EAMObject
 			return Longlabel;
 		
 		if (Longlabel.length() <= 0)
-			return "";
+			return shortLabel;
 		
 		return shortLabel + "." + Longlabel;
 		
