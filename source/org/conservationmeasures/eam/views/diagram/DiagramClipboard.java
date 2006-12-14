@@ -21,34 +21,34 @@ public class DiagramClipboard extends Clipboard
 	
 	public synchronized int getPasteOffset() 
 	{
-		return count * Project.DEFAULT_GRID_SIZE;
+		return pasteCount * Project.DEFAULT_GRID_SIZE;
 	}
 
-	private synchronized int incrementCount() 
+	private synchronized int incrementPasteCount() 
 	{
-		return count = count+1;
+		return pasteCount = pasteCount+1;
 	}
 	
 
-	private synchronized int resetCount() 
+	private synchronized int resetPasteCount() 
 	{
-		return count = 0;
+		return pasteCount = 0;
 	}
 	
 	public void setContents(Transferable contents, ClipboardOwner owner) 
 	{
-		resetCount();
+		resetPasteCount();
 		clipboard.setContents(contents, owner);
 	}
 	
 	public Transferable getContents(Object requestor)
 	{
-		incrementCount() ;
+		incrementPasteCount() ;
 		return clipboard.getContents(requestor);
 	}
 	
-	private int count = 0;
-	final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	private int pasteCount = 0;
+	private final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	final public static DiagramClipboard EAM_CLIPBOARD = new DiagramClipboard();
 	
 }
