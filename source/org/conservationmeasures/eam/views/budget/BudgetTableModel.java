@@ -12,13 +12,17 @@ import javax.swing.table.AbstractTableModel;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.ids.AccountingCodeId;
 import org.conservationmeasures.eam.ids.BaseId;
+import org.conservationmeasures.eam.ids.FundingSourceId;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.ProjectResourceId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.DateRangeEffortList;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.AccountingCode;
 import org.conservationmeasures.eam.objects.Assignment;
+import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -95,14 +99,14 @@ public class BudgetTableModel extends AbstractTableModel
 	public int getRowCount()
 	{
 		if (assignmentIdList != null)
-			return (assignmentIdList.size() * 2) + 2;
+			return (assignmentIdList.size() * 2) + TOTALS_ROW_COUNT;
 		
 		return 0;
 	}
 	
 	public int getColumnCount()
 	{
-		return (dateRanges.length * 2) + EXTRA_COLUMN_COUNT;
+		return (dateRanges.length * 2) + TOTAL_ROW_HEADER_COLUMN_COUNT + TOTALS_COLUMN_COUNT;
 	}
 	
 	public int getUnitTotalsColumnIndex()
@@ -110,14 +114,44 @@ public class BudgetTableModel extends AbstractTableModel
 		return getColumnCount() - 2;	
 	}
 	
-	private int getCostTotalsColumnIndex()
+	public int getCostTotalsColumnIndex()
 	{
 		return getColumnCount() - 1;
+	}
+
+	public int getRowTotalsLabelColumnIndex()
+	{
+		return ROW_TOTALS_LABEL_COLUMN_INDEX;
+	}
+	
+	public int getUnitsAndCostLabelColumnIndex()
+	{
+		return UNITS_AND_COST_LABEL_COLUMN_INDEX;
+	}
+	
+	public int getCostPerUnitLabelColumnIndex()
+	{
+		return COST_PER_UNIT_COLUMN_INDEX;
+	}
+	
+	public int getUnitsLabelColumnIndex()
+	{
+		return UNITS_LABEL_COLUMN_INDEX;
+	}
+	
+	public int getAccountingCodeColumnIndex()
+	{
+		return ACCOUNTING_CODE_COLUMN_INDEX;
+	}
+	
+	public int getFundingSourceColumnIndex()
+	{
+		return FUNDING_SOURCE_COLUMN_INDEX;
 	}
 	
 	public int getResourcesColumnIndex()
 	{
-		return 0;
+		return RESOURCES_COLUMN_INDEX;
 	}
 
 	public boolean isCellEditable(int row, int col) 
@@ -153,12 +187,24 @@ public class BudgetTableModel extends AbstractTableModel
 		if (isResourceColumn(col))
 			return "Resources";
 		
+		if (isUnitsLabelColumn(col))
+			return "Unit";
+		
+		if (isCostPerUnitLabelColumn(col))
+			return "Cost Per Unit";
+		
 		if (isLabelColumn(col))
 			return "";
 		
 		if (isUnitsTotalColumn(col))
 			return "Unit Totals";
 	
+		if (isFundingSourceColumn(col))
+			return "Funding Source";
+		
+		if (isAccountingCodeColumn(col))
+			return "Accounting Code";
+		
 		if (isCostTotalsColumn(col))
 			return "Cost Totals";
 		
@@ -175,6 +221,12 @@ public class BudgetTableModel extends AbstractTableModel
 		
 		if (isLabelColumn(col))
 			return getResourceCellLabel(row, col);
+		
+		if (isAccountingCodeColumn(col))
+			return getCurrentAccountingCode(row);
+		
+		if (isFundingSourceColumn(col))
+			return getCurrentFundingSource(row);
 		
 		if (isCostColumn(col))
 			return getCost(row, col);
@@ -208,14 +260,35 @@ public class BudgetTableModel extends AbstractTableModel
 			return;
 		}
 		
+		if (isAccountingCodeColumn(col))
+		{
+			setAccountingCode(value, row);
+			return;
+		}
+		
+		if (isFundingSourceColumn(col))
+		{
+			setFundingSource(value, row);
+			return;
+		}
+		
 		if (isUnitsColumn(col))
 			setUnits(value, row, covertToUnitsColumn(col));
 	}
 
+	private boolean isFundingSourceColumn(int col)
+	{
+		return col == getFundingSourceColumnIndex();
+	}
+	
+	private boolean isAccountingCodeColumn(int col)
+	{
+		return col == getAccountingCodeColumnIndex();
+	}
 
 	private boolean isLabelColumn(int col)
 	{
-		return 1 <= col && col <= STATIC_LABEL_COLUMN_COUNT;
+		return 3 <= col && col < TOTAL_ROW_HEADER_COLUMN_COUNT;
 	}
 	
 	private boolean isResourceColumn(int col)
@@ -272,13 +345,13 @@ public class BudgetTableModel extends AbstractTableModel
 
 	private boolean isUnitsColumn(int col)
 	{
-		if (col < (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT))
+		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
 			return false;
 		
-		if (isOdd(col))
+		if (!isOdd(col))
 			return false;
 		
-		if (col  < (getColumnCount() - TOTALS_COLUMNS_COUNT ))
+		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
 			return true;
 		
 		return false;
@@ -286,13 +359,13 @@ public class BudgetTableModel extends AbstractTableModel
 	
 	private boolean isCostColumn(int col)
 	{
-		if (col < (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT))
+		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
 			return false;
 		
-		if (!isOdd(col))
+		if (isOdd(col))
 			return false;
 		
-		if (col  < (getColumnCount() - TOTALS_COLUMNS_COUNT ))
+		if (col  < (getColumnCount() - TOTALS_COLUMN_COUNT ))
 			return true;
 		
 		return false;
@@ -300,12 +373,22 @@ public class BudgetTableModel extends AbstractTableModel
 
 	private boolean isStaticLabelColum(int col)
 	{
-		return col == COST_UNIT_LABEL_COLUMN;
+		return col == UNITS_AND_COST_LABEL_COLUMN_INDEX;
 	}
-
+	
+	private boolean isCostPerUnitLabelColumn(int col)
+	{
+		return col == getCostPerUnitLabelColumnIndex();
+	}
+	
+	private boolean isUnitsLabelColumn(int col)
+	{
+		return col == getUnitsLabelColumnIndex();
+	}
+	
 	private int covertToUnitsColumn(int col)
 	{
-		return (col - (RESOURCE_COLUMN_COUNT + STATIC_LABEL_COLUMN_COUNT)) / 2;
+		return (col - (TOTAL_ROW_HEADER_COLUMN_COUNT)) / 2;
 	}
 	
 	private String getResourceCellLabel(int row, int col)
@@ -320,18 +403,18 @@ public class BudgetTableModel extends AbstractTableModel
 		if (resource  == null)
 			return "";
 		
-		if (col == 1)
-			return resource.getData(ProjectResource.TAG_COST_PER_UNIT);
-		
-		if (col == 2)
+		if (col == UNITS_LABEL_COLUMN_INDEX && !isOdd(row))
 			return resource.getData(ProjectResource.TAG_COST_UNIT);
+		
+		if (col == COST_PER_UNIT_COLUMN_INDEX && isOdd(row))
+			return resource.getData(ProjectResource.TAG_COST_PER_UNIT);
 			
 		return "";
 	}
 	
 	private String getStaticRowTotalsLabel(int row, int col)
 	{
-		final int TOTAL_COLUMN_ROW_HEADER = 2;
+		final int TOTAL_COLUMN_ROW_HEADER = 6;
 		
 		if (col != TOTAL_COLUMN_ROW_HEADER)
 			return  "";
@@ -477,6 +560,32 @@ public class BudgetTableModel extends AbstractTableModel
 		return assignmentIdList.get(row);
 	}
 	
+	public Object getCurrentAccountingCode(int row)
+	{
+		if (isTotalsRow(row))
+			return null;
+		
+		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE);
+		BaseId accountingId = new BaseId(stringId);
+		
+		AccountingCode accountingCode = (AccountingCode)project.findObject(ObjectType.ACCOUNTING_CODE, accountingId);
+		return accountingCode;
+	}
+	
+	public Object getCurrentFundingSource(int row)
+	{
+		if (isTotalsRow(row))
+			return null;
+		
+		BaseId assignmentId = getSelectedAssignment(getCorrectedRow(row));
+		String stringId = project.getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE);
+		BaseId fundingId = new BaseId(stringId);
+		
+		FundingSource fundingSource = (FundingSource)project.findObject(ObjectType.FUNDING_SOURCE, fundingId);
+		return fundingSource;
+	}
+	
 	public ProjectResource getCurrentResource(int row)
 	{
 		if (isTotalsRow(row))
@@ -524,7 +633,7 @@ public class BudgetTableModel extends AbstractTableModel
 			EAM.logException(e);
 		}
 	}
-
+	
 	public void setResource(Object value, int row)
 	{
 		try
@@ -543,17 +652,56 @@ public class BudgetTableModel extends AbstractTableModel
 		
 	}
 	
+	public void setFundingSource(Object value, int row)
+	{
+		try
+		{
+			FundingSource fSource = (FundingSource)value;
+			FundingSourceId fSourceId = (FundingSourceId)(fSource).getId();
+			
+			BaseId  assignmentId = getSelectedAssignment(row);
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fSourceId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	public void setAccountingCode(Object value, int row)
+	{
+		try
+		{
+			AccountingCode aCode = (AccountingCode)value;
+			AccountingCodeId aCodeId = (AccountingCodeId)(aCode).getId();
+			
+			BaseId  assignmentId = getSelectedAssignment(row);
+			Command command = new CommandSetObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, aCodeId.toString());
+			project.executeCommand(command);
+		}
+		catch(CommandFailedException e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
 	Project project;
 	DateRange[] dateRanges;
 	IdList assignmentIdList;
 	Task task;
 	BudgetTotalsCalculator totalsCalculator;
 	
-	private static final int COST_UNIT_LABEL_COLUMN = 3;
-	private static final int RESOURCE_COLUMN_COUNT = 1;
-	private static final int TOTALS_COLUMNS_COUNT = 2;
-	private static final int STATIC_LABEL_COLUMN_COUNT = 3;
-	private static final int EXTRA_COLUMN_COUNT = RESOURCE_COLUMN_COUNT + 
-												  TOTALS_COLUMNS_COUNT + 
-												  STATIC_LABEL_COLUMN_COUNT;	 
+	private static final int RESOURCES_COLUMN_INDEX = 0;
+	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
+	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;
+	private static final int UNITS_LABEL_COLUMN_INDEX = 3;
+	private static final int COST_PER_UNIT_COLUMN_INDEX = 4;	
+	private static final int UNITS_AND_COST_LABEL_COLUMN_INDEX = 5;
+	private static final int ROW_TOTALS_LABEL_COLUMN_INDEX = 6;
+	
+	private static final int TOTAL_ROW_HEADER_COLUMN_COUNT = 7;
+	
+	private static final int TOTALS_ROW_COUNT = 2;
+	private static final int TOTALS_COLUMN_COUNT = 2;	 
 }
