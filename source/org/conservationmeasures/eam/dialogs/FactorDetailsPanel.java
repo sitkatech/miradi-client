@@ -48,7 +48,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isDirectThreat())
 		{
 			// FIXME: Convert to new mechanism
-			add(new UiLabel(EAM.text("Label|" + Strategy.TAG_TAXONOMY_CODE)));
+			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
 			add(createThreatClassificationDropdown());
 		}
 
@@ -63,7 +63,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			add(statusCheckBox);
 
 			// FIXME: Convert to new mechanism
-			add(new UiLabel(EAM.text("Label|" + Strategy.TAG_TAXONOMY_CODE)));
+			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
 			add(createStrategyClassificationDropdown());
 			
 			addField(createChoiceField(new StrategyImpactQuestion(Strategy.TAG_IMPACT_RATING)));
