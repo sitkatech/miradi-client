@@ -8,7 +8,6 @@ package org.conservationmeasures.eam.views.threatmatrix;
 import java.util.Comparator;
 
 import org.conservationmeasures.eam.ids.FactorId;
-import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingBundle;
@@ -31,8 +30,10 @@ public class FactorComparator implements  Comparator
 		{
 			FactorId nodeIdColumn = targetList[sortColumn].getModelNodeId();
 
-			FactorId nodeIdRow1 = ((Factor) object1).getModelNodeId();
-			FactorId nodeIdRow2 = ((Factor) object2).getModelNodeId();
+			Factor factor1 = ((Factor) object1);
+			Factor factor2 = ((Factor) object2);
+			FactorId nodeIdRow1 = factor1.getModelNodeId();
+			FactorId nodeIdRow2 = factor2.getModelNodeId();
 
 			ThreatRatingBundle bundle1 = model.getBundle(nodeIdRow1,nodeIdColumn);
 			ThreatRatingBundle bundle2 = model.getBundle(nodeIdRow2,nodeIdColumn);
@@ -47,15 +48,15 @@ public class FactorComparator implements  Comparator
 			Integer value1 = new Integer(valueOption1.getNumericValue());
 			Integer value2 = new Integer(valueOption2.getNumericValue());
 			
-			if (value1.compareTo(value2)==0)
+			int test = value1.compareTo(value2);
+			
+			if (test == 0)
 			{
-				EAMObject eamObject1 = ((EAMObject) object1);
-				EAMObject eamObject2 = ((EAMObject) object2);
-				String label1 = eamObject1.getData(Factor.TAG_LABEL);
-				String label2 = eamObject2.getData(Factor.TAG_LABEL);
+				String label1 = factor1.getData(Factor.TAG_LABEL);
+				String label2 = factor2.getData(Factor.TAG_LABEL);
 				return label1.compareToIgnoreCase(label2);
 			}
-			return value1.compareTo(value2);
+			return test;
 		}
 		catch(Exception e)
 		{
