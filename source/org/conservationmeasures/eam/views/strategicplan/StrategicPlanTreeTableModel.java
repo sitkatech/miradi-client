@@ -43,7 +43,7 @@ public class StrategicPlanTreeTableModel extends GenericTreeTableModel
 	public static final int budgetColumn = 1;
 	public static final int datesColumn = 2;
 	
-	static final String[] columnNames = {"Item", "Budget", "Dates", };
+	static final String[] columnNames = {"Item", };
 
 	Project project;
 
