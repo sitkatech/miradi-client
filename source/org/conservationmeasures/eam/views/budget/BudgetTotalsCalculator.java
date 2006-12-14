@@ -218,15 +218,12 @@ public class BudgetTotalsCalculator
 	private double getFactorTotal(TreeTableNode node) throws Exception
 	{
 		ORef nodeRef = node.getObjectReference();
-		if(nodeRef.getObjectType() != ObjectType.FAKE)
-			throw new RuntimeException("Unexpected tree node root type: " + nodeRef);
-		
-		if(nodeRef.getObjectId().equals(EAM.WORKPLAN_STRATEGY_ROOT))
+		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
 			return getStrategiesChildrenTotal(node);
-		else if(nodeRef.getObjectId().equals(EAM.WORKPLAN_MONITORING_ROOT))
+		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
 			return getFactorTotals(node);
 
-		throw new RuntimeException("Unexpected tree node root id: " + nodeRef);
+		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
 	}
 	
 	private double getStrategiesChildrenTotal(TreeTableNode node) throws Exception
