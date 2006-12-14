@@ -18,11 +18,13 @@ import javax.swing.table.TableColumn;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.AccountingCode;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
+import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
-import org.martus.swing.UiComboBox;
 
 public class BudgetTable extends JTable implements ObjectPicker 
 {
@@ -31,7 +33,6 @@ public class BudgetTable extends JTable implements ObjectPicker
 		super(modelToUse);
 		model = modelToUse;
 		project = projectToUse;
-		//FIXME budget code - turn off auto resize
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		rebuild();
 	}
@@ -46,16 +47,31 @@ public class BudgetTable extends JTable implements ObjectPicker
 	
 	private void rebuild()
 	{
+		System.out.println("Rebuild called");
 		//TODO budget code - verify the need for this if
 		if (model.getColumnCount() <= 0)
 			return;
 		
-		projectResources = project.getAllProjectResources();
-		JComboBox combo = new JComboBox(projectResources);
+		ProjectResource[] projectResources = project.getAllProjectResources();
+		int resourceColumn = model.getResourcesColumnIndex();
+		createComboColumn(projectResources, resourceColumn);
 		
-		TableColumn col = getColumnModel().getColumn(RESOURCE_COLUMN);
-		col.setCellEditor(new DefaultCellEditor(combo));
-		col.setCellRenderer(new ComboBoxRenderer(projectResources));
+		FundingSource[] fundingSources = project.getObjectManager().getFundingSourcePool().getAllFundingSources();
+		int fundingSourceColumn = model.getFundingSourceColumnIndex();
+		createComboColumn(fundingSources, fundingSourceColumn);
+		
+		AccountingCode[] accountingCodes = project.getObjectManager().getAccountingCodePool().getAllAccountingCodes();
+		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
+		createComboColumn(accountingCodes, accountingCodesColumn);
+	}
+
+	private void createComboColumn(EAMBaseObject[] projectResources, int col)
+	{
+		JComboBox resourceCombo = new JComboBox(projectResources);
+		
+		TableColumn resourceCol = getColumnModel().getColumn(col);
+		resourceCol.setCellEditor(new DefaultCellEditor(resourceCombo));
+		resourceCol.setCellRenderer(new ComboBoxRenderer(projectResources));
 	}
 	
 	public void addListSelectionListener(ListSelectionListener listener)
@@ -97,11 +113,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		return (BudgetTableModel)getModel();
 	}
 
-	
-	public static final int RESOURCE_COLUMN = 0;
 	Project project;
-	UiComboBox resourceCombo;
-	ProjectResource[] projectResources;
 	BudgetTableModel model;
 	
 	static final String COLUMN_HEADER_TITLE = EAM.text("Resource Names");
