@@ -31,6 +31,11 @@ public class TreeTableStateSaver implements CommandExecutedListener
 		project.addCommandExecutedListener(this);
 	}
 	
+	public void dispose()
+	{
+		project.removeCommandExecutedListener(this);
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		executeTreeStateRestore(event);

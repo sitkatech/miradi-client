@@ -39,6 +39,12 @@ public class StrategicPlanPanel extends DisposablePanel
 		tree.restoreTreeState();
 	}
 	
+	public void dispose()
+	{
+		tree.dispose();
+		super.dispose();
+	}
+	
 	public StrategicPlanTreeTableModel getModel()
 	{
 		return model;

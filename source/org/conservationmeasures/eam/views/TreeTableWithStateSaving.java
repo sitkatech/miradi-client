@@ -18,6 +18,11 @@ public class TreeTableWithStateSaving extends TreeTableWithIcons
 		treeTableModelAdapter = new EAMTreeTableModelAdapter(projectToUse, treeTableStateSaver, treeTableModel, tree);
 	}
 	
+	public void dispose()
+	{
+		treeTableStateSaver.dispose();
+	}
+	
 	public void restoreTreeState() throws Exception
 	{
 		treeTableStateSaver.restoreTreeState();
