@@ -27,30 +27,34 @@ public class MatrixTableImageCreator
 			ValueOption myValueOption = new WhiteInvalidValueOption();
 	    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(myValueOption);
 	    	TableHeaderRenderer.SetOverRideColor(Color.WHITE);
+
+	        JTableHeader tableHeaderSet = table.getTableHeader(); 
+	        JTableHeader rowHeaderSet = rowHeaderTable.getTableHeader(); 
+	         
+	        int totalWidth	= table.getWidth() + rowHeaderTable.getWidth();
+	        int totalHeight = tableHeaderSet.getHeight() + table.getHeight(); 
+	
+	        BufferedImage tableImage = new BufferedImage(totalWidth, totalHeight, BufferedImage.TYPE_INT_RGB); 
+	        Graphics2D g2D = (Graphics2D)tableImage.getGraphics(); 
+	 
+	        writeData(rowHeaderSet, g2D, 0 ,0); 
+	        writeData(tableHeaderSet, g2D, rowHeaderSet.getWidth(), 0); 
+	        writeData(rowHeaderTable, g2D, -rowHeaderSet.getWidth(), rowHeaderSet.getHeight()); 
+	        writeData(table, g2D, rowHeaderSet.getWidth(), 0); 
+
+	        return tableImage;  
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			return new BufferedImage(0, 0, BufferedImage.TYPE_INT_RGB);  
+		}
+		finally 
+		{
+	    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(null);
+	    	TableHeaderRenderer.SetOverRideColor(null);
 		}
 		
-        JTableHeader tableHeaderSet = table.getTableHeader(); 
-        JTableHeader rowHeaderSet = rowHeaderTable.getTableHeader(); 
-         
-        int totalWidth	= table.getWidth() + rowHeaderTable.getWidth();
-        int totalHeight = tableHeaderSet.getHeight() + table.getHeight(); 
-
-        BufferedImage tableImage = new BufferedImage(totalWidth, totalHeight, BufferedImage.TYPE_INT_RGB); 
-        Graphics2D g2D = (Graphics2D)tableImage.getGraphics(); 
- 
-        writeData(rowHeaderSet, g2D, 0 ,0); 
-        writeData(tableHeaderSet, g2D, rowHeaderSet.getWidth(), 0); 
-        writeData(rowHeaderTable, g2D, -rowHeaderSet.getWidth(), rowHeaderSet.getHeight()); 
-        writeData(table, g2D, rowHeaderSet.getWidth(), 0); 
-         
-    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(null);
-    	TableHeaderRenderer.SetOverRideColor(null);
-    	
-        return tableImage;  
     }
 
 
