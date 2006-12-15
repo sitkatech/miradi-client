@@ -60,8 +60,8 @@ public class WorkPlanView extends TabbedView
 		
 		addTab(EAM.text("Work Plan"), workPlanManagementPanel);
 		addScrollableTab(activitiesManagementPanel);
-		addScrollableTab(resourceManagementPanel);
 		addScrollableTab(methodPoolManagementPanel);
+		addScrollableTab(resourceManagementPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception

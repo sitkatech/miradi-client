@@ -23,7 +23,7 @@ public class MethodPoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Tab|Method");
+		return EAM.text("Tab|Methods");
 	}
 	
 	public Icon getIcon()
