@@ -36,9 +36,12 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 	private static final String[] COLUMN_TAGS = new String[] {
 		Indicator.TAG_SHORT_LABEL,
 		Indicator.TAG_LABEL,
-		Indicator.PSEUDO_TAG_FACTOR,
 		Indicator.TAG_PRIORITY,
 		Indicator.TAG_STATUS,
+		Indicator.PSEUDO_TAG_FACTOR,
+		Indicator.PSEUDO_TAG_METHODS,
+		Indicator.PSEUDO_TAG_TARGETS,
+		Indicator.PSEUDO_TAG_DIRECT_THREATS,
 	};
 
 }
