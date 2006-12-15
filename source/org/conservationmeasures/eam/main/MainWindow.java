@@ -182,7 +182,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 				throw new RuntimeException("View must have toolbar");
 			toolBarBox.removeAll();
 			toolBarBox.add(toolBar);
-			pack();
+			validate();
 		}
 	}
 
