@@ -20,25 +20,13 @@ public class MonitoringModel extends GenericTreeTableModel
 
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(ObjectType.INDICATOR, columnTags[column]);
+		return EAM.fieldLabel(ObjectType.INDICATOR, MonitoringIndicatorNode.COLUMN_TAGS[column]);
 	}
 
 	public int getColumnCount()
 	{
-		return columnTags.length;
+		return MonitoringIndicatorNode.COLUMN_TAGS.length;
 	}
 	
-	public static String[] columnTags = {
-		"Item", 
-		"Target(s)", 
-		"Threat(s)", 
-		"Method", 
-		"Priority", 
-		"Status", 
-		"When", 
-		"Where", 
-		"Cost", 
-		"Funding",	
-	};
 	Project project;
 }

@@ -10,6 +10,8 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.questions.IndicatorStatusRatingQuestion;
+import org.conservationmeasures.eam.questions.PriorityRatingQuestion;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
 public class MonitoringIndicatorNode extends MonitoringNode
@@ -52,13 +54,14 @@ public class MonitoringIndicatorNode extends MonitoringNode
 
 	public Object getValueAt(int column)
 	{
-		if(column == COLUMN_TARGETS)
-			return getChainManager().getRelatedTargetsAsHtml(indicator.getId());
-		if(column == COLUMN_THREATS)
-			return getChainManager().getRelatedDirectThreatsAsHtml(indicator.getId());
-		if(column == COLUMN_ITEM_LABEL)
-			return indicator.toString();
-		return null;
+		String tag = COLUMN_TAGS[column];
+		String rawValue = project.getObjectData(getType(), getObjectReference().getObjectId(), tag);
+		if(tag.equals(Indicator.TAG_PRIORITY))
+			return new PriorityRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
+		if(tag.equals(Indicator.TAG_STATUS))
+			return new IndicatorStatusRatingQuestion(tag).findChoiceByCode(rawValue).getLabel();
+		
+		return rawValue;
 	}
 
 	ChainManager getChainManager()
@@ -70,7 +73,15 @@ public class MonitoringIndicatorNode extends MonitoringNode
 	{
 	}
 	
+	public static final String[] COLUMN_TAGS = {
+		Indicator.TAG_LABEL, 
+		Indicator.TAG_PRIORITY, 
+		Indicator.TAG_STATUS, 
+		Indicator.PSEUDO_TAG_TARGETS, 
+		Indicator.PSEUDO_TAG_DIRECT_THREATS, 
+		//"Method", 
+	};
+	
 	Project project;
 	Indicator indicator;
-	
 }
