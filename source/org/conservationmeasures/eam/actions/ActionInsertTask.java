@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertTask extends MainWindowAction
+public class ActionInsertTask extends ObjectsAction
 {
 	public ActionInsertTask(MainWindow mainWindowToUse)
 	{

@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
 import org.conservationmeasures.eam.actions.ActionInsertMethod;
 import org.conservationmeasures.eam.actions.ActionInsertTask;
@@ -25,6 +24,7 @@ import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.AddAssignmentDoer;
 import org.conservationmeasures.eam.views.budget.RemoveAssignmentDoer;
+import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.CreateResource;
 import org.conservationmeasures.eam.views.umbrella.DeleteResource;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
@@ -83,7 +83,7 @@ public class WorkPlanView extends TabbedView
 		methodPoolManagementPanel = null;
 	}
 	
-	public WorkPlanPanel getWorkPlanPanel()
+	public TaskTreeTablePanel getTaskTreeTablePanel()
 	{
 		if(workPlanManagementPanel == null)
 			return null;
@@ -98,16 +98,14 @@ public class WorkPlanView extends TabbedView
 	private void addWorkPlanDoersToMap()
 	{
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
-		
 		addDoerToMap(ActionInsertMethod.class, new InsertMethodDoer());
 		addDoerToMap(ActionInsertTask.class, new InsertTaskDoer());
+//		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
+		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
+		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
-		
-		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
-		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
 		
 		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());

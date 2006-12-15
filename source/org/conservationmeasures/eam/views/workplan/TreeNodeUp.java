@@ -15,7 +15,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TreeNodeUp extends TreeNodeMoverDoer
+public class TreeNodeUp extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{

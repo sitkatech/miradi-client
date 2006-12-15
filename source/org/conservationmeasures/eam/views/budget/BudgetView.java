@@ -9,7 +9,12 @@ import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
+import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionInsertMethod;
+import org.conservationmeasures.eam.actions.ActionInsertTask;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
+import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
+import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
@@ -20,7 +25,13 @@ import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
+import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
+import org.conservationmeasures.eam.views.workplan.InsertActivity;
+import org.conservationmeasures.eam.views.workplan.InsertMethodDoer;
+import org.conservationmeasures.eam.views.workplan.InsertTaskDoer;
+import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
+import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
 import org.martus.swing.ResourceImageIcon;
 import org.martus.swing.UiScrollPane;
 
@@ -93,11 +104,20 @@ public class BudgetView extends TabbedView
 	
 	private void addBudgetDoersToMap()
 	{
+		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
+		addDoerToMap(ActionInsertMethod.class, new InsertMethodDoer());
+		addDoerToMap(ActionInsertTask.class, new InsertTaskDoer());
+//		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
+		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
+		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
+
 		addDoerToMap(ActionAddAssignment.class, new AddAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		
 		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
 		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
 		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
+		
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());
 	}
@@ -106,6 +126,12 @@ public class BudgetView extends TabbedView
 	{
 		return new BudgetWizardPanel();
 	}
+
+	public TaskTreeTablePanel getTaskTreeTablePanel()
+	{
+		return treeTableComponent;
+	}
+
 	
 	BudgetTreeTablePanel treeTableComponent;
 	

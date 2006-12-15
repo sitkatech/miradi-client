@@ -6,17 +6,14 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import org.conservationmeasures.eam.objects.Task;
-import org.conservationmeasures.eam.views.ViewDoer;
-import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 import org.conservationmeasures.eam.views.TreeTableNode;
-import org.conservationmeasures.eam.views.workplan.WorkPlanView;
+import org.conservationmeasures.eam.views.ViewDoer;
 
 public abstract class WorkPlanDoer extends ViewDoer
 {
 	WorkPlanPanel getPanel()
 	{
-		WorkPlanPanel panel = ((WorkPlanView)getView()).getWorkPlanPanel();
-		return panel;
+		return null;
 	}
 	
 	public TreeTableNode getSelectedObject()
