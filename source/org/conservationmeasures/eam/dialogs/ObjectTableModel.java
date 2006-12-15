@@ -78,9 +78,8 @@ abstract public class ObjectTableModel extends AbstractTableModel
 	{
 		try
 		{
-			EAMObject rowObject;
-			rowObject = getObjectFromRow(row);
-			return rowObject.getData(getColumnTag(column));
+			ORef rowObjectRef = new ORef(rowObjectType, rowObjectIds.get(row));
+			return getValueToDisplay(rowObjectRef, getColumnTag(column));
 		}
 		catch(Exception e)
 		{
@@ -89,6 +88,10 @@ abstract public class ObjectTableModel extends AbstractTableModel
 		}
 	}
 
+	public String getValueToDisplay(ORef rowObjectRef, String tag)
+	{
+		return project.getObjectData(rowObjectRef.getObjectType(), rowObjectRef.getObjectId(), tag);
+	}
 
 	public void rowsWereAddedOrRemoved()
 	{
