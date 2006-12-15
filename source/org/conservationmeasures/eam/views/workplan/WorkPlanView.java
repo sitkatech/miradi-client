@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.dialogs.ActivityPoolManagementPanel;
+import org.conservationmeasures.eam.dialogs.MethodPoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
@@ -55,10 +56,12 @@ public class WorkPlanView extends TabbedView
 		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
-
+		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow().getActions());
+		
 		addTab(EAM.text("Work Plan"), workPlanManagementPanel);
 		addScrollableTab(activitiesManagementPanel);
 		addScrollableTab(resourceManagementPanel);
+		addScrollableTab(methodPoolManagementPanel);
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
@@ -74,6 +77,8 @@ public class WorkPlanView extends TabbedView
 		resourceManagementPanel = null;
 		activitiesManagementPanel.dispose();
 		activitiesManagementPanel = null;
+		methodPoolManagementPanel.dispose();
+		methodPoolManagementPanel = null;
 	}
 	
 	public WorkPlanPanel getWorkPlanPanel()
@@ -88,7 +93,6 @@ public class WorkPlanView extends TabbedView
 	
 	private void addWorkPlanDoersToMap()
 	{
-		
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		
@@ -123,5 +127,6 @@ public class WorkPlanView extends TabbedView
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;
 	WorkPlanManagementPanel workPlanManagementPanel;
+	MethodPoolManagementPanel methodPoolManagementPanel;
 		
 }
