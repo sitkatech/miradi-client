@@ -15,7 +15,7 @@ import javax.swing.JToolBar;
 
 import org.conservationmeasures.eam.actions.ActionHotButtonExamples;
 import org.conservationmeasures.eam.actions.ActionHotButtonMoreInfo;
-import org.conservationmeasures.eam.actions.ActionHotButtonWorkshope;
+import org.conservationmeasures.eam.actions.ActionHotButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -49,7 +49,7 @@ public class EAMToolBar extends JToolBar
 
 		add(new MoreInfoButton(actions.get(ActionHotButtonMoreInfo.class)));
 		add(new ExamplesButton(actions.get(ActionHotButtonExamples.class)));
-		add(new WorkshopButton(actions.get(ActionHotButtonWorkshope.class)));
+		add(new WorkshopButton(actions.get(ActionHotButtonWorkshop.class)));
 	}
 	
 }

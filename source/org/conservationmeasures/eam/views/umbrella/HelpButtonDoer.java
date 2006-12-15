@@ -25,7 +25,8 @@ public class HelpButtonDoer extends MainWindowDoer
 	
 	public void doIt(EventObject event) throws CommandFailedException
 	{
-		HelpButtonData data = (HelpButtonData)((JComponent)event.getSource()).getClientProperty(HelpButtonData.class);
+		JComponent sourceComponent = (JComponent)event.getSource();
+		HelpButtonData data = (HelpButtonData)sourceComponent.getClientProperty(HelpButtonData.class);
 		
 		Class defaultResouceClass = getMainWindow().getCurrentView().getClass();
 		if (data.resourceClass != null)
@@ -36,7 +37,7 @@ public class HelpButtonDoer extends MainWindowDoer
 	
 	public void doIt() throws CommandFailedException
 	{
-		throw new CommandFailedException("Invalid call: ; use DoIt(event)");
+		throw new CommandFailedException("Invalid call; use DoIt(event)");
 	}
 	
 }
