@@ -19,12 +19,13 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class InsertActivity extends WorkPlanDoer
+public class InsertTaskDoer extends WorkPlanDoer
 {
 	public boolean isAvailable()
 	{
@@ -33,13 +34,16 @@ public class InsertActivity extends WorkPlanDoer
 			return false;
 		return canInsertHere(selected);
 	}
-
+	
 	public void doIt() throws CommandFailedException
 	{
-		doInsertActivity();
+		if (!isAvailable())
+			return;
+	
+		doInsert();
 	}
 
-	private void doInsertActivity() throws CommandFailedException
+	private void doInsert() throws CommandFailedException
 	{
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
 		ORef proposedParentORef = insertAt.getProposedParentORef();
@@ -48,7 +52,7 @@ public class InsertActivity extends WorkPlanDoer
 
 		try
 		{
-			insertActivity(getProject(), foundObject, childIndex);
+			insert(getProject(), foundObject, childIndex);
 		}
 		catch (Exception e)
 		{
@@ -57,7 +61,7 @@ public class InsertActivity extends WorkPlanDoer
 		}
 	}
 
-	public static void insertActivity(Project project, EAMObject object, int childIndex) throws CommandFailedException, ParseException, Exception
+	public static void insert(Project project, EAMObject object, int childIndex) throws CommandFailedException, ParseException, Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -67,7 +71,13 @@ public class InsertActivity extends WorkPlanDoer
 			BaseId createdId = create.getCreatedId();
 
 			CommandSetObjectData addChildCommand;
-			addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
+			if (object.getType() == ObjectType.FACTOR)
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
+			else if (object.getType() == ObjectType.INDICATOR)
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Indicator.TAG_TASK_IDS, createdId, childIndex);
+			else
+				addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Task.TAG_SUBTASK_IDS, createdId, childIndex);
+			
 			project.executeCommand(addChildCommand);
 		}
 		finally
@@ -79,17 +89,16 @@ public class InsertActivity extends WorkPlanDoer
 	private boolean canInsertHere(TreeTableNode selected)
 	{
 		int type = selected.getObjectReference().getObjectType();
-
-		if (type != ObjectType.FACTOR )
+		if (type != ObjectType.TASK)
 			return false;
-		
-		Factor factor = ((Factor)selected.getObject());
-		if (factor.isStrategy())
+
+		Task task = (Task)getProject().findObject(ObjectType.TASK, selected.getObjectReference().getObjectId());
+		if (task.isMethod())
 			return true;
-		
-		return false;
+		else if (task.isActivity())
+			return true;
+		else
+			return true;
 	}
 
-
-	
 }

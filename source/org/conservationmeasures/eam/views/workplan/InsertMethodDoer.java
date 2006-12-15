@@ -19,12 +19,12 @@ import org.conservationmeasures.eam.objecthelpers.CreateTaskParameter;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Factor;
-import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.TreeTableNode;
 
-public class InsertActivity extends WorkPlanDoer
+//TODO InsertMethodDoer, InsertTaskDoer, InsertActivitDoer have code in common that needs to be refactored
+public class InsertMethodDoer extends WorkPlanDoer
 {
 	public boolean isAvailable()
 	{
@@ -33,12 +33,15 @@ public class InsertActivity extends WorkPlanDoer
 			return false;
 		return canInsertHere(selected);
 	}
-
+	
 	public void doIt() throws CommandFailedException
 	{
+		if (!isAvailable())
+			return;
+		
 		doInsertActivity();
 	}
-
+	
 	private void doInsertActivity() throws CommandFailedException
 	{
 		ActivityInsertionPoint insertAt = getPanel().getActivityInsertionPoint();
@@ -66,8 +69,7 @@ public class InsertActivity extends WorkPlanDoer
 			project.executeCommand(create);
 			BaseId createdId = create.getCreatedId();
 
-			CommandSetObjectData addChildCommand;
-			addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Strategy.TAG_ACTIVITY_IDS, createdId, childIndex);
+			CommandSetObjectData addChildCommand = CommandSetObjectData.createInsertIdCommand(object, Indicator.TAG_TASK_IDS, createdId, childIndex);
 			project.executeCommand(addChildCommand);
 		}
 		finally
@@ -79,17 +81,9 @@ public class InsertActivity extends WorkPlanDoer
 	private boolean canInsertHere(TreeTableNode selected)
 	{
 		int type = selected.getObjectReference().getObjectType();
-
-		if (type != ObjectType.FACTOR )
-			return false;
-		
-		Factor factor = ((Factor)selected.getObject());
-		if (factor.isStrategy())
+		if (type == ObjectType.INDICATOR)
 			return true;
 		
 		return false;
 	}
-
-
-	
 }

@@ -14,6 +14,8 @@ import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionInsertMethod;
+import org.conservationmeasures.eam.actions.ActionInsertTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.Actions;
@@ -139,11 +141,18 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	protected Box createButtonBox(Actions actions)
 	{
 		Box buttonBox = Box.createHorizontalBox();
-		UiButton addButton = new UiButton(actions.get(ActionInsertActivity.class));
+		
+		UiButton addActivityButton = new UiButton(actions.get(ActionInsertActivity.class));
+		UiButton addMethodButton = new UiButton(actions.get(ActionInsertMethod.class));
+		UiButton addTaskButton = new UiButton(actions.get(ActionInsertTask.class));
+		
 		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteWorkPlanNode.class), tree);
 		UiButton upButton = new UiButton(actions.get(ActionTreeNodeUp.class));
 		UiButton downButton = new UiButton(actions.get(ActionTreeNodeDown.class));
-		buttonBox.add(addButton);
+		
+		buttonBox.add(addActivityButton);
+		buttonBox.add(addMethodButton);
+		buttonBox.add(addTaskButton);
 		buttonBox.add(deleteButton);
 		buttonBox.add(upButton);
 		buttonBox.add(downButton);

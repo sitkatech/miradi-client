@@ -7,6 +7,8 @@ import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
 import org.conservationmeasures.eam.actions.ActionInsertActivity;
+import org.conservationmeasures.eam.actions.ActionInsertMethod;
+import org.conservationmeasures.eam.actions.ActionInsertTask;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
@@ -95,6 +97,9 @@ public class WorkPlanView extends TabbedView
 	{
 		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
 		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
+		
+		addDoerToMap(ActionInsertMethod.class, new InsertMethodDoer());
+		addDoerToMap(ActionInsertTask.class, new InsertTaskDoer());
 		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());

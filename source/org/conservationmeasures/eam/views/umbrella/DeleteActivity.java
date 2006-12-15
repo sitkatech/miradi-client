@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
@@ -113,8 +114,10 @@ public class DeleteActivity extends ObjectsDoer
 		ORef parentRef = task.getParentRef();
 		EAMObject parentObject = project.findObject(parentRef.getObjectType(), parentRef.getObjectId());
 		CommandSetObjectData commandSetObjectData;
-		if (parentRef.getObjectType() == ObjectType.FACTOR)
-			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());		
+		if (task.isActivity())
+			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Strategy.TAG_ACTIVITY_IDS, task.getId());
+		else if (task.isMethod())
+			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Indicator.TAG_TASK_IDS, task.getId());
 		else 
 			commandSetObjectData = CommandSetObjectData.createRemoveIdCommand(parentObject,	Task.TAG_SUBTASK_IDS, task.getId());
 
