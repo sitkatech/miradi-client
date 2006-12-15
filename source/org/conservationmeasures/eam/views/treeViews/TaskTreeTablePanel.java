@@ -148,8 +148,8 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		UiButton addTaskButton = new UiButton(actions.get(ActionInsertTask.class));
 		
 		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteWorkPlanNode.class), tree);
-		UiButton upButton = new UiButton(actions.get(ActionTreeNodeUp.class));
-		UiButton downButton = new UiButton(actions.get(ActionTreeNodeDown.class));
+		UiButton upButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeNodeUp.class), tree);
+		UiButton downButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeNodeDown.class), tree);
 		
 		buttonBox.add(addActivityButton);
 		buttonBox.add(addMethodButton);

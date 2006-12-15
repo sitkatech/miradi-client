@@ -8,7 +8,7 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionTreeNodeUp extends ViewAction
+public class ActionTreeNodeUp extends ObjectsAction
 {
 	public ActionTreeNodeUp(MainWindow mainWindow)
 	{

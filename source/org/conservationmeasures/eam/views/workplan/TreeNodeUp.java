@@ -5,27 +5,32 @@
  */
 package org.conservationmeasures.eam.views.workplan;
 
+
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objecthelpers.ORef;
+import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class TreeNodeUp extends WorkPlanDoer
+public class TreeNodeUp extends TreeNodeMoverDoer
 {
 	public boolean isAvailable()
 	{
-		Task selected = getSelectedTask();
-		if(selected == null)
+		EAMObject[] selected = getObjects();
+		if(selected == null || selected.length != 1)
 			return false;
-		//FIXME make it work
-		//Strategy parent = getPanel().getParentIntervention(selected);
-		//IdList siblings = parent.getActivityIds();
-		//if(siblings.find(selected.getId())== 0)
+	
+		if(selected[0].getType() != ObjectType.TASK)
 			return false;
 		
-		//return true;
+		Task task = (Task)selected[0];
+		IdList siblings = getTaskIds(task.getParentRef());
+		if(!siblings.contains(task.getId()))
+			return false;
+		return (siblings.find(task.getId()) > 0);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -33,17 +38,18 @@ public class TreeNodeUp extends WorkPlanDoer
 		if(!isAvailable())
 			return;
 		
-		Task selected = getSelectedTask();
-		if(selected == null)
-			return;
-		Strategy parent = getPanel().getParentIntervention(selected);
-		IdList siblings = new IdList(parent.getActivityIds());
-		IdList newSiblings = new IdList(siblings);
+		Task selected = (Task)getObjects()[0];
+		
+		ORef parentRef = selected.getParentRef();
+		String tag = getTaskIdsTag(parentRef);
+		IdList siblings = getTaskIds(parentRef);
 		BaseId id = selected.getId();
 		int wasAt = siblings.find(id);
+
+		IdList newSiblings = new IdList(siblings);
 		newSiblings.removeId(id);
 		newSiblings.insertAt(id, wasAt - 1);
-		CommandSetObjectData cmd = new CommandSetObjectData(parent.getType(), parent.getId(), Strategy.TAG_ACTIVITY_IDS, newSiblings.toString());
+		CommandSetObjectData cmd = new CommandSetObjectData(parentRef.getObjectType(), parentRef.getObjectId(), tag, newSiblings.toString());
 		getProject().executeCommand(cmd);
 		getPanel().selectObject(selected);
 	}
