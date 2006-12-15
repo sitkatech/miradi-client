@@ -17,11 +17,11 @@ public class ActionInsertMethod extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Insert Method");
+		return EAM.text("Action|Manage|Create Method");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Method for the selected Indicator");
+		return EAM.text("TT|Create a Method for the selected Indicator");
 	}
 }

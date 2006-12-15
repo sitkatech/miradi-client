@@ -17,12 +17,12 @@ public class ActionInsertActivity extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Insert Activity");
+		return EAM.text("Action|Manage|Create Activity");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert an Activity for the selected Strategy");
+		return EAM.text("TT|Create an Activity for the selected Strategy");
 	}
 	
 }

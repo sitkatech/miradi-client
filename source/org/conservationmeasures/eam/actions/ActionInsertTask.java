@@ -17,11 +17,11 @@ public class ActionInsertTask extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Insert Task");
+		return EAM.text("Action|Manage|Create Task");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Task for the selected Item");
+		return EAM.text("TT|Create a Task or Subtask for the selected Item");
 	}
 }
