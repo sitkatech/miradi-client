@@ -30,14 +30,14 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		fireTableDataChanged();
 	}
 	
-	public boolean isCellEditable(int row, int col) 
-	{
-		return budgetModel.isCellEditable(row * 2, col);
-	}
-		
 	public int getColumnCount()
 	{
-		return budgetModel.getColumnCount();
+		int colCount  = budgetModel.getColumnCount();
+		colCount -= TOTAL_ROW_HEADER_COLUMN_COUNT;
+		colCount /= 2;
+		colCount += UNIT_ROW_HEADER_COLUMN_COUNT;
+		
+		return colCount;
 	}
 	
 	public int getRowCount()
@@ -45,20 +45,36 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		int rowCount = budgetModel.getRowCount();
 		return rowCount / 2;
 	}
-		
+	
+	public boolean isCellEditable(int row, int col) 
+	{
+		return budgetModel.isCellEditable(row * 2, translateToBudgetModelCol(col));
+	}
+	
 	public String getColumnName(int col)
 	{
-		return budgetModel.getColumnName(col);
+		return budgetModel.getColumnName(translateToBudgetModelCol(col));
 	}
 
 	public Object getValueAt(int row, int col)
 	{
-		return budgetModel.getValueAt(row * 2, col);
+		return budgetModel.getValueAt(row * 2, translateToBudgetModelCol(col));
 	}
 	
 	public void setValueAt(Object value, int row, int col)
 	{
-		budgetModel.setValueAt(value, row * 2, col);
+		budgetModel.setValueAt(value, row * 2, translateToBudgetModelCol(col));
+	}
+	
+	public int translateToBudgetModelCol(int col)
+	{
+		if (col < UNIT_ROW_HEADER_COLUMN_COUNT)
+			return col;
+		col -= UNIT_ROW_HEADER_COLUMN_COUNT;
+		col *= 2;
+		col += TOTAL_ROW_HEADER_COLUMN_COUNT;
+		
+		return col;
 	}
 	
 	public BaseId getAssignmentForRow(int row)
@@ -66,5 +82,7 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return budgetModel.getAssignmentForRow(row * 2);
 	}
     
+	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 3;
+	
 	BudgetTableModel budgetModel;
 }
