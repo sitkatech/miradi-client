@@ -12,6 +12,7 @@ import java.util.Iterator;
 
 import org.conservationmeasures.eam.database.ObjectManifest;
 import org.conservationmeasures.eam.database.ProjectServer;
+import org.conservationmeasures.eam.diagram.ChainObject;
 import org.conservationmeasures.eam.diagram.factortypes.FactorType;
 import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.BaseId;
@@ -24,8 +25,10 @@ import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.DiagramFactorLinkPool;
@@ -307,6 +310,15 @@ public class ObjectManager
 	{
 		try
 		{
+			if(fieldTag.equals(Factor.PSEUDO_TAG_GOALS))
+				return getFactorGoals((FactorId)factorId);
+			if(fieldTag.equals(Factor.PSEUDO_TAG_OBJECTIVES))
+				return getFactorObjectives((FactorId)factorId);
+			if(fieldTag.equals(Factor.PSEUDO_TAG_DIRECT_THREATS))
+				return getFactorRelatedDirectThreats((FactorId)factorId);
+			if(fieldTag.equals(Factor.PSEUDO_TAG_TARGETS))
+				return getFactorRelatedTargets((FactorId)factorId);
+			// TODO: Enforce isStrategy for this
 			if(fieldTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return getStrategyRatingSummary((FactorId)factorId);
 		}
@@ -324,6 +336,88 @@ public class ObjectManager
 		ChoiceItem rating = ((Strategy)project.findNode(factorId)).getStrategyRating();
 		return rating.getCode();
 
+	}
+	
+	private String getFactorGoals(FactorId factorId) throws ParseException
+	{
+		return getFactorDesires(factorId, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
+	}
+
+	private String getFactorObjectives(FactorId factorId) throws ParseException
+	{
+		return getFactorDesires(factorId, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+	}
+	
+	private String getFactorDesires(FactorId factorId, int desireType, String desireIdsTag) throws ParseException
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildDownstreamChain(project.getDiagramModel(), project.findNode(factorId));
+		
+		IdList allDesireIds = new IdList();
+		Factor[] factors = chain.getFactorsArray();
+		for(int i = 0; i < factors.length; ++i)
+		{
+			Factor factor = factors[i];
+			IdList theseDesireIds = new IdList(factor.getData(desireIdsTag));
+			addMissingIds(allDesireIds, theseDesireIds);
+		}
+		
+		return getDesiresAsMultiline(desireType, allDesireIds);
+	}
+	
+	private void addMissingIds(IdList destination, IdList source)
+	{
+		for(int i = 0; i < source.size(); ++i)
+			if(!destination.contains(source.get(i)))
+				destination.add(source.get(i));
+	}
+	
+	private String getDesiresAsMultiline(int desireType, IdList desireIds)
+	{
+		StringBuffer result = new StringBuffer();
+		for(int i = 0; i < desireIds.size(); ++i)
+		{
+			if(result.length() > 0)
+				result.append("\n");
+			
+			result.append(project.getObjectData(desireType, desireIds.get(i), Desire.TAG_LABEL));
+		}
+		
+		return result.toString();
+	}
+	
+	private String getFactorRelatedDirectThreats(FactorId factorId)
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildNormalChain(project.getDiagramModel(), project.findNode(factorId));
+		DirectThreatSet directThreats = new DirectThreatSet(chain.getFactors());
+		
+		return getLabelsAsMultiline(directThreats);
+	}
+
+	private String getFactorRelatedTargets(FactorId factorId)
+	{
+		ChainObject chain = new ChainObject();
+		chain.buildNormalChain(project.getDiagramModel(), project.findNode(factorId));
+		TargetSet directThreats = new TargetSet(chain.getFactors());
+		
+		return getLabelsAsMultiline(directThreats);
+	}
+	
+	private String getLabelsAsMultiline(FactorSet directThreats)
+	{
+		StringBuffer result = new StringBuffer();
+		Iterator iter = directThreats.iterator();
+		while(iter.hasNext())
+		{
+			if(result.length() > 0)
+				result.append("\n");
+			
+			Factor factor = (Factor)iter.next();
+			result.append(factor.getLabel());
+		}
+		
+		return result.toString();
 	}
 	
 	private String getTaskPseudoField(BaseId taskId, String fieldTag)

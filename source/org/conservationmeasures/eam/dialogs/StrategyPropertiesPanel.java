@@ -29,6 +29,10 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanel
 		addField(createChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 		addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
 		addField(createReadOnlyChoiceField(new StrategyTaxonomyQuestion(Strategy.TAG_TAXONOMY_CODE)));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
+		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		updateFieldsFromProject();
 	}
 
