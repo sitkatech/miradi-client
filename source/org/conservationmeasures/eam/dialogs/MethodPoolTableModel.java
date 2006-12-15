@@ -25,17 +25,17 @@ public class MethodPoolTableModel extends ObjectPoolTableModel
 	
 	public IdList getLatestIdListFromProject()
 	{
-		IdList filteredStrategies = new IdList();
+		IdList filteredIndicators = new IdList();
 		
-		IdList strategy = super.getLatestIdListFromProject();
-		for (int i=0; i<strategy.size(); ++i)
+		IdList indicator = super.getLatestIdListFromProject();
+		for (int i=0; i<indicator.size(); ++i)
 		{
-			BaseId baseId = strategy.get(i);
+			BaseId baseId = indicator.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
 			if ((task.getParentRef().getObjectType() == ObjectType.INDICATOR))
-				filteredStrategies.add(baseId);
+				filteredIndicators.add(baseId);
 		}
-		return filteredStrategies;
+		return filteredIndicators;
 	}
 
 
