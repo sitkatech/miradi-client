@@ -586,7 +586,7 @@ public class DataUpgrader extends ProjectServer
 		
 			if (taskIds.contains(id))
 			{
-				taskData.put("ParentRef", parentRef);
+				taskData.put("ParentRef", parentRef.toString());
 				JSONFile.write(objectFile, taskData);
 			}
 		}

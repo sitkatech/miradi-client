@@ -27,7 +27,7 @@ public class DateRangeEffort
 		if (dateRange != null)
 		{
 			json.put(TAG_COST_UNIT_CODE, costUnitCode);
-			json.put(TAG_DATERANGE, dateRange);
+			json.put(TAG_DATERANGE, dateRange.toJson());
 			json.put(TAG_NUMBER_OF_UNITS, numberOfUnits);
 		}
 		return json;	
