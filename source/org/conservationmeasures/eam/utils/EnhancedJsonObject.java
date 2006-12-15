@@ -93,6 +93,19 @@ public class EnhancedJsonObject extends JSONObject
 		return new EnhancedJsonArray(super.getJSONArray(key));
 	}
 	
+	public JSONObject put(String tag, Object value)
+	{
+		if(value instanceof String || 
+				value instanceof JSONObject ||
+				value instanceof JSONArray ||
+				value instanceof Integer ||
+				value instanceof Boolean ||
+				value instanceof Double)
+			return super.put(tag, value);
+		
+		throw new RuntimeException("This cannot be used for generic Objects: " + value.getClass());
+	}
+	
 	public void put(String tag, Color color)
 	{
 		JSONArray rgb = new JSONArray();
