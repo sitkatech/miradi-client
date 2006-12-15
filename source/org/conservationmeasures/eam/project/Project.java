@@ -39,6 +39,7 @@ import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.CommandExecutedListener;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.AssignmentPool;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
@@ -293,7 +294,7 @@ public class Project
 		if(objectType == ObjectType.FACTOR)
 		{
 			DiagramModel model = getDiagramModel();
-			FactorId modelNodeId = (FactorId)objectId;
+			FactorId modelNodeId = new FactorId(objectId.asInt());
 			if(model.doesFactorExist(modelNodeId))
 			{
 				DiagramFactor diagramNode = getDiagramModel().getDiagramFactorByWrappedId(modelNodeId);
@@ -305,6 +306,11 @@ public class Project
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)
 	{
 		return objectManager.getObjectData(objectType, objectId, fieldTag);
+	}
+	
+	public String getObjectData(ORef ref, String fieldTag)
+	{
+		return objectManager.getObjectData(ref.getObjectType(), ref.getObjectId(), fieldTag);
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
