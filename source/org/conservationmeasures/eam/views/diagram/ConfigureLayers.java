@@ -29,9 +29,6 @@ public class ConfigureLayers extends ViewDoer
 		ModelessDialogWithClose modelessDialog = new ModelessDialogWithClose(window, layerPanel, EAM.text("Title|View Layers"));
 		modelessDialog.pack();
 		modelessDialog.setVisible(true);
-		
-		if(!layerPanel.getResult())
-			return;
 	}
 
 }
