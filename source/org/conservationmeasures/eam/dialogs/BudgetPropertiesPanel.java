@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import javax.swing.JLabel;
+
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
@@ -14,6 +16,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 
@@ -28,7 +31,16 @@ public class BudgetPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.TASK, idToShow);
 		tableEditorComponent = new BudgetTableEditorComponent(projectToUse, actions, treeTableComponent);
+
+		addField(createStringField(Task.TAG_LABEL));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_COST));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_SUBTASK_TOTAL));
+		addField(createReadonlyTextField(Task.PSEUDO_TAG_TASK_TOTAL));
+		
+		//FIXME remove empty component and make layoutmanager do the right thing.
+		add(new JLabel());
 		add(tableEditorComponent);
+		
 		updateFieldsFromProject();
 	}
 	

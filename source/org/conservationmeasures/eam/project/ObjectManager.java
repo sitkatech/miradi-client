@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -50,6 +51,7 @@ import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
+import org.conservationmeasures.eam.views.budget.BudgetTotalsCalculator;
 
 public class ObjectManager
 {
@@ -327,6 +329,12 @@ public class ObjectManager
 		{
 			if(fieldTag.equals(Task.PSEUDO_TAG_FACTOR_LABEL))
 				return getLabelOfStrategyContainingActivity(taskId);
+			if (fieldTag.equals(Task.PSEUDO_TAG_SUBTASK_TOTAL))
+				return getSubtaskTotalCost(taskId);
+			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_TOTAL))
+				return getTaskTotalCost(taskId);
+			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_COST))
+				return getTaskCost(taskId);
 		}
 		catch(Exception e)
 		{
@@ -336,6 +344,30 @@ public class ObjectManager
 		return "";
 	}
 	
+	private String getTaskCost(BaseId taskId) throws Exception
+	{
+		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
+		//TODO switch to TaskId instead of BaseId to TaskId conversion
+		double taskCost = calculator.getTaskCost(new TaskId(taskId.asInt()));
+		return Double.toString(taskCost);
+	}
+
+	private String getSubtaskTotalCost(BaseId taskId) throws Exception
+	{
+		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		double subtaskTotalCost = calculator.getTotalTasksCost(task.getSubtaskIdList());
+		return Double.toString(subtaskTotalCost);
+	}
+
+	private String getTaskTotalCost(BaseId taskId) throws Exception
+	{
+		BudgetTotalsCalculator calculator = new BudgetTotalsCalculator(project);
+		//TODO switch to TaskId instead of BaseId to TaskId conversion
+		double totalTaskCost = calculator.getTotalTaskCost(new TaskId(taskId.asInt()));
+		return Double.toString(totalTaskCost);
+	}
+
 	private String getProjectMetadataPseudoField(BaseId taskId, String fieldTag)
 	{
 		try

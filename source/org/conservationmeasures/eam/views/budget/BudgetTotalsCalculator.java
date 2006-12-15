@@ -178,7 +178,14 @@ public class BudgetTotalsCalculator
 		return totalIndicatorCost;
 	}
 
-	private double getTotalTasksCost(IdList taskIds) throws Exception
+	public double getTaskCost(TaskId taskId) throws Exception
+	{
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		sumTotals(task);
+		return totalCost;
+	}
+	
+	public double getTotalTasksCost(IdList taskIds) throws Exception
 	{
 		double totalTaskCost = 0.0;
 		for (int i = 0; i < taskIds.size(); i++)

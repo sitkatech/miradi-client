@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.dialogs;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.Actions;
@@ -41,8 +42,11 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		setBorder(BorderFactory.createEtchedBorder());
 		editorComponent = new AssignmentEditorComponent(actions, project, objectPicker);
 		
-		add(editorComponent);
 		addCommonFields();
+
+		//FIXME remove empty component and make layoutmanager do the right thing.
+		add(new JLabel());
+		add(editorComponent);
 	}
 
 	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
