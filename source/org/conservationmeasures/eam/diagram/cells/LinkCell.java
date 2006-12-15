@@ -11,6 +11,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.renderers.ArrowLineRenderer;
 import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.FactorLink;
+import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.jgraph.graph.Edge;
 import org.jgraph.graph.GraphConstants;
 
@@ -52,13 +53,26 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public void update(DiagramComponent diagram)
 	{
-		boolean linksVisible = diagram.getProject().getLayerManager().areFactorLinksVisible();
-		boolean isSelected = diagram.isCellSelected(this);
-		boolean isAttachedFactorSelected = diagram.isCellSelected(getFrom()) || diagram.isCellSelected(getTo());
-		if(linksVisible || isSelected || isAttachedFactorSelected)
+		boolean isVisible = isThisLinkVisible(diagram);
+		if(isVisible)
 			setTail(GraphConstants.ARROW_NONE);
 		else
 			setTail(ArrowLineRenderer.ARROW_JUST_LINE);
+	}
+
+	private boolean isThisLinkVisible(DiagramComponent diagram)
+	{
+		if(diagram.isCellSelected(this))
+			return true;
+		if(diagram.isCellSelected(getFrom()) || diagram.isCellSelected(getTo()))
+			return true;
+		
+		LayerManager layerManager = diagram.getProject().getLayerManager();
+		if(!layerManager.areFactorLinksVisible())
+			return false;
+		if(!getTo().isTarget())
+			return true;
+		return layerManager.areTargetLinksVisible();
 	}
 	
 	private void setTail(int arrowStyle)

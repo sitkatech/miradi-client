@@ -109,6 +109,16 @@ public class LayerManager
 		linkagesVisibleFlag = newSetting;
 	}
 
+	public boolean areTargetLinksVisible()
+	{
+		return targetLinkagesVisibleFlag;
+	}
+	
+	public void setTargetLinksVisible(boolean newSetting)
+	{
+		targetLinkagesVisibleFlag = newSetting;
+	}
+
 	public boolean areGoalsVisible()
 	{
 		return goalsVisibleFlag;
@@ -145,6 +155,7 @@ public class LayerManager
 	boolean contributingFactorsVisibleFlag;
 	boolean directThreatsVisibleFlag;
 	boolean linkagesVisibleFlag;
+	boolean targetLinkagesVisibleFlag;
 	boolean goalsVisibleFlag;
 	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;

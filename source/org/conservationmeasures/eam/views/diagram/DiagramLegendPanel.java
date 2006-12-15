@@ -83,6 +83,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_CONTRIBUTING_FACTOR, actions.get(ActionInsertContributingFactor.class));
 		addButtonLineWithCheckBox(jpanel, Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		addButtonLineWithCheckBox(jpanel, FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
+		addTargetLinkLine(jpanel, TARGET_LINKS_TEXT);
 		
 		addIconLineWithCheckBox(jpanel, Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(jpanel, Objective.OBJECT_NAME, new ObjectiveIcon());
@@ -90,6 +91,14 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		addIconLineWithoutCheckBox(jpanel, "Stress", new StressIcon());
 		
 		return jpanel;
+	}
+	
+	private void addTargetLinkLine(JPanel panel, String text)
+	{
+		panel.add(new JLabel(""));
+		panel.add(new UiLabel(EAM.text(text)));
+		targetLinkCheckBox = createCheckBox(text);
+		panel.add(targetLinkCheckBox);
 	}
 	
 	private void addButtonLineWithCheckBox(JPanel jpanel, String text, EAMAction action)
@@ -147,7 +156,12 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTarget.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
+		{
 			manager.setFactorLinksVisible(checkBox.isSelected());
+			targetLinkCheckBox.setEnabled(checkBox.isSelected());
+		}
+		else if (property.equals(TARGET_LINKS_TEXT))
+			manager.setTargetLinksVisible(checkBox.isSelected());
 		else if (property.equals(Goal.OBJECT_NAME))
 			manager.setGoalsVisible(checkBox.isSelected());
 		else if (property.equals(Objective.OBJECT_NAME))
@@ -176,5 +190,8 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	}
 	
 	final static String LAYER = "LAYER";
+	final static String TARGET_LINKS_TEXT = "Target link";
+	
 	MainWindow mainWindow;
+	JCheckBox targetLinkCheckBox;
 }
