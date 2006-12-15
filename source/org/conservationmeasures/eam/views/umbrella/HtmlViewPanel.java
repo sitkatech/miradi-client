@@ -25,11 +25,20 @@ import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
 
-public class ComingAttractionsPanel implements HyperlinkHandler
+public class HtmlViewPanel implements HyperlinkHandler
 {
+
+	public HtmlViewPanel(String titleToUse, Class viewClassToUse, String htmlFileNameToUse)
+	{
+		super();
+		viewTitle = titleToUse;
+		viewClass = viewClassToUse;
+		htmlFileName = htmlFileNameToUse;
+	}
+
 	void showOkDialog()
 	{
-		String title = EAM.text("Title|Coming Attractions");
+		String title = EAM.text("Title|" + viewTitle);
 		EAMDialog dlg = new EAMDialog(EAM.mainWindow, title);
 		dlg.setModal(true);
 		
@@ -67,20 +76,22 @@ public class ComingAttractionsPanel implements HyperlinkHandler
 		dlg.setVisible(true);
 		
 	}
-
+	
 	private String loadComingAttractonsHtml()
 	{
 		try
 		{
-			return EAM.loadResourceFile(getClass(), COMMING_ATTRACTONS_HTML);
+			return EAM.loadResourceFile(viewClass, htmlFileName);
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog("ERROR: Feature file not found: " + COMMING_ATTRACTONS_HTML );
+			EAM.errorDialog("ERROR: Feature file not found: " + viewClass + "/" + htmlFileName );
 			return null;
 		}
 	}
 
+
+	
 	static class CloseAction extends AbstractAction
 	{
 		public CloseAction(JDialog dialogToClose)
@@ -113,7 +124,8 @@ public class ComingAttractionsPanel implements HyperlinkHandler
 	public void valueChanged(String widget, String newValue)
 	{
 	}
+	private String viewTitle;
+	private Class viewClass;
+	private String htmlFileName;
 	
-	private static final String COMMING_ATTRACTONS_HTML = "ComingAttractions.html";
-
 }

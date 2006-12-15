@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views;
 
 import java.awt.Point;
+import java.util.EventObject;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.MainWindow;
@@ -17,6 +18,11 @@ abstract public class Doer
 {
 	abstract public boolean isAvailable();
 	abstract public void doIt() throws CommandFailedException;
+	
+	public void doIt(EventObject event) throws CommandFailedException
+	{
+		doIt();
+	}
 	
 	public void setView(UmbrellaView view)
 	{

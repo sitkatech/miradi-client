@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.event.ActionEvent;
+import java.util.EventObject;
 
 import javax.swing.Icon;
 
@@ -60,14 +61,14 @@ public abstract class MainWindowAction extends EAMAction
 		
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
-	{
-		doAction();
-	}
-
 	public void doAction() throws CommandFailedException
 	{
-		getDoer().doIt();
+		doAction(null);
+	}
+
+	public void doAction(EventObject event) throws CommandFailedException
+	{
+		getDoer().doIt(event);
 		getMainWindow().getActions().updateActionStates();
 	}
 	

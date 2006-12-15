@@ -6,6 +6,7 @@
 package org.conservationmeasures.eam.views.umbrella;
 
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.views.Doer;
 
 public class ComingAttractionsDoer extends Doer
@@ -21,8 +22,9 @@ public class ComingAttractionsDoer extends Doer
 	
 	public void doIt() throws CommandFailedException
 	{
-		new ComingAttractionsPanel().showOkDialog();
+		new HtmlViewPanel("Coming Attactions", UmbrellaView.class, "ComingAttractions.html").showOkDialog();
 	}
 	
+	MainWindow mainWindow;
 }
 

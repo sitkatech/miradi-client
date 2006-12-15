@@ -75,6 +75,9 @@ public class Actions
 		
 		registerAction(new ActionAbout(mainWindow));
 		registerAction(new ActionComingAttractions(mainWindow));
+		registerAction(new ActionHotButtonExamples(mainWindow));
+		registerAction(new ActionHotButtonMoreInfo(mainWindow));
+		registerAction(new ActionHotButtonWorkshope(mainWindow));
 		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
 		registerAction(new ActionCopy(mainWindow));

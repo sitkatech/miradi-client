@@ -7,18 +7,21 @@ package org.conservationmeasures.eam.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import javax.swing.Action;
 import javax.swing.Box;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToolBar;
 
+import org.conservationmeasures.eam.actions.ActionHotButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHotButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHotButtonWorkshope;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.utils.ToolBarButton;
+import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
+import org.martus.swing.UiButton;
 
 public class EAMToolBar extends JToolBar
 {
@@ -44,68 +47,51 @@ public class EAMToolBar extends JToolBar
 		
 		add(Box.createHorizontalGlue());
 
-		add(new ProcessButton());
-		add(new ExamplesButton());
-		add(new WorkshopButton());
+		add(new MoreInfoButton(actions.get(ActionHotButtonMoreInfo.class)));
+		add(new ExamplesButton(actions.get(ActionHotButtonExamples.class)));
+		add(new WorkshopButton(actions.get(ActionHotButtonWorkshope.class)));
 	}
 	
 }
 
-
-abstract class CommandButton extends JButton implements ActionListener
+abstract class HotButton extends UiButton
 {
-	public CommandButton(String text)
+	public HotButton(Action action, Color color)
 	{
-		super(text);
-		addActionListener(this);
-	}
-
-}
-
-abstract class HotButton extends CommandButton
-{
-	public HotButton(String text, Color color)
-	{
-		super(text);
+		super(action);
 		setBackground(color);
-	}
-	
-	public void actionPerformed(ActionEvent arg0)
-	{
-		EAM.okDialog("Function Not Available", new String[] {"This function is not yet available"});
 	}
 
 	public Dimension getMaximumSize()
 	{
 		return super.getPreferredSize();
 	}
-
 }
 
-class ProcessButton extends HotButton
+class MoreInfoButton extends HotButton
 {
-	public ProcessButton()
+	public MoreInfoButton(Action action)
 	{
-		super("More Info", Color.GREEN);
+		super(action, Color.GREEN);
+		putClientProperty(HelpButtonData.class, new HelpButtonData("More Info", "MoreInfo.html"));
 	}
-
 }
 
 class ExamplesButton extends HotButton
 {
-	public ExamplesButton()
+	public ExamplesButton(Action action)
 	{
-		super("Examples", Color.YELLOW);
+		super(action, Color.YELLOW);
+		putClientProperty(HelpButtonData.class, new HelpButtonData("Examples", "Examples.html"));
 	}
-
 }
 
 class WorkshopButton extends HotButton
 {
-	public WorkshopButton()
+	public WorkshopButton(Action action)
 	{
-		super("Workshop", Color.CYAN);
+		super(action, Color.CYAN);
+		putClientProperty(HelpButtonData.class, new HelpButtonData("Workshope", "Workshope.html"));
 	}
-
 }
 
