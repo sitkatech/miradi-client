@@ -7,7 +7,6 @@ package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.IdList;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
@@ -29,18 +28,18 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 	{
 		IdList filteredStrategy = new IdList();
 		
-		IdList indicator = super.getLatestIdListFromProject();
-		for (int i=0; i<indicator.size(); ++i)
+		IdList strategy = super.getLatestIdListFromProject();
+		for (int i=0; i<strategy.size(); ++i)
 		{
-			BaseId baseId = indicator.get(i);
-			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, baseId);
-			if (factor==null)
+			BaseId baseId = strategy.get(i);
+			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
+			if ((task.getParentRef().getObjectType() == ObjectType.FACTOR))
 			{
-				EAM.logError("ObjectType.FACTOR not found:" + baseId);
-				continue;
+				BaseId objectId = task.getParentRef().getObjectId();
+				Factor factor = (Factor)project.findObject(ObjectType.FACTOR, objectId);
+				if (factor.isStrategy() && !factor.isStatusDraft())
+					filteredStrategy.add(baseId);
 			}
-			if (factor.isStrategy())
-				filteredStrategy.add(baseId);
 		}
 		return filteredStrategy;
 	}
