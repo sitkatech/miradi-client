@@ -91,6 +91,11 @@ public class NonEditableThreatMatrixTableModel extends AbstractTableModel
 		return defaultValueOption;
 	}
 	
+	public void  setDefaultValueOption(ValueOption valueOption) 
+	{
+		defaultValueOption = valueOption;
+	}
+	
 	public String getColumnName(int columnIndex) 
 	{
 		if (columnIndex==getTargets().length)
