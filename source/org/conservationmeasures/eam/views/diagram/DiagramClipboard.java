@@ -17,6 +17,7 @@ public class DiagramClipboard extends Clipboard
 	public DiagramClipboard()
 	{
 		super(DiagramClipboard.class.getName());
+		clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	}
 	
 	public synchronized int getPasteOffset() 
@@ -47,8 +48,8 @@ public class DiagramClipboard extends Clipboard
 		return clipboard.getContents(requestor);
 	}
 	
-	private int pasteCount = 0;
-	private final Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	private int pasteCount;
+	private final Clipboard clipboard;
 	final public static DiagramClipboard EAM_CLIPBOARD = new DiagramClipboard();
 	
 }
