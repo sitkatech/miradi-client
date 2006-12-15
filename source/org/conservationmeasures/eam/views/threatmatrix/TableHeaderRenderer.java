@@ -57,16 +57,13 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
     public Component getTableCellRendererComponent(JTable table, Object value,
                        boolean selected, boolean focused, int row, int column)
     {
-        Color selectionBackground = table.getSelectionBackground();
-        Color selectionForeground = table.getSelectionForeground();
-        setupCellRendererComponent(table, value, selectionBackground, selectionForeground);
+        setupCellRendererComponent(table, value);
         return this;
     }
     
     
-	private void setupCellRendererComponent(JComponent component, Object value,Color selectionBackground ,  Color selectionForeground)
+	private void setupCellRendererComponent(JComponent component, Object value)
 	{
-        setBackground(component.getBackground());
         setForeground(component.getForeground());
         setBorder(noFocusBorder);
 
@@ -75,6 +72,10 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 		setFont(new Font(null,Font.BOLD,12));
 		int height = calculatePerferredHeight();
         setPreferredSize(new Dimension(150,height));
+        
+        setBackground(component.getBackground());
+        if (overRideColor != null)
+        	setBackground(overRideColor);
 	}
 
 
@@ -82,9 +83,15 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 	{
 		return Math.max(getPreferredSize().height, ABOUT_THREE_TEXT_LINES);
 	}
+	
+	static public void SetOverRideColor(Color color)
+	{
+		overRideColor = color;
+	}
 
 	private static final int SMALL_MARGIN = 5;
     private static final int ABOUT_THREE_TEXT_LINES = 55;
 	private Border noFocusBorder;
+	static private Color overRideColor;
 }
 

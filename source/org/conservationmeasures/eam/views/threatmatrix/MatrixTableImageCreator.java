@@ -26,13 +26,13 @@ public class MatrixTableImageCreator
 		{
 			ValueOption myValueOption = new WhiteInvalidValueOption();
 	    	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(myValueOption);
+	    	TableHeaderRenderer.SetOverRideColor(Color.WHITE);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
 		
-
         JTableHeader tableHeaderSet = table.getTableHeader(); 
         JTableHeader rowHeaderSet = rowHeaderTable.getTableHeader(); 
          
@@ -48,6 +48,7 @@ public class MatrixTableImageCreator
         writeData(table, g2D, rowHeaderSet.getWidth(), 0); 
          
     	((NonEditableThreatMatrixTableModel)table.getModel()).setDefaultValueOption(null);
+    	TableHeaderRenderer.SetOverRideColor(null);
     	
         return tableImage;  
     }
