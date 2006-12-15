@@ -59,7 +59,7 @@ public class DateRange
 	
 	public String toString()
 	{
-		return toJson().toString();
+		return startDate.toIsoDateString() + " - " + endDate.toIsoDateString();
 	}
 	
 	private boolean containsEnd(MultiCalendar end)
