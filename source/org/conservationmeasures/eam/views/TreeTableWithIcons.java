@@ -21,12 +21,15 @@ import org.conservationmeasures.eam.icons.ActivityIcon;
 import org.conservationmeasures.eam.icons.FactorIcon;
 import org.conservationmeasures.eam.icons.GoalIcon;
 import org.conservationmeasures.eam.icons.IndicatorIcon;
+import org.conservationmeasures.eam.icons.MethodIcon;
 import org.conservationmeasures.eam.icons.ObjectiveIcon;
+import org.conservationmeasures.eam.icons.TaskIcon;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objectpools.EAMObjectPool;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiLabel;
@@ -82,11 +85,23 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			goalRenderer.setLeafIcon(new GoalIcon());
 			goalRenderer.setFont(boldFont);
 			
-			activitiesRenderer = new DefaultTreeCellRenderer();
-			activitiesRenderer.setClosedIcon(new ActivityIcon());
-			activitiesRenderer.setOpenIcon(new ActivityIcon());
-			activitiesRenderer.setLeafIcon(new ActivityIcon());
-			activitiesRenderer.setFont(italicFont);
+			activityRenderer = new DefaultTreeCellRenderer();
+			activityRenderer.setClosedIcon(new ActivityIcon());
+			activityRenderer.setOpenIcon(new ActivityIcon());
+			activityRenderer.setLeafIcon(new ActivityIcon());
+			activityRenderer.setFont(italicFont);
+
+			methodRenderer = new DefaultTreeCellRenderer();
+			methodRenderer.setClosedIcon(new MethodIcon());
+			methodRenderer.setOpenIcon(new MethodIcon());
+			methodRenderer.setLeafIcon(new MethodIcon());
+			methodRenderer.setFont(italicFont);
+
+			taskRenderer = new DefaultTreeCellRenderer();
+			taskRenderer.setClosedIcon(new TaskIcon());
+			taskRenderer.setOpenIcon(new TaskIcon());
+			taskRenderer.setLeafIcon(new TaskIcon());
+			taskRenderer.setFont(italicFont);
 
 			stringNoIconRenderer = new DefaultTreeCellRenderer();
 			stringNoIconRenderer.setClosedIcon(null);
@@ -112,9 +127,18 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 			else if(node.getType() == ObjectType.GOAL)
 				renderer = goalRenderer;
 			else if(node.getType() == ObjectType.TASK)
-				renderer = activitiesRenderer;
+				renderer = getTaskRenderer((Task)node.getObject());
 			
 			return renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
+		}
+		
+		private TreeCellRenderer getTaskRenderer(Task task)
+		{
+			if(task.isActivity())
+				return activityRenderer;
+			if(task.isMethod())
+				return methodRenderer;
+			return taskRenderer;
 		}
 
 		private TreeCellRenderer getFactorRenderer(Factor factor)
@@ -131,7 +155,9 @@ public class TreeTableWithIcons extends JTreeTable implements ObjectPicker
 		DefaultTreeCellRenderer objectiveRenderer;
 		DefaultTreeCellRenderer goalRenderer;
 		DefaultTreeCellRenderer indicatorRenderer;
-		DefaultTreeCellRenderer activitiesRenderer;
+		DefaultTreeCellRenderer activityRenderer;
+		DefaultTreeCellRenderer methodRenderer;
+		DefaultTreeCellRenderer taskRenderer;
 		DefaultTreeCellRenderer defaultRenderer;
 		DefaultTreeCellRenderer factorRenderer;
 		DefaultTreeCellRenderer stringNoIconRenderer;

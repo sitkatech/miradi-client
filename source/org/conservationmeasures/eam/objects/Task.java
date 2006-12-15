@@ -43,6 +43,21 @@ public class Task extends EAMBaseObject
 	{
 		return ObjectType.TASK;
 	}
+	
+	public boolean isTask()
+	{
+		return getParentRef().getObjectType() == ObjectType.TASK;
+	}
+
+	public boolean isActivity()
+	{
+		return getParentRef().getObjectType() == ObjectType.FACTOR;
+	}
+
+	public boolean isMethod()
+	{
+		return getParentRef().getObjectType() == ObjectType.INDICATOR;
+	}
 
 	public void addSubtaskId(BaseId subtaskId)
 	{
