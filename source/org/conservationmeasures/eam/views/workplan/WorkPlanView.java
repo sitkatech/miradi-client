@@ -53,7 +53,7 @@ public class WorkPlanView extends TabbedView
 
 	public void createTabs() throws Exception
 	{
-		workPlanPanel = WorkPlanPanel.createWorkPlanPanel(mainWindow, getProject());
+		WorkPlanPanel workPlanPanel = WorkPlanPanel.createWorkPlanPanel(mainWindow, getProject());
 		TaskPropertiesPanel taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions(), workPlanPanel.getTree());
 		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
@@ -73,8 +73,8 @@ public class WorkPlanView extends TabbedView
 
 	public void deleteTabs() throws Exception
 	{
-		workPlanPanel.dispose();
-		workPlanPanel = null;
+		workPlanManagementPanel.dispose();
+		workPlanManagementPanel = null;
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
 		activitiesManagementPanel.dispose();
@@ -85,7 +85,9 @@ public class WorkPlanView extends TabbedView
 	
 	public WorkPlanPanel getWorkPlanPanel()
 	{
-		return workPlanPanel;
+		if(workPlanManagementPanel == null)
+			return null;
+		return workPlanManagementPanel.getWorkPlanPanel();
 	}
 	
 	public ActivityPoolManagementPanel getActivitiesManagementPanel()
@@ -128,10 +130,9 @@ public class WorkPlanView extends TabbedView
 	
 	MainWindow mainWindow;
 
-	WorkPlanPanel workPlanPanel;
+	WorkPlanManagementPanel workPlanManagementPanel;
 	ResourcePoolManagementPanel resourceManagementPanel;
 	ActivityPoolManagementPanel activitiesManagementPanel;
-	WorkPlanManagementPanel workPlanManagementPanel;
 	MethodPoolManagementPanel methodPoolManagementPanel;
 		
 }

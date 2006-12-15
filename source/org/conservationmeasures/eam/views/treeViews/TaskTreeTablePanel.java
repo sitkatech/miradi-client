@@ -85,6 +85,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	public void dispose()
 	{
 		project.removeCommandExecutedListener(this);
+		tree.dispose();
 		super.dispose();
 	}
 

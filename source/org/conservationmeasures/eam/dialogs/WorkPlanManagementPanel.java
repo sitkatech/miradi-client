@@ -45,6 +45,11 @@ public class WorkPlanManagementPanel extends ModelessDialogPanel
 		return EAM.text("Work Panel Tab");
 	}
 	
+	public WorkPlanPanel getWorkPlanPanel()
+	{
+		return treeTableComponent;
+	}
+	
 	WorkPlanPanel treeTableComponent;
 	ObjectDataInputPanel propertiesPanel;
 }

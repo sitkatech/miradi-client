@@ -58,6 +58,14 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		addCommonFields();
 	}
 	
+	public void dispose()
+	{
+		if(editorComponent != null)
+			editorComponent.dispose();
+		editorComponent = null;
+		super.dispose();
+	}
+
 	private void addCommonFields()
 	{
 		addField(createReadonlyTextField(Task.PSEUDO_TAG_FACTOR_LABEL));
