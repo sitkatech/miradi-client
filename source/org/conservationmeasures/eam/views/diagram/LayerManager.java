@@ -22,6 +22,7 @@ public class LayerManager
 		contributingFactorsVisibleFlag = true;
 		directThreatsVisibleFlag = true;
 		linkagesVisibleFlag = true;
+		targetLinkagesVisibleFlag = true;
 		goalsVisibleFlag = true;
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
