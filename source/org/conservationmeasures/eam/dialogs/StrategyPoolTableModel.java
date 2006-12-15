@@ -55,6 +55,7 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 
 
 	private static final String[] COLUMN_TAGS = new String[] {
+		Strategy.TAG_SHORT_LABEL,
 		Strategy.TAG_LABEL,
 		Strategy.PSEUDO_TAG_RATING_SUMMARY,
 	};

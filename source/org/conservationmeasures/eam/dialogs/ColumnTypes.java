@@ -14,6 +14,7 @@ import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
 import org.conservationmeasures.eam.objects.ProjectResource;
+import org.conservationmeasures.eam.objects.Strategy;
 
 public class ColumnTypes
 {
@@ -34,6 +35,7 @@ public class ColumnTypes
 	{
 		HashMap map = new HashMap();
 		
+		map.put(buildKey(ObjectType.FACTOR, Strategy.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.INDICATOR, Indicator.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.OBJECTIVE, Objective.TAG_SHORT_LABEL), SHORT_LABEL);
 		map.put(buildKey(ObjectType.GOAL, Goal.TAG_SHORT_LABEL), SHORT_LABEL);
