@@ -26,7 +26,12 @@ public class HotButtonDoer extends MainWindowDoer
 	public void doIt(EventObject event) throws CommandFailedException
 	{
 		HelpButtonData data = (HelpButtonData)((JComponent)event.getSource()).getClientProperty(HelpButtonData.class);
-		new HtmlViewPanel(data.title, getMainWindow().getCurrentView().getClass(), data.htmlFile).showOkDialog();
+		
+		Class defaultResouceClass = getMainWindow().getCurrentView().getClass();
+		if (data.resourceClass != null)
+			defaultResouceClass = data.resourceClass;
+			
+		new HtmlViewPanel(data.title, defaultResouceClass, data.htmlFile).showOkDialog();
 	}
 	
 	public void doIt() throws CommandFailedException

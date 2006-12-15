@@ -89,6 +89,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpShare;
 import org.conservationmeasures.eam.actions.jump.ActionJumpShorttermPlans;
 import org.conservationmeasures.eam.actions.jump.ActionJumpTeamRoles;
 import org.conservationmeasures.eam.utils.MenuItemWithoutLocation;
+import org.conservationmeasures.eam.views.umbrella.HelpButtonData;
+import org.conservationmeasures.eam.views.umbrella.UmbrellaView;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -406,7 +408,9 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
 		menu.add(actions.get(ActionAbout.class));
-		menu.add(actions.get(ActionComingAttractions.class));
+		JMenuItem item = new JMenuItem(actions.get(ActionComingAttractions.class));
+		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, "Coming Attactions", "ComingAttractions.html"));
+		menu.add(item);
 		return menu;
 	}
 }

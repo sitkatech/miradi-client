@@ -7,10 +7,17 @@ package org.conservationmeasures.eam.views.umbrella;
 
 public class HelpButtonData
 {
-	public HelpButtonData(String titleToUse, String htmlFileToUse)
+	
+	public HelpButtonData(Class resourceClassToUse, String titleToUse, String htmlFileToUse)
 	{
 		title = titleToUse;
 		htmlFile = htmlFileToUse;
+		resourceClass = resourceClassToUse;
+	}
+	
+	public HelpButtonData(String titleToUse, String htmlFileToUse)
+	{
+		this(null, titleToUse, htmlFileToUse);
 	}
 	
 	public String toString()
@@ -20,4 +27,5 @@ public class HelpButtonData
 	
 	public String title;
 	public String htmlFile;
+	public Class resourceClass;
 }
