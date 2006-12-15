@@ -14,26 +14,28 @@ import org.conservationmeasures.eam.project.Project;
 
 public class DiagramClipboard extends Clipboard
 {
-	public DiagramClipboard()
+	public DiagramClipboard(Project projectToUse)
 	{
 		super(DiagramClipboard.class.getName());
+		project = projectToUse;
+		
 		clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	}
 	
 	public synchronized int getPasteOffset() 
 	{
-		return pasteCount * Project.DEFAULT_GRID_SIZE;
+		return pasteCount * project.getGridSize();
 	}
 
-	private synchronized int incrementPasteCount() 
+	public synchronized void incrementPasteCount() 
 	{
-		return pasteCount = pasteCount+1;
+		++pasteCount;
 	}
 	
 
-	private synchronized int resetPasteCount() 
+	private synchronized void resetPasteCount() 
 	{
-		return pasteCount = 0;
+		pasteCount = 0;
 	}
 	
 	public void setContents(Transferable contents, ClipboardOwner owner) 
@@ -44,12 +46,10 @@ public class DiagramClipboard extends Clipboard
 	
 	public Transferable getContents(Object requestor)
 	{
-		incrementPasteCount() ;
 		return clipboard.getContents(requestor);
 	}
 	
+	private Project project;
 	private int pasteCount;
 	private final Clipboard clipboard;
-	final public static DiagramClipboard EAM_CLIPBOARD = new DiagramClipboard();
-	
 }

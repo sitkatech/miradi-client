@@ -22,7 +22,7 @@ public class Cut extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		new Copy(getProject()).doIt();
+		new Copy(getProject()).copySelectedItemsToClipboard();
 		new Delete(getProject()).doIt();
 	}
 

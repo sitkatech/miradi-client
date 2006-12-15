@@ -35,12 +35,18 @@ public class Copy extends ProjectDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		copySelectedItemsToClipboard();
+		getProject().getDiagramClipboard().incrementPasteCount();
+	}
+
+	public void copySelectedItemsToClipboard()
+	{
 		EAMGraphCell[] selectedCells = getProject().getSelectedAndRelatedCells();
 		if(selectedCells.length == 0)
 			return;
 		TransferableEamList eamList = new TransferableEamList(getProject().getFilename(), selectedCells);
 		
-		DiagramClipboard clipboard = DiagramClipboard.EAM_CLIPBOARD;
+		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		clipboard.setContents(eamList, EAM.mainWindow);
 	}
 

@@ -57,6 +57,7 @@ import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.objects.ProjectMetadata;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.objects.ViewData;
+import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.LayerManager;
 import org.conservationmeasures.eam.views.noproject.NoProjectView;
 import org.jgraph.graph.GraphLayoutCache;
@@ -89,6 +90,7 @@ public class Project
 		undoRedoState = new UndoRedoState();
 		
 		diagramModel = new DiagramModel(this);
+		diagramClipboard = new DiagramClipboard(this);
 		layerManager = new LayerManager();
 		threatRatingFramework = new ThreatRatingFramework(this);
 		graphLayoutCache = new PartialGraphLayoutCache(diagramModel);
@@ -894,6 +896,11 @@ public class Project
 		}
 	}
 	
+	public DiagramClipboard getDiagramClipboard()
+	{
+		return diagramClipboard;
+	}
+
 	class DiagramSaver implements CommandExecutedListener
 	{
 		public void commandExecuted(CommandExecutedEvent event)
@@ -954,6 +961,7 @@ public class Project
 	
 	ProjectServer database;
 	DiagramModel diagramModel;
+	DiagramClipboard diagramClipboard;
 
 	Vector commandExecutedListeners;
 	

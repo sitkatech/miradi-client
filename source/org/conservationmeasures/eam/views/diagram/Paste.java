@@ -29,7 +29,7 @@ public class Paste extends LocationDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		DiagramClipboard clipboard = DiagramClipboard.EAM_CLIPBOARD;
+		DiagramClipboard clipboard = getProject().getDiagramClipboard();
 		try 
 		{
 			Transferable contents = clipboard.getContents(null);
@@ -42,6 +42,7 @@ public class Paste extends LocationDoer
 				return;
 			}
 			pasteCellsIntoProject(list);
+			clipboard.incrementPasteCount();
 		} 
 		catch (Exception e) 
 		{

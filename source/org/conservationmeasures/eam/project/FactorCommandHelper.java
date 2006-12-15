@@ -32,7 +32,6 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.utils.Logging;
-import org.conservationmeasures.eam.views.diagram.DiagramClipboard;
 import org.conservationmeasures.eam.views.diagram.InsertFactorLinkDoer;
 
 public class FactorCommandHelper
@@ -88,9 +87,8 @@ public class FactorCommandHelper
 			DiagramFactorId newNodeId = addCommand.getInsertedId();
 			dataHelper.setNewId(originalDiagramNodeId, newNodeId);
 			
-			int count = DiagramClipboard.EAM_CLIPBOARD.getPasteOffset();
 			Point point = nodeData.getPoint(DiagramFactor.TAG_LOCATION);
-			point.setLocation(point.x + count, point.y + count);
+			point.setLocation(point.x, point.y);
 			
 			dataHelper.setOriginalLocation(originalDiagramNodeId, point);
 			
@@ -108,8 +106,8 @@ public class FactorCommandHelper
 			
 			Point newNodeLocation = dataHelper.getNewLocation(originalDiagramNodeId, startPoint);
 			
-			int count = DiagramClipboard.EAM_CLIPBOARD.getPasteOffset();
-			newNodeLocation.setLocation(newNodeLocation.x + count, newNodeLocation.y + count);
+			int offsetToAvoidOverlaying = getProject().getDiagramClipboard().getPasteOffset();
+			newNodeLocation.setLocation(newNodeLocation.x + offsetToAvoidOverlaying, newNodeLocation.y + offsetToAvoidOverlaying);
 			newNodeLocation = getProject().getSnapped(newNodeLocation);
 			
 			DiagramFactorId newNodeId = dataHelper.getNewId(originalDiagramNodeId);
