@@ -6,14 +6,12 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import java.util.Arrays;
-import java.util.Vector;
 
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Factor;
+import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.conservationmeasures.eam.views.TreeTableNode;
@@ -33,12 +31,12 @@ public class WorkPlanMonitoringRoot extends TreeTableNode
 
 	public TreeTableNode getChild(int index)
 	{
-		return allFactorsWithIndicators[index];
+		return indicatorsNodes[index];
 	}
 
 	public int getChildCount()
 	{
-		return allFactorsWithIndicators.length;
+		return indicatorsNodes.length;
 	}
 	
 	public ORef getObjectReference()
@@ -63,18 +61,12 @@ public class WorkPlanMonitoringRoot extends TreeTableNode
 
 	public void rebuild()
 	{
-		FactorId[] factorNodeIds = project.getFactorPool().getModelNodeIds();
-		Vector workPlanMonFactors = new Vector();
+		Indicator[] indicators = project.getIndicatorPool().getAllIndicators();
+		indicatorsNodes = new WorkPlanMonitoringIndicator[indicators.length];
+		for(int i = 0; i < indicators.length; i++)
+			indicatorsNodes[i] = new WorkPlanMonitoringIndicator(project, indicators[i]);
 		
-		for (int i  =0; i < factorNodeIds.length; i++)
-		{
-			Factor factor = project.getFactorPool().find(factorNodeIds[i]);
-			if (factor.getIndicators().size() > 0)
-				workPlanMonFactors.add(new WorkPlanMonitoringFactor(project, factor));
-		}
-		
-		allFactorsWithIndicators = (WorkPlanMonitoringFactor[])workPlanMonFactors.toArray(new WorkPlanMonitoringFactor[0]);
-		Arrays.sort(allFactorsWithIndicators, new IgnoreCaseStringComparator());
+		Arrays.sort(indicatorsNodes, new IgnoreCaseStringComparator());
 	}
 	
 	public BaseId getId()
@@ -82,8 +74,7 @@ public class WorkPlanMonitoringRoot extends TreeTableNode
 		return null;
 	}
 
+	WorkPlanMonitoringIndicator indicatorsNodes[];
 	Project project;
-	WorkPlanMonitoringFactor[] allFactorsWithIndicators;
 	private static final String MONITORING_LABEL = "Monitoring";
-
 }
