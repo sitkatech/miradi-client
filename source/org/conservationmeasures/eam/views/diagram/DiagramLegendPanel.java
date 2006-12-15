@@ -76,7 +76,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	{
 		JPanel jpanel = new JPanel(new GridLayoutPlus(0,3));
 		
-		addIconLineWithoutCheckBox(jpanel, "Project Scope", new ProjectScopeIcon());
+		addIconLineWithCheckBox(jpanel, SCOPE_BOX_TEXT, new ProjectScopeIcon());
 		
 		addButtonLineWithCheckBox(jpanel, Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		addButtonLineWithCheckBox(jpanel, Factor.OBJECT_NAME_THREAT, actions.get(ActionInsertDirectThreat.class));
@@ -168,7 +168,9 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 			manager.setObjectivesVisible(checkBox.isSelected());
 		else if (property.equals(Indicator.OBJECT_NAME))
 			manager.setIndicatorsVisible(checkBox.isSelected());
-
+		else if (property.equals(SCOPE_BOX_TEXT))
+			manager.setScopeBoxVisible(checkBox.isSelected());
+		
 		mainWindow.getProject().updateVisibilityOfFactors();
 		mainWindow.updateStatusBar();
 			
@@ -191,6 +193,7 @@ public class DiagramLegendPanel extends JPanel implements ActionListener
 	
 	final static String LAYER = "LAYER";
 	final static String TARGET_LINKS_TEXT = "Target link";
+	final static String SCOPE_BOX_TEXT = "Scope Box";
 	
 	MainWindow mainWindow;
 	JCheckBox targetLinkCheckBox;

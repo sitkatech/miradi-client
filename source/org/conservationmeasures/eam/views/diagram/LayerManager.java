@@ -25,6 +25,7 @@ public class LayerManager
 		goalsVisibleFlag = true;
 		objectivesVisibleFlag = true;
 		indicatorsVisibleFlag = true;
+		scopeBoxVisibleFlag = true;
 	}
 	
 	public boolean isVisible(DiagramFactor node)
@@ -149,6 +150,16 @@ public class LayerManager
 		indicatorsVisibleFlag = newSetting;
 	}
 
+	public boolean isScopeBoxVisible()
+	{
+		return scopeBoxVisibleFlag;
+	}
+	
+	public void setScopeBoxVisible(boolean newSetting)
+	{
+		scopeBoxVisibleFlag = newSetting;
+	}
+	
 	Set hiddenNodeTypes;
 	IdList hiddenIds;
 	String mode;
@@ -159,4 +170,5 @@ public class LayerManager
 	boolean goalsVisibleFlag;
 	boolean objectivesVisibleFlag;
 	boolean indicatorsVisibleFlag;
+	boolean scopeBoxVisibleFlag;
 }

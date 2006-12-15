@@ -855,8 +855,8 @@ public class Project
 			DiagramFactor node = (DiagramFactor)nodes.get(i);
 			updateVisibilityOfSingleFactor(node);
 		}
-		
-		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), true);
+		LayerManager manager = getLayerManager();
+		getGraphLayoutCache().setVisible(getDiagramModel().getProjectScopeBox(), manager.isScopeBoxVisible());
 	}
 
 	public void updateVisibilityOfSingleFactor(DiagramFactor node)
