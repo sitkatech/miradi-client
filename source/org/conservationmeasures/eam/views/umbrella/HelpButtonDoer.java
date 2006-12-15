@@ -12,9 +12,9 @@ import javax.swing.JComponent;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.views.MainWindowDoer;
 
-public class HotButtonDoer extends MainWindowDoer
+public class HelpButtonDoer extends MainWindowDoer
 {
-	public HotButtonDoer()
+	public HelpButtonDoer()
 	{
 	}
 	

@@ -54,9 +54,9 @@ public class EAMToolBar extends JToolBar
 	
 }
 
-abstract class HotButton extends UiButton
+abstract class HelpButton extends UiButton
 {
-	public HotButton(Action action, Color color)
+	public HelpButton(Action action, Color color)
 	{
 		super(action);
 		setBackground(color);
@@ -68,7 +68,7 @@ abstract class HotButton extends UiButton
 	}
 }
 
-class MoreInfoButton extends HotButton
+class MoreInfoButton extends HelpButton
 {
 	public MoreInfoButton(Action action)
 	{
@@ -77,7 +77,7 @@ class MoreInfoButton extends HotButton
 	}
 }
 
-class ExamplesButton extends HotButton
+class ExamplesButton extends HelpButton
 {
 	public ExamplesButton(Action action)
 	{
@@ -86,7 +86,7 @@ class ExamplesButton extends HotButton
 	}
 }
 
-class WorkshopButton extends HotButton
+class WorkshopButton extends HelpButton
 {
 	public WorkshopButton(Action action)
 	{
