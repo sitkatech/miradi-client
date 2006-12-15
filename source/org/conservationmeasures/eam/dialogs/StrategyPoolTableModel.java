@@ -22,19 +22,19 @@ public class StrategyPoolTableModel extends ObjectPoolTableModel
 	
 	public IdList getLatestIdListFromProject()
 	{
-		IdList filteredResources = new IdList();
+		IdList filteredStrategies = new IdList();
 		
-		IdList resources = super.getLatestIdListFromProject();
-		for (int i=0; i<resources.size(); ++i)
+		IdList strategy = super.getLatestIdListFromProject();
+		for (int i=0; i<strategy.size(); ++i)
 		{
-			BaseId baseId = resources.get(i);
+			BaseId baseId = strategy.get(i);
 			Factor factor = (Factor) project.findObject(ObjectType.FACTOR, baseId);
 			if (!factor.isStrategy())
 				continue;
 			if (!((Strategy)factor).isStatusDraft())
-				filteredResources.add(baseId);
+				filteredStrategies.add(baseId);
 		}
-		return filteredResources;
+		return filteredStrategies;
 	}
 	
 	private static final String[] COLUMN_TAGS = new String[] {
