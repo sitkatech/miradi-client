@@ -17,7 +17,7 @@ public class ActionHelptButtonWorkshop extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Workshope");
+		return EAM.text("Action|Workshop");
 	}
 
 }
