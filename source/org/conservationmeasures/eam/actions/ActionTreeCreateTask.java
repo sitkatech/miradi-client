@@ -8,21 +8,20 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertActivity extends ObjectsAction
+public class ActionTreeCreateTask extends ObjectsAction
 {
-	public ActionInsertActivity(MainWindow mainWindowToUse)
+	public ActionTreeCreateTask(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create Activity");
+		return EAM.text("Action|Manage|Create Task");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create an Activity for the selected Strategy");
+		return EAM.text("TT|Create a Task or Subtask for the selected Item");
 	}
-	
 }

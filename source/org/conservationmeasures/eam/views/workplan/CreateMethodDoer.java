@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
 //TODO InsertMethodDoer, InsertTaskDoer, InsertActivitDoer have code in common that needs to be refactored
-public class InsertMethodDoer extends AbstractTaskTreeDoer
+public class CreateMethodDoer extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{

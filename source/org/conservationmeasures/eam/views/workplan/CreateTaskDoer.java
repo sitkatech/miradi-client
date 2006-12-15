@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Task;
 
-public class InsertTaskDoer extends AbstractTaskTreeDoer
+public class CreateTaskDoer extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{

@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionInsertMethod extends ObjectsAction
+public class ActionTreeCreateMethod extends ObjectsAction
 {
-	public ActionInsertMethod(MainWindow mainWindowToUse)
+	public ActionTreeCreateMethod(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}

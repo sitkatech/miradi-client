@@ -13,9 +13,9 @@ import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
 import org.conservationmeasures.eam.actions.ActionDeleteWorkPlanNode;
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionInsertMethod;
-import org.conservationmeasures.eam.actions.ActionInsertTask;
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
 import org.conservationmeasures.eam.actions.Actions;
@@ -143,9 +143,9 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	{
 		Box buttonBox = Box.createHorizontalBox();
 		
-		UiButton addActivityButton = createObjectsActionButton(actions.getObjectsAction(ActionInsertActivity.class), tree);
-		UiButton addMethodButton = createObjectsActionButton(actions.getObjectsAction(ActionInsertMethod.class), tree);
-		UiButton addTaskButton = createObjectsActionButton(actions.getObjectsAction(ActionInsertTask.class), tree);
+		UiButton addActivityButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateActivity.class), tree);
+		UiButton addMethodButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateMethod.class), tree);
+		UiButton addTaskButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateTask.class), tree);
 		
 		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteWorkPlanNode.class), tree);
 		UiButton upButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeNodeUp.class), tree);

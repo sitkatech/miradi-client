@@ -12,7 +12,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Task;
 
-public class InsertActivity extends AbstractTaskTreeDoer
+public class CreateActivityDoer extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{

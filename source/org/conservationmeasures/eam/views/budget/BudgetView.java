@@ -9,9 +9,9 @@ import org.conservationmeasures.eam.actions.ActionCreateFundingSource;
 import org.conservationmeasures.eam.actions.ActionDeleteAccountingCode;
 import org.conservationmeasures.eam.actions.ActionDeleteFundingSource;
 import org.conservationmeasures.eam.actions.ActionImportAccountingCodes;
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionInsertMethod;
-import org.conservationmeasures.eam.actions.ActionInsertTask;
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
@@ -27,9 +27,9 @@ import org.conservationmeasures.eam.views.TabbedView;
 import org.conservationmeasures.eam.views.budget.wizard.BudgetWizardPanel;
 import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
-import org.conservationmeasures.eam.views.workplan.InsertActivity;
-import org.conservationmeasures.eam.views.workplan.InsertMethodDoer;
-import org.conservationmeasures.eam.views.workplan.InsertTaskDoer;
+import org.conservationmeasures.eam.views.workplan.CreateActivityDoer;
+import org.conservationmeasures.eam.views.workplan.CreateMethodDoer;
+import org.conservationmeasures.eam.views.workplan.CreateTaskDoer;
 import org.conservationmeasures.eam.views.workplan.TreeNodeDown;
 import org.conservationmeasures.eam.views.workplan.TreeNodeUp;
 import org.martus.swing.ResourceImageIcon;
@@ -104,9 +104,9 @@ public class BudgetView extends TabbedView
 	
 	private void addBudgetDoersToMap()
 	{
-		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		addDoerToMap(ActionInsertMethod.class, new InsertMethodDoer());
-		addDoerToMap(ActionInsertTask.class, new InsertTaskDoer());
+		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityDoer());
+		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodDoer());
+		addDoerToMap(ActionTreeCreateTask.class, new CreateTaskDoer());
 //		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());

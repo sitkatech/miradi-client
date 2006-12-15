@@ -5,9 +5,9 @@ import java.awt.BorderLayout;
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateResource;
 import org.conservationmeasures.eam.actions.ActionDeleteResource;
-import org.conservationmeasures.eam.actions.ActionInsertActivity;
-import org.conservationmeasures.eam.actions.ActionInsertMethod;
-import org.conservationmeasures.eam.actions.ActionInsertTask;
+import org.conservationmeasures.eam.actions.ActionTreeCreateActivity;
+import org.conservationmeasures.eam.actions.ActionTreeCreateMethod;
+import org.conservationmeasures.eam.actions.ActionTreeCreateTask;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
 import org.conservationmeasures.eam.actions.ActionTreeNodeDown;
 import org.conservationmeasures.eam.actions.ActionTreeNodeUp;
@@ -97,9 +97,9 @@ public class WorkPlanView extends TabbedView
 	
 	private void addWorkPlanDoersToMap()
 	{
-		addDoerToMap(ActionInsertActivity.class, new InsertActivity());
-		addDoerToMap(ActionInsertMethod.class, new InsertMethodDoer());
-		addDoerToMap(ActionInsertTask.class, new InsertTaskDoer());
+		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityDoer());
+		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodDoer());
+		addDoerToMap(ActionTreeCreateTask.class, new CreateTaskDoer());
 //		addDoerToMap(ActionDeleteWorkPlanNode.class, new DeleteWorkPlanTreeNode());
 		addDoerToMap(ActionTreeNodeUp.class, new TreeNodeUp());
 		addDoerToMap(ActionTreeNodeDown.class, new TreeNodeDown());
