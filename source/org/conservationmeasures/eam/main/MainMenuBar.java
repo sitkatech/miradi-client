@@ -21,25 +21,28 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
+import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
-import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
+import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
 import org.conservationmeasures.eam.actions.ActionInsertDirectThreat;
 import org.conservationmeasures.eam.actions.ActionInsertDraftStrategy;
-import org.conservationmeasures.eam.actions.ActionInsertContributingFactor;
+import org.conservationmeasures.eam.actions.ActionInsertFactorLink;
 import org.conservationmeasures.eam.actions.ActionInsertStrategy;
 import org.conservationmeasures.eam.actions.ActionInsertTarget;
 import org.conservationmeasures.eam.actions.ActionNewProject;
-import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
-import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.ActionPasteWithoutLinks;
 import org.conservationmeasures.eam.actions.ActionPreferences;
 import org.conservationmeasures.eam.actions.ActionPrint;
+import org.conservationmeasures.eam.actions.ActionProjectSaveAs;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionSaveImage;
 import org.conservationmeasures.eam.actions.ActionSelectAll;
 import org.conservationmeasures.eam.actions.ActionSelectChain;
+import org.conservationmeasures.eam.actions.ActionShowFullModelMode;
 import org.conservationmeasures.eam.actions.ActionShowSelectedChainMode;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.ActionZoomIn;
@@ -73,8 +76,8 @@ import org.conservationmeasures.eam.actions.jump.ActionJumpDevelopTargetGoals;
 import org.conservationmeasures.eam.actions.jump.ActionJumpDocument;
 import org.conservationmeasures.eam.actions.jump.ActionJumpEstablishVision;
 import org.conservationmeasures.eam.actions.jump.ActionJumpGroundTruthRevise;
-import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyContributingFactors;
+import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyDirectThreats;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyStrategies;
 import org.conservationmeasures.eam.actions.jump.ActionJumpIdentifyTargets;
 import org.conservationmeasures.eam.actions.jump.ActionJumpImplementPlans;
@@ -407,10 +410,28 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createHelpMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
+		
+		JMenuItem item1 = new JMenuItem(actions.get(ActionComingAttractions.class));
+		item1.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(UmbrellaView.class, HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
+		menu.add(item1);
+		
+		JMenuItem item2 = new JMenuItem(actions.get(ActionHelptButtonMoreInfo.class));
+		item2.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
+		menu.add(item2);
+		
+		JMenuItem item3 = new JMenuItem(actions.get(ActionHelpButtonExamples.class));
+		item3.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
+		menu.add(item3);
+		
+		JMenuItem item4 = new JMenuItem(actions.get(ActionHelptButtonWorkshop.class));
+		item4.putClientProperty(HelpButtonData.class, 
+				new HelpButtonData(HelpButtonData.WORKSHOPE, HelpButtonData.WORKSHOPE_HTML));
+		menu.add(item4);
+		
 		menu.add(actions.get(ActionAbout.class));
-		JMenuItem item = new JMenuItem(actions.get(ActionComingAttractions.class));
-		item.putClientProperty(HelpButtonData.class, new HelpButtonData(UmbrellaView.class, "Coming Attactions", "ComingAttractions.html"));
-		menu.add(item);
 		return menu;
 	}
 }

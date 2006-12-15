@@ -22,9 +22,9 @@ import org.conservationmeasures.eam.actions.ActionClose;
 import org.conservationmeasures.eam.actions.ActionComingAttractions;
 import org.conservationmeasures.eam.actions.ActionExit;
 import org.conservationmeasures.eam.actions.ActionExportZippedProjectFile;
-import org.conservationmeasures.eam.actions.ActionHotButtonExamples;
-import org.conservationmeasures.eam.actions.ActionHotButtonMoreInfo;
-import org.conservationmeasures.eam.actions.ActionHotButtonWorkshop;
+import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionImportTncCapWorkbook;
 import org.conservationmeasures.eam.actions.ActionImportZippedProjectFile;
 import org.conservationmeasures.eam.actions.ActionNewProject;
@@ -236,9 +236,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	{
 		addDoerToMap(ActionAbout.class, new AboutDoer());
 		addDoerToMap(ActionComingAttractions.class, new HelpButtonDoer());
-		addDoerToMap(ActionHotButtonExamples.class, new HelpButtonDoer());
-		addDoerToMap(ActionHotButtonMoreInfo.class, new HelpButtonDoer());
-		addDoerToMap(ActionHotButtonWorkshop.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelpButtonExamples.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelptButtonMoreInfo.class, new HelpButtonDoer());
+		addDoerToMap(ActionHelptButtonWorkshop.class, new HelpButtonDoer());
 		addDoerToMap(ActionNewProject.class, new NewProject());
 		addDoerToMap(ActionProjectSaveAs.class, new SaveAsProjectDoer());
 		addDoerToMap(ActionClose.class, new Close());

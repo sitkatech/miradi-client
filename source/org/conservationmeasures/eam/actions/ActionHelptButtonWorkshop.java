@@ -8,9 +8,9 @@ package org.conservationmeasures.eam.actions;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 
-public class ActionHotButtonWorkshop extends MainWindowAction
+public class ActionHelptButtonWorkshop extends MainWindowAction
 {
-	public ActionHotButtonWorkshop(MainWindow mainWindow)
+	public ActionHelptButtonWorkshop(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}

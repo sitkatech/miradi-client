@@ -25,6 +25,16 @@ public class HelpButtonData
 		return "Title:" + title + " File:" + htmlFile ;
 	}
 	
+	public static final String MORE_INFO_HTML = "MoreInfo.html";
+	public static final String MORE_INFO = "More Info";
+	public static final String EXAMPLES_HTML = "Examples.html";
+	public static final String EXAMPLES = "Examples";
+	public static final String WORKSHOPE_HTML = "Workshope.html";
+	public static final String WORKSHOPE = "Workshope";
+	public static final String COMING_ATTACTIONS = "Coming Attactions";
+	public static final String COMING_ATTRACTIONS_HTML = "ComingAttractions.html";
+
+	
 	public String title;
 	public String htmlFile;
 	public Class resourceClass;

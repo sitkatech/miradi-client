@@ -13,9 +13,9 @@ import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JToolBar;
 
-import org.conservationmeasures.eam.actions.ActionHotButtonExamples;
-import org.conservationmeasures.eam.actions.ActionHotButtonMoreInfo;
-import org.conservationmeasures.eam.actions.ActionHotButtonWorkshop;
+import org.conservationmeasures.eam.actions.ActionHelpButtonExamples;
+import org.conservationmeasures.eam.actions.ActionHelptButtonMoreInfo;
+import org.conservationmeasures.eam.actions.ActionHelptButtonWorkshop;
 import org.conservationmeasures.eam.actions.ActionRedo;
 import org.conservationmeasures.eam.actions.ActionUndo;
 import org.conservationmeasures.eam.actions.Actions;
@@ -47,9 +47,9 @@ public class EAMToolBar extends JToolBar
 		
 		add(Box.createHorizontalGlue());
 
-		add(new MoreInfoButton(actions.get(ActionHotButtonMoreInfo.class)));
-		add(new ExamplesButton(actions.get(ActionHotButtonExamples.class)));
-		add(new WorkshopButton(actions.get(ActionHotButtonWorkshop.class)));
+		add(new MoreInfoButton(actions.get(ActionHelptButtonMoreInfo.class)));
+		add(new ExamplesButton(actions.get(ActionHelpButtonExamples.class)));
+		add(new WorkshopButton(actions.get(ActionHelptButtonWorkshop.class)));
 	}
 	
 }
@@ -73,7 +73,7 @@ class MoreInfoButton extends HelpButton
 	public MoreInfoButton(Action action)
 	{
 		super(action, Color.GREEN);
-		putClientProperty(HelpButtonData.class, new HelpButtonData("More Info", "MoreInfo.html"));
+		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
 	}
 }
 
@@ -82,7 +82,7 @@ class ExamplesButton extends HelpButton
 	public ExamplesButton(Action action)
 	{
 		super(action, Color.YELLOW);
-		putClientProperty(HelpButtonData.class, new HelpButtonData("Examples", "Examples.html"));
+		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
 	}
 }
 
@@ -91,7 +91,7 @@ class WorkshopButton extends HelpButton
 	public WorkshopButton(Action action)
 	{
 		super(action, Color.CYAN);
-		putClientProperty(HelpButtonData.class, new HelpButtonData("Workshope", "Workshope.html"));
+		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOPE, HelpButtonData.WORKSHOPE_HTML));
 	}
 }
 
