@@ -26,22 +26,22 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 	
 	public IdList getLatestIdListFromProject()
 	{
-		IdList filteredStrategy = new IdList();
+		IdList filteredTasks = new IdList();
 		
-		IdList strategy = super.getLatestIdListFromProject();
-		for (int i=0; i<strategy.size(); ++i)
+		IdList tasks = super.getLatestIdListFromProject();
+		for (int i=0; i<tasks.size(); ++i)
 		{
-			BaseId baseId = strategy.get(i);
+			BaseId baseId = tasks.get(i);
 			Task task = (Task) project.findObject(ObjectType.TASK, baseId);
 			if ((task.getParentRef().getObjectType() == ObjectType.FACTOR))
 			{
 				BaseId objectId = task.getParentRef().getObjectId();
 				Factor factor = (Factor)project.findObject(ObjectType.FACTOR, objectId);
 				if (factor.isStrategy() && !factor.isStatusDraft())
-					filteredStrategy.add(baseId);
+					filteredTasks.add(baseId);
 			}
 		}
-		return filteredStrategy;
+		return filteredTasks;
 	}
 
 
