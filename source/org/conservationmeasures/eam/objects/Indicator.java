@@ -87,6 +87,7 @@ public class Indicator extends EAMBaseObject
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
+	public static final String PSEUDO_TAG_METHODS = "PseudoTagMethods";
 	
 	public static final String OBJECT_NAME = "Indicator";
 

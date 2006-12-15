@@ -36,6 +36,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_FACTOR));
 		addField(createChoiceField(new PriorityRatingQuestion(Indicator.TAG_PRIORITY)));
 		addField(createChoiceField(new IndicatorStatusRatingQuestion(Indicator.TAG_STATUS)));			// Rating
+		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_METHODS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Indicator.PSEUDO_TAG_TARGETS));

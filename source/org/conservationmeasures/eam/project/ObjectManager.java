@@ -18,6 +18,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.ids.FactorLinkId;
 import org.conservationmeasures.eam.ids.IdAssigner;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.TaskId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
@@ -249,6 +250,8 @@ public class ObjectManager
 				return getRelatedFactorLabelsAsMultiLine(Factor.TYPE_INTERVENTION, annotationType, annotationId, fieldTag);
 			if (fieldTag.equals(Indicator.PSEUDO_TAG_DIRECT_THREATS))
 				return getRelatedDirectThreatLabelsAsMultiLine(Factor.TYPE_CAUSE, annotationId, annotationType, fieldTag);
+			if (fieldTag.equals(Indicator.PSEUDO_TAG_METHODS))
+				return getIndicatorMethodsSingleLine(annotationId);
 		}
 		catch(Exception e)
 		{
@@ -477,6 +480,25 @@ public class ObjectManager
 			EAM.logException(e);
 			return "";
 		}
+	}
+	
+	private String getIndicatorMethodsSingleLine(BaseId indicatorId) throws ParseException
+	{
+		String methodIdsString = project.getObjectData(ObjectType.INDICATOR, indicatorId, Indicator.TAG_TASK_IDS);
+		
+		StringBuffer result = new StringBuffer();
+		IdList methodIds = new IdList(methodIdsString);
+		for(int i = 0; i < methodIds.size(); ++i)
+		{
+			if(i > 0)
+				result.append("; ");
+			
+			BaseId methodId = methodIds.get(i);
+			EAMObject method = project.findObject(ObjectType.TASK, methodId);
+			result.append(method.getData(Task.TAG_LABEL));
+		}
+		
+		return result.toString();
 	}
 
 	public String getObjectData(int objectType, BaseId objectId, String fieldTag)

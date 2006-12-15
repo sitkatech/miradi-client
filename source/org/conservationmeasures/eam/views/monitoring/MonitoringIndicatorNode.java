@@ -77,9 +77,9 @@ public class MonitoringIndicatorNode extends MonitoringNode
 		Indicator.TAG_LABEL, 
 		Indicator.TAG_PRIORITY, 
 		Indicator.TAG_STATUS, 
+		Indicator.PSEUDO_TAG_METHODS, 
 		Indicator.PSEUDO_TAG_TARGETS, 
 		Indicator.PSEUDO_TAG_DIRECT_THREATS, 
-		//"Method", 
 	};
 	
 	Project project;
