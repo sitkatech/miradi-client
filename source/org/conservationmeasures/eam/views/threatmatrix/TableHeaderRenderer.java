@@ -73,6 +73,7 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 		int height = calculatePerferredHeight();
         setPreferredSize(new Dimension(150,height));
         
+        // FIXME: We should pull the color from the table/panel instead of hard-coding!
         if (overRideColor != null)
         	setBackground(overRideColor);
         else
