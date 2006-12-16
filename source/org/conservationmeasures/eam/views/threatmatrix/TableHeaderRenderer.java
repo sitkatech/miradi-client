@@ -67,7 +67,7 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
         setForeground(component.getForeground());
         setBorder(noFocusBorder);
 
-        setOpaque(false);
+        setOpaque(true);
         setText(value.toString());
 		setFont(new Font(null,Font.BOLD,12));
 		int height = calculatePerferredHeight();
