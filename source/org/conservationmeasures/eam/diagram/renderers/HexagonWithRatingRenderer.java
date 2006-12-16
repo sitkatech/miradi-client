@@ -35,31 +35,14 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		smallRect.width = PRIORITY_WIDTH;
 		smallRect.height = PRIORITY_HEIGHT;
 		setPaint(g2, smallRect, rating.getColor());
-		Polygon tip = buildHexagonTip(rect);
-		g.fillPolygon(tip);
+		Polygon smallHex = buildHexagon(smallRect);
+		g.fillPolygon(smallHex);
 		g2.setColor(Color.BLACK);
-		g.drawPolygon(tip);
+		g.drawPolygon(smallHex);
 	}
 	
-	static Polygon buildHexagonTip(Rectangle rect)
-	{
-		int left = rect.x;
-		int top = rect.y;
-		int totalWidth = rect.width;
-		int height = rect.height;
-		int endInset = getInsetDimension(totalWidth).width;
-		int verticalMiddle = top + (height / 2);
-		
-		Polygon hex = new Polygon();
-		hex.addPoint(left, verticalMiddle);
-		hex.addPoint(left + endInset, top);
-		hex.addPoint(left + endInset, verticalMiddle);
-		hex.addPoint(left, verticalMiddle);
-		return hex;
-	}
-
 
 	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 20;
+	private static final int PRIORITY_HEIGHT = 10;
 
 }

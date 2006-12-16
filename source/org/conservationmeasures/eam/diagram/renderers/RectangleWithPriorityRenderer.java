@@ -40,5 +40,5 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 	}
 
 	private static final int PRIORITY_WIDTH = 20;
-	private static final int PRIORITY_HEIGHT = 10;
+	private static final int PRIORITY_HEIGHT = 20;
 }
