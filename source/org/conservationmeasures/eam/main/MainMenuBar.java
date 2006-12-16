@@ -428,7 +428,7 @@ public class MainMenuBar extends JMenuBar
 		
 		JMenuItem item4 = new JMenuItem(actions.get(ActionHelptButtonWorkshop.class));
 		item4.putClientProperty(HelpButtonData.class, 
-				new HelpButtonData(HelpButtonData.WORKSHOPE, HelpButtonData.WORKSHOPE_HTML));
+				new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 		menu.add(item4);
 		
 		menu.add(actions.get(ActionAbout.class));

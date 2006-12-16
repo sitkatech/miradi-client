@@ -91,7 +91,7 @@ class WorkshopButton extends HelpButton
 	public WorkshopButton(Action action)
 	{
 		super(action, Color.CYAN);
-		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOPE, HelpButtonData.WORKSHOPE_HTML));
+		putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
 
