@@ -24,7 +24,7 @@ public class TargetStatusQuestion extends ChoiceQuestion
 				new ChoiceItem("1", "Poor", COLOR_1_OF_4),
 				new ChoiceItem("2", "Fair", COLOR_2_OF_4),
 				new ChoiceItem("3", "Good", COLOR_3_OF_4),
-				new ChoiceItem("4", "Excellent", COLOR_4_OF_4),
+				new ChoiceItem("4", "Very Good", COLOR_4_OF_4),
 		};
 	}
 }
