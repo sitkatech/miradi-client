@@ -23,8 +23,14 @@ public class ProjectCalendar
 		return dateRanges;
 	}
 	
+	public Vector getYearlyDateRanges()
+	{
+		return yearlyDateRanges;
+	}
+	
 	private void setProjectDateRanges() throws Exception
 	{
+		//TODO budget code -  move project start/end code to Project
 		String startDate = project.getMetadata().getStartDate();
 		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
 		if (startDate.length() > 0 )
@@ -36,6 +42,7 @@ public class ProjectCalendar
 			yearCount = DateRange.getYearsInBetween(projectStartDate, MultiCalendar.createFromIsoDateString(endDate));
 		
 		int year = projectStartDate.getGregorianYear();
+		yearlyDateRanges = new Vector();
 		Vector vector = new Vector();
 		for (int i = 0; i < yearCount; i++)
 		{
@@ -54,6 +61,8 @@ public class ProjectCalendar
 		ranges.add(createQuarter(year, 10, 31));
 		ranges.add(DateRange.combine((DateRange)ranges.get(0), (DateRange)ranges.get(3)));
 		
+		yearlyDateRanges.add(DateRange.combine((DateRange)ranges.get(0), (DateRange)ranges.get(3)));
+		
 		return ranges;
 	}
 	
@@ -66,4 +75,5 @@ public class ProjectCalendar
 
 	Project project;
 	DateRange[] dateRanges;
+	Vector yearlyDateRanges;
 }

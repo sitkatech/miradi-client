@@ -107,7 +107,7 @@ public class BudgetTotalsCalculator
 				return getTotalFactorCost(getFactor(oRef));
 
 			if (oRef.getObjectType() == ObjectType.TASK)
-				return getTotalTaskCost((TaskId)oRef.getObjectId());
+				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()));
 			
 			if (oRef.getObjectType() == ObjectType.FAKE)
 				return getTotalFakeCost(node);				
@@ -118,6 +118,8 @@ public class BudgetTotalsCalculator
 		}
 		return  0.0;
 	}
+	
+	
 
 	private Factor getFactor(ORef oRef)
 	{
@@ -202,6 +204,13 @@ public class BudgetTotalsCalculator
 		return getTotalCost(task);
 	}
 	
+	public double getTotalCost(Task task, DateRange dateRange) throws Exception
+	{
+		totalCost = 0.0;
+		calculateTotalAssignment(task, dateRange);
+		return totalCost;
+	}
+	
 	public double getTotalCost(Task task) throws Exception
 	{
 		totalCost = 0.0;
@@ -219,9 +228,29 @@ public class BudgetTotalsCalculator
 		if (type == ObjectType.FACTOR)
 			return getFactorTotal(node);
 		
+		if (type == ObjectType.INDICATOR)
+			return getIndicatorTotal(node);
+		
 		return 0.0;
 	}
 	
+	private double getIndicatorTotal(TreeTableNode node) throws Exception
+	{
+		ORef nodeRef = node.getObjectReference();
+		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
+			return getStrategiesChildrenTotal(node);
+		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
+			return getIndicatorTotals(node);
+
+		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
+	}
+
+	private double getIndicatorTotals(TreeTableNode node) throws Exception
+	{
+		IdList indicatorIds = project.getIndicatorPool().getIdList();
+		return getTotalIndicatorsCost(indicatorIds); 
+	}
+
 	private double getFactorTotal(TreeTableNode node) throws Exception
 	{
 		ORef nodeRef = node.getObjectReference();
@@ -286,6 +315,212 @@ public class BudgetTotalsCalculator
 			}
 		}
 	}
+	
+	//TODO budget code - Refactor this!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	public double getTotalIndicatorsCost(IdList idList, DateRange dateRange) throws Exception
+	{
+		double totalIndicatorsCost = 0.0;
+		for (int i = 0; i < idList.size(); i++)
+			totalIndicatorsCost += getTotalIndicatorCost(new ORef(ObjectType.INDICATOR, idList.get(i)), dateRange);
+		
+		return totalIndicatorsCost;
+	}
+	
+	
+	private double getFactorTotals(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		double childrenTotal = 0.0;
+		for (int i = 0; i < node.getChildCount(); i++)
+		{
+			ORef ref = node.getChild(i).getObjectReference();
+			IdList indicatorIds = new IdList(project.getObjectData(ref.getObjectType(), ref.getObjectId(), Factor.TAG_INDICATOR_IDS));
+			
+			childrenTotal += getTotalIndicatorsCost(indicatorIds, dateRange);
+		}
+		return childrenTotal;
+	}
+	
+	
+	private double getStrategiesChildrenTotal(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		double childrenTotal = 0.0;
+		for (int i = 0; i < node.getChildCount(); i++)
+		{
+			EAMObject object = node.getChild(i).getObject();
+			Strategy strategy = (Strategy)object;
+			childrenTotal += getTotalStrategyCost(strategy, dateRange);
+		}
+		return childrenTotal;
+	}
+
+	
+	private double getFactorTotal(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		ORef nodeRef = node.getObjectReference();
+		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
+			return getStrategiesChildrenTotal(node, dateRange);
+		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
+			return getFactorTotals(node, dateRange);
+
+		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
+	}
+
+	
+	public double getTotalFakeCost(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		TreeTableNode child = node.getChild(0);
+		if (child == null)
+			return 0.0;
+		
+		int type = child.getObjectReference().getObjectType();
+		if (type == ObjectType.FACTOR)
+			return getFactorTotal(node, dateRange);
+		if (type == ObjectType.INDICATOR)
+			return getIndicatorTotal(node, dateRange);
+		return 0.0;
+	}
+	
+	private double getIndicatorTotal(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		ORef nodeRef = node.getObjectReference();
+		if(nodeRef.equals(EAM.WORKPLAN_STRATEGY_ROOT))
+			return getStrategiesChildrenTotal(node, dateRange);
+		
+		else if(nodeRef.equals(EAM.WORKPLAN_MONITORING_ROOT))
+			return getIndicatorTotals(node, dateRange);
+
+		throw new RuntimeException("Unexpected tree node root: " + nodeRef);
+	}
+
+	private double getIndicatorTotals(TreeTableNode node, DateRange dateRange) throws Exception
+	{
+		IdList indicatorIds = project.getIndicatorPool().getIdList();
+		return getTotalIndicatorsCost(indicatorIds, dateRange);
+	}
+
+	public double getTotalTaskCost(TaskId taskId, DateRange dateRange) throws Exception 
+	{
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		return getTotalCost(task, dateRange);
+	}
+	
+	public double getTotalStrategyCost(Factor factor, DateRange dateRange) throws Exception
+	{
+		double totalStrategyCost = 0.0;
+		if (!factor.isStrategy())
+			return totalStrategyCost;
+		
+		Strategy strategy = (Strategy)factor;
+		IdList idList = strategy.getActivityIds();
+		for (int i = 0; i < idList.size(); i++)
+		{
+			Task task = (Task)project.findObject(ObjectType.TASK, idList.get(i));
+			totalStrategyCost += getTotalCost(task, dateRange);	
+		}
+		
+		return totalStrategyCost;
+	}
+	
+	
+	private double getIndicatorTotal(Factor factor, DateRange dateRange) throws Exception
+	{
+		double totalIndicatorCost = 0.0;
+		IdList idList = factor.getIndicators();
+		for (int i = 0; i < idList.size(); i++)
+		{
+			Indicator indicator = (Indicator)project.findObject(ObjectType.INDICATOR, idList.get(i));
+			IdList taskIds = indicator.getTaskIdList();
+			totalIndicatorCost += getTotalTasksCost(taskIds, dateRange);
+		}
+		return totalIndicatorCost;
+	}
+
+	
+	public double getTotalFactorCost(Factor factor, DateRange dateRange) throws Exception
+	{
+		if (factor.getIndicators().size() > 0)
+			return getIndicatorTotal(factor, dateRange);
+		
+		return getTotalStrategyCost(factor, dateRange);
+	}
+	
+	
+	public double getTotalTasksCost(IdList taskIds, DateRange dateRange) throws Exception
+	{
+		double totalTaskCost = 0.0;
+		for (int i = 0; i < taskIds.size(); i++)
+		{
+			Task task = (Task)project.findObject(ObjectType.TASK, taskIds.get(i));
+			totalTaskCost += getTotalCost(task, dateRange);
+		}
+		return totalTaskCost;
+	}
+
+	
+	public double getTotalIndicatorCost(ORef oRef, DateRange dateRange) throws Exception
+	{
+		Indicator indicator = (Indicator)project.findObject(oRef.getObjectType(), oRef.getObjectId());
+		return getTotalTasksCost(indicator.getTaskIdList(), dateRange);
+	}
+	
+	public double calculateTotalCost(TreeTableNode node, DateRange dateRange)
+	{
+		try
+		{
+			ORef oRef = node.getObjectReference();
+			int type = node.getObjectReference().getObjectType();
+
+			if (type == ObjectType.INDICATOR)
+				return getTotalIndicatorCost(oRef, dateRange);
+			
+			if (type == ObjectType.FACTOR)
+				return getTotalFactorCost(getFactor(oRef), dateRange);
+
+			if (oRef.getObjectType() == ObjectType.TASK)
+				return getTotalTaskCost(new TaskId(oRef.getObjectId().asInt()), dateRange);
+			
+			if (oRef.getObjectType() == ObjectType.FAKE)
+				return getTotalFakeCost(node, dateRange);				
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		return  0.0;
+	}
+
+	
+	private void calculateTotalAssignment(Task task, DateRange dateRangeToUse) throws Exception
+	{
+		sumTotals(task, dateRangeToUse);
+		int subTaskCount = task.getSubtaskCount();
+		for (int index = 0; index < subTaskCount; index++)
+		{
+			BaseId subTaskId = task.getSubtaskId(index);
+			Task  subTask = (Task)project.findObject(ObjectType.TASK, subTaskId);
+			calculateTotalAssignment(subTask, dateRangeToUse);
+		}
+	}
+
+	private void sumTotals(Task task, DateRange DateRangeToUse) throws Exception
+	{
+		IdList idList = task.getAssignmentIdList();
+		for (int i = 0; i < idList.size(); i++)
+		{
+			Assignment assignment = (Assignment)project.findObject(ObjectType.ASSIGNMENT, idList.get(i));
+			ProjectResource resource = getProjectResource(idList.get(i));
+			if (resource != null)
+			{
+				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
+				double totalCostPerAssignment = (effortList.getTotalUnitQuantity(DateRangeToUse) * resource.getCostPerUnit());
+				totalCost += totalCostPerAssignment;
+			}
+		}
+	}
+
+	
 	
 	double totalCost;
 	private Project project;

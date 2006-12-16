@@ -11,7 +11,7 @@ import org.conservationmeasures.eam.views.treeViews.TaskTreeTablePanel;
 
 public class BudgetTreeTablePanel extends TaskTreeTablePanel
 {
-	public static BudgetTreeTablePanel createBudgetTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse)
+	public static BudgetTreeTablePanel createBudgetTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse) throws Exception
 	{
 		BudgetTreeTableModel model = new BudgetTreeTableModel(projectToUse);
 		BudgetTreeTable tree = new BudgetTreeTable(projectToUse, model);
