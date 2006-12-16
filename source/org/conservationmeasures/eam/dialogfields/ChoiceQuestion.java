@@ -41,10 +41,14 @@ public class ChoiceQuestion
 		return null;
 	}
 	
+	private static final Color DARK_YELLOW = new Color(255, 230, 0);
+	private static final Color LIGHT_GREEN = new Color(128, 255, 0); 
+	private static final Color DARK_GREEN = new Color(0, 160, 0);
+		
 	public static final Color COLOR_1_OF_4 = Color.RED;
-	public static final Color COLOR_2_OF_4 = Color.ORANGE;
-	public static final Color COLOR_3_OF_4 = Color.YELLOW;
-	public static final Color COLOR_4_OF_4 = Color.GREEN;
+	public static final Color COLOR_2_OF_4 = DARK_YELLOW;
+	public static final Color COLOR_3_OF_4 = LIGHT_GREEN;
+	public static final Color COLOR_4_OF_4 = DARK_GREEN;
 	
 	String tag;
 	String label;
