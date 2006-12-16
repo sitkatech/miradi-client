@@ -73,9 +73,10 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 		int height = calculatePerferredHeight();
         setPreferredSize(new Dimension(150,height));
         
-        setBackground(component.getBackground());
         if (overRideColor != null)
         	setBackground(overRideColor);
+        else
+        	setBackground(new Color(236,233,216));
 	}
 
 
