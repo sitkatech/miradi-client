@@ -10,11 +10,14 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
+import java.util.Enumeration;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
@@ -73,11 +76,10 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
 		int height = calculatePerferredHeight();
         setPreferredSize(new Dimension(150,height));
         
-        // FIXME: We should pull the color from the table/panel instead of hard-coding!
         if (overRideColor != null)
         	setBackground(overRideColor);
         else
-        	setBackground(new Color(236,233,216));
+        	setBackground(UIDEFAULT_TABLEHEADER_COLOR);
 	}
 
 
@@ -95,5 +97,6 @@ class TableHeaderRenderer extends JTextArea implements TableCellRenderer
     private static final int ABOUT_THREE_TEXT_LINES = 55;
 	private Border noFocusBorder;
 	static private Color overRideColor;
+	static private Color UIDEFAULT_TABLEHEADER_COLOR = UIManager.getDefaults().getColor("TableHeader.background");
 }
 
