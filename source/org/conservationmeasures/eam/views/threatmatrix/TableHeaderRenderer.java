@@ -10,14 +10,11 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
-import java.util.Enumeration;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
-import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
