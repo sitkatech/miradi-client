@@ -59,6 +59,34 @@ public class DateRange
 	
 	public String toString()
 	{
+		// FIXME: Really crude (but effective) hack!
+		if(startDate.getGregorianYear() == endDate.getGregorianYear())
+		{
+			if(startDate.getGregorianMonth() == 1 && startDate.getGregorianDay() == 1)
+			{
+				if(endDate.getGregorianMonth() == 12 && endDate.getGregorianDay() == 31)
+					return Integer.toString(startDate.getGregorianYear());
+				else if(endDate.getGregorianMonth() == 3 && endDate.getGregorianDay() == 31)
+					return "Q1 " + Integer.toString(startDate.getGregorianYear());
+			}
+			else if(startDate.getGregorianMonth() == 4 && startDate.getGregorianDay() == 1)
+			{
+				if(endDate.getGregorianMonth() == 6 && endDate.getGregorianDay() == 30)
+					return "Q2 " + Integer.toString(startDate.getGregorianYear());
+			}
+			else if(startDate.getGregorianMonth() == 7 && startDate.getGregorianDay() == 1)
+			{
+				if(endDate.getGregorianMonth() == 9 && endDate.getGregorianDay() == 30)
+					return "Q3 " + Integer.toString(startDate.getGregorianYear());
+			}
+			else if(startDate.getGregorianMonth() == 10 && startDate.getGregorianDay() == 1)
+			{
+				if(endDate.getGregorianMonth() == 12 && endDate.getGregorianDay() == 31)
+					return "Q4 " + Integer.toString(startDate.getGregorianYear());
+			}
+
+		}
+		
 		return startDate.toIsoDateString() + " - " + endDate.toIsoDateString();
 	}
 	

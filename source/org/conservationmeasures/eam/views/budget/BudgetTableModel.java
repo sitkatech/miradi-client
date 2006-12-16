@@ -117,7 +117,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			return "Cost Totals";
 		
 		if (isUnitsColumn(col))
-			return dateRanges[covertToUnitsColumn(col)].getLabel();
+			return dateRanges[covertToUnitsColumn(col)].toString();
 		
 		return "";
 	}
