@@ -5,7 +5,6 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.project.Project;
@@ -29,10 +28,10 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	private void combineColumnNames()
 	{
 		columnNames = new Vector();
-		columnNames.addAll(Arrays.asList(COLUMN_TAGS));
+		columnNames.add(ITEMS_COLUMN_NAME);
 		columnNames.addAll(yearlyDateRanges);
+		columnNames.add(COST_COLUMN_NAME);
 	}
-
 	
 	public int getColumnCount()
 	{
@@ -77,16 +76,16 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	
 	private boolean isCostColumn(int col)
 	{
-		return col == COST_COLUMN;
+		return col == getColumnCount() - 1;
 	}
 	
 	private Vector columnNames;
 	private Vector yearlyDateRanges;
 	private BudgetTotalsCalculator totalCalculator;
 	private Project project;
-	private static final String COLUMN_TAGS[] = {"Items", "Cost", };
+	
+	private static final String ITEMS_COLUMN_NAME = "Items";
+	private static final String COST_COLUMN_NAME = "Cost";
 	
 	private static final int ITEMS_COLUMN = 0;
-	private static final int COST_COLUMN = 1;
-	
 }
