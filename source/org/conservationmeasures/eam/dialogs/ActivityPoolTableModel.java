@@ -21,7 +21,7 @@ public class ActivityPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] COLUMN_TAGS = new String[] {
 		Task.TAG_LABEL,
-		Task.PSEUDO_TAG_FACTOR_LABEL,
+		Task.PSEUDO_TAG_STRATEGY_LABEL,
 	};
 	
 	public IdList getLatestIdListFromProject()

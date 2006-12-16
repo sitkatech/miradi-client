@@ -27,6 +27,7 @@ import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateObjectParameter;
 import org.conservationmeasures.eam.objecthelpers.DirectThreatSet;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
+import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
 import org.conservationmeasures.eam.objecthelpers.TargetSet;
 import org.conservationmeasures.eam.objectpools.AccountingCodePool;
@@ -48,6 +49,7 @@ import org.conservationmeasures.eam.objectpools.ValueOptionPool;
 import org.conservationmeasures.eam.objectpools.ViewPool;
 import org.conservationmeasures.eam.objects.Cause;
 import org.conservationmeasures.eam.objects.Desire;
+import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorLink;
@@ -424,8 +426,10 @@ public class ObjectManager
 	{
 		try
 		{
-			if(fieldTag.equals(Task.PSEUDO_TAG_FACTOR_LABEL))
-				return getLabelOfStrategyContainingActivity(taskId);
+			if(fieldTag.equals(Task.PSEUDO_TAG_STRATEGY_LABEL))
+				return getLabelOfTaskParent(taskId);
+			if(fieldTag.equals(Task.PSEUDO_TAG_INDICATOR_LABEL))
+				return getLabelOfTaskParent(taskId);
 			if (fieldTag.equals(Task.PSEUDO_TAG_SUBTASK_TOTAL))
 				return getSubtaskTotalCost(taskId);
 			if (fieldTag.equals(Task.PSEUDO_TAG_TASK_TOTAL))
@@ -480,30 +484,24 @@ public class ObjectManager
 		return "";
 	}
 	
-	private String getLabelOfStrategyContainingActivity(BaseId taskId) throws Exception
+	private String getLabelOfTaskParent(BaseId taskId) throws Exception
 	{
-		ChainManager chainManager = new ChainManager(getProject());
-		FactorSet factors = chainManager.findFactorsThatHaveThisObject(Factor.TYPE_INTERVENTION, taskId, Strategy.TAG_ACTIVITY_IDS);
-		return factorLabelsAsMultiline((Factor[])factors.toArray(new Factor[0]));
+		Task task = (Task)project.findObject(ObjectType.TASK, taskId);
+		ORef parentRef = task.getParentRef();
+		if(parentRef == null || parentRef.getObjectType() == ObjectType.FAKE)
+		{
+			EAM.logDebug("Task without parent: " + taskId);
+			return "(none)";
+		}
+		EAMObject parent = project.findObject(parentRef);
+		if(parent == null)
+		{
+			EAM.logDebug("Parent of task " + taskId + " not found: " + parentRef);
+			return "(none)";
+		}
+		return parent.getData(EAMBaseObject.TAG_LABEL);
 	}
 	
-	// TODO: Convert other methods in this file to call this one
-	private String factorLabelsAsMultiline(Factor[] factors)
-	{
-		String label ="";
-		boolean isFirst = true;
-		for (int i = 0; i < factors.length; i++)
-		{
-			Factor cmNode = factors[i];
-			if (!isFirst)
-				label += "\n";
-			label += cmNode.getLabel();
-			
-			isFirst = false;
-		}
-		return label;
-	}
-
 	private String getRelatedFactorLabelsAsMultiLine(FactorType nodeType, int annotationType, BaseId annotationId, String fieldTag) throws Exception
 	{
 		String label ="";

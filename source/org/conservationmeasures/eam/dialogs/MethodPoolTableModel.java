@@ -20,7 +20,7 @@ public class MethodPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] COLUMN_TAGS = new String[] {
 		Task.TAG_LABEL,
-		Task.PSEUDO_TAG_FACTOR_LABEL,
+		Task.PSEUDO_TAG_INDICATOR_LABEL,
 	};
 	
 	public IdList getLatestIdListFromProject()

@@ -136,7 +136,8 @@ public class Task extends EAMBaseObject
 	public final static String TAG_PARENT_REF = "ParentRef";
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
-	public final static String PSEUDO_TAG_FACTOR_LABEL = "PseudoTagFactorLabel";
+	public final static String PSEUDO_TAG_STRATEGY_LABEL = "PseudoTagStrategyLabel";
+	public final static String PSEUDO_TAG_INDICATOR_LABEL = "PseudoTagIndicatorLabel";
 	public final static String PSEUDO_TAG_SUBTASK_TOTAL = "PseudoTagSubtaskTotal";
 	public final static String PSEUDO_TAG_TASK_TOTAL = "PseudoTagTaskTotal";
 	public final static String PSEUDO_TAG_TASK_COST = "PseudoTagTaskCost";
