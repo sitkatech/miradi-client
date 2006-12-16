@@ -217,6 +217,11 @@ public class Project
 		return graphLayoutCache;
 	}
 	
+	public EAMObject findObject(ORef ref)
+	{
+		return findObject(ref.getObjectType(), ref.getObjectId());
+	}
+
 	public EAMObject findObject(int objectType, BaseId objectId)
 	{
 		EAMObjectPool pool = getPool(objectType);
