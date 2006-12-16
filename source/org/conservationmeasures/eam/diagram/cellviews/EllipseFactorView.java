@@ -41,6 +41,7 @@ import java.awt.geom.Point2D;
 
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.diagram.renderers.EllipseRenderer;
+import org.conservationmeasures.eam.diagram.renderers.EllipseWithPriorityRenderer;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphCellEditor;
@@ -75,5 +76,5 @@ public class EllipseFactorView extends FactorView
 		return getAttributes().createPoint(result);
 	}
 	
-	protected static EllipseRenderer ellipseRenderer = new EllipseRenderer();
+	protected static EllipseRenderer ellipseRenderer = new EllipseWithPriorityRenderer();
 }

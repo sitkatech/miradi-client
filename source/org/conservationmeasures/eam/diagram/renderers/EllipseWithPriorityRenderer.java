@@ -1,5 +1,5 @@
 /*
- * Copyright 2005, The Benetech Initiative
+ * Copyright 2006, The Benetech Initiative
  * 
  * This file is confidential and proprietary
  */
@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-public class RectangleWithPriorityRenderer extends RectangleRenderer
+public class EllipseWithPriorityRenderer extends EllipseRenderer
 {
 	public void fillShape(Graphics g, Rectangle rect, Color color)
 	{
@@ -34,9 +34,9 @@ public class RectangleWithPriorityRenderer extends RectangleRenderer
 		smallRect.width = PRIORITY_WIDTH;
 		smallRect.height = PRIORITY_HEIGHT;
 		setPaint(g2, smallRect, priority.getColor());
-		g.fillRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		g.fillOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		g2.setColor(Color.BLACK);
-		g.drawRect(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
+		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 	}
 
 	private static final int PRIORITY_WIDTH = 20;
