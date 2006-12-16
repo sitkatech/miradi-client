@@ -8,30 +8,25 @@ package org.conservationmeasures.eam.views.workplan;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.FactorSet;
-import org.conservationmeasures.eam.objecthelpers.ORef;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
+import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.ChainManager;
 import org.conservationmeasures.eam.project.Project;
-import org.conservationmeasures.eam.views.TreeTableNode;
 import org.conservationmeasures.eam.views.diagram.DeleteAnnotationDoer;
 import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
-public class DeleteWorkPlanTreeNode extends WorkPlanDoer
+public class DeleteWorkPlanTreeNode extends AbstractTaskTreeDoer
 {
 	public boolean isAvailable()
 	{
-		TreeTableNode selectedNode = getSelectedObject();
-		if (selectedNode == null)
+		EAMObject[] selected = getObjects();
+		if(selected == null || selected.length != 1)
 			return false;
-		
-		int selectedNodeType = selectedNode.getObjectReference().getObjectType();
-		if (selectedNodeType == ObjectType.FAKE)
-			return false;
-		
-		return (selectedNodeType == ObjectType.TASK || selectedNodeType == ObjectType.INDICATOR);
+	
+		return (selected[0].getType() == ObjectType.TASK || selected[0].getType() == ObjectType.INDICATOR);
 	}
 
 	public void doIt()
@@ -42,15 +37,15 @@ public class DeleteWorkPlanTreeNode extends WorkPlanDoer
 		try
 		{
 			Project project = getProject();
-			ORef selectedRef = getSelectedObject().getObjectReference();
-			if (selectedRef.getObjectType() == ObjectType.TASK)
+			EAMObject object = getObjects()[0];
+			if (object.getType() == ObjectType.TASK)
 			{
-				DeleteActivity.deleteTask(project, (Task)getSelectedObject().getObject());
+				DeleteActivity.deleteTask(project, (Task)object);
 			}
-			else if (selectedRef.getObjectType() == ObjectType.INDICATOR)
+			else if (object.getType() == ObjectType.INDICATOR)
 			{
-				Factor factor = getFactor(project, getSelectedObject().getObjectReference().getObjectId());
-				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)getSelectedObject().getObject(), Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
+				Factor factor = getFactor(project, object.getId());
+				DeleteAnnotationDoer.deleteAnnotationViaCommands(project, factor, (Indicator)object, Factor.TAG_INDICATOR_IDS, getConfirmDialogText());
 			}
 		}
 		catch (Exception e)
