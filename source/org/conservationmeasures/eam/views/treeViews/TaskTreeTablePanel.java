@@ -58,7 +58,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
-		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LAST_LINE);
+		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LINE_ENDS);
 
 		tree.getTree().addSelectionRow(0);
 		project.addCommandExecutedListener(this);
@@ -141,7 +141,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 	
 	protected Box createButtonBox(Actions actions)
 	{
-		Box buttonBox = Box.createHorizontalBox();
+		Box buttonBox = Box.createVerticalBox();
 		
 		UiButton addActivityButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateActivity.class), tree);
 		UiButton addMethodButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateMethod.class), tree);
