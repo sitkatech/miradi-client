@@ -25,7 +25,7 @@ public class EllipseWithPriorityRenderer extends EllipseRenderer
 	
 	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
 	{
-		if(priority == null)
+		if(rating == null || rating.getCode().length() == 0)
 			return;
 
 		Rectangle smallRect = new Rectangle();
@@ -33,7 +33,7 @@ public class EllipseWithPriorityRenderer extends EllipseRenderer
 		smallRect.y = rect.y;
 		smallRect.width = PRIORITY_WIDTH;
 		smallRect.height = PRIORITY_HEIGHT;
-		setPaint(g2, smallRect, priority.getColor());
+		setPaint(g2, smallRect, rating.getColor());
 		g.fillOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);
 		g2.setColor(Color.BLACK);
 		g.drawOval(smallRect.x, smallRect.y, smallRect.width, smallRect.height);

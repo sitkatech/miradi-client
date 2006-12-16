@@ -53,12 +53,14 @@ import org.conservationmeasures.eam.dialogfields.ChoiceItem;
 import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Goal;
 import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Objective;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Target;
 import org.conservationmeasures.eam.objects.ValueOption;
 import org.conservationmeasures.eam.project.ThreatRatingFramework;
+import org.conservationmeasures.eam.questions.TargetStatusQuestion;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -80,8 +82,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		priority = null;
 		if(node.isDirectThreat())
 			priority = framework.getThreatThreatRatingValue(node.getWrappedId());
-		else if(node.isTarget())
-			priority = framework.getTargetThreatRatingValue(node.getWrappedId());
+		if(node.isTarget())
+		{
+			Target target = (Target)node.getUnderlyingObject();
+			String ratingCode = target.getData(Target.TAG_TARGET_STATUS);
+			TargetStatusQuestion question = new TargetStatusQuestion("");
+			rating = question.findChoiceByCode(ratingCode);
+		}
 		
 		if(node.isStrategy())
 			rating = ((Strategy)node.getUnderlyingObject()).getStrategyRating();
