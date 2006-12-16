@@ -184,8 +184,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			toolBarBox.add(toolBar);
 			toolBarBox.invalidate();
 			toolBarBox.validate();
-			getCurrentView().getMainWindow().invalidate();
-			getCurrentView().getMainWindow().validate();
+			invalidate();
+			validate();
 			repaint();
 		}
 	}
