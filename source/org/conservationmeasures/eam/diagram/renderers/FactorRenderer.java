@@ -105,28 +105,29 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				indicatorText = "*";
 		}
 		
-		desireText = null;
+		objectivesText = null;
 		if(diagram.areObjectivesVisible())
 		{
 			if(node.canHaveObjectives())
 			{
 				IdList objectiveIds = node.getObjectives();
 				if(objectiveIds.size() == 1)
-					desireText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
+					objectivesText = EAM.text("Obj") + " " + model.getProject().getObjectData(ObjectType.OBJECTIVE, objectiveIds.get(0), Objective.TAG_SHORT_LABEL);
 				else if(objectiveIds.size() > 1)
-					desireText = "" + objectiveIds.size() + " " + EAM.text("Objs");
+					objectivesText = "" + objectiveIds.size() + " " + EAM.text("Objs");
 			}
 		}
 		
+		goalsText = null;
 		if(diagram.areGoalsVisible())
 		{
 			if(node.canHaveGoal())
 			{
 				IdList goalIds = node.getGoals();
 				if(goalIds.size() == 1)
-					desireText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
+					goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
 				else if(goalIds.size() > 1)
-					desireText = "" + goalIds.size() + " " + EAM.text("Goals");
+					goalsText = "" + goalIds.size() + " " + EAM.text("Goals");
 			}
 		}
 	
@@ -147,8 +148,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		if(desireText != null)
-			drawAnnotationCellRect(rect, g2, new RectangleRenderer(), desireText);
+		if(objectivesText != null)
+			drawAnnotationCellRect(rect, g2, new RectangleRenderer(), objectivesText);
+		
+		if(goalsText != null)
+			drawAnnotationCellRect(rect, g2, new EllipseRenderer(), goalsText);
+		
 		if(indicatorText != null)
 			drawIndicator(rect, g2);
 	}
@@ -215,5 +220,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	DiagramFactor node;
 	ChoiceItem rating;
 	String indicatorText;
-	String desireText;
+	String objectivesText;
+	String goalsText;
 }
