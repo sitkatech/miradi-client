@@ -5,12 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.icons.ContributingFactorIcon;
+import org.conservationmeasures.eam.icons.DirectThreatIcon;
+import org.conservationmeasures.eam.icons.StrategyIcon;
+import org.conservationmeasures.eam.icons.TargetIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
@@ -43,6 +48,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		if(factorToEdit.isTarget())
 		{
 			addField(createChoiceField(new TargetStatusQuestion(Target.TAG_TARGET_STATUS)));
+			detailIcon = new TargetIcon();
 		}
 		
 		if(factorToEdit.isDirectThreat())
@@ -50,6 +56,12 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			// FIXME: Convert to new mechanism
 			add(new UiLabel(EAM.fieldLabel(ObjectType.FACTOR,  Cause.TAG_TAXONOMY_CODE)));
 			add(createThreatClassificationDropdown());
+			detailIcon = new DirectThreatIcon();
+		}
+		
+		if(factorToEdit.isContributingFactor())
+		{
+			detailIcon = new ContributingFactorIcon();
 		}
 
 		if(factorToEdit.isStrategy())
@@ -71,6 +83,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 			addField(createChoiceField(new StrategyFeasibilityQuestion(Strategy.TAG_FEASIBILITY_RATING)));
 			addField(createChoiceField(new StrategyCostQuestion(Strategy.TAG_COST_RATING)));
 			addField(createReadOnlyChoiceField(new StrategyRatingSummary(Strategy.PSEUDO_TAG_RATING_SUMMARY)));
+			detailIcon = new StrategyIcon();
 		}
 
 		addField(createMultilineField(Factor.TAG_COMMENT));
@@ -78,6 +91,14 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
+	
+	public Icon getIcon()
+	{
+		return detailIcon;
+	}
+	
+	private Icon detailIcon;
+	
 	class StatusChangeHandler implements ItemListener
 	{
 		public void itemStateChanged(ItemEvent event)

@@ -5,7 +5,10 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import javax.swing.Icon;
+
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.icons.ObjectiveIcon;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
@@ -22,4 +25,10 @@ public class ObjectiveListManagementPanel extends ObjectListManagementPanel
 	{
 		return EAM.text("Tab|Objectives");
 	}
+	
+	public Icon getIcon()
+	{
+		return new ObjectiveIcon();
+	}
+	
 }

@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -128,25 +129,29 @@ public class FactorPropertiesPanel extends DisposablePanel
 	{
 		tabs = new JTabbedPane();
 		detailsTab = new FactorDetailsTab(getProject(), diagramFactor);
-		tabs.add(detailsTab, detailsTab.getPanelDescription());
 		
+		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
+
 		indicatorsTab = new IndicatorListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-		tabs.add(indicatorsTab, indicatorsTab.getPanelDescription());
+		tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
 		
 		if(diagramFactor.canHaveObjectives())
 		{
 			objectivesTab = new ObjectiveListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			tabs.add(objectivesTab, objectivesTab.getPanelDescription());
+			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
 		}
 		
 		if(diagramFactor.canHaveGoal())
 		{
 			goalsTab = new GoalListManagementPanel(getProject(), getCurrentDiagramFactor().getWrappedId(), mainWindow.getActions());
-			tabs.add(goalsTab, goalsTab.getPanelDescription());
+			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
 		if(diagramFactor.isStrategy())
-			tabs.add(createTasksGrid(diagramFactor), EAM.text("Tab|Actions"));
+		{
+			ActivityListManagementPanel activitiesTab = new ActivityListManagementPanel(getProject(), getCurrentFactorId(), mainWindow.getActions());
+			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
+		}
 		
 		return tabs;
 	}
@@ -175,13 +180,14 @@ public class FactorPropertiesPanel extends DisposablePanel
 			return realPanel.getPanelDescription();
 		}
 		
+		public Icon getIcon()
+		{
+			return realPanel.getIcon();
+		}
+		
 		FactorDetailsPanel realPanel;
 	}
 
-	private Component createTasksGrid(DiagramFactor diagramFactor) throws Exception
-	{
-		return new ActivityListManagementPanel(getProject(), getCurrentFactorId(), mainWindow.getActions());
-	}
 
 	private Component createTextField(String initialText, int maxLength)
 	{
@@ -248,7 +254,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	public static final int TAB_GOALS = 3;
 
 	JTabbedPane tabs;
-	ModelessDialogPanel detailsTab;
+	FactorDetailsTab detailsTab;
 	ObjectiveListManagementPanel objectivesTab;
 	IndicatorListManagementPanel indicatorsTab;
 	GoalListManagementPanel goalsTab;
