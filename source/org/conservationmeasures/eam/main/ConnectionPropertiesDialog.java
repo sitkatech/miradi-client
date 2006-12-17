@@ -10,6 +10,8 @@ import java.awt.Container;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Vector;
 
 import javax.swing.Box;
 
@@ -17,6 +19,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
@@ -44,33 +47,35 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	private Box createFromToBox()
 	{
-		from = createChoices();
-		to = createChoices();
+		linkFromList = createChoices("FROM");
+		linkToList = createChoices("TO");
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
 		DiagramFactor firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
-			from.setSelectedItem(firstSelected);
+			linkFromList.setSelectedItem(firstSelected);
 		DiagramFactor secondSelected = diagram.getSelectedFactor(1);
 		if(secondSelected != null)
-			to.setSelectedItem(secondSelected);
+			linkToList.setSelectedItem(secondSelected);
 		Box box = Box.createHorizontalBox();
-		Component[] components = {from, new UiLabel(EAM.text("Label|affects")), to};
+		Component[] components = {linkFromList, new UiLabel(EAM.text("Label|affects")), linkToList};
 		Utilities.addComponentsRespectingOrientation(box, components);
 		return box;
 	}
 	
-	private UiComboBox createChoices()
+	private UiComboBox createChoices(String linkFromTo)
 	{
+		boolean acceptStrategies = linkFromTo.equals("FROM");
 		DiagramModel model = mainWindow.getProject().getDiagramModel();
 		UiComboBox comboBox = new UiComboBox();
 		comboBox.addItem(EAM.text("Label|--Select One---"));
-		Object[] all = DiagramModel.getAll(model);
-		for(int i=0; i < all.length; ++i)
+		
+		Vector vectorOfFactors = model.getAllDiagramFactors();
+		DiagramFactor[] diagramFactors = (DiagramFactor[])vectorOfFactors.toArray(new DiagramFactor[0]);
+		Arrays.sort(diagramFactors, new IgnoreCaseStringComparator());
+		for(int i=0; i < diagramFactors.length; ++i)
 		{
-			if(all[i] instanceof DiagramFactor)
-			{
-				comboBox.addItem(all[i]);
-			}
+			if(acceptStrategies || !diagramFactors[i].isStrategy())
+				comboBox.addItem(diagramFactors[i]);
 		}
 		return comboBox;
 	}
@@ -93,7 +98,7 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	{
 		if(event.getSource() == okButton)
 		{
-			if(from.getSelectedIndex() == 0 || to.getSelectedIndex() == 0)
+			if(linkFromList.getSelectedIndex() == 0 || linkToList.getSelectedIndex() == 0)
 			{
 				String title = EAM.text("Incomplete Link");
 				String body = EAM.text("You must select one item in each of the two lists");
@@ -113,18 +118,18 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	public DiagramFactor getFrom()
 	{
-		return (DiagramFactor)from.getSelectedItem();
+		return (DiagramFactor)linkFromList.getSelectedItem();
 	}
 	
 	public DiagramFactor getTo()
 	{
-		return (DiagramFactor)to.getSelectedItem();
+		return (DiagramFactor)linkToList.getSelectedItem();
 	}
 	
 	MainWindow mainWindow;
 	boolean result;
-	UiComboBox from;
-	UiComboBox to;
+	UiComboBox linkFromList;
+	UiComboBox linkToList;
 	UiButton okButton;
 	UiButton cancelButton;
 }
