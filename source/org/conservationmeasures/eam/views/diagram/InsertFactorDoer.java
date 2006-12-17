@@ -22,6 +22,7 @@ import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.ids.DiagramFactorId;
 import org.conservationmeasures.eam.ids.FactorId;
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.project.FactorCommandHelper;
 
 abstract public class InsertFactorDoer extends LocationDoer
@@ -37,11 +38,14 @@ abstract public class InsertFactorDoer extends LocationDoer
 
 	public void doIt() throws CommandFailedException
 	{
+		if (!isAvailable())
+			return;
+		
 		try
 		{
 			DiagramFactor[] selectedFactors = getProject().getOnlySelectedFactors();
 			FactorId id = insertFactorItself();
-			if(selectedFactors.length > 0)
+			if((selectedFactors.length > 0) && (getTypeToInsert()!= Factor.TYPE_TARGET))
 				linkToPreviouslySelectedFactors(id, selectedFactors);
 			else
 				notLinkingToAnyFactors();
