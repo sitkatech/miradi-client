@@ -19,6 +19,7 @@ import org.conservationmeasures.eam.diagram.DiagramComponent;
 import org.conservationmeasures.eam.diagram.DiagramModel;
 import org.conservationmeasures.eam.diagram.cells.DiagramFactor;
 import org.conservationmeasures.eam.dialogs.EAMDialog;
+import org.conservationmeasures.eam.objects.FactorLink;
 import org.conservationmeasures.eam.utils.IgnoreCaseStringComparator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiComboBox;
@@ -47,8 +48,8 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 	
 	private Box createFromToBox()
 	{
-		linkFromList = createChoices("FROM");
-		linkToList = createChoices("TO");
+		linkFromList = createChoices(FactorLink.FROM);
+		linkToList = createChoices(FactorLink.TO);
 		DiagramComponent diagram = mainWindow.getDiagramComponent();
 		DiagramFactor firstSelected = diagram.getSelectedFactor(0);
 		if(firstSelected != null)
@@ -62,10 +63,10 @@ public class ConnectionPropertiesDialog extends EAMDialog implements ActionListe
 		return box;
 	}
 	
-	private UiComboBox createChoices(String linkFromTo)
+	private UiComboBox createChoices(int linkFromTo)
 	{
-		boolean acceptStrategies = linkFromTo.equals("FROM");
-		boolean acceptTargets = linkFromTo.equals("TO");
+		boolean acceptStrategies = (linkFromTo == FactorLink.FROM);
+		boolean acceptTargets = (linkFromTo == FactorLink.TO);
 		
 		DiagramModel model = mainWindow.getProject().getDiagramModel();
 		UiComboBox comboBox = new UiComboBox();
