@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
+import java.util.HashMap;
+
 import javax.swing.JScrollPane;
 
 import org.martus.swing.HtmlViewer;
@@ -28,6 +30,19 @@ public class WizardStep extends SkeletonWizardStep
 		invalidate();
 		validate();
 	}
+	
+	public void valueChanged(String name, String value)
+	{
+		nameToValueMap.put(name, value);
+	}
+	
+	public String getValue(String name)
+	{
+		if (nameToValueMap.containsKey(name))
+			return (String)nameToValueMap.get(name);
+		return "";
+	}
 
+	HashMap nameToValueMap = new HashMap();
 	private HtmlViewer htmlViewer;
 }
