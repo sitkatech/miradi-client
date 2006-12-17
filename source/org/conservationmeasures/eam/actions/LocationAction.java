@@ -6,7 +6,7 @@
 package org.conservationmeasures.eam.actions;
 
 import java.awt.Point;
-import java.awt.event.ActionEvent;
+import java.util.EventObject;
 
 import javax.swing.Icon;
 
@@ -36,7 +36,7 @@ public abstract class LocationAction extends MainWindowAction
 		createAt = location;
 	}
 
-	public void doAction(ActionEvent event) throws CommandFailedException
+	public void doAction(EventObject event) throws CommandFailedException
 	{
 		LocationHolder invoker = (LocationHolder)event.getSource();
 		if(!invoker.hasLocation())
