@@ -180,7 +180,15 @@ public class EAM
 	public static boolean confirmDialog(String title, String[] body, String[] buttons)
 	{
 		UiNotifyDlg dlg = new UiNotifyDlg(mainWindow, title, body, buttons);
+		if (wasWindowClosed(dlg))
+			return false;
+		
 		return (dlg.getResult().equals(buttons[0]));
+	}
+
+	private static boolean wasWindowClosed(UiNotifyDlg dlg)
+	{
+		return dlg.getResult() == null;
 	}
 
 
