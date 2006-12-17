@@ -41,9 +41,9 @@ public class ChoiceQuestion
 		return null;
 	}
 	
-	private static final Color DARK_YELLOW = new Color(255, 230, 0);
-	private static final Color LIGHT_GREEN = new Color(128, 255, 0); 
-	private static final Color DARK_GREEN = new Color(0, 160, 0);
+	public static final Color DARK_YELLOW = new Color(255, 230, 0);
+	public static final Color LIGHT_GREEN = new Color(128, 255, 0); 
+	public static final Color DARK_GREEN = new Color(0, 160, 0);
 		
 	public static final Color COLOR_1_OF_4 = Color.RED;
 	public static final Color COLOR_2_OF_4 = DARK_YELLOW;

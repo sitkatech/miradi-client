@@ -12,9 +12,10 @@ import java.util.List;
 
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeCause;
 import org.conservationmeasures.eam.diagram.factortypes.FactorTypeTarget;
+import org.conservationmeasures.eam.dialogfields.ChoiceQuestion;
 import org.conservationmeasures.eam.ids.BaseId;
-import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.ids.FactorId;
+import org.conservationmeasures.eam.ids.IdList;
 import org.conservationmeasures.eam.main.EAMTestCase;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorLinkParameter;
 import org.conservationmeasures.eam.objecthelpers.CreateFactorParameter;
@@ -99,9 +100,10 @@ public class TestThreatRatingFramework extends EAMTestCase
 	{
 		ValueOption[] options = framework.getValueOptions();
 		assertEquals("wrong number of default options?", 5, options.length);
+		// NOTE: options are: [0]:1/VH, [1]:2/H, [2]:3/M, [3]:4/L, [4]:0/NONE 
 		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
 		assertEquals("wrong numeric value? ", 3, options[1].getNumericValue());
-		assertEquals("bad color?", Color.YELLOW, options[2].getColor());
+		assertEquals("bad color?", ChoiceQuestion.LIGHT_GREEN, options[2].getColor());
 	}
 	
 	public void testFindValueOptionByNumericValue()
