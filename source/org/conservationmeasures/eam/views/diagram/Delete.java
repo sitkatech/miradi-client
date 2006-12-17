@@ -149,13 +149,23 @@ public class Delete extends ProjectDoer
 		deleteAnnotations(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
 		deleteAnnotations(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
 		deleteAnnotations(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
+		//TODO: there is a buildCommandsToDeleteAnnotation in DelteAnnotationDoer that maybe shoud be called instead of the above.
+		//if (factorToDelete.isStrategy())
+		//	buildCommandsToDeleteChildTasks(factorToDelete.getRef(), Strategy.TAG_ACTIVITY_IDS);
 	}
 
+	
 	private void deleteAnnotations(Factor factorToDelete, int annotationType, String annotationListTag) throws Exception
 	{
 		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
+//			if (annotationType == ObjectType.INDICATOR)
+//			{
+//				DeleteActivity.deleteTaskTree(Factor.TAG_INDICATOR_IDS);
+//				Vector  vec = DeleteAnnotationDoer.buildCommandsToDeleteSubTasks(getProject(), ObjectType.TASK, factorToDelete.getId());
+//			}
+			
 			EAMBaseObject thisAnnotation = (EAMBaseObject)getProject().findObject(annotationType, ids.get(annotationIndex));
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			
