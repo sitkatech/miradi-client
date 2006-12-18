@@ -6,7 +6,6 @@
 package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.Box;
 
@@ -29,11 +28,6 @@ public class AssignmentEditorComponent extends DisposablePanel
 	public AssignmentEditorComponent(Actions actions, Project projectToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(new BorderLayout());
-		
-		//FIXME budget code - remove, added just to display bigger columns
-		Dimension dimension = new Dimension(950,400);
-		setPreferredSize(dimension);
-		setMinimumSize(dimension);
 		
 		project = projectToUse;
 		objectPicker = objectPickerToUse;
