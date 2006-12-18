@@ -18,7 +18,6 @@ import org.conservationmeasures.eam.dialogs.ModelessDialogWithClose;
 import org.conservationmeasures.eam.dialogs.ResourcePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.TaskPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.WorkPlanManagementPanel;
-import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.project.Project;
@@ -61,7 +60,7 @@ public class WorkPlanView extends TabbedView
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
 		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow().getActions());
 		
-		addTab(EAM.text("Work Plan"), workPlanManagementPanel);
+		addScrollableTab(workPlanManagementPanel);
 		addScrollableTab(activitiesManagementPanel);
 		addScrollableTab(methodPoolManagementPanel);
 		addScrollableTab(resourceManagementPanel);

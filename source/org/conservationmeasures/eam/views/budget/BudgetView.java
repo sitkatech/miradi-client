@@ -1,7 +1,6 @@
 package org.conservationmeasures.eam.views.budget;
 
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionCreateAccountingCode;
@@ -20,7 +19,6 @@ import org.conservationmeasures.eam.dialogs.AccountingCodePoolManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetManagementPanel;
 import org.conservationmeasures.eam.dialogs.BudgetPropertiesPanel;
 import org.conservationmeasures.eam.dialogs.FundingSourcePoolManagementPanel;
-import org.conservationmeasures.eam.dialogs.ModelessDialogPanel;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.project.Project;
@@ -81,12 +79,6 @@ public class BudgetView extends TabbedView
 		addTab(accountingCodePoolManagementPanel.getPanelDescription(),accountingCodePoolManagementPanel.getIcon(), accountingCodePoolManagementPanel);
 		addTab(fundingSourcePoolManagementPanel.getPanelDescription(), fundingSourcePoolManagementPanel.getIcon(), fundingSourcePoolManagementPanel);
 		addTab(EAM.text("Reporting"), new UiScrollPane(new BudgetComponent()));
-	}
-	
-	private void addScrollableTab(ModelessDialogPanel panel)
-	{
-		JScrollPane scrollPane = new JScrollPane(panel);
-		addTab(panel.getPanelDescription(), scrollPane);
 	}
 	
 	public void deleteTabs() throws Exception
