@@ -21,7 +21,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Direct Threat");
+		return EAM.text("Label|New Factor");
 	}
 
 	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] factorsToLinkTo) throws CommandFailedException

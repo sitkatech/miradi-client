@@ -21,7 +21,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Contributing Factor");
+		return EAM.text("Label|New Factor");
 	}
 
 	void linkToPreviouslySelectedFactors(FactorId newlyInsertedId, DiagramFactor[] factorsToLinkTo) throws CommandFailedException
