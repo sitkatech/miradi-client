@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogfields;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
@@ -17,6 +18,7 @@ import javax.swing.text.JTextComponent;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.project.Project;
+import org.martus.swing.UiTextArea;
 
 public class ObjectTextInputField extends ObjectDataInputField
 {
@@ -82,6 +84,18 @@ public class ObjectTextInputField extends ObjectDataInputField
 		{
 			setNeedsSave();
 		}
+	}
+	
+	public void setupFixedSizeTextField(int row, int column)
+	{
+		JTextComponent textComponent = (JTextComponent)getComponent();
+		UiTextArea textArea = new UiTextArea(row,column);
+		textComponent.setBorder(textArea.getBorder());
+		textComponent.setFont(textArea.getFont());
+		int preferredHeight = textComponent.getPreferredSize().height;
+		int preferredWidth = textArea.getPreferredSize().width;
+		Dimension preferredSize = new Dimension(preferredWidth, preferredHeight);
+		textComponent.setPreferredSize(preferredSize);
 	}
 	
 	JTextComponent field;
