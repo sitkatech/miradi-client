@@ -42,7 +42,7 @@ public class WorkPlanManagementPanel extends ModelessDialogPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Work Panel Tab");
+		return EAM.text("Work Plan");
 	}
 	
 	public WorkPlanPanel getWorkPlanPanel()
