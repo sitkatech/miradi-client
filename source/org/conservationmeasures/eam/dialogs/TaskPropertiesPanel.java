@@ -5,23 +5,21 @@
  */
 package org.conservationmeasures.eam.dialogs;
 
+import java.awt.BorderLayout;
+
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.event.ListSelectionListener;
 
 import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.commands.Command;
-import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.main.CommandExecutedEvent;
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.objecthelpers.ObjectType;
-import org.conservationmeasures.eam.objects.EAMObject;
-import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.conservationmeasures.eam.views.workplan.AssignmentEditorComponent;
+import org.conservationmeasures.eam.views.workplan.TaskPropertiesInputPanel;
 
 public class TaskPropertiesPanel extends ObjectDataInputPanel
 {
@@ -41,12 +39,11 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
 		editorComponent = new AssignmentEditorComponent(actions, project, objectPicker);
+		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit, editorComponent);
 		
-		addCommonFields();
-
-		//FIXME remove empty component and make layoutmanager do the right thing.
-		add(new JLabel());
-		add(editorComponent);
+		setLayout(new BorderLayout());
+		add(inputPanel, BorderLayout.PAGE_START);
+		add(editorComponent, BorderLayout.CENTER);
 	}
 
 	public TaskPropertiesPanel(Project projectToUse, Actions actions, BaseId idToEdit) throws Exception
@@ -54,86 +51,54 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		super(projectToUse, ObjectType.TASK, idToEdit);
 		project = projectToUse;
 		setBorder(BorderFactory.createEtchedBorder());
-		
-		addCommonFields();
+		inputPanel = new TaskPropertiesInputPanel(project, actions, idToEdit);
+		add(inputPanel);
 	}
 	
 	public void dispose()
 	{
-		if(editorComponent != null)
-			editorComponent.dispose();
-		editorComponent = null;
+		if(editorComponent == null)
+			return;
+		
+		editorComponent.dispose();
+		
+		if(inputPanel == null)
+			return;
+		
+		inputPanel.dispose();
+		
 		super.dispose();
 	}
 
-	private void addCommonFields()
-	{
-		addField(createStringField(Task.TAG_LABEL));
-		
-		updateFieldsFromProject();
-	}
-	
 	public void setObjectId(BaseId id)
 	{
-		super.setObjectId(id);
-		if (editorComponent == null)
-			return;
-	
-		editorComponent.setTaskId(id);
+		inputPanel.setObjectId(id);
 	}
-	
 	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Task Properties");
 	}
 		
-	private void updateTable()
-	{
-		if (editorComponent == null)
-			return;
-		
-		editorComponent.dataWasChanged();
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			updateTable();
+		inputPanel.commandExecuted(event);
 	}
 	
 	public void commandUndone(CommandExecutedEvent event)
 	{
 		super.commandUndone(event);
-		if (event.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			updateTable();
+		inputPanel.commandUndone(event);
 	}
 	
 	public void commandFailed(Command command, CommandFailedException e)
 	{
 		super.commandFailed(command, e);
+		inputPanel.commandFailed(command, e);
 	}
 	
-		
 	Project project;
 	AssignmentEditorComponent editorComponent;
-	
+	TaskPropertiesInputPanel inputPanel;	
 }
-
-class FakePicker implements ObjectPicker
-{
-	public void addListSelectionListener(ListSelectionListener listener)
-	{
-	}
-	
-	public void clearSelection()
-	{
-	}
-	
-	public EAMObject[] getSelectedObjects()
-	{
-			return new Task[0];
-	}	
-}
-
