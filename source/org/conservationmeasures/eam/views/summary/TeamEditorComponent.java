@@ -72,6 +72,7 @@ public class TeamEditorComponent extends ObjectTablePanel implements KeyListener
 			((ObjectTableModel) getTable().getModel()).rowsWereAddedOrRemoved();
 	}
 
+	//TODO: Enter key should not cuase a traveral event when used int htis many....
 	public void keyPressed(KeyEvent keyEvent)
 	{
 		if (keyEvent.getKeyCode() ==KeyEvent.VK_ENTER)
