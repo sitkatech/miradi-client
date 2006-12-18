@@ -2,6 +2,7 @@ package org.conservationmeasures.eam.views.noproject.wizard;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
@@ -18,7 +19,6 @@ import org.conservationmeasures.eam.views.noproject.RenameProject;
 import org.conservationmeasures.eam.views.umbrella.ExportZippedProjectFileDoer;
 import org.conservationmeasures.eam.views.umbrella.WizardPanel;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.swing.UiOptionPane;
 
 public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandler
 {
@@ -150,8 +150,16 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		String url;
 	}
 
-	public void valueChanged(String widget, String newValue)
+	public void valueChanged(String name, String value)
 	{
+		nameToValueMap.put(name, value);
+	}
+	
+	public String getValue(String name)
+	{
+		if (nameToValueMap.containsKey(name))
+			return (String)nameToValueMap.get(name);
+		return "";
 	}
 
 	public void buttonPressed(String buttonName)
@@ -201,8 +209,8 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 
 	private void createProject() throws Exception
 	{
-		String newName = UiOptionPane.showInputDialog("Enter New Project Name");
-		if (newName != null)
+		String newName = getValue("NewProjectName");
+		if (newName.length()>0)
 		{
 			if (getMainWindow().getProject().isValidProjectFilename(newName))
 			{
@@ -242,6 +250,7 @@ public class NoProjectWizardPanel extends WizardPanel implements HyperlinkHandle
 		return mainWindow;
 	}
 
+	HashMap nameToValueMap = new HashMap();
 	
 	public static final String OPEN_PREFIX = "OPEN:";
 	public static final String COPY_PREFIX = "COPY:";
