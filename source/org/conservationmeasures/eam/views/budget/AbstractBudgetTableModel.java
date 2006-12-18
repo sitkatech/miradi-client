@@ -100,7 +100,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return false;
 	}
 
-	protected boolean isCostColumn(int col)
+	public boolean isCostColumn(int col)
 	{
 		if (col < (TOTAL_ROW_HEADER_COLUMN_COUNT))
 			return false;
