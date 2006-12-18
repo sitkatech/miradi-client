@@ -132,6 +132,7 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void addButton(UiButton button)
 	{
 		buttons.add(button);
+		button.setPreferredSize(buttons.getPreferredSize());
 	}
 	
 	public void addDoubleClickAction(EAMAction action ) 
