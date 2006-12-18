@@ -27,7 +27,6 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorCluster;
-import org.conservationmeasures.eam.objects.Indicator;
 import org.conservationmeasures.eam.objects.Strategy;
 import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
@@ -167,12 +166,6 @@ public class Delete extends ProjectDoer
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
 			EAMBaseObject thisAnnotation = (EAMBaseObject)getProject().findObject(annotationType, ids.get(annotationIndex));
-			
-			if (annotationType == ObjectType.INDICATOR)
-			{
-				deleteChildTask(thisAnnotation, Indicator.TAG_TASK_IDS);
-			}
-			
 			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			getProject().executeCommands(commands);
 		}
