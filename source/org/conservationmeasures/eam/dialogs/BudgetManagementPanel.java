@@ -21,7 +21,7 @@ public class BudgetManagementPanel extends ModelessDialogPanel
 		treeTableComponent = treeTableComponentToUse;
 		add(treeTableComponent, BorderLayout.CENTER);
 		
-		treeTableComponent.setPropertiesPanel(propertiesPanel);
+		treeTableComponent.setPropertiesPanel(propertiesPanel.getInputPanel());
 		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 
