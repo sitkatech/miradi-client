@@ -156,7 +156,7 @@ public class Delete extends ProjectDoer
 		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 
 		// children inforceing referencial integrity as a cascade, instead of having the the code here.
 		if (factorToDelete.isStrategy())
-			deleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
+			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 	}
 
 	
@@ -172,7 +172,7 @@ public class Delete extends ProjectDoer
 	}
 	
 
-	private void deleteTasksInList(EAMBaseObject objectToDelete, String annotationListTag) throws Exception
+	private void removeAndDeleteTasksInList(EAMBaseObject objectToDelete, String annotationListTag) throws Exception
 	{
 		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
