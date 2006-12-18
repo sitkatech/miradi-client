@@ -24,6 +24,7 @@ import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.objects.FundingSource;
 import org.conservationmeasures.eam.objects.ProjectResource;
 import org.conservationmeasures.eam.project.Project;
+import org.conservationmeasures.eam.utils.AlternatingRowRenderer;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 
 public class BudgetTable extends JTable implements ObjectPicker 
@@ -34,6 +35,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		model = modelToUse;
 		project = projectToUse;
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		setDefaultRenderer(Object.class, new AlternatingRowRenderer());
 		rebuild();
 	}
 	
