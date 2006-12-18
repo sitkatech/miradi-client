@@ -27,8 +27,12 @@ import org.conservationmeasures.eam.objects.DiagramFactorLink;
 import org.conservationmeasures.eam.objects.EAMBaseObject;
 import org.conservationmeasures.eam.objects.Factor;
 import org.conservationmeasures.eam.objects.FactorCluster;
+import org.conservationmeasures.eam.objects.Indicator;
+import org.conservationmeasures.eam.objects.Strategy;
+import org.conservationmeasures.eam.objects.Task;
 import org.conservationmeasures.eam.project.Project;
 import org.conservationmeasures.eam.views.ProjectDoer;
+import org.conservationmeasures.eam.views.umbrella.DeleteActivity;
 
 public class Delete extends ProjectDoer
 {
@@ -140,7 +144,6 @@ public class Delete extends ProjectDoer
 	{
 		Command[] commandsToClear = factorToDelete.createCommandsToClear();
 		getProject().executeCommands(commandsToClear);
-		
 		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getModelNodeId()));
 	}
 	
@@ -149,9 +152,12 @@ public class Delete extends ProjectDoer
 		deleteAnnotations(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
 		deleteAnnotations(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
 		deleteAnnotations(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
-		//TODO: there is a buildCommandsToDeleteAnnotation in DelteAnnotationDoer that maybe shoud be called instead of the above.
-		//if (factorToDelete.isStrategy())
-		//	buildCommandsToDeleteChildTasks(factorToDelete.getRef(), Strategy.TAG_ACTIVITY_IDS);
+		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
+		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities
+		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 
+		// children inforceing referencial integrity as a cascade, instead of having the the code here.
+		if (factorToDelete.isStrategy())
+			deleteChildTask(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 	}
 
 	
@@ -160,18 +166,26 @@ public class Delete extends ProjectDoer
 		IdList ids = new IdList(factorToDelete.getData(annotationListTag));
 		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
 		{
-//			if (annotationType == ObjectType.INDICATOR)
-//			{
-//				DeleteActivity.deleteTaskTree(Factor.TAG_INDICATOR_IDS);
-//				Vector  vec = DeleteAnnotationDoer.buildCommandsToDeleteSubTasks(getProject(), ObjectType.TASK, factorToDelete.getId());
-//			}
-			
 			EAMBaseObject thisAnnotation = (EAMBaseObject)getProject().findObject(annotationType, ids.get(annotationIndex));
-			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
 			
-			for(int commandIndex = 0; commandIndex < commands.length; ++commandIndex)
-				getProject().executeCommand(commands[commandIndex]);
+			if (annotationType == ObjectType.INDICATOR)
+			{
+				deleteChildTask(thisAnnotation, Indicator.TAG_TASK_IDS);
+			}
+			
+			Command[] commands = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(getProject(), factorToDelete, annotationListTag, thisAnnotation);
+			getProject().executeCommands(commands);
 		}
-		
+	}
+	
+
+	private void deleteChildTask(EAMBaseObject objectToDelete, String annotationListTag) throws Exception
+	{
+		IdList ids = new IdList(objectToDelete.getData(annotationListTag));
+		for(int annotationIndex = 0; annotationIndex < ids.size(); ++annotationIndex)
+		{
+			Task childTask = (Task)getProject().findObject(ObjectType.TASK, ids.get(annotationIndex));
+			DeleteActivity.deleteTaskTree(getProject(), childTask);
+		}
 	}
 }
