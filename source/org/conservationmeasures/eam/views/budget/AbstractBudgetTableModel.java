@@ -9,7 +9,7 @@ import javax.swing.table.AbstractTableModel;
 
 import org.conservationmeasures.eam.ids.BaseId;
 
-public abstract class AbstractBudgetTableModel extends AbstractTableModel
+abstract public class AbstractBudgetTableModel extends AbstractTableModel
 {
 	public int getAccountingCodeColumnIndex()
 	{
