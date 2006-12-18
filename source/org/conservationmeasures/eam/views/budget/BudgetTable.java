@@ -11,6 +11,7 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -65,6 +66,24 @@ public class BudgetTable extends JTable implements ObjectPicker
 		int accountingCodesColumn = model.getAccountingCodeColumnIndex();
 		createComboColumn(accountingCodes, accountingCodesColumn);
 		
+		setSingleCellEditor();
+		
+	}
+
+	private void setSingleCellEditor()
+	{
+		int colCount = getColumnCount();
+		for (int i = 0; i < colCount; i++)
+		{
+			if (model.isUnitsColumn(i))
+			{
+				TableColumn singleClickCostCol = getColumnModel().getColumn(i);
+				DefaultCellEditor singleClickEditor = new DefaultCellEditor(new JTextField());
+				singleClickEditor.setClickCountToStart(1);
+
+				singleClickCostCol.setCellEditor(singleClickEditor);
+			}
+		}
 	}
 
 	private void createComboColumn(EAMBaseObject[] projectResources, int col)
@@ -141,13 +160,5 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         
         setSelectedItem(value);
         return this;
-    }
-}
-
-class ComboBoxEditor extends DefaultCellEditor 
-{
-    public ComboBoxEditor(Object[] items) 
-    {
-        super(new JComboBox(items));
     }
 }
