@@ -5,14 +5,28 @@
  */
 package org.conservationmeasures.eam.dialogfields;
 
+import java.awt.Dimension;
+
+import javax.swing.JTextField;
+
 import org.conservationmeasures.eam.ids.BaseId;
 import org.conservationmeasures.eam.project.Project;
 import org.martus.swing.UiTextArea;
+import org.martus.swing.UiTextField;
 
 public class ObjectDateInputField extends ObjectTextInputField
 {
 	public ObjectDateInputField(Project projectToUse, int objectType, BaseId objectId, String tag)
 	{
-		super(projectToUse, objectType, objectId, tag, new UiTextArea(1, 10));
+		super(projectToUse, objectType, objectId, tag, new UiTextField());
+		UiTextArea textArea = new UiTextArea(1,10);
+		JTextField jTextField = (JTextField)getComponent();
+		jTextField.setBorder(textArea.getBorder());
+		jTextField.setFont(textArea.getFont());
+		
+		int preferredHeight = jTextField.getPreferredSize().height;
+		int preferredWidth = textArea.getPreferredSize().width;
+		Dimension preferredSize = new Dimension(preferredWidth, preferredHeight);
+		jTextField.setPreferredSize(preferredSize);
 	}
 }
