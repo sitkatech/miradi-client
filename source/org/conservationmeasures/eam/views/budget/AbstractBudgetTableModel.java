@@ -139,13 +139,7 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return row /= 2;
 	}
 
-	public boolean isTotalsRow(int row)
-	{
-		if (row < (getRowCount() - 2))
-			return false;
-			
-		return true;
-	}
+	abstract public boolean isTotalsRow(int row);
 	
 	abstract public BaseId getAssignmentForRow(int row);
 	

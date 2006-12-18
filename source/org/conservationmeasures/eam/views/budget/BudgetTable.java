@@ -86,19 +86,11 @@ public class BudgetTable extends JTable implements ObjectPicker
 			return new EAMObject[0];
 		
 		AbstractBudgetTableModel budgetModel = getBudgetModel();
-		if (budgetModel.isOdd(selectedRow))
-			return new EAMObject[0];
-		
 		if (budgetModel.isTotalsRow(selectedRow))
 			return new EAMObject[0];
 		
 		selectedRow = budgetModel.getCorrectedRow(selectedRow);
 		
-		//FIXME budget code - remove commented code
-		
-		//ProjectResource resource = (ProjectResource)budgetModel.getValueAt(selectedRow, budgetModel.getResourcesColumnIndex());
-		//BaseId selectedId = resource.getId();
-
 		BaseId selectedId = budgetModel.getAssignmentForRow(selectedRow);
 		EAMObject selectedObject = project.findObject(ObjectType.ASSIGNMENT, selectedId);
 		

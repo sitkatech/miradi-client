@@ -506,6 +506,14 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 	}
 	
+	public boolean isTotalsRow(int row)
+	{
+		if (row < (getRowCount() - 2))
+			return false;
+			
+		return true;
+	}
+	
 	Project project;
 	DateRange[] dateRanges;
 	

@@ -81,6 +81,15 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 	{
 		return budgetModel.getAssignmentForRow(row * 2);
 	}
+	
+	public boolean isTotalsRow(int row)
+	{
+		if (row < (getRowCount() - 1))
+			return false;
+			
+		return true;
+	}
+
     
 	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 3;
 	
