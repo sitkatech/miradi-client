@@ -211,7 +211,7 @@ abstract public class Factor extends EAMBaseObject
 	public static final FactorType TYPE_INVALID = null;
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
-	public static final FactorType TYPE_INTERVENTION = new FactorTypeStrategy();
+	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();
 	public static final FactorType TYPE_CLUSTER = new FactorTypeCluster();
 	
 	public static final String TAG_NODE_TYPE = "Type";

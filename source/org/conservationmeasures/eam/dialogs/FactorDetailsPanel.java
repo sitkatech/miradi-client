@@ -96,9 +96,7 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	{
 		return detailIcon;
 	}
-	
-	private Icon detailIcon;
-	
+
 	class StatusChangeHandler implements ItemListener
 	{
 		public void itemStateChanged(ItemEvent event)
@@ -302,7 +300,8 @@ public class FactorDetailsPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Details");
 	}
-
+	
+	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
 	private UiCheckBox statusCheckBox;
 	private UiComboBox dropdownThreatClassification;

@@ -83,7 +83,7 @@ public class DeleteActivity extends ObjectsDoer
 			return;
 		
 		ChainManager chainManager = new ChainManager(project);
-		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Strategy.TYPE_INTERVENTION, selectedTask.getId(), Strategy.TAG_ACTIVITY_IDS);
+		FactorSet factorSet = chainManager.findFactorsThatHaveThisObject(Strategy.TYPE_STRATEGY, selectedTask.getId(), Strategy.TAG_ACTIVITY_IDS);
 		Factor strategy = (Factor)factorSet.iterator().next();
 		selectedTask.setParentRef(strategy.getRef());
 	}

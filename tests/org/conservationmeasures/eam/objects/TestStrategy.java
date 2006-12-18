@@ -20,7 +20,7 @@ public class TestStrategy extends ObjectTestCase
 
 	public void testFields() throws Exception
 	{
-		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
+		CreateFactorParameter extraInfo = new CreateFactorParameter(Factor.TYPE_STRATEGY);
 		verifyFields(ObjectType.FACTOR, extraInfo);
 	}
 	

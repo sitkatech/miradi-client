@@ -188,7 +188,7 @@ public class TestProject extends EAMTestCase
 	public void testGetAllSelectedCellsWithLinkages() throws Exception
 	{
 		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
 		DiagramFactor node3 =  createNode(Factor.TYPE_CAUSE);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
@@ -218,7 +218,7 @@ public class TestProject extends EAMTestCase
 	public void testGetAllSelectedNodes() throws Exception
 	{
 		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
 		
 		DiagramFactorLink linkage1 = createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
 		
@@ -243,7 +243,7 @@ public class TestProject extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 =  createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor node2 =  createNode(Factor.TYPE_STRATEGY);
 		DiagramFactor node3 =  createNode(Factor.TYPE_CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
@@ -320,7 +320,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testResizeNodesOnly() throws Exception
 	{
-		DiagramFactor node1 =  createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor node1 =  createNode(Factor.TYPE_STRATEGY);
 		node1.setSize(new Dimension(5,10));
 		node1.setPreviousSize((new Dimension(55, 80)));
 		node1.setPreviousLocation(new Point(0,0));
@@ -357,7 +357,7 @@ public class TestProject extends EAMTestCase
 		Dimension position2 = new Dimension(95, 88);
 		
 		
-		DiagramFactor nodeResizedAndMoved =  createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor nodeResizedAndMoved =  createNode(Factor.TYPE_STRATEGY);
 		nodeResizedAndMoved.setSize(position1);
 		nodeResizedAndMoved.setPreviousSize(position2);
 		nodeResizedAndMoved.setPreviousLocation(new Point(x,y));
@@ -414,7 +414,7 @@ public class TestProject extends EAMTestCase
 		DiagramModel model = project.getDiagramModel();
 
 		DiagramFactor node1 = createNode(Factor.TYPE_TARGET);
-		DiagramFactor node2 = createNode(Factor.TYPE_INTERVENTION);
+		DiagramFactor node2 = createNode(Factor.TYPE_STRATEGY);
 		DiagramFactor node3 = createNode(Factor.TYPE_CAUSE);
 		
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedId(), node2.getWrappedId());
@@ -700,7 +700,7 @@ public class TestProject extends EAMTestCase
 			
 			InsertFactorLinkDoer.createModelLinkageAndAddToDiagramUsingCommands(diskProject, factorId, targetId);
 			
-			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_INTERVENTION);
+			CreateFactorParameter parameter = new CreateFactorParameter(Factor.TYPE_STRATEGY);
 			FactorId interventionId = (FactorId)diskProject.createObject(ObjectType.FACTOR, BaseId.INVALID, parameter);
 			DiagramFactorId diagramNodeId = diskProject.addFactorToDiagram(interventionId);
 

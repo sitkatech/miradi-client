@@ -85,7 +85,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 
 	public void testInsertIntervention() throws Exception
 	{
-		project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY, BaseId.INVALID);
 		DiagramModel model = project.getDiagramModel();
 		DiagramFactor insertedNode = (DiagramFactor)model.getAllDiagramFactors().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
@@ -96,7 +96,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		DiagramFactor foundNode = model.getDiagramFactorById(id);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
-		assertEquals(Factor.TYPE_INTERVENTION, foundNode.getFactorType());
+		assertEquals(Factor.TYPE_STRATEGY, foundNode.getFactorType());
 	}
 	
 	ProjectForTesting project;

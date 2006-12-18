@@ -28,14 +28,14 @@ public class Strategy extends Factor
 {
 	public Strategy(FactorId idToUse)
 	{
-		super(idToUse, Factor.TYPE_INTERVENTION);
+		super(idToUse, Factor.TYPE_STRATEGY);
 		status = STATUS_REAL;
 		clear();
 	}
 	
 	public Strategy(FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(idToUse, Factor.TYPE_INTERVENTION, json);
+		super(idToUse, Factor.TYPE_STRATEGY, json);
 		status = json.optString(TAG_STATUS, STATUS_REAL);
 	}
 

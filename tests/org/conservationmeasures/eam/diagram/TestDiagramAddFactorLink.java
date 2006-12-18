@@ -31,7 +31,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY, BaseId.INVALID);
 		DiagramFactor intervention = model.getDiagramFactorByWrappedId(interventionId);
 		FactorId factorId = project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		DiagramFactor factor = model.getDiagramFactorByWrappedId(factorId);

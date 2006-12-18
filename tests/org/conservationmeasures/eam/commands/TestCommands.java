@@ -493,7 +493,7 @@ public class TestCommands extends EAMTestCase
 
 	private DiagramFactorId insertIntervention() throws Exception
 	{
-		FactorType type = Factor.TYPE_INTERVENTION;
+		FactorType type = Factor.TYPE_STRATEGY;
 		return insertNode(type);
 	}
 

@@ -96,7 +96,7 @@ public class TestDiagramFactorLink extends ObjectTestCase
 	
 	public void testLinkNodes() throws Exception
 	{
-		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_INTERVENTION, BaseId.INVALID);
+		FactorId interventionId = project.createNodeAndAddToDiagram(Factor.TYPE_STRATEGY, BaseId.INVALID);
 		FactorId factorId = 	project.createNodeAndAddToDiagram(Factor.TYPE_CAUSE, BaseId.INVALID);
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(interventionId, factorId);
 		CommandCreateObject createModelLinkage = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);

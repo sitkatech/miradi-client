@@ -41,7 +41,7 @@ public class InsertDraftStrategyDoer extends InsertFactorDoer
 	
 	public FactorType getTypeToInsert()
 	{
-		return Factor.TYPE_INTERVENTION;
+		return Factor.TYPE_STRATEGY;
 	}
 
 	public String getInitialText()
