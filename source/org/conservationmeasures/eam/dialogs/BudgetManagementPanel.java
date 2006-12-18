@@ -7,6 +7,9 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+
 import org.conservationmeasures.eam.main.EAM;
 import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
@@ -19,10 +22,24 @@ public class BudgetManagementPanel extends ModelessDialogPanel
 	{
 		propertiesPanel = propertiesPanelToUse;
 		treeTableComponent = treeTableComponentToUse;
-		add(treeTableComponent, BorderLayout.CENTER);
+
+		addSplitPane();
+	}
+
+	private void addSplitPane()
+	{
+		JScrollPane treeComponentScroll = new JScrollPane(treeTableComponent);
+		JScrollPane propertiesScroll = new JScrollPane(propertiesPanel);
 		
 		treeTableComponent.setPropertiesPanel(propertiesPanel.getInputPanel());
-		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
+		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		splitter.setOneTouchExpandable(true);
+		splitter.setDividerSize(15);
+		splitter.setResizeWeight(.5);
+		splitter.setTopComponent(treeComponentScroll);
+		splitter.setBottomComponent(propertiesScroll);
+		splitter.setDividerLocation(0.5);
+		add(splitter, BorderLayout.CENTER);
 	}
 
 	public void dispose()
