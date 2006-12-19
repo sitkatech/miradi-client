@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.workplan;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
@@ -22,6 +22,8 @@ import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableUnitsModel;
 import org.conservationmeasures.eam.views.umbrella.ObjectPicker;
 import org.martus.swing.UiScrollPane;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class AssignmentEditorComponent extends DisposablePanel
 {
@@ -58,9 +60,10 @@ public class AssignmentEditorComponent extends DisposablePanel
 		unitsModel.dataWasChanged();
 	}
 	
-	Box createButtonBar(Actions actions)
+	JPanel createButtonBar(Actions actions)
 	{
-		Box box = Box.createVerticalBox();
+		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		JPanel box = new JPanel(layout);
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), budgetTable));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), objectPicker));
 		return box;
