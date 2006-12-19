@@ -28,7 +28,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Funding Source");
+		return EAM.text("Title|Funding Sources");
 	}
 	
 	public Icon getIcon()
