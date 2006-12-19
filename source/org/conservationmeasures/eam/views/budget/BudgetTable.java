@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.EventObject;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -39,7 +40,7 @@ public class BudgetTable extends JTable implements ObjectPicker
 		model = modelToUse;
 		project = projectToUse;
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		setDefaultRenderer(Object.class, new AlternatingRowRenderer());
+		setDefaultRenderer(Object.class, new AlternatingThickBorderedTotalsColoredRenderer());
 		rebuild();
 	}
 	
@@ -207,42 +208,52 @@ class SingleClickAutoSelectCellEditor extends DefaultCellEditor
 	}
 }
 
-class AlternatingRowRenderer extends DefaultTableCellRenderer
+class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRenderer
 {
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 	{
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+		AbstractBudgetTableModel model = (AbstractBudgetTableModel)table.getModel();
 		if (!isSelected)
-			setAlternatingColors(table, row, column, component);
+			setAlternatingColors(table, model, component, row, column);
 	
-		
+		setBorders(model, row, column);
 		return component;
 	}
 
-	private void setAlternatingColors(JTable table, int row, int column, Component component)
+	private void setAlternatingColors(JTable table, AbstractBudgetTableModel model, Component component, int row, int column)
 	{
-		AbstractBudgetTableModel model = (AbstractBudgetTableModel)table.getModel();
-		
 		if (model.doubleRowed())
 			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4]);
 		
 		if (! model.doubleRowed())
 			setComponentColors(component, BACKGROUND_COLORS[row % 2]);
 		
+		Color totalsColor = new Color(0xf0, 0xf0, 0xf0).darker();
 		if (model.isTotalsRow(row))
-			setComponentColors(component, new Color(0xf0, 0xf0, 0xf0).darker());
+			setComponentColors(component, totalsColor);
 		
 		if (model.isCostTotalsColumn(column))
-			setComponentColors(component, new Color(0xf0, 0xf0, 0xf0).darker());
+			setComponentColors(component, totalsColor);
 		
 		if (model.isUnitsTotalColumn(column))
-			setComponentColors(component, new Color(0xf0, 0xf0, 0xf0).darker());
+			setComponentColors(component, totalsColor);
 	}
 	
 	void setComponentColors(Component component, Color background)
 	{
 		component.setBackground(background);
 		component.setForeground(Color.BLACK);
+	}
+	
+	private void setBorders(AbstractBudgetTableModel model, int row, int column)
+	{
+		Color darkBorderColor = Color.DARK_GRAY;
+		if (model.getRowTotalsLabelColumnIndex() == column)
+			setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, darkBorderColor));
+		
+		if (model.isCostColumn(column))
+			setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, darkBorderColor));
 	}
 	
 	private static final Color[] EVERY_OTHER_TWO_COLORS = new Color[] { new Color(0xf0, 0xf0, 0xf0), new Color(0xf0, 0xf0, 0xf0), Color.WHITE, Color.WHITE, };
