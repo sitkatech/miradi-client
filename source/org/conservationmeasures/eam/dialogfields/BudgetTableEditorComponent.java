@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogfields;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
+import javax.swing.JPanel;
 
 import org.conservationmeasures.eam.actions.ActionAddAssignment;
 import org.conservationmeasures.eam.actions.ActionRemoveAssignment;
@@ -22,6 +22,8 @@ import org.conservationmeasures.eam.views.budget.BudgetTable;
 import org.conservationmeasures.eam.views.budget.BudgetTableModel;
 import org.conservationmeasures.eam.views.budget.BudgetTreeTablePanel;
 import org.martus.swing.UiScrollPane;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class BudgetTableEditorComponent extends DisposablePanel
 {
@@ -57,9 +59,10 @@ public class BudgetTableEditorComponent extends DisposablePanel
 		budgetTableModel.dataWasChanged();
 	}
 	
-	Box createButtonBar(Actions actions)
+	JPanel createButtonBar(Actions actions)
 	{
-		Box box = Box.createVerticalBox();
+		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		JPanel box = new JPanel(layout);
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionRemoveAssignment.class), budgetTable));
 		box.add(createObjectsActionButton(actions.getObjectsAction(ActionAddAssignment.class), treeTableComponent.getTree()));
 		return box;
