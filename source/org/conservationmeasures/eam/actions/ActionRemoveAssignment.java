@@ -17,11 +17,11 @@ public class ActionRemoveAssignment extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Remove Assignment");
+		return EAM.text("Action|Remove Item");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Remove assignment from list");
+		return EAM.text("TT|Remove item from list");
 	}
 }
