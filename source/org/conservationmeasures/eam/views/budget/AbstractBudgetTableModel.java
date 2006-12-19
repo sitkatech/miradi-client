@@ -143,6 +143,8 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 	
 	abstract public BaseId getAssignmentForRow(int row);
 	
+	abstract public boolean doubleRowed();
+	
 	private static final int RESOURCES_COLUMN_INDEX = 0;
 	private static final int FUNDING_SOURCE_COLUMN_INDEX = 1;
 	private static final int ACCOUNTING_CODE_COLUMN_INDEX = 2;

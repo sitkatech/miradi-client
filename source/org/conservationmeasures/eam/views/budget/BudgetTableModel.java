@@ -514,11 +514,17 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return true;
 	}
 	
+	public boolean doubleRowed()
+	{
+		return true;
+	}	
+
+	
 	Project project;
 	DateRange[] dateRanges;
 	
 	Task task;
 	BudgetTotalsCalculator totalsCalculator;
-	IdList assignmentIdList;	
+	IdList assignmentIdList;
 		 
 }

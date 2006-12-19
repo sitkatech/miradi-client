@@ -89,6 +89,11 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 			
 		return true;
 	}
+	
+	public boolean doubleRowed()
+	{
+		return false;
+	}
 
     
 	static final int UNIT_ROW_HEADER_COLUMN_COUNT = 3;
