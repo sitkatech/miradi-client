@@ -13,7 +13,7 @@ public class ActionViewBudget extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Finances") + DEMO_INDICATOR;
+		return EAM.text("Action|Financial");
 	}
 
 	public String getToolTipText()
