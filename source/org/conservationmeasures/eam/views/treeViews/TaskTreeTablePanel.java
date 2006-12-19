@@ -58,7 +58,10 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
-		add(createButtonBox(mainWindow.getActions()), BorderLayout.AFTER_LINE_ENDS);
+		
+		Box buttonBox = Box.createVerticalBox();
+		add(buttonBox,BorderLayout.AFTER_LINE_ENDS);
+		addButtonsToBox(buttonBox, mainWindow.getActions());
 
 		tree.getTree().addSelectionRow(0);
 		project.addCommandExecutedListener(this);
@@ -139,27 +142,23 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		return model;
 	}
 	
-	protected Box createButtonBox(Actions actions)
+	protected void addButtonsToBox(Box buttonBox, Actions actions)
 	{
-		Box buttonBox = Box.createVerticalBox();
-		
-		UiButton addActivityButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateActivity.class), tree);
-		UiButton addMethodButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateMethod.class), tree);
-		UiButton addTaskButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeCreateTask.class), tree);
-		
-		UiButton deleteButton = createObjectsActionButton(actions.getObjectsAction(ActionDeleteWorkPlanNode.class), tree);
-		UiButton upButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeNodeUp.class), tree);
-		UiButton downButton = createObjectsActionButton(actions.getObjectsAction(ActionTreeNodeDown.class), tree);
-		
-		buttonBox.add(addActivityButton);
-		buttonBox.add(addMethodButton);
-		buttonBox.add(addTaskButton);
-		buttonBox.add(deleteButton);
-		buttonBox.add(upButton);
-		buttonBox.add(downButton);
-
-		return buttonBox;
+		addCreateButtonAndAddToBox(ActionTreeCreateActivity.class, buttonBox, actions);
+		addCreateButtonAndAddToBox(ActionTreeCreateMethod.class, buttonBox, actions);
+		addCreateButtonAndAddToBox(ActionTreeCreateTask.class, buttonBox, actions);
+		addCreateButtonAndAddToBox(ActionDeleteWorkPlanNode.class, buttonBox, actions);
+		addCreateButtonAndAddToBox(ActionTreeNodeUp.class, buttonBox, actions);
+		addCreateButtonAndAddToBox(ActionTreeNodeDown.class, buttonBox, actions);
 	}
+	
+	private void addCreateButtonAndAddToBox(Class actionClass, Box buttonBox, Actions actions)
+	{
+		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
+		buttonBox.add(button);
+		button.setPreferredSize(buttonBox.getPreferredSize());
+	}
+	
 
 	boolean isSetDataCommand(CommandExecutedEvent event)
 	{
