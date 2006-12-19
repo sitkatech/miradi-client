@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.views.treeViews;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
+import javax.swing.JPanel;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
@@ -44,6 +44,8 @@ import org.conservationmeasures.eam.views.workplan.WorkPlanTaskNode;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
+import com.jhlabs.awt.GridLayoutPlus;
+
 public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectionListener, CommandExecutedListener
 {
 	public TaskTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
@@ -59,7 +61,8 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		UiScrollPane uiScrollPane = new UiScrollPane(tree);
 		add(uiScrollPane, BorderLayout.CENTER);
 		
-		Box buttonBox = Box.createVerticalBox();
+		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		JPanel buttonBox = new JPanel(layout);
 		add(buttonBox,BorderLayout.AFTER_LINE_ENDS);
 		addButtonsToBox(buttonBox, mainWindow.getActions());
 
@@ -142,7 +145,7 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		return model;
 	}
 	
-	protected void addButtonsToBox(Box buttonBox, Actions actions)
+	protected void addButtonsToBox(JPanel buttonBox, Actions actions)
 	{
 		addCreateButtonAndAddToBox(ActionTreeCreateActivity.class, buttonBox, actions);
 		addCreateButtonAndAddToBox(ActionTreeCreateMethod.class, buttonBox, actions);
@@ -152,11 +155,10 @@ public class TaskTreeTablePanel extends DisposablePanel  implements TreeSelectio
 		addCreateButtonAndAddToBox(ActionTreeNodeDown.class, buttonBox, actions);
 	}
 	
-	private void addCreateButtonAndAddToBox(Class actionClass, Box buttonBox, Actions actions)
+	private void addCreateButtonAndAddToBox(Class actionClass, JPanel buttonBox, Actions actions)
 	{
 		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
 		buttonBox.add(button);
-		button.setPreferredSize(buttonBox.getPreferredSize());
 	}
 	
 
