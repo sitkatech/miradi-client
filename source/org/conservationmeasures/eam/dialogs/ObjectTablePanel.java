@@ -7,7 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 
-import javax.swing.Box;
+import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -29,6 +29,8 @@ import org.conservationmeasures.eam.utils.MouseAdapterDoubleClickDelegator;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 
+import com.jhlabs.awt.GridLayoutPlus;
+
 public class ObjectTablePanel extends DisposablePanel implements ListSelectionListener, CommandExecutedListener
 {
 	public ObjectTablePanel(Project projectToUse, int objectTypeToUse, ObjectTable tableToUse)
@@ -39,8 +41,8 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		table = tableToUse;
 		table.addListSelectionListener(this);
 		add(new UiScrollPane(table), BorderLayout.CENTER);
-
-		buttons = Box.createVerticalBox();
+		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
+		buttons = new JPanel(layout);
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);
 
 		project.addCommandExecutedListener(this);
@@ -133,7 +135,6 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	public void addButton(UiButton button)
 	{
 		buttons.add(button);
-		button.setPreferredSize(buttons.getPreferredSize());
 	}
 	
 	public void addDoubleClickAction(EAMAction action ) 
@@ -150,6 +151,6 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 	int objectType;
 	ObjectTable table;
 	ObjectDataInputPanel propertiesPanel;
-	Box buttons;
+	JPanel buttons;
 
 }
