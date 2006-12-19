@@ -74,6 +74,7 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 				selectedId = selectedObject.getId();
 			}
 			propertiesPanel.setObjectId(selectedId);
+			propertiesPanel.setFocusOnFirstField();
 		}
 		catch (Exception e)
 		{

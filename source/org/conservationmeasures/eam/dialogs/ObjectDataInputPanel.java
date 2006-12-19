@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Rectangle;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -70,7 +71,10 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	
 	public void setFocusOnFirstField()
 	{
+		//TODO: should be first non read only field.
 		((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
+		Rectangle rect = ((ObjectDataInputField)fields.get(0)).getComponent().getBounds();
+		scrollRectToVisible(rect);
 	}
 		
 	public void addField(ObjectDataInputField field)
