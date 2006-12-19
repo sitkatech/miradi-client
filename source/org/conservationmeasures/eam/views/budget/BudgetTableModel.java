@@ -5,6 +5,8 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.text.DecimalFormat;
+
 import org.conservationmeasures.eam.commands.Command;
 import org.conservationmeasures.eam.commands.CommandSetObjectData;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
@@ -192,8 +194,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 				return "";
 
 			if (isTotalsRow(row))
-				return Double.toString(getTotalCostForColumn(row, col));
-
+				return formatter.format(getTotalCostForColumn(row, col));
+				
 			ProjectResource currentResource = getCurrentResource(row);
 			if (currentResource == null)
 				return "";
@@ -201,7 +203,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			final int BACK_ONE_ROW = 1;
 			double units = new Double(getUnit(row - BACK_ONE_ROW, col)).doubleValue();
 			double costPerUnit = currentResource.getCostPerUnit();
-			return Double.toString(units * costPerUnit);
+			return formatter.format(units * costPerUnit);
 		}
 		catch (Exception e)
 		{
@@ -277,11 +279,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		{
 			DateRange combinedDateRange = getCombinedDateRange();
 			if (isTotalsRow(row))
-				return Double.toString(getTotalsCostTotals(combinedDateRange));
+				return formatter.format(getTotalsCostTotals(combinedDateRange));
 			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalCost = totalsCalculator.getTotalCost(assignment, combinedDateRange);
-			return Double.toString(totalCost);
+			return formatter.format(totalCost);
 		}
 		catch(Exception e)
 		{
@@ -304,11 +306,11 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 			DateRange combinedDateRange = getCombinedDateRange();
 		
 			if (isTotalsRow(row))
-				return Double.toString(getTotalsForTotalsUnits(combinedDateRange));
+				return formatter.format(getTotalsForTotalsUnits(combinedDateRange));
 			
 			Assignment assignment = getAssignment(getCorrectedRow(row));
 			double totalUnits = totalsCalculator.getTotalUnits(assignment, combinedDateRange);
-			return Double.toString(totalUnits);
+			return formatter.format(totalUnits);
 		}
 		catch(Exception e)
 		{
@@ -338,7 +340,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		try
 		{
 			if (isTotalsRow(row))
-				return Double.toString(getTotalColumnUnits(row, col));
+				return formatter.format(getTotalColumnUnits(row, col));
 			
 			DateRangeEffortList effortList = getDateRangeEffortList(getCorrectedRow(row));
 			units = effortList.getTotalUnitQuantity(dateRanges[covertToUnitsColumn(col)]);
@@ -347,7 +349,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		{
 			EAM.logException(e);
 		}
-		return Double.toString(units);
+		return formatter.format(units);
 	}
 
 	private double getTotalColumnUnits(int row, int col) throws Exception
@@ -536,6 +538,8 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		return true;
 	}	
 
+	
+	DecimalFormat formatter = new DecimalFormat("0.00");
 	
 	Project project;
 	DateRange[] dateRanges;
