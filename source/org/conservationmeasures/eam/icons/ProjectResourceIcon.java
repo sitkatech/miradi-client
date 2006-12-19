@@ -21,6 +21,11 @@ public class ProjectResourceIcon extends EamIcon
 	{
 		return new RectangleRenderer();
 	}
+	
+	public int getIconWidth()
+	{
+		return 6;
+	}
 
 	final private static Color LITE_BROWN = new Color(193,142,23);
 }
