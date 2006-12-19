@@ -139,6 +139,8 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return row /= 2;
 	}
 
+	abstract public boolean isYearlyTotalColumn(int col);
+	
 	abstract public boolean isTotalsRow(int row);
 	
 	abstract public BaseId getAssignmentForRow(int row);

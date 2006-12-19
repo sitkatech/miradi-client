@@ -82,6 +82,11 @@ public class BudgetTableUnitsModel extends AbstractBudgetTableModel
 		return budgetModel.getAssignmentForRow(row * 2);
 	}
 	
+	public boolean isYearlyTotalColumn(int col)
+	{
+		return budgetModel.isYearlyTotalColumn(translateToBudgetModelCol(col));
+	}
+	
 	public boolean isTotalsRow(int row)
 	{
 		if (row < (getRowCount() - 1))

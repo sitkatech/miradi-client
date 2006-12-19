@@ -506,6 +506,23 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		}
 	}
 	
+	public boolean isYearlyTotalColumn(int col)
+	{
+		if (col < TOTAL_ROW_HEADER_COLUMN_COUNT)
+			return false;
+		//TODO only dealing with QUARTERS,  this method has to be revised
+		//if dealing with anything other than QUARTERS
+		final int QUARTERLY_TOTAL_COUNT = 10;
+		int convertedCol = col - (TOTAL_ROW_HEADER_COLUMN_COUNT - 1);
+		
+		if ((convertedCol + 1) % QUARTERLY_TOTAL_COUNT == 0)
+			return true;
+		if (convertedCol % QUARTERLY_TOTAL_COUNT == 0)
+			return true;
+		
+		return false;
+	}
+	
 	public boolean isTotalsRow(int row)
 	{
 		if (row < (getRowCount() - 2))

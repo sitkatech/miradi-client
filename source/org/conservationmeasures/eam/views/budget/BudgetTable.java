@@ -215,13 +215,13 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 		AbstractBudgetTableModel model = (AbstractBudgetTableModel)table.getModel();
 		if (!isSelected)
-			setAlternatingColors(table, model, component, row, column);
+			setColors(table, model, component, row, column);
 	
 		setBorders(model, row, column);
 		return component;
 	}
 
-	private void setAlternatingColors(JTable table, AbstractBudgetTableModel model, Component component, int row, int column)
+	private void setColors(JTable table, AbstractBudgetTableModel model, Component component, int row, int column)
 	{
 		if (model.doubleRowed())
 			setComponentColors(component, EVERY_OTHER_TWO_COLORS[row % 4]);
@@ -231,6 +231,9 @@ class AlternatingThickBorderedTotalsColoredRenderer extends DefaultTableCellRend
 		
 		Color totalsColor = new Color(0xf0, 0xf0, 0xf0).darker();
 		if (model.isTotalsRow(row))
+			setComponentColors(component, totalsColor);
+		
+		if (model.isYearlyTotalColumn(column))
 			setComponentColors(component, totalsColor);
 		
 		if (model.isCostTotalsColumn(column))
