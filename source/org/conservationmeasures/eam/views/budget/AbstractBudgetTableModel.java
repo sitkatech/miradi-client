@@ -56,6 +56,15 @@ abstract public class AbstractBudgetTableModel extends AbstractTableModel
 		return getColumnCount() - 1;
 	}
 	
+	public boolean isUnitsTotalRow(int row)
+	{
+		int minusCount = 1;
+		if (doubleRowed())
+			minusCount = 2;
+		
+		return row == (getRowCount() - minusCount);
+	}
+	
 	protected boolean isFundingSourceColumn(int col)
 	{
 		return col == getFundingSourceColumnIndex();
