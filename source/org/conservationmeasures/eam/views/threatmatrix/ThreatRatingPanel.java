@@ -9,11 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -92,7 +87,7 @@ public class ThreatRatingPanel extends Box
 		{
 			RatingCriterion criterion = criterionItems[i];
 
-			CriterionLabel criterionLabel = new CriterionLabel(criterion.getLabel());
+			UiLabel criterionLabel = new UiLabel(criterion.getLabel());
 			criterionLabel.setAlignmentX(JComponent.LEFT_ALIGNMENT);
 			criterionLabel.setBorder(new EmptyBorder(2, 2, 2, 2));
 			criterionLabel.setFont(criterionLabel.getFont().deriveFont(Font.BOLD));
@@ -111,45 +106,6 @@ public class ThreatRatingPanel extends Box
 		return criteria;
 	}
 	
-	static class CriterionLabel extends UiLabel
-	{
-		public CriterionLabel(String text)
-		{
-			super(text);
-		}
-
-		public void paint(Graphics g)
-		{
-			super.paint(g);
-			
-			Graphics2D g2 = (Graphics2D)g;
-			drawCommentTriangle(g2, getBounds(), Color.BLACK);
-		}
-
-		// FIXME: Code copied directly from RectangleRenderer!
-		private void drawCommentTriangle(Graphics2D g2, Rectangle rect, Color color)
-		{
-			int triangleInset = 15;
-			Polygon triangle = new Polygon();
-			triangle.addPoint(getWidth() - triangleInset, 0);
-			triangle.addPoint(getWidth(), 0);
-			triangle.addPoint(getWidth(), triangleInset);
-			triangle.addPoint(getWidth() - triangleInset, 0);
-			setPaint(g2, rect, Color.CYAN);
-			g2.fill(triangle);
-			setPaint(g2, rect, color);
-			g2.drawPolygon(triangle);
-		}
-
-		// FIXME: Code copied directly from RectangleRenderer!
-		//Windows 2000 Quirk, this needs to be set or the graphic isn't filled in
-		public static void setPaint(Graphics2D g2, Rectangle rect, Color color) 
-		{
-			g2.setPaint(new GradientPaint(rect.x, rect.y, color,
-					rect.width, rect.height, color, false));
-		}
-
-	}
 	
 	private void updateDropdownsFromBundle()
 	{
