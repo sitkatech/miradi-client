@@ -44,8 +44,8 @@ public class ObjectTablePanel extends DisposablePanel implements ListSelectionLi
 		GridLayoutPlus layout = new GridLayoutPlus(0, 1);
 		buttons = new JPanel(layout);
 		add(buttons, BorderLayout.AFTER_LINE_ENDS);
-
 		project.addCommandExecutedListener(this);
+		setFocusCycleRoot(true);
 	}
 	
 	public void dispose()
