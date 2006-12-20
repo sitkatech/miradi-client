@@ -11,6 +11,7 @@ import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 import org.conservationmeasures.eam.actions.ActionAbout;
 import org.conservationmeasures.eam.actions.ActionClose;
@@ -110,8 +111,10 @@ public class MainMenuBar extends JMenuBar
 	private JMenu createFileMenu(Actions actions)
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
-		menu.add(new JMenuItem(actions.get(ActionNewProject.class)));
-		menu.add(new JMenuItem(actions.get(ActionProjectSaveAs.class)));
+		
+		addMenuItem(actions, menu, ActionNewProject.class, EAMenuItem.KEY_CTL_P);
+		
+		menu.add(new EAMenuItem(actions.get(ActionProjectSaveAs.class)));
 		menu.add(new JMenuItem(actions.get(ActionClose.class)));
 		menu.addSeparator();
 		menu.add(new JMenuItem(actions.get(ActionPrint.class)));
@@ -125,6 +128,13 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 
+	private void addMenuItem(Actions actions, JMenu menu, Class class1, KeyStroke accelerator)
+	{
+		EAMenuItem menuItemNewProject = new EAMenuItem(actions.get(class1), accelerator);
+		menu.add(menuItemNewProject);
+	}
+	
+	
 	private JMenu createExportSetupMenu()
 	{
 		JMenu menu = new JMenu("Configure Export");
@@ -134,9 +144,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add("Encryption Level");
 		return menu;
 	}
-	
 
-	
 	private JMenu createExportMenu(Actions actions)
 	{
 		JMenu menu = new JMenu("Export");
