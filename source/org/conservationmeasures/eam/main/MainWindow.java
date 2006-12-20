@@ -64,6 +64,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		preferences = new AppPreferences();
 		project = projectToUse;
+		setFocusCycleRoot(true);
 	}
 	
 	public void start(String[] args) throws Exception
