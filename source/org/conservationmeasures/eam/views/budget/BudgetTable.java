@@ -148,7 +148,7 @@ class ComboBoxRenderer extends JComboBox implements TableCellRenderer
         if (isSelected) 
         {
             setForeground(table.getSelectionForeground());
-            super.setBackground(table.getSelectionBackground());
+            setBackground(table.getSelectionBackground());
         } 
         else 
         {
