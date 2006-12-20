@@ -26,8 +26,10 @@ public class ViewSplitPane extends JSplitPane
 		setResizeWeight(.5);
 		setTopComponent(topPanel);
 		setBottomComponent(bottomPanel);
+		setFocusable(false);
 		
 		setDividerLocationWithoutNotifications(mainWindow.getWizardSplitterLocation());
+
 	}
 
 	public void setDividerLocation(int location)

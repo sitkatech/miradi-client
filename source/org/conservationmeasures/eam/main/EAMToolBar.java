@@ -60,6 +60,7 @@ abstract class HelpButton extends UiButton
 	{
 		super(action);
 		setBackground(color);
+		setFocusable(false);
 	}
 
 	public Dimension getMaximumSize()
