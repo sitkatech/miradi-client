@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 
 import org.conservationmeasures.eam.actions.ObjectsAction;
 import org.conservationmeasures.eam.objects.EAMObject;
-import org.martus.swing.UiScrollPane;
 
 abstract public class ObjectManagementPanel extends ModelessDialogPanel
 {
@@ -20,7 +19,7 @@ abstract public class ObjectManagementPanel extends ModelessDialogPanel
 		
 		propertiesPanel = propertiesPanelToUse;
 		listComponent.setPropertiesPanel(propertiesPanel);
-		add(new UiScrollPane(propertiesPanel), BorderLayout.AFTER_LAST_LINE);
+		add(propertiesPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	public void dispose()
