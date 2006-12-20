@@ -34,6 +34,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		component.setBorder(border);
 		component.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		component.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+		getComponent().setFocusable(false);
 
 	}
 	

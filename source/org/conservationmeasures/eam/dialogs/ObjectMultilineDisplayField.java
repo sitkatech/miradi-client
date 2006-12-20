@@ -18,7 +18,6 @@ public class ObjectMultilineDisplayField extends ObjectTextInputField
 		((UiTextArea)getComponent()).setWrapStyleWord(true);
 		((UiTextArea)getComponent()).setLineWrap(true);
 		setEditable(false);
+		getComponent().setFocusable(false);
 	}
-
-
 }
