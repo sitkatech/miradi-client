@@ -36,6 +36,7 @@ abstract public class TabbedView extends UmbrellaView
 
 		tabs = new JTabbedPane();
 		tabs.addChangeListener(new TabChangeListener());
+		setFocusCycleRoot(true);
 	}
 
 	public abstract void createTabs() throws Exception;
