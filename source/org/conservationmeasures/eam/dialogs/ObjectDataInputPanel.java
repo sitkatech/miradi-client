@@ -73,9 +73,11 @@ abstract public class ObjectDataInputPanel extends ModelessDialogPanel implement
 	{
 		//TODO: should be first non read only field.
 		if (fields.size()>0)
+		{
 			((ObjectDataInputField)fields.get(0)).getComponent().requestFocusInWindow();
-		Rectangle rect = ((ObjectDataInputField)fields.get(0)).getComponent().getBounds();
-		scrollRectToVisible(rect);
+			Rectangle rect = ((ObjectDataInputField)fields.get(0)).getComponent().getBounds();
+			scrollRectToVisible(rect);
+		}
 	}
 		
 	public void addField(ObjectDataInputField field)
