@@ -5,29 +5,17 @@
  */
 package org.conservationmeasures.eam.views.umbrella;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
 import javax.swing.text.html.StyleSheet;
 
-import org.conservationmeasures.eam.actions.ActionCopy;
-import org.conservationmeasures.eam.actions.ActionCut;
-import org.conservationmeasures.eam.actions.ActionDelete;
-import org.conservationmeasures.eam.actions.ActionPaste;
-import org.conservationmeasures.eam.actions.Actions;
 import org.conservationmeasures.eam.main.EAM;
-import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 
-public class WizardHtmlViewer extends HtmlViewer implements MouseListener
+public class WizardHtmlViewer extends HtmlViewer
 {
 	public WizardHtmlViewer(HyperlinkHandler hyperLinkHandler)
 	{
 		super("", hyperLinkHandler);
-		addMouseListener(this);
 	}
 
 	public void customizeStyleSheet(StyleSheet style)
@@ -60,68 +48,7 @@ public class WizardHtmlViewer extends HtmlViewer implements MouseListener
 			return false;
 		return true;
 	}
-	
-	
-	public JPopupMenu getRightClickMenu(Actions actions)
-	{
-		JPopupMenu menu = new JPopupMenu();
-		
-		JMenuItem menuItemCopy = new JMenuItem(actions.get(ActionCopy.class));
-		menuItemCopy.setEnabled(false);
-		menu.add(menuItemCopy);
-		
-		JMenuItem menuItemCut = new JMenuItem(actions.get(ActionCut.class));
-		menuItemCut.setEnabled(false);
-		menu.add(menuItemCut);
-		
-		JMenuItem menuItemPaste = new JMenuItem(actions.get(ActionPaste.class));
-		menuItemPaste.setEnabled(false);
-		menu.add(menuItemPaste);
-		
-		JMenuItem menuItemDelete = new JMenuItem(actions.get(ActionDelete.class));
-		menuItemDelete.setEnabled(false);
-		menu.add(menuItemDelete);
-		
-		return menu;
-	}
-	
-	public void mouseClicked(MouseEvent e)
-	{
-	}
 
-	public void mouseEntered(MouseEvent e)
-	{
-	}
-
-	public void mouseExited(MouseEvent e)
-	{
-	}
-
-	public void mousePressed(MouseEvent e)
-	{
-		if(e.isPopupTrigger())
-			fireRightClick(e);
-	}
-
-	public void mouseReleased(MouseEvent e)
-	{
-		if(e.isPopupTrigger())
-			fireRightClick(e);
-	}
-	
-	void fireRightClick(MouseEvent e)
-	{
-		try
-		{
-		Actions actions = new Actions(new MainWindow());
-		getRightClickMenu(actions).show(this, e.getX(), e.getY());
-		}
-		catch (Exception ex)
-		{
-			ex.printStackTrace();
-		}
-	}
-	
 	/*
 	 * NOTE! In Java 1.4 the CSS class reverses the meanings of #xxx and .xxx
 	 * so if you want to affect a _class_ use #xxx 
