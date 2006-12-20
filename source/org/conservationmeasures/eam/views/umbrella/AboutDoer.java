@@ -113,7 +113,7 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 		"at:" +
 		"</p>" +
 		"<p align='center'>" +
-		"http://www.conservationmeasures.org/CMP/Site_Page.cfm?PageID=22 " +
+		"<a href=\"http://www.conservationmeasures.org/CMP/Site_Page.cfm?PageID=22\">CMP Site</a>" +
 		"</p>" +
 		"<p align='left'>" +
 		"If you have questions or suggestions, " +
