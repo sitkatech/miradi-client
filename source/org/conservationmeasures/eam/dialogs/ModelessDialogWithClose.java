@@ -6,9 +6,12 @@
 package org.conservationmeasures.eam.dialogs;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
@@ -44,7 +47,8 @@ public class ModelessDialogWithClose extends EAMDialog
 	
 	private Box createButtonBar()
 	{
-		UiButton closeButton = new UiButton(EAM.text("Button|Close"));
+		UiButton closeButton = new FocuseButton(EAM.text("Button|Close"));
+		closeButton.setSelected(true);
 		closeButton.addActionListener(new DialogCloseListener());
 		
 		getRootPane().setDefaultButton(closeButton);
@@ -52,6 +56,29 @@ public class ModelessDialogWithClose extends EAMDialog
 		Component[] components = new Component[] {Box.createHorizontalGlue(), closeButton};
 		Utilities.addComponentsRespectingOrientation(buttonBar, components);
 		return buttonBar;
+	}
+	
+	class FocuseButton extends UiButton implements FocusListener
+	{
+		public FocuseButton(String text)
+		{
+			super(text);
+			addFocusListener(this);
+		}
+		
+
+		public void focusGained(FocusEvent e)
+		{
+			setBackground(Color.BLUE);
+			
+		}
+
+		public void focusLost(FocusEvent e)
+		{
+			setBackground(Color.WHITE);
+			
+		}
+		
 	}
 	
 	private final class DialogCloseListener implements ActionListener
