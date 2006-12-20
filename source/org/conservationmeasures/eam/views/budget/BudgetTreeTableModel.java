@@ -5,6 +5,7 @@
  */
 package org.conservationmeasures.eam.views.budget;
 
+import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.conservationmeasures.eam.project.Project;
@@ -22,6 +23,8 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		project = projectToUse;
 		totalCalculator = new BudgetTotalsCalculator(project);
 		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
+		formatter = new DecimalFormat("0.00");
+		
 		combineColumnNames();
 	}
 	
@@ -58,14 +61,14 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		TreeTableNode node = (TreeTableNode)rawNode;
 		DateRange dateRange = (DateRange)columnNames.get(col);
         double total = totalCalculator.calculateTotalCost(node, dateRange); 
-		return new Double(total);
+		return  formatter.format(total);
 	}
 
 	private Object getCost(Object rawNode)
 	{
 		TreeTableNode node = (TreeTableNode)rawNode;
 		double totalCost = totalCalculator.calculateTotalCost(node);
-		return Double.toString(totalCost);
+		return formatter.format(totalCost);
 	}
 
 	
@@ -78,6 +81,8 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 	{
 		return col == getColumnCount() - 1;
 	}
+	
+	DecimalFormat formatter;
 	
 	private Vector columnNames;
 	private Vector yearlyDateRanges;

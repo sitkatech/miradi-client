@@ -36,6 +36,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 		assignmentIdList  = assignmentIdListToUse;
 		totalsCalculator = new BudgetTotalsCalculator(project);
 		dateRanges = new ProjectCalendar(project).getQuarterlyDateDanges();
+		formatter = new DecimalFormat("0.00");
 	}
 	
 	public BaseId getAssignmentForRow(int row)
@@ -539,7 +540,7 @@ public class BudgetTableModel extends AbstractBudgetTableModel
 	}	
 
 	
-	DecimalFormat formatter = new DecimalFormat("0.00");
+	DecimalFormat formatter;
 	
 	Project project;
 	DateRange[] dateRanges;
