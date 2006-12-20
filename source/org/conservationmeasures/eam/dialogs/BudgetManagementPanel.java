@@ -40,7 +40,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Budget management");
+		return EAM.text("Budget");
 	}
 
 	BudgetTreeTablePanel treeTableComponent;
