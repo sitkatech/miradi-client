@@ -32,10 +32,10 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		splitter.setOneTouchExpandable(true);
 		splitter.setDividerSize(15);
-		splitter.setResizeWeight(.5);
+		splitter.setResizeWeight(0.5);
 		splitter.setTopComponent(treeComponentScroll);
 		splitter.setBottomComponent(propertiesScroll);
-		splitter.setDividerLocation(0.5);
+		splitter.setDividerLocation(200);
 		add(splitter, BorderLayout.CENTER);
 	}
 }
