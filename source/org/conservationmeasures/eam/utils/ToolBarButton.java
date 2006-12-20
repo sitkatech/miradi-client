@@ -35,6 +35,7 @@ public class ToolBarButton extends JButton implements LocationHolder
 	    //setHorizontalTextPosition(AbstractButton.CENTER);
 		setToolTipText(action.getToolTipText());
 		setName(buttonName);
+		setFocusable(false);
 	}
 
 	public boolean hasLocation()
