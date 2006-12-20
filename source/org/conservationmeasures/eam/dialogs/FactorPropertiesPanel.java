@@ -128,6 +128,7 @@ public class FactorPropertiesPanel extends DisposablePanel
 	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
 	{
 		tabs = new JTabbedPane();
+		tabs.setFocusable(false);
 		detailsTab = new FactorDetailsTab(getProject(), diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
