@@ -403,7 +403,7 @@ public class MainMenuBar extends JMenuBar
 	
 	private JMenu createProcessMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-step"));
+		JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
 		menu.add(createMenu1(actions));
 		menu.add(createMenu2(actions));
 		menu.add(createMenu3(actions));
