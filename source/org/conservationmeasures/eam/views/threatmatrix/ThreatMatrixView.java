@@ -78,7 +78,7 @@ public class ThreatMatrixView extends UmbrellaView
 
 		model = new NonEditableThreatMatrixTableModel(getProject());
 		
-		bigSplitter = new ViewSplitPane(getMainWindow(), createWizardPanel(), createThreatMatrixPanel());
+		bigSplitter = new ViewSplitPane(getMainWindow(), getProject().getCurrentView(),createWizardPanel(), createThreatMatrixPanel());
 		
 		add(bigSplitter);
 			

@@ -15,6 +15,7 @@ public class BudgetManagementPanel extends VerticalSplitPanel
 {
 	public BudgetManagementPanel(MainWindow mainWindow, Project project, BudgetPropertiesPanel propertiesPanelToUse, BudgetTreeTablePanel treeTableComponentToUse)
 	{
+		super(mainWindow);
 		propertiesPanel = propertiesPanelToUse;
 		treeTableComponent = treeTableComponentToUse;
 		treeTableComponent.setPropertiesPanel(propertiesPanel.getInputPanel());

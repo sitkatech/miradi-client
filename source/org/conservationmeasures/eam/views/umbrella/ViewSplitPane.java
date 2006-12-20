@@ -15,11 +15,11 @@ import org.conservationmeasures.eam.main.MainWindow;
 public class ViewSplitPane extends JSplitPane
 {
 		
-	
-	public ViewSplitPane(MainWindow mainWindowToUse, Container topPanel, Container bottomPanel) 
+	public ViewSplitPane(MainWindow mainWindowToUse, String splitterNameToUse, Container topPanel, Container bottomPanel) 
 	{
 		super(JSplitPane.VERTICAL_SPLIT);
 		mainWindow = mainWindowToUse;
+		splitterName = splitterNameToUse;
 		
 		setOneTouchExpandable(true);
 		setDividerSize(15);
@@ -28,14 +28,13 @@ public class ViewSplitPane extends JSplitPane
 		setBottomComponent(bottomPanel);
 		setFocusable(false);
 		
-		setDividerLocationWithoutNotifications(mainWindow.getWizardSplitterLocation());
-
+		setDividerLocationWithoutNotifications(mainWindow.getSplitterLocation(splitterName));
 	}
 
 	public void setDividerLocation(int location)
 	{
 		setDividerLocationWithoutNotifications(location);
-		mainWindow.setWizardSplitterLocation(location);
+		mainWindow.setSplitterLocation(splitterName, location);
 	}
 
 	private void setDividerLocationWithoutNotifications(int location)
@@ -44,4 +43,5 @@ public class ViewSplitPane extends JSplitPane
 	}
 
 	MainWindow mainWindow;
+	String splitterName;
 }

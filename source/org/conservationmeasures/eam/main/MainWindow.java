@@ -406,16 +406,20 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		repaint();
 	}
 	
-	public void setWizardSplitterLocation(int location)
+	public void setSplitterLocation(String name, int location)
 	{
+		//TODO fixme can no longer use the view height.  
+		//should use the appropriate height.
 		int splitPercent = location * 100 / viewHolder.getHeight();
 		int splitPercentFromMiddle = splitPercent * 2 - 100;
-		preferences.setTaggedInt(WIZARD_SPLIT_TAG + project.getCurrentView(), splitPercentFromMiddle);
+		preferences.setTaggedInt(name, splitPercentFromMiddle);
 	}
 
-	public int getWizardSplitterLocation()
+	public int getSplitterLocation(String name)
 	{
-		int splitPercentFromMiddle = preferences.getTaggedInt(WIZARD_SPLIT_TAG + project.getCurrentView());
+		//TODO fixme can no longer use the view height.  
+		//should use the appropriate height.
+		int splitPercentFromMiddle = preferences.getTaggedInt(name);
 		int splitPercent = (splitPercentFromMiddle + 100) / 2;
 		return viewHolder.getHeight() * splitPercent / 100; 
 	}
@@ -447,7 +451,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
 	private static final int TOOP_TIP_DELAY_MILLIS = 0;
-	private static final String WIZARD_SPLIT_TAG = "WizardSplit";
 	
 	protected Actions actions;
 	private AppPreferences preferences;

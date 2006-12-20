@@ -10,32 +10,34 @@ import java.awt.Component;
 import java.awt.LayoutManager2;
 
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
+
+import org.conservationmeasures.eam.main.MainWindow;
+import org.conservationmeasures.eam.views.umbrella.ViewSplitPane;
 
 abstract public class VerticalSplitPanel extends ModelessDialogPanel
 {
-	public VerticalSplitPanel()
+	public VerticalSplitPanel(MainWindow mainWindowToUse)
 	{
-		this(new BorderLayout());
+		this(mainWindowToUse, new BorderLayout());
 	}
 	
-	public VerticalSplitPanel(LayoutManager2 layoutToUse)
+	public VerticalSplitPanel(MainWindow mainWindowToUse, LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
+		mainWindow = mainWindowToUse;
 	}
 
 	public void createVerticalSplitPane(Component top, Component bottom)
 	{
 		JScrollPane treeComponentScroll = new JScrollPane(top);
 		JScrollPane propertiesScroll = new JScrollPane(bottom);
-		
-		JSplitPane splitter = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		splitter.setOneTouchExpandable(true);
-		splitter.setDividerSize(15);
-		splitter.setResizeWeight(0.5);
-		splitter.setTopComponent(treeComponentScroll);
-		splitter.setBottomComponent(propertiesScroll);
-		splitter.setDividerLocation(200);
+			
+		String splitterName = mainWindow.getProject().getCurrentView() + PROPERTIES_SPLITTER;
+		ViewSplitPane splitter = new ViewSplitPane(mainWindow, splitterName, treeComponentScroll, propertiesScroll );
 		add(splitter, BorderLayout.CENTER);
 	}
+	
+	private MainWindow mainWindow;
+	
+	private static final String PROPERTIES_SPLITTER = "PropertiesSplitter"; 
 }

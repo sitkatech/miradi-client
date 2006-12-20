@@ -6,13 +6,15 @@
 package org.conservationmeasures.eam.dialogs;
 
 import org.conservationmeasures.eam.main.EAM;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.conservationmeasures.eam.objects.EAMObject;
 import org.conservationmeasures.eam.views.workplan.WorkPlanPanel;
 
 public class WorkPlanManagementPanel extends VerticalSplitPanel
 {
-	public WorkPlanManagementPanel(WorkPlanPanel treeTablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public WorkPlanManagementPanel(MainWindow mainWindow, WorkPlanPanel treeTablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
+		super(mainWindow);
 		treeTableComponent = treeTablePanelToUse;
 		propertiesPanel = propertiesPanelToUse;
     

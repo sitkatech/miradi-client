@@ -55,7 +55,7 @@ public class WorkPlanView extends TabbedView
 	{
 		WorkPlanPanel workPlanPanel = WorkPlanPanel.createWorkPlanPanel(mainWindow, getProject());
 		TaskPropertiesPanel taskPropertiesPanel = new TaskPropertiesPanel(getProject(), getMainWindow().getActions(), workPlanPanel.getTree());
-		workPlanManagementPanel = new WorkPlanManagementPanel(workPlanPanel, taskPropertiesPanel); 
+		workPlanManagementPanel = new WorkPlanManagementPanel(mainWindow, workPlanPanel, taskPropertiesPanel); 
 		resourceManagementPanel = new ResourcePoolManagementPanel(getProject(), getMainWindow().getActions(), "");
 		activitiesManagementPanel = new ActivityPoolManagementPanel(getProject(), getMainWindow().getActions());
 		methodPoolManagementPanel = new MethodPoolManagementPanel(getProject(), getMainWindow().getActions());
