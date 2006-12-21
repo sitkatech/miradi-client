@@ -8,6 +8,7 @@ package org.conservationmeasures.eam.project;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -945,6 +946,15 @@ public class Project
 			}
 		}
 
+	}
+	
+	public DecimalFormat getCurrencyFormatter()
+	{
+		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
+		DecimalFormat formatter = new DecimalFormat();
+		formatter.setMinimumFractionDigits(currencyDecimalPlaces);
+		formatter.setMaximumFractionDigits(currencyDecimalPlaces);
+		return formatter;
 	}
 
 	public static final String MONITORING_VIEW_NAME = "Monitoring Plan";
