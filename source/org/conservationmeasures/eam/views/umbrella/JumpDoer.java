@@ -59,7 +59,10 @@ public class JumpDoer extends MainWindowDoer
 			JumpLocation jumpTo = createJumpLocation(actionClass);
 			String view = jumpTo.getView();
 			if(!getProject().getCurrentView().equals(view))
+			{
+				getMainWindow().setSplitterLocationToMiddle(view);
 				getProject().executeCommand(new CommandSwitchView(jumpTo.getView()));
+			}
 			
 			// FIXME: This really should be a Command so it is undoable,
 			// but that would require us to be able to obtain the current 

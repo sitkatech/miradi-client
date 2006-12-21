@@ -405,7 +405,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		preferences.setColor(colorTag, colorToUse);
 		repaint();
 	}
-	
+
+	public void setSplitterLocationToMiddle(String name)
+	{
+		preferences.setTaggedInt(name, 0);
+	}
+
 	public void setSplitterLocation(String name, int location)
 	{
 		//TODO fixme can no longer use the view height.  
@@ -414,7 +419,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		int splitPercentFromMiddle = splitPercent * 2 - 100;
 		preferences.setTaggedInt(name, splitPercentFromMiddle);
 	}
-
+	
 	public int getSplitterLocation(String name)
 	{
 		//TODO fixme can no longer use the view height.  
