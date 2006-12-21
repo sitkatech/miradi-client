@@ -440,7 +440,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		JMenu menu6 = new JMenu("6. Use/Adapt");
 		menu6.setMnemonic(KeyEvent.VK_U);
-		addMenuItem(actions, menu6, ActionJumpAdaptAndMonitorPlans.class, KeyEvent.VK_C);
+		addMenuItem(actions, menu6, ActionJumpAdaptAndMonitorPlans.class, KeyEvent.VK_A);
 		return menu6;
 	}
 	
