@@ -7,6 +7,7 @@ package org.conservationmeasures.eam.views.umbrella;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.EventObject;
 import java.util.HashMap;
 
 import javax.swing.JMenuItem;
@@ -18,6 +19,8 @@ import org.conservationmeasures.eam.actions.ActionCut;
 import org.conservationmeasures.eam.actions.ActionDelete;
 import org.conservationmeasures.eam.actions.ActionPaste;
 import org.conservationmeasures.eam.actions.Actions;
+import org.conservationmeasures.eam.exceptions.CommandFailedException;
+import org.conservationmeasures.eam.main.MainWindow;
 import org.martus.swing.HtmlViewer;
 
 
@@ -59,8 +62,7 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 	{
 		JPopupMenu menu = new JPopupMenu();
 		
-		JMenuItem menuItemCopy = new JMenuItem(actions.get(ActionCopy.class));
-		menuItemCopy.setEnabled(false);
+		JMenuItem menuItemCopy = new JMenuItem(new EditorActionCopy(getWizard().getMainWindow(),htmlViewer));
 		menu.add(menuItemCopy);
 		
 		JMenuItem menuItemCut = new JMenuItem(actions.get(ActionCut.class));
@@ -105,6 +107,22 @@ public class WizardStep extends SkeletonWizardStep implements MouseListener
 	void fireRightClick(MouseEvent e)
 	{
 		getRightClickMenu(getWizard().getMainWindow().getActions()).show(this, e.getX(), e.getY());
+	}
+	
+	class EditorActionCopy extends ActionCopy
+	{
+		public EditorActionCopy(MainWindow mainWindow, HtmlViewer htmlViewerToUse)
+		{
+			super(mainWindow);
+			htmlViewer = htmlViewerToUse;
+		}
+		
+		public void doAction(EventObject event) throws CommandFailedException
+		{
+			htmlViewer.copy();
+		}
+		
+		private HtmlViewer htmlViewer;
 	}
 	
 	HashMap nameToValueMap = new HashMap();
