@@ -19,6 +19,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
+import net.sf.wraplog.NoneLogger;
+
 import org.conservationmeasures.eam.dialogs.EAMDialog;
 import org.conservationmeasures.eam.exceptions.CommandFailedException;
 import org.conservationmeasures.eam.main.EAM;
@@ -27,6 +29,8 @@ import org.conservationmeasures.eam.views.Doer;
 import org.martus.swing.HtmlViewer;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.swing.Utilities;
+
+import edu.stanford.ejalbert.BrowserLauncher;
 
 public class AboutDoer extends Doer  implements HyperlinkHandler
 {
@@ -147,6 +151,15 @@ public class AboutDoer extends Doer  implements HyperlinkHandler
 
 	public void linkClicked(String linkDescription)
 	{
+		try
+		{
+			BrowserLauncher browseLauncher = new BrowserLauncher(new NoneLogger());
+			browseLauncher.openURLinBrowser(linkDescription);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
 	public JPopupMenu getRightClickMenu(String url)
