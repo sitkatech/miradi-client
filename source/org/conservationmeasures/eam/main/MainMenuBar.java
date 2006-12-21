@@ -259,7 +259,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_C);
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_I);
+		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
 		return menu;
 	}
 	
