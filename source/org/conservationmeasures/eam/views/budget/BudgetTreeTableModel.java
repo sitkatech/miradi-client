@@ -23,8 +23,12 @@ public class BudgetTreeTableModel extends TaskTreeTableModel
 		project = projectToUse;
 		totalCalculator = new BudgetTotalsCalculator(project);
 		yearlyDateRanges = new ProjectCalendar(project).getYearlyDateRanges();
-		formatter = new DecimalFormat("0.00");
 		
+		//TODO add to a central place. where?
+		int currencyDecimalPlaces = project.getMetadata().getCurrencyDecimalPlaces();
+		formatter = new DecimalFormat();
+		formatter.setMinimumFractionDigits(currencyDecimalPlaces);
+		formatter.setMaximumFractionDigits(currencyDecimalPlaces);		
 		combineColumnNames();
 	}
 	
